@@ -8,10 +8,13 @@
     "node": ">=20"
   },
   "scripts": {
+    "dev": "pnpm --parallel --filter @uapt/web --filter @uapt/api dev",
     "dev:web": "pnpm --filter @uapt/web dev",
     "dev:api": "pnpm --filter @uapt/api dev",
     "dev:worker": "pnpm --filter @uapt/worker dev",
     "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "check": "pnpm typecheck && pnpm lint",
     "typecheck": "pnpm -r typecheck",
     "db:generate": "pnpm --filter @uapt/db generate",
     "db:migrate": "pnpm --filter @uapt/db migrate"

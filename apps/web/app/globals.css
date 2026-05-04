@@ -25,3 +25,157 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.page-shell {
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 56px 24px 72px;
+}
+
+.hero {
+  max-width: 840px;
+}
+
+.kicker {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.02;
+  margin: 0;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+  margin: 24px 0 0;
+  max-width: 780px;
+}
+
+.section {
+  border-top: 1px solid var(--border);
+  margin-top: 42px;
+  padding-top: 28px;
+}
+
+.section-heading {
+  align-items: end;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.section-heading p,
+.muted {
+  color: var(--muted);
+}
+
+.section-heading p {
+  margin: 0;
+}
+
+.metrics-grid,
+.card-grid,
+.link-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.metrics-grid {
+  margin-top: 36px;
+}
+
+.metrics-grid div,
+.policy-card,
+.text-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  padding: 18px;
+}
+
+.metrics-grid span {
+  display: block;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.metrics-grid p,
+.policy-card p {
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 8px 0 0;
+}
+
+.text-card {
+  color: var(--foreground);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.policy-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.policy-meta,
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  background: #ecfeff;
+  border: 1px solid #a5f3fc;
+  border-radius: 999px;
+  color: #155e75;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 9px;
+}
+
+.source-list {
+  line-height: 1.7;
+  padding-left: 20px;
+}
+
+.source-list a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    padding: 36px 18px 56px;
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+}

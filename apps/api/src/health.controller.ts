@@ -6,7 +6,9 @@ export class HealthController {
   getHealth() {
     return {
       ok: true,
-      service: "university-ai-policy-tracker-api"
+      service: "university-ai-policy-tracker-api",
+      version: "0.1.0",
+      checkedAt: new Date().toISOString()
     };
   }
 }

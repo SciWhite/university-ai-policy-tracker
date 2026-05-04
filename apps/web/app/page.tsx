@@ -1,40 +1,57 @@
+import Link from "next/link";
+import { seedUniversities } from "@uapt/shared";
+
 const routeGroups = [
-  "Universities",
-  "AI tools",
-  "Regions",
-  "Governance themes",
-  "Sources",
-  "Diffs",
-  "Reports"
-];
+  { label: "Universities", href: "/universities" },
+  { label: "AI tools", href: "/tools" },
+  { label: "Reports", href: "/reports" }
+] as const;
 
 export default function HomePage() {
+  const sourceCount = seedUniversities.reduce(
+    (total, university) => total + university.sources.length,
+    0
+  );
+
   return (
-    <main
-      style={{
-        margin: "0 auto",
-        maxWidth: "960px",
-        padding: "64px 24px"
-      }}
-    >
-      <p style={{ color: "var(--accent)", fontWeight: 700, margin: 0 }}>
-        Public policy-change intelligence
-      </p>
-      <h1 style={{ fontSize: "44px", lineHeight: 1.1, margin: "16px 0" }}>
-        University AI Policy Tracker
-      </h1>
-      <p style={{ color: "var(--muted)", fontSize: "18px", lineHeight: 1.6 }}>
-        Track source-backed university policy changes for GenAI, ChatGPT,
-        DeepSeek, Microsoft Copilot, institutional AI services, academic
-        integrity, privacy, teaching, research, security review, and procurement.
-      </p>
-      <section style={{ borderTop: "1px solid var(--border)", marginTop: 40, paddingTop: 24 }}>
-        <h2 style={{ fontSize: "20px" }}>Initial public route groups</h2>
-        <ul style={{ columns: 2, lineHeight: 1.9, paddingLeft: 20 }}>
+    <main className="page-shell">
+      <section className="hero">
+        <p className="kicker">Public policy-change intelligence</p>
+        <h1>University AI Policy Tracker</h1>
+        <p className="lead">
+          Track source-backed university policy changes for GenAI, ChatGPT,
+          DeepSeek, Microsoft Copilot, institutional AI services, academic
+          integrity, privacy, teaching, research, security review, and procurement.
+        </p>
+      </section>
+
+      <section className="metrics-grid" aria-label="Seed dataset summary">
+        <div>
+          <span>{seedUniversities.length}</span>
+          <p>seed universities</p>
+        </div>
+        <div>
+          <span>{sourceCount}</span>
+          <p>seed sources</p>
+        </div>
+        <div>
+          <span>0</span>
+          <p>deployed services</p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading">
+          <h2>Initial route groups</h2>
+          <p>Static placeholders wired to shared seed data.</p>
+        </div>
+        <div className="link-grid">
           {routeGroups.map((routeGroup) => (
-            <li key={routeGroup}>{routeGroup}</li>
+            <Link className="text-card" href={routeGroup.href} key={routeGroup.href}>
+              {routeGroup.label}
+            </Link>
           ))}
-        </ul>
+        </div>
       </section>
     </main>
   );

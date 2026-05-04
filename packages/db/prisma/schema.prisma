@@ -15,11 +15,59 @@ enum DocumentStatus {
   INACCESSIBLE
 }
 
+enum PolicyAuthority {
+  UNIVERSITY_WIDE
+  FACULTY_OR_SCHOOL
+  DEPARTMENT
+  COURSE_LEVEL
+  IT_OR_SECURITY_OFFICE
+  LIBRARY
+  TEACHING_AND_LEARNING_CENTER
+  RESEARCH_OFFICE
+  PROCUREMENT_OR_LEGAL
+}
+
+enum AiServiceStatus {
+  INSTITUTIONALLY_LICENSED_OR_PROCURED
+  THIRD_PARTY_SERVICE
+  SELF_HOSTED_SYSTEM
+  RESTRICTED_OR_PROHIBITED
+  NO_SPECIFIC_AI_SERVICE_NAMED
+}
+
+enum ServiceTreatment {
+  ALLOWED
+  CONDITIONALLY_ALLOWED
+  RESTRICTED_OR_BLOCKED
+  NOT_MENTIONED
+}
+
 enum ReviewState {
   MACHINE_EXTRACTED
   AGENT_REVIEWED
   HUMAN_REVIEWED
   NEEDS_REVIEW
+}
+
+enum CrawlStatus {
+  QUEUED
+  RUNNING
+  SUCCEEDED
+  FAILED
+  SKIPPED
+}
+
+enum FetchMode {
+  HTTP
+  PLAYWRIGHT
+  OPENCLI
+  FIRECRAWL
+}
+
+enum ReviewDecisionType {
+  APPROVED
+  REJECTED
+  NEEDS_CHANGES
 }
 
 model University {
@@ -29,66 +77,178 @@ model University {
   country   String
   region    String?
   website   String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  sources SourceDocument[]
+  crawlRuns             CrawlRun[]
+  extractionCandidates  ExtractionCandidate[]
+  policySources         PolicySource[]
+  policyVersions        PolicyVersion[]
+  reviewDecisions       ReviewDecision[]
+
+  @@map("universities")
 }
 
-model SourceDocument {
-  id             String         @id @default(cuid())
-  universityId   String?
-  url            String
-  finalUrl       String?
-  title          String?
-  documentStatus DocumentStatus
-  reviewState    ReviewState    @default(NEEDS_REVIEW)
-  lastCheckedAt  DateTime?
-  lastChangedAt  DateTime?
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
+model PolicySource {
+  id              String         @id @default(cuid())
+  universityId    String         @map("university_id")
+  url             String
+  finalUrl        String?        @map("final_url")
+  title           String?
+  documentStatus  DocumentStatus @map("document_status")
+  policyAuthority PolicyAuthority? @map("policy_authority")
+  active          Boolean        @default(true)
+  lastCheckedAt   DateTime?      @map("last_checked_at")
+  lastChangedAt   DateTime?      @map("last_changed_at")
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @updatedAt @map("updated_at")
 
-  university University?      @relation(fields: [universityId], references: [id])
-  snapshots  PolicySnapshot[]
-  changes    PolicyChange[]
+  university           University            @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  crawlRuns            CrawlRun[]
+  extractionCandidates ExtractionCandidate[]
+  policyVersions       PolicyVersion[]
+  reviewDecisions      ReviewDecision[]
+  snapshots            SourceSnapshot[]
 
   @@unique([universityId, url])
   @@index([documentStatus])
-  @@index([reviewState])
+  @@index([lastCheckedAt])
+  @@map("policy_sources")
 }
 
-model PolicySnapshot {
+model SourceSnapshot {
   id             String   @id @default(cuid())
-  sourceDocumentId String
-  contentHash    String
-  normalizedText String
-  fetchedAt      DateTime @default(now())
-  httpStatus     Int?
+  policySourceId String   @map("policy_source_id")
+  crawlRunId     String?  @map("crawl_run_id")
+  contentHash    String   @map("content_hash")
+  normalizedText String   @map("normalized_text")
+  rawStorageKey  String?  @map("raw_storage_key")
+  httpStatus     Int?     @map("http_status")
   etag           String?
-  lastModified   String?
+  lastModified   String?  @map("last_modified")
+  fetchedAt      DateTime @default(now()) @map("fetched_at")
   metadata       Json?
 
-  sourceDocument SourceDocument @relation(fields: [sourceDocumentId], references: [id])
-  changes        PolicyChange[]
+  crawlRun             CrawlRun?             @relation(fields: [crawlRunId], references: [id], onDelete: SetNull)
+  extractionCandidates ExtractionCandidate[]
+  policySource         PolicySource          @relation(fields: [policySourceId], references: [id], onDelete: Cascade)
+  policyVersions       PolicyVersion[]
 
-  @@unique([sourceDocumentId, contentHash])
+  @@unique([policySourceId, contentHash])
   @@index([fetchedAt])
+  @@index([contentHash])
+  @@map("source_snapshots")
 }
 
-model PolicyChange {
-  id               String      @id @default(cuid())
-  sourceDocumentId String
-  snapshotId       String
-  summary          String?
-  diffText         String?
-  classification   Json?
-  confidence       Float?
-  reviewState      ReviewState @default(NEEDS_REVIEW)
-  createdAt        DateTime    @default(now())
+model CrawlRun {
+  id             String      @id @default(cuid())
+  universityId   String?     @map("university_id")
+  policySourceId String?     @map("policy_source_id")
+  status         CrawlStatus @default(QUEUED)
+  fetchMode      FetchMode   @default(HTTP) @map("fetch_mode")
+  startedAt      DateTime?   @map("started_at")
+  finishedAt     DateTime?   @map("finished_at")
+  requestedUrl   String      @map("requested_url")
+  finalUrl       String?     @map("final_url")
+  httpStatus     Int?        @map("http_status")
+  robotsAllowed  Boolean?    @map("robots_allowed")
+  failureReason  String?     @map("failure_reason")
+  metadata       Json?
+  createdAt      DateTime    @default(now()) @map("created_at")
 
-  sourceDocument SourceDocument @relation(fields: [sourceDocumentId], references: [id])
-  snapshot       PolicySnapshot @relation(fields: [snapshotId], references: [id])
+  university           University?           @relation(fields: [universityId], references: [id], onDelete: SetNull)
+  policySource         PolicySource?         @relation(fields: [policySourceId], references: [id], onDelete: SetNull)
+  extractionCandidates ExtractionCandidate[]
+  snapshots            SourceSnapshot[]
+
+  @@index([status])
+  @@index([startedAt])
+  @@index([policySourceId])
+  @@map("crawl_runs")
+}
+
+model ExtractionCandidate {
+  id                 String           @id @default(cuid())
+  universityId       String           @map("university_id")
+  policySourceId     String           @map("policy_source_id")
+  sourceSnapshotId   String           @map("source_snapshot_id")
+  crawlRunId         String?          @map("crawl_run_id")
+  documentStatus     DocumentStatus   @map("document_status")
+  policyAuthority    PolicyAuthority? @map("policy_authority")
+  aiServiceStatus    AiServiceStatus  @map("ai_service_status")
+  serviceTreatment   ServiceTreatment @map("service_treatment")
+  aiTools            String[]         @map("ai_tools")
+  themes             String[]
+  audiences          String[]
+  academicContexts   String[]         @map("academic_contexts")
+  dataSensitivities  String[]         @map("data_sensitivities")
+  evidence           Json
+  summary            String?
+  confidence         Float
+  reviewState        ReviewState      @default(MACHINE_EXTRACTED) @map("review_state")
+  createdAt          DateTime         @default(now()) @map("created_at")
+  updatedAt          DateTime         @updatedAt @map("updated_at")
+
+  crawlRun        CrawlRun?        @relation(fields: [crawlRunId], references: [id], onDelete: SetNull)
+  policySource    PolicySource     @relation(fields: [policySourceId], references: [id], onDelete: Cascade)
+  sourceSnapshot  SourceSnapshot   @relation(fields: [sourceSnapshotId], references: [id], onDelete: Cascade)
+  university      University       @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  policyVersions  PolicyVersion[]
+  reviewDecisions ReviewDecision[]
 
   @@index([reviewState])
+  @@index([universityId])
+  @@index([policySourceId])
+  @@map("extraction_candidates")
+}
+
+model PolicyVersion {
+  id                    String           @id @default(cuid())
+  universityId          String           @map("university_id")
+  policySourceId        String           @map("policy_source_id")
+  sourceSnapshotId      String           @map("source_snapshot_id")
+  extractionCandidateId String?          @map("extraction_candidate_id")
+  versionNumber         Int              @map("version_number")
+  documentStatus        DocumentStatus   @map("document_status")
+  policyAuthority       PolicyAuthority? @map("policy_authority")
+  aiServiceStatus       AiServiceStatus  @map("ai_service_status")
+  serviceTreatment      ServiceTreatment @map("service_treatment")
+  aiTools               String[]         @map("ai_tools")
+  themes                String[]
+  summary               String?
+  diffText              String?          @map("diff_text")
+  effectiveAt           DateTime?        @map("effective_at")
+  createdAt             DateTime         @default(now()) @map("created_at")
+
+  extractionCandidate ExtractionCandidate? @relation(fields: [extractionCandidateId], references: [id], onDelete: SetNull)
+  policySource        PolicySource         @relation(fields: [policySourceId], references: [id], onDelete: Cascade)
+  sourceSnapshot      SourceSnapshot       @relation(fields: [sourceSnapshotId], references: [id], onDelete: Cascade)
+  university          University           @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  reviewDecisions     ReviewDecision[]
+
+  @@unique([policySourceId, versionNumber])
+  @@index([universityId])
   @@index([createdAt])
+  @@map("policy_versions")
+}
+
+model ReviewDecision {
+  id                    String             @id @default(cuid())
+  universityId          String             @map("university_id")
+  policySourceId        String             @map("policy_source_id")
+  extractionCandidateId String?            @map("extraction_candidate_id")
+  policyVersionId       String?            @map("policy_version_id")
+  decision              ReviewDecisionType
+  reviewer              String?
+  notes                 String?
+  createdAt             DateTime           @default(now()) @map("created_at")
+
+  extractionCandidate ExtractionCandidate? @relation(fields: [extractionCandidateId], references: [id], onDelete: SetNull)
+  policySource        PolicySource         @relation(fields: [policySourceId], references: [id], onDelete: Cascade)
+  policyVersion       PolicyVersion?       @relation(fields: [policyVersionId], references: [id], onDelete: SetNull)
+  university          University           @relation(fields: [universityId], references: [id], onDelete: Cascade)
+
+  @@index([decision])
+  @@index([createdAt])
+  @@map("review_decisions")
 }
