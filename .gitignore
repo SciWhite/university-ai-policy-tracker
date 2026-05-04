@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+.next/
+out/
+.turbo/
+coverage/
+
+# Logs and local runtime files
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+tmp/
+temp/
+
+# Local databases and caches
+*.sqlite
+*.sqlite3
+*.db
+data/raw/
+data/snapshots/
+data/browser-profiles/
+
+# Crawler artifacts that should not enter Git by default
+artifacts/
+snapshots/
+screenshots/
+playwright-report/
+test-results/
+
+# Deployment and IDE state
+.vercel/
+.idea/
+.vscode/
+.DS_Store
+
+# Local planning handoff
+UNIVERSITY_AI_POLICY_TRACKER_HANDOFF.md
+
+# Prisma generated output
+packages/db/generated/

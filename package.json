@@ -1,0 +1,24 @@
+{
+  "name": "university-ai-policy-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public, SEO-first university AI policy change intelligence tracker.",
+  "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev:web": "pnpm --filter @uapt/web dev",
+    "dev:api": "pnpm --filter @uapt/api dev",
+    "dev:worker": "pnpm --filter @uapt/worker dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "db:generate": "pnpm --filter @uapt/db generate",
+    "db:migrate": "pnpm --filter @uapt/db migrate"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0"
+  }
+}

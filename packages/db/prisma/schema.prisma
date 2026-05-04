@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DocumentStatus {
+  UNIVERSITY_WIDE_POLICY
+  SPECIFIC_UNIT_POLICY_OR_GUIDANCE
+  EXTERNAL_POLICY_OR_GUIDANCE
+  NO_POLICY
+  INACCESSIBLE
+}
+
+enum ReviewState {
+  MACHINE_EXTRACTED
+  AGENT_REVIEWED
+  HUMAN_REVIEWED
+  NEEDS_REVIEW
+}
+
+model University {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  country   String
+  region    String?
+  website   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sources SourceDocument[]
+}
+
+model SourceDocument {
+  id             String         @id @default(cuid())
+  universityId   String?
+  url            String
+  finalUrl       String?
+  title          String?
+  documentStatus DocumentStatus
+  reviewState    ReviewState    @default(NEEDS_REVIEW)
+  lastCheckedAt  DateTime?
+  lastChangedAt  DateTime?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  university University?      @relation(fields: [universityId], references: [id])
+  snapshots  PolicySnapshot[]
+  changes    PolicyChange[]
+
+  @@unique([universityId, url])
+  @@index([documentStatus])
+  @@index([reviewState])
+}
+
+model PolicySnapshot {
+  id             String   @id @default(cuid())
+  sourceDocumentId String
+  contentHash    String
+  normalizedText String
+  fetchedAt      DateTime @default(now())
+  httpStatus     Int?
+  etag           String?
+  lastModified   String?
+  metadata       Json?
+
+  sourceDocument SourceDocument @relation(fields: [sourceDocumentId], references: [id])
+  changes        PolicyChange[]
+
+  @@unique([sourceDocumentId, contentHash])
+  @@index([fetchedAt])
+}
+
+model PolicyChange {
+  id               String      @id @default(cuid())
+  sourceDocumentId String
+  snapshotId       String
+  summary          String?
+  diffText         String?
+  classification   Json?
+  confidence       Float?
+  reviewState      ReviewState @default(NEEDS_REVIEW)
+  createdAt        DateTime    @default(now())
+
+  sourceDocument SourceDocument @relation(fields: [sourceDocumentId], references: [id])
+  snapshot       PolicySnapshot @relation(fields: [snapshotId], references: [id])
+
+  @@index([reviewState])
+  @@index([createdAt])
+}

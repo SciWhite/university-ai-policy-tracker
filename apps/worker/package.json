@@ -1,0 +1,19 @@
+{
+  "name": "@uapt/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@uapt/crawler-core": "workspace:*",
+    "@uapt/db": "workspace:*",
+    "@uapt/shared": "workspace:*",
+    "bullmq": "^5.0.0",
+    "ioredis": "^5.0.0"
+  }
+}
