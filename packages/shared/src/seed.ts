@@ -44,6 +44,27 @@ export const seedUniversities: SeedUniversity[] = [
     ]
   },
   {
+    slug: "stanford",
+    name: "Stanford University",
+    country: "United States",
+    region: "California",
+    website: "https://www.stanford.edu",
+    summary:
+      "Seed placeholder for academic integrity, privacy, and classroom AI guidance tracking.",
+    sources: [
+      {
+        title: "AI teaching guidance placeholder",
+        url: "https://www.stanford.edu",
+        documentStatus: "specific_unit_policy_or_guidance",
+        serviceTreatment: "conditionally_allowed",
+        reviewState: "needs_review",
+        themes: ["teaching", "academic_integrity", "copyright"],
+        tools: ["chatgpt", "gemini"],
+        lastCheckedAt: "2026-05-04T00:00:00.000Z"
+      }
+    ]
+  },
+  {
     slug: "university-of-toronto",
     name: "University of Toronto",
     country: "Canada",
@@ -61,6 +82,27 @@ export const seedUniversities: SeedUniversity[] = [
         themes: ["privacy", "data_entry", "security_review", "teaching"],
         tools: ["microsoft_copilot", "institutional_ai_service"],
         lastCheckedAt: "2026-05-03T00:00:00.000Z"
+      }
+    ]
+  },
+  {
+    slug: "oxford",
+    name: "University of Oxford",
+    country: "United Kingdom",
+    region: "England",
+    website: "https://www.ox.ac.uk",
+    summary:
+      "Seed placeholder for university guidance, research use, and data-entry policy tracking.",
+    sources: [
+      {
+        title: "Generative AI policy placeholder",
+        url: "https://www.ox.ac.uk",
+        documentStatus: "specific_unit_policy_or_guidance",
+        serviceTreatment: "not_mentioned",
+        reviewState: "needs_review",
+        themes: ["research", "data_entry", "privacy"],
+        tools: ["chatgpt", "claude"],
+        lastCheckedAt: "2026-05-04T00:00:00.000Z"
       }
     ]
   }

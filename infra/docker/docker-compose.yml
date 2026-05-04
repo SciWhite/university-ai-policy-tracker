@@ -1,0 +1,35 @@
+name: university-ai-policy-tracker
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-uapt}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-uapt_local_password}
+      POSTGRES_DB: ${POSTGRES_DB:-uapt}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - uapt-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-uapt} -d ${POSTGRES_DB:-uapt}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - uapt-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  uapt-postgres-data:
+  uapt-redis-data:

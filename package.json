@@ -12,12 +12,15 @@
     "dev:web": "pnpm --filter @uapt/web dev",
     "dev:api": "pnpm --filter @uapt/api dev",
     "dev:worker": "pnpm --filter @uapt/worker dev",
-    "build": "pnpm -r build",
+    "build": "pnpm db:generate && pnpm -r build",
     "lint": "pnpm -r lint",
-    "check": "pnpm typecheck && pnpm lint",
+    "check": "pnpm db:generate && pnpm typecheck && pnpm lint",
     "typecheck": "pnpm -r typecheck",
     "db:generate": "pnpm --filter @uapt/db generate",
-    "db:migrate": "pnpm --filter @uapt/db migrate"
+    "db:migrate": "pnpm --filter @uapt/db migrate",
+    "db:seed": "pnpm --filter @uapt/db seed",
+    "infra:up": "docker compose -f infra/docker/docker-compose.yml up -d",
+    "infra:down": "docker compose -f infra/docker/docker-compose.yml down"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

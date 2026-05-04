@@ -77,31 +77,32 @@ model University {
   country   String
   region    String?
   website   String?
+  summary   String?
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  crawlRuns             CrawlRun[]
-  extractionCandidates  ExtractionCandidate[]
-  policySources         PolicySource[]
-  policyVersions        PolicyVersion[]
-  reviewDecisions       ReviewDecision[]
+  crawlRuns            CrawlRun[]
+  extractionCandidates ExtractionCandidate[]
+  policySources        PolicySource[]
+  policyVersions       PolicyVersion[]
+  reviewDecisions      ReviewDecision[]
 
   @@map("universities")
 }
 
 model PolicySource {
-  id              String         @id @default(cuid())
-  universityId    String         @map("university_id")
+  id              String           @id @default(cuid())
+  universityId    String           @map("university_id")
   url             String
-  finalUrl        String?        @map("final_url")
+  finalUrl        String?          @map("final_url")
   title           String?
-  documentStatus  DocumentStatus @map("document_status")
+  documentStatus  DocumentStatus   @map("document_status")
   policyAuthority PolicyAuthority? @map("policy_authority")
-  active          Boolean        @default(true)
-  lastCheckedAt   DateTime?      @map("last_checked_at")
-  lastChangedAt   DateTime?      @map("last_changed_at")
-  createdAt       DateTime       @default(now()) @map("created_at")
-  updatedAt       DateTime       @updatedAt @map("updated_at")
+  active          Boolean          @default(true)
+  lastCheckedAt   DateTime?        @map("last_checked_at")
+  lastChangedAt   DateTime?        @map("last_changed_at")
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
 
   university           University            @relation(fields: [universityId], references: [id], onDelete: Cascade)
   crawlRuns            CrawlRun[]
@@ -168,26 +169,26 @@ model CrawlRun {
 }
 
 model ExtractionCandidate {
-  id                 String           @id @default(cuid())
-  universityId       String           @map("university_id")
-  policySourceId     String           @map("policy_source_id")
-  sourceSnapshotId   String           @map("source_snapshot_id")
-  crawlRunId         String?          @map("crawl_run_id")
-  documentStatus     DocumentStatus   @map("document_status")
-  policyAuthority    PolicyAuthority? @map("policy_authority")
-  aiServiceStatus    AiServiceStatus  @map("ai_service_status")
-  serviceTreatment   ServiceTreatment @map("service_treatment")
-  aiTools            String[]         @map("ai_tools")
-  themes             String[]
-  audiences          String[]
-  academicContexts   String[]         @map("academic_contexts")
-  dataSensitivities  String[]         @map("data_sensitivities")
-  evidence           Json
-  summary            String?
-  confidence         Float
-  reviewState        ReviewState      @default(MACHINE_EXTRACTED) @map("review_state")
-  createdAt          DateTime         @default(now()) @map("created_at")
-  updatedAt          DateTime         @updatedAt @map("updated_at")
+  id                String           @id @default(cuid())
+  universityId      String           @map("university_id")
+  policySourceId    String           @map("policy_source_id")
+  sourceSnapshotId  String           @map("source_snapshot_id")
+  crawlRunId        String?          @map("crawl_run_id")
+  documentStatus    DocumentStatus   @map("document_status")
+  policyAuthority   PolicyAuthority? @map("policy_authority")
+  aiServiceStatus   AiServiceStatus  @map("ai_service_status")
+  serviceTreatment  ServiceTreatment @map("service_treatment")
+  aiTools           String[]         @map("ai_tools")
+  themes            String[]
+  audiences         String[]
+  academicContexts  String[]         @map("academic_contexts")
+  dataSensitivities String[]         @map("data_sensitivities")
+  evidence          Json
+  summary           String?
+  confidence        Float
+  reviewState       ReviewState      @default(MACHINE_EXTRACTED) @map("review_state")
+  createdAt         DateTime         @default(now()) @map("created_at")
+  updatedAt         DateTime         @updatedAt @map("updated_at")
 
   crawlRun        CrawlRun?        @relation(fields: [crawlRunId], references: [id], onDelete: SetNull)
   policySource    PolicySource     @relation(fields: [policySourceId], references: [id], onDelete: Cascade)
@@ -196,6 +197,7 @@ model ExtractionCandidate {
   policyVersions  PolicyVersion[]
   reviewDecisions ReviewDecision[]
 
+  @@unique([policySourceId, sourceSnapshotId])
   @@index([reviewState])
   @@index([universityId])
   @@index([policySourceId])

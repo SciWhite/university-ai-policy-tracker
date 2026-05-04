@@ -1,19 +1,11 @@
-import { aiTools, seedUniversities } from "@uapt/shared";
+import { getCatalogTools } from "@/lib/catalog";
 
 export const metadata = {
   title: "AI Tools | University AI Policy Tracker"
 };
 
-export default function ToolsPage() {
-  const toolCounts = aiTools.map((tool) => ({
-    tool,
-    count: seedUniversities.reduce(
-      (total, university) =>
-        total +
-        university.sources.filter((source) => source.tools.includes(tool)).length,
-      0
-    )
-  }));
+export default async function ToolsPage() {
+  const toolCounts = await getCatalogTools();
 
   return (
     <main className="page-shell">
@@ -28,10 +20,13 @@ export default function ToolsPage() {
 
       <section className="section">
         <div className="card-grid">
-          {toolCounts.map(({ tool, count }) => (
+          {toolCounts.map(({ tool, sourceCount, universityCount }) => (
             <article className="policy-card" key={tool}>
               <h2>{tool}</h2>
-              <p>{count} seed source references this tool.</p>
+              <p>
+                {sourceCount} source references this tool across {universityCount}{" "}
+                universities.
+              </p>
             </article>
           ))}
         </div>

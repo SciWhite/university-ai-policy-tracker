@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { findSeedUniversity, seedUniversities } from "@uapt/shared";
+import {
+  getCatalogUniversities,
+  getCatalogUniversityBySlug
+} from "@/lib/catalog";
 
 interface UniversityPageProps {
   params: Promise<{
@@ -8,15 +11,17 @@ interface UniversityPageProps {
   }>;
 }
 
-export function generateStaticParams() {
-  return seedUniversities.map((university) => ({
+export async function generateStaticParams() {
+  const universities = await getCatalogUniversities();
+
+  return universities.map((university) => ({
     slug: university.slug
   }));
 }
 
 export async function generateMetadata({ params }: UniversityPageProps) {
   const { slug } = await params;
-  const university = findSeedUniversity(slug);
+  const university = await getCatalogUniversityBySlug(slug);
 
   return {
     title: university
@@ -27,7 +32,7 @@ export async function generateMetadata({ params }: UniversityPageProps) {
 
 export default async function UniversityPage({ params }: UniversityPageProps) {
   const { slug } = await params;
-  const university = findSeedUniversity(slug);
+  const university = await getCatalogUniversityBySlug(slug);
 
   if (!university) {
     notFound();
@@ -46,7 +51,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
       <section className="section">
         <div className="section-heading">
           <h2>Seed policy sources</h2>
-          <p>{university.sources.length} placeholder source record</p>
+          <p>{university.sources.length} catalog source record</p>
         </div>
         <div className="card-grid">
           {university.sources.map((source) => (

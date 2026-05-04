@@ -1,14 +1,16 @@
 import Link from "next/link";
-import { seedUniversities } from "@uapt/shared";
+import { getCatalogUniversities } from "@/lib/catalog";
 
 const routeGroups = [
   { label: "Universities", href: "/universities" },
   { label: "AI tools", href: "/tools" },
+  { label: "Sources", href: "/sources" },
   { label: "Reports", href: "/reports" }
 ] as const;
 
-export default function HomePage() {
-  const sourceCount = seedUniversities.reduce(
+export default async function HomePage() {
+  const universities = await getCatalogUniversities();
+  const sourceCount = universities.reduce(
     (total, university) => total + university.sources.length,
     0
   );
@@ -27,23 +29,23 @@ export default function HomePage() {
 
       <section className="metrics-grid" aria-label="Seed dataset summary">
         <div>
-          <span>{seedUniversities.length}</span>
-          <p>seed universities</p>
+          <span>{universities.length}</span>
+          <p>tracked universities</p>
         </div>
         <div>
           <span>{sourceCount}</span>
-          <p>seed sources</p>
+          <p>policy sources</p>
         </div>
         <div>
           <span>0</span>
-          <p>deployed services</p>
+          <p>OpenClaw connections</p>
         </div>
       </section>
 
       <section className="section">
         <div className="section-heading">
           <h2>Initial route groups</h2>
-          <p>Static placeholders wired to shared seed data.</p>
+          <p>Catalog pages read through the API data path when configured.</p>
         </div>
         <div className="link-grid">
           {routeGroups.map((routeGroup) => (

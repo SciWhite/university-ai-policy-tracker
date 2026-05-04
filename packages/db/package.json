@@ -9,13 +9,15 @@
   "scripts": {
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
+    "seed": "tsx prisma/seed.ts",
     "studio": "prisma studio",
     "build": "tsc -p tsconfig.json",
     "lint": "tsc --noEmit -p tsconfig.json",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@prisma/client": "^6.0.0"
+    "@prisma/client": "^6.0.0",
+    "@uapt/shared": "workspace:*"
   },
   "devDependencies": {
     "prisma": "^6.0.0"

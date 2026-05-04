@@ -74,6 +74,27 @@ export const seedUniversitySchema = z.object({
   sources: z.array(seedPolicySourceSchema)
 });
 
+export const catalogPolicySourceSchema = seedPolicySourceSchema.extend({
+  id: z.string().min(1).optional()
+});
+
+export const catalogUniversitySchema = seedUniversitySchema.extend({
+  id: z.string().min(1).optional(),
+  sourceCount: z.number().int().nonnegative().optional(),
+  sources: z.array(catalogPolicySourceSchema)
+});
+
+export const catalogToolSummarySchema = z.object({
+  tool: aiToolSchema,
+  sourceCount: z.number().int().nonnegative(),
+  universityCount: z.number().int().nonnegative()
+});
+
+export const catalogSourceRecordSchema = catalogPolicySourceSchema.extend({
+  universityName: z.string().min(1),
+  universitySlug: z.string().min(1)
+});
+
 export type AiTool = z.infer<typeof aiToolSchema>;
 export type DocumentStatus = z.infer<typeof documentStatusSchema>;
 export type PolicyAuthority = z.infer<typeof policyAuthoritySchema>;
@@ -89,3 +110,7 @@ export type SourceEvidence = z.infer<typeof sourceEvidenceSchema>;
 export type PolicyClassification = z.infer<typeof policyClassificationSchema>;
 export type SeedPolicySource = z.infer<typeof seedPolicySourceSchema>;
 export type SeedUniversity = z.infer<typeof seedUniversitySchema>;
+export type CatalogPolicySource = z.infer<typeof catalogPolicySourceSchema>;
+export type CatalogUniversity = z.infer<typeof catalogUniversitySchema>;
+export type CatalogToolSummary = z.infer<typeof catalogToolSummarySchema>;
+export type CatalogSourceRecord = z.infer<typeof catalogSourceRecordSchema>;
