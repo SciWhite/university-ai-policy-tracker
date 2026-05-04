@@ -43,6 +43,18 @@ Run extraction only after source content changes:
 4. If hash is unchanged, update last checked metadata and stop.
 5. If hash changed, create snapshot, diff, extraction candidate, and review task.
 
+## Local Ingestion Contract
+
+Crawler output should be converted into structured ingest payloads before it reaches the API:
+
+- crawl plan: planned set of crawl targets, expected themes, and fetch modes.
+- crawl target: one URL plus university slug and source metadata.
+- crawl artifact: fetched URL result, status, headers, normalized text, hash, and failure reason.
+- source snapshot ingest payload: normalized source text and hash tied to a known university/source.
+- extraction candidate payload: taxonomy classification, evidence, confidence, and review state tied to a source snapshot.
+
+The local sample script `pnpm ingest:sample` creates a crawl run and source snapshot directly against the local database after `pnpm db:seed`. It is for local verification only and does not connect OpenClaw.
+
 ## Content Retention
 
 Raw snapshots, screenshots, browser profiles, and logs should not be committed to Git. Keep them in controlled object storage or local ignored artifact directories.

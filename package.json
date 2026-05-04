@@ -19,6 +19,7 @@
     "db:generate": "pnpm --filter @uapt/db generate",
     "db:migrate": "pnpm --filter @uapt/db migrate",
     "db:seed": "pnpm --filter @uapt/db seed",
+    "ingest:sample": "tsx scripts/local-ingest-sample.ts",
     "infra:up": "docker compose -f infra/docker/docker-compose.yml up -d",
     "infra:down": "docker compose -f infra/docker/docker-compose.yml down"
   },

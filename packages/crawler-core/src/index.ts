@@ -1,4 +1,12 @@
 import { createHash } from "node:crypto";
+import {
+  crawlRunIngestPayloadSchema,
+  sourceSnapshotIngestPayloadSchema,
+  type CrawlRunIngestPayload,
+  type DocumentStatus,
+  type PolicyAuthority,
+  type SourceSnapshotIngestPayload
+} from "@uapt/shared";
 
 export type FetchMode = "http" | "playwright" | "opencli" | "firecrawl";
 
@@ -149,6 +157,70 @@ export function summarizeTextDiff(diff: TextDiffLine[]): TextDiffSummary {
   );
 }
 
+export function createCrawlRunIngestPayload(
+  artifact: FetchResult,
+  options: {
+    sourceTitle?: string;
+    robotsAllowed?: boolean;
+    metadata?: Record<string, unknown>;
+  } = {}
+): CrawlRunIngestPayload {
+  return crawlRunIngestPayloadSchema.parse({
+    universitySlug: artifact.target.universitySlug,
+    sourceUrl: artifact.target.url,
+    sourceTitle: options.sourceTitle,
+    requestedUrl: artifact.requestedUrl,
+    finalUrl: artifact.finalUrl,
+    status: artifact.ok ? "succeeded" : "failed",
+    fetchMode: artifact.target.fetchMode ?? "http",
+    finishedAt: artifact.fetchedAt,
+    httpStatus: artifact.statusCode,
+    robotsAllowed: options.robotsAllowed,
+    failureReason: artifact.error,
+    metadata: options.metadata
+  });
+}
+
+export function createSourceSnapshotIngestPayload(
+  artifact: FetchResult,
+  options: {
+    crawlRunId?: string;
+    sourceTitle?: string;
+    documentStatus: DocumentStatus;
+    policyAuthority?: PolicyAuthority;
+    rawStorageKey?: string;
+    markChanged?: boolean;
+    metadata?: Record<string, unknown>;
+  }
+): SourceSnapshotIngestPayload {
+  if (!artifact.target.universitySlug) {
+    throw new Error("universitySlug is required to ingest a source snapshot");
+  }
+
+  if (!artifact.normalizedText || !artifact.contentHash) {
+    throw new Error("normalizedText and contentHash are required for snapshot ingest");
+  }
+
+  return sourceSnapshotIngestPayloadSchema.parse({
+    crawlRunId: options.crawlRunId,
+    universitySlug: artifact.target.universitySlug,
+    sourceUrl: artifact.target.url,
+    sourceTitle: options.sourceTitle,
+    finalUrl: artifact.finalUrl,
+    documentStatus: options.documentStatus,
+    policyAuthority: options.policyAuthority,
+    fetchedAt: artifact.fetchedAt,
+    httpStatus: artifact.statusCode,
+    etag: getHeader(artifact.headers, "etag"),
+    lastModified: getHeader(artifact.headers, "last-modified"),
+    contentHash: artifact.contentHash,
+    normalizedText: artifact.normalizedText,
+    rawStorageKey: options.rawStorageKey,
+    markChanged: options.markChanged,
+    metadata: options.metadata
+  });
+}
+
 function buildLcsTable(beforeLines: string[], afterLines: string[]): number[][] {
   const table = Array.from({ length: beforeLines.length + 1 }, () =>
     Array.from({ length: afterLines.length + 1 }, () => 0)
@@ -164,4 +236,15 @@ function buildLcsTable(beforeLines: string[], afterLines: string[]): number[][] 
   }
 
   return table;
+}
+
+function getHeader(
+  headers: Record<string, string>,
+  name: string
+): string | undefined {
+  const match = Object.entries(headers).find(
+    ([headerName]) => headerName.toLowerCase() === name
+  );
+
+  return match?.[1];
 }

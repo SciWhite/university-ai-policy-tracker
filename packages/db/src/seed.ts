@@ -13,6 +13,7 @@ import {
   type PrismaClient
 } from "@prisma/client";
 import { getPrismaClient } from "./client.js";
+import { toDbEnum } from "./enums.js";
 
 type SeedClient = PrismaClient | Prisma.TransactionClient;
 
@@ -227,17 +228,4 @@ function deriveAiServiceStatus(
 
 function sha256(value: string): string {
   return createHash("sha256").update(value).digest("hex");
-}
-
-function toDbEnum<TEnum extends Record<string, string>>(
-  enumValues: TEnum,
-  value: string
-): TEnum[keyof TEnum] {
-  const key = value.toUpperCase();
-
-  if (!(key in enumValues)) {
-    throw new Error(`Unsupported enum value: ${value}`);
-  }
-
-  return enumValues[key as keyof TEnum];
 }
