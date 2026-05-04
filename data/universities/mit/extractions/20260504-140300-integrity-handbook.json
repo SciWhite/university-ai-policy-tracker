@@ -1,0 +1,49 @@
+{
+  "universitySlug": "mit",
+  "sourceUrl": "https://integrity.mit.edu/",
+  "finalUrl": "https://integrity.mit.edu/",
+  "snapshotHash": "sha256:2fd21c9b3f652bbefb408829bc3b7af01a932974b2462fb8283414fcab16814e",
+  "extractedAt": "2026-05-04T14:05:00Z",
+  "extractorAgent": "policy-extractor",
+  "fields": {
+    "documentStatus": {
+      "value": "active",
+      "confidence": 0.9,
+      "evidence": "Page is live and presents current academic integrity handbook",
+      "reviewState": "machine_extracted"
+    },
+    "policyAuthority": {
+      "value": "MIT Academic Integrity Office",
+      "confidence": 0.8,
+      "evidence": "Domain: integrity.mit.edu; 'Academic Integrity at MIT' title",
+      "reviewState": "machine_extracted"
+    },
+    "aiServiceStatus": {
+      "value": "Not mentioned",
+      "confidence": 0.95,
+      "evidence": "No mention of generative AI, ChatGPT, AI tools, or similar technologies in the fetched content",
+      "reviewState": "machine_extracted"
+    },
+    "serviceTreatment": {
+      "value": "No specific AI service named",
+      "confidence": 0.95,
+      "evidence": "Page covers plagiarism, unauthorized collaboration, cheating, and facilitating dishonesty but does not address AI tools",
+      "reviewState": "machine_extracted"
+    },
+    "governanceThemes": [
+      {
+        "theme": "academic_integrity",
+        "confidence": 0.95,
+        "evidence": "Core topic: plagiarism, unauthorized collaboration, cheating, facilitating academic dishonesty"
+      }
+    ],
+    "audience": {
+      "value": "mit_students",
+      "confidence": 0.9,
+      "evidence": "A Handbook for Students; references problem sets, lab reports, qualifying exams",
+      "reviewState": "machine_extracted"
+    }
+  },
+  "needsReview": true,
+  "reviewNotes": "No AI-specific content found. MIT's AI-specific guidance pages (integrity.mit.edu/ai-use, ist.mit.edu/ai-resources, ist.mit.edu/generative-ai-use) all returned 404. This extraction captures only the general academic integrity baseline."
+}

@@ -1,0 +1,49 @@
+{
+  "universitySlug": "harvard",
+  "sourceUrl": "https://huit.harvard.edu/ai",
+  "finalUrl": "https://www.huit.harvard.edu/ai",
+  "snapshotHash": "sha256:9aa2f54e44c76e240861577cd42495e5555d1dd45dbe602130263e5fdc7a94b4",
+  "extractedAt": "2026-05-04T14:05:00Z",
+  "extractorAgent": "policy-extractor",
+  "fields": {
+    "documentStatus": {
+      "value": "active",
+      "confidence": 0.85,
+      "evidence": "Page is live and describes current university stance",
+      "reviewState": "machine_extracted"
+    },
+    "policyAuthority": {
+      "value": "Harvard University Information Technology (HUIT)",
+      "confidence": 0.9,
+      "evidence": "Page title: Harvard University Information Technology",
+      "reviewState": "machine_extracted"
+    },
+    "aiServiceStatus": {
+      "value": "supported_with_restrictions",
+      "confidence": 0.85,
+      "evidence": "The University supports responsible experimentation with Generative AI tools, but there are important considerations",
+      "reviewState": "machine_extracted"
+    },
+    "serviceTreatment": {
+      "value": "Not mentioned — no specific treatment described on this page",
+      "confidence": 0.7,
+      "evidence": "Page is brief; defers to guidelines page for details",
+      "reviewState": "needs_review"
+    },
+    "governanceThemes": [
+      {
+        "theme": "information_security",
+        "confidence": 0.8,
+        "evidence": "References information security and data privacy, compliance, copyright, and academic integrity"
+      }
+    ],
+    "audience": {
+      "value": "all_harvard_affiliates",
+      "confidence": 0.8,
+      "evidence": "General university IT page",
+      "reviewState": "machine_extracted"
+    }
+  },
+  "needsReview": true,
+  "reviewNotes": "Thin overview page; defers to /ai/guidelines for substantive policy. Low extraction confidence on serviceTreatment."
+}

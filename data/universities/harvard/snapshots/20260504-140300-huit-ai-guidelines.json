@@ -1,0 +1,14 @@
+{
+  "sourceUrl": "https://huit.harvard.edu/ai/guidelines",
+  "finalUrl": "https://www.huit.harvard.edu/ai/guidelines",
+  "title": "Generative AI Guidelines | Harvard University Information Technology",
+  "fetchedAt": "2026-05-04T14:03:28Z",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsDecision": "allowed (no robots.txt restriction found)",
+  "contentHash": "sha256:06f17a5098b927187a67311a294b250fceb26b23370a4a1dd6f6b6e2afd48e92",
+  "sourceType": "university-wide-ai-guidance",
+  "universitySlug": "harvard",
+  "agent": "crawl-worker",
+  "normalizedFile": "20260504-140300-huit-ai-guidelines.normalized.md"
+}

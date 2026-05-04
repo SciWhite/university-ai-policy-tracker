@@ -1,0 +1,75 @@
+{
+  "universitySlug": "harvard",
+  "sourceUrl": "https://huit.harvard.edu/ai/guidelines",
+  "finalUrl": "https://www.huit.harvard.edu/ai/guidelines",
+  "snapshotHash": "sha256:06f17a5098b927187a67311a294b250fceb26b23370a4a1dd6f6b6e2afd48e92",
+  "extractedAt": "2026-05-04T14:05:00Z",
+  "extractorAgent": "policy-extractor",
+  "fields": {
+    "documentStatus": {
+      "value": "active",
+      "confidence": 0.95,
+      "evidence": "Page is live and states 'These guidelines are updated periodically'",
+      "reviewState": "machine_extracted"
+    },
+    "policyAuthority": {
+      "value": "Harvard University Information Technology (HUIT)",
+      "confidence": 0.95,
+      "evidence": "Page title and content are from HUIT; references Harvard's Information Security and Data Privacy office",
+      "reviewState": "machine_extracted"
+    },
+    "aiServiceStatus": {
+      "value": "supported_with_restrictions",
+      "confidence": 0.9,
+      "evidence": "The University supports responsible experimentation with generative AI tools, but there are important considerations",
+      "reviewState": "machine_extracted"
+    },
+    "serviceTreatment": {
+      "value": "approved_tools_only_for_confidential_data",
+      "confidence": 0.92,
+      "evidence": "Level 2 and above confidential data must only be entered into generative AI tools that have been assessed and approved for such use by Harvard's Information Security and Data Privacy office",
+      "reviewState": "machine_extracted"
+    },
+    "governanceThemes": [
+      {
+        "theme": "data_privacy",
+        "confidence": 0.95,
+        "evidence": "You should not enter data classified as confidential (Level 2 and above) into publicly-available generative AI tools"
+      },
+      {
+        "theme": "content_accuracy",
+        "confidence": 0.9,
+        "evidence": "AI-generated content can be inaccurate, misleading, or entirely fabricated (sometimes called 'hallucinations')"
+      },
+      {
+        "theme": "academic_integrity",
+        "confidence": 0.85,
+        "evidence": "References local academic and administrative policies; many Schools have developed or updated policies around use of generative AI in the classroom"
+      },
+      {
+        "theme": "vendor_risk_assessment",
+        "confidence": 0.9,
+        "evidence": "All vendor generative AI tools must be assessed for risk by Harvard's Information Security and Data Privacy office prior to use"
+      },
+      {
+        "theme": "phishing_awareness",
+        "confidence": 0.8,
+        "evidence": "Generative AI has made it easier for malicious actors to create sophisticated phishing emails and deepfakes"
+      }
+    ],
+    "audience": {
+      "value": "all_harvard_affiliates",
+      "confidence": 0.85,
+      "evidence": "References faculty, students, staff; mentions School or Unit policies; applies to Harvard work broadly",
+      "reviewState": "machine_extracted"
+    },
+    "bannedServices": {
+      "value": "Not mentioned — no specific AI services are banned",
+      "confidence": 0.8,
+      "evidence": "Page references approved tools list at /ai/tools but does not name banned services",
+      "reviewState": "machine_extracted"
+    }
+  },
+  "needsReview": false,
+  "reviewNotes": null
+}

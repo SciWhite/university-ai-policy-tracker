@@ -1,0 +1,14 @@
+{
+  "runId": "crawl_20260504_140100_harvard_mit_pilot",
+  "createdAt": "2026-05-04T14:01:00Z",
+  "type": "pilot-dryrun",
+  "targetUniversities": ["harvard", "mit"],
+  "maxUrlsPerUniversity": 3,
+  "concurrency": 1,
+  "rateLimit": {
+    "delayMs": 2000,
+    "maxRetries": 1
+  },
+  "status": "in_progress",
+  "agent": "policy-manager"
+}

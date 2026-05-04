@@ -1,0 +1,14 @@
+{
+  "sourceUrl": "https://huit.harvard.edu/ai",
+  "finalUrl": "https://www.huit.harvard.edu/ai",
+  "title": "Generative Artificial Intelligence (AI) | Harvard University Information Technology",
+  "fetchedAt": "2026-05-04T14:03:28Z",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsDecision": "allowed",
+  "contentHash": "sha256:9aa2f54e44c76e240861577cd42495e5555d1dd45dbe602130263e5fdc7a94b4",
+  "sourceType": "it-ai-overview",
+  "universitySlug": "harvard",
+  "agent": "crawl-worker",
+  "normalizedFile": "20260504-140300-huit-ai-overview.normalized.md"
+}

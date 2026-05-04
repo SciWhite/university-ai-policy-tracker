@@ -1,0 +1,15 @@
+{
+  "sourceUrl": "https://integrity.mit.edu/",
+  "finalUrl": "https://integrity.mit.edu/",
+  "title": "Academic Integrity at MIT – A Handbook for Students",
+  "fetchedAt": "2026-05-04T14:03:18Z",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsDecision": "allowed",
+  "contentHash": "sha256:2fd21c9b3f652bbefb408829bc3b7af01a932974b2462fb8283414fcab16814e",
+  "sourceType": "academic-integrity-handbook",
+  "universitySlug": "mit",
+  "agent": "crawl-worker",
+  "normalizedFile": "20260504-140300-integrity-handbook.normalized.md",
+  "note": "No AI-specific content found in this page"
+}

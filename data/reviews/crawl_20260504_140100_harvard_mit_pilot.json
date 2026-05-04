@@ -1,0 +1,52 @@
+{
+  "runId": "crawl_20260504_140100_harvard_mit_pilot",
+  "reviewedAt": "2026-05-04T14:06:00Z",
+  "agent": "policy-reviewer",
+  "summary": {
+    "totalExtractions": 3,
+    "approved": 1,
+    "needsReview": 2,
+    "rejected": 0
+  },
+  "reviews": [
+    {
+      "universitySlug": "harvard",
+      "sourceUrl": "https://huit.harvard.edu/ai/guidelines",
+      "verdict": "approved",
+      "confidence": 0.9,
+      "notes": "Rich policy source. All extraction fields are well-supported by source text. Data privacy, content accuracy, vendor risk assessment, and academic integrity themes are clearly documented. Recommended as primary Harvard policy source.",
+      "issues": []
+    },
+    {
+      "universitySlug": "harvard",
+      "sourceUrl": "https://huit.harvard.edu/ai",
+      "verdict": "needs_review",
+      "confidence": 0.65,
+      "notes": "Thin overview page with only a summary paragraph. Defers substantive policy to /ai/guidelines. Low confidence on serviceTreatment field. Consider de-duplicating with the guidelines page or marking as secondary source.",
+      "issues": [
+        "serviceTreatment extraction is weak — page defers to /ai/guidelines",
+        "May be redundant with the guidelines page",
+        "Consider excluding from final policy_versions until richer content is available"
+      ]
+    },
+    {
+      "universitySlug": "mit",
+      "sourceUrl": "https://integrity.mit.edu/",
+      "verdict": "needs_review",
+      "confidence": 0.5,
+      "notes": "General academic integrity handbook with no AI-specific content. MIT's dedicated AI guidance pages returned 404 (integrity.mit.edu/ai-use, ist.mit.edu/ai-resources, ist.mit.edu/generative-ai-use, ai.mit.edu, generativeai.mit.edu). This extraction captures only the baseline academic integrity policy. Marked as needs_review because the university almost certainly has AI-specific guidance that was not reachable.",
+      "issues": [
+        "No AI-specific content found in fetched page",
+        "MIT AI-specific guidance URLs all returned 404 or DNS failure",
+        "Recommend re-crawling MIT with updated URLs when AI-specific pages are identified",
+        "Do not conclude MIT has no AI policy — only that the specific pages were not reachable"
+      ]
+    }
+  ],
+  "recommendations": [
+    "Harvard HUIT /ai/guidelines is a strong primary source; proceed to report generation",
+    "Harvard HUIT /ai/overview is thin; consider excluding or marking secondary",
+    "MIT needs further URL discovery; current extraction captures only baseline integrity policy",
+    "Firecrawl was not available (no key); consider enabling for future MIT dynamic page extraction"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "runId": "crawl_20260504_140100_harvard_mit_pilot",
+  "createdAt": "2026-05-04T14:01:00Z",
+  "agent": "crawl-designer",
+  "plans": [
+    {
+      "universitySlug": "harvard",
+      "universityName": "Harvard University",
+      "candidates": [
+        {
+          "url": "https://huit.harvard.edu/ai/guidelines",
+          "finalUrl": "https://www.huit.harvard.edu/ai/guidelines",
+          "sourceType": "university-wide-ai-guidance",
+          "priority": 1,
+          "status": "fetched",
+          "httpStatus": 200
+        },
+        {
+          "url": "https://huit.harvard.edu/ai",
+          "finalUrl": "https://www.huit.harvard.edu/ai",
+          "sourceType": "it-ai-overview",
+          "priority": 2,
+          "status": "fetched",
+          "httpStatus": 200
+        },
+        {
+          "url": "https://ai.harvard.edu/",
+          "finalUrl": "https://www.harvard.edu/ai/",
+          "sourceType": "university-wide-ai-hub",
+          "priority": 3,
+          "status": "fetched",
+          "httpStatus": 200,
+          "note": "Redirected to www.harvard.edu/ai/ — news/articles hub, not direct policy"
+        }
+      ]
+    },
+    {
+      "universitySlug": "mit",
+      "universityName": "Massachusetts Institute of Technology",
+      "candidates": [
+        {
+          "url": "https://integrity.mit.edu/",
+          "finalUrl": "https://integrity.mit.edu/",
+          "sourceType": "academic-integrity-handbook",
+          "priority": 1,
+          "status": "fetched",
+          "httpStatus": 200,
+          "note": "General academic integrity handbook; no AI-specific section found"
+        },
+        {
+          "url": "https://integrity.mit.edu/ai-use",
+          "sourceType": "academic-integrity-ai-guidance",
+          "priority": 2,
+          "status": "skipped",
+          "reason": "404 — page does not exist"
+        },
+        {
+          "url": "https://ist.mit.edu/ai-resources",
+          "sourceType": "it-ai-guidance",
+          "priority": 3,
+          "status": "skipped",
+          "reason": "404 — page does not exist"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Harvard HUIT guidelines page is the richest policy source found",
+    "MIT AI-specific guidance pages returned 404; only general integrity handbook available",
+    "ai.mit.edu and generativeai.mit.edu do not resolve",
+    "Firecrawl key not configured — skipped"
+  ]
+}
