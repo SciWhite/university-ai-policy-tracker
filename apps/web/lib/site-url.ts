@@ -9,3 +9,7 @@ export function getSiteBaseUrl(): string {
 
   return "http://localhost:3000";
 }
+
+export function getAbsoluteSiteUrl(pathname: string): string {
+  return new URL(pathname, getSiteBaseUrl()).toString();
+}

@@ -9,6 +9,7 @@ import {
 import { ClaimEvidenceCard } from "@/components/claim-evidence-card";
 import { CitationCopyActions } from "@/components/citation-copy-actions";
 import { DEFAULT_LOCALE } from "@/lib/i18n";
+import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 interface UniversityPageProps {
   params: Promise<{
@@ -27,11 +28,24 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: UniversityPageProps) {
   const { slug } = await params;
   const university = await getCatalogUniversityBySlug(slug);
+  const canonical = getAbsoluteSiteUrl(`/universities/${slug}`);
+  const title = university
+    ? `${university.name} | University AI Policy Tracker`
+    : "University not found";
+  const description = university
+    ? `${university.name} AI policy record with source-backed claims, official sources, review state, confidence, and public JSON.`
+    : "University AI Policy Tracker record not found.";
 
   return {
-    title: university
-      ? `${university.name} | University AI Policy Tracker`
-      : "University not found"
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "article"
+    }
   };
 }
 
@@ -121,6 +135,12 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             </li>
             <li>
               <a href={publicJsonUrl}>Public JSON</a>
+            </li>
+            <li>
+              <Link href="/citation">Citation rules</Link>
+            </li>
+            <li>
+              <Link href="/datasets">Dataset access</Link>
             </li>
           </ul>
           <p className="muted">{publicSummary.sourceRightsPolicy}</p>
