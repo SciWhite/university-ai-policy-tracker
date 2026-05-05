@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-eth-zurich-3",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/resources.html",
+  "finalUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/resources.html",
+  "rejectedAt": "2026-05-05T17:31:00Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "crawl-designer",
+  "evidenceSnippet": "Linked from main AI in education page as 'resources'. Expected to contain resource links and supplementary materials rather than policy statements.",
+  "notes": "Resources sub-page. Not fetched individually as it likely contains supplementary links rather than policy content. The main page, academic integrity, tools, and guidelines PDF cover the policy substance."
+}

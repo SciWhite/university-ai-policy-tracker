@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-eth-zurich-47f48fedc92290ac",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "claimType": "academic_integrity",
+  "claimText": "Violations of GenAI guidelines such as use of unauthorised aids or non-disclosure of their use are subject to disciplinary action under existing performance assessment rules and the declaration of originality.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-eth-zurich-ef9390780fb7d69a"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI in Teaching and Learning — Guidelines (ETH Zurich)",
+    "sourceUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

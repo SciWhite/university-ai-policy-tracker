@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-eth-zurich-cc-04547e201e6c33a4",
+  "claimId": "cc-eth-zurich-04547e201e6c33a4",
+  "decision": "approve",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim is supported by the Academic Integrity page. Evidence confirms respect for privacy and copyright, and the requirement to clarify no rights are violated before passing data to AI tools. The specific mention of 'commercial GenAI clients' and 'unless expressly permitted' is also present in the ETH guidelines text (from ss-eth-zurich-1: 'Refrain from disclosing copyrighted, private, or confidential information to commercial GenAI clients, unless expressly permitted'). Well-supported and not overstated.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html"
+}

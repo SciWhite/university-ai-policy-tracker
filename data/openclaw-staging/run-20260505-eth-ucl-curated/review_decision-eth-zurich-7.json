@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-eth-zurich-cc-9184c974106f677e",
+  "claimId": "cc-eth-zurich-9184c974106f677e",
+  "decision": "approve",
+  "confidence": 0.98,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim is essentially verbatim from the Academic Integrity page. Evidence snippet matches claim text word for word. No overstatement, no ambiguity. Excellent specificity.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html"
+}

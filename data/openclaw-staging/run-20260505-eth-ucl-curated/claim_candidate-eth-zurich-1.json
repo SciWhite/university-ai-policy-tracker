@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-eth-zurich-a3ed60700a9a8d80",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "claimType": "teaching",
+  "claimText": "ETH Zurich advocates a proactive approach to the use of generative AI in educational contexts, emphasising responsible use among students and lecturers.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-eth-zurich-044ba6833e251b28"
+  ],
+  "citation": {
+    "citationTitle": "AI in Teaching and Learning — ETH Zurich",
+    "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

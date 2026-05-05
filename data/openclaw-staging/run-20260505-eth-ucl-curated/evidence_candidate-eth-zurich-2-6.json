@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-eth-zurich-f0cc94fd752680e0",
+  "claimId": "cc-eth-zurich-04547e201e6c33a4",
+  "sourceSnapshotId": "ss-eth-zurich-2",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+  "sourceTitle": "Academic Integrity | ETH Zurich",
+  "sourceLanguage": "en",
+  "snapshotHash": "3042c683ebe36c8f467e086f799c707f9d359e675e421dda3abac76e40362f15",
+  "evidenceSnippetOriginal": "It is important to respect the privacy and copyright of the content being worked with... If data is passed on to AI-based tools or released for them, it must be clarified in advance that no rights are being violated.",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Academic Integrity | ETH Zurich",
+    "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

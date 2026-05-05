@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "crawl_plan",
+  "planId": "crawl-plan-20260505-eth-ucl-curated",
+  "createdAt": "2026-05-05T17:32:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "eth-zurich",
+      "sourceCandidateId": "eth-zurich-ai-education-main",
+      "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html",
+      "sourceTitle": "AI in Teaching and Learning — ETH Zurich",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "responsibility",
+        "transparency",
+        "fairness",
+        "student_guidance",
+        "lecturer_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "eth-zurich",
+      "sourceCandidateId": "eth-zurich-academic-integrity",
+      "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+      "sourceTitle": "Academic Integrity | ETH Zurich",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "plagiarism",
+        "transparency",
+        "copyright",
+        "data_protection"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "eth-zurich",
+      "sourceCandidateId": "eth-zurich-ai-tools",
+      "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+      "sourceTitle": "AI Tools & Licenses | ETH Zurich",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "approved_tools",
+        "data_protection",
+        "copilot",
+        "gemini",
+        "chatgpt",
+        "claude",
+        "licensing"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "eth-zurich",
+      "sourceCandidateId": "eth-zurich-guidelines-pdf",
+      "sourceUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf",
+      "sourceTitle": "Generative AI in Teaching and Learning — Guidelines (ETH Zurich)",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "formal_policy",
+        "genai_guidelines",
+        "student_responsibility",
+        "lecturer_responsibility",
+        "declaration_of_originality"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "eth-zurich",
+      "sourceCandidateId": "eth-zurich-ai-ethics-policy",
+      "sourceUrl": "https://aiethicspolicy.ethz.ch/",
+      "sourceTitle": "ETH AI Ethics Policy Network",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "ai_ethics",
+        "responsible_ai",
+        "research_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ucl",
+      "sourceCandidateId": "ucl-genai-hub",
+      "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub",
+      "sourceTitle": "Generative AI Hub | Teaching & Learning — UCL",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "capabilities_limitations",
+        "ethics",
+        "data_safeguarding",
+        "approved_tools",
+        "copilot"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ucl",
+      "sourceCandidateId": "ucl-genai-assessments",
+      "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+      "sourceTitle": "GenAI and academic integrity in assessment — UCL",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "assessment_guidance",
+        "academic_integrity",
+        "category_framework",
+        "genai_acknowledgement"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "All verified source candidates have been successfully fetched and snapshotted",
+    "No new AI-specific policy content discovered after exhaustive link traversal",
+    "Rate limit or robots.txt disallow prevents further crawling"
+  ],
+  "notes": "Curated staged run containing ETH Zurich and UCL targets only."
+}

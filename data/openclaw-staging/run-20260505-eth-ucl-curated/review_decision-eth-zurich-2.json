@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-eth-zurich-cc-b2226b51825107d5",
+  "claimId": "cc-eth-zurich-b2226b51825107d5",
+  "decision": "approve",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim accurately synthesizes the ETH Zurich student responsibility guidance. Evidence snippet covers all three elements: responsibility for submitted work, independent performance assessments, and GenAI as supplementary only. No overstatement.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "ucl-genai-assessments",
+  "entityType": "university",
+  "entitySlug": "ucl",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+  "finalUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+  "sourceTitle": "GenAI and academic integrity in assessment | Teaching & Learning — UCL",
+  "sourceLanguage": "en",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "Link from /generative-ai-hub to /genai-and-assessments",
+  "discoveredAt": "2026-05-05T17:30:30Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T17:31:00Z",
+  "verificationNotes": "UCL's 3-category assessment framework for GenAI use: Category 1 (own work only), Category 2 (GenAI permitted with acknowledgement), Category 3 (essential GenAI use). Explains academic misconduct rules, no GenAI detectors used, marker conversations approach. HTTP 200, full content confirmed.",
+  "robotsPolicy": "respect"
+}

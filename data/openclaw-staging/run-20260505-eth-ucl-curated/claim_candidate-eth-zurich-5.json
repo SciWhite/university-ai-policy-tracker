@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-eth-zurich-3ecccc0b6798ed66",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "claimType": "ai_tool_treatment",
+  "claimText": "ETH Zurich recommends Microsoft Copilot, Google Gemini, and NotebookLM for teaching purposes, as they offer data-protected access via ETH accounts where personal data is not used for training models.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-eth-zurich-37a267d8def985e6"
+  ],
+  "citation": {
+    "citationTitle": "AI Tools & Licenses | ETH Zurich",
+    "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

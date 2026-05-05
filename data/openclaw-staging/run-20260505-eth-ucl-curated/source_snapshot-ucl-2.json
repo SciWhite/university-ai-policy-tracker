@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-ucl-2",
+  "sourceCandidateId": "ucl-genai-assessments",
+  "fetchAttemptId": "fa-ucl-2",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+  "finalUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-academic-integrity-assessment",
+  "sourceTitle": "GenAI and academic integrity in assessment — UCL",
+  "sourceLanguage": "en",
+  "contentHash": "c30c4bfc90ed4cc7d54295e9225da1f4733f69c3706007c7b3fda5b06ec1cc67",
+  "fetchedAt": "2026-05-05T17:43:30Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedText": "The acceptable use of GenAI in assessments.\n\nGenAI and academic integrity in assessment\n\nIt can be difficult to know whether using GenAI is appropriate in assessments. Unfortunately, there are no quick and easy answers. Instead, here are some principles to help guide you.\n\nAcademic integrity is about fairness. If somebody gets an unfair advantage over other students, we consider this academic misconduct. This means that there's no single list of fair and unfair uses of GenAI - it always depends on the category of the assessment.\n\nFor Category 1, you might use GenAI tools to help you revise and prepare, but the work you complete for the assessment should be your own.\n\nIn Category 2, you could use GenAI to get ideas, help draft your work, or even proofread what you've written. Just make sure you keep a note of how you've used GenAI, so that you can acknowledge it afterwards. You won't lose marks just for having used GenAI.\n\nCategory 3 is a lot like category 2, but there will also be some essential use of GenAI as part of the assessment. Make sure you read the instructions for your assessment carefully - there may be further advice about using GenAI there.\n\nIt's okay to use GenAI to help with spelling and grammar, and even with the tone of your language. However, make sure it isn't changing the content and meaning of what you've written. You should always understand the work you submit.",
+  "sourceType": "assessment_guidance",
+  "canonicalEntitySlug": "ucl"
+}

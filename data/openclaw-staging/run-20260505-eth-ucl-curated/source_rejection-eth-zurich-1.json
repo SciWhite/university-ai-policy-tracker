@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-eth-zurich-1",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education.html",
+  "finalUrl": "https://ethz.ch/en/the-eth-zurich/education.html",
+  "rejectedAt": "2026-05-05T17:29:30Z",
+  "rejectionReason": "generic_home_page",
+  "checkedBy": "crawl-designer",
+  "evidenceSnippet": "Page is the general ETH Zurich education landing page with login-gated content. No AI-specific policy content visible in the HTML.",
+  "notes": "ETH education page. Contains login-gated content areas and links to department pages. Useful as a navigation hub but not a policy source itself."
+}

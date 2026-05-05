@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "eth-zurich-guidelines-pdf",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf",
+  "finalUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf",
+  "sourceTitle": "Generative AI in Teaching and Learning — Guidelines (ETH Zurich)",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "PDF link from ai-in-education page",
+  "discoveredAt": "2026-05-05T17:30:10Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T17:31:00Z",
+  "verificationNotes": "Official 2-page PDF guidelines from ETH Zurich Rectorate, Unit for Teaching and Learning. Covers student and lecturer responsibilities, transparency, fairness, and the university's position on GenAI in education. Updated December 2024. HTTP 200, PDF content confirmed.",
+  "robotsPolicy": "respect"
+}

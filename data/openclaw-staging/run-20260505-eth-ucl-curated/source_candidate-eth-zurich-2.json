@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "eth-zurich-academic-integrity",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+  "finalUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+  "sourceTitle": "Academic Integrity | ETH Zurich",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "Link from ai-in-education page to academic-integrity sub-page",
+  "discoveredAt": "2026-05-05T17:30:10Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T17:30:16Z",
+  "verificationNotes": "Dedicated page on academic integrity in the age of GenAI. Covers responsibility for content, transparency in GenAI use, privacy/copyright respect, scientific work guidance, plagiarism and AI. HTTP 200, full content confirmed.",
+  "robotsPolicy": "respect"
+}

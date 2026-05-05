@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "run-20260505-cambridge-contract-v2",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "run-20260505-cambridge-contract-v2",
+      "artifactType": "crawl_plan",
+      "planId": "crawl-plan-cambridge-20260505",
+      "createdAt": "2026-05-05T16:16:00Z",
+      "createdBy": "crawl-designer",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-cambridge",
+          "sourceCandidateId": "cam-ai-guidance-info-compliance",
+          "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
+          "sourceTitle": "AI guidance – Guidance for University of Cambridge Staff on the Administrative Use of Generative AI",
+          "sourceLanguage": "en",
+          "allowedFetchModes": ["http"],
+          "expectedThemes": ["generative_ai", "admin_use", "data_protection", "copilot", "gemini", "staff_guidance"],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-cambridge",
+          "sourceCandidateId": "cam-bl-generative-ai-assessment",
+          "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/generative-ai-and-assessment",
+          "sourceTitle": "Generative AI and Assessment",
+          "sourceLanguage": "en",
+          "allowedFetchModes": ["http"],
+          "expectedThemes": ["assessment", "academic_misconduct", "student_guidance", "examiner_rules", "ai_detection"],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-cambridge",
+          "sourceCandidateId": "cam-bl-using-generative-ai",
+          "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/using-generative-ai",
+          "sourceTitle": "Using Generative AI",
+          "sourceLanguage": "en",
+          "allowedFetchModes": ["http"],
+          "expectedThemes": ["genai_use_cases", "teaching_guidance", "llm_tools", "code_generation", "research_assistance"],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-cambridge",
+          "sourceCandidateId": "cam-bl-generative-ai-education",
+          "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/generative-ai-and-education",
+          "sourceTitle": "Generative AI and Education",
+          "sourceLanguage": "en",
+          "allowedFetchModes": ["http"],
+          "expectedThemes": ["genai_principles", "ethics", "privacy", "environmental_impact", "attribution", "student_permission", "staff_permission"],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-cambridge",
+          "sourceCandidateId": "cam-bl-ai-policy-framework",
+          "sourceUrl": "https://blendedlearning.cam.ac.uk/ai-policy-framework",
+          "sourceTitle": "AI Policy Framework",
+          "sourceLanguage": "en",
+          "allowedFetchModes": ["http", "playwright"],
+          "expectedThemes": ["ai_policy_framework", "departmental_policy", "local_allowance", "downloadable_framework"],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-cambridge",
+          "sourceCandidateId": "cam-plagiarism-academic-misconduct",
+          "sourceUrl": "https://www.educationalpolicy.admin.cam.ac.uk/plagiarism-and-academic-misconduct",
+          "sourceTitle": "Plagiarism and Academic Misconduct",
+          "sourceLanguage": "en",
+          "allowedFetchModes": ["http"],
+          "expectedThemes": ["academic_integrity", "plagiarism", "academic_misconduct"],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "All 6 targets fetched and snapshot-hashed",
+        "No new AI-specific sub-pages discovered on blendedlearning.cam.ac.uk or information-compliance.admin.cam.ac.uk during crawl",
+        "PDF links (GenAI Key Points, AI Policy Framework .docx) noted but deferred to PDF discovery stage"
+      ]
+    }
+  ]
+}

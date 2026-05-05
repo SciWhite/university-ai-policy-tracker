@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-eth-zurich-0baba14322b53072",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "claimType": "teaching",
+  "claimText": "Lecturers determine whether and how GenAI may be used in their courses and for respective assessments. Teaching materials created with GenAI must be subjected to quality control by the lecturer.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-eth-zurich-e5374d1ca5f40302"
+  ],
+  "citation": {
+    "citationTitle": "AI in Teaching and Learning — ETH Zurich",
+    "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-eth-zurich-cc-0baba14322b53072",
+  "claimId": "cc-eth-zurich-0baba14322b53072",
+  "decision": "approve",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim accurately reflects the lecturer guidance from ETH Zurich. Evidence confirms both that lecturers determine GenAI use in courses/assessments and that GenAI-created teaching materials require quality control. Precise and well-supported.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html"
+}

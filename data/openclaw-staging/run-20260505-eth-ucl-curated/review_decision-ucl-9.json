@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-ucl-cc-e30ecf0fde427de1",
+  "claimId": "cc-ucl-e30ecf0fde427de1",
+  "decision": "approve",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim is nearly verbatim from the UCL GenAI Hub page. Evidence snippet directly states 'Microsoft Copilot is our approved GenAI tool because of its enhanced data protection. This tool is a more secure and safer alternative to other GenAI services.' No overstatement. Clear and specific.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "ucl",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub"
+}

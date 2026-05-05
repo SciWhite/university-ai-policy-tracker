@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "eth-zurich-ai-tools",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+  "finalUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+  "sourceTitle": "AI Tools & Licenses | ETH Zurich",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "Link from ai-in-education page to tools sub-page",
+  "discoveredAt": "2026-05-05T17:30:10Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T17:30:16Z",
+  "verificationNotes": "Overview of recommended and additional GenAI tools (Copilot, Gemini, NotebookLM, ChatGPT, Claude). Includes data protection guidance, license details, and ETH account integration info. HTTP 200, full content confirmed.",
+  "robotsPolicy": "respect"
+}

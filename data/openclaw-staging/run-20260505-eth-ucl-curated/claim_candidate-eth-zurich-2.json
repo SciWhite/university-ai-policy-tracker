@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-eth-zurich-b2226b51825107d5",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "claimType": "academic_integrity",
+  "claimText": "Students are responsible for the content of work they submit. Performance assessments must be conducted independently and personally; GenAI may serve a supplementary role but not replace student efforts.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-eth-zurich-e9f3d02581a943b6"
+  ],
+  "citation": {
+    "citationTitle": "AI in Teaching and Learning — ETH Zurich",
+    "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

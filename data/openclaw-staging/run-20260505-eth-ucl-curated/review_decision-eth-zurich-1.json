@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-eth-zurich-cc-a3ed60700a9a8d80",
+  "claimId": "cc-eth-zurich-a3ed60700a9a8d80",
+  "decision": "approve",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim is nearly verbatim from the ETH Zurich AI in Teaching and Learning page. Evidence snippet directly matches claim text. No overstatement detected. High specificity — captures ETH's institutional stance on GenAI in education.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html"
+}
