@@ -3,10 +3,13 @@ import {
   catalogSourceRecordSchema,
   catalogToolSummarySchema,
   catalogUniversitySchema,
+  buildSeedPublicEntitySummary,
+  publicEntitySummarySchema,
   seedUniversities,
   type CatalogSourceRecord,
   type CatalogToolSummary,
-  type CatalogUniversity
+  type CatalogUniversity,
+  type PublicEntitySummary
 } from "@uapt/shared";
 
 type Parser<T> = {
@@ -47,6 +50,30 @@ export async function getCatalogSources(): Promise<CatalogSourceRecord[]> {
       parse: (value) => catalogSourceRecordSchema.array().parse(value)
     })) ?? getSeedCatalogSources()
   );
+}
+
+export async function getPublicUniversitySummaryBySlug(
+  slug: string
+): Promise<PublicEntitySummary | undefined> {
+  const fromApi = await fetchApi(
+    `/api/public/v1/universities/${slug}.json`,
+    publicEntitySummarySchema
+  );
+
+  if (fromApi) return fromApi;
+
+  const seedUniversity = seedUniversities.find(
+    (university) => university.slug === slug
+  );
+
+  return seedUniversity
+    ? buildSeedPublicEntitySummary(seedUniversity, getSiteBaseUrl())
+    : undefined;
+}
+
+export function getPublicJsonUrl(slug: string): string {
+  const path = `/api/public/v1/universities/${slug}.json`;
+  return API_BASE_URL ? new URL(path, API_BASE_URL).toString() : path;
 }
 
 function getSeedCatalogUniversities(): CatalogUniversity[] {
@@ -98,4 +125,8 @@ async function fetchApi<T>(path: string, parser: Parser<T>): Promise<T | null> {
   } catch {
     return null;
   }
+}
+
+function getSiteBaseUrl(): string {
+  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 }

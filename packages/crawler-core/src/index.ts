@@ -1,10 +1,14 @@
 import { createHash } from "node:crypto";
 import {
+  claimEvidenceSchema,
   crawlRunIngestPayloadSchema,
+  sourceAttributionSchema,
   sourceSnapshotIngestPayloadSchema,
+  type ClaimEvidence,
   type CrawlRunIngestPayload,
   type DocumentStatus,
   type PolicyAuthority,
+  type SourceAttribution,
   type SourceSnapshotIngestPayload
 } from "@uapt/shared";
 
@@ -221,6 +225,66 @@ export function createSourceSnapshotIngestPayload(
   });
 }
 
+export function createSourceAttributionFromFetchResult(
+  artifact: FetchResult,
+  options: {
+    citationTitle: string;
+    publisher?: string;
+    sourceType?: SourceAttribution["sourceType"];
+    sourceRights?: string;
+  }
+): SourceAttribution {
+  if (!artifact.contentHash) {
+    throw new Error("contentHash is required for source attribution");
+  }
+
+  return sourceAttributionSchema.parse({
+    sourceUrl: artifact.requestedUrl,
+    finalUrl: artifact.finalUrl,
+    citationTitle: options.citationTitle,
+    publisher: options.publisher,
+    retrievedAt: artifact.fetchedAt,
+    snapshotHash: artifact.contentHash,
+    sourceType: options.sourceType,
+    sourceRights: options.sourceRights
+  });
+}
+
+export function createClaimEvidenceFromFetchResult(
+  artifact: FetchResult,
+  options: {
+    citationTitle: string;
+    evidenceSnippet?: string;
+    snippetLocation?: string;
+    publisher?: string;
+    sourceType?: SourceAttribution["sourceType"];
+    sourceRights?: string;
+  }
+): ClaimEvidence {
+  if (!artifact.contentHash) {
+    throw new Error("contentHash is required for claim evidence");
+  }
+
+  const snippet =
+    options.evidenceSnippet ??
+    firstEvidenceSnippet(artifact.normalizedText ?? artifact.rawText);
+
+  if (!snippet) {
+    throw new Error("evidenceSnippet or fetched text is required for claim evidence");
+  }
+
+  const attribution = createSourceAttributionFromFetchResult(artifact, options);
+
+  return claimEvidenceSchema.parse({
+    sourceUrl: artifact.requestedUrl,
+    sourceSnapshotHash: artifact.contentHash,
+    evidenceSnippet: snippet,
+    snippetLocation: options.snippetLocation,
+    retrievedAt: artifact.fetchedAt,
+    attribution
+  });
+}
+
 function buildLcsTable(beforeLines: string[], afterLines: string[]): number[][] {
   const table = Array.from({ length: beforeLines.length + 1 }, () =>
     Array.from({ length: afterLines.length + 1 }, () => 0)
@@ -247,4 +311,13 @@ function getHeader(
   );
 
   return match?.[1];
+}
+
+function firstEvidenceSnippet(text: string | undefined): string | undefined {
+  if (!text) return undefined;
+
+  const normalized = normalizePolicyText(text).replace(/\s+/g, " ");
+  if (normalized.length <= 700) return normalized;
+
+  return `${normalized.slice(0, 697).trimEnd()}...`;
 }

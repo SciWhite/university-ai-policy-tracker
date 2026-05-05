@@ -148,6 +148,10 @@ h3 {
   gap: 8px;
 }
 
+.hero-meta {
+  margin-top: 24px;
+}
+
 .pill {
   background: #ecfeff;
   border: 1px solid #a5f3fc;
@@ -162,11 +166,26 @@ h3 {
 .source-list {
   line-height: 1.7;
   padding-left: 20px;
+  overflow-wrap: anywhere;
 }
 
 .source-list a {
   color: var(--accent);
   font-weight: 700;
+}
+
+.evidence-snippet {
+  border-left: 3px solid var(--accent);
+  color: var(--foreground);
+  line-height: 1.65;
+  margin: 0;
+  padding: 4px 0 4px 14px;
+}
+
+.evidence-snippet footer {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 8px;
 }
 
 @media (max-width: 720px) {

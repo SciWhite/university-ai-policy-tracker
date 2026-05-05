@@ -1,11 +1,15 @@
 import { createHash } from "node:crypto";
 import {
+  DEFAULT_PUBLIC_SITE_BASE_URL,
+  OFFICIAL_SOURCE_RIGHTS_CAVEAT,
   seedUniversities,
   type SeedPolicySource,
   type SeedUniversity
 } from "@uapt/shared";
 import {
   AiServiceStatus as PrismaAiServiceStatus,
+  CanonicalEntityType as PrismaCanonicalEntityType,
+  ClaimReviewState as PrismaClaimReviewState,
   DocumentStatus as PrismaDocumentStatus,
   ReviewState as PrismaReviewState,
   ServiceTreatment as PrismaServiceTreatment,
@@ -20,6 +24,7 @@ type SeedClient = PrismaClient | Prisma.TransactionClient;
 export interface SeedResult {
   universities: number;
   sources: number;
+  claims: number;
 }
 
 export async function seedInitialCatalog(
@@ -28,13 +33,15 @@ export async function seedInitialCatalog(
   return client.$transaction(async (transaction) => {
     const result: SeedResult = {
       universities: 0,
-      sources: 0
+      sources: 0,
+      claims: 0
     };
 
     for (const universitySeed of seedUniversities) {
       await seedUniversity(transaction, universitySeed);
       result.universities += 1;
       result.sources += universitySeed.sources.length;
+      result.claims += universitySeed.sources.length;
     }
 
     return result;
@@ -63,15 +70,43 @@ async function seedUniversity(
       summary: universitySeed.summary
     }
   });
+  const canonicalEntity = await client.canonicalEntity.upsert({
+    where: {
+      type_slug: {
+        type: PrismaCanonicalEntityType.UNIVERSITY,
+        slug: universitySeed.slug
+      }
+    },
+    update: {
+      name: universitySeed.name,
+      canonicalUrl: buildCanonicalUniversityUrl(universitySeed.slug),
+      summary: universitySeed.summary
+    },
+    create: {
+      type: PrismaCanonicalEntityType.UNIVERSITY,
+      slug: universitySeed.slug,
+      name: universitySeed.name,
+      canonicalUrl: buildCanonicalUniversityUrl(universitySeed.slug),
+      summary: universitySeed.summary
+    }
+  });
 
   for (const sourceSeed of universitySeed.sources) {
-    await seedPolicySource(client, university.id, sourceSeed);
+    await seedPolicySource(
+      client,
+      university.id,
+      canonicalEntity.id,
+      universitySeed,
+      sourceSeed
+    );
   }
 }
 
 async function seedPolicySource(
   client: SeedClient,
   universityId: string,
+  canonicalEntityId: string,
+  universitySeed: SeedUniversity,
   sourceSeed: SeedPolicySource
 ): Promise<void> {
   const checkedAt = sourceSeed.lastCheckedAt
@@ -214,6 +249,82 @@ async function seedPolicySource(
       summary: "Seed policy version pending source review."
     }
   });
+
+  const sourceAttribution = await client.sourceAttribution.upsert({
+    where: {
+      sourceUrl_snapshotHash: {
+        sourceUrl: sourceSeed.url,
+        snapshotHash: snapshot.contentHash
+      }
+    },
+    update: {
+      policySourceId: policySource.id,
+      sourceSnapshotId: snapshot.id,
+      citationTitle: sourceSeed.title,
+      publisher: universitySeed.name,
+      retrievedAt: checkedAt,
+      sourceRights: OFFICIAL_SOURCE_RIGHTS_CAVEAT
+    },
+    create: {
+      policySourceId: policySource.id,
+      sourceSnapshotId: snapshot.id,
+      sourceUrl: sourceSeed.url,
+      finalUrl: policySource.finalUrl,
+      citationTitle: sourceSeed.title,
+      publisher: universitySeed.name,
+      retrievedAt: checkedAt,
+      snapshotHash: snapshot.contentHash,
+      sourceRights: OFFICIAL_SOURCE_RIGHTS_CAVEAT
+    }
+  });
+  const policyClaim = await client.policyClaim.upsert({
+    where: {
+      dedupeKey: `seed:claim:${canonicalEntityId}:${policySource.id}`
+    },
+    update: {
+      claimText: buildSeedClaimText(universitySeed, sourceSeed),
+      confidence: 0.25,
+      reviewState: toClaimReviewState(sourceSeed.reviewState),
+      lastCheckedAt: checkedAt,
+      lastChangedAt: changedAt
+    },
+    create: {
+      canonicalEntityId,
+      claimType: "source_status",
+      claimText: buildSeedClaimText(universitySeed, sourceSeed),
+      confidence: 0.25,
+      reviewState: toClaimReviewState(sourceSeed.reviewState),
+      lastCheckedAt: checkedAt,
+      lastChangedAt: changedAt,
+      dedupeKey: `seed:claim:${canonicalEntityId}:${policySource.id}`
+    }
+  });
+
+  await client.claimEvidence.upsert({
+    where: {
+      dedupeKey: `seed:evidence:${policyClaim.id}:${snapshot.contentHash}`
+    },
+    update: {
+      sourceAttributionId: sourceAttribution.id,
+      policySourceId: policySource.id,
+      sourceSnapshotId: snapshot.id,
+      sourceUrl: sourceSeed.url,
+      sourceSnapshotHash: snapshot.contentHash,
+      evidenceSnippet: buildSeedEvidenceSnippet(sourceSeed),
+      retrievedAt: checkedAt
+    },
+    create: {
+      policyClaimId: policyClaim.id,
+      sourceAttributionId: sourceAttribution.id,
+      policySourceId: policySource.id,
+      sourceSnapshotId: snapshot.id,
+      sourceUrl: sourceSeed.url,
+      sourceSnapshotHash: snapshot.contentHash,
+      evidenceSnippet: buildSeedEvidenceSnippet(sourceSeed),
+      retrievedAt: checkedAt,
+      dedupeKey: `seed:evidence:${policyClaim.id}:${snapshot.contentHash}`
+    }
+  });
 }
 
 function deriveAiServiceStatus(
@@ -228,4 +339,40 @@ function deriveAiServiceStatus(
 
 function sha256(value: string): string {
   return createHash("sha256").update(value).digest("hex");
+}
+
+function toClaimReviewState(reviewState: string) {
+  if (reviewState === "agent_reviewed") return PrismaClaimReviewState.AGENT_REVIEWED;
+  if (reviewState === "human_reviewed") return PrismaClaimReviewState.HUMAN_REVIEWED;
+  if (reviewState === "needs_review") return PrismaClaimReviewState.NEEDS_REVIEW;
+
+  return PrismaClaimReviewState.MACHINE_CANDIDATE;
+}
+
+function buildSeedClaimText(
+  universitySeed: SeedUniversity,
+  sourceSeed: SeedPolicySource
+): string {
+  return (
+    `${universitySeed.name} has a cataloged AI policy source titled ` +
+    `"${sourceSeed.title}". Policy conclusions remain pending review unless ` +
+    "a claim is marked agent_reviewed or human_reviewed."
+  );
+}
+
+function buildSeedEvidenceSnippet(sourceSeed: SeedPolicySource): string {
+  return [
+    `Seed catalog record: ${sourceSeed.title}.`,
+    `Document status: ${sourceSeed.documentStatus}.`,
+    `Service treatment: ${sourceSeed.serviceTreatment}.`
+  ].join(" ");
+}
+
+function buildCanonicalUniversityUrl(slug: string): string {
+  return new URL(
+    `/universities/${slug}`,
+    process.env.WEB_PUBLIC_BASE_URL ||
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      DEFAULT_PUBLIC_SITE_BASE_URL
+  ).toString();
 }

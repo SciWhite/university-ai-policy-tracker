@@ -1,0 +1,33 @@
+const body = `# University AI Policy Tracker
+
+University AI Policy Tracker is an open, evidence-backed database of university AI policy pages, source snapshots, policy claims, and citation-ready public JSON.
+
+## Scope
+- University policies and guidance for GenAI, ChatGPT, DeepSeek, Microsoft Copilot, institutional AI services, academic integrity, privacy, teaching, research, security review, procurement, and related governance.
+- Canonical entity pages start at /universities.
+- Public JSON records are available at /api/public/v1/universities/{slug}.json.
+- Recent public changes are available at /api/public/v1/recent-changes.json.
+
+## Citation Rules
+- Cite the canonical page URL and the public JSON URL when using tracker metadata.
+- Treat each claim as valid only with its source URL, source snapshot hash, and short evidence snippet.
+- Confidence is machine confidence in extraction or classification.
+- Review state is separate from confidence and indicates machine_candidate, agent_reviewed, human_reviewed, needs_review, or rejected.
+
+## Caveats
+- Machine-candidate records require review and should not be treated as final policy conclusions.
+- Tracker metadata may be open licensed, but official university source documents, source page text, PDFs, and other source materials retain their original rights.
+- This llms.txt file is an auxiliary guide for agents and developers. Google does not require llms.txt for AI features, and this file is not a guaranteed ranking signal.
+
+## Security Boundary
+- OpenClaw orchestrates agents and crawling only.
+- OpenClaw must not deploy the public website, write the production database directly, push main, or hold production deployment credentials.
+`;
+
+export function GET() {
+  return new Response(body, {
+    headers: {
+      "content-type": "text/plain; charset=utf-8"
+    }
+  });
+}

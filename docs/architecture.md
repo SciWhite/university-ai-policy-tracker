@@ -1,6 +1,6 @@
 # Architecture
 
-University AI Policy Tracker is a public, SEO-first policy-change intelligence site. It tracks source-backed university AI policy status, historical snapshots, diffs, taxonomy classifications, and MDX reports.
+University AI Policy Tracker is a public, SEO-first and GEO-ready policy-change intelligence site. It tracks source-backed university AI policy status, historical snapshots, diffs, taxonomy classifications, public JSON, citation-ready claims, and MDX reports.
 
 ## Deployment Boundary
 
@@ -11,7 +11,8 @@ Recommended split:
 1. OpenClaw Automation OCI
    - Runs agents, crawl planning, browser automation, opencli, and external crawl helpers.
    - Holds only limited ingestion credentials.
-   - Writes staged crawl artifacts and extraction candidates.
+   - Writes staged crawl artifacts, extraction candidates, and claim/evidence/citation artifacts through pull requests or limited ingestion.
+   - Must not push `main`, deploy public services, or write the production database directly.
 
 2. Public Data/API OCI
    - Runs PostgreSQL, Redis, NestJS API, workers, and ingestion endpoints.
@@ -51,7 +52,22 @@ infra/       deployment notes and future infrastructure templates
 5. Normalized text receives a content hash.
 6. Unchanged content skips LLM extraction.
 7. Changed content creates a snapshot, diff, extraction candidate, and review task.
-8. Reviewed records publish to public university, tool, region, theme, source, and diff pages.
+8. Extraction candidates are promoted into `policy_claims` only when they carry source URL, source snapshot hash, and a short evidence snippet.
+9. Public pages and JSON read from canonical entities, policy claims, claim evidence, and source attributions.
+10. Reviewed records publish to public university, tool, region, theme, source, diff, report, and JSON pages.
+
+## GEO Data Contract
+
+The public contract is claim/evidence/citation first:
+
+- `canonical_entities` represent universities, tools, regions, themes, and future course-level entities.
+- `policy_claims` describe one citation-ready policy assertion about a canonical entity.
+- `claim_evidence` links each public claim to a source URL, source snapshot hash, and short source-attributed evidence snippet.
+- `source_attributions` preserve official source provenance and rights caveats.
+
+`confidence` and `reviewState` are separate fields. `confidence` is machine confidence in extraction or classification. `reviewState` records workflow status such as `machine_candidate`, `agent_reviewed`, `human_reviewed`, `needs_review`, or `rejected`.
+
+Student/course future features should reuse canonical entities, policy claims, claim evidence, and source attributions. They should not become a separate comment-only model with weaker provenance.
 
 ## Public Surfaces
 
@@ -64,8 +80,13 @@ Initial public routes should support:
 - `/sources/[id]`
 - `/diffs/[id]`
 - `/reports/[slug]`
+- `/api/public/v1/universities/[slug].json`
+- `/api/public/v1/recent-changes.json`
+- `/llms.txt`
 
 Thin pages should stay `noindex` until they have useful source-backed content.
+
+`llms.txt` is an auxiliary guide for agents and developers. It is not a guaranteed AI ranking signal, and Google does not require it for AI features.
 
 ## MVP Search
 

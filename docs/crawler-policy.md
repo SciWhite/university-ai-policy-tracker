@@ -20,7 +20,7 @@ The crawler should collect public policy evidence without bypassing access contr
 
 ## Source Evidence
 
-Every classification should preserve:
+Every classification and public claim candidate should preserve:
 
 - source URL
 - final URL after redirects
@@ -33,6 +33,8 @@ Every classification should preserve:
 - evidence quote or location, when legally and practically available
 - extraction confidence and review state
 
+Every public claim must additionally preserve a short evidence snippet tied to the source URL and source snapshot hash. Long source passages should not be copied into tracker metadata.
+
 ## Change Detection
 
 Run extraction only after source content changes:
@@ -41,7 +43,7 @@ Run extraction only after source content changes:
 2. Normalize text.
 3. Compute content hash.
 4. If hash is unchanged, update last checked metadata and stop.
-5. If hash changed, create snapshot, diff, extraction candidate, and review task.
+5. If hash changed, create snapshot, diff, extraction candidate, claim/evidence candidate, and review task.
 
 ## Local Ingestion Contract
 
@@ -52,8 +54,11 @@ Crawler output should be converted into structured ingest payloads before it rea
 - crawl artifact: fetched URL result, status, headers, normalized text, hash, and failure reason.
 - source snapshot ingest payload: normalized source text and hash tied to a known university/source.
 - extraction candidate payload: taxonomy classification, evidence, confidence, and review state tied to a source snapshot.
+- claim/evidence candidate: citation-ready claim text, machine confidence, review state, source URL, source snapshot hash, and a short source-attributed evidence snippet.
 
 The local sample script `pnpm ingest:sample` creates a crawl run and source snapshot directly against the local database after `pnpm db:seed`. It is for local verification only and does not connect OpenClaw.
+
+OpenClaw is orchestration and crawling only. It may submit staged artifacts through pull requests or limited ingestion credentials, but it must not deploy services, push `main`, or write the production database directly.
 
 ## Content Retention
 
