@@ -5,7 +5,11 @@ const routeGroups = [
   { label: "Universities", href: "/universities" },
   { label: "AI tools", href: "/tools" },
   { label: "Sources", href: "/sources" },
-  { label: "Reports", href: "/reports" }
+  { label: "Reports", href: "/reports" },
+  { label: "Methodology", href: "/methodology" },
+  { label: "Citation", href: "/citation" },
+  { label: "Datasets", href: "/datasets" },
+  { label: "Changes", href: "/changes" }
 ] as const;
 
 export default async function HomePage() {
@@ -24,6 +28,8 @@ export default async function HomePage() {
           Track source-backed university policy changes for GenAI, ChatGPT,
           DeepSeek, Microsoft Copilot, institutional AI services, academic
           integrity, privacy, teaching, research, security review, and procurement.
+          This is a reference database, not legal advice or academic integrity
+          advice.
         </p>
       </section>
 
@@ -44,8 +50,8 @@ export default async function HomePage() {
 
       <section className="section">
         <div className="section-heading">
-          <h2>Initial route groups</h2>
-          <p>Catalog pages read through the API data path when configured.</p>
+          <h2>Reference surfaces</h2>
+          <p>Catalog, citation, dataset, and trust pages for public reuse.</p>
         </div>
         <div className="link-grid">
           {routeGroups.map((routeGroup) => (

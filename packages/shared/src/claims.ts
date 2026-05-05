@@ -1,8 +1,11 @@
 import { z } from "zod";
 
 export const TRACKER_METADATA_LICENSE = "CC-BY-4.0";
+export const PUBLIC_API_VERSION = "v1";
 export const OFFICIAL_SOURCE_RIGHTS_CAVEAT =
   "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.";
+export const NO_ADVICE_BOUNDARY =
+  "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.";
 export const DEFAULT_PUBLIC_SITE_BASE_URL =
   "https://university-ai-policy-tracker.example";
 
@@ -109,8 +112,12 @@ export const citationPolicySchema = z.object({
 });
 
 export const publicEntitySummarySchema = z.object({
+  schemaVersion: z.literal(PUBLIC_API_VERSION).default(PUBLIC_API_VERSION),
   citationTitle: z.string().min(1),
   canonicalUrl: z.string().url(),
+  apiUrl: z.string().url().optional(),
+  entityType: canonicalEntityTypeSchema.default("university"),
+  entitySlug: z.string().min(1),
   entity: canonicalEntitySchema,
   summary: z.string().min(1),
   lastCheckedAt: z.string().datetime().optional(),
@@ -118,7 +125,12 @@ export const publicEntitySummarySchema = z.object({
   confidence: z.number().min(0).max(1).optional(),
   reviewState: claimReviewStateSchema,
   license: trackerMetadataLicenseSchema.default(TRACKER_METADATA_LICENSE),
+  trackerMetadataLicense: trackerMetadataLicenseSchema.default(
+    TRACKER_METADATA_LICENSE
+  ),
   sourcePolicy: z.string().min(1).default(OFFICIAL_SOURCE_RIGHTS_CAVEAT),
+  sourceRightsPolicy: z.string().min(1).default(OFFICIAL_SOURCE_RIGHTS_CAVEAT),
+  limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY]),
   officialSources: z.array(sourceAttributionSchema),
   claims: z.array(policyClaimSchema),
   suggestedCitation: z.string().min(1)
@@ -137,9 +149,15 @@ export const publicRecentChangeSchema = z.object({
 });
 
 export const publicRecentChangesResponseSchema = z.object({
+  schemaVersion: z.literal(PUBLIC_API_VERSION).default(PUBLIC_API_VERSION),
   generatedAt: z.string().datetime(),
   license: trackerMetadataLicenseSchema.default(TRACKER_METADATA_LICENSE),
+  trackerMetadataLicense: trackerMetadataLicenseSchema.default(
+    TRACKER_METADATA_LICENSE
+  ),
   sourcePolicy: z.string().min(1).default(OFFICIAL_SOURCE_RIGHTS_CAVEAT),
+  sourceRightsPolicy: z.string().min(1).default(OFFICIAL_SOURCE_RIGHTS_CAVEAT),
+  limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY]),
   changes: z.array(publicRecentChangeSchema)
 });
 

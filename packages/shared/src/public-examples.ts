@@ -1,6 +1,8 @@
 import {
   DEFAULT_PUBLIC_SITE_BASE_URL,
+  NO_ADVICE_BOUNDARY,
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+  PUBLIC_API_VERSION,
   TRACKER_METADATA_LICENSE,
   claimReviewStateSchema,
   publicEntitySummarySchema,
@@ -59,8 +61,15 @@ export function buildSeedPublicEntitySummary(
   );
 
   return publicEntitySummarySchema.parse({
+    schemaVersion: PUBLIC_API_VERSION,
     citationTitle: `${university.name} AI Policy Tracker record`,
     canonicalUrl,
+    apiUrl: new URL(
+      `/api/public/${PUBLIC_API_VERSION}/universities/${university.slug}.json`,
+      siteBaseUrl
+    ).toString(),
+    entityType: "university",
+    entitySlug: university.slug,
     entity: {
       type: "university",
       slug: university.slug,
@@ -79,7 +88,10 @@ export function buildSeedPublicEntitySummary(
       parsedClaims.map((claim) => claim.reviewState)
     ),
     license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
     sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    limitations: [NO_ADVICE_BOUNDARY],
     officialSources,
     claims: parsedClaims,
     suggestedCitation: buildSuggestedCitation(
@@ -101,9 +113,13 @@ export function buildSeedPublicEntitySummaries(
 export const publicContractExamples = {
   universities: buildSeedPublicEntitySummaries(),
   recentChanges: publicRecentChangesResponseSchema.parse({
+    schemaVersion: PUBLIC_API_VERSION,
     generatedAt: "2026-05-04T00:00:00.000Z",
     license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
     sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    limitations: [NO_ADVICE_BOUNDARY],
     changes: buildSeedPublicEntitySummaries().map((summary) => ({
       entitySlug: summary.entity.slug,
       entityName: summary.entity.name,

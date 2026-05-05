@@ -1,6 +1,8 @@
 import {
   DEFAULT_PUBLIC_SITE_BASE_URL,
+  NO_ADVICE_BOUNDARY,
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+  PUBLIC_API_VERSION,
   TRACKER_METADATA_LICENSE,
   claimReviewStateSchema,
   policyClaimSchema,
@@ -112,8 +114,12 @@ export async function getPublicUniversitySummaryBySlug(
   ]);
 
   return publicEntitySummarySchema.parse({
+    schemaVersion: PUBLIC_API_VERSION,
     citationTitle: `${university.name} AI Policy Tracker record`,
     canonicalUrl,
+    apiUrl: buildPublicUniversityApiUrl(university.slug),
+    entityType: "university",
+    entitySlug: university.slug,
     entity: {
       id: canonicalEntity?.id,
       type: "university",
@@ -134,7 +140,10 @@ export async function getPublicUniversitySummaryBySlug(
       : undefined,
     reviewState: aggregateReviewState(claims.map((claim) => claim.reviewState)),
     license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
     sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    limitations: [NO_ADVICE_BOUNDARY],
     officialSources,
     claims,
     suggestedCitation: buildSuggestedCitation(university.name, canonicalUrl, lastCheckedAt)
@@ -163,9 +172,13 @@ export async function listPublicRecentChanges(
   ).filter((summary): summary is PublicEntitySummary => Boolean(summary));
 
   return publicRecentChangesResponseSchema.parse({
+    schemaVersion: PUBLIC_API_VERSION,
     generatedAt: new Date().toISOString(),
     license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
     sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    limitations: [NO_ADVICE_BOUNDARY],
     changes: summaries.map((summary) => ({
       entitySlug: summary.entity.slug,
       entityName: summary.entity.name,
@@ -343,12 +356,23 @@ function buildCanonicalUniversityUrl(slug: string): string {
   return new URL(`/universities/${slug}`, getSiteBaseUrl()).toString();
 }
 
+function buildPublicUniversityApiUrl(slug: string): string {
+  return new URL(
+    `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
+    getApiBaseUrl()
+  ).toString();
+}
+
 function getSiteBaseUrl(): string {
   return (
     process.env.WEB_PUBLIC_BASE_URL ||
     process.env.NEXT_PUBLIC_SITE_URL ||
     DEFAULT_PUBLIC_SITE_BASE_URL
   );
+}
+
+function getApiBaseUrl(): string {
+  return process.env.API_PUBLIC_BASE_URL || getSiteBaseUrl();
 }
 
 function fromDbClaimReviewState(value: string): ClaimReviewState {

@@ -5,6 +5,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 ## Scope
 - University policies and guidance for GenAI, ChatGPT, DeepSeek, Microsoft Copilot, institutional AI services, academic integrity, privacy, teaching, research, security review, procurement, and related governance.
 - Canonical entity pages start at /universities.
+- Trust pages are available at /methodology, /citation, /datasets, and /changes.
 - Public JSON records are available at /api/public/v1/universities/{slug}.json.
 - Recent public changes are available at /api/public/v1/recent-changes.json.
 
@@ -16,6 +17,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 
 ## Caveats
 - Machine-candidate records require review and should not be treated as final policy conclusions.
+- The site is not legal advice or academic integrity advice.
 - Tracker metadata may be open licensed, but official university source documents, source page text, PDFs, and other source materials retain their original rights.
 - This llms.txt file is an auxiliary guide for agents and developers. Google does not require llms.txt for AI features, and this file is not a guaranteed ranking signal.
 
