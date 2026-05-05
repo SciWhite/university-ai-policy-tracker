@@ -63,6 +63,6 @@ OpenClaw data PRs must validate before review:
 pnpm validate:openclaw-artifacts path/to/staging-directory
 ```
 
-Expected staged artifact types are `crawl_plan`, `source_snapshot`, `claim_candidate`, `evidence_candidate`, `review_decision`, and `report_draft`. OpenClaw must not mark its own output as `human_reviewed` and must not set candidate claims as canonical/public facts.
+Expected staged artifact types are `crawl_plan`, `source_candidate`, `source_discovery_trace`, `fetch_attempt`, `source_snapshot`, `claim_candidate`, `evidence_candidate`, `review_decision`, and `report_draft`. `source_rejection` is required when sources are rejected, skipped, blocked, inaccessible, stale, generic, unrelated, or used to support a no-source conclusion. OpenClaw must not mark its own output as `human_reviewed` and must not set candidate claims as canonical/public facts.
 
 Reviewers should use `docs/openclaw-data-prs.md` as the checklist for data PRs.

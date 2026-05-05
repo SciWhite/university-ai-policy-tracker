@@ -22,6 +22,81 @@ export const openClawArtifactSchemaVersionSchema = z.literal(
 );
 
 const fetchModeSchema = z.enum(["http", "playwright", "opencli", "firecrawl"]);
+const discoveryMethodSchema = z.enum([
+  "canonical_domain",
+  "sitemap",
+  "site_search",
+  "public_web_search",
+  "subdomain_expansion",
+  "path_expansion",
+  "url_normalization",
+  "link_traversal",
+  "multilingual_query",
+  "pdf_discovery",
+  "kb_or_wiki_discovery",
+  "news_or_advisory",
+  "operator_seed",
+  "other"
+]);
+const sourceTypeSchema = z.enum([
+  "formal_policy",
+  "university_guidance",
+  "teaching_guidance",
+  "assessment_guidance",
+  "academic_integrity",
+  "it_security_privacy",
+  "approved_tools",
+  "research_guidance",
+  "library_copyright",
+  "official_pdf",
+  "official_news_advisory",
+  "external_declaration",
+  "research_showcase",
+  "generic_or_unclear",
+  "other"
+]);
+const sourceVerificationStatusSchema = z.enum([
+  "discovered",
+  "verified",
+  "rejected",
+  "skipped",
+  "blocked",
+  "inaccessible",
+  "needs_browser",
+  "unknown"
+]);
+const sourceRejectionReasonSchema = z.enum([
+  "generic_home_page",
+  "no_ai_content",
+  "not_official",
+  "inaccessible",
+  "login_required",
+  "paywall",
+  "captcha",
+  "robots_disallowed",
+  "http_error",
+  "redirect_unrelated",
+  "duplicate",
+  "stale_404",
+  "research_showcase_only",
+  "event_or_news_only",
+  "low_policy_specificity",
+  "other"
+]);
+const fetchOutcomeSchema = z.enum([
+  "success",
+  "skipped",
+  "blocked",
+  "error",
+  "retry_recommended"
+]);
+const userAgentKindSchema = z.enum([
+  "default",
+  "browser_like",
+  "playwright",
+  "opencli",
+  "firecrawl"
+]);
 const artifactBaseSchema = z.object({
   schemaVersion: openClawArtifactSchemaVersionSchema.default(
     OPENCLAW_ARTIFACT_SCHEMA_VERSION
@@ -50,6 +125,7 @@ export const stagedCitationSchema = z.object({
 export const stagedCrawlTargetSchema = z.object({
   entityType: canonicalEntityTypeSchema,
   entitySlug: z.string().min(1),
+  sourceCandidateId: z.string().min(1).optional(),
   sourceUrl: z.string().url(),
   sourceTitle: z.string().min(1).optional(),
   sourceLanguage: sourceLanguageSchema,
@@ -68,9 +144,92 @@ export const stagedCrawlPlanSchema = artifactBaseSchema.extend({
   stopConditions: z.array(z.string().min(1)).default([])
 });
 
+export const stagedSourceCandidateSchema = artifactBaseSchema.extend({
+  artifactType: z.literal("source_candidate"),
+  sourceCandidateId: z.string().min(1),
+  entityType: canonicalEntityTypeSchema,
+  entitySlug: z.string().min(1),
+  sourceUrl: z.string().url(),
+  finalUrl: z.string().url().optional(),
+  sourceTitle: z.string().min(1).optional(),
+  sourceLanguage: sourceLanguageSchema.optional(),
+  sourceType: sourceTypeSchema,
+  discoveryMethod: discoveryMethodSchema,
+  queryUsed: z.string().min(1).optional(),
+  discoveredAt: z.string().datetime(),
+  officialDomainConfidence: z.number().min(0).max(1),
+  aiRelevanceScore: z.number().min(0).max(1),
+  policySpecificityScore: z.number().min(0).max(1),
+  verificationStatus: sourceVerificationStatusSchema,
+  verifiedAt: z.string().datetime().optional(),
+  verificationNotes: z.string().min(1).optional(),
+  rejectionReason: sourceRejectionReasonSchema.optional(),
+  robotsPolicy: z.enum(["respect", "skip_if_disallowed"]).default("respect")
+});
+
+export const stagedSourceDiscoveryTraceSchema = artifactBaseSchema.extend({
+  artifactType: z.literal("source_discovery_trace"),
+  traceId: z.string().min(1),
+  entityType: canonicalEntityTypeSchema,
+  entitySlug: z.string().min(1),
+  startedAt: z.string().datetime(),
+  endedAt: z.string().datetime().optional(),
+  methodsAttempted: z
+    .array(
+      z.object({
+        method: discoveryMethodSchema,
+        query: z.string().min(1).optional(),
+        domain: z.string().min(1).optional(),
+        resultCount: z.number().int().nonnegative().optional(),
+        notes: z.string().min(1).optional()
+      })
+    )
+    .min(1),
+  noSourceEscalationCompleted: z.boolean().default(false),
+  candidateIds: z.array(z.string().min(1)).min(1),
+  rejectionIds: z.array(z.string().min(1)).default([]),
+  summary: z.string().min(1)
+});
+
+export const stagedSourceRejectionSchema = artifactBaseSchema.extend({
+  artifactType: z.literal("source_rejection"),
+  sourceRejectionId: z.string().min(1),
+  sourceCandidateId: z.string().min(1).optional(),
+  entityType: canonicalEntityTypeSchema,
+  entitySlug: z.string().min(1),
+  sourceUrl: z.string().url(),
+  finalUrl: z.string().url().optional(),
+  rejectedAt: z.string().datetime(),
+  rejectionReason: sourceRejectionReasonSchema,
+  checkedBy: z.string().min(1),
+  evidenceSnippet: z.string().min(1).max(700).optional(),
+  notes: z.string().min(1).optional()
+});
+
+export const stagedFetchAttemptSchema = artifactBaseSchema.extend({
+  artifactType: z.literal("fetch_attempt"),
+  fetchAttemptId: z.string().min(1),
+  sourceCandidateId: z.string().min(1).optional(),
+  sourceUrl: z.string().url(),
+  finalUrl: z.string().url().optional(),
+  attemptedAt: z.string().datetime(),
+  fetchMode: fetchModeSchema,
+  userAgentKind: userAgentKindSchema.default("default"),
+  httpStatus: z.number().int().positive().optional(),
+  contentType: z.string().min(1).optional(),
+  robotsAllowed: z.boolean().optional(),
+  outcome: fetchOutcomeSchema,
+  errorReason: z.string().min(1).optional(),
+  durationMs: z.number().int().nonnegative().optional(),
+  contentHash: artifactHashSchema.optional(),
+  normalizedTextStorageKey: z.string().min(1).optional()
+});
+
 export const stagedSourceSnapshotSchema = artifactBaseSchema.extend({
   artifactType: z.literal("source_snapshot"),
   sourceSnapshotId: z.string().min(1),
+  sourceCandidateId: z.string().min(1).optional(),
+  fetchAttemptId: z.string().min(1).optional(),
   sourceUrl: z.string().url(),
   finalUrl: z.string().url().optional(),
   sourceTitle: z.string().min(1).optional(),
@@ -162,6 +321,10 @@ export const stagedReportDraftSchema = artifactBaseSchema.extend({
 
 export const openClawStagedArtifactSchema = z.discriminatedUnion("artifactType", [
   stagedCrawlPlanSchema,
+  stagedSourceCandidateSchema,
+  stagedSourceDiscoveryTraceSchema,
+  stagedSourceRejectionSchema,
+  stagedFetchAttemptSchema,
   stagedSourceSnapshotSchema,
   stagedClaimCandidateSchema,
   stagedEvidenceCandidateSchema,
@@ -178,6 +341,12 @@ export const openClawArtifactBundleSchema = z.object({
 });
 
 export type StagedCrawlPlan = z.infer<typeof stagedCrawlPlanSchema>;
+export type StagedSourceCandidate = z.infer<typeof stagedSourceCandidateSchema>;
+export type StagedSourceDiscoveryTrace = z.infer<
+  typeof stagedSourceDiscoveryTraceSchema
+>;
+export type StagedSourceRejection = z.infer<typeof stagedSourceRejectionSchema>;
+export type StagedFetchAttempt = z.infer<typeof stagedFetchAttemptSchema>;
 export type StagedSourceSnapshot = z.infer<typeof stagedSourceSnapshotSchema>;
 export type StagedClaimCandidate = z.infer<typeof stagedClaimCandidateSchema>;
 export type StagedEvidenceCandidate = z.infer<typeof stagedEvidenceCandidateSchema>;

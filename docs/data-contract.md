@@ -72,7 +72,10 @@ OpenClaw should produce artifacts that can validate into this contract:
 
 - crawl plan
 - crawl target
-- crawl artifact
+- source candidate
+- source discovery trace
+- source rejection
+- fetch attempt
 - source snapshot ingest payload
 - extraction candidate payload
 - policy claim candidate
@@ -89,7 +92,7 @@ Repo-side validation is available with:
 pnpm validate:openclaw-artifacts path/to/staging-directory
 ```
 
-OpenClaw staged artifacts must include `runId`, `sourceUrl`, `sourceLanguage`, content or snapshot hash, original-language evidence snippet, confidence, review state, citation fields, and the official source rights caveat. The validator rejects unversioned `/api/public` links, missing evidence, missing source language, raw HTML/PDF/screenshot paths intended for Git, OpenClaw attempts to publish canonical claims, and unclear review states.
+OpenClaw staged artifacts must include `runId`, `sourceUrl`, `sourceLanguage` for verified sources and evidence, source discovery trace, source candidate verification status, fetch attempt outcome, content or snapshot hash, original-language evidence snippet, confidence, review state, citation fields, and the official source rights caveat. The validator rejects unversioned `/api/public` links, missing evidence, missing source language, crawl targets or snapshots without verified source candidates, generic or low-specificity verified sources, raw HTML/PDF/screenshot paths intended for Git, OpenClaw attempts to publish canonical claims, and unclear review states.
 
 ## Student And Course Extension
 

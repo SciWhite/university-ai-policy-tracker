@@ -845,6 +845,10 @@ OpenClaw should stage data in these categories:
 
 - crawl plans,
 - crawl runs,
+- source candidates,
+- source discovery traces,
+- source rejections,
+- fetch attempts,
 - source snapshots,
 - policy claim candidates,
 - claim evidence candidates,
@@ -1103,7 +1107,7 @@ Build:
 Acceptance criteria:
 
 - User only needs to trigger `policy-manager` for normal runs.
-- OpenClaw produces claim/evidence/citation artifacts, not only page-level extraction candidates.
+- OpenClaw produces source discovery, source verification, fetch, claim, evidence, and citation artifacts, not only page-level extraction candidates.
 - OpenClaw does not write production DB, publish canonical claims, push main, or bypass review/access rules.
 - Pilot PR validates before coverage expansion.
 

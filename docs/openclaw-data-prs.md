@@ -9,11 +9,16 @@ Canonical public domain: `https://eduaipolicy.org`. OpenClaw PRs may generate tr
 OpenClaw data PRs should stage JSON artifacts that validate against `openclaw-artifact-v1`:
 
 - `crawl_plan`
+- `source_candidate`
+- `source_discovery_trace`
+- `fetch_attempt`
 - `source_snapshot`
 - `claim_candidate`
 - `evidence_candidate`
 - `review_decision`
 - `report_draft`
+
+`source_rejection` is conditionally required when any source candidate is rejected, skipped, blocked, inaccessible, stale, generic, unrelated, or used to support a no-source conclusion.
 
 Run validation locally with:
 
@@ -35,6 +40,9 @@ Each artifact group must preserve:
 - `sourceUrl`
 - `sourceLanguage`
 - `contentHash` or `snapshotHash`
+- source discovery method, source type, verification status, and policy specificity score
+- source rejection reason for skipped, generic, stale, inaccessible, or non-policy pages
+- fetch mode, fetch outcome, robots status, HTTP status when available, and successful fetch hash
 - `evidenceSnippetOriginal`
 - `confidence`
 - `reviewState`
@@ -52,6 +60,13 @@ Reject or request changes when validation reports:
 - missing or unclear review state
 - unversioned `/api/public` links
 - raw HTML, PDF, screenshots, traces, browser profiles, or logs staged for Git
+- crawl targets or snapshots that are not backed by a verified `source_candidate`
+- verified source candidates without `sourceLanguage`
+- verified source candidates still marked `generic_or_unclear`
+- verified source candidates with low `policySpecificityScore`
+- rejected source candidates without a `source_rejection` artifact or `rejectionReason`
+- discovery traces that skip sitemap/site search/public web search before declaring no reliable source
+- successful fetch attempts without `contentHash`
 - OpenClaw attempting to publish canonical claims
 - OpenClaw claiming `human_reviewed`
 - evidence hash that does not match a staged source snapshot

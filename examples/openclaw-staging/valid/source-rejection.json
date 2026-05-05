@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "sample-run-20260504",
+  "sourceRejectionId": "sample-source-rejection-1",
+  "sourceCandidateId": "sample-source-candidate-rejected-1",
+  "entityType": "university",
+  "entitySlug": "example-university",
+  "sourceUrl": "https://example.edu/",
+  "finalUrl": "https://example.edu/",
+  "rejectedAt": "2026-05-04T00:02:00.000Z",
+  "rejectionReason": "generic_home_page",
+  "checkedBy": "openclaw-fixture",
+  "evidenceSnippet": "Homepage navigation and promotional content only.",
+  "notes": "A source can be official but still invalid as policy evidence."
+}

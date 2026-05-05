@@ -1,0 +1,32 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "sample-run-20260504",
+  "traceId": "sample-discovery-trace-1",
+  "entityType": "university",
+  "entitySlug": "example-university",
+  "startedAt": "2026-05-04T00:00:00.000Z",
+  "endedAt": "2026-05-04T00:04:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "canonical_domain",
+      "domain": "example.edu",
+      "resultCount": 1,
+      "notes": "Seeded the official university domain and rejected the homepage as too generic."
+    },
+    {
+      "method": "site_search",
+      "query": "site:example.edu generative AI policy",
+      "domain": "example.edu",
+      "resultCount": 1,
+      "notes": "Found an official AI use guidance page suitable for a crawl target."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sample-source-candidate-rejected-1",
+    "sample-source-candidate-1"
+  ],
+  "rejectionIds": ["sample-source-rejection-1"],
+  "summary": "Discovery kept the rejected generic homepage separate from the verified AI guidance page."
+}

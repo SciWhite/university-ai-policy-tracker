@@ -9,6 +9,7 @@
     {
       "entityType": "university",
       "entitySlug": "example-university",
+      "sourceCandidateId": "sample-source-candidate-1",
       "sourceUrl": "https://example.edu/policies/ai-use",
       "sourceTitle": "Example University AI Use Guidance",
       "sourceLanguage": "en",

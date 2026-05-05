@@ -12,12 +12,20 @@ import { ZodError } from "zod";
 const DEFAULT_STAGING_DIR = "examples/openclaw-staging/valid";
 const REQUIRED_ARTIFACT_TYPES = [
   "crawl_plan",
+  "source_candidate",
+  "source_discovery_trace",
+  "fetch_attempt",
   "source_snapshot",
   "claim_candidate",
   "evidence_candidate",
   "review_decision",
   "report_draft"
 ] as const;
+const DISCOVERY_ESCALATION_METHODS = new Set([
+  "sitemap",
+  "site_search",
+  "public_web_search"
+]);
 
 type ValidationIssue = {
   file?: string;
@@ -137,6 +145,7 @@ function validateArtifactSet(
   }
 
   validateRunIds(artifacts, issues);
+  validateDiscoveryArtifacts(artifacts, issues);
   validateClaimsAndEvidence(artifacts, issues);
   validateReviewDecisions(artifacts, issues);
 
@@ -156,6 +165,205 @@ function validateRunIds(
     issues.push({
       message: `Artifacts in one staging directory must share one runId; found ${Array.from(runIds).join(", ")}`
     });
+  }
+}
+
+function validateDiscoveryArtifacts(
+  artifacts: OpenClawStagedArtifact[],
+  issues: ValidationIssue[]
+): void {
+  const crawlPlans = artifacts.filter(
+    (artifact): artifact is Extract<OpenClawStagedArtifact, { artifactType: "crawl_plan" }> =>
+      artifact.artifactType === "crawl_plan"
+  );
+  const candidates = artifacts.filter(
+    (artifact): artifact is Extract<OpenClawStagedArtifact, { artifactType: "source_candidate" }> =>
+      artifact.artifactType === "source_candidate"
+  );
+  const traces = artifacts.filter(
+    (
+      artifact
+    ): artifact is Extract<OpenClawStagedArtifact, { artifactType: "source_discovery_trace" }> =>
+      artifact.artifactType === "source_discovery_trace"
+  );
+  const rejections = artifacts.filter(
+    (artifact): artifact is Extract<OpenClawStagedArtifact, { artifactType: "source_rejection" }> =>
+      artifact.artifactType === "source_rejection"
+  );
+  const fetchAttempts = artifacts.filter(
+    (artifact): artifact is Extract<OpenClawStagedArtifact, { artifactType: "fetch_attempt" }> =>
+      artifact.artifactType === "fetch_attempt"
+  );
+  const snapshots = artifacts.filter(
+    (artifact): artifact is Extract<OpenClawStagedArtifact, { artifactType: "source_snapshot" }> =>
+      artifact.artifactType === "source_snapshot"
+  );
+
+  const candidatesById = new Map(
+    candidates.map((candidate) => [candidate.sourceCandidateId, candidate])
+  );
+  const candidatesByUrl = new Map<string, typeof candidates[number][]>();
+  for (const candidate of candidates) {
+    const keys = new Set([
+      urlKey(candidate.sourceUrl),
+      candidate.finalUrl ? urlKey(candidate.finalUrl) : undefined
+    ]);
+    for (const key of keys) {
+      if (!key) continue;
+      const group = candidatesByUrl.get(key) ?? [];
+      group.push(candidate);
+      candidatesByUrl.set(key, group);
+    }
+  }
+
+  const rejectionIds = new Set(
+    rejections.map((rejection) => rejection.sourceRejectionId)
+  );
+  const rejectedCandidateIds = new Set(
+    rejections
+      .map((rejection) => rejection.sourceCandidateId)
+      .filter((id): id is string => Boolean(id))
+  );
+  const fetchAttemptIds = new Set(
+    fetchAttempts.map((attempt) => attempt.fetchAttemptId)
+  );
+
+  for (const candidate of candidates) {
+    if (
+      candidate.verificationStatus === "verified" &&
+      candidate.sourceType === "generic_or_unclear"
+    ) {
+      issues.push({
+        message: `Source candidate ${candidate.sourceCandidateId} is verified but still generic_or_unclear`
+      });
+    }
+
+    if (
+      candidate.verificationStatus === "verified" &&
+      candidate.policySpecificityScore < 0.4
+    ) {
+      issues.push({
+        message: `Source candidate ${candidate.sourceCandidateId} is verified with low policySpecificityScore`
+      });
+    }
+
+    if (candidate.verificationStatus === "verified" && !candidate.sourceLanguage) {
+      issues.push({
+        message: `Verified source candidate ${candidate.sourceCandidateId} must include sourceLanguage`
+      });
+    }
+
+    if (candidate.verificationStatus === "rejected") {
+      if (!candidate.rejectionReason && !rejectedCandidateIds.has(candidate.sourceCandidateId)) {
+        issues.push({
+          message: `Rejected source candidate ${candidate.sourceCandidateId} lacks rejectionReason or source_rejection artifact`
+        });
+      }
+    }
+  }
+
+  for (const trace of traces) {
+    for (const candidateId of trace.candidateIds) {
+      if (!candidatesById.has(candidateId)) {
+        issues.push({
+          message: `Discovery trace ${trace.traceId} references missing source candidate ${candidateId}`
+        });
+      }
+    }
+
+    for (const rejectionId of trace.rejectionIds) {
+      if (!rejectionIds.has(rejectionId)) {
+        issues.push({
+          message: `Discovery trace ${trace.traceId} references missing source rejection ${rejectionId}`
+        });
+      }
+    }
+
+    if (
+      trace.noSourceEscalationCompleted &&
+      !trace.methodsAttempted.some((method) => DISCOVERY_ESCALATION_METHODS.has(method.method))
+    ) {
+      issues.push({
+        message: `Discovery trace ${trace.traceId} marks no-source escalation without search or sitemap method`
+      });
+    }
+  }
+
+  for (const rejection of rejections) {
+    if (
+      rejection.sourceCandidateId &&
+      !candidatesById.has(rejection.sourceCandidateId)
+    ) {
+      issues.push({
+        message: `Source rejection ${rejection.sourceRejectionId} references missing source candidate ${rejection.sourceCandidateId}`
+      });
+    }
+  }
+
+  for (const attempt of fetchAttempts) {
+    if (attempt.sourceCandidateId && !candidatesById.has(attempt.sourceCandidateId)) {
+      issues.push({
+        message: `Fetch attempt ${attempt.fetchAttemptId} references missing source candidate ${attempt.sourceCandidateId}`
+      });
+    }
+
+    if (attempt.outcome === "success" && !attempt.contentHash) {
+      issues.push({
+        message: `Successful fetch attempt ${attempt.fetchAttemptId} must include contentHash`
+      });
+    }
+  }
+
+  for (const crawlPlan of crawlPlans) {
+    for (const target of crawlPlan.targets) {
+      const linkedCandidate = target.sourceCandidateId
+        ? candidatesById.get(target.sourceCandidateId)
+        : undefined;
+      const matchingCandidates =
+        linkedCandidate ? [linkedCandidate] : candidatesByUrl.get(urlKey(target.sourceUrl)) ?? [];
+
+      if (!matchingCandidates.length) {
+        issues.push({
+          message: `Crawl target ${target.sourceUrl} has no matching source_candidate`
+        });
+        continue;
+      }
+
+      if (!matchingCandidates.some((candidate) => candidate.verificationStatus === "verified")) {
+        issues.push({
+          message: `Crawl target ${target.sourceUrl} is not backed by a verified source_candidate`
+        });
+      }
+    }
+  }
+
+  for (const snapshot of snapshots) {
+    const linkedCandidate = snapshot.sourceCandidateId
+      ? candidatesById.get(snapshot.sourceCandidateId)
+      : undefined;
+    const matchingCandidates =
+      linkedCandidate ? [linkedCandidate] : candidatesByUrl.get(urlKey(snapshot.sourceUrl)) ?? [];
+
+    if (!matchingCandidates.length) {
+      issues.push({
+        message: `Source snapshot ${snapshot.sourceSnapshotId} has no matching source_candidate`
+      });
+    }
+
+    if (
+      matchingCandidates.length &&
+      !matchingCandidates.some((candidate) => candidate.verificationStatus === "verified")
+    ) {
+      issues.push({
+        message: `Source snapshot ${snapshot.sourceSnapshotId} is not backed by a verified source_candidate`
+      });
+    }
+
+    if (snapshot.fetchAttemptId && !fetchAttemptIds.has(snapshot.fetchAttemptId)) {
+      issues.push({
+        message: `Source snapshot ${snapshot.sourceSnapshotId} references missing fetch attempt ${snapshot.fetchAttemptId}`
+      });
+    }
   }
 }
 
@@ -347,6 +555,23 @@ function looksLikeRawLocalArtifactPath(value: string): boolean {
   if (/^https?:\/\//.test(value)) return false;
 
   return /\.(html?|pdf|png|jpe?g|webp)$/i.test(value);
+}
+
+function urlKey(value: string): string {
+  const url = new URL(value);
+  url.hash = "";
+
+  for (const key of Array.from(url.searchParams.keys())) {
+    if (
+      key.toLowerCase().startsWith("utm_") ||
+      ["fbclid", "gclid", "mc_cid", "mc_eid"].includes(key.toLowerCase())
+    ) {
+      url.searchParams.delete(key);
+    }
+  }
+
+  if (url.pathname !== "/") url.pathname = url.pathname.replace(/\/+$/, "");
+  return url.toString().toLowerCase();
 }
 
 function countByArtifactType(

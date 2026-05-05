@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "sample-run-20260504",
+  "fetchAttemptId": "sample-fetch-attempt-1",
+  "sourceCandidateId": "sample-source-candidate-1",
+  "sourceUrl": "https://example.edu/policies/ai-use",
+  "finalUrl": "https://example.edu/policies/ai-use",
+  "attemptedAt": "2026-05-04T00:05:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 212,
+  "contentHash": "1111111111111111111111111111111111111111111111111111111111111111",
+  "normalizedTextStorageKey": "staging/sample-run-20260504/normalized/example-university-ai-use.txt"
+}

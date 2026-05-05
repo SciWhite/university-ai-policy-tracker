@@ -869,6 +869,14 @@ function artifactId(artifact: OpenClawStagedArtifact): string {
   switch (artifact.artifactType) {
     case "crawl_plan":
       return artifact.planId;
+    case "source_candidate":
+      return artifact.sourceCandidateId;
+    case "source_discovery_trace":
+      return artifact.traceId;
+    case "source_rejection":
+      return artifact.sourceRejectionId;
+    case "fetch_attempt":
+      return artifact.fetchAttemptId;
     case "source_snapshot":
       return artifact.sourceSnapshotId;
     case "claim_candidate":

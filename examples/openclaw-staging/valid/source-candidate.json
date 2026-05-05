@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "sample-run-20260504",
+  "sourceCandidateId": "sample-source-candidate-1",
+  "entityType": "university",
+  "entitySlug": "example-university",
+  "sourceUrl": "https://example.edu/policies/ai-use?utm_source=fixture",
+  "finalUrl": "https://example.edu/policies/ai-use",
+  "sourceTitle": "Example University AI Use Guidance",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:example.edu generative AI policy",
+  "discoveredAt": "2026-05-04T00:01:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.92,
+  "policySpecificityScore": 0.86,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-04T00:04:00.000Z",
+  "verificationNotes": "Fixture candidate verified as an official AI guidance page.",
+  "robotsPolicy": "respect"
+}

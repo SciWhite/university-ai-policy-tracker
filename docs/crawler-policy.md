@@ -74,4 +74,4 @@ Before a crawl/data PR is reviewed, run:
 pnpm validate:openclaw-artifacts path/to/staging-directory
 ```
 
-The validator fails staged output when evidence is missing, source language is absent, review state is unclear, `/api/public` links are not versioned under `/api/public/v1`, raw HTML/PDF/screenshots are staged for Git, or OpenClaw attempts to publish canonical claims.
+The validator fails staged output when evidence is missing, source language is absent for verified sources or evidence, review state is unclear, `/api/public` links are not versioned under `/api/public/v1`, raw HTML/PDF/screenshots are staged for Git, crawl targets or snapshots lack verified source candidates, source discovery skipped escalation before declaring no reliable source, successful fetch attempts lack hashes, or OpenClaw attempts to publish canonical claims.

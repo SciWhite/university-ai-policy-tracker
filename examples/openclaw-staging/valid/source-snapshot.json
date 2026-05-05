@@ -3,6 +3,8 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "sample-run-20260504",
   "sourceSnapshotId": "sample-snapshot-1",
+  "sourceCandidateId": "sample-source-candidate-1",
+  "fetchAttemptId": "sample-fetch-attempt-1",
   "sourceUrl": "https://example.edu/policies/ai-use",
   "finalUrl": "https://example.edu/policies/ai-use",
   "sourceTitle": "Example University AI Use Guidance",
