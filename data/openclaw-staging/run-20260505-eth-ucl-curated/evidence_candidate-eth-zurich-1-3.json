@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-eth-zurich-e5374d1ca5f40302",
+  "claimId": "cc-eth-zurich-0baba14322b53072",
+  "sourceSnapshotId": "ss-eth-zurich-1",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html",
+  "sourceTitle": "AI in Teaching and Learning — ETH Zurich",
+  "sourceLanguage": "en",
+  "snapshotHash": "b8b7707c1be2b9bb00134732987f0ee8cbd65bce1c9d379efcf8a426951f10a1",
+  "evidenceSnippetOriginal": "As a lecturer you are responsible for the content you provide to your students. This means that teaching materials created with GenAI must be subjected to quality control by you... You determine whether and how GenAI may be used in your courses.",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI in Teaching and Learning — ETH Zurich",
+    "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

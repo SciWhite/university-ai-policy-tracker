@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-ucl-1",
+  "sourceCandidateId": "ucl-genai-hub",
+  "fetchAttemptId": "fa-ucl-1",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub",
+  "finalUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub",
+  "sourceTitle": "Generative AI Hub | Teaching & Learning — UCL",
+  "sourceLanguage": "en",
+  "contentHash": "18a8d649f6ef529ede562cfe8f034500720b556a31107d5b5d82b5fd45ecb7d9",
+  "fetchedAt": "2026-05-05T17:43:30Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedText": "Microsoft Copilot is our approved GenAI tool because of its enhanced data protection. This tool is a more secure and safer alternative to other GenAI services. Read about how you can use Microsoft Copilot easily and safely.\n\nStaff can explore the GenAI Training SharePoint site for information about and recordings of sessions on GenAI, as well as links to further resources.\n\nUCL offers a service called Studiosity to support students with their academic writing and referencing skills. The platform uses GenAI and is available 24/7 to all current students, at all levels of study. Staff can explore the Studiosity Resource Centre for support resources including How To guides, frequently asked questions and use cases.\n\nFor students\n\nLearn about engaging with GenAI in education and assessments\nFind out more about Studiosity and how to access the service\nRegister for workshops on GenAI and writing.\n\nWhat is Generative AI?\nStarting with the basics: What GenAI is and why you should learn about it.\n\nHow does Generative AI work?\nHow GenAI works and the sources of data that it is trained on.\n\nGenAI and academic integrity in assessment\nThe acceptable use of GenAI in UCL assessments.\n\nWriting effective prompts for GenAI\nHow to write prompts that guide GenAI to give you useful outputs.\n\nCapabilities and limitations of GenAI\nWhen GenAI can be helpful and when it is likely to give less successful results.\n\nEthics and sustainability of GenAI\nThe ethical concerns around GenAI services and how sustainable they are.\n\nSafeguarding your data with GenAI\nHow GenAI services might use your data and how to keep your data safe.\n\nGenAI in work and study\nIdeas for everyday study, work and leisure tasks that can incorporate GenAI.",
+  "sourceType": "university_guidance",
+  "canonicalEntitySlug": "ucl"
+}

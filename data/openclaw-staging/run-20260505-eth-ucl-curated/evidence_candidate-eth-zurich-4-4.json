@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-eth-zurich-ef9390780fb7d69a",
+  "claimId": "cc-eth-zurich-47f48fedc92290ac",
+  "sourceSnapshotId": "ss-eth-zurich-4",
+  "sourceUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf",
+  "sourceTitle": "Generative AI in Teaching and Learning — Guidelines (ETH Zurich)",
+  "sourceLanguage": "en",
+  "snapshotHash": "92d97c5c89e0587b434685b8d452d6286faa4559186186953560760dbe3e96e6",
+  "evidenceSnippetOriginal": "Legal aspects of GenAI uses are covered by the existing rules for performance assessments and the 'declaration of originality'. Violations such as use of unauthorised aids or non-disclosure of their use will continue to be subject to disciplinary action.",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI in Teaching and Learning — Guidelines (ETH Zurich)",
+    "sourceUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-ucl-e30ecf0fde427de1",
+  "entityType": "university",
+  "entitySlug": "ucl",
+  "claimType": "ai_tool_treatment",
+  "claimText": "UCL designates Microsoft Copilot as its approved GenAI tool due to its enhanced data protection, positioning it as a more secure alternative to other GenAI services.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-ucl-890fc7705499f94f"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Hub | Teaching & Learning — UCL",
+    "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

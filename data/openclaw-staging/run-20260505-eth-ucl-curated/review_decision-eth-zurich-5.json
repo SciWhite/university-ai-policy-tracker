@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-eth-zurich-cc-3ecccc0b6798ed66",
+  "claimId": "cc-eth-zurich-3ecccc0b6798ed66",
+  "decision": "approve",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim is well-supported. Evidence confirms recommendation of Copilot, Gemini, and NotebookLM for teaching purposes via ETH cloud subscription. The claim adds 'personal data is not used for training models' — this is supported by the broader source snapshot text describing 'protected environment' and 'data entered is not used to train the models' for each tool. Minor note: the claim could specify these are recommended 'primarily' for teaching, as the source says, but this is a minor precision issue that does not constitute overstatement.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html"
+}

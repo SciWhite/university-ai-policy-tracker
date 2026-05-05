@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "run-20260505-cambridge-contract-v2",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "run-20260505-cambridge-contract-v2",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-cambridge-20260505",
+      "entityType": "university",
+      "entitySlug": "university-of-cambridge",
+      "startedAt": "2026-05-05T16:14:00Z",
+      "endedAt": "2026-05-05T16:16:00Z",
+      "methodsAttempted": [
+        {
+          "method": "canonical_domain",
+          "domain": "cam.ac.uk",
+          "resultCount": 1,
+          "notes": "Fetched https://www.cam.ac.uk/ai — research showcase landing page, no policy content. Rejected as research_showcase_only."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "ai.cam.ac.uk",
+          "resultCount": 1,
+          "notes": "Fetched https://www.ai.cam.ac.uk/ — ai@cam research initiative homepage. No policy/guidance content. Rejected as research_showcase_only."
+        },
+        {
+          "method": "subdomain_expansion",
+          "domain": "information-compliance.admin.cam.ac.uk",
+          "resultCount": 2,
+          "notes": "Fetched data-protection/guidance page which lists AI guidance as a sub-item. Verified the AI guidance page itself."
+        },
+        {
+          "method": "subdomain_expansion",
+          "domain": "blendedlearning.cam.ac.uk",
+          "resultCount": 5,
+          "notes": "Expanded /artificial-intelligence-and-education/ path. Found 4 sub-pages (generative-ai-and-assessment, using-generative-ai, generative-ai-and-education, ai-policy-framework). All verified as official Cambridge BLS guidance."
+        },
+        {
+          "method": "subdomain_expansion",
+          "domain": "educationalpolicy.admin.cam.ac.uk",
+          "resultCount": 2,
+          "notes": "Checked plagiarism-and-academic-misconduct (verified, general academic integrity) and policy-index/recording (rejected, no AI content)."
+        },
+        {
+          "method": "subdomain_expansion",
+          "domain": "www.uis.cam.ac.uk",
+          "resultCount": 1,
+          "notes": "Tried /guides/artificial-intelligence — 404. No AI-specific UIS guide found."
+        },
+        {
+          "method": "subdomain_expansion",
+          "domain": "help.uis.cam.ac.uk",
+          "resultCount": 1,
+          "notes": "Checked /service/security and /policies — generic IT security, no AI content."
+        },
+        {
+          "method": "path_expansion",
+          "domain": "www.admin.cam.ac.uk",
+          "resultCount": 1,
+          "notes": "Tried /offices/hr/genai — redirects to generic HR homepage. No GenAI HR guidance found."
+        },
+        {
+          "method": "path_expansion",
+          "domain": "www.plagiarism.admin.cam.ac.uk",
+          "resultCount": 1,
+          "notes": "Tried /what-academic-misconduct/artificial-intelligence — redirects to educationalpolicy.admin.cam.ac.uk/plagiarism-and-academic-misconduct (generic, no AI content). Old AI-specific page no longer exists."
+        },
+        {
+          "method": "url_normalization",
+          "resultCount": 2,
+          "notes": "Checked old BLS paths (/guidance-support/ai-and-education/*) which redirect to homepage. Confirmed current canonical paths are /artificial-intelligence-and-education/*."
+        },
+        {
+          "method": "operator_seed",
+          "resultCount": 5,
+          "notes": "User-provided seed URLs verified: information-compliance AI guidance (verified), 4x blendedlearning.cam.ac.uk AI pages (all verified)."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "cam-ai-guidance-info-compliance",
+        "cam-bl-generative-ai-assessment",
+        "cam-bl-using-generative-ai",
+        "cam-bl-generative-ai-education",
+        "cam-bl-ai-policy-framework",
+        "cam-plagiarism-academic-misconduct",
+        "cam-ac-uk-ai",
+        "cam-plagiarism-ai-redirect",
+        "cam-ac-uk-ai-governance",
+        "cam-uis-ai-guide",
+        "cam-hr-genai",
+        "cam-ai-cam",
+        "cam-recording-teaching",
+        "cam-uis-security",
+        "cam-bl-old-path-1",
+        "cam-bl-old-path-2"
+      ],
+      "rejectionIds": [
+        "rej-cam-ac-uk-ai",
+        "rej-cam-plagiarism-ai-redirect",
+        "rej-cam-ac-uk-ai-governance",
+        "rej-cam-uis-ai-guide",
+        "rej-cam-hr-genai",
+        "rej-cam-ai-cam",
+        "rej-cam-recording-teaching",
+        "rej-cam-uis-security",
+        "rej-cam-bl-old-path-1",
+        "rej-cam-bl-old-path-2"
+      ],
+      "summary": "Cambridge AI policy discovery: 6 verified official sources, 10 rejected. Cambridge has a well-structured AI policy landscape across three main subdomains: (1) Information Compliance Office (staff admin GenAI guidance), (2) Blended Learning Service (education-focused AI guidance, assessment policy, AI policy framework), (3) Educational Policy Office (academic integrity). No dedicated UIS/IT AI policy page exists. No HR-specific GenAI guidance found. The cam.ac.uk/ai and ai.cam.ac.uk sites are research showcases, not policy sources. Cambridge's approach is decentralized — education policy lives on blendedlearning.cam.ac.uk, admin/data-protection policy on information-compliance.admin.cam.ac.uk."
+    }
+  ]
+}

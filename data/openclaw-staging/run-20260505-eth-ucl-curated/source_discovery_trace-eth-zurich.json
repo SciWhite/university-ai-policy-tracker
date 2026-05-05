@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-eth-zurich",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "startedAt": "2026-05-05T17:28:00Z",
+  "endedAt": "2026-05-05T17:31:30Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "ETH Zurich AI generative AI policy official site:ethz.ch",
+      "resultCount": 0,
+      "notes": "Web search provider unavailable (Gemini API 403). Fell back to direct URL guessing."
+    },
+    {
+      "method": "sitemap",
+      "domain": "ethz.ch",
+      "resultCount": 0,
+      "notes": "ethz.ch/sitemap.xml returned 404. Site uses AEM with login-gated content structure."
+    },
+    {
+      "method": "path_expansion",
+      "domain": "ethz.ch",
+      "resultCount": 2,
+      "notes": "Tried 8 paths. educational-development-and-technology and education pages (200) returned content. Other paths 404."
+    },
+    {
+      "method": "subdomain_expansion",
+      "domain": "ethz.ch",
+      "resultCount": 1,
+      "notes": "EDT department page contained link to the ai-in-education page which was the main AI policy hub."
+    },
+    {
+      "method": "link_traversal",
+      "domain": "ethz.ch",
+      "resultCount": 4,
+      "notes": "From the ai-in-education page discovered links to academic-integrity, tools, and other sub-pages, plus the Guidelines PDF and reference to aiethicspolicy.ethz.ch."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "eth-zurich-ai-education-main",
+    "eth-zurich-academic-integrity",
+    "eth-zurich-ai-tools",
+    "eth-zurich-guidelines-pdf",
+    "eth-zurich-ai-ethics-policy"
+  ],
+  "rejectionIds": [
+    "rej-eth-zurich-1",
+    "rej-eth-zurich-2",
+    "rej-eth-zurich-3"
+  ],
+  "summary": "ETH Zurich has a well-structured AI in education hub under /en/the-eth-zurich/education/ai-in-education/. Found 5 verified source candidates: main GenAI guidance page, academic integrity page, tools/licenses page, formal guidelines PDF, and AI ethics policy network. All accessible via standard HTTP. Discovery path: path_expansion → subdomain_expansion → link_traversal."
+}

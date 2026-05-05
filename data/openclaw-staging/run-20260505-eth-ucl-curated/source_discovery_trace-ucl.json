@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-ucl",
+  "entityType": "university",
+  "entitySlug": "ucl",
+  "startedAt": "2026-05-05T17:28:00Z",
+  "endedAt": "2026-05-05T17:31:30Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "UCL University College London AI generative AI policy official site:ucl.ac.uk",
+      "resultCount": 0,
+      "notes": "Web search provider unavailable (Gemini API 403)."
+    },
+    {
+      "method": "sitemap",
+      "domain": "ucl.ac.uk",
+      "resultCount": 0,
+      "notes": "ucl.ac.uk/sitemap.xml returned 502 Bad Gateway."
+    },
+    {
+      "method": "path_expansion",
+      "domain": "ucl.ac.uk",
+      "resultCount": 1,
+      "notes": "Tried 10 paths. /teaching-learning returned 200. Most other paths returned 404. /digital-education/generative-ai returned 502."
+    },
+    {
+      "method": "link_traversal",
+      "domain": "ucl.ac.uk",
+      "resultCount": 2,
+      "notes": "From /teaching-learning page, found link to /teaching-learning/generative-ai-hub. From the hub, found link to /genai-and-assessments sub-page. Tried additional sub-pages (using-ai-tools-in-assessment) which returned 404."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "ucl-genai-hub",
+    "ucl-genai-assessments"
+  ],
+  "rejectionIds": [
+    "rej-ucl-1"
+  ],
+  "summary": "UCL has a well-organized Generative AI Hub under /teaching-learning/generative-ai-hub/. Found 2 verified source candidates: the main GenAI hub and the GenAI assessments page with UCL's 3-category framework. Some sub-pages returned 404 or 502. Discovery path: path_expansion → link_traversal."
+}

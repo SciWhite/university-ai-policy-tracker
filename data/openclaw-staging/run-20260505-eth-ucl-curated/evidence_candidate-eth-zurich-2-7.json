@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-eth-zurich-0c73d66c1817b427",
+  "claimId": "cc-eth-zurich-9184c974106f677e",
+  "sourceSnapshotId": "ss-eth-zurich-2",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+  "sourceTitle": "Academic Integrity | ETH Zurich",
+  "sourceLanguage": "en",
+  "snapshotHash": "3042c683ebe36c8f467e086f799c707f9d359e675e421dda3abac76e40362f15",
+  "evidenceSnippetOriginal": "Technical recognition of output generated using generative AI is currently unreliable and will probably remain so in the future. Trust in such a method is therefore not appropriate.",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Academic Integrity | ETH Zurich",
+    "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

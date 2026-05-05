@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-eth-zurich-cc-47f48fedc92290ac",
+  "claimId": "cc-eth-zurich-47f48fedc92290ac",
+  "decision": "approve",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim is well-supported by the ETH Zurich Guidelines PDF. Evidence snippet directly confirms violations of GenAI guidelines (unauthorised aids, non-disclosure) are subject to disciplinary action under existing assessment rules and declaration of originality. Accurate and specific.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf"
+}

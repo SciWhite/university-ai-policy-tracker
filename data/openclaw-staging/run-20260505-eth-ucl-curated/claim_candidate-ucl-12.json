@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-ucl-f77af3748cd1012d",
+  "entityType": "university",
+  "entitySlug": "ucl",
+  "claimType": "teaching",
+  "claimText": "UCL provides Studiosity, a GenAI-powered service available 24/7 to all current students at all levels of study, to support academic writing and referencing skills.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-ucl-ff89b182cc863301"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Hub | Teaching & Learning — UCL",
+    "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "run-20260505-cambridge-contract-v2",
+  "artifactType": "report_draft",
+  "reportId": "report-cambridge-contract-v2",
+  "title": "University of Cambridge — AI Policy Tracker Report (Contract V2)",
+  "generatedAt": "2026-05-05T16:43:00Z",
+  "draftPath": "content/reports/cambridge-contract-v2.mdx",
+  "summary": "Cambridge broadly permits appropriate use of GenAI tools but has no single university-wide AI policy. Instead it provides an AI Policy Framework for local determination by triposes, departments, faculties, and colleges. 6 verified sources yielded 10 approved findings covering data input restrictions, licensed tool mandates (Copilot/Gemini/NotebookLM), human review requirements, academic misconduct rules, AI detection software unreliability, examiner restrictions, and general principles. 2 claims (purpose limitation + automated decision-making, examiner exception clause) need evidence amendments. 10 source candidates were rejected (research showcases, 404s, redirects, no-AI-content pages).",
+  "referencedClaimIds": [
+    "claim-cam-education-1",
+    "claim-cam-framework-1",
+    "claim-cam-assessment-1",
+    "claim-cam-assessment-2",
+    "claim-cam-info-compliance-1",
+    "claim-cam-info-compliance-2",
+    "claim-cam-info-compliance-3",
+    "claim-cam-info-compliance-4",
+    "claim-cam-info-compliance-6",
+    "claim-cam-education-2"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/university-of-cambridge.json"
+  ],
+  "limitations": [
+    "claim-cam-info-compliance-5 (needs_changes): Purpose limitation claim scope exceeds evidence — automated decision-making sentence present in source but not captured in evidence snippet. Requires additional evidence candidate or claim amendment.",
+    "claim-cam-assessment-3 (needs_changes): Examiner restrictions claim scope exceeds evidence — exception clause (examiners may use tools for own writing) present in source but not captured in evidence snippet. Requires additional evidence candidate or claim amendment.",
+    "This report is not legal advice. Descriptions of university data protection, procurement, or security guidance do not constitute legal interpretation of GDPR, UK data protection law, or any other regulation.",
+    "This report is not academic integrity advice. Descriptions of academic misconduct policies are factual summaries of institutional positions, not guidance on how students or staff should handle integrity questions.",
+    "This report does not constitute an official university statement. The tracker synthesises publicly available policy information from official university sources for informational purposes only.",
+    "Source pages may change after the snapshot date (2026-05-05). Always verify against the original source URL for the most current version.",
+    "The AI Policy Framework is a downloadable .docx template. The tracker summarises the framework page description; local implementations may vary by department, faculty, or college."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

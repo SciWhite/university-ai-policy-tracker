@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-eth-zurich-cc-46ad6a07df059f93",
+  "claimId": "cc-eth-zurich-46ad6a07df059f93",
+  "decision": "approve",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim accurately synthesizes transparency requirements for both students and lecturers. Student requirement (declare tools and parts of work) directly supported by evidence snippet. Lecturer requirement (communicate when use is permitted, make own use visible) supported by lecturer transparency section in source snapshot: 'Clearly communicate to your students in what circumstances GenAI use is permitted... make the use of GenAI visible in your own documents, teaching materials.' Well-structured and not overstated.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html"
+}

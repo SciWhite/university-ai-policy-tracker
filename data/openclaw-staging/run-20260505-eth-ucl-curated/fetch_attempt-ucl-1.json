@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-ucl-1",
+  "sourceCandidateId": "ucl-genai-hub",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub",
+  "finalUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub",
+  "attemptedAt": "2026-05-05T17:43:30Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "18a8d649f6ef529ede562cfe8f034500720b556a31107d5b5d82b5fd45ecb7d9"
+}

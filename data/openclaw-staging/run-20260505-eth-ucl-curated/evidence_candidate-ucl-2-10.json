@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-ucl-7980b6aee4cd4cc4",
+  "claimId": "cc-ucl-25889d0c0278f271",
+  "sourceSnapshotId": "ss-ucl-2",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+  "sourceTitle": "GenAI and academic integrity in assessment — UCL",
+  "sourceLanguage": "en",
+  "snapshotHash": "c30c4bfc90ed4cc7d54295e9225da1f4733f69c3706007c7b3fda5b06ec1cc67",
+  "evidenceSnippetOriginal": "For Category 1, you might use GenAI tools to help you revise and prepare, but the work you complete for the assessment should be your own. In Category 2, you could use GenAI to get ideas, help draft your work, or even proofread... Category 3 is a lot like category 2, but there will also be some essential use of GenAI.",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "GenAI and academic integrity in assessment — UCL",
+    "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

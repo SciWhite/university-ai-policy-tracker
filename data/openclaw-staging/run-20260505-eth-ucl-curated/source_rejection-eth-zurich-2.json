@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-eth-zurich-2",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/organisation/departments/educational-development-and-technology.html",
+  "finalUrl": "https://ethz.ch/en/the-eth-zurich/organisation/departments/educational-development-and-technology.html",
+  "rejectedAt": "2026-05-05T17:29:30Z",
+  "rejectionReason": "generic_home_page",
+  "checkedBy": "crawl-designer",
+  "evidenceSnippet": "Department landing page for Educational Development and Technology. Contains staff directory, general department info, and links to teaching resources.",
+  "notes": "EDT department page. Useful for link discovery (led to AI in Education page) but not a policy source itself."
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-ucl-1",
+  "entityType": "university",
+  "entitySlug": "ucl",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/using-ai-tools-in-assessment",
+  "finalUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/using-ai-tools-in-assessment",
+  "rejectedAt": "2026-05-05T17:31:30Z",
+  "rejectionReason": "stale_404",
+  "checkedBy": "crawl-designer",
+  "evidenceSnippet": "HTTP 404: 'UCL - 404: Document Not Found'. Page does not exist at this URL.",
+  "notes": "This sub-page of the GenAI hub returned 404. The genai-and-assessments page covers similar content and is accessible."
+}

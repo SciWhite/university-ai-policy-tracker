@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-eth-zurich-2",
+  "sourceCandidateId": "eth-zurich-academic-integrity",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+  "finalUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+  "attemptedAt": "2026-05-05T17:43:30Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "3042c683ebe36c8f467e086f799c707f9d359e675e421dda3abac76e40362f15"
+}

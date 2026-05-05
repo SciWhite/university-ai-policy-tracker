@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-eth-zurich-04547e201e6c33a4",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "claimType": "privacy",
+  "claimText": "Students must refrain from disclosing copyrighted, private, or confidential information to commercial GenAI clients unless expressly permitted, and must respect privacy and copyright of content they work with.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-eth-zurich-f0cc94fd752680e0"
+  ],
+  "citation": {
+    "citationTitle": "Academic Integrity | ETH Zurich",
+    "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

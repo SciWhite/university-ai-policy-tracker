@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-eth-zurich-5",
+  "sourceCandidateId": "eth-zurich-ai-ethics-policy",
+  "fetchAttemptId": "fa-eth-zurich-5",
+  "sourceUrl": "https://aiethicspolicy.ethz.ch/",
+  "finalUrl": "https://aiethicspolicy.ethz.ch/",
+  "sourceTitle": "ETH AI Ethics Policy Network",
+  "sourceLanguage": "en",
+  "contentHash": "55b5500f9a27f26bb3a9e115e48636d181ec344a598f87524555a462782703e2",
+  "fetchedAt": "2026-05-05T17:43:30Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedText": "Joining Forces to Foster Responsible AI\n\nAs a neutral and independent institution, we see it as our responsibility to actively contribute to and be part of the global dialogue on ethical AI governance and regulation.\n\nActivities of the network\n\nWe leverage the expertise of our members to promote the ethical development and use of AI technologies. We believe that combining the knowledge and expertise of individuals across diverse fields, is key to achieving this goal within ETH and beyond.\n\nSounding board: Offering AI governance and ethics expertise, actively engaging in ETH and public conversations.\nPolicy impact: Fostering awareness and dialogue with Swiss policymakers through targeted events and resources.\nPublic engagement: Championing initiatives to enhance public awareness, comprehension, and inclusivity in Switzerland.\nResearch & education: Linking ETH members to highlight opportunities in education and research.\n\nThe Network\n\nAn initiative of the Associate Vice President of Digital Transformation and Governance at ETH Zurich, our network connects thought leaders in AI ethics and policy. The goal is to ensure that AI is designed and used in an ethical and socially responsible way.\n\nAcademic Director: Prof. Dr. Effy Vayena, Associate Vice President for Digital Transformation and Governance. Leads Chair of Bioethics, ETH Zurich\nDirector of Communications: Dr. Joanna Sleigh, Chair of Bioethics, ETH Zurich\nDirector of Operations: Dr. Sara Kijewski, Chair of Bioethics, ETH Zurich\n\nPolicy Bites: Stay up to date with our AI ethics policy bites. Topics range from the impact of AI on society to the latest policies and innovations that support the governance of responsible AI.\n\nCourses: Learn more about AI ethics and policy. The ETH offers courses for students and professionals on topics like ethical AI development to strategies for implementing AI policies.\n\nResources: Take a look at our collection of selected resources on AI ethics and policy in education and beyond.\n\nEvents: Join our events that bring together students, professionals and experts. Through dialogue and collaboration, help shape policies and practices in AI that reflect our values and ideals as a society.",
+  "sourceType": "research_guidance",
+  "canonicalEntitySlug": "eth-zurich"
+}

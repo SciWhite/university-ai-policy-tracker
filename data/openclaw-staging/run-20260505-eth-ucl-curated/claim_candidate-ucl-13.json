@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-ucl-5e5a1b064b144c3d",
+  "entityType": "university",
+  "entitySlug": "ucl",
+  "claimType": "academic_integrity",
+  "claimText": "UCL permits using GenAI to help with spelling, grammar, and language tone in assessments, but it must not change the content and meaning of what the student has written.",
+  "sourceLanguage": "en",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-ucl-4024b23195d63d8c"
+  ],
+  "citation": {
+    "citationTitle": "GenAI and academic integrity in assessment — UCL",
+    "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

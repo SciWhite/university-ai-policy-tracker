@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-ucl-2",
+  "sourceCandidateId": "ucl-genai-assessments",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+  "finalUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-academic-integrity-assessment",
+  "attemptedAt": "2026-05-05T17:43:30Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "c30c4bfc90ed4cc7d54295e9225da1f4733f69c3706007c7b3fda5b06ec1cc67"
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-ucl-5b5c58fabb319675",
+  "claimId": "cc-ucl-1d9fe26e8730308c",
+  "sourceSnapshotId": "ss-ucl-2",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+  "sourceTitle": "GenAI and academic integrity in assessment — UCL",
+  "sourceLanguage": "en",
+  "snapshotHash": "c30c4bfc90ed4cc7d54295e9225da1f4733f69c3706007c7b3fda5b06ec1cc67",
+  "evidenceSnippetOriginal": "Academic integrity is about fairness. If somebody gets an unfair advantage over other students, we consider this academic misconduct. This means that there's no single list of fair and unfair uses of GenAI.",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "GenAI and academic integrity in assessment — UCL",
+    "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

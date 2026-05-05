@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-eth-zurich-3",
+  "sourceCandidateId": "eth-zurich-ai-tools",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+  "finalUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+  "attemptedAt": "2026-05-05T17:43:30Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "976363c229602b634733ef8f90fadb815c16c9b722317afd9bdf10914f543f1e"
+}

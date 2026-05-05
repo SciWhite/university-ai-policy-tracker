@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "ucl-genai-hub",
+  "entityType": "university",
+  "entitySlug": "ucl",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub",
+  "finalUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub",
+  "sourceTitle": "Generative AI Hub | Teaching & Learning — UCL",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "Link from /teaching-learning page to /generative-ai-hub",
+  "discoveredAt": "2026-05-05T17:30:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T17:30:30Z",
+  "verificationNotes": "UCL's main GenAI hub. Covers capabilities/limitations, assessment design, ethics, data safeguarding, prompt writing. Recommends Microsoft Copilot as approved tool. Links to Studiosity for student writing support. HTTP 200, full content confirmed via curl.",
+  "robotsPolicy": "respect"
+}

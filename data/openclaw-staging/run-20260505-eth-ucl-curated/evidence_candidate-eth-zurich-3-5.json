@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-eth-zurich-37a267d8def985e6",
+  "claimId": "cc-eth-zurich-3ecccc0b6798ed66",
+  "sourceSnapshotId": "ss-eth-zurich-3",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+  "sourceTitle": "AI Tools & Licenses | ETH Zurich",
+  "sourceLanguage": "en",
+  "snapshotHash": "976363c229602b634733ef8f90fadb815c16c9b722317afd9bdf10914f543f1e",
+  "evidenceSnippetOriginal": "The Gemini and NotebookLM offerings from Google, as well as Copilot from Microsoft, which are accessible via an ETH cloud subscription, are available to all ETH employees and students via secure access. It is therefore recommended that these tools be used primarily for teaching purposes.",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Tools & Licenses | ETH Zurich",
+    "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

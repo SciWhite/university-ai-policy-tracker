@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-ucl-4024b23195d63d8c",
+  "claimId": "cc-ucl-5e5a1b064b144c3d",
+  "sourceSnapshotId": "ss-ucl-2",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+  "sourceTitle": "GenAI and academic integrity in assessment — UCL",
+  "sourceLanguage": "en",
+  "snapshotHash": "c30c4bfc90ed4cc7d54295e9225da1f4733f69c3706007c7b3fda5b06ec1cc67",
+  "evidenceSnippetOriginal": "It's okay to use GenAI to help with spelling and grammar, and even with the tone of your language. However, make sure it isn't changing the content and meaning of what you've written. You should always understand the work you submit.",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "GenAI and academic integrity in assessment — UCL",
+    "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

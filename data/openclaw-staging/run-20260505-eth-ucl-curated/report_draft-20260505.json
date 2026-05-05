@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "report_draft",
+  "reportId": "report-20260505-eth-ucl-curated",
+  "title": "University AI Policy Tracker — Curated ETH Zurich and UCL Run Report 2026-05-05",
+  "createdAt": "2026-05-05T17:52:00Z",
+  "generatedAt": "2026-05-05T17:55:00Z",
+  "createdBy": "report-writer",
+  "draftPath": "content/reports/report-20260505-eth-ucl-curated.mdx",
+  "universities": [
+    {
+      "slug": "eth-zurich",
+      "name": "ETH Zurich",
+      "country": "CH",
+      "verifiedSources": 5,
+      "rejectedSources": 3,
+      "approvedClaims": 8,
+      "needsChangesClaims": 0,
+      "rejectedClaims": 0,
+      "claims": [
+        {
+          "claimText": "ETH Zurich advocates a proactive approach to the use of generative AI in educational contexts, emphasising responsible use among students and lecturers.",
+          "claimType": "teaching",
+          "confidence": 0.97,
+          "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html"
+        },
+        {
+          "claimText": "Students are responsible for the content of work they submit. Performance assessments must be conducted independently and personally; GenAI may serve a supplementary role but not replace student efforts.",
+          "claimType": "academic_integrity",
+          "confidence": 0.96,
+          "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html"
+        },
+        {
+          "claimText": "Lecturers determine whether and how GenAI may be used in their courses and for respective assessments. Teaching materials created with GenAI must be subjected to quality control by the lecturer.",
+          "claimType": "teaching",
+          "confidence": 0.96,
+          "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html"
+        },
+        {
+          "claimText": "Violations of GenAI guidelines such as use of unauthorised aids or non-disclosure of their use are subject to disciplinary action under existing performance assessment rules and the declaration of originality.",
+          "claimType": "academic_integrity",
+          "confidence": 0.95,
+          "sourceUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf"
+        },
+        {
+          "claimText": "ETH Zurich recommends Microsoft Copilot, Google Gemini, and NotebookLM for teaching purposes, as they offer data-protected access via ETH accounts where personal data is not used for training models.",
+          "claimType": "ai_tool_treatment",
+          "confidence": 0.93,
+          "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html"
+        },
+        {
+          "claimText": "Students must refrain from disclosing copyrighted, private, or confidential information to commercial GenAI clients unless expressly permitted, and must respect privacy and copyright of content they work with.",
+          "claimType": "privacy",
+          "confidence": 0.92,
+          "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html"
+        },
+        {
+          "claimText": "ETH Zurich states that technical recognition of AI-generated output is currently unreliable and will probably remain so; trust in such methods is not appropriate.",
+          "claimType": "academic_integrity",
+          "confidence": 0.98,
+          "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html"
+        },
+        {
+          "claimText": "ETH Zurich requires transparency about GenAI use: students must declare which tools they used and for which parts of their work; lecturers must communicate when GenAI use is permitted and make their own GenAI use visible.",
+          "claimType": "teaching",
+          "confidence": 0.94,
+          "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html"
+        }
+      ]
+    },
+    {
+      "slug": "ucl",
+      "name": "University College London",
+      "country": "GB",
+      "verifiedSources": 2,
+      "rejectedSources": 1,
+      "approvedClaims": 5,
+      "needsChangesClaims": 0,
+      "rejectedClaims": 0,
+      "claims": [
+        {
+          "claimText": "UCL designates Microsoft Copilot as its approved GenAI tool due to its enhanced data protection, positioning it as a more secure alternative to other GenAI services.",
+          "claimType": "ai_tool_treatment",
+          "confidence": 0.97,
+          "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub"
+        },
+        {
+          "claimText": "UCL uses a 3-category assessment framework for GenAI: Category 1 requires own work only; Category 2 permits GenAI with acknowledgement; Category 3 includes essential GenAI use as part of the assessment.",
+          "claimType": "academic_integrity",
+          "confidence": 0.95,
+          "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments"
+        },
+        {
+          "claimText": "UCL defines academic misconduct in the context of GenAI as gaining an unfair advantage over other students; there is no single list of fair and unfair uses as it depends on the assessment category.",
+          "claimType": "academic_integrity",
+          "confidence": 0.94,
+          "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments"
+        },
+        {
+          "claimText": "UCL provides Studiosity, a GenAI-powered service available 24/7 to all current students at all levels of study, to support academic writing and referencing skills.",
+          "claimType": "teaching",
+          "confidence": 0.96,
+          "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub"
+        },
+        {
+          "claimText": "UCL permits using GenAI to help with spelling, grammar, and language tone in assessments, but it must not change the content and meaning of what the student has written.",
+          "claimType": "academic_integrity",
+          "confidence": 0.95,
+          "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments"
+        }
+      ]
+    }
+  ],
+  "summary": "Curated staged run for ETH Zurich and UCL. This directory includes 7 verified official sources, 7 source snapshots, 13 claim candidates, and 13 approve review decisions. All artifacts remain staged candidates and require review before any canonical public claims are published.",
+  "blockers": [],
+  "nextRunRecommendations": [
+    "Review ETH Zurich and UCL approved claim candidates before promoting any canonical public facts."
+  ]
+}

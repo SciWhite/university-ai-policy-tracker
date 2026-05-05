@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "eth-zurich-ai-education-main",
+  "entityType": "university",
+  "entitySlug": "eth-zurich",
+  "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html",
+  "finalUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html",
+  "sourceTitle": "AI in Teaching and Learning — ETH Zurich",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "subdomain_expansion",
+  "queryUsed": "ethz.ch education page links to ai-in-education page",
+  "discoveredAt": "2026-05-05T17:30:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T17:30:06Z",
+  "verificationNotes": "Main ETH Zurich GenAI in education hub. Covers responsibility, transparency, fairness principles for students and lecturers. Links to guidelines PDF, academic integrity, tools, projects. HTTP 200, readable content confirmed.",
+  "robotsPolicy": "respect"
+}

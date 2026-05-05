@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-eth-zurich-5",
+  "sourceCandidateId": "eth-zurich-ai-ethics-policy",
+  "sourceUrl": "https://aiethicspolicy.ethz.ch/",
+  "finalUrl": "https://aiethicspolicy.ethz.ch/",
+  "attemptedAt": "2026-05-05T17:43:30Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "55b5500f9a27f26bb3a9e115e48636d181ec344a598f87524555a462782703e2"
+}

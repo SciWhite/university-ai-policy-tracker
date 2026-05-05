@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-20260505-eth-ucl-curated",
+  "artifactType": "review_decision",
+  "decisionId": "rd-ucl-cc-f77af3748cd1012d",
+  "claimId": "cc-ucl-f77af3748cd1012d",
+  "decision": "approve",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim is well-supported by the UCL GenAI Hub page. Evidence snippet confirms: 'UCL offers a service called Studiosity to support students with their academic writing and referencing skills. The platform uses GenAI and is available 24/7 to all current students, at all levels of study.' Accurate, specific, and not overstated.",
+  "decidedAt": "2026-05-05T17:48:00Z",
+  "canonicalEntitySlug": "ucl",
+  "sourceUrl": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub"
+}
