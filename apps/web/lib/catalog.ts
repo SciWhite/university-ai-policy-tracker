@@ -12,6 +12,7 @@ import {
   type CatalogUniversity,
   type PublicEntitySummary
 } from "@uapt/shared";
+import { getSiteBaseUrl } from "./site-url";
 
 type Parser<T> = {
   parse(value: unknown): T;
@@ -131,8 +132,4 @@ async function fetchApi<T>(path: string, parser: Parser<T>): Promise<T | null> {
   } catch {
     return null;
   }
-}
-
-function getSiteBaseUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 }

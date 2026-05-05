@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { seedUniversities } from "@uapt/shared";
+import { getSiteBaseUrl } from "../lib/site-url";
 
 const staticRoutes = [
   "",
@@ -29,8 +30,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
         : now
     }))
   ];
-}
-
-function getSiteBaseUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 }

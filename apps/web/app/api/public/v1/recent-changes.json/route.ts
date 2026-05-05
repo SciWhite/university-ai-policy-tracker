@@ -5,11 +5,10 @@ import {
   publicRecentChangesResponseSchema
 } from "@uapt/shared";
 import { NextResponse } from "next/server";
+import { getSiteBaseUrl } from "../../../../../lib/site-url";
 
 export function GET() {
-  const summaries = buildSeedPublicEntitySummaries(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-  );
+  const summaries = buildSeedPublicEntitySummaries(getSiteBaseUrl());
   const response = publicRecentChangesResponseSchema.parse({
     generatedAt: new Date().toISOString(),
     license: TRACKER_METADATA_LICENSE,
