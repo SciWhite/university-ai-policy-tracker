@@ -63,3 +63,13 @@ OpenClaw is orchestration and crawling only. It may submit staged artifacts thro
 ## Content Retention
 
 Raw snapshots, screenshots, browser profiles, and logs should not be committed to Git. Keep them in controlled object storage or local ignored artifact directories.
+
+## OpenClaw PR Validation
+
+Before a crawl/data PR is reviewed, run:
+
+```bash
+pnpm validate:openclaw-artifacts path/to/staging-directory
+```
+
+The validator fails staged output when evidence is missing, source language is absent, review state is unclear, `/api/public` links are not versioned under `/api/public/v1`, raw HTML/PDF/screenshots are staged for Git, or OpenClaw attempts to publish canonical claims.

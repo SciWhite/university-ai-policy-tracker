@@ -1,0 +1,25 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "sample-run-20260504",
+  "planId": "sample-plan-20260504",
+  "createdAt": "2026-05-04T00:00:00.000Z",
+  "createdBy": "openclaw-fixture",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "example-university",
+      "sourceUrl": "https://example.edu/policies/ai-use",
+      "sourceTitle": "Example University AI Use Guidance",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["academic_integrity", "teaching"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Do not follow login-gated pages."
+  ]
+}

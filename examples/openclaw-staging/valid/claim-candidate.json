@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "sample-run-20260504",
+  "claimId": "sample-claim-1",
+  "entityType": "university",
+  "entitySlug": "example-university",
+  "claimType": "teaching",
+  "claimText": "Example University guidance says students should follow course-specific instructions about generative AI tools.",
+  "normalizedValue": "course_specific_ai_instructions",
+  "sourceLanguage": "en",
+  "confidence": 0.84,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["sample-evidence-1"],
+  "citation": {
+    "citationTitle": "Example University AI Policy Tracker record",
+    "sourceUrl": "https://example.edu/policies/ai-use",
+    "publicJsonUrl": "https://university-ai-policy-tracker.example/api/public/v1/universities/example-university.json",
+    "canonicalUrl": "https://university-ai-policy-tracker.example/universities/example-university",
+    "publisher": "Example University",
+    "retrievedAt": "2026-05-04T00:05:00.000Z",
+    "snapshotHash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

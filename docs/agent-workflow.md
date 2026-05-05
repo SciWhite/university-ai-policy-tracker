@@ -52,3 +52,15 @@ OpenClaw should receive only limited ingestion credentials. It should not receiv
 ## Public Contract Rule
 
 Public claims require source URL, source snapshot hash, and a short evidence snippet. `confidence` remains machine confidence, while `reviewState` remains workflow status. Student-facing and course-level features should reuse this same claim/evidence model instead of introducing unsupported public comments.
+
+## Data PR Validation
+
+OpenClaw data PRs must validate before review:
+
+```bash
+pnpm validate:openclaw-artifacts path/to/staging-directory
+```
+
+Expected staged artifact types are `crawl_plan`, `source_snapshot`, `claim_candidate`, `evidence_candidate`, `review_decision`, and `report_draft`. OpenClaw must not mark its own output as `human_reviewed` and must not set candidate claims as canonical/public facts.
+
+Reviewers should use `docs/openclaw-data-prs.md` as the checklist for data PRs.

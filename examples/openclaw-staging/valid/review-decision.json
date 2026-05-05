@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "sample-run-20260504",
+  "decisionId": "sample-review-1",
+  "claimId": "sample-claim-1",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Fixture decision only. It does not publish a canonical claim.",
+  "decidedAt": "2026-05-04T00:10:00.000Z"
+}

@@ -76,8 +76,18 @@ OpenClaw should produce artifacts that can validate into this contract:
 - policy claim candidate
 - claim evidence
 - source attribution
+- review decision
+- report draft
 
 OpenClaw output should arrive through pull requests or limited ingestion credentials. OpenClaw must not deploy services, push `main`, or write the production database directly.
+
+Repo-side validation is available with:
+
+```bash
+pnpm validate:openclaw-artifacts path/to/staging-directory
+```
+
+OpenClaw staged artifacts must include `runId`, `sourceUrl`, `sourceLanguage`, content or snapshot hash, original-language evidence snippet, confidence, review state, citation fields, and the official source rights caveat. The validator rejects unversioned `/api/public` links, missing evidence, missing source language, raw HTML/PDF/screenshot paths intended for Git, OpenClaw attempts to publish canonical claims, and unclear review states.
 
 ## Student And Course Extension
 
