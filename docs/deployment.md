@@ -2,6 +2,8 @@
 
 No deployment is configured in the initial scaffold.
 
+Canonical public domain: `https://eduaipolicy.org`. The domain has been purchased and added to Cloudflare; deployment should point this domain at the selected web target after preview validation.
+
 ## Target Environments
 
 ### Public Web
@@ -9,6 +11,15 @@ No deployment is configured in the initial scaffold.
 Preferred target: Vercel project for `apps/web`.
 
 Alternative target: separate OCI web host behind Caddy or Nginx.
+
+Production web environment should set:
+
+```text
+NEXT_PUBLIC_SITE_URL=https://eduaipolicy.org
+WEB_PUBLIC_BASE_URL=https://eduaipolicy.org
+```
+
+If the API is hosted separately, set `API_PUBLIC_BASE_URL` to the public API origin. If the web app serves public JSON directly, `API_PUBLIC_BASE_URL` can remain aligned with `https://eduaipolicy.org`.
 
 ### Public Data/API
 

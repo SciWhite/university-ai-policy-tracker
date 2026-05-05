@@ -6,7 +6,7 @@ import {
 async function main() {
   const result = await seedInitialCatalog();
   console.log(
-    `Seeded ${result.universities} universities and ${result.sources} policy sources.`
+    `Seeded ${result.universities} universities, ${result.sources} policy sources, and ${result.claims} public claims.`
   );
 }
 

@@ -49,6 +49,22 @@ enum ReviewState {
   NEEDS_REVIEW
 }
 
+enum ClaimReviewState {
+  MACHINE_CANDIDATE
+  AGENT_REVIEWED
+  HUMAN_REVIEWED
+  NEEDS_REVIEW
+  REJECTED
+}
+
+enum CanonicalEntityType {
+  UNIVERSITY
+  TOOL
+  REGION
+  THEME
+  COURSE
+}
+
 enum CrawlStatus {
   QUEUED
   RUNNING
@@ -90,6 +106,99 @@ model University {
   @@map("universities")
 }
 
+model CanonicalEntity {
+  id           String              @id @default(cuid())
+  type         CanonicalEntityType
+  slug         String
+  name         String
+  canonicalUrl String              @map("canonical_url")
+  aliases      String[]            @default([])
+  summary      String?
+  createdAt    DateTime            @default(now()) @map("created_at")
+  updatedAt    DateTime            @updatedAt @map("updated_at")
+
+  policyClaims PolicyClaim[]
+
+  @@unique([type, slug])
+  @@index([type])
+  @@map("canonical_entities")
+}
+
+model PolicyClaim {
+  id                String           @id @default(cuid())
+  canonicalEntityId String           @map("canonical_entity_id")
+  claimType         String           @map("claim_type")
+  claimText         String           @map("claim_text")
+  claimValue        String?          @map("claim_value")
+  confidence        Float
+  reviewState       ClaimReviewState @default(MACHINE_CANDIDATE) @map("review_state")
+  lastCheckedAt     DateTime?        @map("last_checked_at")
+  lastChangedAt     DateTime?        @map("last_changed_at")
+  dedupeKey         String?          @unique @map("dedupe_key")
+  createdAt         DateTime         @default(now()) @map("created_at")
+  updatedAt         DateTime         @updatedAt @map("updated_at")
+
+  canonicalEntity CanonicalEntity @relation(fields: [canonicalEntityId], references: [id], onDelete: Cascade)
+  evidence        ClaimEvidence[]
+
+  @@index([canonicalEntityId])
+  @@index([reviewState])
+  @@index([lastChangedAt])
+  @@map("policy_claims")
+}
+
+model ClaimEvidence {
+  id                  String    @id @default(cuid())
+  policyClaimId       String    @map("policy_claim_id")
+  sourceAttributionId String?   @map("source_attribution_id")
+  policySourceId      String?   @map("policy_source_id")
+  sourceSnapshotId    String?   @map("source_snapshot_id")
+  sourceUrl           String    @map("source_url")
+  sourceSnapshotHash  String    @map("source_snapshot_hash")
+  evidenceSnippet     String    @map("evidence_snippet")
+  snippetLocation     String?   @map("snippet_location")
+  retrievedAt         DateTime? @map("retrieved_at")
+  dedupeKey           String?   @unique @map("dedupe_key")
+  createdAt           DateTime  @default(now()) @map("created_at")
+
+  policyClaim       PolicyClaim        @relation(fields: [policyClaimId], references: [id], onDelete: Cascade)
+  policySource      PolicySource?      @relation(fields: [policySourceId], references: [id], onDelete: SetNull)
+  sourceAttribution SourceAttribution? @relation(fields: [sourceAttributionId], references: [id], onDelete: SetNull)
+  sourceSnapshot    SourceSnapshot?    @relation(fields: [sourceSnapshotId], references: [id], onDelete: SetNull)
+
+  @@index([policyClaimId])
+  @@index([policySourceId])
+  @@index([sourceSnapshotId])
+  @@index([sourceSnapshotHash])
+  @@map("claim_evidence")
+}
+
+model SourceAttribution {
+  id               String    @id @default(cuid())
+  policySourceId   String?   @map("policy_source_id")
+  sourceSnapshotId String?   @map("source_snapshot_id")
+  sourceUrl        String    @map("source_url")
+  finalUrl         String?   @map("final_url")
+  citationTitle    String    @map("citation_title")
+  publisher        String?
+  retrievedAt      DateTime? @map("retrieved_at")
+  snapshotHash     String    @map("snapshot_hash")
+  sourceType       String    @default("official_policy_page") @map("source_type")
+  official         Boolean   @default(true)
+  sourceRights     String    @map("source_rights")
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+
+  claimEvidence  ClaimEvidence[]
+  policySource   PolicySource?   @relation(fields: [policySourceId], references: [id], onDelete: SetNull)
+  sourceSnapshot SourceSnapshot? @relation(fields: [sourceSnapshotId], references: [id], onDelete: SetNull)
+
+  @@unique([sourceUrl, snapshotHash])
+  @@index([policySourceId])
+  @@index([sourceSnapshotId])
+  @@map("source_attributions")
+}
+
 model PolicySource {
   id              String           @id @default(cuid())
   universityId    String           @map("university_id")
@@ -110,6 +219,8 @@ model PolicySource {
   policyVersions       PolicyVersion[]
   reviewDecisions      ReviewDecision[]
   snapshots            SourceSnapshot[]
+  claimEvidence        ClaimEvidence[]
+  sourceAttributions   SourceAttribution[]
 
   @@unique([universityId, url])
   @@index([documentStatus])
@@ -134,6 +245,8 @@ model SourceSnapshot {
   extractionCandidates ExtractionCandidate[]
   policySource         PolicySource          @relation(fields: [policySourceId], references: [id], onDelete: Cascade)
   policyVersions       PolicyVersion[]
+  claimEvidence        ClaimEvidence[]
+  sourceAttributions   SourceAttribution[]
 
   @@unique([policySourceId, contentHash])
   @@index([fetchedAt])

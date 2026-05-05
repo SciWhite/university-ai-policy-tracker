@@ -26,6 +26,47 @@ a {
   box-sizing: border-box;
 }
 
+.site-header,
+.site-footer {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 20px 24px;
+}
+
+.site-header nav,
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.site-header a,
+.site-footer a {
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brand-link {
+  white-space: nowrap;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.site-footer p {
+  line-height: 1.55;
+  margin: 0;
+  max-width: 560px;
+}
+
 .page-shell {
   margin: 0 auto;
   max-width: 1080px;
@@ -96,10 +137,15 @@ h3 {
 
 .metrics-grid,
 .card-grid,
-.link-grid {
+.link-grid,
+.detail-grid {
   display: grid;
   gap: 14px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.detail-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .metrics-grid {
@@ -141,11 +187,24 @@ h3 {
   gap: 14px;
 }
 
+.notice-card {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  color: #7c2d12;
+  line-height: 1.6;
+  padding: 16px;
+}
+
 .policy-meta,
 .tag-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.hero-meta {
+  margin-top: 24px;
 }
 
 .pill {
@@ -159,14 +218,45 @@ h3 {
   padding: 5px 9px;
 }
 
+.pill-muted {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
 .source-list {
   line-height: 1.7;
   padding-left: 20px;
+  overflow-wrap: anywhere;
 }
 
 .source-list a {
   color: var(--accent);
   font-weight: 700;
+}
+
+.evidence-snippet {
+  border-left: 3px solid var(--accent);
+  color: var(--foreground);
+  line-height: 1.65;
+  margin: 0;
+  padding: 4px 0 4px 14px;
+}
+
+.evidence-snippet footer {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.compact-list {
+  line-height: 1.7;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.compact-list li + li {
+  margin-top: 8px;
 }
 
 @media (max-width: 720px) {
@@ -177,5 +267,12 @@ h3 {
   .section-heading {
     align-items: start;
     flex-direction: column;
+  }
+
+  .site-header,
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px;
   }
 }

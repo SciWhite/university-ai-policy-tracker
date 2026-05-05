@@ -1,0 +1,28 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "sample-run-20260504",
+  "evidenceId": "sample-evidence-1",
+  "claimId": "sample-claim-1",
+  "sourceSnapshotId": "sample-snapshot-1",
+  "sourceUrl": "https://example.edu/policies/ai-use",
+  "finalUrl": "https://example.edu/policies/ai-use",
+  "sourceTitle": "Example University AI Use Guidance",
+  "sourceLanguage": "en",
+  "snapshotHash": "1111111111111111111111111111111111111111111111111111111111111111",
+  "evidenceSnippetOriginal": "Students should follow course-specific instructions about generative AI tools.",
+  "evidenceLocator": "Guidance section",
+  "evidenceType": "official_source",
+  "relevance": 0.84,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Example University AI Use Guidance",
+    "sourceUrl": "https://example.edu/policies/ai-use",
+    "publicJsonUrl": "https://university-ai-policy-tracker.example/api/public/v1/universities/example-university.json",
+    "canonicalUrl": "https://university-ai-policy-tracker.example/universities/example-university",
+    "publisher": "Example University",
+    "retrievedAt": "2026-05-04T00:05:00.000Z",
+    "snapshotHash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "sample-run-20260504",
+  "reportId": "sample-report-1",
+  "title": "Sample OpenClaw Pilot Run Summary",
+  "generatedAt": "2026-05-04T00:15:00.000Z",
+  "draftPath": "content/reports/sample-openclaw-pilot-run.mdx",
+  "summary": "Fixture report draft for validator coverage. It contains no real crawl output.",
+  "referencedClaimIds": ["sample-claim-1"],
+  "publicJsonLinks": [
+    "https://university-ai-policy-tracker.example/api/public/v1/universities/example-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

@@ -10,4 +10,16 @@ export {
   listCatalogUniversities,
   type CatalogSourceRecord
 } from "./catalog.js";
+export {
+  ingestCrawlRun,
+  ingestExtractionCandidate,
+  ingestSourceSnapshot,
+  type IngestedCrawlRunResult,
+  type IngestedExtractionCandidateResult,
+  type IngestedSourceSnapshotResult
+} from "./ingest.js";
+export {
+  getPublicUniversitySummaryBySlug,
+  listPublicRecentChanges
+} from "./public-contract.js";
 export { seedInitialCatalog, type SeedResult } from "./seed.js";
