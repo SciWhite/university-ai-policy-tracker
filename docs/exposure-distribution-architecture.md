@@ -394,6 +394,75 @@ Each change entry should show:
 - source attribution caveat,
 - no legal advice and no academic integrity advice boundaries.
 
+### 4.7 Front-End Product Priority
+
+The front end should behave like a trustworthy public database, not a decorative landing page. Prioritize features that make evidence easier to inspect, cite, compare, and reuse.
+
+Priority levels:
+
+- P1 foundation: build before scaling pages, because later refactors become expensive.
+- P2 public trust: build while the first 20-50 high-quality pages are being prepared.
+- P3 expansion: build after initial pages and OpenClaw pilot data are stable.
+- P4 ecosystem: build after the site has recurring usage, external citations, or contribution volume.
+
+P1 foundation features:
+
+- design tokens for light mode and dark mode,
+- system color preference support through `prefers-color-scheme`,
+- manual theme toggle with local persistence,
+- semantic color tokens for review states, confidence, source types, diffs, and charts,
+- i18n routing and locale-aware metadata architecture,
+- source-first multilingual rendering rules,
+- reusable claim/evidence card component,
+- reusable citation/copy actions.
+
+Dark mode is a design-system requirement, not a standalone visual theme. It should be implemented through tokens before the UI has many hard-coded cards, charts, diff views, and status badges.
+
+Multilingual support is a data-contract and routing requirement. A localized page must never overwrite canonical facts. It may localize UI, summaries, taxonomy labels, citations, and helper text while preserving original evidence and source URLs.
+
+P2 public trust features:
+
+- evidence-backed claim cards,
+- official source cards,
+- copy citation button,
+- copy public JSON URL button,
+- data freshness block,
+- review state and confidence display,
+- clear candidate-versus-reviewed labeling,
+- trust-route navigation on every entity page,
+- SEO metadata, canonical URL, and structured data helpers.
+
+P3 expansion features:
+
+- university list search,
+- filters for country, region, tool, policy status, review state, governance theme, last checked, and last changed,
+- entity change timeline,
+- GitHub Diff-style source and claim diffs,
+- source history page,
+- theme and region page templates,
+- noindex controls for thin pages,
+- Open Graph/share-image template for reports and high-value pages.
+
+P4 ecosystem features:
+
+- embeddable university policy status widget preview,
+- recent changes widget preview,
+- institution correction call-to-action,
+- report missing source flow,
+- report policy change flow,
+- translation correction flow,
+- read-only MCP/API documentation surface,
+- course-level policy submission entry points after moderation exists.
+
+Feature priority rules:
+
+- Claim/evidence inspection outranks visual polish.
+- Multilingual evidence integrity outranks localized page count.
+- Reviewed claims outrank broad coverage.
+- Search and filters should wait until enough records exist to make filtering useful.
+- Public submission forms should create review tasks, not canonical facts.
+- Widgets and MCP integrations should stay read-only until correction and moderation workflows are mature.
+
 ## 5. Layer 3: Distribution Layer
 
 The Distribution Layer turns the project into reusable infrastructure.
@@ -1060,6 +1129,10 @@ Build:
 - tool page contract,
 - region page contract,
 - theme page contract,
+- design tokens for light and dark mode,
+- source-first i18n routing and metadata plan,
+- reusable claim/evidence card component,
+- reusable citation and public JSON copy actions,
 - citation-ready summary block,
 - official sources block,
 - evidence-backed claims block,
@@ -1072,6 +1145,8 @@ Acceptance criteria:
 - Pages expose last checked, last changed, review state, and source links.
 - Unreviewed claims are clearly labeled or hidden from canonical summaries.
 - Localized display is separated from canonical facts.
+- Dark mode uses semantic tokens and does not hard-code status or diff colors.
+- Localized pages preserve original evidence, original source URL, and source language.
 
 ### P2: Public JSON, API Versioning, And Core Trust Routes
 
@@ -1084,6 +1159,9 @@ Build:
 - `/changes`,
 - `/llms.txt`,
 - sitemap and robots plan,
+- entity-page data freshness block,
+- reviewed-versus-candidate visual labeling,
+- SEO metadata, canonical URL, and structured data helpers,
 - JSON schema examples.
 
 Acceptance criteria:
@@ -1092,6 +1170,8 @@ Acceptance criteria:
 - Public JSON includes citation and rights caveats.
 - Core trust routes are linkable and part of site navigation.
 - `llms.txt` is documented as auxiliary, not a guaranteed ranking signal.
+- Public pages expose copyable citation and public JSON URLs.
+- Structured data matches visible page content.
 
 ### P3: OpenClaw Contract Alignment
 
@@ -1115,10 +1195,13 @@ Acceptance criteria:
 
 Build:
 
+- entity change timeline,
 - source change pages,
 - entity change pages,
 - monthly change pages,
 - diff views,
+- GitHub Diff-style source and claim diffs,
+- source history page,
 - recent changes feed,
 - claim supersession model.
 
@@ -1128,6 +1211,7 @@ Acceptance criteria:
 - Each change links old/new snapshot hashes.
 - Recent changes are available as HTML and JSON.
 - Change pages can support monthly reports.
+- Diff views use theme tokens and remain readable in light and dark mode.
 
 ### P5: Dataset Distribution And GitHub Discoverability
 
@@ -1155,6 +1239,7 @@ Build:
 - first monthly data report,
 - report template,
 - chart assets,
+- Open Graph/share-image template,
 - RSS/Atom feeds,
 - outreach package,
 - share images.
@@ -1170,6 +1255,7 @@ Acceptance criteria:
 
 Build:
 
+- embeddable widget preview surface,
 - embeddable status widget,
 - recent changes widget,
 - read-only MCP server design,
@@ -1183,6 +1269,7 @@ Acceptance criteria:
 - Widgets display last checked and source/review state.
 - MCP is read-only and cannot mutate records.
 - API docs include versioning and citation guidance.
+- Widgets do not expose unreviewed claims unless clearly labeled.
 
 ### P8: Contribution, Institution Correction, And Course-Level UGC
 
