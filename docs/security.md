@@ -2,6 +2,8 @@
 
 This project is public-data oriented, but it still needs strict separation because crawlers and automation agents can be high risk.
 
+Canonical public domain: `https://eduaipolicy.org`. The domain is managed through Cloudflare; crawler automation must not receive broad Cloudflare or deployment credentials.
+
 ## Non-Negotiable Boundary
 
 OpenClaw runs with high-risk bypass/root-like automation permissions. Do not deploy the public website, production API, PostgreSQL, Redis, or canonical data store on the OpenClaw server.

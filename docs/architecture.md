@@ -2,6 +2,8 @@
 
 University AI Policy Tracker is a public, SEO-first and GEO-ready policy-change intelligence site. It tracks source-backed university AI policy status, historical snapshots, diffs, taxonomy classifications, public JSON, citation-ready claims, and MDX reports.
 
+Canonical public domain: `https://eduaipolicy.org`. DNS and edge configuration are managed in Cloudflare.
+
 ## Deployment Boundary
 
 OpenClaw is only an automation and crawling orchestrator. It must not host the public website, production API, PostgreSQL, Redis, or canonical production data.

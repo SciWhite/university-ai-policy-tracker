@@ -2,6 +2,8 @@
 
 This document is the long-term product, data, and distribution roadmap for University AI Policy Tracker. It is intentionally a development document only: it does not implement code, migrations, deployment, or OpenClaw configuration.
 
+Canonical public domain: `https://eduaipolicy.org`. The domain has been purchased and added to Cloudflare; production deployment should use this as the stable canonical site origin.
+
 ## 1. Positioning
 
 The project should not be positioned as another AI policy blog or link directory.
@@ -549,7 +551,7 @@ Example future embed shape:
 
 ```html
 <script
-  src="https://example.com/widgets/university-ai-policy.js"
+  src="https://eduaipolicy.org/widgets/university-ai-policy.js"
   data-university="harvard-university"
 ></script>
 ```
@@ -638,7 +640,7 @@ Requirements:
 Suggested entity citation shape:
 
 ```text
-University AI Policy Tracker. "Harvard University AI Policy." Last checked 2026-05-04. Source-backed claims and official source URLs available at: https://...
+University AI Policy Tracker. "Harvard University AI Policy." Last checked 2026-05-04. Source-backed claims and official source URLs available at: https://eduaipolicy.org/universities/harvard
 ```
 
 Dataset citation should cite the tracker metadata, not official source documents as if they were relicensed.

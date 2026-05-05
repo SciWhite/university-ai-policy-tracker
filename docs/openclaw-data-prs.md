@@ -2,6 +2,8 @@
 
 OpenClaw crawl output is staged candidate data. It must be reviewed before merge and must never deploy services, push `main`, or write the production database directly.
 
+Canonical public domain: `https://eduaipolicy.org`. OpenClaw PRs may generate tracker links under this domain, but must not change Cloudflare, DNS, deployment settings, or production credentials.
+
 ## Required Artifact Types
 
 OpenClaw data PRs should stage JSON artifacts that validate against `openclaw-artifact-v1`:

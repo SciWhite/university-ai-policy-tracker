@@ -2,6 +2,8 @@
 
 University AI Policy Tracker publishes tracker metadata and source-backed claims for citation. It does not republish official university documents as open content.
 
+Canonical public domain: `https://eduaipolicy.org`. Citations should use canonical pages and public JSON records under this domain once production is live.
+
 ## Public Claim Requirements
 
 Every public claim must include:
@@ -43,6 +45,12 @@ Use the canonical page and JSON record together:
 
 ```text
 {University name} AI Policy Tracker record. University AI Policy Tracker. Last checked {YYYY-MM-DD}. {canonical URL}
+```
+
+Example production canonical URL shape:
+
+```text
+https://eduaipolicy.org/universities/{slug}
 ```
 
 When citing a specific claim, also retain the source URL, snapshot hash, and evidence snippet from the public JSON.

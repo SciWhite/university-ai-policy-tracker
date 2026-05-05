@@ -6,8 +6,7 @@ export const OFFICIAL_SOURCE_RIGHTS_CAVEAT =
   "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.";
 export const NO_ADVICE_BOUNDARY =
   "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.";
-export const DEFAULT_PUBLIC_SITE_BASE_URL =
-  "https://university-ai-policy-tracker.example";
+export const DEFAULT_PUBLIC_SITE_BASE_URL = "https://eduaipolicy.org";
 
 export const canonicalEntityTypeSchema = z.enum([
   "university",

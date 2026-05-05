@@ -2,6 +2,8 @@
 
 The crawler should collect public policy evidence without bypassing access controls or creating avoidable load.
 
+Canonical public domain: `https://eduaipolicy.org`. Crawler output may include this domain for tracker canonical URLs, while source URLs must remain the original university URLs.
+
 ## Fetch Order
 
 1. Use plain HTTP fetch first.

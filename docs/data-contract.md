@@ -2,6 +2,8 @@
 
 The P0 public data contract is claim/evidence/citation first. Extraction candidates remain useful intermediate records, but they are not the public source of truth.
 
+Canonical public domain: `https://eduaipolicy.org`. Public canonical URLs should be generated from this base in production.
+
 ## Core Objects
 
 ### CanonicalEntity
@@ -41,13 +43,13 @@ Describes provenance and rights for an official source. It records source URL, f
 Public university JSON is available at:
 
 ```text
-/api/public/v1/universities/{slug}.json
+https://eduaipolicy.org/api/public/v1/universities/{slug}.json
 ```
 
 Recent changes JSON is available at:
 
 ```text
-/api/public/v1/recent-changes.json
+https://eduaipolicy.org/api/public/v1/recent-changes.json
 ```
 
 The university JSON includes:

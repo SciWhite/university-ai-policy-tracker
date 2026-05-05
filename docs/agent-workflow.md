@@ -2,6 +2,8 @@
 
 OpenClaw can orchestrate crawling and review agents, but it should write only staged data using limited credentials. It must not deploy the public website, write the production database directly, or push `main`.
 
+Canonical public domain: `https://eduaipolicy.org`. Agents may reference this domain in staged canonical URLs, but they must not deploy or change Cloudflare/DNS settings.
+
 ## Agent Roles
 
 ### policy-manager

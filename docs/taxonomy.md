@@ -2,6 +2,8 @@
 
 The taxonomy should keep official policy conclusions separate from machine or student-generated interpretations.
 
+Canonical public domain: `https://eduaipolicy.org`. Taxonomy values are stable data classifications and should not encode deployment, domain, or presentation-specific concerns.
+
 ## Document Status
 
 - `university_wide_policy`
