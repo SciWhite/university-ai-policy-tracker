@@ -42,10 +42,13 @@ export function buildSeedPublicEntitySummary(
       evidence: [
         {
           sourceUrl: source.url,
+          sourceLanguage: "en",
           sourceSnapshotHash: attribution.snapshotHash,
           evidenceSnippet:
             `Seed catalog record: ${source.title}. This local example is a ` +
             "contract placeholder, not a reviewed policy conclusion.",
+          evidenceSnippetDisplay:
+            "Display helper: local seed metadata only. Original evidence remains canonical.",
           retrievedAt: source.lastCheckedAt,
           attribution
         }

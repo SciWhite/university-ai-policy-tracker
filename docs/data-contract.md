@@ -29,10 +29,14 @@ Confidence and review state must not be merged.
 Links a policy claim to source proof. Every public claim needs at least one evidence record with:
 
 - source URL
+- source language
 - source snapshot hash
-- short evidence snippet
+- short evidence snippet in the original source language
+- optional localized display snippet or summary
 - retrieved timestamp when available
 - source attribution
+
+Original-language evidence is canonical. Localized display text is presentation-only helper content and must not replace source URL, source hash, review state, confidence, or the original evidence snippet.
 
 ### SourceAttribution
 

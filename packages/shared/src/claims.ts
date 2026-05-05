@@ -62,8 +62,10 @@ export const sourceAttributionSchema = z.object({
 export const claimEvidenceSchema = z.object({
   id: z.string().min(1).optional(),
   sourceUrl: z.string().url(),
+  sourceLanguage: z.string().min(2).max(16).optional(),
   sourceSnapshotHash: z.string().regex(/^[a-f0-9]{64}$/),
   evidenceSnippet: z.string().min(1).max(700),
+  evidenceSnippetDisplay: z.string().min(1).max(700).optional(),
   snippetLocation: z.string().min(1).optional(),
   retrievedAt: z.string().datetime().optional(),
   attribution: sourceAttributionSchema

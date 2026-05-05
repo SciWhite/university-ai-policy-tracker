@@ -6,7 +6,9 @@ import {
   getPublicJsonUrl,
   getPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
-import type { PolicyClaim } from "@uapt/shared";
+import { ClaimEvidenceCard } from "@/components/claim-evidence-card";
+import { CitationCopyActions } from "@/components/citation-copy-actions";
+import { DEFAULT_LOCALE } from "@/lib/i18n";
 
 interface UniversityPageProps {
   params: Promise<{
@@ -42,6 +44,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     notFound();
   }
   const jsonUrl = getPublicJsonUrl(slug);
+  const publicJsonUrl =
+    publicSummary.apiUrl ?? resolveUrl(jsonUrl, publicSummary.canonicalUrl);
   const reviewedClaims = publicSummary.claims.filter((claim) =>
     isReviewedClaim(claim.reviewState)
   );
@@ -106,9 +110,19 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
         <article className="policy-card">
           <h3>Suggested citation</h3>
           <p>{publicSummary.suggestedCitation}</p>
-          <div className="source-list">
-            <a href={jsonUrl}>Public JSON</a>
-          </div>
+          <CitationCopyActions
+            canonicalUrl={publicSummary.canonicalUrl}
+            citationText={publicSummary.suggestedCitation}
+            publicJsonUrl={publicJsonUrl}
+          />
+          <ul className="source-list">
+            <li>
+              <a href={publicSummary.canonicalUrl}>Canonical page</a>
+            </li>
+            <li>
+              <a href={publicJsonUrl}>Public JSON</a>
+            </li>
+          </ul>
           <p className="muted">{publicSummary.sourceRightsPolicy}</p>
           <ul className="compact-list">
             {publicSummary.limitations.map((limitation) => (
@@ -150,7 +164,15 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           <p>{reviewedClaims.length} reviewed public claim</p>
         </div>
         {reviewedClaims.length ? (
-          <ClaimGrid claims={reviewedClaims} />
+          <div className="card-grid">
+            {reviewedClaims.map((claim) => (
+              <ClaimEvidenceCard
+                claim={claim}
+                key={claim.id ?? claim.claimText}
+                locale={DEFAULT_LOCALE}
+              />
+            ))}
+          </div>
         ) : (
           <p className="notice-card">
             No reviewed claims are published for this record yet. Candidate claims
@@ -169,7 +191,17 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           URL, source snapshot hash, evidence, confidence, and review state so the
           record can be audited before review.
         </p>
-        <ClaimGrid claims={candidateClaims} />
+        {candidateClaims.length ? (
+          <div className="card-grid">
+            {candidateClaims.map((claim) => (
+              <ClaimEvidenceCard
+                claim={claim}
+                key={claim.id ?? claim.claimText}
+                locale={DEFAULT_LOCALE}
+              />
+            ))}
+          </div>
+        ) : null}
       </section>
 
       <section className="section">
@@ -179,51 +211,12 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   );
 }
 
-function ClaimGrid({
-  claims
-}: {
-  claims: PolicyClaim[];
-}) {
-  if (!claims.length) return null;
-
-  return (
-    <div className="card-grid">
-      {claims.map((claim) => (
-        <article className="policy-card" key={claim.id ?? claim.claimText}>
-          <div>
-            <h3>{claim.claimText}</h3>
-            <p>{claim.claimType}</p>
-          </div>
-          <div className="tag-row">
-            <span className="pill">Review: {claim.reviewState}</span>
-            <span className="pill">
-              Confidence {Math.round(claim.confidence * 100)}%
-            </span>
-          </div>
-          {claim.evidence.map((evidence) => (
-            <blockquote
-              className="evidence-snippet"
-              key={`${claim.claimText}:${evidence.sourceSnapshotHash}`}
-            >
-              {evidence.evidenceSnippet}
-              <footer>
-                Original-language evidence from{" "}
-                <a href={evidence.sourceUrl}>
-                  {evidence.attribution.citationTitle}
-                </a>
-                <br />
-                Snapshot hash: {evidence.sourceSnapshotHash}
-              </footer>
-            </blockquote>
-          ))}
-        </article>
-      ))}
-    </div>
-  );
-}
-
 function isReviewedClaim(reviewState: string): boolean {
   return reviewState === "agent_reviewed" || reviewState === "human_reviewed";
+}
+
+function resolveUrl(pathOrUrl: string, baseUrl: string): string {
+  return new URL(pathOrUrl, baseUrl).toString();
 }
 
 function formatDate(value: string): string {

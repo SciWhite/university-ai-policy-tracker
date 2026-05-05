@@ -1,6 +1,8 @@
 import "./globals.css";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ThemeScript } from "@/components/theme-script";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const metadata = {
   title: "University AI Policy Tracker",
@@ -10,19 +12,23 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
+        <ThemeScript />
         <header className="site-header">
           <Link className="brand-link" href="/">
             University AI Policy Tracker
           </Link>
-          <nav aria-label="Primary navigation">
-            <Link href="/universities">Universities</Link>
-            <Link href="/changes">Changes</Link>
-            <Link href="/datasets">Datasets</Link>
-            <Link href="/methodology">Methodology</Link>
-            <Link href="/citation">Citation</Link>
-          </nav>
+          <div className="site-header__actions">
+            <nav aria-label="Primary navigation">
+              <Link href="/universities">Universities</Link>
+              <Link href="/changes">Changes</Link>
+              <Link href="/datasets">Datasets</Link>
+              <Link href="/methodology">Methodology</Link>
+              <Link href="/citation">Citation</Link>
+            </nav>
+            <ThemeToggle />
+          </div>
         </header>
         {children}
         <footer className="site-footer">

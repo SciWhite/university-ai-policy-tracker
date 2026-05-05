@@ -1,0 +1,179 @@
+import type {
+  ClaimEvidence,
+  ClaimReviewState,
+  PolicyClaim
+} from "@uapt/shared";
+import {
+  DEFAULT_LOCALE,
+  getLocaleLabel,
+  getUiString,
+  isSupportedLocale,
+  type SupportedLocale
+} from "@/lib/i18n";
+
+interface ClaimEvidenceCardProps {
+  claim: PolicyClaim;
+  locale?: SupportedLocale;
+}
+
+const reviewLabels: Record<ClaimReviewState, string> = {
+  machine_candidate: "Machine candidate",
+  agent_reviewed: "Agent reviewed",
+  human_reviewed: "Human reviewed",
+  needs_review: "Needs review",
+  rejected: "Rejected"
+};
+
+const reviewNotes: Partial<Record<ClaimReviewState, string>> = {
+  machine_candidate:
+    "Machine candidates are source-backed records awaiting review and are not final policy conclusions.",
+  needs_review:
+    "This claim is held for review because the evidence or classification needs another pass.",
+  rejected:
+    "This claim is retained for audit context and should not be treated as a public conclusion."
+};
+
+export function ClaimEvidenceCard({
+  claim,
+  locale = DEFAULT_LOCALE
+}: ClaimEvidenceCardProps) {
+  return (
+    <article
+      className="claim-evidence-card"
+      data-review-state={claim.reviewState}
+    >
+      <header className="claim-evidence-card__header">
+        <div>
+          <p className="claim-evidence-card__type">
+            {formatClaimType(claim.claimType)}
+          </p>
+          <h3>{claim.claimText}</h3>
+        </div>
+        <div className="tag-row">
+          <span className="review-pill" data-review-state={claim.reviewState}>
+            Review: {reviewLabels[claim.reviewState]}
+          </span>
+          <span className="pill">
+            Confidence {Math.round(claim.confidence * 100)}%
+          </span>
+        </div>
+      </header>
+
+      {claim.claimValue ? (
+        <p className="claim-value">Normalized value: {claim.claimValue}</p>
+      ) : null}
+
+      {reviewNotes[claim.reviewState] ? (
+        <p className="claim-state-note">{reviewNotes[claim.reviewState]}</p>
+      ) : null}
+
+      {claim.lastCheckedAt || claim.lastChangedAt ? (
+        <dl className="claim-metadata-grid">
+          {claim.lastCheckedAt ? (
+            <div>
+              <dt>Last checked</dt>
+              <dd>{formatDate(claim.lastCheckedAt)}</dd>
+            </div>
+          ) : null}
+          {claim.lastChangedAt ? (
+            <div>
+              <dt>Last changed</dt>
+              <dd>{formatDate(claim.lastChangedAt)}</dd>
+            </div>
+          ) : null}
+        </dl>
+      ) : null}
+
+      <div className="evidence-stack">
+        {claim.evidence.map((evidence, index) => (
+          <EvidenceBlock
+            evidence={evidence}
+            index={index}
+            key={`${evidence.sourceUrl}:${evidence.sourceSnapshotHash}:${index}`}
+            locale={locale}
+          />
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function EvidenceBlock({
+  evidence,
+  index,
+  locale
+}: {
+  evidence: ClaimEvidence;
+  index: number;
+  locale: SupportedLocale;
+}) {
+  return (
+    <section className="evidence-block">
+      <div className="evidence-block__heading">
+        <p>{getUiString("originalEvidence", locale)}</p>
+        <span>Evidence {index + 1}</span>
+      </div>
+
+      <blockquote className="evidence-snippet">
+        {evidence.evidenceSnippet}
+        <footer>
+          Source:{" "}
+          <a href={evidence.sourceUrl}>{evidence.attribution.citationTitle}</a>
+        </footer>
+      </blockquote>
+
+      {evidence.evidenceSnippetDisplay ? (
+        <div className="localized-evidence">
+          <p>{getUiString("localizedDisplay", locale)} only</p>
+          <p>{evidence.evidenceSnippetDisplay}</p>
+        </div>
+      ) : null}
+
+      <dl className="claim-metadata-grid">
+        <div>
+          <dt>{getUiString("sourceLanguage", locale)}</dt>
+          <dd>{formatSourceLanguage(evidence.sourceLanguage)}</dd>
+        </div>
+        <div>
+          <dt>{getUiString("snapshotHash", locale)}</dt>
+          <dd className="hash-value">{evidence.sourceSnapshotHash}</dd>
+        </div>
+        {evidence.retrievedAt ? (
+          <div>
+            <dt>Retrieved</dt>
+            <dd>{formatDate(evidence.retrievedAt)}</dd>
+          </div>
+        ) : null}
+        {evidence.snippetLocation ? (
+          <div>
+            <dt>Evidence locator</dt>
+            <dd>{evidence.snippetLocation}</dd>
+          </div>
+        ) : null}
+      </dl>
+    </section>
+  );
+}
+
+function formatClaimType(value: string): string {
+  return value
+    .split("_")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function formatSourceLanguage(value: string | undefined): string {
+  if (!value) return "Unknown";
+
+  const normalized = value.toLowerCase().split("-")[0];
+  if (!isSupportedLocale(normalized)) return value;
+
+  return `${getLocaleLabel(normalized)} (${value})`;
+}
+
+function formatDate(value: string): string {
+  return new Intl.DateTimeFormat("en", {
+    dateStyle: "medium",
+    timeZone: "UTC"
+  }).format(new Date(value));
+}
