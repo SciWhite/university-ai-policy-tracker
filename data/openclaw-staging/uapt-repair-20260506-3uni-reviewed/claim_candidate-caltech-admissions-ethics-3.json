@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-caltech-admissions-ethics-3",
+  "entityType": "university",
+  "entitySlug": "california-institute-of-technology",
+  "claimType": "teaching",
+  "claimText": "Caltech admissions permits applicants to use AI tools like Grammarly or Microsoft Editor for grammar and spelling review of completed essays, to generate brainstorming questions or exercises, and to research the college application process.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-caltech-admissions-ethics-3"],
+  "citation": {
+    "citationTitle": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
+    "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

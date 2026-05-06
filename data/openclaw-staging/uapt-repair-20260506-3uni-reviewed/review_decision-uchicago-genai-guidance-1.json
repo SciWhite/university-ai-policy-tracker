@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-uchicago-genai-guidance-1",
+  "claimId": "cc-uchicago-genai-guidance-1",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-2-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source states: 'The use of confidential data with publicly available generative AI tools is prohibited without prior security and privacy review. This includes personally identifiable employee data, FERPA-covered student data, HIPAA-covered patient data, and may include research that is not yet publicly available.' Claim accurately captures this. Note: source says 'may include research' while claim says 'research that is not yet publicly available' — this is a minor softening but acceptable since the claim uses 'includes' which is consistent with the source's 'may include.' Hash verified: 764b5baf matches.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-caltech-repair-1",
+  "entityType": "university",
+  "entitySlug": "california-institute-of-technology",
+  "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+  "finalUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+  "sourceTitle": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "operator_seed",
+  "queryUsed": "Carried forward from previous run sc-caltech-1",
+  "discoveredAt": "2026-05-05T23:17:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T23:18:00Z",
+  "verificationNotes": "Carried forward from previous run. Re-verified via web_fetch: HTTP 200, readable content. Contains Fall 2026 admissions-specific AI ethics guidelines: prohibited uses (copying from AI, relying on AI for drafts, replacing voice with AI, translating via AI), permitted uses (grammar check, brainstorming, research). Approved by Undergraduate Faculty Admissions and Graduate Studies committees. Scope: admissions essays only, NOT university-wide policy.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-uchicago-genai-guidance-5",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "claimType": "privacy",
+  "claimText": "At the University of Chicago, if a proposed AI tool use exceeds standard risk tolerance but is not prohibited by compliance regulations, a Risk Acceptance Letter may be prepared to document reviewed and accepted risks under specific conditions.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-uchicago-genai-guidance-5"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidance",
+    "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

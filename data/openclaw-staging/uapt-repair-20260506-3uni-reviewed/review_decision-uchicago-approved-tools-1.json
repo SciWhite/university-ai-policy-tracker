@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-uchicago-approved-tools-1",
+  "claimId": "cc-uchicago-approved-tools-1",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-4-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "Codex local reviewer",
+  "notes": "Local reviewer correction: softened the claim to match the bound evidence snippet. The evidence supports the existence of an approved/restricted AI tools page and usage conditions, but does not itself show every table column originally named by the claim.",
+  "decidedAt": "2026-05-06T00:03:56.829Z"
+}

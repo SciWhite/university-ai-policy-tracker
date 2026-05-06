@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-uchicago-policy-crosswalk-3",
+  "claimId": "cc-uchicago-policy-crosswalk-3",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-3-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source states: 'Policy on Harassment, Discrimination, and Sexual Misconduct: Prohibits unlawful harassment, discrimination, and sexual misconduct. AI tools may not be used to generate harassing, discriminatory, or otherwise unlawful content. This includes the use of AI to create or alter images, audio, and videos.' Claim accurately captures this with proper attribution. Hash verified: 2c80278c matches.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

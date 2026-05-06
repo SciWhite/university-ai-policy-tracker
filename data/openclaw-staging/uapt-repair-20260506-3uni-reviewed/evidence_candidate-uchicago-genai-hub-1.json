@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-uchicago-genai-hub-1",
+  "claimId": "cc-uchicago-genai-hub-1",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-1-20260506",
+  "sourceUrl": "https://genai.uchicago.edu/",
+  "sourceTitle": "Generative AI at UChicago",
+  "sourceLanguage": "en",
+  "snapshotHash": "70fc1f89d7a4335ed37f5837642b63ddac7801408fe0a7bbf681139400111668",
+  "evidenceSnippetOriginal": "Generative artificial intelligence (AI) is a quickly evolving technology that offers capabilities to enhance teaching and learning, research, and administrative work at the University of Chicago. We want to provide the UChicago community with information on the latest tools integrating generative AI, as well as training, resources, and guidance.",
+  "evidenceLocator": "Opening paragraph",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI at UChicago",
+    "sourceUrl": "https://genai.uchicago.edu/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

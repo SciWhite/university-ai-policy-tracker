@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-caltech-hss-genai-4",
+  "entityType": "university",
+  "entitySlug": "california-institute-of-technology",
+  "claimType": "teaching",
+  "claimText": "The Caltech HSS generative AI policy states that generative AI may promote learning in some contexts and impede it in others, and instructors prioritize student learning in setting these policies.",
+  "sourceLanguage": "en",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-caltech-hss-genai-4"],
+  "citation": {
+    "citationTitle": "HSS Policy on Generative AI",
+    "sourceUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

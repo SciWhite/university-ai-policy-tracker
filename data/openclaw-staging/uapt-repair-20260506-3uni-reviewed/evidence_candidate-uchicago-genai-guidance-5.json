@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-uchicago-genai-guidance-5",
+  "claimId": "cc-uchicago-genai-guidance-5",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-2-20260506",
+  "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+  "sourceTitle": "Generative AI Guidance",
+  "sourceLanguage": "en",
+  "snapshotHash": "764b5baf5e211016e662d1fbfdd423d7b5e20301534b7720da12a35b146df51f",
+  "evidenceSnippetOriginal": "Getting an exception through a Risk Acceptance Letter (RAL): If the proposed use is not prohibited by compliance regulations but exceeds standard risk tolerance, and the requester still wishes to proceed with the purchase, the request is escalated to senior leadership—the Chief Information Security Officer (CISO) and Chief Technology Officer (CTO), and the Chief Privacy Officer (CPO)—for guidance.",
+  "evidenceLocator": "FAQ: What happens if a Generative AI tool does not meet University standards?",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Guidance",
+    "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-caltech-admissions-ethics-4",
+  "entityType": "university",
+  "entitySlug": "california-institute-of-technology",
+  "claimType": "teaching",
+  "claimText": "Caltech admissions AI guidelines were approved by the Undergraduate Faculty Admissions and Graduate Studies committees for the Fall 2026 application cycle, and may evolve for future cycles.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-caltech-admissions-ethics-4"],
+  "citation": {
+    "citationTitle": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
+    "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

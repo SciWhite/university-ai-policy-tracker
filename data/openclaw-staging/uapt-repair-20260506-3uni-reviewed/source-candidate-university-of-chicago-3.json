@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-uchicago-repair-3",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "sourceUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+  "finalUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+  "sourceTitle": "Relevant Policies for the Use of AI Tools",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "N/A - discovered via genai.uchicago.edu About navigation menu",
+  "discoveredAt": "2026-05-05T23:17:30Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T23:19:00Z",
+  "verificationNotes": "REPAIR re-verification via OpenCLI browser extract: 6514 chars. Contains Policy Crosswalk mapping 9 existing university policies to AI use: Acceptable Use, Confidential Information, Business Conduct, File Sharing, External Service Providers, SSN Usage, Research Data Protection, SRDS, Harassment/Discrimination. Plus General Guidelines on confidential/sensitive/restricted data with AI tools.",
+  "robotsPolicy": "respect"
+}

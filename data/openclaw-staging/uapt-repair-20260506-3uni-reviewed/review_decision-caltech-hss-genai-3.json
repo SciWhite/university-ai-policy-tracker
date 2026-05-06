@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-caltech-hss-genai-3",
+  "claimId": "cc-caltech-hss-genai-3",
+  "sourceSnapshotId": "ss-sc-caltech-repair-2-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source states: 'Students will also be expected to follow specific course guidance for documenting any permitted use of these tools.' Claim accurately paraphrases this. Properly scoped to HSS. Hash verified: evidence snapshotHash 624a5b6b matches source snapshot contentHash.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

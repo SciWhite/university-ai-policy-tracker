@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-caltech-repair-2-20260506",
+  "sourceCandidateId": "sc-caltech-repair-2",
+  "sourceUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+  "finalUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+  "attemptedAt": "2026-05-05T23:23:37Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 637,
+  "contentHash": "624a5b6b1d3e5ae32c1eb84dd677f3a76f1c33d1ee776017b6945362c286713b"
+}

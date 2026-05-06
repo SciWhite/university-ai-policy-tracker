@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-uchicago-genai-guidance-2",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "claimType": "privacy",
+  "claimText": "At the University of Chicago, generative AI systems, applications, and software products that process, analyze, or move confidential data require a security review before they are acquired, even if the software is free.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-uchicago-genai-guidance-2"],
+  "citation": {
+    "citationTitle": "Generative AI Guidance",
+    "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

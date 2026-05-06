@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-uchicago-genai-hub-1",
+  "claimId": "cc-uchicago-genai-hub-1",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-1-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports the claim. Source states the site provides 'information on the latest tools integrating generative AI, as well as training, resources, and guidance' for 'the UChicago community.' Claim accurately captures this as a central hub at genai.uchicago.edu. Hash verified: evidence snapshotHash 70fc1f89 matches source snapshot contentHash.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

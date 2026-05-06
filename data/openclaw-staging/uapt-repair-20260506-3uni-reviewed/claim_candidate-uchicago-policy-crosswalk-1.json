@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-uchicago-policy-crosswalk-1",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "claimType": "privacy",
+  "claimText": "At the University of Chicago, confidential, sensitive, or restricted data should not be used with generative AI tools unless the tool and the use have been reviewed and approved through the appropriate University process.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-uchicago-policy-crosswalk-1"],
+  "citation": {
+    "citationTitle": "Relevant Policies for the Use of AI Tools",
+    "sourceUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

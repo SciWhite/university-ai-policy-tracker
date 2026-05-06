@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-caltech-hss-genai-1",
+  "claimId": "cc-caltech-hss-genai-1",
+  "sourceSnapshotId": "ss-sc-caltech-repair-2-20260506",
+  "sourceUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+  "sourceTitle": "HSS Policy on Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "624a5b6b1d3e5ae32c1eb84dd677f3a76f1c33d1ee776017b6945362c286713b",
+  "evidenceSnippetOriginal": "At present, students submitting work for HSS courses may use generative AI tools only in ways that are explicitly allowed by the course instructor in the course materials. Any usage that is not specifically allowed should be assumed to be disallowed.",
+  "evidenceLocator": "Second paragraph",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "HSS Policy on Generative AI",
+    "sourceUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-caltech-admissions-ethics-1",
+  "claimId": "cc-caltech-admissions-ethics-1",
+  "sourceSnapshotId": "ss-sc-caltech-repair-1-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "Codex local reviewer",
+  "notes": "Local reviewer correction: narrowed wording from university-wide ethical use guidelines to Caltech admissions guidelines. The corrected claim is directly supported by the evidence snippet, which states Fall 2026 applicants must review the guidelines before submitting supplemental essays and that noncompliance may result in rescission of admission.",
+  "decidedAt": "2026-05-06T00:03:56.829Z"
+}

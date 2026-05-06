@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-uchicago-approved-tools-1",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "claimType": "ai_tool_treatment",
+  "claimText": "The University of Chicago maintains a page listing approved, restricted, and unauthorized AI tools, with use conditions and review information for the university community.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ec-uchicago-approved-tools-1"
+  ],
+  "citation": {
+    "citationTitle": "Approved and Restricted AI Tools",
+    "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

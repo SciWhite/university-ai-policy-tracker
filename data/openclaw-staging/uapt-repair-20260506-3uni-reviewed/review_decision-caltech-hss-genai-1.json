@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-caltech-hss-genai-1",
+  "claimId": "cc-caltech-hss-genai-1",
+  "sourceSnapshotId": "ss-sc-caltech-repair-2-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source states: 'students submitting work for HSS courses may use generative AI tools only in ways that are explicitly allowed by the course instructor in the course materials. Any usage that is not specifically allowed should be assumed to be disallowed.' Claim accurately quotes this. Properly scoped to 'Caltech's Humanities and Social Sciences (HSS) division' — not university-wide. Hash verified: evidence snapshotHash 624a5b6b matches source snapshot contentHash.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

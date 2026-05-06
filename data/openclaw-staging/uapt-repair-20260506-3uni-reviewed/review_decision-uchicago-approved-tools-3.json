@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-uchicago-approved-tools-3",
+  "claimId": "cc-uchicago-approved-tools-3",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-4-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source table row states: 'PhoenixAI | See PhoenixAI Service Usage Guidelines | General Use | Enterprise-supported | Can be used for sensitive information with IRB approval. | June 30, 2025.' Claim accurately captures PhoenixAI as internal platform, general use approval, and IRB requirement for sensitive data. Hash verified: 40aaab75 matches.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

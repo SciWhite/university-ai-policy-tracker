@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-uchicago-genai-hub-1",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "claimType": "ai_tool_treatment",
+  "claimText": "The University of Chicago provides a central hub at genai.uchicago.edu for information on generative AI tools, training, resources, and guidance for the university community.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-uchicago-genai-hub-1"],
+  "citation": {
+    "citationTitle": "Generative AI at UChicago",
+    "sourceUrl": "https://genai.uchicago.edu/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-uchicago-approved-tools-3",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "claimType": "ai_tool_treatment",
+  "claimText": "At the University of Chicago, PhoenixAI is the university's internal generative AI platform, approved for general use and can be used for sensitive information with IRB approval.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-uchicago-approved-tools-3"],
+  "citation": {
+    "citationTitle": "Approved and Restricted AI Tools",
+    "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

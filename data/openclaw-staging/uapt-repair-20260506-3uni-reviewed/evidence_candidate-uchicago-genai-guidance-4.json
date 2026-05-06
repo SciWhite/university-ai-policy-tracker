@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-uchicago-genai-guidance-4",
+  "claimId": "cc-uchicago-genai-guidance-4",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-2-20260506",
+  "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+  "sourceTitle": "Generative AI Guidance",
+  "sourceLanguage": "en",
+  "snapshotHash": "764b5baf5e211016e662d1fbfdd423d7b5e20301534b7720da12a35b146df51f",
+  "evidenceSnippetOriginal": "AI-generated content may be misleading or inaccurate. Generative AI technology may create citations to content that does not exist. Responses from generative AI tools may contain content and materials from other authors and may be copyrighted. It is the responsibility of the tool user to review the accuracy and ownership of any AI-generated content.",
+  "evidenceLocator": "Guideline 2: Responsibility for Content Accuracy and Ownership",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Guidance",
+    "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

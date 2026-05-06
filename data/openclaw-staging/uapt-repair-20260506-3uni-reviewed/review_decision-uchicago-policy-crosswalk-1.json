@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-uchicago-policy-crosswalk-1",
+  "claimId": "cc-uchicago-policy-crosswalk-1",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-3-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source states: 'Confidential data, sensitive data, or restricted data should not be used with generative AI tools unless the tool and the use have been reviewed and approved through the appropriate University process.' Claim accurately paraphrases this. Hash verified: 2c80278c matches.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

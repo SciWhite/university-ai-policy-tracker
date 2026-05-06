@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-caltech-repair-2-20260506",
+  "sourceCandidateId": "sc-caltech-repair-2",
+  "fetchAttemptId": "fa-sc-caltech-repair-2-20260506",
+  "canonicalEntitySlug": "california-institute-of-technology",
+  "sourceUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+  "finalUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+  "fetchedAt": "2026-05-05T23:23:37Z",
+  "sourceLanguage": "en",
+  "contentType": "text/html",
+  "contentHash": "624a5b6b1d3e5ae32c1eb84dd677f3a76f1c33d1ee776017b6945362c286713b",
+  "title": "HSS Policy on Generative AI",
+  "normalizedTextPath": "normalized/caltech-hss-generative-ai.txt",
+  "rightsNote": "Public university website, fair use for policy research",
+  "robotsAllowed": true
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-uchicago-approved-tools-4",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "claimType": "ai_tool_treatment",
+  "claimText": "At the University of Chicago, ChatGPT 3.5 and ChatGPT 4.0 are approved only for data that is made publicly available by its source, with restrictions limiting use to non-sensitive information.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-uchicago-approved-tools-4"],
+  "citation": {
+    "citationTitle": "Approved and Restricted AI Tools",
+    "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

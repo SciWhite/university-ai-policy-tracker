@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-uchicago-approved-tools-4",
+  "claimId": "cc-uchicago-approved-tools-4",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-4-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source table rows state: 'ChatGPT 3.5 | Approved for data that is made publicly available by its source. | General Use | Free | Only for non-sensitive information | January 17, 2025' and 'ChatGPT 4.0 | Approved for data that is made publicly available by its source. | General Use | Free | Only for non-sensitive information | January 17, 2025.' Claim accurately captures the approval scope and restrictions. Hash verified: 40aaab75 matches.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

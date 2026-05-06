@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-uchicago-repair-1-20260506",
+  "sourceCandidateId": "sc-uchicago-repair-1",
+  "sourceUrl": "https://genai.uchicago.edu/",
+  "finalUrl": "https://genai.uchicago.edu/",
+  "attemptedAt": "2026-05-05T23:23:40Z",
+  "fetchMode": "opencli",
+  "userAgentKind": "opencli",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 8500,
+  "contentHash": "70fc1f89d7a4335ed37f5837642b63ddac7801408fe0a7bbf681139400111668"
+}

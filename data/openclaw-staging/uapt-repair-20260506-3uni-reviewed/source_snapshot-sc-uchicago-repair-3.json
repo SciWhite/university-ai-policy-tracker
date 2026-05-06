@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-3-20260506",
+  "sourceCandidateId": "sc-uchicago-repair-3",
+  "fetchAttemptId": "fa-sc-uchicago-repair-3-20260506",
+  "canonicalEntitySlug": "university-of-chicago",
+  "sourceUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+  "finalUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+  "fetchedAt": "2026-05-05T23:24:15Z",
+  "sourceLanguage": "en",
+  "contentType": "text/html",
+  "contentHash": "2c80278c2e993a2d7e9eb8a044de11118518edf0e16872ba87b893a915d6ed17",
+  "title": "Relevant Policies for the Use of AI Tools",
+  "normalizedTextPath": "normalized/uchicago-relevant-policies.txt",
+  "rightsNote": "Public university website, fair use for policy research",
+  "robotsAllowed": true
+}

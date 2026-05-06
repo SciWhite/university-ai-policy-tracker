@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-caltech-hss-genai-2",
+  "claimId": "cc-caltech-hss-genai-2",
+  "sourceSnapshotId": "ss-sc-caltech-repair-2-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source states: 'This policy applies to all assignments, including major papers and exams as well as smaller assignments like discussion board posts, reflections, and problem sets.' Claim accurately paraphrases this. Properly scoped to 'Caltech HSS generative AI policy'. Hash verified: evidence snapshotHash 624a5b6b matches source snapshot contentHash.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

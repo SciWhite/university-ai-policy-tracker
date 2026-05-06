@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-uchicago-genai-guidance-2",
+  "claimId": "cc-uchicago-genai-guidance-2",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-2-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source states: 'Generative AI systems, applications, and software products that process, analyze, or move confidential data require a security review before they are acquired, even if the software is free.' Claim accurately paraphrases this. Hash verified: 764b5baf matches.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

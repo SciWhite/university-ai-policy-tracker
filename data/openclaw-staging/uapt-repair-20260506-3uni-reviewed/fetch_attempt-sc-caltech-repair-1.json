@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-caltech-repair-1-20260506",
+  "sourceCandidateId": "sc-caltech-repair-1",
+  "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+  "finalUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+  "attemptedAt": "2026-05-05T23:23:38Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2064,
+  "contentHash": "834763ce2fb3410531a090d61fe4a9ff7765db3e13ff1a73f7c8010c2a15185a"
+}

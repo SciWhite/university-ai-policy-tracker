@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-caltech-admissions-ethics-1",
+  "claimId": "cc-caltech-admissions-ethics-1",
+  "sourceSnapshotId": "ss-sc-caltech-repair-1-20260506",
+  "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+  "sourceTitle": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
+  "sourceLanguage": "en",
+  "snapshotHash": "834763ce2fb3410531a090d61fe4a9ff7765db3e13ff1a73f7c8010c2a15185a",
+  "evidenceSnippetOriginal": "All Fall 2026 applicants must review Caltech's guidelines on the ethical use of AI before submitting their supplemental essays. Failure to comply with the Ethical Use of AI guidelines may result in the rescission of your admission to Caltech.",
+  "evidenceLocator": "Opening paragraph",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
+    "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

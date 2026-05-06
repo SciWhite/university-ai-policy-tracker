@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-uchicago-repair-1",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "sourceUrl": "https://genai.uchicago.edu/",
+  "finalUrl": "https://genai.uchicago.edu/",
+  "sourceTitle": "Generative AI at UChicago",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "operator_seed",
+  "queryUsed": "Operator-provided seed from previous run verification",
+  "discoveredAt": "2026-05-05T23:17:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T23:18:00Z",
+  "verificationNotes": "REPAIR re-verification via OpenCLI browser. JS-rendered site confirmed accessible via opencli browser extract. Hub page with navigation to policies, AI tools, resources for faculty/instructors/students/staff, approved/restricted tools, training, AI user group. Official uchicago.edu subdomain.",
+  "robotsPolicy": "respect"
+}
