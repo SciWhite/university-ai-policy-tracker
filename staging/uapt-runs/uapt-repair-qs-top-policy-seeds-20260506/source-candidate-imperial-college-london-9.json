@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-imperial-college-london-9",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+  "sourceTitle": "CfAE guidance on GenAI",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:47:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verificationNotes": "Centre for Academic English guidance on GenAI. Covers critical use in academic communication, ethical approach, authorship concerns, and CfAE's role in Imperial's AI working party. Last updated 2025-03-14.",
+  "robotsPolicy": "respect"
+}

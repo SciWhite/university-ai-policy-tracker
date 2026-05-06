@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-7",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+  "sourceTitle": "PWR Policy on the Use of GenAI and LLMs",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T00:50:54Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verificationNotes": "Program in Writing and Rhetoric program-level policy. Students may not use GenAI to compose drafts or revisions for major assignments. Violations treated as Honor Code violations. Includes environmental impact rationale.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-harvard-university-vendor-assessment",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "claimType": "procurement",
+  "claimText": "University-wide: All vendor generative AI tools not currently offered by HUIT must be assessed for risk by Harvard's Information Security and Data Privacy office prior to use in Harvard work. Contact HUIT before procuring any generative AI tool.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-harvard-university-vendor-assessment"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidelines",
+    "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+    "publisher": "Harvard University Information Technology (HUIT)",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "9d196aae4d265663c3d4ccb4c342259dbf2eac4f105b5b66c5bf2a08924ac089",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

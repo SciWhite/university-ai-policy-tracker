@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-stanford-university-uit-responsible-ai-1",
+  "claimId": "clm-stanford-university-uit-responsible-ai",
+  "sourceSnapshotId": "ss-stanford-university-2",
+  "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+  "sourceTitle": "Responsible AI at Stanford - University IT",
+  "sourceLanguage": "en",
+  "snapshotHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e",
+  "evidenceSnippetOriginal": "Avoid inputting any sensitive data, such as Moderate or High Risk Data, whether using a personal or Stanford account with a third-party AI platform or tool that is not covered by a Stanford Business Associates Agreement. It's recommended to opt out of sharing data for AI iterative learning wherever possible. If generative AI is to be used to interact with users, obtain their informed consent. If your final product is significantly influenced by an AI platform, consider informing people how you used AI and cite appropriately.",
+  "evidenceLocator": "Safety Measures section and Recommended Best Practices",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Responsible AI at Stanford - University IT",
+    "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+    "publisher": "Stanford University IT",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

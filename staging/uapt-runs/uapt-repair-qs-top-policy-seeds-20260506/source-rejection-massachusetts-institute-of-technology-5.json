@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-massachusetts-institute-of-technology-5",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+  "rejectedAt": "2026-05-06T00:49:00Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "MIT Libraries guide on citing AI tools. Contains a bibliography of external resources on AI citation practices (APA, MLA, Chicago style guides, academic papers). No MIT-specific policy content; this is a reference/resource list, not an institutional policy or guidance document."
+}

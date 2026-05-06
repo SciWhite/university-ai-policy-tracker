@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-massachusetts-institute-of-technology-compliance",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "claimType": "other",
+  "claimText": "Use of generative AI tools at MIT must comply with all applicable federal and state laws and orders (including FERPA, HIPAA, Massachusetts Data Protection Standards, export control laws, and the Executive Order on Safe, Secure, and Trustworthy Development and Use of AI), Institute policies (including 10.1 Academic and Research Misconduct, 11.0 Privacy and Disclosure of Personal Information, and 13.0 Information Policies), Information Protection guidelines, and the Institute's Written Information Security Program (WISP), plus any additional policies established by the user's department, lab, center, or institute (DLCI).",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-massachusetts-institute-of-technology-3"
+  ],
+  "citation": {
+    "citationTitle": "Guidance for use of Generative AI tools",
+    "sourceUrl": "https://ist.mit.edu/ai-guidance",
+    "publisher": "MIT Information Systems and Technology",
+    "retrievedAt": "2026-05-06T00:57:37.427Z",
+    "snapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

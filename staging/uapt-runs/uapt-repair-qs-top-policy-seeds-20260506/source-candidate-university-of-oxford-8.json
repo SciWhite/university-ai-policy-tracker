@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-university-of-oxford-8",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://www.ox.ac.uk/students/life/it/genai-tools/guidance-on-safe-and-responsible-use-of-genai",
+  "sourceTitle": "Guidance on safe and responsible use of GenAI",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:50:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "blocked",
+  "verificationNotes": "Cloudflare WAF returns 403 (Just a moment...). Search snippet: 'GenAI tools must be used responsibly and ethically, in accordance with the academic standards of rigour and integrity that are expected of you as a student at Oxford.' High-value student-facing policy page, inaccessible.",
+  "robotsPolicy": "respect"
+}

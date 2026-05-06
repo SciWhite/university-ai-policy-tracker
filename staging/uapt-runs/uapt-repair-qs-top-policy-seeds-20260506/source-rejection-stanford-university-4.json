@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-stanford-university-4",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://hai.stanford.edu/about",
+  "rejectedAt": "2026-05-06T00:50:55Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "HAI is a research institute mission page. Per instructions, HAI research center pages should not be treated as policy sources."
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-hku-20260505",
+  "entityType": "university",
+  "entitySlug": "university-of-hong-kong",
+  "startedAt": "2026-05-05T21:54:00Z",
+  "endedAt": "2026-05-05T22:05:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "opencli google search 'site:hku.hk AI policy generative'",
+      "domain": "hku.hk",
+      "resultCount": 0,
+      "notes": "OPENCLI_GOOGLE_SEARCH_BLOCKED - Google returned NOT_FOUND (likely CAPTCHA). Fell back to DuckDuckGo browser search."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"University of Hong Kong\" \"generative AI\" policy guidelines 2024 2025 (DuckDuckGo browser)",
+      "domain": "hku.hk",
+      "resultCount": 4,
+      "notes": "Found: rss.hku.hk/integrity, rss.hku.hk/integrity/generative-ai, researchintegrity.law.hku.hk/guidelines-on-the-responsible-use-of-generative-ai-in-research-at-hku/"
+    },
+    {
+      "method": "path_expansion",
+      "query": "N/A",
+      "domain": "hku.hk",
+      "resultCount": 0,
+      "notes": "www.hku.hk/ai/ returned fetch failed. tl.hku.hk/generative-ai/ returned 404. hku.hk/teaching-learning/generative-ai returned 404."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-hku-1",
+    "sc-hku-2",
+    "sc-hku-3"
+  ],
+  "rejectionIds": [],
+  "summary": "HKU has strong AI policy sources focused on research integrity. The Research Services of the Registry maintains comprehensive GenAI guidelines approved by Senate on September 23, 2025. Three verified sources found: the main GenAI research guidelines page, the announcement page, and the research integrity overview. The guidelines cover responsible GenAI use in research with principles on integrity, data quality, transparency, and privacy. Teaching-focused AI policy pages (tl.hku.hk) returned 404, suggesting teaching AI guidance may be behind authentication or not yet published."
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-massachusetts-institute-of-technology-6",
+  "claimId": "clm-massachusetts-institute-of-technology-risk-assessment-uses",
+  "sourceSnapshotId": "ss-massachusetts-institute-of-technology-1",
+  "sourceUrl": "https://ist.mit.edu/ai-guidance",
+  "sourceTitle": "Guidance for use of Generative AI tools",
+  "sourceLanguage": "en",
+  "snapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+  "evidenceSnippetOriginal": "Do not use generative AI for purposes that may require in-depth risk assessments without contacting ai-guidance@mit.edu. Examples include: recruitment and hiring of employees, evaluating student academic performance, making investment decisions, and complaint and dispute resolution.",
+  "evidenceLocator": "Section: 'Consult with IS&T before purchasing or using generative AI tools'",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidance for use of Generative AI tools",
+    "sourceUrl": "https://ist.mit.edu/ai-guidance",
+    "publisher": "MIT Information Systems and Technology",
+    "retrievedAt": "2026-05-06T00:57:37.427Z",
+    "snapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-stanford-university-7-20260506",
+  "claimId": "clm-stanford-university-pwr-genai-policy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Students may not use generative AI or LLMs to compose the drafts or revisions for any of the major assignments in their PWR classes.' The claim about paraphrasing LLM-generated writing also matches. The Honor Code violation framing is a reasonable institutional consequence. Source is pwr.stanford.edu official policy.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

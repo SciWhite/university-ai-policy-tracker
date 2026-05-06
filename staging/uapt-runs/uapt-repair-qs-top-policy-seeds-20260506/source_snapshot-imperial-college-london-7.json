@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-imperial-college-london-7",
+  "sourceCandidateId": "sc-imperial-college-london-7",
+  "fetchAttemptId": "fa-imperial-college-london-7",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+  "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+  "sourceTitle": "dAIsy - gen AI platform",
+  "sourceLanguage": "en",
+  "contentHash": "8dc0a4bb59590569f70a2399ea34c8fbae4663a08e2149e2abd90bdbcb41c307",
+  "fetchedAt": "2026-05-06T01:00:08Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/imperial-college-london-7.txt",
+  "rawArtifactPaths": []
+}

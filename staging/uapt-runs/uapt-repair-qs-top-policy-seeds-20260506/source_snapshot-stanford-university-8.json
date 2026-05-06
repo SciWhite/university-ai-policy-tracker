@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-stanford-university-8",
+  "sourceCandidateId": "sc-stanford-university-8",
+  "fetchAttemptId": "fa-stanford-university-8",
+  "sourceUrl": "https://uit.stanford.edu/aiplayground",
+  "finalUrl": "https://uit.stanford.edu/aiplayground",
+  "sourceTitle": "AI Playground Quick Start Guide - University IT",
+  "sourceLanguage": "en",
+  "contentHash": "56d7c59c0b23d411ad4aa7ec660eadd239c0a02c6f4bbf186cd75e79054971e6",
+  "fetchedAt": "2026-05-06T01:07:22Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/stanford-university-8.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-harvard-university-content-responsibility",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "claimType": "other",
+  "claimText": "University-wide: Users are responsible for any content they publish or share that includes AI-generated material. AI-generated content may be inaccurate, misleading, entirely fabricated (hallucinations), or contain copyrighted material.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-harvard-university-content-responsibility"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidelines",
+    "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+    "publisher": "Harvard University Information Technology (HUIT)",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "9d196aae4d265663c3d4ccb4c342259dbf2eac4f105b5b66c5bf2a08924ac089",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,25 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "evidenceId": "evd-ntu-3",
+  "claimId": "clm-ntu-genai-no-authorship",
+  "sourceSnapshotId": "ss-ntu-genai-research-policy-edba11cb",
+  "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+  "sourceTitle": "NTU Policy on the Use of Generative Artificial Intelligence in Research",
+  "sourceLanguage": "en",
+  "snapshotHash": "1633bb1925de33a82fb5c5798fb93160000f2a8566253dae94cd20a927a699b2",
+  "evidenceSnippetOriginal": "GenAI (e.g. ChatGPT) should not be listed as an author of any paper with an affiliation to NTU; or listed as a Principal Investigator (PI), Co-PI, or collaborator in any research proposals.",
+  "evidenceLocator": "2. Authorship",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "NTU Policy on the Use of Generative Artificial Intelligence in Research",
+    "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+    "publisher": "Nanyang Technological University",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "1633bb1925de33a82fb5c5798fb93160000f2a8566253dae94cd20a927a699b2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-imperial-college-london",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "startedAt": "2026-05-06T00:47:00Z",
+  "endedAt": "2026-05-06T00:55:00Z",
+  "methodsAttempted": [
+    {
+      "method": "operator_seed",
+      "notes": "operator_seed"
+    },
+    {
+      "method": "public_web_search",
+      "notes": "public_web_search"
+    },
+    {
+      "method": "other",
+      "notes": "link_extraction"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-imperial-college-london-1",
+    "sc-imperial-college-london-2",
+    "sc-imperial-college-london-3",
+    "sc-imperial-college-london-4",
+    "sc-imperial-college-london-5",
+    "sc-imperial-college-london-6",
+    "sc-imperial-college-london-7",
+    "sc-imperial-college-london-8",
+    "sc-imperial-college-london-9",
+    "sc-imperial-college-london-10",
+    "sc-imperial-college-london-11",
+    "sc-imperial-college-london-12",
+    "sc-imperial-college-london-13",
+    "sc-imperial-college-london-14"
+  ],
+  "rejectionIds": [],
+  "summary": "Discovered 14 verified source candidates for Imperial College London. 3 from operator seeds, 11 from link extraction across the seed pages. Public web search (web_search tool) was unavailable during this run; all discovery was achieved through direct URL probing and HTML link extraction. Sources span formal policy (GenAI Principles, Academic Misconduct Policy, DPA CoP 08), teaching guidance (Library guidance, Study Hub, Education Hub, EDU toolkit, CfAE), and IT guidance/platform docs (dAIsy platform, dAIsy Use Policy, Microsoft Copilot, ICT CoP 06). No rejections \u2014 all discovered URLs were policy-relevant and verified live on imperial.ac.uk."
+}

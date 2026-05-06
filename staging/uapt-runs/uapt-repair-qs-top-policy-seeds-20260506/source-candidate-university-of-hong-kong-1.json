@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-hku-1",
+  "entityType": "university",
+  "entitySlug": "university-of-hong-kong",
+  "sourceUrl": "http://www.rss.hku.hk/integrity/generative-ai",
+  "finalUrl": "http://www.rss.hku.hk/integrity/generative-ai",
+  "sourceTitle": "Responsible Use of Generative AI in Research at HKU",
+  "sourceLanguage": "en",
+  "sourceType": "research_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "\"University of Hong Kong\" \"generative AI\" policy guidelines 2024 2025 (DuckDuckGo browser)",
+  "discoveredAt": "2026-05-05T22:00:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T22:01:22Z",
+  "verificationNotes": "HTTP 200 OK. Official HKU Research Services of the Registry page. Contains comprehensive GenAI research guidelines approved by Senate on September 23, 2025. Covers general principles (research integrity, data validity, transparency, data privacy), approved by VP/PVC Research. Links to full PDF guidelines. Part of HKU's institutional research integrity framework.",
+  "robotsPolicy": "respect"
+}

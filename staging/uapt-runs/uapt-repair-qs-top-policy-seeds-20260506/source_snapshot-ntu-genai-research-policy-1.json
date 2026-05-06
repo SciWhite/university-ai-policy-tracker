@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "sourceSnapshotId": "ss-ntu-genai-research-policy-edba11cb",
+  "sourceCandidateId": "sc-ntu-3",
+  "fetchAttemptId": "fa-ntu-genai-research-policy-a0fb8715",
+  "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+  "finalUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+  "sourceTitle": "NTU Policy on the Use of Generative Artificial Intelligence in Research",
+  "sourceLanguage": "en",
+  "contentHash": "1633bb1925de33a82fb5c5798fb93160000f2a8566253dae94cd20a927a699b2",
+  "fetchedAt": "2026-05-05T22:11:05Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/ntu-genai-research-policy.txt",
+  "rawArtifactPaths": []
+}

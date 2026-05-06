@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-imperial-college-london-10",
+  "sourceCandidateId": "sc-imperial-college-london-10",
+  "fetchAttemptId": "fa-imperial-college-london-10",
+  "sourceUrl": "https://www.imperial.ac.uk/student-records-and-data/for-current-students/undergraduate-and-taught-postgraduate/exams-assessments-and-regulations/plagiarism-academic-integrity--exam-offences/",
+  "finalUrl": "https://www.imperial.ac.uk/student-records-and-data/for-current-students/undergraduate-and-taught-postgraduate/exams-assessments-and-regulations/plagiarism-academic-integrity--exam-offences/",
+  "sourceTitle": "Plagiarism, Academic Integrity & Exam Offences",
+  "sourceLanguage": "en",
+  "contentHash": "817c92dd2088d8fd2f0d29adee3d0d6826d94ed1f247ef50002597b580474c4c",
+  "fetchedAt": "2026-05-06T01:00:08Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/imperial-college-london-10.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-university-of-oxford-10",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://www.ox.ac.uk/research/support/governance-and-committees/research-policies/policy-for-using-generative-ai-in",
+  "sourceTitle": "Policy for using generative AI in research",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:50:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "blocked",
+  "verificationNotes": "Cloudflare WAF returns 403 (Just a moment...). Search snippet: 'The aims of this policy are to ensure the responsible use of GenAI in research and to provide clear guidelines for its integration into the research process.' Formal research policy, inaccessible.",
+  "robotsPolicy": "respect"
+}

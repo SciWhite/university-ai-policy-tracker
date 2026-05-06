@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-harvard-university-7",
+  "sourceCandidateId": "sc-harvard-university-7",
+  "fetchAttemptId": "fa-harvard-university-7",
+  "sourceUrl": "https://it.hms.harvard.edu/about/policies-and-guidelines/generative-ai",
+  "finalUrl": "https://it.hms.harvard.edu/about/policies-and-guidelines/generative-ai",
+  "sourceTitle": "Generative AI | HMS IT",
+  "sourceLanguage": "en",
+  "contentHash": "477ea35828c0181326f5265be9b81de704716727168c64e5704ca8a2d3bdad1b",
+  "fetchedAt": "2026-05-06T00:57:51Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/harvard-university-7.txt",
+  "rawArtifactPaths": []
+}

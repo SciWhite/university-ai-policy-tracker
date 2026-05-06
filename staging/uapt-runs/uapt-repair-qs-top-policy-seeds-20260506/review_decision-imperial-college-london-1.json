@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-imperial-college-london-1-20260506",
+  "claimId": "clm-imperial-college-london-ai-misconduct",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Unless explicitly authorised, using AI to create assessed work may be treated as an offence such as contract cheating under Imperial's Plagiarism, Academic Integrity & Exam Offences regulations.' Claim accurately reflects this. Source is imperial.ac.uk official library guidance.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-massachusetts-institute-of-technology-4",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "sourceUrl": "https://ist.mit.edu/ai-tools",
+  "sourceTitle": "Generative AI tools available at MIT",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.7,
+  "policySpecificityScore": 0.4,
+  "verificationStatus": "verified",
+  "verificationNotes": "IS&T catalog of approved/licensed generative AI tools at MIT. Lists tools (Adobe Firefly, AWS Bedrock, Azure OpenAI, Google Gemini, Microsoft Copilot, ChatGPT, Parley, etc.) with access levels and risk classifications. Includes policy-relevant notes: no GenAI tools approved for High Risk information. Updated 10/27/2025. Primarily informational/catalog rather than policy document, but contains important approved-tools and risk-classification information relevant to AI policy tracking.",
+  "robotsPolicy": "respect"
+}

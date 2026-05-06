@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-stanford-university-6",
+  "sourceCandidateId": "sc-stanford-university-6",
+  "fetchAttemptId": "fa-stanford-university-6",
+  "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+  "finalUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+  "sourceTitle": "Use of Generative AI Technology - Stanford Law School",
+  "sourceLanguage": "en",
+  "contentHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9",
+  "fetchedAt": "2026-05-06T01:07:22Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/stanford-university-6.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-harvard-university-1",
+  "sourceCandidateId": "sc-harvard-university-1",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://www.huit.harvard.edu/ai",
+  "rejectedAt": "2026-05-06T00:49:00Z",
+  "rejectionReason": "generic_home_page",
+  "checkedBy": "crawl-designer",
+  "notes": "HUIT AI landing page with minimal content — just a brief definition of generative AI and links to /ai/guidelines and /ai/tools. No substantive policy content on its own. The linked subpages are already captured as separate candidates."
+}

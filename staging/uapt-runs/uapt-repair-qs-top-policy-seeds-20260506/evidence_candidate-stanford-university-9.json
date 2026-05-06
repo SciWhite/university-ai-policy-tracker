@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-stanford-university-ucomm-ai-guidelines-1",
+  "claimId": "clm-stanford-university-ucomm-ai-guidelines",
+  "sourceSnapshotId": "ss-stanford-university-9",
+  "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+  "sourceTitle": "AI Guidelines for Marketing and Communications",
+  "sourceLanguage": "en",
+  "snapshotHash": "9c5e79c1de806eb64ddd8fc7c3e70d95c560eaab5d03f1246333e9076e3a7c3b",
+  "evidenceSnippetOriginal": "These guidelines apply to all regular staff, interns, casual employees, and consultants. You are personally responsible for oversight of any content you produce using AI to ensure that content is accurate, in alignment with institutional values, and in compliance with the policies set forth in this document. You are personally responsible for conforming to this requirement and this responsibility may not be delegated to another employee. You may not provide any confidential or legally privileged information of Stanford or a third party to generative AI tools. Do not use high-risk data in your prompts or include such data as attachments to your prompts.",
+  "evidenceLocator": "Introduction, Scope, Responsible and Ethical Usage, Compliance sections",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Guidelines for Marketing and Communications",
+    "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+    "publisher": "Stanford University Communications",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "9c5e79c1de806eb64ddd8fc7c3e70d95c560eaab5d03f1246333e9076e3a7c3b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

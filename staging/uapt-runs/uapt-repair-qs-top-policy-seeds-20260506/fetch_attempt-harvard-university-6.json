@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-harvard-university-6",
+  "sourceCandidateId": "sc-harvard-university-6",
+  "sourceUrl": "https://bokcenter.harvard.edu/ai-syllabus-policies",
+  "finalUrl": "https://bokcenter.harvard.edu/ai-syllabus-policies",
+  "attemptedAt": "2026-05-06T00:57:51Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "739f4f659ad32d84cead45df8cecb3dc79da92891a62ee471d0da0ebd0f353a6",
+  "normalizedTextStorageKey": "normalized/harvard-university-6.txt"
+}

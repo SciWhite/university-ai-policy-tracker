@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "crawl-plan-harvard-university",
+  "createdAt": "2026-05-06T00:50:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-1",
+      "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+      "sourceTitle": "Generative AI Guidelines",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["generative_ai_policy", "data_privacy", "information_security"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-2",
+      "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+      "sourceTitle": "Generative AI Tool Comparison",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["approved_tools", "data_classification"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-3",
+      "sourceUrl": "https://www.huit.harvard.edu/ai-assistant-guidelines",
+      "sourceTitle": "AI Assistant Guidelines",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["ai_meeting_assistants", "privacy_policy"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-4",
+      "sourceUrl": "https://provost.harvard.edu/guidelines-using-chatgpt-and-other-generative-ai-tools-harvard",
+      "sourceTitle": "Guidelines for Using ChatGPT and other Generative AI tools at Harvard",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["generative_ai_policy", "university_wide_guidance"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-5",
+      "sourceUrl": "https://www.harvard.edu/ai/learning-resources/",
+      "sourceTitle": "Learn with Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["student_guidance", "learning_resources"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-6",
+      "sourceUrl": "https://bokcenter.harvard.edu/ai-syllabus-policies",
+      "sourceTitle": "AI Syllabus Policies",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["teaching_guidance", "syllabus_policy"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-7",
+      "sourceUrl": "https://it.hms.harvard.edu/about/policies-and-guidelines/generative-ai",
+      "sourceTitle": "Generative AI | HMS IT",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["it_guidance", "data_security", "approved_tools"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-8",
+      "sourceUrl": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+      "sourceTitle": "HGSE AI Policy on Student Use of Generative AI in Academic Work",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["academic_integrity", "student_policy", "school_level_policy"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-9",
+      "sourceUrl": "https://oaisc.fas.harvard.edu/academic-integrity-and-teaching-without-ai/",
+      "sourceTitle": "Academic Integrity and Teaching With(out) AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["academic_integrity", "teaching_guidance"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-10",
+      "sourceUrl": "https://bokcenter.harvard.edu/guidance-faculty-addressing-ai-related-academic-integrity-issues",
+      "sourceTitle": "Guidance for Faculty on Addressing AI-Related Academic Integrity Issues",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["academic_integrity", "faculty_guidance", "detection"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-11",
+      "sourceUrl": "https://ari.hms.harvard.edu/ai",
+      "sourceTitle": "AI | Academic and Research Integrity",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["research_integrity", "authorship", "grant_policy"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "harvard-university",
+      "sourceCandidateId": "sc-harvard-university-12",
+      "sourceUrl": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+      "sourceTitle": "Generative AI Guidance – Office of Undergraduate Education",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["teaching_guidance", "sample_policies", "faculty_requirements"],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": []
+}

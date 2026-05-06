@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-massachusetts-institute-of-technology-5-20260506",
+  "claimId": "clm-massachusetts-institute-of-technology-accuracy-responsibility",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'You are responsible for the accuracy of any information you publish, including AI-generated content.' Additional details about inaccuracy/bias match evidence. Source is ist.mit.edu official guidance.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

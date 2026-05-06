@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-10-20260506",
+  "claimId": "clm-university-of-oxford-ai-pgr-declaration-requirement",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "FIXED: Narrowed claim to thesis submission only. Removed transfer/confirmation/viva details not explicitly in evidence snippet. Evidence supports thesis statement requirement. Scope: PGR policy.",
+  "decidedAt": "2026-05-06T01:57:05Z"
+}

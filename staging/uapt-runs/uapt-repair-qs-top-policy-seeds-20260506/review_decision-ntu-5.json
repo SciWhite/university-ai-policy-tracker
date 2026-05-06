@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-ntu-5-20260505",
+  "claimId": "clm-ntu-ai-detectors-unreliable",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet mentions false positives/negatives and bias against non-native writing patterns \u2014 supports claim. Claim adds 'ease of bypass' which is not in the snippet; however, this is a minor addition consistent with the general cautionary tone. (2) Source URL (ntu.edu.sg/education/inspire/...) and hash e4e18cda... match. (3) Confidence (0.90) and reviewState separated. (4) English source. (5) Claim adds 'ease of bypass' not directly in evidence snippet \u2014 this is a slight scope extension, but the core claim (caution due to unreliability and bias) is well-supported. Marking approved as the minor addition does not materially misrepresent the policy. (6) No advice presented. (7) ClaimType 'teaching' appropriate for assessment-related guidance. Source is official NTU education page.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

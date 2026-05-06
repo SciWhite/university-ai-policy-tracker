@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-11",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://ctl.stanford.edu/aimes/ai-learning-guide-students",
+  "sourceTitle": "AI and Your Learning: A Guide for Students - CTL",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T00:50:54Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verificationNotes": "Student-facing guide from CTL. Explains BCA default policy (AI = help from another person), covers hallucinations, bias, citation. Part of AIMES. Helps students navigate AI use responsibly.",
+  "robotsPolicy": "respect"
+}

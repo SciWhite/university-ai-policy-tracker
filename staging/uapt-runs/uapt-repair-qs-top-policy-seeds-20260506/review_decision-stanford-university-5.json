@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-stanford-university-5-20260506",
+  "claimId": "clm-stanford-university-md-ai-policy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Students may utilize AI to enhance their understanding of medical concepts, definitions, and for grammar/style editing, provided it does not conflict with specific assignment instructions.' Additional claim details about closed-book exam prohibition, responsibility for AI content, disclosure/citation requirements, and disciplinary consequences align with the full source text. Scope correctly identified as SoM MD/MSPA school-level. Source is med.stanford.edu official handbook.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

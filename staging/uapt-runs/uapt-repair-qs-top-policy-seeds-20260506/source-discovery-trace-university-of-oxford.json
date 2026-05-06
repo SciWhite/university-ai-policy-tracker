@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-university-of-oxford",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "startedAt": "2026-05-06T00:50:00Z",
+  "endedAt": "2026-05-06T00:52:00Z",
+  "methodsAttempted": [
+    {
+      "method": "other",
+      "notes": "operator_seed_url_probe"
+    },
+    {
+      "method": "other",
+      "notes": "opencli_google_search_site:ox.ac.uk_generative_ai_policy_students"
+    },
+    {
+      "method": "other",
+      "notes": "opencli_google_search_site:ox.ac.uk_ChatGPT_guidance"
+    },
+    {
+      "method": "other",
+      "notes": "opencli_google_search_site:ctl.ox.ac.uk_AI"
+    },
+    {
+      "method": "other",
+      "notes": "opencli_google_search_site:ox.ac.uk_artificial_intelligence_assessment"
+    },
+    {
+      "method": "other",
+      "notes": "opencli_google_search_site:it.ox.ac.uk_AI_tools"
+    },
+    {
+      "method": "other",
+      "notes": "opencli_google_search_University_of_Oxford_generative_AI_guidelines"
+    },
+    {
+      "method": "other",
+      "notes": "hub_page_link_extraction"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-university-of-oxford-1",
+    "sc-university-of-oxford-2",
+    "sc-university-of-oxford-3",
+    "sc-university-of-oxford-4",
+    "sc-university-of-oxford-5",
+    "sc-university-of-oxford-6",
+    "sc-university-of-oxford-7",
+    "sc-university-of-oxford-8",
+    "sc-university-of-oxford-9",
+    "sc-university-of-oxford-10",
+    "sc-university-of-oxford-11",
+    "sc-university-of-oxford-12"
+  ],
+  "rejectionIds": [
+    "sr-university-of-oxford-1",
+    "sr-university-of-oxford-2",
+    "sr-university-of-oxford-3",
+    "sr-university-of-oxford-4",
+    "sr-university-of-oxford-5"
+  ],
+  "summary": "Discovered 12 source candidates for University of Oxford. 6 verified accessible (ctl.ox.ac.uk hub + teaching guidance, governance.admin.ox.ac.uk formal policy, infosec.ox.ac.uk IT security, mpls.ox.ac.uk divisional guidance, it.ox.ac.uk provision article). 6 blocked by Cloudflare WAF on ox.ac.uk and admin.ox.ac.uk domains (genai-tools pages, gen-ai portal, research policy, student advice). 5 rejections for non-policy content (news articles, service catalogue, research papers, unparseable PDF). The ctl.ox.ac.uk/ai hub page was the key discovery point, linking to the formal governance policy, teaching guidance, and IT security guidance. Web search provider was unavailable; OpenCLI google searches and web_fetch probing were used instead."
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-ntu-3",
+  "entityType": "university",
+  "entitySlug": "nanyang-technological-university",
+  "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+  "finalUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+  "sourceTitle": "NTU Policy on the Use of Generative Artificial Intelligence in Research",
+  "sourceLanguage": "en",
+  "sourceType": "research_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "Nanyang Technological University AI generative guidelines academic integrity policy (DuckDuckGo browser)",
+  "discoveredAt": "2026-05-05T22:03:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T22:04:12Z",
+  "verificationNotes": "HTTP 200 OK. Official NTU research policy page. Title: 'NTU Policy on the Use of Generative Artificial Intelligence in Research'. Covers responsible GenAI use in research including: acknowledging/declaring GenAI use, authorship rules (GenAI cannot be listed as author or PI), AI-generated images/figures/videos policies. References ChatGPT, Microsoft Copilot, Google Gemini. Requires responsible, accountable, and transparent use.",
+  "robotsPolicy": "respect"
+}

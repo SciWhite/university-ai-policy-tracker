@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-nus-5-20260505",
+  "claimId": "clm-nus-unsupervised-default-permitted",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet directly states the default assumption for unsupervised assessments (AI permitted if acknowledged) and the requirement for in-person supervised assessment when AI is forbidden. (2) Source URL and hash 96587c9c... match. (3) Confidence (0.95) and reviewState separated. (4) English source. (5) Claim scope matches evidence accurately. (6) No advice presented. (7) ClaimType 'teaching' correct for assessment policy. Source is official NUS Policy PDF.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

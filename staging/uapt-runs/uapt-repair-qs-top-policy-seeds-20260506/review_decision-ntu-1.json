@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-ntu-1-20260505",
+  "claimId": "clm-ntu-genai-acknowledge-required",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Changed 'NTU requires researchers to acknowledge and cite' to 'NTU states that... should be acknowledged and cited' to match evidence tone. Evidence says 'Researchers should acknowledge and cite the use of GenAI'. Scope: research guidance. ClaimType 'research' correct.",
+  "decidedAt": "2026-05-06T01:57:44Z"
+}

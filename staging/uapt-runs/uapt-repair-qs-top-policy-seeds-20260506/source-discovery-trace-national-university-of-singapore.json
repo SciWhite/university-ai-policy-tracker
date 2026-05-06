@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-nus-20260505",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "startedAt": "2026-05-05T21:54:00Z",
+  "endedAt": "2026-05-05T22:04:40Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "opencli google search 'site:nus.edu.sg \"generative AI\" policy'",
+      "domain": "nus.edu.sg",
+      "resultCount": 0,
+      "notes": "OPENCLI_GOOGLE_SEARCH_BLOCKED - Google returned NOT_FOUND (likely CAPTCHA). Fell back to DuckDuckGo browser search."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:nus.edu.sg \"generative AI\" guidelines (DuckDuckGo browser)",
+      "domain": "nus.edu.sg",
+      "resultCount": 6,
+      "notes": "DuckDuckGo browser search via opencli. Found: ai.nus.edu.sg/research/ai-governance-and-policy/, libguides.nus.edu.sg/citation/ai, libguides.nus.edu.sg/new2nus/ai_guidelines_infographics, www.nus.edu.sg/teachingacademy/project/generative-ai/"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:nus.edu.sg ChatGPT academic integrity (DuckDuckGo browser)",
+      "domain": "nus.edu.sg",
+      "resultCount": 8,
+      "notes": "Found additional: libguides.nus.edu.sg/Lawgrad/Integrity, nus.edu.sg/research/integrity-and-ethics/, libguides.nus.edu.sg/new2nus/ai_guidelines_infographics"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:nus.edu.sg \"AI tools\" OR \"use of AI\" OR \"academic integrity\" policy (DuckDuckGo browser)",
+      "domain": "nus.edu.sg",
+      "resultCount": 0,
+      "notes": "DuckDuckGo site: search returned empty for this query variation"
+    },
+    {
+      "method": "link_traversal",
+      "query": "N/A",
+      "domain": "libguides.nus.edu.sg",
+      "resultCount": 2,
+      "notes": "From libguides citation page found reference to official NUS policy PDF at cttlt.nus.edu.sg"
+    },
+    {
+      "method": "path_expansion",
+      "query": "N/A",
+      "domain": "ctlt.nus.edu.sg",
+      "resultCount": 1,
+      "notes": "Verified cttlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf - 200 OK, PDF"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-nus-1",
+    "sc-nus-2",
+    "sc-nus-3",
+    "sc-nus-4"
+  ],
+  "rejectionIds": [
+    "sr-nus-1"
+  ],
+  "summary": "NUS has well-established AI policy infrastructure. Found 4 verified sources: NUS official AI policy PDF (ctlt.nus.edu.sg), two library guides on AI citation and guidelines, and the NUS AI Institute governance page. The official policy PDF is the primary university-wide AI policy document. Library guides provide supplementary guidance. The AI Institute page focuses on research governance roundtables. One candidate (teaching academy page) rejected as JS-rendered with no extractable content."
+}

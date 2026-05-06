@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-harvard-university-2",
+  "sourceCandidateId": "sc-harvard-university-2",
+  "fetchAttemptId": "fa-harvard-university-2",
+  "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+  "finalUrl": "https://www.huit.harvard.edu/ai/tools",
+  "sourceTitle": "Generative AI Tool Comparison",
+  "sourceLanguage": "en",
+  "contentHash": "9003257c800e0ac7fd5b5556b4fe2b08748cb6c70334cf9affa03215ab56f1f9",
+  "fetchedAt": "2026-05-06T00:57:51Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/harvard-university-2.txt",
+  "rawArtifactPaths": []
+}

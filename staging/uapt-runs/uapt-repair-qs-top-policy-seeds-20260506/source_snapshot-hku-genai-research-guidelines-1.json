@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "sourceSnapshotId": "ss-hku-genai-research-guidelines-1997cbb3",
+  "sourceCandidateId": "sc-hku-1",
+  "fetchAttemptId": "fa-hku-genai-research-guidelines-870ad296",
+  "sourceUrl": "http://www.rss.hku.hk/integrity/generative-ai",
+  "finalUrl": "http://www.rss.hku.hk/integrity/generative-ai",
+  "sourceTitle": "Responsible Use of Generative AI in Research at HKU",
+  "sourceLanguage": "en",
+  "contentHash": "a2a40ef2dbadab7bb5716f883a869c692512d86ec6e68d295ae72c5ced8e4bd0",
+  "fetchedAt": "2026-05-05T22:11:05Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/hku-genai-research-guidelines.txt",
+  "rawArtifactPaths": []
+}

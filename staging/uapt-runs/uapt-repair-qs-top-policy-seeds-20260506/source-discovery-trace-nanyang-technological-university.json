@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-ntu-20260505",
+  "entityType": "university",
+  "entitySlug": "nanyang-technological-university",
+  "startedAt": "2026-05-05T21:54:00Z",
+  "endedAt": "2026-05-05T22:05:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "opencli google search 'site:ntu.edu.sg \"generative AI\" guidelines policy'",
+      "domain": "ntu.edu.sg",
+      "resultCount": 0,
+      "notes": "OPENCLI_GOOGLE_SEARCH_BLOCKED - Google returned NOT_FOUND (likely CAPTCHA). Fell back to DuckDuckGo browser search."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ntu.edu.sg \"AI\" \"policy\" OR \"generative AI\" OR \"guidelines\" OR \"academic integrity\" (DuckDuckGo browser)",
+      "domain": "ntu.edu.sg",
+      "resultCount": 0,
+      "notes": "DuckDuckGo site: search returned empty for ntu.edu.sg"
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"Nanyang Technological University\" \"generative AI\" policy guidelines 2024 2025 (DuckDuckGo browser)",
+      "domain": "ntu.edu.sg",
+      "resultCount": 0,
+      "notes": "DuckDuckGo returned no NTU-specific results"
+    },
+    {
+      "method": "public_web_search",
+      "query": "Nanyang Technological University AI generative guidelines academic integrity policy (DuckDuckGo browser)",
+      "domain": "ntu.edu.sg",
+      "resultCount": 3,
+      "notes": "Found: libguides.ntu.edu.sg/responsible-ai-use/, ntu.edu.sg/education/inspire/teaching-learning-assessment-with-genai/assessment/policies-guidelines, ntu.edu.sg/research/resources/use-of-gai-in-research"
+    },
+    {
+      "method": "path_expansion",
+      "query": "N/A",
+      "domain": "ntu.edu.sg",
+      "resultCount": 0,
+      "notes": "ntu.edu.sg/ai returned 404. ntu.edu.sg/education/teaching-and-learning returned 404. ntu.edu.sg/education/academic-integrity returned 404. ntu.edu.sg/about-us/university-administration/provost-office returned 404. ntu.edu.sg/life-at-ntu/internet-account-and-policy returned IT services page (not AI-related)."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-ntu-1",
+    "sc-ntu-2",
+    "sc-ntu-3"
+  ],
+  "rejectionIds": [],
+  "summary": "NTU has AI policy sources across multiple platforms. Discovery was challenging as DuckDuckGo site: searches returned empty and many guessed URL paths returned 404. Three verified sources found through broader queries: NTU library guide on responsible AI use, NTU GenAI assessment policies page, and NTU research GenAI use policy. The library guide references NTU's 2025 Academic Integrity Handbook and institutional GenAI guidelines. The research policy covers responsible GenAI use in scholarly work including authorship, disclosure, and image/video creation rules."
+}

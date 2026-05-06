@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-stanford-university-pwr-genai-policy",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "claimType": "teaching",
+  "claimText": "Stanford's Program in Writing and Rhetoric (PWR) prohibits students from using generative AI or LLMs to compose drafts or revisions for any major assignment in PWR courses, including composing or revising portions of essays or scripts, including paraphrases of LLM-generated writing. Students may not rely on generative AI summaries of sources. Violation of PWR's AI policy is treated as an Honor Code violation and results in referral to the Office of Community Standards.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-stanford-university-pwr-genai-policy-1"
+  ],
+  "citation": {
+    "citationTitle": "PWR Policy on the Use of GenAI and LLMs",
+    "sourceUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+    "publisher": "Stanford Program in Writing and Rhetoric",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "2e601e4a5b47215c842712627c3631375d0eb2ac936abbf1816a04b1bc8c0d2b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

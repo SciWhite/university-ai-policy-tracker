@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-stanford-university-law-school-ai-policy-1",
+  "claimId": "clm-stanford-university-law-school-ai-policy",
+  "sourceSnapshotId": "ss-stanford-university-6",
+  "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+  "sourceTitle": "Use of Generative AI Technology - Stanford Law School",
+  "sourceLanguage": "en",
+  "snapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9",
+  "evidenceSnippetOriginal": "In the absence of a course-specific AI policy set by the instructor, students may use generative AI tools to support their learning and to aid in the development or refinement of their own ideas, provided they do not use such tools to generate content that is then presented as their own work. The use of generative AI while taking an exam or to draft or revise any portion of submitted work is not permitted unless (1) fully disclosed in advance of its use by the student to the instructor, and (2) explicitly authorized by the instructor in writing prior to the student's use of the tool. Unauthorized use of AI tools may result in a lower grade, including a grade of F, and/or a referral to Sta...",
+  "evidenceLocator": "Policy body, paragraphs 2-3",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Use of Generative AI Technology - Stanford Law School",
+    "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+    "publisher": "Stanford Law School",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

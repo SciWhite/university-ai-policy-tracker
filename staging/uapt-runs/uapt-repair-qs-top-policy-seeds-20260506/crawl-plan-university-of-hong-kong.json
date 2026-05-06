@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "cp-hku-20260505",
+  "createdAt": "2026-05-05T22:05:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-hong-kong",
+      "sourceCandidateId": "sc-hku-1",
+      "sourceUrl": "http://www.rss.hku.hk/integrity/generative-ai",
+      "sourceTitle": "Responsible Use of Generative AI in Research at HKU",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "GenAI research guidelines",
+        "research integrity",
+        "data privacy",
+        "transparency",
+        "AI disclosure",
+        "authorship"
+      ]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-hong-kong",
+      "sourceCandidateId": "sc-hku-2",
+      "sourceUrl": "https://researchintegrity.law.hku.hk/guidelines-on-the-responsible-use-of-generative-ai-in-research-at-hku/",
+      "sourceTitle": "Guidelines on the Responsible Use of Generative AI in Research at HKU",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "policy announcement",
+        "Senate approval",
+        "GenAI governance",
+        "research policy"
+      ]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-hong-kong",
+      "sourceCandidateId": "sc-hku-3",
+      "sourceUrl": "http://www.rss.hku.hk/integrity",
+      "sourceTitle": "Research Services - Research Integrity",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "research integrity framework",
+        "GenAI policy context",
+        "research data management",
+        "academic conduct"
+      ]
+    }
+  ],
+  "stopConditions": []
+}

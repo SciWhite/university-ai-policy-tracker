@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-imperial-college-london-12",
+  "sourceCandidateId": "sc-imperial-college-london-12",
+  "sourceUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/legal-services-office/public/data-protection/DPA-CoP-08---Use-of-Artificial-Intelligence-(AI).pdf",
+  "finalUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/legal-services-office/public/data-protection/DPA-CoP-08---Use-of-Artificial-Intelligence-(AI).pdf",
+  "attemptedAt": "2026-05-06T01:00:08Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "error",
+  "errorReason": "pdf_content_not_extractable",
+  "contentHash": "8601a0b478d76febaf8673ba6dab08156d088ecdc39948686dae963f8cb83ec6",
+  "normalizedTextStorageKey": "normalized/imperial-college-london-12.txt"
+}

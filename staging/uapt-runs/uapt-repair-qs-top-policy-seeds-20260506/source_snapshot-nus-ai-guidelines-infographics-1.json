@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "sourceSnapshotId": "ss-nus-ai-guidelines-infographics-b1f525fa",
+  "sourceCandidateId": "sc-nus-2",
+  "fetchAttemptId": "fa-nus-ai-guidelines-infographics-897a00a6",
+  "sourceUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+  "finalUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+  "sourceTitle": "AI Guidelines - Library Essentials",
+  "sourceLanguage": "en",
+  "contentHash": "60355f1b4cd71eafe176f82c72e901358451f1184e87d825e5d007cab0a15e25",
+  "fetchedAt": "2026-05-05T22:11:05Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/nus-ai-guidelines-infographics.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-imperial-college-london-7",
+  "claimId": "clm-imperial-college-london-copilot-data-protection",
+  "sourceSnapshotId": "ss-imperial-college-london-6",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+  "sourceTitle": "Microsoft Copilot",
+  "sourceLanguage": "en",
+  "snapshotHash": "315c865f429a17a2085919a998fa5bf0d58a9e2342651f629314ad4f868ec8f1",
+  "evidenceSnippetOriginal": "All Imperial staff and students have access to Microsoft Copilot. You should ensure you sign in to use Copilot so that you are using the secure version of Microsoft Copilot with Commercial Data Protection. MS Copilot has no access to organizational data in the Microsoft 365 Graph. Your data is protected and the chat results are NOT saved or made available for Microsoft, so the data does not pass outside of the organisation.",
+  "evidenceLocator": "ICT page on Microsoft Copilot - access and data protection sections",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Microsoft Copilot",
+    "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+    "publisher": "Imperial College London ICT",
+    "retrievedAt": "2026-05-06T01:00:08Z",
+    "snapshotHash": "315c865f429a17a2085919a998fa5bf0d58a9e2342651f629314ad4f868ec8f1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

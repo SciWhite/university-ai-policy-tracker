@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-stanford-university-law-school-ai-policy",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "claimType": "teaching",
+  "claimText": "Stanford Law School instructors set their own AI policies; in the absence of a course-specific policy, students may use generative AI to support learning and develop or refine their own ideas, but may not use AI to generate content presented as their own work. Using AI during an exam or to draft/revise submitted work is not permitted unless disclosed in advance and explicitly authorized in writing by the instructor. Unauthorized use may result in an F grade and/or referral to Stanford's Office of Community Standards.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-stanford-university-law-school-ai-policy-1"
+  ],
+  "citation": {
+    "citationTitle": "Use of Generative AI Technology - Stanford Law School",
+    "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+    "publisher": "Stanford Law School",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

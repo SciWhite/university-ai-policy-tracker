@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-hku-6-20260505",
+  "claimId": "clm-hku-genai-institutional-policy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet states HKU is 'committed to fostering responsible GenAI practices' and that 'The Guidelines on the Responsible Use of Generative AI in Research at The University of Hong Kong was approved by the Senate on September 23, 2025' \u2014 directly supports claim about institutional policy under Research Integrity framework. (2) Source URL (rss.hku.hk/integrity) and hash c72f5274... match. (3) Confidence (0.85) and reviewState separated. (4) English source. (5) Claim scope matches evidence; the characterization as 'institutional policy under Research Integrity framework' is supported by the source being the Research Integrity landing page. (6) No advice presented. (7) ClaimType 'source_status' correct. Source is official HKU Research Services.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

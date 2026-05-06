@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-imperial-college-london-6",
+  "sourceCandidateId": "sc-imperial-college-london-6",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+  "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+  "attemptedAt": "2026-05-06T01:00:08Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "315c865f429a17a2085919a998fa5bf0d58a9e2342651f629314ad4f868ec8f1",
+  "normalizedTextStorageKey": "normalized/imperial-college-london-6.txt"
+}

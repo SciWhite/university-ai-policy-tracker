@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-stanford-university-bca-genai-guidance",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "claimType": "academic_integrity",
+  "claimText": "Stanford's BCA issued guidance on generative AI use, and the Office of Community Standards recommends that instructors give advance notice to students when using AI detection software.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-stanford-university-bca-genai-guidance-1"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Policy Guidance - Office of Community Standards (BCA)",
+    "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+    "publisher": "Stanford University Office of Community Standards",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "93e12eb9985a32023807300b0474d1f5d6e2ebf3a3d39dab18febe5ae6b47866",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-massachusetts-institute-of-technology-approved-tools-list",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "claimType": "other",
+  "claimText": "MIT maintains a list of approved generative AI tools licensed by IS&T for use by the MIT community. Only these tools are approved for use with low- and medium-risk information, and any tool not on the list requires contacting ai-guidance@mit.edu for assessment before use or purchase. No generative AI tools are approved for use with High Risk MIT information.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-massachusetts-institute-of-technology-10"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI tools available at MIT",
+    "sourceUrl": "https://ist.mit.edu/ai-tools",
+    "publisher": "MIT Information Systems and Technology",
+    "retrievedAt": "2026-05-06T00:57:37.464Z",
+    "snapshotHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

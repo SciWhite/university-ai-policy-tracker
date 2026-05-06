@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-massachusetts-institute-of-technology-1-20260506",
+  "claimId": "clm-massachusetts-institute-of-technology-ai-procurement-review",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Changed 'MIT requires' to 'IS&T recommends' to match evidence advisory tone. Evidence says 'IS&T recommends MIT community members first consider using tools and services which have already been licensed by IS&T' and 'we recommend reaching out to ai-guidance@mit.edu for a consultation'. Scope: IT procurement guidance.",
+  "decidedAt": "2026-05-06T01:57:44Z"
+}

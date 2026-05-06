@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-imperial-college-london-8-20260506",
+  "claimId": "clm-imperial-college-london-user-accountability",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Always apply critical judgement. GenAI can hallucinate, omit context, or reflect training-data biases. Users remain accountable for the accuracy, legality, and appropriateness of any content they submit or share.' Claim accurately reflects user accountability. Source is dAIsy use policy.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

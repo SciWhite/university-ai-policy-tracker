@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-nus-3",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+  "finalUrl": "https://libguides.nus.edu.sg/citation/ai",
+  "sourceTitle": "Citing AI Tools (NEW!)",
+  "sourceLanguage": "en",
+  "sourceType": "library_copyright",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:nus.edu.sg \"generative AI\" guidelines (DuckDuckGo browser)",
+  "discoveredAt": "2026-05-05T21:58:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T21:59:24Z",
+  "verificationNotes": "HTTP 200 OK. Official NUS library guide on citing AI tools. References NUS AI policy PDF and provides guidance on how students should cite AI-generated content. Links to AI Tools: General Message to Students and Guidelines on Use of AI Tools in Academic Work.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-ntu-7-20260505",
+  "claimId": "clm-ntu-ai-disclosure-submissions",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet 'ensure you disclose their use in your submissions. Always refer to your module's AI use policy' directly supports claim. (2) Source URL and hash fe0af2b5... match. (3) Confidence (0.90) and reviewState separated. (4) English source. (5) Claim scope matches evidence; claim summarizes the disclosure requirement and module policy reference accurately. (6) No advice presented. (7) ClaimType 'teaching' appropriate for student submission guidance. Source is official NTU Library guide.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

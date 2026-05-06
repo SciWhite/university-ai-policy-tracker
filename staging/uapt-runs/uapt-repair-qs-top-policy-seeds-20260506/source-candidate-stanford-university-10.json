@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-10",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://ctl.stanford.edu/aimes/ai-teaching-strategies",
+  "sourceTitle": "AI Teaching Strategies - Center for Teaching and Learning",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T00:50:54Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verificationNotes": "CTL guidance on three approaches to AI in courses: assigning, limiting, prohibiting. Includes pedagogical strategies, references to AI Playground, process-based assessment. Part of AIMES umbrella.",
+  "robotsPolicy": "respect"
+}

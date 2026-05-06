@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-imperial-college-london-daisy-copyright-ip",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "claimType": "other",
+  "claimText": "Users of Imperial's dAIsy platform must not upload third-party content they are not permitted to share. Reuse of AI outputs must comply with licensing and academic citation norms. When communicating externally, dAIsy outputs must not be presented as Imperial's position without approval.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-imperial-college-london-9"
+  ],
+  "citation": {
+    "citationTitle": "dAIsy Use Policy",
+    "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+    "publisher": "Imperial College London ICT",
+    "retrievedAt": "2026-05-06T01:00:08Z",
+    "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

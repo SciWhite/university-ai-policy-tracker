@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-university-of-oxford-ai-custom-gpt-sharing",
+  "claimId": "clm-university-of-oxford-ai-custom-gpt-rules",
+  "sourceSnapshotId": "ss-university-of-oxford-4",
+  "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+  "sourceTitle": "Use Generative AI services safely",
+  "sourceLanguage": "en",
+  "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+  "evidenceSnippetOriginal": "Be aware that any information incorporated in a custom GPT, either as Instructions specifying the behaviour of the GPT or as Documents uploaded to the GPT, may be accessed by users of the custom GPT. No non-public University data should be incorporated in any custom GPT that you intend to share with external users. For the avoidance of doubt, this includes any confidential or internal University data, as well as any personal data.",
+  "evidenceLocator": "Sharing custom GPTs externally section",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Use Generative AI services safely",
+    "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+    "publisher": "University of Oxford Information Security Team",
+    "retrievedAt": "2026-05-06T00:57:58Z",
+    "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-stanford-university-bca-genai-guidance-1",
+  "claimId": "clm-stanford-university-bca-genai-guidance",
+  "sourceSnapshotId": "ss-stanford-university-1",
+  "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+  "sourceTitle": "Generative AI Policy Guidance - Office of Community Standards (BCA)",
+  "sourceLanguage": "en",
+  "snapshotHash": "93e12eb9985a32023807300b0474d1f5d6e2ebf3a3d39dab18febe5ae6b47866",
+  "evidenceSnippetOriginal": "To give sufficient space for instructors to explore uses of generative AI tools in their courses, and to set clear guidelines to students about what uses are and are not consistent with the Stanford Honor Code, the BCA has set forth policy guidance regarding generative AI in the context of coursework. Note: Guidance adopted on February 16, 2023. As part of the BCA's guidance on clear communication of a course's generative AI policy, OCS recommends course instructors provide clear advance notice that they may use detection software to review work submitted for use of generative AI.",
+  "evidenceLocator": "Generative AI Policy Guidance section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Policy Guidance - Office of Community Standards (BCA)",
+    "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+    "publisher": "Stanford University Office of Community Standards",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "93e12eb9985a32023807300b0474d1f5d6e2ebf3a3d39dab18febe5ae6b47866",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

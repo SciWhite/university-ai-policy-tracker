@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "claimId": "clm-nus-ai-policy-exists",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "claimType": "source_status",
+  "claimText": "NUS has an institutional Policy for Use of AI in Teaching and Learning, supplemented by AI guidelines infographics and resources for students.",
+  "sourceLanguage": "en",
+  "confidence": 0.88,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-nus-1"
+  ],
+  "citation": {
+    "citationTitle": "AI Guidelines - Library Essentials",
+    "sourceUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+    "publisher": "NUS Libraries",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "60355f1b4cd71eafe176f82c72e901358451f1184e87d825e5d007cab0a15e25",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

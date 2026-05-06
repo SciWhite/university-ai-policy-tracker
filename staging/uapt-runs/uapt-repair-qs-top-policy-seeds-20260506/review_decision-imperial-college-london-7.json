@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-imperial-college-london-7-20260506",
+  "claimId": "clm-imperial-college-london-copilot-data-protection",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'All Imperial staff and students have access to Microsoft Copilot. You should ensure you sign in to use Copilot so that you are using the secure version... MS Copilot has no access to organizational data in the Microsoft 365 Graph.' Claim accurately reflects the Copilot policy. Source is imperial.ac.uk ICT page.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

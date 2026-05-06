@@ -1,0 +1,25 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "evidenceId": "evd-nus-1",
+  "claimId": "clm-nus-ai-policy-exists",
+  "sourceSnapshotId": "ss-nus-ai-guidelines-infographics-b1f525fa",
+  "sourceUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+  "sourceTitle": "AI Guidelines - Library Essentials",
+  "sourceLanguage": "en",
+  "snapshotHash": "60355f1b4cd71eafe176f82c72e901358451f1184e87d825e5d007cab0a15e25",
+  "evidenceSnippetOriginal": "NUS's Policy for Use of AI in Teaching and Learning; THE1005 on AI Use for Students on the NUSOne page",
+  "evidenceLocator": "Institutional Guidelines and Resources section",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Guidelines - Library Essentials",
+    "sourceUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+    "publisher": "NUS Libraries",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "60355f1b4cd71eafe176f82c72e901358451f1184e87d825e5d007cab0a15e25",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

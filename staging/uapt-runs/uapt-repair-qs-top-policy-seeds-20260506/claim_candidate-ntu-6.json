@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "claimId": "clm-ntu-ai-misrepresent-misconduct",
+  "entityType": "university",
+  "entitySlug": "nanyang-technological-university",
+  "claimType": "academic_integrity",
+  "claimText": "NTU states that misrepresenting AI-generated content as one's own work is considered academic misconduct under the 2025 NTU Academic Integrity Handbook.",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-ntu-6"
+  ],
+  "citation": {
+    "citationTitle": "Using AI Discovery Tools Responsibly",
+    "sourceUrl": "https://libguides.ntu.edu.sg/responsible-ai-use/",
+    "publisher": "NTU Library",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "fe0af2b5c253dc93204bd1ed232086e74e314262adef068832fdf984afa3b982",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-university-of-oxford-ai-pgr-prohibited-uses",
+  "claimId": "clm-university-of-oxford-ai-pgr-prohibited-uses",
+  "sourceSnapshotId": "ss-university-of-oxford-5",
+  "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+  "sourceTitle": "Generative AI Use \u2014 Mathematical, Physical and Life Sciences Division",
+  "sourceLanguage": "en",
+  "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+  "evidenceSnippetOriginal": "Substantive original writing by Gen AI, including either verbatim or closely paraphrased use of Gen AI content, for, e.g., chapters, or parts of chapters, including introduction or conclusion chapters or for a literature review, would fall under the definition of plagiarism or be otherwise a failure of research integrity and is therefore not permissible.\nThe use of generative AI to produce plots or data visualisations directly from prompts is prohibited.\nPrivate or confidential data must not be entered into third-party AI tools.",
+  "evidenceLocator": "Non-Permissible use section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Use \u2014 Mathematical, Physical and Life Sciences Division",
+    "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+    "publisher": "University of Oxford, MPLS Division",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

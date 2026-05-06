@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-massachusetts-institute-of-technology-3-20260506",
+  "claimId": "clm-massachusetts-institute-of-technology-compliance",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'ensure that your use of generative AI tools and services complies with all applicable federal and state laws and orders (including, without limitation, FERPA, HIPAA, Massachusetts Data Protection Standards, export control laws, and Executive Order...)' Claim accurately lists the specific regulations.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

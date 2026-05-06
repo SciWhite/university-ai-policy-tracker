@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-massachusetts-institute-of-technology-disclosure",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "claimType": "academic_integrity",
+  "claimText": "MIT advises community members to disclose the use of generative AI tools for all academic, educational, and research-related uses, and not to publish research results relying on AI-generated content without disclosing the nature of such use.",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evd-massachusetts-institute-of-technology-4"
+  ],
+  "citation": {
+    "citationTitle": "Guidance for use of Generative AI tools",
+    "sourceUrl": "https://ist.mit.edu/ai-guidance",
+    "publisher": "MIT Information Systems and Technology",
+    "retrievedAt": "2026-05-06T00:57:37.427Z",
+    "snapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-2",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+  "finalUrl": "https://www.huit.harvard.edu/ai/tools",
+  "sourceTitle": "Generative AI Tool Comparison",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.90,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "Official HUIT comparison of approved generative AI tools (Harvard AI Sandbox, Google Gemini, Microsoft Copilot Chat) with data classification levels, eligibility, and usage restrictions. Includes AI meeting assistant policy references.",
+  "robotsPolicy": "respect"
+}

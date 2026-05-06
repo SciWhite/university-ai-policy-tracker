@@ -1,0 +1,25 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "evidenceId": "evd-nus-3",
+  "claimId": "clm-nus-instructor-transparency",
+  "sourceSnapshotId": "ss-nus-policy-ai-teaching-learning-1a1cf2ce",
+  "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+  "sourceTitle": "NUS Policy for Use of AI in Teaching and Learning",
+  "sourceLanguage": "en",
+  "snapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f",
+  "evidenceSnippetOriginal": "Instructors should be transparent about where and how they deploy AI in NUS courses. This is especially important where AI is deployed to generate course content (including assessment questions), to function as virtual tutors to answer student queries, or to help with assessment feedback and grading.",
+  "evidenceLocator": "2.1 Be Transparent About the Use of AI",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "NUS Policy for Use of AI in Teaching and Learning",
+    "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+    "publisher": "National University of Singapore",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

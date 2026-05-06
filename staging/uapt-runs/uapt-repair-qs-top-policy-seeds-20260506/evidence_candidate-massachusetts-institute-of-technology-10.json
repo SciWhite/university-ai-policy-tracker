@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-massachusetts-institute-of-technology-10",
+  "claimId": "clm-massachusetts-institute-of-technology-approved-tools-list",
+  "sourceSnapshotId": "ss-massachusetts-institute-of-technology-4",
+  "sourceUrl": "https://ist.mit.edu/ai-tools",
+  "sourceTitle": "Generative AI tools available at MIT",
+  "sourceLanguage": "en",
+  "snapshotHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b",
+  "evidenceSnippetOriginal": "The following tools are approved for use with low- and medium-risk information\n\nAdobe Firefly - Generate or modify images via text prompts. Available to MIT faculty, staff, and students.\nAWS Bedrock - Developer access to third-party large language models via API. Available to MIT faculty and staff.\nAWS Sagemaker - Managed AI/ML model access and training. Available to MIT faculty and staff.\nAzure OpenAI - Developer access to Azure OpenAI and other cognitive services. Available to MIT faculty and staff.\nGoogle Gemini - Text-based AI chatbot. Available to MIT faculty, staff, and students.\nGoogle NotebookLM - Research assistant and note-taking tool. Available to MIT faculty, staff, and studen...",
+  "evidenceLocator": "Section: 'Available through IS&T for use by MIT' (approved tools list)",
+  "evidenceType": "official_source",
+  "relevance": 0.92,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI tools available at MIT",
+    "sourceUrl": "https://ist.mit.edu/ai-tools",
+    "publisher": "MIT Information Systems and Technology",
+    "retrievedAt": "2026-05-06T00:57:37.464Z",
+    "snapshotHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

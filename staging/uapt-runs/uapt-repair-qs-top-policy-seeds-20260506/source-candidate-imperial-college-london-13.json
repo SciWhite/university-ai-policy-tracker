@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-imperial-college-london-13",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "sourceUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/secretariat/public/college-governance/charters-statutes-ordinances-regulations/policies-regulations-codes-of-practice/information-systems-security/ICT-CoP-06-Conditions-of-Use-of-IT-Resources.pdf",
+  "sourceTitle": "ICT Code of Practice 06 - Conditions of Use of IT Resources",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:47:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.65,
+  "policySpecificityScore": 0.6,
+  "verificationStatus": "verified",
+  "verificationNotes": "ICT Code of Practice on IT resource use. Referenced from dAIsy Use Policy as governing data handling. Not AI-specific but provides the IT use framework that AI policies build upon.",
+  "robotsPolicy": "respect"
+}

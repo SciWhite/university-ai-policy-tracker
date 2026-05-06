@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-nus-1-20260505",
+  "claimId": "clm-nus-ai-policy-exists",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet references 'NUS's Policy for Use of AI in Teaching and Learning' and student resources \u2014 supports claim about institutional policy existence. (2) Source URL (libguides.nus.edu.sg/new2nus/ai_guidelines_infographics) and hash 60355f1b... match. (3) Confidence (0.88) and reviewState separated. (4) English source. (5) Claim scope matches evidence; 'supplemented by AI guidelines infographics and resources for students' is supported by the source being an infographics/resource page. (6) No advice presented. (7) ClaimType 'source_status' correct for a policy-existence claim. Source is official NUS Libraries guide.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

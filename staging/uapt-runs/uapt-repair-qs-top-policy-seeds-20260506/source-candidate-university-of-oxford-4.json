@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-university-of-oxford-4",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+  "sourceTitle": "Use Generative AI services safely",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:50:35Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verificationNotes": "Oxford Information Security team third-party security assessment guidance. Covers confidentiality risks, data integrity, university-licensed tools (Copilot M365, ChatGPT Edu, Google Gemini), Custom GPTs guidance, TPSA requirements. ChatGPT Edu approved for Confidential data. HTTP 200.",
+  "robotsPolicy": "respect"
+}

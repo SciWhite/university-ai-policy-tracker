@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-stanford-university-3",
+  "sourceCandidateId": "sc-stanford-university-3",
+  "sourceUrl": "https://ctl.stanford.edu/aimes",
+  "finalUrl": "https://ctl.stanford.edu/aimes",
+  "attemptedAt": "2026-05-06T01:07:22Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "57e3fd0e204837f5675b4d7574bc0e80c8a3ea77ed35f25d633d980877f8d2f9",
+  "normalizedTextStorageKey": "normalized/stanford-university-3.txt"
+}

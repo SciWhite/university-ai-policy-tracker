@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-university-of-oxford-5",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://ora.ox.ac.uk/objects/uuid:4d66fc50-0e91-43d9-9ce3-8a0be514dd08/files/rpc289k714",
+  "rejectedAt": "2026-05-06T00:51:00Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "ORA (Oxford University Research Archive) entry for research paper on 'Publishers' and journals' instructions to authors on use of [AI]'. Academic research publication, not a university policy."
+}

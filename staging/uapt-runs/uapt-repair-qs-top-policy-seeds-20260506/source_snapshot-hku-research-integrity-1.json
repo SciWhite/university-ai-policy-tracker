@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "sourceSnapshotId": "ss-hku-research-integrity-897bc95f",
+  "sourceCandidateId": "sc-hku-3",
+  "fetchAttemptId": "fa-hku-research-integrity-e0783b1f",
+  "sourceUrl": "http://www.rss.hku.hk/integrity",
+  "finalUrl": "http://www.rss.hku.hk/integrity",
+  "sourceTitle": "Research Services - Research Integrity",
+  "sourceLanguage": "en",
+  "contentHash": "c72f52741aae7ac105ebb79e05dd4148279c964e7c205aeb8308e4d374e88bab",
+  "fetchedAt": "2026-05-05T22:11:05Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/hku-research-integrity.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-8-20260506",
+  "claimId": "clm-university-of-oxford-ai-pgr-permitted-uses",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports all permitted uses: 'local editing tools\u2014such as grammar assistants, code debuggers, and spell-checkers\u2014is permitted', 'AI tools for background research, language translation, creation of bibliography indices and general subject understanding is allowed', 'Use of Gen AI for coding purposes is permitted, where the coding serves a purpose in the research but is not the substantive output.' Source is mpls.ox.ac.uk graduate school guidance.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

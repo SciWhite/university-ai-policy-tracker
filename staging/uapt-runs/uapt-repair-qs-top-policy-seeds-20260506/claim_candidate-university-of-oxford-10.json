@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-university-of-oxford-ai-pgr-declaration-requirement",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "claimType": "academic_integrity",
+  "claimText": "Oxford requires postgraduate research students to include a statement on their use of generative AI in their final thesis submission.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evd-university-of-oxford-ai-pgr-declaration-requirement"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Use \u2014 Mathematical, Physical and Life Sciences Division",
+    "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+    "publisher": "University of Oxford, MPLS Division",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "fetchAttemptId": "fa-nus-ai-guidelines-infographics-897a00a6",
+  "sourceCandidateId": "sc-nus-2",
+  "sourceUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+  "finalUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+  "attemptedAt": "2026-05-05T22:11:05Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "60355f1b4cd71eafe176f82c72e901358451f1184e87d825e5d007cab0a15e25",
+  "normalizedTextStorageKey": "normalized/nus-ai-guidelines-infographics.txt"
+}

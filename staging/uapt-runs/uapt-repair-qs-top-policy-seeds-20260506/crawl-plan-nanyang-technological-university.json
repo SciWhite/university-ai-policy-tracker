@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "cp-ntu-20260505",
+  "createdAt": "2026-05-05T22:05:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "nanyang-technological-university",
+      "sourceCandidateId": "sc-ntu-1",
+      "sourceUrl": "https://libguides.ntu.edu.sg/responsible-ai-use/",
+      "sourceTitle": "Using AI Discovery Tools Responsibly",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "responsible AI use",
+        "academic integrity",
+        "AI citation",
+        "disclosure requirements",
+        "student guidelines"
+      ]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "nanyang-technological-university",
+      "sourceCandidateId": "sc-ntu-2",
+      "sourceUrl": "https://www.ntu.edu.sg/education/inspire/teaching-learning-assessment-with-genai/assessment/policies-guidelines",
+      "sourceTitle": "Policies & Guidelines - NTU Singapore",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "academic integrity",
+        "AI detector tools",
+        "assessment policies",
+        "GenAI in education"
+      ]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "nanyang-technological-university",
+      "sourceCandidateId": "sc-ntu-3",
+      "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+      "sourceTitle": "NTU Policy on the Use of Generative Artificial Intelligence in Research",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "research GenAI policy",
+        "authorship rules",
+        "AI disclosure",
+        "AI-generated images",
+        "research integrity"
+      ]
+    }
+  ],
+  "stopConditions": []
+}

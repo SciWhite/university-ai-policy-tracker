@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-massachusetts-institute-of-technology-9",
+  "claimId": "clm-massachusetts-institute-of-technology-high-risk-prohibition",
+  "sourceSnapshotId": "ss-massachusetts-institute-of-technology-4",
+  "sourceUrl": "https://ist.mit.edu/ai-tools",
+  "sourceTitle": "Generative AI tools available at MIT",
+  "sourceLanguage": "en",
+  "snapshotHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b",
+  "evidenceSnippetOriginal": "No Generative AI tools, including those licensed by IS&T, are approved for use with High Risk MIT information. Additionally, we do not recommend using publicly available GenAI tools not subject to an Institute licensing agreement for your MIT research and educational activities. See IS&T's guidance for the use of generative AI tools for full details and recommendations.",
+  "evidenceLocator": "Opening statement section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI tools available at MIT",
+    "sourceUrl": "https://ist.mit.edu/ai-tools",
+    "publisher": "MIT Information Systems and Technology",
+    "retrievedAt": "2026-05-06T00:57:37.464Z",
+    "snapshotHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

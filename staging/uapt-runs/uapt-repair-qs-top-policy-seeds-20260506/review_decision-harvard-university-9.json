@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-9-20260506",
+  "claimId": "clm-harvard-university-hgse-no-course-recording",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'It is forbidden to make your own recording of any course meetings, with or without AI tool integrations.' Scope correctly HGSE school-level. Claim accurately captures the prohibition and the policy on uploading course content to AI tools.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-imperial-college-london-4-20260506",
+  "claimId": "clm-imperial-college-london-daisy-privacy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'dAIsy uses University SSO and auditing. Logs (prompts/metadata) are retained for operational monitoring. Model providers are configured to not train on your data.' Claim accurately reflects privacy protections. Source is dAIsy use policy.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

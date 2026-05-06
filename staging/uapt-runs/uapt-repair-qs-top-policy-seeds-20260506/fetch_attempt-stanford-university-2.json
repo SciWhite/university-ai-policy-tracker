@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-stanford-university-2",
+  "sourceCandidateId": "sc-stanford-university-2",
+  "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+  "finalUrl": "https://uit.stanford.edu/security/responsibleai",
+  "attemptedAt": "2026-05-06T01:07:22Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e",
+  "normalizedTextStorageKey": "normalized/stanford-university-2.txt"
+}

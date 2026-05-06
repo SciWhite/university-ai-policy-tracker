@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-imperial-college-london-10",
+  "claimId": "clm-imperial-college-london-genai-principles",
+  "sourceSnapshotId": "ss-imperial-college-london-4",
+  "sourceUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/generative-ai-principles/",
+  "sourceTitle": "Generative AI Principles",
+  "sourceLanguage": "en",
+  "snapshotHash": "8e2e65292a63189e93172810ff4ba9ff98e77d13894233c506f64f803d0bc94f",
+  "evidenceSnippetOriginal": "These principles are intended to provide a starting point for approaches to using generative AI in teaching, learning and assessment at Imperial. Imperial supports the use of the principles to frame and underpin activities university-wide as we as a community explore the use of generative AI, progress and develop policy, and establish guidelines. The principles are underpinned by Imperial's core Values. ... Promoting the critical use of generative AI in teaching, learning and assessment. Adopting a consistent ethical approach to the use of generative AI. Building a proactive research community around the use of generative AI.",
+  "evidenceLocator": "Generative AI Principles page - introductory and principles sections",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Principles",
+    "sourceUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/generative-ai-principles/",
+    "publisher": "Imperial College London",
+    "retrievedAt": "2026-05-06T01:00:08Z",
+    "snapshotHash": "8e2e65292a63189e93172810ff4ba9ff98e77d13894233c506f64f803d0bc94f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

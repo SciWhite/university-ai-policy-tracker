@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-imperial-college-london-14",
+  "sourceCandidateId": "sc-imperial-college-london-14",
+  "sourceUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/ict/public/dAIsy-use-guidance-and-process-flows-(2).pdf",
+  "finalUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/ict/public/dAIsy-use-guidance-and-process-flows-(2).pdf",
+  "attemptedAt": "2026-05-06T01:00:08Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "error",
+  "errorReason": "pdf_content_not_extractable",
+  "contentHash": "3aeae8408592870b542839d1b36267f13b253cf812ad76914cef60acbbc88b50",
+  "normalizedTextStorageKey": "normalized/imperial-college-london-14.txt"
+}

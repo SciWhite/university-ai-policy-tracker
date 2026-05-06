@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-university-of-oxford-1",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://ctl.ox.ac.uk/ai",
+  "sourceTitle": "AI and academic practice | Centre for Teaching and Learning",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:50:24Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verificationNotes": "Hub page linking to all Oxford AI policies, guidance, and resources. HTTP 200. Contains links to formal policy, teaching guidance, IT security guidance, training, and reports. Key entry point for Oxford's AI policy landscape.",
+  "robotsPolicy": "respect"
+}

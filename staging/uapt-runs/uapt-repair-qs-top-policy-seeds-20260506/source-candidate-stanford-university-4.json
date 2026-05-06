@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-4",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://tlhub.stanford.edu/docs/course-policies-on-generative-ai-use/",
+  "sourceTitle": "Course Policies on Generative AI Use - Teaching & Learning Hub",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:50:22Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verificationNotes": "Updated Dec 2025. Includes GSB policy on MBA/MSx courses (instructors may not ban AI for take-home work), template syllabus statements, citing guidance. Links to Stanford-approved tools list. Rich policy content.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-massachusetts-institute-of-technology-existing-tool-review",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "claimType": "other",
+  "claimText": "MIT departments, labs, centers, and institutes (DLCIs) already using a generative AI tool or service must ensure that the tool complies with all Institute policies and Information Protection guidelines, and must contact ai-guidance@mit.edu for consultation or assessment if needed.",
+  "sourceLanguage": "en",
+  "confidence": 0.93,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-massachusetts-institute-of-technology-7"
+  ],
+  "citation": {
+    "citationTitle": "Guidance for use of Generative AI tools",
+    "sourceUrl": "https://ist.mit.edu/ai-guidance",
+    "publisher": "MIT Information Systems and Technology",
+    "retrievedAt": "2026-05-06T00:57:37.427Z",
+    "snapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

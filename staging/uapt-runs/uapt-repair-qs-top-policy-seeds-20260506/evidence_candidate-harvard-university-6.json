@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-harvard-university-faculty-policy-communication",
+  "claimId": "clm-harvard-university-faculty-policy-communication",
+  "sourceSnapshotId": "ss-harvard-university-1",
+  "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+  "sourceTitle": "Generative AI Guidelines",
+  "sourceLanguage": "en",
+  "snapshotHash": "9d196aae4d265663c3d4ccb4c342259dbf2eac4f105b5b66c5bf2a08924ac089",
+  "evidenceSnippetOriginal": "Faculty should be clear with students they're teaching and advising about their policies on permitted uses, if any, of generative AI in classes and on academic work. Students are also encouraged to ask their instructors for clarification about these policies as needed.",
+  "evidenceLocator": "Adhere to local academic and administrative policies section",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Guidelines",
+    "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+    "publisher": "Harvard University Information Technology (HUIT)",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "9d196aae4d265663c3d4ccb4c342259dbf2eac4f105b5b66c5bf2a08924ac089",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

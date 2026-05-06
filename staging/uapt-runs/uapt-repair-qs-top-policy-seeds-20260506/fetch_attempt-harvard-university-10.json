@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-harvard-university-10",
+  "sourceCandidateId": "sc-harvard-university-10",
+  "sourceUrl": "https://bokcenter.harvard.edu/guidance-faculty-addressing-ai-related-academic-integrity-issues",
+  "finalUrl": "https://bokcenter.harvard.edu/guidance-faculty-addressing-ai-related-academic-integrity-issues",
+  "attemptedAt": "2026-05-06T00:57:51Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "df502c28e0243fc8350a168ec317ad2f54d52b3ed0ad77e146ae8472ffd3586b",
+  "normalizedTextStorageKey": "normalized/harvard-university-10.txt"
+}

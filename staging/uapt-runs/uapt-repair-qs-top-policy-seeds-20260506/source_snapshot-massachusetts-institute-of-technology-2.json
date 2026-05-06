@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-massachusetts-institute-of-technology-2",
+  "sourceCandidateId": "sc-massachusetts-institute-of-technology-2",
+  "fetchAttemptId": "fa-massachusetts-institute-of-technology-2",
+  "sourceUrl": "https://tll.mit.edu/teaching-resources/course-design/gen-ai-your-course/",
+  "finalUrl": "https://tll.mit.edu/teaching-resources/course-design/gen-ai-your-course/",
+  "sourceTitle": "Generative AI & Your Course",
+  "sourceLanguage": "en",
+  "contentHash": "378745e0058115791f20f99fdb201f02717080dc504e1941757e1913518882f9",
+  "fetchedAt": "2026-05-06T00:57:38.672Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/massachusetts-institute-of-technology-2.txt",
+  "rawArtifactPaths": []
+}

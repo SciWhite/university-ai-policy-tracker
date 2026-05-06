@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-massachusetts-institute-of-technology-ai-procurement-review",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "claimType": "procurement",
+  "claimText": "IS&T recommends that MIT community members consult with IS&T before purchasing or using generative AI tools, and recommends using tools already licensed by IS&T for the MIT community.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-massachusetts-institute-of-technology-1"
+  ],
+  "citation": {
+    "citationTitle": "Guidance for use of Generative AI tools",
+    "sourceUrl": "https://ist.mit.edu/ai-guidance",
+    "publisher": "MIT Information Systems and Technology",
+    "retrievedAt": "2026-05-06T00:57:37.427Z",
+    "snapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

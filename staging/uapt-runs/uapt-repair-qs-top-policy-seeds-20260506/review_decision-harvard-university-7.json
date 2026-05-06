@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-7-20260506",
+  "claimId": "clm-harvard-university-hgse-academic-integrity",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports HGSE school-level policy: 'it is a violation of the HGSE Academic Integrity Policy to use generative AI to create all or part of an assignment...' Scope correctly identified as HGSE school-level, not university-wide. Source is registrar.gse.harvard.edu official policy page.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

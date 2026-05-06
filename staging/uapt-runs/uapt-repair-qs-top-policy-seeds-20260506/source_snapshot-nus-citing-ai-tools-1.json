@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "sourceSnapshotId": "ss-nus-citing-ai-tools-42fad5ee",
+  "sourceCandidateId": "sc-nus-3",
+  "fetchAttemptId": "fa-nus-citing-ai-tools-c930ea0f",
+  "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+  "finalUrl": "https://libguides.nus.edu.sg/citation/ai",
+  "sourceTitle": "Citing AI Tools (NEW!)",
+  "sourceLanguage": "en",
+  "contentHash": "ee53c1275ceaed742d7aeb1d24af41a37b89872b2b8b9506e101838a8f5b3d22",
+  "fetchedAt": "2026-05-05T22:11:05Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/nus-citing-ai-tools.txt",
+  "rawArtifactPaths": []
+}

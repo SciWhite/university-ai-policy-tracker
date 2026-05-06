@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-harvard-university-2",
+  "sourceCandidateId": "sc-harvard-university-2",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://www.huit.harvard.edu/openai-chatgpt-edu",
+  "rejectedAt": "2026-05-06T00:49:00Z",
+  "rejectionReason": "no_ai_content",
+  "checkedBy": "crawl-designer",
+  "notes": "ChatGPT Edu service page with only minimal eligibility info (155 chars). No policy content — just a service description. Tool details are better captured via the /ai/tools comparison page."
+}

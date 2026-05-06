@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-4-20260506",
+  "claimId": "clm-harvard-university-content-responsibility",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'You are responsible for any content that you publish or share that includes AI-generated material.' Additional details about hallucinations and copyrighted material are in the evidence. Scope is university-wide. ClaimType 'other' is acceptable though 'content_governance' might be more precise.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-university-of-oxford-ai-three-principles",
+  "claimId": "clm-university-of-oxford-ai-three-principles",
+  "sourceSnapshotId": "ss-university-of-oxford-2",
+  "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+  "sourceTitle": "AI use in summative assessment",
+  "sourceLanguage": "en",
+  "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+  "evidenceSnippetOriginal": "The policy is based on three principles for acceptable use of AI which were endorsed by Education Committee during Trinity term 2025:\n- Educational practice in teaching and assessment must be grounded in values of integrity, honesty and transparency. These values need to be clearly articulated and frequently discussed.\n- Every discrete unit of assessment must be carefully designed to be fit for its specific purposes. These purposes need to be clearly articulated to students.\n- Every element of summative assessment must be accompanied by a clear explanation of what appropriate assistance is permitted and what is forbidden. Where assistance is permitted, the assignment should specify exactl...",
+  "evidenceLocator": "Three principles section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI use in summative assessment",
+    "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+    "publisher": "University of Oxford Education Committee",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

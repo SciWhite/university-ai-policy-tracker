@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-university-of-oxford-4",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://www.maths.ox.ac.uk/system/files/attachments/Departmental%20policy%20on%20use%20of%20AI%20in%20MSc%20Dissertations.pdf",
+  "rejectedAt": "2026-05-06T00:51:15Z",
+  "rejectionReason": "inaccessible",
+  "checkedBy": "crawl-designer",
+  "notes": "PDF document from Maths department. Returned raw PDF binary, could not extract readable text via web_fetch. Could be a valid department-level policy but content is unverifiable without PDF extraction tools."
+}

@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-nus-7-20260505",
+  "claimId": "clm-nus-unacknowledged-plagiarism",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet directly states 'Representing an AI's output as your own work, without any acknowledgement that you have used such a tool, is plagiarism' and that students can be sanctioned \u2014 claim accurately captures both points. (2) Source URL and hash 96587c9c... match. (3) Confidence (0.96) and reviewState separated. (4) English source. (5) Claim scope matches evidence. (6) No advice \u2014 describes stated policy consequence. (7) ClaimType 'academic_integrity' correct. Source is official NUS Policy PDF.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-harvard-university-ai-tools-not-authors",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "claimType": "academic_integrity",
+  "claimText": "HMS (Harvard Medical School) Academic and Research Integrity guidance: AI tools cannot be listed as authors on a paper. Authors should be transparent when AI tools are used and provide information about how AI tools were used.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-harvard-university-ai-tools-not-authors"
+  ],
+  "citation": {
+    "citationTitle": "AI | Academic and Research Integrity",
+    "sourceUrl": "https://ari.hms.harvard.edu/ai",
+    "publisher": "Harvard Medical School \u2013 Academic and Research Integrity",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "5a0b3ca35d6c341bf7e2c09bbbe76560699e6854b9379f341ce805aa07ea9002",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

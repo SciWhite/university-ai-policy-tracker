@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-stanford-university-uit-responsible-ai",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "claimType": "other",
+  "claimText": "Stanford University IT (UIT) advises users to avoid inputting Moderate or High Risk Data into third-party AI platforms or tools not covered by a Stanford Business Associates Agreement, whether using a personal or Stanford account. Users should opt out of sharing chat data with third-party AI providers when possible.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-stanford-university-uit-responsible-ai-1"
+  ],
+  "citation": {
+    "citationTitle": "Responsible AI at Stanford - University IT",
+    "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+    "publisher": "Stanford University IT",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-imperial-college-london-11",
+  "sourceCandidateId": "sc-imperial-college-london-11",
+  "fetchAttemptId": "fa-imperial-college-london-11",
+  "sourceUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/registry/academic-governance/public/academic-policy/academic-integrity/Academic-Misconduct-Policy-and-Procedure-v1.3-15.03.23.pdf",
+  "finalUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/registry/academic-governance/public/academic-policy/academic-integrity/Academic-Misconduct-Policy-and-Procedure-v1.3-15.03.23.pdf",
+  "sourceTitle": "Academic Misconduct Policy and Procedure v1.3",
+  "sourceLanguage": "en",
+  "contentHash": "e18e689fab16090afeeda5d2a10cf35446680c79f4abdda4cf3123080e2ff70f",
+  "fetchedAt": "2026-05-06T01:00:08Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/imperial-college-london-11.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-university-of-oxford-ai-assessment-staff-duties",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "claimType": "academic_integrity",
+  "claimText": "Staff setting summative assessment must: declare whether/how students can use AI; review assessment design for alignment with permitted AI use; ensure equality of baseline AI tool provision where authorised; specify declaration forms for student AI use; only identify suspected unauthorised AI use through marking or university-endorsed detection tools (none currently endorsed); and handle misconduct under usual disciplinary regulations.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-university-of-oxford-ai-assessment-staff-duties"
+  ],
+  "citation": {
+    "citationTitle": "AI use in summative assessment",
+    "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+    "publisher": "University of Oxford Education Committee",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

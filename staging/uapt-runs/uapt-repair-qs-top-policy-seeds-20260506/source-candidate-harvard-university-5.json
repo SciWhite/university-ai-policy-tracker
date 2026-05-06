@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-5",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://www.harvard.edu/ai/learning-resources/",
+  "finalUrl": "https://www.harvard.edu/ai/learning-resources/",
+  "sourceTitle": "Learn with Generative AI",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.90,
+  "aiRelevanceScore": 0.75,
+  "policySpecificityScore": 0.55,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "Harvard.edu central AI learning resources page. Advisory guidance for students on using generative AI in courses. Not enforceable policy — more of a resource hub. Scores are moderate because content is advisory/educational rather than prescriptive.",
+  "robotsPolicy": "respect"
+}

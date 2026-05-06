@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-stanford-university-ucomm-ai-guidelines",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "claimType": "other",
+  "claimText": "Stanford University Communications (UComm) has issued AI guidelines for marketing and communications staff requiring: human oversight of all AI-generated content (non-delegable personal responsibility), adherence to university policies, prohibition on inputting confidential or legally privileged information into generative AI tools, prohibition on using AI to promote for-profit organizations or engage in political advocacy, and prohibition on using high-risk data in prompts. Stanford AI Playground is recommended as the primary platform. These guidelines apply to all regular staff, interns, casual employees, and consultants in marketing and communications functions.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-stanford-university-ucomm-ai-guidelines-1"
+  ],
+  "citation": {
+    "citationTitle": "AI Guidelines for Marketing and Communications",
+    "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+    "publisher": "Stanford University Communications",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "9c5e79c1de806eb64ddd8fc7c3e70d95c560eaab5d03f1246333e9076e3a7c3b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

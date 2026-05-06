@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-stanford-university-5",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://news.stanford.edu/stories/2025/01/ai-playground-offers-a-safe-place-to-explore-and-experiment",
+  "rejectedAt": "2026-05-06T00:50:55Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "Stanford News article about AI Playground launch. News/editorial, not a policy document. The actual AI Playground policy content is at uit.stanford.edu/aiplayground."
+}

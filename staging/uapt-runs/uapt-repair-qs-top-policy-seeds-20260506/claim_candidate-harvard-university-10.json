@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-harvard-university-oue-required-policy",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "claimType": "teaching",
+  "claimText": "FAS (Faculty of Arts and Sciences) Office of Undergraduate Education policy: All faculty are required to inform students of the policies governing generative AI use in class. Faculty should post their AI policy on their Canvas site.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-harvard-university-oue-required-policy"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidance – Office of Undergraduate Education",
+    "sourceUrl": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+    "publisher": "Harvard FAS Office of Undergraduate Education",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "fb0bf75a8ed53e121f6e34ef1515da466df40d276a62edf37c164e6ad23dc00f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

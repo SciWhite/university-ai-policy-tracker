@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-hku-5-20260505",
+  "claimId": "clm-hku-genai-senate-approved",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet announces formal Senate approval and that guidelines are 'now in effect' \u2014 directly supports claim. (2) Source URL (researchintegrity.law.hku.hk) and hash 56fea967... match. (3) Confidence (0.97) and reviewState separated. (4) English source. (5) Claim adds 'September 23, 2025' date \u2014 this date appears in evidence_candidate-hku-6 from a different source snapshot, but the announcement page itself confirms Senate approval; the date is corroborated by the Research Services page. (6) No advice presented. (7) ClaimType 'source_status' correct for a policy approval status claim. Source is official HKU Research Integrity announcement.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

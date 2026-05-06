@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-nus-ai-institute-1",
+  "sourceCandidateId": "sc-nus-4",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "sourceUrl": "https://ai.nus.edu.sg/research/ai-governance-and-policy/",
+  "finalUrl": "https://ai.nus.edu.sg/research/ai-governance-and-policy/",
+  "rejectedAt": "2026-05-06T00:32:21Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "policy-manager",
+  "evidenceSnippet": "NUS AI Institute page focuses on AI Governance Roundtables and stakeholder discussions across Southeast Asia. Content is research showcase, not institutional AI policy for teaching/learning/research operations.",
+  "notes": "Explicitly excluded per run contract. This source describes NUS AI Institute research activities, not enforceable university policy."
+}

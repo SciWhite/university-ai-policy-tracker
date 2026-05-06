@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-harvard-university-oue-student-content-permission",
+  "claimId": "clm-harvard-university-oue-student-content-permission",
+  "sourceSnapshotId": "ss-harvard-university-12",
+  "sourceUrl": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+  "sourceTitle": "Generative AI Guidance \u2013 Office of Undergraduate Education",
+  "sourceLanguage": "en",
+  "snapshotHash": "fb0bf75a8ed53e121f6e34ef1515da466df40d276a62edf37c164e6ad23dc00f",
+  "evidenceSnippetOriginal": "Faculty must get documented permission from students before putting original student content into any generative AI tool, and students should be made aware of the risks of entering their original work into such tools. No confidential information can be loaded into GAI systems, since there is no expectation of privacy or confidentiality.",
+  "evidenceLocator": "FAQ \u2013 Is it appropriate to enter student work into ChatGPT?",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Guidance \u2013 Office of Undergraduate Education",
+    "sourceUrl": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+    "publisher": "Harvard FAS Office of Undergraduate Education",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "fb0bf75a8ed53e121f6e34ef1515da466df40d276a62edf37c164e6ad23dc00f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-hku-2-20260505",
+  "claimId": "clm-hku-genai-data-privacy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Changed requires/prohibits language to should comply/should avoid to match evidence wording. Evidence directly supports data protection compliance and avoidance of sensitive, confidential, or proprietary information. Source is official HKU Research Services guidance.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

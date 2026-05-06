@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-university-of-oxford-5",
+  "sourceCandidateId": "sc-university-of-oxford-5",
+  "fetchAttemptId": "fa-university-of-oxford-5",
+  "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+  "finalUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+  "sourceTitle": "Generative AI Use \u2014 Mathematical, Physical and Life Sciences Division",
+  "sourceLanguage": "en",
+  "contentHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+  "fetchedAt": "2026-05-06T00:57:57Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/university-of-oxford-5.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-7",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://it.hms.harvard.edu/about/policies-and-guidelines/generative-ai",
+  "finalUrl": "https://it.hms.harvard.edu/about/policies-and-guidelines/generative-ai",
+  "sourceTitle": "Generative AI | HMS IT",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "HMS IT unit-level guidance on responsible AI use. Covers data security levels, approved tools (AI Sandbox, ChatGPT Edu, Adobe Firefly), training requirements, and compliance standards. Builds on university-wide HUIT guidelines. Unit-level (HMS), not university-wide.",
+  "robotsPolicy": "respect"
+}

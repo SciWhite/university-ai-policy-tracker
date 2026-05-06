@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-stanford-university-6-20260506",
+  "claimId": "clm-stanford-university-law-school-ai-policy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'In the absence of a course-specific AI policy set by the instructor, students may use generative AI tools to support their learning and to aid in the development or refinement of their own ideas, provided they do not use such tools to generate content that is then presented as their own work.' Scope correctly Stanford Law School. Source is law.stanford.edu official page.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

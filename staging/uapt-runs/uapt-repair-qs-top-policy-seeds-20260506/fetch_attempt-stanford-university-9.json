@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-stanford-university-9",
+  "sourceCandidateId": "sc-stanford-university-9",
+  "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+  "finalUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+  "attemptedAt": "2026-05-06T01:07:22Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "9c5e79c1de806eb64ddd8fc7c3e70d95c560eaab5d03f1246333e9076e3a7c3b",
+  "normalizedTextStorageKey": "normalized/stanford-university-9.txt"
+}

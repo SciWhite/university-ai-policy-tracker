@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-2-20260506",
+  "claimId": "clm-harvard-university-vendor-assessment",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports: 'All vendor generative AI tools must be assessed for risk by Harvard's Information Security and Data Privacy office prior to use in Harvard work.' Source is HUIT official guidelines. Scope correctly identified as university-wide. ClaimType 'procurement' is appropriate.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

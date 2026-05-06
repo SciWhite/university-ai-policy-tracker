@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-stanford-university-13",
+  "sourceCandidateId": "sc-stanford-university-13",
+  "sourceUrl": "https://provost.stanford.edu/2025/01/09/report-of-the-ai-at-stanford-advisory-committee/",
+  "finalUrl": "https://provost.stanford.edu/news/report-ai-stanford-advisory-committee",
+  "attemptedAt": "2026-05-06T01:07:22Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "c05edef17acd65c126b10c2dbc09754f6c45166b3a3e9c22b5e0d93afc8823a7",
+  "normalizedTextStorageKey": "normalized/stanford-university-13.txt"
+}

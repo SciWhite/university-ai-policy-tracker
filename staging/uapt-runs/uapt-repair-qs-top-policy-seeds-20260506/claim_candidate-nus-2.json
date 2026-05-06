@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "claimId": "clm-nus-cite-ai-tools",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "claimType": "academic_integrity",
+  "claimText": "NUS requires students to cite AI-generated content according to style guide conventions and to check assignment guidelines for specific AI use instructions.",
+  "sourceLanguage": "en",
+  "confidence": 0.88,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-nus-2"
+  ],
+  "citation": {
+    "citationTitle": "Citing AI Tools (NEW!)",
+    "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+    "publisher": "NUS Libraries",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "ee53c1275ceaed742d7aeb1d24af41a37b89872b2b8b9506e101838a8f5b3d22",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

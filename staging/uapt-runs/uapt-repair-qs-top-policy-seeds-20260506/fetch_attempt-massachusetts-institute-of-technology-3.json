@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-massachusetts-institute-of-technology-3",
+  "sourceCandidateId": "sc-massachusetts-institute-of-technology-3",
+  "sourceUrl": "https://tll.mit.edu/rethinking-your-problem-sets-in-the-world-of-generative-ai/",
+  "finalUrl": "https://tll.mit.edu/rethinking-your-problem-sets-in-the-world-of-generative-ai/",
+  "attemptedAt": "2026-05-06T00:57:38.754Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "df6913244fee79c9e77ac1ec014422870a5c7ca34a1d60fa026ef742f4848f02",
+  "normalizedTextStorageKey": "normalized/massachusetts-institute-of-technology-3.txt"
+}

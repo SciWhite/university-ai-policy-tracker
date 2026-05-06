@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-imperial-college-london-daisy-privacy",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "claimType": "privacy",
+  "claimText": "Imperial's dAIsy AI platform uses University SSO authentication with auditing. Prompts and metadata are logged for operational monitoring, and AI model providers are configured not to train on user data. Users' prompts and responses are not used to train external AI models. dAIsy is approved for use with unrestricted data within Imperial's secure infrastructure.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-imperial-college-london-4"
+  ],
+  "citation": {
+    "citationTitle": "dAIsy Use Policy",
+    "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+    "publisher": "Imperial College London ICT",
+    "retrievedAt": "2026-05-06T01:00:08Z",
+    "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

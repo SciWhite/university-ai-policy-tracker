@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-11-20260506",
+  "claimId": "clm-harvard-university-oue-student-content-permission",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Faculty must get documented permission from students before putting original student content into any generative AI tool.' Scope correctly FAS OUE. ClaimType 'privacy' is appropriate for student data protection.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

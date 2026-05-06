@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-massachusetts-institute-of-technology-4",
+  "sourceCandidateId": "sc-massachusetts-institute-of-technology-4",
+  "sourceUrl": "https://ist.mit.edu/ai-tools",
+  "finalUrl": "https://ist.mit.edu/ai-tools",
+  "attemptedAt": "2026-05-06T00:57:37.464Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b",
+  "normalizedTextStorageKey": "normalized/massachusetts-institute-of-technology-4.txt"
+}

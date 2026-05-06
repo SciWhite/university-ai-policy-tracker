@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "fetchAttemptId": "fa-ntu-genai-research-policy-a0fb8715",
+  "sourceCandidateId": "sc-ntu-3",
+  "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+  "finalUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+  "attemptedAt": "2026-05-05T22:11:05Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "1633bb1925de33a82fb5c5798fb93160000f2a8566253dae94cd20a927a699b2",
+  "normalizedTextStorageKey": "normalized/ntu-genai-research-policy.txt"
+}

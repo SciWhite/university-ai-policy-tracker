@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-harvard-university",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "startedAt": "2026-05-06T00:49:00Z",
+  "endedAt": "2026-05-06T00:50:00Z",
+  "methodsAttempted": [
+    {
+      "method": "operator_seed",
+      "notes": "Probed 8 seed URLs. All returned HTTP 200. HUIT /ai landing page rejected as too thin; other 7 seed URLs yielded substantive content.",
+      "resultCount": 7
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:harvard.edu \"generative AI\" policy",
+      "resultCount": 0,
+      "notes": "Web search provider unavailable. Used opencli google search as fallback — returned no results for this query."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:harvard.edu \"ChatGPT\" guidelines",
+      "resultCount": 10,
+      "notes": "opencli google search returned 10 results. Relevant policy sources: HGSE AI Policy, OUE Generative AI Guidance, Provost letter (already seeded), ChatGPT Edu (rejected)."
+    },
+    {
+      "method": "public_web_search",
+      "query": "Harvard University AI tools teaching guidance",
+      "resultCount": 0,
+      "notes": "opencli google search returned no results for this broader query."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:harvard.edu \"AI\" \"academic integrity\"",
+      "resultCount": 10,
+      "notes": "opencli google search returned 10 results. Relevant: OAISC FAS page, Bok Center faculty guidance, HMS ARI page. Extension School page rejected (too general)."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-harvard-university-1",
+    "sc-harvard-university-2",
+    "sc-harvard-university-3",
+    "sc-harvard-university-4",
+    "sc-harvard-university-5",
+    "sc-harvard-university-6",
+    "sc-harvard-university-7",
+    "sc-harvard-university-8",
+    "sc-harvard-university-9",
+    "sc-harvard-university-10",
+    "sc-harvard-university-11",
+    "sc-harvard-university-12"
+  ],
+  "rejectionIds": [
+    "sr-harvard-university-1",
+    "sr-harvard-university-2",
+    "sr-harvard-university-3"
+  ],
+  "summary": "Discovered 12 verified source candidates and 3 rejections for Harvard University. University-wide policy layer is well-covered: HUIT guidelines (data privacy, approved tools, AI assistants), Provost letter (initial university-wide guidance), and Harvard.edu central resources. School-level policies found for HGSE (formal student AI policy AY2025-2026) and HMS (IT guidance + research integrity hub). FAS teaching guidance well-represented via OUE sample policies, Bok Center syllabus/faculty guidance, and OAISC resource hub. Harvard.edu learning resources noted as advisory only. Web search was partially available via opencli; 2 of 4 queries returned results. No blockers encountered — all seed URLs were accessible."
+}

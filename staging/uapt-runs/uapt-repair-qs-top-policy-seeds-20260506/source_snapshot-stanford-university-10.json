@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-stanford-university-10",
+  "sourceCandidateId": "sc-stanford-university-10",
+  "fetchAttemptId": "fa-stanford-university-10",
+  "sourceUrl": "https://ctl.stanford.edu/aimes/ai-teaching-strategies",
+  "finalUrl": "https://ctl.stanford.edu/aimes/ai-teaching-strategies",
+  "sourceTitle": "AI Teaching Strategies - Center for Teaching and Learning",
+  "sourceLanguage": "en",
+  "contentHash": "65d00154666c1b4fbf8e2c8123467527013c2e721c00ffbceb9d61c185f9896e",
+  "fetchedAt": "2026-05-06T01:07:22Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/stanford-university-10.txt",
+  "rawArtifactPaths": []
+}

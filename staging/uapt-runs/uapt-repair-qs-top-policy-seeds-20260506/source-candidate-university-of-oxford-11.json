@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-university-of-oxford-11",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://www.ox.ac.uk/students/life/it/genai-tools/genai-faqs-for-students",
+  "sourceTitle": "GenAI FAQs for students",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:50:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "blocked",
+  "verificationNotes": "Cloudflare WAF returns 403 (Just a moment...). Search snippet: 'The following Frequently Asked Questions provide information about how Generative AI (GenAI) tools are being used at the University.' Student FAQ page, inaccessible.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-imperial-college-london-9-20260506",
+  "claimId": "clm-imperial-college-london-daisy-copyright-ip",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-manager",
+  "notes": "Claim describes dAIsy platform copyright/IP rules. Evidence supports: users should not upload third-party content without permission, reuse must comply with licensing/citation norms. Source is official Imperial guidance. Scope: unit-level (dAIsy platform). ClaimType 'ai_tool_treatment' appropriate.",
+  "decidedAt": "2026-05-06T01:57:05Z"
+}

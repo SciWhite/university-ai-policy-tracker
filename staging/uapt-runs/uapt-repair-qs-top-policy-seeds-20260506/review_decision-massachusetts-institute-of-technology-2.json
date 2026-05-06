@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-massachusetts-institute-of-technology-2-20260506",
+  "claimId": "clm-massachusetts-institute-of-technology-high-risk-prohibition",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'No Generative AI tools, including those licensed by IS&T, are approved for use with High Risk MIT information.' Additional detail about not recommending public tools also matches. Multiple evidence sources (ist.mit.edu/ai-guidance and ist.mit.edu/ai-tools) corroborate.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

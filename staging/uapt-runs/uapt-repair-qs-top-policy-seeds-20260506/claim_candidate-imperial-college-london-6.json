@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-imperial-college-london-research-ethics",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "claimType": "research",
+  "claimText": "Research at Imperial that involves people, personal data, or sensitive topics may require ethics approval, a Data Protection Impact Assessment (DPIA), and data-governance controls before using any AI tool. Researchers must verify whether their use of AI in research requires special approval, particularly when uploading private or confidential research data.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-imperial-college-london-6"
+  ],
+  "citation": {
+    "citationTitle": "dAIsy Use Policy",
+    "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+    "publisher": "Imperial College London ICT",
+    "retrievedAt": "2026-05-06T01:00:08Z",
+    "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

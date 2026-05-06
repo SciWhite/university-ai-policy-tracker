@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-university-of-oxford-3",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://www.oii.ox.ac.uk/news-events/study-identifies-weaknesses-in-how-ai-systems-are-evaluated/",
+  "rejectedAt": "2026-05-06T00:51:00Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "Research news article about AI evaluation benchmarks. Not a university policy source. Discovered via 'site:ox.ac.uk artificial intelligence assessment' search."
+}

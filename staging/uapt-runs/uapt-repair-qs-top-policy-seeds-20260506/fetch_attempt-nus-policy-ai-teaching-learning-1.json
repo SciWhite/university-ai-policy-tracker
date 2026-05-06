@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "fetchAttemptId": "fa-nus-policy-ai-teaching-learning-96964ba7",
+  "sourceCandidateId": "sc-nus-1",
+  "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+  "finalUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+  "attemptedAt": "2026-05-05T22:11:05Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f",
+  "normalizedTextStorageKey": "normalized/nus-policy-ai-teaching-learning.txt"
+}

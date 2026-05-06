@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "crawl-plan-university-of-oxford",
+  "createdAt": "2026-05-06T00:52:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "candidateId": "sc-university-of-oxford-2",
+      "url": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+      "priority": 1,
+      "rationale": "Primary formal policy on AI use in summative assessment. Published by Education Committee July 2025. Highest specificity and relevance.",
+      "crawlMethod": "web_fetch",
+      "estimatedPages": 1,
+      "entitySlug": "university-of-oxford",
+      "sourceUrl": "https://ctl.ox.ac.uk/ai",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "AI and academic practice | Centre for Teaching and Learning"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-4",
+      "url": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+      "priority": 2,
+      "rationale": "IT security guidance covering data confidentiality, approved tools, Custom GPTs. Important for data handling policy aspects.",
+      "crawlMethod": "web_fetch",
+      "estimatedPages": 1,
+      "entitySlug": "university-of-oxford",
+      "sourceUrl": "https://ctl.ox.ac.uk/ai",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "AI and academic practice | Centre for Teaching and Learning"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-5",
+      "url": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+      "priority": 3,
+      "rationale": "Division-level guidance for PGR students. Clarifies university policy for research degree contexts.",
+      "crawlMethod": "web_fetch",
+      "estimatedPages": 1,
+      "entitySlug": "university-of-oxford",
+      "sourceUrl": "https://ctl.ox.ac.uk/ai",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "AI and academic practice | Centre for Teaching and Learning"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-3",
+      "url": "https://ctl.ox.ac.uk/ai-tools-in-teaching",
+      "priority": 4,
+      "rationale": "Teaching guidance with 10 practical ideas for AI use in teaching. Complements formal policy with practical pedagogical advice.",
+      "crawlMethod": "web_fetch",
+      "estimatedPages": 1,
+      "entitySlug": "university-of-oxford",
+      "sourceUrl": "https://ctl.ox.ac.uk/ai",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "AI and academic practice | Centre for Teaching and Learning"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-1",
+      "url": "https://ctl.ox.ac.uk/ai",
+      "priority": 5,
+      "rationale": "Hub page linking to all Oxford AI policies. Useful as a navigation/index page for discovering additional sources.",
+      "crawlMethod": "web_fetch",
+      "estimatedPages": 1,
+      "entitySlug": "university-of-oxford",
+      "sourceUrl": "https://ctl.ox.ac.uk/ai",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "AI and academic practice | Centre for Teaching and Learning"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-6",
+      "url": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+      "priority": 6,
+      "rationale": "IT Services informational article on AI provision. Lower priority as informational rather than formal policy.",
+      "crawlMethod": "web_fetch",
+      "estimatedPages": 1,
+      "entitySlug": "university-of-oxford",
+      "sourceUrl": "https://ctl.ox.ac.uk/ai",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "AI and academic practice | Centre for Teaching and Learning"
+    }
+  ],
+  "blockedTargets": [
+    {
+      "candidateId": "sc-university-of-oxford-8",
+      "url": "https://www.ox.ac.uk/students/life/it/genai-tools/guidance-on-safe-and-responsible-use-of-genai",
+      "blockReason": "Cloudflare WAF 403",
+      "retryRecommendation": "Try via browser automation or cached/archive versions"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-10",
+      "url": "https://www.ox.ac.uk/research/support/governance-and-committees/research-policies/policy-for-using-generative-ai-in",
+      "blockReason": "Cloudflare WAF 403",
+      "retryRecommendation": "Try via browser automation or cached/archive versions"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-7",
+      "url": "https://www.ox.ac.uk/students/life/it/genai-tools",
+      "blockReason": "Cloudflare WAF 403",
+      "retryRecommendation": "Try via browser automation or cached/archive versions"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-9",
+      "url": "https://www.ox.ac.uk/gen-ai",
+      "blockReason": "Cloudflare WAF 403",
+      "retryRecommendation": "Try via browser automation or cached/archive versions"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-11",
+      "url": "https://www.ox.ac.uk/students/life/it/genai-tools/genai-faqs-for-students",
+      "blockReason": "Cloudflare WAF 403",
+      "retryRecommendation": "Try via browser automation or cached/archive versions"
+    },
+    {
+      "candidateId": "sc-university-of-oxford-12",
+      "url": "https://newsletter.admin.ox.ac.uk/c/11yN0sR7COyOUBRSg",
+      "blockReason": "Cloudflare WAF 403",
+      "retryRecommendation": "Try via browser automation or cached/archive versions"
+    }
+  ],
+  "stopConditions": [
+    "All accessible targets crawled successfully",
+    "No new policy-relevant content discovered beyond identified candidates",
+    "Blocked targets require browser automation for further progress"
+  ]
+}

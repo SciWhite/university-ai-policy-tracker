@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-massachusetts-institute-of-technology-2",
+  "sourceCandidateId": "sc-massachusetts-institute-of-technology-2",
+  "sourceUrl": "https://tll.mit.edu/teaching-resources/course-design/gen-ai-your-course/",
+  "finalUrl": "https://tll.mit.edu/teaching-resources/course-design/gen-ai-your-course/",
+  "attemptedAt": "2026-05-06T00:57:38.672Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "378745e0058115791f20f99fdb201f02717080dc504e1941757e1913518882f9",
+  "normalizedTextStorageKey": "normalized/massachusetts-institute-of-technology-2.txt"
+}

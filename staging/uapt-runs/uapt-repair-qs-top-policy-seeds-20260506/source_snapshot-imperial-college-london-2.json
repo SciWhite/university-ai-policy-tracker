@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-imperial-college-london-2",
+  "sourceCandidateId": "sc-imperial-college-london-2",
+  "fetchAttemptId": "fa-imperial-college-london-2",
+  "sourceUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/",
+  "finalUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/",
+  "sourceTitle": "Generative AI and Study Guidance Hub",
+  "sourceLanguage": "en",
+  "contentHash": "f0c7617376f41a0fba19dda0cb756e12bb4791dd04f5b14f61a2be9a1d61dc8e",
+  "fetchedAt": "2026-05-06T01:00:08Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/imperial-college-london-2.txt",
+  "rawArtifactPaths": []
+}

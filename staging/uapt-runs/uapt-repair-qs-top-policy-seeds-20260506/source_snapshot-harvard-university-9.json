@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-harvard-university-9",
+  "sourceCandidateId": "sc-harvard-university-9",
+  "fetchAttemptId": "fa-harvard-university-9",
+  "sourceUrl": "https://oaisc.fas.harvard.edu/academic-integrity-and-teaching-without-ai/",
+  "finalUrl": "https://oaisc.fas.harvard.edu/academic-integrity-and-teaching-without-ai/",
+  "sourceTitle": "Academic Integrity and Teaching With(out) AI",
+  "sourceLanguage": "en",
+  "contentHash": "9bb9aac9bc48e2a5390dd23207be81c1ab0684d7fca833ce7f432ff3496f1e10",
+  "fetchedAt": "2026-05-06T00:57:51Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/harvard-university-9.txt",
+  "rawArtifactPaths": []
+}

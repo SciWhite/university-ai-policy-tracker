@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-8",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+  "finalUrl": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+  "sourceTitle": "HGSE AI Policy on Student Use of Generative AI in Academic Work",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:harvard.edu \"ChatGPT\" guidelines",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.90,
+  "aiRelevanceScore": 0.90,
+  "policySpecificityScore": 0.90,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "Formal HGSE school-level policy for AY 2025-2026. Explicitly states that using generative AI to create assignments without instructor permission violates academic integrity policy. Provides nuanced guidance on responsible experimentation vs. cognitive outsourcing. Highly specific and enforceable within HGSE.",
+  "robotsPolicy": "respect"
+}

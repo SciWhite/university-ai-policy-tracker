@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-university-of-oxford-ai-approved-platforms-confidential",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "claimType": "other",
+  "claimText": "ChatGPT Edu and Google Gemini, when licensed via the AI Competency Centre, have been approved for processing of Confidential University data by the Information Security team. University data processed through these licensed platforms will not be used to train AI models. Confidential data must only be used with the University's approved, SSO-protected platforms.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-university-of-oxford-ai-chatgpt-edu-approved",
+    "evd-university-of-oxford-ai-gemini-approved",
+    "evd-university-of-oxford-ai-confidential-sso"
+  ],
+  "citation": {
+    "citationTitle": "Use Generative AI services safely",
+    "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+    "publisher": "University of Oxford Information Security Team",
+    "retrievedAt": "2026-05-06T00:57:58Z",
+    "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

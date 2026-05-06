@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "crawl-plan-imperial-college-london",
+  "createdAt": "2026-05-06T00:55:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "candidateId": "sc-imperial-college-london-4",
+      "url": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/generative-ai-principles/",
+      "sourceType": "formal_policy",
+      "priority": 1,
+      "notes": "Core GenAI Principles document \u2014 highest policy specificity",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-12",
+      "url": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/legal-services-office/public/data-protection/DPA-CoP-08---Use-of-Artificial-Intelligence-(AI).pdf",
+      "sourceType": "it_security_privacy",
+      "priority": 1,
+      "notes": "DPA Code of Practice 08 on AI \u2014 formal data protection policy for AI use",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-5",
+      "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+      "sourceType": "it_security_privacy",
+      "priority": 1,
+      "notes": "dAIsy platform use policy \u2014 formal operational policy for AI tool usage",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-11",
+      "url": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/registry/academic-governance/public/academic-policy/academic-integrity/Academic-Misconduct-Policy-and-Procedure-v1.3-15.03.23.pdf",
+      "sourceType": "formal_policy",
+      "priority": 2,
+      "notes": "Academic Misconduct Policy PDF \u2014 governs AI-related academic integrity",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-1",
+      "url": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+      "sourceType": "teaching_guidance",
+      "priority": 2,
+      "notes": "Library GenAI guidance \u2014 referencing, acknowledgement, academic use",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-2",
+      "url": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/",
+      "sourceType": "teaching_guidance",
+      "priority": 2,
+      "notes": "Student-facing genAI guidance hub",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-3",
+      "url": "https://www.imperial.ac.uk/about/education/resources/ai-education-hub/",
+      "sourceType": "teaching_guidance",
+      "priority": 2,
+      "notes": "Staff-facing education hub for genAI",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-14",
+      "url": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/ict/public/dAIsy-use-guidance-and-process-flows-(2).pdf",
+      "sourceType": "it_guidance",
+      "priority": 3,
+      "notes": "dAIsy operational guidance PDF",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-8",
+      "url": "https://www.imperial.ac.uk/staff/educational-development/teaching-toolkit/use-of-generative-ai-for-teaching-learning-and-assessment/",
+      "sourceType": "teaching_guidance",
+      "priority": 3,
+      "notes": "EDU teaching toolkit for AI",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-9",
+      "url": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceType": "teaching_guidance",
+      "priority": 3,
+      "notes": "Centre for Academic English GenAI guidance",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-10",
+      "url": "https://www.imperial.ac.uk/student-records-and-data/for-current-students/undergraduate-and-taught-postgraduate/exams-assessments-and-regulations/plagiarism-academic-integrity--exam-offences/",
+      "sourceType": "formal_policy",
+      "priority": 3,
+      "notes": "Academic integrity and exam offences page",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-7",
+      "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+      "sourceType": "it_guidance",
+      "priority": 3,
+      "notes": "dAIsy platform main page",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-6",
+      "url": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+      "sourceType": "it_guidance",
+      "priority": 3,
+      "notes": "Microsoft Copilot guidance",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    },
+    {
+      "candidateId": "sc-imperial-college-london-13",
+      "url": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/secretariat/public/college-governance/charters-statutes-ordinances-regulations/policies-regulations-codes-of-practice/information-systems-security/ICT-CoP-06-Conditions-of-Use-of-IT-Resources.pdf",
+      "sourceType": "it_security_privacy",
+      "priority": 4,
+      "notes": "ICT CoP 06 \u2014 general IT use conditions, foundational for AI policies",
+      "entitySlug": "imperial-college-london",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "sourceLanguage": "en",
+      "entityType": "university",
+      "sourceTitle": "CfAE guidance on GenAI"
+    }
+  ],
+  "stopConditions": [
+    "All 14 targets crawled successfully",
+    "No additional policy-specific sources discovered beyond these 14"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-6",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+  "sourceTitle": "Use of Generative AI Technology - Stanford Law School",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T00:50:55Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verificationNotes": "Stanford Law School formal policy. Default: AI not permitted for drafting/revising submitted work unless disclosed and authorized in writing. Covers clinics, exams, professional responsibility. Violations may result in F grade or OCS referral.",
+  "robotsPolicy": "respect"
+}

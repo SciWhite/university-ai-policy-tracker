@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-1",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+  "sourceTitle": "Generative AI Policy Guidance - Office of Community Standards (BCA)",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:50:30Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verificationNotes": "BCA adopted Feb 16, 2023. Core university-wide policy on generative AI in coursework context. Treats AI use as analogous to receiving help from another person. Referenced by multiple other Stanford policy pages as the foundational guidance.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-stanford-university-4-20260506",
+  "claimId": "clm-stanford-university-gsb-ai-policy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly matches: 'Instructors may not ban student use of AI tools for take-home coursework, including assignments and exams. Instructors may choose whether to allow student use of AI tools for in-class work, including exams.' Scope correctly GSB. Source is tlhub.stanford.edu.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

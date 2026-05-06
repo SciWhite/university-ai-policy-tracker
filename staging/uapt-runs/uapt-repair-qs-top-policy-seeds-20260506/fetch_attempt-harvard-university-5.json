@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-harvard-university-5",
+  "sourceCandidateId": "sc-harvard-university-5",
+  "sourceUrl": "https://www.harvard.edu/ai/learning-resources/",
+  "finalUrl": "https://www.harvard.edu/ai/learning-resources/",
+  "attemptedAt": "2026-05-06T00:57:51Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "4027ddc64bad003695179278e486020a69545fefa52a96222886d1d55dbf5ea3",
+  "normalizedTextStorageKey": "normalized/harvard-university-5.txt"
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-imperial-college-london-1",
+  "sourceCandidateId": "sc-imperial-college-london-1",
+  "fetchAttemptId": "fa-imperial-college-london-1",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+  "finalUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+  "sourceTitle": "Generative AI guidance",
+  "sourceLanguage": "en",
+  "contentHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+  "fetchedAt": "2026-05-06T01:00:08Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/imperial-college-london-1.txt",
+  "rawArtifactPaths": []
+}

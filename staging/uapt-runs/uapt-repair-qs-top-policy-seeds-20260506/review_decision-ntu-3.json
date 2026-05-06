@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-ntu-3-20260505",
+  "claimId": "clm-ntu-genai-no-authorship",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Changed prohibits listing to states that GenAI should not be listed, matching source wording. Evidence directly supports authorship and proposal-role limitations. Source is official NTU research guidance.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

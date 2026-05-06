@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-massachusetts-institute-of-technology-6-20260506",
+  "claimId": "clm-massachusetts-institute-of-technology-risk-assessment-uses",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Do not use generative AI for purposes that may require in-depth risk assessments without contacting ai-guidance@mit.edu. Examples include: recruitment and hiring of employees, evaluating student academic performance, making investment decisions, and complaint and dispute resolution.' Claim accurately reflects this.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

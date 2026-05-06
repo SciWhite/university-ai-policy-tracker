@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-hku-3",
+  "entityType": "university",
+  "entitySlug": "university-of-hong-kong",
+  "sourceUrl": "http://www.rss.hku.hk/integrity",
+  "finalUrl": "http://www.rss.hku.hk/integrity",
+  "sourceTitle": "Research Services - Research Integrity",
+  "sourceLanguage": "en",
+  "sourceType": "research_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "\"University of Hong Kong\" \"generative AI\" policy guidelines 2024 2025 (DuckDuckGo browser)",
+  "discoveredAt": "2026-05-05T22:00:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.7,
+  "policySpecificityScore": 0.6,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T22:01:21Z",
+  "verificationNotes": "HTTP 200 OK. Official HKU Research Services page. Contains link to GenAI research guidelines as part of broader research integrity framework. Also covers research data management, research ethics, responsible conduct of research policies. Useful as context page linking to specific GenAI guidelines.",
+  "robotsPolicy": "respect"
+}

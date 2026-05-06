@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-7-20260506",
+  "claimId": "clm-university-of-oxford-ai-transcription-bots",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Removed require language for alternative third-party transcription bots. Evidence supports that unapproved AI transcription bots should not be used, Teams Transcription or Microsoft Copilot may be used subject to data protection considerations, other AI transcription bot services should be avoided, and organisers should set meeting options to prevent unapproved bots.",
+  "decidedAt": "2026-05-06T01:57:44Z"
+}

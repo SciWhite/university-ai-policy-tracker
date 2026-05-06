@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-massachusetts-institute-of-technology-1",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "sourceUrl": "https://ist.mit.edu/ai-guidance",
+  "sourceTitle": "Guidance for use of Generative AI tools",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verificationNotes": "IS&T official guidance page explicitly addressing generative AI use at MIT. Covers data privacy (FERPA, HIPAA, MA data protection), transparency/disclosure requirements for academic and research use, information protection classifications, and restrictions on high-risk data. References MIT academic integrity policies. Updated 2/19/2025. Primary focus is IT/security-level guidance but contains substantive AI-specific policy direction.",
+  "robotsPolicy": "respect"
+}

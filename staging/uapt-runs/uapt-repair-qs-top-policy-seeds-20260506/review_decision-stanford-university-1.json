@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-stanford-university-1-20260506",
+  "claimId": "clm-stanford-university-bca-genai-guidance",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Narrowed to BCA-issued guidance and OCS advance notice recommendation. Removed 'must' language not supported by evidence. Evidence supports BCA guidance existence and OCS recommendation for advance notice. Scope: unit-level teaching guidance.",
+  "decidedAt": "2026-05-06T01:57:44Z"
+}

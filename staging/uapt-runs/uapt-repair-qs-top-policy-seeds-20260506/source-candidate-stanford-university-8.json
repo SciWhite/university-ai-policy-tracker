@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-8",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://uit.stanford.edu/aiplayground",
+  "sourceTitle": "AI Playground Quick Start Guide - University IT",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T00:50:29Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "verificationNotes": "Stanford's official AI experimentation platform. Managed by UIT. Accessible to all active faculty, staff, students, postdocs. Safety guidance included: no high-risk data. Referenced across multiple policy pages as the recommended tool.",
+  "robotsPolicy": "respect"
+}

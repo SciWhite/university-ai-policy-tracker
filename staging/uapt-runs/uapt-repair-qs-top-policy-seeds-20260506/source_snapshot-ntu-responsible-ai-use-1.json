@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "sourceSnapshotId": "ss-ntu-responsible-ai-use-41b0d921",
+  "sourceCandidateId": "sc-ntu-1",
+  "fetchAttemptId": "fa-ntu-responsible-ai-use-baa7c6bf",
+  "sourceUrl": "https://libguides.ntu.edu.sg/responsible-ai-use/",
+  "finalUrl": "https://libguides.ntu.edu.sg/responsible-ai-use/",
+  "sourceTitle": "Using AI Discovery Tools Responsibly",
+  "sourceLanguage": "en",
+  "contentHash": "fe0af2b5c253dc93204bd1ed232086e74e314262adef068832fdf984afa3b982",
+  "fetchedAt": "2026-05-05T22:11:05Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/ntu-responsible-ai-use.txt",
+  "rawArtifactPaths": []
+}

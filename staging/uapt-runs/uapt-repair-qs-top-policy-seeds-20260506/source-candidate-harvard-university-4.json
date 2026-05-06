@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-4",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://provost.harvard.edu/guidelines-using-chatgpt-and-other-generative-ai-tools-harvard",
+  "finalUrl": "https://provost.harvard.edu/guidelines-using-chatgpt-and-other-generative-ai-tools-harvard",
+  "sourceTitle": "Guidelines for Using ChatGPT and other Generative AI tools at Harvard",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "Official letter from Provost Alan Garber, EVP Meredith Weenick, and VP/CIO Klara Jelinkova. Initial university-wide guidelines on generative AI use and procurement. Covers information security, data privacy, compliance, copyright, and academic integrity. Explicitly notes these are not new policy but leverage existing policies.",
+  "robotsPolicy": "respect"
+}

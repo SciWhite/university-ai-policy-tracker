@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-stanford-university-3",
+  "sourceCandidateId": "sc-stanford-university-3",
+  "fetchAttemptId": "fa-stanford-university-3",
+  "sourceUrl": "https://ctl.stanford.edu/aimes",
+  "finalUrl": "https://ctl.stanford.edu/aimes",
+  "sourceTitle": "AI Meets Education at Stanford (AIMES)",
+  "sourceLanguage": "en",
+  "contentHash": "57e3fd0e204837f5675b4d7574bc0e80c8a3ea77ed35f25d633d980877f8d2f9",
+  "fetchedAt": "2026-05-06T01:07:22Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/stanford-university-3.txt",
+  "rawArtifactPaths": []
+}

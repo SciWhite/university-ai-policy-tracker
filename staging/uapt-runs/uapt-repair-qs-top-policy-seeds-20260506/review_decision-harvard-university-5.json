@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-5-20260506",
+  "claimId": "clm-harvard-university-approved-tools-classification",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'all data classification levels listed below apply only to the Harvard-offered versions of these tools and not to publicly-available versions.' Specific tools and Level 3 classification confirmed in evidence. Source is HUIT tools page.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

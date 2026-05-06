@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-imperial-college-london-ai-acknowledgment",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "claimType": "teaching",
+  "claimText": "Students should include a statement acknowledging their use of generative AI tools for all assessed work, specifying the tool name and version, publisher, URL, a brief description of how it was used, and confirmation that the work is their own. Further requirements such as prompts used, date of output, the output obtained, and how it was modified may also be required by individual departments.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-imperial-college-london-2"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI guidance",
+    "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+    "publisher": "Imperial College London Library Services",
+    "retrievedAt": "2026-05-06T01:00:08Z",
+    "snapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

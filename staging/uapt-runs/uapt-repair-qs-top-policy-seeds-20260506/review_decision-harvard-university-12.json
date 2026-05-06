@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-12-20260506",
+  "claimId": "clm-harvard-university-ai-tools-not-authors",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'AI Tools cannot be listed as an author on a paper. Authors should be transparent when AI tools are used and provide information about how AI tools were used.' Scope correctly HMS. Source is ari.hms.harvard.edu official page.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

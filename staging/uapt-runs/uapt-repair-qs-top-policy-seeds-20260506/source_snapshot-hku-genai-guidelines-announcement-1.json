@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "sourceSnapshotId": "ss-hku-genai-guidelines-announcement-e1d41aff",
+  "sourceCandidateId": "sc-hku-2",
+  "fetchAttemptId": "fa-hku-genai-guidelines-announcement-a70ed426",
+  "sourceUrl": "https://researchintegrity.law.hku.hk/guidelines-on-the-responsible-use-of-generative-ai-in-research-at-hku/",
+  "finalUrl": "https://researchintegrity.law.hku.hk/guidelines-on-the-responsible-use-of-generative-ai-in-research-at-hku/",
+  "sourceTitle": "Guidelines on the Responsible Use of Generative AI in Research at HKU",
+  "sourceLanguage": "en",
+  "contentHash": "56fea967d30f4d19f52813bf76ac9ea230c9d38aa63dbe2bc170e352021b7e8e",
+  "fetchedAt": "2026-05-05T22:11:05Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/hku-genai-guidelines-announcement.txt",
+  "rawArtifactPaths": []
+}

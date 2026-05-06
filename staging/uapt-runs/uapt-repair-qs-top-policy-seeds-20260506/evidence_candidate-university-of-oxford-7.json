@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-university-of-oxford-ai-confidential-sso",
+  "claimId": "clm-university-of-oxford-ai-approved-platforms-confidential",
+  "sourceSnapshotId": "ss-university-of-oxford-6",
+  "sourceUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+  "sourceTitle": "The University's AI provision | IT Services",
+  "sourceLanguage": "en",
+  "snapshotHash": "6abb77311f43f70e8af1d23ccb75bbd35bd34098129bb0260b38de9d4effb1f2",
+  "evidenceSnippetOriginal": "The University provides several enterprise-grade AI tools that have passed internal Third-Party Security Assessments (TPSA). Accessing these tools via Single Sign-On (SSO) ensures that user data is not used to train external AI models. Confidential data must only be used with the University's approved, SSO-protected platforms.",
+  "evidenceLocator": "University-supported AI Platforms section",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "The University's AI provision | IT Services",
+    "sourceUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+    "publisher": "University of Oxford IT Services",
+    "retrievedAt": "2026-05-06T00:57:58Z",
+    "snapshotHash": "6abb77311f43f70e8af1d23ccb75bbd35bd34098129bb0260b38de9d4effb1f2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

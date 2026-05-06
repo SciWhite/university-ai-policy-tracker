@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-nus-2",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "sourceUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+  "finalUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+  "sourceTitle": "AI Guidelines - Library Essentials",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:nus.edu.sg \"generative AI\" guidelines (DuckDuckGo browser)",
+  "discoveredAt": "2026-05-05T21:58:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T21:59:24Z",
+  "verificationNotes": "HTTP 200 OK. Official NUS library guide providing AI guidelines infographics for students. References NUS Policy for Use of AI in Teaching and Learning PDF. Covers institutional guidelines, AI best practices in academic work, human-AI partnership, and limitations of AI.",
+  "robotsPolicy": "respect"
+}

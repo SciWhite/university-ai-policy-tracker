@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-stanford-university",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "startedAt": "2026-05-06T00:50:00Z",
+  "endedAt": "2026-05-06T00:51:00Z",
+  "methodsAttempted": [
+    {
+      "method": "operator_seed",
+      "notes": "operator_seed"
+    },
+    {
+      "method": "public_web_search",
+      "notes": "public_web_search"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-stanford-university-1",
+    "sc-stanford-university-2",
+    "sc-stanford-university-3",
+    "sc-stanford-university-4",
+    "sc-stanford-university-5",
+    "sc-stanford-university-6",
+    "sc-stanford-university-7",
+    "sc-stanford-university-8",
+    "sc-stanford-university-9",
+    "sc-stanford-university-10",
+    "sc-stanford-university-11",
+    "sc-stanford-university-12",
+    "sc-stanford-university-13"
+  ],
+  "rejectionIds": [
+    "sr-stanford-university-1",
+    "sr-stanford-university-2",
+    "sr-stanford-university-3",
+    "sr-stanford-university-4",
+    "sr-stanford-university-5",
+    "sr-stanford-university-6",
+    "sr-stanford-university-7"
+  ],
+  "summary": "Discovered 13 verified source candidates and 7 rejections for Stanford University. Sources span: university-wide BCA policy, UIT security/privacy guidance, CTL/AIMES teaching guidance hub, GSB course policy templates, school-specific policies (Medicine, Law, PWR), approved tools (AI Playground), UIT AI hub, marketing/comms guidelines, and the AISAC advisory committee report. Key finding: Stanford has a layered policy ecosystem \u2014 a core BCA guidance (Feb 2023) that treats AI use as analogous to receiving help from another person, supplemented by school-specific policies (Medicine, Law, GSB, PWR), IT security guidance from UIT, and teaching resources from CTL/AIMES. HAI research center pages were excluded per instructions. News articles and third-party analyses were rejected as non-policy sources."
+}

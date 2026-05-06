@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-massachusetts-institute-of-technology-4-20260506",
+  "claimId": "clm-massachusetts-institute-of-technology-disclosure",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "FIXED: Changed 'requires' to 'advises' to match evidence tone. Evidence says 'You should disclose the use of generative AI tools...' (advisory 'should', not mandatory 'must'). Source is IST guidance. Scope: university-wide IT guidance.",
+  "decidedAt": "2026-05-06T01:57:05Z"
+}

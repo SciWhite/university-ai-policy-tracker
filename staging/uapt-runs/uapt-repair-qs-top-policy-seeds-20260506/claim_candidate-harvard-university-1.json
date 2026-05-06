@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-harvard-university-data-protection",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "claimType": "other",
+  "claimText": "University-wide: Level 2 and above confidential data (including non-public research data, finance, HR, student records, medical information) should not be entered into publicly-available generative AI tools. Such data may only be entered into generative AI tools that have been assessed and approved by Harvard's Information Security and Data Privacy office.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evd-harvard-university-data-protection"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidelines",
+    "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+    "publisher": "Harvard University Information Technology (HUIT)",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "9d196aae4d265663c3d4ccb4c342259dbf2eac4f105b5b66c5bf2a08924ac089",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

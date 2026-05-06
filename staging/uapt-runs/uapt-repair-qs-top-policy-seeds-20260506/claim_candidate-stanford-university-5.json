@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-stanford-university-md-ai-policy",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "claimType": "teaching",
+  "claimText": "Stanford School of Medicine MD and MSPA programs have a formal AI policy: students may use AI for learning, clarification, and grammar/style editing unless contrary to assignment instructions. AI use for closed-book exams or assignments where internet is restricted is prohibited unless explicitly authorized by faculty. Students are responsible for all AI-generated content they submit, must disclose and cite substantial AI contributions, and violations may result in disciplinary action.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-stanford-university-md-ai-policy-1"
+  ],
+  "citation": {
+    "citationTitle": "3.32: Generative Artificial Intelligence (AI) Policy - MD Program",
+    "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+    "publisher": "Stanford School of Medicine",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

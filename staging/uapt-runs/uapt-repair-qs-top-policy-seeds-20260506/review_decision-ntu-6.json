@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-ntu-6-20260505",
+  "claimId": "clm-ntu-ai-misrepresent-misconduct",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet 'misrepresenting AI-generated content as your own work is considered academic misconduct' directly supports claim. (2) Source URL (libguides.ntu.edu.sg/responsible-ai-use/) and hash fe0af2b5... match. (3) Confidence (0.92) and reviewState separated. (4) English source. (5) Claim adds reference to '2025 NTU Academic Integrity Handbook' \u2014 source candidate sc-ntu-1 verification notes confirm this guide is 'developed and guided by NTU's Guidelines & Impact of Generative AI Tools on Education and the 2025 NTU Academic Integrity Handbook', so the attribution is supported by source lineage. (6) No advice presented. (7) ClaimType 'academic_integrity' correct. Source is official NTU Library guide.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

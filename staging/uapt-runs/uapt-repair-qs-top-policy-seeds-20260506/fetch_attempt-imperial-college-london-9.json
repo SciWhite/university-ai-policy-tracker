@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-imperial-college-london-9",
+  "sourceCandidateId": "sc-imperial-college-london-9",
+  "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+  "finalUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+  "attemptedAt": "2026-05-06T01:00:08Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "c794af509524965d8f332d7d8642188675dacd61aeb7e823107852bc0c3612b4",
+  "normalizedTextStorageKey": "normalized/imperial-college-london-9.txt"
+}

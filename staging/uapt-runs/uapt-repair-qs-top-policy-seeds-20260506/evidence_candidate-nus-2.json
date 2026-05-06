@@ -1,0 +1,25 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "evidenceId": "evd-nus-2",
+  "claimId": "clm-nus-cite-ai-tools",
+  "sourceSnapshotId": "ss-nus-citing-ai-tools-42fad5ee",
+  "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+  "sourceTitle": "Citing AI Tools (NEW!)",
+  "sourceLanguage": "en",
+  "snapshotHash": "ee53c1275ceaed742d7aeb1d24af41a37b89872b2b8b9506e101838a8f5b3d22",
+  "evidenceSnippetOriginal": "Important! Always check your assignment guidelines for specific instructions on use of AI in your assignment. ... If you intend to publish your work, do note that in addition to style guides for citation, you may need to consult publishers' policies for using AI tools or including AI-generated content in writing.",
+  "evidenceLocator": "Citing AI Tools page",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Citing AI Tools (NEW!)",
+    "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+    "publisher": "NUS Libraries",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "ee53c1275ceaed742d7aeb1d24af41a37b89872b2b8b9506e101838a8f5b3d22",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "fetchAttemptId": "fa-hku-research-integrity-e0783b1f",
+  "sourceCandidateId": "sc-hku-3",
+  "sourceUrl": "http://www.rss.hku.hk/integrity",
+  "finalUrl": "http://www.rss.hku.hk/integrity",
+  "attemptedAt": "2026-05-05T22:11:05Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "c72f52741aae7ac105ebb79e05dd4148279c964e7c205aeb8308e4d374e88bab",
+  "normalizedTextStorageKey": "normalized/hku-research-integrity.txt"
+}

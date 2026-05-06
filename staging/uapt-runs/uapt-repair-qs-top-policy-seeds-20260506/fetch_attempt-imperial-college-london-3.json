@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-imperial-college-london-3",
+  "sourceCandidateId": "sc-imperial-college-london-3",
+  "sourceUrl": "https://www.imperial.ac.uk/about/education/resources/ai-education-hub/",
+  "finalUrl": "https://www.imperial.ac.uk/about/education/resources/ai-education-hub/",
+  "attemptedAt": "2026-05-06T01:00:08Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "c1b43f695f5252cc358c8c048002eff508e526c53919926aebfec81be96fba0f",
+  "normalizedTextStorageKey": "normalized/imperial-college-london-3.txt"
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-harvard-university-approved-tools-classification",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "claimType": "other",
+  "claimText": "University-wide: Only Harvard-offered versions of generative AI tools carry stated data classification protections. Publicly-available versions of the same tools should not be used for Harvard work. Approved tools (Harvard AI Sandbox, Google Gemini, Microsoft Copilot Chat, ChatGPT Edu, Adobe Firefly) are approved for Level 3 data and below.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-harvard-university-approved-tools-classification"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Tool Comparison",
+    "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+    "publisher": "Harvard University Information Technology (HUIT)",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "9003257c800e0ac7fd5b5556b4fe2b08748cb6c70334cf9affa03215ab56f1f9",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

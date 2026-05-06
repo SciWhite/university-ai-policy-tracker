@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-university-of-oxford-2",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+  "sourceTitle": "AI use in summative assessment",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:50:36Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 1.0,
+  "verificationStatus": "verified",
+  "verificationNotes": "Formal University policy published July 2025 by Education Committee. Sets expectations for staff setting summative assessment and students undertaking it. Three principles for acceptable AI use. Covers declaration requirements, assessment design, misconduct handling. Page last updated 27 Oct 2025, due for review 2 July 2026. HTTP 200.",
+  "robotsPolicy": "respect"
+}

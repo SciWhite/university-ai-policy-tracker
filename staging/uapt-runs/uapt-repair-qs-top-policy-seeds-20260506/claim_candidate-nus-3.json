@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "claimId": "clm-nus-instructor-transparency",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "claimType": "teaching",
+  "claimText": "NUS states that instructors should be transparent about where and how they deploy AI in courses, including for generating content, virtual tutoring, and assessment feedback.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evd-nus-3"
+  ],
+  "citation": {
+    "citationTitle": "NUS Policy for Use of AI in Teaching and Learning",
+    "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+    "publisher": "National University of Singapore",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

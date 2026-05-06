@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-9-20260506",
+  "claimId": "clm-university-of-oxford-ai-pgr-prohibited-uses",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "FIXED: Removed the unsupported plotting-code exception from claimText. Evidence supports the prohibited uses: substantive original writing by GenAI, producing plots or data visualisations directly from prompts, and entering private or confidential data into third-party AI tools. Scope: PGR policy.",
+  "decidedAt": "2026-05-06T01:57:05Z"
+}

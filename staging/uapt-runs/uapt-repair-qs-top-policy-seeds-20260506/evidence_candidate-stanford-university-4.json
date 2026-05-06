@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-stanford-university-gsb-ai-policy-1",
+  "claimId": "clm-stanford-university-gsb-ai-policy",
+  "sourceSnapshotId": "ss-stanford-university-4",
+  "sourceUrl": "https://tlhub.stanford.edu/docs/course-policies-on-generative-ai-use/",
+  "sourceTitle": "Course Policies on Generative AI Use - Teaching & Learning Hub",
+  "sourceLanguage": "en",
+  "snapshotHash": "7a0aaf5bf9c0e744c48334dbb29c2358e597631cec05db608374c0ff3bdcd950",
+  "evidenceSnippetOriginal": "GSB Policy MBA/MSx courses: Instructors may not ban student use of AI tools for take-home coursework, including assignments and exams. Instructors may choose whether to allow student use of AI tools for in-class work, including exams. PhD/Undergraduate courses: Follow the Generative AI Policy Guidance from Stanford's Office of Community Standards.",
+  "evidenceLocator": "GSB Guidelines on Classroom AI Use / GSB Policy section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Course Policies on Generative AI Use - Teaching & Learning Hub",
+    "sourceUrl": "https://tlhub.stanford.edu/docs/course-policies-on-generative-ai-use/",
+    "publisher": "Stanford Teaching & Learning Hub",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "7a0aaf5bf9c0e744c48334dbb29c2358e597631cec05db608374c0ff3bdcd950",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

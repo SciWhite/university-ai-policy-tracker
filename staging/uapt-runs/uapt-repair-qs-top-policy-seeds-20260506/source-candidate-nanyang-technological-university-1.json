@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-ntu-1",
+  "entityType": "university",
+  "entitySlug": "nanyang-technological-university",
+  "sourceUrl": "https://libguides.ntu.edu.sg/responsible-ai-use/",
+  "finalUrl": "https://libguides.ntu.edu.sg/responsible-ai-use/",
+  "sourceTitle": "Using AI Discovery Tools Responsibly",
+  "sourceLanguage": "en",
+  "sourceType": "library_copyright",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "Nanyang Technological University AI generative guidelines academic integrity policy (DuckDuckGo browser)",
+  "discoveredAt": "2026-05-05T22:03:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T22:04:12Z",
+  "verificationNotes": "HTTP 200 OK. Official NTU Library guide. Content developed and guided by NTU's Guidelines & Impact of Generative AI Tools on Education and the 2025 NTU Academic Integrity Handbook. Provides practical guidelines for responsible AI use in academic work, including citation, disclosure, verification, and documentation requirements.",
+  "robotsPolicy": "respect"
+}

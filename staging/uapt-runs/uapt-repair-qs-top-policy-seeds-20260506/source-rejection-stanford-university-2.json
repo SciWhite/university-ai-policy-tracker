@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-stanford-university-2",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://news.stanford.edu/stories/2025/10/stanford-educators-ai-coursework-classroom-ideas",
+  "rejectedAt": "2026-05-06T00:50:55Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "Stanford News article about how educators are bringing AI into classrooms. News/editorial content, not a formal policy or guidance document."
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-6-20260506",
+  "claimId": "clm-university-of-oxford-ai-custom-gpt-rules",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "FIXED: Changed 'must not' to 'should not' to match evidence advisory tone. Evidence says 'should not be used'. Scope: IT/security guidance.",
+  "decidedAt": "2026-05-06T01:57:05Z"
+}

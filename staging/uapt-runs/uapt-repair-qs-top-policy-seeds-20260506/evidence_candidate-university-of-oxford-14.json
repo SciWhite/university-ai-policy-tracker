@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-university-of-oxford-ai-plagiarism-guidance",
+  "claimId": "clm-university-of-oxford-ai-plagiarism-guidance",
+  "sourceSnapshotId": "ss-university-of-oxford-3",
+  "sourceUrl": "https://ctl.ox.ac.uk/ai-tools-in-teaching",
+  "sourceTitle": "An introduction to the use of generative AI tools in teaching",
+  "sourceLanguage": "en",
+  "snapshotHash": "9414bd7307cd58218608ce57b4e8bc2f6f1dd910fb69e1747ffcbc21fb7ca0d9",
+  "evidenceSnippetOriginal": "Students using AI during their studies must learn and practise the same academic skills of note-taking and clear attribution which are safeguards against plagiarism, ensuring clear differentiation of their own work from any text or material derived from generative AI tools. Unauthorised use of AI falls under the plagiarism regulations and would be subject to academic penalties in summative assessments. Where the use of generative AI in preparing work for examination has been authorised by the department, faculty or programme, students should give clear acknowledgment of how it has been used in their work.",
+  "evidenceLocator": "Generative AI tools and plagiarism section",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "An introduction to the use of generative AI tools in teaching",
+    "sourceUrl": "https://ctl.ox.ac.uk/ai-tools-in-teaching",
+    "publisher": "University of Oxford Centre for Teaching and Learning",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "9414bd7307cd58218608ce57b4e8bc2f6f1dd910fb69e1747ffcbc21fb7ca0d9",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

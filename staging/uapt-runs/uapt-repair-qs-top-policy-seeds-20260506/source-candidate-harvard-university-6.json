@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-6",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://bokcenter.harvard.edu/ai-syllabus-policies",
+  "finalUrl": "https://bokcenter.harvard.edu/ai-syllabus-policies",
+  "sourceTitle": "AI Syllabus Policies",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.90,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "Derek Bok Center teaching guidance encouraging all instructors to include AI policies on syllabi. Links to OUE sample policies and Bok Center illustrated rubric. Teaching-focused, not enforceable as standalone policy.",
+  "robotsPolicy": "respect"
+}

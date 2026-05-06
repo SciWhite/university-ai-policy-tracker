@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-stanford-university-md-phi-prohibition-1",
+  "claimId": "clm-stanford-university-md-phi-prohibition",
+  "sourceSnapshotId": "ss-stanford-university-5",
+  "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+  "sourceTitle": "3.32: Generative Artificial Intelligence (AI) Policy - MD Program",
+  "sourceLanguage": "en",
+  "snapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385",
+  "evidenceSnippetOriginal": "To ensure that patient confidentiality is maintained at all times, no confidential research, patient data, or other protected health information (PHI) is to be entered into public AI platforms (e.g., ChatGPT, Gemini, OpenEvidence, Doximity, etc.). Patient Confidential Data: The use of patient-identifying information or protected health information (PHI) in public AI tools is strictly forbidden.",
+  "evidenceLocator": "Permitted Uses and Privacy / Patient Confidential Data sections",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "3.32: Generative Artificial Intelligence (AI) Policy - MD Program",
+    "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+    "publisher": "Stanford School of Medicine",
+    "retrievedAt": "2026-05-06T01:07:22Z",
+    "snapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

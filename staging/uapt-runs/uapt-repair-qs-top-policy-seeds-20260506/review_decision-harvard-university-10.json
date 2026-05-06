@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-10-20260506",
+  "claimId": "clm-harvard-university-oue-required-policy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Kept evidence-backed mandatory language for faculty informing students, and changed Canvas posting from must to should to match source language. Scope correctly FAS OUE. Source is official guidance.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-stanford-university-5b-20260506",
+  "claimId": "clm-stanford-university-md-phi-prohibition",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'no confidential research, patient data, or other protected health information (PHI) is to be entered into public AI platforms (e.g., ChatGPT, Gemini, OpenEvidence, Doximity, etc.).' The claim about Stanford-approved platforms (Stanford Healthcare Secure GPT, Stanford AI Playground) is in the source. Scope correctly identified as SoM MD/MSPA school-level, not university-wide. ClaimType 'privacy' is appropriate for PHI protection.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

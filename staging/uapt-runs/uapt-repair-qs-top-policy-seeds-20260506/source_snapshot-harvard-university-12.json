@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-harvard-university-12",
+  "sourceCandidateId": "sc-harvard-university-12",
+  "fetchAttemptId": "fa-harvard-university-12",
+  "sourceUrl": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+  "finalUrl": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+  "sourceTitle": "Generative AI Guidance \u2013 Office of Undergraduate Education",
+  "sourceLanguage": "en",
+  "contentHash": "fb0bf75a8ed53e121f6e34ef1515da466df40d276a62edf37c164e6ad23dc00f",
+  "fetchedAt": "2026-05-06T00:57:51Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/harvard-university-12.txt",
+  "rawArtifactPaths": []
+}

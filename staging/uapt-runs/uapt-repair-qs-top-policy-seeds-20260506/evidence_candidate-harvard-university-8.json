@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-harvard-university-hgse-attribution",
+  "claimId": "clm-harvard-university-hgse-attribution",
+  "sourceSnapshotId": "ss-harvard-university-8",
+  "sourceUrl": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+  "sourceTitle": "HGSE AI Policy on Student Use of Generative AI in Academic Work",
+  "sourceLanguage": "en",
+  "snapshotHash": "3e6fca23917609658637c8ea866df8c57d8fe14b1e9093f213ccaa4f23995fea",
+  "evidenceSnippetOriginal": "For any permitted use of GenAI tools, you must acknowledge and document that use in your assignment submission by explaining what tool(s) you used, prompts you provided (if applicable), and how you integrated the output into your work. If you cite directly from the tool, use proper citation format to credit the source.",
+  "evidenceLocator": "Attribution requirements section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "HGSE AI Policy on Student Use of Generative AI in Academic Work",
+    "sourceUrl": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+    "publisher": "Harvard Graduate School of Education \u2013 Office of the Registrar",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "3e6fca23917609658637c8ea866df8c57d8fe14b1e9093f213ccaa4f23995fea",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

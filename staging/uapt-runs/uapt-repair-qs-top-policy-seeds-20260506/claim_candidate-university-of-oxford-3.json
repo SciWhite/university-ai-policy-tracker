@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-university-of-oxford-ai-three-principles",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "claimType": "academic_integrity",
+  "claimText": "The University's policy on AI use in summative assessment is based on three principles endorsed by Education Committee in Trinity term 2025: (1) educational practice must be grounded in values of integrity, honesty and transparency, which must be clearly articulated and frequently discussed; (2) every discrete unit of assessment must be carefully designed to be fit for its specific purposes, clearly articulated to students; (3) every summative assessment must be accompanied by a clear explanation of what appropriate assistance is permitted and what is forbidden, specifying how students should report assistance received.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-university-of-oxford-ai-three-principles"
+  ],
+  "citation": {
+    "citationTitle": "AI use in summative assessment",
+    "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+    "publisher": "University of Oxford Education Committee",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

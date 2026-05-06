@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-massachusetts-institute-of-technology-2",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "sourceUrl": "https://policies.mit.edu/policies-procedures/100-academic-and-research-misconduct-and-dishonesty/101-procedures-dealing",
+  "rejectedAt": "2026-05-06T00:49:00Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "MIT Policies & Procedures 10.1 on Procedures for Dealing with Misconduct in Research and Scholarship. Defines fabrication, falsification, plagiarism, and deliberate interference in research. Does not explicitly mention AI, GenAI, ChatGPT, or large language models. Updated December 2025. Per quality rules, does not qualify as an AI-specific policy source."
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-imperial-college-london-ai-misconduct",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "claimType": "academic_integrity",
+  "claimText": "Unless explicitly authorised, using generative AI to create assessed work may be treated as an academic offence such as contract cheating under Imperial's Plagiarism, Academic Integrity & Exam Offences regulations. Improper use of AI can be investigated under the University's Academic Misconduct procedures.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-imperial-college-london-1"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI guidance",
+    "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+    "publisher": "Imperial College London Library Services",
+    "retrievedAt": "2026-05-06T01:00:08Z",
+    "snapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

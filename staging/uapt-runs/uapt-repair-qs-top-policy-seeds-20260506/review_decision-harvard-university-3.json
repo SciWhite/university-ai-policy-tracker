@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-3-20260506",
+  "claimId": "clm-harvard-university-ai-meeting-assistants",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'AI meeting assistants should not be used in Harvard meetings, with the exception of approved tools with contractual protections...' Source is HUIT AI assistant guidelines (separate page). Claim accurately reflects the exception for enterprise agreements and HUIT-directed pilots.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

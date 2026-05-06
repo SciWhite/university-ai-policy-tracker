@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-university-of-oxford-1",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://www.education.ox.ac.uk/news/how-to-encourage-academic-integrity-in-the-age-of-generative-ai/",
+  "rejectedAt": "2026-05-06T00:51:00Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "News article on academic integrity, not a formal policy document. Search snippet: 'These included requiring students to analyse images and videos, to draw on class discussion, analyse longer texts, and write about recent events.'"
+}

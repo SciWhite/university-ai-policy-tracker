@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-2-20260506",
+  "claimId": "clm-university-of-oxford-ai-assessment-student-duties",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly matches: 'complete summative assessment in line with the declaration... acknowledge their use of AI... use a formal declaration...' The claim about submitting work breaching AI specifications constituting cheating is supported by the source. Source is formal policy from governance.admin.ox.ac.uk.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

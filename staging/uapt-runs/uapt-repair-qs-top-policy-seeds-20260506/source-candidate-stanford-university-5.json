@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-5",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+  "sourceTitle": "3.32: Generative Artificial Intelligence (AI) Policy - MD Program",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T00:50:54Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verificationNotes": "Stanford School of Medicine MD/MSPA program formal policy. Covers permitted uses, privacy, PHI restrictions, clinical documentation, assessment rules. Requires faculty authorization for AI use. References Stanford AI Playground and Secure GPT.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-university-of-oxford-1",
+  "sourceCandidateId": "sc-university-of-oxford-1",
+  "fetchAttemptId": "fa-university-of-oxford-1",
+  "sourceUrl": "https://ctl.ox.ac.uk/ai",
+  "finalUrl": "https://ctl.ox.ac.uk/ai",
+  "sourceTitle": "AI and academic practice | Centre for Teaching and Learning",
+  "sourceLanguage": "en",
+  "contentHash": "ca36f4631166d8e1a2175fc8836878552b4a14fa98d336b0ab4ddc20435456f8",
+  "fetchedAt": "2026-05-06T00:57:57Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/university-of-oxford-1.txt",
+  "rawArtifactPaths": []
+}

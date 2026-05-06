@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-stanford-university-9-20260506",
+  "claimId": "clm-stanford-university-ucomm-ai-guidelines",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports core elements: 'You are personally responsible for oversight of any content you produce using AI' and 'You may not provide any confidential or legally privileged information... to generative AI tools. Do not use high-risk data in your prompts.' The claim adds detail about for-profit organizations and political advocacy which may be elsewhere on the page. Source is ucomm.stanford.edu official guidelines. Scope correctly UComm marketing/communications staff.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

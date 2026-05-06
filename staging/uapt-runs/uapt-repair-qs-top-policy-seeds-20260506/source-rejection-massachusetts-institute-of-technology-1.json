@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-massachusetts-institute-of-technology-1",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "sourceUrl": "https://handbook.mit.edu/academic/",
+  "rejectedAt": "2026-05-06T00:49:00Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "MIT Mind and Hand Book Section II(1) on Academic Integrity. Defines cheating, plagiarism, unauthorized collaboration, and other forms of academic dishonesty. Covers use of unauthorized materials/websites broadly but does not explicitly mention AI, GenAI, ChatGPT, or large language models. Per quality rules, does not qualify as an AI-specific policy source."
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-stanford-university-7",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://www.thesify.ai/blog/gen-ai-policies-update-2025",
+  "rejectedAt": "2026-05-06T00:50:55Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "Third-party blog (thesify.ai) comparing gen AI policies across universities. Not a Stanford official source."
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-stanford-university-7",
+  "sourceCandidateId": "sc-stanford-university-7",
+  "fetchAttemptId": "fa-stanford-university-7",
+  "sourceUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+  "finalUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+  "sourceTitle": "PWR Policy on the Use of GenAI and LLMs",
+  "sourceLanguage": "en",
+  "contentHash": "2e601e4a5b47215c842712627c3631375d0eb2ac936abbf1816a04b1bc8c0d2b",
+  "fetchedAt": "2026-05-06T01:07:22Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/stanford-university-7.txt",
+  "rawArtifactPaths": []
+}

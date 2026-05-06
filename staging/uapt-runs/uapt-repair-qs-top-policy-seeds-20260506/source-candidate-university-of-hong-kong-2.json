@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-hku-2",
+  "entityType": "university",
+  "entitySlug": "university-of-hong-kong",
+  "sourceUrl": "https://researchintegrity.law.hku.hk/guidelines-on-the-responsible-use-of-generative-ai-in-research-at-hku/",
+  "finalUrl": "https://researchintegrity.law.hku.hk/guidelines-on-the-responsible-use-of-generative-ai-in-research-at-hku/",
+  "sourceTitle": "Guidelines on the Responsible Use of Generative AI in Research at HKU",
+  "sourceLanguage": "en",
+  "sourceType": "official_news_advisory",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "\"University of Hong Kong\" \"generative AI\" policy guidelines 2024 2025 (DuckDuckGo browser)",
+  "discoveredAt": "2026-05-05T22:00:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T22:01:22Z",
+  "verificationNotes": "HTTP 200 OK. Official HKU Research Integrity in Law subdomain. Announcement from VP/PVC Research Professor Max Shen dated September 30, 2025. Announces formal approval of GenAI research guidelines by Senate. References multiple related policies (research integrity, data management, ethics, IPR). Links to main guidelines page at rss.hku.hk.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-imperial-college-london-5",
+  "sourceCandidateId": "sc-imperial-college-london-5",
+  "fetchAttemptId": "fa-imperial-college-london-5",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+  "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+  "sourceTitle": "dAIsy Use Policy",
+  "sourceLanguage": "en",
+  "contentHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+  "fetchedAt": "2026-05-06T01:00:08Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/imperial-college-london-5.txt",
+  "rawArtifactPaths": []
+}

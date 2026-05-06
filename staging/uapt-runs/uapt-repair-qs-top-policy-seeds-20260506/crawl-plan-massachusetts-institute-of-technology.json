@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "crawl-plan-massachusetts-institute-of-technology",
+  "createdAt": "2026-05-06T00:50:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "sourceCandidateId": "sc-massachusetts-institute-of-technology-1",
+      "sourceUrl": "https://ist.mit.edu/ai-guidance",
+      "sourceType": "it_security_privacy",
+      "priority": 1,
+      "crawlNotes": "Primary AI policy page from IS&T. Crawl full page content. Links to infoprotect.mit.edu risk classifications and policies.mit.edu for referenced policies.",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "sourceLanguage": "en",
+      "entityType": "university"
+    },
+    {
+      "sourceCandidateId": "sc-massachusetts-institute-of-technology-2",
+      "sourceUrl": "https://tll.mit.edu/teaching-resources/course-design/gen-ai-your-course/",
+      "sourceType": "teaching_guidance",
+      "priority": 2,
+      "crawlNotes": "TLL main GenAI teaching resource. Page was truncated at ~15K chars; full crawl needed to capture complete content including remaining resources and references.",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "sourceLanguage": "en",
+      "entityType": "university"
+    },
+    {
+      "sourceCandidateId": "sc-massachusetts-institute-of-technology-3",
+      "sourceUrl": "https://tll.mit.edu/rethinking-your-problem-sets-in-the-world-of-generative-ai/",
+      "sourceType": "teaching_guidance",
+      "priority": 3,
+      "crawlNotes": "TLL blog post on problem set redesign. Page was truncated at ~15K chars; full crawl needed for complete content including summary section and remaining resources.",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "sourceLanguage": "en",
+      "entityType": "university"
+    },
+    {
+      "sourceCandidateId": "sc-massachusetts-institute-of-technology-4",
+      "sourceUrl": "https://ist.mit.edu/ai-tools",
+      "sourceType": "it_security_privacy",
+      "priority": 4,
+      "crawlNotes": "IS&T approved AI tools catalog. Complete content captured. Lower priority as primarily informational rather than policy.",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "sourceLanguage": "en",
+      "entityType": "university"
+    }
+  ],
+  "stopConditions": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-9",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://oaisc.fas.harvard.edu/academic-integrity-and-teaching-without-ai/",
+  "finalUrl": "https://oaisc.fas.harvard.edu/academic-integrity-and-teaching-without-ai/",
+  "sourceTitle": "Academic Integrity and Teaching With(out) AI",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:harvard.edu \"AI\" \"academic integrity\"",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.90,
+  "aiRelevanceScore": 0.80,
+  "policySpecificityScore": 0.70,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "FAS Office of Academic Integrity and Student Conduct resource page. Provides strategies for faculty navigating AI integration/exclusion while maintaining academic integrity. Links to OUE, Bok Center, metaLAB AI Pedagogy Project, and university guidelines. More of a resource hub than standalone policy.",
+  "robotsPolicy": "respect"
+}

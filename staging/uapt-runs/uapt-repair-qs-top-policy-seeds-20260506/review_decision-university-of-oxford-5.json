@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-5-20260506",
+  "claimId": "clm-university-of-oxford-ai-approved-platforms-confidential",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'ChatGPT Edu, licensed via the AI Competency Centre, has been approved for processing of Confidential University data' and 'Google Gemini, licensed via the AI Competency Centre, has been approved for processing of Confidential University data.' SSO protection confirmed in separate evidence source. Multiple evidence sources corroborate.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

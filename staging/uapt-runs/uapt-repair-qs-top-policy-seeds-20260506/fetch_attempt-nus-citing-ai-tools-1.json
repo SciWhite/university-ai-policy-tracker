@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "fetchAttemptId": "fa-nus-citing-ai-tools-c930ea0f",
+  "sourceCandidateId": "sc-nus-3",
+  "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+  "finalUrl": "https://libguides.nus.edu.sg/citation/ai",
+  "attemptedAt": "2026-05-05T22:11:05Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "ee53c1275ceaed742d7aeb1d24af41a37b89872b2b8b9506e101838a8f5b3d22",
+  "normalizedTextStorageKey": "normalized/nus-citing-ai-tools.txt"
+}

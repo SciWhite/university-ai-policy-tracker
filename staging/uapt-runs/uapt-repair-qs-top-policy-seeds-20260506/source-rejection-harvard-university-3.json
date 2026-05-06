@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-harvard-university-3",
+  "sourceCandidateId": "sc-harvard-university-3",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://extension.harvard.edu/enrolled-students/academic-integrity/",
+  "rejectedAt": "2026-05-06T00:49:00Z",
+  "rejectionReason": "no_ai_content",
+  "checkedBy": "crawl-designer",
+  "notes": "Harvard Extension School general academic integrity page. While it mentions AI implicitly in the context of plagiarism/originality standards, it has no AI-specific policy section or guidance. Too general to serve as an AI policy source."
+}

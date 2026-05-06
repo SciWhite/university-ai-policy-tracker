@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-harvard-university-8",
+  "sourceCandidateId": "sc-harvard-university-8",
+  "sourceUrl": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+  "finalUrl": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+  "attemptedAt": "2026-05-06T00:57:51Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "3e6fca23917609658637c8ea866df8c57d8fe14b1e9093f213ccaa4f23995fea",
+  "normalizedTextStorageKey": "normalized/harvard-university-8.txt"
+}

@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "claimId": "clm-hku-genai-disclosure-required",
+  "entityType": "university",
+  "entitySlug": "university-of-hong-kong",
+  "claimType": "research",
+  "claimText": "HKU states that researchers should clearly disclose generative AI tool usage in research outputs, publications, and presentations, including the type of GenAI used, data sources, and potential limitations.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-hku-1"
+  ],
+  "citation": {
+    "citationTitle": "Responsible Use of Generative AI in Research at HKU",
+    "sourceUrl": "http://www.rss.hku.hk/integrity/generative-ai",
+    "publisher": "The University of Hong Kong - Research Services",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "a2a40ef2dbadab7bb5716f883a869c692512d86ec6e68d295ae72c5ced8e4bd0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

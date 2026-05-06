@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-nus-4-20260505",
+  "claimId": "clm-nus-ai-marking-approval",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet directly states the approval requirement from HoD/Deanery via AI Risk Assessment for AI tools providing instruction/feedback/marks. (2) Source URL and hash 96587c9c... match. (3) Confidence (0.95) and reviewState separated. (4) English source. (5) Claim scope matches evidence; claim accurately summarizes the approval process. (6) No advice presented. (7) ClaimType 'teaching' correct. Source is official NUS Policy PDF (formal_policy type, highest specificity).",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

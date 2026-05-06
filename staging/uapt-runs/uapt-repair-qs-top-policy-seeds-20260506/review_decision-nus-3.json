@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-nus-3-20260506-repair",
+  "claimId": "clm-nus-instructor-transparency",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-manager",
+  "notes": "TONE FIX: Changed 'NUS requires' to 'NUS states that instructors should' to match evidence tone. Evidence says 'Instructors should be transparent about where and how they deploy AI in NUS courses'. Scope: teaching guidance. ClaimType 'teaching' correct. Previously repaired to remove 'with declarations via the LMS'.",
+  "decidedAt": "2026-05-06T01:57:44Z"
+}

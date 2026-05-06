@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-nus-2-20260505",
+  "claimId": "clm-nus-cite-ai-tools",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet states 'Always check your assignment guidelines for specific instructions on use of AI' and references style guides for citation \u2014 supports claim about citing AI content and checking guidelines. (2) Source URL (libguides.nus.edu.sg/citation/ai) and hash ee53c127... match. (3) Confidence (0.88) and reviewState separated. (4) English source. (5) Claim scope matches evidence; the claim adds 'according to style guide conventions' which is supported by the evidence mentioning 'style guides for citation'. (6) No advice presented. (7) ClaimType 'academic_integrity' appropriate for a citation requirement claim. Source is official NUS Libraries guide.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

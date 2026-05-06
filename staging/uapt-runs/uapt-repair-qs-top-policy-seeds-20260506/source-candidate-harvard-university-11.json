@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-11",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://ari.hms.harvard.edu/ai",
+  "finalUrl": "https://ari.hms.harvard.edu/ai",
+  "sourceTitle": "AI | Academic and Research Integrity",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:harvard.edu \"AI\" \"academic integrity\"",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.80,
+  "policySpecificityScore": 0.65,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "HMS Academic and Research Integrity AI hub page. Aggregates links to Harvard AI guidelines, NIH/NSF grant policies, COPE/WAME authorship standards, and HMS-approved tools. States AI tools cannot be listed as authors. Useful as a curated reference page for HMS research context.",
+  "robotsPolicy": "respect"
+}

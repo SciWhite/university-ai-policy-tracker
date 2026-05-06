@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "fetchAttemptId": "fa-hku-genai-research-guidelines-870ad296",
+  "sourceCandidateId": "sc-hku-1",
+  "sourceUrl": "http://www.rss.hku.hk/integrity/generative-ai",
+  "finalUrl": "http://www.rss.hku.hk/integrity/generative-ai",
+  "attemptedAt": "2026-05-05T22:11:05Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "a2a40ef2dbadab7bb5716f883a869c692512d86ec6e68d295ae72c5ced8e4bd0",
+  "normalizedTextStorageKey": "normalized/hku-genai-research-guidelines.txt"
+}

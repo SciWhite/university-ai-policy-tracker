@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-imperial-college-london-2-20260506",
+  "claimId": "clm-imperial-college-london-ai-acknowledgment",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Changed 'Students must' to 'Students should' to match evidence advisory tone. Evidence says 'You should include a statement to acknowledge your use of generative AI tools for all assessed work'. Scope: library/citation guidance. ClaimType 'academic_integrity' correct.",
+  "decidedAt": "2026-05-06T01:57:44Z"
+}

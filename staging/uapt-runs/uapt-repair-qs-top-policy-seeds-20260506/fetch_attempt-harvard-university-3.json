@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-harvard-university-3",
+  "sourceCandidateId": "sc-harvard-university-3",
+  "sourceUrl": "https://www.huit.harvard.edu/ai-assistant-guidelines",
+  "finalUrl": "https://www.huit.harvard.edu/ai-assistant-guidelines",
+  "attemptedAt": "2026-05-06T00:57:51Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "4a4ff250f7ca719451a141a11f835e476e7576fd8ddcb7b55d51e5f6b18c8d72",
+  "normalizedTextStorageKey": "normalized/harvard-university-3.txt"
+}

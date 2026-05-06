@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-massachusetts-institute-of-technology-3",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "sourceUrl": "https://integrity.mit.edu/",
+  "rejectedAt": "2026-05-06T00:49:00Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "MIT Academic Integrity Handbook homepage. General guidance on plagiarism, unauthorized collaboration, cheating, and facilitating dishonesty. No explicit mention of AI, GenAI, ChatGPT, or large language models. Per quality rules, does not qualify as an AI-specific policy source."
+}

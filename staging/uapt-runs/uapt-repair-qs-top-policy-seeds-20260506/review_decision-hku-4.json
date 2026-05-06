@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-hku-4-20260505",
+  "claimId": "clm-hku-genai-ip-respect",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Changed requires to states that researchers should ensure to match source wording. Evidence supports avoiding infringement of existing rights and protecting research output ownership. Source is official HKU Research Services guidance.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

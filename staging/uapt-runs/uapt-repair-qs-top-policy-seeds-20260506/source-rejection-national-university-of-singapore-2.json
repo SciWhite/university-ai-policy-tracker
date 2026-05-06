@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-nus-1",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "sourceUrl": "https://www.nus.edu.sg/teachingacademy/project/generative-ai/",
+  "finalUrl": "https://www.nus.edu.sg/teachingacademy/project/generative-ai/",
+  "rejectedAt": "2026-05-05T21:59:30Z",
+  "rejectionReason": "inaccessible",
+  "checkedBy": "crawl-designer",
+  "evidenceSnippet": "web_fetch returned: 'Web extraction failed: Readability, provider fallback, and basic HTML cleanup returned no content.' Page appears to be JS-rendered with no content available via static fetch.",
+  "notes": "NUS Teaching Academy generative AI page. JS-rendered, static fetch returns empty. Could potentially be crawled with playwright but lower priority given other verified NUS sources already cover AI policy comprehensively."
+}

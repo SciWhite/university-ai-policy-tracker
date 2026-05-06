@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-harvard-university-ai-meeting-assistants",
+  "claimId": "clm-harvard-university-ai-meeting-assistants",
+  "sourceSnapshotId": "ss-harvard-university-3",
+  "sourceUrl": "https://www.huit.harvard.edu/ai-assistant-guidelines",
+  "sourceTitle": "AI Assistant Guidelines",
+  "sourceLanguage": "en",
+  "snapshotHash": "4a4ff250f7ca719451a141a11f835e476e7576fd8ddcb7b55d51e5f6b18c8d72",
+  "evidenceSnippetOriginal": "AI meeting assistants should not be used in Harvard meetings, with the exception of approved tools with contractual protections: Use only AI assistants for which Harvard has an enterprise agreement with the vendor including appropriate security and privacy protections, including: Approved tools as part of limited HUIT-directed pilot programs to evaluate the use of AI assistants within the Harvard environment.",
+  "evidenceLocator": "Main policy statement",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Assistant Guidelines",
+    "sourceUrl": "https://www.huit.harvard.edu/ai-assistant-guidelines",
+    "publisher": "Harvard University Information Technology (HUIT)",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "4a4ff250f7ca719451a141a11f835e476e7576fd8ddcb7b55d51e5f6b18c8d72",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

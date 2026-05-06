@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-imperial-college-london-10-20260506",
+  "claimId": "clm-imperial-college-london-genai-principles",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-manager",
+  "notes": "Claim accurately describes Imperial's five GenAI Principles. Evidence snippet from education hub page supports the framework description. Source verified. Scope: university-wide guidance framework (not enforceable policy). ClaimType 'teaching' appropriate. Confidence and reviewState separated.",
+  "decidedAt": "2026-05-06T01:57:05Z"
+}

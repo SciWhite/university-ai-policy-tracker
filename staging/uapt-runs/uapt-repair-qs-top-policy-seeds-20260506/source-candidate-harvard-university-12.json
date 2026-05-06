@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-12",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+  "finalUrl": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+  "sourceTitle": "Generative AI Guidance – Office of Undergraduate Education",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:harvard.edu \"ChatGPT\" guidelines",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.90,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.80,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "FAS Office of Undergraduate Education faculty guidance. States all faculty are required to inform students of AI policies. Provides sample policies ranging from maximally restrictive to permissive. Includes announcement about Respondus browser lockdown tool for Fall 2025. Highly relevant teaching guidance for FAS faculty.",
+  "robotsPolicy": "respect"
+}

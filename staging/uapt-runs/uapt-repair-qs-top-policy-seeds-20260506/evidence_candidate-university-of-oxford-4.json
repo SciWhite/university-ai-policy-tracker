@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-university-of-oxford-ai-security-risk-assessment",
+  "claimId": "clm-university-of-oxford-ai-security-risk-assessment",
+  "sourceSnapshotId": "ss-university-of-oxford-4",
+  "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+  "sourceTitle": "Use Generative AI services safely",
+  "sourceLanguage": "en",
+  "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+  "evidenceSnippetOriginal": "Before any processing of Internal or Confidential information using generative AI services, the following steps must be taken to mitigate risk.\n1. As with all service providers holding or processing university information, information supplied to the tool in the form of questions or other artefacts is typically stored by the third-party service provider and is subject to the threats from cyber criminals and other malicious actors, such as hostile nation states. Therefore, all cloud-based Generative AI tools should be subject to a security risk assessment before being used. The Information Security GRC Team has a TPSA tool to help complete an assessment. It is generally not possible to com...",
+  "evidenceLocator": "Risk to confidentiality section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Use Generative AI services safely",
+    "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+    "publisher": "University of Oxford Information Security Team",
+    "retrievedAt": "2026-05-06T00:57:58Z",
+    "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

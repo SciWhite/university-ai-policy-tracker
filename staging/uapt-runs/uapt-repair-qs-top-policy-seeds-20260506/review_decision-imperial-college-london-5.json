@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-imperial-college-london-5-20260506",
+  "claimId": "clm-imperial-college-london-daisy-sanctions",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Breaches may lead to action under Academic Misconduct (students) and HR/disciplinary processes (staff), as well as Information Security and Data Protection policies.' Claim accurately reflects sanction framework. Source is dAIsy use policy.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

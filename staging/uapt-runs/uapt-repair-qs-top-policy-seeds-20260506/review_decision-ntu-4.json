@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-ntu-4-20260505",
+  "claimId": "clm-ntu-genai-data-privacy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet directly lists all four conditions (legal compliance, restricted access, no data retention, written permission) \u2014 claim accurately captures these. (2) Source URL and hash 1633bb19... match. (3) Confidence (0.95) and reviewState separated. (4) English source. (5) Claim scope matches evidence; claim summarizes the prohibition-with-exceptions structure accurately. (6) No advice presented. (7) ClaimType 'privacy' correct. Source is official NTU research policy.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

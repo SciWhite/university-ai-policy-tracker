@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-university-of-oxford-4",
+  "sourceCandidateId": "sc-university-of-oxford-4",
+  "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+  "finalUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+  "attemptedAt": "2026-05-06T00:57:58Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+  "normalizedTextStorageKey": "normalized/university-of-oxford-4.txt"
+}

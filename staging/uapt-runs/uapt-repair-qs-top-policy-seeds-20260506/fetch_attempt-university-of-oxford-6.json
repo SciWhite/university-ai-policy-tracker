@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-university-of-oxford-6",
+  "sourceCandidateId": "sc-university-of-oxford-6",
+  "sourceUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+  "finalUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+  "attemptedAt": "2026-05-06T00:57:58Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "6abb77311f43f70e8af1d23ccb75bbd35bd34098129bb0260b38de9d4effb1f2",
+  "normalizedTextStorageKey": "normalized/university-of-oxford-6.txt"
+}

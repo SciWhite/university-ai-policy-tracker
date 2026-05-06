@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "fetchAttemptId": "fa-ntu-policies-guidelines-1ffd6a48",
+  "sourceCandidateId": "sc-ntu-2",
+  "sourceUrl": "https://www.ntu.edu.sg/education/inspire/teaching-learning-assessment-with-genai/assessment/policies-guidelines",
+  "finalUrl": "https://www.ntu.edu.sg/education/inspire/teaching-learning-assessment-with-genai/assessment/policies-guidelines",
+  "attemptedAt": "2026-05-05T22:11:05Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "e4e18cda76ab79fec797e50a2642cd34a042fa9790a8228386aa835cf351be4e",
+  "normalizedTextStorageKey": "normalized/ntu-policies-guidelines.txt"
+}

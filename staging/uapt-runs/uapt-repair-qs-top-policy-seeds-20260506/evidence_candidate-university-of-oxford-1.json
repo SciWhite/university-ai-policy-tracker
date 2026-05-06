@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-university-of-oxford-ai-assessment-staff-duties",
+  "claimId": "clm-university-of-oxford-ai-assessment-staff-duties",
+  "sourceSnapshotId": "ss-university-of-oxford-2",
+  "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+  "sourceTitle": "AI use in summative assessment",
+  "sourceLanguage": "en",
+  "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+  "evidenceSnippetOriginal": "Those setting summative assessment must\n- declare whether and how students can use AI in summative assessment, e.g. by a category system for different assignments on courses.\n- review their summative assessment design and criteria by task to ensure alignment with the permitted use of AI\n- where students are authorised to use AI tools for their summative assessments, ensure that there is an equality of baseline provision of appropriate AI tools.\n- specify the forms of declaration expected of students\n- only identify suspected unauthorised use of AI in summative assessment through the marking process or through AI detection tools that have university endorsement. NB. as at the date of the l...",
+  "evidenceLocator": "Staff duties section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI use in summative assessment",
+    "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+    "publisher": "University of Oxford Education Committee",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

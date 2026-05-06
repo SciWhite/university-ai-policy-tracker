@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-6-20260506",
+  "claimId": "clm-harvard-university-faculty-policy-communication",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly matches: 'Faculty should be clear with students they're teaching and advising about their policies on permitted uses, if any, of generative AI in classes and on academic work.' University-wide scope is correct for HUIT guidelines. ClaimType 'teaching' is appropriate.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

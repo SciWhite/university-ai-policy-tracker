@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-3-20260506",
+  "claimId": "clm-university-of-oxford-ai-three-principles",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'The policy is based on three principles for acceptable use of AI which were endorsed by Education Committee during Trinity term 2025.' The three principles about integrity/honesty, assessment design, and clear explanation of permitted assistance are in the evidence. Source is formal policy.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

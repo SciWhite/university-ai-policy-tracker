@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-2",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+  "sourceTitle": "Responsible AI at Stanford - University IT",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:50:29Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verificationNotes": "UIT official guide on responsible AI use. Covers data security, privacy, risk classifications, best practices for AI tool usage. Explicitly linked from AIMES and multiple other Stanford pages. Includes approved services by data risk classification.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "claimId": "clm-ntu-genai-data-privacy",
+  "entityType": "university",
+  "entitySlug": "nanyang-technological-university",
+  "claimType": "privacy",
+  "claimText": "NTU prohibits uploading confidential, sensitive, or personal data to external generative AI platforms unless specific conditions are met: legal compliance, restricted access, no data retention, and written permission from data owners.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-ntu-4"
+  ],
+  "citation": {
+    "citationTitle": "NTU Policy on the Use of Generative Artificial Intelligence in Research",
+    "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+    "publisher": "Nanyang Technological University",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "1633bb1925de33a82fb5c5798fb93160000f2a8566253dae94cd20a927a699b2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

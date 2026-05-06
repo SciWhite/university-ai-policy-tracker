@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-stanford-university-12",
+  "sourceCandidateId": "sc-stanford-university-12",
+  "fetchAttemptId": "fa-stanford-university-12",
+  "sourceUrl": "https://uit.stanford.edu/ai",
+  "finalUrl": "https://uit.stanford.edu/ai",
+  "sourceTitle": "University IT AI Hub",
+  "sourceLanguage": "en",
+  "contentHash": "4a81586fe631363a2723400e8cb208bdae6a10b4967630ca57c30a7c94b76005",
+  "fetchedAt": "2026-05-06T01:07:22Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/stanford-university-12.txt",
+  "rawArtifactPaths": []
+}

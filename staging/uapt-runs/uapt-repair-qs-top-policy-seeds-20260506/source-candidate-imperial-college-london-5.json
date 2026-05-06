@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-imperial-college-london-5",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+  "sourceTitle": "dAIsy Use Policy",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:47:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verificationNotes": "Formal use policy for Imperial's dAIsy AI platform. Covers purpose, definitions, roles/access, acceptable use, data handling/security/privacy, cost controls, quality/bias/human oversight, training, and incident reporting. References Code of Practice 6 and Academic Misconduct procedures. Highly policy-specific.",
+  "robotsPolicy": "respect"
+}

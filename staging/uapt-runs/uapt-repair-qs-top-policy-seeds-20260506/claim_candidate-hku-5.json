@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "claimId": "clm-hku-genai-senate-approved",
+  "entityType": "university",
+  "entitySlug": "university-of-hong-kong",
+  "claimType": "source_status",
+  "claimText": "HKU's Guidelines on the Responsible Use of Generative AI in Research were formally approved by the Senate on September 23, 2025 and are now in effect.",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-hku-5"
+  ],
+  "citation": {
+    "citationTitle": "Guidelines on the Responsible Use of Generative AI in Research at HKU",
+    "sourceUrl": "https://researchintegrity.law.hku.hk/guidelines-on-the-responsible-use-of-generative-ai-in-research-at-hku/",
+    "publisher": "The University of Hong Kong - Research Services",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "56fea967d30f4d19f52813bf76ac9ea230c9d38aa63dbe2bc170e352021b7e8e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

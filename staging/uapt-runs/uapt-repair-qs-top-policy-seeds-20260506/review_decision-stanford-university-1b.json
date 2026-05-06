@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-stanford-university-1b-20260506",
+  "claimId": "clm-stanford-university-bca-honor-code-framework",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Removed 'always prohibited' absolute language. Evidence frames AI use as dependent on instructor/course policies within Honor Code context. Scope: unit-level teaching guidance (BCA). ClaimType 'academic_integrity' correct.",
+  "decidedAt": "2026-05-06T01:57:44Z"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-university-of-oxford-ai-pgr-permitted-uses",
+  "claimId": "clm-university-of-oxford-ai-pgr-permitted-uses",
+  "sourceSnapshotId": "ss-university-of-oxford-5",
+  "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+  "sourceTitle": "Generative AI Use \u2014 Mathematical, Physical and Life Sciences Division",
+  "sourceLanguage": "en",
+  "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+  "evidenceSnippetOriginal": "The use of local editing tools\u2014such as grammar assistants, code debuggers, and spell-checkers\u2014is permitted and need not be declared. These tools only make small, local changes (for example, fixing spelling, grammar, or small pieces of code), usually affecting just a few words or tokens at a time.\nThe use of AI tools for background research, language translation, creation of bibliography indices and general subject understanding is allowed and does not have to be declared.\nUse of Gen AI for coding purposes is permitted, where the coding serves a purpose in the research but is not the substantive output of the project.",
+  "evidenceLocator": "Permissible use section",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Use \u2014 Mathematical, Physical and Life Sciences Division",
+    "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+    "publisher": "University of Oxford, MPLS Division",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

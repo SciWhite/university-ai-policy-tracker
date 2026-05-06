@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-ntu-2",
+  "entityType": "university",
+  "entitySlug": "nanyang-technological-university",
+  "sourceUrl": "https://www.ntu.edu.sg/education/inspire/teaching-learning-assessment-with-genai/assessment/policies-guidelines",
+  "finalUrl": "https://www.ntu.edu.sg/education/inspire/teaching-learning-assessment-with-genai/assessment/policies-guidelines",
+  "sourceTitle": "Policies & Guidelines - NTU Singapore",
+  "sourceLanguage": "en",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "Nanyang Technological University AI generative guidelines academic integrity policy (DuckDuckGo browser)",
+  "discoveredAt": "2026-05-05T22:03:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T22:04:12Z",
+  "verificationNotes": "HTTP 200 OK. Official NTU education page under INSPIRE (teaching and learning assessment with GenAI). Contains NTU Guidelines on Academic Integrity and discussion of AI detector tools. Notes that AI detectors should be used with caution due to false positives, bias against non-native writers, and undermining educational goals.",
+  "robotsPolicy": "respect"
+}

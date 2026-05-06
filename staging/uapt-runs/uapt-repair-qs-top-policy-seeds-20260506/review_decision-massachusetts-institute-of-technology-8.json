@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-massachusetts-institute-of-technology-8-20260506",
+  "claimId": "clm-massachusetts-institute-of-technology-approved-tools-list",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: tools 'approved for use with low- and medium-risk information' and 'No Generative AI tools... are approved for use with High Risk MIT information.' Multiple evidence sources from ist.mit.edu/ai-tools confirm. Claim accurately states the approved tools list and risk levels.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

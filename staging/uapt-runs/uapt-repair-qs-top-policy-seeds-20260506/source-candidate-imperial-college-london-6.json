@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-imperial-college-london-6",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+  "sourceTitle": "Microsoft Copilot",
+  "sourceLanguage": "en",
+  "sourceType": "other",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:47:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "verificationNotes": "ICT guidance page for Microsoft Copilot at Imperial. Covers access, data protection (commercial data protection, no organizational data access), usage limits, and how to sign in. Links to genAI guidance hubs. Last updated 2025-10-28.",
+  "robotsPolicy": "respect"
+}

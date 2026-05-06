@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-harvard-university-approved-tools-classification",
+  "claimId": "clm-harvard-university-approved-tools-classification",
+  "sourceSnapshotId": "ss-harvard-university-2",
+  "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+  "sourceTitle": "Generative AI Tool Comparison",
+  "sourceLanguage": "en",
+  "snapshotHash": "9003257c800e0ac7fd5b5556b4fe2b08748cb6c70334cf9affa03215ab56f1f9",
+  "evidenceSnippetOriginal": "Note: all data classification levels listed below apply only to the Harvard-offered versions of these tools and not to publicly-available versions of these tools (which should not be used for Harvard work). Harvard AI Sandbox - ... Level 3 data and below. Google Gemini ... Level 3 data and below. Microsoft Copilot Chat ... Level 3 data and below. OpenAI ChatGPT Edu ... Level 3 data and below. Adobe Firefly ... Level 3 data and below.",
+  "evidenceLocator": "Tool comparison table and data classification note",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Tool Comparison",
+    "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+    "publisher": "Harvard University Information Technology (HUIT)",
+    "retrievedAt": "2026-05-06T00:57:51Z",
+    "snapshotHash": "9003257c800e0ac7fd5b5556b4fe2b08748cb6c70334cf9affa03215ab56f1f9",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

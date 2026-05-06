@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-stanford-university-4",
+  "sourceCandidateId": "sc-stanford-university-4",
+  "fetchAttemptId": "fa-stanford-university-4",
+  "sourceUrl": "https://tlhub.stanford.edu/docs/course-policies-on-generative-ai-use/",
+  "finalUrl": "https://tlhub.stanford.edu/docs/course-policies-on-generative-ai-use/",
+  "sourceTitle": "Course Policies on Generative AI Use - Teaching & Learning Hub",
+  "sourceLanguage": "en",
+  "contentHash": "7a0aaf5bf9c0e744c48334dbb29c2358e597631cec05db608374c0ff3bdcd950",
+  "fetchedAt": "2026-05-06T01:07:22Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/stanford-university-4.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-harvard-university-1-20260506",
+  "claimId": "clm-harvard-university-data-protection",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "FIXED: Changed 'must not' to 'should not' to match evidence advisory tone. Evidence says 'You should not enter data classified as confidential...' Source is HUIT guidelines. Scope: IT/security guidance. ClaimType 'privacy' correct.",
+  "decidedAt": "2026-05-06T01:58:21Z"
+}

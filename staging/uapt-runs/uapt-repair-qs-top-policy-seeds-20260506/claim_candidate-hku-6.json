@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "claimId": "clm-hku-genai-institutional-policy",
+  "entityType": "university",
+  "entitySlug": "university-of-hong-kong",
+  "claimType": "source_status",
+  "claimText": "HKU's GenAI research guidelines are positioned as an institutional policy under the Research Integrity framework, approved by Senate in September 2025.",
+  "sourceLanguage": "en",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-hku-6"
+  ],
+  "citation": {
+    "citationTitle": "Research Services - Research Integrity",
+    "sourceUrl": "http://www.rss.hku.hk/integrity",
+    "publisher": "The University of Hong Kong - Research Services",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "c72f52741aae7ac105ebb79e05dd4148279c964e7c205aeb8308e4d374e88bab",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

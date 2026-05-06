@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-3",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://www.huit.harvard.edu/ai-assistant-guidelines",
+  "finalUrl": "https://www.huit.harvard.edu/ai-assistant-guidelines",
+  "sourceTitle": "AI Assistant Guidelines",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "University-wide policy restricting AI meeting assistants (AI note takers/bots) in Harvard meetings. Only approved tools with enterprise agreements permitted. Covers privacy, regulatory, and legal risks.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-1",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+  "finalUrl": "https://www.huit.harvard.edu/ai/guidelines",
+  "sourceTitle": "Generative AI Guidelines",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.90,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "University-wide HUIT guidelines covering data confidentiality (Level 2+ restrictions), content review obligations, academic integrity, and references to approved tools. Formal institutional guidance from Harvard IT.",
+  "robotsPolicy": "respect"
+}

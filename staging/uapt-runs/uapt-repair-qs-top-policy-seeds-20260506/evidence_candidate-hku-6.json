@@ -1,0 +1,25 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "evidenceId": "evd-hku-6",
+  "claimId": "clm-hku-genai-institutional-policy",
+  "sourceSnapshotId": "ss-hku-research-integrity-897bc95f",
+  "sourceUrl": "http://www.rss.hku.hk/integrity",
+  "sourceTitle": "Research Services - Research Integrity",
+  "sourceLanguage": "en",
+  "snapshotHash": "c72f52741aae7ac105ebb79e05dd4148279c964e7c205aeb8308e4d374e88bab",
+  "evidenceSnippetOriginal": "HKU is committed to fostering responsible GenAI practices and promoting best practices in the adoption of GenAI among researchers, students, supervisors and other staff in the research community. The Guidelines on the Responsible Use of Generative AI in Research at The University of Hong Kong was approved by the Senate on September 23, 2025.",
+  "evidenceLocator": "Responsible Use of Generative AI in Research at HKU section",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Research Services - Research Integrity",
+    "sourceUrl": "http://www.rss.hku.hk/integrity",
+    "publisher": "The University of Hong Kong - Research Services",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "c72f52741aae7ac105ebb79e05dd4148279c964e7c205aeb8308e4d374e88bab",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

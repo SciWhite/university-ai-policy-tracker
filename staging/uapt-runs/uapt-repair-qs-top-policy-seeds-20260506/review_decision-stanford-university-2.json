@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-stanford-university-2-20260506",
+  "claimId": "clm-stanford-university-uit-responsible-ai",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "TONE FIX: Changed requires that users avoid to advises users to avoid to match evidence. Evidence supports avoiding Moderate or High Risk Data in uncovered third-party AI tools and opting out of chat data sharing where possible. Source is Stanford UIT security guidance.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-ntu-2-20260505",
+  "claimId": "clm-ntu-genai-nocite-plagiarism",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet is nearly verbatim match: 'Not citing or acknowledging the use of GenAI could be considered plagiarism (i.e. a form of research misconduct), especially if GenAI was used to generate ideas or for literature reviews.' (2) Source URL and hash 1633bb19... match. (3) Confidence (0.95) and reviewState separated. (4) English source. (5) Claim scope matches evidence exactly. (6) No advice \u2014 describes stated policy consequence. (7) ClaimType 'academic_integrity' correct for a plagiarism/misconduct claim. Source is official NTU research policy.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

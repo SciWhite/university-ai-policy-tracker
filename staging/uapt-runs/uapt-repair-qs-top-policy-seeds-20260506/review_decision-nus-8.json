@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "decisionId": "rd-nus-8-20260505",
+  "claimId": "clm-nus-approved-tools-only",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "All criteria pass. (1) Evidence snippet 'Wherever NUS data is involved, use NUS approved AI tools' directly supports claim. (2) Source URL and hash 96587c9c... match. (3) Confidence (0.94) and reviewState separated. (4) English source. (5) Claim scope matches evidence \u2014 both restrict approved tools to contexts involving NUS data. (6) No advice presented. (7) ClaimType 'procurement' appropriate for an approved-tools requirement. Source is official NUS Policy PDF.",
+  "decidedAt": "2026-05-05T22:19:30Z"
+}

@@ -1,0 +1,25 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "evidenceId": "evd-ntu-1",
+  "claimId": "clm-ntu-genai-acknowledge-required",
+  "sourceSnapshotId": "ss-ntu-genai-research-policy-edba11cb",
+  "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+  "sourceTitle": "NTU Policy on the Use of Generative Artificial Intelligence in Research",
+  "sourceLanguage": "en",
+  "snapshotHash": "1633bb1925de33a82fb5c5798fb93160000f2a8566253dae94cd20a927a699b2",
+  "evidenceSnippetOriginal": "In the interests of transparency and integrity, the use of GenAI beyond basic spelling and grammar checks should be appropriately acknowledged and cited. This would include acknowledging the use of any AI tools in their research proposals, manuscripts, and scholarly works through a statement specifying the tool's full name and version, its purpose of use, and how it was used.",
+  "evidenceLocator": "1. Acknowledging/Declaring the Use of GenAI",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "NTU Policy on the Use of Generative Artificial Intelligence in Research",
+    "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+    "publisher": "Nanyang Technological University",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "1633bb1925de33a82fb5c5798fb93160000f2a8566253dae94cd20a927a699b2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

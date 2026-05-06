@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-1-20260506",
+  "claimId": "clm-university-of-oxford-ai-assessment-staff-duties",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports all staff duties: declare AI use, review assessment design, ensure baseline AI tool provision, specify declaration forms, only identify suspected unauthorised use through marking or university-endorsed detection tools, handle misconduct under usual regulations. Source is governance.admin.ox.ac.uk formal policy. Note: evidence confirms no detection tools currently endorsed.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

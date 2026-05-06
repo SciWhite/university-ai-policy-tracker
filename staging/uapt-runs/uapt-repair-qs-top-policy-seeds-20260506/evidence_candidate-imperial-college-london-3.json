@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-imperial-college-london-3",
+  "claimId": "clm-imperial-college-london-dept-assessment-policy",
+  "sourceSnapshotId": "ss-imperial-college-london-5",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+  "sourceTitle": "dAIsy Use Policy",
+  "sourceLanguage": "en",
+  "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+  "evidenceSnippetOriginal": "Individual departments may allow or prohibit GenAI for specific assessments; local (team/department/faculty) instructions take precedence. Always check the brief and acknowledge permitted AI use as directed.",
+  "evidenceLocator": "dAIsy Use Policy Section 5(i) - Responsible uses: Assessment-related use",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "dAIsy Use Policy",
+    "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+    "publisher": "Imperial College London ICT",
+    "retrievedAt": "2026-05-06T01:00:08Z",
+    "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-imperial-college-london-1",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+  "sourceTitle": "Generative AI guidance",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:47:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verificationNotes": "Library Services guidance on generative AI for students. Covers appropriate academic use, acknowledgement and referencing of AI tools, plagiarism/academic integrity regulations, and links to Harvard/Vancouver referencing styles. Last modified 2025-11-05. Canonical URL confirms official domain.",
+  "robotsPolicy": "respect"
+}

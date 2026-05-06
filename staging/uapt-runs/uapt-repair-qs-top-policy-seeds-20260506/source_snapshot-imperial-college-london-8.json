@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-imperial-college-london-8",
+  "sourceCandidateId": "sc-imperial-college-london-8",
+  "fetchAttemptId": "fa-imperial-college-london-8",
+  "sourceUrl": "https://www.imperial.ac.uk/staff/educational-development/teaching-toolkit/use-of-generative-ai-for-teaching-learning-and-assessment/",
+  "finalUrl": "https://www.imperial.ac.uk/staff/educational-development/teaching-toolkit/use-of-generative-ai-for-teaching-learning-and-assessment/",
+  "sourceTitle": "Use of generative AI for teaching, learning and assessment",
+  "sourceLanguage": "en",
+  "contentHash": "f0623fd99fcfa8bfcecaba8d8953cf07d1bab64b2c40b34fc9987a3a73888cf5",
+  "fetchedAt": "2026-05-06T01:00:08Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/imperial-college-london-8.txt",
+  "rawArtifactPaths": []
+}

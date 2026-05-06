@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-massachusetts-institute-of-technology",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "startedAt": "2026-05-06T00:49:00Z",
+  "endedAt": "2026-05-06T00:50:00Z",
+  "methodsAttempted": [
+    {
+      "method": "other",
+      "notes": "operator_seed_url_probe"
+    },
+    {
+      "method": "other",
+      "notes": "operator_seed_content_link_follow"
+    },
+    {
+      "method": "other",
+      "notes": "public_web_search (unavailable - provider disabled)"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-massachusetts-institute-of-technology-1",
+    "sc-massachusetts-institute-of-technology-2",
+    "sc-massachusetts-institute-of-technology-3",
+    "sc-massachusetts-institute-of-technology-4"
+  ],
+  "rejectionIds": [
+    "sr-massachusetts-institute-of-technology-1",
+    "sr-massachusetts-institute-of-technology-2",
+    "sr-massachusetts-institute-of-technology-3",
+    "sr-massachusetts-institute-of-technology-4",
+    "sr-massachusetts-institute-of-technology-5"
+  ],
+  "summary": "Discovered 4 verified candidates and 5 rejections for MIT. The primary AI-specific policy sources are: (1) IS&T's GenAI guidance page covering data privacy, transparency requirements, and risk classifications; (2) TLL's teaching guidance on GenAI in courses; (3) TLL's blog post on rethinking problem sets with GenAI; (4) IS&T's approved AI tools catalog. Rejected sources include general academic integrity policies (Mind and Hand Book, Academic Integrity Handbook, research misconduct policy 10.1) that do not explicitly mention AI/GenAI, and a library citation guide that is a reference list rather than policy. Web search was unavailable (provider disabled), limiting discovery to operator-seeded URLs and content-derived links. Key observation: MIT's approach is layered \u2014 IT/security guidance from IS&T, teaching guidance from TLL, with the general academic integrity framework (handbook, policies.mit.edu) serving as the backdrop without AI-specific provisions."
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-university-of-oxford-ai-pgr-declaration-requirement",
+  "claimId": "clm-university-of-oxford-ai-pgr-declaration-requirement",
+  "sourceSnapshotId": "ss-university-of-oxford-5",
+  "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+  "sourceTitle": "Generative AI Use \u2014 Mathematical, Physical and Life Sciences Division",
+  "sourceLanguage": "en",
+  "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+  "evidenceSnippetOriginal": "Students are required to include a statement on their use of Gen AI in their final submitted thesis. This is effective as of submission in Trinity Term 2026, but it is recommended that such a statement is included in every thesis submitted from the point of publication of this guidance. The statement should be placed immediately after the abstract. The statement must include a formal declaration that any Gen AI use complies with University, divisional and (where applicable) departmental guidance, where and how Gen AI has been used in preparation of the thesis and summarising how specific uses of Gen AI will be referenced in the text",
+  "evidenceLocator": "Acknowledging and referencing use of generative AI tools section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Use \u2014 Mathematical, Physical and Life Sciences Division",
+    "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+    "publisher": "University of Oxford, MPLS Division",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

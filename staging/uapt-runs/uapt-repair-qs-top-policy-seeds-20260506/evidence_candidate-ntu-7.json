@@ -1,0 +1,25 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "evidenceId": "evd-ntu-7",
+  "claimId": "clm-ntu-ai-disclosure-submissions",
+  "sourceSnapshotId": "ss-ntu-responsible-ai-use-41b0d921",
+  "sourceUrl": "https://libguides.ntu.edu.sg/responsible-ai-use/",
+  "sourceTitle": "Using AI Discovery Tools Responsibly",
+  "sourceLanguage": "en",
+  "snapshotHash": "fe0af2b5c253dc93204bd1ed232086e74e314262adef068832fdf984afa3b982",
+  "evidenceSnippetOriginal": "Use AI tools to support tasks such as brainstorming, outlining, or checking grammar, but ensure you disclose their use in your submissions. Always refer to your module's AI use policy and seek guidance from your instructor regarding specific expectations for acceptable AI usage in your courses.",
+  "evidenceLocator": "Key Points on Ethical AI Usage",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using AI Discovery Tools Responsibly",
+    "sourceUrl": "https://libguides.ntu.edu.sg/responsible-ai-use/",
+    "publisher": "NTU Library",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "fe0af2b5c253dc93204bd1ed232086e74e314262adef068832fdf984afa3b982",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

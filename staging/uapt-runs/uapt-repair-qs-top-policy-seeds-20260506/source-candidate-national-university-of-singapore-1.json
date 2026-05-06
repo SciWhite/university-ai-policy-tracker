@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-nus-1",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+  "finalUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+  "sourceTitle": "NUS Policy for Use of AI in Teaching and Learning",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "Discovered via libguides.nus.edu.sg/citation/ai which links to this PDF",
+  "discoveredAt": "2026-05-05T21:59:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 1.0,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T21:59:24Z",
+  "verificationNotes": "HTTP 200 OK, content-type application/pdf. Official NUS Centre for Teaching and Learning (CTLT) hosted PDF. Referenced by NUS library citing AI tools guide. Contains NUS institutional policy on AI use in teaching and learning.",
+  "robotsPolicy": "respect"
+}

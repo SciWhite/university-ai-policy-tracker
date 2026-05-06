@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evd-imperial-college-london-2",
+  "claimId": "clm-imperial-college-london-ai-acknowledgment",
+  "sourceSnapshotId": "ss-imperial-college-london-1",
+  "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+  "sourceTitle": "Generative AI guidance",
+  "sourceLanguage": "en",
+  "snapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+  "evidenceSnippetOriginal": "You should include a statement to acknowledge your use of generative AI tools for all assessed work, in accordance with guidelines from your department or course team. This statement should be written in complete sentences and include the following information: Name and version of the generative AI tool e.g. Copilot, ChatGPT-5; Publisher (name of company that provides the AI system) e.g. Microsoft, OpenAI; URL of the AI tool; Brief description (single sentence) of the way in which the tool was used; Confirmation that the work is your own.",
+  "evidenceLocator": "Library Services - Generative AI guidance: 'Acknowledging and referencing use of generative AI tools' section",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI guidance",
+    "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+    "publisher": "Imperial College London Library Services",
+    "retrievedAt": "2026-05-06T01:00:08Z",
+    "snapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

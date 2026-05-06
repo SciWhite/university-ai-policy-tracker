@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-stanford-university-9",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+  "sourceTitle": "AI Guidelines for Marketing and Communications",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T00:50:54Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verificationNotes": "University Communications operational policy for AI in marketing/comms. Applies to staff, interns, consultants. Incorporates AISAC 7 principles. Covers IP, privacy, data quality, human oversight. Not student-facing but official institutional policy.",
+  "robotsPolicy": "respect"
+}

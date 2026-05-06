@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "claimId": "clm-ntu-genai-acknowledge-required",
+  "entityType": "university",
+  "entitySlug": "nanyang-technological-university",
+  "claimType": "research",
+  "claimText": "NTU states that the use of generative AI beyond basic spelling and grammar checks should be acknowledged and cited in research outputs, publications, and presentations.",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-ntu-1"
+  ],
+  "citation": {
+    "citationTitle": "NTU Policy on the Use of Generative Artificial Intelligence in Research",
+    "sourceUrl": "https://www.ntu.edu.sg/research/resources/use-of-gai-in-research",
+    "publisher": "Nanyang Technological University",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "1633bb1925de33a82fb5c5798fb93160000f2a8566253dae94cd20a927a699b2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

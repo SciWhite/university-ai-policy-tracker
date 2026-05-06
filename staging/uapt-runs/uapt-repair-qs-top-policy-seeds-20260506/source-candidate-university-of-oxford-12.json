@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-university-of-oxford-12",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://newsletter.admin.ox.ac.uk/c/11yN0sR7COyOUBRSg",
+  "sourceTitle": "Advice for students on the use of generative AI tools to support learning",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:50:24Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "blocked",
+  "verificationNotes": "Cloudflare WAF returns 403 (Just a moment...). Referenced from ctl.ox.ac.uk/ai: 'Published in September 2025, this study skills advice for students complements our resources for staff and aligns with relevant University policies.' Newsletter/redirect URL on admin.ox.ac.uk domain, inaccessible.",
+  "robotsPolicy": "respect"
+}

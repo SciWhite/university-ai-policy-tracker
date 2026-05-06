@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-harvard-university-1",
+  "sourceCandidateId": "sc-harvard-university-1",
+  "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+  "finalUrl": "https://www.huit.harvard.edu/ai/guidelines",
+  "attemptedAt": "2026-05-06T00:57:51Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "9d196aae4d265663c3d4ccb4c342259dbf2eac4f105b5b66c5bf2a08924ac089",
+  "normalizedTextStorageKey": "normalized/harvard-university-1.txt"
+}

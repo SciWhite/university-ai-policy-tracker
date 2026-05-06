@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-massachusetts-institute-of-technology-3",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "sourceUrl": "https://tll.mit.edu/rethinking-your-problem-sets-in-the-world-of-generative-ai/",
+  "sourceTitle": "Rethinking Your Problem Sets in the World of Generative AI",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "operator_seed",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.65,
+  "verificationStatus": "verified",
+  "verificationNotes": "MIT TLL blog post providing detailed faculty guidance on redesigning problem sets for the GenAI era. Covers incorporating GenAI into assignments, reflective questioning, weekly low-stakes quizzes, and blended learning approaches. Official MIT TLL content, referenced from the main GenAI teaching guidance page. Blog-format rather than formal policy, but provides actionable institutional teaching recommendations.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-11-20260506",
+  "claimId": "clm-university-of-oxford-ai-plagiarism-guidance",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Unauthorised use of AI falls under the plagiarism regulations and would be subject to academic penalties in summative assessments.' The claim about learning note-taking and attribution skills also matches. Source is ctl.ox.ac.uk teaching guidance.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

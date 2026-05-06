@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-university-of-oxford-2",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://services.it.ox.ac.uk/Service/communication-and-collaboration/AI-tools",
+  "rejectedAt": "2026-05-06T00:51:16Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "IT Service Catalogue entry for AI tools. Operational service listing, not a policy document. States 'The AI Competency Centre serves the entire University of Oxford as a hub of expertise for generative AI tools.'"
+}

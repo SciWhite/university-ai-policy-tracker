@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "cp-nus-20260505",
+  "createdAt": "2026-05-05T22:05:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "national-university-of-singapore",
+      "sourceCandidateId": "sc-nus-1",
+      "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+      "sourceTitle": "NUS Policy for Use of AI in Teaching and Learning",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "formal AI policy",
+        "teaching and learning",
+        "AI use in education",
+        "student guidelines"
+      ]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "national-university-of-singapore",
+      "sourceCandidateId": "sc-nus-2",
+      "sourceUrl": "https://libguides.nus.edu.sg/new2nus/ai_guidelines_infographics",
+      "sourceTitle": "AI Guidelines - Library Essentials",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "AI guidelines",
+        "student guidance",
+        "academic integrity",
+        "AI best practices"
+      ]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "national-university-of-singapore",
+      "sourceCandidateId": "sc-nus-3",
+      "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+      "sourceTitle": "Citing AI Tools (NEW!)",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "AI citation",
+        "academic integrity",
+        "AI tools disclosure",
+        "library guidance"
+      ]
+    }
+  ],
+  "stopConditions": []
+}

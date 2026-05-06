@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-university-of-oxford-3",
+  "sourceCandidateId": "sc-university-of-oxford-3",
+  "sourceUrl": "https://ctl.ox.ac.uk/ai-tools-in-teaching",
+  "finalUrl": "https://ctl.ox.ac.uk/ai-tools-in-teaching",
+  "attemptedAt": "2026-05-06T00:57:57Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "9414bd7307cd58218608ce57b4e8bc2f6f1dd910fb69e1747ffcbc21fb7ca0d9",
+  "normalizedTextStorageKey": "normalized/university-of-oxford-3.txt"
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-university-of-oxford-9",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "sourceUrl": "https://www.ox.ac.uk/gen-ai",
+  "sourceTitle": "Generative AI at Oxford",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "other",
+  "discoveredAt": "2026-05-06T00:50:24Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.6,
+  "verificationStatus": "blocked",
+  "verificationNotes": "Cloudflare WAF returns 403 (Just a moment...). Referenced from ctl.ox.ac.uk/ai as 'Announced in September 2025, find out how the University is embracing AI in education, research and professional services, including information and resources to support your use of ChatGPT Edu.' Portal/overview page, inaccessible.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-harvard-university-10",
+  "entityType": "university",
+  "entitySlug": "harvard-university",
+  "sourceUrl": "https://bokcenter.harvard.edu/guidance-faculty-addressing-ai-related-academic-integrity-issues",
+  "finalUrl": "https://bokcenter.harvard.edu/guidance-faculty-addressing-ai-related-academic-integrity-issues",
+  "sourceTitle": "Guidance for Faculty on Addressing AI-Related Academic Integrity Issues",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:harvard.edu \"AI\" \"academic integrity\"",
+  "discoveredAt": "2026-05-06T00:49:00Z",
+  "officialDomainConfidence": 0.90,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T00:49:00Z",
+  "verificationNotes": "Bok Center practical guidance for faculty on preventing and addressing AI-related academic integrity issues. Covers syllabus policy statements, assignment design for both permissive and restrictive AI policies, and detection strategies. Teaching-focused operational guidance.",
+  "robotsPolicy": "respect"
+}

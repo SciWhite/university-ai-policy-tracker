@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-stanford-university-5",
+  "sourceCandidateId": "sc-stanford-university-5",
+  "fetchAttemptId": "fa-stanford-university-5",
+  "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+  "finalUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+  "sourceTitle": "3.32: Generative Artificial Intelligence (AI) Policy - MD Program",
+  "sourceLanguage": "en",
+  "contentHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385",
+  "fetchedAt": "2026-05-06T01:07:22Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/stanford-university-5.txt",
+  "rawArtifactPaths": []
+}

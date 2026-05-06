@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "clm-university-of-oxford-ai-assessment-student-duties",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "claimType": "academic_integrity",
+  "claimText": "Students undertaking summative assessment must: complete assessment in line with the AI use declaration for each assignment; acknowledge their AI use via a formal declaration in the prescribed format; and understand that submitting work breaching AI specifications constitutes cheating and may constitute plagiarism, handled under usual disciplinary regulations.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "evd-university-of-oxford-ai-assessment-student-duties"
+  ],
+  "citation": {
+    "citationTitle": "AI use in summative assessment",
+    "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+    "publisher": "University of Oxford Education Committee",
+    "retrievedAt": "2026-05-06T00:57:57Z",
+    "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

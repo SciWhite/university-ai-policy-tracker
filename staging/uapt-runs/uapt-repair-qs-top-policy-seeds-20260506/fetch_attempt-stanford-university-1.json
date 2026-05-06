@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-stanford-university-1",
+  "sourceCandidateId": "sc-stanford-university-1",
+  "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+  "finalUrl": "https://communitystandards.stanford.edu/policies-guidance%23policies-guidance-links/bca-guidance-recommendations#generative-ai-policy-guidance",
+  "attemptedAt": "2026-05-06T01:07:22Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "93e12eb9985a32023807300b0474d1f5d6e2ebf3a3d39dab18febe5ae6b47866",
+  "normalizedTextStorageKey": "normalized/stanford-university-1.txt"
+}

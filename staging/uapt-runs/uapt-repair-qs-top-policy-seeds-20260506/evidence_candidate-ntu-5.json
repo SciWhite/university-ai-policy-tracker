@@ -1,0 +1,25 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "evidenceId": "evd-ntu-5",
+  "claimId": "clm-ntu-ai-detectors-unreliable",
+  "sourceSnapshotId": "ss-ntu-policies-guidelines-3f4bc9fe",
+  "sourceUrl": "https://www.ntu.edu.sg/education/inspire/teaching-learning-assessment-with-genai/assessment/policies-guidelines",
+  "sourceTitle": "Policies & Guidelines - NTU Singapore",
+  "sourceLanguage": "en",
+  "snapshotHash": "e4e18cda76ab79fec797e50a2642cd34a042fa9790a8228386aa835cf351be4e",
+  "evidenceSnippetOriginal": "Research shows that the use of AI detector tools should be used with caution due to the following reasons. Unreliable Detection: Frequent false positives (human text flagged as AI) and false negatives (AI text missed). ... Discrimination: Bias against non-native writing patterns (e.g. ESL/EFL students).",
+  "evidenceLocator": "Use of AI Detector Tools section",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Policies & Guidelines - NTU Singapore",
+    "sourceUrl": "https://www.ntu.edu.sg/education/inspire/teaching-learning-assessment-with-genai/assessment/policies-guidelines",
+    "publisher": "Nanyang Technological University",
+    "retrievedAt": "2026-05-05T22:11:05Z",
+    "snapshotHash": "e4e18cda76ab79fec797e50a2642cd34a042fa9790a8228386aa835cf351be4e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

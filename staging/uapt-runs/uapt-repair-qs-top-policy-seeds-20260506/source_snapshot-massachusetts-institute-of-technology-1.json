@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-massachusetts-institute-of-technology-1",
+  "sourceCandidateId": "sc-massachusetts-institute-of-technology-1",
+  "fetchAttemptId": "fa-massachusetts-institute-of-technology-1",
+  "sourceUrl": "https://ist.mit.edu/ai-guidance",
+  "finalUrl": "https://ist.mit.edu/ai-guidance",
+  "sourceTitle": "Guidance for use of Generative AI tools",
+  "sourceLanguage": "en",
+  "contentHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+  "fetchedAt": "2026-05-06T00:57:37.427Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/massachusetts-institute-of-technology-1.txt",
+  "rawArtifactPaths": []
+}

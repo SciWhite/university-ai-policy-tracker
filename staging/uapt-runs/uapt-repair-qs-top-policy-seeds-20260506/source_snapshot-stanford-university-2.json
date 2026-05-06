@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-stanford-university-2",
+  "sourceCandidateId": "sc-stanford-university-2",
+  "fetchAttemptId": "fa-stanford-university-2",
+  "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+  "finalUrl": "https://uit.stanford.edu/security/responsibleai",
+  "sourceTitle": "Responsible AI at Stanford - University IT",
+  "sourceLanguage": "en",
+  "contentHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e",
+  "fetchedAt": "2026-05-06T01:07:22Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/stanford-university-2.txt",
+  "rawArtifactPaths": []
+}

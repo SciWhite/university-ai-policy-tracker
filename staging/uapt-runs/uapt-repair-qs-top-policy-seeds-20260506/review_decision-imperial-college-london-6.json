@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-imperial-college-london-6-20260506",
+  "claimId": "clm-imperial-college-london-research-ethics",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Research that involves people, personal data, or sensitive topics may require ethics approval, a Data Protection Impact Assessment (DPIA), and data-governance controls before using any AI tool.' Claim accurately reflects this. Source is dAIsy use policy.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

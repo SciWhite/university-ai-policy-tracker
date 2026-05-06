@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-stanford-university-6",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "sourceUrl": "https://ojs.stanford.edu/ojs/index.php/grace/article/view/4526",
+  "rejectedAt": "2026-05-06T00:50:55Z",
+  "rejectionReason": "other",
+  "checkedBy": "crawl-designer",
+  "notes": "Academic paper 'Governing Generative AI at Stanford' published in Stanford journal. Research/analysis, not an official university policy document."
+}

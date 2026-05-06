@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-massachusetts-institute-of-technology-7-20260506",
+  "claimId": "clm-massachusetts-institute-of-technology-existing-tool-review",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'If an MIT DLCI is already using a generative AI tool or service, ensure that the tool complies with all Institute policies and Information Protection guidelines.' Claim accurately reflects the requirement. Source is ist.mit.edu.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}

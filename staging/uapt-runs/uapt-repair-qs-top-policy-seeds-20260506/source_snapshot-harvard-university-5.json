@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-harvard-university-5",
+  "sourceCandidateId": "sc-harvard-university-5",
+  "fetchAttemptId": "fa-harvard-university-5",
+  "sourceUrl": "https://www.harvard.edu/ai/learning-resources/",
+  "finalUrl": "https://www.harvard.edu/ai/learning-resources/",
+  "sourceTitle": "Learn with Generative AI",
+  "sourceLanguage": "en",
+  "contentHash": "4027ddc64bad003695179278e486020a69545fefa52a96222886d1d55dbf5ea3",
+  "fetchedAt": "2026-05-06T00:57:51Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/harvard-university-5.txt",
+  "rawArtifactPaths": []
+}

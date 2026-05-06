@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-harvard-university-11",
+  "sourceCandidateId": "sc-harvard-university-11",
+  "sourceUrl": "https://ari.hms.harvard.edu/ai",
+  "finalUrl": "https://ari.hms.harvard.edu/ai",
+  "attemptedAt": "2026-05-06T00:57:51Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "5a0b3ca35d6c341bf7e2c09bbbe76560699e6854b9379f341ce805aa07ea9002",
+  "normalizedTextStorageKey": "normalized/harvard-university-11.txt"
+}

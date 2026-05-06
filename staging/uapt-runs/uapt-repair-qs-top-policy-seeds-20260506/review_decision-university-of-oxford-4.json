@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-qs-top-policy-seeds-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-university-of-oxford-4-20260506",
+  "claimId": "clm-university-of-oxford-ai-security-risk-assessment",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports: 'Before any processing of Internal or Confidential information using generative AI services, the following steps must be taken to mitigate risk.' The claim about security risk assessment for cloud-based AI tools is accurate. Source is infosec.ox.ac.uk official guidance.",
+  "decidedAt": "2026-05-06T01:16:00Z"
+}
