@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-uchicago-policy-crosswalk-2",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "claimType": "privacy",
+  "claimText": "At the University of Chicago, AI transcription or assistant tools may not be used to secretly record or join meetings, per the Business Conduct Policy.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-uchicago-policy-crosswalk-2"],
+  "citation": {
+    "citationTitle": "Relevant Policies for the Use of AI Tools",
+    "sourceUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

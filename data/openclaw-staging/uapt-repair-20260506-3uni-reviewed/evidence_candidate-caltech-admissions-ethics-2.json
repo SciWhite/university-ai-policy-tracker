@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-caltech-admissions-ethics-2",
+  "claimId": "cc-caltech-admissions-ethics-2",
+  "sourceSnapshotId": "ss-sc-caltech-repair-1-20260506",
+  "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+  "sourceTitle": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
+  "sourceLanguage": "en",
+  "snapshotHash": "834763ce2fb3410531a090d61fe4a9ff7765db3e13ff1a73f7c8010c2a15185a",
+  "evidenceSnippetOriginal": "What are some examples of unethical uses of AI for Caltech admissions essays?\n- Copying and pasting directly from an AI generator\n- Relying on AI generated content to outline or draft an essay\n- Replacing your unique voice and tone with AI generated content\n- Translating an essay written in another language",
+  "evidenceLocator": "Unethical uses section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
+    "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-caltech-repair-1-20260506",
+  "sourceCandidateId": "sc-caltech-repair-1",
+  "fetchAttemptId": "fa-sc-caltech-repair-1-20260506",
+  "canonicalEntitySlug": "california-institute-of-technology",
+  "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+  "finalUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+  "fetchedAt": "2026-05-05T23:23:38Z",
+  "sourceLanguage": "en",
+  "contentType": "text/html",
+  "contentHash": "834763ce2fb3410531a090d61fe4a9ff7765db3e13ff1a73f7c8010c2a15185a",
+  "title": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
+  "normalizedTextPath": "normalized/caltech-admissions-ai-ethics.txt",
+  "rightsNote": "Public university website, fair use for policy research",
+  "robotsAllowed": true
+}

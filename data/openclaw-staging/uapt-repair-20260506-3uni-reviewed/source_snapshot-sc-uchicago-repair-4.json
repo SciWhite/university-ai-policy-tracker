@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-4-20260506",
+  "sourceCandidateId": "sc-uchicago-repair-4",
+  "fetchAttemptId": "fa-sc-uchicago-repair-4-20260506",
+  "canonicalEntitySlug": "university-of-chicago",
+  "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+  "finalUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+  "fetchedAt": "2026-05-05T23:24:33Z",
+  "sourceLanguage": "en",
+  "contentType": "text/html",
+  "contentHash": "40aaab755c6a42cb281ae2185d50afff3f295b722cb2c63741531ad7015457ef",
+  "title": "Approved and Restricted AI Tools",
+  "normalizedTextPath": "normalized/uchicago-approved-restricted-tools.txt",
+  "rightsNote": "Public university website, fair use for policy research",
+  "robotsAllowed": true
+}

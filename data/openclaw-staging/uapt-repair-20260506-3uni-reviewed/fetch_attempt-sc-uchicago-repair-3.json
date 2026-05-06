@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-uchicago-repair-3-20260506",
+  "sourceCandidateId": "sc-uchicago-repair-3",
+  "sourceUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+  "finalUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+  "attemptedAt": "2026-05-05T23:24:05Z",
+  "fetchMode": "opencli",
+  "userAgentKind": "opencli",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 10000,
+  "contentHash": "2c80278c2e993a2d7e9eb8a044de11118518edf0e16872ba87b893a915d6ed17"
+}

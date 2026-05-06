@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-caltech-repair-2",
+  "entityType": "university",
+  "entitySlug": "california-institute-of-technology",
+  "sourceUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+  "finalUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+  "sourceTitle": "HSS Policy on Generative AI",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:caltech.edu \"generative AI\" policy OR guidelines (DuckDuckGo browser)",
+  "discoveredAt": "2026-05-05T23:18:00Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T23:19:00Z",
+  "verificationNotes": "REPAIR new source. Verified via web_fetch (HTTP 200) and OpenCLI browser (1311 chars). HSS (Humanities and Social Sciences) Division policy. States: 'students submitting work for HSS courses may use generative AI tools only in ways that are explicitly allowed by the course instructor in the course materials. Any usage that is not specifically allowed should be assumed to be disallowed.' Applies to all assignments including major papers, exams, discussion board posts, reflections, problem sets. Students must follow course-specific documentation guidance. Scope: HSS Division courses only, NOT university-wide.",
+  "robotsPolicy": "respect"
+}

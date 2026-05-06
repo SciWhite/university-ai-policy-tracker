@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-uchicago-repair-4",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+  "finalUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+  "sourceTitle": "Approved, Restricted or Unauthorized Tools",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "N/A - discovered via genai.uchicago.edu Generative AI Tools navigation menu",
+  "discoveredAt": "2026-05-05T23:17:30Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T23:19:30Z",
+  "verificationNotes": "REPAIR re-verification via OpenCLI browser extract: 21541 chars. Comprehensive table of AI tools with approval status, SRDS protection levels, purpose, enterprise support, restrictions, and review dates. Tools include ChatGPT 3.5/4.0, Copilot, Claude, Gemini, PhoenixAI, BoxAI, Zoom AI Companion, Perplexity, Llama 4, and many more. Submission process via ServiceNow for paid tools and Generative AI Tool Evaluation Form for free tools.",
+  "robotsPolicy": "respect"
+}

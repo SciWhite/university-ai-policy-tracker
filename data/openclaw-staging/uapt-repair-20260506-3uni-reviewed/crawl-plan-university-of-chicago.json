@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "crawl_plan",
+  "planId": "cp-uchicago-repair-20260506",
+  "createdAt": "2026-05-05T23:20:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-chicago",
+      "sourceCandidateId": "sc-uchicago-repair-1",
+      "sourceUrl": "https://genai.uchicago.edu/",
+      "sourceTitle": "Generative AI at UChicago",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "playwright", "opencli"],
+      "expectedThemes": ["GenAI governance", "university AI hub", "AI policy overview", "resources"]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-chicago",
+      "sourceCandidateId": "sc-uchicago-repair-2",
+      "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+      "sourceTitle": "Generative AI Guidance",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "playwright", "opencli"],
+      "expectedThemes": ["data protection", "content accuracy", "academic integrity", "AI procurement", "tool review process", "IRB requirements"]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-chicago",
+      "sourceCandidateId": "sc-uchicago-repair-3",
+      "sourceUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+      "sourceTitle": "Relevant Policies for the Use of AI Tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "playwright", "opencli"],
+      "expectedThemes": ["policy crosswalk", "AI tool policies", "data protection", "PII standards", "compliance requirements"]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-chicago",
+      "sourceCandidateId": "sc-uchicago-repair-4",
+      "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+      "sourceTitle": "Approved, Restricted or Unauthorized Tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "playwright", "opencli"],
+      "expectedThemes": ["approved AI tools", "restricted tools", "unauthorized tools", "SRDS protection levels", "tool governance"]
+    }
+  ],
+  "stopConditions": []
+}

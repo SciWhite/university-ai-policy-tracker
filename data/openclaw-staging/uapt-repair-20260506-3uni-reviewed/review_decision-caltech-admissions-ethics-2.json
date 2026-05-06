@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-caltech-admissions-ethics-2",
+  "claimId": "cc-caltech-admissions-ethics-2",
+  "sourceSnapshotId": "ss-sc-caltech-repair-1-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly and precisely supports the claim. The source lists exactly the four prohibited uses enumerated in the claim. Properly scoped to 'Caltech admissions' (not university-wide). ClaimType 'teaching' is acceptable though 'academic_integrity' might be more precise for admissions essay ethics. Confidence 0.95 appropriate. Hash verified: evidence snapshotHash 834763ce matches source snapshot contentHash. Original language English, no translation issues.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

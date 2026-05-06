@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-uchicago-approved-tools-4",
+  "claimId": "cc-uchicago-approved-tools-4",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-4-20260506",
+  "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+  "sourceTitle": "Approved and Restricted AI Tools",
+  "sourceLanguage": "en",
+  "snapshotHash": "40aaab755c6a42cb281ae2185d50afff3f295b722cb2c63741531ad7015457ef",
+  "evidenceSnippetOriginal": "ChatGPT 3.5 | Approved for data that is made publicly available by its source. | General Use | Free | Only for non-sensitive information | January 17, 2025\nChatGPT 4.0 | Approved for data that is made publicly available by its source. | General Use | Free | Only for non-sensitive information | January 17, 2025",
+  "evidenceLocator": "Tools table: ChatGPT rows",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Approved and Restricted AI Tools",
+    "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

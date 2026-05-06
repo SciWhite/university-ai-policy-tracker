@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-caltech-admissions-ethics-4",
+  "claimId": "cc-caltech-admissions-ethics-4",
+  "sourceSnapshotId": "ss-sc-caltech-repair-1-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source states: 'The Undergraduate Faculty Admissions and Graduate Studies committees convened and have approved of the following ethical guidelines for the use of AI in the Fall 2026 application cycle. As access to AI continues to grow and the technology evolves, so will our recommendations and expectations for future application cycles.' Claim accurately captures both committee approval and evolving nature. Hash verified: evidence snapshotHash 834763ce matches source snapshot contentHash.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "crawl_plan",
+  "planId": "cp-caltech-repair-20260506",
+  "createdAt": "2026-05-05T23:20:00Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "california-institute-of-technology",
+      "sourceCandidateId": "sc-caltech-repair-1",
+      "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",
+      "sourceTitle": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["AI ethics in admissions", "application essay guidelines", "ethical AI use", "student conduct"]
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "california-institute-of-technology",
+      "sourceCandidateId": "sc-caltech-repair-2",
+      "sourceUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",
+      "sourceTitle": "HSS Policy on Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["departmental AI policy", "teaching guidance", "generative AI in courses", "student assignments"]
+    }
+  ],
+  "stopConditions": ["No university-wide Caltech AI policy found after exhaustive search. Sources limited to admissions-specific and HSS departmental scope. Main caltech.edu behind Cloudflare WAF (403)."]
+}

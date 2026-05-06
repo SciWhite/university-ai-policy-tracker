@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-uchicago-genai-guidance-1",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "claimType": "privacy",
+  "claimText": "At the University of Chicago, use of confidential data with publicly available generative AI tools is prohibited without prior security and privacy review. This includes personally identifiable employee data, FERPA-covered student data, HIPAA-covered patient data, and research that is not yet publicly available.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": ["ec-uchicago-genai-guidance-1"],
+  "citation": {
+    "citationTitle": "Generative AI Guidance",
+    "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

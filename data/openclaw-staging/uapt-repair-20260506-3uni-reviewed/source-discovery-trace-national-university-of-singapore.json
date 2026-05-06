@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-nus-repair-20260506",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "startedAt": "2026-05-05T23:17:00Z",
+  "endedAt": "2026-05-05T23:21:00Z",
+  "methodsAttempted": [
+    {
+      "method": "operator_seed",
+      "query": "Previous run had sc-nus-4 (ai.nus.edu.sg/research/ai-governance-and-policy/) as JS-rendered. Operator instructed to evaluate honestly — if research showcase, reject with research_showcase_only.",
+      "domain": "ai.nus.edu.sg",
+      "resultCount": 1,
+      "notes": "ai.nus.edu.sg verified via OpenCLI browser. Page confirmed as NUS AI Institute research thrust page — NOT an institutional policy page."
+    },
+    {
+      "method": "link_traversal",
+      "query": "N/A - OpenCLI browser extraction of ai.nus.edu.sg/research/ai-governance-and-policy/",
+      "domain": "ai.nus.edu.sg",
+      "resultCount": 1,
+      "notes": "Page content: 'This research thrust will draw on diverse bodies of scholarship to address these and other questions that examine the actual and potential impact — positive and negative — of AI.' Lists research team members (Prof. Simon Chesterman, Prof. Hahn Jungpil, etc.), AI Governance Roundtables (industry/government/academia discussions), and updates. No institutional policy for students/staff. This is a research showcase page."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-nus-repair-1"
+  ],
+  "rejectionIds": [
+    "sr-nus-repair-1"
+  ],
+  "summary": "REPAIR run: ai.nus.edu.sg/research/ai-governance-and-policy/ verified via OpenCLI browser. Page is the NUS AI Institute's research thrust on AI governance — describes research agenda, team members, and roundtable discussions with stakeholders. Contains NO institutional policy for students, staff, or teaching. Rejected as research_showcase_only. The 3 other NUS sources from the previous run (policy PDF, library guides) remain valid and unchanged. The needs_changes on clm-nus-instructor-transparency is a claim-level issue (LMS detail not in evidence snippet), not a source discovery issue."
+}

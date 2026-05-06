@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-uchicago-policy-crosswalk-2",
+  "claimId": "cc-uchicago-policy-crosswalk-2",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-3-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. Source states: 'Business Conduct Policy: Staff must act with honesty and integrity, safeguard confidential information, and prevent unauthorized disclosures. Prohibits recording conversations without consent. AI transcription/assistant tools may not be used to secretly record or join meetings.' Claim accurately captures this, attributing it to the Business Conduct Policy. Hash verified: 2c80278c matches.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

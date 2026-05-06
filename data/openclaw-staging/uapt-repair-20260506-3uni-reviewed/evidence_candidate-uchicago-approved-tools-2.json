@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-uchicago-approved-tools-2",
+  "claimId": "cc-uchicago-approved-tools-2",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-4-20260506",
+  "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+  "sourceTitle": "Approved and Restricted AI Tools",
+  "sourceLanguage": "en",
+  "snapshotHash": "40aaab755c6a42cb281ae2185d50afff3f295b722cb2c63741531ad7015457ef",
+  "evidenceSnippetOriginal": "Please note: even when a tool is listed as approved, it is not risk-free. Approval simply means the tool can be used under specific conditions, but not that all data is safe to enter. Users are still responsible for evaluating the sensitivity of their data, understanding vendor limitations, and ensuring that confidential, regulated, or contract-restricted information is not shared with AI tools unless explicitly allowed.",
+  "evidenceLocator": "Disclaimer paragraph",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Approved and Restricted AI Tools",
+    "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

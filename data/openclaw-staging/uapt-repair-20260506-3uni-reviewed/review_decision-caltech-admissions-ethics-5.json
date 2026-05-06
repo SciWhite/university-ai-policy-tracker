@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-caltech-admissions-ethics-5",
+  "claimId": "cc-caltech-admissions-ethics-5",
+  "sourceSnapshotId": "ss-sc-caltech-repair-1-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports the claim. Source states: 'Caltech students, faculty, and staff are guided by the Honor Code and policies of AI use as an academic tool by students will be determined by individual departments and/or individual faculty.' Claim accurately reflects this. The evidence comes from the admissions page, which is a valid official source for this statement. Not overclaimed — the claim correctly states this is about coursework AI use policies, not a university-wide ban. Hash verified: evidence snapshotHash 834763ce matches source snapshot contentHash.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

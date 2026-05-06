@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-uchicago-policy-crosswalk-4",
+  "claimId": "cc-uchicago-policy-crosswalk-4",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-3-20260506",
+  "sourceUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+  "sourceTitle": "Relevant Policies for the Use of AI Tools",
+  "sourceLanguage": "en",
+  "snapshotHash": "2c80278c2e993a2d7e9eb8a044de11118518edf0e16872ba87b893a915d6ed17",
+  "evidenceSnippetOriginal": "Entering sensitive data into AI tools without review and approval by security, privacy, and the appropriate data steward may create an unauthorized data disclosure. Such disclosures may violate University policy, federal and state law, sponsor or contract obligations, and data use agreements.",
+  "evidenceLocator": "Footer warning",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Relevant Policies for the Use of AI Tools",
+    "sourceUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

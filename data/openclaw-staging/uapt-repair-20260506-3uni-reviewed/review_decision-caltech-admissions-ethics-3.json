@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "review_decision",
+  "decisionId": "rd-caltech-admissions-ethics-3",
+  "claimId": "cc-caltech-admissions-ethics-3",
+  "sourceSnapshotId": "ss-sc-caltech-repair-1-20260506",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim. The source lists exactly the three permitted uses: Grammarly/Microsoft Editor for grammar/spelling, brainstorming questions/exercises, and researching the college application process. Properly scoped to admissions. Hash verified: evidence snapshotHash 834763ce matches source snapshot contentHash. No overclaiming, no legal/academic integrity advice in claim text.",
+  "decidedAt": "2026-05-05T23:36:00Z"
+}

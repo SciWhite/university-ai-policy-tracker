@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-uchicago-repair-2",
+  "entityType": "university",
+  "entitySlug": "university-of-chicago",
+  "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+  "finalUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+  "sourceTitle": "Generative AI Guidance",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "N/A - discovered via genai.uchicago.edu About navigation menu",
+  "discoveredAt": "2026-05-05T23:17:30Z",
+  "officialDomainConfidence": 1.0,
+  "aiRelevanceScore": 1.0,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-05T23:18:30Z",
+  "verificationNotes": "REPAIR new source. Verified via OpenCLI browser extract: 12304 chars. Contains 4 detailed guidelines: (1) Protection of University Data — confidential data prohibited with public AI tools without review, (2) Responsibility for Content Accuracy and Ownership, (3) Academic Integrity — contact Chicago Center for Teaching and Learning, (4) Procuring and Acquiring Generative AI Tools — security review required. Plus comprehensive FAQ on tool review process, IRB requirements, review criteria, paid vs enterprise tools. Contact: Kevin Boyd (CIO), Matt Morton (CISO).",
+  "robotsPolicy": "respect"
+}

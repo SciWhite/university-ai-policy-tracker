@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ec-uchicago-approved-tools-1",
+  "claimId": "cc-uchicago-approved-tools-1",
+  "sourceSnapshotId": "ss-sc-uchicago-repair-4-20260506",
+  "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+  "sourceTitle": "Approved and Restricted AI Tools",
+  "sourceLanguage": "en",
+  "snapshotHash": "40aaab755c6a42cb281ae2185d50afff3f295b722cb2c63741531ad7015457ef",
+  "evidenceSnippetOriginal": "Approved and Restricted AI Tools\n\nIf a proposed tool or use case isn't listed on this table, the next step depends on whether the tool requires payment for use.\n\nFor paid tools, individuals should submit a request through the Service Now Procurement Intake.\nFor free tools, if a researcher or staff member intends to use a generative AI tool with sensitive data, or in research contexts, please complete the Generative AI Tool Evaluation Form.",
+  "evidenceLocator": "Page header and instructions",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Approved and Restricted AI Tools",
+    "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

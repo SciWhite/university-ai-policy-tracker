@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-nus-repair-1",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "sourceUrl": "https://ai.nus.edu.sg/research/ai-governance-and-policy/",
+  "finalUrl": "https://ai.nus.edu.sg/research/ai-governance-and-policy/",
+  "sourceTitle": "AI Governance and Policy - NUS Artificial Intelligence Institute",
+  "sourceLanguage": "en",
+  "sourceType": "research_showcase",
+  "discoveryMethod": "operator_seed",
+  "queryUsed": "Operator-provided seed; re-evaluation instructed for repair run",
+  "discoveredAt": "2026-05-05T23:17:00Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.7,
+  "policySpecificityScore": 0.1,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-05T23:19:00Z",
+  "verificationNotes": "REPAIR re-verification via OpenCLI browser. Page is the NUS AI Institute's research thrust page on 'AI Governance and Policy.' Content: research agenda description ('draw on diverse bodies of scholarship to address... questions that examine the actual and potential impact of AI'), team member profiles (Prof. Simon Chesterman, Prof. Hahn Jungpil, Dr. Eric J. W. Orlowski, Hakim Norhashim), AI Governance Roundtables (industry/government/academia discussions with Southeast Asian stakeholders), and news/updates. This is a research showcase, NOT an institutional policy page for students/staff/teaching. No policy statements, rules, restrictions, or guidance for the NUS community.",
+  "robotsPolicy": "respect"
+}

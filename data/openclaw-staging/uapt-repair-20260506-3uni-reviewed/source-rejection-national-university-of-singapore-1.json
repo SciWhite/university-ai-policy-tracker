@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-repair-20260506-3uni",
+  "sourceRejectionId": "sr-nus-repair-1",
+  "entityType": "university",
+  "entitySlug": "national-university-of-singapore",
+  "sourceUrl": "https://ai.nus.edu.sg/research/ai-governance-and-policy/",
+  "rejectedAt": "2026-05-05T23:20:00Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "crawl-designer",
+  "evidenceSnippet": "NUS AI Institute research thrust page with team profiles, roundtable discussions, and research agenda. Zero institutional policy content for students or staff.",
+  "notes": "Page describes NUS AI Institute's governance and policy research thrust. It is a research showcase, not an institutional AI use policy page.",
+  "sourceCandidateId": "sc-nus-repair-1"
+}
