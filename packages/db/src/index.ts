@@ -19,7 +19,12 @@ export {
   type IngestedSourceSnapshotResult
 } from "./ingest.js";
 export {
+  getPublicApiIndexResponse,
   getPublicUniversitySummaryBySlug,
-  listPublicRecentChanges
+  getPublicUniversitySummaryResponseBySlug,
+  listPublicRecentChangesEnvelope,
+  listPublicRecentChanges,
+  listPublicUniversitySummaries,
+  listPublicUniversitiesResponse
 } from "./public-contract.js";
 export { seedInitialCatalog, type SeedResult } from "./seed.js";

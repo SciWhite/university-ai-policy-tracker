@@ -50,16 +50,40 @@ Public university JSON is available at:
 https://eduaipolicy.org/api/public/v1/universities/{slug}.json
 ```
 
+The public university list is available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/universities.json
+```
+
 Recent changes JSON is available at:
 
 ```text
 https://eduaipolicy.org/api/public/v1/recent-changes.json
 ```
 
+The public API index is available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/index.json
+```
+
+Every v1 public JSON response should include a stable envelope:
+
+- `apiVersion`
+- `generatedAt`
+- `canonicalUrl`
+- `license`
+- `trackerMetadataLicense`
+- `sourceRightsPolicy`
+- `citation`
+- `data`
+
 The university JSON includes:
 
 - `citationTitle`
 - `canonicalUrl`
+- `publicPageUrl`
 - `lastCheckedAt`
 - `lastChangedAt`
 - `confidence`

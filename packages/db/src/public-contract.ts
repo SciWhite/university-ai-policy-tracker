@@ -4,6 +4,10 @@ import {
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
   PUBLIC_API_VERSION,
   TRACKER_METADATA_LICENSE,
+  buildPublicApiIndexResponse,
+  buildPublicEntitySummaryResponse,
+  buildPublicRecentChangesEnvelope,
+  buildPublicUniversityListResponse,
   claimReviewStateSchema,
   policyClaimSchema,
   publicEntitySummarySchema,
@@ -12,8 +16,12 @@ import {
   type ClaimReviewState,
   type PolicyClaim,
   type PolicyClaimType,
+  type PublicApiIndexResponse,
+  type PublicEntitySummaryResponse,
   type PublicEntitySummary,
+  type PublicRecentChangesEnvelope,
   type PublicRecentChangesResponse,
+  type PublicUniversityListResponse,
   type SourceAttribution
 } from "@uapt/shared";
 import {
@@ -117,6 +125,7 @@ export async function getPublicUniversitySummaryBySlug(
     schemaVersion: PUBLIC_API_VERSION,
     citationTitle: `${university.name} AI Policy Tracker record`,
     canonicalUrl,
+    publicPageUrl: canonicalUrl,
     apiUrl: buildPublicUniversityApiUrl(university.slug),
     entityType: "university",
     entitySlug: university.slug,
@@ -148,6 +157,49 @@ export async function getPublicUniversitySummaryBySlug(
     claims,
     suggestedCitation: buildSuggestedCitation(university.name, canonicalUrl, lastCheckedAt)
   });
+}
+
+export async function getPublicUniversitySummaryResponseBySlug(
+  slug: string,
+  client: PrismaClient = getPrismaClient()
+): Promise<PublicEntitySummaryResponse | null> {
+  const summary = await getPublicUniversitySummaryBySlug(slug, client);
+
+  return summary
+    ? buildPublicEntitySummaryResponse(summary, getSiteBaseUrl())
+    : null;
+}
+
+export async function listPublicUniversitySummaries(
+  limit = 100,
+  client: PrismaClient = getPrismaClient()
+): Promise<PublicEntitySummary[]> {
+  const universities = await client.university.findMany({
+    orderBy: { name: "asc" },
+    take: limit,
+    select: { slug: true }
+  });
+
+  return (
+    await Promise.all(
+      universities.map((university) =>
+        getPublicUniversitySummaryBySlug(university.slug, client)
+      )
+    )
+  ).filter((summary): summary is PublicEntitySummary => Boolean(summary));
+}
+
+export async function listPublicUniversitiesResponse(
+  limit = 100,
+  client: PrismaClient = getPrismaClient()
+): Promise<PublicUniversityListResponse> {
+  const summaries = await listPublicUniversitySummaries(limit, client);
+
+  return buildPublicUniversityListResponse(summaries, getSiteBaseUrl());
+}
+
+export function getPublicApiIndexResponse(): PublicApiIndexResponse {
+  return buildPublicApiIndexResponse(getSiteBaseUrl());
 }
 
 export async function listPublicRecentChanges(
@@ -191,6 +243,15 @@ export async function listPublicRecentChanges(
       claims: summary.claims
     }))
   });
+}
+
+export async function listPublicRecentChangesEnvelope(
+  limit = 25,
+  client: PrismaClient = getPrismaClient()
+): Promise<PublicRecentChangesEnvelope> {
+  const response = await listPublicRecentChanges(limit, client);
+
+  return buildPublicRecentChangesEnvelope(response, getSiteBaseUrl());
 }
 
 function mapStoredClaim(

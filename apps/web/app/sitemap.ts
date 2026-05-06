@@ -23,11 +23,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: new URL(route, baseUrl).toString(),
       lastModified: now
     })),
-    ...seedUniversities.map((university) => ({
-      url: new URL(`/universities/${university.slug}`, baseUrl).toString(),
-      lastModified: university.sources[0]?.lastCheckedAt
-        ? new Date(university.sources[0].lastCheckedAt)
-        : now
-    }))
+    ...seedUniversities.map((university) => {
+      const latestSourceDate = getLatestSourceDate(university.sources);
+
+      return {
+        url: new URL(`/universities/${university.slug}`, baseUrl).toString(),
+        lastModified: latestSourceDate ? new Date(latestSourceDate) : now
+      };
+    })
   ];
+}
+
+function getLatestSourceDate(
+  sources: (typeof seedUniversities)[number]["sources"]
+): string | undefined {
+  return sources
+    .flatMap((source) => [source.lastCheckedAt, source.lastChangedAt])
+    .filter((value): value is string => Boolean(value))
+    .sort((a, b) => b.localeCompare(a))[0];
 }

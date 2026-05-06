@@ -70,6 +70,12 @@ export default async function DatasetsPage() {
     0
   );
   const datasetsUrl = getAbsoluteSiteUrl("/datasets");
+  const apiIndexUrl = getAbsoluteSiteUrl(
+    `/api/public/${PUBLIC_API_VERSION}/index.json`
+  );
+  const universitiesJsonUrl = getAbsoluteSiteUrl(
+    `/api/public/${PUBLIC_API_VERSION}/universities.json`
+  );
   const harvardJsonUrl = getAbsoluteSiteUrl(
     `/api/public/${PUBLIC_API_VERSION}/universities/harvard.json`
   );
@@ -99,6 +105,18 @@ export default async function DatasetsPage() {
             url: getAbsoluteSiteUrl("/")
           },
           distribution: [
+            {
+              "@type": "DataDownload",
+              name: "Public API index JSON",
+              encodingFormat: "application/json",
+              contentUrl: apiIndexUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Universities list JSON",
+              encodingFormat: "application/json",
+              contentUrl: universitiesJsonUrl
+            },
             {
               "@type": "DataDownload",
               name: "University record JSON example",
@@ -147,6 +165,16 @@ export default async function DatasetsPage() {
           <p>Live read-only routes in the public web app</p>
         </div>
         <ul className="source-list">
+          <li>
+            <a href={apiIndexUrl}>
+              /api/public/{PUBLIC_API_VERSION}/index.json
+            </a>
+          </li>
+          <li>
+            <a href={universitiesJsonUrl}>
+              /api/public/{PUBLIC_API_VERSION}/universities.json
+            </a>
+          </li>
           <li>
             <a href={harvardJsonUrl}>
               /api/public/{PUBLIC_API_VERSION}/universities/harvard.json

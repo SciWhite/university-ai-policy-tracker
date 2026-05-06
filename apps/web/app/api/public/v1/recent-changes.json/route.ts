@@ -1,6 +1,8 @@
 import {
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
   TRACKER_METADATA_LICENSE,
+  buildPublicRecentChangesData,
+  buildPublicRecentChangesEnvelope,
   buildSeedPublicEntitySummaries,
   publicRecentChangesResponseSchema
 } from "@uapt/shared";
@@ -13,18 +15,10 @@ export function GET() {
     generatedAt: new Date().toISOString(),
     license: TRACKER_METADATA_LICENSE,
     sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
-    changes: summaries.map((summary) => ({
-      entitySlug: summary.entity.slug,
-      entityName: summary.entity.name,
-      canonicalUrl: summary.canonicalUrl,
-      citationTitle: summary.citationTitle,
-      lastCheckedAt: summary.lastCheckedAt,
-      lastChangedAt: summary.lastChangedAt,
-      reviewState: summary.reviewState,
-      claimCount: summary.claims.length,
-      claims: summary.claims
-    }))
+    changes: buildPublicRecentChangesData(summaries).changes
   });
 
-  return NextResponse.json(response);
+  return NextResponse.json(
+    buildPublicRecentChangesEnvelope(response, getSiteBaseUrl())
+  );
 }

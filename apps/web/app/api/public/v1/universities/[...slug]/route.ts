@@ -1,5 +1,7 @@
+import { buildPublicEntitySummaryResponse } from "@uapt/shared";
 import { NextResponse } from "next/server";
 import { getPublicUniversitySummaryBySlug } from "@/lib/catalog";
+import { getSiteBaseUrl } from "@/lib/site-url";
 
 interface PublicUniversityRouteProps {
   params: Promise<{
@@ -22,5 +24,7 @@ export async function GET(_request: Request, { params }: PublicUniversityRoutePr
     );
   }
 
-  return NextResponse.json(summary);
+  return NextResponse.json(
+    buildPublicEntitySummaryResponse(summary, getSiteBaseUrl())
+  );
 }

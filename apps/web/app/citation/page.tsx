@@ -38,6 +38,12 @@ export default function CitationPage() {
     `/api/public/${PUBLIC_API_VERSION}/universities/${exampleUniversitySlug}.json`
   );
   const datasetsUrl = getAbsoluteSiteUrl("/datasets");
+  const apiIndexUrl = getAbsoluteSiteUrl(
+    `/api/public/${PUBLIC_API_VERSION}/index.json`
+  );
+  const universitiesJsonUrl = getAbsoluteSiteUrl(
+    `/api/public/${PUBLIC_API_VERSION}/universities.json`
+  );
   const recentChangesUrl = getAbsoluteSiteUrl(
     `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`
   );
@@ -141,6 +147,16 @@ export default function CitationPage() {
           <p>Versioned, source-backed records</p>
         </div>
         <ul className="source-list">
+          <li>
+            <a href={apiIndexUrl}>
+              /api/public/{PUBLIC_API_VERSION}/index.json
+            </a>
+          </li>
+          <li>
+            <a href={universitiesJsonUrl}>
+              /api/public/{PUBLIC_API_VERSION}/universities.json
+            </a>
+          </li>
           <li>
             <a href={universityJsonUrl}>
               /api/public/{PUBLIC_API_VERSION}/universities/{exampleUniversitySlug}.json

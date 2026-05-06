@@ -5,11 +5,26 @@ import {
   PUBLIC_API_VERSION,
   TRACKER_METADATA_LICENSE,
   claimReviewStateSchema,
+  publicApiIndexDataSchema,
+  publicApiIndexResponseSchema,
+  publicEntitySummaryResponseSchema,
   publicEntitySummarySchema,
+  publicRecentChangesDataSchema,
+  publicRecentChangesEnvelopeSchema,
   publicRecentChangesResponseSchema,
+  publicUniversityListDataSchema,
+  publicUniversityListResponseSchema,
   type ClaimReviewState,
+  type PublicApiIndexData,
+  type PublicApiIndexResponse,
+  type PublicApiCitation,
+  type PublicEntitySummaryResponse,
   type PublicEntitySummary,
+  type PublicRecentChangesData,
+  type PublicRecentChangesEnvelope,
   type PublicRecentChangesResponse,
+  type PublicUniversityListData,
+  type PublicUniversityListResponse,
   type SourceAttribution
 } from "./claims";
 import type { SeedPolicySource, SeedUniversity } from "./schemas";
@@ -67,6 +82,7 @@ export function buildSeedPublicEntitySummary(
     schemaVersion: PUBLIC_API_VERSION,
     citationTitle: `${university.name} AI Policy Tracker record`,
     canonicalUrl,
+    publicPageUrl: canonicalUrl,
     apiUrl: new URL(
       `/api/public/${PUBLIC_API_VERSION}/universities/${university.slug}.json`,
       siteBaseUrl
@@ -113,8 +129,296 @@ export function buildSeedPublicEntitySummaries(
   );
 }
 
+export function buildPublicApiIndexData(
+  siteBaseUrl = DEFAULT_PUBLIC_SITE_BASE_URL
+): PublicApiIndexData {
+  const endpoint = (
+    label: string,
+    path: string,
+    description: string,
+    templatePath?: string
+  ) => ({
+    label,
+    path,
+    templatePath,
+    url: new URL(path, siteBaseUrl).toString(),
+    description
+  });
+  const trustPage = (label: string, path: string, description: string) => ({
+    label,
+    path,
+    url: new URL(path, siteBaseUrl).toString(),
+    description
+  });
+
+  return publicApiIndexDataSchema.parse({
+    name: "University AI Policy Tracker public API",
+    purpose:
+      "Citation-first, source-backed public JSON for university AI policy records.",
+    apiVersion: PUBLIC_API_VERSION,
+    canonicalSiteUrl: new URL("/", siteBaseUrl).toString(),
+    endpoints: [
+      endpoint(
+        "API index",
+        `/api/public/${PUBLIC_API_VERSION}/index.json`,
+        "Manifest for public v1 JSON endpoints and trust pages."
+      ),
+      endpoint(
+        "Universities list",
+        `/api/public/${PUBLIC_API_VERSION}/universities.json`,
+        "List of public university records with canonical page and JSON links."
+      ),
+      endpoint(
+        "University record",
+        `/api/public/${PUBLIC_API_VERSION}/universities/harvard.json`,
+        "One citation-ready university record with claims, evidence, sources, and review state.",
+        `/api/public/${PUBLIC_API_VERSION}/universities/{slug}.json`
+      ),
+      endpoint(
+        "Recent changes",
+        `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`,
+        "Recent public source checks and changed institution records."
+      )
+    ],
+    trustPages: [
+      trustPage(
+        "Methodology",
+        "/methodology",
+        "Evidence, snapshot, claim extraction, review, and limitation methodology."
+      ),
+      trustPage(
+        "Citation",
+        "/citation",
+        "Citation formats, source rights caveats, and public JSON field guidance."
+      ),
+      trustPage(
+        "Datasets",
+        "/datasets",
+        "Dataset access surface, licensing expectations, and JSON endpoint links."
+      ),
+      trustPage(
+        "Changes",
+        "/changes",
+        "Recent public changes and freshness records."
+      )
+    ],
+    citationRules: [
+      "Cite the canonical page URL and versioned public JSON URL together.",
+      "Retain source URL, source language, source snapshot hash, review state, confidence, and original evidence snippet for claim reuse.",
+      "Original-language evidence is canonical; localized summaries are display helpers only."
+    ],
+    limitations: [NO_ADVICE_BOUNDARY]
+  });
+}
+
+export function buildPublicUniversityListData(
+  summaries: PublicEntitySummary[]
+): PublicUniversityListData {
+  return publicUniversityListDataSchema.parse({
+    count: summaries.length,
+    universities: summaries.map((summary) => ({
+      entitySlug: summary.entity.slug,
+      entityName: summary.entity.name,
+      entityType: summary.entity.type,
+      citationTitle: summary.citationTitle,
+      canonicalUrl: summary.canonicalUrl,
+      publicPageUrl: summary.publicPageUrl ?? summary.canonicalUrl,
+      publicJsonUrl:
+        summary.apiUrl ??
+        new URL(
+          `/api/public/${PUBLIC_API_VERSION}/universities/${summary.entity.slug}.json`,
+          summary.canonicalUrl
+        ).toString(),
+      summary: summary.summary,
+      lastCheckedAt: summary.lastCheckedAt,
+      lastChangedAt: summary.lastChangedAt,
+      reviewState: summary.reviewState,
+      confidence: summary.confidence,
+      claimCount: summary.claims.length,
+      officialSourceCount: summary.officialSources.length
+    }))
+  });
+}
+
+export function buildPublicRecentChangesData(
+  summaries: PublicEntitySummary[]
+): PublicRecentChangesData {
+  return publicRecentChangesDataSchema.parse({
+    changes: summaries.map((summary) => ({
+      entitySlug: summary.entity.slug,
+      entityName: summary.entity.name,
+      canonicalUrl: summary.canonicalUrl,
+      citationTitle: summary.citationTitle,
+      lastCheckedAt: summary.lastCheckedAt,
+      lastChangedAt: summary.lastChangedAt,
+      reviewState: summary.reviewState,
+      claimCount: summary.claims.length,
+      claims: summary.claims
+    }))
+  });
+}
+
+export function buildPublicApiCitation(input: {
+  citationTitle: string;
+  canonicalUrl: string;
+  publicJsonUrl: string;
+  suggestedCitation: string;
+}): PublicApiCitation {
+  return {
+    citationTitle: input.citationTitle,
+    canonicalUrl: input.canonicalUrl,
+    publicJsonUrl: input.publicJsonUrl,
+    suggestedCitation: input.suggestedCitation,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT
+  };
+}
+
+export function buildPublicApiIndexResponse(
+  siteBaseUrl = DEFAULT_PUBLIC_SITE_BASE_URL,
+  generatedAt = new Date().toISOString()
+): PublicApiIndexResponse {
+  const canonicalUrl = new URL("/datasets", siteBaseUrl).toString();
+  const publicJsonUrl = new URL(
+    `/api/public/${PUBLIC_API_VERSION}/index.json`,
+    siteBaseUrl
+  ).toString();
+  const data = buildPublicApiIndexData(siteBaseUrl);
+
+  return publicApiIndexResponseSchema.parse({
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt,
+    canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
+    sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    limitations: [NO_ADVICE_BOUNDARY],
+    citation: buildPublicApiCitation({
+      citationTitle: "University AI Policy Tracker public API index",
+      canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation:
+        "University AI Policy Tracker public API index. University AI Policy Tracker. Version v1. " +
+        canonicalUrl
+    }),
+    data
+  });
+}
+
+export function buildPublicUniversityListResponse(
+  summaries: PublicEntitySummary[],
+  siteBaseUrl = DEFAULT_PUBLIC_SITE_BASE_URL,
+  generatedAt = new Date().toISOString()
+): PublicUniversityListResponse {
+  const canonicalUrl = new URL("/universities", siteBaseUrl).toString();
+  const publicJsonUrl = new URL(
+    `/api/public/${PUBLIC_API_VERSION}/universities.json`,
+    siteBaseUrl
+  ).toString();
+
+  return publicUniversityListResponseSchema.parse({
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt,
+    canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
+    sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    limitations: [NO_ADVICE_BOUNDARY],
+    citation: buildPublicApiCitation({
+      citationTitle: "University AI Policy Tracker universities dataset",
+      canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation:
+        "University AI Policy Tracker universities dataset. University AI Policy Tracker. Version v1. " +
+        canonicalUrl
+    }),
+    data: buildPublicUniversityListData(summaries)
+  });
+}
+
+export function buildPublicEntitySummaryResponse(
+  summary: PublicEntitySummary,
+  siteBaseUrl = DEFAULT_PUBLIC_SITE_BASE_URL,
+  generatedAt = new Date().toISOString()
+): PublicEntitySummaryResponse {
+  const publicJsonUrl =
+    summary.apiUrl ??
+    new URL(
+      `/api/public/${PUBLIC_API_VERSION}/universities/${summary.entity.slug}.json`,
+      siteBaseUrl
+    ).toString();
+
+  return publicEntitySummaryResponseSchema.parse({
+    ...summary,
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt,
+    canonicalUrl: summary.canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
+    sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    limitations: summary.limitations,
+    citation: buildPublicApiCitation({
+      citationTitle: summary.citationTitle,
+      canonicalUrl: summary.canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation: summary.suggestedCitation
+    }),
+    data: summary
+  });
+}
+
+export function buildPublicRecentChangesEnvelope(
+  response: PublicRecentChangesResponse,
+  siteBaseUrl = DEFAULT_PUBLIC_SITE_BASE_URL
+): PublicRecentChangesEnvelope {
+  const canonicalUrl = new URL("/changes", siteBaseUrl).toString();
+  const publicJsonUrl = new URL(
+    `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`,
+    siteBaseUrl
+  ).toString();
+
+  return publicRecentChangesEnvelopeSchema.parse({
+    ...response,
+    apiVersion: PUBLIC_API_VERSION,
+    canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
+    sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    citation: buildPublicApiCitation({
+      citationTitle: "University AI Policy Tracker recent changes",
+      canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation:
+        "University AI Policy Tracker recent changes. University AI Policy Tracker. Version v1. " +
+        canonicalUrl
+    }),
+    data: {
+      changes: response.changes
+    }
+  });
+}
+
 export const publicContractExamples = {
   universities: buildSeedPublicEntitySummaries(),
+  apiIndex: buildPublicApiIndexResponse(
+    DEFAULT_PUBLIC_SITE_BASE_URL,
+    "2026-05-04T00:00:00.000Z"
+  ),
+  universityList: buildPublicUniversityListResponse(
+    buildSeedPublicEntitySummaries(),
+    DEFAULT_PUBLIC_SITE_BASE_URL,
+    "2026-05-04T00:00:00.000Z"
+  ),
+  universityResponses: buildSeedPublicEntitySummaries().map((summary) =>
+    buildPublicEntitySummaryResponse(
+      summary,
+      DEFAULT_PUBLIC_SITE_BASE_URL,
+      "2026-05-04T00:00:00.000Z"
+    )
+  ),
   recentChanges: publicRecentChangesResponseSchema.parse({
     schemaVersion: PUBLIC_API_VERSION,
     generatedAt: "2026-05-04T00:00:00.000Z",
@@ -134,7 +438,30 @@ export const publicContractExamples = {
       claimCount: summary.claims.length,
       claims: summary.claims
     }))
-  }) satisfies PublicRecentChangesResponse
+  }) satisfies PublicRecentChangesResponse,
+  recentChangesEnvelope: buildPublicRecentChangesEnvelope(
+    publicRecentChangesResponseSchema.parse({
+      schemaVersion: PUBLIC_API_VERSION,
+      generatedAt: "2026-05-04T00:00:00.000Z",
+      license: TRACKER_METADATA_LICENSE,
+      trackerMetadataLicense: TRACKER_METADATA_LICENSE,
+      sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+      sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+      limitations: [NO_ADVICE_BOUNDARY],
+      changes: buildSeedPublicEntitySummaries().map((summary) => ({
+        entitySlug: summary.entity.slug,
+        entityName: summary.entity.name,
+        canonicalUrl: summary.canonicalUrl,
+        citationTitle: summary.citationTitle,
+        lastCheckedAt: summary.lastCheckedAt,
+        lastChangedAt: summary.lastChangedAt,
+        reviewState: summary.reviewState,
+        claimCount: summary.claims.length,
+        claims: summary.claims
+      }))
+    }),
+    DEFAULT_PUBLIC_SITE_BASE_URL
+  )
 };
 
 function buildSeedSourceAttribution(

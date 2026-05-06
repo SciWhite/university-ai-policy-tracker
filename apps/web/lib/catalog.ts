@@ -5,6 +5,7 @@ import {
   catalogUniversitySchema,
   buildSeedPublicEntitySummary,
   PUBLIC_API_VERSION,
+  publicEntitySummaryResponseSchema,
   publicEntitySummarySchema,
   seedUniversities,
   type CatalogSourceRecord,
@@ -59,7 +60,14 @@ export async function getPublicUniversitySummaryBySlug(
 ): Promise<PublicEntitySummary | undefined> {
   const fromApi = await fetchApi(
     `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
-    publicEntitySummarySchema
+    {
+      parse: (value) => {
+        const envelope = publicEntitySummaryResponseSchema.safeParse(value);
+        if (envelope.success) return envelope.data.data;
+
+        return publicEntitySummarySchema.parse(value);
+      }
+    }
   );
 
   if (fromApi) return fromApi;
@@ -80,6 +88,16 @@ export function getPublicJsonUrl(slug: string): string {
 
 export function getRecentChangesJsonUrl(): string {
   const path = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
+  return API_BASE_URL ? new URL(path, API_BASE_URL).toString() : path;
+}
+
+export function getPublicApiIndexJsonUrl(): string {
+  const path = `/api/public/${PUBLIC_API_VERSION}/index.json`;
+  return API_BASE_URL ? new URL(path, API_BASE_URL).toString() : path;
+}
+
+export function getPublicUniversitiesJsonUrl(): string {
+  const path = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
   return API_BASE_URL ? new URL(path, API_BASE_URL).toString() : path;
 }
 

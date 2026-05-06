@@ -112,10 +112,56 @@ export const citationPolicySchema = z.object({
   llmsTxtIsAuxiliaryGuide: z.literal(true).default(true)
 });
 
+export const publicApiCitationSchema = z.object({
+  citationTitle: z.string().min(1),
+  canonicalUrl: z.string().url(),
+  publicJsonUrl: z.string().url(),
+  suggestedCitation: z.string().min(1),
+  sourceRightsPolicy: z.string().min(1).default(OFFICIAL_SOURCE_RIGHTS_CAVEAT)
+});
+
+export const publicApiEndpointSchema = z.object({
+  label: z.string().min(1),
+  path: z
+    .string()
+    .regex(
+      /^\/api\/public\/v1\/.+/,
+      "endpoint paths must be versioned under /api/public/v1/"
+    ),
+  templatePath: z
+    .string()
+    .regex(
+      /^\/api\/public\/v1\/.+/,
+      "endpoint template paths must be versioned under /api/public/v1/"
+    )
+    .optional(),
+  url: z.string().url(),
+  description: z.string().min(1)
+});
+
+export const publicTrustPageLinkSchema = z.object({
+  label: z.string().min(1),
+  path: z.string().regex(/^\/.+/),
+  url: z.string().url(),
+  description: z.string().min(1)
+});
+
+export const publicApiIndexDataSchema = z.object({
+  name: z.string().min(1),
+  purpose: z.string().min(1),
+  apiVersion: z.literal(PUBLIC_API_VERSION),
+  canonicalSiteUrl: z.string().url(),
+  endpoints: z.array(publicApiEndpointSchema).min(1),
+  trustPages: z.array(publicTrustPageLinkSchema).min(1),
+  citationRules: z.array(z.string().min(1)).min(1),
+  limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY])
+});
+
 export const publicEntitySummarySchema = z.object({
   schemaVersion: z.literal(PUBLIC_API_VERSION).default(PUBLIC_API_VERSION),
   citationTitle: z.string().min(1),
   canonicalUrl: z.string().url(),
+  publicPageUrl: z.string().url().optional(),
   apiUrl: z.string().url().optional(),
   entityType: canonicalEntityTypeSchema.default("university"),
   entitySlug: z.string().min(1),
@@ -137,6 +183,28 @@ export const publicEntitySummarySchema = z.object({
   suggestedCitation: z.string().min(1)
 });
 
+export const publicUniversityListItemSchema = z.object({
+  entitySlug: z.string().min(1),
+  entityName: z.string().min(1),
+  entityType: canonicalEntityTypeSchema.default("university"),
+  citationTitle: z.string().min(1),
+  canonicalUrl: z.string().url(),
+  publicPageUrl: z.string().url(),
+  publicJsonUrl: z.string().url(),
+  summary: z.string().min(1),
+  lastCheckedAt: z.string().datetime().optional(),
+  lastChangedAt: z.string().datetime().optional(),
+  reviewState: claimReviewStateSchema,
+  confidence: z.number().min(0).max(1).optional(),
+  claimCount: z.number().int().nonnegative(),
+  officialSourceCount: z.number().int().nonnegative()
+});
+
+export const publicUniversityListDataSchema = z.object({
+  universities: z.array(publicUniversityListItemSchema),
+  count: z.number().int().nonnegative()
+});
+
 export const publicRecentChangeSchema = z.object({
   entitySlug: z.string().min(1),
   entityName: z.string().min(1),
@@ -147,6 +215,10 @@ export const publicRecentChangeSchema = z.object({
   reviewState: claimReviewStateSchema,
   claimCount: z.number().int().nonnegative(),
   claims: z.array(policyClaimSchema)
+});
+
+export const publicRecentChangesDataSchema = z.object({
+  changes: z.array(publicRecentChangeSchema)
 });
 
 export const publicRecentChangesResponseSchema = z.object({
@@ -161,6 +233,41 @@ export const publicRecentChangesResponseSchema = z.object({
   limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY]),
   changes: z.array(publicRecentChangeSchema)
 });
+
+const publicApiEnvelopeBaseSchema = z.object({
+  apiVersion: z.literal(PUBLIC_API_VERSION),
+  generatedAt: z.string().datetime(),
+  canonicalUrl: z.string().url(),
+  license: trackerMetadataLicenseSchema.default(TRACKER_METADATA_LICENSE),
+  trackerMetadataLicense: trackerMetadataLicenseSchema.default(
+    TRACKER_METADATA_LICENSE
+  ),
+  sourcePolicy: z.string().min(1).default(OFFICIAL_SOURCE_RIGHTS_CAVEAT),
+  sourceRightsPolicy: z.string().min(1).default(OFFICIAL_SOURCE_RIGHTS_CAVEAT),
+  limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY]),
+  citation: publicApiCitationSchema
+});
+
+export const publicApiIndexResponseSchema = publicApiEnvelopeBaseSchema.extend({
+  data: publicApiIndexDataSchema
+});
+
+export const publicUniversityListResponseSchema =
+  publicApiEnvelopeBaseSchema.extend({
+    data: publicUniversityListDataSchema
+  });
+
+export const publicEntitySummaryResponseSchema =
+  publicApiEnvelopeBaseSchema.extend({
+    data: publicEntitySummarySchema,
+    ...publicEntitySummarySchema.shape
+  });
+
+export const publicRecentChangesEnvelopeSchema =
+  publicApiEnvelopeBaseSchema.extend({
+    data: publicRecentChangesDataSchema,
+    ...publicRecentChangesResponseSchema.shape
+  });
 
 export const claimReviewDecisionSchema = z.object({
   claimId: z.string().min(1),
@@ -180,9 +287,34 @@ export type ClaimEvidence = z.infer<typeof claimEvidenceSchema>;
 export type PolicyClaim = z.infer<typeof policyClaimSchema>;
 export type CanonicalEntity = z.infer<typeof canonicalEntitySchema>;
 export type CitationPolicy = z.infer<typeof citationPolicySchema>;
+export type PublicApiCitation = z.infer<typeof publicApiCitationSchema>;
+export type PublicApiEndpoint = z.infer<typeof publicApiEndpointSchema>;
+export type PublicTrustPageLink = z.infer<typeof publicTrustPageLinkSchema>;
+export type PublicApiIndexData = z.infer<typeof publicApiIndexDataSchema>;
 export type PublicEntitySummary = z.infer<typeof publicEntitySummarySchema>;
+export type PublicUniversityListItem = z.infer<
+  typeof publicUniversityListItemSchema
+>;
+export type PublicUniversityListData = z.infer<
+  typeof publicUniversityListDataSchema
+>;
 export type PublicRecentChange = z.infer<typeof publicRecentChangeSchema>;
+export type PublicRecentChangesData = z.infer<
+  typeof publicRecentChangesDataSchema
+>;
 export type PublicRecentChangesResponse = z.infer<
   typeof publicRecentChangesResponseSchema
+>;
+export type PublicApiIndexResponse = z.infer<
+  typeof publicApiIndexResponseSchema
+>;
+export type PublicUniversityListResponse = z.infer<
+  typeof publicUniversityListResponseSchema
+>;
+export type PublicEntitySummaryResponse = z.infer<
+  typeof publicEntitySummaryResponseSchema
+>;
+export type PublicRecentChangesEnvelope = z.infer<
+  typeof publicRecentChangesEnvelopeSchema
 >;
 export type ClaimReviewDecision = z.infer<typeof claimReviewDecisionSchema>;
