@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "sourceTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "unsw.edu.au generative AI policy students",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 200. Official UNSW student domain. Title: 'Using AI in university'. Page hierarchy confirms student-facing AI guidance. Last updated 2025-12-02."
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-10",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell developed a set of course policy icons through the GenAI Advisory Council to help instructors clearly and consistently communicate AI use expectations to students in syllabi and assignment instructions.",
+  "confidence": 0.92,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-002",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "A set of course policy icons has been developed by the GenAI Advisory Council to help Cornell instructors communicate with students about appropriate AI use for different courses and assignments. They are downloadable and can be incorporated into your syllabus or assignment instructions, to help provide clear guidance to students about course expectations.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-10"
+  ],
+  "citation": {
+    "citationTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

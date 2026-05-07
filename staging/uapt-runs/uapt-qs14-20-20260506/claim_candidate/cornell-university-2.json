@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-2",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell has established seven core principles for generative AI in education: integrity of the faculty-student relation, commitment to experimentation and evidence, centrality of faculty judgment, responsiveness to student needs, recognition of both AI goods and harms, respect for institutional and disciplinary heterogeneity, and renewal of Cornell's core mission and values.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-001",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Cornell's response to generative AI in teaching and learning is built around seven core principles. We invite instructors to consider these principles as they make decisions and talk with their students and colleagues about generative AI and learning: The integrity of the faculty-student relation. A commitment to experimentation, evidence and learning from experience. The centrality of faculty judgment and expertise in the classroom. Responsiveness to real student needs and uses. Recognition of both AI 'goods' and 'harms'. Respect for institutional and disciplinary heterogeneity. The extension and renewal of Cornell's core mission and values.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-2"
+  ],
+  "citation": {
+    "citationTitle": "Generative Artificial Intelligence | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

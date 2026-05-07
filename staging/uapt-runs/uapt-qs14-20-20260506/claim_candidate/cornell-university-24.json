@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-24",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's 'AI+AI' initiative aims to strengthen and update academic integrity procedures to better reflect the presence of generative AI, including better models for attributing student use of GenAI and development of evidentiary standards for adjudicating GenAI-related violations.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-005",
+  "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "'AI+AI': efforts to strengthen and update Cornell's academic integrity procedures to better reflect the presence of GenAI, including better models for attributing student use of GenAI in assignments or course settings; efforts to streamline, strengthen, and reform the university's academic integrity system; and the development of evidentiary standards and processes appropriate to the adjudication of GenAI-related violations of academic integrity.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-24"
+  ],
+  "citation": {
+    "citationTitle": "GenAI in Teaching and Learning \u2013 Academic Innovation",
+    "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

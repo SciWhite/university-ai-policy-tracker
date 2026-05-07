@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-melbourne-004",
+  "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+  "sourceTitle": "UoM Submission: Inquiry into Generative AI in Education",
+  "sourceLanguage": "en",
+  "sourceType": "official_pdf",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "\"University of Melbourne\" generative AI policy",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 403. Cloudflare challenge. Official University of Melbourne about domain. PDF submission to government inquiry on generative AI in education. Crawl-worker must use playwright or opencli."
+}

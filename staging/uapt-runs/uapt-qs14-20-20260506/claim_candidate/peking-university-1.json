@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-peking-university-1",
+  "entityType": "university",
+  "entitySlug": "peking-university",
+  "claimType": "other",
+  "claimText": "Peking University's AI Scientific Integrity Platform defines AI use boundaries across seven research stages: topic selection, literature search and management, research design and implementation, paper writing, paper submission, paper review, and grant application and review.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-pku-sc-001",
+  "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "sourceLanguage": "zh",
+  "evidenceSnippetOriginal": "\u8986\u76d6\u8bba\u6587\u9009\u9898\u3001\u6587\u732e\u68c0\u7d22\u4e0e\u7ba1\u7406\u3001\u7814\u7a76\u8bbe\u8ba1\u4e0e\u5b9e\u65bd\u3001\u8bba\u6587\u5199\u4f5c\u3001\u8bba\u6587\u6295\u7a3f\u3001\u8bba\u6587\u8bc4\u5ba1\u3001\u57fa\u91d1\u7533\u62a5\u4e0e\u8bc4\u5ba1\u4e03\u4e2a\u7814\u7a76\u73af\u8282\u3002",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-peking-university-1"
+  ],
+  "citation": {
+    "citationTitle": "\u4f7f\u7528\u89c4\u8303\u8bf4\u660e - AI\u79d1\u7814\u8bda\u4fe1\u5e73\u53f0",
+    "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

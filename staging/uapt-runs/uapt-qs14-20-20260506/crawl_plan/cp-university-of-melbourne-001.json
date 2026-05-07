@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "cp-university-of-melbourne-001",
+  "createdAt": "2026-05-06T04:34:14Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-melbourne",
+      "sourceCandidateId": "sc-melbourne-003",
+      "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+      "sourceTitle": "Official statements from The University of Melbourne",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "playwright",
+        "opencli"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "official_statements",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-melbourne",
+      "sourceCandidateId": "sc-melbourne-002",
+      "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+      "sourceTitle": "Generative AI in T&L at the University of Melbourne",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "playwright",
+        "opencli"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "assessment",
+        "generative_ai"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-melbourne",
+      "sourceCandidateId": "sc-melbourne-001",
+      "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+      "sourceTitle": "GenAI at Melbourne",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "playwright",
+        "opencli"
+      ],
+      "expectedThemes": [
+        "student_guidance",
+        "generative_ai",
+        "learning_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-melbourne",
+      "sourceCandidateId": "sc-melbourne-004",
+      "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+      "sourceTitle": "UoM Submission: Inquiry into Generative AI in Education",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "playwright",
+        "opencli"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "education_policy",
+        "government_submission"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-melbourne",
+      "sourceCandidateId": "sc-melbourne-005",
+      "sourceUrl": "https://msd.unimelb.edu.au/belt/quality/generative-ai/what-is-this-guide",
+      "sourceTitle": "What Is This Guide? - Melbourne School of Design",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "playwright",
+        "opencli"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "design_school_guidance"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_verified_targets_fetched",
+    "waf_blocked_targets_escalated"
+  ]
+}

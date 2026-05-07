@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-unsw-001",
+  "sourceCandidateId": "sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "finalUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a",
+  "normalizedTextStorageKey": "normalized/sc-unsw-001.txt"
+}

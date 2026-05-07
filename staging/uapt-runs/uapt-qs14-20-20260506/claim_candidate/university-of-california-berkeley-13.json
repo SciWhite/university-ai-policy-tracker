@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-13",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "UC Berkeley states that units offering AI tools separately from campus or systemwide agreements should clearly advise staff and users of the appropriate use and Protection Level limitations of those tools.",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
+  "sourceSnapshotId": "ss-sc-berkeley-002",
+  "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Units offering such tools should clearly advise staff and users as to the appropriate use and Protection Level limitations of the AI (and all) tools that they offer. Units are encouraged to use and refer people to the campus Data Classification Standard and Guidelines for assistance with determining the Protection Level of data being contemplated for use in unit-provided AI tools.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-13"
+  ],
+  "citation": {
+    "citationTitle": "Appropriate Use of Generative AI Tools | Office of Ethics, Risk, and Compliance Services",
+    "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

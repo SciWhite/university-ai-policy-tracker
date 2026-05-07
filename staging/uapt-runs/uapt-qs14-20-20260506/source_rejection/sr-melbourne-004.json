@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "sourceRejectionId": "sr-melbourne-004",
+  "sourceUrl": "https://policy.unimelb.edu.au",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "generic_home_page",
+  "checkedBy": "crawl-designer",
+  "notes": "HTTP 200. Generic policy portal homepage. No specific AI content. Low AI relevance (0.3) and low policy specificity (0.2). Does not meet verification thresholds."
+}

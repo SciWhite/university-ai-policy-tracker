@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-17",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "The UC Berkeley Academic Senate provides three sample syllabus statement frameworks for faculty: 'Full AI' (GenAI required), 'Some AI' (limited permitted use with restrictions), and 'No AI' (all GenAI use prohibited). Faculty should modify these to fit their course requirements.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-004",
+  "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "We provide three sample statements. Instructors should modify them to fit their course requirements. The three statements include the two extremes, with the most and least GenAI use. We also include a third option that is approximately in the middle between the two.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-17"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidance for Instructors 2025",
+    "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

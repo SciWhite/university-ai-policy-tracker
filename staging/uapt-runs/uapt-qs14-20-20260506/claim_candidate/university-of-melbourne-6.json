@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-melbourne-6",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "claimType": "other",
+  "claimText": "Each University of Melbourne subject coordinator is responsible for setting out the bounds of appropriate GenAI use within their subject, and is strongly encouraged to consider possible use case scenarios, set clear boundaries, and have conversations with students.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-melbourne-002",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "It is the responsibility of each subject coordinator to set out the bounds of appropriate GenAI use within their subject. Coordinators are strongly encouraged to consider possible use case scenarios for their assessments, set clear boundaries, and have conversations with their students to enable clarity about what tools are appropriate and for what tasks.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-melbourne-6"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI in T&L at the University of Melbourne",
+    "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

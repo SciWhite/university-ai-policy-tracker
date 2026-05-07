@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-upenn-sc-003",
+  "sourceCandidateId": "upenn-sc-003",
+  "fetchAttemptId": "fa-upenn-sc-003",
+  "sourceUrl": "https://almanac.upenn.edu/articles/of-record-guidance-for-the-university-of-pennsylvania-community-on-use-of-generative-artificial-intelligence",
+  "finalUrl": "https://almanac.upenn.edu/articles/of-record-guidance-for-the-university-of-pennsylvania-community-on-use-of-generative-artificial-intelligence",
+  "sourceTitle": "Of Record: Statement on Guidance for the University of Pennsylvania Community on Use of Generative Artificial Intelligence",
+  "sourceLanguage": "en",
+  "contentHash": "2bac3392e3f6473acb4bdedfcd237daefff3fe5d34ecf30e2078091febf31f2c",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/upenn-sc-003.txt"
+}

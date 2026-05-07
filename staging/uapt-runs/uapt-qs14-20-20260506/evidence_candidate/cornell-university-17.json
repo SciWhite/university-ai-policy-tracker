@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-cornell-university-17",
+  "claimId": "claim-cornell-university-17",
+  "sourceSnapshotId": "ss-cu-sc-003",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "sourceTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+  "sourceLanguage": "en",
+  "snapshotHash": "deeacd6dce5b944ffc00d979b34c83f57677a2f04ceb39c803a701b72d8caab6",
+  "evidenceSnippetOriginal": "We currently discourage the use of automatic detection algorithms for academic integrity violations using GAI, given their unreliability and current inability to provide definitive evidence of violations.",
+  "evidenceLocator": "Section 4: Recommendations for faculty and administration (faculty recommendations)",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "cornell-university"
+}

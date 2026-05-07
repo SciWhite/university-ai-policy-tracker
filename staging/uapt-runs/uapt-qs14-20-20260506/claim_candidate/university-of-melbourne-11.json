@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-melbourne-11",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "claimType": "other",
+  "claimText": "University of Melbourne assessment materials and teaching materials constitute University IP and should never be tested on third-party external GenAI platforms such as ChatGPT; any such testing must be done only within the University's secure SparkAI platform.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-melbourne-002",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Since assessments and other teaching materials constitute University IP, they should never be tested on third-party external platforms such as ChatGPT, since these platforms use all prompts and inputs to further train their models. Any such testing/auditing must be done only within the University's secure GenAI platform (SparkAI) or other University of Melbourne-sanctioned platforms.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-melbourne-11"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI in T&L at the University of Melbourne",
+    "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-claim-tsinghua-university-7",
+  "claimId": "claim-tsinghua-university-7",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "FIXED: Claim text was narrowed to match the cited evidence. Original issue(s): Chinese evidence uses advisory language (建议/鼓励) but claim uses mandatory language (requires/must).",
+  "decidedAt": "2026-05-06T06:15:00.000Z"
+}

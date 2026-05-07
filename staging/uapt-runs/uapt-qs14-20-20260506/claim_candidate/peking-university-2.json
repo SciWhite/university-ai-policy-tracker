@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-peking-university-2",
+  "entityType": "university",
+  "entitySlug": "peking-university",
+  "claimType": "other",
+  "claimText": "Peking University's AI use guidelines apply to faculty, students, researchers, and administrators who use generative AI or other AI-assisted tools in teaching, research, and management activities.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-pku-sc-001",
+  "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "sourceLanguage": "zh",
+  "evidenceSnippetOriginal": "\u9002\u7528\u4e8e\u5728\u6559\u5b66\u3001\u79d1\u7814\u4e0e\u7ba1\u7406\u6d3b\u52a8\u4e2d\u5f15\u5165\u751f\u6210\u5f0f\u4eba\u5de5\u667a\u80fd\u6216\u5176\u4ed6AI\u8f85\u52a9\u5de5\u5177\u7684\u6559\u5e08\u3001\u5b66\u751f\u3001\u79d1\u7814\u4eba\u5458\u4e0e\u7ba1\u7406\u4eba\u5458\u3002",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-peking-university-2"
+  ],
+  "citation": {
+    "citationTitle": "\u4f7f\u7528\u89c4\u8303\u8bf4\u660e - AI\u79d1\u7814\u8bda\u4fe1\u5e73\u53f0",
+    "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

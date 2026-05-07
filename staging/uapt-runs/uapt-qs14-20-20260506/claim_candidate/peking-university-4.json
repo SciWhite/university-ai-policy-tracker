@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-peking-university-4",
+  "entityType": "university",
+  "entitySlug": "peking-university",
+  "claimType": "other",
+  "claimText": "Peking University distinguishes two levels of AI involvement in research: instrumental assistance (using AI as a tool to handle routine or repetitive tasks) and replacement completion (using AI to independently complete tasks involving core intellectual contribution and creative labor).",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-pku-sc-001",
+  "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "sourceLanguage": "zh",
+  "evidenceSnippetOriginal": "\u5de5\u5177\u6027\u8f85\u52a9\uff1a\u6307\u5c06\u751f\u6210\u5f0fAI\u4f5c\u4e3a\u4e00\u79cd\u589e\u5f3a\u4eba\u7c7b\u80fd\u529b\u7684\u5de5\u5177\uff0c\u7528\u4e8e\u5904\u7406\u6d41\u7a0b\u5316\u3001\u91cd\u590d\u6027\u6216\u8f85\u52a9\u6027\u7684\u4efb\u52a1\u3002\u66ff\u4ee3\u6027\u5b8c\u6210\uff1a\u6307\u5c06\u751f\u6210\u5f0fAI\u7528\u4e8e\u72ec\u7acb\u5b8c\u6210\u672c\u5e94\u7531\u79d1\u7814\u5de5\u4f5c\u8005\u627f\u62c5\u7684\u3001\u6d89\u53ca\u6838\u5fc3\u667a\u529b\u8d21\u732e\u548c\u521b\u9020\u6027\u52b3\u52a8\u7684\u4efb\u52a1\u3002",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-peking-university-4"
+  ],
+  "citation": {
+    "citationTitle": "\u4f7f\u7528\u89c4\u8303\u8bf4\u660e - AI\u79d1\u7814\u8bda\u4fe1\u5e73\u53f0",
+    "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

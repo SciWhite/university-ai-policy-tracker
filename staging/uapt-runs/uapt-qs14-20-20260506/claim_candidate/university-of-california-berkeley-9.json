@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-9",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "UC Berkeley warns that AI use involving highly-consequential automated decision-making requires extreme caution and should not be employed without prior consultation with appropriate campus entities including the responsible unit head. Examples include legal analysis, recruitment/personnel decisions, replacing represented employees, facial recognition security tools, and grading or assessment of student work.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-002",
+  "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Use of AI that involves highly-consequential automated decision-making requires extreme caution, and should not be employed without prior consultation with appropriate campus entities, including the responsible Unit head, as such use could put the University and individuals as significant risk. Examples include, but are not limited to: Legal analysis or advice; Recruitment, personnel, or disciplinary decision-making; Seeking to replace work currently done by represented employees; Security tools using facial recognition; Grading or assessment of student work.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-9"
+  ],
+  "citation": {
+    "citationTitle": "Appropriate Use of Generative AI Tools | Office of Ethics, Risk, and Compliance Services",
+    "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

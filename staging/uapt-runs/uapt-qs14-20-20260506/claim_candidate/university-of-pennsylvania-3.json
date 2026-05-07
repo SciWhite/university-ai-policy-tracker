@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-3",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Penn users should not input moderate or high-risk Penn data (per the Penn Data Risk Classification) or intellectual property into AI tools without careful consideration of data use policies, a protective contract, and review by Penn's Privacy Office and Office of Information Security.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-001",
+  "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Users of AI should avoid sharing personal or sensitive data with the tool and should not input moderate or high-risk Penn data as defined by the Penn Data Risk Classification, or intellectual property, without: Careful consideration and understanding of the tool's use of Penn data and the service provider's stated rights to the data, including, but not limited to whether the service provider offers the option to opt-out of using customer's data to train the AI; A contract in place to protect Penn data; and Review by Penn's Privacy Office and consultation with the Office of Information Security as coordinated by Procurement when moderate or high-risk data is involved.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-3"
+  ],
+  "citation": {
+    "citationTitle": "Statement on Guidance for the University of Pennsylvania Community on Use of Generative Artificial Intelligence",
+    "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

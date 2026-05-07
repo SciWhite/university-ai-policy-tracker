@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-cu-sc-001",
+  "sourceCandidateId": "cu-sc-001",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "9e356eb6cdc55b86bb2fe059937e4db6796ecccd6b030574c5dc40bcff74c3b3",
+  "normalizedTextStorageKey": "normalized/cu-sc-001.txt"
+}

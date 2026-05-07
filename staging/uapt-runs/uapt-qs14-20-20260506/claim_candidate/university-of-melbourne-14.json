@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-melbourne-14",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "claimType": "other",
+  "claimText": "The University of Melbourne has published a Statement on Graduate Research and digital assistance tools governing the use of AI tools by Graduate Researchers.",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-melbourne-003",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Statement on Graduate Research and digital assistance tools \u2014 This page features the University's official statement about the use of digital assistance tools by Graduate Researchers.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-melbourne-14"
+  ],
+  "citation": {
+    "citationTitle": "Official statements from The University of Melbourne",
+    "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

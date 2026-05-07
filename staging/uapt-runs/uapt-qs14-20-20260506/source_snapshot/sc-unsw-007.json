@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-unsw-007",
+  "sourceCandidateId": "sc-unsw-007",
+  "fetchAttemptId": "fa-sc-unsw-007",
+  "sourceUrl": "https://www.education.unsw.edu.au/news-events/news/genai-update-june-2023",
+  "finalUrl": "https://www.education.unsw.edu.au/news-events/news/genai-update-june-2023",
+  "sourceTitle": "June update: Generative AI at UNSW",
+  "sourceLanguage": "en",
+  "contentHash": "1096262dab754a5ea23a65f1479127c13267baf1d621c2fb21bc82125ac62b72",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-unsw-007.txt"
+}

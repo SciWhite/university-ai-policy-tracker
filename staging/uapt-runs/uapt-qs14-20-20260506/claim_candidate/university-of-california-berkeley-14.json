@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-14",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "UC Berkeley offers an 'AI Essentials' training for employees \u2014 a approximately 30-minute course covering foundational AI concepts, UC policies regarding AI tool usage, and opportunities for application in higher education.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-003",
+  "sourceUrl": "https://ai.berkeley.edu/guidance-use-ai",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "UC Berkeley AI Essentials \u2014 ~30-minute employee training covering foundational AI concepts, UC policies regarding the usage of AI tools, and opportunities for application in higher ed. Authentication required.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-14"
+  ],
+  "citation": {
+    "citationTitle": "Guidance on the use of AI | Berkeley AI Hub",
+    "sourceUrl": "https://ai.berkeley.edu/guidance-use-ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

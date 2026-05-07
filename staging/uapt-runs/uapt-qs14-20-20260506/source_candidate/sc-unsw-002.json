@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-unsw-002",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "sourceTitle": "Guidance on AI in assessment | UNSW Staff Teaching Gateway",
+  "sourceLanguage": "en",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "unsw.edu.au generative AI policy students",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 200. Official UNSW teaching domain. Title explicitly about AI in assessment guidance. Very high policy specificity."
+}

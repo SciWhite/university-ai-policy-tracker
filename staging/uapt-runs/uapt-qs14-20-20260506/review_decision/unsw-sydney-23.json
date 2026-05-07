@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "review_decision",
+  "decisionId": "rd-claim-unsw-sydney-23",
+  "claimId": "claim-unsw-sydney-23",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "FIXED: Claim text was narrowed to match the cited evidence. Original issue(s): Advisory evidence (should/recommends) rewritten as mandatory claim (must/requires).",
+  "decidedAt": "2026-05-06T06:15:00.000Z"
+}

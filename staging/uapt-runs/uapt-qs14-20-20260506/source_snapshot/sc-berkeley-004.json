@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-berkeley-004",
+  "sourceCandidateId": "sc-berkeley-004",
+  "fetchAttemptId": "fa-sc-berkeley-004",
+  "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "finalUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "sourceTitle": "Generative AI Guidance for Instructors 2025",
+  "sourceLanguage": "en",
+  "contentHash": "c6786c3515412e68fd1dbf47435e92fe1b5fed2fccb8e2d0e73b2fb44ea3ff9b",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-berkeley-004.txt"
+}

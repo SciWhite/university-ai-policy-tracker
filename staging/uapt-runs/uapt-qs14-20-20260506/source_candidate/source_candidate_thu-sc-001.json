@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "thu-sc-001",
+  "entityType": "university",
+  "entitySlug": "tsinghua-university",
+  "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+  "sourceTitle": "【深改进行时】《清华大学人工智能教育应用指导原则》发布",
+  "sourceLanguage": "zh",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "robotsPolicy": "respect",
+  "queryUsed": "清华大学 生成式人工智能 教学 政策",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "Tsinghua University AI Education Application Guiding Principles (Nov 2025). Comprehensive framework: 5 core principles (主体责任/合规诚信/数据安全/审慎思辨/公平包容). Covers teaching, thesis, and research. Prohibits AI-generated submissions."
+}

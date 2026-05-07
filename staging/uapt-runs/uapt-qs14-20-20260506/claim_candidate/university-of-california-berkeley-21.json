@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-21",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "The University of California system has established Responsible AI Principles comprising eight principles: Appropriateness; Transparency; Accuracy, Reliability and Safety; Fairness and Non-Discrimination; Privacy and Security; Human Values; Shared Benefit and Prosperity; and Accountability.",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-005",
+  "sourceUrl": "https://re-ai.berkeley.edu/sites/default/files/responsible_use_of_generative_ai_uc_berkeley_2025.pdf",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "UC has several AI principles: Appropriateness; Transparency; Accuracy, Reliability and Safety; Fairness and Non-Discrimination; Privacy and Security; Human Values; Shared Benefit and Prosperity; and Accountability.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-21"
+  ],
+  "citation": {
+    "citationTitle": "Responsible Use of Generative AI - UC Berkeley 2025",
+    "sourceUrl": "https://re-ai.berkeley.edu/sites/default/files/responsible_use_of_generative_ai_uc_berkeley_2025.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

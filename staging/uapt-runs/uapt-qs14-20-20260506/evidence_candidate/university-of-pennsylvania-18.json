@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-pennsylvania-18",
+  "claimId": "claim-university-of-pennsylvania-18",
+  "sourceSnapshotId": "ss-upenn-sc-004",
+  "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+  "finalUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+  "sourceTitle": "AI Policy - Wharton Academy",
+  "sourceLanguage": "en",
+  "snapshotHash": "4d88979a360331eac5a73374686cdfc1253dc9e9f260201910843be2f1ccc156",
+  "evidenceSnippetOriginal": "Don't directly copy answers from generative AI tools and submit as your own. Don't use AI to paraphrase or rewrite plagiarized content. Don't post AI-generated discussion posts within the course community forum.",
+  "evidenceLocator": "Wharton Academy > Statement of AI Use > Don'ts section",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Policy - Wharton Academy",
+    "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-pennsylvania"
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-melbourne-10",
+  "claimId": "claim-university-of-melbourne-10",
+  "sourceSnapshotId": "ss-sc-melbourne-002",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "finalUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "sourceTitle": "Generative AI in T&L at the University of Melbourne",
+  "sourceLanguage": "en",
+  "snapshotHash": "38a9f306c6e6483e7784e5e616122c7521ffa8ac19f085604f8ccedbc5efc3d6",
+  "evidenceSnippetOriginal": "A high AI score in Turnitin's writing detection report is not proof that academic misconduct has taken place (any more than would be the case when using the more familiar similarity report tool to flag potential plagiarism). It does not, on its own, constitute grounds for making an allegation of academic misconduct.",
+  "evidenceLocator": "Section: AI and assessment, subsection: What do I do if I think a student has inappropriately used GenAI on an assessment?",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI in T&L at the University of Melbourne",
+    "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-melbourne"
+}

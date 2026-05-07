@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-melbourne-10",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "claimType": "other",
+  "claimText": "A high AI score in Turnitin's writing detection report at the University of Melbourne is not proof that academic misconduct has taken place and does not on its own constitute grounds for making an allegation of academic misconduct.",
+  "confidence": 0.97,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-melbourne-002",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "A high AI score in Turnitin's writing detection report is not proof that academic misconduct has taken place (any more than would be the case when using the more familiar similarity report tool to flag potential plagiarism). It does not, on its own, constitute grounds for making an allegation of academic misconduct.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-melbourne-10"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI in T&L at the University of Melbourne",
+    "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

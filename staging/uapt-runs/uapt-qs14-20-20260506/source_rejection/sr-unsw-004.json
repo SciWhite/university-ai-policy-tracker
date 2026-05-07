@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "sourceRejectionId": "sr-unsw-004",
+  "sourceUrl": "https://www.unsw.edu.au/content/dam/pdfs/unsw-canberra/research/research-excelence/2025-06-the-future-of-ai.pdf",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "crawl-designer",
+  "notes": "UNSW Canberra research paper on future of AI. Research showcase, not policy."
+}

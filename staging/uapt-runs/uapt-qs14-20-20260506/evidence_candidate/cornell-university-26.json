@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-cornell-university-26",
+  "claimId": "claim-cornell-university-26",
+  "sourceSnapshotId": "ss-cu-sc-006",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+  "sourceTitle": "AI Course Policy Icons | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "snapshotHash": "04f6b71ef9ef4fcd47a7d53be6aca3d0929c179dd7a2262df68a5bea184951ad",
+  "evidenceSnippetOriginal": "PP (Privacy Protecting\u2014No Proprietary Materials): GenAI use permitted, but no uploading of copyrighted or proprietary class materials unless otherwise specified.",
+  "evidenceLocator": "AI Course Policy table, PP row",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Course Policy Icons | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "cornell-university"
+}

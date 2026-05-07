@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-unsw-sydney-7",
+  "claimId": "claim-unsw-sydney-7",
+  "sourceSnapshotId": "ss-sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "finalUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "sourceTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+  "sourceLanguage": "en",
+  "snapshotHash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a",
+  "evidenceSnippetOriginal": "It's important that students are aware of what tools use generative AI and may be inappropriate in an assessment. For example, Grammarly, Quillbot and translation tools such as Google Translate, DeepL and Baidu Translate are forms of generative AI.",
+  "evidenceLocator": "FAQ section 'How does Turnitin's AI detection tool work?'",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+    "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "unsw-sydney"
+}

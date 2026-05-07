@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-berkeley-005",
+  "sourceCandidateId": "sc-berkeley-005",
+  "sourceUrl": "https://re-ai.berkeley.edu/sites/default/files/responsible_use_of_generative_ai_uc_berkeley_2025.pdf",
+  "finalUrl": "https://re-ai.berkeley.edu/sites/default/files/responsible_use_of_generative_ai_uc_berkeley_2025.pdf",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "fe63cb6b7f4325b31394cfb5c0f6a26ffdd6eb32d5c71b2e0c1a22537c83d6c3",
+  "normalizedTextStorageKey": "normalized/sc-berkeley-005.txt"
+}

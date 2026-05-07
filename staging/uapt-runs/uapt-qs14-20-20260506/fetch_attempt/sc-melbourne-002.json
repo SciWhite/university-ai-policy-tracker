@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-melbourne-002",
+  "sourceCandidateId": "sc-melbourne-002",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "finalUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "38a9f306c6e6483e7784e5e616122c7521ffa8ac19f085604f8ccedbc5efc3d6",
+  "normalizedTextStorageKey": "normalized/sc-melbourne-002.txt"
+}

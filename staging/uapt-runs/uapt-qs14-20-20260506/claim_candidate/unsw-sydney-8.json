@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-8",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW advises students not to include any personal or sensitive information in AI prompts, including addresses, names, emails, zID, or intellectual property, and recommends using Microsoft Copilot with a UNSW account for data privacy.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Protect personal information. Do not include any personal or sensitive information in prompts, your own or other people's (i.e. addresses, name, emails, zID or intellectual property). For data privacy and protection, use Microsoft Copilot using your UNSW account",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-8"
+  ],
+  "citation": {
+    "citationTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+    "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

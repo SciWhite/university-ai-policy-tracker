@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-unsw-sydney-18",
+  "claimId": "claim-unsw-sydney-18",
+  "sourceSnapshotId": "ss-sc-unsw-002",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "finalUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "sourceTitle": "Guidance on AI in assessment | UNSW Staff Teaching Gateway",
+  "sourceLanguage": "en",
+  "snapshotHash": "33409d5e6c59361d2c259aa714cb2e0ca305a12d15d50af6eb77229a05e06e61",
+  "evidenceSnippetOriginal": "Where the unauthorised use of AI in an assessment is admitted or determined, a finding of serious student misconduct is made \u2013 as a breach of Principle 3 of the Student Code of Conduct which states that students must act with integrity, honesty and trust. The penalties for a finding of this sort would be consistent with the penalties for Serious Student Misconduct and Serious Plagiarism \u2013 they would normally sit at 00FL for the course, suspension or exclusion depending on the matter.",
+  "evidenceLocator": "Section 'How can a student be penalised for improper use of GenAI?'",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidance on AI in assessment | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "unsw-sydney"
+}

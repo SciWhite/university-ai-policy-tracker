@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-california-berkeley-19",
+  "claimId": "claim-university-of-california-berkeley-19",
+  "sourceSnapshotId": "ss-sc-berkeley-004",
+  "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "finalUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "sourceTitle": "Generative AI Guidance for Instructors 2025",
+  "sourceLanguage": "en",
+  "snapshotHash": "c6786c3515412e68fd1dbf47435e92fe1b5fed2fccb8e2d0e73b2fb44ea3ff9b",
+  "evidenceSnippetOriginal": "When assignments in the course permit or incorporate the use of GenAI tools, the assignment will ask you to include an acknowledgement of your use of any type of GenAI in your submitted work and share the prompts and outputs utilized at the time of submission. The suggested format is as follows: I acknowledge the use of [insert AI system(s) and link] to [specific use of GenAI]. The prompts used include [list of prompts]. The output from these prompts was used to [explain the use].",
+  "evidenceLocator": "Section II: Sample Syllabus Statements, 'Some AI' permitted use cases",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Guidance for Instructors 2025",
+    "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-california-berkeley"
+}

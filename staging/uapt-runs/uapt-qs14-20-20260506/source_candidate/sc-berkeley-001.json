@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-berkeley-001",
+  "sourceUrl": "https://oercs.berkeley.edu/artificial-intelligence",
+  "sourceTitle": "Artificial Intelligence | Office of Ethics, Risk, and Compliance Services",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:berkeley.edu \"generative AI\" policy",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 200. Title confirms AI content. Drupal site requires JS rendering for body content. Official UC Berkeley subdomain (oercs.berkeley.edu). Crawl-worker should use playwright or opencli fetch mode."
+}

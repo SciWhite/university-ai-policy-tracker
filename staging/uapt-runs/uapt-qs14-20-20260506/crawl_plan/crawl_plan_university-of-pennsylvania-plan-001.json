@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "university-of-pennsylvania-plan-001",
+  "createdAt": "2026-05-06T04:44:48.680Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceCandidateId": "upenn-sc-001",
+      "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+      "sourceTitle": "Statement on Guidance for the University of Pennsylvania Community on Use of Generative Artificial Intelligence",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceCandidateId": "upenn-sc-002",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+      "sourceTitle": "Penn AI Guidance and Policies",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceCandidateId": "upenn-sc-003",
+      "sourceUrl": "https://almanac.upenn.edu/articles/of-record-guidance-for-the-university-of-pennsylvania-community-on-use-of-generative-artificial-intelligence",
+      "sourceTitle": "Of Record: Statement on Guidance for the University of Pennsylvania Community on Use of Generative Artificial Intelligence",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceCandidateId": "upenn-sc-004",
+      "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+      "sourceTitle": "AI Policy - Wharton Academy",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceCandidateId": "upenn-sc-005",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "sourceTitle": "Generative AI & Your Teaching",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceCandidateId": "upenn-sc-006",
+      "sourceUrl": "https://catalog.upenn.edu/pennbook/code-of-academic-integrity/",
+      "sourceTitle": "Code of Academic Integrity",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_targets_fetched",
+    "rate_limit_exceeded",
+    "access_blocked"
+  ]
+}

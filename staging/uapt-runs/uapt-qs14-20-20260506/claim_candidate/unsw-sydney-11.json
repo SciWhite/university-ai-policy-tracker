@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-11",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW's first key principle for AI in assessment requires staff to be honest and transparent about the use of any AI tool where it would reasonably be expected that use of the tool would be disclosed.",
+  "confidence": 0.96,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-002",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Be honest and transparent about the use of any AI tool where it would reasonably be expected that use of the tool would be disclosed.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-11"
+  ],
+  "citation": {
+    "citationTitle": "Guidance on AI in assessment | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

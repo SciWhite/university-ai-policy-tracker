@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-cu-sc-001",
+  "sourceCandidateId": "cu-sc-001",
+  "fetchAttemptId": "fa-cu-sc-001",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "sourceTitle": "Generative Artificial Intelligence | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "contentHash": "9e356eb6cdc55b86bb2fe059937e4db6796ecccd6b030574c5dc40bcff74c3b3",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/cu-sc-001.txt"
+}

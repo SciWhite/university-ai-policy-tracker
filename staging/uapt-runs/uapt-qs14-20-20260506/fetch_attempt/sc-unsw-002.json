@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-unsw-002",
+  "sourceCandidateId": "sc-unsw-002",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "finalUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "33409d5e6c59361d2c259aa714cb2e0ca305a12d15d50af6eb77229a05e06e61",
+  "normalizedTextStorageKey": "normalized/sc-unsw-002.txt"
+}

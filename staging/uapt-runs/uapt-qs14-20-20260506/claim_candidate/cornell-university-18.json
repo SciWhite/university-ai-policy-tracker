@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-18",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's IT guidelines state that users are accountable for their work regardless of the tools used to produce it, and when using generative AI tools must always verify information for errors and biases and exercise caution to avoid copyright infringement.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-004",
+  "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "You are accountable for your work, regardless of the tools you use to produce it. When using generative AI tools, always verify the information for errors and biases and exercise caution to avoid copyright infringement.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-18"
+  ],
+  "citation": {
+    "citationTitle": "Guidelines for Artificial Intelligence | IT@Cornell",
+    "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

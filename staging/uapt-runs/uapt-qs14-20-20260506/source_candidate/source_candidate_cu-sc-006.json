@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cu-sc-006",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+  "sourceTitle": "AI Course Policy Icons | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "link_traversal",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "robotsPolicy": "respect",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "Cornell CTI course policy icons for communicating AI expectations. Categories: AI-FREE, AS (assignment-specific), AT (approved tools), UA (use with attribution), ER (explore/review)."
+}

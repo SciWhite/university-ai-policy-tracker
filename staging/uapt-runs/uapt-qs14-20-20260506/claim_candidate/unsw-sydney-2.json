@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-2",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW uses a Levels of AI Assistance framework with six categories for assessments: No Assistance, Simple Editing Assistance, Planning or Design Assistance, Assistance with Attribution, Generative AI Software-based Assessments, and Not Applicable.",
+  "confidence": 0.98,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "The Levels of AI Assistance framework is designed to help convenors communicate to students how much, or how little AI can be used in the process of planning, creating and producing an assignment.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-2"
+  ],
+  "citation": {
+    "citationTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+    "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

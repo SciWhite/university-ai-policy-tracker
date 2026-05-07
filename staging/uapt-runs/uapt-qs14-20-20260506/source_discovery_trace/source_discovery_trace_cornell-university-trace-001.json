@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "cornell-university-trace-001",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "startedAt": "2026-05-06T04:38:00.000Z",
+  "endedAt": "2026-05-06T04:44:48.680Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "Cornell University generative AI policy teaching",
+      "resultCount": 3,
+      "notes": "DuckDuckGo browser search. Found CTI main page, academic integrity page, committee report."
+    },
+    {
+      "method": "public_web_search",
+      "query": "Cornell University IT AI tools data security policy",
+      "resultCount": 1,
+      "notes": "Found it.cornell.edu/ai-strategy/ai-guidelines."
+    },
+    {
+      "method": "url_normalization",
+      "notes": "Verified all URLs with web_fetch. teaching.cornell.edu pages HTTP 200. it.cornell.edu HTTP 200. academicinnovation.cornell.edu HTTP 200."
+    },
+    {
+      "method": "link_traversal",
+      "notes": "Found AI course policy icons and GenAI Education Working Group pages through CTI links."
+    },
+    {
+      "method": "canonical_domain",
+      "domain": "cornell.edu",
+      "notes": "All sources on official cornell.edu subdomains (teaching, it, academicinnovation, policy)."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "cu-sc-001",
+    "cu-sc-002",
+    "cu-sc-003",
+    "cu-sc-004",
+    "cu-sc-005",
+    "cu-sc-006"
+  ],
+  "rejectionIds": [],
+  "summary": "Cornell discovery found 6 verified sources spanning teaching guidance (CTI), academic integrity, committee report, IT security guidelines, and academic innovation hub. Comprehensive institutional coverage with multiple touchpoints."
+}

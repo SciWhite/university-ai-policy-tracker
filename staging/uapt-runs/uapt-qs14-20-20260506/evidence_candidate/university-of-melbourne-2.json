@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-melbourne-2",
+  "claimId": "claim-university-of-melbourne-2",
+  "sourceSnapshotId": "ss-sc-melbourne-001",
+  "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+  "finalUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+  "sourceTitle": "GenAI at Melbourne",
+  "sourceLanguage": "en",
+  "snapshotHash": "abcf41948894b2245f1d8e574b503b05b140de1cac8365fd05e164adc4c152a0",
+  "evidenceSnippetOriginal": "Protect your personal information and that of others. Do not upload your full name, date of birth, address or other confidential, sensitive or private information.",
+  "evidenceLocator": "Section: Limitations and risks, subsection: Privacy",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "GenAI at Melbourne",
+    "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-melbourne"
+}

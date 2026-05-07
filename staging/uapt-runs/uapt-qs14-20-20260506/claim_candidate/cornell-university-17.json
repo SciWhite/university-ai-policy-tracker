@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-17",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's committee report discourages the use of automatic detection algorithms for academic integrity violations using generative AI, stating they cannot decisively provide evidence and could lead to unfairly identifying violations, including bias against non-native speakers.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-003",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "We currently discourage the use of automatic detection algorithms for academic integrity violations using GAI, given their unreliability and current inability to provide definitive evidence of violations.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-17"
+  ],
+  "citation": {
+    "citationTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

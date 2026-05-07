@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-melbourne-14",
+  "claimId": "claim-university-of-melbourne-14",
+  "sourceSnapshotId": "ss-sc-melbourne-003",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+  "finalUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+  "sourceTitle": "Official statements from The University of Melbourne",
+  "sourceLanguage": "en",
+  "snapshotHash": "85d1ab63d2ca08727bfaed10d2234e93c5facb3b022ef5ddaf344a61e47d3aac",
+  "evidenceSnippetOriginal": "Statement on Graduate Research and digital assistance tools \u2014 This page features the University's official statement about the use of digital assistance tools by Graduate Researchers.",
+  "evidenceLocator": "Official statements listing page",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Official statements from The University of Melbourne",
+    "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-melbourne"
+}

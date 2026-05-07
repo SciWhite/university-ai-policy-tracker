@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "university-of-pennsylvania-trace-001",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "startedAt": "2026-05-06T04:38:00.000Z",
+  "endedAt": "2026-05-06T04:44:48.680Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "University of Pennsylvania generative AI policy students",
+      "resultCount": 5,
+      "notes": "DuckDuckGo browser search. Found ISC AI guidance, CETLI pages, Almanac record, Wharton policy."
+    },
+    {
+      "method": "url_normalization",
+      "notes": "Verified all discovered URLs with web_fetch. isc.upenn.edu/security/AI-guidance HTTP 200. cetli.upenn.edu pages HTTP 200. almanac.upenn.edu HTTP 200. academy.wharton.upenn.edu HTTP 200."
+    },
+    {
+      "method": "link_traversal",
+      "notes": "Followed links from CETLI and Wharton pages to Penn Academic Integrity code."
+    },
+    {
+      "method": "canonical_domain",
+      "domain": "upenn.edu",
+      "notes": "All sources on official upenn.edu domain or official subdomains (isc, cetli, almanac, catalog, academy.wharton)."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "upenn-sc-001",
+    "upenn-sc-002",
+    "upenn-sc-003",
+    "upenn-sc-004",
+    "upenn-sc-005",
+    "upenn-sc-006"
+  ],
+  "rejectionIds": [],
+  "summary": "UPenn discovery found 6 verified sources spanning university-wide AI guidance (ISC), teaching guidance (CETLI), formal policy (Almanac), school-level policy (Wharton), and academic integrity code. Strong institutional coverage."
+}

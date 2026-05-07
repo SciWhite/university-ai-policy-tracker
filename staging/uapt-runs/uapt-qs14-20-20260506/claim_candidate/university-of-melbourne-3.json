@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-melbourne-3",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "claimType": "other",
+  "claimText": "University of Melbourne students must not upload copyrighted material (such as lecture slides or subject material) to AI tools without permission, as this may violate the intellectual property rights of creators.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-melbourne-001",
+  "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Don't make copyright material available on the web or to an AI tool without permission.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-melbourne-3"
+  ],
+  "citation": {
+    "citationTitle": "GenAI at Melbourne",
+    "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-unsw-003",
+  "sourceCandidateId": "sc-unsw-003",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+  "finalUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "57b772b4148fa35277a60538cbc8175d07caf290a51ab057206f4b17b5cf5639",
+  "normalizedTextStorageKey": "normalized/sc-unsw-003.txt"
+}

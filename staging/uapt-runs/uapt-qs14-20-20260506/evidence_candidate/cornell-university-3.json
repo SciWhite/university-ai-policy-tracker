@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-cornell-university-3",
+  "claimId": "claim-cornell-university-3",
+  "sourceSnapshotId": "ss-cu-sc-001",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "sourceTitle": "Generative Artificial Intelligence | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "snapshotHash": "9e356eb6cdc55b86bb2fe059937e4db6796ecccd6b030574c5dc40bcff74c3b3",
+  "evidenceSnippetOriginal": "The need for AI literacy is essential for students and faculty alike. We can think of ethical generative AI literacies as the ability to understand, evaluate, and critically engage with generative AI technologies.",
+  "evidenceLocator": "Generative AI Literacy section",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative Artificial Intelligence | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "cornell-university"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "pku-sc-001",
+  "entityType": "university",
+  "entitySlug": "peking-university",
+  "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "sourceTitle": "使用规范说明 - AI科研诚信平台",
+  "sourceLanguage": "zh",
+  "sourceType": "research_guidance",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "robotsPolicy": "respect",
+  "queryUsed": "北京大学 人工智能 学术诚信 规定 管理",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "PKU AI科研诚信平台: 使用规范说明 covering AI use boundaries in academic research, updated 2025-11-26. Covers 7 research stages, classifies AI use as open/limited/prohibited."
+}

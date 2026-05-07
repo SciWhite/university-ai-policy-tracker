@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-4",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "At UNSW, the unauthorised or unacknowledged use of AI in assessments is classified as cheating and considered student misconduct under the Code of Conduct and Values.",
+  "confidence": 0.97,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "The unauthorised or unacknowledged use of AI in assessments is a form of cheating and is considered to be student misconduct at UNSW under the current Code of Conduct and Values.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-4"
+  ],
+  "citation": {
+    "citationTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+    "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

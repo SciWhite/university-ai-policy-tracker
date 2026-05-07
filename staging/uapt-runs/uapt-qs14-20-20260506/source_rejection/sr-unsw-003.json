@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "sourceRejectionId": "sr-unsw-003",
+  "sourceUrl": "https://bloom.study/universities/unsw",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "crawl-designer",
+  "notes": "Third-party platform (bloom.study). Not an official UNSW source."
+}

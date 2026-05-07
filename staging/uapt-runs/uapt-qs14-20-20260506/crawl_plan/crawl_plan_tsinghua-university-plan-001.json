@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "tsinghua-university-plan-001",
+  "createdAt": "2026-05-06T04:44:48.680Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "tsinghua-university",
+      "sourceCandidateId": "thu-sc-001",
+      "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+      "sourceTitle": "【深改进行时】《清华大学人工智能教育应用指导原则》发布",
+      "sourceLanguage": "zh",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_targets_fetched",
+    "rate_limit_exceeded",
+    "access_blocked"
+  ]
+}

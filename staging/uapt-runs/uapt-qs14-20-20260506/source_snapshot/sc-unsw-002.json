@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-unsw-002",
+  "sourceCandidateId": "sc-unsw-002",
+  "fetchAttemptId": "fa-sc-unsw-002",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "finalUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "sourceTitle": "Guidance on AI in assessment | UNSW Staff Teaching Gateway",
+  "sourceLanguage": "en",
+  "contentHash": "33409d5e6c59361d2c259aa714cb2e0ca305a12d15d50af6eb77229a05e06e61",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-unsw-002.txt"
+}

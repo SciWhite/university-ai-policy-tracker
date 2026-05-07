@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-cornell-university-25",
+  "claimId": "claim-cornell-university-25",
+  "sourceSnapshotId": "ss-cu-sc-006",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+  "sourceTitle": "AI Course Policy Icons | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "snapshotHash": "04f6b71ef9ef4fcd47a7d53be6aca3d0929c179dd7a2262df68a5bea184951ad",
+  "evidenceSnippetOriginal": "These icons have been developed to help you clearly and consistently communicate your expectations. They can be used on the syllabus to convey an overall course approach. They can also be used for individual assignments, allowing you to distinguish different policies for different assignments with different learning goals. Icons can be combined to more fully reflect your course policy.",
+  "evidenceLocator": "Opening paragraph of AI Course Policy Icons page",
+  "evidenceType": "official_source",
+  "relevance": 0.93,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Course Policy Icons | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "cornell-university"
+}

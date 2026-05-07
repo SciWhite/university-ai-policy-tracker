@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-pku-sc-001",
+  "sourceCandidateId": "pku-sc-001",
+  "fetchAttemptId": "fa-pku-sc-001",
+  "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "finalUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "sourceTitle": "使用规范说明 - AI科研诚信平台",
+  "sourceLanguage": "zh",
+  "contentHash": "d1e587a8dab6502a4ef59e10633212e32e1682744f543a38d437eb4c75da1186",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/pku-sc-001.txt"
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-16",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "The UC Berkeley Academic Senate states that generative AI detection tools are increasingly less accurate and that there are no validated generative AI detection tools available.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-004",
+  "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "GenAI detection tools are increasingly less accurate; there are no validated GenAI detection tools.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-16"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidance for Instructors 2025",
+    "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-14",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's committee report does not recommend the use of generative AI for summative evaluation or grading of student work, stating that evaluation and grading is among the most important tasks entrusted to faculty.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-003",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "While GAI may have selective utility in assisting in providing feedback for low-stakes formative assessment (for example in practice problems), we currently do NOT recommend it be used in summative evaluation of student work. Evaluation and grading of students is among the most important tasks entrusted to faculty, and the integrity of the grading process is reliant on the primary role of the faculty member.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-14"
+  ],
+  "citation": {
+    "citationTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

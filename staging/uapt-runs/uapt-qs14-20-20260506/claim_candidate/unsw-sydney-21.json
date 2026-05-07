@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-21",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW has adopted Microsoft Copilot, Adobe Firefly, and Scite.ai as its approved AI tools for staff use.",
+  "confidence": 0.93,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-003",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Identification and practical application of adopted AI tools at UNSW: Microsoft Copilot, Adobe Firefly, Scite.ai",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-21"
+  ],
+  "citation": {
+    "citationTitle": "UNSW's AI Guidelines and Framework | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

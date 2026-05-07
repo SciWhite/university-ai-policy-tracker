@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-melbourne-002",
+  "sourceCandidateId": "sc-melbourne-002",
+  "fetchAttemptId": "fa-sc-melbourne-002",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "finalUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "sourceTitle": "Generative AI in T&L at the University of Melbourne",
+  "sourceLanguage": "en",
+  "contentHash": "38a9f306c6e6483e7784e5e616122c7521ffa8ac19f085604f8ccedbc5efc3d6",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-melbourne-002.txt"
+}

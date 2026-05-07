@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-29",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW's AI Leadership Group endorsed and published principles on the Ethical and Responsible Use of Artificial Intelligence at UNSW in 2024, designed to regulate AI use, support a positive approach, and promote world-leading AI research.",
+  "confidence": 0.92,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-006",
+  "sourceUrl": "https://www.inside.unsw.edu.au/innovation-and-engagement/are-you-aware-unsws-new-ai-principles",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "UNSW's AI Leadership Group has recently endorsed and published principles on the Ethical and Responsible Use of Artificial Intelligence at UNSW. These are to be used to steer and support the use of AI and generative AI appropriately at the University. UNSW aims to provide a safe and digitally secure environment relating to the use of generative AI, for both students and staff. The principles are designed to regulate the use of AI (including generative AI), support a positive approach to and promote world-leading AI research.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-29"
+  ],
+  "citation": {
+    "citationTitle": "Are you aware of UNSW's new AI principles? | Inside UNSW",
+    "sourceUrl": "https://www.inside.unsw.edu.au/innovation-and-engagement/are-you-aware-unsws-new-ai-principles",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

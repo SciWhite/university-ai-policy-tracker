@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "cornell-university-plan-001",
+  "createdAt": "2026-05-06T04:44:48.680Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "cornell-university",
+      "sourceCandidateId": "cu-sc-001",
+      "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+      "sourceTitle": "Generative Artificial Intelligence | Center for Teaching Innovation",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cornell-university",
+      "sourceCandidateId": "cu-sc-002",
+      "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+      "sourceTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cornell-university",
+      "sourceCandidateId": "cu-sc-003",
+      "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+      "sourceTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cornell-university",
+      "sourceCandidateId": "cu-sc-004",
+      "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+      "sourceTitle": "Guidelines for Artificial Intelligence | IT@Cornell",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cornell-university",
+      "sourceCandidateId": "cu-sc-005",
+      "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+      "sourceTitle": "GenAI in Teaching and Learning – Academic Innovation",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cornell-university",
+      "sourceCandidateId": "cu-sc-006",
+      "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+      "sourceTitle": "AI Course Policy Icons | Center for Teaching Innovation",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative_ai",
+        "academic_integrity",
+        "teaching_guidance",
+        "ai_policy"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_targets_fetched",
+    "rate_limit_exceeded",
+    "access_blocked"
+  ]
+}

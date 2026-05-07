@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-5",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "When generative AI use is permitted in a course, Cornell advises instructors to clarify expectations for documentation and attribution, including citing the AI tool creator (e.g., OpenAI for ChatGPT) when directly quoting AI-generated text in both in-text citations and reference lists.",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "sourceSnapshotId": "ss-cu-sc-002",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "When generative AI is permitted, clarify expectations for documentation and attribution, as well as what aspects of the work should be produced by the students themselves. ... students should attribute directly quoted text to the creator of the generative AI tool used (e.g., cite OpenAI when directly quoting ChatGPT). This attribution should be used for both in-text citations and your reference list.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-5"
+  ],
+  "citation": {
+    "citationTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

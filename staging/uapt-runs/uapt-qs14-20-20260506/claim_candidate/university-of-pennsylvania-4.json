@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-4",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "It is not permissible under HIPAA or Penn Medicine policy to share patient or research participant information with open or public AI tools and services such as ChatGPT; individual patient data and data sets (even if deidentified) may not be exposed to such tools absent institutional approval.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-001",
+  "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "It is not permissible under the Health Information Portability & Accountability Act (HIPAA) or Penn Medicine policy to share patient or research participant information in connection with open or public AI tools and services, such as ChatGPT. This is because, as currently configured, such open or public tools and services can use and share any data without regard to HIPAA restrictions and other protections. Therefore, individual patient data and patient data sets (even if deidentified) may not be exposed to open or public AI tools or services, absent institutional approval.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-4"
+  ],
+  "citation": {
+    "citationTitle": "Statement on Guidance for the University of Pennsylvania Community on Use of Generative Artificial Intelligence",
+    "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

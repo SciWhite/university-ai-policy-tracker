@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-11",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "UC Berkeley requires researchers to comply with varying license agreement terms before using or training AI tools with materials acquired from library-licensed resources or databases. Violations can result in personal liability and campus-wide loss of access to critical research resources.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-002",
+  "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Before using or training AI tools with materials acquired from Library-licensed resources or databases, researchers must comply with varying license agreement terms. Violations can result in personal liability and campus-wide loss of access to critical research resources.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-11"
+  ],
+  "citation": {
+    "citationTitle": "Appropriate Use of Generative AI Tools | Office of Ethics, Risk, and Compliance Services",
+    "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

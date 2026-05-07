@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-unsw-sydney-001",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "startedAt": "2026-05-06T04:34:14Z",
+  "endedAt": "2026-05-06T04:34:14Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "opencli google search 'site:unsw.edu.au generative AI policy'",
+      "domain": "unsw.edu.au",
+      "resultCount": 0,
+      "notes": "OPENCLI_GOOGLE_SEARCH_BLOCKED - returned NOT_FOUND (likely CAPTCHA)"
+    },
+    {
+      "method": "public_web_search",
+      "query": "DuckDuckGo: unsw.edu.au generative AI policy students",
+      "domain": "unsw.edu.au",
+      "resultCount": 10,
+      "notes": "DuckDuckGo browser search via OpenCLI. Found 10 results across unsw.edu.au and teaching.unsw.edu.au subdomains."
+    },
+    {
+      "method": "site_search",
+      "query": "Direct URL probing of unsw.edu.au subdomains",
+      "domain": "unsw.edu.au",
+      "resultCount": 7,
+      "notes": "Probed www.unsw.edu.au, student.unsw.edu.au, teaching.unsw.edu.au, it.unsw.edu.au. Found 7 accessible AI-related URLs."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-unsw-001",
+    "sc-unsw-002",
+    "sc-unsw-003",
+    "sc-unsw-004",
+    "sc-unsw-005",
+    "sc-unsw-006",
+    "sc-unsw-007"
+  ],
+  "rejectionIds": [
+    "sr-unsw-001",
+    "sr-unsw-002",
+    "sr-unsw-003",
+    "sr-unsw-004"
+  ],
+  "summary": "Found 7 verified candidates for UNSW Sydney: formal AI Guidelines and Framework, AI assessment guidance, student AI toolkit, UNSW College student AI guidelines, teaching guidance, AI principles news article, and GenAI June 2023 update. 4 rejected URLs (redirect to unrelated page, no AI content, third-party platform, research showcase). Strong coverage of both student-facing and teaching/staff-facing AI policy sources. All verified sources returned HTTP 200. OpenCLI Google search was blocked; used DuckDuckGo browser search as fallback."
+}

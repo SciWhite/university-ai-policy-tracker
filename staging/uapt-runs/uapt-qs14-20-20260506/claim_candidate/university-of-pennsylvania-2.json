@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-2",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Users of AI at Penn are accountable for AI-generated content and should validate its accuracy with trusted first-party sources, being wary of misinformation or hallucinations.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-001",
+  "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "The user of AI should endeavor to validate the accuracy of created content with trusted first party sources and monitor the reliability of that content. Users are accountable for their use of content created by AI and should be wary of misinformation or \"hallucinations\" by AI tools (e.g., citations to publications or source materials that do not exist or references that otherwise distort the truth).",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-2"
+  ],
+  "citation": {
+    "citationTitle": "Statement on Guidance for the University of Pennsylvania Community on Use of Generative Artificial Intelligence",
+    "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

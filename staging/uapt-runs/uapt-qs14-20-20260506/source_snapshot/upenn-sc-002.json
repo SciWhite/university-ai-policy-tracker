@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-upenn-sc-002",
+  "sourceCandidateId": "upenn-sc-002",
+  "fetchAttemptId": "fa-upenn-sc-002",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+  "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+  "sourceTitle": "Penn AI Guidance and Policies",
+  "sourceLanguage": "en",
+  "contentHash": "1915e317dd898991e8423bef970e386dd3f6f6a90ab76e6b36f941a3b9cba3b3",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/upenn-sc-002.txt"
+}

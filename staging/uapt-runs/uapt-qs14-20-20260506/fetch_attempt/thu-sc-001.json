@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-thu-sc-001",
+  "sourceCandidateId": "thu-sc-001",
+  "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+  "finalUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "4f2a7359e91b646b62f296ba5f53eb673d2aeee1697230e17dd2469aef70ab35",
+  "normalizedTextStorageKey": "normalized/thu-sc-001.txt"
+}

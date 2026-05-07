@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-cornell-university-24",
+  "claimId": "claim-cornell-university-24",
+  "sourceSnapshotId": "ss-cu-sc-005",
+  "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+  "finalUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+  "sourceTitle": "GenAI in Teaching and Learning \u2013 Academic Innovation",
+  "sourceLanguage": "en",
+  "snapshotHash": "67ef8f74e8a61375a1c52b81bcd5a3e8ce67b0ac9a46e970382b38f44ed14807",
+  "evidenceSnippetOriginal": "'AI+AI': efforts to strengthen and update Cornell's academic integrity procedures to better reflect the presence of GenAI, including better models for attributing student use of GenAI in assignments or course settings; efforts to streamline, strengthen, and reform the university's academic integrity system; and the development of evidentiary standards and processes appropriate to the adjudication of GenAI-related violations of academic integrity.",
+  "evidenceLocator": "Key initiatives list, AI+AI bullet point",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "GenAI in Teaching and Learning \u2013 Academic Innovation",
+    "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "cornell-university"
+}

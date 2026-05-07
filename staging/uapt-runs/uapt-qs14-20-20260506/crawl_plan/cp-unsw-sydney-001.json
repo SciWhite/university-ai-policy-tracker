@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "cp-unsw-sydney-001",
+  "createdAt": "2026-05-06T04:34:14Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "unsw-sydney",
+      "sourceCandidateId": "sc-unsw-003",
+      "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+      "sourceTitle": "UNSW's AI Guidelines and Framework",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "ai_guidelines",
+        "ai_framework",
+        "formal_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "unsw-sydney",
+      "sourceCandidateId": "sc-unsw-002",
+      "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+      "sourceTitle": "Guidance on AI in assessment",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "assessment_guidance",
+        "ai_in_assessment",
+        "teaching_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "unsw-sydney",
+      "sourceCandidateId": "sc-unsw-001",
+      "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+      "sourceTitle": "Using AI in university",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "student_guidance",
+        "ai_in_university",
+        "academic_skills"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "unsw-sydney",
+      "sourceCandidateId": "sc-unsw-004",
+      "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+      "sourceTitle": "Helping you guide your students",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "student_guidance",
+        "ai_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "unsw-sydney",
+      "sourceCandidateId": "sc-unsw-005",
+      "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+      "sourceTitle": "Student AI Guidelines | UNSW College",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "student_guidelines",
+        "ai_guidelines",
+        "unsw_college"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "unsw-sydney",
+      "sourceCandidateId": "sc-unsw-006",
+      "sourceUrl": "https://www.inside.unsw.edu.au/innovation-and-engagement/are-you-aware-unsws-new-ai-principles",
+      "sourceTitle": "Are you aware of UNSW's new AI principles?",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "ai_principles",
+        "news_advisory"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "unsw-sydney",
+      "sourceCandidateId": "sc-unsw-007",
+      "sourceUrl": "https://www.education.unsw.edu.au/news-events/news/genai-update-june-2023",
+      "sourceTitle": "June update: Generative AI at UNSW",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "generative_ai_update",
+        "news"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_verified_targets_fetched"
+  ]
+}

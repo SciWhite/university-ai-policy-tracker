@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "sourceRejectionId": "sr-melbourne-002",
+  "sourceUrl": "https://policy.unimelb.edu.au/MPF1310",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "captcha",
+  "checkedBy": "crawl-designer",
+  "notes": "HTTP 200 but body shows Incapsula WAF incident page. Access control blocking."
+}

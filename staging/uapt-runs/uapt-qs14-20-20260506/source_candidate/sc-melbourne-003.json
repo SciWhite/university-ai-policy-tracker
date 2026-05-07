@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-melbourne-003",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+  "sourceTitle": "Official statements from The University of Melbourne",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "\"University of Melbourne\" generative AI policy",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 403. Cloudflare challenge. Title explicitly about official university statements on AI integrity. Very high policy specificity. Crawl-worker must use playwright or opencli."
+}

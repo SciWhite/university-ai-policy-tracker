@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-melbourne-5",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "claimType": "other",
+  "claimText": "At the University of Melbourne, using GenAI tools to produce work submitted for assessment without acknowledgement constitutes academic misconduct under cl. 4.13 of the Student Academic Integrity Policy (MPF1310).",
+  "confidence": 0.98,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-melbourne-002",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "If an assessment task does not permit the use of such tools, or if they use such tools in the preparation of an assessment submission without acknowledgement, this constitutes academic misconduct under cl. 4.13 of the Student Academic Integrity Policy (MPF1310).",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-melbourne-5"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI in T&L at the University of Melbourne",
+    "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

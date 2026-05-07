@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-melbourne-002",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+  "sourceTitle": "Generative AI in T&L at the University of Melbourne",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:unimelb.edu.au generative AI student policy",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 403. Cloudflare challenge. Melbourne Centre for the Study of Higher Education - official university unit. DDG title explicitly about generative AI in teaching and learning. Crawl-worker must use playwright or opencli."
+}

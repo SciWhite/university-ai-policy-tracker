@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-9",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell provides sample syllabus language for an AS-UA policy where AI use is generally discouraged but permitted for select assignments with proper attribution, requiring students to cite the AI tool creator.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-002",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Mastering the essential, foundational concepts of this course takes effort and practice. Accordingly, the use of generative artificial intelligence (AI) tools is generally discouraged in this course, but will be permitted for select assignments. ... If used in any capacity for an assignment, generative AI requires proper attribution for any and all generated work.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-9"
+  ],
+  "citation": {
+    "citationTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

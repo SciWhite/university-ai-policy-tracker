@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "pku-sc-002",
+  "entityType": "university",
+  "entitySlug": "peking-university",
+  "sourceUrl": "https://ccj.pku.edu.cn/article/info?aid=357335371",
+  "sourceTitle": "ChatGPT和人工智能:从基本原理到教育应用",
+  "sourceLanguage": "zh",
+  "sourceType": "research_showcase",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.6,
+  "policySpecificityScore": 0.2,
+  "verificationStatus": "rejected",
+  "robotsPolicy": "respect",
+  "queryUsed": "北京大学 ChatGPT 教学 政策 人工智能",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "Research article from PKU journal discussing ChatGPT and AI in education. Academic paper, not institutional policy."
+}

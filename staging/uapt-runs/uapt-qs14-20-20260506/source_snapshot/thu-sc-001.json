@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-thu-sc-001",
+  "sourceCandidateId": "thu-sc-001",
+  "fetchAttemptId": "fa-thu-sc-001",
+  "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+  "finalUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+  "sourceTitle": "【深改进行时】《清华大学人工智能教育应用指导原则》发布",
+  "sourceLanguage": "zh",
+  "contentHash": "4f2a7359e91b646b62f296ba5f53eb673d2aeee1697230e17dd2469aef70ab35",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/thu-sc-001.txt"
+}

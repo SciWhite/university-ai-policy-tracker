@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-7",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW classifies Grammarly, Quillbot, and translation tools such as Google Translate, DeepL, and Baidu Translate as forms of generative AI.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "It's important that students are aware of what tools use generative AI and may be inappropriate in an assessment. For example, Grammarly, Quillbot and translation tools such as Google Translate, DeepL and Baidu Translate are forms of generative AI.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-7"
+  ],
+  "citation": {
+    "citationTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+    "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

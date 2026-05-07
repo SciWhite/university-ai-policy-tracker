@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "tsinghua-university-trace-001",
+  "entityType": "university",
+  "entitySlug": "tsinghua-university",
+  "startedAt": "2026-05-06T04:38:00.000Z",
+  "endedAt": "2026-05-06T04:44:48.680Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "清华大学 生成式人工智能 教学 政策",
+      "resultCount": 1,
+      "notes": "DuckDuckGo browser search. Found tsinghua.edu.cn AI education guiding principles."
+    },
+    {
+      "method": "public_web_search",
+      "query": "Tsinghua University artificial intelligence education guidelines principles",
+      "resultCount": 1,
+      "notes": "Found English version of the same policy."
+    },
+    {
+      "method": "url_normalization",
+      "notes": "Chinese page verified HTTP 200. English page fetch failed - needs browser rendering."
+    },
+    {
+      "method": "multilingual_query",
+      "notes": "Searched both Chinese and English. Found Chinese primary source and English translation page."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "thu-sc-001",
+    "thu-sc-002"
+  ],
+  "rejectionIds": [],
+  "summary": "Tsinghua discovery found 2 verified sources: the Chinese primary source (comprehensive AI education guiding principles, Nov 2025) and an English translation page (needs browser rendering). First comprehensive university-wide AI education framework in China."
+}

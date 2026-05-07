@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "upenn-sc-002",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+  "sourceTitle": "Penn AI Guidance and Policies",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "robotsPolicy": "respect",
+  "queryUsed": "University of Pennsylvania generative AI policy students",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "CETLI (Center for Excellence in Teaching, Learning & Innovation) page listing approved AI tools with data use policies. Updated Jul 2025. Includes Copilot, Adobe, ChatGPT-EDU, M365 Copilot, etc."
+}

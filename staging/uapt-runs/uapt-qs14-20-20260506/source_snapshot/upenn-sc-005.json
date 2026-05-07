@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-upenn-sc-005",
+  "sourceCandidateId": "upenn-sc-005",
+  "fetchAttemptId": "fa-upenn-sc-005",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+  "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+  "sourceTitle": "Generative AI & Your Teaching",
+  "sourceLanguage": "en",
+  "contentHash": "dcc7eb4cba6625c4f5fa2bf9999343eddc5908975b986595820e089009f95a8b",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/upenn-sc-005.txt"
+}

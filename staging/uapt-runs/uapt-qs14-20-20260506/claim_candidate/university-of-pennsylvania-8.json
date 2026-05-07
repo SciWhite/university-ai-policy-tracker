@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-8",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "In the absence of other guidance, Penn students should treat the use of AI as they would treat assistance from another person \u2014 if it is unacceptable to have another person substantially complete a task like writing an essay, it is also unacceptable to have AI complete the task.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-001",
+  "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "In the absence of other guidance, treat the use of AI as you would treat assistance from another person. For example, this means if it is unacceptable to have another person substantially complete a task like writing an essay, it is also unacceptable to have AI to complete the task.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-8"
+  ],
+  "citation": {
+    "citationTitle": "Statement on Guidance for the University of Pennsylvania Community on Use of Generative Artificial Intelligence",
+    "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

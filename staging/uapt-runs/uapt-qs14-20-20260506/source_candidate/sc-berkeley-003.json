@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-berkeley-003",
+  "sourceUrl": "https://ai.berkeley.edu/guidance-use-ai",
+  "sourceTitle": "Guidance on the use of AI | Berkeley AI Hub",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:berkeley.edu \"generative AI\" policy",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 200. Title confirms AI guidance content. ai.berkeley.edu is the Berkeley AI Hub. Drupal site needs JS rendering."
+}

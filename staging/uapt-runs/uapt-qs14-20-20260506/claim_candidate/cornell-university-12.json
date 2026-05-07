@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-12",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's committee report states that any information educators are obligated to keep private under FERPA or HIPAA should not be shared with generative AI tools or uploaded to third-party AI vendors.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-003",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "GAI tools pose potential privacy risks because data that is shared may be used as training data by the third-party vendor providing the service. Therefore, any information that educators are obligated to keep private, for example, under the Family Educational Rights and Privacy Act (FERPA) or the Health Insurance Portability and Accountability Act (HIPAA), should not be shared with such tools or uploaded to these third party vendors of GAI.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-12"
+  ],
+  "citation": {
+    "citationTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

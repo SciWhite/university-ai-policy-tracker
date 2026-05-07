@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-cu-sc-005",
+  "sourceCandidateId": "cu-sc-005",
+  "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+  "finalUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "67ef8f74e8a61375a1c52b81bcd5a3e8ce67b0ac9a46e970382b38f44ed14807",
+  "normalizedTextStorageKey": "normalized/cu-sc-005.txt"
+}

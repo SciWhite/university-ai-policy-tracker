@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-berkeley-001",
+  "sourceCandidateId": "sc-berkeley-001",
+  "fetchAttemptId": "fa-sc-berkeley-001",
+  "sourceUrl": "https://oercs.berkeley.edu/artificial-intelligence",
+  "finalUrl": "https://oercs.berkeley.edu/artificial-intelligence",
+  "sourceTitle": "Artificial Intelligence | Office of Ethics, Risk, and Compliance Services",
+  "sourceLanguage": "en",
+  "contentHash": "5c102cb9aa4fc0297302db4905d56a4b2b4bb279703db075a3cbedd4a025c4dc",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-berkeley-001.txt"
+}

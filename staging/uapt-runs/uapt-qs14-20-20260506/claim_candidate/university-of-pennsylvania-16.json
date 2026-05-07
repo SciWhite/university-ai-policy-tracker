@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-16",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "At Wharton Academy, AI-generated work should be cited like any other reference material, including how and where students used AI-generated information; using AI-generated work without crediting the source is considered plagiarism.",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-004",
+  "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Using somebody else's work without crediting the source \u2013 including generative AI \u2014 is plagiarism. Guided by the policies of faculty, instructional teams, and staff, AI-generated work should be cited like any other reference material, including how and where students used AI-generated information.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-16"
+  ],
+  "citation": {
+    "citationTitle": "AI Policy - Wharton Academy",
+    "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-cu-sc-003",
+  "sourceCandidateId": "cu-sc-003",
+  "fetchAttemptId": "fa-cu-sc-003",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "sourceTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+  "sourceLanguage": "en",
+  "contentHash": "deeacd6dce5b944ffc00d979b34c83f57677a2f04ceb39c803a701b72d8caab6",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/cu-sc-003.txt"
+}

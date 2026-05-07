@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-24",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW College students may only use AI for an assessment if the instructions in the Course Outline permit its use.",
+  "confidence": 0.96,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-005",
+  "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "You may use AI for an assessment if the instructions in your Course Outline permit its use.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-24"
+  ],
+  "citation": {
+    "citationTitle": "Student AI Guidelines | UNSW College Current Students Website",
+    "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

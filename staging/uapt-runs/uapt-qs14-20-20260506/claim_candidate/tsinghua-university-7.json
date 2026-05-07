@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-tsinghua-university-7",
+  "entityType": "university",
+  "entitySlug": "tsinghua-university",
+  "claimType": "other",
+  "claimText": "Tsinghua University advises instructors to determine how AI should be used according to course objectives, clearly explain AI usage norms to students at the start of each course, and remain responsible for AI-generated teaching materials.",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
+  "sourceSnapshotId": "ss-thu-sc-001",
+  "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+  "sourceLanguage": "zh",
+  "evidenceSnippetOriginal": "建议教师们基于教学目标自主制定人工智能的应用方式与程度，在课程开始时向学生明确说明使用规范，并对人工智能生成的教学内容负责。",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-tsinghua-university-7"
+  ],
+  "citation": {
+    "citationTitle": "【深改进行时】《清华大学人工智能教育应用指导原则》发布",
+    "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}
