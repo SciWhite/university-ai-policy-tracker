@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-melbourne-18",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "claimType": "other",
+  "claimText": "The University of Melbourne has adopted AI Principles designed to guide actions around the adoption and use of AI tools and systems across the institution.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-melbourne-005",
+  "sourceUrl": "https://msd.unimelb.edu.au/belt/quality/generative-ai/what-is-this-guide",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "This guidance is also influenced by the University of Melbourne AI Principles, which have been designed to guide actions around the adoption and use of AI tools and systems.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-melbourne-18"
+  ],
+  "citation": {
+    "citationTitle": "What Is This Guide? - Melbourne School of Design",
+    "sourceUrl": "https://msd.unimelb.edu.au/belt/quality/generative-ai/what-is-this-guide",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

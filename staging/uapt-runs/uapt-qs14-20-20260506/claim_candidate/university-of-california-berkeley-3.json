@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-3",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "UC Berkeley requires users to use UC-licensed AI tools rather than individual consumer accounts to benefit from UC's contractual data protections when working with information more sensitive than Protection Level P1.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-002",
+  "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "UC has license agreements for certain AI tools, which provide protection for use with more sensitive information. It is important to be sure you are using licensed tools, rather than individual consumer accounts, to benefit from UC's contractual protections.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-3"
+  ],
+  "citation": {
+    "citationTitle": "Appropriate Use of Generative AI Tools | Office of Ethics, Risk, and Compliance Services",
+    "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

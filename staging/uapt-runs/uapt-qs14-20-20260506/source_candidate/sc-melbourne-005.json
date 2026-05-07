@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-melbourne-005",
+  "sourceUrl": "https://msd.unimelb.edu.au/belt/quality/generative-ai/what-is-this-guide",
+  "sourceTitle": "What Is This Guide? - Melbourne School of Design",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "\"University of Melbourne\" generative AI policy",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.7,
+  "policySpecificityScore": 0.5,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 403. Cloudflare challenge. Melbourne School of Design subdomain. DDG title suggests a guide about generative AI. May be faculty-specific rather than university-wide. Crawl-worker must use playwright or opencli."
+}

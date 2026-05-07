@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-tsinghua-university-2",
+  "entityType": "university",
+  "entitySlug": "tsinghua-university",
+  "claimType": "other",
+  "claimText": "Tsinghua University prohibits using AI to replace academic training that graduate students are expected to complete independently, and strictly forbids AI-assisted ghostwriting, plagiarism, and fabrication in theses, dissertations, and practical achievements.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-thu-sc-001",
+  "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+  "sourceLanguage": "zh",
+  "evidenceSnippetOriginal": "\u7981\u6b62\u7528\u4eba\u5de5\u667a\u80fd\u4ee3\u66ff\u672c\u5e94\u7531\u672c\u4eba\u8fdb\u884c\u7684\u5b66\u672f\u8bad\u7ec3\uff0c\u4e25\u7981\u4f7f\u7528\u4eba\u5de5\u667a\u80fd\u5b9e\u65bd\u4ee3\u5199\u3001\u527d\u7a83\u3001\u4f2a\u9020\u7b49\u884c\u4e3a\u3002",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-tsinghua-university-2"
+  ],
+  "citation": {
+    "citationTitle": "\u3010\u6df1\u6539\u8fdb\u884c\u65f6\u3011\u300a\u6e05\u534e\u5927\u5b66\u4eba\u5de5\u667a\u80fd\u6559\u80b2\u5e94\u7528\u6307\u5bfc\u539f\u5219\u300b\u53d1\u5e03",
+    "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

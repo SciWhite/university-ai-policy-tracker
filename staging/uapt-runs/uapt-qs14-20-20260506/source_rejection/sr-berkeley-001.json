@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "sourceRejectionId": "sr-berkeley-001",
+  "sourceUrl": "https://research.berkeley.edu/ai",
+  "finalUrl": "https://research.berkeley.edu/hsp-scholars/aida-sadikovic/",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "crawl-designer",
+  "notes": "Redirects to individual scholar profile page. Not an AI policy source."
+}

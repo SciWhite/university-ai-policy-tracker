@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-unsw-005",
+  "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "sourceTitle": "Student AI Guidelines | UNSW College Current Students Website",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "unsw.edu.au generative AI policy students",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 200. UNSW College (pathway provider). Title: 'Student AI Guidelines'. Official student-facing AI guidelines."
+}

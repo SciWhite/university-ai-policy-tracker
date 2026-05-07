@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-unsw-007",
+  "sourceUrl": "https://www.education.unsw.edu.au/news-events/news/genai-update-june-2023",
+  "sourceTitle": "June update: Generative AI at UNSW",
+  "sourceLanguage": "en",
+  "sourceType": "official_news_advisory",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "unsw.edu.au generative AI policy students",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.7,
+  "policySpecificityScore": 0.4,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 200. Official UNSW Education domain. Title: 'June update: Generative AI at UNSW'. News update from June 2023 - may be dated. Lower specificity as news content."
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-tsinghua-university-8",
+  "claimId": "claim-tsinghua-university-8",
+  "sourceSnapshotId": "ss-thu-sc-001",
+  "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+  "finalUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+  "sourceTitle": "\u3010\u6df1\u6539\u8fdb\u884c\u65f6\u3011\u300a\u6e05\u534e\u5927\u5b66\u4eba\u5de5\u667a\u80fd\u6559\u80b2\u5e94\u7528\u6307\u5bfc\u539f\u5219\u300b\u53d1\u5e03",
+  "sourceLanguage": "zh",
+  "snapshotHash": "4f2a7359e91b646b62f296ba5f53eb673d2aeee1697230e17dd2469aef70ab35",
+  "evidenceSnippetOriginal": "\u7814\u7a76\u751f\u6307\u5bfc\u6559\u5e08\u9700\u5728\u6b64\u8fc7\u7a0b\u4e2d\u63d0\u4f9b\u89c4\u8303\u6027\u6307\u5bfc\u5e76\u8fdb\u884c\u5168\u8fc7\u7a0b\u76d1\u7763\uff0c\u786e\u4fdd\u5b66\u672f\u8bad\u7ec3\u7684\u5b8c\u6574\u6027\u548c\u5b66\u4f4d\u8bba\u6587\u53ca\u5b9e\u8df5\u6210\u679c\u7684\u539f\u521b\u6027\u3002",
+  "evidenceLocator": "\u5b66\u4f4d\u8bba\u6587\u53ca\u5b9e\u8df5\u6210\u679c\u7bc7 section, supervisor responsibilities paragraph",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "\u3010\u6df1\u6539\u8fdb\u884c\u65f6\u3011\u300a\u6e05\u534e\u5927\u5b66\u4eba\u5de5\u667a\u80fd\u6559\u80b2\u5e94\u7528\u6307\u5bfc\u539f\u5219\u300b\u53d1\u5e03",
+    "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "tsinghua-university"
+}

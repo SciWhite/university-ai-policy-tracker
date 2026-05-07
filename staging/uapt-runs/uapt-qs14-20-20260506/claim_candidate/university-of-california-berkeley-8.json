@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-8",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "UC Berkeley requires that any new use of generative AI in studies or work must receive approval from the instructor or responsible unit head, and users should complete the AI Essentials Training and consult the CERC-AIR committee.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-002",
+  "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "If you are considering a new use of Generative AI in your studies or work, it is your responsibility to consider the ethics and risks involved and obtain approval from your instructor/responsible unit head. Be sure to take the AI Essentials Training and consult CERC-AIR, a committee that assesses and offers guidance for mitigating AI risks.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-8"
+  ],
+  "citation": {
+    "citationTitle": "Appropriate Use of Generative AI Tools | Office of Ethics, Risk, and Compliance Services",
+    "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

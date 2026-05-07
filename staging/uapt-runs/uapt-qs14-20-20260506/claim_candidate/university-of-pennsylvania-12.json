@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-12",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Penn mandates that student work (papers, projects) must not be entered into unlicensed AI tools without the student's permission, even if anonymized, because this work is part of the student's confidential academic record.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-002",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Do not enter student work (e.g., papers, projects) without the student's permission, even if it is anonymized. This work is part of the student's confidential academic record.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-12"
+  ],
+  "citation": {
+    "citationTitle": "Penn AI Guidance and Policies",
+    "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

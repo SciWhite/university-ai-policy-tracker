@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-berkeley-002",
+  "sourceCandidateId": "sc-berkeley-002",
+  "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+  "finalUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "53fb3a36f07d32da35583cf1daae65c4be93b999fd5fb8804fe292d571dd5076",
+  "normalizedTextStorageKey": "normalized/sc-berkeley-002.txt"
+}

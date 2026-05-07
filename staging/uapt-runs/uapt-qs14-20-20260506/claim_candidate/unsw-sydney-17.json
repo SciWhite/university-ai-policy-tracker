@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-17",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW's investigation process for suspected improper AI use involves five steps: initial sense-check, checking signs of AI writing, discussing with the student, contacting the School Student Integrity Adviser (SSIA), and referral to the Conduct & Integrity Office.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-002",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Step 1: Initial checks... Step 2: Check the signs... Step 3: Discuss with the student... Step 4: Contact your SSIA for further assistance... Step 5: Contact the Conduct & Integrity Office",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-17"
+  ],
+  "citation": {
+    "citationTitle": "Guidance on AI in assessment | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

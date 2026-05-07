@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-18",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Wharton Academy prohibits students from directly copying answers from generative AI tools and submitting them as their own, from using AI to paraphrase or rewrite plagiarized content, and from posting AI-generated discussion posts within course community forums.",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-004",
+  "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Don't directly copy answers from generative AI tools and submit as your own. Don't use AI to paraphrase or rewrite plagiarized content. Don't post AI-generated discussion posts within the course community forum.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-18"
+  ],
+  "citation": {
+    "citationTitle": "AI Policy - Wharton Academy",
+    "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

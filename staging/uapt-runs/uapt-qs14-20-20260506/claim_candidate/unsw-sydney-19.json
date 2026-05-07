@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-19",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW has an AI leadership group that serves as a clearinghouse for critical issues and strategic initiatives and plays a pivotal role in guiding enterprise decisions on AI.",
+  "confidence": 0.93,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-003",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "UNSW has an AI leadership group that serves as an overall clearinghouse for addressing critical issues and strategic initiatives. It plays a pivotal role in guiding enterprise decisions.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-19"
+  ],
+  "citation": {
+    "citationTitle": "UNSW's AI Guidelines and Framework | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

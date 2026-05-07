@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-19",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Wharton Academy permits students to use generative AI for brainstorming, learning efficiency, getting prompts, exploring different perspectives, asking for templates, getting preliminary feedback on written work, and language translation, at the discretion of faculty and instructional teams.",
+  "confidence": 0.8,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-004",
+  "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "At the discretion of faculty, instructional teams and staff, Wharton Academy students may use generative AI tools.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-19"
+  ],
+  "citation": {
+    "citationTitle": "AI Policy - Wharton Academy",
+    "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

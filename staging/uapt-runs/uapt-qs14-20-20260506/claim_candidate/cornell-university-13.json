@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-13",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's committee report states that original research or content owned by Cornell University, students, or employees should not be uploaded to AI tools, as it can become part of the AI tool's training data.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-003",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "GAI tools also have implications for intellectual property rights. Original research or content that is owned by Cornell University, our students, or employees should not be uploaded to these tools, since they can become part of the training data used by the GAI tools.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-13"
+  ],
+  "citation": {
+    "citationTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

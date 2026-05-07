@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "sourceRejectionId": "sr-unsw-002",
+  "sourceUrl": "https://student.unsw.edu.au/academic-integrity",
+  "finalUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/plagiarism",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "no_ai_content",
+  "checkedBy": "crawl-designer",
+  "notes": "Redirects to plagiarism toolkit page. Not AI-specific content."
+}

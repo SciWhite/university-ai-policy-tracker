@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-17",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Wharton Academy prohibits students from using AI to complete personal reflection or opinion-based tasks, from using AI to complete group assignments instead of collaborating with peers, and from using AI to cheat on exams or tests.",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-004",
+  "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Don't use AI for personal reflection or opinion-based tasks. We are interested in hearing your opinions, your stories and your thoughts. Don't rely on AI for group assignments. Using AI to complete your portion of a group project instead of collaborating with your peers is considered academic dishonesty. Don't use AI to cheat on exams or tests.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-17"
+  ],
+  "citation": {
+    "citationTitle": "AI Policy - Wharton Academy",
+    "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

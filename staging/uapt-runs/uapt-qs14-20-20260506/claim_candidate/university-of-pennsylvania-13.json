@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-13",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Instructors must not require students to enter their own work into unlicensed AI tools or use such tools in assignments; unlicensed tools may be used optionally by students at the instructor's discretion, but Penn-licensed tools should be used for mandatory coursework components.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-002",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Do not require students to enter their own work into an unlicensed AI tool or use it in assignments. Unlicensed tools may be used optionally by students at the instructor's discretion but consider using a Penn-licensed tool for mandatory components of coursework to protect student data.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-13"
+  ],
+  "citation": {
+    "citationTitle": "Penn AI Guidance and Policies",
+    "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

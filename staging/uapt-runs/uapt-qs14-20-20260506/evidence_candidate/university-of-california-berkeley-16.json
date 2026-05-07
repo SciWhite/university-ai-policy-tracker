@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-california-berkeley-16",
+  "claimId": "claim-university-of-california-berkeley-16",
+  "sourceSnapshotId": "ss-sc-berkeley-004",
+  "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "finalUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "sourceTitle": "Generative AI Guidance for Instructors 2025",
+  "sourceLanguage": "en",
+  "snapshotHash": "c6786c3515412e68fd1dbf47435e92fe1b5fed2fccb8e2d0e73b2fb44ea3ff9b",
+  "evidenceSnippetOriginal": "GenAI detection tools are increasingly less accurate; there are no validated GenAI detection tools.",
+  "evidenceLocator": "Section III: Implementation Details, Policy Enforcement Mechanisms",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Guidance for Instructors 2025",
+    "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-california-berkeley"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "upenn-sc-005",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+  "sourceTitle": "Generative AI & Your Teaching",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.6,
+  "verificationStatus": "verified",
+  "robotsPolicy": "respect",
+  "queryUsed": "University of Pennsylvania generative AI policy students",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "CETLI hub page for generative AI in teaching. Links to Penn guidance and policies. Notes frequent policy updates."
+}

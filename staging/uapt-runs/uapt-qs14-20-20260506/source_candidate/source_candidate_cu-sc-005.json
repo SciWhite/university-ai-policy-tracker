@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cu-sc-005",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+  "sourceTitle": "GenAI in Teaching and Learning – Academic Innovation",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "robotsPolicy": "respect",
+  "queryUsed": "Cornell University generative AI policy teaching",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "Cornell Academic Innovation GenAI hub. Seven core principles, GenAI Education Working Group, survey results, critical AI literacy programs."
+}

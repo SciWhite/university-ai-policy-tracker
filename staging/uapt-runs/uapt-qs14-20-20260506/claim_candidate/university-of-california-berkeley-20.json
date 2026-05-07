@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-20",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "The UC Berkeley Academic Senate advises that for assignments where instructors encourage or require GenAI tools, instructors must ensure students have access to the necessary computing resources. If non-campus-sanctioned resources are required, the instructor is responsible for providing access.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-004",
+  "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "For any assignments where the instructor encourages or requires the use of GenAI tools, instructors should ensure that students have access to the necessary computing resources to run those GenAI tools. If non-campus-sanctioned resources are required, it is the instructor's responsibility to provide access to those resources.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-20"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidance for Instructors 2025",
+    "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

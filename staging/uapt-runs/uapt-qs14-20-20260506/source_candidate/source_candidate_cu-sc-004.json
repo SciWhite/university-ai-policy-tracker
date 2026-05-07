@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cu-sc-004",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+  "sourceTitle": "Guidelines for Artificial Intelligence | IT@Cornell",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "robotsPolicy": "respect",
+  "queryUsed": "Cornell University IT AI tools data security policy",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "Cornell IT AI guidelines. Covers accountability, confidentiality/privacy, data protection. Prohibits sharing confidential Cornell data with public AI tools. References university privacy policies."
+}

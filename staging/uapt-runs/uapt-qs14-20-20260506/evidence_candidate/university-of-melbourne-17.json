@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-melbourne-17",
+  "claimId": "claim-university-of-melbourne-17",
+  "sourceSnapshotId": "ss-sc-melbourne-004",
+  "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+  "finalUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+  "sourceTitle": "UoM Submission: Inquiry into Generative AI in Education",
+  "sourceLanguage": "en",
+  "snapshotHash": "54286d0127fc2d6826311ee036d374fc42248d2986de9de0cee50029e6ef2bc0",
+  "evidenceSnippetOriginal": "The Australian Government develop optional guidance for the sector on the use of generative artificial intelligence (AI) in teaching, learning, assessment, and research. However, Universities should continue to have autonomy over their own generative AI policies to ensure they are appropriate for their communities.",
+  "evidenceLocator": "Section: Recommendations, Recommendation 1",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "UoM Submission: Inquiry into Generative AI in Education",
+    "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-melbourne"
+}

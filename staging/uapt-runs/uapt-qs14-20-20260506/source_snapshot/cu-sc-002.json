@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-cu-sc-002",
+  "sourceCandidateId": "cu-sc-002",
+  "fetchAttemptId": "fa-cu-sc-002",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "sourceTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "contentHash": "dc5bf374079a8450be06eca45adafca010faa27d86c5d2ea70da2fca9a166662",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/cu-sc-002.txt"
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-unsw-005",
+  "sourceCandidateId": "sc-unsw-005",
+  "fetchAttemptId": "fa-sc-unsw-005",
+  "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "finalUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "sourceTitle": "Student AI Guidelines | UNSW College Current Students Website",
+  "sourceLanguage": "en",
+  "contentHash": "480942a7fc762dbe43a517aeae7df90d5d042ca01cb56f314c0cc36bd115dc2a",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-unsw-005.txt"
+}

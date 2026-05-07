@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-21",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's IT guidelines state that use of generative AI in academic research is governed by the Cornell University Task Force Report 'Generative AI in Academic Research: Perspectives and Cultural Norms' (December 2023).",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-004",
+  "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "The Cornell University Task Force Report, Generative AI in Academic Research: Perspectives and Cultural Norms (December 2023), offers perspectives and practical guidelines to the Cornell community on the use of generative AI in the practice and dissemination of academic research.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-21"
+  ],
+  "citation": {
+    "citationTitle": "Guidelines for Artificial Intelligence | IT@Cornell",
+    "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-11",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell describes measures faculty may use to evaluate potential AI-related academic integrity concerns, including requiring students to verify citations and references, requesting verification of references or methods, and informing students that they should expect to verbally explain submitted work.",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
+  "sourceSnapshotId": "ss-cu-sc-002",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Require that students verify the accuracy of all citations and references they include in their work. Request that students provide verification of references or methods, with a student's response determining whether a formal academic integrity notification is warranted. ... Inform and remind students that they should expect to verbally explain the work they submitted.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-11"
+  ],
+  "citation": {
+    "citationTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+    "snapshotHash": "dc5bf374079a8450be06eca45adafca010faa27d86c5d2ea70da2fca9a166662"
+  }
+}

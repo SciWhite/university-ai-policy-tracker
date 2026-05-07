@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-cu-sc-004",
+  "sourceCandidateId": "cu-sc-004",
+  "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+  "finalUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "b1a7c670aa0bf99b4502416ec7c7250135b063b6991367a057f5d2a1ca97251d",
+  "normalizedTextStorageKey": "normalized/cu-sc-004.txt"
+}

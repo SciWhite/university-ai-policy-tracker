@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-melbourne-004",
+  "sourceCandidateId": "sc-melbourne-004",
+  "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+  "finalUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "54286d0127fc2d6826311ee036d374fc42248d2986de9de0cee50029e6ef2bc0",
+  "normalizedTextStorageKey": "normalized/sc-melbourne-004.txt"
+}

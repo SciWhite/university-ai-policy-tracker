@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "sourceRejectionId": "sr-berkeley-007",
+  "sourceUrl": "https://news.berkeley.edu/2023/09/07/uc-berkeleys-approach-to-ai",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "stale_404",
+  "checkedBy": "crawl-designer",
+  "notes": "HTTP 404. News article URL does not exist."
+}

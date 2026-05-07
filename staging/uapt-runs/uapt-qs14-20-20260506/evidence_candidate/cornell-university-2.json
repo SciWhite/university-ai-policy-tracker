@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-cornell-university-2",
+  "claimId": "claim-cornell-university-2",
+  "sourceSnapshotId": "ss-cu-sc-001",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "sourceTitle": "Generative Artificial Intelligence | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "snapshotHash": "9e356eb6cdc55b86bb2fe059937e4db6796ecccd6b030574c5dc40bcff74c3b3",
+  "evidenceSnippetOriginal": "Cornell's response to generative AI in teaching and learning is built around seven core principles. We invite instructors to consider these principles as they make decisions and talk with their students and colleagues about generative AI and learning: The integrity of the faculty-student relation. A commitment to experimentation, evidence and learning from experience. The centrality of faculty judgment and expertise in the classroom. Responsiveness to real student needs and uses. Recognition of both AI 'goods' and 'harms'. Respect for institutional and disciplinary heterogeneity. The extension and renewal of Cornell's core mission and values.",
+  "evidenceLocator": "Cornell's Core Principles for Generative AI in Education section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative Artificial Intelligence | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "cornell-university"
+}

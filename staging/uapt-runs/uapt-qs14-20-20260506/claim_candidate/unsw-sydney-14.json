@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-14",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW requires that when ChatGPT or other forms of GenAI are accepted as part of an assessment, academics must ensure the tools are easily accessible for all students with no physical, geographical, or financial restrictions.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-002",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "When ChatGPT or other forms of GenAI are accepted as part of an assessment, academics must ensure that they are easily accessible for everyone. There must be no physical, geographical or financial restrictions on students' use of the tool.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-14"
+  ],
+  "citation": {
+    "citationTitle": "Guidance on AI in assessment | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

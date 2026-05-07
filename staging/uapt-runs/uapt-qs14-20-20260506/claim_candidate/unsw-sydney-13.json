@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-13",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW defines six high-level categories for permitted AI use in assessments: No Assistance, Simple Editing Assistance, Planning/Design Assistance, Assistance with Attribution, Generative AI Software-based Assessments, and Not Applicable.",
+  "confidence": 0.97,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-002",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Based on extensive feedback across UNSW, six high-level categories have been defined for assessments that include some degree of AI use, as well as an additional category for assessments where AI is unlikely to be used.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-13"
+  ],
+  "citation": {
+    "citationTitle": "Guidance on AI in assessment | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

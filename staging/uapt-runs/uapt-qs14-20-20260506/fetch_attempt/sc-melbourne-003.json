@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-melbourne-003",
+  "sourceCandidateId": "sc-melbourne-003",
+  "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+  "finalUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "85d1ab63d2ca08727bfaed10d2234e93c5facb3b022ef5ddaf344a61e47d3aac",
+  "normalizedTextStorageKey": "normalized/sc-melbourne-003.txt"
+}

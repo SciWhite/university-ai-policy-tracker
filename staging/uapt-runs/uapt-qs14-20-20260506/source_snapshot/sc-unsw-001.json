@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-unsw-001",
+  "sourceCandidateId": "sc-unsw-001",
+  "fetchAttemptId": "fa-sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "finalUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "sourceTitle": "Using AI in university | Current Students – UNSW Sydney",
+  "sourceLanguage": "en",
+  "contentHash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-unsw-001.txt"
+}

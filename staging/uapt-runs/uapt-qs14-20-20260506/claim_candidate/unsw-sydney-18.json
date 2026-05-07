@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-18",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "Where unauthorised AI use in an assessment is admitted or determined at UNSW, a finding of serious student misconduct is made as a breach of Principle 3 of the Student Code of Conduct, with penalties consistent with Serious Student Misconduct and Serious Plagiarism (typically 00FL for the course, suspension, or exclusion).",
+  "confidence": 0.96,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-002",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Where the unauthorised use of AI in an assessment is admitted or determined, a finding of serious student misconduct is made \u2013 as a breach of Principle 3 of the Student Code of Conduct which states that students must act with integrity, honesty and trust. The penalties for a finding of this sort would be consistent with the penalties for Serious Student Misconduct and Serious Plagiarism \u2013 they would normally sit at 00FL for the course, suspension or exclusion depending on the matter.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-18"
+  ],
+  "citation": {
+    "citationTitle": "Guidance on AI in assessment | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/ai-assessment-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

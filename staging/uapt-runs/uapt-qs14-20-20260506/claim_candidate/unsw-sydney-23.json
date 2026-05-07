@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-23",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW states that students are entitled to use generative AI to the extent specified by course instructions or university rules, and that assessment instructions should set out acceptable use of AI tools.",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "sourceSnapshotId": "ss-sc-unsw-004",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Students are entitled to use generative AI to the extent specified by the course instructions or university rules. All assessment instructions should set out the acceptable use of AI tools.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-23"
+  ],
+  "citation": {
+    "citationTitle": "Helping you guide your students | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

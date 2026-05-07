@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-25",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW College recommends Microsoft Copilot as the only generative AI platform for staff and students, as it provides commercial data protection and is the only platform recommended where generative AI use is allowed in coursework and assessment.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-005",
+  "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "UNSW College recommend that students use the College Microsoft Copilot AI Tool... Where the use of generative AI is allowed as part of coursework and/or assessment, this is the only generative AI platform recommended for UNSW College staff and students.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-25"
+  ],
+  "citation": {
+    "citationTitle": "Student AI Guidelines | UNSW College Current Students Website",
+    "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

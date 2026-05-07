@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-15",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's committee report recommends that the Code of Academic Integrity be updated with clear and explicit language on the use of generative AI, indicating that individual faculty have authority to determine when AI use is prohibited, attributed, or encouraged.",
+  "confidence": 0.93,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-003",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "The Code of Academic Integrity should be updated with clear and explicit language on the use of GAI, specifically indicating that individual faculty have authority to determine when its use is prohibited, attributed, or encouraged, and that use of GAI on assignments by students is only allowed when expressly permitted by the faculty member.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-15"
+  ],
+  "citation": {
+    "citationTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-cornell-university-7",
+  "claimId": "claim-cornell-university-7",
+  "sourceSnapshotId": "ss-cu-sc-002",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "sourceTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "snapshotHash": "dc5bf374079a8450be06eca45adafca010faa27d86c5d2ea70da2fca9a166662",
+  "evidenceSnippetOriginal": "We currently do not recommend using current automatic detection algorithms for academic integrity violations using generative AI, given their unreliability and current inability to provide definitive evidence of violations.",
+  "evidenceLocator": "Detecting AI-Generated Content section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "cornell-university"
+}

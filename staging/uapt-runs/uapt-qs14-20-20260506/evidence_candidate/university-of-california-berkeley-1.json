@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-california-berkeley-1",
+  "claimId": "claim-university-of-california-berkeley-1",
+  "sourceSnapshotId": "ss-sc-berkeley-001",
+  "sourceUrl": "https://oercs.berkeley.edu/artificial-intelligence",
+  "finalUrl": "https://oercs.berkeley.edu/artificial-intelligence",
+  "sourceTitle": "Artificial Intelligence | Office of Ethics, Risk, and Compliance Services",
+  "sourceLanguage": "en",
+  "snapshotHash": "5c102cb9aa4fc0297302db4905d56a4b2b4bb279703db075a3cbedd4a025c4dc",
+  "evidenceSnippetOriginal": "The Office of Ethics, Risk and Compliance is providing resources and guidance about how to use artificial intelligence (AI), specifically generative AI, in an ethical and appropriate manner. This page will help guide you to available tools with a focus on privacy and compliance with existing laws and policies.",
+  "evidenceLocator": "Main body text of the AI landing page",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Artificial Intelligence | Office of Ethics, Risk, and Compliance Services",
+    "sourceUrl": "https://oercs.berkeley.edu/artificial-intelligence",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-california-berkeley"
+}

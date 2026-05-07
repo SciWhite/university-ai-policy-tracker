@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "sourceRejectionId": "sr-melbourne-001",
+  "sourceUrl": "https://unimelb.emeritus.org/advanced-program-in-generative-ai-and-machine-learning",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "crawl-designer",
+  "notes": "Emeritus platform (third-party). Not an official University of Melbourne policy source. This is a commercial course listing."
+}

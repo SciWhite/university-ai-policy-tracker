@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-18",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "The UC Berkeley Academic Senate recommends that for assignments where GenAI is not permitted, instructors should adopt enforcement mechanisms such as in-person proctored exams, an additional oral exam component, or a written statement of academic integrity, since no validated GenAI detection tools exist.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-004",
+  "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "GenAI detection tools are increasingly less accurate; there are no validated GenAI detection tools. Therefore, assignments or learning activities where GenAI is not permitted should consider adopting one or more of the following solutions: Written Statement of Academic Integrity; In-person proctored exams/activities; An additional interview component (or oral exam) to an assignment where students are graded on an explanation of their work.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-18"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidance for Instructors 2025",
+    "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

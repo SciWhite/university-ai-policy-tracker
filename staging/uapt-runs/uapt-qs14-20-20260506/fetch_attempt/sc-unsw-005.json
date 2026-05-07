@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-unsw-005",
+  "sourceCandidateId": "sc-unsw-005",
+  "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "finalUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "480942a7fc762dbe43a517aeae7df90d5d042ca01cb56f314c0cc36bd115dc2a",
+  "normalizedTextStorageKey": "normalized/sc-unsw-005.txt"
+}

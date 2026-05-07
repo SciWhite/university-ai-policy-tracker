@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-25",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell developed seven standardized AI course policy icons (ANY-AI, AT, UA, PP, AS, ER, AI-FREE) to help instructors clearly communicate AI use expectations in syllabi and assignments, which can be combined for nuanced policies.",
+  "confidence": 0.93,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-006",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "These icons have been developed to help you clearly and consistently communicate your expectations. They can be used on the syllabus to convey an overall course approach. They can also be used for individual assignments, allowing you to distinguish different policies for different assignments with different learning goals. Icons can be combined to more fully reflect your course policy.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-25"
+  ],
+  "citation": {
+    "citationTitle": "AI Course Policy Icons | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

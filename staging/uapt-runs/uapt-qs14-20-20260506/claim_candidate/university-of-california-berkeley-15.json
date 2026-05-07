@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-california-berkeley-15",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "claimType": "other",
+  "claimText": "The UC Berkeley Academic Senate recommends that all faculty include a clear statement on their syllabus about course expectations regarding the use of Google Gemini or any other generative AI tool for course-related work. In the absence of such a statement, students may be more likely to use these technologies inappropriately.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-berkeley-004",
+  "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "We recommend that all faculty include a clear statement on their syllabus about course expectations regarding the use of Google Gemini or any other GenAI tool for course-related work. In the absence of such a statement, students may be more likely to use these technologies inappropriately or fail to utilize them effectively as a learning tool.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-california-berkeley-15"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Guidance for Instructors 2025",
+    "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

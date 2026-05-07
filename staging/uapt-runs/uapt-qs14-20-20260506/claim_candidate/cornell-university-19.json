@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-19",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's IT guidelines prohibit entering any confidential, proprietary, federally or state regulated, or otherwise sensitive or restricted Cornell information into public generative AI tools, as such information becomes public and may be stored and used by anyone.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-004",
+  "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "If you are using public generative AI tools, you cannot enter any Cornell information, or another person's information, that is confidential, proprietary, subject to federal or state regulations, or otherwise considered sensitive or restricted. Any information you provide to public generative AI tools is considered public and may be stored and used by anyone else.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-19"
+  ],
+  "citation": {
+    "citationTitle": "Guidelines for Artificial Intelligence | IT@Cornell",
+    "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

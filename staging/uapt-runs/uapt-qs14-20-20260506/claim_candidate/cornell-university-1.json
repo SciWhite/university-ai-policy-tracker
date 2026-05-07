@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-1",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's Center for Teaching Innovation recommends that faculty discuss course policies and expectations around the use of generative AI tools with their students and clearly communicate when and in what ways use of such tools is permitted or not.",
+  "confidence": 0.92,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-001",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "We recommend discussing course policies and expectations around their use, and clearly communicating with your students when and in what ways use of generative AI tools are permitted \u2013 or not.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-1"
+  ],
+  "citation": {
+    "citationTitle": "Generative Artificial Intelligence | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

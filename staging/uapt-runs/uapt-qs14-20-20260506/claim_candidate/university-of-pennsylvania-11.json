@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-11",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Penn's Office of Audit, Compliance & Privacy mandates that users of publicly available (unlicensed) AI tools must not enter any information that could identify a student, including names, ID numbers, email addresses, or detailed descriptions of student work or engagement that could be identifiable to others.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-002",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Do not enter any information that could identify a student. This includes names, ID numbers, or email addresses, as well as detailed descriptions of student work or engagement in class that could be identifiable to others.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-11"
+  ],
+  "citation": {
+    "citationTitle": "Penn AI Guidance and Policies",
+    "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

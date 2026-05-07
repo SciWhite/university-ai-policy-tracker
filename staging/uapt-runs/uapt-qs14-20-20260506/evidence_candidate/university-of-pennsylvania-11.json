@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-pennsylvania-11",
+  "claimId": "claim-university-of-pennsylvania-11",
+  "sourceSnapshotId": "ss-upenn-sc-002",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+  "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+  "sourceTitle": "Penn AI Guidance and Policies",
+  "sourceLanguage": "en",
+  "snapshotHash": "1915e317dd898991e8423bef970e386dd3f6f6a90ab76e6b36f941a3b9cba3b3",
+  "evidenceSnippetOriginal": "Do not enter any information that could identify a student. This includes names, ID numbers, or email addresses, as well as detailed descriptions of student work or engagement in class that could be identifiable to others.",
+  "evidenceLocator": "Publicly Available AI Tools > restrictions on unlicensed tools",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Penn AI Guidance and Policies",
+    "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-pennsylvania"
+}

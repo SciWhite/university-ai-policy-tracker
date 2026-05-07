@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-melbourne-005",
+  "sourceCandidateId": "sc-melbourne-005",
+  "fetchAttemptId": "fa-sc-melbourne-005",
+  "sourceUrl": "https://msd.unimelb.edu.au/belt/quality/generative-ai/what-is-this-guide",
+  "finalUrl": "https://msd.unimelb.edu.au/belt/quality/generative-ai/what-is-this-guide",
+  "sourceTitle": "What Is This Guide? - Melbourne School of Design",
+  "sourceLanguage": "en",
+  "contentHash": "421a0ca355f40fe34ecb48c739eff84060043e6ce998ffc2f00f6fd87503f419",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-melbourne-005.txt"
+}

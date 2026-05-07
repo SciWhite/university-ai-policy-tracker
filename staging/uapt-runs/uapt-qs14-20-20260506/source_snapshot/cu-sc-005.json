@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-cu-sc-005",
+  "sourceCandidateId": "cu-sc-005",
+  "fetchAttemptId": "fa-cu-sc-005",
+  "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+  "finalUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+  "sourceTitle": "GenAI in Teaching and Learning – Academic Innovation",
+  "sourceLanguage": "en",
+  "contentHash": "67ef8f74e8a61375a1c52b81bcd5a3e8ce67b0ac9a46e970382b38f44ed14807",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/cu-sc-005.txt"
+}

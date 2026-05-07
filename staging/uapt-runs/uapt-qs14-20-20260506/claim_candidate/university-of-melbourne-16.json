@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-melbourne-16",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "claimType": "other",
+  "claimText": "The University of Melbourne advises researchers that they should not share confidential information or information about an innovation in a generative AI prompt, as that may mean the IP is no longer owned by the researcher or by the University.",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "sourceSnapshotId": "ss-sc-melbourne-004",
+  "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "The University has advised researchers that they should not share confidential information or information about an innovation in a generative AI prompt, as that may mean that the IP is no longer owned by the researcher or by the University.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-melbourne-16"
+  ],
+  "citation": {
+    "citationTitle": "UoM Submission: Inquiry into Generative AI in Education",
+    "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-upenn-sc-006",
+  "sourceCandidateId": "upenn-sc-006",
+  "fetchAttemptId": "fa-upenn-sc-006",
+  "sourceUrl": "https://catalog.upenn.edu/pennbook/code-of-academic-integrity/",
+  "finalUrl": "https://catalog.upenn.edu/pennbook/code-of-academic-integrity/",
+  "sourceTitle": "Code of Academic Integrity",
+  "sourceLanguage": "en",
+  "contentHash": "eff235360c9757a704ee0835fa48524e6556c864b68133aa9c593900358a12e1",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/upenn-sc-006.txt"
+}

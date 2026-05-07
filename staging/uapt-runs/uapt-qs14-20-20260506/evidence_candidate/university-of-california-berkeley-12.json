@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-university-of-california-berkeley-12",
+  "claimId": "claim-university-of-california-berkeley-12",
+  "sourceSnapshotId": "ss-sc-berkeley-002",
+  "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+  "finalUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+  "sourceTitle": "Appropriate Use of Generative AI Tools | Office of Ethics, Risk, and Compliance Services",
+  "sourceLanguage": "en",
+  "snapshotHash": "53fb3a36f07d32da35583cf1daae65c4be93b999fd5fb8804fe292d571dd5076",
+  "evidenceSnippetOriginal": "In all cases, use should be consistent with UC Berkeley's Principles of Community and the UC Principles of Responsible AI.",
+  "evidenceLocator": "About Generative AI Tools section, opening paragraph",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Appropriate Use of Generative AI Tools | Office of Ethics, Risk, and Compliance Services",
+    "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "university-of-california-berkeley"
+}

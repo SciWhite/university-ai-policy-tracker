@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-unsw-004",
+  "sourceCandidateId": "sc-unsw-004",
+  "fetchAttemptId": "fa-sc-unsw-004",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+  "finalUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+  "sourceTitle": "Helping you guide your students | UNSW Staff Teaching Gateway",
+  "sourceLanguage": "en",
+  "contentHash": "2fb44fd83942ce5729dfc30b56ed295ca2883a13d06441b427ca9b6acfc841ca",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-unsw-004.txt"
+}

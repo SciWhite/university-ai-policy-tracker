@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-thu-sc-002",
+  "sourceCandidateId": "thu-sc-002",
+  "fetchAttemptId": "fa-thu-sc-002",
+  "sourceUrl": "https://www.tsinghua.edu.cn/en/info/1245/14598.htm",
+  "finalUrl": "https://www.tsinghua.edu.cn/en/info/1245/14598.htm",
+  "sourceTitle": "Tsinghua University releases comprehensive guiding principles for AI in education",
+  "sourceLanguage": "en",
+  "contentHash": "6faff69fc581e6ba0d01c88d70b50709dbdc659a657d76ac6519f279fc82aced",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/thu-sc-002.txt"
+}

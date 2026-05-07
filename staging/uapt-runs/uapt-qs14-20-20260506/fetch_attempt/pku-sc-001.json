@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-pku-sc-001",
+  "sourceCandidateId": "pku-sc-001",
+  "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "finalUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "d1e587a8dab6502a4ef59e10633212e32e1682744f543a38d437eb4c75da1186",
+  "normalizedTextStorageKey": "normalized/pku-sc-001.txt"
+}

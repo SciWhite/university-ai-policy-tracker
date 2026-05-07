@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-unsw-sydney-24",
+  "claimId": "claim-unsw-sydney-24",
+  "sourceSnapshotId": "ss-sc-unsw-005",
+  "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "finalUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "sourceTitle": "Student AI Guidelines | UNSW College Current Students Website",
+  "sourceLanguage": "en",
+  "snapshotHash": "480942a7fc762dbe43a517aeae7df90d5d042ca01cb56f314c0cc36bd115dc2a",
+  "evidenceSnippetOriginal": "You may use AI for an assessment if the instructions in your Course Outline permit its use.",
+  "evidenceLocator": "Section 'Appropriate Use of Generative AI' > Guideline 1",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Student AI Guidelines | UNSW College Current Students Website",
+    "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "unsw-sydney"
+}

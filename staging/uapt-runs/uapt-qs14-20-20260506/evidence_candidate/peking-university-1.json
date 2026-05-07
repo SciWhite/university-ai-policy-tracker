@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-peking-university-1",
+  "claimId": "claim-peking-university-1",
+  "sourceSnapshotId": "ss-pku-sc-001",
+  "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "finalUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+  "sourceTitle": "\u4f7f\u7528\u89c4\u8303\u8bf4\u660e - AI\u79d1\u7814\u8bda\u4fe1\u5e73\u53f0",
+  "sourceLanguage": "zh",
+  "snapshotHash": "d1e587a8dab6502a4ef59e10633212e32e1682744f543a38d437eb4c75da1186",
+  "evidenceSnippetOriginal": "\u8986\u76d6\u8bba\u6587\u9009\u9898\u3001\u6587\u732e\u68c0\u7d22\u4e0e\u7ba1\u7406\u3001\u7814\u7a76\u8bbe\u8ba1\u4e0e\u5b9e\u65bd\u3001\u8bba\u6587\u5199\u4f5c\u3001\u8bba\u6587\u6295\u7a3f\u3001\u8bba\u6587\u8bc4\u5ba1\u3001\u57fa\u91d1\u7533\u62a5\u4e0e\u8bc4\u5ba1\u4e03\u4e2a\u7814\u7a76\u73af\u8282\u3002",
+  "evidenceLocator": "\u4f7f\u7528\u8303\u56f4 section, first bullet point",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "\u4f7f\u7528\u89c4\u8303\u8bf4\u660e - AI\u79d1\u7814\u8bda\u4fe1\u5e73\u53f0",
+    "sourceUrl": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "peking-university"
+}

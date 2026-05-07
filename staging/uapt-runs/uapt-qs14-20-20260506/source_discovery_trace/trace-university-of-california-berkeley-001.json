@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-university-of-california-berkeley-001",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "startedAt": "2026-05-06T04:34:14Z",
+  "endedAt": "2026-05-06T04:34:14Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "opencli google search 'site:berkeley.edu generative AI policy'",
+      "domain": "berkeley.edu",
+      "resultCount": 0,
+      "notes": "OPENCLI_GOOGLE_SEARCH_BLOCKED - returned NOT_FOUND (likely CAPTCHA)"
+    },
+    {
+      "method": "public_web_search",
+      "query": "DuckDuckGo: site:berkeley.edu \"generative AI\" policy",
+      "domain": "berkeley.edu",
+      "resultCount": 5,
+      "notes": "DuckDuckGo browser search via OpenCLI. Found 5 official berkeley.edu results."
+    },
+    {
+      "method": "site_search",
+      "query": "Direct URL probing of berkeley.edu subdomains",
+      "domain": "berkeley.edu",
+      "resultCount": 5,
+      "notes": "Probed teaching.berkeley.edu, oercs.berkeley.edu, ai.berkeley.edu, academic-senate.berkeley.edu, re-ai.berkeley.edu. Found 5 accessible AI-related URLs."
+    },
+    {
+      "method": "path_expansion",
+      "query": "Probing known AI policy path patterns",
+      "domain": "berkeley.edu",
+      "resultCount": 2,
+      "notes": "Found 2 PDF documents on academic-senate and re-ai subdomains."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-berkeley-001",
+    "sc-berkeley-002",
+    "sc-berkeley-003",
+    "sc-berkeley-004",
+    "sc-berkeley-005"
+  ],
+  "rejectionIds": [
+    "sr-berkeley-001",
+    "sr-berkeley-002",
+    "sr-berkeley-003",
+    "sr-berkeley-004",
+    "sr-berkeley-005",
+    "sr-berkeley-006",
+    "sr-berkeley-007"
+  ],
+  "summary": "Found 5 candidates for UC Berkeley: 2 verified PDFs (Academic Senate generative AI guidance for instructors 2025, Responsible Use of Generative AI 2025), 3 verified Drupal pages needing JS rendering (OERCS AI page, OERCS Generative AI Tools page, Berkeley AI Hub guidance). 7 rejected URLs (stale 404s, inaccessible domains, login-required, research showcase redirect). OpenCLI Google search was blocked; used DuckDuckGo browser search as fallback."
+}

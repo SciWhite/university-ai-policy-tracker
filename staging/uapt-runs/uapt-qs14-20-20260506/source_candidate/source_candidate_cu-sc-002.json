@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cu-sc-002",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "sourceTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "robotsPolicy": "respect",
+  "queryUsed": "Cornell University generative AI policy teaching",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "Cornell CTI AI & Academic Integrity page. Recommends clear syllabus policies, documentation/attribution expectations, student responsibility for verifying AI output. References course policy icons."
+}

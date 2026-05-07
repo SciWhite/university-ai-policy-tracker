@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-22",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW requires that students must follow assessment instructions regarding AI use, that what students present must be their own work, and that students must acknowledge all sources including AI as an external source using proper referencing.",
+  "confidence": 0.96,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-004",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Students must follow the assessment instructions... What students present must be their own work... Students must acknowledge sources. Students should attribute all sources using proper referencing, unless the assessment nature or instructions exempt them from doing so. External sources that must be referenced include both the work of others and sources from digital or physical objects, with AI classified as an external source.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-22"
+  ],
+  "citation": {
+    "citationTitle": "Helping you guide your students | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

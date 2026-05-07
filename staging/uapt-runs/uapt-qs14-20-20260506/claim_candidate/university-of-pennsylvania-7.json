@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-7",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Penn educators should provide students with clear guidelines on the use of AI within coursework and should disclose to students when course materials have been created with AI or when AI detection software will be used.",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-001",
+  "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "As expectations may vary between classes and instructors, it is important for instructors to provide students with clear guidelines similar to the guidelines on collaboration, on the use of AI within coursework, and when and how the use of AI within a course should be cited. Disclose to students when course materials have been created with the use of AI and when AI detection software will be used in the course.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-7"
+  ],
+  "citation": {
+    "citationTitle": "Statement on Guidance for the University of Pennsylvania Community on Use of Generative Artificial Intelligence",
+    "sourceUrl": "https://isc.upenn.edu/security/AI-guidance",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

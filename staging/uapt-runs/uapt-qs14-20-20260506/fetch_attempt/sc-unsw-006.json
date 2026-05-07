@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-unsw-006",
+  "sourceCandidateId": "sc-unsw-006",
+  "sourceUrl": "https://www.inside.unsw.edu.au/innovation-and-engagement/are-you-aware-unsws-new-ai-principles",
+  "finalUrl": "https://www.inside.unsw.edu.au/innovation-and-engagement/are-you-aware-unsws-new-ai-principles",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "d4f62e3d035e16bcf2620ee3ad7f1dfc3694f5b41f4f68bb73f6ccd53902a9bf",
+  "normalizedTextStorageKey": "normalized/sc-unsw-006.txt"
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-upenn-sc-004",
+  "sourceCandidateId": "upenn-sc-004",
+  "fetchAttemptId": "fa-upenn-sc-004",
+  "sourceUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+  "finalUrl": "https://academy.wharton.upenn.edu/ai-policy/",
+  "sourceTitle": "AI Policy - Wharton Academy",
+  "sourceLanguage": "en",
+  "contentHash": "4d88979a360331eac5a73374686cdfc1253dc9e9f260201910843be2f1ccc156",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/upenn-sc-004.txt"
+}

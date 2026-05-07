@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-sc-unsw-007",
+  "sourceCandidateId": "sc-unsw-007",
+  "sourceUrl": "https://www.education.unsw.edu.au/news-events/news/genai-update-june-2023",
+  "finalUrl": "https://www.education.unsw.edu.au/news-events/news/genai-update-june-2023",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "1096262dab754a5ea23a65f1479127c13267baf1d621c2fb21bc82125ac62b72",
+  "normalizedTextStorageKey": "normalized/sc-unsw-007.txt"
+}

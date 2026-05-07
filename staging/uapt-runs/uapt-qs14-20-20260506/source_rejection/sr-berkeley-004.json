@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "sourceRejectionId": "sr-berkeley-004",
+  "sourceUrl": "https://academicintegrity.berkeley.edu",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "inaccessible",
+  "checkedBy": "crawl-designer",
+  "notes": "Connection refused (000). Domain may not resolve or host is down."
+}

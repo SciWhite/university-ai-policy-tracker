@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-sc-berkeley-003",
+  "sourceCandidateId": "sc-berkeley-003",
+  "fetchAttemptId": "fa-sc-berkeley-003",
+  "sourceUrl": "https://ai.berkeley.edu/guidance-use-ai",
+  "finalUrl": "https://ai.berkeley.edu/guidance-use-ai",
+  "sourceTitle": "Guidance on the use of AI | Berkeley AI Hub",
+  "sourceLanguage": "en",
+  "contentHash": "2bf26ddd14aad49a54c68a5cc18bca60e80b2299496a508d8d24a1846dbeaa37",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/sc-berkeley-003.txt"
+}

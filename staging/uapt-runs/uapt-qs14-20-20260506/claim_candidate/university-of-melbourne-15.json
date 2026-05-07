@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-melbourne-15",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "claimType": "other",
+  "claimText": "At the University of Melbourne, generative AI tools can only be used in research outputs where the material generated or substantially altered by these tools is acknowledged according to the University's policy and the Australian Code for the Responsible Conduct of Research.",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-melbourne-004",
+  "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Generative AI tools can only be used if material that is generated or substantially altered by these tools is acknowledged according to the University's policy and the Australian Code for the Responsible Conduct of Research.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-melbourne-15"
+  ],
+  "citation": {
+    "citationTitle": "UoM Submission: Inquiry into Generative AI in Education",
+    "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "university-of-melbourne",
+  "sourceRejectionId": "sr-melbourne-005",
+  "sourceUrl": "https://www.unimelb.edu.au/__data/assets/pdf_file/0008/5165513/ip-issues-paper-complete-2-12.pdf",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "crawl-designer",
+  "notes": "HTTP 403 Cloudflare challenge. URL title suggests IP issues paper - unclear AI relevance. Low specificity without content verification."
+}

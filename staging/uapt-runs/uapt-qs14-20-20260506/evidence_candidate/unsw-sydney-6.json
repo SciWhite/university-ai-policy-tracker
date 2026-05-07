@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-unsw-sydney-6",
+  "claimId": "claim-unsw-sydney-6",
+  "sourceSnapshotId": "ss-sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "finalUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "sourceTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+  "sourceLanguage": "en",
+  "snapshotHash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a",
+  "evidenceSnippetOriginal": "All academics marking assessments submitted through either Moodle Turnitin Assignment or Inspera now have access to Turnitin's new AI detection tool. This provides academics with an estimated percentage of text that has similarities to AI-generated or AI-paraphrased text. This is not always conclusive evidence that a student has inappropriately used generative AI, however, this will be a flag for a marker to further review a student's submission.",
+  "evidenceLocator": "FAQ section 'How does Turnitin's AI detection tool work?'",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+    "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "unsw-sydney"
+}

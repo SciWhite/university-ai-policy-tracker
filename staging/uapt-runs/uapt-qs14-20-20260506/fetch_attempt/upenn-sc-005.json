@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-upenn-sc-005",
+  "sourceCandidateId": "upenn-sc-005",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+  "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+  "attemptedAt": "2026-05-06T04:55:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "outcome": "success",
+  "contentHash": "dcc7eb4cba6625c4f5fa2bf9999343eddc5908975b986595820e089009f95a8b",
+  "normalizedTextStorageKey": "normalized/upenn-sc-005.txt"
+}

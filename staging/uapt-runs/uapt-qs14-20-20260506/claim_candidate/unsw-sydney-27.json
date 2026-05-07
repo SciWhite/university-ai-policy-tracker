@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-27",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW College requires that if AI is permitted for an assessment, students must acknowledge and reference the AI tool using the referencing style for their course and program (e.g., APA Style Referencing 7th edition).",
+  "confidence": 0.96,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-005",
+  "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "If you are permitted to use AI for part or all of your assessment, you must: Acknowledge and reference the AI tool using the referencing style for your course and program. For example, APA Style Referencing 7th edition.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-27"
+  ],
+  "citation": {
+    "citationTitle": "Student AI Guidelines | UNSW College Current Students Website",
+    "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "thu-sc-002",
+  "entityType": "university",
+  "entitySlug": "tsinghua-university",
+  "sourceUrl": "https://www.tsinghua.edu.cn/en/info/1245/14598.htm",
+  "sourceTitle": "Tsinghua University releases comprehensive guiding principles for AI in education",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "robotsPolicy": "respect",
+  "queryUsed": "Tsinghua University artificial intelligence education guidelines principles",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "HTTP fetch and source snapshot succeeded for this Tsinghua official English source. No approved claim currently depends on this source snapshot; retained as a verified supporting candidate for traceability."
+}

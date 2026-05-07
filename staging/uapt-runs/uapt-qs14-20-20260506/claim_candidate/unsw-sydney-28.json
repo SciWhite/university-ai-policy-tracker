@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-28",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW College permits AI tools for refining writing only when an AI assessment icon indicates it is allowed, for purposes including refining spelling and grammar, revising style and tone, improving clarity, improving vocabulary, checking similarity, assisting proofreading, and self-marking against a rubric.",
+  "confidence": 0.94,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-005",
+  "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "If an AI assessment icon says you can refine your writing with AI tools or as a copyediting tool, you may be permitted to use these tools for the following: Refine spelling and grammar. Revise style and tone. Improve clarity and coherence of writing. Improve vocabulary. Check your document for similarity to online sources. Assist in proofreading. Self-mark an assessment against a marking rubric.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-28"
+  ],
+  "citation": {
+    "citationTitle": "Student AI Guidelines | UNSW College Current Students Website",
+    "sourceUrl": "https://my.unswcollege.edu.au/student-support/student-ai-guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

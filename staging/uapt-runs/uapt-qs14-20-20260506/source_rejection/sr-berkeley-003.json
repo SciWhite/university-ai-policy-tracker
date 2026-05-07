@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "sourceRejectionId": "sr-berkeley-003",
+  "sourceUrl": "https://teaching.berkeley.edu/resources/guidance-artificial-intelligence-tools-teaching",
+  "rejectedAt": "2026-05-06T04:34:14Z",
+  "rejectionReason": "stale_404",
+  "checkedBy": "crawl-designer",
+  "notes": "HTTP 404. URL does not exist."
+}

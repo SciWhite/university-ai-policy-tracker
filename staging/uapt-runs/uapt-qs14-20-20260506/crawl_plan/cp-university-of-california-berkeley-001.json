@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "crawl_plan",
+  "planId": "cp-university-of-california-berkeley-001",
+  "createdAt": "2026-05-06T04:34:14Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-california-berkeley",
+      "sourceCandidateId": "sc-berkeley-004",
+      "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+      "sourceTitle": "Generative AI Guidance for Instructors 2025",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "generative_ai_guidance",
+        "instructor_guidance",
+        "teaching_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-california-berkeley",
+      "sourceCandidateId": "sc-berkeley-005",
+      "sourceUrl": "https://re-ai.berkeley.edu/sites/default/files/responsible_use_of_generative_ai_uc_berkeley_2025.pdf",
+      "sourceTitle": "Responsible Use of Generative AI - UC Berkeley 2025",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "responsible_use",
+        "generative_ai_policy",
+        "university_policy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-california-berkeley",
+      "sourceCandidateId": "sc-berkeley-002",
+      "sourceUrl": "https://oercs.berkeley.edu/appropriate-use-generative-ai-tools",
+      "sourceTitle": "Appropriate Use of Generative AI Tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "playwright",
+        "opencli"
+      ],
+      "expectedThemes": [
+        "appropriate_use",
+        "generative_ai_tools",
+        "compliance_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-california-berkeley",
+      "sourceCandidateId": "sc-berkeley-003",
+      "sourceUrl": "https://ai.berkeley.edu/guidance-use-ai",
+      "sourceTitle": "Guidance on the use of AI | Berkeley AI Hub",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "playwright",
+        "opencli"
+      ],
+      "expectedThemes": [
+        "ai_guidance",
+        "ai_hub",
+        "university_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-california-berkeley",
+      "sourceCandidateId": "sc-berkeley-001",
+      "sourceUrl": "https://oercs.berkeley.edu/artificial-intelligence",
+      "sourceTitle": "Artificial Intelligence | Office of Ethics, Risk, and Compliance Services",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "playwright",
+        "opencli"
+      ],
+      "expectedThemes": [
+        "ai_policy",
+        "ethics_compliance",
+        "it_security"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_verified_targets_fetched",
+    "waf_blocked_targets_escalated"
+  ]
+}

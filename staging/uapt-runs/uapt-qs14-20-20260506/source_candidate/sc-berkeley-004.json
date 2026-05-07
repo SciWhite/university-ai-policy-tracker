@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "university-of-california-berkeley",
+  "discoveredAt": "2026-05-06T04:34:14Z",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "sc-berkeley-004",
+  "sourceUrl": "https://academic-senate.berkeley.edu/sites/default/files/genai_guidance_for_instructors_2025.pdf",
+  "sourceTitle": "Generative AI Guidance for Instructors 2025",
+  "sourceLanguage": "en",
+  "sourceType": "official_pdf",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:berkeley.edu \"generative AI\" policy",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-06T04:34:14Z",
+  "verificationNotes": "HTTP 200, content-type: application/pdf. Last-Modified: 2025-08-13. Official UC Berkeley Academic Senate subdomain. PDF explicitly titled as generative AI guidance for instructors."
+}

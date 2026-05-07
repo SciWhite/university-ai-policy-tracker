@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-20",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell's IT guidelines endorse a flexible framework in which faculty and instructors can choose to prohibit, allow with attribution, or encourage generative AI use in education.",
+  "confidence": 0.93,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-004",
+  "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Cornell encourages a flexible framework in which faculty and instructors can choose to prohibit, to allow with attribution, or to encourage generative AI use.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-20"
+  ],
+  "citation": {
+    "citationTitle": "Guidelines for Artificial Intelligence | IT@Cornell",
+    "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

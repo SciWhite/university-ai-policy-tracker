@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-cornell-university-6",
+  "claimId": "claim-cornell-university-6",
+  "sourceSnapshotId": "ss-cu-sc-002",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+  "sourceTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "snapshotHash": "dc5bf374079a8450be06eca45adafca010faa27d86c5d2ea70da2fca9a166662",
+  "evidenceSnippetOriginal": "Discuss with students how generative AI output can be incorrect or problematic and that they are responsible for verifying the output and references if AI use is allowed for an assignment.",
+  "evidenceLocator": "Opening paragraph of AI & Academic Integrity page",
+  "evidenceType": "official_source",
+  "relevance": 0.92,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI & Academic Integrity | Center for Teaching Innovation",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "cornell-university"
+}

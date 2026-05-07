@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-cu-sc-006",
+  "sourceCandidateId": "cu-sc-006",
+  "fetchAttemptId": "fa-cu-sc-006",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-course-policy-icons",
+  "sourceTitle": "AI Course Policy Icons | Center for Teaching Innovation",
+  "sourceLanguage": "en",
+  "contentHash": "04f6b71ef9ef4fcd47a7d53be6aca3d0929c179dd7a2262df68a5bea184951ad",
+  "fetchedAt": "2026-05-06T04:55:45Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/cu-sc-006.txt"
+}

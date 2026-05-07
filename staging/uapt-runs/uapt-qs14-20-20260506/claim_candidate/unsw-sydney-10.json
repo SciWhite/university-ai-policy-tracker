@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-10",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW has published six AI principles: AI use must benefit UNSW and society; be equitable and respectful of human rights; be trustworthy, safe, and reliable; be transparent; be identifiable, explainable, and contestable; and be secure and resilient.",
+  "confidence": 0.96,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-001",
+  "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "The use of AI systems at UNSW benefits UNSW, individuals, society, and the environment. The use of AI systems at UNSW is equitable, and respectful of human rights, diversity, inclusivity, and accessibility. AI systems and their lifecycle at UNSW are trustworthy and are used responsibly, safely, and reliably in accordance with their intended purpose. The use of AI systems is transparent, and people understand when the AI system is engaging with or impacting them, the environment, and/or society. AI systems and their lifecycle used at UNSW are identifiable, explainable, interpretable, accountable, and contestable. AI systems and their lifecycle used at UNSW are secure and resilient.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-10"
+  ],
+  "citation": {
+    "citationTitle": "Using AI in university | Current Students \u2013 UNSW Sydney",
+    "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

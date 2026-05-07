@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "pku-rj-001",
+  "entityType": "university",
+  "entitySlug": "peking-university",
+  "sourceUrl": "https://ccj.pku.edu.cn/article/info?aid=357335371",
+  "rejectedAt": "2026-05-06T04:44:48.680Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "crawl-designer",
+  "sourceCandidateId": "pku-sc-002",
+  "notes": "Academic journal article, not institutional policy guidance."
+}

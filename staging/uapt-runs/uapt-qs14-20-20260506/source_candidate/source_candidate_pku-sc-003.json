@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "pku-sc-003",
+  "entityType": "university",
+  "entitySlug": "peking-university",
+  "sourceUrl": "https://dean.pku.edu.cn/web/rules_info.php?id=166",
+  "sourceTitle": "北京大学本科毕业论文（设计）工作管理办法",
+  "sourceLanguage": "zh",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-06T04:44:48.680Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.3,
+  "policySpecificityScore": 0.3,
+  "verificationStatus": "rejected",
+  "robotsPolicy": "respect",
+  "queryUsed": "北京大学 教务处 人工智能 毕业论文 规定",
+  "verifiedAt": "2026-05-06T04:44:48.680Z",
+  "verificationNotes": "PKU undergraduate thesis management rules (2021 revision). General academic policy but does not specifically address AI use. Mentions academic integrity broadly."
+}

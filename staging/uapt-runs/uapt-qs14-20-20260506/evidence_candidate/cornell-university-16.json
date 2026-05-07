@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-cornell-university-16",
+  "claimId": "claim-cornell-university-16",
+  "sourceSnapshotId": "ss-cu-sc-003",
+  "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "finalUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+  "sourceTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+  "sourceLanguage": "en",
+  "snapshotHash": "deeacd6dce5b944ffc00d979b34c83f57677a2f04ceb39c803a701b72d8caab6",
+  "evidenceSnippetOriginal": "We recommend instructors consider three kinds of policies either for individual assignments or generally in their courses. To prohibit the use of GAI where it interferes with the student developing foundational understanding, skills, and knowledge needed for future courses and careers. To allow with attribution where GAI could be a useful resource, but the instructor needs to be aware of its use by the student and the student must learn to take responsibility for accuracy and correct attribution of GAI-generated content. To encourage and actively integrate GAI into the learning process where students can leverage GAI to focus on higher-level learning objectives, explore creative ideas, or...",
+  "evidenceLocator": "Executive summary, Recommendations subsection",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "CU Committee Report: Generative Artificial Intelligence for Education and Pedagogy",
+    "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "entitySlug": "cornell-university"
+}

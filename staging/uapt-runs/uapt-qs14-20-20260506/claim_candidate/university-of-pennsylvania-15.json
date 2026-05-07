@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-university-of-pennsylvania-15",
+  "entityType": "university",
+  "entitySlug": "university-of-pennsylvania",
+  "claimType": "other",
+  "claimText": "Penn provides several licensed AI tools to its community, including Copilot Chat (Basic, free), Adobe Express (free), ChatGPT-EDU (purchase required), M365 Copilot Premium (purchase required), Gemini for Google Workspace (purchase required), Google NotebookLM (purchase required), Grammarly Pro (purchase required), Snowflake Data Analytics (purchase required), and Zoom AI Companion (free).",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-upenn-sc-002",
+  "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Penn offers access to a number of AI tools. The guidelines for protecting student privacy while using these tools are informed by the data risk classification and the privacy agreements of the tool being used.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-university-of-pennsylvania-15"
+  ],
+  "citation": {
+    "citationTitle": "Penn AI Guidance and Policies",
+    "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

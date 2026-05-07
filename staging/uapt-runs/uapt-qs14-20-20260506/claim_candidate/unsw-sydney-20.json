@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-unsw-sydney-20",
+  "entityType": "university",
+  "entitySlug": "unsw-sydney",
+  "claimType": "other",
+  "claimText": "UNSW has developed an AI capability framework for teaching staff covering common knowledge (what is AI, prompts, evaluating outputs), AI governance, ethical and responsible use, assessment and learning, and technology (Microsoft Copilot, Adobe Firefly, Scite.ai).",
+  "confidence": 0.94,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-sc-unsw-003",
+  "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "To equip our staff to meet the university's evolving AI needs, UNSW has developed a framework that aims to guide staff with the knowledge and skills to navigate in an AI-driven academic environment.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-unsw-sydney-20"
+  ],
+  "citation": {
+    "citationTitle": "UNSW's AI Guidelines and Framework | UNSW Staff Teaching Gateway",
+    "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidelines",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs14-20-20260506",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cornell-university-23",
+  "entityType": "university",
+  "entitySlug": "cornell-university",
+  "claimType": "other",
+  "claimText": "Cornell established the GenAI Education Working Group in spring 2024 with all-college representation including faculty, staff, and students, as the central body for developing new ideas, policies, and practices around generative AI in the classroom.",
+  "confidence": 0.93,
+  "reviewState": "machine_candidate",
+  "sourceSnapshotId": "ss-cu-sc-005",
+  "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+  "sourceLanguage": "en",
+  "evidenceSnippetOriginal": "Established in spring 2024 with all-college representation including faculty, staff and students, the Cornell GenAI Education Working Group, a part of the university-wide AI Advisory Council, is the central place in which new ideas, policies and practices around GenAI in the classroom are being worked out at Cornell.",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "ev-cornell-university-23"
+  ],
+  "citation": {
+    "citationTitle": "GenAI in Teaching and Learning \u2013 Academic Innovation",
+    "sourceUrl": "https://academicinnovation.cornell.edu/gen-ai/",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}
