@@ -16,6 +16,7 @@ import {
   publicRecentChangesResponseSchema,
   type CatalogSourceRecord,
   type CatalogUniversity,
+  type CatalogUniversityRanking,
   type ClaimEvidence,
   type ClaimReviewState,
   type OpenClawStagedArtifact,
@@ -42,13 +43,55 @@ interface RankingRecord {
   rankText: string;
   rankNumber: number;
   name: string;
-  city?: string;
+  city?: string | null;
   countryOrRegion: string;
-  overallScore?: number;
+  overallScore?: number | null;
 }
 
-interface RankingSource {
+interface RankingSourceDocument {
+  rankingSystemId?: RankingSystemId;
+  rankingSystem: string;
+  rankingYear: number | string;
+  source?: {
+    url?: string;
+  };
+  crawlStatus?: {
+    status?: RankingSourceStatus;
+    notes?: string[];
+  };
+  rankSemantics?: {
+    rankType?: RankingRankType;
+  };
   universities: RankingRecord[];
+}
+
+type RankingSystemId = "qs" | "the" | "arwu" | "usnews" | "cwts";
+type RankingSourceStatus = "complete" | "partial" | "blocked" | "not_yet_released";
+type RankingRankType = "official_ordinal" | "derived_metric_order";
+
+interface RankingSourceIndex {
+  sources: RankingSourceIndexEntry[];
+}
+
+interface RankingSourceIndexEntry {
+  rankingSystemId: RankingSystemId;
+  rankingSystem: string;
+  rankingYear: number | string;
+  file: string;
+  sourceUrl?: string;
+  status?: RankingSourceStatus;
+  rankType?: RankingRankType;
+  notes?: string[];
+}
+
+interface RankingRecordWithSource {
+  record: RankingRecord;
+  source: RankingSourceIndexEntry;
+}
+
+interface RankingMatch {
+  primary?: RankingRecord;
+  rankings: CatalogUniversityRanking[];
 }
 
 interface PublicReleaseManifest {
@@ -151,12 +194,15 @@ export async function getStagedRecentChangesEnvelope(): Promise<PublicRecentChan
 async function buildStagedPublicDataset(): Promise<PublicDataset> {
   const repoRoot = await findRepoRoot();
   const artifacts = await readStagedArtifacts(repoRoot);
-  const rankings = await readRankings(repoRoot);
-  const rankingBySlug = buildRankingIndex(rankings);
+  const rankingSources = await readRankingSources(repoRoot);
+  const rankingBySlug = buildRankingIndex(rankingSources);
   const byEntity = groupArtifactsByEntity(artifacts);
   const publicSummaries = Array.from(byEntity.values())
     .map((entityArtifacts) =>
-      buildPublicSummary(entityArtifacts, rankingBySlug.get(entityArtifacts.slug))
+      buildPublicSummary(
+        entityArtifacts,
+        rankingBySlug.get(entityArtifacts.slug)?.primary
+      )
     )
     .filter((summary): summary is PublicEntitySummary => Boolean(summary))
     .sort((left, right) => left.entity.name.localeCompare(right.entity.name));
@@ -595,15 +641,18 @@ function buildOfficialSources(
 
 function buildCatalogUniversity(
   summary: PublicEntitySummary,
-  ranking: RankingRecord | undefined
+  rankingMatch: RankingMatch | undefined
 ): CatalogUniversity {
   const firstSourceUrl = summary.officialSources[0]?.sourceUrl ?? summary.canonicalUrl;
+  const locationRanking =
+    rankingMatch?.primary ??
+    rankingMatch?.rankings.find((ranking) => ranking.countryOrRegion);
 
   return {
     slug: summary.entity.slug,
     name: summary.entity.name,
-    country: ranking?.countryOrRegion ?? "Unknown",
-    region: ranking?.city ?? "Unknown",
+    country: locationRanking?.countryOrRegion ?? "Unknown",
+    region: locationRanking?.city ?? "Unknown",
     website: new URL("/", firstSourceUrl).toString(),
     summary: summary.summary,
     sourceCount: summary.officialSources.length,
@@ -618,7 +667,8 @@ function buildCatalogUniversity(
       tools: [],
       lastCheckedAt: source.retrievedAt ?? summary.lastCheckedAt,
       lastChangedAt: summary.lastChangedAt
-    }))
+    })),
+    rankings: rankingMatch?.rankings ?? []
   };
 }
 
@@ -631,48 +681,160 @@ function mapCatalogReviewState(
   return reviewState;
 }
 
-async function readRankings(repoRoot: string): Promise<RankingRecord[]> {
-  const ranking = await readJson(
-    path.join(
-      repoRoot,
-      "data",
-      "rankings",
-      "qs-world-university-rankings-2026-top-100.json"
-    )
+async function readRankingSources(
+  repoRoot: string
+): Promise<RankingRecordWithSource[]> {
+  const rankingRoot = path.join(repoRoot, "data", "rankings");
+  const sources: RankingRecordWithSource[] = [];
+  const qsTop100 = await readJson(
+    path.join(rankingRoot, "qs-world-university-rankings-2026-top-100.json")
   );
 
-  if (!isRankingSource(ranking)) return [];
+  if (isRankingSourceDocument(qsTop100)) {
+    sources.push(
+      ...expandRankingSource(qsTop100, {
+        rankingSystemId: "qs",
+        rankingSystem: qsTop100.rankingSystem,
+        rankingYear: qsTop100.rankingYear,
+        file: "qs-world-university-rankings-2026-top-100.json",
+        sourceUrl: qsTop100.source?.url,
+        status: "complete",
+        rankType: "official_ordinal",
+        notes: ["Canonical QS seed used for current QS batching."]
+      })
+    );
+  }
 
-  return ranking.universities;
+  const index = await readJson(path.join(rankingRoot, "ranking-index.json"));
+
+  if (isRankingSourceIndex(index)) {
+    for (const entry of index.sources) {
+      const document = await readJson(path.join(rankingRoot, entry.file));
+      if (!isRankingSourceDocument(document)) continue;
+      sources.push(...expandRankingSource(document, entry));
+    }
+  }
+
+  return sources;
 }
 
-function isRankingSource(value: unknown): value is RankingSource {
-  return isRecord(value) && Array.isArray(value.universities);
+function expandRankingSource(
+  document: RankingSourceDocument,
+  fallback: RankingSourceIndexEntry
+): RankingRecordWithSource[] {
+  const source: RankingSourceIndexEntry = {
+    ...fallback,
+    rankingSystemId: document.rankingSystemId ?? fallback.rankingSystemId,
+    rankingSystem: document.rankingSystem ?? fallback.rankingSystem,
+    rankingYear: document.rankingYear ?? fallback.rankingYear,
+    sourceUrl: document.source?.url ?? fallback.sourceUrl,
+    status: document.crawlStatus?.status ?? fallback.status,
+    rankType: document.rankSemantics?.rankType ?? fallback.rankType,
+    notes: [...(fallback.notes ?? []), ...(document.crawlStatus?.notes ?? [])]
+  };
+
+  return document.universities.map((record) => ({ record, source }));
 }
 
-function buildRankingIndex(rankings: RankingRecord[]): Map<string, RankingRecord> {
-  const index = new Map<string, RankingRecord>();
+function isRankingSourceDocument(value: unknown): value is RankingSourceDocument {
+  return (
+    isRecord(value) &&
+    typeof value.rankingSystem === "string" &&
+    (typeof value.rankingYear === "number" ||
+      typeof value.rankingYear === "string") &&
+    Array.isArray(value.universities)
+  );
+}
+
+function isRankingSourceIndex(value: unknown): value is RankingSourceIndex {
+  return (
+    isRecord(value) &&
+    Array.isArray(value.sources) &&
+    value.sources.every(
+      (source) =>
+        isRecord(source) &&
+        isRankingSystemId(source.rankingSystemId) &&
+        typeof source.rankingSystem === "string" &&
+        typeof source.file === "string"
+    )
+  );
+}
+
+function isRankingSystemId(value: unknown): value is RankingSystemId {
+  return (
+    value === "qs" ||
+    value === "the" ||
+    value === "arwu" ||
+    value === "usnews" ||
+    value === "cwts"
+  );
+}
+
+function buildRankingIndex(
+  rankings: RankingRecordWithSource[]
+): Map<string, RankingMatch> {
+  const index = new Map<string, RankingMatch>();
+  const seenSystemsBySlug = new Map<string, Set<RankingSystemId>>();
 
   for (const ranking of rankings) {
-    for (const slug of buildRankingSlugs(ranking.name)) {
-      index.set(slug, ranking);
+    for (const slug of buildRankingSlugs(ranking.record.name)) {
+      const seenSystems = seenSystemsBySlug.get(slug) ?? new Set<RankingSystemId>();
+      if (seenSystems.has(ranking.source.rankingSystemId)) continue;
+
+      const match = index.get(slug) ?? { rankings: [] };
+      match.rankings.push(buildCatalogRanking(ranking));
+      if (!match.primary && ranking.source.rankingSystemId === "qs") {
+        match.primary = ranking.record;
+      }
+      index.set(slug, match);
+      seenSystems.add(ranking.source.rankingSystemId);
+      seenSystemsBySlug.set(slug, seenSystems);
     }
   }
 
   return index;
 }
 
+function buildCatalogRanking(
+  ranking: RankingRecordWithSource
+): CatalogUniversityRanking {
+  return {
+    systemId: ranking.source.rankingSystemId,
+    systemName: ranking.source.rankingSystem,
+    rankingYear: ranking.source.rankingYear,
+    rankText: ranking.record.rankText,
+    rankNumber: ranking.record.rankNumber,
+    rowNumber: ranking.record.rowNumber,
+    countryOrRegion: ranking.record.countryOrRegion,
+    city: ranking.record.city,
+    overallScore: ranking.record.overallScore,
+    status: ranking.source.status,
+    rankType: ranking.source.rankType,
+    sourceUrl: ranking.source.sourceUrl,
+    notes: dedupeBy(ranking.source.notes ?? [], (note) => note)
+  };
+}
+
 function buildRankingSlugs(name: string): string[] {
   const withoutParentheses = name.replace(/\([^)]*\)/g, "").trim();
-  const slugs = new Set([slugify(name), slugify(withoutParentheses)]);
+  const slugs = new Set(
+    [name, withoutParentheses, ...buildRankingNameVariants(name)]
+      .map(slugify)
+      .filter(Boolean)
+  );
   const shortAliases: Record<string, string[]> = {
     "australian-national-university": ["anu"],
     "california-institute-of-technology": ["caltech"],
+    "chin-university-hong-kong": ["the-chinese-university-of-hong-kong"],
     "columbia-university": ["columbia"],
+    "eth-zurich": ["eth-zurich-swiss-federal-institute-of-technology"],
     "johns-hopkins-university": ["jhu"],
     "king-s-college-london": ["kcl", "kings-college-london"],
     "kings-college-london": ["kcl"],
+    "massachusetts-institute-of-technology": ["mit"],
+    "mit": ["massachusetts-institute-of-technology"],
     "monash-university": ["monash"],
+    "natl-university-singapore": ["national-university-of-singapore", "nus"],
     "national-university-of-singapore": ["nus", "national-university-of-singapore"],
     "nanyang-technological-university-singapore": [
       "nanyang-technological-university",
@@ -689,6 +851,11 @@ function buildRankingSlugs(name: string): string[] {
     "the-university-of-queensland": ["university-of-queensland"],
     "the-university-of-tokyo": ["u-tokyo"],
     "university-of-british-columbia": ["ubc"],
+    "university-coll-london": ["university-college-london", "ucl"],
+    "university-hong-kong": ["the-university-of-hong-kong"],
+    "university-michigan": ["university-of-michigan-ann-arbor"],
+    "university-oxford": ["university-of-oxford"],
+    "university-cambridge": ["university-of-cambridge"],
     "university-of-california-berkeley": ["uc-berkeley"],
     "university-of-california-berkeley-ucb": ["university-of-california-berkeley"],
     "university-of-michigan-ann-arbor": ["university-of-michigan-ann-arbor"]
@@ -699,6 +866,44 @@ function buildRankingSlugs(name: string): string[] {
   }
 
   return Array.from(slugs);
+}
+
+function buildRankingNameVariants(name: string): string[] {
+  const cleanName = name.replace(/\([^)]*\)/g, "").trim();
+  const variants = new Set<string>();
+  const replacements: Array<[RegExp, string]> = [
+    [/\bUniv\b/g, "University"],
+    [/\bColl\b/g, "College"],
+    [/\bInst\b/g, "Institute"],
+    [/\bNatl\b/g, "National"],
+    [/\bSci\b/g, "Science"],
+    [/\bTechnol\b/g, "Technology"],
+    [/\bTech\b/g, "Technology"],
+    [/\bPolit\b/g, "Political"]
+  ];
+  const expanded = replacements.reduce(
+    (value, [pattern, replacement]) => value.replace(pattern, replacement),
+    cleanName
+  );
+
+  variants.add(expanded);
+  if (/^Univ\s+/i.test(cleanName)) {
+    variants.add(cleanName.replace(/^Univ\s+/i, "University of "));
+  }
+  if (/\s+Univ$/i.test(cleanName)) {
+    variants.add(cleanName.replace(/\s+Univ$/i, " University"));
+  }
+  if (/^Natl\s+Univ\s+/i.test(cleanName)) {
+    variants.add(cleanName.replace(/^Natl\s+Univ\s+/i, "National University of "));
+  }
+  if (/^Univ\s+Coll\s+/i.test(cleanName)) {
+    variants.add(cleanName.replace(/^Univ\s+Coll\s+/i, "University College "));
+  }
+  if (/\s+Coll\s+/i.test(cleanName)) {
+    variants.add(cleanName.replace(/\s+Coll\s+/i, " College "));
+  }
+
+  return Array.from(variants);
 }
 
 function deriveEntityName(entityArtifacts: EntityArtifacts): string {

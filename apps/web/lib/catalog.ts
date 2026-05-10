@@ -125,7 +125,8 @@ function getSeedCatalogUniversities(): CatalogUniversity[] {
   return seedUniversities.map((university) => ({
     ...university,
     sourceCount: university.sources.length,
-    sources: university.sources.map((source) => ({ ...source }))
+    sources: university.sources.map((source) => ({ ...source })),
+    rankings: []
   }));
 }
 

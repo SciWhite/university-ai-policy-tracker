@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "uapt-ranking-index-v1",
+  "generatedAt": "2026-05-10T15:05:18.983Z",
+  "purpose": "Local ranking-source index for prioritizing university AI policy collection and future frontend ranking filters.",
+  "sourcePolicy": "Use official public ranking pages or official public data releases where available. Do not infer unavailable 2026 editions; preserve latest available official year per ranking system.",
+  "sources": [
+    {
+      "rankingSystemId": "qs",
+      "rankingSystem": "QS World University Rankings",
+      "rankingYear": 2026,
+      "scope": "top-1000-requested",
+      "file": "qs-world-university-rankings-2026-top-1000.json",
+      "sourceUrl": "https://www.topuniversities.com/world-university-rankings",
+      "status": "partial",
+      "recordCount": 857,
+      "requestedLimit": 1000,
+      "rankType": "official_ordinal",
+      "notes": [
+        "Only 857 rows were extracted from the official public pagination; do not use this file as a complete QS top-1000 source yet."
+      ]
+    },
+    {
+      "rankingSystemId": "the",
+      "rankingSystem": "Times Higher Education World University Rankings",
+      "rankingYear": 2026,
+      "scope": "top-1000",
+      "file": "the-world-university-rankings-2026-top-1000.json",
+      "sourceUrl": "https://www.timeshighereducation.com/world-university-rankings/latest/world-ranking",
+      "status": "complete",
+      "recordCount": 1000,
+      "requestedLimit": 1000,
+      "rankType": "official_ordinal",
+      "notes": []
+    },
+    {
+      "rankingSystemId": "arwu",
+      "rankingSystem": "Academic Ranking of World Universities",
+      "rankingYear": 2025,
+      "scope": "top-1000",
+      "file": "arwu-world-university-rankings-2025-top-1000.json",
+      "sourceUrl": "https://www.shanghairanking.com/rankings/arwu/2025",
+      "status": "complete",
+      "recordCount": 1000,
+      "requestedLimit": 1000,
+      "rankType": "official_ordinal",
+      "notes": [
+        "Do not label this as ARWU 2026 unless ShanghaiRanking publishes the 2026 global ARWU."
+      ]
+    },
+    {
+      "rankingSystemId": "usnews",
+      "rankingSystem": "U.S. News Best Global Universities",
+      "rankingYear": "2025-2026",
+      "scope": "top-1000",
+      "file": "usnews-best-global-universities-2025-2026-top-1000.json",
+      "sourceUrl": "https://www.usnews.com/education/best-global-universities/rankings",
+      "status": "complete",
+      "recordCount": 1000,
+      "requestedLimit": 1000,
+      "rankType": "official_ordinal",
+      "notes": []
+    },
+    {
+      "rankingSystemId": "cwts",
+      "rankingSystem": "CWTS Leiden Ranking Traditional Edition",
+      "rankingYear": 2025,
+      "scope": "top-1000-derived-default-list",
+      "file": "cwts-leiden-ranking-2025-top-1000.json",
+      "sourceUrl": "https://traditional.leidenranking.com/ranking/2025/list",
+      "status": "complete",
+      "recordCount": 1000,
+      "requestedLimit": 1000,
+      "rankType": "derived_metric_order",
+      "notes": [
+        "Use this as a discovery/index source, not as an official overall rank."
+      ]
+    }
+  ]
+}

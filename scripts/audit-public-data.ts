@@ -1,6 +1,10 @@
-import { access } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
-import type { CatalogUniversity, PublicEntitySummary } from "@uapt/shared";
+import type {
+  CatalogUniversity,
+  PublicEntitySummary,
+  RankingSystemId
+} from "@uapt/shared";
 import {
   getCurrentPublicReleaseManifest,
   getStagedPublicDataset
@@ -10,6 +14,33 @@ interface AuditIssue {
   severity: "error" | "warning";
   code: string;
   message: string;
+}
+
+interface RankingIndex {
+  sources: RankingIndexSource[];
+}
+
+interface RankingIndexSource {
+  rankingSystemId: RankingSystemId;
+  rankingSystem: string;
+  rankingYear: number | string;
+  file: string;
+  status?: "complete" | "partial" | "blocked" | "not_yet_released";
+  recordCount?: number;
+  requestedLimit?: number;
+  rankType?: "official_ordinal" | "derived_metric_order";
+}
+
+interface RankingSourceDocument {
+  universities: unknown[];
+}
+
+interface RankingCoverageRecord {
+  publicCoverage: number;
+  recordCount: number;
+  requestedLimit?: number;
+  status: string;
+  systemId: RankingSystemId;
 }
 
 const hashPattern = /^[a-f0-9]{64}$/;
@@ -41,8 +72,17 @@ async function main() {
   }
 
   auditSummaries(dataset.publicSummaries, dataset.catalogUniversities, issues);
+  const rankingCoverage = await auditRankingCoverage(
+    repoRoot,
+    dataset.catalogUniversities,
+    issues
+  );
 
-  const stats = buildStats(dataset.publicSummaries, dataset.catalogUniversities);
+  const stats = buildStats(
+    dataset.publicSummaries,
+    dataset.catalogUniversities,
+    rankingCoverage
+  );
   printStats(stats, manifest?.releaseId, process.argv.includes("--details"));
   printIssues(issues);
 
@@ -125,6 +165,125 @@ function auditSummaries(
   }
 }
 
+async function auditRankingCoverage(
+  repoRoot: string,
+  catalogUniversities: CatalogUniversity[],
+  issues: AuditIssue[]
+): Promise<RankingCoverageRecord[]> {
+  const rankingRoot = path.join(repoRoot, "data", "rankings");
+  const index = await readJson(path.join(rankingRoot, "ranking-index.json"));
+  const coverage: RankingCoverageRecord[] = [];
+
+  if (!isRankingIndex(index)) {
+    issues.push({
+      severity: "error",
+      code: "missing_ranking_index",
+      message: "data/rankings/ranking-index.json was not found or is invalid."
+    });
+    return coverage;
+  }
+
+  for (const source of index.sources) {
+    const sourcePath = path.join(rankingRoot, source.file);
+    const document = await readJson(sourcePath);
+
+    if (!isRankingSourceDocument(document)) {
+      issues.push({
+        severity: "error",
+        code: "invalid_ranking_source",
+        message: `${source.file} is missing a universities array.`
+      });
+      continue;
+    }
+
+    const recordCount = document.universities.length;
+    if (source.recordCount !== undefined && source.recordCount !== recordCount) {
+      issues.push({
+        severity: "warning",
+        code: "ranking_record_count_mismatch",
+        message: `${source.file} index recordCount=${source.recordCount} but file has ${recordCount}.`
+      });
+    }
+
+    if (source.status === "complete" && source.requestedLimit && recordCount < source.requestedLimit) {
+      issues.push({
+        severity: "warning",
+        code: "ranking_complete_below_requested_limit",
+        message: `${source.file} is marked complete with ${recordCount}/${source.requestedLimit} rows.`
+      });
+    }
+
+    const publicCoverage = catalogUniversities.filter((university) =>
+      university.rankings.some(
+        (ranking) => ranking.systemId === source.rankingSystemId
+      )
+    ).length;
+    coverage.push({
+      publicCoverage,
+      recordCount,
+      requestedLimit: source.requestedLimit,
+      status: source.status ?? "unknown",
+      systemId: source.rankingSystemId
+    });
+  }
+
+  const qsCoverage = catalogUniversities.filter((university) =>
+    university.rankings.some((ranking) => ranking.systemId === "qs")
+  );
+
+  if (qsCoverage.length < catalogUniversities.length) {
+    issues.push({
+      severity: "warning",
+      code: "missing_qs_ranking_coverage",
+      message: `${catalogUniversities.length - qsCoverage.length} public university records are missing QS ranking coverage.`
+    });
+  }
+
+  return coverage;
+}
+
+async function readJson(file: string): Promise<unknown> {
+  try {
+    return JSON.parse(await readFile(file, "utf8")) as unknown;
+  } catch {
+    return undefined;
+  }
+}
+
+function isRankingIndex(value: unknown): value is RankingIndex {
+  return (
+    isRecord(value) &&
+    Array.isArray(value.sources) &&
+    value.sources.every(
+      (source) =>
+        isRecord(source) &&
+        isRankingSystemId(source.rankingSystemId) &&
+        typeof source.rankingSystem === "string" &&
+        (typeof source.rankingYear === "number" ||
+          typeof source.rankingYear === "string") &&
+        typeof source.file === "string"
+    )
+  );
+}
+
+function isRankingSourceDocument(value: unknown): value is RankingSourceDocument {
+  return isRecord(value) && Array.isArray(value.universities);
+}
+
+function isRankingSystemId(value: unknown): value is RankingSystemId {
+  return (
+    value === "qs" ||
+    value === "the" ||
+    value === "arwu" ||
+    value === "usnews" ||
+    value === "cwts"
+  );
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
 function auditSources(summary: PublicEntitySummary, issues: AuditIssue[]): void {
   for (const source of summary.officialSources) {
     if (!hashPattern.test(source.snapshotHash)) {
@@ -199,7 +358,8 @@ function auditClaims(summary: PublicEntitySummary, issues: AuditIssue[]): void {
 
 function buildStats(
   summaries: PublicEntitySummary[],
-  catalogUniversities: CatalogUniversity[]
+  catalogUniversities: CatalogUniversity[],
+  rankingCoverage: RankingCoverageRecord[]
 ) {
   const claimReviewStates = new Map<string, number>();
   const entityReviewStates = new Map<string, number>();
@@ -253,6 +413,7 @@ function buildStats(
     nonEnglishEvidence,
     officialSourceCount,
     perUniversity,
+    rankingCoverage,
     sourceLanguages: Object.fromEntries(sourceLanguages),
     universityCount: summaries.length
   };
@@ -274,6 +435,14 @@ function printStats(
   console.log(`Source languages: ${JSON.stringify(stats.sourceLanguages)}`);
   console.log(`Missing QS rank aliases: ${stats.missingQsRank.length}`);
   console.log(`Missing region/country: ${stats.missingLocation.length}`);
+  console.log(
+    `Ranking coverage: ${stats.rankingCoverage
+      .map(
+        (record) =>
+          `${record.systemId}=${record.publicCoverage}/${stats.universityCount} public, ${record.recordCount}${record.requestedLimit ? `/${record.requestedLimit}` : ""} rows, ${record.status}`
+      )
+      .join("; ")}`
+  );
   console.log(
     `Non-English evidence languages: ${
       stats.nonEnglishEvidence.length

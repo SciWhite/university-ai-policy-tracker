@@ -110,7 +110,8 @@ function mapCatalogUniversity(university: UniversityWithCatalog): CatalogUnivers
       university.summary ??
       "Source-backed university AI policy status is pending review.",
     sourceCount: sources.length,
-    sources
+    sources,
+    rankings: []
   };
 }
 

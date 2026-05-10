@@ -78,10 +78,37 @@ export const catalogPolicySourceSchema = seedPolicySourceSchema.extend({
   id: z.string().min(1).optional()
 });
 
+export const rankingSystemIdSchema = z.enum([
+  "qs",
+  "the",
+  "arwu",
+  "usnews",
+  "cwts"
+]);
+
+export const catalogUniversityRankingSchema = z.object({
+  systemId: rankingSystemIdSchema,
+  systemName: z.string().min(1),
+  rankingYear: z.union([z.number().int(), z.string().min(1)]),
+  rankText: z.string().min(1),
+  rankNumber: z.number().int().nonnegative(),
+  rowNumber: z.number().int().positive(),
+  countryOrRegion: z.string().min(1).optional(),
+  city: z.string().min(1).nullable().optional(),
+  overallScore: z.number().nullable().optional(),
+  status: z
+    .enum(["complete", "partial", "blocked", "not_yet_released"])
+    .optional(),
+  rankType: z.enum(["official_ordinal", "derived_metric_order"]).optional(),
+  sourceUrl: z.string().url().optional(),
+  notes: z.array(z.string()).default([])
+});
+
 export const catalogUniversitySchema = seedUniversitySchema.extend({
   id: z.string().min(1).optional(),
   sourceCount: z.number().int().nonnegative().optional(),
-  sources: z.array(catalogPolicySourceSchema)
+  sources: z.array(catalogPolicySourceSchema),
+  rankings: z.array(catalogUniversityRankingSchema).default([])
 });
 
 export const catalogToolSummarySchema = z.object({
@@ -111,6 +138,10 @@ export type PolicyClassification = z.infer<typeof policyClassificationSchema>;
 export type SeedPolicySource = z.infer<typeof seedPolicySourceSchema>;
 export type SeedUniversity = z.infer<typeof seedUniversitySchema>;
 export type CatalogPolicySource = z.infer<typeof catalogPolicySourceSchema>;
+export type RankingSystemId = z.infer<typeof rankingSystemIdSchema>;
+export type CatalogUniversityRanking = z.infer<
+  typeof catalogUniversityRankingSchema
+>;
 export type CatalogUniversity = z.infer<typeof catalogUniversitySchema>;
 export type CatalogToolSummary = z.infer<typeof catalogToolSummarySchema>;
 export type CatalogSourceRecord = z.infer<typeof catalogSourceRecordSchema>;
