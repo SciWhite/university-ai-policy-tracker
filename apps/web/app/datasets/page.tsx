@@ -5,8 +5,16 @@ import {
   PUBLIC_API_VERSION,
   TRACKER_METADATA_LICENSE
 } from "@uapt/shared";
+import type { PublicEntitySummary } from "@uapt/shared";
+import { ApiEndpointRow } from "@/components/api-endpoint-row";
 import { JsonLd } from "@/components/json-ld";
-import { getCatalogUniversities } from "@/lib/catalog";
+import { MetaLabel } from "@/components/meta-label";
+import { ReferenceBox } from "@/components/reference-box";
+import {
+  getCatalogUniversities,
+  getPublicUniversitySummaryBySlug
+} from "@/lib/catalog";
+import { getCurrentPublicReleaseManifest } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const title = "Datasets | University AI Policy Tracker";
@@ -64,27 +72,46 @@ export function generateMetadata() {
 
 export default async function DatasetsPage() {
   const universities = await getCatalogUniversities();
-  const universityCount = universities.length;
-  const sourceCount = universities.reduce(
-    (total, university) => total + university.sources.length,
+  const summaries = (
+    await Promise.all(
+      universities.map((university) =>
+        getPublicUniversitySummaryBySlug(university.slug)
+      )
+    )
+  ).filter((summary): summary is PublicEntitySummary => Boolean(summary));
+  const manifest = await getCurrentPublicReleaseManifest();
+  const universityCount = summaries.length || universities.length;
+  const sourceCount = summaries.length
+    ? summaries.reduce(
+        (total, summary) => total + summary.officialSources.length,
+        0
+      )
+    : universities.reduce(
+        (total, university) => total + university.sources.length,
+        0
+      );
+  const claimCount = summaries.reduce(
+    (total, summary) => total + summary.claims.length,
     0
   );
   const datasetsUrl = getAbsoluteSiteUrl("/datasets");
-  const apiIndexUrl = getAbsoluteSiteUrl(
-    `/api/public/${PUBLIC_API_VERSION}/index.json`
-  );
-  const universitiesJsonUrl = getAbsoluteSiteUrl(
-    `/api/public/${PUBLIC_API_VERSION}/universities.json`
-  );
-  const harvardJsonUrl = getAbsoluteSiteUrl(
-    `/api/public/${PUBLIC_API_VERSION}/universities/harvard.json`
-  );
-  const recentChangesUrl = getAbsoluteSiteUrl(
-    `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`
-  );
+  const apiIndexPath = `/api/public/${PUBLIC_API_VERSION}/index.json`;
+  const universitiesJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
+  const exampleSlug =
+    summaries.find((summary) => summary.entity.slug === "harvard-university")
+      ?.entity.slug ??
+    summaries[0]?.entity.slug ??
+    universities[0]?.slug ??
+    "harvard-university";
+  const exampleUniversityPath = `/api/public/${PUBLIC_API_VERSION}/universities/${exampleSlug}.json`;
+  const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
+  const apiIndexUrl = getAbsoluteSiteUrl(apiIndexPath);
+  const universitiesJsonUrl = getAbsoluteSiteUrl(universitiesJsonPath);
+  const exampleUniversityUrl = getAbsoluteSiteUrl(exampleUniversityPath);
+  const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
 
   return (
-    <main className="page-shell">
+    <main className="page-shell page-shell--wide">
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -121,7 +148,7 @@ export default async function DatasetsPage() {
               "@type": "DataDownload",
               name: "University record JSON example",
               encodingFormat: "application/json",
-              contentUrl: harvardJsonUrl
+              contentUrl: exampleUniversityUrl
             },
             {
               "@type": "DataDownload",
@@ -135,12 +162,11 @@ export default async function DatasetsPage() {
 
       <section className="hero">
         <p className="kicker">Datasets</p>
-        <h1>Public JSON first, dataset releases next</h1>
+        <h1>Public JSON artifacts and release metadata</h1>
         <p className="lead">
-          The current data surface is versioned public JSON under{" "}
-          <code>/api/public/{PUBLIC_API_VERSION}</code>. Bulk JSONL exports,
-          checksums, and release identifiers will come after review workflows and
-          source-change history are stable.
+          The current distribution layer is versioned public JSON under{" "}
+          <code>/api/public/{PUBLIC_API_VERSION}</code>. Tracker metadata is open
+          licensed; official source documents retain their original rights.
         </p>
       </section>
 
@@ -148,6 +174,10 @@ export default async function DatasetsPage() {
         <div>
           <span>{universityCount}</span>
           <p>public university records</p>
+        </div>
+        <div>
+          <span>{claimCount}</span>
+          <p>source-backed claims</p>
         </div>
         <div>
           <span>{sourceCount}</span>
@@ -159,38 +189,63 @@ export default async function DatasetsPage() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Versioned JSON endpoints</h2>
-          <p>Live read-only routes in the public web app</p>
-        </div>
-        <ul className="source-list">
-          <li>
-            <a href={apiIndexUrl}>
-              /api/public/{PUBLIC_API_VERSION}/index.json
-            </a>
-          </li>
-          <li>
-            <a href={universitiesJsonUrl}>
-              /api/public/{PUBLIC_API_VERSION}/universities.json
-            </a>
-          </li>
-          <li>
-            <a href={harvardJsonUrl}>
-              /api/public/{PUBLIC_API_VERSION}/universities/harvard.json
-            </a>
-          </li>
-          <li>
-            <a href={recentChangesUrl}>
-              /api/public/{PUBLIC_API_VERSION}/recent-changes.json
-            </a>
-          </li>
-        </ul>
-        <p className="muted">
-          Additional bulk exports and dataset snapshots are planned, but this page
-          does not advertise endpoints that are not live.
-        </p>
-      </section>
+      <ReferenceBox
+        description="Live read-only artifacts in the public web app."
+        title="Versioned public JSON"
+      >
+        <ApiEndpointRow
+          description="Discovery document for endpoints, trust pages, limitations, and citation rules."
+          label="API index JSON"
+          path={apiIndexPath}
+          url={apiIndexUrl}
+        />
+        <ApiEndpointRow
+          description="List of public university records with counts, review state, dates, and JSON URLs."
+          label="Universities JSON"
+          path={universitiesJsonPath}
+          url={universitiesJsonUrl}
+        />
+        <ApiEndpointRow
+          description="Example university-level record with claims, evidence, official sources, and citation fields."
+          label="Per-university JSON example"
+          path={exampleUniversityPath}
+          url={exampleUniversityUrl}
+        />
+        <ApiEndpointRow
+          description="Freshness feed for checked and changed public records."
+          label="Recent changes JSON"
+          path={recentChangesPath}
+          url={recentChangesUrl}
+        />
+      </ReferenceBox>
+
+      {manifest ? (
+        <ReferenceBox
+          description={manifest.description}
+          title="Current release manifest"
+        >
+          <div className="tag-row">
+            <MetaLabel label="Release">{manifest.releaseId}</MetaLabel>
+            <MetaLabel label="Published">
+              {formatDate(manifest.publishedAt)}
+            </MetaLabel>
+            <MetaLabel label="Promoted runs">
+              {manifest.includeStagedArtifactDirectories.length}
+            </MetaLabel>
+          </div>
+          <p className="muted">
+            The manifest controls which reviewed staged artifact directories are
+            promoted into public pages and <code>/api/public/v1</code> JSON.
+          </p>
+          {manifest.notes?.length ? (
+            <ul className="compact-list">
+              {manifest.notes.map((note) => (
+                <li key={note}>{note}</li>
+              ))}
+            </ul>
+          ) : null}
+        </ReferenceBox>
+      ) : null}
 
       <section className="section">
         <div className="section-heading">
@@ -248,4 +303,11 @@ export default async function DatasetsPage() {
       </section>
     </main>
   );
+}
+
+function formatDate(value: string): string {
+  return new Intl.DateTimeFormat("en", {
+    dateStyle: "medium",
+    timeZone: "UTC"
+  }).format(new Date(value));
 }

@@ -5,14 +5,16 @@ import {
   PUBLIC_API_VERSION,
   TRACKER_METADATA_LICENSE
 } from "@uapt/shared";
+import { ApiEndpointRow } from "@/components/api-endpoint-row";
 import { CitationCopyActions } from "@/components/citation-copy-actions";
+import { ReferenceBox } from "@/components/reference-box";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const title = "Citation | University AI Policy Tracker";
 const description =
   "Citation formats, source attribution rules, public JSON fields, rights caveats, and advice boundaries for University AI Policy Tracker.";
 
-const exampleUniversitySlug = "harvard";
+const exampleUniversitySlug = "harvard-university";
 
 export function generateMetadata() {
   const canonical = getAbsoluteSiteUrl("/citation");
@@ -34,23 +36,19 @@ export default function CitationPage() {
   const universityCanonicalUrl = getAbsoluteSiteUrl(
     `/universities/${exampleUniversitySlug}`
   );
-  const universityJsonUrl = getAbsoluteSiteUrl(
-    `/api/public/${PUBLIC_API_VERSION}/universities/${exampleUniversitySlug}.json`
-  );
+  const universityJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities/${exampleUniversitySlug}.json`;
+  const universityJsonUrl = getAbsoluteSiteUrl(universityJsonPath);
   const datasetsUrl = getAbsoluteSiteUrl("/datasets");
-  const apiIndexUrl = getAbsoluteSiteUrl(
-    `/api/public/${PUBLIC_API_VERSION}/index.json`
-  );
-  const universitiesJsonUrl = getAbsoluteSiteUrl(
-    `/api/public/${PUBLIC_API_VERSION}/universities.json`
-  );
-  const recentChangesUrl = getAbsoluteSiteUrl(
-    `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`
-  );
   const changesUrl = getAbsoluteSiteUrl("/changes");
+  const apiIndexPath = `/api/public/${PUBLIC_API_VERSION}/index.json`;
+  const universitiesJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
+  const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
+  const apiIndexUrl = getAbsoluteSiteUrl(apiIndexPath);
+  const universitiesJsonUrl = getAbsoluteSiteUrl(universitiesJsonPath);
+  const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
 
   const universityCitation =
-    "Harvard University AI Policy Tracker record. University AI Policy Tracker. Last checked 2026-05-03. " +
+    "Harvard University AI Policy Tracker record. University AI Policy Tracker. Version v1. " +
     universityCanonicalUrl;
   const datasetCitation =
     "University AI Policy Tracker public JSON dataset. University AI Policy Tracker. Version v1. " +
@@ -67,131 +65,152 @@ export default function CitationPage() {
         <p className="lead">
           Public records are designed for citation, but tracker metadata does not
           relicense official university documents or replace official policy text.
-          Keep the canonical page, public JSON, source URL, snapshot hash, and
-          original evidence together when citing a claim.
+          Keep the canonical page, public JSON, source URL, snapshot hash, review
+          state, confidence, and original evidence together when citing a claim.
         </p>
       </section>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Suggested formats</h2>
-          <p>Copy-ready examples for common references</p>
-        </div>
-        <div className="detail-grid">
-          <article className="policy-card">
-            <h3>University policy page</h3>
-            <p>{universityCitation}</p>
-            <CitationCopyActions
-              canonicalUrl={universityCanonicalUrl}
-              citationText={universityCitation}
-              publicJsonUrl={universityJsonUrl}
+      <div className="docs-layout">
+        <aside className="docs-toc" aria-label="Citation sections">
+          <a href="#formats">Suggested formats</a>
+          <a href="#fields">Citation fields</a>
+          <a href="#json">Public JSON</a>
+          <a href="#rights">Rights and boundaries</a>
+        </aside>
+
+        <div className="docs-content">
+          <ReferenceBox
+            description="Copy-ready examples for common references."
+            id="formats"
+            title="Suggested formats"
+          >
+            <article className="citation-example">
+              <h3>University policy record</h3>
+              <pre>
+                <code>{universityCitation}</code>
+              </pre>
+              <CitationCopyActions
+                canonicalUrl={universityCanonicalUrl}
+                citationText={universityCitation}
+                publicJsonUrl={universityJsonUrl}
+              />
+            </article>
+            <article className="citation-example">
+              <h3>Dataset surface</h3>
+              <pre>
+                <code>{datasetCitation}</code>
+              </pre>
+              <CitationCopyActions
+                canonicalUrl={datasetsUrl}
+                citationText={datasetCitation}
+                publicJsonUrl={universitiesJsonUrl}
+              />
+            </article>
+            <article className="citation-example">
+              <h3>Changes feed or report</h3>
+              <pre>
+                <code>{changesCitation}</code>
+              </pre>
+              <CitationCopyActions
+                canonicalUrl={changesUrl}
+                citationText={changesCitation}
+                publicJsonUrl={recentChangesUrl}
+              />
+            </article>
+          </ReferenceBox>
+
+          <ReferenceBox
+            description="Retain these fields when reusing a public record."
+            id="fields"
+            title="Citation fields"
+          >
+            <div className="docs-grid">
+              <section>
+                <h3>Page and data identity</h3>
+                <ul className="compact-list">
+                  <li>Canonical URL for the visible public page.</li>
+                  <li>
+                    Versioned public JSON URL under{" "}
+                    <code>/api/public/{PUBLIC_API_VERSION}</code>.
+                  </li>
+                  <li>Schema version, currently <code>{PUBLIC_API_VERSION}</code>.</li>
+                </ul>
+              </section>
+              <section>
+                <h3>Freshness and review</h3>
+                <ul className="compact-list">
+                  <li>Last checked date, when the source was most recently checked.</li>
+                  <li>Last changed date, when a tracked source or claim changed.</li>
+                  <li>Review state, which is separate from machine confidence.</li>
+                </ul>
+              </section>
+              <section>
+                <h3>Source evidence</h3>
+                <ul className="compact-list">
+                  <li>Official or clearly labeled source URLs.</li>
+                  <li>Source snapshot hashes for change and citation traceability.</li>
+                  <li>Short original-language evidence snippets and source language.</li>
+                </ul>
+              </section>
+            </div>
+          </ReferenceBox>
+
+          <ReferenceBox
+            description="Versioned, source-backed records for agents and downstream analysis."
+            id="json"
+            title="Public JSON examples"
+          >
+            <ApiEndpointRow
+              description="API discovery document with endpoint and trust-page links."
+              label="API index"
+              path={apiIndexPath}
+              url={apiIndexUrl}
             />
-          </article>
-          <article className="policy-card">
-            <h3>Dataset snapshot</h3>
-            <p>{datasetCitation}</p>
-            <CitationCopyActions
-              canonicalUrl={datasetsUrl}
-              citationText={datasetCitation}
-              publicJsonUrl={recentChangesUrl}
+            <ApiEndpointRow
+              description="University list with canonical page and JSON URLs."
+              label="Universities list"
+              path={universitiesJsonPath}
+              url={universitiesJsonUrl}
             />
-          </article>
-          <article className="policy-card">
-            <h3>Monthly report or change page</h3>
-            <p>{changesCitation}</p>
-            <CitationCopyActions
-              canonicalUrl={changesUrl}
-              citationText={changesCitation}
-              publicJsonUrl={recentChangesUrl}
+            <ApiEndpointRow
+              description="Claim/evidence/citation record for one university."
+              label="University record"
+              path={universityJsonPath}
+              url={universityJsonUrl}
             />
-          </article>
-        </div>
-      </section>
+            <ApiEndpointRow
+              description="Recent checked and changed records."
+              label="Recent changes"
+              path={recentChangesPath}
+              url={recentChangesUrl}
+            />
+          </ReferenceBox>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Citation fields</h2>
-          <p>Fields to retain when reusing a public record</p>
-        </div>
-        <div className="detail-grid">
-          <article className="policy-card">
-            <h3>Page and data identity</h3>
+          <ReferenceBox
+            description={`${TRACKER_METADATA_LICENSE} tracker metadata`}
+            id="rights"
+            title="Rights and boundaries"
+          >
             <ul className="compact-list">
-              <li>Canonical URL for the visible public page.</li>
-              <li>Versioned public JSON URL under <code>/api/public/{PUBLIC_API_VERSION}</code>.</li>
-              <li>Schema version, currently <code>{PUBLIC_API_VERSION}</code>.</li>
+              <li>{OFFICIAL_SOURCE_RIGHTS_CAVEAT}</li>
+              <li>{NO_ADVICE_BOUNDARY}</li>
+              <li>
+                Original-language evidence is canonical. Translations or
+                localized summaries are display aids only and must not overwrite
+                source evidence.
+              </li>
             </ul>
-          </article>
-          <article className="policy-card">
-            <h3>Freshness and review</h3>
-            <ul className="compact-list">
-              <li>Last checked date, when the source was most recently checked.</li>
-              <li>Last changed date, when a tracked source or claim last changed.</li>
-              <li>Review state, which is separate from machine confidence.</li>
-            </ul>
-          </article>
-          <article className="policy-card">
-            <h3>Source evidence</h3>
-            <ul className="compact-list">
-              <li>Official or clearly labeled source URLs.</li>
-              <li>Source snapshot hashes for change and citation traceability.</li>
-              <li>Short original-language evidence snippets and source language.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
+          </ReferenceBox>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Public JSON examples</h2>
-          <p>Versioned, source-backed records</p>
+          <section className="section">
+            <p>
+              Browse <Link href="/universities">university records</Link>, read the{" "}
+              <Link href="/methodology">methodology</Link>, or review{" "}
+              <Link href="/datasets">dataset access</Link>.
+            </p>
+          </section>
         </div>
-        <ul className="source-list">
-          <li>
-            <a href={apiIndexUrl}>
-              /api/public/{PUBLIC_API_VERSION}/index.json
-            </a>
-          </li>
-          <li>
-            <a href={universitiesJsonUrl}>
-              /api/public/{PUBLIC_API_VERSION}/universities.json
-            </a>
-          </li>
-          <li>
-            <a href={universityJsonUrl}>
-              /api/public/{PUBLIC_API_VERSION}/universities/{exampleUniversitySlug}.json
-            </a>
-          </li>
-          <li>
-            <a href={recentChangesUrl}>
-              /api/public/{PUBLIC_API_VERSION}/recent-changes.json
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <h2>Rights and boundaries</h2>
-          <p>{TRACKER_METADATA_LICENSE} tracker metadata</p>
-        </div>
-        <ul className="compact-list">
-          <li>{OFFICIAL_SOURCE_RIGHTS_CAVEAT}</li>
-          <li>{NO_ADVICE_BOUNDARY}</li>
-          <li>
-            Original-language evidence is canonical. Translations or localized
-            summaries are display aids only and must not overwrite source evidence.
-          </li>
-        </ul>
-      </section>
-
-      <section className="section">
-        <p>
-          Browse <Link href="/universities">university records</Link>, read the{" "}
-          <Link href="/methodology">methodology</Link>, or review{" "}
-          <Link href="/datasets">dataset access</Link>.
-        </p>
-      </section>
+      </div>
     </main>
   );
 }

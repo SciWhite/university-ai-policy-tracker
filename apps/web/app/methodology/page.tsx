@@ -1,10 +1,51 @@
 import Link from "next/link";
 import { NO_ADVICE_BOUNDARY } from "@uapt/shared";
+import { ReferenceBox } from "@/components/reference-box";
+import { StateLabel } from "@/components/state-label";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const title = "Methodology | University AI Policy Tracker";
 const description =
   "How University AI Policy Tracker discovers sources, snapshots pages, binds evidence, separates confidence from review state, and publishes citation-ready records.";
+
+const workflowSteps = [
+  {
+    id: "source-discovery",
+    title: "Source discovery",
+    description:
+      "Candidate sources start as public university policy pages, teaching center guidance, IT/security guidance, procurement pages, PDFs, and other clearly labeled official or source-attributed materials."
+  },
+  {
+    id: "crawl-snapshot",
+    title: "Crawl and snapshot",
+    description:
+      "Fetching uses plain HTTP first. When a source is captured, normalized text receives a content hash so future checks can detect whether a source changed."
+  },
+  {
+    id: "claim-extraction",
+    title: "Claim extraction",
+    description:
+      "A policy claim is one assertion about a university, tool, theme, or future course entity. Claims keep confidence separate from review state so machine certainty is not confused with approval."
+  },
+  {
+    id: "evidence-binding",
+    title: "Evidence binding",
+    description:
+      "Every public claim must trace to a source URL, source snapshot hash, short evidence snippet, source language, and rights caveat. Original source evidence is preserved in its source language."
+  },
+  {
+    id: "change-detection",
+    title: "Change detection",
+    description:
+      "Changed source hashes can create new snapshots, extraction candidates, claim updates, and change records. Diff pages are planned after the current claim/evidence contract is stable."
+  },
+  {
+    id: "multilingual-evidence",
+    title: "Multilingual source-first evidence",
+    description:
+      "Original-language evidence remains canonical. Translations and localized summaries are auxiliary display helpers and must not mutate source URL, hash, confidence, or review state."
+  }
+] as const;
 
 const reviewStates = [
   {
@@ -20,7 +61,7 @@ const reviewStates = [
   {
     label: "agent_reviewed",
     description:
-      "A reviewing agent checked the evidence and classification, but the record is still distinct from a human-reviewed or institution-verified claim."
+      "A reviewing agent checked the evidence and classification, but the record is still distinct from a human-reviewed claim."
   },
   {
     label: "human_reviewed",
@@ -28,9 +69,9 @@ const reviewStates = [
       "A human reviewer or deterministic publish rule has approved the claim for public reference, while the linked source remains the authority."
   },
   {
-    label: "institution_verified",
+    label: "rejected",
     description:
-      "A future verification label reserved for official institution correction or confirmation workflows. It will not replace source URLs, source hashes, or original-language evidence."
+      "The candidate is retained only for audit context and should not be treated as a public conclusion."
   }
 ] as const;
 
@@ -64,104 +105,92 @@ export default function MethodologyPage() {
         </p>
       </section>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Evidence workflow</h2>
-          <p>From public source discovery to citation-ready records</p>
-        </div>
-        <div className="detail-grid">
-          <article className="policy-card">
-            <h3>Source discovery</h3>
-            <p>
-              Candidate sources start as public university policy pages, teaching
-              center guidance, IT/security guidance, procurement pages, PDFs, and
-              other clearly labeled official or source-attributed materials.
-            </p>
-          </article>
-          <article className="policy-card">
-            <h3>Snapshots</h3>
-            <p>
-              Fetching uses plain HTTP first. When a source is captured, normalized
-              text receives a content hash so future checks can detect whether a
-              source changed.
-            </p>
-          </article>
-          <article className="policy-card">
-            <h3>Claim extraction</h3>
-            <p>
-              A policy claim is one assertion about a university, tool, theme, or
-              future course entity. Claims keep confidence separate from review
-              state so machine certainty is not confused with approval.
-            </p>
-          </article>
-          <article className="policy-card">
-            <h3>Evidence binding</h3>
-            <p>
-              Every public claim must trace to a source URL, source snapshot hash,
-              short evidence snippet, source language, and rights caveat. Original
-              source evidence is preserved in its source language.
-            </p>
-          </article>
-          <article className="policy-card">
-            <h3>Change detection</h3>
-            <p>
-              Changed source hashes can create new snapshots, extraction
-              candidates, claim updates, and change records. Diff pages are planned
-              after the current claim/evidence contract is stable.
-            </p>
-          </article>
-          <article className="policy-card">
-            <h3>Limitations</h3>
-            <p>
-              University policies can be distributed across departments, courses,
-              PDFs, and internal systems. Sparse records remain labeled as early
-              coverage until reviewed evidence supports stronger conclusions.
-            </p>
-          </article>
-        </div>
-      </section>
+      <div className="docs-layout">
+        <aside className="docs-toc" aria-label="Methodology sections">
+          <a href="#workflow">Evidence workflow</a>
+          <a href="#review-states">Review states</a>
+          <a href="#publication-rules">Publication rules</a>
+          <a href="#limitations">Limitations</a>
+        </aside>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Review states</h2>
-          <p>Review state is not the same as confidence</p>
-        </div>
-        <div className="detail-grid">
-          {reviewStates.map((state) => (
-            <article className="policy-card" key={state.label}>
-              <h3>
-                <code>{state.label}</code>
-              </h3>
-              <p>{state.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+        <div className="docs-content">
+          <ReferenceBox
+            description="From public source discovery to citation-ready records."
+            id="workflow"
+            title="Evidence workflow"
+          >
+            <ol className="timeline-list">
+              {workflowSteps.map((step) => (
+                <li className="timeline-list__item" key={step.id}>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </li>
+              ))}
+            </ol>
+          </ReferenceBox>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Publication rules</h2>
-          <p>What must exist before a claim is public</p>
-        </div>
-        <ul className="compact-list">
-          <li>Every public claim needs a source URL and source snapshot hash.</li>
-          <li>Evidence snippets stay short, necessary, and source-attributed.</li>
-          <li>Original-language evidence is canonical; translation is display-only.</li>
-          <li>Canonical facts and localized display must remain separate.</li>
-          <li>Candidate claims must be labeled and must not be used as final summaries.</li>
-          <li>Official source documents retain their original rights and terms.</li>
-        </ul>
-      </section>
+          <ReferenceBox
+            description="Review state is workflow status. Confidence is machine-assessed support."
+            id="review-states"
+            title="Review states"
+          >
+            <div className="docs-grid">
+              {reviewStates.map((state) => (
+                <section key={state.label}>
+                  <StateLabel prefix="" reviewState={state.label} />
+                  <p>{state.description}</p>
+                </section>
+              ))}
+            </div>
+          </ReferenceBox>
 
-      <section className="section">
-        <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
-        <p>
-          Use the <Link href="/citation">citation guide</Link> for attribution
-          rules, the <Link href="/datasets">datasets page</Link> for public JSON
-          access, and <Link href="/changes">recent changes</Link> for freshness
-          signals.
-        </p>
-      </section>
+          <ReferenceBox
+            description="What must exist before a claim is public."
+            id="publication-rules"
+            title="Publication rules"
+          >
+            <ul className="compact-list">
+              <li>Every public claim needs a source URL and source snapshot hash.</li>
+              <li>Evidence snippets stay short, necessary, and source-attributed.</li>
+              <li>Original-language evidence is canonical; translation is display-only.</li>
+              <li>Canonical facts and localized display must remain separate.</li>
+              <li>Candidate claims must be labeled and must not be used as final summaries.</li>
+              <li>Official source documents retain their original rights and terms.</li>
+            </ul>
+          </ReferenceBox>
+
+          <ReferenceBox
+            description="Known boundaries of the current evidence layer."
+            id="limitations"
+            title="Limitations"
+          >
+            <ul className="compact-list">
+              <li>
+                University policies can be distributed across departments,
+                courses, PDFs, and internal systems.
+              </li>
+              <li>
+                Sparse records remain labeled as early coverage until reviewed
+                evidence supports stronger conclusions.
+              </li>
+              <li>
+                The tracker records source-check and claim-evidence metadata; it
+                does not provide legal advice or academic integrity advice.
+              </li>
+            </ul>
+            <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
+          </ReferenceBox>
+
+          <section className="section">
+            <p>
+              Use the <Link href="/citation">citation guide</Link> for attribution
+              rules, the <Link href="/datasets">datasets page</Link> for public
+              JSON access, and <Link href="/changes">recent changes</Link> for
+              freshness signals.
+            </p>
+          </section>
+        </div>
+      </div>
     </main>
   );
 }

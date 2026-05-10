@@ -1,11 +1,16 @@
 import Link from "next/link";
 import { NO_ADVICE_BOUNDARY, PUBLIC_API_VERSION } from "@uapt/shared";
+import type { PublicEntitySummary } from "@uapt/shared";
+import { ApiEndpointRow } from "@/components/api-endpoint-row";
+import { DataList, DataListRow } from "@/components/data-list";
+import { MetaLabel } from "@/components/meta-label";
+import { ReferenceBox } from "@/components/reference-box";
+import { StateLabel } from "@/components/state-label";
 import {
   getCatalogUniversities,
   getPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
-import type { PublicEntitySummary } from "@uapt/shared";
 
 const title = "Recent Changes | University AI Policy Tracker";
 const description =
@@ -38,21 +43,29 @@ export default async function ChangesPage() {
   )
     .filter((summary): summary is PublicEntitySummary => Boolean(summary))
     .sort(compareSummaryFreshness);
-  const recentChangesUrl = getAbsoluteSiteUrl(
-    `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`
-  );
+  const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
+  const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
   const changedCount = summaries.filter((summary) => summary.lastChangedAt).length;
   const checkedCount = summaries.filter((summary) => summary.lastCheckedAt).length;
+  const totalClaims = summaries.reduce(
+    (total, summary) => total + summary.claims.length,
+    0
+  );
+  const totalSources = summaries.reduce(
+    (total, summary) => total + summary.officialSources.length,
+    0
+  );
 
   return (
-    <main className="page-shell">
+    <main className="page-shell page-shell--wide">
       <section className="hero">
         <p className="kicker">Changes</p>
-        <h1>Recent source checks and policy records</h1>
+        <h1>Source checks and policy record freshness</h1>
         <p className="lead">
-          This page shows the public freshness surface for tracked university
-          records. Candidate data remains labeled by review state and is not
-          presented as a final policy conclusion.
+          This timeline shows source-check and source-change records for public
+          university entries. It is a freshness surface for evidence records, not
+          legal advice, academic integrity advice, or a substitute for official
+          university policy pages.
         </p>
       </section>
 
@@ -63,95 +76,100 @@ export default async function ChangesPage() {
         </div>
         <div>
           <span>{checkedCount}</span>
-          <p>records with last checked dates</p>
+          <p>records with checked dates</p>
         </div>
         <div>
           <span>{changedCount}</span>
-          <p>records with last changed dates</p>
+          <p>records with changed dates</p>
+        </div>
+        <div>
+          <span>{totalClaims}</span>
+          <p>source-backed claims</p>
         </div>
       </section>
 
+      <ReferenceBox
+        description="Versioned JSON feed for machines, citations, and audits."
+        title="Public changes artifact"
+      >
+        <ApiEndpointRow
+          description="Recent changed or checked records with canonical URLs, review states, claim counts, and claim evidence where available."
+          label="Recent changes JSON"
+          path={recentChangesPath}
+          url={recentChangesUrl}
+        />
+      </ReferenceBox>
+
       <section className="section">
         <div className="section-heading">
-          <h2>Public changes feed</h2>
-          <p>Versioned JSON</p>
-        </div>
-        <article className="policy-card">
-          <h3>Recent changes JSON</h3>
+          <h2>Change timeline</h2>
           <p>
-            <a href={recentChangesUrl}>
-              /api/public/{PUBLIC_API_VERSION}/recent-changes.json
-            </a>
+            {totalSources} official source attributions across {summaries.length}{" "}
+            public records.
           </p>
-          <p className="muted">
-            Feed entries include canonical URL, last checked date, last changed
-            date, review state, claim count, and source-backed claims when
-            available.
-          </p>
-        </article>
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <h2>Recent changed institutions</h2>
-          <p>{summaries.length} early-stage record</p>
         </div>
         {summaries.length ? (
-          <div className="card-grid">
+          <DataList className="timeline-list">
             {summaries.map((summary) => {
               const publicJsonUrl =
                 summary.apiUrl ??
                 getAbsoluteSiteUrl(
                   `/api/public/${PUBLIC_API_VERSION}/universities/${summary.entity.slug}.json`
                 );
+              const primaryDate = summary.lastChangedAt ?? summary.lastCheckedAt;
 
               return (
-                <article className="policy-card" key={summary.entity.slug}>
-                  <div>
-                    <h3>{summary.entity.name}</h3>
-                    <p>{getChangeSummary(summary)}</p>
-                  </div>
-                  <div className="tag-row">
-                    <span className="review-pill" data-review-state={summary.reviewState}>
-                      Review: {formatReviewState(summary.reviewState)}
-                    </span>
-                    {summary.lastCheckedAt ? (
-                      <span className="pill pill-muted">
-                        Checked {formatDate(summary.lastCheckedAt)}
-                      </span>
-                    ) : null}
-                    {summary.lastChangedAt ? (
-                      <span className="pill pill-muted">
-                        Changed {formatDate(summary.lastChangedAt)}
-                      </span>
-                    ) : null}
-                  </div>
-                  <ul className="source-list">
-                    <li>
+                <DataListRow
+                  actions={
+                    <>
                       <Link href={`/universities/${summary.entity.slug}`}>
                         University page
                       </Link>
-                    </li>
-                    <li>
                       <a href={publicJsonUrl}>Public JSON</a>
-                    </li>
-                  </ul>
-                </article>
+                    </>
+                  }
+                  className="timeline-list__row"
+                  key={summary.entity.slug}
+                  metadata={
+                    <>
+                      <StateLabel reviewState={summary.reviewState} />
+                      <MetaLabel label="Claims">{summary.claims.length}</MetaLabel>
+                      <MetaLabel label="Sources">
+                        {summary.officialSources.length}
+                      </MetaLabel>
+                      {summary.lastCheckedAt ? (
+                        <MetaLabel label="Checked">
+                          {formatDate(summary.lastCheckedAt)}
+                        </MetaLabel>
+                      ) : null}
+                      {summary.lastChangedAt ? (
+                        <MetaLabel label="Changed">
+                          {formatDate(summary.lastChangedAt)}
+                        </MetaLabel>
+                      ) : null}
+                    </>
+                  }
+                >
+                  <p className="timeline-list__date">
+                    {primaryDate ? formatDate(primaryDate) : "No public date yet"}
+                  </p>
+                  <h2>{summary.entity.name}</h2>
+                  <p>{getChangeSummary(summary)}</p>
+                </DataListRow>
               );
             })}
-          </div>
+          </DataList>
         ) : (
           <p className="notice-card">
-            No public change records are available yet. The page remains available
-            so readers and agents can cite the feed location before the reviewed
-            change-log product expands.
+            No public change records are available yet. The versioned feed URL
+            remains available for readers and agents.
           </p>
         )}
       </section>
 
       <section className="section">
         <div className="section-heading">
-          <h2>How to read this page</h2>
+          <h2>How to read this timeline</h2>
           <p>Freshness signals, not advice</p>
         </div>
         <ul className="compact-list">
@@ -181,19 +199,15 @@ function getFreshnessTime(summary: PublicEntitySummary): number {
 function getChangeSummary(summary: PublicEntitySummary): string {
   const claimCount = summary.claims.length;
   const sourceCount = summary.officialSources.length;
+  const changed = summary.lastChangedAt
+    ? ` The latest tracked changed date is ${formatDate(summary.lastChangedAt)}.`
+    : " No changed date has been published yet.";
 
-  if (summary.lastChangedAt) {
-    return `${summary.entity.name} has ${claimCount} source-backed claim record and ${sourceCount} official source attribution. The latest tracked change date is ${formatDate(summary.lastChangedAt)}.`;
-  }
-
-  return `${summary.entity.name} has ${claimCount} source-backed claim record and ${sourceCount} official source attribution. No changed date has been published yet.`;
+  return `${summary.entity.name} has ${claimCount} ${pluralize("source-backed claim record", claimCount)} and ${sourceCount} ${pluralize("official source attribution", sourceCount)}.${changed}`;
 }
 
-function formatReviewState(value: string): string {
-  return value
-    .split("_")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
+function pluralize(label: string, count: number): string {
+  return count === 1 ? label : `${label}s`;
 }
 
 function formatDate(value: string): string {

@@ -141,6 +141,7 @@ code {
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     monospace;
   font-size: 0.92em;
+  overflow-wrap: anywhere;
   padding: 1px 5px;
 }
 
@@ -156,6 +157,7 @@ pre {
   line-height: 1.6;
   overflow-x: auto;
   padding: 14px 16px;
+  white-space: pre-wrap;
 }
 
 pre code {
@@ -264,6 +266,9 @@ th {
 .site-nav a:focus-visible,
 .site-footer a:focus-visible,
 .reference-tabs a:focus-visible,
+.data-list-row a:focus-visible,
+.api-endpoint-row a:focus-visible,
+.docs-toc a:focus-visible,
 .theme-toggle:focus-visible,
 .copy-button:focus-visible,
 .text-card:focus-visible {
@@ -342,10 +347,11 @@ th {
   margin: 0 auto;
   max-width: 1120px;
   padding: 36px 24px 64px;
+  width: 100%;
 }
 
 .page-shell--wide {
-  max-width: 1280px;
+  max-width: 1232px;
 }
 
 .hero {
@@ -506,6 +512,115 @@ h3 {
   gap: 8px;
   justify-content: flex-end;
   max-width: 360px;
+}
+
+.data-list {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  display: grid;
+  overflow: hidden;
+}
+
+.data-list-row {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  padding: 14px;
+}
+
+.data-list-row:last-child {
+  border-bottom: 0;
+}
+
+.data-list-row:hover {
+  background: var(--color-surface-elevated);
+}
+
+.data-list-row__main,
+.data-list-row__meta,
+.data-list-row__actions {
+  min-width: 0;
+}
+
+.data-list-row__main h2 {
+  font-size: 17px;
+  margin: 0;
+}
+
+.data-list-row__main p {
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 6px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.data-list-row__meta,
+.data-list-row__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.data-list-row__actions a {
+  color: var(--color-source);
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.api-endpoint-row {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px;
+}
+
+.api-endpoint-row h3,
+.api-endpoint-row p {
+  margin: 0;
+}
+
+.api-endpoint-row p {
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.api-endpoint-row__target {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.api-endpoint-row__target a,
+.api-endpoint-row__target > span:first-child {
+  align-items: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.api-endpoint-row__method {
+  background: var(--color-reviewed-surface);
+  border: 1px solid var(--color-reviewed-border);
+  border-radius: var(--radius-control);
+  color: var(--color-reviewed);
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 5px;
 }
 
 .notice-card {
@@ -969,6 +1084,7 @@ h3 {
 .reference-box__body {
   display: grid;
   gap: 14px;
+  min-width: 0;
   padding: 14px;
 }
 
@@ -1014,6 +1130,133 @@ h3 {
   padding: 0;
 }
 
+.docs-layout {
+  align-items: start;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 220px minmax(0, 1fr);
+  margin-top: 28px;
+}
+
+.docs-toc {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  position: sticky;
+  top: 18px;
+}
+
+.docs-toc a {
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  padding: 10px 12px;
+  text-decoration: none;
+}
+
+.docs-toc a:last-child {
+  border-bottom: 0;
+}
+
+.docs-toc a:hover {
+  background: var(--color-surface-elevated);
+  color: var(--color-accent-fg);
+}
+
+.docs-content {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.docs-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.docs-grid section {
+  min-width: 0;
+}
+
+.docs-grid h3,
+.citation-example h3 {
+  font-size: 16px;
+}
+
+.docs-grid p,
+.citation-example p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.citation-example {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.timeline-list {
+  counter-reset: timeline;
+}
+
+ol.timeline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-list__item {
+  border-left: 2px solid var(--color-border);
+  display: grid;
+  gap: 6px;
+  margin-left: 9px;
+  padding: 0 0 18px 18px;
+  position: relative;
+}
+
+.timeline-list__item::before {
+  background: var(--color-canvas-default);
+  border: 2px solid var(--color-accent-emphasis);
+  border-radius: 999px;
+  content: "";
+  height: 10px;
+  left: -7px;
+  position: absolute;
+  top: 2px;
+  width: 10px;
+}
+
+.timeline-list__item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-list__item h3,
+.timeline-list__item p,
+.timeline-list__date {
+  margin: 0;
+}
+
+.timeline-list__item p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.timeline-list__row {
+  border-left: 3px solid var(--color-border);
+}
+
+.timeline-list__date {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 @media (min-width: 720px) {
   h1 {
     font-size: 44px;
@@ -1028,6 +1271,20 @@ h3 {
   .claim-evidence-card__status {
     justify-content: flex-end;
     max-width: 260px;
+  }
+
+  .data-list-row {
+    align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, auto);
+  }
+
+  .data-list-row__actions {
+    grid-column: 1 / -1;
+  }
+
+  .api-endpoint-row {
+    align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, auto);
   }
 }
 
@@ -1068,6 +1325,14 @@ h3 {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  .docs-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .docs-toc {
+    position: static;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1097,5 +1362,13 @@ h3 {
     align-items: flex-start;
     justify-content: flex-start;
     max-width: none;
+  }
+
+  .docs-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .docs-toc {
+    position: static;
   }
 }
