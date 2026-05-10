@@ -4,10 +4,21 @@ import type { ReactNode } from "react";
 import { ThemeScript } from "@/components/theme-script";
 import { ThemeToggle } from "@/components/theme-toggle";
 
+const primaryTabs = [
+  { label: "Overview", href: "/" },
+  { label: "Universities", href: "/universities" },
+  { label: "Changes", href: "/changes" },
+  { label: "Datasets", href: "/datasets" },
+  { label: "Methodology", href: "/methodology" },
+  { label: "Citation", href: "/citation" }
+] as const;
+
+const githubRepositoryUrl = "https://github.com/SciWhite/university-ai-policy-tracker";
+
 export const metadata = {
   title: "University AI Policy Tracker",
   description:
-    "Source-backed university AI policy changes, historical snapshots, and public reports."
+    "Open, evidence-backed database of university AI policies, source snapshots, and citation-ready public JSON."
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -16,33 +27,50 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <ThemeScript />
         <header className="site-header">
-          <Link className="brand-link" href="/">
-            University AI Policy Tracker
-          </Link>
-          <div className="site-header__actions">
-            <nav aria-label="Primary navigation">
-              <Link href="/universities">Universities</Link>
-              <Link href="/changes">Changes</Link>
-              <Link href="/datasets">Datasets</Link>
-              <Link href="/methodology">Methodology</Link>
-              <Link href="/citation">Citation</Link>
-            </nav>
-            <ThemeToggle />
+          <div className="site-header__top">
+            <div className="site-brand">
+              <Link className="brand-link" href="/">
+                University AI Policy Tracker
+              </Link>
+              <p className="site-tagline">
+                Open, evidence-backed AI policy records for public reuse.
+              </p>
+            </div>
+            <div className="site-header__actions" aria-label="Primary actions">
+              <a className="site-action" href="/api/public/v1/index.json">
+                API index
+              </a>
+              <a className="site-action" href={githubRepositoryUrl}>
+                GitHub repo
+              </a>
+              <ThemeToggle />
+            </div>
           </div>
+          <nav className="site-nav" aria-label="Database navigation">
+            {primaryTabs.map((tab) => (
+              <Link href={tab.href} key={tab.href}>
+                {tab.label}
+              </Link>
+            ))}
+          </nav>
         </header>
         {children}
         <footer className="site-footer">
-          <p>
-            Open, evidence-backed tracker metadata. Not legal advice, not
-            academic integrity advice, and not an official university statement.
-          </p>
-          <nav aria-label="Trust and reference links">
-            <Link href="/methodology">Methodology</Link>
-            <Link href="/citation">Citation</Link>
-            <Link href="/datasets">Datasets</Link>
-            <Link href="/changes">Changes</Link>
-            <Link href="/llms.txt">llms.txt</Link>
-          </nav>
+          <div className="site-footer__inner">
+            <p>
+              Open tracker metadata for citation and analysis. This site is not
+              legal advice, academic integrity advice, or an official university
+              statement; original source evidence remains canonical.
+            </p>
+            <nav aria-label="Trust and reference links">
+              <Link href="/methodology">Methodology</Link>
+              <Link href="/citation">Citation</Link>
+              <Link href="/datasets">Datasets</Link>
+              <Link href="/changes">Changes</Link>
+              <Link href="/llms.txt">llms.txt</Link>
+              <a href="/api/public/v1/index.json">Public API index</a>
+            </nav>
+          </div>
         </footer>
       </body>
     </html>

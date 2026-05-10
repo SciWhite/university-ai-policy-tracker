@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { getCatalogUniversities } from "@/lib/catalog";
 
-const routeGroups = [
-  { label: "Universities", href: "/universities" },
-  { label: "AI tools", href: "/tools" },
-  { label: "Sources", href: "/sources" },
-  { label: "Reports", href: "/reports" },
-  { label: "Methodology", href: "/methodology" },
-  { label: "Citation", href: "/citation" },
-  { label: "Datasets", href: "/datasets" },
-  { label: "Changes", href: "/changes" }
+const startLinks = [
+  { label: "Browse universities", href: "/universities" },
+  { label: "View changes", href: "/changes" },
+  { label: "Inspect datasets", href: "/datasets" },
+  { label: "Cite the tracker", href: "/citation" },
+  { label: "Read methodology", href: "/methodology" },
+  { label: "Open public API index", href: "/api/public/v1/index.json" }
 ] as const;
 
 export default async function HomePage() {
@@ -22,14 +20,13 @@ export default async function HomePage() {
   return (
     <main className="page-shell">
       <section className="hero">
-        <p className="kicker">Public policy-change intelligence</p>
-        <h1>University AI Policy Tracker</h1>
+        <p className="kicker">Open evidence database</p>
+        <h1>University AI policy records with source-backed evidence</h1>
         <p className="lead">
-          Track source-backed university policy changes for GenAI, ChatGPT,
-          DeepSeek, Microsoft Copilot, institutional AI services, academic
-          integrity, privacy, teaching, research, security review, and procurement.
-          This is a reference database, not legal advice or academic integrity
-          advice.
+          University AI Policy Tracker publishes crawlable, citation-ready
+          metadata about university AI policy sources, claims, source snapshots,
+          review states, confidence, and public JSON. It is a reference database,
+          not legal advice or academic integrity advice.
         </p>
       </section>
 
@@ -44,21 +41,57 @@ export default async function HomePage() {
         </div>
         <div>
           <span>0</span>
-          <p>OpenClaw connections</p>
+          <p>automation hosts connected to production</p>
         </div>
       </section>
 
       <section className="section">
         <div className="section-heading">
-          <h2>Reference surfaces</h2>
-          <p>Catalog, citation, dataset, and trust pages for public reuse.</p>
+          <h2>Start here</h2>
+          <p>Server-rendered database surfaces and public JSON for reuse.</p>
         </div>
         <div className="link-grid">
-          {routeGroups.map((routeGroup) => (
-            <Link className="text-card" href={routeGroup.href} key={routeGroup.href}>
-              {routeGroup.label}
-            </Link>
-          ))}
+          {startLinks.map((startLink) =>
+            startLink.href.startsWith("/api/") ? (
+              <a className="text-card" href={startLink.href} key={startLink.href}>
+                {startLink.label}
+              </a>
+            ) : (
+              <Link className="text-card" href={startLink.href} key={startLink.href}>
+                {startLink.label}
+              </Link>
+            )
+          )}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading">
+          <h2>Trust model</h2>
+          <p>Original-language evidence stays canonical.</p>
+        </div>
+        <div className="detail-grid">
+          <article className="policy-card">
+            <h3>Evidence layer</h3>
+            <p>
+              Claims trace to official or clearly labeled source URLs, short
+              evidence snippets, source language, and snapshot hashes.
+            </p>
+          </article>
+          <article className="policy-card">
+            <h3>Review layer</h3>
+            <p>
+              Review state and confidence are separate so candidate records do
+              not look like final policy conclusions.
+            </p>
+          </article>
+          <article className="policy-card">
+            <h3>Distribution layer</h3>
+            <p>
+              Public pages remain crawlable, and versioned JSON stays available
+              for citation, agents, and downstream analysis.
+            </p>
+          </article>
         </div>
       </section>
     </main>
