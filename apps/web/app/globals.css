@@ -926,6 +926,7 @@ h3 {
 .record-section,
 .reference-box {
   scroll-margin-top: 24px;
+  min-width: 0;
 }
 
 .record-section {
