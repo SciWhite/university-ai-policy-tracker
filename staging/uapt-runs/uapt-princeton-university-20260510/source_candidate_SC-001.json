@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-001",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+  "sourceTitle": "Disclosing Generative AI",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:princeton.edu \"generative AI\" policy students",
+  "discoveredAt": "2026-05-10T14:02:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:10:00Z",
+  "verificationNotes": "Official Princeton Scholarly Integrity page on disclosing generative AI. Cites Rights Rules Responsibilities section 2.4.7 directly. Contains specific disclosure requirements and template for students.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

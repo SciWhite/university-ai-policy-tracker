@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-002",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "claimType": "academic_integrity",
+  "claimText": "Princeton University states that inappropriate uses of generative AI on any work submitted to fulfill an academic requirement, including directly copying the output, representing output as the student's own, exceeding instructor parameters, or failing to disclose its use, would constitute violations of academic integrity (Rights, Rules, Responsibilities section 2.4.6).",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-002"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Disclosing Generative AI",
+    "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json",
+    "publisher": "Princeton University",
+    "retrievedAt": "2026-05-10T14:22:00Z",
+    "snapshotHash": "40e8a1bd0cfb4f0fdc02a66ce335cfa46043c343af36dc1104ba02874187d355",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

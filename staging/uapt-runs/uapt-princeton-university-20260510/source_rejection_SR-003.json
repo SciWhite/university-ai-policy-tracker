@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-003",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "sourceUrl": "https://pcls.princeton.edu/events/2024/roundtable-academic-integrity-era-chatgpt",
+  "finalUrl": "https://pcls.princeton.edu/events/2024/roundtable-academic-integrity-era-chatgpt",
+  "rejectedAt": "2026-05-10T14:19:00Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw_agent",
+  "evidenceSnippet": "Roundtable discussion event on academic integrity in the era of ChatGPT. Event listing, not official policy.",
+  "notes": "Princeton Center for Language Study event page for a roundtable discussion. Event-only page, not official policy or guidance. Rejected per contract rules against event-only pages."
+}

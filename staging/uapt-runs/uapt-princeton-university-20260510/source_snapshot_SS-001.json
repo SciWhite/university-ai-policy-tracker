@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-001",
+  "sourceCandidateId": "SC-001",
+  "fetchAttemptId": "FA-001",
+  "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+  "finalUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+  "sourceTitle": "Disclosing Generative AI",
+  "sourceLanguage": "en",
+  "contentHash": "40e8a1bd0cfb4f0fdc02a66ce335cfa46043c343af36dc1104ba02874187d355",
+  "fetchedAt": "2026-05-10T22:22:55.404Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "princeton-sc001-20260510.txt",
+  "rawArtifactPaths": []
+}

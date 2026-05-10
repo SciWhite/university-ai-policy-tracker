@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-008",
+  "sourceCandidateId": "SC-008",
+  "sourceUrl": "https://mcgraw.princeton.edu/guidance-aichatgpt",
+  "finalUrl": "https://mcgraw.princeton.edu/guidance-aichatgpt",
+  "attemptedAt": "2026-05-10T22:22:55.404Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2500,
+  "contentHash": "2d17684d9d5562e826929e0359787d69832f885333bca9138344a90028f0265d",
+  "normalizedTextStorageKey": "princeton-sc008-20260510.txt"
+}

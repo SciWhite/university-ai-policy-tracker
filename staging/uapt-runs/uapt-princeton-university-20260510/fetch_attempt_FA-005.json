@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-005",
+  "sourceCandidateId": "SC-005",
+  "sourceUrl": "https://odoc.princeton.edu/about/official-deans-communications/2023/generative-ai-teaching-and-learning-fall-2023-faculty-and",
+  "finalUrl": "https://odoc.princeton.edu/about/official-deans-communications/2023/generative-ai-teaching-and-learning-fall-2023-faculty-and",
+  "attemptedAt": "2026-05-10T22:22:55.404Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2600,
+  "contentHash": "31268a5979e68de8a1c6deb66f40f54ab94547cfc98b040de223653ed0f49592",
+  "normalizedTextStorageKey": "princeton-sc005-20260510.txt"
+}

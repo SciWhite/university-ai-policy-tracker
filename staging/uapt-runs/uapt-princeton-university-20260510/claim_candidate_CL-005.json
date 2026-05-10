@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-005",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "claimType": "teaching",
+  "claimText": "Princeton University's McGraw Center for Teaching and Learning recommends that faculty do not use AI detection software to determine if student work is AI-generated, stating that detection tools are unreliable and biased.",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-005"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Generative AI and Our Classrooms",
+    "sourceUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json",
+    "publisher": "Princeton University McGraw Center for Teaching and Learning",
+    "retrievedAt": "2026-05-10T14:24:00Z",
+    "snapshotHash": "2707a96d56f7bcf845ec74b9e29a3f4fde54615bc41686f8067e279435eaccbc",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

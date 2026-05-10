@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-002",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "sourceUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+  "sourceTitle": "Generative AI Tools Use Policy",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:princeton.edu \"AI tools\" data privacy",
+  "discoveredAt": "2026-05-10T14:03:00Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:10:00Z",
+  "verificationNotes": "Official OIT formal policy on generative AI tools use with University Information. Effective May 2025, last updated February 2026. States that only University-licensed generative AI tools should be used with Internal or Confidential information. Clear policy statement with definitions, procedures, and responsible offices.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

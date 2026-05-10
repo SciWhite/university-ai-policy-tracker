@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-006",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "claimType": "ai_tool_treatment",
+  "claimText": "Princeton University's Office of Information Technology states that Microsoft Copilot is currently the only generative AI tool made available by OIT, and that when logged in with a Princeton University account, Copilot provides Enterprise Data Protection where prompts and responses are not used to train the underlying large language models and chat data is encrypted.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-006"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Microsoft Copilot at Princeton University",
+    "sourceUrl": "https://oit.princeton.edu/microsoft-copilot-princeton-university",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json",
+    "publisher": "Princeton University Office of Information Technology",
+    "retrievedAt": "2026-05-10T14:27:00Z",
+    "snapshotHash": "c7f89bb594fe09a82af1b60f9bdecfe50358cfb0a858b070bd6f64ca647a5946",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

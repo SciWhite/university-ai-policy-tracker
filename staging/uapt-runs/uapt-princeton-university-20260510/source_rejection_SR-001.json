@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-001",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "sourceUrl": "https://paw.princeton.edu/article/whats-foul-and-fair-when-students-use-ai",
+  "finalUrl": "https://paw.princeton.edu/article/whats-foul-and-fair-when-students-use-ai",
+  "rejectedAt": "2026-05-10T14:18:00Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw_agent",
+  "evidenceSnippet": "Princeton Alumni Weekly article discussing AI use by students. Not an official university policy or guidance document.",
+  "notes": "Alumni publication (paw.princeton.edu) - news commentary on AI and academic integrity. Not official university policy/guidance. Rejected per contract rules against news-only pages."
+}

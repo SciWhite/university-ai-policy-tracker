@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-004",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "sourceUrl": "https://oit.princeton.edu/generative-ai",
+  "sourceTitle": "Generative AI at Princeton",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:princeton.edu \"AI tools\" data privacy",
+  "discoveredAt": "2026-05-10T14:05:00Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.80,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:13:00Z",
+  "verificationNotes": "Official OIT portal page for generative AI at Princeton. Contains do/don't guidance on data privacy, accuracy, and ethical use. Links to the formal AI Tools Use Policy. References data classification guidelines and information security policy.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

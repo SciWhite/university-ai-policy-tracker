@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-006",
+  "sourceCandidateId": "SC-006",
+  "sourceUrl": "https://oit.princeton.edu/microsoft-copilot-princeton-university",
+  "finalUrl": "https://oit.princeton.edu/microsoft-copilot-princeton-university",
+  "attemptedAt": "2026-05-10T22:22:55.404Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2100,
+  "contentHash": "c7f89bb594fe09a82af1b60f9bdecfe50358cfb0a858b070bd6f64ca647a5946",
+  "normalizedTextStorageKey": "princeton-sc006-20260510.txt"
+}

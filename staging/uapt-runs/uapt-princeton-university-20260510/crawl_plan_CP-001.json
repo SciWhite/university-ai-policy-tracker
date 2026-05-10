@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "crawl_plan",
+  "planId": "CP-001",
+  "createdAt": "2026-05-10T14:20:00Z",
+  "createdBy": "openclaw_agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "princeton-university",
+      "sourceCandidateId": "SC-001",
+      "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "disclosure_requirements"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "princeton-university",
+      "sourceCandidateId": "SC-002",
+      "sourceUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["data_privacy", "it_security", "approved_tools"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "princeton-university",
+      "sourceCandidateId": "SC-003",
+      "sourceUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching_guidance", "academic_integrity", "detection_software"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "princeton-university",
+      "sourceCandidateId": "SC-004",
+      "sourceUrl": "https://oit.princeton.edu/generative-ai",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["university_guidance", "data_privacy", "approved_tools"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "princeton-university",
+      "sourceCandidateId": "SC-005",
+      "sourceUrl": "https://odoc.princeton.edu/about/official-deans-communications/2023/generative-ai-teaching-and-learning-fall-2023-faculty-and",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["university_guidance", "academic_integrity", "detection_software"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "princeton-university",
+      "sourceCandidateId": "SC-006",
+      "sourceUrl": "https://oit.princeton.edu/microsoft-copilot-princeton-university",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["approved_tools", "data_privacy"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "princeton-university",
+      "sourceCandidateId": "SC-007",
+      "sourceUrl": "https://odoc.princeton.edu/faculty/teaching-support/course-procedures-policies",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["assessment_guidance", "academic_integrity", "disclosure_requirements"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "princeton-university",
+      "sourceCandidateId": "SC-008",
+      "sourceUrl": "https://mcgraw.princeton.edu/guidance-aichatgpt",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching_guidance", "academic_integrity"],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_targets_processed",
+    "fetch_failure_rate_exceeds_50_percent"
+  ]
+}

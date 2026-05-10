@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-003",
+  "sourceCandidateId": "SC-003",
+  "fetchAttemptId": "FA-003",
+  "sourceUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+  "finalUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+  "sourceTitle": "Generative AI and Our Classrooms",
+  "sourceLanguage": "en",
+  "contentHash": "2707a96d56f7bcf845ec74b9e29a3f4fde54615bc41686f8067e279435eaccbc",
+  "fetchedAt": "2026-05-10T22:22:55.404Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "princeton-sc003-20260510.txt",
+  "rawArtifactPaths": []
+}

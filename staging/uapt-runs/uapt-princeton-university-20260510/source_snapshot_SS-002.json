@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-002",
+  "sourceCandidateId": "SC-002",
+  "fetchAttemptId": "FA-002",
+  "sourceUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+  "finalUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+  "sourceTitle": "Generative AI Tools Use Policy",
+  "sourceLanguage": "en",
+  "contentHash": "6ec973c33d6af510975ba74a6d0cd053e83e13f1bc770ec7b7d3fa278d9787e2",
+  "fetchedAt": "2026-05-10T22:22:55.404Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "princeton-sc002-20260510.txt",
+  "rawArtifactPaths": []
+}

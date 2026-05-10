@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-003",
+  "sourceCandidateId": "SC-003",
+  "sourceUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+  "finalUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+  "attemptedAt": "2026-05-10T22:22:55.404Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3500,
+  "contentHash": "2707a96d56f7bcf845ec74b9e29a3f4fde54615bc41686f8067e279435eaccbc",
+  "normalizedTextStorageKey": "princeton-sc003-20260510.txt"
+}

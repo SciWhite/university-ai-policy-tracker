@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "report_draft",
+  "reportId": "RPT-001",
+  "title": "Princeton University AI Policy Crawl Report",
+  "generatedAt": "2026-05-10T22:22:55.404Z",
+  "draftPath": "content/reports/princeton-university-20260510.mdx",
+  "summary": "Princeton University staged artifacts cover official guidance on generative AI disclosure, academic integrity, data classification and AI tools, teaching expectations, AI detection, faculty discretion, and Microsoft Copilot protections. Claims are staged agent-reviewed candidates only and are not canonical public tracker claims.",
+  "referencedClaimIds": [
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004",
+    "CL-005",
+    "CL-006",
+    "CL-007",
+    "CL-008"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

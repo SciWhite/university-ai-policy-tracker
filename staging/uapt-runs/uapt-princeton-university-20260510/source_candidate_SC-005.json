@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-005",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "sourceUrl": "https://odoc.princeton.edu/about/official-deans-communications/2023/generative-ai-teaching-and-learning-fall-2023-faculty-and",
+  "sourceTitle": "Generative AI in Teaching and Learning Fall 2023, Faculty and Student Memo",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:princeton.edu \"generative AI\" teaching syllabus",
+  "discoveredAt": "2026-05-10T14:06:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:14:00Z",
+  "verificationNotes": "Official Dean's communication from August 2023. Co-signed by Deans Dolan, Stanton, and Swanson. States that faculty have discretion to set their own generative AI policy. Clarifies that existing academic integrity regulations govern AI use. Explicitly states detection tools are not recommended.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

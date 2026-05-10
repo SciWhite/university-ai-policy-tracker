@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-002",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "sourceUrl": "https://www.princeton.edu/news/2026/03/11/how-princeton-spia-shaping-important-ai-policy-directions",
+  "finalUrl": "https://www.princeton.edu/news/2026/03/11/how-princeton-spia-shaping-important-ai-policy-directions",
+  "rejectedAt": "2026-05-10T14:18:00Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw_agent",
+  "evidenceSnippet": "News article about Princeton SPIA shaping AI policy directions. Research showcase, not institutional policy.",
+  "notes": "Princeton news article about the School of Public and International Affairs research on AI policy. This is a research showcase, not institutional AI use policy. Rejected per contract rules."
+}

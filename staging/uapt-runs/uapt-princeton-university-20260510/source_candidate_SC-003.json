@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-003",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "sourceUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+  "sourceTitle": "Generative AI and Our Classrooms",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:princeton.edu \"generative AI\" teaching syllabus",
+  "discoveredAt": "2026-05-10T14:04:00Z",
+  "officialDomainConfidence": 0.97,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.88,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:12:00Z",
+  "verificationNotes": "Official McGraw Center for Teaching and Learning guidance page. Provides syllabus language examples, ethical risk discussion, assignment design implications, and explicit recommendation against AI detection software. References RRR 2.4.6. Extensive official guidance for faculty.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

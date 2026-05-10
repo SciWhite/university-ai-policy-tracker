@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-006",
+  "claimId": "CL-006",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "codex-artifact-repair",
+  "notes": "Approved after contract repair because the claim is narrowly supported by direct official Princeton source evidence. Not human_reviewed and not canonical.",
+  "decidedAt": "2026-05-10T22:22:55.404Z"
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-007",
+  "sourceCandidateId": "SC-007",
+  "sourceUrl": "https://odoc.princeton.edu/faculty/teaching-support/course-procedures-policies",
+  "finalUrl": "https://odoc.princeton.edu/faculty/teaching-support/course-procedures-policies",
+  "attemptedAt": "2026-05-10T22:22:55.404Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2300,
+  "contentHash": "147b153f2061065acb2887f2fb69e25fb558f524d9e7e07878f4931016d47fff",
+  "normalizedTextStorageKey": "princeton-sc007-20260510.txt"
+}

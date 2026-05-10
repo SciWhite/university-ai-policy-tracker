@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-001",
+  "claimId": "CL-001",
+  "sourceSnapshotId": "SS-001",
+  "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+  "finalUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+  "sourceTitle": "Disclosing Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "40e8a1bd0cfb4f0fdc02a66ce335cfa46043c343af36dc1104ba02874187d355",
+  "evidenceSnippetOriginal": "As defined in section 2.4.7 , generative artificial intelligence (AI) is not a source, since its output is not produced by a person. If generative AI is permitted by the instructor (for brainstorming, outlining, etc.), students must disclose its use rather than cite or acknowledge the use, since it is an algorithm rather than a source. All the tenets of scholarly integrity apply to use of generative AI: students must not pass off any output by generative AI as their own, and so a failure of disclosure, even in a course where generative AI is permitted, is a scholarly integrity violation.",
+  "evidenceType": "official_source",
+  "relevance": 0.99,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Disclosing Generative AI",
+    "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json",
+    "publisher": "Princeton University",
+    "retrievedAt": "2026-05-10T14:22:00Z",
+    "snapshotHash": "40e8a1bd0cfb4f0fdc02a66ce335cfa46043c343af36dc1104ba02874187d355",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

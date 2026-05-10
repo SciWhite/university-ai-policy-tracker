@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-003",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "claimType": "privacy",
+  "claimText": "Princeton University requires that only University-licensed generative AI tools should be used with University Information classified as Internal or Confidential, and the use of publicly available generative AI tools in conjunction with such Princeton Information is not permitted by the University.",
+  "sourceLanguage": "en",
+  "confidence": 0.98,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-003"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Generative AI Tools Use Policy",
+    "sourceUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json",
+    "publisher": "Princeton University Office of Information Technology",
+    "retrievedAt": "2026-05-10T14:23:00Z",
+    "snapshotHash": "6ec973c33d6af510975ba74a6d0cd053e83e13f1bc770ec7b7d3fa278d9787e2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

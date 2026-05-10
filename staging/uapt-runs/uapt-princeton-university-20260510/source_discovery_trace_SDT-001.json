@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "source_discovery_trace",
+  "traceId": "SDT-001",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "startedAt": "2026-05-10T14:00:00Z",
+  "endedAt": "2026-05-10T14:45:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:princeton.edu \"generative AI\" policy students",
+      "domain": "princeton.edu",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:princeton.edu \"ChatGPT\" academic integrity",
+      "domain": "princeton.edu",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:princeton.edu \"AI tools\" data privacy",
+      "domain": "princeton.edu",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:princeton.edu \"generative AI\" teaching syllabus",
+      "domain": "princeton.edu",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:princeton.edu \"artificial intelligence\" \"academic integrity\"",
+      "domain": "princeton.edu",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:princeton.edu \"Copilot\" \"data\"",
+      "domain": "princeton.edu",
+      "resultCount": 10
+    },
+    {
+      "method": "site_search",
+      "domain": "princeton.edu",
+      "resultCount": 8,
+      "notes": "Identified 8 verified official Princeton pages covering AI policy, academic integrity, data privacy, and approved tools. Rejected 3 URLs as news-only, research showcase, or event-only."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "SC-001",
+    "SC-002",
+    "SC-003",
+    "SC-004",
+    "SC-005",
+    "SC-006",
+    "SC-007",
+    "SC-008"
+  ],
+  "rejectionIds": [
+    "SR-001",
+    "SR-002",
+    "SR-003"
+  ],
+  "summary": "Discovered Princeton University AI policy and guidance pages via site-restricted web searches across princeton.edu domains. Verified and fetched 8 official sources: scholarly integrity disclosure guidance, OIT generative AI tools use policy, McGraw Center teaching guidance, OIT generative AI portal, Dean's 2023 memo, Copilot data security page, ODoC course procedures, and McGraw 2023 ChatGPT guidance. Rejected 3 URLs as alumni news, research showcase, or event-only content."
+}

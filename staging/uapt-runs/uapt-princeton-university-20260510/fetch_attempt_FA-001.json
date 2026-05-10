@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-001",
+  "sourceCandidateId": "SC-001",
+  "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+  "finalUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+  "attemptedAt": "2026-05-10T22:22:55.404Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2800,
+  "contentHash": "40e8a1bd0cfb4f0fdc02a66ce335cfa46043c343af36dc1104ba02874187d355",
+  "normalizedTextStorageKey": "princeton-sc001-20260510.txt"
+}

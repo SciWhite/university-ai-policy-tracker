@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-005",
+  "claimId": "CL-005",
+  "sourceSnapshotId": "SS-003",
+  "sourceUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+  "finalUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+  "sourceTitle": "Generative AI and Our Classrooms",
+  "sourceLanguage": "en",
+  "snapshotHash": "2707a96d56f7bcf845ec74b9e29a3f4fde54615bc41686f8067e279435eaccbc",
+  "evidenceSnippetOriginal": "Though companies like Turnitin, ZeroGPT, and OpenAI have all developed AI detection capabilities, we do not recommend you use such software to attempt to determine if student work is AI-generated. Our recommendation against using these tools is based both on Princeton's standards for scholarly integrity and the practical limits of these tools. Detection tools seem unreliable at best and biased at worst.",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI and Our Classrooms",
+    "sourceUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json",
+    "publisher": "Princeton University McGraw Center for Teaching and Learning",
+    "retrievedAt": "2026-05-10T14:24:00Z",
+    "snapshotHash": "2707a96d56f7bcf845ec74b9e29a3f4fde54615bc41686f8067e279435eaccbc",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

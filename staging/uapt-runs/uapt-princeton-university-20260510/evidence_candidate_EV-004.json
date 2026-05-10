@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-004",
+  "claimId": "CL-004",
+  "sourceSnapshotId": "SS-007",
+  "sourceUrl": "https://odoc.princeton.edu/faculty/teaching-support/course-procedures-policies",
+  "finalUrl": "https://odoc.princeton.edu/faculty/teaching-support/course-procedures-policies",
+  "sourceTitle": "Course Procedures & Policies",
+  "sourceLanguage": "en",
+  "snapshotHash": "147b153f2061065acb2887f2fb69e25fb558f524d9e7e07878f4931016d47fff",
+  "evidenceSnippetOriginal": "Faculty must set clear expectations for whether, when, and how generative AI can be used and state those expectations in the course syllabus. Work created with the assistance of AI tools should never be a proxy for original work.",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Course Procedures & Policies",
+    "sourceUrl": "https://odoc.princeton.edu/faculty/teaching-support/course-procedures-policies",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json",
+    "publisher": "Princeton University Office of the Dean of the College",
+    "retrievedAt": "2026-05-10T14:28:00Z",
+    "snapshotHash": "147b153f2061065acb2887f2fb69e25fb558f524d9e7e07878f4931016d47fff",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

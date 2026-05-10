@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-007",
+  "entityType": "university",
+  "entitySlug": "princeton-university",
+  "claimType": "teaching",
+  "claimText": "Princeton University states that the decision to allow, limit, or prohibit generative AI in a course or in undergraduate independent work remains with the faculty; faculty members have the discretion to set their own generative AI policy for their courses.",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-007"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Generative AI in Teaching and Learning Fall 2023, Faculty and Student Memo",
+    "sourceUrl": "https://odoc.princeton.edu/about/official-deans-communications/2023/generative-ai-teaching-and-learning-fall-2023-faculty-and",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json",
+    "publisher": "Princeton University Office of the Dean of the College",
+    "retrievedAt": "2026-05-10T14:26:00Z",
+    "snapshotHash": "31268a5979e68de8a1c6deb66f40f54ab94547cfc98b040de223653ed0f49592",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

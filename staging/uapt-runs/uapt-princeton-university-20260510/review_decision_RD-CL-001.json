@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-001",
+  "claimId": "CL-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_policy_extractor",
+  "notes": "Claim directly supported by official Princeton scholarly integrity page. Evidence snippet quotes RRR 2.4.7 verbatim. Confidence 0.97 justified.",
+  "decidedAt": "2026-05-10T15:40:00Z"
+}

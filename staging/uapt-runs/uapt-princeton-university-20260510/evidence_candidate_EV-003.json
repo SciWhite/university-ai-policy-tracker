@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-princeton-university-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-003",
+  "claimId": "CL-003",
+  "sourceSnapshotId": "SS-002",
+  "sourceUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+  "finalUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+  "sourceTitle": "Generative AI Tools Use Policy",
+  "sourceLanguage": "en",
+  "snapshotHash": "6ec973c33d6af510975ba74a6d0cd053e83e13f1bc770ec7b7d3fa278d9787e2",
+  "evidenceSnippetOriginal": "University Information classified as Internal or Confidential under the University's Information Security Policy. The use of publicly available generative AI tools in conjunction with such Princeton Information is not permitted by the University.",
+  "evidenceType": "official_source",
+  "relevance": 0.99,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Tools Use Policy",
+    "sourceUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/princeton-university.json",
+    "publisher": "Princeton University Office of Information Technology",
+    "retrievedAt": "2026-05-10T14:23:00Z",
+    "snapshotHash": "6ec973c33d6af510975ba74a6d0cd053e83e13f1bc770ec7b7d3fa278d9787e2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}
