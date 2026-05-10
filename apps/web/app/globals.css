@@ -1402,6 +1402,11 @@ h3 {
 .theme-claim-stack {
   display: grid;
   gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.theme-record-row {
+  grid-template-columns: 1fr;
 }
 
 .theme-claim-summary {

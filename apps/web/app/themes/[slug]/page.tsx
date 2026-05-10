@@ -140,7 +140,7 @@ export default async function ThemePage({ params }: ThemePageProps) {
       >
         <div className="reference-record-list">
           {records.map(({ record, claims }) => (
-            <article className="reference-record-row" key={record.slug}>
+            <article className="reference-record-row theme-record-row" key={record.slug}>
               <div>
                 <h2>
                   <Link href={`/universities/${record.slug}`}>{record.name}</Link>

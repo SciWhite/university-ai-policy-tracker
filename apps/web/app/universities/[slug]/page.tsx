@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: UniversityPageProps) {
     ? `${university.name} | University AI Policy Tracker`
     : "University not found";
   const description = university
-    ? `${university.name} AI policy record with source-backed claims, official sources, review state, confidence, and public JSON.`
+    ? `${university.name} AI policy record with evidence-backed claims, official sources, review state, confidence, and public JSON.`
     : "University AI Policy Tracker record not found.";
 
   return {
@@ -181,7 +181,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             <div className="tag-row">
               <MetaLabel label="Policy status">{policyStatus}</MetaLabel>
               <StateLabel reviewState={publicSummary.reviewState} />
-              <MetaLabel label="Claims">{publicSummary.claims.length}</MetaLabel>
+              <MetaLabel label="Evidence-backed claims">
+                {publicSummary.claims.length}
+              </MetaLabel>
               <MetaLabel label="Reviewed">{reviewedClaims.length}</MetaLabel>
               <MetaLabel label="Candidate">{candidateClaims.length}</MetaLabel>
               <MetaLabel label="Official sources">
@@ -196,7 +198,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             {candidateClaims.length ? (
               <p className="notice-card">
                 This record includes candidate or needs-review claims. Candidate
-                claims are source-backed workflow records, not final policy
+                claims are evidence-backed workflow records, not final policy
                 conclusions.
               </p>
             ) : null}
@@ -209,8 +211,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
           <section className="record-section" id="claims">
             <div className="section-heading">
-              <h2>Reviewed claims</h2>
-              <p>{reviewedClaims.length} reviewed public claim</p>
+              <h2>Evidence-backed claims</h2>
+              <p>{reviewedClaims.length} reviewed evidence-backed public claim</p>
             </div>
             {reviewedClaims.length ? (
               <div className="claim-list">
@@ -343,8 +345,8 @@ function getPolicyStatus(
   candidateClaimCount: number,
   sourceCount: number
 ): string {
-  if (reviewedClaimCount > 0) return "Reviewed source-backed record";
-  if (candidateClaimCount > 0) return "Candidate source-backed record";
+  if (reviewedClaimCount > 0) return "Reviewed evidence-backed record";
+  if (candidateClaimCount > 0) return "Candidate evidence-backed record";
   if (sourceCount > 0) return "Source-attributed record";
 
   return "No public claim record yet";
