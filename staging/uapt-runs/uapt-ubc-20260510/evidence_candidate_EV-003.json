@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-003",
+  "claimId": "CL-003",
+  "sourceSnapshotId": "SS-003",
+  "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+  "sourceTitle": "Teaching & Learning Guidelines - Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "6cc7152af150ad693e13c238d0454c827bf88c1d9a687642fda6ad15e048e598",
+  "evidenceSnippetOriginal": "For assessed work (assignments, exams, projects, theses, etc.), students may only use GenAI if expressly permitted by their instructor, supervisor, or program. Instructors set the conditions for GenAI use in submitted assessed academic work, including when and how its use must be acknowledged.",
+  "evidenceLocator": "Student use of GenAI principle",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Teaching & Learning Guidelines - Generative AI",
+    "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "6cc7152af150ad693e13c238d0454c827bf88c1d9a687642fda6ad15e048e598",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

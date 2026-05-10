@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-006",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "claimType": "privacy",
+  "claimText": "UBC says instructors or teaching assistants cannot require students to use GenAI or any other technology tool that requires sharing personal information unless the tool has undergone a UBC Privacy Impact Assessment review and been approved for use with personal information.",
+  "normalizedValue": "pia_required_for_required_student_use",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-006"
+  ],
+  "citation": {
+    "citationTitle": "UBC AI Policy Tracker record",
+    "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/guidelines-for-all-uses-of-genai-in-teaching-learning/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "6bbb5fcbff690d26cad89c3e3f9fc7e41059818f7cfd3f822574310dc7bb1cbd",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

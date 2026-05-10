@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-R001",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://news.ubc.ca/2023/03/ubcs-approach-to-academic-integrity-in-the-age-of-ai/",
+  "sourceTitle": "UBC's approach to academic integrity in the age of AI - UBC News",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-10T14:00:00Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.5,
+  "policySpecificityScore": 0.15,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T14:00:00Z",
+  "verificationNotes": "News article summarizing UBC approach; not an official policy page.",
+  "rejectionReason": "event_or_news_only",
+  "robotsPolicy": "respect"
+}

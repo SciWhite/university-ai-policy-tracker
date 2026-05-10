@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-004",
+  "sourceCandidateId": "SC-004",
+  "sourceUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+  "finalUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+  "attemptedAt": "2026-05-10T14:00:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2071,
+  "contentHash": "afea061c3cea022533d348adacb8127d3df7c836b2facac08dcf7fdd9db95f7f",
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-004.txt"
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-009",
+  "claimId": "CL-009",
+  "sourceSnapshotId": "SS-004",
+  "sourceUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+  "sourceTitle": "Use of Generative AI - Graduate School at UBC",
+  "sourceLanguage": "en",
+  "snapshotHash": "afea061c3cea022533d348adacb8127d3df7c836b2facac08dcf7fdd9db95f7f",
+  "evidenceSnippetOriginal": "The substantive (i.e. non-editorial) use by graduate students of Generative AI tools and outputs must be done with full transparency and with the approval of the academic(s) responsible for evaluating the given work in question -- course instructor, research supervisor, or other advisor as appropriate. If GenAI was used in the research described, the drafting of, and/or the preparation of a thesis or dissertation, the Preface must include a concise description of how it was used.",
+  "evidenceLocator": "Graduate education and Gen AI section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Use of Generative AI - Graduate School at UBC",
+    "sourceUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "afea061c3cea022533d348adacb8127d3df7c836b2facac08dcf7fdd9db95f7f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

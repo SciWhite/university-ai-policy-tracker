@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "sourceCandidateId": "sc-polytechnique-teaching",
+  "entityType": "university",
+  "entitySlug": "institut-polytechnique-de-paris",
+  "sourceUrl": "https://www.polytechnique.edu/teaching-learning/moyens-au-service-de-la-pedagogie/ia-ressources-pour-les-enseignants",
+  "sourceTitle": "IA - Ressources pour les enseignants - Teaching & Learning Center",
+  "sourceLanguage": "fr",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:polytechnique.edu \"intelligence artificielle générative\" étudiants",
+  "discoveredAt": "2026-05-10T00:03:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.88,
+  "policySpecificityScore": 0.65,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:07:00.000Z",
+  "verificationNotes": "Official Polytechnique.edu (member school) Teaching & Learning Center page with AI teaching resources. Provides supplementary teaching guidance on AI integration, detection tools, and institutional resources.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "report_draft",
+  "reportId": "RPT-001",
+  "title": "University of British Columbia (QS 2026 #40) — AI Policy Tracker Report",
+  "generatedAt": "2026-05-10T14:00:00Z",
+  "draftPath": "content/reports/ubc-ai-policy-20260510.mdx",
+  "summary": "UBC does not ban generative AI use. The university has published comprehensive principles and guidelines for responsible GenAI use across administrative work, teaching and learning, and graduate education. Students may only use GenAI for assessed work if expressly permitted by their instructor. Microsoft Copilot for Organizations is the approved institutional chatbot available to all with UBC credentials. Privacy Impact Assessments are required before students can be required to use any GenAI tool. AI detection tools (including Turnitin) are strongly discouraged and not enabled. Graduate students must obtain supervisor approval and include a GenAI statement in their thesis preface. Indigenous data sovereignty must be respected in all GenAI use.",
+  "referencedClaimIds": [
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004",
+    "CL-005",
+    "CL-006",
+    "CL-007",
+    "CL-008",
+    "CL-009",
+    "CL-010"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/ubc.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is staged data, not an official university statement. Claims are agent-reviewed candidates, not human-verified facts.",
+    "PDF versions of principles and guidelines were not fetched in this run; claims derive from the HTML guidance pages.",
+    "No blocked URLs or access-control issues were encountered during this run. All pages were fetched via Firecrawl.",
+    "All 10 claims were approved at agent_reviewed level. No claims were left as needs_changes or reject in this run."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

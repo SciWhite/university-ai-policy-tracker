@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-009",
+  "sourceCandidateId": "SC-009",
+  "fetchAttemptId": "FA-009",
+  "sourceUrl": "https://academicintegrity.ubc.ca/genai/",
+  "finalUrl": "https://academicintegrity.ubc.ca/genai/",
+  "sourceTitle": "GenAI - Academic Integrity at UBC",
+  "sourceLanguage": "en",
+  "contentHash": "e5886b8fbffbbb348fd2ebc43b15fb59f4528065ae05ff958ac9fc96258830a4",
+  "fetchedAt": "2026-05-10T14:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-009.txt",
+  "rawArtifactPaths": []
+}

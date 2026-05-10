@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceRejectionId": "nw-sr-001",
+  "sourceCandidateId": "nw-sc-rejected-nuq",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://my.qatar.northwestern.edu/docs/other/Generative-Artificial-Intelligence-Policy-for-Teaching-and-Coursework_NU-Q.pdf",
+  "rejectedAt": "2026-05-10T00:03:10.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Qatar campus-specific GenAI policy for teaching and coursework.",
+  "notes": "Northwestern Qatar campus policy; does not apply to the main Evanston campus."
+}

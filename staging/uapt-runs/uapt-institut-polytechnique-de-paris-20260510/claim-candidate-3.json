@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "claimId": "claim-ipp-ai-citation-requirement",
+  "entityType": "university",
+  "entitySlug": "institut-polytechnique-de-paris",
+  "claimType": "teaching",
+  "claimText": "Under Institut Polytechnique de Paris's 2025-2026 Master programs academic regulations, when generative AI use is explicitly permitted by an instructor, students must clearly acknowledge its use in accordance with standard citation practices.",
+  "normalizedValue": "ai_citation_required_when_authorized",
+  "sourceLanguage": "en",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["ev-ipp-ai-citation-requirement"],
+  "citation": {
+    "citationTitle": "Academic Regulations For Master Programs - IP Paris",
+    "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20Academic%20Regulations%20IP%20Paris%20Master%20Programs%201.pdf",
+    "canonicalUrl": "https://eduaipolicy.org/universities/institut-polytechnique-de-paris",
+    "publisher": "Institut Polytechnique de Paris",
+    "retrievedAt": "2026-05-10T00:09:00.000Z",
+    "snapshotHash": "2e20aa963031019d4fb1057b90242d475a1baca72dfa81e791a631e189d415f1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

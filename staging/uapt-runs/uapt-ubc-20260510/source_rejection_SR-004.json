@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-004",
+  "sourceCandidateId": "SC-R004",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://wiki.ubc.ca/Impact_of_AI_on_teaching_and_learning",
+  "rejectedAt": "2026-05-10T14:00:00Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "openclaw_agent",
+  "notes": "Community wiki, not official university policy."
+}

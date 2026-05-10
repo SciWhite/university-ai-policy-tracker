@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-002",
+  "sourceCandidateId": "SC-002",
+  "fetchAttemptId": "FA-002",
+  "sourceUrl": "https://genai.ubc.ca/guidance/principles/",
+  "finalUrl": "https://genai.ubc.ca/guidance/principles/",
+  "sourceTitle": "Principles for the Use of Generative AI Tools",
+  "sourceLanguage": "en",
+  "contentHash": "0e6f376cd2d07ed3ed0fb7aceed5e0ca29bcc3544d2ec9e29e442118aeaf252b",
+  "fetchedAt": "2026-05-10T14:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-002.txt",
+  "rawArtifactPaths": []
+}

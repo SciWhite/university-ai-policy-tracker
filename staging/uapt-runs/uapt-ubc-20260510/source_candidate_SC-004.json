@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-004",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+  "sourceTitle": "Use of Generative AI - Graduate School at UBC",
+  "sourceLanguage": "en",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ubc.ca \"generative AI\" students",
+  "discoveredAt": "2026-05-10T14:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.93,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:00:00Z",
+  "verificationNotes": "Verified as official UBC policy/guidance page with substantive GenAI content.",
+  "robotsPolicy": "respect"
+}

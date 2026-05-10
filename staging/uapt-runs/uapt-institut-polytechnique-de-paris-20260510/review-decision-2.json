@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "decisionId": "rd-ipp-ai-assessment-policy-fr",
+  "claimId": "claim-ipp-ai-assessment-policy-fr",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "French version of the same official policy. Section 5.2 confirms identical content: l'IA générative est interdite sauf autorisation explicite de l'enseignant. Original French evidence preserved.",
+  "decidedAt": "2026-05-10T00:13:30.000Z"
+}

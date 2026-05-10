@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-003",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+  "finalUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+  "sourceTitle": "Instructor Options",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"generative AI\" teaching learning",
+  "discoveredAt": "2026-05-10T00:02:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:05:00.000Z",
+  "verificationNotes": "Official IT page defining three course-level AI policy options (Open, Conditional, Closed) with sample syllabus statements for instructors.",
+  "robotsPolicy": "respect"
+}

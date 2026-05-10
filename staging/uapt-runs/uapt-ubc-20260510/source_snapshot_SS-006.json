@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-006",
+  "sourceCandidateId": "SC-006",
+  "fetchAttemptId": "FA-006",
+  "sourceUrl": "https://genai.ubc.ca/privacy-and-risk/",
+  "finalUrl": "https://genai.ubc.ca/privacy-and-risk/",
+  "sourceTitle": "Privacy & Risk - Generative AI at UBC",
+  "sourceLanguage": "en",
+  "contentHash": "c02870d6c786d400d622d239e90952bfe84a0df4fcc74ceb96aec926c868c88e",
+  "fetchedAt": "2026-05-10T14:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-006.txt",
+  "rawArtifactPaths": []
+}

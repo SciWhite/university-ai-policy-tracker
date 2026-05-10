@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "evidenceId": "ev-polytechnique-teaching-ai",
+  "claimId": "claim-polytechnique-teaching-ai",
+  "sourceSnapshotId": "ss-polytechnique-teaching",
+  "sourceUrl": "https://www.polytechnique.edu/teaching-learning/moyens-au-service-de-la-pedagogie/ia-ressources-pour-les-enseignants",
+  "sourceTitle": "IA - Ressources pour les enseignants - Teaching & Learning Center",
+  "sourceLanguage": "fr",
+  "snapshotHash": "e9ae52eaf73161266ce0c3342ac0d604ec24697e5b73780110b7531cddc88686",
+  "evidenceSnippetOriginal": "Les ressources sont classées en plusieurs catégories: Outils d'IA avancés, Applications d'IA génératives: Textes, images, musiques, vidéos. Outils de détection: Une sélection de logiciels comme Turnitin, AI Text Classifier et GPTZero, permettant d'identifier les contenus générés par l'IA et de préserver l'intégrité académique.",
+  "evidenceLocator": "Outils et ressources section",
+  "evidenceType": "official_source",
+  "relevance": 0.72,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "IA - Ressources pour les enseignants - Teaching & Learning Center",
+    "sourceUrl": "https://www.polytechnique.edu/teaching-learning/moyens-au-service-de-la-pedagogie/ia-ressources-pour-les-enseignants",
+    "canonicalUrl": "https://eduaipolicy.org/universities/institut-polytechnique-de-paris",
+    "publisher": "École polytechnique",
+    "retrievedAt": "2026-05-10T00:11:00.000Z",
+    "snapshotHash": "e9ae52eaf73161266ce0c3342ac0d604ec24697e5b73780110b7531cddc88686",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

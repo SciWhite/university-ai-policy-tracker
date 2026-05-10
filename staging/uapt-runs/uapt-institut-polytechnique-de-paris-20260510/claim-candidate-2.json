@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "claimId": "claim-ipp-ai-assessment-policy-fr",
+  "entityType": "university",
+  "entitySlug": "institut-polytechnique-de-paris",
+  "claimType": "academic_integrity",
+  "claimText": "Le règlement des études 2025-2026 des masters de l'Institut Polytechnique de Paris interdit l'utilisation de l'intelligence artificielle générative dans les évaluations de ces programmes, sauf autorisation explicite de l'enseignant dans ses consignes écrites. Tout manquement est considéré comme une fraude.",
+  "normalizedValue": "generative_ai_prohibited_in_assessments_unless_authorized",
+  "sourceLanguage": "fr",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["ev-ipp-ai-assessment-policy-fr"],
+  "citation": {
+    "citationTitle": "Règlement des études des masters de l'Institut Polytechnique de Paris",
+    "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20R%C3%A9glement%20des%20%C3%A9tudes%20IP%20Paris%20Master.pdf",
+    "canonicalUrl": "https://eduaipolicy.org/universities/institut-polytechnique-de-paris",
+    "publisher": "Institut Polytechnique de Paris",
+    "retrievedAt": "2026-05-10T00:10:00.000Z",
+    "snapshotHash": "92b0aea4c2b16efbdee72a54123f6c12865df10d79b2667c38448e0a791a646d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-009",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://academicintegrity.ubc.ca/genai/",
+  "sourceTitle": "GenAI - Academic Integrity at UBC",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ubc.ca \"ChatGPT\" academic integrity",
+  "discoveredAt": "2026-05-10T14:00:00Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:00:00Z",
+  "verificationNotes": "Verified as official UBC policy/guidance page with substantive GenAI content.",
+  "robotsPolicy": "respect"
+}

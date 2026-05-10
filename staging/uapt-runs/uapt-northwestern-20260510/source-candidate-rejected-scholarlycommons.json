@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-rejected-scholarlycommons",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://scholarlycommons.law.northwestern.edu/njtip/vol22/iss1/4/",
+  "sourceLanguage": "en",
+  "sourceType": "research_showcase",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-10T00:01:25.000Z",
+  "officialDomainConfidence": 0.80,
+  "aiRelevanceScore": 0.70,
+  "policySpecificityScore": 0.30,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:03:25.000Z",
+  "verificationNotes": "Academic article about fair use and generative AI. Research showcase, not policy guidance.",
+  "rejectionReason": "research_showcase_only",
+  "robotsPolicy": "respect"
+}

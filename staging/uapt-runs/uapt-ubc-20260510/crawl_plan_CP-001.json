@@ -1,0 +1,194 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "crawl_plan",
+  "planId": "CP-001",
+  "createdAt": "2026-05-10T14:00:00Z",
+  "createdBy": "openclaw_agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-001",
+      "sourceUrl": "https://genai.ubc.ca/guidance/",
+      "sourceTitle": "UBC Guidance - Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-002",
+      "sourceUrl": "https://genai.ubc.ca/guidance/principles/",
+      "sourceTitle": "Principles for the Use of Generative AI Tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-003",
+      "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+      "sourceTitle": "Teaching & Learning Guidelines - Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-004",
+      "sourceUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+      "sourceTitle": "Use of Generative AI - Graduate School at UBC",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-005",
+      "sourceUrl": "https://academic.ubc.ca/teaching-learning/10-things-ubc-students-should-know/generative-ai",
+      "sourceTitle": "10 things UBC students should know about generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-006",
+      "sourceUrl": "https://genai.ubc.ca/privacy-and-risk/",
+      "sourceTitle": "Privacy & Risk - Generative AI at UBC",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-007",
+      "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+      "sourceTitle": "Microsoft Copilot for Organizations",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-008",
+      "sourceUrl": "https://ai.ctlt.ubc.ca/privacy-impact-assessments-for-generativeai-instructional-use-at-ubc/",
+      "sourceTitle": "Privacy Impact Assessments for GenerativeAI Instructional Use at UBC",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-009",
+      "sourceUrl": "https://academicintegrity.ubc.ca/genai/",
+      "sourceTitle": "GenAI - Academic Integrity at UBC",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ubc",
+      "sourceCandidateId": "SC-010",
+      "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/guidelines-for-all-uses-of-genai-in-teaching-learning/",
+      "sourceTitle": "Guidelines for all uses of GenAI in Teaching & Learning",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "genai_guidance",
+        "academic_integrity",
+        "privacy",
+        "teaching_learning"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_targets_fetched",
+    "claims_extracted"
+  ]
+}

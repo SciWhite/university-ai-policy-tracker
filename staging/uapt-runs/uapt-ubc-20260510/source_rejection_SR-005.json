@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-005",
+  "sourceCandidateId": "SC-R005",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://learningcommons.ubc.ca/how-to-get-the-most-out-of-chatgpt/",
+  "rejectedAt": "2026-05-10T14:00:00Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw_agent",
+  "notes": "Student tips page with minimal policy content."
+}

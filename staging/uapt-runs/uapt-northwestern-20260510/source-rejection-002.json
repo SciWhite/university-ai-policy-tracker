@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceRejectionId": "nw-sr-002",
+  "sourceCandidateId": "nw-sc-rejected-feinberg",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.feinberg.northwestern.edu/md-education/docs/policies/professionalism-learning-environment/use-of-generative-ai-tools-policy.pdf",
+  "rejectedAt": "2026-05-10T00:03:15.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Feinberg School of Medicine Generative AI Tools Policy.",
+  "notes": "Feinberg school-specific policy; does not apply university-wide."
+}

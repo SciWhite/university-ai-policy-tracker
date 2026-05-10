@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceRejectionId": "nw-sr-008",
+  "sourceCandidateId": "nw-sc-rejected-libguides-hub",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://libguides.northwestern.edu/ai-tools-research",
+  "rejectedAt": "2026-05-10T00:03:45.000Z",
+  "rejectionReason": "generic_home_page",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Using AI Tools in Your Research: What is Generative Artificial Intelligence.",
+  "notes": "Library guide hub/navigation page; not policy content."
+}

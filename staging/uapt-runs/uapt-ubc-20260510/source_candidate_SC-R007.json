@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-R007",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://lthub.ubc.ca/2024/09/03/what-to-know-about-working-with-gen-ai-at-ubc/",
+  "sourceTitle": "What to know about working with GenAI at UBC in September 2024",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-10T14:00:00Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.5,
+  "policySpecificityScore": 0.15,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T14:00:00Z",
+  "verificationNotes": "Time-specific advisory blog post, not a standing policy page.",
+  "rejectionReason": "event_or_news_only",
+  "robotsPolicy": "respect"
+}

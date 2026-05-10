@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-005",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "claimType": "ai_tool_treatment",
+  "claimText": "Microsoft Copilot for Organizations is the approved institutional GenAI chatbot at UBC, available to all faculty, students, and staff with UBC credentials, with PIA interim approval.",
+  "normalizedValue": "microsoft_copilot_approved_institutional_tool",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-005"
+  ],
+  "citation": {
+    "citationTitle": "UBC AI Policy Tracker record",
+    "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "69418a2cf0a62587a706b8e975a48664bccab8e9ff42b04bd3df297f0a17b690",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "decisionId": "rd-ipp-ai-citation-requirement",
+  "claimId": "claim-ipp-ai-citation-requirement",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Clear citation requirement in Section 5.2 of the official regulations. When AI is authorized, students must acknowledge use per standard citation practices. High confidence.",
+  "decidedAt": "2026-05-10T00:14:00.000Z"
+}

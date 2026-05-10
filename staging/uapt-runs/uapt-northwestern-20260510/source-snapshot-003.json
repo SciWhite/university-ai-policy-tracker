@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceSnapshotId": "nw-ss-003",
+  "sourceCandidateId": "nw-sc-003",
+  "fetchAttemptId": "nw-fa-003",
+  "sourceUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+  "finalUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+  "sourceTitle": "Instructor Options",
+  "sourceLanguage": "en",
+  "contentHash": "19e5d246a33e95a64ca2f7ec0cb31571d35063dcece033620346e5fc9642464a",
+  "fetchedAt": "2026-05-10T00:05:20.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-northwestern-20260510/normalized/nw-instructor-options.txt",
+  "rawArtifactPaths": []
+}

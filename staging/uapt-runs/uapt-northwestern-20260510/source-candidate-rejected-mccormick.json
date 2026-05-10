@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-rejected-mccormick",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.mccormick.northwestern.edu/magazine/fall-2025/cracking-the-code-preparing-students-for-ai-driven-future/",
+  "sourceLanguage": "en",
+  "sourceType": "research_showcase",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"AI tools\" students",
+  "discoveredAt": "2026-05-10T00:01:55.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.60,
+  "policySpecificityScore": 0.20,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:03:55.000Z",
+  "verificationNotes": "McCormick magazine article. News/showcase, not policy guidance.",
+  "rejectionReason": "research_showcase_only",
+  "robotsPolicy": "respect"
+}

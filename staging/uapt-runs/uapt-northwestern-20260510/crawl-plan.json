@@ -1,0 +1,87 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "planId": "nw-crawl-plan-20260510",
+  "createdAt": "2026-05-10T00:00:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "northwestern-university",
+      "sourceCandidateId": "nw-sc-001",
+      "sourceUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+      "sourceTitle": "Northwestern Guidance on the Use of Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["ai_tool_treatment", "privacy", "data_classification"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "northwestern-university",
+      "sourceCandidateId": "nw-sc-002",
+      "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+      "sourceTitle": "Getting Started with Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["approved_tools", "data_classification", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "northwestern-university",
+      "sourceCandidateId": "nw-sc-003",
+      "sourceUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+      "sourceTitle": "Instructor Options",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "assessment_guidance"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "northwestern-university",
+      "sourceCandidateId": "nw-sc-004",
+      "sourceUrl": "https://libguides.northwestern.edu/ai-tools-research/acad-integ",
+      "sourceTitle": "Academic Integrity & Citing AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "northwestern-university",
+      "sourceCandidateId": "nw-sc-005",
+      "sourceUrl": "https://www.it.northwestern.edu/departments/it-services-support/teaching/teach-tech/2024/generative-ai-on-your-terms-data-and-privacy-101.html",
+      "sourceTitle": "Generative AI on Your Terms: Data and Privacy 101",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["privacy", "data_protection", "approved_tools"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "northwestern-university",
+      "sourceCandidateId": "nw-sc-006",
+      "sourceUrl": "https://www.northwestern.edu/academic-support-learning/academic-resources/ai-in-learning/ai-for-learning-overview.html",
+      "sourceTitle": "Overview of Generative AI for Learning",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "student_resources"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Do not follow login-gated pages.",
+    "Do not fetch PDFs from campus-specific subdomains."
+  ]
+}

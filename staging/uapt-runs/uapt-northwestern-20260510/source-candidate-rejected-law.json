@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-rejected-law",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.law.northwestern.edu/research-faculty/policies-recruitment/policies/teaching/",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-10T00:01:20.000Z",
+  "officialDomainConfidence": 0.90,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.88,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:03:20.000Z",
+  "verificationNotes": "Law school-specific teaching policies. Does not apply university-wide.",
+  "rejectionReason": "low_policy_specificity",
+  "robotsPolicy": "respect"
+}

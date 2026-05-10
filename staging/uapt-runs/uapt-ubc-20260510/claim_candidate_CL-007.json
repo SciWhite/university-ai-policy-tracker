@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-007",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "claimType": "privacy",
+  "claimText": "Do not enter personal information into any generative AI tool that has not been through UBC's FIPPA compliance assessment (PIA), as to do so may be a breach of privacy.",
+  "normalizedValue": "no_personal_info_in_non_pia_tools",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-007"
+  ],
+  "citation": {
+    "citationTitle": "UBC AI Policy Tracker record",
+    "sourceUrl": "https://genai.ubc.ca/guidance/principles/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "0e6f376cd2d07ed3ed0fb7aceed5e0ca29bcc3544d2ec9e29e442118aeaf252b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

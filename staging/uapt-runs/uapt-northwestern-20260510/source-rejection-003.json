@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceRejectionId": "nw-sr-003",
+  "sourceCandidateId": "nw-sc-rejected-law",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.law.northwestern.edu/research-faculty/policies-recruitment/policies/teaching/",
+  "rejectedAt": "2026-05-10T00:03:20.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Unless expressly permitted by the instructor, students are prohibited from using generative AI.",
+  "notes": "Law school-specific teaching policies; does not apply university-wide."
+}

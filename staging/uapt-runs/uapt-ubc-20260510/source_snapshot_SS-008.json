@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-008",
+  "sourceCandidateId": "SC-008",
+  "fetchAttemptId": "FA-008",
+  "sourceUrl": "https://ai.ctlt.ubc.ca/privacy-impact-assessments-for-generativeai-instructional-use-at-ubc/",
+  "finalUrl": "https://ai.ctlt.ubc.ca/privacy-impact-assessments-for-generativeai-instructional-use-at-ubc/",
+  "sourceTitle": "Privacy Impact Assessments for GenerativeAI Instructional Use at UBC",
+  "sourceLanguage": "en",
+  "contentHash": "84b6befc047b89e306d54f512d4afcf4e10dae50d9fe4b682968f25f6fdf71c3",
+  "fetchedAt": "2026-05-10T14:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-008.txt",
+  "rawArtifactPaths": []
+}

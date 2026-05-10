@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "claimId": "nw-claim-003",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "claimType": "ai_tool_treatment",
+  "claimText": "Microsoft Copilot is Northwestern's primary approved generative AI tool. All students, faculty, and staff have access to free Copilot Chat, with full Copilot for Microsoft 365 available as a paid subscription.",
+  "normalizedValue": "copilot_primary_approved_tool",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["nw-evidence-003"],
+  "citation": {
+    "citationTitle": "Getting Started with Generative AI - Northwestern University IT",
+    "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+    "canonicalUrl": "https://eduaipolicy.org/universities/northwestern-university",
+    "publisher": "Northwestern University IT",
+    "retrievedAt": "2026-05-10T00:05:10.000Z",
+    "snapshotHash": "5892fd4ad2d066d68e9fed6fa2d94589d288f58ea015a8cf298b394c8bdba543",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

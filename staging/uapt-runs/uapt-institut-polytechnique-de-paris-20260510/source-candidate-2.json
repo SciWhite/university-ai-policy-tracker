@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "sourceCandidateId": "sc-ipp-master-fr",
+  "entityType": "university",
+  "entitySlug": "institut-polytechnique-de-paris",
+  "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20R%C3%A9glement%20des%20%C3%A9tudes%20IP%20Paris%20Master.pdf",
+  "sourceTitle": "Règlement des études des masters de l'Institut Polytechnique de Paris",
+  "sourceLanguage": "fr",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ip-paris.fr \"intelligence artificielle\" enseignement évaluation",
+  "discoveredAt": "2026-05-10T00:02:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:06:00.000Z",
+  "verificationNotes": "Official IP Paris Master Academic Regulations PDF (French version) containing Section 5.2 on L'utilisation de l'Intelligence Artificielle. Primary formal policy source in French.",
+  "robotsPolicy": "respect"
+}

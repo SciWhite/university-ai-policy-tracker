@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-009",
+  "sourceCandidateId": "SC-009",
+  "sourceUrl": "https://academicintegrity.ubc.ca/genai/",
+  "finalUrl": "https://academicintegrity.ubc.ca/genai/",
+  "attemptedAt": "2026-05-10T14:00:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1611,
+  "contentHash": "e5886b8fbffbbb348fd2ebc43b15fb59f4528065ae05ff958ac9fc96258830a4",
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-009.txt"
+}

@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-rejected-galter",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://libguides.galter.northwestern.edu/c.php?g=1389126&p=10274753",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"ChatGPT\" academic integrity",
+  "discoveredAt": "2026-05-10T00:01:40.000Z",
+  "officialDomainConfidence": 0.75,
+  "aiRelevanceScore": 0.70,
+  "policySpecificityScore": 0.50,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:03:40.000Z",
+  "verificationNotes": "Galter Health Sciences library guide for students. Not university-wide policy.",
+  "rejectionReason": "low_policy_specificity",
+  "robotsPolicy": "respect"
+}

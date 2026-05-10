@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceRejectionId": "nw-sr-007",
+  "sourceCandidateId": "nw-sc-rejected-galter",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://libguides.galter.northwestern.edu/c.php?g=1389126&p=10274753",
+  "rejectedAt": "2026-05-10T00:03:40.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "For Students - Generative AI Guide - GalterGuides at Northwestern.",
+  "notes": "Galter Health Sciences library guide; school-specific, not university-wide policy."
+}

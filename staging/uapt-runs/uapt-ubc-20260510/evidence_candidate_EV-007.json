@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-007",
+  "claimId": "CL-007",
+  "sourceSnapshotId": "SS-002",
+  "sourceUrl": "https://genai.ubc.ca/guidance/principles/",
+  "sourceTitle": "Principles for the Use of Generative AI Tools",
+  "sourceLanguage": "en",
+  "snapshotHash": "0e6f376cd2d07ed3ed0fb7aceed5e0ca29bcc3544d2ec9e29e442118aeaf252b",
+  "evidenceSnippetOriginal": "Do not enter personal information into any generative AI tool that has not been through UBC's FIPPA compliance assessment (Privacy Impact Assessment or PIA), as to do so may be a breach of privacy. Personal information includes names, personal contact information, student numbers, academic history, etc.",
+  "evidenceLocator": "Privacy Risk Mitigation section",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Principles for the Use of Generative AI Tools",
+    "sourceUrl": "https://genai.ubc.ca/guidance/principles/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "0e6f376cd2d07ed3ed0fb7aceed5e0ca29bcc3544d2ec9e29e442118aeaf252b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

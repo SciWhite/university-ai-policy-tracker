@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-007",
+  "sourceCandidateId": "SC-007",
+  "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+  "finalUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+  "attemptedAt": "2026-05-10T14:00:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3439,
+  "contentHash": "69418a2cf0a62587a706b8e975a48664bccab8e9ff42b04bd3df297f0a17b690",
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-007.txt"
+}

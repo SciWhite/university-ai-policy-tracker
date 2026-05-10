@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-006",
+  "sourceCandidateId": "SC-R006",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://ojs.library.ubc.ca/index.php/EJAS/article/view/201895",
+  "rejectedAt": "2026-05-10T14:00:00Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw_agent",
+  "notes": "Academic journal article, not official UBC policy."
+}

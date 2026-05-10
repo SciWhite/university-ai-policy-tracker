@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-006",
+  "claimId": "CL-006",
+  "sourceSnapshotId": "SS-010",
+  "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/guidelines-for-all-uses-of-genai-in-teaching-learning/",
+  "sourceTitle": "Guidelines for all uses of GenAI in Teaching & Learning",
+  "sourceLanguage": "en",
+  "snapshotHash": "6bbb5fcbff690d26cad89c3e3f9fc7e41059818f7cfd3f822574310dc7bb1cbd",
+  "evidenceSnippetOriginal": "In line with the British Columbia Freedom of Information and Protection of Privacy Act (FIPPA), instructors or teaching assistants cannot require that students use GenAI or any other technology tool that requires them to share personal information unless that tool has undergone a UBC PIA review and been approved for use with personal information.",
+  "evidenceLocator": "Privacy, security, confidentiality section",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidelines for all uses of GenAI in Teaching & Learning",
+    "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/guidelines-for-all-uses-of-genai-in-teaching-learning/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "6bbb5fcbff690d26cad89c3e3f9fc7e41059818f7cfd3f822574310dc7bb1cbd",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

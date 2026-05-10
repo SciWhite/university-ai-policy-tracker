@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "decisionId": "rd-polytechnique-teaching-ai",
+  "claimId": "claim-polytechnique-teaching-ai",
+  "decision": "needs_changes",
+  "reviewState": "needs_review",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Supplementary teaching resource from member school (École polytechnique). It is relevant context, but policy specificity is too low to approve as an IP Paris policy claim without tighter source classification or a separate unit-level record.",
+  "decidedAt": "2026-05-10T00:14:30.000Z"
+}

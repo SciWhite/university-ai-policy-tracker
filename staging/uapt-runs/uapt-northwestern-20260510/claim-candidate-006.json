@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "claimId": "nw-claim-006",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "claimType": "ai_tool_treatment",
+  "claimText": "Microsoft Copilot, when signed in with a Northwestern Microsoft account, is approved for Level 2 and generally Level 3 data. Publicly available AI tools (ChatGPT, Gemini, MidJourney) may only be used with Level 1 public data.",
+  "normalizedValue": "copilot_approved_for_sensitive_data",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["nw-evidence-006"],
+  "citation": {
+    "citationTitle": "Northwestern Guidance on the Use of Generative AI",
+    "sourceUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+    "canonicalUrl": "https://eduaipolicy.org/universities/northwestern-university",
+    "publisher": "Northwestern University IT",
+    "retrievedAt": "2026-05-10T00:05:00.000Z",
+    "snapshotHash": "39cbe001cfa35e18a63be24a6b9c213b5543051ead3f71965a299c65315a8a22",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

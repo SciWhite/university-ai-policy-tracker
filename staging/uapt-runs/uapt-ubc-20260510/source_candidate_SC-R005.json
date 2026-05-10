@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-R005",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://learningcommons.ubc.ca/how-to-get-the-most-out-of-chatgpt/",
+  "sourceTitle": "How to Get the Most Out of ChatGPT - Chapman Learning Commons",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-10T14:00:00Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.5,
+  "policySpecificityScore": 0.15,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T14:00:00Z",
+  "verificationNotes": "Student tips page, not policy-relevant guidance.",
+  "rejectionReason": "low_policy_specificity",
+  "robotsPolicy": "respect"
+}

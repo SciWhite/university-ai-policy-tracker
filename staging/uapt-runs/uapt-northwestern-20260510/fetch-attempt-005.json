@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "fetchAttemptId": "nw-fa-005",
+  "sourceCandidateId": "nw-sc-005",
+  "sourceUrl": "https://www.it.northwestern.edu/departments/it-services-support/teaching/teach-tech/2024/generative-ai-on-your-terms-data-and-privacy-101.html",
+  "finalUrl": "https://www.it.northwestern.edu/departments/it-services-support/teaching/teach-tech/2024/generative-ai-on-your-terms-data-and-privacy-101.html",
+  "attemptedAt": "2026-05-10T00:05:40.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3000,
+  "contentHash": "175519c842e7b417f907ff5512eacf917d42dcbc5eeea43d0c3f200894595853",
+  "normalizedTextStorageKey": "staging/uapt-northwestern-20260510/normalized/nw-data-privacy-101.txt"
+}

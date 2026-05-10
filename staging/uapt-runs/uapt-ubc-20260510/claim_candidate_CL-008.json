@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-008",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "claimType": "academic_integrity",
+  "claimText": "The use of applications to detect AI-generated content is strongly discouraged at UBC due to concerns about effectiveness, accuracy, bias, privacy, and intellectual property. Turnitin AI detection is not enabled.",
+  "normalizedValue": "ai_detection_strongly_discouraged",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-008"
+  ],
+  "citation": {
+    "citationTitle": "UBC AI Policy Tracker record",
+    "sourceUrl": "https://academicintegrity.ubc.ca/genai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "e5886b8fbffbbb348fd2ebc43b15fb59f4528065ae05ff958ac9fc96258830a4",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

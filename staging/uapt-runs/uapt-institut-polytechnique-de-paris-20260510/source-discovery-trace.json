@@ -1,0 +1,67 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "traceId": "trace-ipp-discovery-1",
+  "entityType": "university",
+  "entitySlug": "institut-polytechnique-de-paris",
+  "startedAt": "2026-05-10T00:01:00.000Z",
+  "endedAt": "2026-05-10T00:12:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:ip-paris.fr \"generative AI\" policy",
+      "domain": "ip-paris.fr",
+      "resultCount": 10,
+      "notes": "English search found Master Academic Regulations PDF as primary policy source."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ip-paris.fr \"intelligence artificielle générative\" politique",
+      "domain": "ip-paris.fr",
+      "resultCount": 1,
+      "notes": "French search found Moodle course pages (login-gated) and no additional official policy pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ip-paris.fr \"intelligence artificielle\" enseignement évaluation",
+      "domain": "ip-paris.fr",
+      "resultCount": 10,
+      "notes": "French search confirmed Master Academic Regulations PDF (French version) and Moodle pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ip-paris.fr \"intégrité académique\" \"intelligence artificielle\"",
+      "domain": "ip-paris.fr",
+      "resultCount": 4,
+      "notes": "Found Moodle library pages with integrity modules, all login-gated."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:polytechnique.edu \"intelligence artificielle générative\" étudiants",
+      "domain": "polytechnique.edu",
+      "resultCount": 10,
+      "notes": "Found polytechnique.edu AI teaching resources page (member school)."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:telecom-paris.fr \"IA générative\" étudiants",
+      "domain": "telecom-paris.fr",
+      "resultCount": 10,
+      "notes": "Found Telecom Paris opinion/research articles, not official policy guidance."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-ipp-master-en",
+    "sc-ipp-master-fr",
+    "sc-polytechnique-teaching",
+    "sc-ipp-homepage",
+    "sc-ipp-moodle"
+  ],
+  "rejectionIds": [
+    "sr-ipp-homepage",
+    "sr-ipp-moodle"
+  ],
+  "summary": "Multilingual search (EN+FR) across ip-paris.fr, polytechnique.edu, and telecom-paris.fr. Primary policy source is the IP Paris Master Academic Regulations PDF (Section 5.2) in both English and French. Polytechnique.edu teaching resources page provides supplementary teaching guidance. Moodle pages rejected as login-gated. Telecom Paris pages rejected as opinion/research only. News pages rejected."
+}

@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceRejectionId": "nw-sr-011",
+  "sourceCandidateId": "nw-sc-rejected-lrc",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://lrc.northwestern.edu/language-instruction/professional-development1/system_hui2.pdf",
+  "rejectedAt": "2026-05-10T00:04:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Enhancing L2 Writing with Generative AI: A Systematic Review.",
+  "notes": "Language Resource Center research paper; research showcase, not policy."
+}

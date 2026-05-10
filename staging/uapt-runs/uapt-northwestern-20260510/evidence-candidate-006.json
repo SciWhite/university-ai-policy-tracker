@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "evidenceId": "nw-evidence-006",
+  "claimId": "nw-claim-006",
+  "sourceSnapshotId": "nw-ss-001",
+  "sourceUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+  "finalUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+  "sourceTitle": "Northwestern Guidance on the Use of Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "39cbe001cfa35e18a63be24a6b9c213b5543051ead3f71965a299c65315a8a22",
+  "evidenceSnippetOriginal": "The following table outlines Northwestern current services posture based on data classification: Conversational/Interactive Mode - Public Data (Level 1): Use of publicly available tools (e.g., ChatGPT, Copilot, Bard/Gemini, MidJourney, etc.). Sensitive/Regulated Data (Level 2, Level 3, Level 4): Microsoft Copilot, when signed in with a Northwestern Microsoft account for Level 2 and Level 3 data.",
+  "evidenceLocator": "Data Approved for Use with Generative AI - services posture table",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Northwestern Guidance on the Use of Generative AI",
+    "sourceUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+    "canonicalUrl": "https://eduaipolicy.org/universities/northwestern-university",
+    "publisher": "Northwestern University IT",
+    "retrievedAt": "2026-05-10T00:05:00.000Z",
+    "snapshotHash": "39cbe001cfa35e18a63be24a6b9c213b5543051ead3f71965a299c65315a8a22",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

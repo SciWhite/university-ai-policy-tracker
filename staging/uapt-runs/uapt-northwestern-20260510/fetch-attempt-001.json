@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "fetchAttemptId": "nw-fa-001",
+  "sourceCandidateId": "nw-sc-001",
+  "sourceUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+  "finalUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+  "attemptedAt": "2026-05-10T00:05:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3000,
+  "contentHash": "39cbe001cfa35e18a63be24a6b9c213b5543051ead3f71965a299c65315a8a22",
+  "normalizedTextStorageKey": "staging/uapt-northwestern-20260510/normalized/nw-genai-guidance.txt"
+}

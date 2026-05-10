@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-rejected-medill",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://medillonthehill.medill.northwestern.edu/2023/02/worries-about-plagiarism-and-chatgpt-may-be-overblown-experts-say/",
+  "sourceLanguage": "en",
+  "sourceType": "official_news_advisory",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"ChatGPT\" academic integrity",
+  "discoveredAt": "2026-05-10T00:01:35.000Z",
+  "officialDomainConfidence": 0.80,
+  "aiRelevanceScore": 0.50,
+  "policySpecificityScore": 0.20,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:03:35.000Z",
+  "verificationNotes": "Medill journalism news article. Third-party summary, not official policy.",
+  "rejectionReason": "event_or_news_only",
+  "robotsPolicy": "respect"
+}

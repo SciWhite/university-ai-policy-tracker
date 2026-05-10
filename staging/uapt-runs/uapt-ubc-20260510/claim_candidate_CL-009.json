@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-009",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "claimType": "academic_integrity",
+  "claimText": "Graduate students must obtain approval from their supervisor/committee for substantive GenAI use in research and thesis work, and must include a GenAI use statement in their thesis preface.",
+  "normalizedValue": "grad_students_genai_approval_and_declaration_required",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-009"
+  ],
+  "citation": {
+    "citationTitle": "UBC AI Policy Tracker record",
+    "sourceUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "afea061c3cea022533d348adacb8127d3df7c836b2facac08dcf7fdd9db95f7f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

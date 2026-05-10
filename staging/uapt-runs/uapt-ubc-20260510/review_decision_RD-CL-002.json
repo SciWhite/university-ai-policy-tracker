@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-002",
+  "claimId": "CL-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Claim supported by direct evidence from official UBC source. Evidence snippet is from fetched page content.",
+  "decidedAt": "2026-05-10T14:00:00Z"
+}

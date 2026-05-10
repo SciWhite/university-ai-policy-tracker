@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "decisionId": "nw-rd-002",
+  "claimId": "nw-claim-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Clear three-option framework (Open/Conditional/Closed) with sample syllabus statements from official IT teaching guidance.",
+  "decidedAt": "2026-05-10T00:10:00.000Z"
+}

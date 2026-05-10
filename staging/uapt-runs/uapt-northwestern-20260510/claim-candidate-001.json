@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "claimId": "nw-claim-001",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "claimType": "academic_integrity",
+  "claimText": "Unauthorized use of ChatGPT or other Generative AI tools is considered cheating and/or plagiarism per Northwestern Academic Integrity guidelines.",
+  "normalizedValue": "unauthorized_ai_use_is_cheating",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["nw-evidence-001"],
+  "citation": {
+    "citationTitle": "Academic Integrity & Citing AI - Using AI Tools in Your Research",
+    "sourceUrl": "https://libguides.northwestern.edu/ai-tools-research/acad-integ",
+    "canonicalUrl": "https://eduaipolicy.org/universities/northwestern-university",
+    "publisher": "Northwestern University Libraries",
+    "retrievedAt": "2026-05-10T00:05:30.000Z",
+    "snapshotHash": "0e694d977fb723ce3c9b88b3feeefe8b65024e248b3492ea7e32d2a4d0967ebe",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

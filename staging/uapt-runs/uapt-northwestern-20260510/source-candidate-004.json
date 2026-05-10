@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-004",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://libguides.northwestern.edu/ai-tools-research/acad-integ",
+  "finalUrl": "https://libguides.northwestern.edu/ai-tools-research/acad-integ",
+  "sourceTitle": "Academic Integrity & Citing AI - Using AI Tools in Your Research",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"ChatGPT\" academic integrity",
+  "discoveredAt": "2026-05-10T00:02:30.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.88,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:05:30.000Z",
+  "verificationNotes": "Official Northwestern Libraries research guide on academic integrity and citing AI. States unauthorized use of ChatGPT is considered cheating/plagiarism.",
+  "robotsPolicy": "respect"
+}

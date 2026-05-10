@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceSnapshotId": "nw-ss-002",
+  "sourceCandidateId": "nw-sc-002",
+  "fetchAttemptId": "nw-fa-002",
+  "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+  "finalUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+  "sourceTitle": "Getting Started with Generative AI",
+  "sourceLanguage": "en",
+  "contentHash": "5892fd4ad2d066d68e9fed6fa2d94589d288f58ea015a8cf298b394c8bdba543",
+  "fetchedAt": "2026-05-10T00:05:10.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-northwestern-20260510/normalized/nw-getting-started.txt",
+  "rawArtifactPaths": []
+}

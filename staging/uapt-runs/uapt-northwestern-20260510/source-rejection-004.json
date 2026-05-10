@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceRejectionId": "nw-sr-004",
+  "sourceCandidateId": "nw-sc-rejected-scholarlycommons",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://scholarlycommons.law.northwestern.edu/njtip/vol22/iss1/4/",
+  "rejectedAt": "2026-05-10T00:03:25.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Fair Use, Licensing, and Authors Rights in the Age of Generative AI.",
+  "notes": "Academic journal article; research showcase, not policy guidance."
+}

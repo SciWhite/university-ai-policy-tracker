@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-008",
+  "claimId": "CL-008",
+  "sourceSnapshotId": "SS-009",
+  "sourceUrl": "https://academicintegrity.ubc.ca/genai/",
+  "sourceTitle": "GenAI - Academic Integrity at UBC",
+  "sourceLanguage": "en",
+  "snapshotHash": "e5886b8fbffbbb348fd2ebc43b15fb59f4528065ae05ff958ac9fc96258830a4",
+  "evidenceSnippetOriginal": "The use of applications to detect AI-generated content is strongly discouraged at this time, due to concerns about effectiveness, accuracy, bias, privacy, and intellectual property.",
+  "evidenceLocator": "AI detectors FAQ section",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "GenAI - Academic Integrity at UBC",
+    "sourceUrl": "https://academicintegrity.ubc.ca/genai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "e5886b8fbffbbb348fd2ebc43b15fb59f4528065ae05ff958ac9fc96258830a4",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

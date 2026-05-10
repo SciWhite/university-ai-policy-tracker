@@ -1,0 +1,26 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "reportId": "rpt-ipp-20260510",
+  "title": "Institut Polytechnique de Paris - AI Policy Crawl Report",
+  "generatedAt": "2026-05-10T00:15:00.000Z",
+  "draftPath": "content/reports/institut-polytechnique-de-paris-20260510.mdx",
+  "summary": "IP Paris has a clear formal policy on generative AI use in its 2025-2026 Master programs academic regulations. Section 5.2 prohibits generative AI in assessments for those programs unless explicitly authorized by the instructor in written instructions. Unauthorized use constitutes academic misconduct. When authorized, students must cite AI use per standard practices. A supplementary École polytechnique teaching-resource claim was left as needs_changes because it is a member-school resource rather than a strong IP Paris-wide policy claim.",
+  "referencedClaimIds": [
+    "claim-ipp-ai-assessment-policy",
+    "claim-ipp-ai-assessment-policy-fr",
+    "claim-ipp-ai-citation-requirement"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/institut-polytechnique-de-paris.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "The approved IP Paris claims in this run are scoped to the 2025-2026 Master programs academic regulations, not all IP Paris programs or all member-school policies.",
+    "The École polytechnique teaching-resource claim remains needs_changes and is not referenced as an approved policy claim in this report draft."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

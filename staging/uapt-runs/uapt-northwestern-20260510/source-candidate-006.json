@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-006",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.northwestern.edu/academic-support-learning/academic-resources/ai-in-learning/ai-for-learning-overview.html",
+  "finalUrl": "https://www.northwestern.edu/academic-support-learning/academic-resources/ai-in-learning/ai-for-learning-overview.html",
+  "sourceTitle": "Overview of Generative AI for Learning",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"AI\" assessment guidance",
+  "discoveredAt": "2026-05-10T00:03:30.000Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.90,
+  "policySpecificityScore": 0.72,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:06:30.000Z",
+  "verificationNotes": "Official Academic Support and Learning Advancement page aggregating generative AI learning resources. References Copilot availability and academic integrity guidelines.",
+  "robotsPolicy": "respect"
+}

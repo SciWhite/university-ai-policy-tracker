@@ -1,0 +1,27 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "reportId": "nw-report-20260510",
+  "title": "Northwestern University AI Policy Staged Crawl Report",
+  "generatedAt": "2026-05-10T00:15:00.000Z",
+  "draftPath": "content/reports/northwestern-university-ai-policy-20260510.mdx",
+  "summary": "Staged crawl of Northwestern University AI policies identified 6 verified official sources covering university-wide GenAI guidance, approved tools (Microsoft Copilot), instructor course policy options (Open/Conditional/Closed), academic integrity rules, data classification/privacy requirements, and student learning resources. 11 candidate sources were rejected as campus-specific, news-only, research showcases, or generic hub pages. 6 policy claims were extracted covering academic integrity, teaching policy options, approved AI tools, data protection requirements, and data classification levels.",
+  "referencedClaimIds": [
+    "nw-claim-001",
+    "nw-claim-002",
+    "nw-claim-003",
+    "nw-claim-004",
+    "nw-claim-005",
+    "nw-claim-006"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/northwestern-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

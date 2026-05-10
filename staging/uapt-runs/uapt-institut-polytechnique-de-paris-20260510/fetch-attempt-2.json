@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "fetchAttemptId": "fa-ipp-master-fr",
+  "sourceCandidateId": "sc-ipp-master-fr",
+  "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20R%C3%A9glement%20des%20%C3%A9tudes%20IP%20Paris%20Master.pdf",
+  "finalUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20R%C3%A9glement%20des%20%C3%A9tudes%20IP%20Paris%20Master.pdf",
+  "attemptedAt": "2026-05-10T00:10:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 9200,
+  "contentHash": "92b0aea4c2b16efbdee72a54123f6c12865df10d79b2667c38448e0a791a646d",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-institut-polytechnique-de-paris-20260510/normalized/ip-paris-master-fr.txt"
+}

@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "claimId": "claim-polytechnique-teaching-ai",
+  "entityType": "university",
+  "entitySlug": "institut-polytechnique-de-paris",
+  "claimType": "teaching",
+  "claimText": "École polytechnique (member school) provides teaching resources for AI integration including detection tools (Turnitin, AI Text Classifier, GPTZero) and curated expert articles on generative AI in higher education.",
+  "normalizedValue": "teaching_resources_for_ai_integration_provided",
+  "sourceLanguage": "fr",
+  "confidence": 0.72,
+  "reviewState": "needs_review",
+  "evidenceIds": ["ev-polytechnique-teaching-ai"],
+  "citation": {
+    "citationTitle": "IA - Ressources pour les enseignants - Teaching & Learning Center",
+    "sourceUrl": "https://www.polytechnique.edu/teaching-learning/moyens-au-service-de-la-pedagogie/ia-ressources-pour-les-enseignants",
+    "canonicalUrl": "https://eduaipolicy.org/universities/institut-polytechnique-de-paris",
+    "publisher": "École polytechnique",
+    "retrievedAt": "2026-05-10T00:11:00.000Z",
+    "snapshotHash": "e9ae52eaf73161266ce0c3342ac0d604ec24697e5b73780110b7531cddc88686",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

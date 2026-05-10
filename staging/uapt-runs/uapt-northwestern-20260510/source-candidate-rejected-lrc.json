@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-rejected-lrc",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://lrc.northwestern.edu/language-instruction/professional-development1/system_hui2.pdf",
+  "sourceLanguage": "en",
+  "sourceType": "research_showcase",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-10T00:02:00.000Z",
+  "officialDomainConfidence": 0.70,
+  "aiRelevanceScore": 0.55,
+  "policySpecificityScore": 0.15,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:04:00.000Z",
+  "verificationNotes": "Language Resource Center research paper. Research showcase, not policy.",
+  "rejectionReason": "research_showcase_only",
+  "robotsPolicy": "respect"
+}

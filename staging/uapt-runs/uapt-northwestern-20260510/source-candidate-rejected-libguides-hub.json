@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-rejected-libguides-hub",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://libguides.northwestern.edu/ai-tools-research",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"AI tools\" students",
+  "discoveredAt": "2026-05-10T00:01:45.000Z",
+  "officialDomainConfidence": 0.90,
+  "aiRelevanceScore": 0.80,
+  "policySpecificityScore": 0.25,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:03:45.000Z",
+  "verificationNotes": "Library guide hub page. Navigation/index page, not policy content.",
+  "rejectionReason": "generic_home_page",
+  "robotsPolicy": "respect"
+}

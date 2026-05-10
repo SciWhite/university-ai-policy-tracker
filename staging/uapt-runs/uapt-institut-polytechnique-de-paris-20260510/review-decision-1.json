@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "decisionId": "rd-ipp-ai-assessment-policy",
+  "claimId": "claim-ipp-ai-assessment-policy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Strong formal policy from official IP Paris Master Academic Regulations. Section 5.2 clearly states generative AI is strictly prohibited in all assessments unless explicitly authorized by the instructor. High confidence.",
+  "decidedAt": "2026-05-10T00:13:00.000Z"
+}

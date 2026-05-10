@@ -1,0 +1,88 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "traceId": "nw-discovery-trace-20260510",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "startedAt": "2026-05-10T00:00:00.000Z",
+  "endedAt": "2026-05-10T00:10:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:northwestern.edu \"generative AI\" policy",
+      "domain": "northwestern.edu",
+      "resultCount": 10,
+      "notes": "Found university-wide GenAI guidance, IT getting started page, instructor options, and library academic integrity guide."
+    },
+    {
+      "method": "site_search",
+      "query": "site:northwestern.edu \"ChatGPT\" academic integrity",
+      "domain": "northwestern.edu",
+      "resultCount": 10,
+      "notes": "Found library academic integrity guide and Galter guide for students."
+    },
+    {
+      "method": "site_search",
+      "query": "site:northwestern.edu \"AI tools\" students",
+      "domain": "northwestern.edu",
+      "resultCount": 10,
+      "notes": "Found IT news pages and AI tools hub. Hub page rejected as generic."
+    },
+    {
+      "method": "site_search",
+      "query": "site:northwestern.edu \"generative AI\" teaching learning",
+      "domain": "northwestern.edu",
+      "resultCount": 10,
+      "notes": "Found Searle Center teaching guides and IT teaching-with-AI pages."
+    },
+    {
+      "method": "site_search",
+      "query": "site:northwestern.edu data protection generative AI",
+      "domain": "northwestern.edu",
+      "resultCount": 10,
+      "notes": "Found IT data and privacy 101 page and getting started guidance."
+    },
+    {
+      "method": "site_search",
+      "query": "site:ai.northwestern.edu \"generative AI\" policy",
+      "domain": "ai.northwestern.edu",
+      "resultCount": 3,
+      "notes": "Only event pages returned from ai.northwestern.edu; no policy pages found."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "nw-sc-001",
+    "nw-sc-002",
+    "nw-sc-003",
+    "nw-sc-004",
+    "nw-sc-005",
+    "nw-sc-006",
+    "nw-sc-rejected-nuq",
+    "nw-sc-rejected-feinberg",
+    "nw-sc-rejected-law",
+    "nw-sc-rejected-scholarlycommons",
+    "nw-sc-rejected-ipr",
+    "nw-sc-rejected-medill",
+    "nw-sc-rejected-galter",
+    "nw-sc-rejected-libguides-hub",
+    "nw-sc-rejected-news-it",
+    "nw-sc-rejected-mccormick",
+    "nw-sc-rejected-lrc"
+  ],
+  "rejectionIds": [
+    "nw-sr-001",
+    "nw-sr-002",
+    "nw-sr-003",
+    "nw-sr-004",
+    "nw-sr-005",
+    "nw-sr-006",
+    "nw-sr-007",
+    "nw-sr-008",
+    "nw-sr-009",
+    "nw-sr-010",
+    "nw-sr-011"
+  ],
+  "summary": "Discovery used 6 site_search queries on northwestern.edu and ai.northwestern.edu. Identified 6 verified policy-relevant sources covering university-wide GenAI guidance, approved AI tools (Copilot), instructor course policy options, academic integrity, data classification/privacy, and student learning resources. Rejected 12 sources including generic homepages, campus-specific policies (Qatar, Feinberg, Law), news pages, research showcases, and library hub pages."
+}

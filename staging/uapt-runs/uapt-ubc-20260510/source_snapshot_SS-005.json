@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-005",
+  "sourceCandidateId": "SC-005",
+  "fetchAttemptId": "FA-005",
+  "sourceUrl": "https://academic.ubc.ca/teaching-learning/10-things-ubc-students-should-know/generative-ai",
+  "finalUrl": "https://academic.ubc.ca/teaching-learning/10-things-ubc-students-should-know/generative-ai",
+  "sourceTitle": "10 things UBC students should know about generative AI",
+  "sourceLanguage": "en",
+  "contentHash": "8e4fec402c54aaf55d992fe23df7aad176c983e11c2ed7a3e95a8597abafc255",
+  "fetchedAt": "2026-05-10T14:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-005.txt",
+  "rawArtifactPaths": []
+}

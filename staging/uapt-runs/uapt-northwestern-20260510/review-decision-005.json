@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "decisionId": "nw-rd-005",
+  "claimId": "nw-claim-005",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Direct evidence from official guidance. Data classification levels clearly defined with AI use rules per level.",
+  "decidedAt": "2026-05-10T00:10:00.000Z"
+}

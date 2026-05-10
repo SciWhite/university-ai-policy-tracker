@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-010",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "claimType": "teaching",
+  "claimText": "Use of GenAI in teaching and learning should respect Indigenous data sovereignty and community protocols for use and sharing of Indigenous knowledges, intellectual properties, and data.",
+  "normalizedValue": "genai_respect_indigenous_data_sovereignty",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-010"
+  ],
+  "citation": {
+    "citationTitle": "UBC AI Policy Tracker record",
+    "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "6cc7152af150ad693e13c238d0454c827bf88c1d9a687642fda6ad15e048e598",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

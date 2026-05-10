@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "claimId": "nw-claim-004",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "claimType": "privacy",
+  "claimText": "Northwestern guidance states that faculty, staff, students, and affiliates should not enter institutional data into any generative AI tools that have not been validated by the University for appropriate use and have explicit permission of the data provider.",
+  "normalizedValue": "no_institutional_data_in_unvalidated_ai",
+  "sourceLanguage": "en",
+  "confidence": 0.98,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["nw-evidence-004"],
+  "citation": {
+    "citationTitle": "Northwestern Guidance on the Use of Generative AI",
+    "sourceUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+    "canonicalUrl": "https://eduaipolicy.org/universities/northwestern-university",
+    "publisher": "Northwestern University IT",
+    "retrievedAt": "2026-05-10T00:05:00.000Z",
+    "snapshotHash": "39cbe001cfa35e18a63be24a6b9c213b5543051ead3f71965a299c65315a8a22",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

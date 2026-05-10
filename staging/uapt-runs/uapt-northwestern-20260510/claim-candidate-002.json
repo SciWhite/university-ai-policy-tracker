@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "claimId": "nw-claim-002",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "claimType": "teaching",
+  "claimText": "Northwestern provides instructors with three course-level AI policy options: Open (GAI permitted), Conditional (GAI permitted when explicitly authorized), and Closed (GAI prohibited).",
+  "normalizedValue": "three_course_ai_policy_options",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["nw-evidence-002"],
+  "citation": {
+    "citationTitle": "Instructor Options - Northwestern University IT",
+    "sourceUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+    "canonicalUrl": "https://eduaipolicy.org/universities/northwestern-university",
+    "publisher": "Northwestern University IT",
+    "retrievedAt": "2026-05-10T00:05:20.000Z",
+    "snapshotHash": "19e5d246a33e95a64ca2f7ec0cb31571d35063dcece033620346e5fc9642464a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-006",
+  "sourceCandidateId": "SC-006",
+  "sourceUrl": "https://genai.ubc.ca/privacy-and-risk/",
+  "finalUrl": "https://genai.ubc.ca/privacy-and-risk/",
+  "attemptedAt": "2026-05-10T14:00:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1990,
+  "contentHash": "c02870d6c786d400d622d239e90952bfe84a0df4fcc74ceb96aec926c868c88e",
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-006.txt"
+}

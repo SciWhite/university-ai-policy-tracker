@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "decisionId": "nw-rd-006",
+  "claimId": "nw-claim-006",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Direct evidence from official guidance table. Copilot approved for Level 2 and generally Level 3 data when signed in with Northwestern account.",
+  "decidedAt": "2026-05-10T00:10:00.000Z"
+}

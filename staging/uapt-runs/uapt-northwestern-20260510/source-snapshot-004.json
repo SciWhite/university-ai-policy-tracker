@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceSnapshotId": "nw-ss-004",
+  "sourceCandidateId": "nw-sc-004",
+  "fetchAttemptId": "nw-fa-004",
+  "sourceUrl": "https://libguides.northwestern.edu/ai-tools-research/acad-integ",
+  "finalUrl": "https://libguides.northwestern.edu/ai-tools-research/acad-integ",
+  "sourceTitle": "Academic Integrity & Citing AI",
+  "sourceLanguage": "en",
+  "contentHash": "0e694d977fb723ce3c9b88b3feeefe8b65024e248b3492ea7e32d2a4d0967ebe",
+  "fetchedAt": "2026-05-10T00:05:30.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-northwestern-20260510/normalized/nw-academic-integrity.txt",
+  "rawArtifactPaths": []
+}

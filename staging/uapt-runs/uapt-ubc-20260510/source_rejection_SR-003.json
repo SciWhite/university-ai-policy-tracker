@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-003",
+  "sourceCandidateId": "SC-R003",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://ai.ctlt.ubc.ca/how-are-ubc-students-using-generative-ai/",
+  "rejectedAt": "2026-05-10T14:00:00Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw_agent",
+  "notes": "Student survey data showcase, not policy guidance."
+}

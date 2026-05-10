@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-007",
+  "sourceCandidateId": "SC-007",
+  "fetchAttemptId": "FA-007",
+  "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+  "finalUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+  "sourceTitle": "Microsoft Copilot for Organizations",
+  "sourceLanguage": "en",
+  "contentHash": "69418a2cf0a62587a706b8e975a48664bccab8e9ff42b04bd3df297f0a17b690",
+  "fetchedAt": "2026-05-10T14:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-007.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceSnapshotId": "nw-ss-006",
+  "sourceCandidateId": "nw-sc-006",
+  "fetchAttemptId": "nw-fa-006",
+  "sourceUrl": "https://www.northwestern.edu/academic-support-learning/academic-resources/ai-in-learning/ai-for-learning-overview.html",
+  "finalUrl": "https://www.northwestern.edu/academic-support-learning/academic-resources/ai-in-learning/ai-for-learning-overview.html",
+  "sourceTitle": "Overview of Generative AI for Learning",
+  "sourceLanguage": "en",
+  "contentHash": "afb0ed465a40f66b9e778ff8bdd62e9a5a963909f420dba03f6968fbd17be2d0",
+  "fetchedAt": "2026-05-10T00:05:50.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-northwestern-20260510/normalized/nw-ai-for-learning.txt",
+  "rawArtifactPaths": []
+}

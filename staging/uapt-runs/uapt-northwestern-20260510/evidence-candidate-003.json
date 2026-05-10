@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "evidenceId": "nw-evidence-003",
+  "claimId": "nw-claim-003",
+  "sourceSnapshotId": "nw-ss-002",
+  "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+  "finalUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+  "sourceTitle": "Getting Started with Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "5892fd4ad2d066d68e9fed6fa2d94589d288f58ea015a8cf298b394c8bdba543",
+  "evidenceSnippetOriginal": "Microsoft Copilot is the primary, general-use AI tool available at Northwestern. All Northwestern students, faculty, and staff have access to the free Copilot Chat, and faculty and staff can use the full Copilot for Microsoft 365 Copilot capabilities with an add-on paid subscription. When you are logged into these services with your Northwestern NetID, your data is protected and operates fully within Northwestern security, compliance, and data boundaries.",
+  "evidenceLocator": "Start with Microsoft Copilot Chat section",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Getting Started with Generative AI - Northwestern University IT",
+    "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+    "canonicalUrl": "https://eduaipolicy.org/universities/northwestern-university",
+    "publisher": "Northwestern University IT",
+    "retrievedAt": "2026-05-10T00:05:10.000Z",
+    "snapshotHash": "5892fd4ad2d066d68e9fed6fa2d94589d288f58ea015a8cf298b394c8bdba543",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

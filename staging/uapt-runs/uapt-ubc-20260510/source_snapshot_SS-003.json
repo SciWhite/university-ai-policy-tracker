@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-003",
+  "sourceCandidateId": "SC-003",
+  "fetchAttemptId": "FA-003",
+  "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+  "finalUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+  "sourceTitle": "Teaching & Learning Guidelines - Generative AI",
+  "sourceLanguage": "en",
+  "contentHash": "6cc7152af150ad693e13c238d0454c827bf88c1d9a687642fda6ad15e048e598",
+  "fetchedAt": "2026-05-10T14:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-003.txt",
+  "rawArtifactPaths": []
+}

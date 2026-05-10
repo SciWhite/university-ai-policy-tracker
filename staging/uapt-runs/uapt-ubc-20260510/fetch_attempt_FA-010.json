@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-010",
+  "sourceCandidateId": "SC-010",
+  "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/guidelines-for-all-uses-of-genai-in-teaching-learning/",
+  "finalUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/guidelines-for-all-uses-of-genai-in-teaching-learning/",
+  "attemptedAt": "2026-05-10T14:00:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2537,
+  "contentHash": "6bbb5fcbff690d26cad89c3e3f9fc7e41059818f7cfd3f822574310dc7bb1cbd",
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-010.txt"
+}

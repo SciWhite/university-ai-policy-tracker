@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-rejected-nuq",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://my.qatar.northwestern.edu/docs/other/Generative-Artificial-Intelligence-Policy-for-Teaching-and-Coursework_NU-Q.pdf",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-10T00:01:10.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.90,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:03:10.000Z",
+  "verificationNotes": "Qatar campus-specific policy. Does not apply to Evanston/main campus.",
+  "rejectionReason": "low_policy_specificity",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "evidenceId": "ev-ipp-ai-assessment-policy-fr",
+  "claimId": "claim-ipp-ai-assessment-policy-fr",
+  "sourceSnapshotId": "ss-ipp-master-fr",
+  "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20R%C3%A9glement%20des%20%C3%A9tudes%20IP%20Paris%20Master.pdf",
+  "sourceTitle": "Règlement des études des masters de l'Institut Polytechnique de Paris",
+  "sourceLanguage": "fr",
+  "snapshotHash": "92b0aea4c2b16efbdee72a54123f6c12865df10d79b2667c38448e0a791a646d",
+  "evidenceSnippetOriginal": "Dans le cadre d'une évaluation, quelle que soit sa forme (évaluation sur table, devoir à la maison, projet, rapport de stage, etc.) l'utilisation d'une intelligence artificielle (IA) générative est interdite sauf si l'enseignant l'a explicitement autorisée dans ses consignes écrites. Tout manquement sera considéré comme une fraude.",
+  "evidenceLocator": "Section 5.2 L'utilisation de l'Intelligence Artificielle",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Règlement des études des masters de l'Institut Polytechnique de Paris",
+    "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20R%C3%A9glement%20des%20%C3%A9tudes%20IP%20Paris%20Master.pdf",
+    "canonicalUrl": "https://eduaipolicy.org/universities/institut-polytechnique-de-paris",
+    "publisher": "Institut Polytechnique de Paris",
+    "retrievedAt": "2026-05-10T00:10:00.000Z",
+    "snapshotHash": "92b0aea4c2b16efbdee72a54123f6c12865df10d79b2667c38448e0a791a646d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

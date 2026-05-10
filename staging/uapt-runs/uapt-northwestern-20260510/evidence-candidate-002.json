@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "evidenceId": "nw-evidence-002",
+  "claimId": "nw-claim-002",
+  "sourceSnapshotId": "nw-ss-003",
+  "sourceUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+  "finalUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+  "sourceTitle": "Instructor Options",
+  "sourceLanguage": "en",
+  "snapshotHash": "19e5d246a33e95a64ca2f7ec0cb31571d35063dcece033620346e5fc9642464a",
+  "evidenceSnippetOriginal": "As with other course features, instructors are free to integrate generative artificial intelligence (GAI) to support their teaching goals. Instructors should carefully consider whether and how they will allow the use of GAI in their courses. All instructors should clearly communicate their expectations or requirements to students to avoid confusion. It may help to consider three main options: Open: The use of GAI is permitted. Conditional: The use of GAI is permitted when explicitly authorized by the instructor. Closed: The use of GAI is prohibited.",
+  "evidenceLocator": "Instructor Options overview section",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Instructor Options - Northwestern University IT",
+    "sourceUrl": "https://www.it.northwestern.edu/ai/teaching-with-ai/instructor-options.html",
+    "canonicalUrl": "https://eduaipolicy.org/universities/northwestern-university",
+    "publisher": "Northwestern University IT",
+    "retrievedAt": "2026-05-10T00:05:20.000Z",
+    "snapshotHash": "19e5d246a33e95a64ca2f7ec0cb31571d35063dcece033620346e5fc9642464a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

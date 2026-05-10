@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-007",
+  "sourceCandidateId": "SC-R007",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://lthub.ubc.ca/2024/09/03/what-to-know-about-working-with-gen-ai-at-ubc/",
+  "rejectedAt": "2026-05-10T14:00:00Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw_agent",
+  "notes": "Time-specific advisory blog post from September 2024."
+}

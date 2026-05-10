@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "sourceRejectionId": "sr-ipp-moodle",
+  "sourceCandidateId": "sc-ipp-moodle",
+  "entityType": "university",
+  "entitySlug": "institut-polytechnique-de-paris",
+  "sourceUrl": "https://moodle.ip-paris.fr/course/view.php?id=7732&section=3",
+  "finalUrl": "https://moodle.ip-paris.fr/course/view.php?id=7732&section=3",
+  "rejectedAt": "2026-05-10T00:05:00.000Z",
+  "rejectionReason": "login_required",
+  "checkedBy": "openclaw-agent",
+  "notes": "Moodle LMS page is login-gated. Cannot access AI integrity module content without authentication."
+}

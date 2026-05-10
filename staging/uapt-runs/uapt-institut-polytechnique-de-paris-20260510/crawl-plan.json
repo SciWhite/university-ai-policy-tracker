@@ -1,0 +1,52 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "planId": "cp-ipp-20260510",
+  "createdAt": "2026-05-10T00:08:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "institut-polytechnique-de-paris",
+      "sourceCandidateId": "sc-ipp-master-en",
+      "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20Academic%20Regulations%20IP%20Paris%20Master%20Programs%201.pdf",
+      "sourceTitle": "Academic Regulations For Master Programs - IP Paris",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "teaching", "assessment_guidance"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "institut-polytechnique-de-paris",
+      "sourceCandidateId": "sc-ipp-master-fr",
+      "sourceUrl": "https://www.ip-paris.fr/sites/default/files/pages/documents/Masters/2025-2026%20R%C3%A9glement%20des%20%C3%A9tudes%20IP%20Paris%20Master.pdf",
+      "sourceTitle": "Règlement des études des masters de l'Institut Polytechnique de Paris",
+      "sourceLanguage": "fr",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "teaching", "assessment_guidance"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "institut-polytechnique-de-paris",
+      "sourceCandidateId": "sc-polytechnique-teaching",
+      "sourceUrl": "https://www.polytechnique.edu/teaching-learning/moyens-au-service-de-la-pedagogie/ia-ressources-pour-les-enseignants",
+      "sourceTitle": "IA - Ressources pour les enseignants - Teaching & Learning Center",
+      "sourceLanguage": "fr",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching_guidance", "approved_tools"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Do not follow login-gated pages.",
+    "Reject news-only and event pages.",
+    "Reject third-party summaries."
+  ]
+}

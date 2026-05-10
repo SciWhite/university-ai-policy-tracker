@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-rejected-news-it",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.it.northwestern.edu/about/news-events/2026/ai-tools-guidance-what-is-next.html",
+  "sourceLanguage": "en",
+  "sourceType": "official_news_advisory",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"AI tools\" students",
+  "discoveredAt": "2026-05-10T00:01:50.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.75,
+  "policySpecificityScore": 0.40,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:03:50.000Z",
+  "verificationNotes": "IT news article about AI tools and guidance. News-only, not policy document.",
+  "rejectionReason": "event_or_news_only",
+  "robotsPolicy": "respect"
+}

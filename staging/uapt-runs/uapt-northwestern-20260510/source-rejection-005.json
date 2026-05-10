@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceRejectionId": "nw-sr-005",
+  "sourceCandidateId": "nw-sc-rejected-ipr",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.ipr.northwestern.edu/news/2024/harnessing-the-power-of-artificial-intelligence.html",
+  "rejectedAt": "2026-05-10T00:03:30.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Harnessing the Power of Artificial Intelligence.",
+  "notes": "News article about AI research; not policy guidance."
+}

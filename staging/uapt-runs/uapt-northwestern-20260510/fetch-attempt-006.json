@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "fetchAttemptId": "nw-fa-006",
+  "sourceCandidateId": "nw-sc-006",
+  "sourceUrl": "https://www.northwestern.edu/academic-support-learning/academic-resources/ai-in-learning/ai-for-learning-overview.html",
+  "finalUrl": "https://www.northwestern.edu/academic-support-learning/academic-resources/ai-in-learning/ai-for-learning-overview.html",
+  "attemptedAt": "2026-05-10T00:05:50.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3000,
+  "contentHash": "afb0ed465a40f66b9e778ff8bdd62e9a5a963909f420dba03f6968fbd17be2d0",
+  "normalizedTextStorageKey": "staging/uapt-northwestern-20260510/normalized/nw-ai-for-learning.txt"
+}

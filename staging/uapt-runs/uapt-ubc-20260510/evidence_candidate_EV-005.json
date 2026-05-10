@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-005",
+  "claimId": "CL-005",
+  "sourceSnapshotId": "SS-007",
+  "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+  "sourceTitle": "Microsoft Copilot for Organizations",
+  "sourceLanguage": "en",
+  "snapshotHash": "69418a2cf0a62587a706b8e975a48664bccab8e9ff42b04bd3df297f0a17b690",
+  "evidenceSnippetOriginal": "Microsoft's GenerativeAI Tool Copilot for Organizations is available for UBC faculty, students, and staff from any place you would normally access Copilot, such as copilot.microsoft.com or the Microsoft Edge web browser sidebar. Once you have logged in with your UBC credentials, look for the green Protected label - accompanied by a shield and check-mark icon - to confirm a secure connection.",
+  "evidenceLocator": "About This Tool section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Microsoft Copilot for Organizations",
+    "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ubc.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+    "publisher": "University of British Columbia",
+    "retrievedAt": "2026-05-10T14:00:00Z",
+    "snapshotHash": "69418a2cf0a62587a706b8e975a48664bccab8e9ff42b04bd3df297f0a17b690",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

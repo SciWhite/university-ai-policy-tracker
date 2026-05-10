@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-R002",
+  "entityType": "university",
+  "entitySlug": "ubc",
+  "sourceUrl": "https://genai.ubc.ca/2024/10/01/generative-ai-its-implications-and-opportunities-for-policy-pedagogy-and-practice-within-the-mathematical-sciences/",
+  "sourceTitle": "Generative AI: Its Implications and Opportunities for Policy, Pedagogy and Practice within the Mathematical Sciences",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-10T14:00:00Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.5,
+  "policySpecificityScore": 0.15,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T14:00:00Z",
+  "verificationNotes": "Blog/event post about a specific disciplinary session, not university-wide policy.",
+  "rejectionReason": "event_or_news_only",
+  "robotsPolicy": "respect"
+}

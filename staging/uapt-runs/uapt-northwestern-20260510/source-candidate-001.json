@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-001",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+  "finalUrl": "https://www.it.northwestern.edu/about/policies/guidance-on-the-use-of-generative-ai.html",
+  "sourceTitle": "Northwestern Guidance on the Use of Generative AI",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-10T00:01:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:03:00.000Z",
+  "verificationNotes": "Official university-wide generative AI guidance page from Northwestern IT. Contains privacy rules, data classification, approved tools, and academic use guidance.",
+  "robotsPolicy": "respect"
+}

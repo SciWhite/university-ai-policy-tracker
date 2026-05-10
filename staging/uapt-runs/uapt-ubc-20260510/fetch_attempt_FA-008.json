@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ubc-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-008",
+  "sourceCandidateId": "SC-008",
+  "sourceUrl": "https://ai.ctlt.ubc.ca/privacy-impact-assessments-for-generativeai-instructional-use-at-ubc/",
+  "finalUrl": "https://ai.ctlt.ubc.ca/privacy-impact-assessments-for-generativeai-instructional-use-at-ubc/",
+  "attemptedAt": "2026-05-10T14:00:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2028,
+  "contentHash": "84b6befc047b89e306d54f512d4afcf4e10dae50d9fe4b682968f25f6fdf71c3",
+  "normalizedTextStorageKey": "staging/uapt-ubc-20260510/normalized/ubc-sc-008.txt"
+}

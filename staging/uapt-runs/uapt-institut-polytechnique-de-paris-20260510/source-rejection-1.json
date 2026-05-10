@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "sourceRejectionId": "sr-ipp-homepage",
+  "sourceCandidateId": "sc-ipp-homepage",
+  "entityType": "university",
+  "entitySlug": "institut-polytechnique-de-paris",
+  "sourceUrl": "https://www.ip-paris.fr/",
+  "finalUrl": "https://www.ip-paris.fr/",
+  "rejectedAt": "2026-05-10T00:02:00.000Z",
+  "rejectionReason": "generic_home_page",
+  "checkedBy": "openclaw-agent",
+  "notes": "Official IP Paris homepage with no AI policy or guidance content."
+}

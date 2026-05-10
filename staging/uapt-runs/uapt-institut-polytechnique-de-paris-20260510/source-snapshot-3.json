@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "sourceSnapshotId": "ss-polytechnique-teaching",
+  "sourceCandidateId": "sc-polytechnique-teaching",
+  "fetchAttemptId": "fa-polytechnique-teaching",
+  "sourceUrl": "https://www.polytechnique.edu/teaching-learning/moyens-au-service-de-la-pedagogie/ia-ressources-pour-les-enseignants",
+  "finalUrl": "https://www.polytechnique.edu/teaching-learning/moyens-au-service-de-la-pedagogie/ia-ressources-pour-les-enseignants",
+  "sourceTitle": "IA - Ressources pour les enseignants - Teaching & Learning Center",
+  "sourceLanguage": "fr",
+  "contentHash": "e9ae52eaf73161266ce0c3342ac0d604ec24697e5b73780110b7531cddc88686",
+  "fetchedAt": "2026-05-10T00:11:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-institut-polytechnique-de-paris-20260510/normalized/polytechnique-edu-teaching.txt",
+  "rawArtifactPaths": []
+}

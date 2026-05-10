@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-northwestern-20260510",
+  "sourceCandidateId": "nw-sc-002",
+  "entityType": "university",
+  "entitySlug": "northwestern-university",
+  "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+  "finalUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/getting-started-with-generative-ai.html",
+  "sourceTitle": "Getting Started with Generative AI",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:northwestern.edu data protection generative AI",
+  "discoveredAt": "2026-05-10T00:01:30.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.90,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:04:00.000Z",
+  "verificationNotes": "Official IT guidance on getting started with generative AI. Contains data classification levels, approved tools (Microsoft Copilot), and step-by-step guidance for safe AI use.",
+  "robotsPolicy": "respect"
+}

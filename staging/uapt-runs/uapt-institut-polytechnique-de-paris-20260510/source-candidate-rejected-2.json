@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-institut-polytechnique-de-paris-20260510",
+  "sourceCandidateId": "sc-ipp-moodle",
+  "entityType": "university",
+  "entitySlug": "institut-polytechnique-de-paris",
+  "sourceUrl": "https://moodle.ip-paris.fr/course/view.php?id=7732&section=3",
+  "sourceTitle": "Médiathèque - Moodle IP Paris",
+  "sourceLanguage": "fr",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ip-paris.fr \"intégrité académique\" \"intelligence artificielle\"",
+  "discoveredAt": "2026-05-10T00:04:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.3,
+  "policySpecificityScore": 0.1,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:05:00.000Z",
+  "verificationNotes": "Moodle LMS page, login-gated. Cannot access content without authentication.",
+  "rejectionReason": "login_required",
+  "robotsPolicy": "respect"
+}
