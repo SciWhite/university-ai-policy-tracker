@@ -913,6 +913,11 @@ h3 {
   gap: 14px;
 }
 
+.entity-record-main,
+.entity-sidebar {
+  min-width: 0;
+}
+
 .entity-sidebar {
   position: sticky;
   top: 18px;
@@ -1076,7 +1081,7 @@ h3 {
   }
 
   .entity-record-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .entity-sidebar {
