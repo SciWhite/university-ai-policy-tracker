@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { seedUniversities } from "@uapt/shared";
+import type { CatalogPolicySource } from "@uapt/shared";
+import { getCatalogUniversities } from "@/lib/catalog";
 import { getSiteBaseUrl } from "../lib/site-url";
 
 const staticRoutes = [
@@ -14,16 +15,17 @@ const staticRoutes = [
   "/changes"
 ] as const;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteBaseUrl();
   const now = new Date();
+  const universities = await getCatalogUniversities();
 
   return [
     ...staticRoutes.map((route) => ({
       url: new URL(route, baseUrl).toString(),
       lastModified: now
     })),
-    ...seedUniversities.map((university) => {
+    ...universities.map((university) => {
       const latestSourceDate = getLatestSourceDate(university.sources);
 
       return {
@@ -35,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 }
 
 function getLatestSourceDate(
-  sources: (typeof seedUniversities)[number]["sources"]
+  sources: CatalogPolicySource[]
 ): string | undefined {
   return sources
     .flatMap((source) => [source.lastCheckedAt, source.lastChangedAt])

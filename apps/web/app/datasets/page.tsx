@@ -147,11 +147,11 @@ export default async function DatasetsPage() {
       <section className="metrics-grid" aria-label="Current dataset coverage">
         <div>
           <span>{universityCount}</span>
-          <p>seed universities</p>
+          <p>public university records</p>
         </div>
         <div>
           <span>{sourceCount}</span>
-          <p>seed policy sources</p>
+          <p>official source attributions</p>
         </div>
         <div>
           <span>{PUBLIC_API_VERSION}</span>

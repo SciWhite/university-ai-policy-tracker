@@ -461,6 +461,53 @@ h3 {
   gap: 14px;
 }
 
+.record-list {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+
+.record-list-row {
+  align-items: flex-start;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 16px;
+}
+
+.record-list-row:last-child {
+  border-bottom: 0;
+}
+
+.record-list-row:hover {
+  background: var(--color-surface-elevated);
+}
+
+.record-list-row__main {
+  min-width: 0;
+}
+
+.record-list-row__main h2 {
+  font-size: 18px;
+}
+
+.record-list-row__main p {
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 8px 0 0;
+}
+
+.record-list-row__meta {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  max-width: 360px;
+}
+
 .notice-card {
   background: var(--color-warning-surface);
   border: 1px solid var(--color-warning-border);
@@ -1034,5 +1081,15 @@ h3 {
 
   .entity-sidebar {
     position: static;
+  }
+
+  .record-list-row {
+    grid-template-columns: 1fr;
+  }
+
+  .record-list-row__meta {
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: none;
   }
 }

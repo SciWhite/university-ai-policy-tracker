@@ -14,6 +14,11 @@ import {
   type PublicEntitySummary
 } from "@uapt/shared";
 import { getSiteBaseUrl } from "./site-url";
+import {
+  getStagedCatalogSources,
+  getStagedCatalogUniversities,
+  getStagedPublicSummaryBySlug
+} from "./staged-public-data";
 
 type Parser<T> = {
   parse(value: unknown): T;
@@ -22,11 +27,15 @@ type Parser<T> = {
 const API_BASE_URL = process.env.API_PUBLIC_BASE_URL;
 
 export async function getCatalogUniversities(): Promise<CatalogUniversity[]> {
-  return (
-    (await fetchApi("/universities", {
-      parse: (value) => catalogUniversitySchema.array().parse(value)
-    })) ?? getSeedCatalogUniversities()
-  );
+  const fromApi = await fetchApi("/universities", {
+    parse: (value) => catalogUniversitySchema.array().parse(value)
+  });
+  if (fromApi?.length) return fromApi;
+
+  const fromStaging = await getStagedCatalogUniversities();
+  if (fromStaging.length) return fromStaging;
+
+  return getSeedCatalogUniversities();
 }
 
 export async function getCatalogUniversityBySlug(
@@ -36,7 +45,11 @@ export async function getCatalogUniversityBySlug(
 
   if (fromApi) return fromApi;
 
-  return getSeedCatalogUniversities().find((university) => university.slug === slug);
+  return (
+    (await getStagedCatalogUniversities()).find(
+      (university) => university.slug === slug
+    ) ?? getSeedCatalogUniversities().find((university) => university.slug === slug)
+  );
 }
 
 export async function getCatalogTools(): Promise<CatalogToolSummary[]> {
@@ -48,11 +61,15 @@ export async function getCatalogTools(): Promise<CatalogToolSummary[]> {
 }
 
 export async function getCatalogSources(): Promise<CatalogSourceRecord[]> {
-  return (
-    (await fetchApi("/sources", {
-      parse: (value) => catalogSourceRecordSchema.array().parse(value)
-    })) ?? getSeedCatalogSources()
-  );
+  const fromApi = await fetchApi("/sources", {
+    parse: (value) => catalogSourceRecordSchema.array().parse(value)
+  });
+  if (fromApi?.length) return fromApi;
+
+  const fromStaging = await getStagedCatalogSources();
+  if (fromStaging.length) return fromStaging;
+
+  return getSeedCatalogSources();
 }
 
 export async function getPublicUniversitySummaryBySlug(
@@ -71,6 +88,9 @@ export async function getPublicUniversitySummaryBySlug(
   );
 
   if (fromApi) return fromApi;
+
+  const fromStaging = await getStagedPublicSummaryBySlug(slug);
+  if (fromStaging) return fromStaging;
 
   const seedUniversity = seedUniversities.find(
     (university) => university.slug === slug

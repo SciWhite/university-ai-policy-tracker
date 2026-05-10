@@ -1,15 +1,6 @@
-import {
-  buildPublicUniversityListResponse,
-  buildSeedPublicEntitySummaries
-} from "@uapt/shared";
 import { NextResponse } from "next/server";
-import { getSiteBaseUrl } from "../../../../../lib/site-url";
+import { getStagedPublicUniversityListResponse } from "@/lib/staged-public-data";
 
-export function GET() {
-  const siteBaseUrl = getSiteBaseUrl();
-  const summaries = buildSeedPublicEntitySummaries(siteBaseUrl);
-
-  return NextResponse.json(
-    buildPublicUniversityListResponse(summaries, siteBaseUrl)
-  );
+export async function GET() {
+  return NextResponse.json(await getStagedPublicUniversityListResponse());
 }

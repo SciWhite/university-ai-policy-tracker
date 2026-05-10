@@ -30,7 +30,7 @@ export default async function HomePage() {
         </p>
       </section>
 
-      <section className="metrics-grid" aria-label="Seed dataset summary">
+      <section className="metrics-grid" aria-label="Public dataset summary">
         <div>
           <span>{universities.length}</span>
           <p>tracked universities</p>
