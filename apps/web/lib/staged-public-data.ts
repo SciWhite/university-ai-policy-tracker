@@ -51,6 +51,15 @@ interface RankingSource {
   universities: RankingRecord[];
 }
 
+interface PublicReleaseManifest {
+  schemaVersion: "uapt-public-release-manifest-v1";
+  releaseId: string;
+  publishedAt: string;
+  description?: string;
+  includeStagedArtifactDirectories: string[];
+  notes?: string[];
+}
+
 interface EntityArtifacts {
   slug: string;
   claims: StagedClaimCandidate[];
@@ -74,6 +83,12 @@ export async function getStagedPublicDataset(): Promise<PublicDataset> {
   datasetPromise ??= buildStagedPublicDataset();
 
   return datasetPromise;
+}
+
+export async function getCurrentPublicReleaseManifest(): Promise<
+  PublicReleaseManifest | undefined
+> {
+  return readPublicReleaseManifest(await findRepoRoot());
 }
 
 export async function getStagedCatalogUniversities(): Promise<CatalogUniversity[]> {
@@ -193,10 +208,15 @@ async function pathExists(targetPath: string): Promise<boolean> {
 }
 
 async function readStagedArtifacts(repoRoot: string): Promise<OpenClawStagedArtifact[]> {
-  const roots = [
-    path.join(repoRoot, "staging", "uapt-runs"),
-    path.join(repoRoot, "data", "openclaw-staging")
-  ];
+  const manifest = await readPublicReleaseManifest(repoRoot);
+  const roots = manifest
+    ? manifest.includeStagedArtifactDirectories.map((directory) =>
+        path.resolve(repoRoot, directory)
+      )
+    : [
+        path.join(repoRoot, "staging", "uapt-runs"),
+        path.join(repoRoot, "data", "openclaw-staging")
+      ];
   const files = (
     await Promise.all(roots.map((root) => walkJsonFiles(root)))
   ).flat();
@@ -213,6 +233,31 @@ async function readStagedArtifacts(repoRoot: string): Promise<OpenClawStagedArti
   }
 
   return artifacts;
+}
+
+async function readPublicReleaseManifest(
+  repoRoot: string
+): Promise<PublicReleaseManifest | undefined> {
+  const manifest = await readJson(
+    path.join(repoRoot, "data", "public-releases", "current.json")
+  );
+
+  if (!isPublicReleaseManifest(manifest)) return undefined;
+
+  return manifest;
+}
+
+function isPublicReleaseManifest(value: unknown): value is PublicReleaseManifest {
+  return (
+    isRecord(value) &&
+    value.schemaVersion === "uapt-public-release-manifest-v1" &&
+    typeof value.releaseId === "string" &&
+    typeof value.publishedAt === "string" &&
+    Array.isArray(value.includeStagedArtifactDirectories) &&
+    value.includeStagedArtifactDirectories.every(
+      (directory) => typeof directory === "string" && directory.length > 0
+    )
+  );
 }
 
 async function walkJsonFiles(root: string): Promise<string[]> {

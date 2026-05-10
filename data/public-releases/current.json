@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "uapt-public-release-manifest-v1",
+  "releaseId": "public-release-20260510-001",
+  "publishedAt": "2026-05-10T00:00:00.000Z",
+  "description": "Current public web/data release assembled from reviewed OpenClaw and OpenCode staged artifact runs.",
+  "includeStagedArtifactDirectories": [
+    "staging/uapt-runs/uapt-cuhk-20260510",
+    "staging/uapt-runs/uapt-edinburgh-20260510",
+    "staging/uapt-runs/uapt-hkust-20260510",
+    "staging/uapt-runs/uapt-institut-polytechnique-de-paris-20260510",
+    "staging/uapt-runs/uapt-kcl-20260510",
+    "staging/uapt-runs/uapt-manchester-20260510",
+    "staging/uapt-runs/uapt-monash-20260510",
+    "staging/uapt-runs/uapt-northwestern-20260510",
+    "staging/uapt-runs/uapt-qs14-20-20260506",
+    "staging/uapt-runs/uapt-qs26-30-20260509",
+    "staging/uapt-runs/uapt-repair-qs-top-policy-seeds-20260506",
+    "staging/uapt-runs/uapt-ubc-20260510",
+    "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510",
+    "staging/uapt-runs/uapt-university-of-queensland-20260510",
+    "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
+    "data/openclaw-staging/run-20260505-eth-ucl-curated",
+    "data/openclaw-staging/uapt-repair-20260506-3uni-reviewed"
+  ],
+  "notes": [
+    "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
+    "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
+    "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
+  ]
+}
