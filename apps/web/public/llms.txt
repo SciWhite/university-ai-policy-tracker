@@ -1,4 +1,4 @@
-const body = `# University AI Policy Tracker
+# University AI Policy Tracker
 
 University AI Policy Tracker is an open, evidence-backed database of university AI policy pages, source snapshots, policy claims, and citation-ready public JSON.
 
@@ -28,12 +28,3 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 ## Security Boundary
 - OpenClaw orchestrates agents and crawling only.
 - OpenClaw must not deploy the public website, write the production database directly, push main, or hold production deployment credentials.
-`;
-
-export function GET() {
-  return new Response(body, {
-    headers: {
-      "content-type": "text/plain; charset=utf-8"
-    }
-  });
-}
