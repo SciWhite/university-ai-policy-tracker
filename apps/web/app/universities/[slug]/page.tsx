@@ -7,7 +7,12 @@ import {
   getPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
 import { ClaimEvidenceCard } from "@/components/claim-evidence-card";
-import { CitationCopyActions } from "@/components/citation-copy-actions";
+import { EntityHeader } from "@/components/entity-header";
+import { EntitySidebar } from "@/components/entity-sidebar";
+import { MetaLabel } from "@/components/meta-label";
+import { ReferenceBox } from "@/components/reference-box";
+import { ReferenceTabs } from "@/components/reference-tabs";
+import { StateLabel } from "@/components/state-label";
 import { DEFAULT_LOCALE } from "@/lib/i18n";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
@@ -16,6 +21,14 @@ interface UniversityPageProps {
     slug: string;
   }>;
 }
+
+const recordTabs = [
+  { label: "Overview", href: "#overview" },
+  { label: "Claims", href: "#claims" },
+  { label: "Sources", href: "#sources" },
+  { label: "JSON", href: "#json" },
+  { label: "Citation", href: "#citation" }
+] as const;
 
 export async function generateStaticParams() {
   const universities = await getCatalogUniversities();
@@ -68,165 +81,166 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   );
 
   return (
-    <main className="page-shell">
-      <section className="hero">
-        <p className="kicker">
-          {university.region}, {university.country}
-        </p>
-        <h1>{university.name}</h1>
-        <p className="lead">{university.summary}</p>
-        <div className="policy-meta hero-meta">
-          {publicSummary.lastCheckedAt ? (
-            <span className="pill">
-              Last checked {formatDate(publicSummary.lastCheckedAt)}
-            </span>
-          ) : null}
-          {publicSummary.lastChangedAt ? (
-            <span className="pill">
-              Last changed {formatDate(publicSummary.lastChangedAt)}
-            </span>
-          ) : null}
-          <span className="pill">Review: {publicSummary.reviewState}</span>
-          {publicSummary.confidence !== undefined ? (
-            <span className="pill">
-              Confidence {Math.round(publicSummary.confidence * 100)}%
-            </span>
-          ) : null}
-        </div>
-      </section>
+    <main className="page-shell page-shell--wide">
+      <EntityHeader
+        actions={
+          <>
+            <a className="site-action" href={publicJsonUrl}>
+              Public JSON
+            </a>
+            <Link className="site-action" href="/citation">
+              Citation rules
+            </Link>
+            <Link className="site-action" href="/datasets">
+              Dataset access
+            </Link>
+          </>
+        }
+        eyebrow={`${university.region}, ${university.country}`}
+        metadata={
+          <>
+            {publicSummary.lastCheckedAt ? (
+              <MetaLabel label="Last checked">
+                {formatDate(publicSummary.lastCheckedAt)}
+              </MetaLabel>
+            ) : null}
+            {publicSummary.lastChangedAt ? (
+              <MetaLabel label="Last changed">
+                {formatDate(publicSummary.lastChangedAt)}
+              </MetaLabel>
+            ) : null}
+            <StateLabel reviewState={publicSummary.reviewState} />
+            {publicSummary.confidence !== undefined ? (
+              <MetaLabel label="Confidence">
+                {Math.round(publicSummary.confidence * 100)}%
+              </MetaLabel>
+            ) : null}
+          </>
+        }
+        summary={university.summary}
+        title={university.name}
+      />
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Citation-ready summary</h2>
-          <p>{publicSummary.schemaVersion} public contract</p>
-        </div>
-        <article className="policy-card">
-          <p>{publicSummary.summary}</p>
-          <div className="tag-row">
-            <span className="pill">Reviewed claims: {reviewedClaims.length}</span>
-            <span className="pill pill-muted">
-              Candidate claims: {candidateClaims.length}
-            </span>
-          </div>
-          <p className="muted">
-            Candidate claims are source-backed records pending review. They are
-            not final policy conclusions and are not legal or academic integrity
-            advice.
-          </p>
-        </article>
-      </section>
+      <ReferenceTabs tabs={recordTabs} />
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Citation record</h2>
-          <p>{publicSummary.license} tracker metadata</p>
-        </div>
-        <article className="policy-card">
-          <h3>Suggested citation</h3>
-          <p>{publicSummary.suggestedCitation}</p>
-          <CitationCopyActions
-            canonicalUrl={publicSummary.canonicalUrl}
-            citationText={publicSummary.suggestedCitation}
-            publicJsonUrl={publicJsonUrl}
-          />
-          <ul className="source-list">
-            <li>
-              <a href={publicSummary.canonicalUrl}>Canonical page</a>
-            </li>
-            <li>
-              <a href={publicJsonUrl}>Public JSON</a>
-            </li>
-            <li>
-              <Link href="/citation">Citation rules</Link>
-            </li>
-            <li>
-              <Link href="/datasets">Dataset access</Link>
-            </li>
-          </ul>
-          <p className="muted">{publicSummary.sourceRightsPolicy}</p>
-          <ul className="compact-list">
-            {publicSummary.limitations.map((limitation) => (
-              <li key={limitation}>{limitation}</li>
-            ))}
-          </ul>
-        </article>
-      </section>
+      <div className="entity-record-layout">
+        <div className="entity-record-main">
+          <ReferenceBox
+            description={`${publicSummary.schemaVersion} public contract`}
+            id="overview"
+            title="Citation-ready overview"
+          >
+            <p>{publicSummary.summary}</p>
+            <div className="tag-row">
+              <MetaLabel label="Reviewed claims">{reviewedClaims.length}</MetaLabel>
+              <MetaLabel label="Candidate claims">{candidateClaims.length}</MetaLabel>
+              <MetaLabel label="Official sources">
+                {publicSummary.officialSources.length}
+              </MetaLabel>
+            </div>
+            <p className="muted">
+              Candidate claims are source-backed records pending review. They are
+              not final policy conclusions and are not legal or academic integrity
+              advice.
+            </p>
+          </ReferenceBox>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Official sources</h2>
-          <p>{publicSummary.officialSources.length} source attribution</p>
-        </div>
-        <div className="card-grid">
-          {publicSummary.officialSources.map((source) => (
-            <article
-              className="policy-card"
-              key={`${source.sourceUrl}:${source.snapshotHash}`}
-            >
-              <div>
-                <h3>{source.citationTitle}</h3>
-                <p>{source.publisher ?? "Official university source"}</p>
+          <section className="record-section" id="claims">
+            <div className="section-heading">
+              <h2>Reviewed claims</h2>
+              <p>{reviewedClaims.length} reviewed public claim</p>
+            </div>
+            {reviewedClaims.length ? (
+              <div className="claim-list">
+                {reviewedClaims.map((claim) => (
+                  <ClaimEvidenceCard
+                    claim={claim}
+                    key={claim.id ?? claim.claimText}
+                    locale={DEFAULT_LOCALE}
+                  />
+                ))}
               </div>
-              <ul className="source-list">
-                <li>
-                  <a href={source.sourceUrl}>{source.sourceUrl}</a>
-                </li>
-                <li>Snapshot hash: {source.snapshotHash}</li>
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
+            ) : (
+              <p className="notice-card">
+                No reviewed claims are published for this record yet. Candidate
+                claims remain visible below for source-review workflow
+                transparency.
+              </p>
+            )}
+          </section>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Reviewed claims</h2>
-          <p>{reviewedClaims.length} reviewed public claim</p>
-        </div>
-        {reviewedClaims.length ? (
-          <div className="card-grid">
-            {reviewedClaims.map((claim) => (
-              <ClaimEvidenceCard
-                claim={claim}
-                key={claim.id ?? claim.claimText}
-                locale={DEFAULT_LOCALE}
-              />
-            ))}
-          </div>
-        ) : (
-          <p className="notice-card">
-            No reviewed claims are published for this record yet. Candidate claims
-            remain visible below for source-review workflow transparency.
-          </p>
-        )}
-      </section>
+          <section className="record-section">
+            <div className="section-heading">
+              <h2>Candidate claims</h2>
+              <p>{candidateClaims.length} machine or needs-review claim</p>
+            </div>
+            <p className="notice-card">
+              Candidate claims are not final policy conclusions. They preserve
+              source URL, source snapshot hash, evidence, confidence, and review
+              state so the record can be audited before review.
+            </p>
+            {candidateClaims.length ? (
+              <div className="claim-list">
+                {candidateClaims.map((claim) => (
+                  <ClaimEvidenceCard
+                    claim={claim}
+                    key={claim.id ?? claim.claimText}
+                    locale={DEFAULT_LOCALE}
+                  />
+                ))}
+              </div>
+            ) : null}
+          </section>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Candidate claims</h2>
-          <p>{candidateClaims.length} machine or needs-review claim</p>
-        </div>
-        <p className="notice-card">
-          Candidate claims are not final policy conclusions. They preserve source
-          URL, source snapshot hash, evidence, confidence, and review state so the
-          record can be audited before review.
-        </p>
-        {candidateClaims.length ? (
-          <div className="card-grid">
-            {candidateClaims.map((claim) => (
-              <ClaimEvidenceCard
-                claim={claim}
-                key={claim.id ?? claim.claimText}
-                locale={DEFAULT_LOCALE}
-              />
-            ))}
-          </div>
-        ) : null}
-      </section>
+          <section className="record-section" id="sources">
+            <div className="section-heading">
+              <h2>Official sources</h2>
+              <p>{publicSummary.officialSources.length} source attribution</p>
+            </div>
+            <div className="source-attribution-list">
+              {publicSummary.officialSources.map((source) => (
+                <article
+                  className="source-attribution-row"
+                  key={`${source.sourceUrl}:${source.snapshotHash}`}
+                >
+                  <div>
+                    <h3>{source.citationTitle}</h3>
+                    <p className="muted">
+                      {source.publisher ?? "Official university source"}
+                    </p>
+                  </div>
+                  <dl className="source-attribution-row__meta">
+                    <div>
+                      <dt>Source URL</dt>
+                      <dd>
+                        <a href={source.sourceUrl}>{source.sourceUrl}</a>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>Snapshot hash</dt>
+                      <dd className="hash-value">{source.snapshotHash}</dd>
+                    </div>
+                  </dl>
+                </article>
+              ))}
+            </div>
+          </section>
 
-      <section className="section">
-        <Link href="/universities">Back to universities</Link>
-      </section>
+          <section className="record-section">
+            <Link href="/universities">Back to universities</Link>
+          </section>
+        </div>
+
+        <EntitySidebar
+          canonicalUrl={publicSummary.canonicalUrl}
+          citationText={publicSummary.suggestedCitation}
+          license={publicSummary.license}
+          limitations={publicSummary.limitations}
+          officialSourceCount={publicSummary.officialSources.length}
+          publicJsonUrl={publicJsonUrl}
+          sourceRightsPolicy={publicSummary.sourceRightsPolicy}
+        />
+      </div>
     </main>
   );
 }

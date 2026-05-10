@@ -10,19 +10,13 @@ import {
   isSupportedLocale,
   type SupportedLocale
 } from "@/lib/i18n";
+import { MetaLabel } from "@/components/meta-label";
+import { StateLabel } from "@/components/state-label";
 
 interface ClaimEvidenceCardProps {
   claim: PolicyClaim;
   locale?: SupportedLocale;
 }
-
-const reviewLabels: Record<ClaimReviewState, string> = {
-  machine_candidate: "Machine candidate",
-  agent_reviewed: "Agent reviewed",
-  human_reviewed: "Human reviewed",
-  needs_review: "Needs review",
-  rejected: "Rejected"
-};
 
 const reviewNotes: Partial<Record<ClaimReviewState, string>> = {
   machine_candidate:
@@ -49,13 +43,11 @@ export function ClaimEvidenceCard({
           </p>
           <h3>{claim.claimText}</h3>
         </div>
-        <div className="tag-row">
-          <span className="review-pill" data-review-state={claim.reviewState}>
-            Review: {reviewLabels[claim.reviewState]}
-          </span>
-          <span className="pill">
-            Confidence {Math.round(claim.confidence * 100)}%
-          </span>
+        <div className="claim-evidence-card__status">
+          <StateLabel reviewState={claim.reviewState} />
+          <MetaLabel label="Confidence">
+            {Math.round(claim.confidence * 100)}%
+          </MetaLabel>
         </div>
       </header>
 
