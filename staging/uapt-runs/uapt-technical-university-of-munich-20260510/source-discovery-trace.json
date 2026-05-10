@@ -1,0 +1,44 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "traceId": "tum-discovery-trace-1",
+  "entityType": "university",
+  "entitySlug": "technical-university-of-munich",
+  "startedAt": "2026-05-10T20:44:45.340Z",
+  "endedAt": "2026-05-10T20:44:45.340Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:tum.de \"KI\" \"Prüfung\" \"Studierende\"",
+      "domain": "tum.de",
+      "resultCount": 10,
+      "notes": "Found TUM news and department-level mentions; news results were rejected for policy claims."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:prolehre.tum.de KI Einsatz Lehre TUM Entscheidungshilfe PDF",
+      "domain": "prolehre.tum.de",
+      "resultCount": 10,
+      "notes": "Found official TUM ProLehre PDF guidance for AI use in teaching."
+    },
+    {
+      "method": "pdf_discovery",
+      "query": "Entscheidungshilfe KI-Einsatz in der Lehre v2 PDF",
+      "domain": "prolehre.tum.de",
+      "resultCount": 1,
+      "notes": "Fetched official PDF and extracted text with pdftotext for evidence binding."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "tum-prolehre-ki-teaching-guidance-pdf",
+    "tum-news-onetutor-ai-learning",
+    "tum-prolehre-use-ai-wisely-page"
+  ],
+  "rejectionIds": [
+    "tum-rejection-news-onetutor-ai-learning",
+    "tum-rejection-use-ai-wisely-page"
+  ],
+  "summary": "Discovery found one official TUM ProLehre PDF suitable for evidence-backed claims about AI use in teaching and assessment. Two other official TUM URLs were retained as rejected sources because they were news or low-specificity landing pages."
+}

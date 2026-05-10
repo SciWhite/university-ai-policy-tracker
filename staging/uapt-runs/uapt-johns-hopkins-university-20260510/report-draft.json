@@ -1,0 +1,28 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "reportId": "jhu-report-draft-20260510",
+  "title": "Johns Hopkins University Generative AI Guidance Crawl Report",
+  "generatedAt": "2026-05-10T21:16:32.000Z",
+  "draftPath": "content/reports/johns-hopkins-university-20260510.mdx",
+  "summary": "This limited staged run captures the public Teaching @ JHU generative AI guidance hub. Approved claims cover the existence and scope of the guidance hub, divisional-guidance caveats, teaching-strategy guidance, instructional use cases, ethical implementation concerns, and the presence of FERPA/HIPAA/data ownership topics. Several deeper JHU pages currently return JavaScript/cookie challenges from this environment and are not used for approved claims.",
+  "referencedClaimIds": [
+    "jhu-claim-1",
+    "jhu-claim-2",
+    "jhu-claim-3",
+    "jhu-claim-4",
+    "jhu-claim-5",
+    "jhu-claim-6"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/johns-hopkins-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "Coverage is limited to the Teaching @ JHU guidance hub because several deeper official JHU pages currently return JavaScript/cookie challenges from this environment and were not bypassed."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-002",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "sourceUrl": "https://learn.epfl.ch/en/initiatives/generative-ai-on-campus-what-we-learned-students-teachers-survey-2024/",
+  "finalUrl": "https://learn.epfl.ch/en/initiatives/generative-ai-on-campus-what-we-learned-students-teachers-survey-2024/",
+  "rejectedAt": "2026-05-10T15:15:00Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw_agent",
+  "evidenceSnippet": "Survey results page about generative AI on campus. Research data, not policy guidance.",
+  "notes": "EPFL LEARN survey results page - presents research findings but does not contain actionable policy or guidance. Rejected per contract rules."
+}

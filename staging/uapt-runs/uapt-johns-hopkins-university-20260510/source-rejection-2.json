@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "sourceRejectionId": "jhu-rejection-2",
+  "sourceCandidateId": "jhu-teaching-ai-syllabus-statements",
+  "entityType": "university",
+  "entitySlug": "johns-hopkins-university",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+  "rejectedAt": "2026-05-10T21:16:32.000Z",
+  "rejectionReason": "captcha",
+  "checkedBy": "codex-artifact-repair",
+  "evidenceSnippet": "Just a moment... Enable JavaScript and cookies to continue",
+  "notes": "Current direct HTTP fetch returns a JavaScript/cookie challenge; not used for claims in this run."
+}

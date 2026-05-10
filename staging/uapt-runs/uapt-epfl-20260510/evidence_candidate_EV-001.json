@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-001",
+  "claimId": "CL-001",
+  "sourceSnapshotId": "SS-002",
+  "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+  "finalUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+  "sourceTitle": "Guidelines for using (Gen)AI in studying",
+  "sourceLanguage": "en",
+  "snapshotHash": "87edcd847e7da9072a61800e82df79c37f0eec2770af19d6ba733ee8a99fb396",
+  "evidenceSnippetOriginal": "EPFL rules (Lex 1.3.3, Article 4) require that all assessment material that is not the student’s personal and original contribution must be recognizable as such. Therefore, the use of AI tools should be disclosed in a statement.",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidelines for using (Gen)AI in studying",
+    "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/epfl.json",
+    "publisher": "EPFL",
+    "retrievedAt": "2026-05-10T15:10:00Z",
+    "snapshotHash": "87edcd847e7da9072a61800e82df79c37f0eec2770af19d6ba733ee8a99fb396",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

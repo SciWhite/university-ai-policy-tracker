@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-002",
+  "claimId": "CL-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_policy_extractor",
+  "notes": "Claim directly supported by official EPFL Vice Presidency guidance. Privacy warning clearly stated in source.",
+  "decidedAt": "2026-05-10T15:20:00Z"
+}

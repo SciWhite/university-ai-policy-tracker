@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "evidenceId": "tum-evidence-2",
+  "claimId": "tum-claim-2",
+  "sourceSnapshotId": "tum-snapshot-prolehre-ki-teaching-guidance-pdf",
+  "sourceUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+  "finalUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+  "sourceTitle": "Entscheidungshilfe für den KI-Einsatz in der Lehre",
+  "sourceLanguage": "de",
+  "snapshotHash": "aac26801e1a951ed2e23aa8936a98f510f00c21d933811221f0edaf4ee24d96f",
+  "evidenceSnippetOriginal": "Nehmen Sie als Ausgangspunkt für Ihre Entscheidung die angestrebten Lernergebnisse, die Ihre Studierenden in Ihrer Lehrveranstaltung erwerben sollen – und ob der Einsatz von KI das Erreichen dieser Kompetenzen fördert, ergänzt oder behindert.",
+  "evidenceLocator": "Schritt 1: Lernergebnisse",
+  "evidenceType": "pdf",
+  "relevance": 0.92,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Entscheidungshilfe für den KI-Einsatz in der Lehre",
+    "sourceUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/technical-university-of-munich.json",
+    "publisher": "Technical University of Munich",
+    "retrievedAt": "2026-05-10T20:44:45.340Z",
+    "snapshotHash": "aac26801e1a951ed2e23aa8936a98f510f00c21d933811221f0edaf4ee24d96f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "traceId": "jhu-discovery-trace-20260510",
+  "entityType": "university",
+  "entitySlug": "johns-hopkins-university",
+  "startedAt": "2026-05-10T21:16:32.000Z",
+  "endedAt": "2026-05-10T21:16:32.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:jhu.edu \"generative AI\" policy students",
+      "domain": "jhu.edu",
+      "resultCount": 10,
+      "notes": "Found Teaching @ JHU generative AI guidance hub and deeper pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:jhu.edu \"ChatGPT\" \"academic integrity\"",
+      "domain": "jhu.edu",
+      "resultCount": 10,
+      "notes": "Found Engineering CTLD and WSEIT pages; current direct fetches are blocked by JavaScript/cookie challenge in this environment."
+    },
+    {
+      "method": "site_search",
+      "query": "Teaching @ JHU generative AI guidance",
+      "domain": "teaching.jhu.edu",
+      "resultCount": 1,
+      "notes": "Verified the public Teaching @ JHU guidance hub and used it for approved claims."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "jhu-teaching-generative-ai-guidance-hub",
+    "jhu-teaching-generative-ai-guidelines",
+    "jhu-teaching-ai-syllabus-statements",
+    "jhu-wseit-generative-ai-information",
+    "jhu-brand-ai-guidelines",
+    "jhu-ai-strategy-blog"
+  ],
+  "rejectionIds": [
+    "jhu-rejection-1",
+    "jhu-rejection-2",
+    "jhu-rejection-3",
+    "jhu-rejection-4",
+    "jhu-rejection-5"
+  ],
+  "summary": "JHU run completed with limited coverage. The public Teaching @ JHU generative AI guidance hub was fetched and used for approved claims. Several deeper official JHU pages currently return JavaScript/cookie challenges from this environment, so they are staged as blocked/rejected and not used for claims."
+}

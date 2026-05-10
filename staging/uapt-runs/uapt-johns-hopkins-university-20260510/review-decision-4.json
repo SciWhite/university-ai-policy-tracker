@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "decisionId": "jhu-review-4",
+  "claimId": "jhu-claim-4",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "codex-artifact-repair",
+  "notes": "Approved as a narrow staged claim directly supported by text captured from the public Teaching @ JHU generative AI guidance hub. Not human_reviewed and not canonical.",
+  "decidedAt": "2026-05-10T21:16:32.000Z"
+}

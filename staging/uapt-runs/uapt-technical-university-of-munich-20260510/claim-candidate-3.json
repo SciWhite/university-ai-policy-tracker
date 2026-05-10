@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "claimId": "tum-claim-3",
+  "entityType": "university",
+  "entitySlug": "technical-university-of-munich",
+  "claimType": "teaching",
+  "claimText": "When AI use is restricted, TUM ProLehre guidance tells instructors to clearly define what AI may be used for, what it may not be used for, and to discuss this with students.",
+  "normalizedValue": "clearly_specify_allowed_and_disallowed_ai_use",
+  "sourceLanguage": "de",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "tum-evidence-3"
+  ],
+  "citation": {
+    "citationTitle": "Entscheidungshilfe für den KI-Einsatz in der Lehre",
+    "sourceUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/technical-university-of-munich.json",
+    "publisher": "Technical University of Munich",
+    "retrievedAt": "2026-05-10T20:44:45.340Z",
+    "snapshotHash": "aac26801e1a951ed2e23aa8936a98f510f00c21d933811221f0edaf4ee24d96f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

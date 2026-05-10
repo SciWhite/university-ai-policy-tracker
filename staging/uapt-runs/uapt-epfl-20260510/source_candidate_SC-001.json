@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-001",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "sourceUrl": "https://www.epfl.ch/about/vice-presidencies/vice-presidency-for-academic-affairs-vpa/tips-for-the-use-of-generative-ai-in-research-and-education/",
+  "sourceTitle": "Tips for the use of generative AI in research and education",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:epfl.ch \"generative AI\" policy students",
+  "discoveredAt": "2026-05-10T15:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T15:10:00Z",
+  "verificationNotes": "Official EPFL Vice Presidency guidance on generative AI use. Published by EPFL Academic Affairs. Clear recommendations on when to use/not use generative AI, privacy risks, and transparency requirements.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

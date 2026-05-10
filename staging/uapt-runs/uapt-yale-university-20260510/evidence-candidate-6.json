@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "evidenceId": "yale-evidence-6",
+  "claimId": "yale-claim-6",
+  "sourceSnapshotId": "yale-snapshot-3",
+  "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers",
+  "finalUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers",
+  "sourceTitle": "AI Guidance for Teachers",
+  "sourceLanguage": "en",
+  "snapshotHash": "a3ce5f7b43936c954d51d5f07634d49a5e05b4eff8d060d9d98b82dd99ccc91c",
+  "evidenceSnippetOriginal": "Generative AI use is subject to individual course policies. We encourage all instructors to adapt our model policies for their specific course and learning goals.",
+  "evidenceLocator": "AI Guidance for Teachers, course policies",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Guidance for Teachers",
+    "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:17:00.000Z",
+    "snapshotHash": "a3ce5f7b43936c954d51d5f07634d49a5e05b4eff8d060d9d98b82dd99ccc91c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

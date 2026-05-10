@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceRejectionId": "yale-sr-cpsc-course",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://nlp.cs.yale.edu/cpsc488/logistics/",
+  "rejectedAt": "2026-05-10T12:12:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "CPSC 488/588 AI Foundation Models - Logistics",
+  "notes": "Individual course logistics page, not a university-wide policy or guidance document."
+}

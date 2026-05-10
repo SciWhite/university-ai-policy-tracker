@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-003",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+  "sourceTitle": "Guidelines for the use of AI in teaching at EPFL",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:epfl.ch \"generative AI\" policy students",
+  "discoveredAt": "2026-05-10T15:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T15:10:00Z",
+  "verificationNotes": "Official EPFL teaching guidelines (Version 1 April 2025). Comprehensive guidance on AI use in lectures, exercises, projects, and assessment. Covers data protection, equity, academic integrity, and AI plagiarism detection policies.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

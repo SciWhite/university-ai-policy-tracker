@@ -1,0 +1,27 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "reportId": "tum-report-draft-20260510",
+  "title": "Technical University of Munich AI Teaching Guidance Crawl Report",
+  "generatedAt": "2026-05-10T20:44:45.340Z",
+  "draftPath": "content/reports/technical-university-of-munich-20260510.mdx",
+  "summary": "This staged run captures a limited but usable TUM ProLehre official PDF on deciding whether and how AI tools may be used in teaching and assessment. Claims are limited to instructor discretion, learning-outcome-based AI-use decisions, communicating allowed and disallowed AI use, the difficulty of controlling AI use, and student training in competent AI use. The run does not establish a comprehensive university-wide AI policy.",
+  "referencedClaimIds": [
+    "tum-claim-1",
+    "tum-claim-2",
+    "tum-claim-3",
+    "tum-claim-4",
+    "tum-claim-5"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/technical-university-of-munich.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "Coverage is limited to one official TUM ProLehre teaching guidance PDF; additional TUM data protection, student-facing, and tool-specific sources should be discovered in a future run."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

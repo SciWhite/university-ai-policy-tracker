@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-003",
+  "claimId": "CL-003",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_policy_extractor",
+  "notes": "Approved after narrowing wording to match EPFL assessment guidance: teachers are recommended to make course AI-use rules explicit.",
+  "decidedAt": "2026-05-10T15:20:00Z"
+}

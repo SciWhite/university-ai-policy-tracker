@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "sourceCandidateId": "tum-prolehre-ki-teaching-guidance-pdf",
+  "entityType": "university",
+  "entitySlug": "technical-university-of-munich",
+  "sourceUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+  "finalUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+  "sourceTitle": "Entscheidungshilfe für den KI-Einsatz in der Lehre",
+  "sourceLanguage": "de",
+  "sourceType": "official_pdf",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:prolehre.tum.de KI Einsatz Lehre TUM Entscheidungshilfe PDF",
+  "discoveredAt": "2026-05-10T20:44:45.340Z",
+  "officialDomainConfidence": 0.94,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T20:44:45.340Z",
+  "verificationNotes": "Official TUM ProLehre / Institute for LifeLong Learning PDF guidance for instructors deciding whether and how AI tools may be used in teaching and assessment.",
+  "robotsPolicy": "respect"
+}

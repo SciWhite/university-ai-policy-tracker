@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-003",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "sourceUrl": "https://careers.epfl.ch/job/Lausanne-PhD-Multimodal-Generative-AI-for-Materials-Design/1164180355/",
+  "finalUrl": "https://careers.epfl.ch/job/Lausanne-PhD-Multimodal-Generative-AI-for-Materials-Design/1164180355/",
+  "rejectedAt": "2026-05-10T15:15:00Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw_agent",
+  "evidenceSnippet": "PhD job posting for AI research position. Not policy content.",
+  "notes": "EPFL careers page - job posting for PhD position in generative AI research. Not policy/guidance content. Rejected."
+}

@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceSnapshotId": "yale-snapshot-1",
+  "sourceCandidateId": "yale-provost-genai-guidelines",
+  "fetchAttemptId": "yale-fetch-1",
+  "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+  "finalUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+  "sourceTitle": "Guidelines for the Use of Generative AI Tools",
+  "sourceLanguage": "en",
+  "contentHash": "cf53048e544a5a3db3804780e6f5dee6ac15d4c8dc4fadf2ade6fbb0d858019c",
+  "fetchedAt": "2026-05-10T12:15:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-yale-university-20260510/normalized/yale-provost-genai-guidelines.txt",
+  "rawArtifactPaths": []
+}

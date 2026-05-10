@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-006",
+  "sourceCandidateId": "SC-006",
+  "sourceUrl": "https://www.epfl.ch/about/vice-presidencies/fr/vice-presidence-academique-vpa/conseils-pour-lutilisation-de-lia-generative-dans-la-recherche-et-leducation/",
+  "finalUrl": "https://www.epfl.ch/about/vice-presidencies/fr/vice-presidence-academique-vpa/conseils-pour-lutilisation-de-lia-generative-dans-la-recherche-et-leducation/",
+  "attemptedAt": "2026-05-10T15:10:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2500,
+  "normalizedTextStorageKey": "epfl-sc006-20260510.txt",
+  "contentHash": "0c8f94c33e323d9186a4728a89f8629ff00be9a07f40d632c9604b99f1b69856"
+}

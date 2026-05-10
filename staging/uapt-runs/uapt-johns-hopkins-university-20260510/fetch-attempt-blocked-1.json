@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "fetchAttemptId": "jhu-fetch-blocked-1",
+  "sourceCandidateId": "jhu-teaching-generative-ai-guidelines",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/guidelines/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/guidelines/",
+  "attemptedAt": "2026-05-10T21:16:32.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "blocked",
+  "errorReason": "HTTP response showed a JavaScript/cookie challenge; not bypassed.",
+  "durationMs": 900
+}

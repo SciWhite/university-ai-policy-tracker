@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "claimId": "yale-claim-10",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "claimType": "ai_tool_treatment",
+  "claimText": "Yale lists Clarity Platform as a Yale-provided AI chatbot platform housed within Yale secure infrastructure and available to staff, faculty, and students.",
+  "normalizedValue": "clarity_platform_yale_provided",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "yale-evidence-10"
+  ],
+  "citation": {
+    "citationTitle": "Yale's AI Tools and Resources",
+    "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:19:00.000Z",
+    "snapshotHash": "688e40fe08017e2e91008e9857dbd02a5828c7093f086e0d9eb4a1e517de516d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

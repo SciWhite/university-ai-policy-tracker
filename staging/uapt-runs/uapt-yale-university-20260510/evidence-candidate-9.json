@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "evidenceId": "yale-evidence-9",
+  "claimId": "yale-claim-9",
+  "sourceSnapshotId": "yale-snapshot-7",
+  "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+  "finalUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+  "sourceTitle": "Protecting Student Privacy and Your Data",
+  "sourceLanguage": "en",
+  "snapshotHash": "43854432f3c071ffabf46609ad4e79ebe87c3e9a6cd35e1ec63d8872fe38900c",
+  "evidenceSnippetOriginal": "Your use of AI tools in the classroom must comply with the Family Educational Rights and Privacy Act (FERPA). In particular, you cannot require students to create external accounts for tools Yale does not directly license.",
+  "evidenceLocator": "Protecting Student Privacy and Your Data",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Protecting Student Privacy and Your Data",
+    "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:21:00.000Z",
+    "snapshotHash": "43854432f3c071ffabf46609ad4e79ebe87c3e9a6cd35e1ec63d8872fe38900c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

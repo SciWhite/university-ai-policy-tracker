@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceCandidateId": "yale-poorvu-ai-teachers",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers",
+  "finalUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers",
+  "sourceTitle": "AI Guidance for Teachers",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:yale.edu \"generative AI\" teaching guidance",
+  "discoveredAt": "2026-05-10T12:02:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.92,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:06:00.000Z",
+  "verificationNotes": "Official Poorvu Center AI guidance for faculty. States AI-generated text without attribution violates academic integrity, does not endorse AI detection tools, and FERPA compliance is required.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "sourceCandidateId": "jhu-teaching-generative-ai-guidance-hub",
+  "entityType": "university",
+  "entitySlug": "johns-hopkins-university",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "sourceTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:jhu.edu generative AI teaching guidance",
+  "discoveredAt": "2026-05-10T21:16:32.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.82,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T21:16:32.000Z",
+  "verificationNotes": "Official Teaching @ JHU generative AI tool guidance hub. Direct fetch succeeded earlier in this run and produced the staged snapshot hash; deeper pages currently return JavaScript/cookie challenges and are not used for claims.",
+  "robotsPolicy": "respect"
+}

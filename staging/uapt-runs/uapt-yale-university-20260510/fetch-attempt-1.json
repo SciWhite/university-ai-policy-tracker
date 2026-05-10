@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "fetchAttemptId": "yale-fetch-1",
+  "sourceCandidateId": "yale-provost-genai-guidelines",
+  "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+  "finalUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+  "attemptedAt": "2026-05-10T12:15:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3100,
+  "contentHash": "cf53048e544a5a3db3804780e6f5dee6ac15d4c8dc4fadf2ade6fbb0d858019c",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-yale-university-20260510/normalized/yale-provost-genai-guidelines.txt"
+}

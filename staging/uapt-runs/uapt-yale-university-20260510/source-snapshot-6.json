@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceSnapshotId": "yale-snapshot-6",
+  "sourceCandidateId": "yale-poorvu-academic-integrity",
+  "fetchAttemptId": "yale-fetch-6",
+  "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/academic",
+  "finalUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/academic",
+  "sourceTitle": "Academic Integrity and Detection",
+  "sourceLanguage": "en",
+  "contentHash": "bbac849b9594a8b457ebd0c8224ec47bebaf0c91521ec2c599bf202c7faeff14",
+  "fetchedAt": "2026-05-10T12:20:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-yale-university-20260510/normalized/yale-poorvu-academic.txt",
+  "rawArtifactPaths": []
+}

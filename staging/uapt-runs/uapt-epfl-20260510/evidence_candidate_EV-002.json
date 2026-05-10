@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-002",
+  "claimId": "CL-002",
+  "sourceSnapshotId": "SS-001",
+  "sourceUrl": "https://www.epfl.ch/about/vice-presidencies/vice-presidency-for-academic-affairs-vpa/tips-for-the-use-of-generative-ai-in-research-and-education/",
+  "finalUrl": "https://www.epfl.ch/about/vice-presidencies/vice-presidency-for-academic-affairs-vpa/tips-for-the-use-of-generative-ai-in-research-and-education/",
+  "sourceTitle": "Tips for the use of generative AI in research and education",
+  "sourceLanguage": "en",
+  "snapshotHash": "5eeaf435b05194c1df42edec4c82f305a9971d53eadf7ce1392453f738937014",
+  "evidenceSnippetOriginal": "Never input confidential, private or personal information about yourself or others into these tools. Always reflect first on the nature of the information you are using, because once you enter it into one of these tools, it’s no longer confidential.",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Tips for the use of generative AI in research and education",
+    "sourceUrl": "https://www.epfl.ch/about/vice-presidencies/vice-presidency-for-academic-affairs-vpa/tips-for-the-use-of-generative-ai-in-research-and-education/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/epfl.json",
+    "publisher": "EPFL",
+    "retrievedAt": "2026-05-10T15:10:00Z",
+    "snapshotHash": "5eeaf435b05194c1df42edec4c82f305a9971d53eadf7ce1392453f738937014",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

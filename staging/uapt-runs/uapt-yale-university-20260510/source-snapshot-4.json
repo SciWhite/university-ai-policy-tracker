@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceSnapshotId": "yale-snapshot-4",
+  "sourceCandidateId": "yale-poorvu-ai-students",
+  "fetchAttemptId": "yale-fetch-4",
+  "sourceUrl": "https://poorvucenter.yale.edu/learning/learning-resource-library/ai-guidance-for-students",
+  "finalUrl": "https://poorvucenter.yale.edu/learning/learning-resource-library/ai-guidance-for-students",
+  "sourceTitle": "AI Guidance for Students",
+  "sourceLanguage": "en",
+  "contentHash": "d1e2823bce0f284b85c61bdc815a4681c5a623d73b9a0e856aac9941b498942f",
+  "fetchedAt": "2026-05-10T12:18:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-yale-university-20260510/normalized/yale-poorvu-students.txt",
+  "rawArtifactPaths": []
+}

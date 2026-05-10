@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-002",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+  "sourceTitle": "Guidelines for using (Gen)AI in studying",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:epfl.ch \"generative AI\" policy students",
+  "discoveredAt": "2026-05-10T15:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T15:10:00Z",
+  "verificationNotes": "Official EPFL student-facing guidelines for generative AI use in studying. Covers academic integrity, data protection, transparency requirements, and EPFL Lex 1.3.3 Article 4 disclosure rules.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

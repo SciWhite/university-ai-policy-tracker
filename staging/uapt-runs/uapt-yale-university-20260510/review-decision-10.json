@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "decisionId": "yale-review-10",
+  "claimId": "yale-claim-10",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Approved as a narrow claim directly supported by the linked official Yale source evidence. Not marked human_reviewed and not published as canonical.",
+  "decidedAt": "2026-05-10T12:45:00.000Z"
+}

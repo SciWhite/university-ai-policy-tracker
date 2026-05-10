@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "evidenceId": "jhu-evidence-6",
+  "claimId": "jhu-claim-6",
+  "sourceSnapshotId": "jhu-snapshot-teaching-generative-ai-guidance-hub",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "sourceTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+  "sourceLanguage": "en",
+  "snapshotHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",
+  "evidenceSnippetOriginal": "Guidelines FERPA Guidelines HIPAA Guidelines Ownership of Data Ethical Considerations Guidelines for Students Example Syllabi Statements Detection Tools: Limitations and Alternatives",
+  "evidenceLocator": "Generative AI Tool Guidance, table of contents",
+  "evidenceType": "official_source",
+  "relevance": 0.74,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+    "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/johns-hopkins-university.json",
+    "publisher": "Johns Hopkins University",
+    "retrievedAt": "2026-05-10T21:16:32.000Z",
+    "snapshotHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "fetchAttemptId": "yale-fetch-7",
+  "sourceCandidateId": "yale-poorvu-privacy-data",
+  "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+  "finalUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+  "attemptedAt": "2026-05-10T12:21:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2600,
+  "contentHash": "43854432f3c071ffabf46609ad4e79ebe87c3e9a6cd35e1ec63d8872fe38900c",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-yale-university-20260510/normalized/yale-poorvu-privacy.txt"
+}

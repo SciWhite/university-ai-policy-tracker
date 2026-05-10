@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "evidenceId": "yale-evidence-11",
+  "claimId": "yale-claim-11",
+  "sourceSnapshotId": "yale-snapshot-5",
+  "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+  "finalUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+  "sourceTitle": "Yale's AI Tools and Resources",
+  "sourceLanguage": "en",
+  "snapshotHash": "688e40fe08017e2e91008e9857dbd02a5828c7093f086e0d9eb4a1e517de516d",
+  "evidenceSnippetOriginal": "It does not use your conversations to train any AI model or share any data with OpenAI, ensuring your information remains private. Functionality is split into a Work and a Web tab. High risk data should only be used in the Work search.",
+  "evidenceLocator": "Yale AI Tools and Resources, Copilot Chat",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Yale's AI Tools and Resources",
+    "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:19:00.000Z",
+    "snapshotHash": "688e40fe08017e2e91008e9857dbd02a5828c7093f086e0d9eb4a1e517de516d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

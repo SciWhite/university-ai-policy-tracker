@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "sourceRejectionId": "jhu-rejection-4",
+  "sourceCandidateId": "jhu-brand-ai-guidelines",
+  "entityType": "university",
+  "entitySlug": "johns-hopkins-university",
+  "sourceUrl": "https://brand.jhu.edu/applying-the-brand/artificial-intelligence/",
+  "finalUrl": "https://brand.jhu.edu/applying-the-brand/artificial-intelligence/",
+  "rejectedAt": "2026-05-10T21:16:32.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "codex-artifact-repair",
+  "evidenceSnippet": "JHU Brand Artificial Intelligence Guidance",
+  "notes": "Brand/communications guidance, not teaching or academic policy evidence for this run."
+}

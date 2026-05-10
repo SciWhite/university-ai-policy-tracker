@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceRejectionId": "yale-sr-isps-blog",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://isps.yale.edu/news/blog/2024/03/did-ai-write-this-headline-yale-provides-training-to-use-chatgpt-for-social",
+  "rejectedAt": "2026-05-10T12:11:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Did AI Write This Headline? Yale Provides Training to Use ChatGPT",
+  "notes": "ISPS blog post about ChatGPT training, not an official policy page."
+}

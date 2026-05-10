@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-004",
+  "claimId": "CL-004",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_policy_extractor",
+  "notes": "Claim supported by official EPFL guidelines. AI plagiarism definition and detection policy clearly stated.",
+  "decidedAt": "2026-05-10T15:20:00Z"
+}

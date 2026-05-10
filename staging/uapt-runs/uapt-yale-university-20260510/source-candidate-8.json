@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceCandidateId": "yale-catalog-academic-dishonesty",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://catalog.yale.edu/handbook-instructors-undergraduates-yale-college/teaching/academic-dishonesty/",
+  "finalUrl": "https://catalog.yale.edu/handbook-instructors-undergraduates-yale-college/teaching/academic-dishonesty/",
+  "sourceTitle": "Academic Dishonesty - Handbook for Instructors",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:yale.edu \"ChatGPT\" \"academic integrity\"",
+  "discoveredAt": "2026-05-10T12:04:00.000Z",
+  "officialDomainConfidence": 0.97,
+  "aiRelevanceScore": 0.88,
+  "policySpecificityScore": 0.80,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:08:00.000Z",
+  "verificationNotes": "Official Yale catalog instructor handbook section on academic dishonesty with specific AI note. States AI use varies by course and is subject to instructor authority.",
+  "robotsPolicy": "respect"
+}

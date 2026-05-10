@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceCandidateId": "yale-provost-genai-guidelines",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+  "finalUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+  "sourceTitle": "Guidelines for the Use of Generative AI Tools",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:yale.edu \"generative AI\" policy students",
+  "discoveredAt": "2026-05-10T12:01:00.000Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:05:00.000Z",
+  "verificationNotes": "Official provost-level university-wide guidance on generative AI. Signed by Provost Scott A. Strobel, SVP Jack F. Callahan, and VP John P. Barden. Contains 6 policy guidelines on data protection, academic integrity, bias, security, and procurement.",
+  "robotsPolicy": "respect"
+}

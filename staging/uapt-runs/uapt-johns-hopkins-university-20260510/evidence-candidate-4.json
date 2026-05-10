@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "evidenceId": "jhu-evidence-4",
+  "claimId": "jhu-claim-4",
+  "sourceSnapshotId": "jhu-snapshot-teaching-generative-ai-guidance-hub",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "sourceTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+  "sourceLanguage": "en",
+  "snapshotHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",
+  "evidenceSnippetOriginal": "One prominent use case is in content creation and course development. These tools can assist instructional designers and educators in generating engaging and interactive course materials, ranging from automated quizzes and assessments to case studies and customized learning modules.",
+  "evidenceLocator": "What Are Generative AI Tools?",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+    "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/johns-hopkins-university.json",
+    "publisher": "Johns Hopkins University",
+    "retrievedAt": "2026-05-10T21:16:32.000Z",
+    "snapshotHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

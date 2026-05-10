@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "sourceRejectionId": "tum-rejection-use-ai-wisely-page",
+  "sourceCandidateId": "tum-prolehre-use-ai-wisely-page",
+  "entityType": "university",
+  "entitySlug": "technical-university-of-munich",
+  "sourceUrl": "https://www.prolehre.tum.de/en/prolehre/programs-services/teaching-development/use-ai-wisely/",
+  "finalUrl": "https://www.prolehre.tum.de/en/prolehre/programs-services/teaching-development/use-ai-wisely/",
+  "rejectedAt": "2026-05-10T20:44:45.340Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "local_reviewer",
+  "evidenceSnippet": "Use AI wisely",
+  "notes": "Landing page lacks enough source-specific policy detail; official PDF is retained as the evidence source."
+}

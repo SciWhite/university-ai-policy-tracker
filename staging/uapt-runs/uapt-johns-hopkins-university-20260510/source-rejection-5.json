@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "sourceRejectionId": "jhu-rejection-5",
+  "sourceCandidateId": "jhu-ai-strategy-blog",
+  "entityType": "university",
+  "entitySlug": "johns-hopkins-university",
+  "sourceUrl": "https://imagine.jhu.edu/blog/2025/07/28/the-next-chapter-in-ai-at-johns-hopkins-begins/",
+  "finalUrl": "https://imagine.jhu.edu/blog/2025/07/28/the-next-chapter-in-ai-at-johns-hopkins-begins/",
+  "rejectedAt": "2026-05-10T21:16:32.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "codex-artifact-repair",
+  "evidenceSnippet": "The next chapter in AI at Johns Hopkins begins",
+  "notes": "News/editorial content, not a source for policy claims in this run."
+}

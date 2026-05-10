@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-003",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "claimType": "teaching",
+  "claimText": "EPFL recommends that teachers make explicit to students what AI use is not legitimate in a course and what rules accompany AI tool use.",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-003"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "AI tools and Student Assessment",
+    "sourceUrl": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/epfl.json",
+    "publisher": "EPFL",
+    "retrievedAt": "2026-05-10T15:10:00Z",
+    "snapshotHash": "fba7ab5ff6baa8b705ec86e53353af3c699c78ed3d7b123580158d2b708ca8b8",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

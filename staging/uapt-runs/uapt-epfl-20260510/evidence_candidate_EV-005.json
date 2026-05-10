@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-005",
+  "claimId": "CL-005",
+  "sourceSnapshotId": "SS-003",
+  "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+  "finalUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+  "sourceTitle": "Guidelines for the use of AI in teaching at EPFL",
+  "sourceLanguage": "en",
+  "snapshotHash": "2760bf9bac8ea363745ebefdd8311c0baec550872423088f7c37e5a637463a7f",
+  "evidenceSnippetOriginal": "However, enterprise licenses such as Microsoft 365 Copilot via your EPFL account are currently not a secure solution for processing regulated data, because no data processing agreement has been signed by EPFL that would guarantee that data protection measures align with institutional needs or with Swiss legislation on personal data protection.",
+  "evidenceType": "official_source",
+  "relevance": 0.93,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidelines for the use of AI in teaching at EPFL",
+    "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/epfl.json",
+    "publisher": "EPFL",
+    "retrievedAt": "2026-05-10T15:10:00Z",
+    "snapshotHash": "2760bf9bac8ea363745ebefdd8311c0baec550872423088f7c37e5a637463a7f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

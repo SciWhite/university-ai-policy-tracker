@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "claimId": "tum-claim-4",
+  "entityType": "university",
+  "entitySlug": "technical-university-of-munich",
+  "claimType": "academic_integrity",
+  "claimText": "TUM ProLehre guidance says reliable control of AI use is difficult to impossible, and recommends designing assessments so unauthorized AI use does not provide a decisive advantage.",
+  "normalizedValue": "ai_use_control_difficult_design_assessments",
+  "sourceLanguage": "de",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "tum-evidence-4"
+  ],
+  "citation": {
+    "citationTitle": "Entscheidungshilfe für den KI-Einsatz in der Lehre",
+    "sourceUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/technical-university-of-munich.json",
+    "publisher": "Technical University of Munich",
+    "retrievedAt": "2026-05-10T20:44:45.340Z",
+    "snapshotHash": "aac26801e1a951ed2e23aa8936a98f510f00c21d933811221f0edaf4ee24d96f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

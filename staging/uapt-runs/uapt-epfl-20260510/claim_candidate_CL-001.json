@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-001",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "claimType": "academic_integrity",
+  "claimText": "EPFL requires students to disclose the use of AI tools in assessment work. EPFL rules (Lex 1.3.3, Article 4) require that all assessment material that is not the student's personal and original contribution must be recognizable as such.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-001"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Guidelines for using (Gen)AI in studying",
+    "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/epfl.json",
+    "publisher": "EPFL",
+    "retrievedAt": "2026-05-10T15:10:00Z",
+    "snapshotHash": "87edcd847e7da9072a61800e82df79c37f0eec2770af19d6ba733ee8a99fb396",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-001",
+  "sourceCandidateId": "SC-001",
+  "sourceUrl": "https://www.epfl.ch/about/vice-presidencies/vice-presidency-for-academic-affairs-vpa/tips-for-the-use-of-generative-ai-in-research-and-education/",
+  "finalUrl": "https://www.epfl.ch/about/vice-presidencies/vice-presidency-for-academic-affairs-vpa/tips-for-the-use-of-generative-ai-in-research-and-education/",
+  "attemptedAt": "2026-05-10T15:10:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2500,
+  "contentHash": "5eeaf435b05194c1df42edec4c82f305a9971d53eadf7ce1392453f738937014",
+  "normalizedTextStorageKey": "epfl-sc001-20260510.txt"
+}

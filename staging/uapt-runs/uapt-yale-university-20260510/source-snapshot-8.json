@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceSnapshotId": "yale-snapshot-8",
+  "sourceCandidateId": "yale-catalog-academic-dishonesty",
+  "fetchAttemptId": "yale-fetch-8",
+  "sourceUrl": "https://catalog.yale.edu/handbook-instructors-undergraduates-yale-college/teaching/academic-dishonesty/",
+  "finalUrl": "https://catalog.yale.edu/handbook-instructors-undergraduates-yale-college/teaching/academic-dishonesty/",
+  "sourceTitle": "Academic Dishonesty - Handbook for Instructors",
+  "sourceLanguage": "en",
+  "contentHash": "6c6927aa24affa230b5ceb4af47b3a08a59066c510d1513e0dce0673d3266c71",
+  "fetchedAt": "2026-05-10T12:22:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-yale-university-20260510/normalized/yale-catalog-academic.txt",
+  "rawArtifactPaths": []
+}

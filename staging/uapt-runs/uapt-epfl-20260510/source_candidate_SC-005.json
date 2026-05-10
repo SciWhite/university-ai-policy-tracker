@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-005",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+  "sourceTitle": "Artificial intelligence and scientific information",
+  "sourceType": "library_copyright",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:epfl.ch \"AI tools\" \"data\" \"privacy\"",
+  "discoveredAt": "2026-05-10T15:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.88,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T15:10:00Z",
+  "verificationNotes": "EPFL Library guidance on artificial intelligence and scientific information. Fetched successfully and retained as a source snapshot, but no approved claim was extracted in this run.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

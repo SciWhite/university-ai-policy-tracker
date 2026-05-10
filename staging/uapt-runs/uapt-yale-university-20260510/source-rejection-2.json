@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceRejectionId": "yale-sr-medicine-news",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://medicine.yale.edu/news-article/ai-tools-in-medical-education-and-health-care-climate-impact-and-sustainable-practices/",
+  "rejectedAt": "2026-05-10T12:10:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "AI Tools in Medical Education and Health Care: Climate Impact",
+  "notes": "Medical school news article, not a policy or guidance page."
+}

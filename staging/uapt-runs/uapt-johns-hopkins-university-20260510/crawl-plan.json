@@ -1,0 +1,34 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "planId": "jhu-plan-20260510",
+  "createdAt": "2026-05-10T21:16:32.000Z",
+  "createdBy": "codex-artifact-repair",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "johns-hopkins-university",
+      "sourceCandidateId": "jhu-teaching-generative-ai-guidance-hub",
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+      "sourceTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching",
+        "academic_integrity",
+        "privacy",
+        "assessment_guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Do not follow login-gated pages.",
+    "Do not fetch pages behind CAPTCHAs or paywalls."
+  ]
+}

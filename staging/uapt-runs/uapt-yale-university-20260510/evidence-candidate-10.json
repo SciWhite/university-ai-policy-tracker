@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "evidenceId": "yale-evidence-10",
+  "claimId": "yale-claim-10",
+  "sourceSnapshotId": "yale-snapshot-5",
+  "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+  "finalUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+  "sourceTitle": "Yale's AI Tools and Resources",
+  "sourceLanguage": "en",
+  "snapshotHash": "688e40fe08017e2e91008e9857dbd02a5828c7093f086e0d9eb4a1e517de516d",
+  "evidenceSnippetOriginal": "The Clarity Platform provides access to AI chatbots similar to OpenAI's ChatGPT or Microsoft Copilot Chat but housed within Yale's secure infrastructure... Available to: staff, faculty, and students.",
+  "evidenceLocator": "Yale AI Tools and Resources, Yale Provided Tools",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Yale's AI Tools and Resources",
+    "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:19:00.000Z",
+    "snapshotHash": "688e40fe08017e2e91008e9857dbd02a5828c7093f086e0d9eb4a1e517de516d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

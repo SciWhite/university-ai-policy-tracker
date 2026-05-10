@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-001",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "sourceUrl": "https://actu.epfl.ch/news/ai-can-help-students-learn-better-5/",
+  "finalUrl": "https://actu.epfl.ch/news/ai-can-help-students-learn-better-5/",
+  "rejectedAt": "2026-05-10T15:15:00Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw_agent",
+  "evidenceSnippet": "News article about AI in education. Not official policy or guidance.",
+  "notes": "EPFL news article - reports on AI education initiatives but is not official policy/guidance. Rejected per contract rules against news-only pages."
+}

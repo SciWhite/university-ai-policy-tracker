@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "sourceRejectionId": "tum-rejection-news-onetutor-ai-learning",
+  "sourceCandidateId": "tum-news-onetutor-ai-learning",
+  "entityType": "university",
+  "entitySlug": "technical-university-of-munich",
+  "sourceUrl": "https://www.tum.de/aktuelles/alle-meldungen/pressemitteilungen/details/erfolgreicher-lernen-mit-ki",
+  "finalUrl": "https://www.tum.de/aktuelles/alle-meldungen/pressemitteilungen/details/erfolgreicher-lernen-mit-ki",
+  "rejectedAt": "2026-05-10T20:44:45.340Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "local_reviewer",
+  "evidenceSnippet": "Start-up OneTutor unterstützt Studierende mit KI-gestütztem Chat und Quizzes.",
+  "notes": "Official news/press item, not a policy or guidance source for staged claims."
+}

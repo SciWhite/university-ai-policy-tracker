@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-004",
+  "claimId": "CL-004",
+  "sourceSnapshotId": "SS-003",
+  "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+  "finalUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+  "sourceTitle": "Guidelines for the use of AI in teaching at EPFL",
+  "sourceLanguage": "en",
+  "snapshotHash": "2760bf9bac8ea363745ebefdd8311c0baec550872423088f7c37e5a637463a7f",
+  "evidenceSnippetOriginal": "The use of AI-generated content in assignments without proper attribution is considered AI plagiarism. Tools that specifically aim to detect whether content was AI-generated (e.g., turnitin ) are not admissible as stand-alone evidence of AI plagiarism due to their high risk of false positives",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidelines for the use of AI in teaching at EPFL",
+    "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/epfl.json",
+    "publisher": "EPFL",
+    "retrievedAt": "2026-05-10T15:10:00Z",
+    "snapshotHash": "2760bf9bac8ea363745ebefdd8311c0baec550872423088f7c37e5a637463a7f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

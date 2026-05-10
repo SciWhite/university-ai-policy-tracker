@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "evidenceId": "jhu-evidence-5",
+  "claimId": "jhu-claim-5",
+  "sourceSnapshotId": "jhu-snapshot-teaching-generative-ai-guidance-hub",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "sourceTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+  "sourceLanguage": "en",
+  "snapshotHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",
+  "evidenceSnippetOriginal": "Although the benefits of generative AI tools in higher education are promising, approaching their implementation with care is necessary. Ethical considerations, such as bias detection and mitigation, should be addressed to ensure fairness and inclusivity.",
+  "evidenceLocator": "What Are Generative AI Tools?",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+    "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/johns-hopkins-university.json",
+    "publisher": "Johns Hopkins University",
+    "retrievedAt": "2026-05-10T21:16:32.000Z",
+    "snapshotHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

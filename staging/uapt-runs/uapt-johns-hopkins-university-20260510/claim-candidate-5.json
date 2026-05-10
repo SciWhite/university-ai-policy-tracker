@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "claimId": "jhu-claim-5",
+  "entityType": "university",
+  "entitySlug": "johns-hopkins-university",
+  "claimType": "other",
+  "claimText": "Johns Hopkins guidance says generative AI implementation in higher education should be approached carefully, including attention to bias detection, mitigation, fairness, inclusivity, and human intervention.",
+  "normalizedValue": "ethical_bias_human_intervention_caveat",
+  "sourceLanguage": "en",
+  "confidence": 0.88,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "jhu-evidence-5"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+    "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/johns-hopkins-university.json",
+    "publisher": "Johns Hopkins University",
+    "retrievedAt": "2026-05-10T21:16:32.000Z",
+    "snapshotHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

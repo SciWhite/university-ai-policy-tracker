@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceCandidateId": "yale-poorvu-guiding-principles",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://poorvucenter.yale.edu/guiding-principles-for-teaching-and-learning-with-ai",
+  "finalUrl": "https://poorvucenter.yale.edu/guiding-principles-for-teaching-and-learning-with-ai",
+  "sourceTitle": "Guiding Principles for Teaching and Learning with AI",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:yale.edu \"generative AI\" teaching guidance",
+  "discoveredAt": "2026-05-10T12:01:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.82,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:05:00.000Z",
+  "verificationNotes": "Official Poorvu Center page with guiding principles for AI in teaching and learning. Covers ownership, reflective discussions, ethical use, FERPA, and transparency.",
+  "robotsPolicy": "respect"
+}

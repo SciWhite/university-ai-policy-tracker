@@ -1,0 +1,33 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "reportId": "yale-university-report-20260510",
+  "title": "Yale University: AI Policy Crawl Report",
+  "generatedAt": "2026-05-10T12:50:00.000Z",
+  "draftPath": "content/reports/yale-university-20260510.mdx",
+  "summary": "Yale University has official AI guidance spanning provost-level data and academic-integrity expectations, Poorvu Center teaching and learning guidance, approved AI tools and data classification information, privacy/FERPA guidance, and academic dishonesty references. The approved staged claims are limited to official Yale pages and are marked agent_reviewed only.",
+  "referencedClaimIds": [
+    "yale-claim-1",
+    "yale-claim-2",
+    "yale-claim-3",
+    "yale-claim-4",
+    "yale-claim-5",
+    "yale-claim-6",
+    "yale-claim-7",
+    "yale-claim-8",
+    "yale-claim-9",
+    "yale-claim-10",
+    "yale-claim-11",
+    "yale-claim-12"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/yale-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

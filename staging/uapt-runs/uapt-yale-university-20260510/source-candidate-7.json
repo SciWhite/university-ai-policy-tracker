@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceCandidateId": "yale-poorvu-privacy-data",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+  "finalUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+  "sourceTitle": "Protecting Student Privacy and Your Data",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:yale.edu \"AI tools\" \"data\" \"privacy\"",
+  "discoveredAt": "2026-05-10T12:04:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.90,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:08:00.000Z",
+  "verificationNotes": "Official Poorvu Center page on FERPA compliance, data privacy, and instructor responsibility. Requires Yale-approved platforms and forbids requiring external accounts.",
+  "robotsPolicy": "respect"
+}

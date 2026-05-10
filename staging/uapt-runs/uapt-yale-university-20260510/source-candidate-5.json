@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceCandidateId": "yale-ai-tools-resources",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+  "finalUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+  "sourceTitle": "Yale's AI Tools and Resources",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ai.yale.edu \"AI\" tools students faculty",
+  "discoveredAt": "2026-05-10T12:03:00.000Z",
+  "officialDomainConfidence": 0.97,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.90,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:07:00.000Z",
+  "verificationNotes": "Official Yale AI portal listing approved tools with data classification levels. Includes Clarity Platform, Copilot Chat, Google Gemini, Consensus, GitHub Copilot, and more.",
+  "robotsPolicy": "respect"
+}

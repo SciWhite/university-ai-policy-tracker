@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceCandidateId": "yale-poorvu-ai-students",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://poorvucenter.yale.edu/learning/learning-resource-library/ai-guidance-for-students",
+  "finalUrl": "https://poorvucenter.yale.edu/learning/learning-resource-library/ai-guidance-for-students",
+  "sourceTitle": "AI Guidance for Students",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:yale.edu \"generative AI\" policy students",
+  "discoveredAt": "2026-05-10T12:02:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.93,
+  "policySpecificityScore": 0.83,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:06:00.000Z",
+  "verificationNotes": "Official Poorvu Center student-facing AI guidance. Covers course-level AI policies, citation requirements, AI detectors unreliability, and Yale-provided secure AI tools.",
+  "robotsPolicy": "respect"
+}

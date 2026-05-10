@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-002",
+  "sourceCandidateId": "SC-002",
+  "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+  "finalUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-using-ai-in-studying/",
+  "attemptedAt": "2026-05-10T15:10:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2800,
+  "contentHash": "87edcd847e7da9072a61800e82df79c37f0eec2770af19d6ba733ee8a99fb396",
+  "normalizedTextStorageKey": "epfl-sc002-20260510.txt"
+}

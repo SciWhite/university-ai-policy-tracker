@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "evidenceId": "yale-evidence-7",
+  "claimId": "yale-claim-7",
+  "sourceSnapshotId": "yale-snapshot-6",
+  "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/academic",
+  "finalUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/academic",
+  "sourceTitle": "Academic Integrity and Detection",
+  "sourceLanguage": "en",
+  "snapshotHash": "bbac849b9594a8b457ebd0c8224ec47bebaf0c91521ec2c599bf202c7faeff14",
+  "evidenceSnippetOriginal": "Inserting AI-generated text into an assignment without proper attribution is a violation of academic integrity, and using AI tools in a manner that was not authorized by your instructor may also be considered a breach of academic integrity.",
+  "evidenceLocator": "Academic Integrity and Detection",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Academic Integrity and Detection",
+    "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/academic",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:20:00.000Z",
+    "snapshotHash": "bbac849b9594a8b457ebd0c8224ec47bebaf0c91521ec2c599bf202c7faeff14",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

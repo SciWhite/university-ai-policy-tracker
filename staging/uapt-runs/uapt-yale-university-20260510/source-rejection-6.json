@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceRejectionId": "yale-sr-cdo-event",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://cdo.som.yale.edu/events/2026/02/24/academic-integrity-in-the-ai-landscape/",
+  "rejectedAt": "2026-05-10T12:12:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Academic Integrity in the AI Landscape",
+  "notes": "Career development office event page, not a policy or guidance document."
+}

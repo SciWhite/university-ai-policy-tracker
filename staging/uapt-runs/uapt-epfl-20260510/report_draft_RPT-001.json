@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "report_draft",
+  "reportId": "RPT-001",
+  "title": "EPFL AI Policy Tracker Report - May 2026",
+  "generatedAt": "2026-05-10T15:30:00Z",
+  "draftPath": "content/reports/epfl-20260510.mdx",
+  "summary": "EPFL has published official guidance on generative AI use for students and teachers. Staged claims cover AI disclosure for assessment material, privacy warnings for confidential or personal information, course-level communication of AI-use rules, AI plagiarism and AI-detection limits, and the current limitation on Microsoft 365 Copilot for regulated data processing. Claims are agent-reviewed staged candidates only and are not canonical tracker conclusions.",
+  "referencedClaimIds": [
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004",
+    "CL-005"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/epfl.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official EPFL statement unless a linked source is EPFL's own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

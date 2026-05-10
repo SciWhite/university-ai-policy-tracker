@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "fetchAttemptId": "jhu-fetch-teaching-generative-ai-guidance-hub",
+  "sourceCandidateId": "jhu-teaching-generative-ai-guidance-hub",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+  "attemptedAt": "2026-05-10T21:16:32.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2400,
+  "contentHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",
+  "normalizedTextStorageKey": "jhu-teaching-generative-ai-guidance-hub-20260510.txt"
+}

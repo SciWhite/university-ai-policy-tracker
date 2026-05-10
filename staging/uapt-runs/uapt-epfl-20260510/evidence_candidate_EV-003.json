@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-003",
+  "claimId": "CL-003",
+  "sourceSnapshotId": "SS-004",
+  "sourceUrl": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+  "finalUrl": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+  "sourceTitle": "AI tools and Student Assessment",
+  "sourceLanguage": "en",
+  "snapshotHash": "fba7ab5ff6baa8b705ec86e53353af3c699c78ed3d7b123580158d2b708ca8b8",
+  "evidenceSnippetOriginal": "Since there is no ‘one-size-fits-all’ rule regarding the use of AI in assessment, it is recommended that teachers make explicit to students what kind of use is not legitimate in their course, and what rules accompany the use of AI tools.",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI tools and Student Assessment",
+    "sourceUrl": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/epfl.json",
+    "publisher": "EPFL",
+    "retrievedAt": "2026-05-10T15:10:00Z",
+    "snapshotHash": "fba7ab5ff6baa8b705ec86e53353af3c699c78ed3d7b123580158d2b708ca8b8",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

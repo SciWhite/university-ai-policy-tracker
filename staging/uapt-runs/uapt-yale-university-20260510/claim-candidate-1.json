@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "claimId": "yale-claim-1",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "claimType": "privacy",
+  "claimText": "Yale guidance says confidential, legally restricted, moderate-risk, and high-risk Yale data should not be entered into AI tools.",
+  "normalizedValue": "restricted_data_not_for_ai_tools",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "yale-evidence-1"
+  ],
+  "citation": {
+    "citationTitle": "Guidelines for the Use of Generative AI Tools",
+    "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:15:00.000Z",
+    "snapshotHash": "cf53048e544a5a3db3804780e6f5dee6ac15d4c8dc4fadf2ade6fbb0d858019c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

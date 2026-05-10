@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "source_discovery_trace",
+  "traceId": "SDT-001",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "startedAt": "2026-05-10T15:00:00Z",
+  "endedAt": "2026-05-10T15:30:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:epfl.ch \"generative AI\" policy students",
+      "domain": "epfl.ch",
+      "resultCount": 15
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:epfl.ch \"AI tools\" \"data\" \"privacy\"",
+      "domain": "epfl.ch",
+      "resultCount": 15
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:epfl.ch \"ChatGPT\" \"academic integrity\"",
+      "domain": "epfl.ch",
+      "resultCount": 4
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:epfl.ch \"intelligence artificielle générative\" règlement étudiants",
+      "domain": "epfl.ch",
+      "resultCount": 8
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:epfl.ch \"IA générative\" enseignement évaluation",
+      "domain": "epfl.ch",
+      "resultCount": 15
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:epfl.ch \"Copilot\" EPFL",
+      "domain": "epfl.ch",
+      "resultCount": 15
+    },
+    {
+      "method": "site_search",
+      "domain": "epfl.ch",
+      "resultCount": 6,
+      "notes": "Fetched and verified 6 official EPFL pages; 4 pages support approved claims and 2 are retained as contextual official sources."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "SC-001",
+    "SC-002",
+    "SC-003",
+    "SC-004",
+    "SC-005",
+    "SC-006"
+  ],
+  "rejectionIds": [
+    "SR-001",
+    "SR-002",
+    "SR-003"
+  ],
+  "summary": "Discovered EPFL AI guidance pages via multilingual site-restricted web searches (English and French). Verified and fetched 6 official epfl.ch sources. Extracted approved claims from 4 source snapshots, retained 2 additional official contextual snapshots, and rejected 3 URLs as research showcase, news, or low-specificity content."
+}

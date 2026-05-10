@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-004",
+  "sourceCandidateId": "SC-004",
+  "sourceUrl": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+  "finalUrl": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+  "attemptedAt": "2026-05-10T15:10:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2700,
+  "contentHash": "fba7ab5ff6baa8b705ec86e53353af3c699c78ed3d7b123580158d2b708ca8b8",
+  "normalizedTextStorageKey": "epfl-sc004-20260510.txt"
+}

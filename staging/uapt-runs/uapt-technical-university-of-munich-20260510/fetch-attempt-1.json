@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "fetchAttemptId": "tum-fetch-prolehre-ki-teaching-guidance-pdf",
+  "sourceCandidateId": "tum-prolehre-ki-teaching-guidance-pdf",
+  "sourceUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+  "finalUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+  "attemptedAt": "2026-05-10T20:44:45.340Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2800,
+  "contentHash": "aac26801e1a951ed2e23aa8936a98f510f00c21d933811221f0edaf4ee24d96f",
+  "normalizedTextStorageKey": "tum-prolehre-ki-teaching-guidance-pdf-20260510.txt"
+}

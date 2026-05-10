@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-johns-hopkins-university-20260510",
+  "fetchAttemptId": "jhu-fetch-blocked-3",
+  "sourceCandidateId": "jhu-wseit-generative-ai-information",
+  "sourceUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+  "finalUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+  "attemptedAt": "2026-05-10T21:16:32.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "blocked",
+  "errorReason": "HTTP response showed a JavaScript/cookie challenge; not bypassed.",
+  "durationMs": 900
+}

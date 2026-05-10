@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "evidenceId": "yale-evidence-1",
+  "claimId": "yale-claim-1",
+  "sourceSnapshotId": "yale-snapshot-1",
+  "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+  "finalUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+  "sourceTitle": "Guidelines for the Use of Generative AI Tools",
+  "sourceLanguage": "en",
+  "snapshotHash": "cf53048e544a5a3db3804780e6f5dee6ac15d4c8dc4fadf2ade6fbb0d858019c",
+  "evidenceSnippetOriginal": "Do not enter confidential or legally restricted data or any data that Yale's data classification policy identifies as moderate or high-risk into an AI tool.",
+  "evidenceLocator": "General guidelines, data protection",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidelines for the Use of Generative AI Tools",
+    "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:15:00.000Z",
+    "snapshotHash": "cf53048e544a5a3db3804780e6f5dee6ac15d4c8dc4fadf2ade6fbb0d858019c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

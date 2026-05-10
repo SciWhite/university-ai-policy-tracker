@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "fetchAttemptId": "yale-fetch-5",
+  "sourceCandidateId": "yale-ai-tools-resources",
+  "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+  "finalUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+  "attemptedAt": "2026-05-10T12:19:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3500,
+  "contentHash": "688e40fe08017e2e91008e9857dbd02a5828c7093f086e0d9eb4a1e517de516d",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-yale-university-20260510/normalized/yale-ai-tools.txt"
+}

@@ -1,0 +1,111 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "planId": "yale-plan-20260510",
+  "createdAt": "2026-05-10T12:00:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "yale-university",
+      "sourceCandidateId": "yale-provost-genai-guidelines",
+      "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+      "sourceTitle": "Guidelines for the Use of Generative AI Tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["data_protection", "academic_integrity", "security", "procurement"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "yale-university",
+      "sourceCandidateId": "yale-poorvu-guiding-principles",
+      "sourceUrl": "https://poorvucenter.yale.edu/guiding-principles-for-teaching-and-learning-with-ai",
+      "sourceTitle": "Guiding Principles for Teaching and Learning with AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "yale-university",
+      "sourceCandidateId": "yale-poorvu-ai-teachers",
+      "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers",
+      "sourceTitle": "AI Guidance for Teachers",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity", "assessment_guidance"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "yale-university",
+      "sourceCandidateId": "yale-poorvu-ai-students",
+      "sourceUrl": "https://poorvucenter.yale.edu/learning/learning-resource-library/ai-guidance-for-students",
+      "sourceTitle": "AI Guidance for Students",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "yale-university",
+      "sourceCandidateId": "yale-ai-tools-resources",
+      "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+      "sourceTitle": "Yale's AI Tools and Resources",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["approved_tools", "data_protection", "security_review"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "yale-university",
+      "sourceCandidateId": "yale-poorvu-academic-integrity",
+      "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/academic",
+      "sourceTitle": "Academic Integrity and Detection",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "assessment_guidance"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "yale-university",
+      "sourceCandidateId": "yale-poorvu-privacy-data",
+      "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+      "sourceTitle": "Protecting Student Privacy and Your Data",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["privacy", "data_protection"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "yale-university",
+      "sourceCandidateId": "yale-catalog-academic-dishonesty",
+      "sourceUrl": "https://catalog.yale.edu/handbook-instructors-undergraduates-yale-college/teaching/academic-dishonesty/",
+      "sourceTitle": "Academic Dishonesty - Handbook for Instructors",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "teaching"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Do not follow login-gated pages.",
+    "Do not fetch pages behind CAPTCHAs or paywalls."
+  ]
+}

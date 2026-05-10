@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "decisionId": "tum-review-2",
+  "claimId": "tum-claim-2",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "codex-artifact-repair",
+  "notes": "Approved after rebuilding the staged artifact from directly extracted text in the official TUM ProLehre PDF. Not human_reviewed and not canonical.",
+  "decidedAt": "2026-05-10T20:44:45.340Z"
+}

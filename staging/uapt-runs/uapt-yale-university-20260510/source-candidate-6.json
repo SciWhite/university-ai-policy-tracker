@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceCandidateId": "yale-poorvu-academic-integrity",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/academic",
+  "finalUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/academic",
+  "sourceTitle": "Academic Integrity and Detection",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:yale.edu \"AI\" \"academic integrity\"",
+  "discoveredAt": "2026-05-10T12:03:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.91,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:07:00.000Z",
+  "verificationNotes": "Official Poorvu Center page on academic integrity and AI detection. States AI text without attribution violates integrity, does not endorse AI detection software, and teaches citing AI outputs.",
+  "robotsPolicy": "respect"
+}

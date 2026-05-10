@@ -1,0 +1,89 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "traceId": "yale-discovery-trace-1",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "startedAt": "2026-05-10T12:00:00.000Z",
+  "endedAt": "2026-05-10T12:30:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:yale.edu \"generative AI\" policy students",
+      "domain": "yale.edu",
+      "resultCount": 10,
+      "notes": "Found provost.yale.edu guidelines, poorvucenter.yale.edu AI guidance, and ai.yale.edu portal."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:yale.edu \"AI\" \"academic integrity\"",
+      "domain": "yale.edu",
+      "resultCount": 10,
+      "notes": "Found Poorvu Center academic integrity and detection page, catalog.yale.edu instructor handbook."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:yale.edu \"ChatGPT\" \"academic integrity\"",
+      "domain": "yale.edu",
+      "resultCount": 10,
+      "notes": "Found Yale College academic regulations on AI, Poorvu plagiarism warnings, and summer session policy."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:yale.edu \"generative AI\" teaching guidance",
+      "domain": "yale.edu",
+      "resultCount": 10,
+      "notes": "Found Poorvu guiding principles, faculty guidance, student guidance pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:yale.edu \"AI tools\" \"data\" \"privacy\"",
+      "domain": "yale.edu",
+      "resultCount": 10,
+      "notes": "Found cybersecurity.yale.edu AI data protection, Poorvu privacy page, HIPAA AI notice, ai.yale.edu tools registry."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ai.yale.edu \"AI\" tools students faculty",
+      "domain": "ai.yale.edu",
+      "resultCount": 10,
+      "notes": "Found Yale AI tools registry with Clarity, Copilot Chat, Gemini, GitHub Copilot, and data classification levels."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:yale.edu \"syllabus\" \"generative AI\"",
+      "domain": "yale.edu",
+      "resultCount": 10,
+      "notes": "Found Poorvu sample syllabus statements and course assignment design resources."
+    },
+    {
+      "method": "site_search",
+      "query": "generative AI policy",
+      "domain": "ai.yale.edu",
+      "resultCount": 5,
+      "notes": "Confirmed ai.yale.edu guidance page linking to provost and Poorvu Center resources."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "yale-provost-genai-guidelines",
+    "yale-poorvu-guiding-principles",
+    "yale-poorvu-ai-teachers",
+    "yale-poorvu-ai-students",
+    "yale-ai-tools-resources",
+    "yale-poorvu-academic-integrity",
+    "yale-poorvu-privacy-data",
+    "yale-catalog-academic-dishonesty"
+  ],
+  "rejectionIds": [
+    "yale-sr-law-chatgpt",
+    "yale-sr-medicine-news",
+    "yale-sr-isps-blog",
+    "yale-sr-cybersecurity-campaign",
+    "yale-sr-summer-session",
+    "yale-sr-cdo-event",
+    "yale-sr-cpsc-course"
+  ],
+  "summary": "Comprehensive discovery via 8 search queries across yale.edu, provost.yale.edu, poorvucenter.yale.edu, ai.yale.edu, cybersecurity.yale.edu, and catalog.yale.edu. Found 8 verified official sources covering provost-level AI guidelines, teaching and learning principles, faculty guidance, student guidance, approved AI tools with data classification levels, academic integrity and detection policy, privacy and FERPA compliance, and instructor handbook on academic dishonesty. 7 sources rejected as news, events, blogs, course pages, or campaign pages."
+}

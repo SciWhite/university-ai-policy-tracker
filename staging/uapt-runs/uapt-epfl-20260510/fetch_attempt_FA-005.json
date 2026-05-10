@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-005",
+  "sourceCandidateId": "SC-005",
+  "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+  "finalUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+  "attemptedAt": "2026-05-10T15:10:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2500,
+  "normalizedTextStorageKey": "epfl-sc005-20260510.txt",
+  "contentHash": "2e05d621613cfe4dca9f7251ec1bdd2265f80f84f5b2a14824ae580fd0072688"
+}

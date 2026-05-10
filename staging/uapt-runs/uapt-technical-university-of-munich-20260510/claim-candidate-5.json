@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "claimId": "tum-claim-5",
+  "entityType": "university",
+  "entitySlug": "technical-university-of-munich",
+  "claimType": "teaching",
+  "claimText": "TUM ProLehre guidance says students often need targeted training in competent AI use, including AI functions, limits, common errors, biases, misinformation, and critical evaluation of AI outputs.",
+  "normalizedValue": "train_students_on_ai_limits_biases_misinformation",
+  "sourceLanguage": "de",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "tum-evidence-5"
+  ],
+  "citation": {
+    "citationTitle": "Entscheidungshilfe für den KI-Einsatz in der Lehre",
+    "sourceUrl": "https://www.prolehre.tum.de/fileadmin/w00btq/www/Angebote_Broschueren_Handreichungen/Handreichungen/Entscheidungshilfe_KI-Einsatz_in_der_Lehre_v2.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/technical-university-of-munich.json",
+    "publisher": "Technical University of Munich",
+    "retrievedAt": "2026-05-10T20:44:45.340Z",
+    "snapshotHash": "aac26801e1a951ed2e23aa8936a98f510f00c21d933811221f0edaf4ee24d96f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

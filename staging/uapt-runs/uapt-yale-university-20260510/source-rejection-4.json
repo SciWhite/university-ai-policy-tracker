@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceRejectionId": "yale-sr-cybersecurity-campaign",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://cybersecurity.yale.edu/know-your-risk-AI",
+  "rejectedAt": "2026-05-10T12:11:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Bee Cyber Smart with AI: It's as easy as A-B-C!",
+  "notes": "Cybersecurity awareness campaign page with events and quizzes, not a formal policy document. Policy content is already captured in the provost guidelines and data classification references."
+}

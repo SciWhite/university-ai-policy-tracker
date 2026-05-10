@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "claimId": "yale-claim-4",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "claimType": "procurement",
+  "claimText": "Yale guidance directs people considering an AI product to conduct an initial review for institutional security requirements.",
+  "normalizedValue": "ai_product_security_review",
+  "sourceLanguage": "en",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "yale-evidence-4"
+  ],
+  "citation": {
+    "citationTitle": "Guidelines for the Use of Generative AI Tools",
+    "sourceUrl": "https://provost.yale.edu/news/guidelines-use-generative-ai-tools",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:15:00.000Z",
+    "snapshotHash": "cf53048e544a5a3db3804780e6f5dee6ac15d4c8dc4fadf2ade6fbb0d858019c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

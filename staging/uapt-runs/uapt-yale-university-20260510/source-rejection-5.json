@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceRejectionId": "yale-sr-summer-session",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://summer.yale.edu/admitted-students/academic-integrity",
+  "rejectedAt": "2026-05-10T12:12:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "A note on Artificial Intelligence (AI) tools: Inserting AI-generated text into an assignment without proper attribution is a violation of academic integrity",
+  "notes": "Summer session page duplicates content from the Yale College undergraduate regulations already captured in the catalog source."
+}

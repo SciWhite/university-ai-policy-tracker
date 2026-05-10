@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceSnapshotId": "yale-snapshot-7",
+  "sourceCandidateId": "yale-poorvu-privacy-data",
+  "fetchAttemptId": "yale-fetch-7",
+  "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+  "finalUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+  "sourceTitle": "Protecting Student Privacy and Your Data",
+  "sourceLanguage": "en",
+  "contentHash": "43854432f3c071ffabf46609ad4e79ebe87c3e9a6cd35e1ec63d8872fe38900c",
+  "fetchedAt": "2026-05-10T12:21:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-yale-university-20260510/normalized/yale-poorvu-privacy.txt",
+  "rawArtifactPaths": []
+}

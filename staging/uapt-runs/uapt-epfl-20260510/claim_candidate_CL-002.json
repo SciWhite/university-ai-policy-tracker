@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-002",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "claimType": "privacy",
+  "claimText": "EPFL advises students not to input confidential, private or personal information into generative AI tools. When using generative AI tools, students are sharing data with private companies and lose control over it.",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-002"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Tips for the use of generative AI in research and education",
+    "sourceUrl": "https://www.epfl.ch/about/vice-presidencies/vice-presidency-for-academic-affairs-vpa/tips-for-the-use-of-generative-ai-in-research-and-education/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/epfl.json",
+    "publisher": "EPFL",
+    "retrievedAt": "2026-05-10T15:10:00Z",
+    "snapshotHash": "5eeaf435b05194c1df42edec4c82f305a9971d53eadf7ce1392453f738937014",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

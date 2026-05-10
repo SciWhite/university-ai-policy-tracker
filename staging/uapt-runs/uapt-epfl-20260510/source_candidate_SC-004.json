@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-004",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "sourceUrl": "https://www.epfl.ch/education/teaching/ai-tools-and-student-assessment/",
+  "sourceTitle": "AI tools and Student Assessment",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:epfl.ch \"ChatGPT\" \"academic integrity\"",
+  "discoveredAt": "2026-05-10T15:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.93,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T15:10:00Z",
+  "verificationNotes": "Official EPFL guidance on AI tools in student assessment. Covers appropriate/inappropriate use, detection issues, EPFL Lex 1.3.3 Article 4 disclosure requirements, and assessment design strategies.",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect"
+}

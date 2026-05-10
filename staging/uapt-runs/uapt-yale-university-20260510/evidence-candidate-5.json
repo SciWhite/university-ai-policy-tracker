@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "evidenceId": "yale-evidence-5",
+  "claimId": "yale-claim-5",
+  "sourceSnapshotId": "yale-snapshot-2",
+  "sourceUrl": "https://poorvucenter.yale.edu/guiding-principles-for-teaching-and-learning-with-ai",
+  "finalUrl": "https://poorvucenter.yale.edu/guiding-principles-for-teaching-and-learning-with-ai",
+  "sourceTitle": "Guiding Principles for Teaching and Learning with AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "2cd0d46503913e910859a794afe1c351afa0cde76be5e070238fab0f331128a7",
+  "evidenceSnippetOriginal": "Within each course, instructors at Yale have full authority to determine whether and how students may use AI when completing assignments.",
+  "evidenceLocator": "Guiding principles, course authority",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guiding Principles for Teaching and Learning with AI",
+    "sourceUrl": "https://poorvucenter.yale.edu/guiding-principles-for-teaching-and-learning-with-ai",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:16:00.000Z",
+    "snapshotHash": "2cd0d46503913e910859a794afe1c351afa0cde76be5e070238fab0f331128a7",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

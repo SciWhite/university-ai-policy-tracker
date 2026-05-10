@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-epfl-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "CL-005",
+  "entityType": "university",
+  "entitySlug": "epfl",
+  "claimType": "privacy",
+  "claimText": "EPFL guidance says enterprise licenses such as Microsoft 365 Copilot via EPFL account are currently not a secure solution for processing regulated data because EPFL has not signed a data processing agreement guaranteeing aligned data protection measures.",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "EV-005"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Guidelines for the use of AI in teaching at EPFL",
+    "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/epfl.json",
+    "publisher": "EPFL",
+    "retrievedAt": "2026-05-10T15:10:00Z",
+    "snapshotHash": "2760bf9bac8ea363745ebefdd8311c0baec550872423088f7c37e5a637463a7f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

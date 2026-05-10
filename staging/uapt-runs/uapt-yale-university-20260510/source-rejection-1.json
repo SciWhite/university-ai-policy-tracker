@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "sourceRejectionId": "yale-sr-law-chatgpt",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "sourceUrl": "https://law.yale.edu/yls-today/news/ai-and-chatgpt-push-students-and-faculty-take-deeper-look-law",
+  "rejectedAt": "2026-05-10T12:10:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "AI and ChatGPT Push Students and Faculty to Take a Deeper Look",
+  "notes": "Law school news article about AI impact, not a policy or guidance page."
+}

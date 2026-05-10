@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yale-university-20260510",
+  "claimId": "yale-claim-9",
+  "entityType": "university",
+  "entitySlug": "yale-university",
+  "claimType": "privacy",
+  "claimText": "Yale Poorvu Center guidance says classroom AI use must comply with FERPA and instructors cannot require students to create external accounts for tools Yale does not directly license.",
+  "normalizedValue": "ferpa_and_no_required_unlicensed_external_accounts",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "yale-evidence-9"
+  ],
+  "citation": {
+    "citationTitle": "Protecting Student Privacy and Your Data",
+    "sourceUrl": "https://poorvucenter.yale.edu/teaching/teaching-resource-library/ai-guidance-for-teachers/ai-course-assignment-design/protecting",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yale-university.json",
+    "publisher": "Yale University",
+    "retrievedAt": "2026-05-10T12:21:00.000Z",
+    "snapshotHash": "43854432f3c071ffabf46609ad4e79ebe87c3e9a6cd35e1ec63d8872fe38900c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

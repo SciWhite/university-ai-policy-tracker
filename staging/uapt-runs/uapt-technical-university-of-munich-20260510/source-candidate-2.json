@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-technical-university-of-munich-20260510",
+  "sourceCandidateId": "tum-news-onetutor-ai-learning",
+  "entityType": "university",
+  "entitySlug": "technical-university-of-munich",
+  "sourceUrl": "https://www.tum.de/aktuelles/alle-meldungen/pressemitteilungen/details/erfolgreicher-lernen-mit-ki",
+  "finalUrl": "https://www.tum.de/aktuelles/alle-meldungen/pressemitteilungen/details/erfolgreicher-lernen-mit-ki",
+  "sourceTitle": "Erfolgreicher lernen mit KI",
+  "sourceLanguage": "de",
+  "sourceType": "official_news_advisory",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:tum.de KI Prüfung Studierende",
+  "discoveredAt": "2026-05-10T20:44:45.340Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.75,
+  "policySpecificityScore": 0.15,
+  "verificationStatus": "rejected",
+  "rejectionReason": "event_or_news_only",
+  "verificationNotes": "Official TUM news/press article about the OneTutor startup and AI-supported learning, not a policy or actionable guidance page.",
+  "robotsPolicy": "respect"
+}
