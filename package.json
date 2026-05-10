@@ -15,6 +15,7 @@
     "build": "pnpm db:generate && pnpm -r build",
     "lint": "pnpm -r lint",
     "check": "pnpm db:generate && pnpm validate:public-contract && pnpm validate:openclaw-artifacts && pnpm audit:public-data && pnpm typecheck && pnpm lint",
+    "smoke:universities-index": "tsx scripts/smoke-universities-index.ts",
     "typecheck": "pnpm -r typecheck",
     "audit:public-data": "tsx scripts/audit-public-data.ts",
     "validate:public-contract": "tsx scripts/validate-public-contract.ts",
