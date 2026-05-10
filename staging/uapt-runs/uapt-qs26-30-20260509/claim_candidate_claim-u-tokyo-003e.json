@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-u-tokyo-003e",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "claimType": "other",
+  "claimText": "UTokyo warns that using AI-generated results as-is may entail future legal risks related to copyright and design rights.",
+  "sourceLanguage": "en",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-u-tokyo-003e"
+  ],
+  "citation": {
+    "citationTitle": "Notification to Students on the Use of AI Tools in Classes (ver 1.0)",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+    "publisher": "University of Tokyo",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "dbccbf9afb2ac7d67ba02b804a842ef7e381fd755f58f22d91f8ec2daf32b79b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

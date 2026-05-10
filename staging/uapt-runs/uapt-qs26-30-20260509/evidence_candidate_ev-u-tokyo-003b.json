@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-u-tokyo-003b",
+  "claimId": "claim-u-tokyo-003b",
+  "sourceSnapshotId": "snap-u-tokyo-003",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+  "sourceTitle": "Notification to Students on the Use of AI Tools in Classes (ver 1.0)",
+  "sourceLanguage": "en",
+  "snapshotHash": "dbccbf9afb2ac7d67ba02b804a842ef7e381fd755f58f22d91f8ec2daf32b79b",
+  "evidenceSnippetOriginal": "The decision whether or not to allow the use of generative AI tools will depend on the class. This decision, along with the conditions for their use, is left to the discretion of individual instructors.",
+  "evidenceLocator": "Section: Use in Classes",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Notification to Students on the Use of AI Tools in Classes (ver 1.0)",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+    "publisher": "The University of Tokyo",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "dbccbf9afb2ac7d67ba02b804a842ef7e381fd755f58f22d91f8ec2daf32b79b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

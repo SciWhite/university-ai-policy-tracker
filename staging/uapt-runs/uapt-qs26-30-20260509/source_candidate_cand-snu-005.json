@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-snu-005",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+  "finalUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+  "sourceTitle": "AI와 연구·출판 윤리 (AI and Research/Publishing Ethics)",
+  "sourceLanguage": "ko",
+  "sourceType": "research_guidance",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "site:snu.ac.kr \"ChatGPT\" \"학술윤리\"",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.65,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "Search results confirm: research publishing ethics guide covering COPE guidelines on AI tools, ChatGPT in research.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-rej-004",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://www.anu.edu.au/news/all-news/chatgpt-and-other-forms-of-generative-ai",
+  "sourceTitle": "News article from 2023 about ANU's initial response to ChatGPT. Superseded by more current institutional guidance pages. News-only, not durable policy.",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-09T22:20:00.000Z",
+  "officialDomainConfidence": 0.3,
+  "aiRelevanceScore": 0.1,
+  "policySpecificityScore": 0.1,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "verificationNotes": "Auto-created for rejection reference cand-anu-rej-004",
+  "robotsPolicy": "respect"
+}

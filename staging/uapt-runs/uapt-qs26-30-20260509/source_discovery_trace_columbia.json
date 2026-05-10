@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-columbia-uapt-qs26-30",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "startedAt": "2026-05-09T22:17:00.000Z",
+  "endedAt": "2026-05-09T22:22:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "canonical_domain",
+      "domain": "columbia.edu",
+      "notes": "Primary domain: columbia.edu. Key subdomains: provost.columbia.edu, ai.ctl.columbia.edu, www.it.cuimc.columbia.edu, students.business.columbia.edu, www.law.columbia.edu, www.tc.columbia.edu, intranet.sps.columbia.edu, etc.cuit.columbia.edu"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:columbia.edu \"generative AI\" policy",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: Provost Generative AI Policy, CBS student policy, Law School interim policy, Provost AI resources hub, CUIMC IT guidance, TC guidance, SPS guidance."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:columbia.edu \"ChatGPT\" \"academic integrity\"",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: CTL AI tools learner perspectives, CUIT ChatGPT education page, CBS academic integrity, CS department article."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"Columbia University\" \"generative AI policy\" OR \"AI guidelines\"",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: Columbia University AI Guidelines hub (ai.ctl.columbia.edu), Columbia Spectator article, VerifyWise policy library reference."
+    },
+    {
+      "method": "site_search",
+      "domain": "provost.columbia.edu",
+      "notes": "Cloudflare WAF blocks HTTP fetch (403). Search results confirm: /content/office-senior-vice-provost/ai-policy (Generative AI Policy) and /content/generative-ai (AI resources hub)."
+    },
+    {
+      "method": "site_search",
+      "domain": "ai.ctl.columbia.edu",
+      "notes": "Verified: /explore/columbia-guidelines/ (HTTP 200, readable). Links to Provost policy, academic integrity, CUIT resources, best practices."
+    },
+    {
+      "method": "url_normalization",
+      "notes": "provost.columbia.edu blocked by Cloudflare WAF. ai.ctl.columbia.edu accessible. www.it.cuimc.columbia.edu accessible. www.law.columbia.edu accessible. students.business.columbia.edu blocked by Cloudflare."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "cand-columbia-001",
+    "cand-columbia-002",
+    "cand-columbia-003",
+    "cand-columbia-004",
+    "cand-columbia-005",
+    "cand-columbia-006",
+    "cand-columbia-007",
+    "cand-columbia-008"
+  ],
+  "rejectionIds": [
+    "rej-columbia-001",
+    "rej-columbia-002",
+    "rej-columbia-003"
+  ],
+  "summary": "Columbia has a comprehensive university-wide Generative AI Policy from the Office of the Provost, plus departmental implementations. Key sources: (1) Provost Generative AI Policy (provost.columbia.edu, Cloudflare-protected, needs browser); (2) Columbia University AI Guidelines hub (ai.ctl.columbia.edu, accessible); (3) CUIMC IT AI guidance (accessible); (4) Law School interim policy (accessible); (5) CBS student policy, TC guidance, SPS guidance (various access levels). The Provost policy is the primary university-wide source but requires browser access. ai.ctl.columbia.edu serves as the accessible hub linking to all Columbia AI resources."
+}

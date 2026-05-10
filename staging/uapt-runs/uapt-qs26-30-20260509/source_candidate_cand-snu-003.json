@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-snu-003",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://snurnd.snu.ac.kr/?q=board/bd011/view/12792",
+  "finalUrl": "https://snurnd.snu.ac.kr/?q=board/bd011/view/12792",
+  "sourceTitle": "서울대학교 AI 가이드라인 SNU AI Guidelines",
+  "sourceLanguage": "ko",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "\"서울대학교\" \"AI 지침\" OR \"AI 가이드라인\"",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:19:10Z",
+  "verificationNotes": "Upgraded from needs_browser after successful fetch by crawl-worker",
+  "robotsPolicy": "respect"
+}

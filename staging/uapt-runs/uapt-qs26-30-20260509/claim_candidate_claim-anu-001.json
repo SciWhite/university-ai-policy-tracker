@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-001",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "source_status",
+  "claimText": "ANU approved six institutional AI principles via Academic Board in June 2023, covering excellence/integrity, research engagement, clear guidance, AI literacy, access/privacy/security, and collaborative policy development.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-001"
+  ],
+  "citation": {
+    "citationTitle": "ANU Institutional AI Principles",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resources/anu-institutional-ai-principles/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "e1b0ca8c18b24537469a847921d1cade147da444a5d3b124525c62ae59a4925f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

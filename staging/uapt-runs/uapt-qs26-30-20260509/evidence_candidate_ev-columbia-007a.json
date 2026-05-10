@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-columbia-007a",
+  "claimId": "claim-columbia-007a",
+  "sourceSnapshotId": "snap-columbia-007",
+  "sourceUrl": "https://www.tc.columbia.edu/digitalfuturesinstitute/ai-in-education/artificial-intelligence-in-education/tc-guidance/",
+  "finalUrl": "https://www.tc.columbia.edu/digitalfuturesinstitute/ai-in-education/artificial-intelligence-in-education/tc-guidance/",
+  "sourceTitle": "TC Guidance | Digital Futures Institute (DFI)",
+  "sourceLanguage": "en",
+  "snapshotHash": "14733654c797304ae584168e41ff3b7626ffbc07a84b0c6a7780216c36561b27",
+  "evidenceSnippetOriginal": "Example 1: No Generative AI Use Permitted. Students are prohibited from using generative Artificial Intelligence (AI) tools to complete coursework or assignments for this class.",
+  "evidenceLocator": "Section: Example Syllabus Statement 1",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "TC Guidance | Digital Futures Institute (DFI)",
+    "sourceUrl": "https://www.tc.columbia.edu/digitalfuturesinstitute/ai-in-education/artificial-intelligence-in-education/tc-guidance/",
+    "publisher": "Columbia University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "14733654c797304ae584168e41ff3b7626ffbc07a84b0c6a7780216c36561b27",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-009b",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "research",
+  "claimText": "The ANU Library LibGuide catalogs major publisher policies on AI: ACM prohibits AI authorship but permits disclosed use; Nature, Science, Elsevier, IEEE, and others require disclosure of AI use in manuscripts.",
+  "sourceLanguage": "en",
+  "confidence": 0.8,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-009b"
+  ],
+  "citation": {
+    "citationTitle": "Referencing and generative AI - ANU LibGuide",
+    "sourceUrl": "https://libguides.anu.edu.au/c.php?g=960102&p=6969607",
+    "publisher": "ANU Library",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "0f552c03aa430982f5913d6fb10b66812f20fe669eabe2ee769bde2e0fc21665",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

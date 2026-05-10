@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-011a",
+  "claimId": "claim-anu-011a",
+  "sourceSnapshotId": "snap-anu-011",
+  "sourceUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+  "finalUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+  "sourceTitle": "AI Guidelines for CAP Students",
+  "sourceLanguage": "en",
+  "snapshotHash": "c67228d0669efc705a646637a03ea29ab21c27a1113b0f13b07c2ea980e37619",
+  "evidenceSnippetOriginal": "Generative AI is not banned at the ANU. However, that does not mean that all uses of these products and platforms are equally valid.",
+  "evidenceLocator": "Section: The challenge of generative AI",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Guidelines for CAP Students",
+    "sourceUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "c67228d0669efc705a646637a03ea29ab21c27a1113b0f13b07c2ea980e37619",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

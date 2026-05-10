@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-columbia-001a",
+  "claimId": "claim-columbia-001a",
+  "sourceSnapshotId": "snap-columbia-001",
+  "sourceUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+  "finalUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+  "sourceTitle": "Generative AI Policy - Office of the Provost - Columbia University",
+  "sourceLanguage": "en",
+  "snapshotHash": "637cfa940528544c0f8f799950e198caacf06f4ffeed437e4f71b5f20ba45219",
+  "evidenceSnippetOriginal": "This Generative AI policy governs the use of Generative AI tools by staff, faculty, students, and researchers. Covers information security, data privacy, copyright, academic integrity, bias.",
+  "evidenceLocator": "Source candidate verification notes (search snippet from Cloudflare-blocked page)",
+  "evidenceType": "official_source",
+  "relevance": 0.7,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Policy - Office of the Provost - Columbia University",
+    "sourceUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+    "publisher": "Columbia University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "637cfa940528544c0f8f799950e198caacf06f4ffeed437e4f71b5f20ba45219",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

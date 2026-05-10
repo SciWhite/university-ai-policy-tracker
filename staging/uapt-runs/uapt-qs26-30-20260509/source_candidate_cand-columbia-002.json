@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-columbia-002",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "sourceUrl": "https://ai.ctl.columbia.edu/explore/columbia-guidelines/",
+  "finalUrl": "https://ai.ctl.columbia.edu/explore/columbia-guidelines/",
+  "sourceTitle": "Columbia University AI Guidelines",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "\"Columbia University\" \"generative AI policy\" OR \"AI guidelines\"",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.6,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:22.000Z",
+  "verificationNotes": "HTTP 200, readable content. Columbia University AI Guidelines hub from CTL. Links to Provost policy, academic integrity resources, CUIT resources, best practices for responsible AI use. Central hub for Columbia AI resources.",
+  "robotsPolicy": "respect"
+}

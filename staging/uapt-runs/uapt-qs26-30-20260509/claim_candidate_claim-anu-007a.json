@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-007a",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "source_status",
+  "claimText": "ANU maintains a 'Generative AI and Assessment' resource collection providing step-by-step advice on designing assessments in the age of AI, covering assessment planning, evaluation, and approach determination.",
+  "sourceLanguage": "en",
+  "confidence": 0.6,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-007a"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI and Assessment - ANU Learning and Teaching",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/generative-ai-and-assessment/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "619f3a5b59f983e211f6c4da9fb11a74fe4b27cf6e8a11adc366cdd00928bdbb",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

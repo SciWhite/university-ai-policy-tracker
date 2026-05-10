@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-jhu-008",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "sourceUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+  "finalUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+  "sourceTitle": "Generative AI / CoPilot / ChatGPT Information - WSEIT",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:jhu.edu \"AI tools\" OR \"Copilot\" policy guidelines",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:19:10Z",
+  "verificationNotes": "Upgraded from needs_browser after successful fetch by crawl-worker",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-snu-004a",
+  "claimId": "claim-snu-004a",
+  "sourceSnapshotId": "snap-snu-004",
+  "sourceUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+  "finalUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+  "sourceTitle": "AI와 연구 활동 - SNU Library LibGuide",
+  "sourceLanguage": "ko",
+  "snapshotHash": "4ea76e38765e99a80e40a80bb057db4883fa8942fb467b093ffa0adb3e7fff4e",
+  "evidenceSnippetOriginal": "연구자들은 변화하는 시대에 맞게 학술 연구를 함에 있어 새로운 기술(AI)을 활용하여 연구 효율을 상향시키는 동시에, 연구 윤리를 지키며 책임 있는 AI 사용을 해야 합니다.",
+  "evidenceLocator": "LibGuide main content",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI와 연구 활동 - SNU Library LibGuide",
+    "sourceUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+    "publisher": "Seoul National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "4ea76e38765e99a80e40a80bb057db4883fa8942fb467b093ffa0adb3e7fff4e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "Researchers should use new AI technology to improve research efficiency while maintaining research ethics and responsible AI use."
+}

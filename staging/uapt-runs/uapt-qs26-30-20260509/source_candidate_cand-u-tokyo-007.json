@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-u-tokyo-007",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://www.u-tokyo.ac.jp/content/400235702.pdf",
+  "finalUrl": "https://www.u-tokyo.ac.jp/content/400235702.pdf",
+  "sourceTitle": "学生作成書類における生成 AI ポリシーについて (Generative AI Policy in Student-Created Documents)",
+  "sourceLanguage": "ja",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "site:u-tokyo.ac.jp \"生成AI\" ポリシー OR ガイドライン",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "PDF on www.u-tokyo.ac.jp. UTokyo Global Education Center policy on generative AI in student-created documents (2023.5.17). Official PDF.",
+  "robotsPolicy": "respect"
+}

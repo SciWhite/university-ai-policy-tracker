@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-u-tokyo-001f",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "claimType": "privacy",
+  "claimText": "UTokyo instructs faculty not to input exam questions directly into generative AI tools, as exams are highly confidential documents.",
+  "sourceLanguage": "ja",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-u-tokyo-001f"
+  ],
+  "citation": {
+    "citationTitle": "AIツールの授業における利用について（ver. 1.0）",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/docs/ai-tools-in-classes/",
+    "publisher": "東京大学",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "a2d2b0215bffee212da1f1ac8327c3005394815ca2e83d64ceb82da219300ca3",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

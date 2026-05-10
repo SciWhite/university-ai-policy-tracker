@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-u-tokyo-006",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+  "sourceTitle": "生成AI関連情報 - utelecon",
+  "sourceLanguage": "ja",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "site:u-tokyo.ac.jp \"生成AI\" ポリシー OR ガイドライン",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.55,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "Generative AI information hub on utelecon. Links to security guidelines, AI service policy, Chatbot UI info, AI tools policies. Central reference page.",
+  "robotsPolicy": "respect"
+}

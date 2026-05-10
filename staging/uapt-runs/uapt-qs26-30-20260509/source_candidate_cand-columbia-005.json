@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-columbia-005",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+  "finalUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+  "sourceTitle": "AI and Generative Technology Use at CUIMC",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:columbia.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:15.000Z",
+  "verificationNotes": "HTTP 200, readable content. CUIMC supplemental IT guidance on responsible AI use. References Columbia's Generative AI Policy. Covers healthcare regulatory compliance, sensitive information safeguarding, data classification policy. Links to clinical care and education/training guidelines.",
+  "robotsPolicy": "respect"
+}

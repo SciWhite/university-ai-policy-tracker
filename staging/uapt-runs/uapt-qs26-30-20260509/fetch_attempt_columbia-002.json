@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-columbia-002",
+  "sourceCandidateId": "cand-columbia-002",
+  "sourceUrl": "https://ai.ctl.columbia.edu/explore/columbia-guidelines/",
+  "finalUrl": "https://ai.ctl.columbia.edu/explore/columbia-guidelines/",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1645,
+  "contentHash": "fecc9e9b8b4b43144a67be761f61bb13ca7eb11de76a95098c57d3b38069f548",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-columbia-002.txt"
+}

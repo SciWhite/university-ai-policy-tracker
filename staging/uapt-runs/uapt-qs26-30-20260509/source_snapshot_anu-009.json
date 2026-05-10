@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-anu-009",
+  "sourceCandidateId": "cand-anu-009",
+  "fetchAttemptId": "fetch-anu-009",
+  "sourceUrl": "https://libguides.anu.edu.au/c.php?g=960102&p=6969607",
+  "finalUrl": "https://libguides.anu.edu.au/c.php?g=960102&p=6969607",
+  "sourceTitle": "Referencing and generative AI - ANU LibGuide",
+  "sourceLanguage": "en",
+  "contentHash": "0f552c03aa430982f5913d6fb10b66812f20fe669eabe2ee769bde2e0fc21665",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-009.txt",
+  "rawArtifactPaths": []
+}

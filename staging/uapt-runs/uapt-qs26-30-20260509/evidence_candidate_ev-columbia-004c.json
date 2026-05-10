@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-columbia-004c",
+  "claimId": "claim-columbia-004c",
+  "sourceSnapshotId": "snap-columbia-004",
+  "sourceUrl": "https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai",
+  "finalUrl": "https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai",
+  "sourceTitle": "Columbia Law School Interim Policy on Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "7306eb84857945d64e1727f7f7e15e4c3ff64e4f60d2a0fb93e0ae6226f0999f",
+  "evidenceSnippetOriginal": "Students may use Generative AI to aid in studying, brainstorming, or to identify typographical errors.",
+  "evidenceLocator": "Section: Policy Text - Permitted uses",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Columbia Law School Interim Policy on Generative AI",
+    "sourceUrl": "https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai",
+    "publisher": "Columbia University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "7306eb84857945d64e1727f7f7e15e4c3ff64e4f60d2a0fb93e0ae6226f0999f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

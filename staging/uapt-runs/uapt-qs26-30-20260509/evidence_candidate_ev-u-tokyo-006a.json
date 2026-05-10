@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-u-tokyo-006a",
+  "claimId": "claim-u-tokyo-006a",
+  "sourceSnapshotId": "snap-u-tokyo-006",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+  "sourceTitle": "生成AI関連情報 - utelecon",
+  "sourceLanguage": "ja",
+  "snapshotHash": "aa11e592ae53358ad1ea4849becdaf72a5a612ed14b52b11ff5df5f07112750f",
+  "evidenceSnippetOriginal": "東京大学で全学的に契約している生成AIサービスの中で，チャット形式のものとして，主に以下の2つのサービスがあります: Gemini, Microsoft 365 Copilot Chat. なおよくお問合せいただきますが，ChatGPTについては全学での契約はありません。",
+  "evidenceLocator": "Section: Chat services",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "生成AI関連情報 - utelecon",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+    "publisher": "The University of Tokyo",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "aa11e592ae53358ad1ea4849becdaf72a5a612ed14b52b11ff5df5f07112750f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "Among university-wide contracted generative AI chat services, UTokyo primarily offers Gemini and Microsoft 365 Copilot Chat. Note: there is no university-wide ChatGPT contract."
+}

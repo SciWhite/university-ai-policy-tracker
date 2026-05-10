@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-u-tokyo-005",
+  "sourceCandidateId": "cand-u-tokyo-005",
+  "fetchAttemptId": "fetch-u-tokyo-005",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/",
+  "sourceTitle": "Policies and Guidelines - utelecon",
+  "sourceLanguage": "en",
+  "contentHash": "7660b6c92219ee4b160f1ad493076ce9d65715193c1ab4f8bb8e621b14cf87fa",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-u-tokyo-005.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-005a",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "academic_integrity",
+  "claimText": "At ANU, using AI-generated content when not permitted and claiming authorship without acknowledgment constitutes a breach of academic integrity.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-005a"
+  ],
+  "citation": {
+    "citationTitle": "FAQs about AI",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "789884f8c5a05e1f96f324479daea3e2596bbb344161fd16c1a3344b9573b246",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

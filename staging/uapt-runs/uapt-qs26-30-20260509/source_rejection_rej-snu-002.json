@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-snu-002",
+  "sourceCandidateId": "cand-snu-rej-002",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://aiis.snu.ac.kr/bbs/board.php?bo_table=sub5_1&wr_id=471",
+  "finalUrl": "https://aiis.snu.ac.kr/bbs/board.php?bo_table=sub5_1&wr_id=471",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "crawl-designer",
+  "notes": "AIIS symposium event page on ethical/legal aspects of generative AI. Event-only, not institutional policy."
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-u-tokyo-001",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/docs/ai-tools-in-classes/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/docs/ai-tools-in-classes/",
+  "sourceTitle": "AIツールの授業における利用について（ver. 1.0）",
+  "sourceLanguage": "ja",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "site:u-tokyo.ac.jp \"生成AI\" ポリシー OR ガイドライン",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:21.000Z",
+  "verificationNotes": "HTTP 200, readable content. Official UTokyo policy (April 2023) on AI tools in classes. Detailed faculty guidance: test your assignments with ChatGPT, state your AI stance per class, explain learning goals, design AI-resistant assessments. Does not ban AI tools outright.",
+  "robotsPolicy": "respect"
+}

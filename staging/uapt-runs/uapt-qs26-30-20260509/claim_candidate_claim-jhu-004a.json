@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-jhu-004a",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "claimType": "source_status",
+  "claimText": "JHU Engineering's Center for Teaching and Learning Design provides school-specific guidance on student use of generative AI.",
+  "sourceLanguage": "en",
+  "confidence": 0.6,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-jhu-004a"
+  ],
+  "citation": {
+    "citationTitle": "Student Use of Generative AI - Johns Hopkins Engineering CTLD",
+    "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/student-use-of-generative-ai/",
+    "publisher": "Johns Hopkins Engineering",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "572ab8335e236a8c235b30abb9324ff4a7844b311325352eba0dbbf2f76f1bbd",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

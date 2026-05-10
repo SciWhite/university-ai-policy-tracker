@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-anu-005",
+  "sourceCandidateId": "cand-anu-rej-005",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://anulib.anu.edu.au/news-events/news/ai-scholarly-publishing-and-best-practice",
+  "finalUrl": "https://anulib.anu.edu.au/news-events/news/ai-scholarly-publishing-and-best-practice",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "crawl-designer",
+  "notes": "Library news article about AI scholarly publishing guide. News-only, links to the guide but is not itself policy content."
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-u-tokyo-003",
+  "sourceCandidateId": "cand-u-tokyo-003",
+  "fetchAttemptId": "fetch-u-tokyo-003",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+  "sourceTitle": "Notification to Students on the Use of AI Tools in Classes (ver 1.0)",
+  "sourceLanguage": "en",
+  "contentHash": "dbccbf9afb2ac7d67ba02b804a842ef7e381fd755f58f22d91f8ec2daf32b79b",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-u-tokyo-003.txt",
+  "rawArtifactPaths": []
+}

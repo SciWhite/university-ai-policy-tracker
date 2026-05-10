@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-anu-008",
+  "sourceCandidateId": "cand-anu-008",
+  "fetchAttemptId": "fetch-anu-008",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/ai-essentials/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resource-collection/ai-essentials/",
+  "sourceTitle": "AI Essentials - ANU Learning and Teaching",
+  "sourceLanguage": "en",
+  "contentHash": "262332f55b5682ca4cc16b8dd5ba713b56ac063c9654d65e3d9d6f012507cea9",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-008.txt",
+  "rawArtifactPaths": []
+}

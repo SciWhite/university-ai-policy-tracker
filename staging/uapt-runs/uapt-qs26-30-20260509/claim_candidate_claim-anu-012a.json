@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-012a",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "source_status",
+  "claimText": "ANU published a PDF FAQ document 'Chat GPT and other generative AI tools: What ANU academics need to know' covering ChatGPT introduction, assessment impact, and institutional response (content also referenced in ANU's blog post).",
+  "sourceLanguage": "en",
+  "confidence": 0.6,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-012a"
+  ],
+  "citation": {
+    "citationTitle": "Chat GPT and other generative AI tools: What ANU academics need to know (PDF)",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/wp-content/uploads/2024/06/Chat_GPT_FAQ-1.pdf",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "9b6964b1e0bb6f87afb1dc13e1d006206e3536cc84aaded5e0a694e0761927d0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

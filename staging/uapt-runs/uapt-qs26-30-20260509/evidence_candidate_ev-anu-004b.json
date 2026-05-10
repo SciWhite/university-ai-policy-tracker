@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-004b",
+  "claimId": "claim-anu-004b",
+  "sourceSnapshotId": "snap-anu-004",
+  "sourceUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+  "finalUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+  "sourceTitle": "Guide for students: best practice when using Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "b5616e0b939d44603d47e4ff7f21cbd0c0df79b2b24c97b9bc447f6af2ec432f",
+  "evidenceSnippetOriginal": "Generative AI is a permissible learning tool in higher education and can be cited as an information source. However, it is important to note that Generative AI is not a replacement for your thinking and originality.",
+  "evidenceLocator": "Section: FAQs - How do I use generative AI responsibly?",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guide for students: best practice when using Generative AI",
+    "sourceUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "b5616e0b939d44603d47e4ff7f21cbd0c0df79b2b24c97b9bc447f6af2ec432f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-columbia-001",
+  "sourceCandidateId": "cand-columbia-001",
+  "fetchAttemptId": "fetch-columbia-001",
+  "sourceUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+  "finalUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+  "sourceTitle": "Generative AI Policy - Office of the Provost - Columbia University",
+  "sourceLanguage": "en",
+  "contentHash": "637cfa940528544c0f8f799950e198caacf06f4ffeed437e4f71b5f20ba45219",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-columbia-001.txt",
+  "rawArtifactPaths": []
+}

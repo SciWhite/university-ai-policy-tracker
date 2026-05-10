@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-columbia-005a",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "claimType": "ai_tool_treatment",
+  "claimText": "CUIMC provides HIPAA-compliant versions of ChatGPT Education and Microsoft Copilot as approved AI chatbot tools; workforce members must use CUIMC-issued accounts for compliance.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-columbia-005a"
+  ],
+  "citation": {
+    "citationTitle": "AI and Generative Technology Use at CUIMC",
+    "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+    "publisher": "Columbia University Irving Medical Center",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "5370b6d21d358ee223320340b907194d5b5f90a0698dd128fae2e4005d5432da",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

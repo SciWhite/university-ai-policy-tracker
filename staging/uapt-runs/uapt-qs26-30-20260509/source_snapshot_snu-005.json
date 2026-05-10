@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-snu-005",
+  "sourceCandidateId": "cand-snu-005",
+  "fetchAttemptId": "fetch-snu-005",
+  "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+  "finalUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+  "sourceTitle": "AI와 연구·출판 윤리 (AI and Research/Publishing Ethics)",
+  "sourceLanguage": "ko",
+  "contentHash": "014b2989d41c4b86415d870e423ccd92f0f7d1904c7af8b6ad8639c0234a6d31",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-snu-005.txt",
+  "rawArtifactPaths": []
+}

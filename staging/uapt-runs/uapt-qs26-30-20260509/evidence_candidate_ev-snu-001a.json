@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-snu-001a",
+  "claimId": "claim-snu-001a",
+  "sourceSnapshotId": "snap-snu-001",
+  "sourceUrl": "https://www.snu.ac.kr/about/downloads?md=v&bbsidx=166508",
+  "finalUrl": "https://www.snu.ac.kr/about/downloads?md=v&bbsidx=166508",
+  "sourceTitle": "서울대학교 AI 가이드라인 제정 전문 국문/영문",
+  "sourceLanguage": "ko",
+  "snapshotHash": "480d60a7490a14061097a96528d7a4beb39c2f0e072460b79d9b25f5774adaf1",
+  "evidenceSnippetOriginal": "서울대학교 AI 가이드라인 제정 전문 국문/영문 PDF download page on snu.ac.kr official downloads section.",
+  "evidenceLocator": "Page content (download page for official guidelines PDF)",
+  "evidenceType": "official_source",
+  "relevance": 0.6,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "서울대학교 AI 가이드라인 제정 전문 국문/영문",
+    "sourceUrl": "https://www.snu.ac.kr/about/downloads?md=v&bbsidx=166508",
+    "publisher": "Seoul National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "480d60a7490a14061097a96528d7a4beb39c2f0e072460b79d9b25f5774adaf1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

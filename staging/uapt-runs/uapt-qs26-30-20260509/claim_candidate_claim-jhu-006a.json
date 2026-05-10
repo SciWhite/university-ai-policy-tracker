@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-jhu-006a",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "claimType": "source_status",
+  "claimText": "JHU Engineering CTLD maintains an academic integrity page specifically addressing ChatGPT and AI-related concerns.",
+  "sourceLanguage": "en",
+  "confidence": 0.6,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-jhu-006a"
+  ],
+  "citation": {
+    "citationTitle": "Academic Integrity – Johns Hopkins Engineering CTLD",
+    "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/academic-integrity/",
+    "publisher": "Johns Hopkins Engineering",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "5a88c7f80de6e9acce21f00c9a0ae1f3b701c9ee922e6b143ba7e693120fc18d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-columbia-004a",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "claimType": "academic_integrity",
+  "claimText": "Columbia Law School prohibits generative AI use in exams, final papers, and for drafting any part of work submitted for credit, even if fully documented.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-columbia-004a"
+  ],
+  "citation": {
+    "citationTitle": "Columbia Law School Interim Policy on Generative AI",
+    "sourceUrl": "https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai",
+    "publisher": "Columbia Law School",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "7306eb84857945d64e1727f7f7e15e4c3ff64e4f60d2a0fb93e0ae6226f0999f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

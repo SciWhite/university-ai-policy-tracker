@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-003",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://www.anu.edu.au/privacy/training-and-resources/generative-ai-and-data-governance",
+  "finalUrl": "https://www.anu.edu.au/privacy/training-and-resources/generative-ai-and-data-governance",
+  "sourceTitle": "Generative AI and Data Governance",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:anu.edu.au \"generative AI\" policy",
+  "discoveredAt": "2026-05-09T22:18:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:03.000Z",
+  "verificationNotes": "HTTP 200, readable content. Covers AI data governance principles, privacy requirements, approved AI solutions, ERMS requirements, TEQSA alignment, transparency expectations. FAQs on personal info uploads and student assignment uploads.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-008a",
+  "claimId": "claim-anu-008a",
+  "sourceSnapshotId": "snap-anu-008",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/ai-essentials/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resource-collection/ai-essentials/",
+  "sourceTitle": "AI Essentials - ANU Learning and Teaching",
+  "sourceLanguage": "en",
+  "snapshotHash": "262332f55b5682ca4cc16b8dd5ba713b56ac063c9654d65e3d9d6f012507cea9",
+  "evidenceSnippetOriginal": "Make use of supported artificial intelligence tools at ANU while speaking to students about best practice.",
+  "evidenceLocator": "Page content",
+  "evidenceType": "official_source",
+  "relevance": 0.55,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Essentials - ANU Learning and Teaching",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/ai-essentials/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "262332f55b5682ca4cc16b8dd5ba713b56ac063c9654d65e3d9d6f012507cea9",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

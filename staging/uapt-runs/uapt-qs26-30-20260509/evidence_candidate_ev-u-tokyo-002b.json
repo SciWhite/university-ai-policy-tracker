@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-u-tokyo-002b",
+  "claimId": "claim-u-tokyo-002b",
+  "sourceSnapshotId": "snap-u-tokyo-002",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+  "sourceTitle": "当面の全学構成員向け生成AIサービス提供方針について",
+  "sourceLanguage": "ja",
+  "snapshotHash": "70b84ccd9528b73e2ad622e87e1cf4d68c91adf38b9525a394fe370216bf6154",
+  "evidenceSnippetOriginal": "東京大学では，生成AIツールの利用を一律に禁止することはせず，教育・研究等における利用の可能性を積極的に探るとともに，活用上の実践的な注意を発信していく方針を取っています．",
+  "evidenceLocator": "Opening paragraph",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "当面の全学構成員向け生成AIサービス提供方針について",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+    "publisher": "The University of Tokyo",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "70b84ccd9528b73e2ad622e87e1cf4d68c91adf38b9525a394fe370216bf6154",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "UTokyo does not uniformly prohibit generative AI tools, and takes a policy of actively exploring their potential in education and research while disseminating practical precautions."
+}

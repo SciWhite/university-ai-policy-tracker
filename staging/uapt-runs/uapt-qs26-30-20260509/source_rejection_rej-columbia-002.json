@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-columbia-002",
+  "sourceCandidateId": "cand-columbia-rej-002",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "sourceUrl": "https://www.columbiaspectator.com/news/2025/03/31/as-ais-influence-spreads-columbia-grapples-with-its-place-in-the-classroom/",
+  "finalUrl": "https://www.columbiaspectator.com/news/2025/03/31/as-ais-influence-spreads-columbia-grapples-with-its-place-in-the-classroom/",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "crawl-designer",
+  "notes": "Columbia Spectator student newspaper article. Not an official Columbia University source. Third-party journalism."
+}

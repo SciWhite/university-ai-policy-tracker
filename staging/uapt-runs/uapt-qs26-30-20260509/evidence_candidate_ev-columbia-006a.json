@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-columbia-006a",
+  "claimId": "claim-columbia-006a",
+  "sourceSnapshotId": "snap-columbia-006",
+  "sourceUrl": "https://students.business.columbia.edu/office-of-student-affairs/academic-advising-and-student-success/academic-integrity/generative-ai-policy",
+  "finalUrl": "https://students.business.columbia.edu/office-of-student-affairs/academic-advising-and-student-success/academic-integrity/generative-ai-policy",
+  "sourceTitle": "Generative AI Policy | Students - Columbia Business School",
+  "sourceLanguage": "en",
+  "snapshotHash": "8fde3b569dfdde970573015678382343ad177046a8b9567f41abf78d76eeddd1",
+  "evidenceSnippetOriginal": "As a general rule, students should disclose to faculty if they are using generative AI platforms and in what manner they are using them in coursework.",
+  "evidenceLocator": "Source candidate verification notes (search snippet)",
+  "evidenceType": "official_source",
+  "relevance": 0.7,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Policy | Students - Columbia Business School",
+    "sourceUrl": "https://students.business.columbia.edu/office-of-student-affairs/academic-advising-and-student-success/academic-integrity/generative-ai-policy",
+    "publisher": "Columbia University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "8fde3b569dfdde970573015678382343ad177046a8b9567f41abf78d76eeddd1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

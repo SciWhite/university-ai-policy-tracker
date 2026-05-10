@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-anu-001",
+  "sourceCandidateId": "cand-anu-rej-001",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://regnet.anu.edu.au/content-centre/article/news/future-generative-ai-policy-work",
+  "finalUrl": "https://regnet.anu.edu.au/content-centre/article/news/future-generative-ai-policy-work",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "crawl-designer",
+  "notes": "News article about a seminar on generative AI in policy work. Not ANU's own AI policy/guidance. External research showcase."
+}

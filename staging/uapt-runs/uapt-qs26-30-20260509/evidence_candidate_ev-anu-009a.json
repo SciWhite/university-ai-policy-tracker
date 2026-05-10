@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-009a",
+  "claimId": "claim-anu-009a",
+  "sourceSnapshotId": "snap-anu-009",
+  "sourceUrl": "https://libguides.anu.edu.au/c.php?g=960102&p=6969607",
+  "finalUrl": "https://libguides.anu.edu.au/c.php?g=960102&p=6969607",
+  "sourceTitle": "Referencing and generative AI - ANU LibGuide",
+  "sourceLanguage": "en",
+  "snapshotHash": "0f552c03aa430982f5913d6fb10b66812f20fe669eabe2ee769bde2e0fc21665",
+  "evidenceSnippetOriginal": "The policy outlines the acceptable use of generative AI tools in the preparation and submission of grant applications to ensure integrity and transparency. Disclosure: Applicants must disclose the use of generative AI in their applications.",
+  "evidenceLocator": "Section: Australian Research Council Policy",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Referencing and generative AI - ANU LibGuide",
+    "sourceUrl": "https://libguides.anu.edu.au/c.php?g=960102&p=6969607",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "0f552c03aa430982f5913d6fb10b66812f20fe669eabe2ee769bde2e0fc21665",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

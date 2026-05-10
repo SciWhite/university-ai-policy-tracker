@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-006d",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "academic_integrity",
+  "claimText": "ANU Law School warns that academic integrity findings related to AI misuse may have long-term consequences for law students, as misconduct must be disclosed when applying for admission to legal practice.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-006d"
+  ],
+  "citation": {
+    "citationTitle": "Use of Generative AI Tools in Assessment: Guidance for ANU Law Students",
+    "sourceUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+    "publisher": "ANU Law School",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "33a276e33e05ed354e65cd8ecc137385c1cf60fdeb318386013dd45e918079de",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

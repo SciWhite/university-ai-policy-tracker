@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-anu-005",
+  "sourceCandidateId": "cand-anu-005",
+  "fetchAttemptId": "fetch-anu-005",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+  "sourceTitle": "FAQs about AI",
+  "sourceLanguage": "en",
+  "contentHash": "789884f8c5a05e1f96f324479daea3e2596bbb344161fd16c1a3344b9573b246",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-005.txt",
+  "rawArtifactPaths": []
+}

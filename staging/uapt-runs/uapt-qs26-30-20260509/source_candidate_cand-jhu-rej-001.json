@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-jhu-rej-001",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "sourceUrl": "https://brand.jhu.edu/applying-the-brand/artificial-intelligence/",
+  "sourceTitle": "JHU Brand guidelines for AI use in communications/marketing. Not academic policy/guidance. Brand/marketing focused.",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-09T22:20:00.000Z",
+  "officialDomainConfidence": 0.3,
+  "aiRelevanceScore": 0.1,
+  "policySpecificityScore": 0.1,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "verificationNotes": "Auto-created for rejection reference cand-jhu-rej-001",
+  "robotsPolicy": "respect"
+}

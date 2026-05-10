@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-snu-003",
+  "sourceCandidateId": "cand-snu-rej-003",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://likesnu.snu.ac.kr/usr/article/articleDetail.do?article_id=SNUA_000000012491428",
+  "finalUrl": "https://likesnu.snu.ac.kr/usr/article/articleDetail.do?article_id=SNUA_000000012491428",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "crawl-designer",
+  "notes": "Research article on copyright law and research ethics regarding AI authorship. Academic publication, not SNU institutional policy."
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-snu-005c",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "claimType": "academic_integrity",
+  "claimText": "SNU Library provides an AI ethics checklist requiring researchers to cite AI sources, avoid rights infringement, not input sensitive information, cross-verify AI outputs, and use AI only as a supplementary tool.",
+  "sourceLanguage": "ko",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-snu-005c"
+  ],
+  "citation": {
+    "citationTitle": "AI와 연구·출판 윤리",
+    "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+    "publisher": "서울대학교 도서관",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "014b2989d41c4b86415d870e423ccd92f0f7d1904c7af8b6ad8639c0234a6d31",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-snu-001a",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "claimType": "source_status",
+  "claimText": "SNU hosts official Korean and English PDF versions of the SNU AI Guidelines on its downloads page, published January 1, 2026.",
+  "sourceLanguage": "ko",
+  "confidence": 0.6,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-snu-001a"
+  ],
+  "citation": {
+    "citationTitle": "서울대학교 AI 가이드라인 제정 전문 국문/영문",
+    "sourceUrl": "https://www.snu.ac.kr/about/downloads?md=v&bbsidx=166508",
+    "publisher": "서울대학교",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "480d60a7490a14061097a96528d7a4beb39c2f0e072460b79d9b25f5774adaf1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

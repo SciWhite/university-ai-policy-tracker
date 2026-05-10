@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-jhu-005",
+  "sourceCandidateId": "cand-jhu-005",
+  "fetchAttemptId": "fetch-jhu-005",
+  "sourceUrl": "https://ep.jhu.edu/faculty-staff/preparing-to-teach/faculty-facing-guidance-on-student-generative-ai-use/",
+  "finalUrl": "https://ep.jhu.edu/faculty-staff/preparing-to-teach/faculty-facing-guidance-on-student-generative-ai-use/",
+  "sourceTitle": "Faculty Facing Guidance on Student Generative AI-Use",
+  "sourceLanguage": "en",
+  "contentHash": "02b5fffac1d999f76ef262ff9603abd7c01c37a329966a06020ab02b01bf63c6",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-jhu-005.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-002",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resources/ai-for-learning-and-assessment/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resources/ai-for-learning-and-assessment/",
+  "sourceTitle": "AI for learning and assessment",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:anu.edu.au \"AI tools\" teaching",
+  "discoveredAt": "2026-05-09T22:18:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:02.000Z",
+  "verificationNotes": "HTTP 200, readable content. Living document with guidance on communicating AI expectations to students, downloadable slide pack for educators, reference to AAIN guidelines and TEQSA resources.",
+  "robotsPolicy": "respect"
+}

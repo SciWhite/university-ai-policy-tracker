@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-columbia-rej-001",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "sourceUrl": "https://intranet.sps.columbia.edu/content/use-artificial-intelligence-ai-guidance",
+  "sourceTitle": "SPS faculty AI guidance on intranet. Intranet pages typically require login. Inaccessible to crawler.",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-09T22:20:00.000Z",
+  "officialDomainConfidence": 0.3,
+  "aiRelevanceScore": 0.1,
+  "policySpecificityScore": 0.1,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "login_required",
+  "verificationNotes": "Auto-created for rejection reference cand-columbia-rej-001",
+  "robotsPolicy": "respect"
+}

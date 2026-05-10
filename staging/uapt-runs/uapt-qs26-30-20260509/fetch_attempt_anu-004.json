@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-anu-004",
+  "sourceCandidateId": "cand-anu-004",
+  "sourceUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+  "finalUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2043,
+  "contentHash": "b5616e0b939d44603d47e4ff7f21cbd0c0df79b2b24c97b9bc447f6af2ec432f",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-004.txt"
+}

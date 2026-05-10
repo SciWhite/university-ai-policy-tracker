@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-jhu-002",
+  "sourceCandidateId": "cand-jhu-002",
+  "fetchAttemptId": "fetch-jhu-002",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/guidelines/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/guidelines/",
+  "sourceTitle": "Guidelines - Teaching @ JHU",
+  "sourceLanguage": "en",
+  "contentHash": "83b6c5f4b3b3db7fe5bad6c193e6b9e8d5784f7467ba9d67325813b52fab52ba",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-jhu-002.txt",
+  "rawArtifactPaths": []
+}

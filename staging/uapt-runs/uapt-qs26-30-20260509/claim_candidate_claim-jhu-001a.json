@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-jhu-001a",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "claimType": "source_status",
+  "claimText": "JHU maintains a central Generative AI Tool Guidance hub on Teaching @ JHU covering teaching and learning applications.",
+  "sourceLanguage": "en",
+  "confidence": 0.65,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-jhu-001a"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+    "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+    "publisher": "Johns Hopkins University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "82d32124b88518a7571671a031979a2bbd02dfe0f2e63f94d2e3133e920cb237",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

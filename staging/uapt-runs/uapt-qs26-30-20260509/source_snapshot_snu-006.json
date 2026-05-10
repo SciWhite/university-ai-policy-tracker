@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-snu-006",
+  "sourceCandidateId": "cand-snu-006",
+  "fetchAttemptId": "fetch-snu-006",
+  "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079698",
+  "finalUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079698",
+  "sourceTitle": "AI 도구의 활용 (Use of AI Tools) - SNU Library",
+  "sourceLanguage": "ko",
+  "contentHash": "f625463cd1e0ac6ba684ccd1b0549a44f214718ff661b8fb9f88bd7bf8b3807d",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-snu-006.txt",
+  "rawArtifactPaths": []
+}

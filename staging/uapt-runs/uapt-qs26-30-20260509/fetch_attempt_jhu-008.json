@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-jhu-008",
+  "sourceCandidateId": "cand-jhu-008",
+  "sourceUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+  "finalUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 5000,
+  "contentHash": "284f3022cfec1d0d831414f77e670552492125d90669c904299fb4b053bde89d",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-jhu-008.txt"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-u-tokyo-003",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+  "sourceTitle": "Notification to Students on the Use of AI Tools in Classes (ver 1.0)",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:u-tokyo.ac.jp \"generative AI\" policy OR guidelines",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "HTTP 200 expected (English version of student notification). Search snippet: 'The University of Tokyo has provisionally established the following principles regarding the use of ChatGPT and other generative AI tools in educational settings'.",
+  "robotsPolicy": "respect"
+}

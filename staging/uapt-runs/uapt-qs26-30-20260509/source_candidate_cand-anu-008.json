@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-008",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/ai-essentials/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resource-collection/ai-essentials/",
+  "sourceTitle": "AI Essentials - ANU Learning and Teaching",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:anu.edu.au \"AI tools\" teaching",
+  "discoveredAt": "2026-05-09T22:18:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.55,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "HTTP 200 expected. Resource collection including ANU Institutional AI Principles, FAQs, AI for learning and assessment, Copilot/Adobe Firefly guides.",
+  "robotsPolicy": "respect"
+}

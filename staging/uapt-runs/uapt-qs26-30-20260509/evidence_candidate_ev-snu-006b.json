@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-snu-006b",
+  "claimId": "claim-snu-006b",
+  "sourceSnapshotId": "snap-snu-006",
+  "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079698",
+  "finalUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079698",
+  "sourceTitle": "AI 도구의 활용",
+  "sourceLanguage": "ko",
+  "snapshotHash": "f625463cd1e0ac6ba684ccd1b0549a44f214718ff661b8fb9f88bd7bf8b3807d",
+  "evidenceSnippetOriginal": "논문 작성시 생성형 AI의 사용을 인용하지 않는 경우 표절로 간주될 위험이 있습니다. 따라서 연구자들은 각 저널의 스타일에 맞춰 생성형 AI의 사용을 적절하게 인용해야 합니다.",
+  "evidenceLocator": "Section: AI citation in research",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI 도구의 활용",
+    "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079698",
+    "publisher": "Seoul National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "f625463cd1e0ac6ba684ccd1b0549a44f214718ff661b8fb9f88bd7bf8b3807d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "Not citing generative AI use when writing papers risks being considered plagiarism. Researchers must cite AI use appropriately according to each journal's style."
+}

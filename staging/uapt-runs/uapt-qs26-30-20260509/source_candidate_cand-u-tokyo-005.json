@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-u-tokyo-005",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/",
+  "sourceTitle": "Policies and Guidelines - utelecon - 東京大学",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:u-tokyo.ac.jp \"generative AI\" policy OR guidelines",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.75,
+  "policySpecificityScore": 0.5,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "Policies and guidelines index page on utelecon. Links to BYOD policy, generative AI information, AI tools notification, and other policies.",
+  "robotsPolicy": "respect"
+}

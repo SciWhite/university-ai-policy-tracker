@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-snu-004",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+  "finalUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+  "sourceTitle": "AI와 연구 활동 (AI and Research Activities) - SNU Library LibGuide",
+  "sourceLanguage": "ko",
+  "sourceType": "library_copyright",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "site:snu.ac.kr \"생성형 AI\" 정책",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.6,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "Search results confirm content: AI literacy guide covering generative AI definition, research applications. libguide.snu.ac.kr is an official SNU subdomain.",
+  "robotsPolicy": "respect"
+}

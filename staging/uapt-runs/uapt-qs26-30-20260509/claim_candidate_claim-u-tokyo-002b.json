@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-u-tokyo-002b",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "claimType": "ai_tool_treatment",
+  "claimText": "UTokyo does not uniformly prohibit generative AI tools; it actively explores their potential in education and research while providing practical usage guidance.",
+  "sourceLanguage": "ja",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-u-tokyo-002b"
+  ],
+  "citation": {
+    "citationTitle": "当面の全学構成員向け生成AIサービス提供方針について",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+    "publisher": "東京大学",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "70b84ccd9528b73e2ad622e87e1cf4d68c91adf38b9525a394fe370216bf6154",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-columbia-008",
+  "sourceCandidateId": "cand-columbia-008",
+  "sourceUrl": "https://etc.cuit.columbia.edu/news/best-practices-responsible-ai-use-columbia-university",
+  "finalUrl": "https://etc.cuit.columbia.edu/news/best-practices-responsible-ai-use-columbia-university",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 5000,
+  "contentHash": "ced0e7ebd38edcec1a443cc23aef4c58518805e439fbb4d2c559ebaea32aa7e4",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-columbia-008.txt"
+}

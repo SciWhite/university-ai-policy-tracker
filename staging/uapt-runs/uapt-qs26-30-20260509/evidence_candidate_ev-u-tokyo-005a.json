@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-u-tokyo-005a",
+  "claimId": "claim-u-tokyo-005a",
+  "sourceSnapshotId": "snap-u-tokyo-005",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/",
+  "sourceTitle": "Policies and Guidelines - utelecon",
+  "sourceLanguage": "en",
+  "snapshotHash": "7660b6c92219ee4b160f1ad493076ce9d65715193c1ab4f8bb8e621b14cf87fa",
+  "evidenceSnippetOriginal": "Policies and Guidelines index page on utelecon. Links to BYOD policy, generative AI information, AI tools notification, and other policies.",
+  "evidenceLocator": "Page content",
+  "evidenceType": "official_source",
+  "relevance": 0.6,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Policies and Guidelines - utelecon",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/",
+    "publisher": "The University of Tokyo",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "7660b6c92219ee4b160f1ad493076ce9d65715193c1ab4f8bb8e621b14cf87fa",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

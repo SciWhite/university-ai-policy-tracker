@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-snu-004",
+  "sourceCandidateId": "cand-snu-rej-004",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://science.snu.ac.kr/research/support/data?md=v&bbsidx=5375",
+  "finalUrl": "https://science.snu.ac.kr/research/support/data?md=v&bbsidx=5375",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "duplicate",
+  "checkedBy": "crawl-designer",
+  "notes": "Science faculty research data page announcing the SNU AI Guidelines. Duplicate of the main guidelines source (cand-snu-001). Just a reference/announcement."
+}

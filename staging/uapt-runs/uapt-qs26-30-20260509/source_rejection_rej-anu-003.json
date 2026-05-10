@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-anu-003",
+  "sourceCandidateId": "cand-anu-rej-003",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://openresearch-repository.anu.edu.au/entities/publication/df6ff277-3fb3-4798-a2ed-be84f7246269",
+  "finalUrl": "https://openresearch-repository.anu.edu.au/entities/publication/df6ff277-3fb3-4798-a2ed-be84f7246269",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "crawl-designer",
+  "notes": "Research paper about ChatGPT and academic integrity. Not ANU's own policy/guidance. Academic publication."
+}

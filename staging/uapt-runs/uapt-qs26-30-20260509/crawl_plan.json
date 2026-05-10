@@ -1,0 +1,732 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "crawl_plan",
+  "planId": "crawl-plan-uapt-qs26-30-20260509",
+  "createdAt": "2026-05-09T22:22:00.000Z",
+  "createdBy": "crawl-designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-001",
+      "sourceUrl": "https://learningandteaching.anu.edu.au/resources/anu-institutional-ai-principles/",
+      "sourceTitle": "ANU Institutional AI Principles",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "institutional_ai_principles",
+        "formal_policy",
+        "academic_board"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-002",
+      "sourceUrl": "https://learningandteaching.anu.edu.au/resources/ai-for-learning-and-assessment/",
+      "sourceTitle": "AI for learning and assessment",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "assessment",
+        "student_communication"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-003",
+      "sourceUrl": "https://www.anu.edu.au/privacy/training-and-resources/generative-ai-and-data-governance",
+      "sourceTitle": "Generative AI and Data Governance",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "data_governance",
+        "privacy",
+        "it_security",
+        "approved_tools"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-004",
+      "sourceUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+      "sourceTitle": "Guide for students: best practice when using Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "student_guidance",
+        "referencing"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-005",
+      "sourceUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+      "sourceTitle": "FAQs about AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "faq",
+        "ai_guidance",
+        "copilot",
+        "adobe_firefly"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-006",
+      "sourceUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+      "sourceTitle": "Use of Generative AI Tools in Assessment - ANU Law",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "assessment",
+        "law_school"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-007",
+      "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/generative-ai-and-assessment/",
+      "sourceTitle": "Generative AI and Assessment - ANU Learning and Teaching",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "assessment",
+        "resource_collection"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-008",
+      "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/ai-essentials/",
+      "sourceTitle": "AI Essentials - ANU Learning and Teaching",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "ai_essentials",
+        "resource_hub",
+        "copilot"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-009",
+      "sourceUrl": "https://libguides.anu.edu.au/c.php?g=960102&p=6969607",
+      "sourceTitle": "Referencing and generative AI - ANU LibGuide",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "library_copyright",
+        "referencing",
+        "grant_applications"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-010",
+      "sourceUrl": "https://learningandteaching.anu.edu.au/blog/chatgpt-what-anu-academics-need-to-know/",
+      "sourceTitle": "ChatGPT: What ANU academics need to know",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "chatgpt",
+        "academic_guidance",
+        "assessment_design"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-011",
+      "sourceUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+      "sourceTitle": "AI Guidelines for CAP Students",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "student_guidance",
+        "college_specific"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "anu",
+      "sourceCandidateId": "cand-anu-012",
+      "sourceUrl": "https://learningandteaching.anu.edu.au/wp-content/uploads/2024/06/Chat_GPT_FAQ-1.pdf",
+      "sourceTitle": "Chat GPT and other generative AI tools: What ANU academics need to know (PDF)",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "chatgpt",
+        "academic_guidance",
+        "faq_pdf"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "snu",
+      "sourceCandidateId": "cand-snu-001",
+      "sourceUrl": "https://www.snu.ac.kr/about/downloads?md=v&bbsidx=166508",
+      "sourceTitle": "「서울대학교 AI 가이드라인」 제정 전문,국문/영문 - 자료실",
+      "sourceLanguage": "ko",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "formal_policy",
+        "ai_guidelines",
+        "education",
+        "research",
+        "administration"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "snu",
+      "sourceCandidateId": "cand-snu-002",
+      "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+      "sourceTitle": "「서울대학교 AI 가이드라인」 제정 안내 - 보도자료",
+      "sourceLanguage": "ko",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "formal_policy",
+        "press_release",
+        "ai_guidelines"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "snu",
+      "sourceCandidateId": "cand-snu-003",
+      "sourceUrl": "https://snurnd.snu.ac.kr/?q=board/bd011/view/12792",
+      "sourceTitle": "서울대학교 AI 가이드라인 SNU AI Guidelines",
+      "sourceLanguage": "ko",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "formal_policy",
+        "ai_guidelines"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "snu",
+      "sourceCandidateId": "cand-snu-004",
+      "sourceUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+      "sourceTitle": "AI와 연구 활동 - SNU Library LibGuide",
+      "sourceLanguage": "ko",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "library",
+        "ai_literacy",
+        "research"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "snu",
+      "sourceCandidateId": "cand-snu-005",
+      "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+      "sourceTitle": "AI와 연구·출판 윤리 (AI and Research/Publishing Ethics)",
+      "sourceLanguage": "ko",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "research_ethics",
+        "publishing",
+        "cope_guidelines"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "snu",
+      "sourceCandidateId": "cand-snu-006",
+      "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079698",
+      "sourceTitle": "AI 도구의 활용 (Use of AI Tools) - SNU Library",
+      "sourceLanguage": "ko",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "ai_tools",
+        "research_guidance",
+        "journal_policies"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "snu",
+      "sourceCandidateId": "cand-snu-007",
+      "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+      "sourceTitle": "중앙도서관 구독 전자자료의 생성형 AI활용 관련 유의사항 안내",
+      "sourceLanguage": "ko",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "library_copyright",
+        "e_resources",
+        "generative_ai_restrictions"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "jhu",
+      "sourceCandidateId": "cand-jhu-001",
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+      "sourceTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "university_guidance",
+        "teaching",
+        "generative_ai"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "jhu",
+      "sourceCandidateId": "cand-jhu-002",
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/guidelines/",
+      "sourceTitle": "Guidelines - Teaching @ JHU",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "ferpa",
+        "disclosure_requirements"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "jhu",
+      "sourceCandidateId": "cand-jhu-003",
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+      "sourceTitle": "Syllabus Statements | Teaching @ JHU",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "syllabus_statements",
+        "teaching_guidance",
+        "ai_prohibition"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "jhu",
+      "sourceCandidateId": "cand-jhu-004",
+      "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/student-use-of-generative-ai/",
+      "sourceTitle": "Student Use of Generative AI - Johns Hopkins Engineering CTLD",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "engineering_school",
+        "student_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "jhu",
+      "sourceCandidateId": "cand-jhu-005",
+      "sourceUrl": "https://ep.jhu.edu/faculty-staff/preparing-to-teach/faculty-facing-guidance-on-student-generative-ai-use/",
+      "sourceTitle": "Faculty Facing Guidance on Student Generative AI-Use",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "faculty_guidance",
+        "ai_use_categories",
+        "academic_integrity"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "jhu",
+      "sourceCandidateId": "cand-jhu-006",
+      "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/academic-integrity/",
+      "sourceTitle": "Academic Integrity – Johns Hopkins Engineering CTLD",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "engineering_school",
+        "chatgpt"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "jhu",
+      "sourceCandidateId": "cand-jhu-008",
+      "sourceUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+      "sourceTitle": "Generative AI / CoPilot / ChatGPT Information - WSEIT",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "it_security",
+        "procurement",
+        "copilot",
+        "privacy"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "u-tokyo",
+      "sourceCandidateId": "cand-u-tokyo-001",
+      "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/docs/ai-tools-in-classes/",
+      "sourceTitle": "AIツールの授業における利用について（ver. 1.0）",
+      "sourceLanguage": "ja",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "ai_tools_policy",
+        "faculty_guidance"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "u-tokyo",
+      "sourceCandidateId": "cand-u-tokyo-002",
+      "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+      "sourceTitle": "当面の全学構成員向け生成AIサービス提供方針について",
+      "sourceLanguage": "ja",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "formal_policy",
+        "ai_service",
+        "microsoft_copilot",
+        "chatbot_ui"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "u-tokyo",
+      "sourceCandidateId": "cand-u-tokyo-003",
+      "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+      "sourceTitle": "Notification to Students on the Use of AI Tools in Classes (ver 1.0)",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "student_guidance",
+        "teaching_guidance",
+        "chatgpt"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "u-tokyo",
+      "sourceCandidateId": "cand-u-tokyo-004",
+      "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes/",
+      "sourceTitle": "Policy on the use of AI tools in classes - utelecon (English)",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "ai_tools_policy",
+        "english_version"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "u-tokyo",
+      "sourceCandidateId": "cand-u-tokyo-005",
+      "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/",
+      "sourceTitle": "Policies and Guidelines - utelecon",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "policies_index",
+        "guidelines_hub"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "u-tokyo",
+      "sourceCandidateId": "cand-u-tokyo-006",
+      "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+      "sourceTitle": "生成AI関連情報 - utelecon",
+      "sourceLanguage": "ja",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "generative_ai_hub",
+        "security_guidelines_ref",
+        "ai_service_ref"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "u-tokyo",
+      "sourceCandidateId": "cand-u-tokyo-007",
+      "sourceUrl": "https://www.u-tokyo.ac.jp/content/400235702.pdf",
+      "sourceTitle": "学生作成書類における生成 AI ポリシーについて",
+      "sourceLanguage": "ja",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "formal_policy",
+        "student_documents",
+        "global_education_center"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "sourceCandidateId": "cand-columbia-001",
+      "sourceUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+      "sourceTitle": "Generative AI Policy - Office of the Provost - Columbia University",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "formal_policy",
+        "provost",
+        "university_wide"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "sourceCandidateId": "cand-columbia-002",
+      "sourceUrl": "https://ai.ctl.columbia.edu/explore/columbia-guidelines/",
+      "sourceTitle": "Columbia University AI Guidelines",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "ai_guidelines",
+        "ctl_hub",
+        "resource_links"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "sourceCandidateId": "cand-columbia-003",
+      "sourceUrl": "https://provost.columbia.edu/content/generative-ai",
+      "sourceTitle": "Generative AI - Office of the Provost - Columbia University",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "ai_resources",
+        "research_guidance",
+        "confidential_data"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "sourceCandidateId": "cand-columbia-004",
+      "sourceUrl": "https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai",
+      "sourceTitle": "Columbia Law School Interim Policy on Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "formal_policy",
+        "law_school",
+        "default_prohibition",
+        "permitted_uses"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "sourceCandidateId": "cand-columbia-005",
+      "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+      "sourceTitle": "AI and Generative Technology Use at CUIMC",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "it_security_privacy",
+        "medical_center",
+        "healthcare_regulations"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "sourceCandidateId": "cand-columbia-006",
+      "sourceUrl": "https://students.business.columbia.edu/office-of-student-affairs/academic-advising-and-student-success/academic-integrity/generative-ai-policy",
+      "sourceTitle": "Generative AI Policy | Students - Columbia Business School",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "business_school",
+        "disclosure_requirements"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "sourceCandidateId": "cand-columbia-007",
+      "sourceUrl": "https://www.tc.columbia.edu/digitalfuturesinstitute/ai-in-education/artificial-intelligence-in-education/tc-guidance/",
+      "sourceTitle": "TC Guidance | Digital Futures Institute (DFI)",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "teachers_college",
+        "explicit_approval"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "sourceCandidateId": "cand-columbia-008",
+      "sourceUrl": "https://etc.cuit.columbia.edu/news/best-practices-responsible-ai-use-columbia-university",
+      "sourceTitle": "Best Practices for Responsible AI Use at Columbia - CUIT",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "it_guidance",
+        "responsible_use",
+        "cuit"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "All verified source candidates have been crawled",
+    "Budget exhausted or all high-priority sources covered",
+    "Cloudflare WAF blocks prevent access to primary sources without Playwright approval"
+  ]
+}

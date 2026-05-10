@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-002d",
+  "claimId": "claim-anu-002d",
+  "sourceSnapshotId": "snap-anu-002",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resources/ai-for-learning-and-assessment/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resources/ai-for-learning-and-assessment/",
+  "sourceTitle": "AI for learning and assessment",
+  "sourceLanguage": "en",
+  "snapshotHash": "c7252a03435cd57b4d1a2f7804921fe0f6cb8902fbd7072a2514e3610f660996",
+  "evidenceSnippetOriginal": "Whether AI is permitted for assessments will vary greatly across different assessment tasks, colleges and disciplines. Educators are advised to check with their College or ADE for any College-wide advice or guidance.",
+  "evidenceLocator": "Section: Using AI for assessment purposes",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI for learning and assessment",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resources/ai-for-learning-and-assessment/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "c7252a03435cd57b4d1a2f7804921fe0f6cb8902fbd7072a2514e3610f660996",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

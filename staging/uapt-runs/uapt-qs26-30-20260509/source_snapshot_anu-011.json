@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-anu-011",
+  "sourceCandidateId": "cand-anu-011",
+  "fetchAttemptId": "fetch-anu-011",
+  "sourceUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+  "finalUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+  "sourceTitle": "AI Guidelines for CAP Students",
+  "sourceLanguage": "en",
+  "contentHash": "c67228d0669efc705a646637a03ea29ab21c27a1113b0f13b07c2ea980e37619",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-011.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-010a",
+  "claimId": "claim-anu-010a",
+  "sourceSnapshotId": "snap-anu-010",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/blog/chatgpt-what-anu-academics-need-to-know/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/blog/chatgpt-what-anu-academics-need-to-know/",
+  "sourceTitle": "ChatGPT: What ANU academics need to know",
+  "sourceLanguage": "en",
+  "snapshotHash": "39ff7c8654292c8c3b2daf67e88f720c2499f6ffff58a1d1b3d55304447a6397",
+  "evidenceSnippetOriginal": "Minor changes to a range of relevant governance documents and academic integrity guidance for students are also being considered. Once approved, these changes are likely to require students to acknowledge any use of artificial intelligence in their work.",
+  "evidenceLocator": "Section: What's next?",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "ChatGPT: What ANU academics need to know",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/blog/chatgpt-what-anu-academics-need-to-know/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "39ff7c8654292c8c3b2daf67e88f720c2499f6ffff58a1d1b3d55304447a6397",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}
