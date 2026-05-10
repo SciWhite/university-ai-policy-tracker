@@ -26,6 +26,7 @@ const recordTabs = [
   { label: "Overview", href: "#overview" },
   { label: "Claims", href: "#claims" },
   { label: "Sources", href: "#sources" },
+  { label: "Changes", href: "#changes" },
   { label: "JSON", href: "#json" },
   { label: "Citation", href: "#citation" }
 ] as const;
@@ -88,6 +89,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             <a className="site-action" href={publicJsonUrl}>
               Public JSON
             </a>
+            <Link className="site-action" href={`/changes/${slug}`}>
+              Change log
+            </Link>
             <Link className="site-action" href="/citation">
               Citation rules
             </Link>
@@ -225,6 +229,33 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               ))}
             </div>
           </section>
+
+          <ReferenceBox
+            description="Source-check timeline and diff-style claim/evidence preview."
+            id="changes"
+            title="Change log"
+          >
+            <p>
+              View the public change record for this university, including
+              source snapshot hashes, claim review states, and a diff-style
+              preview of current source-backed evidence.
+            </p>
+            <div className="tag-row">
+              {publicSummary.lastCheckedAt ? (
+                <MetaLabel label="Last checked">
+                  {formatDate(publicSummary.lastCheckedAt)}
+                </MetaLabel>
+              ) : null}
+              {publicSummary.lastChangedAt ? (
+                <MetaLabel label="Last changed">
+                  {formatDate(publicSummary.lastChangedAt)}
+                </MetaLabel>
+              ) : null}
+              <Link className="site-action" href={`/changes/${slug}`}>
+                Open change log
+              </Link>
+            </div>
+          </ReferenceBox>
 
           <section className="record-section">
             <Link href="/universities">Back to universities</Link>

@@ -1,20 +1,19 @@
 import Link from "next/link";
 import { NO_ADVICE_BOUNDARY, PUBLIC_API_VERSION } from "@uapt/shared";
-import type { PublicEntitySummary } from "@uapt/shared";
 import { ApiEndpointRow } from "@/components/api-endpoint-row";
 import { DataList, DataListRow } from "@/components/data-list";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
-import {
-  getCatalogUniversities,
-  getPublicUniversitySummaryBySlug
-} from "@/lib/catalog";
+import { getChangeRecords, type ChangeRecord } from "@/lib/change-records";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const title = "Recent Changes | University AI Policy Tracker";
 const description =
   "Recent source checks and policy-change records with last checked dates, last changed dates, review states, and versioned public JSON links.";
+
+export const dynamic = "force-static";
+export const revalidate = false;
 
 export function generateMetadata() {
   const canonical = getAbsoluteSiteUrl("/changes");
@@ -33,26 +32,17 @@ export function generateMetadata() {
 }
 
 export default async function ChangesPage() {
-  const universities = await getCatalogUniversities();
-  const summaries = (
-    await Promise.all(
-      universities.map((university) =>
-        getPublicUniversitySummaryBySlug(university.slug)
-      )
-    )
-  )
-    .filter((summary): summary is PublicEntitySummary => Boolean(summary))
-    .sort(compareSummaryFreshness);
+  const records = await getChangeRecords();
   const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
   const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
-  const changedCount = summaries.filter((summary) => summary.lastChangedAt).length;
-  const checkedCount = summaries.filter((summary) => summary.lastCheckedAt).length;
-  const totalClaims = summaries.reduce(
-    (total, summary) => total + summary.claims.length,
+  const changedCount = records.filter((record) => record.lastChangedAt).length;
+  const checkedCount = records.filter((record) => record.lastCheckedAt).length;
+  const totalClaims = records.reduce(
+    (total, record) => total + record.claimCount,
     0
   );
-  const totalSources = summaries.reduce(
-    (total, summary) => total + summary.officialSources.length,
+  const totalSources = records.reduce(
+    (total, record) => total + record.sourceCount,
     0
   );
 
@@ -71,7 +61,7 @@ export default async function ChangesPage() {
 
       <section className="metrics-grid" aria-label="Recent changes summary">
         <div>
-          <span>{summaries.length}</span>
+          <span>{records.length}</span>
           <p>public university records</p>
         </div>
         <div>
@@ -104,47 +94,41 @@ export default async function ChangesPage() {
         <div className="section-heading">
           <h2>Change timeline</h2>
           <p>
-            {totalSources} official source attributions across {summaries.length}{" "}
+            {totalSources} official source attributions across {records.length}{" "}
             public records.
           </p>
         </div>
-        {summaries.length ? (
+        {records.length ? (
           <DataList className="timeline-list">
-            {summaries.map((summary) => {
-              const publicJsonUrl =
-                summary.apiUrl ??
-                getAbsoluteSiteUrl(
-                  `/api/public/${PUBLIC_API_VERSION}/universities/${summary.entity.slug}.json`
-                );
-              const primaryDate = summary.lastChangedAt ?? summary.lastCheckedAt;
+            {records.map((record) => {
+              const primaryDate = record.lastChangedAt ?? record.lastCheckedAt;
 
               return (
                 <DataListRow
                   actions={
                     <>
-                      <Link href={`/universities/${summary.entity.slug}`}>
+                      <Link href={record.changeUrl}>Change detail</Link>
+                      <Link href={record.universityUrl}>
                         University page
                       </Link>
-                      <a href={publicJsonUrl}>Public JSON</a>
+                      <a href={record.publicJsonUrl}>Public JSON</a>
                     </>
                   }
                   className="timeline-list__row"
-                  key={summary.entity.slug}
+                  key={record.slug}
                   metadata={
                     <>
-                      <StateLabel reviewState={summary.reviewState} />
-                      <MetaLabel label="Claims">{summary.claims.length}</MetaLabel>
-                      <MetaLabel label="Sources">
-                        {summary.officialSources.length}
-                      </MetaLabel>
-                      {summary.lastCheckedAt ? (
+                      <StateLabel reviewState={record.reviewState} />
+                      <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
+                      <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
+                      {record.lastCheckedAt ? (
                         <MetaLabel label="Checked">
-                          {formatDate(summary.lastCheckedAt)}
+                          {formatDate(record.lastCheckedAt)}
                         </MetaLabel>
                       ) : null}
-                      {summary.lastChangedAt ? (
+                      {record.lastChangedAt ? (
                         <MetaLabel label="Changed">
-                          {formatDate(summary.lastChangedAt)}
+                          {formatDate(record.lastChangedAt)}
                         </MetaLabel>
                       ) : null}
                     </>
@@ -153,8 +137,8 @@ export default async function ChangesPage() {
                   <p className="timeline-list__date">
                     {primaryDate ? formatDate(primaryDate) : "No public date yet"}
                   </p>
-                  <h2>{summary.entity.name}</h2>
-                  <p>{getChangeSummary(summary)}</p>
+                  <h2>{record.name}</h2>
+                  <p>{getChangeSummary(record)}</p>
                 </DataListRow>
               );
             })}
@@ -184,26 +168,12 @@ export default async function ChangesPage() {
   );
 }
 
-function compareSummaryFreshness(
-  left: PublicEntitySummary,
-  right: PublicEntitySummary
-): number {
-  return getFreshnessTime(right) - getFreshnessTime(left);
-}
-
-function getFreshnessTime(summary: PublicEntitySummary): number {
-  const value = summary.lastChangedAt ?? summary.lastCheckedAt;
-  return value ? new Date(value).getTime() : 0;
-}
-
-function getChangeSummary(summary: PublicEntitySummary): string {
-  const claimCount = summary.claims.length;
-  const sourceCount = summary.officialSources.length;
-  const changed = summary.lastChangedAt
-    ? ` The latest tracked changed date is ${formatDate(summary.lastChangedAt)}.`
+function getChangeSummary(record: ChangeRecord): string {
+  const changed = record.lastChangedAt
+    ? ` The latest tracked changed date is ${formatDate(record.lastChangedAt)}.`
     : " No changed date has been published yet.";
 
-  return `${summary.entity.name} has ${claimCount} ${pluralize("source-backed claim record", claimCount)} and ${sourceCount} ${pluralize("official source attribution", sourceCount)}.${changed}`;
+  return `${record.name} has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}`;
 }
 
 function pluralize(label: string, count: number): string {

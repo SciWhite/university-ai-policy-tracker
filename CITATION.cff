@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: "University AI Policy Tracker"
+message: "If you use this dataset or tracker metadata, please cite the tracker and retain official source URLs, source language, snapshot hashes, review state, confidence, and original evidence snippets."
+type: dataset
+authors:
+  - name: "University AI Policy Tracker contributors"
+url: "https://eduaipolicy.org"
+repository-code: "https://github.com/SciWhite/university-ai-policy-tracker"
+license: "CC-BY-4.0"
+abstract: "An open, evidence-backed tracker of university AI policy records with source-backed claims, public JSON, review states, change logs, and citation guidance."
+keywords:
+  - university-ai-policy
+  - generative-ai
+  - higher-education
+  - open-data
+  - policy-tracker
+  - academic-integrity
+  - ai-governance

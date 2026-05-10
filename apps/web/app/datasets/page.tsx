@@ -54,6 +54,36 @@ const datasetConcepts = [
   }
 ] as const;
 
+const githubRepositoryUrl =
+  "https://github.com/SciWhite/university-ai-policy-tracker";
+
+const githubTrustAssets = [
+  {
+    label: "README.md",
+    href: `${githubRepositoryUrl}#readme`,
+    description:
+      "Project positioning, public data surfaces, local development, and validation commands."
+  },
+  {
+    label: "DATA_DICTIONARY.md",
+    href: `${githubRepositoryUrl}/blob/main/DATA_DICTIONARY.md`,
+    description:
+      "Field-level explanation for public JSON, claims, evidence, sources, changes, and multilingual display rules."
+  },
+  {
+    label: "CITATION.cff",
+    href: `${githubRepositoryUrl}/blob/main/CITATION.cff`,
+    description:
+      "Machine-readable citation metadata for GitHub and research workflows."
+  },
+  {
+    label: "CONTRIBUTING.md",
+    href: `${githubRepositoryUrl}/blob/main/CONTRIBUTING.md`,
+    description:
+      "Contribution rules for source URLs, staged OpenClaw artifacts, review boundaries, and pull requests."
+  }
+] as const;
+
 export function generateMetadata() {
   const canonical = getAbsoluteSiteUrl("/datasets");
 
@@ -217,6 +247,19 @@ export default async function DatasetsPage() {
           path={recentChangesPath}
           url={recentChangesUrl}
         />
+      </ReferenceBox>
+
+      <ReferenceBox
+        description="Repository-level trust assets for developers, researchers, and data consumers."
+        title="GitHub trust assets"
+      >
+        <ul className="compact-list">
+          {githubTrustAssets.map((asset) => (
+            <li key={asset.label}>
+              <a href={asset.href}>{asset.label}</a>: {asset.description}
+            </li>
+          ))}
+        </ul>
       </ReferenceBox>
 
       {manifest ? (

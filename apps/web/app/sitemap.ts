@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import type { CatalogPolicySource } from "@uapt/shared";
 import { getCatalogUniversities } from "@/lib/catalog";
+import { getChangeRecords } from "@/lib/change-records";
 import { getSiteBaseUrl } from "../lib/site-url";
 
 const staticRoutes = [
@@ -19,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteBaseUrl();
   const now = new Date();
   const universities = await getCatalogUniversities();
+  const changeRecords = await getChangeRecords();
 
   return [
     ...staticRoutes.map((route) => ({
@@ -32,7 +34,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: new URL(`/universities/${university.slug}`, baseUrl).toString(),
         lastModified: latestSourceDate ? new Date(latestSourceDate) : now
       };
-    })
+    }),
+    ...changeRecords.map((record) => ({
+      url: new URL(record.changeUrl, baseUrl).toString(),
+      lastModified: getRecordLastModified(record, now)
+    }))
   ];
 }
 
@@ -43,4 +49,13 @@ function getLatestSourceDate(
     .flatMap((source) => [source.lastCheckedAt, source.lastChangedAt])
     .filter((value): value is string => Boolean(value))
     .sort((a, b) => b.localeCompare(a))[0];
+}
+
+function getRecordLastModified(
+  record: { lastChangedAt?: string; lastCheckedAt?: string },
+  fallback: Date
+): Date {
+  const latestDate = record.lastChangedAt ?? record.lastCheckedAt;
+
+  return latestDate ? new Date(latestDate) : fallback;
 }

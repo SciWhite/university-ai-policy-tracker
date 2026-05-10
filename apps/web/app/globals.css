@@ -1171,6 +1171,116 @@ h3 {
   padding-top: 24px;
 }
 
+.diff-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.diff-block__header {
+  align-items: flex-start;
+  background: var(--color-surface-elevated);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+  padding: 12px 14px;
+}
+
+.diff-block__header h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.diff-block__header p {
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 4px 0 0;
+}
+
+.diff-block__summary {
+  display: flex;
+  flex: 0 0 auto;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono",
+    Menlo, monospace;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 8px;
+}
+
+.diff-block__summary span:first-child {
+  color: var(--color-reviewed);
+}
+
+.diff-block__summary span:last-child {
+  color: var(--color-danger);
+}
+
+.diff-block__body {
+  display: grid;
+  overflow-x: auto;
+}
+
+.diff-line {
+  border-bottom: 1px solid var(--color-border-muted);
+  display: grid;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono",
+    Menlo, monospace;
+  font-size: 12px;
+  grid-template-columns: 52px 52px 28px minmax(0, 1fr);
+  line-height: 1.55;
+  min-width: 0;
+}
+
+.diff-line:last-child {
+  border-bottom: 0;
+}
+
+.diff-line[data-diff-type="insert"] {
+  background: var(--color-diff-addition);
+}
+
+.diff-line[data-diff-type="delete"] {
+  background: var(--color-diff-deletion);
+}
+
+.diff-line__number,
+.diff-line__marker,
+.diff-line__value {
+  padding: 5px 8px;
+}
+
+.diff-line__number {
+  border-right: 1px solid var(--color-border-muted);
+  color: var(--color-text-muted);
+  text-align: right;
+  user-select: none;
+}
+
+.diff-line__marker {
+  color: var(--color-text-muted);
+  user-select: none;
+}
+
+.diff-line[data-diff-type="insert"] .diff-line__marker {
+  color: var(--color-reviewed);
+  font-weight: 800;
+}
+
+.diff-line[data-diff-type="delete"] .diff-line__marker {
+  color: var(--color-danger);
+  font-weight: 800;
+}
+
+.diff-line__value {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
 .reference-box {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -1446,6 +1556,15 @@ ol.timeline-list {
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .diff-block__header {
+    display: grid;
+  }
+
+  .diff-line {
+    font-size: 11px;
+    grid-template-columns: 36px 36px 24px minmax(0, 1fr);
   }
 
   .docs-layout {
