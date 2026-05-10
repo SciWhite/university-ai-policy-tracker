@@ -29,6 +29,36 @@ Most public JSON responses include:
 
 Some endpoints also keep selected top-level fields for backward compatibility.
 
+## Dataset Release Manifest
+
+The latest release manifest is available at `/api/public/v1/datasets/latest.json`.
+
+| Field | Meaning |
+| --- | --- |
+| `schemaVersion` | Dataset release schema, currently `uapt-dataset-release-v1`. |
+| `apiVersion` | Public API version, currently `v1`. |
+| `releaseId` | Public release identifier from the curated release manifest. |
+| `releasePeriod` | Release month in `YYYY-MM` format. |
+| `publishedAt` | Release publication datetime. |
+| `generatedAt` | Dataset artifact generation datetime. |
+| `canonicalUrl` | Canonical dataset page URL. |
+| `citation` | Citation metadata for the dataset release. |
+| `counts` | Aggregate counts for universities, claims, sources, changes, evidence records, source languages, and review states. |
+| `artifacts` | Downloadable artifact metadata with URL, filename, media type, byte length, row count, and SHA-256 checksum. |
+
+## Dataset Release Artifacts
+
+Bulk exports are available under `/api/public/v1/datasets/...`.
+
+| Artifact | Meaning |
+| --- | --- |
+| `universities.jsonl` | One public university record per line. |
+| `claims.jsonl` | One claim-level row per line, including original-language evidence arrays. |
+| `sources.jsonl` | One official source attribution row per line. |
+| `changes.jsonl` | One public source-check or freshness row per university. |
+| `data-dictionary.md` | Markdown data dictionary for the release. |
+| `checksums.txt` | SHA-256 checksums, byte sizes, row counts, filenames, and paths for the release artifacts. |
+
 ## Canonical Entity
 
 | Field | Meaning |

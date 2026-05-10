@@ -14,6 +14,7 @@ import {
   getCatalogUniversities,
   getPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
+import { getDatasetRelease } from "@/lib/dataset-release";
 import { getCurrentPublicReleaseManifest } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
@@ -110,6 +111,8 @@ export default async function DatasetsPage() {
     )
   ).filter((summary): summary is PublicEntitySummary => Boolean(summary));
   const manifest = await getCurrentPublicReleaseManifest();
+  const datasetRelease = await getDatasetRelease();
+  const datasetReleaseManifest = datasetRelease.manifest;
   const universityCount = summaries.length || universities.length;
   const sourceCount = summaries.length
     ? summaries.reduce(
@@ -127,6 +130,7 @@ export default async function DatasetsPage() {
   const datasetsUrl = getAbsoluteSiteUrl("/datasets");
   const apiIndexPath = `/api/public/${PUBLIC_API_VERSION}/index.json`;
   const universitiesJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
+  const latestDatasetManifestPath = `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`;
   const exampleSlug =
     summaries.find((summary) => summary.entity.slug === "harvard-university")
       ?.entity.slug ??
@@ -137,6 +141,9 @@ export default async function DatasetsPage() {
   const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
   const apiIndexUrl = getAbsoluteSiteUrl(apiIndexPath);
   const universitiesJsonUrl = getAbsoluteSiteUrl(universitiesJsonPath);
+  const latestDatasetManifestUrl = getAbsoluteSiteUrl(
+    latestDatasetManifestPath
+  );
   const exampleUniversityUrl = getAbsoluteSiteUrl(exampleUniversityPath);
   const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
 
@@ -185,7 +192,20 @@ export default async function DatasetsPage() {
               name: "Recent changes JSON",
               encodingFormat: "application/json",
               contentUrl: recentChangesUrl
-            }
+            },
+            {
+              "@type": "DataDownload",
+              name: "Dataset release manifest",
+              encodingFormat: "application/json",
+              contentUrl: latestDatasetManifestUrl
+            },
+            ...datasetReleaseManifest.artifacts.map((artifact) => ({
+              "@type": "DataDownload",
+              name: artifact.label,
+              encodingFormat: artifact.mediaType,
+              contentUrl: artifact.url,
+              contentSize: artifact.byteLength
+            }))
           ]
         }}
       />
@@ -217,6 +237,10 @@ export default async function DatasetsPage() {
           <span>{PUBLIC_API_VERSION}</span>
           <p>public JSON schema version</p>
         </div>
+        <div>
+          <span>{datasetReleaseManifest.artifacts.length}</span>
+          <p>release download artifacts</p>
+        </div>
       </section>
 
       <ReferenceBox
@@ -247,6 +271,40 @@ export default async function DatasetsPage() {
           path={recentChangesPath}
           url={recentChangesUrl}
         />
+        <ApiEndpointRow
+          description="Release manifest with artifact URLs, row counts, byte sizes, and SHA-256 checksums."
+          label="Dataset release manifest"
+          path={latestDatasetManifestPath}
+          url={latestDatasetManifestUrl}
+        />
+      </ReferenceBox>
+
+      <ReferenceBox
+        description="Bulk files for researchers, developers, and agents. Each artifact is versioned under /api/public/v1 and included in the release checksum file."
+        title="Dataset release downloads"
+      >
+        <div className="tag-row">
+          <MetaLabel label="Release">{datasetReleaseManifest.releaseId}</MetaLabel>
+          <MetaLabel label="Period">
+            {datasetReleaseManifest.releasePeriod}
+          </MetaLabel>
+          <MetaLabel label="Published">
+            {formatDate(datasetReleaseManifest.publishedAt)}
+          </MetaLabel>
+        </div>
+        {datasetReleaseManifest.artifacts.map((artifact) => (
+          <ApiEndpointRow
+            description={`${artifact.description} SHA-256: ${artifact.sha256.slice(
+              0,
+              16
+            )}...`}
+            key={artifact.id}
+            label={artifact.label}
+            path={artifact.path}
+            status={formatArtifactStatus(artifact)}
+            url={artifact.url}
+          />
+        ))}
       </ReferenceBox>
 
       <ReferenceBox
@@ -353,4 +411,22 @@ function formatDate(value: string): string {
     dateStyle: "medium",
     timeZone: "UTC"
   }).format(new Date(value));
+}
+
+function formatArtifactStatus(artifact: {
+  byteLength: number;
+  mediaType: string;
+  rowCount?: number;
+}): string {
+  const rowText =
+    artifact.rowCount === undefined ? "" : `${artifact.rowCount} rows / `;
+
+  return `${rowText}${formatBytes(artifact.byteLength)} / ${artifact.mediaType}`;
+}
+
+function formatBytes(byteLength: number): string {
+  if (byteLength < 1024) return `${byteLength} B`;
+  if (byteLength < 1024 * 1024) return `${(byteLength / 1024).toFixed(1)} KB`;
+
+  return `${(byteLength / 1024 / 1024).toFixed(2)} MB`;
 }

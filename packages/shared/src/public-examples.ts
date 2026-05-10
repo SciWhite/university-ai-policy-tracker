@@ -178,6 +178,41 @@ export function buildPublicApiIndexData(
         "Recent changes",
         `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`,
         "Recent public source checks and changed institution records."
+      ),
+      endpoint(
+        "Dataset release manifest",
+        `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`,
+        "Latest dataset release manifest with artifact URLs, row counts, byte sizes, and SHA-256 checksums."
+      ),
+      endpoint(
+        "Universities JSONL",
+        `/api/public/${PUBLIC_API_VERSION}/datasets/universities.jsonl`,
+        "Bulk JSONL export with one public university record per line."
+      ),
+      endpoint(
+        "Claims JSONL",
+        `/api/public/${PUBLIC_API_VERSION}/datasets/claims.jsonl`,
+        "Bulk JSONL export with one claim-level evidence record per line."
+      ),
+      endpoint(
+        "Sources JSONL",
+        `/api/public/${PUBLIC_API_VERSION}/datasets/sources.jsonl`,
+        "Bulk JSONL export with one source attribution record per line."
+      ),
+      endpoint(
+        "Changes JSONL",
+        `/api/public/${PUBLIC_API_VERSION}/datasets/changes.jsonl`,
+        "Bulk JSONL export with one public change or freshness record per line."
+      ),
+      endpoint(
+        "Dataset checksums",
+        `/api/public/${PUBLIC_API_VERSION}/datasets/checksums.txt`,
+        "SHA-256 checksums for bulk dataset artifacts."
+      ),
+      endpoint(
+        "Dataset data dictionary",
+        `/api/public/${PUBLIC_API_VERSION}/datasets/data-dictionary.md`,
+        "Markdown data dictionary for the public dataset release."
       )
     ],
     trustPages: [

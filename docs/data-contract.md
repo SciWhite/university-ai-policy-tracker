@@ -62,6 +62,28 @@ Recent changes JSON is available at:
 https://eduaipolicy.org/api/public/v1/recent-changes.json
 ```
 
+The latest dataset release manifest is available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/datasets/latest.json
+```
+
+Bulk dataset artifacts are available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/datasets/universities.jsonl
+https://eduaipolicy.org/api/public/v1/datasets/claims.jsonl
+https://eduaipolicy.org/api/public/v1/datasets/sources.jsonl
+https://eduaipolicy.org/api/public/v1/datasets/changes.jsonl
+https://eduaipolicy.org/api/public/v1/datasets/checksums.txt
+https://eduaipolicy.org/api/public/v1/datasets/data-dictionary.md
+```
+
+The release manifest includes artifact URLs, filenames, row counts, byte sizes,
+SHA-256 checksums, citation fields, source rights caveats, and aggregate counts.
+The JSONL files are metadata exports only; raw source documents, full page text,
+PDFs, and screenshots are not published as tracker metadata.
+
 The public API index is available at:
 
 ```text

@@ -28,6 +28,14 @@ Versioned public JSON:
 - Universities list: <https://eduaipolicy.org/api/public/v1/universities.json>
 - Recent changes: <https://eduaipolicy.org/api/public/v1/recent-changes.json>
 - Per-university records: `https://eduaipolicy.org/api/public/v1/universities/{slug}.json`
+- Dataset release manifest: <https://eduaipolicy.org/api/public/v1/datasets/latest.json>
+- Bulk downloads:
+  - <https://eduaipolicy.org/api/public/v1/datasets/universities.jsonl>
+  - <https://eduaipolicy.org/api/public/v1/datasets/claims.jsonl>
+  - <https://eduaipolicy.org/api/public/v1/datasets/sources.jsonl>
+  - <https://eduaipolicy.org/api/public/v1/datasets/changes.jsonl>
+  - <https://eduaipolicy.org/api/public/v1/datasets/checksums.txt>
+  - <https://eduaipolicy.org/api/public/v1/datasets/data-dictionary.md>
 
 ## Data Model Principles
 
@@ -87,6 +95,7 @@ Install and validate:
 ```bash
 pnpm install
 pnpm check
+pnpm validate:dataset-release
 pnpm --filter @uapt/web build
 git diff --check
 ```
