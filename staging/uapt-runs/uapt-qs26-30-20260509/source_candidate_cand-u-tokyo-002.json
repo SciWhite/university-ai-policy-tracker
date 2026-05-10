@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-u-tokyo-002",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+  "sourceTitle": "当面の全学構成員向け生成AIサービス提供方針について",
+  "sourceLanguage": "ja",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "site:u-tokyo.ac.jp \"生成AI\" ポリシー OR ガイドライン",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:21.000Z",
+  "verificationNotes": "HTTP 200, readable content. Official UTokyo policy (March 2024) on generative AI service provision. Centers on Microsoft Copilot as primary service. Covers Chatbot UI experimental service transition, community building (UTokyo ARC), future Copilot for M365 evaluation.",
+  "robotsPolicy": "respect"
+}

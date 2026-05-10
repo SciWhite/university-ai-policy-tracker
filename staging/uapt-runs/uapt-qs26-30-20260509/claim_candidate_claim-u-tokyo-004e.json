@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-u-tokyo-004e",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "claimType": "academic_integrity",
+  "claimText": "UTokyo policy states that even when AI use is allowed, simply copying and pasting AI-generated answers should not be accepted as it provides no learning effect.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-u-tokyo-004e"
+  ],
+  "citation": {
+    "citationTitle": "Policy on the use of AI tools in classes",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes/",
+    "publisher": "University of Tokyo",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "4d15ee0bda1c13f01a9818fdb69ced5ce0231b3cbd2c600448293a7a5b3b2446",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

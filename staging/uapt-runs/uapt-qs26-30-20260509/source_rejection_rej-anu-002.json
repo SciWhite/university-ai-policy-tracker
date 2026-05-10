@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-anu-002",
+  "sourceCandidateId": "cand-anu-rej-002",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://physics.anu.edu.au/intra/content.php?id=69",
+  "finalUrl": "https://physics.anu.edu.au/intra/content.php?id=69",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "crawl-designer",
+  "notes": "Physics department internal page on generative AI in thesis preparation. Department-specific, not university-wide policy. Low policy specificity for tracker."
+}

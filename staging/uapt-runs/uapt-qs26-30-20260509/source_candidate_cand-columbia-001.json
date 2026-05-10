@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-columbia-001",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "sourceUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+  "finalUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+  "sourceTitle": "Generative AI Policy - Office of the Provost - Columbia University",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:columbia.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:19:10Z",
+  "verificationNotes": "Upgraded from needs_browser after successful fetch by crawl-worker",
+  "robotsPolicy": "respect"
+}

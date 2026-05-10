@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-005b",
+  "claimId": "claim-anu-005b",
+  "sourceSnapshotId": "snap-anu-005",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+  "sourceTitle": "FAQs about AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "789884f8c5a05e1f96f324479daea3e2596bbb344161fd16c1a3344b9573b246",
+  "evidenceSnippetOriginal": "For privacy and data security reasons, uploading student work directly into an AI platform without their consent is not permitted, including for the purpose of feedback or marking.",
+  "evidenceLocator": "Section: Can I upload student work into AI to assist with marking?",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "FAQs about AI",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "789884f8c5a05e1f96f324479daea3e2596bbb344161fd16c1a3344b9573b246",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

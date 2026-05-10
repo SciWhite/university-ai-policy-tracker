@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-u-tokyo-uapt-qs26-30",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "startedAt": "2026-05-09T22:17:00.000Z",
+  "endedAt": "2026-05-09T22:22:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "canonical_domain",
+      "domain": "u-tokyo.ac.jp",
+      "notes": "Primary domain: u-tokyo.ac.jp. Key subdomains: utelecon.adm.u-tokyo.ac.jp, www.u-tokyo.ac.jp, edulab.t.u-tokyo.ac.jp, genai.t.u-tokyo.ac.jp"
+    },
+    {
+      "method": "multilingual_query",
+      "query": "site:u-tokyo.ac.jp \"生成AI\" ポリシー OR ガイドライン",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search (Japanese). Found: utelecon generative AI info page, AI tools in classes policy (ver 1.0), AI service provision policy, students notification, EduLab resource collection, various policy documents."
+    },
+    {
+      "method": "multilingual_query",
+      "query": "site:u-tokyo.ac.jp \"ChatGPT\" \"学術不正\"",
+      "resultCount": 2,
+      "notes": "OpenCLI Google search (Japanese). Found: EduLab ChatGPT/AI resource collection (mentions academic misconduct)."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:u-tokyo.ac.jp \"generative AI\" policy OR guidelines",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search (English). Found: English version of AI tools in classes policy, notification to students, Policies and Guidelines page, Transparency Report, IFI policy recommendations."
+    },
+    {
+      "method": "multilingual_query",
+      "query": "site:u-tokyo.ac.jp \"セキュリティガイドライン\" 生成AI",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search (Japanese). Found: utelecon page references security guidelines (requires UTokyo Account sign-in). Multiple pages reference the security guidelines."
+    },
+    {
+      "method": "site_search",
+      "domain": "utelecon.adm.u-tokyo.ac.jp",
+      "notes": "Verified: AI tools in classes policy page (HTTP 200, readable), AI service provision policy page (HTTP 200, readable), generative AI info hub page. The utelecon portal is the central hub for UTokyo's AI policy information."
+    },
+    {
+      "method": "url_normalization",
+      "notes": "utelecon.adm.u-tokyo.ac.jp pages return HTTP 200 with full readable content. Security guidelines require UTokyo Account (login_required)."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "cand-u-tokyo-001",
+    "cand-u-tokyo-002",
+    "cand-u-tokyo-003",
+    "cand-u-tokyo-004",
+    "cand-u-tokyo-005",
+    "cand-u-tokyo-006",
+    "cand-u-tokyo-007"
+  ],
+  "rejectionIds": [
+    "rej-u-tokyo-001",
+    "rej-u-tokyo-002",
+    "rej-u-tokyo-003"
+  ],
+  "summary": "UTokyo's AI policy is primarily hosted on the utelecon.adm.u-tokyo.ac.jp portal. Key sources: (1) AI tools in classes policy (ver 1.0, April 2023) - detailed faculty guidance on AI tool use in education; (2) Generative AI service provision policy (March 2024) - university-wide service decisions including Microsoft Copilot adoption; (3) Student notification on AI tools in classes; (4) Security guidelines for generative AI use (requires login, marked inaccessible). UTokyo does not ban generative AI tools outright but leaves decisions to individual instructors. Japanese-language searches found the most comprehensive policy content. The utelecon portal is the authoritative source."
+}

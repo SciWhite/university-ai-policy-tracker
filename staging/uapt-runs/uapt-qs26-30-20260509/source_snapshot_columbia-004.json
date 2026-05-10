@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-columbia-004",
+  "sourceCandidateId": "cand-columbia-004",
+  "fetchAttemptId": "fetch-columbia-004",
+  "sourceUrl": "https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai",
+  "finalUrl": "https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai",
+  "sourceTitle": "Columbia Law School Interim Policy on Generative AI",
+  "sourceLanguage": "en",
+  "contentHash": "7306eb84857945d64e1727f7f7e15e4c3ff64e4f60d2a0fb93e0ae6226f0999f",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-columbia-004.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-jhu-006a",
+  "claimId": "claim-jhu-006a",
+  "sourceSnapshotId": "snap-jhu-006",
+  "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/academic-integrity/",
+  "finalUrl": "https://engineering.jhu.edu/ctld/chatgpt/academic-integrity/",
+  "sourceTitle": "Academic Integrity – Johns Hopkins Engineering CTLD",
+  "sourceLanguage": "en",
+  "snapshotHash": "5a88c7f80de6e9acce21f00c9a0ae1f3b701c9ee922e6b143ba7e693120fc18d",
+  "evidenceSnippetOriginal": "Engineering school academic integrity page with ChatGPT/AI focus.",
+  "evidenceLocator": "Source candidate verification notes",
+  "evidenceType": "official_source",
+  "relevance": 0.6,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Academic Integrity – Johns Hopkins Engineering CTLD",
+    "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/academic-integrity/",
+    "publisher": "Johns Hopkins University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "5a88c7f80de6e9acce21f00c9a0ae1f3b701c9ee922e6b143ba7e693120fc18d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

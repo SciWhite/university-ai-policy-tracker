@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-columbia-003a",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "claimType": "research",
+  "claimText": "Columbia University requires researchers to avoid uploading unpublished research data or confidential information into generative AI tools.",
+  "sourceLanguage": "en",
+  "confidence": 0.7,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-columbia-003a"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI - Office of the Provost - Columbia University",
+    "sourceUrl": "https://provost.columbia.edu/content/generative-ai",
+    "publisher": "Columbia University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "6b67d5eac87a042937279463b6baf1eeeea610cd3947b8cac7b65a59ad792fdd",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

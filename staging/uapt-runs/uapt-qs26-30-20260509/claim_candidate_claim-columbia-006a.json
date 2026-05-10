@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-columbia-006a",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "claimType": "academic_integrity",
+  "claimText": "Columbia Business School requires students to disclose to faculty their use of generative AI platforms and the manner of use in coursework.",
+  "sourceLanguage": "en",
+  "confidence": 0.7,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-columbia-006a"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Policy | Students - Columbia Business School",
+    "sourceUrl": "https://students.business.columbia.edu/office-of-student-affairs/academic-advising-and-student-success/academic-integrity/generative-ai-policy",
+    "publisher": "Columbia Business School",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "8fde3b569dfdde970573015678382343ad177046a8b9567f41abf78d76eeddd1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

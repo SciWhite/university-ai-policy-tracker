@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-u-tokyo-002a",
+  "claimId": "claim-u-tokyo-002a",
+  "sourceSnapshotId": "snap-u-tokyo-002",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+  "sourceTitle": "当面の全学構成員向け生成AIサービス提供方針について",
+  "sourceLanguage": "ja",
+  "snapshotHash": "70b84ccd9528b73e2ad622e87e1cf4d68c91adf38b9525a394fe370216bf6154",
+  "evidenceSnippetOriginal": "全学構成員向けの生成AIサービスは，当面，Microsoft Copilotによる生成AIチャットの提供を中心として位置付けます．Microsoft社との既存の契約の下で提供されるクラウドサービスであり，大学の運用負担・費用負担が小さいためです。",
+  "evidenceLocator": "Policy body",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "当面の全学構成員向け生成AIサービス提供方針について",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/0327-ai-service/",
+    "publisher": "The University of Tokyo",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "70b84ccd9528b73e2ad622e87e1cf4d68c91adf38b9525a394fe370216bf6154",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "For now, the university-wide generative AI service will center on Microsoft Copilot for AI chat, as it is a cloud service provided under existing Microsoft contracts with low operational and cost burden for the university."
+}

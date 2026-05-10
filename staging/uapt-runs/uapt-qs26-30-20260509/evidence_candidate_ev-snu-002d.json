@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-snu-002d",
+  "claimId": "claim-snu-002d",
+  "sourceSnapshotId": "snap-snu-002",
+  "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "finalUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "sourceTitle": "서울대학교 AI 가이드라인 제정 안내 보도자료",
+  "sourceLanguage": "ko",
+  "snapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa",
+  "evidenceSnippetOriginal": "투명한 활용 공개, 사실·출처 확인, 저작권·프라이버시·정보보안 준수, 편향성 교정, 책임소재의 인지 등 구성원이 유의해야 할 공통 윤리 기준을 명시하였다.",
+  "evidenceLocator": "Press release body",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "서울대학교 AI 가이드라인 제정 안내 보도자료",
+    "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+    "publisher": "Seoul National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "The guidelines specify common ethical standards members must observe: transparent disclosure of use, fact/source verification, copyright/privacy/information security compliance, bias correction, and awareness of accountability."
+}

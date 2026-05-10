@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-snu-007",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+  "finalUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+  "sourceTitle": "중앙도서관 구독 전자자료의 생성형 AI활용 관련 유의사항 안내",
+  "sourceLanguage": "ko",
+  "sourceType": "library_copyright",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "site:snu.ac.kr \"생성형 AI\" 정책",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.75,
+  "policySpecificityScore": 0.6,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "Search results confirm: notice on generative AI use with library subscribed e-resources. Covers copyright, terms of service, restrictions on uploading to ChatGPT/Claude/Gemini.",
+  "robotsPolicy": "respect"
+}

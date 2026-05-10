@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-011a",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "ai_tool_treatment",
+  "claimText": "ANU does not ban generative AI, but the College of Asia & the Pacific distinguishes between appropriate and inappropriate uses based on whether AI replaces or supports student skill development.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-011a"
+  ],
+  "citation": {
+    "citationTitle": "AI Guidelines for CAP Students",
+    "sourceUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+    "publisher": "ANU College of Asia & the Pacific",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "c67228d0669efc705a646637a03ea29ab21c27a1113b0f13b07c2ea980e37619",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

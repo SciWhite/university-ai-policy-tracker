@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-007a",
+  "claimId": "claim-anu-007a",
+  "sourceSnapshotId": "snap-anu-007",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/generative-ai-and-assessment/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resource-collection/generative-ai-and-assessment/",
+  "sourceTitle": "Generative AI and Assessment - ANU Learning and Teaching",
+  "sourceLanguage": "en",
+  "snapshotHash": "619f3a5b59f983e211f6c4da9fb11a74fe4b27cf6e8a11adc366cdd00928bdbb",
+  "evidenceSnippetOriginal": "Step-by-step advice on designing assessments that reflect real student capabilities in the age of AI. Rethinking assessment design in the age of GenAI.",
+  "evidenceLocator": "Page content",
+  "evidenceType": "official_source",
+  "relevance": 0.6,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI and Assessment - ANU Learning and Teaching",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/generative-ai-and-assessment/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "619f3a5b59f983e211f6c4da9fb11a74fe4b27cf6e8a11adc366cdd00928bdbb",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

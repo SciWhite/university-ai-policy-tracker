@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-jhu-007",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "sourceUrl": "https://www.press.jhu.edu/sites/default/files/media/2023/07/Generative%20AI%20for%20Authors_final_0.pdf",
+  "finalUrl": "https://www.press.jhu.edu/sites/default/files/media/2023/07/Generative%20AI%20for%20Authors_final_0.pdf",
+  "sourceTitle": "Generative AI Policy for Authors - JHU Press",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:jhu.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "needs_browser",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "Cloudflare WAF blocks HTTP fetch (403). JHU Press formal policy on generative AI for authors. Covers authorship accountability and legal responsibility.",
+  "robotsPolicy": "respect"
+}

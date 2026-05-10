@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-jhu-008a",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "claimType": "procurement",
+  "claimText": "JHU is working to ensure AI tools procured on behalf of the university meet privacy and security standards.",
+  "sourceLanguage": "en",
+  "confidence": 0.7,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-jhu-008a"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI / CoPilot / ChatGPT Information - WSEIT",
+    "sourceUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+    "publisher": "Johns Hopkins Whiting School of Engineering IT",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "284f3022cfec1d0d831414f77e670552492125d90669c904299fb4b053bde89d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

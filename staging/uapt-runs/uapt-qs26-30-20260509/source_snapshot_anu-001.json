@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-anu-001",
+  "sourceCandidateId": "cand-anu-001",
+  "fetchAttemptId": "fetch-anu-001",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resources/anu-institutional-ai-principles/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resources/anu-institutional-ai-principles/",
+  "sourceTitle": "ANU Institutional AI Principles",
+  "sourceLanguage": "en",
+  "contentHash": "e1b0ca8c18b24537469a847921d1cade147da444a5d3b124525c62ae59a4925f",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-001.txt",
+  "rawArtifactPaths": []
+}

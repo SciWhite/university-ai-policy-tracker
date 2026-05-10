@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-jhu-003a",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "claimType": "teaching",
+  "claimText": "JHU provides official syllabus statement templates, including options that prohibit students from using ChatGPT or other AI tools to generate written content for assignments.",
+  "sourceLanguage": "en",
+  "confidence": 0.7,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-jhu-003a"
+  ],
+  "citation": {
+    "citationTitle": "Syllabus Statements | Teaching @ JHU",
+    "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+    "publisher": "Johns Hopkins University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "958188317cff3ed8f4b5da388e4a124f1867a5e1b79c160759ce8684de40ed65",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

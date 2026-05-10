@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-anu-006",
+  "sourceCandidateId": "cand-anu-006",
+  "sourceUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+  "finalUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 5692,
+  "contentHash": "33a276e33e05ed354e65cd8ecc137385c1cf60fdeb318386013dd45e918079de",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-006.txt"
+}

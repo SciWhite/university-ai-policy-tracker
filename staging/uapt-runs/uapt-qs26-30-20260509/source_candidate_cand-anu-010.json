@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-010",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/blog/chatgpt-what-anu-academics-need-to-know/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/blog/chatgpt-what-anu-academics-need-to-know/",
+  "sourceTitle": "ChatGPT: What ANU academics need to know",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:anu.edu.au \"ChatGPT\" \"academic integrity\"",
+  "discoveredAt": "2026-05-09T22:18:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.5,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "HTTP 200 expected. Blog post on ChatGPT impact on assessment design and academic integrity, action ANU is taking.",
+  "robotsPolicy": "respect"
+}

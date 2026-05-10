@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-snu-rej-001",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://s-space.snu.ac.kr/bitstream/10371/221978/1/000000187716.pdf",
+  "sourceTitle": "S-Space research paper on copyright law in the generative AI era. Academic publication, not SNU institutional policy.",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-09T22:20:00.000Z",
+  "officialDomainConfidence": 0.3,
+  "aiRelevanceScore": 0.1,
+  "policySpecificityScore": 0.1,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "verificationNotes": "Auto-created for rejection reference cand-snu-rej-001",
+  "robotsPolicy": "respect"
+}

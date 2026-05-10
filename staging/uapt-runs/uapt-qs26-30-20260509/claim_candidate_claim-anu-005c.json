@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-005c",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "academic_integrity",
+  "claimText": "ANU handles suspected generative AI misuse through the same academic misconduct procedure as other integrity breaches, including giving students the opportunity to respond.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-005c"
+  ],
+  "citation": {
+    "citationTitle": "FAQs about AI",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "789884f8c5a05e1f96f324479daea3e2596bbb344161fd16c1a3344b9573b246",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-011",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+  "finalUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+  "sourceTitle": "AI Guidelines for CAP Students",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:anu.edu.au \"generative AI\" policy",
+  "discoveredAt": "2026-05-09T22:18:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.6,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "HTTP 200 expected. College of Asia Pacific specific AI guidelines for students, covering responsible use, academic integrity concerns.",
+  "robotsPolicy": "respect"
+}

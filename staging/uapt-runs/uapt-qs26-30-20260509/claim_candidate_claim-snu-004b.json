@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-snu-004b",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "claimType": "source_status",
+  "claimText": "SNU Library notes that many research institutions lack clear AI policies, and researchers operate in uncertainty or within extremely limited scope.",
+  "sourceLanguage": "ko",
+  "confidence": 0.8,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-snu-004b"
+  ],
+  "citation": {
+    "citationTitle": "AI와 연구 활동 - SNU Library LibGuide",
+    "sourceUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+    "publisher": "서울대학교 도서관",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "4ea76e38765e99a80e40a80bb057db4883fa8942fb467b093ffa0adb3e7fff4e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

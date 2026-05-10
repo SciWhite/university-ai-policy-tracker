@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-snu-004",
+  "sourceCandidateId": "cand-snu-004",
+  "fetchAttemptId": "fetch-snu-004",
+  "sourceUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+  "finalUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+  "sourceTitle": "AI와 연구 활동 - SNU Library LibGuide",
+  "sourceLanguage": "ko",
+  "contentHash": "4ea76e38765e99a80e40a80bb057db4883fa8942fb467b093ffa0adb3e7fff4e",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-snu-004.txt",
+  "rawArtifactPaths": []
+}

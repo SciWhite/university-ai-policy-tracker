@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-u-tokyo-001",
+  "sourceCandidateId": "cand-u-tokyo-rej-001",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://univtokyo.sharepoint.com/sites/Security/SitePages/ai_use_security_guideline.aspx",
+  "finalUrl": "https://univtokyo.sharepoint.com/sites/Security/SitePages/ai_use_security_guideline.aspx",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "login_required",
+  "checkedBy": "crawl-designer",
+  "notes": "UTokyo Security Guidelines for generative AI use. Requires UTokyo Account sign-in. Login-required, inaccessible to crawler."
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-snu-002",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "finalUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "sourceTitle": "「서울대학교 AI 가이드라인」 제정 안내 - 보도자료",
+  "sourceLanguage": "ko",
+  "sourceType": "official_news_advisory",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "\"서울대학교\" \"AI 지침\" OR \"AI 가이드라인\"",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:45.000Z",
+  "verificationNotes": "HTTP 200, readable content. SNU press release (2026-01-07) announcing AI Guidelines. Describes guidelines scope: education/learning, research/development, administration. Covers transparency, copyright, privacy, information security, bias correction, accountability.",
+  "robotsPolicy": "respect"
+}

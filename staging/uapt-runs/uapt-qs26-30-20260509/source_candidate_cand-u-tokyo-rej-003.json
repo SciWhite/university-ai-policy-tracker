@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-u-tokyo-rej-003",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://edulab.t.u-tokyo.ac.jp/chatgpt-ai-resources-20231006/",
+  "sourceTitle": "EduLab resource collection on ChatGPT/AI in education. Curated link collection, not institutional policy itself. Links to external resources and research.",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-09T22:20:00.000Z",
+  "officialDomainConfidence": 0.3,
+  "aiRelevanceScore": 0.1,
+  "policySpecificityScore": 0.1,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "verificationNotes": "Auto-created for rejection reference cand-u-tokyo-rej-003",
+  "robotsPolicy": "respect"
+}

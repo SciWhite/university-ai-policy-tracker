@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-columbia-003a",
+  "claimId": "claim-columbia-003a",
+  "sourceSnapshotId": "snap-columbia-003",
+  "sourceUrl": "https://provost.columbia.edu/content/generative-ai",
+  "finalUrl": "https://provost.columbia.edu/content/generative-ai",
+  "sourceTitle": "Generative AI - Office of the Provost - Columbia University",
+  "sourceLanguage": "en",
+  "snapshotHash": "6b67d5eac87a042937279463b6baf1eeeea610cd3947b8cac7b65a59ad792fdd",
+  "evidenceSnippetOriginal": "Researchers must avoid uploading, or using as input, any unpublished research data or other Confidential Information into a Generative AI tool.",
+  "evidenceLocator": "Source candidate verification notes (search snippet)",
+  "evidenceType": "official_source",
+  "relevance": 0.7,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI - Office of the Provost - Columbia University",
+    "sourceUrl": "https://provost.columbia.edu/content/generative-ai",
+    "publisher": "Columbia University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "6b67d5eac87a042937279463b6baf1eeeea610cd3947b8cac7b65a59ad792fdd",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

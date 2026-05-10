@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-004",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+  "finalUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+  "sourceTitle": "Guide for students: best practice when using Generative AI",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:anu.edu.au \"generative AI\" policy",
+  "discoveredAt": "2026-05-09T22:18:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:10.000Z",
+  "verificationNotes": "HTTP 200, readable content. Student-facing guide on responsible AI use, FAQs on assessment use, ethical use guidelines, Copilot Enterprise as endorsed tool, citation guidance, reference to Academic Integrity Rule 2021.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-snu-002a",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "claimType": "ai_tool_treatment",
+  "claimText": "SNU's AI Guidelines do not uniformly restrict or prohibit AI use; they establish standards to support rational judgment and ethical, creative use based on autonomy and trust.",
+  "sourceLanguage": "ko",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-snu-002a"
+  ],
+  "citation": {
+    "citationTitle": "서울대학교 AI 가이드라인 제정 안내 보도자료",
+    "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+    "publisher": "서울대학교",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

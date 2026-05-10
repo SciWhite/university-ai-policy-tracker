@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-columbia-007",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "sourceUrl": "https://www.tc.columbia.edu/digitalfuturesinstitute/ai-in-education/artificial-intelligence-in-education/tc-guidance/",
+  "finalUrl": "https://www.tc.columbia.edu/digitalfuturesinstitute/ai-in-education/artificial-intelligence-in-education/tc-guidance/",
+  "sourceTitle": "TC Guidance | Digital Futures Institute (DFI)",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:columbia.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.8,
+  "policySpecificityScore": 0.65,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:19:10Z",
+  "verificationNotes": "Upgraded from needs_browser after successful fetch by crawl-worker",
+  "robotsPolicy": "respect"
+}

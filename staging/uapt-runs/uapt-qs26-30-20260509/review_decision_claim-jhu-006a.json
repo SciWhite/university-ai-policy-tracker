@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "review_decision",
+  "decisionId": "rd-claim-jhu-006a",
+  "claimId": "claim-jhu-006a",
+  "decision": "needs_changes",
+  "reviewState": "needs_review",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence snippet is a page description rather than a direct quote from source content; rebind to actual Engineering academic-integrity source text before approval.",
+  "decidedAt": "2026-05-10T00:12:41Z"
+}

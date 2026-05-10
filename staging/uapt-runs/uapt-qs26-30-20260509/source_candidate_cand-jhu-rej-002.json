@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-jhu-rej-002",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "sourceUrl": "https://imagine.jhu.edu/blog/2025/07/28/the-next-chapter-in-ai-at-johns-hopkins-begins/",
+  "sourceTitle": "Blog post about JHU's AI strategy. News/editorial content, not formal policy. Mentions privacy/security standards but as narrative, not policy.",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-09T22:20:00.000Z",
+  "officialDomainConfidence": 0.3,
+  "aiRelevanceScore": 0.1,
+  "policySpecificityScore": 0.1,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "verificationNotes": "Auto-created for rejection reference cand-jhu-rej-002",
+  "robotsPolicy": "respect"
+}

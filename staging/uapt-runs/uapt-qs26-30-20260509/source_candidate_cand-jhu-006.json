@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-jhu-006",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/academic-integrity/",
+  "finalUrl": "https://engineering.jhu.edu/ctld/chatgpt/academic-integrity/",
+  "sourceTitle": "Academic Integrity – Johns Hopkins Engineering CTLD",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:jhu.edu \"ChatGPT\" \"academic integrity\"",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:19:10Z",
+  "verificationNotes": "Upgraded from needs_browser after successful fetch by crawl-worker",
+  "robotsPolicy": "respect"
+}

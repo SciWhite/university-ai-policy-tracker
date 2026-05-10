@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-columbia-005d",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "claimType": "security_review",
+  "claimText": "CUIMC requires a formal IT Risk Assessment review before deploying any locally installed AI models (LLM, NLP, ML) to evaluate security, privacy, and compliance risks.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-columbia-005d"
+  ],
+  "citation": {
+    "citationTitle": "AI and Generative Technology Use at CUIMC",
+    "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+    "publisher": "Columbia University Irving Medical Center",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "5370b6d21d358ee223320340b907194d5b5f90a0698dd128fae2e4005d5432da",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

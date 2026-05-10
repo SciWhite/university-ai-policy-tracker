@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-columbia-006",
+  "sourceCandidateId": "cand-columbia-006",
+  "fetchAttemptId": "fetch-columbia-006",
+  "sourceUrl": "https://students.business.columbia.edu/office-of-student-affairs/academic-advising-and-student-success/academic-integrity/generative-ai-policy",
+  "finalUrl": "https://students.business.columbia.edu/office-of-student-affairs/academic-advising-and-student-success/academic-integrity/generative-ai-policy",
+  "sourceTitle": "Generative AI Policy | Students - Columbia Business School",
+  "sourceLanguage": "en",
+  "contentHash": "8fde3b569dfdde970573015678382343ad177046a8b9567f41abf78d76eeddd1",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-columbia-006.txt",
+  "rawArtifactPaths": []
+}

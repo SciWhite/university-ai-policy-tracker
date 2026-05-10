@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-snu-004b",
+  "claimId": "claim-snu-004b",
+  "sourceSnapshotId": "snap-snu-004",
+  "sourceUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+  "finalUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+  "sourceTitle": "AI와 연구 활동 - SNU Library LibGuide",
+  "sourceLanguage": "ko",
+  "snapshotHash": "4ea76e38765e99a80e40a80bb057db4883fa8942fb467b093ffa0adb3e7fff4e",
+  "evidenceSnippetOriginal": "다수의 연구 기관에서는 아직 AI 활용에 관한 명확한 정책을 도입하지 않고 있습니다. 연구자들은 이러한 불확실성 속에서 AI 도구를 사용하거나 극히 제한된 범위 내에서만 사용할 수밖에 없습니다.",
+  "evidenceLocator": "LibGuide content citing OUP survey",
+  "evidenceType": "official_source",
+  "relevance": 0.8,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI와 연구 활동 - SNU Library LibGuide",
+    "sourceUrl": "https://libguide.snu.ac.kr/main/AILiteracy",
+    "publisher": "Seoul National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "4ea76e38765e99a80e40a80bb057db4883fa8942fb467b093ffa0adb3e7fff4e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "Many research institutions have not yet introduced clear policies on AI use. Researchers must use AI tools in this uncertainty or within extremely limited scope."
+}

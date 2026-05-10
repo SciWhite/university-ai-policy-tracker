@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-jhu-007",
+  "sourceCandidateId": "cand-jhu-007",
+  "sourceUrl": "https://www.press.jhu.edu/sites/default/files/media/2023/07/Generative%20AI%20for%20Authors_final_0.pdf",
+  "finalUrl": "https://www.press.jhu.edu/sites/default/files/media/2023/07/Generative%20AI%20for%20Authors_final_0.pdf",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "error",
+  "errorReason": "Firecrawl returned empty content for PDF URL",
+  "durationMs": 60000
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-001",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resources/anu-institutional-ai-principles/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resources/anu-institutional-ai-principles/",
+  "sourceTitle": "ANU Institutional AI Principles",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:anu.edu.au \"AI principles\" OR \"institutional AI\"",
+  "discoveredAt": "2026-05-09T22:18:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:02.000Z",
+  "verificationNotes": "HTTP 200, readable content. Six guiding principles on AI use approved by Academic Board June 2023. Covers excellence/integrity, research engagement, clear guidance, AI literacy, access/privacy/security, and collaborative policy development.",
+  "robotsPolicy": "respect"
+}

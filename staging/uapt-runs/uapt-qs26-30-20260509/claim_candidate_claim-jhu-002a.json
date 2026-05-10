@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-jhu-002a",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "claimType": "academic_integrity",
+  "claimText": "JHU requires all uses of AI tools in any assignment to be disclosed, with FERPA guidelines referenced for data protection.",
+  "sourceLanguage": "en",
+  "confidence": 0.7,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-jhu-002a"
+  ],
+  "citation": {
+    "citationTitle": "Guidelines - Teaching @ JHU",
+    "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/guidelines/",
+    "publisher": "Johns Hopkins University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "83b6c5f4b3b3db7fe5bad6c193e6b9e8d5784f7467ba9d67325813b52fab52ba",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

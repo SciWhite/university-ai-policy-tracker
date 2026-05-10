@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-snu-006",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079698",
+  "finalUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079698",
+  "sourceTitle": "AI 도구의 활용 (Use of AI Tools) - SNU Library",
+  "sourceLanguage": "ko",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "site:snu.ac.kr \"ChatGPT\" \"학술윤리\"",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.75,
+  "policySpecificityScore": 0.55,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "Search results confirm: guide on AI tool usage, journal policies on LLMs as authors, AI text restrictions in papers.",
+  "robotsPolicy": "respect"
+}

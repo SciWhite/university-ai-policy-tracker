@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-jhu-003",
+  "sourceCandidateId": "cand-jhu-003",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 5000,
+  "contentHash": "958188317cff3ed8f4b5da388e4a124f1867a5e1b79c160759ce8684de40ed65",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-jhu-003.txt"
+}

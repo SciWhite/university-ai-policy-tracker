@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-snu-002c",
+  "claimId": "claim-snu-002c",
+  "sourceSnapshotId": "snap-snu-002",
+  "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "finalUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "sourceTitle": "서울대학교 AI 가이드라인 제정 안내 보도자료",
+  "sourceLanguage": "ko",
+  "snapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa",
+  "evidenceSnippetOriginal": "연구·개발 영역에서는 AI 결과물의 오류·편향 가능성에 대비한 교차 검증, 연구데이터 및 기밀정보 보호, 활용 과정의 기록·보존 등 연구 재현성 확보를 위한 절차를 포함하였다.",
+  "evidenceLocator": "Press release body",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "서울대학교 AI 가이드라인 제정 안내 보도자료",
+    "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+    "publisher": "Seoul National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "In the research/development domain, the guidelines include procedures for cross-verification against AI output errors/bias, protection of research data and confidential information, and record-keeping for research reproducibility."
+}

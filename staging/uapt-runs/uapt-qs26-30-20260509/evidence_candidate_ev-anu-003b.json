@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-003b",
+  "claimId": "claim-anu-003b",
+  "sourceSnapshotId": "snap-anu-003",
+  "sourceUrl": "https://www.anu.edu.au/privacy/training-and-resources/generative-ai-and-data-governance",
+  "finalUrl": "https://www.anu.edu.au/privacy/training-and-resources/generative-ai-and-data-governance",
+  "sourceTitle": "Generative AI and Data Governance",
+  "sourceLanguage": "en",
+  "snapshotHash": "b0510bd3358a1cf317fa15054e74bac833e38eb0374ef8b3fa4d63a7b868bc22",
+  "evidenceSnippetOriginal": "Only utilise AI solution/software approved for use by the University, to ensure appropriate data governance, information security and licencing.",
+  "evidenceLocator": "Section: Principles",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI and Data Governance",
+    "sourceUrl": "https://www.anu.edu.au/privacy/training-and-resources/generative-ai-and-data-governance",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "b0510bd3358a1cf317fa15054e74bac833e38eb0374ef8b3fa4d63a7b868bc22",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-snu-007b",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "claimType": "privacy",
+  "claimText": "SNU Library states that most e-resource subscription agreements only permit viewing, downloading, and printing; using resources for AI training/analysis or uploading to third-party AI services requires separate authorization.",
+  "sourceLanguage": "ko",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-snu-007b"
+  ],
+  "citation": {
+    "citationTitle": "중앙도서관 구독 전자자료의 생성형 AI활용 관련 유의사항 안내",
+    "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+    "publisher": "서울대학교 보건대학원",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "3d941c521ca708ba82c9ad7ddec034f2e67f66484ee559bc080073cddf3cc8d1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

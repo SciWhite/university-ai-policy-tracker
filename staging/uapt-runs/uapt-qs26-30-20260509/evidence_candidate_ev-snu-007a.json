@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-snu-007a",
+  "claimId": "claim-snu-007a",
+  "sourceSnapshotId": "snap-snu-007",
+  "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+  "finalUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+  "sourceTitle": "중앙도서관 구독 전자자료의 생성형 AI활용 관련 유의사항 안내",
+  "sourceLanguage": "ko",
+  "snapshotHash": "3d941c521ca708ba82c9ad7ddec034f2e67f66484ee559bc080073cddf3cc8d1",
+  "evidenceSnippetOriginal": "구독 전자자료를 ChatGPT·Claude·Gemini 등 생성형 AI 서비스에 업로드하거나 대량 다운로드 또는 호출, 전문(全文)을 입력하는 행위는 출판사의 이용 허락 범위를 초과할 수 있습니다.",
+  "evidenceLocator": "Notice body",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "중앙도서관 구독 전자자료의 생성형 AI활용 관련 유의사항 안내",
+    "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+    "publisher": "Seoul National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "3d941c521ca708ba82c9ad7ddec034f2e67f66484ee559bc080073cddf3cc8d1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "Uploading subscribed e-resources to generative AI services like ChatGPT, Claude, Gemini, or performing bulk downloads/calls or full-text input may exceed publisher license terms."
+}

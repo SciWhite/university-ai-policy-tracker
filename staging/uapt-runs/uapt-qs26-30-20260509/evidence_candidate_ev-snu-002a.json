@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-snu-002a",
+  "claimId": "claim-snu-002a",
+  "sourceSnapshotId": "snap-snu-002",
+  "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "finalUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "sourceTitle": "서울대학교 AI 가이드라인 제정 안내 보도자료",
+  "sourceLanguage": "ko",
+  "snapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa",
+  "evidenceSnippetOriginal": "이번 가이드라인은 AI 활용을 일률적으로 제한하거나 금지하는 규범이 아니라, 자율성과 신뢰를 바탕으로 한 합리적 판단과 윤리적·창의적 활용을 지원하기 위한 기준이다.",
+  "evidenceLocator": "Press release body",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "서울대학교 AI 가이드라인 제정 안내 보도자료",
+    "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+    "publisher": "Seoul National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "This guideline is not a norm that uniformly restricts or prohibits AI use, but rather a standard to support rational judgment and ethical/creative use based on autonomy and trust."
+}

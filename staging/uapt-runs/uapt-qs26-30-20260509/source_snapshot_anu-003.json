@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-anu-003",
+  "sourceCandidateId": "cand-anu-003",
+  "fetchAttemptId": "fetch-anu-003",
+  "sourceUrl": "https://www.anu.edu.au/privacy/training-and-resources/generative-ai-and-data-governance",
+  "finalUrl": "https://www.anu.edu.au/privacy/training-and-resources/generative-ai-and-data-governance",
+  "sourceTitle": "Generative AI and Data Governance",
+  "sourceLanguage": "en",
+  "contentHash": "b0510bd3358a1cf317fa15054e74bac833e38eb0374ef8b3fa4d63a7b868bc22",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-003.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-snu-001",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "sourceUrl": "https://www.snu.ac.kr/about/downloads?md=v&bbsidx=166508",
+  "finalUrl": "https://www.snu.ac.kr/about/downloads?md=v&bbsidx=166508",
+  "sourceTitle": "「서울대학교 AI 가이드라인」 제정 전문,국문/영문 - 자료실",
+  "sourceLanguage": "ko",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "\"서울대학교\" \"AI 지침\" OR \"AI 가이드라인\"",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:36.000Z",
+  "verificationNotes": "HTTP 200. Official SNU downloads page hosting Korean and English PDF versions of Seoul National University AI Guidelines. Published January 1, 2026. Covers education, research, and administration domains.",
+  "robotsPolicy": "respect"
+}

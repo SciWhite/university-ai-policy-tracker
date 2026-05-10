@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-jhu-004",
+  "sourceCandidateId": "cand-jhu-004",
+  "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/student-use-of-generative-ai/",
+  "finalUrl": "https://engineering.jhu.edu/ctld/chatgpt/student-use-of-generative-ai/",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 5000,
+  "contentHash": "572ab8335e236a8c235b30abb9324ff4a7844b311325352eba0dbbf2f76f1bbd",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-jhu-004.txt"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-columbia-004",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "sourceUrl": "https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai",
+  "finalUrl": "https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai",
+  "sourceTitle": "Columbia Law School Interim Policy on Generative AI",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:columbia.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:43.000Z",
+  "verificationNotes": "HTTP 200, readable content. Effective August 1, 2025. Default prohibition on generative AI in exams/final papers/drafting. Permitted uses: studying, brainstorming, identifying typos. Instructors can set more permissive policies in syllabus. Consistent with Columbia University's Generative AI Policy.",
+  "robotsPolicy": "respect"
+}

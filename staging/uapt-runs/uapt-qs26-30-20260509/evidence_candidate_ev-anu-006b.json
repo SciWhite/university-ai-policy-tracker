@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-006b",
+  "claimId": "claim-anu-006b",
+  "sourceSnapshotId": "snap-anu-006",
+  "sourceUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+  "finalUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+  "sourceTitle": "Use of Generative AI Tools in Assessment: Guidance for ANU Law Students",
+  "sourceLanguage": "en",
+  "snapshotHash": "33a276e33e05ed354e65cd8ecc137385c1cf60fdeb318386013dd45e918079de",
+  "evidenceSnippetOriginal": "Using AI to improve expression in your own draft, such as grammar, clarity, or structure. Prompting AI for ideas or to help brainstorm — provided you verify all information independently.",
+  "evidenceLocator": "Section: What May Be Permitted (with Caution)",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Use of Generative AI Tools in Assessment: Guidance for ANU Law Students",
+    "sourceUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "33a276e33e05ed354e65cd8ecc137385c1cf60fdeb318386013dd45e918079de",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-anu-012",
+  "sourceCandidateId": "cand-anu-012",
+  "fetchAttemptId": "fetch-anu-012",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/wp-content/uploads/2024/06/Chat_GPT_FAQ-1.pdf",
+  "finalUrl": "https://learningandteaching.anu.edu.au/wp-content/uploads/2024/06/Chat_GPT_FAQ-1.pdf",
+  "sourceTitle": "Chat GPT and other generative AI tools: What ANU academics need to know (PDF)",
+  "sourceLanguage": "en",
+  "contentHash": "9b6964b1e0bb6f87afb1dc13e1d006206e3536cc84aaded5e0a694e0761927d0",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-012.txt",
+  "rawArtifactPaths": []
+}

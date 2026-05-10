@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-u-tokyo-006b",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "claimType": "procurement",
+  "claimText": "UTokyo provides AI features embedded in multiple platforms (Zoom AI Companion, Slack AI, Cisco AI Assistant, Slido AI, Copilot in Teams) through university-wide contracts.",
+  "sourceLanguage": "ja",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-u-tokyo-006b"
+  ],
+  "citation": {
+    "citationTitle": "生成AI関連情報 - utelecon",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+    "publisher": "東京大学",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "aa11e592ae53358ad1ea4849becdaf72a5a612ed14b52b11ff5df5f07112750f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-snu-006a",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "claimType": "research",
+  "claimText": "SNU Library advises researchers to check target journal editorial policies from the planning stage, as policies vary on whether LLMs can be listed as authors and whether AI-generated text is permitted.",
+  "sourceLanguage": "ko",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-snu-006a"
+  ],
+  "citation": {
+    "citationTitle": "AI 도구의 활용",
+    "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079698",
+    "publisher": "서울대학교 도서관",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "f625463cd1e0ac6ba684ccd1b0549a44f214718ff661b8fb9f88bd7bf8b3807d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

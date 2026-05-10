@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-snu-003a",
+  "claimId": "claim-snu-003a",
+  "sourceSnapshotId": "snap-snu-003",
+  "sourceUrl": "https://snurnd.snu.ac.kr/?q=board/bd011/view/12792",
+  "finalUrl": "https://snurnd.snu.ac.kr/?q=board/bd011/view/12792",
+  "sourceTitle": "서울대학교 AI 가이드라인 SNU AI Guidelines",
+  "sourceLanguage": "ko",
+  "snapshotHash": "48cccf1f828a291d65e0344a880e305a241291f6fcf9c3704ef064bc66b24ce6",
+  "evidenceSnippetOriginal": "AI 도구의 목적 및 특성을 이해하고 비판적 사고를 바탕으로 창의성과 사회적 책임이 균형있게 확보되도록 활용하는 기본 원칙 제시",
+  "evidenceLocator": "Announcement body",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "서울대학교 AI 가이드라인 SNU AI Guidelines",
+    "sourceUrl": "https://snurnd.snu.ac.kr/?q=board/bd011/view/12792",
+    "publisher": "Seoul National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "48cccf1f828a291d65e0344a880e305a241291f6fcf9c3704ef064bc66b24ce6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "Presents basic principles for AI use ensuring creativity and social responsibility are balanced, based on understanding AI tool purposes and characteristics and critical thinking."
+}

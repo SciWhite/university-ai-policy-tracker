@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-anu-007",
+  "sourceCandidateId": "cand-anu-007",
+  "fetchAttemptId": "fetch-anu-007",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/generative-ai-and-assessment/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resource-collection/generative-ai-and-assessment/",
+  "sourceTitle": "Generative AI and Assessment - ANU Learning and Teaching",
+  "sourceLanguage": "en",
+  "contentHash": "619f3a5b59f983e211f6c4da9fb11a74fe4b27cf6e8a11adc366cdd00928bdbb",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-007.txt",
+  "rawArtifactPaths": []
+}

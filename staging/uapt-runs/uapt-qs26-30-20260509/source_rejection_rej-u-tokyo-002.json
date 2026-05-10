@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-u-tokyo-002",
+  "sourceCandidateId": "cand-u-tokyo-rej-002",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://ifi.u-tokyo.ac.jp/en/news/11943/",
+  "finalUrl": "https://ifi.u-tokyo.ac.jp/en/news/11943/",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "crawl-designer",
+  "notes": "IFI policy recommendation on responsible AI deployment. Research institute publication, not university-wide institutional policy."
+}

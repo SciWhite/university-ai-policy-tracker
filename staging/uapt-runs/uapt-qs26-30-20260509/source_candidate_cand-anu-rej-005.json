@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-rej-005",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://anulib.anu.edu.au/news-events/news/ai-scholarly-publishing-and-best-practice",
+  "sourceTitle": "Library news article about AI scholarly publishing guide. News-only, links to the guide but is not itself policy content.",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-09T22:20:00.000Z",
+  "officialDomainConfidence": 0.3,
+  "aiRelevanceScore": 0.1,
+  "policySpecificityScore": 0.1,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "verificationNotes": "Auto-created for rejection reference cand-anu-rej-005",
+  "robotsPolicy": "respect"
+}

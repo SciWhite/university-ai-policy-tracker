@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-u-tokyo-006",
+  "sourceCandidateId": "cand-u-tokyo-006",
+  "fetchAttemptId": "fetch-u-tokyo-006",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+  "sourceTitle": "生成AI関連情報 - utelecon",
+  "sourceLanguage": "ja",
+  "contentHash": "aa11e592ae53358ad1ea4849becdaf72a5a612ed14b52b11ff5df5f07112750f",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-u-tokyo-006.txt",
+  "rawArtifactPaths": []
+}

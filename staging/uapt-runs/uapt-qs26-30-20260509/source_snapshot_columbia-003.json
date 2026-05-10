@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-columbia-003",
+  "sourceCandidateId": "cand-columbia-003",
+  "fetchAttemptId": "fetch-columbia-003",
+  "sourceUrl": "https://provost.columbia.edu/content/generative-ai",
+  "finalUrl": "https://provost.columbia.edu/content/generative-ai",
+  "sourceTitle": "Generative AI - Office of the Provost - Columbia University",
+  "sourceLanguage": "en",
+  "contentHash": "6b67d5eac87a042937279463b6baf1eeeea610cd3947b8cac7b65a59ad792fdd",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-columbia-003.txt",
+  "rawArtifactPaths": []
+}

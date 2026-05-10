@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-columbia-002a",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "claimType": "source_status",
+  "claimText": "Columbia's Center for Teaching and Learning maintains a central AI Guidelines hub linking to the Provost's policy, academic integrity resources, CUIT resources, and best practices for responsible AI use.",
+  "sourceLanguage": "en",
+  "confidence": 0.75,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-columbia-002a"
+  ],
+  "citation": {
+    "citationTitle": "Columbia University AI Guidelines",
+    "sourceUrl": "https://ai.ctl.columbia.edu/explore/columbia-guidelines/",
+    "publisher": "Columbia Center for Teaching and Learning",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "fecc9e9b8b4b43144a67be761f61bb13ca7eb11de76a95098c57d3b38069f548",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-011c",
+  "claimId": "claim-anu-011c",
+  "sourceSnapshotId": "snap-anu-011",
+  "sourceUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+  "finalUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+  "sourceTitle": "AI Guidelines for CAP Students",
+  "sourceLanguage": "en",
+  "snapshotHash": "c67228d0669efc705a646637a03ea29ab21c27a1113b0f13b07c2ea980e37619",
+  "evidenceSnippetOriginal": "For non-language courses: Translation is not a neutral act... students should actively check with a convenor whether using generative AI or some other translation system is appropriate. For any language course: There is a very strong presumption against any use of generative AI or other translation program.",
+  "evidenceLocator": "Section: A note on translation and generative AI",
+  "evidenceType": "official_source",
+  "relevance": 0.85,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Guidelines for CAP Students",
+    "sourceUrl": "https://asiapacific.anu.edu.au/ai-guidelines-cap-students",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "c67228d0669efc705a646637a03ea29ab21c27a1113b0f13b07c2ea980e37619",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

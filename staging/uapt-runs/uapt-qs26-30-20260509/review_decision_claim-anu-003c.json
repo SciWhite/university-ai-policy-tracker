@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "review_decision",
+  "decisionId": "rd-claim-anu-003c",
+  "claimId": "claim-anu-003c",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence supports claim. Source verified, hash consistent, taxonomy valid.",
+  "decidedAt": "2026-05-10T00:12:41Z"
+}

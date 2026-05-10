@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-snu-002",
+  "sourceCandidateId": "cand-snu-002",
+  "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "finalUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1948,
+  "contentHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-snu-002.txt"
+}

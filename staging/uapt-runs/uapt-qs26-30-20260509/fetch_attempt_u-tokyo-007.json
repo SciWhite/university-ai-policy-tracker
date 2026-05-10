@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-u-tokyo-007",
+  "sourceCandidateId": "cand-u-tokyo-007",
+  "sourceUrl": "https://www.u-tokyo.ac.jp/content/400235702.pdf",
+  "finalUrl": "https://www.u-tokyo.ac.jp/content/400235702.pdf",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "error",
+  "errorReason": "web_fetch failed to connect to URL",
+  "durationMs": 5000
+}

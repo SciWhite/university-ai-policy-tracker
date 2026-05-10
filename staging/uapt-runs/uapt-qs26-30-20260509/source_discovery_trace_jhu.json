@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-jhu-uapt-qs26-30",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "startedAt": "2026-05-09T22:17:00.000Z",
+  "endedAt": "2026-05-09T22:22:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "canonical_domain",
+      "domain": "jhu.edu",
+      "notes": "Primary domain: jhu.edu. Key subdomains: teaching.jhu.edu, engineering.jhu.edu, ep.jhu.edu, brand.jhu.edu, wseit.engineering.jhu.edu, ii.library.jhu.edu, imagine.jhu.edu, support.cmts.jhu.edu, guides.library.jhu.edu"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:jhu.edu \"generative AI\" policy",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: Teaching@JHU generative AI guidance and guidelines pages, JHU Press generative AI policy for authors (PDF), EP faculty-facing guidance, Engineering student use of generative AI, brand AI guidelines."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:jhu.edu \"ChatGPT\" \"academic integrity\"",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: Sheridan Library ChatGPT introduction, Engineering academic integrity page, Teaching@JHU resources."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:jhu.edu \"AI tools\" OR \"Copilot\" policy guidelines",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: Teaching@JHU guidelines and syllabus statements, WSEIT generative AI/CoPilot info, CMTS AI tools guide, library AI research guide, brand AI page."
+    },
+    {
+      "method": "site_search",
+      "domain": "teaching.jhu.edu",
+      "notes": "Cloudflare WAF blocks HTTP fetch. Search results confirm pages exist: /university-teaching-policies/generative-ai/ and /university-teaching-policies/generative-ai/guidelines/"
+    },
+    {
+      "method": "site_search",
+      "domain": "engineering.jhu.edu",
+      "notes": "Cloudflare WAF blocks HTTP fetch. Search results confirm: /ctld/chatgpt/ hub, student use page, academic integrity page, AI tools page."
+    },
+    {
+      "method": "url_normalization",
+      "notes": "JHU subdomains (teaching.jhu.edu, engineering.jhu.edu, ep.jhu.edu, press.jhu.edu) are behind Cloudflare WAF. HTTP fetch returns 403. These pages require browser-based access. wseit.engineering.jhu.edu and support.cmts.jhu.edu may also be blocked. Pages confirmed to exist via search results."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "cand-jhu-001",
+    "cand-jhu-002",
+    "cand-jhu-003",
+    "cand-jhu-004",
+    "cand-jhu-005",
+    "cand-jhu-006",
+    "cand-jhu-007",
+    "cand-jhu-008"
+  ],
+  "rejectionIds": [
+    "rej-jhu-001",
+    "rej-jhu-002"
+  ],
+  "summary": "JHU has comprehensive AI guidance distributed across multiple subdomains. Teaching@JHU (teaching.jhu.edu) is the central hub with generative AI tool guidance, detailed guidelines, and syllabus statements. Engineering (engineering.jhu.edu) has a dedicated ChatGPT/CTLD hub. JHU Press has a formal generative AI policy for authors (PDF). EP (ep.jhu.edu) has faculty-facing guidance. Most JHU subdomains are behind Cloudflare WAF, requiring browser-based access for crawl-worker. 6 verified sources identified, all marked needs_browser due to Cloudflare WAF."
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-anu-uapt-qs26-30",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "startedAt": "2026-05-09T22:17:00.000Z",
+  "endedAt": "2026-05-09T22:22:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "canonical_domain",
+      "domain": "anu.edu.au",
+      "notes": "Primary domain: anu.edu.au. Key subdomains: learningandteaching.anu.edu.au, www.anu.edu.au, law.anu.edu.au, libguides.anu.edu.au, physics.anu.edu.au, asiapacific.anu.edu.au"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:anu.edu.au \"generative AI\" policy",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: student guide, law assessment guidance, data governance, library guide, FAQs, AI for learning and assessment, AI Essentials resource collection."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:anu.edu.au \"ChatGPT\" \"academic integrity\"",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: ChatGPT news article, ChatGPT FAQ PDF, blog posts, academic integrity slides, library guide."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:anu.edu.au \"AI tools\" teaching",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: AI Essentials, Copilot/Adobe Firefly guide, AI for learning, assessment design strategies, library guide."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"Australian National University\" \"generative AI policy\"",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found external references and policy analysis articles mentioning ANU."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:anu.edu.au \"AI principles\" OR \"institutional AI\"",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search. Found: ANU Institutional AI Principles page, AI Essentials collection, FAQs, What is AI page."
+    },
+    {
+      "method": "site_search",
+      "domain": "learningandteaching.anu.edu.au",
+      "notes": "Verified key pages: AI Principles, AI for learning and assessment, FAQs, AI Essentials, Generative AI and Assessment collection."
+    },
+    {
+      "method": "url_normalization",
+      "notes": "Verified www.anu.edu.au and learningandteaching.anu.edu.au pages return HTTP 200 with readable content. law.anu.edu.au page was not fully verified (needs_browser)."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "cand-anu-001",
+    "cand-anu-002",
+    "cand-anu-003",
+    "cand-anu-004",
+    "cand-anu-005",
+    "cand-anu-006",
+    "cand-anu-007",
+    "cand-anu-008",
+    "cand-anu-009",
+    "cand-anu-010",
+    "cand-anu-011",
+    "cand-anu-012"
+  ],
+  "rejectionIds": [
+    "rej-anu-001",
+    "rej-anu-002",
+    "rej-anu-003",
+    "rej-anu-004",
+    "rej-anu-005"
+  ],
+  "summary": "ANU has strong AI policy coverage across multiple official subdomains. Key sources: Institutional AI Principles (Academic Board endorsed June 2023), AI for learning and assessment guidance, Generative AI and Data Governance page (privacy/IT), student guide on best practice, FAQs about AI, and departmental guidance (Law). The learningandteaching.anu.edu.au subdomain is the primary hub for AI policy resources. Multiple blog posts and resource collections provide supplementary teaching guidance. Verified 7 high-quality official sources with direct AI policy content."
+}

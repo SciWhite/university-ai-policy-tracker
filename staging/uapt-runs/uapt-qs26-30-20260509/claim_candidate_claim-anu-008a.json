@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-008a",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "source_status",
+  "claimText": "ANU maintains an 'AI Essentials' resource collection for using supported AI tools while discussing best practice with students.",
+  "sourceLanguage": "en",
+  "confidence": 0.55,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-008a"
+  ],
+  "citation": {
+    "citationTitle": "AI Essentials - ANU Learning and Teaching",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resource-collection/ai-essentials/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "262332f55b5682ca4cc16b8dd5ba713b56ac063c9654d65e3d9d6f012507cea9",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

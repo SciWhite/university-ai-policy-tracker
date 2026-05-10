@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-snu-003b",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "claimType": "academic_integrity",
+  "claimText": "SNU's AI Guidelines require compliance with core ethical standards (transparency, accuracy, privacy, information security, accountability) throughout the entire AI use process, with domain-specific considerations for education, research, and administration.",
+  "sourceLanguage": "ko",
+  "confidence": 0.85,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-snu-003b"
+  ],
+  "citation": {
+    "citationTitle": "서울대학교 AI 가이드라인 SNU AI Guidelines",
+    "sourceUrl": "https://snurnd.snu.ac.kr/?q=board/bd011/view/12792",
+    "publisher": "서울대학교",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "48cccf1f828a291d65e0344a880e305a241291f6fcf9c3704ef064bc66b24ce6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

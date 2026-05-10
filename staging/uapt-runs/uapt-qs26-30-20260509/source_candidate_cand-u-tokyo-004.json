@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-u-tokyo-004",
+  "entityType": "university",
+  "entitySlug": "u-tokyo",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes/",
+  "sourceTitle": "Policy on the use of AI tools in classes - utelecon (English)",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:u-tokyo.ac.jp \"generative AI\" policy OR guidelines",
+  "discoveredAt": "2026-05-09T22:19:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "Search snippet: '[1] Try to make generative AI tools such as ChatGPT, Bing AI, and Bard do the assignments and exams you have given in the past.' English version of the AI tools policy.",
+  "robotsPolicy": "respect"
+}

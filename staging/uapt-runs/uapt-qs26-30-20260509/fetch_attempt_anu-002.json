@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-anu-002",
+  "sourceCandidateId": "cand-anu-002",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resources/ai-for-learning-and-assessment/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resources/ai-for-learning-and-assessment/",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 924,
+  "contentHash": "c7252a03435cd57b4d1a2f7804921fe0f6cb8902fbd7072a2514e3610f660996",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-002.txt"
+}

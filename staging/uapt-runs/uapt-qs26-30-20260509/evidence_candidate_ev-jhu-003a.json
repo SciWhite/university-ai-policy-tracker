@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-jhu-003a",
+  "claimId": "claim-jhu-003a",
+  "sourceSnapshotId": "snap-jhu-003",
+  "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+  "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+  "sourceTitle": "Syllabus Statements | Teaching @ JHU",
+  "sourceLanguage": "en",
+  "snapshotHash": "958188317cff3ed8f4b5da388e4a124f1867a5e1b79c160759ce8684de40ed65",
+  "evidenceSnippetOriginal": "Students are prohibited from using ChatGPT or other AI tools to generate written content for assignments. Official JHU syllabus statement template.",
+  "evidenceLocator": "Source candidate verification notes (search snippet)",
+  "evidenceType": "official_source",
+  "relevance": 0.7,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Syllabus Statements | Teaching @ JHU",
+    "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+    "publisher": "Johns Hopkins University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "958188317cff3ed8f4b5da388e4a124f1867a5e1b79c160759ce8684de40ed65",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

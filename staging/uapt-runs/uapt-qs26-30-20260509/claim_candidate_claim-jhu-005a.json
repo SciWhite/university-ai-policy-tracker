@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-jhu-005a",
+  "entityType": "university",
+  "entitySlug": "jhu",
+  "claimType": "teaching",
+  "claimText": "JHU Engineering for Professionals provides faculty-facing guidance with detailed generative AI use categories, including categories where AI may not be used in any form.",
+  "sourceLanguage": "en",
+  "confidence": 0.7,
+  "reviewState": "needs_review",
+  "evidenceIds": [
+    "ev-jhu-005a"
+  ],
+  "citation": {
+    "citationTitle": "Faculty Facing Guidance on Student Generative AI-Use",
+    "sourceUrl": "https://ep.jhu.edu/faculty-staff/preparing-to-teach/faculty-facing-guidance-on-student-generative-ai-use/",
+    "publisher": "Johns Hopkins Engineering for Professionals",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "02b5fffac1d999f76ef262ff9603abd7c01c37a329966a06020ab02b01bf63c6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

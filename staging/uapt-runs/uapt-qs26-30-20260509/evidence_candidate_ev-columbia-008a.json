@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-columbia-008a",
+  "claimId": "claim-columbia-008a",
+  "sourceSnapshotId": "snap-columbia-008",
+  "sourceUrl": "https://etc.cuit.columbia.edu/news/best-practices-responsible-ai-use-columbia-university",
+  "finalUrl": "https://etc.cuit.columbia.edu/news/best-practices-responsible-ai-use-columbia-university",
+  "sourceTitle": "Best Practices for Responsible AI Use at Columbia - CUIT",
+  "sourceLanguage": "en",
+  "snapshotHash": "ced0e7ebd38edcec1a443cc23aef4c58518805e439fbb4d2c559ebaea32aa7e4",
+  "evidenceSnippetOriginal": "CUIT university-wide best practices for responsible AI use. Referenced from ai.ctl.columbia.edu hub. Applies to faculty, students, researchers, and staff.",
+  "evidenceLocator": "Source candidate verification notes",
+  "evidenceType": "official_source",
+  "relevance": 0.6,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Best Practices for Responsible AI Use at Columbia - CUIT",
+    "sourceUrl": "https://etc.cuit.columbia.edu/news/best-practices-responsible-ai-use-columbia-university",
+    "publisher": "Columbia University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "ced0e7ebd38edcec1a443cc23aef4c58518805e439fbb4d2c559ebaea32aa7e4",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-anu-006a",
+  "claimId": "claim-anu-006a",
+  "sourceSnapshotId": "snap-anu-006",
+  "sourceUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+  "finalUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+  "sourceTitle": "Use of Generative AI Tools in Assessment: Guidance for ANU Law Students",
+  "sourceLanguage": "en",
+  "snapshotHash": "33a276e33e05ed354e65cd8ecc137385c1cf60fdeb318386013dd45e918079de",
+  "evidenceSnippetOriginal": "All work submitted for assessment at the ANU Law School must be your own independent and original work. This means that you must not use generative AI to draft your assessment content.",
+  "evidenceLocator": "Section: General Expectations",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Use of Generative AI Tools in Assessment: Guidance for ANU Law Students",
+    "sourceUrl": "https://law.anu.edu.au/use-generative-ai-tools-assessment-guidance-anu-law-students",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "33a276e33e05ed354e65cd8ecc137385c1cf60fdeb318386013dd45e918079de",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

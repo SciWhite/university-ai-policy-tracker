@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-columbia-005",
+  "sourceCandidateId": "cand-columbia-005",
+  "fetchAttemptId": "fetch-columbia-005",
+  "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+  "finalUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+  "sourceTitle": "AI and Generative Technology Use at CUIMC",
+  "sourceLanguage": "en",
+  "contentHash": "5370b6d21d358ee223320340b907194d5b5f90a0698dd128fae2e4005d5432da",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-columbia-005.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "review_decision",
+  "decisionId": "rd-claim-snu-001a",
+  "claimId": "claim-snu-001a",
+  "decision": "needs_changes",
+  "reviewState": "needs_review",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence snippet describes the SNU download page/PDF availability rather than quoting the source/PDF text; rebind to original Korean or English source text before approval.",
+  "decidedAt": "2026-05-10T00:12:41Z"
+}

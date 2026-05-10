@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-snu-007",
+  "sourceCandidateId": "cand-snu-007",
+  "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+  "finalUrl": "https://health.snu.ac.kr/%ec%9d%bc%eb%b0%98%ea%b3%b5%ec%a7%80/?mod=document&uid=5406",
+  "attemptedAt": "2026-05-09T22:32:13.120Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3741,
+  "contentHash": "3d941c521ca708ba82c9ad7ddec034f2e67f66484ee559bc080073cddf3cc8d1",
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-snu-007.txt"
+}

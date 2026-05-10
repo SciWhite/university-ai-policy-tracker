@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snap-anu-010",
+  "sourceCandidateId": "cand-anu-010",
+  "fetchAttemptId": "fetch-anu-010",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/blog/chatgpt-what-anu-academics-need-to-know/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/blog/chatgpt-what-anu-academics-need-to-know/",
+  "sourceTitle": "ChatGPT: What ANU academics need to know",
+  "sourceLanguage": "en",
+  "contentHash": "39ff7c8654292c8c3b2daf67e88f720c2499f6ffff58a1d1b3d55304447a6397",
+  "fetchedAt": "2026-05-09T22:32:13.120Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized-text://uapt-qs26-30-20260509/snap-anu-010.txt",
+  "rawArtifactPaths": []
+}

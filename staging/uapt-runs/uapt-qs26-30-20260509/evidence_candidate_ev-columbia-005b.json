@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-columbia-005b",
+  "claimId": "claim-columbia-005b",
+  "sourceSnapshotId": "snap-columbia-005",
+  "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+  "finalUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+  "sourceTitle": "AI and Generative Technology Use at CUIMC",
+  "sourceLanguage": "en",
+  "snapshotHash": "5370b6d21d358ee223320340b907194d5b5f90a0698dd128fae2e4005d5432da",
+  "evidenceSnippetOriginal": "Sensitive Data: Permitted only on the ChatGPT Education, approved Microsoft CoPilot platforms, and CU CHAT when used with compliant models. Research protocol use requires IRB, and TRAC/ACORD approval.",
+  "evidenceLocator": "Section: Data Classification and AI Use",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI and Generative Technology Use at CUIMC",
+    "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+    "publisher": "Columbia University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "5370b6d21d358ee223320340b907194d5b5f90a0698dd128fae2e4005d5432da",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

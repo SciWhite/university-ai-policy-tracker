@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-002b",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "privacy",
+  "claimText": "ANU academic staff are not permitted to upload student data or academic work to generative AI platforms.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-002b"
+  ],
+  "citation": {
+    "citationTitle": "AI for learning and assessment",
+    "sourceUrl": "https://learningandteaching.anu.edu.au/resources/ai-for-learning-and-assessment/",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "c7252a03435cd57b4d1a2f7804921fe0f6cb8902fbd7072a2514e3610f660996",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "cand-anu-005",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "sourceUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+  "finalUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+  "sourceTitle": "FAQs about AI",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:anu.edu.au \"generative AI\" policy",
+  "discoveredAt": "2026-05-09T22:18:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.65,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-09T22:19:00.000Z",
+  "verificationNotes": "HTTP 200 expected (part of learningandteaching.anu.edu.au collection). FAQs on AI use in teaching and learning, references institutional AI principles, Copilot and Adobe Firefly as endorsed tools.",
+  "robotsPolicy": "respect"
+}

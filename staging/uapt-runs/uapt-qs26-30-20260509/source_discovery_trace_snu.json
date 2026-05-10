@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-snu-uapt-qs26-30",
+  "entityType": "university",
+  "entitySlug": "snu",
+  "startedAt": "2026-05-09T22:17:00.000Z",
+  "endedAt": "2026-05-09T22:22:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "canonical_domain",
+      "domain": "snu.ac.kr",
+      "notes": "Primary domain: snu.ac.kr. Key subdomains: www.snu.ac.kr, snurnd.snu.ac.kr, libguide.snu.ac.kr, eng.snu.ac.kr, science.snu.ac.kr, health.snu.ac.kr, me.snu.ac.kr"
+    },
+    {
+      "method": "multilingual_query",
+      "query": "site:snu.ac.kr \"생성형 AI\" 정책",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search (Korean). Found: library subscription e-resource AI usage notice, copyright law paper, S-Space research papers, AIIS symposium, AI literacy libguide, admin training programs."
+    },
+    {
+      "method": "multilingual_query",
+      "query": "site:snu.ac.kr \"ChatGPT\" \"학술윤리\"",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search (Korean). Found: research ethics papers, ChatGPT workshop event, NRF recommendations, AI research ethics libguide, AI tool usage guide."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:snu.ac.kr \"generative AI\" policy",
+      "resultCount": 10,
+      "notes": "OpenCLI Google search (English). Found: Seoul National University AI Guidelines PDF (English version), SAPI Colloquium events, SNU-OpenAI symposium, GSIS syllabus with AI policy."
+    },
+    {
+      "method": "multilingual_query",
+      "query": "\"서울대학교\" \"AI 지침\" OR \"AI 가이드라인\"",
+      "resultCount": 15,
+      "notes": "OpenCLI Google search (Korean). Found: SNU AI Guidelines official download page, science faculty research data page with guidelines, snurnd guidelines page, SNU press release about guidelines (Jan 2026), news articles (Chosun, Educhang), Scribd mirror. Key finding: Seoul National University AI Guidelines published January 1, 2026."
+    },
+    {
+      "method": "site_search",
+      "domain": "www.snu.ac.kr",
+      "notes": "Verified press release page about AI Guidelines (2026-01-07). SNU downloads page hosts Korean and English PDF versions."
+    },
+    {
+      "method": "url_normalization",
+      "notes": "www.snu.ac.kr pages return HTTP 200. snurnd.snu.ac.kr hosts the guidelines page. libguide.snu.ac.kr has AI literacy and research ethics guides."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "cand-snu-001",
+    "cand-snu-002",
+    "cand-snu-003",
+    "cand-snu-004",
+    "cand-snu-005",
+    "cand-snu-006",
+    "cand-snu-007"
+  ],
+  "rejectionIds": [
+    "rej-snu-001",
+    "rej-snu-002",
+    "rej-snu-003",
+    "rej-snu-004",
+    "rej-snu-005"
+  ],
+  "summary": "SNU published its official AI Guidelines (서울대학교 AI 가이드라인) on January 1, 2026, covering education, research, and administration. The guidelines are available as PDF in Korean and English on the SNU downloads page and via snurnd.snu.ac.kr. The press release confirms the guidelines are endorsed by the university. Additional sources include the library AI literacy libguide, research ethics libguide (with NRF AI tool recommendations), and the library e-resource AI usage notice. Korean-language searches found the most relevant policy content. The guidelines PDF is the primary formal policy source."
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-u-tokyo-001e",
+  "claimId": "claim-u-tokyo-001e",
+  "sourceSnapshotId": "snap-u-tokyo-001",
+  "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/docs/ai-tools-in-classes/",
+  "finalUrl": "https://utelecon.adm.u-tokyo.ac.jp/docs/ai-tools-in-classes/",
+  "sourceTitle": "AIツールの授業における利用について（ver. 1.0）",
+  "sourceLanguage": "ja",
+  "snapshotHash": "a2d2b0215bffee212da1f1ac8327c3005394815ca2e83d64ceb82da219300ca3",
+  "evidenceSnippetOriginal": "AIによって生成された文章であるかの検出ツールは過信しない。生成ツール自身が急速に変化する中で過信はできませんし、ましてや学生が不正に言語生成系AIを利用した証拠としては不十分であるという認識を持っていただきたいと思います。",
+  "evidenceLocator": "Section: [5]",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AIツールの授業における利用について（ver. 1.0）",
+    "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/docs/ai-tools-in-classes/",
+    "publisher": "The University of Tokyo",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "a2d2b0215bffee212da1f1ac8327c3005394815ca2e83d64ceb82da219300ca3",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "evidenceSnippetDisplay": "Do not over-rely on AI detection tools. They cannot be trusted as the generators themselves change rapidly, and their judgments are insufficient as evidence of inappropriate AI use by students."
+}

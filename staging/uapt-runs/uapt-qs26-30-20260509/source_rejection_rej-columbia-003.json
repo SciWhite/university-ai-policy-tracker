@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rej-columbia-003",
+  "sourceCandidateId": "cand-columbia-rej-003",
+  "entityType": "university",
+  "entitySlug": "columbia",
+  "sourceUrl": "https://www.cuit.columbia.edu/content/chatgpt-education",
+  "finalUrl": "https://www.cuit.columbia.edu/content/chatgpt-education",
+  "rejectedAt": "2026-05-09T22:20:00.000Z",
+  "rejectionReason": "generic_home_page",
+  "checkedBy": "crawl-designer",
+  "notes": "CUIT ChatGPT Education page. Generic service page without substantive policy content. The CUIT best practices page (cand-columbia-008) is the better source."
+}

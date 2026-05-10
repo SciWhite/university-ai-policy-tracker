@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-qs26-30-20260509",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-anu-004c",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "claimType": "ai_tool_treatment",
+  "claimText": "ANU provides Copilot Enterprise and Adobe Firefly as enterprise-licensed AI tools with data protection for staff and students using ANU accounts.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "machine_candidate",
+  "evidenceIds": [
+    "ev-anu-004c"
+  ],
+  "citation": {
+    "citationTitle": "Guide for students: best practice when using Generative AI",
+    "sourceUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+    "publisher": "Australian National University",
+    "retrievedAt": "2026-05-09T22:32:13.120Z",
+    "snapshotHash": "b5616e0b939d44603d47e4ff7f21cbd0c0df79b2b24c97b9bc447f6af2ec432f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}
