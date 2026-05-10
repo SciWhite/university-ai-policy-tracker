@@ -9,6 +9,7 @@ import {
 import { ClaimEvidenceCard } from "@/components/claim-evidence-card";
 import { EntityHeader } from "@/components/entity-header";
 import { EntitySidebar } from "@/components/entity-sidebar";
+import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { ReferenceTabs } from "@/components/reference-tabs";
@@ -80,9 +81,51 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   const candidateClaims = publicSummary.claims.filter(
     (claim) => !isReviewedClaim(claim.reviewState)
   );
+  const policyStatus = getPolicyStatus(
+    reviewedClaims.length,
+    candidateClaims.length,
+    publicSummary.officialSources.length
+  );
+  const canonicalUrl = publicSummary.publicPageUrl ?? publicSummary.canonicalUrl;
 
   return (
     <main className="page-shell page-shell--wide">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: publicSummary.citationTitle,
+          description: publicSummary.summary,
+          url: canonicalUrl,
+          dateModified:
+            publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt,
+          isPartOf: {
+            "@type": "WebSite",
+            name: "University AI Policy Tracker",
+            url: getAbsoluteSiteUrl("/")
+          },
+          mainEntity: {
+            "@type": "Dataset",
+            name: publicSummary.citationTitle,
+            description: publicSummary.summary,
+            url: canonicalUrl,
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            isAccessibleForFree: true,
+            creator: {
+              "@type": "Organization",
+              name: "University AI Policy Tracker",
+              url: getAbsoluteSiteUrl("/")
+            },
+            distribution: {
+              "@type": "DataDownload",
+              name: `${publicSummary.entity.name} public JSON record`,
+              encodingFormat: "application/json",
+              contentUrl: publicJsonUrl
+            }
+          }
+        }}
+      />
+
       <EntityHeader
         actions={
           <>
@@ -132,20 +175,35 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           <ReferenceBox
             description={`${publicSummary.schemaVersion} public contract`}
             id="overview"
-            title="Citation-ready overview"
+            title="Short answer"
           >
             <p>{publicSummary.summary}</p>
             <div className="tag-row">
-              <MetaLabel label="Reviewed claims">{reviewedClaims.length}</MetaLabel>
-              <MetaLabel label="Candidate claims">{candidateClaims.length}</MetaLabel>
+              <MetaLabel label="Policy status">{policyStatus}</MetaLabel>
+              <StateLabel reviewState={publicSummary.reviewState} />
+              <MetaLabel label="Claims">{publicSummary.claims.length}</MetaLabel>
+              <MetaLabel label="Reviewed">{reviewedClaims.length}</MetaLabel>
+              <MetaLabel label="Candidate">{candidateClaims.length}</MetaLabel>
               <MetaLabel label="Official sources">
                 {publicSummary.officialSources.length}
               </MetaLabel>
             </div>
             <p className="muted">
-              Candidate claims are source-backed records pending review. They are
-              not final policy conclusions and are not legal or academic integrity
-              advice.
+              This reference record summarizes visible public data only.
+              Official sources and original-language evidence remain canonical;
+              confidence is separate from review state.
+            </p>
+            {candidateClaims.length ? (
+              <p className="notice-card">
+                This record includes candidate or needs-review claims. Candidate
+                claims are source-backed workflow records, not final policy
+                conclusions.
+              </p>
+            ) : null}
+            <p className="notice-card">
+              This page is not legal advice, not academic integrity advice, and
+              not an official university statement unless a linked source is the
+              university&apos;s own official page.
             </p>
           </ReferenceBox>
 
@@ -278,6 +336,18 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
 function isReviewedClaim(reviewState: string): boolean {
   return reviewState === "agent_reviewed" || reviewState === "human_reviewed";
+}
+
+function getPolicyStatus(
+  reviewedClaimCount: number,
+  candidateClaimCount: number,
+  sourceCount: number
+): string {
+  if (reviewedClaimCount > 0) return "Reviewed source-backed record";
+  if (candidateClaimCount > 0) return "Candidate source-backed record";
+  if (sourceCount > 0) return "Source-attributed record";
+
+  return "No public claim record yet";
 }
 
 function resolveUrl(pathOrUrl: string, baseUrl: string): string {

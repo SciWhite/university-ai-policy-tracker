@@ -2,6 +2,11 @@ import type { MetadataRoute } from "next";
 import type { CatalogPolicySource } from "@uapt/shared";
 import { getCatalogUniversities } from "@/lib/catalog";
 import { getChangeRecords } from "@/lib/change-records";
+import {
+  rankingLandingSpecs,
+  regionLandingSpecs,
+  themeLandingSpecs
+} from "@/lib/reference-pages";
 import { getSiteBaseUrl } from "../lib/site-url";
 
 const staticRoutes = [
@@ -16,6 +21,12 @@ const staticRoutes = [
   "/changes"
 ] as const;
 
+const referenceRoutes = [
+  ...rankingLandingSpecs.map((spec) => `/rankings/${spec.slug}`),
+  ...regionLandingSpecs.map((spec) => `/regions/${spec.slug}`),
+  ...themeLandingSpecs.map((spec) => `/themes/${spec.slug}`)
+] as const;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteBaseUrl();
   const now = new Date();
@@ -24,6 +35,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticRoutes.map((route) => ({
+      url: new URL(route, baseUrl).toString(),
+      lastModified: now
+    })),
+    ...referenceRoutes.map((route) => ({
       url: new URL(route, baseUrl).toString(),
       lastModified: now
     })),

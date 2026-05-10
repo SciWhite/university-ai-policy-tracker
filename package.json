@@ -16,6 +16,7 @@
     "lint": "pnpm -r lint",
     "check": "pnpm db:generate && pnpm validate:public-contract && pnpm validate:openclaw-artifacts && pnpm validate:dataset-release && pnpm audit:public-data && pnpm typecheck && pnpm lint",
     "smoke:universities-index": "tsx scripts/smoke-universities-index.ts",
+    "smoke:reference-pages": "tsx scripts/smoke-reference-pages.ts",
     "typecheck": "pnpm -r typecheck",
     "audit:public-data": "tsx scripts/audit-public-data.ts",
     "validate:public-contract": "tsx scripts/validate-public-contract.ts",

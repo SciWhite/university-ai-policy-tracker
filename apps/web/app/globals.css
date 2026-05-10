@@ -702,8 +702,22 @@ h3 {
   width: 100%;
 }
 
+.reference-table-wrap {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow-x: auto;
+}
+
+.reference-table {
+  display: table;
+  min-width: 880px;
+  width: 100%;
+}
+
 .university-table th,
-.university-table td {
+.university-table td,
+.reference-table th,
+.reference-table td {
   vertical-align: top;
 }
 
@@ -711,6 +725,13 @@ h3 {
 .university-table td:nth-child(4) {
   font-variant-numeric: tabular-nums;
   text-align: right;
+}
+
+.reference-table td:nth-child(3),
+.reference-table td:nth-child(4) {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .table-record-title {
@@ -1333,6 +1354,67 @@ h3 {
   padding: 14px;
 }
 
+.reference-record-list {
+  display: grid;
+  gap: 12px;
+}
+
+.reference-record-row {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.42fr);
+  padding: 14px;
+}
+
+.reference-record-row h2 {
+  font-size: 17px;
+  margin: 0 0 6px;
+}
+
+.reference-record-row p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 0 10px;
+}
+
+.reference-record-row__meta {
+  border-left: 1px solid var(--color-border);
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 14px;
+}
+
+.reference-record-row__meta dt {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.reference-record-row__meta dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.theme-claim-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.theme-claim-summary {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  padding: 12px;
+}
+
+.theme-claim-summary p:last-child {
+  margin-bottom: 0;
+}
+
 .source-attribution-row__meta {
   display: grid;
   gap: 10px;
@@ -1573,6 +1655,17 @@ ol.timeline-list {
 
   .docs-toc {
     position: static;
+  }
+
+  .reference-record-row {
+    grid-template-columns: 1fr;
+  }
+
+  .reference-record-row__meta {
+    border-left: 0;
+    border-top: 1px solid var(--color-border);
+    padding-left: 0;
+    padding-top: 12px;
   }
 }
 

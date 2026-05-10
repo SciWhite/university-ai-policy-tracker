@@ -75,6 +75,7 @@ export default function CitationPage() {
           <a href="#formats">Suggested formats</a>
           <a href="#fields">Citation fields</a>
           <a href="#json">Public JSON</a>
+          <a href="#ranking-sources">Ranking sources</a>
           <a href="#rights">Rights and boundaries</a>
         </aside>
 
@@ -133,6 +134,10 @@ export default function CitationPage() {
                     Versioned public JSON URL under{" "}
                     <code>/api/public/{PUBLIC_API_VERSION}</code>.
                   </li>
+                  <li>
+                    Public pages and public JSON should describe the same
+                    promoted public release record.
+                  </li>
                   <li>Schema version, currently <code>{PUBLIC_API_VERSION}</code>.</li>
                 </ul>
               </section>
@@ -184,6 +189,32 @@ export default function CitationPage() {
               path={recentChangesPath}
               url={recentChangesUrl}
             />
+          </ReferenceBox>
+
+          <ReferenceBox
+            description="Ranking pages are reference indexes, not policy rankings."
+            id="ranking-sources"
+            title="Ranking source citation boundaries"
+          >
+            <ul className="compact-list">
+              <li>
+                QS 2026 currently remains the main crawl batching source.
+              </li>
+              <li>
+                THE 2026, ARWU 2025, U.S. News 2025-2026, and CWTS Leiden 2025
+                are supported as ranking, index, and filter sources.
+              </li>
+              <li>
+                CWTS Leiden 2025 is a derived metric order, not an overall
+                global university rank.
+              </li>
+              <li>
+                Do not cite mixed ranking years as one unified 2026 ranking.
+                Cite the tracker record and public JSON for policy evidence, and
+                cite the relevant ranking source separately when ranking context
+                matters.
+              </li>
+            </ul>
           </ReferenceBox>
 
           <ReferenceBox

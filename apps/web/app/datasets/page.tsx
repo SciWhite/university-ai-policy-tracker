@@ -85,6 +85,13 @@ const githubTrustAssets = [
   }
 ] as const;
 
+const rankingSourceBoundaries = [
+  "QS 2026 currently remains the main crawl batching source for expanding coverage.",
+  "THE 2026, ARWU 2025, U.S. News 2025-2026, and CWTS Leiden 2025 are supported as ranking, index, and filter sources.",
+  "CWTS Leiden 2025 is a derived metric order, not an overall global university rank.",
+  "Different ranking years are not presented as one unified 2026 ranking."
+] as const;
+
 export function generateMetadata() {
   const canonical = getAbsoluteSiteUrl("/datasets");
 
@@ -217,6 +224,8 @@ export default async function DatasetsPage() {
           The current distribution layer is versioned public JSON under{" "}
           <code>/api/public/{PUBLIC_API_VERSION}</code>. Tracker metadata is open
           licensed; official source documents retain their original rights.
+          Public pages and public JSON are built from the same promoted release
+          dataset.
         </p>
       </section>
 
@@ -305,6 +314,23 @@ export default async function DatasetsPage() {
             url={artifact.url}
           />
         ))}
+      </ReferenceBox>
+
+      <ReferenceBox
+        description="Ranking sources are discovery and filtering inputs, not policy conclusions."
+        title="Ranking and index boundaries"
+      >
+        <ul className="compact-list">
+          {rankingSourceBoundaries.map((boundary) => (
+            <li key={boundary}>{boundary}</li>
+          ))}
+        </ul>
+        <p>
+          Ranking rows can help users browse public records, but the evidence
+          model remains claim-first: official sources, source snapshot hashes,
+          original-language evidence, confidence, and review state determine what
+          appears in public JSON and university pages.
+        </p>
       </ReferenceBox>
 
       <ReferenceBox

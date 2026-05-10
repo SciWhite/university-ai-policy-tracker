@@ -109,6 +109,7 @@ export default function MethodologyPage() {
         <aside className="docs-toc" aria-label="Methodology sections">
           <a href="#workflow">Evidence workflow</a>
           <a href="#review-states">Review states</a>
+          <a href="#ranking-boundaries">Ranking boundaries</a>
           <a href="#publication-rules">Publication rules</a>
           <a href="#limitations">Limitations</a>
         </aside>
@@ -145,6 +146,36 @@ export default function MethodologyPage() {
           </ReferenceBox>
 
           <ReferenceBox
+            description="Ranking rows help prioritize and filter source discovery. They are not policy claims."
+            id="ranking-boundaries"
+            title="Ranking and index boundaries"
+          >
+            <ul className="compact-list">
+              <li>
+                QS 2026 currently remains the main crawl batching source for
+                expanding public coverage.
+              </li>
+              <li>
+                THE 2026, ARWU 2025, U.S. News 2025-2026, and CWTS Leiden 2025
+                are supported as ranking, index, and filter sources.
+              </li>
+              <li>
+                CWTS Leiden 2025 is a derived metric order, not an overall
+                global university rank.
+              </li>
+              <li>
+                Different ranking years are not presented as one unified 2026
+                ranking.
+              </li>
+              <li>
+                Ranking data does not create or override policy claims; visible
+                claims still require official sources, evidence snippets,
+                confidence, and review state.
+              </li>
+            </ul>
+          </ReferenceBox>
+
+          <ReferenceBox
             description="What must exist before a claim is public."
             id="publication-rules"
             title="Publication rules"
@@ -155,6 +186,10 @@ export default function MethodologyPage() {
               <li>Original-language evidence is canonical; translation is display-only.</li>
               <li>Canonical facts and localized display must remain separate.</li>
               <li>Candidate claims must be labeled and must not be used as final summaries.</li>
+              <li>
+                Public pages and <code>/api/public/v1</code> JSON should be
+                generated from the same promoted public release dataset.
+              </li>
               <li>Official source documents retain their original rights and terms.</li>
             </ul>
           </ReferenceBox>
