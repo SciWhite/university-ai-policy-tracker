@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-002",
+  "sourceCandidateId": "SC-002",
+  "fetchAttemptId": "FA-002",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+  "finalUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+  "sourceTitle": "Approved Tools | AI Hub - StaffNet - The University of Manchester",
+  "sourceLanguage": "en",
+  "contentHash": "50d483be513f2470d669656fcbe997eb1eeb617dd6f924cf1aa943c1109069fb",
+  "fetchedAt": "2026-05-10T14:12:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "discoveredAt": "2026-05-10T14:05:00Z",
+  "verifiedAt": "2026-05-10T14:14:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-003",
+  "sourceUrl": "https://www.teachingcollege.fse.manchester.ac.uk/artificial-intelligence-and-teaching-and-learning/",
+  "sourceTitle": "Artificial Intelligence and Teaching and Learning - Teaching College",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:manchester.ac.uk \"artificial intelligence\" teaching learning assessment",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verificationNotes": "FSE Teaching College guidance for staff on using GenAI in teaching and learning. Covers core principles, recommended tools, practical uses, AI-resilient assessment design, academic integrity. Links to university-wide policies."
+}

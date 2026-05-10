@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceRejectionId": "uapt-monash-20260510-sr-004",
+  "sourceCandidateId": "uapt-monash-20260510-sc-010",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/genai-services-currently-offered",
+  "rejectedAt": "2026-05-10T14:07:30.000Z",
+  "rejectionReason": "inaccessible",
+  "checkedBy": "openclaw-agent",
+  "notes": "GenAI services page returned HTTP 403 Forbidden with Cloudflare WAF challenge. Content behind access control."
+}

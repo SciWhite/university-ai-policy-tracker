@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-010",
+  "claimId": "CL-010",
+  "sourceSnapshotId": "SS-006",
+  "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/doctoral-assessment",
+  "sourceTitle": "Generative AI: Guidance for doctoral students, supervisors and examiners",
+  "sourceLanguage": "en",
+  "snapshotHash": "7a1dd2b317bc654cd4834c6dcd738cf2b2f1334c0d29a89e641af8466c836601",
+  "evidenceSnippetOriginal": "Must not upload any part of a student's thesis into a generative AI tool, or make use of external generative AI detection software when assessing the thesis.",
+  "evidenceLocator": "Doctoral assessment > Principles for generative AI use by doctoral researchers at King's > Examiners",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI: Guidance for doctoral students, supervisors and examiners",
+    "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/doctoral-assessment",
+    "publisher": "King's College London",
+    "retrievedAt": "2026-05-10T12:00:00Z",
+    "snapshotHash": "7a1dd2b317bc654cd4834c6dcd738cf2b2f1334c0d29a89e641af8466c836601",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

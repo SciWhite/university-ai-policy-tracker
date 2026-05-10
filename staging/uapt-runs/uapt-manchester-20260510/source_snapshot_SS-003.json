@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-003",
+  "sourceCandidateId": "SC-003",
+  "fetchAttemptId": "FA-003",
+  "sourceUrl": "https://www.teachingcollege.fse.manchester.ac.uk/artificial-intelligence-and-teaching-and-learning/",
+  "finalUrl": "https://www.teachingcollege.fse.manchester.ac.uk/artificial-intelligence-and-teaching-and-learning/",
+  "sourceTitle": "Artificial Intelligence and Teaching and Learning - Teaching College",
+  "sourceLanguage": "en",
+  "contentHash": "56f25e3d61e4348ddecae7547fbe6ea24094002b8edaedd19d400a08fd47f8c8",
+  "fetchedAt": "2026-05-10T14:14:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

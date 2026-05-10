@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "evidenceId": "uapt-cuhk-20260510-ev-011",
+  "claimId": "uapt-cuhk-20260510-cl-011",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-003",
+  "sourceUrl": "https://libguides.lib.cuhk.edu.hk/AI_Education_and_Research",
+  "finalUrl": "https://libguides.lib.cuhk.edu.hk/AI_Education_and_Research",
+  "sourceTitle": "Using AI in Education and Research - CUHK Library LibGuides",
+  "sourceLanguage": "en",
+  "snapshotHash": "d4c6050e7d91078d231b6407ab765000f7ef65c4b7786a4599c71d6d0a6cc25a",
+  "evidenceSnippetOriginal": "Be aware of the terms of use and privacy policies of AI platforms. Choose to opt-out to prompt information from being used for program development, if possible... it is advisable to refrain from inputting confidential information into any external tools, regardless of whether they are subscribed to or recommended by the university.",
+  "evidenceLocator": "Library AI Guide, Privacy section and Security section",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using AI in Education and Research - CUHK Library LibGuides",
+    "sourceUrl": "https://libguides.lib.cuhk.edu.hk/AI_Education_and_Research",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "d4c6050e7d91078d231b6407ab765000f7ef65c4b7786a4599c71d6d0a6cc25a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

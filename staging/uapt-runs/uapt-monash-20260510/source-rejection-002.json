@@ -1,0 +1,13 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceRejectionId": "uapt-monash-20260510-sr-002",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://teaching-community.monash.edu/ai-tools/",
+  "rejectedAt": "2026-05-10T14:05:30.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "notes": "Monash Teaching Community blog post about AI tools discussions. Community blog, not official policy or guidance."
+}

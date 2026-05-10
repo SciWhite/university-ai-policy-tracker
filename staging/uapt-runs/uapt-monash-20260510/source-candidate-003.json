@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-003",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/AI-statements",
+  "sourceTitle": "AI statements - Learning and Teaching: Teach HQ - Monash University",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu \"responsible use of AI\"",
+  "discoveredAt": "2026-05-10T14:02:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:04:00.000Z",
+  "verificationNotes": "Official Monash Teach HQ page on AI statements in assessment. Covers Chief Examiner responsibility for communicating and verifying responsible use of AI.",
+  "robotsPolicy": "respect"
+}

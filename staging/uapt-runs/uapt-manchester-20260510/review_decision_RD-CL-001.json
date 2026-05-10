@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-001",
+  "claimId": "CL-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Direct quote from AI Hub Guidelines page, Teaching and Learning > University position section. Claim accurately reflects Manchester's stated position.",
+  "decidedAt": "2026-05-10T14:30:00Z"
+}

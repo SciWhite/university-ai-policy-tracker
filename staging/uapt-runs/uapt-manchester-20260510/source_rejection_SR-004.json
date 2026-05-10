@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "rejectedAt": "2026-05-10T14:10:00Z",
+  "checkedBy": "openclaw_agent",
+  "sourceRejectionId": "SR-004",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/seed/news-and-events/news/display/?id=33065",
+  "rejectionReason": "low_policy_specificity",
+  "notes": "SEED School news about new Generative AI strategy in teaching and assessment. School-specific, not university-wide policy."
+}

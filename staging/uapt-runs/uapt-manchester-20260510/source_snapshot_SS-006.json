@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-006",
+  "sourceCandidateId": "SC-006",
+  "fetchAttemptId": "FA-006",
+  "sourceUrl": "https://elearning.bmh.manchester.ac.uk/ai-guidance-for-learners/",
+  "finalUrl": "https://elearning.bmh.manchester.ac.uk/ai-guidance-for-learners/",
+  "sourceTitle": "AI Guidance for Learners - BMH Technology Enhanced Learning",
+  "sourceLanguage": "en",
+  "contentHash": "6aaa17dfcf123f32db3a163526b2c3ac341e88dc6310d2022cdbf385a8f64d9a",
+  "fetchedAt": "2026-05-10T14:20:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

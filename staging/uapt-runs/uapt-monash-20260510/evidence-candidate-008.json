@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "evidenceId": "uapt-monash-20260510-ev-008",
+  "claimId": "uapt-monash-20260510-cl-008",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-008",
+  "sourceUrl": "https://www.monash.edu/graduate-research/support-and-resources/guidance-on-generative-ai",
+  "finalUrl": "https://www.monash.edu/graduate-research/support-and-resources/guidance-on-generative-ai",
+  "sourceTitle": "Guidance on Generative AI - Graduate Research - Monash University",
+  "sourceLanguage": "en",
+  "snapshotHash": "ce7114455cf73c84f6ef2e2f8506e7f7f055c3917f2c7b5899cd9fe58c5475fa",
+  "evidenceSnippetOriginal": "To preserve the confidentiality of thesis examination, examiners are not permitted to use Generative AI technologies (such as ChatGPT) during the thesis examination process to support, prepare or write their examiners' report.",
+  "evidenceLocator": "Graduate Research GenAI guidance page, Thesis Examination section",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidance on Generative AI - Graduate Research - Monash University",
+    "sourceUrl": "https://www.monash.edu/graduate-research/support-and-resources/guidance-on-generative-ai",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:11:30.000Z",
+    "snapshotHash": "ce7114455cf73c84f6ef2e2f8506e7f7f055c3917f2c7b5899cd9fe58c5475fa",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-009"],
+  "citation": {
+    "citationTitle": "Guidelines | AI Hub - StaffNet - The University of Manchester",
+    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:10:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-009",
+  "claimType": "teaching",
+  "claimText": "Using an AI tool to correct grammar or spelling is acceptable at Manchester, but students should ensure that use of the tool does not result in substantive changes to the content or meaning of their work.",
+  "confidence": 0.95
+}

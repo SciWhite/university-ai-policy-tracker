@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "rejectedAt": "2026-05-10T14:10:00Z",
+  "checkedBy": "openclaw_agent",
+  "sourceRejectionId": "SR-003",
+  "sourceUrl": "https://research.manchester.ac.uk/en/publications/exploring-the-affordances-of-generative-ai-in-academic-writing-fo-2/",
+  "rejectionReason": "research_showcase_only",
+  "notes": "Research publication page about GenAI in academic writing. Pure research output, not institutional policy or guidance."
+}

@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "decisionId": "uapt-monash-20260510-rd-001",
+  "claimId": "uapt-monash-20260510-cl-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim text matches evidence snippet exactly. Source is official Monash Teach HQ page.",
+  "decidedAt": "2026-05-10T14:20:00.000Z"
+}

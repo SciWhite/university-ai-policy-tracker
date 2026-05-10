@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-004"],
+  "citation": {
+    "citationTitle": "Using Generative AI in Your Work: Guidance for Staff",
+    "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-staff",
+    "publisher": "University of Edinburgh",
+    "retrievedAt": "2026-05-10T12:09:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-004",
+  "claimType": "academic_integrity",
+  "claimText": "The University of Edinburgh advises staff not to rely on AI detection tools to confirm authorship, as they misclassify human and AI content.",
+  "confidence": 0.95
+}

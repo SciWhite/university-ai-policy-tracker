@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "kcl",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "EV-010"
+  ],
+  "citation": {
+    "citationTitle": "King's College London AI Guidance",
+    "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance",
+    "publisher": "King's College London",
+    "retrievedAt": "2026-05-10T12:00:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-010",
+  "claimType": "research",
+  "claimText": "King's College London doctoral examiners must not upload any part of a student's thesis into a generative AI tool or use external AI detection software when assessing the thesis.",
+  "confidence": 0.9
+}

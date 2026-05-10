@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-003",
+  "sourceCandidateId": "SC-003",
+  "fetchAttemptId": "FA-003",
+  "sourceUrl": "https://www.ed.ac.uk/ai/guidance",
+  "finalUrl": "https://www.ed.ac.uk/ai/guidance",
+  "sourceTitle": "Guidance for students and staff on AI use",
+  "sourceLanguage": "en",
+  "contentHash": "cdd5f419599a526ecde8e9658e02c6e96ae64f441317b56f29a2ef7baa1df180",
+  "fetchedAt": "2026-05-10T12:10:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

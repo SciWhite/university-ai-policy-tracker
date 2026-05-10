@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "kcl",
+  "discoveredAt": "2026-05-10T12:00:00Z",
+  "verifiedAt": "2026-05-10T12:00:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-006",
+  "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/doctoral-assessment",
+  "sourceTitle": "Generative AI: Guidance for doctoral students, supervisors and examiners",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:kcl.ac.uk \"AI tools\" teaching academic integrity",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official KCL doctoral AI guidance. Covers permitted use, declaration, examiner restrictions. Published Oct 2023, updated April 2025."
+}

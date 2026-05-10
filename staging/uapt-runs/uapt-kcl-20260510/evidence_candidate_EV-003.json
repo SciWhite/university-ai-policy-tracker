@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-003",
+  "claimId": "CL-003",
+  "sourceSnapshotId": "SS-002",
+  "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+  "sourceTitle": "Generative AI - Student guidance",
+  "sourceLanguage": "en",
+  "snapshotHash": "de7e5bc7b74c4cb2793a5aa5fa10833903a495498accbd3da32eaac9e5f4cc23",
+  "evidenceSnippetOriginal": "King's College London, unlike some other universities, does not require students to reference generative AI as an authoritative source in the reference list for much the same reason you would not be expected to cite a search engine, a student essay website or be over-dependent on synoptic, secondary source material. However, as we learn more about the capabilities and limitations of these tools and as we work together to evolve our own critical AI literacies, we do expect you to be explicit in acknowledging your use of generative AI tools such as Microsoft Copilot (available via your KCL account), Google Gemini, ChatGPT or any other media generated through other generative AI tools.",
+  "evidenceLocator": "Student guidance > How do I acknowledge use of generative AI?",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI - Student guidance",
+    "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+    "publisher": "King's College London",
+    "retrievedAt": "2026-05-10T12:00:00Z",
+    "snapshotHash": "de7e5bc7b74c4cb2793a5aa5fa10833903a495498accbd3da32eaac9e5f4cc23",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

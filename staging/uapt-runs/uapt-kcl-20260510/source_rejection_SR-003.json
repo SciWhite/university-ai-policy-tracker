@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "kcl",
+  "rejectedAt": "2026-05-10T12:00:00Z",
+  "checkedBy": "openclaw_agent",
+  "sourceRejectionId": "SR-003",
+  "sourceUrl": "https://www.kcl.ac.uk/law/assets/policy-brief-sustainable-data-ecosystems-genai.pdf",
+  "rejectionReason": "low_policy_specificity",
+  "notes": "Law school policy brief on data ecosystems and copyright. Not student-facing AI policy guidance."
+}

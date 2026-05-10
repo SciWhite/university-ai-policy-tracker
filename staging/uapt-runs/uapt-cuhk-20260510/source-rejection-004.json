@@ -1,0 +1,13 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceRejectionId": "uapt-cuhk-20260510-sr-004",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://mobitec.ie.cuhk.edu.hk/ierg5050Fall2025/",
+  "rejectedAt": "2026-05-10T12:04:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "notes": "Individual course (IERG5050) policy on Generative AI. Course-level, not university-wide policy."
+}

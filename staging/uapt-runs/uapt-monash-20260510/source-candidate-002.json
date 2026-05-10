@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-002",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/responsible-use",
+  "sourceTitle": "Responsible use of AI in education at Monash - Learning and Teaching",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu \"responsible use of AI\"",
+  "discoveredAt": "2026-05-10T14:01:30.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.93,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:03:30.000Z",
+  "verificationNotes": "Official Monash Teach HQ page on responsible use of AI. Covers explainability requirements and Chief Examiner responsibilities.",
+  "robotsPolicy": "respect"
+}

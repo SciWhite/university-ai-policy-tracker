@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "decisionId": "uapt-monash-20260510-rd-006",
+  "claimId": "uapt-monash-20260510-cl-006",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim text closely paraphrases evidence snippet from the 'When it is not appropriate' table. Source is official Monash Student Academic Success page.",
+  "decidedAt": "2026-05-10T14:20:00.000Z"
+}

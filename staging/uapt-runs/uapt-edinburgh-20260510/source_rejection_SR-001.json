@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "rejectedAt": "2026-05-10T12:06:00Z",
+  "checkedBy": "openclaw_agent",
+  "sourceRejectionId": "SR-001",
+  "sourceCandidateId": "SC-001",
+  "sourceUrl": "https://registryservices.ed.ac.uk/sites/default/files/2024-10/Generative%20AI%20Guidance%20for%20Students%20October%202024.pdf",
+  "rejectionReason": "stale_404",
+  "notes": "PDF dated October 2024. The university has published updated web-based guidance (March 2026 revision). The web guidance supersedes this PDF."
+}

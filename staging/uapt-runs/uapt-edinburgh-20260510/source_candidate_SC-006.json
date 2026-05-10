@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "discoveredAt": "2026-05-10T12:05:00Z",
+  "verifiedAt": "2026-05-10T12:10:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-006",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidelines-for-students/generative-ai",
+  "sourceTitle": "Generative AI Guidelines for Postgraduate Research Students",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ed.ac.uk \"generative AI\" students",
+  "officialDomainConfidence": 0.97,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official University of Edinburgh PGR student guidance on generative AI. Revision March 2026. Covers prohibited uses, acceptable research uses, ELM, acknowledgment, ethics, copyright."
+}

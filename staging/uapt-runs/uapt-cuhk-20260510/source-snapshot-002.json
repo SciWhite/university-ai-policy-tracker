@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-002",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-002",
+  "fetchAttemptId": "uapt-cuhk-20260510-fa-002",
+  "sourceUrl": "https://clear.cuhk.edu.hk/web/technology-empowered-teaching/generative-ai-in-education/",
+  "finalUrl": "https://clear.cuhk.edu.hk/web/technology-empowered-teaching/generative-ai-in-education/",
+  "sourceTitle": "Generative AI in Education - Centre for Learning Enhancement And Research (CLEAR), CUHK",
+  "sourceLanguage": "en",
+  "contentHash": "cf6d71ccd82c2ddee47b415338232bd3d8c705ae62bf5f16d4a48e5f40158cf7",
+  "fetchedAt": "2026-05-10T12:05:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-cuhk-20260510/normalized/cuhk-002.txt",
+  "rawArtifactPaths": []
+}

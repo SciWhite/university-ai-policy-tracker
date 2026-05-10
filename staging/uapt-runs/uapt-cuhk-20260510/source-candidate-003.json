@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-003",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://libguides.lib.cuhk.edu.hk/AI_Education_and_Research",
+  "sourceTitle": "Using AI in Education and Research - CUHK Library LibGuides",
+  "sourceLanguage": "en",
+  "sourceType": "library_copyright",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:cuhk.edu.hk \"AI tools\" teaching",
+  "discoveredAt": "2026-05-10T12:01:00.000Z",
+  "officialDomainConfidence": 0.97,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.82,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:05:00.000Z",
+  "verificationNotes": "Official CUHK Library guide on AI in education and research. Links to university guidelines and copyright guidance.",
+  "robotsPolicy": "respect"
+}

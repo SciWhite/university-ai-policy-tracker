@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-006",
+  "sourceCandidateId": "SC-006",
+  "fetchAttemptId": "FA-006",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidelines-for-students/generative-ai",
+  "finalUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidelines-for-students/generative-ai",
+  "sourceTitle": "Generative AI Guidelines for Postgraduate Research Students",
+  "sourceLanguage": "en",
+  "contentHash": "07498d4a065b62955bbc5994347284701aa8ff89d31e9ad896a593ee3c717f8f",
+  "fetchedAt": "2026-05-10T12:13:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

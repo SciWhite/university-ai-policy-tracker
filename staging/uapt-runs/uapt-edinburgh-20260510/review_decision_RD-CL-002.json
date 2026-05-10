@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-002",
+  "claimId": "CL-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Evidence snippet is a direct quote listing all seven prohibited uses. Claim accurately summarizes the misconduct provisions.",
+  "decidedAt": "2026-05-10T12:20:00Z"
+}

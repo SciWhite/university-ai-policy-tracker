@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-004",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-copilot-for-the-web/",
+  "sourceTitle": "Microsoft Copilot Chat (Basic) - CUHK ITSC",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:cuhk.edu.hk \"Copilot\" approved tools",
+  "discoveredAt": "2026-05-10T12:02:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.92,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:06:00.000Z",
+  "verificationNotes": "Official ITSC page for Microsoft Copilot Chat (Basic). Free for all students and staff with data protection.",
+  "robotsPolicy": "respect"
+}

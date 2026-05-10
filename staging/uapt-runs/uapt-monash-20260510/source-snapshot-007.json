@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-007",
+  "sourceCandidateId": "uapt-monash-20260510-sc-007",
+  "fetchAttemptId": "uapt-monash-20260510-fa-007",
+  "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+  "finalUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+  "sourceTitle": "AI Policies and Guidelines - Artificial intelligence at Monash",
+  "sourceLanguage": "en",
+  "contentHash": "c329f87f3857e6c36df87263e24f931a780a15b0748f5d0cfb2ea58d2c88d6c6",
+  "fetchedAt": "2026-05-10T14:11:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,98 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "planId": "uapt-cuhk-20260510-plan",
+  "createdAt": "2026-05-10T12:00:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "cuhk",
+      "sourceCandidateId": "uapt-cuhk-20260510-sc-001",
+      "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+      "sourceTitle": "Use of Artificial Intelligence Tools in Teaching, Learning and Assessments - A Guide for Students",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity", "ai_tool_treatment"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cuhk",
+      "sourceCandidateId": "uapt-cuhk-20260510-sc-002",
+      "sourceUrl": "https://clear.cuhk.edu.hk/web/technology-empowered-teaching/generative-ai-in-education/",
+      "sourceTitle": "Generative AI in Education - CLEAR, CUHK",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cuhk",
+      "sourceCandidateId": "uapt-cuhk-20260510-sc-003",
+      "sourceUrl": "https://libguides.lib.cuhk.edu.hk/AI_Education_and_Research",
+      "sourceTitle": "Using AI in Education and Research - CUHK Library",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["teaching", "research_guidance", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cuhk",
+      "sourceCandidateId": "uapt-cuhk-20260510-sc-004",
+      "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-copilot-for-the-web/",
+      "sourceTitle": "Microsoft Copilot Chat (Basic) - CUHK ITSC",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["approved_tools", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cuhk",
+      "sourceCandidateId": "uapt-cuhk-20260510-sc-005",
+      "sourceUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+      "sourceTitle": "Declaration to be included in assignments - CUHK Academic Honesty",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cuhk",
+      "sourceCandidateId": "uapt-cuhk-20260510-sc-006",
+      "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-365-copilot/",
+      "sourceTitle": "M365 Copilot (Premium) - CUHK ITSC",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["approved_tools", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "cuhk",
+      "sourceCandidateId": "uapt-cuhk-20260510-sc-007",
+      "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/ai-hub-cuhk/",
+      "sourceTitle": "AI Hub @ CUHK - ITSC",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["approved_tools"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "All identified official sources fetched or blocked.",
+    "No new official policy/guidance URLs discovered after escalation."
+  ]
+}

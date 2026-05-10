@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-001",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-001",
+  "fetchAttemptId": "uapt-cuhk-20260510-fa-001",
+  "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+  "finalUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+  "sourceTitle": "Use of Artificial Intelligence Tools in Teaching, Learning and Assessments - A Guide for Students",
+  "sourceLanguage": "en",
+  "contentHash": "1238efd08a875ddd6b5e13458e31183ccadd04d764c2e5b89da55b2fe6929ab6",
+  "fetchedAt": "2026-05-10T12:05:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-cuhk-20260510/normalized/cuhk-001.txt",
+  "rawArtifactPaths": []
+}

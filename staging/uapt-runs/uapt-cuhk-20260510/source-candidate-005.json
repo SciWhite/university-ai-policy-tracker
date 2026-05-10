@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-005",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+  "sourceTitle": "Declaration to be included in assignments - CUHK Academic Honesty Policy",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:cuhk.edu.hk \"ChatGPT\" academic integrity",
+  "discoveredAt": "2026-05-10T12:02:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.88,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:06:00.000Z",
+  "verificationNotes": "Official CUHK academic honesty declaration page. Includes AI declaration statement for assignments.",
+  "robotsPolicy": "respect"
+}

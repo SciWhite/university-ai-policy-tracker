@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-005",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/ai-and-assessments",
+  "sourceTitle": "AI and assessments - Student Academic Success - Monash University",
+  "sourceLanguage": "en",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu \"generative AI\" assessment",
+  "discoveredAt": "2026-05-10T14:03:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:05:00.000Z",
+  "verificationNotes": "Official Monash Student Academic Success page on AI and assessments. Covers assessment statements, acknowledgement requirements, and Student Academic Integrity Procedure references.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "discoveredAt": "2026-05-10T14:05:00Z",
+  "verifiedAt": "2026-05-10T14:16:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-004",
+  "sourceUrl": "https://subjects.library.manchester.ac.uk/referencing/AI",
+  "sourceTitle": "Referencing guide at the University of Manchester: AI and referencing",
+  "sourceType": "library_copyright",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:manchester.ac.uk \"AI tools\" students guidance",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official University of Manchester Library referencing guide for AI. Quotes university position on AI. Covers citation requirements, Harvard Manchester style for AI tools, acknowledgement requirements."
+}

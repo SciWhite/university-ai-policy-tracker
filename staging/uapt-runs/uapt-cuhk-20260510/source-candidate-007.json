@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-007",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/ai-hub-cuhk/",
+  "sourceTitle": "AI Hub @ CUHK - ITSC",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:cuhk.edu.hk AI chatbot teaching learning",
+  "discoveredAt": "2026-05-10T12:03:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:07:00.000Z",
+  "verificationNotes": "Official ITSC AI Hub page. One-stop hub for AI resources at CUHK.",
+  "robotsPolicy": "respect"
+}

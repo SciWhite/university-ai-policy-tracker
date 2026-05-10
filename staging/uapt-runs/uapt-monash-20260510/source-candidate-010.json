@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-010",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/genai-services-currently-offered",
+  "sourceTitle": "GenAI services currently offered - Artificial intelligence at Monash",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu \"AI tools\" students",
+  "discoveredAt": "2026-05-10T14:05:30.000Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.90,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T14:07:30.000Z",
+  "verificationNotes": "GenAI services page returned HTTP 403 Forbidden with Cloudflare WAF challenge. Content behind access control.",
+  "rejectionReason": "inaccessible",
+  "robotsPolicy": "respect"
+}

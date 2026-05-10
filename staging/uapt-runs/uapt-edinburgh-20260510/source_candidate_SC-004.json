@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "discoveredAt": "2026-05-10T12:03:00Z",
+  "verifiedAt": "2026-05-10T12:10:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-004",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/ai-microsoft-365",
+  "sourceTitle": "AI in Microsoft 365",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ed.ac.uk \"Copilot\" university",
+  "officialDomainConfidence": 0.96,
+  "aiRelevanceScore": 0.88,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official University of Edinburgh page on AI in Microsoft 365. Covers Copilot access, ELM as approved tool, third-party AI approval process. Published March 2026."
+}

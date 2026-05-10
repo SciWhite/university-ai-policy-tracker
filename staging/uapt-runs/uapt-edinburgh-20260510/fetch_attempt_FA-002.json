@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-002",
+  "sourceCandidateId": "SC-002",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-staff",
+  "finalUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-staff",
+  "attemptedAt": "2026-05-10T12:09:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "0a8ccc23e19ee71c8142fba5980655d8fe8382fc0a8ac9a77427313aa9c15e69"
+}

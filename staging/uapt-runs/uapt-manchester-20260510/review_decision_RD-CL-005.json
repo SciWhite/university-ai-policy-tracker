@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-005",
+  "claimId": "CL-005",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Direct quote from AI Hub Guidelines page, Use of AI and AI-Enabled Tools section. Clear policy on enterprise vs free tools.",
+  "decidedAt": "2026-05-10T14:30:00Z"
+}

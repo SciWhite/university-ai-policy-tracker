@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "evidenceId": "uapt-cuhk-20260510-ev-006",
+  "claimId": "uapt-cuhk-20260510-cl-006",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-001",
+  "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+  "finalUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+  "sourceTitle": "Use of Artificial Intelligence Tools in Teaching, Learning and Assessments - A Guide for Students",
+  "sourceLanguage": "en",
+  "snapshotHash": "1238efd08a875ddd6b5e13458e31183ccadd04d764c2e5b89da55b2fe6929ab6",
+  "evidenceSnippetOriginal": "Accountability: Users of AI tools are accountable for the AI-generated results included in their work. Hence, users should carefully evaluate the implications of using AI tools for teaching, learning and assessments before adopting such tools. Users should fact-check all outputs of AI tools by cross-checking the claims against reliable sources",
+  "evidenceLocator": "Student Guide, Paragraph 6",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Use of Artificial Intelligence Tools in Teaching, Learning and Assessments - A Guide for Students",
+    "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "1238efd08a875ddd6b5e13458e31183ccadd04d764c2e5b89da55b2fe6929ab6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

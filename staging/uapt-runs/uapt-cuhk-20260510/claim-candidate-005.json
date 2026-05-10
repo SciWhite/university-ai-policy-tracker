@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "claimId": "uapt-cuhk-20260510-cl-005",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "claimType": "teaching",
+  "claimText": "CUHK emphasizes responsible and ethical use of generative AI in education, prohibiting unauthorized AI use in assignments while allowing its use under specific conditions with proper citation and permissions.",
+  "normalizedValue": "responsible_ethical_ai_use",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uapt-cuhk-20260510-ev-005"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI in Education - Centre for Learning Enhancement And Research (CLEAR), CUHK",
+    "sourceUrl": "https://clear.cuhk.edu.hk/web/technology-empowered-teaching/generative-ai-in-education/",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "cf6d71ccd82c2ddee47b415338232bd3d8c705ae62bf5f16d4a48e5f40158cf7",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

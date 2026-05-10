@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-001",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+  "sourceTitle": "Use of Artificial Intelligence Tools in Teaching, Learning and Assessments - A Guide for Students",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:cuhk.edu.hk \"generative AI\" policy",
+  "discoveredAt": "2026-05-10T12:01:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T12:05:00.000Z",
+  "verificationNotes": "Official CUHK student guide on AI tools. Published by Academic Quality and Standards. Second version dated May 2025.",
+  "robotsPolicy": "respect"
+}

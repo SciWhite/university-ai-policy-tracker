@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "crawl_plan",
+  "planId": "CP-001",
+  "createdAt": "2026-05-10T12:00:00Z",
+  "createdBy": "openclaw_agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "edinburgh",
+      "sourceCandidateId": "SC-001",
+      "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-students/using-generative",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "firecrawl"],
+      "expectedThemes": ["student_guidance", "academic_integrity", "ai_tool_treatment"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "edinburgh",
+      "sourceCandidateId": "SC-002",
+      "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-staff",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "firecrawl"],
+      "expectedThemes": ["staff_guidance", "university_policy", "data_protection"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "edinburgh",
+      "sourceCandidateId": "SC-003",
+      "sourceUrl": "https://www.ed.ac.uk/ai/guidance",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "firecrawl"],
+      "expectedThemes": ["ai_guidance_hub"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "edinburgh",
+      "sourceCandidateId": "SC-004",
+      "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/ai-microsoft-365",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "firecrawl"],
+      "expectedThemes": ["approved_tools", "copilot"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "edinburgh",
+      "sourceCandidateId": "SC-005",
+      "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "firecrawl"],
+      "expectedThemes": ["approved_tools", "elm"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "edinburgh",
+      "sourceCandidateId": "SC-006",
+      "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidelines-for-students/generative-ai",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http", "firecrawl"],
+      "expectedThemes": ["pgr_guidance", "academic_integrity", "research"],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_targets_fetched",
+    "claims_extracted"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "claimId": "uapt-monash-20260510-cl-007",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "claimType": "ai_tool_treatment",
+  "claimText": "Monash's AI responsible use principles include community benefit, education and research excellence, fairness, transparency, integrity and accountability, and data security and privacy.",
+  "normalizedValue": "monash_ai_responsible_use_principles",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["uapt-monash-20260510-ev-007"],
+  "citation": {
+    "citationTitle": "AI Policies and Guidelines - Artificial intelligence at Monash",
+    "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:11:00.000Z",
+    "snapshotHash": "c329f87f3857e6c36df87263e24f931a780a15b0748f5d0cfb2ea58d2c88d6c6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-009",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+  "sourceTitle": "Microsoft Copilot - Student Academic Success",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu \"Copilot\" Monash",
+  "discoveredAt": "2026-05-10T14:05:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.90,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:07:00.000Z",
+  "verificationNotes": "Official Monash Student Academic Success page on Microsoft Copilot. Covers Copilot capabilities, Monash account login for data protection, and DALL-E image generation.",
+  "robotsPolicy": "respect"
+}

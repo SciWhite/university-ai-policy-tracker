@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "evidenceId": "uapt-monash-20260510-ev-001",
+  "claimId": "uapt-monash-20260510-cl-001",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-001",
+  "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/ai-and-assessment",
+  "finalUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/ai-and-assessment",
+  "sourceTitle": "AI and assessment - Learning and Teaching - Monash University",
+  "sourceLanguage": "en",
+  "snapshotHash": "d7bb3488f89043e65703c24f3b5758d2e2d9523fe8a293193add49b58e36b2b5",
+  "evidenceSnippetOriginal": "Chief Examiners have overarching responsibility for designing and setting assessment conditions, including communicating and verifying the responsible use of AI within assessment tasks.",
+  "evidenceLocator": "AI and assessment page, main content section",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI and assessment - Learning and Teaching - Monash University",
+    "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/ai-and-assessment",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:08:00.000Z",
+    "snapshotHash": "d7bb3488f89043e65703c24f3b5758d2e2d9523fe8a293193add49b58e36b2b5",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

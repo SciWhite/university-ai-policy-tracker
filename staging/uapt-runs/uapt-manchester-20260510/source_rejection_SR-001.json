@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "rejectedAt": "2026-05-10T14:10:00Z",
+  "checkedBy": "openclaw_agent",
+  "sourceRejectionId": "SR-001",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/news/display/?id=32296",
+  "rejectionReason": "event_or_news_only",
+  "notes": "StaffNet news announcement about the launch of AI guidelines (Feb 2025). Summarises the guidelines but does not contain the full policy text. The actual guidelines are at SC-001."
+}

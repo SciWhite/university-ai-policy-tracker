@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-002"],
+  "citation": {
+    "citationTitle": "Guidelines | AI Hub - StaffNet - The University of Manchester",
+    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:10:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-002",
+  "claimType": "teaching",
+  "claimText": "Manchester has adopted five core principles for AI use: transparency, accountability, competence, responsible use, and respect. All staff and students using or developing AI are personally responsible for adhering to these.",
+  "confidence": 0.98
+}

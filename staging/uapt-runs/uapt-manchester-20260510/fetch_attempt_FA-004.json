@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-004",
+  "sourceCandidateId": "SC-004",
+  "sourceUrl": "https://subjects.library.manchester.ac.uk/referencing/AI",
+  "finalUrl": "https://subjects.library.manchester.ac.uk/referencing/AI",
+  "attemptedAt": "2026-05-10T14:16:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "923e793def31d45a167624d6f89006df15ff1019d8e84cb5c1ef517ea7054685"
+}

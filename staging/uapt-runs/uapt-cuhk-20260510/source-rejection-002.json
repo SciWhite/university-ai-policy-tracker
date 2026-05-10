@@ -1,0 +1,13 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceRejectionId": "uapt-cuhk-20260510-sr-002",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://ro.cuhk.edu.hk/en/about/policies-guidelines",
+  "rejectedAt": "2026-05-10T12:04:00.000Z",
+  "rejectionReason": "login_required",
+  "checkedBy": "openclaw-agent",
+  "notes": "Research policy containing 'Guidelines on the Responsible Use of AI for Research' (Schedule 11) requires CUHK staff/RPG student login."
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-010",
+  "claimId": "CL-010",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Direct quote from Library referencing guide. Comprehensive list of activities requiring AI citation.",
+  "decidedAt": "2026-05-10T14:30:00Z"
+}

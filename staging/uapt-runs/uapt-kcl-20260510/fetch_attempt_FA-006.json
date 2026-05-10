@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-006",
+  "sourceCandidateId": "SC-006",
+  "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/doctoral-assessment",
+  "finalUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/doctoral-assessment",
+  "attemptedAt": "2026-05-10T12:00:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "7a1dd2b317bc654cd4834c6dcd738cf2b2f1334c0d29a89e641af8466c836601"
+}

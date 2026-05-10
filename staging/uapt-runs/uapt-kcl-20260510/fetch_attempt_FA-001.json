@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-001",
+  "sourceCandidateId": "SC-001",
+  "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance",
+  "finalUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance",
+  "attemptedAt": "2026-05-10T12:00:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "c0ada5d482ee2a50bb512d224af5466e01a1dec5ea25c9c29eaf0595701903f4"
+}

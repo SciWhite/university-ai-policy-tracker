@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "evidenceId": "uapt-cuhk-20260510-ev-008",
+  "claimId": "uapt-cuhk-20260510-cl-008",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-006",
+  "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-365-copilot/",
+  "finalUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-365-copilot/",
+  "sourceTitle": "M365 Copilot (Premium) - CUHK ITSC",
+  "sourceLanguage": "en",
+  "snapshotHash": "7a295ba70f8ad6965a092f14c0e53a2b89c70e8bf95a31192509da67bc3e4302",
+  "evidenceSnippetOriginal": "M365 Copilot (Premium) is an AI-powered productivity tool that seamlessly integrates with various Microsoft 365 apps (Word, Excel, PowerPoint, Outlook, Teams, and more)... Available to: All Staff, Project Accounts and Departmental Accounts. Service Charge and Application: Charged; application required.",
+  "evidenceLocator": "ITSC M365 Copilot page, service details",
+  "evidenceType": "official_source",
+  "relevance": 0.93,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "M365 Copilot (Premium) - CUHK ITSC",
+    "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-365-copilot/",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "7a295ba70f8ad6965a092f14c0e53a2b89c70e8bf95a31192509da67bc3e4302",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

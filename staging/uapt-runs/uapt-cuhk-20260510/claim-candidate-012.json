@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "claimId": "uapt-cuhk-20260510-cl-012",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "claimType": "ai_tool_treatment",
+  "claimText": "CUHK advises using Microsoft Copilot with CUHK institutional sign-in for data protection, as user and business data is protected and not used to train underlying models.",
+  "normalizedValue": "copilot_institutional_signin_recommended",
+  "sourceLanguage": "en",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uapt-cuhk-20260510-ev-012"
+  ],
+  "citation": {
+    "citationTitle": "Using AI in Education and Research - CUHK Library LibGuides",
+    "sourceUrl": "https://libguides.lib.cuhk.edu.hk/AI_Education_and_Research",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "d4c6050e7d91078d231b6407ab765000f7ef65c4b7786a4599c71d6d0a6cc25a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

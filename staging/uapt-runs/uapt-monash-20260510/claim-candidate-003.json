@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "claimId": "uapt-monash-20260510-cl-003",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "claimType": "academic_integrity",
+  "claimText": "When allowed or required to use AI in an assessment, students must follow all instructions and restrictions on its use, clearly document the type of AI used and how it contributed, and provide written acknowledgment of the use of AI and its extent.",
+  "normalizedValue": "ai_acknowledgement_requirements",
+  "sourceLanguage": "en",
+  "confidence": 0.98,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["uapt-monash-20260510-ev-003"],
+  "citation": {
+    "citationTitle": "Acknowledging the use of AI - Student Academic Success",
+    "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/acknowledging-the-use-of-ai",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:09:30.000Z",
+    "snapshotHash": "c1d25fd6fd961bdc83a0bccdbe2d89db717e490072b9ea191a4192df4e73d3e2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

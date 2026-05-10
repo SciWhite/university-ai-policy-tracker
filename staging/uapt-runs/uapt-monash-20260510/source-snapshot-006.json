@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-006",
+  "sourceCandidateId": "uapt-monash-20260510-sc-006",
+  "fetchAttemptId": "uapt-monash-20260510-fa-006",
+  "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/foundations-of-ai/responsible-and-ethical-use-of-ai",
+  "finalUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/foundations-of-ai/responsible-and-ethical-use-of-ai",
+  "sourceTitle": "Responsible and ethical use of AI - Student Academic Success",
+  "sourceLanguage": "en",
+  "contentHash": "0a59bbda7ec72b9e89082a3807f7ea7a1a242602d55841a7f4f605dc79ff7c34",
+  "fetchedAt": "2026-05-10T14:10:30.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-004",
+  "sourceCandidateId": "SC-004",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/ai-microsoft-365",
+  "finalUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/ai-microsoft-365",
+  "attemptedAt": "2026-05-10T12:11:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "d829dcf274c1c697c375d48e8d8ea23f8926fc0f2b7bc3741474b75b8772e66e"
+}

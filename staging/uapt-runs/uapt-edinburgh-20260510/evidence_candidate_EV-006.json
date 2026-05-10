@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-006",
+  "claimId": "CL-006",
+  "sourceSnapshotId": "SS-004",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/ai-microsoft-365",
+  "sourceTitle": "AI in Microsoft 365",
+  "sourceLanguage": "en",
+  "snapshotHash": "d829dcf274c1c697c375d48e8d8ea23f8926fc0f2b7bc3741474b75b8772e66e",
+  "evidenceSnippetOriginal": "Currently, you can access the CoPilot chat service within Edge by signing in with your University credentials. A green shield will appear, giving you additional protections.",
+  "evidenceLocator": "AI in Microsoft 365 > Can I have access to Copilot?",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI in Microsoft 365",
+    "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/ai-microsoft-365",
+    "publisher": "University of Edinburgh",
+    "retrievedAt": "2026-05-10T12:11:00Z",
+    "snapshotHash": "d829dcf274c1c697c375d48e8d8ea23f8926fc0f2b7bc3741474b75b8772e66e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

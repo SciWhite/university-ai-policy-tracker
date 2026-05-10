@@ -1,0 +1,102 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "traceId": "uapt-monash-20260510-trace-001",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "startedAt": "2026-05-10T14:00:00.000Z",
+  "endedAt": "2026-05-10T14:20:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu \"generative AI\" policy",
+      "domain": "monash.edu",
+      "resultCount": 10,
+      "notes": "Found graduate research GenAI guidance, student acknowledging AI page, AI policies and guidelines page, students news article, research publications."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu \"generative AI\" assessment",
+      "domain": "monash.edu",
+      "resultCount": 10,
+      "notes": "Found AI and assessment (Teach HQ), AI and assessments (Student Academic Success), students news article, research publications."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu \"ChatGPT\" academic integrity",
+      "domain": "monash.edu",
+      "resultCount": 10,
+      "notes": "Found acknowledging AI page, writing with AI page, library citing guides, research publications."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu \"AI tools\" students",
+      "domain": "monash.edu",
+      "resultCount": 10,
+      "notes": "Found AI for Students page, AI tools and resources, Microsoft Copilot page, learning with AI pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu \"AI tools\" teaching",
+      "domain": "monash.edu",
+      "resultCount": 10,
+      "notes": "Found AI and assessment, AI literacy, building AI toolkits, teaching community posts, research publications."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu \"Copilot\" Monash",
+      "domain": "monash.edu",
+      "resultCount": 10,
+      "notes": "Found Microsoft Copilot student page, AI tools and resources, AI for Students, AI for Staff, library guides."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu data protection generative AI",
+      "domain": "monash.edu",
+      "resultCount": 10,
+      "notes": "Found responsible and ethical use of AI page with privacy section, cybersecurity page, research publications."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu \"responsible use of AI\"",
+      "domain": "monash.edu",
+      "resultCount": 10,
+      "notes": "Found responsible use (Teach HQ), AI statements, communication with students, AI acknowledgement, assessment pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu \"AI Operations Policy\"",
+      "domain": "monash.edu",
+      "resultCount": 1,
+      "notes": "Found students news article referencing AI Operations Policy and Procedure."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:monash.edu \"Generative AI Shared Responsibility Model\"",
+      "domain": "monash.edu",
+      "resultCount": 5,
+      "notes": "Found cybersecurity page on using AI responsibly, AI policies page, teaching community, cybersecurity data page, teaching with AI page."
+    }
+  ],
+  "noSourceEscalationCompleted": true,
+  "candidateIds": [
+    "uapt-monash-20260510-sc-001",
+    "uapt-monash-20260510-sc-002",
+    "uapt-monash-20260510-sc-003",
+    "uapt-monash-20260510-sc-004",
+    "uapt-monash-20260510-sc-005",
+    "uapt-monash-20260510-sc-006",
+    "uapt-monash-20260510-sc-007",
+    "uapt-monash-20260510-sc-008",
+    "uapt-monash-20260510-sc-009",
+    "uapt-monash-20260510-sc-010"
+  ],
+  "rejectionIds": [
+    "uapt-monash-20260510-sr-001",
+    "uapt-monash-20260510-sr-002",
+    "uapt-monash-20260510-sr-003",
+    "uapt-monash-20260510-sr-004"
+  ],
+  "summary": "Discovered 9 verified official Monash sources covering AI assessment policy, responsible use guidance, AI statements, AI acknowledgement requirements, responsible and ethical use guidance, AI policies and guidelines hub, graduate research GenAI guidance, and Microsoft Copilot guidance. Rejected 4 sources: research publication (research_showcase_only), teaching community blog (event_or_news_only), library citation guide (low_policy_specificity), GenAI services page (inaccessible/403)."
+}

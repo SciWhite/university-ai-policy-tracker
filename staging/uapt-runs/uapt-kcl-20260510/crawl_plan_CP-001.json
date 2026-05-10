@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "crawl_plan",
+  "planId": "CP-001",
+  "createdAt": "2026-05-10T12:00:00Z",
+  "createdBy": "openclaw_agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "kcl",
+      "sourceCandidateId": "SC-001",
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "ai_guidance_hub"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "kcl",
+      "sourceCandidateId": "SC-002",
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "student_guidance",
+        "ai_tool_treatment",
+        "academic_integrity"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "kcl",
+      "sourceCandidateId": "SC-003",
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/macro-level",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "university_policy",
+        "academic_integrity",
+        "detection"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "kcl",
+      "sourceCandidateId": "SC-004",
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/context-definitions",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "definitions",
+        "copilot",
+        "equity"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "kcl",
+      "sourceCandidateId": "SC-005",
+      "sourceUrl": "https://www.kcl.ac.uk/policyhub/academic-misconduct-policy",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "misconduct"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "kcl",
+      "sourceCandidateId": "SC-006",
+      "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/doctoral-assessment",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "doctoral",
+        "thesis",
+        "declaration"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_targets_fetched",
+    "claims_extracted"
+  ]
+}

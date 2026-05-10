@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-007"],
+  "citation": {
+    "citationTitle": "Generative AI Guidelines for Postgraduate Research Students",
+    "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidelines-for-students/generative-ai",
+    "publisher": "University of Edinburgh",
+    "retrievedAt": "2026-05-10T12:13:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-007",
+  "claimType": "research",
+  "claimText": "The University of Edinburgh does not ban the use of generative AI in postgraduate research, though its use is restricted for work assessed by the University and students must discuss AI use with supervisors.",
+  "confidence": 0.95
+}

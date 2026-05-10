@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "fetchAttemptId": "uapt-cuhk-20260510-fa-007",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-007",
+  "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/ai-hub-cuhk/",
+  "finalUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/ai-hub-cuhk/",
+  "attemptedAt": "2026-05-10T12:05:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1500,
+  "contentHash": "8e7a0a751ea39ef8cc34c6efbc691a519d029f2a68e8ff9b5e415f561693772c",
+  "normalizedTextStorageKey": "staging/uapt-cuhk-20260510/normalized/cuhk-007.txt"
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-001",
+  "sourceCandidateId": "SC-001",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+  "finalUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+  "attemptedAt": "2026-05-10T14:10:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "d77102fc162f9636e2cdac97af4c99d214d8aa989038c29c85abec5c777e8434"
+}

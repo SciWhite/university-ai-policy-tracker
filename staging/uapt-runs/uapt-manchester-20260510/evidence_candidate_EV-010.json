@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-010",
+  "claimId": "CL-010",
+  "sourceSnapshotId": "SS-004",
+  "sourceUrl": "https://subjects.library.manchester.ac.uk/referencing/AI",
+  "sourceTitle": "Referencing guide at the University of Manchester: AI and referencing",
+  "sourceLanguage": "en",
+  "snapshotHash": "923e793def31d45a167624d6f89006df15ff1019d8e84cb5c1ef517ea7054685",
+  "evidenceSnippetOriginal": "You must cite or acknowledge the outputs of generative A.I. tools when you use them in your work. Quotating, summarising and paraphrasing, editing, translating, data processing, re-writing your work and the generation of ideas.",
+  "evidenceLocator": "Can I use an AI tool in my assignments? > You must cite or acknowledge",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Referencing guide at the University of Manchester: AI and referencing",
+    "sourceUrl": "https://subjects.library.manchester.ac.uk/referencing/AI",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:16:00Z",
+    "snapshotHash": "923e793def31d45a167624d6f89006df15ff1019d8e84cb5c1ef517ea7054685",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

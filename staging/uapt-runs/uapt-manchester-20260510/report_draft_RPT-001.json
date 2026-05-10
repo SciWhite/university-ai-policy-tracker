@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "report_draft",
+  "reportId": "RPT-001",
+  "title": "The University of Manchester (QS 2026 #35) — AI Policy Tracker Report",
+  "generatedAt": "2026-05-10T14:35:00Z",
+  "draftPath": "content/reports/manchester-ai-policy-20260510.mdx",
+  "summary": "The University of Manchester does not ban generative AI. The university has adopted five core principles for AI use (transparency, accountability, competence, responsible use, respect) and published comprehensive guidelines covering teaching/learning, research, and approved tools. Manchester is the world's first university to deploy Microsoft 365 Copilot to all 65,000 staff and students. Copilot Chat is available to everyone with a University account under a contractual agreement with Microsoft ensuring GDPR compliance and data privacy. AI detection tools are explicitly declared unreliable and cannot be used as evidence of malpractice. Students must cite all AI-generated content; submitting AI work as one's own is plagiarism under the Academic Malpractice Procedure. Schools may vary the default AI position for specific course units with approval. AI proofreading for grammar/spelling is acceptable if substantive content is unchanged. AI use in research must be transparent; fabricating data with AI constitutes research misconduct.",
+  "referencedClaimIds": [
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004",
+    "CL-005",
+    "CL-006",
+    "CL-007",
+    "CL-008",
+    "CL-009",
+    "CL-010",
+    "CL-011",
+    "CL-012"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/manchester.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is staged data, not an official university statement. Claims are agent-reviewed candidates, not human-verified facts.",
+    "The AI Hub Guidelines page references a PDF version (DocID=75355) which was not fetched in this run; claims derive from the web page version.",
+    "Faculty-specific and department-specific guidance pages were not included as approved sources; only university-wide guidance was used.",
+    "All 12 claims were approved at agent_reviewed level. No claims were left as needs_changes or reject in this run."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

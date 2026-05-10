@@ -1,0 +1,13 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceRejectionId": "uapt-cuhk-20260510-sr-005",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://research.cuhk.edu.hk/files/352554644/281302987.pdf",
+  "rejectedAt": "2026-05-10T12:04:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "notes": "Research paper 'University policies on generative AI in Asia' by CUHK faculty. Academic publication, not institutional policy."
+}

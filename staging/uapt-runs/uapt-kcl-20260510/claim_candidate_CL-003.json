@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "kcl",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "EV-003"
+  ],
+  "citation": {
+    "citationTitle": "King's College London AI Guidance",
+    "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance",
+    "publisher": "King's College London",
+    "retrievedAt": "2026-05-10T12:00:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-003",
+  "claimType": "academic_integrity",
+  "claimText": "King's College London does not require students to reference generative AI as an authoritative source in the reference list, but does require explicit acknowledgement of AI tool use in coursework.",
+  "confidence": 0.95
+}

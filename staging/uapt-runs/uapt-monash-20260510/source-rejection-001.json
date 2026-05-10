@@ -1,0 +1,13 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceRejectionId": "uapt-monash-20260510-sr-001",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://research.monash.edu/en/publications/generative-ai-in-higher-education-a-global-perspective-of-institu/",
+  "rejectedAt": "2026-05-10T14:05:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "notes": "Monash research publication about generative AI in higher education. Not a policy or guidance page."
+}

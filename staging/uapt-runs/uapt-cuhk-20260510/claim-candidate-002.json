@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "claimId": "uapt-cuhk-20260510-cl-002",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "claimType": "academic_integrity",
+  "claimText": "At CUHK, improper or unauthorized use of AI tools in learning activities and assessments constitutes academic dishonesty and is subject to penalties including failure grade, suspension, or termination of studies.",
+  "normalizedValue": "unauthorized_ai_use_is_academic_dishonesty",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uapt-cuhk-20260510-ev-002"
+  ],
+  "citation": {
+    "citationTitle": "Use of Artificial Intelligence Tools in Teaching, Learning and Assessments - A Guide for Students",
+    "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "1238efd08a875ddd6b5e13458e31183ccadd04d764c2e5b89da55b2fe6929ab6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

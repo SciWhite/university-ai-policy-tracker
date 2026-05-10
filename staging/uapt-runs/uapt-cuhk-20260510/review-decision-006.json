@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "decisionId": "uapt-cuhk-20260510-rd-006",
+  "claimId": "uapt-cuhk-20260510-cl-006",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim verified against direct source quote. Evidence snippet is a close direct excerpt from the fetched source snapshot.",
+  "decidedAt": "2026-05-10T12:10:00.000Z"
+}

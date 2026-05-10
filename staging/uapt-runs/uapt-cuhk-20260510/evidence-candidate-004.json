@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "evidenceId": "uapt-cuhk-20260510-ev-004",
+  "claimId": "uapt-cuhk-20260510-cl-004",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-005",
+  "sourceUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+  "finalUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+  "sourceTitle": "Declaration to be included in assignments - CUHK Academic Honesty Policy",
+  "sourceLanguage": "en",
+  "snapshotHash": "9eeabe7583f66ea65c166104f6675fb6ca317aa15de68588af8c29a2121c359b",
+  "evidenceSnippetOriginal": "I/we declare that I/we have read and understood the University's policy on the use of AI for academic work. I/we confirm that I/we have complied with the instructions given by my/our course teacher(s) regarding the use of AI tools for this assignment and consent to the use of AI content detection software to review my/our submission.",
+  "evidenceLocator": "Academic Honesty Declaration, Section 10",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Declaration to be included in assignments - CUHK Academic Honesty Policy",
+    "sourceUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "9eeabe7583f66ea65c166104f6675fb6ca317aa15de68588af8c29a2121c359b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

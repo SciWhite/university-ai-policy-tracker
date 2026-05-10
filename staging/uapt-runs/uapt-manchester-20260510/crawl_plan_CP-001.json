@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "crawl_plan",
+  "planId": "CP-001",
+  "createdAt": "2026-05-10T14:00:00Z",
+  "createdBy": "openclaw_agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "manchester",
+      "sourceCandidateId": "SC-001",
+      "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["ai_principles", "teaching_learning", "research", "approved_tools", "plagiarism", "detection"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "manchester",
+      "sourceCandidateId": "SC-002",
+      "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["copilot", "data_privacy", "approved_tools", "m365_deployment"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "manchester",
+      "sourceCandidateId": "SC-003",
+      "sourceUrl": "https://www.teachingcollege.fse.manchester.ac.uk/artificial-intelligence-and-teaching-and-learning/",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching_guidance", "assessment_design", "academic_integrity", "copilot_recommendation"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "manchester",
+      "sourceCandidateId": "SC-004",
+      "sourceUrl": "https://subjects.library.manchester.ac.uk/referencing/AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["ai_referencing", "citation_requirements", "harvard_manchester"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "manchester",
+      "sourceCandidateId": "SC-005",
+      "sourceUrl": "https://www.itservices.manchester.ac.uk/ourservices/microsoft365/copilot/",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["copilot_deployment", "microsoft_partnership", "copilot_chat"],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "manchester",
+      "sourceCandidateId": "SC-006",
+      "sourceUrl": "https://elearning.bmh.manchester.ac.uk/ai-guidance-for-learners/",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["student_guidance", "academic_integrity", "referencing", "privacy"],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": ["all_targets_fetched", "claims_extracted"]
+}

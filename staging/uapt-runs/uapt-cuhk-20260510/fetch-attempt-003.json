@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "fetchAttemptId": "uapt-cuhk-20260510-fa-003",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-003",
+  "sourceUrl": "https://libguides.lib.cuhk.edu.hk/AI_Education_and_Research",
+  "finalUrl": "https://libguides.lib.cuhk.edu.hk/AI_Education_and_Research",
+  "attemptedAt": "2026-05-10T12:05:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1500,
+  "contentHash": "d4c6050e7d91078d231b6407ab765000f7ef65c4b7786a4599c71d6d0a6cc25a",
+  "normalizedTextStorageKey": "staging/uapt-cuhk-20260510/normalized/cuhk-003.txt"
+}

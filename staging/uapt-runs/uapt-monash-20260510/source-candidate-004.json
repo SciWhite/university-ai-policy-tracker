@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-004",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/acknowledging-the-use-of-ai",
+  "sourceTitle": "Acknowledging the use of AI - Student Academic Success",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu \"ChatGPT\" academic integrity",
+  "discoveredAt": "2026-05-10T14:02:30.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.96,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:04:30.000Z",
+  "verificationNotes": "Official Monash Student Academic Success page on acknowledging AI use. Provides detailed templates, examples, and requirements for AI acknowledgement in assessments.",
+  "robotsPolicy": "respect"
+}

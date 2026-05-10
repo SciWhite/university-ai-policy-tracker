@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "report_draft",
+  "reportId": "RPT-001",
+  "title": "King's College London (QS 2026 #31) \u2014 AI Policy Tracker Report",
+  "generatedAt": "2026-05-10T12:00:00Z",
+  "draftPath": "content/reports/kcl-ai-policy-20260510.mdx",
+  "summary": "King's College London does not ban generative AI use. The university subscribes to Russell Group principles on AI in education and has published comprehensive multi-level guidance (macro, meso, micro) for teaching, assessment, and feedback. Students must acknowledge AI use in coursework but are not required to cite AI as an authoritative source. Submitting AI-generated text without permission is academic misconduct. Microsoft Copilot is the approved institutional tool available to all students and staff via KCL accounts. AI detection in Turnitin is disabled due to reliability concerns. Doctoral students may use AI assistively for writing clarity with mandatory declaration. Examiners must not upload student theses to AI tools.",
+  "referencedClaimIds": [
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004",
+    "CL-005",
+    "CL-006",
+    "CL-007",
+    "CL-008",
+    "CL-009",
+    "CL-010",
+    "CL-011",
+    "CL-012"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/kcl.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is staged data, not an official university statement. Claims are agent-reviewed candidates, not human-verified facts.",
+    "The academic misconduct policy page (kcl.ac.uk/policyhub/academic-misconduct-policy) is a hub page linking to PDF documents. The PDFs were not fetched in this run; claims about misconduct policy derive from the guidance pages that reference it.",
+    "No blocked URLs or access-control issues were encountered during this run. All pages were fetched via plain HTTP.",
+    "All 12 claims were approved at agent_reviewed level. No claims were left as needs_changes or reject in this run."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

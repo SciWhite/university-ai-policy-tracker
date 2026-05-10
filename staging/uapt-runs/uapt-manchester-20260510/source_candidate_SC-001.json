@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "discoveredAt": "2026-05-10T14:05:00Z",
+  "verifiedAt": "2026-05-10T14:10:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-001",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+  "sourceTitle": "Guidelines | AI Hub - StaffNet - The University of Manchester",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:manchester.ac.uk \"generative AI\" policy",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official university-wide AI guidelines page on StaffNet AI Hub. Published Feb 2025, last edited Oct 2025. Contains five core principles and detailed guidance for teaching/learning, research, and approved tools. Owned by University AI Strategy Group."
+}

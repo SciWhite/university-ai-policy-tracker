@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-006",
+  "claimId": "CL-006",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Evidence snippet is a direct quote from AI in Microsoft 365 page. Claim accurately describes Copilot availability.",
+  "decidedAt": "2026-05-10T12:20:00Z"
+}

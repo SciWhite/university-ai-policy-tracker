@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-008"],
+  "citation": {
+    "citationTitle": "ELM - Edinburgh access to Language Models",
+    "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+    "publisher": "University of Edinburgh",
+    "retrievedAt": "2026-05-10T12:12:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-008",
+  "claimType": "privacy",
+  "claimText": "The University of Edinburgh states that ELM chat histories are private to the individual user and are not accessible to lecturers for checking student work.",
+  "confidence": 0.96
+}

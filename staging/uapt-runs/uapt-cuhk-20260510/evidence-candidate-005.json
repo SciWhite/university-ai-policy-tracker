@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "evidenceId": "uapt-cuhk-20260510-ev-005",
+  "claimId": "uapt-cuhk-20260510-cl-005",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-002",
+  "sourceUrl": "https://clear.cuhk.edu.hk/web/technology-empowered-teaching/generative-ai-in-education/",
+  "finalUrl": "https://clear.cuhk.edu.hk/web/technology-empowered-teaching/generative-ai-in-education/",
+  "sourceTitle": "Generative AI in Education - Centre for Learning Enhancement And Research (CLEAR), CUHK",
+  "sourceLanguage": "en",
+  "snapshotHash": "cf6d71ccd82c2ddee47b415338232bd3d8c705ae62bf5f16d4a48e5f40158cf7",
+  "evidenceSnippetOriginal": "The Chinese University of Hong Kong emphasizes the responsible and ethical use of generative AI tools in education, promoting familiarity and critical engagement among teachers and students. The university upholds academic integrity by prohibiting unauthorized AI use in assignments and assessments, while allowing its use under specific conditions with proper citation and permissions.",
+  "evidenceLocator": "CLEAR Generative AI page, main description",
+  "evidenceType": "official_source",
+  "relevance": 0.92,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI in Education - Centre for Learning Enhancement And Research (CLEAR), CUHK",
+    "sourceUrl": "https://clear.cuhk.edu.hk/web/technology-empowered-teaching/generative-ai-in-education/",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "cf6d71ccd82c2ddee47b415338232bd3d8c705ae62bf5f16d4a48e5f40158cf7",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

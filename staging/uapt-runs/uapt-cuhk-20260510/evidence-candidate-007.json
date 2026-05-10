@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "evidenceId": "uapt-cuhk-20260510-ev-007",
+  "claimId": "uapt-cuhk-20260510-cl-007",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-004",
+  "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-copilot-for-the-web/",
+  "finalUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-copilot-for-the-web/",
+  "sourceTitle": "Microsoft Copilot Chat (Basic) - CUHK ITSC",
+  "sourceLanguage": "en",
+  "snapshotHash": "3760564320e381d50261be724ba9de7a1635eb20f77cb3d52a52910ea0f35497",
+  "evidenceSnippetOriginal": "Microsoft Copilot Chat (Basic) is an AI-powered productivity tool. It provides you with a simple chat experience in web browsers such as Microsoft Edge. After login with your CUHK login, your chat data will be protected and would not be stored by Microsoft to protect privacy.",
+  "evidenceLocator": "ITSC Copilot Chat Basic page, main description",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Microsoft Copilot Chat (Basic) - CUHK ITSC",
+    "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-copilot-for-the-web/",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "3760564320e381d50261be724ba9de7a1635eb20f77cb3d52a52910ea0f35497",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

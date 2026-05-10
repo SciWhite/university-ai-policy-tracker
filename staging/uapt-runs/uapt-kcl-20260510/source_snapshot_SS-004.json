@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-004",
+  "sourceCandidateId": "SC-004",
+  "fetchAttemptId": "FA-004",
+  "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/context-definitions",
+  "finalUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/context-definitions",
+  "sourceTitle": "Generative AI: context and definitions",
+  "sourceLanguage": "en",
+  "contentHash": "e83b1023c70fd9113f0fafdecb9f0ee84991617be4a6e17182b9fdf753d682f0",
+  "fetchedAt": "2026-05-10T12:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

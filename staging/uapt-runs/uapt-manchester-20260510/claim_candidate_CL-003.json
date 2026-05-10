@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-003"],
+  "citation": {
+    "citationTitle": "Approved Tools | AI Hub - StaffNet - The University of Manchester",
+    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:12:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-003",
+  "claimType": "ai_tool_treatment",
+  "claimText": "The University of Manchester is the world's first university to deploy equitable Microsoft 365 Copilot access and training across its entire community, with 65,000 colleagues and students receiving the full M365 Copilot suite.",
+  "confidence": 0.98
+}

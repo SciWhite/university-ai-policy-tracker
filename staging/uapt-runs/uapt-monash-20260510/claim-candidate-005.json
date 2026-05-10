@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "claimId": "uapt-monash-20260510-cl-005",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "claimType": "privacy",
+  "claimText": "Monash enterprise systems such as Copilot have enterprise data protections identified under the green shield in Monash Copilot. Students should use their Monash email address to access Microsoft Copilot which provides data protection for Monash.",
+  "normalizedValue": "copilot_enterprise_data_protection",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["uapt-monash-20260510-ev-005"],
+  "citation": {
+    "citationTitle": "Responsible and ethical use of AI - Student Academic Success",
+    "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/foundations-of-ai/responsible-and-ethical-use-of-ai",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:10:30.000Z",
+    "snapshotHash": "0a59bbda7ec72b9e89082a3807f7ea7a1a242602d55841a7f4f605dc79ff7c34",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

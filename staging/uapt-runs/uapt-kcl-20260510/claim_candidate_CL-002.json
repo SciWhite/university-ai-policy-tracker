@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "kcl",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": [
+    "EV-002"
+  ],
+  "citation": {
+    "citationTitle": "King's College London AI Guidance",
+    "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance",
+    "publisher": "King's College London",
+    "retrievedAt": "2026-05-10T12:00:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-002",
+  "claimType": "academic_integrity",
+  "claimText": "At King's College London, inappropriate use of generative AI without attribution is considered academic misconduct and can result in penalties ranging from formal warnings to expulsion.",
+  "confidence": 0.95
+}

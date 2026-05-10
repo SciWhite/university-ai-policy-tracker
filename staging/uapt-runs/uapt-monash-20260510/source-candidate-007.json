@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-007",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+  "sourceTitle": "AI Policies and Guidelines - Artificial intelligence at Monash",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-10T14:04:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:06:00.000Z",
+  "verificationNotes": "Official Monash AI hub policies page. Lists AI Operations Policy, responsible use principles, Shared Responsibility Model, and research guidance.",
+  "robotsPolicy": "respect"
+}

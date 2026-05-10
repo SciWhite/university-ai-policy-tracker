@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-008",
+  "sourceCandidateId": "uapt-monash-20260510-sc-008",
+  "fetchAttemptId": "uapt-monash-20260510-fa-008",
+  "sourceUrl": "https://www.monash.edu/graduate-research/support-and-resources/guidance-on-generative-ai",
+  "finalUrl": "https://www.monash.edu/graduate-research/support-and-resources/guidance-on-generative-ai",
+  "sourceTitle": "Guidance on Generative AI - Graduate Research - Monash University",
+  "sourceLanguage": "en",
+  "contentHash": "ce7114455cf73c84f6ef2e2f8506e7f7f055c3917f2c7b5899cd9fe58c5475fa",
+  "fetchedAt": "2026-05-10T14:11:30.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

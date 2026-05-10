@@ -1,0 +1,122 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "planId": "uapt-monash-20260510-plan",
+  "createdAt": "2026-05-10T14:00:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "monash",
+      "sourceCandidateId": "uapt-monash-20260510-sc-001",
+      "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/ai-and-assessment",
+      "sourceTitle": "AI and assessment - Learning and Teaching - Monash University",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "assessment", "academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "monash",
+      "sourceCandidateId": "uapt-monash-20260510-sc-002",
+      "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/responsible-use",
+      "sourceTitle": "Responsible use of AI in education at Monash - Learning and Teaching",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "monash",
+      "sourceCandidateId": "uapt-monash-20260510-sc-003",
+      "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/AI-statements",
+      "sourceTitle": "AI statements - Learning and Teaching: Teach HQ - Monash University",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "assessment"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "monash",
+      "sourceCandidateId": "uapt-monash-20260510-sc-004",
+      "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/acknowledging-the-use-of-ai",
+      "sourceTitle": "Acknowledging the use of AI - Student Academic Success",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "teaching"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "monash",
+      "sourceCandidateId": "uapt-monash-20260510-sc-005",
+      "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/ai-and-assessments",
+      "sourceTitle": "AI and assessments - Student Academic Success - Monash University",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "assessment", "academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "monash",
+      "sourceCandidateId": "uapt-monash-20260510-sc-006",
+      "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/foundations-of-ai/responsible-and-ethical-use-of-ai",
+      "sourceTitle": "Responsible and ethical use of AI - Student Academic Success",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "privacy", "teaching"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "monash",
+      "sourceCandidateId": "uapt-monash-20260510-sc-007",
+      "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+      "sourceTitle": "AI Policies and Guidelines - Artificial intelligence at Monash",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["ai_tool_treatment", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "monash",
+      "sourceCandidateId": "uapt-monash-20260510-sc-008",
+      "sourceUrl": "https://www.monash.edu/graduate-research/support-and-resources/guidance-on-generative-ai",
+      "sourceTitle": "Guidance on Generative AI - Graduate Research - Monash University",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["research", "teaching", "academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "monash",
+      "sourceCandidateId": "uapt-monash-20260510-sc-009",
+      "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+      "sourceTitle": "Microsoft Copilot - Student Academic Success",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["approved_tools", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "All identified official sources fetched or blocked.",
+    "No new official policy/guidance URLs discovered after escalation."
+  ]
+}

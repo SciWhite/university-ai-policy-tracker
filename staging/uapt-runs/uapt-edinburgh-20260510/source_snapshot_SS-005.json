@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-005",
+  "sourceCandidateId": "SC-005",
+  "fetchAttemptId": "FA-005",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+  "finalUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+  "sourceTitle": "ELM - Edinburgh access to Language Models",
+  "sourceLanguage": "en",
+  "contentHash": "07bb780815ee3fd2eafbacc3719fefad764892ea2ec5d47332046f173db9321c",
+  "fetchedAt": "2026-05-10T12:12:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

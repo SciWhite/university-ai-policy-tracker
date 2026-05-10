@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-008",
+  "claimId": "CL-008",
+  "sourceSnapshotId": "SS-005",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+  "sourceTitle": "ELM - Edinburgh access to Language Models",
+  "sourceLanguage": "en",
+  "snapshotHash": "07bb780815ee3fd2eafbacc3719fefad764892ea2ec5d47332046f173db9321c",
+  "evidenceSnippetOriginal": "Please note, your lecturers do not have access to your chat history in ELM for the purposes of 'checking' your work - like your email account, it is private to you.",
+  "evidenceLocator": "ELM page > Privacy notice",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "ELM - Edinburgh access to Language Models",
+    "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+    "publisher": "University of Edinburgh",
+    "retrievedAt": "2026-05-10T12:12:00Z",
+    "snapshotHash": "07bb780815ee3fd2eafbacc3719fefad764892ea2ec5d47332046f173db9321c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

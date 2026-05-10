@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "fetchAttemptId": "uapt-monash-20260510-fa-001",
+  "sourceCandidateId": "uapt-monash-20260510-sc-001",
+  "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/ai-and-assessment",
+  "finalUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/ai-and-assessment",
+  "attemptedAt": "2026-05-10T14:08:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2100,
+  "contentHash": "d7bb3488f89043e65703c24f3b5758d2e2d9523fe8a293193add49b58e36b2b5"
+}

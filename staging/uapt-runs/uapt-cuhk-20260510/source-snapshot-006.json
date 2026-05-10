@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-006",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-006",
+  "fetchAttemptId": "uapt-cuhk-20260510-fa-006",
+  "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-365-copilot/",
+  "finalUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-365-copilot/",
+  "sourceTitle": "M365 Copilot (Premium) - CUHK ITSC",
+  "sourceLanguage": "en",
+  "contentHash": "7a295ba70f8ad6965a092f14c0e53a2b89c70e8bf95a31192509da67bc3e4302",
+  "fetchedAt": "2026-05-10T12:05:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-cuhk-20260510/normalized/cuhk-006.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-004",
+  "claimId": "CL-004",
+  "sourceSnapshotId": "SS-002",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-staff",
+  "sourceTitle": "Using Generative AI in Your Work: Guidance for Staff",
+  "sourceLanguage": "en",
+  "snapshotHash": "0a8ccc23e19ee71c8142fba5980655d8fe8382fc0a8ac9a77427313aa9c15e69",
+  "evidenceSnippetOriginal": "Do not rely on AI detection tools to confirm authorship. They misclassify human and AI content.",
+  "evidenceLocator": "Staff guidance > Core guidance",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using Generative AI in Your Work: Guidance for Staff",
+    "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-staff",
+    "publisher": "University of Edinburgh",
+    "retrievedAt": "2026-05-10T12:09:00Z",
+    "snapshotHash": "0a8ccc23e19ee71c8142fba5980655d8fe8382fc0a8ac9a77427313aa9c15e69",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

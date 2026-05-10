@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-012",
+  "claimId": "CL-012",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Evidence snippet is a direct quote from the fetched source snapshot. Claim scope matches source scope.",
+  "decidedAt": "2026-05-10T12:00:00Z"
+}

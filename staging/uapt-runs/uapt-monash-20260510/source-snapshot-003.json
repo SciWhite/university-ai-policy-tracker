@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-003",
+  "sourceCandidateId": "uapt-monash-20260510-sc-003",
+  "fetchAttemptId": "uapt-monash-20260510-fa-003",
+  "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/AI-statements",
+  "finalUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/AI-statements",
+  "sourceTitle": "AI statements - Learning and Teaching: Teach HQ - Monash University",
+  "sourceLanguage": "en",
+  "contentHash": "4393c45a04f1f03e5a5b210a534831371bee4da48d84e801308879bc3809f112",
+  "fetchedAt": "2026-05-10T14:09:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

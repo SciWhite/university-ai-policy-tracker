@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-008"],
+  "citation": {
+    "citationTitle": "Guidelines | AI Hub - StaffNet - The University of Manchester",
+    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:10:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-008",
+  "claimType": "teaching",
+  "claimText": "With approval at School level, Manchester's default AI position may be broadened or narrowed for specific course units or assignments. Students must be given detailed information explaining the rationale and what is and is not allowed.",
+  "confidence": 0.95
+}

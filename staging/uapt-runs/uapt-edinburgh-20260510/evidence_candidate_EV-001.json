@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-001",
+  "claimId": "CL-001",
+  "sourceSnapshotId": "SS-001",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-students/using-generative",
+  "sourceTitle": "Using generative AI in your studies: guidelines for students",
+  "sourceLanguage": "en",
+  "snapshotHash": "80d0a77aaf7b6d6ac79b70dca5a9ea0de320bbe03b74a6fbc66452d4789c8682",
+  "evidenceSnippetOriginal": "The University does not ban the use of AI, though its use will be restricted for much of your assessed work.",
+  "evidenceLocator": "Student guidance > Introduction bullet points",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using generative AI in your studies: guidelines for students",
+    "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-students/using-generative",
+    "publisher": "University of Edinburgh",
+    "retrievedAt": "2026-05-10T12:08:00Z",
+    "snapshotHash": "80d0a77aaf7b6d6ac79b70dca5a9ea0de320bbe03b74a6fbc66452d4789c8682",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

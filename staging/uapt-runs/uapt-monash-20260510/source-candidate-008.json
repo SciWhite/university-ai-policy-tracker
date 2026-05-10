@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-008",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/graduate-research/support-and-resources/guidance-on-generative-ai",
+  "sourceTitle": "Guidance on Generative AI - Graduate Research - Monash University",
+  "sourceLanguage": "en",
+  "sourceType": "research_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-10T14:04:30.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.94,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:06:30.000Z",
+  "verificationNotes": "Official Monash Graduate Research Office guidance on generative AI. Covers HDR supervisor and student responsibilities, thesis examination AI restrictions.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "evidenceId": "uapt-cuhk-20260510-ev-001",
+  "claimId": "uapt-cuhk-20260510-cl-001",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-001",
+  "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+  "finalUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+  "sourceTitle": "Use of Artificial Intelligence Tools in Teaching, Learning and Assessments - A Guide for Students",
+  "sourceLanguage": "en",
+  "snapshotHash": "1238efd08a875ddd6b5e13458e31183ccadd04d764c2e5b89da55b2fe6929ab6",
+  "evidenceSnippetOriginal": "Approach 1 \u2013 Prohibit all use of AI tools... Approach 2 \u2013 Use only with prior permission... Approach 3 \u2013 Use only with explicit acknowledgement... [Approach 4 \u2013] Students are allowed to use AI tools in learning activities and/or assessments without being required to explicitly cite or otherwise acknowledge the use of these tools",
+  "evidenceLocator": "Student Guide, Paragraphs 12 (Approaches 1-4)",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Use of Artificial Intelligence Tools in Teaching, Learning and Assessments - A Guide for Students",
+    "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "1238efd08a875ddd6b5e13458e31183ccadd04d764c2e5b89da55b2fe6929ab6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "discoveredAt": "2026-05-10T12:01:00Z",
+  "verifiedAt": "2026-05-10T12:10:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-002",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-staff",
+  "sourceTitle": "Using Generative AI in Your Work: Guidance for Staff",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ed.ac.uk \"generative AI\" policy",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.94,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official University of Edinburgh staff guidance on generative AI use. Published March 2026. Covers ELM recommendation, unacceptable uses, data protection, AI agents, research, teaching, and management guidance."
+}

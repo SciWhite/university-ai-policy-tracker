@@ -1,0 +1,36 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "reportId": "uapt-monash-20260510-report",
+  "title": "Monash University - AI Policy Tracker Report",
+  "generatedAt": "2026-05-10T14:25:00.000Z",
+  "draftPath": "content/reports/monash-ai-policy-20260510.mdx",
+  "summary": "Monash University, ranked =36 in QS 2026, has a comprehensive framework for generative AI use across teaching, assessment, research, and student support. The university's AI Policies and Guidelines hub references an AI Operations Policy and Procedure, a Generative AI Shared Responsibility Model, and responsible use principles covering community benefit, fairness, transparency, integrity, accountability, data security, and privacy. Chief Examiners bear overarching responsibility for setting AI conditions in assessments. Students must follow all assessment instructions regarding AI, document their AI use, and provide written acknowledgement; failure to do so constitutes a breach of the Student Academic Integrity Procedure. Monash provides Microsoft Copilot with enterprise data protection via the green shield, and warns students against uploading personal, sensitive, copyrighted, or licensed material to AI tools. For graduate research, all GenAI use must comply with the Australian Code for the Responsible Conduct of Research, and thesis examiners are explicitly prohibited from using GenAI in the examination process.",
+  "referencedClaimIds": [
+    "uapt-monash-20260510-cl-001",
+    "uapt-monash-20260510-cl-002",
+    "uapt-monash-20260510-cl-003",
+    "uapt-monash-20260510-cl-004",
+    "uapt-monash-20260510-cl-005",
+    "uapt-monash-20260510-cl-006",
+    "uapt-monash-20260510-cl-007",
+    "uapt-monash-20260510-cl-008",
+    "uapt-monash-20260510-cl-009"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/monash.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is staged data produced by an automated agent. All claims are at 'agent_reviewed' reviewState and have not been verified by a human reviewer.",
+    "The GenAI services page (https://www.monash.edu/ai/tools-training-and-resources/genai-services-currently-offered) returned HTTP 403 Forbidden due to Cloudflare WAF. Detailed service listings could not be verified from this source.",
+    "The AI Operations Policy and Procedure documents are hosted on publicpolicydms.monash.edu and were referenced but not directly fetched. Claims about policy content are derived from the AI Policies and Guidelines page that links to them.",
+    "The Generative AI Shared Responsibility Model page is marked as Monash staff only and was not fetched.",
+    "No Firecrawl-after-WAF/access-control issues were encountered on successfully fetched pages. All 9 verified sources were fetched successfully.",
+    "All 9 claims were approved. No claims were left as needs_changes or rejected in this run."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

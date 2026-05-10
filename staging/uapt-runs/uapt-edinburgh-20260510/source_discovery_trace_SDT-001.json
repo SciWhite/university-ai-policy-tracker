@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_discovery_trace",
+  "traceId": "SDT-001",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "startedAt": "2026-05-10T12:00:00Z",
+  "endedAt": "2026-05-10T12:15:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:ed.ac.uk \"generative AI\" policy",
+      "domain": "ed.ac.uk",
+      "resultCount": 10,
+      "notes": "Found student guidance, PGR guidance, staff guidance, library guide, research papers"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ed.ac.uk \"generative AI\" students",
+      "domain": "ed.ac.uk",
+      "resultCount": 10,
+      "notes": "Found student guidance, Teaching Matters blog posts, PGR guidelines"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ed.ac.uk \"ChatGPT\" assessment",
+      "domain": "ed.ac.uk",
+      "resultCount": 10,
+      "notes": "Found assessment blog posts, PDF guidance, Teaching Matters articles"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ed.ac.uk \"AI tools\" academic integrity",
+      "domain": "ed.ac.uk",
+      "resultCount": 10,
+      "notes": "Found student guidance, academic misconduct pages, Informatics school pages"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ed.ac.uk \"Copilot\" university",
+      "domain": "ed.ac.uk",
+      "resultCount": 10,
+      "notes": "Found AI in Microsoft 365 page, ELM page, staff guidance"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ed.ac.uk \"artificial intelligence\" teaching guidance",
+      "domain": "ed.ac.uk",
+      "resultCount": 10,
+      "notes": "Found AI guidance hub page, staff guidance, Teaching Matters blog posts"
+    },
+    {
+      "method": "site_search",
+      "domain": "ed.ac.uk",
+      "resultCount": 6,
+      "notes": "Verified 6 official pages via Firecrawl scrape: student guidance, staff guidance, AI hub, Microsoft 365, ELM, PGR guidance"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "SC-001",
+    "SC-002",
+    "SC-003",
+    "SC-004",
+    "SC-005",
+    "SC-006"
+  ],
+  "rejectionIds": [
+    "SR-001",
+    "SR-002"
+  ],
+  "summary": "Discovered University of Edinburgh AI guidance hub and sub-pages via site-restricted web searches. Verified 6 official policy/guidance pages covering student guidance, staff guidance, PGR student guidance, ELM platform, AI in Microsoft 365, and AI guidance hub. Rejected 2 PDF URLs as stale/outdated versions of current web guidance."
+}

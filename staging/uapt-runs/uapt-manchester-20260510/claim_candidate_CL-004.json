@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-004"],
+  "citation": {
+    "citationTitle": "Approved Tools | AI Hub - StaffNet - The University of Manchester",
+    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:12:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-004",
+  "claimType": "privacy",
+  "claimText": "Copilot Chat is available to everyone with a University of Manchester account. The university has a contractual agreement with Microsoft ensuring prompts and uploaded files are private, protected by the same security and encryption as emails and OneDrive. The AI system does not learn from user prompts or data.",
+  "confidence": 0.98
+}

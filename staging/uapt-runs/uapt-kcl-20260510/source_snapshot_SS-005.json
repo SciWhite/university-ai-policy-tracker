@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-005",
+  "sourceCandidateId": "SC-005",
+  "fetchAttemptId": "FA-005",
+  "sourceUrl": "https://www.kcl.ac.uk/policyhub/academic-misconduct-policy",
+  "finalUrl": "https://www.kcl.ac.uk/policyhub/academic-misconduct-policy",
+  "sourceTitle": "Academic Misconduct Policy",
+  "sourceLanguage": "en",
+  "contentHash": "ca31369ed62b0ce39c01540706acae763cb47de2a08ac86207ddd702f64fea80",
+  "fetchedAt": "2026-05-10T12:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

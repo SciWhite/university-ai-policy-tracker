@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "fetchAttemptId": "uapt-monash-20260510-fa-007",
+  "sourceCandidateId": "uapt-monash-20260510-sc-007",
+  "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+  "finalUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+  "attemptedAt": "2026-05-10T14:11:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1800,
+  "contentHash": "c329f87f3857e6c36df87263e24f931a780a15b0748f5d0cfb2ea58d2c88d6c6"
+}

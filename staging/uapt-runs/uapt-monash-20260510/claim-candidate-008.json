@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "claimId": "uapt-monash-20260510-cl-008",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "claimType": "research",
+  "claimText": "Thesis examiners are not permitted to use Generative AI technologies (such as ChatGPT) during the thesis examination process to support, prepare, or write their examiners' report.",
+  "normalizedValue": "examiners_prohibited_from_genai_in_examination",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["uapt-monash-20260510-ev-008"],
+  "citation": {
+    "citationTitle": "Guidance on Generative AI - Graduate Research - Monash University",
+    "sourceUrl": "https://www.monash.edu/graduate-research/support-and-resources/guidance-on-generative-ai",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:11:30.000Z",
+    "snapshotHash": "ce7114455cf73c84f6ef2e2f8506e7f7f055c3917f2c7b5899cd9fe58c5475fa",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

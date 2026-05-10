@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "evidenceId": "uapt-monash-20260510-ev-002",
+  "claimId": "uapt-monash-20260510-cl-002",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-002",
+  "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/responsible-use",
+  "finalUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/responsible-use",
+  "sourceTitle": "Responsible use of AI in education at Monash - Learning and Teaching",
+  "sourceLanguage": "en",
+  "snapshotHash": "3a872d6118d802764752cb98c0829bfd17c5eee8258a27765405ebf9da1040ec",
+  "evidenceSnippetOriginal": "Responsible use of AI should be explainable in terms of: What AI was used; Which AI tools assisted in producing the work, how many versions and drafts were produced; How outputs were adapted.",
+  "evidenceLocator": "Responsible use of AI page, main content section",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Responsible use of AI in education at Monash - Learning and Teaching",
+    "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/responsible-use",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:08:30.000Z",
+    "snapshotHash": "3a872d6118d802764752cb98c0829bfd17c5eee8258a27765405ebf9da1040ec",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "source_discovery_trace",
+  "traceId": "SDT-001",
+  "entityType": "university",
+  "entitySlug": "kcl",
+  "startedAt": "2026-05-10T12:00:00Z",
+  "endedAt": "2026-05-10T12:00:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:kcl.ac.uk \"generative AI\" policy",
+      "domain": "kcl.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:kcl.ac.uk \"AI tools\" teaching academic integrity",
+      "domain": "kcl.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:kcl.ac.uk \"ChatGPT\" assessment guidance",
+      "domain": "kcl.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"King's College London\" \"generative AI\" policy guidance",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:kcl.ac.uk artificial intelligence approved tools",
+      "domain": "kcl.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:kcl.ac.uk \"Copilot\" IT services approved",
+      "domain": "kcl.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:kcl.ac.uk academic integrity policy misconduct",
+      "domain": "kcl.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:kcl.ac.uk research ethics AI policy",
+      "domain": "kcl.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "site_search",
+      "domain": "kcl.ac.uk",
+      "resultCount": 6,
+      "notes": "Fetched and verified 6 official KCL pages via webfetch"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "SC-001",
+    "SC-002",
+    "SC-003",
+    "SC-004",
+    "SC-005",
+    "SC-006"
+  ],
+  "rejectionIds": [
+    "SR-001",
+    "SR-002",
+    "SR-003",
+    "SR-004",
+    "SR-005"
+  ],
+  "summary": "Discovered KCL AI guidance hub and sub-pages via site-restricted web searches. Verified 6 official policy/guidance pages. Rejected 5 URLs as research showcase, news, or low-specificity."
+}

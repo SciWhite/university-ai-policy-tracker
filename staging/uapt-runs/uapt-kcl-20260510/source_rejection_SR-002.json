@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "kcl",
+  "rejectedAt": "2026-05-10T12:00:00Z",
+  "checkedBy": "openclaw_agent",
+  "sourceRejectionId": "SR-002",
+  "sourceUrl": "https://roarnews.co.uk/2026/exclusive-kings-spends-35k-on-copilot-ai-as-10-students-expelled-for-ai-misuse-since-2022/",
+  "rejectionReason": "not_official",
+  "notes": "Student newspaper article. Not an official KCL source."
+}

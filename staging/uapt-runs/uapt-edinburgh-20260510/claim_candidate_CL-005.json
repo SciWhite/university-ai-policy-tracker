@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-005"],
+  "citation": {
+    "citationTitle": "ELM - Edinburgh access to Language Models",
+    "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+    "publisher": "University of Edinburgh",
+    "retrievedAt": "2026-05-10T12:12:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-005",
+  "claimType": "ai_tool_treatment",
+  "claimText": "ELM (Edinburgh access to Language Models) is the University of Edinburgh's AI innovation platform and a central gateway providing safer access to generative AI through large language models.",
+  "confidence": 0.97
+}

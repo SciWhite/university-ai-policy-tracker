@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-009",
+  "sourceCandidateId": "uapt-monash-20260510-sc-009",
+  "fetchAttemptId": "uapt-monash-20260510-fa-009",
+  "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+  "finalUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+  "sourceTitle": "Microsoft Copilot - Student Academic Success",
+  "sourceLanguage": "en",
+  "contentHash": "f9940260e77e75607597db836f734b55951f44fec105c1eed101b478bdcc1e38",
+  "fetchedAt": "2026-05-10T14:12:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

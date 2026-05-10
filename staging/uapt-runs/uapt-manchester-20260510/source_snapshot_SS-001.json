@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-001",
+  "sourceCandidateId": "SC-001",
+  "fetchAttemptId": "FA-001",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+  "finalUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+  "sourceTitle": "Guidelines | AI Hub - StaffNet - The University of Manchester",
+  "sourceLanguage": "en",
+  "contentHash": "d77102fc162f9636e2cdac97af4c99d214d8aa989038c29c85abec5c777e8434",
+  "fetchedAt": "2026-05-10T14:10:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

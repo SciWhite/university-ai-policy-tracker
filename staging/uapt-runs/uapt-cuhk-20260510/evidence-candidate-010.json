@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "evidenceId": "uapt-cuhk-20260510-ev-010",
+  "claimId": "uapt-cuhk-20260510-cl-010",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-007",
+  "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/ai-hub-cuhk/",
+  "finalUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/ai-hub-cuhk/",
+  "sourceTitle": "AI Hub @ CUHK - ITSC",
+  "sourceLanguage": "en",
+  "snapshotHash": "8e7a0a751ea39ef8cc34c6efbc691a519d029f2a68e8ff9b5e415f561693772c",
+  "evidenceSnippetOriginal": "AI Hub @ CUHK aims to serve as the one-stop hub for AI resources at the University. University provides various AI tools and services to support teaching, learning, research, and work. The AI Hub @ CUHK offers an overview of these resources, aiding users in selecting appropriate technology for their needs.",
+  "evidenceLocator": "ITSC AI Hub page, main description",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Hub @ CUHK - ITSC",
+    "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/ai-hub-cuhk/",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "8e7a0a751ea39ef8cc34c6efbc691a519d029f2a68e8ff9b5e415f561693772c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

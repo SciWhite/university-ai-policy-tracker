@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "kcl",
+  "discoveredAt": "2026-05-10T12:00:00Z",
+  "verifiedAt": "2026-05-10T12:00:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-004",
+  "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/context-definitions",
+  "sourceTitle": "Generative AI: context and definitions",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:kcl.ac.uk \"generative AI\" policy",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official KCL context/definitions page. Covers AI terminology, LLMs, equity of access, Copilot enterprise license."
+}

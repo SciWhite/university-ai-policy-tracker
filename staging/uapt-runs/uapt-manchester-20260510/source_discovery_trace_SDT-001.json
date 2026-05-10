@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_discovery_trace",
+  "traceId": "SDT-001",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "startedAt": "2026-05-10T14:00:00Z",
+  "endedAt": "2026-05-10T14:30:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:manchester.ac.uk \"generative AI\" policy",
+      "domain": "manchester.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:manchester.ac.uk \"generative AI\" assessment",
+      "domain": "manchester.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:manchester.ac.uk \"ChatGPT\" academic integrity",
+      "domain": "manchester.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:manchester.ac.uk \"AI tools\" students guidance",
+      "domain": "manchester.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:manchester.ac.uk \"Copilot\" university",
+      "domain": "manchester.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:manchester.ac.uk \"artificial intelligence\" teaching learning assessment",
+      "domain": "manchester.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:manchester.ac.uk data protection generative AI",
+      "domain": "manchester.ac.uk",
+      "resultCount": 10
+    },
+    {
+      "method": "site_search",
+      "domain": "staffnet.manchester.ac.uk",
+      "resultCount": 6,
+      "notes": "Fetched and verified 6 official Manchester pages via Firecrawl scrape"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "SC-001",
+    "SC-002",
+    "SC-003",
+    "SC-004",
+    "SC-005",
+    "SC-006"
+  ],
+  "rejectionIds": [
+    "SR-001",
+    "SR-002",
+    "SR-003",
+    "SR-004",
+    "SR-005"
+  ],
+  "summary": "Discovered Manchester AI Hub guidelines, approved tools page, teaching guidance, library referencing guide, Copilot IT services page, and BMH student guidance via site-restricted Firecrawl searches. Verified 6 official policy/guidance pages. Rejected 5 URLs as news-only, research showcase, event pages, or department-specific."
+}

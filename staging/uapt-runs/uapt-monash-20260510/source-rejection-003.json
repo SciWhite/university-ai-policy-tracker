@@ -1,0 +1,13 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceRejectionId": "uapt-monash-20260510-sr-003",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://guides.lib.monash.edu/chicago-18-a-notes/artificial-intelligence",
+  "rejectedAt": "2026-05-10T14:06:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "notes": "Monash Library Chicago citation guide for AI. Citation formatting guidance only, not policy-relevant."
+}

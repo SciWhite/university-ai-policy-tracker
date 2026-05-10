@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "claimId": "uapt-monash-20260510-cl-009",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "claimType": "ai_tool_treatment",
+  "claimText": "Microsoft Copilot is a generative AI program that has capabilities to generate text and images in response to user prompts. Monash recommends logging in using Monash credentials to ensure data is more protected.",
+  "normalizedValue": "copilot_capabilities_and_login_recommendation",
+  "sourceLanguage": "en",
+  "confidence": 0.90,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["uapt-monash-20260510-ev-009"],
+  "citation": {
+    "citationTitle": "Microsoft Copilot - Student Academic Success",
+    "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:12:00.000Z",
+    "snapshotHash": "f9940260e77e75607597db836f734b55951f44fec105c1eed101b478bdcc1e38",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

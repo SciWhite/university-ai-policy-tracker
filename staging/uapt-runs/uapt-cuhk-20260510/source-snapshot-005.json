@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceSnapshotId": "uapt-cuhk-20260510-ss-005",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-005",
+  "fetchAttemptId": "uapt-cuhk-20260510-fa-005",
+  "sourceUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+  "finalUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+  "sourceTitle": "Declaration to be included in assignments - CUHK Academic Honesty Policy",
+  "sourceLanguage": "en",
+  "contentHash": "9eeabe7583f66ea65c166104f6675fb6ca317aa15de68588af8c29a2121c359b",
+  "fetchedAt": "2026-05-10T12:05:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-cuhk-20260510/normalized/cuhk-005.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "discoveredAt": "2026-05-10T14:05:00Z",
+  "verifiedAt": "2026-05-10T14:12:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-002",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+  "sourceTitle": "Approved Tools | AI Hub - StaffNet - The University of Manchester",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:manchester.ac.uk \"Copilot\" university",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official AI Hub approved tools page. Details Microsoft 365 Copilot deployment, Copilot Chat privacy/data security, NebulaONE AI toolbox."
+}

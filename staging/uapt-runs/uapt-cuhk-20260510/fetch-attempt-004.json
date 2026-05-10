@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "fetchAttemptId": "uapt-cuhk-20260510-fa-004",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-004",
+  "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-copilot-for-the-web/",
+  "finalUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-copilot-for-the-web/",
+  "attemptedAt": "2026-05-10T12:05:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1500,
+  "contentHash": "3760564320e381d50261be724ba9de7a1635eb20f77cb3d52a52910ea0f35497",
+  "normalizedTextStorageKey": "staging/uapt-cuhk-20260510/normalized/cuhk-004.txt"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-003",
+  "claimId": "CL-003",
+  "sourceSnapshotId": "SS-002",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+  "sourceTitle": "Approved Tools | AI Hub - StaffNet - The University of Manchester",
+  "sourceLanguage": "en",
+  "snapshotHash": "50d483be513f2470d669656fcbe997eb1eeb617dd6f924cf1aa943c1109069fb",
+  "evidenceSnippetOriginal": "The University has announced a strategic collaboration with Microsoft, making Manchester the world's first university to deploy equitable Microsoft 365 Copilot access and training across its entire community. This means 65,000 colleagues and students will benefit from the full Microsoft 365 Copilot suite.",
+  "evidenceLocator": "Microsoft 365 Copilot License section",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Approved Tools | AI Hub - StaffNet - The University of Manchester",
+    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:12:00Z",
+    "snapshotHash": "50d483be513f2470d669656fcbe997eb1eeb617dd6f924cf1aa943c1109069fb",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

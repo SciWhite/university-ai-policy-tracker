@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "claimId": "uapt-cuhk-20260510-cl-010",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "claimType": "ai_tool_treatment",
+  "claimText": "CUHK ITSC provides AI Hub @ CUHK as a one-stop hub for AI resources at the University, offering an overview of AI tools and services for teaching, learning, research, and work.",
+  "normalizedValue": "ai_hub_one_stop_resource",
+  "sourceLanguage": "en",
+  "confidence": 0.88,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uapt-cuhk-20260510-ev-010"
+  ],
+  "citation": {
+    "citationTitle": "AI Hub @ CUHK - ITSC",
+    "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/ai-hub-cuhk/",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "8e7a0a751ea39ef8cc34c6efbc691a519d029f2a68e8ff9b5e415f561693772c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

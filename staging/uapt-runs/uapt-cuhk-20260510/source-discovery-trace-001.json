@@ -1,0 +1,85 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "traceId": "uapt-cuhk-20260510-trace-001",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "startedAt": "2026-05-10T12:00:00.000Z",
+  "endedAt": "2026-05-10T12:10:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:cuhk.edu.hk \"generative AI\" policy",
+      "domain": "cuhk.edu.hk",
+      "resultCount": 10,
+      "notes": "Found CLEAR page, student guide PDF, library guide, research papers."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:cuhk.edu.hk \"ChatGPT\" academic integrity",
+      "domain": "cuhk.edu.hk",
+      "resultCount": 10,
+      "notes": "Found academic honesty declaration page, library citing guide, student guide."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:cuhk.edu.hk \"AI tools\" teaching",
+      "domain": "cuhk.edu.hk",
+      "resultCount": 10,
+      "notes": "Found student guide PDF, library guide, CLEAR page, ITSC chatbot page."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:cuhk.edu.hk \"Copilot\" approved tools",
+      "domain": "cuhk.edu.hk",
+      "resultCount": 10,
+      "notes": "Found ITSC M365 Copilot page, Copilot Chat Basic page, AI Hub page."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"Chinese University of Hong Kong\" \"generative AI policy\"",
+      "domain": "cuhk.edu.hk",
+      "resultCount": 10,
+      "notes": "Found research papers about CUHK AI policies. Mainly academic publications, not policy pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:cuhk.edu.hk \"\u751f\u6210\u5f0f\u4eba\u5de5\u667a\u80fd\" \u653f\u7b56",
+      "domain": "cuhk.edu.hk",
+      "resultCount": 10,
+      "notes": "Chinese language search. Found research centre pages and business school articles. No additional policy pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:cuhk.edu.hk \"artificial intelligence\" assessment policy",
+      "domain": "cuhk.edu.hk",
+      "resultCount": 10,
+      "notes": "Found student guide PDF, library guide referencing university guidelines."
+    },
+    {
+      "method": "site_search",
+      "domain": "cuhk.edu.hk",
+      "resultCount": 5,
+      "notes": "Fetched and verified 5 official CUHK pages (student guide PDF, CLEAR, library, ITSC Copilot, academic honesty). Rejected 5 (login-required, research-only, course-level)."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "uapt-cuhk-20260510-sc-001",
+    "uapt-cuhk-20260510-sc-002",
+    "uapt-cuhk-20260510-sc-003",
+    "uapt-cuhk-20260510-sc-004",
+    "uapt-cuhk-20260510-sc-005",
+    "uapt-cuhk-20260510-sc-006",
+    "uapt-cuhk-20260510-sc-007"
+  ],
+  "rejectionIds": [
+    "uapt-cuhk-20260510-sr-001",
+    "uapt-cuhk-20260510-sr-002",
+    "uapt-cuhk-20260510-sr-003",
+    "uapt-cuhk-20260510-sr-004",
+    "uapt-cuhk-20260510-sr-005"
+  ],
+  "summary": "Discovered 7 verified official sources: student AI guide (PDF), CLEAR generative AI page, library AI guide, ITSC Copilot Chat Basic, ITSC M365 Copilot Premium, ITSC AI Hub, and academic honesty declaration. Rejected 5 sources: staff guidelines (login required), research policy (login required), 2 research publications (research showcase only), 1 course page (low policy specificity)."
+}

@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "claimId": "uapt-cuhk-20260510-cl-004",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "claimType": "academic_integrity",
+  "claimText": "CUHK requires students to declare in each assignment that they have read and understood the University's policy on AI use, complied with course teacher instructions on AI tools, and consent to AI content detection software review.",
+  "normalizedValue": "ai_declaration_required",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uapt-cuhk-20260510-ev-004"
+  ],
+  "citation": {
+    "citationTitle": "Declaration to be included in assignments - CUHK Academic Honesty Policy",
+    "sourceUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "9eeabe7583f66ea65c166104f6675fb6ca317aa15de68588af8c29a2121c359b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

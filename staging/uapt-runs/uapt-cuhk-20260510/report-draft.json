@@ -1,0 +1,38 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "reportId": "uapt-cuhk-20260510-report",
+  "title": "The Chinese University of Hong Kong (CUHK) - AI Policy Tracker Report",
+  "generatedAt": "2026-05-10T12:15:00.000Z",
+  "draftPath": "content/reports/cuhk-ai-policy-20260510.mdx",
+  "summary": "The Chinese University of Hong Kong (CUHK), ranked =32 in QS 2026, has established a structured framework for generative AI use in teaching, learning, and assessments. The university's official student guide (May 2025 revision) defines four approaches to AI use in courses: (1) prohibit all use, (2) use only with prior permission, (3) use only with explicit acknowledgement, and (4) free use without acknowledgement. Improper or unauthorized use of AI tools constitutes academic dishonesty subject to penalties including failure grades, suspension, and termination of studies. All assignments require a signed declaration confirming compliance with the university's AI policy and consent to AI content detection software review. CUHK provides Microsoft Copilot Chat (Basic) free to all students and staff with enterprise data protection, and M365 Copilot (Premium) as a charged service for staff. The university's CLEAR centre actively promotes AI literacy and responsible AI integration in education. The Library provides guidance on copyright, privacy, and responsible AI use. Separate guidelines exist for AI use in research contexts (login required).",
+  "referencedClaimIds": [
+    "uapt-cuhk-20260510-cl-001",
+    "uapt-cuhk-20260510-cl-002",
+    "uapt-cuhk-20260510-cl-003",
+    "uapt-cuhk-20260510-cl-004",
+    "uapt-cuhk-20260510-cl-005",
+    "uapt-cuhk-20260510-cl-006",
+    "uapt-cuhk-20260510-cl-007",
+    "uapt-cuhk-20260510-cl-008",
+    "uapt-cuhk-20260510-cl-009",
+    "uapt-cuhk-20260510-cl-010",
+    "uapt-cuhk-20260510-cl-011",
+    "uapt-cuhk-20260510-cl-012"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/cuhk.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is staged data produced by an automated agent. All claims are at 'agent_reviewed' reviewState and have not been verified by a human reviewer.",
+    "The staff-only 'Guidelines on the Use of Artificial Intelligence Tools in Teaching, Learning and Assessments' (https://www.aqs.cuhk.edu.hk/documents/staff/Guidelines-on-use-of-AI-tools-in-TL.pdf) requires CUHK staff login and was not publicly accessible. Claims could not be derived from this source.",
+    "The 'Guidelines on the Responsible Use of AI for Research' (Schedule 11 of the Research Policy at https://ro.cuhk.edu.hk/en/about/policies-guidelines) requires CUHK staff/RPG student login and was not publicly accessible. Claims about research-specific AI policy could not be derived from this source.",
+    "No Firecrawl-after-WAF/access-control issues were encountered. All pages were fetched successfully.",
+    "All 12 claims were approved. No claims were left as needs_changes or rejected in this run."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "evidenceId": "uapt-monash-20260510-ev-004",
+  "claimId": "uapt-monash-20260510-cl-004",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-005",
+  "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/ai-and-assessments",
+  "finalUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/ai-and-assessments",
+  "sourceTitle": "AI and assessments - Student Academic Success - Monash University",
+  "sourceLanguage": "en",
+  "snapshotHash": "1900a60bb7e996c09164556689f3140bcdb58e27333c35556dbd67b77e62f17b",
+  "evidenceSnippetOriginal": "It is important that you follow assessment instructions regarding the use of AI. If you don't, you may breach assessment conditions (Student Academic Integrity Procedure, 2022). This occurs when you use AI in a way that is not permitted in an assessment, or fail to acknowledge its use correctly.",
+  "evidenceLocator": "AI and assessments page, Academic integrity and AI use in assessments section",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI and assessments - Student Academic Success - Monash University",
+    "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/ai-and-assessments",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:10:00.000Z",
+    "snapshotHash": "1900a60bb7e996c09164556689f3140bcdb58e27333c35556dbd67b77e62f17b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

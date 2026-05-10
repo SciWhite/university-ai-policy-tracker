@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-007",
+  "claimId": "CL-007",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Evidence snippet is a direct quote from PGR guidance. Claim accurately reflects the PGR-specific policy.",
+  "decidedAt": "2026-05-10T12:20:00Z"
+}

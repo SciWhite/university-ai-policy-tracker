@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-005",
+  "sourceCandidateId": "SC-005",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+  "finalUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+  "attemptedAt": "2026-05-10T12:12:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "07bb780815ee3fd2eafbacc3719fefad764892ea2ec5d47332046f173db9321c"
+}

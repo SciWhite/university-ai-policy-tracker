@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-001",
+  "sourceCandidateId": "SC-001",
+  "fetchAttemptId": "FA-001",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-students/using-generative",
+  "finalUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-students/using-generative",
+  "sourceTitle": "Using generative AI in your studies: guidelines for students",
+  "sourceLanguage": "en",
+  "contentHash": "80d0a77aaf7b6d6ac79b70dca5a9ea0de320bbe03b74a6fbc66452d4789c8682",
+  "fetchedAt": "2026-05-10T12:08:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

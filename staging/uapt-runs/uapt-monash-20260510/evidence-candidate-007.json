@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "evidenceId": "uapt-monash-20260510-ev-007",
+  "claimId": "uapt-monash-20260510-cl-007",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-007",
+  "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+  "finalUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+  "sourceTitle": "AI Policies and Guidelines - Artificial intelligence at Monash",
+  "sourceLanguage": "en",
+  "snapshotHash": "c329f87f3857e6c36df87263e24f931a780a15b0748f5d0cfb2ea58d2c88d6c6",
+  "evidenceSnippetOriginal": "Monash AI responsible use principles: Community benefit, education and research excellence; Fairness; Transparency; Integrity and accountability; Data security and privacy.",
+  "evidenceLocator": "AI Policies and Guidelines page, main content section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Policies and Guidelines - Artificial intelligence at Monash",
+    "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:11:00.000Z",
+    "snapshotHash": "c329f87f3857e6c36df87263e24f931a780a15b0748f5d0cfb2ea58d2c88d6c6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

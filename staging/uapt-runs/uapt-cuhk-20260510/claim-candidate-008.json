@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "claimId": "uapt-cuhk-20260510-cl-008",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "claimType": "ai_tool_treatment",
+  "claimText": "CUHK provides M365 Copilot (Premium) as a charged service for staff, project accounts, and departmental accounts, integrating with Microsoft 365 apps for AI-powered productivity.",
+  "normalizedValue": "copilot_premium_charged_staff_only",
+  "sourceLanguage": "en",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uapt-cuhk-20260510-ev-008"
+  ],
+  "citation": {
+    "citationTitle": "M365 Copilot (Premium) - CUHK ITSC",
+    "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-365-copilot/",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "7a295ba70f8ad6965a092f14c0e53a2b89c70e8bf95a31192509da67bc3e4302",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

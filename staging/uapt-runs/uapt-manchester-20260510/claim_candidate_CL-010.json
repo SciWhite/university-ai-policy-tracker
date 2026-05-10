@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-010"],
+  "citation": {
+    "citationTitle": "Referencing guide at the University of Manchester: AI and referencing",
+    "sourceUrl": "https://subjects.library.manchester.ac.uk/referencing/AI",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:16:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-010",
+  "claimType": "academic_integrity",
+  "claimText": "Students at Manchester must cite or acknowledge the outputs of generative AI tools when they use them in their work, including quoting, summarising, paraphrasing, editing, translating, data processing, re-writing, and idea generation.",
+  "confidence": 0.98
+}

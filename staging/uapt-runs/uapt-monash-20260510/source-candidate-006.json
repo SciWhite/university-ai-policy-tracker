@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-006",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/foundations-of-ai/responsible-and-ethical-use-of-ai",
+  "sourceTitle": "Responsible and ethical use of AI - Student Academic Success",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu data protection generative AI",
+  "discoveredAt": "2026-05-10T14:03:30.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:05:30.000Z",
+  "verificationNotes": "Official Monash Student Academic Success page on responsible and ethical use of AI. Covers privacy, IP, Copilot data protection, and Assessment and Academic Integrity Policy references.",
+  "robotsPolicy": "respect"
+}

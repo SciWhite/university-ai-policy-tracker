@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "fetchAttemptId": "uapt-cuhk-20260510-fa-005",
+  "sourceCandidateId": "uapt-cuhk-20260510-sc-005",
+  "sourceUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+  "finalUrl": "https://www.cuhk.edu.hk/policy/academichonesty/Eng_htm_files_(2013-14)/p10.htm",
+  "attemptedAt": "2026-05-10T12:05:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1500,
+  "contentHash": "9eeabe7583f66ea65c166104f6675fb6ca317aa15de68588af8c29a2121c359b",
+  "normalizedTextStorageKey": "staging/uapt-cuhk-20260510/normalized/cuhk-005.txt"
+}

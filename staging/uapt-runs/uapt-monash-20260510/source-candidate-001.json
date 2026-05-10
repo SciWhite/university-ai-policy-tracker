@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceCandidateId": "uapt-monash-20260510-sc-001",
+  "entityType": "university",
+  "entitySlug": "monash",
+  "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/ai-and-assessment",
+  "sourceTitle": "AI and assessment - Learning and Teaching - Monash University",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:monash.edu \"generative AI\" assessment",
+  "discoveredAt": "2026-05-10T14:01:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:03:00.000Z",
+  "verificationNotes": "Official Monash Learning and Teaching page on AI and assessment. Published on Teach HQ. Contains Chief Examiner responsibilities and assessment condition guidance.",
+  "robotsPolicy": "respect"
+}

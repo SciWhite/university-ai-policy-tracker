@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "claimId": "uapt-cuhk-20260510-cl-006",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "claimType": "privacy",
+  "claimText": "CUHK's student AI guide establishes ethical principles of accountability, transparency, and acknowledgement for AI tool use. Users are accountable for AI-generated outputs and must fact-check all outputs.",
+  "normalizedValue": "ethical_principles_ai_use",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uapt-cuhk-20260510-ev-006"
+  ],
+  "citation": {
+    "citationTitle": "Use of Artificial Intelligence Tools in Teaching, Learning and Assessments - A Guide for Students",
+    "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/A-guide-for-students_use-of-AI-tools.pdf",
+    "publisher": "The Chinese University of Hong Kong",
+    "retrievedAt": "2026-05-10T12:05:00.000Z",
+    "snapshotHash": "1238efd08a875ddd6b5e13458e31183ccadd04d764c2e5b89da55b2fe6929ab6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-005",
+  "sourceCandidateId": "SC-005",
+  "fetchAttemptId": "FA-005",
+  "sourceUrl": "https://www.itservices.manchester.ac.uk/ourservices/microsoft365/copilot/",
+  "finalUrl": "https://www.itservices.manchester.ac.uk/ourservices/microsoft365/copilot/",
+  "sourceTitle": "Copilot - IT Services - The University of Manchester",
+  "sourceLanguage": "en",
+  "contentHash": "fbdaa0ff6218d6cfcfe4a12c7360cb8b3eaec93d64158cb9617326e734048cad",
+  "fetchedAt": "2026-05-10T14:18:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

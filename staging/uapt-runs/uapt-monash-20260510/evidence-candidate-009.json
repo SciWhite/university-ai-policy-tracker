@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "evidenceId": "uapt-monash-20260510-ev-009",
+  "claimId": "uapt-monash-20260510-cl-009",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-009",
+  "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+  "finalUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+  "sourceTitle": "Microsoft Copilot - Student Academic Success",
+  "sourceLanguage": "en",
+  "snapshotHash": "f9940260e77e75607597db836f734b55951f44fec105c1eed101b478bdcc1e38",
+  "evidenceSnippetOriginal": "Microsoft Copilot is a generative artificial intelligence (GenAI) program that has capabilities to generate text and images in response to user prompts. Make sure to log in using your Monash credentials before accessing Copilot. This ensures that your data is more protected.",
+  "evidenceLocator": "Microsoft Copilot page, main content section",
+  "evidenceType": "official_source",
+  "relevance": 0.90,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Microsoft Copilot - Student Academic Success",
+    "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+    "publisher": "Monash University",
+    "retrievedAt": "2026-05-10T14:12:00.000Z",
+    "snapshotHash": "f9940260e77e75607597db836f734b55951f44fec105c1eed101b478bdcc1e38",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

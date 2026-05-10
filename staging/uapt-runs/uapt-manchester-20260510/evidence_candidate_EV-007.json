@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-007",
+  "claimId": "CL-007",
+  "sourceSnapshotId": "SS-001",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+  "sourceTitle": "Guidelines | AI Hub - StaffNet - The University of Manchester",
+  "sourceLanguage": "en",
+  "snapshotHash": "d77102fc162f9636e2cdac97af4c99d214d8aa989038c29c85abec5c777e8434",
+  "evidenceSnippetOriginal": "Tools to detect AI-generated content are unreliable and biased and cannot be relied on to identify academic malpractice in summative assessment. Output from such tools cannot currently be used as evidence of malpractice.",
+  "evidenceLocator": "Teaching and Learning > Detecting malpractice",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidelines | AI Hub - StaffNet - The University of Manchester",
+    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:10:00Z",
+    "snapshotHash": "d77102fc162f9636e2cdac97af4c99d214d8aa989038c29c85abec5c777e8434",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

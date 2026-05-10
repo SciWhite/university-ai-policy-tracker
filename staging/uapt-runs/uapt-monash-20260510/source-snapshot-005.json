@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-005",
+  "sourceCandidateId": "uapt-monash-20260510-sc-005",
+  "fetchAttemptId": "uapt-monash-20260510-fa-005",
+  "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/ai-and-assessments",
+  "finalUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/ai-and-assessments",
+  "sourceTitle": "AI and assessments - Student Academic Success - Monash University",
+  "sourceLanguage": "en",
+  "contentHash": "1900a60bb7e996c09164556689f3140bcdb58e27333c35556dbd67b77e62f17b",
+  "fetchedAt": "2026-05-10T14:10:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

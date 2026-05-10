@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "discoveredAt": "2026-05-10T12:02:00Z",
+  "verifiedAt": "2026-05-10T12:10:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-003",
+  "sourceUrl": "https://www.ed.ac.uk/ai/guidance",
+  "sourceTitle": "Guidance for students and staff on AI use",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ed.ac.uk \"artificial intelligence\" teaching guidance",
+  "officialDomainConfidence": 0.97,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official University of Edinburgh AI guidance hub page. Links to student and staff guidance, AI Adoption Hub, and ELM. Published March 2025."
+}

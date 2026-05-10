@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "report_draft",
+  "reportId": "RPT-001",
+  "title": "University of Edinburgh (QS 2026 #34) \u2014 AI Policy Tracker Report",
+  "generatedAt": "2026-05-10T12:25:00Z",
+  "draftPath": "content/reports/edinburgh-ai-policy-20260510.mdx",
+  "summary": "The University of Edinburgh does not ban generative AI use by students or staff. The university has published guidance for students, postgraduate research students, and staff through its Information Services pages. Students must not present AI outputs as their own work or submit AI-generated content without acknowledgment; violations constitute academic misconduct. The university describes ELM (Edinburgh access to Language Models) as its AI innovation platform and central gateway for safer access to generative AI. Microsoft Copilot chat can be accessed in Edge with University credentials, where a green shield indicates additional protections. Staff are advised not to rely on AI detection tools. PGR students may use AI in research but must discuss with supervisors and acknowledge use. AI agents are prohibited from use within university login-required platforms.",
+  "referencedClaimIds": [
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004",
+    "CL-005",
+    "CL-006",
+    "CL-007",
+    "CL-008"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/edinburgh.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is staged data, not an official university statement. Claims are agent-reviewed candidates, not human-verified facts.",
+    "Two PDF guidance documents (October 2024 and July 2024 versions) were rejected as stale because the university has published updated web-based guidance (March 2026 revision).",
+    "No blocked URLs or access-control issues were encountered during this run. All pages were fetched via Firecrawl.",
+    "All 8 claims were approved at agent_reviewed level. No claims were left as needs_changes or reject in this run.",
+    "School-level or programme-specific AI policies were not crawled in this run. The Informatics school academic misconduct page was identified but not fetched as it is school-level rather than university-wide."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

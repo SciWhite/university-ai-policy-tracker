@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-002",
+  "sourceCandidateId": "SC-002",
+  "fetchAttemptId": "FA-002",
+  "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+  "finalUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+  "sourceTitle": "Generative AI: student guidance",
+  "sourceLanguage": "en",
+  "contentHash": "de7e5bc7b74c4cb2793a5aa5fa10833903a495498accbd3da32eaac9e5f4cc23",
+  "fetchedAt": "2026-05-10T12:00:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "sourceSnapshotId": "uapt-monash-20260510-ss-002",
+  "sourceCandidateId": "uapt-monash-20260510-sc-002",
+  "fetchAttemptId": "uapt-monash-20260510-fa-002",
+  "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/responsible-use",
+  "finalUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/responsible-use",
+  "sourceTitle": "Responsible use of AI in education at Monash - Learning and Teaching",
+  "sourceLanguage": "en",
+  "contentHash": "3a872d6118d802764752cb98c0829bfd17c5eee8258a27765405ebf9da1040ec",
+  "fetchedAt": "2026-05-10T14:08:30.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

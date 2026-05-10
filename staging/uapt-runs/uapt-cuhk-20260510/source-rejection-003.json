@@ -1,0 +1,13 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceRejectionId": "uapt-cuhk-20260510-sr-003",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://research.cuhk.edu.hk/en/publications/the-impact-of-generative-ai-genai-on-practices-policies-and-resea-2/",
+  "rejectedAt": "2026-05-10T12:04:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "notes": "Research publication about GenAI impact. Not institutional policy or guidance."
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "discoveredAt": "2026-05-10T14:05:00Z",
+  "verifiedAt": "2026-05-10T14:18:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-005",
+  "sourceUrl": "https://www.itservices.manchester.ac.uk/ourservices/microsoft365/copilot/",
+  "sourceTitle": "Copilot - IT Services - The University of Manchester",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:manchester.ac.uk \"Copilot\" university",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official IT Services page for Microsoft Copilot. Confirms world-first deployment of M365 Copilot to 65,000 users. States Copilot Chat available to everyone with University account."
+}

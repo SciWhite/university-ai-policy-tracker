@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kcl-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "kcl",
+  "discoveredAt": "2026-05-10T12:00:00Z",
+  "verifiedAt": "2026-05-10T12:00:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-005",
+  "sourceUrl": "https://www.kcl.ac.uk/policyhub/academic-misconduct-policy",
+  "sourceTitle": "Academic Misconduct Policy",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:kcl.ac.uk academic integrity policy misconduct",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.7,
+  "policySpecificityScore": 0.6,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official KCL policy hub page. Approved by College Education Committee, July 2023. Links to PDF policy and procedure."
+}

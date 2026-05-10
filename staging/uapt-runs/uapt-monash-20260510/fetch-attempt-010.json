@@ -1,0 +1,17 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "fetchAttemptId": "uapt-monash-20260510-fa-010",
+  "sourceCandidateId": "uapt-monash-20260510-sc-010",
+  "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/genai-services-currently-offered",
+  "finalUrl": "https://www.monash.edu/ai/tools-training-and-resources/genai-services-currently-offered",
+  "attemptedAt": "2026-05-10T14:12:30.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": false,
+  "outcome": "blocked",
+  "errorReason": "HTTP 403 Forbidden - Cloudflare WAF challenge page returned instead of content"
+}

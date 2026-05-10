@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "source_rejection",
+  "entityType": "university",
+  "entitySlug": "manchester",
+  "rejectedAt": "2026-05-10T14:10:00Z",
+  "checkedBy": "openclaw_agent",
+  "sourceRejectionId": "SR-005",
+  "sourceUrl": "https://www.manchester.ac.uk/about/news/giving-students-and-teachers-a-voice-in-shaping-ai-guidelines/",
+  "rejectionReason": "event_or_news_only",
+  "notes": "University news article about student/staff input into AI guidelines. News feature, not policy content."
+}

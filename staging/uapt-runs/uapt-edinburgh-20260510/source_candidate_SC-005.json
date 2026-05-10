@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "source_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "discoveredAt": "2026-05-10T12:04:00Z",
+  "verifiedAt": "2026-05-10T12:10:00Z",
+  "sourceLanguage": "en",
+  "robotsPolicy": "respect",
+  "sourceCandidateId": "SC-005",
+  "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+  "sourceTitle": "ELM - Edinburgh access to Language Models",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ed.ac.uk \"Copilot\" university",
+  "officialDomainConfidence": 0.97,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verificationNotes": "Official University of Edinburgh ELM platform page. ELM is the university's AI innovation platform providing safer access to generative AI. Free to all staff and students."
+}

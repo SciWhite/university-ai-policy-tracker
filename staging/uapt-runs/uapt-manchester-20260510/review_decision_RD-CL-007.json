@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-007",
+  "claimId": "CL-007",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Direct quote from AI Hub Guidelines page, Teaching and Learning > Detecting malpractice section. Explicit statement that AI detection tools are unreliable.",
+  "decidedAt": "2026-05-10T14:30:00Z"
+}

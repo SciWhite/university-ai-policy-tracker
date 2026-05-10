@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "EV-004",
+  "claimId": "CL-004",
+  "sourceSnapshotId": "SS-002",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+  "sourceTitle": "Approved Tools | AI Hub - StaffNet - The University of Manchester",
+  "sourceLanguage": "en",
+  "snapshotHash": "50d483be513f2470d669656fcbe997eb1eeb617dd6f924cf1aa943c1109069fb",
+  "evidenceSnippetOriginal": "Copilot Chat is an AI-powered assistant available to everyone with a University account... Your prompts and uploaded files are private – no one else can see them and they are protected by the same security and encryption techniques as your emails and the contents of your OneDrive or SharePoint Sites. Copilot Chat's AI system does not learn from your prompts or data.",
+  "evidenceLocator": "Copilot Chat > Privacy and Data Security",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Approved Tools | AI Hub - StaffNet - The University of Manchester",
+    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+    "publisher": "The University of Manchester",
+    "retrievedAt": "2026-05-10T14:12:00Z",
+    "snapshotHash": "50d483be513f2470d669656fcbe997eb1eeb617dd6f924cf1aa943c1109069fb",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

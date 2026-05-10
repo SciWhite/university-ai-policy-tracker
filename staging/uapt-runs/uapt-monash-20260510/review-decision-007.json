@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "decisionId": "uapt-monash-20260510-rd-007",
+  "claimId": "uapt-monash-20260510-cl-007",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim text matches evidence snippet. Source is official Monash AI Policies and Guidelines page.",
+  "decidedAt": "2026-05-10T14:20:00.000Z"
+}

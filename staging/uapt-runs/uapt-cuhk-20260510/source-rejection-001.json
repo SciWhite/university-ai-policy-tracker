@@ -1,0 +1,13 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-cuhk-20260510",
+  "sourceRejectionId": "uapt-cuhk-20260510-sr-001",
+  "entityType": "university",
+  "entitySlug": "cuhk",
+  "sourceUrl": "https://www.aqs.cuhk.edu.hk/documents/staff/Guidelines-on-use-of-AI-tools-in-TL.pdf",
+  "rejectedAt": "2026-05-10T12:04:00.000Z",
+  "rejectionReason": "login_required",
+  "checkedBy": "openclaw-agent",
+  "notes": "Staff guidelines PDF requires CUHK staff login. Not publicly accessible."
+}

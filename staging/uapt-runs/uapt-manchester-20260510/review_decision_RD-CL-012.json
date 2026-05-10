@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-manchester-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-012",
+  "claimId": "CL-012",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Direct quote from Teaching College AI guidance page, Recommended Tools section. University recommendation of Microsoft Copilot with GDPR compliance note.",
+  "decidedAt": "2026-05-10T14:30:00Z"
+}

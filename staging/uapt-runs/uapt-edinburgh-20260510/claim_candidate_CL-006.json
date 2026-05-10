@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-edinburgh-20260510",
+  "artifactType": "claim_candidate",
+  "entityType": "university",
+  "entitySlug": "edinburgh",
+  "sourceLanguage": "en",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "evidenceIds": ["EV-006"],
+  "citation": {
+    "citationTitle": "AI in Microsoft 365",
+    "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/ai-microsoft-365",
+    "publisher": "University of Edinburgh",
+    "retrievedAt": "2026-05-10T12:11:00Z",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "claimId": "CL-006",
+  "claimType": "ai_tool_treatment",
+  "claimText": "The University of Edinburgh says users can access the Copilot chat service within Edge by signing in with University credentials, where a green shield indicates additional protections.",
+  "confidence": 0.94
+}

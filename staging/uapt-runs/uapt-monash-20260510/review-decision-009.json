@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-monash-20260510",
+  "decisionId": "uapt-monash-20260510-rd-009",
+  "claimId": "uapt-monash-20260510-cl-009",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim text combines two direct quotes from the same source page. Both are present in the evidence snippet.",
+  "decidedAt": "2026-05-10T14:20:00.000Z"
+}
