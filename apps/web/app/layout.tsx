@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/citation">Citation</Link>
               <Link href="/datasets">Datasets</Link>
               <Link href="/changes">Changes</Link>
-              <Link href="/llms.txt">llms.txt</Link>
+              <a href="/llms.txt">llms.txt</a>
               <a href="/api/public/v1/index.json">Public API index</a>
             </nav>
           </div>
