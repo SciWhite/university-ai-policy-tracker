@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-uq-004",
+  "sourceCandidateId": "sc-uq-r004",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "sourceUrl": "https://espace.library.uq.edu.au/view/UQ:f25f111/AAIN_GenAI_Guidelines.pdf",
+  "rejectedAt": "2026-05-10T12:00:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "notes": "Research publication in UQ eSpace, not an official UQ policy document."
+}

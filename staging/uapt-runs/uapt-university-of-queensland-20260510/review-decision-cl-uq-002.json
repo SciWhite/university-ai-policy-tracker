@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "rd-002",
+  "claimId": "cl-uq-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-policy-reviewer",
+  "notes": "Claim is directly supported by evidence snippet from official UQ source. No overstatement detected.",
+  "decidedAt": "2026-05-10T12:00:00.000Z"
+}

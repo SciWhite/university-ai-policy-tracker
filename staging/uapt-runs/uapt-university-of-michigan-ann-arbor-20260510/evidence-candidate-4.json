@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "evidenceId": "umich-evidence-4",
+  "claimId": "umich-claim-4",
+  "sourceSnapshotId": "umich-snapshot-1",
+  "sourceUrl": "https://genai.umich.edu/resources/appropriate-use",
+  "finalUrl": "https://genai.umich.edu/resources/appropriate-use",
+  "sourceTitle": "Appropriate Use of AI Services & U-M Policy",
+  "sourceLanguage": "en",
+  "snapshotHash": "86f1343685c0921363964358bf5657ea67102a6f77d3bce42e169b10e02602ae",
+  "evidenceSnippetOriginal": "When working with university data in AI platforms: Use approved ITS AI Services. Only use university data classified as Low with AI services that do not have a contract or data agreement with U-M.",
+  "evidenceLocator": "When Handling University Data section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Appropriate Use of AI Services & U-M Policy",
+    "sourceUrl": "https://genai.umich.edu/resources/appropriate-use",
+    "publisher": "University of Michigan",
+    "retrievedAt": "2026-05-10T00:03:00.000Z",
+    "snapshotHash": "86f1343685c0921363964358bf5657ea67102a6f77d3bce42e169b10e02602ae",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

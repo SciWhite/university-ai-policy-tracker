@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "claimId": "umich-claim-6",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "claimType": "privacy",
+  "claimText": "U-M advises students that data shared with external AI tools is not private and may be accessible by external parties. Students should not share private or sensitive information.",
+  "normalizedValue": "students_warned_about_ai_privacy_risks",
+  "sourceLanguage": "en",
+  "confidence": 0.90,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["umich-evidence-6"],
+  "citation": {
+    "citationTitle": "U-M Guidance for Students",
+    "sourceUrl": "https://genai.umich.edu/resources/students",
+    "publisher": "University of Michigan",
+    "retrievedAt": "2026-05-10T00:03:00.000Z",
+    "snapshotHash": "3a9af93df94bab28629148d05410b149c5347fa6c66a74770dfadf61e7a0a598",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

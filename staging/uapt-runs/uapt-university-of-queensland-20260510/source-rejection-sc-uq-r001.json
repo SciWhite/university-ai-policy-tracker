@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-uq-001",
+  "sourceCandidateId": "sc-uq-r001",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "sourceUrl": "https://law.uq.edu.au/files/106027/Law%20School%20-%20Use%20of%20AI%20by%20Students%20in%20Law.pdf",
+  "rejectedAt": "2026-05-10T12:00:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "notes": "Faculty-specific (Law School) guidance, not university-wide policy."
+}

@@ -1,0 +1,24 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "claimId": "hkust-claim-5",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "claimType": "academic_integrity",
+  "claimText": "HKUST assessment policies require course syllabi to clearly present policies on the use of Generative AI tools and academic integrity.",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["hkust-ev-5"],
+  "citation": {
+    "citationTitle": "Assessment Policies and Procedures | HKUST - Academic Registry",
+    "sourceUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+    "publisher": "The Hong Kong University of Science and Technology",
+    "retrievedAt": "2026-05-10T00:18:00.000Z",
+    "snapshotHash": "3aa395fed169633c0fbca4c352d43cd491683e075044a9c67e1487bf229541af",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

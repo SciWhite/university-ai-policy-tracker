@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceSnapshotId": "hkust-ss-5",
+  "sourceCandidateId": "hkust-sc-5",
+  "fetchAttemptId": "hkust-fa-5",
+  "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/help-copilot",
+  "finalUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/help-copilot",
+  "sourceTitle": "Usage Tips on Microsoft Copilot | Information Technology Services Office",
+  "sourceLanguage": "en",
+  "contentHash": "82e8ba3fd3d20989232eeb06d6ef8e257500d55919bd08c470bcfcd5059e3049",
+  "fetchedAt": "2026-05-10T00:17:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-hkust-20260510/normalized/itso-copilot.txt",
+  "rawArtifactPaths": []
+}

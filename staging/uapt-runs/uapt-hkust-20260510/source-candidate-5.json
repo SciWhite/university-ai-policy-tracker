@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceCandidateId": "hkust-sc-5",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/help-copilot",
+  "sourceTitle": "Usage Tips on Microsoft Copilot | Information Technology Services Office",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:hkust.edu.hk Microsoft Copilot HKUST",
+  "discoveredAt": "2026-05-10T00:03:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:10:00.000Z",
+  "verificationNotes": "Official ITSO guidance on using Microsoft Copilot with HKUST accounts for data protection.",
+  "robotsPolicy": "respect"
+}

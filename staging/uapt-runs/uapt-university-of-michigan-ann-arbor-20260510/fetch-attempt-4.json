@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "fetchAttemptId": "umich-fetch-4",
+  "sourceCandidateId": "umich-genai-course-policies",
+  "sourceUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+  "finalUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+  "attemptedAt": "2026-05-10T00:03:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3500,
+  "contentHash": "a34dec58d56d995ca91c9ed899847169d777362e3aa0bf7d30372d539d318ea0",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-course-policies.txt"
+}

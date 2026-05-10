@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceRejectionId": "hkust-sr-2",
+  "sourceCandidateId": "hkust-sc-rejected-2",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools-comparison",
+  "rejectedAt": "2026-05-10T00:10:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Comparison table of generative AI tools features and access.",
+  "notes": "Informational comparison, not formal policy."
+}

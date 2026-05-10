@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "fetchAttemptId": "umich-fetch-1",
+  "sourceCandidateId": "umich-genai-appropriate-use",
+  "sourceUrl": "https://genai.umich.edu/resources/appropriate-use",
+  "finalUrl": "https://genai.umich.edu/resources/appropriate-use",
+  "attemptedAt": "2026-05-10T00:03:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3200,
+  "contentHash": "86f1343685c0921363964358bf5657ea67102a6f77d3bce42e169b10e02602ae",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-appropriate-use.txt"
+}

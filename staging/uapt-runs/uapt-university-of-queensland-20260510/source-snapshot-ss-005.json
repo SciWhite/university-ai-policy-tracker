@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-005",
+  "sourceCandidateId": "sc-uq-005",
+  "fetchAttemptId": "fa-005",
+  "sourceUrl": "https://guides.library.uq.edu.au/referencing/chatgpt-and-generative-ai-tools",
+  "finalUrl": "https://guides.library.uq.edu.au/referencing/chatgpt-and-generative-ai-tools",
+  "sourceTitle": "Guide to acknowledging and referencing AI",
+  "sourceLanguage": "en",
+  "contentHash": "fe300d0c482eb3db37081e5c74b9a9581813a9990bd0054369a611bb82c8cfaa",
+  "fetchedAt": "2026-05-10T12:00:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-university-of-queensland-20260510/normalized/sc-uq-005.txt",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "sourceSnapshotId": "umich-snapshot-7",
+  "sourceCandidateId": "umich-genai-redesigning",
+  "fetchAttemptId": "umich-fetch-7",
+  "sourceUrl": "https://genai.umich.edu/resources/faculty/redesigning-assessments",
+  "finalUrl": "https://genai.umich.edu/resources/faculty/redesigning-assessments",
+  "sourceTitle": "Course and Assignment (Re-)Design",
+  "sourceLanguage": "en",
+  "contentHash": "3310af878dd2ad2a792459f8cc0db82cac6c704201cdbdfd3f7a1ab8028caee1",
+  "fetchedAt": "2026-05-10T00:03:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-source-7.txt",
+  "rawArtifactPaths": []
+}

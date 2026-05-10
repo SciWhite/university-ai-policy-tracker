@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-001",
+  "sourceCandidateId": "sc-uq-001",
+  "fetchAttemptId": "fa-001",
+  "sourceUrl": "https://itali.uq.edu.au/teaching-guidance/generative-ai-teaching-learning-and-assessment/rules-using-ai-assessment",
+  "finalUrl": "https://itali.uq.edu.au/teaching-guidance/generative-ai-teaching-learning-and-assessment/rules-using-ai-assessment",
+  "sourceTitle": "UQ's rules for using AI in assessment",
+  "sourceLanguage": "en",
+  "contentHash": "26fbcbcc39db6c583220c14d86d85cdb3551d42292a1e06e57c14a601a36f5f5",
+  "fetchedAt": "2026-05-10T12:00:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-university-of-queensland-20260510/normalized/sc-uq-001.txt",
+  "rawArtifactPaths": []
+}

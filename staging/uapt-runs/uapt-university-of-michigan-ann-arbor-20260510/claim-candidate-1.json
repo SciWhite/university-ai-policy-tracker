@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "claimId": "umich-claim-1",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "claimType": "academic_integrity",
+  "claimText": "U-M does not recommend the use of AI-detection technology given their high error rate. False positives and negatives are possible, and even likely.",
+  "normalizedValue": "ai_detection_not_recommended",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["umich-evidence-1"],
+  "citation": {
+    "citationTitle": "U-M Guidance for Faculty/Instructors",
+    "sourceUrl": "https://genai.umich.edu/resources/faculty",
+    "publisher": "University of Michigan",
+    "retrievedAt": "2026-05-10T00:03:00.000Z",
+    "snapshotHash": "b8f0b533c74eb26ea17164cffc32d96be3d9be527d1474437c7870a9fcc1ff2c",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

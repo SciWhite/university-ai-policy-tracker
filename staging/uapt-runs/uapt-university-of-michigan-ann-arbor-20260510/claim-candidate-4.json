@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "claimId": "umich-claim-4",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "claimType": "privacy",
+  "claimText": "U-M requires using approved ITS AI Services for university data. Only data classified as Low may be used with AI services lacking a U-M contract or data agreement.",
+  "normalizedValue": "data_classification_ai_rules",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["umich-evidence-4"],
+  "citation": {
+    "citationTitle": "Appropriate Use of AI Services & U-M Policy",
+    "sourceUrl": "https://genai.umich.edu/resources/appropriate-use",
+    "publisher": "University of Michigan",
+    "retrievedAt": "2026-05-10T00:03:00.000Z",
+    "snapshotHash": "86f1343685c0921363964358bf5657ea67102a6f77d3bce42e169b10e02602ae",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

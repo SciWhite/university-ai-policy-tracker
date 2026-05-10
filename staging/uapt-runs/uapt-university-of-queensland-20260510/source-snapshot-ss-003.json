@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-003",
+  "sourceCandidateId": "sc-uq-003",
+  "fetchAttemptId": "fa-003",
+  "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/ai-student-hub",
+  "finalUrl": "https://guides.library.uq.edu.au/tools-and-techniques/ai-student-hub",
+  "sourceTitle": "AI Student Hub",
+  "sourceLanguage": "en",
+  "contentHash": "c30b8f0edfe98e49e35d839f379f6648161af8d5491490033dad137573904b84",
+  "fetchedAt": "2026-05-10T12:00:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-university-of-queensland-20260510/normalized/sc-uq-003.txt",
+  "rawArtifactPaths": []
+}

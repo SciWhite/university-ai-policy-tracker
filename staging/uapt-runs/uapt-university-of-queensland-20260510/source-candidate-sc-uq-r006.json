@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-uq-r006",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "sourceUrl": "https://news.uq.edu.au/2024-07-11-where-next-ai-higher-education",
+  "sourceTitle": "Where to next with AI in higher education?",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-10T12:00:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.6,
+  "policySpecificityScore": 0.3,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T12:00:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "verificationNotes": "UQ News article, not official policy guidance.",
+  "robotsPolicy": "respect"
+}

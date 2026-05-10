@@ -1,0 +1,57 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "traceId": "hkust-trace-20260510",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "startedAt": "2026-05-10T00:00:00.000Z",
+  "endedAt": "2026-05-10T00:10:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:hkust.edu.hk generative AI policy",
+      "domain": "hkust.edu.hk",
+      "resultCount": 10,
+      "notes": "Found ITSO guidelines, CEI policies, and ITSO tools pages."
+    },
+    {
+      "method": "site_search",
+      "query": "site:hkust.edu.hk ChatGPT academic integrity",
+      "domain": "hkust.edu.hk",
+      "resultCount": 10,
+      "notes": "Found library FAQ and academic integrity related pages."
+    },
+    {
+      "method": "site_search",
+      "query": "site:cei.hkust.edu.hk generative AI",
+      "domain": "cei.hkust.edu.hk",
+      "resultCount": 10,
+      "notes": "Found CEI guidelines, assessment design, and education resources."
+    },
+    {
+      "method": "site_search",
+      "query": "site:hkust.edu.hk data privacy generative AI",
+      "domain": "hkust.edu.hk",
+      "resultCount": 10,
+      "notes": "Found ITSO data desensitization and privacy guidance."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "hkust-sc-1",
+    "hkust-sc-2",
+    "hkust-sc-3",
+    "hkust-sc-4",
+    "hkust-sc-5",
+    "hkust-sc-6",
+    "hkust-sc-7",
+    "hkust-sc-rejected-1",
+    "hkust-sc-rejected-2"
+  ],
+  "rejectionIds": [
+    "hkust-sr-1",
+    "hkust-sr-2"
+  ],
+  "summary": "Discovery identified 7 verified policy-relevant sources across ITSO (GenAI guidelines, tools, Copilot, data desensitization), CEI (teaching policies, assessment design), and Academic Registry (assessment policies). 2 sources rejected as news/blog format or low policy specificity. Primary discovery via Firecrawl site_search queries on hkust.edu.hk and cei.hkust.edu.hk domains."
+}

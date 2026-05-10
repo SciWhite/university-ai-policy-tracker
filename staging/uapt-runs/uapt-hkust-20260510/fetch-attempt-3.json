@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "fetchAttemptId": "hkust-fa-3",
+  "sourceCandidateId": "hkust-sc-3",
+  "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+  "finalUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+  "attemptedAt": "2026-05-10T00:16:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1800,
+  "contentHash": "da93f928a44f13dd00c2d94318ed799ba45e7f5dce1408274dfb554a25e38756",
+  "normalizedTextStorageKey": "staging/uapt-hkust-20260510/normalized/itso-tools.txt"
+}

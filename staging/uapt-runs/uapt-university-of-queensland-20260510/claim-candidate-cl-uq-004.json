@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "cl-uq-004",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "claimType": "ai_tool_treatment",
+  "claimText": "Microsoft Copilot Chat is UQ's enterprise AI tool, available to UQ staff and students, and the UQ Library says it provides a higher level of data security and privacy than other AI tools.",
+  "normalizedValue": "copilot_chat_enterprise_tool",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-004"
+  ],
+  "citation": {
+    "citationTitle": "Microsoft Copilot Chat - UQ enterprise AI tool",
+    "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/microsoft-copilot-chat",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-queensland.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-queensland",
+    "publisher": "The University of Queensland",
+    "retrievedAt": "2026-05-10T12:00:00.000Z",
+    "snapshotHash": "ad83c2a28209991a1e35d71fde4f15f23e8c6241dc606a3f3dee6690d464c994",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

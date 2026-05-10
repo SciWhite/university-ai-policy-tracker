@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-uq-r008",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "sourceUrl": "https://itali.uq.edu.au/event/11851/teaching-and-learning-integrity-age-genai",
+  "sourceTitle": "Teaching and Learning with Integrity in the Age of GenAI",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-10T12:00:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.6,
+  "policySpecificityScore": 0.3,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T12:00:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "verificationNotes": "Event page for a course/workshop, not standing policy.",
+  "robotsPolicy": "respect"
+}

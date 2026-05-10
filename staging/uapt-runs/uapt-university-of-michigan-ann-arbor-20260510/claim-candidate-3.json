@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "claimId": "umich-claim-3",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "claimType": "teaching",
+  "claimText": "U-M leaves GenAI policy to individual instructors, who may allow, restrict, or forbid AI use in their courses. Course policies should be clearly articulated in syllabi.",
+  "normalizedValue": "instructor_discretion_on_ai_use",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["umich-evidence-3"],
+  "citation": {
+    "citationTitle": "Course Policies & Syllabi Statements",
+    "sourceUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+    "publisher": "University of Michigan",
+    "retrievedAt": "2026-05-10T00:03:00.000Z",
+    "snapshotHash": "a34dec58d56d995ca91c9ed899847169d777362e3aa0bf7d30372d539d318ea0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

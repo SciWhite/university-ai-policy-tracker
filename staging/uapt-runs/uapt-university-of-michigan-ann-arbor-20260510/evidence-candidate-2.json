@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "evidenceId": "umich-evidence-2",
+  "claimId": "umich-claim-2",
+  "sourceSnapshotId": "umich-snapshot-6",
+  "sourceUrl": "https://its.umich.edu/computing/ai",
+  "finalUrl": "https://its.umich.edu/computing/ai",
+  "sourceTitle": "ITS AI Services",
+  "sourceLanguage": "en",
+  "snapshotHash": "893178af5c9197012d66bce9c04db17b5899909a4f7697c8dfc2f09f443682d2",
+  "evidenceSnippetOriginal": "ITS is now offering a generative AI platform available to all active U-M faculty, staff, and students on the Ann Arbor, Flint, and Dearborn campuses and Michigan Medicine. These service offerings are equitable, accessible, and support everything from basic consumer usage to advanced research and experimentation.",
+  "evidenceLocator": "Main content",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "ITS AI Services",
+    "sourceUrl": "https://its.umich.edu/computing/ai",
+    "publisher": "University of Michigan ITS",
+    "retrievedAt": "2026-05-10T00:04:00.000Z",
+    "snapshotHash": "893178af5c9197012d66bce9c04db17b5899909a4f7697c8dfc2f09f443682d2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

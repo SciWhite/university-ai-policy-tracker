@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-uq-002",
+  "sourceCandidateId": "sc-uq-r002",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "sourceUrl": "https://law.uq.edu.au/current-students/use-ai-students-law",
+  "rejectedAt": "2026-05-10T12:00:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "notes": "Faculty-specific (Law School) guidance page, not university-wide policy."
+}

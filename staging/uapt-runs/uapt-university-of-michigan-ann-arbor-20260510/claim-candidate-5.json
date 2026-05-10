@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "claimId": "umich-claim-5",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "claimType": "academic_integrity",
+  "claimText": "U-M requires AI use in teaching and learning to align with principles of honesty, candor, openness, and integrity in scholarship and research, including appropriate disclosure and citation.",
+  "normalizedValue": "ai_use_must_align_with_scholarship_integrity",
+  "sourceLanguage": "en",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["umich-evidence-5"],
+  "citation": {
+    "citationTitle": "Appropriate Use of AI Services & U-M Policy",
+    "sourceUrl": "https://genai.umich.edu/resources/appropriate-use",
+    "publisher": "University of Michigan",
+    "retrievedAt": "2026-05-10T00:03:00.000Z",
+    "snapshotHash": "86f1343685c0921363964358bf5657ea67102a6f77d3bce42e169b10e02602ae",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

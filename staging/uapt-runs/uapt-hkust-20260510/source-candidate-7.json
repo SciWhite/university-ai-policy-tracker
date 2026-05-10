@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceCandidateId": "hkust-sc-7",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "sourceUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+  "sourceTitle": "Assessment Policies and Procedures | HKUST - Academic Registry",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:registry.hkust.edu.hk generative AI",
+  "discoveredAt": "2026-05-10T00:04:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.8,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:10:00.000Z",
+  "verificationNotes": "Official Academic Registry assessment policies requiring syllabi to include Generative AI and academic integrity policies.",
+  "robotsPolicy": "respect"
+}

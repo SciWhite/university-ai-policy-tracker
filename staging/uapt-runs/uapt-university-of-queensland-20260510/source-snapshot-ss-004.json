@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-004",
+  "sourceCandidateId": "sc-uq-004",
+  "fetchAttemptId": "fa-004",
+  "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/microsoft-copilot-chat",
+  "finalUrl": "https://guides.library.uq.edu.au/tools-and-techniques/microsoft-copilot-chat",
+  "sourceTitle": "Microsoft Copilot Chat - UQ enterprise AI tool",
+  "sourceLanguage": "en",
+  "contentHash": "ad83c2a28209991a1e35d71fde4f15f23e8c6241dc606a3f3dee6690d464c994",
+  "fetchedAt": "2026-05-10T12:00:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-university-of-queensland-20260510/normalized/sc-uq-004.txt",
+  "rawArtifactPaths": []
+}

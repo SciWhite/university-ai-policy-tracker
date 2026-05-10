@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "sourceCandidateId": "umich-genai-course-policies",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "sourceUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+  "finalUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+  "sourceTitle": "Course Policies & Syllabi Statements",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:umich.edu generative AI policy",
+  "discoveredAt": "2026-05-10T00:01:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.90,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:02:00.000Z",
+  "verificationNotes": "Official U-M GenAI portal page. Contains course policy frameworks and example syllabi statements for GenAI use.",
+  "robotsPolicy": "respect"
+}

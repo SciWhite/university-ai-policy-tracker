@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "sourceSnapshotId": "umich-snapshot-8",
+  "sourceCandidateId": "umich-at-academic-integrity",
+  "fetchAttemptId": "umich-fetch-8",
+  "sourceUrl": "https://academictechnology.umich.edu/instructional-resources/generative-ai/academic-integrity-resources",
+  "finalUrl": "https://academictechnology.umich.edu/instructional-resources/generative-ai/academic-integrity-resources",
+  "sourceTitle": "Generative AI Academic Integrity Resources",
+  "sourceLanguage": "en",
+  "contentHash": "204c235ee73270a75e64f261e93527f3e11164837289e3dfd6d100929f8a1f37",
+  "fetchedAt": "2026-05-10T00:04:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-at-integrity.txt",
+  "rawArtifactPaths": []
+}

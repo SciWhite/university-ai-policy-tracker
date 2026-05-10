@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "sourceCandidateId": "umich-at-academic-integrity",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "sourceUrl": "https://academictechnology.umich.edu/instructional-resources/generative-ai/academic-integrity-resources",
+  "finalUrl": "https://academictechnology.umich.edu/instructional-resources/generative-ai/academic-integrity-resources",
+  "sourceTitle": "Generative AI Academic Integrity Resources",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:academictechnology.umich.edu generative AI",
+  "discoveredAt": "2026-05-10T00:01:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.88,
+  "policySpecificityScore": 0.78,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:02:00.000Z",
+  "verificationNotes": "Official Academic Technology page. Links to AI detection tools discussion and academic integrity resources.",
+  "robotsPolicy": "respect"
+}

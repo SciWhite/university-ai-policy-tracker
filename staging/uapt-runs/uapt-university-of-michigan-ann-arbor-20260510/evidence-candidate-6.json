@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "evidenceId": "umich-evidence-6",
+  "claimId": "umich-claim-6",
+  "sourceSnapshotId": "umich-snapshot-3",
+  "sourceUrl": "https://genai.umich.edu/resources/students",
+  "finalUrl": "https://genai.umich.edu/resources/students",
+  "sourceTitle": "U-M Guidance for Students",
+  "sourceLanguage": "en",
+  "snapshotHash": "3a9af93df94bab28629148d05410b149c5347fa6c66a74770dfadf61e7a0a598",
+  "evidenceSnippetOriginal": "Understand that in most cases, the data you share is not private and will be accessible by external parties hosting the GenAI-based tools. Do not share information that is considered private, or sensitive, such as credit card information, personal details such as ID numbers or addresses, and so on.",
+  "evidenceLocator": "Choosing a GenAI tool to use - Privacy risks",
+  "evidenceType": "official_source",
+  "relevance": 0.90,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "U-M Guidance for Students",
+    "sourceUrl": "https://genai.umich.edu/resources/students",
+    "publisher": "University of Michigan",
+    "retrievedAt": "2026-05-10T00:03:00.000Z",
+    "snapshotHash": "3a9af93df94bab28629148d05410b149c5347fa6c66a74770dfadf61e7a0a598",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

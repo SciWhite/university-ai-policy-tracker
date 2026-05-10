@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "fetchAttemptId": "hkust-fa-2",
+  "sourceCandidateId": "hkust-sc-2",
+  "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/guidelines-and-policies",
+  "finalUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/guidelines-and-policies",
+  "attemptedAt": "2026-05-10T00:15:30.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1500,
+  "contentHash": "7713a4f7742042c6454bc1ac13a33cb3c9372197d1d2d3b4409efd3b287eb1d2",
+  "normalizedTextStorageKey": "staging/uapt-hkust-20260510/normalized/cei-guidelines.txt"
+}

@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "fetchAttemptId": "umich-fetch-3",
+  "sourceCandidateId": "umich-genai-students",
+  "sourceUrl": "https://genai.umich.edu/resources/students",
+  "finalUrl": "https://genai.umich.edu/resources/students",
+  "attemptedAt": "2026-05-10T00:03:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3400,
+  "contentHash": "3a9af93df94bab28629148d05410b149c5347fa6c66a74770dfadf61e7a0a598",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-students.txt"
+}

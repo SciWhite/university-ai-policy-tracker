@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "evidenceId": "hkust-ev-5",
+  "claimId": "hkust-claim-5",
+  "sourceSnapshotId": "hkust-ss-7",
+  "sourceUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+  "finalUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+  "sourceTitle": "Assessment Policies and Procedures | HKUST - Academic Registry",
+  "sourceLanguage": "en",
+  "snapshotHash": "3aa395fed169633c0fbca4c352d43cd491683e075044a9c67e1487bf229541af",
+  "evidenceSnippetOriginal": "the course syllabus should be devised to present course ILOs, assessment components, grading rubrics, and relevant policies like the use of Generative AI tools and the rules of academic integrity clearly and make it accessible to students at the start of the course via Canvas or other appropriate platform.",
+  "evidenceLocator": "Assessment of students should be transparent, point 5",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Assessment Policies and Procedures | HKUST - Academic Registry",
+    "sourceUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+    "publisher": "The Hong Kong University of Science and Technology",
+    "retrievedAt": "2026-05-10T00:18:00.000Z",
+    "snapshotHash": "3aa395fed169633c0fbca4c352d43cd491683e075044a9c67e1487bf229541af",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

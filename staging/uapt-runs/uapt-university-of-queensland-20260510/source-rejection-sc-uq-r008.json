@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-uq-008",
+  "sourceCandidateId": "sc-uq-r008",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "sourceUrl": "https://itali.uq.edu.au/event/11851/teaching-and-learning-integrity-age-genai",
+  "rejectedAt": "2026-05-10T12:00:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "notes": "Event page for a course/workshop, not standing policy."
+}

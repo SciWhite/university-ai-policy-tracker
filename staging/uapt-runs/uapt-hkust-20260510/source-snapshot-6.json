@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceSnapshotId": "hkust-ss-6",
+  "sourceCandidateId": "hkust-sc-6",
+  "fetchAttemptId": "hkust-fa-6",
+  "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/data-desensitization",
+  "finalUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/data-desensitization",
+  "sourceTitle": "What is data desensitization? | Information Technology Services Office",
+  "sourceLanguage": "en",
+  "contentHash": "9bcb61ff276daa2481783088e9679a657d3908d0ee93323fbb6effadcc7caeb8",
+  "fetchedAt": "2026-05-10T00:17:30.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-hkust-20260510/normalized/itso-desensitization.txt",
+  "rawArtifactPaths": []
+}

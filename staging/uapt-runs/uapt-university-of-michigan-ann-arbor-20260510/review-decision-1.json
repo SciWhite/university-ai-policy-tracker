@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "decisionId": "umich-review-1",
+  "claimId": "umich-claim-1",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Clear statement against AI detection tools due to high error rate. Strong evidence from official faculty guidance.",
+  "decidedAt": "2026-05-10T00:10:00.000Z"
+}

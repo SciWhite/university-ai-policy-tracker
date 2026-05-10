@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-uq-003",
+  "sourceCandidateId": "sc-uq-r003",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "sourceUrl": "https://stories.uq.edu.au/research/2023/what-is-ai-really-doing-with-our-data/index.html",
+  "rejectedAt": "2026-05-10T12:00:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "notes": "UQ news/research story, not official policy guidance."
+}

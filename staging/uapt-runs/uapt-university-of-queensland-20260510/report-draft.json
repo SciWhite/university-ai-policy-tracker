@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "report_draft",
+  "reportId": "rd-uq-001",
+  "title": "University of Queensland — AI Policy Staged Crawl Report",
+  "generatedAt": "2026-05-10T12:00:00.000Z",
+  "draftPath": "content/reports/university-of-queensland-ai-policy-20260510.mdx",
+  "summary": "University of Queensland (QS 2026 rank ~42) has a structured approach to AI in assessment. UQ uses a two-option system in course profiles: Option 1 prohibits AI in in-person/secure assessment; Option 2 permits AI use with mandatory referencing. AI outputs used without attribution constitute academic misconduct. Turnitin AI detection was disabled mid-2025 as unreliable. Microsoft Copilot Chat is described by the UQ Library as UQ's enterprise AI tool with a higher level of data security and privacy than other AI tools. Students must acknowledge where they used AI in assessment. Five official sources were verified and fetched; eight sources were rejected as faculty-specific, news, research, or event content.",
+  "referencedClaimIds": [
+    "cl-uq-001",
+    "cl-uq-002",
+    "cl-uq-003",
+    "cl-uq-004",
+    "cl-uq-005"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/university-of-queensland.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a staged crawl; claims have not undergone human review.",
+    "Some UQ policy documents (e.g., Student Code of Conduct, Academic Integrity Framework PDFs) were not separately fetched in this run.",
+    "Faculty-specific guidance (e.g., Law School) was excluded from university-level claims."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

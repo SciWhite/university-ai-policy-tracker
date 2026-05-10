@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceRejectionId": "hkust-sr-1",
+  "sourceCandidateId": "hkust-sc-rejected-1",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "sourceUrl": "https://library.hkust.edu.hk/news-events/news/responsible-use-ai-tools-faq",
+  "rejectedAt": "2026-05-10T00:10:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Library news/blog page listing FAQs about responsible AI use.",
+  "notes": "News format page, not formal policy documentation."
+}

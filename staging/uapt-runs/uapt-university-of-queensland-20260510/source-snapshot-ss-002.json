@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-002",
+  "sourceCandidateId": "sc-uq-002",
+  "fetchAttemptId": "fa-002",
+  "sourceUrl": "https://my.uq.edu.au/information-and-services/manage-my-program/student-integrity-and-conduct/academic-integrity-and-student-conduct",
+  "finalUrl": "https://my.uq.edu.au/information-and-services/manage-my-program/student-integrity-and-conduct/academic-integrity-and-student-conduct",
+  "sourceTitle": "Academic integrity and student conduct",
+  "sourceLanguage": "en",
+  "contentHash": "846869b1eec59258be2380c5f21c8e4e649187515f347c85fb2795502140f8d5",
+  "fetchedAt": "2026-05-10T12:00:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-university-of-queensland-20260510/normalized/sc-uq-002.txt",
+  "rawArtifactPaths": []
+}

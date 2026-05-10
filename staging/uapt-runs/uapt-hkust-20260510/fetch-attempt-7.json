@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "fetchAttemptId": "hkust-fa-7",
+  "sourceCandidateId": "hkust-sc-7",
+  "sourceUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+  "finalUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+  "attemptedAt": "2026-05-10T00:18:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1300,
+  "contentHash": "3aa395fed169633c0fbca4c352d43cd491683e075044a9c67e1487bf229541af",
+  "normalizedTextStorageKey": "staging/uapt-hkust-20260510/normalized/registry-assessment.txt"
+}

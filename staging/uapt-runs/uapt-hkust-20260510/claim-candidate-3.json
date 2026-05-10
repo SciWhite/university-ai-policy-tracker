@@ -1,0 +1,24 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "claimId": "hkust-claim-3",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "claimType": "ai_tool_treatment",
+  "claimText": "HKUST provides approved generative AI tools including OpenWebUI, HKUST GenAI Platform, Google Gemini Enterprise, Microsoft Copilot Chat, and Microsoft 365 Copilot.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["hkust-ev-3"],
+  "citation": {
+    "citationTitle": "Generative AI Tools | Information Technology Services Office",
+    "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+    "publisher": "The Hong Kong University of Science and Technology",
+    "retrievedAt": "2026-05-10T00:16:00.000Z",
+    "snapshotHash": "da93f928a44f13dd00c2d94318ed799ba45e7f5dce1408274dfb554a25e38756",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

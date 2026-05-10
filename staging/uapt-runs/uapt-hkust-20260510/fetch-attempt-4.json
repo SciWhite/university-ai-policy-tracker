@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "fetchAttemptId": "hkust-fa-4",
+  "sourceCandidateId": "hkust-sc-4",
+  "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/assessment-design",
+  "finalUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/assessment-design",
+  "attemptedAt": "2026-05-10T00:16:30.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1400,
+  "contentHash": "644be2a84c1769b329cfb5d3bf14188431ab0c9515b527c84ed78b04ec76e56b",
+  "normalizedTextStorageKey": "staging/uapt-hkust-20260510/normalized/cei-assessment.txt"
+}

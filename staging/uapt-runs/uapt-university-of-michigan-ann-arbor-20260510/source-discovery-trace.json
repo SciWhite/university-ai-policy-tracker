@@ -1,0 +1,60 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "traceId": "umich-discovery-trace-1",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "startedAt": "2026-05-10T00:00:00.000Z",
+  "endedAt": "2026-05-10T00:10:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:umich.edu generative AI policy",
+      "domain": "umich.edu",
+      "resultCount": 10,
+      "notes": "Found genai.umich.edu portal as primary source."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:umich.edu generative AI teaching learning",
+      "domain": "umich.edu",
+      "resultCount": 10,
+      "notes": "Found faculty guidance, course policies, CRLT resources."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:umich.edu AI assessment guidance",
+      "domain": "umich.edu",
+      "resultCount": 10,
+      "notes": "Found course redesign and assessment guidance pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:its.umich.edu generative AI",
+      "domain": "its.umich.edu",
+      "resultCount": 10,
+      "notes": "Found ITS AI Services page with U-M GPT and data protection info."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:crlt.umich.edu generative AI",
+      "domain": "crlt.umich.edu",
+      "resultCount": 10,
+      "notes": "Found CRLT academic integrity GenAI page."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "umich-genai-appropriate-use",
+    "umich-genai-faculty",
+    "umich-genai-students",
+    "umich-genai-course-policies",
+    "umich-crlt-academic-integrity",
+    "umich-its-ai-services",
+    "umich-genai-redesigning",
+    "umich-at-academic-integrity"
+  ],
+  "rejectionIds": [],
+  "summary": "Comprehensive discovery via 5 Firecrawl searches across umich.edu, genai.umich.edu, its.umich.edu, academictechnology.umich.edu, and crlt.umich.edu. Found 8 verified official sources covering policy, faculty/student guidance, course policies, academic integrity, IT tools, and assessment redesign."
+}

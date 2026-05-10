@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceCandidateId": "hkust-sc-2",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/guidelines-and-policies",
+  "sourceTitle": "Guidelines and Policies | HKUST CEI | Center for Education Innovation",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:cei.hkust.edu.hk generative AI",
+  "discoveredAt": "2026-05-10T00:01:30.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:10:00.000Z",
+  "verificationNotes": "Official CEI policy for GenAI integration in teaching and learning, requiring faculty to communicate course-level policies.",
+  "robotsPolicy": "respect"
+}

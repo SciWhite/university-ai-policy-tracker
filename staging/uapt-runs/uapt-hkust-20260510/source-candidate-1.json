@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceCandidateId": "hkust-sc-1",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/guidelines",
+  "sourceTitle": "Generative AI Usage Guidelines | Information Technology Services Office",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:hkust.edu.hk generative AI policy",
+  "discoveredAt": "2026-05-10T00:01:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:10:00.000Z",
+  "verificationNotes": "Official ITSO university-wide GenAI usage guidelines covering responsible use, data privacy, and security.",
+  "robotsPolicy": "respect"
+}

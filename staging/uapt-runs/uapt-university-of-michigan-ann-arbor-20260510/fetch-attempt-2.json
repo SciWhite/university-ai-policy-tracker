@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "fetchAttemptId": "umich-fetch-2",
+  "sourceCandidateId": "umich-genai-faculty",
+  "sourceUrl": "https://genai.umich.edu/resources/faculty",
+  "finalUrl": "https://genai.umich.edu/resources/faculty",
+  "attemptedAt": "2026-05-10T00:03:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3100,
+  "contentHash": "b8f0b533c74eb26ea17164cffc32d96be3d9be527d1474437c7870a9fcc1ff2c",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-faculty.txt"
+}

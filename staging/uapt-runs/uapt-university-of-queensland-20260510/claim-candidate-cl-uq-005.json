@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "cl-uq-005",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "claimType": "teaching",
+  "claimText": "UQ says students must acknowledge where they used AI in assessment, including direct quotes or paraphrases of AI-generated content and use of AI tools for summarising, brainstorming, planning, editing, or proofreading.",
+  "normalizedValue": "mandatory_ai_acknowledgment",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-005"
+  ],
+  "citation": {
+    "citationTitle": "Guide to acknowledging and referencing AI",
+    "sourceUrl": "https://guides.library.uq.edu.au/referencing/chatgpt-and-generative-ai-tools",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-queensland.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-queensland",
+    "publisher": "The University of Queensland",
+    "retrievedAt": "2026-05-10T12:00:00.000Z",
+    "snapshotHash": "fe300d0c482eb3db37081e5c74b9a9581813a9990bd0054369a611bb82c8cfaa",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

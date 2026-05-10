@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "cl-uq-001",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "claimType": "academic_integrity",
+  "claimText": "At UQ, the use of AI outputs without attribution, and contrary to any direction by teaching staff, is a form of plagiarism and constitutes academic misconduct.",
+  "normalizedValue": "ai_without_attribution_is_misconduct",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-001"
+  ],
+  "citation": {
+    "citationTitle": "Academic integrity and student conduct",
+    "sourceUrl": "https://my.uq.edu.au/information-and-services/manage-my-program/student-integrity-and-conduct/academic-integrity-and-student-conduct",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-queensland.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-queensland",
+    "publisher": "The University of Queensland",
+    "retrievedAt": "2026-05-10T12:00:00.000Z",
+    "snapshotHash": "846869b1eec59258be2380c5f21c8e4e649187515f347c85fb2795502140f8d5",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

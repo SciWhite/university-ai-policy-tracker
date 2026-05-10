@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "fetchAttemptId": "hkust-fa-1",
+  "sourceCandidateId": "hkust-sc-1",
+  "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/guidelines",
+  "finalUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/guidelines",
+  "attemptedAt": "2026-05-10T00:15:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1200,
+  "contentHash": "e1a6b1db8fbd23f14e7410f36876b24a2dd4e1433e55234ec96556ee91cc1de9",
+  "normalizedTextStorageKey": "staging/uapt-hkust-20260510/normalized/itso-guidelines.txt"
+}

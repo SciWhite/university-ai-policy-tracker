@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "crawl_plan",
+  "planId": "cp-uq-001",
+  "createdAt": "2026-05-10T12:00:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-queensland",
+      "sourceCandidateId": "sc-uq-001",
+      "sourceUrl": "https://itali.uq.edu.au/teaching-guidance/generative-ai-teaching-learning-and-assessment/rules-using-ai-assessment",
+      "sourceTitle": "UQ's rules for using AI in assessment",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "assessment",
+        "ai_detection",
+        "teaching"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-queensland",
+      "sourceCandidateId": "sc-uq-002",
+      "sourceUrl": "https://my.uq.edu.au/information-and-services/manage-my-program/student-integrity-and-conduct/academic-integrity-and-student-conduct",
+      "sourceTitle": "Academic integrity and student conduct",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "plagiarism",
+        "ai_detection"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-queensland",
+      "sourceCandidateId": "sc-uq-003",
+      "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/ai-student-hub",
+      "sourceTitle": "AI Student Hub",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching",
+        "academic_integrity",
+        "ai_tool_treatment"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-queensland",
+      "sourceCandidateId": "sc-uq-004",
+      "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/microsoft-copilot-chat",
+      "sourceTitle": "Microsoft Copilot Chat - UQ enterprise AI tool",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "ai_tool_treatment",
+        "privacy",
+        "security_review"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-queensland",
+      "sourceCandidateId": "sc-uq-005",
+      "sourceUrl": "https://guides.library.uq.edu.au/referencing/chatgpt-and-generative-ai-tools",
+      "sourceTitle": "Guide to acknowledging and referencing AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "teaching"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "All verified source candidates have been fetched.",
+    "Sufficient evidence collected for university-level AI policy claims."
+  ]
+}

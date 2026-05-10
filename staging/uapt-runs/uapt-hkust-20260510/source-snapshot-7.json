@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceSnapshotId": "hkust-ss-7",
+  "sourceCandidateId": "hkust-sc-7",
+  "fetchAttemptId": "hkust-fa-7",
+  "sourceUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+  "finalUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+  "sourceTitle": "Assessment Policies and Procedures | HKUST - Academic Registry",
+  "sourceLanguage": "en",
+  "contentHash": "3aa395fed169633c0fbca4c352d43cd491683e075044a9c67e1487bf229541af",
+  "fetchedAt": "2026-05-10T00:18:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-hkust-20260510/normalized/registry-assessment.txt",
+  "rawArtifactPaths": []
+}

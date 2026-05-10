@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "sourceSnapshotId": "umich-snapshot-2",
+  "sourceCandidateId": "umich-genai-faculty",
+  "fetchAttemptId": "umich-fetch-2",
+  "sourceUrl": "https://genai.umich.edu/resources/faculty",
+  "finalUrl": "https://genai.umich.edu/resources/faculty",
+  "sourceTitle": "U-M Guidance for Faculty/Instructors",
+  "sourceLanguage": "en",
+  "contentHash": "b8f0b533c74eb26ea17164cffc32d96be3d9be527d1474437c7870a9fcc1ff2c",
+  "fetchedAt": "2026-05-10T00:03:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-source-2.txt",
+  "rawArtifactPaths": []
+}

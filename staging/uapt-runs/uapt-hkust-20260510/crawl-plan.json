@@ -1,0 +1,99 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "planId": "hkust-plan-20260510",
+  "createdAt": "2026-05-10T00:00:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "hkust",
+      "sourceCandidateId": "hkust-sc-1",
+      "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/guidelines",
+      "sourceTitle": "Generative AI Usage Guidelines",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["ai_governance", "responsible_use", "data_privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "hkust",
+      "sourceCandidateId": "hkust-sc-2",
+      "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/guidelines-and-policies",
+      "sourceTitle": "CEI Guidelines and Policies",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "faculty_policy", "course_design"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "hkust",
+      "sourceCandidateId": "hkust-sc-3",
+      "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+      "sourceTitle": "Generative AI Tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["approved_tools", "tool_catalog"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "hkust",
+      "sourceCandidateId": "hkust-sc-4",
+      "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/assessment-design",
+      "sourceTitle": "Assessment Design",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["assessment", "academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "hkust",
+      "sourceCandidateId": "hkust-sc-5",
+      "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/help-copilot",
+      "sourceTitle": "Usage Tips on Microsoft Copilot",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["copilot", "microsoft_365"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "hkust",
+      "sourceCandidateId": "hkust-sc-6",
+      "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/data-desensitization",
+      "sourceTitle": "What is data desensitization?",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["data_privacy", "security"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "hkust",
+      "sourceCandidateId": "hkust-sc-7",
+      "sourceUrl": "https://registry.hkust.edu.hk/resource-library/assessment-policies-and-procedures",
+      "sourceTitle": "Assessment Policies and Procedures",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "assessment_policy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Stop if page requires login or CAPTCHA.",
+    "Stop if page is not in English or Chinese."
+  ]
+}

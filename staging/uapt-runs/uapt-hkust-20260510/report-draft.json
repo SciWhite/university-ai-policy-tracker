@@ -1,0 +1,26 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "reportId": "hkust-report-20260510",
+  "title": "HKUST AI Policy Staged Crawl Report",
+  "generatedAt": "2026-05-10T00:25:00.000Z",
+  "draftPath": "content/reports/hkust-ai-policy-20260510.mdx",
+  "summary": "Staged crawl of HKUST AI policy sources identified 7 verified official sources across ITSO (GenAI usage guidelines, approved tools, Copilot guidance, data desensitization), CEI (teaching policies, assessment design), and Academic Registry (assessment policies requiring AI and academic integrity policies in syllabi). 2 sources rejected as news/blog format or low policy specificity. 5 policy claims extracted covering responsible use, faculty policy flexibility, approved tools, data privacy, and academic integrity requirements.",
+  "referencedClaimIds": [
+    "hkust-claim-1",
+    "hkust-claim-2",
+    "hkust-claim-3",
+    "hkust-claim-4",
+    "hkust-claim-5"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/hkust.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

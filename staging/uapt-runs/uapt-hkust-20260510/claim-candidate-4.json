@@ -1,0 +1,24 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "claimId": "hkust-claim-4",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "claimType": "privacy",
+  "claimText": "HKUST advises users not to input confidential, sensitive, or personal data into generative AI tools unless data is desensitized.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["hkust-ev-4"],
+  "citation": {
+    "citationTitle": "Generative AI Usage Guidelines | Information Technology Services Office",
+    "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools/guidelines",
+    "publisher": "The Hong Kong University of Science and Technology",
+    "retrievedAt": "2026-05-10T00:15:00.000Z",
+    "snapshotHash": "e1a6b1db8fbd23f14e7410f36876b24a2dd4e1433e55234ec96556ee91cc1de9",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

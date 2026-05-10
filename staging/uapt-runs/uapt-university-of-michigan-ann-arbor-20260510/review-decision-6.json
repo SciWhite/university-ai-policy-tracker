@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "decisionId": "umich-review-6",
+  "claimId": "umich-claim-6",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Official student guidance page warns about privacy risks with external AI tools.",
+  "decidedAt": "2026-05-10T00:10:00.000Z"
+}

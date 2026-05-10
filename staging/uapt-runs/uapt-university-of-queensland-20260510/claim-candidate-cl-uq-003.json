@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "claim_candidate",
+  "claimId": "cl-uq-003",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "claimType": "academic_integrity",
+  "claimText": "UQ has disabled the Turnitin AI writing indicator functionality for all assessments from Semester 2, 2025, citing that AI detection tools are flawed and unreliable.",
+  "normalizedValue": "turnitin_ai_detection_disabled",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-003"
+  ],
+  "citation": {
+    "citationTitle": "UQ's rules for using AI in assessment",
+    "sourceUrl": "https://itali.uq.edu.au/teaching-guidance/generative-ai-teaching-learning-and-assessment/rules-using-ai-assessment",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-queensland.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-queensland",
+    "publisher": "The University of Queensland",
+    "retrievedAt": "2026-05-10T12:00:00.000Z",
+    "snapshotHash": "26fbcbcc39db6c583220c14d86d85cdb3551d42292a1e06e57c14a601a36f5f5",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-uq-r004",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "sourceUrl": "https://espace.library.uq.edu.au/view/UQ:f25f111/AAIN_GenAI_Guidelines.pdf",
+  "sourceTitle": "AAIN Generative AI Guidelines",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-10T12:00:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.6,
+  "policySpecificityScore": 0.3,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T12:00:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "verificationNotes": "Research publication in UQ eSpace, not an official UQ policy document.",
+  "robotsPolicy": "respect"
+}

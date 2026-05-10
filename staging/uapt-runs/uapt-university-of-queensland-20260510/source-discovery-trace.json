@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_discovery_trace",
+  "traceId": "sdt-uq-001",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "startedAt": "2026-05-10T11:00:00.000Z",
+  "endedAt": "2026-05-10T11:45:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:uq.edu.au \"generative AI\" policy",
+      "domain": "uq.edu.au",
+      "resultCount": 10,
+      "notes": "Found ITaLI guidance, law school PDF, eSpace research, library guides."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:uq.edu.au \"generative AI\" assessment",
+      "domain": "uq.edu.au",
+      "resultCount": 10,
+      "notes": "Found ITaLI rules, library AI for assessment guide, eSpace publications."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:uq.edu.au \"ChatGPT\" academic integrity",
+      "domain": "uq.edu.au",
+      "resultCount": 10,
+      "notes": "Found library referencing guides, ITaLI assessment rules."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:uq.edu.au \"AI tools\" students",
+      "domain": "uq.edu.au",
+      "resultCount": 10,
+      "notes": "Found AI Student Hub, AI for study, AI access and training pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:uq.edu.au \"artificial intelligence\" teaching learning assessment",
+      "domain": "uq.edu.au",
+      "resultCount": 10,
+      "notes": "Found ITaLI guidance, eSpace research papers, ITaLI events."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:uq.edu.au \"Microsoft Copilot\" \"University of Queensland\"",
+      "domain": "uq.edu.au",
+      "resultCount": 10,
+      "notes": "Found Copilot Chat library guide, systems training hub, software catalogue."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:uq.edu.au data privacy generative AI",
+      "domain": "uq.edu.au",
+      "resultCount": 10,
+      "notes": "Found news stories, eSpace research, ITaLI guidance referencing privacy."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:itali.uq.edu.au \"generative AI\"",
+      "domain": "itali.uq.edu.au",
+      "resultCount": 10,
+      "notes": "Found ITaLI teaching guidance hub, AI teacher hub, assessment rules."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:my.uq.edu.au \"generative AI\"",
+      "domain": "my.uq.edu.au",
+      "resultCount": 6,
+      "notes": "Found academic integrity page, software catalogue listing Copilot."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-uq-001",
+    "sc-uq-002",
+    "sc-uq-003",
+    "sc-uq-004",
+    "sc-uq-005",
+    "sc-uq-r001",
+    "sc-uq-r002",
+    "sc-uq-r003",
+    "sc-uq-r004",
+    "sc-uq-r005",
+    "sc-uq-r006",
+    "sc-uq-r007",
+    "sc-uq-r008"
+  ],
+  "rejectionIds": [
+    "sr-uq-001",
+    "sr-uq-002",
+    "sr-uq-003",
+    "sr-uq-004",
+    "sr-uq-005",
+    "sr-uq-006",
+    "sr-uq-007",
+    "sr-uq-008"
+  ],
+  "summary": "Discovery found 5 university-level policy sources (ITaLI assessment rules, academic integrity page, AI Student Hub, Microsoft Copilot Chat guide, AI referencing guide) and 8 rejected sources (faculty-specific PDFs, news articles, research publications, event pages). ITaLI is UQ's Institute for Teaching and Learning Innovation and publishes official university-wide guidance."
+}

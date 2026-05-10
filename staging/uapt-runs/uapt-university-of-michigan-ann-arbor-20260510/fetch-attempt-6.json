@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "fetchAttemptId": "umich-fetch-6",
+  "sourceCandidateId": "umich-its-ai-services",
+  "sourceUrl": "https://its.umich.edu/computing/ai",
+  "finalUrl": "https://its.umich.edu/computing/ai",
+  "attemptedAt": "2026-05-10T00:04:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3200,
+  "contentHash": "893178af5c9197012d66bce9c04db17b5899909a4f7697c8dfc2f09f443682d2",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-its.txt"
+}

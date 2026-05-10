@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceSnapshotId": "hkust-ss-3",
+  "sourceCandidateId": "hkust-sc-3",
+  "fetchAttemptId": "hkust-fa-3",
+  "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+  "finalUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+  "sourceTitle": "Generative AI Tools | Information Technology Services Office",
+  "sourceLanguage": "en",
+  "contentHash": "da93f928a44f13dd00c2d94318ed799ba45e7f5dce1408274dfb554a25e38756",
+  "fetchedAt": "2026-05-10T00:16:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-hkust-20260510/normalized/itso-tools.txt",
+  "rawArtifactPaths": []
+}

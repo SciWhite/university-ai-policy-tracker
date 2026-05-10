@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "sourceCandidateId": "umich-genai-students",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "sourceUrl": "https://genai.umich.edu/resources/students",
+  "finalUrl": "https://genai.umich.edu/resources/students",
+  "sourceTitle": "U-M Guidance for Students",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:umich.edu AI tools students",
+  "discoveredAt": "2026-05-10T00:01:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.90,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:02:00.000Z",
+  "verificationNotes": "Official U-M GenAI portal page. Student-facing guidance on privacy, ethics, choosing tools, and responsible use.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "sourceSnapshotId": "umich-snapshot-4",
+  "sourceCandidateId": "umich-genai-course-policies",
+  "fetchAttemptId": "umich-fetch-4",
+  "sourceUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+  "finalUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+  "sourceTitle": "Course Policies & Syllabi Statements",
+  "sourceLanguage": "en",
+  "contentHash": "a34dec58d56d995ca91c9ed899847169d777362e3aa0bf7d30372d539d318ea0",
+  "fetchedAt": "2026-05-10T00:03:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-source-4.txt",
+  "rawArtifactPaths": []
+}

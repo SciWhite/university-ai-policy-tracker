@@ -1,0 +1,26 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "evidenceId": "hkust-ev-2",
+  "claimId": "hkust-claim-2",
+  "sourceSnapshotId": "hkust-ss-2",
+  "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/guidelines-and-policies",
+  "finalUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/guidelines-and-policies",
+  "sourceTitle": "Guidelines and Policies | HKUST CEI | Center for Education Innovation",
+  "sourceLanguage": "en",
+  "snapshotHash": "7713a4f7742042c6454bc1ac13a33cb3c9372197d1d2d3b4409efd3b287eb1d2",
+  "evidenceSnippetOriginal": "HKUST allows faculty members the flexibility to set their own course-level policies. Faculty members are required to communicate the chosen policy option to students in writing for courses offered starting Fall 2023-24.",
+  "evidenceLocator": "Policy for GenAI Integration in Teaching and Learning section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidelines and Policies | HKUST CEI | Center for Education Innovation",
+    "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/guidelines-and-policies",
+    "publisher": "The Hong Kong University of Science and Technology",
+    "retrievedAt": "2026-05-10T00:15:30.000Z",
+    "snapshotHash": "7713a4f7742042c6454bc1ac13a33cb3c9372197d1d2d3b4409efd3b287eb1d2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

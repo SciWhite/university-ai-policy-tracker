@@ -1,0 +1,22 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceCandidateId": "hkust-sc-4",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "sourceUrl": "https://cei.hkust.edu.hk/en-hk/education-innovation/generative-ai-education/assessment-design",
+  "sourceTitle": "Assessment Design | HKUST CEI | Center for Education Innovation",
+  "sourceLanguage": "en",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:hkust.edu.hk generative AI assessment",
+  "discoveredAt": "2026-05-10T00:02:30.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T00:10:00.000Z",
+  "verificationNotes": "Official CEI guidance on assessment design in the age of generative AI.",
+  "robotsPolicy": "respect"
+}

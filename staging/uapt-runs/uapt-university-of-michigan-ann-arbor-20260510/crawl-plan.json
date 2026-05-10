@@ -1,0 +1,99 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "planId": "umich-ann-arbor-plan-20260510",
+  "createdAt": "2026-05-10T00:00:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-michigan-ann-arbor",
+      "sourceCandidateId": "umich-genai-appropriate-use",
+      "sourceUrl": "https://genai.umich.edu/resources/appropriate-use",
+      "sourceTitle": "Appropriate Use of AI Services & U-M Policy",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["data_protection", "approved_tools", "academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-michigan-ann-arbor",
+      "sourceCandidateId": "umich-genai-faculty",
+      "sourceUrl": "https://genai.umich.edu/resources/faculty",
+      "sourceTitle": "U-M Guidance for Faculty/Instructors",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-michigan-ann-arbor",
+      "sourceCandidateId": "umich-genai-students",
+      "sourceUrl": "https://genai.umich.edu/resources/students",
+      "sourceTitle": "U-M Guidance for Students",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-michigan-ann-arbor",
+      "sourceCandidateId": "umich-genai-course-policies",
+      "sourceUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+      "sourceTitle": "Course Policies & Syllabi Statements",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "teaching", "assessment_guidance"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-michigan-ann-arbor",
+      "sourceCandidateId": "umich-crlt-academic-integrity",
+      "sourceUrl": "https://crlt.umich.edu/academic-integrity-genai",
+      "sourceTitle": "Academic Integrity, GenAI - CRLT",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["academic_integrity", "teaching"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-michigan-ann-arbor",
+      "sourceCandidateId": "umich-its-ai-services",
+      "sourceUrl": "https://its.umich.edu/computing/ai",
+      "sourceTitle": "ITS AI Services",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["approved_tools", "data_protection"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-michigan-ann-arbor",
+      "sourceCandidateId": "umich-genai-redesigning",
+      "sourceUrl": "https://genai.umich.edu/resources/faculty/redesigning-assessments",
+      "sourceTitle": "Course and Assignment (Re-)Design",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["assessment_guidance", "teaching"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Do not follow login-gated pages.",
+    "Do not fetch pages behind CAPTCHAs or paywalls."
+  ]
+}

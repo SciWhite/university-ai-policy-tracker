@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "decisionId": "hkust-rd-1",
+  "claimId": "hkust-claim-1",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Evidence directly supports the claim from official ITSO guidelines.",
+  "decidedAt": "2026-05-10T00:20:00.000Z"
+}

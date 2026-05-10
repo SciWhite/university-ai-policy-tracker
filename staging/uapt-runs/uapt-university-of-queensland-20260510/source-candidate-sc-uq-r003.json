@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-queensland-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-uq-r003",
+  "entityType": "university",
+  "entitySlug": "university-of-queensland",
+  "sourceUrl": "https://stories.uq.edu.au/research/2023/what-is-ai-really-doing-with-our-data/index.html",
+  "sourceTitle": "What are generative AI systems really doing with our data?",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "discoveredAt": "2026-05-10T12:00:00.000Z",
+  "officialDomainConfidence": 0.85,
+  "aiRelevanceScore": 0.6,
+  "policySpecificityScore": 0.3,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T12:00:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "verificationNotes": "UQ news/research story, not official policy guidance.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hkust-20260510",
+  "sourceCandidateId": "hkust-sc-rejected-2",
+  "entityType": "university",
+  "entitySlug": "hkust",
+  "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools-comparison",
+  "sourceTitle": "Comparison of Generative AI Tools | Information Technology Services Office",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:hkust.edu.hk AI tools students",
+  "discoveredAt": "2026-05-10T00:05:00.000Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.7,
+  "policySpecificityScore": 0.5,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-10T00:10:00.000Z",
+  "verificationNotes": "Informational comparison page, not formal policy.",
+  "rejectionReason": "low_policy_specificity",
+  "robotsPolicy": "respect"
+}

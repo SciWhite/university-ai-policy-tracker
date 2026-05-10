@@ -1,0 +1,25 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "claimId": "umich-claim-8",
+  "entityType": "university",
+  "entitySlug": "university-of-michigan-ann-arbor",
+  "claimType": "privacy",
+  "claimText": "U-M ITS AI Services include HIPAA safeguards and may be used with Protected Health Information (PHI).",
+  "normalizedValue": "ai_services_include_hipaa_safeguards",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["umich-evidence-8"],
+  "citation": {
+    "citationTitle": "ITS AI Services",
+    "sourceUrl": "https://its.umich.edu/computing/ai",
+    "publisher": "University of Michigan ITS",
+    "retrievedAt": "2026-05-10T00:04:00.000Z",
+    "snapshotHash": "893178af5c9197012d66bce9c04db17b5899909a4f7697c8dfc2f09f443682d2",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

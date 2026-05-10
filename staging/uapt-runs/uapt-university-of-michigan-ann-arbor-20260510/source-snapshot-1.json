@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "sourceSnapshotId": "umich-snapshot-1",
+  "sourceCandidateId": "umich-genai-appropriate-use",
+  "fetchAttemptId": "umich-fetch-1",
+  "sourceUrl": "https://genai.umich.edu/resources/appropriate-use",
+  "finalUrl": "https://genai.umich.edu/resources/appropriate-use",
+  "sourceTitle": "Appropriate Use of AI Services & U-M Policy",
+  "sourceLanguage": "en",
+  "contentHash": "86f1343685c0921363964358bf5657ea67102a6f77d3bce42e169b10e02602ae",
+  "fetchedAt": "2026-05-10T00:03:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-michigan-ann-arbor-20260510/normalized/umich-source-1.txt",
+  "rawArtifactPaths": []
+}

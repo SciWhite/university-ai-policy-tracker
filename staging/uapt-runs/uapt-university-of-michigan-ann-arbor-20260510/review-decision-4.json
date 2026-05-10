@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "decisionId": "umich-review-4",
+  "claimId": "umich-claim-4",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Official appropriate use page states data classification rules for AI services.",
+  "decidedAt": "2026-05-10T00:10:00.000Z"
+}

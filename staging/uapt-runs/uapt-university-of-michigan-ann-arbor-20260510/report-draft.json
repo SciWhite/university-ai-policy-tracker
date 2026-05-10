@@ -1,0 +1,29 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-michigan-ann-arbor-20260510",
+  "reportId": "umich-report-20260510",
+  "title": "University of Michigan-Ann Arbor: AI Policy Crawl Report",
+  "generatedAt": "2026-05-10T00:15:00.000Z",
+  "draftPath": "content/reports/university-of-michigan-ann-arbor-20260510.mdx",
+  "summary": "U-M has a comprehensive, centralized AI guidance approach through its genai.umich.edu portal. Key findings: (1) U-M discourages AI-detection tools due to high error rates. (2) U-M ITS offers generative AI services to active U-M faculty, staff, and students across the Ann Arbor, Flint, and Dearborn campuses and Michigan Medicine. (3) Individual instructors have discretion to allow, restrict, or forbid AI use in courses. (4) Data classification rules require approved ITS services for university data. (5) AI use must align with scholarship integrity principles including disclosure and citation. (6) Students are warned about privacy risks with external AI tools. (7) AI-generated code must be human-reviewed. (8) ITS AI Services include HIPAA safeguards and may be used with Protected Health Information.",
+  "referencedClaimIds": [
+    "umich-claim-1",
+    "umich-claim-2",
+    "umich-claim-3",
+    "umich-claim-4",
+    "umich-claim-5",
+    "umich-claim-6",
+    "umich-claim-7",
+    "umich-claim-8"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/university-of-michigan-ann-arbor.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}
