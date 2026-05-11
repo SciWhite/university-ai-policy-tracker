@@ -5,6 +5,9 @@ const startLinks = [
   { label: "Browse universities", href: "/universities" },
   { label: "View changes", href: "/changes" },
   { label: "Inspect datasets", href: "/datasets" },
+  { label: "Embed widgets", href: "/widgets" },
+  { label: "Read API reference", href: "/api-reference" },
+  { label: "Review MCP alpha", href: "/mcp" },
   { label: "Cite the tracker", href: "/citation" },
   { label: "Read methodology", href: "/methodology" },
   { label: "Open public API index", href: "/api/public/v1/index.json" }

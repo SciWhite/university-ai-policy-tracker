@@ -10,6 +10,7 @@ const primaryTabs = [
   { label: "Universities", href: "/universities" },
   { label: "Changes", href: "/changes" },
   { label: "Reports", href: "/reports" },
+  { label: "Widgets", href: "/widgets" },
   { label: "Datasets", href: "/datasets" },
   { label: "Methodology", href: "/methodology" },
   { label: "Citation", href: "/citation" }
@@ -60,9 +61,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </p>
             </div>
             <div className="site-header__actions" aria-label="Primary actions">
-              <a className="site-action" href="/api/public/v1/index.json">
-                API index
-              </a>
+              <Link className="site-action" href="/api-reference">
+                API docs
+              </Link>
               <a className="site-action" href={githubRepositoryUrl}>
                 GitHub repo
               </a>
@@ -91,6 +92,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/datasets">Datasets</Link>
               <Link href="/changes">Changes</Link>
               <Link href="/reports">Reports</Link>
+              <Link href="/widgets">Widgets</Link>
+              <Link href="/api-reference">API reference</Link>
+              <Link href="/mcp">MCP alpha</Link>
               <a href="/llms.txt">llms.txt</a>
               <a href="/feeds/reports.xml">Reports RSS</a>
               <a href="/api/public/v1/index.json">Public API index</a>

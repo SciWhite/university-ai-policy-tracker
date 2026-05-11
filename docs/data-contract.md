@@ -74,6 +74,21 @@ Report chart data is available at:
 https://eduaipolicy.org/api/public/v1/reports/2026-05/chart-data.json
 ```
 
+Embeddable widget discovery and widget JSON are available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/widgets/index.json
+https://eduaipolicy.org/api/public/v1/widgets/university-status/{slug}.json
+https://eduaipolicy.org/api/public/v1/widgets/recent-changes.json
+```
+
+Read-only agent/API policy metadata is available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/mcp/manifest.json
+https://eduaipolicy.org/api/public/v1/rate-limit-policy.json
+```
+
 Bulk dataset artifacts are available at:
 
 ```text
@@ -103,6 +118,17 @@ https://eduaipolicy.org/feeds/reports.xml
 https://eduaipolicy.org/feeds/recent-changes.xml
 https://eduaipolicy.org/feeds/atom.xml
 ```
+
+Embeddable widgets use:
+
+```text
+https://eduaipolicy.org/widgets/embed.js
+```
+
+Widget JSON endpoints include permissive CORS headers for public embedding.
+The general public API remains read-only. The MCP alpha manifest is a design
+contract only: it must not write production data, operate OpenClaw, publish
+canonical claims, or bypass review state.
 
 Every v1 public JSON response should include a stable envelope:
 

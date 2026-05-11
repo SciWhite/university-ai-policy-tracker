@@ -1264,6 +1264,18 @@ Build:
 - rate-limit policy,
 - example agent queries.
 
+Initial public paths:
+
+- `/widgets`
+- `/widgets/embed.js`
+- `/api-reference`
+- `/mcp`
+- `/api/public/v1/widgets/index.json`
+- `/api/public/v1/widgets/university-status/{slug}.json`
+- `/api/public/v1/widgets/recent-changes.json`
+- `/api/public/v1/mcp/manifest.json`
+- `/api/public/v1/rate-limit-policy.json`
+
 Acceptance criteria:
 
 - Widgets link back to canonical pages.

@@ -8,6 +8,9 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Trust pages are available at /methodology, /citation, /datasets, and /changes.
 - Reports and outreach assets are available at /reports, /reports/2026-05, and /reports/outreach.
 - Public feeds are available at /feeds/reports.xml, /feeds/recent-changes.xml, and /feeds/atom.xml.
+- Embeddable widgets are documented at /widgets.
+- API reference and rate-limit guidance are available at /api-reference.
+- Read-only MCP alpha guidance is available at /mcp.
 - Public API index: /api/public/v1/index.json.
 - Public university list: /api/public/v1/universities.json.
 - Public JSON records are available at /api/public/v1/universities/{slug}.json.
@@ -16,6 +19,10 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Bulk JSONL downloads are available at /api/public/v1/datasets/universities.jsonl, /api/public/v1/datasets/claims.jsonl, /api/public/v1/datasets/sources.jsonl, and /api/public/v1/datasets/changes.jsonl.
 - Dataset checksums and the data dictionary are available at /api/public/v1/datasets/checksums.txt and /api/public/v1/datasets/data-dictionary.md.
 - Report chart data is available at /api/public/v1/reports/2026-05/chart-data.json.
+- Widget discovery is available at /api/public/v1/widgets/index.json.
+- Widget JSON endpoints are available at /api/public/v1/widgets/university-status/{slug}.json and /api/public/v1/widgets/recent-changes.json.
+- The read-only MCP alpha manifest is available at /api/public/v1/mcp/manifest.json.
+- The public rate-limit policy is available at /api/public/v1/rate-limit-policy.json.
 - API responses use a v1 envelope with apiVersion, generatedAt, canonicalUrl, license, citation, and data fields.
 
 ## Citation Rules
@@ -34,3 +41,4 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 ## Security Boundary
 - OpenClaw orchestrates agents and crawling only.
 - OpenClaw must not deploy the public website, write the production database directly, push main, or hold production deployment credentials.
+- The MCP alpha design is read-only and must not mutate public records, operate OpenClaw, or publish canonical claims.

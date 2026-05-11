@@ -147,6 +147,8 @@ export default async function DatasetsPage() {
   const exampleUniversityPath = `/api/public/${PUBLIC_API_VERSION}/universities/${exampleSlug}.json`;
   const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
   const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`;
+  const widgetIndexPath = `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`;
+  const mcpManifestPath = `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`;
   const apiIndexUrl = getAbsoluteSiteUrl(apiIndexPath);
   const universitiesJsonUrl = getAbsoluteSiteUrl(universitiesJsonPath);
   const latestDatasetManifestUrl = getAbsoluteSiteUrl(
@@ -155,6 +157,8 @@ export default async function DatasetsPage() {
   const exampleUniversityUrl = getAbsoluteSiteUrl(exampleUniversityPath);
   const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
   const reportChartDataUrl = getAbsoluteSiteUrl(reportChartDataPath);
+  const widgetIndexUrl = getAbsoluteSiteUrl(widgetIndexPath);
+  const mcpManifestUrl = getAbsoluteSiteUrl(mcpManifestPath);
 
   return (
     <main className="page-shell page-shell--wide">
@@ -213,6 +217,18 @@ export default async function DatasetsPage() {
               name: "May 2026 report chart data",
               encodingFormat: "application/json",
               contentUrl: reportChartDataUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Widget discovery JSON",
+              encodingFormat: "application/json",
+              contentUrl: widgetIndexUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Read-only MCP alpha manifest",
+              encodingFormat: "application/json",
+              contentUrl: mcpManifestUrl
             },
             ...datasetReleaseManifest.artifacts.map((artifact) => ({
               "@type": "DataDownload",
@@ -299,6 +315,18 @@ export default async function DatasetsPage() {
           label="Report chart data"
           path={reportChartDataPath}
           url={reportChartDataUrl}
+        />
+        <ApiEndpointRow
+          description="Discovery document for embeddable widget types, script URL, constraints, and example HTML."
+          label="Widget index JSON"
+          path={widgetIndexPath}
+          url={widgetIndexUrl}
+        />
+        <ApiEndpointRow
+          description="Read-only MCP alpha design manifest for agent integrations."
+          label="MCP alpha manifest"
+          path={mcpManifestPath}
+          url={mcpManifestUrl}
         />
       </ReferenceBox>
 

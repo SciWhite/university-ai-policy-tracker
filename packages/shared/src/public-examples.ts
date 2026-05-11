@@ -218,6 +218,32 @@ export function buildPublicApiIndexData(
         "Report chart data",
         `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`,
         "Chart-ready source-language and review-state distributions for the May 2026 baseline report."
+      ),
+      endpoint(
+        "Widget index",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`,
+        "Embeddable widget discovery payload with script URL, constraints, and example HTML."
+      ),
+      endpoint(
+        "University status widget",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/university-status/harvard-university.json`,
+        "Compact embeddable university status payload with freshness, review state, source counts, and canonical links.",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/university-status/{slug}.json`
+      ),
+      endpoint(
+        "Recent changes widget",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/recent-changes.json`,
+        "Compact embeddable recent changes payload with review-state labels."
+      ),
+      endpoint(
+        "MCP alpha manifest",
+        `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`,
+        "Read-only MCP alpha design manifest with allowed tools, prohibited mutations, and agent query examples."
+      ),
+      endpoint(
+        "Rate-limit policy",
+        `/api/public/${PUBLIC_API_VERSION}/rate-limit-policy.json`,
+        "Machine-readable public fair-use, rate-limit, and crawler policy."
       )
     ],
     trustPages: [
@@ -250,6 +276,21 @@ export function buildPublicApiIndexData(
         "Outreach package",
         "/reports/outreach",
         "Citation-safe public copy for researchers, newsletters, and media."
+      ),
+      trustPage(
+        "Widgets",
+        "/widgets",
+        "Embeddable read-only status and recent-change widgets."
+      ),
+      trustPage(
+        "API reference",
+        "/api-reference",
+        "Developer-facing public API documentation, versioning, citation, and rate-limit guidance."
+      ),
+      trustPage(
+        "MCP alpha",
+        "/mcp",
+        "Read-only agent access design and example retrieval queries."
       )
     ],
     citationRules: [
