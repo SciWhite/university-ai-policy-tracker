@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "FA-006",
+  "sourceCandidateId": "SC-006",
+  "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+  "finalUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+  "attemptedAt": "2026-05-10T14:25:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3350,
+  "contentHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926"
+}

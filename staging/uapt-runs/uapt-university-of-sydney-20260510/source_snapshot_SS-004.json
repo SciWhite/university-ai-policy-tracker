@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-004",
+  "sourceCandidateId": "SC-004",
+  "fetchAttemptId": "FA-004",
+  "sourceUrl": "https://www.sydney.edu.au/students/assessments.html",
+  "finalUrl": "https://www.sydney.edu.au/students/assessments.html",
+  "sourceTitle": "Understanding assessments",
+  "sourceLanguage": "en",
+  "contentHash": "5ebdada1291f1f6976e67f8f5e770b5e2c616244df27e0fc00b78602efe24d07",
+  "fetchedAt": "2026-05-10T14:23:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

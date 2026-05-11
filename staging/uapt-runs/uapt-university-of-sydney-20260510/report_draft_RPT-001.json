@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "report_draft",
+  "reportId": "RPT-001",
+  "title": "The University of Sydney AI Policy Crawl Report",
+  "generatedAt": "2026-05-10T15:00:00.000Z",
+  "draftPath": "content/reports/university-of-sydney-20260510.mdx",
+  "summary": "The University of Sydney staged artifacts cover official guidance on academic integrity, AI assistance, acknowledgment requirements, and the Semester 1 2025 assessment default for non-exam assessments. Claims are staged agent-reviewed candidates only and are not canonical public tracker claims.",
+  "referencedClaimIds": [
+    "CL-001",
+    "CL-002",
+    "CL-003"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

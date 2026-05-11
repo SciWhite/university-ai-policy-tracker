@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "review_decision",
+  "decisionId": "RD-CL-002",
+  "claimId": "CL-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Approved as a narrow staged claim directly supported by official University of Sydney source evidence. Not marked human_reviewed and not published as canonical.",
+  "decidedAt": "2026-05-10T14:42:00.000Z"
+}

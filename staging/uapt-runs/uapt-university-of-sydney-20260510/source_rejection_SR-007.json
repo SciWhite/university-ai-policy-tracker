@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-007",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "sourceUrl": "https://cce.sydney.edu.au/article/feeling-lost-with-ai-microsoft-copilot-can-help",
+  "rejectedAt": "2026-05-10T14:35:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "policy-reviewer",
+  "notes": "Continuing education marketing/training page, not institutional AI policy."
+}

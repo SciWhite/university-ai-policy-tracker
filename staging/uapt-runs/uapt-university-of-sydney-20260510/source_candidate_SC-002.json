@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-002",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "sourceUrl": "https://www.sydney.edu.au/students/academic-integrity/artificial-intelligence.html",
+  "finalUrl": "https://www.sydney.edu.au/students/academic-integrity/artificial-intelligence.html",
+  "sourceTitle": "Artificial intelligence - Academic integrity",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:sydney.edu.au \"artificial intelligence\" \"academic integrity\"",
+  "discoveredAt": "2026-05-10T09:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T09:15:00Z",
+  "verificationNotes": "Official University of Sydney academic integrity page focused on AI. Describes AI tool limitations, Turnitin AI detection, and avoiding integrity breaches.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-005",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+  "finalUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+  "sourceTitle": "Frequently asked questions about generative AI at Sydney",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:sydney.edu.au \"generative AI\" teaching",
+  "discoveredAt": "2026-05-10T09:10:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.88,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T09:25:00Z",
+  "verificationNotes": "Official University of Sydney Educational Innovation FAQ on generative AI with Academic Integrity Policy clause references and acknowledgment guidance.",
+  "robotsPolicy": "respect"
+}

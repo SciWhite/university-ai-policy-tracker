@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-002",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "sourceUrl": "https://www.sydney.edu.au/study/student-life/student-news/2024/08/05/how-to-use-generative-artificial-intelligence-in-the-classroom.html",
+  "rejectedAt": "2026-05-10T14:35:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "policy-reviewer",
+  "notes": "Student-life news article, not standing policy or guidance."
+}

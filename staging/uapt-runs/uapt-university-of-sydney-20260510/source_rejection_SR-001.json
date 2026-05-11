@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-001",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "sourceUrl": "https://www.sydney.edu.au/news-opinion/news/2024/11/27/university-of-sydney-ai-assessment-policy.html",
+  "rejectedAt": "2026-05-10T14:35:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "policy-reviewer",
+  "notes": "Official news article; retained only as rejected discovery evidence because standing guidance pages cover the same policy change.",
+  "sourceCandidateId": "SC-008"
+}

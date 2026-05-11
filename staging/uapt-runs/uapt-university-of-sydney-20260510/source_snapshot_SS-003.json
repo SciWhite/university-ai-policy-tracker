@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-003",
+  "sourceCandidateId": "SC-003",
+  "fetchAttemptId": "FA-003",
+  "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+  "finalUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+  "sourceTitle": "Using AI to learn",
+  "sourceLanguage": "en",
+  "contentHash": "0edbaa77a8cc4fd2407d6ed65f68954e7e29f69cc44faccf486a53323b774b01",
+  "fetchedAt": "2026-05-10T14:22:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

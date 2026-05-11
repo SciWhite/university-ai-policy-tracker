@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-004",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "sourceUrl": "https://intranet.sydney.edu.au/strategy-governance/gen-ai.html",
+  "rejectedAt": "2026-05-10T14:35:00.000Z",
+  "rejectionReason": "login_required",
+  "checkedBy": "policy-reviewer",
+  "notes": "Intranet source not publicly accessible."
+}

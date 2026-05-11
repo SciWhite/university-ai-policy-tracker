@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-004",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "sourceUrl": "https://www.sydney.edu.au/students/assessments.html",
+  "finalUrl": "https://www.sydney.edu.au/students/assessments.html",
+  "sourceTitle": "Understanding assessments",
+  "sourceLanguage": "en",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:sydney.edu.au \"AI tools\" assessment",
+  "discoveredAt": "2026-05-10T09:05:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.75,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T09:20:00Z",
+  "verificationNotes": "Official University of Sydney student page describing assessment categories including secure and open assessment context.",
+  "robotsPolicy": "respect"
+}

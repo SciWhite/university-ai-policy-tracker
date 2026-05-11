@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "SS-007",
+  "sourceCandidateId": "SC-007",
+  "fetchAttemptId": "FA-007",
+  "sourceUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
+  "finalUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
+  "sourceTitle": "Assessment Procedures",
+  "sourceLanguage": "en",
+  "contentHash": "4981f1bde50adc698d04d6110ef088d95f760d85cb0601080d3743d90a9e9f2f",
+  "fetchedAt": "2026-05-10T14:26:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

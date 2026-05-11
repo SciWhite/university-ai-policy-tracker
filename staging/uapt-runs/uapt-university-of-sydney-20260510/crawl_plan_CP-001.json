@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "crawl_plan",
+  "planId": "CP-001",
+  "createdAt": "2026-05-10T10:00:00Z",
+  "createdBy": "openclaw_agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-sydney",
+      "sourceCandidateId": "SC-001",
+      "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+      "sourceTitle": "Using artificial intelligence tools responsibly",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "university_guidance",
+        "academic_integrity"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-sydney",
+      "sourceCandidateId": "SC-002",
+      "sourceUrl": "https://www.sydney.edu.au/students/academic-integrity/artificial-intelligence.html",
+      "sourceTitle": "Artificial intelligence - Academic integrity",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "academic_integrity"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-sydney",
+      "sourceCandidateId": "SC-003",
+      "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+      "sourceTitle": "Using AI to learn",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching_guidance",
+        "academic_integrity"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-sydney",
+      "sourceCandidateId": "SC-004",
+      "sourceUrl": "https://www.sydney.edu.au/students/assessments.html",
+      "sourceTitle": "Understanding assessments",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "assessment_guidance",
+        "academic_integrity"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-sydney",
+      "sourceCandidateId": "SC-005",
+      "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+      "sourceTitle": "Frequently asked questions about generative AI at Sydney",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "university_guidance",
+        "academic_integrity"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-sydney",
+      "sourceCandidateId": "SC-006",
+      "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+      "sourceTitle": "Aligning our assessments to the age of generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "assessment_guidance",
+        "academic_integrity"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-sydney",
+      "sourceCandidateId": "SC-007",
+      "sourceUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
+      "sourceTitle": "Assessment Procedures",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "ai_tool_treatment"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_targets_processed",
+    "fetch_failure_rate_exceeds_50_percent"
+  ]
+}

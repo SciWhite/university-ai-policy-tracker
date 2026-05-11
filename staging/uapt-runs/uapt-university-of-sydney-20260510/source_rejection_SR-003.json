@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "SR-003",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "sourceUrl": "https://openjournals.library.sydney.edu.au/IISME/article/view/17474",
+  "rejectedAt": "2026-05-10T14:35:00.000Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "policy-reviewer",
+  "notes": "Journal article, not an official university policy page."
+}

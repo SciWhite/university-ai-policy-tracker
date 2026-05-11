@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "SC-001",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+  "finalUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+  "sourceTitle": "Using artificial intelligence tools responsibly",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:sydney.edu.au \"generative AI\" policy students",
+  "discoveredAt": "2026-05-10T09:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T09:15:00Z",
+  "verificationNotes": "Official University of Sydney student guidance page on using AI responsibly. Covers assessment use, acknowledgment, and misuse examples.",
+  "robotsPolicy": "respect"
+}
