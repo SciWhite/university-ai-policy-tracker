@@ -4,7 +4,7 @@ const embedScript = `(() => {
 
   const origin = new URL(script.src).origin;
   const widgetType = script.dataset.widget || "university-status";
-  const slug = script.dataset.slug || "harvard-university";
+  const slug = script.dataset.slug || "anu";
   const limit = clampNumber(Number(script.dataset.limit || "5"), 1, 10);
   const mount = document.createElement("div");
   mount.setAttribute("data-uapt-widget-root", widgetType);

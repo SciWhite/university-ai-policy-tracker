@@ -17,7 +17,7 @@ const description =
 
 const statusSnippet =
   `<script async src="https://eduaipolicy.org${widgetScriptPath}" ` +
-  `data-widget="university-status" data-slug="harvard-university"></script>`;
+  `data-widget="university-status" data-slug="anu"></script>`;
 
 const changesSnippet =
   `<script async src="https://eduaipolicy.org${widgetScriptPath}" ` +
@@ -156,8 +156,8 @@ export default async function WidgetsPage() {
         <ApiEndpointRow
           description="Compact university status payload with review state, freshness, source count, and canonical links."
           label="University status widget JSON"
-          path={`/api/public/${PUBLIC_API_VERSION}/widgets/university-status/harvard-university.json`}
-          url={`/api/public/${PUBLIC_API_VERSION}/widgets/university-status/harvard-university.json`}
+          path={`/api/public/${PUBLIC_API_VERSION}/widgets/university-status/anu.json`}
+          url={`/api/public/${PUBLIC_API_VERSION}/widgets/university-status/anu.json`}
         />
         <ApiEndpointRow
           description="Compact recent changes payload for public source checks and change records."

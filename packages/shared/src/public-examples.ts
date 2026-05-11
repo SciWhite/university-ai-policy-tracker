@@ -170,7 +170,7 @@ export function buildPublicApiIndexData(
       ),
       endpoint(
         "University record",
-        `/api/public/${PUBLIC_API_VERSION}/universities/harvard.json`,
+        `/api/public/${PUBLIC_API_VERSION}/universities/anu.json`,
         "One citation-ready university record with claims, evidence, sources, and review state.",
         `/api/public/${PUBLIC_API_VERSION}/universities/{slug}.json`
       ),
@@ -226,7 +226,7 @@ export function buildPublicApiIndexData(
       ),
       endpoint(
         "University status widget",
-        `/api/public/${PUBLIC_API_VERSION}/widgets/university-status/harvard-university.json`,
+        `/api/public/${PUBLIC_API_VERSION}/widgets/university-status/anu.json`,
         "Compact embeddable university status payload with freshness, review state, source counts, and canonical links.",
         `/api/public/${PUBLIC_API_VERSION}/widgets/university-status/{slug}.json`
       ),

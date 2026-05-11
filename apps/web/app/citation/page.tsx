@@ -14,7 +14,7 @@ const title = "Citation | University AI Policy Tracker";
 const description =
   "Citation formats, source attribution rules, public JSON fields, rights caveats, and advice boundaries for University AI Policy Tracker.";
 
-const exampleUniversitySlug = "harvard-university";
+const exampleUniversitySlug = "anu";
 
 export function generateMetadata() {
   const canonical = getAbsoluteSiteUrl("/citation");
@@ -48,7 +48,7 @@ export default function CitationPage() {
   const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
 
   const universityCitation =
-    "Harvard University AI Policy Tracker record. University AI Policy Tracker. Version v1. " +
+    "Australian National University AI Policy Tracker record. University AI Policy Tracker. Version v1. " +
     universityCanonicalUrl;
   const datasetCitation =
     "University AI Policy Tracker public JSON dataset. University AI Policy Tracker. Version v1. " +

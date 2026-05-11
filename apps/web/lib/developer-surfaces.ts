@@ -110,7 +110,7 @@ export async function getWidgetIndexResponse() {
             "Compact university AI policy status card with review state, last checked date, source count, and canonical links.",
           exampleHtml:
             `<script async src="${getAbsoluteSiteUrl(widgetScriptPath)}" ` +
-            `data-widget="university-status" data-slug="harvard-university"></script>`,
+            `data-widget="university-status" data-slug="anu"></script>`,
           dataEndpointTemplate: getAbsoluteSiteUrl(
             `/api/public/${PUBLIC_API_VERSION}/widgets/university-status/{slug}.json`
           )
@@ -281,7 +281,7 @@ export async function getRateLimitPolicyResponse() {
 export async function getWidgetPreviewRecords() {
   const summaries = await getStagedPublicSummaries();
   const preferred =
-    summaries.find((summary) => summary.entity.slug === "harvard-university") ??
+    summaries.find((summary) => summary.entity.slug === "anu") ??
     summaries.find((summary) => isReviewedState(summary.reviewState)) ??
     summaries[0];
 

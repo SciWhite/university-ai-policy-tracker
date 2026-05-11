@@ -139,11 +139,11 @@ export default async function DatasetsPage() {
   const universitiesJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
   const latestDatasetManifestPath = `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`;
   const exampleSlug =
-    summaries.find((summary) => summary.entity.slug === "harvard-university")
+    summaries.find((summary) => summary.entity.slug === "anu")
       ?.entity.slug ??
     summaries[0]?.entity.slug ??
     universities[0]?.slug ??
-    "harvard-university";
+    "anu";
   const exampleUniversityPath = `/api/public/${PUBLIC_API_VERSION}/universities/${exampleSlug}.json`;
   const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
   const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`;

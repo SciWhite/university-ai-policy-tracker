@@ -118,7 +118,7 @@ export default function ApiReferencePage() {
             label={endpoint.label}
             path={endpoint.path}
             status="Read-only"
-            url={endpoint.path.replace("{slug}", "harvard-university")}
+            url={endpoint.path.replace("{slug}", "anu")}
           />
         ))}
       </ReferenceBox>
