@@ -6,6 +6,8 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - University policies and guidance for GenAI, ChatGPT, DeepSeek, Microsoft Copilot, institutional AI services, academic integrity, privacy, teaching, research, security review, procurement, and related governance.
 - Canonical entity pages start at /universities.
 - Trust pages are available at /methodology, /citation, /datasets, and /changes.
+- Reports and outreach assets are available at /reports, /reports/2026-05, and /reports/outreach.
+- Public feeds are available at /feeds/reports.xml, /feeds/recent-changes.xml, and /feeds/atom.xml.
 - Public API index: /api/public/v1/index.json.
 - Public university list: /api/public/v1/universities.json.
 - Public JSON records are available at /api/public/v1/universities/{slug}.json.
@@ -13,6 +15,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Latest dataset release manifest: /api/public/v1/datasets/latest.json.
 - Bulk JSONL downloads are available at /api/public/v1/datasets/universities.jsonl, /api/public/v1/datasets/claims.jsonl, /api/public/v1/datasets/sources.jsonl, and /api/public/v1/datasets/changes.jsonl.
 - Dataset checksums and the data dictionary are available at /api/public/v1/datasets/checksums.txt and /api/public/v1/datasets/data-dictionary.md.
+- Report chart data is available at /api/public/v1/reports/2026-05/chart-data.json.
 - API responses use a v1 envelope with apiVersion, generatedAt, canonicalUrl, license, citation, and data fields.
 
 ## Citation Rules

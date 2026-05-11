@@ -15,6 +15,8 @@ const staticRoutes = [
   "/tools",
   "/sources",
   "/reports",
+  "/reports/2026-05",
+  "/reports/outreach",
   "/methodology",
   "/citation",
   "/datasets",

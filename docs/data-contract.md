@@ -68,6 +68,12 @@ The latest dataset release manifest is available at:
 https://eduaipolicy.org/api/public/v1/datasets/latest.json
 ```
 
+Report chart data is available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/reports/2026-05/chart-data.json
+```
+
 Bulk dataset artifacts are available at:
 
 ```text
@@ -88,6 +94,14 @@ The public API index is available at:
 
 ```text
 https://eduaipolicy.org/api/public/v1/index.json
+```
+
+Public report and change feeds are available at:
+
+```text
+https://eduaipolicy.org/feeds/reports.xml
+https://eduaipolicy.org/feeds/recent-changes.xml
+https://eduaipolicy.org/feeds/atom.xml
 ```
 
 Every v1 public JSON response should include a stable envelope:

@@ -213,6 +213,11 @@ export function buildPublicApiIndexData(
         "Dataset data dictionary",
         `/api/public/${PUBLIC_API_VERSION}/datasets/data-dictionary.md`,
         "Markdown data dictionary for the public dataset release."
+      ),
+      endpoint(
+        "Report chart data",
+        `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`,
+        "Chart-ready source-language and review-state distributions for the May 2026 baseline report."
       )
     ],
     trustPages: [
@@ -235,6 +240,16 @@ export function buildPublicApiIndexData(
         "Changes",
         "/changes",
         "Recent public changes and freshness records."
+      ),
+      trustPage(
+        "Reports",
+        "/reports",
+        "Dataset reports, public feeds, chart data, and outreach assets."
+      ),
+      trustPage(
+        "Outreach package",
+        "/reports/outreach",
+        "Citation-safe public copy for researchers, newsletters, and media."
       )
     ],
     citationRules: [

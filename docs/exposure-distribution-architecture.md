@@ -641,9 +641,10 @@ Feeds help journalists, researchers, librarians, and automation users.
 Initial feeds:
 
 - `/feeds/recent-changes.xml`
+- `/feeds/reports.xml`
+- `/feeds/atom.xml`
 - `/feeds/canada-ai-policy-changes.xml`
 - `/feeds/chatgpt-policy-changes.xml`
-- `/feeds/monthly-reports.xml`
 
 Each feed item should include:
 

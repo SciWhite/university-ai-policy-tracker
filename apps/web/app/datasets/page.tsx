@@ -146,6 +146,7 @@ export default async function DatasetsPage() {
     "harvard-university";
   const exampleUniversityPath = `/api/public/${PUBLIC_API_VERSION}/universities/${exampleSlug}.json`;
   const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
+  const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`;
   const apiIndexUrl = getAbsoluteSiteUrl(apiIndexPath);
   const universitiesJsonUrl = getAbsoluteSiteUrl(universitiesJsonPath);
   const latestDatasetManifestUrl = getAbsoluteSiteUrl(
@@ -153,6 +154,7 @@ export default async function DatasetsPage() {
   );
   const exampleUniversityUrl = getAbsoluteSiteUrl(exampleUniversityPath);
   const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
+  const reportChartDataUrl = getAbsoluteSiteUrl(reportChartDataPath);
 
   return (
     <main className="page-shell page-shell--wide">
@@ -205,6 +207,12 @@ export default async function DatasetsPage() {
               name: "Dataset release manifest",
               encodingFormat: "application/json",
               contentUrl: latestDatasetManifestUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "May 2026 report chart data",
+              encodingFormat: "application/json",
+              contentUrl: reportChartDataUrl
             },
             ...datasetReleaseManifest.artifacts.map((artifact) => ({
               "@type": "DataDownload",
@@ -285,6 +293,12 @@ export default async function DatasetsPage() {
           label="Dataset release manifest"
           path={latestDatasetManifestPath}
           url={latestDatasetManifestUrl}
+        />
+        <ApiEndpointRow
+          description="Chart-ready source-language and review-state distributions for the May 2026 baseline report."
+          label="Report chart data"
+          path={reportChartDataPath}
+          url={reportChartDataUrl}
         />
       </ReferenceBox>
 
