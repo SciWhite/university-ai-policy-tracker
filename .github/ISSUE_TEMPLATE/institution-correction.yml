@@ -1,0 +1,55 @@
+name: Institution correction
+description: Request correction of institution metadata, attribution, source status, or review-state interpretation.
+title: "Institution correction: "
+labels:
+  - contribution
+  - institution-correction
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Corrections preserve audit history and require supporting source evidence. They do not directly change canonical facts.
+  - type: input
+    id: institution-name
+    attributes:
+      label: Institution name
+    validations:
+      required: true
+  - type: input
+    id: tracker-url
+    attributes:
+      label: Tracker URL
+      description: Public tracker page or JSON URL being corrected.
+    validations:
+      required: true
+  - type: dropdown
+    id: correction-type
+    attributes:
+      label: Correction type
+      options:
+        - institution name
+        - source URL
+        - source attribution
+        - review state
+        - claim/evidence interpretation
+        - canonical URL or slug
+        - other metadata
+    validations:
+      required: true
+  - type: input
+    id: evidence-url
+    attributes:
+      label: Supporting source URL
+      description: Official or clearly attributable source supporting the correction.
+    validations:
+      required: true
+  - type: input
+    id: official-role
+    attributes:
+      label: Official role
+      description: Optional institutional role if submitting on behalf of an institution.
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Short explanation
+      description: Factual correction summary.

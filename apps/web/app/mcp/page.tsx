@@ -88,6 +88,7 @@ export default function McpPage() {
           <li>No pushing to `main` or bypassing pull request review.</li>
           <li>No OpenClaw operation, crawling, login bypass, paywall bypass, or robots bypass.</li>
           <li>No legal advice or academic integrity advice.</li>
+          <li>No write tools for institution corrections or course submissions in the alpha MCP surface.</li>
         </ul>
       </ReferenceBox>
 

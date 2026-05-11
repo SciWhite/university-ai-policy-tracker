@@ -1303,6 +1303,16 @@ Acceptance criteria:
 - UGC has moderation, privacy, and copyright safeguards.
 - Institution corrections preserve audit history.
 
+First implementation target:
+
+- `/contribute` public intake page,
+- `/review` public review-workflow page,
+- GitHub issue templates as the initial review-task channel,
+- `/api/public/v1/contributions/index.json`,
+- `/api/public/v1/contributions/review-policy.json`,
+- no anonymous write API and no production database writes until moderation,
+  rights review, and audit workflow are mature.
+
 ## 12. Expansion Rules
 
 Before adding many universities:

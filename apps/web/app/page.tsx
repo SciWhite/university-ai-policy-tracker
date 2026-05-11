@@ -6,6 +6,8 @@ const startLinks = [
   { label: "View changes", href: "/changes" },
   { label: "Inspect datasets", href: "/datasets" },
   { label: "Embed widgets", href: "/widgets" },
+  { label: "Contribute evidence", href: "/contribute" },
+  { label: "Review workflow", href: "/review" },
   { label: "Read API reference", href: "/api-reference" },
   { label: "Review MCP alpha", href: "/mcp" },
   { label: "Cite the tracker", href: "/citation" },
@@ -86,6 +88,14 @@ export default async function HomePage() {
             <p>
               Review state and confidence are separate so candidate records do
               not look like final policy conclusions.
+            </p>
+          </article>
+          <article className="policy-card">
+            <h3>Contribution layer</h3>
+            <p>
+              Source URLs, institution corrections, translation fixes, and
+              course submissions enter review queues before they can affect
+              public claim/evidence records.
             </p>
           </article>
           <article className="policy-card">

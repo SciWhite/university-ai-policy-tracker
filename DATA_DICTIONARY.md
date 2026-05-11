@@ -180,3 +180,27 @@ OpenClaw should stage candidate artifacts, not canonical records. Required conce
 - official source rights caveat
 
 OpenClaw output must validate before review and must not directly write production data, publish canonical claims, push `main`, or deploy the public website.
+
+## Contribution Metadata
+
+Contribution metadata is available at
+`/api/public/v1/contributions/index.json` and
+`/api/public/v1/contributions/review-policy.json`.
+
+| Field | Meaning |
+| --- | --- |
+| `status` | Current contribution surface status, currently `review-task-intake-alpha`. |
+| `publicApiMutationAllowed` | Always `false` for the public v1 metadata endpoints. |
+| `submissionChannel` | Initial intake channel, currently GitHub issue templates. |
+| `submissionCreatesReviewTask` | Contributions create review tasks. |
+| `submissionCreatesCanonicalFact` | Always `false`; submissions do not directly publish facts. |
+| `workflows` | Contribution paths such as source URL submission, institution correction, course policy evidence, translation correction, and dataset issue reports. |
+| `reviewQueues` | Review queue definitions and publication gates. |
+| `privacyRules` | Privacy constraints for public and course-level submissions. |
+| `copyrightRules` | Source rights and excerpt constraints. |
+| `moderationRules` | Abuse, safety, and boundary rules. |
+| `publicationRules` | Rules that must pass before a contribution can affect public claim/evidence records. |
+
+Course-level submissions are future-facing evidence intake, not open comments.
+They must preserve original-language evidence and remain pending until
+moderation, rights review, and claim/evidence review pass.

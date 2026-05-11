@@ -322,7 +322,8 @@ export async function getMcpManifestResponse() {
           "push main",
           "bypass review state",
           "operate OpenClaw",
-          "crawl source sites from the MCP surface"
+          "crawl source sites from the MCP surface",
+          "submit institution corrections or course policy records through MCP write tools"
         ]
       },
       tools: mcpToolSpecs,

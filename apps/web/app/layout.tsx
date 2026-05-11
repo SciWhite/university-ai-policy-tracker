@@ -11,6 +11,7 @@ const primaryTabs = [
   { label: "Changes", href: "/changes" },
   { label: "Reports", href: "/reports" },
   { label: "Widgets", href: "/widgets" },
+  { label: "Contribute", href: "/contribute" },
   { label: "Datasets", href: "/datasets" },
   { label: "Methodology", href: "/methodology" },
   { label: "Citation", href: "/citation" }
@@ -93,6 +94,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/changes">Changes</Link>
               <Link href="/reports">Reports</Link>
               <Link href="/widgets">Widgets</Link>
+              <Link href="/contribute">Contribute</Link>
+              <Link href="/review">Review workflow</Link>
               <Link href="/api-reference">API reference</Link>
               <Link href="/mcp">MCP alpha</Link>
               <a href="/llms.txt">llms.txt</a>

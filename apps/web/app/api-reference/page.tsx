@@ -73,6 +73,18 @@ const apiFamilies = [
     path: `/api/public/${PUBLIC_API_VERSION}/rate-limit-policy.json`,
     description:
       "Machine-readable public fair-use policy for API, widget, and crawler access."
+  },
+  {
+    label: "Contribution index",
+    path: `/api/public/${PUBLIC_API_VERSION}/contributions/index.json`,
+    description:
+      "Read-only contribution workflow metadata, GitHub issue template URLs, safeguards, and publication rules."
+  },
+  {
+    label: "Contribution review policy",
+    path: `/api/public/${PUBLIC_API_VERSION}/contributions/review-policy.json`,
+    description:
+      "Read-only review queue definitions, moderation boundaries, and publication gates."
   }
 ] as const;
 
@@ -145,6 +157,11 @@ export default function ApiReferencePage() {
           <li>
             Do not present machine-candidate or needs-review claims as final
             policy conclusions.
+          </li>
+          <li>
+            Contribution endpoints are metadata only. Public submissions create
+            review tasks through GitHub issue templates, not direct canonical
+            facts.
           </li>
         </ul>
       </ReferenceBox>

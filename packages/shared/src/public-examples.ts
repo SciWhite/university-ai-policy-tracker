@@ -244,6 +244,16 @@ export function buildPublicApiIndexData(
         "Rate-limit policy",
         `/api/public/${PUBLIC_API_VERSION}/rate-limit-policy.json`,
         "Machine-readable public fair-use, rate-limit, and crawler policy."
+      ),
+      endpoint(
+        "Contribution index",
+        `/api/public/${PUBLIC_API_VERSION}/contributions/index.json`,
+        "Read-only contribution workflow metadata, GitHub issue template URLs, safeguards, and publication rules."
+      ),
+      endpoint(
+        "Contribution review policy",
+        `/api/public/${PUBLIC_API_VERSION}/contributions/review-policy.json`,
+        "Read-only review queue definitions, moderation boundaries, and publication gates."
       )
     ],
     trustPages: [
@@ -291,6 +301,16 @@ export function buildPublicApiIndexData(
         "MCP alpha",
         "/mcp",
         "Read-only agent access design and example retrieval queries."
+      ),
+      trustPage(
+        "Contribute",
+        "/contribute",
+        "Public contribution intake paths for source URLs, corrections, course evidence, translation fixes, and dataset issues."
+      ),
+      trustPage(
+        "Review workflow",
+        "/review",
+        "Contribution review queues, safeguards, moderation rules, and publication gates."
       )
     ],
     citationRules: [

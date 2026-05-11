@@ -1,0 +1,48 @@
+name: Report policy change
+description: Report a changed, moved, removed, blocked, or stale policy source.
+title: "Policy change: "
+labels:
+  - contribution
+  - change-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This creates a review task. A reported change will not update canonical records until source and evidence review pass.
+  - type: input
+    id: institution-name
+    attributes:
+      label: Institution name
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: Source URL
+      description: URL that changed, moved, redirects, blocks, or differs from the tracker record.
+    validations:
+      required: true
+  - type: input
+    id: change-observed-at
+    attributes:
+      label: Change observed date
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: change-summary
+    attributes:
+      label: Change summary
+      description: Short factual summary of the observed change.
+    validations:
+      required: true
+  - type: input
+    id: tracker-url
+    attributes:
+      label: Existing tracker page or JSON URL
+      description: Optional current tracker page, JSON URL, or change page.
+  - type: textarea
+    id: evidence-snippet
+    attributes:
+      label: Short source excerpt
+      description: Optional original-language excerpt supporting the reported change.

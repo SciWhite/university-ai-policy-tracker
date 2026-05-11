@@ -1,0 +1,41 @@
+name: Dataset or API issue
+description: Report public JSON, dataset release, feed, checksum, or page/API consistency issues.
+title: "Dataset/API issue: "
+labels:
+  - contribution
+  - dataset-issue
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report issues with public metadata surfaces. Do not include secrets, private data, or full source documents.
+  - type: input
+    id: affected-url
+    attributes:
+      label: Affected URL
+      description: Public page, API endpoint, dataset artifact, or feed URL.
+    validations:
+      required: true
+  - type: textarea
+    id: issue-summary
+    attributes:
+      label: Issue summary
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What the public contract should show.
+    validations:
+      required: true
+  - type: textarea
+    id: observed-payload
+    attributes:
+      label: Observed payload excerpt
+      description: Optional small relevant excerpt only.
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Reproduction steps
+      description: Optional command or steps used to observe the issue.

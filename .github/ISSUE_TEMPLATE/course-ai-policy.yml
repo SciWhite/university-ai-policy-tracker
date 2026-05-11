@@ -1,0 +1,72 @@
+name: Course AI policy evidence
+description: Submit structured course-level AI policy evidence for review.
+title: "Course AI policy: "
+labels:
+  - contribution
+  - course-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Course submissions are structured evidence, not open comments. Do not paste full copyrighted syllabi, private student information, or non-public instructor data.
+  - type: input
+    id: institution-name
+    attributes:
+      label: Institution name
+    validations:
+      required: true
+  - type: input
+    id: course-code-title
+    attributes:
+      label: Course code or title
+      description: Course code, course title, or both.
+    validations:
+      required: true
+  - type: input
+    id: term
+    attributes:
+      label: Term
+      placeholder: Fall 2026
+    validations:
+      required: true
+  - type: input
+    id: source-language
+    attributes:
+      label: Source language
+      placeholder: en
+    validations:
+      required: true
+  - type: dropdown
+    id: source-type
+    attributes:
+      label: Source type
+      options:
+        - public syllabus URL
+        - short syllabus excerpt
+        - instructor-provided public text
+        - public course page
+        - other attributable course source
+    validations:
+      required: true
+  - type: textarea
+    id: policy-excerpt
+    attributes:
+      label: Short original-language policy excerpt
+      description: Required short excerpt only. Do not paste a full syllabus or LMS page.
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: Public source URL
+      description: Optional public syllabus or course page URL.
+  - type: input
+    id: instructor-name
+    attributes:
+      label: Instructor name
+      description: Optional; include only if already public in course materials.
+  - type: textarea
+    id: ai-use-summary
+    attributes:
+      label: Factual AI use summary
+      description: Optional structured summary. Do not ask for legal or academic integrity advice.

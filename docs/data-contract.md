@@ -89,6 +89,13 @@ https://eduaipolicy.org/api/public/v1/mcp/manifest.json
 https://eduaipolicy.org/api/public/v1/rate-limit-policy.json
 ```
 
+Contribution and review policy metadata is available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/contributions/index.json
+https://eduaipolicy.org/api/public/v1/contributions/review-policy.json
+```
+
 Bulk dataset artifacts are available at:
 
 ```text
@@ -129,6 +136,10 @@ Widget JSON endpoints include permissive CORS headers for public embedding.
 The general public API remains read-only. The MCP alpha manifest is a design
 contract only: it must not write production data, operate OpenClaw, publish
 canonical claims, or bypass review state.
+
+The contribution metadata endpoints are also read-only. Public submissions use
+GitHub issue templates as review tasks; they do not directly write the
+production database, publish canonical facts, or change review state.
 
 Every v1 public JSON response should include a stable envelope:
 
@@ -187,3 +198,38 @@ OpenClaw staged artifacts must include `runId`, `sourceUrl`, `sourceLanguage` fo
 ## Student And Course Extension
 
 Student-facing and course-level features should add canonical entities with claim/evidence records. They should reuse the same evidence and citation model instead of storing unsupported comments as public facts.
+
+Course-level submissions must start as moderated review tasks. They require a
+course entity, term, source type, short original-language evidence excerpt,
+source language, privacy review, copyright review, and a review state before
+any public claim/evidence record can be published. Full syllabi, private student
+information, non-public instructor data, and unsupported accusations are not
+valid tracker evidence.
+
+## Contribution Review Contract
+
+Contribution paths currently include:
+
+- official source URL submission
+- policy change report
+- institution correction
+- course AI policy submission
+- translation or evidence-display correction
+- dataset or API issue
+
+All contribution paths create review tasks, not canonical public facts.
+
+Review queues include:
+
+- source discovery review
+- crawl failure review
+- claim/evidence review
+- translation review
+- institution correction review
+- course submission review
+- abuse and moderation review
+
+Publication requires source-first evidence, source language, rights caveats,
+review state, confidence, and audit history. Institution corrections must cite
+supporting sources. Translation corrections can change helper display text but
+cannot replace original-language evidence.

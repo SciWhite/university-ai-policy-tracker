@@ -149,6 +149,8 @@ export default async function DatasetsPage() {
   const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`;
   const widgetIndexPath = `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`;
   const mcpManifestPath = `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`;
+  const contributionIndexPath = `/api/public/${PUBLIC_API_VERSION}/contributions/index.json`;
+  const reviewPolicyPath = `/api/public/${PUBLIC_API_VERSION}/contributions/review-policy.json`;
   const apiIndexUrl = getAbsoluteSiteUrl(apiIndexPath);
   const universitiesJsonUrl = getAbsoluteSiteUrl(universitiesJsonPath);
   const latestDatasetManifestUrl = getAbsoluteSiteUrl(
@@ -159,6 +161,8 @@ export default async function DatasetsPage() {
   const reportChartDataUrl = getAbsoluteSiteUrl(reportChartDataPath);
   const widgetIndexUrl = getAbsoluteSiteUrl(widgetIndexPath);
   const mcpManifestUrl = getAbsoluteSiteUrl(mcpManifestPath);
+  const contributionIndexUrl = getAbsoluteSiteUrl(contributionIndexPath);
+  const reviewPolicyUrl = getAbsoluteSiteUrl(reviewPolicyPath);
 
   return (
     <main className="page-shell page-shell--wide">
@@ -229,6 +233,18 @@ export default async function DatasetsPage() {
               name: "Read-only MCP alpha manifest",
               encodingFormat: "application/json",
               contentUrl: mcpManifestUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Contribution workflow metadata",
+              encodingFormat: "application/json",
+              contentUrl: contributionIndexUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Contribution review policy metadata",
+              encodingFormat: "application/json",
+              contentUrl: reviewPolicyUrl
             },
             ...datasetReleaseManifest.artifacts.map((artifact) => ({
               "@type": "DataDownload",
@@ -327,6 +343,18 @@ export default async function DatasetsPage() {
           label="MCP alpha manifest"
           path={mcpManifestPath}
           url={mcpManifestUrl}
+        />
+        <ApiEndpointRow
+          description="Read-only contribution workflow metadata, GitHub issue template URLs, and publication boundaries."
+          label="Contribution index"
+          path={contributionIndexPath}
+          url={contributionIndexUrl}
+        />
+        <ApiEndpointRow
+          description="Read-only contribution review queues, moderation safeguards, and publication gates."
+          label="Review policy"
+          path={reviewPolicyPath}
+          url={reviewPolicyUrl}
         />
       </ReferenceBox>
 

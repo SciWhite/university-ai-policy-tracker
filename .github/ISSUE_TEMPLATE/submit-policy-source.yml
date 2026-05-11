@@ -1,0 +1,55 @@
+name: Submit official source URL
+description: Suggest a public university AI policy or guidance source.
+title: "Source URL: "
+labels:
+  - contribution
+  - source-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This creates a review task, not a canonical public fact. Submit public, attributable sources only.
+  - type: input
+    id: institution-name
+    attributes:
+      label: Institution name
+      description: University or institution name.
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: Official source URL
+      description: Public URL to the policy, guidance page, or document.
+    validations:
+      required: true
+  - type: input
+    id: source-language
+    attributes:
+      label: Source language
+      description: Language of the original source evidence.
+      placeholder: en
+    validations:
+      required: true
+  - type: dropdown
+    id: source-type
+    attributes:
+      label: Source type
+      options:
+        - official policy page
+        - official guidance page
+        - official PDF
+        - archived official source
+        - other attributable source
+    validations:
+      required: true
+  - type: textarea
+    id: relevant-excerpt
+    attributes:
+      label: Relevant short excerpt
+      description: Optional short original-language excerpt only. Do not paste a full page or document.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Reviewer notes
+      description: Context that helps reviewers verify provenance, scope, or source language.

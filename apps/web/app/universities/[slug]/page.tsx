@@ -141,6 +141,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             <Link className="site-action" href="/datasets">
               Dataset access
             </Link>
+            <Link className="site-action" href="/contribute">
+              Submit correction
+            </Link>
           </>
         }
         eyebrow={`${university.region}, ${university.country}`}
@@ -313,6 +316,27 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               ) : null}
               <Link className="site-action" href={`/changes/${slug}`}>
                 Open change log
+              </Link>
+            </div>
+          </ReferenceBox>
+
+          <ReferenceBox
+            description="Corrections create review tasks and do not directly change this public record."
+            title="Corrections and missing evidence"
+          >
+            <p>
+              If an official source is missing, stale, moved, blocked, or
+              incorrectly summarized, submit a source URL, policy change report,
+              or institution correction for review. Corrections must preserve
+              source URLs, source language, original evidence, review state, and
+              audit history.
+            </p>
+            <div className="tag-row">
+              <Link className="site-action" href="/contribute">
+                Open contribution paths
+              </Link>
+              <Link className="site-action" href="/review">
+                Review workflow
               </Link>
             </div>
           </ReferenceBox>

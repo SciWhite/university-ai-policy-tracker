@@ -11,6 +11,8 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Embeddable widgets are documented at /widgets.
 - API reference and rate-limit guidance are available at /api-reference.
 - Read-only MCP alpha guidance is available at /mcp.
+- Contribution intake is documented at /contribute.
+- Contribution review workflow is documented at /review.
 - Public API index: /api/public/v1/index.json.
 - Public university list: /api/public/v1/universities.json.
 - Public JSON records are available at /api/public/v1/universities/{slug}.json.
@@ -23,6 +25,8 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Widget JSON endpoints are available at /api/public/v1/widgets/university-status/{slug}.json and /api/public/v1/widgets/recent-changes.json.
 - The read-only MCP alpha manifest is available at /api/public/v1/mcp/manifest.json.
 - The public rate-limit policy is available at /api/public/v1/rate-limit-policy.json.
+- Contribution workflow metadata is available at /api/public/v1/contributions/index.json.
+- Contribution review policy metadata is available at /api/public/v1/contributions/review-policy.json.
 - API responses use a v1 envelope with apiVersion, generatedAt, canonicalUrl, license, citation, and data fields.
 
 ## Citation Rules
@@ -42,3 +46,4 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - OpenClaw orchestrates agents and crawling only.
 - OpenClaw must not deploy the public website, write the production database directly, push main, or hold production deployment credentials.
 - The MCP alpha design is read-only and must not mutate public records, operate OpenClaw, or publish canonical claims.
+- Public contribution paths create review tasks through GitHub issue templates; they do not create canonical facts directly.

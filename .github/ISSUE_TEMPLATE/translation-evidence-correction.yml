@@ -1,0 +1,46 @@
+name: Translation or evidence-display correction
+description: Correct helper display text while preserving original-language evidence as canonical.
+title: "Translation/evidence display correction: "
+labels:
+  - contribution
+  - translation-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Translation corrections affect helper display text only. Original-language evidence remains canonical.
+  - type: input
+    id: tracker-url
+    attributes:
+      label: Tracker URL
+      description: Page or JSON URL containing the display text.
+    validations:
+      required: true
+  - type: input
+    id: source-language
+    attributes:
+      label: Source language
+    validations:
+      required: true
+  - type: textarea
+    id: current-display-text
+    attributes:
+      label: Current display text
+    validations:
+      required: true
+  - type: textarea
+    id: suggested-display-text
+    attributes:
+      label: Suggested display text
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: Source URL
+      description: Optional original source URL if relevant.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Reason the helper display text should change.

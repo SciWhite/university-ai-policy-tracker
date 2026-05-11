@@ -21,6 +21,8 @@ Core trust pages:
 - Citation: <https://eduaipolicy.org/citation>
 - Datasets: <https://eduaipolicy.org/datasets>
 - Changes: <https://eduaipolicy.org/changes>
+- Contribute: <https://eduaipolicy.org/contribute>
+- Review workflow: <https://eduaipolicy.org/review>
 
 Versioned public JSON:
 
@@ -29,6 +31,8 @@ Versioned public JSON:
 - Recent changes: <https://eduaipolicy.org/api/public/v1/recent-changes.json>
 - Per-university records: `https://eduaipolicy.org/api/public/v1/universities/{slug}.json`
 - Dataset release manifest: <https://eduaipolicy.org/api/public/v1/datasets/latest.json>
+- Contribution index: <https://eduaipolicy.org/api/public/v1/contributions/index.json>
+- Contribution review policy: <https://eduaipolicy.org/api/public/v1/contributions/review-policy.json>
 - Bulk downloads:
   - <https://eduaipolicy.org/api/public/v1/datasets/universities.jsonl>
   - <https://eduaipolicy.org/api/public/v1/datasets/claims.jsonl>
@@ -45,6 +49,9 @@ This project separates four layers:
 2. Reference layer: crawlable university pages, claim/evidence cards, citation blocks, and change logs.
 3. Distribution layer: public JSON, sitemap, `llms.txt`, dataset documentation, and repository trust assets.
 4. Contribution and review layer: staged OpenClaw artifacts, pull requests, review states, and institution correction workflows.
+
+Public contribution paths create review tasks through GitHub issue templates.
+They do not directly publish canonical facts or write the production database.
 
 Canonical facts and localized display are separate. Original-language evidence is the canonical evidence record. Translations and display summaries may help readers, but they must not replace source evidence.
 
