@@ -1,12 +1,15 @@
 import { NextResponse } from "next/server";
-import { getCatalogUniversities } from "@/lib/catalog";
 import {
-  getUniversityStatusWidget,
+  PUBLIC_API_VERSION,
+  publicEntitySummaryResponseSchema,
+  publicEntitySummarySchema
+} from "@uapt/shared";
+import {
+  buildUniversityStatusWidget,
   widgetCorsHeaders
 } from "@/lib/developer-surfaces";
 
-export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamic = "force-dynamic";
 
 interface WidgetStatusRouteProps {
   params: Promise<{
@@ -14,30 +17,50 @@ interface WidgetStatusRouteProps {
   }>;
 }
 
-export async function generateStaticParams() {
-  return (await getCatalogUniversities()).flatMap((university) => [
-    { slug: university.slug },
-    { slug: `${university.slug}.json` }
-  ]);
-}
-
 export async function GET(_request: Request, { params }: WidgetStatusRouteProps) {
   const { slug } = await params;
   const universitySlug = slug.endsWith(".json")
     ? slug.slice(0, -".json".length)
     : slug;
-  const widget = await getUniversityStatusWidget(universitySlug);
+  const summary = await fetchPublicSummary(_request.url, universitySlug);
 
-  if (!widget) {
+  if (!summary) {
     return NextResponse.json(
       { error: `University not found: ${universitySlug}` },
-      { headers: widgetCorsHeaders, status: 404 }
+      {
+        headers: {
+          ...widgetCorsHeaders,
+          "Cache-Control": "no-store"
+        },
+        status: 404
+      }
     );
   }
 
-  return NextResponse.json(widget, { headers: widgetCorsHeaders });
+  return NextResponse.json(buildUniversityStatusWidget(summary), {
+    headers: widgetCorsHeaders
+  });
 }
 
 export function OPTIONS() {
   return new Response(null, { headers: widgetCorsHeaders });
+}
+
+async function fetchPublicSummary(requestUrl: string, slug: string) {
+  const response = await fetch(
+    new URL(
+      `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
+      requestUrl
+    ),
+    { next: { revalidate: 3600 } }
+  );
+
+  if (!response.ok) return undefined;
+
+  const payload = await response.json();
+  const envelope = publicEntitySummaryResponseSchema.safeParse(payload);
+  if (envelope.success) return envelope.data.data;
+
+  const summary = publicEntitySummarySchema.safeParse(payload);
+  return summary.success ? summary.data : undefined;
 }

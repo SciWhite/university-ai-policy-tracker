@@ -9,6 +9,7 @@ import {
   getStagedPublicSummaries,
   getStagedPublicSummaryBySlug
 } from "./staged-public-data";
+import type { PolicyClaim, PublicEntitySummary } from "@uapt/shared";
 
 export const widgetScriptPath = "/widgets/embed.js";
 
@@ -142,6 +143,10 @@ export async function getUniversityStatusWidget(slug: string) {
 
   if (!summary) return undefined;
 
+  return buildUniversityStatusWidget(summary);
+}
+
+export function buildUniversityStatusWidget(summary: PublicEntitySummary) {
   const reviewedClaimCount = summary.claims.filter((claim) =>
     isReviewedState(claim.reviewState)
   ).length;
@@ -229,6 +234,71 @@ export async function getRecentChangesWidget(limit = 5) {
         candidateClaimCount: record.candidateClaimCount,
         sourceCount: record.sourceCount
       }))
+    }
+  };
+}
+
+export function buildRecentChangesWidgetFromPublicChanges(
+  changes: Array<{
+    canonicalUrl: string;
+    claims: PolicyClaim[];
+    entityName: string;
+    entitySlug: string;
+    lastChangedAt?: string;
+    lastCheckedAt?: string;
+    reviewState: string;
+  }>,
+  limit = 5
+) {
+  const records = changes.slice(0, clampLimit(limit));
+
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt: new Date().toISOString(),
+    canonicalUrl: getAbsoluteSiteUrl("/changes"),
+    license: TRACKER_METADATA_LICENSE,
+    limitations: [NO_ADVICE_BOUNDARY],
+    widget: {
+      type: "recent-changes",
+      embedScriptUrl: getAbsoluteSiteUrl(widgetScriptPath),
+      sourceRecordUrl: getAbsoluteSiteUrl(
+        `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`
+      )
+    },
+    data: {
+      count: records.length,
+      changes: records.map((record) => {
+        const reviewedClaimCount = record.claims.filter((claim) =>
+          isReviewedState(claim.reviewState)
+        ).length;
+        const sourceCount = new Set(
+          record.claims.flatMap((claim) =>
+            claim.evidence.map((evidence) => evidence.sourceUrl)
+          )
+        ).size;
+
+        return {
+          entitySlug: record.entitySlug,
+          entityName: record.entityName,
+          publicPageUrl: getAbsoluteSiteUrl(
+            `/universities/${record.entitySlug}`
+          ),
+          changeUrl: getAbsoluteSiteUrl(`/changes/${record.entitySlug}`),
+          publicJsonUrl: getAbsoluteSiteUrl(
+            `/api/public/${PUBLIC_API_VERSION}/universities/${record.entitySlug}.json`
+          ),
+          summaryPreview: isReviewedState(record.reviewState)
+            ? "Public source-check record with canonical links and labeled review state."
+            : "Review pending. Use canonical source-backed records before treating this as a policy conclusion.",
+          lastCheckedAt: record.lastCheckedAt,
+          lastChangedAt: record.lastChangedAt,
+          reviewState: record.reviewState,
+          claimCount: record.claims.length,
+          reviewedClaimCount,
+          candidateClaimCount: record.claims.length - reviewedClaimCount,
+          sourceCount
+        };
+      })
     }
   };
 }
