@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "claim_candidate",
+  "claimId": "ucla-claim-001",
+  "entityType": "university",
+  "entitySlug": "ucla",
+  "claimType": "academic_integrity",
+  "claimText": "UCLA Academic Senate guidance quotes the Student Conduct Code requirement that submissions must be the student’s own work or clearly acknowledge the source, and says that unless an instructor indicates otherwise, use of ChatGPT or other AI tools for course assignments is akin to receiving assistance from another person.",
+  "normalizedValue": "Student submissions must be own work or acknowledge sources; unless instructors indicate otherwise, ChatGPT or other AI tool use is treated as assistance from another person.",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ucla-evidence-001"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Teaching Guidance for ChatGPT and Related AI Developments",
+    "sourceUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+    "publisher": "UCLA Academic Senate",
+    "retrievedAt": "2026-05-11T00:05:00Z",
+    "snapshotHash": "168a58d011028f9f1ff9881c878100d5e4a982a6ad89ef46b2521974fada8a9b",
+    "sourceRights": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  }
+}

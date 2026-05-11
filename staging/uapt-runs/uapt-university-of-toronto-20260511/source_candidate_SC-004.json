@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceCandidateId": "uoft-ai-taskforce-guidelines",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://ai.utoronto.ca/guidelines/",
+  "finalUrl": "https://ai.utoronto.ca/guidelines/",
+  "sourceTitle": "Guidelines - Toward an AI-ready University",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:ai.utoronto.ca guidelines",
+  "discoveredAt": "2026-05-11T09:08:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T09:18:00.000Z",
+  "verificationNotes": "Central AI Task Force guidelines page linking to all major U of T AI guidance documents. Task Force report released June 2025. Provides collected guidelines for faculty, students, researchers, and staff.",
+  "robotsPolicy": "respect"
+}

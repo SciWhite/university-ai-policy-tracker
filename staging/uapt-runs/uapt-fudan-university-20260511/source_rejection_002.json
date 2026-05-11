@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "fudan-rejection-002",
+  "entityType": "university",
+  "entitySlug": "fudan-university",
+  "sourceUrl": "http://en.people.cn/n3/2025/0127/c90000-20271232.html",
+  "finalUrl": "http://en.people.cn/n3/2025/0127/c90000-20271232.html",
+  "rejectedAt": "2026-05-11T10:15:00Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Fudan University in Shanghai introduced a set of regulations in late November to limit AI use in undergraduate thesis writing...",
+  "notes": "People's Daily news article, not official Fudan source. Third-party media coverage rejected per source rules."
+}

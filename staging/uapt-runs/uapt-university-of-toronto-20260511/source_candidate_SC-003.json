@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceCandidateId": "uoft-viceprovost-faq",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://www.viceprovostundergrad.utoronto.ca/16072-2/teaching-initiatives/generative-artificial-intelligence/",
+  "finalUrl": "https://www.viceprovostundergrad.utoronto.ca/16072-2/teaching-initiatives/generative-artificial-intelligence/",
+  "sourceTitle": "Generative Artificial Intelligence in the Classroom: FAQ's",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:utoronto.ca \"generative AI\" teaching",
+  "discoveredAt": "2026-05-11T09:07:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.93,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T09:17:00.000Z",
+  "verificationNotes": "Comprehensive FAQ from Office of Vice-Provost Innovations in Undergraduate Education covering instructor and student use of GenAI, approved tools (Microsoft Copilot, ChatGPT Edu), syllabus statements, assessment design, and citation guidance. Updated June 18, 2025.",
+  "robotsPolicy": "respect"
+}

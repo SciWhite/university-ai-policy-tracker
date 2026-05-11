@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "review_decision",
+  "decisionId": "fudan-decision-001",
+  "claimId": "fudan-claim-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Approved after local repair as a narrow, source-scoped claim. The evidence is direct text from an official Fudan Student Affairs Office page that references the undergraduate-thesis AI tool rule. The full policy text is not publicly available in this run, so the claim is limited to what the public official page states and should not be presented as a comprehensive university-wide AI policy.",
+  "decidedAt": "2026-05-11T10:20:00Z"
+}

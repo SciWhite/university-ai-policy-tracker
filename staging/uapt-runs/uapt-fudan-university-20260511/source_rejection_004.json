@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "fudan-rejection-004",
+  "entityType": "university",
+  "entitySlug": "fudan-university",
+  "sourceUrl": "https://statevalbase.fudan.edu.cn/info/1050/2796.htm",
+  "finalUrl": "https://statevalbase.fudan.edu.cn/info/1050/2796.htm",
+  "rejectedAt": "2026-05-11T10:16:00Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "生成式 AI 正在重塑全球学术实践吗？- 国家智能评价与治理实验基地",
+  "notes": "Research institute page discussing AI in academia generally. Not an official policy or guidance page. Rejected as research showcase."
+}

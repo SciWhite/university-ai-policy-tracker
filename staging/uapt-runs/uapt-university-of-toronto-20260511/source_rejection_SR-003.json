@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceRejectionId": "uoft-sr-magazine-assessment",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://magazine.utoronto.ca/research-ideas/technology/ai-tools-shaping-teaching-learning/",
+  "rejectedAt": "2026-05-11T09:27:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "University of Toronto Magazine article on AI in teaching",
+  "notes": "Magazine feature article, not official policy or guidance document."
+}

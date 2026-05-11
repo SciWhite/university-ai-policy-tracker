@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "decisionId": "uoft-rd-005",
+  "claimId": "uoft-claim-syllabus-statement",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim directly supported by official VPIUE FAQ recommending syllabus statements and providing sample language for instructors.",
+  "decidedAt": "2026-05-11T10:04:00.000Z"
+}

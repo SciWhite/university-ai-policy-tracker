@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "decisionId": "uoft-rd-001",
+  "claimId": "uoft-claim-academic-integrity",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim directly supported by official Academic Integrity Office guidance stating that using generative AI without permission constitutes use of unauthorized aid under Code of Behaviour on Academic Matters.",
+  "decidedAt": "2026-05-11T10:00:00.000Z"
+}

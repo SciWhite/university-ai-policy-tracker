@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceSnapshotId": "uoft-ss-005",
+  "sourceCandidateId": "uoft-ctsi-tools",
+  "fetchAttemptId": "uoft-fa-005",
+  "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+  "finalUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+  "sourceTitle": "Generative AI Tools",
+  "sourceLanguage": "en",
+  "contentHash": "222e9ce88997f102e1c0771cda772c4277683458161373e92774804c7e838a7b",
+  "fetchedAt": "2026-05-11T09:39:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

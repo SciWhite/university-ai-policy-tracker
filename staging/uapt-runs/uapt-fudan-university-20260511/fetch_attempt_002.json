@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fudan-fetch-002",
+  "sourceCandidateId": "fudan-candidate-002",
+  "sourceUrl": "http://www.it.fudan.edu.cn/Assets/userfiles/sys_2939ad18-5046-44ce-ba93-a7f600e54d68/files/未来信息创新学院本科毕业论文（设计）工作管理实施办法（2025 年 11 月修订）.pdf",
+  "finalUrl": "http://www.it.fudan.edu.cn/Assets/userfiles/sys_2939ad18-5046-44ce-ba93-a7f600e54d68/files/未来信息创新学院本科毕业论文（设计）工作管理实施办法（2025 年 11 月修订）.pdf",
+  "attemptedAt": "2026-05-11T10:11:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 404,
+  "contentType": "text/html; charset=yaml.null",
+  "robotsAllowed": true,
+  "outcome": "error",
+  "durationMs": 2340,
+  "errorReason": "Public PDF URL returned HTTP 404 during local repair verification; source rejected as stale_404."
+}

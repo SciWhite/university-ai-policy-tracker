@@ -1,0 +1,28 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "evidenceId": "uoft-evidence-003",
+  "claimId": "uoft-claim-approved-tools",
+  "sourceSnapshotId": "uoft-ss-005",
+  "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+  "finalUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+  "sourceTitle": "Generative AI Tools",
+  "sourceLanguage": "en",
+  "snapshotHash": "222e9ce88997f102e1c0771cda772c4277683458161373e92774804c7e838a7b",
+  "evidenceSnippetOriginal": "Currently, Microsoft Copilot is the recommended generative AI tool to use at U of T. When a user signs in using University credentials, Microsoft Copilot conforms to U of T’s privacy and security standards (i.e., does not share any data with Microsoft or any other company) for use with up to level 3 data .",
+  "evidenceSnippetDisplay": "Currently, Microsoft Copilot is the recommended generative AI tool to use at U of T",
+  "evidenceLocator": "Current Approved Tools section",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI Tools",
+    "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json",
+    "publisher": "University of Toronto Centre for Teaching Support & Innovation",
+    "retrievedAt": "2026-05-11T09:39:00.000Z",
+    "snapshotHash": "222e9ce88997f102e1c0771cda772c4277683458161373e92774804c7e838a7b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

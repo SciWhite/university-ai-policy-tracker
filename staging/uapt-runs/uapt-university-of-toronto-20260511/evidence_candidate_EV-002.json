@@ -1,0 +1,28 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "evidenceId": "uoft-evidence-002",
+  "claimId": "uoft-claim-graduate-supervisor-approval",
+  "sourceSnapshotId": "uoft-ss-001",
+  "sourceUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+  "finalUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+  "sourceTitle": "Guidance on the Appropriate Use of Generative Artificial Intelligence for Graduate Academic Milestones",
+  "sourceLanguage": "en",
+  "snapshotHash": "152ba6a66b8373e8d41bcba53fa1ca02e5e6003f5403f8664422b95974129ed6",
+  "evidenceSnippetOriginal": "It is recommended that students seek and document in writing unambiguous approval from their supervisor(s) and supervisory committee in advance of the use of generative AI tools in research, writing, or other scholarly activities relevant to graduate academic milestones.",
+  "evidenceSnippetDisplay": "It is recommended that students seek and document in writing unambiguous approval from their supervisor(s) and supervisory committee in advance",
+  "evidenceLocator": "Overview section",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidance on the Appropriate Use of Generative Artificial Intelligence for Graduate Academic Milestones",
+    "sourceUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json",
+    "publisher": "University of Toronto School of Graduate Studies",
+    "retrievedAt": "2026-05-11T09:35:00.000Z",
+    "snapshotHash": "152ba6a66b8373e8d41bcba53fa1ca02e5e6003f5403f8664422b95974129ed6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

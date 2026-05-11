@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "claim_candidate",
+  "claimId": "ucla-claim-003",
+  "entityType": "university",
+  "entitySlug": "ucla",
+  "claimType": "privacy",
+  "claimText": "UCLA DTS guidance says users may not input FERPA-protected student information, HIPPA/HIPAA-protected health data, employee personnel/performance data, unpublished research/IP/grant proposals, or export-controlled or restricted data into AI tools unless explicitly approved in a secure environment.",
+  "normalizedValue": "Restricted data categories may not be input into AI tools unless explicitly approved in a secure environment.",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ucla-evidence-003"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "AI Use and Recommendation Guide",
+    "sourceUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+    "publisher": "UCLA Digital & Technology Solutions",
+    "retrievedAt": "2026-05-11T00:05:00Z",
+    "snapshotHash": "c791d23ea915a976d85d7b9abfc325f52ca15b2812c8084ec7767ef5fdac8e9f",
+    "sourceRights": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "claimId": "uoft-claim-academic-integrity",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "claimType": "academic_integrity",
+  "claimText": "University of Toronto considers use of generative AI tools on marked assessments without instructor permission to be use of an unauthorized aid under the Code of Behaviour on Academic Matters.",
+  "normalizedValue": "ai_use_requires_instructor_permission",
+  "sourceLanguage": "en",
+  "confidence": 0.98,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uoft-evidence-001"
+  ],
+  "citation": {
+    "citationTitle": "Using ChatGPT or other generative AI tool on a marked assessment",
+    "sourceUrl": "https://www.academicintegrity.utoronto.ca/perils-and-pitfalls/using-chatgpt-or-other-ai-tool-on-a-marked-assessment/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json",
+    "publisher": "University of Toronto",
+    "retrievedAt": "2026-05-11T09:36:00.000Z",
+    "snapshotHash": "073b55561d0949062e01b1a9676e0db83eebc87827ad7ebeae75d81b79adbc2b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

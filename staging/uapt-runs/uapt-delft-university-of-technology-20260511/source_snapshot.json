@@ -1,0 +1,20 @@
+[
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-delft-university-of-technology-20260511",
+    "artifactType": "source_snapshot",
+    "sourceSnapshotId": "delft-snapshot-001",
+    "sourceCandidateId": "delft-candidate-001",
+    "fetchAttemptId": "delft-fetch-001",
+    "sourceUrl": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education",
+    "finalUrl": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education",
+    "sourceTitle": "AI in education | Teaching Support",
+    "sourceLanguage": "en",
+    "contentHash": "aa7d9aa84afcd157a248547cbfcf7a1d87592eac7bb3de82663602062d89c3e9",
+    "fetchedAt": "2026-05-11T09:30:00Z",
+    "httpStatus": 200,
+    "robotsAllowed": true,
+    "normalizedTextStorageKey": "delft-001-normalized.txt",
+    "rawArtifactPaths": []
+  }
+]

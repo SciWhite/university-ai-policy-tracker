@@ -1,0 +1,15 @@
+[
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-delft-university-of-technology-20260511",
+    "artifactType": "review_decision",
+    "decisionId": "delft-decision-001",
+    "claimId": "delft-claim-001",
+    "decision": "approve",
+    "reviewState": "agent_reviewed",
+    "reviewerType": "openclaw_agent",
+    "reviewer": "openclaw-policy-extractor",
+    "notes": "Claim supported by official TU Delft teaching support page.",
+    "decidedAt": "2026-05-11T10:00:00Z"
+  }
+]

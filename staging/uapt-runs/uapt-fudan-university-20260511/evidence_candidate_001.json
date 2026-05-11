@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "fudan-evidence-001",
+  "claimId": "fudan-claim-001",
+  "sourceSnapshotId": "fudan-snapshot-001",
+  "sourceUrl": "https://www.stuaff.fudan.edu.cn/b9/95/c54492a768405/page.htm",
+  "finalUrl": "https://www.stuaff.fudan.edu.cn/b9/95/c54492a768405/page.htm",
+  "sourceTitle": "【项目回顾】论文通关！手把手教你搞定学术写作",
+  "sourceLanguage": "zh",
+  "snapshotHash": "e67f7008759028ded903d3fc0ffccd0ca963bd8d38ff9c68844ca24038719042",
+  "evidenceSnippetOriginal": "特别的,对于写作中对 AI 工具的规范与使用,徐老师认为要做到辅助不替代。她援引《复旦大学关于在本科毕业论文(设计)中使用 AI 工具的规定(试行)》,说明在学术写作中使用 AI 工具辅助,需经老师同意并披露使用情况(工具版本、范围),且核查 AI 生成内容,防止虚假信息。对于数据收集、核心观点提炼等创新工作不可依赖 AI ,涉密和隐私内容禁止使用 AI 。",
+  "evidenceSnippetDisplay": "The Fudan Student Affairs Office page references Fudan undergraduate-thesis AI tool rules and says AI assistance in academic writing requires teacher consent and disclosure of use, AI-generated content must be checked, core innovative work such as data collection and core argument development may not rely on AI, and confidential or private content must not be used with AI.",
+  "evidenceLocator": "Paragraph beginning “特别的,对于写作中对 AI 工具的规范与使用”",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence.",
+  "citation": {
+    "citationTitle": "【项目回顾】论文通关！手把手教你搞定学术写作",
+    "sourceUrl": "https://www.stuaff.fudan.edu.cn/b9/95/c54492a768405/page.htm",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/fudan-university.json",
+    "publisher": "复旦大学党委学生工作部（处）",
+    "retrievedAt": "2026-05-11T10:10:00Z",
+    "snapshotHash": "e67f7008759028ded903d3fc0ffccd0ca963bd8d38ff9c68844ca24038719042",
+    "sourceRights": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  }
+}

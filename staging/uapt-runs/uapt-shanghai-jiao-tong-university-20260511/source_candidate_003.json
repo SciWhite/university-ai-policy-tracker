@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-shanghai-jiao-tong-university-20260511",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-sjtu-student-ai-guide-2024",
+  "entityType": "university",
+  "entitySlug": "shanghai-jiao-tong-university",
+  "sourceUrl": "https://ctld.sjtu.edu.cn/storage/article/2024/11/41f76c41d972b32fa344023b5663b275.pdf",
+  "finalUrl": "https://ctld.sjtu.edu.cn/storage/article/2024/11/41f76c41d972b32fa344023b5663b275.pdf",
+  "sourceTitle": "规范学生使用人工智能工具的教师指南",
+  "sourceLanguage": "zh",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:sjtu.edu.cn AI 工具 学生 作业",
+  "discoveredAt": "2026-05-11T10:17:00Z",
+  "officialDomainConfidence": 0.96,
+  "aiRelevanceScore": 0.91,
+  "policySpecificityScore": 0.87,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T10:32:00Z",
+  "verificationNotes": "Official guidelines for teachers on regulating student AI tool use. Published June 2024. Provides frameworks for permitted/limited/prohibited AI use, citation formats (APA/MLA/IEEE), and handling potential violations.",
+  "robotsPolicy": "respect"
+}

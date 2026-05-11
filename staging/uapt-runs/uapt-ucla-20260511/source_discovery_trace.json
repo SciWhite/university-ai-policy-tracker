@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "source_discovery_trace",
+  "traceId": "ucla-discovery-trace-001",
+  "entityType": "university",
+  "entitySlug": "ucla",
+  "startedAt": "2026-05-11T00:00:00Z",
+  "endedAt": "2026-05-11T00:30:00Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:ucla.edu \"generative AI\" policy",
+      "domain": "ucla.edu",
+      "resultCount": 10,
+      "notes": "Found DTS guiding principles, teaching guidance, AI use recommendation guide"
+    },
+    {
+      "method": "site_search",
+      "query": "site:ucla.edu \"ChatGPT\" academic integrity",
+      "domain": "ucla.edu",
+      "resultCount": 10,
+      "notes": "Found Academic Senate teaching guidance, student conduct references"
+    },
+    {
+      "method": "site_search",
+      "query": "site:teaching.ucla.edu \"generative AI\"",
+      "domain": "teaching.ucla.edu",
+      "resultCount": 10,
+      "notes": "Found course policy creation guidance"
+    },
+    {
+      "method": "site_search",
+      "query": "site:dts.ucla.edu \"generative AI\" policy",
+      "domain": "dts.ucla.edu",
+      "resultCount": 10,
+      "notes": "Found DTS AI governance and approved tools"
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"UCLA\" \"generative AI\" \"academic integrity\" policy",
+      "resultCount": 10,
+      "notes": "Confirmed official sources from ucla.edu domain"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "ucla-dts-guiding-principles",
+    "ucla-dts-ai-use-guide",
+    "ucla-senate-teaching-guidance"
+  ],
+  "rejectionIds": [],
+  "summary": "Discovered 3 official UCLA AI policy sources through site-specific searches. Primary sources include DTS guiding principles, AI use recommendation guide, and Academic Senate teaching guidance. All sources are from official ucla.edu domains with clear policy/guidance content."
+}

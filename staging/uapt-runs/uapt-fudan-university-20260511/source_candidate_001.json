@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "fudan-candidate-001",
+  "entityType": "university",
+  "entitySlug": "fudan-university",
+  "sourceUrl": "https://www.stuaff.fudan.edu.cn/b9/95/c54492a768405/page.htm",
+  "finalUrl": "https://www.stuaff.fudan.edu.cn/b9/95/c54492a768405/page.htm",
+  "sourceTitle": "【项目回顾】论文通关！手把手教你搞定学术写作",
+  "sourceLanguage": "zh",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:fudan.edu.cn 学术诚信 AI",
+  "discoveredAt": "2026-05-11T10:05:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.7,
+  "policySpecificityScore": 0.58,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T10:10:00Z",
+  "verificationNotes": "Official Fudan Student Affairs Office recap page. It directly quotes a speaker summarizing the university undergraduate-thesis AI tool rule. This is usable as official secondary guidance, not as the policy text itself.",
+  "robotsPolicy": "respect"
+}

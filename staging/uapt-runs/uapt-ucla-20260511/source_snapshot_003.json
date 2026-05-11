@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ucla-snapshot-003",
+  "sourceCandidateId": "ucla-senate-teaching-guidance",
+  "fetchAttemptId": "ucla-fetch-003",
+  "sourceUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+  "finalUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+  "sourceTitle": "Teaching Guidance for ChatGPT and Related AI Developments",
+  "sourceLanguage": "en",
+  "contentHash": "168a58d011028f9f1ff9881c878100d5e4a982a6ad89ef46b2521974fada8a9b",
+  "fetchedAt": "2026-05-11T00:05:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "ucla/senate-teaching-guidance-20260511.txt",
+  "rawArtifactPaths": []
+}

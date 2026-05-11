@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-shanghai-jiao-tong-university-20260511",
+  "artifactType": "crawl_plan",
+  "planId": "cp-sjtu-20260511-001",
+  "createdAt": "2026-05-11T10:00:00Z",
+  "createdBy": "openclaw_crawl_designer",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "shanghai-jiao-tong-university",
+      "sourceCandidateId": "sc-sjtu-ai-norms-2025",
+      "sourceUrl": "https://www.sjtu.edu.cn/resource/upload/202503/20250304_105048_720.pdf",
+      "sourceTitle": "上海交通大学关于在教育教学中使用 AI 的规范（试行版）",
+      "sourceLanguage": "zh",
+      "allowedFetchModes": ["http", "firecrawl"],
+      "expectedThemes": ["AI usage classification", "teacher responsibilities", "student compliance", "ethics principles"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "shanghai-jiao-tong-university",
+      "sourceCandidateId": "sc-sjtu-gen-ai-teacher-guide-2023",
+      "sourceUrl": "https://ctld.sjtu.edu.cn/storage/file/2023/12/2b30798c781f304ebfc83e66faef31fe.pdf",
+      "sourceTitle": "生成式人工智能教师使用指南",
+      "sourceLanguage": "zh",
+      "allowedFetchModes": ["http", "firecrawl"],
+      "expectedThemes": ["teacher guidelines", "data privacy", "academic integrity", "critical thinking"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "shanghai-jiao-tong-university",
+      "sourceCandidateId": "sc-sjtu-student-ai-guide-2024",
+      "sourceUrl": "https://ctld.sjtu.edu.cn/storage/article/2024/11/41f76c41d972b32fa344023b5663b275.pdf",
+      "sourceTitle": "规范学生使用人工智能工具的教师指南",
+      "sourceLanguage": "zh",
+      "allowedFetchModes": ["http", "firecrawl"],
+      "expectedThemes": ["student AI usage", "academic integrity", "citation formats", "violation handling"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "All verified sources successfully fetched",
+    "No additional official policy sources discovered",
+    "Evidence sufficient for claim extraction"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "crawl_plan",
+  "planId": "ucla-ai-policy-crawl-001",
+  "createdAt": "2026-05-11T00:00:00Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "ucla",
+      "sourceCandidateId": "ucla-dts-guiding-principles",
+      "sourceUrl": "https://dts.ucla.edu/initiatives/ai/guiding-principles-responsible-use",
+      "sourceTitle": "Guiding Principles for Responsible Use",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["responsible AI use", "academic integrity", "data privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ucla",
+      "sourceCandidateId": "ucla-dts-ai-use-guide",
+      "sourceUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+      "sourceTitle": "AI Use and Recommendation Guide",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["approved AI tools", "data protection", "prohibited use"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ucla",
+      "sourceCandidateId": "ucla-senate-teaching-guidance",
+      "sourceUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+      "sourceTitle": "Teaching Guidance for ChatGPT and Related AI Developments",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["academic integrity", "instructor expectations"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": ["policy_content_found", "all_targets_crawled"]
+}

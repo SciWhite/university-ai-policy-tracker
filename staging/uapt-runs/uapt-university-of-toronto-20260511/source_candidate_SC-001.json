@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceCandidateId": "uoft-sgs-graduate-guidance",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+  "finalUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+  "sourceTitle": "Guidance on the Appropriate Use of Generative Artificial Intelligence for Graduate Academic Milestones",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:utoronto.ca \"generative AI\" policy",
+  "discoveredAt": "2026-05-11T09:05:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T09:15:00.000Z",
+  "verificationNotes": "Official SGS guidance for graduate students on generative AI use in thesis, comprehensive exams, and academic milestones. Requires supervisor approval, transparency, and appropriate citation. Last updated February 5, 2026. Endorsed by School of Graduate Studies.",
+  "robotsPolicy": "respect"
+}

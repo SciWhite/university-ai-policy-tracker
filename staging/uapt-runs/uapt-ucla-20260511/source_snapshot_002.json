@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ucla-snapshot-002",
+  "sourceCandidateId": "ucla-dts-ai-use-guide",
+  "fetchAttemptId": "ucla-fetch-002",
+  "sourceUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+  "finalUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+  "sourceTitle": "AI Use and Recommendation Guide",
+  "sourceLanguage": "en",
+  "contentHash": "c791d23ea915a976d85d7b9abfc325f52ca15b2812c8084ec7767ef5fdac8e9f",
+  "fetchedAt": "2026-05-11T00:05:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "ucla/dts-ai-use-guide-20260511.txt",
+  "rawArtifactPaths": []
+}

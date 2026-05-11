@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ucla-evidence-001",
+  "claimId": "ucla-claim-001",
+  "sourceSnapshotId": "ucla-snapshot-003",
+  "sourceUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+  "finalUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+  "sourceTitle": "Teaching Guidance for ChatGPT and Related AI Developments",
+  "sourceLanguage": "en",
+  "snapshotHash": "168a58d011028f9f1ff9881c878100d5e4a982a6ad89ef46b2521974fada8a9b",
+  "evidenceSnippetOriginal": "The UCLA Student Conduct Code states, “Unless otherwise specified by the faculty member, all submissions, whether in draft or final form, to meet course requirements (including a paper, project, exam, computer program, oral presentation, or other work) must either be the Student’s own work, or must clearly acknowledge the source.” Unless an instructor indicates otherwise, the use of ChatGPT or other AI tools for course assignments is akin to receiving assistance from another person",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence.",
+  "citation": {
+    "citationTitle": "Teaching Guidance for ChatGPT and Related AI Developments",
+    "sourceUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+    "publisher": "UCLA Academic Senate",
+    "retrievedAt": "2026-05-11T00:05:00Z",
+    "snapshotHash": "168a58d011028f9f1ff9881c878100d5e4a982a6ad89ef46b2521974fada8a9b",
+    "sourceRights": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  },
+  "evidenceSnippetDisplay": "UCLA Academic Senate guidance quotes the Student Conduct Code and states that submissions must be the student’s own work or clearly acknowledge sources; unless an instructor says otherwise, ChatGPT or similar AI tool use for course assignments is treated like assistance from another person."
+}

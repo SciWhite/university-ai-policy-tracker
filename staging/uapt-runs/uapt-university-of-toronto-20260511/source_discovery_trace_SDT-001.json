@@ -1,0 +1,102 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "traceId": "uoft-discovery-trace-1",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "startedAt": "2026-05-11T09:00:00.000Z",
+  "endedAt": "2026-05-11T10:30:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:utoronto.ca \"generative AI\" policy",
+      "domain": "utoronto.ca",
+      "resultCount": 10,
+      "notes": "Found SGS guidance on generative AI for graduate academic milestones, UTM academic integrity page, VPIUE FAQ page, AI Task Force guidelines page."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:utoronto.ca \"generative AI\" students",
+      "domain": "utoronto.ca",
+      "resultCount": 10,
+      "notes": "Found CTSI teaching with GenAI page, student life AI tools guidance, academic integrity office perils and pitfalls page."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:utoronto.ca \"ChatGPT\" academic integrity",
+      "domain": "utoronto.ca",
+      "resultCount": 10,
+      "notes": "Found Academic Integrity Office page on using ChatGPT on marked assessments, summer abroad policy, library citation guide."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:utoronto.ca \"AI tools\" assessment",
+      "domain": "utoronto.ca",
+      "resultCount": 10,
+      "notes": "Found CTSI GenAI assessments page, RGASC PDF guides on assessment design, academic integrity page on unauthorized aids."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:utoronto.ca \"artificial intelligence\" \"academic integrity\"",
+      "domain": "utoronto.ca",
+      "resultCount": 10,
+      "notes": "Found LexAI ethics pieces, student life AI tools page, library academic integrity guide."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:teaching.utoronto.ca \"generative AI\"",
+      "domain": "teaching.utoronto.ca",
+      "resultCount": 10,
+      "notes": "Found CTSI GenAI tools page, teaching tips, institutional resources, workshops, and teaching examples."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:academicintegrity.utoronto.ca \"generative AI\"",
+      "domain": "academicintegrity.utoronto.ca",
+      "resultCount": 7,
+      "notes": "Found main perils and pitfalls page with specific ChatGPT guidance, risk situations pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:security.utoronto.ca \"AI\" intelligently",
+      "domain": "security.utoronto.ca",
+      "resultCount": 10,
+      "notes": "Found Information Security guidelines on using AI intelligently with privacy and security guidance."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ai.utoronto.ca guidelines",
+      "domain": "ai.utoronto.ca",
+      "resultCount": 10,
+      "notes": "Found AI Task Force guidelines page linking to all major U of T AI guidance documents."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:viceprovostundergrad.utoronto.ca \"generative AI\" syllabus",
+      "domain": "viceprovostundergrad.utoronto.ca",
+      "resultCount": 10,
+      "notes": "Found comprehensive FAQ on GenAI in classroom, sample syllabus statements PDF, course design guidance."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "uoft-sgs-graduate-guidance",
+    "uoft-academic-integrity-chatgpt",
+    "uoft-viceprovost-faq",
+    "uoft-ai-taskforce-guidelines",
+    "uoft-security-guidelines",
+    "uoft-ctsi-tools",
+    "uoft-ctsi-main"
+  ],
+  "rejectionIds": [
+    "uoft-sr-news-ai-ready",
+    "uoft-sr-delve-magazine",
+    "uoft-sr-magazine-assessment",
+    "uoft-library-guide-ai",
+    "uoft-student-blog-ai",
+    "uoft-lexai-ethics",
+    "uoft-summer-abroad-policy"
+  ],
+  "summary": "Comprehensive discovery via 10 search queries across utoronto.ca and official unit domains. Found 7 official candidate sources. All 7 have fetch attempts and source snapshots. Approved staged claims use 5 sources: SGS graduate guidance, Academic Integrity Office ChatGPT guidance, VPIUE FAQ, Information Security AI guidance, and CTSI GenAI tools. The AI Task Force guidelines page and CTSI main teaching page are retained as verified discovery/context sources but are not used for approved claims in this run. Seven sources were rejected as news articles, magazine features, library guides, student blogs, ethics opinion pieces, or narrow program-specific pages."
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "review_decision",
+  "decisionId": "ucla-review-002",
+  "claimId": "ucla-claim-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim lists approved tools from official DTS AI Use Guide.",
+  "decidedAt": "2026-05-11T00:10:00Z"
+}

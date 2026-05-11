@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceRejectionId": "uoft-student-blog-ai",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "http://blogs.studentlife.utoronto.ca/lifeatuoft/2023/11/06/here-are-four-ways-to-use-generative-ai/",
+  "rejectedAt": "2026-05-11T09:29:00.000Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Student Life blog post about using generative AI",
+  "notes": "Student blog, not official university policy or guidance."
+}

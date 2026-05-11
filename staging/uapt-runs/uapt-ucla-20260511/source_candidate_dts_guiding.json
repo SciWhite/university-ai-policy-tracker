@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "ucla-dts-guiding-principles",
+  "entityType": "university",
+  "entitySlug": "ucla",
+  "sourceUrl": "https://dts.ucla.edu/initiatives/ai/guiding-principles-responsible-use",
+  "finalUrl": "https://dts.ucla.edu/initiatives/ai/guiding-principles-responsible-use",
+  "sourceTitle": "Guiding Principles for Responsible Use",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:ucla.edu \"generative AI\" policy",
+  "discoveredAt": "2026-05-11T00:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.88,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T00:05:00Z",
+  "verificationNotes": "Official DTS page with comprehensive AI guiding principles.",
+  "robotsPolicy": "respect"
+}

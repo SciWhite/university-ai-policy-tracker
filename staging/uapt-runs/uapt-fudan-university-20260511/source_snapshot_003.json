@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "fudan-snapshot-003",
+  "sourceCandidateId": "fudan-candidate-003",
+  "fetchAttemptId": "fudan-fetch-003",
+  "sourceUrl": "http://www.it.fudan.edu.cn/Data/View/5005",
+  "finalUrl": "http://www.it.fudan.edu.cn/Data/View/5005",
+  "sourceTitle": "复旦大学关于在本科毕业论文（设计）中使用 AI 工具的规定（试行）",
+  "sourceLanguage": "zh",
+  "contentHash": "93fa844058c22e14231715fee27dd4d5687b5e349a4ec4474e1e1549147e0c6b",
+  "fetchedAt": "2026-05-11T10:12:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "fudan-ai-thesis-policy-page.txt",
+  "rawArtifactPaths": []
+}

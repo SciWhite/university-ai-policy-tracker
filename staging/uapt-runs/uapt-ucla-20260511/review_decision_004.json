@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "review_decision",
+  "decisionId": "ucla-review-004",
+  "claimId": "ucla-claim-004",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim reflects Academic Senate guidance to faculty.",
+  "decidedAt": "2026-05-11T00:10:00Z"
+}

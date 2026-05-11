@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fudan-fetch-003",
+  "sourceCandidateId": "fudan-candidate-003",
+  "sourceUrl": "http://www.it.fudan.edu.cn/Data/View/5005",
+  "finalUrl": "http://www.it.fudan.edu.cn/Data/View/5005",
+  "attemptedAt": "2026-05-11T10:12:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 890,
+  "contentHash": "93fa844058c22e14231715fee27dd4d5687b5e349a4ec4474e1e1549147e0c6b",
+  "normalizedTextStorageKey": "fudan-ai-thesis-policy-page.txt"
+}

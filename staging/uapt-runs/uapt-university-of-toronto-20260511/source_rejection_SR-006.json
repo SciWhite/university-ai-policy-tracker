@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceRejectionId": "uoft-lexai-ethics",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://lexai.sa.utoronto.ca/positioning-the-ethics-of-artificial-intelligence-an-opinion-piece/",
+  "rejectedAt": "2026-05-11T09:30:00.000Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "LexAI opinion piece on ethics of artificial intelligence",
+  "notes": "Opinion piece from LexAI, not official university policy. Research/ethics commentary rather than policy guidance."
+}

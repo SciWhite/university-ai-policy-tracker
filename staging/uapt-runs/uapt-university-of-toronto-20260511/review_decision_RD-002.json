@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "decisionId": "uoft-rd-002",
+  "claimId": "uoft-claim-graduate-supervisor-approval",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim directly supported by official SGS guidance requiring graduate students to seek and document supervisor approval before using generative AI in research or thesis work.",
+  "decidedAt": "2026-05-11T10:01:00.000Z"
+}

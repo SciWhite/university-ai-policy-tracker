@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "fudan-candidate-003",
+  "entityType": "university",
+  "entitySlug": "fudan-university",
+  "sourceUrl": "http://www.it.fudan.edu.cn/Data/View/5005",
+  "finalUrl": "http://www.it.fudan.edu.cn/Data/View/5005",
+  "sourceTitle": "复旦大学关于在本科毕业论文（设计）中使用 AI 工具的规定（试行）",
+  "sourceLanguage": "zh",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:fudan.edu.cn 本科毕业论文 AI 工具 规定",
+  "discoveredAt": "2026-05-11T10:07:00Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.85,
+  "policySpecificityScore": 0.55,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T10:12:00Z",
+  "verificationNotes": "Official Fudan college file-compilation page whose public text identifies the policy title. The page does not expose the full policy text publicly, so it is useful for policy-existence context only, not detailed claim evidence.",
+  "robotsPolicy": "respect"
+}

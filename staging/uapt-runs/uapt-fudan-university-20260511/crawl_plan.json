@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "crawl_plan",
+  "planId": "uapt-fudan-plan-001",
+  "createdAt": "2026-05-11T10:00:00Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "fudan-university",
+      "sourceCandidateId": "fudan-candidate-001",
+      "sourceUrl": "https://www.stuaff.fudan.edu.cn/b9/95/c54492a768405/page.htm",
+      "sourceTitle": "【项目回顾】论文通关！手把手教你搞定学术写作",
+      "sourceLanguage": "zh",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "teaching_guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "fudan-university",
+      "sourceCandidateId": "fudan-candidate-003",
+      "sourceUrl": "http://www.it.fudan.edu.cn/Data/View/5005",
+      "sourceTitle": "复旦大学关于在本科毕业论文(设计)中使用AI工具的规定(试行)",
+      "sourceLanguage": "zh",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "source_status",
+        "academic_integrity"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "no_official_policy_found",
+    "sources_exhausted"
+  ]
+}

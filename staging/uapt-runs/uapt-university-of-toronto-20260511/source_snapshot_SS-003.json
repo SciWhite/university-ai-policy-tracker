@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceSnapshotId": "uoft-ss-003",
+  "sourceCandidateId": "uoft-viceprovost-faq",
+  "fetchAttemptId": "uoft-fa-003",
+  "sourceUrl": "https://www.viceprovostundergrad.utoronto.ca/16072-2/teaching-initiatives/generative-artificial-intelligence/",
+  "finalUrl": "https://www.viceprovostundergrad.utoronto.ca/16072-2/teaching-initiatives/generative-artificial-intelligence/",
+  "sourceTitle": "Generative Artificial Intelligence in the Classroom: FAQ's",
+  "sourceLanguage": "en",
+  "contentHash": "e32e6fad89e2e18dab4388a513773c62f3b1401b538cedf50cd58c7101750f00",
+  "fetchedAt": "2026-05-11T09:37:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

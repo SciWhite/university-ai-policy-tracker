@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceCandidateId": "uoft-ctsi-tools",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+  "finalUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+  "sourceTitle": "Generative AI Tools",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:teaching.utoronto.ca \"generative AI\"",
+  "discoveredAt": "2026-05-11T09:10:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.94,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T09:20:00.000Z",
+  "verificationNotes": "CTSI page listing approved GenAI tools at U of T including Microsoft Copilot (protected), ChatGPT Edu, Claude for Education, M365 Copilot, Scopus AI, and Web of Science Research Assistant. Distinguishes between walled garden (protected) and non-supported tools. Updated May 5, 2026.",
+  "robotsPolicy": "respect"
+}

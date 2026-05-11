@@ -1,0 +1,112 @@
+[
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "claim_candidate",
+    "claimId": "claim-sjtu-ai-four-tier-classification",
+    "entityType": "university",
+    "entitySlug": "shanghai-jiao-tong-university",
+    "claimType": "ai_tool_treatment",
+    "claimText": "上海交通大学将高等教育教学领域的人工智能应用按应用风险划分为四种类型:禁止使用、有限使用、鼓励使用、开放使用。",
+    "normalizedValue": "four_tier_ai_use_classification_in_education",
+    "sourceLanguage": "zh",
+    "confidence": 0.95,
+    "reviewState": "agent_reviewed",
+    "evidenceIds": [
+      "evidence-sjtu-ai-norms-article6"
+    ],
+    "citation": {
+      "citationTitle": "SJTU Guidance on Development and Governance of AI in Education and Teaching (Trial Version)",
+      "sourceUrl": "https://www.sjtu.edu.cn/resource/upload/202503/20250304_105048_720.pdf",
+      "publisher": "Shanghai Jiao Tong University AI+HI Working Group",
+      "retrievedAt": "2026-05-11T10:30:00Z",
+      "snapshotHash": "9d39b55da4fb6f53164e87f3de5808d872f0c9190744990a75f2d78379323825",
+      "sourceRights": "Official source pages/PDFs retain their original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+    },
+    "publishAsCanonical": false,
+    "isCanonical": false
+  },
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "claim_candidate",
+    "claimId": "claim-sjtu-teacher-ai-responsibilities",
+    "entityType": "university",
+    "entitySlug": "shanghai-jiao-tong-university",
+    "claimType": "teaching",
+    "claimText": "上海交通大学规定教师是 AI+ 教学设计的第一责任人，应在遵守教育教学相关规章制度前提下合理、合规、有效使用人工智能技术产品或服务，并围绕场景应用、风险提示、应急预案等环节设置具体规范。",
+    "normalizedValue": "teachers_are_primary_responsible_persons_for_ai_teaching_design",
+    "sourceLanguage": "zh",
+    "confidence": 0.93,
+    "reviewState": "agent_reviewed",
+    "evidenceIds": [
+      "evidence-sjtu-ai-norms-article9-11",
+      "evidence-sjtu-teacher-guide-principles"
+    ],
+    "citation": {
+      "citationTitle": "SJTU Guidance on Development and Governance of AI in Education and Teaching (Trial Version)",
+      "sourceUrl": "https://www.sjtu.edu.cn/resource/upload/202503/20250304_105048_720.pdf",
+      "publisher": "Shanghai Jiao Tong University AI+HI Working Group",
+      "retrievedAt": "2026-05-11T10:30:00Z",
+      "snapshotHash": "9d39b55da4fb6f53164e87f3de5808d872f0c9190744990a75f2d78379323825",
+      "sourceRights": "Official source pages/PDFs retain their original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+    },
+    "publishAsCanonical": false,
+    "isCanonical": false
+  },
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "claim_candidate",
+    "claimId": "claim-sjtu-student-ai-compliance",
+    "entityType": "university",
+    "entitySlug": "shanghai-jiao-tong-university",
+    "claimType": "academic_integrity",
+    "claimText": "上海交通大学规定学生应了解并遵守各课程的人工智能使用规范，在课堂学习、作业反馈等环节遵循教学计划、知识产权法律法规和学术诚信要求；未经授权使用在线学习支持平台等行为被列为学术不端的一类。",
+    "normalizedValue": "students_must_follow_course_ai_use_rules_and_academic_integrity_requirements",
+    "sourceLanguage": "zh",
+    "confidence": 0.93,
+    "reviewState": "agent_reviewed",
+    "evidenceIds": [
+      "evidence-sjtu-ai-norms-article13",
+      "evidence-sjtu-student-guide-academic-integrity"
+    ],
+    "citation": {
+      "citationTitle": "SJTU Guidance on Development and Governance of AI in Education and Teaching (Trial Version)",
+      "sourceUrl": "https://www.sjtu.edu.cn/resource/upload/202503/20250304_105048_720.pdf",
+      "publisher": "Shanghai Jiao Tong University AI+HI Working Group",
+      "retrievedAt": "2026-05-11T10:30:00Z",
+      "snapshotHash": "9d39b55da4fb6f53164e87f3de5808d872f0c9190744990a75f2d78379323825",
+      "sourceRights": "Official source pages/PDFs retain their original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+    },
+    "publishAsCanonical": false,
+    "isCanonical": false
+  },
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "claim_candidate",
+    "claimId": "claim-sjtu-ai-ethics-principles",
+    "entityType": "university",
+    "entitySlug": "shanghai-jiao-tong-university",
+    "claimType": "other",
+    "claimText": "上海交通大学“AI+教育教学”规范列出基本原则，其中包括技术以人为本、以学为本，发展有利于学生知识能力增长和教师教学育人的人工智能技术。",
+    "normalizedValue": "ai_education_principles_human_centered_learning_centered",
+    "sourceLanguage": "zh",
+    "confidence": 0.91,
+    "reviewState": "agent_reviewed",
+    "evidenceIds": [
+      "evidence-sjtu-ai-norms-article5"
+    ],
+    "citation": {
+      "citationTitle": "SJTU Guidance on Development and Governance of AI in Education and Teaching (Trial Version)",
+      "sourceUrl": "https://www.sjtu.edu.cn/resource/upload/202503/20250304_105048_720.pdf",
+      "publisher": "Shanghai Jiao Tong University AI+HI Working Group",
+      "retrievedAt": "2026-05-11T10:30:00Z",
+      "snapshotHash": "9d39b55da4fb6f53164e87f3de5808d872f0c9190744990a75f2d78379323825",
+      "sourceRights": "Official source pages/PDFs retain their original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+    },
+    "publishAsCanonical": false,
+    "isCanonical": false
+  }
+]

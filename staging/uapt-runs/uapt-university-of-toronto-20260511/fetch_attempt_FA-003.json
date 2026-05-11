@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "fetchAttemptId": "uoft-fa-003",
+  "sourceCandidateId": "uoft-viceprovost-faq",
+  "sourceUrl": "https://www.viceprovostundergrad.utoronto.ca/16072-2/teaching-initiatives/generative-artificial-intelligence/",
+  "finalUrl": "https://www.viceprovostundergrad.utoronto.ca/16072-2/teaching-initiatives/generative-artificial-intelligence/",
+  "attemptedAt": "2026-05-11T09:37:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3100,
+  "contentHash": "e32e6fad89e2e18dab4388a513773c62f3b1401b538cedf50cd58c7101750f00"
+}

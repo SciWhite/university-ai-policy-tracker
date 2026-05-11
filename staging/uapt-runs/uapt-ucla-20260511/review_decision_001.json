@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "review_decision",
+  "decisionId": "ucla-review-001",
+  "claimId": "ucla-claim-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim directly supported by Academic Senate guidance quoting Student Conduct Code.",
+  "decidedAt": "2026-05-11T00:10:00Z"
+}

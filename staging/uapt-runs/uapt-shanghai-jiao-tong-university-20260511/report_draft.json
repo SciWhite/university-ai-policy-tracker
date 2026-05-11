@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-shanghai-jiao-tong-university-20260511",
+  "artifactType": "report_draft",
+  "reportId": "report-sjtu-20260511",
+  "title": "Shanghai Jiao Tong University AI Policy Crawl Report - May 2026",
+  "generatedAt": "2026-05-11T11:30:00Z",
+  "draftPath": "content/reports/2026-05-11-shanghai-jiao-tong-university.mdx",
+  "summary": "Crawled three official Shanghai Jiao Tong University Chinese-language PDF sources about AI in education and teaching. Staged claims cover the four-tier AI application classification, teacher responsibility for AI+ teaching design, student compliance with course AI-use and academic-integrity requirements, and Article 5 AI+ education principles. Claims are staged as agent-reviewed evidence records and are not canonical facts until published through the tracker release workflow.",
+  "referencedClaimIds": [
+    "claim-sjtu-ai-four-tier-classification",
+    "claim-sjtu-teacher-ai-responsibilities",
+    "claim-sjtu-student-ai-compliance",
+    "claim-sjtu-ai-ethics-principles"
+  ],
+  "publicJsonLinks": [],
+  "limitations": [
+    "This report is based on official Chinese-language SJTU PDF sources available on 2026-05-11.",
+    "The main 2025 AI usage norms are marked as trial version (试行版) and may be revised.",
+    "No official English policy equivalent was included in this crawl.",
+    "Claims are staged artifacts reviewed by an agent, not human-reviewed canonical tracker facts.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Official source pages/PDFs retain their original rights. Tracker metadata is open licensed; source text is quoted only as short evidence.",
+  "rawArtifactPaths": []
+}

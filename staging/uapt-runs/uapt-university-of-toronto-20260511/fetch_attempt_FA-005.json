@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "fetchAttemptId": "uoft-fa-005",
+  "sourceCandidateId": "uoft-ctsi-tools",
+  "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+  "finalUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+  "attemptedAt": "2026-05-11T09:39:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2600,
+  "contentHash": "222e9ce88997f102e1c0771cda772c4277683458161373e92774804c7e838a7b"
+}

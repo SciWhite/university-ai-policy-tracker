@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceSnapshotId": "uoft-ss-007",
+  "sourceCandidateId": "uoft-ctsi-main",
+  "fetchAttemptId": "uoft-fa-007",
+  "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/",
+  "finalUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/",
+  "sourceTitle": "Teaching with Generative AI at U of T",
+  "sourceLanguage": "en",
+  "contentHash": "cf4d65871700c61b56f14641f1668e140c3533b751cfab9ea061a08f11e56842",
+  "fetchedAt": "2026-05-11T09:41:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "claimId": "uoft-claim-privacy-data",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "claimType": "privacy",
+  "claimText": "University of Toronto Information Security guidelines state that no data should be provided to generative AI if any part of that data should not be included in results produced by that system, and users must verify AI tools have been assessed by the university as suitable for the data classification level before sharing personal information or university data classified as level 2, 3 or 4.",
+  "normalizedValue": "ai_data_sharing_requires_classification_check",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uoft-evidence-004"
+  ],
+  "citation": {
+    "citationTitle": "Use artificial intelligence intelligently",
+    "sourceUrl": "https://security.utoronto.ca/governance/guidelines/use-ai-intelligently/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json",
+    "publisher": "University of Toronto Information Security",
+    "retrievedAt": "2026-05-11T09:38:00.000Z",
+    "snapshotHash": "3d12d4134f3cecd0f1372225d1fcfff017de673f53f66ef48859a0d650b28b04",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

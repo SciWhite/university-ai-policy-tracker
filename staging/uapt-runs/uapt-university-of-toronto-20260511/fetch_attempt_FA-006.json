@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "fetchAttemptId": "uoft-fa-006",
+  "sourceCandidateId": "uoft-ai-taskforce-guidelines",
+  "sourceUrl": "https://ai.utoronto.ca/guidelines/",
+  "finalUrl": "https://ai.utoronto.ca/guidelines/",
+  "attemptedAt": "2026-05-11T09:40:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2600,
+  "contentHash": "f8beb35755217d39b42ad1f5342dbdf2558842f50a1c9d7cb263639742413591"
+}

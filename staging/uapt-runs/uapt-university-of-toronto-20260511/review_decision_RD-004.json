@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "decisionId": "uoft-rd-004",
+  "claimId": "uoft-claim-privacy-data",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim directly supported by official Information Security guidelines on data sharing with AI tools and data classification requirements.",
+  "decidedAt": "2026-05-11T10:03:00.000Z"
+}

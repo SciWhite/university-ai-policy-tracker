@@ -1,0 +1,54 @@
+[
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "review_decision",
+    "decisionId": "rd-sjtu-claim-001",
+    "claimId": "claim-sjtu-ai-four-tier-classification",
+    "decision": "approve",
+    "reviewState": "agent_reviewed",
+    "reviewerType": "openclaw_agent",
+    "reviewer": "openclaw_policy_extractor",
+    "notes": "Approved after local repair as a direct Article 6 four-tier classification claim.",
+    "decidedAt": "2026-05-11T11:00:00Z"
+  },
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "review_decision",
+    "decisionId": "rd-sjtu-claim-002",
+    "claimId": "claim-sjtu-teacher-ai-responsibilities",
+    "decision": "approve",
+    "reviewState": "agent_reviewed",
+    "reviewerType": "openclaw_agent",
+    "reviewer": "openclaw_policy_extractor",
+    "notes": "Approved after local repair with wording tied to Article 9 and teacher guide evidence.",
+    "decidedAt": "2026-05-11T11:01:00Z"
+  },
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "review_decision",
+    "decisionId": "rd-sjtu-claim-003",
+    "claimId": "claim-sjtu-student-ai-compliance",
+    "decision": "approve",
+    "reviewState": "agent_reviewed",
+    "reviewerType": "openclaw_agent",
+    "reviewer": "openclaw_policy_extractor",
+    "notes": "Approved after local repair with narrower wording tied to Article 13 and the student-use guide academic misconduct definition. Removed unsupported citation-format detail.",
+    "decidedAt": "2026-05-11T11:02:00Z"
+  },
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "review_decision",
+    "decisionId": "rd-sjtu-claim-004",
+    "claimId": "claim-sjtu-ai-ethics-principles",
+    "decision": "approve",
+    "reviewState": "agent_reviewed",
+    "reviewerType": "openclaw_agent",
+    "reviewer": "openclaw_policy_extractor",
+    "notes": "Approved after local repair as a narrow Article 5 principles claim. Removed unsupported broader prohibition language from the claim text.",
+    "decidedAt": "2026-05-11T11:03:00Z"
+  }
+]

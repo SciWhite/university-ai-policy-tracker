@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "claimId": "uoft-claim-syllabus-statement",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "claimType": "teaching",
+  "claimText": "University of Toronto recommends that instructors include a statement on their syllabus that informs students about expectations with respect to the use of AI, and provides sample syllabus statements for instructors to use.",
+  "normalizedValue": "syllabus_ai_statement_recommended",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uoft-evidence-005"
+  ],
+  "citation": {
+    "citationTitle": "Generative Artificial Intelligence in the Classroom: FAQ's",
+    "sourceUrl": "https://www.viceprovostundergrad.utoronto.ca/16072-2/teaching-initiatives/generative-artificial-intelligence/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json",
+    "publisher": "University of Toronto Office of the Vice-Provost",
+    "retrievedAt": "2026-05-11T09:37:00.000Z",
+    "snapshotHash": "e32e6fad89e2e18dab4388a513773c62f3b1401b538cedf50cd58c7101750f00",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

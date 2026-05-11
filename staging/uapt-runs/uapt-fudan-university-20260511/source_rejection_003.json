@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "fudan-rejection-003",
+  "entityType": "university",
+  "entitySlug": "fudan-university",
+  "sourceUrl": "https://news.cgtn.com/news/2025-02-27/Chinese-universities-seek-to-regulate-AI-use-in-academic-writing-1Bl455k8TMA/index.html",
+  "finalUrl": "https://news.cgtn.com/news/2025-02-27/Chinese-universities-seek-to-regulate-AI-use-in-academic-writing-1Bl455k8TMA/index.html",
+  "rejectedAt": "2026-05-11T10:15:00Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Fudan University recently issued guidelines banning AI use in research design, data collection, image creation, thesis writing and confidential content.",
+  "notes": "CGTN news article, not official Fudan source. Third-party media coverage rejected per source rules."
+}

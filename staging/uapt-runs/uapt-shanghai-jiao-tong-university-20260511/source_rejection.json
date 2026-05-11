@@ -1,0 +1,47 @@
+[
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "source_rejection",
+    "sourceRejectionId": "sr-sjtu-legal-research-1",
+    "entityType": "university",
+    "entitySlug": "shanghai-jiao-tong-university",
+    "sourceUrl": "http://www.socio-legal.sjtu.edu.cn/wxzy/info.aspx?itemid=4326&lcid=30",
+    "finalUrl": "http://www.socio-legal.sjtu.edu.cn/wxzy/info.aspx?itemid=4326&lcid=30",
+    "rejectedAt": "2026-05-11T10:20:00Z",
+    "rejectionReason": "research_showcase_only",
+    "checkedBy": "openclaw_agent",
+    "evidenceSnippet": "Research article - not official policy",
+    "notes": "Research article on AI legal regulation"
+  },
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "source_rejection",
+    "sourceRejectionId": "sr-sjtu-library-generic-1",
+    "entityType": "university",
+    "entitySlug": "shanghai-jiao-tong-university",
+    "sourceUrl": "https://www.lib.sjtu.edu.cn/f/content/detail.shtml?id=8783&lang=zh-cn",
+    "finalUrl": "https://www.lib.sjtu.edu.cn/f/content/detail.shtml?id=8783&lang=zh-cn",
+    "rejectedAt": "2026-05-11T10:21:00Z",
+    "rejectionReason": "low_policy_specificity",
+    "checkedBy": "openclaw_agent",
+    "evidenceSnippet": "National regulations discussion",
+    "notes": "Library page - not SJTU policy"
+  },
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-shanghai-jiao-tong-university-20260511",
+    "artifactType": "source_rejection",
+    "sourceRejectionId": "sr-sjtu-news-only-1",
+    "entityType": "university",
+    "entitySlug": "shanghai-jiao-tong-university",
+    "sourceUrl": "https://news.sjtu.edu.cn/jdyw/20231215/192059.html",
+    "finalUrl": "https://news.sjtu.edu.cn/jdyw/20231215/192059.html",
+    "rejectedAt": "2026-05-11T10:22:00Z",
+    "rejectionReason": "event_or_news_only",
+    "checkedBy": "openclaw_agent",
+    "evidenceSnippet": "News announcement",
+    "notes": "News article - actual policy is PDF"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "decisionId": "uoft-rd-003",
+  "claimId": "uoft-claim-approved-tools",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim directly supported by official CTSI page listing Microsoft Copilot as recommended tool, with ChatGPT Edu available through enterprise agreement. Clear distinction made between protected and unprotected versions.",
+  "decidedAt": "2026-05-11T10:02:00.000Z"
+}

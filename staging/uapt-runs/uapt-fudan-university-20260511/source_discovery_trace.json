@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "source_discovery_trace",
+  "traceId": "fudan-trace-001",
+  "entityType": "university",
+  "entitySlug": "fudan-university",
+  "startedAt": "2026-05-11T10:00:00Z",
+  "endedAt": "2026-05-11T10:30:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:fudan.edu.cn 生成式人工智能 政策",
+      "domain": "fudan.edu.cn",
+      "resultCount": 10,
+      "notes": "Found research institute pages, no official university-wide policy"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:fudan.edu.cn 本科毕业论文 AI 工具 规定",
+      "domain": "fudan.edu.cn",
+      "resultCount": 10,
+      "notes": "Found reference to undergraduate thesis AI policy"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:fudan.edu.cn 学术诚信 AI",
+      "domain": "fudan.edu.cn",
+      "resultCount": 10,
+      "notes": "Found student affairs guidance referencing AI policy"
+    },
+    {
+      "method": "site_search",
+      "query": "AI policy undergraduate thesis",
+      "domain": "fudan.edu.cn",
+      "resultCount": 5,
+      "notes": "Confirmed policy exists but document requires internal access"
+    }
+  ],
+  "noSourceEscalationCompleted": true,
+  "candidateIds": [
+    "fudan-candidate-001",
+    "fudan-candidate-002",
+    "fudan-candidate-003"
+  ],
+  "rejectionIds": [
+    "fudan-rejection-001",
+    "fudan-rejection-002",
+    "fudan-rejection-003",
+    "fudan-rejection-004",
+    "fudan-rejection-005"
+  ],
+  "summary": "Discovered public official Fudan evidence for undergraduate-thesis AI tool rules, but not a comprehensive university-wide AI policy. The strongest usable evidence is an official Student Affairs Office page that quotes the rule requirements. A public file-compilation page confirms the policy title exists, while a candidate college PDF URL returned 404 during local repair and was rejected. The approved claim is intentionally limited to undergraduate thesis writing."
+}

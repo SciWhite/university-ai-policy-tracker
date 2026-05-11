@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceRejectionId": "uoft-summer-abroad-policy",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://summerabroad.utoronto.ca/academic-integrity",
+  "rejectedAt": "2026-05-11T09:31:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Summer Abroad program academic integrity page with brief AI mention",
+  "notes": "Narrow program-specific page (Summer Abroad) rather than university-wide policy. References general AI policy but is not itself a primary policy source."
+}

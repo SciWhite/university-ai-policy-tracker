@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceRejectionId": "uoft-sr-delve-magazine",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://srinstitute.utoronto.ca/news/buyer-beware-of-the-generative-ai-bandwagon",
+  "rejectedAt": "2026-05-11T09:26:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "SRI Institute news article about generative AI applications",
+  "notes": "Magazine/news article from Schwartz Reisman Institute, not official university policy."
+}

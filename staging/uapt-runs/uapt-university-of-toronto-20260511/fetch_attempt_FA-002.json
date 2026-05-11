@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "fetchAttemptId": "uoft-fa-002",
+  "sourceCandidateId": "uoft-academic-integrity-chatgpt",
+  "sourceUrl": "https://www.academicintegrity.utoronto.ca/perils-and-pitfalls/using-chatgpt-or-other-ai-tool-on-a-marked-assessment/",
+  "finalUrl": "https://www.academicintegrity.utoronto.ca/perils-and-pitfalls/using-chatgpt-or-other-ai-tool-on-a-marked-assessment/",
+  "attemptedAt": "2026-05-11T09:36:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2200,
+  "contentHash": "073b55561d0949062e01b1a9676e0db83eebc87827ad7ebeae75d81b79adbc2b"
+}

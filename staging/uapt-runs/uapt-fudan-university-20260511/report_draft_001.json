@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "report_draft",
+  "reportId": "fudan-report-001",
+  "title": "Fudan University AI Policy Crawl Report - Undergraduate Thesis Requirements Only",
+  "generatedAt": "2026-05-11T10:25:00Z",
+  "draftPath": "content/reports/2026-05-11-fudan-university-ai-policy.mdx",
+  "summary": "This crawl found limited public official evidence for Fudan University undergraduate-thesis AI tool rules. The approved claim is based on an official Fudan Student Affairs Office page that references the undergraduate thesis AI tool rule and states consent, disclosure, verification, and prohibited-use requirements. The crawl did not find a publicly accessible comprehensive university-wide generative AI policy.",
+  "referencedClaimIds": [
+    "fudan-claim-001"
+  ],
+  "publicJsonLinks": [],
+  "limitations": [
+    "The full policy text was not publicly accessible in this run; a public file-compilation page identifies the policy title but does not expose detailed text.",
+    "A candidate college PDF URL returned HTTP 404 during local repair verification and was rejected.",
+    "The approved claim is based on an official secondary page and is limited to undergraduate thesis writing, not general university-wide AI use.",
+    "Third-party news articles about Fudan AI rules were rejected because they are not official university sources."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Official university sources. Rights belong to Fudan University. Tracker metadata licensed under CC BY 4.0.",
+  "rawArtifactPaths": []
+}

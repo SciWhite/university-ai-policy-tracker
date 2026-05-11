@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-shanghai-jiao-tong-university-20260511",
+  "artifactType": "source_discovery_trace",
+  "traceId": "sdt-sjtu-20260511-001",
+  "entityType": "university",
+  "entitySlug": "shanghai-jiao-tong-university",
+  "startedAt": "2026-05-11T10:00:00Z",
+  "endedAt": "2026-05-11T11:30:00Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:sjtu.edu.cn 生成式人工智能 政策",
+      "domain": "sjtu.edu.cn",
+      "resultCount": 10,
+      "notes": "Found research articles and policy discussions"
+    },
+    {
+      "method": "site_search",
+      "query": "site:sjtu.edu.cn 生成式 AI 教学 指南",
+      "domain": "sjtu.edu.cn",
+      "resultCount": 10,
+      "notes": "Found official teaching guidelines"
+    },
+    {
+      "method": "site_search",
+      "query": "site:sjtu.edu.cn ChatGPT 学术诚信",
+      "domain": "sjtu.edu.cn",
+      "resultCount": 10,
+      "notes": "Found academic integrity guidance"
+    },
+    {
+      "method": "site_search",
+      "query": "site:sjtu.edu.cn AI 工具 学生 作业",
+      "domain": "sjtu.edu.cn",
+      "resultCount": 10,
+      "notes": "Found student AI usage guidelines"
+    },
+    {
+      "method": "site_search",
+      "query": "site:jwc.sjtu.edu.cn 生成式人工智能",
+      "domain": "jwc.sjtu.edu.cn",
+      "resultCount": 10,
+      "notes": "Found academic affairs AI initiatives"
+    },
+    {
+      "method": "site_search",
+      "query": "site:lib.sjtu.edu.cn ChatGPT",
+      "domain": "lib.sjtu.edu.cn",
+      "resultCount": 10,
+      "notes": "Found library AI resources"
+    },
+    {
+      "method": "public_web_search",
+      "query": "Shanghai Jiao Tong University generative AI policy",
+      "domain": "web",
+      "resultCount": 10,
+      "notes": "Found external references to SJTU AI policies"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-sjtu-ai-norms-2025",
+    "sc-sjtu-gen-ai-teacher-guide-2023",
+    "sc-sjtu-student-ai-guide-2024"
+  ],
+  "rejectionIds": [
+    "sr-sjtu-legal-research-1",
+    "sr-sjtu-library-generic-1",
+    "sr-sjtu-news-only-1"
+  ],
+  "summary": "Discovered official SJTU AI policy documents including 2025 AI usage norms, 2023 teacher guidelines, and 2024 student guidelines."
+}

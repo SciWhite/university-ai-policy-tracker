@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "claimId": "uoft-claim-graduate-supervisor-approval",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "claimType": "research",
+  "claimText": "University of Toronto School of Graduate Studies recommends that graduate students seek and document unambiguous approval from their supervisor(s) and supervisory committee before using generative AI tools in research, writing, or other scholarly activities relevant to graduate academic milestones.",
+  "normalizedValue": "graduate_ai_use_recommended_supervisor_approval",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uoft-evidence-002"
+  ],
+  "citation": {
+    "citationTitle": "Guidance on the Appropriate Use of Generative Artificial Intelligence for Graduate Academic Milestones",
+    "sourceUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json",
+    "publisher": "University of Toronto School of Graduate Studies",
+    "retrievedAt": "2026-05-11T09:35:00.000Z",
+    "snapshotHash": "152ba6a66b8373e8d41bcba53fa1ca02e5e6003f5403f8664422b95974129ed6",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

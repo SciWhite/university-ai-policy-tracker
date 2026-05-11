@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-delft-university-of-technology-20260511",
+  "artifactType": "report_draft",
+  "reportId": "delft-report-001",
+  "title": "Delft University of Technology AI Policy Staging Report",
+  "generatedAt": "2026-05-11T10:30:00Z",
+  "draftPath": "content/reports/delft-university-of-technology-20260511.mdx",
+  "summary": "TU Delft has an official Teaching Support page for AI in education. The approved staged claim is limited to the page statement that Microsoft Copilot Chat, after NetID login, is currently the only generative AI tool permitted for TU Delft education use. The same page says the university-wide AI policy in the context of education is still in development.",
+  "referencedClaimIds": [
+    "delft-claim-001"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/delft-university-of-technology.json"
+  ],
+  "limitations": [
+    "This run is based on one official TU Delft Teaching Support page fetched on 2026-05-11.",
+    "The approved claim is limited to education use and should not be read as a comprehensive university-wide AI policy.",
+    "The page states that, in the context of education, the university-wide policy on AI is still in development.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Official source page retains its original rights. Tracker metadata is open licensed; source text is quoted only as short evidence.",
+  "rawArtifactPaths": []
+}

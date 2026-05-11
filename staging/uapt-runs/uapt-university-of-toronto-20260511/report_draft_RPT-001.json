@@ -1,0 +1,31 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "reportId": "uoft-report-20260511",
+  "title": "University of Toronto: AI Policy Crawl Report",
+  "generatedAt": "2026-05-11T10:10:00.000Z",
+  "draftPath": "content/reports/university-of-toronto-20260511.mdx",
+  "summary": "University of Toronto has official AI guidance distributed across multiple sources: School of Graduate Studies guidance for graduate academic milestones, Academic Integrity Office guidance on unauthorized AI use in assessments, Office of the Vice-Provost FAQ on teaching with GenAI, Information Security guidelines on AI data privacy, and CTSI guidance on approved tools. Microsoft Copilot is identified as the recommended protected generative AI tool for U of T teaching and learning contexts. All approved staged claims are limited to official U of T pages and are marked agent_reviewed only.",
+  "referencedClaimIds": [
+    "uoft-claim-academic-integrity",
+    "uoft-claim-graduate-supervisor-approval",
+    "uoft-claim-approved-tools",
+    "uoft-claim-privacy-data",
+    "uoft-claim-syllabus-statement"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "University of Toronto's AI guidance is distributed across multiple official sources (SGS, Academic Integrity Office, VPIUE, Information Security, CTSI) rather than a single unified policy document.",
+    "Some faculty-specific or departmental policies (e.g., specific graduate unit guidance beyond SGS) were not included as they are not university-wide.",
+    "Campus-specific guidance (UTSC, UTM) was not included as primary sources as they are not university-wide policies.",
+    "The AI Task Force report (June 2025) provides strategic recommendations but was not used as direct evidence as it is a strategic planning document rather than operational policy.",
+    "The AI Task Force guidelines page and CTSI main teaching page were fetched as verified discovery/context sources but are not used for approved claims in this run."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

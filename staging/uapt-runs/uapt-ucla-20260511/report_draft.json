@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "report_draft",
+  "reportId": "ucla-report-20260511",
+  "title": "UCLA Generative AI Policy Report - May 2026",
+  "generatedAt": "2026-05-11T00:15:00Z",
+  "draftPath": "content/reports/2026-05/ucla-generative-ai-policy-report.mdx",
+  "summary": "UCLA has public generative AI guidance through UCLA Digital & Technology Solutions and UCLA Academic Senate sources. The approved claims cover Student Conduct Code framing for AI-assisted coursework, DTS-listed GenAI tools, restricted data categories for AI input, and instructor guidance to communicate course expectations. These are source-backed staged claims, not canonical university conclusions.",
+  "referencedClaimIds": [
+    "ucla-claim-001",
+    "ucla-claim-002",
+    "ucla-claim-003",
+    "ucla-claim-004"
+  ],
+  "publicJsonLinks": [],
+  "limitations": [
+    "This run is a snapshot of public UCLA AI guidance available on May 11, 2026.",
+    "Course-level AI policies may vary by instructor and department.",
+    "The DTS tool list and data-classification guidance may change; linked official pages remain the source of record.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official UCLA statement."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Official source pages retain their original rights. Tracker metadata is open licensed; source text is quoted only as short evidence.",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "fudan-snapshot-001",
+  "sourceCandidateId": "fudan-candidate-001",
+  "fetchAttemptId": "fudan-fetch-001",
+  "sourceUrl": "https://www.stuaff.fudan.edu.cn/b9/95/c54492a768405/page.htm",
+  "finalUrl": "https://www.stuaff.fudan.edu.cn/b9/95/c54492a768405/page.htm",
+  "sourceTitle": "【项目回顾】论文通关！手把手教你搞定学术写作",
+  "sourceLanguage": "zh",
+  "contentHash": "e67f7008759028ded903d3fc0ffccd0ca963bd8d38ff9c68844ca24038719042",
+  "fetchedAt": "2026-05-11T10:10:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "fudan-stuaff-academic-writing-guide-2025.txt",
+  "rawArtifactPaths": []
+}

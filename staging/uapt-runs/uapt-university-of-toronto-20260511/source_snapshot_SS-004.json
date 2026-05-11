@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceSnapshotId": "uoft-ss-004",
+  "sourceCandidateId": "uoft-security-guidelines",
+  "fetchAttemptId": "uoft-fa-004",
+  "sourceUrl": "https://security.utoronto.ca/governance/guidelines/use-ai-intelligently/",
+  "finalUrl": "https://security.utoronto.ca/governance/guidelines/use-ai-intelligently/",
+  "sourceTitle": "Use artificial intelligence intelligently",
+  "sourceLanguage": "en",
+  "contentHash": "3d12d4134f3cecd0f1372225d1fcfff017de673f53f66ef48859a0d650b28b04",
+  "fetchedAt": "2026-05-11T09:38:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ucla-evidence-003",
+  "claimId": "ucla-claim-003",
+  "sourceSnapshotId": "ucla-snapshot-002",
+  "sourceUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+  "finalUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+  "sourceTitle": "AI Use and Recommendation Guide",
+  "sourceLanguage": "en",
+  "snapshotHash": "c791d23ea915a976d85d7b9abfc325f52ca15b2812c8084ec7767ef5fdac8e9f",
+  "evidenceSnippetOriginal": "Users may not input the following into AI tools unless explicitly approved in a secure environment: ( any questions regarding the below, please use grc@ucla.edu as the intake email for your questions) FERPA-protected student information (IDs, grades, coursework, etc) – UCLA Registrar FERPA Policy HIPPA-protected health data – UCLA Health HIPAA Notice Employee personnel/performance data – UC IS-3 Information Security Policy Unpublished research, IP, or grant proposals – UC Copyright & IP Policy Export-controlled or restricted data – UCLA Export Control Guidance",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence.",
+  "citation": {
+    "citationTitle": "AI Use and Recommendation Guide",
+    "sourceUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+    "publisher": "UCLA Digital & Technology Solutions",
+    "retrievedAt": "2026-05-11T00:05:00Z",
+    "snapshotHash": "c791d23ea915a976d85d7b9abfc325f52ca15b2812c8084ec7767ef5fdac8e9f",
+    "sourceRights": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  },
+  "evidenceSnippetDisplay": "UCLA DTS guidance says users may not input listed sensitive data categories into AI tools unless explicitly approved in a secure environment."
+}

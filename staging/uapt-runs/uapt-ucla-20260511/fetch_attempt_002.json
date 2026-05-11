@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "ucla-fetch-002",
+  "sourceCandidateId": "ucla-dts-ai-use-guide",
+  "sourceUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+  "finalUrl": "https://dts.ucla.edu/initiatives/ai/ai-use-recommendation-guide",
+  "attemptedAt": "2026-05-11T00:05:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2580,
+  "contentHash": "c791d23ea915a976d85d7b9abfc325f52ca15b2812c8084ec7767ef5fdac8e9f"
+}

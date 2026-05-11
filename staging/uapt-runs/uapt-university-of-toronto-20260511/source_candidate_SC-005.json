@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceCandidateId": "uoft-security-guidelines",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://security.utoronto.ca/governance/guidelines/use-ai-intelligently/",
+  "finalUrl": "https://security.utoronto.ca/governance/guidelines/use-ai-intelligently/",
+  "sourceTitle": "Use artificial intelligence intelligently",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:security.utoronto.ca \"AI\" intelligently",
+  "discoveredAt": "2026-05-11T09:09:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T09:19:00.000Z",
+  "verificationNotes": "Official Information Security guidelines on AI use covering privacy risks, data classification, misinformation, bias in training data, and guidance for building AI systems. Updated February 18, 2026.",
+  "robotsPolicy": "respect"
+}

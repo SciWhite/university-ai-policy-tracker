@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceRejectionId": "uoft-sr-news-ai-ready",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://www.utoronto.ca/news/becoming-ai-ready-u-t-s-task-force-artificial-intelligence-releases-recommendations",
+  "rejectedAt": "2026-05-11T09:25:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "News article about AI Task Force recommendations release",
+  "notes": "News coverage of AI Task Force report, not official policy guidance. Rejected as news-only page."
+}

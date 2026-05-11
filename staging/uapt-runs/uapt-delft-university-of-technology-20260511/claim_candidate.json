@@ -1,0 +1,31 @@
+[
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-delft-university-of-technology-20260511",
+    "artifactType": "claim_candidate",
+    "claimId": "delft-claim-001",
+    "entityType": "university",
+    "entitySlug": "delft-university-of-technology",
+    "claimType": "ai_tool_treatment",
+    "claimText": "TU Delft teaching guidance says Microsoft Copilot Chat, after login with NetID, is currently the only generative AI tool permitted for use at TU Delft for education.",
+    "normalizedValue": "Microsoft Copilot Chat is currently the only GenAI tool permitted for TU Delft education use.",
+    "sourceLanguage": "en",
+    "confidence": 0.94,
+    "reviewState": "agent_reviewed",
+    "evidenceIds": [
+      "delft-evidence-001"
+    ],
+    "citation": {
+      "citationTitle": "AI in education | Teaching Support",
+      "sourceUrl": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/delft-university-of-technology.json",
+      "canonicalUrl": "https://eduaipolicy.org/api/public/v1/universities/delft-university-of-technology.json",
+      "publisher": "TU Delft Teaching Support",
+      "retrievedAt": "2026-05-11T09:30:00Z",
+      "snapshotHash": "aa7d9aa84afcd157a248547cbfcf7a1d87592eac7bb3de82663602062d89c3e9",
+      "sourceRights": "Official source page retains its original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+    },
+    "publishAsCanonical": false,
+    "isCanonical": false
+  }
+]

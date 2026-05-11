@@ -1,0 +1,28 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "evidenceId": "uoft-evidence-001",
+  "claimId": "uoft-claim-academic-integrity",
+  "sourceSnapshotId": "uoft-ss-002",
+  "sourceUrl": "https://www.academicintegrity.utoronto.ca/perils-and-pitfalls/using-chatgpt-or-other-ai-tool-on-a-marked-assessment/",
+  "finalUrl": "https://www.academicintegrity.utoronto.ca/perils-and-pitfalls/using-chatgpt-or-other-ai-tool-on-a-marked-assessment/",
+  "sourceTitle": "Using ChatGPT or other generative AI tool on a marked assessment",
+  "sourceLanguage": "en",
+  "snapshotHash": "073b55561d0949062e01b1a9676e0db83eebc87827ad7ebeae75d81b79adbc2b",
+  "evidenceSnippetOriginal": "By failing to comply with the instructor's specific instructions that you not use generative AI tools in writing your term paper, you have knowingly used an unauthorized aid in preparing your assignment. Any student using an unauthorized aid has committed an offence under the University's Code of Behaviour on Academic Matters",
+  "evidenceSnippetDisplay": "By failing to comply with the instructor's specific instructions that you not use generative AI tools... you have knowingly used an unauthorized aid",
+  "evidenceLocator": "Code of Behaviour on Academic Matters section",
+  "evidenceType": "official_source",
+  "relevance": 0.99,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using ChatGPT or other generative AI tool on a marked assessment",
+    "sourceUrl": "https://www.academicintegrity.utoronto.ca/perils-and-pitfalls/using-chatgpt-or-other-ai-tool-on-a-marked-assessment/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json",
+    "publisher": "University of Toronto",
+    "retrievedAt": "2026-05-11T09:36:00.000Z",
+    "snapshotHash": "073b55561d0949062e01b1a9676e0db83eebc87827ad7ebeae75d81b79adbc2b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

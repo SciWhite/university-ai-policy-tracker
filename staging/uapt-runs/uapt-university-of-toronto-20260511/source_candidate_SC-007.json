@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceCandidateId": "uoft-ctsi-main",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/",
+  "finalUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/",
+  "sourceTitle": "Teaching with Generative AI at U of T",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:teaching.utoronto.ca \"generative AI\"",
+  "discoveredAt": "2026-05-11T09:11:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.88,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T09:21:00.000Z",
+  "verificationNotes": "CTSI main teaching with GenAI page providing entry point to teaching tips, institutional resources, GenAI tools, sessions/workshops, and teaching examples. Updated April 22, 2026.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "fetchAttemptId": "uoft-fa-001",
+  "sourceCandidateId": "uoft-sgs-graduate-guidance",
+  "sourceUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+  "finalUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+  "attemptedAt": "2026-05-11T09:35:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2500,
+  "contentHash": "152ba6a66b8373e8d41bcba53fa1ca02e5e6003f5403f8664422b95974129ed6"
+}

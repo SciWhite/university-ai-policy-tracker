@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "ucla-senate-teaching-guidance",
+  "entityType": "university",
+  "entitySlug": "ucla",
+  "sourceUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+  "finalUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+  "sourceTitle": "Teaching Guidance for ChatGPT and Related AI Developments",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:ucla.edu \"ChatGPT\" academic integrity",
+  "discoveredAt": "2026-05-11T00:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.91,
+  "policySpecificityScore": 0.82,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T00:05:00Z",
+  "verificationNotes": "Official UCLA Academic Senate guidance for faculty about ChatGPT and related AI developments, including Student Conduct Code framing and syllabus expectation guidance.",
+  "robotsPolicy": "respect"
+}

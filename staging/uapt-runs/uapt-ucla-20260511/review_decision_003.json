@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "review_decision",
+  "decisionId": "ucla-review-003",
+  "claimId": "ucla-claim-003",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim accurately reflects prohibited data categories from DTS.",
+  "decidedAt": "2026-05-11T00:10:00Z"
+}

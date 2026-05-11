@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceSnapshotId": "uoft-ss-006",
+  "sourceCandidateId": "uoft-ai-taskforce-guidelines",
+  "fetchAttemptId": "uoft-fa-006",
+  "sourceUrl": "https://ai.utoronto.ca/guidelines/",
+  "finalUrl": "https://ai.utoronto.ca/guidelines/",
+  "sourceTitle": "Guidelines - Toward an AI-ready University",
+  "sourceLanguage": "en",
+  "contentHash": "f8beb35755217d39b42ad1f5342dbdf2558842f50a1c9d7cb263639742413591",
+  "fetchedAt": "2026-05-11T09:40:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

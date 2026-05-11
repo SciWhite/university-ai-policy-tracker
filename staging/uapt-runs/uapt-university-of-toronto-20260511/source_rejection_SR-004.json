@@ -1,0 +1,14 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "sourceRejectionId": "uoft-library-guide-ai",
+  "entityType": "university",
+  "entitySlug": "university-of-toronto",
+  "sourceUrl": "https://guides.library.utoronto.ca/c.php?g=251104&p=5410099",
+  "rejectedAt": "2026-05-11T09:28:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Library research guide on academic integrity and AI",
+  "notes": "Library research guide, not official university policy. Library guides are informational resources, not formal policy documents."
+}

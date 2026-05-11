@@ -1,0 +1,140 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-toronto-20260511",
+  "planId": "uoft-crawl-plan-20260511",
+  "createdAt": "2026-05-11T09:35:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "sourceCandidateId": "uoft-sgs-graduate-guidance",
+      "sourceUrl": "https://www.sgs.utoronto.ca/about/guidance-on-the-use-of-generative-artificial-intelligence/",
+      "sourceTitle": "Guidance on the Appropriate Use of Generative Artificial Intelligence for Graduate Academic Milestones",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching",
+        "academic_integrity",
+        "research"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "sourceCandidateId": "uoft-academic-integrity-chatgpt",
+      "sourceUrl": "https://www.academicintegrity.utoronto.ca/perils-and-pitfalls/using-chatgpt-or-other-ai-tool-on-a-marked-assessment/",
+      "sourceTitle": "Using ChatGPT or other generative AI tool on a marked assessment",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "assessment"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "sourceCandidateId": "uoft-viceprovost-faq",
+      "sourceUrl": "https://www.viceprovostundergrad.utoronto.ca/16072-2/teaching-initiatives/generative-artificial-intelligence/",
+      "sourceTitle": "Generative Artificial Intelligence in the Classroom: FAQ's",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching",
+        "assessment",
+        "approved_tools"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "sourceCandidateId": "uoft-security-guidelines",
+      "sourceUrl": "https://security.utoronto.ca/governance/guidelines/use-ai-intelligently/",
+      "sourceTitle": "Use artificial intelligence intelligently",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "privacy",
+        "security",
+        "data_protection"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "sourceCandidateId": "uoft-ctsi-tools",
+      "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+      "sourceTitle": "Generative AI Tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "approved_tools",
+        "privacy",
+        "teaching"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "sourceCandidateId": "uoft-ai-taskforce-guidelines",
+      "sourceUrl": "https://ai.utoronto.ca/guidelines/",
+      "sourceTitle": "Guidelines - Toward an AI-ready University",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "source_status",
+        "teaching",
+        "research"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "sourceCandidateId": "uoft-ctsi-main",
+      "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/",
+      "sourceTitle": "Teaching with Generative AI at U of T",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching",
+        "approved_tools"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Do not follow login-gated pages.",
+    "Do not fetch pages behind CAPTCHAs or paywalls.",
+    "Do not bypass WAF or CloudFront restrictions."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "fudan-rejection-001",
+  "entityType": "university",
+  "entitySlug": "fudan-university",
+  "sourceUrl": "http://www.ecns.cn/news/cns-wire/2025-02-27/detail-ihepcskv6108382.shtml",
+  "finalUrl": "http://www.ecns.cn/news/cns-wire/2025-02-27/detail-ihepcskv6108382.shtml",
+  "rejectedAt": "2026-05-11T10:15:00Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Fudan University's new regulations ban the use of AI in six key areas related to originality and academic integrity...",
+  "notes": "Third-party news article (China News Service). While it quotes Fudan officials, it is not an official university source. Rejected per source rules."
+}

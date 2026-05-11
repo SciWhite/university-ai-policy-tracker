@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ucla-20260511",
+  "artifactType": "claim_candidate",
+  "claimId": "ucla-claim-004",
+  "entityType": "university",
+  "entitySlug": "ucla",
+  "claimType": "teaching",
+  "claimText": "UCLA Academic Senate guidance encourages instructors to clarify and communicate expectations to students and to consider incorporating academic integrity policies into the syllabus.",
+  "normalizedValue": "Instructors are encouraged to communicate AI expectations and consider syllabus academic integrity policies.",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ucla-evidence-004"
+  ],
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "citation": {
+    "citationTitle": "Teaching Guidance for ChatGPT and Related AI Developments",
+    "sourceUrl": "https://senate.ucla.edu/news/teaching-guidance-chatgpt-and-related-ai-developments",
+    "publisher": "UCLA Academic Senate",
+    "retrievedAt": "2026-05-11T00:05:00Z",
+    "snapshotHash": "168a58d011028f9f1ff9881c878100d5e4a982a6ad89ef46b2521974fada8a9b",
+    "sourceRights": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  }
+}

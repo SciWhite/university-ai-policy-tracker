@@ -1,0 +1,25 @@
+[
+  {
+    "schemaVersion": "openclaw-artifact-v1",
+    "runId": "uapt-delft-university-of-technology-20260511",
+    "artifactType": "source_candidate",
+    "sourceCandidateId": "delft-candidate-001",
+    "entityType": "university",
+    "entitySlug": "delft-university-of-technology",
+    "sourceUrl": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education",
+    "finalUrl": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education",
+    "sourceTitle": "AI in education | Teaching Support",
+    "sourceLanguage": "en",
+    "sourceType": "teaching_guidance",
+    "discoveryMethod": "public_web_search",
+    "queryUsed": "site:tudelft.nl \"generative AI\" policy",
+    "discoveredAt": "2026-05-11T09:15:00Z",
+    "officialDomainConfidence": 0.98,
+    "aiRelevanceScore": 0.92,
+    "policySpecificityScore": 0.82,
+    "verificationStatus": "verified",
+    "verifiedAt": "2026-05-11T09:30:00Z",
+    "verificationNotes": "Official TU Delft Teaching Support HTML page with education-facing AI guidance and direct language about Microsoft Copilot Chat as the currently permitted generative AI tool for education.",
+    "robotsPolicy": "respect"
+  }
+]

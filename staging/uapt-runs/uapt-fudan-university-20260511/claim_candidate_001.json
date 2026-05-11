@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-fudan-university-20260511",
+  "artifactType": "claim_candidate",
+  "claimId": "fudan-claim-001",
+  "entityType": "university",
+  "entitySlug": "fudan-university",
+  "claimType": "academic_integrity",
+  "claimText": "复旦大学学生工作部公开页面援引《复旦大学关于在本科毕业论文(设计)中使用 AI 工具的规定(试行)》称，本科毕业论文写作中使用 AI 工具辅助需经老师同意并披露使用情况，数据收集、核心观点提炼等创新工作不可依赖 AI，涉密和隐私内容禁止使用 AI。",
+  "normalizedValue": "Fudan Student Affairs Office states, by reference to Fudan undergraduate-thesis AI tool rules, that AI assistance in undergraduate thesis writing requires teacher consent and disclosure, core innovative work must not rely on AI, and confidential or private content must not be used with AI.",
+  "sourceLanguage": "zh",
+  "confidence": 0.82,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "fudan-evidence-001"
+  ],
+  "citation": {
+    "citationTitle": "【项目回顾】论文通关！手把手教你搞定学术写作",
+    "sourceUrl": "https://www.stuaff.fudan.edu.cn/b9/95/c54492a768405/page.htm",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/fudan-university.json",
+    "publisher": "复旦大学党委学生工作部（处）",
+    "retrievedAt": "2026-05-11T10:10:00Z",
+    "snapshotHash": "e67f7008759028ded903d3fc0ffccd0ca963bd8d38ff9c68844ca24038719042",
+    "sourceRights": "Official source retains original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}
