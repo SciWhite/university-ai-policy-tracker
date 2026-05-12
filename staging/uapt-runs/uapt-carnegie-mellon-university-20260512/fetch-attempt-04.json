@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "fetchAttemptId": "cmu-fetch-04",
+  "sourceCandidateId": "cmu-protected-ai-tools",
+  "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+  "finalUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+  "attemptedAt": "2026-05-12T06:30:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1000,
+  "contentHash": "924d9a08d6923f700f22a0b5b7540c398a65937d3ac5161a83e5880e86330f12"
+}

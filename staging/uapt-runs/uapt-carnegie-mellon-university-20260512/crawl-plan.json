@@ -1,0 +1,117 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "planId": "cmu-crawl-plan-20260512",
+  "createdAt": "2026-05-12T06:30:00.000Z",
+  "createdBy": "local-codex-repair",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "carnegie-mellon-university",
+      "sourceCandidateId": "cmu-eberly-genai-faq",
+      "sourceUrl": "https://www.cmu.edu/teaching/technology/aitools/index.html",
+      "sourceTitle": "Generative AI Tools FAQ",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching",
+        "academic integrity",
+        "privacy",
+        "AI detection"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "carnegie-mellon-university",
+      "sourceCandidateId": "cmu-eberly-ai-integrity-examples",
+      "sourceUrl": "https://www.cmu.edu/teaching/technology/aitools/academicintegrity/index.html",
+      "sourceTitle": "Examples of possible academic integrity policies that address student use of generative AI tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic integrity",
+        "teaching",
+        "citation"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "carnegie-mellon-university",
+      "sourceCandidateId": "cmu-use-ai-safely",
+      "sourceUrl": "https://www.cmu.edu/computing/services/ai/meet-ai/secure-ai.html",
+      "sourceTitle": "Use AI Safely at CMU",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "approved tools",
+        "data entry",
+        "privacy",
+        "security review"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "carnegie-mellon-university",
+      "sourceCandidateId": "cmu-protected-ai-tools",
+      "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+      "sourceTitle": "Protected AI Tools You Can Use",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "approved tools",
+        "privacy",
+        "procurement"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "carnegie-mellon-university",
+      "sourceCandidateId": "cmu-academic-integrity-policy",
+      "sourceUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+      "sourceTitle": "Carnegie Mellon University Policy on Academic Integrity",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic integrity",
+        "citation"
+      ],
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "carnegie-mellon-university",
+      "sourceCandidateId": "cmu-career-ai-guidance",
+      "sourceUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+      "sourceTitle": "Artificial Intelligence Guidance for Students",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "student guidance",
+        "academic integrity",
+        "career materials"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Do not bypass login walls, paywalls, CAPTCHAs, or hard WAF restrictions.",
+    "Use original source evidence as canonical."
+  ]
+}

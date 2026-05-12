@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "evidenceId": "cmu-evidence-04",
+  "claimId": "cmu-claim-approved-ai-tools-list",
+  "sourceSnapshotId": "cmu-snapshot-04",
+  "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+  "finalUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+  "sourceTitle": "Protected AI Tools You Can Use",
+  "sourceLanguage": "en",
+  "snapshotHash": "924d9a08d6923f700f22a0b5b7540c398a65937d3ac5161a83e5880e86330f12",
+  "evidenceSnippetOriginal": "The AI tools listed on this page are available at CMU. When you sign in with your Andrew ID and password, each tool is FERPA-compliant and will not use your data to train its AI models.",
+  "evidenceLocator": "Protected AI Tools You Can Use, introduction",
+  "evidenceType": "official_source",
+  "relevance": 0.99,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Protected AI Tools You Can Use",
+    "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/carnegie-mellon-university.json",
+    "publisher": "Carnegie Mellon University",
+    "retrievedAt": "2026-05-12T06:30:00.000Z",
+    "snapshotHash": "924d9a08d6923f700f22a0b5b7540c398a65937d3ac5161a83e5880e86330f12",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

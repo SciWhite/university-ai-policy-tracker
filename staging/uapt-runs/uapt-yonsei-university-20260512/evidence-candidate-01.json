@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yonsei-university-20260512",
+  "evidenceId": "yonsei-evidence-01",
+  "claimId": "yonsei-claim-course-agreement-genai",
+  "sourceSnapshotId": "yonsei-snapshot-01",
+  "sourceUrl": "https://socsci.yonsei.ac.kr/socsci/community/notice.do?mode=download&articleNo=448211&attachNo=191153",
+  "finalUrl": "https://socsci.yonsei.ac.kr/socsci/community/notice.do?mode=download&articleNo=448211&attachNo=191153",
+  "sourceTitle": "Research Ethics Guidelines for the Use of Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "3c9fc41fcddd6210b30bfcb128de2655d739c7cb26d79ef1fa70f01627d3197e",
+  "evidenceSnippetOriginal": "Generative AI should be used only after a clear agreement between instructors and learners on its terms of use. If instructors permit its use, they are responsible for providing clear and minimum guidelines.",
+  "evidenceLocator": "Strategies for Utilizing Generative AI, item 2",
+  "evidenceType": "pdf",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Research Ethics Guidelines for the Use of Generative AI",
+    "sourceUrl": "https://socsci.yonsei.ac.kr/socsci/community/notice.do?mode=download&articleNo=448211&attachNo=191153",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yonsei-university.json",
+    "publisher": "Yonsei University",
+    "retrievedAt": "2026-05-12T06:30:00.000Z",
+    "snapshotHash": "3c9fc41fcddd6210b30bfcb128de2655d739c7cb26d79ef1fa70f01627d3197e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

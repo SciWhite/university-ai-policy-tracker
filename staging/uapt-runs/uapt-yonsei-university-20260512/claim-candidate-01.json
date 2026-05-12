@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yonsei-university-20260512",
+  "claimId": "yonsei-claim-course-agreement-genai",
+  "entityType": "university",
+  "entitySlug": "yonsei-university",
+  "claimType": "teaching",
+  "claimText": "Yonsei University Research Ethics Center guidance says generative AI use in courses should be based on clear agreement between instructors and learners, with instructors giving minimum guidance when use is permitted.",
+  "normalizedValue": "course_or_instructor_conditioned_use",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "yonsei-evidence-01"
+  ],
+  "citation": {
+    "citationTitle": "Research Ethics Guidelines for the Use of Generative AI",
+    "sourceUrl": "https://socsci.yonsei.ac.kr/socsci/community/notice.do?mode=download&articleNo=448211&attachNo=191153",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/yonsei-university.json",
+    "publisher": "Yonsei University",
+    "retrievedAt": "2026-05-12T06:30:00.000Z",
+    "snapshotHash": "3c9fc41fcddd6210b30bfcb128de2655d739c7cb26d79ef1fa70f01627d3197e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

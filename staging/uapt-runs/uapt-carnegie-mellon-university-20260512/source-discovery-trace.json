@@ -1,0 +1,35 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "traceId": "cmu-discovery-20260512",
+  "entityType": "university",
+  "entitySlug": "carnegie-mellon-university",
+  "startedAt": "2026-05-12T06:30:00.000Z",
+  "endedAt": "2026-05-12T06:30:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:cmu.edu generative AI policy Carnegie Mellon University AI tools data classification academic integrity",
+      "resultCount": 8,
+      "notes": "Found Eberly Center AI teaching guidance and Computing Services protected AI pages."
+    },
+    {
+      "method": "link_traversal",
+      "domain": "cmu.edu",
+      "resultCount": 6,
+      "notes": "Followed links among Eberly FAQ, Computing Services AI pages, and university academic-integrity policy."
+    }
+  ],
+  "noSourceEscalationCompleted": true,
+  "candidateIds": [
+    "cmu-eberly-genai-faq",
+    "cmu-eberly-ai-integrity-examples",
+    "cmu-use-ai-safely",
+    "cmu-protected-ai-tools",
+    "cmu-academic-integrity-policy",
+    "cmu-career-ai-guidance"
+  ],
+  "rejectionIds": [],
+  "summary": "The original CMU worker produced no artifacts after provider rate limiting. This repair pass rebuilt a contract-compliant run from official CMU teaching, computing, protected-tools, career, and academic-integrity pages."
+}

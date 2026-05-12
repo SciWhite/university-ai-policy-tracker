@@ -1,0 +1,34 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yonsei-university-20260512",
+  "traceId": "yonsei-discovery-20260512",
+  "entityType": "university",
+  "entitySlug": "yonsei-university",
+  "startedAt": "2026-05-12T06:30:00.000Z",
+  "endedAt": "2026-05-12T06:30:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:yonsei.ac.kr generative AI policy academic integrity AI Yonsei University",
+      "resultCount": 8,
+      "notes": "Found official Yonsei Research Ethics Center PDF and rejected news/generic pages."
+    },
+    {
+      "method": "pdf_discovery",
+      "query": "Yonsei Research Ethics Guidelines for the Use of Generative AI",
+      "resultCount": 1,
+      "notes": "PDF was the only source with direct policy/guidance specificity."
+    }
+  ],
+  "noSourceEscalationCompleted": true,
+  "candidateIds": [
+    "yonsei-research-ethics-genai-pdf"
+  ],
+  "rejectionIds": [
+    "yonsei-rejection-01",
+    "yonsei-rejection-02",
+    "yonsei-rejection-03"
+  ],
+  "summary": "The failed OpenCode run produced only partial discovery artifacts. This repair pass discarded generic verified candidates and retained the official Yonsei Research Ethics Center PDF as source-backed guidance."
+}

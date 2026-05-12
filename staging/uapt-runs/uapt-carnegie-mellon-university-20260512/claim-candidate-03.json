@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "claimId": "cmu-claim-no-public-ai-sensitive-data",
+  "entityType": "university",
+  "entitySlug": "carnegie-mellon-university",
+  "claimType": "privacy",
+  "claimText": "CMU Computing Services guidance says public AI tools should not be used with student data, confidential research, or sensitive administrative tasks.",
+  "normalizedValue": "public_ai_tools_not_for_sensitive_data",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "cmu-evidence-03"
+  ],
+  "citation": {
+    "citationTitle": "Use AI Safely at CMU",
+    "sourceUrl": "https://www.cmu.edu/computing/services/ai/meet-ai/secure-ai.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/carnegie-mellon-university.json",
+    "publisher": "Carnegie Mellon University",
+    "retrievedAt": "2026-05-12T06:30:00.000Z",
+    "snapshotHash": "89586f7939131dc3c9902d019e6b935c1a84aab8ff487f8ea9dbda08c967ac35",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

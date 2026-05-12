@@ -1,0 +1,33 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yonsei-university-20260512",
+  "planId": "yonsei-crawl-plan-20260512",
+  "createdAt": "2026-05-12T06:30:00.000Z",
+  "createdBy": "local-codex-repair",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "yonsei-university",
+      "sourceCandidateId": "yonsei-research-ethics-genai-pdf",
+      "sourceUrl": "https://socsci.yonsei.ac.kr/socsci/community/notice.do?mode=download&articleNo=448211&attachNo=191153",
+      "sourceTitle": "Research Ethics Guidelines for the Use of Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic integrity",
+        "teaching",
+        "research",
+        "privacy",
+        "citation"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Do not bypass login walls, paywalls, CAPTCHAs, or hard WAF restrictions.",
+    "Use original source evidence as canonical."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "evidenceId": "cmu-evidence-05",
+  "claimId": "cmu-claim-academic-integrity-assistance",
+  "sourceSnapshotId": "cmu-snapshot-05",
+  "sourceUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+  "finalUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+  "sourceTitle": "Carnegie Mellon University Policy on Academic Integrity",
+  "sourceLanguage": "en",
+  "snapshotHash": "953acf3271ee7414e81bbe17c1d3216d9b1af043c2207a4966ae34b6cf7347bf",
+  "evidenceSnippetOriginal": "Collaboration or assistance on academic work to be graded is not permitted unless explicitly authorized by the course instructor(s). The citation of all sources is required.",
+  "evidenceLocator": "Policy abstract and statement",
+  "evidenceType": "official_source",
+  "relevance": 0.91,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Carnegie Mellon University Policy on Academic Integrity",
+    "sourceUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/carnegie-mellon-university.json",
+    "publisher": "Carnegie Mellon University",
+    "retrievedAt": "2026-05-12T06:30:00.000Z",
+    "snapshotHash": "953acf3271ee7414e81bbe17c1d3216d9b1af043c2207a4966ae34b6cf7347bf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

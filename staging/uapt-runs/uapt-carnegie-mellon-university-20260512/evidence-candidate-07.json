@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "evidenceId": "cmu-evidence-07",
+  "claimId": "cmu-claim-student-career-ai-originality",
+  "sourceSnapshotId": "cmu-snapshot-06",
+  "sourceUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+  "finalUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+  "sourceTitle": "Artificial Intelligence Guidance for Students",
+  "sourceLanguage": "en",
+  "snapshotHash": "d762b0ba142b88fa572d56dc171ba1421176958e7752769d64a06b183d8122b0",
+  "evidenceSnippetOriginal": "AI tools should serve as a starting point or a tool to aid in revisions and editing and not in place of original words, thinking, information and writing.",
+  "evidenceLocator": "How do I ethically use AI and avoid plagiarism?",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Artificial Intelligence Guidance for Students",
+    "sourceUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/carnegie-mellon-university.json",
+    "publisher": "Carnegie Mellon University",
+    "retrievedAt": "2026-05-12T06:30:00.000Z",
+    "snapshotHash": "d762b0ba142b88fa572d56dc171ba1421176958e7752769d64a06b183d8122b0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yonsei-university-20260512",
+  "sourceRejectionId": "yonsei-rejection-03",
+  "entityType": "university",
+  "entitySlug": "yonsei-university",
+  "sourceUrl": "https://news.yonsei.ac.kr/en/academia/detail?bbSeq=35357",
+  "finalUrl": "https://news.yonsei.ac.kr/en/academia/detail?bbSeq=35357",
+  "rejectedAt": "2026-05-12T06:30:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "local-codex-repair",
+  "evidenceSnippet": "Official news article about a professor research/practice guide, not university policy.",
+  "notes": "Useful background but not used for claims."
+}

@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "sourceSnapshotId": "cmu-snapshot-01",
+  "sourceCandidateId": "cmu-eberly-genai-faq",
+  "fetchAttemptId": "cmu-fetch-01",
+  "sourceUrl": "https://www.cmu.edu/teaching/technology/aitools/index.html",
+  "finalUrl": "https://www.cmu.edu/teaching/technology/aitools/index.html",
+  "sourceTitle": "Generative AI Tools FAQ",
+  "sourceLanguage": "en",
+  "contentHash": "1f5671e5b9d2e42098f4a178374ebb6aaa0c1bd582cae7abef88ea7894c4358d",
+  "fetchedAt": "2026-05-12T06:30:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

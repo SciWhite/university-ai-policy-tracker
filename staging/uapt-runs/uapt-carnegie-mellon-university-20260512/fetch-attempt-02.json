@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "fetchAttemptId": "cmu-fetch-02",
+  "sourceCandidateId": "cmu-eberly-ai-integrity-examples",
+  "sourceUrl": "https://www.cmu.edu/teaching/technology/aitools/academicintegrity/index.html",
+  "finalUrl": "https://www.cmu.edu/teaching/technology/aitools/academicintegrity/index.html",
+  "attemptedAt": "2026-05-12T06:30:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1000,
+  "contentHash": "ab658039adebce7fca30bef5badaf166b2e3a1c72cc117640a76e1d050a2dca6"
+}

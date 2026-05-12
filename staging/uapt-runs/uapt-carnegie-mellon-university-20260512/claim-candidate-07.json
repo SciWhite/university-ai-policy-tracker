@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "claimId": "cmu-claim-student-career-ai-originality",
+  "entityType": "university",
+  "entitySlug": "carnegie-mellon-university",
+  "claimType": "academic_integrity",
+  "claimText": "CMU career guidance tells student job seekers that AI tools should aid revisions and editing rather than replace original words, thinking, information, and writing.",
+  "normalizedValue": "career_ai_should_not_replace_original_work",
+  "sourceLanguage": "en",
+  "confidence": 0.84,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "cmu-evidence-07"
+  ],
+  "citation": {
+    "citationTitle": "Artificial Intelligence Guidance for Students",
+    "sourceUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/carnegie-mellon-university.json",
+    "publisher": "Carnegie Mellon University",
+    "retrievedAt": "2026-05-12T06:30:00.000Z",
+    "snapshotHash": "d762b0ba142b88fa572d56dc171ba1421176958e7752769d64a06b183d8122b0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

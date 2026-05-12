@@ -1,0 +1,29 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "reportId": "carnegie-mellon-university-report-20260512",
+  "title": "Carnegie Mellon University: AI Policy Staged Crawl Report",
+  "generatedAt": "2026-05-12T06:30:00.000Z",
+  "draftPath": "content/reports/carnegie-mellon-university-20260512.mdx",
+  "summary": "Carnegie Mellon University repair run uses official CMU Eberly Center, Computing Services, University Policies, and Career Center pages. Claims cover course-level GenAI policy clarity, protected AI tools, public-tool restrictions, academic-integrity authorization/citation requirements, AI detection caution, and student career-material guidance.",
+  "referencedClaimIds": [
+    "cmu-claim-course-ai-policy-clarity",
+    "cmu-claim-vetted-tools-ferpa",
+    "cmu-claim-no-public-ai-sensitive-data",
+    "cmu-claim-approved-ai-tools-list",
+    "cmu-claim-academic-integrity-assistance",
+    "cmu-claim-ai-detection-caution",
+    "cmu-claim-student-career-ai-originality"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/carnegie-mellon-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "Several CMU pages are guidance rather than a single consolidated university-wide generative AI policy. The academic-integrity source is a formal policy but is not itself AI-specific; AI linkage is provided by CMU teaching and computing guidance."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

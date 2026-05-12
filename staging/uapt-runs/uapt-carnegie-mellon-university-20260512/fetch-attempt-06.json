@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "fetchAttemptId": "cmu-fetch-06",
+  "sourceCandidateId": "cmu-career-ai-guidance",
+  "sourceUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+  "finalUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+  "attemptedAt": "2026-05-12T06:30:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1000,
+  "contentHash": "d762b0ba142b88fa572d56dc171ba1421176958e7752769d64a06b183d8122b0"
+}

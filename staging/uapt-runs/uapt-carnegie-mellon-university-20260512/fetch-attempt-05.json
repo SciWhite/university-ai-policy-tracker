@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "fetchAttemptId": "cmu-fetch-05",
+  "sourceCandidateId": "cmu-academic-integrity-policy",
+  "sourceUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+  "finalUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+  "attemptedAt": "2026-05-12T06:30:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1000,
+  "contentHash": "953acf3271ee7414e81bbe17c1d3216d9b1af043c2207a4966ae34b6cf7347bf"
+}

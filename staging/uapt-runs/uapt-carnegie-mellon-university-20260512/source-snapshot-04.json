@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "sourceSnapshotId": "cmu-snapshot-04",
+  "sourceCandidateId": "cmu-protected-ai-tools",
+  "fetchAttemptId": "cmu-fetch-04",
+  "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+  "finalUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+  "sourceTitle": "Protected AI Tools You Can Use",
+  "sourceLanguage": "en",
+  "contentHash": "924d9a08d6923f700f22a0b5b7540c398a65937d3ac5161a83e5880e86330f12",
+  "fetchedAt": "2026-05-12T06:30:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

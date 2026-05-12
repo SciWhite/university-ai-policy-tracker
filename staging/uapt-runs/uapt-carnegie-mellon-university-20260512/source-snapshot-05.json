@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "sourceSnapshotId": "cmu-snapshot-05",
+  "sourceCandidateId": "cmu-academic-integrity-policy",
+  "fetchAttemptId": "cmu-fetch-05",
+  "sourceUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+  "finalUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+  "sourceTitle": "Carnegie Mellon University Policy on Academic Integrity",
+  "sourceLanguage": "en",
+  "contentHash": "953acf3271ee7414e81bbe17c1d3216d9b1af043c2207a4966ae34b6cf7347bf",
+  "fetchedAt": "2026-05-12T06:30:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "sourceSnapshotId": "cmu-snapshot-03",
+  "sourceCandidateId": "cmu-use-ai-safely",
+  "fetchAttemptId": "cmu-fetch-03",
+  "sourceUrl": "https://www.cmu.edu/computing/services/ai/meet-ai/secure-ai.html",
+  "finalUrl": "https://www.cmu.edu/computing/services/ai/meet-ai/secure-ai.html",
+  "sourceTitle": "Use AI Safely at CMU",
+  "sourceLanguage": "en",
+  "contentHash": "89586f7939131dc3c9902d019e6b935c1a84aab8ff487f8ea9dbda08c967ac35",
+  "fetchedAt": "2026-05-12T06:30:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,26 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yonsei-university-20260512",
+  "reportId": "yonsei-university-report-20260512",
+  "title": "Yonsei University: AI Policy Staged Crawl Report",
+  "generatedAt": "2026-05-12T06:30:00.000Z",
+  "draftPath": "content/reports/yonsei-university-20260512.mdx",
+  "summary": "Yonsei University repair run uses one official Research Ethics Center PDF with direct guidance on generative AI in teaching, student academic work, research, citation, and sensitive data. Generic pages from the failed OpenCode run were rejected and not used as evidence.",
+  "referencedClaimIds": [
+    "yonsei-claim-course-agreement-genai",
+    "yonsei-claim-student-course-policy",
+    "yonsei-claim-citation-required-genai",
+    "yonsei-claim-sensitive-data-warning"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/yonsei-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This run found unit/research-ethics guidance rather than a central university-wide AI service policy. Claims are scoped to the Yonsei University Research Ethics Center source."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

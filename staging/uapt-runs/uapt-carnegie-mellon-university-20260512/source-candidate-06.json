@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "sourceCandidateId": "cmu-career-ai-guidance",
+  "entityType": "university",
+  "entitySlug": "carnegie-mellon-university",
+  "sourceUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+  "finalUrl": "https://www.cmu.edu/career/students-and-alumni/resource-library/ai-guidance/index.html",
+  "sourceTitle": "Artificial Intelligence Guidance for Students",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:cmu.edu AI guidance students Carnegie Mellon",
+  "discoveredAt": "2026-05-12T06:30:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.88,
+  "policySpecificityScore": 0.66,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T06:30:00.000Z",
+  "verificationNotes": "Career and Professional Development Center guidance for student use of AI in job-search materials.",
+  "robotsPolicy": "respect"
+}

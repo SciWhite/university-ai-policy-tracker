@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "claimId": "cmu-claim-vetted-tools-ferpa",
+  "entityType": "university",
+  "entitySlug": "carnegie-mellon-university",
+  "claimType": "ai_tool_treatment",
+  "claimText": "CMU Eberly Center guidance identifies a growing list of CMU-vetted generative AI tools that are FERPA compliant for teaching and learning when used as instructed.",
+  "normalizedValue": "institutionally_vetted_tools_available",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "cmu-evidence-02"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI Tools FAQ",
+    "sourceUrl": "https://www.cmu.edu/teaching/technology/aitools/index.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/carnegie-mellon-university.json",
+    "publisher": "Carnegie Mellon University",
+    "retrievedAt": "2026-05-12T06:30:00.000Z",
+    "snapshotHash": "1f5671e5b9d2e42098f4a178374ebb6aaa0c1bd582cae7abef88ea7894c4358d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

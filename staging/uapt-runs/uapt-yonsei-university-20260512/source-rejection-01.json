@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-yonsei-university-20260512",
+  "sourceRejectionId": "yonsei-rejection-01",
+  "entityType": "university",
+  "entitySlug": "yonsei-university",
+  "sourceUrl": "https://www.yonsei.ac.kr/en_sc/index.do",
+  "finalUrl": "https://www.yonsei.ac.kr/en_sc/index.do",
+  "rejectedAt": "2026-05-12T06:30:00.000Z",
+  "rejectionReason": "generic_home_page",
+  "checkedBy": "local-codex-repair",
+  "evidenceSnippet": "Main English university portal without AI policy content.",
+  "notes": "Rejected from the failed run because it is generic and not evidence-specific."
+}

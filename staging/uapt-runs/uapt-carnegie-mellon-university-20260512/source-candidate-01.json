@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "sourceCandidateId": "cmu-eberly-genai-faq",
+  "entityType": "university",
+  "entitySlug": "carnegie-mellon-university",
+  "sourceUrl": "https://www.cmu.edu/teaching/technology/aitools/index.html",
+  "finalUrl": "https://www.cmu.edu/teaching/technology/aitools/index.html",
+  "sourceTitle": "Generative AI Tools FAQ",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:cmu.edu generative AI teaching policy CMU Eberly",
+  "discoveredAt": "2026-05-12T06:30:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T06:30:00.000Z",
+  "verificationNotes": "Eberly Center official generative AI teaching FAQ with academic-integrity, FERPA, detection, and classroom-use guidance.",
+  "robotsPolicy": "respect"
+}

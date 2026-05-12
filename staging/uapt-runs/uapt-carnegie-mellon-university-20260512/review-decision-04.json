@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "decisionId": "cmu-review-04",
+  "claimId": "cmu-claim-approved-ai-tools-list",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "codex-repair-pass",
+  "notes": "Approved as a narrow staged claim directly supported by exact official-source evidence. Not human_reviewed and not canonical.",
+  "decidedAt": "2026-05-12T06:30:00.000Z"
+}

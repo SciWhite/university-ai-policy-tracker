@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "sourceCandidateId": "cmu-academic-integrity-policy",
+  "entityType": "university",
+  "entitySlug": "carnegie-mellon-university",
+  "sourceUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+  "finalUrl": "https://www.cmu.edu/policies/student-and-student-life/academic-integrity.html",
+  "sourceTitle": "Carnegie Mellon University Policy on Academic Integrity",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "CMU academic integrity policy unauthorized assistance",
+  "discoveredAt": "2026-05-12T06:30:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.55,
+  "policySpecificityScore": 0.72,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T06:30:00.000Z",
+  "verificationNotes": "University formal academic-integrity policy referenced by CMU GenAI guidance. It is not AI-specific but defines authorized assistance and source citation.",
+  "robotsPolicy": "respect"
+}

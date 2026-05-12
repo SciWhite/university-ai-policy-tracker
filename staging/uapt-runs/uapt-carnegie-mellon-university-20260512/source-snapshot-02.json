@@ -1,0 +1,17 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-carnegie-mellon-university-20260512",
+  "sourceSnapshotId": "cmu-snapshot-02",
+  "sourceCandidateId": "cmu-eberly-ai-integrity-examples",
+  "fetchAttemptId": "cmu-fetch-02",
+  "sourceUrl": "https://www.cmu.edu/teaching/technology/aitools/academicintegrity/index.html",
+  "finalUrl": "https://www.cmu.edu/teaching/technology/aitools/academicintegrity/index.html",
+  "sourceTitle": "Examples of possible academic integrity policies that address student use of generative AI tools",
+  "sourceLanguage": "en",
+  "contentHash": "ab658039adebce7fca30bef5badaf166b2e3a1c72cc117640a76e1d050a2dca6",
+  "fetchedAt": "2026-05-12T06:30:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "rawArtifactPaths": []
+}
