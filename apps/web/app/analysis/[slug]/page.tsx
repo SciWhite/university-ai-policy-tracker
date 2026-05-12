@@ -18,6 +18,7 @@ import {
 import {
   buildAnalysisCitationReadySummary,
   formatCoverageScore,
+  getAnalysisPageQualityApiPath,
   getAnalysisThemeSummary,
   getCoverageRows,
   getPublishableAnalysisThemeSpecs
@@ -90,6 +91,7 @@ export default async function AnalysisRoutePage({ params }: AnalysisRouteProps) 
   if (!summary || summary.evidenceBackedCount < 5) notFound();
 
   const canonical = getAbsoluteSiteUrl(`/analysis/${slug}`);
+  const pageQualityPath = getAnalysisPageQualityApiPath();
   const citationReadySummary = buildAnalysisCitationReadySummary({
     label: summary.spec.summaryLabel,
     profileCount: summary.rows.length,
@@ -161,6 +163,26 @@ export default async function AnalysisRoutePage({ params }: AnalysisRouteProps) 
           `not_mentioned` is an absence-of-evidence marker for the current
           tracker record. It is not proof that a university has no policy, and it
           is not permission or prohibition.
+        </p>
+      </ReferenceBox>
+
+      <ReferenceBox
+        description="This theme page is generated only after meeting the evidence threshold for public analysis pages."
+        title="Quality gate and review workflow"
+        actions={
+          <Link className="site-action" href="/review#analysis-review">
+            Analysis review workflow
+          </Link>
+        }
+      >
+        <p>
+          This page currently has {summary.evidenceBackedCount} records with
+          source-backed evidence for {summary.spec.label.toLowerCase()}. Theme
+          analysis pages require at least five evidence-backed records and keep
+          machine-candidate review state visible until reviewed.
+        </p>
+        <p>
+          Page-quality metadata: <a href={pageQualityPath}>{pageQualityPath}</a>.
         </p>
       </ReferenceBox>
 
@@ -260,6 +282,7 @@ async function PolicyCoveragePage() {
   const profiles = getCoverageRows(await getPolicyAnalysisProfiles());
   const canonical = getAbsoluteSiteUrl("/analysis/policy-coverage");
   const coverageScoresPath = `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`;
+  const pageQualityPath = getAnalysisPageQualityApiPath();
   const broadCoverageCount = profiles.filter(
     (profile) => profile.coverageScore.label === "broad_public_coverage"
   ).length;
@@ -324,6 +347,22 @@ async function PolicyCoveragePage() {
         <p className="notice-card">
           Do not describe this table as best AI policy, worst AI policy, most
           compliant, legally safe, or institutionally endorsed.
+        </p>
+      </ReferenceBox>
+
+      <ReferenceBox
+        description="Coverage score pages have their own quality gate because score language can easily be misread as a ranking."
+        title="Quality gate and review workflow"
+        actions={
+          <Link className="site-action" href="/review#analysis-review">
+            Analysis review workflow
+          </Link>
+        }
+      >
+        <p>
+          The coverage table keeps review state, caveats, public JSON, and the
+          not-a-quality-score boundary visible. Page-quality metadata is
+          available at <a href={pageQualityPath}>{pageQualityPath}</a>.
         </p>
       </ReferenceBox>
 

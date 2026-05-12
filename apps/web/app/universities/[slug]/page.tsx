@@ -17,6 +17,7 @@ import { ReferenceTabs } from "@/components/reference-tabs";
 import { StateLabel } from "@/components/state-label";
 import { DEFAULT_LOCALE } from "@/lib/i18n";
 import { getPolicyAnalysisProfileBySlug } from "@/lib/policy-analysis";
+import { getAnalysisPageQualityApiPath } from "@/lib/policy-analysis-pages";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 interface UniversityPageProps {
@@ -77,6 +78,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     notFound();
   }
   const jsonUrl = getPublicJsonUrl(slug);
+  const analysisPageQualityPath = getAnalysisPageQualityApiPath();
   const publicJsonUrl =
     publicSummary.apiUrl ?? resolveUrl(jsonUrl, publicSummary.canonicalUrl);
   const reviewedClaims = publicSummary.claims.filter((claim) =>
@@ -227,9 +229,14 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               id="policy-profile"
               title="Policy profile"
               actions={
-                <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
-                  Analysis JSON
-                </a>
+                <>
+                  <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
+                    Analysis JSON
+                  </a>
+                  <Link className="site-action" href="/review#analysis-review">
+                    Analysis review
+                  </Link>
+                </>
               }
             >
               <div className="tag-row">
@@ -249,6 +256,10 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 Policy profile rows are machine-candidate derived metadata. They
                 are not final policy conclusions; inspect the linked claim
                 evidence before reuse.
+              </p>
+              <p className="muted">
+                Analysis page-quality metadata is available at{" "}
+                <a href={analysisPageQualityPath}>{analysisPageQualityPath}</a>.
               </p>
               <div className="analysis-dimension-list">
                 {policyAnalysisProfile.dimensions.map((dimension) => (

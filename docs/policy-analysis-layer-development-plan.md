@@ -951,6 +951,36 @@ Acceptance criteria:
 
 Scope:
 
+- analysis page-quality gates
+- analysis review workflow
+- read-only page-quality JSON
+- page smoke validation for analysis surfaces
+- no new OpenClaw connection or production database writes
+
+Routes:
+
+```text
+/analysis
+/analysis/policy-coverage
+/analysis/{theme}
+/review#analysis-review
+/api/public/v1/analysis/page-quality.json
+```
+
+Acceptance criteria:
+
+- page-quality gates are visible on public analysis pages
+- analysis review workflow has a stable anchor and public metadata
+- page-quality JSON is versioned under `/api/public/v1/...`
+- review state remains separate from page publication readiness
+- coverage-score copy continues to reject quality, strictness, compliance,
+  legal adequacy, safety, or ranking language
+- `pnpm smoke:analysis-pages` verifies analysis page readiness rules
+
+### P9-E: Reports And Comparison
+
+Scope:
+
 - analysis report page
 - selected comparison page templates
 - chart data JSON
@@ -970,7 +1000,7 @@ Acceptance criteria:
 - report includes citation-ready methodology
 - no quality/ranking language that overclaims
 
-### P9-E: OpenClaw Analysis Candidates
+### P9-F: OpenClaw Analysis Candidates
 
 Scope:
 

@@ -17,9 +17,12 @@ import {
 } from "@/lib/policy-analysis";
 import {
   analysisThemeSpecs,
+  buildAnalysisReviewWorkflow,
   buildAnalysisCitationReadySummary,
+  buildPolicyAnalysisPageQualityResponse,
   formatCoverageScore,
   getDimensionCoverageSummary,
+  getAnalysisPageQualityApiPath,
   getPublishableAnalysisThemeSpecs
 } from "@/lib/policy-analysis-pages";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -64,8 +67,11 @@ export default async function AnalysisIndexPage() {
   const sourceLanguageCount = new Set(
     profiles.flatMap((profile) => profile.sourceLanguages)
   ).size;
+  const qualityReport = await buildPolicyAnalysisPageQualityResponse();
+  const reviewWorkflow = buildAnalysisReviewWorkflow();
   const analysisIndexPath = `/api/public/${PUBLIC_API_VERSION}/analysis/index.json`;
   const coverageScoresPath = `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`;
+  const pageQualityPath = getAnalysisPageQualityApiPath();
   const exampleSlug =
     profiles.find((profile) => profile.entitySlug === "anu")?.entitySlug ??
     profiles[0]?.entitySlug ??
@@ -176,6 +182,8 @@ export default async function AnalysisIndexPage() {
           <a href="#dimensions">Dimensions</a>
           <a href="#coverage">Coverage score</a>
           <a href="#themes">Theme analysis</a>
+          <a href="#quality">Quality gates</a>
+          <a href="#review">Review workflow</a>
           <a href="#json">Public JSON</a>
           <a href="#citation">Citation</a>
         </nav>
@@ -288,6 +296,55 @@ export default async function AnalysisIndexPage() {
           </ReferenceBox>
 
           <ReferenceBox
+            description="Publication gates keep analysis pages useful for search and AI answer engines without turning sparse data into thin pages."
+            id="quality"
+            title="Analysis page quality gates"
+            actions={
+              <a className="site-action" href={pageQualityPath}>
+                Page-quality JSON
+              </a>
+            }
+          >
+            <p>
+              Current page-quality status:{" "}
+              {qualityReport.data.status.replaceAll("_", " ")}. The report
+              covers {qualityReport.data.pages.length} public analysis pages and
+              keeps review state separate from page publication readiness.
+            </p>
+            <DataList>
+              {qualityReport.data.qualityGates.map((gate) => (
+                <DataListRow
+                  key={gate.gateId}
+                  metadata={<MetaLabel label="Gate">{gate.gateId}</MetaLabel>}
+                >
+                  <h2>{gate.label}</h2>
+                  <p>{gate.requirement}</p>
+                </DataListRow>
+              ))}
+            </DataList>
+          </ReferenceBox>
+
+          <ReferenceBox
+            description="Quality checks do not publish canonical analysis. They route questionable records into review."
+            id="review"
+            title="Analysis review workflow"
+            actions={
+              <Link className="site-action" href="/review#analysis-review">
+                Open review workflow
+              </Link>
+            }
+          >
+            <p>{reviewWorkflow.publicationGate}</p>
+            <div className="tag-row">
+              <MetaLabel label="Queue">{reviewWorkflow.reviewQueue}</MetaLabel>
+              <MetaLabel label="Public mutation">Not allowed</MetaLabel>
+              <MetaLabel label="Review states">
+                {reviewWorkflow.reviewStates.length}
+              </MetaLabel>
+            </div>
+          </ReferenceBox>
+
+          <ReferenceBox
             description="Only themes with enough public evidence are linked from this index."
             id="themes"
             title="Theme analysis pages"
@@ -335,6 +392,12 @@ export default async function AnalysisIndexPage() {
               label="Coverage scores"
               path={coverageScoresPath}
               url={getAbsoluteSiteUrl(coverageScoresPath)}
+            />
+            <ApiEndpointRow
+              description="Read-only report of page-quality gates, indexability status, analysis review workflow, and no-advice boundaries."
+              label="Analysis page quality"
+              path={pageQualityPath}
+              url={getAbsoluteSiteUrl(pageQualityPath)}
             />
           </ReferenceBox>
 

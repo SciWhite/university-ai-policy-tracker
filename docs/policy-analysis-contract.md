@@ -277,3 +277,37 @@ These pages must keep important analysis content visible in HTML and must show
 review state, confidence, evidence counts, source counts, caveats, and links to
 supporting claim/evidence records. Theme pages are published only when they meet
 the evidence threshold used by `getPublishableAnalysisThemeSpecs()`.
+
+## Analysis Page Quality And Review Workflow
+
+P9-D adds page-quality metadata for the public analysis layer. This is a
+publication-readiness check for pages, not a review-state upgrade for policy
+analysis itself.
+
+Implemented endpoint:
+
+```text
+/api/public/v1/analysis/page-quality.json
+```
+
+The page-quality response uses schema version
+`uapt-analysis-page-quality-v1` and reports:
+
+- public analysis page paths and canonical URLs
+- whether each page currently passes the page-quality gate
+- server-rendered content, evidence threshold, review-state, source-language,
+  coverage-score caveat, no-advice, and versioned JSON checks
+- analysis review workflow metadata
+- the `analysis_profile_review` queue
+
+Rules:
+
+- Passing a page-quality gate does not mean the analysis is
+  `human_reviewed`.
+- Machine-derived analysis remains `machine_candidate` until analysis profile
+  review is complete.
+- Theme pages remain gated by source-backed evidence thresholds.
+- Coverage-score pages must continue to state that coverage score is not a
+  ranking, quality score, legal adequacy score, safety score, or compliance
+  score.
+- Page-quality metadata is read-only and must not create canonical claims.

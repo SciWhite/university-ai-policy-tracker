@@ -7,6 +7,12 @@ import {
   buildContributionPolicyData,
   reviewQueues
 } from "@/lib/contribution-surfaces";
+import {
+  analysisPageQualityGates,
+  analysisReviewChecklist,
+  buildAnalysisReviewWorkflow,
+  getAnalysisPageQualityApiPath
+} from "@/lib/policy-analysis-pages";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const title = "Review Workflow | University AI Policy Tracker";
@@ -32,6 +38,8 @@ export function generateMetadata() {
 export default function ReviewWorkflowPage() {
   const contributionPolicy = buildContributionPolicyData();
   const reviewPolicyPath = `/api/public/${PUBLIC_API_VERSION}/contributions/review-policy.json`;
+  const analysisReviewWorkflow = buildAnalysisReviewWorkflow();
+  const analysisPageQualityPath = getAnalysisPageQualityApiPath();
 
   return (
     <main className="page-shell page-shell--wide">
@@ -45,6 +53,43 @@ export default function ReviewWorkflowPage() {
           risk, and consistency with the claim/evidence contract.
         </p>
       </section>
+
+      <ReferenceBox
+        description="Analysis review is stricter than page-quality publication. A page can pass publication gates while its derived analysis remains machine_candidate."
+        id="analysis-review"
+        title="Analysis profile review"
+        actions={
+          <a className="site-action" href={analysisPageQualityPath}>
+            Page-quality JSON
+          </a>
+        }
+      >
+        <p>{analysisReviewWorkflow.publicationGate}</p>
+        <div className="tag-row">
+          <MetaLabel label="Queue">
+            {analysisReviewWorkflow.reviewQueue}
+          </MetaLabel>
+          <MetaLabel label="Public mutation">Not allowed</MetaLabel>
+          <MetaLabel label="Initial state">machine_candidate</MetaLabel>
+        </div>
+        <DataList>
+          {analysisPageQualityGates.map((gate) => (
+            <DataListRow
+              key={gate.gateId}
+              metadata={<MetaLabel label="Gate">{gate.gateId}</MetaLabel>}
+            >
+              <h2>{gate.label}</h2>
+              <p>{gate.requirement}</p>
+            </DataListRow>
+          ))}
+        </DataList>
+        <h2>Reviewer checklist</h2>
+        <ul className="compact-list">
+          {analysisReviewChecklist.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </ReferenceBox>
 
       <ReferenceBox
         description="Each queue has a different publication gate. Passing a queue does not bypass source evidence or review-state labeling."

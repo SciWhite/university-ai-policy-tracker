@@ -10,6 +10,8 @@ import {
 } from "./claims";
 
 export const POLICY_ANALYSIS_SCHEMA_VERSION = "uapt-policy-analysis-v1";
+export const POLICY_ANALYSIS_PAGE_QUALITY_SCHEMA_VERSION =
+  "uapt-analysis-page-quality-v1";
 
 export const analysisReviewStateSchema = z.enum([
   "machine_candidate",
@@ -418,6 +420,74 @@ export const policyAnalysisCoverageScoresResponseSchema =
     data: policyAnalysisCoverageScoresDataSchema
   });
 
+export const analysisPageQualityCheckStatusSchema = z.enum([
+  "pass",
+  "warning",
+  "fail"
+]);
+
+export const analysisPageQualityOverallStatusSchema = z.enum([
+  "passes_current_quality_gate",
+  "needs_attention",
+  "fails_quality_gate"
+]);
+
+export const analysisPageQualityCheckSchema = z.object({
+  checkId: z.string().min(1),
+  label: z.string().min(1),
+  status: analysisPageQualityCheckStatusSchema,
+  summary: z.string().min(1)
+});
+
+export const analysisPageQualityGateSchema = z.object({
+  gateId: z.string().min(1),
+  label: z.string().min(1),
+  requirement: z.string().min(1)
+});
+
+export const policyAnalysisPageQualityItemSchema = z.object({
+  path: z.string().min(1),
+  canonicalUrl: z.string().url(),
+  pageType: z.enum(["analysis_index", "coverage_table", "theme_analysis"]),
+  title: z.string().min(1),
+  reviewState: analysisReviewStateSchema,
+  indexable: z.boolean(),
+  profileCount: z.number().int().nonnegative(),
+  evidenceBackedDimensionCount: z.number().int().nonnegative(),
+  sourceLanguageCount: z.number().int().nonnegative(),
+  publicJsonUrls: z.array(z.string().url()).default([]),
+  checks: z.array(analysisPageQualityCheckSchema).min(1),
+  limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY])
+});
+
+export const policyAnalysisReviewWorkflowSchema = z.object({
+  canonicalUrl: z.string().url(),
+  publicJsonUrl: z.string().url(),
+  reviewQueue: z.literal("analysis_profile_review"),
+  publicApiMutationAllowed: z.literal(false),
+  reviewStates: z.array(analysisReviewStateSchema).min(1),
+  publicationGate: z.string().min(1),
+  reviewerChecklist: z.array(z.string().min(1)).min(1)
+});
+
+export const policyAnalysisPageQualityDataSchema = z.object({
+  schemaVersion: z
+    .literal(POLICY_ANALYSIS_PAGE_QUALITY_SCHEMA_VERSION)
+    .default(POLICY_ANALYSIS_PAGE_QUALITY_SCHEMA_VERSION),
+  apiVersion: z.literal(PUBLIC_API_VERSION),
+  status: analysisPageQualityOverallStatusSchema,
+  generatedFor: z.literal("analysis_page_publication"),
+  qualityGates: z.array(analysisPageQualityGateSchema).min(1),
+  pages: z.array(policyAnalysisPageQualityItemSchema).min(1),
+  reviewWorkflow: policyAnalysisReviewWorkflowSchema,
+  limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY])
+});
+
+export const policyAnalysisPageQualityResponseSchema =
+  publicAnalysisEnvelopeBaseSchema.extend({
+    data: policyAnalysisPageQualityDataSchema
+  });
+
 export type AnalysisReviewState = z.infer<typeof analysisReviewStateSchema>;
 export type AnalysisDimensionStatus = z.infer<
   typeof analysisDimensionStatusSchema
@@ -462,6 +532,30 @@ export type PolicyAnalysisCoverageScoresData = z.infer<
 >;
 export type PolicyAnalysisCoverageScoresResponse = z.infer<
   typeof policyAnalysisCoverageScoresResponseSchema
+>;
+export type AnalysisPageQualityCheckStatus = z.infer<
+  typeof analysisPageQualityCheckStatusSchema
+>;
+export type AnalysisPageQualityOverallStatus = z.infer<
+  typeof analysisPageQualityOverallStatusSchema
+>;
+export type AnalysisPageQualityCheck = z.infer<
+  typeof analysisPageQualityCheckSchema
+>;
+export type AnalysisPageQualityGate = z.infer<
+  typeof analysisPageQualityGateSchema
+>;
+export type PolicyAnalysisPageQualityItem = z.infer<
+  typeof policyAnalysisPageQualityItemSchema
+>;
+export type PolicyAnalysisReviewWorkflow = z.infer<
+  typeof policyAnalysisReviewWorkflowSchema
+>;
+export type PolicyAnalysisPageQualityData = z.infer<
+  typeof policyAnalysisPageQualityDataSchema
+>;
+export type PolicyAnalysisPageQualityResponse = z.infer<
+  typeof policyAnalysisPageQualityResponseSchema
 >;
 
 function sumNumbers(values: number[]): number {

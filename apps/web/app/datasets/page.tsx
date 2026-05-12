@@ -157,6 +157,7 @@ export default async function DatasetsPage() {
   const analysisIndexPath = `/api/public/${PUBLIC_API_VERSION}/analysis/index.json`;
   const exampleAnalysisPath = `/api/public/${PUBLIC_API_VERSION}/analysis/universities/${exampleSlug}.json`;
   const analysisCoverageScoresPath = `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`;
+  const analysisPageQualityPath = `/api/public/${PUBLIC_API_VERSION}/analysis/page-quality.json`;
   const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`;
   const widgetIndexPath = `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`;
   const mcpManifestPath = `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`;
@@ -174,6 +175,7 @@ export default async function DatasetsPage() {
   const analysisCoverageScoresUrl = getAbsoluteSiteUrl(
     analysisCoverageScoresPath
   );
+  const analysisPageQualityUrl = getAbsoluteSiteUrl(analysisPageQualityPath);
   const reportChartDataUrl = getAbsoluteSiteUrl(reportChartDataPath);
   const widgetIndexUrl = getAbsoluteSiteUrl(widgetIndexPath);
   const mcpManifestUrl = getAbsoluteSiteUrl(mcpManifestPath);
@@ -243,6 +245,12 @@ export default async function DatasetsPage() {
               name: "Policy coverage scores JSON",
               encodingFormat: "application/json",
               contentUrl: analysisCoverageScoresUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Analysis page quality JSON",
+              encodingFormat: "application/json",
+              contentUrl: analysisPageQualityUrl
             },
             {
               "@type": "DataDownload",
@@ -375,6 +383,12 @@ export default async function DatasetsPage() {
           label="Policy coverage scores"
           path={analysisCoverageScoresPath}
           url={analysisCoverageScoresUrl}
+        />
+        <ApiEndpointRow
+          description="Read-only page-quality gates, indexability status, analysis review workflow, and no-advice boundaries for public analysis pages."
+          label="Analysis page quality"
+          path={analysisPageQualityPath}
+          url={analysisPageQualityUrl}
         />
         <ApiEndpointRow
           description="Release manifest with artifact URLs, row counts, byte sizes, and SHA-256 checksums."

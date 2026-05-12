@@ -361,6 +361,12 @@ export function buildPolicyAnalysisIndexResponse(
           path: `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`,
           description:
             "Coverage score list for public analysis profiles. Scores measure breadth of source-backed public coverage, not policy quality."
+        },
+        {
+          label: "Analysis page quality",
+          path: `/api/public/${PUBLIC_API_VERSION}/analysis/page-quality.json`,
+          description:
+            "Read-only page-quality gates, indexability status, analysis review workflow, and no-advice boundaries for public analysis pages."
         }
       ],
       limitations: ANALYSIS_LIMITATIONS

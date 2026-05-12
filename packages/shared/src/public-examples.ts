@@ -196,6 +196,11 @@ export function buildPublicApiIndexData(
         "Coverage score list for public analysis profiles. Scores measure breadth of source-backed public coverage, not policy quality."
       ),
       endpoint(
+        "Analysis page quality",
+        `/api/public/${PUBLIC_API_VERSION}/analysis/page-quality.json`,
+        "Read-only page-quality gates, indexability status, analysis review workflow, and no-advice boundaries for public analysis pages."
+      ),
+      endpoint(
         "Dataset release manifest",
         `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`,
         "Latest dataset release manifest with artifact URLs, row counts, byte sizes, and SHA-256 checksums."

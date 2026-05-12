@@ -189,6 +189,12 @@ export const reviewQueues: ReviewQueueDefinition[] = [
     publicationGate: "Claims remain candidate records until evidence, confidence, review state, and citation fields pass review."
   },
   {
+    queue: "analysis_profile_review",
+    label: "Analysis profile review",
+    purpose: "Review deterministic policy dimensions, coverage-score caveats, not-mentioned reasoning, basis claim IDs, and page-quality gates before analysis metadata graduates beyond machine-candidate status.",
+    publicationGate: "Analysis profiles remain machine_candidate until reviewers confirm source-backed dimensions, original-language evidence, review-state separation, and no-advice boundaries."
+  },
+  {
     queue: "translation_review",
     label: "Translation review",
     purpose: "Review localized display summaries without replacing source-language evidence.",
@@ -247,6 +253,7 @@ export function buildContributionPolicyData(): ContributionPolicyData {
       "Every published claim must keep source URL, source language, evidence snippet, confidence, and review state.",
       "Confidence and review state remain separate.",
       "Original-language evidence remains canonical; localized display is helper text only.",
+      "Analysis profiles stay machine_candidate until analysis profile review confirms evidence binding, quality gates, and reuse caveats.",
       "Institution corrections preserve audit history."
     ],
     limitations: [NO_ADVICE_BOUNDARY]

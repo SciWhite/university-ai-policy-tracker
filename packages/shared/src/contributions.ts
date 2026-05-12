@@ -20,6 +20,7 @@ export const contributionReviewQueueSchema = z.enum([
   "source_discovery_review",
   "crawl_failure_review",
   "extraction_review",
+  "analysis_profile_review",
   "claim_evidence_review",
   "translation_review",
   "institution_correction_review",
