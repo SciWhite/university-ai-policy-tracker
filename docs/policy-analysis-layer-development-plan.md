@@ -922,6 +922,8 @@ Scope:
 - public analysis index
 - first theme pages
 - university policy profile section
+- coverage score page
+- sitemap, navigation, and llms.txt links for quality-gated analysis pages
 
 Routes:
 
@@ -942,6 +944,8 @@ Acceptance criteria:
 - sitemap includes only pages passing quality gate
 - no thin page generation
 - mobile and desktop smoke tests pass
+- university detail pages include a source-backed policy profile section with
+  links to supporting claim anchors
 
 ### P9-D: Reports And Comparison
 

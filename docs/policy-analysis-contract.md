@@ -257,3 +257,23 @@ Current public analysis endpoints:
 
 P9-B continues to avoid production database writes and does not connect OpenClaw
 directly.
+
+## Public Analysis Pages
+
+P9-C exposes the analysis contract in server-rendered HTML.
+
+Implemented page surfaces:
+
+```text
+/analysis
+/analysis/policy-coverage
+/analysis/disclosure
+/analysis/privacy
+/analysis/approved-tools
+/universities/{slug}#policy-profile
+```
+
+These pages must keep important analysis content visible in HTML and must show
+review state, confidence, evidence counts, source counts, caveats, and links to
+supporting claim/evidence records. Theme pages are published only when they meet
+the evidence threshold used by `getPublishableAnalysisThemeSpecs()`.

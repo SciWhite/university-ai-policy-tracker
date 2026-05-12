@@ -13,6 +13,8 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Read-only MCP alpha guidance is available at /mcp.
 - Contribution intake is documented at /contribute.
 - Contribution review workflow is documented at /review.
+- Policy analysis pages are available at /analysis and /analysis/policy-coverage.
+- Theme analysis pages are available at /analysis/disclosure, /analysis/privacy, and /analysis/approved-tools.
 - Public API index: /api/public/v1/index.json.
 - Public university list: /api/public/v1/universities.json.
 - Public JSON records are available at /api/public/v1/universities/{slug}.json.

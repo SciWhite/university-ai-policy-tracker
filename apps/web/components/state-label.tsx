@@ -2,6 +2,7 @@ const stateLabels: Record<string, string> = {
   machine_candidate: "Machine candidate",
   agent_reviewed: "Agent reviewed",
   human_reviewed: "Human reviewed",
+  institution_verified: "Institution verified",
   needs_review: "Needs review",
   rejected: "Rejected"
 };

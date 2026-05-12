@@ -789,7 +789,8 @@ h3 {
 .pill,
 .review-pill,
 .meta-label,
-.state-label {
+.state-label,
+.analysis-status-label {
   align-items: center;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
@@ -816,8 +817,10 @@ h3 {
 
 .review-pill[data-review-state="agent_reviewed"],
 .review-pill[data-review-state="human_reviewed"],
+.review-pill[data-review-state="institution_verified"],
 .state-label[data-review-state="agent_reviewed"],
-.state-label[data-review-state="human_reviewed"] {
+.state-label[data-review-state="human_reviewed"],
+.state-label[data-review-state="institution_verified"] {
   background: var(--color-reviewed-surface);
   border-color: var(--color-reviewed-border);
   color: var(--color-reviewed);
@@ -839,6 +842,30 @@ h3 {
 
 .review-pill[data-review-state="rejected"],
 .state-label[data-review-state="rejected"] {
+  background: var(--color-danger-surface);
+  border-color: var(--color-danger-border);
+  color: var(--color-danger);
+}
+
+.analysis-status-label[data-analysis-status="allowed"],
+.analysis-status-label[data-analysis-status="recommended"],
+.analysis-status-label[data-analysis-status="required"] {
+  background: var(--color-reviewed-surface);
+  border-color: var(--color-reviewed-border);
+  color: var(--color-reviewed);
+}
+
+.analysis-status-label[data-analysis-status="conditionally_allowed"],
+.analysis-status-label[data-analysis-status="unclear"],
+.analysis-status-label[data-analysis-status="insufficient_public_evidence"],
+.analysis-status-label[data-analysis-status="not_mentioned"] {
+  background: var(--color-warning-surface);
+  border-color: var(--color-warning-border);
+  color: var(--color-warning);
+}
+
+.analysis-status-label[data-analysis-status="restricted"],
+.analysis-status-label[data-analysis-status="blocked"] {
   background: var(--color-danger-surface);
   border-color: var(--color-danger-border);
   color: var(--color-danger);
@@ -1418,6 +1445,66 @@ h3 {
 
 .theme-claim-summary p:last-child {
   margin-bottom: 0;
+}
+
+.analysis-dimension-list,
+.analysis-link-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.analysis-dimension-row {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 14px;
+}
+
+.analysis-dimension-row[data-analysis-status="allowed"],
+.analysis-dimension-row[data-analysis-status="recommended"],
+.analysis-dimension-row[data-analysis-status="required"] {
+  border-color: var(--color-reviewed-border);
+}
+
+.analysis-dimension-row[data-analysis-status="restricted"],
+.analysis-dimension-row[data-analysis-status="blocked"] {
+  border-color: var(--color-danger-border);
+}
+
+.analysis-dimension-row h3,
+.analysis-dimension-row p {
+  margin: 0;
+}
+
+.analysis-dimension-row p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.analysis-dimension-row__meta,
+.analysis-dimension-row__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.analysis-dimension-row__links a,
+.analysis-link-stack a {
+  color: var(--color-source);
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.analysis-table td:nth-child(2),
+.analysis-table td:nth-child(3),
+.analysis-table td:nth-child(4),
+.analysis-table td:nth-child(5),
+.analysis-table td:nth-child(6) {
+  white-space: nowrap;
 }
 
 .source-attribution-row__meta {

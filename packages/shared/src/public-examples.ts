@@ -299,6 +299,11 @@ export function buildPublicApiIndexData(
         "Dataset reports, public feeds, chart data, and outreach assets."
       ),
       trustPage(
+        "Policy analysis",
+        "/analysis",
+        "Deterministic source-backed policy analysis profiles, coverage scores, dimensions, and caveats."
+      ),
+      trustPage(
         "Outreach package",
         "/reports/outreach",
         "Citation-safe public copy for researchers, newsletters, and media."

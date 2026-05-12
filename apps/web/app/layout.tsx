@@ -8,6 +8,7 @@ import { getSiteBaseUrl } from "@/lib/site-url";
 const primaryTabs = [
   { label: "Overview", href: "/" },
   { label: "Universities", href: "/universities" },
+  { label: "Analysis", href: "/analysis" },
   { label: "Changes", href: "/changes" },
   { label: "Reports", href: "/reports" },
   { label: "Widgets", href: "/widgets" },
@@ -91,6 +92,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/methodology">Methodology</Link>
               <Link href="/citation">Citation</Link>
               <Link href="/datasets">Datasets</Link>
+              <Link href="/analysis">Analysis</Link>
               <Link href="/changes">Changes</Link>
               <Link href="/reports">Reports</Link>
               <Link href="/widgets">Widgets</Link>

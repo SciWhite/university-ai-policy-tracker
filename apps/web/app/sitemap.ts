@@ -7,6 +7,7 @@ import {
   regionLandingSpecs,
   themeLandingSpecs
 } from "@/lib/reference-pages";
+import { getPublishableAnalysisThemeSpecs } from "@/lib/policy-analysis-pages";
 import { getSiteBaseUrl } from "../lib/site-url";
 
 const staticRoutes = [
@@ -22,6 +23,8 @@ const staticRoutes = [
   "/review",
   "/api-reference",
   "/mcp",
+  "/analysis",
+  "/analysis/policy-coverage",
   "/methodology",
   "/citation",
   "/datasets",
@@ -39,6 +42,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const universities = await getCatalogUniversities();
   const changeRecords = await getChangeRecords();
+  const analysisThemeRoutes = (await getPublishableAnalysisThemeSpecs()).map(
+    (spec) => `/analysis/${spec.slug}`
+  );
 
   return [
     ...staticRoutes.map((route) => ({
@@ -46,6 +52,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now
     })),
     ...referenceRoutes.map((route) => ({
+      url: new URL(route, baseUrl).toString(),
+      lastModified: now
+    })),
+    ...analysisThemeRoutes.map((route) => ({
       url: new URL(route, baseUrl).toString(),
       lastModified: now
     })),

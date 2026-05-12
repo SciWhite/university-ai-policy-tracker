@@ -6,6 +6,7 @@ import {
   getPublicJsonUrl,
   getPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
+import { AnalysisStatusLabel } from "@/components/analysis-status-label";
 import { ClaimEvidenceCard } from "@/components/claim-evidence-card";
 import { EntityHeader } from "@/components/entity-header";
 import { EntitySidebar } from "@/components/entity-sidebar";
@@ -15,6 +16,7 @@ import { ReferenceBox } from "@/components/reference-box";
 import { ReferenceTabs } from "@/components/reference-tabs";
 import { StateLabel } from "@/components/state-label";
 import { DEFAULT_LOCALE } from "@/lib/i18n";
+import { getPolicyAnalysisProfileBySlug } from "@/lib/policy-analysis";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 interface UniversityPageProps {
@@ -25,6 +27,7 @@ interface UniversityPageProps {
 
 const recordTabs = [
   { label: "Overview", href: "#overview" },
+  { label: "Policy profile", href: "#policy-profile" },
   { label: "Claims", href: "#claims" },
   { label: "Sources", href: "#sources" },
   { label: "Changes", href: "#changes" },
@@ -68,6 +71,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   const { slug } = await params;
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
+  const policyAnalysisProfile = await getPolicyAnalysisProfileBySlug(slug);
 
   if (!university || !publicSummary) {
     notFound();
@@ -141,6 +145,11 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             <Link className="site-action" href="/datasets">
               Dataset access
             </Link>
+            {policyAnalysisProfile ? (
+              <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
+                Analysis JSON
+              </a>
+            ) : null}
             <Link className="site-action" href="/contribute">
               Submit correction
             </Link>
@@ -212,6 +221,87 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             </p>
           </ReferenceBox>
 
+          {policyAnalysisProfile ? (
+            <ReferenceBox
+              description="Deterministic source-backed dimensions derived from this record's public claims."
+              id="policy-profile"
+              title="Policy profile"
+              actions={
+                <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
+                  Analysis JSON
+                </a>
+              }
+            >
+              <div className="tag-row">
+                <MetaLabel label="Coverage score">
+                  {policyAnalysisProfile.coverageScore.score}/
+                  {policyAnalysisProfile.coverageScore.maxScore}
+                </MetaLabel>
+                <MetaLabel label="Coverage label">
+                  {policyAnalysisProfile.coverageScore.label.replaceAll("_", " ")}
+                </MetaLabel>
+                <StateLabel reviewState={policyAnalysisProfile.reviewState} />
+                <MetaLabel label="Analysis confidence">
+                  {Math.round(policyAnalysisProfile.confidence * 100)}%
+                </MetaLabel>
+              </div>
+              <p className="notice-card">
+                Policy profile rows are machine-candidate derived metadata. They
+                are not final policy conclusions; inspect the linked claim
+                evidence before reuse.
+              </p>
+              <div className="analysis-dimension-list">
+                {policyAnalysisProfile.dimensions.map((dimension) => (
+                  <article
+                    className="analysis-dimension-row"
+                    data-analysis-status={dimension.status}
+                    key={dimension.key}
+                  >
+                    <div>
+                      <h3>{dimension.label}</h3>
+                      <p>{dimension.summary}</p>
+                      {dimension.notMentionedReason ? (
+                        <p className="muted">{dimension.notMentionedReason}</p>
+                      ) : null}
+                    </div>
+                    <div className="analysis-dimension-row__meta">
+                      <AnalysisStatusLabel
+                        prefix=""
+                        status={dimension.status}
+                      />
+                      <StateLabel
+                        prefix=""
+                        reviewState={dimension.reviewState}
+                      />
+                      <MetaLabel label="Confidence">
+                        {Math.round(dimension.confidence * 100)}%
+                      </MetaLabel>
+                      <MetaLabel label="Evidence">
+                        {dimension.evidenceCount}
+                      </MetaLabel>
+                      <MetaLabel label="Sources">{dimension.sourceCount}</MetaLabel>
+                    </div>
+                    <div className="analysis-dimension-row__links">
+                      {dimension.basis.slice(0, 3).map((basis) => (
+                        <Link
+                          href={`#claim-${basis.claimId}`}
+                          key={`${dimension.key}:${basis.claimId}`}
+                        >
+                          Claim {basis.claimId}
+                        </Link>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <p className="muted">
+                Coverage score measures breadth of public, source-backed
+                coverage only. It is not a policy quality, strictness, legal
+                adequacy, safety, or compliance score.
+              </p>
+            </ReferenceBox>
+          ) : null}
+
           <section className="record-section" id="claims">
             <div className="section-heading">
               <h2>Evidence-backed claims</h2>
@@ -222,6 +312,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 {reviewedClaims.map((claim) => (
                   <ClaimEvidenceCard
                     claim={claim}
+                    id={claim.id ? `claim-${claim.id}` : undefined}
                     key={claim.id ?? claim.claimText}
                     locale={DEFAULT_LOCALE}
                   />
@@ -251,6 +342,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 {candidateClaims.map((claim) => (
                   <ClaimEvidenceCard
                     claim={claim}
+                    id={claim.id ? `claim-${claim.id}` : undefined}
                     key={claim.id ?? claim.claimText}
                     locale={DEFAULT_LOCALE}
                   />

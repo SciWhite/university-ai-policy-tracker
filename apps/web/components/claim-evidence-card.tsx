@@ -15,6 +15,7 @@ import { StateLabel } from "@/components/state-label";
 
 interface ClaimEvidenceCardProps {
   claim: PolicyClaim;
+  id?: string;
   locale?: SupportedLocale;
 }
 
@@ -29,12 +30,14 @@ const reviewNotes: Partial<Record<ClaimReviewState, string>> = {
 
 export function ClaimEvidenceCard({
   claim,
+  id,
   locale = DEFAULT_LOCALE
 }: ClaimEvidenceCardProps) {
   return (
     <article
       className="claim-evidence-card"
       data-review-state={claim.reviewState}
+      id={id}
     >
       <header className="claim-evidence-card__header">
         <div>

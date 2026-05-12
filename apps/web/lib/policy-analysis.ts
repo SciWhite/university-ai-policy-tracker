@@ -295,6 +295,15 @@ export function getPolicyAnalysisDimensions() {
   }));
 }
 
+export function getPolicyAnalysisDimensionLabel(
+  key: PolicyAnalysisDimensionKey
+): string {
+  return (
+    DIMENSION_DEFINITIONS.find((definition) => definition.key === key)?.label ??
+    key
+  );
+}
+
 export function getPolicyAnalysisApiPath(slug: string): string {
   return `/api/public/${PUBLIC_API_VERSION}/analysis/universities/${slug}.json`;
 }

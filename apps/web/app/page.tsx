@@ -3,6 +3,7 @@ import { getCatalogUniversities } from "@/lib/catalog";
 
 const startLinks = [
   { label: "Browse universities", href: "/universities" },
+  { label: "Explore policy analysis", href: "/analysis" },
   { label: "View changes", href: "/changes" },
   { label: "Inspect datasets", href: "/datasets" },
   { label: "Embed widgets", href: "/widgets" },
