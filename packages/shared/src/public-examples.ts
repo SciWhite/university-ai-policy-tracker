@@ -180,6 +180,22 @@ export function buildPublicApiIndexData(
         "Recent public source checks and changed institution records."
       ),
       endpoint(
+        "Analysis API index",
+        `/api/public/${PUBLIC_API_VERSION}/analysis/index.json`,
+        "Manifest for deterministic policy analysis dimensions, endpoints, limitations, and version metadata."
+      ),
+      endpoint(
+        "University analysis profile",
+        `/api/public/${PUBLIC_API_VERSION}/analysis/universities/anu.json`,
+        "One source-backed policy analysis profile with dimensions, evidence claim IDs, source URLs, confidence, review state, and coverage score.",
+        `/api/public/${PUBLIC_API_VERSION}/analysis/universities/{slug}.json`
+      ),
+      endpoint(
+        "Policy coverage scores",
+        `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`,
+        "Coverage score list for public analysis profiles. Scores measure breadth of source-backed public coverage, not policy quality."
+      ),
+      endpoint(
         "Dataset release manifest",
         `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`,
         "Latest dataset release manifest with artifact URLs, row counts, byte sizes, and SHA-256 checksums."

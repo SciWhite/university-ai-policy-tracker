@@ -17,6 +17,9 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Public university list: /api/public/v1/universities.json.
 - Public JSON records are available at /api/public/v1/universities/{slug}.json.
 - Recent public changes are available at /api/public/v1/recent-changes.json.
+- Deterministic policy analysis metadata is available at /api/public/v1/analysis/index.json.
+- Per-university analysis profiles are available at /api/public/v1/analysis/universities/{slug}.json.
+- Policy coverage scores are available at /api/public/v1/analysis/coverage-scores.json.
 - Latest dataset release manifest: /api/public/v1/datasets/latest.json.
 - Bulk JSONL downloads are available at /api/public/v1/datasets/universities.jsonl, /api/public/v1/datasets/claims.jsonl, /api/public/v1/datasets/sources.jsonl, and /api/public/v1/datasets/changes.jsonl.
 - Dataset checksums and the data dictionary are available at /api/public/v1/datasets/checksums.txt and /api/public/v1/datasets/data-dictionary.md.
@@ -38,6 +41,8 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 
 ## Caveats
 - Machine-candidate records require review and should not be treated as final policy conclusions.
+- Policy analysis profiles are deterministic derived metadata and should be checked against their basis claim IDs and source URLs before reuse.
+- Policy Coverage Score measures breadth of source-backed public coverage; it is not a policy quality score, strictness score, legal adequacy score, safety score, or institutional compliance score.
 - The site is not legal advice or academic integrity advice.
 - Tracker metadata may be open licensed, but official university source documents, source page text, PDFs, and other source materials retain their original rights.
 - This llms.txt file is an auxiliary guide for agents and developers. Google does not require llms.txt for AI features, and this file is not a guaranteed ranking signal.

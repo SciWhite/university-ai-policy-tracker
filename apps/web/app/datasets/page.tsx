@@ -15,6 +15,7 @@ import {
   getPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
 import { getDatasetRelease } from "@/lib/dataset-release";
+import { getPolicyAnalysisProfiles } from "@/lib/policy-analysis";
 import { getCurrentPublicReleaseManifest } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
@@ -52,6 +53,12 @@ const datasetConcepts = [
     status: "Available now",
     description:
       "The recent changes JSON feed summarizes checked and changed university records with review states."
+  },
+  {
+    name: "Analysis profiles",
+    status: "Available now",
+    description:
+      "Deterministic policy analysis profiles derive dimensions and coverage scores from existing public claim/evidence records."
   }
 ] as const;
 
@@ -119,6 +126,7 @@ export default async function DatasetsPage() {
   ).filter((summary): summary is PublicEntitySummary => Boolean(summary));
   const manifest = await getCurrentPublicReleaseManifest();
   const datasetRelease = await getDatasetRelease();
+  const analysisProfiles = await getPolicyAnalysisProfiles();
   const datasetReleaseManifest = datasetRelease.manifest;
   const universityCount = summaries.length || universities.length;
   const sourceCount = summaries.length
@@ -146,6 +154,9 @@ export default async function DatasetsPage() {
     "anu";
   const exampleUniversityPath = `/api/public/${PUBLIC_API_VERSION}/universities/${exampleSlug}.json`;
   const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
+  const analysisIndexPath = `/api/public/${PUBLIC_API_VERSION}/analysis/index.json`;
+  const exampleAnalysisPath = `/api/public/${PUBLIC_API_VERSION}/analysis/universities/${exampleSlug}.json`;
+  const analysisCoverageScoresPath = `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`;
   const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`;
   const widgetIndexPath = `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`;
   const mcpManifestPath = `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`;
@@ -158,6 +169,11 @@ export default async function DatasetsPage() {
   );
   const exampleUniversityUrl = getAbsoluteSiteUrl(exampleUniversityPath);
   const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
+  const analysisIndexUrl = getAbsoluteSiteUrl(analysisIndexPath);
+  const exampleAnalysisUrl = getAbsoluteSiteUrl(exampleAnalysisPath);
+  const analysisCoverageScoresUrl = getAbsoluteSiteUrl(
+    analysisCoverageScoresPath
+  );
   const reportChartDataUrl = getAbsoluteSiteUrl(reportChartDataPath);
   const widgetIndexUrl = getAbsoluteSiteUrl(widgetIndexPath);
   const mcpManifestUrl = getAbsoluteSiteUrl(mcpManifestPath);
@@ -209,6 +225,24 @@ export default async function DatasetsPage() {
               name: "Recent changes JSON",
               encodingFormat: "application/json",
               contentUrl: recentChangesUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Policy analysis API index",
+              encodingFormat: "application/json",
+              contentUrl: analysisIndexUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "University policy analysis JSON example",
+              encodingFormat: "application/json",
+              contentUrl: exampleAnalysisUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Policy coverage scores JSON",
+              encodingFormat: "application/json",
+              contentUrl: analysisCoverageScoresUrl
             },
             {
               "@type": "DataDownload",
@@ -290,6 +324,10 @@ export default async function DatasetsPage() {
           <span>{datasetReleaseManifest.artifacts.length}</span>
           <p>release download artifacts</p>
         </div>
+        <div>
+          <span>{analysisProfiles.length}</span>
+          <p>analysis profiles</p>
+        </div>
       </section>
 
       <ReferenceBox
@@ -319,6 +357,24 @@ export default async function DatasetsPage() {
           label="Recent changes JSON"
           path={recentChangesPath}
           url={recentChangesUrl}
+        />
+        <ApiEndpointRow
+          description="Manifest for deterministic policy analysis dimensions, endpoint paths, limitations, and schema version."
+          label="Analysis API index"
+          path={analysisIndexPath}
+          url={analysisIndexUrl}
+        />
+        <ApiEndpointRow
+          description="Example university policy analysis profile derived from public claim/evidence records."
+          label="Per-university analysis JSON example"
+          path={exampleAnalysisPath}
+          url={exampleAnalysisUrl}
+        />
+        <ApiEndpointRow
+          description="Coverage score list for public analysis profiles. Scores measure breadth of source-backed public coverage, not policy quality."
+          label="Policy coverage scores"
+          path={analysisCoverageScoresPath}
+          url={analysisCoverageScoresUrl}
         />
         <ApiEndpointRow
           description="Release manifest with artifact URLs, row counts, byte sizes, and SHA-256 checksums."

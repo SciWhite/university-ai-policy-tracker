@@ -227,19 +227,33 @@ The example file is:
 examples/policy-analysis-profile.json
 ```
 
-## Next Implementation Stage
+## Static Builder Implementation
 
-P9-B should derive static analysis profiles from existing public release data.
-It should not use LLM classification as the first source of truth.
+P9-B derives static analysis profiles from existing public release data. It does
+not use LLM classification as the first source of truth, and it does not write
+to the production database.
 
-Expected future files:
+Implemented files:
 
 ```text
 apps/web/lib/policy-analysis.ts
 apps/web/app/api/public/v1/analysis/index.json/route.ts
 apps/web/app/api/public/v1/analysis/universities/[slug]/route.ts
 apps/web/app/api/public/v1/analysis/coverage-scores.json/route.ts
+scripts/audit-policy-analysis.ts
 ```
 
-P9-B must continue to avoid production database writes and must not connect
-OpenClaw directly.
+The builder emits deterministic `machine_candidate` analysis profiles. The
+supporting basis records preserve the underlying claim review state, claim ID,
+source URL, source language, snapshot hash, and original evidence snippet.
+
+Current public analysis endpoints:
+
+```text
+/api/public/v1/analysis/index.json
+/api/public/v1/analysis/universities/{slug}.json
+/api/public/v1/analysis/coverage-scores.json
+```
+
+P9-B continues to avoid production database writes and does not connect OpenClaw
+directly.

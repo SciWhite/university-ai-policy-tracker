@@ -386,9 +386,36 @@ export const policyAnalysisIndexDataSchema = z.object({
   limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY])
 });
 
+export const policyAnalysisCoverageScoreItemSchema = z.object({
+  entitySlug: z.string().min(1),
+  entityName: z.string().min(1),
+  entityType: canonicalEntityTypeSchema.extract(["university", "course"]),
+  canonicalUrl: z.string().url(),
+  publicJsonUrl: z.string().url(),
+  score: z.number().min(0).max(100),
+  maxScore: z.literal(100),
+  label: policyCoverageScoreLabelSchema,
+  reviewState: analysisReviewStateSchema,
+  confidence: z.number().min(0).max(1),
+  evidenceBackedDimensionCount: z.number().int().nonnegative(),
+  notMentionedDimensionCount: z.number().int().nonnegative(),
+  sourceLanguageCount: z.number().int().nonnegative(),
+  limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY])
+});
+
+export const policyAnalysisCoverageScoresDataSchema = z.object({
+  count: z.number().int().nonnegative(),
+  profiles: z.array(policyAnalysisCoverageScoreItemSchema)
+});
+
 export const policyAnalysisIndexResponseSchema =
   publicAnalysisEnvelopeBaseSchema.extend({
     data: policyAnalysisIndexDataSchema
+  });
+
+export const policyAnalysisCoverageScoresResponseSchema =
+  publicAnalysisEnvelopeBaseSchema.extend({
+    data: policyAnalysisCoverageScoresDataSchema
   });
 
 export type AnalysisReviewState = z.infer<typeof analysisReviewStateSchema>;
@@ -426,6 +453,15 @@ export type PolicyAnalysisIndexData = z.infer<
 >;
 export type PolicyAnalysisIndexResponse = z.infer<
   typeof policyAnalysisIndexResponseSchema
+>;
+export type PolicyAnalysisCoverageScoreItem = z.infer<
+  typeof policyAnalysisCoverageScoreItemSchema
+>;
+export type PolicyAnalysisCoverageScoresData = z.infer<
+  typeof policyAnalysisCoverageScoresDataSchema
+>;
+export type PolicyAnalysisCoverageScoresResponse = z.infer<
+  typeof policyAnalysisCoverageScoresResponseSchema
 >;
 
 function sumNumbers(values: number[]): number {

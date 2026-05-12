@@ -39,6 +39,24 @@ const apiFamilies = [
       "Recent public source checks and changed institution records."
   },
   {
+    label: "Analysis API index",
+    path: `/api/public/${PUBLIC_API_VERSION}/analysis/index.json`,
+    description:
+      "Deterministic policy analysis dimensions, endpoint paths, limitations, and schema version metadata."
+  },
+  {
+    label: "University analysis profile",
+    path: `/api/public/${PUBLIC_API_VERSION}/analysis/universities/{slug}.json`,
+    description:
+      "Source-backed analysis profile with dimensions, evidence claim IDs, source URLs, confidence, review state, and policy coverage score."
+  },
+  {
+    label: "Policy coverage scores",
+    path: `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`,
+    description:
+      "Coverage score list for public analysis profiles. Scores measure breadth of source-backed public coverage, not policy quality."
+  },
+  {
     label: "Dataset release",
     path: `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`,
     description:

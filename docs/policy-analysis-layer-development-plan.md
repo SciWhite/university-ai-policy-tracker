@@ -893,6 +893,7 @@ Scope:
 - derive analysis from existing public release data
 - no LLM dependency
 - no production DB changes
+- deterministic outputs remain `machine_candidate` until separately reviewed
 
 Files:
 
@@ -901,6 +902,7 @@ apps/web/lib/policy-analysis.ts
 apps/web/app/api/public/v1/analysis/index.json/route.ts
 apps/web/app/api/public/v1/analysis/universities/[slug]/route.ts
 apps/web/app/api/public/v1/analysis/coverage-scores.json/route.ts
+scripts/audit-policy-analysis.ts
 ```
 
 Acceptance criteria:
@@ -910,6 +912,8 @@ Acceptance criteria:
 - coverage score has visible caveat
 - API index includes analysis endpoints
 - dataset page links analysis metadata
+- `pnpm audit:policy-analysis` validates profile count, claim/source binding,
+  review-state boundary, and versioned analysis URLs
 
 ### P9-C: Analysis Pages
 
