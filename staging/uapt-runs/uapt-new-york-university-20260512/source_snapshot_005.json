@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "uapt-new-york-university-20260512-snapshot-005",
+  "sourceCandidateId": "uapt-new-york-university-20260512-candidate-005",
+  "fetchAttemptId": "uapt-new-york-university-20260512-fetch-005",
+  "sourceUrl": "https://steinhardt.nyu.edu/faculty-and-staff/academic-affairs/steinhardt-ai-hub/academic-integrity-and-syllabus-support-age",
+  "finalUrl": "https://steinhardt.nyu.edu/faculty-and-staff/academic-affairs/steinhardt-ai-hub/academic-integrity-and-syllabus-support-age",
+  "sourceTitle": "Academic Integrity and Syllabus Support",
+  "sourceLanguage": "en",
+  "contentHash": "344e1c9af3a02daa209a7290e72023cd1958db1acc9191f5823730abf36e7133",
+  "fetchedAt": "2026-05-12T00:10:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "snapshots/nyu-005.md",
+  "rawArtifactPaths": []
+}

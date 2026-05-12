@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-kyoto-004",
+  "claimId": "claim-kyoto-004",
+  "sourceSnapshotId": "snapshot-kyoto-001",
+  "sourceUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+  "finalUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+  "sourceTitle": "京都大学の教育・学修におけるAIの利活用について",
+  "sourceLanguage": "ja",
+  "snapshotHash": "a3384fe7b1a9f9929da3561d656788aff958e36cbbd41ef33d65d3fb9dd84899",
+  "evidenceSnippetOriginal": "授業や研究指導の目標に応じて、生成AIの利用方針を学生に明示する（例：「積極的に利用する」「利用を一部認める」「利用を認めない」）。基本的な教養や専門的知識・スキルの修得が目標の科目では、生成AIを安易に使う学生が有利にならないよう、筆記試験や口頭試問などで理解度を確認する。",
+  "evidenceSnippetDisplay": "Instructors are expected to state AI-use policies and use checks such as written or oral examinations where needed for fairness.",
+  "evidenceLocator": "京都大学の教育・学修における生成AI利用に関するガイドライン, 4(2) 教員に期待される対応",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "京都大学の教育・学修におけるAIの利活用について",
+    "sourceUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/kyoto-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/kyoto-university",
+    "publisher": "Kyoto University",
+    "retrievedAt": "2026-05-12T15:30:00Z",
+    "snapshotHash": "a3384fe7b1a9f9929da3561d656788aff958e36cbbd41ef33d65d3fb9dd84899",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "evidenceId": "polyu-evidence-4",
+  "claimId": "polyu-claim-4",
+  "sourceSnapshotId": "polyu-ss-4",
+  "sourceUrl": "https://www.polyu.edu.hk/its/news-and-events/its-enewsletter/get-connected/2025-apr/02-m365-copilot-chat-m365-copilot-and-copilot-studio/",
+  "finalUrl": "https://www.polyu.edu.hk/its/news-and-events/its-enewsletter/get-connected/2025-apr/02-m365-copilot-chat-m365-copilot-and-copilot-studio/",
+  "sourceTitle": "M365 Copilot Chat, M365 Copilot, and Copilot Studio",
+  "sourceLanguage": "en",
+  "snapshotHash": "5aa4715078e31d79991e7ff421cb0600b4f542c93a84599fe48d481c8891c69b",
+  "evidenceSnippetOriginal": "All PolyU staff and students can leverage M365 Copilot Chat via the PolyU Gen AI app, or by accessing it directly through the browser. M365 Copilot Chat utilizes the Microsoft Prometheus model, which is built upon OpenAI's GPT-4o.",
+  "evidenceSnippetDisplay": "All PolyU staff and students can leverage M365 Copilot Chat via the PolyU Gen AI app, or by accessing it directly through the browser. M365 Copilot Chat utilizes the Microsoft Prometheus model, which is built upon OpenAI's GPT-4o.",
+  "evidenceLocator": "M365 Copilot Chat section",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "M365 Copilot Chat, M365 Copilot, and Copilot Studio",
+    "sourceUrl": "https://www.polyu.edu.hk/its/news-and-events/its-enewsletter/get-connected/2025-apr/02-m365-copilot-chat-m365-copilot-and-copilot-studio/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-hong-kong-polytechnic-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-hong-kong-polytechnic-university",
+    "publisher": "The Hong Kong Polytechnic University",
+    "retrievedAt": "2026-05-12T00:07:30.000Z",
+    "snapshotHash": "5aa4715078e31d79991e7ff421cb0600b4f542c93a84599fe48d481c8891c69b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-bristol-001",
+  "entityType": "university",
+  "entitySlug": "university-of-bristol",
+  "startedAt": "2026-05-12T05:49:00Z",
+  "endedAt": "2026-05-12T05:50:00Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:bristol.ac.uk \"generative AI\" policy guidance",
+      "domain": "bristol.ac.uk",
+      "resultCount": 10,
+      "notes": "Found official university guidance on generative AI"
+    },
+    {
+      "method": "site_search",
+      "query": "site:bristol.ac.uk \"AI\" \"academic integrity\" students",
+      "domain": "bristol.ac.uk",
+      "resultCount": 10,
+      "notes": "Found academic integrity policy with AI provisions"
+    },
+    {
+      "method": "site_search",
+      "query": "site:bristol.ac.uk \"ChatGPT\" assessment guidance",
+      "domain": "bristol.ac.uk",
+      "resultCount": 10,
+      "notes": "Found assessment guidance referencing AI tools"
+    },
+    {
+      "method": "site_search",
+      "query": "site:bristol.ac.uk \"Copilot\" Microsoft AI students staff",
+      "domain": "bristol.ac.uk",
+      "resultCount": 10,
+      "notes": "Found Microsoft Copilot licensing information"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "src-bristol-001",
+    "src-bristol-002",
+    "src-bristol-003",
+    "src-bristol-004"
+  ],
+  "rejectionIds": [],
+  "summary": "Discovered 4 official source candidates from bristol.ac.uk domain covering university-wide generative AI guidance, academic integrity policy, AI assessment categories, and PGR thesis writing guidance."
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-lmu-003",
+  "claimId": "claim-lmu-003",
+  "sourceSnapshotId": "snapshot-lmu-001",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "sourceTitle": "The use of AI by students",
+  "sourceLanguage": "en",
+  "snapshotHash": "a82c2400f28677a71a66c6bf7b2eef43ca4e4f926f415eeef75b7ae853647cee",
+  "evidenceSnippetOriginal": "The use of AI (if permitted) in assessed work, including for preliminary tasks, must be completely and appropriately documented. In addition, students should document: How the tool was used in their work (e.g., generation of stimuli, translation, summary of previous research, formulation of research questions etc), the prompt, and if required by the teacher, the original output.",
+  "evidenceSnippetDisplay": "IfKW guidance requires documentation of permitted AI use, including tool use and prompts.",
+  "evidenceLocator": "Section: The attribution of the use of AI",
+  "evidenceType": "official_source",
+  "relevance": 0.93,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "The use of AI by students",
+    "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ludwig-maximilians-universitat-munchen.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ludwig-maximilians-universitat-munchen",
+    "publisher": "Ludwig-Maximilians-Universität München",
+    "retrievedAt": "2026-05-12T14:09:15Z",
+    "snapshotHash": "a82c2400f28677a71a66c6bf7b2eef43ca4e4f926f415eeef75b7ae853647cee",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

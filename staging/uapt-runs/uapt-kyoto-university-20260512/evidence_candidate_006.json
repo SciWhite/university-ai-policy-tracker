@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-kyoto-006",
+  "claimId": "claim-kyoto-006",
+  "sourceSnapshotId": "snapshot-kyoto-003",
+  "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/info/20251212141618",
+  "finalUrl": "https://www.iimc.kyoto-u.ac.jp/ja/info/20251212141618",
+  "sourceTitle": "生成AIサービスにおける情報セキュリティ上の注意点と学内の各種生成AIサービスについて | 京都大学情報環境機構",
+  "sourceLanguage": "ja",
+  "snapshotHash": "60f9fa8cbf494764eed529c81aaa42e709af37489f215c5f853a79ef9fc24436",
+  "evidenceSnippetOriginal": "高い機密性が求められ、学外に出してはならない情報は、生成AIサービスであろうと、それ以外のサービスであろうと、学外へ流れるようなことがあってはなりません。そうした情報は、学外者とのメールに添付することが認められないのと同様に、生成AIサービスに利用することも認められません。",
+  "evidenceSnippetDisplay": "Highly confidential information that must not leave the university must not be used with generative AI services.",
+  "evidenceLocator": "４．２ 外部生成AIサービスに入力する情報に対する留意点",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "生成AIサービスにおける情報セキュリティ上の注意点と学内の各種生成AIサービスについて | 京都大学情報環境機構",
+    "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/info/20251212141618",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/kyoto-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/kyoto-university",
+    "publisher": "Kyoto University",
+    "retrievedAt": "2026-05-12T15:30:00Z",
+    "snapshotHash": "60f9fa8cbf494764eed529c81aaa42e709af37489f215c5f853a79ef9fc24436",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

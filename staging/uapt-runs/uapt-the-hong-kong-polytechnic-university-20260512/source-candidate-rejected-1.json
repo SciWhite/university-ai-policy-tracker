@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "sourceCandidateId": "polyu-sc-rejected-1",
+  "entityType": "university",
+  "entitySlug": "the-hong-kong-polytechnic-university",
+  "sourceUrl": "https://www.polyu.edu.hk/",
+  "finalUrl": "https://www.polyu.edu.hk/",
+  "sourceTitle": "The Hong Kong Polytechnic University",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "canonical_domain",
+  "discoveredAt": "2026-05-12T00:00:30.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.05,
+  "policySpecificityScore": 0,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-12T00:01:00.000Z",
+  "verificationNotes": "Official homepage but contains no AI policy or guidance content.",
+  "rejectionReason": "generic_home_page",
+  "robotsPolicy": "respect"
+}

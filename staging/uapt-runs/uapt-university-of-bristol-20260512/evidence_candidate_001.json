@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-bristol-001",
+  "claimId": "claim-bristol-001",
+  "sourceSnapshotId": "snapshot-bristol-001",
+  "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+  "finalUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+  "sourceTitle": "Guidance on AI | Bristol Institute For Learning and Teaching",
+  "sourceLanguage": "en",
+  "snapshotHash": "37b0e7d3dd50bec5d10915bb613220c112704886141cd9d248a82776642385ed",
+  "evidenceSnippetOriginal": "This guidance sets out the University of Bristol's approach to using generative AI on taught degree programmes. The responsible use of generative AI is foundational to our educational vision to inspire students, and to equip well-rounded graduates with skills for the future. Generative AI should not replace activities that develop intellectual rigour, student agency, and students' capacity to work through complex problems themselves.",
+  "evidenceSnippetDisplay": "University guidance for generative AI on taught degree programmes",
+  "evidenceLocator": "Section: University guidance on Generative AI in Education, paragraphs 1-2",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidance on AI | Bristol Institute For Learning and Teaching",
+    "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+    "publisher": "University of Bristol",
+    "retrievedAt": "2026-05-12T05:50:00Z",
+    "snapshotHash": "37b0e7d3dd50bec5d10915bb613220c112704886141cd9d248a82776642385ed",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

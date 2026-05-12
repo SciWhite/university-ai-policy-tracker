@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "sourceSnapshotId": "polyu-ss-1",
+  "sourceCandidateId": "polyu-sc-1",
+  "fetchAttemptId": "polyu-fa-1",
+  "sourceUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/generative-ai/",
+  "finalUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/generative-ai/",
+  "sourceTitle": "Generative AI | Educational Development Centre",
+  "sourceLanguage": "en",
+  "contentHash": "8a6a3890e36e32f7805431177c86acdec781661f7128a185585d07ab4ea19444",
+  "fetchedAt": "2026-05-12T00:06:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-the-hong-kong-polytechnic-university-20260512/normalized/polyu-edc-generative-ai.txt",
+  "rawArtifactPaths": []
+}

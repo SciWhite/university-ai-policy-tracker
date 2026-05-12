@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-lmu-005",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "claimType": "research",
+  "claimText": "LMU Medical Faculty dissertation guidance says doctoral authors must disclose when, where, and to what extent AI was used, name AI as an aid in the affidavit, and mark sections where AI was used for creation or editing.",
+  "normalizedValue": "Medical Faculty GWP page requires disclosure and marking of AI use in dissertations",
+  "sourceLanguage": "de",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-lmu-005"
+  ],
+  "citation": {
+    "citationTitle": "Umgang und Nutzung von künstlicher Intelligenz",
+    "sourceUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ludwig-maximilians-universitat-munchen.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ludwig-maximilians-universitat-munchen",
+    "publisher": "Ludwig-Maximilians-Universität München",
+    "retrievedAt": "2026-05-12T14:09:15Z",
+    "snapshotHash": "99c44e197380c05b23bdfbfbfe10f5b8cfd3b2725483f55a8d259432cc6bdda0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

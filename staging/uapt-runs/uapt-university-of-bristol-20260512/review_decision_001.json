@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "decision-bristol-001",
+  "claimId": "claim-bristol-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim supported by direct evidence from official university guidance page. Evidence snippet confirms university-wide approach to generative AI on taught programmes.",
+  "decidedAt": "2026-05-12T05:50:30Z"
+}

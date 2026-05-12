@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "rd-lse-001",
+  "claimId": "cc-lse-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "codex-local-staged-review",
+  "notes": "Approved for staged agent review only because the claim wording is narrowly supported by the linked official LSE evidence. Not human reviewed and not canonical.",
+  "decidedAt": "2026-05-12T14:03:47.000Z"
+}

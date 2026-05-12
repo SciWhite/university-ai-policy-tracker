@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-lse-004",
+  "entityType": "university",
+  "entitySlug": "the-london-school-of-economics-and-political-science",
+  "claimType": "ai_tool_treatment",
+  "claimText": "LSE lists Claude for Education as available to academic staff and students and Copilot with Commercial Data Protection as available to all staff and students.",
+  "normalizedValue": "claude_and_copilot_available",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-lse-004"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI - LSE",
+    "sourceUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-london-school-of-economics-and-political-science.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-london-school-of-economics-and-political-science",
+    "publisher": "The London School of Economics and Political Science",
+    "retrievedAt": "2026-05-12T14:03:47.000Z",
+    "snapshotHash": "238a4d20ef5aff452f19bc3c5e6ba284a6e3684a9b31ba59591a66ec07bcb9c1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

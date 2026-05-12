@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-lmu-002",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "sourceUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+  "finalUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+  "sourceTitle": "Umgang und Nutzung von künstlicher Intelligenz",
+  "sourceLanguage": "de",
+  "sourceType": "research_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:lmu.de \"Künstliche Intelligenz\" Prüfung",
+  "discoveredAt": "2026-05-12T14:09:15Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.9,
+  "policySpecificityScore": 0.86,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T14:09:15Z",
+  "verificationNotes": "Official Medical Faculty GWP page on AI use in dissertations, disclosure, source checking and author responsibility.",
+  "robotsPolicy": "respect"
+}

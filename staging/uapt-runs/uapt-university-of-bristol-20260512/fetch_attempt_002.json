@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-bristol-002",
+  "sourceCandidateId": "src-bristol-002",
+  "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+  "finalUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+  "attemptedAt": "2026-05-12T05:50:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 980,
+  "contentHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-bristol-003",
+  "entityType": "university",
+  "entitySlug": "university-of-bristol",
+  "claimType": "teaching",
+  "claimText": "University of Bristol uses a four-category system for AI use in assessments: Category 1 (prohibited - no AI use), Category 2 (minimal - spelling/grammar only, default), Category 3 (selective - certain tasks as specified), and Category 4 (integral - AI required for assessment).",
+  "normalizedValue": "Four-category AI assessment system: prohibited, minimal, selective, integral",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["evidence-bristol-003"],
+  "citation": {
+    "citationTitle": "Using artificial intelligence (AI) in assessments and for studying",
+    "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+    "publisher": "University of Bristol",
+    "retrievedAt": "2026-05-12T05:50:00Z",
+    "snapshotHash": "076c72c33eff9a4492777ac3731ec4ba5255f18c0449757f4d3f9f48e9084017",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

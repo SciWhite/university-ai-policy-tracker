@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-kyoto-002",
+  "sourceCandidateId": "src-kyoto-002",
+  "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+  "finalUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+  "attemptedAt": "2026-05-12T15:30:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1343,
+  "contentHash": "9b09652a65366efdf7bdcdfd3bc9a11b3f5f2a55eac497a691ece97d8329af03",
+  "normalizedTextStorageKey": "normalized/kyoto-src-kyoto-002-20260512.txt"
+}

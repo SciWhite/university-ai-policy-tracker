@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "uapt-new-york-university-20260512-fetch-004",
+  "sourceCandidateId": "uapt-new-york-university-20260512-candidate-004",
+  "sourceUrl": "https://guides.nyu.edu/ai-tools",
+  "finalUrl": "https://guides.nyu.edu/ai-tools",
+  "attemptedAt": "2026-05-12T00:10:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html;charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2500,
+  "contentHash": "75289df1383e4c2d2739e4b42995a09918f6eda9fbc402b9a32e4d8abcf21b89"
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-bristol-003",
+  "claimId": "claim-bristol-003",
+  "sourceSnapshotId": "snapshot-bristol-003",
+  "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+  "finalUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+  "sourceTitle": "Using artificial intelligence (AI) in assessments and for studying",
+  "sourceLanguage": "en",
+  "snapshotHash": "076c72c33eff9a4492777ac3731ec4ba5255f18c0449757f4d3f9f48e9084017",
+  "evidenceSnippetOriginal": "Category 1: prohibited (not allowed) - You cannot use AI tools at all, including spelling and grammar checkers. Category 2: minimal (a little) - You can use AI tools for spelling and grammar check. You can use it for rewording occasional phrases, but not sentences, large parts of text or paragraphs. Category 3: selective (certain tasks) - AI tools can be used in certain ways. Your lecturer will tell you what you can use it for. Category 4: integral (important) - AI tools are needed for the assessment.",
+  "evidenceSnippetDisplay": "Four AI assessment categories: prohibited, minimal, selective, integral",
+  "evidenceLocator": "Section: Artificial intelligence (AI) assessment categories",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using artificial intelligence (AI) in assessments and for studying",
+    "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+    "publisher": "University of Bristol",
+    "retrievedAt": "2026-05-12T05:50:00Z",
+    "snapshotHash": "076c72c33eff9a4492777ac3731ec4ba5255f18c0449757f4d3f9f48e9084017",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

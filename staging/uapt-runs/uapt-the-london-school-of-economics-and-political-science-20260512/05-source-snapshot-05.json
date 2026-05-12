@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-lse-005",
+  "sourceCandidateId": "sc-lse-005",
+  "fetchAttemptId": "fa-lse-005",
+  "sourceUrl": "https://info.lse.ac.uk/staff/services/Policies-and-procedures/Assets/Documents/aiLegRegGui.pdf",
+  "finalUrl": "https://info.lse.ac.uk/staff/services/Policies-and-procedures/Assets/Documents/aiLegRegGui.pdf",
+  "sourceTitle": "AI Legal and Regulatory Guidance",
+  "sourceLanguage": "en",
+  "contentHash": "21360bfa51bbfcbe544e969014dfdb524c6ea6ef309aae0350f25d069b906e71",
+  "fetchedAt": "2026-05-12T14:03:47.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "openclaw-normalized-text:uapt-the-london-school-of-economics-and-political-science-20260512/ss-lse-005",
+  "rawArtifactPaths": []
+}

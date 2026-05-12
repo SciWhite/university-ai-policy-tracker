@@ -1,0 +1,28 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "reportId": "polyu-report-20260512",
+  "title": "The Hong Kong Polytechnic University AI Policy Staged Report",
+  "generatedAt": "2026-05-12T13:30:00.000Z",
+  "draftPath": "content/reports/the-hong-kong-polytechnic-university-2026-05-12.mdx",
+  "summary": "PolyU's public guidance presents an open stance toward GenAI in education, treats GenAI as part of learning, teaching, and assessment from 2023/24 Semester One, maintains academic integrity expectations for assessment work, allows GenAI in take-home continuous assessment tasks while emphasizing student accountability, and provides M365 Copilot Chat access to staff and students through official IT channels.",
+  "referencedClaimIds": [
+    "polyu-claim-1",
+    "polyu-claim-2",
+    "polyu-claim-3",
+    "polyu-claim-4",
+    "polyu-claim-5"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/the-hong-kong-polytechnic-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This staged report is based on publicly accessible official sources retrieved on 2026-05-12.",
+    "Login-gated sources and non-public internal policy documents were not accessed."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

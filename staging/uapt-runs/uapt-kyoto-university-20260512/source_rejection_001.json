@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "reject-kyoto-001",
+  "sourceCandidateId": "src-kyoto-rej-001",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "sourceUrl": "https://sites.google.com/kyoto-u.ac.jp/ku-gen-ai-info-portal",
+  "rejectedAt": "2026-05-12T15:30:00Z",
+  "rejectionReason": "login_required",
+  "checkedBy": "codex-local-crawl-agent",
+  "evidenceSnippet": "※教職員・学生のみへの公開設定となっています。あらかじめ本学アカウントにてGoogleにサインインしたうえでアクセスください。",
+  "notes": "Official portal is explicitly limited to faculty, staff, and students and requires a Kyoto University Google sign-in; not accessed."
+}

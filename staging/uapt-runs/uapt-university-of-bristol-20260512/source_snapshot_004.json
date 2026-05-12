@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snapshot-bristol-004",
+  "sourceCandidateId": "src-bristol-004",
+  "fetchAttemptId": "fetch-bristol-004",
+  "sourceUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+  "finalUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+  "sourceTitle": "Guidance for PGR students on the use of AI tools in thesis writing",
+  "sourceLanguage": "en",
+  "contentHash": "e7650f617311bc07db8be26780653990911db1d83b4a12b497d5b00b099443b0",
+  "fetchedAt": "2026-05-12T05:50:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/bristol-pgr-ai-thesis-20260512.txt",
+  "rawArtifactPaths": []
+}

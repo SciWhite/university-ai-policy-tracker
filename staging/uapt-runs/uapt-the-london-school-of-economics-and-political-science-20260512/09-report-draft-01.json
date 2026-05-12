@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "report_draft",
+  "reportId": "report-lse-20260512",
+  "title": "LSE staged AI policy source review",
+  "generatedAt": "2026-05-12T14:03:47.000Z",
+  "draftPath": "content/reports/2026-05/lse-staged-ai-policy-source-review.mdx",
+  "summary": "Staged one-university crawl for The London School of Economics and Political Science (LSE), QS 2026 rank 56, United Kingdom. The run found official English-language LSE guidance covering assessment positions, observed assessment safeguards, available AI tools, research use, privacy/security restrictions, and Claude/Copilot tool boundaries. All claims are staged candidates only and are not canonical.",
+  "referencedClaimIds": [
+    "cc-lse-001",
+    "cc-lse-002",
+    "cc-lse-003",
+    "cc-lse-004",
+    "cc-lse-005",
+    "cc-lse-006",
+    "cc-lse-007",
+    "cc-lse-008"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/the-london-school-of-economics-and-political-science.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This run used public official LSE sources discovered with Firecrawl search and fetched with Firecrawl; it did not access login-required or restricted systems."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

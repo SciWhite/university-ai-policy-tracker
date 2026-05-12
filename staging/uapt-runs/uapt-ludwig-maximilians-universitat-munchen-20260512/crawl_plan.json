@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "plan-lmu-001",
+  "createdAt": "2026-05-12T14:09:15Z",
+  "createdBy": "Codex local staged crawl",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "ludwig-maximilians-universitat-munchen",
+      "sourceCandidateId": "src-lmu-001",
+      "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+      "sourceTitle": "The use of AI by students",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "student AI use",
+        "assessment rules",
+        "academic integrity",
+        "privacy"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ludwig-maximilians-universitat-munchen",
+      "sourceCandidateId": "src-lmu-002",
+      "sourceUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+      "sourceTitle": "Umgang und Nutzung von künstlicher Intelligenz",
+      "sourceLanguage": "de",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "research guidance",
+        "dissertation disclosure",
+        "good scientific practice"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "ludwig-maximilians-universitat-munchen",
+      "sourceCandidateId": "src-lmu-003",
+      "sourceUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+      "sourceTitle": "Handreichung zum Umgang mit KI",
+      "sourceLanguage": "de",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching guidance",
+        "assessment guidance",
+        "exam design"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop after official lmu.de or uni-muenchen.de sources provide direct evidence for narrow staged claims.",
+    "Do not access login-gated Moodle courses, paywalled resources, CAPTCHAs, or pages disallowed by robots.txt.",
+    "Do not stage canonical/public claims or mark any claim human_reviewed."
+  ]
+}

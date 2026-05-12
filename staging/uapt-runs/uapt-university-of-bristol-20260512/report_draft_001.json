@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "report_draft",
+  "reportId": "report-bristol-001",
+  "title": "University of Bristol Generative AI Policy Report - 2026-05-12",
+  "generatedAt": "2026-05-12T05:50:30Z",
+  "draftPath": "content/reports/university-of-bristol-2026-05-12.mdx",
+  "summary": "University of Bristol has published official guidance on generative AI use across taught degree programmes and research degrees. The university uses a four-category assessment system (prohibited, minimal, selective, integral), treats AI use beyond stated limits as cheating unless assessment instructions allow it, and does not permit PGR students to use generative AI to write thesis or APM report text.",
+  "referencedClaimIds": ["claim-bristol-001", "claim-bristol-002", "claim-bristol-003", "claim-bristol-004"],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/university-of-bristol.json"
+  ],
+  "limitations": [
+    "This report is based on official sources retrieved on 2026-05-12. Policy changes after this date are not reflected.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "Source evidence is limited to publicly accessible pages. Login-gated content was not accessed."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-bristol-001",
+  "entityType": "university",
+  "entitySlug": "university-of-bristol",
+  "claimType": "teaching",
+  "claimText": "University of Bristol has published official guidance on generative AI use in taught degree programmes, stating that generative AI should not replace activities that develop intellectual rigour, student agency, and students' capacity to work through complex problems themselves.",
+  "normalizedValue": "University has official generative AI guidance for taught programmes",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["evidence-bristol-001"],
+  "citation": {
+    "citationTitle": "Guidance on AI | Bristol Institute For Learning and Teaching",
+    "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+    "publisher": "University of Bristol",
+    "retrievedAt": "2026-05-12T05:50:00Z",
+    "snapshotHash": "37b0e7d3dd50bec5d10915bb613220c112704886141cd9d248a82776642385ed",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

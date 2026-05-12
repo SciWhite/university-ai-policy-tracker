@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-lse-003",
+  "claimId": "cc-lse-003",
+  "sourceSnapshotId": "ss-lse-003",
+  "sourceUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+  "finalUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+  "sourceTitle": "Generative AI - LSE",
+  "sourceLanguage": "en",
+  "snapshotHash": "238a4d20ef5aff452f19bc3c5e6ba284a6e3684a9b31ba59591a66ec07bcb9c1",
+  "evidenceSnippetOriginal": "By making generative AI tools available, LSE is not endorsing the unrestricted use of generative AI tools by students and staff. You should always check your specific course and/or department policy on the use of generative AI tools.",
+  "evidenceLocator": "Generative AI guidance page",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI - LSE",
+    "sourceUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-london-school-of-economics-and-political-science.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-london-school-of-economics-and-political-science",
+    "publisher": "The London School of Economics and Political Science",
+    "retrievedAt": "2026-05-12T14:03:47.000Z",
+    "snapshotHash": "238a4d20ef5aff452f19bc3c5e6ba284a6e3684a9b31ba59591a66ec07bcb9c1",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

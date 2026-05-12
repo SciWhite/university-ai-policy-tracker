@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "claimId": "polyu-claim-2",
+  "entityType": "university",
+  "entitySlug": "the-hong-kong-polytechnic-university",
+  "claimType": "academic_integrity",
+  "claimText": "PolyU states that while it embraces the use of GenAI tools in education, students must adhere to high standards of academic integrity in all forms of assessments.",
+  "normalizedValue": "students_must_adhere_to_academic_integrity_when_using_genai",
+  "sourceLanguage": "en",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["polyu-evidence-2"],
+  "citation": {
+    "citationTitle": "PolyU AI Policy Tracker record",
+    "sourceUrl": "https://www.polyu.edu.hk/ar/students-in-taught-programmes/use-of-genai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-hong-kong-polytechnic-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-hong-kong-polytechnic-university",
+    "publisher": "The Hong Kong Polytechnic University",
+    "retrievedAt": "2026-05-12T00:06:30.000Z",
+    "snapshotHash": "ca2f62929994ec4b03f899c49ed342576638fa62f3f41675ece31ede42c4f1b0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

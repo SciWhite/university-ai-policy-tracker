@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-lmu-002",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "claimType": "academic_integrity",
+  "claimText": "LMU IfKW guidance treats verbatim or minimally changed AI-generated text without proper attribution as plagiarism, and says significant unattributed AI-generated text in assessed work can receive grade 5 (failed).",
+  "normalizedValue": "Unattributed AI-generated text is treated as plagiarism in the IfKW guidance",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-lmu-002"
+  ],
+  "citation": {
+    "citationTitle": "The use of AI by students",
+    "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ludwig-maximilians-universitat-munchen.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ludwig-maximilians-universitat-munchen",
+    "publisher": "Ludwig-Maximilians-Universität München",
+    "retrievedAt": "2026-05-12T14:09:15Z",
+    "snapshotHash": "a82c2400f28677a71a66c6bf7b2eef43ca4e4f926f415eeef75b7ae853647cee",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

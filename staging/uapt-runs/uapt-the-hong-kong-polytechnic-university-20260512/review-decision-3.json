@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "decisionId": "polyu-review-3",
+  "claimId": "polyu-claim-3",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "codex",
+  "notes": "Approved after narrowing. The claim now avoids unsupported discretion language and is limited to the direct evidence about GenAI use for take-home continuous assessment tasks and student accountability.",
+  "decidedAt": "2026-05-12T13:30:00.000Z"
+}

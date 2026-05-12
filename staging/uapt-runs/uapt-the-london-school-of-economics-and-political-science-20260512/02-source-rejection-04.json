@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-lse-004",
+  "sourceCandidateId": "sc-lse-r004",
+  "entityType": "university",
+  "entitySlug": "the-london-school-of-economics-and-political-science",
+  "sourceUrl": "https://www.lse.ac.uk/anthropology/study/AI-Policy",
+  "finalUrl": "https://www.lse.ac.uk/anthropology/study/AI-Policy",
+  "rejectedAt": "2026-05-12T14:03:47.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "codex-firecrawl-staged-crawl",
+  "evidenceSnippet": "This policy applies only to courses taken in the Department of Anthropology. If you are taking a course from outside the Department, you are responsible for checking and abiding by the relevant policy for that course.",
+  "notes": "Official and actionable for Anthropology, but rejected for this one-university run because broader school-wide sources were available and this page is department-scoped."
+}

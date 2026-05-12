@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "report_draft",
+  "reportId": "report-kyoto-001",
+  "title": "Kyoto University Generative AI Policy Evidence Draft - 2026-05-12",
+  "generatedAt": "2026-05-12T15:30:00Z",
+  "draftPath": "content/reports/kyoto-university-2026-05-12.mdx",
+  "summary": "Staged crawl found public official Kyoto University evidence for an education and learning AI initiative, student generative AI guidance, instructor policy and assessment guidance, information-security restrictions for generative AI inputs, and listed generative AI services. Claims remain staged agent-reviewed candidates only and are not canonical public conclusions.",
+  "referencedClaimIds": [
+    "claim-kyoto-001",
+    "claim-kyoto-002",
+    "claim-kyoto-003",
+    "claim-kyoto-004",
+    "claim-kyoto-005",
+    "claim-kyoto-006",
+    "claim-kyoto-007"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/kyoto-university.json"
+  ],
+  "limitations": [
+    "This report draft is based only on public official pages fetched on 2026-05-12; login-limited Kyoto University portal content was not accessed.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "Original Japanese source evidence is canonical; English display snippets are helper summaries only.",
+    "Staged claims are not human reviewed and must not be published as canonical claims without further review."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-lse-003",
+  "sourceCandidateId": "sc-lse-r003",
+  "entityType": "university",
+  "entitySlug": "the-london-school-of-economics-and-political-science",
+  "sourceUrl": "https://www.govtech.com/education/higher-ed/uks-top-universities-issue-5-guidelines-for-generative-ai",
+  "finalUrl": "https://www.govtech.com/education/higher-ed/uks-top-universities-issue-5-guidelines-for-generative-ai",
+  "rejectedAt": "2026-05-12T14:03:47.000Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "codex-firecrawl-staged-crawl",
+  "evidenceSnippet": "Search result was hosted on govtech.com, not an official lse.ac.uk source.",
+  "notes": "Rejected because the run requires official LSE sources first and no third-party source was needed."
+}

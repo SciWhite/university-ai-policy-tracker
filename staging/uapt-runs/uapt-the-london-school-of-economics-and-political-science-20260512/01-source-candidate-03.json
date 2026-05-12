@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-lse-003",
+  "entityType": "university",
+  "entitySlug": "the-london-school-of-economics-and-political-science",
+  "sourceUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+  "finalUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+  "sourceTitle": "Generative AI - LSE",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:lse.ac.uk \"AI tools\" students assessment",
+  "discoveredAt": "2026-05-12T14:03:47.000Z",
+  "officialDomainConfidence": 1,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.93,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T14:03:47.000Z",
+  "verificationNotes": "Official LSE source fetched with Firecrawl and used only for narrowly supported staged claims.",
+  "robotsPolicy": "respect"
+}

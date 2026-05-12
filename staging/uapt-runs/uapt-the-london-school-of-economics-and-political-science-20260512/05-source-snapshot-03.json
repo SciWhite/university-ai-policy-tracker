@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-lse-003",
+  "sourceCandidateId": "sc-lse-003",
+  "fetchAttemptId": "fa-lse-003",
+  "sourceUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+  "finalUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+  "sourceTitle": "Generative AI - LSE",
+  "sourceLanguage": "en",
+  "contentHash": "238a4d20ef5aff452f19bc3c5e6ba284a6e3684a9b31ba59591a66ec07bcb9c1",
+  "fetchedAt": "2026-05-12T14:03:47.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "openclaw-normalized-text:uapt-the-london-school-of-economics-and-political-science-20260512/ss-lse-003",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-bristol-004",
+  "claimId": "claim-bristol-004",
+  "sourceSnapshotId": "snapshot-bristol-004",
+  "sourceUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+  "finalUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+  "sourceTitle": "Guidance for PGR students on the use of AI tools in thesis writing",
+  "sourceLanguage": "en",
+  "snapshotHash": "e7650f617311bc07db8be26780653990911db1d83b4a12b497d5b00b099443b0",
+  "evidenceSnippetOriginal": "To be awarded a research degree, you must meet several key standards in your research training. One of these is the ability to write about your research in your own words. This critical research skill is tested through your thesis and through your annual progress monitoring (APM) reports. For this reason, you are not permitted to use generative AI tools, such as ChatGPT, to write any text that is used in your thesis or in your APM reports.",
+  "evidenceSnippetDisplay": "PGR students not permitted to use generative AI to write thesis or APM text",
+  "evidenceLocator": "Section: Introduction",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidance for PGR students on the use of AI tools in thesis writing",
+    "sourceUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+    "publisher": "University of Bristol",
+    "retrievedAt": "2026-05-12T05:50:00Z",
+    "snapshotHash": "e7650f617311bc07db8be26780653990911db1d83b4a12b497d5b00b099443b0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

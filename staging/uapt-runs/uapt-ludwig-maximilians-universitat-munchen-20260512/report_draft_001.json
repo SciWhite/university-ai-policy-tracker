@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "report_draft",
+  "reportId": "report-lmu-001",
+  "title": "Ludwig-Maximilians-Universität München AI Policy Evidence Draft - 2026-05-12",
+  "generatedAt": "2026-05-12T14:09:15Z",
+  "draftPath": "content/reports/ludwig-maximilians-universitat-munchen-2026-05-12.mdx",
+  "summary": "Staged crawl for Ludwig-Maximilians-Universität München found official LMU evidence on IfKW student AI-use rules for assessed work, Medical Faculty dissertation/GWP AI-use responsibilities, and teaching guidance for adapting assessments around ChatGPT. All claims remain non-canonical staged candidates and are not human reviewed.",
+  "referencedClaimIds": [
+    "claim-lmu-001",
+    "claim-lmu-002",
+    "claim-lmu-003",
+    "claim-lmu-004",
+    "claim-lmu-005",
+    "claim-lmu-006"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/ludwig-maximilians-universitat-munchen.json"
+  ],
+  "limitations": [
+    "This draft is based only on publicly accessible official LMU sources fetched on 2026-05-12; login-gated Moodle or internal material was not accessed.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "The staged claims are not canonical public claims and have not been human reviewed."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

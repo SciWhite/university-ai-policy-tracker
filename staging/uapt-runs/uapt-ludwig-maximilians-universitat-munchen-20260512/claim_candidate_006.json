@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-lmu-006",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "claimType": "teaching",
+  "claimText": "LMU teaching guidance recommends adapting e-exam questions for ChatGPT-era assessment, including tasks that require critical reflection on ChatGPT limitations rather than simple knowledge or comprehension questions.",
+  "normalizedValue": "Teaching handout recommends adapting e-exam question formats around ChatGPT limitations",
+  "sourceLanguage": "de",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-lmu-006"
+  ],
+  "citation": {
+    "citationTitle": "Handreichung zum Umgang mit KI",
+    "sourceUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ludwig-maximilians-universitat-munchen.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ludwig-maximilians-universitat-munchen",
+    "publisher": "Ludwig-Maximilians-Universität München",
+    "retrievedAt": "2026-05-12T14:09:15Z",
+    "snapshotHash": "e572e056a5eb30a5e00a7d1a90ce5d4c1b7531bfe6c198c87e0b1933d153eeba",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

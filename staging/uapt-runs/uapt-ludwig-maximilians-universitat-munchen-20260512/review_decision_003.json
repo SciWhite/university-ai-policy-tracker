@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "decision-lmu-003",
+  "claimId": "claim-lmu-003",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "Codex local staged crawl",
+  "notes": "Approved for staged artifact review only because the claim is directly supported by the linked official source evidence. Not human reviewed and not canonical.",
+  "decidedAt": "2026-05-12T14:09:15Z"
+}

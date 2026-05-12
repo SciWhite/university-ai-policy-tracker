@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-lmu-001",
+  "sourceCandidateId": "src-lmu-001",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "attemptedAt": "2026-05-12T14:09:15Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "a82c2400f28677a71a66c6bf7b2eef43ca4e4f926f415eeef75b7ae853647cee",
+  "normalizedTextStorageKey": "snapshot:lmu:ifkw-ai-use-for-students:normalized-text:20260512"
+}

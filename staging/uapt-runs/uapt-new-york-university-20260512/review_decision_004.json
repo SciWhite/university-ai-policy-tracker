@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "uapt-new-york-university-20260512-decision-004",
+  "claimId": "uapt-new-york-university-20260512-claim-004",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-crawler-v1",
+  "notes": "Claim supported by direct evidence from official NYU source",
+  "decidedAt": "2026-05-12T00:15:00Z"
+}

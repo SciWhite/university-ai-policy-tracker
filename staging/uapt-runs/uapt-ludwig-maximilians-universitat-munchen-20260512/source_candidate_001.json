@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-lmu-001",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "sourceTitle": "The use of AI by students",
+  "sourceLanguage": "en",
+  "sourceType": "assessment_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:lmu.de \"generative AI\" policy",
+  "discoveredAt": "2026-05-12T14:09:15Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.93,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T14:09:15Z",
+  "verificationNotes": "Official LMU-hosted IfKW PDF with student-facing AI rules for assessed work, attribution, privacy and responsible use.",
+  "robotsPolicy": "respect"
+}

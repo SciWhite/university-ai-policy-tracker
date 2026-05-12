@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-kyoto-007",
+  "claimId": "claim-kyoto-007",
+  "sourceSnapshotId": "snapshot-kyoto-002",
+  "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+  "finalUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+  "sourceTitle": "生成AI | 京都大学情報環境機構",
+  "sourceLanguage": "ja",
+  "snapshotHash": "9b09652a65366efdf7bdcdfd3bc9a11b3f5f2a55eac497a691ece97d8329af03",
+  "evidenceSnippetOriginal": "本ページでは、本学の教職員・学生の皆様が利用できる生成AI関連サービスや、生成AIの活用に関する情報サイトへのリンクを掲載しています。\n\n### Gemini\n\n学生教員職員\n\n### NotebookLM\n\n学生教員職員\n\n### Microsoft 365 Copilot Chat\n\n学生教員職員",
+  "evidenceSnippetDisplay": "The IIMC page lists Gemini, NotebookLM, and Microsoft 365 Copilot Chat for students, faculty, and staff.",
+  "evidenceLocator": "生成AI | 京都大学情報環境機構, サービス",
+  "evidenceType": "official_source",
+  "relevance": 0.9,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "生成AI | 京都大学情報環境機構",
+    "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/kyoto-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/kyoto-university",
+    "publisher": "Kyoto University",
+    "retrievedAt": "2026-05-12T15:30:00Z",
+    "snapshotHash": "9b09652a65366efdf7bdcdfd3bc9a11b3f5f2a55eac497a691ece97d8329af03",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "decision-kyoto-006",
+  "claimId": "claim-kyoto-006",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "codex-local-crawl-agent",
+  "notes": "Approved for staged artifact review only because the claim is narrowly scoped to the quoted public official Kyoto University source text. Not human reviewed and not canonical.",
+  "decidedAt": "2026-05-12T15:30:00Z"
+}

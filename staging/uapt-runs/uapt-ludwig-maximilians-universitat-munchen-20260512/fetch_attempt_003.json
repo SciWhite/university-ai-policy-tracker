@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-lmu-003",
+  "sourceCandidateId": "src-lmu-003",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+  "attemptedAt": "2026-05-12T14:09:15Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "e572e056a5eb30a5e00a7d1a90ce5d4c1b7531bfe6c198c87e0b1933d153eeba",
+  "normalizedTextStorageKey": "snapshot:lmu:handreichung-ki:normalized-text:20260512"
+}

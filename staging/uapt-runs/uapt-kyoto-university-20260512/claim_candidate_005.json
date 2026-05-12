@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-kyoto-005",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "claimType": "privacy",
+  "claimText": "Kyoto University warns students not to casually enter privacy-related information, confidential information, or copyrighted works into generative AI prompts or uploaded data.",
+  "normalizedValue": "avoid_privacy_confidential_copyright_inputs",
+  "sourceLanguage": "ja",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-kyoto-005"
+  ],
+  "citation": {
+    "citationTitle": "京都大学の教育・学修におけるAIの利活用について",
+    "sourceUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/kyoto-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/kyoto-university",
+    "publisher": "Kyoto University",
+    "retrievedAt": "2026-05-12T15:30:00Z",
+    "snapshotHash": "a3384fe7b1a9f9929da3561d656788aff958e36cbbd41ef33d65d3fb9dd84899",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

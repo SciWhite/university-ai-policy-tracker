@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-lmu-005",
+  "claimId": "claim-lmu-005",
+  "sourceSnapshotId": "snapshot-lmu-002",
+  "sourceUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+  "finalUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+  "sourceTitle": "Umgang und Nutzung von künstlicher Intelligenz",
+  "sourceLanguage": "de",
+  "snapshotHash": "99c44e197380c05b23bdfbfbfe10f5b8cfd3b2725483f55a8d259432cc6bdda0",
+  "evidenceSnippetOriginal": "Geben Sie an, wann, wo und in welchem Umfang Sie KI im Rahmen Ihrer Dissertation genutzt haben! In Ihrer eidesstattlichen Versicherung (Affidavit) erklären Sie, dass Sie Ihre Dissertation selbständig verfasst haben und alle verwendeten Hilfsmittel benannt haben. KI ist ein solches Hilfsmittel und muss daher benannt werden. Machen Sie Abschnitte in denen Sie KI beim Erstellen oder Editieren genutzt haben kenntlich.",
+  "evidenceSnippetDisplay": "Medical Faculty GWP guidance requires disclosure of AI use in dissertations.",
+  "evidenceLocator": "Section: Umgang und Nutzung von künstlicher Intelligenz",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Umgang und Nutzung von künstlicher Intelligenz",
+    "sourceUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ludwig-maximilians-universitat-munchen.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ludwig-maximilians-universitat-munchen",
+    "publisher": "Ludwig-Maximilians-Universität München",
+    "retrievedAt": "2026-05-12T14:09:15Z",
+    "snapshotHash": "99c44e197380c05b23bdfbfbfe10f5b8cfd3b2725483f55a8d259432cc6bdda0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

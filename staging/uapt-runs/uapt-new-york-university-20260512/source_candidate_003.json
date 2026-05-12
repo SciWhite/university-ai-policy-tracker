@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "uapt-new-york-university-20260512-candidate-003",
+  "entityType": "university",
+  "entitySlug": "new-york-university",
+  "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools/frequently-asked-questions.html",
+  "finalUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools/frequently-asked-questions.html",
+  "sourceTitle": "Frequently Asked Questions About Teaching and AI - NYU",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:nyu.edu \"generative AI\"",
+  "discoveredAt": "2026-05-12T00:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T00:10:00Z",
+  "verificationNotes": "Official NYU source with generative AI guidance",
+  "robotsPolicy": "respect"
+}

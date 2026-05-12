@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "sourceSnapshotId": "polyu-ss-3",
+  "sourceCandidateId": "polyu-sc-3",
+  "fetchAttemptId": "polyu-fa-3",
+  "sourceUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/academic-integrity/",
+  "finalUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/academic-integrity/",
+  "sourceTitle": "Academic Integrity | Educational Development Centre",
+  "sourceLanguage": "en",
+  "contentHash": "7e278c73bc2106043483e3d859cbc464c34b54a7f40a5960551aeeec59b6400f",
+  "fetchedAt": "2026-05-12T00:07:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-the-hong-kong-polytechnic-university-20260512/normalized/polyu-edc-academic-integrity.txt",
+  "rawArtifactPaths": []
+}

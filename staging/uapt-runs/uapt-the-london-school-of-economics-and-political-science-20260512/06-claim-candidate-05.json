@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-lse-005",
+  "entityType": "university",
+  "entitySlug": "the-london-school-of-economics-and-political-science",
+  "claimType": "research",
+  "claimText": "LSE research guidance applies to LSE staff and students undertaking research and frames generative AI as a supportive tool while keeping researchers accountable for outputs.",
+  "normalizedValue": "research_guidance_applies_staff_students",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-lse-005"
+  ],
+  "citation": {
+    "citationTitle": "LSE Guidance on the use of Generative AI for research",
+    "sourceUrl": "https://www.lse.ac.uk/DSI/Assets/documents/LSE-Guidance-on-the-use-of-Generative-AI-for-research.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-london-school-of-economics-and-political-science.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-london-school-of-economics-and-political-science",
+    "publisher": "The London School of Economics and Political Science",
+    "retrievedAt": "2026-05-12T14:03:47.000Z",
+    "snapshotHash": "61a62e350898b61414d3fe9570861817e1fdb32409f5852701cfc326c27a1d43",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-kyoto-005",
+  "claimId": "claim-kyoto-005",
+  "sourceSnapshotId": "snapshot-kyoto-001",
+  "sourceUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+  "finalUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+  "sourceTitle": "京都大学の教育・学修におけるAIの利活用について",
+  "sourceLanguage": "ja",
+  "snapshotHash": "a3384fe7b1a9f9929da3561d656788aff958e36cbbd41ef33d65d3fb9dd84899",
+  "evidenceSnippetOriginal": "プライバシーに関連する情報、機密情報、著作物などをプロンプトやアップロードデータとして安易に入力することは避けること。また出力結果を利用するに当たっては、それが著作権、肖像権等を侵害するものでないか（他者の著作物や肖像等と類似していないか）を調査すること。",
+  "evidenceSnippetDisplay": "Students are told to avoid casually entering privacy-related, confidential, or copyrighted material into prompts or uploads.",
+  "evidenceLocator": "京都大学の教育・学修における生成AI利用に関するガイドライン, 4(1) 学生に求められる対応: 入出力上の注意",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "京都大学の教育・学修におけるAIの利活用について",
+    "sourceUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/kyoto-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/kyoto-university",
+    "publisher": "Kyoto University",
+    "retrievedAt": "2026-05-12T15:30:00Z",
+    "snapshotHash": "a3384fe7b1a9f9929da3561d656788aff958e36cbbd41ef33d65d3fb9dd84899",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

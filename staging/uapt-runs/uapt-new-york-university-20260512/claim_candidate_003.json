@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "uapt-new-york-university-20260512-claim-003",
+  "entityType": "university",
+  "entitySlug": "new-york-university",
+  "claimType": "ai_tool_treatment",
+  "claimText": "NYU does not license or endorse AI detection tools due to accuracy and reliability concerns.",
+  "normalizedValue": "NYU does not license or endorse AI detection tools due to accuracy and reliability concerns.",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uapt-new-york-university-20260512-evidence-003"
+  ],
+  "citation": {
+    "citationTitle": "NYU Generative AI Guidance",
+    "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+    "publisher": "New York University",
+    "retrievedAt": "2026-05-12T00:10:00Z",
+    "snapshotHash": "dc40ace18d3202f334370108c651e62d9ad331b01fe1f136b6482b51d72ec6a2",
+    "sourceRights": "Official university guidance; rights reserved to New York University"
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

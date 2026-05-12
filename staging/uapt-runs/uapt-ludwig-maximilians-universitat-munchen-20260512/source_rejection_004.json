@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rejection-lmu-004",
+  "sourceCandidateId": "src-lmu-007",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "sourceUrl": "https://www.lmu.de/de/newsroom/newsuebersicht/news/chatgpt-wird-die-bildungsarbeit-fundamental-veraendern-5a52e965.html",
+  "finalUrl": "https://www.lmu.de/de/newsroom/newsuebersicht/news/chatgpt-wird-die-bildungsarbeit-fundamental-veraendern-5a52e965.html",
+  "rejectedAt": "2026-05-12T14:09:15Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "Codex local staged crawl",
+  "evidenceSnippet": "News/interview-style item about ChatGPT and education; not a policy, rule, approved-tool page, or assessment guidance source.",
+  "notes": "News/interview content about ChatGPT in education, not a policy/guidance source."
+}

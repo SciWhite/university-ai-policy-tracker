@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snapshot-bristol-003",
+  "sourceCandidateId": "src-bristol-003",
+  "fetchAttemptId": "fetch-bristol-003",
+  "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+  "finalUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+  "sourceTitle": "Using artificial intelligence (AI) in assessments and for studying",
+  "sourceLanguage": "en",
+  "contentHash": "076c72c33eff9a4492777ac3731ec4ba5255f18c0449757f4d3f9f48e9084017",
+  "fetchedAt": "2026-05-12T05:50:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/bristol-using-ai-assessments-20260512.txt",
+  "rawArtifactPaths": []
+}

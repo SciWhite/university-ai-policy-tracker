@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-kyoto-002",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+  "finalUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+  "sourceTitle": "生成AI | 京都大学情報環境機構",
+  "sourceLanguage": "ja",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:kyoto-u.ac.jp 生成AI ポリシー",
+  "discoveredAt": "2026-05-12T15:30:00Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.86,
+  "policySpecificityScore": 0.74,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T15:30:00Z",
+  "verificationNotes": "Official public IIMC service page listing generative AI services available to Kyoto University students, faculty, and staff, plus a login-only portal link.",
+  "robotsPolicy": "respect"
+}

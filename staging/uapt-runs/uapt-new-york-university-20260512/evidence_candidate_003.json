@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "uapt-new-york-university-20260512-evidence-003",
+  "claimId": "uapt-new-york-university-20260512-claim-003",
+  "sourceSnapshotId": "uapt-new-york-university-20260512-snapshot-003",
+  "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+  "finalUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+  "sourceTitle": "NYU Generative AI Guidance",
+  "sourceLanguage": "en",
+  "snapshotHash": "dc40ace18d3202f334370108c651e62d9ad331b01fe1f136b6482b51d72ec6a2",
+  "evidenceSnippetOriginal": "The Office of the Provost and IT's Academic Technology group do not believe any current AI detectors work well enough to recommend their use or license them on behalf of the university.",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Official university guidance; rights reserved to New York University",
+  "citation": {
+    "citationTitle": "NYU Generative AI Guidance",
+    "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+    "publisher": "New York University",
+    "retrievedAt": "2026-05-12T00:10:00Z",
+    "snapshotHash": "dc40ace18d3202f334370108c651e62d9ad331b01fe1f136b6482b51d72ec6a2",
+    "sourceRights": "Official university guidance; rights reserved to New York University"
+  }
+}

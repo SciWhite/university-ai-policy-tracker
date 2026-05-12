@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rejection-lmu-001",
+  "sourceCandidateId": "src-lmu-004",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/04-som/ism/downloads/chatgpt_handreichung.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/04-som/ism/downloads/chatgpt_handreichung.pdf",
+  "rejectedAt": "2026-05-12T14:09:15Z",
+  "rejectionReason": "duplicate",
+  "checkedBy": "Codex local staged crawl",
+  "evidenceSnippet": "Official LMU-hosted duplicate copy of the broader ChatGPT handout; the run uses the university library copy as the verified teaching-guidance source.",
+  "notes": "Duplicate official handout copy; not used for claims to avoid duplicate source support."
+}

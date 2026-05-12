@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-bristol-002",
+  "claimId": "claim-bristol-002",
+  "sourceSnapshotId": "snapshot-bristol-002",
+  "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+  "finalUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+  "sourceTitle": "Academic integrity | Current students | University of Bristol",
+  "sourceLanguage": "en",
+  "snapshotHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a",
+  "evidenceSnippetOriginal": "We consider the use of AI or translation tools to be cheating if used for more than: generating the occasional short phrase within a sentence, checking basic grammar and spelling. Some assessments may allow more comprehensive use of these tools, but this will be detailed in your assessment instructions.",
+  "evidenceSnippetDisplay": "AI use beyond occasional phrases and grammar checking is cheating",
+  "evidenceLocator": "Section: Academic integrity, paragraph on AI and translation tools",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Academic integrity | Current students | University of Bristol",
+    "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+    "publisher": "University of Bristol",
+    "retrievedAt": "2026-05-12T05:50:00Z",
+    "snapshotHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

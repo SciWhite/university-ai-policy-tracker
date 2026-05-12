@@ -1,0 +1,19 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "fetchAttemptId": "polyu-fa-2",
+  "sourceCandidateId": "polyu-sc-2",
+  "sourceUrl": "https://www.polyu.edu.hk/ar/students-in-taught-programmes/use-of-genai/",
+  "finalUrl": "https://www.polyu.edu.hk/ar/students-in-taught-programmes/use-of-genai/",
+  "attemptedAt": "2026-05-12T00:06:30.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2800,
+  "contentHash": "ca2f62929994ec4b03f899c49ed342576638fa62f3f41675ece31ede42c4f1b0",
+  "normalizedTextStorageKey": "staging/uapt-the-hong-kong-polytechnic-university-20260512/normalized/polyu-ar-use-of-genai.txt"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-bristol-002",
+  "entityType": "university",
+  "entitySlug": "university-of-bristol",
+  "claimType": "academic_integrity",
+  "claimText": "University of Bristol considers the use of AI or translation tools to be cheating if used for more than generating the occasional short phrase within a sentence or checking basic grammar and spelling, unless assessment instructions allow more comprehensive use.",
+  "normalizedValue": "AI use beyond occasional phrases and grammar checking is considered cheating",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["evidence-bristol-002"],
+  "citation": {
+    "citationTitle": "Academic integrity | Current students | University of Bristol",
+    "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+    "publisher": "University of Bristol",
+    "retrievedAt": "2026-05-12T05:50:00Z",
+    "snapshotHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

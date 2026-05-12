@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-kyoto-002",
+  "claimId": "claim-kyoto-002",
+  "sourceSnapshotId": "snapshot-kyoto-001",
+  "sourceUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+  "finalUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+  "sourceTitle": "京都大学の教育・学修におけるAIの利活用について",
+  "sourceLanguage": "ja",
+  "snapshotHash": "a3384fe7b1a9f9929da3561d656788aff958e36cbbd41ef33d65d3fb9dd84899",
+  "evidenceSnippetOriginal": "文章表現の修正の枠を越えて生成AIを利用して成果物を作成する場合には、作業プロセスの記録を保存すること。求められる場合には、どの過程で、どの生成AIを、どのように使用したかを明示すること。AIの出力結果を自分の成果物に利用すると、他の文献等の剽窃（コピペ）となる可能性もあり、不正行為と判断される場合がある。",
+  "evidenceSnippetDisplay": "Students are told to keep records of AI use beyond wording edits, disclose use if required, and note that using AI output may be judged misconduct.",
+  "evidenceLocator": "京都大学の教育・学修における生成AI利用に関するガイドライン, 4(1) 学生に求められる対応: 利用プロセスの明示",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "京都大学の教育・学修におけるAIの利活用について",
+    "sourceUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/kyoto-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/kyoto-university",
+    "publisher": "Kyoto University",
+    "retrievedAt": "2026-05-12T15:30:00Z",
+    "snapshotHash": "a3384fe7b1a9f9929da3561d656788aff958e36cbbd41ef33d65d3fb9dd84899",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

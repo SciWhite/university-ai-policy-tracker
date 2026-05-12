@@ -1,0 +1,27 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "claimId": "polyu-claim-4",
+  "entityType": "university",
+  "entitySlug": "the-hong-kong-polytechnic-university",
+  "claimType": "ai_tool_treatment",
+  "claimText": "PolyU provides M365 Copilot Chat to all staff and students via the PolyU Gen AI app, using the Microsoft Prometheus model built upon OpenAI GPT-4o.",
+  "normalizedValue": "m365_copilot_chat_available_all_staff_students",
+  "sourceLanguage": "en",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["polyu-evidence-4"],
+  "citation": {
+    "citationTitle": "PolyU AI Policy Tracker record",
+    "sourceUrl": "https://www.polyu.edu.hk/its/news-and-events/its-enewsletter/get-connected/2025-apr/02-m365-copilot-chat-m365-copilot-and-copilot-studio/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-hong-kong-polytechnic-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-hong-kong-polytechnic-university",
+    "publisher": "The Hong Kong Polytechnic University",
+    "retrievedAt": "2026-05-12T00:07:30.000Z",
+    "snapshotHash": "5aa4715078e31d79991e7ff421cb0600b4f542c93a84599fe48d481c8891c69b",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-kyoto-006",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "claimType": "security_review",
+  "claimText": "Kyoto University states that highly confidential information that must not leave the university should not be entered into generative AI services.",
+  "normalizedValue": "do_not_enter_high_confidentiality_information_into_external_genai",
+  "sourceLanguage": "ja",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-kyoto-006"
+  ],
+  "citation": {
+    "citationTitle": "生成AIサービスにおける情報セキュリティ上の注意点と学内の各種生成AIサービスについて | 京都大学情報環境機構",
+    "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/info/20251212141618",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/kyoto-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/kyoto-university",
+    "publisher": "Kyoto University",
+    "retrievedAt": "2026-05-12T15:30:00Z",
+    "snapshotHash": "60f9fa8cbf494764eed529c81aaa42e709af37489f215c5f853a79ef9fc24436",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

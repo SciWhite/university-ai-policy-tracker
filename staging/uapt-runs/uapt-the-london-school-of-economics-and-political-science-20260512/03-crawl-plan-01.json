@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "cp-lse-001",
+  "createdAt": "2026-05-12T14:03:47.000Z",
+  "createdBy": "codex-firecrawl-staged-crawl",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "the-london-school-of-economics-and-political-science",
+      "sourceCandidateId": "sc-lse-001",
+      "sourceUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Artificial-Intelligence-Education-and-Assessment/School-position-on-generative-AI",
+      "sourceTitle": "School position on generative AI - LSE",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative AI",
+        "assessment",
+        "academic integrity",
+        "approved tools",
+        "privacy",
+        "research guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "the-london-school-of-economics-and-political-science",
+      "sourceCandidateId": "sc-lse-002",
+      "sourceUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Assets-EC/Documents/AI-guidelines-update-June-2025/LSE-Position-on-Generative-AI-in-Education-2025-26-FINAL.pdf",
+      "sourceTitle": "LSE position on generative AI in assessment 2025/26",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative AI",
+        "assessment",
+        "academic integrity",
+        "approved tools",
+        "privacy",
+        "research guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "the-london-school-of-economics-and-political-science",
+      "sourceCandidateId": "sc-lse-003",
+      "sourceUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+      "sourceTitle": "Generative AI - LSE",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative AI",
+        "assessment",
+        "academic integrity",
+        "approved tools",
+        "privacy",
+        "research guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "the-london-school-of-economics-and-political-science",
+      "sourceCandidateId": "sc-lse-004",
+      "sourceUrl": "https://www.lse.ac.uk/DSI/Assets/documents/LSE-Guidance-on-the-use-of-Generative-AI-for-research.pdf",
+      "sourceTitle": "LSE Guidance on the use of Generative AI for research",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative AI",
+        "assessment",
+        "academic integrity",
+        "approved tools",
+        "privacy",
+        "research guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "the-london-school-of-economics-and-political-science",
+      "sourceCandidateId": "sc-lse-005",
+      "sourceUrl": "https://info.lse.ac.uk/staff/services/Policies-and-procedures/Assets/Documents/aiLegRegGui.pdf",
+      "sourceTitle": "AI Legal and Regulatory Guidance",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative AI",
+        "assessment",
+        "academic integrity",
+        "approved tools",
+        "privacy",
+        "research guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "the-london-school-of-economics-and-political-science",
+      "sourceCandidateId": "sc-lse-006",
+      "sourceUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Artificial-Intelligence-Education-and-Assessment/Anthropics-Claude-for-Education",
+      "sourceTitle": "Anthropic's Claude for Education - LSE",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "generative AI",
+        "assessment",
+        "academic integrity",
+        "approved tools",
+        "privacy",
+        "research guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop after fetching selected official LSE sources for this one-university run.",
+    "Do not bypass login walls, paywalls, CAPTCHAs, WAF restrictions, or robots restrictions.",
+    "Do not publish canonical claims or mark artifacts human_reviewed."
+  ]
+}

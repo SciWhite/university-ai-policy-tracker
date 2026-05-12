@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snapshot-kyoto-002",
+  "sourceCandidateId": "src-kyoto-002",
+  "fetchAttemptId": "fetch-kyoto-002",
+  "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+  "finalUrl": "https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+  "sourceTitle": "生成AI | 京都大学情報環境機構",
+  "sourceLanguage": "ja",
+  "contentHash": "9b09652a65366efdf7bdcdfd3bc9a11b3f5f2a55eac497a691ece97d8329af03",
+  "fetchedAt": "2026-05-12T15:30:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "normalized/kyoto-src-kyoto-002-20260512.txt",
+  "rawArtifactPaths": []
+}

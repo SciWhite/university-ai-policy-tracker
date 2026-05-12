@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-kyoto-rej-001",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "sourceUrl": "https://sites.google.com/kyoto-u.ac.jp/ku-gen-ai-info-portal",
+  "sourceTitle": "京都大学生成AI情報集約ポータル",
+  "sourceLanguage": "ja",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "link_traversal",
+  "queryUsed": "Linked from https://www.iimc.kyoto-u.ac.jp/ja/services/gen-ai",
+  "discoveredAt": "2026-05-12T15:30:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.92,
+  "policySpecificityScore": 0.7,
+  "verificationStatus": "inaccessible",
+  "verifiedAt": "2026-05-12T15:30:00Z",
+  "verificationNotes": "Official portal is explicitly limited to faculty, staff, and students and requires a Kyoto University Google sign-in; not accessed.",
+  "rejectionReason": "login_required",
+  "robotsPolicy": "respect"
+}

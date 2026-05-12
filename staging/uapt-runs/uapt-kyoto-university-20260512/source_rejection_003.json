@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "reject-kyoto-003",
+  "sourceCandidateId": "src-kyoto-rej-003",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "sourceUrl": "https://www.channel.pr.kyoto-u.ac.jp/video/40169",
+  "finalUrl": "https://www.channel.pr.kyoto-u.ac.jp/video/40169",
+  "rejectedAt": "2026-05-12T15:30:00Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "codex-local-crawl-agent",
+  "evidenceSnippet": "Search result identified a video page for the guideline, not a text source suitable for evidence snippets.",
+  "notes": "Official video page discovered, but it is a media page rather than textual policy/guidance evidence; the public OEI page contains the directly quotable guideline text."
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-lmu-001",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "startedAt": "2026-05-12T13:58:00Z",
+  "endedAt": "2026-05-12T14:09:15Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "domain": "lmu.de",
+      "query": "site:lmu.de \"generative KI\" Richtlinie",
+      "resultCount": 5,
+      "notes": "Returned mostly research, event, thesis-title and AI Act items; no direct university policy source in top results."
+    },
+    {
+      "method": "site_search",
+      "domain": "lmu.de",
+      "query": "site:lmu.de \"Künstliche Intelligenz\" Prüfung",
+      "resultCount": 8,
+      "notes": "Returned the Medical Faculty GWP AI guidance page and the university library KI handout PDF among unrelated study-program pages."
+    },
+    {
+      "method": "site_search",
+      "domain": "lmu.de",
+      "query": "site:lmu.de ChatGPT Studium",
+      "resultCount": 8,
+      "notes": "Returned the LMU ChatGPT handout PDF and news/event-style items."
+    },
+    {
+      "method": "site_search",
+      "domain": "lmu.de",
+      "query": "site:lmu.de \"KI\" \"Lehre\" \"Prüfung\"",
+      "resultCount": 8,
+      "notes": "Returned the university library KI handout PDF with teaching and assessment sections."
+    },
+    {
+      "method": "site_search",
+      "domain": "lmu.de",
+      "query": "site:lmu.de \"generative AI\" policy",
+      "resultCount": 8,
+      "notes": "Returned the IfKW student AI-use rules PDF plus seminar and news/showcase noise."
+    },
+    {
+      "method": "site_search",
+      "domain": "uni-muenchen.de",
+      "query": "site:uni-muenchen.de \"generative KI\" Richtlinie",
+      "resultCount": 4,
+      "notes": "Returned repository/open-access PDFs unrelated to university AI-use guidance."
+    },
+    {
+      "method": "site_search",
+      "domain": "uni-muenchen.de",
+      "query": "site:uni-muenchen.de ChatGPT Studium",
+      "resultCount": 8,
+      "notes": "Returned an open-access copy of the handout and self-learning/course mentions; no stronger policy source than selected official LMU pages."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"LMU München\" \"generative KI\" \"Prüfung\"",
+      "resultCount": 4,
+      "notes": "Mostly LMU news/event items and third-party material; rejected non-guidance sources."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"LMU Munich\" \"generative AI\" policy guidance",
+      "resultCount": 8,
+      "notes": "Mostly third-party research pages or non-LMU references; no official policy source selected."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "src-lmu-001",
+    "src-lmu-002",
+    "src-lmu-003",
+    "src-lmu-004",
+    "src-lmu-005",
+    "src-lmu-006",
+    "src-lmu-007",
+    "src-lmu-008"
+  ],
+  "rejectionIds": [
+    "rejection-lmu-001",
+    "rejection-lmu-002",
+    "rejection-lmu-003",
+    "rejection-lmu-004",
+    "rejection-lmu-005"
+  ],
+  "summary": "Firecrawl search found three usable official LMU sources: IfKW student AI-use rules, the Medical Faculty GWP AI page for dissertations, and an LMU-hosted KI/ChatGPT teaching handout. Rejected results were duplicate, news/event-only, research-showcase-only, or too generic for policy claims."
+}

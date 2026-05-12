@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "uapt-new-york-university-20260512-snapshot-001",
+  "sourceCandidateId": "uapt-new-york-university-20260512-candidate-001",
+  "fetchAttemptId": "uapt-new-york-university-20260512-fetch-001",
+  "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+  "finalUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+  "sourceTitle": "Teaching with Generative AI - NYU",
+  "sourceLanguage": "en",
+  "contentHash": "77f7c0c025a6698210e79a300d61e56085d6656eff4160820767bf4758b9b751",
+  "fetchedAt": "2026-05-12T00:10:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "snapshots/nyu-001.md",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,29 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "evidenceId": "polyu-evidence-1b",
+  "claimId": "polyu-claim-1",
+  "sourceSnapshotId": "polyu-ss-1",
+  "sourceUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/generative-ai/",
+  "finalUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/generative-ai/",
+  "sourceTitle": "Generative AI | Educational Development Centre",
+  "sourceLanguage": "en",
+  "snapshotHash": "8a6a3890e36e32f7805431177c86acdec781661f7128a185585d07ab4ea19444",
+  "evidenceSnippetOriginal": "It is expected that the usage of generative AI will become a normal part of learning, teaching, and assessment from 2023/24 Semester One.",
+  "evidenceSnippetDisplay": "It is expected that the usage of generative AI will become a normal part of learning, teaching, and assessment from 2023/24 Semester One.",
+  "evidenceLocator": "University Stance on the Use of Generative Artificial Intelligence in Learning, Teaching and Assessment section",
+  "evidenceType": "official_source",
+  "relevance": 0.93,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI | Educational Development Centre",
+    "sourceUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/generative-ai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-hong-kong-polytechnic-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-hong-kong-polytechnic-university",
+    "publisher": "The Hong Kong Polytechnic University",
+    "retrievedAt": "2026-05-12T00:06:00.000Z",
+    "snapshotHash": "8a6a3890e36e32f7805431177c86acdec781661f7128a185585d07ab4ea19444",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "uapt-new-york-university-20260512-candidate-002",
+  "entityType": "university",
+  "entitySlug": "new-york-university",
+  "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/Student-Learning-with-Generative-AI.html",
+  "finalUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/Student-Learning-with-Generative-AI.html",
+  "sourceTitle": "Student Learning with Generative AI - NYU",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:nyu.edu \"generative AI\"",
+  "discoveredAt": "2026-05-12T00:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T00:10:00Z",
+  "verificationNotes": "Official NYU source with generative AI guidance",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-lmu-006",
+  "claimId": "claim-lmu-006",
+  "sourceSnapshotId": "snapshot-lmu-003",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+  "sourceTitle": "Handreichung zum Umgang mit KI",
+  "sourceLanguage": "de",
+  "snapshotHash": "e572e056a5eb30a5e00a7d1a90ce5d4c1b7531bfe6c198c87e0b1933d153eeba",
+  "evidenceSnippetOriginal": "Bei E-Klausuren gelten folgende Empfehlungen: Stellen Sie andere Aufgaben als vor der Einführung von ChatGPT. Sie müssen davon ausgehen, dass ChatGPT zum Einsatz kommen könnte. Es wäre deshalb sinnvoll, dass Sie Aufgaben stellen, bei denen Studierende die Limitationen von ChatGPT kritisch reflektieren müssen. Einfache Wissens- und Verständnisfragen sind unter Einsatz von KI nicht sinnvoll.",
+  "evidenceSnippetDisplay": "LMU teaching guidance recommends adapting e-exam questions and avoiding simple knowledge questions when AI may be used.",
+  "evidenceLocator": "Kapitel 5.4 Umgang mit ChatGPT bei E-Klausuren",
+  "evidenceType": "official_source",
+  "relevance": 0.91,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Handreichung zum Umgang mit KI",
+    "sourceUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ludwig-maximilians-universitat-munchen.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ludwig-maximilians-universitat-munchen",
+    "publisher": "Ludwig-Maximilians-Universität München",
+    "retrievedAt": "2026-05-12T14:09:15Z",
+    "snapshotHash": "e572e056a5eb30a5e00a7d1a90ce5d4c1b7531bfe6c198c87e0b1933d153eeba",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "evidenceId": "polyu-evidence-3",
+  "claimId": "polyu-claim-3",
+  "sourceSnapshotId": "polyu-ss-3",
+  "sourceUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/academic-integrity/",
+  "finalUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/academic-integrity/",
+  "sourceTitle": "Academic Integrity | Educational Development Centre",
+  "sourceLanguage": "en",
+  "snapshotHash": "7e278c73bc2106043483e3d859cbc464c34b54a7f40a5960551aeeec59b6400f",
+  "evidenceSnippetOriginal": "PolyU allows the use of GenAI for take-home continuous assessment tasks, but also upholds the principle that students should be accountable for their own work.",
+  "evidenceSnippetDisplay": "PolyU allows the use of GenAI for take-home continuous assessment tasks, but also upholds the principle that students should be accountable for their own work.",
+  "evidenceLocator": "Academic Integrity and Generative Artificial Intelligence (GenAI) section",
+  "evidenceType": "official_source",
+  "relevance": 0.91,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Academic Integrity | Educational Development Centre",
+    "sourceUrl": "https://www.polyu.edu.hk/edc/explore-a-topic/academic-integrity/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-hong-kong-polytechnic-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-hong-kong-polytechnic-university",
+    "publisher": "The Hong Kong Polytechnic University",
+    "retrievedAt": "2026-05-12T00:07:00.000Z",
+    "snapshotHash": "7e278c73bc2106043483e3d859cbc464c34b54a7f40a5960551aeeec59b6400f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

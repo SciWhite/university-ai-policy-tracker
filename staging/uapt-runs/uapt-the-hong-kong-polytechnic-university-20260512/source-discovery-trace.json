@@ -1,0 +1,66 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "traceId": "polyu-discovery-trace-1",
+  "entityType": "university",
+  "entitySlug": "the-hong-kong-polytechnic-university",
+  "startedAt": "2026-05-12T00:00:00.000Z",
+  "endedAt": "2026-05-12T00:12:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "canonical_domain",
+      "domain": "polyu.edu.hk",
+      "resultCount": 1,
+      "notes": "Seeded the official PolyU domain for discovery."
+    },
+    {
+      "method": "site_search",
+      "query": "site:polyu.edu.hk \"generative AI\" policy",
+      "domain": "polyu.edu.hk",
+      "resultCount": 10,
+      "notes": "Found the AR student GenAI guidelines page, the EDC GenAI page, and the SD research integrity PDF."
+    },
+    {
+      "method": "site_search",
+      "query": "site:polyu.edu.hk \"GenAI\" assessment",
+      "domain": "polyu.edu.hk",
+      "resultCount": 10,
+      "notes": "Found the EDC GenAI page and assessment redesign resources."
+    },
+    {
+      "method": "site_search",
+      "query": "site:polyu.edu.hk \"artificial intelligence\" \"academic integrity\"",
+      "domain": "polyu.edu.hk",
+      "resultCount": 10,
+      "notes": "Found the EDC academic integrity page and the AR student GenAI guidelines."
+    },
+    {
+      "method": "site_search",
+      "query": "site:polyu.edu.hk \"Copilot\" \"AI\"",
+      "domain": "polyu.edu.hk",
+      "resultCount": 10,
+      "notes": "Found the ITS M365 Copilot Chat article and the ITS security on Copilot article."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"The Hong Kong Polytechnic University\" \"generative AI\" policy guidance",
+      "resultCount": 10,
+      "notes": "Found the AR student GenAI guidelines and the EDC GenAI page again."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "polyu-sc-rejected-1",
+    "polyu-sc-rejected-2",
+    "polyu-sc-1",
+    "polyu-sc-2",
+    "polyu-sc-3",
+    "polyu-sc-4"
+  ],
+  "rejectionIds": [
+    "polyu-srej-1",
+    "polyu-srej-2"
+  ],
+  "summary": "Discovery found 4 verified official sources: the AR student GenAI guidelines page, the EDC GenAI teaching/learning page, the EDC academic integrity page, and the ITS M365 Copilot Chat page. Two sources were rejected: the PolyU homepage (generic) and the SD research integrity PDF (research_showcase_only)."
+}

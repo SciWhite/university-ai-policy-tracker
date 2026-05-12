@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "uapt-new-york-university-20260512-candidate-004",
+  "entityType": "university",
+  "entitySlug": "new-york-university",
+  "sourceUrl": "https://guides.nyu.edu/ai-tools",
+  "finalUrl": "https://guides.nyu.edu/ai-tools",
+  "sourceTitle": "Generative AI Tools for Academic Research: An Introduction",
+  "sourceLanguage": "en",
+  "sourceType": "library_copyright",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:nyu.edu \"generative AI\"",
+  "discoveredAt": "2026-05-12T00:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T00:10:00Z",
+  "verificationNotes": "Official NYU source with generative AI guidance",
+  "robotsPolicy": "respect"
+}

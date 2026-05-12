@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-lmu-002",
+  "claimId": "claim-lmu-002",
+  "sourceSnapshotId": "snapshot-lmu-001",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "sourceTitle": "The use of AI by students",
+  "sourceLanguage": "en",
+  "snapshotHash": "a82c2400f28677a71a66c6bf7b2eef43ca4e4f926f415eeef75b7ae853647cee",
+  "evidenceSnippetOriginal": "To include AI-generated text verbatim — or with small changes — into one’s texts without proper attribution constitutes plagiarism comparable to the use of text written by others without citing the source. If it can be established that a student has submitted work that includes a significant amount AI-generated text without proper attribution (see below), the corresponding assessment will be evaluated with the grade 5 (failed).",
+  "evidenceSnippetDisplay": "IfKW guidance treats unattributed AI-generated text as plagiarism and says significant cases can fail.",
+  "evidenceLocator": "Section: The use of AI as (comparable to) plagiarism",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "The use of AI by students",
+    "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/ludwig-maximilians-universitat-munchen.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/ludwig-maximilians-universitat-munchen",
+    "publisher": "Ludwig-Maximilians-Universität München",
+    "retrievedAt": "2026-05-12T14:09:15Z",
+    "snapshotHash": "a82c2400f28677a71a66c6bf7b2eef43ca4e4f926f415eeef75b7ae853647cee",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

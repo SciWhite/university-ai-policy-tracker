@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "uapt-new-york-university-20260512-candidate-005",
+  "entityType": "university",
+  "entitySlug": "new-york-university",
+  "sourceUrl": "https://steinhardt.nyu.edu/faculty-and-staff/academic-affairs/steinhardt-ai-hub/academic-integrity-and-syllabus-support-age",
+  "finalUrl": "https://steinhardt.nyu.edu/faculty-and-staff/academic-affairs/steinhardt-ai-hub/academic-integrity-and-syllabus-support-age",
+  "sourceTitle": "Academic Integrity and Syllabus Support",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:nyu.edu \"generative AI\"",
+  "discoveredAt": "2026-05-12T00:00:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T00:10:00Z",
+  "verificationNotes": "Official NYU source with generative AI guidance",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "uapt-new-york-university-20260512-trace-001",
+  "entityType": "university",
+  "entitySlug": "new-york-university",
+  "startedAt": "2026-05-12T00:00:00Z",
+  "endedAt": "2026-05-12T00:15:00Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:nyu.edu \"generative AI\" policy",
+      "domain": "nyu.edu",
+      "resultCount": 10,
+      "notes": "Primary discovery via firecrawl_search on nyu.edu domain"
+    },
+    {
+      "method": "site_search",
+      "query": "site:nyu.edu \"ChatGPT\" academic integrity",
+      "domain": "nyu.edu",
+      "resultCount": 10,
+      "notes": "Academic integrity focused search"
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"New York University\" \"generative AI\" policy guidance",
+      "resultCount": 10,
+      "notes": "External web search for NYU policy guidance"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "uapt-new-york-university-20260512-candidate-001",
+    "uapt-new-york-university-20260512-candidate-002",
+    "uapt-new-york-university-20260512-candidate-003",
+    "uapt-new-york-university-20260512-candidate-004",
+    "uapt-new-york-university-20260512-candidate-005"
+  ],
+  "rejectionIds": [],
+  "summary": "Discovered 5 official NYU sources related to generative AI policy, teaching guidance, and academic integrity from nyu.edu domain."
+}

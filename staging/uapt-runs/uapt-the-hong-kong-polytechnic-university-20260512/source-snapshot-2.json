@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "sourceSnapshotId": "polyu-ss-2",
+  "sourceCandidateId": "polyu-sc-2",
+  "fetchAttemptId": "polyu-fa-2",
+  "sourceUrl": "https://www.polyu.edu.hk/ar/students-in-taught-programmes/use-of-genai/",
+  "finalUrl": "https://www.polyu.edu.hk/ar/students-in-taught-programmes/use-of-genai/",
+  "sourceTitle": "Guidelines for Students on the Use of Generative Artificial Intelligence (GenAI)",
+  "sourceLanguage": "en",
+  "contentHash": "ca2f62929994ec4b03f899c49ed342576638fa62f3f41675ece31ede42c4f1b0",
+  "fetchedAt": "2026-05-12T00:06:30.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-the-hong-kong-polytechnic-university-20260512/normalized/polyu-ar-use-of-genai.txt",
+  "rawArtifactPaths": []
+}

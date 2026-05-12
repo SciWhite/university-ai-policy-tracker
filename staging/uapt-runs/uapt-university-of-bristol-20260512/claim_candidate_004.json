@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-bristol-004",
+  "entityType": "university",
+  "entitySlug": "university-of-bristol",
+  "claimType": "research",
+  "claimText": "PGR students at University of Bristol are not permitted to use generative AI tools such as ChatGPT to write any text used in their thesis or APM reports, as research degree students must demonstrate ability to write about research in their own words.",
+  "normalizedValue": "PGR students prohibited from using generative AI to write thesis or APM report text",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["evidence-bristol-004"],
+  "citation": {
+    "citationTitle": "Guidance for PGR students on the use of AI tools in thesis writing",
+    "sourceUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+    "publisher": "University of Bristol",
+    "retrievedAt": "2026-05-12T05:50:00Z",
+    "snapshotHash": "e7650f617311bc07db8be26780653990911db1d83b4a12b497d5b00b099443b0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

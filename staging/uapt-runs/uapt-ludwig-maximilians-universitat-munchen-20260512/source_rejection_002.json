@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rejection-lmu-002",
+  "sourceCandidateId": "src-lmu-005",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/16-finmath/workgroup-finmath/download/fit4aiact_lmu-kolloqium_07.07.2025_neu.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/16-finmath/workgroup-finmath/download/fit4aiact_lmu-kolloqium_07.07.2025_neu.pdf",
+  "rejectedAt": "2026-05-12T14:09:15Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "Codex local staged crawl",
+  "evidenceSnippet": "AI Act/insurance colloquium material, not LMU student, teaching, assessment, privacy, research-use or approved-tool guidance.",
+  "notes": "AI Act/insurance colloquium material, not LMU AI-use guidance for students, staff, research conduct or approved tools."
+}

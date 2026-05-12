@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-bristol-002",
+  "entityType": "university",
+  "entitySlug": "university-of-bristol",
+  "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+  "finalUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+  "sourceTitle": "Academic integrity | Current students | University of Bristol",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:bristol.ac.uk \"AI\" \"academic integrity\" students",
+  "discoveredAt": "2026-05-12T05:49:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.90,
+  "policySpecificityScore": 0.88,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T05:50:00Z",
+  "verificationNotes": "Official academic integrity policy page explicitly addressing AI and translation tool use as potential cheating.",
+  "robotsPolicy": "respect"
+}

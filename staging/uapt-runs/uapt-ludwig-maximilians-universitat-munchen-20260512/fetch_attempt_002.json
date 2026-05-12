@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-lmu-002",
+  "sourceCandidateId": "src-lmu-002",
+  "sourceUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+  "finalUrl": "https://www.med.lmu.de/de/promotion/gwp/kuenstliche-intelligenz/",
+  "attemptedAt": "2026-05-12T14:09:15Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "99c44e197380c05b23bdfbfbfe10f5b8cfd3b2725483f55a8d259432cc6bdda0",
+  "normalizedTextStorageKey": "snapshot:lmu:medical-faculty-gwp-ai:normalized-text:20260512"
+}

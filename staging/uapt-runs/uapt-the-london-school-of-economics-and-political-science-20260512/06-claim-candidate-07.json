@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-lse-007",
+  "entityType": "university",
+  "entitySlug": "the-london-school-of-economics-and-political-science",
+  "claimType": "privacy",
+  "claimText": "LSE legal and regulatory guidance tells users not to put personal data, confidential or commercially sensitive data, or certain copyrighted content into external AI tools.",
+  "normalizedValue": "external_ai_restricted_data_warning",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-lse-007"
+  ],
+  "citation": {
+    "citationTitle": "AI Legal and Regulatory Guidance",
+    "sourceUrl": "https://info.lse.ac.uk/staff/services/Policies-and-procedures/Assets/Documents/aiLegRegGui.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-london-school-of-economics-and-political-science.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-london-school-of-economics-and-political-science",
+    "publisher": "The London School of Economics and Political Science",
+    "retrievedAt": "2026-05-12T14:03:47.000Z",
+    "snapshotHash": "21360bfa51bbfcbe544e969014dfdb524c6ea6ef309aae0350f25d069b906e71",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-lse-001",
+  "sourceCandidateId": "sc-lse-001",
+  "sourceUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Artificial-Intelligence-Education-and-Assessment/School-position-on-generative-AI",
+  "finalUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Artificial-Intelligence-Education-and-Assessment/School-position-on-generative-AI",
+  "attemptedAt": "2026-05-12T14:03:47.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "b9ab03932e412e7f898119c7d6ea3a0dce2569b2c771950867c49e448de66f2d",
+  "normalizedTextStorageKey": "openclaw-normalized-text:uapt-the-london-school-of-economics-and-political-science-20260512/ss-lse-001"
+}

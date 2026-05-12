@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snapshot-lmu-001",
+  "sourceCandidateId": "src-lmu-001",
+  "fetchAttemptId": "fetch-lmu-001",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/15-sw/ifkw/downloads/ai-use-for-students-ifkw-lmu-2025.pdf",
+  "sourceTitle": "The use of AI by students",
+  "sourceLanguage": "en",
+  "contentHash": "a82c2400f28677a71a66c6bf7b2eef43ca4e4f926f415eeef75b7ae853647cee",
+  "fetchedAt": "2026-05-12T14:09:15Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "snapshot:lmu:ifkw-ai-use-for-students:normalized-text:20260512",
+  "rawArtifactPaths": []
+}

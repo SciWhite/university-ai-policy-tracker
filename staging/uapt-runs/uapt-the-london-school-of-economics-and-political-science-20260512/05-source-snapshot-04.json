@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-lse-004",
+  "sourceCandidateId": "sc-lse-004",
+  "fetchAttemptId": "fa-lse-004",
+  "sourceUrl": "https://www.lse.ac.uk/DSI/Assets/documents/LSE-Guidance-on-the-use-of-Generative-AI-for-research.pdf",
+  "finalUrl": "https://www.lse.ac.uk/DSI/Assets/documents/LSE-Guidance-on-the-use-of-Generative-AI-for-research.pdf",
+  "sourceTitle": "LSE Guidance on the use of Generative AI for research",
+  "sourceLanguage": "en",
+  "contentHash": "61a62e350898b61414d3fe9570861817e1fdb32409f5852701cfc326c27a1d43",
+  "fetchedAt": "2026-05-12T14:03:47.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "openclaw-normalized-text:uapt-the-london-school-of-economics-and-political-science-20260512/ss-lse-004",
+  "rawArtifactPaths": []
+}

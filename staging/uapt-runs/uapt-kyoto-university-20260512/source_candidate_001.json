@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-kyoto-001",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "sourceUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+  "finalUrl": "https://www.oei.kyoto-u.ac.jp/%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%81%AE%E6%95%99%E8%82%B2%E5%AD%A6%E4%BF%AE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8Bai%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+  "sourceTitle": "京都大学の教育・学修におけるAIの利活用について",
+  "sourceLanguage": "ja",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:kyoto-u.ac.jp 生成AI ガイドライン",
+  "discoveredAt": "2026-05-12T15:30:00Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.91,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T15:30:00Z",
+  "verificationNotes": "Official public Kyoto University OEI page containing the education/learning AI initiative, generative AI guidelines, student-facing message, and guideline appendix.",
+  "robotsPolicy": "respect"
+}

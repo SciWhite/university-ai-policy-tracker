@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-lse-008",
+  "claimId": "cc-lse-008",
+  "sourceSnapshotId": "ss-lse-006",
+  "sourceUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Artificial-Intelligence-Education-and-Assessment/Anthropics-Claude-for-Education",
+  "finalUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Artificial-Intelligence-Education-and-Assessment/Anthropics-Claude-for-Education",
+  "sourceTitle": "Anthropic's Claude for Education - LSE",
+  "sourceLanguage": "en",
+  "snapshotHash": "6c73b0ef91eae1879b6718b2bc2f1de26248f05e138b4dac6d50e29a83c0136e",
+  "evidenceSnippetOriginal": "Anthropic have guaranteed that LSE student and staff data will not be used to train their models. Use of Claude for Education is completely optional – there is no obligation to sign up. Personal, operational, or confidential data must not be shared via Claude, and Claude must not be integrated into operational workflows or processes.",
+  "evidenceLocator": "Anthropic's Claude for Education guidance",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Anthropic's Claude for Education - LSE",
+    "sourceUrl": "https://info.lse.ac.uk/staff/divisions/Eden-Centre/Artificial-Intelligence-Education-and-Assessment/Anthropics-Claude-for-Education",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-london-school-of-economics-and-political-science.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/the-london-school-of-economics-and-political-science",
+    "publisher": "The London School of Economics and Political Science",
+    "retrievedAt": "2026-05-12T14:03:47.000Z",
+    "snapshotHash": "6c73b0ef91eae1879b6718b2bc2f1de26248f05e138b4dac6d50e29a83c0136e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

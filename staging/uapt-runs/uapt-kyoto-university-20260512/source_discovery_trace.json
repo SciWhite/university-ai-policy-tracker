@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-kyoto-001",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "startedAt": "2026-05-12T15:30:00Z",
+  "endedAt": "2026-05-12T15:30:00Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:kyoto-u.ac.jp 生成AI ガイドライン",
+      "domain": "kyoto-u.ac.jp",
+      "resultCount": 5,
+      "notes": "Found OEI guideline page, IIMC service page, IIMC security article, video page, and a hosted PDF."
+    },
+    {
+      "method": "site_search",
+      "query": "site:kyoto-u.ac.jp 生成AI ポリシー",
+      "domain": "kyoto-u.ac.jp",
+      "resultCount": 5,
+      "notes": "Confirmed the same public OEI/IIMC official sources."
+    },
+    {
+      "method": "site_search",
+      "query": "site:kyoto-u.ac.jp ChatGPT 学生",
+      "domain": "kyoto-u.ac.jp",
+      "resultCount": 5,
+      "notes": "Results were mostly research/profile/Q&A pages and did not produce a better public policy source."
+    },
+    {
+      "method": "site_search",
+      "query": "site:kyoto-u.ac.jp AI 利用 授業 評価",
+      "domain": "kyoto-u.ac.jp",
+      "resultCount": 5,
+      "notes": "Found course/research pages, not university-wide AI policy sources."
+    },
+    {
+      "method": "site_search",
+      "query": "site:kyoto-u.ac.jp 人工知能 研究倫理",
+      "domain": "kyoto-u.ac.jp",
+      "resultCount": 5,
+      "notes": "Results were research showcases or publications rather than actionable institutional AI guidance."
+    },
+    {
+      "method": "site_search",
+      "query": "site:kyoto-u.ac.jp \"generative AI\" policy",
+      "domain": "kyoto-u.ac.jp",
+      "resultCount": 5,
+      "notes": "Found the English IIMC generative AI page and unrelated research/event pages."
+    },
+    {
+      "method": "site_search",
+      "query": "site:kyoto-u.ac.jp \"ChatGPT\" academic integrity",
+      "domain": "kyoto-u.ac.jp",
+      "resultCount": 5,
+      "notes": "Results were profile and publication pages; no official academic-integrity AI policy page found."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"Kyoto University\" \"generative AI\" policy guidance",
+      "resultCount": 5,
+      "notes": "Confirmed the official IIMC English page and rejected third-party or other-institution results."
+    },
+    {
+      "method": "link_traversal",
+      "domain": "iimc.kyoto-u.ac.jp",
+      "resultCount": 1,
+      "notes": "Identified the Kyoto University generative AI portal as login-limited and did not access it."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "src-kyoto-001",
+    "src-kyoto-002",
+    "src-kyoto-003",
+    "src-kyoto-rej-001",
+    "src-kyoto-rej-002",
+    "src-kyoto-rej-003"
+  ],
+  "rejectionIds": [
+    "reject-kyoto-001",
+    "reject-kyoto-002",
+    "reject-kyoto-003"
+  ],
+  "summary": "Firecrawl search found three public official Kyoto University sources suitable for staged claims: OEI education/learning AI guideline, IIMC generative AI services page, and IIMC information-security article. Login-only, video-only, and non-Kyoto-specific sources were rejected."
+}

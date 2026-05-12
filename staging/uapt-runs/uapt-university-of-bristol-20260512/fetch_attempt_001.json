@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-bristol-001",
+  "sourceCandidateId": "src-bristol-001",
+  "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+  "finalUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+  "attemptedAt": "2026-05-12T05:50:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 1250,
+  "contentHash": "37b0e7d3dd50bec5d10915bb613220c112704886141cd9d248a82776642385ed"
+}

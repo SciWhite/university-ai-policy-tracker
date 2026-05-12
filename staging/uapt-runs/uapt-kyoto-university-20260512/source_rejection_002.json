@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "reject-kyoto-002",
+  "sourceCandidateId": "src-kyoto-rej-002",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "sourceUrl": "https://www.med.kyoto-u.ac.jp/wp/wp-content/uploads/2023/11/Use-of-generative-artificial-intelligence-AI.pdf",
+  "finalUrl": "https://www.med.kyoto-u.ac.jp/wp/wp-content/uploads/2023/11/Use-of-generative-artificial-intelligence-AI.pdf",
+  "rejectedAt": "2026-05-12T15:30:00Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "codex-local-crawl-agent",
+  "evidenceSnippet": "Search result title indicated a general “大学・高専における生成 AI の教学面の取扱い” document rather than a Kyoto University policy.",
+  "notes": "Hosted on a Kyoto University medicine subdomain but appears to be a general MEXT notice attachment, not Kyoto University-specific AI policy or guidance; not used for claims."
+}

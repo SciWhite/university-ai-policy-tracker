@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kyoto-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-kyoto-003",
+  "entityType": "university",
+  "entitySlug": "kyoto-university",
+  "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/ja/info/20251212141618",
+  "finalUrl": "https://www.iimc.kyoto-u.ac.jp/ja/info/20251212141618",
+  "sourceTitle": "生成AIサービスにおける情報セキュリティ上の注意点と学内の各種生成AIサービスについて | 京都大学情報環境機構",
+  "sourceLanguage": "ja",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:kyoto-u.ac.jp 生成AI ガイドライン",
+  "discoveredAt": "2026-05-12T15:30:00Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.91,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T15:30:00Z",
+  "verificationNotes": "Official public IIMC information-security article explaining risks and information-handling cautions for generative AI services.",
+  "robotsPolicy": "respect"
+}

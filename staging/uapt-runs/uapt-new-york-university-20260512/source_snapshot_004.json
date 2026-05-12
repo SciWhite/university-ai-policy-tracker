@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "uapt-new-york-university-20260512-snapshot-004",
+  "sourceCandidateId": "uapt-new-york-university-20260512-candidate-004",
+  "fetchAttemptId": "uapt-new-york-university-20260512-fetch-004",
+  "sourceUrl": "https://guides.nyu.edu/ai-tools",
+  "finalUrl": "https://guides.nyu.edu/ai-tools",
+  "sourceTitle": "Generative AI Tools for Academic Research",
+  "sourceLanguage": "en",
+  "contentHash": "75289df1383e4c2d2739e4b42995a09918f6eda9fbc402b9a32e4d8abcf21b89",
+  "fetchedAt": "2026-05-12T00:10:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "snapshots/nyu-004.md",
+  "rawArtifactPaths": []
+}

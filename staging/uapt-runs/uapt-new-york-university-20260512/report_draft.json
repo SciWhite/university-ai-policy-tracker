@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "report_draft",
+  "reportId": "uapt-new-york-university-20260512-report",
+  "title": "New York University Generative AI Policy Report",
+  "generatedAt": "2026-05-12T00:20:00Z",
+  "draftPath": "content/reports/new-york-university-20260512.mdx",
+  "summary": "NYU has established institutional guidance on generative AI use in teaching and learning. The university offers Google Gemini and NotebookLM to faculty, staff, and students through institutional accounts with data privacy protections. Student AI use requires instructor approval and must comply with the Academic Integrity Policy. NYU does not license AI detection tools due to accuracy concerns.",
+  "referencedClaimIds": [
+    "uapt-new-york-university-20260512-claim-001",
+    "uapt-new-york-university-20260512-claim-002",
+    "uapt-new-york-university-20260512-claim-003",
+    "uapt-new-york-university-20260512-claim-004"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/new-york-university.json"
+  ],
+  "limitations": [
+    "This report is for informational purposes only and does not constitute legal or policy advice.",
+    "Policy details may change; consult official NYU sources for current guidance."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Official university guidance; rights reserved to New York University",
+  "rawArtifactPaths": []
+}

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bristol-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "plan-bristol-001",
+  "createdAt": "2026-05-12T05:49:00Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-bristol",
+      "sourceCandidateId": "src-bristol-001",
+      "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+      "sourceTitle": "Guidance on AI | Bristol Institute For Learning and Teaching",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["generative-ai", "university-guidance", "teaching-policy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-bristol",
+      "sourceCandidateId": "src-bristol-002",
+      "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+      "sourceTitle": "Academic integrity | Current students | University of Bristol",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["academic-integrity", "ai-policy", "student-conduct"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-bristol",
+      "sourceCandidateId": "src-bristol-003",
+      "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+      "sourceTitle": "Using artificial intelligence (AI) in assessments and for studying",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["assessment-policy", "ai-categories", "student-guidance"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-bristol",
+      "sourceCandidateId": "src-bristol-004",
+      "sourceUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+      "sourceTitle": "Guidance for PGR students on the use of AI tools in thesis writing",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["http"],
+      "expectedThemes": ["pgr-guidance", "thesis-writing", "research-policy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": ["all_targets_completed", "fetch_failure"]
+}

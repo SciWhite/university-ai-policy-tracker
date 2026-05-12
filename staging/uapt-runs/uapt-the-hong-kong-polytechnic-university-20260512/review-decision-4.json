@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-hong-kong-polytechnic-university-20260512",
+  "decisionId": "polyu-review-4",
+  "claimId": "polyu-claim-4",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "codex",
+  "notes": "Approved. The official ITS page directly supports M365 Copilot Chat availability for PolyU staff and students and identifies the model stack described in the claim.",
+  "decidedAt": "2026-05-12T13:30:00.000Z"
+}

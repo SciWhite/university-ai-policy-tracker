@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-new-york-university-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "uapt-new-york-university-20260512-fetch-002",
+  "sourceCandidateId": "uapt-new-york-university-20260512-candidate-002",
+  "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/Student-Learning-with-Generative-AI.html",
+  "finalUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/Student-Learning-with-Generative-AI.html",
+  "attemptedAt": "2026-05-12T00:10:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html;charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2500,
+  "contentHash": "f5dfcb660994eab6f989284782cf48202dcf365db312e4886279c1e4d387b863"
+}

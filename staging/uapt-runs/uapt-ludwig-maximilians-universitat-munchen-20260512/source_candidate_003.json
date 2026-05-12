@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-ludwig-maximilians-universitat-munchen-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-lmu-003",
+  "entityType": "university",
+  "entitySlug": "ludwig-maximilians-universitat-munchen",
+  "sourceUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+  "finalUrl": "https://cms-cdn.lmu.de/media/44-ub/universitaetsbibliothek/downloads/handreichung_ki.pdf",
+  "sourceTitle": "Handreichung zum Umgang mit KI",
+  "sourceLanguage": "de",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:lmu.de \"KI\" \"Lehre\" \"Prüfung\"",
+  "discoveredAt": "2026-05-12T14:09:15Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.88,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T14:09:15Z",
+  "verificationNotes": "Official LMU-hosted teaching handout with guidance for instructors on ChatGPT, e-exams, learning goals, transparency and assessment formats.",
+  "robotsPolicy": "respect"
+}

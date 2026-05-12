@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-london-school-of-economics-and-political-science-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "sdt-lse-001",
+  "entityType": "university",
+  "entitySlug": "the-london-school-of-economics-and-political-science",
+  "startedAt": "2026-05-12T13:45:00.000Z",
+  "endedAt": "2026-05-12T14:03:47.000Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:lse.ac.uk \"generative AI\" policy",
+      "domain": "lse.ac.uk",
+      "resultCount": 5,
+      "notes": "Returned school position page, assessment PDF, course/department policy pages, and research-only pages."
+    },
+    {
+      "method": "site_search",
+      "query": "site:lse.ac.uk \"ChatGPT\" academic integrity",
+      "domain": "lse.ac.uk",
+      "resultCount": 5,
+      "notes": "Returned mostly blogs/research reports plus the official 2025/26 position PDF."
+    },
+    {
+      "method": "site_search",
+      "query": "site:lse.ac.uk \"AI tools\" students assessment",
+      "domain": "lse.ac.uk",
+      "resultCount": 5,
+      "notes": "Returned journal/blog results plus official tool guidance pages."
+    },
+    {
+      "method": "site_search",
+      "query": "site:lse.ac.uk \"generative AI\" teaching learning",
+      "domain": "lse.ac.uk",
+      "resultCount": 5,
+      "notes": "Returned blogs/research and AI Research pages; official education page selected through stronger policy query."
+    },
+    {
+      "method": "site_search",
+      "query": "site:lse.ac.uk \"artificial intelligence\" \"academic integrity\"",
+      "domain": "lse.ac.uk",
+      "resultCount": 5,
+      "notes": "Returned academic integrity reports and blogs; no additional school-wide source accepted."
+    },
+    {
+      "method": "site_search",
+      "query": "site:lse.ac.uk \"Copilot\" \"AI\"",
+      "domain": "lse.ac.uk",
+      "resultCount": 5,
+      "notes": "Returned official Copilot, Digital Skills Lab, and DSI tool guidance."
+    },
+    {
+      "method": "site_search",
+      "query": "site:lse.ac.uk \"generative AI\" \"data privacy\"",
+      "domain": "lse.ac.uk",
+      "resultCount": 5,
+      "notes": "Returned official research guidance PDF and legal/regulatory guidance."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"London School of Economics\" \"generative AI\" policy guidance",
+      "resultCount": 5,
+      "notes": "Confirmed official school position page and assessment PDF; rejected third-party duplicates."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"LSE\" \"generative AI\" \"academic integrity\"",
+      "resultCount": 5,
+      "notes": "Confirmed official 2025/26 position PDF and rejected non-policy/social sources."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-lse-001",
+    "sc-lse-002",
+    "sc-lse-003",
+    "sc-lse-004",
+    "sc-lse-005",
+    "sc-lse-006",
+    "sc-lse-r001",
+    "sc-lse-r002",
+    "sc-lse-r003",
+    "sc-lse-r004"
+  ],
+  "rejectionIds": [
+    "sr-lse-001",
+    "sr-lse-002",
+    "sr-lse-003",
+    "sr-lse-004"
+  ],
+  "summary": "Firecrawl search found official LSE school-wide assessment guidance, research guidance, legal/privacy guidance, and official tool guidance. Rejected blog, journal/research-showcase, third-party, and department-only sources from approved claim support."
+}
