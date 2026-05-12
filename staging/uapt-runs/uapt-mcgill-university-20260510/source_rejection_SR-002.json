@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceRejectionId": "mcgill-sr-teaching-blog",
+
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://teachingblog.mcgill.ca/2023/03/23/chat-gpt-in-higher-ed-will-artificial-intelligence-help-or-hinder-authentic-learning/",
+  "finalUrl": "https://teachingblog.mcgill.ca/2023/03/23/chat-gpt-in-higher-ed-will-artificial-intelligence-help-or-hinder-authentic-learning/",
+  "rejectedAt": "2026-05-10T14:20:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Teaching for Learning blog post discussing ChatGPT in higher education, not official guidance.",
+  "notes": "Blog post, not official university policy. Rejected as blog content without formal policy status."
+}

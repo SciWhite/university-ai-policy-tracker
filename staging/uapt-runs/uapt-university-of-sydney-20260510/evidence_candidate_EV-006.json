@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "evidenceId": "usyd-evidence-6",
+  "claimId": "usyd-claim-6",
+  "sourceSnapshotId": "usyd-snapshot-4",
+  "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+  "finalUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+  "sourceTitle": "Using AI to learn",
+  "sourceLanguage": "en",
+  "snapshotHash": "0edbaa77a8cc4fd2407d6ed65f68954e7e29f69cc44faccf486a53323b774b01",
+  "evidenceSnippetOriginal": "Only use University-endorsed tools like Copilot All students have free access to Microsoft Copilot for Web . Make sure that you log in with your UniKey using Okta so that you are using Copilot in protected mode, which introduces necessary guardrails within the system.",
+  "evidenceLocator": "Best practices section",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using AI to learn",
+    "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json",
+    "publisher": "The University of Sydney",
+    "retrievedAt": "2026-05-10T14:21:00.000Z",
+    "snapshotHash": "0edbaa77a8cc4fd2407d6ed65f68954e7e29f69cc44faccf486a53323b774b01",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

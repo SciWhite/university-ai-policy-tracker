@@ -1,13 +1,13 @@
 {
+  "artifactType": "review_decision",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "review_decision",
-  "decisionId": "RD-CL-001",
-  "claimId": "CL-001",
+  "decisionId": "usyd-review-1",
+  "claimId": "usyd-claim-1",
   "decision": "approve",
   "reviewState": "agent_reviewed",
   "reviewerType": "openclaw_agent",
   "reviewer": "policy-reviewer",
-  "notes": "Approved as a narrow staged claim directly supported by official University of Sydney source evidence. Not marked human_reviewed and not published as canonical.",
-  "decidedAt": "2026-05-10T14:41:00.000Z"
+  "notes": "Approved as a narrow claim directly supported by the Teaching@Sydney FAQ, which quotes the Academic Integrity Policy 2022 clauses verbatim.",
+  "decidedAt": "2026-05-10T14:45:00.000Z"
 }

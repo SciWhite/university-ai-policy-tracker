@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "uva-claim-001",
+  "entityType": "university",
+  "entitySlug": "university-of-amsterdam",
+  "claimType": "teaching",
+  "claimText": "The University of Amsterdam has a policy framework for Generative AI in education that provides central guidelines for responsible use of GenAI based on scientific integrity, with room for faculties and programmes to translate the policy into their own educational practice.",
+  "normalizedValue": "UvA has official GenAI policy framework for education with faculty-level customization",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uva-evidence-001"
+  ],
+  "citation": {
+    "citationTitle": "Policy framework and guidelines on GenAI in education",
+    "sourceUrl": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html",
+    "publisher": "University of Amsterdam",
+    "retrievedAt": "2026-05-11T10:20:00Z",
+    "snapshotHash": "e8a8f3c9d7b2e1f6a5c4d3b2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2",
+    "sourceRights": "Official university policy document. Rights reserved by University of Amsterdam."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

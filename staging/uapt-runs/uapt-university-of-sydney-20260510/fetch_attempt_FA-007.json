@@ -1,18 +1,19 @@
 {
+  "artifactType": "fetch_attempt",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "fetch_attempt",
-  "fetchAttemptId": "FA-007",
-  "sourceCandidateId": "SC-007",
+  "fetchAttemptId": "usyd-fetch-7",
+  "sourceCandidateId": "usyd-assessment-procedures",
   "sourceUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
   "finalUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
-  "attemptedAt": "2026-05-10T14:26:00.000Z",
+  "attemptedAt": "2026-05-10T14:22:00.000Z",
   "fetchMode": "firecrawl",
   "userAgentKind": "firecrawl",
   "httpStatus": 200,
   "contentType": "text/html;charset=utf-8",
   "robotsAllowed": true,
   "outcome": "success",
-  "durationMs": 3500,
-  "contentHash": "4981f1bde50adc698d04d6110ef088d95f760d85cb0601080d3743d90a9e9f2f"
+  "durationMs": 2700,
+  "contentHash": "4981f1bde50adc698d04d6110ef088d95f760d85cb0601080d3743d90a9e9f2f",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-sydney-20260510/normalized/usyd-assessment-procedures.txt"
 }

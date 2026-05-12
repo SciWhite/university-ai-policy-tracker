@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_candidate",
-  "sourceCandidateId": "SC-006",
+  "sourceCandidateId": "usyd-aligning-assessments-genai",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",

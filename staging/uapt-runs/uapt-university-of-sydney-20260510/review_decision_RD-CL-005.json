@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "decisionId": "usyd-review-5",
+  "claimId": "usyd-claim-5",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Approved. Directly supported by the University's published AI guardrails on the Teaching@Sydney FAQ page. Source uses 'should' tone preserved in the original.",
+  "decidedAt": "2026-05-10T14:45:00.000Z"
+}

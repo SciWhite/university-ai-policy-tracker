@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_rejection",
-  "sourceRejectionId": "SR-007",
+  "sourceRejectionId": "usyd-sr-cce-copilot-course",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://cce.sydney.edu.au/article/feeling-lost-with-ai-microsoft-copilot-can-help",

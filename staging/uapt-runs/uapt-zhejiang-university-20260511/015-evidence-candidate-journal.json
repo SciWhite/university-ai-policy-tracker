@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "evidence_candidate",
+  "runId": "uapt-zhejiang-university-20260511",
+  "evidenceId": "evidence-zju-001",
+  "claimId": "claim-zju-001",
+  "sourceSnapshotId": "snapshot-zju-001",
+  "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+  "finalUrl": "https://jzus.zju.edu.cn/Policy.php",
+  "sourceTitle": "Journal of Zhejiang University - Policy Statement and Author Disclosure Requirements for the Use of Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327",
+  "evidenceSnippetOriginal": "1. Principle of Human Authorship: Artificial intelligence (AI) or large language models (LLMs) cannot be listed as an author or co-author of a manuscript. Authorship and order of authors must be predicated on substantive intellectual contributions.",
+  "evidenceSnippetDisplay": "AI and LLMs cannot be listed as authors or co-authors of a manuscript.",
+  "evidenceLocator": "Section I, item 1",
+  "evidenceType": "official_source",
+  "relevance": 0.92,
+  "rightsNote": "Official source page retains its original rights. Tracker metadata is open licensed; source text is quoted only as short evidence.",
+  "citation": {
+    "citationTitle": "Policy Statement and Author Disclosure Requirements for the Use of Generative AI",
+    "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/zhejiang-university/sources/jzus-policy.json",
+    "publisher": "Journal of Zhejiang University-SCIENCE",
+    "retrievedAt": "2026-05-11T00:30:00Z",
+    "snapshotHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327",
+    "sourceRights": "Official source page retains its original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceCandidateId": "mcgill-stl-recommendations",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://www.mcgill.ca/stl/stl-ai-working-group",
+  "finalUrl": "https://www.mcgill.ca/stl/stl-ai-working-group",
+  "sourceTitle": "Generative AI for teaching and learning at McGill",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:mcgill.ca \"ChatGPT\" academic integrity",
+  "discoveredAt": "2026-05-10T14:10:00.000Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "blocked",
+  "verifiedAt": "2026-05-11T00:00:00.000Z",
+  "verificationNotes": "Subcommittee on Teaching and Learning (STL) AI Working Group page. Links to STL recommendations PDF approved by APC on September 28, 2023. Provides governance context for AI guidance at McGill. Local validation refetch returned HTTP 429/offline response; source is kept as a discovered candidate but is not used for approved evidence in this run.",
+  "robotsPolicy": "respect"
+}

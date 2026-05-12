@@ -1,0 +1,95 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "traceId": "psl-discovery-trace-1",
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "startedAt": "2026-05-11T09:00:00.000Z",
+  "endedAt": "2026-05-11T10:30:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:psl.eu \"intelligence artificielle générative\" politique",
+      "domain": "psl.eu",
+      "resultCount": 10,
+      "notes": "Found research showcases, events, and member school content. No university-wide AI policy found."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:psl.eu \"IA générative\" étudiants",
+      "domain": "psl.eu",
+      "resultCount": 10,
+      "notes": "Found training resources, events, and member school guidance. No centralized PSL student guidance."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:psl.eu \"ChatGPT\" \"intégrité académique\"",
+      "domain": "psl.eu",
+      "resultCount": 10,
+      "notes": "Found URFIST training materials on academic integrity and AI. No PSL-wide academic integrity policy specific to AI."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:psl.eu \"outils d'IA\" enseignement",
+      "domain": "psl.eu",
+      "resultCount": 10,
+      "notes": "Found pedagogical innovation center pages and training events. No official teaching guidance."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:psl.eu \"IA\" \"évaluation\"",
+      "domain": "psl.eu",
+      "resultCount": 10,
+      "notes": "Found pedagogical innovation center content on assessment formats. No official assessment policy."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:psl.eu \"charte\" \"intelligence artificielle\"",
+      "domain": "psl.eu",
+      "resultCount": 10,
+      "notes": "Found references to scientific integrity charter and open science charter, but no AI-specific charter."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"Université PSL\" \"generative AI\" policy",
+      "resultCount": 10,
+      "notes": "Found MDPI article noting 'No guidelines were found on the website https://psl.eu/en as of 30 August 2024'. Confirms absence of centralized policy."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:psl.eu \"règlement\" \"scolarité\" \"IA\"",
+      "domain": "psl.eu",
+      "resultCount": 10,
+      "notes": "Found règlement de la scolarité PDF mentioning AI. Requires further review."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:dauphine.psl.eu \"intelligence artificielle\" politique",
+      "domain": "dauphine.psl.eu",
+      "resultCount": 10,
+      "notes": "Found research content and events from Dauphine. No school-wide AI policy."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:ens.psl.eu \"IA\" \"usage\" étudiants",
+      "domain": "ens.psl.eu",
+      "resultCount": 10,
+      "notes": "Found ENS research and news about AI. No official ENS AI policy for students."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "psl-bu-dauphine-research-integrity",
+    "psl-reglement-scolarite-mention-ia"
+  ],
+  "rejectionIds": [
+    "psl-sr-research-showcase-1",
+    "psl-sr-event-announcements",
+    "psl-sr-training-materials",
+    "psl-sr-news-articles",
+    "psl-sr-pdf-research-papers",
+    "psl-sr-research-showcase-2"
+  ],
+  "summary": "Comprehensive discovery via 10+ search queries across psl.eu and member school domains (dauphine.psl.eu, ens.psl.eu). Université PSL is a federal university comprising multiple grandes écoles. No dedicated central PSL generative-AI policy page was found, but the official PSL academic regulations PDF contains an AI disclosure/plagiarism rule. Member-school guidance from BU Paris-Dauphine provides research-integrity recommendations on transparency, responsibility, data privacy, and limitations. Six sources were rejected as research showcases, events, training materials, news, or low-specificity materials."
+}

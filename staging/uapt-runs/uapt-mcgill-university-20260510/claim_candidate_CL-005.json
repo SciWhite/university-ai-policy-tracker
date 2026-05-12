@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "claimId": "mcgill-claim-teaching",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "claimType": "teaching",
+  "claimText": "McGill recommends that instructors explain to students in their course outline what the appropriate use or non-use is of generative AI tools in the context of that course. The use or non-use of these tools should align with the learning outcomes associated with the course.",
+  "normalizedValue": "course_outline_statement_recommended",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "mcgill-evidence-teaching"
+  ],
+  "citation": {
+    "citationTitle": "Using generative AI in teaching and learning",
+    "sourceUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
+    "publisher": "McGill University",
+    "retrievedAt": "2026-05-10T14:32:00.000Z",
+    "snapshotHash": "d842d0ad67dd6697b411f00d8c57c0ee3cb26e133d82a52c10fedbe64c245934",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

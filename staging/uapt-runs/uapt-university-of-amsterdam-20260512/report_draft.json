@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "report_draft",
+  "reportId": "uapt-uva-report-001",
+  "title": "University of Amsterdam AI Policy Report - May 2026",
+  "generatedAt": "2026-05-11T10:30:00Z",
+  "draftPath": "content/reports/2026-05/uapt-university-of-amsterdam-20260512.mdx",
+  "summary": "The University of Amsterdam (QS World University Rankings 2026 rank 55, Netherlands) has established a comprehensive policy framework for Generative AI in education. Key findings include: (1) Official GenAI policy framework with faculty-level customization; (2) Development of UvA AI Chat, a self-managed institutional AI tool; (3) Joint VU-UvA task force establishing academic integrity criteria for AI software; (4) Adherence to Netherlands and European Codes of Conduct for Research Integrity; (5) Strong emphasis on student transparency in AI use. All sources are official university domains (uva.nl, tlc.uva.nl) in English. Evidence includes direct policy documents and official guidance pages.",
+  "referencedClaimIds": [
+    "uva-claim-001",
+    "uva-claim-002",
+    "uva-claim-003",
+    "uva-claim-004"
+  ],
+  "publicJsonLinks": [],
+  "limitations": [
+    "This report is based on publicly available official sources as of May 2026.",
+    "Policy documents may be updated; users should verify current status on official UvA websites.",
+    "This report does not constitute legal or official advice.",
+    "Some faculty-specific implementations may vary from central policy framework."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Official source rights caveat: Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

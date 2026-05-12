@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceRejectionId": "mcgill-sr-reporter-news",
+
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://reporter.mcgill.ca/mcgill-instructors-collaborate-on-developing-best-practices-for-generative-ai/",
+  "finalUrl": "https://reporter.mcgill.ca/mcgill-instructors-collaborate-on-developing-best-practices-for-generative-ai/",
+  "rejectedAt": "2026-05-10T14:20:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "McGill instructors collaborate on developing best practices for generative AI - McGill Reporter news article discussing instructor collaboration.",
+  "notes": "News article about instructor collaboration, not official policy or guidance. Rejected as news-only content."
+}

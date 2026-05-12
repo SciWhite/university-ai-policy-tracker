@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceSnapshotId": "mcgill-ss-003",
+  "sourceCandidateId": "mcgill-it-ai-guidelines",
+  "fetchAttemptId": "mcgill-fa-003",
+  "sourceUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+  "finalUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+  "sourceTitle": "AI Guidelines",
+  "sourceLanguage": "en",
+  "contentHash": "65240bfc8b000bd19a295b33007df10eb02f40e3b3347bc667da67f42f7ce4ee",
+  "fetchedAt": "2026-05-10T14:33:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "mcgill/it-ai-guidelines-20260510.txt",
+  "rawArtifactPaths": []
+}

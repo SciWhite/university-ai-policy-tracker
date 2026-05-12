@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "decisionId": "usyd-review-4",
+  "claimId": "usyd-claim-4",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Approved. Directly supported by the two-lane approach article. Narrow claim backed by official source.",
+  "decidedAt": "2026-05-10T14:45:00.000Z"
+}

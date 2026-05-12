@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "claimId": "usyd-claim-4",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "claimType": "teaching",
+  "claimText": "The University of Sydney has adopted a 'two-lane approach' to assessment: Lane 1 comprises secure, in-person supervised assessments to assure learning, and Lane 2 comprises open assessments that support and scaffold the use of all available and relevant tools including generative AI.",
+  "normalizedValue": "two_lane_approach_secure_and_open_assessments",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["usyd-evidence-4"],
+  "citation": {
+    "citationTitle": "Aligning our assessments to the age of generative AI",
+    "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json",
+    "publisher": "The University of Sydney",
+    "retrievedAt": "2026-05-10T14:22:00.000Z",
+    "snapshotHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

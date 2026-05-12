@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "evidenceId": "usyd-evidence-8",
+  "claimId": "usyd-claim-8",
+  "sourceSnapshotId": "usyd-snapshot-1",
+  "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+  "finalUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+  "sourceTitle": "Using artificial intelligence tools responsibly",
+  "sourceLanguage": "en",
+  "snapshotHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7",
+  "evidenceSnippetOriginal": "If you use AI in your assessments, you're required to acknowledge it - this includes acknowledging any tools that use generative AI, such as translation tools, paraphrasing tools or referencing tools. You are not required to acknowledge tools used for word processing, or which only correct basic spelling and grammar. Failing to provide acknowledgement or any other misuse can lead to a breach of the Academic Integrity Policy 2022 .",
+  "evidenceLocator": "Acknowledging AI use section",
+  "evidenceType": "official_source",
+  "relevance": 0.99,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using artificial intelligence tools responsibly",
+    "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json",
+    "publisher": "The University of Sydney",
+    "retrievedAt": "2026-05-10T14:20:00.000Z",
+    "snapshotHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

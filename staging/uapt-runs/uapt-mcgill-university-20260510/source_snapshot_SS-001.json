@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceSnapshotId": "mcgill-ss-001",
+  "sourceCandidateId": "mcgill-provost-principles",
+  "fetchAttemptId": "mcgill-fa-001",
+  "sourceUrl": "https://www.mcgill.ca/provost/files/provost/principles_on_generative_ai_in_teaching_and_learning_at_mcgill.pdf",
+  "finalUrl": "https://www.mcgill.ca/provost/files/provost/principles_on_generative_ai_in_teaching_and_learning_at_mcgill.pdf",
+  "sourceTitle": "Principles on Generative AI in Teaching and Learning at McGill",
+  "sourceLanguage": "en",
+  "contentHash": "bf264889e0f83ad66de9b81f263407457f522fa784bf56c38075b3f5f1b4ffdf",
+  "fetchedAt": "2026-05-10T14:31:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "mcgill/provost-principles-20260510.txt",
+  "rawArtifactPaths": []
+}

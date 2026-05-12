@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "claimId": "psl-claim-research-data-privacy",
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "claimType": "privacy",
+  "claimText": "PSL-affiliated guidance advises that personal data should not be shared with third parties when generative AI is used, and that generated text should be checked so it does not constitute plagiarism or contain personal data.",
+  "normalizedValue": "do_not_share_personal_data_check_ai_output_for_plagiarism_or_personal_data",
+  "sourceLanguage": "fr",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "psl-evidence-research-data-privacy"
+  ],
+  "citation": {
+    "citationTitle": "Utiliser l'intelligence artificielle dans sa recherche : des recommandations pour le respect de l'intégrité scientifique",
+    "sourceUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universite-psl.json",
+    "publisher": "BU Paris-Dauphine (Université PSL)",
+    "retrievedAt": "2026-05-11T09:45:00.000Z",
+    "snapshotHash": "c8d14b8e1a715d3bbc3bb0cce9e0ed8062cad25acf9c8ee9d5570160651bfb9d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

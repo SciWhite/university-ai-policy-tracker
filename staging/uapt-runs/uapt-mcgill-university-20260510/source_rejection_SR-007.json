@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceRejectionId": "mcgill-sr-medicine-pdf",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://www.mcgill.ca/familymed/files/familymed/ai_scribe_guideline_19sept2025.pdf",
+  "finalUrl": "https://www.mcgill.ca/familymed/files/familymed/ai_scribe_guideline_19sept2025.pdf",
+  "rejectedAt": "2026-05-10T14:23:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Policy for Resident Use of Generative AI including AI Scribes - Faculty of Medicine departmental policy.",
+  "notes": "Departmental policy for medical residents only, not university-wide. Too narrow in scope for general tracker claims. Rejected."
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "crawl_plan",
+  "runId": "uapt-zhejiang-university-20260511",
+  "planId": "plan-zju-001",
+  "createdAt": "2026-05-11T00:00:00Z",
+  "createdBy": "openclaw_agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "zhejiang-university",
+      "sourceCandidateId": "candidate-zju-001",
+      "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+      "sourceTitle": "Journal of Zhejiang University - Policy Statement and Author Disclosure Requirements for the Use of Generative AI",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "generative AI policy",
+        "academic publication guidelines",
+        "AI authorship",
+        "research integrity"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "journal_policy_source_fetched",
+    "no_university_wide_ai_policy_found"
+  ]
+}

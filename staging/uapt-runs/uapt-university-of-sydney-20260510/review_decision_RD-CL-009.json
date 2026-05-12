@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "decisionId": "usyd-review-9",
+  "claimId": "usyd-claim-9",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Approved. Directly supported by the official responsible AI use page. Claim wording captures the source's qualified language precisely ('may be used', 'would not be the only evidence').",
+  "decidedAt": "2026-05-10T14:45:00.000Z"
+}

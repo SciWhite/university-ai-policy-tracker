@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "uva-snapshot-005",
+  "sourceCandidateId": "uva-source-005",
+  "fetchAttemptId": "uva-fetch-005",
+  "sourceUrl": "https://tlc.uva.nl/en/article/ai-offers-new-possibilities-for-education-and-assessment/",
+  "finalUrl": "https://tlc.uva.nl/en/article/ai-offers-new-possibilities-for-education-and-assessment/",
+  "sourceTitle": "Responsible use of GenAI (resources)",
+  "sourceLanguage": "en",
+  "contentHash": "4aea837f5a7b825dc7adb3a289846b32ffe1177618366500a338d7a0be1122d8",
+  "fetchedAt": "2026-05-11T10:24:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "uva-tlc-genai-resources-20260511.md",
+  "rawArtifactPaths": []
+}

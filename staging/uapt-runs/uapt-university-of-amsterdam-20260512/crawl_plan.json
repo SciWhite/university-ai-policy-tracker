@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "uapt-uva-plan-001",
+  "createdAt": "2026-05-11T10:00:00Z",
+  "createdBy": "openclaw-crawler-worker",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-amsterdam",
+      "sourceCandidateId": "uva-source-001",
+      "sourceUrl": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html",
+      "sourceTitle": "Policy framework and guidelines on GenAI in education",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "GenAI policy",
+        "education guidelines",
+        "academic integrity"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-amsterdam",
+      "sourceCandidateId": "uva-source-002",
+      "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/ai-in-education.html",
+      "sourceTitle": "AI in education - University of Amsterdam",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "AI education",
+        "teaching guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-amsterdam",
+      "sourceCandidateId": "uva-source-003",
+      "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/vu-uva-task-force-on-ai-in-education/vu-uva-task-force-on-ai-in-education.html",
+      "sourceTitle": "VU-UvA task force on AI in education",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic integrity",
+        "AI software criteria"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-amsterdam",
+      "sourceCandidateId": "uva-source-004",
+      "sourceUrl": "https://www.uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html",
+      "sourceTitle": "Academic integrity at the UvA",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "research integrity",
+        "codes of conduct"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-amsterdam",
+      "sourceCandidateId": "uva-source-005",
+      "sourceUrl": "https://tlc.uva.nl/en/article/ai-offers-new-possibilities-for-education-and-assessment/",
+      "sourceTitle": "Responsible use of GenAI (resources)",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching guidance",
+        "GenAI resources"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "all_targets_fetched",
+    "policy_framework_found",
+    "no_additional_sources"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceRejectionId": "mcgill-sr-health-enews",
+
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://healthenews.mcgill.ca/generative-ai-in-the-classroom/",
+  "finalUrl": "https://healthenews.mcgill.ca/generative-ai-in-the-classroom/",
+  "rejectedAt": "2026-05-10T14:21:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Health e-News article about generative AI in the classroom, not official policy.",
+  "notes": "News article from health faculty newsletter. Rejected as news-only content."
+}

@@ -1,0 +1,50 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "planId": "psl-crawl-plan-20260511",
+  "createdAt": "2026-05-11T10:15:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "universite-psl",
+      "sourceCandidateId": "psl-bu-dauphine-research-integrity",
+      "sourceUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+      "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche : des recommandations pour le respect de l'intégrité scientifique",
+      "sourceLanguage": "fr",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "research_guidance",
+        "academic_integrity"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "universite-psl",
+      "sourceCandidateId": "psl-reglement-scolarite-mention-ia",
+      "sourceUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+      "sourceTitle": "Règlement de la scolarité de l'Université PSL",
+      "sourceLanguage": "fr",
+      "allowedFetchModes": [
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "ai_disclosure"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Do not follow login-gated pages.",
+    "Do not fetch pages behind CAPTCHAs or paywalls.",
+    "PSL is a federal university - member schools maintain autonomy over academic policies."
+  ]
+}

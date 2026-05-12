@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "uva-review-004",
+  "claimId": "uva-claim-004",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-crawler-worker",
+  "notes": "Claim about adherence to Netherlands and European codes of conduct directly supported by academic integrity page.",
+  "decidedAt": "2026-05-11T10:28:00Z"
+}

@@ -1,16 +1,23 @@
 {
+  "artifactType": "report_draft",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "report_draft",
-  "reportId": "RPT-001",
-  "title": "The University of Sydney AI Policy Crawl Report",
-  "generatedAt": "2026-05-10T15:00:00.000Z",
+  "reportId": "university-of-sydney-report-20260510",
+  "title": "The University of Sydney: AI Policy Crawl Report",
+  "generatedAt": "2026-05-10T14:50:00.000Z",
   "draftPath": "content/reports/university-of-sydney-20260510.mdx",
-  "summary": "The University of Sydney staged artifacts cover official guidance on academic integrity, AI assistance, acknowledgment requirements, and the Semester 1 2025 assessment default for non-exam assessments. Claims are staged agent-reviewed candidates only and are not canonical public tracker claims.",
+  "summary": "The University of Sydney has a comprehensive and sector-leading AI policy framework. Key findings: Academic Integrity Policy 2022 explicitly addresses AI misuse as both an integrity breach and potential contract cheating. From Semester 1 2025, the default was reversed to allow AI use for non-examination assessments unless prohibited by the coordinator. The University has adopted a two-lane approach (secure Lane 1 and open Lane 2) from Semester 2 2025. All students receive free Microsoft Copilot for Web with protected mode via UniKey. Published AI guardrails prohibit entering confidential or sensitive data into AI tools. Turnitin AI detection may be used but is not the sole evidence for integrity cases. AI use in assessments must be acknowledged or students face breach proceedings. Assessment Procedures require coordinators to specify AI rules per assessment. All claims are agent_reviewed only, backed by 8 verified official sources from sydney.edu.au and educational-innovation.sydney.edu.au.",
   "referencedClaimIds": [
-    "CL-001",
-    "CL-002",
-    "CL-003"
+    "usyd-claim-1",
+    "usyd-claim-2",
+    "usyd-claim-3",
+    "usyd-claim-4",
+    "usyd-claim-5",
+    "usyd-claim-6",
+    "usyd-claim-7",
+    "usyd-claim-8",
+    "usyd-claim-9",
+    "usyd-claim-10"
   ],
   "publicJsonLinks": [
     "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json"

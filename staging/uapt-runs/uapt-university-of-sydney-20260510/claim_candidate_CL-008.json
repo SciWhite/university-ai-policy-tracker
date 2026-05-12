@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "claimId": "usyd-claim-8",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "claimType": "academic_integrity",
+  "claimText": "University of Sydney states that students who use AI in assessments are required to acknowledge it, including any tools that use generative AI such as translation tools, paraphrasing tools or referencing tools; failing to provide acknowledgement can lead to a breach of the Academic Integrity Policy 2022.",
+  "normalizedValue": "ai_acknowledgment_required_in_assessments",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["usyd-evidence-8"],
+  "citation": {
+    "citationTitle": "Using artificial intelligence tools responsibly",
+    "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json",
+    "publisher": "The University of Sydney",
+    "retrievedAt": "2026-05-10T14:20:00.000Z",
+    "snapshotHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

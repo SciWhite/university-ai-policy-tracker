@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "source_rejection",
+  "runId": "uapt-zhejiang-university-20260511",
+  "sourceRejectionId": "rejection-zju-001",
+  "sourceCandidateId": "candidate-zju-004",
+  "entityType": "university",
+  "entitySlug": "zhejiang-university",
+  "sourceUrl": "https://www.zju.edu.cn/english/2025/1226/c19573a3123655/page.psp",
+  "finalUrl": "https://www.zju.edu.cn/english/2025/1226/c19573a3123655/page.psp",
+  "rejectedAt": "2026-05-11T00:50:00Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw_agent",
+  "evidenceSnippet": "At the inaugural National Qizhen Wenzhi Artificial Intelligence Models and Agents Competition for University Students, hosted by Zhejiang University, students and faculty formed interdisciplinary teams.",
+  "notes": "News article showcasing AI student projects and AI STEP initiative. No policy guidance or official university position on AI use. Rejected as research showcase only."
+}

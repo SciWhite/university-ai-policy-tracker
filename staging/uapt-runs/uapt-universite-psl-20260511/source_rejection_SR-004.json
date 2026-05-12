@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceRejectionId": "psl-sr-news-articles",
+
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "sourceUrl": "http://www.ens.psl.eu/actualites/l-ia-devient-le-sujet-de-toutes-et-tous",
+  "finalUrl": "http://www.ens.psl.eu/actualites/l-ia-devient-le-sujet-de-toutes-et-tous",
+  "rejectedAt": "2026-05-11T10:08:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "« L'IA devient le sujet de toutes et tous ». Depuis septembre 2023, nommée co-Présidente du Comité interministériel de l'intelligence artificielle générative.",
+  "notes": "ENS news article about AI becoming mainstream topic. News content, not policy or guidance. Rejected as news only."
+}

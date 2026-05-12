@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceRejectionId": "psl-sr-research-showcase-2",
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "sourceUrl": "https://dauphine.psl.eu/eclairages/article/lencadrement-des-ia-generatives-par-le-reglement-europeen-sur-lia-un-exercice-dequilibrisme",
+  "finalUrl": "https://dauphine.psl.eu/eclairages/article/lencadrement-des-ia-generatives-par-le-reglement-europeen-sur-lia-un-exercice-dequilibrisme",
+  "rejectedAt": "2026-05-11T10:06:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Avec le Règlement européen sur l'IA (RIA) l'UE publie la première réglementation d'envergure encadrant les usages de l'intelligence artificielle générative.",
+  "notes": "Analysis article about EU AI regulation. Research/analysis content, not official PSL policy or guidance. Rejected as research content only."
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "source_rejection",
+  "runId": "uapt-zhejiang-university-20260511",
+  "sourceRejectionId": "rejection-zju-002",
+  "entityType": "university",
+  "entitySlug": "zhejiang-university",
+  "sourceUrl": "https://www.zju.edu.cn/english/2025/0313/c75270a3026819/page.psp",
+  "finalUrl": "https://www.zju.edu.cn/english/2025/0313/c75270a3026819/page.psp",
+  "rejectedAt": "2026-05-11T00:52:00Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw_agent",
+  "evidenceSnippet": "At the heart of this revolution is the Zhejiang University Innovation Practice Base of Robotics and Intelligent Equipment, a vibrant hub where students from diverse disciplines are turning their boldest ideas into reality.",
+  "notes": "Robotics program showcase article. No AI policy content. Rejected as research showcase without policy guidance."
+}

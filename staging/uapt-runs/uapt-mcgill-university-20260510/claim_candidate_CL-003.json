@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "claimId": "mcgill-claim-rejected-tools",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "claimType": "ai_tool_treatment",
+  "claimText": "McGill explicitly rejects DeepSeek AI for McGill-managed or research-funded devices, rejects Read.AI and other AI meeting bots for McGill use, and says tools not mentioned in the available AI tools list are automatically considered rejected.",
+  "normalizedValue": "deepseek_readai_rejected_prohibited",
+  "sourceLanguage": "en",
+  "confidence": 0.98,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "mcgill-evidence-rejected-tools"
+  ],
+  "citation": {
+    "citationTitle": "AI tools at McGill",
+    "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
+    "publisher": "McGill University",
+    "retrievedAt": "2026-05-10T14:35:00.000Z",
+    "snapshotHash": "8a89030dff58ebc25b045f9ab0dcfaba0f8699625752be03016500f44d392533",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

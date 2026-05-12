@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "uva-claim-002",
+  "entityType": "university",
+  "entitySlug": "university-of-amsterdam",
+  "claimType": "ai_tool_treatment",
+  "claimText": "The University of Amsterdam is developing its own AI chat environment called UvA AI Chat, which is similar to ChatGPT but is fully self-managed and specifically designed for UvA students, lecturers and staff.",
+  "normalizedValue": "UvA AI Chat is official self-managed AI tool for UvA community",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uva-evidence-002"
+  ],
+  "citation": {
+    "citationTitle": "AI in education - University of Amsterdam",
+    "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/ai-in-education.html",
+    "publisher": "University of Amsterdam",
+    "retrievedAt": "2026-05-11T10:21:00Z",
+    "snapshotHash": "f9b8a7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8",
+    "sourceRights": "Official university guidance. Rights reserved by University of Amsterdam."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

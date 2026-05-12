@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceRejectionId": "psl-sr-research-showcase-1",
+
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "sourceUrl": "https://dauphine.psl.eu/eclairages/dossier/les-intelligences-artificielles-generatives-lenvers-du-decor",
+  "finalUrl": "https://dauphine.psl.eu/eclairages/dossier/les-intelligences-artificielles-generatives-lenvers-du-decor",
+  "rejectedAt": "2026-05-11T10:05:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Entre réalisme et inventivité : comment cadrer les IA Génératives ? Dall-E, ChatGPT, Midjourney... L'intelligence artificielle générative est en train de révolutionner de nombreux domaines.",
+  "notes": "Research showcase and analysis content from Dauphine-PSL. Discusses AI research and implications but does not constitute official policy or guidance. Rejected as research content only."
+}

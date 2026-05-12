@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceRejectionId": "mcgill-sr-library-guide",
+
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://libraryguides.mcgill.ca/ai/literacy",
+  "finalUrl": "https://libraryguides.mcgill.ca/ai/literacy",
+  "rejectedAt": "2026-05-10T14:22:00.000Z",
+  "rejectionReason": "other",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "McGill Library guide on AI literacy, educational resource rather than policy.",
+  "notes": "Library research guide, educational in nature. Not official university policy or guidance. Rejected."
+}

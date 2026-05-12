@@ -1,0 +1,15 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceRejectionId": "mcgill-sr-desautels-news",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://www.mcgill.ca/desautels/channels/news/how-ai-making-things-harder-cheaters-288913",
+  "finalUrl": "https://www.mcgill.ca/desautels/channels/news/how-ai-making-things-harder-cheaters-288913",
+  "rejectedAt": "2026-05-10T14:22:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Desautels news article about AI and academic integrity, faculty-specific news.",
+  "notes": "Faculty news article, not official university-wide policy. Rejected as news content."
+}

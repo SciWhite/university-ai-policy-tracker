@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "evidence_candidate",
+  "runId": "uapt-zhejiang-university-20260511",
+  "evidenceId": "evidence-zju-002",
+  "claimId": "claim-zju-001",
+  "sourceSnapshotId": "snapshot-zju-001",
+  "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+  "finalUrl": "https://jzus.zju.edu.cn/Policy.php",
+  "sourceTitle": "Journal of Zhejiang University - Policy Statement and Author Disclosure Requirements for the Use of Generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327",
+  "evidenceSnippetOriginal": "3. Obligation for Transparent Disclosure: Any substantive use of generative AI tools during the preparation of a manuscript must be disclosed explicitly and in detail within the paper. Failure to disclose such use, if discovered, will be treated as a form of academic misconduct.",
+  "evidenceSnippetDisplay": "Substantive generative AI use during manuscript preparation must be disclosed explicitly and in detail.",
+  "evidenceLocator": "Section I, item 3",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Official source page retains its original rights. Tracker metadata is open licensed; source text is quoted only as short evidence.",
+  "citation": {
+    "citationTitle": "Policy Statement and Author Disclosure Requirements for the Use of Generative AI",
+    "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/zhejiang-university/sources/jzus-policy.json",
+    "publisher": "Journal of Zhejiang University-SCIENCE",
+    "retrievedAt": "2026-05-11T00:30:00Z",
+    "snapshotHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327",
+    "sourceRights": "Official source page retains its original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  }
+}

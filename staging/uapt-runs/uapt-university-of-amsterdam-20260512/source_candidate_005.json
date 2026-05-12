@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "uva-source-005",
+  "entityType": "university",
+  "entitySlug": "university-of-amsterdam",
+  "sourceUrl": "https://tlc.uva.nl/en/article/ai-offers-new-possibilities-for-education-and-assessment/",
+  "finalUrl": "https://tlc.uva.nl/en/article/ai-offers-new-possibilities-for-education-and-assessment/",
+  "sourceTitle": "Responsible use of GenAI (resources)",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:uva.nl AI artificial intelligence policy guidelines teaching assessment",
+  "discoveredAt": "2026-05-11T10:07:00Z",
+  "officialDomainConfidence": 0.96,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.87,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T10:19:00Z",
+  "verificationNotes": "UvA Teaching & Learning Centre resources for GenAI in education with practical guidance.",
+  "robotsPolicy": "respect"
+}

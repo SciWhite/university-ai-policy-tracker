@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_candidate",
-  "sourceCandidateId": "SC-007",
+  "sourceCandidateId": "usyd-assessment-procedures",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",

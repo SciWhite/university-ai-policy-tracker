@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "evidenceId": "usyd-evidence-4",
+  "claimId": "usyd-claim-4",
+  "sourceSnapshotId": "usyd-snapshot-6",
+  "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+  "finalUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+  "sourceTitle": "Aligning our assessments to the age of generative AI",
+  "sourceLanguage": "en",
+  "snapshotHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926",
+  "evidenceSnippetOriginal": "Secure (Lane 1) Open (Lane 2) Role of assessment Assessment of learning Assessment for and as learning Level of operation Mainly at program level Mainly at unit level Assessment security Secured, in person 'Open' / unsecured Role of generative AI May or may not be allowed by examiner As relevant, use of AI scaffolded & supported",
+  "evidenceLocator": "The two-lane approach to assessment section, Table 1 summary",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Aligning our assessments to the age of generative AI",
+    "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json",
+    "publisher": "The University of Sydney",
+    "retrievedAt": "2026-05-10T14:22:00.000Z",
+    "snapshotHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "claimId": "usyd-claim-5",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "claimType": "privacy",
+  "claimText": "The University of Sydney's generative AI guardrails state that confidential, personal, proprietary, or otherwise sensitive information should not be entered into AI tools.",
+  "normalizedValue": "no_confidential_or_sensitive_data_in_ai_tools",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["usyd-evidence-5"],
+  "citation": {
+    "citationTitle": "Frequently asked questions about generative AI at Sydney",
+    "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json",
+    "publisher": "The University of Sydney",
+    "retrievedAt": "2026-05-10T14:21:00.000Z",
+    "snapshotHash": "058efdd957971901a0e660842c9c6489291b59f707f0ce8389586021ae393a1e",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

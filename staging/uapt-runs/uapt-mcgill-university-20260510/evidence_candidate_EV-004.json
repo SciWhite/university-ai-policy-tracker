@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "evidenceId": "mcgill-evidence-academic-integrity",
+  "claimId": "mcgill-claim-academic-integrity",
+  "sourceSnapshotId": "mcgill-ss-001",
+  "sourceUrl": "https://www.mcgill.ca/provost/files/provost/principles_on_generative_ai_in_teaching_and_learning_at_mcgill.pdf",
+  "finalUrl": "https://www.mcgill.ca/provost/files/provost/principles_on_generative_ai_in_teaching_and_learning_at_mcgill.pdf",
+  "sourceTitle": "Principles on Generative AI in Teaching and Learning at McGill",
+  "sourceLanguage": "en",
+  "snapshotHash": "bf264889e0f83ad66de9b81f263407457f522fa784bf56c38075b3f5f1b4ffdf",
+  "evidenceSnippetOriginal": "Fourth principle: Instructors remain responsible for comporting themselves according to the highest standards of academic integrity in their use of generative AI tools. Instructors maintain responsibility and accountability for all of their instructional materials whether independently created, third-party generated, supported by generative AI tools, or derived from other resources. Instructors must be explicit in course outlines about the expectations for use of generative AI tools and may set limits on their use in assessment tasks.",
+  "evidenceLocator": "Fourth principle",
+  "evidenceType": "official_source",
+  "relevance": 0.97,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Principles on Generative AI in Teaching and Learning at McGill",
+    "sourceUrl": "https://www.mcgill.ca/provost/files/provost/principles_on_generative_ai_in_teaching_and_learning_at_mcgill.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
+    "publisher": "McGill University",
+    "retrievedAt": "2026-05-10T14:31:00.000Z",
+    "snapshotHash": "bf264889e0f83ad66de9b81f263407457f522fa784bf56c38075b3f5f1b4ffdf",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

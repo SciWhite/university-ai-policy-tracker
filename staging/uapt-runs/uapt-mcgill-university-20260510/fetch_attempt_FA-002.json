@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "fetchAttemptId": "mcgill-fa-002",
+  "sourceCandidateId": "mcgill-teaching-kb-genai",
+  "sourceUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+  "finalUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+  "attemptedAt": "2026-05-10T14:32:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "d842d0ad67dd6697b411f00d8c57c0ee3cb26e133d82a52c10fedbe64c245934",
+  "durationMs": 1450
+}

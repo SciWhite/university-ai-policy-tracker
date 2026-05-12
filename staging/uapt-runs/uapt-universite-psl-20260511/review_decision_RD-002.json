@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "decisionId": "psl-rd-002",
+  "claimId": "psl-claim-research-responsibility",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim supported by direct evidence on authorship and responsibility. Source clearly states AI cannot be co-author and user retains responsibility. Appropriate for PSL context as member school guidance.",
+  "decidedAt": "2026-05-11T10:21:00.000Z"
+}

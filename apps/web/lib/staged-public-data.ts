@@ -827,6 +827,7 @@ function buildRankingSlugs(name: string): string[] {
     "california-institute-of-technology": ["caltech"],
     "chin-university-hong-kong": ["the-chinese-university-of-hong-kong"],
     "columbia-university": ["columbia"],
+    "epfl-ecole-polytechnique-federale-de-lausanne": ["epfl"],
     "eth-zurich": ["eth-zurich-swiss-federal-institute-of-technology"],
     "johns-hopkins-university": ["jhu"],
     "king-s-college-london": ["kcl", "kings-college-london"],
@@ -849,6 +850,7 @@ function buildRankingSlugs(name: string): string[] {
     "the-university-of-melbourne": ["university-of-melbourne"],
     "the-university-of-new-south-wales": ["unsw-sydney"],
     "the-university-of-queensland": ["university-of-queensland"],
+    "the-university-of-sydney": ["university-of-sydney"],
     "the-university-of-tokyo": ["u-tokyo"],
     "university-of-british-columbia": ["ubc"],
     "university-coll-london": ["university-college-london", "ucl"],
@@ -858,6 +860,11 @@ function buildRankingSlugs(name: string): string[] {
     "university-cambridge": ["university-of-cambridge"],
     "university-of-california-berkeley": ["uc-berkeley"],
     "university-of-california-berkeley-ucb": ["university-of-california-berkeley"],
+    "university-of-california-los-angeles": ["ucla"],
+    "university-of-california-los-angeles-ucla": [
+      "university-of-california-los-angeles",
+      "ucla"
+    ],
     "university-of-michigan-ann-arbor": ["university-of-michigan-ann-arbor"]
   };
 

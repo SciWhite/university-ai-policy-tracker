@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "uapt-uva-discovery-001",
+  "entityType": "university",
+  "entitySlug": "university-of-amsterdam",
+  "startedAt": "2026-05-11T10:00:00Z",
+  "endedAt": "2026-05-11T10:30:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:uva.nl AI artificial intelligence policy guidelines teaching assessment",
+      "resultCount": 15,
+      "notes": "Primary discovery via Firecrawl search found official UvA AI policy pages"
+    },
+    {
+      "method": "site_search",
+      "query": "site:uva.nl academic integrity guidelines AI students",
+      "resultCount": 15,
+      "notes": "Found academic integrity and task force pages"
+    },
+    {
+      "method": "site_search",
+      "query": "site:uva.nl OR site:tlc.uva.nl policy framework GenAI guidelines official",
+      "resultCount": 10,
+      "notes": "Located official GenAI policy framework PDF and guidelines"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "uva-source-001",
+    "uva-source-002",
+    "uva-source-003",
+    "uva-source-004",
+    "uva-source-005"
+  ],
+  "rejectionIds": [],
+  "summary": "Discovered 5 official University of Amsterdam sources related to AI policy, GenAI education framework, academic integrity, and teaching guidance. All sources are from official uva.nl and tlc.uva.nl domains with clear policy/guidance content."
+}

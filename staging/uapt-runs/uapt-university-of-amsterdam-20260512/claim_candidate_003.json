@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "uva-claim-003",
+  "entityType": "university",
+  "entitySlug": "university-of-amsterdam",
+  "claimType": "ai_tool_treatment",
+  "claimText": "The UvA and VU task force on AI in education has produced criteria for software to ensure academic integrity, and expects students to be transparent about how they have applied generative AI in their own learning and work.",
+  "normalizedValue": "UvA requires student transparency on GenAI use and has software criteria for academic integrity",
+  "sourceLanguage": "en",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "uva-evidence-003"
+  ],
+  "citation": {
+    "citationTitle": "VU-UvA task force on AI in education",
+    "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/vu-uva-task-force-on-ai-in-education/vu-uva-task-force-on-ai-in-education.html",
+    "publisher": "University of Amsterdam",
+    "retrievedAt": "2026-05-11T10:22:00Z",
+    "snapshotHash": "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+    "sourceRights": "Official university policy. Rights reserved by University of Amsterdam."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

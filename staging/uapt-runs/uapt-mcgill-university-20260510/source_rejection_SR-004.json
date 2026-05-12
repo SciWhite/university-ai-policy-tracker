@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceRejectionId": "mcgill-sr-delve-magazine",
+
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://delve.mcgill.ca/watch/what-ai-really-means-for-students-and-teachers/",
+  "finalUrl": "https://delve.mcgill.ca/watch/what-ai-really-means-for-students-and-teachers/",
+  "rejectedAt": "2026-05-10T14:21:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "McGill Delve magazine article featuring vice-dean perspectives on AI in education.",
+  "notes": "Magazine feature article, not official policy. Rejected as news/magazine content."
+}

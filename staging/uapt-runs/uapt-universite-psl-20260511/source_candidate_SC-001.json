@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceCandidateId": "psl-bu-dauphine-research-integrity",
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "sourceUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+  "finalUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+  "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche : des recommandations pour le respect de l'intégrité scientifique",
+  "sourceLanguage": "fr",
+  "sourceType": "official_pdf",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:psl.eu \"IA\" \"recherche\" recommandations",
+  "discoveredAt": "2026-05-11T09:15:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.88,
+  "policySpecificityScore": 0.72,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T09:45:00.000Z",
+  "verificationNotes": "Official PDF-like print guidance from BU Paris-Dauphine (PSL member school library). Provides recommendations for responsible AI use in research context. Covers transparency, responsibility, data privacy, and limitations. This is member-school guidance, not PSL central administration policy.",
+  "robotsPolicy": "respect"
+}

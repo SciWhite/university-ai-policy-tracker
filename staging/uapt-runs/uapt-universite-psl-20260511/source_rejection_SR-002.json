@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceRejectionId": "psl-sr-event-announcements",
+
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "sourceUrl": "https://psl.eu/actualites/sommet-pour-laction-sur-lia-mobilisation-des-acteurs-de-la-communaute-psl",
+  "finalUrl": "https://psl.eu/actualites/sommet-pour-laction-sur-lia-mobilisation-des-acteurs-de-la-communaute-psl",
+  "rejectedAt": "2026-05-11T10:06:00.000Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Sommet pour l'Action sur l'IA : mobilisation des acteurs de la communauté PSL. IA générative et droit d'auteur – Vers un code de pratique dans l'UE.",
+  "notes": "News article about AI summit event. Discusses EU AI regulation and community mobilization. Event/news content, not standing policy guidance."
+}

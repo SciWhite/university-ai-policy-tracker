@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_rejection",
-  "sourceRejectionId": "SR-011",
+  "sourceRejectionId": "usyd-sr-teaching-blog-6rs",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/the-6rs-of-using-genai-how-generative-ai-tools-are-shaping-my-engineering-classrooms-and-beyond/",

@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_rejection",
-  "sourceRejectionId": "SR-008",
+  "sourceRejectionId": "usyd-sr-cce-microsoft",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://cce.sydney.edu.au/course/MSCO",

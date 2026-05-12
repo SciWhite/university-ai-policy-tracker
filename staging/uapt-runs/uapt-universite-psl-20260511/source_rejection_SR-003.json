@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceRejectionId": "psl-sr-training-materials",
+
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "sourceUrl": "https://urfist.chartres.psl.eu/formations/programme-des-stages/former-les-usagers-l-heure-de-chatgpt-ia-et-competences-10",
+  "finalUrl": "https://urfist.chartres.psl.eu/formations/programme-des-stages/former-les-usagers-l-heure-de-chatgpt-ia-et-competences-10",
+  "rejectedAt": "2026-05-11T10:07:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Former les usagers à l'heure de ChatGPT : IA et compétences informationnelles. Bonnes pratiques et messages à faire passer au prisme de l'intégrité académique.",
+  "notes": "Training course description for information literacy with AI. Educational content, not official policy or standing guidance. Rejected for low policy specificity."
+}

@@ -1,9 +1,9 @@
 {
+  "artifactType": "fetch_attempt",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "fetch_attempt",
-  "fetchAttemptId": "FA-001",
-  "sourceCandidateId": "SC-001",
+  "fetchAttemptId": "usyd-fetch-1",
+  "sourceCandidateId": "usyd-responsible-ai-use",
   "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
   "finalUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
   "attemptedAt": "2026-05-10T14:20:00.000Z",
@@ -13,6 +13,7 @@
   "contentType": "text/html;charset=utf-8",
   "robotsAllowed": true,
   "outcome": "success",
-  "durationMs": 2600,
-  "contentHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7"
+  "durationMs": 2800,
+  "contentHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-sydney-20260510/normalized/usyd-responsible-ai-use.txt"
 }

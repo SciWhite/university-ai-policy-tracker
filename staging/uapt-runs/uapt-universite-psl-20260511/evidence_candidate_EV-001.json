@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "evidenceId": "psl-evidence-research-transparency",
+  "claimId": "psl-claim-research-transparency",
+  "sourceSnapshotId": "psl-ss-001",
+  "sourceUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+  "finalUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+  "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche : des recommandations pour le respect de l'intégrité scientifique",
+  "sourceLanguage": "fr",
+  "snapshotHash": "c8d14b8e1a715d3bbc3bb0cce9e0ed8062cad25acf9c8ee9d5570160651bfb9d",
+  "evidenceSnippetOriginal": "Être transparent dans son utilisation de l’IA?: si une IA générative est utilisée, il faut indiquer l’outil utilisé, sa version et le cadre de cette utilisation. Le prompt et le résultat peuvent également être documentés. Il faut toutefois garder à l’esprit la nature aléatoire des IA, qui rend difficile la reproductibilité de la recherche.",
+  "evidenceLocator": "Section: Utiliser l'IA générative de manière raisonnée et intègre",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Utiliser l'intelligence artificielle dans sa recherche : des recommandations pour le respect de l'intégrité scientifique",
+    "sourceUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universite-psl.json",
+    "publisher": "BU Paris-Dauphine (Université PSL)",
+    "retrievedAt": "2026-05-11T09:45:00.000Z",
+    "snapshotHash": "c8d14b8e1a715d3bbc3bb0cce9e0ed8062cad25acf9c8ee9d5570160651bfb9d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

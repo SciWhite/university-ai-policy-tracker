@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceCandidateId": "mcgill-ai-tools-approved",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "sourceTitle": "AI tools at McGill",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:mcgill.ca \"AI tools\" assessment",
+  "discoveredAt": "2026-05-10T14:09:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.94,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:14:00.000Z",
+  "verificationNotes": "Official IT Services registry of approved and rejected AI tools. Microsoft 365 Copilot Chat approved for public data. Synthesia approved with restrictions. DeepSeek AI and Read.AI explicitly rejected. Any tool not listed as approved is automatically rejected.",
+  "robotsPolicy": "respect"
+}

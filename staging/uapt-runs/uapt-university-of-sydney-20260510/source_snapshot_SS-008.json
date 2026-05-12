@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "sourceSnapshotId": "usyd-snapshot-8",
+  "sourceCandidateId": "usyd-ai-assessment-policy-news",
+  "fetchAttemptId": "usyd-fetch-8",
+  "sourceUrl": "https://www.sydney.edu.au/news-opinion/news/2024/11/27/university-of-sydney-ai-assessment-policy.html",
+  "finalUrl": "https://www.sydney.edu.au/news-opinion/news/2024/11/27/university-of-sydney-ai-assessment-policy.html",
+  "sourceTitle": "University of Sydney's AI assessment policy",
+  "sourceLanguage": "en",
+  "contentHash": "6a1b63ca3a111c3af722ac36561324ecef294c715fa522838f66b528542d9900",
+  "fetchedAt": "2026-05-10T14:23:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-sydney-20260510/normalized/usyd-ai-assessment-policy-news.txt",
+  "rawArtifactPaths": []
+}

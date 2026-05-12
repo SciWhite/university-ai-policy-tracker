@@ -1,0 +1,28 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "evidenceId": "psl-evidence-central-ai-disclosure",
+  "claimId": "psl-claim-central-ai-disclosure",
+  "sourceSnapshotId": "psl-ss-004",
+  "policySourceId": "psl-reglement-scolarite-mention-ia",
+  "sourceUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+  "finalUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+  "sourceTitle": "Règlement de la scolarité de l'Université PSL",
+  "sourceLanguage": "fr",
+  "snapshotHash": "0b598829da3cd00a9f01a6cdc56d1f2090a28de5500dfcf8bf2b234ea081a411",
+  "evidenceSnippetOriginal": "Lorsque celui-ci est autorisé par l’enseignante ou l’enseignant, le recours à des outils basés sur l’intelligence artificielle (IA), tels que ChatGPT, doit être signalé explicitement (de la même manière que toute référence ou citation de source). Ne pas signaler l’utilisation de l’intelligence artificielle est considéré comme un acte de plagiat et sera sanctionné comme tel.",
+  "evidenceLocator": "Article 3 – Intégrité académique, Plagiat",
+  "evidenceType": "pdf",
+  "relevance": 0.99,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Règlement de la scolarité de l'Université PSL",
+    "sourceUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universite-psl.json",
+    "publisher": "Université PSL",
+    "retrievedAt": "2026-05-11T09:56:00.000Z",
+    "snapshotHash": "0b598829da3cd00a9f01a6cdc56d1f2090a28de5500dfcf8bf2b234ea081a411",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

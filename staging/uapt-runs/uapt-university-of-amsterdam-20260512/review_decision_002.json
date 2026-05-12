@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "uva-review-002",
+  "claimId": "uva-claim-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-crawler-worker",
+  "notes": "Claim about UvA AI Chat supported by official university guidance page.",
+  "decidedAt": "2026-05-11T10:26:00Z"
+}

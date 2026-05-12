@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceCandidateId": "mcgill-it-ai-guidelines",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+  "finalUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+  "sourceTitle": "AI Guidelines",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:mcgill.ca \"AI tools\" assessment",
+  "discoveredAt": "2026-05-10T14:07:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.91,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:12:00.000Z",
+  "verificationNotes": "IT Services official AI guidelines covering privacy, data protection, copyright, sensitive/restricted material handling. PHI and PCI data forbidden. Links to Digital Standards Guide and Web Governance Framework.",
+  "robotsPolicy": "respect"
+}

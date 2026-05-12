@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceCandidateId": "mcgill-teaching-kb-genai",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+  "finalUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+  "sourceTitle": "Using generative AI in teaching and learning",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:mcgill.ca \"generative AI\" teaching",
+  "discoveredAt": "2026-05-10T14:06:00.000Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.94,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:11:00.000Z",
+  "verificationNotes": "Official Teaching and Learning Knowledge Base comprehensive article covering gen AI definition, ethical use, academic integrity, course outline statements, assessment design, and AI detection tool warnings. References STL AI Working Group report.",
+  "robotsPolicy": "respect"
+}

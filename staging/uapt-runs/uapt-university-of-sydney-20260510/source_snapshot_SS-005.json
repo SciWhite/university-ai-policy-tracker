@@ -1,17 +1,18 @@
 {
+  "artifactType": "source_snapshot",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "source_snapshot",
-  "sourceSnapshotId": "SS-005",
-  "sourceCandidateId": "SC-005",
-  "fetchAttemptId": "FA-005",
+  "sourceSnapshotId": "usyd-snapshot-5",
+  "sourceCandidateId": "usyd-faq-genai",
+  "fetchAttemptId": "usyd-fetch-5",
   "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
   "finalUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
   "sourceTitle": "Frequently asked questions about generative AI at Sydney",
   "sourceLanguage": "en",
   "contentHash": "058efdd957971901a0e660842c9c6489291b59f707f0ce8389586021ae393a1e",
-  "fetchedAt": "2026-05-10T14:24:00.000Z",
+  "fetchedAt": "2026-05-10T14:21:00.000Z",
   "httpStatus": 200,
   "robotsAllowed": true,
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-sydney-20260510/normalized/usyd-faq-genai.txt",
   "rawArtifactPaths": []
 }

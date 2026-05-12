@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceCandidateId": "mcgill-it-copilot-guidelines",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://www.mcgill.ca/it/article/microsoft-copilot-and-general-guidelines-using-generative-ai-tools",
+  "finalUrl": "https://www.mcgill.ca/it/article/microsoft-copilot-and-general-guidelines-using-generative-ai-tools",
+  "sourceTitle": "Microsoft Copilot and general guidelines for using generative AI tools",
+  "sourceLanguage": "en",
+  "sourceType": "approved_tools",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:mcgill.ca \"Copilot\" \"AI\"",
+  "discoveredAt": "2026-05-10T14:08:00.000Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.92,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-10T14:13:00.000Z",
+  "verificationNotes": "IT Services article on Microsoft Copilot Commercial Data Protection version. FASTER framework (Fair, Accountable, Secure, Transparent, Educated, Relevant). Prohibits use of unapproved AI tools for McGill-related purposes due to data exposure risks.",
+  "robotsPolicy": "respect"
+}

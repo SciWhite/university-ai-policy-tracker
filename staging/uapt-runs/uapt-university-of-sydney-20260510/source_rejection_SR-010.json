@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_rejection",
-  "sourceRejectionId": "SR-010",
+  "sourceRejectionId": "usyd-sr-teaching-blog-myths",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/ten-myths-about-generative-ai-in-education-that-are-holding-us-back/",

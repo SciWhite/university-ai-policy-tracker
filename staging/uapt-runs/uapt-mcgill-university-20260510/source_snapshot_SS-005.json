@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceSnapshotId": "mcgill-ss-005",
+  "sourceCandidateId": "mcgill-ai-tools-approved",
+  "fetchAttemptId": "mcgill-fa-005",
+  "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "sourceTitle": "AI tools at McGill",
+  "sourceLanguage": "en",
+  "contentHash": "8a89030dff58ebc25b045f9ab0dcfaba0f8699625752be03016500f44d392533",
+  "fetchedAt": "2026-05-10T14:35:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "mcgill/ai-tools-approved-20260510.txt",
+  "rawArtifactPaths": []
+}

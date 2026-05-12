@@ -1,0 +1,31 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "reportId": "mcgill-university-report-20260510",
+  "title": "McGill University: AI Policy Crawl Report",
+  "generatedAt": "2026-05-10T14:50:00.000Z",
+  "draftPath": "content/reports/mcgill-university-20260510.mdx",
+  "summary": "McGill University has official AI guidance spanning Provost-endorsed principles on teaching and learning (5 principles), Graduate and Postdoctoral Studies research guidelines, comprehensive Teaching and Learning Knowledge Base guidance, IT Services AI guidelines using the FASTER framework (Fair, Accountable, Secure, Transparent, Educated, Relevant), and an official AI tools registry with approved and rejected tools. McGill has approved Microsoft 365 Copilot Chat with Commercial Data Protection for all users, while explicitly rejecting DeepSeek AI and Read.AI. The university recommends course outline statements for gen AI use and maintains that instructors are responsible for academic integrity in AI use. All approved staged claims are limited to official McGill pages and are marked agent_reviewed only.",
+  "referencedClaimIds": [
+    "mcgill-claim-privacy",
+    "mcgill-claim-approved-tools",
+    "mcgill-claim-rejected-tools",
+    "mcgill-claim-academic-integrity",
+    "mcgill-claim-teaching"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "McGill's AI guidance is distributed across multiple official sources (Provost, GPS, IT Services, Teaching KB) rather than a single unified policy document.",
+    "Some faculty-specific or departmental policies (e.g., Faculty of Medicine) were not included as they are not university-wide.",
+    "French-language resources were discovered but primary claims are based on English-language official sources.",
+    "Two discovered McGill sources were not used for approved evidence because local validation refetch returned HTTP 429/offline responses.",
+    "Only sources with staged source snapshots are used for approved claims in this run."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

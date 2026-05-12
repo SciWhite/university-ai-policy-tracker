@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceCandidateId": "psl-reglement-scolarite-mention-ia",
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "sourceUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+  "finalUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+  "sourceTitle": "Règlement de la scolarité de l'Université PSL",
+  "sourceLanguage": "fr",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:psl.eu \"règlement\" \"scolarité\" \"IA\"",
+  "discoveredAt": "2026-05-11T09:30:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.82,
+  "policySpecificityScore": 0.86,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T10:00:00.000Z",
+  "verificationNotes": "Official PSL academic regulations PDF. Article 3 on academic integrity explicitly states that, when authorized by the instructor, use of AI-based tools such as ChatGPT must be signaled explicitly like a source citation, and failure to signal AI use is considered plagiarism and sanctioned as such.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "uva-source-002",
+  "entityType": "university",
+  "entitySlug": "university-of-amsterdam",
+  "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/ai-in-education.html",
+  "finalUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/ai-in-education.html",
+  "sourceTitle": "AI in education - University of Amsterdam",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:uva.nl AI artificial intelligence policy guidelines teaching assessment",
+  "discoveredAt": "2026-05-11T10:05:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.93,
+  "policySpecificityScore": 0.85,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T10:16:00Z",
+  "verificationNotes": "Official UvA guidance page on AI in education with links to policy framework.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "fetchAttemptId": "psl-fa-004",
+  "sourceCandidateId": "psl-reglement-scolarite-mention-ia",
+  "sourceUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+  "finalUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+  "attemptedAt": "2026-05-11T09:56:00.000Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "0b598829da3cd00a9f01a6cdc56d1f2090a28de5500dfcf8bf2b234ea081a411",
+  "durationMs": 3120
+}

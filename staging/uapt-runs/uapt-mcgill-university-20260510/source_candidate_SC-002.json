@@ -1,0 +1,23 @@
+{
+  "artifactType": "source_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceCandidateId": "mcgill-gps-research-guidelines",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "sourceUrl": "https://www.mcgill.ca/gps/students/policies-and-guidelines/guidelines-using-generative-ai-research",
+  "finalUrl": "https://www.mcgill.ca/gps/students/policies-and-guidelines/guidelines-using-generative-ai-research",
+  "sourceTitle": "Guidelines on using generative AI in research",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:mcgill.ca \"generative AI\" policy",
+  "discoveredAt": "2026-05-10T14:05:00.000Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.97,
+  "policySpecificityScore": 0.93,
+  "verificationStatus": "blocked",
+  "verifiedAt": "2026-05-11T00:00:00.000Z",
+  "verificationNotes": "Graduate and Postdoctoral Studies comprehensive guidelines for graduate students on using generative AI in research. November 2024 version. Links to PDF guidelines in English and French. Local validation refetch returned HTTP 429/offline response; source is kept as a discovered candidate but is not used for approved evidence in this run.",
+  "robotsPolicy": "respect"
+}

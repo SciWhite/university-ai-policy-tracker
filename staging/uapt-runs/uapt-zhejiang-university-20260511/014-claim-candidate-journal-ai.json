@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "claim_candidate",
+  "runId": "uapt-zhejiang-university-20260511",
+  "claimId": "claim-zju-001",
+  "entityType": "university",
+  "entitySlug": "zhejiang-university",
+  "claimType": "research",
+  "claimText": "Journal of Zhejiang University-SCIENCE policy says AI or large language models cannot be listed as manuscript authors or co-authors, authors remain responsible for AI-assisted content, and substantive generative AI use in manuscript preparation must be disclosed explicitly and in detail.",
+  "normalizedValue": "journal_policy_ai_authorship_prohibited_and_disclosure_required",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-zju-001",
+    "evidence-zju-002"
+  ],
+  "citation": {
+    "citationTitle": "Policy Statement and Author Disclosure Requirements for the Use of Generative AI",
+    "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/zhejiang-university/sources/jzus-policy.json",
+    "canonicalUrl": "https://eduaipolicy.org/api/public/v1/universities/zhejiang-university.json",
+    "publisher": "Journal of Zhejiang University-SCIENCE",
+    "retrievedAt": "2026-05-11T00:30:00Z",
+    "snapshotHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327",
+    "sourceRights": "Official source page retains its original rights. Tracker metadata is open licensed; source text is quoted only as short evidence."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

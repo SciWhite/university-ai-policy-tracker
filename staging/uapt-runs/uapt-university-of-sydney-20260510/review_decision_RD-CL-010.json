@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "decisionId": "usyd-review-10",
+  "claimId": "usyd-claim-10",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Approved. Directly supported by official Assessment Procedures page on the University A-to-Z Policy register. Claim wording uses source language verbatim.",
+  "decidedAt": "2026-05-10T14:45:00.000Z"
+}

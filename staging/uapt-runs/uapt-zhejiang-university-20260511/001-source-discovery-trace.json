@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "source_discovery_trace",
+  "runId": "uapt-zhejiang-university-20260511",
+  "traceId": "trace-zju-001",
+  "entityType": "university",
+  "entitySlug": "zhejiang-university",
+  "startedAt": "2026-05-11T00:00:00Z",
+  "endedAt": "2026-05-11T01:00:00Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:zju.edu.cn generative AI policy OR artificial intelligence policy",
+      "domain": "zju.edu.cn",
+      "resultCount": 10,
+      "notes": "Found journal AI policy and course syllabi"
+    },
+    {
+      "method": "site_search",
+      "query": "site:zju.edu.cn academic integrity AI policy students",
+      "domain": "zju.edu.cn",
+      "resultCount": 10,
+      "notes": "Found course-level academic integrity policies"
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:zju.edu.cn library AI guidance OR IT security privacy AI",
+      "domain": "zju.edu.cn",
+      "resultCount": 10,
+      "notes": "No centralized library or IT AI policy found"
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "candidate-zju-001",
+    "candidate-zju-002",
+    "candidate-zju-003",
+    "candidate-zju-004"
+  ],
+  "rejectionIds": [
+    "rejection-zju-001",
+    "rejection-zju-002",
+    "rejection-zju-003",
+    "rejection-zju-004"
+  ],
+  "summary": "Discovered one official Zhejiang University journal policy source with explicit generative AI authorship and disclosure requirements. No centralized university-wide AI policy for teaching, learning, assessment, IT/security, or student coursework was found in this run. Course syllabus, webinar, news, and research showcase candidates were rejected as non-AI-specific or not policy guidance."
+}

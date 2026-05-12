@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "uva-snapshot-004",
+  "sourceCandidateId": "uva-source-004",
+  "fetchAttemptId": "uva-fetch-004",
+  "sourceUrl": "https://www.uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html",
+  "finalUrl": "https://www.uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html",
+  "sourceTitle": "Academic integrity at the UvA",
+  "sourceLanguage": "en",
+  "contentHash": "38493fe8850e666a8ba8116443bce528c2649da38d377958516a5923a1fefb5a",
+  "fetchedAt": "2026-05-11T10:23:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "uva-academic-integrity-20260511.md",
+  "rawArtifactPaths": []
+}

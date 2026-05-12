@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "evidenceId": "mcgill-evidence-rejected-tools",
+  "claimId": "mcgill-claim-rejected-tools",
+  "sourceSnapshotId": "mcgill-ss-005",
+  "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "sourceTitle": "AI tools at McGill",
+  "sourceLanguage": "en",
+  "snapshotHash": "8a89030dff58ebc25b045f9ab0dcfaba0f8699625752be03016500f44d392533",
+  "evidenceSnippetOriginal": "If a tool is not mentioned in the \"Available AI tools\" list, it is automatically considered rejected , even if it is not listed among these prohibited tools DeepSeek AI: This tool has raised serious data exposure risks and prompt injection vulnerabilities. Its use is not permitted for any McGill-managed or research-funded device. This decision follows cybersecurity directives from the Government of Quebec and the Government of Canada.",
+  "evidenceLocator": "Rejected AI tools for use at McGill section",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI tools at McGill",
+    "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
+    "publisher": "McGill University",
+    "retrievedAt": "2026-05-10T14:35:00.000Z",
+    "snapshotHash": "8a89030dff58ebc25b045f9ab0dcfaba0f8699625752be03016500f44d392533",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

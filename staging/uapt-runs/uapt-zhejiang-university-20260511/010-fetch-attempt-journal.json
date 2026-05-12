@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "fetch_attempt",
+  "runId": "uapt-zhejiang-university-20260511",
+  "fetchAttemptId": "fetch-zju-001",
+  "sourceCandidateId": "candidate-zju-001",
+  "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+  "finalUrl": "https://jzus.zju.edu.cn/Policy.php",
+  "attemptedAt": "2026-05-11T00:30:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 2500,
+  "contentHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327",
+  "normalizedTextStorageKey": "zju-jzus-policy-normalized.txt"
+}

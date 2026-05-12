@@ -1,82 +1,117 @@
 {
+  "artifactType": "source_discovery_trace",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "source_discovery_trace",
-  "traceId": "SDT-001",
+  "traceId": "usyd-discovery-trace-1",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
-  "startedAt": "2026-05-10T09:00:00Z",
-  "endedAt": "2026-05-10T10:30:00Z",
+  "startedAt": "2026-05-10T14:00:00.000Z",
+  "endedAt": "2026-05-10T14:45:00.000Z",
   "methodsAttempted": [
     {
       "method": "site_search",
-      "query": "site:sydney.edu.au \"generative AI\" policy students",
+      "query": "generative AI policy students",
       "domain": "sydney.edu.au",
       "resultCount": 10,
-      "notes": "Found primary student-facing AI policy pages and official news articles."
+      "notes": "Found responsible-ai-use.html and academic-integrity/artificial-intelligence.html on main student site, plus news items."
     },
     {
       "method": "site_search",
-      "query": "site:sydney.edu.au \"ChatGPT\" academic integrity",
+      "query": "ChatGPT academic integrity",
       "domain": "sydney.edu.au",
       "resultCount": 10,
-      "notes": "Found academic integrity AI page plus rejected low-specificity pages."
+      "notes": "Found Teaching@Sydney FAQ page and several news/blog posts. Filtered news away."
     },
     {
       "method": "site_search",
-      "query": "site:sydney.edu.au \"AI tools\" assessment",
+      "query": "AI tools assessment",
       "domain": "sydney.edu.au",
       "resultCount": 10,
-      "notes": "Found responsible AI use, assessment framework, and Educational Innovation guidance."
+      "notes": "Found Assessment Procedures policy page, two-lane approach article, student news items."
     },
     {
       "method": "site_search",
-      "query": "site:sydney.edu.au \"generative AI\" teaching",
+      "query": "generative AI teaching",
       "domain": "sydney.edu.au",
       "resultCount": 10,
-      "notes": "Found Educational Innovation FAQ and assessment article."
+      "notes": "Found Teaching@Sydney resources on two-lane approach, AI in education."
     },
     {
       "method": "site_search",
-      "query": "site:sydney.edu.au \"artificial intelligence\" \"academic integrity\"",
+      "query": "artificial intelligence academic integrity",
       "domain": "sydney.edu.au",
       "resultCount": 10,
-      "notes": "Confirmed official academic integrity AI page and policy register references."
+      "notes": "Found academic-integrity/breaches.html with AI misuse section, academic integrity AI page."
     },
     {
       "method": "site_search",
-      "query": "site:sydney.edu.au \"Copilot\" \"AI\"",
+      "query": "AI student coursework",
+      "domain": "sydney.edu.au",
+      "resultCount": 0,
+      "notes": "No direct results for this query combination."
+    },
+    {
+      "method": "site_search",
+      "query": "AI data privacy",
       "domain": "sydney.edu.au",
       "resultCount": 10,
-      "notes": "Found Copilot-related student guidance and rejected training pages."
+      "notes": "Results were mostly news/opinion pieces about ChatGPT privacy. Only one teaching guidance page relevant."
+    },
+    {
+      "method": "site_search",
+      "query": "Copilot AI",
+      "domain": "sydney.edu.au",
+      "resultCount": 10,
+      "notes": "Found using-ai-to-learn.html referencing Copilot, CCE course pages (rejected), student news."
+    },
+    {
+      "method": "site_search",
+      "query": "academic integrity policy formal AI",
+      "domain": "sydney.edu.au",
+      "resultCount": 10,
+      "notes": "Found policy register links and breaches page confirming AI misuse definitions."
+    },
+    {
+      "method": "site_search",
+      "query": "acceptable use of ICT AI generative",
+      "domain": "sydney.edu.au",
+      "resultCount": 10,
+      "notes": "Found Teaching@Sydney FAQ referencing Acceptable Use of ICT Resources Policy."
+    },
+    {
+      "method": "site_search",
+      "query": "assessment procedures AI generative AI",
+      "domain": "sydney.edu.au",
+      "resultCount": 10,
+      "notes": "Found official Assessment Procedures page with AI guidance."
     }
   ],
   "noSourceEscalationCompleted": false,
   "candidateIds": [
-    "SC-001",
-    "SC-002",
-    "SC-003",
-    "SC-004",
-    "SC-005",
-    "SC-006",
-    "SC-007",
-    "SC-008"
+    "usyd-responsible-ai-use",
+    "usyd-academic-integrity-ai",
+    "usyd-academic-integrity-breaches",
+    "usyd-using-ai-to-learn",
+    "usyd-faq-genai",
+    "usyd-aligning-assessments-genai",
+    "usyd-assessment-procedures",
+    "usyd-ai-assessment-policy-news"
   ],
   "rejectionIds": [
-    "SR-001",
-    "SR-002",
-    "SR-003",
-    "SR-004",
-    "SR-005",
-    "SR-006",
-    "SR-007",
-    "SR-008",
-    "SR-009",
-    "SR-010",
-    "SR-011",
-    "SR-012",
-    "SR-013",
-    "SR-014"
+    "usyd-sr-chatgpt-data-privacy",
+    "usyd-sr-openai-privacy",
+    "usyd-sr-meta-ai-data",
+    "usyd-sr-student-news-ai-classroom",
+    "usyd-sr-student-news-future-learning",
+    "usyd-sr-student-news-chatgpt-embrace",
+    "usyd-sr-cce-copilot-course",
+    "usyd-sr-cce-microsoft",
+    "usyd-sr-library-research",
+    "usyd-sr-teaching-blog-myths",
+    "usyd-sr-teaching-blog-6rs",
+    "usyd-sr-teaching-blog-students-part1",
+    "usyd-sr-teaching-blog-students-part2",
+    "usyd-sr-intranet-townhall"
   ],
-  "summary": "Discovered University of Sydney AI policy and guidance pages through site-restricted official-domain search. Verified 7 standing official sources and rejected 14 news, intranet, journal, training, or low-specificity pages. Key themes include academic integrity, AI acknowledgment, assessment defaults, Copilot/student guidance, and assessment procedures."
+  "summary": "Comprehensive discovery via 11 search queries targeting sydney.edu.au and educational-innovation.sydney.edu.au. Found 8 verified official sources spanning student-facing responsible AI use guidance, academic integrity AI policy pages, AI breach definitions, using-AI-to-learn best practices, Teaching@Sydney FAQ on generative AI policy and guardrails, the two-lane assessment approach article, the official Assessment Procedures page, and a news announcement of the AI assessment policy changes. 14 sources rejected as news/opinion articles, student news items, CCE course pages, library/open journal research papers, Teaching@Sydney blog posts, and intranet pages."
 }

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "uva-fetch-003",
+  "sourceCandidateId": "uva-source-003",
+  "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/vu-uva-task-force-on-ai-in-education/vu-uva-task-force-on-ai-in-education.html",
+  "finalUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/vu-uva-task-force-on-ai-in-education/vu-uva-task-force-on-ai-in-education.html",
+  "attemptedAt": "2026-05-11T10:22:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html;charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3100,
+  "contentHash": "5969f7a14500b66e9df64a3aa3c764d29fab54c5dd9a96b6dcb65c83779e211b",
+  "normalizedTextStorageKey": "uva-vu-uva-task-force-ai-education-20260511.md"
+}

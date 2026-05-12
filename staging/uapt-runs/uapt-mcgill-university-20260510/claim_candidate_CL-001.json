@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "claimId": "mcgill-claim-privacy",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "claimType": "privacy",
+  "claimText": "McGill guidance says users should mitigate potential privacy concerns by removing personally identifying information when using AI tools, be careful with sensitive or restricted material, and avoid using Personal Health Information (PHI) or Payment Card Industry (PCI) data with AI tools.",
+  "normalizedValue": "remove_pii_phi_pci_from_ai_use",
+  "sourceLanguage": "en",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "mcgill-evidence-privacy"
+  ],
+  "citation": {
+    "citationTitle": "AI Guidelines",
+    "sourceUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
+    "publisher": "McGill University",
+    "retrievedAt": "2026-05-10T14:33:00.000Z",
+    "snapshotHash": "65240bfc8b000bd19a295b33007df10eb02f40e3b3347bc667da67f42f7ce4ee",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

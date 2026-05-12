@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceSnapshotId": "psl-ss-001",
+  "sourceCandidateId": "psl-bu-dauphine-research-integrity",
+  "fetchAttemptId": "psl-fa-001",
+  "sourceUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+  "finalUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+  "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche : des recommandations pour le respect de l'intégrité scientifique",
+  "sourceLanguage": "fr",
+  "contentHash": "c8d14b8e1a715d3bbc3bb0cce9e0ed8062cad25acf9c8ee9d5570160651bfb9d",
+  "fetchedAt": "2026-05-11T09:45:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "psl/bu-dauphine-research-integrity-20260511.txt",
+  "rawArtifactPaths": []
+}

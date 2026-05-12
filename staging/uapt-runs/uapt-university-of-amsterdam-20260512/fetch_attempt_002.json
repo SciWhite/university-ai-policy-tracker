@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "uva-fetch-002",
+  "sourceCandidateId": "uva-source-002",
+  "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/ai-in-education.html",
+  "finalUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/ai-in-education.html",
+  "attemptedAt": "2026-05-11T10:21:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html;charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3200,
+  "contentHash": "5510c80cc0df71bab8fa664f5c5463de825e0988024b8f145b7e823f52ef7544",
+  "normalizedTextStorageKey": "uva-ai-in-education-20260511.md"
+}

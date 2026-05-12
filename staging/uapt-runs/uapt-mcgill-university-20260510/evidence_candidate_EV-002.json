@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "evidenceId": "mcgill-evidence-approved-tools",
+  "claimId": "mcgill-claim-approved-tools",
+  "sourceSnapshotId": "mcgill-ss-005",
+  "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "sourceTitle": "AI tools at McGill",
+  "sourceLanguage": "en",
+  "snapshotHash": "8a89030dff58ebc25b045f9ab0dcfaba0f8699625752be03016500f44d392533",
+  "evidenceSnippetOriginal": "Microsoft 365 Copilot Chat is an AI-powered feature integrated into Microsoft Edge and accessible through other browsers. Microsoft 365 Copilot Chat can answer questions, generate content, condense long texts and more. A secure version with enterprise data protection is available for all McGill users​. Audience: Staff, Faculty, and Students Price: Free",
+  "evidenceLocator": "Available AI tools for use at McGill table",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI tools at McGill",
+    "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
+    "publisher": "McGill University",
+    "retrievedAt": "2026-05-10T14:35:00.000Z",
+    "snapshotHash": "8a89030dff58ebc25b045f9ab0dcfaba0f8699625752be03016500f44d392533",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

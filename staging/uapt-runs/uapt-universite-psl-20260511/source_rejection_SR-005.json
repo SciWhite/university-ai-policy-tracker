@@ -1,0 +1,16 @@
+{
+  "artifactType": "source_rejection",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceRejectionId": "psl-sr-pdf-research-papers",
+
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "sourceUrl": "https://urfist.chartres.psl.eu/sites/urfist/files/public/media/document/2025-01/Bouchard_URFIST-Paris_ChatGPT-pedagogique_court_012025.pdf",
+  "finalUrl": "https://urfist.chartres.psl.eu/sites/urfist/files/public/media/document/2025-01/Bouchard_URFIST-Paris_ChatGPT-pedagogique_court_012025.pdf",
+  "rejectedAt": "2026-05-11T10:09:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "IA et compétences informationnelles - Urfist de Paris. Présentation pédagogique sur l'usage de ChatGPT.",
+  "notes": "PDF training/pedagogical presentation from URFIST. Educational material, not official institutional policy. Rejected for low policy specificity."
+}

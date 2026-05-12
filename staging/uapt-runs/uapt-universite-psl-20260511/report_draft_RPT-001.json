@@ -1,0 +1,30 @@
+{
+  "artifactType": "report_draft",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "reportId": "psl-rpt-001",
+  "title": "Université PSL AI Policy Tracker Report - 2026-05-11",
+  "generatedAt": "2026-05-11T10:30:00.000Z",
+  "draftPath": "content/reports/universite-psl-20260511.mdx",
+  "summary": "Université PSL (Paris Sciences & Lettres) is a federal university comprising multiple grandes écoles. This crawl found no dedicated centralized PSL generative-AI policy page, but it did find an official PSL academic regulations PDF with an AI disclosure/plagiarism rule. It also found research-integrity guidance from BU Paris-Dauphine library, a PSL member-school source, covering transparency, authorship responsibility, data privacy, and AI limitations.",
+  "referencedClaimIds": [
+    "psl-claim-central-ai-disclosure",
+    "psl-claim-research-transparency",
+    "psl-claim-research-responsibility",
+    "psl-claim-research-data-privacy",
+    "psl-claim-research-limitations"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/universite-psl.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "PSL is a federal university; member schools maintain significant autonomy over academic policies.",
+    "No dedicated centralized PSL generative-AI policy page for students, teaching, or assessment was discovered in this crawl.",
+    "One approved claim is based on the official PSL academic regulations PDF; the other approved claims are based on BU Paris-Dauphine member-school library guidance, not PSL central administration policy.",
+    "French-language sources predominate; original French evidence is retained as canonical."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

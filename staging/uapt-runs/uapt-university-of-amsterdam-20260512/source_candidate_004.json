@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "uva-source-004",
+  "entityType": "university",
+  "entitySlug": "university-of-amsterdam",
+  "sourceUrl": "https://www.uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html",
+  "finalUrl": "https://www.uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html",
+  "sourceTitle": "Academic integrity at the UvA",
+  "sourceLanguage": "en",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:uva.nl academic integrity guidelines AI students",
+  "discoveredAt": "2026-05-11T10:06:00Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.82,
+  "policySpecificityScore": 0.78,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-11T10:18:00Z",
+  "verificationNotes": "General academic integrity principles applicable to AI use in research and teaching.",
+  "robotsPolicy": "respect"
+}

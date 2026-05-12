@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_rejection",
-  "sourceRejectionId": "SR-012",
+  "sourceRejectionId": "usyd-sr-teaching-blog-students-part1",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/students-answer-your-questions-about-generative-ai-part-1-assessments-and-their-future/",

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "uva-evidence-003",
+  "claimId": "uva-claim-003",
+  "sourceSnapshotId": "uva-snapshot-003",
+  "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/vu-uva-task-force-on-ai-in-education/vu-uva-task-force-on-ai-in-education.html",
+  "finalUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/vu-uva-task-force-on-ai-in-education/vu-uva-task-force-on-ai-in-education.html",
+  "sourceTitle": "VU-UvA task force on AI in education",
+  "sourceLanguage": "en",
+  "snapshotHash": "5969f7a14500b66e9df64a3aa3c764d29fab54c5dd9a96b6dcb65c83779e211b",
+  "evidenceSnippetOriginal": "The UvA and VU draw up clear rules and guidelines on how students may use AI during teaching and assessment. We expect students to be transparent about how they have applied generative AI in their own learning and work.",
+  "evidenceLocator": "Transparent about expectations section",
+  "evidenceType": "official_source",
+  "relevance": 0.93,
+  "rightsNote": "Official university policy. Rights reserved by University of Amsterdam.",
+  "citation": {
+    "citationTitle": "VU-UvA task force on AI in education",
+    "sourceUrl": "https://www.uva.nl/en/about-the-uva/about-the-university/ai/ai-in-education/vu-uva-task-force-on-ai-in-education/vu-uva-task-force-on-ai-in-education.html",
+    "publisher": "University of Amsterdam",
+    "retrievedAt": "2026-05-11T10:22:00Z",
+    "snapshotHash": "5969f7a14500b66e9df64a3aa3c764d29fab54c5dd9a96b6dcb65c83779e211b",
+    "sourceRights": "Official university policy. Rights reserved by University of Amsterdam."
+  }
+}

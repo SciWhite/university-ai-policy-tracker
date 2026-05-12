@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "report_draft",
+  "runId": "uapt-zhejiang-university-20260511",
+  "reportId": "report-zju-2026-05",
+  "title": "Zhejiang University AI Policy Tracker Report - May 2026",
+  "generatedAt": "2026-05-11T01:00:00Z",
+  "draftPath": "content/reports/zhejiang-university-2026-05.mdx",
+  "summary": "This run found one official Journal of Zhejiang University-SCIENCE generative AI policy for manuscript authorship, author responsibility, and disclosure. It did not find a centralized Zhejiang University policy for teaching, learning, assessment, student coursework, approved tools, or IT/security use. The approved claim is limited to journal publication/research integrity.",
+  "referencedClaimIds": [
+    "claim-zju-001"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/zhejiang-university.json",
+    "https://eduaipolicy.org/api/public/v1/universities/zhejiang-university/sources/jzus-policy.json",
+    "https://eduaipolicy.org/api/public/v1/universities/zhejiang-university/claims/claim-zju-001.json"
+  ],
+  "limitations": [
+    "No centralized university-wide AI policy for teaching, learning, assessment, approved tools, or IT/security was found in this run.",
+    "The approved claim is limited to Journal of Zhejiang University-SCIENCE manuscript/publication policy.",
+    "Course syllabus, webinar, news, and research showcase sources were rejected as AI policy evidence.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Official source page retains its original rights. Tracker metadata is open licensed; source text is quoted only as short evidence.",
+  "rawArtifactPaths": []
+}

@@ -1,12 +1,12 @@
 {
+  "artifactType": "fetch_attempt",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "fetch_attempt",
-  "fetchAttemptId": "FA-003",
-  "sourceCandidateId": "SC-003",
-  "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
-  "finalUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
-  "attemptedAt": "2026-05-10T14:22:00.000Z",
+  "fetchAttemptId": "usyd-fetch-3",
+  "sourceCandidateId": "usyd-academic-integrity-breaches",
+  "sourceUrl": "https://www.sydney.edu.au/students/academic-integrity/breaches.html",
+  "finalUrl": "https://www.sydney.edu.au/students/academic-integrity/breaches.html",
+  "attemptedAt": "2026-05-10T14:20:00.000Z",
   "fetchMode": "firecrawl",
   "userAgentKind": "firecrawl",
   "httpStatus": 200,
@@ -14,5 +14,6 @@
   "robotsAllowed": true,
   "outcome": "success",
   "durationMs": 2900,
-  "contentHash": "0edbaa77a8cc4fd2407d6ed65f68954e7e29f69cc44faccf486a53323b774b01"
+  "contentHash": "93321a4e637a00fb224faffcedcb6523bd33fe84ef6a260ea76aa55326dee5ad",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-sydney-20260510/normalized/usyd-academic-integrity-breaches.txt"
 }

@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_rejection",
-  "sourceRejectionId": "SR-005",
+  "sourceRejectionId": "usyd-sr-student-news-future-learning",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://www.sydney.edu.au/study/student-life/student-news/2025/08/29/exploring-the-future-of-learning-with-ai.html",

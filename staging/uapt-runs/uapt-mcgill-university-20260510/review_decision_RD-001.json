@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "decisionId": "mcgill-rd-001",
+  "claimId": "mcgill-claim-privacy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim is scoped to official IT Services guidance on removing personally identifying information and handling sensitive or restricted material.",
+  "decidedAt": "2026-05-10T14:40:00.000Z"
+}

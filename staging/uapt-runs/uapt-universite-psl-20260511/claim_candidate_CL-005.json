@@ -1,0 +1,28 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "claimId": "psl-claim-central-ai-disclosure",
+  "entityType": "university",
+  "entitySlug": "universite-psl",
+  "claimType": "academic_integrity",
+  "claimText": "Université PSL academic regulations state that, when an instructor authorizes the use of AI-based tools such as ChatGPT, that use must be explicitly disclosed like a source citation; failure to disclose AI use is considered plagiarism and sanctioned as such.",
+  "normalizedValue": "authorized_ai_use_must_be_disclosed_or_plagiarism",
+  "sourceLanguage": "fr",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "psl-evidence-central-ai-disclosure"
+  ],
+  "citation": {
+    "citationTitle": "Règlement de la scolarité de l'Université PSL",
+    "sourceUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universite-psl.json",
+    "publisher": "Université PSL",
+    "retrievedAt": "2026-05-11T09:56:00.000Z",
+    "snapshotHash": "0b598829da3cd00a9f01a6cdc56d1f2090a28de5500dfcf8bf2b234ea081a411",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

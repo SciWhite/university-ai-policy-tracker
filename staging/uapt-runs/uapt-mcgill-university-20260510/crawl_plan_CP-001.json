@@ -1,0 +1,75 @@
+{
+  "artifactType": "crawl_plan",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "planId": "mcgill-crawl-plan-20260510",
+  "createdAt": "2026-05-10T14:30:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "mcgill-university",
+      "sourceCandidateId": "mcgill-provost-principles",
+      "sourceUrl": "https://www.mcgill.ca/provost/files/provost/principles_on_generative_ai_in_teaching_and_learning_at_mcgill.pdf",
+      "sourceTitle": "Principles on Generative AI in Teaching and Learning at McGill",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "mcgill-university",
+      "sourceCandidateId": "mcgill-teaching-kb-genai",
+      "sourceUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+      "sourceTitle": "Using generative AI in teaching and learning",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["teaching", "academic_integrity", "assessment_guidance"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "mcgill-university",
+      "sourceCandidateId": "mcgill-it-ai-guidelines",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+      "sourceTitle": "AI Guidelines",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["privacy", "data_protection", "security"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "mcgill-university",
+      "sourceCandidateId": "mcgill-it-copilot-guidelines",
+      "sourceUrl": "https://www.mcgill.ca/it/article/microsoft-copilot-and-general-guidelines-using-generative-ai-tools",
+      "sourceTitle": "Microsoft Copilot and general guidelines for using generative AI tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["approved_tools", "data_protection", "privacy"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "mcgill-university",
+      "sourceCandidateId": "mcgill-ai-tools-approved",
+      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceTitle": "AI tools at McGill",
+      "sourceLanguage": "en",
+      "allowedFetchModes": ["firecrawl"],
+      "expectedThemes": ["approved_tools", "security_review"],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop if robots.txt disallows crawling.",
+    "Do not follow login-gated pages.",
+    "Do not fetch pages behind CAPTCHAs or paywalls."
+  ]
+}

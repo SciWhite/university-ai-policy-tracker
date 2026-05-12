@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "decisionId": "psl-rd-001",
+  "claimId": "psl-claim-research-transparency",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim supported by direct evidence from BU Paris-Dauphine (PSL member) research integrity guidance. Evidence snippet copied directly from official source. Source is member school library guidance applicable to PSL researchers.",
+  "decidedAt": "2026-05-11T10:20:00.000Z"
+}

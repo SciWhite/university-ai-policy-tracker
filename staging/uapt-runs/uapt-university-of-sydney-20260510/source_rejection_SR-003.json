@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_rejection",
-  "sourceRejectionId": "SR-003",
+  "sourceRejectionId": "usyd-sr-meta-ai-data",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://openjournals.library.sydney.edu.au/IISME/article/view/17474",

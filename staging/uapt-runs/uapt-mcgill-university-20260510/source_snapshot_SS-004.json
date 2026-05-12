@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "sourceSnapshotId": "mcgill-ss-004",
+  "sourceCandidateId": "mcgill-it-copilot-guidelines",
+  "fetchAttemptId": "mcgill-fa-004",
+  "sourceUrl": "https://www.mcgill.ca/it/article/microsoft-copilot-and-general-guidelines-using-generative-ai-tools",
+  "finalUrl": "https://www.mcgill.ca/it/article/microsoft-copilot-and-general-guidelines-using-generative-ai-tools",
+  "sourceTitle": "Microsoft Copilot and general guidelines for using generative AI tools",
+  "sourceLanguage": "en",
+  "contentHash": "6a06d152c92249754ca83bad9b00f7abf5879c581fa10bd3408f3b3db83440d9",
+  "fetchedAt": "2026-05-10T14:34:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "mcgill/it-copilot-guidelines-20260510.txt",
+  "rawArtifactPaths": []
+}

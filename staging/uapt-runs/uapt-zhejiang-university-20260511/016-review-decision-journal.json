@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "review_decision",
+  "runId": "uapt-zhejiang-university-20260511",
+  "decisionId": "decision-zju-001",
+  "claimId": "claim-zju-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw_agent",
+  "notes": "Approved after local repair as a narrow journal publication/research integrity claim. It should not be presented as a centralized Zhejiang University teaching, learning, or assessment AI policy.",
+  "decidedAt": "2026-05-11T01:00:00Z"
+}

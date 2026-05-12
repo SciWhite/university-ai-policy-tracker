@@ -1,18 +1,19 @@
 {
+  "artifactType": "fetch_attempt",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "fetch_attempt",
-  "fetchAttemptId": "FA-002",
-  "sourceCandidateId": "SC-002",
+  "fetchAttemptId": "usyd-fetch-2",
+  "sourceCandidateId": "usyd-academic-integrity-ai",
   "sourceUrl": "https://www.sydney.edu.au/students/academic-integrity/artificial-intelligence.html",
   "finalUrl": "https://www.sydney.edu.au/students/academic-integrity/artificial-intelligence.html",
-  "attemptedAt": "2026-05-10T14:21:00.000Z",
+  "attemptedAt": "2026-05-10T14:20:00.000Z",
   "fetchMode": "firecrawl",
   "userAgentKind": "firecrawl",
   "httpStatus": 200,
   "contentType": "text/html;charset=utf-8",
   "robotsAllowed": true,
   "outcome": "success",
-  "durationMs": 2750,
-  "contentHash": "9533ec0a8a8fd69adb5cc0e534afa71d55d0880c7dad36364aec1612674809bc"
+  "durationMs": 2600,
+  "contentHash": "9533ec0a8a8fd69adb5cc0e534afa71d55d0880c7dad36364aec1612674809bc",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-sydney-20260510/normalized/usyd-academic-integrity-ai.txt"
 }

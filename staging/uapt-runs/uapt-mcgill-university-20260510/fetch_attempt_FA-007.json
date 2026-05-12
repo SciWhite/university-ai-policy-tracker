@@ -1,0 +1,18 @@
+{
+  "artifactType": "fetch_attempt",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "fetchAttemptId": "FA-007",
+  "sourceCandidateId": "mcgill-stl-recommendations",
+  "sourceUrl": "https://www.mcgill.ca/stl/stl-ai-working-group",
+  "finalUrl": "https://www.mcgill.ca/stl/stl-ai-working-group",
+  "attemptedAt": "2026-05-11T00:00:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 429,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "retry_recommended",
+  "errorReason": "Local validation refetch returned HTTP 429/offline response. Source is not used for approved evidence in this run.",
+  "durationMs": 1200
+}

@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "evidenceId": "mcgill-evidence-teaching",
+  "claimId": "mcgill-claim-teaching",
+  "sourceSnapshotId": "mcgill-ss-002",
+  "sourceUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+  "finalUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+  "sourceTitle": "Using generative AI in teaching and learning",
+  "sourceLanguage": "en",
+  "snapshotHash": "d842d0ad67dd6697b411f00d8c57c0ee3cb26e133d82a52c10fedbe64c245934",
+  "evidenceSnippetOriginal": "There should be no default assumption as to the use of generative AI tools. Therefore, McGill recommends that instructors explain to students in their course outline what the appropriate use or non-use is of generative AI tools in the context of that course. The use or non-use of these tools should align with the learning outcomes associated with the course. For this reason, instructors will need to write their own context-appropriate course outline statements.",
+  "evidenceLocator": "Course outline statements section",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Using generative AI in teaching and learning",
+    "sourceUrl": "https://teachingkb.mcgill.ca/tlk/using-generative-ai-in-teaching-and-learning",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
+    "publisher": "McGill University",
+    "retrievedAt": "2026-05-10T14:32:00.000Z",
+    "snapshotHash": "d842d0ad67dd6697b411f00d8c57c0ee3cb26e133d82a52c10fedbe64c245934",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

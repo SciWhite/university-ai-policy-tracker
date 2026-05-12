@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "claimId": "usyd-claim-10",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "claimType": "teaching",
+  "claimText": "The University of Sydney Assessment Procedures state that unit of study coordinators will specify if, and which, artificial intelligence tools are permitted for each assessment and how their use must be acknowledged.",
+  "normalizedValue": "coordinator_specifies_ai_tool_rules_per_assessment",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["usyd-evidence-10"],
+  "citation": {
+    "citationTitle": "Assessment Procedures",
+    "sourceUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json",
+    "publisher": "The University of Sydney",
+    "retrievedAt": "2026-05-10T14:22:00.000Z",
+    "snapshotHash": "4981f1bde50adc698d04d6110ef088d95f760d85cb0601080d3743d90a9e9f2f",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "decisionId": "psl-rd-003",
+  "claimId": "psl-claim-research-data-privacy",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim supported by evidence on data privacy and confidentiality. Source warns about data reuse by AI tools and advises against sharing personal/confidential data. Member school guidance applicable to PSL researchers.",
+  "decidedAt": "2026-05-11T10:22:00.000Z"
+}

@@ -1,0 +1,88 @@
+{
+  "artifactType": "source_discovery_trace",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "traceId": "mcgill-discovery-trace-1",
+  "entityType": "university",
+  "entitySlug": "mcgill-university",
+  "startedAt": "2026-05-10T14:00:00.000Z",
+  "endedAt": "2026-05-10T14:45:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:mcgill.ca \"generative AI\" policy",
+      "domain": "mcgill.ca",
+      "resultCount": 10,
+      "notes": "Found GPS guidelines on using generative AI in research, teaching and learning knowledge base, IT Services AI guidelines."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:mcgill.ca \"generative AI\" students",
+      "domain": "mcgill.ca",
+      "resultCount": 10,
+      "notes": "Found Teaching and Academic Programs gen AI page, teaching knowledge base article with course outline statements."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:mcgill.ca \"ChatGPT\" academic integrity",
+      "domain": "mcgill.ca",
+      "resultCount": 10,
+      "notes": "Found STL AI Working Group recommendations, academic integrity references in teaching KB."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:mcgill.ca \"AI tools\" assessment",
+      "domain": "mcgill.ca",
+      "resultCount": 10,
+      "notes": "Found AI tools at McGill page with approved/rejected tools, assessment guidance in teaching KB."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:mcgill.ca \"artificial intelligence\" \"academic integrity\"",
+      "domain": "mcgill.ca",
+      "resultCount": 10,
+      "notes": "Found Provost principles PDF, Senate documents on academic integrity and AI."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:mcgill.ca \"generative AI\" teaching",
+      "domain": "mcgill.ca",
+      "resultCount": 10,
+      "notes": "Found Teaching and Learning with Generative AI page, podcast series, teaching consultations."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:mcgill.ca \"intelligence artificielle générative\"",
+      "domain": "mcgill.ca",
+      "resultCount": 10,
+      "notes": "Found French-language resources including DLLF policy, publication on IA en enseignement supérieur."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:mcgill.ca \"Copilot\" \"AI\"",
+      "domain": "mcgill.ca",
+      "resultCount": 10,
+      "notes": "Found Microsoft Copilot guidelines, secure version with Commercial Data Protection, AI tools registry."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "mcgill-provost-principles",
+    "mcgill-gps-research-guidelines",
+    "mcgill-teaching-kb-genai",
+    "mcgill-it-ai-guidelines",
+    "mcgill-it-copilot-guidelines",
+    "mcgill-ai-tools-approved",
+    "mcgill-stl-recommendations"
+  ],
+  "rejectionIds": [
+    "mcgill-sr-reporter-news",
+    "mcgill-sr-teaching-blog",
+    "mcgill-sr-health-enews",
+    "mcgill-sr-delve-magazine",
+    "mcgill-sr-library-guide",
+    "mcgill-sr-desautels-news",
+    "mcgill-sr-medicine-pdf"
+  ],
+  "summary": "Comprehensive discovery via 8 search queries across mcgill.ca domain. Found 7 official candidate sources. Five were fetched and used for staged claims: Provost principles PDF, Teaching and Learning Knowledge Base guidance, IT Services AI Guidelines, Microsoft Copilot guidance, and AI tools registry. Two additional candidate sources (GPS research guidelines and STL AI Working Group) are retained as discovered but blocked/retry-recommended after HTTP 429 during local validation and are not used for approved evidence. Seven sources were rejected as news, blogs, magazine features, library guides, or narrow departmental pages."
+}

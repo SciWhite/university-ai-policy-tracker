@@ -1,0 +1,18 @@
+{
+  "artifactType": "source_snapshot",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "sourceSnapshotId": "psl-ss-004",
+  "sourceCandidateId": "psl-reglement-scolarite-mention-ia",
+  "fetchAttemptId": "psl-fa-004",
+  "sourceUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+  "finalUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+  "sourceTitle": "Règlement de la scolarité de l'Université PSL",
+  "sourceLanguage": "fr",
+  "contentHash": "0b598829da3cd00a9f01a6cdc56d1f2090a28de5500dfcf8bf2b234ea081a411",
+  "fetchedAt": "2026-05-11T09:56:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "psl/reglement-scolarite-20260511.txt",
+  "rawArtifactPaths": []
+}

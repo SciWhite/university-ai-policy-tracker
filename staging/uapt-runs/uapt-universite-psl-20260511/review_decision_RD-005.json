@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "decisionId": "psl-rd-005",
+  "claimId": "psl-claim-central-ai-disclosure",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "policy-reviewer",
+  "notes": "Approved as a narrow claim directly supported by the official PSL academic regulations PDF. This is a central PSL academic integrity rule, not a broad standalone AI policy.",
+  "decidedAt": "2026-05-11T10:55:00.000Z"
+}

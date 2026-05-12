@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "decisionId": "mcgill-rd-005",
+  "claimId": "mcgill-claim-teaching",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim directly supported by official Teaching and Learning Knowledge Base article. Clear recommendation for course outline statements.",
+  "decidedAt": "2026-05-10T14:42:00.000Z"
+}

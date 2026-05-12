@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "decisionId": "mcgill-rd-002",
+  "claimId": "mcgill-claim-approved-tools",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim is scoped to the official available-tools listing for Microsoft 365 Copilot Chat and enterprise data protection.",
+  "decidedAt": "2026-05-10T14:40:00.000Z"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "uva-review-001",
+  "claimId": "uva-claim-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-crawler-worker",
+  "notes": "Claim directly supported by official UvA policy framework document. Evidence snippet matches source text exactly.",
+  "decidedAt": "2026-05-11T10:25:00Z"
+}

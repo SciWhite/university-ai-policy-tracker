@@ -1,0 +1,26 @@
+{
+  "artifactType": "claim_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sydney-20260510",
+  "claimId": "usyd-claim-9",
+  "entityType": "university",
+  "entitySlug": "university-of-sydney",
+  "claimType": "academic_integrity",
+  "claimText": "The University of Sydney advises that Turnitin's AI detection tool may be used if a marker suspects AI-generated work where its use was not permitted or not acknowledged, but the AI detector score would not be the only evidence relied upon for an academic integrity case.",
+  "normalizedValue": "turnitin_ai_detector_not_sole_evidence",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": ["usyd-evidence-9"],
+  "citation": {
+    "citationTitle": "Using artificial intelligence tools responsibly",
+    "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json",
+    "publisher": "The University of Sydney",
+    "retrievedAt": "2026-05-10T14:20:00.000Z",
+    "snapshotHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "source_rejection",
+  "runId": "uapt-zhejiang-university-20260511",
+  "sourceRejectionId": "rejection-zju-003",
+  "sourceCandidateId": "candidate-zju-003",
+  "entityType": "university",
+  "entitySlug": "zhejiang-university",
+  "sourceUrl": "http://www.cmic.zju.edu.cn/cmicen/2025/0519/c35719a3052586/page.htm",
+  "finalUrl": "http://www.cmic.zju.edu.cn/cmicen/2025/0519/c35719a3052586/page.htm",
+  "rejectedAt": "2026-05-11T00:55:00Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw_agent",
+  "evidenceSnippet": "This webinar explores cutting-edge AI applications and ethical considerations through expert insights and case studies on balancing AI-assisted writing with academic integrity.",
+  "notes": "Webinar event announcement. Discusses AI ethics topics but is event-focused rather than official university policy. Rejected as event-only content."
+}

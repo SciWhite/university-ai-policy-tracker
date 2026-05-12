@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-mcgill-university-20260510",
+  "evidenceId": "mcgill-evidence-privacy",
+  "claimId": "mcgill-claim-privacy",
+  "sourceSnapshotId": "mcgill-ss-003",
+  "sourceUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+  "finalUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+  "sourceTitle": "AI Guidelines",
+  "sourceLanguage": "en",
+  "snapshotHash": "65240bfc8b000bd19a295b33007df10eb02f40e3b3347bc667da67f42f7ce4ee",
+  "evidenceSnippetOriginal": "Mitigate potential privacy concerns by removing personally identifying information (e.g., names, email addresses, phone numbers). For example, when writing a prompt to draft an email to Joe Smith, replace \"Joe Smith\" with \"XYZ.\"",
+  "evidenceLocator": "Best practices for general AI use",
+  "evidenceType": "official_source",
+  "relevance": 0.98,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Guidelines",
+    "sourceUrl": "https://www.mcgill.ca/it/ai/ai-guidelines",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
+    "publisher": "McGill University",
+    "retrievedAt": "2026-05-10T14:33:00.000Z",
+    "snapshotHash": "65240bfc8b000bd19a295b33007df10eb02f40e3b3347bc667da67f42f7ce4ee",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

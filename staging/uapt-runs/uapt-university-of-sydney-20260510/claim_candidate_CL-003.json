@@ -1,25 +1,23 @@
 {
+  "artifactType": "claim_candidate",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "claim_candidate",
-  "claimId": "CL-003",
+  "claimId": "usyd-claim-3",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
-  "claimType": "academic_integrity",
-  "claimText": "From Semester 1 2025, University of Sydney guidance says students may use automated writing tools or generative AI for assessments other than supervised examinations and supervised in-semester tests unless the unit coordinator expressly prohibits it.",
+  "claimType": "teaching",
+  "claimText": "From Semester 1 2025, the default position in the University of Sydney Academic Integrity Policy has been reversed: except for supervised examinations and supervised in-semester tests, students may use automated writing tools or generative AI to complete assessments unless expressly prohibited by the unit coordinator.",
   "normalizedValue": "ai_use_default_allowed_for_non_exam_assessments_from_2025",
   "sourceLanguage": "en",
   "confidence": 0.97,
   "reviewState": "agent_reviewed",
-  "evidenceIds": [
-    "EV-003"
-  ],
+  "evidenceIds": ["usyd-evidence-3"],
   "citation": {
     "citationTitle": "Aligning our assessments to the age of generative AI",
     "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
     "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-sydney.json",
     "publisher": "The University of Sydney",
-    "retrievedAt": "2026-05-10T14:25:00.000Z",
+    "retrievedAt": "2026-05-10T14:22:00.000Z",
     "snapshotHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926",
     "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
   },

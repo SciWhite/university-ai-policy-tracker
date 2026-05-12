@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "uva-review-003",
+  "claimId": "uva-claim-003",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-crawler-worker",
+  "notes": "Claim about student transparency and software criteria supported by VU-UvA task force page.",
+  "decidedAt": "2026-05-11T10:27:00Z"
+}

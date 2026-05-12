@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "uva-snapshot-001",
+  "sourceCandidateId": "uva-source-001",
+  "fetchAttemptId": "uva-fetch-001",
+  "sourceUrl": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html",
+  "finalUrl": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html",
+  "sourceTitle": "Policy framework and guidelines on GenAI in education",
+  "sourceLanguage": "en",
+  "contentHash": "859ff4ab22762f3accc2f01a2e9032213ffd2e7d1d7e7f3fb938bc52c2d8d3ea",
+  "fetchedAt": "2026-05-11T10:20:00Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "uva-policy-framework-genai-education-20260511.md",
+  "rawArtifactPaths": []
+}

@@ -1,18 +1,19 @@
 {
+  "artifactType": "fetch_attempt",
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
-  "artifactType": "fetch_attempt",
-  "fetchAttemptId": "FA-004",
-  "sourceCandidateId": "SC-004",
-  "sourceUrl": "https://www.sydney.edu.au/students/assessments.html",
-  "finalUrl": "https://www.sydney.edu.au/students/assessments.html",
-  "attemptedAt": "2026-05-10T14:23:00.000Z",
+  "fetchAttemptId": "usyd-fetch-4",
+  "sourceCandidateId": "usyd-using-ai-to-learn",
+  "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+  "finalUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+  "attemptedAt": "2026-05-10T14:21:00.000Z",
   "fetchMode": "firecrawl",
   "userAgentKind": "firecrawl",
   "httpStatus": 200,
   "contentType": "text/html;charset=utf-8",
   "robotsAllowed": true,
   "outcome": "success",
-  "durationMs": 3050,
-  "contentHash": "5ebdada1291f1f6976e67f8f5e770b5e2c616244df27e0fc00b78602efe24d07"
+  "durationMs": 2500,
+  "contentHash": "0edbaa77a8cc4fd2407d6ed65f68954e7e29f69cc44faccf486a53323b774b01",
+  "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-sydney-20260510/normalized/usyd-using-ai-to-learn.txt"
 }

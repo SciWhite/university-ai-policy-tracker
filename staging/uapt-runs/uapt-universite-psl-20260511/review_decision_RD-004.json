@@ -1,0 +1,13 @@
+{
+  "artifactType": "review_decision",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "decisionId": "psl-rd-004",
+  "claimId": "psl-claim-research-limitations",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim supported by evidence on AI limitations including hallucinations, reproducibility issues, and algorithmic opacity. Member school guidance appropriately warns researchers about these limitations.",
+  "decidedAt": "2026-05-11T10:23:00.000Z"
+}

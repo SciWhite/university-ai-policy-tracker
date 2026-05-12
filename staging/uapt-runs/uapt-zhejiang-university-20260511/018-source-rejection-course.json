@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "artifactType": "source_rejection",
+  "runId": "uapt-zhejiang-university-20260511",
+  "sourceRejectionId": "rejection-zju-004",
+  "sourceCandidateId": "candidate-zju-002",
+  "entityType": "university",
+  "entitySlug": "zhejiang-university",
+  "sourceUrl": "http://www.sis.zju.edu.cn/_upload/article/files/de/a0/f3972e1e413f8c864af3efe8a224/2cfa9db0-13c3-4c36-a9bb-f16ab84a3e07.pdf",
+  "finalUrl": "http://www.sis.zju.edu.cn/_upload/article/files/de/a0/f3972e1e413f8c864af3efe8a224/2cfa9db0-13c3-4c36-a9bb-f16ab84a3e07.pdf",
+  "rejectedAt": "2026-05-11T01:05:00Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "codex-local-repair",
+  "evidenceSnippet": "Course syllabus contains general academic integrity language but no AI-specific guidance.",
+  "notes": "Rejected as AI policy evidence; not used by approved claims."
+}

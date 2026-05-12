@@ -1,0 +1,27 @@
+{
+  "artifactType": "evidence_candidate",
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-psl-20260511",
+  "evidenceId": "psl-evidence-research-responsibility",
+  "claimId": "psl-claim-research-responsibility",
+  "sourceSnapshotId": "psl-ss-001",
+  "sourceUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+  "finalUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+  "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche : des recommandations pour le respect de l'intégrité scientifique",
+  "sourceLanguage": "fr",
+  "snapshotHash": "c8d14b8e1a715d3bbc3bb0cce9e0ed8062cad25acf9c8ee9d5570160651bfb9d",
+  "evidenceSnippetOriginal": "Conserver la responsabilité des productions scientifiques issues des IA?: il faut garder une approche critique de ces outils, connaître leurs biais et leurs limites (hallucinations, approximation), ne pas les considérer comme des co-auteurs et ne pas les utiliser pour créer des matériaux scientifiques, qui pourraient être falsifiés.",
+  "evidenceLocator": "Section: Autorat et responsabilité scientifique",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Utiliser l'intelligence artificielle dans sa recherche : des recommandations pour le respect de l'intégrité scientifique",
+    "sourceUrl": "https://bu.dauphine.psl.eu/print/1023.html",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universite-psl.json",
+    "publisher": "BU Paris-Dauphine (Université PSL)",
+    "retrievedAt": "2026-05-11T09:45:00.000Z",
+    "snapshotHash": "c8d14b8e1a715d3bbc3bb0cce9e0ed8062cad25acf9c8ee9d5570160651bfb9d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

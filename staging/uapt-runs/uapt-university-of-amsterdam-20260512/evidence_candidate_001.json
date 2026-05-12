@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "uva-evidence-001",
+  "claimId": "uva-claim-001",
+  "sourceSnapshotId": "uva-snapshot-001",
+  "sourceUrl": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html",
+  "finalUrl": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html",
+  "sourceTitle": "Policy framework and guidelines on GenAI in education",
+  "sourceLanguage": "en",
+  "snapshotHash": "859ff4ab22762f3accc2f01a2e9032213ffd2e7d1d7e7f3fb938bc52c2d8d3ea",
+  "evidenceSnippetOriginal": "The policy framework contains general and specific guidelines for the responsible use of GenAI in education. At the same time, it offers faculties and programmes room to translate the policy into their own educational practice. After all, GenAI requires customization: the impact and proper application differs per discipline.",
+  "evidenceLocator": "Main content section",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Official university policy document. Rights reserved by University of Amsterdam.",
+  "citation": {
+    "citationTitle": "Policy framework and guidelines on GenAI in education",
+    "sourceUrl": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html",
+    "publisher": "University of Amsterdam",
+    "retrievedAt": "2026-05-11T10:20:00Z",
+    "snapshotHash": "859ff4ab22762f3accc2f01a2e9032213ffd2e7d1d7e7f3fb938bc52c2d8d3ea",
+    "sourceRights": "Official university policy document. Rights reserved by University of Amsterdam."
+  }
+}

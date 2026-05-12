@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "uva-fetch-005",
+  "sourceCandidateId": "uva-source-005",
+  "sourceUrl": "https://tlc.uva.nl/en/article/ai-offers-new-possibilities-for-education-and-assessment/",
+  "finalUrl": "https://tlc.uva.nl/en/article/ai-offers-new-possibilities-for-education-and-assessment/",
+  "attemptedAt": "2026-05-11T10:24:00Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html;charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 3400,
+  "contentHash": "4aea837f5a7b825dc7adb3a289846b32ffe1177618366500a338d7a0be1122d8",
+  "normalizedTextStorageKey": "uva-tlc-genai-resources-20260511.md"
+}

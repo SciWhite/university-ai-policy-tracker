@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-amsterdam-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "uva-evidence-004",
+  "claimId": "uva-claim-004",
+  "sourceSnapshotId": "uva-snapshot-004",
+  "sourceUrl": "https://www.uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html",
+  "finalUrl": "https://www.uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html",
+  "sourceTitle": "Academic integrity at the UvA",
+  "sourceLanguage": "en",
+  "snapshotHash": "38493fe8850e666a8ba8116443bce528c2649da38d377958516a5923a1fefb5a",
+  "evidenceSnippetOriginal": "At the UvA, both the Netherlands Code of Conduct for Research Integrity and the European Code of Conduct for Research Integrity apply. These outline the principles and standards for integrity in research and teaching.",
+  "evidenceLocator": "Codes of conduct for research integrity section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Official university policy. Rights reserved by University of Amsterdam.",
+  "citation": {
+    "citationTitle": "Academic integrity at the UvA",
+    "sourceUrl": "https://www.uva.nl/en/research/research-environment/academic-integrity/academic-integrity.html",
+    "publisher": "University of Amsterdam",
+    "retrievedAt": "2026-05-11T10:23:00Z",
+    "snapshotHash": "38493fe8850e666a8ba8116443bce528c2649da38d377958516a5923a1fefb5a",
+    "sourceRights": "Official university policy. Rights reserved by University of Amsterdam."
+  }
+}

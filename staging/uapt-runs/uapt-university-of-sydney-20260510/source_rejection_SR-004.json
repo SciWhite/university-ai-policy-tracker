@@ -2,7 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-sydney-20260510",
   "artifactType": "source_rejection",
-  "sourceRejectionId": "SR-004",
+  "sourceRejectionId": "usyd-sr-student-news-ai-classroom",
   "entityType": "university",
   "entitySlug": "university-of-sydney",
   "sourceUrl": "https://intranet.sydney.edu.au/strategy-governance/gen-ai.html",
