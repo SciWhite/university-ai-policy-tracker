@@ -26,6 +26,7 @@ tmp/
 temp/
 
 # Local databases and caches
+.local/
 *.sqlite
 *.sqlite3
 *.db

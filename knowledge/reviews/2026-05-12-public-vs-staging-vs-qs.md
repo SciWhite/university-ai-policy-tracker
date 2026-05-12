@@ -1,7 +1,7 @@
 ---
 title: Public vs Staging vs QS Review - 2026-05-12
 authoritativeLevel: planning_note
-generatedAt: 2026-05-12T10:19:46-04:00
+generatedAt: 2026-05-12T10:41:26-04:00
 sourceFiles:
   - data/public-releases/current.json
   - staging/uapt-runs/
@@ -35,9 +35,9 @@ answer "what should we fix or crawl next?" not "what is the policy?"
 - Public entity review states are 49 `agent_reviewed` and 1 `needs_review`.
 - Claim review states are 483 `agent_reviewed` and 17 `needs_review`.
 - QS top 100 target coverage is 50 public, 9 staging-only, and 41 missing.
-- Nine unpromoted staging candidates pass artifact validation.
-- One unpromoted staging candidate, NYU, fails validator and must be repaired
-  before review.
+- Ten unpromoted staging candidates pass artifact validation.
+- NYU was repaired after an earlier validator failure and now remains a
+  staging-only promotion-review candidate.
 - The Excel workbook is useful for recall and theme comparison, but it is
   non-authoritative and should not flow into public claims.
 
@@ -75,7 +75,7 @@ answer "what should we fix or crawl next?" not "what is the policy?"
 | `uapt-ludwig-maximilians-universitat-munchen-20260512` | pass | QS rank 58, not public | Review German/English source handling before promotion |
 | `uapt-universiti-malaya-20260512` | pass | QS rank 58, not public | Review bundled artifact structure and promote if accepted |
 | `uapt-johns-hopkins-university-20260510` | pass | Public already has `jhu` but needs review | Resolve duplicate slug/canonical entity issue |
-| `uapt-new-york-university-20260512` | fail | QS rank 55, not public | Repair artifact schema, required families, and hashes before review |
+| `uapt-new-york-university-20260512` | pass | QS rank 55, not public | Review repaired staging run before promotion |
 
 ## QS 2026 Coverage
 
@@ -94,8 +94,8 @@ answer "what should we fix or crawl next?" not "what is the policy?"
    promotion.
 4. The Hong Kong Polytechnic University - validated staging exists; review for
    promotion.
-5. New York University - staging exists but validator fails; repair before
-   review.
+5. New York University - validated repaired staging exists; review before
+   promotion.
 6. LSE - validated staging exists; review for promotion.
 7. Kyoto University - validated staging exists; verify Japanese
    original-language evidence.
@@ -143,7 +143,7 @@ It must not be used to:
 
 | Risk | Severity | Recommended action |
 | --- | --- | --- |
-| NYU staging run fails validator | high | Repair required artifact families, taxonomy values, and SHA-256 fields before review |
+| NYU staging run was recently repaired | medium | Review repaired artifacts before promotion; keep prior failure history in mind |
 | JHU public slug and unpromoted run use different slug forms | medium | Resolve canonical entity mapping before further promotion |
 | Yonsei has one source candidate/snapshot | medium | Review whether source discovery is broad enough before promotion |
 | New multilingual staging runs require source-first review | medium | Review Kyoto Japanese evidence and LMU German/English evidence without replacing original snippets |
@@ -153,7 +153,7 @@ It must not be used to:
 
 ## Recommended Next Actions
 
-1. Repair NYU staging artifacts before any promotion review.
+1. Review the repaired NYU staging artifacts before any promotion review.
 2. Review and decide promotion for CMU, Yonsei, Bristol, PolyU, LSE, Kyoto,
    LMU Munich, and Universiti Malaya.
 3. Resolve JHU canonical slug/review-state issue.

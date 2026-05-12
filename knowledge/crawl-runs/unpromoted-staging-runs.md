@@ -1,7 +1,7 @@
 ---
 title: Unpromoted Staging Runs
 authoritativeLevel: derived_snapshot
-generatedAt: 2026-05-12T10:19:46-04:00
+generatedAt: 2026-05-12T10:41:26-04:00
 sourceFiles:
   - data/public-releases/current.json
   - staging/uapt-runs/
@@ -32,8 +32,8 @@ and re-audited.
 | Promoted legacy `data/openclaw-staging` directories | 3 |
 | Unpromoted staging candidate directories | 10 |
 | Archive directory | 1 |
-| Unpromoted candidates passing artifact validator | 9 |
-| Unpromoted candidates failing artifact validator | 1 |
+| Unpromoted candidates passing artifact validator | 10 |
+| Unpromoted candidates failing artifact validator | 0 |
 
 ## Unpromoted Candidate Runs
 
@@ -48,7 +48,7 @@ and re-audited.
 | `staging/uapt-runs/uapt-universiti-malaya-20260512` | `universiti-malaya` | 1 bundled JSON | 6 | 6 | 6 | `en` | pass | New staging run after initial snapshot | Review bundled artifact structure and decide whether to promote |
 | `staging/uapt-runs/uapt-the-hong-kong-polytechnic-university-20260512` | `the-hong-kong-polytechnic-university` | 35 | 5 | 6 | 6 | `en` | pass | New staging run, currently untracked/unpromoted in local workspace | Stage/review intentionally, then decide whether to promote |
 | `staging/uapt-runs/uapt-university-of-bristol-20260512` | `university-of-bristol` | 27 | 4 | 4 | 4 | `en` | pass | New staging run, currently untracked/unpromoted in local workspace | Stage/review intentionally, then decide whether to promote |
-| `staging/uapt-runs/uapt-new-york-university-20260512` | `new-york-university` | 31 | 5 | 5 | 5 | `en` | fail | Missing `crawl_plan` and `report_draft`; invalid claim types; invalid snapshot/content hashes | Repair schema, content hashes, artifact names, and required artifact families before any promotion review |
+| `staging/uapt-runs/uapt-new-york-university-20260512` | `new-york-university` | 30 | 4 | 4 | 5 | `en` | pass | Repaired after earlier schema/hash failures; still unpromoted | Review for possible next manifest promotion |
 
 ## Validator Notes
 
@@ -87,14 +87,8 @@ Passing candidate outputs:
   candidates; 6 review decisions; languages are `de` and `en`.
 - Universiti Malaya: 36 artifacts in one bundle JSON; required families
   present; 6 claims; 6 evidence candidates; 6 review decisions.
-
-NYU validator failures are schema-level blockers:
-
-- missing required artifact families: `crawl_plan`, `report_draft`, plus
-  validator-recognized required families after parse failures;
-- invalid `claimType` values outside the shared taxonomy;
-- invalid `snapshotHash` and `contentHash` values that do not match 64-character
-  lowercase SHA-256 format.
+- NYU: 30 artifacts; required families present after repair; 4 claims; 4
+  evidence candidates; 4 review decisions.
 
 ## Archive Directory
 

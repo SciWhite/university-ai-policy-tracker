@@ -566,6 +566,22 @@ Future command:
 pnpm build:review-cache
 ```
 
+Implemented command:
+
+```bash
+pnpm build:review-cache
+```
+
+Implemented cache path:
+
+```text
+.local/uapt-review.sqlite
+```
+
+The current implementation uses the local `sqlite3` CLI instead of adding a
+native Node dependency. It rebuilds the cache from scratch and keeps the
+database under `.local/`, which is excluded from Git.
+
 Acceptance criteria:
 
 - cache is generated locally and excluded from Git
@@ -573,6 +589,51 @@ Acceptance criteria:
 - cache cannot write production DB
 - generated row counts match Markdown snapshots
 - query examples are documented
+
+Implemented tables:
+
+```text
+cache_metadata
+public_universities
+public_claims
+public_evidence
+public_sources
+public_changes
+analysis_profiles
+staging_runs
+staging_artifact_counts
+staging_validation_results
+ranking_qs_2026
+reference_sheet_rows
+entity_aliases
+coverage_gaps
+source_health_checks
+```
+
+Important boundary:
+
+```text
+The review cache is a local analysis artifact. It is not a production database,
+not a public API source, and not canonical evidence. It stores public metadata,
+counts, hashes, and planning fields; it does not promote staging runs or create
+claims.
+```
+
+Useful local checks:
+
+```bash
+sqlite3 .local/uapt-review.sqlite \
+  "select public_status, count(*) from ranking_qs_2026 group by public_status;"
+
+sqlite3 .local/uapt-review.sqlite \
+  "select directory, validation_status, issue_count from staging_runs where promoted = 0 order by validation_status, directory;"
+
+sqlite3 .local/uapt-review.sqlite \
+  "select entity_slug, official_source_count from public_universities where official_source_count < 2 order by entity_slug;"
+
+sqlite3 .local/uapt-review.sqlite \
+  "select source_language, count(*) from public_evidence group by source_language order by count(*) desc;"
+```
 
 ## 7. P2: Coverage Gap And Source Health Dashboards
 

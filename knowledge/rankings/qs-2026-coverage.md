@@ -1,7 +1,7 @@
 ---
 title: QS 2026 Coverage
 authoritativeLevel: derived_snapshot
-generatedAt: 2026-05-12T10:19:46-04:00
+generatedAt: 2026-05-12T10:41:26-04:00
 sourceFiles:
   - data/rankings/qs-world-university-rankings-2026-top-100.json
   - data/rankings/qs-world-university-rankings-2026-top-1000.json
@@ -50,7 +50,7 @@ coverage of the QS top 100 target list.
 | 2 | 51 | University of Bristol | staging only | Review validated unpromoted run |
 | 3 | 52 | Carnegie Mellon University | staging only | Review validated repaired run |
 | 4 | 54 | The Hong Kong Polytechnic University | staging only | Review validated unpromoted run |
-| 5 | 55 | New York University (NYU) | staging only, validator failing | Repair artifact schema/hashes before review |
+| 5 | 55 | New York University (NYU) | staging only | Review repaired staging run before promotion |
 | 6 | 56 | The London School of Economics and Political Science (LSE) | staging only | Review validated unpromoted run |
 | 7 | 57 | Kyoto University | staging only | Review Japanese original-language evidence in validated unpromoted run |
 | 8 | 58 | Ludwig-Maximilians-Universitat Munchen | staging only | Review German/English evidence handling in validated unpromoted run |
@@ -115,7 +115,7 @@ coverage of the QS top 100 target list.
 | 52 | Carnegie Mellon University | United States | staging only | `staging/uapt-runs/uapt-carnegie-mellon-university-20260512` |
 | 53 | University of Amsterdam | Netherlands | public | `university-of-amsterdam` |
 | 54 | The Hong Kong Polytechnic University | Hong Kong SAR | staging only | `staging/uapt-runs/uapt-the-hong-kong-polytechnic-university-20260512` |
-| 55 | New York University (NYU) | United States | staging only, validator failing | `staging/uapt-runs/uapt-new-york-university-20260512` |
+| 55 | New York University (NYU) | United States | staging only | `staging/uapt-runs/uapt-new-york-university-20260512` |
 | 56 | The London School of Economics and Political Science (LSE) | United Kingdom | staging only | `staging/uapt-runs/uapt-the-london-school-of-economics-and-political-science-20260512` |
 | 57 | Kyoto University | Japan | staging only | `staging/uapt-runs/uapt-kyoto-university-20260512` |
 | 58 | Ludwig-Maximilians-Universitat Munchen | Germany | staging only | `staging/uapt-runs/uapt-ludwig-maximilians-universitat-munchen-20260512` |
