@@ -1,0 +1,429 @@
+{
+  "schemaVersion": "uapt-policy-analysis-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "entitySlug": "anu",
+  "entityName": "Australian National University (ANU)",
+  "canonicalUrl": "https://eduaipolicy.org/universities/anu",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/analysis/universities/anu.json",
+  "generatedAt": "2026-05-11T00:00:00.000Z",
+  "basedOnClaimIds": [
+    "CL-ANU-001",
+    "CL-ANU-002",
+    "CL-ANU-003",
+    "CL-ANU-004",
+    "CL-ANU-005",
+    "CL-ANU-006"
+  ],
+  "basedOnSourceUrls": [
+    "https://example.edu/ai-policy",
+    "https://example.edu/academic-integrity/generative-ai",
+    "https://example.edu/privacy/ai-tools",
+    "https://example.edu/teaching/generative-ai"
+  ],
+  "sourceLanguages": [
+    "en"
+  ],
+  "reviewState": "agent_reviewed",
+  "confidence": 0.86,
+  "coverageScore": {
+    "score": 80,
+    "maxScore": 100,
+    "label": "broad_public_coverage",
+    "components": [
+      {
+        "key": "policy_presence",
+        "label": "Central AI policy or guidance source exists",
+        "points": 15,
+        "maxPoints": 15,
+        "status": "unclear",
+        "evidenceClaimIds": [
+          "CL-ANU-001"
+        ],
+        "reviewState": "agent_reviewed"
+      },
+      {
+        "key": "academic_integrity",
+        "label": "Academic integrity guidance",
+        "points": 15,
+        "maxPoints": 15,
+        "status": "restricted",
+        "evidenceClaimIds": [
+          "CL-ANU-002"
+        ],
+        "reviewState": "agent_reviewed"
+      },
+      {
+        "key": "ai_disclosure",
+        "label": "AI disclosure guidance",
+        "points": 15,
+        "maxPoints": 15,
+        "status": "required",
+        "evidenceClaimIds": [
+          "CL-ANU-003"
+        ],
+        "reviewState": "agent_reviewed"
+      },
+      {
+        "key": "coursework",
+        "label": "Coursework guidance",
+        "points": 10,
+        "maxPoints": 10,
+        "status": "conditionally_allowed",
+        "evidenceClaimIds": [
+          "CL-ANU-004"
+        ],
+        "reviewState": "agent_reviewed"
+      },
+      {
+        "key": "exams",
+        "label": "Exam or assessment guidance",
+        "points": 0,
+        "maxPoints": 10,
+        "status": "not_mentioned",
+        "evidenceClaimIds": [],
+        "reviewState": "needs_review"
+      },
+      {
+        "key": "privacy_data_entry",
+        "label": "Privacy or data-entry guidance",
+        "points": 15,
+        "maxPoints": 15,
+        "status": "restricted",
+        "evidenceClaimIds": [
+          "CL-ANU-005"
+        ],
+        "reviewState": "agent_reviewed"
+      },
+      {
+        "key": "approved_tools",
+        "label": "Approved tools, procurement, or licensed tools",
+        "points": 0,
+        "maxPoints": 10,
+        "status": "not_mentioned",
+        "evidenceClaimIds": [],
+        "reviewState": "needs_review"
+      },
+      {
+        "key": "teaching_guidance",
+        "label": "Teaching or research guidance",
+        "points": 10,
+        "maxPoints": 10,
+        "status": "recommended",
+        "evidenceClaimIds": [
+          "CL-ANU-006"
+        ],
+        "reviewState": "agent_reviewed"
+      }
+    ],
+    "reviewState": "agent_reviewed",
+    "limitations": [
+      "Policy Coverage Score measures breadth of public, source-backed coverage; it is not a policy quality score.",
+      "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+    ]
+  },
+  "dimensions": [
+    {
+      "key": "policy_presence",
+      "label": "Policy presence",
+      "status": "unclear",
+      "normalizedValue": "university_wide_policy",
+      "summary": "The public record contains a central AI policy or official institutional guidance source.",
+      "explanation": "This dimension confirms public source-backed policy presence only; it does not judge policy quality or legal adequacy.",
+      "evidenceClaimIds": [
+        "CL-ANU-001"
+      ],
+      "evidenceSourceUrls": [
+        "https://example.edu/ai-policy"
+      ],
+      "sourceLanguages": [
+        "en"
+      ],
+      "reviewState": "agent_reviewed",
+      "confidence": 0.9,
+      "evidenceCount": 1,
+      "sourceCount": 1,
+      "basis": [
+        {
+          "claimId": "CL-ANU-001",
+          "sourceUrl": "https://example.edu/ai-policy",
+          "sourceLanguage": "en",
+          "evidenceSnippet": "The university provides guidance on responsible use of generative AI tools.",
+          "sourceSnapshotHash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "key": "ai_disclosure",
+      "label": "AI disclosure",
+      "status": "required",
+      "normalizedValue": "disclosure_required_when_ai_materially_used",
+      "summary": "The public record contains source-backed disclosure guidance for material AI use.",
+      "explanation": "The status is based on a cited public claim and should be displayed with review state and source evidence.",
+      "evidenceClaimIds": [
+        "CL-ANU-003"
+      ],
+      "evidenceSourceUrls": [
+        "https://example.edu/academic-integrity/generative-ai"
+      ],
+      "sourceLanguages": [
+        "en"
+      ],
+      "reviewState": "agent_reviewed",
+      "confidence": 0.88,
+      "evidenceCount": 1,
+      "sourceCount": 1,
+      "basis": [
+        {
+          "claimId": "CL-ANU-003",
+          "sourceUrl": "https://example.edu/academic-integrity/generative-ai",
+          "sourceLanguage": "en",
+          "evidenceSnippet": "Students should acknowledge the use of generative AI where it contributes to submitted work.",
+          "sourceSnapshotHash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "key": "coursework",
+      "label": "Coursework",
+      "status": "conditionally_allowed",
+      "normalizedValue": "course_or_assignment_dependent",
+      "summary": "The public record indicates course or assignment-level conditions for AI use.",
+      "explanation": "This is not advice to students; it summarizes the cited public record and should be checked against current course rules.",
+      "evidenceClaimIds": [
+        "CL-ANU-004"
+      ],
+      "evidenceSourceUrls": [
+        "https://example.edu/ai-policy"
+      ],
+      "sourceLanguages": [
+        "en"
+      ],
+      "reviewState": "agent_reviewed",
+      "confidence": 0.84,
+      "evidenceCount": 1,
+      "sourceCount": 1,
+      "basis": [
+        {
+          "claimId": "CL-ANU-004",
+          "sourceUrl": "https://example.edu/ai-policy",
+          "sourceLanguage": "en",
+          "evidenceSnippet": "Permitted use of AI tools may vary by assessment task and course instruction.",
+          "sourceSnapshotHash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "key": "exams",
+      "label": "Exams",
+      "status": "not_mentioned",
+      "summary": "No source-backed public claim about exam AI use is present in this analysis profile.",
+      "explanation": "Not mentioned means this tracker has no supporting public claim for the dimension; it does not mean AI is allowed or prohibited in exams.",
+      "evidenceClaimIds": [],
+      "evidenceSourceUrls": [],
+      "sourceLanguages": [],
+      "reviewState": "needs_review",
+      "confidence": 0.4,
+      "evidenceCount": 0,
+      "sourceCount": 0,
+      "notMentionedReason": "No reviewed public claim in the current profile mentions exams, tests, quizzes, or proctored assessments.",
+      "basis": []
+    },
+    {
+      "key": "privacy_data_entry",
+      "label": "Privacy and data entry",
+      "status": "restricted",
+      "normalizedValue": "sensitive_or_confidential_data_restricted",
+      "summary": "The public record contains source-backed restrictions on entering sensitive or confidential data into AI tools.",
+      "explanation": "This dimension is based on cited public privacy guidance and should be shown with the original source URL.",
+      "evidenceClaimIds": [
+        "CL-ANU-005"
+      ],
+      "evidenceSourceUrls": [
+        "https://example.edu/privacy/ai-tools"
+      ],
+      "sourceLanguages": [
+        "en"
+      ],
+      "reviewState": "agent_reviewed",
+      "confidence": 0.9,
+      "evidenceCount": 1,
+      "sourceCount": 1,
+      "basis": [
+        {
+          "claimId": "CL-ANU-005",
+          "sourceUrl": "https://example.edu/privacy/ai-tools",
+          "sourceLanguage": "en",
+          "evidenceSnippet": "Do not enter confidential, personal, or sensitive university data into external AI systems without approval.",
+          "sourceSnapshotHash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "key": "academic_integrity",
+      "label": "Academic integrity",
+      "status": "restricted",
+      "normalizedValue": "ai_use_subject_to_academic_integrity_rules",
+      "summary": "The public record places AI use within academic integrity or assessment-integrity guidance.",
+      "explanation": "This dimension reports the public framing only and does not provide academic integrity advice.",
+      "evidenceClaimIds": [
+        "CL-ANU-002"
+      ],
+      "evidenceSourceUrls": [
+        "https://example.edu/academic-integrity/generative-ai"
+      ],
+      "sourceLanguages": [
+        "en"
+      ],
+      "reviewState": "agent_reviewed",
+      "confidence": 0.9,
+      "evidenceCount": 1,
+      "sourceCount": 1,
+      "basis": [
+        {
+          "claimId": "CL-ANU-002",
+          "sourceUrl": "https://example.edu/academic-integrity/generative-ai",
+          "sourceLanguage": "en",
+          "evidenceSnippet": "Use of generative AI must comply with academic integrity and assessment requirements.",
+          "sourceSnapshotHash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "key": "approved_tools",
+      "label": "Approved tools",
+      "status": "not_mentioned",
+      "summary": "No source-backed public claim in this profile identifies an institutionally approved or licensed AI tool list.",
+      "explanation": "Not mentioned is not a statement that no approved tool exists; it means the current public evidence profile does not support one.",
+      "evidenceClaimIds": [],
+      "evidenceSourceUrls": [],
+      "sourceLanguages": [],
+      "reviewState": "needs_review",
+      "confidence": 0.35,
+      "evidenceCount": 0,
+      "sourceCount": 0,
+      "notMentionedReason": "The current evidence set does not include a reviewed claim naming approved or institutionally licensed AI tools.",
+      "basis": []
+    },
+    {
+      "key": "named_ai_services",
+      "label": "Named AI services",
+      "status": "insufficient_public_evidence",
+      "normalizedValue": "generic_ai_tools_mentioned_without_tool_status",
+      "summary": "The public record mentions generative AI tools generally but does not support a reliable service-specific treatment classification.",
+      "explanation": "This status prevents generic mentions from being treated as a specific ChatGPT, Copilot, or DeepSeek policy.",
+      "evidenceClaimIds": [
+        "CL-ANU-001"
+      ],
+      "evidenceSourceUrls": [
+        "https://example.edu/ai-policy"
+      ],
+      "sourceLanguages": [
+        "en"
+      ],
+      "reviewState": "needs_review",
+      "confidence": 0.52,
+      "evidenceCount": 1,
+      "sourceCount": 1,
+      "basis": [
+        {
+          "claimId": "CL-ANU-001",
+          "sourceUrl": "https://example.edu/ai-policy",
+          "sourceLanguage": "en",
+          "evidenceSnippet": "The university provides guidance on responsible use of generative AI tools.",
+          "sourceSnapshotHash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "key": "teaching_guidance",
+      "label": "Teaching guidance",
+      "status": "recommended",
+      "normalizedValue": "instructor_guidance_available",
+      "summary": "The public record contains teaching guidance for instructors using or regulating generative AI.",
+      "explanation": "The dimension is based on an instructor-facing public source and should link back to the original source.",
+      "evidenceClaimIds": [
+        "CL-ANU-006"
+      ],
+      "evidenceSourceUrls": [
+        "https://example.edu/teaching/generative-ai"
+      ],
+      "sourceLanguages": [
+        "en"
+      ],
+      "reviewState": "agent_reviewed",
+      "confidence": 0.82,
+      "evidenceCount": 1,
+      "sourceCount": 1,
+      "basis": [
+        {
+          "claimId": "CL-ANU-006",
+          "sourceUrl": "https://example.edu/teaching/generative-ai",
+          "sourceLanguage": "en",
+          "evidenceSnippet": "Instructors are encouraged to communicate permitted AI use in course and assessment instructions.",
+          "sourceSnapshotHash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "key": "research_guidance",
+      "label": "Research guidance",
+      "status": "unclear",
+      "normalizedValue": "research_context_not_separately_classified",
+      "summary": "The current evidence mentions responsible AI generally but does not support a separate research-use classification.",
+      "explanation": "The unclear status is evidence-backed but weaker than a specific research guidance classification.",
+      "evidenceClaimIds": [
+        "CL-ANU-001"
+      ],
+      "evidenceSourceUrls": [
+        "https://example.edu/ai-policy"
+      ],
+      "sourceLanguages": [
+        "en"
+      ],
+      "reviewState": "needs_review",
+      "confidence": 0.5,
+      "evidenceCount": 1,
+      "sourceCount": 1,
+      "basis": [
+        {
+          "claimId": "CL-ANU-001",
+          "sourceUrl": "https://example.edu/ai-policy",
+          "sourceLanguage": "en",
+          "evidenceSnippet": "The university provides guidance on responsible use of generative AI tools.",
+          "sourceSnapshotHash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "key": "security_procurement",
+      "label": "Security and procurement",
+      "status": "not_mentioned",
+      "summary": "No source-backed public claim in this profile separately mentions AI security review, procurement, SSO, or vendor approval.",
+      "explanation": "Not mentioned means no supporting public claim exists in this profile; it is not evidence that no internal process exists.",
+      "evidenceClaimIds": [],
+      "evidenceSourceUrls": [],
+      "sourceLanguages": [],
+      "reviewState": "needs_review",
+      "confidence": 0.35,
+      "evidenceCount": 0,
+      "sourceCount": 0,
+      "notMentionedReason": "The current profile has no reviewed public claim about security review, procurement, authentication, or vendor approval.",
+      "basis": []
+    }
+  ],
+  "limitations": [
+    "This analysis summarizes public source-backed tracker metadata only.",
+    "No source-backed public claim found is not evidence that no policy exists.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "suggestedCitation": "University AI Policy Tracker. \"Australian National University (ANU) AI Policy Analysis Profile.\" Version v1. Last generated 2026-05-11. https://eduaipolicy.org/universities/anu"
+}
