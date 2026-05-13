@@ -159,6 +159,7 @@ export default async function DatasetsPage() {
     universities[0]?.slug ??
     "anu";
   const exampleUniversityPath = `/api/public/${PUBLIC_API_VERSION}/universities/${exampleSlug}.json`;
+  const exampleClaimsPath = `/api/public/${PUBLIC_API_VERSION}/claims/${exampleSlug}.json`;
   const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
   const analysisIndexPath = `/api/public/${PUBLIC_API_VERSION}/analysis/index.json`;
   const exampleAnalysisPath = `/api/public/${PUBLIC_API_VERSION}/analysis/universities/${exampleSlug}.json`;
@@ -166,7 +167,12 @@ export default async function DatasetsPage() {
   const analysisPageQualityPath = `/api/public/${PUBLIC_API_VERSION}/analysis/page-quality.json`;
   const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`;
   const widgetIndexPath = `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`;
+  const policyCoverageWidgetPath = `/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/${exampleSlug}.json`;
+  const sourceFreshnessWidgetPath = `/api/public/${PUBLIC_API_VERSION}/widgets/source-freshness/${exampleSlug}.json`;
+  const reviewStateWidgetPath = `/api/public/${PUBLIC_API_VERSION}/widgets/review-state/${exampleSlug}.json`;
   const mcpManifestPath = `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`;
+  const mcpToolCatalogPath = `/api/public/${PUBLIC_API_VERSION}/mcp/tool-catalog.json`;
+  const citationMetadataPath = `/api/public/${PUBLIC_API_VERSION}/citation.json`;
   const contributionIndexPath = `/api/public/${PUBLIC_API_VERSION}/contributions/index.json`;
   const reviewPolicyPath = `/api/public/${PUBLIC_API_VERSION}/contributions/review-policy.json`;
   const qsCoveragePath = `/api/public/${PUBLIC_API_VERSION}/coverage/qs-2026.json`;
@@ -178,6 +184,7 @@ export default async function DatasetsPage() {
     latestDatasetManifestPath
   );
   const exampleUniversityUrl = getAbsoluteSiteUrl(exampleUniversityPath);
+  const exampleClaimsUrl = getAbsoluteSiteUrl(exampleClaimsPath);
   const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
   const analysisIndexUrl = getAbsoluteSiteUrl(analysisIndexPath);
   const exampleAnalysisUrl = getAbsoluteSiteUrl(exampleAnalysisPath);
@@ -187,7 +194,12 @@ export default async function DatasetsPage() {
   const analysisPageQualityUrl = getAbsoluteSiteUrl(analysisPageQualityPath);
   const reportChartDataUrl = getAbsoluteSiteUrl(reportChartDataPath);
   const widgetIndexUrl = getAbsoluteSiteUrl(widgetIndexPath);
+  const policyCoverageWidgetUrl = getAbsoluteSiteUrl(policyCoverageWidgetPath);
+  const sourceFreshnessWidgetUrl = getAbsoluteSiteUrl(sourceFreshnessWidgetPath);
+  const reviewStateWidgetUrl = getAbsoluteSiteUrl(reviewStateWidgetPath);
   const mcpManifestUrl = getAbsoluteSiteUrl(mcpManifestPath);
+  const mcpToolCatalogUrl = getAbsoluteSiteUrl(mcpToolCatalogPath);
+  const citationMetadataUrl = getAbsoluteSiteUrl(citationMetadataPath);
   const contributionIndexUrl = getAbsoluteSiteUrl(contributionIndexPath);
   const reviewPolicyUrl = getAbsoluteSiteUrl(reviewPolicyPath);
   const qsCoverageUrl = getAbsoluteSiteUrl(qsCoveragePath);
@@ -233,6 +245,12 @@ export default async function DatasetsPage() {
               name: "University record JSON example",
               encodingFormat: "application/json",
               contentUrl: exampleUniversityUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "University claims JSON example",
+              encodingFormat: "application/json",
+              contentUrl: exampleClaimsUrl
             },
             {
               "@type": "DataDownload",
@@ -302,9 +320,39 @@ export default async function DatasetsPage() {
             },
             {
               "@type": "DataDownload",
+              name: "Policy coverage widget JSON example",
+              encodingFormat: "application/json",
+              contentUrl: policyCoverageWidgetUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Source freshness widget JSON example",
+              encodingFormat: "application/json",
+              contentUrl: sourceFreshnessWidgetUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Review-state widget JSON example",
+              encodingFormat: "application/json",
+              contentUrl: reviewStateWidgetUrl
+            },
+            {
+              "@type": "DataDownload",
               name: "Read-only MCP alpha manifest",
               encodingFormat: "application/json",
               contentUrl: mcpManifestUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "MCP tool catalog",
+              encodingFormat: "application/json",
+              contentUrl: mcpToolCatalogUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Citation metadata",
+              encodingFormat: "application/json",
+              contentUrl: citationMetadataUrl
             },
             {
               "@type": "DataDownload",
@@ -391,6 +439,12 @@ export default async function DatasetsPage() {
           url={exampleUniversityUrl}
         />
         <ApiEndpointRow
+          description="Example claim/evidence rows for one public university record."
+          label="Per-university claims JSON example"
+          path={exampleClaimsPath}
+          url={exampleClaimsUrl}
+        />
+        <ApiEndpointRow
           description="Freshness feed for checked and changed public records."
           label="Recent changes JSON"
           path={recentChangesPath}
@@ -457,10 +511,40 @@ export default async function DatasetsPage() {
           url={widgetIndexUrl}
         />
         <ApiEndpointRow
+          description="Example policy coverage widget payload. Coverage is source-backed breadth, not policy quality."
+          label="Policy coverage widget JSON"
+          path={policyCoverageWidgetPath}
+          url={policyCoverageWidgetUrl}
+        />
+        <ApiEndpointRow
+          description="Example source freshness widget payload with last checked date and source-health counts."
+          label="Source freshness widget JSON"
+          path={sourceFreshnessWidgetPath}
+          url={sourceFreshnessWidgetUrl}
+        />
+        <ApiEndpointRow
+          description="Example review-state widget payload with confidence and candidate/reviewed claim counts."
+          label="Review-state widget JSON"
+          path={reviewStateWidgetPath}
+          url={reviewStateWidgetUrl}
+        />
+        <ApiEndpointRow
           description="Read-only MCP alpha design manifest for agent integrations."
           label="MCP alpha manifest"
           path={mcpManifestPath}
           url={mcpManifestUrl}
+        />
+        <ApiEndpointRow
+          description="Read-only MCP alpha tool catalog with input schemas, required output fields, and prohibited mutations."
+          label="MCP tool catalog"
+          path={mcpToolCatalogPath}
+          url={mcpToolCatalogUrl}
+        />
+        <ApiEndpointRow
+          description="Machine-readable citation templates, required fields, and evidence reuse rules."
+          label="Citation metadata"
+          path={citationMetadataPath}
+          url={citationMetadataUrl}
         />
         <ApiEndpointRow
           description="Read-only contribution workflow metadata, GitHub issue template URLs, and publication boundaries."

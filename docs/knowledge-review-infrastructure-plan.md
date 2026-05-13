@@ -749,6 +749,24 @@ Acceptance criteria:
 Use mature public APIs and knowledge-derived metadata to support agents and
 external websites.
 
+Implemented P3 endpoints and surfaces:
+
+```text
+/mcp
+/widgets
+/widgets/embed.js
+/api/public/v1/mcp/manifest.json
+/api/public/v1/mcp/tool-catalog.json
+/api/public/v1/citation.json
+/api/public/v1/claims/{slug}.json
+/api/public/v1/widgets/index.json
+/api/public/v1/widgets/university-status/{slug}.json
+/api/public/v1/widgets/recent-changes.json
+/api/public/v1/widgets/policy-coverage/{slug}.json
+/api/public/v1/widgets/source-freshness/{slug}.json
+/api/public/v1/widgets/review-state/{slug}.json
+```
+
 ### 8.1 Read-Only MCP
 
 Candidate MCP tools:

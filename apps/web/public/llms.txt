@@ -19,6 +19,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Public API index: /api/public/v1/index.json.
 - Public university list: /api/public/v1/universities.json.
 - Public JSON records are available at /api/public/v1/universities/{slug}.json.
+- Public claim/evidence records for one university are available at /api/public/v1/claims/{slug}.json.
 - Recent public changes are available at /api/public/v1/recent-changes.json.
 - Deterministic policy analysis metadata is available at /api/public/v1/analysis/index.json.
 - Per-university analysis profiles are available at /api/public/v1/analysis/universities/{slug}.json.
@@ -33,7 +34,10 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Report chart data is available at /api/public/v1/reports/2026-05/chart-data.json.
 - Widget discovery is available at /api/public/v1/widgets/index.json.
 - Widget JSON endpoints are available at /api/public/v1/widgets/university-status/{slug}.json and /api/public/v1/widgets/recent-changes.json.
+- Additional widget JSON endpoints are available at /api/public/v1/widgets/policy-coverage/{slug}.json, /api/public/v1/widgets/source-freshness/{slug}.json, and /api/public/v1/widgets/review-state/{slug}.json.
 - The read-only MCP alpha manifest is available at /api/public/v1/mcp/manifest.json.
+- The read-only MCP tool catalog is available at /api/public/v1/mcp/tool-catalog.json.
+- Citation metadata is available at /api/public/v1/citation.json.
 - The public rate-limit policy is available at /api/public/v1/rate-limit-policy.json.
 - Contribution workflow metadata is available at /api/public/v1/contributions/index.json.
 - Contribution review policy metadata is available at /api/public/v1/contributions/review-policy.json.
@@ -62,4 +66,5 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - OpenClaw orchestrates agents and crawling only.
 - OpenClaw must not deploy the public website, write the production database directly, push main, or hold production deployment credentials.
 - The MCP alpha design is read-only and must not mutate public records, operate OpenClaw, or publish canonical claims.
+- MCP tool catalog entries are retrieval shapes over public JSON endpoints, not write tools.
 - Public contribution paths create review tasks through GitHub issue templates; they do not create canonical facts directly.

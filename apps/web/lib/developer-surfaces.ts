@@ -1,9 +1,15 @@
 import {
   NO_ADVICE_BOUNDARY,
+  OFFICIAL_SOURCE_RIGHTS_CAVEAT,
   PUBLIC_API_VERSION,
-  TRACKER_METADATA_LICENSE
+  TRACKER_METADATA_LICENSE,
+  buildPublicApiCitation
 } from "@uapt/shared";
 import { getChangeRecords } from "./change-records";
+import {
+  getPolicyAnalysisProfileBySlug
+} from "./policy-analysis";
+import { getSourceHealthDashboardData } from "./review-dashboards";
 import { getAbsoluteSiteUrl } from "./site-url";
 import {
   getStagedPublicSummaries,
@@ -37,39 +43,81 @@ export const rateLimitPolicy = {
 
 export const mcpToolSpecs = [
   {
-    name: "uapt.get_api_index",
+    name: "get_api_index",
     method: "GET",
     path: `/api/public/${PUBLIC_API_VERSION}/index.json`,
     description:
       "Read public endpoint, trust page, limitation, and citation metadata."
   },
   {
-    name: "uapt.list_universities",
+    name: "search_universities",
     method: "GET",
     path: `/api/public/${PUBLIC_API_VERSION}/universities.json`,
     description:
-      "Read the public university record list. Client-side filtering is expected in the alpha design."
+      "Read the public university record list. Agent-side filtering is expected in the alpha design."
   },
   {
-    name: "uapt.get_university_policy",
+    name: "get_university_policy_record",
     method: "GET",
     path: `/api/public/${PUBLIC_API_VERSION}/universities/{slug}.json`,
     description:
       "Read one citation-ready university record with claims, evidence, source URLs, review states, and caveats."
   },
   {
-    name: "uapt.get_recent_changes",
+    name: "get_policy_claims",
+    method: "GET",
+    path: `/api/public/${PUBLIC_API_VERSION}/claims/{slug}.json`,
+    description:
+      "Read claim/evidence rows for one public university record with source URL, source language, snapshot hash, review state, and confidence."
+  },
+  {
+    name: "get_analysis_profile",
+    method: "GET",
+    path: `/api/public/${PUBLIC_API_VERSION}/analysis/universities/{slug}.json`,
+    description:
+      "Read one deterministic policy analysis profile derived from public claim/evidence records."
+  },
+  {
+    name: "get_qs_coverage_gap",
+    method: "GET",
+    path: `/api/public/${PUBLIC_API_VERSION}/coverage/qs-2026.json`,
+    description:
+      "Read QS 2026 collection coverage rows. Coverage status is not a policy quality or maturity score."
+  },
+  {
+    name: "get_source_health",
+    method: "GET",
+    path: `/api/public/${PUBLIC_API_VERSION}/source-health.json`,
+    description:
+      "Read public source snapshot and staging source/fetch health metadata for compliant repair planning."
+  },
+  {
+    name: "get_recent_changes",
     method: "GET",
     path: `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`,
     description:
       "Read recent public source checks and changed institution records."
   },
   {
-    name: "uapt.get_dataset_release",
+    name: "get_citation",
+    method: "GET",
+    path: `/api/public/${PUBLIC_API_VERSION}/citation.json`,
+    description:
+      "Read citation templates, required fields, source rights caveat, and no-advice boundary."
+  },
+  {
+    name: "get_dataset_release",
     method: "GET",
     path: `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`,
     description:
       "Read the latest dataset release manifest, artifacts, checksums, and citation fields."
+  },
+  {
+    name: "get_mcp_tool_catalog",
+    method: "GET",
+    path: `/api/public/${PUBLIC_API_VERSION}/mcp/tool-catalog.json`,
+    description:
+      "Read the full alpha tool catalog, required output fields, prohibited actions, and example queries."
   }
 ] as const;
 
@@ -125,6 +173,39 @@ export async function getWidgetIndexResponse() {
             `data-widget="recent-changes" data-limit="5"></script>`,
           dataEndpoint: getAbsoluteSiteUrl(
             `/api/public/${PUBLIC_API_VERSION}/widgets/recent-changes.json`
+          )
+        },
+        {
+          type: "policy-coverage",
+          description:
+            "Compact policy coverage badge with source-backed analysis coverage score, review state, and canonical links.",
+          exampleHtml:
+            `<script async src="${getAbsoluteSiteUrl(widgetScriptPath)}" ` +
+            `data-widget="policy-coverage" data-slug="anu"></script>`,
+          dataEndpointTemplate: getAbsoluteSiteUrl(
+            `/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/{slug}.json`
+          )
+        },
+        {
+          type: "source-freshness",
+          description:
+            "Compact source freshness badge with last checked date, source count, and public source-health counts.",
+          exampleHtml:
+            `<script async src="${getAbsoluteSiteUrl(widgetScriptPath)}" ` +
+            `data-widget="source-freshness" data-slug="anu"></script>`,
+          dataEndpointTemplate: getAbsoluteSiteUrl(
+            `/api/public/${PUBLIC_API_VERSION}/widgets/source-freshness/{slug}.json`
+          )
+        },
+        {
+          type: "review-state",
+          description:
+            "Compact review-state badge that shows review state, confidence, and candidate/reviewed claim counts.",
+          exampleHtml:
+            `<script async src="${getAbsoluteSiteUrl(widgetScriptPath)}" ` +
+            `data-widget="review-state" data-slug="anu"></script>`,
+          dataEndpointTemplate: getAbsoluteSiteUrl(
+            `/api/public/${PUBLIC_API_VERSION}/widgets/review-state/{slug}.json`
           )
         }
       ],
@@ -195,6 +276,138 @@ export function buildUniversityStatusWidget(summary: PublicEntitySummary) {
       candidateClaimCount,
       officialSourceCount: summary.officialSources.length,
       sourceLanguages
+    }
+  };
+}
+
+export async function getPolicyCoverageWidget(slug: string) {
+  const profile = await getPolicyAnalysisProfileBySlug(slug);
+  const summary = await getStagedPublicSummaryBySlug(slug);
+
+  if (!profile || !summary) return undefined;
+
+  const evidenceBackedDimensionCount = profile.dimensions.filter(
+    (dimension) => dimension.evidenceCount > 0
+  ).length;
+
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt: new Date().toISOString(),
+    canonicalUrl: profile.canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    limitations: profile.limitations,
+    widget: {
+      type: "policy-coverage",
+      embedScriptUrl: getAbsoluteSiteUrl(widgetScriptPath),
+      sourceRecordUrl: profile.publicJsonUrl
+    },
+    data: {
+      entitySlug: profile.entitySlug,
+      entityName: profile.entityName,
+      publicPageUrl: summary.publicPageUrl ?? summary.canonicalUrl,
+      publicJsonUrl:
+        summary.apiUrl ??
+        getAbsoluteSiteUrl(
+          `/api/public/${PUBLIC_API_VERSION}/universities/${profile.entitySlug}.json`
+        ),
+      analysisJsonUrl: profile.publicJsonUrl,
+      reviewState: profile.reviewState,
+      confidence: profile.confidence,
+      coverageScore: profile.coverageScore.score,
+      coverageMaxScore: profile.coverageScore.maxScore,
+      coverageLabel: profile.coverageScore.label,
+      dimensionCount: profile.dimensions.length,
+      evidenceBackedDimensionCount,
+      sourceLanguageCount: profile.sourceLanguages.length,
+      summaryPreview:
+        "Policy Coverage Score measures breadth of source-backed public coverage, not policy quality."
+    }
+  };
+}
+
+export async function getSourceFreshnessWidget(slug: string) {
+  const summary = await getStagedPublicSummaryBySlug(slug);
+  if (!summary) return undefined;
+
+  const health = await getSourceHealthDashboardData();
+  const sourceRows = health.rows.filter(
+    (row) => row.scope === "public_release" && row.entitySlug === slug
+  );
+  const publicJsonUrl =
+    summary.apiUrl ??
+    getAbsoluteSiteUrl(
+      `/api/public/${PUBLIC_API_VERSION}/universities/${summary.entity.slug}.json`
+    );
+
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt: new Date().toISOString(),
+    canonicalUrl: summary.canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    limitations: [
+      "Public source freshness is based on promoted snapshot metadata and is not a live recrawl guarantee.",
+      NO_ADVICE_BOUNDARY
+    ],
+    widget: {
+      type: "source-freshness",
+      embedScriptUrl: getAbsoluteSiteUrl(widgetScriptPath),
+      sourceRecordUrl: publicJsonUrl
+    },
+    data: {
+      entitySlug: summary.entity.slug,
+      entityName: summary.entity.name,
+      publicPageUrl: summary.publicPageUrl ?? summary.canonicalUrl,
+      publicJsonUrl,
+      lastCheckedAt: summary.lastCheckedAt,
+      lastChangedAt: summary.lastChangedAt,
+      reviewState: summary.reviewState,
+      officialSourceCount: summary.officialSources.length,
+      sourceHealthCounts: countWidgetStatuses(sourceRows),
+      summaryPreview:
+        "Promoted source snapshot metadata is available. Open the canonical record for source URLs and evidence."
+    }
+  };
+}
+
+export async function getReviewStateWidget(slug: string) {
+  const summary = await getStagedPublicSummaryBySlug(slug);
+  if (!summary) return undefined;
+
+  const reviewedClaimCount = summary.claims.filter((claim) =>
+    isReviewedState(claim.reviewState)
+  ).length;
+  const candidateClaimCount = summary.claims.length - reviewedClaimCount;
+  const publicJsonUrl =
+    summary.apiUrl ??
+    getAbsoluteSiteUrl(
+      `/api/public/${PUBLIC_API_VERSION}/universities/${summary.entity.slug}.json`
+    );
+
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt: new Date().toISOString(),
+    canonicalUrl: summary.canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    limitations: summary.limitations,
+    widget: {
+      type: "review-state",
+      embedScriptUrl: getAbsoluteSiteUrl(widgetScriptPath),
+      sourceRecordUrl: publicJsonUrl
+    },
+    data: {
+      entitySlug: summary.entity.slug,
+      entityName: summary.entity.name,
+      publicPageUrl: summary.publicPageUrl ?? summary.canonicalUrl,
+      publicJsonUrl,
+      reviewState: summary.reviewState,
+      confidence: summary.confidence,
+      claimCount: summary.claims.length,
+      reviewedClaimCount,
+      candidateClaimCount,
+      summaryPreview:
+        candidateClaimCount > 0
+          ? "Some claims remain candidate or needs-review. Treat the linked source-backed record as the authority."
+          : "Published claims are labeled with review state and linked source evidence."
     }
   };
 }
@@ -304,36 +517,125 @@ export function buildRecentChangesWidgetFromPublicChanges(
 }
 
 export async function getMcpManifestResponse() {
+  const catalog = getMcpToolCatalogData();
+
   return {
     apiVersion: PUBLIC_API_VERSION,
     generatedAt: new Date().toISOString(),
     canonicalUrl: getAbsoluteSiteUrl("/mcp"),
     license: TRACKER_METADATA_LICENSE,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
     limitations: [NO_ADVICE_BOUNDARY],
+    citation: buildPublicApiCitation({
+      citationTitle: "University AI Policy Tracker read-only MCP alpha manifest",
+      canonicalUrl: getAbsoluteSiteUrl("/mcp"),
+      publicJsonUrl: getAbsoluteSiteUrl(
+        `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`
+      ),
+      suggestedCitation:
+        "University AI Policy Tracker read-only MCP alpha manifest. University AI Policy Tracker. Version v1. " +
+        getAbsoluteSiteUrl("/mcp")
+    }),
     data: {
       name: "University AI Policy Tracker read-only MCP alpha",
       status: "design-alpha",
       readOnly: true,
-      mutationPolicy: {
-        allowed: false,
-        prohibitedActions: [
-          "write production DB",
-          "publish canonical claims",
-          "push main",
-          "bypass review state",
-          "operate OpenClaw",
-          "crawl source sites from the MCP surface",
-          "submit institution corrections or course policy records through MCP write tools"
-        ]
-      },
-      tools: mcpToolSpecs,
-      citationRequirements: [
-        "Return canonical page URL and public JSON URL with answers.",
-        "Keep review state separate from confidence.",
-        "Preserve original-language evidence as canonical evidence.",
-        "Do not present candidate or needs-review claims as final policy conclusions."
-      ],
+      toolCatalogUrl: getAbsoluteSiteUrl(
+        `/api/public/${PUBLIC_API_VERSION}/mcp/tool-catalog.json`
+      ),
+      mutationPolicy: catalog.mutationPolicy,
+      tools: catalog.tools,
+      responseRequirements: catalog.responseRequirements,
       exampleAgentQueries
+    }
+  };
+}
+
+export function getMcpToolCatalogResponse() {
+  const canonicalUrl = getAbsoluteSiteUrl("/mcp");
+  const publicJsonUrl = getAbsoluteSiteUrl(
+    `/api/public/${PUBLIC_API_VERSION}/mcp/tool-catalog.json`
+  );
+
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt: new Date().toISOString(),
+    canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    limitations: [NO_ADVICE_BOUNDARY],
+    citation: buildPublicApiCitation({
+      citationTitle: "University AI Policy Tracker MCP tool catalog",
+      canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation:
+        "University AI Policy Tracker MCP tool catalog. University AI Policy Tracker. Version v1. " +
+        canonicalUrl
+    }),
+    data: getMcpToolCatalogData()
+  };
+}
+
+export function getCitationMetadataResponse() {
+  const canonicalUrl = getAbsoluteSiteUrl("/citation");
+  const publicJsonUrl = getAbsoluteSiteUrl(
+    `/api/public/${PUBLIC_API_VERSION}/citation.json`
+  );
+
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt: new Date().toISOString(),
+    canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    limitations: [NO_ADVICE_BOUNDARY],
+    citation: buildPublicApiCitation({
+      citationTitle: "University AI Policy Tracker citation metadata",
+      canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation:
+        "University AI Policy Tracker citation metadata. University AI Policy Tracker. Version v1. " +
+        canonicalUrl
+    }),
+    data: {
+      requiredFields: [
+        "canonicalUrl",
+        "publicJsonUrl",
+        "lastCheckedAt",
+        "lastChangedAt",
+        "reviewState",
+        "sourceUrls",
+        "sourceLanguages",
+        "sourceSnapshotHashes"
+      ],
+      citationTemplates: [
+        {
+          type: "university_policy_page",
+          template:
+            'University AI Policy Tracker. "{entityName} AI policy record." Version {apiVersion}. Last checked {lastCheckedAt}. {canonicalUrl}'
+        },
+        {
+          type: "dataset_release",
+          template:
+            "University AI Policy Tracker dataset release. Release {releaseId}. {canonicalUrl}"
+        },
+        {
+          type: "change_or_report_page",
+          template:
+            'University AI Policy Tracker. "{title}." {periodOrDate}. {canonicalUrl}'
+        },
+        {
+          type: "widget_or_agent_summary",
+          template:
+            "Use the canonical tracker page and public JSON URL shown by the widget or MCP result; cite linked university source URLs separately."
+        }
+      ],
+      evidenceRules: [
+        "Original-language evidence remains canonical.",
+        "Localized display text is helper text only.",
+        "Confidence and review state must remain separate.",
+        "Machine-candidate or needs-review records must not be presented as final policy conclusions."
+      ]
     }
   };
 }
@@ -357,11 +659,92 @@ export async function getWidgetPreviewRecords() {
     summaries[0];
 
   return {
+    policyCoverageWidget: preferred
+      ? await getPolicyCoverageWidget(preferred.entity.slug)
+      : undefined,
+    reviewStateWidget: preferred
+      ? await getReviewStateWidget(preferred.entity.slug)
+      : undefined,
+    sourceFreshnessWidget: preferred
+      ? await getSourceFreshnessWidget(preferred.entity.slug)
+      : undefined,
     statusWidget: preferred
       ? await getUniversityStatusWidget(preferred.entity.slug)
       : undefined,
     recentChangesWidget: await getRecentChangesWidget(5)
   };
+}
+
+function getMcpToolCatalogData() {
+  return {
+    name: "University AI Policy Tracker read-only MCP tool catalog",
+    status: "design-alpha",
+    readOnly: true,
+    mutationPolicy: {
+      allowed: false,
+      prohibitedActions: [
+        "create_claim",
+        "publish_record",
+        "promote_staging",
+        "write_db",
+        "operate_openclaw",
+        "deploy",
+        "push_main",
+        "bypass_review_state",
+        "bypass_robots_or_access_controls"
+      ]
+    },
+    tools: mcpToolSpecs.map((tool) => ({
+      ...tool,
+      readOnly: true,
+      requiredOutputFields: [
+        "canonicalUrl",
+        "publicJsonUrl",
+        "reviewState",
+        "sourceUrl",
+        "sourceLanguage",
+        "sourceRightsPolicy",
+        "limitations"
+      ],
+      inputSchema:
+        tool.path.includes("{slug}")
+          ? {
+              type: "object",
+              properties: {
+                slug: {
+                  type: "string",
+                  description: "Canonical university slug from the public university list."
+                }
+              },
+              required: ["slug"]
+            }
+          : {
+              type: "object",
+              properties: {}
+            }
+    })),
+    responseRequirements: [
+      "Return canonical page URL and public JSON URL with answers.",
+      "Return review state next to any summarized claim.",
+      "Return confidence where the public endpoint provides confidence.",
+      "Return source URL, source language, and source snapshot hash for claim evidence.",
+      "Preserve original-language evidence as canonical evidence.",
+      "Label candidate or needs-review records clearly.",
+      NO_ADVICE_BOUNDARY,
+      OFFICIAL_SOURCE_RIGHTS_CAVEAT
+    ],
+    exampleAgentQueries
+  };
+}
+
+function countWidgetStatuses(
+  rows: Array<{
+    status: string;
+  }>
+): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const row of rows) counts[row.status] = (counts[row.status] ?? 0) + 1;
+  return counts;
 }
 
 function isReviewedState(reviewState: string): boolean {

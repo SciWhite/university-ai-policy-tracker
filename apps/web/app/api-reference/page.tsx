@@ -33,6 +33,12 @@ const apiFamilies = [
       "One citation-ready university record with claims, evidence snippets, source URLs, confidence, review state, and rights caveats."
   },
   {
+    label: "University claims",
+    path: `/api/public/${PUBLIC_API_VERSION}/claims/{slug}.json`,
+    description:
+      "One public university record's claim/evidence rows with source URL, source language, snapshot hash, confidence, and review state."
+  },
+  {
     label: "Recent changes",
     path: `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`,
     description:
@@ -105,16 +111,46 @@ const apiFamilies = [
       "Compact recent changes payload for public source-check and change widgets."
   },
   {
+    label: "Policy coverage widget",
+    path: `/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/{slug}.json`,
+    description:
+      "Compact source-backed policy coverage widget payload. Coverage is breadth, not policy quality."
+  },
+  {
+    label: "Source freshness widget",
+    path: `/api/public/${PUBLIC_API_VERSION}/widgets/source-freshness/{slug}.json`,
+    description:
+      "Compact source freshness widget payload with last checked date, source count, and public source-health counts."
+  },
+  {
+    label: "Review-state widget",
+    path: `/api/public/${PUBLIC_API_VERSION}/widgets/review-state/{slug}.json`,
+    description:
+      "Compact review-state widget payload with confidence, reviewed claims, and candidate claim counts."
+  },
+  {
     label: "MCP alpha manifest",
     path: `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`,
     description:
       "Read-only MCP design manifest with allowed tool shapes, prohibited actions, and example agent queries."
   },
   {
+    label: "MCP tool catalog",
+    path: `/api/public/${PUBLIC_API_VERSION}/mcp/tool-catalog.json`,
+    description:
+      "Read-only MCP alpha tool catalog with input schemas, required output fields, and hard prohibited mutations."
+  },
+  {
     label: "Rate-limit policy",
     path: `/api/public/${PUBLIC_API_VERSION}/rate-limit-policy.json`,
     description:
       "Machine-readable public fair-use policy for API, widget, and crawler access."
+  },
+  {
+    label: "Citation metadata",
+    path: `/api/public/${PUBLIC_API_VERSION}/citation.json`,
+    description:
+      "Machine-readable citation templates, required fields, evidence rules, source rights caveat, and no-advice boundary."
   },
   {
     label: "Contribution index",

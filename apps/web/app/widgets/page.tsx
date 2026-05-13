@@ -22,6 +22,15 @@ const statusSnippet =
 const changesSnippet =
   `<script async src="https://eduaipolicy.org${widgetScriptPath}" ` +
   `data-widget="recent-changes" data-limit="5"></script>`;
+const coverageSnippet =
+  `<script async src="https://eduaipolicy.org${widgetScriptPath}" ` +
+  `data-widget="policy-coverage" data-slug="anu"></script>`;
+const freshnessSnippet =
+  `<script async src="https://eduaipolicy.org${widgetScriptPath}" ` +
+  `data-widget="source-freshness" data-slug="anu"></script>`;
+const reviewStateSnippet =
+  `<script async src="https://eduaipolicy.org${widgetScriptPath}" ` +
+  `data-widget="review-state" data-slug="anu"></script>`;
 
 export function generateMetadata() {
   const canonical = getAbsoluteSiteUrl("/widgets");
@@ -40,8 +49,17 @@ export function generateMetadata() {
 }
 
 export default async function WidgetsPage() {
-  const { recentChangesWidget, statusWidget } = await getWidgetPreviewRecords();
+  const {
+    policyCoverageWidget,
+    recentChangesWidget,
+    reviewStateWidget,
+    sourceFreshnessWidget,
+    statusWidget
+  } = await getWidgetPreviewRecords();
   const statusData = statusWidget?.data;
+  const coverageData = policyCoverageWidget?.data;
+  const freshnessData = sourceFreshnessWidget?.data;
+  const reviewStateData = reviewStateWidget?.data;
   const changes = recentChangesWidget.data.changes;
 
   return (
@@ -72,7 +90,7 @@ export default async function WidgetsPage() {
 
       <section className="metrics-grid" aria-label="Widget principles">
         <div>
-          <span>2</span>
+          <span>5</span>
           <p>initial widget types</p>
         </div>
         <div>
@@ -105,6 +123,24 @@ export default async function WidgetsPage() {
           >
             <h2>Recent changes card</h2>
             <pre>{changesSnippet}</pre>
+          </DataListRow>
+          <DataListRow
+            metadata={<MetaLabel label="Widget">Policy coverage</MetaLabel>}
+          >
+            <h2>Policy coverage badge</h2>
+            <pre>{coverageSnippet}</pre>
+          </DataListRow>
+          <DataListRow
+            metadata={<MetaLabel label="Widget">Source freshness</MetaLabel>}
+          >
+            <h2>Source freshness badge</h2>
+            <pre>{freshnessSnippet}</pre>
+          </DataListRow>
+          <DataListRow
+            metadata={<MetaLabel label="Widget">Review state</MetaLabel>}
+          >
+            <h2>Review-state badge</h2>
+            <pre>{reviewStateSnippet}</pre>
           </DataListRow>
         </DataList>
       </ReferenceBox>
@@ -140,6 +176,51 @@ export default async function WidgetsPage() {
               ))}
             </ul>
           </div>
+          {coverageData ? (
+            <div>
+              <p className="kicker">Policy coverage</p>
+              <h2>
+                {coverageData.coverageScore}/{coverageData.coverageMaxScore}
+              </h2>
+              <p>{coverageData.summaryPreview}</p>
+              <div className="tag-row">
+                <StateLabel prefix="" reviewState={coverageData.reviewState} />
+                <MetaLabel label="Dimensions">
+                  {coverageData.evidenceBackedDimensionCount}/
+                  {coverageData.dimensionCount}
+                </MetaLabel>
+              </div>
+            </div>
+          ) : null}
+          {freshnessData ? (
+            <div>
+              <p className="kicker">Source freshness</p>
+              <h2>{freshnessData.entityName}</h2>
+              <p>{freshnessData.summaryPreview}</p>
+              <div className="tag-row">
+                <StateLabel prefix="" reviewState={freshnessData.reviewState} />
+                <MetaLabel label="Sources">
+                  {freshnessData.officialSourceCount}
+                </MetaLabel>
+              </div>
+            </div>
+          ) : null}
+          {reviewStateData ? (
+            <div>
+              <p className="kicker">Review state</p>
+              <h2>{reviewStateData.entityName}</h2>
+              <p>{reviewStateData.summaryPreview}</p>
+              <div className="tag-row">
+                <StateLabel
+                  prefix=""
+                  reviewState={reviewStateData.reviewState}
+                />
+                <MetaLabel label="Candidate">
+                  {reviewStateData.candidateClaimCount}
+                </MetaLabel>
+              </div>
+            </div>
+          ) : null}
         </div>
       </ReferenceBox>
 
@@ -165,6 +246,24 @@ export default async function WidgetsPage() {
           path={`/api/public/${PUBLIC_API_VERSION}/widgets/recent-changes.json`}
           url={`/api/public/${PUBLIC_API_VERSION}/widgets/recent-changes.json`}
         />
+        <ApiEndpointRow
+          description="Compact policy coverage payload with source-backed coverage score and analysis JSON link."
+          label="Policy coverage widget JSON"
+          path={`/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/anu.json`}
+          url={`/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/anu.json`}
+        />
+        <ApiEndpointRow
+          description="Compact source freshness payload with last checked date, source count, and source-health counts."
+          label="Source freshness widget JSON"
+          path={`/api/public/${PUBLIC_API_VERSION}/widgets/source-freshness/anu.json`}
+          url={`/api/public/${PUBLIC_API_VERSION}/widgets/source-freshness/anu.json`}
+        />
+        <ApiEndpointRow
+          description="Compact review-state payload with review state, confidence, and candidate/reviewed claim counts."
+          label="Review-state widget JSON"
+          path={`/api/public/${PUBLIC_API_VERSION}/widgets/review-state/anu.json`}
+          url={`/api/public/${PUBLIC_API_VERSION}/widgets/review-state/anu.json`}
+        />
       </ReferenceBox>
 
       <ReferenceBox
@@ -174,6 +273,10 @@ export default async function WidgetsPage() {
         <ul className="compact-list">
           <li>Widgets must link back to canonical tracker pages.</li>
           <li>Widgets display review state and last checked or changed dates.</li>
+          <li>
+            Coverage widgets describe source-backed coverage breadth, not policy
+            quality or institutional maturity.
+          </li>
           <li>
             Widgets do not expose unreviewed claim text; candidate counts remain
             clearly labeled.

@@ -56,6 +56,12 @@ The public university list is available at:
 https://eduaipolicy.org/api/public/v1/universities.json
 ```
 
+Per-university claim/evidence records are available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/claims/{slug}.json
+```
+
 Recent changes JSON is available at:
 
 ```text
@@ -80,13 +86,18 @@ Embeddable widget discovery and widget JSON are available at:
 https://eduaipolicy.org/api/public/v1/widgets/index.json
 https://eduaipolicy.org/api/public/v1/widgets/university-status/{slug}.json
 https://eduaipolicy.org/api/public/v1/widgets/recent-changes.json
+https://eduaipolicy.org/api/public/v1/widgets/policy-coverage/{slug}.json
+https://eduaipolicy.org/api/public/v1/widgets/source-freshness/{slug}.json
+https://eduaipolicy.org/api/public/v1/widgets/review-state/{slug}.json
 ```
 
 Read-only agent/API policy metadata is available at:
 
 ```text
 https://eduaipolicy.org/api/public/v1/mcp/manifest.json
+https://eduaipolicy.org/api/public/v1/mcp/tool-catalog.json
 https://eduaipolicy.org/api/public/v1/rate-limit-policy.json
+https://eduaipolicy.org/api/public/v1/citation.json
 ```
 
 Contribution and review policy metadata is available at:
@@ -150,6 +161,11 @@ Widget JSON endpoints include permissive CORS headers for public embedding.
 The general public API remains read-only. The MCP alpha manifest is a design
 contract only: it must not write production data, operate OpenClaw, publish
 canonical claims, or bypass review state.
+
+The MCP tool catalog is a retrieval contract over existing public JSON
+endpoints. It describes input shapes and required output fields, but does not
+create a write API. The citation metadata endpoint provides citation templates
+and evidence reuse rules; it does not replace source-level citation.
 
 The contribution metadata endpoints are also read-only. Public submissions use
 GitHub issue templates as review tasks; they do not directly write the

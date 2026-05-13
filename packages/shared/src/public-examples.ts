@@ -175,6 +175,12 @@ export function buildPublicApiIndexData(
         `/api/public/${PUBLIC_API_VERSION}/universities/{slug}.json`
       ),
       endpoint(
+        "University claims",
+        `/api/public/${PUBLIC_API_VERSION}/claims/anu.json`,
+        "One public university record's claim/evidence rows with source URL, source language, snapshot hash, confidence, and review state.",
+        `/api/public/${PUBLIC_API_VERSION}/claims/{slug}.json`
+      ),
+      endpoint(
         "Recent changes",
         `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`,
         "Recent public source checks and changed institution records."
@@ -272,14 +278,42 @@ export function buildPublicApiIndexData(
         "Compact embeddable recent changes payload with review-state labels."
       ),
       endpoint(
+        "Policy coverage widget",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/anu.json`,
+        "Compact source-backed policy coverage widget payload. Coverage is breadth, not policy quality.",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/{slug}.json`
+      ),
+      endpoint(
+        "Source freshness widget",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/source-freshness/anu.json`,
+        "Compact source freshness widget payload with last checked date, source count, and public source-health counts.",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/source-freshness/{slug}.json`
+      ),
+      endpoint(
+        "Review-state widget",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/review-state/anu.json`,
+        "Compact review-state widget payload with confidence, reviewed claim count, and candidate claim count.",
+        `/api/public/${PUBLIC_API_VERSION}/widgets/review-state/{slug}.json`
+      ),
+      endpoint(
         "MCP alpha manifest",
         `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`,
         "Read-only MCP alpha design manifest with allowed tools, prohibited mutations, and agent query examples."
       ),
       endpoint(
+        "MCP tool catalog",
+        `/api/public/${PUBLIC_API_VERSION}/mcp/tool-catalog.json`,
+        "Read-only MCP alpha tool catalog with input schemas, required output fields, and hard prohibited mutations."
+      ),
+      endpoint(
         "Rate-limit policy",
         `/api/public/${PUBLIC_API_VERSION}/rate-limit-policy.json`,
         "Machine-readable public fair-use, rate-limit, and crawler policy."
+      ),
+      endpoint(
+        "Citation metadata",
+        `/api/public/${PUBLIC_API_VERSION}/citation.json`,
+        "Machine-readable citation templates, required fields, source rights caveat, and evidence reuse rules."
       ),
       endpoint(
         "Contribution index",
