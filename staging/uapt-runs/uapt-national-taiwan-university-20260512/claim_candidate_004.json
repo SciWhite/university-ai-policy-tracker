@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ntu-004",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "claimType": "academic_integrity",
+  "claimText": "National Taiwan University guidance says students using ChatGPT for assignments or reports should clearly label AI-generated content, fact-check it, and comply with academic ethics and academic-integrity requirements.",
+  "normalizedValue": "NTU central guidance requires labeling, fact-checking and academic-integrity compliance for AI-generated content",
+  "sourceLanguage": "zh-Hant",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ntu-004"
+  ],
+  "citation": {
+    "citationTitle": "臺大針對生成式 AI 工具之教學因應措施",
+    "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "318bbe896a407f2515252add5b3baa244880bfa4eb5b73bd9341216e1f8c0ec0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

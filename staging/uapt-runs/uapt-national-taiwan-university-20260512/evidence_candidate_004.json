@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-ntu-004",
+  "claimId": "claim-ntu-004",
+  "sourceSnapshotId": "snapshot-ntu-001",
+  "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "finalUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "sourceTitle": "臺大針對生成式 AI 工具之教學因應措施",
+  "sourceLanguage": "zh-Hant",
+  "snapshotHash": "318bbe896a407f2515252add5b3baa244880bfa4eb5b73bd9341216e1f8c0ec0",
+  "evidenceSnippetOriginal": "使用 ChatGPT 來撰寫課堂作業或報告，應明確標註使用 ChatGPT 產出的內容，讓讀者瞭解作者使用哪些資源來支持自己的論點。使用 AI 生成內容時一定要進行資訊查核，並確保遵守學術倫理及學術誠信的要求，不涉及抄襲或違反著作權。",
+  "evidenceSnippetDisplay": "NTU says ChatGPT-assisted assignments should label AI output, fact-check, and follow academic integrity.",
+  "evidenceLocator": "學生學習面向 / 如何正確使用 AI 生成之內容",
+  "evidenceType": "official_source",
+  "relevance": 0.93,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "臺大針對生成式 AI 工具之教學因應措施",
+    "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "318bbe896a407f2515252add5b3baa244880bfa4eb5b73bd9341216e1f8c0ec0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

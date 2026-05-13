@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "cp-ku-001",
+  "createdAt": "2026-05-12T14:35:00.000Z",
+  "createdBy": "codex-http-fallback-staged-crawl",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "korea-university",
+      "sourceCandidateId": "sc-ku-001",
+      "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&mode=view",
+      "sourceTitle": "2026 AI 활용 가이드라인 및 가이드북 배포 - 고려대학교 교수학습지원센터, 원격교육센터",
+      "sourceLanguage": "ko",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "AI guidelines",
+        "generative AI",
+        "student use",
+        "assessment",
+        "academic integrity",
+        "privacy",
+        "teaching guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "korea-university",
+      "sourceCandidateId": "sc-ku-002",
+      "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+      "sourceTitle": "Korea University 2026 AI Utilization Guidelines Korean",
+      "sourceLanguage": "ko",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "AI guidelines",
+        "generative AI",
+        "student use",
+        "assessment",
+        "academic integrity",
+        "privacy",
+        "teaching guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "korea-university",
+      "sourceCandidateId": "sc-ku-003",
+      "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311772&mode=download&totalBoardNo=&totalNoticeYn=",
+      "sourceTitle": "Korea University 2026 AI Utilization Guidelines English",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "playwright"
+      ],
+      "expectedThemes": [
+        "AI guidelines",
+        "generative AI",
+        "student use",
+        "assessment",
+        "academic integrity",
+        "privacy",
+        "teaching guidance"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop after official Korea University guideline notice and current guideline PDFs are fetched.",
+    "Do not bypass login walls, paywalls, CAPTCHAs, WAF restrictions, or robots restrictions.",
+    "Use Korean source evidence as canonical; do not mark human_reviewed or canonical."
+  ]
+}

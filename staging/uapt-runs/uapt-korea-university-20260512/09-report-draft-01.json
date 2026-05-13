@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "report_draft",
+  "reportId": "report-ku-20260512",
+  "title": "Korea University staged AI policy source review",
+  "generatedAt": "2026-05-12T14:35:00.000Z",
+  "draftPath": "content/reports/2026-05/korea-university-staged-ai-policy-source-review.mdx",
+  "summary": "Staged one-university crawl for Korea University, QS 2026 rank 61, South Korea. Firecrawl search was attempted first but blocked by insufficient credits, so fallback public web discovery and HTTP fetch were used for official Korea University sources. The current official Korean 2026 AI guideline supports staged claims about scope, academic integrity, instructor course policies, assessment design, AI detector limitations, learner disclosure, and privacy/security. Claims are staged candidates only and are not canonical.",
+  "referencedClaimIds": [
+    "cc-ku-001",
+    "cc-ku-002",
+    "cc-ku-003",
+    "cc-ku-004",
+    "cc-ku-005",
+    "cc-ku-006",
+    "cc-ku-007",
+    "cc-ku-008",
+    "cc-ku-009",
+    "cc-ku-010",
+    "cc-ku-011",
+    "cc-ku-012"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/korea-university.json"
+  ],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "Korean source evidence is canonical in this run. English snippets are only display/context helpers. Firecrawl search was unavailable due to insufficient credits; no restricted systems were accessed."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

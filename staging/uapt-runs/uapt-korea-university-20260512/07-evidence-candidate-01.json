@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-ku-001",
+  "claimId": "cc-ku-001",
+  "sourceSnapshotId": "ss-ku-001",
+  "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&mode=view",
+  "finalUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&mode=view",
+  "sourceTitle": "2026 AI 활용 가이드라인 및 가이드북 배포 - 고려대학교 교수학습지원센터, 원격교육센터",
+  "sourceLanguage": "ko",
+  "snapshotHash": "8860c983ba867406f4684d24e8cf9f789963db9e333798d7825f8df7d4477154",
+  "evidenceSnippetOriginal": "고려대학교 학부대학 원격교육센터에서는 교수·학습 현장에서 인공지능(AI)을 책임 있고 효과적으로 활용할 수 있도록 「2026 AI 활용 가이드라인」과 「2026 AI 활용 가이드북」을 제작·배포하였습니다.",
+  "evidenceSnippetDisplay": "Korea University University College Distance Learning Center says it developed and distributed 2026 AI utilization guidelines and a guidebook for responsible AI use in teaching and learning.",
+  "evidenceLocator": "2026 AI 활용 가이드라인 및 가이드북 배포 notice",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "2026 AI 활용 가이드라인 및 가이드북 배포 - 고려대학교 교수학습지원센터, 원격교육센터",
+    "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&mode=view",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/korea-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/korea-university",
+    "publisher": "Korea University",
+    "retrievedAt": "2026-05-12T14:35:00.000Z",
+    "snapshotHash": "8860c983ba867406f4684d24e8cf9f789963db9e333798d7825f8df7d4477154",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-cityuhk-001",
+  "entityType": "university",
+  "entitySlug": "city-university-of-hong-kong",
+  "claimType": "teaching",
+  "claimText": "CityUHK has an official guideline index for the use of generative AI tools in teaching and learning, effective from Semester A 2025/26, with separate staff and student guideline links.",
+  "normalizedValue": "genai_teaching_learning_guidelines_effective_semester_a_2025_26",
+  "sourceLanguage": "en",
+  "confidence": 0.88,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-cityuhk-001"
+  ],
+  "citation": {
+    "citationTitle": "Guidelines on the Use of Generative AI Tools in Teaching and Learning | City University of Hong Kong",
+    "sourceUrl": "https://www.cityu.edu.hk/GenAI/guidelines.htm",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/city-university-of-hong-kong.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/city-university-of-hong-kong",
+    "publisher": "City University of Hong Kong",
+    "retrievedAt": "2026-05-12T15:55:00Z",
+    "snapshotHash": "768756bd75181794df07c8edc5a3606a757926a819f8b98b6a8fe2a595aa7f39",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

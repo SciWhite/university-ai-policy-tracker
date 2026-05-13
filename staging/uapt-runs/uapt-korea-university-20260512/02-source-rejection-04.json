@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-ku-004",
+  "sourceCandidateId": "sc-ku-r004",
+  "entityType": "university",
+  "entitySlug": "korea-university",
+  "sourceUrl": "https://ic.korea.ac.kr/ic/newsletter/now.do?article.offset=0&articleLimit=10&articleNo=338604&mode=view",
+  "finalUrl": "https://ic.korea.ac.kr/ic/newsletter/now.do?article.offset=0&articleLimit=10&articleNo=338604&mode=view",
+  "rejectedAt": "2026-05-12T14:35:00.000Z",
+  "rejectionReason": "duplicate",
+  "checkedBy": "codex-http-fallback-staged-crawl",
+  "evidenceSnippet": "디지털정보처는 챗지피티(ChatGPT) 등 생성형 인공지능의 활용을 위한 가이드라인을 국내 대학 중 최초로 제정하였습니다.",
+  "notes": "Official historical 2023 guidance, superseded for this run by the current 2026 University College Distance Learning Center guidance."
+}

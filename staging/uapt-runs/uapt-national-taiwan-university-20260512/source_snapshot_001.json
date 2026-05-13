@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snapshot-ntu-001",
+  "sourceCandidateId": "src-ntu-001",
+  "fetchAttemptId": "fetch-ntu-001",
+  "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "finalUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "sourceTitle": "臺大針對生成式 AI 工具之教學因應措施",
+  "sourceLanguage": "zh-Hant",
+  "contentHash": "318bbe896a407f2515252add5b3baa244880bfa4eb5b73bd9341216e1f8c0ec0",
+  "fetchedAt": "2026-05-12T14:43:02Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "snapshot:ntu:dlc-ai-tools:normalized-text:20260512",
+  "rawArtifactPaths": []
+}

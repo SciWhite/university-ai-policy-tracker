@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "reject-cityuhk-007",
+  "sourceCandidateId": "src-cityuhk-rej-007",
+  "entityType": "university",
+  "entitySlug": "city-university-of-hong-kong",
+  "sourceUrl": "https://www.cityu.edu.hk/ds_web/tkp-genai/en/",
+  "rejectedAt": "2026-05-12T15:55:00Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "codex-local-crawl-agent",
+  "evidenceSnippet": "Department/school GenAI page result lacked clear policy-specificity in discovery.",
+  "notes": "Search result was not clearly an institution-wide policy source for CityUHK student AI use or assessment; not used for claims."
+}

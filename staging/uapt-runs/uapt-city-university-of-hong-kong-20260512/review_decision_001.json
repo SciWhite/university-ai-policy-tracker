@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "decision-cityuhk-001",
+  "claimId": "claim-cityuhk-001",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "codex-local-crawl-agent",
+  "notes": "Approved only as a staged, narrow source-status/teaching-guidance claim supported by the accessible official CityUHK guideline index text. Detailed PDF contents and WAF-blocked pages were not accessed and do not support this approved claim.",
+  "decidedAt": "2026-05-12T15:55:00Z"
+}

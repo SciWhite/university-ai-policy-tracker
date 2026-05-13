@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-ntu-001",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "finalUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "sourceTitle": "臺大針對生成式 AI 工具之教學因應措施",
+  "sourceLanguage": "zh-Hant",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:ntu.edu.tw 人工智慧 教學 評量",
+  "discoveredAt": "2026-05-12T14:43:02Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.96,
+  "policySpecificityScore": 0.93,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T14:43:02Z",
+  "verificationNotes": "Official NTU CTLD/DLC page giving teaching and learning guidance for generative AI tools, including course rules, assessment design, AI-detection limits and citation/fact-checking guidance.",
+  "robotsPolicy": "respect"
+}

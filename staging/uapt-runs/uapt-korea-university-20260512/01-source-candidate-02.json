@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-ku-002",
+  "entityType": "university",
+  "entitySlug": "korea-university",
+  "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+  "finalUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+  "sourceTitle": "Korea University 2026 AI Utilization Guidelines Korean",
+  "sourceLanguage": "ko",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:korea.ac.kr 생성 AI 가이드라인",
+  "discoveredAt": "2026-05-12T14:35:00.000Z",
+  "officialDomainConfidence": 1,
+  "aiRelevanceScore": 0.99,
+  "policySpecificityScore": 0.99,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T14:35:00.000Z",
+  "verificationNotes": "Official Korea University source; Korean evidence treated as canonical for approved claims.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-cityuhk-rej-006",
+  "entityType": "university",
+  "entitySlug": "city-university-of-hong-kong",
+  "sourceUrl": "https://www.cityu.edu.hk/en/media/press-release/2026/03/22/cityuhk-teaching-excellence-award-recipients",
+  "sourceTitle": "CityUHK Teaching Excellence Award Recipients",
+  "sourceLanguage": "en",
+  "sourceType": "official_news_advisory",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:cityu.edu.hk \"generative AI\" teaching learning",
+  "discoveredAt": "2026-05-12T15:55:00Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.42,
+  "policySpecificityScore": 0.24,
+  "verificationStatus": "rejected",
+  "verifiedAt": "2026-05-12T15:55:00Z",
+  "verificationNotes": "Official media result mentioned GenAI teaching in an award context, but it is not a policy or guidance source and was not used for claims.",
+  "rejectionReason": "event_or_news_only",
+  "robotsPolicy": "respect"
+}

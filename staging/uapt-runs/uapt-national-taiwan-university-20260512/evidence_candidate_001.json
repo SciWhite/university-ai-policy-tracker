@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-ntu-001",
+  "claimId": "claim-ntu-001",
+  "sourceSnapshotId": "snapshot-ntu-001",
+  "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "finalUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "sourceTitle": "臺大針對生成式 AI 工具之教學因應措施",
+  "sourceLanguage": "zh-Hant",
+  "snapshotHash": "318bbe896a407f2515252add5b3baa244880bfa4eb5b73bd9341216e1f8c0ec0",
+  "evidenceSnippetOriginal": "針對 AI 工具，臺大採取正面看待與善加利用的態度，鼓勵教師將其視為精進教學的契機，因應新工具的發展適時調整課程規劃，設計出更能反映課程獨特性、且更符合課程目標的教學內容及學習評量；而學生也應該瞭解 AI 工具之使用限制，學習如何妥善運用這些工具以輔助未來的學習。",
+  "evidenceSnippetDisplay": "NTU encourages teachers to use AI as a teaching-improvement opportunity while students learn AI-tool limits.",
+  "evidenceLocator": "教師教學面向 / 臺大針對生成式 AI 工具之教學因應措施",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "臺大針對生成式 AI 工具之教學因應措施",
+    "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "318bbe896a407f2515252add5b3baa244880bfa4eb5b73bd9341216e1f8c0ec0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

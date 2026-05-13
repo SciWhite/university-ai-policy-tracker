@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-cityuhk-002",
+  "sourceCandidateId": "src-cityuhk-rej-002",
+  "sourceUrl": "https://www.cityu.edu.hk/pvdp/qac/quality-assurance-policies-and-guidelines/guidelines-on-the-use-of-generative-ai-tools-in-learning-and-teaching/studentlan/file/guidelines-on-the-use-of-generative-ai-tools-in-teaching-and-learning-student.pdf",
+  "finalUrl": "https://www.cityu.edu.hk/websso/SAML/SSOService",
+  "attemptedAt": "2026-05-12T15:55:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "blocked",
+  "errorReason": "Redirected through SharePoint auth and SAML SSO login; not accessed.",
+  "durationMs": 3000
+}

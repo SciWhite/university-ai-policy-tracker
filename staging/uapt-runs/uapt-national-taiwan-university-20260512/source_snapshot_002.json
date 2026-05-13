@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snapshot-ntu-002",
+  "sourceCandidateId": "src-ntu-002",
+  "fetchAttemptId": "fetch-ntu-002",
+  "sourceUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+  "finalUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+  "sourceTitle": "國立臺灣大學外國語文學系學生使用生成式AI 參考指引",
+  "sourceLanguage": "zh-Hant",
+  "contentHash": "82891b0f25ab17895e330553d227cb8052851169b0f84c58e78e404b10c29117",
+  "fetchedAt": "2026-05-12T14:43:02Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "snapshot:ntu:dfll-generative-ai-guidance:normalized-text:20260512",
+  "rawArtifactPaths": []
+}

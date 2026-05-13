@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "ss-ku-001",
+  "sourceCandidateId": "sc-ku-001",
+  "fetchAttemptId": "fa-ku-001",
+  "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&mode=view",
+  "finalUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&mode=view",
+  "sourceTitle": "2026 AI 활용 가이드라인 및 가이드북 배포 - 고려대학교 교수학습지원센터, 원격교육센터",
+  "sourceLanguage": "ko",
+  "contentHash": "8860c983ba867406f4684d24e8cf9f789963db9e333798d7825f8df7d4477154",
+  "fetchedAt": "2026-05-12T14:35:00.000Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "openclaw-normalized-text:uapt-korea-university-20260512/ss-ku-001",
+  "rawArtifactPaths": []
+}

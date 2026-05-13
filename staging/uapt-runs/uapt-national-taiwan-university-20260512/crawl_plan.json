@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "plan-ntu-001",
+  "createdAt": "2026-05-12T14:43:02Z",
+  "createdBy": "Codex local staged crawl",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "national-taiwan-university",
+      "sourceCandidateId": "src-ntu-001",
+      "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+      "sourceTitle": "臺大針對生成式 AI 工具之教學因應措施",
+      "sourceLanguage": "zh-Hant",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching guidance",
+        "assessment guidance",
+        "student AI use"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "national-taiwan-university",
+      "sourceCandidateId": "src-ntu-002",
+      "sourceUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+      "sourceTitle": "國立臺灣大學外國語文學系學生使用生成式AI 參考指引",
+      "sourceLanguage": "zh-Hant",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "student AI use",
+        "academic integrity",
+        "assessment rules"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "national-taiwan-university",
+      "sourceCandidateId": "src-ntu-003",
+      "sourceUrl": "https://emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf",
+      "sourceTitle": "國立臺灣大學健康政策與管理研究所教學研究行為守則",
+      "sourceLanguage": "zh-Hant",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "research guidance",
+        "privacy",
+        "academic integrity"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "national-taiwan-university",
+      "sourceCandidateId": "src-ntu-004",
+      "sourceUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+      "sourceTitle": "臺大社會工作學刊出版倫理聲明",
+      "sourceLanguage": "zh-Hant",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "research guidance",
+        "publication ethics",
+        "privacy"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop after official NTU sources provide direct evidence for narrow staged claims.",
+    "Do not access login-gated, paywalled, CAPTCHA-protected, WAF-blocked or robots-disallowed pages.",
+    "Do not stage canonical/public claims or mark anything human_reviewed."
+  ]
+}

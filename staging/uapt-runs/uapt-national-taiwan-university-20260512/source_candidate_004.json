@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-ntu-004",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "sourceUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+  "finalUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+  "sourceTitle": "臺大社會工作學刊出版倫理聲明",
+  "sourceLanguage": "zh-Hant",
+  "sourceType": "research_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:ntu.edu.tw 生成式AI 資安 隱私",
+  "discoveredAt": "2026-05-12T14:43:02Z",
+  "officialDomainConfidence": 0.96,
+  "aiRelevanceScore": 0.88,
+  "policySpecificityScore": 0.84,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T14:43:02Z",
+  "verificationNotes": "Official NTU Social Work journal publication ethics statement with AI-use disclosure, author responsibility and reviewer confidentiality rules.",
+  "robotsPolicy": "respect"
+}

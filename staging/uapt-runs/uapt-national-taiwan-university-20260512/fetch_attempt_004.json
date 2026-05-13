@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-ntu-004",
+  "sourceCandidateId": "src-ntu-004",
+  "sourceUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+  "finalUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+  "attemptedAt": "2026-05-12T14:43:02Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "7608e80d7a9d5bd5a2d8d3ff8d3a573ce889815c3726d63561ee42066f6db89d",
+  "normalizedTextStorageKey": "snapshot:ntu:social-work-publication-ethics:normalized-text:20260512"
+}

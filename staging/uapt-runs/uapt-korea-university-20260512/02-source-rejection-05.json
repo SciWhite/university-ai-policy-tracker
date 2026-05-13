@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-ku-005",
+  "sourceCandidateId": "sc-ku-r005",
+  "entityType": "university",
+  "entitySlug": "korea-university",
+  "sourceUrl": "https://ai.korea.ac.kr/",
+  "finalUrl": "https://ai.korea.ac.kr/",
+  "rejectedAt": "2026-05-12T14:35:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "codex-http-fallback-staged-crawl",
+  "evidenceSnippet": "Search result described a Korea University AI research laboratory and research objectives, not student or assessment policy guidance.",
+  "notes": "Rejected as a research/lab page with no actionable policy guidance."
+}

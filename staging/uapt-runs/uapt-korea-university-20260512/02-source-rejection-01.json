@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-ku-001",
+  "sourceCandidateId": "sc-ku-r001",
+  "entityType": "university",
+  "entitySlug": "korea-university",
+  "sourceUrl": "https://www.smarttimes.co.kr/news/articleView.html?idxno=4526",
+  "finalUrl": "https://www.smarttimes.co.kr/news/articleView.html?idxno=4526",
+  "rejectedAt": "2026-05-12T14:35:00.000Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "codex-http-fallback-staged-crawl",
+  "evidenceSnippet": "Search result was hosted on smarttimes.co.kr, not an official Korea University source.",
+  "notes": "Rejected because official Korea University 2026 guidance was available."
+}

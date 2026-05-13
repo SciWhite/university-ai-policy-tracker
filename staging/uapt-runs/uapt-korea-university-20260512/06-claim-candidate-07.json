@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-ku-007",
+  "entityType": "university",
+  "entitySlug": "korea-university",
+  "claimType": "teaching",
+  "claimText": "Korea University recommends designing assignments and assessments to show learners’ critical thinking, creativity, problem-solving process, and their own reasoning even when AI is used.",
+  "normalizedValue": "assessment_redesign_for_student_reasoning",
+  "sourceLanguage": "ko",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-ku-007"
+  ],
+  "citation": {
+    "citationTitle": "Korea University 2026 AI Utilization Guidelines Korean",
+    "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/korea-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/korea-university",
+    "publisher": "Korea University",
+    "retrievedAt": "2026-05-12T14:35:00.000Z",
+    "snapshotHash": "38c07b61afe81534cafeb0a62be48ed3f3a26ade52301aa97a4991fba2c5c4ba",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

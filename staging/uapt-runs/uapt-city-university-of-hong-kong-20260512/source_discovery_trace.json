@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-cityuhk-001",
+  "entityType": "university",
+  "entitySlug": "city-university-of-hong-kong",
+  "startedAt": "2026-05-12T15:55:00Z",
+  "endedAt": "2026-05-12T15:55:00Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:cityu.edu.hk \"generative AI\" policy",
+      "domain": "cityu.edu.hk",
+      "resultCount": 4,
+      "notes": "Firecrawl was attempted first but returned insufficient credits; standard web search then found the official GenAI guideline page, disclaimer page, and login-limited guideline PDFs."
+    },
+    {
+      "method": "site_search",
+      "query": "site:cityu.edu.hk \"ChatGPT\" academic integrity",
+      "domain": "cityu.edu.hk",
+      "resultCount": 5,
+      "notes": "Found official academic-honesty case study pages, but direct local HTTP returned Incapsula hard-WAF content."
+    },
+    {
+      "method": "site_search",
+      "query": "site:cityu.edu.hk \"AI tools\" students assessment",
+      "domain": "cityu.edu.hk",
+      "resultCount": 5,
+      "notes": "Results were mostly research/project or low-policy-specificity pages."
+    },
+    {
+      "method": "site_search",
+      "query": "site:cityu.edu.hk \"generative AI\" teaching learning",
+      "domain": "cityu.edu.hk",
+      "resultCount": 5,
+      "notes": "Found official teaching-related GenAI pages and media items; teaching page was WAF-blocked locally and media item was rejected as news/event-only."
+    },
+    {
+      "method": "site_search",
+      "query": "site:cityu.edu.hk \"artificial intelligence\" \"academic integrity\"",
+      "domain": "cityu.edu.hk",
+      "resultCount": 5,
+      "notes": "No better accessible official AI policy source was identified."
+    },
+    {
+      "method": "site_search",
+      "query": "site:cityu.edu.hk \"Copilot\" \"AI\"",
+      "domain": "cityu.edu.hk",
+      "resultCount": 5,
+      "notes": "No approved-tools policy source with direct accessible text was retained."
+    },
+    {
+      "method": "multilingual_query",
+      "query": "site:cityu.edu.hk \"生成式人工智能\" 政策",
+      "domain": "cityu.edu.hk",
+      "resultCount": 5,
+      "notes": "No zh-Hant source superseded the English official guideline page."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"City University of Hong Kong\" \"generative AI\" policy guidance",
+      "resultCount": 5,
+      "notes": "Confirmed CityUHK official GenAI pages and filtered unrelated third-party/non-policy results."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"CityUHK\" \"generative AI\" academic integrity",
+      "resultCount": 5,
+      "notes": "Found official and non-official academic-integrity/GenAI mentions; no additional accessible evidence source was approved."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "src-cityuhk-001",
+    "src-cityuhk-rej-001",
+    "src-cityuhk-rej-002",
+    "src-cityuhk-rej-003",
+    "src-cityuhk-rej-004",
+    "src-cityuhk-rej-005",
+    "src-cityuhk-rej-006",
+    "src-cityuhk-rej-007"
+  ],
+  "rejectionIds": [
+    "reject-cityuhk-001",
+    "reject-cityuhk-002",
+    "reject-cityuhk-003",
+    "reject-cityuhk-004",
+    "reject-cityuhk-005",
+    "reject-cityuhk-006",
+    "reject-cityuhk-007"
+  ],
+  "summary": "Discovery found CityUHK official GenAI guideline and related pages. Firecrawl primary discovery failed due insufficient credits. Direct local HTTP access to several detailed official pages was blocked by login redirects or Incapsula WAF content, so approved claims are limited to the accessible official guideline index text."
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-ku-011",
+  "claimId": "cc-ku-011",
+  "sourceSnapshotId": "ss-ku-002",
+  "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+  "finalUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+  "sourceTitle": "Korea University 2026 AI Utilization Guidelines Korean",
+  "sourceLanguage": "ko",
+  "snapshotHash": "38c07b61afe81534cafeb0a62be48ed3f3a26ade52301aa97a4991fba2c5c4ba",
+  "evidenceSnippetOriginal": "AI 도구를 활용한 경우, 사용한 AI 도구명, 활용 시점, 활용 범위를 명시하고, 자신의 작성 내용과 AI의 기여 내용을 명확히 구분한다. AI가 생성한 내용을 활용할 때는 정해진 인용 방식에 따라 출처를 표기한다.",
+  "evidenceSnippetDisplay": "Learners must disclose the AI tool, timing, and scope of use, distinguish their own work from AI contributions, and cite AI-generated content as required.",
+  "evidenceLocator": "4.4. 투명성과 출처 표기",
+  "evidenceType": "pdf",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Korea University 2026 AI Utilization Guidelines Korean",
+    "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/korea-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/korea-university",
+    "publisher": "Korea University",
+    "retrievedAt": "2026-05-12T14:35:00.000Z",
+    "snapshotHash": "38c07b61afe81534cafeb0a62be48ed3f3a26ade52301aa97a4991fba2c5c4ba",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

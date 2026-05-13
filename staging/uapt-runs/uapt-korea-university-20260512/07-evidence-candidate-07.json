@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-ku-007",
+  "claimId": "cc-ku-007",
+  "sourceSnapshotId": "ss-ku-002",
+  "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+  "finalUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+  "sourceTitle": "Korea University 2026 AI Utilization Guidelines Korean",
+  "sourceLanguage": "ko",
+  "snapshotHash": "38c07b61afe81534cafeb0a62be48ed3f3a26ade52301aa97a4991fba2c5c4ba",
+  "evidenceSnippetOriginal": "과제와 평가는 단순 정보 요약이나 재진술을 넘어, 학습자의 비판적 사고력, 창의력, 문제 해결 과정이 드러날 수 있도록 설계한다. 학습자의 실제 경험, 관찰, 맥락을 반영하는 과제를 통해 AI가 대체하기 어려운 고유한 사고와 표현이 드러나도록 하고, AI 활용 시에도 학습자가 자신의 사고와 논리를 중심으로 결과물을 구성하도록 유도한다.",
+  "evidenceSnippetDisplay": "Assignments and assessments should show learners’ critical thinking, creativity, problem-solving, and own reasoning even when AI is used.",
+  "evidenceLocator": "3.2. 과제 및 평가 재설계",
+  "evidenceType": "pdf",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Korea University 2026 AI Utilization Guidelines Korean",
+    "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/korea-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/korea-university",
+    "publisher": "Korea University",
+    "retrievedAt": "2026-05-12T14:35:00.000Z",
+    "snapshotHash": "38c07b61afe81534cafeb0a62be48ed3f3a26ade52301aa97a4991fba2c5c4ba",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

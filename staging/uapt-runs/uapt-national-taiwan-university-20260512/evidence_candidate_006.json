@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-ntu-006",
+  "claimId": "claim-ntu-006",
+  "sourceSnapshotId": "snapshot-ntu-002",
+  "sourceUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+  "finalUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+  "sourceTitle": "國立臺灣大學外國語文學系學生使用生成式AI 參考指引",
+  "sourceLanguage": "zh-Hant",
+  "snapshotHash": "82891b0f25ab17895e330553d227cb8052851169b0f84c58e78e404b10c29117",
+  "evidenceSnippetOriginal": "學生所繳交之論文、作品、書面報告、技術報告或專業實務報告，應由學生親自撰寫且自行創作，如有使用生成式 AI 之舞弊情事，將依國立臺灣大學學則第八十八條及第八十八條之一懲處。",
+  "evidenceSnippetDisplay": "DFLL says submitted work must be personally created and AI cheating is subject to NTU regulations.",
+  "evidenceLocator": "國立臺灣大學外國語文學系學生使用生成式AI 參考指引, item 2",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "國立臺灣大學外國語文學系學生使用生成式AI 參考指引",
+    "sourceUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "82891b0f25ab17895e330553d227cb8052851169b0f84c58e78e404b10c29117",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-ntu-002",
+  "claimId": "claim-ntu-002",
+  "sourceSnapshotId": "snapshot-ntu-001",
+  "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "finalUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+  "sourceTitle": "臺大針對生成式 AI 工具之教學因應措施",
+  "sourceLanguage": "zh-Hant",
+  "snapshotHash": "318bbe896a407f2515252add5b3baa244880bfa4eb5b73bd9341216e1f8c0ec0",
+  "evidenceSnippetOriginal": "教師應該先釐清在課程中使用 AI 生成工具的原則和規範，除了透過口頭的說明和提醒讓學生清楚瞭解相關規定，最好也在課程一開始就把相關規定明白標示於課程大綱內，藉以和學生達成共識避免爭議。教師同時需要思考，哪些課堂活動和作業可以或不可以使用 AI 生成工具？",
+  "evidenceSnippetDisplay": "NTU recommends clearly communicating course AI rules, preferably in the syllabus.",
+  "evidenceLocator": "教師教學面向 / 如何因應學生在課程內使用 AI 生成工具",
+  "evidenceType": "official_source",
+  "relevance": 0.93,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "臺大針對生成式 AI 工具之教學因應措施",
+    "sourceUrl": "https://www.dlc.ntu.edu.tw/ai-tools/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "318bbe896a407f2515252add5b3baa244880bfa4eb5b73bd9341216e1f8c0ec0",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

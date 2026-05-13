@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-ntu-008",
+  "claimId": "claim-ntu-008",
+  "sourceSnapshotId": "snapshot-ntu-004",
+  "sourceUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+  "finalUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+  "sourceTitle": "臺大社會工作學刊出版倫理聲明",
+  "sourceLanguage": "zh-Hant",
+  "snapshotHash": "7608e80d7a9d5bd5a2d8d3ff8d3a573ce889815c3726d63561ee42066f6db89d",
+  "evidenceSnippetOriginal": "人工智慧（AI）工具無法對所提交的研究成果承擔任何責任。故即使部分內容由 AI 工具產生，作者仍須對整篇稿件內容負完全責任。若作者在論文撰寫、圖像或圖形元素製作，或資料蒐集與分析過程中使用 AI 工具，必須在該章節中揭露其使用方式與所使用的 AI 工具名稱。作者不得將 AI 或 AI 輔助技術列為作者或共同作者，也不得將 AI 作為作者進行引用。",
+  "evidenceSnippetDisplay": "NTU Social Work publication ethics requires author responsibility and AI-use disclosure.",
+  "evidenceLocator": "作者的職責 / AI 工具使用",
+  "evidenceType": "official_source",
+  "relevance": 0.92,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "臺大社會工作學刊出版倫理聲明",
+    "sourceUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "7608e80d7a9d5bd5a2d8d3ff8d3a573ce889815c3726d63561ee42066f6db89d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

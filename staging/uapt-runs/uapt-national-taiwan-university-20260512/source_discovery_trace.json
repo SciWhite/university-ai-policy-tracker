@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-ntu-001",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "startedAt": "2026-05-12T14:34:00Z",
+  "endedAt": "2026-05-12T14:43:02Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "domain": "ntu.edu.tw",
+      "query": "site:ntu.edu.tw 生成式 AI 政策",
+      "resultCount": 8,
+      "notes": "Firecrawl search was attempted first but failed due insufficient credits; fallback web search returned course, thesis and DFLL guidance results."
+    },
+    {
+      "method": "site_search",
+      "domain": "ntu.edu.tw",
+      "query": "site:ntu.edu.tw 生成式人工智慧 指引",
+      "resultCount": 8,
+      "notes": "Found official DFLL student-use guidance and unrelated repository/event results."
+    },
+    {
+      "method": "site_search",
+      "domain": "ntu.edu.tw",
+      "query": "site:ntu.edu.tw ChatGPT 學術誠信",
+      "resultCount": 8,
+      "notes": "Found academic-integrity adjacent official pages; selected only policy/guidance sources."
+    },
+    {
+      "method": "site_search",
+      "domain": "ntu.edu.tw",
+      "query": "site:ntu.edu.tw AI 工具 學生 作業",
+      "resultCount": 8,
+      "notes": "Found NTU course syllabus examples and official guidance; rejected course-only results."
+    },
+    {
+      "method": "site_search",
+      "domain": "ntu.edu.tw",
+      "query": "site:ntu.edu.tw 人工智慧 教學 評量",
+      "resultCount": 8,
+      "notes": "Found the central NTU DLC/CTLD guidance page for teaching and assessment."
+    },
+    {
+      "method": "site_search",
+      "domain": "ntu.edu.tw",
+      "query": "site:ntu.edu.tw 生成式AI 資安 隱私",
+      "resultCount": 8,
+      "notes": "Found official research/publication ethics sources with AI disclosure, privacy and confidentiality guidance."
+    },
+    {
+      "method": "site_search",
+      "domain": "ntu.edu.tw",
+      "query": "site:ntu.edu.tw \"generative AI\" policy",
+      "resultCount": 8,
+      "notes": "Found GMBA English guidance and event/course results; Traditional Chinese official sources were preferred for claims."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"National Taiwan University\" \"generative AI\" policy guidance",
+      "resultCount": 8,
+      "notes": "Mostly third-party or English fallback material; not needed once official Traditional Chinese sources were available."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"國立臺灣大學\" \"生成式AI\" \"學術誠信\"",
+      "resultCount": 8,
+      "notes": "Found official DFLL guidance and HPM conduct rules plus event-only results."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "src-ntu-001",
+    "src-ntu-002",
+    "src-ntu-003",
+    "src-ntu-004",
+    "src-ntu-005",
+    "src-ntu-006",
+    "src-ntu-007",
+    "src-ntu-008",
+    "src-ntu-009"
+  ],
+  "rejectionIds": [
+    "rejection-ntu-001",
+    "rejection-ntu-002",
+    "rejection-ntu-003",
+    "rejection-ntu-004",
+    "rejection-ntu-005"
+  ],
+  "summary": "Firecrawl search was attempted as the primary discovery mechanism but failed for lack of credits. Fallback web search and official-domain fetches found four usable official NTU sources in Traditional Chinese: central DLC/CTLD teaching guidance, DFLL student AI guidance, Health Policy and Management conduct rules, and Social Work journal publication ethics. Course-only, thesis/research, event-only, third-party and non-university sources were rejected."
+}

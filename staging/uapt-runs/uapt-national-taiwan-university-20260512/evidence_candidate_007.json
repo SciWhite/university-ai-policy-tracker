@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-ntu-007",
+  "claimId": "claim-ntu-007",
+  "sourceSnapshotId": "snapshot-ntu-003",
+  "sourceUrl": "https://emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf",
+  "finalUrl": "https://emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf",
+  "sourceTitle": "國立臺灣大學健康政策與管理研究所教學研究行為守則",
+  "sourceLanguage": "zh-Hant",
+  "snapshotHash": "c879a79af0aa8ee1d8635b5b626f3b87d7aff51dce520b6724154d687987e476",
+  "evidenceSnippetOriginal": "師生可視教研需求使用 AI 工具，然應清楚說明使用內容與範圍，尊重隱私並揭示協助來源。不論教學、作業或研究，AI 所產內容須由使用者自行查核並負責結果，未揭示使用者視為違反誠信。",
+  "evidenceSnippetDisplay": "HPM rules require AI-use scope disclosure, privacy respect, source disclosure, checking and responsibility.",
+  "evidenceLocator": "生成式 AI 工具的使用, items 6-7",
+  "evidenceType": "official_source",
+  "relevance": 0.92,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "國立臺灣大學健康政策與管理研究所教學研究行為守則",
+    "sourceUrl": "https://emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "c879a79af0aa8ee1d8635b5b626f3b87d7aff51dce520b6724154d687987e476",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

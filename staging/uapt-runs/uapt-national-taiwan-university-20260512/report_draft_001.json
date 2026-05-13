@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "report_draft",
+  "reportId": "report-ntu-001",
+  "title": "National Taiwan University AI Policy Evidence Draft - 2026-05-12",
+  "generatedAt": "2026-05-12T14:43:02Z",
+  "draftPath": "content/reports/national-taiwan-university-2026-05-12.mdx",
+  "summary": "Staged crawl for National Taiwan University found official Traditional Chinese evidence on central teaching/assessment guidance, DFLL student AI-use rules, Health Policy and Management AI-use conduct rules, and Social Work journal publication-ethics rules. Claims remain non-canonical staged candidates and are not human reviewed.",
+  "referencedClaimIds": [
+    "claim-ntu-001",
+    "claim-ntu-002",
+    "claim-ntu-003",
+    "claim-ntu-004",
+    "claim-ntu-005",
+    "claim-ntu-006",
+    "claim-ntu-007",
+    "claim-ntu-008",
+    "claim-ntu-009"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json"
+  ],
+  "limitations": [
+    "Firecrawl search was attempted first but failed because no credits remained; fallback search and official-domain HTTP fetches were used for this staged run.",
+    "This draft is based only on publicly accessible official NTU sources fetched on 2026-05-12; login-gated or internal material was not accessed.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "The staged claims are not canonical public claims and have not been human reviewed."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

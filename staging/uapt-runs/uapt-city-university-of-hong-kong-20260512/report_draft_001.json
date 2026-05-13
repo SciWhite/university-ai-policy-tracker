@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "report_draft",
+  "reportId": "report-cityuhk-001",
+  "title": "City University of Hong Kong Generative AI Policy Evidence Draft - 2026-05-12",
+  "generatedAt": "2026-05-12T15:55:00Z",
+  "draftPath": "content/reports/city-university-of-hong-kong-2026-05-12.mdx",
+  "summary": "Staged crawl found an official CityUHK GenAI guideline index page for teaching and learning, effective from Semester A 2025/26. Detailed staff/student PDFs redirected to SSO and several related official pages returned Incapsula WAF content to direct local fetches, so no broader student-use, assessment, academic-integrity, approved-tools, privacy, or research-guidance claims were approved in this run.",
+  "referencedClaimIds": [
+    "claim-cityuhk-001"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/city-university-of-hong-kong.json"
+  ],
+  "limitations": [
+    "This report draft is based only on accessible public official source text captured on 2026-05-12.",
+    "Login-required SSO resources and hard-WAF-blocked pages were not accessed or used as evidence.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "Staged claims are not human reviewed and must not be published as canonical claims without further review."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

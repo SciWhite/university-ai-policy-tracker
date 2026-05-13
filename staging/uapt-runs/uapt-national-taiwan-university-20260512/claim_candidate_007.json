@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ntu-007",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "claimType": "privacy",
+  "claimText": "NTU Health Policy and Management conduct rules allow AI tools according to teaching and research needs, but require users to clearly explain the content and scope of use, respect privacy, disclose assistance sources, verify AI output, and take responsibility for results.",
+  "normalizedValue": "HPM conduct rules require disclosure, privacy respect, verification and responsibility for AI tool use",
+  "sourceLanguage": "zh-Hant",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ntu-007"
+  ],
+  "citation": {
+    "citationTitle": "國立臺灣大學健康政策與管理研究所教學研究行為守則",
+    "sourceUrl": "https://emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "c879a79af0aa8ee1d8635b5b626f3b87d7aff51dce520b6724154d687987e476",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

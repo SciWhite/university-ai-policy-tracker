@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "cc-ku-001",
+  "entityType": "university",
+  "entitySlug": "korea-university",
+  "claimType": "source_status",
+  "claimText": "Korea University University College Distance Learning Center distributed 2026 AI utilization guidelines and a guidebook to support responsible and effective AI use in teaching and learning.",
+  "normalizedValue": "2026_ai_guidelines_distributed",
+  "sourceLanguage": "ko",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-ku-001"
+  ],
+  "citation": {
+    "citationTitle": "2026 AI 활용 가이드라인 및 가이드북 배포 - 고려대학교 교수학습지원센터, 원격교육센터",
+    "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&mode=view",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/korea-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/korea-university",
+    "publisher": "Korea University",
+    "retrievedAt": "2026-05-12T14:35:00.000Z",
+    "snapshotHash": "8860c983ba867406f4684d24e8cf9f789963db9e333798d7825f8df7d4477154",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

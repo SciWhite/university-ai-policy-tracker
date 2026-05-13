@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "plan-cityuhk-001",
+  "createdAt": "2026-05-12T15:55:00Z",
+  "createdBy": "codex-local-crawl-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "city-university-of-hong-kong",
+      "sourceCandidateId": "src-cityuhk-001",
+      "sourceUrl": "https://www.cityu.edu.hk/GenAI/guidelines.htm",
+      "sourceTitle": "Guidelines on the Use of Generative AI Tools in Teaching and Learning | City University of Hong Kong",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching guidance",
+        "student AI use",
+        "assessment guidance"
+      ],
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop after accessible official source text supports a narrow staged claim.",
+    "Do not bypass login-required guideline PDFs, SAML SSO, Incapsula WAF challenges, CAPTCHA, or robots restrictions.",
+    "Do not use rejected or blocked sources to support approved claims."
+  ]
+}

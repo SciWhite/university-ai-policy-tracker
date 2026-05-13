@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ntu-005",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "claimType": "academic_integrity",
+  "claimText": "NTU DFLL guidance says instructors may decide whether students may use generative AI; if permitted, students should clearly label AI-generated content and follow academic ethics.",
+  "normalizedValue": "DFLL guidance makes AI use instructor-permission based with labeling and ethics duties",
+  "sourceLanguage": "zh-Hant",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ntu-005"
+  ],
+  "citation": {
+    "citationTitle": "國立臺灣大學外國語文學系學生使用生成式AI 參考指引",
+    "sourceUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "82891b0f25ab17895e330553d227cb8052851169b0f84c58e78e404b10c29117",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

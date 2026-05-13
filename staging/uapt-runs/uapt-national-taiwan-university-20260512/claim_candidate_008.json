@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ntu-008",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "claimType": "research",
+  "claimText": "NTU Social Work journal publication ethics states that AI tools cannot assume responsibility for submitted research; authors remain fully responsible, must disclose AI use in the relevant section, and may not list or cite AI as an author.",
+  "normalizedValue": "NTU Social Work publication ethics requires author responsibility and disclosure for AI tool use",
+  "sourceLanguage": "zh-Hant",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ntu-008"
+  ],
+  "citation": {
+    "citationTitle": "臺大社會工作學刊出版倫理聲明",
+    "sourceUrl": "https://ntusw.ntu.edu.tw/zh_tw/publicatoions_0/NTUSWR",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/national-taiwan-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/national-taiwan-university",
+    "publisher": "National Taiwan University",
+    "retrievedAt": "2026-05-12T14:43:02Z",
+    "snapshotHash": "7608e80d7a9d5bd5a2d8d3ff8d3a573ce889815c3726d63561ee42066f6db89d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

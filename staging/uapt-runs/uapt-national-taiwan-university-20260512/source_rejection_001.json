@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rejection-ntu-001",
+  "sourceCandidateId": "src-ntu-005",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "sourceUrl": "https://speech.ee.ntu.edu.tw/~hylee/GenAI-ML/2025-fall.php/a/index.html",
+  "finalUrl": "https://speech.ee.ntu.edu.tw/~hylee/GenAI-ML/2025-fall.php/a/index.html",
+  "rejectedAt": "2026-05-12T14:43:02Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "Codex local staged crawl",
+  "evidenceSnippet": "Course page about generative AI with course-specific homework rules; not institutional or unit-level policy guidance for the tracker.",
+  "notes": "Course page about generative AI with course-specific homework rules; not institutional or unit-level policy guidance for the tracker."
+}

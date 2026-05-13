@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-ku-002",
+  "sourceCandidateId": "sc-ku-002",
+  "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+  "finalUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311771&mode=download&totalBoardNo=&totalNoticeYn=",
+  "attemptedAt": "2026-05-12T14:35:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "browser_like",
+  "httpStatus": 200,
+  "contentType": "application/pdf",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "38c07b61afe81534cafeb0a62be48ed3f3a26ade52301aa97a4991fba2c5c4ba",
+  "normalizedTextStorageKey": "openclaw-normalized-text:uapt-korea-university-20260512/ss-ku-002"
+}

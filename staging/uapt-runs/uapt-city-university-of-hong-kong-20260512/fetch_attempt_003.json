@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-cityuhk-003",
+  "sourceCandidateId": "src-cityuhk-rej-003",
+  "sourceUrl": "https://www.cityu.edu.hk/GenAI/disclaimer.htm",
+  "finalUrl": "https://www.cityu.edu.hk/GenAI/disclaimer.htm",
+  "attemptedAt": "2026-05-12T15:55:00Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "robotsAllowed": true,
+  "outcome": "blocked",
+  "errorReason": "Direct local HTTP returned Incapsula iframe challenge rather than page content; hard WAF not bypassed.",
+  "durationMs": 30
+}

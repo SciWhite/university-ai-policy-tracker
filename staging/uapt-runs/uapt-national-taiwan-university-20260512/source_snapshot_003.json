@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snapshot-ntu-003",
+  "sourceCandidateId": "src-ntu-003",
+  "fetchAttemptId": "fetch-ntu-003",
+  "sourceUrl": "https://emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf",
+  "finalUrl": "https://emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf",
+  "sourceTitle": "國立臺灣大學健康政策與管理研究所教學研究行為守則",
+  "sourceLanguage": "zh-Hant",
+  "contentHash": "c879a79af0aa8ee1d8635b5b626f3b87d7aff51dce520b6724154d687987e476",
+  "fetchedAt": "2026-05-12T14:43:02Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "snapshot:ntu:hpm-teaching-research-conduct-rules:normalized-text:20260512",
+  "rawArtifactPaths": []
+}

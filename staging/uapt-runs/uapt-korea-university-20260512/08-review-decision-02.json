@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "rd-ku-002",
+  "claimId": "cc-ku-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "codex-local-staged-review",
+  "notes": "Approved for staged agent review only because the claim is narrowly supported by official Korea University evidence. Korean evidenceSnippetOriginal is canonical. Not human reviewed and not canonical.",
+  "decidedAt": "2026-05-12T14:35:00.000Z"
+}

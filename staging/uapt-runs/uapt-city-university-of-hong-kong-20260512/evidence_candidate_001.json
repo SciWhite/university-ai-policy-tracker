@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-cityuhk-001",
+  "claimId": "claim-cityuhk-001",
+  "sourceSnapshotId": "snapshot-cityuhk-001",
+  "sourceUrl": "https://www.cityu.edu.hk/GenAI/guidelines.htm",
+  "finalUrl": "https://www.cityu.edu.hk/GenAI/guidelines.htm",
+  "sourceTitle": "Guidelines on the Use of Generative AI Tools in Teaching and Learning | City University of Hong Kong",
+  "sourceLanguage": "en",
+  "snapshotHash": "768756bd75181794df07c8edc5a3606a757926a819f8b98b6a8fe2a595aa7f39",
+  "evidenceSnippetOriginal": "Guidelines on the Use of Generative AI Tools in Teaching and Learning\nEffective from Semester A 2025/26\nStaff Guidelines\nStudent Guidelines",
+  "evidenceSnippetDisplay": "CityUHK lists GenAI teaching and learning guidelines effective from Semester A 2025/26 with staff and student versions.",
+  "evidenceLocator": "Guidelines on the Use of Generative AI Tools in Teaching and Learning page heading and links",
+  "evidenceType": "official_source",
+  "relevance": 0.88,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Guidelines on the Use of Generative AI Tools in Teaching and Learning | City University of Hong Kong",
+    "sourceUrl": "https://www.cityu.edu.hk/GenAI/guidelines.htm",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/city-university-of-hong-kong.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/city-university-of-hong-kong",
+    "publisher": "City University of Hong Kong",
+    "retrievedAt": "2026-05-12T15:55:00Z",
+    "snapshotHash": "768756bd75181794df07c8edc5a3606a757926a819f8b98b6a8fe2a595aa7f39",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

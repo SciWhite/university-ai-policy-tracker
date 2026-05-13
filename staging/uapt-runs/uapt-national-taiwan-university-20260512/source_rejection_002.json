@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rejection-ntu-002",
+  "sourceCandidateId": "src-ntu-006",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "sourceUrl": "https://tdr.lib.ntu.edu.tw/handle/123456789/91033",
+  "finalUrl": "https://tdr.lib.ntu.edu.tw/handle/123456789/91033",
+  "rejectedAt": "2026-05-12T14:43:02Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "Codex local staged crawl",
+  "evidenceSnippet": "Thesis repository record about generative AI research, not a source of NTU AI-use policy or guidance.",
+  "notes": "Thesis repository record about generative AI research, not a source of NTU AI-use policy or guidance."
+}

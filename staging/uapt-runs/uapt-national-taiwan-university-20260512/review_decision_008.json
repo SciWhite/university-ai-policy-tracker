@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "decision-ntu-008",
+  "claimId": "claim-ntu-008",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "Codex local staged crawl",
+  "notes": "Approved for staged artifact review only because the narrow claim is directly supported by official-source evidence. Not human reviewed and not canonical.",
+  "decidedAt": "2026-05-12T14:43:02Z"
+}

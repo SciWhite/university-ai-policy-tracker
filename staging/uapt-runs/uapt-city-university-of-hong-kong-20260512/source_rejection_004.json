@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "reject-cityuhk-004",
+  "sourceCandidateId": "src-cityuhk-rej-004",
+  "entityType": "university",
+  "entitySlug": "city-university-of-hong-kong",
+  "sourceUrl": "https://www.cityu.edu.hk/GenAI/resp_use_in_teaching.htm",
+  "rejectedAt": "2026-05-12T15:55:00Z",
+  "rejectionReason": "inaccessible",
+  "checkedBy": "codex-local-crawl-agent",
+  "evidenceSnippet": "Request unsuccessful. Incapsula incident ID returned in iframe body.",
+  "notes": "Direct local HTTP returned an Incapsula iframe challenge with robots noindex/nofollow; treated as hard WAF/inaccessible and not used for claims."
+}

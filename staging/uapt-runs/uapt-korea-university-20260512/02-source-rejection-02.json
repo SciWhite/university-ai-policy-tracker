@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-ku-002",
+  "sourceCandidateId": "sc-ku-r002",
+  "entityType": "university",
+  "entitySlug": "korea-university",
+  "sourceUrl": "https://koreajoongangdaily.joins.com/news/2025-11-25/national/socialAffairs/Korea-University-mandates-inperson-final-exams-amid-recent-cheating-allegations/2462796",
+  "finalUrl": "https://koreajoongangdaily.joins.com/news/2025-11-25/national/socialAffairs/Korea-University-mandates-inperson-final-exams-amid-recent-cheating-allegations/2462796",
+  "rejectedAt": "2026-05-12T14:35:00.000Z",
+  "rejectionReason": "not_official",
+  "checkedBy": "codex-http-fallback-staged-crawl",
+  "evidenceSnippet": "Third-party news article about exam administration and cheating allegations, not an official Korea University policy page.",
+  "notes": "Rejected as non-official and news-only."
+}

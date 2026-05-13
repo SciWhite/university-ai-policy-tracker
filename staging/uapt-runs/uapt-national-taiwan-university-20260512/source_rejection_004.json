@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rejection-ntu-004",
+  "sourceCandidateId": "src-ntu-008",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "sourceUrl": "https://ann.cc.ntu.edu.tw/asp/jsopContent.asp?num=107746",
+  "finalUrl": "https://ann.cc.ntu.edu.tw/asp/jsopContent.asp?num=107746",
+  "rejectedAt": "2026-05-12T14:43:02Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "Codex local staged crawl",
+  "evidenceSnippet": "Official NTU lecture announcement; useful context but not a policy/guidance source.",
+  "notes": "Official NTU lecture announcement; useful context but not a policy/guidance source."
+}

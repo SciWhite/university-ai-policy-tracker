@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-ku-003",
+  "sourceCandidateId": "sc-ku-r003",
+  "entityType": "university",
+  "entitySlug": "korea-university",
+  "sourceUrl": "https://ini.korea.ac.kr/",
+  "finalUrl": "https://ini.korea.ac.kr/",
+  "rejectedAt": "2026-05-12T14:35:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "codex-http-fallback-staged-crawl",
+  "evidenceSnippet": "학생과 교수자 모두가 강의에서 사용할 수 있도록, 연구실에서 개발한 생성형 AI 사용 가이드라인입니다.",
+  "notes": "Official subdomain but lab-developed rather than university-wide policy or central guidance."
+}

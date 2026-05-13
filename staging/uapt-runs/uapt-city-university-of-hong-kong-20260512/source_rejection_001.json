@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-city-university-of-hong-kong-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "reject-cityuhk-001",
+  "sourceCandidateId": "src-cityuhk-rej-001",
+  "entityType": "university",
+  "entitySlug": "city-university-of-hong-kong",
+  "sourceUrl": "https://www.cityu.edu.hk/pvdp/qac/quality-assurance-policies-and-guidelines/guidelines-on-the-use-of-generative-ai-tools-in-learning-and-teaching/stafflan/file/guidelines-on-the-use-of-generative-ai-tools-in-teaching-and-learning-staff.pdf",
+  "rejectedAt": "2026-05-12T15:55:00Z",
+  "rejectionReason": "login_required",
+  "checkedBy": "codex-local-crawl-agent",
+  "evidenceSnippet": "HTTP redirect target included SharePoint authentication and staff guideline file return URL.",
+  "notes": "Direct request redirected to /pvdp/_spauth/_login.aspx and then SAML SSO. Login-required PDF was not accessed."
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-taiwan-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-ntu-002",
+  "entityType": "university",
+  "entitySlug": "national-taiwan-university",
+  "sourceUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+  "finalUrl": "https://www.forex.ntu.edu.tw/wp-content/uploads/2023/10/DFLL-%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%BC%8FAI%E5%8F%83%E8%80%83%E6%8C%87%E5%BC%95-Oct.-13.pdf",
+  "sourceTitle": "國立臺灣大學外國語文學系學生使用生成式AI 參考指引",
+  "sourceLanguage": "zh-Hant",
+  "sourceType": "academic_integrity",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:ntu.edu.tw 生成式人工智慧 指引",
+  "discoveredAt": "2026-05-12T14:43:02Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.95,
+  "policySpecificityScore": 0.91,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T14:43:02Z",
+  "verificationNotes": "Official NTU Department of Foreign Languages and Literatures PDF with student generative AI guidance, instructor permission, labeling requirements and academic misconduct consequences.",
+  "robotsPolicy": "respect"
+}

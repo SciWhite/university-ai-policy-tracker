@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-korea-university-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "sdt-ku-001",
+  "entityType": "university",
+  "entitySlug": "korea-university",
+  "startedAt": "2026-05-12T14:05:00.000Z",
+  "endedAt": "2026-05-12T14:35:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:korea.ac.kr 생성형 AI 정책",
+      "domain": "korea.ac.kr",
+      "resultCount": 0,
+      "notes": "Firecrawl primary search attempted and failed with insufficient credits; fallback web search returned mostly AI lab/research pages and a 2025 Korea University AI guideline PDF."
+    },
+    {
+      "method": "site_search",
+      "query": "site:korea.ac.kr ChatGPT 학업윤리",
+      "domain": "korea.ac.kr",
+      "resultCount": 0,
+      "notes": "Firecrawl primary search attempted and failed with insufficient credits; fallback web search identified historical official ChatGPT guidance and third-party/news pages."
+    },
+    {
+      "method": "site_search",
+      "query": "site:korea.ac.kr 인공지능 수업 평가",
+      "domain": "korea.ac.kr",
+      "resultCount": 0,
+      "notes": "Firecrawl primary search attempted and failed with insufficient credits; fallback search did not add a stronger current source beyond the 2026 guideline."
+    },
+    {
+      "method": "site_search",
+      "query": "site:korea.ac.kr AI 도구 학생 과제",
+      "domain": "korea.ac.kr",
+      "resultCount": 0,
+      "notes": "Firecrawl primary search attempted and failed with insufficient credits; fallback search found current learner assignment guidance in the 2026 guideline."
+    },
+    {
+      "method": "site_search",
+      "query": "site:korea.ac.kr 생성 AI 가이드라인",
+      "domain": "korea.ac.kr",
+      "resultCount": 0,
+      "notes": "Firecrawl retried with limit 1 and still failed with insufficient credits."
+    },
+    {
+      "method": "site_search",
+      "query": "site:korea.ac.kr \"generative AI\" policy",
+      "domain": "korea.ac.kr",
+      "resultCount": 0,
+      "notes": "Firecrawl retried with limit 1 and still failed with insufficient credits."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:korea.ac.kr \"AI 활용 가이드라인\" \"원격교육센터\"",
+      "domain": "korea.ac.kr",
+      "resultCount": 8,
+      "notes": "Fallback web search found the official CTL/Distance Learning Center notice and 2026 Korean/English guideline PDFs."
+    },
+    {
+      "method": "public_web_search",
+      "query": "site:korea.ac.kr \"ChatGPT\" academic integrity",
+      "domain": "korea.ac.kr",
+      "resultCount": 8,
+      "notes": "Fallback web search found older official ChatGPT guidance, retained only as a rejected/superseded source."
+    },
+    {
+      "method": "public_web_search",
+      "query": "\"Korea University\" \"generative AI\" policy guidance",
+      "resultCount": 8,
+      "notes": "Fallback web search returned third-party summaries; rejected because current official Korea University sources were available."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-ku-001",
+    "sc-ku-002",
+    "sc-ku-003",
+    "sc-ku-r001",
+    "sc-ku-r002",
+    "sc-ku-r003",
+    "sc-ku-r004",
+    "sc-ku-r005"
+  ],
+  "rejectionIds": [
+    "sr-ku-001",
+    "sr-ku-002",
+    "sr-ku-003",
+    "sr-ku-004",
+    "sr-ku-005"
+  ],
+  "summary": "Firecrawl search was attempted first but blocked by insufficient credits. Fallback public web discovery found official Korea University CTL/Distance Learning Center 2026 AI guidelines in Korean and English. Approved claims use Korean official evidence as canonical; English material is retained only as fallback/display context."
+}
