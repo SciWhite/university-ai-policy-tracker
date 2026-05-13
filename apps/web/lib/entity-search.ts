@@ -54,7 +54,7 @@ interface EntityResolutionRecord {
   sourceCount: number;
 }
 
-interface SearchIndexRecord {
+export interface SearchIndexRecord {
   aliases: string[];
   canonicalUrl: string;
   claimCount: number;
@@ -161,6 +161,14 @@ export async function getSearchIndexResponse() {
 
 export async function getSearchResponse(query: string, options: SearchOptions = {}) {
   const results = await searchEntities(query, options);
+
+  return buildSearchResponse(query, results);
+}
+
+export function buildSearchResponse(
+  query: string,
+  results: EntitySearchResult[]
+) {
   const canonicalUrl = getAbsoluteSiteUrl(
     query ? `/search?q=${encodeURIComponent(query)}` : "/search"
   );
@@ -195,8 +203,19 @@ export async function searchEntities(
   const normalizedQuery = normalizeForSearch(query);
   if (!normalizedQuery) return [];
 
-  const queryTokens = tokenize(normalizedQuery);
   const records = await getSearchIndexRecords();
+  return searchIndexRecords(records, query, { limit });
+}
+
+export function searchIndexRecords(
+  records: SearchIndexRecord[],
+  query: string,
+  { limit = 20 }: SearchOptions = {}
+): EntitySearchResult[] {
+  const normalizedQuery = normalizeForSearch(query);
+  if (!normalizedQuery) return [];
+
+  const queryTokens = tokenize(normalizedQuery);
   const results = records
     .map((record) => scoreRecord(record, normalizedQuery, queryTokens))
     .filter((result): result is EntitySearchResult => Boolean(result))

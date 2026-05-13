@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import {
-  getReviewStateWidget,
+  PUBLIC_API_VERSION,
+  publicEntitySummaryResponseSchema,
+  publicEntitySummarySchema
+} from "@uapt/shared";
+import {
+  buildReviewStateWidget,
   widgetCorsHeaders
 } from "@/lib/developer-surfaces";
 
@@ -20,7 +25,8 @@ export async function GET(
   const universitySlug = slug.endsWith(".json")
     ? slug.slice(0, -".json".length)
     : slug;
-  const payload = await getReviewStateWidget(universitySlug);
+  const summary = await fetchPublicSummary(_request.url, universitySlug);
+  const payload = summary ? buildReviewStateWidget(summary) : undefined;
 
   if (!payload) {
     return NextResponse.json(
@@ -40,4 +46,23 @@ export async function GET(
 
 export function OPTIONS() {
   return new Response(null, { headers: widgetCorsHeaders });
+}
+
+async function fetchPublicSummary(requestUrl: string, slug: string) {
+  const response = await fetch(
+    new URL(
+      `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
+      requestUrl
+    ),
+    { next: { revalidate: 3600 } }
+  );
+
+  if (!response.ok) return undefined;
+
+  const payload = await response.json();
+  const envelope = publicEntitySummaryResponseSchema.safeParse(payload);
+  if (envelope.success) return envelope.data.data;
+
+  const summary = publicEntitySummarySchema.safeParse(payload);
+  return summary.success ? summary.data : undefined;
 }

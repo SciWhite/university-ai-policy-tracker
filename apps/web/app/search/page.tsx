@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 import { PUBLIC_API_VERSION } from "@uapt/shared";
 import { DataList, DataListRow } from "@/components/data-list";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 import {
-  getEntityResolutionIndexResponse,
-  searchEntities
+  searchIndexRecords,
+  type SearchIndexRecord
 } from "@/lib/entity-search";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
@@ -39,12 +40,14 @@ export function generateMetadata() {
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const params = await searchParams;
   const query = typeof params.q === "string" ? params.q.trim() : "";
-  const [results, entityIndex] = await Promise.all([
-    searchEntities(query, { limit: 25 }),
-    getEntityResolutionIndexResponse()
+  const baseUrl = await getRequestBaseUrl();
+  const [searchIndex, entityIndex] = await Promise.all([
+    fetchSearchIndex(baseUrl),
+    fetchEntityIndex(baseUrl)
   ]);
-  const entityCount = entityIndex.data.count;
-  const aliasCount = entityIndex.data.aliasCount;
+  const results = searchIndexRecords(searchIndex.records, query, { limit: 25 });
+  const entityCount = entityIndex.count;
+  const aliasCount = entityIndex.aliasCount;
 
   return (
     <main className="page-shell page-shell--wide">
@@ -185,4 +188,55 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       </ReferenceBox>
     </main>
   );
+}
+
+async function getRequestBaseUrl(): Promise<string> {
+  const headerList = await headers();
+  const host = headerList.get("host");
+  const protocol = headerList.get("x-forwarded-proto") ?? "http";
+
+  return host ? `${protocol}://${host}` : getAbsoluteSiteUrl("/");
+}
+
+async function fetchSearchIndex(baseUrl: string): Promise<{
+  records: SearchIndexRecord[];
+}> {
+  const response = await fetch(
+    new URL(`/api/public/${PUBLIC_API_VERSION}/search/index.json`, baseUrl),
+    { next: { revalidate: 3600 } }
+  );
+  if (!response.ok) return { records: [] };
+
+  const payload = (await response.json()) as {
+    data?: {
+      records?: SearchIndexRecord[];
+    };
+  };
+
+  return {
+    records: Array.isArray(payload.data?.records) ? payload.data.records : []
+  };
+}
+
+async function fetchEntityIndex(baseUrl: string): Promise<{
+  aliasCount: number;
+  count: number;
+}> {
+  const response = await fetch(
+    new URL(`/api/public/${PUBLIC_API_VERSION}/entities/index.json`, baseUrl),
+    { next: { revalidate: 3600 } }
+  );
+  if (!response.ok) return { aliasCount: 0, count: 0 };
+
+  const payload = (await response.json()) as {
+    data?: {
+      aliasCount?: number;
+      count?: number;
+    };
+  };
+
+  return {
+    aliasCount: payload.data?.aliasCount ?? 0,
+    count: payload.data?.count ?? 0
+  };
 }

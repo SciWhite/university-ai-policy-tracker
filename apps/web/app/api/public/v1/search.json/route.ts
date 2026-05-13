@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { getSearchResponse } from "@/lib/entity-search";
+import {
+  buildSearchResponse,
+  searchIndexRecords,
+  type SearchIndexRecord
+} from "@/lib/entity-search";
 
 export const dynamic = "force-dynamic";
 
@@ -7,6 +11,25 @@ export async function GET(request: Request) {
   const url = new URL(request.url);
   const query = url.searchParams.get("q") ?? "";
   const limit = Number(url.searchParams.get("limit") ?? 20);
+  const records = await fetchSearchIndexRecords(request.url);
+  const results = searchIndexRecords(records, query, { limit });
 
-  return NextResponse.json(await getSearchResponse(query, { limit }));
+  return NextResponse.json(buildSearchResponse(query, results));
+}
+
+async function fetchSearchIndexRecords(requestUrl: string): Promise<SearchIndexRecord[]> {
+  const response = await fetch(
+    new URL("/api/public/v1/search/index.json", requestUrl),
+    { next: { revalidate: 3600 } }
+  );
+
+  if (!response.ok) return [];
+
+  const payload = (await response.json()) as {
+    data?: {
+      records?: SearchIndexRecord[];
+    };
+  };
+
+  return Array.isArray(payload.data?.records) ? payload.data.records : [];
 }

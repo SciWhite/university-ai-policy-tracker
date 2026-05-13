@@ -15,7 +15,11 @@ import {
   getStagedPublicSummaries,
   getStagedPublicSummaryBySlug
 } from "./staged-public-data";
-import type { PolicyClaim, PublicEntitySummary } from "@uapt/shared";
+import type {
+  PolicyAnalysisProfile,
+  PolicyClaim,
+  PublicEntitySummary
+} from "@uapt/shared";
 
 export const widgetScriptPath = "/widgets/embed.js";
 
@@ -294,9 +298,22 @@ export async function getPolicyCoverageWidget(slug: string) {
 
   if (!profile || !summary) return undefined;
 
+  return buildPolicyCoverageWidget(profile, summary);
+}
+
+export function buildPolicyCoverageWidget(
+  profile: PolicyAnalysisProfile,
+  summary?: PublicEntitySummary
+) {
   const evidenceBackedDimensionCount = profile.dimensions.filter(
     (dimension) => dimension.evidenceCount > 0
   ).length;
+  const publicPageUrl = summary?.publicPageUrl ?? profile.canonicalUrl;
+  const publicJsonUrl =
+    summary?.apiUrl ??
+    getAbsoluteSiteUrl(
+      `/api/public/${PUBLIC_API_VERSION}/universities/${profile.entitySlug}.json`
+    );
 
   return {
     apiVersion: PUBLIC_API_VERSION,
@@ -312,12 +329,8 @@ export async function getPolicyCoverageWidget(slug: string) {
     data: {
       entitySlug: profile.entitySlug,
       entityName: profile.entityName,
-      publicPageUrl: summary.publicPageUrl ?? summary.canonicalUrl,
-      publicJsonUrl:
-        summary.apiUrl ??
-        getAbsoluteSiteUrl(
-          `/api/public/${PUBLIC_API_VERSION}/universities/${profile.entitySlug}.json`
-        ),
+      publicPageUrl,
+      publicJsonUrl,
       analysisJsonUrl: profile.publicJsonUrl,
       reviewState: profile.reviewState,
       confidence: profile.confidence,
@@ -341,6 +354,16 @@ export async function getSourceFreshnessWidget(slug: string) {
   const sourceRows = health.rows.filter(
     (row) => row.scope === "public_release" && row.entitySlug === slug
   );
+
+  return buildSourceFreshnessWidget(summary, sourceRows);
+}
+
+export function buildSourceFreshnessWidget(
+  summary: PublicEntitySummary,
+  sourceRows: Array<{
+    status: string;
+  }>
+) {
   const publicJsonUrl =
     summary.apiUrl ??
     getAbsoluteSiteUrl(
@@ -381,6 +404,10 @@ export async function getReviewStateWidget(slug: string) {
   const summary = await getStagedPublicSummaryBySlug(slug);
   if (!summary) return undefined;
 
+  return buildReviewStateWidget(summary);
+}
+
+export function buildReviewStateWidget(summary: PublicEntitySummary) {
   const reviewedClaimCount = summary.claims.filter((claim) =>
     isReviewedState(claim.reviewState)
   ).length;

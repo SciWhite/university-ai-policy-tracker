@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import {
-  getPolicyCoverageWidget,
+  PUBLIC_API_VERSION,
+  policyAnalysisProfileResponseSchema,
+  publicEntitySummaryResponseSchema,
+  publicEntitySummarySchema
+} from "@uapt/shared";
+import {
+  buildPolicyCoverageWidget,
   widgetCorsHeaders
 } from "@/lib/developer-surfaces";
 
@@ -20,7 +26,13 @@ export async function GET(
   const universitySlug = slug.endsWith(".json")
     ? slug.slice(0, -".json".length)
     : slug;
-  const payload = await getPolicyCoverageWidget(universitySlug);
+  const [profile, summary] = await Promise.all([
+    fetchAnalysisProfile(_request.url, universitySlug),
+    fetchPublicSummary(_request.url, universitySlug)
+  ]);
+  const payload = profile
+    ? buildPolicyCoverageWidget(profile, summary)
+    : undefined;
 
   if (!payload) {
     return NextResponse.json(
@@ -40,4 +52,39 @@ export async function GET(
 
 export function OPTIONS() {
   return new Response(null, { headers: widgetCorsHeaders });
+}
+
+async function fetchAnalysisProfile(requestUrl: string, slug: string) {
+  const response = await fetch(
+    new URL(
+      `/api/public/${PUBLIC_API_VERSION}/analysis/universities/${slug}.json`,
+      requestUrl
+    ),
+    { next: { revalidate: 3600 } }
+  );
+
+  if (!response.ok) return undefined;
+
+  const payload = await response.json();
+  const envelope = policyAnalysisProfileResponseSchema.safeParse(payload);
+  return envelope.success ? envelope.data.data : undefined;
+}
+
+async function fetchPublicSummary(requestUrl: string, slug: string) {
+  const response = await fetch(
+    new URL(
+      `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
+      requestUrl
+    ),
+    { next: { revalidate: 3600 } }
+  );
+
+  if (!response.ok) return undefined;
+
+  const payload = await response.json();
+  const envelope = publicEntitySummaryResponseSchema.safeParse(payload);
+  if (envelope.success) return envelope.data.data;
+
+  const summary = publicEntitySummarySchema.safeParse(payload);
+  return summary.success ? summary.data : undefined;
 }
