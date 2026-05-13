@@ -9,6 +9,7 @@ const primaryTabs = [
   { label: "Overview", href: "/" },
   { label: "Universities", href: "/universities" },
   { label: "Analysis", href: "/analysis" },
+  { label: "Coverage", href: "/coverage" },
   { label: "Changes", href: "/changes" },
   { label: "Reports", href: "/reports" },
   { label: "Widgets", href: "/widgets" },
@@ -93,11 +94,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/citation">Citation</Link>
               <Link href="/datasets">Datasets</Link>
               <Link href="/analysis">Analysis</Link>
+              <Link href="/coverage">Coverage</Link>
+              <Link href="/source-health">Source health</Link>
               <Link href="/changes">Changes</Link>
               <Link href="/reports">Reports</Link>
               <Link href="/widgets">Widgets</Link>
               <Link href="/contribute">Contribute</Link>
               <Link href="/review">Review workflow</Link>
+              <Link href="/review/queue">Review queue</Link>
               <Link href="/api-reference">API reference</Link>
               <Link href="/mcp">MCP alpha</Link>
               <a href="/llms.txt">llms.txt</a>

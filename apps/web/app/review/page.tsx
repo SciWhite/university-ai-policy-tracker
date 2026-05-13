@@ -38,6 +38,7 @@ export function generateMetadata() {
 export default function ReviewWorkflowPage() {
   const contributionPolicy = buildContributionPolicyData();
   const reviewPolicyPath = `/api/public/${PUBLIC_API_VERSION}/contributions/review-policy.json`;
+  const reviewQueuePath = `/api/public/${PUBLIC_API_VERSION}/review/queue.json`;
   const analysisReviewWorkflow = buildAnalysisReviewWorkflow();
   const analysisPageQualityPath = getAnalysisPageQualityApiPath();
 
@@ -165,6 +166,13 @@ export default function ReviewWorkflowPage() {
           path={reviewPolicyPath}
           status="Read-only metadata"
           url={reviewPolicyPath}
+        />
+        <ApiEndpointRow
+          description="Unpromoted staging run queue with validation status, source breadth, detected slugs, and recommended next action."
+          label="Review queue"
+          path={reviewQueuePath}
+          status="Read-only metadata"
+          url={reviewQueuePath}
         />
       </ReferenceBox>
     </main>

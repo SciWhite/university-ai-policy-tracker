@@ -1,0 +1,1104 @@
+import { readFile, readdir } from "node:fs/promises";
+import path from "node:path";
+import {
+  NO_ADVICE_BOUNDARY,
+  OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+  PUBLIC_API_VERSION,
+  TRACKER_METADATA_LICENSE,
+  buildPublicApiCitation,
+  openClawStagedArtifactSchema,
+  type CatalogUniversity,
+  type OpenClawStagedArtifact,
+  type PublicEntitySummary,
+  type StagedFetchAttempt,
+  type StagedSourceCandidate,
+  type StagedSourceSnapshot
+} from "@uapt/shared";
+import { getStagedPublicDataset } from "./staged-public-data";
+import { getAbsoluteSiteUrl } from "./site-url";
+
+const QS_2026_TOP_100 =
+  "data/rankings/qs-world-university-rankings-2026-top-100.json";
+
+const REQUIRED_ARTIFACT_TYPES = [
+  "crawl_plan",
+  "source_candidate",
+  "source_discovery_trace",
+  "fetch_attempt",
+  "source_snapshot",
+  "claim_candidate",
+  "evidence_candidate",
+  "review_decision",
+  "report_draft"
+] as const;
+
+export type CoverageStatus = "public" | "staging_unpromoted" | "missing";
+
+export type SourceHealthStatus =
+  | "ok"
+  | "redirected"
+  | "changed_hash"
+  | "not_found"
+  | "forbidden"
+  | "robots_blocked"
+  | "login_wall"
+  | "paywall"
+  | "captcha_or_waf"
+  | "unknown_error";
+
+export type SourceHealthSeverity = "info" | "warning" | "error";
+
+interface JsonObject {
+  [key: string]: unknown;
+}
+
+interface PublicReleaseManifest {
+  includeStagedArtifactDirectories: string[];
+  publishedAt: string;
+  releaseId: string;
+}
+
+interface RankingUniversity {
+  countryOrRegion: string;
+  name: string;
+  rankNumber: number;
+  rankText: string;
+  rowNumber: number;
+}
+
+interface RankingDocument {
+  rankingSystem: string;
+  rankingYear: number;
+  scope?: string;
+  source?: {
+    name?: string;
+    retrievedAt?: string;
+    url?: string;
+  };
+  universities: RankingUniversity[];
+}
+
+interface ArtifactMetadataCollector {
+  dates: Set<string>;
+  languages: Set<string>;
+  reviewStates: Map<string, number>;
+  runIds: Set<string>;
+  slugs: Set<string>;
+}
+
+export interface StagingRunSummary {
+  artifactCount: number;
+  claimCount: number;
+  detectedLanguages: string[];
+  detectedSlugs: string[];
+  directory: string;
+  evidenceCount: number;
+  healthCounts: Record<SourceHealthStatus, number>;
+  issueCount: number;
+  issues: string[];
+  jsonFileCount: number;
+  lastArtifactAt?: string;
+  promoted: boolean;
+  recommendedAction: string;
+  reviewDecisionCount: number;
+  reviewStates: Record<string, number>;
+  runIds: string[];
+  sourceCandidateCount: number;
+  sourceHealthRows: SourceHealthRow[];
+  validationStatus: "pass" | "fail";
+}
+
+export interface CoverageRow {
+  claimCount: number;
+  countryOrRegion: string;
+  lastCheckedAt?: string;
+  publicJsonUrl?: string;
+  publicSlug?: string;
+  qsRank: number;
+  rankText: string;
+  recommendedAction: string;
+  reviewState?: string;
+  sourceCount: number;
+  stagingRun?: string;
+  status: CoverageStatus;
+  universityName: string;
+}
+
+export interface SourceHealthRow {
+  entitySlug: string;
+  finalUrl?: string;
+  lastCheckedAt?: string;
+  note: string;
+  scope: "public_release" | "staging_run";
+  severity: SourceHealthSeverity;
+  sourceTitle?: string;
+  sourceType?: string;
+  sourceUrl: string;
+  status: SourceHealthStatus;
+  stagingRun?: string;
+}
+
+export interface ReviewQueueRow {
+  claimCount: number;
+  detectedSlugs: string[];
+  directory: string;
+  issueCount: number;
+  lastArtifactAt?: string;
+  recommendedAction: string;
+  reviewDecisionCount: number;
+  sourceCandidateCount: number;
+  validationStatus: "pass" | "fail";
+}
+
+export interface CoverageDashboardData {
+  apiPath: string;
+  citation: ReturnType<typeof buildPublicApiCitation>;
+  generatedAt: string;
+  highPriorityGaps: CoverageRow[];
+  limitations: string[];
+  ranking: {
+    rowCount: number;
+    scope?: string;
+    sourceName?: string;
+    sourceUrl?: string;
+    system: string;
+    year: number;
+  };
+  rows: CoverageRow[];
+  summary: {
+    missingCount: number;
+    publicClaimCount: number;
+    publicCount: number;
+    publicSourceCount: number;
+    stagingUnpromotedCount: number;
+    totalRows: number;
+  };
+}
+
+export interface SourceHealthDashboardData {
+  apiPath: string;
+  citation: ReturnType<typeof buildPublicApiCitation>;
+  generatedAt: string;
+  rows: SourceHealthRow[];
+  summary: {
+    errorCount: number;
+    publicSourceRows: number;
+    stagingSourceRows: number;
+    statusCounts: Record<SourceHealthStatus, number>;
+    totalRows: number;
+    warningCount: number;
+  };
+}
+
+export interface ReviewQueueData {
+  apiPath: string;
+  generatedAt: string;
+  rows: ReviewQueueRow[];
+  summary: {
+    promotedRunCount: number;
+    readyForReviewCount: number;
+    repairNeededCount: number;
+    totalRuns: number;
+    unpromotedRunCount: number;
+  };
+}
+
+interface DashboardContext {
+  catalogUniversities: CatalogUniversity[];
+  manifest: PublicReleaseManifest | undefined;
+  publicSummaries: PublicEntitySummary[];
+  ranking: RankingDocument;
+  stagingRuns: StagingRunSummary[];
+}
+
+let contextPromise: Promise<DashboardContext> | undefined;
+
+export async function getCoverageDashboardData(): Promise<CoverageDashboardData> {
+  const context = await getDashboardContext();
+  const rows = buildCoverageRows(context);
+  const publicRows = rows.filter((row) => row.status === "public");
+  const generatedAt = getGeneratedAt(context);
+  const apiPath = `/api/public/${PUBLIC_API_VERSION}/coverage/qs-2026.json`;
+  const canonicalUrl = getAbsoluteSiteUrl("/coverage/qs-2026");
+  const publicJsonUrl = getAbsoluteSiteUrl(apiPath);
+
+  return {
+    apiPath,
+    citation: buildPublicApiCitation({
+      citationTitle: "QS 2026 university AI policy coverage dashboard",
+      canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation:
+        "University AI Policy Tracker QS 2026 coverage dashboard. University AI Policy Tracker. Version v1. " +
+        canonicalUrl
+    }),
+    generatedAt,
+    highPriorityGaps: rows
+      .filter((row) => row.status !== "public")
+      .sort((left, right) => left.qsRank - right.qsRank)
+      .slice(0, 20),
+    limitations: [
+      "Coverage status measures tracker collection status, not university policy quality.",
+      "Staging-only runs are not public canonical records until promoted through the release manifest.",
+      NO_ADVICE_BOUNDARY
+    ],
+    ranking: {
+      rowCount: context.ranking.universities.length,
+      scope: context.ranking.scope,
+      sourceName: context.ranking.source?.name,
+      sourceUrl: context.ranking.source?.url,
+      system: context.ranking.rankingSystem,
+      year: context.ranking.rankingYear
+    },
+    rows,
+    summary: {
+      missingCount: rows.filter((row) => row.status === "missing").length,
+      publicClaimCount: publicRows.reduce(
+        (total, row) => total + row.claimCount,
+        0
+      ),
+      publicCount: publicRows.length,
+      publicSourceCount: publicRows.reduce(
+        (total, row) => total + row.sourceCount,
+        0
+      ),
+      stagingUnpromotedCount: rows.filter(
+        (row) => row.status === "staging_unpromoted"
+      ).length,
+      totalRows: rows.length
+    }
+  };
+}
+
+export async function getSourceHealthDashboardData(): Promise<SourceHealthDashboardData> {
+  const context = await getDashboardContext();
+  const rows = buildSourceHealthRows(context);
+  const statusCounts = countStatuses(rows);
+  const generatedAt = getGeneratedAt(context);
+  const apiPath = `/api/public/${PUBLIC_API_VERSION}/source-health.json`;
+  const canonicalUrl = getAbsoluteSiteUrl("/source-health");
+  const publicJsonUrl = getAbsoluteSiteUrl(apiPath);
+
+  return {
+    apiPath,
+    citation: buildPublicApiCitation({
+      citationTitle: "University AI Policy Tracker source health dashboard",
+      canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation:
+        "University AI Policy Tracker source health dashboard. University AI Policy Tracker. Version v1. " +
+        canonicalUrl
+    }),
+    generatedAt,
+    rows,
+    summary: {
+      errorCount: rows.filter((row) => row.severity === "error").length,
+      publicSourceRows: rows.filter((row) => row.scope === "public_release")
+        .length,
+      stagingSourceRows: rows.filter((row) => row.scope === "staging_run")
+        .length,
+      statusCounts,
+      totalRows: rows.length,
+      warningCount: rows.filter((row) => row.severity === "warning").length
+    }
+  };
+}
+
+export async function getReviewQueueData(): Promise<ReviewQueueData> {
+  const context = await getDashboardContext();
+  const rows = context.stagingRuns
+    .filter((run) => !run.promoted)
+    .map((run) => ({
+      claimCount: run.claimCount,
+      detectedSlugs: run.detectedSlugs,
+      directory: run.directory,
+      issueCount: run.issueCount,
+      lastArtifactAt: run.lastArtifactAt,
+      recommendedAction: run.recommendedAction,
+      reviewDecisionCount: run.reviewDecisionCount,
+      sourceCandidateCount: run.sourceCandidateCount,
+      validationStatus: run.validationStatus
+    }))
+    .sort((left, right) =>
+      left.validationStatus === right.validationStatus
+        ? left.directory.localeCompare(right.directory)
+        : left.validationStatus === "fail"
+          ? -1
+          : 1
+    );
+
+  return {
+    apiPath: `/api/public/${PUBLIC_API_VERSION}/review/queue.json`,
+    generatedAt: getGeneratedAt(context),
+    rows,
+    summary: {
+      promotedRunCount: context.stagingRuns.filter((run) => run.promoted)
+        .length,
+      readyForReviewCount: rows.filter(
+        (row) =>
+          row.validationStatus === "pass" && row.sourceCandidateCount >= 2
+      ).length,
+      repairNeededCount: rows.filter((row) => row.validationStatus === "fail")
+        .length,
+      totalRuns: context.stagingRuns.length,
+      unpromotedRunCount: rows.length
+    }
+  };
+}
+
+export function buildCoverageApiResponse(data: CoverageDashboardData) {
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt: data.generatedAt,
+    canonicalUrl: getAbsoluteSiteUrl("/coverage/qs-2026"),
+    license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
+    sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    citation: data.citation,
+    limitations: data.limitations,
+    data: {
+      ranking: data.ranking,
+      summary: data.summary,
+      rows: data.rows
+    }
+  };
+}
+
+export function buildSourceHealthApiResponse(data: SourceHealthDashboardData) {
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt: data.generatedAt,
+    canonicalUrl: getAbsoluteSiteUrl("/source-health"),
+    license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
+    sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    citation: data.citation,
+    limitations: [
+      "Public ok status means the source is present in promoted snapshot metadata; it is not a live recrawl guarantee.",
+      "Staging source health is planning metadata and does not publish canonical claims.",
+      NO_ADVICE_BOUNDARY
+    ],
+    data: {
+      summary: data.summary,
+      rows: data.rows
+    }
+  };
+}
+
+export function buildReviewQueueApiResponse(data: ReviewQueueData) {
+  const canonicalUrl = getAbsoluteSiteUrl("/review/queue");
+  const publicJsonUrl = getAbsoluteSiteUrl(
+    `/api/public/${PUBLIC_API_VERSION}/review/queue.json`
+  );
+
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    generatedAt: data.generatedAt,
+    canonicalUrl,
+    license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
+    sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    citation: buildPublicApiCitation({
+      citationTitle: "University AI Policy Tracker review queue metadata",
+      canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation:
+        "University AI Policy Tracker review queue metadata. University AI Policy Tracker. Version v1. " +
+        canonicalUrl
+    }),
+    limitations: [
+      "Review queue rows are planning metadata. They do not promote staging runs or publish claims.",
+      NO_ADVICE_BOUNDARY
+    ],
+    data: {
+      summary: data.summary,
+      rows: data.rows
+    }
+  };
+}
+
+async function getDashboardContext(): Promise<DashboardContext> {
+  contextPromise ??= buildDashboardContext();
+
+  return contextPromise;
+}
+
+async function buildDashboardContext(): Promise<DashboardContext> {
+  const repoRoot = await findRepoRoot();
+  const [dataset, ranking, manifest] = await Promise.all([
+    getStagedPublicDataset(),
+    readJsonFile<RankingDocument>(path.join(repoRoot, QS_2026_TOP_100)),
+    readPublicReleaseManifest(repoRoot)
+  ]);
+  const stagingRuns = await buildStagingRunSummaries(repoRoot, manifest);
+
+  return {
+    catalogUniversities: dataset.catalogUniversities,
+    manifest,
+    publicSummaries: dataset.publicSummaries,
+    ranking,
+    stagingRuns
+  };
+}
+
+function buildCoverageRows(context: DashboardContext): CoverageRow[] {
+  const publicByRank = new Map<number, PublicEntitySummary>();
+  const publicByName = new Map<string, PublicEntitySummary>();
+  const publicBySlug = new Map(
+    context.publicSummaries.map((summary) => [summary.entity.slug, summary])
+  );
+
+  for (const university of context.catalogUniversities) {
+    const summary = publicBySlug.get(university.slug);
+    if (!summary) continue;
+    publicByName.set(normalizeName(university.name), summary);
+    publicByName.set(normalizeName(summary.entity.name), summary);
+    const ranking = university.rankings.find(
+      (item) => item.systemId === "qs" && Number(item.rankingYear) === 2026
+    );
+    if (ranking?.rankNumber) publicByRank.set(ranking.rankNumber, summary);
+  }
+
+  const unpromotedBySlug = new Map<string, StagingRunSummary>();
+  for (const run of context.stagingRuns) {
+    if (run.promoted) continue;
+    for (const slug of run.detectedSlugs) unpromotedBySlug.set(slug, run);
+  }
+
+  return context.ranking.universities.map((university) => {
+    const guessedSlug = slugify(university.name);
+    const aliases = new Set([
+      guessedSlug,
+      ...(QS_SLUG_ALIASES[guessedSlug] ?? [])
+    ]);
+    const publicSummary =
+      publicByRank.get(university.rankNumber) ??
+      publicByName.get(normalizeName(university.name)) ??
+      Array.from(aliases)
+        .map((alias) => publicBySlug.get(alias))
+        .find(Boolean);
+    const stagingRun = Array.from(aliases)
+      .map((alias) => unpromotedBySlug.get(alias))
+      .find(Boolean);
+    const status: CoverageStatus = publicSummary
+      ? "public"
+      : stagingRun
+        ? "staging_unpromoted"
+        : "missing";
+
+    return {
+      claimCount: publicSummary?.claims.length ?? stagingRun?.claimCount ?? 0,
+      countryOrRegion: university.countryOrRegion,
+      lastCheckedAt:
+        publicSummary?.lastCheckedAt ?? stagingRun?.lastArtifactAt,
+      publicJsonUrl: publicSummary?.apiUrl,
+      publicSlug: publicSummary?.entity.slug,
+      qsRank: university.rankNumber,
+      rankText: university.rankText,
+      recommendedAction: getCoverageRecommendedAction(status, stagingRun),
+      reviewState: publicSummary?.reviewState,
+      sourceCount:
+        publicSummary?.officialSources.length ??
+        stagingRun?.sourceCandidateCount ??
+        0,
+      stagingRun: stagingRun?.directory,
+      status,
+      universityName: university.name
+    };
+  });
+}
+
+async function buildStagingRunSummaries(
+  repoRoot: string,
+  manifest: PublicReleaseManifest | undefined
+): Promise<StagingRunSummary[]> {
+  const promoted = new Set(
+    (manifest?.includeStagedArtifactDirectories ?? []).map((directory) =>
+      path.normalize(directory)
+    )
+  );
+  const roots = [
+    { directory: path.join(repoRoot, "staging", "uapt-runs"), skipArchive: true },
+    { directory: path.join(repoRoot, "data", "openclaw-staging"), skipArchive: false }
+  ];
+  const summaries: StagingRunSummary[] = [];
+
+  for (const root of roots) {
+    const entries = await safeReadDir(root.directory);
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      if (root.skipArchive && entry.name.startsWith("_")) continue;
+
+      const absoluteDirectory = path.join(root.directory, entry.name);
+      const relativeDirectory = normalizeRelativePath(
+        path.relative(repoRoot, absoluteDirectory)
+      );
+      const jsonFiles = await walkJsonFiles(absoluteDirectory);
+      summaries.push(
+        await summarizeStagingRun({
+          absoluteDirectory,
+          jsonFiles,
+          promoted: promoted.has(path.normalize(relativeDirectory)),
+          relativeDirectory
+        })
+      );
+    }
+  }
+
+  return summaries.sort((left, right) =>
+    left.directory.localeCompare(right.directory)
+  );
+}
+
+async function summarizeStagingRun(input: {
+  absoluteDirectory: string;
+  jsonFiles: string[];
+  promoted: boolean;
+  relativeDirectory: string;
+}): Promise<StagingRunSummary> {
+  const issues: string[] = [];
+  const validArtifacts: OpenClawStagedArtifact[] = [];
+  const rawCounts = new Map<string, number>();
+  const metadata: ArtifactMetadataCollector = {
+    dates: new Set(),
+    languages: new Set(),
+    reviewStates: new Map(),
+    runIds: new Set(),
+    slugs: new Set()
+  };
+
+  for (const file of input.jsonFiles) {
+    const parsed = await readJsonFile<unknown>(file);
+    const values = extractArtifactValues(parsed);
+
+    for (const value of values) {
+      countRawArtifact(value, rawCounts);
+      collectRawArtifactMetadata(value, metadata);
+
+      const result = openClawStagedArtifactSchema.safeParse(value);
+      if (result.success) {
+        validArtifacts.push(result.data);
+      } else {
+        const message = result.error.issues
+          .slice(0, 5)
+          .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
+          .join("; ");
+        issues.push(`${normalizeRelativePath(path.relative(process.cwd(), file))}: ${message}`);
+      }
+    }
+  }
+
+  const validCounts = countArtifacts(validArtifacts);
+  for (const artifactType of REQUIRED_ARTIFACT_TYPES) {
+    if (!validCounts.get(artifactType)) {
+      issues.push(`Missing required artifact type: ${artifactType}`);
+    }
+  }
+
+  const sourceHealthRows = buildStagingSourceHealthRows(
+    input.relativeDirectory,
+    validArtifacts
+  );
+
+  return {
+    artifactCount: validArtifacts.length,
+    claimCount: rawCounts.get("claim_candidate") ?? 0,
+    detectedLanguages: Array.from(metadata.languages).sort(),
+    detectedSlugs: Array.from(metadata.slugs).sort(),
+    directory: input.relativeDirectory,
+    evidenceCount: rawCounts.get("evidence_candidate") ?? 0,
+    healthCounts: countStatuses(sourceHealthRows),
+    issueCount: issues.length,
+    issues,
+    jsonFileCount: input.jsonFiles.length,
+    lastArtifactAt: latestIso(Array.from(metadata.dates)),
+    promoted: input.promoted,
+    recommendedAction: recommendStagingAction({
+      directory: input.relativeDirectory,
+      issueCount: issues.length,
+      promoted: input.promoted,
+      sourceCandidateCount: rawCounts.get("source_candidate") ?? 0
+    }),
+    reviewDecisionCount: rawCounts.get("review_decision") ?? 0,
+    reviewStates: Object.fromEntries(
+      Array.from(metadata.reviewStates.entries()).sort(([left], [right]) =>
+        left.localeCompare(right)
+      )
+    ),
+    runIds: Array.from(metadata.runIds).sort(),
+    sourceCandidateCount: rawCounts.get("source_candidate") ?? 0,
+    sourceHealthRows,
+    validationStatus: issues.length ? "fail" : "pass"
+  };
+}
+
+function buildSourceHealthRows(context: DashboardContext): SourceHealthRow[] {
+  const publicRows = context.publicSummaries.flatMap((summary) =>
+    summary.officialSources.map((source) => ({
+      entitySlug: summary.entity.slug,
+      finalUrl: source.finalUrl,
+      lastCheckedAt: source.retrievedAt ?? summary.lastCheckedAt,
+      note:
+        "Promoted source attribution is present with snapshot metadata. This is not a live recrawl guarantee.",
+      scope: "public_release" as const,
+      severity: "info" as const,
+      sourceTitle: source.citationTitle,
+      sourceType: source.sourceType,
+      sourceUrl: source.sourceUrl,
+      status: "ok" as const
+    }))
+  );
+  const stagingRows = context.stagingRuns.flatMap((run) =>
+    run.sourceHealthRows
+  );
+
+  return [...publicRows, ...stagingRows].sort((left, right) => {
+    const severityOrder = { error: 0, warning: 1, info: 2 };
+    return (
+      severityOrder[left.severity] - severityOrder[right.severity] ||
+      left.entitySlug.localeCompare(right.entitySlug) ||
+      left.sourceUrl.localeCompare(right.sourceUrl)
+    );
+  });
+}
+
+function buildStagingSourceHealthRows(
+  directory: string,
+  artifacts: OpenClawStagedArtifact[]
+): SourceHealthRow[] {
+  const fetches = artifacts.filter(
+    (artifact): artifact is StagedFetchAttempt =>
+      artifact.artifactType === "fetch_attempt"
+  );
+  const snapshots = artifacts.filter(
+    (artifact): artifact is StagedSourceSnapshot =>
+      artifact.artifactType === "source_snapshot"
+  );
+  const sourceCandidates = artifacts.filter(
+    (artifact): artifact is StagedSourceCandidate =>
+      artifact.artifactType === "source_candidate"
+  );
+  const fetchesByCandidate = groupBy(
+    fetches,
+    (fetch) => fetch.sourceCandidateId ?? fetch.sourceUrl
+  );
+  const snapshotsByCandidate = groupBy(
+    snapshots,
+    (snapshot) => snapshot.sourceCandidateId ?? snapshot.sourceUrl
+  );
+
+  return sourceCandidates.map((source) => {
+    const relatedFetches = fetchesByCandidate.get(source.sourceCandidateId) ?? [];
+    const relatedSnapshots =
+      snapshotsByCandidate.get(source.sourceCandidateId) ?? [];
+    const status = getSourceHealthStatus(
+      source,
+      relatedFetches,
+      relatedSnapshots
+    );
+    const severity = getSourceHealthSeverity(status);
+
+    return {
+      entitySlug: source.entitySlug,
+      finalUrl: source.finalUrl,
+      lastCheckedAt:
+        source.verifiedAt ??
+        latestIso([
+          ...relatedFetches.map((fetch) => fetch.attemptedAt),
+          ...relatedSnapshots.map((snapshot) => snapshot.fetchedAt)
+        ]) ??
+        source.discoveredAt,
+      note: getSourceHealthNote(status, source, relatedFetches),
+      scope: "staging_run",
+      severity,
+      sourceTitle: source.sourceTitle,
+      sourceType: source.sourceType,
+      sourceUrl: source.sourceUrl,
+      stagingRun: directory,
+      status
+    };
+  });
+}
+
+function getSourceHealthStatus(
+  source: StagedSourceCandidate,
+  fetches: StagedFetchAttempt[],
+  snapshots: StagedSourceSnapshot[]
+): SourceHealthStatus {
+  if (
+    source.rejectionReason === "robots_disallowed" ||
+    fetches.some((fetch) => fetch.robotsAllowed === false) ||
+    snapshots.some((snapshot) => snapshot.robotsAllowed === false)
+  ) {
+    return "robots_blocked";
+  }
+  if (source.rejectionReason === "login_required") return "login_wall";
+  if (source.rejectionReason === "paywall") return "paywall";
+  if (source.rejectionReason === "captcha") return "captcha_or_waf";
+  if (
+    source.rejectionReason === "stale_404" ||
+    fetches.some((fetch) => fetch.httpStatus === 404)
+  ) {
+    return "not_found";
+  }
+  if (fetches.some((fetch) => fetch.httpStatus === 403)) return "forbidden";
+  if (
+    source.finalUrl &&
+    normalizeUrl(source.finalUrl) !== normalizeUrl(source.sourceUrl)
+  ) {
+    return "redirected";
+  }
+  if (
+    snapshots.length ||
+    source.verificationStatus === "verified" ||
+    fetches.some((fetch) => fetch.outcome === "success")
+  ) {
+    return "ok";
+  }
+  if (
+    source.verificationStatus === "blocked" ||
+    source.verificationStatus === "inaccessible" ||
+    source.verificationStatus === "needs_browser" ||
+    fetches.some((fetch) => fetch.outcome === "blocked" || fetch.outcome === "error")
+  ) {
+    return "unknown_error";
+  }
+
+  return "unknown_error";
+}
+
+function getSourceHealthSeverity(
+  status: SourceHealthStatus
+): SourceHealthSeverity {
+  if (
+    status === "robots_blocked" ||
+    status === "login_wall" ||
+    status === "paywall" ||
+    status === "captcha_or_waf" ||
+    status === "forbidden"
+  ) {
+    return "error";
+  }
+  if (
+    status === "not_found" ||
+    status === "unknown_error" ||
+    status === "changed_hash"
+  ) {
+    return "warning";
+  }
+  return "info";
+}
+
+function getSourceHealthNote(
+  status: SourceHealthStatus,
+  source: StagedSourceCandidate,
+  fetches: StagedFetchAttempt[]
+): string {
+  if (status === "ok") return "Validated staging source candidate has usable fetch or snapshot metadata.";
+  if (status === "redirected") return "Fetch final URL differs from the discovered source URL; review canonical URL before promotion.";
+  if (status === "not_found") return "Source appears to return 404 or was rejected as stale 404; rerun source discovery.";
+  if (status === "forbidden") return "Source returned 403; do not bypass access controls.";
+  if (status === "robots_blocked") return "Robots policy disallowed fetch or source was rejected for robots restrictions.";
+  if (status === "login_wall") return "Source appears to require login; do not bypass authentication.";
+  if (status === "paywall") return "Source appears paywalled; do not bypass access controls.";
+  if (status === "captcha_or_waf") return "Source appears protected by CAPTCHA or WAF; do not bypass access controls.";
+
+  const firstError = fetches.find((fetch) => fetch.errorReason)?.errorReason;
+  return (
+    firstError ??
+    source.verificationNotes ??
+    "Source needs manual inspection before promotion."
+  );
+}
+
+function getCoverageRecommendedAction(
+  status: CoverageStatus,
+  stagingRun: StagingRunSummary | undefined
+): string {
+  if (status === "public") return "No crawl action required for coverage.";
+  if (!stagingRun) return "Send to source discovery.";
+  if (stagingRun.validationStatus === "fail") {
+    return "Repair validator issues before promotion.";
+  }
+  if (stagingRun.sourceCandidateCount < 2) {
+    return "Review source breadth before promotion.";
+  }
+  return "Review validated staging run before promotion.";
+}
+
+function recommendStagingAction(input: {
+  directory: string;
+  issueCount: number;
+  promoted: boolean;
+  sourceCandidateCount: number;
+}): string {
+  if (input.promoted) return "Already promoted in the current public release.";
+  if (input.issueCount > 0) return "Repair validator issues before review.";
+  if (input.sourceCandidateCount < 2) {
+    return "Review source breadth before promotion.";
+  }
+  if (input.directory.includes("johns-hopkins")) {
+    return "Resolve JHU canonical slug/review-state mapping before promotion.";
+  }
+  return "Review for possible next manifest promotion.";
+}
+
+async function findRepoRoot(): Promise<string> {
+  let current = process.cwd();
+
+  for (;;) {
+    try {
+      await readFile(path.join(current, "package.json"), "utf8");
+      const stagingExists = await directoryExists(path.join(current, "staging"));
+      const appsExists = await directoryExists(path.join(current, "apps"));
+
+      if (stagingExists && appsExists) return current;
+    } catch {
+      // Continue walking upward.
+    }
+
+    const parent = path.dirname(current);
+    if (parent === current) return process.cwd();
+    current = parent;
+  }
+}
+
+async function directoryExists(directory: string): Promise<boolean> {
+  try {
+    const stats = await readdir(directory);
+    return Array.isArray(stats);
+  } catch {
+    return false;
+  }
+}
+
+async function readPublicReleaseManifest(
+  repoRoot: string
+): Promise<PublicReleaseManifest | undefined> {
+  const file = path.join(repoRoot, "data", "public-releases", "current.json");
+  try {
+    const value = await readJsonFile<unknown>(file);
+    if (!isRecord(value) || !Array.isArray(value.includeStagedArtifactDirectories)) {
+      return undefined;
+    }
+    return {
+      includeStagedArtifactDirectories:
+        value.includeStagedArtifactDirectories.filter(
+          (item): item is string => typeof item === "string"
+        ),
+      publishedAt: typeof value.publishedAt === "string" ? value.publishedAt : "",
+      releaseId: typeof value.releaseId === "string" ? value.releaseId : ""
+    };
+  } catch {
+    return undefined;
+  }
+}
+
+async function safeReadDir(directory: string) {
+  try {
+    return await readdir(directory, { withFileTypes: true });
+  } catch {
+    return [];
+  }
+}
+
+async function walkJsonFiles(directory: string): Promise<string[]> {
+  const entries = await safeReadDir(directory);
+  const files = await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) return walkJsonFiles(entryPath);
+      if (entry.isFile() && entry.name.endsWith(".json")) return [entryPath];
+      return [];
+    })
+  );
+
+  return files.flat().sort();
+}
+
+async function readJsonFile<T>(file: string): Promise<T> {
+  return JSON.parse(await readFile(file, "utf8")) as T;
+}
+
+function extractArtifactValues(value: unknown): unknown[] {
+  if (Array.isArray(value)) return value;
+  if (isRecord(value) && Array.isArray(value.artifacts)) return value.artifacts;
+  return [value];
+}
+
+function countRawArtifact(value: unknown, counts: Map<string, number>): void {
+  if (!isRecord(value) || typeof value.artifactType !== "string") return;
+  increment(counts, value.artifactType);
+}
+
+function collectRawArtifactMetadata(
+  value: unknown,
+  output: ArtifactMetadataCollector
+): void {
+  if (!isRecord(value)) return;
+
+  addString(output.runIds, value.runId);
+  addString(output.slugs, value.entitySlug);
+  addString(output.languages, value.sourceLanguage);
+  addDate(output.dates, value.createdAt);
+  addDate(output.dates, value.discoveredAt);
+  addDate(output.dates, value.verifiedAt);
+  addDate(output.dates, value.attemptedAt);
+  addDate(output.dates, value.fetchedAt);
+  addDate(output.dates, value.generatedAt);
+  addDate(output.dates, value.decidedAt);
+  addDate(output.dates, value.rejectedAt);
+  addDate(output.dates, value.startedAt);
+  addDate(output.dates, value.endedAt);
+  if (typeof value.reviewState === "string") {
+    increment(output.reviewStates, value.reviewState);
+  }
+  if (Array.isArray(value.targets)) {
+    for (const target of value.targets) {
+      if (!isRecord(target)) continue;
+      addString(output.slugs, target.entitySlug);
+      addString(output.languages, target.sourceLanguage);
+    }
+  }
+}
+
+function countArtifacts(artifacts: OpenClawStagedArtifact[]): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const artifact of artifacts) increment(counts, artifact.artifactType);
+  return counts;
+}
+
+function countStatuses<T extends { status: SourceHealthStatus }>(
+  rows: T[]
+): Record<SourceHealthStatus, number> {
+  const initial: Record<SourceHealthStatus, number> = {
+    captcha_or_waf: 0,
+    changed_hash: 0,
+    forbidden: 0,
+    login_wall: 0,
+    not_found: 0,
+    ok: 0,
+    paywall: 0,
+    redirected: 0,
+    robots_blocked: 0,
+    unknown_error: 0
+  };
+
+  for (const row of rows) initial[row.status] += 1;
+
+  return initial;
+}
+
+function groupBy<T>(values: T[], getKey: (value: T) => string): Map<string, T[]> {
+  const groups = new Map<string, T[]>();
+  for (const value of values) {
+    const key = getKey(value);
+    const group = groups.get(key) ?? [];
+    group.push(value);
+    groups.set(key, group);
+  }
+  return groups;
+}
+
+function latestIso(values: Array<string | undefined>): string | undefined {
+  return values
+    .filter((value): value is string => Boolean(value))
+    .sort((left, right) => new Date(right).getTime() - new Date(left).getTime())[0];
+}
+
+function increment(map: Map<string, number>, key: string): void {
+  map.set(key, (map.get(key) ?? 0) + 1);
+}
+
+function addString(set: Set<string>, value: unknown): void {
+  if (typeof value === "string" && value) set.add(value);
+}
+
+function addDate(set: Set<string>, value: unknown): void {
+  if (typeof value === "string" && value) set.add(value);
+}
+
+function isRecord(value: unknown): value is JsonObject {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function normalizeName(value: string): string {
+  return value
+    .normalize("NFKD")
+    .replace(/[^\x00-\x7F]/g, "")
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/\([^)]*\)/g, "")
+    .replace(/^the\s+/u, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function slugify(value: string): string {
+  return normalizeName(value).replace(/\s+/g, "-");
+}
+
+function normalizeUrl(value: string): string {
+  try {
+    const url = new URL(value);
+    url.hash = "";
+    return url.toString().replace(/\/$/u, "");
+  } catch {
+    return value.replace(/\/$/u, "");
+  }
+}
+
+function normalizeRelativePath(value: string): string {
+  return value.split(path.sep).join("/");
+}
+
+function getGeneratedAt(context: DashboardContext): string {
+  return context.manifest?.publishedAt || new Date().toISOString();
+}
+
+const QS_SLUG_ALIASES: Record<string, string[]> = {
+  "adelaide-university": ["adelaide-university"],
+  "australian-national-university": ["anu"],
+  "california-institute-of-technology": ["california-institute-of-technology"],
+  "epfl-ecole-polytechnique-federale-de-lausanne": ["epfl"],
+  "johns-hopkins-university": ["jhu", "johns-hopkins-university"],
+  "king-s-college-london": ["kcl"],
+  "massachusetts-institute-of-technology": ["massachusetts-institute-of-technology"],
+  "nanyang-technological-university-singapore": [
+    "nanyang-technological-university"
+  ],
+  "national-university-of-singapore": ["national-university-of-singapore"],
+  "new-york-university": ["new-york-university"],
+  "seoul-national-university": ["snu"],
+  "the-chinese-university-of-hong-kong": ["cuhk"],
+  "hong-kong-polytechnic-university": [
+    "the-hong-kong-polytechnic-university"
+  ],
+  "london-school-of-economics-and-political-science": [
+    "the-london-school-of-economics-and-political-science"
+  ],
+  "the-hong-kong-polytechnic-university": [
+    "the-hong-kong-polytechnic-university"
+  ],
+  "the-hong-kong-university-of-science-and-technology": ["hkust"],
+  "the-london-school-of-economics-and-political-science": [
+    "the-london-school-of-economics-and-political-science"
+  ],
+  "the-university-of-edinburgh": ["edinburgh"],
+  "the-university-of-manchester": ["manchester"],
+  "the-university-of-melbourne": ["university-of-melbourne"],
+  "the-university-of-new-south-wales": ["unsw-sydney"],
+  "the-university-of-queensland": ["university-of-queensland"],
+  "the-university-of-sydney": ["university-of-sydney"],
+  "the-university-of-tokyo": ["u-tokyo"],
+  "university-of-british-columbia": ["ubc"],
+  "university-of-california-berkeley": ["university-of-california-berkeley"],
+  "university-of-california-los-angeles": ["ucla"],
+  "university-of-california-san-diego": ["university-of-california-san-diego"],
+  "university-of-texas-at-austin": ["university-of-texas-at-austin"],
+  "universit-psl": ["universite-psl"],
+  "universiti-malaya": ["universiti-malaya"]
+};

@@ -201,6 +201,21 @@ export function buildPublicApiIndexData(
         "Read-only page-quality gates, indexability status, analysis review workflow, and no-advice boundaries for public analysis pages."
       ),
       endpoint(
+        "QS 2026 coverage",
+        `/api/public/${PUBLIC_API_VERSION}/coverage/qs-2026.json`,
+        "Collection coverage rows for QS 2026 targets with public, staging-only, missing, source-count, review-state, and next-action fields."
+      ),
+      endpoint(
+        "Source health",
+        `/api/public/${PUBLIC_API_VERSION}/source-health.json`,
+        "Source and fetch health metadata for promoted public source snapshots and staging runs. Used for repair planning, not claim publication."
+      ),
+      endpoint(
+        "Review queue",
+        `/api/public/${PUBLIC_API_VERSION}/review/queue.json`,
+        "Unpromoted staging run metadata with validation status, source breadth, detected slugs, and recommended next action."
+      ),
+      endpoint(
         "Dataset release manifest",
         `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`,
         "Latest dataset release manifest with artifact URLs, row counts, byte sizes, and SHA-256 checksums."
@@ -307,6 +322,21 @@ export function buildPublicApiIndexData(
         "Policy analysis",
         "/analysis",
         "Deterministic source-backed policy analysis profiles, coverage scores, dimensions, and caveats."
+      ),
+      trustPage(
+        "Coverage",
+        "/coverage",
+        "Collection coverage dashboards for ranking targets, staging runs, source health, and review queue metadata."
+      ),
+      trustPage(
+        "Source health",
+        "/source-health",
+        "Source snapshot and staging fetch status dashboard for crawl repair planning."
+      ),
+      trustPage(
+        "Review queue",
+        "/review/queue",
+        "Unpromoted staging-run queue for validation, repair, and promotion planning."
       ),
       trustPage(
         "Outreach package",

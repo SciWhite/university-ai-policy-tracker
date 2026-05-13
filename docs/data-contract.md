@@ -96,6 +96,20 @@ https://eduaipolicy.org/api/public/v1/contributions/index.json
 https://eduaipolicy.org/api/public/v1/contributions/review-policy.json
 ```
 
+Coverage, source-health, and staging review-queue metadata are available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/coverage/qs-2026.json
+https://eduaipolicy.org/api/public/v1/source-health.json
+https://eduaipolicy.org/api/public/v1/review/queue.json
+```
+
+These dashboard endpoints are read-only review and distribution metadata.
+Coverage status measures collection state, not policy quality. Source-health
+status must not be used to bypass robots, login walls, paywalls, CAPTCHA, WAF,
+or other access controls. Review-queue rows do not promote staging runs or
+publish canonical claims.
+
 Bulk dataset artifacts are available at:
 
 ```text

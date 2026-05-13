@@ -790,7 +790,8 @@ h3 {
 .review-pill,
 .meta-label,
 .state-label,
-.analysis-status-label {
+.analysis-status-label,
+.source-health-label {
   align-items: center;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
@@ -866,6 +867,31 @@ h3 {
 
 .analysis-status-label[data-analysis-status="restricted"],
 .analysis-status-label[data-analysis-status="blocked"] {
+  background: var(--color-danger-surface);
+  border-color: var(--color-danger-border);
+  color: var(--color-danger);
+}
+
+.source-health-label[data-source-health="ok"],
+.source-health-label[data-source-health="redirected"] {
+  background: var(--color-reviewed-surface);
+  border-color: var(--color-reviewed-border);
+  color: var(--color-reviewed);
+}
+
+.source-health-label[data-source-health="changed_hash"],
+.source-health-label[data-source-health="not_found"],
+.source-health-label[data-source-health="unknown_error"] {
+  background: var(--color-warning-surface);
+  border-color: var(--color-warning-border);
+  color: var(--color-warning);
+}
+
+.source-health-label[data-source-health="forbidden"],
+.source-health-label[data-source-health="robots_blocked"],
+.source-health-label[data-source-health="login_wall"],
+.source-health-label[data-source-health="paywall"],
+.source-health-label[data-source-health="captcha_or_waf"] {
   background: var(--color-danger-surface);
   border-color: var(--color-danger-border);
   color: var(--color-danger);

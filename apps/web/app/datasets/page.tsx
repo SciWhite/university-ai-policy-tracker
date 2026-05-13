@@ -59,6 +59,12 @@ const datasetConcepts = [
     status: "Available now",
     description:
       "Deterministic policy analysis profiles derive dimensions and coverage scores from existing public claim/evidence records."
+  },
+  {
+    name: "Coverage dashboards",
+    status: "Available now",
+    description:
+      "QS coverage, source-health, and review-queue metadata expose collection status and crawler/review work without publishing staging claims."
   }
 ] as const;
 
@@ -163,6 +169,9 @@ export default async function DatasetsPage() {
   const mcpManifestPath = `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`;
   const contributionIndexPath = `/api/public/${PUBLIC_API_VERSION}/contributions/index.json`;
   const reviewPolicyPath = `/api/public/${PUBLIC_API_VERSION}/contributions/review-policy.json`;
+  const qsCoveragePath = `/api/public/${PUBLIC_API_VERSION}/coverage/qs-2026.json`;
+  const sourceHealthPath = `/api/public/${PUBLIC_API_VERSION}/source-health.json`;
+  const reviewQueuePath = `/api/public/${PUBLIC_API_VERSION}/review/queue.json`;
   const apiIndexUrl = getAbsoluteSiteUrl(apiIndexPath);
   const universitiesJsonUrl = getAbsoluteSiteUrl(universitiesJsonPath);
   const latestDatasetManifestUrl = getAbsoluteSiteUrl(
@@ -181,6 +190,9 @@ export default async function DatasetsPage() {
   const mcpManifestUrl = getAbsoluteSiteUrl(mcpManifestPath);
   const contributionIndexUrl = getAbsoluteSiteUrl(contributionIndexPath);
   const reviewPolicyUrl = getAbsoluteSiteUrl(reviewPolicyPath);
+  const qsCoverageUrl = getAbsoluteSiteUrl(qsCoveragePath);
+  const sourceHealthUrl = getAbsoluteSiteUrl(sourceHealthPath);
+  const reviewQueueUrl = getAbsoluteSiteUrl(reviewQueuePath);
 
   return (
     <main className="page-shell page-shell--wide">
@@ -251,6 +263,24 @@ export default async function DatasetsPage() {
               name: "Analysis page quality JSON",
               encodingFormat: "application/json",
               contentUrl: analysisPageQualityUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "QS 2026 coverage JSON",
+              encodingFormat: "application/json",
+              contentUrl: qsCoverageUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Source health JSON",
+              encodingFormat: "application/json",
+              contentUrl: sourceHealthUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Review queue JSON",
+              encodingFormat: "application/json",
+              contentUrl: reviewQueueUrl
             },
             {
               "@type": "DataDownload",
@@ -389,6 +419,24 @@ export default async function DatasetsPage() {
           label="Analysis page quality"
           path={analysisPageQualityPath}
           url={analysisPageQualityUrl}
+        />
+        <ApiEndpointRow
+          description="QS 2026 target coverage with public, staging-only, and missing status. This is collection coverage, not policy quality."
+          label="QS coverage"
+          path={qsCoveragePath}
+          url={qsCoverageUrl}
+        />
+        <ApiEndpointRow
+          description="Public source snapshot metadata and staging source/fetch status rows for repair and recrawl planning."
+          label="Source health"
+          path={sourceHealthPath}
+          url={sourceHealthUrl}
+        />
+        <ApiEndpointRow
+          description="Unpromoted staging run queue metadata for validation, repair, and review planning."
+          label="Review queue"
+          path={reviewQueuePath}
+          url={reviewQueueUrl}
         />
         <ApiEndpointRow
           description="Release manifest with artifact URLs, row counts, byte sizes, and SHA-256 checksums."

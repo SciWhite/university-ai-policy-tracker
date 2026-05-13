@@ -649,6 +649,23 @@ Candidate routes:
 /review/queue
 ```
 
+Implemented public routes:
+
+```text
+/coverage
+/coverage/qs-2026
+/source-health
+/review/queue
+```
+
+Implemented read-only JSON endpoints:
+
+```text
+/api/public/v1/coverage/qs-2026.json
+/api/public/v1/source-health.json
+/api/public/v1/review/queue.json
+```
+
 ### 7.1 Coverage Gap Dashboard
 
 Purpose: show collection coverage, not policy quality.

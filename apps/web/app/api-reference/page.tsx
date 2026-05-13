@@ -63,6 +63,24 @@ const apiFamilies = [
       "Read-only page-quality gates, indexability status, analysis review workflow, and no-advice boundaries for public analysis pages."
   },
   {
+    label: "QS 2026 coverage",
+    path: `/api/public/${PUBLIC_API_VERSION}/coverage/qs-2026.json`,
+    description:
+      "Collection coverage rows for QS 2026 targets with public, staging-only, missing, source-count, review-state, and next-action fields."
+  },
+  {
+    label: "Source health",
+    path: `/api/public/${PUBLIC_API_VERSION}/source-health.json`,
+    description:
+      "Source/fetch health metadata for promoted public source snapshots and staging runs. Used for repair planning, not claim publication."
+  },
+  {
+    label: "Review queue",
+    path: `/api/public/${PUBLIC_API_VERSION}/review/queue.json`,
+    description:
+      "Unpromoted staging run metadata with validation status, source breadth, detected slugs, and recommended next action."
+  },
+  {
     label: "Dataset release",
     path: `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`,
     description:
