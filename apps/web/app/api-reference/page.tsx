@@ -27,6 +27,24 @@ const apiFamilies = [
       "Public university record list with canonical page URL, public JSON URL, review state, dates, and counts."
   },
   {
+    label: "Entity search",
+    path: `/api/public/${PUBLIC_API_VERSION}/search.json?q={query}`,
+    description:
+      "Search public university records by canonical name, alias, official source title, claim summary, source domain, or analysis dimension."
+  },
+  {
+    label: "Safe search index",
+    path: `/api/public/${PUBLIC_API_VERSION}/search/index.json`,
+    description:
+      "Pagefind-ready public search index excluding raw source snapshots, private files, unpromoted staging evidence, and non-authoritative spreadsheet rows."
+  },
+  {
+    label: "Entity resolution index",
+    path: `/api/public/${PUBLIC_API_VERSION}/entities/index.json`,
+    description:
+      "Canonical university entity aliases for recall. Alias matches do not create public policy facts."
+  },
+  {
     label: "University record",
     path: `/api/public/${PUBLIC_API_VERSION}/universities/{slug}.json`,
     description:
@@ -208,7 +226,7 @@ export default function ApiReferencePage() {
             label={endpoint.label}
             path={endpoint.path}
             status="Read-only"
-            url={endpoint.path.replace("{slug}", "anu")}
+            url={endpoint.path.replace("{slug}", "anu").replace("{query}", "mit")}
           />
         ))}
       </ReferenceBox>

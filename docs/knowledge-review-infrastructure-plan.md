@@ -833,6 +833,21 @@ Acceptance criteria:
 
 As coverage grows, entity resolution becomes the maintenance layer.
 
+Implemented P4 surfaces:
+
+```text
+/search
+/api/public/v1/search.json?q={query}
+/api/public/v1/search/index.json
+/api/public/v1/entities/index.json
+```
+
+The implementation uses promoted public summaries, public claim text, official
+source titles, deterministic analysis dimensions, ranking metadata, source
+domains, and derived aliases only. It does not index raw source snapshots, raw
+PDFs, private files, unpromoted staging evidence, or non-authoritative reference
+sheet rows as policy evidence.
+
 ### 9.1 Entity Resolution
 
 Problems to solve:

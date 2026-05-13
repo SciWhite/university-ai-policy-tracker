@@ -52,9 +52,16 @@ export const mcpToolSpecs = [
   {
     name: "search_universities",
     method: "GET",
-    path: `/api/public/${PUBLIC_API_VERSION}/universities.json`,
+    path: `/api/public/${PUBLIC_API_VERSION}/search.json?q={query}`,
     description:
-      "Read the public university record list. Agent-side filtering is expected in the alpha design."
+      "Search public university records by canonical name, alias, official source title, claim summary, domain, or analysis dimension."
+  },
+  {
+    name: "resolve_entity",
+    method: "GET",
+    path: `/api/public/${PUBLIC_API_VERSION}/entities/index.json`,
+    description:
+      "Read canonical university entities and retrieval aliases. Aliases improve recall and do not create new policy facts."
   },
   {
     name: "get_university_policy_record",
@@ -125,6 +132,7 @@ export const exampleAgentQueries = [
   "Find universities whose public AI policy records mention approved AI tools, and include review state and source URL for each answer.",
   "Summarize the latest checked record for Massachusetts Institute of Technology, but separate reviewed claims from needs-review claims.",
   "List recent university AI policy records that changed this month and provide canonical page URLs plus public JSON URLs.",
+  "Resolve MIT or ANU to canonical tracker entity records before summarizing policy claims.",
   "Compare Harvard and Stanford policy metadata, using only source-backed public claims and preserving original evidence language.",
   "Generate a citation for the latest dataset release and include the release manifest URL."
 ] as const;
@@ -706,22 +714,7 @@ function getMcpToolCatalogData() {
         "sourceRightsPolicy",
         "limitations"
       ],
-      inputSchema:
-        tool.path.includes("{slug}")
-          ? {
-              type: "object",
-              properties: {
-                slug: {
-                  type: "string",
-                  description: "Canonical university slug from the public university list."
-                }
-              },
-              required: ["slug"]
-            }
-          : {
-              type: "object",
-              properties: {}
-            }
+      inputSchema: buildToolInputSchema(tool.path)
     })),
     responseRequirements: [
       "Return canonical page URL and public JSON URL with answers.",
@@ -734,6 +727,40 @@ function getMcpToolCatalogData() {
       OFFICIAL_SOURCE_RIGHTS_CAVEAT
     ],
     exampleAgentQueries
+  };
+}
+
+function buildToolInputSchema(path: string) {
+  if (path.includes("{query}")) {
+    return {
+      type: "object",
+      properties: {
+        query: {
+          type: "string",
+          description:
+            "Search query such as a university name, abbreviation, source domain, AI service, or policy theme."
+        }
+      },
+      required: ["query"]
+    };
+  }
+
+  if (path.includes("{slug}")) {
+    return {
+      type: "object",
+      properties: {
+        slug: {
+          type: "string",
+          description: "Canonical university slug from the public university list."
+        }
+      },
+      required: ["slug"]
+    };
+  }
+
+  return {
+    type: "object",
+    properties: {}
   };
 }
 

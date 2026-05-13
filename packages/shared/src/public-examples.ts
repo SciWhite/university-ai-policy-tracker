@@ -169,6 +169,22 @@ export function buildPublicApiIndexData(
         "List of public university records with canonical page and JSON links."
       ),
       endpoint(
+        "Entity search",
+        `/api/public/${PUBLIC_API_VERSION}/search.json?q=mit`,
+        "Search public university records by canonical name, alias, official source title, claim summary, source domain, or analysis dimension.",
+        `/api/public/${PUBLIC_API_VERSION}/search.json?q={query}`
+      ),
+      endpoint(
+        "Safe search index",
+        `/api/public/${PUBLIC_API_VERSION}/search/index.json`,
+        "Pagefind-ready public search index excluding raw snapshots, private files, unpromoted staging evidence, and non-authoritative spreadsheet rows."
+      ),
+      endpoint(
+        "Entity resolution index",
+        `/api/public/${PUBLIC_API_VERSION}/entities/index.json`,
+        "Canonical public entities and aliases for recall. Aliases do not create policy facts."
+      ),
+      endpoint(
         "University record",
         `/api/public/${PUBLIC_API_VERSION}/universities/anu.json`,
         "One citation-ready university record with claims, evidence, sources, and review state.",

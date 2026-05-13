@@ -19,6 +19,7 @@ const staticRoutes = [
   "/reports/2026-05",
   "/reports/outreach",
   "/widgets",
+  "/search",
   "/contribute",
   "/review",
   "/api-reference",

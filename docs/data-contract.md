@@ -18,6 +18,15 @@ Represents a stable public entity:
 
 Canonical entities own canonical URLs and public summaries.
 
+### EntityAlias
+
+Represents a retrieval hint for a canonical entity. Alias records can come from
+canonical names, public aliases, slugs, derived acronyms, source domains,
+ranking labels, or local-language names. Each alias must keep source system,
+match confidence, review state, match reason, and last reviewed date when
+available. Alias records improve search recall only; they do not create policy
+facts and cannot publish claims.
+
 ### PolicyClaim
 
 Represents one policy assertion about a canonical entity. A policy claim stores claim text, claim type, confidence, review state, last checked time, and last changed time.
@@ -61,6 +70,20 @@ Per-university claim/evidence records are available at:
 ```text
 https://eduaipolicy.org/api/public/v1/claims/{slug}.json
 ```
+
+Entity resolution and search metadata are available at:
+
+```text
+https://eduaipolicy.org/api/public/v1/search.json?q={query}
+https://eduaipolicy.org/api/public/v1/search/index.json
+https://eduaipolicy.org/api/public/v1/entities/index.json
+```
+
+Entity aliases improve recall only. They can connect canonical names,
+abbreviations, source domains, ranking labels, and local-language name variants
+to public tracker records, but they do not create policy facts. Search indexes
+must exclude raw source snapshots, raw PDFs, private files, unpromoted staging
+evidence, and non-authoritative spreadsheet rows as policy evidence.
 
 Recent changes JSON is available at:
 

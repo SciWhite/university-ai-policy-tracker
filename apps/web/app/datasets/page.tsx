@@ -65,6 +65,12 @@ const datasetConcepts = [
     status: "Available now",
     description:
       "QS coverage, source-health, and review-queue metadata expose collection status and crawler/review work without publishing staging claims."
+  },
+  {
+    name: "Entity resolution and search",
+    status: "Available now",
+    description:
+      "Canonical entity aliases and safe search indexes improve recall without creating policy facts or exposing unpublished artifacts."
   }
 ] as const;
 
@@ -151,6 +157,9 @@ export default async function DatasetsPage() {
   const datasetsUrl = getAbsoluteSiteUrl("/datasets");
   const apiIndexPath = `/api/public/${PUBLIC_API_VERSION}/index.json`;
   const universitiesJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
+  const searchJsonPath = `/api/public/${PUBLIC_API_VERSION}/search.json?q=mit`;
+  const searchIndexPath = `/api/public/${PUBLIC_API_VERSION}/search/index.json`;
+  const entityIndexPath = `/api/public/${PUBLIC_API_VERSION}/entities/index.json`;
   const latestDatasetManifestPath = `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`;
   const exampleSlug =
     summaries.find((summary) => summary.entity.slug === "anu")
@@ -180,6 +189,9 @@ export default async function DatasetsPage() {
   const reviewQueuePath = `/api/public/${PUBLIC_API_VERSION}/review/queue.json`;
   const apiIndexUrl = getAbsoluteSiteUrl(apiIndexPath);
   const universitiesJsonUrl = getAbsoluteSiteUrl(universitiesJsonPath);
+  const searchJsonUrl = getAbsoluteSiteUrl(searchJsonPath);
+  const searchIndexUrl = getAbsoluteSiteUrl(searchIndexPath);
+  const entityIndexUrl = getAbsoluteSiteUrl(entityIndexPath);
   const latestDatasetManifestUrl = getAbsoluteSiteUrl(
     latestDatasetManifestPath
   );
@@ -239,6 +251,24 @@ export default async function DatasetsPage() {
               name: "Universities list JSON",
               encodingFormat: "application/json",
               contentUrl: universitiesJsonUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Entity search JSON example",
+              encodingFormat: "application/json",
+              contentUrl: searchJsonUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Safe search index JSON",
+              encodingFormat: "application/json",
+              contentUrl: searchIndexUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Entity resolution index JSON",
+              encodingFormat: "application/json",
+              contentUrl: entityIndexUrl
             },
             {
               "@type": "DataDownload",
@@ -431,6 +461,24 @@ export default async function DatasetsPage() {
           label="Universities JSON"
           path={universitiesJsonPath}
           url={universitiesJsonUrl}
+        />
+        <ApiEndpointRow
+          description="Search public university records by canonical name, alias, official source title, claim summary, source domain, or analysis dimension."
+          label="Entity search JSON"
+          path={searchJsonPath}
+          url={searchJsonUrl}
+        />
+        <ApiEndpointRow
+          description="Safe public search index that can feed a future Pagefind build without exposing raw snapshots or unpublished staging artifacts."
+          label="Safe search index"
+          path={searchIndexPath}
+          url={searchIndexUrl}
+        />
+        <ApiEndpointRow
+          description="Canonical entity aliases and retrieval matches. Alias matches improve recall but do not create policy facts."
+          label="Entity resolution index"
+          path={entityIndexPath}
+          url={entityIndexUrl}
         />
         <ApiEndpointRow
           description="Example university-level record with claims, evidence, official sources, and citation fields."
