@@ -123,6 +123,9 @@ Versioned public JSON:
 - Source health: <https://eduaipolicy.org/api/public/v1/source-health.json>
 - Review queue: <https://eduaipolicy.org/api/public/v1/review/queue.json>
 - Dataset release manifest: <https://eduaipolicy.org/api/public/v1/datasets/latest.json>
+- Reports index: <https://eduaipolicy.org/api/public/v1/reports/index.json>
+- Reports outreach package: <https://eduaipolicy.org/api/public/v1/reports/outreach.json>
+- May 2026 report chart data: <https://eduaipolicy.org/api/public/v1/reports/2026-05/chart-data.json>
 - Contribution index: <https://eduaipolicy.org/api/public/v1/contributions/index.json>
 - Contribution review policy: <https://eduaipolicy.org/api/public/v1/contributions/review-policy.json>
 - MCP manifest: <https://eduaipolicy.org/api/public/v1/mcp/manifest.json>
@@ -168,6 +171,10 @@ This tracker is not legal advice, not academic integrity advice, and not an offi
 - `data/rankings`: university ranking source metadata used by the public index.
 - `staging/uapt-runs`: staged OpenClaw or curated artifact directories.
 - `docs`: architecture, crawler policy, data contract, and roadmap documents.
+- `docs/dataset-release-process.md`: dataset release checklist, artifact
+  rules, GitHub release notes, and Zenodo archive plan.
+- `docs/report-distribution-playbook.md`: report, feed, outreach, and media
+  distribution rules.
 - `knowledge`: local retrieval summaries for public release, staging runs,
   ranking coverage, reference sheets, and review planning. These files are
   internal planning aids, not canonical evidence.

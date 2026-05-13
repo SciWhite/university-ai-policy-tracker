@@ -54,6 +54,9 @@ export default async function OutreachPage() {
           <MetaLabel label="Feeds">
             <a href="/feeds/reports.xml">RSS</a>
           </MetaLabel>
+          <MetaLabel label="JSON">
+            <a href="/api/public/v1/reports/outreach.json">outreach package</a>
+          </MetaLabel>
         </div>
       </section>
 
@@ -77,6 +80,16 @@ export default async function OutreachPage() {
             <p>
               Public report with coverage counts, review-state counts, example
               institution records, data links, methodology, and limitations.
+            </p>
+          </DataListRow>
+          <DataListRow
+            actions={<a href="/api/public/v1/reports/outreach.json">Open</a>}
+            metadata={<MetaLabel label="Type">JSON</MetaLabel>}
+          >
+            <h2>Outreach package JSON</h2>
+            <p>
+              Machine-readable copy blocks and use boundaries for agents,
+              newsletters, media kits, and repeatable citation workflows.
             </p>
           </DataListRow>
           <DataListRow

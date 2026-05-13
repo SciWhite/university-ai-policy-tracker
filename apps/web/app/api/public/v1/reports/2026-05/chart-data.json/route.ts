@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import {
   PUBLIC_API_VERSION,
-  TRACKER_METADATA_LICENSE
+  TRACKER_METADATA_LICENSE,
+  buildPublicApiCitation
 } from "@uapt/shared";
 import {
   currentMonthlyReportSlug,
@@ -27,6 +28,7 @@ export async function GET() {
     apiVersion: PUBLIC_API_VERSION,
     generatedAt: report.publishedAt,
     canonicalUrl: report.canonicalUrl,
+    publicJsonUrl: report.chartDataUrl,
     report: {
       slug: report.slug,
       title: report.title,
@@ -34,7 +36,16 @@ export async function GET() {
       releasePeriod: report.releasePeriod
     },
     license: TRACKER_METADATA_LICENSE,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE,
     limitations: report.limitations,
+    citation: buildPublicApiCitation({
+      citationTitle: `${report.title} chart data`,
+      canonicalUrl: report.canonicalUrl,
+      publicJsonUrl: report.chartDataUrl,
+      suggestedCitation:
+        `University AI Policy Tracker. "${report.title} chart data." ` +
+        `Published ${report.publishedAt}. ${report.canonicalUrl}`
+    }),
     data: {
       metrics: report.metrics,
       sourceLanguages: report.sourceLanguageChart,

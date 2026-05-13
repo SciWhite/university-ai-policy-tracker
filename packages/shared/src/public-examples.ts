@@ -278,6 +278,16 @@ export function buildPublicApiIndexData(
         "Chart-ready source-language and review-state distributions for the May 2026 baseline report."
       ),
       endpoint(
+        "Reports index",
+        `/api/public/${PUBLIC_API_VERSION}/reports/index.json`,
+        "Machine-readable index of public reports, feeds, outreach links, report metrics, and data links."
+      ),
+      endpoint(
+        "Reports outreach package",
+        `/api/public/${PUBLIC_API_VERSION}/reports/outreach.json`,
+        "Machine-readable media and newsletter copy with use boundaries for citation-safe public sharing."
+      ),
+      endpoint(
         "Widget index",
         `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`,
         "Embeddable widget discovery payload with script URL, constraints, and example HTML."

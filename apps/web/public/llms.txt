@@ -36,6 +36,8 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Latest dataset release manifest: /api/public/v1/datasets/latest.json.
 - Bulk JSONL downloads are available at /api/public/v1/datasets/universities.jsonl, /api/public/v1/datasets/claims.jsonl, /api/public/v1/datasets/sources.jsonl, and /api/public/v1/datasets/changes.jsonl.
 - Dataset checksums and the data dictionary are available at /api/public/v1/datasets/checksums.txt and /api/public/v1/datasets/data-dictionary.md.
+- Report index metadata is available at /api/public/v1/reports/index.json.
+- Report outreach copy is available at /api/public/v1/reports/outreach.json.
 - Report chart data is available at /api/public/v1/reports/2026-05/chart-data.json.
 - Widget discovery is available at /api/public/v1/widgets/index.json.
 - Widget JSON endpoints are available at /api/public/v1/widgets/university-status/{slug}.json and /api/public/v1/widgets/recent-changes.json.

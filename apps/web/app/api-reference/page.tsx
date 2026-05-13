@@ -112,6 +112,24 @@ const apiFamilies = [
       "Release manifest with artifacts, row counts, byte sizes, SHA-256 checksums, citation, and limitations."
   },
   {
+    label: "Reports index",
+    path: `/api/public/${PUBLIC_API_VERSION}/reports/index.json`,
+    description:
+      "Machine-readable reports index with report URLs, metrics, data links, feeds, and outreach discovery."
+  },
+  {
+    label: "Report chart data",
+    path: `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`,
+    description:
+      "Chart-ready source-language and review-state distributions for the May 2026 baseline report."
+  },
+  {
+    label: "Reports outreach package",
+    path: `/api/public/${PUBLIC_API_VERSION}/reports/outreach.json`,
+    description:
+      "Machine-readable media, newsletter, researcher-email, and social copy with explicit use boundaries."
+  },
+  {
     label: "Widget index",
     path: `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`,
     description:

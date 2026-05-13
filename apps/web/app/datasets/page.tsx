@@ -174,7 +174,9 @@ export default async function DatasetsPage() {
   const exampleAnalysisPath = `/api/public/${PUBLIC_API_VERSION}/analysis/universities/${exampleSlug}.json`;
   const analysisCoverageScoresPath = `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`;
   const analysisPageQualityPath = `/api/public/${PUBLIC_API_VERSION}/analysis/page-quality.json`;
+  const reportsIndexPath = `/api/public/${PUBLIC_API_VERSION}/reports/index.json`;
   const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`;
+  const reportOutreachPath = `/api/public/${PUBLIC_API_VERSION}/reports/outreach.json`;
   const widgetIndexPath = `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`;
   const policyCoverageWidgetPath = `/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/${exampleSlug}.json`;
   const sourceFreshnessWidgetPath = `/api/public/${PUBLIC_API_VERSION}/widgets/source-freshness/${exampleSlug}.json`;
@@ -204,7 +206,9 @@ export default async function DatasetsPage() {
     analysisCoverageScoresPath
   );
   const analysisPageQualityUrl = getAbsoluteSiteUrl(analysisPageQualityPath);
+  const reportsIndexUrl = getAbsoluteSiteUrl(reportsIndexPath);
   const reportChartDataUrl = getAbsoluteSiteUrl(reportChartDataPath);
+  const reportOutreachUrl = getAbsoluteSiteUrl(reportOutreachPath);
   const widgetIndexUrl = getAbsoluteSiteUrl(widgetIndexPath);
   const policyCoverageWidgetUrl = getAbsoluteSiteUrl(policyCoverageWidgetPath);
   const sourceFreshnessWidgetUrl = getAbsoluteSiteUrl(sourceFreshnessWidgetPath);
@@ -311,6 +315,18 @@ export default async function DatasetsPage() {
               name: "Analysis page quality JSON",
               encodingFormat: "application/json",
               contentUrl: analysisPageQualityUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Reports index JSON",
+              encodingFormat: "application/json",
+              contentUrl: reportsIndexUrl
+            },
+            {
+              "@type": "DataDownload",
+              name: "Reports outreach package JSON",
+              encodingFormat: "application/json",
+              contentUrl: reportOutreachUrl
             },
             {
               "@type": "DataDownload",
@@ -523,6 +539,18 @@ export default async function DatasetsPage() {
           url={analysisPageQualityUrl}
         />
         <ApiEndpointRow
+          description="Machine-readable reports index with report URLs, metrics, data links, feeds, and outreach discovery."
+          label="Reports index"
+          path={reportsIndexPath}
+          url={reportsIndexUrl}
+        />
+        <ApiEndpointRow
+          description="Media, newsletter, researcher-email, and social copy with explicit use boundaries."
+          label="Report outreach package"
+          path={reportOutreachPath}
+          url={reportOutreachUrl}
+        />
+        <ApiEndpointRow
           description="QS 2026 target coverage with public, staging-only, and missing status. This is collection coverage, not policy quality."
           label="QS coverage"
           path={qsCoveragePath}
@@ -664,6 +692,17 @@ export default async function DatasetsPage() {
             </li>
           ))}
         </ul>
+        <p>
+          Release operations are documented in{" "}
+          <a href={`${githubRepositoryUrl}/blob/main/docs/dataset-release-process.md`}>
+            docs/dataset-release-process.md
+          </a>
+          . Report and media distribution is documented in{" "}
+          <a href={`${githubRepositoryUrl}/blob/main/docs/report-distribution-playbook.md`}>
+            docs/report-distribution-playbook.md
+          </a>
+          .
+        </p>
       </ReferenceBox>
 
       {manifest ? (

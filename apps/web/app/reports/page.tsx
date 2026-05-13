@@ -98,8 +98,22 @@ export default async function ReportsPage() {
 
       <ReferenceBox
         description="Machine-readable feeds for reports and source-check/change updates."
-        title="Feeds"
+        title="Feeds and public JSON"
       >
+        <ApiEndpointRow
+          description="Machine-readable reports index with report URLs, metrics, data links, feeds, and outreach discovery."
+          label="Reports index JSON"
+          path="/api/public/v1/reports/index.json"
+          status="Public JSON"
+          url="/api/public/v1/reports/index.json"
+        />
+        <ApiEndpointRow
+          description="Machine-readable media, newsletter, researcher-email, and social copy with use boundaries."
+          label="Outreach package JSON"
+          path="/api/public/v1/reports/outreach.json"
+          status="Public JSON"
+          url="/api/public/v1/reports/outreach.json"
+        />
         <ApiEndpointRow
           description="RSS feed for monthly and periodic dataset reports."
           label="Reports RSS"
@@ -163,6 +177,13 @@ export default async function ReportsPage() {
           <li>
             Dataset releases, chart data, and public JSON remain versioned under{" "}
             <code>/api/public/v1/...</code>.
+          </li>
+          <li>
+            Report release operations are tracked in{" "}
+            <a href="https://github.com/SciWhite/university-ai-policy-tracker/blob/main/docs/report-distribution-playbook.md">
+              docs/report-distribution-playbook.md
+            </a>
+            .
           </li>
         </ul>
       </ReferenceBox>

@@ -173,6 +173,15 @@ export async function getMonthlyReport(
     ],
     dataLinks: [
       {
+        label: "Reports index",
+        description:
+          "Machine-readable report index with report URLs, metrics, data links, feed links, and outreach discovery.",
+        path: `/api/public/${PUBLIC_API_VERSION}/reports/index.json`,
+        url: getAbsoluteSiteUrl(
+          `/api/public/${PUBLIC_API_VERSION}/reports/index.json`
+        )
+      },
+      {
         label: "Dataset release manifest",
         description:
           "Release metadata, counts, artifacts, checksums, citation, limitations, and source-rights caveats.",
@@ -211,6 +220,15 @@ export async function getMonthlyReport(
           "Small JSON chart payload for source-language and review-state distribution.",
         path: chartDataPath,
         url: getAbsoluteSiteUrl(chartDataPath)
+      },
+      {
+        label: "Outreach package JSON",
+        description:
+          "Machine-readable media, newsletter, researcher-email, and social copy with use boundaries.",
+        path: `/api/public/${PUBLIC_API_VERSION}/reports/outreach.json`,
+        url: getAbsoluteSiteUrl(
+          `/api/public/${PUBLIC_API_VERSION}/reports/outreach.json`
+        )
       }
     ],
     methodologyLinks: [
