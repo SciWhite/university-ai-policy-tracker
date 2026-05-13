@@ -1,5 +1,6 @@
 import "./globals.css";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/next";
 import type { ReactNode } from "react";
 import { ThemeScript } from "@/components/theme-script";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -112,6 +113,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </nav>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
