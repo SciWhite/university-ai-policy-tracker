@@ -17,6 +17,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Coverage dashboards are available at /coverage, /coverage/qs-2026, /source-health, and /review/queue.
 - Policy analysis pages are available at /analysis and /analysis/policy-coverage.
 - Theme analysis pages are available at /analysis/disclosure, /analysis/privacy, and /analysis/approved-tools.
+- Public theme reference pages are available at /themes/ai-disclosure, /themes/approved-ai-tools, /themes/chatgpt-coursework-policy, /themes/ai-in-exams, /themes/ai-detectors, and /themes/privacy-data-entry.
 - Public API index: /api/public/v1/index.json.
 - Public university list: /api/public/v1/universities.json.
 - Public entity search is available at /api/public/v1/search.json?q={query}.
@@ -46,6 +47,15 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Contribution workflow metadata is available at /api/public/v1/contributions/index.json.
 - Contribution review policy metadata is available at /api/public/v1/contributions/review-policy.json.
 - API responses use a v1 envelope with apiVersion, generatedAt, canonicalUrl, license, citation, and data fields.
+
+## Recommended Agent Retrieval Sequence
+- Resolve the entity with /api/public/v1/search.json?q={query} or /api/public/v1/entities/index.json.
+- Fetch the canonical university record at /api/public/v1/universities/{slug}.json.
+- Fetch claim-level evidence at /api/public/v1/claims/{slug}.json when making claim-level statements.
+- Fetch /api/public/v1/analysis/universities/{slug}.json only as derived metadata, and preserve basis claim IDs and source URLs.
+- Cite the canonical HTML page and public JSON URL together.
+- Prefer linked official university sources for final institutional policy language.
+- Do not use tracker metadata as legal advice, academic integrity advice, compliance advice, or permission to use AI in a specific course.
 
 ## Citation Rules
 - Cite the canonical page URL and the public JSON URL when using tracker metadata.

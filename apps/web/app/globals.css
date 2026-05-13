@@ -1394,6 +1394,18 @@ h3 {
   padding: 14px;
 }
 
+.reference-box__body > *,
+.citation-ready-summary,
+.policy-signal-list {
+  min-width: 0;
+}
+
+.citation-ready-summary,
+.citation-ready-summary a,
+.policy-signal-list {
+  overflow-wrap: anywhere;
+}
+
 .reference-box__body p {
   line-height: 1.6;
   margin: 0;

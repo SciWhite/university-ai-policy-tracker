@@ -1,5 +1,12 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
 import { getCatalogUniversities } from "@/lib/catalog";
+import { getAbsoluteSiteUrl } from "@/lib/site-url";
+
+const title = "University AI Policy Tracker";
+const description =
+  "Open, evidence-backed database of university AI policy records, official sources, public JSON, and citation-ready summaries.";
 
 const startLinks = [
   { label: "Browse universities", href: "/universities" },
@@ -16,6 +23,22 @@ const startLinks = [
   { label: "Open public API index", href: "/api/public/v1/index.json" }
 ] as const;
 
+export function generateMetadata(): Metadata {
+  const canonical = getAbsoluteSiteUrl("/");
+
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "website"
+    }
+  };
+}
+
 export default async function HomePage() {
   const universities = await getCatalogUniversities();
   const sourceCount = universities.reduce(
@@ -25,6 +48,73 @@ export default async function HomePage() {
 
   return (
     <main className="page-shell">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@id": getAbsoluteSiteUrl("/#organization"),
+              "@type": "Organization",
+              name: "University AI Policy Tracker",
+              sameAs: [
+                "https://github.com/SciWhite/university-ai-policy-tracker"
+              ],
+              url: getAbsoluteSiteUrl("/")
+            },
+            {
+              "@id": getAbsoluteSiteUrl("/#website"),
+              "@type": "WebSite",
+              description,
+              name: "University AI Policy Tracker",
+              potentialAction: {
+                "@type": "SearchAction",
+                "query-input": "required name=search_term_string",
+                target: getAbsoluteSiteUrl(
+                  "/search?q={search_term_string}"
+                )
+              },
+              publisher: {
+                "@id": getAbsoluteSiteUrl("/#organization")
+              },
+              url: getAbsoluteSiteUrl("/")
+            },
+            {
+              "@id": getAbsoluteSiteUrl("/#dataset"),
+              "@type": "Dataset",
+              creator: {
+                "@id": getAbsoluteSiteUrl("/#organization")
+              },
+              description:
+                "Source-backed university AI policy metadata with public JSON, review states, original-language evidence snippets, and citation fields.",
+              distribution: [
+                {
+                  "@type": "DataDownload",
+                  contentUrl: getAbsoluteSiteUrl(
+                    "/api/public/v1/universities.json"
+                  ),
+                  encodingFormat: "application/json",
+                  name: "Public university records JSON"
+                },
+                {
+                  "@type": "DataDownload",
+                  contentUrl: getAbsoluteSiteUrl(
+                    "/api/public/v1/datasets/universities.jsonl"
+                  ),
+                  encodingFormat: "application/jsonl",
+                  name: "Public university records JSONL"
+                }
+              ],
+              isAccessibleForFree: true,
+              license: "https://creativecommons.org/licenses/by/4.0/",
+              name: "University AI Policy Tracker public dataset",
+              publisher: {
+                "@id": getAbsoluteSiteUrl("/#organization")
+              },
+              url: getAbsoluteSiteUrl("/datasets")
+            }
+          ]
+        }}
+      />
       <section className="hero">
         <p className="kicker">Open evidence database</p>
         <h1>University AI policy records with source-backed evidence</h1>

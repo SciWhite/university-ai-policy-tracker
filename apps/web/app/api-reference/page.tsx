@@ -1,6 +1,7 @@
 import { PUBLIC_API_VERSION } from "@uapt/shared";
 import { ApiEndpointRow } from "@/components/api-endpoint-row";
 import { DataList, DataListRow } from "@/components/data-list";
+import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import {
@@ -203,6 +204,26 @@ export function generateMetadata() {
 export default function ApiReferencePage() {
   return (
     <main className="page-shell page-shell--wide">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          name: title,
+          description,
+          url: getAbsoluteSiteUrl("/api-reference"),
+          isPartOf: {
+            "@type": "WebSite",
+            name: "University AI Policy Tracker",
+            url: getAbsoluteSiteUrl("/")
+          },
+          about: [
+            "university AI policy API",
+            "source-backed public JSON",
+            "AI agent retrieval",
+            "citation metadata"
+          ]
+        }}
+      />
       <section className="hero">
         <p className="kicker">API reference</p>
         <h1>Versioned read-only public data API</h1>
@@ -214,6 +235,82 @@ export default function ApiReferencePage() {
           and citation fields.
         </p>
       </section>
+
+      <ReferenceBox
+        description="Recommended use for AI answer engines, research assistants, and data tools."
+        title="Agent and API positioning"
+      >
+        <ul className="compact-list">
+          <li>
+            Use this API when you need source-backed summaries, public JSON,
+            citation metadata, review state, and official source links for
+            university AI policy records.
+          </li>
+          <li>
+            Use official university pages as the final authority for the
+            institution&apos;s own policy language.
+          </li>
+          <li>
+            Do not use tracker analysis as legal advice, academic integrity
+            advice, safety advice, or institutional compliance advice.
+          </li>
+          <li>
+            Do not treat alias matches, theme matches, or coverage scores as new
+            policy facts.
+          </li>
+        </ul>
+      </ReferenceBox>
+
+      <ReferenceBox
+        description="A safe retrieval order for agents that need citation-backed answers."
+        title="Recommended retrieval sequence"
+      >
+        <DataList>
+          <DataListRow
+            metadata={<MetaLabel label="Step">1</MetaLabel>}
+          >
+            <h2>Resolve the entity</h2>
+            <p>
+              Call <code>/api/public/{PUBLIC_API_VERSION}/search.json?q=...</code>{" "}
+              or inspect <code>/api/public/{PUBLIC_API_VERSION}/entities/index.json</code>{" "}
+              to find the canonical university slug. Alias matches improve
+              recall, but they do not create facts.
+            </p>
+          </DataListRow>
+          <DataListRow
+            metadata={<MetaLabel label="Step">2</MetaLabel>}
+          >
+            <h2>Open the canonical record</h2>
+            <p>
+              Fetch <code>/api/public/{PUBLIC_API_VERSION}/universities/{"{slug}"}.json</code>{" "}
+              and keep the canonical page URL, public JSON URL, review state,
+              last checked date, limitations, and citation fields with the
+              answer.
+            </p>
+          </DataListRow>
+          <DataListRow
+            metadata={<MetaLabel label="Step">3</MetaLabel>}
+          >
+            <h2>Attach claim evidence</h2>
+            <p>
+              Fetch <code>/api/public/{PUBLIC_API_VERSION}/claims/{"{slug}"}.json</code>{" "}
+              when claim-level reuse is needed. Preserve source URLs, source
+              language, evidence snippets, snapshot hashes, confidence, and
+              review state.
+            </p>
+          </DataListRow>
+          <DataListRow
+            metadata={<MetaLabel label="Step">4</MetaLabel>}
+          >
+            <h2>Use analysis as derived metadata</h2>
+            <p>
+              Fetch <code>/api/public/{PUBLIC_API_VERSION}/analysis/universities/{"{slug}"}.json</code>{" "}
+              only as deterministic derived metadata. Always cite the basis
+              claim IDs and source URLs for non-empty analysis dimensions.
+            </p>
+          </DataListRow>
+        </DataList>
+      </ReferenceBox>
 
       <ReferenceBox
         description="Read-only endpoints for records, releases, widgets, feeds, and agent integrations."
@@ -263,7 +360,7 @@ export default function ApiReferencePage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Public widgets use the same API contract, with CORS enabled only on widget JSON endpoints."
+        description="Public widgets use the same API contract, with CORS enabled for embeddable widget JSON and entity search."
         title="Embeddable widget contract"
       >
         <DataList>
@@ -278,13 +375,14 @@ export default function ApiReferencePage() {
             </p>
           </DataListRow>
           <DataListRow
-            metadata={<MetaLabel label="CORS">Widget endpoints only</MetaLabel>}
+            metadata={<MetaLabel label="CORS">Widgets and search</MetaLabel>}
           >
             <h2>Cross-site use</h2>
             <p>
-              Widget JSON endpoints include permissive CORS headers for public
-              embedding. General public API endpoints remain normal same-origin
-              JSON unless separately documented.
+              Widget JSON endpoints and the public entity search endpoint
+              include permissive CORS headers for public embedding and
+              browser-based lookup. Other public API endpoints remain normal
+              same-origin JSON unless separately documented.
             </p>
           </DataListRow>
         </DataList>

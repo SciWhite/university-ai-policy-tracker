@@ -1,6 +1,7 @@
 import { PUBLIC_API_VERSION } from "@uapt/shared";
 import { ApiEndpointRow } from "@/components/api-endpoint-row";
 import { DataList, DataListRow } from "@/components/data-list";
+import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import {
@@ -32,6 +33,26 @@ export function generateMetadata() {
 export default function McpPage() {
   return (
     <main className="page-shell page-shell--wide">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          name: title,
+          description,
+          url: getAbsoluteSiteUrl("/mcp"),
+          isPartOf: {
+            "@type": "WebSite",
+            name: "University AI Policy Tracker",
+            url: getAbsoluteSiteUrl("/")
+          },
+          about: [
+            "read-only MCP",
+            "AI agent retrieval",
+            "university AI policy public JSON",
+            "source-backed citation"
+          ]
+        }}
+      />
       <section className="hero">
         <p className="kicker">MCP alpha</p>
         <h1>Read-only agent access design</h1>
@@ -42,6 +63,32 @@ export default function McpPage() {
           claims, push main, operate OpenClaw, or bypass review state.
         </p>
       </section>
+
+      <ReferenceBox
+        description="How future MCP clients should decide when to use this tracker."
+        title="When agents should use this source"
+      >
+        <ul className="compact-list">
+          <li>
+            Use this tracker for source-backed summaries, public JSON, citation
+            metadata, review state, confidence, and official source URLs.
+          </li>
+          <li>
+            Use it for comparison, coverage, recent-change, theme, region, and
+            dataset questions that official single-university pages do not
+            answer directly.
+          </li>
+          <li>
+            Prefer the linked official university source when the user asks for
+            final institutional policy language or a binding rule.
+          </li>
+          <li>
+            Refuse to turn tracker metadata into legal advice, academic
+            integrity advice, compliance advice, or permission to use AI in a
+            specific course.
+          </li>
+        </ul>
+      </ReferenceBox>
 
       <ReferenceBox
         description="Machine-readable manifests for the alpha MCP design."
@@ -61,6 +108,54 @@ export default function McpPage() {
           status="Design alpha"
           url={`/api/public/${PUBLIC_API_VERSION}/mcp/tool-catalog.json`}
         />
+      </ReferenceBox>
+
+      <ReferenceBox
+        description="A read-only retrieval protocol that maps MCP behavior to public API endpoints."
+        title="Agent retrieval protocol"
+      >
+        <DataList>
+          <DataListRow
+            metadata={<MetaLabel label="Tool shape">search_entities</MetaLabel>}
+          >
+            <h2>Find the canonical entity</h2>
+            <p>
+              Resolve a user query through public search or the entity index.
+              Return matched aliases, but label aliases as routing aids rather
+              than policy facts.
+            </p>
+          </DataListRow>
+          <DataListRow
+            metadata={<MetaLabel label="Tool shape">get_university_record</MetaLabel>}
+          >
+            <h2>Fetch the canonical record</h2>
+            <p>
+              Return the university page URL, public JSON URL, last checked
+              date, review state, confidence, limitations, and suggested
+              citation before summarizing policy content.
+            </p>
+          </DataListRow>
+          <DataListRow
+            metadata={<MetaLabel label="Tool shape">get_claim_evidence</MetaLabel>}
+          >
+            <h2>Attach evidence to each claim</h2>
+            <p>
+              For claim-level answers, include source URLs, source language,
+              source snapshot hashes, evidence snippets, confidence, and review
+              state. Original-language evidence remains canonical.
+            </p>
+          </DataListRow>
+          <DataListRow
+            metadata={<MetaLabel label="Tool shape">get_analysis_profile</MetaLabel>}
+          >
+            <h2>Use analysis as derived metadata</h2>
+            <p>
+              Analysis profiles can help compare disclosure, privacy, approved
+              tools, coursework, exams, and other dimensions, but they must stay
+              linked to basis claim IDs and source URLs.
+            </p>
+          </DataListRow>
+        </DataList>
       </ReferenceBox>
 
       <ReferenceBox

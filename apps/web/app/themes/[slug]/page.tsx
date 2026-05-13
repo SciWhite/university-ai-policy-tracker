@@ -7,6 +7,7 @@ import { StateLabel } from "@/components/state-label";
 import {
   formatClaimType,
   formatDate,
+  buildThemeCitationReadySummary,
   getPublicReferenceRecords,
   getThemeLandingSpec,
   getThemeRecords,
@@ -72,6 +73,13 @@ export default async function ThemePage({ params }: ThemePageProps) {
     0
   );
   const canonical = getAbsoluteSiteUrl(`/themes/${slug}`);
+  const citationReadySummary = buildThemeCitationReadySummary(
+    spec,
+    records,
+    claimCount,
+    evidenceCount,
+    sourceCount
+  );
 
   return (
     <main className="page-shell page-shell--wide">
@@ -80,7 +88,7 @@ export default async function ThemePage({ params }: ThemePageProps) {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           name: spec.title,
-          description: spec.description,
+          description: citationReadySummary,
           url: canonical,
           isPartOf: {
             "@type": "WebSite",
@@ -111,6 +119,7 @@ export default async function ThemePage({ params }: ThemePageProps) {
         </p>
         <div className="tag-row hero-meta">
           <MetaLabel label="Theme">{spec.label}</MetaLabel>
+          <MetaLabel label="Matching records">{records.length}</MetaLabel>
           <MetaLabel label="Public JSON">{publicJsonPaths.universities}</MetaLabel>
         </div>
       </section>
@@ -133,6 +142,18 @@ export default async function ThemePage({ params }: ThemePageProps) {
           <p>official sources on matching records</p>
         </div>
       </section>
+
+      <ReferenceBox
+        description="Short answer for researchers, journalists, and AI answer engines."
+        title="Citation-ready summary"
+      >
+        <p>{citationReadySummary}</p>
+        <p className="notice-card">
+          Theme pages are search and citation aids over promoted public records.
+          They are not official university statements, legal advice, academic
+          integrity advice, or a new review decision.
+        </p>
+      </ReferenceBox>
 
       <ReferenceBox
         description="Visible claim and source context from public university records."

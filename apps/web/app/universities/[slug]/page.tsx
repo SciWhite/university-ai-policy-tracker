@@ -26,6 +26,11 @@ interface UniversityPageProps {
   }>;
 }
 
+type PublicUniversitySummary = NonNullable<
+  Awaited<ReturnType<typeof getPublicUniversitySummaryBySlug>>
+>;
+type PublicUniversityClaim = PublicUniversitySummary["claims"][number];
+
 const recordTabs = [
   { label: "Overview", href: "#overview" },
   { label: "Policy profile", href: "#policy-profile" },
@@ -47,12 +52,15 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: UniversityPageProps) {
   const { slug } = await params;
   const university = await getCatalogUniversityBySlug(slug);
+  const publicSummary = await getPublicUniversitySummaryBySlug(slug);
   const canonical = getAbsoluteSiteUrl(`/universities/${slug}`);
   const title = university
-    ? `${university.name} | University AI Policy Tracker`
+    ? `${university.name} AI Policy: ChatGPT, GenAI Rules & Sources`
     : "University not found";
-  const description = university
-    ? `${university.name} AI policy record with evidence-backed claims, official sources, review state, confidence, and public JSON.`
+  const description = university && publicSummary
+    ? `${university.name} AI policy record with ${publicSummary.claims.length} source-backed claims from ${publicSummary.officialSources.length} official sources, review state, last checked date, and public JSON.`
+    : university
+      ? `${university.name} AI policy record with evidence-backed claims, official sources, review state, confidence, and public JSON.`
     : "University AI Policy Tracker record not found.";
 
   return {
@@ -81,6 +89,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   const analysisPageQualityPath = getAnalysisPageQualityApiPath();
   const publicJsonUrl =
     publicSummary.apiUrl ?? resolveUrl(jsonUrl, publicSummary.canonicalUrl);
+  const publicJsonPath = new URL(publicJsonUrl).pathname;
   const reviewedClaims = publicSummary.claims.filter((claim) =>
     isReviewedClaim(claim.reviewState)
   );
@@ -93,6 +102,16 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     publicSummary.officialSources.length
   );
   const canonicalUrl = publicSummary.publicPageUrl ?? publicSummary.canonicalUrl;
+  const citationReadySummary = buildCitationReadySummary({
+    candidateClaimCount: candidateClaims.length,
+    officialSourceCount: publicSummary.officialSources.length,
+    publicJsonUrl,
+    reviewedClaimCount: reviewedClaims.length,
+    summary: publicSummary,
+    totalClaimCount: publicSummary.claims.length
+  });
+  const policySignals = buildPolicySignals(publicSummary.claims);
+  const sourceLanguages = getSourceLanguages(publicSummary.claims);
 
   return (
     <main className="page-shell page-shell--wide">
@@ -101,7 +120,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           "@context": "https://schema.org",
           "@type": "WebPage",
           name: publicSummary.citationTitle,
-          description: publicSummary.summary,
+          description: citationReadySummary,
           url: canonicalUrl,
           dateModified:
             publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt,
@@ -113,7 +132,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           mainEntity: {
             "@type": "Dataset",
             name: publicSummary.citationTitle,
-            description: publicSummary.summary,
+            description: citationReadySummary,
             url: canonicalUrl,
             license: "https://creativecommons.org/licenses/by/4.0/",
             isAccessibleForFree: true,
@@ -192,6 +211,32 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             title="Short answer"
           >
             <p>{publicSummary.summary}</p>
+            <section
+              aria-labelledby="citation-ready-summary"
+              className="citation-ready-summary"
+            >
+              <h3 id="citation-ready-summary">Citation-ready summary</h3>
+              <p>{citationReadySummary}</p>
+              <div className="tag-row">
+                <MetaLabel label="Claim coverage">
+                  {formatClaimCoverage(reviewedClaims.length, candidateClaims.length)}
+                </MetaLabel>
+                <MetaLabel label="Source language">
+                  {sourceLanguages.length ? sourceLanguages.join(", ") : "Not specified"}
+                </MetaLabel>
+                <MetaLabel label="Public JSON">
+                  <a href={publicJsonUrl}>{publicJsonPath}</a>
+                </MetaLabel>
+              </div>
+            </section>
+            <section aria-labelledby="policy-signals" className="policy-signal-list">
+              <h3 id="policy-signals">Policy signals in this record</h3>
+              <ul className="compact-list">
+                {policySignals.map((signal) => (
+                  <li key={signal}>{signal}</li>
+                ))}
+              </ul>
+            </section>
             <div className="tag-row">
               <MetaLabel label="Policy status">{policyStatus}</MetaLabel>
               <StateLabel reviewState={publicSummary.reviewState} />
@@ -488,4 +533,137 @@ function formatDate(value: string): string {
     dateStyle: "medium",
     timeZone: "UTC"
   }).format(new Date(value));
+}
+
+interface CitationReadySummaryInput {
+  candidateClaimCount: number;
+  officialSourceCount: number;
+  publicJsonUrl: string;
+  reviewedClaimCount: number;
+  summary: PublicUniversitySummary;
+  totalClaimCount: number;
+}
+
+function buildCitationReadySummary({
+  candidateClaimCount,
+  officialSourceCount,
+  publicJsonUrl,
+  reviewedClaimCount,
+  summary,
+  totalClaimCount
+}: CitationReadySummaryInput): string {
+  const checkedText = summary.lastCheckedAt
+    ? `last checked on ${formatDate(summary.lastCheckedAt)}`
+    : "with no last-checked date published yet";
+  const changedText = summary.lastChangedAt
+    ? ` and last changed on ${formatDate(summary.lastChangedAt)}`
+    : "";
+  const reviewText = formatReviewStateForRecord(summary.reviewState);
+  const confidenceText =
+    summary.confidence !== undefined
+      ? ` The entity-level confidence is ${Math.round(summary.confidence * 100)}%.`
+      : "";
+  const candidateText = candidateClaimCount
+    ? ` ${candidateClaimCount} claim${candidateClaimCount === 1 ? "" : "s"} still require review and should not be treated as final policy conclusions.`
+    : "";
+
+  return `As of this public record, University AI Policy Tracker lists ${summary.entity.name} as ${reviewText} AI policy record ${checkedText}${changedText}. The record contains ${totalClaimCount} source-backed claim${totalClaimCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}, from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Original-language evidence snippets and source URLs remain canonical, with public JSON available at ${publicJsonUrl}.${confidenceText}${candidateText} This tracker is not legal advice, not academic integrity advice, and not an official university statement unless the linked source is the university's own official page.`;
+}
+
+function buildPolicySignals(
+  claims: PublicUniversityClaim[]
+): string[] {
+  const claimTexts = claims.map((claim) => claim.claimText).join(" \n ");
+  const signals = new Set<string>();
+
+  for (const claim of claims) {
+    const label = claimTypeLabels[claim.claimType] ?? formatReviewState(claim.claimType);
+    signals.add(`Evidence includes ${label} claims.`);
+  }
+
+  const serviceNames = detectNamedAiServices(claimTexts);
+  if (serviceNames.length) {
+    signals.add(`Named AI services detected in public claims: ${serviceNames.join(", ")}.`);
+  } else {
+    signals.add("No specific AI service name is highlighted by the current public claim text.");
+  }
+
+  if (/\b(disclos|acknowledg|cite|citation|attribution)\w*/i.test(claimTexts)) {
+    signals.add("Disclosure, acknowledgment, citation, or attribution language appears in the public claim text.");
+  }
+
+  if (/\b(exam|assessment|coursework|assignment|homework|syllabus)\w*/i.test(claimTexts)) {
+    signals.add("Teaching, assessment, coursework, or syllabus-related language appears in the public claim text.");
+  }
+
+  if (/\b(privac|personal data|confidential|sensitive|FERPA|GDPR|security)\w*/i.test(claimTexts)) {
+    signals.add("Privacy, sensitive-data, or security language appears in the public claim text.");
+  }
+
+  return Array.from(signals).slice(0, 8);
+}
+
+const claimTypeLabels: Record<string, string> = {
+  academic_integrity: "Academic integrity",
+  ai_tool_treatment: "AI tool treatment",
+  other: "Other policy",
+  privacy: "Privacy",
+  procurement: "Procurement",
+  research: "Research",
+  security_review: "Security review",
+  source_status: "Source status",
+  teaching: "Teaching"
+};
+
+function detectNamedAiServices(text: string): string[] {
+  const serviceMatchers: Array<[string, RegExp]> = [
+    ["ChatGPT", /\bchatgpt\b/i],
+    ["DeepSeek", /\bdeepseek\b/i],
+    ["Microsoft Copilot", /\b(?:microsoft\s+)?copilot\b/i],
+    ["Claude", /\bclaude\b/i],
+    ["Gemini", /\bgemini\b/i],
+    ["Grammarly", /\bgrammarly\b/i],
+    ["DALL-E", /\bdall[-\s]?e\b/i],
+    ["Midjourney", /\bmidjourney\b/i]
+  ];
+
+  return serviceMatchers
+    .filter(([, matcher]) => matcher.test(text))
+    .map(([name]) => name);
+}
+
+function getSourceLanguages(
+  claims: PublicUniversityClaim[]
+): string[] {
+  const languages = new Set<string>();
+
+  for (const claim of claims) {
+    for (const evidence of claim.evidence) {
+      if (evidence.sourceLanguage) languages.add(evidence.sourceLanguage);
+    }
+  }
+
+  return Array.from(languages).sort((left, right) => left.localeCompare(right));
+}
+
+function formatClaimCoverage(
+  reviewedClaimCount: number,
+  candidateClaimCount: number
+): string {
+  if (!candidateClaimCount) {
+    return `${reviewedClaimCount} reviewed`;
+  }
+
+  return `${reviewedClaimCount} reviewed, ${candidateClaimCount} needs review`;
+}
+
+function formatReviewState(value: string): string {
+  return value.replaceAll("_", " ");
+}
+
+function formatReviewStateForRecord(value: string): string {
+  const phrase = value.replaceAll("_", "-");
+  const article = /^[aeiou]/i.test(phrase) ? "an" : "a";
+
+  return `${article} ${phrase}`;
 }

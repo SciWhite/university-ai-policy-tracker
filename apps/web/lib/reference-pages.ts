@@ -146,16 +146,44 @@ export const themeLandingSpecs: ThemeLandingSpec[] = [
   {
     slug: "ai-disclosure",
     label: "AI disclosure",
-    title: "AI disclosure policy claim records",
+    title: "Which universities mention AI disclosure?",
     description:
       "Published claim records where the visible claim or original evidence mentions disclosure, declaration, citation, attribution, transparency, or assignment-level permission."
   },
   {
     slug: "approved-ai-tools",
     label: "Approved AI tools",
-    title: "Approved AI tools policy claim records",
+    title: "Which universities mention approved AI tools?",
     description:
       "Published claim records where the visible claim or original evidence concerns named AI tools, licensed services, approved tools, procurement, or security review."
+  },
+  {
+    slug: "chatgpt-coursework-policy",
+    label: "ChatGPT coursework",
+    title: "Which universities mention ChatGPT or AI in coursework?",
+    description:
+      "Published claim records where the visible claim or original evidence mentions ChatGPT, OpenAI, GPT, coursework, assignments, syllabi, teaching, classroom use, or assessment context."
+  },
+  {
+    slug: "ai-in-exams",
+    label: "AI in exams",
+    title: "Which universities mention AI in exams or assessments?",
+    description:
+      "Published claim records where the visible claim or original evidence mentions exams, tests, quizzes, proctoring, assessment rules, or assessment-related AI restrictions."
+  },
+  {
+    slug: "ai-detectors",
+    label: "AI detectors",
+    title: "Which universities mention AI detection or detector tools?",
+    description:
+      "Published claim records where the visible claim or original evidence mentions AI detection, detector tools, originality checks, Turnitin, plagiarism detection, or AI-generated text checks."
+  },
+  {
+    slug: "privacy-data-entry",
+    label: "Privacy and data entry",
+    title: "Which universities mention AI privacy or data-entry rules?",
+    description:
+      "Published claim records where the visible claim or original evidence mentions privacy, personal data, confidential information, sensitive data, data entry, FERPA, GDPR, security, or information-protection rules."
   }
 ];
 
@@ -236,6 +264,16 @@ export function getThemeRecords(
     });
 }
 
+export function buildThemeCitationReadySummary(
+  spec: ThemeLandingSpec,
+  records: ThemeRecord[],
+  claimCount: number,
+  evidenceCount: number,
+  sourceCount: number
+): string {
+  return `University AI Policy Tracker currently indexes ${records.length} public university record${records.length === 1 ? "" : "s"} with ${claimCount} source-backed claim${claimCount === 1 ? "" : "s"} related to ${spec.label.toLowerCase()}, supported by ${evidenceCount} evidence record${evidenceCount === 1 ? "" : "s"} and ${sourceCount} official source attribution${sourceCount === 1 ? "" : "s"}. This page is a public dataset slice generated from promoted claim/evidence records; it does not create new policy conclusions. Original-language evidence remains canonical, and each linked university record exposes review state, confidence, source URLs, snapshot hashes, and public JSON.`;
+}
+
 export function countReviewedClaims(record: PublicReferenceRecord): number {
   return (
     record.summaryRecord?.claims.filter((claim) =>
@@ -312,6 +350,64 @@ function matchesThemeClaim(claim: PolicyClaim, slug: string): boolean {
         "service",
         "procurement",
         "security review"
+      ].some((keyword) => haystack.includes(keyword))
+    );
+  }
+
+  if (slug === "chatgpt-coursework-policy") {
+    return [
+      "chatgpt",
+      "openai",
+      "gpt",
+      "coursework",
+      "assignment",
+      "homework",
+      "syllabus",
+      "course",
+      "classroom",
+      "teaching",
+      "assessment"
+    ].some((keyword) => haystack.includes(keyword));
+  }
+
+  if (slug === "ai-in-exams") {
+    return [
+      "exam",
+      "test",
+      "quiz",
+      "assessment",
+      "proctor",
+      "invigil",
+      "take-home"
+    ].some((keyword) => haystack.includes(keyword));
+  }
+
+  if (slug === "ai-detectors") {
+    return [
+      "detector",
+      "detection",
+      "turnitin",
+      "originality",
+      "plagiarism",
+      "ai-generated",
+      "ai generated"
+    ].some((keyword) => haystack.includes(keyword));
+  }
+
+  if (slug === "privacy-data-entry") {
+    return (
+      claim.claimType === "privacy" ||
+      claim.claimType === "security_review" ||
+      [
+        "privacy",
+        "personal data",
+        "confidential",
+        "sensitive",
+        "data entry",
+        "ferpa",
+        "gdpr",
+        "security",
+        "information protection"
       ].some((keyword) => haystack.includes(keyword))
     );
   }

@@ -7,6 +7,12 @@ import {
 
 export const dynamic = "force-dynamic";
 
+const searchCorsHeaders = {
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Origin": "*"
+};
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const query = url.searchParams.get("q") ?? "";
@@ -14,7 +20,13 @@ export async function GET(request: Request) {
   const records = await fetchSearchIndexRecords(request.url);
   const results = searchIndexRecords(records, query, { limit });
 
-  return NextResponse.json(buildSearchResponse(query, results));
+  return NextResponse.json(buildSearchResponse(query, results), {
+    headers: searchCorsHeaders
+  });
+}
+
+export function OPTIONS() {
+  return new Response(null, { headers: searchCorsHeaders });
 }
 
 async function fetchSearchIndexRecords(requestUrl: string): Promise<SearchIndexRecord[]> {
