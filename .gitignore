@@ -14,6 +14,8 @@ build/
 out/
 .turbo/
 coverage/
+!apps/web/app/coverage/
+!apps/web/app/coverage/**
 *.tsbuildinfo
 
 # Logs and local runtime files
