@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "kfupm-sr-001",
+  "sourceCandidateId": "kfupm-sc-rejected-news-chatgpt",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "sourceUrl": "https://news.kfupm.edu.sa/news/kfupm-becomes-first-saudi-university-to-launch-chatgpt-edu/75/",
+  "finalUrl": "https://news.kfupm.edu.sa/news/kfupm-becomes-first-saudi-university-to-launch-chatgpt-edu/75/",
+  "rejectedAt": "2026-05-13T01:54:04Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "KFUPM becomes first Saudi University to launch ChatGPT Edu.",
+  "notes": "Rejected as a source for policy claims because it is an official announcement article rather than standing university guidance."
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-brown-001",
+  "claimId": "cl-brown-001",
+  "sourceSnapshotId": "ss-brown-001",
+  "sourceUrl": "https://provost.brown.edu/communications/potential-impact-ai-our-academic-mission",
+  "finalUrl": "https://provost.brown.edu/communications/potential-impact-ai-our-academic-mission",
+  "sourceTitle": "Potential impact of AI on our academic mission",
+  "sourceLanguage": "en",
+  "snapshotHash": "31855bf7255585cb22686b19b076c2a8d9dc848b1f6c81667a60254ddf2b9b9a",
+  "evidenceSnippetOriginal": "While the University is not prescribing specific AI policies, faculty should offer clear, unambiguous information about what is, and is not, allowed in their courses.",
+  "evidenceLocator": "AI Usage Guidance section",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Potential impact of AI on our academic mission",
+    "sourceUrl": "https://provost.brown.edu/communications/potential-impact-ai-our-academic-mission",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brown-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/brown-university",
+    "publisher": "Brown University Office of the Provost",
+    "retrievedAt": "2026-05-12T18:00:00.000Z",
+    "snapshotHash": "31855bf7255585cb22686b19b076c2a8d9dc848b1f6c81667a60254ddf2b9b9a",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

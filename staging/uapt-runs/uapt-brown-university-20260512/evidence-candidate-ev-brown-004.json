@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-brown-004",
+  "claimId": "cl-brown-004",
+  "sourceSnapshotId": "ss-brown-003",
+  "sourceUrl": "https://ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools",
+  "finalUrl": "https://ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools",
+  "sourceTitle": "Protecting Information When Using AI Tools",
+  "sourceLanguage": "en",
+  "snapshotHash": "2dc5cb9c76574f1c04449713c1490df8ea9acf287492ba4908499dd2f26df060",
+  "evidenceSnippetOriginal": "Unless Brown has a contract for a specific service which protects our data, do not enter Level 2 or 3 data into publicly available or vendor-enabled AI tools.",
+  "evidenceLocator": "Do not share sensitive information with Open AI tools section",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Protecting Information When Using AI Tools",
+    "sourceUrl": "https://ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brown-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/brown-university",
+    "publisher": "Brown University OIT Service Center",
+    "retrievedAt": "2026-05-12T18:00:00.000Z",
+    "snapshotHash": "2dc5cb9c76574f1c04449713c1490df8ea9acf287492ba4908499dd2f26df060",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

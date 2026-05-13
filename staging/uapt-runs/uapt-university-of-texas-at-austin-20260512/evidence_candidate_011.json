@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-ut-austin-011",
+  "claimId": "claim-ut-austin-011",
+  "sourceSnapshotId": "snapshot-ut-austin-006",
+  "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/requiring-generative-ai-in-the-classroom/",
+  "finalUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/requiring-generative-ai-in-the-classroom/",
+  "sourceTitle": "Requiring Generative AI in the Classroom - Office of the Executive Vice President and Provost",
+  "sourceLanguage": "en",
+  "snapshotHash": "93a8872c71bdae2fe6e3edd206de281c39018f4ffc8650a9434652544c140d23",
+  "evidenceSnippetOriginal": "Ensure that your syllabus clearly identifies Syllabus Policy statements regarding the use of generative AI in your class. If you plan to encourage or require the use of generative AI in your class, ensure that requirement is clearly listed in the Required Course Materials section of your syllabus.",
+  "evidenceLocator": "Recommended Practices for Requiring the Use of Generative AI in the Classroom",
+  "evidenceType": "official_source",
+  "relevance": 0.91,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Requiring Generative AI in the Classroom - Office of the Executive Vice President and Provost",
+    "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/requiring-generative-ai-in-the-classroom/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "93a8872c71bdae2fe6e3edd206de281c39018f4ffc8650a9434652544c140d23",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

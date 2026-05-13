@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-ut-austin-001",
+  "sourceCandidateId": "src-ut-austin-001",
+  "sourceUrl": "https://security.utexas.edu/ai-tools",
+  "finalUrl": "https://security.utexas.edu/ai-tools",
+  "attemptedAt": "2026-05-13T01:54:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 134,
+  "contentHash": "f65f66948048f0c455452d6d095d831a0fe2b04c8b543234f058f86af5ddd094",
+  "normalizedTextStorageKey": "normalized/university-of-texas-at-austin/acceptable-use-generative-ai-tools-20260512.txt"
+}

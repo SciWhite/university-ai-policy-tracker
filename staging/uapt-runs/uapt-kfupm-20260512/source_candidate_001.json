@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "kfupm-sc-001",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+  "finalUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+  "sourceTitle": "AI+X",
+  "sourceLanguage": "en",
+  "sourceType": "university_guidance",
+  "discoveryMethod": "multilingual_query",
+  "queryUsed": "site:kfupm.edu.sa \"الذكاء الاصطناعي\" \"ChatGPT\" \"جامعة الملك فهد\"",
+  "discoveredAt": "2026-05-13T01:42:00Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.93,
+  "policySpecificityScore": 0.62,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-13T01:54:04Z",
+  "verificationNotes": "Official KFUPM non-news page describing AI+X undergraduate AI coursework and ChatGPT Edu integration. It supports narrow source-backed teaching and tool-access claims, not a comprehensive university-wide AI policy.",
+  "robotsPolicy": "respect"
+}

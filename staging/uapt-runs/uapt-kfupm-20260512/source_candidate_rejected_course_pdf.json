@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "kfupm-sc-rejected-course-pdf",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "sourceUrl": "https://math.kfupm.edu.sa/docs/default-source/default-document-library/math667-251.pdf?sfvrsn=ceb7132d_1",
+  "sourceTitle": "King Fahd University of Petroleum and Minerals course PDF",
+  "sourceLanguage": "en",
+  "sourceType": "official_pdf",
+  "discoveryMethod": "pdf_discovery",
+  "queryUsed": "site:kfupm.edu.sa \"academic integrity\" \"ChatGPT\" OR \"artificial intelligence\" \"KFUPM\"",
+  "discoveredAt": "2026-05-13T01:43:00Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.68,
+  "policySpecificityScore": 0.28,
+  "verificationStatus": "rejected",
+  "rejectionReason": "low_policy_specificity",
+  "verificationNotes": "Official department course PDF search result mentions ChatGPT or AI source use, but it is course-specific and not appropriate for a university-level policy claim.",
+  "robotsPolicy": "respect"
+}

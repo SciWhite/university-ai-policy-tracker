@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "kfupm-review-002",
+  "claimId": "kfupm-claim-002",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim is directly supported by the official KFUPM AI+X page statement about undergraduate AI-focused coursework and the 2030 goal.",
+  "decidedAt": "2026-05-13T01:54:04Z"
+}

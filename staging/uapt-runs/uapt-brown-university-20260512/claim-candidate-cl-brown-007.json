@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "cl-brown-007",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "claimType": "ai_tool_treatment",
+  "claimText": "Brown OIT guidance says Gemini and NotebookLM are optional tools available to Brown students, Brown staff, Brown-paid faculty, and Brown clinical/medical faculty.",
+  "normalizedValue": "gemini_notebooklm_optional_available_to_brown_community_roles",
+  "sourceLanguage": "en",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-brown-007"
+  ],
+  "citation": {
+    "citationTitle": "Google Gemini Chat and NotebookLM AI Services",
+    "sourceUrl": "https://ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brown-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/brown-university",
+    "publisher": "Brown University OIT Service Center",
+    "retrievedAt": "2026-05-12T18:00:00.000Z",
+    "snapshotHash": "5f6de8840f33aaad438252ad21684ce67247b3d473b5f521c3636afbd355206d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "kfupm-claim-003",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "claimType": "ai_tool_treatment",
+  "claimText": "KFUPM's AI+X page states that KFUPM launched ChatGPT Edu in partnership with OpenAI and describes the initiative as integrating AI tools into classrooms and research environments.",
+  "normalizedValue": "ChatGPT Edu launch and classroom/research-environment integration stated by KFUPM.",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "kfupm-evidence-003"
+  ],
+  "citation": {
+    "citationTitle": "AI+X",
+    "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+    "publisher": "King Fahd University of Petroleum & Minerals",
+    "retrievedAt": "2026-05-13T01:54:04Z",
+    "snapshotHash": "53967302f2c1904177a9646321b288e1ede2f51167915f65792770bef6b64b06",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "cl-brown-004",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "claimType": "privacy",
+  "claimText": "Brown OIT guidance says users should not enter Level 2 or 3 Brown data into publicly available or vendor-enabled AI tools unless Brown has a contract for a specific service that protects the data.",
+  "normalizedValue": "no_level_2_or_3_data_without_protective_contract",
+  "sourceLanguage": "en",
+  "confidence": 0.95,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-brown-004"
+  ],
+  "citation": {
+    "citationTitle": "Protecting Information When Using AI Tools",
+    "sourceUrl": "https://ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brown-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/brown-university",
+    "publisher": "Brown University OIT Service Center",
+    "retrievedAt": "2026-05-12T18:00:00.000Z",
+    "snapshotHash": "2dc5cb9c76574f1c04449713c1490df8ea9acf287492ba4908499dd2f26df060",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

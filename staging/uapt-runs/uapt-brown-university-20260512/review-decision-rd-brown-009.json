@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "rd-brown-009",
+  "claimId": "cl-brown-009",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-policy-reviewer",
+  "notes": "Claim is narrowly scoped and directly supported by the linked official Brown source evidence.",
+  "decidedAt": "2026-05-12T18:00:00.000Z"
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-ut-austin-005",
+  "claimId": "claim-ut-austin-005",
+  "sourceSnapshotId": "snapshot-ut-austin-002",
+  "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools/",
+  "finalUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools/",
+  "sourceTitle": "Responsible Adoption of AI Tools for Teaching and Learning - Office of the Executive Vice President and Provost",
+  "sourceLanguage": "en",
+  "snapshotHash": "e5d95fdfcc51a12417a0b3e41b9a45ede57358d43fb0611d4852ffdc582f2dac",
+  "evidenceSnippetOriginal": "Academic Integrity: Use AI in alignment with our honor code and fundamental scholarly values such honesty, respect and authenticity, taking ownership and claiming authorship of the output of tools when appropriate.",
+  "evidenceLocator": "Framework of Principles",
+  "evidenceType": "official_source",
+  "relevance": 0.92,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Responsible Adoption of AI Tools for Teaching and Learning - Office of the Executive Vice President and Provost",
+    "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "e5d95fdfcc51a12417a0b3e41b9a45ede57358d43fb0611d4852ffdc582f2dac",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

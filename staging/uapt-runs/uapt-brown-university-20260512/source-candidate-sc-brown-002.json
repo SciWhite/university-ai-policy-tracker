@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-brown-002",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "sourceUrl": "https://sheridan.brown.edu/resources/classroom-practices/intentional-pedagogy-ai-technology",
+  "finalUrl": "https://sheridan.brown.edu/resources/classroom-practices/intentional-pedagogy-ai-technology",
+  "sourceTitle": "Intentional Pedagogy with AI Technology",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:brown.edu Brown University generative AI policy academic integrity students instructors privacy AI tools",
+  "discoveredAt": "2026-05-12T18:00:00.000Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T18:00:00.000Z",
+  "verificationNotes": "Official Sheridan Center teaching guidance with Brown Academic Code framing and classroom AI expectation guidance.",
+  "robotsPolicy": "respect"
+}

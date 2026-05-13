@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-ut-austin-002",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools/",
+  "finalUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools/",
+  "sourceTitle": "Responsible Adoption of AI Tools for Teaching and Learning - Office of the Executive Vice President and Provost",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:utexas.edu \"Acceptable Use of Generative AI Tools\" \"University of Texas at Austin\"",
+  "discoveredAt": "2026-05-13T01:54:45Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-13T01:54:45Z",
+  "verificationNotes": "Official UT Austin public page with direct AI policy or guidance evidence. Static HTTP fetch succeeded and normalized source text was hashed.",
+  "robotsPolicy": "respect"
+}

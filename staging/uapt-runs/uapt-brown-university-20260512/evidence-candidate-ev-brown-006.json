@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-brown-006",
+  "claimId": "cl-brown-006",
+  "sourceSnapshotId": "ss-brown-004",
+  "sourceUrl": "https://ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+  "finalUrl": "https://ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+  "sourceTitle": "Google Gemini Chat and NotebookLM AI Services",
+  "sourceLanguage": "en",
+  "snapshotHash": "5f6de8840f33aaad438252ad21684ce67247b3d473b5f521c3636afbd355206d",
+  "evidenceSnippetOriginal": "The two Artificial Intelligence (AI) services Google Gemini Chat and NotebookLM are now accessible at no cost to Brown. These services can be used with data classified as Risk Level 3 (unlike consumer AI services such as ChatGPT, DeepSeek, and Claude with whom Brown does not have agreements).",
+  "evidenceLocator": "Introductory service description",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Google Gemini Chat and NotebookLM AI Services",
+    "sourceUrl": "https://ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brown-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/brown-university",
+    "publisher": "Brown University OIT Service Center",
+    "retrievedAt": "2026-05-12T18:00:00.000Z",
+    "snapshotHash": "5f6de8840f33aaad438252ad21684ce67247b3d473b5f521c3636afbd355206d",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

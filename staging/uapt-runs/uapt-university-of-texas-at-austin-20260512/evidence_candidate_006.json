@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "evidence-ut-austin-006",
+  "claimId": "claim-ut-austin-006",
+  "sourceSnapshotId": "snapshot-ut-austin-003",
+  "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-detection-software-guidance/",
+  "finalUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-detection-software-guidance/",
+  "sourceTitle": "AI Detection Software Guidance - Office of the Executive Vice President and Provost",
+  "sourceLanguage": "en",
+  "snapshotHash": "9a2c53f763c0dab4a542eded123bd43bd72e362c1568e82a73fab24b38f3b557",
+  "evidenceSnippetOriginal": "The University prohibits the use of all third-party software, including AI Detection Software ... to evaluate student work or assignments unless a University contract or purchase order is in place.",
+  "evidenceLocator": "Use of AI Detection Software Requires a University Contract or Purchase Order",
+  "evidenceType": "official_source",
+  "relevance": 0.96,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Detection Software Guidance - Office of the Executive Vice President and Provost",
+    "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-detection-software-guidance/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "9a2c53f763c0dab4a542eded123bd43bd72e362c1568e82a73fab24b38f3b557",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

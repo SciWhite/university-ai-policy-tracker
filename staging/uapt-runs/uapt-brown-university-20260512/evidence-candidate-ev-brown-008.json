@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-brown-008",
+  "claimId": "cl-brown-008",
+  "sourceSnapshotId": "ss-brown-005",
+  "sourceUrl": "https://ouc.brown.edu/community-resources/ai-guidelines-brown-communicators",
+  "finalUrl": "https://ouc.brown.edu/community-resources/ai-guidelines-brown-communicators",
+  "sourceTitle": "AI Guidelines for Brown Communicators",
+  "sourceLanguage": "en",
+  "snapshotHash": "d68530313ee8997cf940d0f4b8544083aac68e530f4abac97886e3410bc895a9",
+  "evidenceSnippetOriginal": "This includes a prohibition against inputting names, birthdates, addresses, grades, performance ratings, etc. into any AI tool in ways that identify individuals ... This includes a prohibition against inputting proprietary information into any AI tool",
+  "evidenceLocator": "Confidentiality and privacy principle",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI Guidelines for Brown Communicators",
+    "sourceUrl": "https://ouc.brown.edu/community-resources/ai-guidelines-brown-communicators",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brown-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/brown-university",
+    "publisher": "Brown University University Communications",
+    "retrievedAt": "2026-05-12T18:00:00.000Z",
+    "snapshotHash": "d68530313ee8997cf940d0f4b8544083aac68e530f4abac97886e3410bc895a9",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

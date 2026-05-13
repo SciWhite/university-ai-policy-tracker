@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-ut-austin-006",
+  "sourceCandidateId": "src-ut-austin-006",
+  "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/requiring-generative-ai-in-the-classroom/",
+  "finalUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/requiring-generative-ai-in-the-classroom/",
+  "attemptedAt": "2026-05-13T01:54:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 29,
+  "contentHash": "93a8872c71bdae2fe6e3edd206de281c39018f4ffc8650a9434652544c140d23",
+  "normalizedTextStorageKey": "normalized/university-of-texas-at-austin/requiring-generative-ai-classroom-20260512.txt"
+}

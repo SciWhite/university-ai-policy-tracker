@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ut-austin-008",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "claimType": "research",
+  "claimText": "UT Austin graduate-education recommendations state that graduate students and mentors must use only vetted, university-contracted generative AI platforms for work involving non-public research data.",
+  "normalizedValue": "Graduate AI recommendations restrict non-public research data to vetted university-contracted platforms.",
+  "sourceLanguage": "en",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ut-austin-008"
+  ],
+  "citation": {
+    "citationTitle": "AI Use in Graduate Education - Office of the Executive Vice President and Provost",
+    "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-use-in-graduate-education/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "3b608ef2490886b6ee85f50b92fd1c8b81eaff5ec171bea961b13a5b29607765",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

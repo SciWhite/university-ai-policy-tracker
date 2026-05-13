@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ut-austin-010",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "claimType": "academic_integrity",
+  "claimText": "UT Austin CTL teaching-policy guidance says using generative AI tools to create course-assignment responses in a way the instructor does not accept may be considered academic dishonesty by the university.",
+  "normalizedValue": "Unacceptable instructor-disallowed AI-generated assignment responses may be academic dishonesty.",
+  "sourceLanguage": "en",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ut-austin-010"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI in Teaching and Learning: Policies | Faculty Instructional Support and Development",
+    "sourceUrl": "https://ctl.utexas.edu/generative-ai-teaching-and-learning-policies",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "fc141d191267ad4a10a0c09fc98096c89be7eb1c5811660a23c7fa8e9a77a103",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

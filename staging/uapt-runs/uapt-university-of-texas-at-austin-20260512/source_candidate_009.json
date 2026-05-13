@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-ut-austin-009",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "sourceUrl": "https://sites.utexas.edu/cofawebteam/best-practices/artificial-intelligence/",
+  "sourceTitle": "Artificial Intelligence - College of Fine Arts Web Instruction",
+  "sourceType": "other",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:utexas.edu \"Acceptable Use of Generative AI Tools\" \"University of Texas at Austin\"",
+  "discoveredAt": "2026-05-13T01:54:45Z",
+  "officialDomainConfidence": 0.9,
+  "aiRelevanceScore": 0.58,
+  "policySpecificityScore": 0.28,
+  "verificationStatus": "rejected",
+  "rejectionReason": "low_policy_specificity",
+  "verificationNotes": "Rejected as unit-level/implementation guidance, not the primary university-wide policy source.",
+  "robotsPolicy": "respect"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "kfupm-sc-rejected-research-policies",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "sourceUrl": "https://ri.kfupm.edu.sa/dr/policies",
+  "finalUrl": "https://ri.kfupm.edu.sa/dr/policies",
+  "sourceTitle": "All Policies - KFUPM Research & Innovation",
+  "sourceLanguage": "en",
+  "sourceType": "formal_policy",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:kfupm.edu.sa \"Artificial Intelligence\" \"policy\" \"KFUPM\"",
+  "discoveredAt": "2026-05-13T01:34:00Z",
+  "officialDomainConfidence": 0.96,
+  "aiRelevanceScore": 0.35,
+  "policySpecificityScore": 0.22,
+  "verificationStatus": "rejected",
+  "rejectionReason": "no_ai_content",
+  "verificationNotes": "Official Research & Innovation policies index appeared in AI policy search results because of surrounding research-center navigation, but the result is not an AI-use policy source.",
+  "robotsPolicy": "respect"
+}

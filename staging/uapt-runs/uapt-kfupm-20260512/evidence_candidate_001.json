@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "kfupm-evidence-001",
+  "claimId": "kfupm-claim-001",
+  "sourceSnapshotId": "kfupm-ss-001",
+  "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+  "finalUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+  "sourceTitle": "AI+X",
+  "sourceLanguage": "en",
+  "snapshotHash": "53967302f2c1904177a9646321b288e1ede2f51167915f65792770bef6b64b06",
+  "evidenceSnippetOriginal": "AI+X is a comprehensive initiative designed to equip every undergraduate student with essential artificial intelligence (AI) skills, regardless of their chosen major. Students begin with foundational AI coursework before advancing into their selected academic programs, ensuring they gain firsthand exposure to AI applications that enhance their field of study.",
+  "evidenceSnippetDisplay": "KFUPM describes AI+X as an initiative for every undergraduate student, with foundational AI coursework before selected academic programs.",
+  "evidenceLocator": "AI+X page, introductory section",
+  "evidenceType": "official_source",
+  "relevance": 0.95,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI+X",
+    "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+    "publisher": "King Fahd University of Petroleum & Minerals",
+    "retrievedAt": "2026-05-13T01:54:04Z",
+    "snapshotHash": "53967302f2c1904177a9646321b288e1ede2f51167915f65792770bef6b64b06",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

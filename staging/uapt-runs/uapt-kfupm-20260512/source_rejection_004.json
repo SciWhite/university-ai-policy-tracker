@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "kfupm-sr-004",
+  "sourceCandidateId": "kfupm-sc-rejected-course-pdf",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "sourceUrl": "https://math.kfupm.edu.sa/docs/default-source/default-document-library/math667-251.pdf?sfvrsn=ceb7132d_1",
+  "rejectedAt": "2026-05-13T01:54:04Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Search snippet indicated course-level references to using ChatGPT or any AI source.",
+  "notes": "Rejected because the source is course-specific and not evidence of a university-wide AI policy."
+}

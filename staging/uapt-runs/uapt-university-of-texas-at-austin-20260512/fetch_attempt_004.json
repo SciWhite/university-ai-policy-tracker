@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-ut-austin-004",
+  "sourceCandidateId": "src-ut-austin-004",
+  "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-use-in-graduate-education/",
+  "finalUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-use-in-graduate-education/",
+  "attemptedAt": "2026-05-13T01:54:45Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 32,
+  "contentHash": "3b608ef2490886b6ee85f50b92fd1c8b81eaff5ec171bea961b13a5b29607765",
+  "normalizedTextStorageKey": "normalized/university-of-texas-at-austin/ai-use-graduate-education-20260512.txt"
+}

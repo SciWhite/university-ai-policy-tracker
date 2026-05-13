@@ -844,6 +844,7 @@ function buildRankingSlugs(name: string): string[] {
     "seoul-national-university": ["snu"],
     "the-chinese-university-of-hong-kong": ["cuhk"],
     "the-hong-kong-university-of-science-and-technology": ["hkust"],
+    "the-university-of-auckland": ["university-of-auckland"],
     "the-university-of-edinburgh": ["edinburgh"],
     "the-university-of-hong-kong": ["university-of-hong-kong"],
     "the-university-of-manchester": ["manchester"],

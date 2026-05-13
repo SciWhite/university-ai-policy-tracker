@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "kfupm-evidence-003",
+  "claimId": "kfupm-claim-003",
+  "sourceSnapshotId": "kfupm-ss-001",
+  "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+  "finalUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+  "sourceTitle": "AI+X",
+  "sourceLanguage": "en",
+  "snapshotHash": "53967302f2c1904177a9646321b288e1ede2f51167915f65792770bef6b64b06",
+  "evidenceSnippetOriginal": "KFUPM is also the first university in Saudi Arabia to launch ChatGPT Edu in partnership with OpenAI. This initiative integrates AI tools into classrooms and research environments, enhancing research efforts and enabling students to focus on higher-level problem-solving and creativity.",
+  "evidenceSnippetDisplay": "KFUPM says it launched ChatGPT Edu with OpenAI and describes the initiative as integrating AI tools into classrooms and research environments.",
+  "evidenceLocator": "AI+X page, Advancing AI Capabilities in Saudi Arabia",
+  "evidenceType": "official_source",
+  "relevance": 0.93,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "AI+X",
+    "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+    "publisher": "King Fahd University of Petroleum & Minerals",
+    "retrievedAt": "2026-05-13T01:54:04Z",
+    "snapshotHash": "53967302f2c1904177a9646321b288e1ede2f51167915f65792770bef6b64b06",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

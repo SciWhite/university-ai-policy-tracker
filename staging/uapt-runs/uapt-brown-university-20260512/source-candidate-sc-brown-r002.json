@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-brown-r002",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "sourceUrl": "https://libguides.brown.edu/AI",
+  "sourceTitle": "Generative Artificial Intelligence - Library Guides at Brown University",
+  "sourceLanguage": "en",
+  "sourceType": "generic_or_unclear",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:brown.edu Brown University generative AI policy academic integrity students instructors privacy AI tools",
+  "discoveredAt": "2026-05-12T18:00:00.000Z",
+  "officialDomainConfidence": 0.95,
+  "aiRelevanceScore": 0.7,
+  "policySpecificityScore": 0.25,
+  "verificationStatus": "rejected",
+  "rejectionReason": "low_policy_specificity",
+  "verificationNotes": "Library guide is official and useful for discovery, but it explicitly says it does not represent University policy and mostly links to other resources.",
+  "robotsPolicy": "respect"
+}

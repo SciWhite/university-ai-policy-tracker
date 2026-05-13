@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "report_draft",
+  "reportId": "report-ut-austin-001",
+  "title": "University of Texas at Austin staged AI policy crawl draft",
+  "generatedAt": "2026-05-13T01:54:45Z",
+  "draftPath": "content/reports/2026-05/university-of-texas-at-austin-ai-policy-staged-crawl.mdx",
+  "summary": "Staged UT Austin official-source AI policy and guidance candidates covering acceptable use, privacy/security, CISO review, responsible teaching adoption, AI detection software, graduate research-data recommendations, academic-integrity framing, and classroom-requirement guidance. This is a non-canonical draft for review only.",
+  "referencedClaimIds": [
+    "claim-ut-austin-001",
+    "claim-ut-austin-002",
+    "claim-ut-austin-003",
+    "claim-ut-austin-004",
+    "claim-ut-austin-005",
+    "claim-ut-austin-006",
+    "claim-ut-austin-007",
+    "claim-ut-austin-008",
+    "claim-ut-austin-009",
+    "claim-ut-austin-010",
+    "claim-ut-austin-011"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json"
+  ],
+  "limitations": [
+    "This staged report is not legal advice, academic integrity advice, or an official University of Texas at Austin statement. It has not been human reviewed and must not be published as canonical without review.",
+    "Graduate education entries are scoped as recommendations where the source says they are recommendations rather than policies."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

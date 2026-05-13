@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-brown-005",
+  "sourceCandidateId": "sc-brown-005",
+  "sourceUrl": "https://ouc.brown.edu/community-resources/ai-guidelines-brown-communicators",
+  "finalUrl": "https://ouc.brown.edu/community-resources/ai-guidelines-brown-communicators",
+  "attemptedAt": "2026-05-12T18:00:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 199,
+  "contentHash": "d68530313ee8997cf940d0f4b8544083aac68e530f4abac97886e3410bc895a9",
+  "normalizedTextStorageKey": "source-snapshots/uapt-brown-university-20260512/ss-brown-005.normalized.txt"
+}

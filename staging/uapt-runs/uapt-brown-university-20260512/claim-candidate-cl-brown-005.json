@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "cl-brown-005",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "claimType": "security_review",
+  "claimText": "Brown OIT guidance says AI tool use is subject to the same policies as other information technology resources, including acceptable use, copyright, conduct, and contract review policies.",
+  "normalizedValue": "ai_tools_subject_to_existing_it_and_contract_policies",
+  "sourceLanguage": "en",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-brown-005"
+  ],
+  "citation": {
+    "citationTitle": "Protecting Information When Using AI Tools",
+    "sourceUrl": "https://ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brown-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/brown-university",
+    "publisher": "Brown University OIT Service Center",
+    "retrievedAt": "2026-05-12T18:00:00.000Z",
+    "snapshotHash": "2dc5cb9c76574f1c04449713c1490df8ea9acf287492ba4908499dd2f26df060",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

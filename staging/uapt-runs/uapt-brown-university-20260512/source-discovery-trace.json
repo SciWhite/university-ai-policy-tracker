@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "sdt-brown-001",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "startedAt": "2026-05-12T17:30:00.000Z",
+  "endedAt": "2026-05-12T18:00:00.000Z",
+  "methodsAttempted": [
+    {
+      "method": "public_web_search",
+      "query": "site:brown.edu Brown University generative AI policy academic integrity students instructors privacy AI tools",
+      "domain": "brown.edu",
+      "resultCount": 10,
+      "notes": "Firecrawl search returned Provost, Sheridan Center, OIT, University Communications, Library, School of Public Health, pre-college, humanities, and other Brown results."
+    },
+    {
+      "method": "site_search",
+      "query": "site:brown.edu \"Gemini Chat\" \"NotebookLM\" Brown AI tools",
+      "domain": "brown.edu",
+      "resultCount": 10,
+      "notes": "Web search identified the current OIT Google Gemini Chat and NotebookLM AI Services page."
+    },
+    {
+      "method": "site_search",
+      "query": "site:brown.edu \"Protecting Information When Using AI Tools\"",
+      "domain": "brown.edu",
+      "resultCount": 10,
+      "notes": "Web search identified the OIT sensitive-information guidance page and PDF variant."
+    },
+    {
+      "method": "site_search",
+      "query": "site:brown.edu \"AI Guidelines for Brown Communicators\"",
+      "domain": "brown.edu",
+      "resultCount": 10,
+      "notes": "Web search found the current University Communications guidance and an older brown.edu path."
+    },
+    {
+      "method": "site_search",
+      "query": "site:brown.edu \"Classroom Policies for AI Generative Tools\"",
+      "domain": "brown.edu",
+      "resultCount": 10,
+      "notes": "Found Sheridan-hosted external classroom-policy collection; rejected as non-Brown-specific evidence."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "sc-brown-001",
+    "sc-brown-002",
+    "sc-brown-003",
+    "sc-brown-004",
+    "sc-brown-005",
+    "sc-brown-006",
+    "sc-brown-r001",
+    "sc-brown-r002",
+    "sc-brown-r003",
+    "sc-brown-r004",
+    "sc-brown-r005",
+    "sc-brown-r006"
+  ],
+  "rejectionIds": [
+    "sr-brown-r001",
+    "sr-brown-r002",
+    "sr-brown-r003",
+    "sr-brown-r004",
+    "sr-brown-r005",
+    "sr-brown-r006"
+  ],
+  "summary": "Discovery found six official Brown sources suitable for narrow staged claims: Provost AI academic-mission guidance, Sheridan Center teaching guidance, OIT information-protection guidance, OIT Gemini/NotebookLM service guidance, University Communications AI guidelines, and OIT research-tool guidance. Six additional official or Brown-hosted pages were rejected as external collections, generic/non-policy guidance, duplicate school-level summaries, career advice, research showcase, or course-specific content."
+}

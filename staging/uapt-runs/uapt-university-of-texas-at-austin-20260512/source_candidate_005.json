@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-ut-austin-005",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "sourceUrl": "https://ctl.utexas.edu/generative-ai-teaching-and-learning-policies",
+  "finalUrl": "https://ctl.utexas.edu/generative-ai-teaching-and-learning-policies",
+  "sourceTitle": "Generative AI in Teaching and Learning: Policies | Faculty Instructional Support and Development",
+  "sourceLanguage": "en",
+  "sourceType": "teaching_guidance",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:utexas.edu \"Acceptable Use of Generative AI Tools\" \"University of Texas at Austin\"",
+  "discoveredAt": "2026-05-13T01:54:45Z",
+  "officialDomainConfidence": 0.97,
+  "aiRelevanceScore": 0.91,
+  "policySpecificityScore": 0.86,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-13T01:54:45Z",
+  "verificationNotes": "Official UT Austin public page with direct AI policy or guidance evidence. Static HTTP fetch succeeded and normalized source text was hashed.",
+  "robotsPolicy": "respect"
+}

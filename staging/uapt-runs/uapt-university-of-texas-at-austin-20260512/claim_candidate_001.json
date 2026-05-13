@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ut-austin-001",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "claimType": "privacy",
+  "claimText": "UT Austin acceptable-use guidance says published university information may be used freely with AI tools, while controlled or confidential university information can be used only with university-managed AI tools covered by contracts that protect university data and disable web search functionality.",
+  "normalizedValue": "Published data allowed; controlled/confidential data limited to contracted university-managed AI tools with protections and disabled web search.",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ut-austin-001"
+  ],
+  "citation": {
+    "citationTitle": "Acceptable Use of Generative AI Tools | UT Austin Information Security Office",
+    "sourceUrl": "https://security.utexas.edu/ai-tools",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "f65f66948048f0c455452d6d095d831a0fe2b04c8b543234f058f86af5ddd094",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

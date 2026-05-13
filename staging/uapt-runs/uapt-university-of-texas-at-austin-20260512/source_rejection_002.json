@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "rejection-ut-austin-002",
+  "sourceCandidateId": "src-ut-austin-008",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "sourceUrl": "https://ctl.utexas.edu/teaching-technology/5-things-know-about-chatgpt",
+  "rejectedAt": "2026-05-13T01:54:45Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "Codex local staged crawl",
+  "evidenceSnippet": "Search result described this as a quick overview resource with links to deeper topics.",
+  "notes": "Rejected because stronger official policy and guidance pages provide direct source evidence."
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "evidence_candidate",
+  "evidenceId": "ev-brown-009",
+  "claimId": "cl-brown-009",
+  "sourceSnapshotId": "ss-brown-006",
+  "sourceUrl": "https://ithelp.brown.edu/kb/articles/generative-ai-as-a-research-tool",
+  "finalUrl": "https://ithelp.brown.edu/kb/articles/generative-ai-as-a-research-tool",
+  "sourceTitle": "Generative AI as a Research Tool",
+  "sourceLanguage": "en",
+  "snapshotHash": "6baa7056b92373108e9f841d56fb8ff3fc3d70c9717cbb51ff44b4ef50ab2064",
+  "evidenceSnippetOriginal": "It’s critical to deeply review all code generated with these tools for quality and efficiency.",
+  "evidenceLocator": "Development of Code for Research section",
+  "evidenceType": "official_source",
+  "relevance": 0.94,
+  "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "citation": {
+    "citationTitle": "Generative AI as a Research Tool",
+    "sourceUrl": "https://ithelp.brown.edu/kb/articles/generative-ai-as-a-research-tool",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brown-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/brown-university",
+    "publisher": "Brown University OIT Service Center",
+    "retrievedAt": "2026-05-12T18:00:00.000Z",
+    "snapshotHash": "6baa7056b92373108e9f841d56fb8ff3fc3d70c9717cbb51ff44b4ef50ab2064",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  }
+}

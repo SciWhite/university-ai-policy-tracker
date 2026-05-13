@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ut-austin-006",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "claimType": "procurement",
+  "claimText": "UT Austin AI detection guidance prohibits third-party AI detection software from being used to evaluate student work or assignments unless a university contract or purchase order is in place.",
+  "normalizedValue": "AI detection software for student-work evaluation requires university contract or purchase order.",
+  "sourceLanguage": "en",
+  "confidence": 0.96,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ut-austin-006"
+  ],
+  "citation": {
+    "citationTitle": "AI Detection Software Guidance - Office of the Executive Vice President and Provost",
+    "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-detection-software-guidance/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "9a2c53f763c0dab4a542eded123bd43bd72e362c1568e82a73fab24b38f3b557",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

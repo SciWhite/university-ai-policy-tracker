@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "kfupm-fa-001",
+  "sourceCandidateId": "kfupm-sc-001",
+  "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+  "finalUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+  "attemptedAt": "2026-05-13T01:54:04Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "contentHash": "53967302f2c1904177a9646321b288e1ede2f51167915f65792770bef6b64b06",
+  "normalizedTextStorageKey": "object-storage://openclaw/uapt-kfupm-20260512/normalized/kfupm-ai-x.txt"
+}

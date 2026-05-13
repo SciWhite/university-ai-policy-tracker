@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-brown-004",
+  "sourceCandidateId": "sc-brown-004",
+  "sourceUrl": "https://ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+  "finalUrl": "https://ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+  "attemptedAt": "2026-05-12T18:00:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 74,
+  "contentHash": "5f6de8840f33aaad438252ad21684ce67247b3d473b5f521c3636afbd355206d",
+  "normalizedTextStorageKey": "source-snapshots/uapt-brown-university-20260512/ss-brown-004.normalized.txt"
+}

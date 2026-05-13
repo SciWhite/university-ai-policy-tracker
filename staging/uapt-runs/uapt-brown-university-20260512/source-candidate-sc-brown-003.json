@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "sc-brown-003",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "sourceUrl": "https://ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools",
+  "finalUrl": "https://ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools",
+  "sourceTitle": "Protecting Information When Using AI Tools",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "public_web_search",
+  "queryUsed": "site:brown.edu \"Protecting Information When Using AI Tools\"",
+  "discoveredAt": "2026-05-12T18:00:00.000Z",
+  "officialDomainConfidence": 0.98,
+  "aiRelevanceScore": 0.94,
+  "policySpecificityScore": 0.9,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-12T18:00:00.000Z",
+  "verificationNotes": "Official OIT knowledgebase guidance on sensitive Brown data, contracts, permissions, responsibility for AI-generated content, and existing University policies.",
+  "robotsPolicy": "respect"
+}

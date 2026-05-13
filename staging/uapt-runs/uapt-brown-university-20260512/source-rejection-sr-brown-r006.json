@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-brown-r006",
+  "sourceCandidateId": "sc-brown-r006",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "sourceUrl": "https://cs.brown.edu/courses/csci0300/f25/syllabus/",
+  "rejectedAt": "2026-05-12T18:00:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Course-specific syllabus result found in search for ChatGPT and Brown Academic Code.",
+  "notes": "Course-specific syllabus, not a university-level or official central policy source."
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-brown-r004",
+  "sourceCandidateId": "sc-brown-r004",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "sourceUrl": "https://career-center.brown.edu/planning-resources/job-search-resources/using-ai-your-job-search",
+  "rejectedAt": "2026-05-12T18:00:00.000Z",
+  "rejectionReason": "low_policy_specificity",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Generative AI is a tool that can be used to improve your work, but it should not be a replacement for your work.",
+  "notes": "Career-advice page is official but scoped to job-search practice, not institutional AI policy or broad academic guidance."
+}

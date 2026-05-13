@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "cp-brown-001",
+  "createdAt": "2026-05-12T18:00:00.000Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "brown-university",
+      "sourceCandidateId": "sc-brown-001",
+      "sourceUrl": "https://provost.brown.edu/communications/potential-impact-ai-our-academic-mission",
+      "sourceTitle": "Potential impact of AI on our academic mission",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "teaching",
+        "research",
+        "privacy"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "brown-university",
+      "sourceCandidateId": "sc-brown-002",
+      "sourceUrl": "https://sheridan.brown.edu/resources/classroom-practices/intentional-pedagogy-ai-technology",
+      "sourceTitle": "Intentional Pedagogy with AI Technology",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching",
+        "academic_integrity"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "brown-university",
+      "sourceCandidateId": "sc-brown-003",
+      "sourceUrl": "https://ithelp.brown.edu/kb/articles/protecting-information-when-using-ai-tools",
+      "sourceTitle": "Protecting Information When Using AI Tools",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "privacy",
+        "security_review"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "brown-university",
+      "sourceCandidateId": "sc-brown-004",
+      "sourceUrl": "https://ithelp.brown.edu/kb/articles/google-gemini-chat-and-notebooklm-ai-services",
+      "sourceTitle": "Google Gemini Chat and NotebookLM AI Services",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "ai_tool_treatment",
+        "security_review"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "brown-university",
+      "sourceCandidateId": "sc-brown-005",
+      "sourceUrl": "https://ouc.brown.edu/community-resources/ai-guidelines-brown-communicators",
+      "sourceTitle": "AI Guidelines for Brown Communicators",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "privacy",
+        "procurement",
+        "other"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "brown-university",
+      "sourceCandidateId": "sc-brown-006",
+      "sourceUrl": "https://ithelp.brown.edu/kb/articles/generative-ai-as-a-research-tool",
+      "sourceTitle": "Generative AI as a Research Tool",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "research",
+        "privacy"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop after central Brown official AI guidance, teaching guidance, OIT privacy/security guidance, approved service guidance, communications guidance, and research guidance are represented.",
+    "Reject course-specific pages, news-only/event pages, research showcases, generic AI explainers, duplicate school summaries, and pages that say they are not University policy unless they serve discovery only.",
+    "Do not bypass login walls, paywalls, CAPTCHAs, or WAF restrictions."
+  ]
+}

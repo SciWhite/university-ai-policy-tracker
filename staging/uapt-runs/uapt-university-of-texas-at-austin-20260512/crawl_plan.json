@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "plan-ut-austin-001",
+  "createdAt": "2026-05-13T01:54:45Z",
+  "createdBy": "Codex local staged crawl",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-texas-at-austin",
+      "sourceCandidateId": "src-ut-austin-001",
+      "sourceUrl": "https://security.utexas.edu/ai-tools",
+      "sourceTitle": "Acceptable Use of Generative AI Tools | UT Austin Information Security Office",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "acceptable use",
+        "privacy",
+        "security review",
+        "approved tools"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-texas-at-austin",
+      "sourceCandidateId": "src-ut-austin-002",
+      "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools/",
+      "sourceTitle": "Responsible Adoption of AI Tools for Teaching and Learning - Office of the Executive Vice President and Provost",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching guidance",
+        "responsible adoption",
+        "academic integrity"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-texas-at-austin",
+      "sourceCandidateId": "src-ut-austin-003",
+      "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-detection-software-guidance/",
+      "sourceTitle": "AI Detection Software Guidance - Office of the Executive Vice President and Provost",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "AI detection",
+        "privacy",
+        "procurement",
+        "academic integrity"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-texas-at-austin",
+      "sourceCandidateId": "src-ut-austin-004",
+      "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/ai-use-in-graduate-education/",
+      "sourceTitle": "AI Use in Graduate Education - Office of the Executive Vice President and Provost",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "graduate education",
+        "research guidance",
+        "milestones",
+        "non-public research data"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-texas-at-austin",
+      "sourceCandidateId": "src-ut-austin-005",
+      "sourceUrl": "https://ctl.utexas.edu/generative-ai-teaching-and-learning-policies",
+      "sourceTitle": "Generative AI in Teaching and Learning: Policies | Faculty Instructional Support and Development",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "teaching policies",
+        "academic honesty",
+        "course requirements"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    },
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-texas-at-austin",
+      "sourceCandidateId": "src-ut-austin-006",
+      "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/requiring-generative-ai-in-the-classroom/",
+      "sourceTitle": "Requiring Generative AI in the Classroom - Office of the Executive Vice President and Provost",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http"
+      ],
+      "expectedThemes": [
+        "classroom requirements",
+        "syllabus",
+        "course materials"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop after official UT Austin sources provide direct evidence for narrow staged claims.",
+    "Do not access login-gated, paywalled, CAPTCHA-protected, WAF-blocked, or robots-disallowed pages.",
+    "Do not stage canonical/public claims or mark anything human_reviewed."
+  ]
+}

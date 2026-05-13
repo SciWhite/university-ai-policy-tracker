@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-ut-austin-001",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "startedAt": "2026-05-13T01:42:00Z",
+  "endedAt": "2026-05-13T01:54:45Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "domain": "utexas.edu",
+      "query": "site:utexas.edu \"generative AI\" policy guidance students assessment academic integrity",
+      "resultCount": 10,
+      "notes": "Firecrawl search returned official CTL, Provost/OAT, Information Security, and Enterprise Technology candidates."
+    },
+    {
+      "method": "site_search",
+      "domain": "utexas.edu",
+      "query": "site:utexas.edu \"Acceptable Use of Generative AI Tools\" \"University of Texas at Austin\"",
+      "resultCount": 10,
+      "notes": "Found central acceptable-use, teaching policies, classroom requirement guidance, AI detection guidance, UT.AI overview, and lower-specificity unit pages."
+    },
+    {
+      "method": "site_search",
+      "domain": "utexas.edu",
+      "query": "site:utexas.edu \"generative AI\" \"research\" \"non-public research data\" \"vetted\"",
+      "resultCount": 1,
+      "notes": "Found official Provost/OAT graduate education recommendations with research-data guidance."
+    },
+    {
+      "method": "site_search",
+      "domain": "utexas.edu",
+      "query": "site:utexas.edu \"generative AI\" \"syllabus\" \"policy statements\" \"UT Austin\"",
+      "resultCount": 1,
+      "notes": "Found CTL sample syllabus guidance; classroom-requirement page was preferred for a narrower staged claim."
+    },
+    {
+      "method": "public_web_search",
+      "query": "University of Texas at Austin generative AI policy guidance students assessment academic integrity research",
+      "resultCount": 10,
+      "notes": "Cross-check favored official utexas.edu pages; no third-party pages were used as evidence."
+    }
+  ],
+  "noSourceEscalationCompleted": false,
+  "candidateIds": [
+    "src-ut-austin-001",
+    "src-ut-austin-002",
+    "src-ut-austin-003",
+    "src-ut-austin-004",
+    "src-ut-austin-005",
+    "src-ut-austin-006",
+    "src-ut-austin-007",
+    "src-ut-austin-008",
+    "src-ut-austin-009"
+  ],
+  "rejectionIds": [
+    "rejection-ut-austin-001",
+    "rejection-ut-austin-002",
+    "rejection-ut-austin-003"
+  ],
+  "summary": "Firecrawl search discovered official UT Austin pages on acceptable AI use, responsible adoption for teaching and learning, AI detection software, graduate education AI use, teaching-policy considerations, and classroom requirements. Lower-specificity initiative, overview, and unit pages were rejected. No login, paywall, CAPTCHA, hard WAF bypass, or Playwright escalation was needed."
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ut-austin-005",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "claimType": "academic_integrity",
+  "claimText": "UT Austin responsible-adoption guidance includes academic integrity as a principle for AI use, linking responsible use to the honor code, scholarly values, ownership, and appropriate authorship of tool outputs.",
+  "normalizedValue": "Academic integrity is an explicit responsible-adoption principle.",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ut-austin-005"
+  ],
+  "citation": {
+    "citationTitle": "Responsible Adoption of AI Tools for Teaching and Learning - Office of the Executive Vice President and Provost",
+    "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "e5d95fdfcc51a12417a0b3e41b9a45ede57358d43fb0611d4852ffdc582f2dac",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

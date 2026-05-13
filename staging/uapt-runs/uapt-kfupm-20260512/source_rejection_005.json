@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "kfupm-sr-005",
+  "sourceCandidateId": "kfupm-sc-rejected-research-policies",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "sourceUrl": "https://ri.kfupm.edu.sa/dr/policies",
+  "finalUrl": "https://ri.kfupm.edu.sa/dr/policies",
+  "rejectedAt": "2026-05-13T01:54:04Z",
+  "rejectionReason": "no_ai_content",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "All Policies - KFUPM Research & Innovation.",
+  "notes": "Rejected because the page is a research policies index and the discovered search result did not expose AI-use guidance."
+}

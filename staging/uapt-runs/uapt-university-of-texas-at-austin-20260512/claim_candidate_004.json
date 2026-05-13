@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ut-austin-004",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "claimType": "teaching",
+  "claimText": "UT Austin responsible-adoption guidance defines responsible AI use in teaching and learning as adopting AI in ways that facilitate learning outcomes and foster human development for campus community members.",
+  "normalizedValue": "Responsible AI in teaching and learning is tied to learning outcomes and human development.",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ut-austin-004"
+  ],
+  "citation": {
+    "citationTitle": "Responsible Adoption of AI Tools for Teaching and Learning - Office of the Executive Vice President and Provost",
+    "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/responsible-adoption-of-ai-tools/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "e5d95fdfcc51a12417a0b3e41b9a45ede57358d43fb0611d4852ffdc582f2dac",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-ut-austin-011",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "claimType": "teaching",
+  "claimText": "UT Austin classroom guidance recommends that instructors requiring generative AI understand and abide by UT acceptable-use guidance, identify syllabus policies clearly, and submit specific software requirements through the University Co-Op.",
+  "normalizedValue": "Classroom-required AI use guidance addresses acceptable use, syllabus notice, and course-material reporting.",
+  "sourceLanguage": "en",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "evidence-ut-austin-011"
+  ],
+  "citation": {
+    "citationTitle": "Requiring Generative AI in the Classroom - Office of the Executive Vice President and Provost",
+    "sourceUrl": "https://provost.utexas.edu/the-office/faculty-affairs/office-of-academic-technology/requiring-generative-ai-in-the-classroom/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-texas-at-austin.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-austin",
+    "publisher": "University of Texas at Austin",
+    "retrievedAt": "2026-05-13T01:54:45Z",
+    "snapshotHash": "93a8872c71bdae2fe6e3edd206de281c39018f4ffc8650a9434652544c140d23",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "cl-brown-009",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "claimType": "research",
+  "claimText": "Brown OIT research guidance says researchers should deeply review AI-generated code for quality and efficiency.",
+  "normalizedValue": "research_ai_generated_code_requires_deep_review",
+  "sourceLanguage": "en",
+  "confidence": 0.92,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-brown-009"
+  ],
+  "citation": {
+    "citationTitle": "Generative AI as a Research Tool",
+    "sourceUrl": "https://ithelp.brown.edu/kb/articles/generative-ai-as-a-research-tool",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/brown-university.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/brown-university",
+    "publisher": "Brown University OIT Service Center",
+    "retrievedAt": "2026-05-12T18:00:00.000Z",
+    "snapshotHash": "6baa7056b92373108e9f841d56fb8ff3fc3d70c9717cbb51ff44b4ef50ab2064",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

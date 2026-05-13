@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fa-brown-006",
+  "sourceCandidateId": "sc-brown-006",
+  "sourceUrl": "https://ithelp.brown.edu/kb/articles/generative-ai-as-a-research-tool",
+  "finalUrl": "https://ithelp.brown.edu/kb/articles/generative-ai-as-a-research-tool",
+  "attemptedAt": "2026-05-12T18:00:00.000Z",
+  "fetchMode": "http",
+  "userAgentKind": "default",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 622,
+  "contentHash": "6baa7056b92373108e9f841d56fb8ff3fc3d70c9717cbb51ff44b4ef50ab2064",
+  "normalizedTextStorageKey": "source-snapshots/uapt-brown-university-20260512/ss-brown-006.normalized.txt"
+}

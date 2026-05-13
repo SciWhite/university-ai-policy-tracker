@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-brown-r005",
+  "sourceCandidateId": "sc-brown-r005",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "sourceUrl": "https://humanities.brown.edu/programs/chi/ailab",
+  "rejectedAt": "2026-05-12T18:00:00.000Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "This collaborative humanities lab explores three basic terms of everyday and scientific discourse.",
+  "notes": "Program/lab page describes an AI humanities initiative; it is not policy or guidance for AI use."
+}

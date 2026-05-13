@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "src-ut-austin-001",
+  "entityType": "university",
+  "entitySlug": "university-of-texas-at-austin",
+  "sourceUrl": "https://security.utexas.edu/ai-tools",
+  "finalUrl": "https://security.utexas.edu/ai-tools",
+  "sourceTitle": "Acceptable Use of Generative AI Tools | UT Austin Information Security Office",
+  "sourceLanguage": "en",
+  "sourceType": "it_security_privacy",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:utexas.edu \"generative AI\" policy guidance students assessment academic integrity",
+  "discoveredAt": "2026-05-13T01:54:45Z",
+  "officialDomainConfidence": 0.99,
+  "aiRelevanceScore": 0.98,
+  "policySpecificityScore": 0.95,
+  "verificationStatus": "verified",
+  "verifiedAt": "2026-05-13T01:54:45Z",
+  "verificationNotes": "Official UT Austin public page with direct AI policy or guidance evidence. Static HTTP fetch succeeded and normalized source text was hashed.",
+  "robotsPolicy": "respect"
+}

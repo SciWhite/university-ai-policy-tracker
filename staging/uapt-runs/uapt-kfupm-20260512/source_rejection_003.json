@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "kfupm-sr-003",
+  "sourceCandidateId": "kfupm-sc-rejected-research-project",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "sourceUrl": "https://ri.kfupm.edu.sa/jrcai/research/projects/project-details/using-generative-ai-chatbots-for-eliciting-ai-ethical-requirements",
+  "finalUrl": "https://ri.kfupm.edu.sa/jrcai/research/projects/project-details/using-generative-ai-chatbots-for-eliciting-ai-ethical-requirements",
+  "rejectedAt": "2026-05-13T01:54:04Z",
+  "rejectionReason": "research_showcase_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Using Generative AI chatbots for Eliciting AI Ethical Requirements.",
+  "notes": "Rejected because it is a research project page, not an institutional AI-use policy or guidance source."
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_candidate",
+  "sourceCandidateId": "kfupm-sc-rejected-event-integrity",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "sourceUrl": "https://dadapps.kfupm.edu.sa/events/ed/7086",
+  "finalUrl": "https://dadapps.kfupm.edu.sa/events/ed/7086",
+  "sourceTitle": "The Opposite of Cheating: Academic Integrity in the Age of AI",
+  "sourceLanguage": "en",
+  "sourceType": "official_news_advisory",
+  "discoveryMethod": "site_search",
+  "queryUsed": "site:kfupm.edu.sa \"academic integrity\" \"ChatGPT\" OR \"artificial intelligence\" \"KFUPM\"",
+  "discoveredAt": "2026-05-13T01:43:00Z",
+  "officialDomainConfidence": 0.96,
+  "aiRelevanceScore": 0.86,
+  "policySpecificityScore": 0.25,
+  "verificationStatus": "rejected",
+  "rejectionReason": "event_or_news_only",
+  "verificationNotes": "Official Deanship of Academic Development event page. The description discusses AI and academic integrity but is a keynote event listing, not KFUPM policy or standing guidance.",
+  "robotsPolicy": "respect"
+}

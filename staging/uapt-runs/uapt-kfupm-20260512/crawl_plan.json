@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "crawl_plan",
+  "planId": "kfupm-crawl-plan-001",
+  "createdAt": "2026-05-13T01:54:04Z",
+  "createdBy": "openclaw-agent",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "kfupm",
+      "sourceCandidateId": "kfupm-sc-001",
+      "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+      "sourceTitle": "AI+X",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "http",
+        "firecrawl"
+      ],
+      "expectedThemes": [
+        "teaching",
+        "ai_tool_treatment",
+        "research"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Stop after the verified non-news official source is fetched and narrow claims are extracted.",
+    "Do not promote official news, event pages, research showcases, or course-level PDFs to university-wide policy evidence.",
+    "Do not bypass login walls, WAF controls, CAPTCHAs, or paywalls."
+  ]
+}

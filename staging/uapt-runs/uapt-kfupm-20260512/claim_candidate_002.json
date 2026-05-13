@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "claim_candidate",
+  "claimId": "kfupm-claim-002",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "claimType": "teaching",
+  "claimText": "KFUPM's AI+X page says all undergraduate students are required to complete AI-focused coursework and states an institutional goal to graduate 10,000 AI-skilled professionals by 2030.",
+  "normalizedValue": "AI-focused coursework requirement and 2030 AI-skilled graduate goal stated on the AI+X page.",
+  "sourceLanguage": "en",
+  "confidence": 0.94,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "kfupm-evidence-002"
+  ],
+  "citation": {
+    "citationTitle": "AI+X",
+    "sourceUrl": "https://www.kfupm.edu.sa/about-us/discover/ai-x",
+    "publisher": "King Fahd University of Petroleum & Minerals",
+    "retrievedAt": "2026-05-13T01:54:04Z",
+    "snapshotHash": "53967302f2c1904177a9646321b288e1ede2f51167915f65792770bef6b64b06",
+    "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

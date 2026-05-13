@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "report_draft",
+  "reportId": "kfupm-report-20260512",
+  "title": "King Fahd University of Petroleum & Minerals AI Policy Source Report - May 2026",
+  "generatedAt": "2026-05-13T01:54:04Z",
+  "draftPath": "content/reports/2026-05/kfupm-ai-policy-source-report.mdx",
+  "summary": "This staged run found one official non-news KFUPM source suitable for narrow AI education and tool-access claims: the AI+X page. The staged claims describe undergraduate AI coursework and ChatGPT Edu integration exactly as supported by that source. Official news, event, research showcase, course-level PDF, and non-AI policy-index candidates were rejected and were not used for university-wide policy conclusions.",
+  "referencedClaimIds": [
+    "kfupm-claim-001",
+    "kfupm-claim-002",
+    "kfupm-claim-003"
+  ],
+  "publicJsonLinks": [],
+  "limitations": [
+    "This run is a staged source-first snapshot and does not publish canonical KFUPM claims.",
+    "No public university-wide generative AI academic-integrity, privacy, procurement, or tool-use policy page was found in this run.",
+    "Course-level PDFs and event pages may describe local practices or discussions, but they were not used as university-level policy evidence.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

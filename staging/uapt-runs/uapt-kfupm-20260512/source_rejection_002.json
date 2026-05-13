@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "kfupm-sr-002",
+  "sourceCandidateId": "kfupm-sc-rejected-event-integrity",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "sourceUrl": "https://dadapps.kfupm.edu.sa/events/ed/7086",
+  "finalUrl": "https://dadapps.kfupm.edu.sa/events/ed/7086",
+  "rejectedAt": "2026-05-13T01:54:04Z",
+  "rejectionReason": "event_or_news_only",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Keynote Talk on The Opposite of Cheating: Academic Integrity in the Age of AI.",
+  "notes": "Rejected because the page is an event listing and does not establish KFUPM policy."
+}

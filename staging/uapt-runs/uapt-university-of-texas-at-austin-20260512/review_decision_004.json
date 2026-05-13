@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-texas-at-austin-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "decision-ut-austin-004",
+  "claimId": "claim-ut-austin-004",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "Codex local staged crawl",
+  "notes": "Approved as an agent-reviewed candidate because the claim is narrowly scoped to official UT Austin source evidence. Not human reviewed and not canonical.",
+  "decidedAt": "2026-05-13T01:54:45Z"
+}

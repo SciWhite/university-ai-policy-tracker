@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "report_draft",
+  "reportId": "report-brown-20260512",
+  "title": "Brown University Generative AI Policy Staged Report - May 2026",
+  "generatedAt": "2026-05-12T18:00:00.000Z",
+  "draftPath": "content/reports/2026-05/brown-university-generative-ai-policy-report.mdx",
+  "summary": "Brown University has public official AI guidance across the Provost, Sheridan Center, OIT, University Communications, and OIT research pages. Staged claims are limited to instructor discretion and course clarity, unapproved AI assignment use under the Academic Code, sensitive-data restrictions, existing IT/contract policy applicability, Brown-accessible Gemini and NotebookLM services, communicator privacy guidance, and research code-review/attribution guidance. These are staged agent-reviewed candidates only and are not canonical public claims.",
+  "referencedClaimIds": [
+    "cl-brown-001",
+    "cl-brown-002",
+    "cl-brown-003",
+    "cl-brown-004",
+    "cl-brown-005",
+    "cl-brown-006",
+    "cl-brown-007",
+    "cl-brown-008",
+    "cl-brown-009"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/brown-university.json"
+  ],
+  "limitations": [
+    "This run is a snapshot of public Brown University AI guidance available on May 12, 2026.",
+    "The University Communications source explicitly says it is not a policy document; related claims are scoped to Brown communicators and not generalized as university-wide policy.",
+    "Course-level AI policies may vary by instructor, department, school, or program.",
+    "Google service availability and data-classification allowances can change; linked OIT pages remain the source of record.",
+    "This tracker is not legal advice, not academic integrity advice, and not an official Brown University statement unless a linked source is Brown’s own official page."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "rawArtifactPaths": []
+}

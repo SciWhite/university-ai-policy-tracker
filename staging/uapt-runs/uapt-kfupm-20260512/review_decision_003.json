@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "review_decision",
+  "decisionId": "kfupm-review-003",
+  "claimId": "kfupm-claim-003",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "openclaw_agent",
+  "reviewer": "openclaw-agent",
+  "notes": "Claim is directly supported by the official KFUPM AI+X page language about ChatGPT Edu and AI tools in classrooms and research environments.",
+  "decidedAt": "2026-05-13T01:54:04Z"
+}

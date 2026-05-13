@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kfupm-20260512",
+  "artifactType": "source_discovery_trace",
+  "traceId": "kfupm-discovery-trace-001",
+  "entityType": "university",
+  "entitySlug": "kfupm",
+  "startedAt": "2026-05-13T01:32:00Z",
+  "endedAt": "2026-05-13T01:54:04Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "query": "site:kfupm.edu.sa KFUPM \"generative AI\" policy OR guidelines OR ChatGPT",
+      "domain": "kfupm.edu.sa",
+      "resultCount": 5,
+      "notes": "Returned official research project, official event, and research-profile pages; research and event pages were rejected for policy specificity."
+    },
+    {
+      "method": "site_search",
+      "query": "site:kfupm.edu.sa \"Artificial Intelligence\" \"policy\" \"KFUPM\"",
+      "domain": "kfupm.edu.sa",
+      "resultCount": 10,
+      "notes": "Returned Research & Innovation policies index, official course material, news, and public study pages; no broad AI-use policy surfaced."
+    },
+    {
+      "method": "site_search",
+      "query": "site:kfupm.edu.sa \"ChatGPT\" \"academic\" \"KFUPM\"",
+      "domain": "kfupm.edu.sa",
+      "resultCount": 10,
+      "notes": "Returned official ChatGPT Edu news, training/event pages, and AI+X; non-news AI+X page was selected for narrow claims."
+    },
+    {
+      "method": "site_search",
+      "query": "site:kfupm.edu.sa \"academic integrity\" \"ChatGPT\" OR \"artificial intelligence\" \"KFUPM\"",
+      "domain": "kfupm.edu.sa",
+      "resultCount": 10,
+      "notes": "Returned official event and course PDF results; these were rejected as event-only or course-specific."
+    },
+    {
+      "method": "multilingual_query",
+      "query": "site:kfupm.edu.sa \"الذكاء الاصطناعي\" \"ChatGPT\" \"جامعة الملك فهد\"",
+      "domain": "kfupm.edu.sa",
+      "resultCount": 1,
+      "notes": "Arabic-language query surfaced the English AI+X page as the only relevant official non-news result."
+    },
+    {
+      "method": "sitemap",
+      "domain": "www.kfupm.edu.sa",
+      "resultCount": 20,
+      "notes": "Firecrawl map/search over the main domain did not reveal additional policy-specific AI guidance beyond low-specificity academic and research pages."
+    }
+  ],
+  "noSourceEscalationCompleted": true,
+  "candidateIds": [
+    "kfupm-sc-001",
+    "kfupm-sc-rejected-news-chatgpt",
+    "kfupm-sc-rejected-event-integrity",
+    "kfupm-sc-rejected-research-project",
+    "kfupm-sc-rejected-course-pdf",
+    "kfupm-sc-rejected-research-policies"
+  ],
+  "rejectionIds": [
+    "kfupm-sr-001",
+    "kfupm-sr-002",
+    "kfupm-sr-003",
+    "kfupm-sr-004",
+    "kfupm-sr-005"
+  ],
+  "summary": "Discovery found one official non-news KFUPM source suitable for narrow AI education and ChatGPT Edu claims. News-only, event-only, research showcase, course-specific PDF, and non-AI policy-index results were rejected rather than used for university-wide policy claims."
+}

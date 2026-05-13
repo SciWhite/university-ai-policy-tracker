@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-brown-university-20260512",
+  "artifactType": "source_rejection",
+  "sourceRejectionId": "sr-brown-r003",
+  "sourceCandidateId": "sc-brown-r003",
+  "entityType": "university",
+  "entitySlug": "brown-university",
+  "sourceUrl": "https://communications.sph.brown.edu/guides/ai-guidelines",
+  "rejectedAt": "2026-05-12T18:00:00.000Z",
+  "rejectionReason": "duplicate",
+  "checkedBy": "openclaw-agent",
+  "evidenceSnippet": "Note that AI policies and guidelines are set by the University's Associate Provost for Artificial Intelligence.",
+  "notes": "School of Public Health page mostly republishes or points to University Communications and OIT guidance already represented by stronger university-level sources."
+}
