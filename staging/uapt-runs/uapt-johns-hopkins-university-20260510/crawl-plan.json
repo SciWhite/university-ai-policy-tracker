@@ -8,7 +8,7 @@
   "targets": [
     {
       "entityType": "university",
-      "entitySlug": "johns-hopkins-university",
+      "entitySlug": "jhu",
       "sourceCandidateId": "jhu-teaching-generative-ai-guidance-hub",
       "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
       "sourceTitle": "Generative AI Tool Guidance | Teaching @ JHU",

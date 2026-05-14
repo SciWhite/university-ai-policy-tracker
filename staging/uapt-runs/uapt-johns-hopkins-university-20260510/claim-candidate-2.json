@@ -4,7 +4,7 @@
   "runId": "uapt-johns-hopkins-university-20260510",
   "claimId": "jhu-claim-2",
   "entityType": "university",
-  "entitySlug": "johns-hopkins-university",
+  "entitySlug": "jhu",
   "claimType": "teaching",
   "claimText": "Johns Hopkins guidance tells faculty to consult local divisional guidelines for discipline-specific generative AI information when such guidance is published.",
   "normalizedValue": "consult_divisional_guidelines",
@@ -17,7 +17,7 @@
   "citation": {
     "citationTitle": "Generative AI Tool Guidance | Teaching @ JHU",
     "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
-    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/johns-hopkins-university.json",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/jhu.json",
     "publisher": "Johns Hopkins University",
     "retrievedAt": "2026-05-10T21:16:32.000Z",
     "snapshotHash": "9696aed28ae326635f1fb959cdf912afd57afeeb896c1b79a05764dc4e8d1597",

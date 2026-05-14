@@ -1,7 +1,7 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260514-001",
-  "publishedAt": "2026-05-14T00:00:00.000Z",
+  "releaseId": "public-release-20260514-002",
+  "publishedAt": "2026-05-14T00:30:00.000Z",
   "description": "Current public web/data release assembled from reviewed OpenClaw, OpenCode, and Codex staged artifact runs.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
@@ -22,6 +22,7 @@
     "staging/uapt-runs/uapt-fudan-university-20260511",
     "staging/uapt-runs/uapt-hkust-20260510",
     "staging/uapt-runs/uapt-institut-polytechnique-de-paris-20260510",
+    "staging/uapt-runs/uapt-johns-hopkins-university-20260510",
     "staging/uapt-runs/uapt-kcl-20260510",
     "staging/uapt-runs/uapt-kfupm-20260512",
     "staging/uapt-runs/uapt-kit-karlsruhe-institute-of-technology-20260513",
@@ -98,7 +99,7 @@
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
     "This release promotes 35 additional validated staged runs beyond the previous public release.",
-    "uapt-johns-hopkins-university-20260510 remains intentionally unpromoted because Johns Hopkins is already public as slug jhu; merge or replace that canonical slug separately.",
+    "uapt-johns-hopkins-university-20260510 is merged into the canonical jhu slug; older weak JHU claims inside uapt-qs26-30-20260509 are rejected as superseded.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]

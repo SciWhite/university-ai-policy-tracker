@@ -4,7 +4,7 @@
   "runId": "uapt-johns-hopkins-university-20260510",
   "traceId": "jhu-discovery-trace-20260510",
   "entityType": "university",
-  "entitySlug": "johns-hopkins-university",
+  "entitySlug": "jhu",
   "startedAt": "2026-05-10T21:16:32.000Z",
   "endedAt": "2026-05-10T21:16:32.000Z",
   "methodsAttempted": [

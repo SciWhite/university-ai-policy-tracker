@@ -4,10 +4,10 @@
   "artifactType": "review_decision",
   "decisionId": "rd-claim-jhu-006a",
   "claimId": "claim-jhu-006a",
-  "decision": "needs_changes",
-  "reviewState": "needs_review",
+  "decision": "reject",
+  "reviewState": "rejected",
   "reviewerType": "openclaw_agent",
   "reviewer": "policy-reviewer",
-  "notes": "Evidence snippet is a page description rather than a direct quote from source content; rebind to actual Engineering academic-integrity source text before approval.",
+  "notes": "Rejected from the public JHU record because this weak evidence binding is superseded by the staged Johns Hopkins replacement run merged into the canonical jhu slug.",
   "decidedAt": "2026-05-10T00:12:41Z"
 }

@@ -5,7 +5,7 @@
   "sourceRejectionId": "jhu-rejection-2",
   "sourceCandidateId": "jhu-teaching-ai-syllabus-statements",
   "entityType": "university",
-  "entitySlug": "johns-hopkins-university",
+  "entitySlug": "jhu",
   "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
   "finalUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
   "rejectedAt": "2026-05-10T21:16:32.000Z",
