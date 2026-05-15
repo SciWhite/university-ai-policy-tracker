@@ -1,0 +1,450 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-florida-20260515",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uf-20260515",
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "startedAt": "2026-05-15T13:20:00.000Z",
+      "endedAt": "2026-05-15T13:28:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "site_search",
+          "query": "site:ufl.edu University of Florida generative AI policy students faculty artificial intelligence",
+          "domain": "ufl.edu",
+          "resultCount": 5,
+          "notes": "Firecrawl official-domain search found the UF AI Guidelines page, student guidance, instructor guidance, a DOCX best-practices file, and a CITT teaching page."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "ai.ufl.edu",
+          "resultCount": 1,
+          "notes": "The ai.ufl.edu Guidelines page is an official UF AI site page from the Office of the Provost and includes teaching, student, research, HR, safety, and approved-tools guidance."
+        },
+        {
+          "method": "site_search",
+          "query": "site:ai.ufl.edu/guidelines UF AI Guidelines Office of the Provost",
+          "domain": "ai.ufl.edu",
+          "resultCount": 1,
+          "notes": "Direct HTTP fetch confirmed the official Guidelines page returned HTTP 200 and contained the needed substantive source text."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-uf-ai-guidelines",
+        "sc-uf-ai-student-guidance-duplicate",
+        "sc-uf-ai-instructor-guidance-duplicate"
+      ],
+      "rejectionIds": [
+        "sr-uf-ai-student-guidance-duplicate",
+        "sr-uf-ai-instructor-guidance-duplicate"
+      ],
+      "summary": "Official-source-only discovery found a comprehensive University of Florida AI Guidelines page on ai.ufl.edu. Separate student and instructor guidance pages were checked but rejected for this bundle as duplicate/narrower surfaces because the Guidelines page contains the same relevant student and instructor guidance plus broader research, safety, HR, and tools sections."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uf-20260515",
+      "createdAt": "2026-05-15T13:22:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-florida",
+          "sourceCandidateId": "sc-uf-ai-guidelines",
+          "sourceUrl": "https://ai.ufl.edu/guidelines/",
+          "sourceTitle": "Guidelines for Use of AI at UF",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "privacy",
+            "teaching",
+            "academic-integrity",
+            "research",
+            "approved-tools"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "verified_public_official_source_fetched",
+        "do_not_use duplicate/narrow pages when comprehensive official guidance is available",
+        "do_not_stage raw html docx pdf or screenshots"
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uf-ai-guidelines",
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "sourceUrl": "https://ai.ufl.edu/guidelines/",
+      "finalUrl": "https://ai.ufl.edu/guidelines/",
+      "sourceTitle": "Guidelines for Use of AI at UF",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "site_search",
+      "queryUsed": "site:ufl.edu University of Florida generative AI policy students faculty artificial intelligence",
+      "discoveredAt": "2026-05-15T13:20:40.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.91,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-15T13:23:07.000Z",
+      "verificationNotes": "Official UF AI site page titled Guidelines for Use of AI at UF, attributed to the Office of the Provost and containing university-wide guidance for teaching, learning, research, HR, safety, security, and AI tools.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uf-ai-student-guidance-duplicate",
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "sourceUrl": "https://ai.ufl.edu/students/guidance-for-students/",
+      "finalUrl": "https://ai.ufl.edu/students/guidance-for-students/",
+      "sourceTitle": "Guidance for Students | AI | University of Florida",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "site_search",
+      "queryUsed": "site:ufl.edu University of Florida generative AI policy students faculty artificial intelligence",
+      "discoveredAt": "2026-05-15T13:20:40.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.89,
+      "policySpecificityScore": 0.66,
+      "verificationStatus": "rejected",
+      "rejectionReason": "duplicate",
+      "verificationNotes": "Official student-facing page, but the broader Guidelines page includes the relevant student guidance and is the preferred single source for this artifact bundle.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uf-ai-instructor-guidance-duplicate",
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "sourceUrl": "https://ai.ufl.edu/teaching-with-ai/expanding-the-ai-curriculum/guidance-for-instructors/",
+      "finalUrl": "https://ai.ufl.edu/teaching-with-ai/expanding-the-ai-curriculum/guidance-for-instructors/",
+      "sourceTitle": "Guidance for Instructors | AI | University of Florida",
+      "sourceLanguage": "en",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "site_search",
+      "queryUsed": "site:ufl.edu University of Florida generative AI policy students faculty artificial intelligence",
+      "discoveredAt": "2026-05-15T13:20:40.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.88,
+      "policySpecificityScore": 0.65,
+      "verificationStatus": "rejected",
+      "rejectionReason": "duplicate",
+      "verificationNotes": "Official instructor-facing page, but its relevant AI course-use categories are included in the broader Guidelines page used as the verified source.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-uf-ai-student-guidance-duplicate",
+      "sourceCandidateId": "sc-uf-ai-student-guidance-duplicate",
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "sourceUrl": "https://ai.ufl.edu/students/guidance-for-students/",
+      "finalUrl": "https://ai.ufl.edu/students/guidance-for-students/",
+      "rejectedAt": "2026-05-15T13:24:00.000Z",
+      "rejectionReason": "duplicate",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Guidance for Students page was accessible, but the broader Guidelines page includes the same relevant student responsibilities and privacy/tool-selection guidance.",
+      "notes": "Rejected only as non-primary for this bundle; not a finding that the page is unofficial or low quality."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-uf-ai-instructor-guidance-duplicate",
+      "sourceCandidateId": "sc-uf-ai-instructor-guidance-duplicate",
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "sourceUrl": "https://ai.ufl.edu/teaching-with-ai/expanding-the-ai-curriculum/guidance-for-instructors/",
+      "finalUrl": "https://ai.ufl.edu/teaching-with-ai/expanding-the-ai-curriculum/guidance-for-instructors/",
+      "rejectedAt": "2026-05-15T13:24:00.000Z",
+      "rejectionReason": "duplicate",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Guidance for Instructors page was accessible, but the broader Guidelines page includes the relevant AI-Permitted, Some AI, and No AI course-use categories.",
+      "notes": "Rejected only as non-primary for this bundle; not a finding that the page is unofficial or low quality."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uf-ai-guidelines-firecrawl",
+      "sourceCandidateId": "sc-uf-ai-guidelines",
+      "sourceUrl": "https://ai.ufl.edu/guidelines/",
+      "finalUrl": "https://ai.ufl.edu/guidelines/",
+      "attemptedAt": "2026-05-15T13:23:07.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1836,
+      "contentHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+      "normalizedTextStorageKey": "not-staged/raw-source-not-committed"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-uf-ai-guidelines",
+      "sourceCandidateId": "sc-uf-ai-guidelines",
+      "fetchAttemptId": "fa-uf-ai-guidelines-firecrawl",
+      "sourceUrl": "https://ai.ufl.edu/guidelines/",
+      "finalUrl": "https://ai.ufl.edu/guidelines/",
+      "sourceTitle": "Guidelines for Use of AI at UF",
+      "sourceLanguage": "en",
+      "contentHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+      "fetchedAt": "2026-05-15T13:23:07.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "not-staged/raw-source-not-committed",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-uf-ai-approved-tools-sensitive-data",
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "claimType": "privacy",
+      "claimText": "UF AI guidance says users should use UF-approved or UF-provided tools for sensitive or restricted data and says restricted or sensitive data is not permitted with cloud models tagged External in NaviGator Chat.",
+      "normalizedValue": "Use UF-approved or UF-provided tools for sensitive/restricted data; restricted or sensitive data is not permitted with External-tagged cloud models in NaviGator Chat.",
+      "sourceLanguage": "en",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uf-ai-approved-tools-sensitive-data"
+      ],
+      "citation": {
+        "citationTitle": "Guidelines for Use of AI at UF",
+        "sourceUrl": "https://ai.ufl.edu/guidelines/",
+        "publisher": "University of Florida Office of the Provost",
+        "retrievedAt": "2026-05-15T13:23:07.000Z",
+        "snapshotHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uf-ai-approved-tools-sensitive-data",
+      "claimId": "claim-uf-ai-approved-tools-sensitive-data",
+      "sourceSnapshotId": "ss-uf-ai-guidelines",
+      "sourceUrl": "https://ai.ufl.edu/guidelines/",
+      "finalUrl": "https://ai.ufl.edu/guidelines/",
+      "sourceTitle": "Guidelines for Use of AI at UF",
+      "sourceLanguage": "en",
+      "snapshotHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+      "evidenceSnippetOriginal": "only use UF-approved or UF-provided tools to protect sensitive or restricted data",
+      "evidenceSnippetDisplay": "The page says to only use UF-approved or UF-provided tools for sensitive or restricted data.",
+      "evidenceLocator": "Dos and Don'ts; Safety and Security > User Responsibilities > Data Protection",
+      "evidenceType": "official_source",
+      "relevance": 0.96,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Guidelines for Use of AI at UF",
+        "sourceUrl": "https://ai.ufl.edu/guidelines/",
+        "publisher": "University of Florida Office of the Provost",
+        "retrievedAt": "2026-05-15T13:23:07.000Z",
+        "snapshotHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "decision-uf-ai-approved-tools-sensitive-data",
+      "claimId": "claim-uf-ai-approved-tools-sensitive-data",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved as a narrow privacy/data-handling claim tied directly to the official UF guidance page. It does not infer broader legal or system-wide requirements beyond the cited text.",
+      "decidedAt": "2026-05-15T13:29:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-uf-ai-course-use-categories",
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "claimType": "teaching",
+      "claimText": "UF guidance presents AI-Permitted, Some AI, and No AI as general course-level approaches for instructors to communicate generative AI expectations in syllabi or assignment instructions.",
+      "normalizedValue": "General course AI-use approaches: AI-Permitted, Some AI, No AI.",
+      "sourceLanguage": "en",
+      "confidence": 0.93,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uf-ai-course-use-categories"
+      ],
+      "citation": {
+        "citationTitle": "Guidelines for Use of AI at UF",
+        "sourceUrl": "https://ai.ufl.edu/guidelines/",
+        "publisher": "University of Florida Office of the Provost",
+        "retrievedAt": "2026-05-15T13:23:07.000Z",
+        "snapshotHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uf-ai-course-use-categories",
+      "claimId": "claim-uf-ai-course-use-categories",
+      "sourceSnapshotId": "ss-uf-ai-guidelines",
+      "sourceUrl": "https://ai.ufl.edu/guidelines/",
+      "finalUrl": "https://ai.ufl.edu/guidelines/",
+      "sourceTitle": "Guidelines for Use of AI at UF",
+      "sourceLanguage": "en",
+      "snapshotHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+      "evidenceSnippetOriginal": "The following considerations are not formal statements or policies, but general approaches that may help address AI in your course.",
+      "evidenceSnippetDisplay": "The source frames AI-Permitted, Some AI, and No AI as general approaches, not formal policy statements.",
+      "evidenceLocator": "Guidance for Instructors > Best Practices for Integrating AI into Teaching Practice > Include syllabus guidelines",
+      "evidenceType": "official_source",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Guidelines for Use of AI at UF",
+        "sourceUrl": "https://ai.ufl.edu/guidelines/",
+        "publisher": "University of Florida Office of the Provost",
+        "retrievedAt": "2026-05-15T13:23:07.000Z",
+        "snapshotHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "decision-uf-ai-course-use-categories",
+      "claimId": "claim-uf-ai-course-use-categories",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved with the explicit limitation that UF calls these general approaches and not formal statements or policies.",
+      "decidedAt": "2026-05-15T13:30:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-uf-ai-human-subject-research-irb",
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "claimType": "research",
+      "claimText": "UF AI research guidance says researchers must obtain UF Institutional Review Board approval before conducting human-subject research that involves AI.",
+      "normalizedValue": "UF IRB approval required before human-subject research involving AI.",
+      "sourceLanguage": "en",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uf-ai-human-subject-research-irb"
+      ],
+      "citation": {
+        "citationTitle": "Guidelines for Use of AI at UF",
+        "sourceUrl": "https://ai.ufl.edu/guidelines/",
+        "publisher": "University of Florida Office of the Provost",
+        "retrievedAt": "2026-05-15T13:23:07.000Z",
+        "snapshotHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uf-ai-human-subject-research-irb",
+      "claimId": "claim-uf-ai-human-subject-research-irb",
+      "sourceSnapshotId": "ss-uf-ai-guidelines",
+      "sourceUrl": "https://ai.ufl.edu/guidelines/",
+      "finalUrl": "https://ai.ufl.edu/guidelines/",
+      "sourceTitle": "Guidelines for Use of AI at UF",
+      "sourceLanguage": "en",
+      "snapshotHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+      "evidenceSnippetOriginal": "Researchers must obtain UF's Institutional Review Board (IRB) approval before conducting human subject research that involves AI.",
+      "evidenceSnippetDisplay": "UF says researchers must obtain UF IRB approval before human-subject research involving AI.",
+      "evidenceLocator": "Guidance for Researchers > Human Subject Research",
+      "evidenceType": "official_source",
+      "relevance": 0.97,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Guidelines for Use of AI at UF",
+        "sourceUrl": "https://ai.ufl.edu/guidelines/",
+        "publisher": "University of Florida Office of the Provost",
+        "retrievedAt": "2026-05-15T13:23:07.000Z",
+        "snapshotHash": "c36637e6af55347166faccf37a41d0e0626bcd8916f864d7f6943649ea6c71f6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "decision-uf-ai-human-subject-research-irb",
+      "claimId": "claim-uf-ai-human-subject-research-irb",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved as a narrow research-process claim tied directly to the Human Subject Research section of the official UF AI Guidelines page.",
+      "decidedAt": "2026-05-15T13:31:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-florida-20260515",
+      "artifactType": "report_draft",
+      "reportId": "report-uf-20260515",
+      "title": "University of Florida AI Policy Source Review",
+      "generatedAt": "2026-05-15T13:32:00.000Z",
+      "draftPath": "content/reports/university-of-florida-ai-policy-source-review.mdx",
+      "summary": "The University of Florida has an official AI Guidelines page from the Office of the Provost with university-wide guidance across teaching, learning, research, HR, safety, security, and AI tools. This staged bundle approves three narrow claims on sensitive/restricted data handling, course-level AI-use categories, and IRB approval for AI-related human-subject research.",
+      "referencedClaimIds": [
+        "claim-uf-ai-approved-tools-sensitive-data",
+        "claim-uf-ai-course-use-categories",
+        "claim-uf-ai-human-subject-research-irb"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-florida.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Separate UF student and instructor guidance pages were accessible but treated as duplicate/narrower surfaces because the comprehensive Guidelines page includes the relevant material.",
+        "The course-use category claim is limited to general approaches because the source explicitly says those considerations are not formal statements or policies."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
