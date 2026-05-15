@@ -836,11 +836,14 @@ function buildRankingSlugs(name: string): string[] {
     "mit": ["massachusetts-institute-of-technology"],
     "monash-university": ["monash"],
     "natl-university-singapore": ["national-university-of-singapore", "nus"],
+    "national-tsing-hua-university-nthu": ["national-tsing-hua-university"],
     "national-university-of-singapore": ["nus", "national-university-of-singapore"],
     "nanyang-technological-university-singapore": [
       "nanyang-technological-university",
       "ntu"
     ],
+    "queen-s-university-at-kingston": ["queens-university-at-kingston"],
+    "queen-s-university-belfast": ["queens-university-belfast"],
     "seoul-national-university": ["snu"],
     "the-chinese-university-of-hong-kong": ["cuhk"],
     "the-hong-kong-university-of-science-and-technology": ["hkust"],
@@ -850,6 +853,7 @@ function buildRankingSlugs(name: string): string[] {
     "the-university-of-manchester": ["manchester"],
     "the-university-of-melbourne": ["university-of-melbourne"],
     "the-university-of-new-south-wales": ["unsw-sydney"],
+    "the-ohio-state-university": ["ohio-state-university"],
     "the-university-of-queensland": ["university-of-queensland"],
     "the-university-of-sydney": ["university-of-sydney"],
     "the-university-of-tokyo": ["u-tokyo"],
