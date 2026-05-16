@@ -1,0 +1,353 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-iitg-20260516",
+      "entityType": "university",
+      "entitySlug": "indian-institute-of-technology-guwahati-iitg",
+      "startedAt": "2026-05-16T13:05:00.000Z",
+      "endedAt": "2026-05-16T13:12:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "canonical_domain",
+          "domain": "iitg.ac.in",
+          "resultCount": 1,
+          "notes": "Checked the official IIT Guwahati web domain and robots.txt endpoints; robots.txt returned 404 rather than a disallow rule."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:iitg.ac.in IIT Guwahati artificial intelligence policy generative AI academic integrity",
+          "resultCount": 5,
+          "notes": "Firecrawl search found official course and programme material about AI and generative AI, but no public institution-wide AI policy or guidance page."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:iitg.ac.in filetype:pdf IIT Guwahati rules students plagiarism unfair means ordinance",
+          "resultCount": 1,
+          "notes": "Firecrawl search found an official IIT Guwahati Students' Affairs Code of Conduct pledge PDF with academic-integrity language."
+        },
+        {
+          "method": "pdf_discovery",
+          "domain": "www.iitg.ac.in",
+          "resultCount": 1,
+          "notes": "Fetched and extracted the official Code of Conduct PDF directly after Firecrawl PDF parsing timed out."
+        }
+      ],
+      "noSourceEscalationCompleted": true,
+      "candidateIds": [
+        "src-iitg-code-of-conduct-pledge",
+        "src-iitg-dsai-advanced-courses",
+        "src-iitg-intranet-student-ordinance"
+      ],
+      "rejectionIds": [
+        "rej-iitg-dsai-course-only",
+        "rej-iitg-intranet-dns"
+      ],
+      "summary": "No public official IIT Guwahati generative-AI policy source was located. The staged claim is limited to the official Students' Affairs Code of Conduct pledge, which addresses unfair means, unpermitted aid, plagiarism, internet-sourced work, and cyber offences; AI course listings were rejected for policy use because they are course catalogue content rather than policy."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-iitg-code-of-conduct-pledge",
+      "entityType": "university",
+      "entitySlug": "indian-institute-of-technology-guwahati-iitg",
+      "sourceUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+      "finalUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+      "sourceTitle": "Code of Conduct Pledge",
+      "sourceLanguage": "en",
+      "sourceType": "academic_integrity",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:iitg.ac.in filetype:pdf IIT Guwahati rules students plagiarism unfair means ordinance",
+      "discoveredAt": "2026-05-16T13:06:40.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.35,
+      "policySpecificityScore": 0.86,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T13:07:17.000Z",
+      "verificationNotes": "Official IIT Guwahati Students' Affairs PDF fetched with HTTP 200 from www.iitg.ac.in. The source is not AI-specific, so extracted claims are scoped to academic-integrity and conduct language only.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-iitg-dsai-advanced-courses",
+      "entityType": "university",
+      "entitySlug": "indian-institute-of-technology-guwahati-iitg",
+      "sourceUrl": "https://www.iitg.ac.in/dsai/dsai_advanced_courses.html",
+      "finalUrl": "https://www.iitg.ac.in/dsai/dsai_advanced_courses.html",
+      "sourceTitle": "Graduate-level Courses - DS&AI | IIT G",
+      "sourceLanguage": "en",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:iitg.ac.in ChatGPT IIT Guwahati policy plagiarism academic integrity",
+      "discoveredAt": "2026-05-16T13:05:55.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.82,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-16T13:07:23.000Z",
+      "verificationNotes": "Official course catalogue page includes ChatGPT, LLaMA, Gemini, generative AI, academic integrity, privacy, and security as course topics, but it is not a policy or guidance source.",
+      "rejectionReason": "research_showcase_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-iitg-intranet-student-ordinance",
+      "entityType": "university",
+      "entitySlug": "indian-institute-of-technology-guwahati-iitg",
+      "sourceUrl": "https://intranet.iitg.ac.in/sa/api/rules/60f00eddd676b1f931f23814",
+      "sourceTitle": "Ordinance on Code and Conduct of Students",
+      "sourceLanguage": "en",
+      "sourceType": "academic_integrity",
+      "discoveryMethod": "link_traversal",
+      "discoveredAt": "2026-05-16T13:08:20.000Z",
+      "officialDomainConfidence": 0.95,
+      "aiRelevanceScore": 0.25,
+      "policySpecificityScore": 0.8,
+      "verificationStatus": "inaccessible",
+      "verificationNotes": "The public Code of Conduct pledge references this intranet URL, but direct DNS resolution failed from the crawl environment.",
+      "rejectionReason": "inaccessible",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-iitg-dsai-course-only",
+      "sourceCandidateId": "src-iitg-dsai-advanced-courses",
+      "entityType": "university",
+      "entitySlug": "indian-institute-of-technology-guwahati-iitg",
+      "sourceUrl": "https://www.iitg.ac.in/dsai/dsai_advanced_courses.html",
+      "finalUrl": "https://www.iitg.ac.in/dsai/dsai_advanced_courses.html",
+      "rejectedAt": "2026-05-16T13:08:00.000Z",
+      "rejectionReason": "research_showcase_only",
+      "checkedBy": "codex-crawl-worker",
+      "evidenceSnippet": "DA624 NLP with Large Language Models ... BERT, RoBERTa; ChatGPT; LLama; Prompt Engineering; Case studies and future challenge",
+      "notes": "The page is official and AI-relevant, but it describes course content rather than institution-wide policy, approved-tool rules, academic-integrity rules, or binding guidance."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-iitg-intranet-dns",
+      "sourceCandidateId": "src-iitg-intranet-student-ordinance",
+      "entityType": "university",
+      "entitySlug": "indian-institute-of-technology-guwahati-iitg",
+      "sourceUrl": "https://intranet.iitg.ac.in/sa/api/rules/60f00eddd676b1f931f23814",
+      "rejectedAt": "2026-05-16T13:08:45.000Z",
+      "rejectionReason": "inaccessible",
+      "checkedBy": "codex-crawl-worker",
+      "notes": "Direct fetch failed with DNS resolution error for intranet.iitg.ac.in; no bypass was attempted."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "plan-iitg-20260516",
+      "createdAt": "2026-05-16T13:06:50.000Z",
+      "createdBy": "codex-crawl-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "indian-institute-of-technology-guwahati-iitg",
+          "sourceCandidateId": "src-iitg-code-of-conduct-pledge",
+          "sourceUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+          "sourceTitle": "Code of Conduct Pledge",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "academic_integrity",
+            "unpermitted_aid",
+            "plagiarism",
+            "internet_sources",
+            "cyber_offence"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official IIT Guwahati source text supports a narrow staged claim.",
+        "Do not infer university-wide AI rules from course catalogue or programme marketing pages.",
+        "Do not attempt to bypass inaccessible intranet or login-gated resources."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-iitg-code-of-conduct-http",
+      "sourceCandidateId": "src-iitg-code-of-conduct-pledge",
+      "sourceUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+      "finalUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+      "attemptedAt": "2026-05-16T13:07:17.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1900,
+      "contentHash": "a1f309e43e10b120ed826f8c514241edc632deba54f66594f84c3bc99d3c1303",
+      "normalizedTextStorageKey": "staged://uapt-indian-institute-of-technology-guwahati-iitg-20260516/source-snapshots/code-of-conduct-pledge"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-iitg-dsai-courses-http",
+      "sourceCandidateId": "src-iitg-dsai-advanced-courses",
+      "sourceUrl": "https://www.iitg.ac.in/dsai/dsai_advanced_courses.html",
+      "finalUrl": "https://www.iitg.ac.in/dsai/dsai_advanced_courses.html",
+      "attemptedAt": "2026-05-16T13:07:23.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1200,
+      "contentHash": "67044fc6daf65bf7785d68a6280ec8e31a2fb18cb1210c295563bc95860b943d",
+      "normalizedTextStorageKey": "staged://uapt-indian-institute-of-technology-guwahati-iitg-20260516/source-snapshots/dsai-advanced-courses"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-iitg-intranet-ordinance-http",
+      "sourceCandidateId": "src-iitg-intranet-student-ordinance",
+      "sourceUrl": "https://intranet.iitg.ac.in/sa/api/rules/60f00eddd676b1f931f23814",
+      "attemptedAt": "2026-05-16T13:08:30.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "robotsAllowed": true,
+      "outcome": "error",
+      "errorReason": "DNS resolution failed for intranet.iitg.ac.in from the crawl environment.",
+      "durationMs": 900
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-iitg-code-of-conduct-pledge",
+      "sourceCandidateId": "src-iitg-code-of-conduct-pledge",
+      "fetchAttemptId": "fetch-iitg-code-of-conduct-http",
+      "sourceUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+      "finalUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+      "sourceTitle": "Code of Conduct Pledge",
+      "sourceLanguage": "en",
+      "contentHash": "a1f309e43e10b120ed826f8c514241edc632deba54f66594f84c3bc99d3c1303",
+      "fetchedAt": "2026-05-16T13:07:17.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staged://uapt-indian-institute-of-technology-guwahati-iitg-20260516/source-snapshots/code-of-conduct-pledge",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-iitg-code-conduct-unpermitted-aid-plagiarism",
+      "entityType": "university",
+      "entitySlug": "indian-institute-of-technology-guwahati-iitg",
+      "claimType": "source_status",
+      "claimText": "IIT Guwahati's Students' Affairs Code of Conduct pledge is an official general academic-integrity source covering unfair means, unpermitted aid, and plagiarism, including internet-sourced work; it is not an AI-specific institutional policy.",
+      "normalizedValue": "general academic-integrity source only; not AI-specific policy",
+      "sourceLanguage": "en",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-iitg-code-conduct-unpermitted-aid-plagiarism"
+      ],
+      "citation": {
+        "citationTitle": "Code of Conduct Pledge",
+        "sourceUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/indian-institute-of-technology-guwahati-iitg.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/indian-institute-of-technology-guwahati-iitg",
+        "publisher": "Indian Institute of Technology Guwahati",
+        "retrievedAt": "2026-05-16T13:07:17.000Z",
+        "snapshotHash": "a1f309e43e10b120ed826f8c514241edc632deba54f66594f84c3bc99d3c1303",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-iitg-code-conduct-unpermitted-aid-plagiarism",
+      "claimId": "claim-iitg-code-conduct-unpermitted-aid-plagiarism",
+      "sourceSnapshotId": "snap-iitg-code-of-conduct-pledge",
+      "sourceUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+      "finalUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+      "sourceTitle": "Code of Conduct Pledge",
+      "sourceLanguage": "en",
+      "snapshotHash": "a1f309e43e10b120ed826f8c514241edc632deba54f66594f84c3bc99d3c1303",
+      "evidenceSnippetOriginal": "I will not adopt any unfair means in examinations; I will not give or receive unpermitted aid in examinations, class assignments, in preparation of reports and projects, or in any field work, dissertations etc., that is to be used by the instructor / teacher as the basis of grading",
+      "evidenceSnippetDisplay": "The pledge also lists misconduct examples including unpermitted collaboration, plagiarism in all forms, and representing another's work, including information available on the internet, as one's own work.",
+      "evidenceLocator": "Students' Affairs Section, Code of Conduct Pledge",
+      "evidenceType": "pdf",
+      "relevance": 0.91,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Code of Conduct Pledge",
+        "sourceUrl": "https://www.iitg.ac.in/academic_doc_verify/code_of_conduct.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/indian-institute-of-technology-guwahati-iitg.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/indian-institute-of-technology-guwahati-iitg",
+        "publisher": "Indian Institute of Technology Guwahati",
+        "retrievedAt": "2026-05-16T13:07:17.000Z",
+        "snapshotHash": "a1f309e43e10b120ed826f8c514241edc632deba54f66594f84c3bc99d3c1303",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "review-iitg-code-conduct-unpermitted-aid-plagiarism",
+      "claimId": "claim-iitg-code-conduct-unpermitted-aid-plagiarism",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved only as a narrow academic-integrity candidate. The source does not establish a public IIT Guwahati AI policy, approved-tool list, or generative-AI-specific rule.",
+      "decidedAt": "2026-05-16T13:12:00.000Z",
+      "reviewNotes": "Approved after narrowing as source_status because the evidence is general academic-integrity text and does not specifically mention AI or generative AI."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-indian-institute-of-technology-guwahati-iitg-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-iitg-20260516",
+      "title": "Indian Institute of Technology Guwahati (IITG) staged source review",
+      "generatedAt": "2026-05-16T13:12:00.000Z",
+      "draftPath": "content/reports/2026-05/iitg-staged-source-review.mdx",
+      "summary": "Public official search did not locate an IIT Guwahati generative-AI policy source. The staged bundle preserves one narrow academic-integrity claim from the official Students' Affairs Code of Conduct pledge and rejects AI course catalogue material for policy use because it is not binding guidance.",
+      "referencedClaimIds": [
+        "claim-iitg-code-conduct-unpermitted-aid-plagiarism"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/indian-institute-of-technology-guwahati-iitg.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No public official IIT Guwahati generative-AI-specific policy source was verified in this crawl.",
+        "The linked intranet student-conduct ordinance could not be resolved publicly from the crawl environment."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

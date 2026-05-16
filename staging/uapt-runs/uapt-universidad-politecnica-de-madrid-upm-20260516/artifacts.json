@@ -1,0 +1,440 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+  "artifacts": [
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "traceId": "trace-upm-ai-20260516",
+      "entityType": "university",
+      "entitySlug": "universidad-politecnica-de-madrid-upm",
+      "startedAt": "2026-05-16T13:00:00.000Z",
+      "endedAt": "2026-05-16T13:08:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:upm.es inteligencia artificial generativa ChatGPT normativa guía uso estudiantes docentes UPM",
+          "domain": "upm.es",
+          "resultCount": 5,
+          "notes": "Firecrawl search found several official UPM institutional repository records for 2025 AI in education good-practice guides."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "oa.upm.es",
+          "resultCount": 3,
+          "notes": "Verified the used records are hosted in Archivo Digital UPM, described by the repository footer as maintained by the Library at Universidad Politécnica de Madrid."
+        },
+        {
+          "method": "pdf_discovery",
+          "domain": "oa.upm.es",
+          "resultCount": 2,
+          "notes": "Opened the official repository PDF downloads for the teaching-guide integration guide and the ethical/responsible AI in education guide. Firecrawl PDF extraction timed out on one PDF, so source text was checked through the indexed PDF text view and repository pages."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-upm-ai-teaching-guide",
+        "sc-upm-ai-ethical-guide",
+        "sc-upm-ai-first-steps"
+      ],
+      "rejectionIds": [
+        "sr-upm-ai-first-steps"
+      ],
+      "summary": "Official-source discovery located UPM institutional repository good-practice guides on generative AI in education. The strongest sources are recommendations authored by UPM faculty and deposited in Archivo Digital UPM, but the PDFs themselves state they are author opinions and not official UPM recommendations; the staged claims therefore remain narrow and non-canonical."
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "sourceCandidateId": "sc-upm-ai-teaching-guide",
+      "entityType": "university",
+      "entitySlug": "universidad-politecnica-de-madrid-upm",
+      "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "finalUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "sourceTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+      "sourceLanguage": "es",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:upm.es inteligencia artificial generativa guía docente UPM",
+      "discoveredAt": "2026-05-16T13:00:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.96,
+      "policySpecificityScore": 0.72,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T13:04:00.000Z",
+      "verificationNotes": "Official Archivo Digital UPM PDF download for a 2025 educational manual. The source is useful for teaching guidance but explicitly says it is recommendations and author opinion, not an official UPM recommendation.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "sourceCandidateId": "sc-upm-ai-ethical-guide",
+      "entityType": "university",
+      "entitySlug": "universidad-politecnica-de-madrid-upm",
+      "sourceUrl": "https://oa.upm.es/91518/3/USO_ETICO_Y_RESPONSABLE_DE_LA_IA.pdf",
+      "finalUrl": "https://oa.upm.es/91518/3/USO_ETICO_Y_RESPONSABLE_DE_LA_IA.pdf",
+      "sourceTitle": "Uso ético y responsable de la Inteligencia Artificial en la educación : Guía Buenas Prácticas",
+      "sourceLanguage": "es",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:upm.es uso ético responsable inteligencia artificial educación UPM",
+      "discoveredAt": "2026-05-16T13:00:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.68,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T13:05:00.000Z",
+      "verificationNotes": "Official Archivo Digital UPM PDF download for a 2025 educational manual. The source gives ethical/responsible-use recommendations and explicitly states it is not an official UPM recommendation.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "sourceCandidateId": "sc-upm-ai-first-steps",
+      "entityType": "university",
+      "entitySlug": "universidad-politecnica-de-madrid-upm",
+      "sourceUrl": "https://oa.upm.es/91514/",
+      "finalUrl": "https://oa.upm.es/91514/",
+      "sourceTitle": "Primeros pasos con la Inteligencia Artificial : Guía Buenas Prácticas",
+      "sourceLanguage": "es",
+      "sourceType": "generic_or_unclear",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:oa.upm.es primeros pasos inteligencia artificial guía buenas prácticas UPM",
+      "discoveredAt": "2026-05-16T13:00:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.83,
+      "policySpecificityScore": 0.25,
+      "verificationStatus": "rejected",
+      "verificationNotes": "Official repository page, but the abstract frames the guide as introductory familiarization with generative AI rather than policy or assessable institutional guidance.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "sourceRejectionId": "sr-upm-ai-first-steps",
+      "sourceCandidateId": "sc-upm-ai-first-steps",
+      "entityType": "university",
+      "entitySlug": "universidad-politecnica-de-madrid-upm",
+      "sourceUrl": "https://oa.upm.es/91514/",
+      "finalUrl": "https://oa.upm.es/91514/",
+      "rejectedAt": "2026-05-16T13:06:00.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "codex-openclaw-local",
+      "evidenceSnippet": "Esta guía de buenas prácticas está orientada a cubrir los primeros pasos con Inteligencia Artificial generativa.",
+      "notes": "Rejected for claim evidence because it is an introductory generative-AI guide and does not add a clear policy, assessment, integrity, or institutional-use position beyond generic familiarization."
+    },
+    {
+      "artifactType": "crawl_plan",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "planId": "plan-upm-ai-20260516",
+      "createdAt": "2026-05-16T13:04:00.000Z",
+      "createdBy": "codex-openclaw-local",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "universidad-politecnica-de-madrid-upm",
+          "sourceCandidateId": "sc-upm-ai-teaching-guide",
+          "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+          "sourceTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+          "sourceLanguage": "es",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "academic_integrity",
+            "ai_tool_treatment"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "universidad-politecnica-de-madrid-upm",
+          "sourceCandidateId": "sc-upm-ai-ethical-guide",
+          "sourceUrl": "https://oa.upm.es/91518/3/USO_ETICO_Y_RESPONSABLE_DE_LA_IA.pdf",
+          "sourceTitle": "Uso ético y responsable de la Inteligencia Artificial en la educación : Guía Buenas Prácticas",
+          "sourceLanguage": "es",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "academic_integrity",
+            "privacy"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official UPM repository sources establish the source-status limitation and provide narrow education guidance claims.",
+        "Do not treat repository good-practice manuals as binding university policy because the PDFs disclaim official UPM recommendation status."
+      ]
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "fetchAttemptId": "fetch-upm-ai-teaching-guide",
+      "sourceCandidateId": "sc-upm-ai-teaching-guide",
+      "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "finalUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "attemptedAt": "2026-05-16T13:04:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 120000,
+      "contentHash": "2170917241b841d13ac4b94709bd563d3e0c700544a457568567e689aada7bc6",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-universidad-politecnica-de-madrid-upm-20260516/snapshots/upm-ai-teaching-guide"
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "fetchAttemptId": "fetch-upm-ai-ethical-guide",
+      "sourceCandidateId": "sc-upm-ai-ethical-guide",
+      "sourceUrl": "https://oa.upm.es/91518/3/USO_ETICO_Y_RESPONSABLE_DE_LA_IA.pdf",
+      "finalUrl": "https://oa.upm.es/91518/3/USO_ETICO_Y_RESPONSABLE_DE_LA_IA.pdf",
+      "attemptedAt": "2026-05-16T13:05:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 2500,
+      "contentHash": "63f757213fbcb9716c8ad54c11d3e9f0253987a296fe848d76fb7d9864ec29d3",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-universidad-politecnica-de-madrid-upm-20260516/snapshots/upm-ai-ethical-guide"
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "fetchAttemptId": "fetch-upm-ai-teaching-guide-firecrawl-timeout",
+      "sourceCandidateId": "sc-upm-ai-teaching-guide",
+      "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "finalUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "attemptedAt": "2026-05-16T13:03:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "robotsAllowed": true,
+      "outcome": "error",
+      "errorReason": "Firecrawl PDF scrape timed out before returning parsed markdown; HTTP/indexed PDF text was used instead.",
+      "durationMs": 120000
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "sourceSnapshotId": "snap-upm-ai-teaching-guide",
+      "sourceCandidateId": "sc-upm-ai-teaching-guide",
+      "fetchAttemptId": "fetch-upm-ai-teaching-guide",
+      "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "finalUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "sourceTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+      "sourceLanguage": "es",
+      "contentHash": "2170917241b841d13ac4b94709bd563d3e0c700544a457568567e689aada7bc6",
+      "fetchedAt": "2026-05-16T13:04:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-universidad-politecnica-de-madrid-upm-20260516/snapshots/upm-ai-teaching-guide",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "sourceSnapshotId": "snap-upm-ai-ethical-guide",
+      "sourceCandidateId": "sc-upm-ai-ethical-guide",
+      "fetchAttemptId": "fetch-upm-ai-ethical-guide",
+      "sourceUrl": "https://oa.upm.es/91518/3/USO_ETICO_Y_RESPONSABLE_DE_LA_IA.pdf",
+      "finalUrl": "https://oa.upm.es/91518/3/USO_ETICO_Y_RESPONSABLE_DE_LA_IA.pdf",
+      "sourceTitle": "Uso ético y responsable de la Inteligencia Artificial en la educación : Guía Buenas Prácticas",
+      "sourceLanguage": "es",
+      "contentHash": "63f757213fbcb9716c8ad54c11d3e9f0253987a296fe848d76fb7d9864ec29d3",
+      "fetchedAt": "2026-05-16T13:05:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-universidad-politecnica-de-madrid-upm-20260516/snapshots/upm-ai-ethical-guide",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "claimId": "claim-upm-ai-guides-not-official-policy",
+      "entityType": "university",
+      "entitySlug": "universidad-politecnica-de-madrid-upm",
+      "claimType": "source_status",
+      "claimText": "UPM's institutional repository hosts 2025 generative-AI education good-practice guides, but the checked guides state that they are recommendations or author opinions and not official UPM recommendations.",
+      "normalizedValue": "official repository guidance with explicit non-official limitation",
+      "sourceLanguage": "es",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-upm-ai-guides-not-official-policy"
+      ],
+      "citation": {
+        "citationTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+        "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-politecnica-de-madrid-upm.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-politecnica-de-madrid-upm",
+        "publisher": "Archivo Digital UPM",
+        "retrievedAt": "2026-05-16T13:04:00.000Z",
+        "snapshotHash": "2170917241b841d13ac4b94709bd563d3e0c700544a457568567e689aada7bc6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "claimId": "claim-upm-ai-teaching-guide-template",
+      "entityType": "university",
+      "entitySlug": "universidad-politecnica-de-madrid-upm",
+      "claimType": "source_status",
+      "claimText": "A 2025 UPM institutional-repository good-practice guide suggests a template for course guides to state whether generative AI tools are permitted, restricted, or not permitted; the guide itself says it is a recommendation or author opinion and not an official UPM recommendation.",
+      "normalizedValue": "repository good-practice guide only; not official UPM policy",
+      "sourceLanguage": "es",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-upm-ai-teaching-guide-template"
+      ],
+      "citation": {
+        "citationTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+        "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-politecnica-de-madrid-upm.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-politecnica-de-madrid-upm",
+        "publisher": "Archivo Digital UPM",
+        "retrievedAt": "2026-05-16T13:04:00.000Z",
+        "snapshotHash": "2170917241b841d13ac4b94709bd563d3e0c700544a457568567e689aada7bc6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "evidenceId": "ev-upm-ai-guides-not-official-policy",
+      "claimId": "claim-upm-ai-guides-not-official-policy",
+      "sourceSnapshotId": "snap-upm-ai-teaching-guide",
+      "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "finalUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "sourceTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+      "sourceLanguage": "es",
+      "snapshotHash": "2170917241b841d13ac4b94709bd563d3e0c700544a457568567e689aada7bc6",
+      "evidenceSnippetOriginal": "Estas guías son solo recomendaciones y pistas para integrar la IA en la educación de la mejor manera posible. Expresan la opinión de los autores y no una recomendación oficial de la UPM.",
+      "evidenceSnippetDisplay": "The guide says these are recommendations and author opinions, not an official UPM recommendation.",
+      "evidenceLocator": "PDF page 2, Avisos",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+        "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-politecnica-de-madrid-upm.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-politecnica-de-madrid-upm",
+        "publisher": "Archivo Digital UPM",
+        "retrievedAt": "2026-05-16T13:04:00.000Z",
+        "snapshotHash": "2170917241b841d13ac4b94709bd563d3e0c700544a457568567e689aada7bc6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "evidenceId": "ev-upm-ai-teaching-guide-template",
+      "claimId": "claim-upm-ai-teaching-guide-template",
+      "sourceSnapshotId": "snap-upm-ai-teaching-guide",
+      "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "finalUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "sourceTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+      "sourceLanguage": "es",
+      "snapshotHash": "2170917241b841d13ac4b94709bd563d3e0c700544a457568567e689aada7bc6",
+      "evidenceSnippetOriginal": "En la guía docente se podría añadir una sección específica sobre los usos que permitimos hacer de la IA en la asignatura. Esta asignatura [permite/no permite/permite con restricciones] el uso de herramientas de inteligencia artificial generativa.",
+      "evidenceSnippetDisplay": "The guide suggests adding a course-guide section on permitted, restricted, or prohibited generative-AI use.",
+      "evidenceLocator": "PDF page 7, Elemento clave para incluir en la guía docente",
+      "evidenceType": "pdf",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+        "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-politecnica-de-madrid-upm.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-politecnica-de-madrid-upm",
+        "publisher": "Archivo Digital UPM",
+        "retrievedAt": "2026-05-16T13:04:00.000Z",
+        "snapshotHash": "2170917241b841d13ac4b94709bd563d3e0c700544a457568567e689aada7bc6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "decisionId": "rd-upm-ai-guides-not-official-policy",
+      "claimId": "claim-upm-ai-guides-not-official-policy",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a narrow source-status claim because the evidence directly states the non-official limitation. This is not a canonical policy finding.",
+      "decidedAt": "2026-05-16T13:07:00.000Z"
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "decisionId": "rd-upm-ai-teaching-guide-template",
+      "claimId": "claim-upm-ai-teaching-guide-template",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved only as non-binding teaching guidance from an official repository guide; wording avoids saying UPM requires or formally permits specific AI uses.",
+      "decidedAt": "2026-05-16T13:07:00.000Z",
+      "reviewNotes": "Approved after narrowing as source_status because the source explicitly says these guides are recommendations/author opinions, not official UPM recommendations."
+    },
+    {
+      "artifactType": "report_draft",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-politecnica-de-madrid-upm-20260516",
+      "reportId": "report-upm-ai-20260516",
+      "title": "Universidad Politécnica de Madrid AI Guidance Staged Review",
+      "generatedAt": "2026-05-16T13:08:00.000Z",
+      "draftPath": "content/reports/2026-05/universidad-politecnica-de-madrid-upm-ai-guidance.mdx",
+      "summary": "The staged review found official UPM repository good-practice guides about generative AI in education. The evidence supports narrow non-binding teaching-guidance and source-status claims, because the guides explicitly say they are recommendations or author opinions and not official UPM recommendations.",
+      "referencedClaimIds": [
+        "claim-upm-ai-guides-not-official-policy",
+        "claim-upm-ai-teaching-guide-template"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/universidad-politecnica-de-madrid-upm.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No central binding UPM-wide AI policy was identified in this crawl. The used guides are official repository sources but explicitly disclaim official UPM recommendation status.",
+        "Firecrawl PDF extraction timed out for the main PDF, so the worker relied on search discovery plus accessible official repository/PDF text views and did not stage raw PDFs."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
