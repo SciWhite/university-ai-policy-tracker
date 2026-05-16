@@ -1,0 +1,308 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-mipt-20260516",
+      "entityType": "university",
+      "entitySlug": "moscow-institute-of-physics-and-technology-mipt-moscow-phystech",
+      "startedAt": "2026-05-16T23:18:00.000Z",
+      "endedAt": "2026-05-16T23:29:53.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:mipt.ru МФТИ генеративный искусственный интеллект ChatGPT политика обучение студенты",
+          "domain": "mipt.ru",
+          "resultCount": 2,
+          "notes": "Firecrawl search surfaced an official MIPT/FPMI AI course page and an official MIPT PDF for a continuing-education program, but not a central student or faculty generative-AI policy."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:mipt.ru МФТИ ChatGPT регламент искусственный интеллект студенты",
+          "domain": "mipt.ru",
+          "resultCount": 5,
+          "notes": "Firecrawl search surfaced the official MIPT news article on proposed AI-in-education rules, official program PDFs, and the MIPT/FPMI AI course page."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:new.mipt.ru МФТИ искусственный интеллект образовании правила использования ИИ образовательной среде",
+          "domain": "new.mipt.ru",
+          "resultCount": 5,
+          "notes": "Firecrawl search confirmed the official MIPT news article as the primary relevant official page."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:new.mipt.ru OR site:mipt.ru МФТИ \"академическая честность\" \"искусственный интеллект\"",
+          "domain": "mipt.ru",
+          "resultCount": 0,
+          "notes": "Official-domain search did not surface a MIPT academic-integrity page specifically addressing AI or generative AI."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "new.mipt.ru",
+          "resultCount": 1,
+          "notes": "robots.txt allowed the news URL; no login, CAPTCHA, or paywall was encountered."
+        }
+      ],
+      "noSourceEscalationCompleted": true,
+      "candidateIds": [
+        "sc-mipt-ai-education-news",
+        "sc-mipt-fpmi-ai-course"
+      ],
+      "rejectionIds": [
+        "sr-mipt-fpmi-ai-course-non-policy"
+      ],
+      "summary": "Official MIPT-domain discovery found a November 2024 MIPT news article reporting proposed AI-in-education rules from a strategic session and an official MIPT/FPMI AI training course page. This staged crawl did not verify a central binding university-wide policy for student or faculty generative-AI use."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-mipt-ai-education-news",
+      "entityType": "university",
+      "entitySlug": "moscow-institute-of-physics-and-technology-mipt-moscow-phystech",
+      "sourceUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+      "finalUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+      "sourceTitle": "В МФТИ предложили правила работы с искусственным интеллектом в образовании",
+      "sourceLanguage": "ru",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:new.mipt.ru МФТИ искусственный интеллект образовании правила использования ИИ образовательной среде",
+      "discoveredAt": "2026-05-16T23:20:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.94,
+      "policySpecificityScore": 0.58,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T23:25:00.000Z",
+      "verificationNotes": "Official MIPT news page reporting a strategic session where rules for AI use in the educational environment were developed. It is treated as source-status evidence, not as a binding policy document.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-mipt-fpmi-ai-course",
+      "entityType": "university",
+      "entitySlug": "moscow-institute-of-physics-and-technology-mipt-moscow-phystech",
+      "sourceUrl": "https://fpmidpo.mipt.ru/programs/ppk/aibeginner",
+      "finalUrl": "https://fpmidpo.mipt.ru/programs/ppk/aibeginner",
+      "sourceTitle": "Основы ИИ",
+      "sourceLanguage": "ru",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:mipt.ru МФТИ ChatGPT регламент искусственный интеллект студенты",
+      "discoveredAt": "2026-05-16T23:19:00.000Z",
+      "officialDomainConfidence": 0.86,
+      "aiRelevanceScore": 0.86,
+      "policySpecificityScore": 0.12,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-16T23:28:00.000Z",
+      "verificationNotes": "Official MIPT/FPMI continuing-education course page about AI basics; it describes a training offer and curriculum, not institutional AI-use policy or guidance.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-mipt-fpmi-ai-course-non-policy",
+      "sourceCandidateId": "sc-mipt-fpmi-ai-course",
+      "entityType": "university",
+      "entitySlug": "moscow-institute-of-physics-and-technology-mipt-moscow-phystech",
+      "sourceUrl": "https://fpmidpo.mipt.ru/programs/ppk/aibeginner",
+      "finalUrl": "https://fpmidpo.mipt.ru/programs/ppk/aibeginner",
+      "rejectedAt": "2026-05-16T23:28:00.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Освойте теоретические и практические азы взаимодействия с нейронными сетями и искусственным интеллектом, чтобы в дальнейшем применять полученные знания в рабочих задачах и в жизни!",
+      "notes": "The page is official and AI-related but is a continuing-education course marketing/curriculum page, not a source for university-wide AI-use policy claims."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "plan-mipt-ai-policy-20260516",
+      "createdAt": "2026-05-16T23:21:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "moscow-institute-of-physics-and-technology-mipt-moscow-phystech",
+          "sourceCandidateId": "sc-mipt-ai-education-news",
+          "sourceUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+          "sourceTitle": "В МФТИ предложили правила работы с искусственным интеллектом в образовании",
+          "sourceLanguage": "ru",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "source_status",
+            "teaching"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official MIPT-domain AI policy/guidance candidates are classified.",
+        "Do not treat news, events, training courses, or program PDFs as binding university-wide AI policy.",
+        "If no central binding generative-AI policy is verified, stage only a careful source-status claim."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-mipt-ai-education-news",
+      "sourceCandidateId": "sc-mipt-ai-education-news",
+      "sourceUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+      "finalUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+      "attemptedAt": "2026-05-16T23:25:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 8294,
+      "contentHash": "898dd4bc53bdd25e99ccec778e7ee07117cb6d63fe07ed7f8d73c37f737cb1af",
+      "normalizedTextStorageKey": "openclaw/staging/uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516/news-ai-education-rules-normalized.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-mipt-fpmi-ai-course",
+      "sourceCandidateId": "sc-mipt-fpmi-ai-course",
+      "sourceUrl": "https://fpmidpo.mipt.ru/programs/ppk/aibeginner",
+      "finalUrl": "https://fpmidpo.mipt.ru/programs/ppk/aibeginner",
+      "attemptedAt": "2026-05-16T23:28:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 28738,
+      "contentHash": "cc9407d05e6f108744c226cc81ae09dfe7ba4fa3eea7d1d05c9766a94ce051c9",
+      "normalizedTextStorageKey": "openclaw/staging/uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516/fpmi-ai-course-normalized.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snapshot-mipt-ai-education-news",
+      "sourceCandidateId": "sc-mipt-ai-education-news",
+      "fetchAttemptId": "fetch-mipt-ai-education-news",
+      "sourceUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+      "finalUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+      "sourceTitle": "В МФТИ предложили правила работы с искусственным интеллектом в образовании",
+      "sourceLanguage": "ru",
+      "contentHash": "898dd4bc53bdd25e99ccec778e7ee07117cb6d63fe07ed7f8d73c37f737cb1af",
+      "fetchedAt": "2026-05-16T23:25:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/staging/uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516/news-ai-education-rules-normalized.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-mipt-central-ai-policy-source-status",
+      "entityType": "university",
+      "entitySlug": "moscow-institute-of-physics-and-technology-mipt-moscow-phystech",
+      "claimType": "source_status",
+      "claimText": "Official MIPT-domain discovery found a November 2024 MIPT news article reporting that AI-in-education rules were developed at a strategic session, but this staged crawl did not verify a central binding university-wide generative-AI policy for students or faculty.",
+      "normalizedValue": "official_news_found_no_central_binding_policy_verified",
+      "sourceLanguage": "ru",
+      "confidence": 0.72,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-mipt-ai-education-news-source-status"
+      ],
+      "citation": {
+        "citationTitle": "В МФТИ предложили правила работы с искусственным интеллектом в образовании",
+        "sourceUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/moscow-institute-of-physics-and-technology-mipt-moscow-phystech.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/moscow-institute-of-physics-and-technology-mipt-moscow-phystech",
+        "publisher": "Moscow Institute of Physics and Technology",
+        "retrievedAt": "2026-05-16T23:25:00.000Z",
+        "snapshotHash": "898dd4bc53bdd25e99ccec778e7ee07117cb6d63fe07ed7f8d73c37f737cb1af",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-mipt-ai-education-news-source-status",
+      "claimId": "claim-mipt-central-ai-policy-source-status",
+      "sourceSnapshotId": "snapshot-mipt-ai-education-news",
+      "sourceUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+      "finalUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+      "sourceTitle": "В МФТИ предложили правила работы с искусственным интеллектом в образовании",
+      "sourceLanguage": "ru",
+      "snapshotHash": "898dd4bc53bdd25e99ccec778e7ee07117cb6d63fe07ed7f8d73c37f737cb1af",
+      "evidenceSnippetOriginal": "В МФТИ проходит VI Международная конференция «Человек и ИИ: взаимодействие для достижения синергии». Накануне конференции в МФТИ провели стратегическую сессию «Образование в эпоху искусственного интеллекта: точки роста и стратегия лидерства». По итогам сессии разработаны правила использования ИИ в образовательной среде.",
+      "evidenceSnippetDisplay": "MIPT reports that before the conference it held a strategic session on education in the age of AI, and that rules for AI use in the educational environment were developed as a result.",
+      "evidenceLocator": "Opening summary paragraph, 22 November 2024",
+      "evidenceType": "official_source",
+      "relevance": 0.86,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "В МФТИ предложили правила работы с искусственным интеллектом в образовании",
+        "sourceUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/moscow-institute-of-physics-and-technology-mipt-moscow-phystech.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/moscow-institute-of-physics-and-technology-mipt-moscow-phystech",
+        "publisher": "Moscow Institute of Physics and Technology",
+        "retrievedAt": "2026-05-16T23:25:00.000Z",
+        "snapshotHash": "898dd4bc53bdd25e99ccec778e7ee07117cb6d63fe07ed7f8d73c37f737cb1af",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "review-mipt-central-ai-policy-source-status",
+      "claimId": "claim-mipt-central-ai-policy-source-status",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approve as a narrow source-status candidate only. The official MIPT news source reports proposed rules from a strategic session; it does not establish a binding university-wide AI policy.",
+      "decidedAt": "2026-05-16T23:29:53.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-moscow-institute-of-physics-and-technology-mipt-moscow-phystech-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-mipt-ai-policy-source-status-20260516",
+      "title": "MIPT staged AI policy source-status summary",
+      "generatedAt": "2026-05-16T23:29:53.000Z",
+      "draftPath": "content/reports/2026-05/mipt-ai-policy-source-status-20260516.mdx",
+      "summary": "Official MIPT-domain discovery found a MIPT news page reporting proposed rules for AI use in the educational environment and an official AI course page that was rejected as non-policy. No central binding university-wide generative-AI policy was verified in this staged crawl.",
+      "referencedClaimIds": [
+        "claim-mipt-central-ai-policy-source-status"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/moscow-institute-of-physics-and-technology-mipt-moscow-phystech.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The staged claim is limited to source discovery status and should not be read as a binding MIPT AI-use rule.",
+        "Russian original-language source text is canonical; English text is display-only helper text."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
