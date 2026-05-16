@@ -1,0 +1,597 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-navarra-20260515",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-unav-ai-policy-pdf",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "finalUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "sourceTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+      "sourceLanguage": "es",
+      "sourceType": "formal_policy",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unav.edu inteligencia artificial política académica integridad evaluación estudiantes Universidad de Navarra",
+      "discoveredAt": "2026-05-15T22:35:16.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.96,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-15T22:45:00.000Z",
+      "verificationNotes": "Official unav.edu PDF containing University of Navarra AI policy text and annex references.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-unav-deloitte-ai-report",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "sourceUrl": "https://www.unav.edu/documents/89977860/0/informe-observatorio-regulacion-digital-tecnologia-deloitte-unav.pdf",
+      "finalUrl": "https://www.unav.edu/documents/89977860/0/informe-observatorio-regulacion-digital-tecnologia-deloitte-unav.pdf",
+      "sourceTitle": "Informe sobre Inteligencia Artificial",
+      "sourceLanguage": "es",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unav.edu inteligencia artificial política académica integridad evaluación estudiantes Universidad de Navarra",
+      "discoveredAt": "2026-05-15T22:35:16.000Z",
+      "officialDomainConfidence": 0.9,
+      "aiRelevanceScore": 0.75,
+      "policySpecificityScore": 0.15,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-15T22:45:00.000Z",
+      "verificationNotes": "Official-domain result, but it appears to be an external/observatory report rather than University of Navarra policy or guidance.",
+      "rejectionReason": "research_showcase_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-unav-deloitte-ai-report",
+      "sourceCandidateId": "src-unav-deloitte-ai-report",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "sourceUrl": "https://www.unav.edu/documents/89977860/0/informe-observatorio-regulacion-digital-tecnologia-deloitte-unav.pdf",
+      "finalUrl": "https://www.unav.edu/documents/89977860/0/informe-observatorio-regulacion-digital-tecnologia-deloitte-unav.pdf",
+      "rejectedAt": "2026-05-15T22:45:00.000Z",
+      "rejectionReason": "research_showcase_only",
+      "checkedBy": "codex-crawl-worker",
+      "evidenceSnippet": "Informe sobre Inteligencia Artificial",
+      "notes": "Search result is AI-related and hosted on unav.edu, but it is a report, not a binding or operational university AI policy source."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-unav-ai-policy-20260515",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "startedAt": "2026-05-15T22:35:16.000Z",
+      "endedAt": "2026-05-15T22:45:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:unav.edu inteligencia artificial política académica integridad evaluación estudiantes Universidad de Navarra",
+          "domain": "unav.edu",
+          "resultCount": 5,
+          "notes": "Firecrawl search returned an official University of Navarra AI policy PDF as the strongest policy-specific source."
+        },
+        {
+          "method": "pdf_discovery",
+          "domain": "www.unav.edu",
+          "resultCount": 1,
+          "notes": "The official AI policy PDF was fetched and parsed through Firecrawl PDF extraction."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-unav-ai-policy-pdf",
+        "src-unav-deloitte-ai-report"
+      ],
+      "rejectionIds": [
+        "rej-unav-deloitte-ai-report"
+      ],
+      "summary": "Official-source discovery found one relevant University of Navarra AI policy PDF and rejected one official-domain report as non-policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "crawl_plan",
+      "planId": "plan-unav-ai-policy-20260515",
+      "createdAt": "2026-05-15T22:45:00.000Z",
+      "createdBy": "codex-crawl-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-navarra",
+          "sourceCandidateId": "src-unav-ai-policy-pdf",
+          "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+          "sourceTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+          "sourceLanguage": "es",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "privacy",
+            "teaching",
+            "research",
+            "academic_integrity"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after extracting narrow claims directly supported by official University of Navarra source text.",
+        "Do not infer student-facing policy from employee-scope policy except where the source explicitly references student generative-AI guidance."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-unav-ai-policy-pdf-firecrawl",
+      "sourceCandidateId": "src-unav-ai-policy-pdf",
+      "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "finalUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "attemptedAt": "2026-05-15T22:45:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1728,
+      "contentHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e",
+      "normalizedTextStorageKey": "openclaw://staging/uapt-university-of-navarra-20260515/snapshots/src-unav-ai-policy-pdf-normalized-text"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-unav-ai-policy-pdf",
+      "sourceCandidateId": "src-unav-ai-policy-pdf",
+      "fetchAttemptId": "fetch-unav-ai-policy-pdf-firecrawl",
+      "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "finalUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "sourceTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+      "sourceLanguage": "es",
+      "contentHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e",
+      "fetchedAt": "2026-05-15T22:45:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://staging/uapt-university-of-navarra-20260515/snapshots/src-unav-ai-policy-pdf-normalized-text",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unav-ai-policy-employee-scope",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "claimType": "ai_tool_treatment",
+      "claimText": "University of Navarra's AI policy applies to employees, governing bodies, and functional areas of the university and entities under its effective control.",
+      "normalizedValue": "employee_scope",
+      "sourceLanguage": "es",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unav-ai-policy-employee-scope"
+      ],
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unav-ai-policy-employee-scope",
+      "claimId": "claim-unav-ai-policy-employee-scope",
+      "sourceSnapshotId": "snap-unav-ai-policy-pdf",
+      "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "finalUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "sourceTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+      "sourceLanguage": "es",
+      "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e",
+      "evidenceSnippetOriginal": "Esta Política aplica a todos los empleados, órganos de gobierno y áreas funcionales de la Universidad de Navarra y de aquellas entidades sobre las que las ostente un control efectivo.",
+      "evidenceSnippetDisplay": "The policy applies to employees, governing bodies, and functional areas of the University of Navarra and entities under its effective control.",
+      "evidenceLocator": "Section 2, Ámbito de aplicación",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "rev-unav-ai-policy-employee-scope",
+      "claimId": "claim-unav-ai-policy-employee-scope",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved as a narrow scope claim; the source explicitly defines the policy's application.",
+      "decidedAt": "2026-05-15T22:45:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unav-ai-privacy-compliance",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "claimType": "privacy",
+      "claimText": "University of Navarra's AI policy says AI systems must be developed and used in accordance with applicable privacy, personal data protection, and European AI Act requirements.",
+      "normalizedValue": "privacy_data_protection_compliance",
+      "sourceLanguage": "es",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unav-ai-privacy-compliance"
+      ],
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unav-ai-privacy-compliance",
+      "claimId": "claim-unav-ai-privacy-compliance",
+      "sourceSnapshotId": "snap-unav-ai-policy-pdf",
+      "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "finalUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "sourceTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+      "sourceLanguage": "es",
+      "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e",
+      "evidenceSnippetOriginal": "Debe garantizarse que los sistemas de inteligencia artificial se desarrollen y usen conforme a la legislación aplicable sobre privacidad y protección de datos personales y al Reglamento Europeo de Inteligencia Artificial.",
+      "evidenceSnippetDisplay": "AI systems must be developed and used in accordance with applicable privacy, personal data protection, and European AI Act requirements.",
+      "evidenceLocator": "Section 4, Algunas pautas generales de actuación",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "rev-unav-ai-privacy-compliance",
+      "claimId": "claim-unav-ai-privacy-compliance",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved because the source uses binding language around privacy, data protection, prohibited uses, and required controls.",
+      "decidedAt": "2026-05-15T22:45:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unav-ai-confidential-data",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "claimType": "privacy",
+      "claimText": "University of Navarra's AI policy says confidential information and any personal data should not be entered into some AI dialogue interfaces because the information may become training data or appear in outputs for others.",
+      "normalizedValue": "avoid_confidential_personal_data_in_some_ai_tools",
+      "sourceLanguage": "es",
+      "confidence": 0.88,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unav-ai-confidential-data"
+      ],
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unav-ai-confidential-data",
+      "claimId": "claim-unav-ai-confidential-data",
+      "sourceSnapshotId": "snap-unav-ai-policy-pdf",
+      "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "finalUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "sourceTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+      "sourceLanguage": "es",
+      "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e",
+      "evidenceSnippetOriginal": "Por tanto, debe evitarse introducir información confidencial, por ejemplo, sobre proyectos de investigación futuros o en curso, estrategias de la Universidad y, por supuesto, cualquier clase de dato personal.",
+      "evidenceSnippetDisplay": "The policy says confidential information, including future or current research projects, university strategies, and any personal data, should be avoided in such tools.",
+      "evidenceLocator": "Section 4, Algunas pautas generales de actuación",
+      "evidenceType": "pdf",
+      "relevance": 0.93,
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "rev-unav-ai-confidential-data",
+      "claimId": "claim-unav-ai-confidential-data",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved with scoped wording because the source says some AI dialogue interfaces may incorporate provided information into training data or outputs and therefore confidential/personal data should be avoided.",
+      "decidedAt": "2026-05-15T22:45:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unav-student-generative-ai-expectations",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "claimType": "academic_integrity",
+      "claimText": "For student use of generative AI tools, University of Navarra's AI policy asks teachers to follow the university's generative-AI and academic-integrity guide and communicate clear expectations to students for their courses.",
+      "normalizedValue": "teachers_should_set_student_ai_expectations",
+      "sourceLanguage": "es",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unav-student-generative-ai-expectations"
+      ],
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unav-student-generative-ai-expectations",
+      "claimId": "claim-unav-student-generative-ai-expectations",
+      "sourceSnapshotId": "snap-unav-ai-policy-pdf",
+      "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "finalUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "sourceTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+      "sourceLanguage": "es",
+      "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e",
+      "evidenceSnippetOriginal": "En lo que se refiere al uso de herramientas de IA generativa por parte de los estudiantes, se pide a los profesores que sigan la “Guía de Uso sobre IA generativa e integridad académica” y comuniquen expectativas claras a los estudiantes sobre la utilización en sus asignaturas.",
+      "evidenceSnippetDisplay": "For student generative AI use, teachers are asked to follow the generative-AI and academic-integrity guide and communicate clear expectations for their courses.",
+      "evidenceLocator": "Section 4, Algunas pautas generales de actuación",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "rev-unav-student-generative-ai-expectations",
+      "claimId": "claim-unav-student-generative-ai-expectations",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved as guidance directed to teachers, not as a direct student prohibition or permission rule.",
+      "decidedAt": "2026-05-15T22:45:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unav-library-copyright-ai",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "claimType": "other",
+      "claimText": "University of Navarra's AI policy cautions that using third-party digital information resources from the library or repositories in some AI platforms may violate copyright and intellectual property rights where licenses prohibit use, adaptation, copying, or data extraction without permission.",
+      "normalizedValue": "library_copyright_caution_for_ai_platforms",
+      "sourceLanguage": "es",
+      "confidence": 0.87,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unav-library-copyright-ai"
+      ],
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unav-library-copyright-ai",
+      "claimId": "claim-unav-library-copyright-ai",
+      "sourceSnapshotId": "snap-unav-ai-policy-pdf",
+      "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "finalUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "sourceTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+      "sourceLanguage": "es",
+      "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e",
+      "evidenceSnippetOriginal": "La mayoría de los recursos de información digital de terceros proporcionados por la Biblioteca y otros repositorios disponibles en la Universidad... están sujetos a acuerdos de licencia que prohíben el uso, la adaptación, la copia o la extracción de datos sin permiso previo.",
+      "evidenceSnippetDisplay": "Most third-party digital information resources from the library and repositories are subject to licenses that may prohibit use, adaptation, copying, or data extraction without permission.",
+      "evidenceLocator": "Section 4, Algunas pautas generales de actuación",
+      "evidenceType": "pdf",
+      "relevance": 0.9,
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "rev-unav-library-copyright-ai",
+      "claimId": "claim-unav-library-copyright-ai",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved as a caution about licensed third-party resources and some AI platforms, not as a blanket copyright rule.",
+      "decidedAt": "2026-05-15T22:45:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unav-research-ethics-ai-data",
+      "entityType": "university",
+      "entitySlug": "university-of-navarra",
+      "claimType": "research",
+      "claimText": "University of Navarra's AI policy says research projects involving human subjects, human biological samples, or personal or clinical data must undergo prior evaluation by the university's Research Ethics Committee.",
+      "normalizedValue": "research_ethics_prior_evaluation",
+      "sourceLanguage": "es",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unav-research-ethics-ai-data"
+      ],
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unav-research-ethics-ai-data",
+      "claimId": "claim-unav-research-ethics-ai-data",
+      "sourceSnapshotId": "snap-unav-ai-policy-pdf",
+      "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "finalUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+      "sourceTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+      "sourceLanguage": "es",
+      "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e",
+      "evidenceSnippetOriginal": "Todos los proyectos de investigación básica o aplicada en los que participen personas como sujetos de la investigación, impliquen la utilización de muestras biológicas de origen humano o requieran la utilización de datos personales o clínicos, deben someterse a evaluación previa.",
+      "evidenceSnippetDisplay": "Research involving human subjects, human biological samples, or personal or clinical data must undergo prior evaluation.",
+      "evidenceLocator": "Section 4, Algunas pautas generales de actuación",
+      "evidenceType": "pdf",
+      "relevance": 0.92,
+      "citation": {
+        "citationTitle": "Política de desarrollo y uso responsable de herramientas de inteligencia artificial para todas las personas que trabajan en la Universidad de Navarra",
+        "sourceUrl": "https://www.unav.edu/documents/10162/161278125/Politica+IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json",
+        "publisher": "University of Navarra",
+        "retrievedAt": "2026-05-15T22:45:00.000Z",
+        "snapshotHash": "bba5bf6ada4d9094c165aab652ba04641eb701edfa8b65a947a2561563be732e"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "rev-unav-research-ethics-ai-data",
+      "claimId": "claim-unav-research-ethics-ai-data",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved because the source directly states a prior-evaluation requirement for the listed research categories.",
+      "decidedAt": "2026-05-15T22:45:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-navarra-20260515",
+      "artifactType": "report_draft",
+      "reportId": "report-unav-ai-policy-20260515",
+      "title": "University of Navarra AI Policy Staged Findings",
+      "generatedAt": "2026-05-15T22:45:00.000Z",
+      "draftPath": "content/reports/uapt-university-of-navarra-20260515.mdx",
+      "summary": "Staged findings from one official University of Navarra AI policy PDF. Claims are limited to employee-scope policy coverage, privacy and data handling, teacher communication of student generative-AI expectations, library/copyright caution, and research ethics review.",
+      "referencedClaimIds": [
+        "claim-unav-ai-policy-employee-scope",
+        "claim-unav-ai-privacy-compliance",
+        "claim-unav-ai-confidential-data",
+        "claim-unav-student-generative-ai-expectations",
+        "claim-unav-library-copyright-ai",
+        "claim-unav-research-ethics-ai-data"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-navarra.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Only one official University of Navarra AI policy PDF was used as approved evidence; annex documents referenced by the policy were not separately found as public official sources in this run.",
+        "The policy itself states that it has internal-use character, so staged public metadata uses only short evidence snippets and source attribution."
+      ],
+      "rawArtifactPaths": []
+    }
+  ]
+}

@@ -1,0 +1,465 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-tianjin-university-20260515",
+  "artifacts": [
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "traceId": "trace-tju-20260515",
+      "entityType": "university",
+      "entitySlug": "tianjin-university",
+      "startedAt": "2026-05-16T02:36:51.000Z",
+      "endedAt": "2026-05-16T02:42:30.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:tju.edu.cn 天津大学 生成式人工智能 教学 学术诚信 指南 政策",
+          "domain": "tju.edu.cn",
+          "resultCount": 2,
+          "notes": "Firecrawl search found official Tianjin University information-disclosure bulletin PDFs, but no dedicated generative-AI student-use policy page."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:tju.edu.cn 天津大学 AI 人工智能 学术诚信 作业 论文",
+          "domain": "tju.edu.cn",
+          "resultCount": 3,
+          "notes": "Firecrawl search surfaced an official School of Foreign Languages visit article mentioning another university's AI-use restrictions, a Tianjin University news article about ChatGPT, and a university bulletin PDF."
+        },
+        {
+          "method": "public_web_search",
+          "query": "\"天津大学\" \"生成式人工智能\" \"指导意见\"",
+          "domain": "tju.edu.cn",
+          "resultCount": 10,
+          "notes": "Search results were mostly event notices, competition notices, media coverage, or non-Tianjin University pages; no official Tianjin University generative-AI guidance source was verified."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "tju.edu.cn",
+          "resultCount": 3,
+          "notes": "Verified tju.edu.cn, xxgkw.tju.edu.cn, news.tju.edu.cn, and tjusfl.tju.edu.cn as Tianjin University official domains by domain suffix and page branding."
+        },
+        {
+          "method": "pdf_discovery",
+          "query": "天津大学 信息公开 人工智能 学术不端 科研诚信",
+          "domain": "xxgkw.tju.edu.cn",
+          "resultCount": 1,
+          "notes": "The official information-disclosure PDF contained substantive institutional work-plan language about AI in teaching, AI across disciplines, and research-integrity controls."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-tju-2021-work-plan",
+        "sc-tju-sfl-newcastle-visit",
+        "sc-tju-chatgpt-news"
+      ],
+      "rejectionIds": [
+        "sr-tju-sfl-newcastle-visit",
+        "sr-tju-chatgpt-news"
+      ],
+      "summary": "Official-source discovery did not locate a dedicated Tianjin University generative-AI policy, student AI-use rule, approved-tool list, or IT/security AI-tool page. The verified source used for claim candidates is an official Tianjin University information-disclosure PDF with narrow institutional planning and research-integrity language. Two official news/event pages were rejected because they did not provide primary Tianjin University policy rules."
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "sourceCandidateId": "sc-tju-2021-work-plan",
+      "entityType": "university",
+      "entitySlug": "tianjin-university",
+      "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "finalUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "sourceTitle": "天津大学2020年工作总结和2021年工作计划",
+      "sourceLanguage": "zh-CN",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "pdf_discovery",
+      "queryUsed": "site:tju.edu.cn 天津大学 人工智能 学术不端 科研诚信 教育教学",
+      "discoveredAt": "2026-05-16T02:39:30.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.74,
+      "policySpecificityScore": 0.66,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T02:42:30.000Z",
+      "verificationNotes": "PDF is hosted on xxgkw.tju.edu.cn, the Tianjin University information disclosure site. The text is an official university work summary and work plan, not a dedicated generative-AI use policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "sourceCandidateId": "sc-tju-sfl-newcastle-visit",
+      "entityType": "university",
+      "entitySlug": "tianjin-university",
+      "sourceUrl": "https://tjusfl.tju.edu.cn/info/1134/8942.htm",
+      "finalUrl": "https://tjusfl.tju.edu.cn/info/1134/8942.htm",
+      "sourceTitle": "跨越欧亚的学术对话：英国Newcastle大学Christos Salis教授访问我院并举办系列讲座",
+      "sourceLanguage": "zh-CN",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:tju.edu.cn 天津大学 AI 人工智能 学术诚信 作业 论文",
+      "discoveredAt": "2026-05-16T02:36:51.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.43,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "verificationNotes": "Official Tianjin University School of Foreign Languages article, but the AI-use restriction text describes Newcastle University practice during an exchange visit rather than Tianjin University policy.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "sourceCandidateId": "sc-tju-chatgpt-news",
+      "entityType": "university",
+      "entitySlug": "tianjin-university",
+      "sourceUrl": "https://news.tju.edu.cn/info/1005/223109.htm",
+      "finalUrl": "https://news.tju.edu.cn/info/1005/223109.htm",
+      "sourceTitle": "天津日报：ChatGPT“火出圈” 我们该“急眼”吗？（图）",
+      "sourceLanguage": "zh-CN",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:tju.edu.cn \"ChatGPT\" \"学术诚信\" \"天津大学\"",
+      "discoveredAt": "2026-05-16T02:37:40.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.71,
+      "policySpecificityScore": 0.22,
+      "verificationStatus": "rejected",
+      "verificationNotes": "Official Tianjin University news republication discussing ChatGPT and academic-integrity concerns, but it is media coverage rather than a university policy or guidance source.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "sourceRejectionId": "sr-tju-sfl-newcastle-visit",
+      "sourceCandidateId": "sc-tju-sfl-newcastle-visit",
+      "entityType": "university",
+      "entitySlug": "tianjin-university",
+      "sourceUrl": "https://tjusfl.tju.edu.cn/info/1134/8942.htm",
+      "finalUrl": "https://tjusfl.tju.edu.cn/info/1134/8942.htm",
+      "rejectedAt": "2026-05-16T02:42:30.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "codex-openclaw-local",
+      "evidenceSnippet": "在论文及课程作业中，学校对AI的使用有明确限制，要求学生在提交时须声明AI的具体使用方式与范围，强调学术诚信与独立思考。",
+      "notes": "The article reports discussion of Newcastle University requirements during a visit; it cannot support a Tianjin University claim."
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "sourceRejectionId": "sr-tju-chatgpt-news",
+      "sourceCandidateId": "sc-tju-chatgpt-news",
+      "entityType": "university",
+      "entitySlug": "tianjin-university",
+      "sourceUrl": "https://news.tju.edu.cn/info/1005/223109.htm",
+      "finalUrl": "https://news.tju.edu.cn/info/1005/223109.htm",
+      "rejectedAt": "2026-05-16T02:42:30.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "codex-openclaw-local",
+      "evidenceSnippet": "最近，ChatGPT迅速火爆全网。它是美国人工智能研究实验室OpenAI开发的一种全新聊天机器人模型。",
+      "notes": "The page is a media-focused news article and does not state Tianjin University rules for AI tool use."
+    },
+    {
+      "artifactType": "crawl_plan",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "planId": "plan-tju-20260515",
+      "createdAt": "2026-05-16T02:42:30.000Z",
+      "createdBy": "codex-openclaw-local",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "tianjin-university",
+          "sourceCandidateId": "sc-tju-2021-work-plan",
+          "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+          "sourceTitle": "天津大学2020年工作总结和2021年工作计划",
+          "sourceLanguage": "zh-CN",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "research",
+            "academic_integrity"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after the official information-disclosure PDF supports only narrow institutional planning and research-integrity claims.",
+        "Do not infer a student generative-AI policy, approved-tool list, privacy rule, or security-review workflow from this work-plan source.",
+        "Do not use news coverage, external university examples, event notices, or search snippets as claim evidence.",
+        "Do not stage raw PDF, HTML, screenshots, or full normalized text in Git."
+      ]
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "fetchAttemptId": "fa-tju-2021-work-plan",
+      "sourceCandidateId": "sc-tju-2021-work-plan",
+      "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "finalUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "attemptedAt": "2026-05-16T02:39:30.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 2087,
+      "contentHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "sourceSnapshotId": "ss-tju-2021-work-plan",
+      "sourceCandidateId": "sc-tju-2021-work-plan",
+      "fetchAttemptId": "fa-tju-2021-work-plan",
+      "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "finalUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "sourceTitle": "天津大学2020年工作总结和2021年工作计划",
+      "sourceLanguage": "zh-CN",
+      "contentHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+      "fetchedAt": "2026-05-16T02:39:30.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "claimId": "claim-tju-teaching-ai-techniques",
+      "entityType": "university",
+      "entitySlug": "tianjin-university",
+      "claimType": "teaching",
+      "claimText": "Tianjin University's 2021 work plan says the university would use big data, artificial intelligence, and deep learning techniques to study learning patterns and improve education and teaching models.",
+      "normalizedValue": "institutional_plan_ai_education_technology",
+      "sourceLanguage": "zh-CN",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-tju-teaching-ai-techniques"
+      ],
+      "citation": {
+        "citationTitle": "天津大学2020年工作总结和2021年工作计划",
+        "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tianjin-university.json",
+        "publisher": "天津大学信息公开网",
+        "retrievedAt": "2026-05-16T02:39:30.000Z",
+        "snapshotHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "evidenceId": "ev-tju-teaching-ai-techniques",
+      "claimId": "claim-tju-teaching-ai-techniques",
+      "sourceSnapshotId": "ss-tju-2021-work-plan",
+      "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "finalUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "sourceTitle": "天津大学2020年工作总结和2021年工作计划",
+      "sourceLanguage": "zh-CN",
+      "snapshotHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+      "evidenceSnippetOriginal": "推进技术深度融入。建立教育教学知识管理系统，运用大数据、人工智能、深度学习等技术手段，深化学习规律研究，改进教育教学模式。",
+      "evidenceSnippetDisplay": "The work plan calls for deeper technology integration, including big data, AI, and deep learning, to study learning patterns and improve teaching models.",
+      "evidenceLocator": "PDF text near section on optimizing talent cultivation models",
+      "evidenceType": "pdf",
+      "relevance": 0.88,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "天津大学2020年工作总结和2021年工作计划",
+        "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tianjin-university.json",
+        "publisher": "天津大学信息公开网",
+        "retrievedAt": "2026-05-16T02:39:30.000Z",
+        "snapshotHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "decisionId": "rd-tju-teaching-ai-techniques",
+      "claimId": "claim-tju-teaching-ai-techniques",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a narrow institutional work-plan claim about education technology; not a binding student AI-use policy.",
+      "decidedAt": "2026-05-16T02:42:30.000Z"
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "claimId": "claim-tju-ai-disciplinary-integration",
+      "entityType": "university",
+      "entitySlug": "tianjin-university",
+      "claimType": "research",
+      "claimText": "Tianjin University's 2021 work plan identifies artificial intelligence as an emerging and interdisciplinary area and says the university would promote deep integration of AI with all disciplines.",
+      "normalizedValue": "institutional_plan_ai_discipline_integration",
+      "sourceLanguage": "zh-CN",
+      "confidence": 0.85,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-tju-ai-disciplinary-integration"
+      ],
+      "citation": {
+        "citationTitle": "天津大学2020年工作总结和2021年工作计划",
+        "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tianjin-university.json",
+        "publisher": "天津大学信息公开网",
+        "retrievedAt": "2026-05-16T02:39:30.000Z",
+        "snapshotHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "evidenceId": "ev-tju-ai-disciplinary-integration",
+      "claimId": "claim-tju-ai-disciplinary-integration",
+      "sourceSnapshotId": "ss-tju-2021-work-plan",
+      "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "finalUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "sourceTitle": "天津大学2020年工作总结和2021年工作计划",
+      "sourceLanguage": "zh-CN",
+      "snapshotHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+      "evidenceSnippetOriginal": "尽快推进网络空间安全、人工智能、储能等新兴和交叉学科、学位点建设，重点推动人工智能与各学科的深度融合。",
+      "evidenceSnippetDisplay": "The work plan identifies AI as an emerging and interdisciplinary field and calls for deep integration of AI with each discipline.",
+      "evidenceLocator": "PDF text near section on emerging and interdisciplinary disciplines",
+      "evidenceType": "pdf",
+      "relevance": 0.86,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "天津大学2020年工作总结和2021年工作计划",
+        "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tianjin-university.json",
+        "publisher": "天津大学信息公开网",
+        "retrievedAt": "2026-05-16T02:39:30.000Z",
+        "snapshotHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "decisionId": "rd-tju-ai-disciplinary-integration",
+      "claimId": "claim-tju-ai-disciplinary-integration",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a research and discipline-development claim, not as a rule governing AI tool use by students or staff.",
+      "decidedAt": "2026-05-16T02:42:30.000Z"
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "claimId": "claim-tju-research-integrity-zero-tolerance",
+      "entityType": "university",
+      "entitySlug": "tianjin-university",
+      "claimType": "academic_integrity",
+      "claimText": "Tianjin University's 2021 work plan says the university would emphasize research integrity and academic-conduct development, strengthen research-integrity publicity, education, and spot checks, and maintain zero tolerance for academic misconduct.",
+      "normalizedValue": "research_integrity_zero_tolerance",
+      "sourceLanguage": "zh-CN",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-tju-research-integrity-zero-tolerance"
+      ],
+      "citation": {
+        "citationTitle": "天津大学2020年工作总结和2021年工作计划",
+        "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tianjin-university.json",
+        "publisher": "天津大学信息公开网",
+        "retrievedAt": "2026-05-16T02:39:30.000Z",
+        "snapshotHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "evidenceId": "ev-tju-research-integrity-zero-tolerance",
+      "claimId": "claim-tju-research-integrity-zero-tolerance",
+      "sourceSnapshotId": "ss-tju-2021-work-plan",
+      "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "finalUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+      "sourceTitle": "天津大学2020年工作总结和2021年工作计划",
+      "sourceLanguage": "zh-CN",
+      "snapshotHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+      "evidenceSnippetOriginal": "重视科研诚信和学风建设，强化科研诚信宣传、教育和抽查工作，坚持对学术不端行为零容忍，营造诚实守信、潜心研究、勇攀高峰的良好氛围。",
+      "evidenceSnippetDisplay": "The work plan says the university emphasizes research integrity, strengthens publicity, education, and spot checks, and maintains zero tolerance for academic misconduct.",
+      "evidenceLocator": "PDF text near section on research system reform and research integrity",
+      "evidenceType": "pdf",
+      "relevance": 0.92,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "天津大学2020年工作总结和2021年工作计划",
+        "sourceUrl": "https://xxgkw.tju.edu.cn/xxfzgh/202110/P020211028545524612853.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tianjin-university.json",
+        "publisher": "天津大学信息公开网",
+        "retrievedAt": "2026-05-16T02:39:30.000Z",
+        "snapshotHash": "7a8a062037ce5ed03722c3b9e20bbbb3d0a6666d8335cf932175648fdc6f9836",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "decisionId": "rd-tju-research-integrity-zero-tolerance",
+      "claimId": "claim-tju-research-integrity-zero-tolerance",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a research-integrity and academic-conduct claim because the source uses explicit zero-tolerance language for academic misconduct.",
+      "decidedAt": "2026-05-16T02:42:30.000Z"
+    },
+    {
+      "artifactType": "report_draft",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tianjin-university-20260515",
+      "reportId": "report-tju-20260515",
+      "title": "Tianjin University AI policy staged evidence",
+      "generatedAt": "2026-05-16T02:42:30.000Z",
+      "draftPath": "content/reports/2026-05/tianjin-university-ai-policy-staged-evidence.mdx",
+      "summary": "Official discovery found no dedicated Tianjin University generative-AI student-use policy or approved-tool list. The staged claims rely on a verified official information-disclosure PDF and are limited to institutional planning language about AI in education and disciplines plus research-integrity zero-tolerance language.",
+      "referencedClaimIds": [
+        "claim-tju-teaching-ai-techniques",
+        "claim-tju-ai-disciplinary-integration",
+        "claim-tju-research-integrity-zero-tolerance"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/tianjin-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No official Tianjin University source was found for a dedicated generative-AI policy, approved-tool list, privacy/security review workflow, or student assignment disclosure rule.",
+        "Claims from the verified PDF should not be treated as course-level or student-facing generative-AI rules."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-p1-ia-et-moi",
+      "entityType": "university",
+      "entitySlug": "universite-paris-1-pantheon-sorbonne",
+      "sourceUrl": "https://international.pantheonsorbonne.fr/formation/lia-et-moi-luniversite",
+      "finalUrl": "https://www.pantheonsorbonne.fr/formation/lintelligence-artificielle-luniversite/lia-et-moi-luniversite",
+      "sourceTitle": "L’IA et moi à l’université",
+      "sourceLanguage": "fr",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:pantheonsorbonne.fr ChatGPT Université Paris 1",
+      "discoveredAt": "2026-05-16T02:37:55Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.86,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T02:37:55Z",
+      "verificationNotes": "Official Paris 1 Panthéon-Sorbonne guidance page for students and teachers on generative AI use at the university.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-p1-faq-ia-pdf",
+      "entityType": "university",
+      "entitySlug": "universite-paris-1-pantheon-sorbonne",
+      "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "finalUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "sourceTitle": "FAQ : l’IA et moi à l’université Paris 1 Panthéon-Sorbonne",
+      "sourceLanguage": "fr",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "link_traversal",
+      "queryUsed": "Linked from official L’IA et moi à l’université page",
+      "discoveredAt": "2026-05-16T02:37:55Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.96,
+      "policySpecificityScore": 0.88,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T02:37:55Z",
+      "verificationNotes": "Official FAQ PDF linked by the university guidance page; contains student-facing academic integrity, study-use, and data-handling guidance.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-p1-ia-enseignement-superieur-event",
+      "entityType": "university",
+      "entitySlug": "universite-paris-1-pantheon-sorbonne",
+      "sourceUrl": "https://pedagogie-numerique.pantheonsorbonne.fr/evenements/ia-et-enseignement-superieur",
+      "finalUrl": "https://pedagogie-numerique.pantheonsorbonne.fr/evenements/ia-et-enseignement-superieur",
+      "sourceTitle": "IA et enseignement supérieur",
+      "sourceLanguage": "fr",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:pantheonsorbonne.fr intelligence artificielle enseignement supérieur Paris 1",
+      "discoveredAt": "2026-05-16T02:37:55Z",
+      "officialDomainConfidence": 0.95,
+      "aiRelevanceScore": 0.83,
+      "policySpecificityScore": 0.22,
+      "verificationStatus": "rejected",
+      "rejectionReason": "event_or_news_only",
+      "verificationNotes": "Official event page about a thematic afternoon on AI in higher education; not used as policy evidence because it announces a programme and speakers rather than university guidance.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-p1-ia-enseignement-superieur-event",
+      "sourceCandidateId": "src-p1-ia-enseignement-superieur-event",
+      "entityType": "university",
+      "entitySlug": "universite-paris-1-pantheon-sorbonne",
+      "sourceUrl": "https://pedagogie-numerique.pantheonsorbonne.fr/evenements/ia-et-enseignement-superieur",
+      "finalUrl": "https://pedagogie-numerique.pantheonsorbonne.fr/evenements/ia-et-enseignement-superieur",
+      "rejectedAt": "2026-05-16T02:37:55Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "codex-crawl-worker",
+      "evidenceSnippet": "Le 3 septembre 2024... ont organisé un après-midi thématique sur l'actualité de l'IA à l'université.",
+      "notes": "Relevant official event context, but not a binding or standalone guidance source for claims."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-p1-ai-policy-discovery",
+      "entityType": "university",
+      "entitySlug": "universite-paris-1-pantheon-sorbonne",
+      "startedAt": "2026-05-16T02:37:55Z",
+      "endedAt": "2026-05-16T02:37:55Z",
+      "methodsAttempted": [
+        {
+          "method": "canonical_domain",
+          "domain": "pantheonsorbonne.fr",
+          "resultCount": 1,
+          "notes": "Checked robots.txt and official site structure; /search is disallowed, so direct official URLs and search-engine-discovered official pages were used."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:pantheonsorbonne.fr ChatGPT Université Paris 1",
+          "resultCount": 3,
+          "notes": "Identified the official student/teacher AI guidance page and an official event page."
+        },
+        {
+          "method": "link_traversal",
+          "domain": "international.pantheonsorbonne.fr",
+          "resultCount": 1,
+          "notes": "Followed the official guidance page link to the detailed FAQ PDF."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-p1-ia-et-moi",
+        "src-p1-faq-ia-pdf",
+        "src-p1-ia-enseignement-superieur-event"
+      ],
+      "rejectionIds": [
+        "rej-p1-ia-enseignement-superieur-event"
+      ],
+      "summary": "Official-source discovery found one guidance page and one linked official FAQ PDF suitable for narrow AI-use, academic-integrity, and data-handling claims."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "crawl_plan",
+      "planId": "plan-p1-ai-guidance",
+      "createdAt": "2026-05-16T02:37:55Z",
+      "createdBy": "codex-crawl-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "universite-paris-1-pantheon-sorbonne",
+          "sourceCandidateId": "src-p1-ia-et-moi",
+          "sourceUrl": "https://international.pantheonsorbonne.fr/formation/lia-et-moi-luniversite",
+          "sourceTitle": "L’IA et moi à l’université",
+          "sourceLanguage": "fr",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "student AI conduct",
+            "academic integrity",
+            "teaching and learning guidance"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "universite-paris-1-pantheon-sorbonne",
+          "sourceCandidateId": "src-p1-faq-ia-pdf",
+          "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+          "sourceTitle": "FAQ : l’IA et moi à l’université Paris 1 Panthéon-Sorbonne",
+          "sourceLanguage": "fr",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "academic integrity",
+            "privacy",
+            "study guidance"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after verified official sources support narrow claim/evidence candidates.",
+        "Do not use official event pages as policy evidence unless they contain standalone guidance."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-p1-ia-et-moi-http",
+      "sourceCandidateId": "src-p1-ia-et-moi",
+      "sourceUrl": "https://international.pantheonsorbonne.fr/formation/lia-et-moi-luniversite",
+      "finalUrl": "https://www.pantheonsorbonne.fr/formation/lintelligence-artificielle-luniversite/lia-et-moi-luniversite",
+      "attemptedAt": "2026-05-16T02:37:55Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1092,
+      "contentHash": "4d9680b6786a1347351426d5ddf8eb90ec51a98e2c630acde703e055171426c5",
+      "normalizedTextStorageKey": "openclaw/uapt-universite-paris-1-pantheon-sorbonne-20260515/snapshots/ia-et-moi.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-p1-faq-ia-pdf-http",
+      "sourceCandidateId": "src-p1-faq-ia-pdf",
+      "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "finalUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "attemptedAt": "2026-05-16T02:37:55Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 703,
+      "contentHash": "032a3dc17ff23137a8fdaa13ab51175f5a645d81fc10e7e45208d12a2fce34d7",
+      "normalizedTextStorageKey": "openclaw/uapt-universite-paris-1-pantheon-sorbonne-20260515/snapshots/faq-ia.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-p1-ia-enseignement-superieur-event-http",
+      "sourceCandidateId": "src-p1-ia-enseignement-superieur-event",
+      "sourceUrl": "https://pedagogie-numerique.pantheonsorbonne.fr/evenements/ia-et-enseignement-superieur",
+      "finalUrl": "https://pedagogie-numerique.pantheonsorbonne.fr/evenements/ia-et-enseignement-superieur",
+      "attemptedAt": "2026-05-16T02:37:55Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "skipped",
+      "errorReason": "Official event page was relevant but not policy-specific enough for claim extraction.",
+      "durationMs": 867
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-p1-ia-et-moi",
+      "sourceCandidateId": "src-p1-ia-et-moi",
+      "fetchAttemptId": "fetch-p1-ia-et-moi-http",
+      "sourceUrl": "https://international.pantheonsorbonne.fr/formation/lia-et-moi-luniversite",
+      "finalUrl": "https://www.pantheonsorbonne.fr/formation/lintelligence-artificielle-luniversite/lia-et-moi-luniversite",
+      "sourceTitle": "L’IA et moi à l’université",
+      "sourceLanguage": "fr",
+      "contentHash": "4d9680b6786a1347351426d5ddf8eb90ec51a98e2c630acde703e055171426c5",
+      "fetchedAt": "2026-05-16T02:37:55Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-universite-paris-1-pantheon-sorbonne-20260515/snapshots/ia-et-moi.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-p1-faq-ia-pdf",
+      "sourceCandidateId": "src-p1-faq-ia-pdf",
+      "fetchAttemptId": "fetch-p1-faq-ia-pdf-http",
+      "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "finalUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "sourceTitle": "FAQ : l’IA et moi à l’université Paris 1 Panthéon-Sorbonne",
+      "sourceLanguage": "fr",
+      "contentHash": "032a3dc17ff23137a8fdaa13ab51175f5a645d81fc10e7e45208d12a2fce34d7",
+      "fetchedAt": "2026-05-16T02:37:55Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-universite-paris-1-pantheon-sorbonne-20260515/snapshots/faq-ia.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-p1-ai-use-disclose-verify",
+      "entityType": "university",
+      "entitySlug": "universite-paris-1-pantheon-sorbonne",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Université Paris 1 Panthéon-Sorbonne guidance says students may use conversational AI tools in an academic setting, while correcting and completing outputs with their own knowledge, consolidating with academic sources, disclosing AI use, and critically verifying responses.",
+      "normalizedValue": "students_may_use_ai_with_disclosure_and_verification",
+      "sourceLanguage": "fr",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-p1-ai-use-disclose-verify"
+      ],
+      "citation": {
+        "citationTitle": "L’IA et moi à l’université",
+        "sourceUrl": "https://international.pantheonsorbonne.fr/formation/lia-et-moi-luniversite",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-paris-1-pantheon-sorbonne.json",
+        "publisher": "Université Paris 1 Panthéon-Sorbonne",
+        "retrievedAt": "2026-05-16T02:37:55Z",
+        "snapshotHash": "4d9680b6786a1347351426d5ddf8eb90ec51a98e2c630acde703e055171426c5",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-p1-ai-use-disclose-verify",
+      "claimId": "claim-p1-ai-use-disclose-verify",
+      "sourceSnapshotId": "snap-p1-ia-et-moi",
+      "sourceUrl": "https://international.pantheonsorbonne.fr/formation/lia-et-moi-luniversite",
+      "finalUrl": "https://www.pantheonsorbonne.fr/formation/lintelligence-artificielle-luniversite/lia-et-moi-luniversite",
+      "sourceTitle": "L’IA et moi à l’université",
+      "sourceLanguage": "fr",
+      "snapshotHash": "4d9680b6786a1347351426d5ddf8eb90ec51a98e2c630acde703e055171426c5",
+      "evidenceSnippetOriginal": "Oui, je peux utiliser les outils conversationnels propulsés par l'IA dans un cadre académique mais je fais attention à bien les utiliser. Je corrige, je complète avec mes connaissances ainsi que mes idées et je consolide avec des sources académiques. Quel que soit mon usage de l'IA, je fais preuve d'honnêteté intellectuelle en indiquant mon utilisation de l’IA et j'exerce toujours mon esprit critique en vérifiant ce qu’elle me propose comme réponse.",
+      "evidenceSnippetDisplay": "Students can use AI conversational tools academically, but should correct, complete, cite academic sources, disclose AI use, and verify responses.",
+      "evidenceLocator": "Section: L'IA à Paris 1 Panthéon-Sorbonne : les grands principes",
+      "evidenceType": "official_source",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "L’IA et moi à l’université",
+        "sourceUrl": "https://international.pantheonsorbonne.fr/formation/lia-et-moi-luniversite",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-paris-1-pantheon-sorbonne.json",
+        "publisher": "Université Paris 1 Panthéon-Sorbonne",
+        "retrievedAt": "2026-05-16T02:37:55Z",
+        "snapshotHash": "4d9680b6786a1347351426d5ddf8eb90ec51a98e2c630acde703e055171426c5",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "dec-p1-ai-use-disclose-verify",
+      "claimId": "claim-p1-ai-use-disclose-verify",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved as a narrow guidance claim. Source supports may-use wording and disclosure/verification conditions.",
+      "decidedAt": "2026-05-16T02:37:55Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-p1-ai-full-work-fraud",
+      "entityType": "university",
+      "entitySlug": "universite-paris-1-pantheon-sorbonne",
+      "claimType": "academic_integrity",
+      "claimText": "The Paris 1 Panthéon-Sorbonne AI FAQ states that presenting as one's own a submitted university assignment that one did not write oneself is fraud, whether the writer is a human third party or an AI.",
+      "normalizedValue": "presenting_ai_written_work_as_own_is_fraud",
+      "sourceLanguage": "fr",
+      "confidence": 0.92,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-p1-ai-full-work-fraud"
+      ],
+      "citation": {
+        "citationTitle": "FAQ : l’IA et moi à l’université Paris 1 Panthéon-Sorbonne",
+        "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-paris-1-pantheon-sorbonne.json",
+        "publisher": "Université Paris 1 Panthéon-Sorbonne",
+        "retrievedAt": "2026-05-16T02:37:55Z",
+        "snapshotHash": "032a3dc17ff23137a8fdaa13ab51175f5a645d81fc10e7e45208d12a2fce34d7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-p1-ai-full-work-fraud",
+      "claimId": "claim-p1-ai-full-work-fraud",
+      "sourceSnapshotId": "snap-p1-faq-ia-pdf",
+      "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "finalUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "sourceTitle": "FAQ : l’IA et moi à l’université Paris 1 Panthéon-Sorbonne",
+      "sourceLanguage": "fr",
+      "snapshotHash": "032a3dc17ff23137a8fdaa13ab51175f5a645d81fc10e7e45208d12a2fce34d7",
+      "evidenceSnippetOriginal": "Pour l’université, présenter comme sien un travail que l’on n’a pas rédigé soi-même est une fraude : que le rédacteur soit un tiers humain ou une IA ne change rien.",
+      "evidenceSnippetDisplay": "For the university, presenting work as one's own when one did not write it is fraud, whether written by another person or AI.",
+      "evidenceLocator": "FAQ question: Est-il légal d’utiliser l’IA pour effectuer mon travail à rendre ?",
+      "evidenceType": "pdf",
+      "relevance": 0.96,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "FAQ : l’IA et moi à l’université Paris 1 Panthéon-Sorbonne",
+        "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-paris-1-pantheon-sorbonne.json",
+        "publisher": "Université Paris 1 Panthéon-Sorbonne",
+        "retrievedAt": "2026-05-16T02:37:55Z",
+        "snapshotHash": "032a3dc17ff23137a8fdaa13ab51175f5a645d81fc10e7e45208d12a2fce34d7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "dec-p1-ai-full-work-fraud",
+      "claimId": "claim-p1-ai-full-work-fraud",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved as a narrow academic-integrity claim directly supported by the FAQ wording.",
+      "decidedAt": "2026-05-16T02:37:55Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-p1-ai-personal-data-warning",
+      "entityType": "university",
+      "entitySlug": "universite-paris-1-pantheon-sorbonne",
+      "claimType": "privacy",
+      "claimText": "The Paris 1 Panthéon-Sorbonne AI FAQ advises never to entrust personal data, especially sensitive data, to a third party AI service, noting data appropriation risks and that ChatGPT retains submitted information on U.S. servers for an officially stated 30 days.",
+      "normalizedValue": "do_not_submit_personal_or_sensitive_data_to_ai_services",
+      "sourceLanguage": "fr",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-p1-ai-personal-data-warning"
+      ],
+      "citation": {
+        "citationTitle": "FAQ : l’IA et moi à l’université Paris 1 Panthéon-Sorbonne",
+        "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-paris-1-pantheon-sorbonne.json",
+        "publisher": "Université Paris 1 Panthéon-Sorbonne",
+        "retrievedAt": "2026-05-16T02:37:55Z",
+        "snapshotHash": "032a3dc17ff23137a8fdaa13ab51175f5a645d81fc10e7e45208d12a2fce34d7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-p1-ai-personal-data-warning",
+      "claimId": "claim-p1-ai-personal-data-warning",
+      "sourceSnapshotId": "snap-p1-faq-ia-pdf",
+      "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "finalUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+      "sourceTitle": "FAQ : l’IA et moi à l’université Paris 1 Panthéon-Sorbonne",
+      "sourceLanguage": "fr",
+      "snapshotHash": "032a3dc17ff23137a8fdaa13ab51175f5a645d81fc10e7e45208d12a2fce34d7",
+      "evidenceSnippetOriginal": "La règle est de ne jamais confier des données personnelles, à plus forte raison sensibles, à un tiers, d’autant plus quand il dépend d’une législation qui n’est pas la nôtre (les serveurs d’OpenAI sont actuellement tous aux États-Unis) et qu’il peut unilatéralement modifier les conditions d’utilisation de ces données.",
+      "evidenceSnippetDisplay": "The FAQ advises never to entrust personal data, especially sensitive data, to third-party services, especially under another legal regime.",
+      "evidenceLocator": "FAQ question: L’IA est-il comme un correcteur orthographique, un outil sans danger ?",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "FAQ : l’IA et moi à l’université Paris 1 Panthéon-Sorbonne",
+        "sourceUrl": "https://international.pantheonsorbonne.fr/sites/default/files/inline-files/202403_FAQ_IA.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-paris-1-pantheon-sorbonne.json",
+        "publisher": "Université Paris 1 Panthéon-Sorbonne",
+        "retrievedAt": "2026-05-16T02:37:55Z",
+        "snapshotHash": "032a3dc17ff23137a8fdaa13ab51175f5a645d81fc10e7e45208d12a2fce34d7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "dec-p1-ai-personal-data-warning",
+      "claimId": "claim-p1-ai-personal-data-warning",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-crawl-worker",
+      "notes": "Approved as a privacy guidance claim; wording uses advises rather than binding legal mandate.",
+      "decidedAt": "2026-05-16T02:37:55Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-paris-1-pantheon-sorbonne-20260515",
+      "artifactType": "report_draft",
+      "reportId": "report-p1-ai-guidance-20260515",
+      "title": "Université Paris 1 Panthéon-Sorbonne AI Guidance Staged Claims",
+      "generatedAt": "2026-05-16T02:37:55Z",
+      "draftPath": "content/reports/uapt-universite-paris-1-pantheon-sorbonne-20260515.mdx",
+      "summary": "Staged three narrow agent-reviewed claim candidates from official Paris 1 Panthéon-Sorbonne sources: one guidance page on student AI use and one linked official FAQ PDF covering academic integrity and privacy/data handling.",
+      "referencedClaimIds": [
+        "claim-p1-ai-use-disclose-verify",
+        "claim-p1-ai-full-work-fraud",
+        "claim-p1-ai-personal-data-warning"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/universite-paris-1-pantheon-sorbonne.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No human review was asserted. Event/news pages discovered during search were not used as policy evidence."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
