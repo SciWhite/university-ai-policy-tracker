@@ -1,0 +1,428 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-politecnico-di-torino-20260515",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "crawl_plan",
+      "planId": "plan-polito-20260515-001",
+      "createdAt": "2026-05-16T01:53:27Z",
+      "createdBy": "openclaw_codex_fast",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "politecnico-di-torino",
+          "sourceCandidateId": "src-polito-ia4teach-20251118",
+          "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+          "sourceTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+          "sourceLanguage": "it",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "AI and teaching",
+            "generative tools",
+            "theses exams assessment"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official Polito sources with substantive AI policy or guidance relevance have been fetched and staged.",
+        "Do not infer binding policy from news, event, training, or course-offering pages."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-polito-ia4teach-20251118",
+      "entityType": "university",
+      "entitySlug": "politecnico-di-torino",
+      "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "finalUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "sourceTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+      "sourceLanguage": "it",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:polito.it intelligenza artificiale generativa studenti esami policy",
+      "discoveredAt": "2026-05-16T01:53:27Z",
+      "officialDomainConfidence": 1,
+      "aiRelevanceScore": 0.93,
+      "policySpecificityScore": 0.62,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T01:53:27Z",
+      "verificationNotes": "Official Politecnico di Torino Poliflash article. It discusses IA4Teach@Polito and states that initial university actions include recommendations on AI use and guidelines on theses, exams, assessment, and responsible use of generative tools.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-polito-ai-master-20260226",
+      "entityType": "university",
+      "entitySlug": "politecnico-di-torino",
+      "sourceUrl": "https://www.polito.it/didattica/master-e-formazione-permanente/master-universitari/offerta-master-universitari/intelligenza-artificiale-tecnologie-modelli-e-applicazioni",
+      "finalUrl": "https://www.polito.it/didattica/master-e-formazione-permanente/master-universitari/offerta-master-universitari/intelligenza-artificiale-tecnologie-modelli-e-applicazioni",
+      "sourceTitle": "Intelligenza Artificiale: tecnologie, modelli e applicazioni",
+      "sourceLanguage": "it",
+      "sourceType": "generic_or_unclear",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:polito.it \"intelligenza artificiale\" \"Politecnico di Torino\"",
+      "discoveredAt": "2026-05-16T01:53:27Z",
+      "officialDomainConfidence": 1,
+      "aiRelevanceScore": 0.74,
+      "policySpecificityScore": 0.12,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-16T01:53:27Z",
+      "verificationNotes": "Official page, but it is a master program/course-offering page rather than an AI policy or university guidance source.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-polito-ai-master-20260226",
+      "sourceCandidateId": "src-polito-ai-master-20260226",
+      "entityType": "university",
+      "entitySlug": "politecnico-di-torino",
+      "sourceUrl": "https://www.polito.it/didattica/master-e-formazione-permanente/master-universitari/offerta-master-universitari/intelligenza-artificiale-tecnologie-modelli-e-applicazioni",
+      "finalUrl": "https://www.polito.it/didattica/master-e-formazione-permanente/master-universitari/offerta-master-universitari/intelligenza-artificiale-tecnologie-modelli-e-applicazioni",
+      "rejectedAt": "2026-05-16T01:53:27Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw_codex_fast",
+      "evidenceSnippet": "Intelligenza Artificiale: tecnologie, modelli e applicazioni",
+      "notes": "The official page concerns a master's offering and does not state institutional AI policy or guidance."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-polito-20260515-001",
+      "entityType": "university",
+      "entitySlug": "politecnico-di-torino",
+      "startedAt": "2026-05-16T01:53:27Z",
+      "endedAt": "2026-05-16T01:53:27Z",
+      "methodsAttempted": [
+        {
+          "method": "canonical_domain",
+          "domain": "www.polito.it",
+          "resultCount": 1,
+          "notes": "Confirmed robots.txt permits the staged official Poliflash and didactic URLs; login and administrative paths are disallowed and were not accessed."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:polito.it intelligenza artificiale generativa studenti esami policy",
+          "domain": "www.polito.it",
+          "resultCount": 2,
+          "notes": "Found an official Poliflash article about IA4Teach@Polito and an official master program page. The article had substantive guidance-relevant text; the master page was rejected as a course-offering source."
+        },
+        {
+          "method": "multilingual_query",
+          "query": "site:polito.it \"raccomandazioni\" \"IA\" \"Tavolo IA\"",
+          "domain": "www.polito.it",
+          "resultCount": 1,
+          "notes": "Italian-language queries led back to the official Poliflash article. No separate public formal policy text was found in this staged pass."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-polito-ia4teach-20251118",
+        "src-polito-ai-master-20260226"
+      ],
+      "rejectionIds": [
+        "rej-polito-ai-master-20260226"
+      ],
+      "summary": "The staged run found one official Polito source with substantive AI teaching-guidance relevance. It did not find a public formal binding AI policy page; therefore claims are scoped to the existence and topics of recommendations/guidelines described in the official news/advisory source."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-polito-ia4teach-http-001",
+      "sourceCandidateId": "src-polito-ia4teach-20251118",
+      "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "finalUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "attemptedAt": "2026-05-16T01:53:27Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3000,
+      "contentHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-politecnico-di-torino-20260515/normalized/polito-ia4teach-20251118.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-polito-ai-master-http-001",
+      "sourceCandidateId": "src-polito-ai-master-20260226",
+      "sourceUrl": "https://www.polito.it/didattica/master-e-formazione-permanente/master-universitari/offerta-master-universitari/intelligenza-artificiale-tecnologie-modelli-e-applicazioni",
+      "finalUrl": "https://www.polito.it/didattica/master-e-formazione-permanente/master-universitari/offerta-master-universitari/intelligenza-artificiale-tecnologie-modelli-e-applicazioni",
+      "attemptedAt": "2026-05-16T01:53:27Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3000,
+      "contentHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-politecnico-di-torino-20260515/normalized/rejected-polito-ai-master-20260226.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-polito-ia4teach-20251118",
+      "sourceCandidateId": "src-polito-ia4teach-20251118",
+      "fetchAttemptId": "fetch-polito-ia4teach-http-001",
+      "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "finalUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "sourceTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+      "sourceLanguage": "it",
+      "contentHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+      "fetchedAt": "2026-05-16T01:53:27Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-politecnico-di-torino-20260515/normalized/polito-ia4teach-20251118.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-polito-ia4teach-annual-path",
+      "entityType": "university",
+      "entitySlug": "politecnico-di-torino",
+      "claimType": "teaching",
+      "claimText": "Politecnico di Torino announced IA4Teach@Polito as an annual initiative for reflection, training, and sharing about artificial intelligence and teaching.",
+      "normalizedValue": "annual_ai_teaching_initiative",
+      "sourceLanguage": "it",
+      "confidence": 0.82,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-polito-ia4teach-annual-path"
+      ],
+      "citation": {
+        "citationTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+        "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/politecnico-di-torino.json",
+        "publisher": "Politecnico di Torino",
+        "retrievedAt": "2026-05-16T01:53:27Z",
+        "snapshotHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-polito-ia4teach-annual-path",
+      "claimId": "claim-polito-ia4teach-annual-path",
+      "sourceSnapshotId": "snap-polito-ia4teach-20251118",
+      "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "finalUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "sourceTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+      "sourceLanguage": "it",
+      "snapshotHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+      "evidenceSnippetOriginal": "Un percorso annuale dedicato al rapporto tra Intelligenza Artificiale e didattica",
+      "evidenceSnippetDisplay": "An annual path dedicated to the relationship between Artificial Intelligence and teaching.",
+      "evidenceLocator": "Article body, opening paragraph",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+        "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+        "publisher": "Politecnico di Torino",
+        "retrievedAt": "2026-05-16T01:53:27Z",
+        "snapshotHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "review-polito-ia4teach-annual-path",
+      "claimId": "claim-polito-ia4teach-annual-path",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw_codex_fast",
+      "notes": "Approved as a narrow source-status/teaching claim about an announced initiative; not treated as binding policy.",
+      "decidedAt": "2026-05-16T01:53:27Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-polito-guidelines-topics",
+      "entityType": "university",
+      "entitySlug": "politecnico-di-torino",
+      "claimType": "teaching",
+      "claimText": "An official Politecnico di Torino article says university actions include recommendations on AI use and guidelines concerning theses, exams, assessment, and responsible use of generative tools.",
+      "normalizedValue": "recommendations_and_guideline_topics_described",
+      "sourceLanguage": "it",
+      "confidence": 0.78,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-polito-guidelines-topics"
+      ],
+      "citation": {
+        "citationTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+        "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/politecnico-di-torino.json",
+        "publisher": "Politecnico di Torino",
+        "retrievedAt": "2026-05-16T01:53:27Z",
+        "snapshotHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-polito-guidelines-topics",
+      "claimId": "claim-polito-guidelines-topics",
+      "sourceSnapshotId": "snap-polito-ia4teach-20251118",
+      "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "finalUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "sourceTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+      "sourceLanguage": "it",
+      "snapshotHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+      "evidenceSnippetOriginal": "dalle raccomandazioni sull’uso dell’IA – elaborate dal Tavolo IA di Ateneo – alla definizione delle linee guida su tesi, esami, valutazione e uso responsabile degli strumenti generativi",
+      "evidenceSnippetDisplay": "From recommendations on AI use, developed by the university AI group, to defining guidelines on theses, exams, assessment, and responsible use of generative tools.",
+      "evidenceLocator": "Article body, paragraph about first actions",
+      "evidenceType": "official_source",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+        "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+        "publisher": "Politecnico di Torino",
+        "retrievedAt": "2026-05-16T01:53:27Z",
+        "snapshotHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "review-polito-guidelines-topics",
+      "claimId": "claim-polito-guidelines-topics",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw_codex_fast",
+      "notes": "Approved only as a description of what the official article says; no binding university-wide policy content is inferred.",
+      "decidedAt": "2026-05-16T01:53:27Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-polito-survey-guidelines-demand",
+      "entityType": "university",
+      "entitySlug": "politecnico-di-torino",
+      "claimType": "teaching",
+      "claimText": "Politecnico di Torino reported that its survey respondents strongly requested specific training, practical support, and clear guidelines for conscious integration of AI in teaching.",
+      "normalizedValue": "survey_request_for_training_support_guidelines",
+      "sourceLanguage": "it",
+      "confidence": 0.8,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-polito-survey-guidelines-demand"
+      ],
+      "citation": {
+        "citationTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+        "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/politecnico-di-torino.json",
+        "publisher": "Politecnico di Torino",
+        "retrievedAt": "2026-05-16T01:53:27Z",
+        "snapshotHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-polito-survey-guidelines-demand",
+      "claimId": "claim-polito-survey-guidelines-demand",
+      "sourceSnapshotId": "snap-polito-ia4teach-20251118",
+      "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "finalUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+      "sourceTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+      "sourceLanguage": "it",
+      "snapshotHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+      "evidenceSnippetOriginal": "La richiesta più forte emersa dal sondaggio è stata quella di poter accedere a percorsi formativi specifici, ad un supporto pratico e a linee guida chiare",
+      "evidenceSnippetDisplay": "The strongest request from the survey was access to specific training, practical support, and clear guidelines.",
+      "evidenceLocator": "Article body, paragraph on survey results",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Come l’Intelligenza Artificiale entra in classe, voci ed esperienze di Ateneo",
+        "sourceUrl": "https://www.polito.it/ateneo/comunicazione-e-ufficio-stampa/poliflash/come-l-intelligenza-artificiale-entra-in-classe-voci-ed",
+        "publisher": "Politecnico di Torino",
+        "retrievedAt": "2026-05-16T01:53:27Z",
+        "snapshotHash": "e0854059e012233361b03b4316c83646a83c934632e78217210dcb5b0045ee5b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "review_decision",
+      "decisionId": "review-polito-survey-guidelines-demand",
+      "claimId": "claim-polito-survey-guidelines-demand",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw_codex_fast",
+      "notes": "Approved as a survey-reporting claim; it does not assert policy adoption.",
+      "decidedAt": "2026-05-16T01:53:27Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-politecnico-di-torino-20260515",
+      "artifactType": "report_draft",
+      "reportId": "report-polito-20260515",
+      "title": "Politecnico di Torino staged AI policy source review",
+      "generatedAt": "2026-05-16T01:53:27Z",
+      "draftPath": "content/reports/uapt-politecnico-di-torino-20260515.mdx",
+      "summary": "This staged run found an official Politecnico di Torino Poliflash article stating that IA4Teach@Polito is an annual AI-and-teaching initiative and describing university actions around AI-use recommendations and guidelines for theses, exams, assessment, and responsible use of generative tools. No public formal binding AI policy text was found in this pass, so all claims are limited to the official article's description.",
+      "referencedClaimIds": [
+        "claim-polito-ia4teach-annual-path",
+        "claim-polito-guidelines-topics",
+        "claim-polito-survey-guidelines-demand"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/politecnico-di-torino.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The staged source is an official news/advisory article, not a formal policy document; claims should not be promoted as binding university policy without human review of the underlying recommendations or guidelines.",
+        "No login-gated or access-controlled source was accessed."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
