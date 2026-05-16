@@ -120,6 +120,25 @@ interface PublicDataset {
   publicSummaries: PublicEntitySummary[];
 }
 
+const LOCATION_OVERRIDES: Record<string, { country: string; region: string }> = {
+  "city-st-georges-university-of-london": {
+    country: "United Kingdom",
+    region: "London"
+  },
+  "university-of-arizona": {
+    country: "United States",
+    region: "Tucson"
+  },
+  "university-of-macau": {
+    country: "Macau SAR",
+    region: "Macau"
+  },
+  "xian-jiaotong-university": {
+    country: "China (Mainland)",
+    region: "Xi'an"
+  }
+};
+
 let datasetPromise: Promise<PublicDataset> | undefined;
 
 export async function getStagedPublicDataset(): Promise<PublicDataset> {
@@ -647,12 +666,13 @@ function buildCatalogUniversity(
   const locationRanking =
     rankingMatch?.primary ??
     rankingMatch?.rankings.find((ranking) => ranking.countryOrRegion);
+  const locationOverride = LOCATION_OVERRIDES[summary.entity.slug];
 
   return {
     slug: summary.entity.slug,
     name: summary.entity.name,
-    country: locationRanking?.countryOrRegion ?? "Unknown",
-    region: locationRanking?.city ?? "Unknown",
+    country: locationOverride?.country ?? locationRanking?.countryOrRegion ?? "Unknown",
+    region: locationOverride?.region ?? locationRanking?.city ?? "Unknown",
     website: new URL("/", firstSourceUrl).toString(),
     summary: summary.summary,
     sourceCount: summary.officialSources.length,
@@ -826,6 +846,10 @@ function buildRankingSlugs(name: string): string[] {
     "australian-national-university": ["anu"],
     "california-institute-of-technology": ["caltech"],
     "chin-university-hong-kong": ["the-chinese-university-of-hong-kong"],
+    "city-st-george-s-university-of-london": [
+      "city-st-georges-university-of-london"
+    ],
+    "city-st-georges-university-london": ["city-st-georges-university-of-london"],
     "columbia-university": ["columbia"],
     "epfl-ecole-polytechnique-federale-de-lausanne": ["epfl"],
     "eth-zurich": ["eth-zurich-swiss-federal-institute-of-technology"],
@@ -847,6 +871,7 @@ function buildRankingSlugs(name: string): string[] {
     "seoul-national-university": ["snu"],
     "the-chinese-university-of-hong-kong": ["cuhk"],
     "the-hong-kong-university-of-science-and-technology": ["hkust"],
+    "the-university-of-arizona": ["university-of-arizona"],
     "the-university-of-auckland": ["university-of-auckland"],
     "the-university-of-edinburgh": ["edinburgh"],
     "the-university-of-hong-kong": ["university-of-hong-kong"],
@@ -870,7 +895,9 @@ function buildRankingSlugs(name: string): string[] {
       "university-of-california-los-angeles",
       "ucla"
     ],
-    "university-of-michigan-ann-arbor": ["university-of-michigan-ann-arbor"]
+    "university-of-michigan-ann-arbor": ["university-of-michigan-ann-arbor"],
+    "xi-an-jiaotong-university": ["xian-jiaotong-university"],
+    "xi-an-jiaotong-univ": ["xian-jiaotong-university"]
   };
 
   for (const slug of Array.from(slugs)) {
