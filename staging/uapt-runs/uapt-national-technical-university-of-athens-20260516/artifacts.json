@@ -1,0 +1,449 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-technical-university-of-athens-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-ntua-20260516",
+      "entityType": "university",
+      "entitySlug": "national-technical-university-of-athens",
+      "startedAt": "2026-05-16T13:55:00.000Z",
+      "endedAt": "2026-05-16T14:01:55.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:ntua.gr National Technical University of Athens generative AI ChatGPT policy artificial intelligence students teaching",
+          "domain": "ntua.gr",
+          "resultCount": 5,
+          "notes": "Firecrawl search did not surface a central NTUA generative-AI policy; it surfaced one official NTUA AI education news page plus unrelated non-NTUA results."
+        },
+        {
+          "method": "multilingual_query",
+          "query": "site:ntua.gr ChatGPT ΕΜΠ τεχνητή νοημοσύνη παραγωγική τεχνητή νοημοσύνη",
+          "domain": "ntua.gr",
+          "resultCount": 4,
+          "notes": "Greek-language official-domain searches found a public Helios course exam PDF that explicitly mentions LLMs, plus official NTUA news/research items rather than a broad university AI-use policy."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.ntua.gr",
+          "resultCount": 1,
+          "notes": "The www.ntua.gr robots.txt disallows administrative and Joomla system paths but not the public news item paths used for verified sources."
+        },
+        {
+          "method": "pdf_discovery",
+          "query": "helios.ntua.gr ChatGPT Gemini Claude ΕΜΠ pdf",
+          "domain": "helios.ntua.gr",
+          "resultCount": 1,
+          "notes": "The public Helios resource redirected to an official NTUA Moodle-hosted PDF for a Civil Engineering course exam announcement. helios.ntua.gr/robots.txt returned 404, so no robots disallow was found."
+        }
+      ],
+      "noSourceEscalationCompleted": true,
+      "candidateIds": [
+        "sc-ntua-helios-cad-exam-pdf",
+        "sc-ntua-ai-course-news",
+        "sc-ntua-mistral-ai-news"
+      ],
+      "rejectionIds": [
+        "sr-ntua-mistral-ai-news"
+      ],
+      "summary": "Official NTUA discovery found no reliable public university-wide generative-AI use policy. Verified extractable evidence is limited to a public Helios course exam PDF with an explicit LLM prohibition for that exam and an official NTUA news page about a new AI course. A separate official Mistral AI talent-program news item was documented but rejected for policy extraction because it is a program announcement rather than policy or guidance."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "cp-ntua-20260516",
+      "createdAt": "2026-05-16T14:01:55.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "national-technical-university-of-athens",
+          "sourceCandidateId": "sc-ntua-helios-cad-exam-pdf",
+          "sourceUrl": "https://helios.ntua.gr/mod/resource/view.php?id=43593",
+          "sourceTitle": "Δια ζώσης εξέταση (Δευτέρα 2/2/2026) - Χωρισμός σε τμήματα",
+          "sourceLanguage": "el",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "course exam instructions",
+            "LLM use prohibition",
+            "assessment conditions"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "national-technical-university-of-athens",
+          "sourceCandidateId": "sc-ntua-ai-course-news",
+          "sourceUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+          "sourceTitle": "The National Technical University of Athens introduces a new course in Artificial Intelligence",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "AI teaching",
+            "ethics",
+            "social impacts"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official NTUA evidence supports only narrow course-level or news-based claims.",
+        "Do not infer a university-wide AI policy from course exam instructions, research, or news announcements.",
+        "Preserve Greek original evidence for Greek-source material."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-ntua-helios-cad-exam-pdf",
+      "entityType": "university",
+      "entitySlug": "national-technical-university-of-athens",
+      "sourceUrl": "https://helios.ntua.gr/mod/resource/view.php?id=43593",
+      "finalUrl": "https://helios.ntua.gr/pluginfile.php/257565/mod_resource/content/5/xorismos.pdf",
+      "sourceTitle": "Δια ζώσης εξέταση (Δευτέρα 2/2/2026) - Χωρισμός σε τμήματα",
+      "sourceLanguage": "el",
+      "sourceType": "assessment_guidance",
+      "discoveryMethod": "pdf_discovery",
+      "queryUsed": "helios.ntua.gr ChatGPT Gemini Claude ΕΜΠ pdf",
+      "discoveredAt": "2026-05-16T13:58:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.86,
+      "policySpecificityScore": 0.84,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T14:01:39.000Z",
+      "verificationNotes": "Public NTUA Helios Moodle resource redirected to an official PDF for the Civil Engineering course 'Σχεδίαση Τεχνικών Έργων με Η/Υ' and contains an explicit exam rule about LLM use.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-ntua-ai-course-news",
+      "entityType": "university",
+      "entitySlug": "national-technical-university-of-athens",
+      "sourceUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+      "finalUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+      "sourceTitle": "The National Technical University of Athens introduces a new course in Artificial Intelligence",
+      "sourceLanguage": "en",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:ntua.gr National Technical University of Athens generative AI ChatGPT policy artificial intelligence students teaching",
+      "discoveredAt": "2026-05-16T13:56:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.9,
+      "policySpecificityScore": 0.5,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T14:01:39.000Z",
+      "verificationNotes": "Official NTUA central news page describing a new AI course and its coverage, including ethical issues and social impacts. It is teaching evidence, not a university-wide AI policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-ntua-mistral-ai-news",
+      "entityType": "university",
+      "entitySlug": "national-technical-university-of-athens",
+      "sourceUrl": "https://ntua.gr/el/news/item/5193-emp-kai-mistral-ai-enonoun-dynameis-gia-tin-enisxysi-talenton-texnitis-noimosynis-stin-ellada",
+      "finalUrl": "https://ntua.gr/el/news/item/5193-emp-kai-mistral-ai-enonoun-dynameis-gia-tin-enisxysi-talenton-texnitis-noimosynis-stin-ellada",
+      "sourceTitle": "ΕΜΠ και Mistral AI ενώνουν δυνάμεις για την ενίσχυση ταλέντων Τεχνητής Νοημοσύνης στην Ελλάδα",
+      "sourceLanguage": "el",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "multilingual_query",
+      "queryUsed": "site:ntua.gr ΕΜΠ τεχνητή νοημοσύνη Mistral AI",
+      "discoveredAt": "2026-05-16T13:59:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.72,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "rejectionReason": "event_or_news_only",
+      "verificationNotes": "Official NTUA news item about an AI talent initiative with Mistral AI; it does not state policy or guidance for student/faculty AI use.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-ntua-mistral-ai-news",
+      "sourceCandidateId": "sc-ntua-mistral-ai-news",
+      "entityType": "university",
+      "entitySlug": "national-technical-university-of-athens",
+      "sourceUrl": "https://ntua.gr/el/news/item/5193-emp-kai-mistral-ai-enonoun-dynameis-gia-tin-enisxysi-talenton-texnitis-noimosynis-stin-ellada",
+      "finalUrl": "https://ntua.gr/el/news/item/5193-emp-kai-mistral-ai-enonoun-dynameis-gia-tin-enisxysi-talenton-texnitis-noimosynis-stin-ellada",
+      "rejectedAt": "2026-05-16T14:01:55.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "codex-openclaw-local",
+      "evidenceSnippet": "Official NTUA news item about AI talent support was not used because it does not provide AI-use policy, academic-integrity guidance, privacy guidance, or assessment guidance.",
+      "notes": "Documented as official discovery context only; no claim was extracted."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-ntua-helios-cad-exam-pdf",
+      "sourceCandidateId": "sc-ntua-helios-cad-exam-pdf",
+      "sourceUrl": "https://helios.ntua.gr/mod/resource/view.php?id=43593",
+      "finalUrl": "https://helios.ntua.gr/pluginfile.php/257565/mod_resource/content/5/xorismos.pdf",
+      "attemptedAt": "2026-05-16T14:01:39.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 303,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1000,
+      "contentHash": "acba0b7dfc552075902dc17d1c61c70e6f19e8eab5bb67cfd46f74565836b3d6",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-national-technical-university-of-athens-20260516/snapshots/ntua-helios-cad-exam-pdf.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-ntua-ai-course-news",
+      "sourceCandidateId": "sc-ntua-ai-course-news",
+      "sourceUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+      "finalUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+      "attemptedAt": "2026-05-16T14:01:39.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1000,
+      "contentHash": "2c50bd231f6dbf37911cc8e465d6af1c1c6e61249352aee03ba8fec392adb9ca",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-national-technical-university-of-athens-20260516/snapshots/ntua-ai-course-news.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-ntua-mistral-ai-news",
+      "sourceCandidateId": "sc-ntua-mistral-ai-news",
+      "sourceUrl": "https://ntua.gr/el/news/item/5193-emp-kai-mistral-ai-enonoun-dynameis-gia-tin-enisxysi-talenton-texnitis-noimosynis-stin-ellada",
+      "finalUrl": "https://ntua.gr/el/news/item/5193-emp-kai-mistral-ai-enonoun-dynameis-gia-tin-enisxysi-talenton-texnitis-noimosynis-stin-ellada",
+      "attemptedAt": "2026-05-16T14:01:39.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1000,
+      "contentHash": "fd362cc5fda2e9bf6e36ab4a5eb4aab78a51f1e867d069b2f7b8c3a2234a9802",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-national-technical-university-of-athens-20260516/snapshots/ntua-mistral-ai-news.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-ntua-helios-cad-exam-pdf",
+      "sourceCandidateId": "sc-ntua-helios-cad-exam-pdf",
+      "fetchAttemptId": "fa-ntua-helios-cad-exam-pdf",
+      "sourceUrl": "https://helios.ntua.gr/mod/resource/view.php?id=43593",
+      "finalUrl": "https://helios.ntua.gr/pluginfile.php/257565/mod_resource/content/5/xorismos.pdf",
+      "sourceTitle": "Δια ζώσης εξέταση (Δευτέρα 2/2/2026) - Χωρισμός σε τμήματα",
+      "sourceLanguage": "el",
+      "contentHash": "acba0b7dfc552075902dc17d1c61c70e6f19e8eab5bb67cfd46f74565836b3d6",
+      "fetchedAt": "2026-05-16T14:01:39.000Z",
+      "httpStatus": 303,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-national-technical-university-of-athens-20260516/snapshots/ntua-helios-cad-exam-pdf.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-ntua-ai-course-news",
+      "sourceCandidateId": "sc-ntua-ai-course-news",
+      "fetchAttemptId": "fa-ntua-ai-course-news",
+      "sourceUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+      "finalUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+      "sourceTitle": "The National Technical University of Athens introduces a new course in Artificial Intelligence",
+      "sourceLanguage": "en",
+      "contentHash": "2c50bd231f6dbf37911cc8e465d6af1c1c6e61249352aee03ba8fec392adb9ca",
+      "fetchedAt": "2026-05-16T14:01:39.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-national-technical-university-of-athens-20260516/snapshots/ntua-ai-course-news.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-ntua-cad-exam-llm-prohibited",
+      "entityType": "university",
+      "entitySlug": "national-technical-university-of-athens",
+      "claimType": "academic_integrity",
+      "claimText": "For the NTUA Civil Engineering course 'Σχεδίαση Τεχνικών Έργων με Η/Υ' in-person exam scheduled for February 2, 2026, the course announcement strictly prohibits use of large language models such as ChatGPT, Gemini, and Claude during the exam.",
+      "normalizedValue": "course_exam_llm_use_prohibited",
+      "sourceLanguage": "el",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-ntua-cad-exam-llm-prohibited"
+      ],
+      "citation": {
+        "citationTitle": "Δια ζώσης εξέταση (Δευτέρα 2/2/2026) - Χωρισμός σε τμήματα",
+        "sourceUrl": "https://helios.ntua.gr/mod/resource/view.php?id=43593",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-technical-university-of-athens.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-technical-university-of-athens",
+        "publisher": "National Technical University of Athens",
+        "retrievedAt": "2026-05-16T14:01:39.000Z",
+        "snapshotHash": "acba0b7dfc552075902dc17d1c61c70e6f19e8eab5bb67cfd46f74565836b3d6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-ntua-ai-course-ethics-social-impacts",
+      "entityType": "university",
+      "entitySlug": "national-technical-university-of-athens",
+      "claimType": "source_status",
+      "claimText": "NTUA states that its new Artificial Intelligence course includes ethical issues and social impacts of artificial intelligence among covered topics; this is course-offering evidence, not an institutional AI-use policy.",
+      "normalizedValue": "course-offering source only; not institutional AI-use policy",
+      "sourceLanguage": "en",
+      "confidence": 0.78,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-ntua-ai-course-ethics-social-impacts"
+      ],
+      "citation": {
+        "citationTitle": "The National Technical University of Athens introduces a new course in Artificial Intelligence",
+        "sourceUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-technical-university-of-athens.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-technical-university-of-athens",
+        "publisher": "National Technical University of Athens",
+        "retrievedAt": "2026-05-16T14:01:39.000Z",
+        "snapshotHash": "2c50bd231f6dbf37911cc8e465d6af1c1c6e61249352aee03ba8fec392adb9ca",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-ntua-cad-exam-llm-prohibited",
+      "claimId": "claim-ntua-cad-exam-llm-prohibited",
+      "sourceSnapshotId": "ss-ntua-helios-cad-exam-pdf",
+      "sourceUrl": "https://helios.ntua.gr/mod/resource/view.php?id=43593",
+      "finalUrl": "https://helios.ntua.gr/pluginfile.php/257565/mod_resource/content/5/xorismos.pdf",
+      "sourceTitle": "Δια ζώσης εξέταση (Δευτέρα 2/2/2026) - Χωρισμός σε τμήματα",
+      "sourceLanguage": "el",
+      "snapshotHash": "acba0b7dfc552075902dc17d1c61c70e6f19e8eab5bb67cfd46f74565836b3d6",
+      "evidenceSnippetOriginal": "Απαγορεύεται η χρήση ηλεκτρονικών συσκευών (κινητό τηλέφωνο, tablet, smart watch κλπ). Ειδικά απαγορεύεται αυστηρά η χρήση μεγάλων γλωσσικών μοντέλων – LLM (ChatGPT, Gemini, Claude κλπ).",
+      "evidenceSnippetDisplay": "Use of electronic devices is prohibited; specifically, use of large language models such as ChatGPT, Gemini, and Claude is strictly prohibited.",
+      "evidenceLocator": "PDF exam instructions, paragraph after electronic-material access note",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Δια ζώσης εξέταση (Δευτέρα 2/2/2026) - Χωρισμός σε τμήματα",
+        "sourceUrl": "https://helios.ntua.gr/mod/resource/view.php?id=43593",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-technical-university-of-athens.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-technical-university-of-athens",
+        "publisher": "National Technical University of Athens",
+        "retrievedAt": "2026-05-16T14:01:39.000Z",
+        "snapshotHash": "acba0b7dfc552075902dc17d1c61c70e6f19e8eab5bb67cfd46f74565836b3d6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-ntua-ai-course-ethics-social-impacts",
+      "claimId": "claim-ntua-ai-course-ethics-social-impacts",
+      "sourceSnapshotId": "ss-ntua-ai-course-news",
+      "sourceUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+      "finalUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+      "sourceTitle": "The National Technical University of Athens introduces a new course in Artificial Intelligence",
+      "sourceLanguage": "en",
+      "snapshotHash": "2c50bd231f6dbf37911cc8e465d6af1c1c6e61249352aee03ba8fec392adb9ca",
+      "evidenceSnippetOriginal": "Basic concepts and methods of artificial intelligence, machine learning techniques, deep learning and neural networks, large language models, ethical issues and social impacts.",
+      "evidenceLocator": "Official NTUA news page, course topics paragraph",
+      "evidenceType": "official_source",
+      "relevance": 0.82,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "The National Technical University of Athens introduces a new course in Artificial Intelligence",
+        "sourceUrl": "https://www.ntua.gr/en/news-en/item/4517-the-national-technical-university-of-athens-introduces-a-new-course-in-artificial-intelligence",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-technical-university-of-athens.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-technical-university-of-athens",
+        "publisher": "National Technical University of Athens",
+        "retrievedAt": "2026-05-16T14:01:39.000Z",
+        "snapshotHash": "2c50bd231f6dbf37911cc8e465d6af1c1c6e61249352aee03ba8fec392adb9ca",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-ntua-cad-exam-llm-prohibited",
+      "claimId": "claim-ntua-cad-exam-llm-prohibited",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a narrow course/exam-level academic-integrity claim. It must not be broadened into a university-wide NTUA AI policy.",
+      "decidedAt": "2026-05-16T14:01:55.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-ntua-ai-course-ethics-social-impacts",
+      "claimId": "claim-ntua-ai-course-ethics-social-impacts",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a narrow teaching/news claim about course coverage, not as policy guidance.",
+      "decidedAt": "2026-05-16T14:01:55.000Z",
+      "reviewNotes": "Approved after narrowing as source_status because the source is a course announcement."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-technical-university-of-athens-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-ntua-20260516",
+      "title": "National Technical University of Athens AI Policy Source Review",
+      "generatedAt": "2026-05-16T14:01:55.000Z",
+      "draftPath": "content/reports/2026-05/national-technical-university-of-athens-ai-policy-source-review.mdx",
+      "summary": "The crawl did not locate a reliable public NTUA-wide generative-AI use policy. Staged candidates are limited to a Civil Engineering course exam PDF that strictly prohibits LLM use during that specific exam and an official NTUA news page stating that a new AI course covers ethical issues and social impacts. An official Mistral AI talent-program news item was rejected for claim extraction because it is news/program material rather than policy guidance.",
+      "referencedClaimIds": [
+        "claim-ntua-cad-exam-llm-prohibited",
+        "claim-ntua-ai-course-ethics-social-impacts"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/national-technical-university-of-athens.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No central public NTUA-wide generative-AI policy was found in this crawl; claims are intentionally scoped to the source text."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
