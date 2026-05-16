@@ -1,0 +1,387 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-bauman-moscow-state-technical-university-20260516",
+      "entityType": "university",
+      "entitySlug": "bauman-moscow-state-technical-university",
+      "startedAt": "2026-05-16T05:30:00.000Z",
+      "endedAt": "2026-05-16T05:35:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:bmstu.ru artificial intelligence academic integrity policy students OR teaching",
+          "domain": "bmstu.ru",
+          "resultCount": 5,
+          "notes": "Firecrawl search returned mostly journal, conference, and course pages rather than official AI policy guidance."
+        },
+        {
+          "method": "multilingual_query",
+          "query": "site:bmstu.ru ChatGPT OR \"генеративный искусственный интеллект\" OR \"искусственный интеллект\" \"студент\" \"МГТУ\"",
+          "domain": "bmstu.ru",
+          "resultCount": 8,
+          "notes": "Russian-language search found official course, career, and research pages, but no binding university-wide AI-use policy."
+        },
+        {
+          "method": "site_search",
+          "query": "site:bmstu.ru \"академическая честность\" OR \"плагиат\" OR \"самостоятельно\" \"студент\" \"МГТУ\"",
+          "domain": "bmstu.ru",
+          "resultCount": 8,
+          "notes": "Search found Bauman's official Antiplagiat help page with public guidance on originality checks and student submissions."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "bmstu.ru",
+          "notes": "The root bmstu.ru robots.txt returned User-agent: * Disallow: /, so main-domain crawling was not used for evidence."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-bauman-antiplagiat-help",
+        "src-bauman-do-ai-course-rejected",
+        "src-bauman-career-ai-news-rejected"
+      ],
+      "rejectionIds": [
+        "rej-bauman-do-ai-course",
+        "rej-bauman-career-ai-news"
+      ],
+      "summary": "Official-source discovery did not identify a university-wide generative AI policy. The verified official evidence is limited to Bauman's public Antiplagiat help page about originality checks and student work submission workflow."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-bauman-antiplagiat-help",
+      "entityType": "university",
+      "entitySlug": "bauman-moscow-state-technical-university",
+      "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "finalUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "sourceTitle": "Антиплагиат - МГТУ им. Н.Э. Баумана",
+      "sourceLanguage": "ru",
+      "sourceType": "academic_integrity",
+      "discoveryMethod": "site_search",
+      "queryUsed": "site:bmstu.ru \"академическая честность\" OR \"плагиат\" OR \"самостоятельно\" \"студент\" \"МГТУ\"",
+      "discoveredAt": "2026-05-16T05:30:45.000Z",
+      "officialDomainConfidence": 0.92,
+      "aiRelevanceScore": 0.05,
+      "policySpecificityScore": 0.74,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T05:31:03.000Z",
+      "verificationNotes": "Public Bauman-branded Antiplagiat help page fetched successfully; evidence is academic-integrity/source-status guidance, not AI policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-bauman-do-ai-course-rejected",
+      "entityType": "university",
+      "entitySlug": "bauman-moscow-state-technical-university",
+      "sourceUrl": "https://do.bmstu.ru/news/startoval-otbor-na-kursy-iskusstvennogo-intellekta-s-podderzhkoy-ot-gosudarstva/",
+      "sourceTitle": "Стартовал отбор на курсы искусственного интеллекта с поддержкой от государства",
+      "sourceLanguage": "ru",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "multilingual_query",
+      "queryUsed": "site:bmstu.ru ChatGPT OR \"генеративный искусственный интеллект\" OR \"искусственный интеллект\" \"студент\" \"МГТУ\"",
+      "discoveredAt": "2026-05-16T05:30:30.000Z",
+      "officialDomainConfidence": 0.86,
+      "aiRelevanceScore": 0.72,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "rejectionReason": "event_or_news_only",
+      "verificationNotes": "Official continuing-education news/course content about artificial intelligence; not student AI-use policy or academic-integrity guidance.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-bauman-career-ai-news-rejected",
+      "entityType": "university",
+      "entitySlug": "bauman-moscow-state-technical-university",
+      "sourceUrl": "https://start-career.bmstu.ru/2024/09/30/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%80%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D0%B7/",
+      "sourceTitle": "Искусственный интеллект – реальные задачи!",
+      "sourceLanguage": "ru",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "multilingual_query",
+      "queryUsed": "site:bmstu.ru ChatGPT OR \"генеративный искусственный интеллект\" OR \"искусственный интеллект\" \"студент\" \"МГТУ\"",
+      "discoveredAt": "2026-05-16T05:30:32.000Z",
+      "officialDomainConfidence": 0.82,
+      "aiRelevanceScore": 0.65,
+      "policySpecificityScore": 0.12,
+      "verificationStatus": "rejected",
+      "rejectionReason": "event_or_news_only",
+      "verificationNotes": "Official career-center AI announcement; not binding policy or assessment guidance.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-bauman-do-ai-course",
+      "sourceCandidateId": "src-bauman-do-ai-course-rejected",
+      "entityType": "university",
+      "entitySlug": "bauman-moscow-state-technical-university",
+      "sourceUrl": "https://do.bmstu.ru/news/startoval-otbor-na-kursy-iskusstvennogo-intellekta-s-podderzhkoy-ot-gosudarstva/",
+      "rejectedAt": "2026-05-16T05:33:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw_agent",
+      "notes": "Rejected as AI course/news material rather than a university policy, teaching rule, assessment rule, or academic-integrity source."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-bauman-career-ai-news",
+      "sourceCandidateId": "src-bauman-career-ai-news-rejected",
+      "entityType": "university",
+      "entitySlug": "bauman-moscow-state-technical-university",
+      "sourceUrl": "https://start-career.bmstu.ru/2024/09/30/%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82-%D1%80%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D0%B7/",
+      "rejectedAt": "2026-05-16T05:33:10.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw_agent",
+      "notes": "Rejected as an AI-related career/news page, not an official policy or student assessment source."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "plan-bauman-moscow-state-technical-university-20260516",
+      "createdAt": "2026-05-16T05:30:50.000Z",
+      "createdBy": "openclaw_agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "bauman-moscow-state-technical-university",
+          "sourceCandidateId": "src-bauman-antiplagiat-help",
+          "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+          "sourceTitle": "Антиплагиат - МГТУ им. Н.Э. Баумана",
+          "sourceLanguage": "ru",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "academic integrity",
+            "originality checking",
+            "student work submission"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after the verified official Antiplagiat help page is fetched and narrow academic-integrity/source-status evidence is extracted.",
+        "Do not crawl bmstu.ru root content because robots.txt disallows User-agent: *."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-bauman-antiplagiat-help-20260516",
+      "sourceCandidateId": "src-bauman-antiplagiat-help",
+      "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "finalUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "attemptedAt": "2026-05-16T05:31:03.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3267,
+      "contentHash": "0152fc64892cedb65e55e41e3dd2f6456b36561190b0795df7714dd1af215e67",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-bauman-moscow-state-technical-university-20260516/normalized/antiplagiat-help.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-bauman-antiplagiat-help-20260516",
+      "sourceCandidateId": "src-bauman-antiplagiat-help",
+      "fetchAttemptId": "fetch-bauman-antiplagiat-help-20260516",
+      "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "finalUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "sourceTitle": "Антиплагиат - МГТУ им. Н.Э. Баумана",
+      "sourceLanguage": "ru",
+      "contentHash": "0152fc64892cedb65e55e41e3dd2f6456b36561190b0795df7714dd1af215e67",
+      "fetchedAt": "2026-05-16T05:31:03.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-bauman-moscow-state-technical-university-20260516/normalized/antiplagiat-help.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-bauman-antiplagiat-not-legal-proof",
+      "entityType": "university",
+      "entitySlug": "bauman-moscow-state-technical-university",
+      "claimType": "academic_integrity",
+      "claimText": "Bauman Moscow State Technical University's public Antiplagiat help page says the Antiplagiat system shows text matches and that a system check result cannot be treated as proof of plagiarism or have legal force.",
+      "normalizedValue": "antiplagiat_results_are_text_match_indicators_not_legal_plagiarism_proof",
+      "sourceLanguage": "ru",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-bauman-antiplagiat-not-legal-proof"
+      ],
+      "citation": {
+        "citationTitle": "Антиплагиат - МГТУ им. Н.Э. Баумана",
+        "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/bauman-moscow-state-technical-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/bauman-moscow-state-technical-university",
+        "publisher": "МГТУ им. Н.Э. Баумана",
+        "retrievedAt": "2026-05-16T05:31:03.000Z",
+        "snapshotHash": "0152fc64892cedb65e55e41e3dd2f6456b36561190b0795df7714dd1af215e67",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-bauman-antiplagiat-not-legal-proof",
+      "claimId": "claim-bauman-antiplagiat-not-legal-proof",
+      "sourceSnapshotId": "snap-bauman-antiplagiat-help-20260516",
+      "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "finalUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "sourceTitle": "Антиплагиат - МГТУ им. Н.Э. Баумана",
+      "sourceLanguage": "ru",
+      "snapshotHash": "0152fc64892cedb65e55e41e3dd2f6456b36561190b0795df7714dd1af215e67",
+      "evidenceSnippetOriginal": "Проверка в системе показывает наличие совпадений по тексту (аналогичные или похожие фрагменты). При этом система не определяет первоисточник и не сравнивает даты публикации документов. Результат проверки в системе не может быть трактован как доказательство плагиата и не имеет юридической силы.",
+      "evidenceSnippetDisplay": "The system check shows text matches, does not determine the original source or compare publication dates, and cannot be treated as proof of plagiarism or as legally binding.",
+      "evidenceLocator": "FAQ section: Определяет ли система «Антиплагиат» плагиат?",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Антиплагиат - МГТУ им. Н.Э. Баумана",
+        "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/bauman-moscow-state-technical-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/bauman-moscow-state-technical-university",
+        "publisher": "МГТУ им. Н.Э. Баумана",
+        "retrievedAt": "2026-05-16T05:31:03.000Z",
+        "snapshotHash": "0152fc64892cedb65e55e41e3dd2f6456b36561190b0795df7714dd1af215e67",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "review-bauman-antiplagiat-not-legal-proof",
+      "claimId": "claim-bauman-antiplagiat-not-legal-proof",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow academic-integrity claim tied directly to the official Russian Antiplagiat help text. It does not imply a university-wide AI policy.",
+      "decidedAt": "2026-05-16T05:34:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-bauman-antiplagiat-student-submission-workflow",
+      "entityType": "university",
+      "entitySlug": "bauman-moscow-state-technical-university",
+      "claimType": "academic_integrity",
+      "claimText": "Bauman Moscow State Technical University's Antiplagiat help page describes a student submission workflow in which students upload work to a teacher through a special assignment code, and final versions are automatically added to the organization's internal collection and EBSO.",
+      "normalizedValue": "student_work_uploaded_by_assignment_code_final_versions_added_to_internal_collection_and_ebso",
+      "sourceLanguage": "ru",
+      "confidence": 0.82,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-bauman-antiplagiat-student-submission-workflow"
+      ],
+      "citation": {
+        "citationTitle": "Антиплагиат - МГТУ им. Н.Э. Баумана",
+        "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/bauman-moscow-state-technical-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/bauman-moscow-state-technical-university",
+        "publisher": "МГТУ им. Н.Э. Баумана",
+        "retrievedAt": "2026-05-16T05:31:03.000Z",
+        "snapshotHash": "0152fc64892cedb65e55e41e3dd2f6456b36561190b0795df7714dd1af215e67",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-bauman-antiplagiat-student-submission-workflow",
+      "claimId": "claim-bauman-antiplagiat-student-submission-workflow",
+      "sourceSnapshotId": "snap-bauman-antiplagiat-help-20260516",
+      "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "finalUrl": "https://antiplagiat.bmstu.ru/page/help",
+      "sourceTitle": "Антиплагиат - МГТУ им. Н.Э. Баумана",
+      "sourceLanguage": "ru",
+      "snapshotHash": "0152fc64892cedb65e55e41e3dd2f6456b36561190b0795df7714dd1af215e67",
+      "evidenceSnippetOriginal": "Загрузить работу на проверку своему преподавателю в системе «Антиплагиат.ВУЗ» студент может по специальному коду задания. Получить код задания студент может двумя способами: в приглашении к выполнению задания (отправляется через систему); лично от преподавателя или другого сотрудника ВУЗа.",
+      "evidenceSnippetDisplay": "A student can upload work for checking by a teacher in Antiplagiat.VUZ using a special assignment code received through the system or from a teacher or other university employee.",
+      "evidenceLocator": "FAQ section: Я студент. Мне предоставили доступ к корпоративной версии. Как проверить документ?",
+      "evidenceType": "official_source",
+      "relevance": 0.84,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Антиплагиат - МГТУ им. Н.Э. Баумана",
+        "sourceUrl": "https://antiplagiat.bmstu.ru/page/help",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/bauman-moscow-state-technical-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/bauman-moscow-state-technical-university",
+        "publisher": "МГТУ им. Н.Э. Баумана",
+        "retrievedAt": "2026-05-16T05:31:03.000Z",
+        "snapshotHash": "0152fc64892cedb65e55e41e3dd2f6456b36561190b0795df7714dd1af215e67",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "review-bauman-antiplagiat-student-submission-workflow",
+      "claimId": "claim-bauman-antiplagiat-student-submission-workflow",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow description of the official Antiplagiat student-submission workflow, without extending it to AI-use rules.",
+      "decidedAt": "2026-05-16T05:34:20.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-bauman-moscow-state-technical-university-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-bauman-moscow-state-technical-university-20260516",
+      "title": "Bauman Moscow State Technical University staged OpenClaw review",
+      "generatedAt": "2026-05-16T05:35:00.000Z",
+      "draftPath": "content/reports/bauman-moscow-state-technical-university-20260516.mdx",
+      "summary": "Official-source discovery for Bauman Moscow State Technical University did not identify a university-wide generative AI policy. The staged claims are limited to the official Antiplagiat help page's statements about originality checks and student work submission.",
+      "referencedClaimIds": [
+        "claim-bauman-antiplagiat-not-legal-proof",
+        "claim-bauman-antiplagiat-student-submission-workflow"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/bauman-moscow-state-technical-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No official university-wide generative AI use policy was found in the searched official Bauman sources.",
+        "The bmstu.ru root robots.txt disallows User-agent: *, so main-domain pages were not crawled as evidence."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

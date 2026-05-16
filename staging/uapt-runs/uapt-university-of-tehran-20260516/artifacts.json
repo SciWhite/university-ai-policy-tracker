@@ -1,0 +1,385 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-tehran-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-university-of-tehran-20260516",
+      "entityType": "university",
+      "entitySlug": "university-of-tehran",
+      "startedAt": "2026-05-16T05:30:57Z",
+      "endedAt": "2026-05-16T05:30:57Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:ut.ac.ir artificial intelligence policy academic integrity ChatGPT University of Tehran",
+          "domain": "ut.ac.ir",
+          "resultCount": 5,
+          "notes": "Firecrawl search returned mostly University of Tehran journal articles and PDFs about AI, which were treated as research-only unless they contained operational policy text."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:ut.ac.ir \"ChatGPT\" \"University of Tehran\"",
+          "domain": "ut.ac.ir",
+          "resultCount": 10,
+          "notes": "Search results included official UT journal PDFs and a faculty news item; these were not used as binding university-wide policy evidence."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:ut.ac.ir \"academic integrity\" \"University of Tehran\" policy students",
+          "domain": "ut.ac.ir",
+          "resultCount": 10,
+          "notes": "A University of Tehran journal publication ethics page was identified with an explicit Artificial Intelligence Usage Policy."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-ut-jed-publication-ethics",
+        "src-ut-ai-governance-research-article",
+        "src-ut-civeng-chatgpt-news"
+      ],
+      "rejectionIds": [
+        "rej-ut-ai-governance-research-article",
+        "rej-ut-civeng-chatgpt-news"
+      ],
+      "summary": "Official-domain discovery found one usable UT-owned journal ethics page with AI usage policy text. Other UT-domain AI results were research articles, PDFs, or news-like items and were rejected for policy extraction."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-ut-jed-publication-ethics",
+      "entityType": "university",
+      "entitySlug": "university-of-tehran",
+      "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "finalUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "sourceTitle": "Journal of Entrepreneurship Development - Publication Ethics",
+      "sourceLanguage": "en",
+      "sourceType": "research_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:ut.ac.ir \"academic integrity\" \"University of Tehran\" policy students",
+      "discoveredAt": "2026-05-16T05:30:57Z",
+      "officialDomainConfidence": 0.95,
+      "aiRelevanceScore": 0.88,
+      "policySpecificityScore": 0.76,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T05:30:57Z",
+      "verificationNotes": "Official UT subdomain page for a journal whose page states Publisher and Owner: University of Tehran; contains an explicit Artificial Intelligence Usage Policy. Claims are scoped to the journal page, not university-wide student policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-ut-ai-governance-research-article",
+      "entityType": "university",
+      "entitySlug": "university-of-tehran",
+      "sourceUrl": "https://journal.ut.ac.ir/article_106381.html",
+      "sourceTitle": "حکمرانی هوش مصنوعی در آموزش عالی؛ پژوهشی فراترکیب",
+      "sourceLanguage": "fa",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:ut.ac.ir artificial intelligence policy academic integrity ChatGPT University of Tehran",
+      "discoveredAt": "2026-05-16T05:30:57Z",
+      "officialDomainConfidence": 0.95,
+      "aiRelevanceScore": 0.72,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "rejectionReason": "research_showcase_only",
+      "verificationNotes": "Official UT journal article about AI governance in higher education, not operational University of Tehran policy or guidance.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-ut-civeng-chatgpt-news",
+      "entityType": "university",
+      "entitySlug": "university-of-tehran",
+      "sourceUrl": "https://civeng.ut.ac.ir/en/%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1/-/asset_publisher/pkbv/content/chatgpt-said-support-for-graduate-theses-faculty-research-leaves-and-recruitment-of-elite-military-service-personnel",
+      "sourceTitle": "Support for Graduate Theses, Faculty Research Leaves, and Recruitment of Elite Military Service Personnel",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:ut.ac.ir \"ChatGPT\" \"University of Tehran\"",
+      "discoveredAt": "2026-05-16T05:30:57Z",
+      "officialDomainConfidence": 0.9,
+      "aiRelevanceScore": 0.18,
+      "policySpecificityScore": 0.12,
+      "verificationStatus": "rejected",
+      "rejectionReason": "event_or_news_only",
+      "verificationNotes": "Official faculty news/advisory search result did not provide AI policy evidence for the tracker.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-ut-ai-governance-research-article",
+      "sourceCandidateId": "src-ut-ai-governance-research-article",
+      "entityType": "university",
+      "entitySlug": "university-of-tehran",
+      "sourceUrl": "https://journal.ut.ac.ir/article_106381.html",
+      "rejectedAt": "2026-05-16T05:30:57Z",
+      "rejectionReason": "research_showcase_only",
+      "checkedBy": "openclaw_agent",
+      "evidenceSnippet": "Search result title: حکمرانی هوش مصنوعی در آموزش عالی؛ پژوهشی فراترکیب",
+      "notes": "Research article result on an official UT journal domain; not used because reports and research articles are not binding policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-ut-civeng-chatgpt-news",
+      "sourceCandidateId": "src-ut-civeng-chatgpt-news",
+      "entityType": "university",
+      "entitySlug": "university-of-tehran",
+      "sourceUrl": "https://civeng.ut.ac.ir/en/%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1/-/asset_publisher/pkbv/content/chatgpt-said-support-for-graduate-theses-faculty-research-leaves-and-recruitment-of-elite-military-service-personnel",
+      "rejectedAt": "2026-05-16T05:30:57Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw_agent",
+      "evidenceSnippet": "Search result title: Support for Graduate Theses, Faculty Research Leaves, and Recruitment of Elite Military Service Personnel",
+      "notes": "Official UT faculty page search result; not used because it was a news/advisory result rather than AI policy text."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "plan-university-of-tehran-20260516",
+      "createdAt": "2026-05-16T05:30:57Z",
+      "createdBy": "openclaw_agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-tehran",
+          "sourceCandidateId": "src-ut-jed-publication-ethics",
+          "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+          "sourceTitle": "Journal of Entrepreneurship Development - Publication Ethics",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "publication ethics",
+            "artificial intelligence usage",
+            "human review",
+            "AI disclosure",
+            "confidentiality"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after verified official source text supports narrow staged claim candidates.",
+        "Do not escalate to Playwright unless static HTTP or Firecrawl text extraction is insufficient.",
+        "Reject research articles, news, and generic pages that do not contain operational policy or guidance."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-ut-jed-publication-ethics-20260516",
+      "sourceCandidateId": "src-ut-jed-publication-ethics",
+      "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "finalUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "attemptedAt": "2026-05-16T05:30:57Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 7413,
+      "contentHash": "819b059a12bc7007b21d0fe0b0878207dda7954440038f42c8d518cdf7b35c1c",
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-tehran-20260516/snapshots/src-ut-jed-publication-ethics-normalized-text"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-ut-jed-publication-ethics-20260516",
+      "sourceCandidateId": "src-ut-jed-publication-ethics",
+      "fetchAttemptId": "fetch-ut-jed-publication-ethics-20260516",
+      "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "finalUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "sourceTitle": "Journal of Entrepreneurship Development - Publication Ethics",
+      "sourceLanguage": "en",
+      "contentHash": "819b059a12bc7007b21d0fe0b0878207dda7954440038f42c8d518cdf7b35c1c",
+      "fetchedAt": "2026-05-16T05:30:57Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-tehran-20260516/snapshots/src-ut-jed-publication-ethics-normalized-text",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-ut-jed-ai-human-review-disclosure",
+      "entityType": "university",
+      "entitySlug": "university-of-tehran",
+      "claimType": "ai_tool_treatment",
+      "claimText": "University of Tehran's Journal of Entrepreneurship Development states that AI tools are supportive aids, manuscripts are independently evaluated by expert human reviewers with final decisions made by humans, and AI use in writing or analyzing manuscripts must be disclosed in the article or submission documents.",
+      "normalizedValue": "journal_ai_supportive_aid_human_review_disclosure",
+      "sourceLanguage": "en",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-ut-jed-ai-human-review-disclosure"
+      ],
+      "citation": {
+        "citationTitle": "Journal of Entrepreneurship Development - Publication Ethics",
+        "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-tehran.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tehran",
+        "publisher": "University of Tehran",
+        "retrievedAt": "2026-05-16T05:30:57Z",
+        "snapshotHash": "819b059a12bc7007b21d0fe0b0878207dda7954440038f42c8d518cdf7b35c1c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-ut-jed-ai-human-review-disclosure",
+      "claimId": "claim-ut-jed-ai-human-review-disclosure",
+      "sourceSnapshotId": "snap-ut-jed-publication-ethics-20260516",
+      "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "finalUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "sourceTitle": "Journal of Entrepreneurship Development - Publication Ethics",
+      "sourceLanguage": "en",
+      "snapshotHash": "819b059a12bc7007b21d0fe0b0878207dda7954440038f42c8d518cdf7b35c1c",
+      "evidenceSnippetOriginal": "AI tools are employed solely as supportive aids within ethical frameworks and scientific standards. All manuscripts will be independently evaluated by expert human reviewers, with final decisions made by humans. Any use of AI in writing or analyzing the manuscript must be transparently disclosed within the article or the submission documents.",
+      "evidenceLocator": "Artificial Intelligence Usage Policy",
+      "evidenceType": "official_source",
+      "relevance": 0.93,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Journal of Entrepreneurship Development - Publication Ethics",
+        "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-tehran.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tehran",
+        "publisher": "University of Tehran",
+        "retrievedAt": "2026-05-16T05:30:57Z",
+        "snapshotHash": "819b059a12bc7007b21d0fe0b0878207dda7954440038f42c8d518cdf7b35c1c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-ut-jed-ai-confidentiality",
+      "entityType": "university",
+      "entitySlug": "university-of-tehran",
+      "claimType": "privacy",
+      "claimText": "University of Tehran's Journal of Entrepreneurship Development says confidentiality of authors' and reviewers' information is strictly maintained during the use of AI tools.",
+      "normalizedValue": "journal_ai_confidentiality_authors_reviewers",
+      "sourceLanguage": "en",
+      "confidence": 0.84,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-ut-jed-ai-confidentiality"
+      ],
+      "citation": {
+        "citationTitle": "Journal of Entrepreneurship Development - Publication Ethics",
+        "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-tehran.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tehran",
+        "publisher": "University of Tehran",
+        "retrievedAt": "2026-05-16T05:30:57Z",
+        "snapshotHash": "819b059a12bc7007b21d0fe0b0878207dda7954440038f42c8d518cdf7b35c1c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-ut-jed-ai-confidentiality",
+      "claimId": "claim-ut-jed-ai-confidentiality",
+      "sourceSnapshotId": "snap-ut-jed-publication-ethics-20260516",
+      "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "finalUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+      "sourceTitle": "Journal of Entrepreneurship Development - Publication Ethics",
+      "sourceLanguage": "en",
+      "snapshotHash": "819b059a12bc7007b21d0fe0b0878207dda7954440038f42c8d518cdf7b35c1c",
+      "evidenceSnippetOriginal": "Confidentiality of authors' and reviewers' information during the use of AI tools is strictly maintained.",
+      "evidenceLocator": "Artificial Intelligence Usage Policy",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Journal of Entrepreneurship Development - Publication Ethics",
+        "sourceUrl": "https://jed.ut.ac.ir/journal/process?ethics&lang=en",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-tehran.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tehran",
+        "publisher": "University of Tehran",
+        "retrievedAt": "2026-05-16T05:30:57Z",
+        "snapshotHash": "819b059a12bc7007b21d0fe0b0878207dda7954440038f42c8d518cdf7b35c1c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "review-ut-jed-ai-human-review-disclosure",
+      "claimId": "claim-ut-jed-ai-human-review-disclosure",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow journal-scoped candidate. It must not be promoted as a university-wide AI policy without human review and broader official evidence.",
+      "decidedAt": "2026-05-16T05:30:57Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "review-ut-jed-ai-confidentiality",
+      "claimId": "claim-ut-jed-ai-confidentiality",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow journal-scoped privacy/confidentiality candidate based on exact source text.",
+      "decidedAt": "2026-05-16T05:30:57Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tehran-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-university-of-tehran-20260516",
+      "title": "University of Tehran staged AI policy evidence",
+      "generatedAt": "2026-05-16T05:30:57Z",
+      "draftPath": "content/reports/university-of-tehran-20260516.mdx",
+      "summary": "Staged evidence found a University of Tehran-owned journal publication ethics page with an explicit AI usage policy. The resulting claims are scoped to the Journal of Entrepreneurship Development and should not be treated as a university-wide student or teaching policy.",
+      "referencedClaimIds": [
+        "claim-ut-jed-ai-human-review-disclosure",
+        "claim-ut-jed-ai-confidentiality"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-tehran.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No central University of Tehran-wide generative AI student, teaching, or assessment policy was verified in this run.",
+        "Claims are limited to the Journal of Entrepreneurship Development publication ethics page owned by University of Tehran."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

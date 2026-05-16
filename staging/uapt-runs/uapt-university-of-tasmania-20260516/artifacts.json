@@ -1,0 +1,451 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-tasmania-20260516",
+  "artifacts": [
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "sourceCandidateId": "utas-source-askus-genai-assessments",
+      "entityType": "university",
+      "entitySlug": "university-of-tasmania",
+      "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "finalUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "sourceTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+      "sourceLanguage": "en-AU",
+      "sourceType": "assessment_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:utas.edu.au artificial intelligence assessment academic integrity University of Tasmania generative AI policy",
+      "discoveredAt": "2026-05-16T05:30:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.97,
+      "policySpecificityScore": 0.86,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T05:35:00.000Z",
+      "verificationNotes": "Official University of Tasmania AskUs page giving student-facing guidance about generative AI in assessment.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "sourceCandidateId": "utas-source-figshare-ai-detectors",
+      "entityType": "university",
+      "entitySlug": "university-of-tasmania",
+      "sourceUrl": "https://figshare.utas.edu.au/articles/journal_contribution/Heads_we_win_tails_you_lose_AI_detectors_in_education/31199848",
+      "sourceTitle": "Heads we win, tails you lose: AI detectors in education",
+      "sourceLanguage": "en",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:utas.edu.au artificial intelligence assessment academic integrity University of Tasmania generative AI policy",
+      "discoveredAt": "2026-05-16T05:31:00.000Z",
+      "officialDomainConfidence": 0.9,
+      "aiRelevanceScore": 0.78,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "rejectionReason": "research_showcase_only",
+      "verificationNotes": "University-hosted research repository item, not institutional policy or student guidance.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "sourceCandidateId": "utas-source-eng701-outline",
+      "entityType": "university",
+      "entitySlug": "university-of-tasmania",
+      "sourceUrl": "https://outlines.utas.edu.au/2025/ENG/ENG701/Semester%202/ENG701_Semester%202.mhtml",
+      "sourceTitle": "ENG701 Semester 2 - Unit Outlines",
+      "sourceLanguage": "en",
+      "sourceType": "other",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:utas.edu.au University of Tasmania artificial intelligence policy students assessment",
+      "discoveredAt": "2026-05-16T05:32:00.000Z",
+      "officialDomainConfidence": 0.94,
+      "aiRelevanceScore": 0.65,
+      "policySpecificityScore": 0.24,
+      "verificationStatus": "rejected",
+      "rejectionReason": "low_policy_specificity",
+      "verificationNotes": "Course-level unit outline text was not used for university-wide claims.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "sourceRejectionId": "utas-rejection-figshare-ai-detectors",
+      "sourceCandidateId": "utas-source-figshare-ai-detectors",
+      "entityType": "university",
+      "entitySlug": "university-of-tasmania",
+      "sourceUrl": "https://figshare.utas.edu.au/articles/journal_contribution/Heads_we_win_tails_you_lose_AI_detectors_in_education/31199848",
+      "rejectedAt": "2026-05-16T05:36:00.000Z",
+      "rejectionReason": "research_showcase_only",
+      "checkedBy": "openclaw_agent",
+      "notes": "Rejected because it is a research repository item about AI detectors, not a binding University of Tasmania policy or central guidance page."
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "sourceRejectionId": "utas-rejection-eng701-outline",
+      "sourceCandidateId": "utas-source-eng701-outline",
+      "entityType": "university",
+      "entitySlug": "university-of-tasmania",
+      "sourceUrl": "https://outlines.utas.edu.au/2025/ENG/ENG701/Semester%202/ENG701_Semester%202.mhtml",
+      "rejectedAt": "2026-05-16T05:37:00.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw_agent",
+      "notes": "Rejected for claim extraction because it is a single unit outline and would overstate the source if used as university-wide policy."
+    },
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "traceId": "utas-discovery-trace-20260516",
+      "entityType": "university",
+      "entitySlug": "university-of-tasmania",
+      "startedAt": "2026-05-16T05:29:00.000Z",
+      "endedAt": "2026-05-16T05:38:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:utas.edu.au artificial intelligence assessment academic integrity University of Tasmania generative AI policy",
+          "domain": "utas.edu.au",
+          "resultCount": 5,
+          "notes": "Returned the official AskUs assessment guidance page plus research repository and course-outline material."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:utas.edu.au academic integrity policy University of Tasmania artificial intelligence genAI",
+          "domain": "utas.edu.au",
+          "resultCount": 5,
+          "notes": "Confirmed the AskUs guidance as the strongest public official source for GenAI assessment guidance."
+        },
+        {
+          "method": "site_search",
+          "query": "University of Tasmania AskUs generative Artificial Intelligence assessments",
+          "domain": "askus.utas.edu.au",
+          "resultCount": 1,
+          "notes": "Verified source is a public University of Tasmania AskUs support article."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "utas-source-askus-genai-assessments",
+        "utas-source-figshare-ai-detectors",
+        "utas-source-eng701-outline"
+      ],
+      "rejectionIds": [
+        "utas-rejection-figshare-ai-detectors",
+        "utas-rejection-eng701-outline"
+      ],
+      "summary": "Official-source discovery found one public University of Tasmania student guidance page on generative AI and assessment. Research repository and course-outline hits were rejected for policy extraction."
+    },
+    {
+      "artifactType": "crawl_plan",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "planId": "utas-crawl-plan-20260516",
+      "createdAt": "2026-05-16T05:39:00.000Z",
+      "createdBy": "openclaw_agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-tasmania",
+          "sourceCandidateId": "utas-source-askus-genai-assessments",
+          "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+          "sourceTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+          "sourceLanguage": "en-AU",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "generative AI in assessment",
+            "course-specific AI permission",
+            "academic integrity"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after public official University of Tasmania guidance has been fetched and narrow claim candidates are extracted.",
+        "Do not use research repository, news, event, or course-only pages for university-wide claims."
+      ]
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "fetchAttemptId": "utas-fetch-askus-genai-assessments",
+      "sourceCandidateId": "utas-source-askus-genai-assessments",
+      "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "finalUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "attemptedAt": "2026-05-16T05:40:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3471,
+      "contentHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-tasmania-20260516/snapshots/utas-askus-genai-assessments.txt"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "sourceSnapshotId": "utas-snapshot-askus-genai-assessments",
+      "sourceCandidateId": "utas-source-askus-genai-assessments",
+      "fetchAttemptId": "utas-fetch-askus-genai-assessments",
+      "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "finalUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "sourceTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+      "sourceLanguage": "en-AU",
+      "contentHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+      "fetchedAt": "2026-05-16T05:40:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-tasmania-20260516/snapshots/utas-askus-genai-assessments.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "claimId": "utas-claim-genai-support-only",
+      "entityType": "university",
+      "entitySlug": "university-of-tasmania",
+      "claimType": "teaching",
+      "claimText": "University of Tasmania guidance says generative AI tools should only be used to support learning and assist with assessment completion, while submitted work must be the student's own and follow the assessment task instructions.",
+      "normalizedValue": "genai_support_learning_assessment_instructions",
+      "sourceLanguage": "en-AU",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "utas-evidence-genai-support-only"
+      ],
+      "citation": {
+        "citationTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+        "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-tasmania.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tasmania",
+        "publisher": "University of Tasmania",
+        "retrievedAt": "2026-05-16T05:40:00.000Z",
+        "snapshotHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "evidenceId": "utas-evidence-genai-support-only",
+      "claimId": "utas-claim-genai-support-only",
+      "sourceSnapshotId": "utas-snapshot-askus-genai-assessments",
+      "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "finalUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "sourceTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+      "sourceLanguage": "en-AU",
+      "snapshotHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+      "evidenceSnippetOriginal": "Generative Artificial Intelligence (genAI) tools should only be used to support your learning and assist with the completion of your assessments. The work that you submit must be yours only and must be prepared in accordance with the instructions for that assessment task.",
+      "evidenceLocator": "Main answer, first paragraph",
+      "evidenceType": "official_source",
+      "relevance": 0.92,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+        "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-tasmania.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tasmania",
+        "publisher": "University of Tasmania",
+        "retrievedAt": "2026-05-16T05:40:00.000Z",
+        "snapshotHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "decisionId": "utas-review-genai-support-only",
+      "claimId": "utas-claim-genai-support-only",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow paraphrase of the official AskUs guidance without treating it as a canonical public claim.",
+      "decidedAt": "2026-05-16T05:45:00.000Z"
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "claimId": "utas-claim-unit-coordinator-permission",
+      "entityType": "university",
+      "entitySlug": "university-of-tasmania",
+      "claimType": "ai_tool_treatment",
+      "claimText": "University of Tasmania guidance says whether AI is encouraged or not allowed can vary by assessment, and students should check assessment instructions or confirm with the Unit Coordinator if unsure.",
+      "normalizedValue": "assessment_specific_ai_permission",
+      "sourceLanguage": "en-AU",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "utas-evidence-unit-coordinator-permission"
+      ],
+      "citation": {
+        "citationTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+        "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-tasmania.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tasmania",
+        "publisher": "University of Tasmania",
+        "retrievedAt": "2026-05-16T05:40:00.000Z",
+        "snapshotHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "evidenceId": "utas-evidence-unit-coordinator-permission",
+      "claimId": "utas-claim-unit-coordinator-permission",
+      "sourceSnapshotId": "utas-snapshot-askus-genai-assessments",
+      "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "finalUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "sourceTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+      "sourceLanguage": "en-AU",
+      "snapshotHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+      "evidenceSnippetOriginal": "Your Unit Coordinator might encourage the use of AI as a resource for some assessments; others might not allow it. Be sure to check your assessment instructions carefully (e.g. within MyLO or the assessment instructions in your unit outline) or confirm with your Unit Coordinator if unsure.",
+      "evidenceLocator": "Main answer, assessment instructions paragraph",
+      "evidenceType": "official_source",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+        "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-tasmania.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tasmania",
+        "publisher": "University of Tasmania",
+        "retrievedAt": "2026-05-16T05:40:00.000Z",
+        "snapshotHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "decisionId": "utas-review-unit-coordinator-permission",
+      "claimId": "utas-claim-unit-coordinator-permission",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as assessment-specific guidance; claim avoids implying blanket permission or prohibition.",
+      "decidedAt": "2026-05-16T05:46:00.000Z"
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "claimId": "utas-claim-unapproved-use-integrity",
+      "entityType": "university",
+      "entitySlug": "university-of-tasmania",
+      "claimType": "academic_integrity",
+      "claimText": "University of Tasmania guidance says unapproved, inappropriate, or unacknowledged use of generative AI may be considered dishonest or unfair behaviour and therefore a breach of academic integrity.",
+      "normalizedValue": "unapproved_inappropriate_unacknowledged_genai_may_breach_academic_integrity",
+      "sourceLanguage": "en-AU",
+      "confidence": 0.93,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "utas-evidence-unapproved-use-integrity"
+      ],
+      "citation": {
+        "citationTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+        "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-tasmania.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tasmania",
+        "publisher": "University of Tasmania",
+        "retrievedAt": "2026-05-16T05:40:00.000Z",
+        "snapshotHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "evidenceId": "utas-evidence-unapproved-use-integrity",
+      "claimId": "utas-claim-unapproved-use-integrity",
+      "sourceSnapshotId": "utas-snapshot-askus-genai-assessments",
+      "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "finalUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+      "sourceTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+      "sourceLanguage": "en-AU",
+      "snapshotHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+      "evidenceSnippetOriginal": "Unapproved, inappropriate, or unacknowledged use of genAI may be considered as dishonest or unfair behaviour, and therefore a breach of academic integrity.",
+      "evidenceLocator": "Main answer, academic integrity paragraph",
+      "evidenceType": "official_source",
+      "relevance": 0.96,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Can I use generative Artificial Intelligence (AI) for my assessments?",
+        "sourceUrl": "https://askus.utas.edu.au/app/answers/detail/a_id/2579/~/can-i-use-generative-artificial-intelligence-%28ai%29-for-my-assessments%3F",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-tasmania.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tasmania",
+        "publisher": "University of Tasmania",
+        "retrievedAt": "2026-05-16T05:40:00.000Z",
+        "snapshotHash": "a212df3919f06f3605047cb654a463524eb52e762f16b60efec02b1ae2672aaa",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "decisionId": "utas-review-unapproved-use-integrity",
+      "claimId": "utas-claim-unapproved-use-integrity",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved because the claim preserves the source's may-be-considered language.",
+      "decidedAt": "2026-05-16T05:47:00.000Z"
+    },
+    {
+      "artifactType": "report_draft",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tasmania-20260516",
+      "reportId": "utas-report-draft-20260516",
+      "title": "University of Tasmania GenAI Assessment Guidance Staged Summary",
+      "generatedAt": "2026-05-16T05:48:00.000Z",
+      "draftPath": "content/reports/university-of-tasmania-genai-assessment-guidance-20260516.mdx",
+      "summary": "Staged OpenClaw run for University of Tasmania found one public official AskUs page on generative AI use in assessments. Claims are limited to assessment-specific guidance and academic integrity wording directly supported by that source.",
+      "referencedClaimIds": [
+        "utas-claim-genai-support-only",
+        "utas-claim-unit-coordinator-permission",
+        "utas-claim-unapproved-use-integrity"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-tasmania.json",
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-tasmania.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The related Student Portal academic integrity and AI guide links appear to require SharePoint access and were not used as public evidence.",
+        "Research repository and course-level outline search results were rejected for university-wide claim extraction."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
