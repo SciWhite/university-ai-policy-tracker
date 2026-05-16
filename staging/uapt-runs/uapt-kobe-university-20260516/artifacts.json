@@ -1,0 +1,497 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kobe-university-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-kobe-university-20260516",
+      "entityType": "university",
+      "entitySlug": "kobe-university",
+      "startedAt": "2026-05-16T23:39:00.000Z",
+      "endedAt": "2026-05-16T23:45:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:kobe-u.ac.jp Kobe University generative AI ChatGPT policy guidelines students faculty",
+          "domain": "kobe-u.ac.jp",
+          "resultCount": 3,
+          "notes": "Firecrawl search found official repository and report materials, but did not surface a stronger current central policy page in English."
+        },
+        {
+          "method": "multilingual_query",
+          "query": "site:kobe-u.ac.jp 神戸大学 生成AI ChatGPT ガイドライン 学生 教員 レポート 授業",
+          "domain": "kobe-u.ac.jp",
+          "resultCount": 6,
+          "notes": "Firecrawl search surfaced official Kobe University pages including the central Japanese announcement and faculty-level PDF materials."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:kobe-u.ac.jp \"生成AI\" \"神戸大学\" \"レポート\" \"剽窃\"",
+          "domain": "kobe-u.ac.jp",
+          "resultCount": 9,
+          "notes": "Firecrawl search found the official Kobe University Japanese announcement, an English version linked from it, and faculty-level law/economics materials."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.kobe-u.ac.jp",
+          "resultCount": 1,
+          "notes": "robots.txt allows the announcement paths used here; it disallows /documents/info/public-info/achievements/ and /download/."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-kobe-genai-ja-announcement",
+        "sc-kobe-genai-en-announcement",
+        "sc-kobe-econ-report-writing-pdf"
+      ],
+      "rejectionIds": [
+        "sr-kobe-econ-report-writing-limited"
+      ],
+      "summary": "Official-domain discovery found Kobe University's central student-facing Japanese announcement on ChatGPT and other generative AI, with an official English version linked from the same page. Faculty-level or repository materials were not used for university-wide claims."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-kobe-genai-ja-announcement",
+      "entityType": "university",
+      "entitySlug": "kobe-university",
+      "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "finalUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "sourceTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+      "sourceLanguage": "ja",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:kobe-u.ac.jp \"生成AI\" \"神戸大学\" \"レポート\" \"剽窃\"",
+      "discoveredAt": "2026-05-16T23:41:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.86,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T23:43:00.000Z",
+      "verificationNotes": "Official Kobe University Japanese announcement addressed to students by the Executive Vice President for Education.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-kobe-genai-en-announcement",
+      "entityType": "university",
+      "entitySlug": "kobe-university",
+      "sourceUrl": "https://www.kobe-u.ac.jp/en/announcement/2023_04_27_01/",
+      "finalUrl": "https://www.kobe-u.ac.jp/en/announcement/2023_04_27_01/",
+      "sourceTitle": "The Use of ChatGPT and Other Generative AI | Kobe University",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "link_traversal",
+      "queryUsed": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "discoveredAt": "2026-05-16T23:42:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.84,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T23:43:30.000Z",
+      "verificationNotes": "Official English version linked from the official Japanese announcement.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-kobe-econ-report-writing-pdf",
+      "entityType": "university",
+      "entitySlug": "kobe-university",
+      "sourceUrl": "https://www.econ.kobe-u.ac.jp/wp/wp-content/uploads/2024/01/5a4e2d139def4ff1731c78c1785eb9cb.pdf",
+      "finalUrl": "https://www.econ.kobe-u.ac.jp/wp/wp-content/uploads/2024/01/5a4e2d139def4ff1731c78c1785eb9cb.pdf",
+      "sourceTitle": "レポート・論文作成時における注意",
+      "sourceLanguage": "ja",
+      "sourceType": "assessment_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:kobe-u.ac.jp 神戸大学 生成AI ChatGPT ガイドライン 学生 教員 レポート 授業",
+      "discoveredAt": "2026-05-16T23:40:30.000Z",
+      "officialDomainConfidence": 0.95,
+      "aiRelevanceScore": 0.74,
+      "policySpecificityScore": 0.42,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-16T23:44:00.000Z",
+      "verificationNotes": "Official Economics faculty PDF is relevant to report writing but is faculty-level guidance, so it was not used for university-wide Kobe University claims.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-kobe-econ-report-writing-limited",
+      "sourceCandidateId": "sc-kobe-econ-report-writing-pdf",
+      "entityType": "university",
+      "entitySlug": "kobe-university",
+      "sourceUrl": "https://www.econ.kobe-u.ac.jp/wp/wp-content/uploads/2024/01/5a4e2d139def4ff1731c78c1785eb9cb.pdf",
+      "finalUrl": "https://www.econ.kobe-u.ac.jp/wp/wp-content/uploads/2024/01/5a4e2d139def4ff1731c78c1785eb9cb.pdf",
+      "rejectedAt": "2026-05-16T23:44:00.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-agent",
+      "notes": "The source is official and AI-relevant, but it is faculty-level report-writing guidance and was not used to expand central university-wide claims."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "cp-kobe-university-20260516",
+      "createdAt": "2026-05-16T23:45:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "kobe-university",
+          "sourceCandidateId": "sc-kobe-genai-ja-announcement",
+          "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+          "sourceTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+          "sourceLanguage": "ja",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "student-facing generative AI guidance",
+            "academic integrity",
+            "class-level restrictions",
+            "privacy and confidentiality"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "kobe-university",
+          "sourceCandidateId": "sc-kobe-genai-en-announcement",
+          "sourceUrl": "https://www.kobe-u.ac.jp/en/announcement/2023_04_27_01/",
+          "sourceTitle": "The Use of ChatGPT and Other Generative AI | Kobe University",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "official English version",
+            "student-facing generative AI guidance"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official central announcement and linked official English version are snapshotted.",
+        "Do not use faculty-level or repository-only materials for university-wide claims."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-kobe-genai-ja-announcement",
+      "sourceCandidateId": "sc-kobe-genai-ja-announcement",
+      "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "finalUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "attemptedAt": "2026-05-16T23:43:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 6337,
+      "contentHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+      "normalizedTextStorageKey": "openclaw/uapt-kobe-university-20260516/snapshots/kobe-genai-ja-announcement.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-kobe-genai-en-announcement",
+      "sourceCandidateId": "sc-kobe-genai-en-announcement",
+      "sourceUrl": "https://www.kobe-u.ac.jp/en/announcement/2023_04_27_01/",
+      "finalUrl": "https://www.kobe-u.ac.jp/en/announcement/2023_04_27_01/",
+      "attemptedAt": "2026-05-16T23:43:30.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 18355,
+      "contentHash": "00aa47279be5818ea417806737e0567e2e3ef2b5925e2415e2ee22f0d6e81f9e",
+      "normalizedTextStorageKey": "openclaw/uapt-kobe-university-20260516/snapshots/kobe-genai-en-announcement.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-kobe-genai-ja-announcement",
+      "sourceCandidateId": "sc-kobe-genai-ja-announcement",
+      "fetchAttemptId": "fa-kobe-genai-ja-announcement",
+      "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "finalUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "sourceTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+      "sourceLanguage": "ja",
+      "contentHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+      "fetchedAt": "2026-05-16T23:43:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-kobe-university-20260516/snapshots/kobe-genai-ja-announcement.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-kobe-genai-en-announcement",
+      "sourceCandidateId": "sc-kobe-genai-en-announcement",
+      "fetchAttemptId": "fa-kobe-genai-en-announcement",
+      "sourceUrl": "https://www.kobe-u.ac.jp/en/announcement/2023_04_27_01/",
+      "finalUrl": "https://www.kobe-u.ac.jp/en/announcement/2023_04_27_01/",
+      "sourceTitle": "The Use of ChatGPT and Other Generative AI | Kobe University",
+      "sourceLanguage": "en",
+      "contentHash": "00aa47279be5818ea417806737e0567e2e3ef2b5925e2415e2ee22f0d6e81f9e",
+      "fetchedAt": "2026-05-16T23:43:30.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-kobe-university-20260516/snapshots/kobe-genai-en-announcement.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-kobe-genai-plagiarism-risk",
+      "entityType": "university",
+      "entitySlug": "kobe-university",
+      "claimType": "academic_integrity",
+      "claimText": "Kobe University tells students that using text created by generative AI unchanged as part or all of a report or similar work may be regarded as plagiarism.",
+      "normalizedValue": "generative AI output used unchanged in reports may be treated as plagiarism",
+      "sourceLanguage": "ja",
+      "confidence": 0.92,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-kobe-genai-plagiarism-risk"
+      ],
+      "citation": {
+        "citationTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+        "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kobe-university.json",
+        "publisher": "Kobe University",
+        "retrievedAt": "2026-05-16T23:43:00.000Z",
+        "snapshotHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-kobe-genai-class-restrictions",
+      "entityType": "university",
+      "entitySlug": "kobe-university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Kobe University tells students that some classes may restrict or prohibit the use of generative AI.",
+      "normalizedValue": "some classes may restrict or prohibit generative AI use",
+      "sourceLanguage": "ja",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-kobe-genai-class-restrictions"
+      ],
+      "citation": {
+        "citationTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+        "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kobe-university.json",
+        "publisher": "Kobe University",
+        "retrievedAt": "2026-05-16T23:43:00.000Z",
+        "snapshotHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-kobe-genai-privacy-risk",
+      "entityType": "university",
+      "entitySlug": "kobe-university",
+      "claimType": "privacy",
+      "claimText": "Kobe University warns students that entering highly confidential information or personal information into generative AI may lead to information leakage or disclosure.",
+      "normalizedValue": "do not input highly confidential or personal information into generative AI because of leakage risk",
+      "sourceLanguage": "ja",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-kobe-genai-privacy-risk"
+      ],
+      "citation": {
+        "citationTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+        "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kobe-university.json",
+        "publisher": "Kobe University",
+        "retrievedAt": "2026-05-16T23:43:00.000Z",
+        "snapshotHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-kobe-genai-plagiarism-risk",
+      "claimId": "claim-kobe-genai-plagiarism-risk",
+      "sourceSnapshotId": "ss-kobe-genai-ja-announcement",
+      "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "finalUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "sourceTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+      "sourceLanguage": "ja",
+      "snapshotHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+      "evidenceSnippetOriginal": "●作成された文章をそのままレポート等の一部分または全体に利用した場合は、「剽窃」とみなされることがあります。",
+      "evidenceSnippetDisplay": "Using generated text unchanged as part or all of a report may be regarded as plagiarism.",
+      "evidenceLocator": "Japanese announcement, student guidance bullet list",
+      "evidenceType": "official_source",
+      "relevance": 0.97,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+        "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kobe-university.json",
+        "publisher": "Kobe University",
+        "retrievedAt": "2026-05-16T23:43:00.000Z",
+        "snapshotHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-kobe-genai-class-restrictions",
+      "claimId": "claim-kobe-genai-class-restrictions",
+      "sourceSnapshotId": "ss-kobe-genai-ja-announcement",
+      "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "finalUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "sourceTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+      "sourceLanguage": "ja",
+      "snapshotHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+      "evidenceSnippetOriginal": "●授業によっては生成AIの使用自体を制限・禁止する場合があります。",
+      "evidenceSnippetDisplay": "Some classes may restrict or prohibit the use of generative AI itself.",
+      "evidenceLocator": "Japanese announcement, student guidance bullet list",
+      "evidenceType": "official_source",
+      "relevance": 0.96,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+        "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kobe-university.json",
+        "publisher": "Kobe University",
+        "retrievedAt": "2026-05-16T23:43:00.000Z",
+        "snapshotHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-kobe-genai-privacy-risk",
+      "claimId": "claim-kobe-genai-privacy-risk",
+      "sourceSnapshotId": "ss-kobe-genai-ja-announcement",
+      "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "finalUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+      "sourceTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+      "sourceLanguage": "ja",
+      "snapshotHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+      "evidenceSnippetOriginal": "●機密性の高い情報や個人情報などを生成AIに入力することで、それらの情報が流出・漏洩する可能性があります。",
+      "evidenceSnippetDisplay": "Entering highly confidential or personal information into generative AI may lead to leakage or disclosure.",
+      "evidenceLocator": "Japanese announcement, general risk bullet list",
+      "evidenceType": "official_source",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "ChatGPTをはじめとする生成AIの利用に関して | 国立大学法人 神戸大学 (Kobe University)",
+        "sourceUrl": "https://www.kobe-u.ac.jp/ja/announcement/20240321-63519/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kobe-university.json",
+        "publisher": "Kobe University",
+        "retrievedAt": "2026-05-16T23:43:00.000Z",
+        "snapshotHash": "0bbc89932c81d52ba603d763aa8ea1aa95bab5505077743659e50493de6bbc29",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-kobe-genai-plagiarism-risk",
+      "claimId": "claim-kobe-genai-plagiarism-risk",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow student-facing academic-integrity claim; the source says may be regarded as plagiarism, so the claim avoids stronger mandatory wording.",
+      "decidedAt": "2026-05-16T23:46:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-kobe-genai-class-restrictions",
+      "claimId": "claim-kobe-genai-class-restrictions",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow AI-tool-treatment claim; the source says restrictions or prohibitions may apply depending on the class.",
+      "decidedAt": "2026-05-16T23:46:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-kobe-genai-privacy-risk",
+      "claimId": "claim-kobe-genai-privacy-risk",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow privacy risk claim tied to the university announcement's personal and confidential information warning.",
+      "decidedAt": "2026-05-16T23:46:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kobe-university-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-kobe-university-20260516",
+      "title": "Kobe University staged generative AI source review",
+      "generatedAt": "2026-05-16T23:47:00.000Z",
+      "draftPath": "content/reports/2026-05/kobe-university-generative-ai-staged-review.mdx",
+      "summary": "Kobe University's official student-facing announcement states that unchanged generative AI text in reports may be regarded as plagiarism, that some classes may restrict or prohibit generative AI use, and that entering confidential or personal information into generative AI may create leakage or disclosure risk. An official English version was also collected, while faculty-level materials were kept out of university-wide claims.",
+      "referencedClaimIds": [
+        "claim-kobe-genai-plagiarism-risk",
+        "claim-kobe-genai-class-restrictions",
+        "claim-kobe-genai-privacy-risk"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/kobe-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The staged claims are based on Kobe University's 2023 student-facing announcement and should not be read as a full current AI governance framework.",
+        "Faculty-level report-writing materials were discovered but not used to make university-wide claims."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
