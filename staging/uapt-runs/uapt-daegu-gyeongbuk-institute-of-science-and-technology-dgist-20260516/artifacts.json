@@ -1,0 +1,374 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-dgist-20260516",
+      "entityType": "university",
+      "entitySlug": "daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+      "startedAt": "2026-05-16T14:38:00.000Z",
+      "endedAt": "2026-05-16T14:52:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:dgist.ac.kr DGIST 생성형 AI ChatGPT 인공지능 가이드라인 학습윤리 교수학습",
+          "domain": "dgist.ac.kr",
+          "resultCount": 0,
+          "notes": "Firecrawl search returned no official DGIST result for central generative-AI guidance or policy wording."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:dgist.ac.kr DGIST ChatGPT AI policy guideline education students",
+          "domain": "dgist.ac.kr",
+          "resultCount": 0,
+          "notes": "Firecrawl search returned no English official DGIST result for AI policy, guidance, or student/faculty guidance."
+        },
+        {
+          "method": "public_web_search",
+          "query": "DGIST 생성형 AI ChatGPT 가이드라인",
+          "resultCount": 10,
+          "notes": "General Firecrawl search found national guidelines, other universities, a DGIST-related Tistory article, and no central DGIST policy source."
+        },
+        {
+          "method": "site_search",
+          "query": "DGIST library ChatGPT Statista Research AI",
+          "domain": "library.dgist.ac.kr",
+          "resultCount": 1,
+          "notes": "The official DGIST Library database page contains a narrow AI-related database entry for Statista Research AI."
+        },
+        {
+          "method": "site_search",
+          "query": "DGIST ChatGPT curation",
+          "domain": "curation.dgist.ac.kr",
+          "resultCount": 1,
+          "notes": "The official D-Curation page is a ChatGPT book-recommendation page, not institutional policy or guidance."
+        },
+        {
+          "method": "site_search",
+          "query": "DGIST Scholar 생성형 인공지능 윤리 가이드",
+          "domain": "scholar.dgist.ac.kr",
+          "resultCount": 1,
+          "notes": "DGIST Scholar hosts a research article abstract about researchers' generative-AI usage behavior, not DGIST policy."
+        }
+      ],
+      "noSourceEscalationCompleted": true,
+      "candidateIds": [
+        "sc-dgist-library-webdb-statista",
+        "sc-dgist-curation-chatgpt-books",
+        "sc-dgist-scholar-genai-writing-article"
+      ],
+      "rejectionIds": [
+        "sr-dgist-curation-chatgpt-books-low-specificity",
+        "sr-dgist-scholar-genai-writing-research-only"
+      ],
+      "summary": "Official-domain discovery did not locate a central DGIST generative-AI policy or student/faculty guidance page. The only verified source used for a claim is the official DGIST Library database page's narrow Statista Research AI entry; two other official AI-related sources were rejected as book curation or research-only material."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-dgist-library-webdb-statista",
+      "entityType": "university",
+      "entitySlug": "daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+      "sourceUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+      "finalUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+      "sourceTitle": "전자자료-데이터베이스-알파벳 | DGIST 전자도서관",
+      "sourceLanguage": "ko",
+      "sourceType": "approved_tools",
+      "discoveryMethod": "site_search",
+      "queryUsed": "DGIST library ChatGPT Statista Research AI",
+      "discoveredAt": "2026-05-16T14:42:43.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.72,
+      "policySpecificityScore": 0.58,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T14:45:40.000Z",
+      "verificationNotes": "Official DGIST Library database listing with a narrow AI-related database entry for Statista Research AI and DGIST institutional email/account access wording.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-dgist-curation-chatgpt-books",
+      "entityType": "university",
+      "entitySlug": "daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+      "sourceUrl": "https://curation.dgist.ac.kr/curation/p/0QgVp7SJbvyChA",
+      "finalUrl": "https://curation.dgist.ac.kr/curation/p/0QgVp7SJbvyChA",
+      "sourceTitle": "요즘 난리난(!) ChatGPT 추천도서",
+      "sourceLanguage": "ko",
+      "sourceType": "other",
+      "discoveryMethod": "site_search",
+      "queryUsed": "DGIST ChatGPT curation",
+      "discoveredAt": "2026-05-16T14:42:43.000Z",
+      "officialDomainConfidence": 0.96,
+      "aiRelevanceScore": 0.78,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-16T14:43:20.000Z",
+      "verificationNotes": "Official D-Curation page discusses ChatGPT books for DGIST members but does not state a policy, guidance rule, or institutional AI-use position.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-dgist-scholar-genai-writing-article",
+      "entityType": "university",
+      "entitySlug": "daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+      "sourceUrl": "https://scholar.dgist.ac.kr/handle/20.500.11750/58592",
+      "finalUrl": "https://scholar.dgist.ac.kr/handle/20.500.11750/58592",
+      "sourceTitle": "학술 논문 작성에서의 생성형 AI 서비스 활용 행태에 대한 탐색적 연구",
+      "sourceLanguage": "ko",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "site_search",
+      "queryUsed": "DGIST Scholar 생성형 인공지능 윤리 가이드",
+      "discoveredAt": "2026-05-16T14:43:03.000Z",
+      "officialDomainConfidence": 0.97,
+      "aiRelevanceScore": 0.82,
+      "policySpecificityScore": 0.22,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-16T14:43:40.000Z",
+      "verificationNotes": "Official DGIST Scholar repository page for a journal article abstract about generative-AI use behavior; it is research content, not DGIST policy or institutional guidance.",
+      "rejectionReason": "research_showcase_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-dgist-curation-chatgpt-books-low-specificity",
+      "sourceCandidateId": "sc-dgist-curation-chatgpt-books",
+      "entityType": "university",
+      "entitySlug": "daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+      "sourceUrl": "https://curation.dgist.ac.kr/curation/p/0QgVp7SJbvyChA",
+      "finalUrl": "https://curation.dgist.ac.kr/curation/p/0QgVp7SJbvyChA",
+      "rejectedAt": "2026-05-16T14:43:20.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "인공지능 하면 생각나는 DGIST 구성원들을 위해 ChatGPT 추천도서를 소개해드립니다.",
+      "notes": "The page is official and AI-related, but it recommends books rather than stating DGIST policy or guidance."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-dgist-scholar-genai-writing-research-only",
+      "sourceCandidateId": "sc-dgist-scholar-genai-writing-article",
+      "entityType": "university",
+      "entitySlug": "daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+      "sourceUrl": "https://scholar.dgist.ac.kr/handle/20.500.11750/58592",
+      "finalUrl": "https://scholar.dgist.ac.kr/handle/20.500.11750/58592",
+      "rejectedAt": "2026-05-16T14:43:40.000Z",
+      "rejectionReason": "research_showcase_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "본 연구는 다양한 학문 분야 연구자들이 논문 작성 과정에서 생성형 인공지능(Generative AI) 도구를 어떻게 활용하고 있는지를 분석하고, 그 활용 행태에 영향을 미치는 요인을 탐색하였다.",
+      "notes": "The source is an article abstract in DGIST Scholar, not a DGIST policy, library guide, or instruction to students/faculty."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "cp-dgist-20260516",
+      "createdAt": "2026-05-16T14:52:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+          "sourceCandidateId": "sc-dgist-library-webdb-statista",
+          "sourceUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+          "sourceTitle": "전자자료-데이터베이스-알파벳 | DGIST 전자도서관",
+          "sourceLanguage": "ko",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "library database access",
+            "Research AI service",
+            "DGIST email account access"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official sources support only narrow source-attributed claims.",
+        "Do not infer a central DGIST generative-AI policy from book curation or research repository pages.",
+        "Record no-source limitations for central AI policy or student/faculty guidance if no public official source is found."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-dgist-library-webdb-firecrawl",
+      "sourceCandidateId": "sc-dgist-library-webdb-statista",
+      "sourceUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+      "finalUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+      "attemptedAt": "2026-05-16T14:45:40.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 12575,
+      "contentHash": "71853e83ab9f055e8db2aa2b3408beaa9a40728ee114484883ff09e00b60a0bb",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516/snapshots/library-webdb-text"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-dgist-curation-chatgpt-books-http",
+      "sourceCandidateId": "sc-dgist-curation-chatgpt-books",
+      "sourceUrl": "https://curation.dgist.ac.kr/curation/p/0QgVp7SJbvyChA",
+      "finalUrl": "https://curation.dgist.ac.kr/curation/p/0QgVp7SJbvyChA",
+      "attemptedAt": "2026-05-16T14:42:43.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1001,
+      "contentHash": "671aea00dc30254ef5510d99ba6efc4a1a0ec63627f0f487564626ca7e871cf5"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-dgist-scholar-genai-writing-http",
+      "sourceCandidateId": "sc-dgist-scholar-genai-writing-article",
+      "sourceUrl": "https://scholar.dgist.ac.kr/handle/20.500.11750/58592",
+      "finalUrl": "https://scholar.dgist.ac.kr/handle/20.500.11750/58592",
+      "attemptedAt": "2026-05-16T14:43:03.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 647,
+      "contentHash": "48c6f8e958af29785ad646bb5aa347adca6abe779ec9b35272ee5be653f91d2d"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-dgist-library-webdb",
+      "sourceCandidateId": "sc-dgist-library-webdb-statista",
+      "fetchAttemptId": "fa-dgist-library-webdb-firecrawl",
+      "sourceUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+      "finalUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+      "sourceTitle": "전자자료-데이터베이스-알파벳 | DGIST 전자도서관",
+      "sourceLanguage": "ko",
+      "contentHash": "71853e83ab9f055e8db2aa2b3408beaa9a40728ee114484883ff09e00b60a0bb",
+      "fetchedAt": "2026-05-16T14:45:40.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516/snapshots/library-webdb-text",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-dgist-library-statista-research-ai",
+      "entityType": "university",
+      "entitySlug": "daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+      "claimType": "ai_tool_treatment",
+      "claimText": "DGIST Library's database page states that Statista provides a generative-AI-based Research AI search service and that account creation should use a DGIST institutional email address.",
+      "normalizedValue": "library_database_statista_research_ai_with_dgist_email_account",
+      "sourceLanguage": "ko",
+      "confidence": 0.84,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-dgist-library-statista-research-ai"
+      ],
+      "citation": {
+        "citationTitle": "전자자료-데이터베이스-알파벳 | DGIST 전자도서관",
+        "sourceUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/daegu-gyeongbuk-institute-of-science-and-technology-dgist.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+        "publisher": "DGIST Library",
+        "retrievedAt": "2026-05-16T14:45:40.000Z",
+        "snapshotHash": "71853e83ab9f055e8db2aa2b3408beaa9a40728ee114484883ff09e00b60a0bb",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-dgist-library-statista-research-ai",
+      "claimId": "claim-dgist-library-statista-research-ai",
+      "sourceSnapshotId": "ss-dgist-library-webdb",
+      "sourceUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+      "finalUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+      "sourceTitle": "전자자료-데이터베이스-알파벳 | DGIST 전자도서관",
+      "sourceLanguage": "ko",
+      "snapshotHash": "71853e83ab9f055e8db2aa2b3408beaa9a40728ee114484883ff09e00b60a0bb",
+      "evidenceSnippetOriginal": "Statista 새창 내용 및 이용방법 150만 건 이상의 글로벌 통계 & 데이터를 자유롭게 이용하세요! - 170개 산업과 150개 국가를 아우르는 약 8만 개의 데이터 제공 - 생성형 AI 기술 기반의 자료 검색 서비스인 'Research AI' 서비스 제공 🙎‍♂️ 캠퍼스 IP 자동 인증. 계정 생성 시 반드시 기관 이메일(*@dgist.ac.kr)로 가입하세요.",
+      "evidenceSnippetDisplay": "The DGIST Library Statista entry says it provides a generative-AI-based Research AI search service and tells users to create accounts with a DGIST institutional email address.",
+      "evidenceLocator": "Database list entry for Statista",
+      "evidenceType": "official_source",
+      "relevance": 0.86,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "전자자료-데이터베이스-알파벳 | DGIST 전자도서관",
+        "sourceUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/daegu-gyeongbuk-institute-of-science-and-technology-dgist.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/daegu-gyeongbuk-institute-of-science-and-technology-dgist",
+        "publisher": "DGIST Library",
+        "retrievedAt": "2026-05-16T14:45:40.000Z",
+        "snapshotHash": "71853e83ab9f055e8db2aa2b3408beaa9a40728ee114484883ff09e00b60a0bb",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-dgist-library-statista-research-ai",
+      "claimId": "claim-dgist-library-statista-research-ai",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approve only as a narrow DGIST Library database/resource-access claim. Do not treat this as a central DGIST AI policy, student guidance, or faculty teaching rule.",
+      "decidedAt": "2026-05-16T14:52:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-daegu-gyeongbuk-institute-of-science-and-technology-dgist-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-dgist-20260516",
+      "title": "DGIST AI Policy Source Discovery Draft",
+      "generatedAt": "2026-05-16T14:52:00.000Z",
+      "draftPath": "content/reports/daegu-gyeongbuk-institute-of-science-and-technology-dgist-ai-policy-20260516.mdx",
+      "summary": "Official-source discovery for DGIST did not locate a public central generative-AI policy or student/faculty AI-use guidance page. The staged claim is limited to DGIST Library's database listing, which says Statista provides a generative-AI-based Research AI search service and instructs account creation with a DGIST institutional email. Official AI-related book-curation and repository research pages were rejected as insufficient for policy claims.",
+      "referencedClaimIds": [
+        "claim-dgist-library-statista-research-ai"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/daegu-gyeongbuk-institute-of-science-and-technology-dgist.json"
+      ],
+      "limitations": [
+        "This draft is metadata and source attribution only; it is not legal, academic integrity, or educational advice.",
+        "No public official DGIST source was found for a central generative-AI policy, student assignment rule, or faculty teaching guidance.",
+        "The Statista Research AI claim is an official DGIST Library database/resource-access statement and should not be broadened into a university-wide AI-use policy."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
