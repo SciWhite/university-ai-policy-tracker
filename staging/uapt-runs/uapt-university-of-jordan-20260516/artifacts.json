@@ -1,0 +1,328 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-jordan-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uj-20260516",
+      "entityType": "university",
+      "entitySlug": "university-of-jordan",
+      "startedAt": "2026-05-16T12:45:00.000Z",
+      "endedAt": "2026-05-16T13:02:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:ju.edu.jo OR site:elearning.ju.edu.jo University of Jordan artificial intelligence ChatGPT policy students teaching assessment",
+          "domain": "ju.edu.jo",
+          "resultCount": 5,
+          "notes": "Firecrawl search primarily returned UJ-hosted research papers, journal records, and one official course syllabus rather than institutional AI policy pages."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:ju.edu.jo \"artificial intelligence\" \"policy\" \"University of Jordan\" -research -journal",
+          "domain": "ju.edu.jo",
+          "resultCount": 6,
+          "notes": "Search surfaced an official School of Engineering course syllabus for Application of Artificial Intelligence in Chemical Engineering and several course or project materials; no central public AI policy page was found."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.ju.edu.jo",
+          "resultCount": 1,
+          "notes": "The canonical homepage was reachable and robots.txt returned a SharePoint not-found page rather than crawler rules."
+        }
+      ],
+      "noSourceEscalationCompleted": true,
+      "candidateIds": [
+        "sc-uj-ai-chemical-engineering-syllabus",
+        "sc-uj-chatgpt-research-showcase",
+        "sc-uj-homepage"
+      ],
+      "rejectionIds": [
+        "sr-uj-chatgpt-research-showcase",
+        "sr-uj-homepage"
+      ],
+      "summary": "Official-domain discovery did not find a public University of Jordan institutional AI policy or generative-AI assessment policy. The only usable source for a staged claim is an official School of Engineering course syllabus for an AI course, so the claim is deliberately scoped to that course-level syllabus and not broadened to university-wide policy."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "cp-uj-20260516",
+      "createdAt": "2026-05-16T13:02:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-jordan",
+          "sourceCandidateId": "sc-uj-ai-chemical-engineering-syllabus",
+          "sourceUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+          "sourceTitle": "Application of Artificial Intelligence in Chemical Engineering",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "course-level AI syllabus",
+            "course policies",
+            "honesty policy heading"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after preserving a narrow course-level source_status claim from the official syllabus.",
+        "Do not infer a university-wide AI policy from research, journal, project, or course materials.",
+        "Record official research and generic homepage sources as rejected for policy-specific claims."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uj-ai-chemical-engineering-syllabus",
+      "entityType": "university",
+      "entitySlug": "university-of-jordan",
+      "sourceUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+      "finalUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+      "sourceTitle": "Application of Artificial Intelligence in Chemical Engineering",
+      "sourceLanguage": "en",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:ju.edu.jo \"artificial intelligence\" \"policy\" \"University of Jordan\" -research -journal",
+      "discoveredAt": "2026-05-16T12:50:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.86,
+      "policySpecificityScore": 0.45,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T12:55:00.000Z",
+      "verificationNotes": "Official School of Engineering PDF hosted on engineering.ju.edu.jo. It is an AI course syllabus that includes a Course Policies section, but it is not an institutional AI policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uj-chatgpt-research-showcase",
+      "entityType": "university",
+      "entitySlug": "university-of-jordan",
+      "sourceUrl": "https://research.ju.edu.jo/research/groups/DRCI/Lists/FeaturedPublications/Disp_form.aspx?ID=5",
+      "finalUrl": "https://research.ju.edu.jo/research/groups/DRCI/Lists/FeaturedPublications/Disp_form.aspx?ID=5",
+      "sourceTitle": "Students' perception of using ChatGPT in counseling and mental health education: the benefits and challenges",
+      "sourceLanguage": "en",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:ju.edu.jo \"ChatGPT\" \"University of Jordan\"",
+      "discoveredAt": "2026-05-16T12:49:00.000Z",
+      "officialDomainConfidence": 0.96,
+      "aiRelevanceScore": 0.82,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-16T12:57:00.000Z",
+      "verificationNotes": "Official UJ research-group page about a ChatGPT study; it is research-showcase content and not university guidance or policy.",
+      "rejectionReason": "research_showcase_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uj-homepage",
+      "entityType": "university",
+      "entitySlug": "university-of-jordan",
+      "sourceUrl": "https://www.ju.edu.jo/",
+      "finalUrl": "https://www.ju.edu.jo/Home.aspx",
+      "sourceTitle": "The University of Jordan",
+      "sourceLanguage": "en",
+      "sourceType": "generic_or_unclear",
+      "discoveryMethod": "canonical_domain",
+      "discoveredAt": "2026-05-16T12:48:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.05,
+      "policySpecificityScore": 0.01,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-16T12:52:00.000Z",
+      "verificationNotes": "Canonical homepage confirms the official domain but does not provide AI policy evidence.",
+      "rejectionReason": "generic_home_page",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-uj-chatgpt-research-showcase",
+      "sourceCandidateId": "sc-uj-chatgpt-research-showcase",
+      "entityType": "university",
+      "entitySlug": "university-of-jordan",
+      "sourceUrl": "https://research.ju.edu.jo/research/groups/DRCI/Lists/FeaturedPublications/Disp_form.aspx?ID=5",
+      "finalUrl": "https://research.ju.edu.jo/research/groups/DRCI/Lists/FeaturedPublications/Disp_form.aspx?ID=5",
+      "rejectedAt": "2026-05-16T12:57:00.000Z",
+      "rejectionReason": "research_showcase_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Students' perception of using ChatGPT in counseling and mental health education: the benefits and challenges",
+      "notes": "The page describes a featured publication and was not used as policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-uj-homepage",
+      "sourceCandidateId": "sc-uj-homepage",
+      "entityType": "university",
+      "entitySlug": "university-of-jordan",
+      "sourceUrl": "https://www.ju.edu.jo/",
+      "finalUrl": "https://www.ju.edu.jo/Home.aspx",
+      "rejectedAt": "2026-05-16T12:52:00.000Z",
+      "rejectionReason": "generic_home_page",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "The University of Jordan",
+      "notes": "The homepage was useful for official-domain confirmation but not for AI policy claims."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uj-ai-chemical-engineering-syllabus",
+      "sourceCandidateId": "sc-uj-ai-chemical-engineering-syllabus",
+      "sourceUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+      "finalUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+      "attemptedAt": "2026-05-16T12:55:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3260,
+      "contentHash": "3883bbe7c3b88cadd82a8584988f1cfa90502e4867f4b6b73d0a79cb050562c7",
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-jordan-20260516/normalized/sc-uj-ai-chemical-engineering-syllabus.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uj-robots",
+      "sourceUrl": "https://www.ju.edu.jo/robots.txt",
+      "finalUrl": "https://www.ju.edu.jo/Pages/PageNotFoundError.aspx?requestUrl=https://www.ju.edu.jo/robots.txt",
+      "attemptedAt": "2026-05-16T12:48:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1040,
+      "contentHash": "a1af6cf5ef4d7bd60c77340900c7d69900de2cc25d774a08c8f89a04149c1313"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-uj-ai-chemical-engineering-syllabus",
+      "sourceCandidateId": "sc-uj-ai-chemical-engineering-syllabus",
+      "fetchAttemptId": "fa-uj-ai-chemical-engineering-syllabus",
+      "sourceUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+      "finalUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+      "sourceTitle": "Application of Artificial Intelligence in Chemical Engineering",
+      "sourceLanguage": "en",
+      "contentHash": "3883bbe7c3b88cadd82a8584988f1cfa90502e4867f4b6b73d0a79cb050562c7",
+      "fetchedAt": "2026-05-16T12:55:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-jordan-20260516/normalized/sc-uj-ai-chemical-engineering-syllabus.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-uj-ai-course-syllabus-source-status",
+      "entityType": "university",
+      "entitySlug": "university-of-jordan",
+      "claimType": "source_status",
+      "claimText": "The University of Jordan has an official School of Engineering course syllabus for 'Application of Artificial Intelligence in Chemical Engineering' that includes a Course Policies section with a heading for honesty policy regarding cheating, plagiarism, and misbehavior; this source is course-level syllabus material and not a university-wide AI policy.",
+      "normalizedValue": "course_level_ai_syllabus_not_institutional_policy",
+      "sourceLanguage": "en",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uj-ai-course-syllabus-source-status"
+      ],
+      "citation": {
+        "citationTitle": "Application of Artificial Intelligence in Chemical Engineering",
+        "sourceUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+        "canonicalUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+        "publisher": "The University of Jordan, School of Engineering",
+        "retrievedAt": "2026-05-16T12:55:00.000Z",
+        "snapshotHash": "3883bbe7c3b88cadd82a8584988f1cfa90502e4867f4b6b73d0a79cb050562c7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uj-ai-course-syllabus-source-status",
+      "claimId": "claim-uj-ai-course-syllabus-source-status",
+      "sourceSnapshotId": "ss-uj-ai-chemical-engineering-syllabus",
+      "sourceUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+      "finalUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+      "sourceTitle": "Application of Artificial Intelligence in Chemical Engineering",
+      "sourceLanguage": "en",
+      "snapshotHash": "3883bbe7c3b88cadd82a8584988f1cfa90502e4867f4b6b73d0a79cb050562c7",
+      "evidenceSnippetOriginal": "Course title Application of Artificial Intelligence in Chemical Engineering ... Awarding institution The University of Jordan ... School School of Engineering ... 24 Course Policies: A- Attendance policies: B- Absences from exams and submitting assignments on time: C- Health and safety procedures: D- Honesty policy regarding cheating, plagiarism, misbehavior: E- Grading policy:",
+      "evidenceLocator": "PDF text, pages 1 and 6, course title and Course Policies section",
+      "evidenceType": "pdf",
+      "relevance": 0.84,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Application of Artificial Intelligence in Chemical Engineering",
+        "sourceUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+        "canonicalUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+        "publisher": "The University of Jordan, School of Engineering",
+        "retrievedAt": "2026-05-16T12:55:00.000Z",
+        "snapshotHash": "3883bbe7c3b88cadd82a8584988f1cfa90502e4867f4b6b73d0a79cb050562c7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-uj-ai-course-syllabus-source-status",
+      "claimId": "claim-uj-ai-course-syllabus-source-status",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved only as a narrow source-status claim about an official course-level syllabus. The wording explicitly avoids treating the syllabus, research pages, or homepage as university-wide AI policy.",
+      "decidedAt": "2026-05-16T13:04:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-jordan-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-uj-20260516",
+      "title": "University of Jordan AI Policy Source Review",
+      "generatedAt": "2026-05-16T13:05:00.000Z",
+      "draftPath": "content/reports/university-of-jordan-ai-policy-source-review.mdx",
+      "summary": "OpenClaw official-domain discovery for the University of Jordan found public AI-related research and course materials, but no reliable public institutional AI policy source. The staged claim is limited to an official School of Engineering AI course syllabus that includes a Course Policies section and does not establish university-wide AI governance.",
+      "referencedClaimIds": [
+        "claim-uj-ai-course-syllabus-source-status"
+      ],
+      "publicJsonLinks": [],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No public University of Jordan institutional generative-AI policy was found in this run.",
+        "Course, research, journal, and homepage sources were not broadened into university-wide policy claims."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
