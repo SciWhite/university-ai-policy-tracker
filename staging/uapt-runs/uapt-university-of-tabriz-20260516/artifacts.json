@@ -1,0 +1,283 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-tabriz-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "sdt-university-of-tabriz-20260516",
+      "entityType": "university",
+      "entitySlug": "university-of-tabriz",
+      "startedAt": "2026-05-17T03:20:00.000Z",
+      "endedAt": "2026-05-17T03:27:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:tabrizu.ac.ir University of Tabriz artificial intelligence policy OR AI OR هوش مصنوعی",
+          "domain": "tabrizu.ac.ir",
+          "resultCount": 5,
+          "notes": "Search returned official University of Tabriz journal and PDF results about artificial intelligence, not a central institutional AI policy."
+        },
+        {
+          "method": "multilingual_query",
+          "query": "site:tabrizu.ac.ir \"هوش مصنوعی\" \"دانشگاه تبریز\" -journals -article_ -pdf",
+          "domain": "tabrizu.ac.ir",
+          "resultCount": 10,
+          "notes": "Persian search returned official article pages, including a University of Tabriz journal page on AI-based learning and technostress."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "tabrizu.ac.ir",
+          "resultCount": 0,
+          "notes": "A direct check of the central English site timed out within the crawl limit and was not used as evidence."
+        }
+      ],
+      "noSourceEscalationCompleted": true,
+      "candidateIds": [
+        "sc-tabriz-jkrs-21139-fa",
+        "sc-tabriz-main-en"
+      ],
+      "rejectionIds": [
+        "sr-tabriz-main-en-timeout"
+      ],
+      "summary": "Official-source discovery found University of Tabriz journal content about artificial intelligence in higher education. No official central AI use policy was verified in this crawl, so the staged claim is limited to source status."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-tabriz-jkrs-21139-fa",
+      "entityType": "university",
+      "entitySlug": "university-of-tabriz",
+      "sourceUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+      "finalUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+      "sourceTitle": "تکنواسترس: چالشی نوظهور در عصر یادگیری هوش مصنوعی در میان اعضای هیات علمی دانشگاه",
+      "sourceLanguage": "fa",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "multilingual_query",
+      "queryUsed": "site:tabrizu.ac.ir \"هوش مصنوعی\" \"دانشگاه تبریز\" -journals -article_ -pdf",
+      "discoveredAt": "2026-05-17T03:22:00.000Z",
+      "officialDomainConfidence": 0.95,
+      "aiRelevanceScore": 0.86,
+      "policySpecificityScore": 0.42,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-17T03:24:00.000Z",
+      "verificationNotes": "Official University of Tabriz journal page; relevant only for source-status context because it is a research article, not an institutional policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-tabriz-main-en",
+      "entityType": "university",
+      "entitySlug": "university-of-tabriz",
+      "sourceUrl": "https://tabrizu.ac.ir/en",
+      "sourceTitle": "University of Tabriz English site",
+      "sourceType": "generic_or_unclear",
+      "discoveryMethod": "canonical_domain",
+      "discoveredAt": "2026-05-17T03:24:00.000Z",
+      "officialDomainConfidence": 0.9,
+      "aiRelevanceScore": 0.05,
+      "policySpecificityScore": 0.05,
+      "verificationStatus": "rejected",
+      "rejectionReason": "inaccessible",
+      "verificationNotes": "Direct HTTP check timed out within 15 seconds and no AI policy text was retrieved.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-tabriz-main-en-timeout",
+      "sourceCandidateId": "sc-tabriz-main-en",
+      "entityType": "university",
+      "entitySlug": "university-of-tabriz",
+      "sourceUrl": "https://tabrizu.ac.ir/en",
+      "rejectedAt": "2026-05-17T03:25:00.000Z",
+      "rejectionReason": "inaccessible",
+      "checkedBy": "openclaw-codex-worker",
+      "notes": "The central English site did not return headers within a 15 second polite HTTP check; it was not used as evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "cp-university-of-tabriz-20260516",
+      "createdAt": "2026-05-17T03:23:00.000Z",
+      "createdBy": "openclaw-codex-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-tabriz",
+          "sourceCandidateId": "sc-tabriz-jkrs-21139-fa",
+          "sourceUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+          "sourceTitle": "تکنواسترس: چالشی نوظهور در عصر یادگیری هوش مصنوعی در میان اعضای هیات علمی دانشگاه",
+          "sourceLanguage": "fa",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "source status",
+            "artificial intelligence in higher education",
+            "research article not institutional policy"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after one verified official source-status page because no binding institutional AI policy was verified.",
+        "Do not infer university-wide AI rules from research or journal content."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-tabriz-jkrs-21139-fa-firecrawl",
+      "sourceCandidateId": "sc-tabriz-jkrs-21139-fa",
+      "sourceUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+      "finalUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+      "attemptedAt": "2026-05-17T03:23:30.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3302,
+      "contentHash": "0b877a1d3217f8c4ac5253693f31dbe46fdf7b4fc59634a22a97a890ab19af43",
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-university-of-tabriz-20260516/ss-tabriz-jkrs-21139-fa"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-tabriz-main-en-http-timeout",
+      "sourceCandidateId": "sc-tabriz-main-en",
+      "sourceUrl": "https://tabrizu.ac.ir/en",
+      "attemptedAt": "2026-05-17T03:24:30.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "robotsAllowed": true,
+      "outcome": "error",
+      "errorReason": "Connection timed out after 15 seconds during a polite HEAD request.",
+      "durationMs": 15002
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-tabriz-jkrs-21139-fa",
+      "sourceCandidateId": "sc-tabriz-jkrs-21139-fa",
+      "fetchAttemptId": "fa-tabriz-jkrs-21139-fa-firecrawl",
+      "sourceUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+      "finalUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+      "sourceTitle": "تکنواسترس: چالشی نوظهور در عصر یادگیری هوش مصنوعی در میان اعضای هیات علمی دانشگاه",
+      "sourceLanguage": "fa",
+      "contentHash": "0b877a1d3217f8c4ac5253693f31dbe46fdf7b4fc59634a22a97a890ab19af43",
+      "fetchedAt": "2026-05-17T03:23:30.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-university-of-tabriz-20260516/ss-tabriz-jkrs-21139-fa",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-tabriz-source-status-ai-research-20260516",
+      "entityType": "university",
+      "entitySlug": "university-of-tabriz",
+      "claimType": "source_status",
+      "claimText": "The official-source crawl for University of Tabriz found an official University of Tabriz journal article about AI-based learning and faculty technostress, but this source is a research article and does not establish an institution-wide AI policy.",
+      "normalizedValue": "official_ai_research_article_not_institutional_policy",
+      "sourceLanguage": "fa",
+      "confidence": 0.74,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-tabriz-jkrs-21139-fa-source-status"
+      ],
+      "citation": {
+        "citationTitle": "تکنواسترس: چالشی نوظهور در عصر یادگیری هوش مصنوعی در میان اعضای هیات علمی دانشگاه",
+        "sourceUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-tabriz.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tabriz",
+        "publisher": "دانشگاه تبریز",
+        "retrievedAt": "2026-05-17T03:23:30.000Z",
+        "snapshotHash": "0b877a1d3217f8c4ac5253693f31dbe46fdf7b4fc59634a22a97a890ab19af43",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-tabriz-jkrs-21139-fa-source-status",
+      "claimId": "claim-tabriz-source-status-ai-research-20260516",
+      "sourceSnapshotId": "ss-tabriz-jkrs-21139-fa",
+      "sourceUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+      "finalUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+      "sourceTitle": "تکنواسترس: چالشی نوظهور در عصر یادگیری هوش مصنوعی در میان اعضای هیات علمی دانشگاه",
+      "sourceLanguage": "fa",
+      "snapshotHash": "0b877a1d3217f8c4ac5253693f31dbe46fdf7b4fc59634a22a97a890ab19af43",
+      "evidenceSnippetOriginal": "نوع مقاله : مقاله پژوهشی. هدف: پیشرفت‌های سریع فناوری‌های مبتنی بر هوش مصنوعی در آموزش عالی، ضمن ایجاد فرصت‌های نوین، چالش‌هایی همچون تکنواسترس برای اساتید دانشگاه به همراه داشته است.",
+      "evidenceSnippetDisplay": "The page labels the item as a research article and says rapid AI-based technologies in higher education create opportunities and technostress challenges for university faculty.",
+      "evidenceLocator": "Article type and abstract",
+      "evidenceType": "official_source",
+      "relevance": 0.76,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "تکنواسترس: چالشی نوظهور در عصر یادگیری هوش مصنوعی در میان اعضای هیات علمی دانشگاه",
+        "sourceUrl": "https://jkrs.tabrizu.ac.ir/article_21139.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-tabriz.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-tabriz",
+        "publisher": "دانشگاه تبریز",
+        "retrievedAt": "2026-05-17T03:23:30.000Z",
+        "snapshotHash": "0b877a1d3217f8c4ac5253693f31dbe46fdf7b4fc59634a22a97a890ab19af43",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-tabriz-source-status-ai-research-20260516",
+      "claimId": "claim-tabriz-source-status-ai-research-20260516",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-codex-worker",
+      "notes": "Approved as a narrow source-status claim only. The source is an official University of Tabriz journal article and should not be promoted as an institutional AI policy.",
+      "decidedAt": "2026-05-17T03:27:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-tabriz-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-university-of-tabriz-20260516",
+      "title": "University of Tabriz AI Policy Source Status",
+      "generatedAt": "2026-05-17T03:27:30.000Z",
+      "draftPath": "content/reports/university-of-tabriz-20260516.mdx",
+      "summary": "Official-source discovery for University of Tabriz found an official journal research article on AI-based learning and faculty technostress. The crawl did not verify a central institution-wide AI policy, and the staged claim is limited to that source-status finding.",
+      "referencedClaimIds": [
+        "claim-tabriz-source-status-ai-research-20260516"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-tabriz.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The verified source is a research article on an official University of Tabriz journal site, not a binding institutional policy."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

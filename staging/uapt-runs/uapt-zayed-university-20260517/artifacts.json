@@ -1,0 +1,349 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-zayed-university-20260517",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-zayed-university-20260517",
+      "entityType": "university",
+      "entitySlug": "zayed-university",
+      "startedAt": "2026-05-17T04:05:00.000Z",
+      "endedAt": "2026-05-17T04:13:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:zu.ac.ae Zayed University (ChatGPT OR \"generative AI\" OR \"artificial intelligence\" OR AI) (policy OR guidelines OR academic integrity OR assessment OR students OR faculty)",
+          "domain": "zu.ac.ae",
+          "resultCount": 5,
+          "notes": "Firecrawl search returned mostly ZU Scholars research records plus one official Zayed University June 2025 news page about AI literacy, faculty training, and Digital Education Council initiatives."
+        },
+        {
+          "method": "site_search",
+          "query": "site:zu.ac.ae/main/en Zayed University AI policy students academic integrity generative AI",
+          "domain": "www.zu.ac.ae",
+          "resultCount": 5,
+          "notes": "Official-domain search found newsletters, conference/research PDFs, a catalog, and faculty profile content, but no dedicated university AI policy page."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.zu.ac.ae",
+          "resultCount": 1,
+          "notes": "The public news page was fetched successfully over HTTP and is not disallowed by the retrieved robots.txt rules."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "zuscholars.zu.ac.ae",
+          "resultCount": 1,
+          "notes": "The ZU Scholars article page was checked as an official repository record and rejected as primary evidence because it is a research publication record, not institutional policy or student/faculty guidance."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-zayed-embrace-ai-20250630",
+        "sc-zayed-scholars-chatgpt-integrity-2025"
+      ],
+      "rejectionIds": [
+        "sr-zayed-scholars-chatgpt-integrity-research-only"
+      ],
+      "summary": "Official-source discovery found one official Zayed University news/advisory page supporting narrow claims about AI literacy programs and faculty training. Searches did not identify a dedicated university-wide AI policy page; research and conference records were treated as limited or rejected for policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-zayed-embrace-ai-20250630",
+      "entityType": "university",
+      "entitySlug": "zayed-university",
+      "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "finalUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "sourceTitle": "Zayed University Embraces Artificial Intelligence to Transform Learning and Innovation",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:zu.ac.ae Zayed University (ChatGPT OR \"generative AI\" OR \"artificial intelligence\" OR AI) (policy OR guidelines OR academic integrity OR assessment OR students OR faculty)",
+      "discoveredAt": "2026-05-17T04:06:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.92,
+      "policySpecificityScore": 0.58,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-17T04:11:00.000Z",
+      "verificationNotes": "Official Zayed University news page dated 30 June 2025 describing DEC membership, an AI for Higher Education certificate, an AI Literacy for Students program, and a university-wide faculty training initiative. It is used only for narrow training/source-status claims, not as a binding AI policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-zayed-scholars-chatgpt-integrity-2025",
+      "entityType": "university",
+      "entitySlug": "zayed-university",
+      "sourceUrl": "https://zuscholars.zu.ac.ae/works/7062/",
+      "finalUrl": "https://zuscholars.zu.ac.ae/works/7062/",
+      "sourceTitle": "Ensuring academic integrity in the age of ChatGPT: Rethinking exam design, assessment strategies, and ethical AI policies in higher education",
+      "sourceLanguage": "en",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:zu.ac.ae \"ChatGPT\" \"Zayed University\" \"academic integrity\"",
+      "discoveredAt": "2026-05-17T04:07:00.000Z",
+      "officialDomainConfidence": 0.9,
+      "aiRelevanceScore": 0.86,
+      "policySpecificityScore": 0.2,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-17T04:12:00.000Z",
+      "verificationNotes": "ZU Scholars is an official repository, but this record is a faculty research article published in Contemporary Educational Technology and does not state Zayed University policy or guidance.",
+      "rejectionReason": "research_showcase_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-zayed-scholars-chatgpt-integrity-research-only",
+      "sourceCandidateId": "sc-zayed-scholars-chatgpt-integrity-2025",
+      "entityType": "university",
+      "entitySlug": "zayed-university",
+      "sourceUrl": "https://zuscholars.zu.ac.ae/works/7062/",
+      "finalUrl": "https://zuscholars.zu.ac.ae/works/7062/",
+      "rejectedAt": "2026-05-17T04:12:00.000Z",
+      "rejectionReason": "research_showcase_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Document Type Article; Source of Publication Contemporary Educational Technology; Publication Date 1-1-2025.",
+      "notes": "The page is relevant to ChatGPT and academic integrity but is a research publication record, not a Zayed University institutional AI policy or guidance source."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "crawl_plan",
+      "planId": "plan-zayed-university-20260517",
+      "createdAt": "2026-05-17T04:08:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "zayed-university",
+          "sourceCandidateId": "sc-zayed-embrace-ai-20250630",
+          "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+          "sourceTitle": "Zayed University Embraces Artificial Intelligence to Transform Learning and Innovation",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "source_status"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after recording narrow claims supported by official Zayed University source text.",
+        "Do not infer binding student conduct or assessment rules from research records, news summaries, or program announcements."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-zayed-embrace-ai-20250630-http",
+      "sourceCandidateId": "sc-zayed-embrace-ai-20250630",
+      "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "finalUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "attemptedAt": "2026-05-17T04:11:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1000,
+      "contentHash": "a93e1e93cf9c2f7de249ee6838b8599680f5bcf1af05fbbac842cb5cdbfe48a7",
+      "normalizedTextStorageKey": "openclaw/uapt-zayed-university-20260517/snapshots/zayed-embrace-ai-20250630.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-zayed-embrace-ai-20250630",
+      "sourceCandidateId": "sc-zayed-embrace-ai-20250630",
+      "fetchAttemptId": "fetch-zayed-embrace-ai-20250630-http",
+      "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "finalUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "sourceTitle": "Zayed University Embraces Artificial Intelligence to Transform Learning and Innovation",
+      "sourceLanguage": "en",
+      "contentHash": "a93e1e93cf9c2f7de249ee6838b8599680f5bcf1af05fbbac842cb5cdbfe48a7",
+      "fetchedAt": "2026-05-17T04:11:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-zayed-university-20260517/snapshots/zayed-embrace-ai-20250630.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-zayed-ai-literacy-programs-20250630",
+      "entityType": "university",
+      "entitySlug": "zayed-university",
+      "claimType": "teaching",
+      "claimText": "Zayed University announced that, starting in summer 2025, it would roll out Digital Education Council initiatives including a Certificate in AI for Higher Education for faculty and leadership and an AI Literacy for Students program.",
+      "normalizedValue": "announced_ai_literacy_and_faculty_leadership_certificate_programs",
+      "sourceLanguage": "en",
+      "confidence": 0.82,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-zayed-ai-literacy-programs-20250630"
+      ],
+      "citation": {
+        "citationTitle": "Zayed University Embraces Artificial Intelligence to Transform Learning and Innovation",
+        "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/zayed-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/zayed-university",
+        "publisher": "Zayed University",
+        "retrievedAt": "2026-05-17T04:11:00.000Z",
+        "snapshotHash": "a93e1e93cf9c2f7de249ee6838b8599680f5bcf1af05fbbac842cb5cdbfe48a7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-zayed-ai-literacy-programs-20250630",
+      "claimId": "claim-zayed-ai-literacy-programs-20250630",
+      "sourceSnapshotId": "snap-zayed-embrace-ai-20250630",
+      "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "finalUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "sourceTitle": "Zayed University Embraces Artificial Intelligence to Transform Learning and Innovation",
+      "sourceLanguage": "en",
+      "snapshotHash": "a93e1e93cf9c2f7de249ee6838b8599680f5bcf1af05fbbac842cb5cdbfe48a7",
+      "evidenceSnippetOriginal": "Starting this summer, ZU will also roll out two key DEC initiatives: the Certificate in AI for Higher Education, designed for faculty and leadership, and the AI Literacy for Students program.",
+      "evidenceLocator": "Official news page body, 30 Jun 2025",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Zayed University Embraces Artificial Intelligence to Transform Learning and Innovation",
+        "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/zayed-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/zayed-university",
+        "publisher": "Zayed University",
+        "retrievedAt": "2026-05-17T04:11:00.000Z",
+        "snapshotHash": "a93e1e93cf9c2f7de249ee6838b8599680f5bcf1af05fbbac842cb5cdbfe48a7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "review_decision",
+      "decisionId": "review-zayed-ai-literacy-programs-20250630",
+      "claimId": "claim-zayed-ai-literacy-programs-20250630",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-worker",
+      "notes": "Approved as a narrow training/program announcement claim. The source does not establish a binding AI use policy.",
+      "decidedAt": "2026-05-17T04:13:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-zayed-faculty-ai-training-20250630",
+      "entityType": "university",
+      "entitySlug": "zayed-university",
+      "claimType": "teaching",
+      "claimText": "Zayed University said it was undertaking a university-wide faculty training initiative to help faculty embed AI into course design and teaching practices.",
+      "normalizedValue": "university_wide_faculty_ai_training_announced",
+      "sourceLanguage": "en",
+      "confidence": 0.84,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-zayed-faculty-ai-training-20250630"
+      ],
+      "citation": {
+        "citationTitle": "Zayed University Embraces Artificial Intelligence to Transform Learning and Innovation",
+        "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/zayed-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/zayed-university",
+        "publisher": "Zayed University",
+        "retrievedAt": "2026-05-17T04:11:00.000Z",
+        "snapshotHash": "a93e1e93cf9c2f7de249ee6838b8599680f5bcf1af05fbbac842cb5cdbfe48a7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-zayed-faculty-ai-training-20250630",
+      "claimId": "claim-zayed-faculty-ai-training-20250630",
+      "sourceSnapshotId": "snap-zayed-embrace-ai-20250630",
+      "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "finalUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+      "sourceTitle": "Zayed University Embraces Artificial Intelligence to Transform Learning and Innovation",
+      "sourceLanguage": "en",
+      "snapshotHash": "a93e1e93cf9c2f7de249ee6838b8599680f5bcf1af05fbbac842cb5cdbfe48a7",
+      "evidenceSnippetOriginal": "To ensure that all students, across every college and program, develop foundational knowledge in AI and emerging digital tools, ZU is undertaking a university-wide faculty training initiative.",
+      "evidenceSnippetDisplay": "The same paragraph says the initiative will equip faculty with practical strategies to embed AI into course design and teaching practices.",
+      "evidenceLocator": "Official news page body, 30 Jun 2025",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Zayed University Embraces Artificial Intelligence to Transform Learning and Innovation",
+        "sourceUrl": "https://www.zu.ac.ae/main/en/news/2025/june/embrace-ai",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/zayed-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/zayed-university",
+        "publisher": "Zayed University",
+        "retrievedAt": "2026-05-17T04:11:00.000Z",
+        "snapshotHash": "a93e1e93cf9c2f7de249ee6838b8599680f5bcf1af05fbbac842cb5cdbfe48a7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "review_decision",
+      "decisionId": "review-zayed-faculty-ai-training-20250630",
+      "claimId": "claim-zayed-faculty-ai-training-20250630",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-worker",
+      "notes": "Approved as a narrow teaching/training claim. The source does not support claims about student misconduct rules, assessment permissions, or mandatory AI disclosure.",
+      "decidedAt": "2026-05-17T04:13:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-zayed-university-20260517",
+      "artifactType": "report_draft",
+      "reportId": "report-zayed-university-20260517",
+      "title": "Zayed University staged AI policy source review",
+      "generatedAt": "2026-05-17T04:13:00.000Z",
+      "draftPath": "content/reports/zayed-university-20260517.mdx",
+      "summary": "Official evidence supports narrow claims that Zayed University announced AI literacy and faculty training initiatives in June 2025. No dedicated official AI policy page was identified in this worker pass.",
+      "referencedClaimIds": [
+        "claim-zayed-ai-literacy-programs-20250630",
+        "claim-zayed-faculty-ai-training-20250630"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/zayed-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The verified source is an official news/advisory page; it does not establish binding AI-use permissions, prohibitions, or assessment rules."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

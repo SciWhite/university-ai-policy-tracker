@@ -1,0 +1,429 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-taipei-medical-university-tmu-20260517",
+  "artifacts": [
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "traceId": "tmu-discovery-20260517",
+      "entityType": "university",
+      "entitySlug": "taipei-medical-university-tmu",
+      "startedAt": "2026-05-17T04:10:00.000Z",
+      "endedAt": "2026-05-17T04:13:49.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:tmu.edu.tw Taipei Medical University generative AI policy students academic integrity OR ChatGPT",
+          "domain": "tmu.edu.tw",
+          "resultCount": 5,
+          "notes": "Found official Office of Academic Affairs teaching-notice PDF mentioning generative AI teaching guidance."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:tmu.edu.tw (ChatGPT OR \"generative AI\" OR 生成式AI OR 人工智慧) (學生 OR 課程 OR 教學 OR 學術倫理) Taipei Medical University",
+          "domain": "tmu.edu.tw",
+          "resultCount": 2,
+          "notes": "Found official Academic Affairs AI course listing, but it is course catalog material rather than a policy source."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:aca.tmu.edu.tw \"Course Guidance for Generative AI\" OR \"Generative AI\" \"Curriculum Section\" \"Taipei Medical University\"",
+          "domain": "aca.tmu.edu.tw",
+          "resultCount": 6,
+          "notes": "Found official Academic Affairs generative AI account subsidy announcement and additional teaching notice references."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "aca.tmu.edu.tw",
+          "notes": "robots.txt allows public crawling except listed administrative and asset paths; the fetched Academic Affairs pages were public."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "tmu-source-teaching-notice-2026-fall",
+        "tmu-source-generative-ai-subsidy-2026-spring",
+        "tmu-source-taica-ai-courses"
+      ],
+      "rejectionIds": [
+        "tmu-rejection-taica-ai-courses"
+      ],
+      "summary": "Official-source discovery found limited Academic Affairs evidence: a Fall 2026 teaching notice encouraging faculty use of generative AI with guidance, and a Spring 2026 generative AI tool account subsidy announcement. No university-wide binding student AI policy was located in this pass."
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "sourceCandidateId": "tmu-source-teaching-notice-2026-fall",
+      "entityType": "university",
+      "entitySlug": "taipei-medical-university-tmu",
+      "sourceUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+      "finalUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+      "sourceTitle": "Notice about Teaching for Fall Semester, 2026",
+      "sourceLanguage": "en",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:tmu.edu.tw Taipei Medical University generative AI policy students academic integrity OR ChatGPT",
+      "discoveredAt": "2026-05-17T04:10:30.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.86,
+      "policySpecificityScore": 0.64,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-17T04:12:08.000Z",
+      "verificationNotes": "Official Office of Academic Affairs PDF fetched with HTTP 200 and public robots allowance; evidence is a teaching notice, not a binding university-wide AI policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "sourceCandidateId": "tmu-source-generative-ai-subsidy-2026-spring",
+      "entityType": "university",
+      "entitySlug": "taipei-medical-university-tmu",
+      "sourceUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+      "finalUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+      "sourceTitle": "【公告】臺北醫學大學114-2學期生成式AI工具帳號補助計畫",
+      "sourceLanguage": "zh-Hant",
+      "sourceType": "approved_tools",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:aca.tmu.edu.tw \"Course Guidance for Generative AI\" OR \"Generative AI\" \"Curriculum Section\" \"Taipei Medical University\"",
+      "discoveredAt": "2026-05-17T04:12:55.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.94,
+      "policySpecificityScore": 0.72,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-17T04:13:30.000Z",
+      "verificationNotes": "Official Office of Academic Affairs page describes an account subsidy program for generative AI tools. It supports a narrow subsidy/access claim only.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "sourceCandidateId": "tmu-source-taica-ai-courses",
+      "entityType": "university",
+      "entitySlug": "taipei-medical-university-tmu",
+      "sourceUrl": "https://aca.tmu.edu.tw/front/CurriculumDivision/TAICA_01/pages.php?ID=f126b8275310e1c439f19037ebcb144c5404228c2882a4d7d0dbf224187566f9",
+      "finalUrl": "https://aca.tmu.edu.tw/front/CurriculumDivision/TAICA_01/pages.php?ID=f126b8275310e1c439f19037ebcb144c5404228c2882a4d7d0dbf224187566f9",
+      "sourceTitle": "TAICA課程 - 臺北醫學大學教務處",
+      "sourceLanguage": "zh-Hant",
+      "sourceType": "generic_or_unclear",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:tmu.edu.tw (ChatGPT OR \"generative AI\" OR 生成式AI OR 人工智慧) (學生 OR 課程 OR 教學 OR 學術倫理) Taipei Medical University",
+      "discoveredAt": "2026-05-17T04:11:30.000Z",
+      "officialDomainConfidence": 0.96,
+      "aiRelevanceScore": 0.65,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-17T04:12:38.000Z",
+      "verificationNotes": "Official course listing includes generative AI course offerings and requirements, but it is not policy or institutional AI-use guidance.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "sourceRejectionId": "tmu-rejection-taica-ai-courses",
+      "sourceCandidateId": "tmu-source-taica-ai-courses",
+      "entityType": "university",
+      "entitySlug": "taipei-medical-university-tmu",
+      "sourceUrl": "https://aca.tmu.edu.tw/front/CurriculumDivision/TAICA_01/pages.php?ID=f126b8275310e1c439f19037ebcb144c5404228c2882a4d7d0dbf224187566f9",
+      "finalUrl": "https://aca.tmu.edu.tw/front/CurriculumDivision/TAICA_01/pages.php?ID=f126b8275310e1c439f19037ebcb144c5404228c2882a4d7d0dbf224187566f9",
+      "rejectedAt": "2026-05-17T04:12:45.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-codex-worker",
+      "evidenceSnippet": "生成式AI的人文導論 / Introducing generative AI for humanities",
+      "notes": "Useful for confirming AI course offerings, but not used as support for policy or tool-treatment claims."
+    },
+    {
+      "artifactType": "crawl_plan",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "planId": "tmu-crawl-plan-20260517",
+      "createdAt": "2026-05-17T04:13:49.000Z",
+      "createdBy": "openclaw-codex-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "taipei-medical-university-tmu",
+          "sourceCandidateId": "tmu-source-teaching-notice-2026-fall",
+          "sourceUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+          "sourceTitle": "Notice about Teaching for Fall Semester, 2026",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "generative_ai_guidance"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "taipei-medical-university-tmu",
+          "sourceCandidateId": "tmu-source-generative-ai-subsidy-2026-spring",
+          "sourceUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+          "sourceTitle": "【公告】臺北醫學大學114-2學期生成式AI工具帳號補助計畫",
+          "sourceLanguage": "zh-Hant",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "approved_tools",
+            "generative_ai_subsidy"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop at public Office of Academic Affairs sources; do not use login-gated systems.",
+        "Do not infer university-wide or binding student AI policy from teaching notices, subsidy announcements, or course listings.",
+        "Do not stage raw PDFs, HTML, screenshots, or browser profiles."
+      ]
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "fetchAttemptId": "tmu-fetch-teaching-notice-2026-fall",
+      "sourceCandidateId": "tmu-source-teaching-notice-2026-fall",
+      "sourceUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+      "finalUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+      "attemptedAt": "2026-05-17T04:12:08.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3200,
+      "contentHash": "4e1560bb0f402431800d47926ffd64a51229c7f191c5a2d70d9e63d419836bbd",
+      "normalizedTextStorageKey": "openclaw/staged/uapt-taipei-medical-university-tmu-20260517/tmu-teaching-notice-2026-fall.txt"
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "fetchAttemptId": "tmu-fetch-generative-ai-subsidy-2026-spring",
+      "sourceCandidateId": "tmu-source-generative-ai-subsidy-2026-spring",
+      "sourceUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+      "finalUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+      "attemptedAt": "2026-05-17T04:13:30.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3300,
+      "contentHash": "b0a0f874d50a0ea33b80fd71686cef583ed902f9d5a20b34435fac29e1ac8fb4",
+      "normalizedTextStorageKey": "openclaw/staged/uapt-taipei-medical-university-tmu-20260517/tmu-generative-ai-subsidy-2026-spring.txt"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "sourceSnapshotId": "tmu-snapshot-teaching-notice-2026-fall",
+      "sourceCandidateId": "tmu-source-teaching-notice-2026-fall",
+      "fetchAttemptId": "tmu-fetch-teaching-notice-2026-fall",
+      "sourceUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+      "finalUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+      "sourceTitle": "Notice about Teaching for Fall Semester, 2026",
+      "sourceLanguage": "en",
+      "contentHash": "4e1560bb0f402431800d47926ffd64a51229c7f191c5a2d70d9e63d419836bbd",
+      "fetchedAt": "2026-05-17T04:12:08.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/staged/uapt-taipei-medical-university-tmu-20260517/tmu-teaching-notice-2026-fall.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "sourceSnapshotId": "tmu-snapshot-generative-ai-subsidy-2026-spring",
+      "sourceCandidateId": "tmu-source-generative-ai-subsidy-2026-spring",
+      "fetchAttemptId": "tmu-fetch-generative-ai-subsidy-2026-spring",
+      "sourceUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+      "finalUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+      "sourceTitle": "【公告】臺北醫學大學114-2學期生成式AI工具帳號補助計畫",
+      "sourceLanguage": "zh-Hant",
+      "contentHash": "b0a0f874d50a0ea33b80fd71686cef583ed902f9d5a20b34435fac29e1ac8fb4",
+      "fetchedAt": "2026-05-17T04:13:30.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/staged/uapt-taipei-medical-university-tmu-20260517/tmu-generative-ai-subsidy-2026-spring.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "claimId": "tmu-claim-teaching-generative-ai-guidance",
+      "entityType": "university",
+      "entitySlug": "taipei-medical-university-tmu",
+      "claimType": "teaching",
+      "claimText": "Taipei Medical University's Fall 2026 teaching notice says TMU encourages faculty members to use generative AI such as ChatGPT to enhance teaching quality and develop innovative teaching methods, and points faculty to Curriculum Section guidance and Teaching Resource Center guidelines.",
+      "normalizedValue": "faculty_encouraged_to_use_generative_ai_for_teaching_with_guidance_reference",
+      "sourceLanguage": "en",
+      "confidence": 0.82,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "tmu-evidence-teaching-generative-ai-guidance"
+      ],
+      "citation": {
+        "citationTitle": "Notice about Teaching for Fall Semester, 2026",
+        "sourceUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/taipei-medical-university-tmu.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/taipei-medical-university-tmu",
+        "publisher": "Taipei Medical University Office of Academic Affairs",
+        "retrievedAt": "2026-05-17T04:12:08.000Z",
+        "snapshotHash": "4e1560bb0f402431800d47926ffd64a51229c7f191c5a2d70d9e63d419836bbd",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "claimId": "tmu-claim-generative-ai-account-subsidy",
+      "entityType": "university",
+      "entitySlug": "taipei-medical-university-tmu",
+      "claimType": "procurement",
+      "claimText": "Taipei Medical University's Office of Academic Affairs announced a Spring 2026 generative AI tool account subsidy program for eligible faculty and student uses, including faculty who introduce generative AI tools into courses and specified student research, self-learning, competition, club, and project-research uses.",
+      "normalizedValue": "generative_ai_tool_account_subsidy_program_announced_for_eligible_teaching_and_student_uses",
+      "sourceLanguage": "zh-Hant",
+      "confidence": 0.8,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "tmu-evidence-generative-ai-account-subsidy"
+      ],
+      "citation": {
+        "citationTitle": "【公告】臺北醫學大學114-2學期生成式AI工具帳號補助計畫",
+        "sourceUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/taipei-medical-university-tmu.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/taipei-medical-university-tmu",
+        "publisher": "Taipei Medical University Office of Academic Affairs",
+        "retrievedAt": "2026-05-17T04:13:30.000Z",
+        "snapshotHash": "b0a0f874d50a0ea33b80fd71686cef583ed902f9d5a20b34435fac29e1ac8fb4",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "evidenceId": "tmu-evidence-teaching-generative-ai-guidance",
+      "claimId": "tmu-claim-teaching-generative-ai-guidance",
+      "sourceSnapshotId": "tmu-snapshot-teaching-notice-2026-fall",
+      "sourceUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+      "finalUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+      "sourceTitle": "Notice about Teaching for Fall Semester, 2026",
+      "sourceLanguage": "en",
+      "snapshotHash": "4e1560bb0f402431800d47926ffd64a51229c7f191c5a2d70d9e63d419836bbd",
+      "evidenceSnippetOriginal": "TMU encourages faculty members to use generative AI, such as ChatGPT, to enhance teaching quality and develop innovative teaching methods. Curriculum Section provides faculty members with guidance for reference.",
+      "evidenceSnippetDisplay": "TMU encourages faculty use of generative AI such as ChatGPT for teaching quality and innovative teaching methods, with Curriculum Section guidance for reference.",
+      "evidenceLocator": "Promotion of teaching regulations and policies, item 4(1)",
+      "evidenceType": "pdf",
+      "relevance": 0.86,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Notice about Teaching for Fall Semester, 2026",
+        "sourceUrl": "https://aca.tmu.edu.tw/download.php?dir=news&filename=d1724fa2d9cf3eebb93d9fee072b19e0.pdf&title=Notice%20about%20Teaching%20for%20Fall%20Semester,%202026",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/taipei-medical-university-tmu.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/taipei-medical-university-tmu",
+        "publisher": "Taipei Medical University Office of Academic Affairs",
+        "retrievedAt": "2026-05-17T04:12:08.000Z",
+        "snapshotHash": "4e1560bb0f402431800d47926ffd64a51229c7f191c5a2d70d9e63d419836bbd",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "evidenceId": "tmu-evidence-generative-ai-account-subsidy",
+      "claimId": "tmu-claim-generative-ai-account-subsidy",
+      "sourceSnapshotId": "tmu-snapshot-generative-ai-subsidy-2026-spring",
+      "sourceUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+      "finalUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+      "sourceTitle": "【公告】臺北醫學大學114-2學期生成式AI工具帳號補助計畫",
+      "sourceLanguage": "zh-Hant",
+      "snapshotHash": "b0a0f874d50a0ea33b80fd71686cef583ed902f9d5a20b34435fac29e1ac8fb4",
+      "evidenceSnippetOriginal": "為促進教師教學創新、增強學生學習支持、培養教師及學生的AI素養，鼓勵教師將生成式AI工具融入課程，創新教學設計、教學教法及教材；鼓勵學生應用生成式AI工具，進行自主學習，提高學習效率。",
+      "evidenceSnippetDisplay": "The announcement says the program promotes teaching innovation, student learning support, AI literacy, faculty course integration of generative AI tools, and student use of generative AI tools for self-directed learning.",
+      "evidenceLocator": "Purpose section",
+      "evidenceType": "official_source",
+      "relevance": 0.88,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "【公告】臺北醫學大學114-2學期生成式AI工具帳號補助計畫",
+        "sourceUrl": "https://aca.tmu.edu.tw/front/news_home/news_home07/news.php?ID=2ac80758433cb296908e906e935f235ea6ece853ac9fe7fa196505f0d8c6555c&Sn=4597&lang=en&Trad2Simp=n",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/taipei-medical-university-tmu.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/taipei-medical-university-tmu",
+        "publisher": "Taipei Medical University Office of Academic Affairs",
+        "retrievedAt": "2026-05-17T04:13:30.000Z",
+        "snapshotHash": "b0a0f874d50a0ea33b80fd71686cef583ed902f9d5a20b34435fac29e1ac8fb4",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "decisionId": "tmu-review-teaching-generative-ai-guidance",
+      "claimId": "tmu-claim-teaching-generative-ai-guidance",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-codex-worker",
+      "notes": "Approved as a narrow teaching-guidance claim only; the source is a teaching notice and does not establish binding university-wide AI policy.",
+      "decidedAt": "2026-05-17T04:14:20.000Z"
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "decisionId": "tmu-review-generative-ai-account-subsidy",
+      "claimId": "tmu-claim-generative-ai-account-subsidy",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-codex-worker",
+      "notes": "Approved as a narrow subsidy/access-program claim; not treated as an approved-tool mandate or academic-integrity policy.",
+      "decidedAt": "2026-05-17T04:14:25.000Z"
+    },
+    {
+      "artifactType": "report_draft",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-taipei-medical-university-tmu-20260517",
+      "reportId": "tmu-report-draft-20260517",
+      "title": "Taipei Medical University (TMU) generative AI teaching and access signals",
+      "generatedAt": "2026-05-17T04:14:30.000Z",
+      "draftPath": "content/reports/2026-05/taipei-medical-university-tmu-generative-ai.mdx",
+      "summary": "Official Academic Affairs sources support two narrow findings: TMU encourages faculty use of generative AI such as ChatGPT for teaching innovation with guidance references, and TMU announced a Spring 2026 generative AI tool account subsidy program for eligible teaching and student uses. This run did not locate a binding university-wide student AI-use or academic-integrity policy.",
+      "referencedClaimIds": [
+        "tmu-claim-teaching-generative-ai-guidance",
+        "tmu-claim-generative-ai-account-subsidy"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/taipei-medical-university-tmu.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Sources found here are teaching notice and account subsidy materials, not a comprehensive university-wide AI policy."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
