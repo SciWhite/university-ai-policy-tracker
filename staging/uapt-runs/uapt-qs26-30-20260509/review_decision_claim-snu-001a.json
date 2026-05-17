@@ -4,10 +4,10 @@
   "artifactType": "review_decision",
   "decisionId": "rd-claim-snu-001a",
   "claimId": "claim-snu-001a",
-  "decision": "needs_changes",
-  "reviewState": "needs_review",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
   "reviewerType": "openclaw_agent",
-  "reviewer": "policy-reviewer",
-  "notes": "Evidence snippet describes the SNU download page/PDF availability rather than quoting the source/PDF text; rebind to original Korean or English source text before approval.",
-  "decidedAt": "2026-05-10T00:12:41Z"
+  "reviewer": "codex-firecrawl-review",
+  "notes": "Approved after Firecrawl captured direct SNU downloads-page text confirming Korean and English PDF files for the SNU AI Guidelines; claim narrowed to remove unsupported publication-date wording.",
+  "decidedAt": "2026-05-17T13:15:00.000Z"
 }

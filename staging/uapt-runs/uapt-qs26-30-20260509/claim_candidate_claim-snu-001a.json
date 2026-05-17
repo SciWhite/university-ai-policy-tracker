@@ -6,10 +6,10 @@
   "entityType": "university",
   "entitySlug": "snu",
   "claimType": "source_status",
-  "claimText": "SNU hosts official Korean and English PDF versions of the SNU AI Guidelines on its downloads page, published January 1, 2026.",
+  "claimText": "SNU hosts official Korean and English PDF versions of the SNU AI Guidelines on its downloads page.",
   "sourceLanguage": "ko",
-  "confidence": 0.6,
-  "reviewState": "needs_review",
+  "confidence": 0.88,
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-001a"
   ],

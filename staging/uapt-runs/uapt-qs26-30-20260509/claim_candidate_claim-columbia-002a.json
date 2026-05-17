@@ -8,8 +8,8 @@
   "claimType": "source_status",
   "claimText": "Columbia's Center for Teaching and Learning maintains a central AI Guidelines hub linking to the Provost's policy, academic integrity resources, CUIT resources, and best practices for responsible AI use.",
   "sourceLanguage": "en",
-  "confidence": 0.75,
-  "reviewState": "needs_review",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-002a"
   ],

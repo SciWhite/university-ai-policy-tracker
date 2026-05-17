@@ -15,7 +15,10 @@
       "sourceLanguage": "en",
       "confidence": 0.95,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-info-compliance-1a", "evidence-cam-info-compliance-1b"],
+      "evidenceIds": [
+        "evidence-cam-info-compliance-1a",
+        "evidence-cam-info-compliance-1b"
+      ],
       "citation": {
         "citationTitle": "AI guidance – Guidance for University of Cambridge Staff on the Administrative Use of Generative AI",
         "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
@@ -42,7 +45,10 @@
       "sourceLanguage": "en",
       "confidence": 0.95,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-info-compliance-2a", "evidence-cam-info-compliance-2b"],
+      "evidenceIds": [
+        "evidence-cam-info-compliance-2a",
+        "evidence-cam-info-compliance-2b"
+      ],
       "citation": {
         "citationTitle": "AI guidance – Guidance for University of Cambridge Staff on the Administrative Use of Generative AI",
         "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
@@ -69,7 +75,9 @@
       "sourceLanguage": "en",
       "confidence": 0.92,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-info-compliance-3a"],
+      "evidenceIds": [
+        "evidence-cam-info-compliance-3a"
+      ],
       "citation": {
         "citationTitle": "AI guidance – Guidance for University of Cambridge Staff on the Administrative Use of Generative AI",
         "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
@@ -96,7 +104,10 @@
       "sourceLanguage": "en",
       "confidence": 0.95,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-info-compliance-4a", "evidence-cam-info-compliance-4b"],
+      "evidenceIds": [
+        "evidence-cam-info-compliance-4a",
+        "evidence-cam-info-compliance-4b"
+      ],
       "citation": {
         "citationTitle": "AI guidance – Guidance for University of Cambridge Staff on the Administrative Use of Generative AI",
         "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
@@ -121,9 +132,11 @@
       "claimText": "Staff must consider the purpose for which data was collected before inputting it into GenAI tools. Data must be collected, held and used for only that purpose. It is not appropriate to use personal data collected for a different purpose with a GenAI tool. Automated decision-making involving GenAI requires human involvement in the decision-making process.",
       "normalizedValue": "purpose_limitation",
       "sourceLanguage": "en",
-      "confidence": 0.9,
-      "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-info-compliance-5a"],
+      "confidence": 0.94,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-cam-info-compliance-5a"
+      ],
       "citation": {
         "citationTitle": "AI guidance – Guidance for University of Cambridge Staff on the Administrative Use of Generative AI",
         "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
@@ -150,7 +163,10 @@
       "sourceLanguage": "en",
       "confidence": 0.9,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-info-compliance-6a", "evidence-cam-info-compliance-6b"],
+      "evidenceIds": [
+        "evidence-cam-info-compliance-6a",
+        "evidence-cam-info-compliance-6b"
+      ],
       "citation": {
         "citationTitle": "AI guidance – Guidance for University of Cambridge Staff on the Administrative Use of Generative AI",
         "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
@@ -177,7 +193,9 @@
       "sourceLanguage": "en",
       "confidence": 0.98,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-assessment-1a"],
+      "evidenceIds": [
+        "evidence-cam-assessment-1a"
+      ],
       "citation": {
         "citationTitle": "Generative AI and Assessment",
         "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/generative-ai-and-assessment",
@@ -204,7 +222,9 @@
       "sourceLanguage": "en",
       "confidence": 0.95,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-assessment-2a"],
+      "evidenceIds": [
+        "evidence-cam-assessment-2a"
+      ],
       "citation": {
         "citationTitle": "Generative AI and Assessment",
         "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/generative-ai-and-assessment",
@@ -229,9 +249,11 @@
       "claimText": "Examiners are not permitted to upload, copy, or share student work with Generative AI tools and Large Language Models. Examiners may not use tools such as ChatGPT, Perplexity, Google Bard, or Microsoft Copilot to analyse student work or provide written feedback. Examiners may use these tools to support their own writing in documenting feedback (e.g. consolidating personal notes and rephrasing comments).",
       "normalizedValue": "examiner_restrictions",
       "sourceLanguage": "en",
-      "confidence": 0.95,
-      "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-assessment-3a"],
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-cam-assessment-3a"
+      ],
       "citation": {
         "citationTitle": "Generative AI and Assessment",
         "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/generative-ai-and-assessment",
@@ -258,7 +280,10 @@
       "sourceLanguage": "en",
       "confidence": 0.95,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-education-1a", "evidence-cam-education-1b"],
+      "evidenceIds": [
+        "evidence-cam-education-1a",
+        "evidence-cam-education-1b"
+      ],
       "citation": {
         "citationTitle": "Generative AI and Education",
         "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/generative-ai-and-education",
@@ -285,7 +310,9 @@
       "sourceLanguage": "en",
       "confidence": 0.85,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-education-2a"],
+      "evidenceIds": [
+        "evidence-cam-education-2a"
+      ],
       "citation": {
         "citationTitle": "Generative AI and Education",
         "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/generative-ai-and-education",
@@ -312,7 +339,9 @@
       "sourceLanguage": "en",
       "confidence": 0.92,
       "reviewState": "machine_candidate",
-      "evidenceIds": ["evidence-cam-framework-1a"],
+      "evidenceIds": [
+        "evidence-cam-framework-1a"
+      ],
       "citation": {
         "citationTitle": "AI Policy Framework",
         "sourceUrl": "https://blendedlearning.cam.ac.uk/ai-policy-framework",

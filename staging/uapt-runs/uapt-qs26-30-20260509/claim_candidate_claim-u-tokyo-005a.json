@@ -8,8 +8,8 @@
   "claimType": "source_status",
   "claimText": "UTokyo's utelecon portal maintains a Policies and Guidelines index page linking to BYOD policy, generative AI information, and AI tools notifications.",
   "sourceLanguage": "en",
-  "confidence": 0.6,
-  "reviewState": "needs_review",
+  "confidence": 0.9,
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-005a"
   ],

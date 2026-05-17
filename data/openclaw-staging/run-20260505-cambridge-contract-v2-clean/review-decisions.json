@@ -57,12 +57,12 @@
     "runId": "run-20260505-cambridge-contract-v2",
     "decisionId": "review-cam-info-compliance-5",
     "claimId": "claim-cam-info-compliance-5",
-    "decision": "needs_changes",
-    "reviewState": "needs_review",
+    "decision": "approve",
+    "reviewState": "agent_reviewed",
     "reviewerType": "openclaw_agent",
-    "reviewer": "policy-reviewer",
-    "notes": "Claim scope exceeds evidence. Evidence snippet (5a) supports purpose limitation for data collection/use with GenAI. However, the claim also states 'Automated decision-making involving GenAI requires human involvement in the decision-making process.' This content IS present in the normalized source text but is NOT captured in the evidence snippet. Requires either: (a) add an additional evidence candidate covering the automated decision-making section, or (b) remove that sentence from the claim. Boundary note: describes data protection guidance, not legal advice on GDPR Article 22 automated decision-making rights.",
-    "decidedAt": "2026-05-05T16:39:00.000Z"
+    "reviewer": "codex-firecrawl-review",
+    "notes": "Approved after Firecrawl captured direct Cambridge Information Compliance text covering purpose limitation and human involvement for automated decision-making.",
+    "decidedAt": "2026-05-17T13:15:00.000Z"
   },
   {
     "artifactType": "review_decision",
@@ -109,12 +109,12 @@
     "runId": "run-20260505-cambridge-contract-v2",
     "decisionId": "review-cam-assessment-3",
     "claimId": "claim-cam-assessment-3",
-    "decision": "needs_changes",
-    "reviewState": "needs_review",
+    "decision": "approve",
+    "reviewState": "agent_reviewed",
     "reviewerType": "openclaw_agent",
-    "reviewer": "policy-reviewer",
-    "notes": "Claim scope exceeds evidence. Evidence snippet (3a) supports the prohibition on uploading student work and the ban on using GenAI for analysing/feedback. However, the claim also states 'Examiners may use these tools to support their own writing in documenting feedback (e.g. consolidating personal notes and rephrasing comments).' This exception IS present in the normalized source text but is NOT captured in the evidence snippet. Requires either: (a) add an additional evidence candidate covering the examiner exception clause, or (b) remove that sentence from the claim. Boundary note: describes assessment policy, not academic integrity advice.",
-    "decidedAt": "2026-05-05T16:39:00.000Z"
+    "reviewer": "codex-firecrawl-review",
+    "notes": "Approved after Firecrawl captured direct Cambridge assessment-page text covering both examiner prohibitions and the documented-feedback writing exception.",
+    "decidedAt": "2026-05-17T13:15:00.000Z"
   },
   {
     "artifactType": "review_decision",

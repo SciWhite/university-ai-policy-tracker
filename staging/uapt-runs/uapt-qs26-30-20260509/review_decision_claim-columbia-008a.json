@@ -4,10 +4,10 @@
   "artifactType": "review_decision",
   "decisionId": "rd-claim-columbia-008a",
   "claimId": "claim-columbia-008a",
-  "decision": "needs_changes",
-  "reviewState": "needs_review",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
   "reviewerType": "openclaw_agent",
-  "reviewer": "policy-reviewer",
-  "notes": "Evidence snippet is a page description rather than a direct quote from source content; rebind to actual CUIT source text before approval.",
-  "decidedAt": "2026-05-10T00:12:41Z"
+  "reviewer": "codex-firecrawl-review",
+  "notes": "Approved after Firecrawl captured direct CUIT text supporting the university-wide responsible-use best-practices claim.",
+  "decidedAt": "2026-05-17T13:15:00.000Z"
 }

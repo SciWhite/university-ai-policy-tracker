@@ -11,9 +11,9 @@
   "sourceLanguage": "en",
   "snapshotHash": "6b67d5eac87a042937279463b6baf1eeeea610cd3947b8cac7b65a59ad792fdd",
   "evidenceSnippetOriginal": "Researchers must avoid uploading, or using as input, any unpublished research data or other Confidential Information into a Generative AI tool.",
-  "evidenceLocator": "Source candidate verification notes (search snippet)",
+  "evidenceLocator": "Firecrawl scrape of Office of the Provost Generative AI page, researcher guidance sentence",
   "evidenceType": "official_source",
-  "relevance": 0.7,
+  "relevance": 0.95,
   "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
   "citation": {
     "citationTitle": "Generative AI - Office of the Provost - Columbia University",

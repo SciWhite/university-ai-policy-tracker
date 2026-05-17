@@ -8,8 +8,8 @@
   "claimType": "source_status",
   "claimText": "Columbia University has a university-wide Generative AI Policy from the Office of the Provost governing use by staff, faculty, students, and researchers, covering information security, data privacy, copyright, academic integrity, and bias.",
   "sourceLanguage": "en",
-  "confidence": 0.7,
-  "reviewState": "needs_review",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-001a"
   ],

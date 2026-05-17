@@ -10,10 +10,10 @@
   "sourceTitle": "Generative AI Policy | Students - Columbia Business School",
   "sourceLanguage": "en",
   "snapshotHash": "8fde3b569dfdde970573015678382343ad177046a8b9567f41abf78d76eeddd1",
-  "evidenceSnippetOriginal": "As a general rule, students should disclose to faculty if they are using generative AI platforms and in what manner they are using them in coursework.",
-  "evidenceLocator": "Source candidate verification notes (search snippet)",
+  "evidenceSnippetOriginal": "students must disclose to faculty if they are using generative AI platforms and in what manner they are using them in coursework.",
+  "evidenceLocator": "Firecrawl scrape of Columbia Business School Generative AI Policy page, student disclosure sentence",
   "evidenceType": "official_source",
-  "relevance": 0.7,
+  "relevance": 0.96,
   "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
   "citation": {
     "citationTitle": "Generative AI Policy | Students - Columbia Business School",

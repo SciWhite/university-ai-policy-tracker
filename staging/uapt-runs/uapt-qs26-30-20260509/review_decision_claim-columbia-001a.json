@@ -4,10 +4,10 @@
   "artifactType": "review_decision",
   "decisionId": "rd-claim-columbia-001a",
   "claimId": "claim-columbia-001a",
-  "decision": "needs_changes",
-  "reviewState": "needs_review",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
   "reviewerType": "openclaw_agent",
-  "reviewer": "policy-reviewer",
-  "notes": "Evidence locator is a search snippet/verification note, not direct source text. Columbia Provost source used Firecrawl after Cloudflare/WAF access issues, so this must be rebound from directly captured public source text before approval.",
-  "decidedAt": "2026-05-10T00:12:41Z"
+  "reviewer": "codex-firecrawl-review",
+  "notes": "Approved after Firecrawl captured direct Provost policy text supporting the policy scope and covered risk categories.",
+  "decidedAt": "2026-05-17T13:15:00.000Z"
 }

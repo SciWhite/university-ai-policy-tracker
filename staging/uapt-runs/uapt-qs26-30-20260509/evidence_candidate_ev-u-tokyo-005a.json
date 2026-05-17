@@ -10,10 +10,10 @@
   "sourceTitle": "Policies and Guidelines - utelecon",
   "sourceLanguage": "en",
   "snapshotHash": "7660b6c92219ee4b160f1ad493076ce9d65715193c1ab4f8bb8e621b14cf87fa",
-  "evidenceSnippetOriginal": "Policies and Guidelines index page on utelecon. Links to BYOD policy, generative AI information, AI tools notification, and other policies.",
-  "evidenceLocator": "Page content",
+  "evidenceSnippetOriginal": "Policies and Guidelines. Other. The University of Tokyo BYOD Policy. Information on Generative AI (ChatGPT, etc.). Notification to Students on the Use of AI Tools in Classes (ver. 1.0). Policy on the use of AI tools in classes. About Generative AI (ChatGPT, BingAI, Bard, Midjourney, Stable Diffusion, etc.).",
+  "evidenceLocator": "Firecrawl scrape of utelecon Policies and Guidelines index, Other section",
   "evidenceType": "official_source",
-  "relevance": 0.6,
+  "relevance": 0.92,
   "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
   "citation": {
     "citationTitle": "Policies and Guidelines - utelecon",

@@ -10,10 +10,10 @@
   "sourceTitle": "Best Practices for Responsible AI Use at Columbia - CUIT",
   "sourceLanguage": "en",
   "snapshotHash": "ced0e7ebd38edcec1a443cc23aef4c58518805e439fbb4d2c559ebaea32aa7e4",
-  "evidenceSnippetOriginal": "CUIT university-wide best practices for responsible AI use. Referenced from ai.ctl.columbia.edu hub. Applies to faculty, students, researchers, and staff.",
-  "evidenceLocator": "Source candidate verification notes",
+  "evidenceSnippetOriginal": "Columbia University Information Technology has released University-wide best practices for responsible AI use. The guidance applies to faculty, students, researchers, and staff, and reinforces that while AI can support productivity and discovery, accountability remains with the human using the tool.",
+  "evidenceLocator": "Firecrawl extraction from CUIT Best Practices for Responsible AI Use page, opening guidance paragraph",
   "evidenceType": "official_source",
-  "relevance": 0.6,
+  "relevance": 0.9,
   "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
   "citation": {
     "citationTitle": "Best Practices for Responsible AI Use at Columbia - CUIT",

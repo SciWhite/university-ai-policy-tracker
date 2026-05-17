@@ -8,8 +8,8 @@
   "claimType": "source_status",
   "claimText": "Columbia University Information Technology (CUIT) publishes university-wide best practices for responsible AI use applicable to faculty, students, researchers, and staff.",
   "sourceLanguage": "en",
-  "confidence": 0.6,
-  "reviewState": "needs_review",
+  "confidence": 0.87,
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-008a"
   ],

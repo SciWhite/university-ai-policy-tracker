@@ -4,10 +4,10 @@
   "runId": "uapt-institut-polytechnique-de-paris-20260510",
   "decisionId": "rd-polytechnique-teaching-ai",
   "claimId": "claim-polytechnique-teaching-ai",
-  "decision": "needs_changes",
-  "reviewState": "needs_review",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
   "reviewerType": "openclaw_agent",
-  "reviewer": "policy-reviewer",
-  "notes": "Supplementary teaching resource from member school (École polytechnique). It is relevant context, but policy specificity is too low to approve as an IP Paris policy claim without tighter source classification or a separate unit-level record.",
-  "decidedAt": "2026-05-10T00:14:30.000Z"
+  "reviewer": "codex-firecrawl-review",
+  "notes": "Approved after Firecrawl captured direct École polytechnique text. Claim was narrowed to member-school instructor-resource scope rather than an IP Paris-wide policy claim.",
+  "decidedAt": "2026-05-17T13:15:00.000Z"
 }

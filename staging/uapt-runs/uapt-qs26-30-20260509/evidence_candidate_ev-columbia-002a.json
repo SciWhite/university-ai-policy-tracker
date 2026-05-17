@@ -10,10 +10,10 @@
   "sourceTitle": "Columbia University AI Guidelines",
   "sourceLanguage": "en",
   "snapshotHash": "fecc9e9b8b4b43144a67be761f61bb13ca7eb11de76a95098c57d3b38069f548",
-  "evidenceSnippetOriginal": "Columbia University AI Guidelines hub from CTL. Links to Provost policy, academic integrity resources, CUIT resources, best practices for responsible AI use. Central hub for Columbia AI resources.",
-  "evidenceLocator": "Source candidate verification notes",
+  "evidenceSnippetOriginal": "Learn more about Columbia’s AI policies and guidelines using the below resources from the Center for Teaching and Learning, the Office of the Provost, and CUIT. Columbia’s AI Policy & Guidelines. Read the Generative AI Policy developed for the Columbia community by the Office of the Provost. Academic Integrity & AI. Technical Support & CUIT Resources. Best Practices for Responsible AI Use at Columbia.",
+  "evidenceLocator": "Firecrawl scrape of Columbia University AI Guidelines page, hub intro and linked resource headings",
   "evidenceType": "official_source",
-  "relevance": 0.75,
+  "relevance": 0.91,
   "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
   "citation": {
     "citationTitle": "Columbia University AI Guidelines",

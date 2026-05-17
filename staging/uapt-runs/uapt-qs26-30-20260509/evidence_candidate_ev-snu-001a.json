@@ -10,10 +10,10 @@
   "sourceTitle": "서울대학교 AI 가이드라인 제정 전문 국문/영문",
   "sourceLanguage": "ko",
   "snapshotHash": "480d60a7490a14061097a96528d7a4beb39c2f0e072460b79d9b25f5774adaf1",
-  "evidenceSnippetOriginal": "서울대학교 AI 가이드라인 제정 전문 국문/영문 PDF download page on snu.ac.kr official downloads section.",
-  "evidenceLocator": "Page content (download page for official guidelines PDF)",
+  "evidenceSnippetOriginal": "「서울대학교 AI 가이드라인」 제정 전문 국·영문 PDF 파일입니다.",
+  "evidenceLocator": "Firecrawl extraction of SNU downloads page body text",
   "evidenceType": "official_source",
-  "relevance": 0.6,
+  "relevance": 0.91,
   "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
   "citation": {
     "citationTitle": "서울대학교 AI 가이드라인 제정 전문 국문/영문",
@@ -22,5 +22,6 @@
     "retrievedAt": "2026-05-09T22:32:13.120Z",
     "snapshotHash": "480d60a7490a14061097a96528d7a4beb39c2f0e072460b79d9b25f5774adaf1",
     "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
-  }
+  },
+  "evidenceSnippetDisplay": "This is the Korean/English PDF file set for the full text of the enacted Seoul National University AI Guidelines."
 }

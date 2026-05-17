@@ -8,8 +8,8 @@
   "claimType": "academic_integrity",
   "claimText": "Columbia Business School requires students to disclose to faculty their use of generative AI platforms and the manner of use in coursework.",
   "sourceLanguage": "en",
-  "confidence": 0.7,
-  "reviewState": "needs_review",
+  "confidence": 0.93,
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-006a"
   ],
