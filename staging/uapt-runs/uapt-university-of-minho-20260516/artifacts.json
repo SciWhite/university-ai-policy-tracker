@@ -1,0 +1,442 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-minho-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-university-of-minho-20260516",
+      "entityType": "university",
+      "entitySlug": "university-of-minho",
+      "startedAt": "2026-05-17T01:48:00.000Z",
+      "endedAt": "2026-05-17T01:58:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:uminho.pt (ChatGPT OR \"inteligência artificial generativa\" OR \"IA generativa\" OR \"generative AI\") (política OR regulamento OR orientações OR estudantes OR avaliação OR ensino) \"Universidade do Minho\"",
+          "domain": "uminho.pt",
+          "resultCount": 5,
+          "notes": "Firecrawl search found official UMinho Open Science guidance about responsible generative-AI use in research, an official IAedu access notice, an IDEA-UMinho ChatGPT event PDF, and news/repository material."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uminho.pt \"IA generativa\" \"Universidade do Minho\" \"Diretrizes\" OR \"orientações\"",
+          "domain": "uminho.pt",
+          "resultCount": 8,
+          "notes": "Search confirmed the Open Science page as the strongest official UMinho source for research guidance and returned category/tag duplicates plus research publications."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uminho.pt \"ChatGPT\" \"Universidade do Minho\" \"avaliação\" \"estudantes\"",
+          "domain": "uminho.pt",
+          "resultCount": 4,
+          "notes": "Search returned IDEA-UMinho newsletter and PDF event material about ChatGPT debates, but no central binding student assessment policy was verified."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "openscience.usdb.uminho.pt",
+          "resultCount": 1,
+          "notes": "robots.txt allows all user agents except selected commercial bots; the public Open Science page was fetched successfully."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.sas.uminho.pt",
+          "resultCount": 1,
+          "notes": "The public SASUM IAedu notice was fetched from an official University of Minho social-services site. Its robots path returned the site 404 page rather than a robots policy, so this crawl only fetched the directly discovered public article."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-uminho-openscience-genai-research",
+        "sc-uminho-sas-iaedu-access",
+        "sc-uminho-idea-chatgpt-debate-pdf"
+      ],
+      "rejectionIds": [
+        "sr-uminho-idea-chatgpt-debate-pdf"
+      ],
+      "summary": "Official-source discovery located a UMinho Open Science page summarizing responsible generative-AI research guidelines and a SASUM official notice about protected IAedu access for the UMinho community. An IDEA-UMinho ChatGPT PDF was rejected as an event/debate notice rather than direct policy evidence. No central binding university-wide student AI assessment policy was verified in this crawl."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uminho-openscience-genai-research",
+      "entityType": "university",
+      "entitySlug": "university-of-minho",
+      "sourceUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+      "finalUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+      "sourceTitle": "Diretrizes sobre a utilização responsável da IA generativa na investigação",
+      "sourceLanguage": "pt-PT",
+      "sourceType": "research_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uminho.pt \"IA generativa\" \"Universidade do Minho\" \"Diretrizes\" OR \"orientações\"",
+      "discoveredAt": "2026-05-17T01:49:00.000Z",
+      "officialDomainConfidence": 0.97,
+      "aiRelevanceScore": 0.96,
+      "policySpecificityScore": 0.78,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-17T01:54:00.000Z",
+      "verificationNotes": "Official UMinho Open Science page from the Gabinete de Gestão de Informação Científica, Repositórios e Ciência Aberta dos Serviços de Documentação e Bibliotecas da Universidade do Minho. It summarizes responsible generative-AI research guidance, but the claims are scoped as research guidance/reference, not a binding UMinho policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uminho-sas-iaedu-access",
+      "entityType": "university",
+      "entitySlug": "university-of-minho",
+      "sourceUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+      "finalUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+      "sourceTitle": "Comunidade da UMinho com acesso gratuito à plataforma IAedu",
+      "sourceLanguage": "pt-PT",
+      "sourceType": "approved_tools",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uminho.pt (ChatGPT OR \"inteligência artificial generativa\" OR \"IA generativa\" OR \"generative AI\") (política OR regulamento OR orientações OR estudantes OR avaliação OR ensino) \"Universidade do Minho\"",
+      "discoveredAt": "2026-05-17T01:49:30.000Z",
+      "officialDomainConfidence": 0.96,
+      "aiRelevanceScore": 0.94,
+      "policySpecificityScore": 0.72,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-17T01:56:00.000Z",
+      "verificationNotes": "Official SASUM page labeled as the official information site of the Serviços de Acção Social da Universidade do Minho. It announces UMinho community access to IAedu and states responsible and secure use language.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uminho-idea-chatgpt-debate-pdf",
+      "entityType": "university",
+      "entitySlug": "university-of-minho",
+      "sourceUrl": "https://idea.uminho.pt/pt/ideadigital/Documents/Chat%20GPT.pdf",
+      "finalUrl": "https://idea.uminho.pt/pt/ideadigital/Documents/Chat%20GPT.pdf",
+      "sourceTitle": "PARTILHANDO IDEIAS :: CHATGPT hoje",
+      "sourceLanguage": "pt-PT",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uminho.pt \"ChatGPT\" \"Universidade do Minho\" \"avaliação\" \"estudantes\"",
+      "discoveredAt": "2026-05-17T01:50:00.000Z",
+      "officialDomainConfidence": 0.96,
+      "aiRelevanceScore": 0.8,
+      "policySpecificityScore": 0.28,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-17T01:55:00.000Z",
+      "verificationNotes": "Official IDEA-UMinho PDF announces February ChatGPT debates and mentions academic-integrity and assessment-methodology issues, but it is an event notice and does not provide operative university guidance.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-uminho-idea-chatgpt-debate-pdf",
+      "sourceCandidateId": "sc-uminho-idea-chatgpt-debate-pdf",
+      "entityType": "university",
+      "entitySlug": "university-of-minho",
+      "sourceUrl": "https://idea.uminho.pt/pt/ideadigital/Documents/Chat%20GPT.pdf",
+      "finalUrl": "https://idea.uminho.pt/pt/ideadigital/Documents/Chat%20GPT.pdf",
+      "rejectedAt": "2026-05-17T01:55:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "A Universidade do Minho convida toda a academia a juntar-se a dois debates, a terem lugar no campus de Azurém e de Gualtar, respetivamente nos dias 8 e 9 de fevereiro.",
+      "notes": "Useful discovery context for ChatGPT awareness, but not used as policy evidence because it is an event invitation."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "cp-university-of-minho-20260516",
+      "createdAt": "2026-05-17T01:58:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-minho",
+          "sourceCandidateId": "sc-uminho-openscience-genai-research",
+          "sourceUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+          "sourceTitle": "Diretrizes sobre a utilização responsável da IA generativa na investigação",
+          "sourceLanguage": "pt-PT",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "generative AI in research",
+            "researcher responsibility",
+            "reporting AI use",
+            "sensitive information",
+            "organizational guidance"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-minho",
+          "sourceCandidateId": "sc-uminho-sas-iaedu-access",
+          "sourceUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+          "sourceTitle": "Comunidade da UMinho com acesso gratuito à plataforma IAedu",
+          "sourceLanguage": "pt-PT",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "IAedu access",
+            "responsible use",
+            "secure use",
+            "data not used for model training"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Do not infer a university-wide binding assessment policy from event, news, or debate material.",
+        "Use only official UMinho domains and preserve Portuguese snippets as canonical evidence."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uminho-openscience-genai-research",
+      "sourceCandidateId": "sc-uminho-openscience-genai-research",
+      "sourceUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+      "finalUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+      "attemptedAt": "2026-05-17T01:54:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 65123,
+      "contentHash": "39396f4e0cc46c91fd18e175b550bcfd1399b0d6023b453a47005ece5ab2560e",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-minho-20260516/snapshots/uminho-openscience-genai-research.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uminho-sas-iaedu-access",
+      "sourceCandidateId": "sc-uminho-sas-iaedu-access",
+      "sourceUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+      "finalUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+      "attemptedAt": "2026-05-17T01:56:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 445,
+      "contentHash": "da9b2b8e234a6402e43995e41be45da924091764f09f0258837e7995dd563d4c",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-minho-20260516/snapshots/uminho-sas-iaedu-access.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-uminho-openscience-genai-research",
+      "sourceCandidateId": "sc-uminho-openscience-genai-research",
+      "fetchAttemptId": "fa-uminho-openscience-genai-research",
+      "sourceUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+      "finalUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+      "sourceTitle": "Diretrizes sobre a utilização responsável da IA generativa na investigação",
+      "sourceLanguage": "pt-PT",
+      "contentHash": "39396f4e0cc46c91fd18e175b550bcfd1399b0d6023b453a47005ece5ab2560e",
+      "fetchedAt": "2026-05-17T01:54:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-minho-20260516/snapshots/uminho-openscience-genai-research.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-uminho-sas-iaedu-access",
+      "sourceCandidateId": "sc-uminho-sas-iaedu-access",
+      "fetchAttemptId": "fa-uminho-sas-iaedu-access",
+      "sourceUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+      "finalUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+      "sourceTitle": "Comunidade da UMinho com acesso gratuito à plataforma IAedu",
+      "sourceLanguage": "pt-PT",
+      "contentHash": "da9b2b8e234a6402e43995e41be45da924091764f09f0258837e7995dd563d4c",
+      "fetchedAt": "2026-05-17T01:56:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-minho-20260516/snapshots/uminho-sas-iaedu-access.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-uminho-research-genai-responsible-use",
+      "entityType": "university",
+      "entitySlug": "university-of-minho",
+      "claimType": "research",
+      "claimText": "University of Minho Open Science guidance summarizes responsible generative-AI use in research, including human responsibility for research outputs, reporting generative-AI use, avoiding import of sensitive information into AI tools, and not using these tools for tasks with direct impact on third parties such as peer review or proposal evaluation.",
+      "normalizedValue": "research_guidance_responsible_genai_use",
+      "sourceLanguage": "pt-PT",
+      "confidence": 0.82,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uminho-research-genai-responsible-use"
+      ],
+      "citation": {
+        "citationTitle": "Diretrizes sobre a utilização responsável da IA generativa na investigação",
+        "sourceUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-minho.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-minho",
+        "publisher": "Projetos Open Science da Universidade do Minho",
+        "retrievedAt": "2026-05-17T01:54:00.000Z",
+        "snapshotHash": "39396f4e0cc46c91fd18e175b550bcfd1399b0d6023b453a47005ece5ab2560e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-uminho-iaedu-access",
+      "entityType": "university",
+      "entitySlug": "university-of-minho",
+      "claimType": "ai_tool_treatment",
+      "claimText": "An official UMinho SASUM notice says the University of Minho community has free protected access to IAedu in a pilot phase, can authenticate with institutional credentials, and that the initiative is framed as responsible and secure because data are not used to train AI language models.",
+      "normalizedValue": "iaedu_access_for_uminho_community",
+      "sourceLanguage": "pt-PT",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uminho-iaedu-access"
+      ],
+      "citation": {
+        "citationTitle": "Comunidade da UMinho com acesso gratuito à plataforma IAedu",
+        "sourceUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-minho.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-minho",
+        "publisher": "Serviços de Acção Social da Universidade do Minho",
+        "retrievedAt": "2026-05-17T01:56:00.000Z",
+        "snapshotHash": "da9b2b8e234a6402e43995e41be45da924091764f09f0258837e7995dd563d4c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uminho-research-genai-responsible-use",
+      "claimId": "claim-uminho-research-genai-responsible-use",
+      "sourceSnapshotId": "ss-uminho-openscience-genai-research",
+      "sourceUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+      "finalUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+      "sourceTitle": "Diretrizes sobre a utilização responsável da IA generativa na investigação",
+      "sourceLanguage": "pt-PT",
+      "snapshotHash": "39396f4e0cc46c91fd18e175b550bcfd1399b0d6023b453a47005ece5ab2560e",
+      "evidenceSnippetOriginal": "As recomendações são dirigidas a 3 atores – investigadores, organizações de investigação e financiadores – e têm um pendor muito prático, desde logo destacando que os seres humanos (e não a IA) são responsáveis pelos resultados de investigação ... o uso de ferramentas de IA generativa deve ser reportado; informação sensível não deve ser importada para ferramentas de IA ... e que estas ferramentas não devem ser usadas para tarefas com impacto direto em terceiros, ex. revisão por pares e avaliação de propostas de investigação.",
+      "evidenceSnippetDisplay": "The guidance says humans, not AI, are responsible for research outputs; generative-AI use should be reported; sensitive information should not be imported into AI tools; and these tools should not be used for peer review or proposal evaluation.",
+      "evidenceLocator": "Main article paragraphs describing recommendations for researchers, organizations, and funders",
+      "evidenceType": "official_source",
+      "relevance": 0.91,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Diretrizes sobre a utilização responsável da IA generativa na investigação",
+        "sourceUrl": "https://openscience.usdb.uminho.pt/diretrizes-sobre-a-utilizacao-responsavel-da-ia-generativa-na-investigacao/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-minho.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-minho",
+        "publisher": "Projetos Open Science da Universidade do Minho",
+        "retrievedAt": "2026-05-17T01:54:00.000Z",
+        "snapshotHash": "39396f4e0cc46c91fd18e175b550bcfd1399b0d6023b453a47005ece5ab2560e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uminho-iaedu-access",
+      "claimId": "claim-uminho-iaedu-access",
+      "sourceSnapshotId": "ss-uminho-sas-iaedu-access",
+      "sourceUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+      "finalUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+      "sourceTitle": "Comunidade da UMinho com acesso gratuito à plataforma IAedu",
+      "sourceLanguage": "pt-PT",
+      "snapshotHash": "da9b2b8e234a6402e43995e41be45da924091764f09f0258837e7995dd563d4c",
+      "evidenceSnippetOriginal": "A Universidade do Minho aderiu ao projeto IAedu ... que nesta fase-piloto garante a toda a nossa Comunidade o acesso gratuito e protegido a várias ferramentas de Inteligência Artificial a partir de um só portal. Os membros desta Academia podem aceder a chat.iaedu.pt, selecionar o logótipo da UMinho, autenticar-se com as respetivas credenciais institucionais ... Esta iniciativa visa democratizar o uso da IA, sendo baseada numa política de utilização responsável ... e segura (os dados não são usados para treino dos modelos de linguagem IA).",
+      "evidenceSnippetDisplay": "The SASUM notice says UMinho joined IAedu, giving its community free protected access through institutional login, and frames the initiative as responsible and secure because data are not used to train AI language models.",
+      "evidenceLocator": "Article body after title and timestamp",
+      "evidenceType": "official_source",
+      "relevance": 0.93,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Comunidade da UMinho com acesso gratuito à plataforma IAedu",
+        "sourceUrl": "https://www.sas.uminho.pt/noticias/comunidade-da-uminho-com-acesso-gratuito-%C3%A0-plataforma-iaedu-6928",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-minho.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-minho",
+        "publisher": "Serviços de Acção Social da Universidade do Minho",
+        "retrievedAt": "2026-05-17T01:56:00.000Z",
+        "snapshotHash": "da9b2b8e234a6402e43995e41be45da924091764f09f0258837e7995dd563d4c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-uminho-research-genai-responsible-use",
+      "claimId": "claim-uminho-research-genai-responsible-use",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-worker",
+      "notes": "Approved as a narrow research-guidance candidate. It should not be promoted as a binding university-wide AI policy without human review and stronger institutional policy source evidence.",
+      "decidedAt": "2026-05-17T01:59:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-uminho-iaedu-access",
+      "claimId": "claim-uminho-iaedu-access",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-worker",
+      "notes": "Approved as a narrow official-notice claim about IAedu access and stated data-training treatment. It is not evidence of a full UMinho generative-AI policy.",
+      "decidedAt": "2026-05-17T01:59:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-minho-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-university-of-minho-20260516",
+      "title": "University of Minho Generative AI Source Review",
+      "generatedAt": "2026-05-17T02:00:00.000Z",
+      "draftPath": "content/reports/2026-05/university-of-minho-generative-ai-source-review.mdx",
+      "summary": "Staged source review for University of Minho found official Portuguese-language evidence for responsible generative-AI research guidance and protected IAedu access for the UMinho community. No central binding university-wide student AI assessment policy was verified.",
+      "referencedClaimIds": [
+        "claim-uminho-research-genai-responsible-use",
+        "claim-uminho-iaedu-access"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-minho.json",
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-minho.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Claims are scoped to the cited UMinho Open Science and SASUM sources; event/debate material was not used as policy evidence.",
+        "No human review has been performed and no staged claim is canonical."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

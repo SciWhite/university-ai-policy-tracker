@@ -1,0 +1,418 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-hacettepe-university-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-hacettepe-university-20260516",
+      "entityType": "university",
+      "entitySlug": "hacettepe-university",
+      "startedAt": "2026-05-17T01:54:00.000Z",
+      "endedAt": "2026-05-17T01:58:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:hacettepe.edu.tr (ChatGPT OR \"generative AI\" OR \"yapay zeka\" OR \"üretken yapay zeka\" OR \"Artificial Intelligence\") (policy OR yönerge OR rehber OR etik OR akademik dürüstlük OR sınav OR plagiarism) Hacettepe",
+          "domain": "hacettepe.edu.tr",
+          "resultCount": 5,
+          "notes": "Firecrawl search returned the official Hacettepe generative AI policy PDF hosted by the Ataturk Institute domain, an official YDYO generative AI coordination page, and other lower-scope or publication-related Hacettepe pages."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "ait.hacettepe.edu.tr",
+          "resultCount": 1,
+          "notes": "Robots.txt permits the directly discovered PDF path; the PDF was fetched successfully with HTTP 200 and parsed for Turkish text."
+        },
+        {
+          "method": "site_search",
+          "query": "site:ydyo.hacettepe.edu.tr \"Üretken Yapay Zeka\" Hacettepe",
+          "domain": "ydyo.hacettepe.edu.tr",
+          "resultCount": 1,
+          "notes": "The official YDYO page contains school-level generative AI policy and guide links, so it was recorded as limited context and not used for university-wide claims."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-hacettepe-ai-policy-pdf",
+        "sc-hacettepe-ydyo-genai-page"
+      ],
+      "rejectionIds": [
+        "sr-hacettepe-ydyo-unit-scope"
+      ],
+      "summary": "Official-source discovery found a university-wide Hacettepe PDF titled 'Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası' and one school-level YDYO generative AI page. Claims are drawn only from the university-wide PDF."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-hacettepe-ai-policy-pdf",
+      "entityType": "university",
+      "entitySlug": "hacettepe-university",
+      "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "finalUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "sourceTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+      "sourceLanguage": "tr",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:hacettepe.edu.tr (ChatGPT OR \"generative AI\" OR \"yapay zeka\" OR \"üretken yapay zeka\" OR \"Artificial Intelligence\") (policy OR yönerge OR rehber OR etik OR akademik dürüstlük OR sınav OR plagiarism) Hacettepe",
+      "discoveredAt": "2026-05-17T01:54:30.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.94,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-17T01:56:00.000Z",
+      "verificationNotes": "Official Hacettepe University PDF on a hacettepe.edu.tr subdomain. The document gives a policy and guide for generative AI in education and teaching processes.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-hacettepe-ydyo-genai-page",
+      "entityType": "university",
+      "entitySlug": "hacettepe-university",
+      "sourceUrl": "https://ydyo.hacettepe.edu.tr/tr/menu/%3Cspan_style=fontsize_14px;%3E_uretken-282",
+      "finalUrl": "https://ydyo.hacettepe.edu.tr/tr/menu/%3Cspan_style=fontsize_14px;%3E_uretken-282",
+      "sourceTitle": "Üretken Yapay Zeka (YDYO-ÜYZ) Koordinatörlüğü",
+      "sourceLanguage": "tr",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "site_search",
+      "queryUsed": "site:ydyo.hacettepe.edu.tr \"Üretken Yapay Zeka\" Hacettepe",
+      "discoveredAt": "2026-05-17T01:55:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.88,
+      "policySpecificityScore": 0.34,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-17T01:57:00.000Z",
+      "verificationNotes": "Official Hacettepe School of Foreign Languages page; relevant but unit-scoped, so not used as evidence for university-wide policy claims.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-hacettepe-ydyo-unit-scope",
+      "sourceCandidateId": "sc-hacettepe-ydyo-genai-page",
+      "entityType": "university",
+      "entitySlug": "hacettepe-university",
+      "sourceUrl": "https://ydyo.hacettepe.edu.tr/tr/menu/%3Cspan_style=fontsize_14px;%3E_uretken-282",
+      "finalUrl": "https://ydyo.hacettepe.edu.tr/tr/menu/%3Cspan_style=fontsize_14px;%3E_uretken-282",
+      "rejectedAt": "2026-05-17T01:57:00.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Yabancı Diller Yüksekokulu Üretken Yapay Zekâ (ÜYZ) Politikası yönetim, öğretim elemanları ve öğrenciler için akademik, pedagojik, etik, adil ve çevresel sorumluluk içeren bir kullanım çerçevesi sunmaktadır.",
+      "notes": "The page is official and AI-policy-specific, but it is scoped to Yabancı Diller Yüksekokulu rather than the whole university."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "plan-hacettepe-university-20260516",
+      "createdAt": "2026-05-17T01:55:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "hacettepe-university",
+          "sourceCandidateId": "sc-hacettepe-ai-policy-pdf",
+          "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+          "sourceTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+          "sourceLanguage": "tr",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "academic_integrity",
+            "teaching"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after a verified university-wide official source yields citation-ready evidence for generative AI use in education.",
+        "Do not use unit-scoped Hacettepe pages for university-wide claims."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-hacettepe-ai-policy-pdf",
+      "sourceCandidateId": "sc-hacettepe-ai-policy-pdf",
+      "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "finalUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "attemptedAt": "2026-05-17T01:55:31.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 6586,
+      "contentHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+      "normalizedTextStorageKey": "openclaw/uapt-hacettepe-university-20260516/source-snapshots/hacettepe-ai-policy-pdf.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snapshot-hacettepe-ai-policy-pdf",
+      "sourceCandidateId": "sc-hacettepe-ai-policy-pdf",
+      "fetchAttemptId": "fetch-hacettepe-ai-policy-pdf",
+      "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "finalUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "sourceTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+      "sourceLanguage": "tr",
+      "contentHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+      "fetchedAt": "2026-05-17T01:55:31.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-hacettepe-university-20260516/source-snapshots/hacettepe-ai-policy-pdf.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-hacettepe-genai-policy-framework",
+      "entityType": "university",
+      "entitySlug": "hacettepe-university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Hacettepe University has a university-wide Turkish policy/guide for including generative AI in education and teaching within a legal, ethical, conscious, and responsible-use framework.",
+      "normalizedValue": "university_guidance_exists",
+      "sourceLanguage": "tr",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-hacettepe-genai-policy-framework"
+      ],
+      "citation": {
+        "citationTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+        "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/hacettepe-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/hacettepe-university",
+        "publisher": "Hacettepe University",
+        "retrievedAt": "2026-05-17T01:55:31.000Z",
+        "snapshotHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-hacettepe-student-responsible-use",
+      "entityType": "university",
+      "entitySlug": "hacettepe-university",
+      "claimType": "academic_integrity",
+      "claimText": "Hacettepe's guidance says students should use generative AI models legally, ethically, and responsibly, consistently with the university's learning, assessment, and academic integrity policies and with provider terms.",
+      "normalizedValue": "responsible_use_consistent_with_academic_integrity",
+      "sourceLanguage": "tr",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-hacettepe-student-responsible-use"
+      ],
+      "citation": {
+        "citationTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+        "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/hacettepe-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/hacettepe-university",
+        "publisher": "Hacettepe University",
+        "retrievedAt": "2026-05-17T01:55:31.000Z",
+        "snapshotHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-hacettepe-unauthorized-use-risk",
+      "entityType": "university",
+      "entitySlug": "hacettepe-university",
+      "claimType": "academic_integrity",
+      "claimText": "Hacettepe's guidance warns that unauthorized use of generative AI language models or tools may be a form of cheating and may cause academic misuse.",
+      "normalizedValue": "unauthorized_use_may_be_cheating",
+      "sourceLanguage": "tr",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-hacettepe-unauthorized-use-risk"
+      ],
+      "citation": {
+        "citationTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+        "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/hacettepe-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/hacettepe-university",
+        "publisher": "Hacettepe University",
+        "retrievedAt": "2026-05-17T01:55:31.000Z",
+        "snapshotHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-hacettepe-genai-policy-framework",
+      "claimId": "claim-hacettepe-genai-policy-framework",
+      "sourceSnapshotId": "snapshot-hacettepe-ai-policy-pdf",
+      "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "finalUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "sourceTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+      "sourceLanguage": "tr",
+      "snapshotHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+      "evidenceSnippetOriginal": "ÜYZ’nin eğitim ve öğretim süreçleri ve bağlı tüm faaliyet alanları içerisine öğrenme deneyimini zenginleştirecek biçimde, yasal, etik, bilinçli ve sorumlu kullanım çerçevesi içerisinde dahil edilmesini",
+      "evidenceSnippetDisplay": "The policy includes incorporating generative AI into education and teaching processes within a legal, ethical, conscious, and responsible-use framework.",
+      "evidenceLocator": "Policy section, page 1",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+        "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/hacettepe-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/hacettepe-university",
+        "publisher": "Hacettepe University",
+        "retrievedAt": "2026-05-17T01:55:31.000Z",
+        "snapshotHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-hacettepe-student-responsible-use",
+      "claimId": "claim-hacettepe-student-responsible-use",
+      "sourceSnapshotId": "snapshot-hacettepe-ai-policy-pdf",
+      "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "finalUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "sourceTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+      "sourceLanguage": "tr",
+      "snapshotHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+      "evidenceSnippetOriginal": "Öğrenciler, ÜYZ modellerini, Hacettepe Üniversitesi’nin öğrenme, değerlendirme ve akademik dürüstlük politikaları ve süreçleri ile ÜYZ sağlayıcılarının kullanım şartlarıyla tutarlı olarak yasal, etik ve sorumlu biçimde kullanmalıdır.",
+      "evidenceSnippetDisplay": "Students should use generative AI models legally, ethically, and responsibly, consistently with Hacettepe's learning, assessment, and academic integrity policies and provider terms.",
+      "evidenceLocator": "Öğrenciler için Öneriler, item 3, page 4",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+        "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/hacettepe-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/hacettepe-university",
+        "publisher": "Hacettepe University",
+        "retrievedAt": "2026-05-17T01:55:31.000Z",
+        "snapshotHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-hacettepe-unauthorized-use-risk",
+      "claimId": "claim-hacettepe-unauthorized-use-risk",
+      "sourceSnapshotId": "snapshot-hacettepe-ai-policy-pdf",
+      "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "finalUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+      "sourceTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+      "sourceLanguage": "tr",
+      "snapshotHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+      "evidenceSnippetOriginal": "ÜYZ dil modellerinin veya araçlarının yetkisiz kullanımı bir tür hile olabilir ve akademik kötüye kullanıma neden olabilir.",
+      "evidenceSnippetDisplay": "Unauthorized use of generative AI language models or tools may be a form of cheating and may cause academic misuse.",
+      "evidenceLocator": "Öğrenciler için Öneriler, item 6, page 5",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Eğitim ve Öğretim Süreçlerinde Üretken Yapay Zeka Kullanım Politikası",
+        "sourceUrl": "https://ait.hacettepe.edu.tr/yapayzekarehber210125.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/hacettepe-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/hacettepe-university",
+        "publisher": "Hacettepe University",
+        "retrievedAt": "2026-05-17T01:55:31.000Z",
+        "snapshotHash": "48934db75d0166632ee4701011ffeabb384c315d4aedeca1ec254b0a610abd2c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "review-hacettepe-genai-policy-framework",
+      "claimId": "claim-hacettepe-genai-policy-framework",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-worker",
+      "notes": "Approved as a staged candidate because the claim is limited to the existence and scope of an official Hacettepe generative AI education policy/guide.",
+      "decidedAt": "2026-05-17T01:59:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "review-hacettepe-student-responsible-use",
+      "claimId": "claim-hacettepe-student-responsible-use",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-worker",
+      "notes": "Approved as a staged candidate because the claim closely follows the student guidance wording and avoids converting 'should' into a stronger mandate.",
+      "decidedAt": "2026-05-17T01:59:30.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "review-hacettepe-unauthorized-use-risk",
+      "claimId": "claim-hacettepe-unauthorized-use-risk",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-worker",
+      "notes": "Approved as a staged candidate because the claim preserves the source's modal language that unauthorized use may be cheating and may cause academic misuse.",
+      "decidedAt": "2026-05-17T02:00:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-hacettepe-university-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-hacettepe-university-20260516",
+      "title": "Hacettepe University Generative AI Education Policy Source Review",
+      "generatedAt": "2026-05-17T02:00:30.000Z",
+      "draftPath": "content/reports/2026-05/hacettepe-university-generative-ai-policy.mdx",
+      "summary": "A university-wide official Hacettepe PDF provides Turkish evidence for generative AI use in education within a legal, ethical, conscious, and responsible-use framework, student responsible-use expectations, and academic-integrity risk for unauthorized use. A YDYO unit page was found but excluded from university-wide claims because it is school-scoped.",
+      "referencedClaimIds": [
+        "claim-hacettepe-genai-policy-framework",
+        "claim-hacettepe-student-responsible-use",
+        "claim-hacettepe-unauthorized-use-risk"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/hacettepe-university.json",
+        "https://eduaipolicy.org/api/public/v1/universities/hacettepe-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The staged claims rely on one official Turkish PDF and should not be read as a complete inventory of all Hacettepe unit-level generative AI materials."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

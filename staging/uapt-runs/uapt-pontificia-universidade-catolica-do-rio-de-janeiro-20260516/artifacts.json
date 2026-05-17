@@ -1,0 +1,454 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-puc-rio-20260516",
+      "entityType": "university",
+      "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+      "startedAt": "2026-05-16T20:00:00.000Z",
+      "endedAt": "2026-05-16T20:35:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:puc-rio.br PUC-Rio ChatGPT inteligencia artificial generativa alunos professores politica orientacao avaliacao privacidade",
+          "domain": "puc-rio.br",
+          "resultCount": 10,
+          "notes": "Official-domain search found the PUC-Rio privacy policy PDF, the official PUC-Behring AI Institute page, CCE course pages, degree-program pages, and an official CTC news article about a ChatGPT detector."
+        },
+        {
+          "method": "site_search",
+          "query": "site:puc-rio.br ChatGPT PUC-Rio avaliacao alunos professores",
+          "domain": "puc-rio.br",
+          "resultCount": 10,
+          "notes": "Official-domain search mostly returned dissertations, journal pages, course offerings, and research outputs rather than university-wide student or teaching policy."
+        },
+        {
+          "method": "site_search",
+          "query": "site:puc-rio.br Normas Corpo Discente PUC-Rio plagio fraude",
+          "domain": "puc-rio.br",
+          "resultCount": 10,
+          "notes": "Search found department-specific or program-specific academic integrity material. These were not used for university-wide AI policy claims."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.puc-rio.br",
+          "resultCount": 2,
+          "notes": "The root robots.txt URL returned 404; the worker limited fetches to directly discovered public PUC-Rio pages and PDFs."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.ctc.puc-rio.br",
+          "resultCount": 1,
+          "notes": "The CTC robots.txt allowed the fetched public article path; disallowed intranet and upload paths were not crawled."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-puc-rio-privacy-policy",
+        "sc-puc-rio-ai-institute",
+        "sc-puc-rio-ctc-gotcha-gpt"
+      ],
+      "rejectionIds": [
+        "sr-puc-rio-ctc-gotcha-gpt-limited",
+        "sr-puc-rio-cce-ai-courses-limited"
+      ],
+      "summary": "Official-source discovery found a university-wide privacy policy PDF and an official PUC-Rio AI Institute page. No central public university-wide generative-AI use policy for students or teaching was identified in this pass; course pages and a CTC news item were kept as limited context rather than policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-puc-rio-privacy-policy",
+      "entityType": "university",
+      "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+      "sourceUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+      "finalUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+      "sourceTitle": "Privacy Policy PUC-Rio",
+      "sourceLanguage": "en",
+      "sourceType": "it_security_privacy",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:puc-rio.br PUC-Rio ChatGPT inteligencia artificial generativa alunos professores politica orientacao avaliacao privacidade",
+      "discoveredAt": "2026-05-16T20:03:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.35,
+      "policySpecificityScore": 0.9,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T20:10:00.000Z",
+      "verificationNotes": "Official PUC-Rio PDF describing the university's personal data processing policy, website privacy notice, LGPD actors, and data protection committee duties.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-puc-rio-ai-institute",
+      "entityType": "university",
+      "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+      "sourceUrl": "https://www.puc-rio.br/ia",
+      "finalUrl": "https://www.puc-rio.br/sobrepuc/depto/institutos/ibia/",
+      "sourceTitle": "Instituto PUC-Behring de Inteligência Artificial",
+      "sourceLanguage": "pt-BR",
+      "sourceType": "research_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:puc-rio.br PUC-Rio ChatGPT inteligencia artificial generativa alunos professores politica orientacao avaliacao privacidade",
+      "discoveredAt": "2026-05-16T20:04:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.62,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-16T20:18:00.000Z",
+      "verificationNotes": "Official PUC-Rio institute page describing the PUC-Behring AI Institute, its mission, responsible AI framing, and teaching, research/development, and community pillars.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-puc-rio-ctc-gotcha-gpt",
+      "entityType": "university",
+      "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+      "sourceUrl": "https://www.ctc.puc-rio.br/gotcha-gpt-professor-do-departamento-de-quimica-cria-ferramenta-de-ia-para-fiscalizar-uso-etico-do-chatgpt",
+      "finalUrl": "https://www.ctc.puc-rio.br/gotcha-gpt-professor-do-departamento-de-quimica-cria-ferramenta-de-ia-para-fiscalizar-uso-etico-do-chatgpt",
+      "sourceTitle": "Gotcha GPT: professor do Departamento de Química cria ferramenta de IA para fiscalizar uso ético do ChatGPT",
+      "sourceLanguage": "pt-BR",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:puc-rio.br PUC-Rio ChatGPT inteligencia artificial generativa alunos professores politica orientacao avaliacao privacidade",
+      "discoveredAt": "2026-05-16T20:05:00.000Z",
+      "officialDomainConfidence": 0.96,
+      "aiRelevanceScore": 0.88,
+      "policySpecificityScore": 0.28,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-16T20:26:00.000Z",
+      "verificationNotes": "Official CTC/PUC-Rio article, but it describes a professor's tool and practical tips rather than an institutional AI-use policy.",
+      "rejectionReason": "research_showcase_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-puc-rio-ctc-gotcha-gpt-limited",
+      "sourceCandidateId": "sc-puc-rio-ctc-gotcha-gpt",
+      "entityType": "university",
+      "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+      "sourceUrl": "https://www.ctc.puc-rio.br/gotcha-gpt-professor-do-departamento-de-quimica-cria-ferramenta-de-ia-para-fiscalizar-uso-etico-do-chatgpt",
+      "finalUrl": "https://www.ctc.puc-rio.br/gotcha-gpt-professor-do-departamento-de-quimica-cria-ferramenta-de-ia-para-fiscalizar-uso-etico-do-chatgpt",
+      "rejectedAt": "2026-05-16T20:26:00.000Z",
+      "rejectionReason": "research_showcase_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "professor do Departamento de Química do Centro Técnico Científico da PUC-Rio, André Pimentel, desenvolveu uma ferramenta que busca garantir a integridade na escrita acadêmica",
+      "notes": "Useful context for AI and academic integrity activity at CTC, but the article is a research/news showcase and does not create a PUC-Rio policy rule."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-puc-rio-cce-ai-courses-limited",
+      "entityType": "university",
+      "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+      "sourceUrl": "https://ccec.puc-rio.br/site/folder?nCurso=inteligencia-artificial-na-educacao&nInst=cce",
+      "finalUrl": "https://ccec.puc-rio.br/site/folder?nCurso=inteligencia-artificial-na-educacao&nInst=cce",
+      "rejectedAt": "2026-05-16T20:29:00.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Official search results showed CCE course offerings on artificial intelligence in education and generative AI.",
+      "notes": "Course-offering pages can show teaching activity but are not institutional policy or guidance for student AI use."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "crawl_plan",
+      "planId": "plan-puc-rio-20260516",
+      "createdAt": "2026-05-16T20:08:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+          "sourceCandidateId": "sc-puc-rio-privacy-policy",
+          "sourceUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+          "sourceTitle": "Privacy Policy PUC-Rio",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "privacy",
+            "security_review"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+          "sourceCandidateId": "sc-puc-rio-ai-institute",
+          "sourceUrl": "https://www.puc-rio.br/ia",
+          "sourceTitle": "Instituto PUC-Behring de Inteligência Artificial",
+          "sourceLanguage": "pt-BR",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "source_status",
+            "research",
+            "teaching"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official sources establish narrow privacy and AI-institution source-status claims.",
+        "Do not infer a central generative-AI use policy from course pages, news items, dissertations, or department-only sources."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-puc-rio-privacy-policy",
+      "sourceCandidateId": "sc-puc-rio-privacy-policy",
+      "sourceUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+      "finalUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+      "attemptedAt": "2026-05-16T20:11:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 19916,
+      "contentHash": "9256eb3d4b5f690545e27f93d7362d5bfdc54a4ad48ec3639057e3b23548a854",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516/snapshots/privacy-policy"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-puc-rio-ai-institute",
+      "sourceCandidateId": "sc-puc-rio-ai-institute",
+      "sourceUrl": "https://www.puc-rio.br/ia",
+      "finalUrl": "https://www.puc-rio.br/sobrepuc/depto/institutos/ibia/",
+      "attemptedAt": "2026-05-16T20:18:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 52708,
+      "contentHash": "8c1db705edb0cec2f5b91f5d0c7957ebfadd8da83e00d1ac38a32182fa9a53f8",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516/snapshots/ai-institute"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-puc-rio-privacy-policy",
+      "sourceCandidateId": "sc-puc-rio-privacy-policy",
+      "fetchAttemptId": "fetch-puc-rio-privacy-policy",
+      "sourceUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+      "finalUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+      "sourceTitle": "Privacy Policy PUC-Rio",
+      "sourceLanguage": "en",
+      "contentHash": "9256eb3d4b5f690545e27f93d7362d5bfdc54a4ad48ec3639057e3b23548a854",
+      "fetchedAt": "2026-05-16T20:11:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516/snapshots/privacy-policy",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-puc-rio-ai-institute",
+      "sourceCandidateId": "sc-puc-rio-ai-institute",
+      "fetchAttemptId": "fetch-puc-rio-ai-institute",
+      "sourceUrl": "https://www.puc-rio.br/ia",
+      "finalUrl": "https://www.puc-rio.br/sobrepuc/depto/institutos/ibia/",
+      "sourceTitle": "Instituto PUC-Behring de Inteligência Artificial",
+      "sourceLanguage": "pt-BR",
+      "contentHash": "8c1db705edb0cec2f5b91f5d0c7957ebfadd8da83e00d1ac38a32182fa9a53f8",
+      "fetchedAt": "2026-05-16T20:18:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516/snapshots/ai-institute",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-puc-rio-privacy-policy",
+      "entityType": "university",
+      "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+      "claimType": "privacy",
+      "claimText": "PUC-Rio publishes an official personal-data processing and website privacy policy covering PUC-Rio and websites under the puc-rio.br domain.",
+      "normalizedValue": "official_privacy_policy",
+      "sourceLanguage": "en",
+      "confidence": 0.92,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-puc-rio-privacy-policy"
+      ],
+      "citation": {
+        "citationTitle": "Privacy Policy PUC-Rio",
+        "sourceUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/pontificia-universidade-catolica-do-rio-de-janeiro.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/pontificia-universidade-catolica-do-rio-de-janeiro",
+        "publisher": "Pontifícia Universidade Católica do Rio de Janeiro",
+        "retrievedAt": "2026-05-16T20:11:00.000Z",
+        "snapshotHash": "9256eb3d4b5f690545e27f93d7362d5bfdc54a4ad48ec3639057e3b23548a854",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-puc-rio-ai-institute-source-status",
+      "entityType": "university",
+      "entitySlug": "pontificia-universidade-catolica-do-rio-de-janeiro",
+      "claimType": "source_status",
+      "claimText": "PUC-Rio has an official PUC-Behring Artificial Intelligence Institute page that frames AI work around teaching, research and development, community formation, and responsible technology.",
+      "normalizedValue": "official_ai_institute_page",
+      "sourceLanguage": "pt-BR",
+      "confidence": 0.88,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-puc-rio-ai-institute-source-status"
+      ],
+      "citation": {
+        "citationTitle": "Instituto PUC-Behring de Inteligência Artificial",
+        "sourceUrl": "https://www.puc-rio.br/ia",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/pontificia-universidade-catolica-do-rio-de-janeiro.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/pontificia-universidade-catolica-do-rio-de-janeiro",
+        "publisher": "Pontifícia Universidade Católica do Rio de Janeiro",
+        "retrievedAt": "2026-05-16T20:18:00.000Z",
+        "snapshotHash": "8c1db705edb0cec2f5b91f5d0c7957ebfadd8da83e00d1ac38a32182fa9a53f8",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-puc-rio-privacy-policy",
+      "claimId": "claim-puc-rio-privacy-policy",
+      "sourceSnapshotId": "snap-puc-rio-privacy-policy",
+      "sourceUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+      "finalUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+      "sourceTitle": "Privacy Policy PUC-Rio",
+      "sourceLanguage": "en",
+      "snapshotHash": "9256eb3d4b5f690545e27f93d7362d5bfdc54a4ad48ec3639057e3b23548a854",
+      "evidenceSnippetOriginal": "This document presents the policy for the processing of personal data at PUC-Rio, including websites registered under its Internet domain (\"puc-rio.br\").",
+      "evidenceSnippetDisplay": "PUC-Rio's official privacy policy says it covers personal-data processing at PUC-Rio and websites registered under puc-rio.br.",
+      "evidenceLocator": "Introduction",
+      "evidenceType": "pdf",
+      "relevance": 0.92,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Privacy Policy PUC-Rio",
+        "sourceUrl": "https://www.puc-rio.br/english/download/Privacy%20Policy.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/pontificia-universidade-catolica-do-rio-de-janeiro.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/pontificia-universidade-catolica-do-rio-de-janeiro",
+        "publisher": "Pontifícia Universidade Católica do Rio de Janeiro",
+        "retrievedAt": "2026-05-16T20:11:00.000Z",
+        "snapshotHash": "9256eb3d4b5f690545e27f93d7362d5bfdc54a4ad48ec3639057e3b23548a854",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-puc-rio-ai-institute-source-status",
+      "claimId": "claim-puc-rio-ai-institute-source-status",
+      "sourceSnapshotId": "snap-puc-rio-ai-institute",
+      "sourceUrl": "https://www.puc-rio.br/ia",
+      "finalUrl": "https://www.puc-rio.br/sobrepuc/depto/institutos/ibia/",
+      "sourceTitle": "Instituto PUC-Behring de Inteligência Artificial",
+      "sourceLanguage": "pt-BR",
+      "snapshotHash": "8c1db705edb0cec2f5b91f5d0c7957ebfadd8da83e00d1ac38a32182fa9a53f8",
+      "evidenceSnippetOriginal": "Guiados pelos princípios que regem o instituto, concentramos nossas atividades em três grandes pilares: Ensino; Pesquisa e Desenvolvimento; Formação de Comunidade.",
+      "evidenceSnippetDisplay": "The official institute page says its activities are organized around teaching, research and development, and community formation.",
+      "evidenceLocator": "Pilares de atuação",
+      "evidenceType": "official_source",
+      "relevance": 0.88,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Instituto PUC-Behring de Inteligência Artificial",
+        "sourceUrl": "https://www.puc-rio.br/ia",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/pontificia-universidade-catolica-do-rio-de-janeiro.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/pontificia-universidade-catolica-do-rio-de-janeiro",
+        "publisher": "Pontifícia Universidade Católica do Rio de Janeiro",
+        "retrievedAt": "2026-05-16T20:18:00.000Z",
+        "snapshotHash": "8c1db705edb0cec2f5b91f5d0c7957ebfadd8da83e00d1ac38a32182fa9a53f8",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-puc-rio-privacy-policy",
+      "claimId": "claim-puc-rio-privacy-policy",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-worker",
+      "notes": "Approved as a narrow privacy claim about PUC-Rio's official personal-data and website privacy policy; it does not assert AI-specific processing rules.",
+      "decidedAt": "2026-05-16T20:31:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-puc-rio-ai-institute-source-status",
+      "claimId": "claim-puc-rio-ai-institute-source-status",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-worker",
+      "notes": "Approved as a source-status claim about an official AI institute page. It does not state a binding generative-AI use policy for students, staff, or assessment.",
+      "decidedAt": "2026-05-16T20:32:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-pontificia-universidade-catolica-do-rio-de-janeiro-20260516",
+      "artifactType": "report_draft",
+      "reportId": "report-puc-rio-20260516",
+      "title": "PUC-Rio AI Policy Source Review",
+      "generatedAt": "2026-05-16T20:35:00.000Z",
+      "draftPath": "content/reports/2026-05/puc-rio-ai-policy-source-review.mdx",
+      "summary": "Official PUC-Rio sources support a university-wide privacy policy claim and a narrow source-status claim for the PUC-Behring Artificial Intelligence Institute. This crawl did not identify a central public university-wide generative-AI use policy for students or assessment.",
+      "referencedClaimIds": [
+        "claim-puc-rio-privacy-policy",
+        "claim-puc-rio-ai-institute-source-status"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/pontificia-universidade-catolica-do-rio-de-janeiro.json",
+        "https://eduaipolicy.org/api/public/v1/universities/pontificia-universidade-catolica-do-rio-de-janeiro.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No central public PUC-Rio generative-AI student, teaching, or assessment policy was found in this crawl. Department, course, dissertation, and news/showcase sources were not generalized into university-wide policy claims.",
+        "The AI institute source supports institutional AI activity and responsible-technology framing, not a binding AI-use rule."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
