@@ -399,36 +399,6 @@
       "schemaVersion": "openclaw-artifact-v1",
       "runId": "uapt-university-of-science-and-technology-beijing-20260516",
       "artifactType": "claim_candidate",
-      "claimId": "claim-ustb-source-status-20260516",
-      "entityType": "university",
-      "entitySlug": "university-of-science-and-technology-beijing",
-      "claimType": "source_status",
-      "claimText": "Official USTB discovery did not identify a central, university-wide generative-AI policy for student use or teaching; a targeted official campus search for generative-AI norms and students returned zero results, while broader official search results were mostly activities, competitions, research notices, and teaching-development content.",
-      "normalizedValue": "limited_official_sources_no_central_policy_found",
-      "sourceLanguage": "zh-CN",
-      "confidence": 0.68,
-      "reviewState": "agent_reviewed",
-      "evidenceIds": [
-        "ev-ustb-source-status-zero-query",
-        "ev-ustb-source-status-broad-search"
-      ],
-      "citation": {
-        "citationTitle": "北科大智搜平台",
-        "sourceUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20%E8%A7%84%E8%8C%83%20%E5%AD%A6%E7%94%9F",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-science-and-technology-beijing.json",
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-science-and-technology-beijing",
-        "publisher": "北京科技大学",
-        "retrievedAt": "2026-05-16T18:31:00.000Z",
-        "snapshotHash": "e043dcf5a2b760309a5fdbc091e9bbe022e652000031b886c0a8ad787c1512b7",
-        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
-      },
-      "publishAsCanonical": false,
-      "isCanonical": false
-    },
-    {
-      "schemaVersion": "openclaw-artifact-v1",
-      "runId": "uapt-university-of-science-and-technology-beijing-20260516",
-      "artifactType": "claim_candidate",
       "claimId": "claim-ustb-research-ai-application-20260516",
       "entityType": "university",
       "entitySlug": "university-of-science-and-technology-beijing",
@@ -453,64 +423,6 @@
       },
       "publishAsCanonical": false,
       "isCanonical": false
-    },
-    {
-      "schemaVersion": "openclaw-artifact-v1",
-      "runId": "uapt-university-of-science-and-technology-beijing-20260516",
-      "artifactType": "evidence_candidate",
-      "evidenceId": "ev-ustb-source-status-zero-query",
-      "claimId": "claim-ustb-source-status-20260516",
-      "sourceSnapshotId": "ss-ustb-aisearch-zero-policy-query",
-      "sourceUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20%E8%A7%84%E8%8C%83%20%E5%AD%A6%E7%94%9F",
-      "finalUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20%E8%A7%84%E8%8C%83%20%E5%AD%A6%E7%94%9F",
-      "sourceTitle": "北科大智搜平台",
-      "sourceLanguage": "zh-CN",
-      "snapshotHash": "e043dcf5a2b760309a5fdbc091e9bbe022e652000031b886c0a8ad787c1512b7",
-      "evidenceSnippetOriginal": "全文搜索 时间不限 为您找到相关结果约0个（用时0秒）",
-      "evidenceSnippetDisplay": "The official USTB campus search returned about 0 results for the targeted query.",
-      "evidenceLocator": "Official campus search results for query: 生成式人工智能 规范 学生",
-      "evidenceType": "official_source",
-      "relevance": 0.88,
-      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
-      "citation": {
-        "citationTitle": "北科大智搜平台",
-        "sourceUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20%E8%A7%84%E8%8C%83%20%E5%AD%A6%E7%94%9F",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-science-and-technology-beijing.json",
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-science-and-technology-beijing",
-        "publisher": "北京科技大学",
-        "retrievedAt": "2026-05-16T18:31:00.000Z",
-        "snapshotHash": "e043dcf5a2b760309a5fdbc091e9bbe022e652000031b886c0a8ad787c1512b7",
-        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
-      }
-    },
-    {
-      "schemaVersion": "openclaw-artifact-v1",
-      "runId": "uapt-university-of-science-and-technology-beijing-20260516",
-      "artifactType": "evidence_candidate",
-      "evidenceId": "ev-ustb-source-status-broad-search",
-      "claimId": "claim-ustb-source-status-20260516",
-      "sourceSnapshotId": "ss-ustb-aisearch-broad-generative-ai",
-      "sourceUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD",
-      "finalUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD",
-      "sourceTitle": "北科大智搜平台",
-      "sourceLanguage": "zh-CN",
-      "snapshotHash": "efdceb39627184c6d1b3df8aa908e452df438f2de3e94531c37d48ea43648c6b",
-      "evidenceSnippetOriginal": "为您找到相关结果约246个（用时5.45秒） 首届百度“星河杯”暨Elser.AI“文心奖学金” 北京科技大学多语种生成式人工智能创意创新大赛颁奖典礼圆满举行 活动回顾 | 生成式人工智能赋能大学外语教学改革",
-      "evidenceSnippetDisplay": "A broader official search found many results, but the visible first results were competitions and teaching activities rather than a central policy.",
-      "evidenceLocator": "Official campus search results for query: 生成式人工智能",
-      "evidenceType": "official_source",
-      "relevance": 0.74,
-      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
-      "citation": {
-        "citationTitle": "北科大智搜平台",
-        "sourceUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-science-and-technology-beijing.json",
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-science-and-technology-beijing",
-        "publisher": "北京科技大学",
-        "retrievedAt": "2026-05-16T18:29:00.000Z",
-        "snapshotHash": "efdceb39627184c6d1b3df8aa908e452df438f2de3e94531c37d48ea43648c6b",
-        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
-      }
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -545,19 +457,6 @@
       "schemaVersion": "openclaw-artifact-v1",
       "runId": "uapt-university-of-science-and-technology-beijing-20260516",
       "artifactType": "review_decision",
-      "decisionId": "rd-ustb-source-status-20260516",
-      "claimId": "claim-ustb-source-status-20260516",
-      "decision": "approve",
-      "reviewState": "agent_reviewed",
-      "reviewerType": "openclaw_agent",
-      "reviewer": "codex-crawl-worker",
-      "notes": "Approved as a limited source-status candidate only. It should not be promoted as proof that no policy exists; it records that official discovery during this crawl did not identify a central AI-use policy.",
-      "decidedAt": "2026-05-16T18:36:00.000Z"
-    },
-    {
-      "schemaVersion": "openclaw-artifact-v1",
-      "runId": "uapt-university-of-science-and-technology-beijing-20260516",
-      "artifactType": "review_decision",
       "decisionId": "rd-ustb-research-ai-application-20260516",
       "claimId": "claim-ustb-research-ai-application-20260516",
       "decision": "approve",
@@ -575,9 +474,8 @@
       "title": "University of Science and Technology Beijing AI Policy Source Review",
       "generatedAt": "2026-05-16T18:37:00.000Z",
       "draftPath": "content/reports/uapt-university-of-science-and-technology-beijing-20260516.mdx",
-      "summary": "Official discovery found no central USTB generative-AI policy for students or teaching. The official campus search returned zero results for the targeted query '生成式人工智能 规范 学生'; a broader official campus search returned many AI-related items but mainly competitions, teaching activities, research notices, and media. A USTB research-office notice contains a narrow generative-AI disclosure and direct-generation restriction for one 2026 research project application process.",
+      "summary": "A USTB research-office notice contains a narrow generative-AI disclosure and direct-generation restriction for one 2026 research project application process. No public claim is promoted from site-search absence alone.",
       "referencedClaimIds": [
-        "claim-ustb-source-status-20260516",
         "claim-ustb-research-ai-application-20260516"
       ],
       "publicJsonLinks": [
@@ -585,8 +483,8 @@
       ],
       "limitations": [
         "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
-        "The source-status claim is limited to official discovery completed during this crawl and should not be read as definitive proof that no internal or login-protected policy exists.",
-        "The research-office AI language is scoped to one 2026 project application notice and is not evidence of a university-wide coursework, assessment, or academic-integrity AI policy."
+        "The research-office AI language is scoped to one 2026 project application notice and is not evidence of a university-wide coursework, assessment, or academic-integrity AI policy.",
+        "Official campus-search absence was retained only as crawl context, not as a public policy claim."
       ],
       "trackerMetadataLicense": "CC-BY-4.0",
       "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",

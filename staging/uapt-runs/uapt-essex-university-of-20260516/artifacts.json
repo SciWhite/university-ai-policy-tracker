@@ -302,8 +302,15 @@
           "sourceUrl": "https://www.essex.ac.uk/student/academic-offences/artificial-intelligence",
           "sourceTitle": "Artificial intelligence guidance | University of Essex",
           "sourceLanguage": "en",
-          "allowedFetchModes": ["http", "firecrawl"],
-          "expectedThemes": ["academic_integrity", "assessment_guidance", "teaching_guidance"],
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "academic_integrity",
+            "assessment_guidance",
+            "teaching_guidance"
+          ],
           "robotsPolicy": "respect"
         },
         {
@@ -313,8 +320,15 @@
           "sourceUrl": "https://www.essex.ac.uk/staff/it-services/use-of-ai-tools",
           "sourceTitle": "Using AI tools at work | University of Essex",
           "sourceLanguage": "en",
-          "allowedFetchModes": ["http", "firecrawl"],
-          "expectedThemes": ["it_security_privacy", "approved_tools", "procurement"],
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "it_security_privacy",
+            "approved_tools",
+            "procurement"
+          ],
           "robotsPolicy": "respect"
         },
         {
@@ -324,8 +338,14 @@
           "sourceUrl": "https://www.essex.ac.uk/staff/it-services/zoom-ai",
           "sourceTitle": "Zoom AI Companion | University of Essex",
           "sourceLanguage": "en",
-          "allowedFetchModes": ["http", "firecrawl"],
-          "expectedThemes": ["approved_tools", "privacy"],
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "approved_tools",
+            "privacy"
+          ],
           "robotsPolicy": "respect"
         }
       ],
@@ -511,7 +531,9 @@
       "sourceLanguage": "en",
       "confidence": 0.91,
       "reviewState": "agent_reviewed",
-      "evidenceIds": ["ev-essex-students-responsible-ai"],
+      "evidenceIds": [
+        "ev-essex-students-responsible-ai"
+      ],
       "citation": {
         "citationTitle": "Artificial intelligence guidance | University of Essex",
         "sourceUrl": "https://www.essex.ac.uk/student/academic-offences/artificial-intelligence",
@@ -538,7 +560,9 @@
       "sourceLanguage": "en",
       "confidence": 0.95,
       "reviewState": "agent_reviewed",
-      "evidenceIds": ["ev-essex-ai-assessment-boundary"],
+      "evidenceIds": [
+        "ev-essex-ai-assessment-boundary"
+      ],
       "citation": {
         "citationTitle": "Artificial intelligence guidance | University of Essex",
         "sourceUrl": "https://www.essex.ac.uk/student/academic-offences/artificial-intelligence",
@@ -565,7 +589,9 @@
       "sourceLanguage": "en",
       "confidence": 0.94,
       "reviewState": "agent_reviewed",
-      "evidenceIds": ["ev-essex-staff-compliance"],
+      "evidenceIds": [
+        "ev-essex-staff-compliance"
+      ],
       "citation": {
         "citationTitle": "Using AI tools at work | University of Essex",
         "sourceUrl": "https://www.essex.ac.uk/staff/it-services/use-of-ai-tools",
@@ -592,7 +618,9 @@
       "sourceLanguage": "en",
       "confidence": 0.95,
       "reviewState": "agent_reviewed",
-      "evidenceIds": ["ev-essex-staff-prohibited-ai-uses"],
+      "evidenceIds": [
+        "ev-essex-staff-prohibited-ai-uses"
+      ],
       "citation": {
         "citationTitle": "Using AI tools at work | University of Essex",
         "sourceUrl": "https://www.essex.ac.uk/staff/it-services/use-of-ai-tools",
@@ -619,7 +647,9 @@
       "sourceLanguage": "en",
       "confidence": 0.93,
       "reviewState": "agent_reviewed",
-      "evidenceIds": ["ev-essex-approved-ai-tools"],
+      "evidenceIds": [
+        "ev-essex-approved-ai-tools"
+      ],
       "citation": {
         "citationTitle": "Using AI tools at work | University of Essex",
         "sourceUrl": "https://www.essex.ac.uk/staff/it-services/use-of-ai-tools",
@@ -646,7 +676,9 @@
       "sourceLanguage": "en",
       "confidence": 0.9,
       "reviewState": "agent_reviewed",
-      "evidenceIds": ["ev-essex-zoom-ai-safety"],
+      "evidenceIds": [
+        "ev-essex-zoom-ai-safety"
+      ],
       "citation": {
         "citationTitle": "Zoom AI Companion | University of Essex",
         "sourceUrl": "https://www.essex.ac.uk/staff/it-services/zoom-ai",
@@ -655,33 +687,6 @@
         "publisher": "University of Essex",
         "retrievedAt": "2026-05-16T21:44:00.000Z",
         "snapshotHash": "750a4859cbe94e47280dc524c8e5108cfdf53757df3d009185ba3ba412e30b80",
-        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
-      },
-      "publishAsCanonical": false,
-      "isCanonical": false
-    },
-    {
-      "schemaVersion": "openclaw-artifact-v1",
-      "runId": "uapt-essex-university-of-20260516",
-      "artifactType": "claim_candidate",
-      "claimId": "claim-essex-source-status",
-      "entityType": "university",
-      "entitySlug": "essex-university-of",
-      "claimType": "source_status",
-      "claimText": "This run found official Essex AI guidance scoped to student academic work, staff business operations, and Zoom AI Companion use, but did not identify a single central university-wide AI policy page for all contexts.",
-      "normalizedValue": "scoped_guidance_found_no_single_central_ai_policy_page",
-      "sourceLanguage": "en",
-      "confidence": 0.78,
-      "reviewState": "agent_reviewed",
-      "evidenceIds": ["ev-essex-source-status-student", "ev-essex-source-status-staff"],
-      "citation": {
-        "citationTitle": "Artificial intelligence guidance | University of Essex",
-        "sourceUrl": "https://www.essex.ac.uk/student/academic-offences/artificial-intelligence",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/essex-university-of.json",
-        "canonicalUrl": "https://eduaipolicy.org/universities/essex-university-of",
-        "publisher": "University of Essex",
-        "retrievedAt": "2026-05-16T21:44:00.000Z",
-        "snapshotHash": "2a4b87a9b32840b80010245b24938d7c38133f7220bbfcd69bc8cbdad52acf25",
         "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
       },
       "publishAsCanonical": false,
@@ -858,62 +863,6 @@
     {
       "schemaVersion": "openclaw-artifact-v1",
       "runId": "uapt-essex-university-of-20260516",
-      "artifactType": "evidence_candidate",
-      "evidenceId": "ev-essex-source-status-student",
-      "claimId": "claim-essex-source-status",
-      "sourceSnapshotId": "ss-essex-student-ai-guidance",
-      "sourceUrl": "https://www.essex.ac.uk/student/academic-offences/artificial-intelligence",
-      "finalUrl": "https://www.essex.ac.uk/student/academic-offences/artificial-intelligence",
-      "sourceTitle": "Artificial intelligence guidance | University of Essex",
-      "sourceLanguage": "en",
-      "snapshotHash": "2a4b87a9b32840b80010245b24938d7c38133f7220bbfcd69bc8cbdad52acf25",
-      "evidenceSnippetOriginal": "Find out about the University's policy on using generative AI in your studies.",
-      "evidenceLocator": "Page description metadata",
-      "evidenceType": "official_source",
-      "relevance": 0.72,
-      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
-      "citation": {
-        "citationTitle": "Artificial intelligence guidance | University of Essex",
-        "sourceUrl": "https://www.essex.ac.uk/student/academic-offences/artificial-intelligence",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/essex-university-of.json",
-        "canonicalUrl": "https://eduaipolicy.org/universities/essex-university-of",
-        "publisher": "University of Essex",
-        "retrievedAt": "2026-05-16T21:42:00.000Z",
-        "snapshotHash": "2a4b87a9b32840b80010245b24938d7c38133f7220bbfcd69bc8cbdad52acf25",
-        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
-      }
-    },
-    {
-      "schemaVersion": "openclaw-artifact-v1",
-      "runId": "uapt-essex-university-of-20260516",
-      "artifactType": "evidence_candidate",
-      "evidenceId": "ev-essex-source-status-staff",
-      "claimId": "claim-essex-source-status",
-      "sourceSnapshotId": "ss-essex-staff-ai-tools",
-      "sourceUrl": "https://www.essex.ac.uk/staff/it-services/use-of-ai-tools",
-      "finalUrl": "https://www.essex.ac.uk/staff/it-services/use-of-ai-tools",
-      "sourceTitle": "Using AI tools at work | University of Essex",
-      "sourceLanguage": "en",
-      "snapshotHash": "ed7a9521e7a9c5c429e71b8973a03492ac489c0329e039a3decbb8e1e658e1b7",
-      "evidenceSnippetOriginal": "This guidance relates to the use of AI within business operations. Staff or student use of AI for the purposes of learning and teaching is not covered by this guidance.",
-      "evidenceLocator": "Purpose and Scope",
-      "evidenceType": "official_source",
-      "relevance": 0.84,
-      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
-      "citation": {
-        "citationTitle": "Using AI tools at work | University of Essex",
-        "sourceUrl": "https://www.essex.ac.uk/staff/it-services/use-of-ai-tools",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/essex-university-of.json",
-        "canonicalUrl": "https://eduaipolicy.org/universities/essex-university-of",
-        "publisher": "University of Essex",
-        "retrievedAt": "2026-05-16T21:43:00.000Z",
-        "snapshotHash": "ed7a9521e7a9c5c429e71b8973a03492ac489c0329e039a3decbb8e1e658e1b7",
-        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
-      }
-    },
-    {
-      "schemaVersion": "openclaw-artifact-v1",
-      "runId": "uapt-essex-university-of-20260516",
       "artifactType": "review_decision",
       "decisionId": "rd-essex-students-responsible-ai",
       "claimId": "claim-essex-students-responsible-ai",
@@ -992,19 +941,6 @@
     {
       "schemaVersion": "openclaw-artifact-v1",
       "runId": "uapt-essex-university-of-20260516",
-      "artifactType": "review_decision",
-      "decisionId": "rd-essex-source-status",
-      "claimId": "claim-essex-source-status",
-      "decision": "approve",
-      "reviewState": "agent_reviewed",
-      "reviewerType": "openclaw_agent",
-      "reviewer": "codex-openclaw-local",
-      "notes": "Approved as a discovery-status claim supported by scoped official sources and rejected non-policy candidates.",
-      "decidedAt": "2026-05-16T21:52:00.000Z"
-    },
-    {
-      "schemaVersion": "openclaw-artifact-v1",
-      "runId": "uapt-essex-university-of-20260516",
       "artifactType": "report_draft",
       "reportId": "report-essex-ai-policy-20260516",
       "title": "University of Essex AI Policy Source Review",
@@ -1017,8 +953,7 @@
         "claim-essex-staff-compliance",
         "claim-essex-staff-prohibited-ai-uses",
         "claim-essex-approved-ai-tools",
-        "claim-essex-zoom-ai-safety",
-        "claim-essex-source-status"
+        "claim-essex-zoom-ai-safety"
       ],
       "publicJsonLinks": [
         "https://eduaipolicy.org/api/public/v1/claims/essex-university-of.json",
@@ -1026,8 +961,7 @@
       ],
       "limitations": [
         "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
-        "Claims are staged OpenClaw candidates and are not canonical public facts until reviewed and promoted.",
-        "The source-status claim reflects this run's official-source discovery; it should be revisited if Essex publishes a central AI policy or additional research-governance AI guidance."
+        "Claims are staged OpenClaw candidates and are not canonical public facts until reviewed and promoted."
       ],
       "trackerMetadataLicense": "CC-BY-4.0",
       "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
