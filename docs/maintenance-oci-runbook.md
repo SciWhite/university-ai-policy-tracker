@@ -53,14 +53,14 @@ sudo systemctl enable --now uapt-maintenance-weekly-other.timer
 Do not run a large scan first. Start with dry runs:
 
 ```bash
-sudo -iu openclaw bash -lc 'cd ~/workspace/university-ai-policy-tracker && corepack pnpm maintenance:scan -- --dry-run --mode qs200 --limit 3'
-sudo -iu openclaw bash -lc 'cd ~/workspace/university-ai-policy-tracker && corepack pnpm maintenance:scan -- --dry-run --mode weekly-other --shard-count 7 --shard-index 0 --limit 3'
+sudo -iu openclaw bash -lc 'cd ~/workspace/university-ai-policy-tracker && /home/linuxbrew/.linuxbrew/bin/pnpm maintenance:scan -- --dry-run --mode qs200 --limit 3'
+sudo -iu openclaw bash -lc 'cd ~/workspace/university-ai-policy-tracker && /home/linuxbrew/.linuxbrew/bin/pnpm maintenance:scan -- --dry-run --mode weekly-other --shard-count 7 --shard-index 0 --limit 3'
 ```
 
 Then run a tiny HTTP scan without Firecrawl:
 
 ```bash
-sudo -iu openclaw bash -lc 'cd ~/workspace/university-ai-policy-tracker && corepack pnpm maintenance:scan -- --mode qs200 --limit 3 --output-dir ~/workspace/staging/uapt-maintenance'
+sudo -iu openclaw bash -lc 'cd ~/workspace/university-ai-policy-tracker && /home/linuxbrew/.linuxbrew/bin/pnpm maintenance:scan -- --mode qs200 --limit 3 --output-dir ~/workspace/staging/uapt-maintenance'
 ```
 
 ## Status Checks

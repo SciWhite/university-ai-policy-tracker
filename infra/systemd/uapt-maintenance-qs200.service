@@ -9,4 +9,4 @@ User=openclaw
 WorkingDirectory=/home/openclaw/workspace/university-ai-policy-tracker
 Environment=NODE_ENV=production
 EnvironmentFile=-/home/openclaw/.config/uapt-maintenance.env
-ExecStart=/usr/bin/bash -lc 'git pull --ff-only && corepack pnpm maintenance:scan -- --mode qs200 --enable-firecrawl --output-dir /home/openclaw/workspace/staging/uapt-maintenance'
+ExecStart=/usr/bin/bash -lc 'git pull --ff-only && /home/linuxbrew/.linuxbrew/bin/pnpm maintenance:scan -- --mode qs200 --enable-firecrawl --output-dir /home/openclaw/workspace/staging/uapt-maintenance'
