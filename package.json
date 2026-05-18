@@ -23,6 +23,7 @@
     "smoke:analysis-pages": "tsx scripts/smoke-analysis-pages.ts",
     "smoke:entity-search": "tsx scripts/smoke-entity-search.ts",
     "build:review-cache": "tsx scripts/build-review-cache.ts",
+    "maintenance:scan": "tsx scripts/maintenance-http-first-scan.ts",
     "validate:analysis-contract": "tsx scripts/validate-analysis-contract.ts",
     "validate:public-contract": "tsx scripts/validate-public-contract.ts",
     "validate:openclaw-artifacts": "tsx scripts/validate-openclaw-artifacts.ts",
