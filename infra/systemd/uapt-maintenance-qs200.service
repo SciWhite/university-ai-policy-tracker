@@ -1,0 +1,12 @@
+[Unit]
+Description=University AI Policy Tracker QS Top 200 HTTP-first maintenance scan
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=openclaw
+WorkingDirectory=/home/openclaw/workspace/university-ai-policy-tracker
+Environment=NODE_ENV=production
+EnvironmentFile=-/home/openclaw/.config/uapt-maintenance.env
+ExecStart=/usr/bin/bash -lc 'git pull --ff-only && corepack pnpm maintenance:scan -- --mode qs200 --enable-firecrawl --output-dir /home/openclaw/workspace/staging/uapt-maintenance'

@@ -1,0 +1,11 @@
+[Unit]
+Description=Run University AI Policy Tracker QS Top 200 maintenance scan every 3 days
+
+[Timer]
+OnCalendar=*-*-1/3 04:30:00 UTC
+Persistent=true
+RandomizedDelaySec=20m
+Unit=uapt-maintenance-qs200.service
+
+[Install]
+WantedBy=timers.target

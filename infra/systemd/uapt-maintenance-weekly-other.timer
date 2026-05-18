@@ -1,0 +1,11 @@
+[Unit]
+Description=Run one weekly shard of non-QS University AI Policy Tracker maintenance daily
+
+[Timer]
+OnCalendar=*-*-* 05:10:00 UTC
+Persistent=true
+RandomizedDelaySec=20m
+Unit=uapt-maintenance-weekly-other.service
+
+[Install]
+WantedBy=timers.target

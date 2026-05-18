@@ -1,0 +1,12 @@
+[Unit]
+Description=University AI Policy Tracker weekly non-QS maintenance shard
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=openclaw
+WorkingDirectory=/home/openclaw/workspace/university-ai-policy-tracker
+Environment=NODE_ENV=production
+EnvironmentFile=-/home/openclaw/.config/uapt-maintenance.env
+ExecStart=/usr/bin/bash -lc 'git pull --ff-only && shard_index=$(( $(date -u +%%u) - 1 )) && corepack pnpm maintenance:scan -- --mode weekly-other --shard-count 7 --shard-index "$shard_index" --enable-firecrawl --output-dir /home/openclaw/workspace/staging/uapt-maintenance'
