@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uaf-20260517",
+      "entityType": "university",
+      "entitySlug": "university-of-agriculture-faisalabad",
+      "startedAt": "2026-05-18T00:31:00.000Z",
+      "endedAt": "2026-05-18T00:45:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:uaf.edu.pk University of Agriculture Faisalabad artificial intelligence policy OR AI OR ChatGPT OR generative AI",
+          "domain": "uaf.edu.pk",
+          "resultCount": 5,
+          "notes": "Firecrawl search found official UAF AI curriculum, news, and faculty/research pages, but no AI use policy or generative-AI student guidance."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uaf.edu.pk \"ChatGPT\" OR \"Generative AI\" OR \"Artificial Intelligence\" \"policy\" \"University of Agriculture Faisalabad\"",
+          "domain": "uaf.edu.pk",
+          "resultCount": 10,
+          "notes": "Firecrawl search again surfaced official news, faculty profile, and faculty overview pages rather than policy-specific AI guidance."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uaf.edu.pk plagiarism policy academic integrity University of Agriculture Faisalabad PDF",
+          "domain": "uaf.edu.pk",
+          "resultCount": 8,
+          "notes": "Firecrawl search located an official UAF-hosted HEC Plagiarism Policy PDF under the UAF web domain."
+        },
+        {
+          "method": "pdf_discovery",
+          "domain": "web.uaf.edu.pk",
+          "resultCount": 2,
+          "notes": "Official UAF PDFs were checked: the HEC Plagiarism Policy was policy-relevant; the B.Sc. Artificial Intelligence scheme of studies was rejected as curriculum rather than AI-use policy."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-uaf-hec-plagiarism-policy",
+        "sc-uaf-ai-congress-news",
+        "sc-uaf-bsai-scheme"
+      ],
+      "rejectionIds": [
+        "sr-uaf-ai-congress-news",
+        "sr-uaf-bsai-scheme"
+      ],
+      "summary": "Official-source discovery for University of Agriculture, Faisalabad found a UAF-hosted HEC Plagiarism Policy PDF with academic-integrity evidence. AI-specific official results were curriculum, faculty/research, or news/event pages and were not used as binding AI policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "crawl_plan",
+      "planId": "cp-uaf-20260517",
+      "createdAt": "2026-05-18T00:45:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-agriculture-faisalabad",
+          "sourceCandidateId": "sc-uaf-hec-plagiarism-policy",
+          "sourceUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+          "sourceTitle": "HEC Plagiarism Policy",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "academic integrity",
+            "plagiarism policy",
+            "students, teachers, researchers, and staff"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after citation-ready academic-integrity evidence is captured from the official UAF-hosted PDF.",
+        "Do not infer an AI-use policy from UAF curriculum, faculty profile, or news/event pages.",
+        "Record official but non-policy AI pages as rejections rather than claim evidence."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uaf-hec-plagiarism-policy",
+      "entityType": "university",
+      "entitySlug": "university-of-agriculture-faisalabad",
+      "sourceUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+      "finalUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+      "sourceTitle": "HEC Plagiarism Policy",
+      "sourceLanguage": "en",
+      "sourceType": "academic_integrity",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uaf.edu.pk plagiarism policy academic integrity University of Agriculture Faisalabad PDF",
+      "discoveredAt": "2026-05-18T00:36:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.08,
+      "policySpecificityScore": 0.88,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-18T00:42:00.000Z",
+      "verificationNotes": "Official UAF-hosted PDF begins with University of Agriculture, Faisalabad Academic Section correspondence and forwards the HEC Plagiarism Policy for use across staff, students, teachers, and researchers under administrative control or supervision.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uaf-ai-congress-news",
+      "entityType": "university",
+      "entitySlug": "university-of-agriculture-faisalabad",
+      "sourceUrl": "https://web.uaf.edu.pk/News/NewsDetail/1954",
+      "finalUrl": "https://web.uaf.edu.pk/News/NewsDetail/1954",
+      "sourceTitle": "The 10th Academic Studies Congress on the theme \"planet, people, and peace in the era of artificial intelligence\"",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uaf.edu.pk University of Agriculture Faisalabad artificial intelligence policy OR AI OR ChatGPT OR generative AI",
+      "discoveredAt": "2026-05-18T00:33:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.72,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-18T00:40:00.000Z",
+      "verificationNotes": "Official UAF news page discusses an AI-themed congress and ethical AI themes, but it is an event/news article rather than policy or operational guidance.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uaf-bsai-scheme",
+      "entityType": "university",
+      "entitySlug": "university-of-agriculture-faisalabad",
+      "sourceUrl": "https://web.uaf.edu.pk/Contents/admissions/un/sos/BSAI.pdf",
+      "finalUrl": "https://web.uaf.edu.pk/Contents/admissions/un/sos/BSAI.pdf",
+      "sourceTitle": "Scheme of Studies B.Sc. (Hons.) Artificial Intelligence",
+      "sourceLanguage": "en",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uaf.edu.pk University of Agriculture Faisalabad artificial intelligence policy OR AI OR ChatGPT OR generative AI",
+      "discoveredAt": "2026-05-18T00:32:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.9,
+      "policySpecificityScore": 0.12,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-18T00:41:00.000Z",
+      "verificationNotes": "Official UAF PDF is a B.Sc. Artificial Intelligence scheme of studies and course list, not a policy on AI tool use, assessment, integrity, privacy, or approved tools.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-uaf-ai-congress-news",
+      "sourceCandidateId": "sc-uaf-ai-congress-news",
+      "entityType": "university",
+      "entitySlug": "university-of-agriculture-faisalabad",
+      "sourceUrl": "https://web.uaf.edu.pk/News/NewsDetail/1954",
+      "finalUrl": "https://web.uaf.edu.pk/News/NewsDetail/1954",
+      "rejectedAt": "2026-05-18T00:43:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "The 10th Academic Studies Congress on the theme \"planet, people, and peace in the era of artificial intelligence\"",
+      "notes": "Official UAF news article; not used because it does not state a policy, rule, approved-tool list, or student/staff guidance."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-uaf-bsai-scheme",
+      "sourceCandidateId": "sc-uaf-bsai-scheme",
+      "entityType": "university",
+      "entitySlug": "university-of-agriculture-faisalabad",
+      "sourceUrl": "https://web.uaf.edu.pk/Contents/admissions/un/sos/BSAI.pdf",
+      "finalUrl": "https://web.uaf.edu.pk/Contents/admissions/un/sos/BSAI.pdf",
+      "rejectedAt": "2026-05-18T00:43:00.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "SCHEME OF STUDIES B.SC. (HONS.) ARTIFICIAL INTELLIGENCE",
+      "notes": "Official UAF curriculum PDF; useful for confirming an AI program exists, but not for AI-use policy, assessment, or data-handling claims."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uaf-hec-plagiarism-policy",
+      "sourceCandidateId": "sc-uaf-hec-plagiarism-policy",
+      "sourceUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+      "finalUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+      "attemptedAt": "2026-05-18T00:38:55.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 18524,
+      "contentHash": "a710fe0ee67436e48d3333793e91aed0b1932a9f142a7096fd5152d370f616d5",
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-agriculture-faisalabad-20260517/snapshots/hec-plagiarism-policy"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uaf-ai-congress-news",
+      "sourceCandidateId": "sc-uaf-ai-congress-news",
+      "sourceUrl": "https://web.uaf.edu.pk/News/NewsDetail/1954",
+      "finalUrl": "https://web.uaf.edu.pk/News/NewsDetail/1954",
+      "attemptedAt": "2026-05-18T00:38:55.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 15247,
+      "contentHash": "5dd736346f15da9d639a8d2a0435fb48c4916510ff34a58473afd34e7ca0ca6e",
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-agriculture-faisalabad-20260517/rejections/ai-congress-news"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uaf-bsai-scheme",
+      "sourceCandidateId": "sc-uaf-bsai-scheme",
+      "sourceUrl": "https://web.uaf.edu.pk/Contents/admissions/un/sos/BSAI.pdf",
+      "finalUrl": "https://web.uaf.edu.pk/Contents/admissions/un/sos/BSAI.pdf",
+      "attemptedAt": "2026-05-18T00:38:55.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 45585,
+      "contentHash": "c5a1c058eea19800d19a4a61d9fe4aeef073549f6d7058fde3f30544e546bf64",
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-agriculture-faisalabad-20260517/rejections/bsai-scheme"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-uaf-hec-plagiarism-policy",
+      "sourceCandidateId": "sc-uaf-hec-plagiarism-policy",
+      "fetchAttemptId": "fa-uaf-hec-plagiarism-policy",
+      "sourceUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+      "finalUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+      "sourceTitle": "HEC Plagiarism Policy",
+      "sourceLanguage": "en",
+      "contentHash": "a710fe0ee67436e48d3333793e91aed0b1932a9f142a7096fd5152d370f616d5",
+      "fetchedAt": "2026-05-18T00:38:55.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-agriculture-faisalabad-20260517/snapshots/hec-plagiarism-policy",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-uaf-academic-integrity-plagiarism-policy",
+      "entityType": "university",
+      "entitySlug": "university-of-agriculture-faisalabad",
+      "claimType": "academic_integrity",
+      "claimText": "University of Agriculture, Faisalabad hosts an Academic Section notice forwarding the HEC Plagiarism Policy for students, teachers, researchers, and supervised staff, with plagiarism actions to be handled under that policy.",
+      "normalizedValue": "UAF-hosted HEC Plagiarism Policy notice applies as academic-integrity evidence; no official AI-use policy was identified in this crawl.",
+      "sourceLanguage": "en",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uaf-hec-plagiarism-policy"
+      ],
+      "citation": {
+        "citationTitle": "HEC Plagiarism Policy",
+        "sourceUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-agriculture-faisalabad.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-agriculture-faisalabad",
+        "publisher": "University of Agriculture, Faisalabad",
+        "retrievedAt": "2026-05-18T00:38:55.000Z",
+        "snapshotHash": "a710fe0ee67436e48d3333793e91aed0b1932a9f142a7096fd5152d370f616d5",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uaf-hec-plagiarism-policy",
+      "claimId": "claim-uaf-academic-integrity-plagiarism-policy",
+      "sourceSnapshotId": "ss-uaf-hec-plagiarism-policy",
+      "sourceUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+      "finalUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+      "sourceTitle": "HEC Plagiarism Policy",
+      "sourceLanguage": "en",
+      "snapshotHash": "a710fe0ee67436e48d3333793e91aed0b1932a9f142a7096fd5152d370f616d5",
+      "evidenceSnippetOriginal": "for an information to staff members ... all students, teachers, researchers ... In future the act of plagiarism will be taken in accordance with this policy",
+      "evidenceSnippetDisplay": "The UAF Academic Section notice forwards the HEC Plagiarism Policy for university staff, students, teachers, and researchers and says future plagiarism actions will follow that policy.",
+      "evidenceLocator": "PDF opening UAF Academic Section notice, dated 17-10-2007",
+      "evidenceType": "pdf",
+      "relevance": 0.88,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "HEC Plagiarism Policy",
+        "sourceUrl": "https://web.uaf.edu.pk/Contents/Status%20about/HEC%20Plagiarism%20Policy.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-agriculture-faisalabad.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-agriculture-faisalabad",
+        "publisher": "University of Agriculture, Faisalabad",
+        "retrievedAt": "2026-05-18T00:38:55.000Z",
+        "snapshotHash": "a710fe0ee67436e48d3333793e91aed0b1932a9f142a7096fd5152d370f616d5",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "review_decision",
+      "decisionId": "rd-uaf-academic-integrity-plagiarism-policy",
+      "claimId": "claim-uaf-academic-integrity-plagiarism-policy",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow academic-integrity claim from an official UAF-hosted PDF. No university-wide AI-use policy claim is made.",
+      "decidedAt": "2026-05-18T00:45:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-agriculture-faisalabad-20260517",
+      "artifactType": "report_draft",
+      "reportId": "report-uaf-20260517",
+      "title": "University of Agriculture, Faisalabad staged crawl",
+      "generatedAt": "2026-05-18T00:45:00.000Z",
+      "draftPath": "content/reports/uapt-university-of-agriculture-faisalabad-20260517.mdx",
+      "summary": "Official-source crawl found one citation-ready academic-integrity claim from a UAF-hosted HEC Plagiarism Policy PDF. AI-specific discovery located official curriculum and news/event sources but no official AI-use policy or generative-AI student guidance suitable for a policy claim.",
+      "referencedClaimIds": [
+        "claim-uaf-academic-integrity-plagiarism-policy"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-agriculture-faisalabad.json",
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-agriculture-faisalabad.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No official UAF generative-AI or ChatGPT policy/guidance page was identified in the checked official-domain searches.",
+        "Official AI-related UAF results found during this crawl were curriculum, faculty/research, or news/event pages and were rejected for policy claims."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
