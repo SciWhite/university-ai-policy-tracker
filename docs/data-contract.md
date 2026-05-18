@@ -144,8 +144,11 @@ status must not be used to bypass robots, login walls, paywalls, CAPTCHA, WAF,
 or other access controls. Review-queue rows do not promote staging runs or
 publish canonical claims.
 
-Source-health may include Firecrawl verification metadata for URLs that normal
-requests could not verify. The allowed Firecrawl statuses are:
+Source-health may include Firecrawl verification metadata for suspected source
+changes that normal HTTP checks could not verify reliably. HTTP failure,
+blocked responses, timeouts, `403`, and `robots_blocked` are source-health
+risks only; they must not be treated as policy-change signals by themselves.
+The allowed Firecrawl statuses are:
 
 | Status | Meaning |
 | --- | --- |
@@ -157,6 +160,12 @@ Firecrawl source-health records are not claim evidence and must not publish raw
 HTML, PDF text, screenshots, or full normalized source text. The public
 `source-health.json` endpoint can expose URL, status, checked date, title,
 status code, severity, and recommended action metadata only.
+
+Future maintenance metadata may add fields such as `maintenanceTier`,
+`lastMaintenanceCheckedAt`, `nextRecommendedCheckAt`, `lastMaintenanceRunId`,
+`stage1Status`, `firecrawlVerificationStatus`, `openclawQueueStatus`, and
+`maintenanceRecommendedAction`. These fields are maintenance metadata only and
+must not change claim review state.
 
 Stage 2 maintenance runs are source-health inputs, not public claim/evidence
 inputs. They may reuse promoted claim IDs and evidence snippets to bind a

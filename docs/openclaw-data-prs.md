@@ -26,6 +26,12 @@ source-health dashboards, but must not be added to
 `data/public-releases/current.json`. Claim/evidence release candidates may omit
 `runPurpose` or use `claim_evidence_release`.
 
+Daily maintenance PRs should come from the HTTP-first OCI scanner or from a
+single lightweight OpenClaw agent assigned to one changed page. They should not
+invoke the `policy-manager` full multi-agent workflow for routine scans. HTTP
+failure, blocked responses, and Firecrawl failure alone are source-health risks,
+not sufficient evidence for a policy-change claim.
+
 Run validation locally with:
 
 ```bash

@@ -5,38 +5,98 @@ indexed university AI policy records. It is an operating and development plan,
 not an instruction to start a crawl.
 
 The current priority is trust maintenance for the public release, not raw
-expansion. Large-scale scanning and recrawling should run on the 4c/24GB OCI
-server with OpenClaw. Local Codex threads should plan, review pull requests,
-run validators, perform small artifact or schema repairs, and promote reviewed
-releases.
+expansion. Routine maintenance must be stable and cheap: deterministic OCI
+scripts do the regular scanning, Firecrawl verifies only suspected changes that
+HTTP cannot confirm reliably, and OpenClaw is reserved for small deep-review
+jobs after a likely policy update is detected.
 
 ## Maintenance Goals
 
 - Keep public university policy records fresh without weakening the
   evidence-backed data contract.
-- Detect source changes before rerunning expensive extraction.
+- Detect likely source changes before rerunning expensive extraction.
+- Avoid treating HTTP failure, blocked responses, or transient timeouts as
+  policy changes.
 - Preserve original-language evidence, source URLs, source hashes, confidence,
   and review state.
 - Expose policy changes through claim-level diffs and citation-ready public
   JSON, not raw source text.
-- Use real QS Top 200 change behavior to calibrate long-term refresh frequency.
-- Keep OpenClaw, staging data, review decisions, public release manifests, and
-  the public website separated by clear gates.
+- Keep scripts, Firecrawl verification, OpenClaw staged artifacts, release
+  manifests, and the public website separated by clear gates.
 
 ## Execution Boundary
 
-### OpenClaw on OCI
+### OCI Maintenance Script
 
-OpenClaw on the 4c/24GB OCI server is responsible for:
+The 4c/24GB OCI server should run the regular maintenance scheduler and Stage 1
+scanner. This scanner is deterministic code, not an OpenClaw/NIM agent flow.
+It is responsible for:
 
-- QS Top 200 baseline scans.
-- Source-health probes.
-- HTTP, Playwright, Firecrawl, OpenCLI, and script-based fetching.
-- Source discovery repair when existing source URLs fail.
-- Snapshot generation.
-- Claim extraction and evidence binding candidates.
-- Review assistance and report drafts.
-- GitHub data pull requests containing staged artifacts.
+- dynamically loading the current public release and ranking targets;
+- scanning QS Top 200 every 3 days;
+- scanning all other public-release universities in weekly dynamic shards;
+- checking promoted official source URLs with HTTP metadata and normalized hash
+  comparison;
+- classifying source-health risk without claiming policy change;
+- writing maintenance logs, source-health metadata, queue JSON, and markdown
+  summaries;
+- opening or preparing data PRs only when there is a real metadata change,
+  source-health update, or OpenClaw queue item.
+
+The scheduler must not hard-code a total university count. It should derive
+worklists from the current public dataset and ranking files so the cadence still
+works after the project grows beyond the current release size.
+
+### Firecrawl Verification
+
+Firecrawl is a compliant verification fallback for difficult or dynamic pages.
+It is not the default scanner.
+
+Use Firecrawl only when HTTP scanning finds evidence of a possible change but
+cannot verify the content reliably. Examples:
+
+- previous content hash exists, but current HTTP content is blocked or unstable;
+- final URL or redirect path changed and HTTP content is incomplete;
+- `ETag`, `Last-Modified`, content length, title, or normalized text signal
+  suggests a meaningful source change;
+- prior source-health history plus current metadata makes the source
+  inconclusive enough to require verification.
+
+Do not call Firecrawl for HTTP failure, timeout, `403`, blocked, or
+`robots_blocked` alone. Those statuses are source-health risks, not policy
+change signals.
+
+The Firecrawl API key must live only in OCI secrets or environment variables
+such as `FIRECRAWL_API_KEY`. Do not write the key to Git, docs, JSON artifacts,
+logs, pull request text, or public API responses.
+
+Firecrawl output remains source-health verification metadata. A
+`firecrawl_verified` status only means content was extracted for maintenance
+planning. It does not upgrade claim review state, source officialness, or
+canonical evidence status.
+
+### OpenClaw Lightweight Deep Review
+
+OpenClaw should not run routine Stage 1 scans and should not use the
+`policy-manager` full orchestration flow for daily maintenance. NVIDIA NIM free
+keys can be unstable for large jobs, so OpenClaw is reserved for targeted
+single-page work after a likely policy update is detected.
+
+Trigger OpenClaw only when HTTP or Firecrawl output indicates a suspected policy
+update or source relocation. Each source/page should use one lightweight agent
+with a narrow task:
+
+- read the changed source page or an alternate official source;
+- decide whether the change is policy-relevant;
+- generate minimal staged artifacts only if needed;
+- set top-level `runPurpose` to `source_health_maintenance` for maintenance-only
+  output or `claim_evidence_release` for candidate claim/evidence updates;
+- return a concise report with source URL, access status, hash status,
+  suspected change reason, artifact counts, and recommended next action.
+
+OpenClaw failures should return to the queue with `retryCount`, `lastError`, and
+`maintenanceRecommendedAction`. Do not continuously retry a failed item until
+it blocks the queue.
 
 OpenClaw must not:
 
@@ -60,8 +120,9 @@ Local Codex threads are responsible for:
   release gates;
 - checking the public site, public JSON, and dataset release surfaces.
 
-Local Codex should not perform large-scale QS200 scanning, broad recrawls, or
-bulk policy extraction. Those jobs belong on the OCI OpenClaw host.
+Local Codex should not perform broad maintenance scans or bulk policy
+extraction. Those jobs belong on the OCI maintenance host and, only after a
+suspected update, targeted OpenClaw agents.
 
 ### Public Site
 
@@ -70,110 +131,146 @@ must not read OpenClaw runtime output, unpromoted staging directories, local
 knowledge summaries, or non-authoritative reference sheets as canonical policy
 data.
 
-## QS Top 200 Baseline Scan
+## Maintenance Cadence
 
-Before setting long-term refresh frequency, OpenClaw should run a two-stage
-baseline scan over QS Top 200 universities. The purpose is to measure real
-change rates, source failure rates, and deep-crawl workload.
+The first production cadence is:
 
-### Stage 1: Lightweight Source Check
+| Target set | Cadence | Selection rule | Runner |
+| --- | --- | --- | --- |
+| QS Top 200 | Every 3 days | Dynamically read ranking/public release intersection | OCI HTTP-first scanner |
+| All other public-release universities | Weekly | Dynamic shards over the current public dataset excluding QS Top 200 | OCI HTTP-first scanner |
+| Firecrawl verification queue | Same run, bounded by queue policy | Only suspected-change items with unreliable HTTP | OCI script using Firecrawl |
+| OpenClaw deep-review queue | Small batches after scan | Only suspected policy updates or source relocation | One lightweight OpenClaw agent per page |
 
-For every QS Top 200 university already present in the public release, check
-the promoted official source URLs first.
+Do not hard-code `518` or any other current dataset size. The weekly sharder
+must calculate shard count and shard membership from the live public release.
 
-Collect only metadata needed for maintenance:
+## Stage 1: HTTP-First Diff
 
-- entity slug and QS rank;
+Stage 1 checks promoted official source URLs before any agent work.
+
+Collect maintenance metadata only:
+
+- entity slug and ranking context when available;
 - source URL and final URL;
-- HTTP status;
-- redirect status;
-- `ETag`, `Last-Modified`, and other cache validators when available;
-- robots/access status;
-- content hash for successfully fetched normalized text;
-- previous promoted snapshot hash;
+- HTTP status, redirect chain, and access classification;
+- `ETag`, `Last-Modified`, content length, and content type;
+- title or compact content signal when safely available;
+- normalized content hash when HTTP content is readable;
+- previous promoted snapshot hash and previous maintenance hash;
 - source-health status;
 - checked timestamp;
 - recommended next action.
 
-Stage 1 must not publish new claims. If the source hash is unchanged, update
-maintenance metadata only and stop.
+Stage 1 must not publish new claims. If HTTP content is readable and the
+normalized hash/signals are unchanged, update maintenance metadata only and
+stop.
 
-### Stage 2: Deep Crawl For Changed Or Risky Records
+HTTP failure, timeout, `403`, blocked, or `robots_blocked` alone must not become
+`changed_hash`, `suspected_policy_update`, or an OpenClaw trigger. These states
+should be recorded as source-health risks or repair candidates.
 
-Run deeper OpenClaw crawling and extraction only when Stage 1 finds:
+Stage 1 should classify rows into at least:
 
-- changed content hash;
-- missing or stale source URL;
-- source-health failure;
-- blocked, inconclusive, or dynamic source;
-- high-value university needing stronger verification;
-- low source count or weak current evidence;
-- suspected policy relocation.
+- `unchanged`
+- `changed_hash`
+- `metadata_changed`
+- `http_failed`
+- `blocked_or_inconclusive`
+- `needs_firecrawl_verification`
+- `firecrawl_verified_changed`
+- `suspected_policy_update`
+- `needs_openclaw`
+- `repair_queue`
 
-Stage 2 output must be staged artifacts, not public data. It should include
-source discovery traces, source candidates, fetch attempts, source snapshots,
-claim candidates, evidence candidates, review decisions, and report drafts.
-When Stage 2 reuses existing promoted claim IDs and evidence snippets only to
-bind source-health checks to public records, the run is maintenance metadata
-only. It must stay out of `data/public-releases/current.json` until a
-deduplicated maintenance metadata ingestion path promotes source-health fields
-without adding duplicate public claims.
+## Firecrawl Verification Queue
+
+Only Stage 1 rows with a suspected content or metadata change and unreliable
+HTTP should enter `needs_firecrawl_verification`.
+
+Firecrawl should record:
+
+- checked URL and final URL;
+- Firecrawl status and HTTP metadata status when available;
+- extracted title or compact metadata;
+- whether meaningful source content was extracted;
+- normalized content hash when available;
+- recommended action;
+- no-bypass/no-advice caveats.
+
+Firecrawl results should be interpreted conservatively:
+
+- `firecrawl_verified` plus changed content signal can move to
+  `suspected_policy_update` or `needs_openclaw`.
+- `firecrawl_opened_no_content` moves to repair queue unless other metadata
+  strongly suggests policy change.
+- `firecrawl_failed` moves to repair queue and does not trigger OpenClaw by
+  itself.
+
+## Stage 2: OpenClaw Single-Agent Review
+
+Stage 2 is not a full OpenClaw policy-manager workflow. It is a targeted
+single-page review for queue items that already have suspected policy-update
+signals.
+
+Trigger conditions:
+
+- HTTP readable content changed in a likely policy-relevant way;
+- Firecrawl verified changed source content after HTTP was unreliable;
+- official source moved and the new official URL needs policy-specific review;
+- source-health risk combines with prior weak evidence, low source count, or low
+  confidence and has a change signal.
+
+Do not trigger OpenClaw for:
+
+- HTTP failure alone;
+- blocked response alone;
+- Firecrawl failure alone;
+- unchanged metadata;
+- generic source-health warnings with no change signal.
+
+OpenClaw output must be staged artifacts, not public data. It should generate
+only the minimum artifacts needed for review and validator compatibility. A
+maintenance-only run must use `runPurpose: source_health_maintenance` and stay
+out of `data/public-releases/current.json`.
 
 ## Maintenance Tiers
 
-Frequency should be calibrated after the QS Top 200 baseline scan. Until then,
-use these initial tiers as a starting point.
-
-| Tier | Members | Initial cadence | Fetch strategy |
+| Tier | Members | Cadence | Fetch strategy |
 | --- | --- | --- | --- |
-| A | QS Top 200, high-traffic universities, and universities changed in the last 60 days | Weekly | HTTP plus regular Firecrawl/Playwright/OpenCLI when useful |
-| B | Other public-release universities with healthy sources | Monthly | HTTP and conditional requests first; escalate on hash change or failure |
-| C | Source-health failed, blocked, opened with no usable content, low source count, inaccessible, or no-policy records | Weekly repair queue | Discovery repair and selective deep crawl |
-| D | Stable, low-traffic, low-risk records | Quarterly | Lightweight source checks only unless source changes |
+| A | QS Top 200, high-traffic universities, recently changed records | Every 3 days for QS Top 200; otherwise configured as high-priority | HTTP-first, Firecrawl only for suspected changes, OpenClaw only for likely policy updates |
+| B | Other public-release universities with healthy sources | Weekly dynamic shards | HTTP-first; Firecrawl only for suspected changes |
+| C | Source-health failed, low source count, inaccessible, or no-policy records | Weekly repair queue | Source repair and selective Firecrawl/OpenClaw only with change signal or repair need |
+| D | Stable, low-traffic, low-risk records | Covered by weekly shard or reduced later after evidence | HTTP-first only unless signals change |
 
 Do not treat source-health metadata as evidence. It is maintenance and repair
 metadata only.
-
-## Frequency Adjustment Rules
-
-After the QS Top 200 baseline scan, adjust cadence based on measured outcomes:
-
-- If QS Top 200 changed-source rate is high, keep Tier A weekly and move Tier B
-  to biweekly until stability improves.
-- If QS Top 200 changed-source rate is low, keep Tier A weekly, Tier B monthly,
-  and Tier D quarterly.
-- If source failure or blocked-source rates are high, increase Tier C repair
-  queue priority instead of increasing full recrawl frequency.
-- If most changes are non-policy boilerplate, improve normalization and diff
-  filters before increasing crawl frequency.
-- If claim-level changes are frequent in a region or source type, create a
-  region/source-specific maintenance rule.
-
-The baseline report should recommend updated frequencies rather than hard-code
-them into the crawler.
 
 ## Staged Artifact Workflow
 
 All maintenance updates must pass through the staged artifact workflow:
 
-1. OpenClaw builds a maintenance run plan from public release records, QS rank,
-   source-health status, and previous snapshot hashes.
-2. Stage 1 collects source metadata and hash status.
-3. Stage 2 runs only for changed or risky records.
-4. OpenClaw writes staged artifacts under the existing artifact contract.
+1. The OCI scheduler builds a maintenance run plan from public release records,
+   QS rank, source-health status, and previous snapshot hashes.
+2. The HTTP-first scanner collects source metadata and hash status.
+3. Firecrawl verifies only suspected-change rows whose HTTP content is
+   unreliable.
+4. OpenClaw runs only one lightweight agent per source/page for rows marked
+   `suspected_policy_update` or `needs_openclaw`.
+5. OpenClaw writes staged artifacts under the existing artifact contract.
    Maintenance-only bundles must set
    `runPurpose: source_health_maintenance`; claim/evidence release candidates
    may omit `runPurpose` or use `claim_evidence_release`.
-5. OpenClaw opens a data pull request with run ID, target entities, source URLs,
+6. The automation opens a data pull request with run ID, target entities, source URLs,
    access notes, snapshot counts, claim counts, validation output, and known
    limitations.
-6. Local Codex reviews the PR, runs validators, and performs small repairs if
+7. Local Codex reviews the PR, runs validators, and performs small repairs if
    needed.
-7. Passing staged runs that create or repair canonical claim/evidence records
+8. Passing staged runs that create or repair canonical claim/evidence records
    can be added to `data/public-releases/current.json`.
-8. Passing maintenance-only runs stay unpromoted and feed source-health and
+9. Passing maintenance-only runs stay unpromoted and feed source-health and
    review-queue metadata only.
-9. The public site rebuilds from promoted release data and read-only
+10. The public site rebuilds from promoted release data and read-only
    source-health/review metadata.
 
 The public release manifest remains the gate for what appears in public pages,
@@ -244,6 +341,9 @@ maintenanceTier
 lastMaintenanceCheckedAt
 nextRecommendedCheckAt
 lastMaintenanceRunId
+stage1Status
+firecrawlVerificationStatus
+openclawQueueStatus
 maintenanceRecommendedAction
 ```
 
@@ -268,23 +368,23 @@ Important public boundaries:
 - Official source documents, page text, PDFs, and screenshots retain their
   original rights.
 
-## QS200 Baseline Report Requirements
+## Maintenance Run Report Requirements
 
-The first OpenClaw baseline report should include:
+Each scheduled maintenance run should report:
 
 - generated timestamp;
-- OpenClaw run ID;
-- QS Top 200 input source and rank coverage;
-- public release coverage count;
-- universities missing from the public release;
+- run ID;
+- target set and shard definition;
+- scanned count;
 - unchanged source count;
-- changed hash count;
-- source failed count;
-- source blocked or inaccessible count;
-- records needing deep crawl;
-- records needing source discovery repair;
-- estimated cost/time for Stage 2;
-- recommended frequency adjustment for Tier A/B/C/D;
+- HTTP failed count;
+- blocked or inconclusive count;
+- suspected changed count;
+- Firecrawl verification count;
+- Firecrawl verified changed count;
+- repair queue count;
+- needs OpenClaw count;
+- generated PR URL or no-change summary;
 - no-bypass and no-advice caveats.
 
 The report must not include raw source text or full page snapshots.
@@ -312,28 +412,32 @@ After promotion, smoke-check:
 /api/public/v1/datasets/latest.json
 ```
 
-Acceptance criteria for the QS200 baseline scan:
+Acceptance criteria for the maintenance system:
 
-- QS200 coverage summary exists.
-- `unchanged`, `changed_hash`, `source_failed`, `source_blocked`, and
-  `needs_deep_crawl` counts are reported.
-- Frequency recommendations are based on observed results.
+- QS Top 200 is scanned every 3 days.
+- Non-QS public-release universities are covered by weekly dynamic shards.
+- No target count is hard-coded.
+- HTTP-only failure does not trigger Firecrawl or OpenClaw.
+- Firecrawl only handles `needs_firecrawl_verification` rows.
+- OpenClaw only handles `suspected_policy_update` or `needs_openclaw` rows.
+- OpenClaw runs one lightweight agent per page and does not invoke the
+  `policy-manager` full workflow.
 - No raw source text is published.
 - No production database write occurs.
 - No direct push to `main` occurs.
 
 ## Implementation Notes
 
-The first implementation should be documentation and queue generation only.
-Do not start with a full automated promotion loop.
+The first implementation should be documentation, queue generation, and a safe
+OCI scheduler only. Do not start with a full automated promotion loop.
 
 Recommended sequence:
 
-1. Commit this maintenance plan.
-2. Finish and commit Source Health P0 separately if still pending.
-3. Add an OpenClaw-facing QS200 baseline prompt/runbook.
-4. Have OpenClaw run Stage 1 on OCI.
-5. Review the baseline report locally.
-6. Decide the first calibrated maintenance cadence.
-7. Implement queue generation and public metadata fields only after the
-   baseline results justify them.
+1. Commit this revised maintenance plan.
+2. Implement the OCI HTTP-first scanner with dynamic target selection.
+3. Store Firecrawl API credentials only in OCI secrets/environment variables.
+4. Add Firecrawl verification only for suspected-change rows with unreliable
+   HTTP.
+5. Add an OpenClaw lightweight-agent prompt/runbook for single-page deep review.
+6. Add systemd service/timer for the scanner.
+7. Review the first maintenance report locally before enabling PR automation.
