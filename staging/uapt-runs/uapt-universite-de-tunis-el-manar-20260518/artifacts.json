@@ -1,0 +1,286 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universite-de-tunis-el-manar-20260518",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-universite-de-tunis-el-manar-20260518",
+      "entityType": "university",
+      "entitySlug": "universite-de-tunis-el-manar",
+      "startedAt": "2026-05-18T14:20:00Z",
+      "endedAt": "2026-05-18T14:28:07Z",
+      "methodsAttempted": [
+        {
+          "method": "canonical_domain",
+          "domain": "utm.rnu.tn",
+          "resultCount": 1,
+          "notes": "Confirmed the official Universite de Tunis El Manar domain from the university home/contact pages and used the /utm/fr/ path for French official content."
+        },
+        {
+          "method": "public_web_search",
+          "query": "Université de Tunis El Manar intelligence artificielle site:utm.rnu.tn OR site:utm.tn",
+          "resultCount": 5,
+          "notes": "Firecrawl search found official AI-related event, gallery, and program pages but no binding AI-use policy."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:utm.rnu.tn/utm/fr règlement plagiat étudiant Université de Tunis El Manar",
+          "resultCount": 8,
+          "notes": "Firecrawl search found the official UTM Systeme Antiplagiat page with specific plagiarism-prevention and student-work analysis text."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:utm.rnu.tn/utm/fr \"données personnelles\" \"Université de Tunis El Manar\"",
+          "resultCount": 1,
+          "notes": "Search returned an official personal-data conference page only; no university privacy/data-handling policy source was identified."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:utm.rnu.tn/utm/fr (\"ChatGPT\" OR \"IA générative\" OR \"intelligence artificielle générative\" OR \"charte\") \"Université de Tunis El Manar\"",
+          "resultCount": 1,
+          "notes": "Search did not surface an official ChatGPT or generative-AI policy; the returned result was broad institutional content."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-utm-antiplagiat-001",
+        "sc-utm-ai-event-001"
+      ],
+      "rejectionIds": [
+        "sr-utm-ai-event-001"
+      ],
+      "summary": "Official UTM discovery found one verified academic-integrity source about the university anti-plagiarism system. AI-related official pages were event/news or program context and were not used as policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-utm-antiplagiat-001",
+      "entityType": "university",
+      "entitySlug": "universite-de-tunis-el-manar",
+      "sourceUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+      "finalUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+      "sourceTitle": "Système Antiplagiat",
+      "sourceLanguage": "fr",
+      "sourceType": "academic_integrity",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:utm.rnu.tn/utm/fr règlement plagiat étudiant Université de Tunis El Manar",
+      "discoveredAt": "2026-05-18T14:22:00Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.2,
+      "policySpecificityScore": 0.72,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-18T14:28:07Z",
+      "verificationNotes": "Official UTM page states the university provides a similarity-detection platform for plagiarism prevention/detection and analysis of digital student submissions.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-utm-ai-event-001",
+      "entityType": "university",
+      "entitySlug": "universite-de-tunis-el-manar",
+      "sourceUrl": "http://www.utm.rnu.tn/utm/fr/actualite-3023-rencontre-utm-entreprises-l-utm-a-l-ere-de-l-intelligence-artificielle",
+      "finalUrl": "https://utm.rnu.tn/utm/fr/actualite-3023-rencontre-utm-entreprises-l-utm-a-l-ere-de-l-intelligence-artificielle",
+      "sourceTitle": "Rencontre UTM-Entreprises : L’UTM à l’ère de l’Intelligence Artificielle",
+      "sourceLanguage": "fr",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "Université de Tunis El Manar intelligence artificielle site:utm.rnu.tn OR site:utm.tn",
+      "discoveredAt": "2026-05-18T14:21:00Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.78,
+      "policySpecificityScore": 0.12,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-18T14:28:07Z",
+      "verificationNotes": "Official UTM news page about a 2019 university-enterprise research day on artificial intelligence; it does not state student, teaching, privacy, or institutional AI-use rules.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-utm-ai-event-001",
+      "sourceCandidateId": "sc-utm-ai-event-001",
+      "entityType": "university",
+      "entitySlug": "universite-de-tunis-el-manar",
+      "sourceUrl": "http://www.utm.rnu.tn/utm/fr/actualite-3023-rencontre-utm-entreprises-l-utm-a-l-ere-de-l-intelligence-artificielle",
+      "finalUrl": "https://utm.rnu.tn/utm/fr/actualite-3023-rencontre-utm-entreprises-l-utm-a-l-ere-de-l-intelligence-artificielle",
+      "rejectedAt": "2026-05-18T14:28:07Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw-codex-worker",
+      "evidenceSnippet": "L’Université de Tunis El Manar a organisé ... la 4éme journée de recherche \"Rencontre UTM- Entreprises : L'UTM à l'ère de l'Intelligence Artificielle\"...",
+      "notes": "Useful discovery context for AI activity, but not a policy or guidance source for AI tool use."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "crawl_plan",
+      "planId": "plan-universite-de-tunis-el-manar-20260518",
+      "createdAt": "2026-05-18T14:28:07Z",
+      "createdBy": "openclaw-codex-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "universite-de-tunis-el-manar",
+          "sourceCandidateId": "sc-utm-antiplagiat-001",
+          "sourceUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+          "sourceTitle": "Système Antiplagiat",
+          "sourceLanguage": "fr",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "academic integrity",
+            "plagiarism detection",
+            "student submissions"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after verified official source text supports a narrow candidate claim.",
+        "Do not crawl login-gated, CAPTCHA-protected, or robots-disallowed paths.",
+        "Do not treat AI event/news pages as binding policy evidence."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-utm-antiplagiat-http-001",
+      "sourceCandidateId": "sc-utm-antiplagiat-001",
+      "sourceUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+      "finalUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+      "attemptedAt": "2026-05-18T14:27:00Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1002,
+      "contentHash": "4550c8ec3d90e131f2fea3f17bdddec0641ffa5c7e2c8238d8e64f9e3905d83e",
+      "normalizedTextStorageKey": "not-staged://uapt-universite-de-tunis-el-manar-20260518/source-snapshots/utm-antiplagiat"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-utm-antiplagiat-001",
+      "sourceCandidateId": "sc-utm-antiplagiat-001",
+      "fetchAttemptId": "fetch-utm-antiplagiat-http-001",
+      "sourceUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+      "finalUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+      "sourceTitle": "Système Antiplagiat",
+      "sourceLanguage": "fr",
+      "contentHash": "4550c8ec3d90e131f2fea3f17bdddec0641ffa5c7e2c8238d8e64f9e3905d83e",
+      "fetchedAt": "2026-05-18T14:27:00Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "not-staged://uapt-universite-de-tunis-el-manar-20260518/source-snapshots/utm-antiplagiat",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-utm-antiplagiat-platform-001",
+      "entityType": "university",
+      "entitySlug": "universite-de-tunis-el-manar",
+      "claimType": "academic_integrity",
+      "claimText": "Université de Tunis El Manar states that it makes a similarity-detection platform available to its teacher-researchers for plagiarism prevention and detection, including analysis of digital student submissions to identify uncited similar paragraphs from online texts.",
+      "normalizedValue": "UTM provides a similarity-detection anti-plagiarism platform for teacher-researchers to analyze digital student submissions.",
+      "sourceLanguage": "fr",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-utm-antiplagiat-platform-001"
+      ],
+      "citation": {
+        "citationTitle": "Système Antiplagiat",
+        "sourceUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-de-tunis-el-manar.json",
+        "publisher": "Université de Tunis El Manar",
+        "retrievedAt": "2026-05-18T14:27:00Z",
+        "snapshotHash": "4550c8ec3d90e131f2fea3f17bdddec0641ffa5c7e2c8238d8e64f9e3905d83e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-utm-antiplagiat-platform-001",
+      "claimId": "claim-utm-antiplagiat-platform-001",
+      "sourceSnapshotId": "snap-utm-antiplagiat-001",
+      "sourceUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+      "finalUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+      "sourceTitle": "Système Antiplagiat",
+      "sourceLanguage": "fr",
+      "snapshotHash": "4550c8ec3d90e131f2fea3f17bdddec0641ffa5c7e2c8238d8e64f9e3905d83e",
+      "evidenceSnippetOriginal": "Dans le cadre de sa démarche de mise en place d’outils de prévention et de détection du plagiat, l’Université de Tunis El Manar met à disposition de ses enseignants-chercheurs une plateforme de détection de similitudes. Cette plateforme vous permet d'analyser des travaux rendus par les étudiants sous forme numérique, pour repérer et identifier des paragraphes similaires à des textes disponibles en ligne et dont les sources ne seraient pas citées.",
+      "evidenceSnippetDisplay": "UTM says it provides teacher-researchers with a similarity-detection platform for plagiarism prevention/detection and for analyzing digital student submissions to identify uncited similar paragraphs from online texts.",
+      "evidenceLocator": "Main content section headed \"Système Antiplagiat\"",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Système Antiplagiat",
+        "sourceUrl": "https://utm.rnu.tn/utm/fr/recherche--systeme-antiplagiat",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-de-tunis-el-manar.json",
+        "publisher": "Université de Tunis El Manar",
+        "retrievedAt": "2026-05-18T14:27:00Z",
+        "snapshotHash": "4550c8ec3d90e131f2fea3f17bdddec0641ffa5c7e2c8238d8e64f9e3905d83e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "review_decision",
+      "decisionId": "decision-utm-antiplagiat-platform-001",
+      "claimId": "claim-utm-antiplagiat-platform-001",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-codex-worker",
+      "notes": "Approved as a narrow academic-integrity candidate. The evidence supports availability and intended use of an anti-plagiarism similarity-detection platform; it does not support a broader AI policy claim.",
+      "decidedAt": "2026-05-18T14:28:07Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universite-de-tunis-el-manar-20260518",
+      "artifactType": "report_draft",
+      "reportId": "report-universite-de-tunis-el-manar-20260518",
+      "title": "Université de Tunis El Manar staged source review",
+      "generatedAt": "2026-05-18T14:28:07Z",
+      "draftPath": "content/reports/2026-05/universite-de-tunis-el-manar-staged-source-review.mdx",
+      "summary": "The staged bundle records one official UTM academic-integrity source. The supported candidate claim is limited to the university's anti-plagiarism similarity-detection platform for teacher-researchers and digital student submissions. Official AI-related event pages were rejected as event/news-only and were not used as policy evidence.",
+      "referencedClaimIds": [
+        "claim-utm-antiplagiat-platform-001"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/universite-de-tunis-el-manar.json",
+        "https://eduaipolicy.org/api/public/v1/universities/universite-de-tunis-el-manar.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No official UTM generative-AI student-use or teaching policy was identified in this crawl; AI-related pages found were event/news or program pages.",
+        "The candidate claim should not be generalized beyond the anti-plagiarism platform text on the official source page."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

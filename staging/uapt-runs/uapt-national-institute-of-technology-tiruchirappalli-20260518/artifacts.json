@@ -1,0 +1,502 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-national-institute-of-technology-tiruchirappalli-20260518",
+      "entityType": "university",
+      "entitySlug": "national-institute-of-technology-tiruchirappalli",
+      "startedAt": "2026-05-18T14:20:00.000Z",
+      "endedAt": "2026-05-18T14:38:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:nitt.edu artificial intelligence policy OR generative AI OR ChatGPT National Institute of Technology Tiruchirappalli students faculty",
+          "domain": "nitt.edu",
+          "resultCount": 5,
+          "notes": "Firecrawl found official NITT AI course, faculty, and training materials, but no central binding student or faculty AI-use policy."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:nitt.edu academic integrity plagiarism regulation student conduct examination rules NIT Tiruchirappalli PDF",
+          "domain": "nitt.edu",
+          "resultCount": 8,
+          "notes": "Firecrawl found the official PG Regulations 2024 PDF with academic dishonesty and plagiarism rules."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:nitt.edu \"ChatGPT\" \"NIT Trichy\" OR \"Generative AI\" \"guidelines\"",
+          "domain": "nitt.edu",
+          "resultCount": 6,
+          "notes": "Firecrawl found an official RTI/Parliament QA PDF discussing ChatGPT-like generative AI use and measures described as policies being evolved."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.nitt.edu",
+          "resultCount": 1,
+          "notes": "robots.txt returned User-agent: * with empty Disallow, so the public PDF URLs used here were treated as allowed."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-nitt-pg-regulations-2024",
+        "sc-nitt-parliament-qa-2025",
+        "sc-nitt-generative-ai-foundations-course"
+      ],
+      "rejectionIds": [
+        "sr-nitt-generative-ai-foundations-course"
+      ],
+      "summary": "Official-source discovery found NITT's public PG Regulations 2024 PDF for academic dishonesty and plagiarism rules, and a public Right to Information/Parliament QA 2025 PDF discussing ChatGPT-like generative AI use and measures that NITT described as policies being evolved. A generative-AI foundations course PDF was rejected because it is professional-development/course material rather than policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-nitt-pg-regulations-2024",
+      "entityType": "university",
+      "entitySlug": "national-institute-of-technology-tiruchirappalli",
+      "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "finalUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "sourceTitle": "PG Regulations 2024",
+      "sourceLanguage": "en",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:nitt.edu academic integrity plagiarism regulation student conduct examination rules NIT Tiruchirappalli PDF",
+      "discoveredAt": "2026-05-18T14:23:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.2,
+      "policySpecificityScore": 0.92,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-18T14:26:35.000Z",
+      "verificationNotes": "Direct HTTP fetch returned 200 application/pdf from www.nitt.edu and extracted text includes section M.17.4 Academic Dishonesty & Plagiarism.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-nitt-parliament-qa-2025",
+      "entityType": "university",
+      "entitySlug": "national-institute-of-technology-tiruchirappalli",
+      "sourceUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+      "finalUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+      "sourceTitle": "Parliament QA 2025",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:nitt.edu \"ChatGPT\" \"NIT Trichy\" OR \"Generative AI\" \"guidelines\"",
+      "discoveredAt": "2026-05-18T14:24:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.88,
+      "policySpecificityScore": 0.61,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-18T14:26:35.000Z",
+      "verificationNotes": "Direct HTTP fetch returned 200 application/pdf from www.nitt.edu and extracted text includes the Rajya Sabha question on AI in higher education, ChatGPT-like software, Turnitin, and code plagiarism validation.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-nitt-generative-ai-foundations-course",
+      "entityType": "university",
+      "entitySlug": "national-institute-of-technology-tiruchirappalli",
+      "sourceUrl": "https://www.nitt.edu/home/CA_GIAN_Generative_AI_Foundations_Aug2025.pdf",
+      "finalUrl": "https://www.nitt.edu/home/CA_GIAN_Generative_AI_Foundations_Aug2025.pdf",
+      "sourceTitle": "Generative AI: Foundations, GANs, VAEs, and Real-World Image Applications",
+      "sourceLanguage": "en",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:nitt.edu artificial intelligence policy OR generative AI OR ChatGPT National Institute of Technology Tiruchirappalli students faculty",
+      "discoveredAt": "2026-05-18T14:22:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.72,
+      "policySpecificityScore": 0.12,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-18T14:24:00.000Z",
+      "verificationNotes": "Official NITT-hosted course/training PDF about generative AI foundations, not a university AI-use, academic-integrity, privacy, or teaching policy source.",
+      "rejectionReason": "research_showcase_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-nitt-generative-ai-foundations-course",
+      "sourceCandidateId": "sc-nitt-generative-ai-foundations-course",
+      "entityType": "university",
+      "entitySlug": "national-institute-of-technology-tiruchirappalli",
+      "sourceUrl": "https://www.nitt.edu/home/CA_GIAN_Generative_AI_Foundations_Aug2025.pdf",
+      "finalUrl": "https://www.nitt.edu/home/CA_GIAN_Generative_AI_Foundations_Aug2025.pdf",
+      "rejectedAt": "2026-05-18T14:24:00.000Z",
+      "rejectionReason": "research_showcase_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Firecrawl result described a Generative AI foundations course taught by NITT faculty, with no policy or conduct language.",
+      "notes": "Rejected as professional-development/course material; not used as claim evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "crawl_plan",
+      "planId": "cp-national-institute-of-technology-tiruchirappalli-20260518",
+      "createdAt": "2026-05-18T14:28:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "national-institute-of-technology-tiruchirappalli",
+          "sourceCandidateId": "sc-nitt-pg-regulations-2024",
+          "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+          "sourceTitle": "PG Regulations 2024",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "academic dishonesty",
+            "plagiarism",
+            "assessment conduct"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "national-institute-of-technology-tiruchirappalli",
+          "sourceCandidateId": "sc-nitt-parliament-qa-2025",
+          "sourceUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+          "sourceTitle": "Parliament QA 2025",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ChatGPT",
+            "academic integrity",
+            "source status"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official NITT source text supports narrow claim candidates.",
+        "Do not use course, faculty-profile, newsletter, or research-project pages as binding AI policy evidence.",
+        "Do not crawl login-gated or blocked content."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-nitt-pg-regulations-2024",
+      "sourceCandidateId": "sc-nitt-pg-regulations-2024",
+      "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "finalUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "attemptedAt": "2026-05-18T14:26:35.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1000,
+      "contentHash": "968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091",
+      "normalizedTextStorageKey": "staging-only:nitt-pg-regulations-2024-text-sha256-968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-nitt-parliament-qa-2025",
+      "sourceCandidateId": "sc-nitt-parliament-qa-2025",
+      "sourceUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+      "finalUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+      "attemptedAt": "2026-05-18T14:26:35.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1000,
+      "contentHash": "beed0ea23b232d2ada6a24d78a3b9bc60b56422459675a928080b88db0595824",
+      "normalizedTextStorageKey": "staging-only:nitt-parliament-qa-2025-text-sha256-beed0ea23b232d2ada6a24d78a3b9bc60b56422459675a928080b88db0595824"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-nitt-pg-regulations-2024",
+      "sourceCandidateId": "sc-nitt-pg-regulations-2024",
+      "fetchAttemptId": "fa-nitt-pg-regulations-2024",
+      "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "finalUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "sourceTitle": "PG Regulations 2024",
+      "sourceLanguage": "en",
+      "contentHash": "968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091",
+      "fetchedAt": "2026-05-18T14:26:35.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging-only:nitt-pg-regulations-2024-text-sha256-968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-nitt-parliament-qa-2025",
+      "sourceCandidateId": "sc-nitt-parliament-qa-2025",
+      "fetchAttemptId": "fa-nitt-parliament-qa-2025",
+      "sourceUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+      "finalUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+      "sourceTitle": "Parliament QA 2025",
+      "sourceLanguage": "en",
+      "contentHash": "beed0ea23b232d2ada6a24d78a3b9bc60b56422459675a928080b88db0595824",
+      "fetchedAt": "2026-05-18T14:26:35.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging-only:nitt-parliament-qa-2025-text-sha256-beed0ea23b232d2ada6a24d78a3b9bc60b56422459675a928080b88db0595824",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-nitt-pg-academic-dishonesty-2024",
+      "entityType": "university",
+      "entitySlug": "national-institute-of-technology-tiruchirappalli",
+      "claimType": "academic_integrity",
+      "claimText": "NITT's 2024 PG Regulations classify possession of mobile phones, carrying unauthorized notes, communicating with other students, or copying during an assessment as punishable academic dishonesty, with zero marks for offenders.",
+      "normalizedValue": "PG assessment conduct: specified conduct is academic dishonesty and punishable; zero marks penalty stated.",
+      "sourceLanguage": "en",
+      "confidence": 0.92,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-nitt-pg-academic-dishonesty-2024"
+      ],
+      "citation": {
+        "citationTitle": "PG Regulations 2024",
+        "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-institute-of-technology-tiruchirappalli.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-institute-of-technology-tiruchirappalli",
+        "publisher": "National Institute of Technology, Tiruchirappalli",
+        "retrievedAt": "2026-05-18T14:26:35.000Z",
+        "snapshotHash": "968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-nitt-pg-course-plan-integrity-2024",
+      "entityType": "university",
+      "entitySlug": "national-institute-of-technology-tiruchirappalli",
+      "claimType": "teaching",
+      "claimText": "NITT's 2024 PG Regulations say each course faculty prepares a course plan and that the course plan outlines assessment components, attendance requirements, academic integrity guidelines, and study material information.",
+      "normalizedValue": "PG course plans include assessment components, attendance requirements, academic integrity guidelines, and study material information.",
+      "sourceLanguage": "en",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-nitt-pg-course-plan-integrity-2024"
+      ],
+      "citation": {
+        "citationTitle": "PG Regulations 2024",
+        "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-institute-of-technology-tiruchirappalli.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-institute-of-technology-tiruchirappalli",
+        "publisher": "National Institute of Technology, Tiruchirappalli",
+        "retrievedAt": "2026-05-18T14:26:35.000Z",
+        "snapshotHash": "968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-nitt-chatgpt-measures-evolving-2025",
+      "entityType": "university",
+      "entitySlug": "national-institute-of-technology-tiruchirappalli",
+      "claimType": "academic_integrity",
+      "claimText": "In a 2025 official Parliament QA PDF, NITT described ChatGPT-like generative AI use in higher education and said related policies were being evolved, including Turnitin checks for plagiarism and auto-generated content and plagiarism validation for code.",
+      "normalizedValue": "AI-related academic-integrity measures described as evolving; Turnitin and code plagiarism validation mentioned.",
+      "sourceLanguage": "en",
+      "confidence": 0.78,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-nitt-chatgpt-measures-evolving-2025"
+      ],
+      "citation": {
+        "citationTitle": "Parliament QA 2025",
+        "sourceUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-institute-of-technology-tiruchirappalli.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-institute-of-technology-tiruchirappalli",
+        "publisher": "National Institute of Technology, Tiruchirappalli",
+        "retrievedAt": "2026-05-18T14:26:35.000Z",
+        "snapshotHash": "beed0ea23b232d2ada6a24d78a3b9bc60b56422459675a928080b88db0595824",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-nitt-pg-academic-dishonesty-2024",
+      "claimId": "claim-nitt-pg-academic-dishonesty-2024",
+      "sourceSnapshotId": "ss-nitt-pg-regulations-2024",
+      "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "finalUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "sourceTitle": "PG Regulations 2024",
+      "sourceLanguage": "en",
+      "snapshotHash": "968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091",
+      "evidenceSnippetOriginal": "Possession of a mobile phone, carrying unauthorized notes, communicating with other students, or copying during an assessment shall be considered an act of academic dishonesty and is punishable. Offenders will be awarded zero marks.",
+      "evidenceLocator": "M.17.4 Academic Dishonesty & Plagiarism, page 20",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "PG Regulations 2024",
+        "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-institute-of-technology-tiruchirappalli.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-institute-of-technology-tiruchirappalli",
+        "publisher": "National Institute of Technology, Tiruchirappalli",
+        "retrievedAt": "2026-05-18T14:26:35.000Z",
+        "snapshotHash": "968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-nitt-pg-course-plan-integrity-2024",
+      "claimId": "claim-nitt-pg-course-plan-integrity-2024",
+      "sourceSnapshotId": "ss-nitt-pg-regulations-2024",
+      "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "finalUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+      "sourceTitle": "PG Regulations 2024",
+      "sourceLanguage": "en",
+      "snapshotHash": "968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091",
+      "evidenceSnippetOriginal": "The course plan shall outline assessment components such as assignments, quizzes, group tasks, field-visit reports, open-book tests, laboratory exercises, mini-projects, and the final assessment, along with attendance requirements, academic integrity guidelines, and study material information.",
+      "evidenceLocator": "Class Committee first meeting section, PG Regulations 2024",
+      "evidenceType": "pdf",
+      "relevance": 0.91,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "PG Regulations 2024",
+        "sourceUrl": "https://www.nitt.edu/home/academics/rules/Regulations_PG_2024.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-institute-of-technology-tiruchirappalli.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-institute-of-technology-tiruchirappalli",
+        "publisher": "National Institute of Technology, Tiruchirappalli",
+        "retrievedAt": "2026-05-18T14:26:35.000Z",
+        "snapshotHash": "968ba167f7f0547f8246cc3c45b97f842c7c331c502c6fd45f7452e97f957091",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-nitt-chatgpt-measures-evolving-2025",
+      "claimId": "claim-nitt-chatgpt-measures-evolving-2025",
+      "sourceSnapshotId": "ss-nitt-parliament-qa-2025",
+      "sourceUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+      "finalUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+      "sourceTitle": "Parliament QA 2025",
+      "sourceLanguage": "en",
+      "snapshotHash": "beed0ea23b232d2ada6a24d78a3b9bc60b56422459675a928080b88db0595824",
+      "evidenceSnippetOriginal": "At our institute, the following policies are being evolved: We use Turnitin software to check for plagiarism which also points out the amount of auto-generated contents from software like ChatGPT. The code (programs) is also validated with plagiarism software to determine the visibility of the code.",
+      "evidenceLocator": "Rajya Sabha Unstarred Question No. 1790, Impact of Artificial Intelligence on Higher Education",
+      "evidenceType": "pdf",
+      "relevance": 0.88,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Parliament QA 2025",
+        "sourceUrl": "https://www.nitt.edu/home/righttoinfoact/Parliament_QA_2025.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/national-institute-of-technology-tiruchirappalli.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/national-institute-of-technology-tiruchirappalli",
+        "publisher": "National Institute of Technology, Tiruchirappalli",
+        "retrievedAt": "2026-05-18T14:26:35.000Z",
+        "snapshotHash": "beed0ea23b232d2ada6a24d78a3b9bc60b56422459675a928080b88db0595824",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "review_decision",
+      "decisionId": "rd-nitt-pg-academic-dishonesty-2024",
+      "claimId": "claim-nitt-pg-academic-dishonesty-2024",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved as a narrow PG Regulations claim. It does not state a generative-AI policy and should not be broadened beyond the assessment conduct text.",
+      "decidedAt": "2026-05-18T14:39:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "review_decision",
+      "decisionId": "rd-nitt-pg-course-plan-integrity-2024",
+      "claimId": "claim-nitt-pg-course-plan-integrity-2024",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved as a narrow teaching-process claim about PG course plans and academic integrity guidelines.",
+      "decidedAt": "2026-05-18T14:39:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "review_decision",
+      "decisionId": "rd-nitt-chatgpt-measures-evolving-2025",
+      "claimId": "claim-nitt-chatgpt-measures-evolving-2025",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved only as a source-backed statement that policies were being evolved and that Turnitin/code plagiarism checks were described; not approved as a finalized binding AI-use policy.",
+      "decidedAt": "2026-05-18T14:39:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
+      "artifactType": "report_draft",
+      "reportId": "report-national-institute-of-technology-tiruchirappalli-20260518",
+      "title": "National Institute of Technology, Tiruchirappalli staged AI policy evidence",
+      "generatedAt": "2026-05-18T14:40:00.000Z",
+      "draftPath": "content/reports/2026-05/national-institute-of-technology-tiruchirappalli.mdx",
+      "summary": "Staged evidence for NITT includes PG Regulations 2024 academic-integrity rules and an official 2025 Parliament QA PDF discussing ChatGPT-like generative AI use and measures described as policies being evolved. No central finalized generative-AI-use policy was found in the official sources checked.",
+      "referencedClaimIds": [
+        "claim-nitt-pg-academic-dishonesty-2024",
+        "claim-nitt-pg-course-plan-integrity-2024",
+        "claim-nitt-chatgpt-measures-evolving-2025"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/national-institute-of-technology-tiruchirappalli.json",
+        "https://eduaipolicy.org/api/public/v1/universities/national-institute-of-technology-tiruchirappalli.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The ChatGPT-related source describes policies as being evolved and should not be treated as a finalized binding AI-use policy without later official evidence.",
+        "Claims are limited to official NITT public sources checked on 2026-05-18."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
