@@ -1,0 +1,392 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-misis-20260518",
+      "entityType": "university",
+      "entitySlug": "the-national-university-of-science-and-technology-misis",
+      "startedAt": "2026-05-18T05:41:38Z",
+      "endedAt": "2026-05-18T05:41:38Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:misis.ru OR site:en.misis.ru MISIS artificial intelligence policy students ChatGPT generative AI",
+          "resultCount": 1,
+          "notes": "Firecrawl search found an official-domain dissertation PDF, but no formal AI policy or guidance page."
+        },
+        {
+          "method": "multilingual_query",
+          "query": "site:misis.ru MISIS ChatGPT учебный процесс искусственный интеллект студенты",
+          "resultCount": 8,
+          "notes": "Russian-language search surfaced official MISIS AI-related program, news, and PDF results."
+        },
+        {
+          "method": "multilingual_query",
+          "query": "site:misis.ru \"ChatGPT\" \"МИСИС\"",
+          "resultCount": 8,
+          "notes": "Search found the official edtech.misis.ru AI professional-development program and several lower-specificity results."
+        },
+        {
+          "method": "site_search",
+          "domain": "misis.ru",
+          "query": "нейросети студенты НИТУ МИСИС обучение искусственный интеллект",
+          "resultCount": 8,
+          "notes": "Official-site results were dominated by AI degree/program pages and research/news items rather than binding policy."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-misis-edtech-ai-revolution",
+        "src-misis-digdep-ai-data",
+        "src-misis-fumo-ai-education-pdf"
+      ],
+      "rejectionIds": [
+        "rej-misis-digdep-ai-data-low-specificity",
+        "rej-misis-fumo-ai-education-presentation"
+      ],
+      "summary": "Discovery found one official MISIS pedagogical-mastery subdomain page with policy-relevant AI professional-development content for university employees. Other official AI-related pages were rejected because they were student program marketing, presentation material, news, or otherwise not a formal AI-use policy."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-misis-edtech-ai-revolution",
+      "entityType": "university",
+      "entitySlug": "the-national-university-of-science-and-technology-misis",
+      "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "finalUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "sourceTitle": "AI-революция: как использовать технологии для роста и развития",
+      "sourceLanguage": "ru",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "multilingual_query",
+      "queryUsed": "site:misis.ru \"ChatGPT\" \"МИСИС\"",
+      "discoveredAt": "2026-05-18T05:41:38Z",
+      "officialDomainConfidence": 0.9,
+      "aiRelevanceScore": 0.93,
+      "policySpecificityScore": 0.62,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-18T05:41:38Z",
+      "verificationNotes": "Firecrawl scraped the official MISIS pedagogical-mastery subdomain page. The page links to MISIS, uses a MISIS logo block, lists MISIS staff, and describes an AI professional-development program for university employees.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-misis-digdep-ai-data",
+      "entityType": "university",
+      "entitySlug": "the-national-university-of-science-and-technology-misis",
+      "sourceUrl": "https://misis.ru/university/prioritet-2030/digdep/ai/",
+      "finalUrl": "https://misis.ru/university/prioritet-2030/digdep/ai/",
+      "sourceTitle": "Искусственный интеллект и анализ данных в цифровой экономике",
+      "sourceLanguage": "ru",
+      "sourceType": "approved_tools",
+      "discoveryMethod": "site_search",
+      "queryUsed": "нейросети студенты НИТУ МИСИС обучение искусственный интеллект",
+      "discoveredAt": "2026-05-18T05:41:38Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.76,
+      "policySpecificityScore": 0.22,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-18T05:41:38Z",
+      "verificationNotes": "Firecrawl scraped this official MISIS page; it describes an AI/data professional retraining program for students but does not give AI-use policy, academic-integrity, privacy, or assessment guidance.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-misis-fumo-ai-education-pdf",
+      "entityType": "university",
+      "entitySlug": "the-national-university-of-science-and-technology-misis",
+      "sourceUrl": "https://fumo22.misis.ru/wp-content/uploads/2024/10/%D0%94%D0%BE%D1%80%D0%BE%D1%84%D0%B5%D0%B5%D0%B2%D0%B0-%D0%9C%D0%AE.pdf",
+      "finalUrl": "https://fumo22.misis.ru/wp-content/uploads/2024/10/%D0%94%D0%BE%D1%80%D0%BE%D1%84%D0%B5%D0%B5%D0%B2%D0%B0-%D0%9C%D0%AE.pdf",
+      "sourceTitle": "Искусственный интеллект в образовании: возможности, перспективы, угрозы",
+      "sourceLanguage": "ru",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "pdf_discovery",
+      "queryUsed": "site:misis.ru искусственный интеллект академическая МИСИС",
+      "discoveredAt": "2026-05-18T05:41:38Z",
+      "officialDomainConfidence": 0.82,
+      "aiRelevanceScore": 0.7,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-18T05:41:38Z",
+      "verificationNotes": "Firecrawl opened the official-subdomain PDF and extracted initial pages, but the document is presentation material about AI in education rather than institutional AI-use policy.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-misis-digdep-ai-data-low-specificity",
+      "sourceCandidateId": "src-misis-digdep-ai-data",
+      "entityType": "university",
+      "entitySlug": "the-national-university-of-science-and-technology-misis",
+      "sourceUrl": "https://misis.ru/university/prioritet-2030/digdep/ai/",
+      "finalUrl": "https://misis.ru/university/prioritet-2030/digdep/ai/",
+      "rejectedAt": "2026-05-18T05:41:38Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw_agent",
+      "evidenceSnippet": "Программа подходит для студентов, обучающихся по направлениям/специальностям не ИТ-профиля...",
+      "notes": "The page is official and AI-related, but it describes an educational program rather than rules or guidance for AI tool use."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-misis-fumo-ai-education-presentation",
+      "sourceCandidateId": "src-misis-fumo-ai-education-pdf",
+      "entityType": "university",
+      "entitySlug": "the-national-university-of-science-and-technology-misis",
+      "sourceUrl": "https://fumo22.misis.ru/wp-content/uploads/2024/10/%D0%94%D0%BE%D1%80%D0%BE%D1%84%D0%B5%D0%B5%D0%B2%D0%B0-%D0%9C%D0%AE.pdf",
+      "finalUrl": "https://fumo22.misis.ru/wp-content/uploads/2024/10/%D0%94%D0%BE%D1%80%D0%BE%D1%84%D0%B5%D0%B5%D0%B2%D0%B0-%D0%9C%D0%AE.pdf",
+      "rejectedAt": "2026-05-18T05:41:38Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw_agent",
+      "evidenceSnippet": "Искусственный интеллект в образовании: возможности, перспективы, угрозы",
+      "notes": "Presentation material from an official subdomain was not treated as a binding policy or university-wide guidance source."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "crawl_plan",
+      "planId": "plan-misis-20260518",
+      "createdAt": "2026-05-18T05:41:38Z",
+      "createdBy": "openclaw_agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "the-national-university-of-science-and-technology-misis",
+          "sourceCandidateId": "src-misis-edtech-ai-revolution",
+          "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+          "sourceTitle": "AI-революция: как использовать технологии для роста и развития",
+          "sourceLanguage": "ru",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "ai_tool_treatment"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after extracting citation-ready candidate claims from the verified official MISIS AI professional-development page.",
+        "Do not infer university-wide student rules from staff training content.",
+        "Reject official AI program, news, or presentation pages that lack policy-specific guidance."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-misis-edtech-ai-revolution-firecrawl",
+      "sourceCandidateId": "src-misis-edtech-ai-revolution",
+      "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "finalUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "attemptedAt": "2026-05-18T05:41:38Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 34444,
+      "contentHash": "1c5892d812a9d0430a9b3a9c4caaafe42b53268959cb083aca02e2d140f1aa74",
+      "normalizedTextStorageKey": "openclaw-staged:uapt-the-national-university-of-science-and-technology-misis-20260518:src-misis-edtech-ai-revolution"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-misis-edtech-ai-revolution",
+      "sourceCandidateId": "src-misis-edtech-ai-revolution",
+      "fetchAttemptId": "fetch-misis-edtech-ai-revolution-firecrawl",
+      "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "finalUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "sourceTitle": "AI-революция: как использовать технологии для роста и развития",
+      "sourceLanguage": "ru",
+      "contentHash": "1c5892d812a9d0430a9b3a9c4caaafe42b53268959cb083aca02e2d140f1aa74",
+      "fetchedAt": "2026-05-18T05:41:38Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw-staged:uapt-the-national-university-of-science-and-technology-misis-20260518:src-misis-edtech-ai-revolution",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-misis-staff-ai-pd-program",
+      "entityType": "university",
+      "entitySlug": "the-national-university-of-science-and-technology-misis",
+      "claimType": "teaching",
+      "claimText": "MISIS describes a professional-development program for university employees on using AI in professional activity.",
+      "normalizedValue": "staff_ai_professional_development",
+      "sourceLanguage": "ru",
+      "confidence": 0.84,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-misis-staff-ai-pd-program"
+      ],
+      "citation": {
+        "citationTitle": "AI-революция: как использовать технологии для роста и развития",
+        "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-national-university-of-science-and-technology-misis.json",
+        "publisher": "Университет МИСИС",
+        "retrievedAt": "2026-05-18T05:41:38Z",
+        "snapshotHash": "1c5892d812a9d0430a9b3a9c4caaafe42b53268959cb083aca02e2d140f1aa74",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-misis-staff-ai-pd-program",
+      "claimId": "claim-misis-staff-ai-pd-program",
+      "sourceSnapshotId": "snap-misis-edtech-ai-revolution",
+      "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "finalUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "sourceTitle": "AI-революция: как использовать технологии для роста и развития",
+      "sourceLanguage": "ru",
+      "snapshotHash": "1c5892d812a9d0430a9b3a9c4caaafe42b53268959cb083aca02e2d140f1aa74",
+      "evidenceSnippetOriginal": "Программа повышения квалификации для сотрудников университета по использованию ИИ в профессиональной деятельности",
+      "evidenceSnippetDisplay": "Professional-development program for university employees on using AI in professional activity.",
+      "evidenceLocator": "Hero section",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "AI-революция: как использовать технологии для роста и развития",
+        "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/the-national-university-of-science-and-technology-misis.json",
+        "publisher": "Университет МИСИС",
+        "retrievedAt": "2026-05-18T05:41:38Z",
+        "snapshotHash": "1c5892d812a9d0430a9b3a9c4caaafe42b53268959cb083aca02e2d140f1aa74",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-misis-ai-training-ethics-tools",
+      "entityType": "university",
+      "entitySlug": "the-national-university-of-science-and-technology-misis",
+      "claimType": "ai_tool_treatment",
+      "claimText": "The MISIS AI professional-development program says participants learn ethical and legal aspects of AI use and use generative AI services for professional tasks.",
+      "normalizedValue": "ai_training_ethics_legal_generative_services",
+      "sourceLanguage": "ru",
+      "confidence": 0.82,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-misis-ai-training-ethics-tools"
+      ],
+      "citation": {
+        "citationTitle": "AI-революция: как использовать технологии для роста и развития",
+        "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-national-university-of-science-and-technology-misis.json",
+        "publisher": "Университет МИСИС",
+        "retrievedAt": "2026-05-18T05:41:38Z",
+        "snapshotHash": "1c5892d812a9d0430a9b3a9c4caaafe42b53268959cb083aca02e2d140f1aa74",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-misis-ai-training-ethics-tools",
+      "claimId": "claim-misis-ai-training-ethics-tools",
+      "sourceSnapshotId": "snap-misis-edtech-ai-revolution",
+      "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "finalUrl": "https://edtech.misis.ru/artificial_intelligence",
+      "sourceTitle": "AI-революция: как использовать технологии для роста и развития",
+      "sourceLanguage": "ru",
+      "snapshotHash": "1c5892d812a9d0430a9b3a9c4caaafe42b53268959cb083aca02e2d140f1aa74",
+      "evidenceSnippetOriginal": "Чему вы научитесь? ... описывать этические и правовые аспекты использования ИИ; решать профессиональные задачи с использованием сервисов генеративного ИИ",
+      "evidenceSnippetDisplay": "Participants learn ethical and legal aspects of AI use and solve professional tasks using generative AI services.",
+      "evidenceLocator": "Чему вы научитесь?",
+      "evidenceType": "official_source",
+      "relevance": 0.88,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "AI-революция: как использовать технологии для роста и развития",
+        "sourceUrl": "https://edtech.misis.ru/artificial_intelligence",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-national-university-of-science-and-technology-misis.json",
+        "publisher": "Университет МИСИС",
+        "retrievedAt": "2026-05-18T05:41:38Z",
+        "snapshotHash": "1c5892d812a9d0430a9b3a9c4caaafe42b53268959cb083aca02e2d140f1aa74",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "review_decision",
+      "decisionId": "review-misis-staff-ai-pd-program",
+      "claimId": "claim-misis-staff-ai-pd-program",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw_agent",
+      "notes": "Approved as a narrow staff professional-development claim only; not treated as a student rule or binding institutional AI policy.",
+      "decidedAt": "2026-05-18T05:41:38Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "review_decision",
+      "decisionId": "review-misis-ai-training-ethics-tools",
+      "claimId": "claim-misis-ai-training-ethics-tools",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw_agent",
+      "notes": "Approved because the source text explicitly mentions ethical and legal aspects of AI use and professional tasks using generative AI services.",
+      "decidedAt": "2026-05-18T05:41:38Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-national-university-of-science-and-technology-misis-20260518",
+      "artifactType": "report_draft",
+      "reportId": "report-misis-20260518",
+      "title": "MISIS AI professional-development source review",
+      "generatedAt": "2026-05-18T05:41:38Z",
+      "draftPath": "content/reports/2026-05/misis-ai-professional-development-source-review.mdx",
+      "summary": "Official-source discovery for The National University of Science and Technology MISIS found AI-related program and presentation pages but no formal university-wide AI policy. The citation-ready candidates are limited to an official MISIS pedagogical-mastery page describing an AI professional-development program for university employees.",
+      "referencedClaimIds": [
+        "claim-misis-staff-ai-pd-program",
+        "claim-misis-ai-training-ethics-tools"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/the-national-university-of-science-and-technology-misis.json",
+        "https://eduaipolicy.org/api/public/v1/claims/the-national-university-of-science-and-technology-misis.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No formal MISIS student-facing generative-AI policy, assessment rule, privacy rule, procurement rule, or academic-integrity rule was found in the searched official sources.",
+        "The approved candidate claims are scoped to staff professional development/training content and should not be promoted as a binding university-wide policy without further official evidence."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
