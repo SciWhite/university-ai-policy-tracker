@@ -1,0 +1,431 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-messina-unime-20260518",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-unime-20260518",
+      "entityType": "university",
+      "entitySlug": "university-of-messina-unime",
+      "startedAt": "2026-05-18T22:12:33Z",
+      "endedAt": "2026-05-18T22:12:33Z",
+      "methodsAttempted": [
+        {
+          "method": "canonical_domain",
+          "domain": "unime.it",
+          "resultCount": 1,
+          "notes": "Confirmed official UniME domain and robots.txt; /personale training pages are not disallowed."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:unime.it intelligenza artificiale studenti esami didattica ChatGPT",
+          "domain": "unime.it",
+          "resultCount": 2,
+          "notes": "Initial AI/student searches found CVs, departmental minutes, and research/course material rather than university-wide student AI policy."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:unime.it intelligenza artificiale privacy Università degli Studi di Messina",
+          "domain": "unime.it",
+          "resultCount": 10,
+          "notes": "Official UniME training pages for staff AI/privacy courses were the strongest policy-adjacent sources found."
+        },
+        {
+          "method": "pdf_discovery",
+          "domain": "www.unime.it",
+          "resultCount": 4,
+          "notes": "Linked official PDF notices and programs were checked for source-body wording and scope."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-unime-ai-workplace-training-2025",
+        "src-unime-privacy-gdpr-ai-training-2025",
+        "src-unime-dicam-department-minutes-2025"
+      ],
+      "rejectionIds": [
+        "rej-unime-dicam-department-minutes-2025"
+      ],
+      "summary": "Official UniME evidence located for 2025 staff training on AI in workplace contexts and privacy/GDPR/AI. No university-wide binding student AI-use policy was verified in this run."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-unime-ai-workplace-training-2025",
+      "entityType": "university",
+      "entitySlug": "university-of-messina-unime",
+      "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+      "finalUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+      "sourceTitle": "Intelligenza Artificiale nei contesti lavorativi",
+      "sourceLanguage": "it",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unime.it intelligenza artificiale privacy Università degli Studi di Messina",
+      "discoveredAt": "2026-05-18T22:12:33Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.88,
+      "policySpecificityScore": 0.56,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-18T22:12:33Z",
+      "verificationNotes": "Official www.unime.it page with linked official notice and program PDFs; scope is staff training, not binding student policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-unime-privacy-gdpr-ai-training-2025",
+      "entityType": "university",
+      "entitySlug": "university-of-messina-unime",
+      "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+      "finalUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+      "sourceTitle": "L'attuazione della normativa in materia di privacy tra GDPR e l'Intelligenza Artificiale",
+      "sourceLanguage": "it",
+      "sourceType": "it_security_privacy",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unime.it intelligenza artificiale privacy Università degli Studi di Messina",
+      "discoveredAt": "2026-05-18T22:12:33Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.9,
+      "policySpecificityScore": 0.62,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-18T22:12:33Z",
+      "verificationNotes": "Official www.unime.it staff-training page with body text referencing AI Act and AgID guidance; scope is training for technical-administrative staff.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-unime-dicam-department-minutes-2025",
+      "entityType": "university",
+      "entitySlug": "university-of-messina-unime",
+      "sourceUrl": "https://dicam.unime.it/sites/dip12/files/2025-09/Verbale%2010%20marzo%202025-signed_signed_0.pdf",
+      "finalUrl": "https://dicam.unime.it/sites/dip12/files/2025-09/Verbale%2010%20marzo%202025-signed_signed_0.pdf",
+      "sourceTitle": "Verbale 10 marzo 2025 - DiCAM",
+      "sourceLanguage": "it",
+      "sourceType": "generic_or_unclear",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unime.it ChatGPT studenti Università degli Studi di Messina",
+      "discoveredAt": "2026-05-18T22:12:33Z",
+      "officialDomainConfidence": 0.86,
+      "aiRelevanceScore": 0.34,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "rejectionReason": "low_policy_specificity",
+      "verificationNotes": "Department minutes/search snippet referenced AI examples but did not provide university-wide policy evidence for AI use.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-unime-dicam-department-minutes-2025",
+      "sourceCandidateId": "src-unime-dicam-department-minutes-2025",
+      "entityType": "university",
+      "entitySlug": "university-of-messina-unime",
+      "sourceUrl": "https://dicam.unime.it/sites/dip12/files/2025-09/Verbale%2010%20marzo%202025-signed_signed_0.pdf",
+      "finalUrl": "https://dicam.unime.it/sites/dip12/files/2025-09/Verbale%2010%20marzo%202025-signed_signed_0.pdf",
+      "rejectedAt": "2026-05-18T22:12:33Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "codex-cli-crawl-worker",
+      "evidenceSnippet": "Search result referenced departmental material and AI examples, but it was not suitable support for a university-wide binding policy claim.",
+      "notes": "Kept as rejected discovery context only; no claim or evidence candidate depends on this source."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "crawl_plan",
+      "planId": "plan-unime-20260518",
+      "createdAt": "2026-05-18T22:12:33Z",
+      "createdBy": "codex-cli-crawl-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-messina-unime",
+          "sourceCandidateId": "src-unime-ai-workplace-training-2025",
+          "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+          "sourceTitle": "Intelligenza Artificiale nei contesti lavorativi",
+          "sourceLanguage": "it",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "staff AI training",
+            "ethical AI use",
+            "privacy and security awareness"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-messina-unime",
+          "sourceCandidateId": "src-unime-privacy-gdpr-ai-training-2025",
+          "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+          "sourceTitle": "L'attuazione della normativa in materia di privacy tra GDPR e l'Intelligenza Artificiale",
+          "sourceLanguage": "it",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "AI Act",
+            "AgID guidance",
+            "privacy and data protection"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official source body text and linked PDFs establish source scope.",
+        "Do not promote training pages as binding university-wide AI policy."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-unime-ai-workplace-training-2025",
+      "sourceCandidateId": "src-unime-ai-workplace-training-2025",
+      "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+      "finalUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+      "attemptedAt": "2026-05-18T22:12:33Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 955,
+      "contentHash": "2ba79aa33cb6c57088d604dde33dabcd277994d629de7e367ec664496a26fd92",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-messina-unime-20260518/snapshots/unime-ai-workplace-training-2025.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-unime-privacy-gdpr-ai-training-2025",
+      "sourceCandidateId": "src-unime-privacy-gdpr-ai-training-2025",
+      "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+      "finalUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+      "attemptedAt": "2026-05-18T22:12:33Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 954,
+      "contentHash": "1daadf85dd9bb5c91b4128f0cc1b9e5873185f51bf51aefc42d7625630137b7e",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-messina-unime-20260518/snapshots/unime-privacy-gdpr-ai-training-2025.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-unime-ai-workplace-training-2025",
+      "sourceCandidateId": "src-unime-ai-workplace-training-2025",
+      "fetchAttemptId": "fetch-unime-ai-workplace-training-2025",
+      "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+      "finalUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+      "sourceTitle": "Intelligenza Artificiale nei contesti lavorativi",
+      "sourceLanguage": "it",
+      "contentHash": "2ba79aa33cb6c57088d604dde33dabcd277994d629de7e367ec664496a26fd92",
+      "fetchedAt": "2026-05-18T22:12:33Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-messina-unime-20260518/snapshots/unime-ai-workplace-training-2025.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-unime-privacy-gdpr-ai-training-2025",
+      "sourceCandidateId": "src-unime-privacy-gdpr-ai-training-2025",
+      "fetchAttemptId": "fetch-unime-privacy-gdpr-ai-training-2025",
+      "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+      "finalUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+      "sourceTitle": "L'attuazione della normativa in materia di privacy tra GDPR e l'Intelligenza Artificiale",
+      "sourceLanguage": "it",
+      "contentHash": "1daadf85dd9bb5c91b4128f0cc1b9e5873185f51bf51aefc42d7625630137b7e",
+      "fetchedAt": "2026-05-18T22:12:33Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-messina-unime-20260518/snapshots/unime-privacy-gdpr-ai-training-2025.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unime-ai-workplace-training-2025",
+      "entityType": "university",
+      "entitySlug": "university-of-messina-unime",
+      "claimType": "teaching",
+      "claimText": "UniME published a 2025 technical-administrative staff training course on artificial intelligence in workplace contexts, focused on conscious, secure, ethical use and compliance with privacy, security, and responsibility rules.",
+      "normalizedValue": "staff_ai_training_available",
+      "sourceLanguage": "it",
+      "confidence": 0.82,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unime-ai-workplace-training-2025"
+      ],
+      "citation": {
+        "citationTitle": "Intelligenza Artificiale nei contesti lavorativi",
+        "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-messina-unime.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-messina-unime",
+        "publisher": "Università degli Studi di Messina",
+        "retrievedAt": "2026-05-18T22:12:33Z",
+        "snapshotHash": "2ba79aa33cb6c57088d604dde33dabcd277994d629de7e367ec664496a26fd92",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unime-privacy-gdpr-ai-training-2025",
+      "entityType": "university",
+      "entitySlug": "university-of-messina-unime",
+      "claimType": "privacy",
+      "claimText": "UniME published a 2025 technical-administrative staff training course on privacy, GDPR, and artificial intelligence that references responsible and transparent AI use, privacy protection, the AI Act, and AgID guidelines.",
+      "normalizedValue": "staff_privacy_ai_training_available",
+      "sourceLanguage": "it",
+      "confidence": 0.84,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unime-privacy-gdpr-ai-training-2025"
+      ],
+      "citation": {
+        "citationTitle": "L'attuazione della normativa in materia di privacy tra GDPR e l'Intelligenza Artificiale",
+        "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-messina-unime.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-messina-unime",
+        "publisher": "Università degli Studi di Messina",
+        "retrievedAt": "2026-05-18T22:12:33Z",
+        "snapshotHash": "1daadf85dd9bb5c91b4128f0cc1b9e5873185f51bf51aefc42d7625630137b7e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unime-ai-workplace-training-2025",
+      "claimId": "claim-unime-ai-workplace-training-2025",
+      "sourceSnapshotId": "snap-unime-ai-workplace-training-2025",
+      "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+      "finalUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+      "sourceTitle": "Intelligenza Artificiale nei contesti lavorativi",
+      "sourceLanguage": "it",
+      "snapshotHash": "2ba79aa33cb6c57088d604dde33dabcd277994d629de7e367ec664496a26fd92",
+      "evidenceSnippetOriginal": "L’evento introduce l’intelligenza artificiale come strumento per semplificare le attività amministrative, promuovendone un uso consapevole ed etico nel rispetto delle normative.",
+      "evidenceSnippetDisplay": "The event introduces AI as a tool to simplify administrative activities, promoting conscious and ethical use in compliance with regulations.",
+      "evidenceLocator": "Official page body; linked Nota_2.pdf and Programma_2.pdf confirm staff-training scope.",
+      "evidenceType": "official_source",
+      "relevance": 0.86,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Intelligenza Artificiale nei contesti lavorativi",
+        "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/intelligenza",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-messina-unime.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-messina-unime",
+        "publisher": "Università degli Studi di Messina",
+        "retrievedAt": "2026-05-18T22:12:33Z",
+        "snapshotHash": "2ba79aa33cb6c57088d604dde33dabcd277994d629de7e367ec664496a26fd92",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unime-privacy-gdpr-ai-training-2025",
+      "claimId": "claim-unime-privacy-gdpr-ai-training-2025",
+      "sourceSnapshotId": "snap-unime-privacy-gdpr-ai-training-2025",
+      "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+      "finalUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+      "sourceTitle": "L'attuazione della normativa in materia di privacy tra GDPR e l'Intelligenza Artificiale",
+      "sourceLanguage": "it",
+      "snapshotHash": "1daadf85dd9bb5c91b4128f0cc1b9e5873185f51bf51aefc42d7625630137b7e",
+      "evidenceSnippetOriginal": "La formazione fornisce competenze sull’uso dell’IA per snellire processi, migliorare servizi e risorse, nel rispetto dell’etica, della normativa (AI Act) e delle linee guida AgID.",
+      "evidenceSnippetDisplay": "The training provides skills on AI use to streamline processes and improve services, while respecting ethics, the AI Act, and AgID guidelines.",
+      "evidenceLocator": "Official page body; linked Nota.pdf and Programma.pdf confirm technical-administrative staff-training scope.",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "L'attuazione della normativa in materia di privacy tra GDPR e l'Intelligenza Artificiale",
+        "sourceUrl": "https://www.unime.it/personale/lavorare-unime/formazione-personale/elenco-corsi-erogati-anno-2025/lattuazione-della",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-messina-unime.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-messina-unime",
+        "publisher": "Università degli Studi di Messina",
+        "retrievedAt": "2026-05-18T22:12:33Z",
+        "snapshotHash": "1daadf85dd9bb5c91b4128f0cc1b9e5873185f51bf51aefc42d7625630137b7e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "review_decision",
+      "decisionId": "review-unime-ai-workplace-training-2025",
+      "claimId": "claim-unime-ai-workplace-training-2025",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved only as a narrow staff-training/course-availability claim; not evidence of a binding university-wide AI policy.",
+      "decidedAt": "2026-05-18T22:12:33Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "review_decision",
+      "decisionId": "review-unime-privacy-gdpr-ai-training-2025",
+      "claimId": "claim-unime-privacy-gdpr-ai-training-2025",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved only as a narrow staff-training/privacy-AI claim; the source does not establish binding rules for students or all staff AI use.",
+      "decidedAt": "2026-05-18T22:12:33Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-messina-unime-20260518",
+      "artifactType": "report_draft",
+      "reportId": "report-unime-20260518",
+      "title": "University of Messina (UniME) AI Policy Evidence Draft",
+      "generatedAt": "2026-05-18T22:12:33Z",
+      "draftPath": "content/reports/uapt-university-of-messina-unime-20260518.mdx",
+      "summary": "This staged run found official UniME 2025 staff-training evidence for AI in workplace contexts and for privacy/GDPR/AI training referencing the AI Act and AgID guidance. The evidence supports narrow training-availability claims only; no verified source in this run establishes a binding university-wide student AI-use policy.",
+      "referencedClaimIds": [
+        "claim-unime-ai-workplace-training-2025",
+        "claim-unime-privacy-gdpr-ai-training-2025"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-messina-unime.json",
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-messina-unime.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Training pages and course programs are not treated as binding university-wide AI-use rules."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

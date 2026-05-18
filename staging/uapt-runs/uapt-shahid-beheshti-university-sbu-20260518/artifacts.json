@@ -1,0 +1,312 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-shahid-beheshti-university-sbu-20260518",
+      "entityType": "university",
+      "entitySlug": "shahid-beheshti-university-sbu",
+      "startedAt": "2026-05-18T22:00:00.000Z",
+      "endedAt": "2026-05-18T22:13:54.000Z",
+      "methodsAttempted": [
+        {
+          "method": "canonical_domain",
+          "domain": "www.sbu.ac.ir",
+          "resultCount": 1,
+          "notes": "Official SBU homepage was reachable through the browser fetch path and confirmed official navigation to the news, education, research, library, and ICT subdomains."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:sbu.ac.ir (ChatGPT OR \"generative AI\" OR \"هوش مصنوعی مولد\" OR \"چت جی پی تی\") (policy OR guideline OR students OR exams)",
+          "domain": "sbu.ac.ir",
+          "resultCount": 0,
+          "notes": "No official SBU university-wide generative-AI use policy was found in public web search results."
+        },
+        {
+          "method": "site_search",
+          "query": "news.sbu.ac.ir هوش مصنوعی دانشگاه شهید بهشتی",
+          "domain": "news.sbu.ac.ir",
+          "resultCount": 1,
+          "notes": "The official SBU news archive exposed an AI-related item about the opening ceremony for the Shahid Faghi specialized artificial intelligence center."
+        },
+        {
+          "method": "public_web_search",
+          "query": "\"Generative AI Usage Guidelines\" \"Shahid Beheshti University\"",
+          "resultCount": 1,
+          "notes": "A course-level generative-AI guideline page was found on dbcs.ir. It links to an SBU faculty site but is not on an official SBU domain, so it was rejected as a public tracker source."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-sbu-news-ai-center-archive",
+        "sc-sbu-dbcs-course-ai-guidelines"
+      ],
+      "rejectionIds": [
+        "sr-sbu-dbcs-course-ai-guidelines",
+        "sr-sbu-ai-center-not-policy"
+      ],
+      "summary": "Official-source discovery found an SBU official news-archive entry about an AI and data science center opening, but no official university-wide student, teaching, privacy, or academic-integrity policy for generative-AI use was located. A course-level external generative-AI guideline page was rejected because it is not hosted on an official SBU domain."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-sbu-news-ai-center-archive",
+      "entityType": "university",
+      "entitySlug": "shahid-beheshti-university-sbu",
+      "sourceUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "finalUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "sourceTitle": "SBU News Archive",
+      "sourceLanguage": "fa",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "site_search",
+      "queryUsed": "news.sbu.ac.ir هوش مصنوعی دانشگاه شهید بهشتی",
+      "discoveredAt": "2026-05-18T22:05:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.72,
+      "policySpecificityScore": 0.41,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-18T22:10:00.000Z",
+      "verificationNotes": "Official SBU news archive page containing an AI-related university item. It supports source-status reporting only; it does not provide a university-wide generative-AI use policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-sbu-dbcs-course-ai-guidelines",
+      "entityType": "university",
+      "entitySlug": "shahid-beheshti-university-sbu",
+      "sourceUrl": "https://dbcs.ir/AI_Guidelines/",
+      "finalUrl": "https://dbcs.ir/AI_Guidelines/",
+      "sourceTitle": "Generative AI Usage Guidelines - Database / 1404_1",
+      "sourceLanguage": "en",
+      "sourceType": "assessment_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "\"Generative AI Usage Guidelines\" \"Shahid Beheshti University\"",
+      "discoveredAt": "2026-05-18T22:06:00.000Z",
+      "officialDomainConfidence": 0.32,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.68,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-18T22:11:00.000Z",
+      "verificationNotes": "The page contains course-level generative-AI rules and links to mathsci.sbu.ac.ir, but the source itself is hosted on dbcs.ir rather than an official SBU domain.",
+      "rejectionReason": "not_official",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-sbu-dbcs-course-ai-guidelines",
+      "sourceCandidateId": "sc-sbu-dbcs-course-ai-guidelines",
+      "entityType": "university",
+      "entitySlug": "shahid-beheshti-university-sbu",
+      "sourceUrl": "https://dbcs.ir/AI_Guidelines/",
+      "finalUrl": "https://dbcs.ir/AI_Guidelines/",
+      "rejectedAt": "2026-05-18T22:11:00.000Z",
+      "rejectionReason": "not_official",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Generative AI tools (e.g., ChatGPT, GitHub Copilot, Claude) can support your learning by explaining concepts, suggesting code examples, and offering design guidance.",
+      "notes": "Rejected for this staged bundle because the task requires official university sources; this is an external course website, not an official SBU-domain source."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-sbu-ai-center-not-policy",
+      "sourceCandidateId": "sc-sbu-news-ai-center-archive",
+      "entityType": "university",
+      "entitySlug": "shahid-beheshti-university-sbu",
+      "sourceUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "finalUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "rejectedAt": "2026-05-18T22:12:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "آیین افتتاحیه مرکز تخصصی هوش مصنوعی شهید فقهی",
+      "notes": "The official archive entry is retained for source-status evidence, but rejected as a direct AI-use policy source because it is an event/news item about an AI center."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "crawl_plan",
+      "planId": "plan-shahid-beheshti-university-sbu-20260518",
+      "createdAt": "2026-05-18T22:07:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "shahid-beheshti-university-sbu",
+          "sourceCandidateId": "sc-sbu-news-ai-center-archive",
+          "sourceUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+          "sourceTitle": "SBU News Archive",
+          "sourceLanguage": "fa",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "source_status",
+            "research"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official SBU-domain source-status evidence is captured.",
+        "Do not use external course-level pages as official policy evidence.",
+        "Do not infer university-wide generative-AI rules from event listings or research-center announcements."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-sbu-news-ai-center-archive",
+      "sourceCandidateId": "sc-sbu-news-ai-center-archive",
+      "sourceUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "finalUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "attemptedAt": "2026-05-18T22:09:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1800,
+      "contentHash": "fbc225250a9beb6b7a8cee6104cd5a1e30bd97e7f5d04c3d04c10231d9e9afc8",
+      "normalizedTextStorageKey": "normalized/sbu-news-ai-center-archive"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-sbu-dbcs-course-ai-guidelines",
+      "sourceCandidateId": "sc-sbu-dbcs-course-ai-guidelines",
+      "sourceUrl": "https://dbcs.ir/AI_Guidelines/",
+      "finalUrl": "https://dbcs.ir/AI_Guidelines/",
+      "attemptedAt": "2026-05-18T22:10:30.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1200,
+      "contentHash": "31de1abdc6cf05d18edac674af76df4bce3dbac462213819bcad60c31e9be35c",
+      "normalizedTextStorageKey": "normalized/sbu-dbcs-course-ai-guidelines"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-sbu-news-ai-center-archive",
+      "sourceCandidateId": "sc-sbu-news-ai-center-archive",
+      "fetchAttemptId": "fetch-sbu-news-ai-center-archive",
+      "sourceUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "finalUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "sourceTitle": "SBU News Archive",
+      "sourceLanguage": "fa",
+      "contentHash": "fbc225250a9beb6b7a8cee6104cd5a1e30bd97e7f5d04c3d04c10231d9e9afc8",
+      "fetchedAt": "2026-05-18T22:09:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "normalized/sbu-news-ai-center-archive",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-sbu-source-status-ai-center-only",
+      "entityType": "university",
+      "entitySlug": "shahid-beheshti-university-sbu",
+      "claimType": "source_status",
+      "claimText": "The official SBU-domain evidence found for this crawl identifies an AI and data-science center news item, not a university-wide generative-AI use policy.",
+      "normalizedValue": "official_ai_related_news_item_no_university_wide_genai_policy_found",
+      "sourceLanguage": "fa",
+      "confidence": 0.72,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-sbu-source-status-ai-center-only"
+      ],
+      "citation": {
+        "citationTitle": "SBU News Archive",
+        "sourceUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+        "canonicalUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+        "publisher": "Shahid Beheshti University",
+        "retrievedAt": "2026-05-18T22:09:00.000Z",
+        "snapshotHash": "fbc225250a9beb6b7a8cee6104cd5a1e30bd97e7f5d04c3d04c10231d9e9afc8",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-sbu-source-status-ai-center-only",
+      "claimId": "claim-sbu-source-status-ai-center-only",
+      "sourceSnapshotId": "snap-sbu-news-ai-center-archive",
+      "sourceUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "finalUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+      "sourceTitle": "SBU News Archive",
+      "sourceLanguage": "fa",
+      "snapshotHash": "fbc225250a9beb6b7a8cee6104cd5a1e30bd97e7f5d04c3d04c10231d9e9afc8",
+      "evidenceSnippetOriginal": "آیین افتتاحیه مرکز تخصصی هوش مصنوعی شهید فقهی ... نخستین مرکز تخصصی هوش مصنوعی شهید فقهی با تمرکز بر علم داده با همکاری دانشگاه شهید بهشتی و خانه هوش ایران، به‌طور رسمی ۲۶ آذر ۱۴۰۴ در دانشگاه...",
+      "evidenceSnippetDisplay": "Opening ceremony of the Shahid Faghi specialized artificial intelligence center; the first Shahid Faghi specialized AI center focused on data science was formally opened at SBU on 26 Azar 1404.",
+      "evidenceLocator": "News archive result for the AI center opening item",
+      "evidenceType": "official_source",
+      "relevance": 0.74,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "SBU News Archive",
+        "sourceUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+        "canonicalUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+        "publisher": "Shahid Beheshti University",
+        "retrievedAt": "2026-05-18T22:09:00.000Z",
+        "snapshotHash": "fbc225250a9beb6b7a8cee6104cd5a1e30bd97e7f5d04c3d04c10231d9e9afc8",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "review_decision",
+      "decisionId": "decision-sbu-source-status-ai-center-only",
+      "claimId": "claim-sbu-source-status-ai-center-only",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved only as a source-status candidate. It should not be promoted as a university-wide AI-use policy and should remain non-canonical pending human review.",
+      "decidedAt": "2026-05-18T22:13:54.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-shahid-beheshti-university-sbu-20260518",
+      "artifactType": "report_draft",
+      "reportId": "report-shahid-beheshti-university-sbu-20260518",
+      "title": "Shahid Beheshti University (SBU) AI Policy Source Status",
+      "generatedAt": "2026-05-18T22:13:54.000Z",
+      "draftPath": "content/reports/shahid-beheshti-university-sbu-20260518.mdx",
+      "summary": "This staged crawl found official SBU-domain evidence of an AI and data-science center news item, but did not locate an official university-wide generative-AI use policy for students, teaching, privacy, or assessment. A course-level external generative-AI guideline page was rejected because it is not hosted on an official SBU domain.",
+      "referencedClaimIds": [
+        "claim-sbu-source-status-ai-center-only"
+      ],
+      "publicJsonLinks": [],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Local direct TLS fetches to sbu.ac.ir failed in this worker with SSL EOF errors; the official SBU pages were inspected through the browser fetch path.",
+        "No claim in this bundle should be read as an SBU university-wide generative-AI use rule."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
