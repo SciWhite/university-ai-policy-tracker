@@ -161,6 +161,9 @@ All maintenance updates must pass through the staged artifact workflow:
 2. Stage 1 collects source metadata and hash status.
 3. Stage 2 runs only for changed or risky records.
 4. OpenClaw writes staged artifacts under the existing artifact contract.
+   Maintenance-only bundles must set
+   `runPurpose: source_health_maintenance`; claim/evidence release candidates
+   may omit `runPurpose` or use `claim_evidence_release`.
 5. OpenClaw opens a data pull request with run ID, target entities, source URLs,
    access notes, snapshot counts, claim counts, validation output, and known
    limitations.
@@ -184,6 +187,8 @@ pass. Published machine-reviewed records should use `agent_reviewed`.
 Maintenance-only source-health runs are not auto-promotion candidates, even
 when validator-clean. They can update source-health planning metadata, but they
 must not add duplicate claim/evidence rows to the public dataset.
+The dataset release validator explicitly rejects any public release manifest
+that includes a staged bundle marked `runPurpose: source_health_maintenance`.
 
 Do not auto-promote records when:
 

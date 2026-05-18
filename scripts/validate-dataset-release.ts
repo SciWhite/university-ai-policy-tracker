@@ -1,5 +1,10 @@
 import { createHash } from "node:crypto";
-import { publicDatasetReleaseManifestSchema } from "@uapt/shared";
+import { readFile, readdir } from "node:fs/promises";
+import path from "node:path";
+import {
+  openClawRunPurposeSchema,
+  publicDatasetReleaseManifestSchema
+} from "@uapt/shared";
 import { getDatasetRelease } from "../apps/web/lib/dataset-release";
 
 const requiredArtifactIds = new Set([
@@ -11,9 +16,15 @@ const requiredArtifactIds = new Set([
   "checksums"
 ]);
 
+interface PublicReleaseInputManifest {
+  includeStagedArtifactDirectories: string[];
+}
+
 void main();
 
 async function main(): Promise<void> {
+  await assertNoMaintenanceRunsInCurrentRelease();
+
   const release = await getDatasetRelease();
   const manifest = publicDatasetReleaseManifestSchema.parse(release.manifest);
 
@@ -96,6 +107,28 @@ async function main(): Promise<void> {
   );
 }
 
+async function assertNoMaintenanceRunsInCurrentRelease(): Promise<void> {
+  const manifest = JSON.parse(
+    await readFile("data/public-releases/current.json", "utf8")
+  ) as PublicReleaseInputManifest;
+
+  for (const directory of manifest.includeStagedArtifactDirectories) {
+    const jsonFiles = await walkJsonFiles(directory);
+    for (const file of jsonFiles) {
+      const value = JSON.parse(await readFile(file, "utf8")) as unknown;
+      if (!isRecord(value)) continue;
+
+      const result = openClawRunPurposeSchema.safeParse(value.runPurpose);
+      if (result.data === "source_health_maintenance") {
+        throw new Error(
+          `Public release manifest includes source-health maintenance run: ${directory}. ` +
+            "Maintenance runs are source-health metadata only and must not be promoted as canonical claims."
+        );
+      }
+    }
+  }
+}
+
 function assertUniqueCompositeRows(
   rows: Record<string, unknown>[],
   keys: string[],
@@ -147,4 +180,22 @@ function countJsonLines(content: string): number {
 
 function sha256(content: string): string {
   return createHash("sha256").update(content, "utf8").digest("hex");
+}
+
+async function walkJsonFiles(directory: string): Promise<string[]> {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = await Promise.all(
+    entries.map((entry) => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) return walkJsonFiles(entryPath);
+      if (entry.isFile() && entry.name.endsWith(".json")) return [entryPath];
+      return [];
+    })
+  );
+
+  return files.flat().sort();
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }

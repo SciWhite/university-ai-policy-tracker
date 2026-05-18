@@ -20,6 +20,10 @@ export const sourceLanguageSchema = z
 export const openClawArtifactSchemaVersionSchema = z.literal(
   OPENCLAW_ARTIFACT_SCHEMA_VERSION
 );
+export const openClawRunPurposeSchema = z.enum([
+  "claim_evidence_release",
+  "source_health_maintenance"
+]);
 
 const fetchModeSchema = z.enum(["http", "playwright", "opencli", "firecrawl"]);
 const discoveryMethodSchema = z.enum([
@@ -337,6 +341,7 @@ export const openClawArtifactBundleSchema = z.object({
     OPENCLAW_ARTIFACT_SCHEMA_VERSION
   ),
   runId: z.string().min(1),
+  runPurpose: openClawRunPurposeSchema.optional(),
   artifacts: z.array(openClawStagedArtifactSchema).min(1)
 });
 
@@ -354,3 +359,4 @@ export type StagedReviewDecision = z.infer<typeof stagedReviewDecisionSchema>;
 export type StagedReportDraft = z.infer<typeof stagedReportDraftSchema>;
 export type OpenClawStagedArtifact = z.infer<typeof openClawStagedArtifactSchema>;
 export type OpenClawArtifactBundle = z.infer<typeof openClawArtifactBundleSchema>;
+export type OpenClawRunPurpose = z.infer<typeof openClawRunPurposeSchema>;

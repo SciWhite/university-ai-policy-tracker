@@ -3,7 +3,9 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, rm } from "node:fs/promises";
 import path from "node:path";
 import {
+  openClawRunPurposeSchema,
   openClawStagedArtifactSchema,
+  type OpenClawRunPurpose,
   type OpenClawStagedArtifact
 } from "@uapt/shared";
 import { getDatasetRelease } from "../apps/web/lib/dataset-release";
@@ -68,6 +70,7 @@ interface StagingRunSummary {
   recommendedAction: string;
   reviewDecisionCount: number;
   reviewStates: Record<string, number>;
+  runPurpose?: OpenClawRunPurpose;
   runIds: string[];
   sourceCandidateCount: number;
   validationStatus: "pass" | "fail";
@@ -219,9 +222,11 @@ async function summarizeStagingRun(
   const slugs = new Set<string>();
   const languages = new Set<string>();
   const reviewStates = new Map<string, number>();
+  const runPurposes = new Set<OpenClawRunPurpose>();
 
   for (const file of jsonFiles) {
     const parsed = await readJsonFile<unknown>(file);
+    collectBundleRunPurpose(parsed, runPurposes);
     const values = extractArtifactValues(parsed);
 
     for (const value of values) {
@@ -263,6 +268,7 @@ async function summarizeStagingRun(
       directory,
       issueCount: issues.length,
       promoted,
+      runPurpose: getSingleRunPurpose(runPurposes),
       sourceCandidateCount: rawCounts.get("source_candidate") ?? 0
     }),
     reviewDecisionCount: rawCounts.get("review_decision") ?? 0,
@@ -272,6 +278,7 @@ async function summarizeStagingRun(
       )
     ),
     runIds: Array.from(runIds).sort(),
+    runPurpose: getSingleRunPurpose(runPurposes),
     sourceCandidateCount: rawCounts.get("source_candidate") ?? 0,
     validationStatus: issues.length ? "fail" : "pass"
   };
@@ -281,10 +288,14 @@ function recommendStagingAction(input: {
   directory: string;
   issueCount: number;
   promoted: boolean;
+  runPurpose?: OpenClawRunPurpose;
   sourceCandidateCount: number;
 }): string {
   if (input.promoted) return "Already promoted in the current public release.";
   if (input.issueCount > 0) return "Repair validator issues before review.";
+  if (input.runPurpose === "source_health_maintenance") {
+    return "Keep as source-health maintenance metadata; do not add to the public release manifest.";
+  }
   if (input.sourceCandidateCount < 2) {
     return "Review source breadth before promotion.";
   }
@@ -582,6 +593,7 @@ function insertStagingRuns(rows: StagingRunSummary[]): string[] {
       row.reviewDecisionCount,
       JSON.stringify(row.detectedLanguages),
       JSON.stringify(row.reviewStates),
+      row.runPurpose ?? null,
       row.recommendedAction
     ])
   );
@@ -783,6 +795,28 @@ function extractArtifactValues(value: unknown): unknown[] {
   if (Array.isArray(value)) return value;
   if (isRecord(value) && Array.isArray(value.artifacts)) return value.artifacts;
   return [value];
+}
+
+function collectBundleRunPurpose(
+  value: unknown,
+  output: Set<OpenClawRunPurpose>
+): void {
+  if (!isRecord(value)) return;
+
+  const result = openClawRunPurposeSchema.safeParse(value.runPurpose);
+  if (result.success) output.add(result.data);
+}
+
+function getSingleRunPurpose(
+  values: Set<OpenClawRunPurpose>
+): OpenClawRunPurpose | undefined {
+  if (values.has("source_health_maintenance")) {
+    return "source_health_maintenance";
+  }
+  if (values.has("claim_evidence_release")) {
+    return "claim_evidence_release";
+  }
+  return undefined;
 }
 
 function countRawArtifact(
@@ -1017,6 +1051,7 @@ const CREATE_TABLES = [
     review_decision_count INTEGER NOT NULL,
     detected_languages_json TEXT NOT NULL,
     review_states_json TEXT NOT NULL,
+    run_purpose TEXT,
     recommended_action TEXT NOT NULL
   );`,
   `CREATE TABLE staging_artifact_counts (

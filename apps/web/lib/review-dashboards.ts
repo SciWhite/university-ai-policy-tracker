@@ -6,9 +6,11 @@ import {
   PUBLIC_API_VERSION,
   TRACKER_METADATA_LICENSE,
   buildPublicApiCitation,
+  openClawRunPurposeSchema,
   openClawStagedArtifactSchema,
   type CatalogUniversity,
   type OpenClawStagedArtifact,
+  type OpenClawRunPurpose,
   type PublicEntitySummary,
   type StagedFetchAttempt,
   type StagedSourceCandidate,
@@ -138,6 +140,7 @@ interface ArtifactMetadataCollector {
   languages: Set<string>;
   reviewStates: Map<string, number>;
   runIds: Set<string>;
+  runPurposes: Set<OpenClawRunPurpose>;
   slugs: Set<string>;
 }
 
@@ -157,6 +160,7 @@ export interface StagingRunSummary {
   recommendedAction: string;
   reviewDecisionCount: number;
   reviewStates: Record<string, number>;
+  runPurpose?: OpenClawRunPurpose;
   runIds: string[];
   sourceCandidateCount: number;
   sourceHealthRows: SourceHealthRow[];
@@ -201,6 +205,7 @@ export interface ReviewQueueRow {
   lastArtifactAt?: string;
   recommendedAction: string;
   reviewDecisionCount: number;
+  runPurpose?: OpenClawRunPurpose;
   sourceCandidateCount: number;
   validationStatus: "pass" | "fail";
 }
@@ -389,6 +394,7 @@ export async function getReviewQueueData(): Promise<ReviewQueueData> {
       lastArtifactAt: run.lastArtifactAt,
       recommendedAction: run.recommendedAction,
       reviewDecisionCount: run.reviewDecisionCount,
+      runPurpose: run.runPurpose,
       sourceCandidateCount: run.sourceCandidateCount,
       validationStatus: run.validationStatus
     }))
@@ -646,11 +652,13 @@ async function summarizeStagingRun(input: {
     languages: new Set(),
     reviewStates: new Map(),
     runIds: new Set(),
+    runPurposes: new Set(),
     slugs: new Set()
   };
 
   for (const file of input.jsonFiles) {
     const parsed = await readJsonFile<unknown>(file);
+    collectBundleRunPurpose(parsed, metadata.runPurposes);
     const values = extractArtifactValues(parsed);
 
     for (const value of values) {
@@ -699,6 +707,7 @@ async function summarizeStagingRun(input: {
       directory: input.relativeDirectory,
       issueCount: issues.length,
       promoted: input.promoted,
+      runPurpose: getSingleRunPurpose(metadata.runPurposes),
       sourceCandidateCount: rawCounts.get("source_candidate") ?? 0
     }),
     reviewDecisionCount: rawCounts.get("review_decision") ?? 0,
@@ -707,6 +716,7 @@ async function summarizeStagingRun(input: {
         left.localeCompare(right)
       )
     ),
+    runPurpose: getSingleRunPurpose(metadata.runPurposes),
     runIds: Array.from(metadata.runIds).sort(),
     sourceCandidateCount: rawCounts.get("source_candidate") ?? 0,
     sourceHealthRows,
@@ -992,14 +1002,12 @@ function recommendStagingAction(input: {
   directory: string;
   issueCount: number;
   promoted: boolean;
+  runPurpose?: OpenClawRunPurpose;
   sourceCandidateCount: number;
 }): string {
   if (input.promoted) return "Already promoted in the current public release.";
   if (input.issueCount > 0) return "Repair validator issues before review.";
-  if (
-    input.directory.includes("stage2") ||
-    input.directory.includes("maintenance")
-  ) {
+  if (input.runPurpose === "source_health_maintenance") {
     return "Keep as source-health maintenance metadata; do not add to the public release manifest.";
   }
   if (input.sourceCandidateCount < 2) {
@@ -1145,6 +1153,28 @@ function extractArtifactValues(value: unknown): unknown[] {
   if (Array.isArray(value)) return value;
   if (isRecord(value) && Array.isArray(value.artifacts)) return value.artifacts;
   return [value];
+}
+
+function collectBundleRunPurpose(
+  value: unknown,
+  output: Set<OpenClawRunPurpose>
+): void {
+  if (!isRecord(value)) return;
+
+  const result = openClawRunPurposeSchema.safeParse(value.runPurpose);
+  if (result.success) output.add(result.data);
+}
+
+function getSingleRunPurpose(
+  values: Set<OpenClawRunPurpose>
+): OpenClawRunPurpose | undefined {
+  if (values.has("source_health_maintenance")) {
+    return "source_health_maintenance";
+  }
+  if (values.has("claim_evidence_release")) {
+    return "claim_evidence_release";
+  }
+  return undefined;
 }
 
 function countRawArtifact(value: unknown, counts: Map<string, number>): void {

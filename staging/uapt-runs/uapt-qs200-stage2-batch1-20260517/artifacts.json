@@ -1,6 +1,7 @@
 {
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-qs200-stage2-batch1-20260517",
+  "runPurpose": "source_health_maintenance",
   "artifacts": [
     {
       "artifactType": "source_discovery_trace",

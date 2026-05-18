@@ -20,6 +20,12 @@ OpenClaw data PRs should stage JSON artifacts that validate against `openclaw-ar
 
 `source_rejection` is conditionally required when any source candidate is rejected, skipped, blocked, inaccessible, stale, generic, unrelated, or used to support a no-source conclusion.
 
+Maintenance-only source-health bundles must set top-level
+`runPurpose: source_health_maintenance`. These runs can feed review queues and
+source-health dashboards, but must not be added to
+`data/public-releases/current.json`. Claim/evidence release candidates may omit
+`runPurpose` or use `claim_evidence_release`.
+
 Run validation locally with:
 
 ```bash

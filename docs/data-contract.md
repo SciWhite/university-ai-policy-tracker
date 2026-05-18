@@ -163,7 +163,8 @@ inputs. They may reuse promoted claim IDs and evidence snippets to bind a
 source-health check to the current public record, so they must remain outside
 `data/public-releases/current.json` unless a later migration converts them into
 deduplicated maintenance metadata. The dataset release validator rejects
-duplicate `entitySlug + claimId` rows to prevent accidental promotion of
+artifact bundles with `runPurpose: source_health_maintenance`, and also rejects
+duplicate `entitySlug + claimId` rows, to prevent accidental promotion of
 maintenance-only runs.
 
 Bulk dataset artifacts are available at:
