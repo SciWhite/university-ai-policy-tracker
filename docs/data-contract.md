@@ -144,6 +144,28 @@ status must not be used to bypass robots, login walls, paywalls, CAPTCHA, WAF,
 or other access controls. Review-queue rows do not promote staging runs or
 publish canonical claims.
 
+Source-health may include Firecrawl verification metadata for URLs that normal
+requests could not verify. The allowed Firecrawl statuses are:
+
+| Status | Meaning |
+| --- | --- |
+| `firecrawl_verified` | A fresh compliant Firecrawl scrape extracted source content for planning and repair checks. This does not upgrade claim review state, source officialness, or canonical evidence status. |
+| `firecrawl_opened_no_content` | Firecrawl opened the URL but did not extract meaningful source content; find an alternate official URL or keep the record snapshot-only until reviewed. |
+| `firecrawl_failed` | Firecrawl could not verify the URL; prioritize alternate official URLs or manual source repair. |
+
+Firecrawl source-health records are not claim evidence and must not publish raw
+HTML, PDF text, screenshots, or full normalized source text. The public
+`source-health.json` endpoint can expose URL, status, checked date, title,
+status code, severity, and recommended action metadata only.
+
+Stage 2 maintenance runs are source-health inputs, not public claim/evidence
+inputs. They may reuse promoted claim IDs and evidence snippets to bind a
+source-health check to the current public record, so they must remain outside
+`data/public-releases/current.json` unless a later migration converts them into
+deduplicated maintenance metadata. The dataset release validator rejects
+duplicate `entitySlug + claimId` rows to prevent accidental promotion of
+maintenance-only runs.
+
 Bulk dataset artifacts are available at:
 
 ```text

@@ -3,6 +3,9 @@ import type { SourceHealthStatus } from "@/lib/review-dashboards";
 const labels: Record<SourceHealthStatus, string> = {
   captcha_or_waf: "CAPTCHA/WAF",
   changed_hash: "Changed hash",
+  firecrawl_failed: "Firecrawl failed",
+  firecrawl_opened_no_content: "Firecrawl opened",
+  firecrawl_verified: "Firecrawl verified",
   forbidden: "Forbidden",
   login_wall: "Login wall",
   not_found: "Not found",

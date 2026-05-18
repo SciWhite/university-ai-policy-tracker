@@ -58,6 +58,7 @@ async function main(): Promise<void> {
   }
 
   const claims = parseJsonLines(getArtifactContent(release, manifest, "claims"));
+  assertUniqueCompositeRows(claims, ["entitySlug", "claimId"], "claims");
   for (const claim of claims) {
     if (typeof claim.entitySlug !== "string") {
       throw new Error("Claim row missing entitySlug");
@@ -83,9 +84,40 @@ async function main(): Promise<void> {
     }
   }
 
+  const sources = parseJsonLines(getArtifactContent(release, manifest, "sources"));
+  assertUniqueCompositeRows(
+    sources,
+    ["entitySlug", "sourceUrl", "snapshotHash"],
+    "sources"
+  );
+
   console.log(
     `Validated dataset release ${manifest.releaseId}: ${manifest.artifacts.length} artifacts, ${manifest.counts.universities} universities, ${manifest.counts.claims} claims, ${manifest.counts.sources} sources, ${manifest.counts.changes} changes, ${manifest.counts.evidenceRecords} evidence records.`
   );
+}
+
+function assertUniqueCompositeRows(
+  rows: Record<string, unknown>[],
+  keys: string[],
+  artifactId: string
+): void {
+  const seen = new Set<string>();
+
+  for (const row of rows) {
+    const values = keys.map((key) => row[key]);
+    if (values.some((value) => typeof value !== "string" || !value)) {
+      throw new Error(`${artifactId} row missing one of: ${keys.join(", ")}`);
+    }
+
+    const composite = values.join("\u0000");
+    if (seen.has(composite)) {
+      throw new Error(
+        `${artifactId} artifact contains duplicate ${keys.join("+")}: ${values.join(" | ")}`
+      );
+    }
+
+    seen.add(composite);
+  }
 }
 
 function getArtifactContent(

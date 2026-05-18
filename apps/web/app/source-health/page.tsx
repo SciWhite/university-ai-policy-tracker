@@ -12,7 +12,7 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const title = "Source Health | University AI Policy Tracker";
 const description =
-  "Read-only source health dashboard for public source snapshot metadata and staging source/fetch statuses, including robots, login-wall, paywall, forbidden, not-found, redirect, and unknown-error boundaries.";
+  "Read-only source health dashboard for public source snapshot metadata, Firecrawl verification checks, and staging source/fetch statuses.";
 
 export function generateMetadata() {
   const canonical = getAbsoluteSiteUrl("/source-health");
@@ -57,6 +57,25 @@ export default async function SourceHealthPage() {
         </div>
       </section>
 
+      <section className="metrics-grid" aria-label="Firecrawl verification summary">
+        <div>
+          <span>{data.firecrawlVerification.summary.total}</span>
+          <p>Firecrawl verification rows</p>
+        </div>
+        <div>
+          <span>{data.firecrawlVerification.summary.verified}</span>
+          <p>verified by fresh scrape</p>
+        </div>
+        <div>
+          <span>{data.firecrawlVerification.summary.openedNoContent}</span>
+          <p>opened with no usable content</p>
+        </div>
+        <div>
+          <span>{data.firecrawlVerification.summary.failed}</span>
+          <p>failed verification checks</p>
+        </div>
+      </section>
+
       <ReferenceBox
         description="These statuses are for crawler/review planning. They do not authorize bypassing access controls."
         title="Access and rights boundary"
@@ -75,6 +94,20 @@ export default async function SourceHealthPage() {
             has source attribution and snapshot metadata; it is not a live
             recrawl guarantee.
           </li>
+          <li>
+            <SourceHealthLabel status="firecrawl_verified" /> means a fresh
+            compliant scrape extracted content for a URL that normal requests
+            could not verify. It does not upgrade claim review state, source
+            officialness, or canonical evidence status.
+          </li>
+          <li>
+            Stage 2 maintenance rows can update source-health planning metadata,
+            but they must not be added to the public release manifest as
+            claim/evidence data.
+          </li>
+          {data.firecrawlVerification.requestPolicy ? (
+            <li>{data.firecrawlVerification.requestPolicy}</li>
+          ) : null}
         </ul>
       </ReferenceBox>
 
@@ -168,6 +201,12 @@ function describeStatus(status: string): string {
   const descriptions: Record<string, string> = {
     captcha_or_waf: "Source appears protected by CAPTCHA or WAF.",
     changed_hash: "Reserved for future source hash drift checks.",
+    firecrawl_failed:
+      "Firecrawl could not verify this URL; prioritize alternate official URLs or mark snapshot-only.",
+    firecrawl_opened_no_content:
+      "Firecrawl opened the URL but did not extract meaningful source content; prioritize alternate official URLs or mark snapshot-only.",
+    firecrawl_verified:
+      "A fresh Firecrawl scrape extracted source content after a normal request was blocked or inconclusive.",
     forbidden: "Source returned or appears likely to return a forbidden status.",
     login_wall: "Source appears to require authentication.",
     not_found: "Source appears missing or stale.",

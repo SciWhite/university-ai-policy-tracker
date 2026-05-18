@@ -557,7 +557,7 @@ export default async function DatasetsPage() {
           url={qsCoverageUrl}
         />
         <ApiEndpointRow
-          description="Public source snapshot metadata and staging source/fetch status rows for repair and recrawl planning."
+          description="Public source snapshot metadata, Firecrawl verification metadata, and staging source/fetch status rows for repair and recrawl planning. This is not claim evidence."
           label="Source health"
           path={sourceHealthPath}
           url={sourceHealthUrl}

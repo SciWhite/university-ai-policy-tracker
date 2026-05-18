@@ -873,7 +873,8 @@ h3 {
 }
 
 .source-health-label[data-source-health="ok"],
-.source-health-label[data-source-health="redirected"] {
+.source-health-label[data-source-health="redirected"],
+.source-health-label[data-source-health="firecrawl_verified"] {
   background: var(--color-reviewed-surface);
   border-color: var(--color-reviewed-border);
   color: var(--color-reviewed);
@@ -881,6 +882,7 @@ h3 {
 
 .source-health-label[data-source-health="changed_hash"],
 .source-health-label[data-source-health="not_found"],
+.source-health-label[data-source-health="firecrawl_opened_no_content"],
 .source-health-label[data-source-health="unknown_error"] {
   background: var(--color-warning-surface);
   border-color: var(--color-warning-border);
@@ -891,6 +893,7 @@ h3 {
 .source-health-label[data-source-health="robots_blocked"],
 .source-health-label[data-source-health="login_wall"],
 .source-health-label[data-source-health="paywall"],
+.source-health-label[data-source-health="firecrawl_failed"],
 .source-health-label[data-source-health="captcha_or_waf"] {
   background: var(--color-danger-surface);
   border-color: var(--color-danger-border);

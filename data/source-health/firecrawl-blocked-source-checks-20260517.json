@@ -1,0 +1,3133 @@
+{
+  "schemaVersion": "uapt-source-health-firecrawl-v1",
+  "generatedAt": "2026-05-17T14:16:54.323Z",
+  "checkedWith": "firecrawl-v2-scrape",
+  "requestPolicy": "Fresh scrape with maxAge=0; no login, paywall, CAPTCHA, WAF, or robots bypass was attempted.",
+  "summary": {
+    "total": 159,
+    "firecrawl_verified": 140,
+    "firecrawl_failed": 14,
+    "firecrawl_opened_no_content": 5
+  },
+  "records": [
+    {
+      "sourceUrl": "http://ctld.csu.edu.cn/pubcontent/info?id=891",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "404",
+      "entitySlugs": [
+        "central-south-university"
+      ],
+      "sourceTitle": "中南大学教师教学发展中心-信息详情",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html;charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "英国HEPI报告：学生使用生成式AI呈爆炸式增长",
+        "note": "该报告讨论了生成式AI在高等教育中的应用，探讨了学术不端、技术使用公正性等多个方面。"
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "http://gs.xjtu.edu.cn/info/1209/6175.htm?tdsourcetag=s_pctim_aiomsg",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "xian-jiaotong-university"
+      ],
+      "sourceTitle": "西安交通大学规范研究生学术行为实施办法",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "论文规范及模板",
+        "note": "The document outlines academic integrity and related policies for graduate students at Xi'an Jiaotong University."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "http://qau.edu.pk/wp-content/uploads/2012/08/ig.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "200ERR",
+      "entitySlugs": [
+        "quaid-i-azam-university"
+      ],
+      "sourceTitle": "Guide to check Papers and Thesis files for Plagiarism",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guide to check Papers and Thesis files for Plagiarism",
+        "note": "The document discusses plagiarism checking methods, features of Turnitin, academic integrity, and submission guidelines."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://ab.sysu.edu.cn/zh-hans/article/672",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "sun-yat-sen-university"
+      ],
+      "sourceTitle": "中山大学学术道德规范",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "中山大学学术道德规范",
+        "note": "The document discusses academic integrity and related policies."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-melbourne"
+      ],
+      "sourceTitle": "UoM Submission: Inquiry into Generative AI in Education",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Inquiry into the use of generative AI in the education system",
+        "note": "The submission discusses the implications of generative AI in education, touching on academic integrity, policy recommendations, and the need for ethical guidance."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://academictechnology.umich.edu/instructional-resources/generative-ai/academic-integrity-resources",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-michigan-ann-arbor"
+      ],
+      "sourceTitle": "Generative AI Academic Integrity Resources",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI Academic Integrity Resources",
+        "note": "Contains meaningful content related to academic integrity, guidance on AI use, and resources for faculty and students."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://blogs.cardiff.ac.uk/LTAcademy/ai-in-education-at-cardiff-university/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "cardiff-university"
+      ],
+      "sourceTitle": "AI in Education at Cardiff University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI in Education at Cardiff University",
+        "note": "Meaningful policy and guidance related to AI usage in education, academic integrity, and research are addressed."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://bokcenter.harvard.edu/ai-syllabus-policies",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "harvard-university"
+      ],
+      "sourceTitle": "AI Syllabus Policies",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI Syllabus Policies",
+        "note": "The content provides guidance on acceptable uses of AI in course syllabi and contains academic integrity references."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://bokcenter.harvard.edu/guidance-faculty-addressing-ai-related-academic-integrity-issues",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "harvard-university"
+      ],
+      "sourceTitle": "Guidance for Faculty on Addressing AI-Related Academic Integrity Issues",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidance for Faculty on Addressing AI-Related Academic Integrity Issues",
+        "note": "Content includes guidance on academic integrity related to AI."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://cee.ucdavis.edu/generative-ai-and-teaching",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-california-davis"
+      ],
+      "sourceTitle": "Generative AI and Teaching",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI and Teaching",
+        "note": "The content includes meaningful insights on policy (AI use), guidance (teaching strategies), academic integrity (concerns regarding GenAI), privacy (implications of AI use), and AI-related discussions."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://cfr.annauniv.edu/",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "anna-university"
+      ],
+      "sourceTitle": "Centre For Research - Anna University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "contentExtracted": false,
+        "error": "DNS resolution failed for hostname \"cfr.annauniv.edu\". This means the domain name could not be translated to an IP address. Possible causes: (1) The domain name is misspelled (check for typos), (2) The domain does not exist or has expired, (3) The DNS servers are temporarily unavailable, or (4) The domain was recently registered and DNS has not propagated yet. Please verify the URL is correct and the website exists."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://cfr.annauniv.edu/research/announcements/Plagiarism-Policy.pdf",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "anna-university"
+      ],
+      "sourceTitle": "Plagiarism Policy - Centre for Research, Anna University, Chennai",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 500,
+        "contentExtracted": false,
+        "error": "All scraping engines failed to retrieve content from this URL. Engines tried: [pdf]. This usually happens when: (1) The URL is invalid or the page doesn't exist (404), (2) The website is blocking automated access, (3) The website is down or unreachable, (4) The page requires authentication. Double check the URL is correct and accessible in a browser. If the issue persists, contact us at help@firecrawl.com with your request ID for investigation."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://cfr.annauniv.edu/research/announcements/Research_misconduct.pdf",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "anna-university"
+      ],
+      "sourceTitle": "Research Misconduct - Centre for Research, Anna University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 500,
+        "contentExtracted": false,
+        "error": "All scraping engines failed to retrieve content from this URL. Engines tried: [pdf]. This usually happens when: (1) The URL is invalid or the page doesn't exist (404), (2) The website is blocking automated access, (3) The website is down or unreachable, (4) The page requires authentication. Double check the URL is correct and accessible in a browser. If the issue persists, contact us at help@firecrawl.com with your request ID for investigation."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://chat.iust.ac.ir/",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "iran-university-of-science-and-technology"
+      ],
+      "sourceTitle": "سامانه هوش مصنوعی دانشگاه علم و صنعت ایران",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 500,
+        "contentExtracted": false,
+        "error": "The URL failed to load in the browser with error code \"ERR_TIMED_OUT\". The connection timed out. The server is not responding or is too slow. Please verify the URL is correct and the website is accessible."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://crl.u-paris.fr/charte-anti-plagiat",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "universite-paris-cite"
+      ],
+      "sourceTitle": "Charte anti-plagiat",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Charte anti-plagiat",
+        "note": "The document contains meaningful policy, guidance, and academic integrity content related to plagiarism."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://crlt.umich.edu/academic-integrity-genai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-michigan-ann-arbor"
+      ],
+      "sourceTitle": "Academic Integrity, GenAI - CRLT",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic Integrity, GenAI",
+        "note": "The content includes resources on academic integrity, guidance for addressing academic dishonesty, policy discussions related to GenAI, and strategies for teaching with AI tools."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://ctl.utexas.edu/generative-ai-teaching-and-learning-policies",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-texas-at-austin"
+      ],
+      "sourceTitle": "Generative AI in Teaching and Learning: Policies | Faculty Instructional Support and Development",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI in Teaching and Learning: Policies",
+        "note": "The document includes meaningful content on academic integrity, policies for generative AI use in education, data privacy considerations, and references to relevant academic resources."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://ctle.um.edu.mo/resource/faqs-for-students-using-generative-ai-tools-in-graded-assignments/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "university-of-macau"
+      ],
+      "sourceTitle": "FAQs for Students: Using Generative AI Tools in Graded Assignments",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "FAQs for Students: Using Generative AI Tools in Graded Assignments",
+        "note": "The content includes meaningful guidance on academic integrity and the use of generative AI tools in educational settings."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/academic-integrity/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "jhu"
+      ],
+      "sourceTitle": "Academic Integrity – Johns Hopkins Engineering CTLD",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic Integrity in the Era of Generative AI",
+        "note": "The content covers critical aspects of academic integrity in relation to AI, including guidelines, education, originality assessment, and collaboration with academic integrity officers, making it relevant to policy and academic integrity discussions."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://engineering.jhu.edu/ctld/chatgpt/student-use-of-generative-ai/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "jhu"
+      ],
+      "sourceTitle": "Student Use of Generative AI - Johns Hopkins Engineering CTLD",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Student Use of Generative AI",
+        "note": "The content includes meaningful policy and guidance related to academic integrity and the use of generative AI in education."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://ep.jhu.edu/faculty-staff/preparing-to-teach/faculty-facing-guidance-on-student-generative-ai-use/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "jhu"
+      ],
+      "sourceTitle": "Faculty Facing Guidance on Student Generative AI-Use",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Purpose and Instructor Responsibility",
+        "note": "Content includes guidelines on Generative AI use, academic integrity, and strategies for course implementation."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://etc.cuit.columbia.edu/news/best-practices-responsible-ai-use-columbia-university",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "columbia"
+      ],
+      "sourceTitle": "Best Practices for Responsible AI Use at Columbia - CUIT",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Best Practices for Responsible AI Use",
+        "note": "The document contains meaningful content related to policy, guidance, academic integrity, research, privacy, and security regarding AI use."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://ewww.gist.ac.kr/_prog/download/?d_type=1&file_realname=2020_%ED%95%99%EC%82%AC%ED%8E%B8%EB%9E%8C_%ED%95%99%EC%82%AC%EA%B3%BC%EC%A0%95.pdf.pdf&filename=20210528170809_00migsb3wy2dsw8kerjw8tw1czk4dz.pdf&func_gbn_cd=SMedia&site_dvs_cd=kr",
+      "status": "firecrawl_opened_no_content",
+      "originalHttpStatus": "200ERR",
+      "entitySlugs": [
+        "gwangju-institute-of-science-and-technology-gist"
+      ],
+      "sourceTitle": "GIST 대학 학사편람",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": false
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://genai.um.edu.mo/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "university-of-macau"
+      ],
+      "sourceTitle": "Guidelines on the Use of Generative Artificial Intelligence Tools",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidelines on the Use of Generative Artificial Intelligence Tools",
+        "note": "The document provides meaningful guidance on policy, academic integrity, data privacy, security, and the responsible use of AI in education."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/appropriate-use",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-michigan-ann-arbor"
+      ],
+      "sourceTitle": "Appropriate Use of AI Services & U-M Policy",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Appropriate Use of AI Services & U-M Policy",
+        "note": "The content includes meaningful guidance on academic integrity, privacy, security, and AI-related policies."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/faculty",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-michigan-ann-arbor"
+      ],
+      "sourceTitle": "U-M Guidance for Faculty/Instructors",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "U-M Guidance for Faculty/Instructors",
+        "note": "The document provides guidance on Generative AI (GenAI) related to academic integrity, evaluation, teaching strategies, and policies."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/faculty/course-policies",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-michigan-ann-arbor"
+      ],
+      "sourceTitle": "Course Policies & Syllabi Statements",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Course Policies & Syllabi Statements",
+        "note": "The content discusses guidelines for using GenAI tools in academic settings, emphasizing academic integrity, ethical use, and expectations for documentation."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/faculty/redesigning-assessments",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-michigan-ann-arbor"
+      ],
+      "sourceTitle": "Course and Assignment (Re-)Design",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Course and Assignment (Re-)Design",
+        "note": "The content discusses integrating GenAI in course design, emphasizing academic integrity, ethical considerations, and effective pedagogical practices."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://genai.umich.edu/resources/students",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-michigan-ann-arbor"
+      ],
+      "sourceTitle": "U-M Guidance for Students",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "U-M Guidance for Students",
+        "note": "The content provides guidance on the use of GenAI tools and emphasizes privacy, ethical considerations, and academic integrity."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-and-assessments/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-leeds"
+      ],
+      "sourceTitle": "AI and assessments | Generative AI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "University’s Approach to the Use of Generative AI in Assessments",
+        "note": "Meaningful policy and guidance on the use of generative AI in academic assessments has been extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-and-assessments/acknowledging-use-of-ai/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-leeds"
+      ],
+      "sourceTitle": "Acknowledging use of Generative AI | Generative AI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic Integrity and Acknowledgement of Generative AI Use",
+        "note": "Meaningful content related to academic integrity, guidance for the use of Generative AI tools, and related policies were extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-and-assessments/categories-of-assessments/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-leeds"
+      ],
+      "sourceTitle": "Categories of assessments | Generative AI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI in Taught Student Assessments",
+        "note": "The document contains important guidance related to the use of Generative AI in assessments, including academic integrity and security aspects."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-use-in-research/data-restrictions/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-leeds"
+      ],
+      "sourceTitle": "Data restrictions and security | Generative AI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "University of Leeds AI Data Usage Guidelines",
+        "note": "Contains meaningful content about data restrictions and AI usage policies."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/ai-use-in-research/postgraduate-researcher-guidance/assessment-categories-for-research-degrees/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-leeds"
+      ],
+      "sourceTitle": "Assessment categories for research degrees | Generative AI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidance on Using Generative AI in Research Degree Programmes",
+        "note": "The document outlines the use of Generative AI during research degrees, categorizing its use into red, amber, and green categories related to academic integrity and proper research procedures."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://generative-ai.leeds.ac.uk/intro-gen-ai/generative-ai-tools/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-leeds"
+      ],
+      "sourceTitle": "Generative AI tools | Generative AI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidelines on Using Generative AI Tools",
+        "note": "The document contains meaningful guidance on data protection, copyright, and the appropriate use of AI tools in an academic environment."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://grs.um.edu.mo/wp-content/uploads/Guidelines-on-the-Use-of-Generative-Artificial-Intelligence-Tools.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "university-of-macau"
+      ],
+      "sourceTitle": "The University of Macau Guidelines on the Use of Generative Artificial Intelligence Tools",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidelines on the Use of Generative Artificial Intelligence Tools",
+        "note": "The document addresses academic integrity, responsible use of AI, and guidelines for both academic staff and students regarding Generative AI tools."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://gs.hust.edu.cn/info/1037/6454.htm",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "huazhong-university-of-science-and-technology"
+      ],
+      "sourceTitle": "关于举办华中科技大学研究生人工智能暑期培训班的通知",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "关于举办华中科技大学研究生人工智能暑期培训班的通知",
+        "note": "The document includes meaningful AI-related content such as training on artificial intelligence principles, security and ethics, and practical applications."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://iauelearning.iau.edu.sa/storage/policyandrules/policies_for_the_use_of_artificial_intelligence_education_and_scientific_research_en.pdf",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "imam-abdulrahman-bin-faisal-university-iau"
+      ],
+      "sourceTitle": "Policies For the Use of Artificial Intelligence in Education and Scientific Research",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 408,
+        "contentExtracted": false,
+        "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://iauelearning.iau.edu.sa/storage/policyandrules/policies_for_the_use_of_artificial_intelligence_education_and_scientific_research_students_en.pdf",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "imam-abdulrahman-bin-faisal-university-iau"
+      ],
+      "sourceTitle": "Policies For the Use of Artificial Intelligence in Education and Scientific Research - Students",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 408,
+        "contentExtracted": false,
+        "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-guidance",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-california-davis"
+      ],
+      "sourceTitle": "AI Guidance",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI Guidance",
+        "note": "The page contains meaningful content related to AI guidance, security, privacy, academic integrity, and responsible use of AI tools."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-california-davis"
+      ],
+      "sourceTitle": "AI Tools",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI Tools",
+        "note": "The page provides resources related to generative AI tools, including guidance on usage, showing accessibility and privacy-oriented considerations."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools/microsoft-copilot",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-california-davis"
+      ],
+      "sourceTitle": "Microsoft 365 Copilot Chat",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Microsoft 365 Copilot Chat",
+        "note": "The content includes relevant information about AI tools, security considerations, and usage guidelines."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/student-guide-gen-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-california-davis"
+      ],
+      "sourceTitle": "UC Davis Student Guide to Generative Artificial Intelligence (GenAI)",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "UC Davis Student Guide to Generative Artificial Intelligence (GenAI)",
+        "note": "The document provides meaningful guidance on the ethical use of Generative AI, including policies related to academic integrity and resources for further information."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://intranet.ecu.edu.au/student/my-studies/academic-integrity",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "edith-cowan-university"
+      ],
+      "sourceTitle": "Academic Integrity",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic Integrity",
+        "note": "Includes meaningful content related to academic integrity, research ethics, and guidance on avoiding academic misconduct."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://intranet.ecu.edu.au/student/my-studies/academic-integrity/avoiding-academic-misconduct",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "edith-cowan-university"
+      ],
+      "sourceTitle": "Avoiding Academic Misconduct",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 408,
+        "contentExtracted": false,
+        "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://intranet.ecu.edu.au/student/my-studies/study-assistance/generative-ai-in-learning",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "edith-cowan-university"
+      ],
+      "sourceTitle": "Generative AI in Learning",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI in Learning",
+        "note": "The page discusses the use of generative AI tools for learning, emphasizing academic integrity, support resources, and workshops."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://intranet.ecu.edu.au/student/news/overview/2025/08/ai-at-uni-news",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "edith-cowan-university"
+      ],
+      "sourceTitle": "AI at uni: how to use it the right way",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI at uni: how to use it the right way",
+        "note": "The content discusses the academic integrity implications of using AI tools in education, providing guidance on ethical usage and the importance of maintaining honesty in submissions."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://ithelp.uoguelph.ca/ai-guidelines",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "404",
+      "entitySlugs": [
+        "university-of-guelph"
+      ],
+      "sourceTitle": "Information Security Guidelines for the Use of Generative Artificial Intelligence",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 408,
+        "contentExtracted": false,
+        "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://its.umich.edu/computing/ai",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-michigan-ann-arbor"
+      ],
+      "sourceTitle": "ITS AI Services",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 408,
+        "contentExtracted": false,
+        "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://jwc.scu.edu.cn/info/1069/10518.htm",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "sichuan-university"
+      ],
+      "sourceTitle": "关于开展2026届本科毕业论文（设计）学术不端行为检测工作的通知",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "关于开展2026届本科毕业论文（设计）学术不端行为检测工作的通知",
+        "note": "The document includes policies on academic integrity related to plagiarism and AI tools."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://lib.ucsiuniversity.edu.my/turnitin-guideline",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "ucsi-university"
+      ],
+      "sourceTitle": "Turnitin Guideline | Tan Sri Musa Mohamad Library",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Turnitin Guideline | Tan Sri Musa Mohamad Library",
+        "note": "The content discusses academic integrity, plagiarism detection, and citation practices."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "daegu-gyeongbuk-institute-of-science-and-technology-dgist"
+      ],
+      "sourceTitle": "전자자료-데이터베이스-알파벳 | DGIST 전자도서관",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html;charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "데이터베이스",
+        "note": "Meaningful content related to academic integrity, research, privacy, and security observed in various database descriptions."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://mcgraw.princeton.edu/generative-ai-and-our-classrooms",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "princeton-university"
+      ],
+      "sourceTitle": "Generative AI and Our Classrooms",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI and Our Classrooms",
+        "note": "The document discusses various aspects of AI in education, including policies, guidance, and potential risks."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://mcgraw.princeton.edu/guidance-aichatgpt",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "princeton-university"
+      ],
+      "sourceTitle": "Guidance on AI/ChatGPT",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI & ChatGPT Guidance for Teaching",
+        "note": "The document contains meaningful guidance related to academic integrity and the use of AI in teaching."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/ai-aai/home/ai-integrity/official-statements-from-the-university-of-melbourne",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-melbourne"
+      ],
+      "sourceTitle": "Official statements from The University of Melbourne",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Official Statements on AI and Academic Integrity from the University of Melbourne",
+        "note": "The content includes meaningful policy and guidance related to academic integrity, use of AI technologies, and associated responsibilities."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-melbourne"
+      ],
+      "sourceTitle": "Generative AI in T&L at the University of Melbourne",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Background and definitions",
+        "note": "Meaningful content related to policy, guidance, academic integrity, research, and AI-related topics was extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://msd.unimelb.edu.au/belt/quality/generative-ai/what-is-this-guide",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-melbourne"
+      ],
+      "sourceTitle": "What Is This Guide? - Melbourne School of Design",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "BEL+T Guidance on Generative AI",
+        "note": "The document includes meaningful content related to academic integrity, research, and guidance regarding the use of AI in education."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://nezarat.iut.ac.ir/fa/ai_tir1404",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "isfahan-university-of-technology"
+      ],
+      "sourceTitle": "هوش مصنوعی و واقعیت افزوده در آموزش و پژوهش و بحث تعاملی در اخلاق آن",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 408,
+        "contentExtracted": false,
+        "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "universidad-politecnica-de-madrid-upm"
+      ],
+      "sourceTitle": "¿Cómo integrar en la guía docente el uso de Inteligencia Artificial? : Guía de Buenas Prácticas",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 408,
+        "contentExtracted": false,
+        "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://oa.upm.es/91518/3/USO_ETICO_Y_RESPONSABLE_DE_LA_IA.pdf",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "universidad-politecnica-de-madrid-upm"
+      ],
+      "sourceTitle": "Uso ético y responsable de la Inteligencia Artificial en la educación : Guía Buenas Prácticas",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 408,
+        "contentExtracted": false,
+        "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://odoc.princeton.edu/about/official-deans-communications/2023/generative-ai-teaching-and-learning-fall-2023-faculty-and",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "princeton-university"
+      ],
+      "sourceTitle": "Generative AI in Teaching and Learning Fall 2023, Faculty and Student Memo",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI in Teaching and Learning Fall 2023, Faculty and Student Memo",
+        "note": "The memo discusses the use of generative AI in teaching and learning at Princeton, addressing academic integrity, faculty discretion in policies, and the importance of source acknowledgment, while clarifying that detection tools are not effective."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://odoc.princeton.edu/faculty/teaching-support/course-procedures-policies",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "princeton-university"
+      ],
+      "sourceTitle": "Course Procedures & Policies",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Course Procedures & Policies",
+        "note": "The document outlines various course management policies, including procedures related to scheduling, course materials, evaluations, attendance, and the use of AI."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://oit.gatech.edu/ai/academics",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "georgia-institute-of-technology"
+      ],
+      "sourceTitle": "Academic Guidance for Generative AI | Office of Information Technology",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic Guidance for Generative AI",
+        "note": "Meaningful content related to policy, guidance, academic integrity, privacy, and security was extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://oit.gatech.edu/ai/genai",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "georgia-institute-of-technology"
+      ],
+      "sourceTitle": "Generative AI | Office of Information Technology",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 408,
+        "contentExtracted": false,
+        "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://oit.gatech.edu/ai/guidance",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "georgia-institute-of-technology"
+      ],
+      "sourceTitle": "AI Standards and Guidance | Office of Information Technology",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI Standards and Guidance",
+        "note": "The content includes meaningful guidance on AI usage, particularly regarding privacy, security, and research implications at Georgia Tech."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://oit.gatech.edu/ai/tools",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "georgia-institute-of-technology"
+      ],
+      "sourceTitle": "Institutional AI Register | Office of Information Technology",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Institutional AI Register",
+        "note": "The document includes meaningful content related to security, privacy, and guidance on AI tool adoption."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://oit.princeton.edu/generative-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "princeton-university"
+      ],
+      "sourceTitle": "Generative AI at Princeton",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI at Princeton",
+        "note": "Contains guidance on responsible AI usage, including academic integrity, data privacy, transparency, and ethical considerations."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://oit.princeton.edu/microsoft-copilot-princeton-university",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "princeton-university"
+      ],
+      "sourceTitle": "Microsoft Copilot at Princeton University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Microsoft Copilot at Princeton University",
+        "note": "The content includes information on data security, privacy, and guidance for using generative AI responsibly at Princeton."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://oit.princeton.edu/policies/generative-ai-tools-use-policy",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "princeton-university"
+      ],
+      "sourceTitle": "Generative AI Tools Use Policy",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI Tools Use Policy",
+        "note": "The document contains meaningful guidance regarding the use of generative AI tools, focusing on security, policy compliance, and responsible usage."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://panduan.ipb.ac.id/wp-content/uploads/2026/04/FINAL-Panduan-Penggunaan-AI-IPB.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "200ERR",
+      "entitySlugs": [
+        "ipb-university-aka-bogor-agricultural-university"
+      ],
+      "sourceTitle": "Panduan Penggunaan Kecerdasan Buatan (AI) dalam Penyelenggaraan Tridarma di Lingkungan Institut Pertanian Bogor",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Panduan Penggunaan Kecerdasan Buatan (AI) dalam Penyelenggaraan Tridarma di Lingkungan Institut Pertanian Bogor",
+        "note": "The document outlines the guidance for using Artificial Intelligence (AI) at the Bogor Agricultural University to support its educational, research, and community service activities, emphasizing ethical use, the importance of integrity, and compliance with academic policies."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://periodicos.sbu.unicamp.br/ojs/index.php/index/diretrizes",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "universidade-estadual-de-campinas"
+      ],
+      "sourceTitle": "Política de Uso de IA",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Política de Uso de IA",
+        "note": "The document outlines the guidelines for ethical, transparent, and responsible use of Artificial Intelligence (AI) in scientific publication processes at UNICAMP. It includes sections on the use of AI by authors, reviewers, and editors, emphasizing academic integrity and privacy."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://provost.columbia.edu/content/generative-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "columbia"
+      ],
+      "sourceTitle": "Generative AI - Office of the Provost - Columbia University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI",
+        "note": "Meaningful content related to AI policy, guidance, academic integrity, and research was extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "columbia"
+      ],
+      "sourceTitle": "Generative AI Policy - Office of the Provost - Columbia University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI Policy",
+        "note": "The document contains meaningful content related to policy and guidance concerning the responsible use of Generative AI, including aspects of academic integrity."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://provost.harvard.edu/guidelines-using-chatgpt-and-other-generative-ai-tools-harvard",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "harvard-university"
+      ],
+      "sourceTitle": "Guidelines for Using ChatGPT and other Generative AI tools at Harvard",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidelines for Using ChatGPT and other Generative AI tools at Harvard",
+        "note": "The content includes meaningful guidelines relating to information security, data privacy, academic integrity, and AI usage."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://provost.rice.edu/communications/faculty-guidance-generative-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "406",
+      "entitySlugs": [
+        "rice-university"
+      ],
+      "sourceTitle": "Faculty Guidance on Generative AI | Office of Provost | Rice University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Faculty Guidance on Generative AI",
+        "note": "The content includes important considerations related to academic integrity, privacy, and responsible use of generative AI in education."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "harvard-university"
+      ],
+      "sourceTitle": "HGSE AI Policy on Student Use of Generative AI in Academic Work",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "HGSE AI Policy",
+        "note": "The document contains meaningful content relating to academic integrity, research guidelines, privacy, and security concerning the use of generative AI."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://research.iut.ac.ir/fa/dgr/3238",
+      "status": "firecrawl_failed",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "isfahan-university-of-technology"
+      ],
+      "sourceTitle": "راهنمای استفاده از ابزارهای هوش مصنوعی در پژوهش",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 500,
+        "contentExtracted": false,
+        "error": "The URL failed to load in the browser with error code \"ERR_TIMED_OUT\". The connection timed out. The server is not responding or is too slow. Please verify the URL is correct and the website is accessible."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://responsibleai.rice.edu/guidelines-resources-faculty-staff",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "406",
+      "entitySlugs": [
+        "rice-university"
+      ],
+      "sourceTitle": "Guidelines & Resources for Faculty & Staff | Responsible AI @ Rice University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidelines & Resources for Faculty & Staff",
+        "note": "The content provides meaningful guidance related to responsible AI use, educational integrity, privacy, and security policies."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://scholarlyintegrity.princeton.edu/students/disclosing-generative-ai-use",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "princeton-university"
+      ],
+      "sourceTitle": "Disclosing Generative AI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Disclosing Generative AI",
+        "note": "The content provides guidance on the responsible use and disclosure of generative AI in academic contexts."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://secretariat.leeds.ac.uk/policies-procedures-and-codes-of-practice/guidance-to-staff-on-the-use-of-artificial-intelligence/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-leeds"
+      ],
+      "sourceTitle": "Guidance to Staff on the use of Artificial Intelligence | Governance and Compliance",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "FAQs: Staff use of AI",
+        "note": "The content includes significant information regarding academic integrity, ethical considerations in AI use, data protection, and personal security."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://seuelectronica.upf.edu/documents/107805936/112656436/Instrucci%C3%B3+avaluaci%C3%B3+IAG+%281%29.pdf/908e2fbe-c8eb-f08b-6c62-22ce2b3c26be?t=1690367251359",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "universitat-pompeu-fabra"
+      ],
+      "sourceTitle": "Ús de la intel·ligència artificial: avaluació i integritat acadèmica",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Úsadealaaintel·ligènciaaartificial:aavaluacióaiaintegritataacadèmica",
+        "note": "The content discusses the integration of generative artificial intelligence in academic activities, addressing academic integrity and evaluation guidelines."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://studenthub.citystgeorges.ac.uk/academic-resources/learning-and-study-support/online-learning-tools/using-generative-artificial-intelligence-ai-for-learning",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "city-st-georges-university-of-london"
+      ],
+      "sourceTitle": "Using generative artificial intelligence (AI) for learning | Student Hub | City St George's, University of London",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Using generative artificial intelligence (AI) for learning",
+        "note": "The content includes guidance on the use of generative AI in learning and assessments, emphasizing academic integrity."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://studenthub.citystgeorges.ac.uk/student-support-services/student-concerns-and-rights/academic-misconduct",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "city-st-georges-university-of-london"
+      ],
+      "sourceTitle": "Academic Integrity and Misconduct | Student Hub | City St George's, University of London",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic Integrity and Misconduct",
+        "note": "Meaningful academic integrity and misconduct content was extracted, with specific guidance on the use of Generative AI and definitions of academic misconduct."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://students.business.columbia.edu/office-of-student-affairs/academic-advising-and-student-success/academic-integrity/generative-ai-policy",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "columbia"
+      ],
+      "sourceTitle": "Generative AI Policy | Students - Columbia Business School",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI Policy",
+        "note": "The document discusses policies regarding the use of generative AI in academic settings, addressing academic integrity, guidelines for faculty and students, and consequences of unauthorized use."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://students.mq.edu.au/study/assessment-exams/academic-integrity/ai-tools",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "macquarie-university"
+      ],
+      "sourceTitle": "AI Tools at Macquarie University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI Tools at Macquarie University",
+        "note": "Meaningful content related to academic integrity, guidance on AI use in assessments, privacy, and research considerations has been extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://students.mq.edu.au/study/assessment-exams/assessments/ai-and-assessment",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "macquarie-university"
+      ],
+      "sourceTitle": "AI and assessment",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI and assessment",
+        "note": "Content related to policy on the use of AI in assessments, including guidelines for Open and Observed assessments and links to further resources."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-melbourne"
+      ],
+      "sourceTitle": "GenAI at Melbourne",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Using GenAI tools in accordance with University of Melbourne policy.",
+        "note": "Meaningful content extracted related to academic integrity and privacy."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "jhu",
+        "jhu"
+      ],
+      "sourceTitle": "Generative AI Tool Guidance | Teaching @ JHU",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI Tool Guidance",
+        "note": "The content provides meaningful guidance on policies and ethical considerations regarding generative AI in education."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/guidelines/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "jhu"
+      ],
+      "sourceTitle": "Guidelines - Teaching @ JHU",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidelines",
+        "note": "The content includes various policies and guidelines related to AI, privacy, academic integrity, and ethical considerations."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://teaching.jhu.edu/university-teaching-policies/generative-ai/syllabus-statements/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "jhu"
+      ],
+      "sourceTitle": "Syllabus Statements | Teaching @ JHU",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Syllabus Statements",
+        "note": "The content includes guidelines on the use of AI in academic settings, specifying acceptable and unacceptable uses across various courses. It also emphasizes academic integrity and provides consequences for violations."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://ugs.hust.edu.cn/info/1142/6887.htm",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "huazhong-university-of-science-and-technology"
+      ],
+      "sourceTitle": "关于修订2025级本科专业人才培养方案的通知",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "关于修订2025级本科专业人才培养方案的通知",
+        "note": "The document discusses educational guidelines related to curriculum reforms and the integration of AI into education."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://uhhgpt.uni-hamburg.de/login.php",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "universitat-hamburg"
+      ],
+      "sourceTitle": "UHHGPT",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "UHHGPT GPT für die Universität Hamburg",
+        "note": "The content provides information on an AI tool for university members including usage policies, guidance, and privacy considerations."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "jhu"
+      ],
+      "sourceTitle": "Generative AI / CoPilot / ChatGPT Information - WSEIT",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI Tools at JHU",
+        "note": "The document contains information about generative AI tools, safety precautions, guidelines for responsible usage, and policies regarding data privacy."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.american.edu/oit/security/responsible-use-of-ai.cfm",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "american-university"
+      ],
+      "sourceTitle": "University Guidance on the Responsible Use of Artificial Intelligence (AI)",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html;charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Responsible Use of AI",
+        "note": "The document outlines guidance on the responsible use of AI tools within an academic framework, addressing issues of privacy, integrity, and ethical considerations."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.cardiff.ac.uk/__data/assets/pdf_file/0006/1549878/Academic-Integrity-Policy.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "cardiff-university"
+      ],
+      "sourceTitle": "Academic Integrity Policy",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic Integrity Policy",
+        "note": "The document contains meaningful content regarding academic integrity, misconduct definitions, and how to maintain academic integrity, which includes references to policies, guidance, and practices related to academic misconduct and research."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.cardiff.ac.uk/__data/assets/pdf_file/0009/432666/Academic-Regulations-and-Policies-Handbook-2025-26-English-Nov25.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "cardiff-university"
+      ],
+      "sourceTitle": "Academic Regulations and Policies 2025/2026",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "MSci Academic Regulations and Policies 2025/2026",
+        "note": "The document contains content related to academic integrity, assessment, admissions regulations, student conduct, and other academic policies."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.citystgeorges.ac.uk/__data/assets/pdf_file/0005/899861/Item_09.1-Academic-Integrity-and-Misconduct-Policy-2025-2026.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "city-st-georges-university-of-london"
+      ],
+      "sourceTitle": "Academic Integrity & Misconduct Policy",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Revised ‘Academic Integrity & Misconduct Policy’ for Implementation in 2025/26",
+        "note": "The document covers academic integrity, guidance for students, and significant policies regarding academic misconduct."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.csu.edu.cn/style/bkssc.pdf",
+      "status": "firecrawl_opened_no_content",
+      "originalHttpStatus": "200ERR",
+      "entitySlugs": [
+        "central-south-university"
+      ],
+      "sourceTitle": "中南大学本科生手册",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": false
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://www.csu.edu.cn/style/yjssc.pdf",
+      "status": "firecrawl_opened_no_content",
+      "originalHttpStatus": "200ERR",
+      "entitySlugs": [
+        "central-south-university"
+      ],
+      "sourceTitle": "研究生手册",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": false
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/about-deakin/why-deakin/generative-artificial-intelligence",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "deakin-university"
+      ],
+      "sourceTitle": "Generative artificial intelligence",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative artificial intelligence",
+        "note": "The document addresses ethical use of generative AI, guidelines, and principles which relate to academic integrity, research ethics, and privacy."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/research/our-research/research-integrity/generative-artificial-intelligence-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "deakin-university"
+      ],
+      "sourceTitle": "Generative Artificial Intelligence (AI)",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI in academic research",
+        "note": "The document includes meaningful content regarding academic integrity, ethics, guidance on using generative AI, privacy, and security."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/students/study-support/study-resources/artificial-intelligence/acknowledging-your-use",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "deakin-university"
+      ],
+      "sourceTitle": "Acknowledging your use",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Acknowledging Your Use of Generative AI in Assessments",
+        "note": "This document provides guidance on acknowledging the use of generative AI tools in academic assessments, including how to properly document and cite these tools."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/students/study-support/study-resources/artificial-intelligence/approved-genai-tools-for-learning/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "deakin-university"
+      ],
+      "sourceTitle": "Approved genAI tools for learning",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Approved genAI tools for learning",
+        "note": "The content includes guidance related to academic integrity, privacy, and security regarding the use of generative AI tools."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.deakin.edu.au/students/study-support/study-resources/artificial-intelligence/study-and-assessments",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "deakin-university"
+      ],
+      "sourceTitle": "Using genAI for study and assessments",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Using genAI for study and assessments",
+        "note": "The document provides meaningful insights regarding the use of generative AI in academic contexts, touching on ethical considerations, academic integrity, and research practices."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.dundee.ac.uk/corporate-information/use-generative-artificial-intelligence-students",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-dundee"
+      ],
+      "sourceTitle": "Use of generative artificial intelligence for students",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Use of Generative Artificial Intelligence for Students",
+        "note": "The document provides meaningful content regarding policy and guidance on the use of Generative AI in academic settings, along with insights on academic integrity, ethical issues, and risks associated with AI."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.dundee.ac.uk/guides/ai-artificial-intelligence-teaching-and-assessment",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-dundee"
+      ],
+      "sourceTitle": "AI (Artificial Intelligence) in Teaching and Assessment",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI (Artificial Intelligence) in Teaching and Assessment",
+        "note": "The document contains meaningful guidance on academic integrity, research ethics, privacy, and the implications of AI in education."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.dundee.ac.uk/guides/get-help-using-ai-responsibly-study",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-dundee"
+      ],
+      "sourceTitle": "Get help with acknowledging and using AI responsibly in assessment and study",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Get help with acknowledging and using AI responsibly in assessment and study",
+        "note": "The content provides meaningful guidance on the responsible use of AI in academic settings, including issues of academic integrity and ethics."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ecu.edu.au/centres/centre-for-learning-and-teaching/artificial-intelligence-framework",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "edith-cowan-university"
+      ],
+      "sourceTitle": "Artificial Intelligence Framework",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Artificial Intelligence Framework",
+        "note": "The page contains meaningful content related to AI ethics, guidance on the use of AI, and research principles."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.griffith.edu.au/academic-integrity",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "griffith-university"
+      ],
+      "sourceTitle": "Academic integrity",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic integrity",
+        "note": "Meaningful content extracted related to academic integrity, policy and procedure, guidance on research ethics, and academic misconduct."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.griffith.edu.au/eresearch-services/emerging-technologies-and-innovations/artificial-intelligence",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "griffith-university"
+      ],
+      "sourceTitle": "Artificial Intelligence",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Artificial Intelligence",
+        "note": "Contains meaningful policy guidance on research and responsible AI use."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.griffith.edu.au/library/study/digital-skills/generative-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "griffith-university"
+      ],
+      "sourceTitle": "Using generative AI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Using generative AI",
+        "note": "The content contains meaningful policy and guidance related to academic integrity, responsible use of AI, research, and digital skills pertaining to the use of generative AI."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.huit.harvard.edu/ai-assistant-guidelines",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "harvard-university"
+      ],
+      "sourceTitle": "AI Assistant Guidelines",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI Assistant Guidelines",
+        "note": "The document contains policies, guidance, privacy, and security-related content regarding the use of AI assistants in meetings."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "harvard-university"
+      ],
+      "sourceTitle": "Generative AI Guidelines",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI Guidelines",
+        "note": "Meaningful content related to policy, guidance, academic integrity, research, privacy, and security was extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "harvard-university"
+      ],
+      "sourceTitle": "Generative AI Tool Comparison",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative AI Tool Comparison",
+        "note": "The document contains meaningful content related to AI guidelines, data classification for tools, and privacy implications regarding the use of Generative AI tools at Harvard."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.mcgill.ca/it/article/microsoft-copilot-and-general-guidelines-using-generative-ai-tools",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "mcgill-university"
+      ],
+      "sourceTitle": "Microsoft Copilot and general guidelines for using generative AI tools",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Microsoft Copilot and general guidelines for using generative AI tools",
+        "note": "The content includes guidance on using Microsoft Copilot, data protection, privacy, and AI-related best practices."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.monash.edu/ai/tools-training-and-resources/ai-policies-and-guidelines",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "monash"
+      ],
+      "sourceTitle": "AI Policies and Guidelines - Artificial intelligence at Monash",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI Policies and Guidelines",
+        "note": "Meaningful content related to policies, guidance, and AI integrity was extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.monash.edu/graduate-research/support-and-resources/guidance-on-generative-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "monash"
+      ],
+      "sourceTitle": "Guidance on Generative AI - Graduate Research - Monash University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidance on Generative AI",
+        "note": "Contains meaningful guidance on the use of Generative AI in research training, academic integrity expectations, and policy frameworks, relevant to privacy, security, and AI-related considerations."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/ai-and-assessment",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "monash"
+      ],
+      "sourceTitle": "AI and assessment - Learning and Teaching - Monash University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI and Assessment",
+        "note": "Meaningful content related to policy, guidance, academic integrity, and AI was extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/AI-statements",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "monash"
+      ],
+      "sourceTitle": "AI statements - Learning and Teaching: Teach HQ - Monash University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI statements",
+        "note": "The content provides comprehensive guidelines for AI usage in educational assessments, including responsibilities for Chief Examiners and expectations for student acknowledgment of AI assistance."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.monash.edu/learning-teaching/teachhq/Teaching-practices/artificial-intelligence/responsible-use",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "monash"
+      ],
+      "sourceTitle": "Responsible use of AI in education at Monash - Learning and Teaching",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Responsible use of AI in education at Monash",
+        "note": "The content covers various aspects related to AI use in education, including guidance on responsible use, data privacy, intellectual property, and ethical considerations."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "monash"
+      ],
+      "sourceTitle": "Microsoft Copilot - Student Academic Success",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Student Academic Success",
+        "note": "The content includes guidance on academic integrity, use of AI through Microsoft Copilot, and various academic support services."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/acknowledging-the-use-of-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "monash"
+      ],
+      "sourceTitle": "Acknowledging the use of AI - Student Academic Success",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Acknowledging the use of AI",
+        "note": "Meaningful guidance on using AI in academic work and maintaining academic integrity was extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/academic-integrity-and-ai/ai-and-assessments",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "monash"
+      ],
+      "sourceTitle": "AI and assessments - Student Academic Success - Monash University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI and assessments",
+        "note": "Meaningful content on academic integrity, research, and AI-related guidelines extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.monash.edu/student-academic-success/learning-with-ai/foundations-of-ai/responsible-and-ethical-use-of-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "monash"
+      ],
+      "sourceTitle": "Responsible and ethical use of AI - Student Academic Success",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Responsible and ethical use of AI",
+        "note": "The content covers meaningful topics related to academic integrity, guidance on artificial intelligence use, and privacy issues."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.su.ac.za/en/research/research-development/artificial-intelligence-use-stellenbosch-university",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "stellenbosch-university"
+      ],
+      "sourceTitle": "Artificial Intelligence Use at Stellenbosch University",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Declaration of AI Use in Postgraduate Research",
+        "note": "Meaningful content regarding academic integrity, research, and responsible AI use was extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.tilburguniversity.edu/about/conduct-and-integrity/privacy-and-security/artificial-intelligence",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "tilburg-university"
+      ],
+      "sourceTitle": "Privacy & Security framework for responsible use of GenAI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Privacy & Security framework for responsible use of GenAI",
+        "note": "The document contains meaningful policy and guidance on the responsible use of Generative AI, emphasizing privacy, security, and academic integrity."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.tilburguniversity.edu/about/conduct-and-integrity/privacy-and-security/working-responsibly-generative-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "tilburg-university"
+      ],
+      "sourceTitle": "Working responsibly with Generative AI: how to ensure privacy and security",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Working responsibly with Generative AI: how to ensure privacy and security",
+        "note": "This document includes meaningful guidance on privacy, security, and responsible use of Generative AI (GenAI), specifically addressing risks, opportunities, and compliance with relevant policies."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.tilburguniversity.edu/students/studying/regulations/fraud/fraude-plagiaat-ai-gebruik-tshd",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "tilburg-university"
+      ],
+      "sourceTitle": "Fraud, plagiarism, and AI use Tilburg School of Humanities and Digital Sciences (TSHD)",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Fraud, plagiarism, and AI use Tilburg School of Humanities and Digital Sciences (TSHD)",
+        "note": "The document contains important information about academic integrity, the use of AI tools, definitions of fraud, and consequences of academic misconduct."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.tuwien.at/en/studies/teaching-at-tu-wien/digitally-supported-teaching/artificial-intelligence-in-education/task-force-on-artificial-intelligence-in-teaching-at-the-tu-vienna",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "technische-universitat-wien"
+      ],
+      "sourceTitle": "Task Force on Artificial Intelligence in Teaching",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Task Force on Artificial Intelligence in Teaching",
+        "note": "Content regarding academic integrity, ethical aspects, curriculum requirements, didactic methods, and legal issues related to generative AI has been extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.tuwien.at/studium/lehren-an-der-tuw/digital-gestuetzte-lehre/kuenstliche-intelligenz-in-der-lehre",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "technische-universitat-wien"
+      ],
+      "sourceTitle": "Künstliche Intelligenz in der Lehre",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Empfehlung zur guten Praxis im Umgang mit generativer KI an der Technischen Universität Wien",
+        "note": "The document contains meaningful guidance and policy regarding the use of generative AI in academic settings, covering ethics, privacy, and academic integrity."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.tuwien.at/studium/lehren-an-der-tuw/digital-gestuetzte-lehre/kuenstliche-intelligenz-in-der-lehre/handreichung-fuer-lehrende-leistungsbeurteilung-und-ki",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "technische-universitat-wien"
+      ],
+      "sourceTitle": "Handreichung für Lehrende: Leistungsbeurteilung und KI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Allgemeine Empfehlungen der TU Wien zum Thema \"Leistungsbeurteilung & KI\"",
+        "note": "The document discusses the adaptation of exam formats to address the challenges posed by generative AI tools in academic evaluations, highlighting issues of academic integrity and recommendations for responsible use of AI in education."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.tuwien.at/studium/studieren-an-der-tuw/ki-im-studium",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "technische-universitat-wien"
+      ],
+      "sourceTitle": "KI im Studium",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Empfehlung zur guten Praxis im Umgang mit generativer KI an der Technischen Universität Wien",
+        "note": "The document discusses ethical, social, and legal challenges of using generative AI in education, emphasizing academic integrity, responsible research, and the need for clear guidelines."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.uam.es/uam/media/doc/1606941290988/guia-visual-iagen.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "200ERR",
+      "entitySlugs": [
+        "universidad-autonoma-de-madrid"
+      ],
+      "sourceTitle": "Guía básica sobre el uso de la Inteligencia Artificial para docentes y estudiantes",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guía Básica sobre la Inteligencia Artificial para Estudiantes",
+        "note": "The content provides guidelines for the use of AI in higher education, including recommendations and descriptions of AI capabilities."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ucsiuniversity.edu.my/sites/default/files/student_handbook_postgraduate.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "ucsi-university"
+      ],
+      "sourceTitle": "Handbook for Postgraduate Candidates",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Handbook for Postgraduate Candidates",
+        "note": "Meaningful content regarding academic integrity, research, privacy, and guidelines was extracted."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ucsiuniversity.edu.my/sites/default/files/student_handbook_undergraduate.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "ucsi-university"
+      ],
+      "sourceTitle": "Student Handbook (Procedures & Guidelines) for Undergraduate Programmes",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Student Handbook (Procedures & Guidelines)",
+        "note": "The document outlines procedures related to academic integrity, research, privacy, and security specific to UCSI University."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ucsiuniversity.edu.my/sites/default/files/thesisguidelines.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "ucsi-university"
+      ],
+      "sourceTitle": "Thesis & Dissertation Guidelines for Postgraduate Candidates",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Thesis and Dissertation Preparation Guidelines",
+        "note": "The document contains meaningful guidance related to academic integrity, including a specific section on plagiarism and requirements for declarations regarding the use of generative AI."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ucy.ac.cy/ai/?lang=en",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-cyprus-ucy"
+      ],
+      "sourceTitle": "Ai Website",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Artificial Intelligence and University Education",
+        "note": "The content discusses policies, guidance, research, and ethical considerations related to artificial intelligence in education."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ucy.ac.cy/ai/ucy-guidelines/?lang=en",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-cyprus-ucy"
+      ],
+      "sourceTitle": "UCY GUIDELINES",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "UCY Guidelines for AI Usage",
+        "note": "The document contains meaningful content related to academic integrity, guidance on AI use in education and research, privacy, security, and ethical standards."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ucy.ac.cy/ai/ucy-guidelines/citation-requirements/?lang=en",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-cyprus-ucy"
+      ],
+      "sourceTitle": "Citation Requirements",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Citation Requirements",
+        "note": "Contains guidelines on proper citation of AI use in academic contexts."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ucy.ac.cy/ai/ucy-guidelines/input-responsibility-and-safety-considerations/?lang=en",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-cyprus-ucy"
+      ],
+      "sourceTitle": "Input Responsibility and Safety Considerations",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Input Responsibility and Safety Considerations",
+        "note": "Meaningful guidance on data protection and usage of AI tools is present."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ucy.ac.cy/ai/ucy-guidelines/usage-instructions/?lang=en",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-cyprus-ucy"
+      ],
+      "sourceTitle": "Usage Instructions",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Usage Instructions",
+        "note": "The document contains meaningful guidance related to AI usage policies, promoting academic integrity and transparency."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.uj.ac.za/wp-content/uploads/2023/08/uj-ai-guidelines-staff.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-johannesburg"
+      ],
+      "sourceTitle": "Staff Guide: Generative Artificial Intelligence in Teaching, Learning and Research",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative Artificial Intelligence in Teaching, Learning and Research",
+        "note": "The document provides meaningful insights into the use of generative AI in education, addressing academic integrity, guidance on effective practices, and research implications."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.uj.ac.za/wp-content/uploads/2023/08/uj-ai-guidelines-students-2023.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-johannesburg"
+      ],
+      "sourceTitle": "UJ Quick Guide for Students: Using Generative Artificial Intelligence as a Learning Tool",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "UJ QUICK GUIDE FOR STUDENTS: USING GENERATIVE ARTIFICIAL INTELLIGENCE AS A LEARNING TOOL",
+        "note": "The content addresses academic integrity and responsible use of AI in educational contexts."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.uj.ac.za/wp-content/uploads/2023/08/uj-ai-practice-guide-2023.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-johannesburg"
+      ],
+      "sourceTitle": "UJ Practice Note: Generative Artificial Intelligence in Teaching, Learning and Research",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Generative Artificial Intelligence in Teaching, Learning and Research",
+        "note": "The document discusses benefits and implications of generative AI in higher education, emphasizing responsible, informed, transparent, and ethical practices."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ulster.ac.uk/learningenhancement/cqe/ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "ulster-university"
+      ],
+      "sourceTitle": "Generative Artificial Intelligence (GenAi)",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Using Generative Ai at Ulster",
+        "note": "The page contains meaningful content related to AI guidance and academic integrity."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ulster.ac.uk/learningenhancement/cqe/ai/guidance-for-staff",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "ulster-university"
+      ],
+      "sourceTitle": "Guidance on use of AI for Staff",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidance on use of AI for Staff",
+        "note": "The document discusses the use of generative AI tools in coursework, emphasizing academic integrity and responsible use."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ulster.ac.uk/learningenhancement/cqe/ai/guidance-for-students",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "ulster-university"
+      ],
+      "sourceTitle": "Guidance on use of AI for students",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidance for students",
+        "note": "The content includes meaningful guidance on academic integrity, research, and the responsible use of AI tools."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.ulster.ac.uk/student/courses/academic-misconduct",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "ulster-university"
+      ],
+      "sourceTitle": "Academic Misconduct",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic Misconduct",
+        "note": "The content discusses academic integrity, types of academic misconduct including plagiarism, cheating, and AI misuse, along with support resources for students."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.umass.edu/ai/",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-massachusetts-amherst"
+      ],
+      "sourceTitle": "AI at UMass : AI at UMass : UMass Amherst",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "AI at UMass",
+        "note": "The content includes meaningful information related to AI, generative AI policies, academic integrity, research, and privacy."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.umass.edu/provost/resources/responsible-use-generative-ai",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-massachusetts-amherst"
+      ],
+      "sourceTitle": "Responsible Use of Generative AI : Office of the Provost : UMass Amherst",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Responsible Use of Generative AI",
+        "note": "The document discusses policies and guidance related to the use of generative AI in academia, academic integrity, privacy, and security."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.umass.edu/senate/book/academic-integrity-policy",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-massachusetts-amherst"
+      ],
+      "sourceTitle": "Academic Integrity Policy : Faculty Senate : UMass Amherst",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Academic Integrity Policy",
+        "note": "The content includes meaningful guidance on academic integrity, policies, and responsibilities, particularly related to research, privacy, security, and AI. It defines academic integrity infractions and the process for dealing with them."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.umass.edu/studentsuccess/guidance-generative-artificial-intelligence",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "university-of-massachusetts-amherst"
+      ],
+      "sourceTitle": "Guidance on Generative Artificial Intelligence : Undergraduate Student Success Center : UMass Amherst",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Guidance on Generative Artificial Intelligence",
+        "note": "The content includes meaningful policy on academic integrity related to the use of Generative AI."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.upf.edu/es/web/clik/noticias/-/asset_publisher/gLtP2TaiP9kB/content/c%C3%B3mo-utilizar-herramientas-de-inteligencia-artificial-generativa-iag-en-la-docencia-y-los-trabajos-acad%C3%A9micos/maximized",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "universitat-pompeu-fabra"
+      ],
+      "sourceTitle": "Cómo utilizar herramientas de inteligencia artificial generativa (IAG) en la docencia y los trabajos académicos",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html;charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Cómo utilizar herramientas de inteligencia artificial generativa (IAG) en la docencia y los trabajos académicos",
+        "note": "The content discusses the use of generative AI tools in education and academic work, providing guidelines on their application and citation to ensure academic integrity."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.utp.edu.my/sites/Publishing/PublishingContent/Students/Student%20Rules/Student%20Integrity%20@%20UTP.pdf",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "200ERR",
+      "entitySlugs": [
+        "universiti-teknologi-petronas"
+      ],
+      "sourceTitle": "Student Integrity Campaign",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "STUDENT INTEGRITY CAMPAIGN (BE HONEST, BE REAL, BE YOU)",
+        "note": "The document contains meaningful content related to academic integrity, student misconduct, and disciplinary actions."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.uum.edu.my/news-highlights/dato-fahmi-fadzil-highlights-the-importance-of-authentic-information-and-the-role-of-ai-in-the-digital-era",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "universiti-utara-malaysia-uum"
+      ],
+      "sourceTitle": "Dato' Fahmi Fadzil Highlights the Importance of Authentic Information and the Role of AI in the Digital Era",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "DATO' FAHMI FADZIL HIGHLIGHTS THE IMPORTANCE OF AUTHENTIC INFORMATION AND THE ROLE OF AI IN THE DIGITAL ERA",
+        "note": "The content discusses the significance of AI in media and the importance of distinguishing between authentic and fake information, touching on policy and guidance related to media freedom and digital information."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www.zhl.uni-bayreuth.de/de/termine/251125_Pruefen_KI/index.html",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "university-of-bayreuth"
+      ],
+      "sourceTitle": "Pruefen trotz/mit KI",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "Prüfen trotz/mit KI",
+        "note": "The document contains meaningful information concerning the use of AI in examinations, academic integrity, and pedagogical strategies."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    },
+    {
+      "sourceUrl": "https://www2.unesp.br/portal#!/noticia/37970/unesp-estabelece-as-bases-para-discussao-sobre-uso-da-ia-na-universidade/",
+      "status": "firecrawl_opened_no_content",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "unesp"
+      ],
+      "sourceTitle": "Unesp estabelece as bases para discussão sobre uso da IA na Universidade",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "note": "The content is loading and appears to lack visible policy, guidance, or other meaningful information."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://www2.unesp.br/sharer.php?noticia=38172",
+      "status": "firecrawl_opened_no_content",
+      "originalHttpStatus": "000ERR",
+      "entitySlugs": [
+        "unesp"
+      ],
+      "sourceTitle": "Formação vai orientar comunidade universitária sobre o uso responsável de sistemas de inteligência artificial no dia a dia",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "proxyUsed": "basic",
+        "contentExtracted": false,
+        "title": "Unesp - Universidade Estadual Paulista - Portal",
+        "note": "The page is loading and contents are not visible."
+      },
+      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+    },
+    {
+      "sourceUrl": "https://xuefeng.sysu.edu.cn/gzzd/55430.htm",
+      "status": "firecrawl_verified",
+      "originalHttpStatus": "403",
+      "entitySlugs": [
+        "sun-yat-sen-university"
+      ],
+      "sourceTitle": "中山大学预防与处理学术不端行为办法",
+      "firecrawl": {
+        "checkedAt": "2026-05-17T14:16:54.323Z",
+        "httpStatus": 200,
+        "metadataStatusCode": 200,
+        "contentType": "text/html",
+        "proxyUsed": "basic",
+        "contentExtracted": true,
+        "title": "中山大学预防与处理学术不端行为办法",
+        "note": "This document contains academic integrity guidelines and policies related to research ethics and academic misconduct."
+      },
+      "recommendedAction": "Firecrawl fresh scrape verified this URL after a normal request was blocked or inconclusive."
+    }
+  ]
+}

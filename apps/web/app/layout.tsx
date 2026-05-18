@@ -23,6 +23,7 @@ const primaryTabs = [
 ] as const;
 
 const githubRepositoryUrl = "https://github.com/SciWhite/university-ai-policy-tracker";
+const isVercelDeployment = process.env.VERCEL === "1";
 
 export const metadata = {
   metadataBase: new URL(getSiteBaseUrl()),
@@ -114,8 +115,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </nav>
           </div>
         </footer>
-        <Analytics />
-        <SpeedInsights />
+        {isVercelDeployment ? (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        ) : null}
       </body>
     </html>
   );

@@ -23,15 +23,18 @@ metadata for agent integrations.
 
 Current public release:
 
-- Release: `public-release-20260513-001`
-- Universities: 74
-- Claims: 668
-- Evidence records: 681
-- Official source attributions: 385
-- Entity review states: 73 `agent_reviewed`, 1 `needs_review`
-- Claim review states: 651 `agent_reviewed`, 17 `needs_review`
-- Source languages represented: English, Chinese, French, Korean, Japanese,
-  German, Swedish, Traditional Chinese, and English New Zealand
+- Release: `public-release-20260517-002`
+- Universities: 518
+- Claims: 2999
+- Evidence records: 3095
+- Official source attributions: 1904
+- Entity review states: 518 `agent_reviewed`
+- Claim review states: 2999 `agent_reviewed`
+- Source languages represented: English plus multilingual source evidence in
+  Arabic, Catalan, Chinese, Czech, Danish, Dutch, Estonian, French, German,
+  Greek, Hebrew, Hungarian, Icelandic, Indonesian, Italian, Japanese, Korean,
+  Lithuanian, Malay, Norwegian, Persian, Polish, Portuguese, Russian, Spanish,
+  Swedish, Thai, Turkish, Vietnamese, and regional variants.
 
 The public release has no current audit issues from `pnpm audit:public-data`.
 The data is source-backed and review-labeled, but it is not legal advice,
@@ -86,6 +89,8 @@ Review and coverage operations:
 
 - QS 2026 coverage dashboard
 - source health dashboard
+- Firecrawl source-health verification metadata for blocked or inconclusive
+  public source URLs
 - review queue page and JSON
 - staging-vs-public release knowledge summaries
 - contribution intake surfaces for missing policy URLs, policy changes,

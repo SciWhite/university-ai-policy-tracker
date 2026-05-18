@@ -44,6 +44,9 @@ export type SourceHealthStatus =
   | "login_wall"
   | "paywall"
   | "captcha_or_waf"
+  | "firecrawl_verified"
+  | "firecrawl_opened_no_content"
+  | "firecrawl_failed"
   | "unknown_error";
 
 export type SourceHealthSeverity = "info" | "warning" | "error";
@@ -56,6 +59,58 @@ interface PublicReleaseManifest {
   includeStagedArtifactDirectories: string[];
   publishedAt: string;
   releaseId: string;
+}
+
+interface FirecrawlSourceCheckDocument {
+  checkedWith?: string;
+  generatedAt: string;
+  records: FirecrawlSourceCheckRecord[];
+  requestPolicy: string;
+  schemaVersion: "uapt-source-health-firecrawl-v1";
+  summary?: Partial<
+    Record<
+      | "total"
+      | "firecrawl_verified"
+      | "firecrawl_failed"
+      | "firecrawl_opened_no_content",
+      number
+    >
+  >;
+}
+
+interface FirecrawlSourceCheckRecord {
+  firecrawl?: {
+    checkedAt?: string;
+    contentExtracted?: boolean;
+    contentType?: string;
+    error?: string;
+    httpStatus?: number;
+    metadataStatusCode?: number;
+    note?: string;
+    proxyUsed?: string;
+    title?: string;
+  };
+  originalHttpStatus?: string;
+  recommendedAction: string;
+  sourceTitle?: string;
+  sourceUrl: string;
+  status:
+    | "firecrawl_verified"
+    | "firecrawl_opened_no_content"
+    | "firecrawl_failed";
+}
+
+interface FirecrawlSourceCheckIndex {
+  checkedWith?: string;
+  generatedAt?: string;
+  recordsByUrl: Map<string, FirecrawlSourceCheckRecord>;
+  requestPolicy?: string;
+  summary: {
+    failed: number;
+    openedNoContent: number;
+    total: number;
+    verified: number;
+  };
 }
 
 interface RankingUniversity {
@@ -178,6 +233,17 @@ export interface CoverageDashboardData {
 export interface SourceHealthDashboardData {
   apiPath: string;
   citation: ReturnType<typeof buildPublicApiCitation>;
+  firecrawlVerification: {
+    checkedWith?: string;
+    generatedAt?: string;
+    requestPolicy?: string;
+    summary: {
+      failed: number;
+      openedNoContent: number;
+      total: number;
+      verified: number;
+    };
+  };
   generatedAt: string;
   rows: SourceHealthRow[];
   summary: {
@@ -205,6 +271,7 @@ export interface ReviewQueueData {
 
 interface DashboardContext {
   catalogUniversities: CatalogUniversity[];
+  firecrawlSourceChecks: FirecrawlSourceCheckIndex;
   manifest: PublicReleaseManifest | undefined;
   publicSummaries: PublicEntitySummary[];
   ranking: RankingDocument;
@@ -289,6 +356,12 @@ export async function getSourceHealthDashboardData(): Promise<SourceHealthDashbo
         "University AI Policy Tracker source health dashboard. University AI Policy Tracker. Version v1. " +
         canonicalUrl
     }),
+    firecrawlVerification: {
+      checkedWith: context.firecrawlSourceChecks.checkedWith,
+      generatedAt: context.firecrawlSourceChecks.generatedAt,
+      requestPolicy: context.firecrawlSourceChecks.requestPolicy,
+      summary: context.firecrawlSourceChecks.summary
+    },
     generatedAt,
     rows,
     summary: {
@@ -377,10 +450,14 @@ export function buildSourceHealthApiResponse(data: SourceHealthDashboardData) {
     citation: data.citation,
     limitations: [
       "Public ok status means the source is present in promoted snapshot metadata; it is not a live recrawl guarantee.",
+      "Firecrawl statuses are fresh source-health verification metadata for URLs that normal requests could not verify; they do not publish source text.",
+      "Firecrawl verified does not upgrade claim review state, source officialness, or canonical evidence status.",
+      "Firecrawl verification was run without login, paywall, CAPTCHA, WAF, robots, or other access-control bypass.",
       "Staging source health is planning metadata and does not publish canonical claims.",
       NO_ADVICE_BOUNDARY
     ],
     data: {
+      firecrawlVerification: data.firecrawlVerification,
       summary: data.summary,
       rows: data.rows
     }
@@ -428,15 +505,17 @@ async function getDashboardContext(): Promise<DashboardContext> {
 
 async function buildDashboardContext(): Promise<DashboardContext> {
   const repoRoot = await findRepoRoot();
-  const [dataset, ranking, manifest] = await Promise.all([
+  const [dataset, ranking, manifest, firecrawlSourceChecks] = await Promise.all([
     getStagedPublicDataset(),
     readJsonFile<RankingDocument>(path.join(repoRoot, QS_2026_TOP_100)),
-    readPublicReleaseManifest(repoRoot)
+    readPublicReleaseManifest(repoRoot),
+    readFirecrawlSourceChecks(repoRoot)
   ]);
   const stagingRuns = await buildStagingRunSummaries(repoRoot, manifest);
 
   return {
     catalogUniversities: dataset.catalogUniversities,
+    firecrawlSourceChecks,
     manifest,
     publicSummaries: dataset.publicSummaries,
     ranking,
@@ -637,19 +716,30 @@ async function summarizeStagingRun(input: {
 
 function buildSourceHealthRows(context: DashboardContext): SourceHealthRow[] {
   const publicRows = context.publicSummaries.flatMap((summary) =>
-    summary.officialSources.map((source) => ({
-      entitySlug: summary.entity.slug,
-      finalUrl: source.finalUrl,
-      lastCheckedAt: source.retrievedAt ?? summary.lastCheckedAt,
-      note:
-        "Promoted source attribution is present with snapshot metadata. This is not a live recrawl guarantee.",
-      scope: "public_release" as const,
-      severity: "info" as const,
-      sourceTitle: source.citationTitle,
-      sourceType: source.sourceType,
-      sourceUrl: source.sourceUrl,
-      status: "ok" as const
-    }))
+    summary.officialSources.map((source) => {
+      const firecrawlCheck = context.firecrawlSourceChecks.recordsByUrl.get(
+        normalizeUrl(source.sourceUrl)
+      );
+      const status: SourceHealthStatus = firecrawlCheck?.status ?? "ok";
+
+      return {
+        entitySlug: summary.entity.slug,
+        finalUrl: source.finalUrl,
+        lastCheckedAt:
+          firecrawlCheck?.firecrawl?.checkedAt ??
+          source.retrievedAt ??
+          summary.lastCheckedAt,
+        note: firecrawlCheck
+          ? getFirecrawlSourceHealthNote(firecrawlCheck)
+          : "Promoted source attribution is present with snapshot metadata. This is not a live recrawl guarantee.",
+        scope: "public_release" as const,
+        severity: getSourceHealthSeverity(status),
+        sourceTitle: source.citationTitle,
+        sourceType: source.sourceType,
+        sourceUrl: source.sourceUrl,
+        status
+      };
+    })
   );
   const stagingRows = context.stagingRuns.flatMap((run) =>
     run.sourceHealthRows
@@ -728,6 +818,29 @@ function getSourceHealthStatus(
   fetches: StagedFetchAttempt[],
   snapshots: StagedSourceSnapshot[]
 ): SourceHealthStatus {
+  const firecrawlFetches = fetches.filter(
+    (fetch) => fetch.fetchMode === "firecrawl" || fetch.userAgentKind === "firecrawl"
+  );
+
+  if (firecrawlFetches.some((fetch) => fetch.outcome === "success")) {
+    return "firecrawl_verified";
+  }
+  if (
+    firecrawlFetches.some((fetch) => fetch.outcome === "retry_recommended")
+  ) {
+    return "firecrawl_opened_no_content";
+  }
+  if (
+    firecrawlFetches.some(
+      (fetch) =>
+        fetch.outcome === "blocked" ||
+        fetch.outcome === "error" ||
+        fetch.outcome === "skipped"
+    )
+  ) {
+    return "firecrawl_failed";
+  }
+
   if (
     source.rejectionReason === "robots_disallowed" ||
     fetches.some((fetch) => fetch.robotsAllowed === false) ||
@@ -778,14 +891,16 @@ function getSourceHealthSeverity(
     status === "login_wall" ||
     status === "paywall" ||
     status === "captcha_or_waf" ||
-    status === "forbidden"
+    status === "forbidden" ||
+    status === "firecrawl_failed"
   ) {
     return "error";
   }
   if (
     status === "not_found" ||
     status === "unknown_error" ||
-    status === "changed_hash"
+    status === "changed_hash" ||
+    status === "firecrawl_opened_no_content"
   ) {
     return "warning";
   }
@@ -798,6 +913,23 @@ function getSourceHealthNote(
   fetches: StagedFetchAttempt[]
 ): string {
   if (status === "ok") return "Validated staging source candidate has usable fetch or snapshot metadata.";
+  if (status === "firecrawl_verified") {
+    return "Firecrawl extracted source content for maintenance planning only. This does not publish canonical claims or upgrade review state.";
+  }
+  if (status === "firecrawl_opened_no_content") {
+    const firstRetry = fetches.find((fetch) => fetch.outcome === "retry_recommended");
+    return (
+      firstRetry?.errorReason ??
+      "Firecrawl did not extract usable content; keep this as a source-health warning and do not treat it as claim evidence."
+    );
+  }
+  if (status === "firecrawl_failed") {
+    const firstError = fetches.find((fetch) => fetch.errorReason)?.errorReason;
+    return (
+      firstError ??
+      "Firecrawl could not verify this URL; prioritize alternate official source discovery or manual source repair."
+    );
+  }
   if (status === "redirected") return "Fetch final URL differs from the discovered source URL; review canonical URL before promotion.";
   if (status === "not_found") return "Source appears to return 404 or was rejected as stale 404; rerun source discovery.";
   if (status === "forbidden") return "Source returned 403; do not bypass access controls.";
@@ -811,6 +943,33 @@ function getSourceHealthNote(
     firstError ??
     source.verificationNotes ??
     "Source needs manual inspection before promotion."
+  );
+}
+
+function getFirecrawlSourceHealthNote(check: FirecrawlSourceCheckRecord): string {
+  const title = check.firecrawl?.title ? ` Title: ${check.firecrawl.title}.` : "";
+  const originalStatus = check.originalHttpStatus
+    ? ` Normal request status: ${check.originalHttpStatus}.`
+    : "";
+  const firecrawlStatus = check.firecrawl?.metadataStatusCode
+    ? ` Firecrawl status: ${check.firecrawl.metadataStatusCode}.`
+    : "";
+
+  if (check.status === "firecrawl_verified") {
+    return (
+      `Firecrawl fresh scrape extracted content after a normal request was blocked or inconclusive.${originalStatus}${firecrawlStatus}${title}`
+    );
+  }
+
+  if (check.status === "firecrawl_opened_no_content") {
+    return (
+      `Firecrawl opened the URL but did not extract meaningful source content. ${check.recommendedAction}${originalStatus}${firecrawlStatus}${title}`
+    );
+  }
+
+  return (
+    `Firecrawl could not verify this URL. ${check.recommendedAction}${originalStatus}${firecrawlStatus}` +
+    (check.firecrawl?.error ? ` Error: ${check.firecrawl.error}` : "")
   );
 }
 
@@ -837,6 +996,12 @@ function recommendStagingAction(input: {
 }): string {
   if (input.promoted) return "Already promoted in the current public release.";
   if (input.issueCount > 0) return "Repair validator issues before review.";
+  if (
+    input.directory.includes("stage2") ||
+    input.directory.includes("maintenance")
+  ) {
+    return "Keep as source-health maintenance metadata; do not add to the public release manifest.";
+  }
   if (input.sourceCandidateCount < 2) {
     return "Review source breadth before promotion.";
   }
@@ -894,6 +1059,59 @@ async function readPublicReleaseManifest(
     };
   } catch {
     return undefined;
+  }
+}
+
+async function readFirecrawlSourceChecks(
+  repoRoot: string
+): Promise<FirecrawlSourceCheckIndex> {
+  const file = path.join(
+    repoRoot,
+    "data",
+    "source-health",
+    "firecrawl-blocked-source-checks-20260517.json"
+  );
+
+  try {
+    const document = await readJsonFile<FirecrawlSourceCheckDocument>(file);
+    return {
+      checkedWith: document.checkedWith,
+      generatedAt: document.generatedAt,
+      recordsByUrl: new Map(
+        document.records.map((record) => [
+          normalizeUrl(record.sourceUrl),
+          record
+        ])
+      ),
+      requestPolicy: document.requestPolicy,
+      summary: {
+        failed:
+          document.summary?.firecrawl_failed ??
+          document.records.filter((record) => record.status === "firecrawl_failed")
+            .length,
+        openedNoContent:
+          document.summary?.firecrawl_opened_no_content ??
+          document.records.filter(
+            (record) => record.status === "firecrawl_opened_no_content"
+          ).length,
+        total: document.summary?.total ?? document.records.length,
+        verified:
+          document.summary?.firecrawl_verified ??
+          document.records.filter(
+            (record) => record.status === "firecrawl_verified"
+          ).length
+      }
+    };
+  } catch {
+    return {
+      recordsByUrl: new Map(),
+      summary: {
+        failed: 0,
+        openedNoContent: 0,
+        total: 0,
+        verified: 0
+      }
+    };
   }
 }
 
@@ -977,6 +1195,9 @@ function countStatuses<T extends { status: SourceHealthStatus }>(
   const initial: Record<SourceHealthStatus, number> = {
     captcha_or_waf: 0,
     changed_hash: 0,
+    firecrawl_failed: 0,
+    firecrawl_opened_no_content: 0,
+    firecrawl_verified: 0,
     forbidden: 0,
     login_wall: 0,
     not_found: 0,

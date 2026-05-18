@@ -230,7 +230,7 @@ export function buildPublicApiIndexData(
       endpoint(
         "Source health",
         `/api/public/${PUBLIC_API_VERSION}/source-health.json`,
-        "Source and fetch health metadata for promoted public source snapshots and staging runs. Used for repair planning, not claim publication."
+        "Source and fetch health metadata for promoted public source snapshots, Firecrawl verification checks, and staging runs. Used for repair planning, not claim publication."
       ),
       endpoint(
         "Review queue",
@@ -391,7 +391,7 @@ export function buildPublicApiIndexData(
       trustPage(
         "Source health",
         "/source-health",
-        "Source snapshot and staging fetch status dashboard for crawl repair planning."
+        "Source snapshot, Firecrawl verification, and staging fetch status dashboard for crawl repair planning."
       ),
       trustPage(
         "Review queue",
