@@ -21,6 +21,7 @@ Use these default paths on the OCI host:
 ```text
 /home/openclaw/workspace/university-ai-policy-tracker
 /home/openclaw/workspace/staging/uapt-maintenance
+/home/openclaw/workspace/staging/uapt-maintenance/<run-id>/notes
 /home/openclaw/.config/uapt-maintenance.env
 ```
 
@@ -85,3 +86,38 @@ summary.md
 Review the summary before generating any PR. No-change runs should not open PRs.
 Rows marked `needs_openclaw` are the only candidates for lightweight OpenClaw
 deep review.
+
+## Lightweight OpenClaw Review Output
+
+Use one lightweight OpenClaw agent per `needs_openclaw` source/page. Do not call
+`policy-manager` for routine maintenance review.
+
+Output paths are split by result:
+
+```text
+/home/openclaw/workspace/staging/uapt-maintenance/<run-id>/notes/
+/home/openclaw/workspace/university-ai-policy-tracker/staging/uapt-runs/
+```
+
+If the agent concludes there is no policy-content change, write only a concise
+maintenance note under `staging/uapt-maintenance/<run-id>/notes/`. Do not write
+that note into `staging/uapt-runs/`, and do not run
+`pnpm validate:openclaw-artifacts` against a note-only directory.
+
+Only write to `staging/uapt-runs/` when the agent creates a real
+`openclaw-artifact-v1` JSON bundle for review. The bundle must validate with:
+
+```bash
+sudo -iu openclaw bash -lc 'cd ~/workspace/university-ai-policy-tracker && pnpm validate:openclaw-artifacts staging/uapt-runs/<run-dir>'
+```
+
+The lightweight prompt should include this output rule explicitly:
+
+```text
+If there is no clear policy-content update, write a maintenance note to
+/home/openclaw/workspace/staging/uapt-maintenance/<run-id>/notes/<entity-slug>.md
+or .json and do not create a directory under staging/uapt-runs/.
+
+If there is a clear policy-content update, write a valid openclaw-artifact-v1
+bundle under the supplied staging/uapt-runs/<run-dir> and run the validator.
+```

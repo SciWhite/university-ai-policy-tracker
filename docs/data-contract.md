@@ -167,11 +167,15 @@ Future maintenance metadata may add fields such as `maintenanceTier`,
 `maintenanceRecommendedAction`. These fields are maintenance metadata only and
 must not change claim review state.
 
-Stage 2 maintenance runs are source-health inputs, not public claim/evidence
-inputs. They may reuse promoted claim IDs and evidence snippets to bind a
-source-health check to the current public record, so they must remain outside
-`data/public-releases/current.json` unless a later migration converts them into
-deduplicated maintenance metadata. The dataset release validator rejects
+Stage 2 maintenance reviews are source-health inputs, not public claim/evidence
+inputs. No-change review notes belong under
+`staging/uapt-maintenance/<run-id>/notes/` and must not be written into
+`staging/uapt-runs/`. They may reference promoted claim IDs and evidence
+snippets to explain the check, but they are not artifact bundles and should not
+enter the artifact validator or public release manifest.
+
+Only real claim/evidence update candidates should create `openclaw-artifact-v1`
+bundles under `staging/uapt-runs/`. The dataset release validator rejects
 artifact bundles with `runPurpose: source_health_maintenance`, and also rejects
 duplicate `entitySlug + claimId` rows, to prevent accidental promotion of
 maintenance-only runs.

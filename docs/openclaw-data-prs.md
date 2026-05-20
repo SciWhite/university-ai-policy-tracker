@@ -20,17 +20,27 @@ OpenClaw data PRs should stage JSON artifacts that validate against `openclaw-ar
 
 `source_rejection` is conditionally required when any source candidate is rejected, skipped, blocked, inaccessible, stale, generic, unrelated, or used to support a no-source conclusion.
 
-Maintenance-only source-health bundles must set top-level
-`runPurpose: source_health_maintenance`. These runs can feed review queues and
-source-health dashboards, but must not be added to
-`data/public-releases/current.json`. Claim/evidence release candidates may omit
-`runPurpose` or use `claim_evidence_release`.
+No-change maintenance notes are not OpenClaw data PR artifacts. They belong in
+`staging/uapt-maintenance/<run-id>/notes/`, not `staging/uapt-runs/`, and should
+not be passed to `pnpm validate:openclaw-artifacts`.
+
+Only create a `staging/uapt-runs/` directory when OpenClaw writes a real
+`openclaw-artifact-v1` JSON bundle for review. Claim/evidence release candidates
+may omit `runPurpose` or use `claim_evidence_release`. Legacy or accidental
+maintenance-only bundles with top-level `runPurpose: source_health_maintenance`
+can feed internal review queues, but must not be added to
+`data/public-releases/current.json`.
 
 Daily maintenance PRs should come from the HTTP-first OCI scanner or from a
 single lightweight OpenClaw agent assigned to one changed page. They should not
 invoke the `policy-manager` full multi-agent workflow for routine scans. HTTP
 failure, blocked responses, and Firecrawl failure alone are source-health risks,
 not sufficient evidence for a policy-change claim.
+
+If a lightweight OpenClaw agent finds no policy-content change, the correct
+result is a note-only maintenance record under
+`staging/uapt-maintenance/<run-id>/notes/` and no data PR unless a separate
+source-health metadata change needs review.
 
 Run validation locally with:
 

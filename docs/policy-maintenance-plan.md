@@ -88,9 +88,13 @@ with a narrow task:
 
 - read the changed source page or an alternate official source;
 - decide whether the change is policy-relevant;
-- generate minimal staged artifacts only if needed;
-- set top-level `runPurpose` to `source_health_maintenance` for maintenance-only
-  output or `claim_evidence_release` for candidate claim/evidence updates;
+- write no-change maintenance notes only under
+  `staging/uapt-maintenance/<run-id>/notes/`;
+- generate minimal staged artifacts under `staging/uapt-runs/` only when a
+  real policy-content update or source repair needs claim/evidence review;
+- set top-level `runPurpose` to `claim_evidence_release` for candidate
+  claim/evidence updates; do not create note-only `source_health_maintenance`
+  artifact bundles;
 - return a concise report with source URL, access status, hash status,
   suspected change reason, artifact counts, and recommended next action.
 
@@ -229,10 +233,16 @@ Do not trigger OpenClaw for:
 - unchanged metadata;
 - generic source-health warnings with no change signal.
 
-OpenClaw output must be staged artifacts, not public data. It should generate
-only the minimum artifacts needed for review and validator compatibility. A
-maintenance-only run must use `runPurpose: source_health_maintenance` and stay
-out of `data/public-releases/current.json`.
+OpenClaw output must not become public data directly. It should generate only
+the minimum review material needed:
+
+- no-change or metadata-only results go to
+  `staging/uapt-maintenance/<run-id>/notes/`;
+- claim/evidence update candidates go to `staging/uapt-runs/` as valid
+  `openclaw-artifact-v1` bundles.
+
+Do not put no-change maintenance notes in `staging/uapt-runs/`; they are not
+artifact bundles and should not be sent through the artifact validator.
 
 ## Maintenance Tiers
 
@@ -257,20 +267,23 @@ All maintenance updates must pass through the staged artifact workflow:
    unreliable.
 4. OpenClaw runs only one lightweight agent per source/page for rows marked
    `suspected_policy_update` or `needs_openclaw`.
-5. OpenClaw writes staged artifacts under the existing artifact contract.
-   Maintenance-only bundles must set
-   `runPurpose: source_health_maintenance`; claim/evidence release candidates
-   may omit `runPurpose` or use `claim_evidence_release`.
-6. The automation opens a data pull request with run ID, target entities, source URLs,
-   access notes, snapshot counts, claim counts, validation output, and known
-   limitations.
-7. Local Codex reviews the PR, runs validators, and performs small repairs if
+5. OpenClaw writes no-change results as maintenance notes under
+   `staging/uapt-maintenance/<run-id>/notes/`.
+6. OpenClaw writes staged artifacts under the existing artifact contract only
+   when it finds a real policy-content update or source repair candidate.
+   Claim/evidence release candidates may omit `runPurpose` or use
+   `claim_evidence_release`.
+7. The automation opens a data pull request only when there are valid staged
+   artifacts or source-health metadata changes worth reviewing. The PR should
+   include run ID, target entities, source URLs, access notes, snapshot counts,
+   claim counts, validation output, and known limitations.
+8. Local Codex reviews the PR, runs validators, and performs small repairs if
    needed.
-8. Passing staged runs that create or repair canonical claim/evidence records
+9. Passing staged runs that create or repair canonical claim/evidence records
    can be added to `data/public-releases/current.json`.
-9. Passing maintenance-only runs stay unpromoted and feed source-health and
-   review-queue metadata only.
-10. The public site rebuilds from promoted release data and read-only
+10. Note-only maintenance results remain outside `staging/uapt-runs/` and feed
+   source-health and review-queue metadata only.
+11. The public site rebuilds from promoted release data and read-only
    source-health/review metadata.
 
 The public release manifest remains the gate for what appears in public pages,
@@ -281,11 +294,11 @@ public JSON, datasets, reports, feeds, widgets, and search surfaces.
 Machine-reviewed updates may be auto-promoted only when all required validators
 pass. Published machine-reviewed records should use `agent_reviewed`.
 
-Maintenance-only source-health runs are not auto-promotion candidates, even
-when validator-clean. They can update source-health planning metadata, but they
-must not add duplicate claim/evidence rows to the public dataset.
-The dataset release validator explicitly rejects any public release manifest
-that includes a staged bundle marked `runPurpose: source_health_maintenance`.
+Note-only maintenance results are not auto-promotion candidates and should not
+enter the artifact validator. They can update source-health planning metadata,
+but they must not add duplicate claim/evidence rows to the public dataset.
+The dataset release validator still rejects any public release manifest that
+includes a staged bundle marked `runPurpose: source_health_maintenance`.
 
 Do not auto-promote records when:
 
@@ -422,6 +435,9 @@ Acceptance criteria for the maintenance system:
 - OpenClaw only handles `suspected_policy_update` or `needs_openclaw` rows.
 - OpenClaw runs one lightweight agent per page and does not invoke the
   `policy-manager` full workflow.
+- OpenClaw writes no-change notes under
+  `staging/uapt-maintenance/<run-id>/notes/`, not `staging/uapt-runs/`.
+- Only valid `openclaw-artifact-v1` bundles are written to `staging/uapt-runs/`.
 - No raw source text is published.
 - No production database write occurs.
 - No direct push to `main` occurs.
