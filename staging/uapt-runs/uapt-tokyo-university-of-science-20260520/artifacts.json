@@ -1,0 +1,427 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-tokyo-university-of-science-20260520",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-tus-20260520",
+      "entityType": "university",
+      "entitySlug": "tokyo-university-of-science",
+      "startedAt": "2026-05-20T05:03:00.000Z",
+      "endedAt": "2026-05-20T05:08:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:tus.ac.jp Tokyo University of Science generative AI ChatGPT guidelines students education policy",
+          "domain": "tus.ac.jp",
+          "resultCount": 0,
+          "notes": "Firecrawl search returned no useful English-language official AI policy results."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:tus.ac.jp 東京理科大学 生成AI ChatGPT ガイドライン 学生 授業 レポート",
+          "domain": "tus.ac.jp",
+          "resultCount": 5,
+          "notes": "Firecrawl search surfaced the official Tokyo University of Science Japanese news page on intellectual production and generative AI use."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:tus.ac.jp 東京理科大学 AI 生成系AI 教育 利用 方針",
+          "domain": "tus.ac.jp",
+          "resultCount": 5,
+          "notes": "Firecrawl search again found the official 2023 message and an official Education DX seminar report; the seminar report was not used for claims because it reports an event and directs materials to a login-gated LETUS page."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.tus.ac.jp",
+          "resultCount": 1,
+          "notes": "Direct robots.txt check returned HTTP 404, so no explicit robots prohibition was found for the verified HTML page; direct HEAD on the source redirected to the canonical _1.html URL with HTTP 200."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-tus-generative-ai-message",
+        "sc-tus-fd-ai-seminar"
+      ],
+      "rejectionIds": [
+        "sr-tus-fd-ai-seminar-low-specificity"
+      ],
+      "summary": "Official-domain discovery found one substantive Tokyo University of Science source: a 2023 president message to students about generative AI use. An official Education DX seminar report was documented but rejected for claim extraction because it is an event report, not a public policy or guidance text."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-tus-generative-ai-message",
+      "entityType": "university",
+      "entitySlug": "tokyo-university-of-science",
+      "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+      "finalUrl": "https://www.tus.ac.jp/today/archive/20230526_0922_1.html",
+      "sourceTitle": "科学技術における知的生産活動と生成系AIの利用について",
+      "sourceLanguage": "ja",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:tus.ac.jp 東京理科大学 生成AI ChatGPT ガイドライン 学生 授業 レポート",
+      "discoveredAt": "2026-05-20T05:04:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.96,
+      "policySpecificityScore": 0.88,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T05:06:46.000Z",
+      "verificationNotes": "Official Tokyo University of Science page under www.tus.ac.jp, published as an announcement of an April 2023 message to students from the president about generative AI use.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-tus-fd-ai-seminar",
+      "entityType": "university",
+      "entitySlug": "tokyo-university-of-science",
+      "sourceUrl": "https://www.tus.ac.jp/fd/reports/36th_fd/",
+      "finalUrl": "https://www.tus.ac.jp/fd/reports/36th_fd/",
+      "sourceTitle": "第36回FDセミナー開催報告（12/23）",
+      "sourceLanguage": "ja",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:tus.ac.jp 東京理科大学 AI 生成系AI 教育 利用 方針",
+      "discoveredAt": "2026-05-20T05:04:30.000Z",
+      "officialDomainConfidence": 0.97,
+      "aiRelevanceScore": 0.75,
+      "policySpecificityScore": 0.32,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-20T05:07:00.000Z",
+      "verificationNotes": "Official Education DX Center report about a generative-AI seminar. It references explanation of university policy at the event, but the substantive video/materials are behind a LETUS login and the public page itself does not state policy rules.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-tus-fd-ai-seminar-low-specificity",
+      "sourceCandidateId": "sc-tus-fd-ai-seminar",
+      "entityType": "university",
+      "entitySlug": "tokyo-university-of-science",
+      "sourceUrl": "https://www.tus.ac.jp/fd/reports/36th_fd/",
+      "finalUrl": "https://www.tus.ac.jp/fd/reports/36th_fd/",
+      "rejectedAt": "2026-05-20T05:07:00.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "当日の動画・資料はLETUS（学内者限定）から閲覧できます。（視聴にはログインID、パスワードが必要です）",
+      "notes": "The page is official and AI-related, but it is an event report and the substantive materials require institutional login, so it was not used for policy claims."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "crawl_plan",
+      "planId": "plan-tus-20260520",
+      "createdAt": "2026-05-20T05:08:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "tokyo-university-of-science",
+          "sourceCandidateId": "sc-tus-generative-ai-message",
+          "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+          "sourceTitle": "科学技術における知的生産活動と生成系AIの利用について",
+          "sourceLanguage": "ja",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "generative AI",
+            "student use",
+            "academic integrity",
+            "privacy"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Use only official Tokyo University of Science domains.",
+        "Do not use login-gated LETUS seminar materials.",
+        "Preserve original Japanese evidence snippets."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-tus-generative-ai-message-firecrawl",
+      "sourceCandidateId": "sc-tus-generative-ai-message",
+      "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+      "finalUrl": "https://www.tus.ac.jp/today/archive/20230526_0922_1.html",
+      "attemptedAt": "2026-05-20T05:06:46.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 2742,
+      "contentHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+      "normalizedTextStorageKey": "openclaw/uapt-tokyo-university-of-science-20260520/snapshots/tus-generative-ai-message.normalized.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-tus-generative-ai-message",
+      "sourceCandidateId": "sc-tus-generative-ai-message",
+      "fetchAttemptId": "fetch-tus-generative-ai-message-firecrawl",
+      "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+      "finalUrl": "https://www.tus.ac.jp/today/archive/20230526_0922_1.html",
+      "sourceTitle": "科学技術における知的生産活動と生成系AIの利用について",
+      "sourceLanguage": "ja",
+      "contentHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+      "fetchedAt": "2026-05-20T05:06:46.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-tokyo-university-of-science-20260520/snapshots/tus-generative-ai-message.normalized.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-tus-ai-not-blanket-banned",
+      "entityType": "university",
+      "entitySlug": "tokyo-university-of-science",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Tokyo University of Science's April 2023 student message says the university is not currently considering a blanket ban on students using generative AI.",
+      "normalizedValue": "not_blanket_banned_currently",
+      "sourceLanguage": "ja",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-tus-ai-not-blanket-banned"
+      ],
+      "citation": {
+        "citationTitle": "科学技術における知的生産活動と生成系AIの利用について",
+        "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-university-of-science.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-university-of-science",
+        "publisher": "東京理科大学",
+        "retrievedAt": "2026-05-20T05:06:46.000Z",
+        "snapshotHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-tus-ai-not-blanket-banned",
+      "claimId": "claim-tus-ai-not-blanket-banned",
+      "sourceSnapshotId": "snap-tus-generative-ai-message",
+      "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+      "finalUrl": "https://www.tus.ac.jp/today/archive/20230526_0922_1.html",
+      "sourceTitle": "科学技術における知的生産活動と生成系AIの利用について",
+      "sourceLanguage": "ja",
+      "snapshotHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+      "evidenceSnippetOriginal": "こうした問題のある一方で、問題解決に当たって参考になる回答が生成されることも少なくないことから、本学においては学生が生成系AIを利用することを全面的に禁止することは現時点では考えていません。",
+      "evidenceSnippetDisplay": "The university states that, while there are issues, it is not currently considering a blanket ban on students using generative AI.",
+      "evidenceLocator": "May 26, 2023 announcement, paragraph beginning こうした問題のある一方で",
+      "evidenceType": "official_source",
+      "relevance": 0.96,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "科学技術における知的生産活動と生成系AIの利用について",
+        "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-university-of-science.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-university-of-science",
+        "publisher": "東京理科大学",
+        "retrievedAt": "2026-05-20T05:06:46.000Z",
+        "snapshotHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-tus-ai-use-caution-risks",
+      "entityType": "university",
+      "entitySlug": "tokyo-university-of-science",
+      "claimType": "academic_integrity",
+      "claimText": "Tokyo University of Science's student message warns students to recognize risks including inaccuracy, plagiarism, information leakage, and inhibited learning effects when deciding whether and how to use generative AI.",
+      "normalizedValue": "caution_plagiarism_information_leakage_learning_risks",
+      "sourceLanguage": "ja",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-tus-ai-use-caution-risks"
+      ],
+      "citation": {
+        "citationTitle": "科学技術における知的生産活動と生成系AIの利用について",
+        "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-university-of-science.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-university-of-science",
+        "publisher": "東京理科大学",
+        "retrievedAt": "2026-05-20T05:06:46.000Z",
+        "snapshotHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-tus-ai-use-caution-risks",
+      "claimId": "claim-tus-ai-use-caution-risks",
+      "sourceSnapshotId": "snap-tus-generative-ai-message",
+      "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+      "finalUrl": "https://www.tus.ac.jp/today/archive/20230526_0922_1.html",
+      "sourceTitle": "科学技術における知的生産活動と生成系AIの利用について",
+      "sourceLanguage": "ja",
+      "snapshotHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+      "evidenceSnippetOriginal": "しかし、回答がそもそも不正確である可能性が否定できないこと、不用意に利用すると剽窃や情報流出、学習効果の阻害などのリスクがあることを認識し、利用の可否を含めた慎重な判断が必要です。",
+      "evidenceSnippetDisplay": "The message says students need careful judgment, including whether to use generative AI, because answers may be inaccurate and careless use carries risks such as plagiarism, information leakage, and inhibited learning.",
+      "evidenceLocator": "May 26, 2023 announcement, paragraph beginning こうした問題のある一方で",
+      "evidenceType": "official_source",
+      "relevance": 0.96,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "科学技術における知的生産活動と生成系AIの利用について",
+        "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-university-of-science.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-university-of-science",
+        "publisher": "東京理科大学",
+        "retrievedAt": "2026-05-20T05:06:46.000Z",
+        "snapshotHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-tus-ai-direct-use-in-reports-avoid",
+      "entityType": "university",
+      "entitySlug": "tokyo-university-of-science",
+      "claimType": "academic_integrity",
+      "claimText": "Tokyo University of Science's student message says direct use of generative AI answers in papers or reports should be avoided.",
+      "normalizedValue": "avoid_direct_use_in_papers_reports",
+      "sourceLanguage": "ja",
+      "confidence": 0.92,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-tus-ai-direct-use-in-reports-avoid"
+      ],
+      "citation": {
+        "citationTitle": "科学技術における知的生産活動と生成系AIの利用について",
+        "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-university-of-science.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-university-of-science",
+        "publisher": "東京理科大学",
+        "retrievedAt": "2026-05-20T05:06:46.000Z",
+        "snapshotHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-tus-ai-direct-use-in-reports-avoid",
+      "claimId": "claim-tus-ai-direct-use-in-reports-avoid",
+      "sourceSnapshotId": "snap-tus-generative-ai-message",
+      "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+      "finalUrl": "https://www.tus.ac.jp/today/archive/20230526_0922_1.html",
+      "sourceTitle": "科学技術における知的生産活動と生成系AIの利用について",
+      "sourceLanguage": "ja",
+      "snapshotHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+      "evidenceSnippetOriginal": "論文、レポートなどの記述に生成系AIの回答をそのまま利用することは避けるべきです。",
+      "evidenceSnippetDisplay": "The message says direct use of generative AI answers in papers, reports, and similar writing should be avoided.",
+      "evidenceLocator": "May 26, 2023 announcement, paragraph discussing ChatGPT and answer validity",
+      "evidenceType": "official_source",
+      "relevance": 0.97,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "科学技術における知的生産活動と生成系AIの利用について",
+        "sourceUrl": "https://www.tus.ac.jp/today/archive/20230526_0922.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-university-of-science.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-university-of-science",
+        "publisher": "東京理科大学",
+        "retrievedAt": "2026-05-20T05:06:46.000Z",
+        "snapshotHash": "7d0df9b2a66bb3ef3741119e93d4b189206c1adce29c0c5d147c10f41674ff0b",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "review-tus-ai-not-blanket-banned",
+      "claimId": "claim-tus-ai-not-blanket-banned",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow claim because the source explicitly states the university is not currently considering a blanket ban on student use.",
+      "decidedAt": "2026-05-20T05:09:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "review-tus-ai-use-caution-risks",
+      "claimId": "claim-tus-ai-use-caution-risks",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a caution/risk claim without over-asserting a binding prohibition.",
+      "decidedAt": "2026-05-20T05:09:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "review-tus-ai-direct-use-in-reports-avoid",
+      "claimId": "claim-tus-ai-direct-use-in-reports-avoid",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a should-avoid claim because the Japanese source says 避けるべきです rather than an absolute ban.",
+      "decidedAt": "2026-05-20T05:09:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-tokyo-university-of-science-20260520",
+      "artifactType": "report_draft",
+      "reportId": "report-tus-20260520",
+      "title": "Tokyo University of Science generative AI guidance staged review",
+      "generatedAt": "2026-05-20T05:09:30.000Z",
+      "draftPath": "content/reports/2026-05/tokyo-university-of-science-generative-ai-guidance.mdx",
+      "summary": "Staged three agent-reviewed claim candidates from an official Tokyo University of Science Japanese message to students about generative AI use. The claims cover no current blanket ban, careful judgment around inaccuracy/plagiarism/information leakage/learning risks, and avoiding direct use of generative AI answers in papers or reports.",
+      "referencedClaimIds": [
+        "claim-tus-ai-not-blanket-banned",
+        "claim-tus-ai-use-caution-risks",
+        "claim-tus-ai-direct-use-in-reports-avoid"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/tokyo-university-of-science.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The staged claims are based on one official public Japanese message; the Education DX seminar report was not used because public substantive materials are login-gated."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

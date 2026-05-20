@@ -1,0 +1,512 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-tns-mc-ai-guidelines-001",
+      "entityType": "university",
+      "entitySlug": "the-new-school-new-york-city-and-paris",
+      "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "finalUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "sourceTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:newschool.edu \"generative AI\" \"The New School\"",
+      "discoveredAt": "2026-05-20T05:07:32Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.96,
+      "policySpecificityScore": 0.84,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T05:07:32Z",
+      "verificationNotes": "Official newschool.edu page found by Firecrawl search and scraped successfully by Firecrawl; direct HTTP returned 200 and robots.txt did not disallow /tools-training/mc-ai-guidelines/.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-tns-guru-ai-guidance-001",
+      "entityType": "university",
+      "entitySlug": "the-new-school-new-york-city-and-paris",
+      "sourceUrl": "https://app.getguru.com/card/iERqE5RT/Generative-AI-at-The-New-School",
+      "finalUrl": "https://app.getguru.com/card/iERqE5RT/Generative-AI-at-The-New-School",
+      "sourceTitle": "Generative AI at The New School",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "link_traversal",
+      "queryUsed": "Linked from The New School M&C AI guidelines page as university knowledge base guidance.",
+      "discoveredAt": "2026-05-20T05:07:32Z",
+      "officialDomainConfidence": 0.35,
+      "aiRelevanceScore": 0.9,
+      "policySpecificityScore": 0.74,
+      "verificationStatus": "rejected",
+      "rejectionReason": "not_official",
+      "verificationNotes": "Not used as claim evidence in this run because the URL is hosted on app.getguru.com rather than an official New School domain or subdomain.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-tns-guru-ai-guidance-001",
+      "sourceCandidateId": "sc-tns-guru-ai-guidance-001",
+      "entityType": "university",
+      "entitySlug": "the-new-school-new-york-city-and-paris",
+      "sourceUrl": "https://app.getguru.com/card/iERqE5RT/Generative-AI-at-The-New-School",
+      "finalUrl": "https://app.getguru.com/card/iERqE5RT/Generative-AI-at-The-New-School",
+      "rejectedAt": "2026-05-20T05:07:32Z",
+      "rejectionReason": "not_official",
+      "checkedBy": "codex",
+      "evidenceSnippet": "The official New School page links to this Guru card, but the page itself is hosted on app.getguru.com rather than a New School controlled domain.",
+      "notes": "Excluded from claim evidence under the official university source rule for this isolated staged run."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-tns-ai-policy-001",
+      "entityType": "university",
+      "entitySlug": "the-new-school-new-york-city-and-paris",
+      "startedAt": "2026-05-20T05:07:00Z",
+      "endedAt": "2026-05-20T05:07:32Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:newschool.edu generative AI policy academic integrity teaching learning artificial intelligence \"The New School\"",
+          "domain": "newschool.edu",
+          "resultCount": 0,
+          "notes": "Firecrawl search returned no web results for the first narrow query."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:newschool.edu \"ChatGPT\" \"The New School\" academic integrity",
+          "domain": "newschool.edu",
+          "resultCount": 2,
+          "notes": "Firecrawl returned a research/news page and an official privacy/security PDF; neither was used as primary claim evidence for policy-specific AI guidance."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:newschool.edu \"generative AI\" \"The New School\"",
+          "domain": "newschool.edu",
+          "resultCount": 10,
+          "notes": "Firecrawl surfaced the official Marketing & Communications AI Guidelines page as the strongest policy-specific official source."
+        },
+        {
+          "method": "link_traversal",
+          "domain": "www.newschool.edu",
+          "resultCount": 1,
+          "notes": "The official page linked to a Guru knowledge-base card; it was rejected as evidence because it is not on an official New School domain."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-tns-mc-ai-guidelines-001",
+        "sc-tns-guru-ai-guidance-001"
+      ],
+      "rejectionIds": [
+        "sr-tns-guru-ai-guidance-001"
+      ],
+      "summary": "Discovery used Firecrawl search first, then direct official-page fetch checks. One official New School AI guidance page was verified for narrow M&C-scope claims; the external Guru link was not used as claim evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "crawl_plan",
+      "planId": "plan-tns-ai-policy-001",
+      "createdAt": "2026-05-20T05:07:32Z",
+      "createdBy": "codex",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "the-new-school-new-york-city-and-paris",
+          "sourceCandidateId": "sc-tns-mc-ai-guidelines-001",
+          "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+          "sourceTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "privacy",
+            "security_review"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after verified official New School AI guidance page is captured and claims remain scoped to Marketing & Communications.",
+        "Do not use the external Guru page as evidence unless a later run verifies an official New School controlled source."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-tns-mc-ai-guidelines-firecrawl-001",
+      "sourceCandidateId": "sc-tns-mc-ai-guidelines-001",
+      "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "finalUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "attemptedAt": "2026-05-20T05:07:32Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1547,
+      "contentHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-the-new-school-new-york-city-and-paris-20260520/snapshots/tns-mc-ai-guidelines-normalized"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-tns-mc-ai-guidelines-http-001",
+      "sourceCandidateId": "sc-tns-mc-ai-guidelines-001",
+      "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "finalUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "attemptedAt": "2026-05-20T05:07:32Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 266,
+      "contentHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-the-new-school-new-york-city-and-paris-20260520/snapshots/tns-mc-ai-guidelines-normalized"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-tns-mc-ai-guidelines-001",
+      "sourceCandidateId": "sc-tns-mc-ai-guidelines-001",
+      "fetchAttemptId": "fetch-tns-mc-ai-guidelines-firecrawl-001",
+      "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "finalUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "sourceTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+      "sourceLanguage": "en",
+      "contentHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+      "fetchedAt": "2026-05-20T05:07:32Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-the-new-school-new-york-city-and-paris-20260520/snapshots/tns-mc-ai-guidelines-normalized",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-tns-mc-ai-human-review-001",
+      "entityType": "university",
+      "entitySlug": "the-new-school-new-york-city-and-paris",
+      "claimType": "ai_tool_treatment",
+      "claimText": "For Marketing & Communications professional work at The New School, people must evaluate, fact-check, edit, and document AI-generated content before using it.",
+      "normalizedValue": "human_review_required_for_mc_professional_ai_output",
+      "sourceLanguage": "en",
+      "confidence": 0.92,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-tns-mc-ai-human-review-001"
+      ],
+      "citation": {
+        "citationTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+        "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-new-school-new-york-city-and-paris.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-new-school-new-york-city-and-paris",
+        "publisher": "The New School",
+        "retrievedAt": "2026-05-20T05:07:32Z",
+        "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-tns-mc-ai-human-review-001",
+      "claimId": "claim-tns-mc-ai-human-review-001",
+      "sourceSnapshotId": "ss-tns-mc-ai-guidelines-001",
+      "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "finalUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "sourceTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+      "sourceLanguage": "en",
+      "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+      "evidenceSnippetOriginal": "Ensure that people review AI output. People must evaluate, fact-check, edit, and document all AI-generated content before using it in their professional work.",
+      "evidenceLocator": "Reminders as You Use AI Tools",
+      "evidenceType": "official_source",
+      "relevance": 0.96,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+        "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-new-school-new-york-city-and-paris.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-new-school-new-york-city-and-paris",
+        "publisher": "The New School",
+        "retrievedAt": "2026-05-20T05:07:32Z",
+        "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-tns-mc-ai-human-review-001",
+      "claimId": "claim-tns-mc-ai-human-review-001",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow M&C-scope claim because the source uses must language for review, fact-checking, editing, and documentation before professional use.",
+      "decidedAt": "2026-05-20T05:07:32Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-tns-mc-ai-meeting-consent-001",
+      "entityType": "university",
+      "entitySlug": "the-new-school-new-york-city-and-paris",
+      "claimType": "privacy",
+      "claimText": "For Marketing & Communications AI use, the New School guidance says consent must be obtained from all participants before AI technology is used to summarize and record meetings or other proceedings.",
+      "normalizedValue": "meeting_recording_summary_ai_requires_participant_consent_for_mc",
+      "sourceLanguage": "en",
+      "confidence": 0.92,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-tns-mc-ai-meeting-consent-001"
+      ],
+      "citation": {
+        "citationTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+        "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-new-school-new-york-city-and-paris.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-new-school-new-york-city-and-paris",
+        "publisher": "The New School",
+        "retrievedAt": "2026-05-20T05:07:32Z",
+        "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-tns-mc-ai-meeting-consent-001",
+      "claimId": "claim-tns-mc-ai-meeting-consent-001",
+      "sourceSnapshotId": "ss-tns-mc-ai-guidelines-001",
+      "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "finalUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "sourceTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+      "sourceLanguage": "en",
+      "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+      "evidenceSnippetOriginal": "Before AI technology is used to summarize and record meetings and other proceedings, consent must be obtained from all participants.",
+      "evidenceLocator": "Reminders as You Use AI Tools",
+      "evidenceType": "official_source",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+        "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-new-school-new-york-city-and-paris.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-new-school-new-york-city-and-paris",
+        "publisher": "The New School",
+        "retrievedAt": "2026-05-20T05:07:32Z",
+        "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-tns-mc-ai-meeting-consent-001",
+      "claimId": "claim-tns-mc-ai-meeting-consent-001",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow privacy claim because the official page says consent must be obtained before AI meeting summarization and recording.",
+      "decidedAt": "2026-05-20T05:07:32Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-tns-mc-ai-sensitive-data-001",
+      "entityType": "university",
+      "entitySlug": "the-new-school-new-york-city-and-paris",
+      "claimType": "privacy",
+      "claimText": "The New School M&C AI guidance identifies uploading check-in data or sensitive contact and personal information to AI-powered platforms for audience prediction as unapproved usage.",
+      "normalizedValue": "sensitive_personal_data_upload_to_ai_for_audience_prediction_unapproved_for_mc",
+      "sourceLanguage": "en",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-tns-mc-ai-sensitive-data-001"
+      ],
+      "citation": {
+        "citationTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+        "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-new-school-new-york-city-and-paris.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-new-school-new-york-city-and-paris",
+        "publisher": "The New School",
+        "retrievedAt": "2026-05-20T05:07:32Z",
+        "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-tns-mc-ai-sensitive-data-001",
+      "claimId": "claim-tns-mc-ai-sensitive-data-001",
+      "sourceSnapshotId": "ss-tns-mc-ai-guidelines-001",
+      "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "finalUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "sourceTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+      "sourceLanguage": "en",
+      "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+      "evidenceSnippetOriginal": "Unapproved Usage: Staff members upload check-in data or sensitive contact and personal information (phone, home address, salary, Social Security number, etc.) to AI-powered platforms to predict future event attendance.",
+      "evidenceLocator": "Usage Scenarios - Data Insights",
+      "evidenceType": "official_source",
+      "relevance": 0.93,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+        "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-new-school-new-york-city-and-paris.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-new-school-new-york-city-and-paris",
+        "publisher": "The New School",
+        "retrievedAt": "2026-05-20T05:07:32Z",
+        "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-tns-mc-ai-sensitive-data-001",
+      "claimId": "claim-tns-mc-ai-sensitive-data-001",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow M&C data-handling claim because the official usage scenario labels sensitive-data upload to AI-powered platforms as unapproved.",
+      "decidedAt": "2026-05-20T05:07:32Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-tns-mc-ai-policy-adherence-001",
+      "entityType": "university",
+      "entitySlug": "the-new-school-new-york-city-and-paris",
+      "claimType": "security_review",
+      "claimText": "The New School M&C AI guidance says AI tools should never be used in a way that violates university standards or policies, and specifically points users to the Acceptable Use Policy and the Standard for Information and System Classification.",
+      "normalizedValue": "mc_ai_use_must_not_violate_university_standards_or_policies",
+      "sourceLanguage": "en",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-tns-mc-ai-policy-adherence-001"
+      ],
+      "citation": {
+        "citationTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+        "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-new-school-new-york-city-and-paris.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-new-school-new-york-city-and-paris",
+        "publisher": "The New School",
+        "retrievedAt": "2026-05-20T05:07:32Z",
+        "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-tns-mc-ai-policy-adherence-001",
+      "claimId": "claim-tns-mc-ai-policy-adherence-001",
+      "sourceSnapshotId": "ss-tns-mc-ai-guidelines-001",
+      "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "finalUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+      "sourceTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+      "sourceLanguage": "en",
+      "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+      "evidenceSnippetOriginal": "AI tools should never be used in any way that would violate university standards or policies. Two policies that must be reviewed are the Acceptable Use Policy and the Standard for Information and System Classification.",
+      "evidenceLocator": "Reminders as You Use AI Tools",
+      "evidenceType": "official_source",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Marketing & Communications AI Guidelines | Tools and Training | The New School",
+        "sourceUrl": "https://www.newschool.edu/tools-training/mc-ai-guidelines/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/the-new-school-new-york-city-and-paris.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/the-new-school-new-york-city-and-paris",
+        "publisher": "The New School",
+        "retrievedAt": "2026-05-20T05:07:32Z",
+        "snapshotHash": "063425466e91b0b09cc363227eb7c1dce5ecf77f58beed53389594c8ad0b773e",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-tns-mc-ai-policy-adherence-001",
+      "claimId": "claim-tns-mc-ai-policy-adherence-001",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow policy-adherence/security claim because the evidence directly says AI tools should never violate university standards or policies.",
+      "decidedAt": "2026-05-20T05:07:32Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-the-new-school-new-york-city-and-paris-20260520",
+      "artifactType": "report_draft",
+      "reportId": "report-tns-ai-policy-20260520",
+      "title": "The New School AI Guidance Staged Evidence",
+      "generatedAt": "2026-05-20T05:07:32Z",
+      "draftPath": "content/reports/2026-05/the-new-school-new-york-city-and-paris-ai-guidance.mdx",
+      "summary": "Staged evidence from The New School's official Marketing & Communications AI Guidelines supports four narrow agent-reviewed candidate claims about M&C AI output review, meeting-consent privacy, sensitive-data upload as unapproved usage, and adherence to university standards and policies.",
+      "referencedClaimIds": [
+        "claim-tns-mc-ai-human-review-001",
+        "claim-tns-mc-ai-meeting-consent-001",
+        "claim-tns-mc-ai-sensitive-data-001",
+        "claim-tns-mc-ai-policy-adherence-001"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/the-new-school-new-york-city-and-paris.json",
+        "https://eduaipolicy.org/api/public/v1/universities/the-new-school-new-york-city-and-paris.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Claims are scoped to The New School Marketing & Communications AI guidance and should not be generalized to student academic-integrity rules or all university teaching policy without additional official evidence."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

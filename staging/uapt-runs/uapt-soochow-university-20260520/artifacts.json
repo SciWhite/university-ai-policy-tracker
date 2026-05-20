@@ -1,0 +1,433 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-soochow-university-20260520",
+  "artifacts": [
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "traceId": "trace-soochow-20260520",
+      "entityType": "university",
+      "entitySlug": "soochow-university",
+      "startedAt": "2026-05-20T05:04:00.000Z",
+      "endedAt": "2026-05-20T05:12:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:suda.edu.cn 苏州大学 生成式人工智能 人工智能 学术诚信 教学 指南 政策",
+          "domain": "suda.edu.cn",
+          "resultCount": 0,
+          "notes": "Firecrawl search returned no results for a formal generative-AI policy or guidance page on the official Soochow University domain."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:suda.edu.cn \"X+ai\" \"苏州大学\" \"通识\"",
+          "domain": "suda.edu.cn",
+          "resultCount": 4,
+          "notes": "Firecrawl search found an official Future Science and Engineering College page about an X+ai general-education lecture and an official Soochow University media-focus page describing campus AI education."
+        },
+        {
+          "method": "public_web_search",
+          "query": "\"AI时代，大学生开始“一人创业”\" \"suda.edu.cn\"",
+          "domain": "www.suda.edu.cn",
+          "resultCount": 2,
+          "notes": "Firecrawl search confirmed the official Soochow University page and index listing for the media-focus item."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "suda.edu.cn",
+          "resultCount": 2,
+          "notes": "Verified www.suda.edu.cn and future.suda.edu.cn as Soochow University-controlled official domains by domain suffix, page branding, and links back to the university home page. Robots.txt checks for www.suda.edu.cn and future.suda.edu.cn returned 404 with no crawl-specific disallow rules found."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-suda-campus-ai-education-media",
+        "sc-suda-future-xai-lecture",
+        "sc-suda-jwc-homepage-search-snippet"
+      ],
+      "rejectionIds": [
+        "sr-suda-jwc-homepage-search-snippet"
+      ],
+      "summary": "Official-source discovery did not locate a formal university-wide generative-AI conduct policy. The valid claim evidence in this run is therefore limited to official Soochow University pages describing AI education and practice activities, not binding AI-use rules."
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "sourceCandidateId": "sc-suda-campus-ai-education-media",
+      "entityType": "university",
+      "entitySlug": "soochow-university",
+      "sourceUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+      "finalUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+      "sourceTitle": "《中国科学报》：AI时代，大学生开始“一人创业”",
+      "sourceLanguage": "zh-CN",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "\"AI时代，大学生开始“一人创业”\" \"suda.edu.cn\"",
+      "discoveredAt": "2026-05-20T05:06:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.86,
+      "policySpecificityScore": 0.48,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T05:08:00.000Z",
+      "verificationNotes": "Firecrawl scrape returned HTTP 200 from www.suda.edu.cn. The page is an official Soochow University media-focus page maintained by the Party Committee Publicity Department and News and Network Information Office; it contains AI education statements but is not treated as a binding student-conduct policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "sourceCandidateId": "sc-suda-future-xai-lecture",
+      "entityType": "university",
+      "entitySlug": "soochow-university",
+      "sourceUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+      "finalUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+      "sourceTitle": "产教融合：“X+ai”人工智能基础通识系列主题讲座第二讲 “X+ai”技术应用",
+      "sourceLanguage": "zh-CN",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:suda.edu.cn \"X+ai\" \"苏州大学\" \"通识\"",
+      "discoveredAt": "2026-05-20T05:06:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.91,
+      "policySpecificityScore": 0.55,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T05:09:00.000Z",
+      "verificationNotes": "Firecrawl scrape returned HTTP 200 from future.suda.edu.cn. The page is branded as 苏州大学未来科学与工程学院 and links to the Soochow University home page.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "sourceCandidateId": "sc-suda-jwc-homepage-search-snippet",
+      "entityType": "university",
+      "entitySlug": "soochow-university",
+      "sourceUrl": "https://jwc.suda.edu.cn/",
+      "finalUrl": "https://jwc.suda.edu.cn/",
+      "sourceTitle": "苏州大学教务处",
+      "sourceLanguage": "zh-CN",
+      "sourceType": "generic_or_unclear",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:suda.edu.cn \"X+ai\" \"苏州大学\" \"通识\"",
+      "discoveredAt": "2026-05-20T05:06:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.55,
+      "policySpecificityScore": 0.2,
+      "verificationStatus": "rejected",
+      "verificationNotes": "The search result snippet mentioned an AI general course, but the result URL was the generic Academic Affairs Office homepage rather than a stable specific source page for claim evidence.",
+      "rejectionReason": "generic_home_page",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "sourceRejectionId": "sr-suda-jwc-homepage-search-snippet",
+      "sourceCandidateId": "sc-suda-jwc-homepage-search-snippet",
+      "entityType": "university",
+      "entitySlug": "soochow-university",
+      "sourceUrl": "https://jwc.suda.edu.cn/",
+      "finalUrl": "https://jwc.suda.edu.cn/",
+      "rejectedAt": "2026-05-20T05:07:00.000Z",
+      "rejectionReason": "generic_home_page",
+      "checkedBy": "codex-openclaw-local",
+      "evidenceSnippet": "Firecrawl search result snippet referenced the Academic Affairs Office homepage and course wording, but did not provide a specific article or policy page suitable for evidence.",
+      "notes": "Kept as discovery context only; no claim relies on this homepage result."
+    },
+    {
+      "artifactType": "crawl_plan",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "planId": "plan-soochow-20260520",
+      "createdAt": "2026-05-20T05:07:00.000Z",
+      "createdBy": "codex-openclaw-local",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "soochow-university",
+          "sourceCandidateId": "sc-suda-campus-ai-education-media",
+          "sourceUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+          "sourceTitle": "《中国科学报》：AI时代，大学生开始“一人创业”",
+          "sourceLanguage": "zh-CN",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "ai_education",
+            "innovation_entrepreneurship"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "soochow-university",
+          "sourceCandidateId": "sc-suda-future-xai-lecture",
+          "sourceUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+          "sourceTitle": "产教融合：“X+ai”人工智能基础通识系列主题讲座第二讲 “X+ai”技术应用",
+          "sourceLanguage": "zh-CN",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "ai_education",
+            "approved_tools"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Do not infer a binding university-wide AI conduct policy from official media coverage or a college lecture recap.",
+        "Do not infer student academic-integrity rules from AI entrepreneurship or teaching pages.",
+        "Stop after official pages support narrow teaching and source-status claims.",
+        "Do not stage raw HTML, screenshots, images, or full normalized text in Git."
+      ]
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "fetchAttemptId": "fa-suda-campus-ai-education-media",
+      "sourceCandidateId": "sc-suda-campus-ai-education-media",
+      "sourceUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+      "finalUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+      "attemptedAt": "2026-05-20T05:08:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 8922,
+      "contentHash": "ddee475979485e94c7f38ec629598407357df84f5bd8788e74fb2aa44da524a2",
+      "normalizedTextStorageKey": "openclaw/uapt-soochow-university-20260520/snapshots/suda-campus-ai-education-media.normalized.txt"
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "fetchAttemptId": "fa-suda-future-xai-lecture",
+      "sourceCandidateId": "sc-suda-future-xai-lecture",
+      "sourceUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+      "finalUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+      "attemptedAt": "2026-05-20T05:09:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 8580,
+      "contentHash": "6db690578bccce712b7266670ddb0cd483f81b292dbd797d800b8293b2ce106c",
+      "normalizedTextStorageKey": "openclaw/uapt-soochow-university-20260520/snapshots/suda-future-xai-lecture.normalized.txt"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "sourceSnapshotId": "ss-suda-campus-ai-education-media",
+      "sourceCandidateId": "sc-suda-campus-ai-education-media",
+      "fetchAttemptId": "fa-suda-campus-ai-education-media",
+      "sourceUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+      "finalUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+      "sourceTitle": "《中国科学报》：AI时代，大学生开始“一人创业”",
+      "sourceLanguage": "zh-CN",
+      "contentHash": "ddee475979485e94c7f38ec629598407357df84f5bd8788e74fb2aa44da524a2",
+      "fetchedAt": "2026-05-20T05:08:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-soochow-university-20260520/snapshots/suda-campus-ai-education-media.normalized.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "sourceSnapshotId": "ss-suda-future-xai-lecture",
+      "sourceCandidateId": "sc-suda-future-xai-lecture",
+      "fetchAttemptId": "fa-suda-future-xai-lecture",
+      "sourceUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+      "finalUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+      "sourceTitle": "产教融合：“X+ai”人工智能基础通识系列主题讲座第二讲 “X+ai”技术应用",
+      "sourceLanguage": "zh-CN",
+      "contentHash": "6db690578bccce712b7266670ddb0cd483f81b292dbd797d800b8293b2ce106c",
+      "fetchedAt": "2026-05-20T05:09:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-soochow-university-20260520/snapshots/suda-future-xai-lecture.normalized.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "claimId": "claim-suda-campus-ai-required-course",
+      "entityType": "university",
+      "entitySlug": "soochow-university",
+      "claimType": "teaching",
+      "claimText": "An official Soochow University page says the university opened an AI general required course for all majors in September 2025 and frames it as part of a complete AI education ecosystem.",
+      "normalizedValue": "campus_wide_ai_general_required_course_reported",
+      "sourceLanguage": "zh-CN",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-suda-campus-ai-required-course"
+      ],
+      "citation": {
+        "citationTitle": "Soochow University AI Policy Tracker record",
+        "sourceUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/soochow-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/soochow-university",
+        "publisher": "苏州大学党委宣传部、新闻与网络信息办公室",
+        "retrievedAt": "2026-05-20T05:08:00.000Z",
+        "snapshotHash": "ddee475979485e94c7f38ec629598407357df84f5bd8788e74fb2aa44da524a2",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "claimId": "claim-suda-xai-lecture-hands-on-tools",
+      "entityType": "university",
+      "entitySlug": "soochow-university",
+      "claimType": "teaching",
+      "claimText": "Soochow University's Future Science and Engineering College described an X+ai general-education lecture where students practiced with named AI tools including DeepSeek, iFlytek Zhwen, and Wenxin Yige.",
+      "normalizedValue": "xai_general_education_lecture_named_ai_tools_practice",
+      "sourceLanguage": "zh-CN",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-suda-xai-lecture-hands-on-tools"
+      ],
+      "citation": {
+        "citationTitle": "Soochow University AI Policy Tracker record",
+        "sourceUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/soochow-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/soochow-university",
+        "publisher": "苏州大学未来科学与工程学院",
+        "retrievedAt": "2026-05-20T05:09:00.000Z",
+        "snapshotHash": "6db690578bccce712b7266670ddb0cd483f81b292dbd797d800b8293b2ce106c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "evidenceId": "ev-suda-campus-ai-required-course",
+      "claimId": "claim-suda-campus-ai-required-course",
+      "sourceSnapshotId": "ss-suda-campus-ai-education-media",
+      "sourceUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+      "finalUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+      "sourceTitle": "《中国科学报》：AI时代，大学生开始“一人创业”",
+      "sourceLanguage": "zh-CN",
+      "snapshotHash": "ddee475979485e94c7f38ec629598407357df84f5bd8788e74fb2aa44da524a2",
+      "evidenceSnippetOriginal": "早在2024年，苏州大学未来科学与工程学院便牵头推出了面向全校的“X+ai”人工智能新生研讨课和通识选修课，将AI与专业能力相结合。王进介绍，相关课程中超过70%的授课教师来自企业，且多数都有创业经历。去年9月，苏州大学面向全校各专业开设AI通识必修课，构建完整的AI教育生态。",
+      "evidenceSnippetDisplay": "The official Soochow page says the university launched X+ai AI freshman seminars and general electives in 2024, and opened an AI general required course for all majors in September 2025.",
+      "evidenceLocator": "一个人的背后，站着谁",
+      "evidenceType": "official_source",
+      "relevance": 0.92,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "《中国科学报》：AI时代，大学生开始“一人创业”",
+        "sourceUrl": "https://www.suda.edu.cn/suda_news/mtjj/202603/ba46bce0-7896-4154-a577-d172d45b6586.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/soochow-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/soochow-university",
+        "publisher": "苏州大学党委宣传部、新闻与网络信息办公室",
+        "retrievedAt": "2026-05-20T05:08:00.000Z",
+        "snapshotHash": "ddee475979485e94c7f38ec629598407357df84f5bd8788e74fb2aa44da524a2",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "evidenceId": "ev-suda-xai-lecture-hands-on-tools",
+      "claimId": "claim-suda-xai-lecture-hands-on-tools",
+      "sourceSnapshotId": "ss-suda-future-xai-lecture",
+      "sourceUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+      "finalUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+      "sourceTitle": "产教融合：“X+ai”人工智能基础通识系列主题讲座第二讲 “X+ai”技术应用",
+      "sourceLanguage": "zh-CN",
+      "snapshotHash": "6db690578bccce712b7266670ddb0cd483f81b292dbd797d800b8293b2ce106c",
+      "evidenceSnippetOriginal": "讲座过程中，陈老师巧妙地将理论与实践相结合，让学生亲身体验AI技术的强大魅力。他引导学生与DeepSeek直接对话，感受智能问答的精准与高效；使用讯飞智文生成PPT，让学生领略文字内容快速转化为精美演示文稿的便捷；还借助文心一格进行文生图，让文字描述瞬间化作生动形象的图像。",
+      "evidenceSnippetDisplay": "The Future Science and Engineering College page describes students practicing with DeepSeek, iFlytek Zhwen, and Wenxin Yige during an X+ai lecture.",
+      "evidenceLocator": "03 实践互动",
+      "evidenceType": "official_source",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "产教融合：“X+ai”人工智能基础通识系列主题讲座第二讲 “X+ai”技术应用",
+        "sourceUrl": "https://future.suda.edu.cn/0e/21/c36148a658977/page.htm",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/soochow-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/soochow-university",
+        "publisher": "苏州大学未来科学与工程学院",
+        "retrievedAt": "2026-05-20T05:09:00.000Z",
+        "snapshotHash": "6db690578bccce712b7266670ddb0cd483f81b292dbd797d800b8293b2ce106c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "decisionId": "rd-suda-campus-ai-required-course",
+      "claimId": "claim-suda-campus-ai-required-course",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a narrow teaching claim from an official university page; not treated as binding student AI-use policy.",
+      "decidedAt": "2026-05-20T05:12:00.000Z"
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "decisionId": "rd-suda-xai-lecture-hands-on-tools",
+      "claimId": "claim-suda-xai-lecture-hands-on-tools",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a college-scoped teaching/practice claim based on the official Future Science and Engineering College page.",
+      "decidedAt": "2026-05-20T05:12:00.000Z"
+    },
+    {
+      "artifactType": "report_draft",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-soochow-university-20260520",
+      "reportId": "report-soochow-20260520",
+      "title": "Soochow University AI Education Source Review",
+      "generatedAt": "2026-05-20T05:12:00.000Z",
+      "draftPath": "content/reports/2026-05/soochow-university-ai-education.mdx",
+      "summary": "Official Soochow University sources found in this run support three staged, agent-reviewed candidate claims about AI education and practice activities. No formal university-wide generative-AI conduct policy was located on the official domain during this run.",
+      "referencedClaimIds": [
+        "claim-suda-campus-ai-required-course",
+        "claim-suda-xai-lecture-hands-on-tools",
+        "claim-suda-official-sources-ai-education-not-conduct-policy"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/soochow-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The staged claims are narrow education/source-status candidates and should not be read as binding AI-use rules."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
