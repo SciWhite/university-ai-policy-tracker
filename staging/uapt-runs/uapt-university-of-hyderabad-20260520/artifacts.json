@@ -1,0 +1,368 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-hyderabad-20260520",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "source_discovery_trace",
+      "traceId": "uohyd-discovery-001",
+      "entityType": "university",
+      "entitySlug": "university-of-hyderabad",
+      "startedAt": "2026-05-20T14:20:00.000Z",
+      "endedAt": "2026-05-20T14:36:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:uohyd.ac.in AI policy generative artificial intelligence University of Hyderabad",
+          "domain": "uohyd.ac.in",
+          "resultCount": 14,
+          "notes": "Official-domain search found a University of Hyderabad Teaching Policy PDF with GenAI and academic integrity text."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uohyd.ac.in artificial intelligence policy academic integrity University of Hyderabad",
+          "domain": "uohyd.ac.in",
+          "resultCount": 14,
+          "notes": "Search also surfaced official UoH Herald and SCIS pages; the Herald AI summit page was reviewed but treated as event/news-only."
+        },
+        {
+          "method": "other",
+          "domain": "uohyd.ac.in",
+          "resultCount": 0,
+          "notes": "Firecrawl was not available in this isolated environment. A crawl4ai scrape attempt against the PDF failed before extraction, so compliant direct HTTP fetch and local PDF page rendering were used."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "uohyd-sc-001",
+        "uohyd-sc-002"
+      ],
+      "rejectionIds": [
+        "uohyd-sr-001"
+      ],
+      "summary": "Official-domain discovery identified the University of Hyderabad Teaching Policy PDF as policy-specific evidence for GenAI and academic integrity. An official UoH Herald AI event page was rejected because it described an event discussion rather than university policy."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "uohyd-sc-001",
+      "entityType": "university",
+      "entitySlug": "university-of-hyderabad",
+      "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "finalUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "sourceTitle": "University of Hyderabad Teaching Policy (October 2024)",
+      "sourceLanguage": "en",
+      "sourceType": "formal_policy",
+      "discoveryMethod": "pdf_discovery",
+      "queryUsed": "site:uohyd.ac.in AI policy generative artificial intelligence University of Hyderabad",
+      "discoveredAt": "2026-05-20T14:20:30.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.92,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T14:26:00.000Z",
+      "verificationNotes": "Official uohyd.ac.in PDF titled Teaching Policy; page 8 contains GenAI, ChatGPT, academic integrity, plagiarism, and course-level instruction language.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "uohyd-sc-002",
+      "entityType": "university",
+      "entitySlug": "university-of-hyderabad",
+      "sourceUrl": "https://herald.uohyd.ac.in/india-ai-impact-summit-2026/",
+      "finalUrl": "https://herald.uohyd.ac.in/india-ai-impact-summit-2026/",
+      "sourceTitle": "India-AI Impact Summit-2026",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "news_or_advisory",
+      "queryUsed": "site:uohyd.ac.in generative AI University of Hyderabad",
+      "discoveredAt": "2026-05-20T14:21:00.000Z",
+      "officialDomainConfidence": 0.94,
+      "aiRelevanceScore": 0.65,
+      "policySpecificityScore": 0.15,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-20T14:28:00.000Z",
+      "verificationNotes": "Official UoH Herald page discusses an AI event and responsible-use concerns, but it does not state binding university AI policy.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "uohyd-sr-001",
+      "sourceCandidateId": "uohyd-sc-002",
+      "entityType": "university",
+      "entitySlug": "university-of-hyderabad",
+      "sourceUrl": "https://herald.uohyd.ac.in/india-ai-impact-summit-2026/",
+      "finalUrl": "https://herald.uohyd.ac.in/india-ai-impact-summit-2026/",
+      "rejectedAt": "2026-05-20T14:28:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw_agent",
+      "evidenceSnippet": "The event brought together students, academicians, and industry experts to discuss and debate contemporary developments in Artificial Intelligence while critically examining its ethical, social, and technological implications.",
+      "notes": "Official UoH source, but event coverage is not used for claim evidence because it is not a policy or guidance document."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "crawl_plan",
+      "planId": "uohyd-plan-001",
+      "createdAt": "2026-05-20T14:29:00.000Z",
+      "createdBy": "openclaw_agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-hyderabad",
+          "sourceCandidateId": "uohyd-sc-001",
+          "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+          "sourceTitle": "University of Hyderabad Teaching Policy (October 2024)",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "academic_integrity",
+            "ai_tool_treatment",
+            "teaching"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after extracting narrow claim/evidence candidates from official policy-specific text.",
+        "Do not use official news/event pages as binding policy evidence.",
+        "Do not stage raw PDFs, screenshots, OCR files, or normalized text files in Git."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "uohyd-fetch-001",
+      "sourceCandidateId": "uohyd-sc-001",
+      "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "finalUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "attemptedAt": "2026-05-20T14:20:44.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1815,
+      "contentHash": "a020df55a260a4d6672faffed981c8abee15b2d5423d2472d26d4622b179c5ea",
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-hyderabad-20260520/uohyd-teaching-policy-page-8-normalized"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "uohyd-fetch-002",
+      "sourceCandidateId": "uohyd-sc-002",
+      "sourceUrl": "https://herald.uohyd.ac.in/india-ai-impact-summit-2026/",
+      "finalUrl": "https://herald.uohyd.ac.in/india-ai-impact-summit-2026/",
+      "attemptedAt": "2026-05-20T14:20:44.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1830,
+      "contentHash": "cd14e95ba0a93d1f2e6bf82337e4709c5f5742cb7c5ba68222e88c3e0529273e",
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-hyderabad-20260520/uohyd-herald-ai-impact-summit-normalized"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "uohyd-snap-001",
+      "sourceCandidateId": "uohyd-sc-001",
+      "fetchAttemptId": "uohyd-fetch-001",
+      "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "finalUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "sourceTitle": "University of Hyderabad Teaching Policy (October 2024)",
+      "sourceLanguage": "en",
+      "contentHash": "a020df55a260a4d6672faffed981c8abee15b2d5423d2472d26d4622b179c5ea",
+      "fetchedAt": "2026-05-20T14:20:44.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-hyderabad-20260520/uohyd-teaching-policy-page-8-normalized",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "uohyd-claim-001",
+      "entityType": "university",
+      "entitySlug": "university-of-hyderabad",
+      "claimType": "ai_tool_treatment",
+      "claimText": "The University of Hyderabad Teaching Policy says use of GenAI to create whole assignments and projects is not acceptable, while GenAI may be permitted for research and conceptualization in limited course-specific circumstances.",
+      "normalizedValue": "GenAI use for whole assignments/projects not acceptable; limited course-specific research/conceptualization use may be permitted.",
+      "sourceLanguage": "en",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "uohyd-evidence-001"
+      ],
+      "citation": {
+        "citationTitle": "University of Hyderabad Teaching Policy (October 2024)",
+        "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-hyderabad.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-hyderabad",
+        "publisher": "University of Hyderabad",
+        "retrievedAt": "2026-05-20T14:20:44.000Z",
+        "snapshotHash": "a020df55a260a4d6672faffed981c8abee15b2d5423d2472d26d4622b179c5ea",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "uohyd-claim-002",
+      "entityType": "university",
+      "entitySlug": "university-of-hyderabad",
+      "claimType": "academic_integrity",
+      "claimText": "The University of Hyderabad Teaching Policy directs students to refer to course-level instructions before using GenAI tools and frames academic dishonesty violations as subject to academic-unit scrutiny and possible consequences.",
+      "normalizedValue": "Students must refer to course-level GenAI instructions; academic dishonesty issues are reviewed at academic-unit level.",
+      "sourceLanguage": "en",
+      "confidence": 0.89,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "uohyd-evidence-002"
+      ],
+      "citation": {
+        "citationTitle": "University of Hyderabad Teaching Policy (October 2024)",
+        "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-hyderabad.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-hyderabad",
+        "publisher": "University of Hyderabad",
+        "retrievedAt": "2026-05-20T14:20:44.000Z",
+        "snapshotHash": "a020df55a260a4d6672faffed981c8abee15b2d5423d2472d26d4622b179c5ea",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "uohyd-evidence-001",
+      "claimId": "uohyd-claim-001",
+      "sourceSnapshotId": "uohyd-snap-001",
+      "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "finalUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "sourceTitle": "University of Hyderabad Teaching Policy (October 2024)",
+      "sourceLanguage": "en",
+      "snapshotHash": "a020df55a260a4d6672faffed981c8abee15b2d5423d2472d26d4622b179c5ea",
+      "evidenceSnippetOriginal": "Similarly, use of GenAI to create whole assignments and projects is not acceptable. However, use of GenAI may be permitted for research and conceptualization in limited circumstances based on the requirements of a course.",
+      "evidenceSnippetDisplay": "The policy says GenAI-created whole assignments and projects are not acceptable, but limited research or conceptualization use may be permitted depending on course requirements.",
+      "evidenceLocator": "Teaching Policy PDF, page 8, paragraph before section 4",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "University of Hyderabad Teaching Policy (October 2024)",
+        "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-hyderabad.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-hyderabad",
+        "publisher": "University of Hyderabad",
+        "retrievedAt": "2026-05-20T14:20:44.000Z",
+        "snapshotHash": "a020df55a260a4d6672faffed981c8abee15b2d5423d2472d26d4622b179c5ea",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "uohyd-evidence-002",
+      "claimId": "uohyd-claim-002",
+      "sourceSnapshotId": "uohyd-snap-001",
+      "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "finalUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+      "sourceTitle": "University of Hyderabad Teaching Policy (October 2024)",
+      "sourceLanguage": "en",
+      "snapshotHash": "a020df55a260a4d6672faffed981c8abee15b2d5423d2472d26d4622b179c5ea",
+      "evidenceSnippetOriginal": "Students must refer to course-level instructions before they use such tools. These violations will be scrutinized at the level of an academic unit by a designated committee, who then recommend their decisions.",
+      "evidenceSnippetDisplay": "Students must check course-level instructions before using GenAI tools; violations are reviewed by a designated academic-unit committee.",
+      "evidenceLocator": "Teaching Policy PDF, page 8, paragraph before section 4",
+      "evidenceType": "pdf",
+      "relevance": 0.92,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "University of Hyderabad Teaching Policy (October 2024)",
+        "sourceUrl": "https://uohyd.ac.in/sdg/wp-content/uploads/sites/15/2025/05/Teaching-Policy.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-hyderabad.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-hyderabad",
+        "publisher": "University of Hyderabad",
+        "retrievedAt": "2026-05-20T14:20:44.000Z",
+        "snapshotHash": "a020df55a260a4d6672faffed981c8abee15b2d5423d2472d26d4622b179c5ea",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "uohyd-review-001",
+      "claimId": "uohyd-claim-001",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow claim because the source explicitly states GenAI use for whole assignments and projects is not acceptable and limited research/conceptualization use may be permitted by course requirements.",
+      "decidedAt": "2026-05-20T14:35:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "uohyd-review-002",
+      "claimId": "uohyd-claim-002",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex",
+      "notes": "Approved as a narrow academic-integrity claim because the evidence says students must refer to course-level instructions and describes academic-unit scrutiny for violations.",
+      "decidedAt": "2026-05-20T14:35:30.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-hyderabad-20260520",
+      "artifactType": "report_draft",
+      "reportId": "uohyd-report-001",
+      "title": "University of Hyderabad GenAI Teaching Policy Candidates",
+      "generatedAt": "2026-05-20T14:36:00.000Z",
+      "draftPath": "content/reports/2026-05/university-of-hyderabad-genai-teaching-policy.mdx",
+      "summary": "Staged two agent-reviewed claim candidates from the University of Hyderabad Teaching Policy PDF: one on GenAI-created assignments/projects and limited course-specific permitted use, and one on course-level instructions and academic-unit review of violations.",
+      "referencedClaimIds": [
+        "uohyd-claim-001",
+        "uohyd-claim-002"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-hyderabad.json",
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-hyderabad.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The source is a scanned official PDF; the staged snippets are short page-8 transcriptions used only as citation metadata.",
+        "The rejected UoH Herald AI event page was not used as policy evidence."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

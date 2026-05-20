@@ -1,0 +1,421 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-palermo-20260520",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-university-of-palermo-20260520",
+      "entityType": "university",
+      "entitySlug": "university-of-palermo",
+      "startedAt": "2026-05-20T14:15:00.000Z",
+      "endedAt": "2026-05-20T14:28:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:unipa.it intelligenza artificiale generativa studenti esami Universita Palermo; site:unipa.it ChatGPT Universita degli Studi di Palermo; site:unipa.it strutture/cimdu AI didattica pdf",
+          "domain": "unipa.it",
+          "resultCount": 8,
+          "notes": "Firecrawl was not available in this isolated worker. Official-domain web search found UniPa TLC-CIMDU AI-for-teaching pages, a 2025 TLC-CIMDU activity report PDF, and event/news pages."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.unipa.it",
+          "resultCount": 1,
+          "notes": "robots.txt was fetched successfully and allows User-agent: * for /. The worker did not access /system/ or /cerca.html."
+        },
+        {
+          "method": "site_search",
+          "query": "site:unipa.it/strutture/cimdu filetype:pdf AI didattica studenti valutazione",
+          "domain": "unipa.it",
+          "resultCount": 3,
+          "notes": "The official TLC-CIMDU report PDF provided structured evidence about the 2025 'Nuove tecnologie e Intelligenza Artificiale' training path."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-palermo-cimdu-nuove-tecnologie-ai",
+        "sc-palermo-cimdu-relazione-2025",
+        "sc-palermo-ai-valutazione-event"
+      ],
+      "rejectionIds": [
+        "sr-palermo-ai-valutazione-event-only"
+      ],
+      "summary": "Official UniPa discovery found TLC-CIMDU resources and a 2025 activity report documenting AI-for-teaching training. No binding university-wide GenAI student conduct policy was identified in the searched official sources, so claims are limited to source-status and teaching/training evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-palermo-cimdu-nuove-tecnologie-ai",
+      "entityType": "university",
+      "entitySlug": "university-of-palermo",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+      "sourceTitle": "Nuove tecnologie e AI",
+      "sourceLanguage": "it",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unipa.it strutture/cimdu AI didattica",
+      "discoveredAt": "2026-05-20T14:16:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.92,
+      "policySpecificityScore": 0.62,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T14:22:27.000Z",
+      "verificationNotes": "Official UniPa TLC-CIMDU teacher-facing page listing AI-for-teaching seminars, registration links, and slide links.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-palermo-cimdu-relazione-2025",
+      "entityType": "university",
+      "entitySlug": "university-of-palermo",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+      "sourceTitle": "TLC-CIMDU Relazione 2025",
+      "sourceLanguage": "it",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unipa.it/strutture/cimdu filetype:pdf AI didattica studenti valutazione",
+      "discoveredAt": "2026-05-20T14:18:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.88,
+      "policySpecificityScore": 0.7,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T12:22:40.000Z",
+      "verificationNotes": "Official UniPa PDF from the TLC-CIMDU unit, last modified 2026-03-25, reporting 2025 training activities and participation counts.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-palermo-ai-valutazione-event",
+      "entityType": "university",
+      "entitySlug": "university-of-palermo",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/AI-e-la-valutazione-degli-studenti-09-04-2025/",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/AI-e-la-valutazione-degli-studenti-09-04-2025/",
+      "sourceTitle": "AI e la valutazione degli studenti (09/04/2025)",
+      "sourceLanguage": "it",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unipa.it/strutture/cimdu filetype:pdf AI per la didattica valutazione",
+      "discoveredAt": "2026-05-20T14:17:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.82,
+      "policySpecificityScore": 0.28,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-20T14:19:00.000Z",
+      "verificationNotes": "Official event page, but it announces a seminar rather than providing a reusable policy or guidance text.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-palermo-ai-valutazione-event-only",
+      "sourceCandidateId": "sc-palermo-ai-valutazione-event",
+      "entityType": "university",
+      "entitySlug": "university-of-palermo",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/AI-e-la-valutazione-degli-studenti-09-04-2025/",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/AI-e-la-valutazione-degli-studenti-09-04-2025/",
+      "rejectedAt": "2026-05-20T14:19:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "AI e la valutazione degli studenti (09/04/2025). Ciclo di seminari \"Ai per la didattica 2025\".",
+      "notes": "Relevant official event metadata, but not used as a primary source because the broader TLC-CIMDU page and annual report provide stronger evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "crawl_plan",
+      "planId": "plan-university-of-palermo-20260520",
+      "createdAt": "2026-05-20T14:20:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-palermo",
+          "sourceCandidateId": "sc-palermo-cimdu-nuove-tecnologie-ai",
+          "sourceUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+          "sourceTitle": "Nuove tecnologie e AI",
+          "sourceLanguage": "it",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "source_status"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-palermo",
+          "sourceCandidateId": "sc-palermo-cimdu-relazione-2025",
+          "sourceUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+          "sourceTitle": "TLC-CIMDU Relazione 2025",
+          "sourceLanguage": "it",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "source_status"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official UniPa sources provide citation-ready AI-for-teaching evidence.",
+        "Do not infer binding student conduct or assessment rules from event listings or training summaries."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-palermo-cimdu-nuove-tecnologie-ai",
+      "sourceCandidateId": "sc-palermo-cimdu-nuove-tecnologie-ai",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+      "attemptedAt": "2026-05-20T14:22:27.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1275,
+      "contentHash": "cd4e0ef371c32daf6c0d38646a408b2c193e444302582d9bc48e5ee6dfe6a1d5",
+      "normalizedTextStorageKey": "openclaw://snapshots/uapt-university-of-palermo-20260520/cimdu-nuove-tecnologie-ai"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-palermo-cimdu-relazione-2025",
+      "sourceCandidateId": "sc-palermo-cimdu-relazione-2025",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+      "attemptedAt": "2026-05-20T12:22:40.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1465,
+      "contentHash": "5008d9045c7e3548b99556873033d8616e2d1f63f9aa081753c72d26eba55284",
+      "normalizedTextStorageKey": "openclaw://snapshots/uapt-university-of-palermo-20260520/cimdu-relazione-2025"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-palermo-cimdu-nuove-tecnologie-ai",
+      "sourceCandidateId": "sc-palermo-cimdu-nuove-tecnologie-ai",
+      "fetchAttemptId": "fa-palermo-cimdu-nuove-tecnologie-ai",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+      "sourceTitle": "Nuove tecnologie e AI",
+      "sourceLanguage": "it",
+      "contentHash": "cd4e0ef371c32daf6c0d38646a408b2c193e444302582d9bc48e5ee6dfe6a1d5",
+      "fetchedAt": "2026-05-20T14:22:27.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://snapshots/uapt-university-of-palermo-20260520/cimdu-nuove-tecnologie-ai",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-palermo-cimdu-relazione-2025",
+      "sourceCandidateId": "sc-palermo-cimdu-relazione-2025",
+      "fetchAttemptId": "fa-palermo-cimdu-relazione-2025",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+      "sourceTitle": "TLC-CIMDU Relazione 2025",
+      "sourceLanguage": "it",
+      "contentHash": "5008d9045c7e3548b99556873033d8616e2d1f63f9aa081753c72d26eba55284",
+      "fetchedAt": "2026-05-20T12:22:40.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://snapshots/uapt-university-of-palermo-20260520/cimdu-relazione-2025",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-palermo-cimdu-ai-teaching-resource-page",
+      "entityType": "university",
+      "entitySlug": "university-of-palermo",
+      "claimType": "teaching",
+      "claimText": "University of Palermo's TLC-CIMDU maintains an official teacher-facing 'Nuove tecnologie e AI' page listing AI-for-teaching seminars and related registration or slide links.",
+      "normalizedValue": "official_ai_for_teaching_resource_page",
+      "sourceLanguage": "it",
+      "confidence": 0.82,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-palermo-cimdu-ai-teaching-resource-page"
+      ],
+      "citation": {
+        "citationTitle": "Nuove tecnologie e AI",
+        "sourceUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-palermo.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-palermo",
+        "publisher": "Università degli Studi di Palermo",
+        "retrievedAt": "2026-05-20T14:22:27.000Z",
+        "snapshotHash": "cd4e0ef371c32daf6c0d38646a408b2c193e444302582d9bc48e5ee6dfe6a1d5",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-palermo-cimdu-ai-training-2025-summary",
+      "entityType": "university",
+      "entitySlug": "university-of-palermo",
+      "claimType": "source_status",
+      "claimText": "University of Palermo's 2025 TLC-CIMDU activity report records a 'Nuove tecnologie e Intelligenza Artificiale' training path totaling 22 hours and 996 participants.",
+      "normalizedValue": "ai_teaching_training_reported_2025",
+      "sourceLanguage": "it",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-palermo-cimdu-ai-training-2025-summary"
+      ],
+      "citation": {
+        "citationTitle": "TLC-CIMDU Relazione 2025",
+        "sourceUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-palermo.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-palermo",
+        "publisher": "Università degli Studi di Palermo",
+        "retrievedAt": "2026-05-20T12:22:40.000Z",
+        "snapshotHash": "5008d9045c7e3548b99556873033d8616e2d1f63f9aa081753c72d26eba55284",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-palermo-cimdu-ai-teaching-resource-page",
+      "claimId": "claim-palermo-cimdu-ai-teaching-resource-page",
+      "sourceSnapshotId": "ss-palermo-cimdu-nuove-tecnologie-ai",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+      "sourceTitle": "Nuove tecnologie e AI",
+      "sourceLanguage": "it",
+      "snapshotHash": "cd4e0ef371c32daf6c0d38646a408b2c193e444302582d9bc48e5ee6dfe6a1d5",
+      "evidenceSnippetOriginal": "Ciclo di seminari \"AI per la didattica\" (anno 2026) ... Assistenti AI personalizzati (16/03/2026) ... Stumenti di base per la didattica con l'utilizzo dell'IA (23/04/2026) ... Vai alla registrazione ... Scarica le slide",
+      "evidenceSnippetDisplay": "The page lists a 2026 'AI for teaching' seminar cycle, including personalized AI assistants and basic tools for teaching with AI, with registration and slide links.",
+      "evidenceLocator": "Official TLC-CIMDU page, seminar listing section",
+      "evidenceType": "official_source",
+      "relevance": 0.86,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Nuove tecnologie e AI",
+        "sourceUrl": "https://www.unipa.it/strutture/cimdu/docenti/nuove-tecnologie-e-ai/index.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-palermo.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-palermo",
+        "publisher": "Università degli Studi di Palermo",
+        "retrievedAt": "2026-05-20T14:22:27.000Z",
+        "snapshotHash": "cd4e0ef371c32daf6c0d38646a408b2c193e444302582d9bc48e5ee6dfe6a1d5",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-palermo-cimdu-ai-training-2025-summary",
+      "claimId": "claim-palermo-cimdu-ai-training-2025-summary",
+      "sourceSnapshotId": "ss-palermo-cimdu-relazione-2025",
+      "sourceUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+      "finalUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+      "sourceTitle": "TLC-CIMDU Relazione 2025",
+      "sourceLanguage": "it",
+      "snapshotHash": "5008d9045c7e3548b99556873033d8616e2d1f63f9aa081753c72d26eba55284",
+      "evidenceSnippetOriginal": "Percorsi Formativi: Nuove tecnologie e Intelligenza Artificiale ... Totali 22 996 3487. Nota: Per ciascuna attività sono state riportate le ore di formazione effettivamente erogate, il numero di partecipanti e il prodotto Ore × Partecipanti.",
+      "evidenceSnippetDisplay": "The 2025 report lists 'New technologies and Artificial Intelligence' training and totals 22 training hours, 996 participants, and 3487 hour-participant product.",
+      "evidenceLocator": "PDF text, Percorsi Formativi table",
+      "evidenceType": "pdf",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "TLC-CIMDU Relazione 2025",
+        "sourceUrl": "https://www.unipa.it/strutture/cimdu/.content/documenti/TLC_CIMDU_Relazione_2025_def.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-palermo.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-palermo",
+        "publisher": "Università degli Studi di Palermo",
+        "retrievedAt": "2026-05-20T12:22:40.000Z",
+        "snapshotHash": "5008d9045c7e3548b99556873033d8616e2d1f63f9aa081753c72d26eba55284",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-palermo-cimdu-ai-teaching-resource-page",
+      "claimId": "claim-palermo-cimdu-ai-teaching-resource-page",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow teaching/source-resource claim only. The source does not establish a binding university-wide student AI policy.",
+      "decidedAt": "2026-05-20T14:29:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-palermo-cimdu-ai-training-2025-summary",
+      "claimId": "claim-palermo-cimdu-ai-training-2025-summary",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a source-status claim about reported training activity totals in an official UniPa PDF.",
+      "decidedAt": "2026-05-20T14:29:30.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-palermo-20260520",
+      "artifactType": "report_draft",
+      "reportId": "report-university-of-palermo-20260520",
+      "title": "University of Palermo AI teaching-source evidence",
+      "generatedAt": "2026-05-20T14:30:00.000Z",
+      "draftPath": "content/reports/2026-05/university-of-palermo-ai-teaching-source-evidence.mdx",
+      "summary": "Official UniPa TLC-CIMDU sources document AI-for-teaching seminars and a 2025 training path with reported hours and participants. The staged claims do not assert a binding university-wide GenAI student conduct policy.",
+      "referencedClaimIds": [
+        "claim-palermo-cimdu-ai-teaching-resource-page",
+        "claim-palermo-cimdu-ai-training-2025-summary"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-palermo.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Event and training-resource evidence was not treated as a binding policy mandate."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

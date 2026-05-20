@@ -1,0 +1,430 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-salerno-20260520",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-university-of-salerno-20260520",
+      "entityType": "university",
+      "entitySlug": "university-of-salerno",
+      "startedAt": "2026-05-20T14:00:00.000Z",
+      "endedAt": "2026-05-20T14:35:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:unisa.it ChatGPT OR intelligenza artificiale generativa studenti esami policy Universita degli Studi di Salerno",
+          "domain": "unisa.it",
+          "resultCount": 10,
+          "notes": "Firecrawl was not available in this isolated worker. Public web search on official UNISA domains found course, research-project, public-engagement, and call/news pages; no central university-wide generative-AI student policy page was found."
+        },
+        {
+          "method": "site_search",
+          "query": "site:web.unisa.it IA generativa OR intelligenza artificiale generativa",
+          "domain": "web.unisa.it",
+          "resultCount": 8,
+          "notes": "Official-domain search found funded-project and public-engagement pages. Research/course pages were stronger evidence than event listings for staged claims."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "web.unisa.it",
+          "resultCount": 3,
+          "notes": "Direct HTTP fetches were limited to public official URLs. https://web.unisa.it/robots.txt returned HTTP 403, so no disallowed path was identified from robots.txt and no restricted paths were accessed."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "docenti.unisa.it",
+          "resultCount": 1,
+          "notes": "Direct HTTP fetch retrieved the public official teaching page for the course INTERNATIONAL LAW, CYBERSECURITY AND ETHICS OF ARTIFICIAL INTELLIGENCE."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-unisa-ai-ethics-course-2024",
+        "sc-unisa-genai-math-teaching-project",
+        "sc-unisa-public-engagement-ai-cybersecurity"
+      ],
+      "rejectionIds": [
+        "sr-unisa-public-engagement-ai-cybersecurity"
+      ],
+      "summary": "Official-source discovery found AI-related teaching and research evidence on UNISA-controlled domains but did not find a central university-wide generative-AI policy. Claims are narrowly scoped to the official course and funded-project pages."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-unisa-ai-ethics-course-2024",
+      "entityType": "university",
+      "entitySlug": "university-of-salerno",
+      "sourceUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+      "finalUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+      "sourceTitle": "INTERNATIONAL LAW, CYBERSECURITY AND ETHICS OF ARTIFICIAL INTELLIGENCE",
+      "sourceLanguage": "it",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unisa.it ChatGPT OR intelligenza artificiale generativa studenti esami policy Universita degli Studi di Salerno",
+      "discoveredAt": "2026-05-20T14:05:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.56,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T14:20:00.000Z",
+      "verificationNotes": "Official UNISA teaching page on docenti.unisa.it for a 2024/2025 master's course; used only for course-level teaching-source status, not as a university-wide AI-use policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-unisa-genai-math-teaching-project",
+      "entityType": "university",
+      "entitySlug": "university-of-salerno",
+      "sourceUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+      "finalUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+      "sourceTitle": "Ricerca | Progetti Finanziati",
+      "sourceLanguage": "it",
+      "sourceType": "research_guidance",
+      "discoveryMethod": "site_search",
+      "queryUsed": "site:web.unisa.it IA generativa OR intelligenza artificiale generativa",
+      "discoveredAt": "2026-05-20T14:08:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.88,
+      "policySpecificityScore": 0.42,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T14:24:00.000Z",
+      "verificationNotes": "Official UNISA funded-project listing with an active project on generative AI and university mathematics teaching; used as research/teaching evidence only.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-unisa-public-engagement-ai-cybersecurity",
+      "entityType": "university",
+      "entitySlug": "university-of-salerno",
+      "sourceUrl": "https://web.unisa.it/terza-missione/impatto-sociale/attivita-dipartimenti/public-engagement",
+      "finalUrl": "https://web.unisa.it/terza-missione/impatto-sociale/attivita-dipartimenti/public-engagement",
+      "sourceTitle": "Attività dipartimentali | Public Engagement",
+      "sourceLanguage": "it",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:unisa.it intelligenza artificiale cybersecurity studenti Universita di Salerno",
+      "discoveredAt": "2026-05-20T14:10:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.5,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-20T14:28:00.000Z",
+      "verificationNotes": "Official public-engagement listing mentions an AI and cybersecurity technical table, but it is an event listing rather than policy or durable guidance.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-unisa-public-engagement-ai-cybersecurity",
+      "sourceCandidateId": "sc-unisa-public-engagement-ai-cybersecurity",
+      "entityType": "university",
+      "entitySlug": "university-of-salerno",
+      "sourceUrl": "https://web.unisa.it/terza-missione/impatto-sociale/attivita-dipartimenti/public-engagement",
+      "finalUrl": "https://web.unisa.it/terza-missione/impatto-sociale/attivita-dipartimenti/public-engagement",
+      "rejectedAt": "2026-05-20T14:28:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Cybersecurity ed identità digitale: innovazione per la protezione delle infrastrutture critiche. Tavolo tecnico su tematiche di AI e cybersecurity.",
+      "notes": "The page is official and AI-related, but it is a public-engagement/event listing and was not used for policy claims."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "crawl_plan",
+      "planId": "plan-university-of-salerno-20260520",
+      "createdAt": "2026-05-20T14:12:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-salerno",
+          "sourceCandidateId": "sc-unisa-ai-ethics-course-2024",
+          "sourceUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+          "sourceTitle": "INTERNATIONAL LAW, CYBERSECURITY AND ETHICS OF ARTIFICIAL INTELLIGENCE",
+          "sourceLanguage": "it",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "source_status",
+            "privacy"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-salerno",
+          "sourceCandidateId": "sc-unisa-genai-math-teaching-project",
+          "sourceUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+          "sourceTitle": "Ricerca | Progetti Finanziati",
+          "sourceLanguage": "it",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "research",
+            "teaching",
+            "source_status"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official course/research source snapshots support narrow staged claims.",
+        "Do not infer a university-wide AI policy from course, project, or event listings."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-unisa-ai-ethics-course-2024",
+      "sourceCandidateId": "sc-unisa-ai-ethics-course-2024",
+      "sourceUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+      "finalUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+      "attemptedAt": "2026-05-20T14:20:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 2700,
+      "contentHash": "33be95273c20e49d9c4da2f73a85b3d220c26f26a96a9e3d6c42a81efe302f93",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-salerno-20260520/snapshots/unisa-ai-ethics-course-2024.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-unisa-genai-math-teaching-project",
+      "sourceCandidateId": "sc-unisa-genai-math-teaching-project",
+      "sourceUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+      "finalUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+      "attemptedAt": "2026-05-20T14:24:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 5643,
+      "contentHash": "42e36e63948d852997007054a324838e7b89d02c67725bdd219d6ce2262a4142",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-salerno-20260520/snapshots/unisa-genai-math-teaching-project.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-unisa-ai-ethics-course-2024",
+      "sourceCandidateId": "sc-unisa-ai-ethics-course-2024",
+      "fetchAttemptId": "fa-unisa-ai-ethics-course-2024",
+      "sourceUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+      "finalUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+      "sourceTitle": "INTERNATIONAL LAW, CYBERSECURITY AND ETHICS OF ARTIFICIAL INTELLIGENCE",
+      "sourceLanguage": "it",
+      "contentHash": "33be95273c20e49d9c4da2f73a85b3d220c26f26a96a9e3d6c42a81efe302f93",
+      "fetchedAt": "2026-05-20T14:20:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-salerno-20260520/snapshots/unisa-ai-ethics-course-2024.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-unisa-genai-math-teaching-project",
+      "sourceCandidateId": "sc-unisa-genai-math-teaching-project",
+      "fetchAttemptId": "fa-unisa-genai-math-teaching-project",
+      "sourceUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+      "finalUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+      "sourceTitle": "Ricerca | Progetti Finanziati",
+      "sourceLanguage": "it",
+      "contentHash": "42e36e63948d852997007054a324838e7b89d02c67725bdd219d6ce2262a4142",
+      "fetchedAt": "2026-05-20T14:24:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-salerno-20260520/snapshots/unisa-genai-math-teaching-project.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unisa-ai-ethics-course-2024",
+      "entityType": "university",
+      "entitySlug": "university-of-salerno",
+      "claimType": "teaching",
+      "claimText": "University of Salerno has an official 2024/2025 course page for a master's course titled International Law, Cybersecurity and Ethics of Artificial Intelligence; the course objectives describe AI, cybersecurity, governance, data protection, and trustworthy AI topics. This is course-level teaching evidence, not a university-wide AI-use policy.",
+      "normalizedValue": "course_level_ai_ethics_teaching_source",
+      "sourceLanguage": "it",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unisa-ai-ethics-course-2024"
+      ],
+      "citation": {
+        "citationTitle": "INTERNATIONAL LAW, CYBERSECURITY AND ETHICS OF ARTIFICIAL INTELLIGENCE",
+        "sourceUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-salerno.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-salerno",
+        "publisher": "Università degli Studi di Salerno",
+        "retrievedAt": "2026-05-20T14:20:00.000Z",
+        "snapshotHash": "33be95273c20e49d9c4da2f73a85b3d220c26f26a96a9e3d6c42a81efe302f93",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-unisa-genai-math-teaching-project",
+      "entityType": "university",
+      "entitySlug": "university-of-salerno",
+      "claimType": "research",
+      "claimText": "University of Salerno's official funded-project listing includes an active DIEM project on generative AI and university mathematics teaching, funded by university funds. This supports a research/teaching source-status claim only, not binding student or staff AI policy.",
+      "normalizedValue": "active_genai_teaching_research_project",
+      "sourceLanguage": "it",
+      "confidence": 0.8,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-unisa-genai-math-teaching-project"
+      ],
+      "citation": {
+        "citationTitle": "Ricerca | Progetti Finanziati",
+        "sourceUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-salerno.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-salerno",
+        "publisher": "Università degli Studi di Salerno",
+        "retrievedAt": "2026-05-20T14:24:00.000Z",
+        "snapshotHash": "42e36e63948d852997007054a324838e7b89d02c67725bdd219d6ce2262a4142",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unisa-ai-ethics-course-2024",
+      "claimId": "claim-unisa-ai-ethics-course-2024",
+      "sourceSnapshotId": "ss-unisa-ai-ethics-course-2024",
+      "sourceUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+      "finalUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+      "sourceTitle": "INTERNATIONAL LAW, CYBERSECURITY AND ETHICS OF ARTIFICIAL INTELLIGENCE",
+      "sourceLanguage": "it",
+      "snapshotHash": "33be95273c20e49d9c4da2f73a85b3d220c26f26a96a9e3d6c42a81efe302f93",
+      "evidenceSnippetOriginal": "IL CORSO MIRA A FORNIRE AGLI STUDENTI LE CONOSCENZE, LE COMPETENZE E I QUADRI CONCETTUALI NECESSARI PER AFFRONTARE LE DIMENSIONI GIURIDICHE, POLITICHE E SOCIALI DELLO SVILUPPO E DELL'IMPLEMENTAZIONE DEI SISTEMI DI CYBERSECURITY E INTELLIGENZA ARTIFICIALE (IA-AI), NEL DIRITTO INTERNAZIONALE ED EUROPEO, EVIDENZIANDO LE IMPLICAZIONI SUL PIANO ETICO.",
+      "evidenceSnippetDisplay": "The course aims to give students knowledge and conceptual frameworks for the legal, political, and social dimensions of cybersecurity and artificial-intelligence systems, with ethical implications.",
+      "evidenceLocator": "Course page, SCHEDA > Obiettivi",
+      "evidenceType": "official_source",
+      "relevance": 0.88,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "INTERNATIONAL LAW, CYBERSECURITY AND ETHICS OF ARTIFICIAL INTELLIGENCE",
+        "sourceUrl": "https://docenti.unisa.it/020338/didattica?anno=2024&id=518031",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-salerno.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-salerno",
+        "publisher": "Università degli Studi di Salerno",
+        "retrievedAt": "2026-05-20T14:20:00.000Z",
+        "snapshotHash": "33be95273c20e49d9c4da2f73a85b3d220c26f26a96a9e3d6c42a81efe302f93",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-unisa-genai-math-teaching-project",
+      "claimId": "claim-unisa-genai-math-teaching-project",
+      "sourceSnapshotId": "ss-unisa-genai-math-teaching-project",
+      "sourceUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+      "finalUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+      "sourceTitle": "Ricerca | Progetti Finanziati",
+      "sourceLanguage": "it",
+      "snapshotHash": "42e36e63948d852997007054a324838e7b89d02c67725bdd219d6ce2262a4142",
+      "evidenceSnippetOriginal": "INTELLIGENZA GENERATIVA E DIDATTICA UNIVERSITARIA DELLA MATEMATICA. Attivo. Gli obiettivi di questo progetto possono essere declinati nei punti seguenti, in continuità con la pluriennale attività di ricerca condotta dal responsabile di progetto ma fortemente attualizzati in considerazione dell'avanzare delle moderne tecnologie di Intelligenza Artificiale Generativa (IA Gen) con particolare riferimento alle esigenze didattiche peculiari dei CdS del DIEM.",
+      "evidenceSnippetDisplay": "The official funded-project listing describes an active project on generative AI and university mathematics teaching, framed around the teaching needs of DIEM degree programs.",
+      "evidenceLocator": "Funded projects list, project title and description",
+      "evidenceType": "official_source",
+      "relevance": 0.78,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Ricerca | Progetti Finanziati",
+        "sourceUrl": "https://web.unisa.it/ricerca/progetti-finanziati?structure=300638",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-salerno.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-salerno",
+        "publisher": "Università degli Studi di Salerno",
+        "retrievedAt": "2026-05-20T14:24:00.000Z",
+        "snapshotHash": "42e36e63948d852997007054a324838e7b89d02c67725bdd219d6ce2262a4142",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-unisa-ai-ethics-course-2024",
+      "claimId": "claim-unisa-ai-ethics-course-2024",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow course-level teaching/source-status claim. The source does not support a university-wide AI-use policy claim.",
+      "decidedAt": "2026-05-20T14:32:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-unisa-genai-math-teaching-project",
+      "claimId": "claim-unisa-genai-math-teaching-project",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow research/teaching source-status claim. The funded-project listing does not establish binding student or staff AI policy.",
+      "decidedAt": "2026-05-20T14:33:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-salerno-20260520",
+      "artifactType": "report_draft",
+      "reportId": "report-university-of-salerno-20260520",
+      "title": "University of Salerno staged AI policy source review",
+      "generatedAt": "2026-05-20T14:35:00.000Z",
+      "draftPath": "content/reports/2026-05/university-of-salerno-ai-policy-source-review.mdx",
+      "summary": "Official UNISA discovery found course-level and funded-project evidence about AI ethics, cybersecurity, and generative AI in teaching. No central university-wide generative-AI policy was found in this staged crawl, so the approved claims are scoped to teaching/research source status.",
+      "referencedClaimIds": [
+        "claim-unisa-ai-ethics-course-2024",
+        "claim-unisa-genai-math-teaching-project"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-salerno.json",
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-salerno.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "This staged run does not identify a central university-wide generative-AI policy for students or staff."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
