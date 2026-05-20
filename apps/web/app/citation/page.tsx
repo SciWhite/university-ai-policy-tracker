@@ -63,10 +63,8 @@ export default function CitationPage() {
         <p className="kicker">Citation</p>
         <h1>Cite tracker metadata and official sources separately</h1>
         <p className="lead">
-          Public records are designed for citation, but tracker metadata does not
-          relicense official university documents or replace official policy text.
           Keep the canonical page, public JSON, source URL, snapshot hash, review
-          state, confidence, and original evidence together when citing a claim.
+          state, confidence, and original evidence together.
         </p>
       </section>
 
@@ -81,7 +79,7 @@ export default function CitationPage() {
 
         <div className="docs-content">
           <ReferenceBox
-            description="Copy-ready examples for common references."
+            description="Copy-ready examples."
             id="formats"
             title="Suggested formats"
           >
@@ -121,7 +119,7 @@ export default function CitationPage() {
           </ReferenceBox>
 
           <ReferenceBox
-            description="Retain these fields when reusing a public record."
+            description="Retain these fields."
             id="fields"
             title="Citation fields"
           >
@@ -161,7 +159,7 @@ export default function CitationPage() {
           </ReferenceBox>
 
           <ReferenceBox
-            description="Versioned, source-backed records for agents and downstream analysis."
+            description="Versioned records for reuse."
             id="json"
             title="Public JSON examples"
           >
@@ -192,7 +190,8 @@ export default function CitationPage() {
           </ReferenceBox>
 
           <ReferenceBox
-            description="Ranking pages are reference indexes, not policy rankings."
+            className="compact-reference-box"
+            description="Reference indexes, not policy rankings."
             id="ranking-sources"
             title="Ranking source citation boundaries"
           >

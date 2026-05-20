@@ -1,19 +1,21 @@
 import Link from "next/link";
-import { headers } from "next/headers";
 import { PUBLIC_API_VERSION } from "@uapt/shared";
 import { DataList, DataListRow } from "@/components/data-list";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 import {
-  searchIndexRecords,
-  type SearchIndexRecord
+  getEntityResolutionRecords,
+  getSearchIndexRecords,
+  searchIndexRecords
 } from "@/lib/entity-search";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const title = "Search | University AI Policy Tracker";
 const description =
-  "Search public university AI policy records by canonical names, aliases, domains, source titles, claims, and analysis dimensions.";
+  "Search public university AI policy records by university name, alias, source domain, claim text, and analysis dimension.";
+
+const exampleQueries = ["MIT", "privacy", "disclosure", "Copilot", "harvard.edu"] as const;
 
 interface SearchPageProps {
   searchParams: Promise<{
@@ -40,148 +42,143 @@ export function generateMetadata() {
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const params = await searchParams;
   const query = typeof params.q === "string" ? params.q.trim() : "";
-  const baseUrl = await getRequestBaseUrl();
-  const [searchIndex, entityIndex] = await Promise.all([
-    fetchSearchIndex(baseUrl),
-    fetchEntityIndex(baseUrl)
+  const [searchIndex, entityRecords] = await Promise.all([
+    getSearchIndexRecords(),
+    getEntityResolutionRecords()
   ]);
-  const results = searchIndexRecords(searchIndex.records, query, { limit: 25 });
-  const entityCount = entityIndex.count;
-  const aliasCount = entityIndex.aliasCount;
+  const results = searchIndexRecords(searchIndex, query, { limit: 30 });
+  const suggestedRecords = [...searchIndex]
+    .sort(
+      (left, right) =>
+        right.claimCount - left.claimCount ||
+        right.sourceCount - left.sourceCount ||
+        left.entityName.localeCompare(right.entityName)
+    )
+    .slice(0, 8);
+  const aliasCount = entityRecords.reduce(
+    (total, record) => total + record.aliasCount,
+    0
+  );
 
   return (
     <main className="page-shell page-shell--wide">
-      <section className="hero">
-        <p className="kicker">Entity search</p>
-        <h1>Find public AI policy records by name, alias, or source context</h1>
-        <p className="lead">
-          Search uses the public release only: canonical university names,
-          aliases, official source titles, public claim text, and analysis
-          dimension labels. It excludes raw source snapshots, private files,
-          unpromoted staging evidence, and non-authoritative spreadsheet rows as
-          policy evidence.
-        </p>
+      <section className="search-page-header" aria-labelledby="search-title">
+        <div>
+          <p className="kicker">Search</p>
+          <h1 id="search-title">Find a public record</h1>
+        </div>
+        <form action="/search" className="home-search-form" method="get">
+          <label className="visually-hidden" htmlFor="search-page-input">
+            Search public records
+          </label>
+          <input
+            defaultValue={query}
+            id="search-page-input"
+            name="q"
+            placeholder="University, topic, source domain..."
+            type="search"
+          />
+          <button type="submit">Search</button>
+        </form>
       </section>
 
-      <section className="metrics-grid" aria-label="Entity search coverage">
+      <div className="quick-query-row" aria-label="Search examples">
+        {exampleQueries.map((example) => (
+          <Link href={`/search?q=${encodeURIComponent(example)}`} key={example}>
+            {example}
+          </Link>
+        ))}
+      </div>
+
+      <section className="metrics-grid metrics-grid--compact" aria-label="Search coverage">
         <div>
-          <span>{entityCount}</span>
-          <p>public entities</p>
+          <span>{entityRecords.length}</span>
+          <p>entities</p>
         </div>
         <div>
           <span>{aliasCount}</span>
-          <p>entity aliases</p>
+          <p>aliases</p>
         </div>
         <div>
-          <span>{results.length}</span>
-          <p>matching results</p>
+          <span>{query ? results.length : suggestedRecords.length}</span>
+          <p>{query ? "matches" : "suggested records"}</p>
         </div>
         <div>
           <span>v1</span>
-          <p>versioned search API</p>
+          <p>search API</p>
         </div>
       </section>
 
-      <section className="section">
+      <p className="compact-note">
+        Search is a routing aid over promoted public records, not a policy
+        conclusion.
+      </p>
+
+      <section className="section compact-section">
         <div className="section-heading">
-          <h2>Search public records</h2>
-          <p>
-            Aliases improve recall but do not create new facts. Open the
-            canonical record for source URLs, original-language evidence,
-            confidence, and review state.
-          </p>
+          <h2>{query ? `Results for "${query}"` : "High-signal records"}</h2>
+          {query ? <Link href="/search">Reset</Link> : null}
         </div>
-        <form action="/search" className="university-filter-form" method="get">
-          <label>
-            <span>Query</span>
-            <input
-              defaultValue={query}
-              name="q"
-              placeholder="MIT, ANU, disclosure, copilot, harvard.edu"
-              type="search"
-            />
-          </label>
-          <button type="submit">Search</button>
-          <Link className="filter-reset-link" href="/search">
-            Reset
-          </Link>
-        </form>
 
-        <p className="table-summary">
-          {query
-            ? `Showing ${results.length} result${results.length === 1 ? "" : "s"} for "${query}".`
-            : "Enter a university name, abbreviation, source domain, policy theme, or AI service name."}
-        </p>
-
-        {results.length ? (
+        {query ? (
+          results.length ? (
+            <SearchResults results={results} />
+          ) : (
+            <p className="notice-card">
+              No public records match this query. The current public release may
+              still lack a promoted record for that institution or topic.
+            </p>
+          )
+        ) : (
           <DataList>
-            {results.map((result) => (
+            {suggestedRecords.map((record) => (
               <DataListRow
                 actions={
                   <>
-                    <Link href={`/universities/${result.entitySlug}`}>Record</Link>
-                    <a href={result.publicJsonUrl}>JSON</a>
+                    <Link href={`/universities/${record.entitySlug}`}>Record</Link>
+                    <a href={record.publicJsonUrl}>JSON</a>
                   </>
                 }
-                key={result.entitySlug}
+                key={record.entitySlug}
                 metadata={
                   <>
-                    <MetaLabel label="Score">{result.score}</MetaLabel>
-                    <MetaLabel label="Claims">{result.claimCount}</MetaLabel>
-                    <MetaLabel label="Sources">{result.sourceCount}</MetaLabel>
+                    <StateLabel reviewState={record.reviewState} />
+                    <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
+                    <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
                   </>
                 }
               >
                 <div className="table-record-title">
-                  <Link href={`/universities/${result.entitySlug}`}>
-                    {result.entityName}
+                  <Link href={`/universities/${record.entitySlug}`}>
+                    {record.entityName}
                   </Link>
                 </div>
-                <p>{result.sourceBackedSnippet}</p>
-                <div className="table-record-meta">
-                  <StateLabel reviewState={result.reviewState} />
-                  <MetaLabel label="Match">{result.matchReason}</MetaLabel>
-                  {result.confidence !== undefined ? (
-                    <MetaLabel label="Confidence">
-                      {Math.round(result.confidence * 100)}%
-                    </MetaLabel>
-                  ) : null}
-                </div>
-                {result.matchedAliases.length ? (
-                  <p className="table-record-subtitle">
-                    Alias matches: {result.matchedAliases.join(", ")}
-                  </p>
-                ) : null}
+                <p>{record.fields.summary ?? "Open the public record."}</p>
               </DataListRow>
             ))}
           </DataList>
-        ) : query ? (
-          <p className="notice-card">
-            No public records match this query. This does not mean the
-            institution has no AI policy; it only means the current public
-            release has no matching promoted record.
-          </p>
-        ) : null}
+        )}
       </section>
 
       <ReferenceBox
-        description="Read-only JSON surfaces for entity resolution and safe search indexing."
-        title="Search and entity APIs"
+        className="compact-reference-box"
+        description="Read-only public search contracts."
+        title="Search APIs"
       >
-        <ul className="compact-list">
+        <ul className="compact-link-list">
           <li>
             <a href={`/api/public/${PUBLIC_API_VERSION}/search.json?q=mit`}>
-              /api/public/{PUBLIC_API_VERSION}/search.json?q=mit
+              Search JSON
             </a>
           </li>
           <li>
             <a href={`/api/public/${PUBLIC_API_VERSION}/search/index.json`}>
-              /api/public/{PUBLIC_API_VERSION}/search/index.json
+              Search index
             </a>
           </li>
           <li>
             <a href={`/api/public/${PUBLIC_API_VERSION}/entities/index.json`}>
-              /api/public/{PUBLIC_API_VERSION}/entities/index.json
+              Entity aliases
             </a>
           </li>
         </ul>
@@ -190,53 +187,50 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   );
 }
 
-async function getRequestBaseUrl(): Promise<string> {
-  const headerList = await headers();
-  const host = headerList.get("host");
-  const protocol = headerList.get("x-forwarded-proto") ?? "http";
+type SearchResult = ReturnType<typeof searchIndexRecords>[number];
 
-  return host ? `${protocol}://${host}` : getAbsoluteSiteUrl("/");
-}
-
-async function fetchSearchIndex(baseUrl: string): Promise<{
-  records: SearchIndexRecord[];
-}> {
-  const response = await fetch(
-    new URL(`/api/public/${PUBLIC_API_VERSION}/search/index.json`, baseUrl),
-    { next: { revalidate: 3600 } }
+function SearchResults({ results }: { results: SearchResult[] }) {
+  return (
+    <DataList>
+      {results.map((result) => (
+        <DataListRow
+          actions={
+            <>
+              <Link href={`/universities/${result.entitySlug}`}>Record</Link>
+              <a href={result.publicJsonUrl}>JSON</a>
+            </>
+          }
+          key={result.entitySlug}
+          metadata={
+            <>
+              <MetaLabel label="Score">{result.score}</MetaLabel>
+              <MetaLabel label="Claims">{result.claimCount}</MetaLabel>
+              <MetaLabel label="Sources">{result.sourceCount}</MetaLabel>
+            </>
+          }
+        >
+          <div className="table-record-title">
+            <Link href={`/universities/${result.entitySlug}`}>
+              {result.entityName}
+            </Link>
+          </div>
+          <p>{result.sourceBackedSnippet}</p>
+          <div className="table-record-meta">
+            <StateLabel reviewState={result.reviewState} />
+            <MetaLabel label="Match">{result.matchReason}</MetaLabel>
+            {result.confidence !== undefined ? (
+              <MetaLabel label="Confidence">
+                {Math.round(result.confidence * 100)}%
+              </MetaLabel>
+            ) : null}
+          </div>
+          {result.matchedAliases.length ? (
+            <p className="table-record-subtitle">
+              Alias: {result.matchedAliases.join(", ")}
+            </p>
+          ) : null}
+        </DataListRow>
+      ))}
+    </DataList>
   );
-  if (!response.ok) return { records: [] };
-
-  const payload = (await response.json()) as {
-    data?: {
-      records?: SearchIndexRecord[];
-    };
-  };
-
-  return {
-    records: Array.isArray(payload.data?.records) ? payload.data.records : []
-  };
-}
-
-async function fetchEntityIndex(baseUrl: string): Promise<{
-  aliasCount: number;
-  count: number;
-}> {
-  const response = await fetch(
-    new URL(`/api/public/${PUBLIC_API_VERSION}/entities/index.json`, baseUrl),
-    { next: { revalidate: 3600 } }
-  );
-  if (!response.ok) return { aliasCount: 0, count: 0 };
-
-  const payload = (await response.json()) as {
-    data?: {
-      aliasCount?: number;
-      count?: number;
-    };
-  };
-
-  return {
-    aliasCount: payload.data?.aliasCount ?? 0,
-    count: payload.data?.count ?? 0
-  };
 }

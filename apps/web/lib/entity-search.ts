@@ -269,7 +269,7 @@ export async function getEntityResolutionRecords(): Promise<
   });
 }
 
-async function getSearchIndexRecords(): Promise<SearchIndexRecord[]> {
+export async function getSearchIndexRecords(): Promise<SearchIndexRecord[]> {
   const [dataset, profiles] = await Promise.all([
     getStagedPublicDataset(),
     getPolicyAnalysisProfiles()
@@ -496,6 +496,18 @@ function scoreRecord(
     record.searchTokens.includes(token)
   );
   score += matchingTokens.length * 9;
+  const fuzzyTokens = queryTokens.filter(
+    (token) =>
+      !matchingTokens.includes(token) &&
+      record.searchTokens.some((recordToken) => fuzzyTokenMatches(token, recordToken))
+  );
+  if (fuzzyTokens.length) {
+    score += fuzzyTokens.length * 5;
+    matchedFields.push("fuzzy_token");
+    if (score < 80) {
+      matchReason = "Fuzzy token match in public record metadata.";
+    }
+  }
 
   if (score <= 0) return undefined;
 
@@ -641,6 +653,42 @@ function textMatchesNormalized(value: string, normalizedQuery: string): boolean 
   }
 
   return normalizeForSearch(value).includes(normalizedQuery);
+}
+
+function fuzzyTokenMatches(queryToken: string, recordToken: string): boolean {
+  if (queryToken.length < 4 || recordToken.length < 4) return false;
+  if (Math.abs(queryToken.length - recordToken.length) > 2) return false;
+  if (recordToken.includes(queryToken) || queryToken.includes(recordToken)) {
+    return true;
+  }
+
+  return editDistanceAtMost(queryToken, recordToken, queryToken.length > 7 ? 2 : 1);
+}
+
+function editDistanceAtMost(left: string, right: string, maxDistance: number): boolean {
+  let previous = Array.from({ length: right.length + 1 }, (_, index) => index);
+  let current = new Array<number>(right.length + 1);
+
+  for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+    current[0] = leftIndex;
+    let rowMinimum = current[0];
+
+    for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+      const substitutionCost =
+        left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1;
+      current[rightIndex] = Math.min(
+        previous[rightIndex] + 1,
+        current[rightIndex - 1] + 1,
+        previous[rightIndex - 1] + substitutionCost
+      );
+      rowMinimum = Math.min(rowMinimum, current[rightIndex]);
+    }
+
+    if (rowMinimum > maxDistance) return false;
+    [current, previous] = [previous, current];
+  }
+
+  return previous[right.length] <= maxDistance;
 }
 
 function clampLimit(value: number): number {

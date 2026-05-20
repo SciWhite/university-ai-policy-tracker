@@ -13,37 +13,37 @@ const workflowSteps = [
     id: "source-discovery",
     title: "Source discovery",
     description:
-      "Candidate sources start as public university policy pages, teaching center guidance, IT/security guidance, procurement pages, PDFs, and other clearly labeled official or source-attributed materials."
+      "Public university policy pages, teaching guidance, IT/security pages, procurement pages, PDFs, and source-attributed materials."
   },
   {
     id: "crawl-snapshot",
     title: "Crawl and snapshot",
     description:
-      "Fetching uses plain HTTP first. When a source is captured, normalized text receives a content hash so future checks can detect whether a source changed."
+      "Fetched source text receives a content hash for future change checks."
   },
   {
     id: "claim-extraction",
     title: "Claim extraction",
     description:
-      "A policy claim is one assertion about a university, tool, theme, or future course entity. Claims keep confidence separate from review state so machine certainty is not confused with approval."
+      "Claims keep confidence separate from review state."
   },
   {
     id: "evidence-binding",
     title: "Evidence binding",
     description:
-      "Every public claim must trace to a source URL, source snapshot hash, short evidence snippet, source language, and rights caveat. Original source evidence is preserved in its source language."
+      "Every public claim needs a source URL, snapshot hash, evidence snippet, source language, and rights caveat."
   },
   {
     id: "change-detection",
     title: "Change detection",
     description:
-      "Changed source hashes can create new snapshots, extraction candidates, claim updates, and change records. Diff pages are planned after the current claim/evidence contract is stable."
+      "Changed hashes can create new snapshots, candidates, claim updates, and change records."
   },
   {
     id: "multilingual-evidence",
     title: "Multilingual source-first evidence",
     description:
-      "Original-language evidence remains canonical. Translations and localized summaries are auxiliary display helpers and must not mutate source URL, hash, confidence, or review state."
+      "Original-language evidence is canonical; translations are display helpers."
   }
 ] as const;
 
@@ -51,27 +51,27 @@ const reviewStates = [
   {
     label: "machine_candidate",
     description:
-      "A crawler, extractor, or seed process produced the record. It is visible only with candidate labeling and must not be treated as a final policy conclusion."
+      "Produced by crawler, extractor, or seed process; not final."
   },
   {
     label: "needs_review",
     description:
-      "The source, extraction, date, or classification needs another review pass before the claim can be used as a trusted public summary."
+      "Source, extraction, date, or classification needs review."
   },
   {
     label: "agent_reviewed",
     description:
-      "A reviewing agent checked the evidence and classification, but the record is still distinct from a human-reviewed claim."
+      "Agent checked evidence and classification."
   },
   {
     label: "human_reviewed",
     description:
-      "A human reviewer or deterministic publish rule has approved the claim for public reference, while the linked source remains the authority."
+      "Human reviewer or deterministic publish rule approved the claim."
   },
   {
     label: "rejected",
     description:
-      "The candidate is retained only for audit context and should not be treated as a public conclusion."
+      "Retained only for audit context."
   }
 ] as const;
 
@@ -98,10 +98,8 @@ export default function MethodologyPage() {
         <p className="kicker">Methodology</p>
         <h1>How records become source-backed claims</h1>
         <p className="lead">
-          The tracker is built around official sources, source snapshots, short
-          evidence snippets in the original source language, machine confidence,
-          and explicit review state. It is a public reference database, not legal
-          advice or academic integrity advice.
+          Official sources, snapshots, short evidence snippets, confidence, and
+          explicit review state.
         </p>
       </section>
 

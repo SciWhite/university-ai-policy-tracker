@@ -392,6 +392,196 @@ th {
   max-width: 880px;
 }
 
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.search-hero {
+  align-items: start;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.8fr);
+}
+
+.search-page-header {
+  align-items: end;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(220px, 0.6fr) minmax(320px, 1fr);
+}
+
+.home-search-form {
+  background: var(--color-canvas-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-top: 20px;
+  padding: 8px;
+}
+
+.home-search-form input {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  color: var(--color-text);
+  font: inherit;
+  min-height: 44px;
+  min-width: 0;
+  padding: 10px 12px;
+}
+
+.home-search-form button {
+  background: var(--color-accent-strong);
+  border: 1px solid var(--color-accent-strong);
+  border-radius: var(--radius-control);
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 10px 16px;
+}
+
+.quick-query-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.quick-query-row a {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.quick-query-row a:hover {
+  border-color: var(--color-accent-fg);
+  color: var(--color-accent-fg);
+}
+
+.compact-note {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 12px 0 0;
+}
+
+.search-hero__side {
+  background: var(--color-canvas-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.search-hero__side div {
+  border-bottom: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  padding: 14px;
+}
+
+.search-hero__side div:nth-child(2n) {
+  border-right: 0;
+}
+
+.search-hero__side div:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.search-hero__side span {
+  display: block;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.search-hero__side p {
+  color: var(--color-text-muted);
+  margin: 6px 0 0;
+}
+
+.entry-group-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.entry-group {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  padding: 14px;
+}
+
+.entry-group h2,
+.endpoint-group h3 {
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.entry-group ul,
+.compact-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.entry-group a,
+.compact-link-list a {
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  color: var(--color-accent-fg);
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 700;
+  min-height: 30px;
+  padding: 5px 9px;
+  text-decoration: none;
+}
+
+.compact-section {
+  margin-top: 28px;
+  padding-top: 20px;
+}
+
+.metrics-grid--compact {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.endpoint-group-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.endpoint-group {
+  display: grid;
+  gap: 10px;
+}
+
+.compact-reference-box .reference-box__header p,
+.compact-reference-box .reference-box__body > p {
+  max-width: 720px;
+}
+
 .kicker {
   color: var(--color-accent);
   font-size: 14px;
@@ -1843,6 +2033,16 @@ ol.timeline-list {
     border-top: 1px solid var(--color-border);
     padding-left: 0;
     padding-top: 12px;
+  }
+
+  .search-hero,
+  .search-page-header,
+  .entry-group-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-search-form {
+    grid-template-columns: 1fr;
   }
 }
 

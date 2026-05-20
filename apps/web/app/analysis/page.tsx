@@ -133,9 +133,8 @@ export default async function AnalysisIndexPage() {
         <p className="kicker">Policy analysis</p>
         <h1>Source-backed analysis profiles, not policy advice</h1>
         <p className="lead">
-          The analysis layer turns public claim/evidence records into
-          deterministic policy dimensions. Every non-empty conclusion links back
-          to claim IDs, source URLs, source language, and original evidence.
+          Derived dimensions over public claim/evidence records. Each non-empty
+          result keeps claim IDs, source URLs, source language, and evidence.
         </p>
         <div className="tag-row hero-meta">
           <MetaLabel label="Profiles">{profiles.length}</MetaLabel>
@@ -165,8 +164,9 @@ export default async function AnalysisIndexPage() {
       </section>
 
       <ReferenceBox
-        description="Short answer for researchers, journalists, and AI answer engines."
-        title="Citation-ready summary"
+        className="compact-reference-box"
+        description="For citation context."
+        title="Summary"
       >
         <p>{citationReadySummary}</p>
         <p className="notice-card">
@@ -178,7 +178,7 @@ export default async function AnalysisIndexPage() {
 
       <div className="docs-layout">
         <nav className="docs-toc" aria-label="Analysis sections">
-          <a href="#meaning">What it means</a>
+          <a href="#meaning">Boundary</a>
           <a href="#dimensions">Dimensions</a>
           <a href="#coverage">Coverage score</a>
           <a href="#themes">Theme analysis</a>
@@ -190,41 +190,28 @@ export default async function AnalysisIndexPage() {
 
         <div className="docs-content">
           <ReferenceBox
-            description="The analysis layer is deliberately conservative."
+            description="Derived metadata with source links."
             id="meaning"
-            title="What this analysis means"
+            title="Boundary"
           >
             <ul className="compact-list">
               <li>
-                It summarizes public tracker claims into consistent dimensions
-                such as disclosure, coursework, exams, privacy, approved tools,
-                and academic integrity.
+                Dimensions summarize public tracker claims into consistent
+                labels.
               </li>
               <li>
-                It preserves original-language evidence as canonical and uses
-                localized display only as helper text.
+                Original-language evidence remains canonical.
               </li>
               <li>
-                It keeps confidence separate from review state. Current analysis
-                profiles are machine candidates until reviewed.
+                Confidence is separate from review state.
               </li>
-            </ul>
-          </ReferenceBox>
-
-          <ReferenceBox
-            description="Boundaries are part of the visible record."
-            title="What this analysis does not mean"
-          >
-            <ul className="compact-list">
               <li>{NO_ADVICE_BOUNDARY}</li>
               <li>
-                `not_mentioned` means the current public tracker profile does
-                not contain source-backed evidence for that dimension. It does
-                not mean the policy does not exist.
+                <code>not_mentioned</code> means no matching public tracker
+                evidence is present in the current profile.
               </li>
               <li>
-                Analysis status is derived metadata. Users should inspect the
-                basis claim IDs and source URLs before reuse.
+                Open basis claim IDs and source URLs before reuse.
               </li>
             </ul>
           </ReferenceBox>

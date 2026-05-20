@@ -94,11 +94,10 @@ export function UniversitiesIndexClient({
     <main className="page-shell page-shell--wide">
       <section className="hero">
         <p className="kicker">Evidence records</p>
-        <h1>Universities</h1>
+        <h1>University records</h1>
         <p className="lead">
-          Browse crawlable university AI policy records with source-backed claims,
-          review state, ranking coverage, official source counts, and versioned
-          public JSON links.
+          Filter source-backed AI policy records by institution, rank coverage,
+          claims, sources, review state, and public JSON.
         </p>
       </section>
 
@@ -127,11 +126,10 @@ export function UniversitiesIndexClient({
         data-university-index-count={records.length}
       >
         <div className="section-heading">
-          <h2>Repository-style index</h2>
+          <h2>Index</h2>
           <p>
-            QS ranking remains active. THE, ARWU, U.S. News, and CWTS are
-            supported as ranking schemas and filters only when source rows match
-            existing university records.
+            Ranking filters are discovery aids; policy claims still come from
+            official sources.
           </p>
         </div>
 

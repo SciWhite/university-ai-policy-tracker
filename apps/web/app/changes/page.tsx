@@ -52,10 +52,8 @@ export default async function ChangesPage() {
         <p className="kicker">Changes</p>
         <h1>Source checks and policy record freshness</h1>
         <p className="lead">
-          This timeline shows source-check and source-change records for public
-          university entries. It is a freshness surface for evidence records, not
-          legal advice, academic integrity advice, or a substitute for official
-          university policy pages.
+          Freshness metadata for public university records: checked dates,
+          changed dates, review state, claim counts, and JSON links.
         </p>
       </section>
 
@@ -79,7 +77,8 @@ export default async function ChangesPage() {
       </section>
 
       <ReferenceBox
-        description="Versioned JSON feed for machines, citations, and audits."
+        className="compact-reference-box"
+        description="Versioned feed for records and agents."
         title="Public changes artifact"
       >
         <ApiEndpointRow
@@ -94,8 +93,7 @@ export default async function ChangesPage() {
         <div className="section-heading">
           <h2>Change timeline</h2>
           <p>
-            {totalSources} official source attributions across {records.length}{" "}
-            public records.
+            {totalSources} source attributions across {records.length} records.
           </p>
         </div>
         {records.length ? (
@@ -153,16 +151,10 @@ export default async function ChangesPage() {
 
       <section className="section">
         <div className="section-heading">
-          <h2>How to read this timeline</h2>
-          <p>Freshness signals, not advice</p>
+          <h2>Boundary</h2>
+          <p>Freshness signals only</p>
         </div>
-        <ul className="compact-list">
-          <li>Last checked records when a source was most recently inspected.</li>
-          <li>Last changed records when a tracked source or claim last changed.</li>
-          <li>Review state describes workflow status; it is separate from confidence.</li>
-          <li>Original-language evidence remains canonical inside claim evidence.</li>
-          <li>{NO_ADVICE_BOUNDARY}</li>
-        </ul>
+        <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
       </section>
     </main>
   );

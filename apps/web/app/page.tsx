@@ -1,27 +1,53 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { PUBLIC_API_VERSION } from "@uapt/shared";
+import { DataList, DataListRow } from "@/components/data-list";
 import { JsonLd } from "@/components/json-ld";
-import { getCatalogUniversities } from "@/lib/catalog";
+import { MetaLabel } from "@/components/meta-label";
+import { StateLabel } from "@/components/state-label";
+import { searchIndexRecords, getSearchIndexRecords } from "@/lib/entity-search";
+import { getChangeRecords } from "@/lib/change-records";
+import { getPolicyAnalysisProfiles } from "@/lib/policy-analysis";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { getStaticUniversityIndexRecords } from "@/lib/university-index-records";
 
 const title = "University AI Policy Tracker";
 const description =
-  "Open, evidence-backed database of university AI policy records, official sources, public JSON, and citation-ready summaries.";
+  "Search public, source-backed university AI policy records, official sources, review states, changes, datasets, and citation-ready public JSON.";
 
-const startLinks = [
-  { label: "AI policy database", href: "/university-ai-policy-database" },
-  { label: "Browse universities", href: "/universities" },
-  { label: "Explore policy analysis", href: "/analysis" },
-  { label: "View changes", href: "/changes" },
-  { label: "Inspect datasets", href: "/datasets" },
-  { label: "Embed widgets", href: "/widgets" },
-  { label: "Contribute evidence", href: "/contribute" },
-  { label: "Review workflow", href: "/review" },
-  { label: "Read API reference", href: "/api-reference" },
-  { label: "Review MCP alpha", href: "/mcp" },
-  { label: "Cite the tracker", href: "/citation" },
-  { label: "Read methodology", href: "/methodology" },
-  { label: "Open public API index", href: "/api/public/v1/index.json" }
+const quickQueries = [
+  "disclosure",
+  "privacy",
+  "coursework",
+  "approved tools",
+  "academic integrity"
+] as const;
+
+const entryGroups = [
+  {
+    title: "Records",
+    links: [
+      { label: "Universities", href: "/universities" },
+      { label: "Analysis", href: "/analysis" },
+      { label: "Changes", href: "/changes" }
+    ]
+  },
+  {
+    title: "Data",
+    links: [
+      { label: "Datasets", href: "/datasets" },
+      { label: "API", href: "/api-reference" },
+      { label: "Widgets", href: "/widgets" }
+    ]
+  },
+  {
+    title: "Trust",
+    links: [
+      { label: "Methodology", href: "/methodology" },
+      { label: "Citation", href: "/citation" },
+      { label: "Contribute", href: "/contribute" }
+    ]
+  }
 ] as const;
 
 export function generateMetadata(): Metadata {
@@ -41,14 +67,28 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function HomePage() {
-  const universities = await getCatalogUniversities();
-  const sourceCount = universities.reduce(
-    (total, university) => total + university.sources.length,
+  const [universities, analysisProfiles, changeRecords, searchRecords] =
+    await Promise.all([
+      getStaticUniversityIndexRecords(),
+      getPolicyAnalysisProfiles(),
+      getChangeRecords(),
+      getSearchIndexRecords()
+    ]);
+  const claimCount = universities.reduce(
+    (total, university) => total + university.claimCount,
     0
   );
+  const sourceCount = universities.reduce(
+    (total, university) => total + university.sourceCount,
+    0
+  );
+  const recentRecords = changeRecords.slice(0, 5);
+  const suggestedRecords = searchIndexRecords(searchRecords, "disclosure", {
+    limit: 5
+  });
 
   return (
-    <main className="page-shell">
+    <main className="page-shell page-shell--wide">
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -91,7 +131,7 @@ export default async function HomePage() {
                 {
                   "@type": "DataDownload",
                   contentUrl: getAbsoluteSiteUrl(
-                    "/api/public/v1/universities.json"
+                    `/api/public/${PUBLIC_API_VERSION}/universities.json`
                   ),
                   encodingFormat: "application/json",
                   name: "Public university records JSON"
@@ -99,10 +139,10 @@ export default async function HomePage() {
                 {
                   "@type": "DataDownload",
                   contentUrl: getAbsoluteSiteUrl(
-                    "/api/public/v1/datasets/universities.jsonl"
+                    `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`
                   ),
-                  encodingFormat: "application/jsonl",
-                  name: "Public university records JSONL"
+                  encodingFormat: "application/json",
+                  name: "Dataset release manifest"
                 }
               ],
               isAccessibleForFree: true,
@@ -116,89 +156,146 @@ export default async function HomePage() {
           ]
         }}
       />
-      <section className="hero">
-        <p className="kicker">Open evidence database</p>
-        <h1>University AI policy records with source-backed evidence</h1>
-        <p className="lead">
-          University AI Policy Tracker publishes crawlable, citation-ready
-          metadata about university AI policy sources, claims, source snapshots,
-          review states, confidence, and public JSON. It is a reference database,
-          not legal advice or academic integrity advice.
-        </p>
-      </section>
 
-      <section className="metrics-grid" aria-label="Public dataset summary">
+      <section className="search-hero" aria-labelledby="home-search-title">
         <div>
-          <span>{universities.length}</span>
-          <p>tracked universities</p>
-        </div>
-        <div>
-          <span>{sourceCount}</span>
-          <p>policy sources</p>
-        </div>
-        <div>
-          <span>0</span>
-          <p>automation hosts connected to production</p>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <h2>Start here</h2>
-          <p>Server-rendered database surfaces and public JSON for reuse.</p>
-        </div>
-        <div className="link-grid">
-          {startLinks.map((startLink) =>
-            startLink.href.startsWith("/api/") ? (
-              <a className="text-card" href={startLink.href} key={startLink.href}>
-                {startLink.label}
-              </a>
-            ) : (
-              <Link className="text-card" href={startLink.href} key={startLink.href}>
-                {startLink.label}
+          <p className="kicker">AI policy database</p>
+          <h1 id="home-search-title">Search university AI policy records</h1>
+          <form action="/search" className="home-search-form" method="get">
+            <label className="visually-hidden" htmlFor="home-search-input">
+              Search public university AI policy records
+            </label>
+            <input
+              id="home-search-input"
+              name="q"
+              placeholder="Search universities, topics, source domains..."
+              type="search"
+            />
+            <button type="submit">Search</button>
+          </form>
+          <div className="quick-query-row" aria-label="Suggested searches">
+            {quickQueries.map((query) => (
+              <Link href={`/search?q=${encodeURIComponent(query)}`} key={query}>
+                {query}
               </Link>
-            )
-          )}
+            ))}
+          </div>
+          <p className="compact-note">
+            Search routes to source-backed public records. It is not a policy
+            conclusion.
+          </p>
         </div>
+        <aside className="search-hero__side" aria-label="Public dataset counts">
+          <div>
+            <span>{universities.length}</span>
+            <p>universities</p>
+          </div>
+          <div>
+            <span>{claimCount}</span>
+            <p>claims</p>
+          </div>
+          <div>
+            <span>{sourceCount}</span>
+            <p>sources</p>
+          </div>
+          <div>
+            <span>{analysisProfiles.length}</span>
+            <p>analysis profiles</p>
+          </div>
+        </aside>
       </section>
 
-      <section className="section">
+      <section className="entry-group-grid" aria-label="Secondary entrances">
+        {entryGroups.map((group) => (
+          <section className="entry-group" key={group.title}>
+            <h2>{group.title}</h2>
+            <ul>
+              {group.links.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </section>
+
+      <section className="section compact-section">
         <div className="section-heading">
-          <h2>Trust model</h2>
-          <p>Original-language evidence stays canonical.</p>
+          <h2>Matching records</h2>
+          <Link href="/search?q=disclosure">Open search</Link>
         </div>
-        <div className="detail-grid">
-          <article className="policy-card">
-            <h3>Evidence layer</h3>
-            <p>
-              Claims trace to official or clearly labeled source URLs, short
-              evidence snippets, source language, and snapshot hashes.
-            </p>
-          </article>
-          <article className="policy-card">
-            <h3>Review layer</h3>
-            <p>
-              Review state and confidence are separate so candidate records do
-              not look like final policy conclusions.
-            </p>
-          </article>
-          <article className="policy-card">
-            <h3>Contribution layer</h3>
-            <p>
-              Source URLs, institution corrections, translation fixes, and
-              course submissions enter review queues before they can affect
-              public claim/evidence records.
-            </p>
-          </article>
-          <article className="policy-card">
-            <h3>Distribution layer</h3>
-            <p>
-              Public pages remain crawlable, and versioned JSON stays available
-              for citation, agents, and downstream analysis.
-            </p>
-          </article>
+        <DataList>
+          {suggestedRecords.map((record) => (
+            <DataListRow
+              actions={
+                <>
+                  <Link href={`/universities/${record.entitySlug}`}>Record</Link>
+                  <a href={record.publicJsonUrl}>JSON</a>
+                </>
+              }
+              key={record.entitySlug}
+              metadata={
+                <>
+                  <StateLabel reviewState={record.reviewState} />
+                  <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
+                  <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
+                </>
+              }
+            >
+              <div className="table-record-title">
+                <Link href={`/universities/${record.entitySlug}`}>
+                  {record.entityName}
+                </Link>
+              </div>
+              <p>{record.sourceBackedSnippet}</p>
+            </DataListRow>
+          ))}
+        </DataList>
+      </section>
+
+      <section className="section compact-section">
+        <div className="section-heading">
+          <h2>Recent checks</h2>
+          <Link href="/changes">View changes</Link>
         </div>
+        <DataList>
+          {recentRecords.map((record) => (
+            <DataListRow
+              actions={
+                <>
+                  <Link href={record.universityUrl}>Record</Link>
+                  <a href={record.publicJsonUrl}>JSON</a>
+                </>
+              }
+              key={record.slug}
+              metadata={
+                <>
+                  <StateLabel reviewState={record.reviewState} />
+                  <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
+                  <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
+                </>
+              }
+            >
+              <div className="table-record-title">{record.name}</div>
+              <p>
+                {record.lastChangedAt
+                  ? `Changed ${formatDate(record.lastChangedAt)}`
+                  : record.lastCheckedAt
+                    ? `Checked ${formatDate(record.lastCheckedAt)}`
+                    : "No public freshness date"}
+              </p>
+            </DataListRow>
+          ))}
+        </DataList>
       </section>
     </main>
   );
+}
+
+function formatDate(value: string): string {
+  return new Intl.DateTimeFormat("en", {
+    dateStyle: "medium",
+    timeZone: "UTC"
+  }).format(new Date(value));
 }

@@ -427,11 +427,9 @@ export default async function DatasetsPage() {
         <p className="kicker">Datasets</p>
         <h1>Public JSON artifacts and release metadata</h1>
         <p className="lead">
-          The current distribution layer is versioned public JSON under{" "}
-          <code>/api/public/{PUBLIC_API_VERSION}</code>. Tracker metadata is open
-          licensed; official source documents retain their original rights.
-          Public pages and public JSON are built from the same promoted release
-          dataset.
+          Versioned public JSON under{" "}
+          <code>/api/public/{PUBLIC_API_VERSION}</code>, built from the same
+          promoted release dataset as the visible pages.
         </p>
       </section>
 
@@ -463,181 +461,198 @@ export default async function DatasetsPage() {
       </section>
 
       <ReferenceBox
-        description="Live read-only artifacts in the public web app."
+        description="Live read-only artifacts grouped by use."
         title="Versioned public JSON"
       >
-        <ApiEndpointRow
-          description="Discovery document for endpoints, trust pages, limitations, and citation rules."
-          label="API index JSON"
-          path={apiIndexPath}
-          url={apiIndexUrl}
-        />
-        <ApiEndpointRow
-          description="List of public university records with counts, review state, dates, and JSON URLs."
-          label="Universities JSON"
-          path={universitiesJsonPath}
-          url={universitiesJsonUrl}
-        />
-        <ApiEndpointRow
-          description="Search public university records by canonical name, alias, official source title, claim summary, source domain, or analysis dimension."
-          label="Entity search JSON"
-          path={searchJsonPath}
-          url={searchJsonUrl}
-        />
-        <ApiEndpointRow
-          description="Safe public search index that can feed a future Pagefind build without exposing raw snapshots or unpublished staging artifacts."
-          label="Safe search index"
-          path={searchIndexPath}
-          url={searchIndexUrl}
-        />
-        <ApiEndpointRow
-          description="Canonical entity aliases and retrieval matches. Alias matches improve recall but do not create policy facts."
-          label="Entity resolution index"
-          path={entityIndexPath}
-          url={entityIndexUrl}
-        />
-        <ApiEndpointRow
-          description="Example university-level record with claims, evidence, official sources, and citation fields."
-          label="Per-university JSON example"
-          path={exampleUniversityPath}
-          url={exampleUniversityUrl}
-        />
-        <ApiEndpointRow
-          description="Example claim/evidence rows for one public university record."
-          label="Per-university claims JSON example"
-          path={exampleClaimsPath}
-          url={exampleClaimsUrl}
-        />
-        <ApiEndpointRow
-          description="Freshness feed for checked and changed public records."
-          label="Recent changes JSON"
-          path={recentChangesPath}
-          url={recentChangesUrl}
-        />
-        <ApiEndpointRow
-          description="Manifest for deterministic policy analysis dimensions, endpoint paths, limitations, and schema version."
-          label="Analysis API index"
-          path={analysisIndexPath}
-          url={analysisIndexUrl}
-        />
-        <ApiEndpointRow
-          description="Example university policy analysis profile derived from public claim/evidence records."
-          label="Per-university analysis JSON example"
-          path={exampleAnalysisPath}
-          url={exampleAnalysisUrl}
-        />
-        <ApiEndpointRow
-          description="Coverage score list for public analysis profiles. Scores measure breadth of source-backed public coverage, not policy quality."
-          label="Policy coverage scores"
-          path={analysisCoverageScoresPath}
-          url={analysisCoverageScoresUrl}
-        />
-        <ApiEndpointRow
-          description="Read-only page-quality gates, indexability status, analysis review workflow, and no-advice boundaries for public analysis pages."
-          label="Analysis page quality"
-          path={analysisPageQualityPath}
-          url={analysisPageQualityUrl}
-        />
-        <ApiEndpointRow
-          description="Machine-readable reports index with report URLs, metrics, data links, feeds, and outreach discovery."
-          label="Reports index"
-          path={reportsIndexPath}
-          url={reportsIndexUrl}
-        />
-        <ApiEndpointRow
-          description="Media, newsletter, researcher-email, and social copy with explicit use boundaries."
-          label="Report outreach package"
-          path={reportOutreachPath}
-          url={reportOutreachUrl}
-        />
-        <ApiEndpointRow
-          description="QS 2026 target coverage with public, staging-only, and missing status. This is collection coverage, not policy quality."
-          label="QS coverage"
-          path={qsCoveragePath}
-          url={qsCoverageUrl}
-        />
-        <ApiEndpointRow
-          description="Public source snapshot metadata, Firecrawl verification metadata, and staging source/fetch status rows for repair and recrawl planning. This is not claim evidence."
-          label="Source health"
-          path={sourceHealthPath}
-          url={sourceHealthUrl}
-        />
-        <ApiEndpointRow
-          description="Unpromoted staging run queue metadata for validation, repair, and review planning."
-          label="Review queue"
-          path={reviewQueuePath}
-          url={reviewQueueUrl}
-        />
-        <ApiEndpointRow
-          description="Release manifest with artifact URLs, row counts, byte sizes, and SHA-256 checksums."
-          label="Dataset release manifest"
-          path={latestDatasetManifestPath}
-          url={latestDatasetManifestUrl}
-        />
-        <ApiEndpointRow
-          description="Chart-ready source-language and review-state distributions for the May 2026 baseline report."
-          label="Report chart data"
-          path={reportChartDataPath}
-          url={reportChartDataUrl}
-        />
-        <ApiEndpointRow
-          description="Discovery document for embeddable widget types, script URL, constraints, and example HTML."
-          label="Widget index JSON"
-          path={widgetIndexPath}
-          url={widgetIndexUrl}
-        />
-        <ApiEndpointRow
-          description="Example policy coverage widget payload. Coverage is source-backed breadth, not policy quality."
-          label="Policy coverage widget JSON"
-          path={policyCoverageWidgetPath}
-          url={policyCoverageWidgetUrl}
-        />
-        <ApiEndpointRow
-          description="Example source freshness widget payload with last checked date and source-health counts."
-          label="Source freshness widget JSON"
-          path={sourceFreshnessWidgetPath}
-          url={sourceFreshnessWidgetUrl}
-        />
-        <ApiEndpointRow
-          description="Example review-state widget payload with confidence and candidate/reviewed claim counts."
-          label="Review-state widget JSON"
-          path={reviewStateWidgetPath}
-          url={reviewStateWidgetUrl}
-        />
-        <ApiEndpointRow
-          description="Read-only MCP alpha design manifest for agent integrations."
-          label="MCP alpha manifest"
-          path={mcpManifestPath}
-          url={mcpManifestUrl}
-        />
-        <ApiEndpointRow
-          description="Read-only MCP alpha tool catalog with input schemas, required output fields, and prohibited mutations."
-          label="MCP tool catalog"
-          path={mcpToolCatalogPath}
-          url={mcpToolCatalogUrl}
-        />
-        <ApiEndpointRow
-          description="Machine-readable citation templates, required fields, and evidence reuse rules."
-          label="Citation metadata"
-          path={citationMetadataPath}
-          url={citationMetadataUrl}
-        />
-        <ApiEndpointRow
-          description="Read-only contribution workflow metadata, GitHub issue template URLs, and publication boundaries."
-          label="Contribution index"
-          path={contributionIndexPath}
-          url={contributionIndexUrl}
-        />
-        <ApiEndpointRow
-          description="Read-only contribution review queues, moderation safeguards, and publication gates."
-          label="Review policy"
-          path={reviewPolicyPath}
-          url={reviewPolicyUrl}
-        />
+        <div className="endpoint-group-grid">
+          <section className="endpoint-group">
+            <h3>Core records</h3>
+            <ApiEndpointRow
+              description="Endpoint discovery and trust links."
+              label="API index JSON"
+              path={apiIndexPath}
+              url={apiIndexUrl}
+            />
+            <ApiEndpointRow
+              description="University records with review state, dates, and JSON URLs."
+              label="Universities JSON"
+              path={universitiesJsonPath}
+              url={universitiesJsonUrl}
+            />
+            <ApiEndpointRow
+              description="Example public university record."
+              label="Per-university JSON"
+              path={exampleUniversityPath}
+              url={exampleUniversityUrl}
+            />
+            <ApiEndpointRow
+              description="Example claim/evidence rows."
+              label="Claims JSON"
+              path={exampleClaimsPath}
+              url={exampleClaimsUrl}
+            />
+            <ApiEndpointRow
+              description="Checked and changed records."
+              label="Recent changes JSON"
+              path={recentChangesPath}
+              url={recentChangesUrl}
+            />
+            <ApiEndpointRow
+              description="Release artifacts, row counts, sizes, and checksums."
+              label="Dataset manifest"
+              path={latestDatasetManifestPath}
+              url={latestDatasetManifestUrl}
+            />
+          </section>
+
+          <section className="endpoint-group">
+            <h3>Search and analysis</h3>
+            <ApiEndpointRow
+              description="Entity search over promoted public records."
+              label="Search JSON"
+              path={searchJsonPath}
+              url={searchJsonUrl}
+            />
+            <ApiEndpointRow
+              description="Safe search index; no raw snapshots or staging artifacts."
+              label="Search index"
+              path={searchIndexPath}
+              url={searchIndexUrl}
+            />
+            <ApiEndpointRow
+              description="Canonical aliases and retrieval hints."
+              label="Entity aliases"
+              path={entityIndexPath}
+              url={entityIndexUrl}
+            />
+            <ApiEndpointRow
+              description="Policy analysis dimension manifest."
+              label="Analysis index"
+              path={analysisIndexPath}
+              url={analysisIndexUrl}
+            />
+            <ApiEndpointRow
+              description="Example per-university analysis profile."
+              label="Analysis profile"
+              path={exampleAnalysisPath}
+              url={exampleAnalysisUrl}
+            />
+            <ApiEndpointRow
+              description="Coverage breadth scores, not policy quality."
+              label="Coverage scores"
+              path={analysisCoverageScoresPath}
+              url={analysisCoverageScoresUrl}
+            />
+            <ApiEndpointRow
+              description="Public analysis page gates."
+              label="Analysis page quality"
+              path={analysisPageQualityPath}
+              url={analysisPageQualityUrl}
+            />
+          </section>
+
+          <section className="endpoint-group">
+            <h3>Reports and embeds</h3>
+            <ApiEndpointRow
+              description="Public report index."
+              label="Reports index"
+              path={reportsIndexPath}
+              url={reportsIndexUrl}
+            />
+            <ApiEndpointRow
+              description="Media and newsletter copy with boundaries."
+              label="Outreach package"
+              path={reportOutreachPath}
+              url={reportOutreachUrl}
+            />
+            <ApiEndpointRow
+              description="May 2026 chart data."
+              label="Report chart data"
+              path={reportChartDataPath}
+              url={reportChartDataUrl}
+            />
+            <ApiEndpointRow
+              description="Widget discovery."
+              label="Widget index"
+              path={widgetIndexPath}
+              url={widgetIndexUrl}
+            />
+            <ApiEndpointRow
+              description="Example coverage widget."
+              label="Policy coverage widget"
+              path={policyCoverageWidgetPath}
+              url={policyCoverageWidgetUrl}
+            />
+            <ApiEndpointRow
+              description="Example source freshness widget."
+              label="Source freshness widget"
+              path={sourceFreshnessWidgetPath}
+              url={sourceFreshnessWidgetUrl}
+            />
+            <ApiEndpointRow
+              description="Example review-state widget."
+              label="Review-state widget"
+              path={reviewStateWidgetPath}
+              url={reviewStateWidgetUrl}
+            />
+          </section>
+
+          <section className="endpoint-group">
+            <h3>Review and integrations</h3>
+            <ApiEndpointRow
+              description="QS 2026 collection coverage."
+              label="QS coverage"
+              path={qsCoveragePath}
+              url={qsCoverageUrl}
+            />
+            <ApiEndpointRow
+              description="Source status for repair and recrawl planning."
+              label="Source health"
+              path={sourceHealthPath}
+              url={sourceHealthUrl}
+            />
+            <ApiEndpointRow
+              description="Unpromoted staging run queue metadata."
+              label="Review queue"
+              path={reviewQueuePath}
+              url={reviewQueueUrl}
+            />
+            <ApiEndpointRow
+              description="Read-only MCP alpha manifest."
+              label="MCP manifest"
+              path={mcpManifestPath}
+              url={mcpManifestUrl}
+            />
+            <ApiEndpointRow
+              description="Read-only MCP tool catalog."
+              label="MCP tool catalog"
+              path={mcpToolCatalogPath}
+              url={mcpToolCatalogUrl}
+            />
+            <ApiEndpointRow
+              description="Citation templates and reuse rules."
+              label="Citation metadata"
+              path={citationMetadataPath}
+              url={citationMetadataUrl}
+            />
+            <ApiEndpointRow
+              description="Contribution workflow metadata."
+              label="Contribution index"
+              path={contributionIndexPath}
+              url={contributionIndexUrl}
+            />
+            <ApiEndpointRow
+              description="Contribution review policy."
+              label="Review policy"
+              path={reviewPolicyPath}
+              url={reviewPolicyUrl}
+            />
+          </section>
+        </div>
       </ReferenceBox>
 
       <ReferenceBox
-        description="Bulk files for researchers, developers, and agents. Each artifact is versioned under /api/public/v1 and included in the release checksum file."
+        description="Bulk files with row counts, sizes, and checksums."
         title="Dataset release downloads"
       >
         <div className="tag-row">
@@ -665,7 +680,8 @@ export default async function DatasetsPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Ranking sources are discovery and filtering inputs, not policy conclusions."
+        className="compact-reference-box"
+        description="Discovery inputs, not policy conclusions."
         title="Ranking and index boundaries"
       >
         <ul className="compact-list">
@@ -673,16 +689,11 @@ export default async function DatasetsPage() {
             <li key={boundary}>{boundary}</li>
           ))}
         </ul>
-        <p>
-          Ranking rows can help users browse public records, but the evidence
-          model remains claim-first: official sources, source snapshot hashes,
-          original-language evidence, confidence, and review state determine what
-          appears in public JSON and university pages.
-        </p>
       </ReferenceBox>
 
       <ReferenceBox
-        description="Repository-level trust assets for developers, researchers, and data consumers."
+        className="compact-reference-box"
+        description="Repository-level trust assets."
         title="GitHub trust assets"
       >
         <ul className="compact-list">
@@ -692,17 +703,6 @@ export default async function DatasetsPage() {
             </li>
           ))}
         </ul>
-        <p>
-          Release operations are documented in{" "}
-          <a href={`${githubRepositoryUrl}/blob/main/docs/dataset-release-process.md`}>
-            docs/dataset-release-process.md
-          </a>
-          . Report and media distribution is documented in{" "}
-          <a href={`${githubRepositoryUrl}/blob/main/docs/report-distribution-playbook.md`}>
-            docs/report-distribution-playbook.md
-          </a>
-          .
-        </p>
       </ReferenceBox>
 
       {manifest ? (
