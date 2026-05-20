@@ -457,8 +457,17 @@ h3 {
 
 .text-card {
   color: var(--color-text);
+  display: grid;
+  gap: 8px;
   font-weight: 700;
   text-decoration: none;
+}
+
+.text-card small {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
 }
 
 .policy-card {

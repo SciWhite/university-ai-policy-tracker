@@ -9,6 +9,7 @@ import { getSiteBaseUrl } from "@/lib/site-url";
 
 const primaryTabs = [
   { label: "Overview", href: "/" },
+  { label: "AI Policy Database", href: "/university-ai-policy-database" },
   { label: "Universities", href: "/universities" },
   { label: "Search", href: "/search" },
   { label: "Analysis", href: "/analysis" },
@@ -95,6 +96,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </p>
             <nav aria-label="Trust and reference links">
               <Link href="/methodology">Methodology</Link>
+              <Link href="/university-ai-policy-database">
+                AI Policy Database
+              </Link>
               <Link href="/search">Search</Link>
               <Link href="/citation">Citation</Link>
               <Link href="/datasets">Datasets</Link>

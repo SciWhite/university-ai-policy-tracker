@@ -5,6 +5,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 ## Scope
 - University policies and guidance for GenAI, ChatGPT, DeepSeek, Microsoft Copilot, institutional AI services, academic integrity, privacy, teaching, research, security review, procurement, and related governance.
 - Canonical entity pages start at /universities.
+- The AI/search database entry page is available at /university-ai-policy-database.
 - Trust pages are available at /methodology, /citation, /datasets, and /changes.
 - Reports and outreach assets are available at /reports, /reports/2026-05, and /reports/outreach.
 - Public feeds are available at /feeds/reports.xml, /feeds/recent-changes.xml, and /feeds/atom.xml.
@@ -51,6 +52,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - API responses use a v1 envelope with apiVersion, generatedAt, canonicalUrl, license, citation, and data fields.
 
 ## Recommended Agent Retrieval Sequence
+- Start at /university-ai-policy-database when you need the canonical AI/search overview, FAQ answers, and links to source-backed retrieval surfaces.
 - Resolve the entity with /api/public/v1/search.json?q={query} or /api/public/v1/entities/index.json.
 - Fetch the canonical university record at /api/public/v1/universities/{slug}.json.
 - Fetch claim-level evidence at /api/public/v1/claims/{slug}.json when making claim-level statements.

@@ -12,6 +12,7 @@ import { getSiteBaseUrl } from "../lib/site-url";
 
 const staticRoutes = [
   "",
+  "/university-ai-policy-database",
   "/universities",
   "/tools",
   "/sources",

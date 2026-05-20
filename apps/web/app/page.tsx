@@ -9,6 +9,7 @@ const description =
   "Open, evidence-backed database of university AI policy records, official sources, public JSON, and citation-ready summaries.";
 
 const startLinks = [
+  { label: "AI policy database", href: "/university-ai-policy-database" },
   { label: "Browse universities", href: "/universities" },
   { label: "Explore policy analysis", href: "/analysis" },
   { label: "View changes", href: "/changes" },
