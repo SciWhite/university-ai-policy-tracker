@@ -42,6 +42,9 @@ snapshots/
 screenshots/
 playwright-report/
 test-results/
+.playwright-cli/
+.playwright-mcp/
+output/
 
 # Deployment and IDE state
 .vercel/
