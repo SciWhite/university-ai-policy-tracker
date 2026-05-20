@@ -81,10 +81,9 @@ export default async function WidgetsPage() {
         <p className="kicker">Widgets</p>
         <h1>Embeddable read-only policy status cards</h1>
         <p className="lead">
-          Add a small University AI Policy Tracker card to a library guide,
-          newsletter, research page, or school-facing resource. Widgets link back
-          to canonical records, show review state and freshness, and avoid
-          exposing unreviewed claim text.
+          Small read-only cards for public pages. Widgets link back to canonical
+          records, show review state and freshness, and avoid unreviewed claim
+          text.
         </p>
       </section>
 
@@ -108,7 +107,7 @@ export default async function WidgetsPage() {
       </section>
 
       <ReferenceBox
-        description="Copy the script tag into a public web page. The script renders inside a Shadow DOM card and reads only public widget JSON."
+        description="Script tags read only public widget JSON."
         title="Embed snippets"
       >
         <DataList>
@@ -146,7 +145,7 @@ export default async function WidgetsPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Server-rendered previews of the same public fields used by the embeddable JavaScript."
+        description="Same fields used by the embeddable JavaScript."
         title="Widget previews"
       >
         <div className="metrics-grid" aria-label="Widget preview cards">
@@ -225,7 +224,7 @@ export default async function WidgetsPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Widget JSON endpoints have CORS enabled for public read-only embedding."
+        description="CORS-enabled read-only widget JSON."
         title="Widget data endpoints"
       >
         <ApiEndpointRow
@@ -267,24 +266,16 @@ export default async function WidgetsPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Widget output is a distribution layer, not a new source of truth."
+        className="compact-reference-box"
+        description="Distribution layer, not a new source of truth."
         title="Publication rules"
       >
         <ul className="compact-list">
           <li>Widgets must link back to canonical tracker pages.</li>
           <li>Widgets display review state and last checked or changed dates.</li>
-          <li>
-            Coverage widgets describe source-backed coverage breadth, not policy
-            quality or institutional maturity.
-          </li>
-          <li>
-            Widgets do not expose unreviewed claim text; candidate counts remain
-            clearly labeled.
-          </li>
-          <li>
-            Original-language evidence and source URLs remain canonical in the
-            linked public record.
-          </li>
+          <li>Coverage means source-backed breadth, not policy quality.</li>
+          <li>Candidate counts remain clearly labeled.</li>
+          <li>Linked records keep canonical evidence and source URLs.</li>
           <li>
             Widgets do not provide legal advice or academic integrity advice.
           </li>

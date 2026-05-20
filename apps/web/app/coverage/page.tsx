@@ -74,10 +74,8 @@ export default async function CoveragePage() {
         <p className="kicker">Coverage</p>
         <h1>Collection coverage, not policy quality</h1>
         <p className="lead">
-          This dashboard tracks whether target universities have public
-          source-backed records, staging runs awaiting review, or missing source
-          discovery. It is a crawl/review planning surface, not a ranking of AI
-          policy quality, strictness, safety, or compliance.
+          Crawl and review planning for public records, staging-only runs, and
+          missing targets.
         </p>
         <div className="tag-row hero-meta">
           <MetaLabel label="Ranking">{coverage.ranking.system}</MetaLabel>
@@ -118,7 +116,7 @@ export default async function CoveragePage() {
 
         <div className="docs-content">
           <ReferenceBox
-            description="Coverage pages are intentionally about collection state and review work."
+            description="Collection state and review work."
             id="surfaces"
             title="Review surfaces"
           >
@@ -132,10 +130,7 @@ export default async function CoveragePage() {
                 }
               >
                 <h2>QS 2026 coverage</h2>
-                <p>
-                  Public, staging-only, and missing status for the QS 2026
-                  target list used for crawl batching.
-                </p>
+                <p>Public, staging-only, and missing status for QS 2026 targets.</p>
               </DataListRow>
               <DataListRow
                 actions={<Link href="/source-health">Open</Link>}
@@ -146,10 +141,7 @@ export default async function CoveragePage() {
                 }
               >
                 <h2>Source health</h2>
-                <p>
-                  Public source snapshot metadata and staging fetch/source
-                  health indicators for recrawl and repair planning.
-                </p>
+                <p>Source snapshot and fetch status for repair planning.</p>
               </DataListRow>
               <DataListRow
                 actions={<Link href="/review/queue">Open</Link>}
@@ -160,10 +152,7 @@ export default async function CoveragePage() {
                 }
               >
                 <h2>Review queue</h2>
-                <p>
-                  Unpromoted staging runs grouped by validation status,
-                  source breadth, and recommended next action.
-                </p>
+                <p>Unpromoted runs by validation status and next action.</p>
               </DataListRow>
             </DataList>
           </ReferenceBox>

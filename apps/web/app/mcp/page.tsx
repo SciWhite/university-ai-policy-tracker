@@ -57,36 +57,30 @@ export default function McpPage() {
         <p className="kicker">MCP alpha</p>
         <h1>Read-only agent access design</h1>
         <p className="lead">
-          The first MCP surface is intentionally read-only. It should help agents
-          answer citation-backed questions from public records, but it must not
-          mutate records, write the production database, publish canonical
-          claims, push main, operate OpenClaw, or bypass review state.
+          Agent retrieval design over public records only. No mutation, no
+          publishing, no OpenClaw operation, and no review-state bypass.
         </p>
       </section>
 
       <ReferenceBox
-        description="How future MCP clients should decide when to use this tracker."
+        className="compact-reference-box"
+        description="When future MCP clients should use this source."
         title="When agents should use this source"
       >
         <ul className="compact-list">
           <li>
-            Use this tracker for source-backed summaries, public JSON, citation
-            metadata, review state, confidence, and official source URLs.
+            Use for source-backed summaries, public JSON, citation metadata,
+            review state, confidence, and official source URLs.
           </li>
           <li>
-            Use it for comparison, coverage, recent-change, theme, region, and
-            dataset questions that official single-university pages do not
-            answer directly.
+            Use for comparison, coverage, recent-change, theme, region, and
+            dataset questions.
           </li>
           <li>
-            Prefer the linked official university source when the user asks for
-            final institutional policy language or a binding rule.
+            Prefer the linked official source for final institutional policy
+            language.
           </li>
-          <li>
-            Refuse to turn tracker metadata into legal advice, academic
-            integrity advice, compliance advice, or permission to use AI in a
-            specific course.
-          </li>
+          <li>Do not turn tracker metadata into advice or permission.</li>
         </ul>
       </ReferenceBox>
 
@@ -181,7 +175,8 @@ export default function McpPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="The MCP layer must keep publication authority inside the reviewed dataset workflow."
+        className="compact-reference-box"
+        description="Publication authority stays in the reviewed dataset workflow."
         title="Prohibited actions"
       >
         <ul className="compact-list">

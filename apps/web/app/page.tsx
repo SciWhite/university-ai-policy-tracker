@@ -33,11 +33,29 @@ const entryGroups = [
     ]
   },
   {
-    title: "Data",
+    title: "Data and API",
     links: [
       { label: "Datasets", href: "/datasets" },
       { label: "API", href: "/api-reference" },
+      { label: "MCP", href: "/mcp" },
       { label: "Widgets", href: "/widgets" }
+    ]
+  },
+  {
+    title: "Updates",
+    links: [
+      { label: "Changes", href: "/changes" },
+      { label: "Reports", href: "/reports" },
+      { label: "Feeds", href: "/feeds/atom.xml" }
+    ]
+  },
+  {
+    title: "Coverage and review",
+    links: [
+      { label: "Coverage", href: "/coverage" },
+      { label: "Source health", href: "/source-health" },
+      { label: "Review", href: "/review" },
+      { label: "Queue", href: "/review/queue" }
     ]
   },
   {

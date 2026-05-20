@@ -41,9 +41,8 @@ export default async function SourceHealthPage() {
         <p className="kicker">Source health</p>
         <h1>Source status for public snapshots and staging runs</h1>
         <p className="lead">
-          Source health helps plan recrawls, repairs, and manual review. Public
-          rows reflect promoted source snapshot metadata; staging rows remain
-          planning metadata and never publish canonical claims by themselves.
+          Recrawl, repair, and review planning for public source snapshots and
+          staging fetches.
         </p>
         <div className="tag-row hero-meta">
           <MetaLabel label="Public sources">
@@ -77,18 +76,13 @@ export default async function SourceHealthPage() {
       </section>
 
       <ReferenceBox
-        description="These statuses are for crawler/review planning. They do not authorize bypassing access controls."
+        className="compact-reference-box"
+        description="Crawler/review planning only."
         title="Access and rights boundary"
       >
         <ul className="compact-list">
-          <li>
-            Never bypass robots.txt, login walls, paywalls, CAPTCHA, WAF, or
-            other access controls.
-          </li>
-          <li>
-            Do not publish raw source text, PDFs, screenshots, or normalized
-            crawl text as tracker metadata.
-          </li>
+          <li>Never bypass robots, login walls, paywalls, CAPTCHA, or WAF.</li>
+          <li>Do not publish raw source text, PDFs, screenshots, or crawl text.</li>
           <li>
             Public <SourceHealthLabel status="ok" /> means the promoted record
             has source attribution and snapshot metadata; it is not a live
@@ -101,9 +95,7 @@ export default async function SourceHealthPage() {
             officialness, or canonical evidence status.
           </li>
           <li>
-            Stage 2 maintenance rows can update source-health planning metadata,
-            but they must not be added to the public release manifest as
-            claim/evidence data.
+            Maintenance rows are planning metadata, not claim/evidence data.
           </li>
           {data.firecrawlVerification.requestPolicy ? (
             <li>{data.firecrawlVerification.requestPolicy}</li>

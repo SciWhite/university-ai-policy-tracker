@@ -48,15 +48,13 @@ export default function ReviewWorkflowPage() {
         <p className="kicker">Review workflow</p>
         <h1>Contribution review before publication</h1>
         <p className="lead">
-          Review keeps the public database useful without letting submissions
-          become unsupported facts. Every contribution is evaluated for source
-          provenance, source language, evidence, rights, privacy, moderation
-          risk, and consistency with the claim/evidence contract.
+          Review turns submissions into source-checked tasks before anything can
+          affect public claim/evidence records.
         </p>
       </section>
 
       <ReferenceBox
-        description="Analysis review is stricter than page-quality publication. A page can pass publication gates while its derived analysis remains machine_candidate."
+        description="Page quality does not approve derived analysis."
         id="analysis-review"
         title="Analysis profile review"
         actions={
@@ -93,7 +91,7 @@ export default function ReviewWorkflowPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Each queue has a different publication gate. Passing a queue does not bypass source evidence or review-state labeling."
+        description="Each queue has its own publication gate."
         title="Review queues"
       >
         <DataList>
@@ -111,7 +109,7 @@ export default function ReviewWorkflowPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="The first review layer is intentionally stricter than a normal issue tracker."
+        description="Issue intake with publication safeguards."
         title="Safeguards"
       >
         <div className="detail-grid">
@@ -143,12 +141,13 @@ export default function ReviewWorkflowPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Review state and confidence remain separate in every contribution path."
+        className="compact-reference-box"
+        description="Review state and confidence remain separate."
         title="Publication gates"
       >
         <ol className="compact-list">
           <li>Submission creates a review task, not a canonical fact.</li>
-          <li>Source review checks officialness, source language, accessibility, and rights caveats.</li>
+          <li>Source review checks officialness, language, access, and rights.</li>
           <li>Claim/evidence review checks short original-language evidence and attribution.</li>
           <li>Course submissions pass moderation before any course entity can be published.</li>
           <li>Institution corrections preserve audit history and cite supporting sources.</li>
@@ -157,7 +156,7 @@ export default function ReviewWorkflowPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="This endpoint is metadata for contributors and agents. It is not a write API."
+        description="Read-only metadata for contributors and agents."
         title="Review policy JSON"
       >
         <ApiEndpointRow

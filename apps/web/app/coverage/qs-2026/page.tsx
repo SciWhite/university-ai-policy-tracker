@@ -40,10 +40,8 @@ export default async function QsCoveragePage() {
         <p className="kicker">QS 2026 coverage</p>
         <h1>Public, staging, and missing tracker coverage</h1>
         <p className="lead">
-          QS rows are used here as a collection target list. A public status
-          means the tracker has a promoted source-backed record. Staging-only
-          means a local artifact run exists but still needs validation, review,
-          and manifest promotion before it can become public data.
+          QS rows are collection targets. Public means promoted source-backed
+          record; staging-only still needs validation, review, and promotion.
         </p>
         <div className="tag-row hero-meta">
           <MetaLabel label="Public">{data.summary.publicCount}</MetaLabel>
@@ -56,7 +54,8 @@ export default async function QsCoveragePage() {
       </section>
 
       <ReferenceBox
-        description="Collection coverage is not a policy quality score and should not be cited as a ranking of AI governance maturity."
+        className="compact-reference-box"
+        description="Collection status, not a policy quality score."
         title="Coverage boundary"
       >
         <ul className="compact-list">
@@ -74,7 +73,7 @@ export default async function QsCoveragePage() {
             </a>
           ) : null
         }
-        description="Rows preserve QS rank text, including ties, while the tracker stores separate coverage status and review metadata."
+        description="Rows preserve QS rank text while keeping coverage status separate."
         title="QS 2026 target rows"
       >
         <div className="reference-table-wrap">
@@ -126,7 +125,7 @@ export default async function QsCoveragePage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Versioned JSON mirrors the visible dashboard fields and citation caveats."
+        description="Versioned JSON mirrors the visible dashboard fields."
         title="Coverage JSON"
       >
         <ApiEndpointRow

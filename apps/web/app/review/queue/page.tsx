@@ -35,9 +35,8 @@ export default async function ReviewQueuePage() {
         <p className="kicker">Review queue</p>
         <h1>Staging runs awaiting repair, review, or promotion</h1>
         <p className="lead">
-          This page turns local staging metadata into a visible queue. It does
-          not promote staging data, change review state, write the production
-          database, or publish canonical claims.
+          Visible queue for unpromoted staging runs. It cannot publish data or
+          change review state.
         </p>
         <div className="tag-row hero-meta">
           <MetaLabel label="Total runs">{data.summary.totalRuns}</MetaLabel>
@@ -54,18 +53,19 @@ export default async function ReviewQueuePage() {
       </section>
 
       <ReferenceBox
-        description="A pass here means artifact shape validation and source breadth checks are ready for review. It is not a publication decision."
+        className="compact-reference-box"
+        description="Validation is not a publication decision."
         title="Publication boundary"
       >
         <ul className="compact-list">
-          <li>Only directories in the current public release manifest feed public pages and public claim/evidence JSON.</li>
-          <li>Staging runs still need source review, claim/evidence review, and manifest promotion.</li>
+          <li>Only release-manifest directories feed public pages and JSON.</li>
+          <li>Staging runs still need review and manifest promotion.</li>
           <li>Review queue metadata cannot be used as official source evidence.</li>
         </ul>
       </ReferenceBox>
 
       <ReferenceBox
-        description="Unpromoted runs sorted with validator failures first."
+        description="Unpromoted runs, validator failures first."
         title="Unpromoted staging runs"
       >
         <div className="reference-table-wrap">
@@ -103,7 +103,7 @@ export default async function ReviewQueuePage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Versioned read-only metadata for agents and maintainers."
+        description="Versioned read-only metadata."
         title="Queue JSON"
       >
         <ApiEndpointRow

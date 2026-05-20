@@ -45,10 +45,8 @@ export default async function ReportsPage() {
         <p className="kicker">Reports</p>
         <h1>Dataset reports and public distribution assets</h1>
         <p className="lead">
-          Reports turn the evidence database into citation-ready public
-          artifacts: baseline releases, change summaries, feed entries, chart
-          data, and outreach copy for researchers, newsletters, teaching
-          centers, and media.
+          Citation-ready release summaries, feeds, chart data, and outreach
+          packages derived from the public dataset.
         </p>
       </section>
 
@@ -64,7 +62,7 @@ export default async function ReportsPage() {
       ) : null}
 
       <ReferenceBox
-        description="Published reports only summarize the public dataset and keep review state visible."
+        description="Published reports summarize public data only."
         title="Published reports"
       >
         <DataList>
@@ -97,7 +95,7 @@ export default async function ReportsPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Machine-readable feeds for reports and source-check/change updates."
+        description="Machine-readable report and change surfaces."
         title="Feeds and public JSON"
       >
         <ApiEndpointRow
@@ -138,7 +136,8 @@ export default async function ReportsPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Reusable copy for people who want to cite or share the project without overstating the data."
+        className="compact-reference-box"
+        description="Reusable copy with risk boundaries."
         title="Media and newsletter package"
       >
         <DataList>
@@ -149,34 +148,27 @@ export default async function ReportsPage() {
             <h2>
               <Link href="/reports/outreach">Outreach package</Link>
             </h2>
-            <p>
-              Short descriptions, newsletter copy, researcher email text, social
-              post copy, and risk boundaries for public sharing.
-            </p>
+            <p>Descriptions, newsletter copy, email text, and social copy.</p>
           </DataListRow>
         </DataList>
       </ReferenceBox>
 
       <ReferenceBox
-        description="Reports rely on the same public contracts as the rest of the site."
+        className="compact-reference-box"
+        description="Same public contracts as the rest of the site."
         title="Distribution contract"
       >
         <ul className="compact-list">
           <li>
-            Reports must distinguish reviewed claims from candidate or
-            needs-review records.
+            Distinguish reviewed claims from candidate or needs-review records.
           </li>
           <li>
-            Original-language evidence remains canonical; translated summaries
-            are only display helpers.
+            Original-language evidence remains canonical.
           </li>
+          <li>The tracker does not provide legal or academic integrity advice.</li>
           <li>
-            The tracker does not provide legal advice or academic integrity
-            advice.
-          </li>
-          <li>
-            Dataset releases, chart data, and public JSON remain versioned under{" "}
-            <code>/api/public/v1/...</code>.
+            Dataset releases, chart data, and JSON stay versioned under{" "}
+            <code>/api/public/v1</code>.
           </li>
           <li>
             Report release operations are tracked in{" "}

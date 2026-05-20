@@ -246,35 +246,30 @@ export default function ApiReferencePage() {
         <p className="kicker">API reference</p>
         <h1>Versioned read-only public data API</h1>
         <p className="lead">
-          The public API is a citation and lookup surface for policy metadata,
-          not an internal app API. Every public JSON endpoint is versioned under{" "}
-          <code>/api/public/{PUBLIC_API_VERSION}/...</code> and should be used
-          with canonical page URLs, public JSON URLs, source URLs, review state,
-          and citation fields.
+          Citation and lookup endpoints for public policy metadata. Every JSON
+          endpoint is versioned under{" "}
+          <code>/api/public/{PUBLIC_API_VERSION}</code>.
         </p>
       </section>
 
       <ReferenceBox
-        description="Recommended use for AI answer engines, research assistants, and data tools."
+        className="compact-reference-box"
+        description="Recommended use for agents and data tools."
         title="Agent and API positioning"
       >
         <ul className="compact-list">
           <li>
-            Use this API when you need source-backed summaries, public JSON,
-            citation metadata, review state, and official source links for
-            university AI policy records.
+            Use for source-backed summaries, public JSON, citation metadata,
+            review state, and official source links.
           </li>
           <li>
-            Use official university pages as the final authority for the
-            institution&apos;s own policy language.
+            Use official university pages as the authority for policy language.
           </li>
           <li>
-            Do not use tracker analysis as legal advice, academic integrity
-            advice, safety advice, or institutional compliance advice.
+            Do not treat analysis as advice, safety guidance, or compliance.
           </li>
           <li>
-            Do not treat alias matches, theme matches, or coverage scores as new
-            policy facts.
+            Alias matches, themes, and coverage scores do not create facts.
           </li>
         </ul>
       </ReferenceBox>
@@ -331,7 +326,7 @@ export default function ApiReferencePage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Read-only endpoints for records, releases, widgets, feeds, and agent integrations."
+        description="Records, releases, widgets, feeds, and agent integrations."
         title="Endpoint families"
       >
         {apiFamilies.map((endpoint) => (
@@ -347,24 +342,20 @@ export default function ApiReferencePage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="All API consumers should preserve the evidence model when displaying or summarizing public data."
+        className="compact-reference-box"
+        description="Preserve the evidence model when reusing public data."
         title="Citation and evidence requirements"
       >
         <ul className="compact-list">
           <li>Cite the canonical page URL and public JSON URL together.</li>
           <li>
-            Treat each claim as reusable only with its source URL, source
-            language, source snapshot hash, evidence snippet, confidence, and
-            review state.
+            Keep source URL, language, snapshot hash, evidence snippet,
+            confidence, and review state with claim reuse.
           </li>
           <li>
-            Keep confidence separate from review state. Confidence is extraction
-            confidence; review state is publication workflow status.
+            Confidence and review state are separate fields.
           </li>
-          <li>
-            Original-language evidence is canonical. Localized display text is
-            only a helper layer.
-          </li>
+          <li>Original-language evidence is canonical.</li>
           <li>
             Do not present machine-candidate or needs-review claims as final
             policy conclusions.
