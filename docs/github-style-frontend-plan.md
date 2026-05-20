@@ -1,556 +1,444 @@
-# GitHub-Style Frontend Revision Plan
+# Frontend UI Redesign Development Plan
 
-This document defines a revised front-end direction for University AI Policy Tracker: a GitHub-inspired, evidence-database interface. It is a planning document only. It does not implement code, migrations, deployments, OpenClaw changes, or new data contracts.
+This document is the execution spec for the next public UI redesign of University AI Policy Tracker. It replaces the earlier GitHub-style revision plan and keeps the work phased so implementation does not widen beyond the approved priority.
 
 Canonical public domain: `https://eduaipolicy.org`.
 
-## 1. Goal
+## 1. Product Direction
 
-The site should feel less like a marketing page and more like an inspectable public evidence repository.
+The public site should feel like a clean, inspectable research database: fast to search, easy to cite, and calm enough for researchers, journalists, university staff, students, and AI answer systems to trust.
 
-The intended user mental model:
+The visual language may borrow from GitHub and Primer:
 
-```text
-university page = repository/entity record
-claim = reviewable issue-like evidence item
-review state = status label
-source snapshot hash = commit-like provenance
-changes page = commit/change history
-diff page = file/claim diff
-datasets page = releases/artifacts
-methodology and citation = README/docs
-```
+- compact tabs,
+- bordered panels,
+- dense tables,
+- neutral surfaces,
+- small labels,
+- code/API rows,
+- release-style artifact lists.
 
-This direction fits the product positioning in `docs/exposure-distribution-architecture.md`: the project is an open, evidence-backed database, not a blog, link directory, or login SaaS.
+The public UI must not use GitHub product language as the main metaphor. Avoid public labels such as `Repository`, `Issues`, `Pull Requests`, `Commits`, or `README` unless the page is literally talking about GitHub. Use neutral product terms instead: `Records`, `Sources`, `Claims`, `Changes`, `Data`, `Citation`, and `Methodology`.
 
-## 2. Current Repo Baseline
+The redesign is not a marketing refresh. It is a product clarity pass for an open evidence database.
 
-The current web app is small and well suited to an incremental redesign.
+## 2. Audience And Success Criteria
 
-Relevant files:
+Primary audience:
 
-- `apps/web/app/globals.css` centralizes semantic tokens, dark mode, card styles, badges, claim cards, evidence blocks, copy buttons, and responsive rules.
-- `apps/web/app/layout.tsx` owns the global header, footer, trust navigation, and theme toggle.
-- `apps/web/app/page.tsx` currently behaves like a lightweight landing/dashboard page.
-- `apps/web/app/universities/page.tsx` is a card-grid university index.
-- `apps/web/app/universities/[slug]/page.tsx` already renders summary, citation record, official sources, reviewed claims, candidate claims, public JSON links, and claim evidence cards.
-- `apps/web/components/claim-evidence-card.tsx` is the most important reusable evidence component.
-- `apps/web/components/citation-copy-actions.tsx` already provides client-side copy actions without making the main content client-only.
-- `apps/web/components/json-ld.tsx` supports structured data on public pages.
-- `packages/crawler-core/src/index.ts` already contains text diff utilities that can support future source/claim diff views.
-- `apps/web/package.json` currently has only Next, React, React DOM, and `@uapt/shared`. There is no Tailwind, shadcn/ui, lucide, Recharts, or React Diff Viewer installed in the current web package.
+- researchers,
+- journalists,
+- policy analysts,
+- university staff,
+- AI/LLM systems retrieving source-backed records.
 
-Implication: the first redesign pass should not add a large UI dependency stack. Use the existing CSS/token approach first, then add dependencies only when a feature justifies them.
+Secondary audience:
 
-## 3. Design Principles
+- developers using the public JSON/API,
+- contributors submitting official source URLs or corrections,
+- internal review operators checking coverage and source health.
 
-### 3.1 GitHub-Inspired, Not GitHub-Branded
+Success criteria:
 
-The design may borrow interaction patterns:
+- A first-time visitor can search for a university, source domain, policy term, or AI tool from the first screen.
+- Core records remain crawlable and citation-ready.
+- Top navigation is short and legible on desktop and mobile.
+- Secondary pages remain reachable without crowding the top navigation.
+- Page copy is minimal, factual, and database-like.
+- Necessary caveats remain visible without turning every page into an explainer.
 
-- repo-style headers,
-- tab navigation,
-- boxed sections,
-- labels,
-- timeline rows,
-- file/diff panels,
-- release artifact lists,
-- compact tables,
-- copyable code/API blocks.
+## 3. Design Decisions
 
-It should not copy GitHub branding, logos, exact page structure, or product language where it would confuse users.
+### Visual System
 
-Use plain product terms:
+Use a GitHub/Primer-like base without copying GitHub branding:
 
-- `Reviewed claims`, not `Pull requests`.
-- `Source history`, not `Commits` unless a Git-backed artifact is literally being shown.
-- `Review state`, not `Issue status`.
-- `Public JSON`, not `Raw file` unless linking to a raw file.
+- white/gray canvas with token-driven dark mode,
+- blue accent for links and primary actions,
+- semantic success/attention/danger labels,
+- 6-8px border radius,
+- low or no shadows,
+- visible borders instead of floating cards,
+- compact tables and list rows,
+- tab navigation with strong active states,
+- monospace only for hashes, API paths, and code values.
 
-### 3.2 Preserve The Evidence Contract
+Do not add Tailwind, shadcn/ui, lucide, Recharts, chart libraries, or a diff viewer by default. The current plain TSX/CSS approach is the default until a later implementation ticket proves a dependency is necessary.
 
-The visual system must reinforce the existing data model:
+### Copy Style
 
-- original-language evidence is canonical,
-- translations are display helpers only,
-- confidence and review state are separate,
-- claims without evidence should not look authoritative,
-- public pages must remain SSR/SSG friendly,
-- no legal advice or academic integrity advice should be implied.
+Use minimal, factual UI text:
 
-### 3.3 Dense But Readable
+- headings,
+- short labels,
+- metrics,
+- table columns,
+- compact helper text,
+- badges,
+- short notices where misunderstanding would be risky.
 
-This project benefits from GitHub-like density, but the audience includes researchers, journalists, university staff, students, and AI agents. The interface should be compact, scannable, and calm, not developer-only.
+Avoid long educational paragraphs on core pages. Move deeper context to `Methodology`, `Citation`, and `Datasets`.
 
-## 4. Revised Information Architecture
+Keep these boundaries visible but concise:
 
-### 4.1 Global Shell
+- the tracker is not legal advice,
+- the tracker is not academic integrity advice,
+- official university sources remain canonical,
+- original-language evidence remains canonical,
+- review state is separate from confidence,
+- candidate records are not final conclusions.
 
-Replace the current simple header with a public database shell:
+### Homepage Role
 
-- top bar:
-  - site name,
-  - short positioning phrase,
-  - GitHub repo link, if public,
-  - API index link,
-  - theme toggle.
-- secondary tab nav:
-  - Overview,
-  - Universities,
-  - Changes,
-  - Datasets,
-  - Methodology,
-  - Citation.
+The homepage `/` should become a modern search-first database entry, closer to a clean search page or assistant-style search surface than a landing page.
 
-Footer should stay trust-focused:
+First screen requirements:
 
-- no advice boundary,
-- methodology,
-- citation,
-- datasets,
-- changes,
-- `llms.txt`,
-- public API index.
+- prominent search input for fuzzy search across universities, aliases, official source titles, claims, domains, AI tools, and policy themes,
+- short product title or one-line positioning,
+- a few compact entry links for `Universities`, `Analysis`, `Datasets`, `Methodology`, and `Citation`,
+- lightweight metrics that help trust and SEO/GEO without visual clutter.
 
-### 4.2 Homepage
+Do not use a large marketing hero, decorative illustration, fake stats, testimonials, or broad explanatory blocks.
 
-Reframe `/` as an open-data overview, not a marketing hero.
+## 4. Information Architecture
 
-Suggested sections:
+### Primary Navigation
 
-- compact project header:
-  - "Open university AI policy evidence database",
-  - coverage metrics,
-  - public API link,
-  - methodology link.
-- repository-style overview boxes:
-  - tracked universities,
-  - source-backed claims,
-  - recent changes,
-  - reviewed versus candidate records.
-- "Start here" panel:
-  - browse universities,
-  - view changes,
-  - cite the dataset,
-  - inspect public JSON.
-- "Trust model" panel:
-  - evidence layer,
-  - reference layer,
-  - distribution layer,
-  - contribution and review layer.
+Use repo-tab-style visual treatment, but neutral labels.
 
-Avoid a large decorative hero.
-
-### 4.3 University Detail Pages
-
-Make `/universities/[slug]` the primary repo-record page.
-
-Proposed layout:
+Recommended primary tabs:
 
 ```text
-Entity header
-  Harvard University / AI Policy
-  region, country, review state, confidence, last checked, last changed
-
-Tabs
-  Overview | Claims | Sources | Changes | JSON | Citation
-
-Main column
-  README-style citation-ready summary
-  Reviewed claims
-  Candidate claims
-  Evidence notes and limitations
-
-Right sidebar
-  Public JSON
-  Suggested citation
-  Official sources
-  Source rights caveat
-  Dataset license
-  Review state legend
+Search
+Universities
+Analysis
+Changes
+Datasets
+Methodology
+Contribute
 ```
 
-Near-term implementation can keep one route and use anchor links instead of adding tabbed subroutes. Later, high-value pages can grow into:
+Rules:
 
-- `/universities/[slug]/claims`
-- `/universities/[slug]/sources`
-- `/universities/[slug]/changes`
-- `/universities/[slug]/json`
+- `Search` should be first because the homepage and `/search` are the main entry paths.
+- `Overview` should not be a primary tab; the site name already links home.
+- `AI Policy Database` should not be a primary tab; keep the route for SEO/GEO and link it from page-level secondary entry groups.
+- `Citation` should move out of primary navigation unless later analytics show it is a top task. It remains prominent inside `Datasets`, `Methodology`, footer, and secondary entry groups.
+- `Coverage`, `Reports`, `Widgets`, `API docs`, `MCP`, `Source health`, and `Review workflow` should be secondary entries.
 
-Only create extra routes when the data is strong enough to avoid thin pages.
+### Secondary Entrances
 
-### 4.4 Claim/Evidence Cards
+Use page-level index groups rather than a crowded top nav. Place secondary entrances on the homepage and other appropriate hub pages.
 
-`ClaimEvidenceCard` should become the visual core of the product.
+Recommended groups:
 
-GitHub-inspired shape:
+- `Data and API`: Datasets, API docs, Public API index, MCP alpha, widgets.
+- `Trust and citation`: Methodology, Citation, AI Policy Database, llms.txt.
+- `Updates`: Changes, Reports, Reports RSS, recent changes feed.
+- `Coverage and review`: Coverage, Source health, Review workflow, Review queue.
+- `Contribute`: Contribute, GitHub issue templates, contribution policy.
 
-- boxed item with header row,
-- claim type label,
-- review state label,
-- confidence badge,
-- last checked/changed metadata,
-- original evidence block,
-- source attribution row,
-- snapshot hash in monospace,
-- localized display helper clearly separated,
-- copy source URL/hash actions later.
+Secondary entrances should look like compact rows or small link groups, not large explanatory cards.
 
-The card should visually distinguish:
+### Route Preservation
 
-- human reviewed or agent reviewed,
-- machine candidate,
-- needs review,
-- rejected/audit-only.
+Do not delete existing public routes as part of the redesign. Demoted pages remain reachable through secondary entrances, footer links, sitemap, and existing direct URLs.
 
-Review state should be more prominent than confidence.
+Important preserved routes include:
 
-### 4.5 University Index
+- `/university-ai-policy-database`,
+- `/coverage`,
+- `/reports`,
+- `/widgets`,
+- `/api-reference`,
+- `/mcp`,
+- `/source-health`,
+- `/review`,
+- `/review/queue`,
+- `/citation`.
 
-Change `/universities` from cards to a repository-like list or table.
+## 5. Core Page Direction
 
-Suggested controls after enough records exist:
+### `/`
 
-- search input,
-- country/region filter,
-- review state filter,
-- last checked sort,
-- source count,
-- claim count,
-- policy status,
-- tool treatment.
+Priority: P2 after the global shell.
 
-Near-term without client-side complexity:
+Design:
 
-- server-rendered table/list,
-- simple links,
-- compact metadata labels,
-- no heavy filtering until there are enough records.
+- search-first layout,
+- compact metrics,
+- minimal secondary entry groups,
+- no marketing hero,
+- SEO/GEO-friendly links to key public routes,
+- server-rendered fallback content for crawlers.
 
-### 4.6 Changes
+Behavior:
 
-`/changes` should become a change timeline.
+- The search input should route to `/search?q=...`.
+- Fuzzy search can initially reuse the existing public search/index logic.
+- If client-side autocomplete is added later, the page must still work without JavaScript.
 
-Each row should show:
+### `/search`
 
-- institution,
-- changed or checked date,
-- affected claim/source count,
-- review state,
-- source URL,
-- snapshot hash,
-- public JSON link,
-- future diff link.
+Priority: P2.
 
-Future diff pages should use `packages/crawler-core` diff utilities before adding a front-end diff dependency. Add React Diff Viewer only if the internal diff renderer becomes too costly to maintain.
+Design:
 
-### 4.7 Datasets
+- same visual language as the homepage search,
+- compact results rows,
+- visible match reason, review state, claim count, source count, and canonical record link,
+- concise empty state.
 
-`/datasets` should look like a releases/artifacts page.
+Copy:
 
-Current live API links can be rendered as artifact rows:
+- no long explanation of what search includes,
+- keep one short boundary note: search is a routing aid, not a policy conclusion.
 
-- API index JSON,
-- universities JSON,
-- per-university JSON example,
-- recent changes JSON.
+### `/universities`
 
-Future release artifacts:
+Priority: P3.
 
-- monthly claims JSONL,
-- sources JSONL,
-- changes JSONL,
-- data dictionary,
-- checksums,
-- release notes,
-- DOI/Zenodo link.
+Design:
 
-### 4.8 Methodology And Citation
+- compact database table or dense list,
+- filters kept small and useful,
+- clear rank/source/claim/review metadata,
+- no card grid unless data density requires it on mobile.
 
-`/methodology` and `/citation` should look like high-quality README/docs pages:
+Acceptance:
 
-- narrow readable body,
-- sticky or inline table of contents when useful,
-- callout boxes,
-- code blocks for examples,
-- copy buttons for citation/API snippets,
-- visible no-advice boundary,
-- source-rights caveat.
+- table/list remains readable on mobile,
+- no fake filters,
+- public JSON links remain versioned and visible.
 
-## 5. Component Plan
+### `/universities/[slug]`
 
-Add small, repo-local components before adding a UI library.
+Priority: P3 only if touched after search and index work.
 
-Recommended components:
+Design:
 
-- `ReferenceBox`
-  - GitHub-like bordered section with optional header, actions, and body.
-- `ReferenceTabs`
-  - route/anchor tabs for Overview, Claims, Sources, Changes, JSON, Citation.
-- `StateLabel`
-  - semantic review-state label using existing `reviewState` values.
-- `MetaLabel`
-  - small neutral metadata badge for dates, country, language, counts.
-- `EntityHeader`
-  - title, subtitle, metadata labels, primary actions.
-- `EntitySidebar`
-  - public JSON, citation, source rights, official source count.
-- `DataList`
-  - compact rows for universities, changes, endpoints, sources.
-- `TimelineList`
-  - change/event timeline for `/changes` and future entity changes.
-- `ApiEndpointRow`
-  - endpoint path, method, status, copy/open actions.
-- `EvidenceBlock`
-  - optionally split out of `ClaimEvidenceCard` for source/diff pages.
-- `DiffBlock`
-  - first version can render `TextDiffLine[]` from `crawler-core`.
+- preserve the current server-rendered evidence-first record,
+- tighten copy and spacing,
+- keep anchor tabs for overview, policy profile, claims, sources, changes, JSON, citation,
+- make review state visually stronger than confidence,
+- keep candidate and needs-review records visibly non-final.
 
-Do not create a generic component system larger than current needs.
+Do not create thin subroutes until data depth supports them.
 
-## 6. Token And CSS Plan
+### `/analysis`
 
-Keep semantic CSS variables, but align the palette with a GitHub/Primer-style reference UI.
+Priority: P3.
 
-Suggested token groups:
+Design:
 
-```css
---color-canvas-default
---color-canvas-subtle
---color-canvas-inset
---color-fg-default
---color-fg-muted
---color-border-default
---color-border-muted
---color-accent-fg
---color-accent-emphasis
---color-success-fg
---color-success-subtle
---color-attention-fg
---color-attention-subtle
---color-danger-fg
---color-danger-subtle
---color-diff-addition
---color-diff-deletion
+- present analysis as derived, source-backed dimensions,
+- keep coverage score caveat short,
+- use tables/lists instead of long explanatory sections,
+- link to per-university analysis JSON and profile pages.
+
+Copy:
+
+- use `Policy analysis` and `Coverage score`,
+- do not imply quality, safety, legality, compliance, or official policy approval.
+
+### `/changes`
+
+Priority: P3.
+
+Design:
+
+- compact timeline or data-list,
+- institution, checked/changed date, review state, claims, sources, record link, JSON link,
+- source freshness and change history should be scannable.
+
+Copy:
+
+- one short note that freshness is metadata, not advice.
+
+### `/datasets`
+
+Priority: P3.
+
+Design:
+
+- release/artifact page,
+- grouped API rows,
+- compact artifact lists with format, status, and URL,
+- citation and rights summary kept short.
+
+Acceptance:
+
+- JSON-LD remains valid,
+- public API paths remain real and versioned,
+- release manifest and checksum links remain discoverable.
+
+### `/methodology`
+
+Priority: P3.
+
+Design:
+
+- clean documentation page,
+- short workflow sections,
+- no long prose where a list or table works,
+- visible review-state definitions.
+
+### `/citation`
+
+Priority: P3 as a secondary trust page.
+
+Design:
+
+- compact copy-ready citation examples,
+- required citation fields,
+- public JSON links,
+- rights and no-advice boundaries.
+
+Acceptance:
+
+- copy actions continue to work,
+- tracker metadata and official source rights remain clearly separated.
+
+## 6. Secondary Surface Direction
+
+Priority: P4.
+
+These pages should not drive the first redesign ticket, but the document should guide later work:
+
+- `/reports`: compact report index and public distribution assets.
+- `/widgets`: developer/reference page for embeddable read-only widgets.
+- `/api-reference`: endpoint reference, not marketing.
+- `/mcp`: alpha integration reference, not product promotion.
+- `/coverage`: collection coverage and crawl/review planning, not policy quality.
+- `/source-health`: source access and repair planning metadata.
+- `/review` and `/review/queue`: internal/public review workflow surfaces.
+- `/university-ai-policy-database`: SEO/GEO landing surface that points users into Search, Universities, Datasets, Methodology, and Citation without duplicating those pages.
+
+Secondary surfaces must stay reachable but should not crowd the primary navigation.
+
+## 7. Implementation Priorities
+
+### P0: Documentation Rewrite And Design Contract
+
+Scope:
+
+- replace this document with the current redesign plan,
+- state priorities and non-goals,
+- lock the navigation model,
+- lock the copy-density rule,
+- document the homepage search-first role.
+
+Acceptance:
+
+- no frontend implementation,
+- no public API changes,
+- no data pipeline changes,
+- document is English and decision-complete enough for the first implementation ticket.
+
+### P1: Global Shell, Primary/Secondary Navigation, Token Cleanup
+
+Scope:
+
+- revise `apps/web/app/layout.tsx` primary tabs,
+- keep the site name as the home link,
+- keep theme toggle,
+- keep GitHub/API action links only if they remain visually quiet,
+- add or refine page-level secondary entry groups,
+- tighten global CSS tokens and spacing without changing route behavior.
+
+Acceptance:
+
+- top nav contains only the approved primary tabs,
+- all demoted pages remain reachable,
+- desktop and mobile nav are clean,
+- dark and light mode remain token-driven,
+- no new UI framework dependency.
+
+### P2: Search-First Homepage And Search Results
+
+Scope:
+
+- redesign `/` around a prominent search entry,
+- connect the search form to `/search?q=...`,
+- simplify `/search` results into dense, scannable rows,
+- preserve SSR-visible links and text for SEO/GEO.
+
+Acceptance:
+
+- search works without JavaScript,
+- first screen is clean and useful,
+- key secondary routes are discoverable,
+- no long explanatory copy on the homepage.
+
+### P3: Core Public Page Cleanup
+
+Scope:
+
+- refine `Universities`, `Analysis`, `Changes`, `Datasets`, `Methodology`, and `Citation`,
+- reduce explanatory text,
+- convert large blocks into tables, labels, compact rows, and short notices,
+- keep evidence, source, review, citation, and JSON access visible.
+
+Acceptance:
+
+- core pages remain crawlable,
+- page titles and metadata stay accurate,
+- original-language evidence and review state remain clear where records appear,
+- no thin new pages are introduced.
+
+### P4: Secondary Surface Cleanup
+
+Scope:
+
+- align `Reports`, `Widgets`, `API docs`, `MCP`, `Coverage`, `Source health`, and review pages with the same compact reference style,
+- keep these surfaces secondary in navigation,
+- avoid duplicating core-page explanations.
+
+Acceptance:
+
+- secondary pages are reachable from page-level indexes and footer,
+- they read like reference pages, not landing pages,
+- public JSON/API links stay correct.
+
+### P5: Visual QA, Accessibility, And Production Verification
+
+Scope:
+
+- validate type/build/checks,
+- browser-check representative pages on desktop and mobile,
+- verify no horizontal overflow,
+- verify dark/light mode,
+- verify SSR-visible critical content.
+
+Acceptance:
+
+- no console errors on checked pages,
+- no obvious text overflow,
+- no inaccessible focus traps,
+- no broken internal trust/API links,
+- production verification is done only after explicit deploy approval.
+
+## 8. Testing Plan
+
+For this documentation-only change:
+
+```bash
+git diff -- docs/github-style-frontend-plan.md
 ```
 
-Keep current product tokens as aliases:
-
-```css
---color-page-background: var(--color-canvas-default);
---color-surface: var(--color-canvas-default);
---color-surface-elevated: var(--color-canvas-subtle);
---color-text: var(--color-fg-default);
---color-text-muted: var(--color-fg-muted);
---color-border: var(--color-border-default);
-```
-
-This allows incremental migration without changing every page at once.
-
-Design details:
-
-- max width can increase from `1080px` to around `1120px` or `1280px` for repo-style two-column layouts.
-- use 6-8px border radius, not large rounded cards.
-- use low shadows or no shadows; GitHub-style UI relies on borders and background contrast.
-- keep letter spacing at `0`.
-- keep font stack system-first; no extra font dependency is necessary.
-- dark mode must be token-driven, not page-specific overrides.
-
-## 7. Dependency Strategy
-
-Do not add Tailwind, shadcn/ui, lucide, Recharts, or React Diff Viewer in the first GitHub-style pass unless the implementing task explicitly needs them.
-
-Reason:
-
-- current web package is minimal,
-- current CSS is centralized,
-- the redesign can be done with low-risk CSS and server components,
-- extra dependencies increase maintenance cost before the data surface is mature.
-
-Potential later additions:
-
-- `lucide-react` for compact icons in navigation/actions, once action density grows.
-- a diff viewer library only after real source snapshot diff pages exist.
-- Recharts only after dataset/report pages have stable metrics.
-- shadcn/ui only if the project adopts Tailwind and needs a broader UI kit.
-
-## 8. Execution Roadmap
-
-### F0: Design Contract And Safety Pass
-
-Scope:
-
-- Confirm no existing untracked OpenClaw/staging data is modified.
-- Keep the public data contract unchanged.
-- Do not create new routes that could become thin pages.
-- Document visual non-goals and terminology.
-
-Acceptance:
-
-- no schema changes,
-- no API contract changes,
-- no deployment changes,
-- working tree changes limited to docs or frontend files for later phases.
-
-### F1: Token And Primitive CSS Revision
-
-Scope:
-
-- revise `globals.css` token groups,
-- alias old tokens to new GitHub-style primitives,
-- update base typography, boxes, labels, links, code, tables, and buttons,
-- keep dark mode working through existing theme toggle.
-
-Files likely touched:
-
-- `apps/web/app/globals.css`
-- possibly `apps/web/components/theme-toggle.tsx`
-
-Acceptance:
-
-- all current pages remain readable in light and dark mode,
-- no content disappears behind client-only rendering,
-- no horizontal overflow on mobile,
-- `pnpm check`, web build, and diff check pass.
-
-### F2: Global Shell And Navigation
-
-Scope:
-
-- revise `layout.tsx` into a public database shell,
-- add repo-style top bar and secondary tab nav,
-- keep footer trust links,
-- add API index and GitHub repo link only if real URLs are known.
-
-Files likely touched:
-
-- `apps/web/app/layout.tsx`
-- `apps/web/app/globals.css`
-
-Acceptance:
-
-- primary routes stay reachable,
-- active/hover states are clear,
-- mobile nav wraps cleanly,
-- no excessive marketing copy.
-
-### F3: Shared Reference Components
-
-Scope:
-
-- add small local components for boxes, labels, headers, data lists, and endpoint rows,
-- refactor only where duplication is already obvious.
-
-Possible files:
-
-- `apps/web/components/reference-box.tsx`
-- `apps/web/components/reference-tabs.tsx`
-- `apps/web/components/state-label.tsx`
-- `apps/web/components/entity-header.tsx`
-- `apps/web/components/data-list.tsx`
-- `apps/web/components/api-endpoint-row.tsx`
-
-Acceptance:
-
-- components are server components unless interactivity requires client code,
-- no generic abstraction that obscures content,
-- existing pages compile unchanged or with low-risk replacements.
-
-### F4: University Detail Repo-Record Layout
-
-Scope:
-
-- refactor `/universities/[slug]` into entity header, tabs/anchors, main column, and sidebar,
-- keep all existing evidence, citation, source, limitations, and JSON links visible,
-- improve claim/evidence card presentation.
-
-Files likely touched:
-
-- `apps/web/app/universities/[slug]/page.tsx`
-- `apps/web/components/claim-evidence-card.tsx`
-- new shared components from F3
-- `apps/web/app/globals.css`
-
-Acceptance:
-
-- source-backed claims remain visible in server-rendered HTML,
-- original evidence remains visually primary,
-- localized display remains clearly secondary,
-- review state is visually stronger than confidence,
-- candidate claims are clearly not final conclusions.
-
-### F5: Index And Changes Surfaces
-
-Scope:
-
-- convert `/universities` to a compact list/table,
-- convert `/changes` to a timeline/data-list layout,
-- preserve sparse-data empty states.
-
-Files likely touched:
-
-- `apps/web/app/universities/page.tsx`
-- `apps/web/app/changes/page.tsx`
-- shared list/timeline components,
-- CSS.
-
-Acceptance:
-
-- pages remain useful with current seed/catalog data,
-- no fake filters that do not work,
-- no client-only search until needed,
-- public JSON links remain correct and versioned.
-
-### F6: Datasets, Citation, Methodology Docs UI
-
-Scope:
-
-- make `/datasets` artifact/release-like,
-- make `/citation` and `/methodology` README-like,
-- add endpoint rows and copy affordances where already supported.
-
-Files likely touched:
-
-- `apps/web/app/datasets/page.tsx`
-- `apps/web/app/citation/page.tsx`
-- `apps/web/app/methodology/page.tsx`
-- `apps/web/components/citation-copy-actions.tsx`, only if needed.
-
-Acceptance:
-
-- JSON-LD on `/datasets` stays valid,
-- public API links stay real and versioned,
-- no advice boundary remains visible,
-- source rights caveat remains clear.
-
-### F7: Diff And Source History Preview
-
-Scope:
-
-- introduce a minimal `DiffBlock` using existing `crawler-core` diff data shape,
-- add preview sections only where real change data exists,
-- defer full route expansion until OpenClaw provides enough reviewed artifacts.
-
-Possible files:
-
-- `apps/web/components/diff-block.tsx`
-- future `/universities/[slug]/changes` route only when data supports it.
-
-Acceptance:
-
-- additions and deletions are accessible in light/dark mode,
-- diff lines do not overflow mobile screens,
-- no route is indexed if it lacks useful evidence-backed content.
-
-### F8: Visual QA And Production Verification
-
-Scope:
-
-- run local validation,
-- use Playwright screenshots/checks on desktop and mobile,
-- verify production after push/deploy.
-
-Checks:
+Confirm the document includes:
+
+- priorities P0-P5,
+- search-first homepage requirement,
+- primary navigation model,
+- secondary entrance model,
+- copy-density rule,
+- route preservation,
+- non-goals,
+- implementation acceptance criteria.
+
+For later implementation tickets:
 
 ```bash
 pnpm check
@@ -558,78 +446,51 @@ pnpm --filter @uapt/web build
 git diff --check
 ```
 
-Manual/browser checks:
+Browser checks:
 
-- `/`
-- `/universities`
+- `/`,
+- `/search`,
+- `/universities`,
 - one `/universities/[slug]` page,
-- `/changes`
-- `/datasets`
-- `/citation`
-- `/methodology`
-- `/api/public/v1/index.json`
-- `/llms.txt`
-- `/sitemap.xml`
+- `/analysis`,
+- `/changes`,
+- `/datasets`,
+- `/methodology`,
+- `/citation`.
 
-Acceptance:
+Browser acceptance:
 
-- zero console errors on key pages,
-- no mobile horizontal overflow,
+- desktop and mobile navigation work,
+- no horizontal overflow,
+- no console errors,
 - readable contrast in light and dark mode,
-- server-rendered HTML contains critical evidence content,
-- no broken internal trust/API links.
+- critical content is present in server-rendered HTML,
+- public API and trust links are not broken.
 
-## 9. Suggested Implementation Order
+## 9. Non-Goals
 
-Recommended first implementation ticket:
+Do not do these as part of the redesign unless a later task explicitly changes scope:
 
-```text
-F1 + F2 only: GitHub-style tokens and global shell.
-```
+- no public API/schema/type changes,
+- no OpenClaw or crawler pipeline changes,
+- no database or dataset release changes,
+- no login/account features,
+- no new broad UI framework dependency,
+- no new chart/diff/icon dependency by default,
+- no deletion of existing public routes,
+- no new thin SEO pages,
+- no legal or academic integrity advice positioning,
+- no replacement of original-language evidence with translation,
+- no deployment or production change without explicit approval.
 
-Reason:
+## 10. First Implementable Ticket
 
-- low risk,
-- creates visual foundation,
-- avoids touching claim rendering before the shell is stable,
-- gives immediate site-wide improvement.
-
-Recommended second ticket:
-
-```text
-F3 + F4: shared reference components and university detail repo-record layout.
-```
-
-Recommended third ticket:
+The first implementation ticket after this documentation step should be:
 
 ```text
-F5 + F6: university index, changes timeline, datasets/releases, README-style docs pages.
+P1 + P2: Global shell, repo-tab-style primary navigation, page-level secondary entrances, and search-first homepage/search results.
 ```
 
-Recommended fourth ticket:
+This should be implemented before broader page cleanup because it establishes the site-wide interaction model and immediately resolves the current over-crowded navigation.
 
-```text
-F7: diff/source history preview after enough OpenClaw-reviewed change artifacts exist.
-```
-
-## 10. Open Questions
-
-- Should the public GitHub repo link be shown in the global header now, or only after README/CITATION/CONTRIBUTING are polished?
-- Should the site use "repository" language publicly, or only internally as a design metaphor?
-- Should entity sub-tabs be anchor links first, or route links later?
-- Should the first table/filter pass remain server-only, or should client search be added once there are 20-50 high-quality university pages?
-- Should the future diff viewer be custom-built from `crawler-core` output or use a maintained diff viewer dependency?
-
-## 11. Non-Goals
-
-This revision should not:
-
-- change the public JSON contract,
-- change OpenClaw operating rules,
-- create new thin SEO pages,
-- introduce login/account features,
-- imply legal or academic integrity advice,
-- replace original-language evidence with translation,
-- add a broad UI framework before the product needs it,
-- deploy automatically without separate approval.
-
+The first ticket should not touch OpenClaw, public JSON contracts, dataset release logic, or unrelated untracked files.

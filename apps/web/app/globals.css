@@ -3,6 +3,7 @@
   --color-canvas-default: #ffffff;
   --color-canvas-subtle: #f6f8fa;
   --color-canvas-inset: #eff3f6;
+  --color-canvas-overlay: #ffffff;
   --color-fg-default: #24292f;
   --color-fg-muted: #57606a;
   --color-border-default: #d0d7de;
@@ -25,6 +26,7 @@
   --color-text: var(--color-fg-default);
   --color-text-muted: var(--color-fg-muted);
   --color-border: var(--color-border-default);
+  --color-border-subtle: var(--color-border-muted);
   --color-accent: var(--color-accent-fg);
   --color-accent-strong: var(--color-accent-emphasis);
   --color-reviewed: var(--color-success-fg);
@@ -54,6 +56,7 @@
     --color-canvas-default: #0d1117;
     --color-canvas-subtle: #161b22;
     --color-canvas-inset: #010409;
+    --color-canvas-overlay: #161b22;
     --color-fg-default: #e6edf3;
     --color-fg-muted: #8b949e;
     --color-border-default: #30363d;
@@ -83,6 +86,7 @@
   --color-canvas-default: #0d1117;
   --color-canvas-subtle: #161b22;
   --color-canvas-inset: #010409;
+  --color-canvas-overlay: #161b22;
   --color-fg-default: #e6edf3;
   --color-fg-muted: #8b949e;
   --color-border-default: #30363d;
@@ -117,8 +121,8 @@ body {
   background: var(--color-page-background);
   color: var(--color-text);
   font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Noto Sans", sans-serif;
   font-size: 15px;
   line-height: 1.5;
 }
@@ -208,8 +212,8 @@ th {
   display: flex;
   gap: 20px;
   justify-content: space-between;
-  padding-bottom: 14px;
-  padding-top: 14px;
+  padding-bottom: 12px;
+  padding-top: 12px;
 }
 
 .site-header__actions {
@@ -242,8 +246,8 @@ th {
 
 .site-action {
   align-items: center;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: transparent;
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-control);
   color: var(--color-text);
   display: inline-flex;
@@ -278,15 +282,17 @@ th {
 
 .site-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+  flex-wrap: nowrap;
+  gap: 2px;
+  overflow-x: auto;
   padding-bottom: 0;
+  scrollbar-width: thin;
 }
 
 .site-nav a {
   border: 1px solid transparent;
   border-bottom: 2px solid transparent;
-  color: var(--color-text);
+  color: var(--color-text-muted);
   display: inline-flex;
   font-size: 14px;
   font-weight: 600;
@@ -294,14 +300,21 @@ th {
   margin-bottom: -1px;
   padding: 10px 12px 9px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
   background: var(--color-surface);
   border-color: var(--color-border);
   border-bottom-color: var(--color-accent-emphasis);
   border-radius: var(--radius-control) var(--radius-control) 0 0;
   color: var(--color-accent-fg);
+}
+
+.site-nav a[aria-current="page"] {
+  border-bottom-color: var(--color-surface);
+  color: var(--color-text);
 }
 
 .site-footer {
@@ -311,29 +324,50 @@ th {
 }
 
 .site-footer__inner {
-  align-items: flex-start;
-  display: flex;
-  gap: 24px;
-  justify-content: space-between;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.7fr);
   padding-bottom: 24px;
   padding-top: 24px;
 }
 
-.site-footer p {
+.site-footer p,
+.site-footer h2 {
   line-height: 1.55;
   margin: 0;
+}
+
+.site-footer__intro p {
   max-width: 620px;
 }
 
-.site-footer nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: flex-end;
+.site-footer__link-groups {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.site-footer__group {
+  min-width: 0;
+}
+
+.site-footer__group h2 {
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.site-footer__group ul {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .site-footer a {
-  color: var(--color-text);
+  color: var(--color-text-muted);
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
@@ -1749,8 +1783,7 @@ ol.timeline-list {
     padding: 30px 16px 52px;
   }
 
-  .site-header__top,
-  .site-footer__inner {
+  .site-header__top {
     align-items: flex-start;
     flex-direction: column;
     gap: 14px;
@@ -1763,7 +1796,7 @@ ol.timeline-list {
   }
 
   .site-nav {
-    overflow-x: visible;
+    overflow-x: auto;
     padding-left: 12px;
     padding-right: 12px;
   }
@@ -1773,8 +1806,10 @@ ol.timeline-list {
     padding-right: 8px;
   }
 
-  .site-footer nav {
-    justify-content: flex-start;
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .section-heading {

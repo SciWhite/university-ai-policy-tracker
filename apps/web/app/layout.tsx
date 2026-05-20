@@ -3,24 +3,59 @@ import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { ReactNode } from "react";
+import { SiteNavigation } from "@/components/site-navigation";
 import { ThemeScript } from "@/components/theme-script";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { getSiteBaseUrl } from "@/lib/site-url";
 
 const primaryTabs = [
-  { label: "Overview", href: "/" },
-  { label: "AI Policy Database", href: "/university-ai-policy-database" },
-  { label: "Universities", href: "/universities" },
   { label: "Search", href: "/search" },
+  { label: "Universities", href: "/universities" },
   { label: "Analysis", href: "/analysis" },
-  { label: "Coverage", href: "/coverage" },
   { label: "Changes", href: "/changes" },
-  { label: "Reports", href: "/reports" },
-  { label: "Widgets", href: "/widgets" },
-  { label: "Contribute", href: "/contribute" },
   { label: "Datasets", href: "/datasets" },
   { label: "Methodology", href: "/methodology" },
-  { label: "Citation", href: "/citation" }
+  { label: "Contribute", href: "/contribute" }
+] as const;
+
+const secondaryLinkGroups = [
+  {
+    label: "Data and API",
+    links: [
+      { label: "Datasets", href: "/datasets" },
+      { label: "API docs", href: "/api-reference" },
+      { label: "Public API", href: "/api/public/v1/index.json" },
+      { label: "MCP alpha", href: "/mcp" },
+      { label: "Widgets", href: "/widgets" }
+    ]
+  },
+  {
+    label: "Trust and citation",
+    links: [
+      { label: "Methodology", href: "/methodology" },
+      { label: "Citation", href: "/citation" },
+      { label: "AI Policy Database", href: "/university-ai-policy-database" },
+      { label: "llms.txt", href: "/llms.txt" }
+    ]
+  },
+  {
+    label: "Updates",
+    links: [
+      { label: "Changes", href: "/changes" },
+      { label: "Reports", href: "/reports" },
+      { label: "Reports RSS", href: "/feeds/reports.xml" },
+      { label: "Changes RSS", href: "/feeds/recent-changes.xml" }
+    ]
+  },
+  {
+    label: "Coverage and review",
+    links: [
+      { label: "Coverage", href: "/coverage" },
+      { label: "Source health", href: "/source-health" },
+      { label: "Review workflow", href: "/review" },
+      { label: "Review queue", href: "/review/queue" }
+    ]
+  }
 ] as const;
 
 const githubRepositoryUrl = "https://github.com/SciWhite/university-ai-policy-tracker";
@@ -70,52 +105,39 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
             <div className="site-header__actions" aria-label="Primary actions">
               <Link className="site-action" href="/api-reference">
-                API docs
+                API
               </Link>
               <a className="site-action" href={githubRepositoryUrl}>
-                GitHub repo
+                GitHub
               </a>
               <ThemeToggle />
             </div>
           </div>
-          <nav className="site-nav" aria-label="Database navigation">
-            {primaryTabs.map((tab) => (
-              <Link href={tab.href} key={tab.href}>
-                {tab.label}
-              </Link>
-            ))}
-          </nav>
+          <SiteNavigation items={primaryTabs} />
         </header>
         {children}
         <footer className="site-footer">
           <div className="site-footer__inner">
-            <p>
-              Open tracker metadata for citation and analysis. This site is not
-              legal advice, academic integrity advice, or an official university
-              statement; original source evidence remains canonical.
-            </p>
-            <nav aria-label="Trust and reference links">
-              <Link href="/methodology">Methodology</Link>
-              <Link href="/university-ai-policy-database">
-                AI Policy Database
-              </Link>
-              <Link href="/search">Search</Link>
-              <Link href="/citation">Citation</Link>
-              <Link href="/datasets">Datasets</Link>
-              <Link href="/analysis">Analysis</Link>
-              <Link href="/coverage">Coverage</Link>
-              <Link href="/source-health">Source health</Link>
-              <Link href="/changes">Changes</Link>
-              <Link href="/reports">Reports</Link>
-              <Link href="/widgets">Widgets</Link>
-              <Link href="/contribute">Contribute</Link>
-              <Link href="/review">Review workflow</Link>
-              <Link href="/review/queue">Review queue</Link>
-              <Link href="/api-reference">API reference</Link>
-              <Link href="/mcp">MCP alpha</Link>
-              <a href="/llms.txt">llms.txt</a>
-              <a href="/feeds/reports.xml">Reports RSS</a>
-              <a href="/api/public/v1/index.json">Public API index</a>
+            <div className="site-footer__intro">
+              <p>
+                Open tracker metadata for citation and analysis. Not legal
+                advice, academic integrity advice, or an official university
+                statement.
+              </p>
+            </div>
+            <nav className="site-footer__link-groups" aria-label="Secondary links">
+              {secondaryLinkGroups.map((group) => (
+                <section className="site-footer__group" key={group.label}>
+                  <h2>{group.label}</h2>
+                  <ul>
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        <FooterLink href={link.href}>{link.label}</FooterLink>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
             </nav>
           </div>
         </footer>
@@ -127,5 +149,29 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         ) : null}
       </body>
     </html>
+  );
+}
+
+function FooterLink({
+  children,
+  href
+}: {
+  children: ReactNode;
+  href: string;
+}) {
+  if (isDocumentLink(href)) {
+    return <a href={href}>{children}</a>;
+  }
+
+  return <Link href={href}>{children}</Link>;
+}
+
+function isDocumentLink(href: string): boolean {
+  return (
+    href.startsWith("http") ||
+    href.startsWith("/api/") ||
+    href.startsWith("/feeds/") ||
+    href.endsWith(".txt") ||
+    href.endsWith(".json")
   );
 }
