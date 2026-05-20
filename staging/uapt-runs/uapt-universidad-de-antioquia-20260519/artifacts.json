@@ -1,0 +1,493 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universidad-de-antioquia-20260519",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-udea-cpolitica-ai-pregrado-pdf",
+      "entityType": "university",
+      "entitySlug": "universidad-de-antioquia",
+      "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+      "finalUrl": "https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/content",
+      "sourceTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+      "sourceLanguage": "es",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:udea.edu.co ChatGPT OR IAGen OR IA generativa Universidad de Antioquia estudiantes docentes evaluacion",
+      "discoveredAt": "2026-05-20T01:39:00.000Z",
+      "officialDomainConfidence": 0.94,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.82,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T01:40:00.000Z",
+      "verificationNotes": "Firecrawl extracted a public PDF from the official UdeA digital repository. The document is program-level guidance for the undergraduate Political Science program and is not treated as university-wide policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-udea-alma-mater-ai-education-news",
+      "entityType": "university",
+      "entitySlug": "universidad-de-antioquia",
+      "sourceUrl": "https://www.udea.edu.co/wps/portal/udea/web/inicio/udea-noticias/noticias-ciencia/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLSydjQwdTQx8DMxMzAwczQJMTM2N3I2d_U31w9EUeBuaGjgGugb4hfg7B7h4GelHEaPfAAdwNCBOPx4FUfiND9ePwmeFhYcRVIFfoKmroZGzgY-_p7GrQaCln2mAsbunkYm5MYYJmGFAyBUFuaGhEQaZnumOiooA0Rv0Lw!!/?1dmy&page=udea.inicio.udea.noticias.noticia&urile=wcm%3Apath%3A%2FPortalUdeA%2FasPortalUdeA%2FasHomeUdeA%2FUdeA%2BNoticias%2FContenido%2FasNoticias%2FPeriodicoAlmaMater%2FIA-educacion-pam441",
+      "finalUrl": "https://www.udea.edu.co/wps/portal/udea/web/inicio/udea-noticias/udea-noticia/contenido/asnoticias/periodicoalmamater/ia-educacion-pam441/",
+      "sourceTitle": "Inteligencias artificiales y educacion: herramientas y margenes",
+      "sourceLanguage": "es",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:udea.edu.co ChatGPT OR IAGen OR IA generativa Universidad de Antioquia estudiantes docentes evaluacion",
+      "discoveredAt": "2026-05-20T01:39:20.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.86,
+      "policySpecificityScore": 0.28,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-20T01:41:00.000Z",
+      "verificationNotes": "Official UdeA news article discusses AI in education and faculty views, but it is journalistic content rather than policy or stable institutional guidance.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "rej-udea-alma-mater-ai-education-news",
+      "sourceCandidateId": "src-udea-alma-mater-ai-education-news",
+      "entityType": "university",
+      "entitySlug": "universidad-de-antioquia",
+      "sourceUrl": "https://www.udea.edu.co/wps/portal/udea/web/inicio/udea-noticias/noticias-ciencia/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLSydjQwdTQx8DMxMzAwczQJMTM2N3I2d_U31w9EUeBuaGjgGugb4hfg7B7h4GelHEaPfAAdwNCBOPx4FUfiND9ePwmeFhYcRVIFfoKmroZGzgY-_p7GrQaCln2mAsbunkYm5MYYJmGFAyBUFuaGhEQaZnumOiooA0Rv0Lw!!/?1dmy&page=udea.inicio.udea.noticias.noticia&urile=wcm%3Apath%3A%2FPortalUdeA%2FasPortalUdeA%2FasHomeUdeA%2FUdeA%2BNoticias%2FContenido%2FasNoticias%2FPeriodicoAlmaMater%2FIA-educacion-pam441",
+      "finalUrl": "https://www.udea.edu.co/wps/portal/udea/web/inicio/udea-noticias/udea-noticia/contenido/asnoticias/periodicoalmamater/ia-educacion-pam441/",
+      "rejectedAt": "2026-05-20T01:41:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "codex-openclaw-worker",
+      "evidenceSnippet": "Inteligencias artificiales y educacion: herramientas y margenes. 01/11/2024. Por: Natalia Piedrahita Tamayo. Periodista de la Direccion de Comunicaciones UdeA.",
+      "notes": "Official news article retained as discovery evidence only; not used for claim candidates."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-udea-ai-policy-discovery",
+      "entityType": "university",
+      "entitySlug": "universidad-de-antioquia",
+      "startedAt": "2026-05-20T01:38:30.000Z",
+      "endedAt": "2026-05-20T01:42:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:udea.edu.co inteligencia artificial generativa politica academica Universidad de Antioquia",
+          "domain": "udea.edu.co",
+          "resultCount": 5,
+          "notes": "Firecrawl search returned official UdeA event/news pages and a repository PDF; no institution-wide AI policy was found."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:udea.edu.co ChatGPT OR IAGen OR IA generativa Universidad de Antioquia estudiantes docentes evaluacion",
+          "domain": "udea.edu.co",
+          "resultCount": 10,
+          "notes": "Firecrawl search surfaced the official UdeA digital repository PDF for Political Science AI use guidance."
+        },
+        {
+          "method": "pdf_discovery",
+          "query": "Firecrawl PDF scrape of official UdeA repository bitstream",
+          "domain": "bibliotecadigital.udea.edu.co",
+          "resultCount": 1,
+          "notes": "Firecrawl parsed the public PDF successfully. Direct robots.txt checks for the repository domain met bot detection, so no access controls were bypassed."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-udea-cpolitica-ai-pregrado-pdf",
+        "src-udea-alma-mater-ai-education-news"
+      ],
+      "rejectionIds": [
+        "rej-udea-alma-mater-ai-education-news"
+      ],
+      "summary": "Official-source discovery found one substantive program-level UdeA AI guidance PDF for the undergraduate Political Science program. An official UdeA news article was rejected as non-policy/event journalism."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "crawl_plan",
+      "planId": "plan-udea-ai-policy-discovery",
+      "createdAt": "2026-05-20T01:42:15.000Z",
+      "createdBy": "codex-openclaw-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "universidad-de-antioquia",
+          "sourceCandidateId": "src-udea-cpolitica-ai-pregrado-pdf",
+          "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+          "sourceTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+          "sourceLanguage": "es",
+          "allowedFetchModes": [
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "academic_integrity",
+            "teaching",
+            "ai_tool_treatment"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after extracting narrow claim candidates from verified official UdeA source.",
+        "Do not infer institution-wide rules from program-level guidance.",
+        "Do not use rejected news or research sources as claim evidence."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-udea-cpolitica-ai-pregrado-pdf-firecrawl",
+      "sourceCandidateId": "src-udea-cpolitica-ai-pregrado-pdf",
+      "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+      "finalUrl": "https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/content",
+      "attemptedAt": "2026-05-20T01:40:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 36969,
+      "contentHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-universidad-de-antioquia-20260519/normalized/udea-cpolitica-ai-pregrado-pdf.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-udea-cpolitica-ai-pregrado-pdf",
+      "sourceCandidateId": "src-udea-cpolitica-ai-pregrado-pdf",
+      "fetchAttemptId": "fetch-udea-cpolitica-ai-pregrado-pdf-firecrawl",
+      "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+      "finalUrl": "https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/content",
+      "sourceTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+      "sourceLanguage": "es",
+      "contentHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+      "fetchedAt": "2026-05-20T01:40:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-universidad-de-antioquia-20260519/normalized/udea-cpolitica-ai-pregrado-pdf.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-udea-cpolitica-ai-disclosure",
+      "entityType": "university",
+      "entitySlug": "universidad-de-antioquia",
+      "claimType": "academic_integrity",
+      "claimText": "The Universidad de Antioquia Political Science undergraduate program guidance says AI use in academic products should be explicitly declared, with the declaration placed in the introduction, methodology section, or footnotes.",
+      "normalizedValue": "program_level_ai_disclosure_expected",
+      "sourceLanguage": "es",
+      "confidence": 0.88,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-udea-cpolitica-ai-disclosure"
+      ],
+      "citation": {
+        "citationTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+        "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-de-antioquia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-de-antioquia",
+        "publisher": "Universidad de Antioquia",
+        "retrievedAt": "2026-05-20T01:40:00.000Z",
+        "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-udea-cpolitica-ai-disclosure",
+      "claimId": "claim-udea-cpolitica-ai-disclosure",
+      "sourceSnapshotId": "snap-udea-cpolitica-ai-pregrado-pdf",
+      "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+      "finalUrl": "https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/content",
+      "sourceTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+      "sourceLanguage": "es",
+      "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+      "evidenceSnippetOriginal": "Para garantizar la transparencia, se requiere que el uso de IA en los productos academicos - sean estos videos, textos, imagenes, audios u otros contenidos - sea declarado explicitamente.",
+      "evidenceSnippetDisplay": "To ensure transparency, AI use in academic products should be explicitly declared.",
+      "evidenceLocator": "Principios, Uso transparente o declarado",
+      "evidenceType": "pdf",
+      "relevance": 0.93,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+        "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-de-antioquia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-de-antioquia",
+        "publisher": "Universidad de Antioquia",
+        "retrievedAt": "2026-05-20T01:40:00.000Z",
+        "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-udea-cpolitica-ai-no-own-content",
+      "entityType": "university",
+      "entitySlug": "universidad-de-antioquia",
+      "claimType": "academic_integrity",
+      "claimText": "The Universidad de Antioquia Political Science undergraduate program guidance states that AI tools must not be used to present automatically generated content as one's own, and that conventional citation systems should be used when referring to that content.",
+      "normalizedValue": "program_level_ai_generated_content_not_as_own",
+      "sourceLanguage": "es",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-udea-cpolitica-ai-no-own-content"
+      ],
+      "citation": {
+        "citationTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+        "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-de-antioquia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-de-antioquia",
+        "publisher": "Universidad de Antioquia",
+        "retrievedAt": "2026-05-20T01:40:00.000Z",
+        "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-udea-cpolitica-ai-no-own-content",
+      "claimId": "claim-udea-cpolitica-ai-no-own-content",
+      "sourceSnapshotId": "snap-udea-cpolitica-ai-pregrado-pdf",
+      "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+      "finalUrl": "https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/content",
+      "sourceTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+      "sourceLanguage": "es",
+      "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+      "evidenceSnippetOriginal": "Las herramientas de IA no deben emplearse para presentar como propio contenido generado automaticamente. Es obligatorio utilizar sistemas de citacion convencionales, como el estilo APA, al referirse a dicho contenido.",
+      "evidenceSnippetDisplay": "AI tools must not be used to present automatically generated content as one's own; conventional citation systems such as APA should be used when referring to that content.",
+      "evidenceLocator": "Principios, Uso responsable y etico",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+        "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-de-antioquia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-de-antioquia",
+        "publisher": "Universidad de Antioquia",
+        "retrievedAt": "2026-05-20T01:40:00.000Z",
+        "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-udea-cpolitica-ai-support-not-main-draft",
+      "entityType": "university",
+      "entitySlug": "universidad-de-antioquia",
+      "claimType": "ai_tool_treatment",
+      "claimText": "The Universidad de Antioquia Political Science undergraduate program guidance says students and teachers may use AI tools to support academic activities, but those tools should not be used to automatically generate the main writing of assignments.",
+      "normalizedValue": "program_level_ai_support_allowed_not_main_drafting",
+      "sourceLanguage": "es",
+      "confidence": 0.87,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-udea-cpolitica-ai-support-not-main-draft"
+      ],
+      "citation": {
+        "citationTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+        "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-de-antioquia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-de-antioquia",
+        "publisher": "Universidad de Antioquia",
+        "retrievedAt": "2026-05-20T01:40:00.000Z",
+        "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-udea-cpolitica-ai-support-not-main-draft",
+      "claimId": "claim-udea-cpolitica-ai-support-not-main-draft",
+      "sourceSnapshotId": "snap-udea-cpolitica-ai-pregrado-pdf",
+      "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+      "finalUrl": "https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/content",
+      "sourceTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+      "sourceLanguage": "es",
+      "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+      "evidenceSnippetOriginal": "Estudiantes y docentes pueden utilizar herramientas de inteligencia artificial para apoyar sus actividades academicas. Sin embargo, estas herramientas no deberian emplearse para la generacion automatica de la redaccion del contenido principal de los trabajos.",
+      "evidenceSnippetDisplay": "Students and teachers may use AI tools to support academic activities, but those tools should not be used to automatically draft the main content of assignments.",
+      "evidenceLocator": "Recomendaciones, item 1",
+      "evidenceType": "pdf",
+      "relevance": 0.92,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+        "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-de-antioquia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-de-antioquia",
+        "publisher": "Universidad de Antioquia",
+        "retrievedAt": "2026-05-20T01:40:00.000Z",
+        "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-udea-cpolitica-ai-work-details",
+      "entityType": "university",
+      "entitySlug": "universidad-de-antioquia",
+      "claimType": "academic_integrity",
+      "claimText": "The Universidad de Antioquia Political Science undergraduate program guidance says academic work using AI should specify the tool name, version, provider, search criteria, AI analysis process, and the role AI played in developing the work.",
+      "normalizedValue": "program_level_ai_work_details_expected",
+      "sourceLanguage": "es",
+      "confidence": 0.89,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-udea-cpolitica-ai-work-details"
+      ],
+      "citation": {
+        "citationTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+        "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-de-antioquia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-de-antioquia",
+        "publisher": "Universidad de Antioquia",
+        "retrievedAt": "2026-05-20T01:40:00.000Z",
+        "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-udea-cpolitica-ai-work-details",
+      "claimId": "claim-udea-cpolitica-ai-work-details",
+      "sourceSnapshotId": "snap-udea-cpolitica-ai-pregrado-pdf",
+      "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+      "finalUrl": "https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/content",
+      "sourceTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+      "sourceLanguage": "es",
+      "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+      "evidenceSnippetOriginal": "Todo trabajo en el que haga uso de herramientas de IA debe especificar: el nombre, la version y el proveedor de la herramienta; los criterios de busqueda utilizados; el proceso de analisis llevado a cabo por la IA; y el rol que esta desempenando en el desarrollo del trabajo.",
+      "evidenceSnippetDisplay": "Any work using AI tools should specify the tool name, version, provider, search criteria, AI analysis process, and AI's role in the work.",
+      "evidenceLocator": "Recomendaciones, item 2",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+        "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidad-de-antioquia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-de-antioquia",
+        "publisher": "Universidad de Antioquia",
+        "retrievedAt": "2026-05-20T01:40:00.000Z",
+        "snapshotHash": "655d9b7623481040c2affe9e43524614977cba0a4869b3708ff3055e6ac29d69",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "review_decision",
+      "decisionId": "decision-udea-cpolitica-ai-disclosure",
+      "claimId": "claim-udea-cpolitica-ai-disclosure",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow program-level guidance claim; not institution-wide policy.",
+      "decidedAt": "2026-05-20T01:43:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "review_decision",
+      "decisionId": "decision-udea-cpolitica-ai-no-own-content",
+      "claimId": "claim-udea-cpolitica-ai-no-own-content",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow program-level academic integrity claim tied to explicit source language.",
+      "decidedAt": "2026-05-20T01:43:10.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "review_decision",
+      "decisionId": "decision-udea-cpolitica-ai-support-not-main-draft",
+      "claimId": "claim-udea-cpolitica-ai-support-not-main-draft",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow program-level AI tool treatment claim; wording uses should, matching the source's deberia framing.",
+      "decidedAt": "2026-05-20T01:43:20.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "review_decision",
+      "decisionId": "decision-udea-cpolitica-ai-work-details",
+      "claimId": "claim-udea-cpolitica-ai-work-details",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow program-level disclosure/detailing claim tied to the source recommendation.",
+      "decidedAt": "2026-05-20T01:43:30.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidad-de-antioquia-20260519",
+      "artifactType": "report_draft",
+      "reportId": "report-udea-ai-guidance-draft",
+      "title": "Universidad de Antioquia program-level AI guidance candidates",
+      "generatedAt": "2026-05-20T01:44:00.000Z",
+      "draftPath": "content/reports/2026-05/universidad-de-antioquia-ai-guidance.mdx",
+      "summary": "Draft release note for four agent-reviewed, non-canonical claim candidates based on a UdeA-hosted Political Science undergraduate program PDF. The claims are scoped to that program and should not be represented as university-wide AI policy.",
+      "referencedClaimIds": [
+        "claim-udea-cpolitica-ai-disclosure",
+        "claim-udea-cpolitica-ai-no-own-content",
+        "claim-udea-cpolitica-ai-support-not-main-draft",
+        "claim-udea-cpolitica-ai-work-details"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/universidad-de-antioquia.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source evidence is program-level guidance for the undergraduate Political Science program, not institution-wide Universidad de Antioquia policy.",
+        "No production data was written and these candidates are not canonical public claims."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
