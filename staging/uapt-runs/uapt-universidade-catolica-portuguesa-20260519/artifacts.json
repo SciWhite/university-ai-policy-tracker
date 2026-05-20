@@ -1,0 +1,553 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-universidade-catolica-portuguesa-20260519",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-ucp-20260519",
+      "entityType": "university",
+      "entitySlug": "universidade-catolica-portuguesa",
+      "startedAt": "2026-05-20T01:58:00.000Z",
+      "endedAt": "2026-05-20T02:06:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:ucp.pt OR site:lisboa.ucp.pt \"inteligência artificial\" \"Universidade Católica Portuguesa\" política OR regulamento OR ensino OR avaliação",
+          "domain": "ucp.pt",
+          "resultCount": 5,
+          "notes": "Firecrawl search returned an official UCP AI topic page, programme/news-like pages, and an official PDF titled Politica de integridade academica e cientifica / Carta de Principios no uso de IA."
+        },
+        {
+          "method": "pdf_discovery",
+          "query": "https://www.ucp.pt/media/58031/file",
+          "domain": "ucp.pt",
+          "resultCount": 1,
+          "notes": "The official media URL redirected to a UCP-hosted PDF at /sites/default/files/2025-07/GT_Carta-de-principios-na-utilizacao-de-AI_janeiro-25_0.pdf."
+        },
+        {
+          "method": "site_search",
+          "query": "https://www.ucp.pt/robots.txt",
+          "domain": "ucp.pt",
+          "resultCount": 1,
+          "notes": "robots.txt was checked before fetching; the public PDF path and AI topic page were not disallowed."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-ucp-ai-principles-pdf",
+        "sc-ucp-ai-topic-page"
+      ],
+      "rejectionIds": [
+        "sr-ucp-ai-topic-page"
+      ],
+      "summary": "Official-source discovery found one UCP-wide, policy-specific PDF from the Academic and Scientific Integrity Policy working group: Carta de Principios no uso de IA, January 2025. A broader official AI topic page was documented but rejected for low policy specificity because it did not provide substantive policy rules comparable to the PDF."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "crawl_plan",
+      "planId": "cp-ucp-20260519",
+      "createdAt": "2026-05-20T02:06:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "universidade-catolica-portuguesa",
+          "sourceCandidateId": "sc-ucp-ai-principles-pdf",
+          "sourceUrl": "https://www.ucp.pt/media/58031/file",
+          "sourceTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+          "sourceLanguage": "pt",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "generative AI use",
+            "academic integrity",
+            "transparency",
+            "data and confidentiality",
+            "academic writing"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after UCP-controlled, policy-specific sources support direct claim and evidence candidates.",
+        "Do not infer binding university rules from programme pages, topic pages, news, or interviews.",
+        "Preserve Portuguese evidence snippets as canonical original-language evidence."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-ucp-ai-principles-pdf",
+      "entityType": "university",
+      "entitySlug": "universidade-catolica-portuguesa",
+      "sourceUrl": "https://www.ucp.pt/media/58031/file",
+      "finalUrl": "https://www.ucp.pt/sites/default/files/2025-07/GT_Carta-de-principios-na-utilizacao-de-AI_janeiro-25_0.pdf",
+      "sourceTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+      "sourceLanguage": "pt",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:ucp.pt OR site:lisboa.ucp.pt \"inteligência artificial\" \"Universidade Católica Portuguesa\" política OR regulamento OR ensino OR avaliação",
+      "discoveredAt": "2026-05-20T01:58:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T02:06:00.000Z",
+      "verificationNotes": "UCP-hosted PDF from the Politica de Integridade Academica e Cientifica working group, titled Carta de Principios no uso de IA and dated January 2025. Firecrawl extracted the PDF and direct HTTP confirmed a 200 application/pdf final URL.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-ucp-ai-topic-page",
+      "entityType": "university",
+      "entitySlug": "universidade-catolica-portuguesa",
+      "sourceUrl": "https://www.ucp.pt/pt-pt/press/inteligencia-artificial",
+      "finalUrl": "https://www.ucp.pt/pt-pt/press/inteligencia-artificial",
+      "sourceTitle": "Inteligencia Artificial - Universidade Catolica Portuguesa",
+      "sourceLanguage": "pt",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:ucp.pt OR site:lisboa.ucp.pt \"inteligência artificial\" \"Universidade Católica Portuguesa\" política OR regulamento OR ensino OR avaliação",
+      "discoveredAt": "2026-05-20T01:58:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.72,
+      "policySpecificityScore": 0.22,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-20T02:03:00.000Z",
+      "verificationNotes": "Official UCP topic/press page discovered by Firecrawl, but it was broader AI topic content rather than a substantive policy or guidance source for claim evidence.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-ucp-ai-topic-page",
+      "sourceCandidateId": "sc-ucp-ai-topic-page",
+      "entityType": "university",
+      "entitySlug": "universidade-catolica-portuguesa",
+      "sourceUrl": "https://www.ucp.pt/pt-pt/press/inteligencia-artificial",
+      "finalUrl": "https://www.ucp.pt/pt-pt/press/inteligencia-artificial",
+      "rejectedAt": "2026-05-20T02:03:00.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Firecrawl result described a broad official UCP Inteligencia Artificial topic page; it did not provide specific AI-use policy rules comparable to the UCP AI principles PDF.",
+      "notes": "Kept as discovery context only; no claims cite this page."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-ucp-ai-principles-pdf-firecrawl-20260520",
+      "sourceCandidateId": "sc-ucp-ai-principles-pdf",
+      "sourceUrl": "https://www.ucp.pt/media/58031/file",
+      "finalUrl": "https://www.ucp.pt/sites/default/files/2025-07/GT_Carta-de-principios-na-utilizacao-de-AI_janeiro-25_0.pdf",
+      "attemptedAt": "2026-05-20T02:00:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3000,
+      "contentHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0",
+      "normalizedTextStorageKey": "openclaw/staging/uapt-universidade-catolica-portuguesa-20260519/snapshots/sc-ucp-ai-principles-pdf.txt"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-ucp-ai-principles-pdf-20260520",
+      "sourceCandidateId": "sc-ucp-ai-principles-pdf",
+      "fetchAttemptId": "fa-ucp-ai-principles-pdf-firecrawl-20260520",
+      "sourceUrl": "https://www.ucp.pt/media/58031/file",
+      "finalUrl": "https://www.ucp.pt/sites/default/files/2025-07/GT_Carta-de-principios-na-utilizacao-de-AI_janeiro-25_0.pdf",
+      "sourceTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+      "sourceLanguage": "pt",
+      "contentHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0",
+      "fetchedAt": "2026-05-20T02:00:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/staging/uapt-universidade-catolica-portuguesa-20260519/snapshots/sc-ucp-ai-principles-pdf.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-ucp-ai-transparency-20260520",
+      "entityType": "university",
+      "entitySlug": "universidade-catolica-portuguesa",
+      "claimType": "ai_tool_treatment",
+      "claimText": "UCP guidance says professors, students, and researchers are obliged to be transparent about their use of generative AI in academic materials, including materials used for assessment and academic progression.",
+      "normalizedValue": "transparent_disclosure_required_for_academic_materials",
+      "sourceLanguage": "pt",
+      "confidence": 0.93,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-ucp-ai-transparency-20260520"
+      ],
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-ucp-ai-transparency-20260520",
+      "claimId": "claim-ucp-ai-transparency-20260520",
+      "sourceSnapshotId": "ss-ucp-ai-principles-pdf-20260520",
+      "sourceUrl": "https://www.ucp.pt/media/58031/file",
+      "finalUrl": "https://www.ucp.pt/sites/default/files/2025-07/GT_Carta-de-principios-na-utilizacao-de-AI_janeiro-25_0.pdf",
+      "sourceTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+      "sourceLanguage": "pt",
+      "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0",
+      "evidenceSnippetOriginal": "Os professores, estudantes e investigadores tem a obrigacao de serem transparentes quanto a utilizacao que fazem da IA generativa na producao de materiais academicos, por exemplo, em materiais utilizados para efeitos de avaliacao e progressao academica.",
+      "evidenceSnippetDisplay": "Professors, students, and researchers are obliged to be transparent about their use of generative AI in academic materials, including assessment and academic progression materials.",
+      "evidenceLocator": "Orientacoes gerais para a utilizacao de ferramentas generativas na UCP, p. 2",
+      "evidenceType": "pdf",
+      "relevance": 0.96,
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-ucp-ai-verification-20260520",
+      "entityType": "university",
+      "entitySlug": "universidade-catolica-portuguesa",
+      "claimType": "academic_integrity",
+      "claimText": "UCP guidance states that professors, students, and researchers are responsible for materials they produce with AI tools and are obliged to verify that information and sources used in those materials are reliable and true.",
+      "normalizedValue": "ai_outputs_sources_must_be_verified",
+      "sourceLanguage": "pt",
+      "confidence": 0.93,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-ucp-ai-verification-20260520"
+      ],
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-ucp-ai-verification-20260520",
+      "claimId": "claim-ucp-ai-verification-20260520",
+      "sourceSnapshotId": "ss-ucp-ai-principles-pdf-20260520",
+      "sourceUrl": "https://www.ucp.pt/media/58031/file",
+      "finalUrl": "https://www.ucp.pt/sites/default/files/2025-07/GT_Carta-de-principios-na-utilizacao-de-AI_janeiro-25_0.pdf",
+      "sourceTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+      "sourceLanguage": "pt",
+      "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0",
+      "evidenceSnippetOriginal": "Os professores, estudantes e investigadores sao responsaveis pelos materiais que produzem utilizando ferramentas de IA e, por conseguinte, tem a obrigacao de verificar se as informacoes e as fontes utilizadas nos seus materiais sao fiaveis e verdadeiras.",
+      "evidenceSnippetDisplay": "Professors, students, and researchers are responsible for materials they produce using AI tools and are obliged to verify that information and sources are reliable and true.",
+      "evidenceLocator": "Orientacoes gerais para a utilizacao de ferramentas generativas na UCP, p. 2",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-ucp-ai-data-confidentiality-20260520",
+      "entityType": "university",
+      "entitySlug": "universidade-catolica-portuguesa",
+      "claimType": "privacy",
+      "claimText": "UCP guidance says copyright-protected material, personal data, and confidential information should be respected and not exported to externally managed platforms, servers, or cloud services that are not licensed by UCP.",
+      "normalizedValue": "do_not_export_personal_or_confidential_data_to_unlicensed_external_ai_platforms",
+      "sourceLanguage": "pt",
+      "confidence": 0.94,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-ucp-ai-data-confidentiality-20260520"
+      ],
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-ucp-ai-data-confidentiality-20260520",
+      "claimId": "claim-ucp-ai-data-confidentiality-20260520",
+      "sourceSnapshotId": "ss-ucp-ai-principles-pdf-20260520",
+      "sourceUrl": "https://www.ucp.pt/media/58031/file",
+      "finalUrl": "https://www.ucp.pt/sites/default/files/2025-07/GT_Carta-de-principios-na-utilizacao-de-AI_janeiro-25_0.pdf",
+      "sourceTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+      "sourceLanguage": "pt",
+      "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0",
+      "evidenceSnippetOriginal": "Respeito pelo material protegido por direitos de autor, dados pessoais e informacoes confidenciais (incluindo propriedade intelectual nao protegida), nao os exportando para plataformas geridas por entidades externas (servidores e servicos cloud nao licenciados pela UCP).",
+      "evidenceSnippetDisplay": "Respect copyright-protected material, personal data, and confidential information, without exporting them to externally managed platforms, servers, or cloud services not licensed by UCP.",
+      "evidenceLocator": "Orientacoes gerais para a utilizacao de ferramentas generativas na UCP, p. 2",
+      "evidenceType": "pdf",
+      "relevance": 0.97,
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-ucp-ai-personal-work-20260520",
+      "entityType": "university",
+      "entitySlug": "universidade-catolica-portuguesa",
+      "claimType": "academic_integrity",
+      "claimText": "For theses, essays, or other documents submitted for evaluation or discussion, UCP guidance says the work should result from personal work and that text entirely produced by AI from simple prompts cannot be considered one's own work.",
+      "normalizedValue": "submitted_academic_work_must_be_personal_not_entirely_ai_generated",
+      "sourceLanguage": "pt",
+      "confidence": 0.94,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-ucp-ai-personal-work-20260520"
+      ],
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-ucp-ai-personal-work-20260520",
+      "claimId": "claim-ucp-ai-personal-work-20260520",
+      "sourceSnapshotId": "ss-ucp-ai-principles-pdf-20260520",
+      "sourceUrl": "https://www.ucp.pt/media/58031/file",
+      "finalUrl": "https://www.ucp.pt/sites/default/files/2025-07/GT_Carta-de-principios-na-utilizacao-de-AI_janeiro-25_0.pdf",
+      "sourceTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+      "sourceLanguage": "pt",
+      "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0",
+      "evidenceSnippetOriginal": "Os documentos (teses, ensaios ou outros) apresentados para avaliacao ou discussao devem resultar do trabalho pessoal, apresentando as suas ideias, argumentos e pontos de vista. E evidente que um texto que e inteiramente produzido pela IA atraves de uma simples serie de instrucoes nao pode ser considerado como trabalho proprio.",
+      "evidenceSnippetDisplay": "Documents submitted for evaluation or discussion should result from personal work; a text entirely produced by AI through simple prompts cannot be considered one's own work.",
+      "evidenceLocator": "Orientacoes especificas para a utilizacao de ferramentas generativas na escrita academica, p. 3",
+      "evidenceType": "pdf",
+      "relevance": 0.97,
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-ucp-ai-explainability-20260520",
+      "entityType": "university",
+      "entitySlug": "universidade-catolica-portuguesa",
+      "claimType": "teaching",
+      "claimText": "In teaching contexts, UCP guidance says students should explain, in an appendix to written work, the process that produced AI-induced elements or reasoning; if that is not possible in the text, an oral discussion is recommended as a complementary assessment element.",
+      "normalizedValue": "students_should_explain_ai_induced_elements_or_reasoning",
+      "sourceLanguage": "pt",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-ucp-ai-explainability-20260520"
+      ],
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-ucp-ai-explainability-20260520",
+      "claimId": "claim-ucp-ai-explainability-20260520",
+      "sourceSnapshotId": "ss-ucp-ai-principles-pdf-20260520",
+      "sourceUrl": "https://www.ucp.pt/media/58031/file",
+      "finalUrl": "https://www.ucp.pt/sites/default/files/2025-07/GT_Carta-de-principios-na-utilizacao-de-AI_janeiro-25_0.pdf",
+      "sourceTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+      "sourceLanguage": "pt",
+      "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0",
+      "evidenceSnippetOriginal": "No contexto do ensino os estudantes devem, em apendice ao trabalho escrito, explicar o processo que deu origem aos elementos ou raciocinios induzidos pela IA. Caso nao seja possivel incluir esta explicacao no proprio texto, recomenda-se uma discussao oral do texto como elemento complementar de avaliacao.",
+      "evidenceSnippetDisplay": "In teaching contexts, students should explain the process behind AI-induced elements or reasoning in an appendix; if not possible in the text, an oral discussion is recommended as complementary assessment.",
+      "evidenceLocator": "Explicabilidade, p. 4",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "citation": {
+        "citationTitle": "Politica de integridade academica e cientifica: Carta de Principios no uso de IA",
+        "sourceUrl": "https://www.ucp.pt/media/58031/file",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidade-catolica-portuguesa",
+        "publisher": "Universidade Catolica Portuguesa",
+        "retrievedAt": "2026-05-20T02:00:00.000Z",
+        "snapshotHash": "5670a767386bf1cadcb6f68f455506bc67115fc899650f0211d1f1c8470d86c0"
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "review_decision",
+      "decisionId": "rd-ucp-ai-transparency-20260520",
+      "claimId": "claim-ucp-ai-transparency-20260520",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow claim because the Portuguese source text explicitly states an obligation of transparency for professors, students, and researchers using generative AI in academic materials.",
+      "decidedAt": "2026-05-20T02:08:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "review_decision",
+      "decisionId": "rd-ucp-ai-verification-20260520",
+      "claimId": "claim-ucp-ai-verification-20260520",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow claim because the source directly says users are responsible for AI-assisted materials and obliged to verify information and sources.",
+      "decidedAt": "2026-05-20T02:08:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "review_decision",
+      "decisionId": "rd-ucp-ai-data-confidentiality-20260520",
+      "claimId": "claim-ucp-ai-data-confidentiality-20260520",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow data-handling claim because the source directly names copyright-protected material, personal data, confidential information, and external platforms not licensed by UCP.",
+      "decidedAt": "2026-05-20T02:08:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "review_decision",
+      "decisionId": "rd-ucp-ai-personal-work-20260520",
+      "claimId": "claim-ucp-ai-personal-work-20260520",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow academic-integrity claim because the source explicitly covers theses, essays, and other documents submitted for evaluation or discussion.",
+      "decidedAt": "2026-05-20T02:08:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "review_decision",
+      "decisionId": "rd-ucp-ai-explainability-20260520",
+      "claimId": "claim-ucp-ai-explainability-20260520",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as teaching-context guidance; the claim preserves the source's should/recommended language and does not overstate it as a universal prohibition.",
+      "decidedAt": "2026-05-20T02:08:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-universidade-catolica-portuguesa-20260519",
+      "artifactType": "report_draft",
+      "reportId": "report-ucp-ai-principles-20260520",
+      "title": "Universidade Catolica Portuguesa AI Principles Evidence Draft",
+      "generatedAt": "2026-05-20T02:09:00.000Z",
+      "draftPath": "content/reports/2026-05/universidade-catolica-portuguesa-ai-principles.mdx",
+      "summary": "The staged run found a UCP-hosted January 2025 Carta de Principios no uso de IA from the Academic and Scientific Integrity Policy working group. Claim candidates cover transparent disclosure of generative AI use, verification of AI-assisted materials and sources, limits on exporting personal/confidential/copyright material to non-UCP-licensed external platforms, personal authorship expectations for evaluated work, and explainability guidance for AI-induced elements in teaching contexts.",
+      "referencedClaimIds": [
+        "claim-ucp-ai-transparency-20260520",
+        "claim-ucp-ai-verification-20260520",
+        "claim-ucp-ai-data-confidentiality-20260520",
+        "claim-ucp-ai-personal-work-20260520",
+        "claim-ucp-ai-explainability-20260520"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/universidade-catolica-portuguesa.json",
+        "https://eduaipolicy.org/api/public/v1/universities/universidade-catolica-portuguesa.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "This draft is staged evidence only and does not publish canonical claims.",
+        "The run used one UCP-wide PDF source; broader topic, programme, and press pages were not used as claim evidence."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
