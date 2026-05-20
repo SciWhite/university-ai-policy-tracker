@@ -5,6 +5,7 @@ interface ReferenceBoxProps {
   children: ReactNode;
   className?: string;
   description?: ReactNode;
+  headingLevel?: "h2" | "h3";
   id?: string;
   title?: ReactNode;
 }
@@ -14,17 +15,19 @@ export function ReferenceBox({
   children,
   className,
   description,
+  headingLevel = "h2",
   id,
   title
 }: ReferenceBoxProps) {
   const classes = ["reference-box", className].filter(Boolean).join(" ");
+  const TitleTag = headingLevel;
 
   return (
     <section className={classes} id={id}>
       {title || description || actions ? (
         <header className="reference-box__header">
           <div>
-            {title ? <h2>{title}</h2> : null}
+            {title ? <TitleTag>{title}</TitleTag> : null}
             {description ? <p>{description}</p> : null}
           </div>
           {actions ? <div className="reference-box__actions">{actions}</div> : null}

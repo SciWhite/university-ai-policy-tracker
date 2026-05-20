@@ -1547,6 +1547,60 @@ h3 {
   justify-content: flex-end;
 }
 
+.entity-header__desktop-actions,
+.entity-header__mobile-actions,
+.entity-header__tool-menu div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.entity-header__mobile-actions {
+  display: none;
+}
+
+.entity-header__tool-menu {
+  position: relative;
+}
+
+.entity-header__tool-menu summary {
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  color: var(--color-text);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 6px;
+  line-height: 1;
+  list-style: none;
+  min-height: 34px;
+  padding: 0 12px;
+}
+
+.entity-header__tool-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.entity-header__tool-menu summary:hover,
+.entity-header__tool-menu summary:focus-visible {
+  border-color: var(--color-accent-emphasis);
+  color: var(--color-accent-fg);
+  outline: none;
+}
+
+.entity-header__tool-menu div {
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+.entity-header__tool-menu:not([open]) div {
+  display: none;
+}
+
 .reference-tabs {
   border-bottom: 1px solid var(--color-border);
   display: flex;
@@ -1738,8 +1792,10 @@ h3 {
   padding: 12px 14px;
 }
 
-.reference-box__header h2 {
+.reference-box__header h2,
+.reference-box__header h3 {
   font-size: 16px;
+  margin: 0;
 }
 
 .reference-box__header p {
@@ -2222,6 +2278,30 @@ ol.timeline-list {
   .entity-header__actions,
   .reference-box__actions {
     justify-content: flex-start;
+  }
+
+  .entity-header__desktop-actions {
+    display: none;
+  }
+
+  .entity-header__mobile-actions {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .entity-header__tool-menu[open] {
+    flex-basis: 100%;
+  }
+
+  .reference-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+  }
+
+  .reference-tabs a {
+    flex: 0 0 auto;
   }
 
   .entity-record-layout {

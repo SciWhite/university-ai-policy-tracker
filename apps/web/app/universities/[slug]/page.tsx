@@ -119,6 +119,13 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     summary: publicSummary,
     totalClaimCount: publicSummary.claims.length
   });
+  const shortAnswer = buildUniversityShortAnswer({
+    candidateClaimCount: candidateClaims.length,
+    officialSourceCount: publicSummary.officialSources.length,
+    reviewedClaimCount: reviewedClaims.length,
+    summary: publicSummary,
+    totalClaimCount: publicSummary.claims.length
+  });
 
   return (
     <main className="page-shell page-shell--wide">
@@ -161,26 +168,55 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
       <EntityHeader
         actions={
           <>
-            <a className="site-action" href={publicJsonUrl}>
-              Public JSON
-            </a>
-            <Link className="site-action" href={`/changes/${slug}`}>
-              Change log
-            </Link>
-            <Link className="site-action" href="/citation">
-              Citation rules
-            </Link>
-            <Link className="site-action" href="/datasets">
-              Dataset access
-            </Link>
-            {policyAnalysisProfile ? (
-              <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
-                Analysis JSON
+            <div className="entity-header__desktop-actions">
+              <a className="site-action" href={publicJsonUrl}>
+                Public JSON
               </a>
-            ) : null}
-            <Link className="site-action" href="/contribute">
-              Submit correction
-            </Link>
+              <Link className="site-action" href={`/changes/${slug}`}>
+                Change log
+              </Link>
+              <Link className="site-action" href="/citation">
+                Citation rules
+              </Link>
+              <Link className="site-action" href="/datasets">
+                Dataset access
+              </Link>
+              {policyAnalysisProfile ? (
+                <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
+                  Analysis JSON
+                </a>
+              ) : null}
+              <Link className="site-action" href="/contribute">
+                Submit correction
+              </Link>
+            </div>
+            <div className="entity-header__mobile-actions">
+              <a className="site-action" href={publicJsonUrl}>
+                Public JSON
+              </a>
+              <Link className="site-action" href="/citation">
+                Citation rules
+              </Link>
+              <details className="entity-header__tool-menu">
+                <summary>More tools</summary>
+                <div>
+                  <Link className="site-action" href={`/changes/${slug}`}>
+                    Change log
+                  </Link>
+                  <Link className="site-action" href="/datasets">
+                    Dataset access
+                  </Link>
+                  {policyAnalysisProfile ? (
+                    <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
+                      Analysis JSON
+                    </a>
+                  ) : null}
+                  <Link className="site-action" href="/contribute">
+                    Submit correction
+                  </Link>
+                </div>
+              </details>
+            </div>
           </>
         }
         eyebrow={`${university.region}, ${university.country}`}
@@ -215,9 +251,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           <ReferenceBox
             description={`${publicSummary.schemaVersion} public contract`}
             id="overview"
-            title="Short answer"
+            title={`${university.name} AI policy short answer`}
           >
-            <p>{publicSummary.summary}</p>
+            <p>{shortAnswer}</p>
             <section
               aria-labelledby="citation-ready-summary"
               className="citation-ready-summary"
@@ -577,6 +613,25 @@ interface CitationReadySummaryInput {
   totalClaimCount: number;
 }
 
+function buildUniversityShortAnswer({
+  candidateClaimCount,
+  officialSourceCount,
+  reviewedClaimCount,
+  summary,
+  totalClaimCount
+}: Omit<CitationReadySummaryInput, "publicJsonUrl">): string {
+  const reviewText = formatReviewState(summary.reviewState);
+  const checkedText = summary.lastCheckedAt
+    ? ` Last checked ${formatDate(summary.lastCheckedAt)}.`
+    : "";
+  const candidateText = candidateClaimCount
+    ? ` ${candidateClaimCount} candidate claim${candidateClaimCount === 1 ? "" : "s"} remain non-final.`
+    : "";
+  const rankingContext = extractRankingContext(summary.summary);
+
+  return `${summary.entity.name} has ${totalClaimCount} source-backed AI policy claim${totalClaimCount === 1 ? "" : "s"} from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}. The record review state is ${reviewText}; original-language evidence snippets, source URLs, confidence, and public JSON are preserved for citation.${candidateText}${checkedText}${rankingContext ? ` Discovery context: ${rankingContext}` : ""}`;
+}
+
 function buildCitationReadySummary({
   candidateClaimCount,
   officialSourceCount,
@@ -601,6 +656,11 @@ function buildCitationReadySummary({
     : "";
 
   return `As of this public record, University AI Policy Tracker lists ${summary.entity.name} as ${reviewText} AI policy record ${checkedText}${changedText}. The record contains ${totalClaimCount} source-backed claim${totalClaimCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}, from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Original-language evidence snippets and source URLs remain canonical, with public JSON available at ${publicJsonUrl}.${confidenceText}${candidateText} This tracker is not legal advice, not academic integrity advice, and not an official university statement unless the linked source is the university's own official page.`;
+}
+
+function extractRankingContext(summaryText: string): string {
+  const [firstSentence = ""] = summaryText.split(/(?<=\.)\s+/);
+  return /\blisted as\b/i.test(firstSentence) ? firstSentence : "";
 }
 
 function buildPolicySignals(

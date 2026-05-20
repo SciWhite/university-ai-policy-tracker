@@ -32,7 +32,7 @@ export function EntitySidebar({
 }: EntitySidebarProps) {
   return (
     <aside className="entity-sidebar" aria-label="Record reference details">
-      <ReferenceBox id="citation" title="Suggested citation">
+      <ReferenceBox id="citation" title="Suggested citation" headingLevel="h3">
         <p>{citationText}</p>
         <CitationCopyActions
           canonicalUrl={canonicalUrl}
@@ -49,7 +49,7 @@ export function EntitySidebar({
         </ul>
       </ReferenceBox>
 
-      <ReferenceBox id="json" title="Public JSON">
+      <ReferenceBox id="json" title="Public JSON" headingLevel="h3">
         <p>
           Versioned university record with claims, evidence, source attribution,
           review state, confidence, and citation fields.
@@ -64,12 +64,12 @@ export function EntitySidebar({
         </ul>
       </ReferenceBox>
 
-      <ReferenceBox title="Official sources">
+      <ReferenceBox title="Official sources" headingLevel="h3">
         <p>{officialSourceCount} source attribution record.</p>
         <p className="muted">{sourceRightsPolicy}</p>
       </ReferenceBox>
 
-      <ReferenceBox title="License and limitations">
+      <ReferenceBox title="License and limitations" headingLevel="h3">
         <p>Tracker metadata: {license}</p>
         <ul className="compact-list">
           {limitations.map((limitation) => (
@@ -78,7 +78,7 @@ export function EntitySidebar({
         </ul>
       </ReferenceBox>
 
-      <ReferenceBox title="Review states">
+      <ReferenceBox title="Review states" headingLevel="h3">
         <ul className="review-state-list">
           {reviewStates.map((reviewState) => (
             <li key={reviewState}>
