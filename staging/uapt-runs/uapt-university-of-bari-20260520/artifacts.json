@@ -1,0 +1,450 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-bari-20260520",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-university-of-bari-20260520",
+      "entityType": "university",
+      "entitySlug": "university-of-bari",
+      "startedAt": "2026-05-20T13:43:00Z",
+      "endedAt": "2026-05-20T13:51:26Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:uniba.it intelligenza artificiale generativa Universita degli Studi di Bari policy studenti docenti",
+          "domain": "uniba.it",
+          "resultCount": 5,
+          "notes": "Firecrawl search returned official UniBa pages, mostly transversal-skills course pages and one department/event page; no binding university-wide AI-use policy was identified in this query."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uniba.it (ChatGPT OR \"IA generativa\" OR \"intelligenza artificiale generativa\") (linee guida OR regolamento OR plagio OR tesi OR esami) Universita Bari",
+          "domain": "uniba.it",
+          "resultCount": 8,
+          "notes": "Firecrawl search found official event pages, teaching slides, individual faculty pages, and a doctoral-call PDF snippet; these did not provide direct university-wide AI policy evidence."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uniba.it \"Intelligenza Artificiale\" \"privacy\" \"Uniba\"",
+          "domain": "uniba.it",
+          "resultCount": 8,
+          "notes": "Firecrawl search found official UniBa transversal-skills course pages addressing artificial intelligence, rights, privacy, data protection, ethics, and AI in medicine."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.uniba.it",
+          "resultCount": 1,
+          "notes": "robots.txt was fetched with a clear crawler user agent. The selected /it/didattica/competenze-trasversali and /it/eventi-alluniversita paths were not listed as disallowed for User-agent: *."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-uniba-ai-gen-critical-thinking-course",
+        "sc-uniba-ai-markets-rights-course",
+        "sc-uniba-generative-ai-public-administration-event"
+      ],
+      "rejectionIds": [
+        "sr-uniba-generative-ai-public-administration-event"
+      ],
+      "summary": "Official-source discovery for University of Bari found relevant AI course pages in UniBa's transversal-skills catalog. The run stages narrow teaching claims only; an official generative-AI event page was rejected as event-only context rather than policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uniba-ai-gen-critical-thinking-course",
+      "entityType": "university",
+      "entitySlug": "university-of-bari",
+      "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+      "finalUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+      "sourceTitle": "AI-Gen e pensiero critico: dal prompt all'impatto",
+      "sourceLanguage": "it",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uniba.it intelligenza artificiale generativa Universita degli Studi di Bari policy studenti docenti",
+      "discoveredAt": "2026-05-20T13:43:30Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.94,
+      "policySpecificityScore": 0.58,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T13:50:20Z",
+      "verificationNotes": "Official UniBa transversal-skills page. It is course content, not a university-wide AI policy, so claims are limited to teaching/course coverage.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uniba-ai-markets-rights-course",
+      "entityType": "university",
+      "entitySlug": "university-of-bari",
+      "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+      "finalUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+      "sourceTitle": "Intelligenza artificiale, mercati, diritti",
+      "sourceLanguage": "it",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uniba.it \"Intelligenza Artificiale\" \"privacy\" \"Uniba\"",
+      "discoveredAt": "2026-05-20T13:46:40Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.91,
+      "policySpecificityScore": 0.55,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-20T13:50:50Z",
+      "verificationNotes": "Official UniBa transversal-skills course page. It addresses AI, rights, markets, privacy, data protection, GDPR, and the EU AI Regulation as course themes.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uniba-generative-ai-public-administration-event",
+      "entityType": "university",
+      "entitySlug": "university-of-bari",
+      "sourceUrl": "https://www.uniba.it/it/eventi-alluniversita/anno-2025/ia-generativa-verso-amministrazione-intelligente",
+      "finalUrl": "https://www.uniba.it/it/eventi-alluniversita/anno-2025/ia-generativa-verso-amministrazione-intelligente",
+      "sourceTitle": "L'IA generativa oltre l'automazione verso un'amministrazione intelligente",
+      "sourceLanguage": "it",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uniba.it (ChatGPT OR \"IA generativa\" OR \"intelligenza artificiale generativa\") (linee guida OR regolamento OR plagio OR tesi OR esami) Universita Bari",
+      "discoveredAt": "2026-05-20T13:45:20Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.78,
+      "policySpecificityScore": 0.24,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-20T13:51:10Z",
+      "verificationNotes": "Official UniBa event page about generative AI in public administration processes, but it is event context rather than a durable policy or guidance source.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-uniba-generative-ai-public-administration-event",
+      "sourceCandidateId": "sc-uniba-generative-ai-public-administration-event",
+      "entityType": "university",
+      "entitySlug": "university-of-bari",
+      "sourceUrl": "https://www.uniba.it/it/eventi-alluniversita/anno-2025/ia-generativa-verso-amministrazione-intelligente",
+      "finalUrl": "https://www.uniba.it/it/eventi-alluniversita/anno-2025/ia-generativa-verso-amministrazione-intelligente",
+      "rejectedAt": "2026-05-20T13:51:10Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "L'evento in parola rientra in un ciclo di incontri sulle implicazioni teoriche e pratiche dell'Intelligenza Artificiale nei processi della Pubblica Amministrazione.",
+      "notes": "Official and AI-relevant, but it describes an event/workshop and does not establish a standing UniBa AI policy or guidance rule."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "crawl_plan",
+      "planId": "plan-university-of-bari-20260520",
+      "createdAt": "2026-05-20T13:48:00Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-bari",
+          "sourceCandidateId": "sc-uniba-ai-gen-critical-thinking-course",
+          "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+          "sourceTitle": "AI-Gen e pensiero critico: dal prompt all'impatto",
+          "sourceLanguage": "it",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "ai_tool_treatment"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-bari",
+          "sourceCandidateId": "sc-uniba-ai-markets-rights-course",
+          "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+          "sourceTitle": "Intelligenza artificiale, mercati, diritti",
+          "sourceLanguage": "it",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "privacy"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official UniBa pages provide enough direct evidence for narrow teaching claims.",
+        "Do not use event-only pages, faculty-only pages, research repository PDFs, or generic AI references as policy evidence."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uniba-ai-gen-critical-thinking-course",
+      "sourceCandidateId": "sc-uniba-ai-gen-critical-thinking-course",
+      "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+      "finalUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+      "attemptedAt": "2026-05-20T13:50:20Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1400,
+      "contentHash": "485777c573af8b8b5080b1481eb71804f0591ab1d5387e8dd2f23cbe507b90b7",
+      "normalizedTextStorageKey": "openclaw://staging/uapt-university-of-bari-20260520/snapshots/uniba-ai-gen-critical-thinking-course"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uniba-ai-markets-rights-course",
+      "sourceCandidateId": "sc-uniba-ai-markets-rights-course",
+      "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+      "finalUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+      "attemptedAt": "2026-05-20T13:50:50Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1620,
+      "contentHash": "fff8279cbae4e4aec2ca39557f25df983af577f99c405fd7424eb0a12b5045e4",
+      "normalizedTextStorageKey": "openclaw://staging/uapt-university-of-bari-20260520/snapshots/uniba-ai-markets-rights-course"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uniba-generative-ai-public-administration-event",
+      "sourceCandidateId": "sc-uniba-generative-ai-public-administration-event",
+      "sourceUrl": "https://www.uniba.it/it/eventi-alluniversita/anno-2025/ia-generativa-verso-amministrazione-intelligente",
+      "finalUrl": "https://www.uniba.it/it/eventi-alluniversita/anno-2025/ia-generativa-verso-amministrazione-intelligente",
+      "attemptedAt": "2026-05-20T13:51:10Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1560,
+      "contentHash": "d833f18c7ec0b02d1c4bf5bb608f06e0fbf68242e823a9b2d75c6ce7bca52845",
+      "normalizedTextStorageKey": "openclaw://staging/uapt-university-of-bari-20260520/snapshots/uniba-generative-ai-public-administration-event"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-uniba-ai-gen-critical-thinking-course",
+      "sourceCandidateId": "sc-uniba-ai-gen-critical-thinking-course",
+      "fetchAttemptId": "fa-uniba-ai-gen-critical-thinking-course",
+      "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+      "finalUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+      "sourceTitle": "AI-Gen e pensiero critico: dal prompt all'impatto",
+      "sourceLanguage": "it",
+      "contentHash": "485777c573af8b8b5080b1481eb71804f0591ab1d5387e8dd2f23cbe507b90b7",
+      "fetchedAt": "2026-05-20T13:50:20Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://staging/uapt-university-of-bari-20260520/snapshots/uniba-ai-gen-critical-thinking-course",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-uniba-ai-markets-rights-course",
+      "sourceCandidateId": "sc-uniba-ai-markets-rights-course",
+      "fetchAttemptId": "fa-uniba-ai-markets-rights-course",
+      "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+      "finalUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+      "sourceTitle": "Intelligenza artificiale, mercati, diritti",
+      "sourceLanguage": "it",
+      "contentHash": "fff8279cbae4e4aec2ca39557f25df983af577f99c405fd7424eb0a12b5045e4",
+      "fetchedAt": "2026-05-20T13:50:50Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://staging/uapt-university-of-bari-20260520/snapshots/uniba-ai-markets-rights-course",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-uniba-ai-gen-critical-thinking-course",
+      "entityType": "university",
+      "entitySlug": "university-of-bari",
+      "claimType": "teaching",
+      "claimText": "University of Bari lists a transversal digital-skills course, \"AI-Gen e pensiero critico: dal prompt all'impatto,\" that covers generative AI and machine-learning fundamentals, model limitations such as bias and hallucinations, prompt/evaluation techniques, and verification workflows.",
+      "normalizedValue": "Official UniBa transversal-skills course content covers generative AI, model limitations, prompting, evaluation, and verification.",
+      "sourceLanguage": "it",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uniba-ai-gen-critical-thinking-course"
+      ],
+      "citation": {
+        "citationTitle": "AI-Gen e pensiero critico: dal prompt all'impatto",
+        "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-bari.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-bari",
+        "publisher": "Universita degli Studi di Bari Aldo Moro",
+        "retrievedAt": "2026-05-20T13:50:20Z",
+        "snapshotHash": "485777c573af8b8b5080b1481eb71804f0591ab1d5387e8dd2f23cbe507b90b7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-uniba-ai-markets-rights-course",
+      "entityType": "university",
+      "entitySlug": "university-of-bari",
+      "claimType": "teaching",
+      "claimText": "University of Bari lists a transversal course, \"Intelligenza artificiale, mercati, diritti,\" that teaches AI's effects on society, economy, fundamental rights, privacy, personal-data protection, non-discrimination, algorithmic transparency, GDPR, and the European AI Regulation.",
+      "normalizedValue": "Official UniBa transversal-skills course content covers AI, markets, rights, privacy, data protection, GDPR, and EU AI Regulation.",
+      "sourceLanguage": "it",
+      "confidence": 0.84,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uniba-ai-markets-rights-course"
+      ],
+      "citation": {
+        "citationTitle": "Intelligenza artificiale, mercati, diritti",
+        "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-bari.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-bari",
+        "publisher": "Universita degli Studi di Bari Aldo Moro",
+        "retrievedAt": "2026-05-20T13:50:50Z",
+        "snapshotHash": "fff8279cbae4e4aec2ca39557f25df983af577f99c405fd7424eb0a12b5045e4",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uniba-ai-gen-critical-thinking-course",
+      "claimId": "claim-uniba-ai-gen-critical-thinking-course",
+      "sourceSnapshotId": "ss-uniba-ai-gen-critical-thinking-course",
+      "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+      "finalUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+      "sourceTitle": "AI-Gen e pensiero critico: dal prompt all'impatto",
+      "sourceLanguage": "it",
+      "snapshotHash": "485777c573af8b8b5080b1481eb71804f0591ab1d5387e8dd2f23cbe507b90b7",
+      "evidenceSnippetOriginal": "Partendo dai fondamenti di AI generativa e machine learning, esplora come i modelli producono risposte, quali limiti presentano (bias, allucinazioni, dipendenza dal contesto, non verificabilità automatica) e come evitare un uso \"oracolare\" dell'AI.",
+      "evidenceSnippetDisplay": "Starting from the fundamentals of generative AI and machine learning, the course explores how models produce answers, their limits such as bias and hallucinations, contextual dependence, non-automatic verifiability, and how to avoid an oracular use of AI.",
+      "evidenceLocator": "Descrizione Attivita paragraph",
+      "evidenceType": "official_source",
+      "relevance": 0.91,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "AI-Gen e pensiero critico: dal prompt all'impatto",
+        "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/competenze-digitali/ai_gen_pensiero_critico_dal_prompt_all_impatto",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-bari.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-bari",
+        "publisher": "Universita degli Studi di Bari Aldo Moro",
+        "retrievedAt": "2026-05-20T13:50:20Z",
+        "snapshotHash": "485777c573af8b8b5080b1481eb71804f0591ab1d5387e8dd2f23cbe507b90b7",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uniba-ai-markets-rights-course",
+      "claimId": "claim-uniba-ai-markets-rights-course",
+      "sourceSnapshotId": "ss-uniba-ai-markets-rights-course",
+      "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+      "finalUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+      "sourceTitle": "Intelligenza artificiale, mercati, diritti",
+      "sourceLanguage": "it",
+      "snapshotHash": "fff8279cbae4e4aec2ca39557f25df983af577f99c405fd7424eb0a12b5045e4",
+      "evidenceSnippetOriginal": "Un'attenzione specifica sarà dedicata alla tutela dei diritti fondamentali, come la privacy, la protezione dei dati personali, la non discriminazione nel campo del diritto del lavoro e la trasparenza algoritmica. Gli studenti approfondiranno i principali riferimenti normativi, tra cui il GDPR e il regolamento europeo sull'intelligenza artificiale.",
+      "evidenceSnippetDisplay": "Specific attention will be dedicated to protecting fundamental rights, including privacy, personal-data protection, non-discrimination in labor law, and algorithmic transparency. Students will study key regulatory references including the GDPR and the European AI Regulation.",
+      "evidenceLocator": "Descrizione Attivita paragraph",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Intelligenza artificiale, mercati, diritti",
+        "sourceUrl": "https://www.uniba.it/it/didattica/competenze-trasversali/studenti-e-soggetti-esterni/management-progettuale-e-innovazione/intelligenza-artificiale-mercati-diritti",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-bari.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-bari",
+        "publisher": "Universita degli Studi di Bari Aldo Moro",
+        "retrievedAt": "2026-05-20T13:50:50Z",
+        "snapshotHash": "fff8279cbae4e4aec2ca39557f25df983af577f99c405fd7424eb0a12b5045e4",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-uniba-ai-gen-critical-thinking-course",
+      "claimId": "claim-uniba-ai-gen-critical-thinking-course",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow teaching/course-content claim. The evidence does not support a binding university-wide policy claim.",
+      "decidedAt": "2026-05-20T13:52:00Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "review_decision",
+      "decisionId": "rd-uniba-ai-markets-rights-course",
+      "claimId": "claim-uniba-ai-markets-rights-course",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-agent",
+      "notes": "Approved as a narrow teaching/course-content claim about AI, rights, privacy, data protection, GDPR, and EU AI Regulation coverage.",
+      "decidedAt": "2026-05-20T13:52:10Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-bari-20260520",
+      "artifactType": "report_draft",
+      "reportId": "report-university-of-bari-20260520",
+      "title": "University of Bari AI Teaching Source Review",
+      "generatedAt": "2026-05-20T13:52:20Z",
+      "draftPath": "content/reports/2026-05/university-of-bari-ai-teaching-source-review.mdx",
+      "summary": "Official UniBa discovery found AI-relevant transversal-skills course pages and no direct binding university-wide AI-use policy in the searched official results. The staged claims are limited to course teaching coverage.",
+      "referencedClaimIds": [
+        "claim-uniba-ai-gen-critical-thinking-course",
+        "claim-uniba-ai-markets-rights-course"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-bari.json",
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-bari.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The staged claims are not canonical public facts and should not be read as university-wide AI policy."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
