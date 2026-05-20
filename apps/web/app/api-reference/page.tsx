@@ -252,6 +252,30 @@ export default function ApiReferencePage() {
         </p>
       </section>
 
+      <section className="answer-strip" aria-label="API reference answer blocks">
+        <article className="answer-card">
+          <h2>What the API returns</h2>
+          <p>
+            Read-only tracker metadata: canonical record URLs, public JSON,
+            review states, evidence fields, source links, and citation fields.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What the API does not do</h2>
+          <p>
+            It does not mutate records, publish staging runs, bypass review
+            state, or replace official university policy sources.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>Recommended retrieval</h2>
+          <p>
+            Resolve with search or entity aliases, fetch the university record,
+            then attach claim evidence and source URLs for claim-level answers.
+          </p>
+        </article>
+      </section>
+
       <ReferenceBox
         className="compact-reference-box"
         description="Recommended use for agents and data tools."

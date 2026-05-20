@@ -163,6 +163,31 @@ export default async function AnalysisIndexPage() {
         </div>
       </section>
 
+      <section className="answer-strip" aria-label="Policy analysis answer blocks">
+        <article className="answer-card">
+          <h2>What analysis means</h2>
+          <p>
+            Analysis profiles are derived metadata over public claim/evidence
+            records. They summarize policy dimensions without replacing source
+            evidence.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What coverage score means</h2>
+          <p>
+            Coverage score measures breadth of visible public evidence, not
+            policy quality, safety, legality, strictness, or compliance.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>How to cite analysis</h2>
+          <p>
+            Cite the analysis JSON with the related university record, basis
+            claim IDs, source URLs, review state, and original evidence.
+          </p>
+        </article>
+      </section>
+
       <ReferenceBox
         className="compact-reference-box"
         description="For citation context."

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NO_ADVICE_BOUNDARY } from "@uapt/shared";
+import { JsonLd } from "@/components/json-ld";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -75,6 +76,24 @@ const reviewStates = [
   }
 ] as const;
 
+const methodologyAnswers = [
+  {
+    title: "How records become public",
+    text:
+      "Records become public after source discovery, snapshot hashing, claim extraction, evidence binding, review-state labeling, and publication from the promoted public dataset."
+  },
+  {
+    title: "What review state means",
+    text:
+      "Review state describes workflow status. Confidence is a separate machine-assessed support score and does not make a claim official."
+  },
+  {
+    title: "What evidence is canonical",
+    text:
+      "Original-language evidence, source URLs, and official university pages remain canonical; translations or summaries are helper metadata."
+  }
+] as const;
+
 export function generateMetadata() {
   const canonical = getAbsoluteSiteUrl("/methodology");
 
@@ -94,6 +113,20 @@ export function generateMetadata() {
 export default function MethodologyPage() {
   return (
     <main className="page-shell">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: methodologyAnswers.map((answer) => ({
+            "@type": "Question",
+            name: answer.title,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: answer.text
+            }
+          }))
+        }}
+      />
       <section className="hero">
         <p className="kicker">Methodology</p>
         <h1>How records become source-backed claims</h1>
@@ -101,6 +134,15 @@ export default function MethodologyPage() {
           Official sources, snapshots, short evidence snippets, confidence, and
           explicit review state.
         </p>
+      </section>
+
+      <section className="answer-strip" aria-label="Methodology answer blocks">
+        {methodologyAnswers.map((answer) => (
+          <article className="answer-card" key={answer.title}>
+            <h2>{answer.title}</h2>
+            <p>{answer.text}</p>
+          </article>
+        ))}
       </section>
 
       <div className="docs-layout">

@@ -6,6 +6,7 @@ import type {
   CatalogUniversityRanking,
   RankingSystemId
 } from "@uapt/shared";
+import { NO_ADVICE_BOUNDARY } from "@uapt/shared";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import type {
@@ -94,10 +95,10 @@ export function UniversitiesIndexClient({
     <main className="page-shell page-shell--wide">
       <section className="hero">
         <p className="kicker">Evidence records</p>
-        <h1>University records</h1>
+        <h1>Browse source-backed university AI policy records</h1>
         <p className="lead">
-          Filter source-backed AI policy records by institution, rank coverage,
-          claims, sources, review state, and public JSON.
+          Filter public records by institution, ranking coverage, claims,
+          official sources, review state, and versioned public JSON.
         </p>
       </section>
 
@@ -118,6 +119,28 @@ export function UniversitiesIndexClient({
           <span>{rankedCount}</span>
           <p>{selectedRankingLabel} ranked records</p>
         </div>
+      </section>
+
+      <section className="answer-strip" aria-label="University index answers">
+        <article className="answer-card">
+          <h2>What this index covers</h2>
+          <p>
+            Promoted public university records with source-backed claim counts,
+            official source attributions, review state, and canonical record
+            URLs.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>How to use rankings</h2>
+          <p>
+            Ranking filters support discovery and coverage analysis only; they
+            do not create or override policy claims.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>Reuse boundary</h2>
+          <p>{NO_ADVICE_BOUNDARY}</p>
+        </article>
       </section>
 
       <section

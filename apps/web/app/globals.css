@@ -127,6 +127,14 @@ body {
   line-height: 1.5;
 }
 
+h1,
+h2,
+h3,
+p,
+li {
+  text-wrap: pretty;
+}
+
 a {
   color: inherit;
 }
@@ -275,7 +283,9 @@ th {
 .docs-toc a:focus-visible,
 .theme-toggle:focus-visible,
 .copy-button:focus-visible,
-.text-card:focus-visible {
+.text-card:focus-visible,
+.search-autocomplete__option-main a:focus-visible,
+.search-autocomplete__option-actions a:focus-visible {
   box-shadow: var(--shadow-focus);
   outline: none;
 }
@@ -427,6 +437,10 @@ th {
   padding: 8px;
 }
 
+.home-search-form .search-autocomplete {
+  min-width: 0;
+}
+
 .home-search-form input {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -436,6 +450,93 @@ th {
   min-height: 44px;
   min-width: 0;
   padding: 10px 12px;
+}
+
+.search-autocomplete {
+  position: relative;
+}
+
+.search-autocomplete input {
+  width: 100%;
+}
+
+.search-autocomplete__panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  box-shadow: 0 12px 28px rgba(31, 35, 40, 0.12);
+  display: grid;
+  left: 0;
+  margin-top: 8px;
+  max-height: min(520px, 70vh);
+  overflow-y: auto;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 20;
+}
+
+:root[data-theme="dark"] .search-autocomplete__panel {
+  box-shadow: 0 16px 34px rgba(1, 4, 9, 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .search-autocomplete__panel {
+    box-shadow: 0 16px 34px rgba(1, 4, 9, 0.55);
+  }
+}
+
+.search-autocomplete__status {
+  color: var(--color-text-muted);
+  margin: 0;
+  padding: 12px 14px;
+}
+
+.search-autocomplete__option {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 12px 14px;
+}
+
+.search-autocomplete__option + .search-autocomplete__option {
+  border-top: 1px solid var(--color-border);
+}
+
+.search-autocomplete__option[aria-selected="true"],
+.search-autocomplete__option:hover {
+  background: var(--color-surface-elevated);
+}
+
+.search-autocomplete__option-main {
+  min-width: 0;
+}
+
+.search-autocomplete__option-main > a {
+  color: var(--color-source);
+  font-weight: 800;
+}
+
+.search-autocomplete__option-main p {
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.search-autocomplete__option-actions {
+  align-content: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+  max-width: 220px;
+}
+
+.search-autocomplete__option-actions a {
+  color: var(--color-source);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .home-search-form button {
@@ -478,6 +579,10 @@ th {
   font-size: 13px;
   line-height: 1.55;
   margin: 12px 0 0;
+}
+
+.lead--compact {
+  max-width: 820px;
 }
 
 .search-hero__side {
@@ -526,6 +631,32 @@ th {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-panel);
   padding: 14px;
+}
+
+.answer-strip {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.answer-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  min-width: 0;
+  padding: 16px;
+}
+
+.answer-card h2 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.answer-card p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 8px 0 0;
 }
 
 .entry-group h2,
@@ -1986,14 +2117,25 @@ ol.timeline-list {
   }
 
   .site-nav {
-    overflow-x: auto;
+    flex-wrap: wrap;
+    gap: 4px;
+    overflow-x: visible;
+    padding-bottom: 8px;
     padding-left: 12px;
     padding-right: 12px;
   }
 
   .site-nav a {
+    border-radius: var(--radius-control);
+    margin-bottom: 0;
     padding-left: 8px;
     padding-right: 8px;
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"] {
+    border-bottom-color: var(--color-border);
+    border-radius: var(--radius-control);
   }
 
   .site-footer__inner {
@@ -2041,8 +2183,25 @@ ol.timeline-list {
     grid-template-columns: 1fr;
   }
 
+  .answer-strip {
+    grid-template-columns: 1fr;
+  }
+
   .home-search-form {
     grid-template-columns: 1fr;
+  }
+
+  .search-autocomplete__panel {
+    max-height: 420px;
+  }
+
+  .search-autocomplete__option {
+    grid-template-columns: 1fr;
+  }
+
+  .search-autocomplete__option-actions {
+    justify-content: flex-start;
+    max-width: none;
   }
 }
 

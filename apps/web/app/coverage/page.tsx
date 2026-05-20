@@ -106,6 +106,30 @@ export default async function CoveragePage() {
         </div>
       </section>
 
+      <section className="answer-strip" aria-label="Coverage answer blocks">
+        <article className="answer-card">
+          <h2>What coverage means</h2>
+          <p>
+            Coverage describes collection and review status for target
+            institutions. It is not a policy quality or compliance score.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What staging means</h2>
+          <p>
+            Staging-only rows are crawl/review work, not public evidence, until
+            validated and promoted into the public release.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>How to cite coverage</h2>
+          <p>
+            Cite coverage JSON for collection status only; cite university
+            records and source evidence for policy statements.
+          </p>
+        </article>
+      </section>
+
       <div className="docs-layout">
         <nav className="docs-toc" aria-label="Coverage sections">
           <a href="#surfaces">Surfaces</a>

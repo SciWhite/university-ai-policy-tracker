@@ -76,6 +76,31 @@ export default async function ChangesPage() {
         </div>
       </section>
 
+      <section className="answer-strip" aria-label="Change feed answer blocks">
+        <article className="answer-card">
+          <h2>What changed means</h2>
+          <p>
+            A changed date means the promoted public record or tracked source
+            metadata changed in the release, not that a university policy became
+            stricter or more permissive.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What checked means</h2>
+          <p>
+            A checked date records source-review freshness. Open the record page
+            and JSON before citing a current institutional policy statement.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>How agents should use it</h2>
+          <p>
+            Use the recent changes JSON to find records, then retrieve canonical
+            university pages and source-backed claims for claim-level answers.
+          </p>
+        </article>
+      </section>
+
       <ReferenceBox
         className="compact-reference-box"
         description="Versioned feed for records and agents."

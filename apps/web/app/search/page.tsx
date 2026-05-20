@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { PUBLIC_API_VERSION } from "@uapt/shared";
 import { DataList, DataListRow } from "@/components/data-list";
+import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
+import { SearchAutocomplete } from "@/components/search-autocomplete";
 import { StateLabel } from "@/components/state-label";
 import {
   getEntityResolutionRecords,
@@ -59,21 +61,40 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   return (
     <main className="page-shell page-shell--wide">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "SearchResultsPage",
+          name: title,
+          description,
+          url: getAbsoluteSiteUrl(
+            query ? `/search?q=${encodeURIComponent(query)}` : "/search"
+          ),
+          isPartOf: {
+            "@type": "WebSite",
+            name: "University AI Policy Tracker",
+            url: getAbsoluteSiteUrl("/")
+          }
+        }}
+      />
       <section className="search-page-header" aria-labelledby="search-title">
         <div>
           <p className="kicker">Search</p>
-          <h1 id="search-title">Find a public record</h1>
+          <h1 id="search-title">Find source-backed university AI policy records</h1>
+          <p className="compact-note">
+            Search names, aliases, source domains, policy themes, AI tools, and
+            public claim summaries. Results route to canonical records and JSON.
+          </p>
         </div>
         <form action="/search" className="home-search-form" method="get">
           <label className="visually-hidden" htmlFor="search-page-input">
             Search public records
           </label>
-          <input
+          <SearchAutocomplete
             defaultValue={query}
             id="search-page-input"
             name="q"
             placeholder="University, topic, source domain..."
-            type="search"
           />
           <button type="submit">Search</button>
         </form>
@@ -108,7 +129,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
       <p className="compact-note">
         Search is a routing aid over promoted public records, not a policy
-        conclusion.
+        conclusion. Open the record page, public JSON, and source evidence
+        before reuse.
       </p>
 
       <section className="section compact-section">
@@ -252,6 +274,7 @@ function SearchResults({ results }: { results: SearchResult[] }) {
           key={result.entitySlug}
           metadata={
             <>
+              <StateLabel reviewState={result.reviewState} />
               <MetaLabel label="Score">{result.score}</MetaLabel>
               <MetaLabel label="Claims">{result.claimCount}</MetaLabel>
               <MetaLabel label="Sources">{result.sourceCount}</MetaLabel>
@@ -265,7 +288,6 @@ function SearchResults({ results }: { results: SearchResult[] }) {
           </div>
           <p>{result.sourceBackedSnippet}</p>
           <div className="table-record-meta">
-            <StateLabel reviewState={result.reviewState} />
             <MetaLabel label="Match">{result.matchReason}</MetaLabel>
             {result.confidence !== undefined ? (
               <MetaLabel label="Confidence">

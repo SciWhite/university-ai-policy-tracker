@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { ReactNode } from "react";
+import { DocumentLink } from "@/components/document-link";
 import { SiteNavigation } from "@/components/site-navigation";
 import { ThemeScript } from "@/components/theme-script";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -132,7 +133,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   <ul>
                     {group.links.map((link) => (
                       <li key={link.href}>
-                        <FooterLink href={link.href}>{link.label}</FooterLink>
+                        <DocumentLink href={link.href}>{link.label}</DocumentLink>
                       </li>
                     ))}
                   </ul>
@@ -149,29 +150,5 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         ) : null}
       </body>
     </html>
-  );
-}
-
-function FooterLink({
-  children,
-  href
-}: {
-  children: ReactNode;
-  href: string;
-}) {
-  if (isDocumentLink(href)) {
-    return <a href={href}>{children}</a>;
-  }
-
-  return <Link href={href}>{children}</Link>;
-}
-
-function isDocumentLink(href: string): boolean {
-  return (
-    href.startsWith("http") ||
-    href.startsWith("/api/") ||
-    href.startsWith("/feeds/") ||
-    href.endsWith(".txt") ||
-    href.endsWith(".json")
   );
 }

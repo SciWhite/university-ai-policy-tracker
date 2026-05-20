@@ -75,6 +75,30 @@ export default async function SourceHealthPage() {
         </div>
       </section>
 
+      <section className="answer-strip" aria-label="Source health answer blocks">
+        <article className="answer-card">
+          <h2>What source health means</h2>
+          <p>
+            Source health is access and maintenance metadata for snapshots and
+            staging fetches; it does not change claim review state.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What verification means</h2>
+          <p>
+            Fresh scrape verification can confirm access, redirects, or
+            failures, but official source evidence remains the citation target.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>Repair boundary</h2>
+          <p>
+            Prefer alternative official URLs or snapshot-only notes; do not
+            bypass robots, paywalls, login walls, CAPTCHA, or WAF.
+          </p>
+        </article>
+      </section>
+
       <ReferenceBox
         className="compact-reference-box"
         description="Crawler/review planning only."

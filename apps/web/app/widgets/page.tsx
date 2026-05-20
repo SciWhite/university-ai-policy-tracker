@@ -87,6 +87,30 @@ export default async function WidgetsPage() {
         </p>
       </section>
 
+      <section className="answer-strip" aria-label="Widget answer blocks">
+        <article className="answer-card">
+          <h2>What widgets show</h2>
+          <p>
+            Read-only public status metadata, review state, freshness, and links
+            back to canonical University AI Policy Tracker records.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What widgets avoid</h2>
+          <p>
+            Widgets do not publish unreviewed claim text, provide advice, or
+            operate as an official university policy source.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>How embeds update</h2>
+          <p>
+            Embeds read versioned public widget JSON and should cache briefly;
+            the canonical record remains the citation target.
+          </p>
+        </article>
+      </section>
+
       <section className="metrics-grid" aria-label="Widget principles">
         <div>
           <span>5</span>

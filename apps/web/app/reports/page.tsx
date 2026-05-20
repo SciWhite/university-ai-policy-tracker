@@ -50,6 +50,30 @@ export default async function ReportsPage() {
         </p>
       </section>
 
+      <section className="answer-strip" aria-label="Reports answer blocks">
+        <article className="answer-card">
+          <h2>What reports summarize</h2>
+          <p>
+            Reports summarize public dataset releases, distributions, chart
+            data, outreach copy, and citation-safe public records.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What reports do not claim</h2>
+          <p>
+            Reports do not provide legal advice, academic integrity advice, or
+            official university policy conclusions.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>How to reuse reports</h2>
+          <p>
+            Cite the report page with public JSON, chart data, release metadata,
+            and the underlying university records when making claim-level use.
+          </p>
+        </article>
+      </section>
+
       {latestReport ? (
         <section className="metrics-grid" aria-label="Latest report summary">
           {latestReport.metricCards.map((metric) => (

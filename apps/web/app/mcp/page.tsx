@@ -62,6 +62,30 @@ export default function McpPage() {
         </p>
       </section>
 
+      <section className="answer-strip" aria-label="MCP answer blocks">
+        <article className="answer-card">
+          <h2>Allowed agent use</h2>
+          <p>
+            Retrieve public records, source-backed claims, review states,
+            citation metadata, and official source URLs.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>Prohibited agent use</h2>
+          <p>
+            No mutation, no publication, no review bypass, no OpenClaw
+            operation, and no advice or permission claims.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>Evidence requirement</h2>
+          <p>
+            Claim-level answers must carry source URL, evidence snippet, source
+            language, confidence, review state, and public JSON URL.
+          </p>
+        </article>
+      </section>
+
       <ReferenceBox
         className="compact-reference-box"
         description="When future MCP clients should use this source."

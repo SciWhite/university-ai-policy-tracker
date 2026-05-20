@@ -53,6 +53,30 @@ export default function ReviewWorkflowPage() {
         </p>
       </section>
 
+      <section className="answer-strip" aria-label="Review workflow answer blocks">
+        <article className="answer-card">
+          <h2>What review controls</h2>
+          <p>
+            Review gates whether submitted sources, corrections, translations,
+            and analysis metadata can affect public tracker records.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What remains non-final</h2>
+          <p>
+            Machine-candidate and needs-review records remain visible workflow
+            states, not final policy conclusions.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What contributors submit</h2>
+          <p>
+            Contributors submit official source URLs, corrections, and evidence
+            context; publication still requires validation and review.
+          </p>
+        </article>
+      </section>
+
       <ReferenceBox
         description="Page quality does not approve derived analysis."
         id="analysis-review"

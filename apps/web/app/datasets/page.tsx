@@ -460,6 +460,31 @@ export default async function DatasetsPage() {
         </div>
       </section>
 
+      <section className="answer-strip" aria-label="Dataset answer blocks">
+        <article className="answer-card">
+          <h2>What can be reused</h2>
+          <p>
+            Tracker metadata, record URLs, review states, citation fields, and
+            public JSON artifacts are reusable under the tracker metadata
+            license.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>What remains external</h2>
+          <p>
+            Official source documents, page text, PDFs, and university policy
+            language retain their original rights and terms.
+          </p>
+        </article>
+        <article className="answer-card">
+          <h2>How agents retrieve data</h2>
+          <p>
+            Start with the API index, resolve entities with search, fetch the
+            canonical university JSON, then cite claim evidence and source URLs.
+          </p>
+        </article>
+      </section>
+
       <ReferenceBox
         description="Live read-only artifacts grouped by use."
         title="Versioned public JSON"

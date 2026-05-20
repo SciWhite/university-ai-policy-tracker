@@ -7,6 +7,7 @@ import {
 } from "@uapt/shared";
 import { ApiEndpointRow } from "@/components/api-endpoint-row";
 import { CitationCopyActions } from "@/components/citation-copy-actions";
+import { JsonLd } from "@/components/json-ld";
 import { ReferenceBox } from "@/components/reference-box";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
@@ -15,6 +16,23 @@ const description =
   "Citation formats, source attribution rules, public JSON fields, rights caveats, and advice boundaries for University AI Policy Tracker.";
 
 const exampleUniversitySlug = "anu";
+const citationAnswers = [
+  {
+    title: "How to cite a university record",
+    text:
+      "Cite the canonical visible record page and the matching public JSON URL together, then preserve source URL, review state, confidence, and last checked date."
+  },
+  {
+    title: "How to cite claim evidence",
+    text:
+      "For claim-level reuse, include claim text, original-language evidence snippet, source language, source URL, snapshot hash, confidence, and review state."
+  },
+  {
+    title: "What not to cite as official",
+    text:
+      "University AI Policy Tracker metadata is not an official university statement; cite linked official sources separately for institutional policy wording."
+  }
+] as const;
 
 export function generateMetadata() {
   const canonical = getAbsoluteSiteUrl("/citation");
@@ -59,6 +77,20 @@ export default function CitationPage() {
 
   return (
     <main className="page-shell">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: citationAnswers.map((answer) => ({
+            "@type": "Question",
+            name: answer.title,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: answer.text
+            }
+          }))
+        }}
+      />
       <section className="hero">
         <p className="kicker">Citation</p>
         <h1>Cite tracker metadata and official sources separately</h1>
@@ -66,6 +98,15 @@ export default function CitationPage() {
           Keep the canonical page, public JSON, source URL, snapshot hash, review
           state, confidence, and original evidence together.
         </p>
+      </section>
+
+      <section className="answer-strip" aria-label="Citation answer blocks">
+        {citationAnswers.map((answer) => (
+          <article className="answer-card" key={answer.title}>
+            <h2>{answer.title}</h2>
+            <p>{answer.text}</p>
+          </article>
+        ))}
       </section>
 
       <div className="docs-layout">

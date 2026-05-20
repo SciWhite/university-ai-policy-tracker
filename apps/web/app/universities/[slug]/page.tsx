@@ -112,6 +112,13 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   });
   const policySignals = buildPolicySignals(publicSummary.claims);
   const sourceLanguages = getSourceLanguages(publicSummary.claims);
+  const recordLead = buildRecordLead({
+    candidateClaimCount: candidateClaims.length,
+    officialSourceCount: publicSummary.officialSources.length,
+    reviewedClaimCount: reviewedClaims.length,
+    summary: publicSummary,
+    totalClaimCount: publicSummary.claims.length
+  });
 
   return (
     <main className="page-shell page-shell--wide">
@@ -197,7 +204,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             ) : null}
           </>
         }
-        summary={university.summary}
+        summary={recordLead}
         title={university.name}
       />
 
@@ -533,6 +540,32 @@ function formatDate(value: string): string {
     dateStyle: "medium",
     timeZone: "UTC"
   }).format(new Date(value));
+}
+
+interface RecordLeadInput {
+  candidateClaimCount: number;
+  officialSourceCount: number;
+  reviewedClaimCount: number;
+  summary: PublicUniversitySummary;
+  totalClaimCount: number;
+}
+
+function buildRecordLead({
+  candidateClaimCount,
+  officialSourceCount,
+  reviewedClaimCount,
+  summary,
+  totalClaimCount
+}: RecordLeadInput): string {
+  const reviewText = formatReviewState(summary.reviewState);
+  const checkedText = summary.lastCheckedAt
+    ? ` Last checked ${formatDate(summary.lastCheckedAt)}.`
+    : "";
+  const candidateText = candidateClaimCount
+    ? ` ${candidateClaimCount} candidate claim${candidateClaimCount === 1 ? "" : "s"} remain non-final.`
+    : "";
+
+  return `${summary.entity.name} has ${totalClaimCount} source-backed AI policy claim${totalClaimCount === 1 ? "" : "s"} from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Review state: ${reviewText}; ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}.${candidateText}${checkedText}`;
 }
 
 interface CitationReadySummaryInput {

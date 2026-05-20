@@ -1,9 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { PUBLIC_API_VERSION } from "@uapt/shared";
+import {
+  NO_ADVICE_BOUNDARY,
+  OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+  PUBLIC_API_VERSION
+} from "@uapt/shared";
 import { DataList, DataListRow } from "@/components/data-list";
+import { DocumentLink } from "@/components/document-link";
 import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
+import { SearchAutocomplete } from "@/components/search-autocomplete";
 import { StateLabel } from "@/components/state-label";
 import { searchIndexRecords, getSearchIndexRecords } from "@/lib/entity-search";
 import { getChangeRecords } from "@/lib/change-records";
@@ -11,9 +17,10 @@ import { getPolicyAnalysisProfiles } from "@/lib/policy-analysis";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getStaticUniversityIndexRecords } from "@/lib/university-index-records";
 
+const formatter = new Intl.NumberFormat("en");
 const title = "University AI Policy Tracker";
 const description =
-  "Search public, source-backed university AI policy records, official sources, review states, changes, datasets, and citation-ready public JSON.";
+  "Search and cite source-backed university GenAI policy records with official sources, review states, public JSON, and citation-ready evidence.";
 
 const quickQueries = [
   "disclosure",
@@ -25,11 +32,11 @@ const quickQueries = [
 
 const entryGroups = [
   {
-    title: "Records",
+    title: "Start",
     links: [
+      { label: "Search records", href: "/search" },
       { label: "Universities", href: "/universities" },
-      { label: "Analysis", href: "/analysis" },
-      { label: "Changes", href: "/changes" }
+      { label: "AI Policy Database", href: "/university-ai-policy-database" }
     ]
   },
   {
@@ -59,24 +66,44 @@ const entryGroups = [
     ]
   },
   {
-    title: "Trust",
+    title: "Trust and citation",
     links: [
       { label: "Methodology", href: "/methodology" },
       { label: "Citation", href: "/citation" },
+      { label: "llms.txt", href: "/llms.txt" },
       { label: "Contribute", href: "/contribute" }
     ]
   }
 ] as const;
 
-export function generateMetadata(): Metadata {
+const homeAnswers = [
+  {
+    title: "What this database is",
+    text:
+      "A public, source-backed index of university GenAI policy records with canonical pages, review state, source URLs, evidence snippets, and public JSON."
+  },
+  {
+    title: "What this database is not",
+    text: `${NO_ADVICE_BOUNDARY} Official university source pages remain canonical.`
+  },
+  {
+    title: "How to cite records",
+    text:
+      "Cite the visible record page and matching public JSON together, then preserve source URL, review state, confidence, last checked date, and original-language evidence."
+  }
+] as const;
+
+export async function generateMetadata(): Promise<Metadata> {
   const canonical = getAbsoluteSiteUrl("/");
+  const universities = await getStaticUniversityIndexRecords();
+  const dynamicTitle = buildHomeTitle(universities.length);
 
   return {
-    title,
+    title: dynamicTitle,
     description,
     alternates: { canonical },
     openGraph: {
-      title,
+      title: dynamicTitle,
       description,
       url: canonical,
       type: "website"
@@ -104,6 +131,9 @@ export default async function HomePage() {
   const suggestedRecords = searchIndexRecords(searchRecords, "disclosure", {
     limit: 5
   });
+  const pageTitle = buildHomeTitle(universities.length);
+  const universitiesJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
+  const searchJsonPath = `/api/public/${PUBLIC_API_VERSION}/search.json?q=chatgpt`;
 
   return (
     <main className="page-shell page-shell--wide">
@@ -124,7 +154,7 @@ export default async function HomePage() {
               "@id": getAbsoluteSiteUrl("/#website"),
               "@type": "WebSite",
               description,
-              name: "University AI Policy Tracker",
+              name: pageTitle,
               potentialAction: {
                 "@type": "SearchAction",
                 "query-input": "required name=search_term_string",
@@ -138,6 +168,18 @@ export default async function HomePage() {
               url: getAbsoluteSiteUrl("/")
             },
             {
+              "@id": getAbsoluteSiteUrl("/#faq"),
+              "@type": "FAQPage",
+              mainEntity: homeAnswers.map((answer) => ({
+                "@type": "Question",
+                name: answer.title,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: answer.text
+                }
+              }))
+            },
+            {
               "@id": getAbsoluteSiteUrl("/#dataset"),
               "@type": "Dataset",
               creator: {
@@ -148,9 +190,7 @@ export default async function HomePage() {
               distribution: [
                 {
                   "@type": "DataDownload",
-                  contentUrl: getAbsoluteSiteUrl(
-                    `/api/public/${PUBLIC_API_VERSION}/universities.json`
-                  ),
+                  contentUrl: getAbsoluteSiteUrl(universitiesJsonPath),
                   encodingFormat: "application/json",
                   name: "Public university records JSON"
                 },
@@ -177,17 +217,21 @@ export default async function HomePage() {
 
       <section className="search-hero" aria-labelledby="home-search-title">
         <div>
-          <p className="kicker">AI policy database</p>
-          <h1 id="home-search-title">Search university AI policy records</h1>
+          <p className="kicker">University AI policy database</p>
+          <h1 id="home-search-title">{pageTitle}</h1>
+          <p className="lead lead--compact">
+            Find, cite, and retrieve source-backed university GenAI policy
+            records. Search by institution, source domain, AI tool, policy
+            theme, or public evidence phrase.
+          </p>
           <form action="/search" className="home-search-form" method="get">
             <label className="visually-hidden" htmlFor="home-search-input">
               Search public university AI policy records
             </label>
-            <input
+            <SearchAutocomplete
               id="home-search-input"
               name="q"
               placeholder="Search universities, topics, source domains..."
-              type="search"
             />
             <button type="submit">Search</button>
           </form>
@@ -199,28 +243,42 @@ export default async function HomePage() {
             ))}
           </div>
           <p className="compact-note">
-            Search routes to source-backed public records. It is not a policy
-            conclusion.
+            Search is a routing aid over promoted public records, not a policy
+            conclusion. Open the record and public JSON before citation.
           </p>
+          <div className="tag-row hero-meta">
+            <MetaLabel label="Public JSON">{universitiesJsonPath}</MetaLabel>
+            <MetaLabel label="Search API">{searchJsonPath}</MetaLabel>
+            <MetaLabel label="License">CC-BY-4.0 metadata</MetaLabel>
+          </div>
         </div>
         <aside className="search-hero__side" aria-label="Public dataset counts">
           <div>
-            <span>{universities.length}</span>
-            <p>universities</p>
+            <span>{formatNumber(universities.length)}</span>
+            <p>university records</p>
           </div>
           <div>
-            <span>{claimCount}</span>
-            <p>claims</p>
+            <span>{formatNumber(claimCount)}</span>
+            <p>source-backed claims</p>
           </div>
           <div>
-            <span>{sourceCount}</span>
-            <p>sources</p>
+            <span>{formatNumber(sourceCount)}</span>
+            <p>official source attributions</p>
           </div>
           <div>
-            <span>{analysisProfiles.length}</span>
+            <span>{formatNumber(analysisProfiles.length)}</span>
             <p>analysis profiles</p>
           </div>
         </aside>
+      </section>
+
+      <section className="answer-strip" aria-label="Database answer blocks">
+        {homeAnswers.map((answer) => (
+          <article className="answer-card" key={answer.title}>
+            <h2>{answer.title}</h2>
+            <p>{answer.text}</p>
+          </article>
+        ))}
       </section>
 
       <section className="entry-group-grid" aria-label="Secondary entrances">
@@ -230,7 +288,7 @@ export default async function HomePage() {
             <ul>
               {group.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
+                  <DocumentLink href={link.href}>{link.label}</DocumentLink>
                 </li>
               ))}
             </ul>
@@ -307,8 +365,66 @@ export default async function HomePage() {
           ))}
         </DataList>
       </section>
+
+      <section className="section compact-section">
+        <div className="section-heading">
+          <h2>Agent and citation retrieval</h2>
+          <p>Use canonical pages and versioned public JSON together.</p>
+        </div>
+        <div className="detail-grid">
+          <article className="policy-card">
+            <h3>For AI/search systems</h3>
+            <p>
+              Resolve an entity with search, open the canonical university
+              record, then cite claim evidence and public JSON fields without
+              replacing official university source language.
+            </p>
+            <div className="tag-row">
+              <DocumentLink href="/university-ai-policy-database">
+                AI/search reference
+              </DocumentLink>
+              <DocumentLink href="/llms.txt">llms.txt</DocumentLink>
+            </div>
+          </article>
+          <article className="policy-card">
+            <h3>For researchers and journalists</h3>
+            <p>
+              Treat tracker metadata as a citation layer. Official source
+              pages, PDFs, and policy documents keep their own rights and
+              remain the final source for institutional wording.
+            </p>
+            <div className="tag-row">
+              <DocumentLink href="/citation">Citation guide</DocumentLink>
+              <DocumentLink href="/methodology">Methodology</DocumentLink>
+            </div>
+          </article>
+          <article className="policy-card">
+            <h3>For developers</h3>
+            <p>
+              Public endpoints expose read-only records, search, entities,
+              datasets, recent changes, analysis profiles, and citation
+              metadata under the versioned API namespace.
+            </p>
+            <div className="tag-row">
+              <DocumentLink href="/api-reference">API docs</DocumentLink>
+              <DocumentLink href={`/api/public/${PUBLIC_API_VERSION}/index.json`}>
+                API index
+              </DocumentLink>
+            </div>
+          </article>
+        </div>
+        <p className="notice-card">{OFFICIAL_SOURCE_RIGHTS_CAVEAT}</p>
+      </section>
     </main>
   );
+}
+
+function buildHomeTitle(universityCount: number): string {
+  return `University AI Policy Database: Search ${formatNumber(universityCount)} Source-Backed GenAI Policies`;
+}
+
+function formatNumber(value: number): string {
+  return formatter.format(value);
 }
 
 function formatDate(value: string): string {
