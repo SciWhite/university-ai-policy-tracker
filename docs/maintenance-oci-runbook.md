@@ -121,3 +121,20 @@ or .json and do not create a directory under staging/uapt-runs/.
 If there is a clear policy-content update, write a valid openclaw-artifact-v1
 bundle under the supplied staging/uapt-runs/<run-dir> and run the validator.
 ```
+
+Use the helper script to start these reviews instead of hand-writing systemd
+commands:
+
+```bash
+sudo -iu openclaw bash -lc 'cd ~/workspace/university-ai-policy-tracker && pnpm maintenance:start-light-review \
+  --run-id maintenance-2026-05-19T05-18-08-939Z \
+  --target maastricht-university=https://www.maastrichtuniversity.nl/file/policy-framework-generative-artificial-intelligence-12-12-2024pdf'
+```
+
+Preview without starting units:
+
+```bash
+sudo -iu openclaw bash -lc 'cd ~/workspace/university-ai-policy-tracker && pnpm maintenance:start-light-review --dry-run \
+  --run-id maintenance-2026-05-19T05-18-08-939Z \
+  --target maastricht-university=https://www.maastrichtuniversity.nl/file/policy-framework-generative-artificial-intelligence-12-12-2024pdf'
+```
