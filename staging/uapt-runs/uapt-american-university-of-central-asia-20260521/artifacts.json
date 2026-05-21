@@ -1,0 +1,507 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-american-university-of-central-asia-20260521",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-auca-ai-policy-20260521",
+      "entityType": "university",
+      "entitySlug": "american-university-of-central-asia",
+      "startedAt": "2026-05-21T15:20:00.000Z",
+      "endedAt": "2026-05-21T15:27:33.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:auca.kg ChatGPT OR \"generative AI\" OR \"artificial intelligence\" AUCA students policy",
+          "domain": "auca.kg",
+          "resultCount": 10,
+          "notes": "Firecrawl search found the official AUCA AI Policy page, the corresponding Faculty Senate PDF, and AI-related news/course pages."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:auca.kg AUCA plagiarism policy student handbook",
+          "domain": "auca.kg",
+          "resultCount": 10,
+          "notes": "Firecrawl search found the current Code of Student Rights, Responsibilities and Conduct PDF and older or department-specific handbook material."
+        },
+        {
+          "method": "site_search",
+          "query": "artificial intelligence; academic integrity",
+          "domain": "www.auca.kg",
+          "resultCount": 0,
+          "notes": "The AUCA site search endpoint returned no useful result listings for these terms, so discovery used Firecrawl web search plus official direct fetches."
+        },
+        {
+          "method": "sitemap",
+          "domain": "www.auca.kg",
+          "resultCount": 1,
+          "notes": "The official sitemap page includes the AI Policy page under Academic Rules and Registration. robots.txt allows crawling for all user agents."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "auca.kg",
+          "resultCount": 4,
+          "notes": "Official AUCA sources fetched successfully from auca.kg and www.auca.kg. No login, paywall, CAPTCHA, or robots block was encountered."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-auca-ai-policy-page",
+        "sc-auca-code-students-2026-pdf",
+        "sc-auca-ai-roundtable-news"
+      ],
+      "rejectionIds": [
+        "sr-auca-ai-roundtable-news"
+      ],
+      "summary": "Official-source discovery located an AUCA AI Policy page approved by the Academic Senate and the current Code of Student Rights, Responsibilities, and Conduct PDF. An official AI classroom roundtable news item was discovered but rejected as event/news coverage rather than policy or guidance evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-auca-ai-policy-page",
+      "entityType": "university",
+      "entitySlug": "american-university-of-central-asia",
+      "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+      "finalUrl": "https://www.auca.kg/en/p6050817816/",
+      "sourceTitle": "AUCA - AI Policy",
+      "sourceLanguage": "en",
+      "sourceType": "formal_policy",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:auca.kg ChatGPT OR \"generative AI\" OR \"artificial intelligence\" AUCA students policy",
+      "discoveredAt": "2026-05-21T15:22:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.94,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-21T15:25:00.000Z",
+      "verificationNotes": "Official AUCA page under Academic Rules and Registration titled AI Policy and marked approved by the Academic Senate on January 11, 2024.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-auca-code-students-2026-pdf",
+      "entityType": "university",
+      "entitySlug": "american-university-of-central-asia",
+      "sourceUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+      "finalUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+      "sourceTitle": "Code of Student Rights, Responsibilities and Conduct",
+      "sourceLanguage": "en",
+      "sourceType": "academic_integrity",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:auca.kg AUCA plagiarism policy student handbook",
+      "discoveredAt": "2026-05-21T15:23:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.82,
+      "policySpecificityScore": 0.9,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-21T15:26:00.000Z",
+      "verificationNotes": "Official AUCA PDF reached from the AUCA Code of Conduct page and search results; Part III defines academic dishonesty and includes AI in plagiarism/cheating provisions.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-auca-ai-roundtable-news",
+      "entityType": "university",
+      "entitySlug": "american-university-of-central-asia",
+      "sourceUrl": "https://www.auca.kg/en/auca_news/6840/",
+      "finalUrl": "https://www.auca.kg/en/auca_news/6840/",
+      "sourceTitle": "Roundtable on the use of Artificial Intelligence in Classrooms",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:auca.kg ChatGPT OR \"generative AI\" OR \"artificial intelligence\" AUCA students policy",
+      "discoveredAt": "2026-05-21T15:23:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.76,
+      "policySpecificityScore": 0.18,
+      "verificationStatus": "rejected",
+      "rejectionReason": "event_or_news_only",
+      "verificationNotes": "Official AUCA news coverage of a roundtable; not used as binding policy or guidance evidence.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-auca-ai-roundtable-news",
+      "sourceCandidateId": "sc-auca-ai-roundtable-news",
+      "entityType": "university",
+      "entitySlug": "american-university-of-central-asia",
+      "sourceUrl": "https://www.auca.kg/en/auca_news/6840/",
+      "finalUrl": "https://www.auca.kg/en/auca_news/6840/",
+      "rejectedAt": "2026-05-21T15:26:30.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "codex-cli-crawl-worker",
+      "evidenceSnippet": "Roundtable on the use of Artificial Intelligence in Classrooms",
+      "notes": "The item is useful discovery context but it reports an event and does not establish AUCA policy, guidance, allowed tools, privacy rules, or enforcement standards."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "crawl_plan",
+      "planId": "plan-auca-ai-policy-20260521",
+      "createdAt": "2026-05-21T15:24:00.000Z",
+      "createdBy": "codex-cli-crawl-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "american-university-of-central-asia",
+          "sourceCandidateId": "sc-auca-ai-policy-page",
+          "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+          "sourceTitle": "AUCA - AI Policy",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "ai_tool_treatment",
+            "academic_integrity"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "american-university-of-central-asia",
+          "sourceCandidateId": "sc-auca-code-students-2026-pdf",
+          "sourceUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+          "sourceTitle": "Code of Student Rights, Responsibilities and Conduct",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "academic_integrity"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after verified official AUCA sources provide direct AI-policy and academic-integrity evidence.",
+        "Do not use news, event, department-only, or course-only pages to infer university-wide policy.",
+        "Do not create canonical/public claims from this staged bundle."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-auca-ai-policy-page-http",
+      "sourceCandidateId": "sc-auca-ai-policy-page",
+      "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+      "finalUrl": "https://www.auca.kg/en/p6050817816/",
+      "attemptedAt": "2026-05-21T15:25:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 329,
+      "contentHash": "db0608da3d6ea2c3700eedde1adff5dc93c178744b19f4ed529a6b83a7e51b52",
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-american-university-of-central-asia-20260521/auca-ai-policy-page"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-auca-code-students-2026-pdf-http",
+      "sourceCandidateId": "sc-auca-code-students-2026-pdf",
+      "sourceUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+      "finalUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+      "attemptedAt": "2026-05-21T15:26:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 745,
+      "contentHash": "e8d7d9dc9f786ea202c3e66a440227a2794f50c6084d278484f5a7637d31c836",
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-american-university-of-central-asia-20260521/auca-code-students-2026"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snapshot-auca-ai-policy-page",
+      "sourceCandidateId": "sc-auca-ai-policy-page",
+      "fetchAttemptId": "fetch-auca-ai-policy-page-http",
+      "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+      "finalUrl": "https://www.auca.kg/en/p6050817816/",
+      "sourceTitle": "AUCA - AI Policy",
+      "sourceLanguage": "en",
+      "contentHash": "db0608da3d6ea2c3700eedde1adff5dc93c178744b19f4ed529a6b83a7e51b52",
+      "fetchedAt": "2026-05-21T15:25:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-american-university-of-central-asia-20260521/auca-ai-policy-page",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snapshot-auca-code-students-2026",
+      "sourceCandidateId": "sc-auca-code-students-2026-pdf",
+      "fetchAttemptId": "fetch-auca-code-students-2026-pdf-http",
+      "sourceUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+      "finalUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+      "sourceTitle": "Code of Student Rights, Responsibilities and Conduct",
+      "sourceLanguage": "en",
+      "contentHash": "e8d7d9dc9f786ea202c3e66a440227a2794f50c6084d278484f5a7637d31c836",
+      "fetchedAt": "2026-05-21T15:26:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-american-university-of-central-asia-20260521/auca-code-students-2026",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-auca-instructor-course-ai-policies",
+      "entityType": "university",
+      "entitySlug": "american-university-of-central-asia",
+      "claimType": "teaching",
+      "claimText": "AUCA permits instructors to set course-level policies regulating generative AI and other tools when those policies are clear and communicated in course syllabi.",
+      "normalizedValue": "course_level_instructor_ai_policy_allowed_with_syllabus_notice",
+      "sourceLanguage": "en",
+      "confidence": 0.94,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-auca-instructor-course-ai-policies"
+      ],
+      "citation": {
+        "citationTitle": "AUCA - AI Policy",
+        "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/american-university-of-central-asia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/american-university-of-central-asia",
+        "publisher": "American University of Central Asia",
+        "retrievedAt": "2026-05-21T15:25:00.000Z",
+        "snapshotHash": "db0608da3d6ea2c3700eedde1adff5dc93c178744b19f4ed529a6b83a7e51b52",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-auca-ai-policy-syllabus-link",
+      "entityType": "university",
+      "entitySlug": "american-university-of-central-asia",
+      "claimType": "teaching",
+      "claimText": "AUCA requires every academic program syllabus to include an AI-policy statement and a link to the Code of Student Rights, Responsibilities, and Conduct.",
+      "normalizedValue": "ai_policy_statement_and_code_link_required_in_program_syllabi",
+      "sourceLanguage": "en",
+      "confidence": 0.96,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-auca-ai-policy-syllabus-link"
+      ],
+      "citation": {
+        "citationTitle": "AUCA - AI Policy",
+        "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/american-university-of-central-asia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/american-university-of-central-asia",
+        "publisher": "American University of Central Asia",
+        "retrievedAt": "2026-05-21T15:25:00.000Z",
+        "snapshotHash": "db0608da3d6ea2c3700eedde1adff5dc93c178744b19f4ed529a6b83a7e51b52",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-auca-code-ai-academic-dishonesty",
+      "entityType": "university",
+      "entitySlug": "american-university-of-central-asia",
+      "claimType": "academic_integrity",
+      "claimText": "AUCA's student conduct code states that AI use is addressed in the AUCA AI Policy for plagiarism and lists AI among prohibited resources whose use during a proctored exam constitutes cheating.",
+      "normalizedValue": "ai_referenced_in_plagiarism_policy_and_prohibited_exam_resources",
+      "sourceLanguage": "en",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "evidence-auca-code-ai-academic-dishonesty"
+      ],
+      "citation": {
+        "citationTitle": "Code of Student Rights, Responsibilities and Conduct",
+        "sourceUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/american-university-of-central-asia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/american-university-of-central-asia",
+        "publisher": "American University of Central Asia",
+        "retrievedAt": "2026-05-21T15:26:00.000Z",
+        "snapshotHash": "e8d7d9dc9f786ea202c3e66a440227a2794f50c6084d278484f5a7637d31c836",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-auca-instructor-course-ai-policies",
+      "claimId": "claim-auca-instructor-course-ai-policies",
+      "sourceSnapshotId": "snapshot-auca-ai-policy-page",
+      "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+      "finalUrl": "https://www.auca.kg/en/p6050817816/",
+      "sourceTitle": "AUCA - AI Policy",
+      "sourceLanguage": "en",
+      "snapshotHash": "db0608da3d6ea2c3700eedde1adff5dc93c178744b19f4ed529a6b83a7e51b52",
+      "evidenceSnippetOriginal": "Instructors can set individual policies on regulating the utility of generative AI and other tools in their courses provided they: Set clear policies, whether permitting or prohibiting some or all tools; Communicate them clearly in their individual course syllabi.",
+      "evidenceLocator": "AI Policy page, body text",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "AUCA - AI Policy",
+        "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/american-university-of-central-asia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/american-university-of-central-asia",
+        "publisher": "American University of Central Asia",
+        "retrievedAt": "2026-05-21T15:25:00.000Z",
+        "snapshotHash": "db0608da3d6ea2c3700eedde1adff5dc93c178744b19f4ed529a6b83a7e51b52",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-auca-ai-policy-syllabus-link",
+      "claimId": "claim-auca-ai-policy-syllabus-link",
+      "sourceSnapshotId": "snapshot-auca-ai-policy-page",
+      "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+      "finalUrl": "https://www.auca.kg/en/p6050817816/",
+      "sourceTitle": "AUCA - AI Policy",
+      "sourceLanguage": "en",
+      "snapshotHash": "db0608da3d6ea2c3700eedde1adff5dc93c178744b19f4ed529a6b83a7e51b52",
+      "evidenceSnippetOriginal": "In addition, such statement and the link https://auca.kg/en/code_of_conduct1/ to the Code of Student Rights, Responsibilities, and Conduct shall be a mandatory component in every academic program syllabus of AUCA.",
+      "evidenceLocator": "AI Policy page, body text",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "AUCA - AI Policy",
+        "sourceUrl": "https://www.auca.kg/en/p6050817816/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/american-university-of-central-asia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/american-university-of-central-asia",
+        "publisher": "American University of Central Asia",
+        "retrievedAt": "2026-05-21T15:25:00.000Z",
+        "snapshotHash": "db0608da3d6ea2c3700eedde1adff5dc93c178744b19f4ed529a6b83a7e51b52",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "evidence-auca-code-ai-academic-dishonesty",
+      "claimId": "claim-auca-code-ai-academic-dishonesty",
+      "sourceSnapshotId": "snapshot-auca-code-students-2026",
+      "sourceUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+      "finalUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+      "sourceTitle": "Code of Student Rights, Responsibilities and Conduct",
+      "sourceLanguage": "en",
+      "snapshotHash": "e8d7d9dc9f786ea202c3e66a440227a2794f50c6084d278484f5a7637d31c836",
+      "evidenceSnippetOriginal": "Usage of AI can be found in the AUCA AI Policy. 2.3. Cheating. This involves using prohibited resources during a proctored exam, including but not limited to cheat sheets, notes, books, internet, AI, instant messaging services or other students.",
+      "evidenceLocator": "Part III, Section A, Definitions of Academic Dishonesty",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Code of Student Rights, Responsibilities and Conduct",
+        "sourceUrl": "https://auca.kg/uploads/_pdf/Code_of_Students_2026.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/american-university-of-central-asia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/american-university-of-central-asia",
+        "publisher": "American University of Central Asia",
+        "retrievedAt": "2026-05-21T15:26:00.000Z",
+        "snapshotHash": "e8d7d9dc9f786ea202c3e66a440227a2794f50c6084d278484f5a7637d31c836",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "review-auca-instructor-course-ai-policies",
+      "claimId": "claim-auca-instructor-course-ai-policies",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved as a narrow course-level teaching-policy claim. The source says instructors can set individual policies and must communicate them in syllabi; it does not establish a single universal allow/prohibit rule.",
+      "decidedAt": "2026-05-21T15:27:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "review-auca-ai-policy-syllabus-link",
+      "claimId": "claim-auca-ai-policy-syllabus-link",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved because the AUCA AI Policy states the AI-policy statement and Code link shall be a mandatory component in every academic program syllabus.",
+      "decidedAt": "2026-05-21T15:27:05.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "review-auca-code-ai-academic-dishonesty",
+      "claimId": "claim-auca-code-ai-academic-dishonesty",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-cli-crawl-worker",
+      "notes": "Approved as an academic-integrity claim scoped to the Code text. The claim avoids implying all AI use is misconduct and tracks only the listed plagiarism reference and proctored-exam cheating language.",
+      "decidedAt": "2026-05-21T15:27:10.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-american-university-of-central-asia-20260521",
+      "artifactType": "report_draft",
+      "reportId": "report-auca-ai-policy-20260521",
+      "title": "American University of Central Asia AI Policy Evidence",
+      "generatedAt": "2026-05-21T15:27:33.000Z",
+      "draftPath": "content/reports/2026-05/american-university-of-central-asia-ai-policy.mdx",
+      "summary": "Staged AUCA evidence identifies an Academic Senate-approved AI Policy allowing instructors to set clear course-level generative-AI rules in syllabi, requiring an AI-policy statement and Code link in every academic program syllabus, and a student conduct code that references AI in academic-dishonesty provisions.",
+      "referencedClaimIds": [
+        "claim-auca-instructor-course-ai-policies",
+        "claim-auca-ai-policy-syllabus-link",
+        "claim-auca-code-ai-academic-dishonesty"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/american-university-of-central-asia.json",
+        "https://eduaipolicy.org/api/public/v1/claims/american-university-of-central-asia.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "No AUCA privacy, procurement, security-review, approved-tool list, or research-use AI policy was found in this bounded crawl.",
+        "The official roundtable news item was rejected as event coverage and was not used as policy evidence."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

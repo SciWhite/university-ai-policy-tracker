@@ -1,0 +1,318 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-baku-engineering-university-20260521",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-beu-strategic-plan-2024-2029",
+      "entityType": "university",
+      "entitySlug": "baku-engineering-university",
+      "sourceUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+      "finalUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+      "sourceTitle": "Strategic Development Plan of Baku Engineering University for 2024-2029",
+      "sourceLanguage": "en",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "Baku Engineering University artificial intelligence policy site:beu.edu.az OR site:beu.edu.az/en",
+      "discoveredAt": "2026-05-21T15:24:30.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.78,
+      "policySpecificityScore": 0.66,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-21T15:25:06.000Z",
+      "verificationNotes": "Official BEU-hosted PDF. Firecrawl extracted the strategic-plan text and direct HTTPS header check returned 200 application/pdf.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-beu-round-table-ai-language-teaching",
+      "entityType": "university",
+      "entitySlug": "baku-engineering-university",
+      "sourceUrl": "https://beu.edu.az/en/media/news/bmu-da-suni-intellektin-xarici-dil-tdrisind-ttbiqin-hsr-olunmus-dyirmi-masa",
+      "finalUrl": "https://beu.edu.az/en/media/news/bmu-da-suni-intellektin-xarici-dil-tdrisind-ttbiqin-hsr-olunmus-dyirmi-masa",
+      "sourceTitle": "Round Table on the Application of Artificial Intelligence in Foreign Language Teaching Held at BEU",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "Baku Engineering University artificial intelligence policy site:beu.edu.az OR site:beu.edu.az/en",
+      "discoveredAt": "2026-05-21T15:24:30.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.74,
+      "policySpecificityScore": 0.25,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-21T15:25:15.000Z",
+      "verificationNotes": "Official BEU news page about a round table. It discusses AI teaching themes but does not establish an institutional policy or guidance claim.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-beu-ai-data-science-labs-news",
+      "entityType": "university",
+      "entitySlug": "baku-engineering-university",
+      "sourceUrl": "https://beu.edu.az/en/media/news/bmu-da-suni-intellekt-data-elmlri-v-rqmsal-sistemlr-uzr-yeni-laboratoriyalar-yaradlb",
+      "finalUrl": "https://beu.edu.az/en/media/news/bmu-da-suni-intellekt-data-elmlri-v-rqmsal-sistemlr-uzr-yeni-laboratoriyalar-yaradlb",
+      "sourceTitle": "New Laboratories in Artificial Intelligence, Data Science, and Digital Systems Established at BEU",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:beu.edu.az \"artificial intelligence\" \"teaching\" \"Baku Engineering University\"",
+      "discoveredAt": "2026-05-21T15:24:45.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.68,
+      "policySpecificityScore": 0.22,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-21T15:25:20.000Z",
+      "verificationNotes": "Official BEU news page about laboratory creation and education/research activities. It is useful context but not a policy or guidance source.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-beu-round-table-ai-language-teaching",
+      "sourceCandidateId": "sc-beu-round-table-ai-language-teaching",
+      "entityType": "university",
+      "entitySlug": "baku-engineering-university",
+      "sourceUrl": "https://beu.edu.az/en/media/news/bmu-da-suni-intellektin-xarici-dil-tdrisind-ttbiqin-hsr-olunmus-dyirmi-masa",
+      "finalUrl": "https://beu.edu.az/en/media/news/bmu-da-suni-intellektin-xarici-dil-tdrisind-ttbiqin-hsr-olunmus-dyirmi-masa",
+      "rejectedAt": "2026-05-21T15:25:15.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "openclaw-codex-worker",
+      "evidenceSnippet": "A round table discussion on \"Artificial Intelligence in Foreign Language Teaching: Digital Transformation and Innovative Approaches in Higher Education\" has been held at Baku Engineering University.",
+      "notes": "Official page, but it reports an event and proposals/approaches rather than a durable university policy or guidance statement."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-beu-ai-data-science-labs-news",
+      "sourceCandidateId": "sc-beu-ai-data-science-labs-news",
+      "entityType": "university",
+      "entitySlug": "baku-engineering-university",
+      "sourceUrl": "https://beu.edu.az/en/media/news/bmu-da-suni-intellekt-data-elmlri-v-rqmsal-sistemlr-uzr-yeni-laboratoriyalar-yaradlb",
+      "finalUrl": "https://beu.edu.az/en/media/news/bmu-da-suni-intellekt-data-elmlri-v-rqmsal-sistemlr-uzr-yeni-laboratoriyalar-yaradlb",
+      "rejectedAt": "2026-05-21T15:25:20.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-codex-worker",
+      "evidenceSnippet": "New laboratories in Artificial Intelligence and Data Science, as well as Digital Systems and Technologies, have been established at Baku Engineering University.",
+      "notes": "Official page, but it describes infrastructure and programs, not policy requirements or AI-use guidance."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "source_discovery_trace",
+      "traceId": "sdt-beu-ai-policy-discovery-20260521",
+      "entityType": "university",
+      "entitySlug": "baku-engineering-university",
+      "startedAt": "2026-05-21T15:24:00.000Z",
+      "endedAt": "2026-05-21T15:25:30.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "Baku Engineering University artificial intelligence policy site:beu.edu.az OR site:beu.edu.az/en",
+          "domain": "beu.edu.az",
+          "resultCount": 5,
+          "notes": "Firecrawl search found the official BEU strategic development plan PDF and AI-related official news pages."
+        },
+        {
+          "method": "multilingual_query",
+          "query": "site:beu.edu.az \"süni intellekt\" \"Bakı Mühəndislik Universiteti\"",
+          "domain": "beu.edu.az",
+          "resultCount": 5,
+          "notes": "Azerbaijani-language query surfaced AI program, seminar, visit, and infosession pages, mostly event/program context rather than policy guidance."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:beu.edu.az Baku Engineering University ChatGPT AI academic integrity policy",
+          "domain": "beu.edu.az",
+          "resultCount": 0,
+          "notes": "No official BEU ChatGPT or AI academic-integrity policy result was found."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-beu-strategic-plan-2024-2029",
+        "sc-beu-round-table-ai-language-teaching",
+        "sc-beu-ai-data-science-labs-news"
+      ],
+      "rejectionIds": [
+        "sr-beu-round-table-ai-language-teaching",
+        "sr-beu-ai-data-science-labs-news"
+      ],
+      "summary": "Discovery found one official BEU strategic-plan PDF suitable for a narrow institutional teaching/digital-transformation claim. Other official AI pages were event or infrastructure news and were rejected for policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "crawl_plan",
+      "planId": "cp-beu-ai-policy-20260521",
+      "createdAt": "2026-05-21T15:25:30.000Z",
+      "createdBy": "openclaw-codex-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "baku-engineering-university",
+          "sourceCandidateId": "sc-beu-strategic-plan-2024-2029",
+          "sourceUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+          "sourceTitle": "Strategic Development Plan of Baku Engineering University for 2024-2029",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "digital transformation",
+            "artificial intelligence in teaching"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after extracting citation-ready evidence from the official strategic development plan.",
+        "Do not infer binding academic-integrity or tool-use rules without a dedicated BEU policy or guidance source."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-beu-strategic-plan-2024-2029",
+      "sourceCandidateId": "sc-beu-strategic-plan-2024-2029",
+      "sourceUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+      "finalUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+      "attemptedAt": "2026-05-21T15:25:06.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 4510,
+      "contentHash": "09e1244ef45ed14663cb6366961d8d369f44d5988b84f2a894b3bd17c97dde17",
+      "normalizedTextStorageKey": "openclaw-staging/uapt-baku-engineering-university-20260521/source-snapshots/ss-beu-strategic-plan-2024-2029"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-beu-strategic-plan-2024-2029",
+      "sourceCandidateId": "sc-beu-strategic-plan-2024-2029",
+      "fetchAttemptId": "fa-beu-strategic-plan-2024-2029",
+      "sourceUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+      "finalUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+      "sourceTitle": "Strategic Development Plan of Baku Engineering University for 2024-2029",
+      "sourceLanguage": "en",
+      "contentHash": "09e1244ef45ed14663cb6366961d8d369f44d5988b84f2a894b3bd17c97dde17",
+      "fetchedAt": "2026-05-21T15:25:06.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw-staging/uapt-baku-engineering-university-20260521/source-snapshots/ss-beu-strategic-plan-2024-2029",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-beu-integrate-ai-into-teaching-2024-2025",
+      "entityType": "university",
+      "entitySlug": "baku-engineering-university",
+      "claimType": "teaching",
+      "claimText": "Baku Engineering University's 2024-2029 strategic development plan includes integrating artificial intelligence technologies into teaching as part of its digital transformation timeline, with a measurable objective to digitize 50 courses by 2025.",
+      "normalizedValue": "institutional_strategy_integrate_ai_into_teaching",
+      "sourceLanguage": "en",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-beu-integrate-ai-into-teaching-2024-2025"
+      ],
+      "citation": {
+        "citationTitle": "Strategic Development Plan of Baku Engineering University for 2024-2029",
+        "sourceUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/baku-engineering-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/baku-engineering-university",
+        "publisher": "Baku Engineering University",
+        "retrievedAt": "2026-05-21T15:25:06.000Z",
+        "snapshotHash": "09e1244ef45ed14663cb6366961d8d369f44d5988b84f2a894b3bd17c97dde17",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-beu-integrate-ai-into-teaching-2024-2025",
+      "claimId": "claim-beu-integrate-ai-into-teaching-2024-2025",
+      "sourceSnapshotId": "ss-beu-strategic-plan-2024-2029",
+      "sourceUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+      "finalUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+      "sourceTitle": "Strategic Development Plan of Baku Engineering University for 2024-2029",
+      "sourceLanguage": "en",
+      "snapshotHash": "09e1244ef45ed14663cb6366961d8d369f44d5988b84f2a894b3bd17c97dde17",
+      "evidenceSnippetOriginal": "Digital Transformation | Integrate artificial intelligence technologies into teaching | Digitize 50 courses by 2025 | 2024-2025.",
+      "evidenceSnippetDisplay": "The strategic-plan timeline lists integrating artificial intelligence technologies into teaching under Digital Transformation, with a measurable objective to digitize 50 courses by 2025.",
+      "evidenceLocator": "Strategic Goals Timeline table, Digital Transformation row",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Strategic Development Plan of Baku Engineering University for 2024-2029",
+        "sourceUrl": "https://beu.edu.az/root_panel/upload/files/beu_edu_az/documents/sustainability/policies/BMU_SIP2024-2029_EN.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/baku-engineering-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/baku-engineering-university",
+        "publisher": "Baku Engineering University",
+        "retrievedAt": "2026-05-21T15:25:06.000Z",
+        "snapshotHash": "09e1244ef45ed14663cb6366961d8d369f44d5988b84f2a894b3bd17c97dde17",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "rd-beu-integrate-ai-into-teaching-2024-2025",
+      "claimId": "claim-beu-integrate-ai-into-teaching-2024-2025",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "openclaw-codex-worker",
+      "notes": "Approved as a narrow strategic-plan teaching claim. This does not establish a binding AI academic-integrity policy, approved-tool list, or data-handling rule.",
+      "decidedAt": "2026-05-21T15:26:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-baku-engineering-university-20260521",
+      "artifactType": "report_draft",
+      "reportId": "report-beu-ai-teaching-strategy-20260521",
+      "title": "Baku Engineering University AI Teaching Strategy Candidate",
+      "generatedAt": "2026-05-21T15:26:10.000Z",
+      "draftPath": "content/reports/2026-05/baku-engineering-university-ai-teaching-strategy.mdx",
+      "summary": "Baku Engineering University's official 2024-2029 strategic development plan supports one narrow agent-reviewed candidate claim: BEU plans to integrate artificial intelligence technologies into teaching under digital transformation and measure progress by digitizing 50 courses by 2025. No dedicated official BEU AI academic-integrity, approved-tools, privacy, or procurement policy was found in this run.",
+      "referencedClaimIds": [
+        "claim-beu-integrate-ai-into-teaching-2024-2025"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/baku-engineering-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The approved candidate is based on an institutional strategic plan, not a dedicated AI-use policy or binding classroom rule."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
