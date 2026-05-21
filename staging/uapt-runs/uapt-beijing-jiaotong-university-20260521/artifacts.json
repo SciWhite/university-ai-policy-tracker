@@ -1,0 +1,414 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-beijing-jiaotong-university-20260521",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "traceId": "trace-bjtu-20260521",
+      "entityType": "university",
+      "entitySlug": "beijing-jiaotong-university",
+      "startedAt": "2026-05-21T14:09:00.000Z",
+      "endedAt": "2026-05-21T14:18:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:bjtu.edu.cn 北京交通大学 生成式人工智能 人工智能 教学 指南 学术诚信 政策",
+          "domain": "bjtu.edu.cn",
+          "resultCount": 5,
+          "notes": "Firecrawl search returned mostly official PDFs and school pages with general AI or curriculum mentions; no binding generative-AI academic-integrity policy was found."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:bjtu.edu.cn 北京交通大学 AI 学生 使用 指南 教务",
+          "domain": "bjtu.edu.cn",
+          "resultCount": 10,
+          "notes": "Search found the Undergraduate School 2023-2024 teaching quality report PDF as the strongest official source for AI curriculum and AI-enabled course development."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:bjtu.edu.cn \"生成式人工智能\" \"北京交通大学\"",
+          "domain": "bjtu.edu.cn",
+          "resultCount": 10,
+          "notes": "Results were faculty profiles, research/news pages, and an Undergraduate School news item about a teaching AI-agent application case; these were not used for binding policy claims."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "bjtu.edu.cn",
+          "resultCount": 2,
+          "notes": "Verified www.bjtu.edu.cn and bksy.bjtu.edu.cn as official Beijing Jiaotong University domains by site branding and bjtu.edu.cn institutional domain control."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-bjtu-undergraduate-quality-report-2023-2024",
+        "sc-bjtu-teaching-ai-agent-news-2025"
+      ],
+      "rejectionIds": [
+        "sr-bjtu-teaching-ai-agent-news-2025"
+      ],
+      "summary": "Official-source discovery found one primary official PDF with AI-related undergraduate teaching and curriculum evidence. Official searches did not locate a binding university-wide generative-AI use policy, so staged claims are limited to teaching/curriculum practices described in the Undergraduate School quality report."
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "sourceCandidateId": "sc-bjtu-undergraduate-quality-report-2023-2024",
+      "entityType": "university",
+      "entitySlug": "beijing-jiaotong-university",
+      "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "finalUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "sourceTitle": "北京交通大学2023-2024学年本科教学质量报告",
+      "sourceLanguage": "zh-CN",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:bjtu.edu.cn 北京交通大学 AI 学生 使用 指南 教务",
+      "discoveredAt": "2026-05-21T14:10:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.78,
+      "policySpecificityScore": 0.72,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-21T14:17:00.000Z",
+      "verificationNotes": "PDF is hosted on bksy.bjtu.edu.cn, the Beijing Jiaotong University Undergraduate School site. The document title is the university's 2023-2024 undergraduate teaching quality report and includes AI curriculum and AI-enabled course development passages.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "sourceCandidateId": "sc-bjtu-teaching-ai-agent-news-2025",
+      "entityType": "university",
+      "entitySlug": "beijing-jiaotong-university",
+      "sourceUrl": "https://bksy.bjtu.edu.cn/news/639013951061268786.html",
+      "finalUrl": "https://bksy.bjtu.edu.cn/news/639013951061268786.html",
+      "sourceTitle": "上榜！我校获评高等教育学会首批“高校教学智思体工具及应用案例”",
+      "sourceLanguage": "zh-CN",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:bjtu.edu.cn \"生成式人工智能\" \"北京交通大学\"",
+      "discoveredAt": "2026-05-21T14:12:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.74,
+      "policySpecificityScore": 0.28,
+      "verificationStatus": "rejected",
+      "verificationNotes": "Official Undergraduate School news page about an AI teaching-agent application case. It is event/case recognition coverage rather than primary policy or formal teaching guidance.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "sourceRejectionId": "sr-bjtu-teaching-ai-agent-news-2025",
+      "sourceCandidateId": "sc-bjtu-teaching-ai-agent-news-2025",
+      "entityType": "university",
+      "entitySlug": "beijing-jiaotong-university",
+      "sourceUrl": "https://bksy.bjtu.edu.cn/news/639013951061268786.html",
+      "finalUrl": "https://bksy.bjtu.edu.cn/news/639013951061268786.html",
+      "rejectedAt": "2026-05-21T14:18:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "codex-openclaw-local",
+      "evidenceSnippet": "页面标题为“上榜！我校获评高等教育学会首批‘高校教学智思体工具及应用案例’”，内容定位为教学智能体应用案例入选新闻。",
+      "notes": "Useful official signal that BJTU has an AI teaching-agent application case, but too event-specific and low-policy-specificity for claim evidence in this staged bundle."
+    },
+    {
+      "artifactType": "crawl_plan",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "planId": "plan-bjtu-20260521",
+      "createdAt": "2026-05-21T14:18:00.000Z",
+      "createdBy": "codex-openclaw-local",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "beijing-jiaotong-university",
+          "sourceCandidateId": "sc-bjtu-undergraduate-quality-report-2023-2024",
+          "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+          "sourceTitle": "北京交通大学2023-2024学年本科教学质量报告",
+          "sourceLanguage": "zh-CN",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "ai_tool_treatment"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after the official Undergraduate School quality report supports undergraduate teaching and AI-curriculum claims.",
+        "Do not infer binding student AI-use rules, academic-integrity sanctions, privacy rules, procurement approvals, or university-wide tool policy from teaching quality report text.",
+        "Do not use official news recognition pages, faculty profiles, research pages, or search snippets as claim evidence.",
+        "Do not stage raw PDF, HTML, screenshots, or full normalized text in Git."
+      ]
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "fetchAttemptId": "fa-bjtu-undergraduate-quality-report-2023-2024",
+      "sourceCandidateId": "sc-bjtu-undergraduate-quality-report-2023-2024",
+      "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "finalUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "attemptedAt": "2026-05-21T14:16:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 2960,
+      "contentHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "sourceSnapshotId": "ss-bjtu-undergraduate-quality-report-2023-2024",
+      "sourceCandidateId": "sc-bjtu-undergraduate-quality-report-2023-2024",
+      "fetchAttemptId": "fa-bjtu-undergraduate-quality-report-2023-2024",
+      "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "finalUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "sourceTitle": "北京交通大学2023-2024学年本科教学质量报告",
+      "sourceLanguage": "zh-CN",
+      "contentHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+      "fetchedAt": "2026-05-21T14:16:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://staging/uapt-beijing-jiaotong-university-20260521/snapshots/ss-bjtu-undergraduate-quality-report-2023-2024-normalized-text",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "claimId": "claim-bjtu-2024-undergraduate-ai-course-coverage",
+      "entityType": "university",
+      "entitySlug": "beijing-jiaotong-university",
+      "claimType": "teaching",
+      "claimText": "Beijing Jiaotong University's 2023-2024 undergraduate teaching quality report says the university opened liberal-arts/science-track AI general courses and aimed for AI course coverage for the 2024 undergraduate cohort, except where programs already include AI courses.",
+      "normalizedValue": "2024 undergraduate cohort AI-course coverage through AI general foundation/application courses, with duplicate courses avoided where programs already include AI courses.",
+      "sourceLanguage": "zh-CN",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-bjtu-2024-undergraduate-ai-course-coverage"
+      ],
+      "citation": {
+        "citationTitle": "北京交通大学2023-2024学年本科教学质量报告",
+        "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+        "publisher": "北京交通大学本科生院",
+        "retrievedAt": "2026-05-21T14:16:00.000Z",
+        "snapshotHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "claimId": "claim-bjtu-zty-information-module-ai-courses",
+      "entityType": "university",
+      "entitySlug": "beijing-jiaotong-university",
+      "claimType": "teaching",
+      "claimText": "For the Zhan Tianyou College-related 2024 undergraduate training model described in the report, BJTU required majors in the information ability module to add AI-specialized courses categorized as AI foundation, AI expansion, and AI frontier courses.",
+      "normalizedValue": "Zhan Tianyou College 2024 training model information ability module includes AI-specialized courses in foundation, expansion, and frontier categories.",
+      "sourceLanguage": "zh-CN",
+      "confidence": 0.84,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-bjtu-zty-information-module-ai-courses"
+      ],
+      "citation": {
+        "citationTitle": "北京交通大学2023-2024学年本科教学质量报告",
+        "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+        "publisher": "北京交通大学本科生院",
+        "retrievedAt": "2026-05-21T14:16:00.000Z",
+        "snapshotHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "claimId": "claim-bjtu-ai-enabled-course-pilots",
+      "entityType": "university",
+      "entitySlug": "beijing-jiaotong-university",
+      "claimType": "teaching",
+      "claimText": "BJTU's undergraduate teaching quality report says the university developed AI-enabled course pilots using large-model technologies around knowledge graphs, 24-hour intelligent learning companions, AI teaching assistants, and AI mentors, with experience to be promoted across the university.",
+      "normalizedValue": "22 AI-enabled course pilots using large-model technologies, knowledge graphs, intelligent learning companions, AI teaching assistants, and AI mentors.",
+      "sourceLanguage": "zh-CN",
+      "confidence": 0.83,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-bjtu-ai-enabled-course-pilots"
+      ],
+      "citation": {
+        "citationTitle": "北京交通大学2023-2024学年本科教学质量报告",
+        "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+        "publisher": "北京交通大学本科生院",
+        "retrievedAt": "2026-05-21T14:16:00.000Z",
+        "snapshotHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "evidenceId": "ev-bjtu-2024-undergraduate-ai-course-coverage",
+      "claimId": "claim-bjtu-2024-undergraduate-ai-course-coverage",
+      "sourceSnapshotId": "ss-bjtu-undergraduate-quality-report-2023-2024",
+      "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "finalUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "sourceTitle": "北京交通大学2023-2024学年本科教学质量报告",
+      "sourceLanguage": "zh-CN",
+      "snapshotHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+      "evidenceSnippetOriginal": "为提高学生数字素养，按文科、理工科分类开设“人工智能通识基础”“人工智能基础及应用”，专业课程已包含人工智能类课程则无需重复开设，做到 2024 级人工智能课程全覆盖；",
+      "evidenceSnippetDisplay": "To improve students' digital literacy, BJTU opened AI general foundation and AI foundation/application courses by humanities/science tracks, avoiding repeats where programs already include AI courses, to cover the 2024 cohort.",
+      "evidenceLocator": "PDF text near section 3, lines extracted around general education resources",
+      "evidenceType": "pdf",
+      "relevance": 0.91,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "北京交通大学2023-2024学年本科教学质量报告",
+        "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+        "publisher": "北京交通大学本科生院",
+        "retrievedAt": "2026-05-21T14:16:00.000Z",
+        "snapshotHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "evidenceId": "ev-bjtu-zty-information-module-ai-courses",
+      "claimId": "claim-bjtu-zty-information-module-ai-courses",
+      "sourceSnapshotId": "ss-bjtu-undergraduate-quality-report-2023-2024",
+      "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "finalUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "sourceTitle": "北京交通大学2023-2024学年本科教学质量报告",
+      "sourceLanguage": "zh-CN",
+      "snapshotHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+      "evidenceSnippetOriginal": "要求各专业在信息能力模块中加入人工智能（AI）专项课程，按课程梯度分为 AI 基础类、AI 拓展类、AI 前沿三类。",
+      "evidenceSnippetDisplay": "The report says each major was required to add AI-specialized courses in the information ability module, divided by course gradient into AI foundation, AI expansion, and AI frontier categories.",
+      "evidenceLocator": "PDF text near section on three top-talent training plans",
+      "evidenceType": "pdf",
+      "relevance": 0.89,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "北京交通大学2023-2024学年本科教学质量报告",
+        "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+        "publisher": "北京交通大学本科生院",
+        "retrievedAt": "2026-05-21T14:16:00.000Z",
+        "snapshotHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "evidenceId": "ev-bjtu-ai-enabled-course-pilots",
+      "claimId": "claim-bjtu-ai-enabled-course-pilots",
+      "sourceSnapshotId": "ss-bjtu-undergraduate-quality-report-2023-2024",
+      "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "finalUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+      "sourceTitle": "北京交通大学2023-2024学年本科教学质量报告",
+      "sourceLanguage": "zh-CN",
+      "snapshotHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+      "evidenceSnippetOriginal": "开展 AI 赋能课程开发及建设。依托智慧课程平台，利用人工智能大模型等先进技术，围绕知识图谱、24 小时智能学伴、AI 助教和 AI 导师等内容开展 22 门试点课程建设，并将试点建设经验向全校进行推广，打造全覆盖式人工智能课程体系。",
+      "evidenceSnippetDisplay": "BJTU reported 22 AI-enabled course pilots using large-model technologies around knowledge graphs, 24-hour intelligent learning companions, AI teaching assistants, and AI mentors, with pilot experience to be promoted across the university.",
+      "evidenceLocator": "PDF text near AI-enabled course development section",
+      "evidenceType": "pdf",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "北京交通大学2023-2024学年本科教学质量报告",
+        "sourceUrl": "https://bksy.bjtu.edu.cn/UploadFiles/20250226/2.%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A62023-2024%E5%AD%A6%E5%B9%B4%E6%9C%AC%E7%A7%91%E6%95%99%E5%AD%A6%E8%B4%A8%E9%87%8F%E6%8A%A5%E5%91%8A_638762037461543473.pdf",
+        "publisher": "北京交通大学本科生院",
+        "retrievedAt": "2026-05-21T14:16:00.000Z",
+        "snapshotHash": "2626771fd97db10bd3734982b8626282021a3baf12312143e3d3bd61d00d2f96",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "decisionId": "rd-bjtu-2024-undergraduate-ai-course-coverage",
+      "claimId": "claim-bjtu-2024-undergraduate-ai-course-coverage",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a narrow undergraduate teaching/curriculum claim. It must not be promoted as a binding AI-use or academic-integrity policy.",
+      "decidedAt": "2026-05-21T14:19:00.000Z"
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "decisionId": "rd-bjtu-zty-information-module-ai-courses",
+      "claimId": "claim-bjtu-zty-information-module-ai-courses",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a scoped claim about the Zhan Tianyou College-related training model and information ability module, not a university-wide AI policy.",
+      "decidedAt": "2026-05-21T14:19:00.000Z"
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "decisionId": "rd-bjtu-ai-enabled-course-pilots",
+      "claimId": "claim-bjtu-ai-enabled-course-pilots",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a teaching-development claim based on the quality report's pilot-course text. It does not establish approved tools, procurement, privacy, or student conduct rules.",
+      "decidedAt": "2026-05-21T14:19:00.000Z"
+    },
+    {
+      "artifactType": "report_draft",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-beijing-jiaotong-university-20260521",
+      "reportId": "report-bjtu-20260521",
+      "title": "Beijing Jiaotong University AI Teaching Evidence Draft",
+      "generatedAt": "2026-05-21T14:20:00.000Z",
+      "draftPath": "content/reports/2026-05/beijing-jiaotong-university-ai-teaching-evidence.mdx",
+      "summary": "The staged evidence for Beijing Jiaotong University is limited to official Undergraduate School teaching-quality-report statements about AI-related undergraduate courses, AI-specialized curriculum modules, and AI-enabled course pilots. No binding university-wide generative-AI policy was found in official-source searches.",
+      "referencedClaimIds": [
+        "claim-bjtu-2024-undergraduate-ai-course-coverage",
+        "claim-bjtu-zty-information-module-ai-courses",
+        "claim-bjtu-ai-enabled-course-pilots"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/beijing-jiaotong-university.json",
+        "https://eduaipolicy.org/api/public/v1/claims/beijing-jiaotong-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The source supports teaching and curriculum claims only; it does not establish binding AI-use, academic-integrity, privacy, procurement, or approved-tool rules.",
+        "Official-source searches found low-specificity AI news and research/faculty pages but no primary university-wide generative-AI policy."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

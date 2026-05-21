@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-belarusian-national-technical-university-bntu-20260521",
+      "entityType": "university",
+      "entitySlug": "belarusian-national-technical-university-bntu",
+      "startedAt": "2026-05-21T14:15:00.000Z",
+      "endedAt": "2026-05-21T14:18:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "canonical_domain",
+          "domain": "bntu.by",
+          "resultCount": 1,
+          "notes": "robots.txt allowed public crawling except /admin/ with Crawl-delay 10. The BNTU homepage and CRIO AI policy page returned HTTP 200."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:bntu.by (ChatGPT OR \"искусственный интеллект\" OR \"нейросети\" OR \"генеративный\") БНТУ политика студенты",
+          "domain": "bntu.by",
+          "resultCount": 5,
+          "notes": "Firecrawl search found the official CRIO page titled 'Политика использования искусственного интеллекта' as the top result, plus lower-specificity news/tag pages."
+        },
+        {
+          "method": "sitemap",
+          "domain": "bntu.by",
+          "resultCount": 3,
+          "notes": "The official sitemap index was reachable at https://bntu.by/sitemap and listed sitemap1.xml, sitemap2.xml, and sitemap3.xml."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:bntu.by \"академическая добросовестность\" OR \"академическая честность\" БНТУ искусственный интеллект",
+          "domain": "bntu.by",
+          "resultCount": 1,
+          "notes": "Firecrawl returned a repository PDF result discussing academic honesty in a broader publication context, not a current BNTU AI policy or guidance page."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "files.bntu.by",
+          "resultCount": 1,
+          "notes": "The CRIO page links a public file share for 'Политика ИИ 2025.pdf', but files.bntu.by/robots.txt disallows all user agents, so the PDF body was not crawled or used for substantive claims."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-bntu-crio-ai-policy-page",
+        "sc-bntu-ai-policy-file-robots-blocked",
+        "sc-bntu-repository-academic-honesty-publication"
+      ],
+      "rejectionIds": [
+        "sr-bntu-ai-policy-file-robots-disallowed",
+        "sr-bntu-repository-academic-honesty-publication"
+      ],
+      "summary": "Official-source discovery found an accessible BNTU CRIO page that publishes a link titled 'Политика использования искусственного интеллекта'. The linked PDF share was robots-disallowed, and a repository/publication result was rejected as low-specificity policy evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-bntu-crio-ai-policy-page",
+      "entityType": "university",
+      "entitySlug": "belarusian-national-technical-university-bntu",
+      "sourceUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+      "finalUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+      "sourceTitle": "Политика использования искусственного интеллекта",
+      "sourceLanguage": "ru",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:bntu.by (ChatGPT OR \"искусственный интеллект\" OR \"нейросети\" OR \"генеративный\") БНТУ политика студенты",
+      "discoveredAt": "2026-05-21T14:15:50.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.88,
+      "policySpecificityScore": 0.55,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-21T14:16:10.000Z",
+      "verificationNotes": "The official BNTU CRIO page returned HTTP 200 and includes a page heading and public file link both titled 'Политика использования искусственного интеллекта'. Only the page-level source-status claim is staged because the linked PDF host is robots-disallowed.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-bntu-ai-policy-file-robots-blocked",
+      "entityType": "university",
+      "entitySlug": "belarusian-national-technical-university-bntu",
+      "sourceUrl": "https://files.bntu.by/s/jK8yiUFuLqOROGk",
+      "finalUrl": "https://files.bntu.by/s/jK8yiUFuLqOROGk",
+      "sourceTitle": "Политика ИИ 2025",
+      "sourceLanguage": "ru",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "link_traversal",
+      "queryUsed": "Link from official BNTU CRIO AI policy page",
+      "discoveredAt": "2026-05-21T14:16:30.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.9,
+      "verificationStatus": "blocked",
+      "verifiedAt": "2026-05-21T14:16:55.000Z",
+      "verificationNotes": "The file share metadata identifies a public PDF named 'Политика ИИ 2025.pdf', but files.bntu.by/robots.txt contains 'Disallow: /' for all user agents. The PDF was not crawled.",
+      "rejectionReason": "robots_disallowed",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-bntu-repository-academic-honesty-publication",
+      "entityType": "university",
+      "entitySlug": "belarusian-national-technical-university-bntu",
+      "sourceUrl": "https://rep.bntu.by/bitstream/handle/data/142747/Informacionnye_tekhnologii.pdf?sequence=1&isAllowed=y",
+      "finalUrl": "https://rep.bntu.by/bitstream/handle/data/142747/Informacionnye_tekhnologii.pdf?sequence=1&isAllowed=y",
+      "sourceTitle": "Repository PDF mentioning academic honesty",
+      "sourceLanguage": "ru",
+      "sourceType": "research_showcase",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:bntu.by \"академическая добросовестность\" OR \"академическая честность\" БНТУ искусственный интеллект",
+      "discoveredAt": "2026-05-21T14:17:05.000Z",
+      "officialDomainConfidence": 0.82,
+      "aiRelevanceScore": 0.25,
+      "policySpecificityScore": 0.15,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-21T14:17:20.000Z",
+      "verificationNotes": "Firecrawl search described this as repository/publication material rather than current institutional AI policy guidance.",
+      "rejectionReason": "low_policy_specificity",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-bntu-ai-policy-file-robots-disallowed",
+      "sourceCandidateId": "sc-bntu-ai-policy-file-robots-blocked",
+      "entityType": "university",
+      "entitySlug": "belarusian-national-technical-university-bntu",
+      "sourceUrl": "https://files.bntu.by/s/jK8yiUFuLqOROGk",
+      "finalUrl": "https://files.bntu.by/s/jK8yiUFuLqOROGk",
+      "rejectedAt": "2026-05-21T14:16:55.000Z",
+      "rejectionReason": "robots_disallowed",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "files.bntu.by/robots.txt: User-agent: *; Disallow: /",
+      "notes": "The PDF body was not fetched or used as evidence. The allowed BNTU CRIO page is used only for a narrow source-status claim."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-bntu-repository-academic-honesty-publication",
+      "sourceCandidateId": "sc-bntu-repository-academic-honesty-publication",
+      "entityType": "university",
+      "entitySlug": "belarusian-national-technical-university-bntu",
+      "sourceUrl": "https://rep.bntu.by/bitstream/handle/data/142747/Informacionnye_tekhnologii.pdf?sequence=1&isAllowed=y",
+      "finalUrl": "https://rep.bntu.by/bitstream/handle/data/142747/Informacionnye_tekhnologii.pdf?sequence=1&isAllowed=y",
+      "rejectedAt": "2026-05-21T14:17:20.000Z",
+      "rejectionReason": "low_policy_specificity",
+      "checkedBy": "openclaw-agent",
+      "evidenceSnippet": "Search result described repository/publication material mentioning academic honesty, not a current BNTU AI policy or guidance page.",
+      "notes": "Not used for claims because ranking/context publications and repository material do not establish institutional AI policy."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "crawl_plan",
+      "planId": "cp-belarusian-national-technical-university-bntu-20260521",
+      "createdAt": "2026-05-21T14:18:00.000Z",
+      "createdBy": "openclaw-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "belarusian-national-technical-university-bntu",
+          "sourceCandidateId": "sc-bntu-crio-ai-policy-page",
+          "sourceUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+          "sourceTitle": "Политика использования искусственного интеллекта",
+          "sourceLanguage": "ru",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "AI policy availability",
+            "official BNTU guidance source status"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after the accessible official CRIO page is snapshotted and the linked robots-disallowed PDF is documented as blocked.",
+        "Do not infer substantive AI-use, assessment, privacy, or academic-integrity rules from the page header or PDF filename alone."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-bntu-crio-ai-policy-page-http",
+      "sourceCandidateId": "sc-bntu-crio-ai-policy-page",
+      "sourceUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+      "finalUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+      "attemptedAt": "2026-05-21T14:16:10.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1000,
+      "contentHash": "2532fe040d6191565ecfae848a100007c653ba7910e6046cde87d54a92aa62ae",
+      "normalizedTextStorageKey": "openclaw://normalized-snapshots/uapt-belarusian-national-technical-university-bntu-20260521/bntu-crio-ai-policy-page"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-bntu-ai-policy-file-robots",
+      "sourceCandidateId": "sc-bntu-ai-policy-file-robots-blocked",
+      "sourceUrl": "https://files.bntu.by/s/jK8yiUFuLqOROGk",
+      "finalUrl": "https://files.bntu.by/s/jK8yiUFuLqOROGk",
+      "attemptedAt": "2026-05-21T14:16:55.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": false,
+      "outcome": "blocked",
+      "errorReason": "robots.txt for files.bntu.by disallows all paths for all user agents; PDF body was not fetched.",
+      "durationMs": 900
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-bntu-crio-ai-policy-page",
+      "sourceCandidateId": "sc-bntu-crio-ai-policy-page",
+      "fetchAttemptId": "fa-bntu-crio-ai-policy-page-http",
+      "sourceUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+      "finalUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+      "sourceTitle": "Политика использования искусственного интеллекта",
+      "sourceLanguage": "ru",
+      "contentHash": "2532fe040d6191565ecfae848a100007c653ba7910e6046cde87d54a92aa62ae",
+      "fetchedAt": "2026-05-21T14:16:10.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw://normalized-snapshots/uapt-belarusian-national-technical-university-bntu-20260521/bntu-crio-ai-policy-page",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-bntu-ai-policy-source-status-20260521",
+      "entityType": "university",
+      "entitySlug": "belarusian-national-technical-university-bntu",
+      "claimType": "source_status",
+      "claimText": "BNTU's official CRIO page makes an AI-use policy source available through a linked public file titled 'Политика использования искусственного интеллекта'.",
+      "normalizedValue": "official_ai_policy_source_available_linked_pdf_not_crawled_due_to_robots",
+      "sourceLanguage": "ru",
+      "confidence": 0.74,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-bntu-ai-policy-source-status-20260521"
+      ],
+      "citation": {
+        "citationTitle": "Политика использования искусственного интеллекта",
+        "sourceUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/belarusian-national-technical-university-bntu.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/belarusian-national-technical-university-bntu",
+        "publisher": "Belarusian National Technical University (BNTU)",
+        "retrievedAt": "2026-05-21T14:16:10.000Z",
+        "snapshotHash": "2532fe040d6191565ecfae848a100007c653ba7910e6046cde87d54a92aa62ae",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-bntu-ai-policy-source-status-20260521",
+      "claimId": "claim-bntu-ai-policy-source-status-20260521",
+      "sourceSnapshotId": "ss-bntu-crio-ai-policy-page",
+      "sourceUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+      "finalUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+      "sourceTitle": "Политика использования искусственного интеллекта",
+      "sourceLanguage": "ru",
+      "snapshotHash": "2532fe040d6191565ecfae848a100007c653ba7910e6046cde87d54a92aa62ae",
+      "evidenceSnippetOriginal": "Политика использования искусственного интеллекта\nПолитика использования искусственного интеллекта",
+      "evidenceSnippetDisplay": "The official BNTU CRIO page heading and linked file text both state: 'Artificial intelligence use policy.'",
+      "evidenceLocator": "CRIO page heading and linked policy-file text",
+      "evidenceType": "official_source",
+      "relevance": 0.76,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Политика использования искусственного интеллекта",
+        "sourceUrl": "https://bntu.by/en/faculties/crio/pages/politika-ispolzovaniya-iskusstvennogo-intellekta",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/belarusian-national-technical-university-bntu.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/belarusian-national-technical-university-bntu",
+        "publisher": "Belarusian National Technical University (BNTU)",
+        "retrievedAt": "2026-05-21T14:16:10.000Z",
+        "snapshotHash": "2532fe040d6191565ecfae848a100007c653ba7910e6046cde87d54a92aa62ae",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "rd-bntu-ai-policy-source-status-20260521",
+      "claimId": "claim-bntu-ai-policy-source-status-20260521",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "isolated-codex-cli-crawl-worker",
+      "notes": "Approved only as a narrow source-status candidate. The accessible official CRIO page supports that a BNTU AI-use policy source is published, but the linked PDF body was robots-disallowed and no substantive AI-use rules were extracted.",
+      "decidedAt": "2026-05-21T14:18:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-belarusian-national-technical-university-bntu-20260521",
+      "artifactType": "report_draft",
+      "reportId": "report-bntu-ai-policy-source-status-20260521",
+      "title": "Belarusian National Technical University (BNTU) AI Policy Source Status",
+      "generatedAt": "2026-05-21T14:18:00.000Z",
+      "draftPath": "content/reports/2026-05/belarusian-national-technical-university-bntu-ai-policy-source-status.mdx",
+      "summary": "BNTU has an official CRIO page titled 'Политика использования искусственного интеллекта' that links to a public PDF file named as an AI policy. The PDF host disallows crawling in robots.txt, so this staged bundle contains only a narrow source-status claim and no substantive policy-rule claims.",
+      "referencedClaimIds": [
+        "claim-bntu-ai-policy-source-status-20260521"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/belarusian-national-technical-university-bntu.json",
+        "https://eduaipolicy.org/api/public/v1/universities/belarusian-national-technical-university-bntu.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The linked AI policy PDF was not crawled because files.bntu.by disallows all paths in robots.txt; substantive policy requirements need human or compliant alternate-source review."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
