@@ -1,0 +1,428 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-osaka-metropolitan-university-20260522",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "traceId": "omu-discovery-trace-20260522",
+      "entityType": "university",
+      "entitySlug": "osaka-metropolitan-university",
+      "startedAt": "2026-05-22T04:40:00.000Z",
+      "endedAt": "2026-05-22T04:44:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:omu.ac.jp Osaka Metropolitan University generative AI students policy",
+          "domain": "omu.ac.jp",
+          "resultCount": 5,
+          "notes": "English-language search returned official research and general pages but no public policy guidance suitable for claims."
+        },
+        {
+          "method": "multilingual_query",
+          "query": "site:omu.ac.jp 生成AI 大阪公立大学 学生 利用 注意 レポート",
+          "domain": "omu.ac.jp",
+          "resultCount": 10,
+          "notes": "Japanese-language search found the public student guideline page/PDF and the public faculty guide page."
+        },
+        {
+          "method": "site_search",
+          "query": "official OMU portal guideline PDF links from the public faculty guide",
+          "domain": "portal.omu.ac.jp",
+          "resultCount": 2,
+          "notes": "Newer portal-hosted guideline PDFs redirected to OMU authentication and were recorded as inaccessible."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "omu-source-student-guideline-pdf-202403",
+        "omu-source-faculty-guide-20230511",
+        "omu-source-portal-student-guideline-20240415"
+      ],
+      "rejectionIds": [
+        "omu-source-rejection-portal-student-guideline-20240415"
+      ],
+      "summary": "Discovery found two public official Osaka Metropolitan University sources with substantive generative-AI teaching and student guidance, and one newer portal-hosted guideline source blocked by OMU authentication."
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "sourceCandidateId": "omu-source-student-guideline-pdf-202403",
+      "entityType": "university",
+      "entitySlug": "osaka-metropolitan-university",
+      "sourceUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+      "finalUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+      "sourceTitle": "生成AIの利活用に関する学生向けガイドライン",
+      "sourceLanguage": "ja",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "multilingual_query",
+      "queryUsed": "site:omu.ac.jp 生成AI 大阪公立大学 学生 利用 注意 レポート",
+      "discoveredAt": "2026-05-22T04:40:45.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.97,
+      "policySpecificityScore": 0.92,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-22T04:42:10.000Z",
+      "verificationNotes": "Public PDF on the official omu.ac.jp domain, dated 2024-03-04 and issued by DX戦略会議; linked from an official Osaka Metropolitan University page as the student guideline.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "sourceCandidateId": "omu-source-faculty-guide-20230511",
+      "entityType": "university",
+      "entitySlug": "osaka-metropolitan-university",
+      "sourceUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+      "finalUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+      "sourceTitle": "生成AIツールと教育についての教員向けガイド",
+      "sourceLanguage": "ja",
+      "sourceType": "teaching_guidance",
+      "discoveryMethod": "multilingual_query",
+      "queryUsed": "site:omu.ac.jp 生成AI 大阪公立大学 学生 利用 注意 レポート",
+      "discoveredAt": "2026-05-22T04:40:45.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.86,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-22T04:42:20.000Z",
+      "verificationNotes": "Public official page from Osaka Metropolitan University's Center for Research and Development of Higher Education with faculty guidance on generative AI tools and education.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "sourceCandidateId": "omu-source-portal-student-guideline-20240415",
+      "entityType": "university",
+      "entitySlug": "osaka-metropolitan-university",
+      "sourceUrl": "https://portal.omu.ac.jp/stu_information/Lists/jugyo/Attachments/1600/%E3%80%90%E5%AD%A6%E7%94%9F%E7%94%A8%E3%80%91%E7%94%9F%E6%88%90AI%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3_240415%E6%8E%B2%E8%BC%89.pdf",
+      "finalUrl": "https://auth.omu.ac.jp/AuthServer/AuthRequest",
+      "sourceTitle": "学生用 生成AIガイドライン 240415掲載",
+      "sourceLanguage": "ja",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "link_traversal",
+      "queryUsed": "portal links listed on the public faculty guide page",
+      "discoveredAt": "2026-05-22T04:41:30.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.93,
+      "policySpecificityScore": 0.9,
+      "verificationStatus": "inaccessible",
+      "verifiedAt": "2026-05-22T04:43:10.000Z",
+      "verificationNotes": "The portal-hosted guideline URL redirected to the OMU Authentication System and was not used for claim evidence.",
+      "rejectionReason": "login_required",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "sourceRejectionId": "omu-source-rejection-portal-student-guideline-20240415",
+      "sourceCandidateId": "omu-source-portal-student-guideline-20240415",
+      "entityType": "university",
+      "entitySlug": "osaka-metropolitan-university",
+      "sourceUrl": "https://portal.omu.ac.jp/stu_information/Lists/jugyo/Attachments/1600/%E3%80%90%E5%AD%A6%E7%94%9F%E7%94%A8%E3%80%91%E7%94%9F%E6%88%90AI%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3_240415%E6%8E%B2%E8%BC%89.pdf",
+      "finalUrl": "https://auth.omu.ac.jp/AuthServer/AuthRequest",
+      "rejectedAt": "2026-05-22T04:43:10.000Z",
+      "rejectionReason": "login_required",
+      "checkedBy": "openclaw-crawl-worker",
+      "evidenceSnippet": "Please enter your OMUID and password",
+      "notes": "This official portal source may contain a newer guideline, but it is behind OMU authentication and was not accessed or used as evidence."
+    },
+    {
+      "artifactType": "crawl_plan",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "planId": "omu-crawl-plan-20260522",
+      "createdAt": "2026-05-22T04:41:00.000Z",
+      "createdBy": "openclaw-crawl-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "osaka-metropolitan-university",
+          "sourceCandidateId": "omu-source-student-guideline-pdf-202403",
+          "sourceUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+          "sourceTitle": "生成AIの利活用に関する学生向けガイドライン",
+          "sourceLanguage": "ja",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "academic_integrity",
+            "privacy"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "osaka-metropolitan-university",
+          "sourceCandidateId": "omu-source-faculty-guide-20230511",
+          "sourceUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+          "sourceTitle": "生成AIツールと教育についての教員向けガイド",
+          "sourceLanguage": "ja",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "academic_integrity"
+          ],
+          "maxUrls": 1,
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Do not access OMU authentication-protected portal documents.",
+        "Do not use search snippets, page descriptions, or login pages as policy evidence.",
+        "Stop after public official sources provide narrow claim/evidence candidates."
+      ]
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "fetchAttemptId": "omu-fetch-student-guideline-pdf-202403",
+      "sourceCandidateId": "omu-source-student-guideline-pdf-202403",
+      "sourceUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+      "finalUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+      "attemptedAt": "2026-05-22T04:42:10.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 6316,
+      "contentHash": "20af6c5d4004e428e65189186b96273d86fe92ae03300dec2e931eb2144bb9cf",
+      "normalizedTextStorageKey": "object-store://openclaw-normalized/uapt-osaka-metropolitan-university-20260522/student-guideline-202403.txt"
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "fetchAttemptId": "omu-fetch-faculty-guide-20230511",
+      "sourceCandidateId": "omu-source-faculty-guide-20230511",
+      "sourceUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+      "finalUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+      "attemptedAt": "2026-05-22T04:42:20.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 5045,
+      "contentHash": "2dbfb33784c4bc727f13efa16b4b4ef4d9e593d6620a26091a1e16e3d0efd713",
+      "normalizedTextStorageKey": "object-store://openclaw-normalized/uapt-osaka-metropolitan-university-20260522/faculty-guide-20230511.txt"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "sourceSnapshotId": "omu-snapshot-student-guideline-pdf-202403",
+      "sourceCandidateId": "omu-source-student-guideline-pdf-202403",
+      "fetchAttemptId": "omu-fetch-student-guideline-pdf-202403",
+      "sourceUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+      "finalUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+      "sourceTitle": "生成AIの利活用に関する学生向けガイドライン",
+      "sourceLanguage": "ja",
+      "contentHash": "20af6c5d4004e428e65189186b96273d86fe92ae03300dec2e931eb2144bb9cf",
+      "fetchedAt": "2026-05-22T04:42:10.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "object-store://openclaw-normalized/uapt-osaka-metropolitan-university-20260522/student-guideline-202403.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "sourceSnapshotId": "omu-snapshot-faculty-guide-20230511",
+      "sourceCandidateId": "omu-source-faculty-guide-20230511",
+      "fetchAttemptId": "omu-fetch-faculty-guide-20230511",
+      "sourceUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+      "finalUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+      "sourceTitle": "生成AIツールと教育についての教員向けガイド",
+      "sourceLanguage": "ja",
+      "contentHash": "2dbfb33784c4bc727f13efa16b4b4ef4d9e593d6620a26091a1e16e3d0efd713",
+      "fetchedAt": "2026-05-22T04:42:20.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "object-store://openclaw-normalized/uapt-osaka-metropolitan-university-20260522/faculty-guide-20230511.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "claimId": "omu-claim-student-generative-ai-guideline-202403",
+      "entityType": "university",
+      "entitySlug": "osaka-metropolitan-university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Osaka Metropolitan University's student generative-AI guideline recommends using generative AI to deepen learning or research and improve efficiency, while following any restrictions or prohibitions given by course or research supervisors.",
+      "normalizedValue": "student_guideline_recommends_responsible_ai_use_subject_to_instructor_limits",
+      "sourceLanguage": "ja",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "omu-evidence-student-generative-ai-guideline-202403"
+      ],
+      "citation": {
+        "citationTitle": "生成AIの利活用に関する学生向けガイドライン",
+        "sourceUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/osaka-metropolitan-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/osaka-metropolitan-university",
+        "publisher": "Osaka Metropolitan University",
+        "retrievedAt": "2026-05-22T04:42:10.000Z",
+        "snapshotHash": "20af6c5d4004e428e65189186b96273d86fe92ae03300dec2e931eb2144bb9cf",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "claimId": "omu-claim-faculty-ai-assignment-guidance-20230511",
+      "entityType": "university",
+      "entitySlug": "osaka-metropolitan-university",
+      "claimType": "teaching",
+      "claimText": "Osaka Metropolitan University's faculty guide says instructors need to judge and explain to students the permitted scope of AI-tool use for assignments such as reports.",
+      "normalizedValue": "faculty_judges_and_explains_assignment_ai_use_scope",
+      "sourceLanguage": "ja",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "omu-evidence-faculty-ai-assignment-guidance-20230511"
+      ],
+      "citation": {
+        "citationTitle": "生成AIツールと教育についての教員向けガイド",
+        "sourceUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/osaka-metropolitan-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/osaka-metropolitan-university",
+        "publisher": "Osaka Metropolitan University",
+        "retrievedAt": "2026-05-22T04:42:20.000Z",
+        "snapshotHash": "2dbfb33784c4bc727f13efa16b4b4ef4d9e593d6620a26091a1e16e3d0efd713",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "evidenceId": "omu-evidence-student-generative-ai-guideline-202403",
+      "claimId": "omu-claim-student-generative-ai-guideline-202403",
+      "sourceSnapshotId": "omu-snapshot-student-guideline-pdf-202403",
+      "sourceUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+      "finalUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+      "sourceTitle": "生成AIの利活用に関する学生向けガイドライン",
+      "sourceLanguage": "ja",
+      "snapshotHash": "20af6c5d4004e428e65189186b96273d86fe92ae03300dec2e931eb2144bb9cf",
+      "evidenceSnippetOriginal": "本学での学びや研究を自分自身で深めたい場合や、学習効率・研究効率を高めたい場合に、生成AIを 活用することを、本学としては推奨します。 ただし、授業担当教員や研究指導教員から、生成AIの利用制限や禁止が指示されている場合は、その指示に従ってください。",
+      "evidenceSnippetDisplay": "The guideline recommends using generative AI to deepen learning/research or improve efficiency, while following any course or research supervisor restrictions.",
+      "evidenceLocator": "Section 2, 活用方法",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "生成AIの利活用に関する学生向けガイドライン",
+        "sourceUrl": "https://www.omu.ac.jp/lit/soc/assets/AI%20Guidelines_202403.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/osaka-metropolitan-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/osaka-metropolitan-university",
+        "publisher": "Osaka Metropolitan University",
+        "retrievedAt": "2026-05-22T04:42:10.000Z",
+        "snapshotHash": "20af6c5d4004e428e65189186b96273d86fe92ae03300dec2e931eb2144bb9cf",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "evidenceId": "omu-evidence-faculty-ai-assignment-guidance-20230511",
+      "claimId": "omu-claim-faculty-ai-assignment-guidance-20230511",
+      "sourceSnapshotId": "omu-snapshot-faculty-guide-20230511",
+      "sourceUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+      "finalUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+      "sourceTitle": "生成AIツールと教育についての教員向けガイド",
+      "sourceLanguage": "ja",
+      "snapshotHash": "2dbfb33784c4bc727f13efa16b4b4ef4d9e593d6620a26091a1e16e3d0efd713",
+      "evidenceSnippetOriginal": "課題レポート作成などでの使用をどこまで認めるか教員が判断し、学生に伝えるということが必要です。",
+      "evidenceSnippetDisplay": "The faculty guide says instructors need to decide how far to permit AI-tool use for assignments such as reports and communicate that to students.",
+      "evidenceLocator": "教育におけるAIツールの取り扱いについて（基本的な考え方）",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "生成AIツールと教育についての教員向けガイド",
+        "sourceUrl": "https://www.omu.ac.jp/las/highedu/publication/generative_ai/index.html",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/osaka-metropolitan-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/osaka-metropolitan-university",
+        "publisher": "Osaka Metropolitan University",
+        "retrievedAt": "2026-05-22T04:42:20.000Z",
+        "snapshotHash": "2dbfb33784c4bc727f13efa16b4b4ef4d9e593d6620a26091a1e16e3d0efd713",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "decisionId": "omu-review-student-generative-ai-guideline-202403",
+      "claimId": "omu-claim-student-generative-ai-guideline-202403",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "policy-reviewer",
+      "notes": "Approved as a narrow candidate claim from a public official student guideline PDF. It does not publish a canonical claim.",
+      "decidedAt": "2026-05-22T04:44:00.000Z"
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "decisionId": "omu-review-faculty-ai-assignment-guidance-20230511",
+      "claimId": "omu-claim-faculty-ai-assignment-guidance-20230511",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "policy-reviewer",
+      "notes": "Approved as a narrow teaching-guidance candidate claim from a public official higher-education center page. It does not publish a canonical claim.",
+      "decidedAt": "2026-05-22T04:44:00.000Z"
+    },
+    {
+      "artifactType": "report_draft",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-osaka-metropolitan-university-20260522",
+      "reportId": "omu-report-draft-20260522",
+      "title": "Osaka Metropolitan University Generative AI Guidance Crawl",
+      "generatedAt": "2026-05-22T04:44:30.000Z",
+      "draftPath": "content/reports/osaka-metropolitan-university-generative-ai-guidance-20260522.mdx",
+      "summary": "OpenClaw staged two agent-reviewed candidate claims for Osaka Metropolitan University from public official Japanese-language sources: a 2024 student guideline PDF and a 2023 faculty-facing teaching guide. A newer portal-hosted guideline link was recorded as login-gated and was not used as evidence.",
+      "referencedClaimIds": [
+        "omu-claim-student-generative-ai-guideline-202403",
+        "omu-claim-faculty-ai-assignment-guidance-20230511"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/osaka-metropolitan-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The portal-hosted 2024 guideline PDFs redirected to OMU authentication and were not accessed; public evidence is limited to the public official sources cited in this bundle."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

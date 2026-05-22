@@ -1,0 +1,432 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-kanazawa-university-20260522",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "traceId": "trace-kanazawa-20260522",
+      "entityType": "university",
+      "entitySlug": "kanazawa-university",
+      "startedAt": "2026-05-22T04:41:00.000Z",
+      "endedAt": "2026-05-22T04:43:02.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:kanazawa-u.ac.jp Kanazawa University generative AI artificial intelligence ChatGPT policy guidance students",
+          "domain": "kanazawa-u.ac.jp",
+          "resultCount": 0,
+          "notes": "English official-domain search did not return a substantive AI policy or guidance source."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:kanazawa-u.ac.jp 生成AI 金沢大学 学生 利用 ガイドライン",
+          "domain": "kanazawa-u.ac.jp",
+          "resultCount": 10,
+          "notes": "Firecrawl search found the official 2025 student-life handbook PDF as the strongest primary source and an Institute FD training news page as non-policy context."
+        },
+        {
+          "method": "site_search",
+          "query": "生成AI",
+          "domain": "www.kanazawa-u.ac.jp",
+          "resultCount": 5,
+          "notes": "The public Kanazawa University WordPress search page returned event, seminar, and press items about AI, not a standalone university policy page."
+        },
+        {
+          "method": "sitemap",
+          "domain": "www.kanazawa-u.ac.jp",
+          "resultCount": 12,
+          "notes": "robots.txt allowed public crawling outside wp-admin and listed the main sitemap index. No sitemap policy page superseding the student-life handbook was identified during targeted discovery."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.kanazawa-u.ac.jp",
+          "resultCount": 1,
+          "notes": "The PDF is hosted under the official Kanazawa University domain, and the PDF text identifies it as a Kanazawa University student-life handbook."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-kanazawa-student-life-handbook-2025",
+        "sc-kanazawa-ilas-ai-fd-training-2024"
+      ],
+      "rejectionIds": [
+        "sr-kanazawa-ilas-ai-fd-training-2024"
+      ],
+      "summary": "Official-source discovery found a public Kanazawa University 2025 student-life handbook PDF with a specific generated-AI use section for student assignments and theses. An official Institute FD training news page was rejected as event/training coverage rather than direct policy evidence."
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "sourceCandidateId": "sc-kanazawa-student-life-handbook-2025",
+      "entityType": "university",
+      "entitySlug": "kanazawa-university",
+      "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "finalUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "sourceTitle": "きぃつけまっし 2025",
+      "sourceLanguage": "ja",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:kanazawa-u.ac.jp 生成AI 金沢大学 学生 利用 ガイドライン",
+      "discoveredAt": "2026-05-22T04:41:20.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.84,
+      "policySpecificityScore": 0.78,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-22T04:43:02.000Z",
+      "verificationNotes": "The PDF is hosted on www.kanazawa-u.ac.jp and contains a section titled 〈生成AI（ChatGPT, BingAI, Bard等各種AI）の利用〉 in Kanazawa University's student-life handbook.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "sourceCandidateId": "sc-kanazawa-ilas-ai-fd-training-2024",
+      "entityType": "university",
+      "entitySlug": "kanazawa-university",
+      "sourceUrl": "https://ilas.w3.kanazawa-u.ac.jp/news_topics/2024/05558/",
+      "finalUrl": "https://ilas.w3.kanazawa-u.ac.jp/news_topics/2024/05558/",
+      "sourceTitle": "第1回 令和6年度国際基幹教育院FD研修会 「AIツールを利用した授業運営法とAIを用いた不正行為への対策」を開催",
+      "sourceLanguage": "ja",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:kanazawa-u.ac.jp 生成AI 金沢大学 学生 利用 ガイドライン",
+      "discoveredAt": "2026-05-22T04:41:20.000Z",
+      "officialDomainConfidence": 0.95,
+      "aiRelevanceScore": 0.73,
+      "policySpecificityScore": 0.28,
+      "verificationStatus": "rejected",
+      "verificationNotes": "Official Kanazawa University Institute page, but it reports an FD training session about class operation and countermeasures for AI-related misconduct; it does not itself state binding student policy.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "sourceRejectionId": "sr-kanazawa-ilas-ai-fd-training-2024",
+      "sourceCandidateId": "sc-kanazawa-ilas-ai-fd-training-2024",
+      "entityType": "university",
+      "entitySlug": "kanazawa-university",
+      "sourceUrl": "https://ilas.w3.kanazawa-u.ac.jp/news_topics/2024/05558/",
+      "finalUrl": "https://ilas.w3.kanazawa-u.ac.jp/news_topics/2024/05558/",
+      "rejectedAt": "2026-05-22T04:43:02.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "codex-openclaw-local",
+      "evidenceSnippet": "令和6年6月13日、第1回 令和6年度国際基幹教育院FD研修会 「AIツールを利用した授業運営法とAIを用いた不正行為への対策」を開催しました。",
+      "notes": "Useful official context that the university discussed AI-related misconduct countermeasures in FD training, but it is not used as policy evidence."
+    },
+    {
+      "artifactType": "crawl_plan",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "planId": "plan-kanazawa-20260522",
+      "createdAt": "2026-05-22T04:43:02.000Z",
+      "createdBy": "codex-openclaw-local",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "kanazawa-university",
+          "sourceCandidateId": "sc-kanazawa-student-life-handbook-2025",
+          "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+          "sourceTitle": "きぃつけまっし 2025",
+          "sourceLanguage": "ja",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "academic_integrity",
+            "ai_tool_treatment"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after the official student-life handbook supports student-work generated-AI use claims.",
+        "Do not infer a university-wide AI tool approval list, staff policy, research policy, or procurement rule from this student-life handbook section.",
+        "Do not use event pages, search snippets, headings, or site navigation as claim evidence.",
+        "Do not stage raw PDF, HTML, screenshots, logs, or full normalized text in Git."
+      ]
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "fetchAttemptId": "fa-kanazawa-student-life-handbook-2025",
+      "sourceCandidateId": "sc-kanazawa-student-life-handbook-2025",
+      "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "finalUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "attemptedAt": "2026-05-22T04:41:49.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3200,
+      "contentHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "sourceSnapshotId": "ss-kanazawa-student-life-handbook-2025",
+      "sourceCandidateId": "sc-kanazawa-student-life-handbook-2025",
+      "fetchAttemptId": "fa-kanazawa-student-life-handbook-2025",
+      "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "finalUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "sourceTitle": "きぃつけまっし 2025",
+      "sourceLanguage": "ja",
+      "contentHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+      "fetchedAt": "2026-05-22T04:41:49.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-kanazawa-university-20260522/ss-kanazawa-student-life-handbook-2025.txt",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "claimId": "claim-kanazawa-genai-own-work-2025",
+      "entityType": "university",
+      "entitySlug": "kanazawa-university",
+      "claimType": "academic_integrity",
+      "claimText": "Kanazawa University's 2025 student-life handbook says that, for reports assigned in classes and degree theses, students are expected to create the work by investigating and thinking for themselves based on class or laboratory discussion.",
+      "normalizedValue": "Student reports and degree theses are expected to be students' own investigated and reasoned work.",
+      "sourceLanguage": "ja",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-kanazawa-genai-own-work-2025"
+      ],
+      "citation": {
+        "citationTitle": "きぃつけまっし 2025",
+        "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kanazawa-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/kanazawa-university",
+        "publisher": "Kanazawa University",
+        "retrievedAt": "2026-05-22T04:41:49.000Z",
+        "snapshotHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "evidenceId": "ev-kanazawa-genai-own-work-2025",
+      "claimId": "claim-kanazawa-genai-own-work-2025",
+      "sourceSnapshotId": "ss-kanazawa-student-life-handbook-2025",
+      "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "finalUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "sourceTitle": "きぃつけまっし 2025",
+      "sourceLanguage": "ja",
+      "snapshotHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+      "evidenceSnippetOriginal": "本学の各種授業において学生に課せられた課題レポートや学位論文については，授業や研究室での議論に基づき，学生自ら調査し，自ら考えて作成することが前提です。",
+      "evidenceSnippetDisplay": "For reports and degree theses assigned to students, Kanazawa University states that the premise is that students investigate and think for themselves based on class or laboratory discussion.",
+      "evidenceLocator": "PDF text page 31, section 〈生成AI（ChatGPT, BingAI, Bard等各種AI）の利用〉",
+      "evidenceType": "pdf",
+      "relevance": 0.94,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "きぃつけまっし 2025",
+        "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kanazawa-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/kanazawa-university",
+        "publisher": "Kanazawa University",
+        "retrievedAt": "2026-05-22T04:41:49.000Z",
+        "snapshotHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "decisionId": "rd-kanazawa-genai-own-work-2025",
+      "claimId": "claim-kanazawa-genai-own-work-2025",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a narrow student-work academic-integrity claim from the official student-life handbook PDF.",
+      "decidedAt": "2026-05-22T04:43:02.000Z"
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "claimId": "claim-kanazawa-genai-alone-misconduct-2025",
+      "entityType": "university",
+      "entitySlug": "kanazawa-university",
+      "claimType": "academic_integrity",
+      "claimText": "Kanazawa University's 2025 student-life handbook says that creating assigned reports or degree theses only by using generative AI, without students' own consideration, can likewise constitute misconduct.",
+      "normalizedValue": "Using generative AI alone to create assigned reports or degree theses without one's own consideration may be misconduct.",
+      "sourceLanguage": "ja",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-kanazawa-genai-alone-misconduct-2025"
+      ],
+      "citation": {
+        "citationTitle": "きぃつけまっし 2025",
+        "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kanazawa-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/kanazawa-university",
+        "publisher": "Kanazawa University",
+        "retrievedAt": "2026-05-22T04:41:49.000Z",
+        "snapshotHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "evidenceId": "ev-kanazawa-genai-alone-misconduct-2025",
+      "claimId": "claim-kanazawa-genai-alone-misconduct-2025",
+      "sourceSnapshotId": "ss-kanazawa-student-life-handbook-2025",
+      "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "finalUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "sourceTitle": "きぃつけまっし 2025",
+      "sourceLanguage": "ja",
+      "snapshotHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+      "evidenceSnippetOriginal": "生成AIを利用するだけで，課題レポートや学位論文等を自ら考察しないで作成することは同様に不正行為となり得ます。",
+      "evidenceSnippetDisplay": "The handbook says that creating assigned reports or degree theses only by using generative AI, without the student's own consideration, can likewise be misconduct.",
+      "evidenceLocator": "PDF text page 31, section 〈生成AI（ChatGPT, BingAI, Bard等各種AI）の利用〉",
+      "evidenceType": "pdf",
+      "relevance": 0.96,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "きぃつけまっし 2025",
+        "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kanazawa-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/kanazawa-university",
+        "publisher": "Kanazawa University",
+        "retrievedAt": "2026-05-22T04:41:49.000Z",
+        "snapshotHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "decisionId": "rd-kanazawa-genai-alone-misconduct-2025",
+      "claimId": "claim-kanazawa-genai-alone-misconduct-2025",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved with careful may/can wording because the Japanese source says 不正行為となり得ます.",
+      "decidedAt": "2026-05-22T04:43:02.000Z"
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "claimId": "claim-kanazawa-genai-follow-instructor-2025",
+      "entityType": "university",
+      "entitySlug": "kanazawa-university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Kanazawa University's 2025 student-life handbook tells students to follow an instructor's directions when there are directions about generative-AI use in an individual class.",
+      "normalizedValue": "Students should follow class-specific instructor directions on generative-AI use.",
+      "sourceLanguage": "ja",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-kanazawa-genai-follow-instructor-2025"
+      ],
+      "citation": {
+        "citationTitle": "きぃつけまっし 2025",
+        "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kanazawa-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/kanazawa-university",
+        "publisher": "Kanazawa University",
+        "retrievedAt": "2026-05-22T04:41:49.000Z",
+        "snapshotHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "evidenceId": "ev-kanazawa-genai-follow-instructor-2025",
+      "claimId": "claim-kanazawa-genai-follow-instructor-2025",
+      "sourceSnapshotId": "ss-kanazawa-student-life-handbook-2025",
+      "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "finalUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+      "sourceTitle": "きぃつけまっし 2025",
+      "sourceLanguage": "ja",
+      "snapshotHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+      "evidenceSnippetOriginal": "生成AIの利用について個別の授業で教員からの指示がある場合には，それに従ってください。",
+      "evidenceSnippetDisplay": "If there are instructor directions on generative-AI use in an individual class, students are told to follow them.",
+      "evidenceLocator": "PDF text page 31, section 〈生成AI（ChatGPT, BingAI, Bard等各種AI）の利用〉",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "きぃつけまっし 2025",
+        "sourceUrl": "https://www.kanazawa-u.ac.jp/wp/wp-content/uploads/2025/04/kiitukemasshi_2025.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/kanazawa-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/kanazawa-university",
+        "publisher": "Kanazawa University",
+        "retrievedAt": "2026-05-22T04:41:49.000Z",
+        "snapshotHash": "dfe076370c0b84d108bcc61d4a35306af8a82d8886b7f2931596db83730adefe",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "decisionId": "rd-kanazawa-genai-follow-instructor-2025",
+      "claimId": "claim-kanazawa-genai-follow-instructor-2025",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved as a class-scoped AI-use instruction claim; it does not establish a central approved-tools list.",
+      "decidedAt": "2026-05-22T04:43:02.000Z"
+    },
+    {
+      "artifactType": "report_draft",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-kanazawa-university-20260522",
+      "reportId": "report-kanazawa-university-20260522",
+      "title": "Kanazawa University generated-AI student-work guidance candidates",
+      "generatedAt": "2026-05-22T04:43:02.000Z",
+      "draftPath": "content/reports/kanazawa-university-20260522.mdx",
+      "summary": "Staged three agent-reviewed claim candidates from Kanazawa University's official 2025 student-life handbook PDF. The claims are limited to student reports, degree theses, possible academic misconduct from using generative AI alone without students' own consideration, and following instructor directions in individual classes.",
+      "referencedClaimIds": [
+        "claim-kanazawa-genai-own-work-2025",
+        "claim-kanazawa-genai-alone-misconduct-2025",
+        "claim-kanazawa-genai-follow-instructor-2025"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/kanazawa-university.json",
+        "https://eduaipolicy.org/api/public/v1/universities/kanazawa-university.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The source is a student-life handbook section, so the staged claims should not be expanded to staff, research, procurement, or university-wide AI governance rules.",
+        "An official FD training news page was discovered but rejected as event/training coverage rather than direct policy evidence."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
