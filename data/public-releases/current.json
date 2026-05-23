@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260523-001",
-  "publishedAt": "2026-05-23T03:51:46.000Z",
-  "description": "Current public web/data release assembled from reviewed OpenClaw, OpenCode, and Codex staged artifact runs.",
+  "releaseId": "public-release-20260523-002",
+  "publishedAt": "2026-05-23T14:29:55.000Z",
+  "description": "Current public web/data release assembled from reviewed OpenClaw, OpenCode, and Codex staged artifact runs, including reviewed maintenance policy-delta claim expansions.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -723,7 +723,8 @@
     "staging/uapt-runs/uapt-zayed-university-20260517",
     "staging/uapt-runs/uapt-zhejiang-university-20260511",
     "staging/uapt-runs/uapt-zhengzhou-university-20260517",
-    "staging/uapt-runs/uapt-zurich-university-of-applied-sciences-zhaw-20260520"
+    "staging/uapt-runs/uapt-zurich-university-of-applied-sciences-zhaw-20260520",
+    "staging/uapt-runs/uapt-maintenance-policy-delta-reviewed-20260523"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
@@ -731,6 +732,7 @@
     "uapt-qs200-stage2-batch1-20260517 remains excluded because it is a source-health maintenance run; dataset release validation forbids publishing maintenance-only runs as public claims.",
     "uapt-johns-hopkins-university-20260510 is merged into the canonical jhu slug; older weak JHU claims inside uapt-qs26-30-20260509 are rejected as superseded.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
-    "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
+    "Raw source documents are not published as tracker metadata; official source materials retain their original rights.",
+    "Promotes a reviewed subset of 25 source-backed maintenance policy-delta claims from the May 23 2026 QS200 maintenance review. Held-out maintenance candidates remain unpromoted."
   ]
 }
