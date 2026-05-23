@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "traceId": "trace-simats-ai-policy-20260523",
+      "entityType": "university",
+      "entitySlug": "saveetha-institute-of-medical-and-technical-sciences-simats",
+      "startedAt": "2026-05-23T04:11:00.000Z",
+      "endedAt": "2026-05-23T04:24:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "site:saveetha.com OR site:simats.ac.in artificial intelligence AI ChatGPT policy guidelines students faculty Saveetha SIMATS",
+          "domain": "saveetha.com",
+          "resultCount": 0,
+          "notes": "Firecrawl search returned no official AI, ChatGPT, or artificial-intelligence policy or guidance pages for SIMATS."
+        },
+        {
+          "method": "sitemap",
+          "domain": "www.saveetha.com",
+          "resultCount": 565,
+          "notes": "Fetched the official Squarespace sitemap. Relevant policy-like candidates included researchpolicy, ipr-consultancy-policy, quality-policy, and an AI-related media item titled Workshop on AI, Tech Laws Held."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.saveetha.com",
+          "resultCount": 2,
+          "notes": "Verified www.saveetha.com as the official SIMATS domain from page metadata and fetched the research policy and AI workshop media page without login or browser escalation."
+        },
+        {
+          "method": "public_web_search",
+          "query": "Saveetha SIMATS ChatGPT AI policy guidelines",
+          "domain": "www.saveetha.com",
+          "resultCount": 0,
+          "notes": "A second broad Firecrawl search returned no official AI or ChatGPT policy sources."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-simats-research-policy",
+        "sc-simats-ai-tech-laws-news"
+      ],
+      "rejectionIds": [
+        "sr-simats-ai-tech-laws-news"
+      ],
+      "summary": "Official-source discovery did not locate a substantive SIMATS AI or ChatGPT policy/guidance page. The only AI-specific official-domain item found was a media/news page for an AI and tech-laws workshop, rejected as event/news-only. The staged claim below uses the official SIMATS research promotion policy and is limited to research-ethics language from that policy."
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "sourceCandidateId": "sc-simats-research-policy",
+      "entityType": "university",
+      "entitySlug": "saveetha-institute-of-medical-and-technical-sciences-simats",
+      "sourceUrl": "https://www.saveetha.com/researchpolicy",
+      "finalUrl": "https://www.saveetha.com/researchpolicy",
+      "sourceTitle": "Research policy - SIMATS DEEMED UNIVERSITY",
+      "sourceLanguage": "en",
+      "sourceType": "research_guidance",
+      "discoveryMethod": "sitemap",
+      "queryUsed": "official sitemap: researchpolicy",
+      "discoveredAt": "2026-05-23T04:15:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.1,
+      "policySpecificityScore": 0.72,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-23T04:20:00.000Z",
+      "verificationNotes": "Official SIMATS page on www.saveetha.com with page title, site metadata, and a linked Research Policy Document. It is research-policy evidence, not an AI-specific policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "sourceCandidateId": "sc-simats-ai-tech-laws-news",
+      "entityType": "university",
+      "entitySlug": "saveetha-institute-of-medical-and-technical-sciences-simats",
+      "sourceUrl": "https://www.saveetha.com/mediacoverage/workshop-on-ai-tech-laws-held",
+      "finalUrl": "https://www.saveetha.com/mediacoverage/workshop-on-ai-tech-laws-held",
+      "sourceTitle": "Workshop on AI, Tech Laws Held - SIMATS DEEMED UNIVERSITY",
+      "sourceLanguage": "en",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "sitemap",
+      "queryUsed": "official sitemap: ai",
+      "discoveredAt": "2026-05-23T04:15:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.71,
+      "policySpecificityScore": 0.12,
+      "verificationStatus": "rejected",
+      "verificationNotes": "Official-domain media item, but extracted page text contains only an event/news title and publication metadata, not institutional AI policy or guidance.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "artifactType": "source_rejection",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "sourceRejectionId": "sr-simats-ai-tech-laws-news",
+      "sourceCandidateId": "sc-simats-ai-tech-laws-news",
+      "entityType": "university",
+      "entitySlug": "saveetha-institute-of-medical-and-technical-sciences-simats",
+      "sourceUrl": "https://www.saveetha.com/mediacoverage/workshop-on-ai-tech-laws-held",
+      "finalUrl": "https://www.saveetha.com/mediacoverage/workshop-on-ai-tech-laws-held",
+      "rejectedAt": "2026-05-23T04:19:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "codex-openclaw-local",
+      "evidenceSnippet": "Workshop on AI , Tech Laws Held",
+      "notes": "Rejected for policy evidence because the official media page is an event/news item and the available extracted text does not contain substantive institutional guidance."
+    },
+    {
+      "artifactType": "crawl_plan",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "planId": "plan-simats-research-policy-20260523",
+      "createdAt": "2026-05-23T04:20:00.000Z",
+      "createdBy": "codex-openclaw-local",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "saveetha-institute-of-medical-and-technical-sciences-simats",
+          "sourceCandidateId": "sc-simats-research-policy",
+          "sourceUrl": "https://www.saveetha.com/researchpolicy",
+          "sourceTitle": "Research policy - SIMATS DEEMED UNIVERSITY",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "research"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Do not infer an AI policy from non-AI research-policy material.",
+        "Do not use the AI workshop media item as policy evidence.",
+        "Stop after a verified official source yields a narrow research-policy claim."
+      ]
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "fetchAttemptId": "fetch-simats-research-policy-http-20260523",
+      "sourceCandidateId": "sc-simats-research-policy",
+      "sourceUrl": "https://www.saveetha.com/researchpolicy",
+      "finalUrl": "https://www.saveetha.com/researchpolicy",
+      "attemptedAt": "2026-05-23T04:20:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "default",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 344,
+      "contentHash": "321d31c6ebef003dd50fc999f66d064bb37967427fcc979bc72a30aa530fc0d8",
+      "normalizedTextStorageKey": "openclaw/uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523/snapshots/researchpolicy"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "sourceSnapshotId": "snap-simats-research-policy-20260523",
+      "sourceCandidateId": "sc-simats-research-policy",
+      "fetchAttemptId": "fetch-simats-research-policy-http-20260523",
+      "sourceUrl": "https://www.saveetha.com/researchpolicy",
+      "finalUrl": "https://www.saveetha.com/researchpolicy",
+      "sourceTitle": "Research policy - SIMATS DEEMED UNIVERSITY",
+      "sourceLanguage": "en",
+      "contentHash": "321d31c6ebef003dd50fc999f66d064bb37967427fcc979bc72a30aa530fc0d8",
+      "fetchedAt": "2026-05-23T04:20:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523/snapshots/researchpolicy",
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "claimId": "claim-simats-research-ethics-facility-20260523",
+      "entityType": "university",
+      "entitySlug": "saveetha-institute-of-medical-and-technical-sciences-simats",
+      "claimType": "source_status",
+      "claimText": "SIMATS's research promotion policy is an official general research-ethics source that aims to support transparent, socially responsible, and ethical research; this checked source is not an AI-specific policy or generative-AI guidance source.",
+      "normalizedValue": "general_research_ethics_source_not_ai_specific_policy",
+      "sourceLanguage": "en",
+      "confidence": 0.74,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-simats-research-ethics-facility-20260523"
+      ],
+      "citation": {
+        "citationTitle": "Research policy - SIMATS DEEMED UNIVERSITY",
+        "sourceUrl": "https://www.saveetha.com/researchpolicy",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/saveetha-institute-of-medical-and-technical-sciences-simats.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/saveetha-institute-of-medical-and-technical-sciences-simats",
+        "publisher": "SIMATS DEEMED UNIVERSITY",
+        "retrievedAt": "2026-05-23T04:20:00.000Z",
+        "snapshotHash": "321d31c6ebef003dd50fc999f66d064bb37967427fcc979bc72a30aa530fc0d8",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "evidenceId": "ev-simats-research-ethics-facility-20260523",
+      "claimId": "claim-simats-research-ethics-facility-20260523",
+      "sourceSnapshotId": "snap-simats-research-policy-20260523",
+      "sourceUrl": "https://www.saveetha.com/researchpolicy",
+      "finalUrl": "https://www.saveetha.com/researchpolicy",
+      "sourceTitle": "Research policy - SIMATS DEEMED UNIVERSITY",
+      "sourceLanguage": "en",
+      "snapshotHash": "321d31c6ebef003dd50fc999f66d064bb37967427fcc979bc72a30aa530fc0d8",
+      "evidenceSnippetOriginal": "Provide facility to conduct high-quality research in a transparent, socially responsible and ethical manner",
+      "evidenceSnippetDisplay": "SIMATS lists providing facilities for transparent, socially responsible, ethical high-quality research as a research objective.",
+      "evidenceLocator": "Research Objectives section",
+      "evidenceType": "official_source",
+      "relevance": 0.86,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Research policy - SIMATS DEEMED UNIVERSITY",
+        "sourceUrl": "https://www.saveetha.com/researchpolicy",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/saveetha-institute-of-medical-and-technical-sciences-simats.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/saveetha-institute-of-medical-and-technical-sciences-simats",
+        "publisher": "SIMATS DEEMED UNIVERSITY",
+        "retrievedAt": "2026-05-23T04:20:00.000Z",
+        "snapshotHash": "321d31c6ebef003dd50fc999f66d064bb37967427fcc979bc72a30aa530fc0d8",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "decisionId": "review-simats-research-ethics-facility-20260523",
+      "claimId": "claim-simats-research-ethics-facility-20260523",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-local",
+      "notes": "Approved only as a source-status claim after narrowing. The cited research policy is an official general research-ethics source, not AI-specific policy; the AI-specific official-domain media item was rejected as event/news-only.",
+      "decidedAt": "2026-05-23T04:23:00.000Z"
+    },
+    {
+      "artifactType": "report_draft",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-saveetha-institute-of-medical-and-technical-sciences-simats-20260523",
+      "reportId": "report-simats-20260523",
+      "title": "SIMATS staged source-status review",
+      "generatedAt": "2026-05-23T04:24:00.000Z",
+      "draftPath": "content/reports/2026-05/saveetha-institute-of-medical-and-technical-sciences-simats-research-policy.mdx",
+      "summary": "This staged run did not verify a substantive official SIMATS AI or ChatGPT policy/guidance page. The approved claim is narrowed to source_status: the official research promotion policy is a general research-ethics source and is not AI-specific. The only AI-specific official-domain item found was rejected as event/news-only.",
+      "referencedClaimIds": [
+        "claim-simats-research-ethics-facility-20260523"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/saveetha-institute-of-medical-and-technical-sciences-simats.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "The staged claim is research-policy evidence and should not be interpreted as SIMATS AI, ChatGPT, or generative-AI policy."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
