@@ -94,7 +94,7 @@ interface RankingMatch {
   rankings: CatalogUniversityRanking[];
 }
 
-interface PublicReleaseManifest {
+export interface PublicReleaseManifest {
   schemaVersion: "uapt-public-release-manifest-v1";
   releaseId: string;
   publishedAt: string;
@@ -145,6 +145,12 @@ export async function getStagedPublicDataset(): Promise<PublicDataset> {
   datasetPromise ??= buildStagedPublicDataset();
 
   return datasetPromise;
+}
+
+export async function getStagedPublicDatasetForManifest(
+  manifest: PublicReleaseManifest
+): Promise<PublicDataset> {
+  return buildStagedPublicDatasetFromManifest(await findRepoRoot(), manifest);
 }
 
 export async function getCurrentPublicReleaseManifest(): Promise<
@@ -212,7 +218,27 @@ export async function getStagedRecentChangesEnvelope(): Promise<PublicRecentChan
 
 async function buildStagedPublicDataset(): Promise<PublicDataset> {
   const repoRoot = await findRepoRoot();
+  const manifest = await readPublicReleaseManifest(repoRoot);
+
+  if (manifest) return buildStagedPublicDatasetFromManifest(repoRoot, manifest);
+
   const artifacts = await readStagedArtifacts(repoRoot);
+  return buildPublicDatasetFromArtifacts(repoRoot, artifacts);
+}
+
+async function buildStagedPublicDatasetFromManifest(
+  repoRoot: string,
+  manifest: PublicReleaseManifest
+): Promise<PublicDataset> {
+  const artifacts = await readStagedArtifacts(repoRoot, manifest);
+
+  return buildPublicDatasetFromArtifacts(repoRoot, artifacts);
+}
+
+async function buildPublicDatasetFromArtifacts(
+  repoRoot: string,
+  artifacts: OpenClawStagedArtifact[]
+): Promise<PublicDataset> {
   const rankingSources = await readRankingSources(repoRoot);
   const rankingBySlug = buildRankingIndex(rankingSources);
   const byEntity = groupArtifactsByEntity(artifacts);
@@ -272,8 +298,10 @@ async function pathExists(targetPath: string): Promise<boolean> {
   }
 }
 
-async function readStagedArtifacts(repoRoot: string): Promise<OpenClawStagedArtifact[]> {
-  const manifest = await readPublicReleaseManifest(repoRoot);
+async function readStagedArtifacts(
+  repoRoot: string,
+  manifest?: PublicReleaseManifest
+): Promise<OpenClawStagedArtifact[]> {
   const roots = manifest
     ? manifest.includeStagedArtifactDirectories.map((directory) =>
         path.resolve(repoRoot, directory)

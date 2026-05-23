@@ -202,6 +202,29 @@ export function buildPublicApiIndexData(
         "Recent public source checks and changed institution records."
       ),
       endpoint(
+        "Latest release diff",
+        `/api/public/${PUBLIC_API_VERSION}/changes/latest.json`,
+        "Latest release-to-release claim/evidence diff with added, removed, modified, and source snapshot change rows."
+      ),
+      endpoint(
+        "Release diff",
+        `/api/public/${PUBLIC_API_VERSION}/changes/public-release-20260523-002.json`,
+        "One release-to-release claim/evidence diff artifact.",
+        `/api/public/${PUBLIC_API_VERSION}/changes/{releaseId}.json`
+      ),
+      endpoint(
+        "University release diff",
+        `/api/public/${PUBLIC_API_VERSION}/changes/latest/emory-university.json`,
+        "One university's latest release-to-release claim/evidence diff.",
+        `/api/public/${PUBLIC_API_VERSION}/changes/latest/{slug}.json`
+      ),
+      endpoint(
+        "Release snapshot claims",
+        `/api/public/${PUBLIC_API_VERSION}/datasets/release-snapshots/public-release-20260523-002/claims.jsonl`,
+        "Immutable claim/evidence snapshot for a public release. It excludes raw source page text.",
+        `/api/public/${PUBLIC_API_VERSION}/datasets/release-snapshots/{releaseId}/claims.jsonl`
+      ),
+      endpoint(
         "Analysis API index",
         `/api/public/${PUBLIC_API_VERSION}/analysis/index.json`,
         "Manifest for deterministic policy analysis dimensions, endpoints, limitations, and version metadata."

@@ -51,6 +51,7 @@ export const publicDatasetReleaseManifestSchema = z.object({
   schemaVersion: z.literal("uapt-dataset-release-v1"),
   apiVersion: z.literal(PUBLIC_API_VERSION),
   releaseId: z.string().min(1),
+  previousReleaseId: z.string().min(1).optional(),
   releasePeriod: z.string().regex(/^\d{4}-\d{2}$/),
   publishedAt: z.string().datetime(),
   generatedAt: z.string().datetime(),
@@ -64,6 +65,17 @@ export const publicDatasetReleaseManifestSchema = z.object({
   limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY]),
   citation: publicApiCitationSchema,
   counts: publicDatasetReleaseCountsSchema,
+  diffArtifactUrl: z.string().url().optional(),
+  releaseSnapshotUrl: z.string().url().optional(),
+  changeCounts: z
+    .object({
+      entitiesChanged: z.number().int().nonnegative(),
+      added: z.number().int().nonnegative(),
+      removed: z.number().int().nonnegative(),
+      modified: z.number().int().nonnegative(),
+      unchanged: z.number().int().nonnegative()
+    })
+    .optional(),
   artifacts: z.array(publicDatasetArtifactSchema).min(1)
 });
 

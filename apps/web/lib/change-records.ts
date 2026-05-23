@@ -6,6 +6,12 @@ import {
   type SourceAttribution
 } from "@uapt/shared";
 import { getStagedPublicDataset } from "./staged-public-data";
+import {
+  getLatestReleaseDiff,
+  getReleaseDiff,
+  type ReleaseDiffRow,
+  type ReleaseEntityDiff
+} from "./release-diffs";
 import { getSiteBaseUrl } from "./site-url";
 
 export interface DiffPreviewLine {
@@ -36,6 +42,7 @@ export interface ClaimChangeRecord {
 }
 
 export interface ChangeRecord {
+  added: number;
   candidateClaimCount: number;
   canonicalUrl: string;
   changeUrl: string;
@@ -43,23 +50,55 @@ export interface ChangeRecord {
   claimCount: number;
   confidence?: number;
   diffLines: DiffPreviewLine[];
+  diffRows: ReleaseDiffRow[];
   lastChangedAt?: string;
   lastCheckedAt?: string;
+  modified: number;
   name: string;
+  previousReleaseId?: string;
   publicJsonUrl: string;
+  releaseId?: string;
+  removed: number;
   reviewState: ClaimReviewState;
   reviewedClaimCount: number;
   slug: string;
   sourceChanges: SourceChangeRecord[];
   sourceCount: number;
   summary: string;
+  unchanged: number;
   universityUrl: string;
 }
 
 export async function getChangeRecords(): Promise<ChangeRecord[]> {
   const dataset = await getStagedPublicDataset();
+  const releaseDiff = await getLatestReleaseDiff().catch(() => undefined);
+  const diffsBySlug = new Map(
+    releaseDiff?.entities.map((entity) => [entity.entitySlug, entity]) ?? []
+  );
 
-  return dataset.publicSummaries.map(buildChangeRecord).sort(compareFreshness);
+  return dataset.publicSummaries
+    .map((summary) => buildChangeRecord(summary, diffsBySlug.get(summary.entity.slug)))
+    .sort(compareFreshness);
+}
+
+export async function getReleaseChangeRecords(
+  releaseId: string
+): Promise<ChangeRecord[] | undefined> {
+  const releaseDiff = await getReleaseDiff(releaseId);
+  if (!releaseDiff) return undefined;
+  const dataset = await getStagedPublicDataset();
+  const summariesBySlug = new Map(
+    dataset.publicSummaries.map((summary) => [summary.entity.slug, summary])
+  );
+
+  return releaseDiff.entities
+    .map((entity) => {
+      const summary = summariesBySlug.get(entity.entitySlug);
+      return summary
+        ? buildChangeRecord(summary, entity)
+        : buildDiffOnlyChangeRecord(entity);
+    })
+    .sort(compareFreshness);
 }
 
 export async function getChangeRecordBySlug(
@@ -68,7 +107,10 @@ export async function getChangeRecordBySlug(
   return (await getChangeRecords()).find((record) => record.slug === slug);
 }
 
-function buildChangeRecord(summary: PublicEntitySummary): ChangeRecord {
+function buildChangeRecord(
+  summary: PublicEntitySummary,
+  diff?: ReleaseEntityDiff
+): ChangeRecord {
   const siteBaseUrl = getSiteBaseUrl();
   const slug = summary.entity.slug;
   const reviewedClaimCount = summary.claims.filter((claim) =>
@@ -97,12 +139,48 @@ function buildChangeRecord(summary: PublicEntitySummary): ChangeRecord {
     confidence: summary.confidence,
     reviewState: summary.reviewState,
     claimCount: summary.claims.length,
+    added: diff?.added ?? 0,
     reviewedClaimCount,
     candidateClaimCount: summary.claims.length - reviewedClaimCount,
+    diffRows: diff?.rows ?? [],
+    modified: diff?.modified ?? 0,
+    previousReleaseId: diff?.previousReleaseId,
+    releaseId: diff?.currentReleaseId,
+    removed: diff?.removed ?? 0,
     sourceCount: summary.officialSources.length,
     sourceChanges,
     claimChanges,
-    diffLines: buildDiffPreview(summary)
+    diffLines: buildDiffPreview(summary, diff),
+    unchanged: diff?.unchanged ?? 0
+  };
+}
+
+function buildDiffOnlyChangeRecord(diff: ReleaseEntityDiff): ChangeRecord {
+  return {
+    added: diff.added,
+    candidateClaimCount: 0,
+    canonicalUrl: diff.canonicalUrl,
+    changeUrl: `/changes/${diff.entitySlug}`,
+    claimChanges: [],
+    claimCount: 0,
+    diffLines: buildDiffPreview(undefined, diff),
+    diffRows: diff.rows,
+    lastChangedAt: diff.lastChangedAt,
+    lastCheckedAt: diff.lastCheckedAt,
+    modified: diff.modified,
+    name: diff.entityName,
+    previousReleaseId: diff.previousReleaseId,
+    publicJsonUrl: diff.publicJsonUrl,
+    releaseId: diff.currentReleaseId,
+    removed: diff.removed,
+    reviewState: "agent_reviewed",
+    reviewedClaimCount: 0,
+    slug: diff.entitySlug,
+    sourceChanges: [],
+    sourceCount: 0,
+    summary: "",
+    universityUrl: `/universities/${diff.entitySlug}`,
+    unchanged: diff.unchanged
   };
 }
 
@@ -136,7 +214,13 @@ function buildClaimChangeRecord(claim: PolicyClaim): ClaimChangeRecord {
   };
 }
 
-function buildDiffPreview(summary: PublicEntitySummary): DiffPreviewLine[] {
+function buildDiffPreview(
+  summary: PublicEntitySummary | undefined,
+  diff: ReleaseEntityDiff | undefined
+): DiffPreviewLine[] {
+  if (diff) return diff.rows.length ? buildReleaseDiffLines(diff) : [];
+
+  if (!summary) return [];
   const lines: DiffPreviewLine[] = [];
   let newLineNumber = 1;
 
@@ -169,6 +253,78 @@ function buildDiffPreview(summary: PublicEntitySummary): DiffPreviewLine[] {
   }
 
   return lines;
+}
+
+function buildReleaseDiffLines(diff: ReleaseEntityDiff): DiffPreviewLine[] {
+  const lines: DiffPreviewLine[] = [];
+  let oldLineNumber = 1;
+  let newLineNumber = 1;
+
+  lines.push({
+    type: "equal",
+    oldLineNumber,
+    newLineNumber,
+    value: `# ${diff.entityName} AI policy diff`
+  });
+  oldLineNumber += 1;
+  newLineNumber += 1;
+
+  for (const row of diff.rows.slice(0, 80)) {
+    if (
+      row.changeType.endsWith("_removed") ||
+      row.changeType === "claim_modified" ||
+      row.changeType === "evidence_modified" ||
+      row.changeType === "source_snapshot_changed"
+    ) {
+      const oldValues = rowToOldLines(row);
+      for (const value of oldValues) {
+        lines.push({ type: "delete", oldLineNumber, value });
+        oldLineNumber += 1;
+      }
+    }
+
+    if (row.changeType.endsWith("_added") || row.changeType === "claim_modified" || row.changeType === "evidence_modified" || row.changeType === "source_snapshot_changed") {
+      const newValues = rowToNewLines(row);
+      for (const value of newValues) {
+        lines.push({ type: "insert", newLineNumber, value });
+        newLineNumber += 1;
+      }
+    }
+  }
+
+  return lines;
+}
+
+function rowToOldLines(row: ReleaseDiffRow): string[] {
+  if (row.oldClaim) {
+    return [
+      `${row.oldClaim.claimType}: ${row.oldClaim.claimText}`,
+      ...((row.oldEvidence ?? row.oldClaim.evidence).slice(0, 1).map(
+        (evidence) =>
+          `Evidence (${evidence.sourceLanguage ?? "und"}, ${evidence.sourceSnapshotHash.slice(0, 12)}): ${evidence.evidenceSnippet}`
+      ))
+    ];
+  }
+  if (row.oldSnapshotHash && row.sourceUrl) {
+    return [`Source ${row.sourceUrl} snapshot ${row.oldSnapshotHash}`];
+  }
+  return [];
+}
+
+function rowToNewLines(row: ReleaseDiffRow): string[] {
+  if (row.newClaim) {
+    return [
+      `${row.newClaim.claimType}: ${row.newClaim.claimText}`,
+      ...((row.newEvidence ?? row.newClaim.evidence).slice(0, 1).map(
+        (evidence) =>
+          `Evidence (${evidence.sourceLanguage ?? "und"}, ${evidence.sourceSnapshotHash.slice(0, 12)}): ${evidence.evidenceSnippet}`
+      ))
+    ];
+  }
+  if (row.newSnapshotHash && row.sourceUrl) {
+    return [`Source ${row.sourceUrl} snapshot ${row.newSnapshotHash}`];
+  }
+  return [];
 }
 
 function compareFreshness(left: ChangeRecord, right: ChangeRecord): number {

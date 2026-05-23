@@ -8,30 +8,58 @@ import { StateLabel } from "@/components/state-label";
 import {
   getChangeRecordBySlug,
   getChangeRecords,
+  getReleaseChangeRecords,
   type ChangeRecord
 } from "@/lib/change-records";
+import { getKnownReleaseIds } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 interface ChangeDetailPageProps {
   params: Promise<{
-    slug: string;
+    releaseId: string;
   }>;
 }
 
 export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 export const revalidate = false;
 
 export async function generateStaticParams() {
-  return (await getChangeRecords()).map((record) => ({
-    slug: record.slug
-  }));
+  const [records, releaseIds] = await Promise.all([
+    getChangeRecords(),
+    getKnownReleaseIds()
+  ]);
+
+  return [
+    ...records
+      .filter((record) => record.diffRows.length)
+      .map((record) => ({ releaseId: record.slug })),
+    ...releaseIds.map((releaseId) => ({ releaseId }))
+  ];
 }
 
 export async function generateMetadata({ params }: ChangeDetailPageProps) {
-  const { slug } = await params;
-  const record = await getChangeRecordBySlug(slug);
-  const canonical = getAbsoluteSiteUrl(`/changes/${slug}`);
+  const { releaseId } = await params;
+  const releaseRecords = await getReleaseChangeRecords(releaseId);
+  if (releaseRecords) {
+    const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
+    const changedCount = releaseRecords.filter((record) => record.diffRows.length).length;
+
+    return {
+      title: `University AI Policy Changes: ${releaseId}`,
+      description: `${changedCount} university AI policy records changed in ${releaseId}.`,
+      alternates: { canonical },
+      openGraph: {
+        title: `University AI Policy Changes: ${releaseId}`,
+        description: `${changedCount} university AI policy records changed in ${releaseId}.`,
+        url: canonical,
+        type: "article"
+      }
+    };
+  }
+
+  const record = await getChangeRecordBySlug(releaseId);
+  const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
   const title = record
     ? `${record.name} AI Policy Change Log | University AI Policy Tracker`
     : "Change record not found";
@@ -55,8 +83,11 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
 export default async function ChangeDetailPage({
   params
 }: ChangeDetailPageProps) {
-  const { slug } = await params;
-  const record = await getChangeRecordBySlug(slug);
+  const { releaseId } = await params;
+  const releaseRecords = await getReleaseChangeRecords(releaseId);
+  if (releaseRecords) return <ReleaseOverviewPage records={releaseRecords} releaseId={releaseId} />;
+
+  const record = await getChangeRecordBySlug(releaseId);
 
   if (!record) notFound();
 
@@ -67,8 +98,9 @@ export default async function ChangeDetailPage({
           <p className="entity-header__eyebrow">Change log</p>
           <h1>{record.name}</h1>
           <p className="entity-header__summary">
-            Source-check timeline, source snapshot hashes, claim review state, and
-            a diff-style preview of current source-backed claim evidence.
+            Release-to-release claim and evidence diff with source URLs,
+            snapshot hashes, review state, and short original-language evidence
+            snippets.
           </p>
           <div className="entity-header__metadata">
             <StateLabel reviewState={record.reviewState} />
@@ -84,6 +116,9 @@ export default async function ChangeDetailPage({
             ) : null}
             <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
             <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
+            {record.releaseId ? (
+              <MetaLabel label="Release">{record.releaseId}</MetaLabel>
+            ) : null}
           </div>
         </div>
         <div className="entity-header__actions">
@@ -107,14 +142,21 @@ export default async function ChangeDetailPage({
           </ReferenceBox>
 
           <ReferenceBox
-            description="Diff-style preview built from current public claim/evidence records. Full old/new source diffs require paired historical snapshots."
-            title="Claim/evidence diff preview"
+            description="Unified diff generated from the previous and current public release claim/evidence snapshots."
+            title="Claim/evidence diff"
           >
-            <DiffBlock
-              description="Inserted lines represent current public claim and evidence records in the source-backed dataset."
-              lines={record.diffLines}
-              title={`${record.name} current policy evidence`}
-            />
+            {record.diffLines.length ? (
+              <DiffBlock
+                description={getDiffDescription(record)}
+                lines={record.diffLines}
+                title={`${record.name} release diff`}
+              />
+            ) : (
+              <p className="notice-card">
+                No claim/evidence changes are recorded for this university in
+                the latest public release.
+              </p>
+            )}
           </ReferenceBox>
 
           <section className="record-section">
@@ -200,6 +242,9 @@ export default async function ChangeDetailPage({
               <MetaLabel label="Candidate claims">
                 {record.candidateClaimCount}
               </MetaLabel>
+              <MetaLabel label="Added">{record.added}</MetaLabel>
+              <MetaLabel label="Removed">{record.removed}</MetaLabel>
+              <MetaLabel label="Modified">{record.modified}</MetaLabel>
             </div>
             <ul className="compact-list">
               <li>
@@ -219,12 +264,103 @@ export default async function ChangeDetailPage({
   );
 }
 
+function ReleaseOverviewPage({
+  records,
+  releaseId
+}: {
+  records: ChangeRecord[];
+  releaseId: string;
+}) {
+  const changedRecords = records.filter((record) => record.diffRows.length > 0);
+  const added = changedRecords.reduce((total, record) => total + record.added, 0);
+  const removed = changedRecords.reduce(
+    (total, record) => total + record.removed,
+    0
+  );
+  const modified = changedRecords.reduce(
+    (total, record) => total + record.modified,
+    0
+  );
+
+  return (
+    <main className="page-shell page-shell--wide">
+      <section className="hero">
+        <p className="kicker">Release diff</p>
+        <h1>University AI Policy Changes: {releaseId}</h1>
+        <p className="lead">
+          Release-to-release claim and evidence changes. Full source-page text is
+          not published; diff rows use tracker claim metadata and short evidence
+          snippets.
+        </p>
+      </section>
+
+      <section className="metrics-grid" aria-label="Release diff summary">
+        <div>
+          <span>{changedRecords.length}</span>
+          <p>changed records</p>
+        </div>
+        <div>
+          <span>{added}</span>
+          <p>added rows</p>
+        </div>
+        <div>
+          <span>{removed}</span>
+          <p>removed rows</p>
+        </div>
+        <div>
+          <span>{modified}</span>
+          <p>modified rows</p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading">
+          <h2>Changed universities</h2>
+          <p>{changedRecords.length} records with release diff rows.</p>
+        </div>
+        <div className="source-attribution-list">
+          {changedRecords.map((record) => (
+            <article className="source-attribution-row" key={record.slug}>
+              <div>
+                <h3>{record.name}</h3>
+                <p>
+                  +{record.added} / -{record.removed} / ~{record.modified}
+                </p>
+              </div>
+              <div className="tag-row">
+                <Link href={`/changes/${releaseId}/${record.slug}`}>
+                  Release diff
+                </Link>
+                <Link href={`/changes/${record.slug}`}>Latest diff</Link>
+                <Link href={record.universityUrl}>University page</Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function getSummaryText(record: ChangeRecord): string {
   const changed = record.lastChangedAt
     ? ` Latest tracked changed date: ${formatDate(record.lastChangedAt)}.`
     : " No tracked changed date is published yet.";
 
-  return `${record.name} currently has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}`;
+  const diff =
+    record.diffRows.length > 0
+      ? ` Latest release diff: +${record.added}, -${record.removed}, ~${record.modified}.`
+      : " No claim/evidence changes are recorded in the latest public release.";
+
+  return `${record.name} currently has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;
+}
+
+function getDiffDescription(record: ChangeRecord): string {
+  if (!record.previousReleaseId || !record.releaseId) {
+    return "Initial tracked release. Lines represent public claim/evidence records entering the release snapshot.";
+  }
+
+  return `Comparing ${record.previousReleaseId} to ${record.releaseId}.`;
 }
 
 function pluralize(label: string, count: number): string {

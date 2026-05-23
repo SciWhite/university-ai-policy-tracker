@@ -6,6 +6,7 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 import { getChangeRecords, type ChangeRecord } from "@/lib/change-records";
+import { getLatestReleaseDiff } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const title = "Recent Changes | University AI Policy Tracker";
@@ -33,14 +34,12 @@ export function generateMetadata() {
 
 export default async function ChangesPage() {
   const records = await getChangeRecords();
+  const releaseDiff = await getLatestReleaseDiff();
   const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
   const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
-  const changedCount = records.filter((record) => record.lastChangedAt).length;
-  const checkedCount = records.filter((record) => record.lastCheckedAt).length;
-  const totalClaims = records.reduce(
-    (total, record) => total + record.claimCount,
-    0
-  );
+  const latestDiffPath = `/api/public/${PUBLIC_API_VERSION}/changes/latest.json`;
+  const latestDiffUrl = getAbsoluteSiteUrl(latestDiffPath);
+  const changedRecords = records.filter((record) => record.diffRows.length);
   const totalSources = records.reduce(
     (total, record) => total + record.sourceCount,
     0
@@ -52,27 +51,28 @@ export default async function ChangesPage() {
         <p className="kicker">Changes</p>
         <h1>Source checks and policy record freshness</h1>
         <p className="lead">
-          Freshness metadata for public university records: checked dates,
-          changed dates, review state, claim counts, and JSON links.
+          Release-to-release claim and evidence diffs for public university AI
+          policy records, with source URLs, snapshot hashes, review states, and
+          versioned JSON.
         </p>
       </section>
 
       <section className="metrics-grid" aria-label="Recent changes summary">
         <div>
-          <span>{records.length}</span>
-          <p>public university records</p>
+          <span>{changedRecords.length}</span>
+          <p>records changed in latest release</p>
         </div>
         <div>
-          <span>{checkedCount}</span>
-          <p>records with checked dates</p>
+          <span>{releaseDiff.changeCounts.added}</span>
+          <p>added diff rows</p>
         </div>
         <div>
-          <span>{changedCount}</span>
-          <p>records with changed dates</p>
+          <span>{releaseDiff.changeCounts.removed}</span>
+          <p>removed diff rows</p>
         </div>
         <div>
-          <span>{totalClaims}</span>
-          <p>source-backed claims</p>
+          <span>{releaseDiff.changeCounts.modified}</span>
+          <p>modified diff rows</p>
         </div>
       </section>
 
@@ -80,9 +80,9 @@ export default async function ChangesPage() {
         <article className="answer-card">
           <h2>What changed means</h2>
           <p>
-            A changed date means the promoted public record or tracked source
-            metadata changed in the release, not that a university policy became
-            stricter or more permissive.
+            A release diff compares the current promoted claim/evidence snapshot
+            with the previous public release. It does not publish full source
+            page text.
           </p>
         </article>
         <article className="answer-card">
@@ -95,8 +95,9 @@ export default async function ChangesPage() {
         <article className="answer-card">
           <h2>How agents should use it</h2>
           <p>
-            Use the recent changes JSON to find records, then retrieve canonical
-            university pages and source-backed claims for claim-level answers.
+            Use the latest diff JSON to identify added, removed, or modified
+            claim/evidence rows, then retrieve canonical university pages for
+            citation context.
           </p>
         </article>
       </section>
@@ -112,18 +113,28 @@ export default async function ChangesPage() {
           path={recentChangesPath}
           url={recentChangesUrl}
         />
+        <ApiEndpointRow
+          description="Latest release-to-release claim/evidence diff with added, removed, and modified rows."
+          label="Latest release diff JSON"
+          path={latestDiffPath}
+          url={latestDiffUrl}
+        />
       </ReferenceBox>
 
       <section className="section">
         <div className="section-heading">
           <h2>Change timeline</h2>
           <p>
-            {totalSources} source attributions across {records.length} records.
+            Latest release {releaseDiff.currentReleaseId}
+            {releaseDiff.previousReleaseId
+              ? ` compared with ${releaseDiff.previousReleaseId}`
+              : " is the initial tracked release"}
+            . {totalSources} source attributions across {records.length} records.
           </p>
         </div>
-        {records.length ? (
+        {changedRecords.length ? (
           <DataList className="timeline-list">
-            {records.map((record) => {
+            {changedRecords.map((record) => {
               const primaryDate = record.lastChangedAt ?? record.lastCheckedAt;
 
               return (
@@ -142,6 +153,10 @@ export default async function ChangesPage() {
                   metadata={
                     <>
                       <StateLabel reviewState={record.reviewState} />
+                      <MetaLabel label="Diff">
+                        +{record.added} / -{record.removed} / ~
+                        {record.modified}
+                      </MetaLabel>
                       <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
                       <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
                       {record.lastCheckedAt ? (
@@ -168,8 +183,9 @@ export default async function ChangesPage() {
           </DataList>
         ) : (
           <p className="notice-card">
-            No public change records are available yet. The versioned feed URL
-            remains available for readers and agents.
+            No claim/evidence changes are recorded for the latest public
+            release. The versioned feed URL remains available for readers and
+            agents.
           </p>
         )}
       </section>
@@ -189,8 +205,11 @@ function getChangeSummary(record: ChangeRecord): string {
   const changed = record.lastChangedAt
     ? ` The latest tracked changed date is ${formatDate(record.lastChangedAt)}.`
     : " No changed date has been published yet.";
+  const diff = record.diffRows.length
+    ? ` Latest diff rows: +${record.added}, -${record.removed}, ~${record.modified}.`
+    : " No claim/evidence changes are recorded for the latest release.";
 
-  return `${record.name} has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}`;
+  return `${record.name} has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;
 }
 
 function pluralize(label: string, count: number): string {

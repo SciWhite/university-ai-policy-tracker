@@ -20,6 +20,7 @@ import {
   getCurrentPublicReleaseManifest,
   getStagedPublicDataset
 } from "./staged-public-data";
+import { getLatestReleaseDiff, getReleaseSnapshotManifest } from "./release-diffs";
 import { getSiteBaseUrl } from "./site-url";
 
 export interface DatasetReleaseArtifactContent {
@@ -119,6 +120,10 @@ export async function getDatasetRelease(): Promise<DatasetRelease> {
     siteBaseUrl,
     summaries: sortedSummaries
   });
+  const releaseDiff = await getLatestReleaseDiff().catch(() => undefined);
+  const releaseSnapshot = await getReleaseSnapshotManifest(releaseId).catch(
+    () => undefined
+  );
   const checksumRows = rawArtifacts
     .filter((artifact) => artifact.id !== "checksums")
     .map((artifact) => {
@@ -170,6 +175,27 @@ export async function getDatasetRelease(): Promise<DatasetRelease> {
         `Release ${releaseId}. ${canonicalUrl}`
     }),
     counts: buildDatasetCounts(sortedSummaries),
+    previousReleaseId: releaseDiff?.previousReleaseId,
+    diffArtifactUrl: new URL(
+      `/api/public/${PUBLIC_API_VERSION}/changes/${releaseId}.json`,
+      siteBaseUrl
+    ).toString(),
+    releaseSnapshotUrl: releaseSnapshot
+      ? new URL(
+          `/api/public/${PUBLIC_API_VERSION}/datasets/release-snapshots/${releaseId}/manifest.json`,
+          siteBaseUrl
+        ).toString()
+      : undefined,
+    changeCounts: releaseDiff
+      ? {
+          entitiesChanged: releaseDiff.changeCounts.entitiesChanged,
+          added: releaseDiff.changeCounts.added,
+          removed: releaseDiff.changeCounts.removed,
+          modified:
+            releaseDiff.changeCounts.modified + releaseDiff.changeCounts.metadata,
+          unchanged: releaseDiff.changeCounts.unchanged
+        }
+      : undefined,
     artifacts: manifestArtifacts
   });
 
