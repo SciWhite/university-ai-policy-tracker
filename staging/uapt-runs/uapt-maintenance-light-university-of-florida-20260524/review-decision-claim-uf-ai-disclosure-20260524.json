@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-university-of-florida-20260524",
+  "artifactType": "review_decision",
+  "decisionId": "review-claim-uf-ai-disclosure-20260524",
+  "claimId": "claim-uf-ai-disclosure-20260524",
+  "decision": "approve",
+  "reviewState": "agent_reviewed",
+  "reviewerType": "local_reviewer",
+  "reviewer": "codex-maintenance-review",
+  "notes": "Approved as a candidate claim from the official UF AI Guidelines page. This does not publish canonical data until release promotion review.",
+  "decidedAt": "2026-05-24T16:53:48.671Z"
+}

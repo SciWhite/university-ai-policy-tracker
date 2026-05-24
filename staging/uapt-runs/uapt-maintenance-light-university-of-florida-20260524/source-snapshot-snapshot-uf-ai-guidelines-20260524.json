@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-university-of-florida-20260524",
+  "artifactType": "source_snapshot",
+  "sourceSnapshotId": "snapshot-uf-ai-guidelines-20260524",
+  "sourceCandidateId": "sc-uf-ai-guidelines-20260524",
+  "fetchAttemptId": "fetch-uf-ai-guidelines-20260524",
+  "sourceUrl": "https://ai.ufl.edu/guidelines/",
+  "finalUrl": "https://ai.ufl.edu/guidelines/",
+  "sourceTitle": "Guidelines for Use of AI at UF",
+  "sourceLanguage": "en",
+  "contentHash": "db6280d0192b9ea4881f8a9f99cad28320861491291c3dd39b46bf939bcc90cf",
+  "fetchedAt": "2026-05-24T16:53:48.671Z",
+  "httpStatus": 200,
+  "robotsAllowed": true,
+  "normalizedTextStorageKey": "openclaw/uapt-maintenance-light-university-of-florida-20260524/snapshots/uf-ai-guidelines.md",
+  "rawArtifactPaths": []
+}

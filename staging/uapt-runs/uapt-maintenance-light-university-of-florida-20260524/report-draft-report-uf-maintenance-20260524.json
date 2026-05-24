@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-university-of-florida-20260524",
+  "artifactType": "report_draft",
+  "reportId": "report-uf-maintenance-20260524",
+  "title": "University of Florida AI Guidelines maintenance review",
+  "generatedAt": "2026-05-24T16:53:48.671Z",
+  "draftPath": "content/reports/2026-05/university-of-florida-ai-guidelines-maintenance.mdx",
+  "summary": "Maintenance review of the official UF AI Guidelines page found Version 2: 2026 content supporting candidate claims on AI-use disclosure, AI-detector reliability, and unapproved AI applications/risk assessment. The bundle contains short evidence snippets only and is not public until promoted.",
+  "referencedClaimIds": [
+    "claim-uf-ai-disclosure-20260524",
+    "claim-uf-ai-detectors-not-proof-20260524",
+    "claim-uf-ai-risk-assessment-20260524"
+  ],
+  "publicJsonLinks": [
+    "https://eduaipolicy.org/api/public/v1/universities/university-of-florida.json"
+  ],
+  "limitations": [
+    "This tracker does not provide legal advice or academic-integrity advice.",
+    "Official university source pages remain the authoritative source for policy interpretation.",
+    "This staged bundle is a release candidate and is not public canonical data until promoted."
+  ],
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourceRightsPolicy": "Official source rights caveat: official university source text remains owned by the source publisher; tracker metadata and short evidence snippets are provided for citation and verification.",
+  "rawArtifactPaths": []
+}

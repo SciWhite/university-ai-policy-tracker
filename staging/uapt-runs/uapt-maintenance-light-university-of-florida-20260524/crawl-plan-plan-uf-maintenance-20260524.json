@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-university-of-florida-20260524",
+  "artifactType": "crawl_plan",
+  "planId": "plan-uf-maintenance-20260524",
+  "createdAt": "2026-05-24T16:53:48.671Z",
+  "createdBy": "codex-maintenance-review",
+  "targets": [
+    {
+      "entityType": "university",
+      "entitySlug": "university-of-florida",
+      "sourceCandidateId": "sc-uf-ai-guidelines-20260524",
+      "sourceUrl": "https://ai.ufl.edu/guidelines/",
+      "sourceTitle": "Guidelines for Use of AI at UF",
+      "sourceLanguage": "en",
+      "allowedFetchModes": [
+        "firecrawl",
+        "http"
+      ],
+      "expectedThemes": [
+        "academic_integrity",
+        "security_review",
+        "teaching",
+        "privacy"
+      ],
+      "maxUrls": 1,
+      "robotsPolicy": "respect"
+    }
+  ],
+  "stopConditions": [
+    "Single-source maintenance review only; do not crawl unrelated pages."
+  ]
+}

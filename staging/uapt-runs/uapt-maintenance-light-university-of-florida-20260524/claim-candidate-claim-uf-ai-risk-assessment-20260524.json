@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-university-of-florida-20260524",
+  "artifactType": "claim_candidate",
+  "claimId": "claim-uf-ai-risk-assessment-20260524",
+  "entityType": "university",
+  "entitySlug": "university-of-florida",
+  "claimType": "security_review",
+  "claimText": "University of Florida AI guidance says users should not use unapproved AI applications that have not gone through UF risk assessment.",
+  "sourceLanguage": "en",
+  "confidence": 0.91,
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ev-uf-ai-risk-assessment-20260524"
+  ],
+  "citation": {
+    "citationTitle": "University of Florida AI Guidelines",
+    "sourceUrl": "https://ai.ufl.edu/guidelines/",
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-florida.json",
+    "canonicalUrl": "https://eduaipolicy.org/universities/university-of-florida",
+    "publisher": "University of Florida Office of the Provost",
+    "retrievedAt": "2026-05-24T16:53:48.671Z",
+    "snapshotHash": "db6280d0192b9ea4881f8a9f99cad28320861491291c3dd39b46bf939bcc90cf",
+    "sourceRights": "Official source rights caveat: official university source text remains owned by the source publisher; tracker metadata and short evidence snippets are provided for citation and verification."
+  },
+  "publishAsCanonical": false,
+  "isCanonical": false
+}

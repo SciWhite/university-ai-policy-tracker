@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-university-of-florida-20260524",
+  "artifactType": "source_discovery_trace",
+  "traceId": "trace-uf-maintenance-20260524",
+  "entityType": "university",
+  "entitySlug": "university-of-florida",
+  "startedAt": "2026-05-24T16:53:48.671Z",
+  "endedAt": "2026-05-24T16:53:48.671Z",
+  "methodsAttempted": [
+    {
+      "method": "site_search",
+      "domain": "ai.ufl.edu",
+      "resultCount": 1,
+      "notes": "Maintenance scanner flagged the already promoted official UF AI Guidelines page; review was restricted to that official URL."
+    }
+  ],
+  "noSourceEscalationCompleted": true,
+  "candidateIds": [
+    "sc-uf-ai-guidelines-20260524"
+  ],
+  "rejectionIds": [],
+  "summary": "Official-source maintenance review found the UF AI Guidelines page marked Version 2: 2026 and identified claim-level additions around disclosure, AI-detector reliability, and UF risk assessment for AI applications."
+}

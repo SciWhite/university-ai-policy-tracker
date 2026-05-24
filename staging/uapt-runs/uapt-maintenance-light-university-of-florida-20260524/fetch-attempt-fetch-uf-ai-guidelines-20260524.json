@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-university-of-florida-20260524",
+  "artifactType": "fetch_attempt",
+  "fetchAttemptId": "fetch-uf-ai-guidelines-20260524",
+  "sourceCandidateId": "sc-uf-ai-guidelines-20260524",
+  "sourceUrl": "https://ai.ufl.edu/guidelines/",
+  "finalUrl": "https://ai.ufl.edu/guidelines/",
+  "attemptedAt": "2026-05-24T16:53:48.671Z",
+  "fetchMode": "firecrawl",
+  "userAgentKind": "firecrawl",
+  "httpStatus": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "robotsAllowed": true,
+  "outcome": "success",
+  "durationMs": 0,
+  "contentHash": "db6280d0192b9ea4881f8a9f99cad28320861491291c3dd39b46bf939bcc90cf",
+  "normalizedTextStorageKey": "openclaw/uapt-maintenance-light-university-of-florida-20260524/snapshots/uf-ai-guidelines.md"
+}
