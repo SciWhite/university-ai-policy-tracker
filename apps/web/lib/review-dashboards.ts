@@ -46,6 +46,19 @@ export type SourceHealthStatus =
   | "login_wall"
   | "paywall"
   | "captcha_or_waf"
+  | "browser_verified"
+  | "blocked_by_client"
+  | "browser_timeout_unverified"
+  | "rejected_not_policy_evidence"
+  | "agent_verified_accessible"
+  | "agent_verified_empty"
+  | "agent_verified_404"
+  | "agent_verified_redirect_unrelated"
+  | "agent_blocked_login"
+  | "agent_blocked_robots"
+  | "agent_blocked_captcha_waf"
+  | "agent_fetch_failed"
+  | "agent_unresolved"
   | "firecrawl_verified"
   | "firecrawl_opened_no_content"
   | "firecrawl_failed"
@@ -72,6 +85,9 @@ interface FirecrawlSourceCheckDocument {
   summary?: Partial<
     Record<
       | "total"
+      | "browser_verified"
+      | "blocked_by_client"
+      | "browser_timeout_unverified"
       | "firecrawl_verified"
       | "firecrawl_failed"
       | "firecrawl_opened_no_content",
@@ -81,6 +97,16 @@ interface FirecrawlSourceCheckDocument {
 }
 
 interface FirecrawlSourceCheckRecord {
+  browserVerification?: {
+    checkedAt?: string;
+    checkedWith?: string;
+    contentExtracted?: boolean;
+    finalUrl?: string;
+    navigationError?: string;
+    note?: string;
+    textLength?: number;
+    title?: string;
+  };
   firecrawl?: {
     checkedAt?: string;
     contentExtracted?: boolean;
@@ -97,6 +123,9 @@ interface FirecrawlSourceCheckRecord {
   sourceTitle?: string;
   sourceUrl: string;
   status:
+    | "browser_verified"
+    | "blocked_by_client"
+    | "browser_timeout_unverified"
     | "firecrawl_verified"
     | "firecrawl_opened_no_content"
     | "firecrawl_failed";
@@ -108,11 +137,57 @@ interface FirecrawlSourceCheckIndex {
   recordsByUrl: Map<string, FirecrawlSourceCheckRecord>;
   requestPolicy?: string;
   summary: {
+    blockedByClient: number;
+    browserTimeoutUnverified: number;
+    browserVerified: number;
     failed: number;
     openedNoContent: number;
     total: number;
     verified: number;
   };
+}
+
+interface AgentSourceCheckDocument {
+  checkedWith?: string[];
+  generatedAt: string;
+  records: AgentSourceCheckRecord[];
+  requestPolicy: string;
+  schemaVersion: "uapt-source-health-agent-verification-v1";
+  summary?: Partial<Record<SourceHealthStatus | "total", number>>;
+}
+
+interface AgentSourceCheckRecord {
+  checkedAt?: string;
+  finalUrl?: string;
+  note?: string;
+  recommendedAction: string;
+  sourceCandidateId?: string;
+  sourceTitle?: string;
+  sourceUrl: string;
+  stagingRun?: string;
+  status: SourceHealthStatus;
+  textLength?: number;
+  title?: string;
+}
+
+interface AgentSourceCheckIndex {
+  checkedWith?: string[];
+  generatedAt?: string;
+  recordsByCandidateKey: Map<string, AgentSourceCheckRecord>;
+  recordsByUrl: Map<string, AgentSourceCheckRecord>;
+  requestPolicy?: string;
+  summary: AgentVerificationSummary;
+}
+
+export interface AgentVerificationSummary {
+  blocked: number;
+  fetchFailed: number;
+  total: number;
+  unresolved: number;
+  verified404: number;
+  verifiedAccessible: number;
+  verifiedEmpty: number;
+  verifiedRedirectUnrelated: number;
 }
 
 interface RankingUniversity {
@@ -134,6 +209,21 @@ interface RankingDocument {
   };
   universities: RankingUniversity[];
 }
+
+const REJECTED_DISCOVERY_REASONS = new Set([
+  "duplicate",
+  "event_or_news_only",
+  "generic_home_page",
+  "low_policy_specificity",
+  "no_ai_content",
+  "not_official",
+  "other",
+  "research_showcase_only"
+]);
+
+const LOGIN_ERROR_PATTERN = /\b(401|login|log in|sign in|signin|sso|okta|sharepoint|authentication|unauthorized)\b/i;
+const CAPTCHA_WAF_PATTERN = /\b(captcha|waf|cloudflare|radware|incapsula|managed challenge|access policy|denied crawler)\b/i;
+const EMPTY_CONTENT_PATTERN = /\b(no usable content|empty|opened.*no content|shell|selectable text extraction)\b/i;
 
 interface ArtifactMetadataCollector {
   dates: Set<string>;
@@ -236,6 +326,12 @@ export interface CoverageDashboardData {
 }
 
 export interface SourceHealthDashboardData {
+  agentVerification: {
+    checkedWith?: string[];
+    generatedAt?: string;
+    requestPolicy?: string;
+    summary: AgentVerificationSummary;
+  };
   apiPath: string;
   citation: ReturnType<typeof buildPublicApiCitation>;
   firecrawlVerification: {
@@ -243,6 +339,9 @@ export interface SourceHealthDashboardData {
     generatedAt?: string;
     requestPolicy?: string;
     summary: {
+      blockedByClient: number;
+      browserTimeoutUnverified: number;
+      browserVerified: number;
       failed: number;
       openedNoContent: number;
       total: number;
@@ -252,11 +351,14 @@ export interface SourceHealthDashboardData {
   generatedAt: string;
   rows: SourceHealthRow[];
   summary: {
+    actionableIssueCount: number;
     errorCount: number;
     publicSourceRows: number;
+    rejectedDiscoveryRows: number;
     stagingSourceRows: number;
     statusCounts: Record<SourceHealthStatus, number>;
     totalRows: number;
+    unresolvedAgentRows: number;
     warningCount: number;
   };
 }
@@ -275,6 +377,7 @@ export interface ReviewQueueData {
 }
 
 interface DashboardContext {
+  agentSourceChecks: AgentSourceCheckIndex;
   catalogUniversities: CatalogUniversity[];
   firecrawlSourceChecks: FirecrawlSourceCheckIndex;
   manifest: PublicReleaseManifest | undefined;
@@ -352,6 +455,12 @@ export async function getSourceHealthDashboardData(): Promise<SourceHealthDashbo
   const publicJsonUrl = getAbsoluteSiteUrl(apiPath);
 
   return {
+    agentVerification: {
+      checkedWith: context.agentSourceChecks.checkedWith,
+      generatedAt: context.agentSourceChecks.generatedAt,
+      requestPolicy: context.agentSourceChecks.requestPolicy,
+      summary: context.agentSourceChecks.summary
+    },
     apiPath,
     citation: buildPublicApiCitation({
       citationTitle: "University AI Policy Tracker source health dashboard",
@@ -370,13 +479,23 @@ export async function getSourceHealthDashboardData(): Promise<SourceHealthDashbo
     generatedAt,
     rows,
     summary: {
+      actionableIssueCount: rows.filter(isActionableSourceHealthRow).length,
       errorCount: rows.filter((row) => row.severity === "error").length,
       publicSourceRows: rows.filter((row) => row.scope === "public_release")
         .length,
+      rejectedDiscoveryRows: rows.filter(
+        (row) => row.status === "rejected_not_policy_evidence"
+      ).length,
       stagingSourceRows: rows.filter((row) => row.scope === "staging_run")
         .length,
       statusCounts,
       totalRows: rows.length,
+      unresolvedAgentRows: rows.filter(
+        (row) =>
+          row.status === "agent_unresolved" ||
+          row.status === "unknown_error" ||
+          row.status === "agent_fetch_failed"
+      ).length,
       warningCount: rows.filter((row) => row.severity === "warning").length
     }
   };
@@ -456,13 +575,15 @@ export function buildSourceHealthApiResponse(data: SourceHealthDashboardData) {
     citation: data.citation,
     limitations: [
       "Public ok status means the source is present in promoted snapshot metadata; it is not a live recrawl guarantee.",
-      "Firecrawl statuses are fresh source-health verification metadata for URLs that normal requests could not verify; they do not publish source text.",
-      "Firecrawl verified does not upgrade claim review state, source officialness, or canonical evidence status.",
-      "Firecrawl verification was run without login, paywall, CAPTCHA, WAF, robots, or other access-control bypass.",
+      "Agent, browser, and Firecrawl statuses are source-health verification metadata for URLs that normal requests could not verify; they do not publish source text.",
+      "Agent verified and Firecrawl verified statuses do not upgrade claim review state, source officialness, or canonical evidence status.",
+      "Agent verification must run without login, paywall, CAPTCHA, WAF, robots, or other access-control bypass.",
+      "Rejected discovery candidates that are not policy evidence are separated from actionable source-access repair.",
       "Staging source health is planning metadata and does not publish canonical claims.",
       NO_ADVICE_BOUNDARY
     ],
     data: {
+      agentVerification: data.agentVerification,
       firecrawlVerification: data.firecrawlVerification,
       summary: data.summary,
       rows: data.rows
@@ -511,15 +632,27 @@ async function getDashboardContext(): Promise<DashboardContext> {
 
 async function buildDashboardContext(): Promise<DashboardContext> {
   const repoRoot = await findRepoRoot();
-  const [dataset, ranking, manifest, firecrawlSourceChecks] = await Promise.all([
+  const [
+    dataset,
+    ranking,
+    manifest,
+    firecrawlSourceChecks,
+    agentSourceChecks
+  ] = await Promise.all([
     getStagedPublicDataset(),
     readJsonFile<RankingDocument>(path.join(repoRoot, QS_2026_TOP_100)),
     readPublicReleaseManifest(repoRoot),
-    readFirecrawlSourceChecks(repoRoot)
+    readFirecrawlSourceChecks(repoRoot),
+    readAgentSourceChecks(repoRoot)
   ]);
-  const stagingRuns = await buildStagingRunSummaries(repoRoot, manifest);
+  const stagingRuns = await buildStagingRunSummaries(
+    repoRoot,
+    manifest,
+    agentSourceChecks
+  );
 
   return {
+    agentSourceChecks,
     catalogUniversities: dataset.catalogUniversities,
     firecrawlSourceChecks,
     manifest,
@@ -598,7 +731,8 @@ function buildCoverageRows(context: DashboardContext): CoverageRow[] {
 
 async function buildStagingRunSummaries(
   repoRoot: string,
-  manifest: PublicReleaseManifest | undefined
+  manifest: PublicReleaseManifest | undefined,
+  agentSourceChecks: AgentSourceCheckIndex
 ): Promise<StagingRunSummary[]> {
   const promoted = new Set(
     (manifest?.includeStagedArtifactDirectories ?? []).map((directory) =>
@@ -625,6 +759,7 @@ async function buildStagingRunSummaries(
       summaries.push(
         await summarizeStagingRun({
           absoluteDirectory,
+          agentSourceChecks,
           jsonFiles,
           promoted: promoted.has(path.normalize(relativeDirectory)),
           relativeDirectory
@@ -640,6 +775,7 @@ async function buildStagingRunSummaries(
 
 async function summarizeStagingRun(input: {
   absoluteDirectory: string;
+  agentSourceChecks: AgentSourceCheckIndex;
   jsonFiles: string[];
   promoted: boolean;
   relativeDirectory: string;
@@ -687,7 +823,8 @@ async function summarizeStagingRun(input: {
 
   const sourceHealthRows = buildStagingSourceHealthRows(
     input.relativeDirectory,
-    validArtifacts
+    validArtifacts,
+    input.agentSourceChecks
   );
 
   return {
@@ -727,21 +864,32 @@ async function summarizeStagingRun(input: {
 function buildSourceHealthRows(context: DashboardContext): SourceHealthRow[] {
   const publicRows = context.publicSummaries.flatMap((summary) =>
     summary.officialSources.map((source) => {
+      const agentCheck = context.agentSourceChecks.recordsByUrl.get(
+        normalizeUrl(source.sourceUrl)
+      );
       const firecrawlCheck = context.firecrawlSourceChecks.recordsByUrl.get(
         normalizeUrl(source.sourceUrl)
       );
-      const status: SourceHealthStatus = firecrawlCheck?.status ?? "ok";
+      const status: SourceHealthStatus =
+        agentCheck?.status ?? firecrawlCheck?.status ?? "ok";
 
       return {
         entitySlug: summary.entity.slug,
-        finalUrl: source.finalUrl,
+        finalUrl:
+          agentCheck?.finalUrl ??
+          firecrawlCheck?.browserVerification?.finalUrl ??
+          source.finalUrl,
         lastCheckedAt:
+          agentCheck?.checkedAt ??
+          firecrawlCheck?.browserVerification?.checkedAt ??
           firecrawlCheck?.firecrawl?.checkedAt ??
           source.retrievedAt ??
           summary.lastCheckedAt,
-        note: firecrawlCheck
-          ? getFirecrawlSourceHealthNote(firecrawlCheck)
-          : "Promoted source attribution is present with snapshot metadata. This is not a live recrawl guarantee.",
+        note: agentCheck
+          ? getAgentSourceHealthNote(agentCheck)
+          : firecrawlCheck
+            ? getFirecrawlSourceHealthNote(firecrawlCheck)
+            : "Promoted source attribution is present with snapshot metadata. This is not a live recrawl guarantee.",
         scope: "public_release" as const,
         severity: getSourceHealthSeverity(status),
         sourceTitle: source.citationTitle,
@@ -767,7 +915,8 @@ function buildSourceHealthRows(context: DashboardContext): SourceHealthRow[] {
 
 function buildStagingSourceHealthRows(
   directory: string,
-  artifacts: OpenClawStagedArtifact[]
+  artifacts: OpenClawStagedArtifact[],
+  agentSourceChecks: AgentSourceCheckIndex
 ): SourceHealthRow[] {
   const fetches = artifacts.filter(
     (artifact): artifact is StagedFetchAttempt =>
@@ -794,7 +943,11 @@ function buildStagingSourceHealthRows(
     const relatedFetches = fetchesByCandidate.get(source.sourceCandidateId) ?? [];
     const relatedSnapshots =
       snapshotsByCandidate.get(source.sourceCandidateId) ?? [];
-    const status = getSourceHealthStatus(
+    const agentCheck =
+      agentSourceChecks.recordsByCandidateKey.get(
+        getAgentCandidateKey(directory, source.sourceCandidateId)
+      ) ?? agentSourceChecks.recordsByUrl.get(normalizeUrl(source.sourceUrl));
+    const status = agentCheck?.status ?? getSourceHealthStatus(
       source,
       relatedFetches,
       relatedSnapshots
@@ -803,15 +956,18 @@ function buildStagingSourceHealthRows(
 
     return {
       entitySlug: source.entitySlug,
-      finalUrl: source.finalUrl,
+      finalUrl: agentCheck?.finalUrl ?? source.finalUrl,
       lastCheckedAt:
+        agentCheck?.checkedAt ??
         source.verifiedAt ??
         latestIso([
           ...relatedFetches.map((fetch) => fetch.attemptedAt),
           ...relatedSnapshots.map((snapshot) => snapshot.fetchedAt)
         ]) ??
         source.discoveredAt,
-      note: getSourceHealthNote(status, source, relatedFetches),
+      note: agentCheck
+        ? getAgentSourceHealthNote(agentCheck)
+        : getSourceHealthNote(status, source, relatedFetches),
       scope: "staging_run",
       severity,
       sourceTitle: source.sourceTitle,
@@ -828,6 +984,11 @@ function getSourceHealthStatus(
   fetches: StagedFetchAttempt[],
   snapshots: StagedSourceSnapshot[]
 ): SourceHealthStatus {
+  const rejectedStatus = getRejectedSourceHealthStatus(source.rejectionReason);
+  if (source.verificationStatus === "rejected" && rejectedStatus) {
+    return rejectedStatus;
+  }
+
   const firecrawlFetches = fetches.filter(
     (fetch) => fetch.fetchMode === "firecrawl" || fetch.userAgentKind === "firecrawl"
   );
@@ -851,21 +1012,36 @@ function getSourceHealthStatus(
     return "firecrawl_failed";
   }
 
+  if (hasFetchError(fetches, LOGIN_ERROR_PATTERN)) return "agent_blocked_login";
+  if (hasFetchError(fetches, CAPTCHA_WAF_PATTERN)) {
+    return "agent_blocked_captcha_waf";
+  }
+  if (hasFetchError(fetches, EMPTY_CONTENT_PATTERN)) return "agent_verified_empty";
+
   if (
     source.rejectionReason === "robots_disallowed" ||
     fetches.some((fetch) => fetch.robotsAllowed === false) ||
     snapshots.some((snapshot) => snapshot.robotsAllowed === false)
   ) {
-    return "robots_blocked";
+    return "agent_blocked_robots";
   }
-  if (source.rejectionReason === "login_required") return "login_wall";
+  if (source.rejectionReason === "login_required") return "agent_blocked_login";
   if (source.rejectionReason === "paywall") return "paywall";
-  if (source.rejectionReason === "captcha") return "captcha_or_waf";
+  if (source.rejectionReason === "captcha") return "agent_blocked_captcha_waf";
   if (
     source.rejectionReason === "stale_404" ||
     fetches.some((fetch) => fetch.httpStatus === 404)
   ) {
-    return "not_found";
+    return "agent_verified_404";
+  }
+  if (source.rejectionReason === "redirect_unrelated") {
+    return "agent_verified_redirect_unrelated";
+  }
+  if (
+    source.rejectionReason === "http_error" ||
+    source.rejectionReason === "inaccessible"
+  ) {
+    return "agent_fetch_failed";
   }
   if (fetches.some((fetch) => fetch.httpStatus === 403)) return "forbidden";
   if (
@@ -882,15 +1058,66 @@ function getSourceHealthStatus(
     return "ok";
   }
   if (
+    fetches.some(
+      (fetch) =>
+        fetch.outcome === "blocked" ||
+        fetch.outcome === "error" ||
+        fetch.outcome === "retry_recommended"
+    )
+  ) {
+    return "agent_fetch_failed";
+  }
+  if (
     source.verificationStatus === "blocked" ||
     source.verificationStatus === "inaccessible" ||
     source.verificationStatus === "needs_browser" ||
-    fetches.some((fetch) => fetch.outcome === "blocked" || fetch.outcome === "error")
+    source.verificationStatus === "skipped" ||
+    source.verificationStatus === "unknown" ||
+    source.verificationStatus === "discovered"
   ) {
-    return "unknown_error";
+    return "agent_unresolved";
   }
 
   return "unknown_error";
+}
+
+function getRejectedSourceHealthStatus(
+  rejectionReason: string | undefined
+): SourceHealthStatus | undefined {
+  if (!rejectionReason) return undefined;
+  if (REJECTED_DISCOVERY_REASONS.has(rejectionReason)) {
+    return "rejected_not_policy_evidence";
+  }
+  if (rejectionReason === "stale_404") return "agent_verified_404";
+  if (rejectionReason === "redirect_unrelated") {
+    return "agent_verified_redirect_unrelated";
+  }
+  if (rejectionReason === "login_required") return "agent_blocked_login";
+  if (rejectionReason === "robots_disallowed") return "agent_blocked_robots";
+  if (rejectionReason === "captcha") return "agent_blocked_captcha_waf";
+  if (rejectionReason === "paywall") return "paywall";
+  if (rejectionReason === "http_error" || rejectionReason === "inaccessible") {
+    return "agent_fetch_failed";
+  }
+  return undefined;
+}
+
+function hasFetchError(
+  fetches: StagedFetchAttempt[],
+  pattern: RegExp
+): boolean {
+  return fetches.some((fetch) =>
+    pattern.test(
+      [
+        fetch.errorReason,
+        fetch.contentType,
+        fetch.outcome,
+        fetch.httpStatus?.toString()
+      ]
+        .filter(Boolean)
+        .join(" ")
+    )
+  );
 }
 
 function getSourceHealthSeverity(
@@ -902,6 +1129,9 @@ function getSourceHealthSeverity(
     status === "paywall" ||
     status === "captcha_or_waf" ||
     status === "forbidden" ||
+    status === "agent_blocked_login" ||
+    status === "agent_blocked_robots" ||
+    status === "agent_blocked_captcha_waf" ||
     status === "firecrawl_failed"
   ) {
     return "error";
@@ -910,7 +1140,14 @@ function getSourceHealthSeverity(
     status === "not_found" ||
     status === "unknown_error" ||
     status === "changed_hash" ||
-    status === "firecrawl_opened_no_content"
+    status === "agent_fetch_failed" ||
+    status === "agent_unresolved" ||
+    status === "agent_verified_empty" ||
+    status === "agent_verified_404" ||
+    status === "agent_verified_redirect_unrelated" ||
+    status === "firecrawl_opened_no_content" ||
+    status === "blocked_by_client" ||
+    status === "browser_timeout_unverified"
   ) {
     return "warning";
   }
@@ -923,6 +1160,56 @@ function getSourceHealthNote(
   fetches: StagedFetchAttempt[]
 ): string {
   if (status === "ok") return "Validated staging source candidate has usable fetch or snapshot metadata.";
+  if (status === "rejected_not_policy_evidence") {
+    return (
+      source.verificationNotes ??
+      "Rejected discovery candidate is not policy evidence; exclude from actionable source-health repair."
+    );
+  }
+  if (status === "agent_verified_accessible") {
+    return "Agent verification confirmed this official URL opens with readable content. This does not upgrade claim review state or source officialness.";
+  }
+  if (status === "agent_verified_empty") {
+    return "Agent verification opened the URL but did not extract readable policy content; keep out of claim evidence unless another official source is found.";
+  }
+  if (status === "agent_verified_404") {
+    return "Agent verification confirmed a 404 or stale public route; use another official source if this candidate is needed.";
+  }
+  if (status === "agent_verified_redirect_unrelated") {
+    return "Agent verification confirmed the URL redirects away from the intended policy source.";
+  }
+  if (status === "agent_blocked_login") {
+    return "Agent verification reached a login or authentication boundary; do not bypass access controls.";
+  }
+  if (status === "agent_blocked_robots") {
+    return "Agent verification found robots restrictions; do not bypass robots policy.";
+  }
+  if (status === "agent_blocked_captcha_waf") {
+    return "Agent verification reached CAPTCHA, WAF, or anti-bot protection; do not bypass access controls.";
+  }
+  if (status === "agent_fetch_failed") {
+    const firstError = fetches.find((fetch) => fetch.errorReason)?.errorReason;
+    return (
+      firstError ??
+      source.verificationNotes ??
+      "Agent verification could not fetch readable content from this source."
+    );
+  }
+  if (status === "agent_unresolved") {
+    return (
+      source.verificationNotes ??
+      "Source still needs automated verification because current metadata is inconclusive."
+    );
+  }
+  if (status === "browser_verified") {
+    return "Browser verification confirmed this official URL opens with readable content. This does not upgrade claim review state or source officialness.";
+  }
+  if (status === "blocked_by_client") {
+    return "Browser verification hit client-side blocking; treat this as a source-health warning, not proof that the official source is down.";
+  }
+  if (status === "browser_timeout_unverified") {
+    return "Browser verification timed out or returned no readable content; keep this as unverified maintenance metadata until another compliant check succeeds.";
+  }
   if (status === "firecrawl_verified") {
     return "Firecrawl extracted source content for maintenance planning only. This does not publish canonical claims or upgrade review state.";
   }
@@ -958,12 +1245,43 @@ function getSourceHealthNote(
 
 function getFirecrawlSourceHealthNote(check: FirecrawlSourceCheckRecord): string {
   const title = check.firecrawl?.title ? ` Title: ${check.firecrawl.title}.` : "";
+  const browserTitle = check.browserVerification?.title
+    ? ` Title: ${check.browserVerification.title}.`
+    : "";
+  const browserFinalUrl = check.browserVerification?.finalUrl
+    ? ` Final URL: ${check.browserVerification.finalUrl}.`
+    : "";
+  const browserTextLength =
+    typeof check.browserVerification?.textLength === "number"
+      ? ` Readable text length: ${check.browserVerification.textLength}.`
+      : "";
+  const browserError = check.browserVerification?.navigationError
+    ? ` Browser error: ${check.browserVerification.navigationError}.`
+    : "";
   const originalStatus = check.originalHttpStatus
     ? ` Normal request status: ${check.originalHttpStatus}.`
     : "";
   const firecrawlStatus = check.firecrawl?.metadataStatusCode
     ? ` Firecrawl status: ${check.firecrawl.metadataStatusCode}.`
     : "";
+
+  if (check.status === "browser_verified") {
+    return (
+      `Browser verification confirmed this official URL opens with readable content after Firecrawl or normal HTTP was blocked or inconclusive.${originalStatus}${browserFinalUrl}${browserTextLength}${browserTitle}`
+    );
+  }
+
+  if (check.status === "blocked_by_client") {
+    return (
+      `Browser verification was blocked by the current client or browser profile. Keep as a source-health warning, not a source-down finding.${originalStatus}${browserError}${browserTitle}`
+    );
+  }
+
+  if (check.status === "browser_timeout_unverified") {
+    return (
+      `Browser verification timed out or returned no readable content. Keep this URL in the manual or alternate-source follow-up queue.${originalStatus}${browserError}${browserTitle}`
+    );
+  }
 
   if (check.status === "firecrawl_verified") {
     return (
@@ -981,6 +1299,16 @@ function getFirecrawlSourceHealthNote(check: FirecrawlSourceCheckRecord): string
     `Firecrawl could not verify this URL. ${check.recommendedAction}${originalStatus}${firecrawlStatus}` +
     (check.firecrawl?.error ? ` Error: ${check.firecrawl.error}` : "")
   );
+}
+
+function getAgentSourceHealthNote(check: AgentSourceCheckRecord): string {
+  const finalUrl = check.finalUrl ? ` Final URL: ${check.finalUrl}.` : "";
+  const textLength =
+    typeof check.textLength === "number"
+      ? ` Readable text length: ${check.textLength}.`
+      : "";
+  const title = check.title ? ` Title: ${check.title}.` : "";
+  return `${check.note ?? check.recommendedAction}${finalUrl}${textLength}${title}`;
 }
 
 function getCoverageRecommendedAction(
@@ -1093,6 +1421,19 @@ async function readFirecrawlSourceChecks(
       ),
       requestPolicy: document.requestPolicy,
       summary: {
+        blockedByClient:
+          document.summary?.blocked_by_client ??
+          document.records.filter((record) => record.status === "blocked_by_client")
+            .length,
+        browserTimeoutUnverified:
+          document.summary?.browser_timeout_unverified ??
+          document.records.filter(
+            (record) => record.status === "browser_timeout_unverified"
+          ).length,
+        browserVerified:
+          document.summary?.browser_verified ??
+          document.records.filter((record) => record.status === "browser_verified")
+            .length,
         failed:
           document.summary?.firecrawl_failed ??
           document.records.filter((record) => record.status === "firecrawl_failed")
@@ -1114,6 +1455,9 @@ async function readFirecrawlSourceChecks(
     return {
       recordsByUrl: new Map(),
       summary: {
+        blockedByClient: 0,
+        browserTimeoutUnverified: 0,
+        browserVerified: 0,
         failed: 0,
         openedNoContent: 0,
         total: 0,
@@ -1121,6 +1465,75 @@ async function readFirecrawlSourceChecks(
       }
     };
   }
+}
+
+async function readAgentSourceChecks(
+  repoRoot: string
+): Promise<AgentSourceCheckIndex> {
+  const file = path.join(
+    repoRoot,
+    "data",
+    "source-health",
+    "agent-verification-latest.json"
+  );
+
+  try {
+    const document = await readJsonFile<AgentSourceCheckDocument>(file);
+    const recordsByCandidateKey = new Map<string, AgentSourceCheckRecord>();
+    const recordsByUrl = new Map<string, AgentSourceCheckRecord>();
+
+    for (const record of document.records) {
+      recordsByUrl.set(normalizeUrl(record.sourceUrl), record);
+      if (record.stagingRun && record.sourceCandidateId) {
+        recordsByCandidateKey.set(
+          getAgentCandidateKey(record.stagingRun, record.sourceCandidateId),
+          record
+        );
+      }
+    }
+
+    return {
+      checkedWith: document.checkedWith,
+      generatedAt: document.generatedAt,
+      recordsByCandidateKey,
+      recordsByUrl,
+      requestPolicy: document.requestPolicy,
+      summary: summarizeAgentSourceChecks(document.records)
+    };
+  } catch {
+    return {
+      recordsByCandidateKey: new Map(),
+      recordsByUrl: new Map(),
+      summary: summarizeAgentSourceChecks([])
+    };
+  }
+}
+
+function summarizeAgentSourceChecks(
+  records: AgentSourceCheckRecord[]
+): AgentVerificationSummary {
+  const statusCounts = countStatuses(records);
+  return {
+    blocked:
+      statusCounts.agent_blocked_captcha_waf +
+      statusCounts.agent_blocked_login +
+      statusCounts.agent_blocked_robots +
+      statusCounts.paywall,
+    fetchFailed: statusCounts.agent_fetch_failed,
+    total: records.length,
+    unresolved: statusCounts.agent_unresolved + statusCounts.unknown_error,
+    verified404: statusCounts.agent_verified_404,
+    verifiedAccessible: statusCounts.agent_verified_accessible,
+    verifiedEmpty: statusCounts.agent_verified_empty,
+    verifiedRedirectUnrelated: statusCounts.agent_verified_redirect_unrelated
+  };
+}
+
+function getAgentCandidateKey(
+  stagingRun: string,
+  sourceCandidateId: string
+): string {
+  return `${path.normalize(stagingRun)}::${sourceCandidateId}`;
 }
 
 async function safeReadDir(directory: string) {
@@ -1223,6 +1636,18 @@ function countStatuses<T extends { status: SourceHealthStatus }>(
   rows: T[]
 ): Record<SourceHealthStatus, number> {
   const initial: Record<SourceHealthStatus, number> = {
+    agent_blocked_captcha_waf: 0,
+    agent_blocked_login: 0,
+    agent_blocked_robots: 0,
+    agent_fetch_failed: 0,
+    agent_unresolved: 0,
+    agent_verified_404: 0,
+    agent_verified_accessible: 0,
+    agent_verified_empty: 0,
+    agent_verified_redirect_unrelated: 0,
+    blocked_by_client: 0,
+    browser_timeout_unverified: 0,
+    browser_verified: 0,
     captcha_or_waf: 0,
     changed_hash: 0,
     firecrawl_failed: 0,
@@ -1234,6 +1659,7 @@ function countStatuses<T extends { status: SourceHealthStatus }>(
     ok: 0,
     paywall: 0,
     redirected: 0,
+    rejected_not_policy_evidence: 0,
     robots_blocked: 0,
     unknown_error: 0
   };
@@ -1241,6 +1667,11 @@ function countStatuses<T extends { status: SourceHealthStatus }>(
   for (const row of rows) initial[row.status] += 1;
 
   return initial;
+}
+
+function isActionableSourceHealthRow(row: SourceHealthRow): boolean {
+  if (row.status === "rejected_not_policy_evidence") return false;
+  return row.severity === "error" || row.severity === "warning";
 }
 
 function groupBy<T>(values: T[], getKey: (value: T) => string): Map<string, T[]> {

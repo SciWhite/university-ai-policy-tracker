@@ -11,7 +11,7 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const title = "Recent Changes | University AI Policy Tracker";
 const description =
-  "Recent source checks and policy-change records with last checked dates, last changed dates, review states, and versioned public JSON links.";
+  "Recent tracker release diffs with newly extracted claims, comparable policy-text changes, source snapshot changes, review states, and versioned public JSON links.";
 
 export const dynamic = "force-static";
 export const revalidate = false;
@@ -49,30 +49,30 @@ export default async function ChangesPage() {
     <main className="page-shell page-shell--wide">
       <section className="hero">
         <p className="kicker">Changes</p>
-        <h1>Source checks and policy record freshness</h1>
+        <h1>Tracker release changes and source freshness</h1>
         <p className="lead">
-          Release-to-release claim and evidence diffs for public university AI
-          policy records, with source URLs, snapshot hashes, review states, and
-          versioned JSON.
+          Release-to-release tracker diffs for public university AI policy
+          records. Newly extracted claims and source snapshot changes are
+          separated from comparable policy-text changes.
         </p>
       </section>
 
       <section className="metrics-grid" aria-label="Recent changes summary">
         <div>
           <span>{changedRecords.length}</span>
-          <p>records changed in latest release</p>
+          <p>records with tracker diff rows</p>
         </div>
         <div>
-          <span>{releaseDiff.changeCounts.added}</span>
-          <p>added diff rows</p>
+          <span>{releaseDiff.changeCounts.policyTextChanged}</span>
+          <p>comparable policy-text changes</p>
         </div>
         <div>
-          <span>{releaseDiff.changeCounts.removed}</span>
-          <p>removed diff rows</p>
+          <span>{releaseDiff.changeCounts.newlyExtractedClaims}</span>
+          <p>newly extracted claims</p>
         </div>
         <div>
-          <span>{releaseDiff.changeCounts.modified}</span>
-          <p>modified diff rows</p>
+          <span>{releaseDiff.changeCounts.sourceSnapshotChanged}</span>
+          <p>source snapshot changes</p>
         </div>
       </section>
 
@@ -81,23 +81,24 @@ export default async function ChangesPage() {
           <h2>What changed means</h2>
           <p>
             A release diff compares the current promoted claim/evidence snapshot
-            with the previous public release. It does not publish full source
-            page text.
+            with the previous public release. A newly extracted claim is not
+            necessarily newly published by the university.
           </p>
         </article>
         <article className="answer-card">
-          <h2>What checked means</h2>
+          <h2>What source hash means</h2>
           <p>
-            A checked date records source-review freshness. Open the record page
-            and JSON before citing a current institutional policy statement.
+            A changed snapshot hash means the same source URL produced different
+            tracker content. It may reflect policy text, page layout, navigation,
+            or metadata.
           </p>
         </article>
         <article className="answer-card">
           <h2>How agents should use it</h2>
           <p>
-            Use the latest diff JSON to identify added, removed, or modified
-            claim/evidence rows, then retrieve canonical university pages for
-            citation context.
+            Use semantic fields such as policyTextChanged,
+            newlyExtractedClaims, and sourceSnapshotChanged before describing a
+            record as a policy update.
           </p>
         </article>
       </section>
@@ -114,7 +115,7 @@ export default async function ChangesPage() {
           url={recentChangesUrl}
         />
         <ApiEndpointRow
-          description="Latest release-to-release claim/evidence diff with added, removed, and modified rows."
+          description="Latest release-to-release tracker diff with semantic categories for policy text, extracted claims, evidence, and source snapshots."
           label="Latest release diff JSON"
           path={latestDiffPath}
           url={latestDiffUrl}
@@ -154,8 +155,9 @@ export default async function ChangesPage() {
                     <>
                       <StateLabel reviewState={record.reviewState} />
                       <MetaLabel label="Diff">
-                        +{record.added} / -{record.removed} / ~
-                        {record.modified}
+                        policy {record.policyTextChanged} / extracted{" "}
+                        {record.newlyExtractedClaims} / source{" "}
+                        {record.sourceSnapshotChanged}
                       </MetaLabel>
                       <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
                       <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
@@ -206,7 +208,7 @@ function getChangeSummary(record: ChangeRecord): string {
     ? ` The latest tracked changed date is ${formatDate(record.lastChangedAt)}.`
     : " No changed date has been published yet.";
   const diff = record.diffRows.length
-    ? ` Latest diff rows: +${record.added}, -${record.removed}, ~${record.modified}.`
+    ? ` Latest tracker diff: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
     : " No claim/evidence changes are recorded for the latest release.";
 
   return `${record.name} has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;

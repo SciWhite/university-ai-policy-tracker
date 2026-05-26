@@ -46,12 +46,12 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
     const changedCount = releaseRecords.filter((record) => record.diffRows.length).length;
 
     return {
-      title: `University AI Policy Changes: ${releaseId}`,
-      description: `${changedCount} university AI policy records changed in ${releaseId}.`,
+      title: `University AI Policy Tracker Release Diff: ${releaseId}`,
+      description: `${changedCount} university tracker records have release diff rows in ${releaseId}.`,
       alternates: { canonical },
       openGraph: {
-        title: `University AI Policy Changes: ${releaseId}`,
-        description: `${changedCount} university AI policy records changed in ${releaseId}.`,
+        title: `University AI Policy Tracker Release Diff: ${releaseId}`,
+        description: `${changedCount} university tracker records have release diff rows in ${releaseId}.`,
         url: canonical,
         type: "article"
       }
@@ -61,10 +61,10 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
   const record = await getChangeRecordBySlug(releaseId);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
   const title = record
-    ? `${record.name} AI Policy Change Log | University AI Policy Tracker`
+    ? `${record.name} AI Policy Tracker Release Diff | University AI Policy Tracker`
     : "Change record not found";
   const description = record
-    ? `${record.name} AI policy source checks, source snapshot hashes, claim review state, and diff-style evidence preview.`
+    ? `${record.name} tracker release diff with semantic categories for policy text, newly extracted claims, evidence, and source snapshots.`
     : "University AI Policy Tracker change record not found.";
 
   return {
@@ -98,9 +98,8 @@ export default async function ChangeDetailPage({
           <p className="entity-header__eyebrow">Change log</p>
           <h1>{record.name}</h1>
           <p className="entity-header__summary">
-            Release-to-release claim and evidence diff with source URLs,
-            snapshot hashes, review state, and short original-language evidence
-            snippets.
+            Release-to-release tracker diff with separate policy-text,
+            newly-extracted claim, evidence, and source snapshot categories.
           </p>
           <div className="entity-header__metadata">
             <StateLabel reviewState={record.reviewState} />
@@ -139,11 +138,37 @@ export default async function ChangeDetailPage({
           >
             <p>{getSummaryText(record)}</p>
             <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
+            <p className="notice-card">
+              Newly extracted claims are tracker additions and are not
+              necessarily newly published by the university. Source snapshot
+              changes show hash changes for the same source URL and are not by
+              themselves policy changes.
+            </p>
           </ReferenceBox>
 
           <ReferenceBox
-            description="Unified diff generated from the previous and current public release claim/evidence snapshots."
-            title="Claim/evidence diff"
+            description="Semantic classification for this release diff."
+            title="Diff categories"
+          >
+            <div className="tag-row">
+              <MetaLabel label="Policy text">
+                {record.policyTextChanged}
+              </MetaLabel>
+              <MetaLabel label="Newly extracted">
+                {record.newlyExtractedClaims}
+              </MetaLabel>
+              <MetaLabel label="Evidence">{record.evidenceChanged}</MetaLabel>
+              <MetaLabel label="Source snapshots">
+                {record.sourceSnapshotChanged}
+              </MetaLabel>
+              <MetaLabel label="Source added">{record.sourceAdded}</MetaLabel>
+              <MetaLabel label="Source removed">{record.sourceRemoved}</MetaLabel>
+            </div>
+          </ReferenceBox>
+
+          <ReferenceBox
+            description="Unified tracker diff generated from the previous and current public release snapshots."
+            title="Release diff"
           >
             {record.diffLines.length ? (
               <DiffBlock
@@ -153,8 +178,8 @@ export default async function ChangeDetailPage({
               />
             ) : (
               <p className="notice-card">
-                No claim/evidence changes are recorded for this university in
-                the latest public release.
+                No tracker claim/evidence/source changes are recorded for this
+                university in the latest public release.
               </p>
             )}
           </ReferenceBox>
@@ -212,7 +237,7 @@ export default async function ChangeDetailPage({
                     <h3>{source.citationTitle}</h3>
                     <p className="muted">
                       {source.sourceType ?? "official source"}{" "}
-                      {source.retrievedAt ? `checked ${formatDate(source.retrievedAt)}` : ""}
+                      {formatSourceFreshness(source)}
                     </p>
                   </div>
                   <dl className="source-attribution-row__meta">
@@ -234,7 +259,7 @@ export default async function ChangeDetailPage({
         </div>
 
         <aside className="entity-sidebar">
-          <ReferenceBox title="Change record">
+          <ReferenceBox title="Diff record">
             <div className="tag-row">
               <MetaLabel label="Reviewed claims">
                 {record.reviewedClaimCount}
@@ -242,9 +267,15 @@ export default async function ChangeDetailPage({
               <MetaLabel label="Candidate claims">
                 {record.candidateClaimCount}
               </MetaLabel>
-              <MetaLabel label="Added">{record.added}</MetaLabel>
-              <MetaLabel label="Removed">{record.removed}</MetaLabel>
-              <MetaLabel label="Modified">{record.modified}</MetaLabel>
+              <MetaLabel label="Policy text">
+                {record.policyTextChanged}
+              </MetaLabel>
+              <MetaLabel label="Newly extracted">
+                {record.newlyExtractedClaims}
+              </MetaLabel>
+              <MetaLabel label="Source hash">
+                {record.sourceSnapshotChanged}
+              </MetaLabel>
             </div>
             <ul className="compact-list">
               <li>
@@ -272,44 +303,41 @@ function ReleaseOverviewPage({
   releaseId: string;
 }) {
   const changedRecords = records.filter((record) => record.diffRows.length > 0);
-  const added = changedRecords.reduce((total, record) => total + record.added, 0);
-  const removed = changedRecords.reduce(
-    (total, record) => total + record.removed,
-    0
-  );
-  const modified = changedRecords.reduce(
-    (total, record) => total + record.modified,
-    0
-  );
 
   return (
     <main className="page-shell page-shell--wide">
       <section className="hero">
         <p className="kicker">Release diff</p>
-        <h1>University AI Policy Changes: {releaseId}</h1>
+        <h1>University AI Policy Tracker Release Diff: {releaseId}</h1>
         <p className="lead">
-          Release-to-release claim and evidence changes. Full source-page text is
-          not published; diff rows use tracker claim metadata and short evidence
-          snippets.
+          Release-to-release tracker changes. Comparable policy-text changes,
+          newly extracted claims, and source snapshot changes are counted
+          separately.
         </p>
       </section>
 
       <section className="metrics-grid" aria-label="Release diff summary">
         <div>
           <span>{changedRecords.length}</span>
-          <p>changed records</p>
+          <p>records with tracker diff rows</p>
         </div>
         <div>
-          <span>{added}</span>
-          <p>added rows</p>
+          <span>
+            {changedRecords.reduce((total, record) => total + record.policyTextChanged, 0)}
+          </span>
+          <p>policy-text changes</p>
         </div>
         <div>
-          <span>{removed}</span>
-          <p>removed rows</p>
+          <span>
+            {changedRecords.reduce((total, record) => total + record.newlyExtractedClaims, 0)}
+          </span>
+          <p>newly extracted claims</p>
         </div>
         <div>
-          <span>{modified}</span>
-          <p>modified rows</p>
+          <span>
+            {changedRecords.reduce((total, record) => total + record.sourceSnapshotChanged, 0)}
+          </span>
+          <p>source snapshot changes</p>
         </div>
       </section>
 
@@ -324,7 +352,9 @@ function ReleaseOverviewPage({
               <div>
                 <h3>{record.name}</h3>
                 <p>
-                  +{record.added} / -{record.removed} / ~{record.modified}
+                  Policy text {record.policyTextChanged}; newly extracted{" "}
+                  {record.newlyExtractedClaims}; source snapshots{" "}
+                  {record.sourceSnapshotChanged}
                 </p>
               </div>
               <div className="tag-row">
@@ -349,8 +379,8 @@ function getSummaryText(record: ChangeRecord): string {
 
   const diff =
     record.diffRows.length > 0
-      ? ` Latest release diff: +${record.added}, -${record.removed}, ~${record.modified}.`
-      : " No claim/evidence changes are recorded in the latest public release.";
+      ? ` Latest tracker diff: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
+      : " No tracker diff rows are recorded in the latest public release.";
 
   return `${record.name} currently has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;
 }
@@ -372,4 +402,25 @@ function formatDate(value: string): string {
     dateStyle: "medium",
     timeZone: "UTC"
   }).format(new Date(value));
+}
+
+function formatTimestamp(value: string): string {
+  return new Intl.DateTimeFormat("en", {
+    dateStyle: "medium",
+    timeStyle: "short",
+    timeZone: "UTC"
+  }).format(new Date(value));
+}
+
+function formatSourceFreshness(source: {
+  retrievedAt?: string;
+  sourceLastModified?: string;
+  trackerCheckedAt?: string;
+}): string {
+  if (source.sourceLastModified) {
+    return `Source Last-Modified ${formatTimestamp(source.sourceLastModified)}`;
+  }
+
+  const checkedAt = source.trackerCheckedAt ?? source.retrievedAt;
+  return checkedAt ? `Tracker checked at ${formatTimestamp(checkedAt)}` : "";
 }

@@ -1,13 +1,16 @@
 {
   "schemaVersion": "uapt-source-health-firecrawl-v1",
-  "generatedAt": "2026-05-17T14:16:54.323Z",
-  "checkedWith": "firecrawl-v2-scrape",
-  "requestPolicy": "Fresh scrape with maxAge=0; no login, paywall, CAPTCHA, WAF, or robots bypass was attempted.",
+  "generatedAt": "2026-05-21T13:57:19Z",
+  "checkedWith": "firecrawl-v2-scrape + user-chrome-browser-verification",
+  "requestPolicy": "Fresh Firecrawl scrape with maxAge=0 plus user Chrome browser verification; no login, paywall, CAPTCHA, WAF, robots, or access-control bypass was attempted.",
   "summary": {
     "total": 159,
     "firecrawl_verified": 140,
-    "firecrawl_failed": 14,
-    "firecrawl_opened_no_content": 5
+    "firecrawl_failed": 0,
+    "firecrawl_opened_no_content": 0,
+    "browser_verified": 7,
+    "blocked_by_client": 5,
+    "browser_timeout_unverified": 7
   },
   "records": [
     {
@@ -212,7 +215,7 @@
     },
     {
       "sourceUrl": "https://cfr.annauniv.edu/",
-      "status": "firecrawl_failed",
+      "status": "browser_verified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "anna-university"
@@ -224,11 +227,20 @@
         "contentExtracted": false,
         "error": "DNS resolution failed for hostname \"cfr.annauniv.edu\". This means the domain name could not be translated to an IP address. Possible causes: (1) The domain name is misspelled (check for typos), (2) The domain does not exist or has expired, (3) The DNS servers are temporarily unavailable, or (4) The domain was recently registered and DNS has not propagated yet. Please verify the URL is correct and the website exists."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Downgrade the Firecrawl source-health finding; no source repair is required unless a later compliant check shows the official URL changed.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": true,
+        "finalUrl": "https://cfr.annauniv.edu/research/academics/index.php",
+        "note": "User Chrome opened the official Anna University Centre for Research site with readable content after Firecrawl reported DNS failure.",
+        "textLength": 3905,
+        "title": "Centre For Research"
+      }
     },
     {
       "sourceUrl": "https://cfr.annauniv.edu/research/announcements/Plagiarism-Policy.pdf",
-      "status": "firecrawl_failed",
+      "status": "blocked_by_client",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "anna-university"
@@ -240,11 +252,18 @@
         "contentExtracted": false,
         "error": "All scraping engines failed to retrieve content from this URL. Engines tried: [pdf]. This usually happens when: (1) The URL is invalid or the page doesn't exist (404), (2) The website is blocking automated access, (3) The website is down or unreachable, (4) The page requires authentication. Double check the URL is correct and accessible in a browser. If the issue persists, contact us at help@firecrawl.com with your request ID for investigation."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep as a client-blocked browser warning; verify with a clean browser profile or alternate compliant PDF check before declaring the source unreachable.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "net::ERR_BLOCKED_BY_CLIENT",
+        "note": "Browser reported net::ERR_BLOCKED_BY_CLIENT for the official PDF. Treat as local client or profile blocking, not proof that the official source is down."
+      }
     },
     {
       "sourceUrl": "https://cfr.annauniv.edu/research/announcements/Research_misconduct.pdf",
-      "status": "firecrawl_failed",
+      "status": "blocked_by_client",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "anna-university"
@@ -256,11 +275,18 @@
         "contentExtracted": false,
         "error": "All scraping engines failed to retrieve content from this URL. Engines tried: [pdf]. This usually happens when: (1) The URL is invalid or the page doesn't exist (404), (2) The website is blocking automated access, (3) The website is down or unreachable, (4) The page requires authentication. Double check the URL is correct and accessible in a browser. If the issue persists, contact us at help@firecrawl.com with your request ID for investigation."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep as a client-blocked browser warning; verify with a clean browser profile or alternate compliant PDF check before declaring the source unreachable.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "net::ERR_BLOCKED_BY_CLIENT",
+        "note": "Browser reported net::ERR_BLOCKED_BY_CLIENT for the official PDF. Treat as local client or profile blocking, not proof that the official source is down."
+      }
     },
     {
       "sourceUrl": "https://chat.iust.ac.ir/",
-      "status": "firecrawl_failed",
+      "status": "browser_timeout_unverified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "iran-university-of-science-and-technology"
@@ -272,7 +298,14 @@
         "contentExtracted": false,
         "error": "The URL failed to load in the browser with error code \"ERR_TIMED_OUT\". The connection timed out. The server is not responding or is too slow. Please verify the URL is correct and the website is accessible."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep in manual or alternate official URL follow-up; automation did not verify readable content.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "Timed out after 10000ms waiting for CDP command Page.navigate.",
+        "note": "Browser automation did not confirm readable content. Keep in manual or alternate official URL follow-up."
+      }
     },
     {
       "sourceUrl": "https://crl.u-paris.fr/charte-anti-plagiat",
@@ -436,7 +469,7 @@
     },
     {
       "sourceUrl": "https://ewww.gist.ac.kr/_prog/download/?d_type=1&file_realname=2020_%ED%95%99%EC%82%AC%ED%8E%B8%EB%9E%8C_%ED%95%99%EC%82%AC%EA%B3%BC%EC%A0%95.pdf.pdf&filename=20210528170809_00migsb3wy2dsw8kerjw8tw1czk4dz.pdf&func_gbn_cd=SMedia&site_dvs_cd=kr",
-      "status": "firecrawl_opened_no_content",
+      "status": "blocked_by_client",
       "originalHttpStatus": "200ERR",
       "entitySlugs": [
         "gwangju-institute-of-science-and-technology-gist"
@@ -450,7 +483,14 @@
         "proxyUsed": "basic",
         "contentExtracted": false
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep as a client-blocked browser warning; verify with a clean browser profile or alternate compliant PDF check before declaring the source unreachable.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "net::ERR_BLOCKED_BY_CLIENT",
+        "note": "Browser reported net::ERR_BLOCKED_BY_CLIENT for the official PDF download. Treat as local client or profile blocking, not proof that the official source is down."
+      }
     },
     {
       "sourceUrl": "https://genai.um.edu.mo/",
@@ -734,7 +774,7 @@
     },
     {
       "sourceUrl": "https://iauelearning.iau.edu.sa/storage/policyandrules/policies_for_the_use_of_artificial_intelligence_education_and_scientific_research_en.pdf",
-      "status": "firecrawl_failed",
+      "status": "browser_timeout_unverified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "imam-abdulrahman-bin-faisal-university-iau"
@@ -746,11 +786,18 @@
         "contentExtracted": false,
         "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep in manual or alternate official URL follow-up; automation did not verify readable content.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "Timed out after 10000ms waiting for CDP command Page.navigate.",
+        "note": "Browser automation did not confirm readable content. Keep in manual or alternate official URL follow-up."
+      }
     },
     {
       "sourceUrl": "https://iauelearning.iau.edu.sa/storage/policyandrules/policies_for_the_use_of_artificial_intelligence_education_and_scientific_research_students_en.pdf",
-      "status": "firecrawl_failed",
+      "status": "browser_timeout_unverified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "imam-abdulrahman-bin-faisal-university-iau"
@@ -762,7 +809,14 @@
         "contentExtracted": false,
         "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep in manual or alternate official URL follow-up; automation did not verify readable content.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "Timed out after 10000ms waiting for CDP command Page.navigate.",
+        "note": "Browser automation did not confirm readable content. Keep in manual or alternate official URL follow-up."
+      }
     },
     {
       "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-guidance",
@@ -866,7 +920,7 @@
     },
     {
       "sourceUrl": "https://intranet.ecu.edu.au/student/my-studies/academic-integrity/avoiding-academic-misconduct",
-      "status": "firecrawl_failed",
+      "status": "browser_verified",
       "originalHttpStatus": "403",
       "entitySlugs": [
         "edith-cowan-university"
@@ -878,7 +932,16 @@
         "contentExtracted": false,
         "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Downgrade the Firecrawl source-health finding; no source repair is required unless a later compliant check shows the official URL changed.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": true,
+        "finalUrl": "https://intranet.ecu.edu.au/student/my-studies/academic-integrity/avoiding-academic-misconduct",
+        "note": "User Chrome opened the official ECU page with readable content after normal HTTP returned 403 and Firecrawl timed out.",
+        "textLength": 10687,
+        "title": "ECU Intranet | Avoiding Academic Misconduct : Academic Integrity : My Studies : Student"
+      }
     },
     {
       "sourceUrl": "https://intranet.ecu.edu.au/student/my-studies/study-assistance/generative-ai-in-learning",
@@ -922,7 +985,7 @@
     },
     {
       "sourceUrl": "https://ithelp.uoguelph.ca/ai-guidelines",
-      "status": "firecrawl_failed",
+      "status": "browser_verified",
       "originalHttpStatus": "404",
       "entitySlugs": [
         "university-of-guelph"
@@ -934,11 +997,20 @@
         "contentExtracted": false,
         "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Downgrade the Firecrawl source-health finding; no source repair is required unless a later compliant check shows the official URL changed.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": true,
+        "finalUrl": "https://ithelp.uoguelph.ca/ai-guidelines",
+        "note": "User Chrome opened the official University of Guelph IT Help page with readable content; Computer Use visual inspection also confirmed the page tab was available.",
+        "textLength": 15214,
+        "title": "Information Security Guidelines for the Use of Generative Artificial Intelligence"
+      }
     },
     {
       "sourceUrl": "https://its.umich.edu/computing/ai",
-      "status": "firecrawl_failed",
+      "status": "browser_verified",
       "originalHttpStatus": "403",
       "entitySlugs": [
         "university-of-michigan-ann-arbor"
@@ -950,7 +1022,16 @@
         "contentExtracted": false,
         "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Downgrade the Firecrawl source-health finding; no source repair is required unless a later compliant check shows the official URL changed.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": true,
+        "finalUrl": "https://its.umich.edu/computing/ai",
+        "note": "User Chrome opened the official University of Michigan ITS AI page with readable content after normal HTTP returned 403 and Firecrawl timed out.",
+        "textLength": 4404,
+        "title": "ITS AI Services | U-M Information and Technology Services"
+      }
     },
     {
       "sourceUrl": "https://jwc.scu.edu.cn/info/1069/10518.htm",
@@ -1114,7 +1195,7 @@
     },
     {
       "sourceUrl": "https://nezarat.iut.ac.ir/fa/ai_tir1404",
-      "status": "firecrawl_failed",
+      "status": "browser_timeout_unverified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "isfahan-university-of-technology"
@@ -1126,11 +1207,18 @@
         "contentExtracted": false,
         "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep in manual or alternate official URL follow-up; automation did not verify readable content.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "Timed out after 10000ms waiting for CDP command Page.navigate.",
+        "note": "Browser automation did not confirm readable content. Keep in manual or alternate official URL follow-up."
+      }
     },
     {
       "sourceUrl": "https://oa.upm.es/91515/3/COMO_INTEGRAR_EN_LA_GU%C3%8DA_DOCENTE_EL_USO_DE_INTELIGENCIA_ARTIFICIAL.pdf",
-      "status": "firecrawl_failed",
+      "status": "browser_timeout_unverified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "universidad-politecnica-de-madrid-upm"
@@ -1142,11 +1230,18 @@
         "contentExtracted": false,
         "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep in manual or alternate official URL follow-up; automation did not verify readable content.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "Timed out after 10000ms waiting for CDP command Page.navigate.",
+        "note": "Browser automation did not confirm readable content. Keep in manual or alternate official URL follow-up."
+      }
     },
     {
       "sourceUrl": "https://oa.upm.es/91518/3/USO_ETICO_Y_RESPONSABLE_DE_LA_IA.pdf",
-      "status": "firecrawl_failed",
+      "status": "browser_timeout_unverified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "universidad-politecnica-de-madrid-upm"
@@ -1158,7 +1253,14 @@
         "contentExtracted": false,
         "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep in manual or alternate official URL follow-up; automation did not verify readable content.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "Timed out after 10000ms waiting for CDP command Page.navigate.",
+        "note": "Browser automation did not confirm readable content. Keep in manual or alternate official URL follow-up."
+      }
     },
     {
       "sourceUrl": "https://odoc.princeton.edu/about/official-deans-communications/2023/generative-ai-teaching-and-learning-fall-2023-faculty-and",
@@ -1222,7 +1324,7 @@
     },
     {
       "sourceUrl": "https://oit.gatech.edu/ai/genai",
-      "status": "firecrawl_failed",
+      "status": "browser_verified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "georgia-institute-of-technology"
@@ -1234,7 +1336,16 @@
         "contentExtracted": false,
         "error": "The scrape operation timed out before completing. This happens when a page takes too long to load, render, or process. Possible causes: (1) The website is slow or unresponsive, (2) The page has heavy JavaScript that takes time to execute, (3) The page is very large or has many resources to load, (4) Network latency is high. To fix this, try increasing the timeout parameter in your scrape request, or if using actions, ensure your selectors are correct and the page is ready before actions are executed."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Downgrade the Firecrawl source-health finding; no source repair is required unless a later compliant check shows the official URL changed.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": true,
+        "finalUrl": "https://oit.gatech.edu/ai/genai",
+        "note": "User Chrome opened the official Georgia Tech OIT page with readable content; Computer Use visual inspection also showed the page content.",
+        "textLength": 6623,
+        "title": "Generative AI | Office of Information Technology"
+      }
     },
     {
       "sourceUrl": "https://oit.gatech.edu/ai/guidance",
@@ -1478,7 +1589,7 @@
     },
     {
       "sourceUrl": "https://research.iut.ac.ir/fa/dgr/3238",
-      "status": "firecrawl_failed",
+      "status": "browser_timeout_unverified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "isfahan-university-of-technology"
@@ -1490,7 +1601,14 @@
         "contentExtracted": false,
         "error": "The URL failed to load in the browser with error code \"ERR_TIMED_OUT\". The connection timed out. The server is not responding or is too slow. Please verify the URL is correct and the website is accessible."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep in manual or alternate official URL follow-up; automation did not verify readable content.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "Timed out after 10000ms waiting for CDP command Page.navigate.",
+        "note": "Browser automation did not confirm readable content. Keep in manual or alternate official URL follow-up."
+      }
     },
     {
       "sourceUrl": "https://responsibleai.rice.edu/guidelines-resources-faculty-staff",
@@ -1895,7 +2013,7 @@
     },
     {
       "sourceUrl": "https://www.csu.edu.cn/style/bkssc.pdf",
-      "status": "firecrawl_opened_no_content",
+      "status": "blocked_by_client",
       "originalHttpStatus": "200ERR",
       "entitySlugs": [
         "central-south-university"
@@ -1909,11 +2027,18 @@
         "proxyUsed": "basic",
         "contentExtracted": false
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep as a client-blocked browser warning; verify with a clean browser profile or alternate compliant PDF check before declaring the source unreachable.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "net::ERR_BLOCKED_BY_CLIENT",
+        "note": "Browser reported net::ERR_BLOCKED_BY_CLIENT for the official PDF. Treat as local client or profile blocking, not proof that the official source is down."
+      }
     },
     {
       "sourceUrl": "https://www.csu.edu.cn/style/yjssc.pdf",
-      "status": "firecrawl_opened_no_content",
+      "status": "blocked_by_client",
       "originalHttpStatus": "200ERR",
       "entitySlugs": [
         "central-south-university"
@@ -1927,7 +2052,14 @@
         "proxyUsed": "basic",
         "contentExtracted": false
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Keep as a client-blocked browser warning; verify with a clean browser profile or alternate compliant PDF check before declaring the source unreachable.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": false,
+        "navigationError": "net::ERR_BLOCKED_BY_CLIENT",
+        "note": "Browser reported net::ERR_BLOCKED_BY_CLIENT for the official PDF. Treat as local client or profile blocking, not proof that the official source is down."
+      }
     },
     {
       "sourceUrl": "https://www.deakin.edu.au/about-deakin/why-deakin/generative-artificial-intelligence",
@@ -3071,7 +3203,7 @@
     },
     {
       "sourceUrl": "https://www2.unesp.br/portal#!/noticia/37970/unesp-estabelece-as-bases-para-discussao-sobre-uso-da-ia-na-universidade/",
-      "status": "firecrawl_opened_no_content",
+      "status": "browser_verified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "unesp"
@@ -3087,11 +3219,20 @@
         "title": "Unesp - Universidade Estadual Paulista - Portal",
         "note": "The content is loading and appears to lack visible policy, guidance, or other meaningful information."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Downgrade the Firecrawl source-health finding; no source repair is required unless a later compliant check shows the official URL changed.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": true,
+        "finalUrl": "https://www2.unesp.br/portal#!/noticias/v/id::37970/unesp-estabelece-as-bases-para-discussao-sobre-uso-da-ia-na-universidade/",
+        "note": "User Chrome resolved the UNESP hash route to a readable official news page after Firecrawl opened the shell without content.",
+        "textLength": 6352,
+        "title": "Noticias Unesp - Unesp - Universidade Estadual Paulista - Portal"
+      }
     },
     {
       "sourceUrl": "https://www2.unesp.br/sharer.php?noticia=38172",
-      "status": "firecrawl_opened_no_content",
+      "status": "browser_verified",
       "originalHttpStatus": "000ERR",
       "entitySlugs": [
         "unesp"
@@ -3107,7 +3248,16 @@
         "title": "Unesp - Universidade Estadual Paulista - Portal",
         "note": "The page is loading and contents are not visible."
       },
-      "recommendedAction": "Find an alternative official URL or mark this source as snapshot-only until a compliant recrawl succeeds."
+      "recommendedAction": "Downgrade the Firecrawl source-health finding; no source repair is required unless a later compliant check shows the official URL changed.",
+      "browserVerification": {
+        "checkedAt": "2026-05-21T13:57:19Z",
+        "checkedWith": "user-chrome-extension",
+        "contentExtracted": true,
+        "finalUrl": "https://www2.unesp.br/portal#!/noticias/v/id::38172/formacao-vai-orientar-comunidade-universitaria-sobre-o-uso-responsavel-de-sistemas-de-inteligencia-artificial-no-dia-a-dia-/",
+        "note": "User Chrome resolved the UNESP sharer URL to a readable official news page after Firecrawl opened the shell without content.",
+        "textLength": 8540,
+        "title": "Noticias Unesp - Unesp - Universidade Estadual Paulista - Portal"
+      }
     },
     {
       "sourceUrl": "https://xuefeng.sysu.edu.cn/gzzd/55430.htm",

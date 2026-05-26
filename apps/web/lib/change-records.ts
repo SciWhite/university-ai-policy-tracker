@@ -24,9 +24,11 @@ export interface DiffPreviewLine {
 export interface SourceChangeRecord {
   citationTitle: string;
   retrievedAt?: string;
+  sourceLastModified?: string;
   snapshotHash: string;
   sourceType?: string;
   sourceUrl: string;
+  trackerCheckedAt?: string;
 }
 
 export interface ClaimChangeRecord {
@@ -45,26 +47,34 @@ export interface ChangeRecord {
   added: number;
   candidateClaimCount: number;
   canonicalUrl: string;
+  claimMetadataChanged: number;
   changeUrl: string;
   claimChanges: ClaimChangeRecord[];
   claimCount: number;
   confidence?: number;
   diffLines: DiffPreviewLine[];
   diffRows: ReleaseDiffRow[];
+  evidenceChanged: number;
   lastChangedAt?: string;
   lastCheckedAt?: string;
   modified: number;
   name: string;
+  newlyExtractedClaims: number;
   previousReleaseId?: string;
+  policyTextChanged: number;
   publicJsonUrl: string;
   releaseId?: string;
   removed: number;
   reviewState: ClaimReviewState;
   reviewedClaimCount: number;
   slug: string;
+  sourceAdded: number;
   sourceChanges: SourceChangeRecord[];
   sourceCount: number;
+  sourceRemoved: number;
+  sourceSnapshotChanged: number;
   summary: string;
+  trackerRemovedClaims: number;
   unchanged: number;
   universityUrl: string;
 }
@@ -120,6 +130,7 @@ function buildChangeRecord(
   const claimChanges = summary.claims.map(buildClaimChangeRecord).sort(
     (left, right) => getFreshnessTime(right) - getFreshnessTime(left)
   );
+  const semanticCounts = countSemanticRows(diff?.rows ?? []);
 
   return {
     slug,
@@ -140,45 +151,63 @@ function buildChangeRecord(
     reviewState: summary.reviewState,
     claimCount: summary.claims.length,
     added: diff?.added ?? 0,
+    claimMetadataChanged: semanticCounts.claimMetadataChanged,
     reviewedClaimCount,
     candidateClaimCount: summary.claims.length - reviewedClaimCount,
     diffRows: diff?.rows ?? [],
+    evidenceChanged: semanticCounts.evidenceChanged,
     modified: diff?.modified ?? 0,
+    newlyExtractedClaims: semanticCounts.newlyExtractedClaims,
     previousReleaseId: diff?.previousReleaseId,
+    policyTextChanged: semanticCounts.policyTextChanged,
     releaseId: diff?.currentReleaseId,
     removed: diff?.removed ?? 0,
+    sourceAdded: semanticCounts.sourceAdded,
     sourceCount: summary.officialSources.length,
+    sourceRemoved: semanticCounts.sourceRemoved,
     sourceChanges,
+    sourceSnapshotChanged: semanticCounts.sourceSnapshotChanged,
     claimChanges,
     diffLines: buildDiffPreview(summary, diff),
+    trackerRemovedClaims: semanticCounts.trackerRemovedClaims,
     unchanged: diff?.unchanged ?? 0
   };
 }
 
 function buildDiffOnlyChangeRecord(diff: ReleaseEntityDiff): ChangeRecord {
+  const semanticCounts = countSemanticRows(diff.rows);
+
   return {
     added: diff.added,
     candidateClaimCount: 0,
     canonicalUrl: diff.canonicalUrl,
+    claimMetadataChanged: semanticCounts.claimMetadataChanged,
     changeUrl: `/changes/${diff.entitySlug}`,
     claimChanges: [],
     claimCount: 0,
     diffLines: buildDiffPreview(undefined, diff),
     diffRows: diff.rows,
+    evidenceChanged: semanticCounts.evidenceChanged,
     lastChangedAt: diff.lastChangedAt,
     lastCheckedAt: diff.lastCheckedAt,
     modified: diff.modified,
     name: diff.entityName,
+    newlyExtractedClaims: semanticCounts.newlyExtractedClaims,
     previousReleaseId: diff.previousReleaseId,
+    policyTextChanged: semanticCounts.policyTextChanged,
     publicJsonUrl: diff.publicJsonUrl,
     releaseId: diff.currentReleaseId,
     removed: diff.removed,
     reviewState: "agent_reviewed",
     reviewedClaimCount: 0,
     slug: diff.entitySlug,
+    sourceAdded: semanticCounts.sourceAdded,
     sourceChanges: [],
     sourceCount: 0,
+    sourceRemoved: semanticCounts.sourceRemoved,
+    sourceSnapshotChanged: semanticCounts.sourceSnapshotChanged,
     summary: "",
+    trackerRemovedClaims: semanticCounts.trackerRemovedClaims,
     universityUrl: `/universities/${diff.entitySlug}`,
     unchanged: diff.unchanged
   };
@@ -188,9 +217,11 @@ function buildSourceChangeRecord(source: SourceAttribution): SourceChangeRecord 
   return {
     citationTitle: source.citationTitle,
     retrievedAt: source.retrievedAt,
+    sourceLastModified: source.sourceLastModified,
     snapshotHash: source.snapshotHash,
     sourceType: source.sourceType,
-    sourceUrl: source.sourceUrl
+    sourceUrl: source.sourceUrl,
+    trackerCheckedAt: source.trackerCheckedAt
   };
 }
 
@@ -270,6 +301,24 @@ function buildReleaseDiffLines(diff: ReleaseEntityDiff): DiffPreviewLine[] {
   newLineNumber += 1;
 
   for (const row of diff.rows.slice(0, 80)) {
+    lines.push({
+      type: "equal",
+      oldLineNumber,
+      newLineNumber,
+      value: `## ${formatChangeCategory(row)}`
+    });
+    oldLineNumber += 1;
+    newLineNumber += 1;
+
+    lines.push({
+      type: "equal",
+      oldLineNumber,
+      newLineNumber,
+      value: row.changeExplanation
+    });
+    oldLineNumber += 1;
+    newLineNumber += 1;
+
     if (
       row.changeType.endsWith("_removed") ||
       row.changeType === "claim_modified" ||
@@ -295,6 +344,55 @@ function buildReleaseDiffLines(diff: ReleaseEntityDiff): DiffPreviewLine[] {
   return lines;
 }
 
+function countSemanticRows(rows: ReleaseDiffRow[]) {
+  return {
+    claimMetadataChanged: rows.filter(
+      (row) => row.changeCategory === "claim_metadata_changed"
+    ).length,
+    evidenceChanged: rows.filter((row) => row.changeCategory === "evidence_changed")
+      .length,
+    newlyExtractedClaims: rows.filter(
+      (row) => row.changeCategory === "newly_extracted_claim"
+    ).length,
+    policyTextChanged: rows.filter(
+      (row) => row.changeCategory === "policy_text_changed"
+    ).length,
+    sourceAdded: rows.filter((row) => row.changeCategory === "source_added").length,
+    sourceRemoved: rows.filter((row) => row.changeCategory === "source_removed")
+      .length,
+    sourceSnapshotChanged: rows.filter(
+      (row) => row.changeCategory === "source_snapshot_changed"
+    ).length,
+    trackerRemovedClaims: rows.filter(
+      (row) => row.changeCategory === "tracker_removed_claim"
+    ).length
+  };
+}
+
+function formatChangeCategory(row: ReleaseDiffRow): string {
+  switch (row.changeCategory) {
+    case "policy_text_changed":
+      return "Policy text changed";
+    case "newly_extracted_claim":
+      return "Newly extracted tracker claim";
+    case "tracker_removed_claim":
+      return "Tracker claim removed";
+    case "claim_metadata_changed":
+      return "Claim metadata changed";
+    case "evidence_changed":
+      return "Evidence linkage changed";
+    case "source_added":
+      return "Source attribution added";
+    case "source_removed":
+      return "Source attribution removed";
+    case "source_snapshot_changed":
+      return "Source snapshot hash changed";
+    case "metadata_changed":
+    default:
+      return "Tracker metadata changed";
+  }
+}
+
 function rowToOldLines(row: ReleaseDiffRow): string[] {
   if (row.oldClaim) {
     return [
@@ -302,11 +400,15 @@ function rowToOldLines(row: ReleaseDiffRow): string[] {
       ...((row.oldEvidence ?? row.oldClaim.evidence).slice(0, 1).map(
         (evidence) =>
           `Evidence (${evidence.sourceLanguage ?? "und"}, ${evidence.sourceSnapshotHash.slice(0, 12)}): ${evidence.evidenceSnippet}`
-      ))
+      )),
+      ...formatSourceFreshnessLines(row)
     ];
   }
   if (row.oldSnapshotHash && row.sourceUrl) {
-    return [`Source ${row.sourceUrl} snapshot ${row.oldSnapshotHash}`];
+    return [
+      `Source ${row.sourceUrl} snapshot ${row.oldSnapshotHash}`,
+      ...formatSourceFreshnessLines(row)
+    ];
   }
   return [];
 }
@@ -318,12 +420,28 @@ function rowToNewLines(row: ReleaseDiffRow): string[] {
       ...((row.newEvidence ?? row.newClaim.evidence).slice(0, 1).map(
         (evidence) =>
           `Evidence (${evidence.sourceLanguage ?? "und"}, ${evidence.sourceSnapshotHash.slice(0, 12)}): ${evidence.evidenceSnippet}`
-      ))
+      )),
+      ...formatSourceFreshnessLines(row)
     ];
   }
   if (row.newSnapshotHash && row.sourceUrl) {
-    return [`Source ${row.sourceUrl} snapshot ${row.newSnapshotHash}`];
+    return [
+      `Source ${row.sourceUrl} snapshot ${row.newSnapshotHash}`,
+      ...formatSourceFreshnessLines(row)
+    ];
   }
+  return [];
+}
+
+function formatSourceFreshnessLines(row: ReleaseDiffRow): string[] {
+  if (row.sourceLastModified) {
+    return [`Source Last-Modified: ${row.sourceLastModified}`];
+  }
+
+  if (row.trackerCheckedAt) {
+    return [`Tracker checked at: ${row.trackerCheckedAt}`];
+  }
+
   return [];
 }
 

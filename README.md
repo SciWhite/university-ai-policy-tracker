@@ -23,13 +23,13 @@ metadata for agent integrations.
 
 Current public release:
 
-- Release: `public-release-20260517-002`
-- Universities: 518
-- Claims: 2999
-- Evidence records: 3095
-- Official source attributions: 1904
-- Entity review states: 518 `agent_reviewed`
-- Claim review states: 2999 `agent_reviewed`
+- Release: `public-release-20260526-001`
+- Universities: 738
+- Claims: 3920
+- Evidence records: 4035
+- Official source attributions: 2474
+- Entity review states: 738 `agent_reviewed`
+- Claim review states: 3920 `agent_reviewed`
 - Source languages represented: English plus multilingual source evidence in
   Arabic, Catalan, Chinese, Czech, Danish, Dutch, Estonian, French, German,
   Greek, Hebrew, Hungarian, Icelandic, Indonesian, Italian, Japanese, Korean,
@@ -200,6 +200,33 @@ OpenClaw must not:
 - mark its own output as `human_reviewed`
 
 See `docs/openclaw-data-prs.md` and `docs/agent-workflow.md`.
+
+## Agent Google Search Console Access
+
+Agents can pull Google Search Console data for the live site with a local
+service-account credential. The credential must stay outside Git:
+
+- env file: `.env.agents.local`
+- key file: `.local/secrets/gsc-eduaipolicy-service-account.json`
+- property: `sc-domain:eduaipolicy.org`
+- scope: `https://www.googleapis.com/auth/webmasters.readonly`
+
+Load the local env file before querying:
+
+```bash
+set -a
+source .env.agents.local
+set +a
+```
+
+Confirm the files are ignored before relying on or changing them:
+
+```bash
+git check-ignore -v .env.agents.local .local/secrets/gsc-eduaipolicy-service-account.json
+```
+
+Do not print, paste, commit, or summarize the private key. See `AGENTS.md` for
+the package-free Node JWT example used to query the Search Analytics API.
 
 ## Verification
 

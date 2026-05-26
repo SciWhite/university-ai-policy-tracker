@@ -24,6 +24,8 @@
     "smoke:entity-search": "tsx scripts/smoke-entity-search.ts",
     "build:review-cache": "tsx scripts/build-review-cache.ts",
     "maintenance:scan": "tsx scripts/maintenance-http-first-scan.ts",
+    "snapshots:baseline": "tsx scripts/build-private-source-snapshots.ts",
+    "source-health:agent-verify": "tsx scripts/source-health-agent-verify.ts",
     "maintenance:start-light-review": "tsx scripts/start-lightweight-maintenance-review.ts",
     "validate:analysis-contract": "tsx scripts/validate-analysis-contract.ts",
     "validate:public-contract": "tsx scripts/validate-public-contract.ts",

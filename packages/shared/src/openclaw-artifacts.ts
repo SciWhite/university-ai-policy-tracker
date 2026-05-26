@@ -122,6 +122,8 @@ export const stagedCitationSchema = z.object({
   canonicalUrl: z.string().url().optional(),
   publisher: z.string().min(1).optional(),
   retrievedAt: z.string().datetime().optional(),
+  sourceLastModified: z.string().datetime().optional(),
+  trackerCheckedAt: z.string().datetime().optional(),
   snapshotHash: artifactHashSchema.optional(),
   sourceRights: z.string().min(1).default(OFFICIAL_SOURCE_RIGHTS_CAVEAT)
 });
@@ -221,6 +223,8 @@ export const stagedFetchAttemptSchema = artifactBaseSchema.extend({
   userAgentKind: userAgentKindSchema.default("default"),
   httpStatus: z.number().int().positive().optional(),
   contentType: z.string().min(1).optional(),
+  sourceLastModified: z.string().datetime().optional(),
+  trackerCheckedAt: z.string().datetime().optional(),
   robotsAllowed: z.boolean().optional(),
   outcome: fetchOutcomeSchema,
   errorReason: z.string().min(1).optional(),
@@ -240,6 +244,8 @@ export const stagedSourceSnapshotSchema = artifactBaseSchema.extend({
   sourceLanguage: sourceLanguageSchema,
   contentHash: artifactHashSchema,
   fetchedAt: z.string().datetime(),
+  sourceLastModified: z.string().datetime().optional(),
+  trackerCheckedAt: z.string().datetime().optional(),
   httpStatus: z.number().int().positive().optional(),
   robotsAllowed: z.boolean(),
   normalizedTextStorageKey: z.string().min(1).optional(),

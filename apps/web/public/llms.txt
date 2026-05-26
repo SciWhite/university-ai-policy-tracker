@@ -76,7 +76,8 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Search indexes exclude raw source snapshots, raw PDFs, private files, unpromoted staging evidence, and non-authoritative spreadsheet rows as policy evidence.
 - Staging-only coverage and review-queue records are planning metadata and are not public canonical claims.
 - Source health metadata must not be used to bypass robots.txt, login walls, paywalls, CAPTCHA, WAF, or other access controls.
-- Firecrawl source-health statuses are verification metadata for URLs that normal requests could not verify; they are not claim evidence and do not upgrade review state.
+- Supplemental Firecrawl and browser source-health statuses are verification metadata for URLs that normal requests could not verify; they are not claim evidence and do not upgrade review state.
+- Agent source-health statuses separate actionable access failures from rejected discovery candidates that are not policy evidence.
 - Analysis page-quality gates do not upgrade review state. Machine-candidate analysis remains machine_candidate until analysis profile review is complete.
 - Policy Coverage Score measures breadth of source-backed public coverage; it is not a policy quality score, strictness score, legal adequacy score, safety score, or institutional compliance score.
 - The site is not legal advice or academic integrity advice.

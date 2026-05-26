@@ -1238,6 +1238,9 @@ h3 {
 
 .source-health-label[data-source-health="ok"],
 .source-health-label[data-source-health="redirected"],
+.source-health-label[data-source-health="agent_verified_accessible"],
+.source-health-label[data-source-health="rejected_not_policy_evidence"],
+.source-health-label[data-source-health="browser_verified"],
 .source-health-label[data-source-health="firecrawl_verified"] {
   background: var(--color-reviewed-surface);
   border-color: var(--color-reviewed-border);
@@ -1246,6 +1249,13 @@ h3 {
 
 .source-health-label[data-source-health="changed_hash"],
 .source-health-label[data-source-health="not_found"],
+.source-health-label[data-source-health="agent_fetch_failed"],
+.source-health-label[data-source-health="agent_unresolved"],
+.source-health-label[data-source-health="agent_verified_404"],
+.source-health-label[data-source-health="agent_verified_empty"],
+.source-health-label[data-source-health="agent_verified_redirect_unrelated"],
+.source-health-label[data-source-health="blocked_by_client"],
+.source-health-label[data-source-health="browser_timeout_unverified"],
 .source-health-label[data-source-health="firecrawl_opened_no_content"],
 .source-health-label[data-source-health="unknown_error"] {
   background: var(--color-warning-surface);
@@ -1257,6 +1267,9 @@ h3 {
 .source-health-label[data-source-health="robots_blocked"],
 .source-health-label[data-source-health="login_wall"],
 .source-health-label[data-source-health="paywall"],
+.source-health-label[data-source-health="agent_blocked_captcha_waf"],
+.source-health-label[data-source-health="agent_blocked_login"],
+.source-health-label[data-source-health="agent_blocked_robots"],
 .source-health-label[data-source-health="firecrawl_failed"],
 .source-health-label[data-source-health="captcha_or_waf"] {
   background: var(--color-danger-surface);

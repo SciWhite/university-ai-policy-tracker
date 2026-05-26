@@ -144,22 +144,65 @@ status must not be used to bypass robots, login walls, paywalls, CAPTCHA, WAF,
 or other access controls. Review-queue rows do not promote staging runs or
 publish canonical claims.
 
-Source-health may include Firecrawl verification metadata for suspected source
-changes that normal HTTP checks could not verify reliably. HTTP failure,
-blocked responses, timeouts, `403`, and `robots_blocked` are source-health
-risks only; they must not be treated as policy-change signals by themselves.
-The allowed Firecrawl statuses are:
+Source-health may include Firecrawl and browser verification metadata for
+suspected source changes that normal HTTP checks could not verify reliably.
+HTTP failure, blocked responses, timeouts, `403`, browser client blocking, and
+`robots_blocked` are source-health risks only; they must not be treated as
+policy-change signals by themselves. The allowed supplemental verification
+statuses are:
 
 | Status | Meaning |
 | --- | --- |
 | `firecrawl_verified` | A fresh compliant Firecrawl scrape extracted source content for planning and repair checks. This does not upgrade claim review state, source officialness, or canonical evidence status. |
 | `firecrawl_opened_no_content` | Firecrawl opened the URL but did not extract meaningful source content; find an alternate official URL or keep the record snapshot-only until reviewed. |
 | `firecrawl_failed` | Firecrawl could not verify the URL; prioritize alternate official URLs or manual source repair. |
+| `browser_verified` | A browser check opened the official URL with readable content after another check was blocked or inconclusive. This does not upgrade claim review state, source officialness, or canonical evidence status. |
+| `blocked_by_client` | The current browser profile or client blocked navigation, such as `ERR_BLOCKED_BY_CLIENT`; keep as a warning and do not treat it as proof that the official source is down. |
+| `browser_timeout_unverified` | Browser verification timed out or returned no readable content; keep the URL in manual or alternate-source follow-up. |
+| `rejected_not_policy_evidence` | A discovered staging source was rejected because it is not policy evidence, such as news, event, research-showcase, duplicate, non-official, no-AI-content, or low-specificity material. This is not an actionable source-access failure. |
+| `agent_verified_accessible` | Agent verification confirmed the URL opens with readable content through an allowed tool chain. This does not upgrade claim review state, source officialness, or canonical evidence status. |
+| `agent_verified_empty` | Agent verification opened the URL but did not extract meaningful content; keep it out of claim evidence unless another official source or successful extraction is found. |
+| `agent_verified_404` | Agent verification confirmed a missing or stale public route. |
+| `agent_verified_redirect_unrelated` | Agent verification confirmed the URL redirects away from the intended policy source. |
+| `agent_blocked_login` | Agent verification reached a login or authentication boundary; do not bypass it. |
+| `agent_blocked_robots` | Agent verification found robots restrictions; do not bypass them. |
+| `agent_blocked_captcha_waf` | Agent verification reached CAPTCHA, WAF, or anti-bot protection; do not bypass it. |
+| `agent_fetch_failed` | Agent verification could not fetch readable content through allowed checks. |
+| `agent_unresolved` | Current metadata is still inconclusive and needs another automated verification pass. |
 
-Firecrawl source-health records are not claim evidence and must not publish raw
-HTML, PDF text, screenshots, or full normalized source text. The public
+Supplemental source-health records are not claim evidence and must not publish
+raw HTML, PDF text, screenshots, or full normalized source text. The public
 `source-health.json` endpoint can expose URL, status, checked date, title,
-status code, severity, and recommended action metadata only.
+status code, severity, final URL, text length, and recommended action metadata
+only.
+
+### Source-health agent verification
+
+The local agent verification command builds and optionally verifies a staging
+source-health queue:
+
+```bash
+pnpm source-health:agent-verify -- --queue-only --limit 100
+pnpm source-health:agent-verify -- --verify --enable-firecrawl --firecrawl-limit 25 --limit 100
+pnpm source-health:agent-verify -- --verify --publish-latest --limit 50
+```
+
+`--queue-only` writes a local planning artifact under
+`.local/source-health-agent-runs/` by default. `--verify` runs allowed HTTP,
+optional Firecrawl, and browser-like request checks without bypassing robots,
+login, paywall, CAPTCHA, WAF, or other access controls. `--publish-latest`
+writes `data/source-health/agent-verification-latest.json`, which the
+source-health dashboard and `source-health.json` endpoint read as maintenance
+metadata.
+
+Published agent verification metadata may include `checkedWith`, `generatedAt`,
+`requestPolicy`, aggregate counts, URL, final URL, title, text length, status,
+and recommended action. It must not publish raw source text, screenshots, full
+HTML, PDF bodies, private credentials, cookies, or authenticated-only content.
+Agent verification can downgrade source-access noise, confirm stale URLs, or
+separate blocked access boundaries, but it cannot promote staging runs, approve
+claims, mark evidence as human-reviewed, or change canonical source
+officialness.
 
 Future maintenance metadata may add fields such as `maintenanceTier`,
 `lastMaintenanceCheckedAt`, `nextRecommendedCheckAt`, `lastMaintenanceRunId`,
@@ -255,6 +298,17 @@ The university JSON includes:
 - `officialSources`
 - `claims`
 - `suggestedCitation`
+
+`officialSources[]` and evidence attribution records may also include optional
+source-health timestamps:
+
+- `sourceLastModified`: the source server's declared `Last-Modified` timestamp,
+  when available.
+- `trackerCheckedAt`: when the tracker checked the source URL.
+
+These fields are maintenance metadata. They do not replace source evidence, do
+not prove when a university policy was substantively changed, and do not upgrade
+claim `reviewState`.
 
 ## OpenClaw Artifact Target
 

@@ -53,6 +53,8 @@ export const sourceAttributionSchema = z.object({
   citationTitle: z.string().min(1),
   publisher: z.string().min(1).optional(),
   retrievedAt: z.string().datetime().optional(),
+  sourceLastModified: z.string().datetime().optional(),
+  trackerCheckedAt: z.string().datetime().optional(),
   snapshotHash: z.string().regex(/^[a-f0-9]{64}$/),
   sourceType: sourceTypeSchema.default("official_policy_page"),
   official: z.boolean().default(true),

@@ -73,6 +73,15 @@ export const publicDatasetReleaseManifestSchema = z.object({
       added: z.number().int().nonnegative(),
       removed: z.number().int().nonnegative(),
       modified: z.number().int().nonnegative(),
+      policyTextChanged: z.number().int().nonnegative().optional(),
+      newlyExtractedClaims: z.number().int().nonnegative().optional(),
+      trackerRemovedClaims: z.number().int().nonnegative().optional(),
+      claimMetadataChanged: z.number().int().nonnegative().optional(),
+      evidenceChanged: z.number().int().nonnegative().optional(),
+      sourceAdded: z.number().int().nonnegative().optional(),
+      sourceRemoved: z.number().int().nonnegative().optional(),
+      sourceSnapshotChanged: z.number().int().nonnegative().optional(),
+      metadata: z.number().int().nonnegative().optional(),
       unchanged: z.number().int().nonnegative()
     })
     .optional(),

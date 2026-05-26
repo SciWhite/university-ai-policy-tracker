@@ -39,10 +39,10 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
   );
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}/${slug}`);
   const title = record
-    ? `${record.name} AI Policy Changes: ${releaseId}`
+    ? `${record.name} AI Policy Tracker Release Diff: ${releaseId}`
     : "Release change record not found";
   const description = record
-    ? `${record.name} claim/evidence diff for ${releaseId}: +${record.added}, -${record.removed}, ~${record.modified}.`
+    ? `${record.name} tracker release diff for ${releaseId}: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
     : "University AI Policy Tracker release change record not found.";
 
   return {
@@ -75,9 +75,9 @@ export default async function ReleaseEntityChangePage({
           <p className="entity-header__eyebrow">Release diff</p>
           <h1>{record.name}</h1>
           <p className="entity-header__summary">
-            Unified claim/evidence diff for {releaseId}. Full source-page text is
-            not published; short original-language evidence snippets are shown
-            for citation context.
+            Unified tracker diff for {releaseId}. Full source-page text is not
+            published; short original-language evidence snippets are shown for
+            citation context.
           </p>
           <div className="entity-header__metadata">
             <StateLabel reviewState={record.reviewState} />
@@ -85,9 +85,13 @@ export default async function ReleaseEntityChangePage({
             {record.previousReleaseId ? (
               <MetaLabel label="Previous">{record.previousReleaseId}</MetaLabel>
             ) : null}
-            <MetaLabel label="Added">{record.added}</MetaLabel>
-            <MetaLabel label="Removed">{record.removed}</MetaLabel>
-            <MetaLabel label="Modified">{record.modified}</MetaLabel>
+            <MetaLabel label="Policy text">{record.policyTextChanged}</MetaLabel>
+            <MetaLabel label="Newly extracted">
+              {record.newlyExtractedClaims}
+            </MetaLabel>
+            <MetaLabel label="Source hash">
+              {record.sourceSnapshotChanged}
+            </MetaLabel>
           </div>
         </div>
         <div className="entity-header__actions">
@@ -107,7 +111,7 @@ export default async function ReleaseEntityChangePage({
       </section>
 
       <ReferenceBox
-        description="Release-to-release claim/evidence changes generated from public release snapshots."
+        description="Release-to-release tracker changes generated from public release snapshots."
         title="Unified diff"
       >
         {record.diffLines.length ? (
@@ -122,11 +126,24 @@ export default async function ReleaseEntityChangePage({
           />
         ) : (
           <p className="notice-card">
-            No claim/evidence changes are recorded for this university in this
+            No tracker diff rows are recorded for this university in this
             release.
           </p>
         )}
       </ReferenceBox>
+
+      <section className="section">
+        <div className="section-heading">
+          <h2>How to read this diff</h2>
+          <p>Tracker release metadata, not direct proof of university publication timing.</p>
+        </div>
+        <p className="notice-card">
+          Newly extracted claims are tracker additions and are not necessarily
+          newly published by the university. Source snapshot changes mean the
+          same URL produced a different hash; that may be policy text, layout,
+          navigation, or metadata.
+        </p>
+      </section>
 
       <section className="section">
         <div className="section-heading">

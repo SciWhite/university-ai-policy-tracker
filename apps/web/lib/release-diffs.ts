@@ -37,6 +37,26 @@ export type ReleaseDiffMatchMethod =
   | "source_claim_type"
   | "none";
 
+export type ReleaseDiffCategory =
+  | "policy_text_changed"
+  | "newly_extracted_claim"
+  | "tracker_removed_claim"
+  | "claim_metadata_changed"
+  | "evidence_changed"
+  | "source_added"
+  | "source_removed"
+  | "source_snapshot_changed"
+  | "metadata_changed";
+
+export type SourceTextDiffStatus =
+  | "added"
+  | "removed"
+  | "unchanged"
+  | "normalized_text_changed"
+  | "metadata_changed"
+  | "metadata_only"
+  | "unavailable";
+
 export interface ReleaseClaimSnapshot {
   claimId?: string;
   claimText: string;
@@ -57,8 +77,10 @@ export interface ReleaseEvidenceSnapshot {
   evidenceSnippetDisplay?: string;
   retrievedAt?: string;
   sourceLanguage?: string;
+  sourceLastModified?: string;
   sourceSnapshotHash: string;
   sourceUrl: string;
+  trackerCheckedAt?: string;
 }
 
 export interface ReleaseSourceSnapshot {
@@ -69,11 +91,15 @@ export interface ReleaseSourceSnapshot {
   releaseId: string;
   retrievedAt?: string;
   snapshotHash: string;
+  sourceLastModified?: string;
   sourceType?: string;
   sourceUrl: string;
+  trackerCheckedAt?: string;
 }
 
 export interface ReleaseDiffRow {
+  changeCategory: ReleaseDiffCategory;
+  changeExplanation: string;
   changeType: ReleaseDiffChangeType;
   citation: {
     canonicalUrl: string;
@@ -97,22 +123,34 @@ export interface ReleaseDiffRow {
   releaseId: string;
   reviewState?: ClaimReviewState;
   sourceLanguage?: string;
+  sourceTextDiffStatus?: SourceTextDiffStatus;
+  sourceTextDiffSummary?: string;
+  sourceLastModified?: string;
   sourceUrl?: string;
+  trackerCheckedAt?: string;
 }
 
 export interface ReleaseEntityDiff {
   added: number;
   canonicalUrl: string;
+  claimMetadataChanged: number;
   currentReleaseId: string;
   entityName: string;
   entitySlug: string;
+  evidenceChanged: number;
   lastChangedAt?: string;
   lastCheckedAt?: string;
   modified: number;
+  newlyExtractedClaims: number;
   previousReleaseId?: string;
+  policyTextChanged: number;
   publicJsonUrl: string;
   removed: number;
   rows: ReleaseDiffRow[];
+  sourceAdded: number;
+  sourceRemoved: number;
+  sourceSnapshotChanged: number;
+  trackerRemovedClaims: number;
   unchanged: number;
 }
 
@@ -133,12 +171,48 @@ export interface ReleaseDiff {
 
 export interface ReleaseDiffCounts {
   added: number;
+  claimMetadataChanged: number;
   entitiesChanged: number;
+  evidenceChanged: number;
   metadata: number;
   modified: number;
+  newlyExtractedClaims: number;
+  policyTextChanged: number;
   removed: number;
+  sourceAdded: number;
+  sourceRemoved: number;
+  sourceSnapshotChanged: number;
+  trackerRemovedClaims: number;
   unchanged: number;
 }
+
+type ReleaseDiffRowBase = Omit<
+  ReleaseDiffRow,
+  "changeCategory" | "changeExplanation"
+>;
+
+interface PrivateSourceTextDiffRow {
+  currentReleaseId: string;
+  entityName: string;
+  entitySlug: string;
+  newNormalizedTextHash?: string;
+  newPublicSnapshotHash?: string;
+  oldNormalizedTextHash?: string;
+  oldPublicSnapshotHash?: string;
+  previousReleaseId: string;
+  sourceUrl: string;
+  status: SourceTextDiffStatus;
+  summary: string;
+}
+
+interface PrivateSourceTextDiffFile {
+  schemaVersion: "uapt-private-source-snapshot-diff-v1";
+  currentReleaseId: string;
+  previousReleaseId: string;
+  rows: PrivateSourceTextDiffRow[];
+}
+
+type PrivateSourceTextDiffIndex = Map<string, PrivateSourceTextDiffRow>;
 
 const FUZZY_MATCH_THRESHOLD = 0.82;
 
@@ -250,6 +324,9 @@ async function buildReleaseDiff(releaseId: string): Promise<ReleaseDiff> {
     getDatasetForManifest(manifest),
     previousManifest ? getDatasetForManifest(previousManifest) : undefined
   ]);
+  const privateSourceTextDiffs = previousManifest
+    ? await getPrivateSourceTextDiffIndex(previousManifest.releaseId, manifest.releaseId)
+    : new Map<string, PrivateSourceTextDiffRow>();
   const previousBySlug = new Map(
     previousDataset?.publicSummaries.map((summary) => [summary.entity.slug, summary]) ??
       []
@@ -263,10 +340,16 @@ async function buildReleaseDiff(releaseId: string): Promise<ReleaseDiff> {
     ) ?? [];
   const entities = [
     ...currentDataset.publicSummaries.map((summary) =>
-      buildEntityDiff(manifest, previousManifest, previousBySlug.get(summary.entity.slug), summary)
+      buildEntityDiff(
+        manifest,
+        previousManifest,
+        previousBySlug.get(summary.entity.slug),
+        summary,
+        privateSourceTextDiffs
+      )
     ),
     ...previousOnlySummaries.map((summary) =>
-      buildEntityDiff(manifest, previousManifest, summary, undefined)
+      buildEntityDiff(manifest, previousManifest, summary, undefined, privateSourceTextDiffs)
     )
   ].sort(compareEntityDiffs);
   const counts = summarizeRows(entities.flatMap((entity) => entity.rows));
@@ -293,33 +376,48 @@ function buildEntityDiff(
   manifest: PublicReleaseManifest,
   previousManifest: PublicReleaseManifest | undefined,
   previousSummary: PublicEntitySummary | undefined,
-  currentSummary: PublicEntitySummary | undefined
+  currentSummary: PublicEntitySummary | undefined,
+  privateSourceTextDiffs: PrivateSourceTextDiffIndex
 ): ReleaseEntityDiff {
   const summary = currentSummary ?? previousSummary;
   if (!summary) throw new Error("Missing both current and previous entity summary");
 
   const rows = [
     ...diffClaims(manifest, previousManifest, previousSummary, currentSummary),
-    ...diffSources(manifest, previousManifest, previousSummary, currentSummary)
+    ...diffSources(
+      manifest,
+      previousManifest,
+      previousSummary,
+      currentSummary,
+      privateSourceTextDiffs
+    )
   ].sort(compareRows);
   const counts = summarizeRows(rows);
 
   return {
     added: counts.added,
     canonicalUrl: summary.canonicalUrl,
+    claimMetadataChanged: counts.claimMetadataChanged,
     currentReleaseId: manifest.releaseId,
     entityName: summary.entity.name,
     entitySlug: summary.entity.slug,
+    evidenceChanged: counts.evidenceChanged,
     lastChangedAt: currentSummary?.lastChangedAt ?? previousSummary?.lastChangedAt,
     lastCheckedAt: currentSummary?.lastCheckedAt ?? previousSummary?.lastCheckedAt,
     modified: counts.modified + counts.metadata,
+    newlyExtractedClaims: counts.newlyExtractedClaims,
     previousReleaseId: previousManifest?.releaseId,
+    policyTextChanged: counts.policyTextChanged,
     publicJsonUrl: summary.apiUrl ?? new URL(
       `/api/public/${PUBLIC_API_VERSION}/universities/${summary.entity.slug}.json`,
       getSiteBaseUrl()
     ).toString(),
     removed: counts.removed,
     rows,
+    sourceAdded: counts.sourceAdded,
+    sourceRemoved: counts.sourceRemoved,
+    sourceSnapshotChanged: counts.sourceSnapshotChanged,
+    trackerRemovedClaims: counts.trackerRemovedClaims,
     unchanged: counts.unchanged
   };
 }
@@ -375,7 +473,8 @@ function diffSources(
   manifest: PublicReleaseManifest,
   previousManifest: PublicReleaseManifest | undefined,
   previousSummary: PublicEntitySummary | undefined,
-  currentSummary: PublicEntitySummary | undefined
+  currentSummary: PublicEntitySummary | undefined,
+  privateSourceTextDiffs: PrivateSourceTextDiffIndex
 ): ReleaseDiffRow[] {
   const oldSources = new Map(
     (previousSummary?.officialSources ?? []).map((source) => [source.sourceUrl, source])
@@ -396,7 +495,8 @@ function diffSources(
           previousSummary,
           currentSummary,
           undefined,
-          source
+          source,
+          privateSourceTextDiffs.get(privateSourceTextDiffKey(currentSummary?.entity.slug, source.sourceUrl))
         )
       );
     } else if (old.snapshotHash !== source.snapshotHash) {
@@ -408,7 +508,8 @@ function diffSources(
           previousSummary,
           currentSummary,
           old,
-          source
+          source,
+          privateSourceTextDiffs.get(privateSourceTextDiffKey(currentSummary?.entity.slug, source.sourceUrl))
         )
       );
     }
@@ -424,7 +525,8 @@ function diffSources(
           previousSummary,
           currentSummary,
           source,
-          undefined
+          undefined,
+          privateSourceTextDiffs.get(privateSourceTextDiffKey(previousSummary?.entity.slug, source.sourceUrl))
         )
       );
     }
@@ -596,7 +698,8 @@ function buildSourceRow(
   previousSummary: PublicEntitySummary | undefined,
   currentSummary: PublicEntitySummary | undefined,
   oldSource: SourceAttribution | undefined,
-  newSource: SourceAttribution | undefined
+  newSource: SourceAttribution | undefined,
+  privateSourceTextDiff: PrivateSourceTextDiffRow | undefined
 ): ReleaseDiffRow {
   const source = newSource ?? oldSource;
   if (!source) throw new Error(`Cannot build ${changeType} without a source`);
@@ -605,7 +708,7 @@ function buildSourceRow(
   const entitySlug = summary.entity.slug;
   const entityName = summary.entity.name;
 
-  return {
+  return withDiffSemantics({
     changeType,
     citation: {
       canonicalUrl: new URL(`/changes/${manifest.releaseId}/${entitySlug}`, getSiteBaseUrl()).toString(),
@@ -624,8 +727,16 @@ function buildSourceRow(
     oldSnapshotHash: oldSource?.snapshotHash,
     previousReleaseId: previousManifest?.releaseId,
     releaseId: manifest.releaseId,
+    sourceTextDiffStatus: privateSourceTextDiff?.status,
+    sourceTextDiffSummary: privateSourceTextDiff?.summary,
+    sourceLastModified: newSource?.sourceLastModified ?? oldSource?.sourceLastModified,
+    trackerCheckedAt:
+      newSource?.trackerCheckedAt ??
+      newSource?.retrievedAt ??
+      oldSource?.trackerCheckedAt ??
+      oldSource?.retrievedAt,
     sourceUrl: source.sourceUrl
-  };
+  });
 }
 
 function baseRow(
@@ -638,7 +749,7 @@ function baseRow(
   const siteBaseUrl = getSiteBaseUrl();
   const entitySlug = claim.entitySlug;
 
-  return {
+  return withDiffSemantics({
     changeType,
     citation: {
       canonicalUrl: new URL(`/changes/${manifest.releaseId}/${entitySlug}`, siteBaseUrl).toString(),
@@ -655,8 +766,24 @@ function baseRow(
     matchMethod: "none",
     previousReleaseId: previousManifest?.releaseId,
     releaseId: manifest.releaseId,
+    sourceLastModified:
+      values.sourceLastModified ??
+      values.newEvidence?.[0]?.sourceLastModified ??
+      values.oldEvidence?.[0]?.sourceLastModified ??
+      values.newClaim?.evidence[0]?.sourceLastModified ??
+      values.oldClaim?.evidence[0]?.sourceLastModified,
+    trackerCheckedAt:
+      values.trackerCheckedAt ??
+      values.newEvidence?.[0]?.trackerCheckedAt ??
+      values.oldEvidence?.[0]?.trackerCheckedAt ??
+      values.newEvidence?.[0]?.retrievedAt ??
+      values.oldEvidence?.[0]?.retrievedAt ??
+      values.newClaim?.evidence[0]?.trackerCheckedAt ??
+      values.oldClaim?.evidence[0]?.trackerCheckedAt ??
+      values.newClaim?.evidence[0]?.retrievedAt ??
+      values.oldClaim?.evidence[0]?.retrievedAt,
     ...values
-  };
+  } as ReleaseDiffRowBase);
 }
 
 function toClaimSnapshot(
@@ -686,8 +813,10 @@ function toEvidenceSnapshot(evidence: ClaimEvidence): ReleaseEvidenceSnapshot {
     evidenceSnippetDisplay: evidence.evidenceSnippetDisplay,
     retrievedAt: evidence.retrievedAt,
     sourceLanguage: evidence.sourceLanguage,
+    sourceLastModified: evidence.attribution.sourceLastModified,
     sourceSnapshotHash: evidence.sourceSnapshotHash,
-    sourceUrl: evidence.sourceUrl
+    sourceUrl: evidence.sourceUrl,
+    trackerCheckedAt: evidence.attribution.trackerCheckedAt
   };
 }
 
@@ -704,8 +833,10 @@ function toSourceSnapshot(
     releaseId,
     retrievedAt: source.retrievedAt,
     snapshotHash: source.snapshotHash,
+    sourceLastModified: source.sourceLastModified,
     sourceType: source.sourceType,
-    sourceUrl: source.sourceUrl
+    sourceUrl: source.sourceUrl,
+    trackerCheckedAt: source.trackerCheckedAt
   };
 }
 
@@ -782,6 +913,68 @@ async function getKnownReleaseManifests(): Promise<PublicReleaseManifest[]> {
   );
 }
 
+async function getPrivateSourceTextDiffIndex(
+  previousReleaseId: string,
+  currentReleaseId: string
+): Promise<PrivateSourceTextDiffIndex> {
+  const repoRoot = await findRepoRoot();
+  const candidateRoots = [
+    process.env.UAPT_PRIVATE_SNAPSHOT_DIFF_ROOT,
+    path.join(repoRoot, ".local", "source-snapshots", "diffs")
+  ].filter((root): root is string => Boolean(root));
+  const fileName = `${previousReleaseId}__${currentReleaseId}.json`;
+
+  for (const root of candidateRoots) {
+    try {
+      const parsed = JSON.parse(
+        await readFile(path.join(root, fileName), "utf8")
+      ) as Partial<PrivateSourceTextDiffFile>;
+      if (
+        parsed.schemaVersion !== "uapt-private-source-snapshot-diff-v1" ||
+        parsed.previousReleaseId !== previousReleaseId ||
+        parsed.currentReleaseId !== currentReleaseId ||
+        !Array.isArray(parsed.rows)
+      ) {
+        continue;
+      }
+
+      return new Map(
+        parsed.rows
+          .filter(isPrivateSourceTextDiffRow)
+          .map((row) => [privateSourceTextDiffKey(row.entitySlug, row.sourceUrl), row])
+      );
+    } catch {
+      continue;
+    }
+  }
+
+  return new Map();
+}
+
+function isPrivateSourceTextDiffRow(value: unknown): value is PrivateSourceTextDiffRow {
+  if (!value || typeof value !== "object") return false;
+  const row = value as Partial<PrivateSourceTextDiffRow>;
+
+  return (
+    typeof row.entitySlug === "string" &&
+    typeof row.sourceUrl === "string" &&
+    typeof row.summary === "string" &&
+    isSourceTextDiffStatus(row.status)
+  );
+}
+
+function isSourceTextDiffStatus(value: unknown): value is SourceTextDiffStatus {
+  return (
+    value === "added" ||
+    value === "removed" ||
+    value === "unchanged" ||
+    value === "normalized_text_changed" ||
+    value === "metadata_changed" ||
+    value === "metadata_only" ||
+    value === "unavailable"
+  );
+}
+
 function parseManifest(content: string): PublicReleaseManifest | undefined {
   try {
     const value = JSON.parse(content) as Partial<PublicReleaseManifest>;
@@ -819,16 +1012,140 @@ async function findRepoRoot(): Promise<string> {
 function summarizeRows(rows: ReleaseDiffRow[]): ReleaseDiffCounts {
   return {
     added: rows.filter((row) => row.changeType.endsWith("_added")).length,
+    claimMetadataChanged: rows.filter(
+      (row) => row.changeCategory === "claim_metadata_changed"
+    ).length,
     entitiesChanged: new Set(rows.map((row) => row.entitySlug).filter(Boolean)).size,
+    evidenceChanged: rows.filter(
+      (row) => row.changeCategory === "evidence_changed"
+    ).length,
     metadata: rows.filter((row) => row.changeType === "metadata_changed").length,
     modified: rows.filter(
       (row) =>
         row.changeType.endsWith("_modified") ||
         row.changeType === "source_snapshot_changed"
     ).length,
+    newlyExtractedClaims: rows.filter(
+      (row) => row.changeCategory === "newly_extracted_claim"
+    ).length,
+    policyTextChanged: rows.filter(
+      (row) => row.changeCategory === "policy_text_changed"
+    ).length,
     removed: rows.filter((row) => row.changeType.endsWith("_removed")).length,
+    sourceAdded: rows.filter((row) => row.changeCategory === "source_added").length,
+    sourceRemoved: rows.filter((row) => row.changeCategory === "source_removed")
+      .length,
+    sourceSnapshotChanged: rows.filter(
+      (row) => row.changeCategory === "source_snapshot_changed"
+    ).length,
+    trackerRemovedClaims: rows.filter(
+      (row) => row.changeCategory === "tracker_removed_claim"
+    ).length,
     unchanged: 0
   };
+}
+
+function withDiffSemantics(row: ReleaseDiffRowBase): ReleaseDiffRow {
+  const { category, explanation } = getRowSemantics(row);
+
+  return {
+    ...row,
+    changeCategory: category,
+    changeExplanation: explanation
+  };
+}
+
+function getRowSemantics(row: ReleaseDiffRowBase): {
+  category: ReleaseDiffCategory;
+  explanation: string;
+} {
+  switch (row.changeType) {
+    case "claim_added":
+      return {
+        category: "newly_extracted_claim",
+        explanation:
+          "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university."
+      };
+    case "claim_removed":
+      return {
+        category: "tracker_removed_claim",
+        explanation:
+          "This claim was present in the previous tracker release and is no longer present in the current tracker release. This does not by itself prove the university removed the policy."
+      };
+    case "claim_modified":
+      if (
+        row.oldClaim &&
+        row.newClaim &&
+        (row.oldClaim.claimText !== row.newClaim.claimText ||
+          row.oldClaim.claimValue !== row.newClaim.claimValue)
+      ) {
+        return {
+          category: "policy_text_changed",
+          explanation:
+            "The tracker matched an old claim to a new claim and the claim text or normalized value changed between release snapshots."
+        };
+      }
+
+      return {
+        category: "claim_metadata_changed",
+        explanation:
+          "The tracker matched the same claim across releases, but only claim metadata or evidence linkage changed."
+      };
+    case "evidence_added":
+    case "evidence_removed":
+    case "evidence_modified":
+      return {
+        category: "evidence_changed",
+        explanation:
+          "The claim evidence snippet, source hash, or evidence linkage changed between tracker releases. Confirm the official source before treating it as a policy change."
+      };
+    case "source_added":
+      return {
+        category: "source_added",
+        explanation:
+          "An official source attribution was added to the tracker record."
+      };
+    case "source_removed":
+      return {
+        category: "source_removed",
+        explanation:
+          "An official source attribution was removed from the tracker record."
+      };
+    case "source_snapshot_changed":
+      if (row.sourceTextDiffStatus === "normalized_text_changed") {
+        return {
+          category: "source_snapshot_changed",
+          explanation:
+            "The same source URL has a different snapshot hash and private normalized source text comparison also changed. Review the public evidence snippets and official source before treating this as a policy change."
+        };
+      }
+      if (row.sourceTextDiffStatus === "metadata_only") {
+        return {
+          category: "source_snapshot_changed",
+          explanation:
+            "The same source URL has a different snapshot hash, but only private metadata records were available for comparison. This may reflect page chrome, crawler metadata, or source text changes."
+        };
+      }
+      if (row.sourceTextDiffStatus === "unavailable") {
+        return {
+          category: "source_snapshot_changed",
+          explanation:
+            "The same source URL has a different snapshot hash, but private normalized source text comparison was unavailable. Treat this as a source-health signal until reviewed."
+        };
+      }
+      return {
+        category: "source_snapshot_changed",
+        explanation:
+          "The same source URL has a different snapshot hash. This may reflect policy text, page layout, navigation, or metadata changes; it is not by itself a policy change."
+      };
+    case "metadata_changed":
+    default:
+      return {
+        category: "metadata_changed",
+        explanation:
+          "Tracker metadata changed between release snapshots."
+      };
+  }
 }
 
 function compareEntityDiffs(left: ReleaseEntityDiff, right: ReleaseEntityDiff): number {
@@ -848,6 +1165,10 @@ function compareRows(left: ReleaseDiffRow, right: ReleaseDiffRow): number {
 
 function evidenceKey(evidence: ClaimEvidence): string {
   return `${evidence.sourceUrl}:${evidence.sourceSnapshotHash}:${evidence.evidenceSnippet}`;
+}
+
+function privateSourceTextDiffKey(entitySlug: string | undefined, sourceUrl: string): string {
+  return `${entitySlug ?? ""}:${sourceUrl}`;
 }
 
 function firstSourceUrl(claim: PolicyClaim): string | undefined {
