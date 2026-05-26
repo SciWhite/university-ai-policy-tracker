@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import type { PublicEntitySummary } from "@uapt/shared";
+import type { PublicEntitySummary, SourceDiffClass } from "@uapt/shared";
 import { getStagedPublicDataset } from "../apps/web/lib/staged-public-data";
 
 type TargetMode = "all" | "qs200" | "weekly-other";
@@ -88,6 +88,8 @@ interface MaintenanceRow {
   firecrawlAttempted: boolean;
   httpStatus?: number;
   lastModified?: string;
+  diffClass?: SourceDiffClass;
+  openClawQueueStatus?: "candidate" | "not_queued";
   previousFinalUrl?: string;
   previousMaintenanceHash?: string;
   previousSnapshotHash: string;
@@ -95,6 +97,7 @@ interface MaintenanceRow {
   recommendedAction: string;
   sourceTitle: string;
   sourceUrl: string;
+  sourceDiffBasis?: string;
   status: Stage1Status;
   title?: string;
 }
@@ -146,6 +149,8 @@ async function main(): Promise<void> {
         entityName: target.entityName,
         entitySlug: target.entitySlug,
         firecrawlAttempted: false,
+        diffClass: "http_or_access_noise",
+        openClawQueueStatus: "not_queued",
         previousFinalUrl: previous?.finalUrl ?? target.previousFinalUrl,
         previousMaintenanceHash: previous?.contentHash,
         previousSnapshotHash: target.previousSnapshotHash,
@@ -444,6 +449,8 @@ function classifyHttpResult(
   if (http.accessStatus !== "ok") {
     return {
       ...base,
+      diffClass: "http_or_access_noise",
+      openClawQueueStatus: "not_queued",
       recommendedAction:
         http.accessStatus === "blocked"
           ? "Record source-health risk. Do not call Firecrawl or OpenClaw unless another metadata signal suggests source change."
@@ -464,6 +471,10 @@ function classifyHttpResult(
 
     return {
       ...base,
+      diffClass: hasPriorChangeSignal
+        ? "metadata_or_chrome_delta"
+        : "http_or_access_noise",
+      openClawQueueStatus: "not_queued",
       recommendedAction: hasPriorChangeSignal
         ? "HTTP metadata changed but content is unreliable; send to Firecrawl verification."
         : "Record inconclusive HTTP read. Do not escalate without a prior change signal.",
@@ -476,6 +487,8 @@ function classifyHttpResult(
   if (!previous?.contentHash) {
     return {
       ...base,
+      diffClass: "metadata_or_chrome_delta",
+      openClawQueueStatus: "not_queued",
       recommendedAction: "Record first maintenance hash baseline. No OpenClaw action.",
       status: "baseline_recorded"
     };
@@ -484,6 +497,8 @@ function classifyHttpResult(
   if (http.contentHash === previous.contentHash) {
     return {
       ...base,
+      diffClass: "metadata_or_chrome_delta",
+      openClawQueueStatus: "not_queued",
       recommendedAction: "No action. Maintenance hash unchanged.",
       status: "unchanged"
     };
@@ -492,6 +507,8 @@ function classifyHttpResult(
   const hasPolicySignal = POLICY_SIGNAL_PATTERN.test(`${http.title ?? ""}\n${target.sourceTitle}`);
   return {
     ...base,
+    diffClass: hasPolicySignal ? "content_policy_delta" : "metadata_or_chrome_delta",
+    openClawQueueStatus: hasPolicySignal ? "candidate" : "not_queued",
     recommendedAction: hasPolicySignal
       ? "Potential policy-relevant source change. Queue one lightweight OpenClaw review."
       : "Content hash changed without a clear policy signal. Keep as metadata change for review.",
@@ -537,6 +554,8 @@ async function verifyWithFirecrawl(
       return {
         ...row,
         firecrawlAttempted: true,
+        diffClass: "http_or_access_noise",
+        openClawQueueStatus: "not_queued",
         httpStatus: response.status,
         recommendedAction:
           "Firecrawl failed. Move to repair queue; do not trigger OpenClaw from Firecrawl failure alone.",
@@ -556,6 +575,8 @@ async function verifyWithFirecrawl(
       return {
         ...row,
         firecrawlAttempted: true,
+        diffClass: "http_or_access_noise",
+        openClawQueueStatus: "not_queued",
         recommendedAction:
           "Firecrawl opened the source but did not extract meaningful content. Move to repair queue.",
         status: "firecrawl_opened_no_content",
@@ -569,7 +590,11 @@ async function verifyWithFirecrawl(
     return {
       ...row,
       contentHash,
+      diffClass: changed && hasPolicySignal
+        ? "content_policy_delta"
+        : "metadata_or_chrome_delta",
       firecrawlAttempted: true,
+      openClawQueueStatus: changed && hasPolicySignal ? "candidate" : "not_queued",
       recommendedAction:
         changed && hasPolicySignal
           ? "Firecrawl verified changed content with policy signal. Queue one lightweight OpenClaw review."
@@ -582,6 +607,8 @@ async function verifyWithFirecrawl(
       ...row,
       error: error instanceof Error ? error.message : String(error),
       firecrawlAttempted: true,
+      diffClass: "http_or_access_noise",
+      openClawQueueStatus: "not_queued",
       recommendedAction:
         "Firecrawl errored. Move to repair queue; do not trigger OpenClaw from this failure alone.",
       status: "firecrawl_failed"
@@ -625,16 +652,21 @@ function summarize(rows: MaintenanceRow[]): Record<string, number> {
   const summary: Record<string, number> = {
     blocked_or_inconclusive: 0,
     changed_hash: 0,
+    content_policy_delta: 0,
     firecrawl_verified_changed: 0,
+    http_or_access_noise: 0,
     http_failed: 0,
+    metadata_or_chrome_delta: 0,
     needs_openclaw: 0,
     scanned: rows.length,
+    source_index_expansion: 0,
     suspected_changed: 0,
     unchanged: 0
   };
 
   for (const row of rows) {
     summary[row.status] = (summary[row.status] ?? 0) + 1;
+    if (row.diffClass) summary[row.diffClass] = (summary[row.diffClass] ?? 0) + 1;
     if (row.status === "needs_openclaw" || row.status === "suspected_policy_update") {
       summary.suspected_changed += 1;
     }
@@ -662,7 +694,7 @@ function renderMarkdown(report: MaintenanceReport): string {
     "## Queues",
     "",
     `Needs Firecrawl verification: ${countStatus(report.rows, "needs_firecrawl_verification")}`,
-    `Needs OpenClaw lightweight review: ${countStatus(report.rows, "needs_openclaw")}`,
+    `Needs OpenClaw lightweight review: ${countDiffClass(report.rows, "content_policy_delta")}`,
     "",
     "## Caveats",
     "",
@@ -670,14 +702,14 @@ function renderMarkdown(report: MaintenanceReport): string {
     "",
     "## Changed Or Queued Rows",
     "",
-    "| Entity | Source | Status | Recommended action |",
-    "| --- | --- | --- | --- |",
+    "| Entity | Source | Status | Diff class | Recommended action |",
+    "| --- | --- | --- | --- | --- |",
     ...report.rows
       .filter((row) => row.status !== "unchanged" && row.status !== "not_scanned")
       .slice(0, 100)
       .map(
         (row) =>
-          `| ${escapeTable(row.entitySlug)} | ${escapeTable(row.sourceUrl)} | \`${row.status}\` | ${escapeTable(row.recommendedAction)} |`
+          `| ${escapeTable(row.entitySlug)} | ${escapeTable(row.sourceUrl)} | \`${row.status}\` | \`${row.diffClass ?? "unclassified"}\` | ${escapeTable(row.recommendedAction)} |`
       )
   ];
 
@@ -686,6 +718,10 @@ function renderMarkdown(report: MaintenanceReport): string {
 
 function countStatus(rows: MaintenanceRow[], status: Stage1Status): number {
   return rows.filter((row) => row.status === status).length;
+}
+
+function countDiffClass(rows: MaintenanceRow[], diffClass: SourceDiffClass): number {
+  return rows.filter((row) => row.diffClass === diffClass).length;
 }
 
 function escapeTable(value: string): string {

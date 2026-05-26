@@ -75,6 +75,7 @@ Each private snapshot record should include:
 - `sourceType`
 - `publicSnapshotHash`
 - `retrievedAt`
+- `sourceLastModified`
 - `fetchStatus`
 - `fetchedAt`
 - `httpStatus`
@@ -109,6 +110,42 @@ Allowed diff statuses:
 - `metadata_changed`
 - `metadata_only`
 - `unavailable`
+
+## Source Diff Candidate Contract
+
+Private source diffs can be converted into a smaller review queue with:
+
+```bash
+pnpm source-diffs:build -- --previous-release-id <old> --current-release-id <new>
+```
+
+or:
+
+```bash
+pnpm source-diffs:build -- --diff-file .local/source-snapshots/diffs/<old>__<new>.json
+```
+
+The output lives under:
+
+```text
+.local/source-diff-candidates/<previousReleaseId>__<currentReleaseId>/
+  candidates.json
+  summary.md
+```
+
+This output is still private maintenance metadata. It may include short policy-relevant excerpts, but it must not include full normalized source text, raw HTML, PDF full text, screenshots, browser profiles, or source storage paths intended for public use.
+
+Allowed candidate classes:
+
+- `content_policy_delta`: short source excerpts suggest policy-relevant text changed.
+- `source_index_expansion`: a new official source appears to contain policy-relevant text.
+- `metadata_or_chrome_delta`: hashes or metadata changed without a reliable policy-text signal.
+- `http_or_access_noise`: HTTP failures, blocks, timeouts, or Firecrawl failures without proof of policy change.
+- `source_unavailable`: the source is unavailable and needs repair, not claim publication.
+- `source_removed_candidate`: a previously tracked source disappeared and may require claim deprecation review.
+- `source_replaced_candidate`: a source appears replaced by another official source.
+
+OpenClaw should only process high-confidence `content_policy_delta` rows. It should process one source at a time, with no concurrency, no `policy-manager` full workflow, no direct production database writes, no direct `main` push, and no public release promotion.
 
 ## P0: Documentation And Boundary
 
@@ -162,6 +199,15 @@ The maintenance scanner should compare current source results against private sn
 - Fetch failed or blocked with other strong change signals: route to Firecrawl verification candidate.
 
 HTTP failures, 403s, robots blocks, timeouts, and Firecrawl failures are not policy changes by themselves.
+
+The HTTP-first scanner should also write an explicit `diffClass` for routing:
+
+- `content_policy_delta`: eligible for the OpenClaw lightweight review queue.
+- `metadata_or_chrome_delta`: write a no-change maintenance note or keep for later inspection.
+- `http_or_access_noise`: record source-health risk only.
+- `source_index_expansion`: review as possible source discovery, not as a changed claim.
+
+The source diff candidate builder then narrows private normalized-text diffs into short review artifacts. Candidate hunks are routing aids; they do not publish canonical claims and do not replace original official source evidence.
 
 ## P3: Change Page Integration
 

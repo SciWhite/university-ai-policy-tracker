@@ -71,6 +71,7 @@ interface PrivateSourceSnapshotRecord {
   publicSnapshotHash: string;
   releaseId: string;
   retrievedAt?: string;
+  sourceLastModified?: string;
   sourceRightsPolicy: string;
   sourceType?: string;
   sourceUrl: string;
@@ -293,6 +294,9 @@ async function fetchAndNormalize(
     const contentLength = Number(response.headers.get("content-length") ?? "0") || undefined;
     const finalUrl = response.url || record.sourceUrl;
     const pdfSource = isPdfContent(record.sourceUrl, contentType);
+    const sourceLastModified = normalizeHttpDate(
+      response.headers.get("last-modified") ?? undefined
+    );
 
     if (pdfSource && options.includePdf) {
       const pdfBytes = Buffer.from(await response.arrayBuffer());
@@ -303,7 +307,8 @@ async function fetchAndNormalize(
           contentType,
           fetchedAt: new Date().toISOString(),
           finalUrl,
-          httpStatus: response.status
+          httpStatus: response.status,
+          sourceLastModified
         },
         pdfBytes,
         normalizedTextPath,
@@ -321,7 +326,8 @@ async function fetchAndNormalize(
         fetchedAt: new Date().toISOString(),
         fetchStatus: "unsupported_content_type",
         finalUrl,
-        httpStatus: response.status
+        httpStatus: response.status,
+        sourceLastModified
       };
     }
 
@@ -339,7 +345,8 @@ async function fetchAndNormalize(
       httpStatus: response.status,
       normalizedTextBytes: Buffer.byteLength(normalized, "utf8"),
       normalizedTextHash: hash(normalized),
-      normalizedTextPath
+      normalizedTextPath,
+      sourceLastModified
     };
   } catch (error) {
     return {
@@ -357,7 +364,7 @@ async function normalizePdfSource(
   record: PrivateSourceSnapshotRecord,
   pdfBytes: Buffer,
   normalizedTextPath: string,
-  options: Pick<CliOptions, "enableFirecrawlPdf" | "minPdfTextChars">
+  options: Pick<CliOptions, "enableFirecrawlPdf" | "firecrawlZeroDataRetention" | "minPdfTextChars">
 ): Promise<PrivateSourceSnapshotRecord> {
   const extracted = await extractPdfTextWithPython(pdfBytes);
   const normalized = normalizeSourceText(extracted.text);
@@ -374,10 +381,10 @@ async function normalizePdfSource(
   }
 
   if (options.enableFirecrawlPdf) {
-      const firecrawl = await extractPdfTextWithFirecrawl(
-        record.sourceUrl,
-        options.firecrawlZeroDataRetention
-      );
+    const firecrawl = await extractPdfTextWithFirecrawl(
+      record.sourceUrl,
+      options.firecrawlZeroDataRetention
+    );
     const firecrawlNormalized = normalizeSourceText(firecrawl.text);
     if (firecrawlNormalized.length >= options.minPdfTextChars) {
       await writeFile(normalizedTextPath, `${firecrawlNormalized}\n`, "utf8");
@@ -697,6 +704,13 @@ function normalizeSourceText(value: string): string {
       .replace(/\s+/g, " ")
       .trim()
   );
+}
+
+function normalizeHttpDate(value: string | undefined): string | undefined {
+  if (!value) return undefined;
+  const parsed = Date.parse(value);
+  if (Number.isNaN(parsed)) return undefined;
+  return new Date(parsed).toISOString();
 }
 
 function decodeBasicEntities(value: string): string {
