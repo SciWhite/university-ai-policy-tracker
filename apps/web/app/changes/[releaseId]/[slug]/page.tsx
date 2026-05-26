@@ -92,6 +92,9 @@ export default async function ReleaseEntityChangePage({
             <MetaLabel label="Source hash">
               {record.sourceSnapshotChanged}
             </MetaLabel>
+            <MetaLabel label="Source text">
+              {record.sourceTextChanged}
+            </MetaLabel>
           </div>
         </div>
         <div className="entity-header__actions">

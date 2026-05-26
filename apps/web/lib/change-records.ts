@@ -73,6 +73,7 @@ export interface ChangeRecord {
   sourceCount: number;
   sourceRemoved: number;
   sourceSnapshotChanged: number;
+  sourceTextChanged: number;
   summary: string;
   trackerRemovedClaims: number;
   unchanged: number;
@@ -167,6 +168,7 @@ function buildChangeRecord(
     sourceRemoved: semanticCounts.sourceRemoved,
     sourceChanges,
     sourceSnapshotChanged: semanticCounts.sourceSnapshotChanged,
+    sourceTextChanged: semanticCounts.sourceTextChanged,
     claimChanges,
     diffLines: buildDiffPreview(summary, diff),
     trackerRemovedClaims: semanticCounts.trackerRemovedClaims,
@@ -206,6 +208,7 @@ function buildDiffOnlyChangeRecord(diff: ReleaseEntityDiff): ChangeRecord {
     sourceCount: 0,
     sourceRemoved: semanticCounts.sourceRemoved,
     sourceSnapshotChanged: semanticCounts.sourceSnapshotChanged,
+    sourceTextChanged: semanticCounts.sourceTextChanged,
     summary: "",
     trackerRemovedClaims: semanticCounts.trackerRemovedClaims,
     universityUrl: `/universities/${diff.entitySlug}`,
@@ -319,6 +322,17 @@ function buildReleaseDiffLines(diff: ReleaseEntityDiff): DiffPreviewLine[] {
     oldLineNumber += 1;
     newLineNumber += 1;
 
+    if (row.sourceTextDiffStatus || row.sourceTextDiffSummary) {
+      lines.push({
+        type: "equal",
+        oldLineNumber,
+        newLineNumber,
+        value: formatSourceTextDiffLine(row)
+      });
+      oldLineNumber += 1;
+      newLineNumber += 1;
+    }
+
     if (
       row.changeType.endsWith("_removed") ||
       row.changeType === "claim_modified" ||
@@ -362,6 +376,9 @@ function countSemanticRows(rows: ReleaseDiffRow[]) {
       .length,
     sourceSnapshotChanged: rows.filter(
       (row) => row.changeCategory === "source_snapshot_changed"
+    ).length,
+    sourceTextChanged: rows.filter(
+      (row) => row.sourceTextDiffStatus === "normalized_text_changed"
     ).length,
     trackerRemovedClaims: rows.filter(
       (row) => row.changeCategory === "tracker_removed_claim"
@@ -443,6 +460,15 @@ function formatSourceFreshnessLines(row: ReleaseDiffRow): string[] {
   }
 
   return [];
+}
+
+function formatSourceTextDiffLine(row: ReleaseDiffRow): string {
+  const status = row.sourceTextDiffStatus
+    ? `Source text diff status: ${row.sourceTextDiffStatus}`
+    : "Source text diff status: unavailable";
+  const summary = row.sourceTextDiffSummary ? ` ${row.sourceTextDiffSummary}` : "";
+
+  return `${status}.${summary}`;
 }
 
 function compareFreshness(left: ChangeRecord, right: ChangeRecord): number {

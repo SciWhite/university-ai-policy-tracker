@@ -130,6 +130,8 @@ The output lives under:
 ```text
 .local/source-diff-candidates/<previousReleaseId>__<currentReleaseId>/
   candidates.json
+  openclaw-queue.json
+  review-report.md
   summary.md
 ```
 
@@ -223,6 +225,60 @@ Public rows may expose only:
 - `sourceTextDiffSummary`
 
 These fields are explanatory metadata. They do not change the official source boundary or claim review state.
+
+The public changes UI should visibly distinguish:
+
+- claim/evidence diff rows from public release snapshots;
+- source snapshot hash changes;
+- optional private source-text diff status;
+- source server `Last-Modified` when available;
+- tracker checked time when the source does not declare `Last-Modified`.
+
+If optional private diff metadata is absent, pages must still render with the public release diff only.
+
+## P4: Review And OpenClaw Queue
+
+`pnpm source-diffs:build` also writes:
+
+- `review-report.md`: a Codex/human review report with short hunks, confidence,
+  source timing, recommended action, and routing class.
+- `openclaw-queue.json`: only high-confidence `content_policy_delta` rows for
+  lightweight OpenClaw review.
+
+`openclaw-queue.json` is not an execution command by itself. It is a queue input
+for the OCI host. Operators or scripts should feed each item into:
+
+```bash
+pnpm maintenance:start-light-review -- --run-id <maintenance-run-id> --target <entitySlug>=<sourceUrl>
+```
+
+Rules:
+
+- Process one queue item at a time.
+- Do not call `policy-manager`.
+- Do not run the full crawl-designer / crawl-worker / extractor / reviewer /
+  report-writer pipeline.
+- Do not push `main`.
+- Do not write the production database.
+- Do not create public claims from source diff candidates without staged
+  artifact validation and Codex review.
+- If the lightweight review finds no policy-content change, write only a
+  maintenance note under `staging/uapt-maintenance/<run-id>/notes/`.
+
+## P5: Source Diff Tests
+
+The source diff layer has a dedicated smoke test:
+
+```bash
+pnpm smoke:source-diffs
+```
+
+The test builds a temporary old/new private snapshot pair, generates source diff
+candidates, confirms a `content_policy_delta`, confirms the OpenClaw queue, and
+checks that candidate outputs do not leak private `normalized.md` paths.
+
+`pnpm check` includes this smoke test so future changes cannot silently break
+candidate routing.
 
 ## Validation Checklist
 

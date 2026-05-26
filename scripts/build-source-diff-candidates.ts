@@ -6,6 +6,7 @@ import {
   TRACKER_METADATA_LICENSE,
   sourceDiffCandidateDocumentSchema,
   type SourceDiffCandidate,
+  type SourceDiffCandidateDocument,
   type SourceDiffClass,
   type SourceDiffHunk,
   type SourceDiffReviewAction
@@ -76,6 +77,28 @@ interface PrivateSnapshotManifest {
   records: PrivateSourceSnapshotRecord[];
   releaseId: string;
   schemaVersion: "uapt-private-source-snapshot-manifest-v1";
+}
+
+interface OpenClawQueueItem {
+  candidateId: string;
+  confidence: number;
+  currentReleaseId: string;
+  entityName: string;
+  entitySlug: string;
+  hunkCount: number;
+  previousReleaseId: string;
+  recommendedAction: SourceDiffReviewAction;
+  sourceLastModified?: string;
+  sourceUrl: string;
+  trackerCheckedAt?: string;
+}
+
+interface OpenClawQueueDocument {
+  boundary: string;
+  generatedAt: string;
+  items: OpenClawQueueItem[];
+  recommendedCommand: string;
+  schemaVersion: "uapt-source-diff-openclaw-queue-v1";
 }
 
 const DEFAULT_OUTPUT_ROOT = ".local/source-snapshots";
@@ -158,7 +181,13 @@ async function main(): Promise<void> {
 
   await mkdir(outputDir, { recursive: true });
   await writeJson(path.join(outputDir, "candidates.json"), document);
+  await writeJson(path.join(outputDir, "openclaw-queue.json"), buildOpenClawQueue(document));
   await writeFile(path.join(outputDir, "summary.md"), renderMarkdown(document), "utf8");
+  await writeFile(
+    path.join(outputDir, "review-report.md"),
+    renderReviewReport(document),
+    "utf8"
+  );
 
   console.log(
     JSON.stringify(
@@ -166,6 +195,9 @@ async function main(): Promise<void> {
         candidates: document.candidates.length,
         currentReleaseId: document.currentReleaseId,
         outputDir: path.relative(repoRoot, outputDir),
+        openClawQueue: document.candidates.filter(
+          (candidate) => candidate.diffClass === "content_policy_delta"
+        ).length,
         previousReleaseId: document.previousReleaseId,
         summary: document.summary
       },
@@ -446,13 +478,7 @@ function summarize(candidates: SourceDiffCandidate[]): Record<string, number> {
   return summary;
 }
 
-function renderMarkdown(document: {
-  candidates: SourceDiffCandidate[];
-  currentReleaseId: string;
-  generatedAt: string;
-  previousReleaseId: string;
-  summary: Record<string, number>;
-}): string {
+function renderMarkdown(document: SourceDiffCandidateDocument): string {
   const lines = [
     `# Source Diff Candidates ${document.previousReleaseId} -> ${document.currentReleaseId}`,
     "",
@@ -468,7 +494,7 @@ function renderMarkdown(document: {
     "",
     "## OpenClaw Queue",
     "",
-    "OpenClaw should process only `content_policy_delta` rows, one source at a time, with no concurrency and no automatic push.",
+    "OpenClaw should process only `content_policy_delta` rows, one source at a time, with no concurrency, no policy-manager full workflow, and no automatic push.",
     "",
     "| Entity | Class | Confidence | Action | Source |",
     "| --- | --- | ---: | --- | --- |",
@@ -479,6 +505,95 @@ function renderMarkdown(document: {
           `| ${escapeTable(candidate.entitySlug)} | \`${candidate.diffClass}\` | ${candidate.confidence.toFixed(2)} | \`${candidate.recommendedAction}\` | ${escapeTable(candidate.sourceUrl)} |`
       )
   ];
+
+  return `${lines.join("\n")}\n`;
+}
+
+function buildOpenClawQueue(document: SourceDiffCandidateDocument): OpenClawQueueDocument {
+  const items = document.candidates
+    .filter((candidate) => candidate.diffClass === "content_policy_delta")
+    .map((candidate) => ({
+      candidateId: candidate.candidateId,
+      confidence: candidate.confidence,
+      currentReleaseId: candidate.currentReleaseId,
+      entityName: candidate.entityName,
+      entitySlug: candidate.entitySlug,
+      hunkCount: candidate.hunks.length,
+      previousReleaseId: candidate.previousReleaseId,
+      recommendedAction: candidate.recommendedAction,
+      sourceLastModified: candidate.sourceLastModified,
+      sourceUrl: candidate.sourceUrl,
+      trackerCheckedAt: candidate.trackerCheckedAt
+    }));
+
+  return {
+    schemaVersion: "uapt-source-diff-openclaw-queue-v1",
+    generatedAt: document.generatedAt,
+    boundary:
+      "Queue input for lightweight OpenClaw review only. Process one source at a time. Do not run policy-manager, push main, write production DB, or publish canonical claims.",
+    recommendedCommand:
+      "pnpm maintenance:start-light-review -- --run-id <maintenance-run-id> --target <entitySlug>=<sourceUrl>",
+    items
+  };
+}
+
+function renderReviewReport(document: SourceDiffCandidateDocument): string {
+  const lines = [
+    `# Source Diff Review Report ${document.previousReleaseId} -> ${document.currentReleaseId}`,
+    "",
+    `Generated at: ${document.generatedAt}`,
+    "",
+    "Status: private maintenance review input",
+    "",
+    "This report contains short policy-relevant excerpts for routing only. It is not public claim evidence, legal advice, academic integrity advice, or proof of official policy publication timing.",
+    "",
+    "## Recommended Workflow",
+    "",
+    "1. Review `content_policy_delta` rows first.",
+    "2. Send only high-confidence `content_policy_delta` rows to one lightweight OpenClaw agent, one source at a time.",
+    "3. Write no-change notes for `metadata_or_chrome_delta` rows.",
+    "4. Send `http_or_access_noise` and `source_unavailable` rows to source-health repair, not claim publication.",
+    "5. Review `source_removed_candidate` rows before deprecating claims.",
+    "",
+    "## Candidates",
+    ""
+  ];
+
+  for (const candidate of document.candidates) {
+    lines.push(
+      `### ${candidate.entityName} (${candidate.entitySlug})`,
+      "",
+      `- Candidate: \`${candidate.candidateId}\``,
+      `- Class: \`${candidate.diffClass}\``,
+      `- Confidence: ${candidate.confidence.toFixed(2)}`,
+      `- Action: \`${candidate.recommendedAction}\``,
+      `- Source: ${candidate.sourceUrl}`,
+      candidate.sourceLastModified
+        ? `- Source Last-Modified: ${candidate.sourceLastModified}`
+        : candidate.trackerCheckedAt
+          ? `- Tracker checked at: ${candidate.trackerCheckedAt}`
+          : "- Source time: unavailable",
+      "",
+      "#### Short Diff Hunks",
+      ""
+    );
+
+    if (!candidate.hunks.length) {
+      lines.push("No policy-relevant excerpt hunk was generated.", "");
+      continue;
+    }
+
+    for (const hunk of candidate.hunks) {
+      lines.push(
+        `- ${hunk.summary}`,
+        `  - Terms: ${hunk.policySignalTerms.join(", ") || "none"}`
+      );
+      if (hunk.oldExcerpt) lines.push(`  - Old: ${escapeMarkdownLine(hunk.oldExcerpt)}`);
+      if (hunk.newExcerpt) lines.push(`  - New: ${escapeMarkdownLine(hunk.newExcerpt)}`);
+    }
+
+    lines.push("");
+  }
 
   return `${lines.join("\n")}\n`;
 }
@@ -505,6 +620,10 @@ async function writeJson(file: string, value: unknown): Promise<void> {
 
 function escapeTable(value: string): string {
   return value.replaceAll("|", "\\|").replace(/\s+/g, " ").trim();
+}
+
+function escapeMarkdownLine(value: string): string {
+  return value.replace(/\s+/g, " ").trim();
 }
 
 async function findRepoRoot(): Promise<string> {

@@ -150,6 +150,7 @@ export interface ReleaseEntityDiff {
   sourceAdded: number;
   sourceRemoved: number;
   sourceSnapshotChanged: number;
+  sourceTextChanged: number;
   trackerRemovedClaims: number;
   unchanged: number;
 }
@@ -182,6 +183,7 @@ export interface ReleaseDiffCounts {
   sourceAdded: number;
   sourceRemoved: number;
   sourceSnapshotChanged: number;
+  sourceTextChanged: number;
   trackerRemovedClaims: number;
   unchanged: number;
 }
@@ -417,6 +419,7 @@ function buildEntityDiff(
     sourceAdded: counts.sourceAdded,
     sourceRemoved: counts.sourceRemoved,
     sourceSnapshotChanged: counts.sourceSnapshotChanged,
+    sourceTextChanged: counts.sourceTextChanged,
     trackerRemovedClaims: counts.trackerRemovedClaims,
     unchanged: counts.unchanged
   };
@@ -1037,6 +1040,9 @@ function summarizeRows(rows: ReleaseDiffRow[]): ReleaseDiffCounts {
       .length,
     sourceSnapshotChanged: rows.filter(
       (row) => row.changeCategory === "source_snapshot_changed"
+    ).length,
+    sourceTextChanged: rows.filter(
+      (row) => row.sourceTextDiffStatus === "normalized_text_changed"
     ).length,
     trackerRemovedClaims: rows.filter(
       (row) => row.changeCategory === "tracker_removed_claim"

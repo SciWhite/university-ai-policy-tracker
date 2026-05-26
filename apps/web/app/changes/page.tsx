@@ -71,8 +71,8 @@ export default async function ChangesPage() {
           <p>newly extracted claims</p>
         </div>
         <div>
-          <span>{releaseDiff.changeCounts.sourceSnapshotChanged}</span>
-          <p>source snapshot changes</p>
+          <span>{releaseDiff.changeCounts.sourceTextChanged}</span>
+          <p>private source text changes</p>
         </div>
       </section>
 
@@ -157,7 +157,8 @@ export default async function ChangesPage() {
                       <MetaLabel label="Diff">
                         policy {record.policyTextChanged} / extracted{" "}
                         {record.newlyExtractedClaims} / source{" "}
-                        {record.sourceSnapshotChanged}
+                        {record.sourceSnapshotChanged} / text{" "}
+                        {record.sourceTextChanged}
                       </MetaLabel>
                       <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
                       <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
@@ -208,7 +209,7 @@ function getChangeSummary(record: ChangeRecord): string {
     ? ` The latest tracked changed date is ${formatDate(record.lastChangedAt)}.`
     : " No changed date has been published yet.";
   const diff = record.diffRows.length
-    ? ` Latest tracker diff: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
+    ? ` Latest tracker diff: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes, and ${record.sourceTextChanged} private source-text changes where private snapshots are available.`
     : " No claim/evidence changes are recorded for the latest release.";
 
   return `${record.name} has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;

@@ -161,6 +161,9 @@ export default async function ChangeDetailPage({
               <MetaLabel label="Source snapshots">
                 {record.sourceSnapshotChanged}
               </MetaLabel>
+              <MetaLabel label="Source text">
+                {record.sourceTextChanged}
+              </MetaLabel>
               <MetaLabel label="Source added">{record.sourceAdded}</MetaLabel>
               <MetaLabel label="Source removed">{record.sourceRemoved}</MetaLabel>
             </div>
