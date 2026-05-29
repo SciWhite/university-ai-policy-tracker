@@ -581,30 +581,24 @@ function findClaimMatch(
     }
   }
 
-  const sourceTypeIndex = oldClaims.findIndex(
-    (claim, index) =>
-      !matchedOld.has(index) &&
-      claim.claimType === newClaim.claimType &&
-      firstSourceUrl(claim) === firstSourceUrl(newClaim)
+  const sourceTypeMatch = bestScopedClaimMatch(newClaim, oldClaims, matchedOld, (claim) =>
+    firstSourceUrl(claim) === firstSourceUrl(newClaim)
   );
-  if (sourceTypeIndex >= 0) {
+  if (sourceTypeMatch && sourceTypeMatch.score >= FUZZY_MATCH_THRESHOLD) {
     return {
-      claim: oldClaims[sourceTypeIndex],
-      index: sourceTypeIndex,
+      claim: sourceTypeMatch.claim,
+      index: sourceTypeMatch.index,
       method: "source_claim_type"
     };
   }
 
-  const snapshotIndex = oldClaims.findIndex(
-    (claim, index) =>
-      !matchedOld.has(index) &&
-      claim.claimType === newClaim.claimType &&
-      firstSnapshotHash(claim) === firstSnapshotHash(newClaim)
+  const snapshotMatch = bestScopedClaimMatch(newClaim, oldClaims, matchedOld, (claim) =>
+    firstSnapshotHash(claim) === firstSnapshotHash(newClaim)
   );
-  if (snapshotIndex >= 0) {
+  if (snapshotMatch && snapshotMatch.score >= FUZZY_MATCH_THRESHOLD) {
     return {
-      claim: oldClaims[snapshotIndex],
-      index: snapshotIndex,
+      claim: snapshotMatch.claim,
+      index: snapshotMatch.index,
       method: "source_claim_type"
     };
   }
@@ -621,6 +615,24 @@ function findClaimMatch(
   }
 
   return undefined;
+}
+
+function bestScopedClaimMatch(
+  newClaim: PolicyClaim,
+  oldClaims: PolicyClaim[],
+  matchedOld: Set<number>,
+  predicate: (claim: PolicyClaim) => boolean
+): { claim: PolicyClaim; index: number; score: number } | undefined {
+  let best: { claim: PolicyClaim; index: number; score: number } | undefined;
+
+  oldClaims.forEach((claim, index) => {
+    if (matchedOld.has(index) || claim.claimType !== newClaim.claimType) return;
+    if (!predicate(claim)) return;
+    const score = textSimilarity(claim.claimText, newClaim.claimText);
+    if (!best || score > best.score) best = { claim, index, score };
+  });
+
+  return best;
 }
 
 function claimsDiffer(oldClaim: PolicyClaim, newClaim: PolicyClaim): boolean {
