@@ -1115,6 +1115,10 @@ h3 {
   margin-top: 8px;
 }
 
+.table-record-meta a {
+  white-space: nowrap;
+}
+
 .ranking-cell {
   display: grid;
   gap: 2px;
@@ -1137,6 +1141,53 @@ h3 {
   color: var(--color-warning);
   line-height: 1.6;
   padding: 16px;
+}
+
+.coverage-region-list {
+  display: grid;
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.coverage-region,
+.coverage-city {
+  scroll-margin-top: 96px;
+}
+
+.coverage-region {
+  display: grid;
+  gap: 18px;
+}
+
+.coverage-region h2 {
+  border-bottom: 1px solid var(--color-border);
+  font-size: 22px;
+  margin: 0;
+  padding-bottom: 8px;
+}
+
+.coverage-city {
+  display: grid;
+  gap: 10px;
+}
+
+.coverage-city h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.report-coverage-table {
+  min-width: 1080px;
+}
+
+.report-coverage-table td:nth-child(4),
+.report-coverage-table td:nth-child(5) {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.report-coverage-table td:nth-child(6) {
+  white-space: nowrap;
 }
 
 .policy-meta,

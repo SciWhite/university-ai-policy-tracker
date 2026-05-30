@@ -988,7 +988,7 @@ Scope:
 Routes:
 
 ```text
-/reports/2026-05/policy-analysis
+/reports/monthly/2026-05/policy-analysis
 /compare
 /compare/{slugA}-vs-{slugB}
 ```

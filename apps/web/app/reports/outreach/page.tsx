@@ -46,7 +46,7 @@ export default async function OutreachPage() {
         <p className="lead">{outreach.description}</p>
         <div className="tag-row" aria-label="Outreach links">
           <MetaLabel label="Report">
-            <Link href="/reports/2026-05">May 2026 baseline</Link>
+            <Link href="/reports/monthly/2026-05">May 2026 monthly baseline</Link>
           </MetaLabel>
           <MetaLabel label="Dataset">
             <a href="/api/public/v1/datasets/latest.json">latest manifest</a>
@@ -73,13 +73,14 @@ export default async function OutreachPage() {
       >
         <DataList>
           <DataListRow
-            actions={<Link href="/reports/2026-05">Open</Link>}
+            actions={<Link href="/reports/monthly/2026-05">Open</Link>}
             metadata={<MetaLabel label="Type">Report</MetaLabel>}
           >
-            <h2>May 2026 baseline report</h2>
+            <h2>May 2026 monthly baseline report</h2>
             <p>
               Public report with coverage counts, review-state counts, example
-              institution records, data links, methodology, and limitations.
+              institution records, all-university GEO coverage, data links,
+              methodology, and limitations.
             </p>
           </DataListRow>
           <DataListRow

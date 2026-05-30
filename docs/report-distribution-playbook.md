@@ -27,10 +27,10 @@ conclusions. Analysis summaries are derived metadata, not canonical evidence.
 Current report distribution surfaces:
 
 - `/reports`
-- `/reports/2026-05`
+- `/reports/monthly/2026-05`
 - `/reports/outreach`
 - `/api/public/v1/reports/index.json`
-- `/api/public/v1/reports/2026-05/chart-data.json`
+- `/api/public/v1/reports/monthly/2026-05/chart-data.json`
 - `/api/public/v1/reports/outreach.json`
 - `/feeds/reports.xml`
 - `/feeds/recent-changes.xml`
@@ -38,6 +38,10 @@ Current report distribution surfaces:
 
 The HTML pages are for readers and crawlers. The JSON routes are for agents,
 newsletter tooling, notebooks, and repeatable citation workflows.
+
+Legacy monthly report paths such as `/reports/2026-05` should redirect to the
+canonical `/reports/monthly/YYYY-MM` route so public indexing and citation
+signals consolidate on one URL.
 
 ## Outreach Rules
 
@@ -70,6 +74,9 @@ For each report, keep:
 
 Visual chart assets should use dataset counts and review-state labels, not
 policy-quality rankings.
+
+GEO-specific monthly report rules, including the private Google Search Console
+boundary, are documented in `docs/geo-monthly-reports.md`.
 
 ## Distribution Rhythm
 

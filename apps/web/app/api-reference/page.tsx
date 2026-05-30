@@ -119,9 +119,9 @@ const apiFamilies = [
   },
   {
     label: "Report chart data",
-    path: `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`,
+    path: `/api/public/${PUBLIC_API_VERSION}/reports/monthly/2026-05/chart-data.json`,
     description:
-      "Chart-ready source-language and review-state distributions for the May 2026 baseline report."
+      "Chart-ready source-language, review-state, region coverage, city/campus coverage, and ranking coverage distributions for the May 2026 monthly baseline report."
   },
   {
     label: "Reports outreach package",

@@ -100,7 +100,7 @@ https://eduaipolicy.org/api/public/v1/datasets/latest.json
 Report chart data is available at:
 
 ```text
-https://eduaipolicy.org/api/public/v1/reports/2026-05/chart-data.json
+https://eduaipolicy.org/api/public/v1/reports/monthly/2026-05/chart-data.json
 ```
 
 Embeddable widget discovery and widget JSON are available at:

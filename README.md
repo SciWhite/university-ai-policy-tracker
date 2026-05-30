@@ -130,7 +130,7 @@ Versioned public JSON:
 - Dataset release manifest: <https://eduaipolicy.org/api/public/v1/datasets/latest.json>
 - Reports index: <https://eduaipolicy.org/api/public/v1/reports/index.json>
 - Reports outreach package: <https://eduaipolicy.org/api/public/v1/reports/outreach.json>
-- May 2026 report chart data: <https://eduaipolicy.org/api/public/v1/reports/2026-05/chart-data.json>
+- May 2026 monthly report chart data: <https://eduaipolicy.org/api/public/v1/reports/monthly/2026-05/chart-data.json>
 - Contribution index: <https://eduaipolicy.org/api/public/v1/contributions/index.json>
 - Contribution review policy: <https://eduaipolicy.org/api/public/v1/contributions/review-policy.json>
 - MCP manifest: <https://eduaipolicy.org/api/public/v1/mcp/manifest.json>

@@ -296,9 +296,9 @@ export function buildPublicApiIndexData(
         "Markdown data dictionary for the public dataset release."
       ),
       endpoint(
-        "Report chart data",
-        `/api/public/${PUBLIC_API_VERSION}/reports/2026-05/chart-data.json`,
-        "Chart-ready source-language and review-state distributions for the May 2026 baseline report."
+        "Monthly report chart data",
+        `/api/public/${PUBLIC_API_VERSION}/reports/monthly/2026-05/chart-data.json`,
+        "Chart-ready source-language, review-state, region coverage, city/campus coverage, and ranking coverage distributions for the May 2026 monthly baseline report."
       ),
       endpoint(
         "Reports index",

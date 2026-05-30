@@ -7,7 +7,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Canonical entity pages start at /universities.
 - The AI/search database entry page is available at /university-ai-policy-database.
 - Trust pages are available at /methodology, /citation, /datasets, and /changes.
-- Reports and outreach assets are available at /reports, /reports/2026-05, and /reports/outreach.
+- Reports and outreach assets are available at /reports, /reports/monthly/2026-05, and /reports/outreach.
 - Public feeds are available at /feeds/reports.xml, /feeds/recent-changes.xml, and /feeds/atom.xml.
 - Embeddable widgets are documented at /widgets.
 - API reference and rate-limit guidance are available at /api-reference.
@@ -39,7 +39,7 @@ University AI Policy Tracker is an open, evidence-backed database of university 
 - Dataset checksums and the data dictionary are available at /api/public/v1/datasets/checksums.txt and /api/public/v1/datasets/data-dictionary.md.
 - Report index metadata is available at /api/public/v1/reports/index.json.
 - Report outreach copy is available at /api/public/v1/reports/outreach.json.
-- Report chart data is available at /api/public/v1/reports/2026-05/chart-data.json.
+- Monthly report chart data is available at /api/public/v1/reports/monthly/2026-05/chart-data.json.
 - Widget discovery is available at /api/public/v1/widgets/index.json.
 - Widget JSON endpoints are available at /api/public/v1/widgets/university-status/{slug}.json and /api/public/v1/widgets/recent-changes.json.
 - Additional widget JSON endpoints are available at /api/public/v1/widgets/policy-coverage/{slug}.json, /api/public/v1/widgets/source-freshness/{slug}.json, and /api/public/v1/widgets/review-state/{slug}.json.

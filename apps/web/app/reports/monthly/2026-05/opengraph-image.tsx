@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "University AI Policy Tracker May 2026 baseline report share image";
+  "University AI Policy Tracker May 2026 monthly baseline report share image";
 export const contentType = "image/png";
 export const runtime = "edge";
 export const size = {
@@ -46,7 +46,7 @@ export default function Image() {
               maxWidth: 940
             }}
           >
-            May 2026 Dataset Baseline Report
+            May 2026 Monthly Baseline Report
           </div>
           <div
             style={{
@@ -57,7 +57,7 @@ export default function Image() {
             }}
           >
             Evidence-backed university AI policy records, source URLs, review
-            states, change logs, and versioned public JSON.
+            states, change logs, and all-university GEO coverage.
           </div>
         </div>
         <div
@@ -81,7 +81,7 @@ export default function Image() {
               padding: "14px 20px"
             }}
           >
-            Public data release
+            Public monthly report
           </div>
         </div>
       </div>

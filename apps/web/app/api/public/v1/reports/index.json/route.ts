@@ -38,6 +38,8 @@ export async function GET() {
     data: {
       reports: reports.map((report) => ({
         slug: report.slug,
+        type: report.type,
+        month: report.month,
         title: report.title,
         description: report.description,
         canonicalUrl: report.canonicalUrl,
@@ -50,6 +52,7 @@ export async function GET() {
         feedUrl: report.feedUrl,
         ogImageUrl: report.ogImageUrl,
         metrics: report.metrics,
+        coverageSummary: report.coverageSummary,
         dataLinks: report.dataLinks,
         methodologyLinks: report.methodologyLinks,
         summaryBullets: report.summaryBullets,
