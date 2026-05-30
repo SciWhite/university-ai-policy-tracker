@@ -68,9 +68,12 @@ const LOCALIZABLE_PATHS = [
   "/",
   "/search",
   "/universities",
+  "/analysis",
+  "/changes",
   "/methodology",
   "/datasets",
-  "/citation"
+  "/citation",
+  "/contribute"
 ] as const;
 
 export function isSupportedLocale(value: string): value is SupportedLocale {

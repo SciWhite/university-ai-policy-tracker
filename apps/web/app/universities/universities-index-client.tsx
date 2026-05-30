@@ -5,11 +5,11 @@ import type {
   CatalogUniversityRanking,
   RankingSystemId
 } from "@uapt/shared";
-import { NO_ADVICE_BOUNDARY } from "@uapt/shared";
 import { DocumentLink as Link } from "@/components/document-link";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import { localizeHref, type SupportedLocale } from "@/lib/i18n";
+import { getPageCopy } from "@/lib/page-copy";
 import type {
   StaticUniversityIndexRecord,
   UniversityIndexCoverageFilter,
@@ -45,6 +45,7 @@ export function UniversitiesIndexClient({
   rankingSystems,
   records
 }: UniversitiesIndexClientProps) {
+  const copy = getPageCopy(locale).universities;
   const [filters, setFilters] = useState<UniversityIndexFilters>(defaultFilters);
 
   useEffect(() => {
@@ -97,53 +98,37 @@ export function UniversitiesIndexClient({
   return (
     <main className="page-shell page-shell--wide">
       <section className="hero">
-        <p className="kicker">Evidence records</p>
-        <h1>Browse source-backed university AI policy records</h1>
-        <p className="lead">
-          Filter public records by institution, ranking coverage, claims,
-          official sources, review state, and versioned public JSON.
-        </p>
+        <p className="kicker">{copy.kicker}</p>
+        <h1>{copy.heading}</h1>
+        <p className="lead">{copy.lead}</p>
       </section>
 
-      <section className="metrics-grid" aria-label="University coverage">
+      <section className="metrics-grid" aria-label={copy.coverageLabel}>
         <div>
           <span>{records.length}</span>
-          <p>university records</p>
+          <p>{copy.universityRecords}</p>
         </div>
         <div>
           <span>{totalClaims}</span>
-          <p>source-backed claims</p>
+          <p>{copy.sourceBackedClaims}</p>
         </div>
         <div>
           <span>{sourceCount}</span>
-          <p>official source attributions</p>
+          <p>{copy.officialSourceAttributions}</p>
         </div>
         <div>
           <span>{rankedCount}</span>
-          <p>{selectedRankingLabel} ranked records</p>
+          <p>{copy.rankedRecords(selectedRankingLabel)}</p>
         </div>
       </section>
 
-      <section className="answer-strip" aria-label="University index answers">
-        <article className="answer-card">
-          <h2>What this index covers</h2>
-          <p>
-            Promoted public university records with source-backed claim counts,
-            official source attributions, review state, and canonical record
-            URLs.
-          </p>
-        </article>
-        <article className="answer-card">
-          <h2>How to use rankings</h2>
-          <p>
-            Ranking filters support discovery and coverage analysis only; they
-            do not create or override policy claims.
-          </p>
-        </article>
-        <article className="answer-card">
-          <h2>Reuse boundary</h2>
-          <p>{NO_ADVICE_BOUNDARY}</p>
-        </article>
+      <section className="answer-strip" aria-label={copy.answersLabel}>
+        {copy.answerCards.map((answer) => (
+          <article className="answer-card" key={answer.title}>
+            <h2>{answer.title}</h2>
+            <p>{answer.text}</p>
+          </article>
+        ))}
       </section>
 
       <section
@@ -152,11 +137,8 @@ export function UniversitiesIndexClient({
         data-university-index-count={records.length}
       >
         <div className="section-heading">
-          <h2>Index</h2>
-          <p>
-            Ranking filters are discovery aids; policy claims still come from
-            official sources.
-          </p>
+          <h2>{copy.indexTitle}</h2>
+          <p>{copy.indexLead}</p>
         </div>
 
         <form
@@ -166,7 +148,7 @@ export function UniversitiesIndexClient({
           onSubmit={handleSubmit}
         >
           <label>
-            <span>Search</span>
+            <span>{copy.search}</span>
             <input
               name="q"
               onChange={(event) =>
@@ -175,13 +157,13 @@ export function UniversitiesIndexClient({
                   q: event.target.value
                 }))
               }
-              placeholder="University, country, city"
+              placeholder={copy.searchPlaceholder}
               type="search"
               value={filters.q}
             />
           </label>
           <label>
-            <span>Ranking</span>
+            <span>{copy.ranking}</span>
             <select
               name="ranking"
               onChange={(event) =>
@@ -200,7 +182,7 @@ export function UniversitiesIndexClient({
             </select>
           </label>
           <label>
-            <span>Coverage</span>
+            <span>{copy.coverage}</span>
             <select
               name="coverage"
               onChange={(event) =>
@@ -211,13 +193,13 @@ export function UniversitiesIndexClient({
               }
               value={filters.coverage}
             >
-              <option value="all">All records</option>
-              <option value="ranked">Ranked in selected system</option>
-              <option value="missing">Missing selected rank</option>
+              <option value="all">{copy.allRecords}</option>
+              <option value="ranked">{copy.rankedInSelectedSystem}</option>
+              <option value="missing">{copy.missingSelectedRank}</option>
             </select>
           </label>
           <label>
-            <span>Sort</span>
+            <span>{copy.sort}</span>
             <select
               name="sort"
               onChange={(event) =>
@@ -228,15 +210,15 @@ export function UniversitiesIndexClient({
               }
               value={filters.sort}
             >
-              <option value="rank">Selected ranking</option>
-              <option value="recent">Recently checked</option>
-              <option value="name">University name</option>
-              <option value="claims">Claim count</option>
-              <option value="sources">Source count</option>
+              <option value="rank">{copy.selectedRanking}</option>
+              <option value="recent">{copy.recentlyChecked}</option>
+              <option value="name">{copy.universityName}</option>
+              <option value="claims">{copy.claimCount}</option>
+              <option value="sources">{copy.sourceCount}</option>
             </select>
           </label>
           <label>
-            <span>Order</span>
+            <span>{copy.order}</span>
             <select
               name="order"
               onChange={(event) =>
@@ -247,36 +229,36 @@ export function UniversitiesIndexClient({
               }
               value={filters.order}
             >
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
+              <option value="asc">{copy.ascending}</option>
+              <option value="desc">{copy.descending}</option>
             </select>
           </label>
-          <button type="submit">Apply</button>
+          <button type="submit">{copy.apply}</button>
           <button
             className="filter-reset-link"
             onClick={resetFilters}
             type="button"
           >
-            Reset
+            {copy.reset}
           </button>
         </form>
 
         <div className="table-summary" data-university-visible-count={filteredRecords.length}>
-          Showing {filteredRecords.length} of {records.length} records.{" "}
-          {filters.q ? <>Search: &quot;{filters.q}&quot;. </> : null}
-          Ranking view: {selectedRankingLabel}.
+          {copy.showing(filteredRecords.length, records.length)}{" "}
+          {filters.q ? <>{copy.searchSummary(filters.q)} </> : null}
+          {copy.rankingView(selectedRankingLabel)}
         </div>
 
         <div className="university-table-wrap">
           <table className="university-table">
             <thead>
               <tr>
-                <th>University</th>
-                <th>{selectedRankingLabel} rank</th>
-                <th>Claims</th>
-                <th>Sources</th>
-                <th>Last checked</th>
-                <th>Public JSON</th>
+                <th>{copy.university}</th>
+                <th>{copy.rank(selectedRankingLabel)}</th>
+                <th>{copy.claims}</th>
+                <th>{copy.sources}</th>
+                <th>{copy.lastChecked}</th>
+                <th>{copy.publicJson}</th>
               </tr>
             </thead>
             <tbody>
@@ -291,31 +273,31 @@ export function UniversitiesIndexClient({
                     <div className="table-record-subtitle">
                       {[record.region, record.country]
                         .filter((value) => value && value !== "Unknown")
-                        .join(", ") || "Location unknown"}
+                        .join(", ") || copy.locationUnknown}
                     </div>
                     <div className="table-record-meta">
                       {record.reviewState ? (
                         <StateLabel reviewState={record.reviewState} />
                       ) : null}
                       {record.confidence !== undefined ? (
-                        <MetaLabel label="Confidence">
+                        <MetaLabel label={copy.confidence}>
                           {Math.round(record.confidence * 100)}%
                         </MetaLabel>
                       ) : null}
                     </div>
                   </td>
-                  <td>{renderRanking(record.selectedRanking)}</td>
+                  <td>{renderRanking(record.selectedRanking, copy)}</td>
                   <td>{record.claimCount}</td>
                   <td>{record.sourceCount}</td>
                   <td>
                     {record.lastCheckedAt ? (
                       <span>{formatDate(record.lastCheckedAt)}</span>
                     ) : (
-                      <span className="table-muted">Unknown</span>
+                      <span className="table-muted">{copy.unknown}</span>
                     )}
                   </td>
                   <td>
-                    <a href={record.publicJsonUrl}>JSON</a>
+                    <a href={record.publicJsonUrl}>{copy.json}</a>
                   </td>
                 </tr>
               ))}
@@ -325,13 +307,12 @@ export function UniversitiesIndexClient({
 
         {!filteredRecords.length ? (
           <p className="notice-card">
-            No records match the current search and ranking coverage filters.
+            {copy.noMatches}
           </p>
         ) : null}
         {candidateClaims ? (
           <p className="notice-card">
-            {candidateClaims} candidate or needs-review claim records remain
-            visible for auditability. Review state is separate from confidence.
+            {copy.candidateNotice(candidateClaims)}
           </p>
         ) : null}
       </section>
@@ -411,16 +392,19 @@ function getFreshnessTime(record: StaticUniversityIndexRecord): number {
   return value ? new Date(value).getTime() : 0;
 }
 
-function renderRanking(ranking: CatalogUniversityRanking | undefined) {
-  if (!ranking) return <span className="table-muted">Not indexed</span>;
+function renderRanking(
+  ranking: CatalogUniversityRanking | undefined,
+  copy: ReturnType<typeof getPageCopy>["universities"]
+) {
+  if (!ranking) return <span className="table-muted">{copy.notIndexed}</span>;
 
   return (
     <span className="ranking-cell">
       <strong>{ranking.rankText}</strong>
       <span>
         {ranking.rankingYear}
-        {ranking.status === "partial" ? " · partial source" : ""}
-        {ranking.rankType === "derived_metric_order" ? " · derived order" : ""}
+        {ranking.status === "partial" ? ` · ${copy.partialSource}` : ""}
+        {ranking.rankType === "derived_metric_order" ? ` · ${copy.derivedOrder}` : ""}
       </span>
     </span>
   );

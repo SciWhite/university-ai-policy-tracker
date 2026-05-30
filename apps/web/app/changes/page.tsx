@@ -6,33 +6,45 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 import { getChangeRecords, type ChangeRecord } from "@/lib/change-records";
+import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { normalizeLocale } from "@/lib/i18n";
+import { getPageCopy } from "@/lib/page-copy";
 import { getLatestReleaseDiff } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
-const title = "Recent Changes | University AI Policy Tracker";
-const description =
-  "Recent tracker release diffs with newly extracted claims, comparable policy-text changes, source snapshot changes, review states, and versioned public JSON links.";
+interface ChangesPageProps {
+  params?: Promise<{
+    locale?: string;
+  }>;
+}
 
 export const dynamic = "force-static";
 export const revalidate = false;
 
-export function generateMetadata() {
-  const canonical = getAbsoluteSiteUrl("/changes");
+export async function generateMetadata({
+  params
+}: ChangesPageProps = {}) {
+  const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).changes;
+  const alternates = getLocalizedAlternates("/changes", locale);
+  const canonical = String(alternates.canonical);
 
   return {
-    title,
-    description,
-    alternates: { canonical },
+    title: copy.title,
+    description: copy.description,
+    alternates,
     openGraph: {
-      title,
-      description,
+      title: copy.title,
+      description: copy.description,
       url: canonical,
       type: "website"
     }
   };
 }
 
-export default async function ChangesPage() {
+export default async function ChangesPage({ params }: ChangesPageProps) {
+  const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).changes;
   const records = await getChangeRecords();
   const releaseDiff = await getLatestReleaseDiff();
   const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
@@ -48,75 +60,53 @@ export default async function ChangesPage() {
   return (
     <main className="page-shell page-shell--wide">
       <section className="hero">
-        <p className="kicker">Changes</p>
-        <h1>Tracker release changes and source freshness</h1>
-        <p className="lead">
-          Release-to-release tracker diffs for public university AI policy
-          records. Newly extracted claims and source snapshot changes are
-          separated from comparable policy-text changes.
-        </p>
+        <p className="kicker">{copy.kicker}</p>
+        <h1>{copy.heading}</h1>
+        <p className="lead">{copy.lead}</p>
       </section>
 
-      <section className="metrics-grid" aria-label="Recent changes summary">
+      <section className="metrics-grid" aria-label={copy.summaryLabel}>
         <div>
           <span>{changedRecords.length}</span>
-          <p>records with tracker diff rows</p>
+          <p>{copy.recordsWithDiffRows}</p>
         </div>
         <div>
           <span>{releaseDiff.changeCounts.policyTextChanged}</span>
-          <p>comparable policy-text changes</p>
+          <p>{copy.policyTextChanges}</p>
         </div>
         <div>
           <span>{releaseDiff.changeCounts.newlyExtractedClaims}</span>
-          <p>newly extracted claims</p>
+          <p>{copy.newlyExtractedClaims}</p>
         </div>
         <div>
           <span>{releaseDiff.changeCounts.sourceTextChanged}</span>
-          <p>private source text changes</p>
+          <p>{copy.privateSourceTextChanges}</p>
         </div>
       </section>
 
-      <section className="answer-strip" aria-label="Change feed answer blocks">
-        <article className="answer-card">
-          <h2>What changed means</h2>
-          <p>
-            A release diff compares the current promoted claim/evidence snapshot
-            with the previous public release. A newly extracted claim is not
-            necessarily newly published by the university.
-          </p>
-        </article>
-        <article className="answer-card">
-          <h2>What source hash means</h2>
-          <p>
-            A changed snapshot hash means the same source URL produced different
-            tracker content. It may reflect policy text, page layout, navigation,
-            or metadata.
-          </p>
-        </article>
-        <article className="answer-card">
-          <h2>How agents should use it</h2>
-          <p>
-            Use semantic fields such as policyTextChanged,
-            newlyExtractedClaims, and sourceSnapshotChanged before describing a
-            record as a policy update.
-          </p>
-        </article>
+      <section className="answer-strip" aria-label={copy.answersLabel}>
+        {copy.answers.map((answer) => (
+          <article className="answer-card" key={answer.title}>
+            <h2>{answer.title}</h2>
+            <p>{answer.text}</p>
+          </article>
+        ))}
       </section>
 
       <ReferenceBox
         className="compact-reference-box"
-        description="Versioned feed for records and agents."
-        title="Public changes artifact"
+        description={copy.artifactDescription}
+        title={copy.artifactTitle}
       >
         <ApiEndpointRow
-          description="Recent changed or checked records with canonical URLs, review states, claim counts, and claim evidence where available."
-          label="Recent changes JSON"
+          description={copy.recentChangesJsonDescription}
+          label={copy.recentChangesJson}
           path={recentChangesPath}
           url={recentChangesUrl}
         />
         <ApiEndpointRow
-          description="Latest release-to-release tracker diff with semantic categories for policy text, extracted claims, evidence, and source snapshots."
-          label="Latest release diff JSON"
+          description={copy.latestDiffJsonDescription}
+          label={copy.latestDiffJson}
           path={latestDiffPath}
           url={latestDiffUrl}
         />
@@ -124,13 +114,14 @@ export default async function ChangesPage() {
 
       <section className="section">
         <div className="section-heading">
-          <h2>Change timeline</h2>
+          <h2>{copy.timelineTitle}</h2>
           <p>
-            Latest release {releaseDiff.currentReleaseId}
-            {releaseDiff.previousReleaseId
-              ? ` compared with ${releaseDiff.previousReleaseId}`
-              : " is the initial tracked release"}
-            . {totalSources} source attributions across {records.length} records.
+            {copy.timelineLead(
+              releaseDiff.currentReleaseId,
+              releaseDiff.previousReleaseId,
+              totalSources,
+              records.length
+            )}
           </p>
         </div>
         {changedRecords.length ? (
@@ -144,9 +135,9 @@ export default async function ChangesPage() {
                     <>
                       <Link href={record.changeUrl}>Change detail</Link>
                       <Link href={record.universityUrl}>
-                        University page
+                        {copy.universityPage}
                       </Link>
-                      <a href={record.publicJsonUrl}>Public JSON</a>
+                      <a href={record.publicJsonUrl}>{copy.publicJson}</a>
                     </>
                   }
                   className="timeline-list__row"
@@ -154,21 +145,21 @@ export default async function ChangesPage() {
                   metadata={
                     <>
                       <StateLabel reviewState={record.reviewState} />
-                      <MetaLabel label="Diff">
+                      <MetaLabel label={copy.diff}>
                         policy {record.policyTextChanged} / extracted{" "}
                         {record.newlyExtractedClaims} / source{" "}
                         {record.sourceSnapshotChanged} / text{" "}
                         {record.sourceTextChanged}
                       </MetaLabel>
-                      <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
-                      <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
+                      <MetaLabel label={copy.claims}>{record.claimCount}</MetaLabel>
+                      <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
                       {record.lastCheckedAt ? (
-                        <MetaLabel label="Checked">
+                        <MetaLabel label={copy.checked}>
                           {formatDate(record.lastCheckedAt)}
                         </MetaLabel>
                       ) : null}
                       {record.lastChangedAt ? (
-                        <MetaLabel label="Changed">
+                        <MetaLabel label={copy.changed}>
                           {formatDate(record.lastChangedAt)}
                         </MetaLabel>
                       ) : null}
@@ -176,27 +167,25 @@ export default async function ChangesPage() {
                   }
                 >
                   <p className="timeline-list__date">
-                    {primaryDate ? formatDate(primaryDate) : "No public date yet"}
+                    {primaryDate ? formatDate(primaryDate) : copy.noPublicDate}
                   </p>
                   <h2>{record.name}</h2>
-                  <p>{getChangeSummary(record)}</p>
+                  <p>{getChangeSummary(record, copy)}</p>
                 </DataListRow>
               );
             })}
           </DataList>
         ) : (
           <p className="notice-card">
-            No claim/evidence changes are recorded for the latest public
-            release. The versioned feed URL remains available for readers and
-            agents.
+            {copy.noChanges}
           </p>
         )}
       </section>
 
       <section className="section">
         <div className="section-heading">
-          <h2>Boundary</h2>
-          <p>Freshness signals only</p>
+          <h2>{copy.boundaryTitle}</h2>
+          <p>{copy.boundaryLead}</p>
         </div>
         <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
       </section>
@@ -204,19 +193,21 @@ export default async function ChangesPage() {
   );
 }
 
-function getChangeSummary(record: ChangeRecord): string {
-  const changed = record.lastChangedAt
-    ? ` The latest tracked changed date is ${formatDate(record.lastChangedAt)}.`
-    : " No changed date has been published yet.";
-  const diff = record.diffRows.length
-    ? ` Latest tracker diff: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes, and ${record.sourceTextChanged} private source-text changes where private snapshots are available.`
-    : " No claim/evidence changes are recorded for the latest release.";
-
-  return `${record.name} has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;
-}
-
-function pluralize(label: string, count: number): string {
-  return count === 1 ? label : `${label}s`;
+function getChangeSummary(
+  record: ChangeRecord,
+  copy: ReturnType<typeof getPageCopy>["changes"]
+): string {
+  return copy.summary(
+    record.name,
+    record.claimCount,
+    record.sourceCount,
+    record.lastChangedAt ? formatDate(record.lastChangedAt) : undefined,
+    record.diffRows.length,
+    record.policyTextChanged,
+    record.newlyExtractedClaims,
+    record.sourceSnapshotChanged,
+    record.sourceTextChanged
+  );
 }
 
 function formatDate(value: string): string {

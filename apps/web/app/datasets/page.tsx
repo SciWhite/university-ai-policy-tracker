@@ -20,61 +20,7 @@ import { getCurrentPublicReleaseManifest } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { normalizeLocale } from "@/lib/i18n";
-
-const title = "Datasets | University AI Policy Tracker";
-const description =
-  "Versioned public JSON endpoints, dataset concepts, licensing, source rights caveats, and citation expectations for University AI Policy Tracker.";
-
-const datasetConcepts = [
-  {
-    name: "Universities",
-    status: "Available now",
-    description:
-      "Canonical university records are available as visible pages and per-university public JSON records."
-  },
-  {
-    name: "Claims",
-    status: "Available inside university JSON",
-    description:
-      "Claims include claim text, claim type, confidence, review state, dates, and evidence arrays."
-  },
-  {
-    name: "Sources",
-    status: "Available inside public records",
-    description:
-      "Official sources appear as source attributions and evidence source URLs with rights caveats."
-  },
-  {
-    name: "Snapshots",
-    status: "Hash metadata available now",
-    description:
-      "Public records expose source snapshot hashes. Raw HTML, PDFs, and screenshots are not published as tracker metadata."
-  },
-  {
-    name: "Recent changes",
-    status: "Available now",
-    description:
-      "The recent changes JSON feed summarizes checked and changed university records with review states."
-  },
-  {
-    name: "Analysis profiles",
-    status: "Available now",
-    description:
-      "Deterministic policy analysis profiles derive dimensions and coverage scores from existing public claim/evidence records."
-  },
-  {
-    name: "Coverage dashboards",
-    status: "Available now",
-    description:
-      "QS coverage, source-health, and review-queue metadata expose collection status and crawler/review work without publishing staging claims."
-  },
-  {
-    name: "Entity resolution and search",
-    status: "Available now",
-    description:
-      "Canonical entity aliases and safe search indexes improve recall without creating policy facts or exposing unpublished artifacts."
-  }
-] as const;
+import { getPageCopy } from "@/lib/page-copy";
 
 const githubRepositoryUrl =
   "https://github.com/SciWhite/university-ai-policy-tracker";
@@ -123,23 +69,26 @@ export async function generateMetadata({
   params
 }: DatasetsPageProps = {}) {
   const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).datasets;
   const alternates = getLocalizedAlternates("/datasets", locale);
   const canonical = String(alternates.canonical);
 
   return {
-    title,
-    description,
+    title: copy.title,
+    description: copy.description,
     alternates,
     openGraph: {
-      title,
-      description,
+      title: copy.title,
+      description: copy.description,
       url: canonical,
       type: "website"
     }
   };
 }
 
-export default async function DatasetsPage() {
+export default async function DatasetsPage({ params }: DatasetsPageProps) {
+  const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).datasets;
   const universities = await getCatalogUniversities();
   const summaries = (
     await Promise.all(
@@ -241,7 +190,7 @@ export default async function DatasetsPage() {
           "@context": "https://schema.org",
           "@type": "Dataset",
           name: "University AI Policy Tracker public JSON dataset",
-          description,
+          description: copy.description,
           url: datasetsUrl,
           license: "https://creativecommons.org/licenses/by/4.0/",
           isAccessibleForFree: true,
@@ -436,74 +385,63 @@ export default async function DatasetsPage() {
       />
 
       <section className="hero">
-        <p className="kicker">Datasets</p>
-        <h1>Public JSON artifacts and release metadata</h1>
+        <p className="kicker">{copy.kicker}</p>
+        <h1>{copy.heading}</h1>
         <p className="lead">
-          Versioned public JSON under{" "}
-          <code>/api/public/{PUBLIC_API_VERSION}</code>, built from the same
-          promoted release dataset as the visible pages.
+          {copy.leadPrefix} <code>/api/public/{PUBLIC_API_VERSION}</code>,{" "}
+          {copy.leadSuffix}
         </p>
       </section>
 
-      <section className="metrics-grid" aria-label="Current dataset coverage">
+      <section className="metrics-grid" aria-label={copy.coverageLabel}>
         <div>
           <span>{universityCount}</span>
-          <p>public university records</p>
+          <p>{copy.publicUniversityRecords}</p>
         </div>
         <div>
           <span>{claimCount}</span>
-          <p>source-backed claims</p>
+          <p>{copy.sourceBackedClaims}</p>
         </div>
         <div>
           <span>{sourceCount}</span>
-          <p>official source attributions</p>
+          <p>{copy.officialSourceAttributions}</p>
         </div>
         <div>
           <span>{PUBLIC_API_VERSION}</span>
-          <p>public JSON schema version</p>
+          <p>{copy.publicJsonSchemaVersion}</p>
         </div>
         <div>
           <span>{datasetReleaseManifest.artifacts.length}</span>
-          <p>release download artifacts</p>
+          <p>{copy.releaseDownloadArtifacts}</p>
         </div>
         <div>
           <span>{analysisProfiles.length}</span>
-          <p>analysis profiles</p>
+          <p>{copy.analysisProfiles}</p>
         </div>
       </section>
 
-      <section className="answer-strip" aria-label="Dataset answer blocks">
+      <section className="answer-strip" aria-label={copy.answersLabel}>
         <article className="answer-card">
-          <h2>What can be reused</h2>
-          <p>
-            Tracker metadata, record URLs, review states, citation fields, and
-            public JSON artifacts are reusable under the tracker metadata
-            license.
-          </p>
+          <h2>{copy.whatReusableTitle}</h2>
+          <p>{copy.whatReusableText}</p>
         </article>
         <article className="answer-card">
-          <h2>What remains external</h2>
-          <p>
-            Official source documents, page text, PDFs, and university policy
-            language retain their original rights and terms.
-          </p>
+          <h2>{copy.externalTitle}</h2>
+          <p>{copy.externalText}</p>
         </article>
         <article className="answer-card">
-          <h2>How agents retrieve data</h2>
-          <p>
-            Start with the API index, resolve entities with search, fetch the
-            canonical university JSON, then cite claim evidence and source URLs.
-          </p>
+          <h2>{copy.retrieveTitle}</h2>
+          <p>{copy.retrieveText}</p>
         </article>
       </section>
 
       <ReferenceBox
-        description="Live read-only artifacts grouped by use."
-        title="Versioned public JSON"
+        description={copy.versionedJsonDescription}
+        title={copy.versionedJsonTitle}
       >
         <div className="endpoint-group-grid">
           <section className="endpoint-group">
-            <h3>Core records</h3>
+            <h3>{copy.coreRecords}</h3>
             <ApiEndpointRow
               description="Endpoint discovery and trust links."
               label="API index JSON"
@@ -543,7 +481,7 @@ export default async function DatasetsPage() {
           </section>
 
           <section className="endpoint-group">
-            <h3>Search and analysis</h3>
+            <h3>{copy.searchAnalysis}</h3>
             <ApiEndpointRow
               description="Entity search over promoted public records."
               label="Search JSON"
@@ -589,7 +527,7 @@ export default async function DatasetsPage() {
           </section>
 
           <section className="endpoint-group">
-            <h3>Reports and embeds</h3>
+            <h3>{copy.reportsEmbeds}</h3>
             <ApiEndpointRow
               description="Public report index."
               label="Reports index"
@@ -635,7 +573,7 @@ export default async function DatasetsPage() {
           </section>
 
           <section className="endpoint-group">
-            <h3>Review and integrations</h3>
+            <h3>{copy.reviewIntegrations}</h3>
             <ApiEndpointRow
               description="QS 2026 collection coverage."
               label="QS coverage"
@@ -689,15 +627,15 @@ export default async function DatasetsPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="Bulk files with row counts, sizes, and checksums."
-        title="Dataset release downloads"
+        description={copy.releaseDownloadsDescription}
+        title={copy.releaseDownloadsTitle}
       >
         <div className="tag-row">
-          <MetaLabel label="Release">{datasetReleaseManifest.releaseId}</MetaLabel>
-          <MetaLabel label="Period">
+          <MetaLabel label={copy.release}>{datasetReleaseManifest.releaseId}</MetaLabel>
+          <MetaLabel label={copy.period}>
             {datasetReleaseManifest.releasePeriod}
           </MetaLabel>
-          <MetaLabel label="Published">
+          <MetaLabel label={copy.published}>
             {formatDate(datasetReleaseManifest.publishedAt)}
           </MetaLabel>
         </div>
@@ -718,8 +656,8 @@ export default async function DatasetsPage() {
 
       <ReferenceBox
         className="compact-reference-box"
-        description="Discovery inputs, not policy conclusions."
-        title="Ranking and index boundaries"
+        description={copy.rankingDescription}
+        title={copy.rankingTitle}
       >
         <ul className="compact-list">
           {rankingSourceBoundaries.map((boundary) => (
@@ -730,8 +668,8 @@ export default async function DatasetsPage() {
 
       <ReferenceBox
         className="compact-reference-box"
-        description="Repository-level trust assets."
-        title="GitHub trust assets"
+        description={copy.githubDescription}
+        title={copy.githubTitle}
       >
         <ul className="compact-list">
           {githubTrustAssets.map((asset) => (
@@ -745,20 +683,19 @@ export default async function DatasetsPage() {
       {manifest ? (
         <ReferenceBox
           description={manifest.description}
-          title="Current release manifest"
+          title={copy.manifestTitle}
         >
           <div className="tag-row">
-            <MetaLabel label="Release">{manifest.releaseId}</MetaLabel>
-            <MetaLabel label="Published">
+            <MetaLabel label={copy.release}>{manifest.releaseId}</MetaLabel>
+            <MetaLabel label={copy.published}>
               {formatDate(manifest.publishedAt)}
             </MetaLabel>
-            <MetaLabel label="Promoted runs">
+            <MetaLabel label={copy.promotedRuns}>
               {manifest.includeStagedArtifactDirectories.length}
             </MetaLabel>
           </div>
           <p className="muted">
-            The manifest controls which reviewed staged artifact directories are
-            promoted into public pages and <code>/api/public/v1</code> JSON.
+            {copy.manifestText}
           </p>
           {manifest.notes?.length ? (
             <ul className="compact-list">
@@ -772,11 +709,11 @@ export default async function DatasetsPage() {
 
       <section className="section">
         <div className="section-heading">
-          <h2>Dataset concepts</h2>
-          <p>What the v1 records expose today</p>
+          <h2>{copy.conceptsTitle}</h2>
+          <p>{copy.conceptsLead}</p>
         </div>
         <div className="detail-grid">
-          {datasetConcepts.map((concept) => (
+          {copy.concepts.map((concept) => (
             <article className="policy-card" key={concept.name}>
               <h3>{concept.name}</h3>
               <div className="tag-row">
@@ -790,12 +727,12 @@ export default async function DatasetsPage() {
 
       <section className="section">
         <div className="section-heading">
-          <h2>License, rights, and citation</h2>
-          <p>{TRACKER_METADATA_LICENSE} tracker metadata</p>
+          <h2>{copy.licenseTitle}</h2>
+          <p>{TRACKER_METADATA_LICENSE} {copy.trackerMetadata}</p>
         </div>
         <div className="detail-grid">
           <article className="policy-card">
-            <h3>Tracker metadata</h3>
+            <h3>{copy.trackerMetadataTitle}</h3>
             <p>
               Tracker metadata, including normalized entities, claim records,
               review states, and public JSON fields, is intended for{" "}
@@ -803,16 +740,12 @@ export default async function DatasetsPage() {
             </p>
           </article>
           <article className="policy-card">
-            <h3>Official source rights</h3>
+            <h3>{copy.officialRightsTitle}</h3>
             <p>{OFFICIAL_SOURCE_RIGHTS_CAVEAT}</p>
           </article>
           <article className="policy-card">
-            <h3>Citation expectations</h3>
-            <p>
-              Cite the canonical page and public JSON together. For claim-level
-              reuse, retain source URL, source language, snapshot hash, review
-              state, confidence, and the original evidence snippet.
-            </p>
+            <h3>{copy.citationExpectationsTitle}</h3>
+            <p>{copy.citationExpectationsText}</p>
           </article>
         </div>
       </section>
@@ -820,8 +753,8 @@ export default async function DatasetsPage() {
       <section className="section">
         <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
         <p>
-          Citation rules are documented at <Link href="/citation">/citation</Link>.
-          Recent data freshness is visible at <Link href="/changes">/changes</Link>.
+          {copy.citationRulesPrefix} <Link href="/citation">/citation</Link>.
+          {" "}{copy.recentFreshnessPrefix} <Link href="/changes">/changes</Link>.
         </p>
       </section>
     </main>

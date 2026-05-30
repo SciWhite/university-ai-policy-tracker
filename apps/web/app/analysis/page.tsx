@@ -25,29 +25,41 @@ import {
   getAnalysisPageQualityApiPath,
   getPublishableAnalysisThemeSpecs
 } from "@/lib/policy-analysis-pages";
+import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { normalizeLocale } from "@/lib/i18n";
+import { getPageCopy } from "@/lib/page-copy";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
-const title = "Policy Analysis | University AI Policy Tracker";
-const description =
-  "Deterministic, evidence-backed university AI policy analysis profiles with source claim IDs, review states, coverage scores, and versioned public JSON.";
+interface AnalysisIndexPageProps {
+  params?: Promise<{
+    locale?: string;
+  }>;
+}
 
-export function generateMetadata() {
-  const canonical = getAbsoluteSiteUrl("/analysis");
+export async function generateMetadata({
+  params
+}: AnalysisIndexPageProps = {}) {
+  const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).analysis;
+  const alternates = getLocalizedAlternates("/analysis", locale);
+  const canonical = String(alternates.canonical);
 
   return {
-    title,
-    description,
-    alternates: { canonical },
+    title: copy.title,
+    description: copy.description,
+    alternates,
     openGraph: {
-      title,
-      description,
+      title: copy.title,
+      description: copy.description,
       url: canonical,
       type: "website"
     }
   };
 }
 
-export default async function AnalysisIndexPage() {
+export default async function AnalysisIndexPage({ params }: AnalysisIndexPageProps) {
+  const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).analysis;
   const profiles = await getPolicyAnalysisProfiles();
   const publishableThemes = await getPublishableAnalysisThemeSpecs();
   const dimensions = getPolicyAnalysisDimensions();
@@ -91,7 +103,7 @@ export default async function AnalysisIndexPage() {
           "@context": "https://schema.org",
           "@type": "Dataset",
           name: "University AI Policy Tracker policy analysis profiles",
-          description,
+          description: copy.description,
           url: getAbsoluteSiteUrl("/analysis"),
           license: "https://creativecommons.org/licenses/by/4.0/",
           isAccessibleForFree: true,
@@ -130,121 +142,89 @@ export default async function AnalysisIndexPage() {
       />
 
       <section className="hero">
-        <p className="kicker">Policy analysis</p>
-        <h1>Source-backed analysis profiles, not policy advice</h1>
-        <p className="lead">
-          Derived dimensions over public claim/evidence records. Each non-empty
-          result keeps claim IDs, source URLs, source language, and evidence.
-        </p>
+        <p className="kicker">{copy.kicker}</p>
+        <h1>{copy.heading}</h1>
+        <p className="lead">{copy.lead}</p>
         <div className="tag-row hero-meta">
-          <MetaLabel label="Profiles">{profiles.length}</MetaLabel>
-          <MetaLabel label="Schema">uapt-policy-analysis-v1</MetaLabel>
+          <MetaLabel label={copy.profiles}>{profiles.length}</MetaLabel>
+          <MetaLabel label={copy.schema}>uapt-policy-analysis-v1</MetaLabel>
           <StateLabel reviewState="machine_candidate" />
-          <MetaLabel label="Public API">{analysisIndexPath}</MetaLabel>
+          <MetaLabel label={copy.publicApi}>{analysisIndexPath}</MetaLabel>
         </div>
       </section>
 
-      <section className="metrics-grid" aria-label="Policy analysis coverage">
+      <section className="metrics-grid" aria-label={copy.coverageLabel}>
         <div>
           <span>{profiles.length}</span>
-          <p>analysis profiles</p>
+          <p>{copy.analysisProfiles}</p>
         </div>
         <div>
           <span>{evidenceBackedDimensionCount}</span>
-          <p>evidence-backed dimensions</p>
+          <p>{copy.evidenceBackedDimensions}</p>
         </div>
         <div>
           <span>{formatCoverageScore(Math.round(averageCoverageScore))}</span>
-          <p>average public coverage score</p>
+          <p>{copy.averageCoverageScore}</p>
         </div>
         <div>
           <span>{sourceLanguageCount}</span>
-          <p>source languages preserved</p>
+          <p>{copy.sourceLanguagesPreserved}</p>
         </div>
       </section>
 
-      <section className="answer-strip" aria-label="Policy analysis answer blocks">
-        <article className="answer-card">
-          <h2>What analysis means</h2>
-          <p>
-            Analysis profiles are derived metadata over public claim/evidence
-            records. They summarize policy dimensions without replacing source
-            evidence.
-          </p>
-        </article>
-        <article className="answer-card">
-          <h2>What coverage score means</h2>
-          <p>
-            Coverage score measures breadth of visible public evidence, not
-            policy quality, safety, legality, strictness, or compliance.
-          </p>
-        </article>
-        <article className="answer-card">
-          <h2>How to cite analysis</h2>
-          <p>
-            Cite the analysis JSON with the related university record, basis
-            claim IDs, source URLs, review state, and original evidence.
-          </p>
-        </article>
+      <section className="answer-strip" aria-label={copy.answersLabel}>
+        {copy.answers.map((answer) => (
+          <article className="answer-card" key={answer.title}>
+            <h2>{answer.title}</h2>
+            <p>{answer.text}</p>
+          </article>
+        ))}
       </section>
 
       <ReferenceBox
         className="compact-reference-box"
-        description="For citation context."
-        title="Summary"
+        description={copy.summaryDescription}
+        title={copy.summaryTitle}
       >
         <p>{citationReadySummary}</p>
         <p className="notice-card">
-          Policy Coverage Score measures breadth of public, source-backed
-          coverage. It is not a quality, strictness, legal adequacy, safety, or
-          institutional compliance score.
+          {copy.scoreNotice}
         </p>
       </ReferenceBox>
 
       <div className="docs-layout">
-        <nav className="docs-toc" aria-label="Analysis sections">
-          <a href="#meaning">Boundary</a>
-          <a href="#dimensions">Dimensions</a>
-          <a href="#coverage">Coverage score</a>
-          <a href="#themes">Theme analysis</a>
-          <a href="#quality">Quality gates</a>
-          <a href="#review">Review workflow</a>
-          <a href="#json">Public JSON</a>
-          <a href="#citation">Citation</a>
+        <nav className="docs-toc" aria-label={copy.tocLabel}>
+          <a href="#meaning">{copy.toc.meaning}</a>
+          <a href="#dimensions">{copy.toc.dimensions}</a>
+          <a href="#coverage">{copy.toc.coverage}</a>
+          <a href="#themes">{copy.toc.themes}</a>
+          <a href="#quality">{copy.toc.quality}</a>
+          <a href="#review">{copy.toc.review}</a>
+          <a href="#json">{copy.toc.json}</a>
+          <a href="#citation">{copy.toc.citation}</a>
         </nav>
 
         <div className="docs-content">
           <ReferenceBox
-            description="Derived metadata with source links."
+            description={copy.meaningDescription}
             id="meaning"
-            title="Boundary"
+            title={copy.toc.meaning}
           >
             <ul className="compact-list">
-              <li>
-                Dimensions summarize public tracker claims into consistent
-                labels.
-              </li>
-              <li>
-                Original-language evidence remains canonical.
-              </li>
-              <li>
-                Confidence is separate from review state.
-              </li>
+              {copy.boundaryRules.slice(0, 3).map((rule) => (
+                <li key={rule}>{rule}</li>
+              ))}
               <li>{NO_ADVICE_BOUNDARY}</li>
-              <li>
-                <code>not_mentioned</code> means no matching public tracker
-                evidence is present in the current profile.
-              </li>
-              <li>
-                Open basis claim IDs and source URLs before reuse.
-              </li>
+              {copy.boundaryRules.slice(3).map((rule) => (
+                <li key={rule}>{rule}</li>
+              ))}
             </ul>
           </ReferenceBox>
 
           <ReferenceBox
-            description="All dimensions are visible and contract-backed."
+            description={copy.dimensionsDescription}
             id="dimensions"
-            title="Analysis dimensions"
+            title={copy.toc.dimensions}
           >
             <DataList>
               {dimensions.map((dimension) => {
@@ -257,10 +237,10 @@ export default async function AnalysisIndexPage() {
                     key={dimension.key}
                     metadata={
                       <>
-                        <MetaLabel label="Evidence-backed">
+                        <MetaLabel label={copy.evidenceBacked}>
                           {summary?.evidenceBackedCount ?? 0}
                         </MetaLabel>
-                        <MetaLabel label="Not mentioned">
+                        <MetaLabel label={copy.notMentioned}>
                           {summary?.notMentionedCount ?? 0}
                         </MetaLabel>
                       </>
@@ -286,48 +266,40 @@ export default async function AnalysisIndexPage() {
           </ReferenceBox>
 
           <ReferenceBox
-            description="The score is a coverage breadth measure only."
+            description={copy.coverageDescription}
             id="coverage"
-            title="Coverage score"
+            title={copy.toc.coverage}
             actions={
               <Link className="site-action" href="/analysis/policy-coverage">
-                Open coverage table
+                {copy.openCoverageTable}
               </Link>
             }
           >
-            <p>
-              Coverage score components sum to 100 points across public evidence
-              categories such as central guidance, academic integrity,
-              disclosure, coursework, exams, privacy/data entry, approved tools,
-              and teaching or research guidance.
-            </p>
-            <p className="notice-card">
-              The score should never be described as best policy, worst policy,
-              most compliant, legally safe, or institutionally endorsed.
-            </p>
+            <p>{copy.coverageText}</p>
+            <p className="notice-card">{copy.coverageWarning}</p>
           </ReferenceBox>
 
           <ReferenceBox
-            description="Publication gates keep analysis pages useful for search and AI answer engines without turning sparse data into thin pages."
+            description={copy.qualityDescription}
             id="quality"
-            title="Analysis page quality gates"
+            title={copy.toc.quality}
             actions={
               <a className="site-action" href={pageQualityPath}>
-                Page-quality JSON
+                {copy.pageQualityJson}
               </a>
             }
           >
             <p>
-              Current page-quality status:{" "}
-              {qualityReport.data.status.replaceAll("_", " ")}. The report
-              covers {qualityReport.data.pages.length} public analysis pages and
-              keeps review state separate from page publication readiness.
+              {copy.qualityStatus(
+                qualityReport.data.status.replaceAll("_", " "),
+                qualityReport.data.pages.length
+              )}
             </p>
             <DataList>
               {qualityReport.data.qualityGates.map((gate) => (
                 <DataListRow
                   key={gate.gateId}
-                  metadata={<MetaLabel label="Gate">{gate.gateId}</MetaLabel>}
+                  metadata={<MetaLabel label={copy.gate}>{gate.gateId}</MetaLabel>}
                 >
                   <h2>{gate.label}</h2>
                   <p>{gate.requirement}</p>
@@ -337,29 +309,29 @@ export default async function AnalysisIndexPage() {
           </ReferenceBox>
 
           <ReferenceBox
-            description="Quality checks do not publish canonical analysis. They route questionable records into review."
+            description={copy.reviewDescription}
             id="review"
-            title="Analysis review workflow"
+            title={copy.toc.review}
             actions={
               <Link className="site-action" href="/review#analysis-review">
-                Open review workflow
+                {copy.openReviewWorkflow}
               </Link>
             }
           >
             <p>{reviewWorkflow.publicationGate}</p>
             <div className="tag-row">
-              <MetaLabel label="Queue">{reviewWorkflow.reviewQueue}</MetaLabel>
-              <MetaLabel label="Public mutation">Not allowed</MetaLabel>
-              <MetaLabel label="Review states">
+              <MetaLabel label={copy.queue}>{reviewWorkflow.reviewQueue}</MetaLabel>
+              <MetaLabel label={copy.publicMutation}>{copy.notAllowed}</MetaLabel>
+              <MetaLabel label={copy.reviewStates}>
                 {reviewWorkflow.reviewStates.length}
               </MetaLabel>
             </div>
           </ReferenceBox>
 
           <ReferenceBox
-            description="Only themes with enough public evidence are linked from this index."
+            description={copy.themesDescription}
             id="themes"
-            title="Theme analysis pages"
+            title={copy.toc.themes}
           >
             <div className="detail-grid">
               {analysisThemeSpecs.map((spec) => {
@@ -372,9 +344,9 @@ export default async function AnalysisIndexPage() {
                     <h3>{spec.label}</h3>
                     <p>{spec.description}</p>
                     {published ? (
-                      <Link href={`/analysis/${spec.slug}`}>Open analysis</Link>
+                      <Link href={`/analysis/${spec.slug}`}>{copy.openAnalysis}</Link>
                     ) : (
-                      <span className="pill">Held until evidence threshold</span>
+                      <span className="pill">{copy.held}</span>
                     )}
                   </article>
                 );
@@ -383,43 +355,43 @@ export default async function AnalysisIndexPage() {
           </ReferenceBox>
 
           <ReferenceBox
-            description="Versioned read-only endpoints for downstream reuse."
+            description={copy.jsonDescription}
             id="json"
-            title="Public JSON endpoints"
+            title={copy.toc.json}
           >
             <ApiEndpointRow
-              description="Analysis endpoint manifest with dimension definitions and version metadata."
-              label="Analysis index"
+              description={copy.analysisIndexDescription}
+              label={copy.analysisIndex}
               path={analysisIndexPath}
               url={getAbsoluteSiteUrl(analysisIndexPath)}
             />
             <ApiEndpointRow
-              description="Example per-university analysis profile with dimensions, basis evidence, and coverage score."
-              label="University analysis profile"
+              description={copy.universityAnalysisProfileDescription}
+              label={copy.universityAnalysisProfile}
               path={exampleProfilePath}
               url={getAbsoluteSiteUrl(exampleProfilePath)}
             />
             <ApiEndpointRow
-              description="Coverage score list for public analysis profiles."
-              label="Coverage scores"
+              description={copy.coverageScoresDescription}
+              label={copy.coverageScores}
               path={coverageScoresPath}
               url={getAbsoluteSiteUrl(coverageScoresPath)}
             />
             <ApiEndpointRow
-              description="Read-only report of page-quality gates, indexability status, analysis review workflow, and no-advice boundaries."
-              label="Analysis page quality"
+              description={copy.analysisPageQualityDescription}
+              label={copy.analysisPageQuality}
               path={pageQualityPath}
               url={getAbsoluteSiteUrl(pageQualityPath)}
             />
           </ReferenceBox>
 
           <ReferenceBox
-            description="Use the canonical page and public JSON together."
+            description={copy.citationDescription}
             id="citation"
-            title="Citation format"
+            title={copy.toc.citation}
           >
             <p>
-              Suggested citation: University AI Policy Tracker. "University AI
+              {copy.suggestedCitation}: University AI Policy Tracker. "University AI
               policy analysis profiles." Version {PUBLIC_API_VERSION}.{" "}
               {getAbsoluteSiteUrl("/analysis")}
             </p>

@@ -7,29 +7,41 @@ import {
   buildContributionPolicyData,
   contributionWorkflows
 } from "@/lib/contribution-surfaces";
+import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { normalizeLocale } from "@/lib/i18n";
+import { getPageCopy } from "@/lib/page-copy";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
-const title = "Contribute | University AI Policy Tracker";
-const description =
-  "Submit official university AI policy sources, corrections, course-level AI policy evidence, translation fixes, and dataset issues into a review-task workflow.";
+interface ContributePageProps {
+  params?: Promise<{
+    locale?: string;
+  }>;
+}
 
-export function generateMetadata() {
-  const canonical = getAbsoluteSiteUrl("/contribute");
+export async function generateMetadata({
+  params
+}: ContributePageProps = {}) {
+  const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).contribute;
+  const alternates = getLocalizedAlternates("/contribute", locale);
+  const canonical = String(alternates.canonical);
 
   return {
-    title,
-    description,
-    alternates: { canonical },
+    title: copy.title,
+    description: copy.description,
+    alternates,
     openGraph: {
-      title,
-      description,
+      title: copy.title,
+      description: copy.description,
       url: canonical,
       type: "website"
     }
   };
 }
 
-export default function ContributePage() {
+export default async function ContributePage({ params }: ContributePageProps) {
+  const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).contribute;
   const contributionPolicy = buildContributionPolicyData();
   const contributionIndexPath = `/api/public/${PUBLIC_API_VERSION}/contributions/index.json`;
   const reviewPolicyPath = `/api/public/${PUBLIC_API_VERSION}/contributions/review-policy.json`;
@@ -37,33 +49,28 @@ export default function ContributePage() {
   return (
     <main className="page-shell page-shell--wide">
       <section className="hero">
-        <p className="kicker">Contribution intake</p>
-        <h1>Submit evidence into a review queue</h1>
-        <p className="lead">
-          Contributions help expand coverage, but they do not create canonical
-          policy facts directly. Every source URL, correction, translation fix,
-          or course-level submission starts as a review task with privacy,
-          copyright, source-language, and evidence checks.
-        </p>
+        <p className="kicker">{copy.kicker}</p>
+        <h1>{copy.heading}</h1>
+        <p className="lead">{copy.lead}</p>
       </section>
 
       <ReferenceBox
-        description="The first live intake channel is GitHub issue templates, so submissions are visible, auditable, and reviewable before publication."
-        title="Contribution paths"
+        description={copy.pathsDescription}
+        title={copy.pathsTitle}
       >
         <DataList>
           {contributionWorkflows.map((workflow) => (
             <DataListRow
               actions={
                 <a className="site-action" href={workflow.githubIssueUrl}>
-                  Open template
+                  {copy.openTemplate}
                 </a>
               }
               key={workflow.type}
               metadata={
                 <>
-                  <MetaLabel label="Queue">{workflow.reviewQueue}</MetaLabel>
-                  <MetaLabel label="Canonical fact">No</MetaLabel>
+                  <MetaLabel label={copy.queue}>{workflow.reviewQueue}</MetaLabel>
+                  <MetaLabel label={copy.canonicalFact}>{copy.no}</MetaLabel>
                 </>
               }
             >
@@ -75,8 +82,8 @@ export default function ContributePage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="This is the publication boundary for all contribution types."
-        title="What a submission can and cannot do"
+        description={copy.boundaryDescription}
+        title={copy.boundaryTitle}
       >
         <ul className="compact-list">
           {contributionPolicy.publicationRules.map((rule) => (
@@ -84,55 +91,47 @@ export default function ContributePage() {
           ))}
         </ul>
         <p className="notice-card">
-          The tracker is not legal advice, not academic integrity advice, and
-          not an official university statement unless a linked source is the
-          university&apos;s own official page.
+          {copy.notice}
         </p>
       </ReferenceBox>
 
       <ReferenceBox
-        description="Course-level policy submissions are useful, but they are handled as evidence records, not as open comments."
-        title="Course-level submissions"
+        description={copy.courseDescription}
+        title={copy.courseTitle}
       >
-        <p>
-          Course records must reuse the same claim/evidence structure as
-          university records: entity, term, source type, claim, original-language
-          evidence, source language, review state, and moderation status. Do not
-          paste full syllabi, LMS content, private student information, or
-          non-public instructor data.
-        </p>
+        <p>{copy.courseText}</p>
         <dl className="source-attribution-row__meta">
           <div>
-            <dt>Allowed starting point</dt>
-            <dd>Short excerpt or public syllabus URL for review</dd>
+            <dt>{copy.allowedStart}</dt>
+            <dd>{copy.allowedStartValue}</dd>
           </div>
           <div>
-            <dt>Initial state</dt>
-            <dd>pending review task, not a public claim</dd>
+            <dt>{copy.initialState}</dt>
+            <dd>{copy.initialStateValue}</dd>
           </div>
           <div>
-            <dt>Publication model</dt>
-            <dd>claim/evidence after moderation and rights review</dd>
+            <dt>{copy.publicationModel}</dt>
+            <dd>{copy.publicationModelValue}</dd>
           </div>
         </dl>
       </ReferenceBox>
 
       <ReferenceBox
-        description="Machine-readable intake policy for agents, developers, and contributors."
-        title="Contribution API metadata"
+        description={copy.apiDescription}
+        title={copy.apiTitle}
       >
         <ApiEndpointRow
-          description="Contribution workflows, required fields, GitHub issue template URLs, safeguards, and publication rules."
-          label="Contribution index"
+          description={copy.contributionIndexDescription}
+          label={copy.contributionIndex}
           path={contributionIndexPath}
-          status="Read-only metadata"
+          status={copy.readOnlyMetadata}
           url={contributionIndexPath}
         />
         <ApiEndpointRow
-          description="Review queues, publication gates, moderation rules, and contribution review boundaries."
-          label="Review policy"
+          description={copy.reviewPolicyDescription}
+          label={copy.reviewPolicy}
           path={reviewPolicyPath}
-          status="Read-only metadata"
+          status={copy.readOnlyMetadata}
           url={reviewPolicyPath}
         />
       </ReferenceBox>

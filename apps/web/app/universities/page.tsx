@@ -5,15 +5,12 @@ import {
 import { JsonLd } from "@/components/json-ld";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { normalizeLocale } from "@/lib/i18n";
+import { getPageCopy } from "@/lib/page-copy";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { UniversitiesIndexClient } from "./universities-index-client";
 
 export const dynamic = "force-static";
 export const revalidate = false;
-
-const title = "Universities | University AI Policy Tracker";
-const description =
-  "Browse source-backed university AI policy records with ranks, review states, claim counts, official source attributions, and public JSON links.";
 
 interface UniversitiesPageProps {
   params?: Promise<{
@@ -25,16 +22,17 @@ export async function generateMetadata({
   params
 }: UniversitiesPageProps = {}) {
   const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).universities;
   const alternates = getLocalizedAlternates("/universities", locale);
   const canonical = String(alternates.canonical);
 
   return {
-    title,
-    description,
+    title: copy.title,
+    description: copy.description,
     alternates,
     openGraph: {
-      title,
-      description,
+      title: copy.title,
+      description: copy.description,
       url: canonical,
       type: "website"
     }
@@ -43,6 +41,7 @@ export async function generateMetadata({
 
 export default async function UniversitiesPage({ params }: UniversitiesPageProps) {
   const locale = normalizeLocale((await params)?.locale);
+  const copy = getPageCopy(locale).universities;
   const records = await getStaticUniversityIndexRecords();
 
   return (
@@ -51,8 +50,8 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
         data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: title,
-          description,
+          name: copy.title,
+          description: copy.description,
           url: getAbsoluteSiteUrl("/universities"),
           mainEntity: {
             "@type": "ItemList",
