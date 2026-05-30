@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { PUBLIC_API_VERSION } from "@uapt/shared";
 import { DataList, DataListRow } from "@/components/data-list";
+import { DocumentLink as Link } from "@/components/document-link";
 import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
@@ -13,38 +13,255 @@ import {
   type SearchIndexRecord
 } from "@/lib/entity-search";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { localizeHref, normalizeLocale, type SupportedLocale } from "@/lib/i18n";
 
-const title = "Search | University AI Policy Tracker";
-const description =
-  "Search public university AI policy records by university name, alias, source domain, claim text, and analysis dimension.";
+const searchCopy: Record<
+  SupportedLocale,
+  {
+    alias: string;
+    aliases: string;
+    apiBoxDescription: string;
+    apiBoxTitle: string;
+    button: string;
+    description: string;
+    empty: string;
+    entities: string;
+    highSignal: string;
+    kicker: string;
+    matches: string;
+    note: string;
+    placeholder: string;
+    record: string;
+    reset: string;
+    resultsFor: (query: string) => string;
+    searchApi: string;
+    searchJson: string;
+    searchLabel: string;
+    sourceNote: string;
+    suggestedRecords: string;
+    title: string;
+  }
+> = {
+  en: {
+    alias: "Alias",
+    aliases: "aliases",
+    apiBoxDescription: "Read-only public search contracts.",
+    apiBoxTitle: "Search APIs",
+    button: "Search",
+    description:
+      "Search public university AI policy records by university name, alias, source domain, claim text, and analysis dimension.",
+    empty:
+      "No public records match this query. The current public release may still lack a promoted record for that institution or topic.",
+    entities: "entities",
+    highSignal: "High-signal records",
+    kicker: "Search",
+    matches: "matches",
+    note:
+      "Search is a routing aid over promoted public records, not a policy conclusion. Open the record page, public JSON, and source evidence before reuse.",
+    placeholder: "University, topic, source domain...",
+    record: "Record",
+    reset: "Reset",
+    resultsFor: (query) => `Results for "${query}"`,
+    searchApi: "search API",
+    searchJson: "Search JSON",
+    searchLabel: "Search public records",
+    sourceNote:
+      "Search names, aliases, source domains, policy themes, AI tools, and public claim summaries. Results route to canonical records and JSON.",
+    suggestedRecords: "suggested records",
+    title: "Find source-backed university AI policy records"
+  },
+  zh: {
+    alias: "别名",
+    aliases: "别名",
+    apiBoxDescription: "只读公共搜索接口。",
+    apiBoxTitle: "搜索 API",
+    button: "搜索",
+    description: "按高校名称、别名、来源域名、声明文本和分析维度搜索公共高校 AI 政策记录。",
+    empty: "没有公共记录匹配此查询。当前公共发布可能还没有推广该机构或主题的记录。",
+    entities: "实体",
+    highSignal: "高信号记录",
+    kicker: "搜索",
+    matches: "匹配",
+    note: "搜索只是公共记录的路由辅助，不是政策结论。复用前请打开记录页、公共 JSON 和来源证据。",
+    placeholder: "高校、主题、来源域名...",
+    record: "记录",
+    reset: "重置",
+    resultsFor: (query) => `"${query}" 的结果`,
+    searchApi: "搜索 API",
+    searchJson: "搜索 JSON",
+    searchLabel: "搜索公共记录",
+    sourceNote: "搜索名称、别名、来源域名、政策主题、AI 工具和公共声明摘要。结果会指向规范记录和 JSON。",
+    suggestedRecords: "建议记录",
+    title: "查找有来源证据支撑的高校 AI 政策记录"
+  },
+  fr: {
+    alias: "Alias",
+    aliases: "alias",
+    apiBoxDescription: "Contrats de recherche publics en lecture seule.",
+    apiBoxTitle: "API de recherche",
+    button: "Rechercher",
+    description:
+      "Rechercher les politiques IA universitaires publiques par nom, alias, domaine source, texte de revendication et dimension d'analyse.",
+    empty:
+      "Aucun dossier public ne correspond a cette requete. La version publique actuelle peut ne pas encore contenir de dossier promu pour cet etablissement ou ce sujet.",
+    entities: "entites",
+    highSignal: "Dossiers a fort signal",
+    kicker: "Recherche",
+    matches: "resultats",
+    note:
+      "La recherche sert a orienter vers les dossiers publics promus; elle n'est pas une conclusion de politique. Ouvrez la page du dossier, le JSON public et les preuves sources avant reutilisation.",
+    placeholder: "Universite, sujet, domaine source...",
+    record: "Dossier",
+    reset: "Reinitialiser",
+    resultsFor: (query) => `Resultats pour \"${query}\"`,
+    searchApi: "API de recherche",
+    searchJson: "JSON de recherche",
+    searchLabel: "Rechercher les dossiers publics",
+    sourceNote:
+      "Recherchez noms, alias, domaines sources, themes de politique, outils IA et resumes de revendications publiques. Les resultats menent aux dossiers canoniques et au JSON.",
+    suggestedRecords: "dossiers suggeres",
+    title: "Trouver des dossiers de politiques IA universitaires appuyes par des sources"
+  },
+  pl: {
+    alias: "Alias",
+    aliases: "aliasy",
+    apiBoxDescription: "Publiczne kontrakty wyszukiwania tylko do odczytu.",
+    apiBoxTitle: "API wyszukiwania",
+    button: "Szukaj",
+    description: "Szukaj publicznych rekordow polityk AI wedlug uczelni, aliasu, domeny zrodla, tekstu roszczenia i wymiaru analizy.",
+    empty: "Brak publicznych rekordow pasujacych do zapytania.",
+    entities: "jednostki",
+    highSignal: "Rekordy o wysokim sygnale",
+    kicker: "Szukaj",
+    matches: "wyniki",
+    note: "Wyszukiwanie pomaga kierowac do publicznych rekordow; nie jest konkluzja polityki.",
+    placeholder: "Uczelnia, temat, domena zrodla...",
+    record: "Rekord",
+    reset: "Reset",
+    resultsFor: (query) => `Wyniki dla \"${query}\"`,
+    searchApi: "API wyszukiwania",
+    searchJson: "JSON wyszukiwania",
+    searchLabel: "Szukaj publicznych rekordow",
+    sourceNote: "Szukaj nazw, aliasow, domen zrodel, tematow polityk, narzedzi AI i publicznych streszczen.",
+    suggestedRecords: "sugerowane rekordy",
+    title: "Znajdz rekordy polityk AI uczelni oparte na zrodlach"
+  },
+  es: {
+    alias: "Alias",
+    aliases: "alias",
+    apiBoxDescription: "Contratos publicos de busqueda de solo lectura.",
+    apiBoxTitle: "API de busqueda",
+    button: "Buscar",
+    description: "Busca registros publicos de politicas universitarias de IA por universidad, alias, dominio fuente, texto y dimension de analisis.",
+    empty: "No hay registros publicos que coincidan con esta busqueda.",
+    entities: "entidades",
+    highSignal: "Registros destacados",
+    kicker: "Buscar",
+    matches: "coincidencias",
+    note: "La busqueda ayuda a navegar registros publicos; no es una conclusion de politica.",
+    placeholder: "Universidad, tema, dominio fuente...",
+    record: "Registro",
+    reset: "Restablecer",
+    resultsFor: (query) => `Resultados para \"${query}\"`,
+    searchApi: "API de busqueda",
+    searchJson: "JSON de busqueda",
+    searchLabel: "Buscar registros publicos",
+    sourceNote: "Busca nombres, alias, dominios fuente, temas de politica, herramientas de IA y resumenes publicos.",
+    suggestedRecords: "registros sugeridos",
+    title: "Encuentra registros universitarios de politicas de IA respaldados por fuentes"
+  },
+  nl: {
+    alias: "Alias",
+    aliases: "aliassen",
+    apiBoxDescription: "Alleen-lezen publieke zoekcontracten.",
+    apiBoxTitle: "Zoek-API's",
+    button: "Zoeken",
+    description: "Zoek publieke AI-beleidsrecords op universiteitsnaam, alias, brondomein, claimtekst en analysedimensie.",
+    empty: "Geen publieke records komen overeen met deze zoekopdracht.",
+    entities: "entiteiten",
+    highSignal: "Sterke records",
+    kicker: "Zoeken",
+    matches: "matches",
+    note: "Zoeken helpt navigeren naar publieke records; het is geen beleidsconclusie.",
+    placeholder: "Universiteit, onderwerp, brondomein...",
+    record: "Record",
+    reset: "Reset",
+    resultsFor: (query) => `Resultaten voor \"${query}\"`,
+    searchApi: "zoek-API",
+    searchJson: "Zoek-JSON",
+    searchLabel: "Zoek publieke records",
+    sourceNote: "Zoek namen, aliassen, brondomeinen, beleidsthema's, AI-tools en publieke samenvattingen.",
+    suggestedRecords: "voorgestelde records",
+    title: "Vind brononderbouwde AI-beleidsrecords van universiteiten"
+  },
+  ms: {
+    alias: "Alias",
+    aliases: "alias",
+    apiBoxDescription: "Kontrak carian awam baca sahaja.",
+    apiBoxTitle: "API carian",
+    button: "Cari",
+    description: "Cari rekod dasar AI universiti awam mengikut nama universiti, alias, domain sumber, teks tuntutan dan dimensi analisis.",
+    empty: "Tiada rekod awam sepadan dengan carian ini.",
+    entities: "entiti",
+    highSignal: "Rekod isyarat tinggi",
+    kicker: "Cari",
+    matches: "padanan",
+    note: "Carian membantu laluan ke rekod awam; ia bukan kesimpulan dasar.",
+    placeholder: "Universiti, topik, domain sumber...",
+    record: "Rekod",
+    reset: "Tetap semula",
+    resultsFor: (query) => `Hasil untuk \"${query}\"`,
+    searchApi: "API carian",
+    searchJson: "JSON carian",
+    searchLabel: "Cari rekod awam",
+    sourceNote: "Cari nama, alias, domain sumber, tema dasar, alat AI dan ringkasan awam.",
+    suggestedRecords: "rekod cadangan",
+    title: "Cari rekod dasar AI universiti yang disokong sumber"
+  }
+};
 
 const exampleQueries = ["MIT", "privacy", "disclosure", "Copilot", "harvard.edu"] as const;
 
 interface SearchPageProps {
+  params?: Promise<{
+    locale?: string;
+  }>;
   searchParams: Promise<{
     q?: string;
   }>;
 }
 
-export function generateMetadata() {
-  const canonical = getAbsoluteSiteUrl("/search");
+export async function generateMetadata({
+  params
+}: Pick<SearchPageProps, "params"> = {}) {
+  const locale = normalizeLocale((await params)?.locale);
+  const copy = searchCopy[locale];
+  const alternates = getLocalizedAlternates("/search", locale);
+  const canonical = String(alternates.canonical);
 
   return {
-    title,
-    description,
-    alternates: { canonical },
+    title: `${copy.kicker} | University AI Policy Tracker`,
+    description: copy.description,
+    alternates,
     openGraph: {
-      title,
-      description,
+      title: copy.title,
+      description: copy.description,
       url: canonical,
       type: "website"
     }
   };
 }
 
-export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const params = await searchParams;
-  const query = typeof params.q === "string" ? params.q.trim() : "";
+export default async function SearchPage({ params, searchParams }: SearchPageProps) {
+  const locale = normalizeLocale((await params)?.locale);
+  const copy = searchCopy[locale];
+  const resolvedSearchParams = await searchParams;
+  const query =
+    typeof resolvedSearchParams.q === "string"
+      ? resolvedSearchParams.q.trim()
+      : "";
+  const searchPath = localizeHref("/search", locale);
   const [searchIndex, entityIndex] = await Promise.all([
     fetchSearchIndexRecords(),
     fetchEntityIndexSummary()
@@ -65,8 +282,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         data={{
           "@context": "https://schema.org",
           "@type": "SearchResultsPage",
-          name: title,
-          description,
+          name: copy.title,
+          description: copy.description,
           url: getAbsoluteSiteUrl(
             query ? `/search?q=${encodeURIComponent(query)}` : "/search"
           ),
@@ -79,28 +296,25 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       />
       <section className="search-page-header" aria-labelledby="search-title">
         <div>
-          <p className="kicker">Search</p>
-          <h1 id="search-title">Find source-backed university AI policy records</h1>
-          <p className="compact-note">
-            Search names, aliases, source domains, policy themes, AI tools, and
-            public claim summaries. Results route to canonical records and JSON.
-          </p>
+          <p className="kicker">{copy.kicker}</p>
+          <h1 id="search-title">{copy.title}</h1>
+          <p className="compact-note">{copy.sourceNote}</p>
         </div>
-        <form action="/search" className="home-search-form" method="get">
+        <form action={searchPath} className="home-search-form" method="get">
           <label className="visually-hidden" htmlFor="search-page-input">
-            Search public records
+            {copy.searchLabel}
           </label>
           <SearchAutocomplete
             defaultValue={query}
             id="search-page-input"
             name="q"
-            placeholder="University, topic, source domain..."
+            placeholder={copy.placeholder}
           />
-          <button type="submit">Search</button>
+          <button type="submit">{copy.button}</button>
         </form>
       </section>
 
-      <div className="quick-query-row" aria-label="Search examples">
+      <div className="quick-query-row" aria-label={copy.searchLabel}>
         {exampleQueries.map((example) => (
           <Link href={`/search?q=${encodeURIComponent(example)}`} key={example}>
             {example}
@@ -111,42 +325,35 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <section className="metrics-grid metrics-grid--compact" aria-label="Search coverage">
         <div>
           <span>{entityIndex.count}</span>
-          <p>entities</p>
+          <p>{copy.entities}</p>
         </div>
         <div>
           <span>{entityIndex.aliasCount}</span>
-          <p>aliases</p>
+          <p>{copy.aliases}</p>
         </div>
         <div>
           <span>{query ? results.length : suggestedRecords.length}</span>
-          <p>{query ? "matches" : "suggested records"}</p>
+          <p>{query ? copy.matches : copy.suggestedRecords}</p>
         </div>
         <div>
           <span>v1</span>
-          <p>search API</p>
+          <p>{copy.searchApi}</p>
         </div>
       </section>
 
-      <p className="compact-note">
-        Search is a routing aid over promoted public records, not a policy
-        conclusion. Open the record page, public JSON, and source evidence
-        before reuse.
-      </p>
+      <p className="compact-note">{copy.note}</p>
 
       <section className="section compact-section">
         <div className="section-heading">
-          <h2>{query ? `Results for "${query}"` : "High-signal records"}</h2>
-          {query ? <Link href="/search">Reset</Link> : null}
+          <h2>{query ? copy.resultsFor(query) : copy.highSignal}</h2>
+          {query ? <Link href="/search">{copy.reset}</Link> : null}
         </div>
 
         {query ? (
           results.length ? (
-            <SearchResults results={results} />
+            <SearchResults copy={copy} results={results} />
           ) : (
-            <p className="notice-card">
-              No public records match this query. The current public release may
-              still lack a promoted record for that institution or topic.
-            </p>
+            <p className="notice-card">{copy.empty}</p>
           )
         ) : (
           <DataList>
@@ -154,7 +361,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               <DataListRow
                 actions={
                   <>
-                    <Link href={`/universities/${record.entitySlug}`}>Record</Link>
+                    <Link href={`/universities/${record.entitySlug}`}>
+                      {copy.record}
+                    </Link>
                     <a href={record.publicJsonUrl}>JSON</a>
                   </>
                 }
@@ -181,13 +390,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
       <ReferenceBox
         className="compact-reference-box"
-        description="Read-only public search contracts."
-        title="Search APIs"
+        description={copy.apiBoxDescription}
+        title={copy.apiBoxTitle}
       >
         <ul className="compact-link-list">
           <li>
             <a href={`/api/public/${PUBLIC_API_VERSION}/search.json?q=mit`}>
-              Search JSON
+              {copy.searchJson}
             </a>
           </li>
           <li>
@@ -260,14 +469,22 @@ async function fetchPublicJson<T>(pathname: string): Promise<T | undefined> {
   }
 }
 
-function SearchResults({ results }: { results: SearchResult[] }) {
+function SearchResults({
+  copy,
+  results
+}: {
+  copy: (typeof searchCopy)[SupportedLocale];
+  results: SearchResult[];
+}) {
   return (
     <DataList>
       {results.map((result) => (
         <DataListRow
           actions={
             <>
-              <Link href={`/universities/${result.entitySlug}`}>Record</Link>
+              <Link href={`/universities/${result.entitySlug}`}>
+                {copy.record}
+              </Link>
               <a href={result.publicJsonUrl}>JSON</a>
             </>
           }
@@ -297,7 +514,7 @@ function SearchResults({ results }: { results: SearchResult[] }) {
           </div>
           {result.matchedAliases.length ? (
             <p className="table-record-subtitle">
-              Alias: {result.matchedAliases.join(", ")}
+              {copy.alias}: {result.matchedAliases.join(", ")}
             </p>
           ) : null}
         </DataListRow>

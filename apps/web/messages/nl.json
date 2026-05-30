@@ -1,0 +1,48 @@
+{
+  "Shell": {
+    "tagline": "Open, op bewijs gebaseerde AI-beleidsrecords van universiteiten voor publiek hergebruik.",
+    "actions": {
+      "api": "API",
+      "github": "GitHub"
+    },
+    "navigation": {
+      "search": "Zoeken",
+      "universities": "Universiteiten",
+      "analysis": "Analyse",
+      "changes": "Wijzigingen",
+      "datasets": "Datasets",
+      "methodology": "Methode",
+      "contribute": "Bijdragen"
+    },
+    "footer": {
+      "intro": "Open tracker-metadata voor citatie en analyse. Geen juridisch advies, academisch-integriteitsadvies of officiele universiteitsverklaring.",
+      "dataAndApi": "Data en API",
+      "trustAndCitation": "Vertrouwen en citatie",
+      "updates": "Updates",
+      "coverageAndReview": "Dekking en review",
+      "apiDocs": "API-docs",
+      "publicApi": "Publieke API",
+      "mcpAlpha": "MCP alpha",
+      "aiPolicyDatabase": "AI-beleidsdatabase",
+      "reportsRss": "Rapporten RSS",
+      "changesRss": "Wijzigingen RSS",
+      "sourceHealth": "Bronstatus",
+      "reviewWorkflow": "Reviewproces",
+      "reviewQueue": "Reviewwachtrij"
+    },
+    "locale": {
+      "label": "Taal",
+      "prompt": "De taal van je browser is beschikbaar.",
+      "switchTo": "Schakel naar {language}",
+      "stay": "Engels houden",
+      "close": "Taalsuggestie sluiten"
+    },
+    "theme": {
+      "label": "Thema",
+      "system": "Systeem",
+      "light": "Licht",
+      "dark": "Donker",
+      "aria": "Themamodus: {mode}. Activeer om het thema te wijzigen."
+    }
+  }
+}

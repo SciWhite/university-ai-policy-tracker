@@ -1,5 +1,7 @@
-import Link from "next/link";
+"use client";
+
 import type { ReactNode } from "react";
+import { LocalizedLink } from "@/components/localized-link";
 
 interface DocumentLinkProps {
   children: ReactNode;
@@ -17,9 +19,9 @@ export function DocumentLink({ children, className, href }: DocumentLinkProps) {
   }
 
   return (
-    <Link className={className} href={href}>
+    <LocalizedLink className={className} href={href}>
       {children}
-    </Link>
+    </LocalizedLink>
   );
 }
 

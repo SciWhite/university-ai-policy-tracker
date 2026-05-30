@@ -1,0 +1,48 @@
+{
+  "Shell": {
+    "tagline": "Rekod dasar AI universiti yang terbuka dan berasaskan bukti untuk kegunaan awam.",
+    "actions": {
+      "api": "API",
+      "github": "GitHub"
+    },
+    "navigation": {
+      "search": "Cari",
+      "universities": "Universiti",
+      "analysis": "Analisis",
+      "changes": "Perubahan",
+      "datasets": "Set data",
+      "methodology": "Metodologi",
+      "contribute": "Sumbang"
+    },
+    "footer": {
+      "intro": "Metadata penjejak terbuka untuk petikan dan analisis. Bukan nasihat undang-undang, nasihat integriti akademik, atau kenyataan rasmi universiti.",
+      "dataAndApi": "Data dan API",
+      "trustAndCitation": "Kepercayaan dan petikan",
+      "updates": "Kemas kini",
+      "coverageAndReview": "Liputan dan semakan",
+      "apiDocs": "Dokumen API",
+      "publicApi": "API awam",
+      "mcpAlpha": "MCP alpha",
+      "aiPolicyDatabase": "Pangkalan dasar AI",
+      "reportsRss": "RSS laporan",
+      "changesRss": "RSS perubahan",
+      "sourceHealth": "Kesihatan sumber",
+      "reviewWorkflow": "Aliran semakan",
+      "reviewQueue": "Baris semakan"
+    },
+    "locale": {
+      "label": "Bahasa",
+      "prompt": "Bahasa pelayar anda tersedia.",
+      "switchTo": "Tukar kepada {language}",
+      "stay": "Kekal bahasa Inggeris",
+      "close": "Tutup cadangan bahasa"
+    },
+    "theme": {
+      "label": "Tema",
+      "system": "Sistem",
+      "light": "Cerah",
+      "dark": "Gelap",
+      "aria": "Mod tema: {mode}. Aktifkan untuk menukar tema."
+    }
+  }
+}

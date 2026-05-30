@@ -2,10 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  getLocaleFromPathname,
+  getPathnameWithoutLocale,
+  localizeHref
+} from "@/lib/i18n";
+import { getShellMessages } from "@/lib/i18n-messages";
 
 interface SiteNavigationItem {
   href: string;
-  label: string;
+  labelKey: keyof ReturnType<typeof getShellMessages>["navigation"];
 }
 
 interface SiteNavigationProps {
@@ -14,19 +20,22 @@ interface SiteNavigationProps {
 
 export function SiteNavigation({ items }: SiteNavigationProps) {
   const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const labels = getShellMessages(locale).navigation;
+  const unprefixedPathname = getPathnameWithoutLocale(pathname);
 
   return (
-    <nav className="site-nav" aria-label="Primary navigation">
+    <nav className="site-nav" aria-label={labels.search}>
       {items.map((item) => {
-        const isActive = matchesPath(pathname, item.href);
+        const isActive = matchesPath(unprefixedPathname, item.href);
 
         return (
           <Link
             aria-current={isActive ? "page" : undefined}
-            href={item.href}
+            href={localizeHref(item.href, locale)}
             key={item.href}
           >
-            {item.label}
+            {labels[item.labelKey]}
           </Link>
         );
       })}

@@ -8,9 +8,11 @@ import {
   useState,
   type KeyboardEvent
 } from "react";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { DocumentLink as Link } from "@/components/document-link";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
+import { getLocaleFromPathname, localizeHref } from "@/lib/i18n";
 
 interface SearchAutocompleteProps {
   defaultValue?: string;
@@ -45,6 +47,8 @@ export function SearchAutocomplete({
   const [status, setStatus] = useState<SuggestionStatus>("idle");
   const listboxId = useId();
   const controllerRef = useRef<AbortController | null>(null);
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
   const trimmedQuery = query.trim();
   const activeResult = activeIndex >= 0 ? results[activeIndex] : undefined;
 
@@ -123,7 +127,9 @@ export function SearchAutocomplete({
       setStatus("idle");
     } else if (event.key === "Enter" && activeResult) {
       event.preventDefault();
-      window.location.assign(`/universities/${activeResult.entitySlug}`);
+      window.location.assign(
+        localizeHref(`/universities/${activeResult.entitySlug}`, locale)
+      );
     }
   }
 

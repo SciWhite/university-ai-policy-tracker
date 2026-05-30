@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getCatalogUniversities,
@@ -8,6 +7,7 @@ import {
 } from "@/lib/catalog";
 import { AnalysisStatusLabel } from "@/components/analysis-status-label";
 import { ClaimEvidenceCard } from "@/components/claim-evidence-card";
+import { DocumentLink as Link } from "@/components/document-link";
 import { EntityHeader } from "@/components/entity-header";
 import { EntitySidebar } from "@/components/entity-sidebar";
 import { JsonLd } from "@/components/json-ld";
@@ -15,13 +15,15 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { ReferenceTabs } from "@/components/reference-tabs";
 import { StateLabel } from "@/components/state-label";
-import { DEFAULT_LOCALE } from "@/lib/i18n";
+import { normalizeLocale } from "@/lib/i18n";
+import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getPolicyAnalysisProfileBySlug } from "@/lib/policy-analysis";
 import { getAnalysisPageQualityApiPath } from "@/lib/policy-analysis-pages";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 interface UniversityPageProps {
   params: Promise<{
+    locale?: string;
     slug: string;
   }>;
 }
@@ -50,10 +52,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: UniversityPageProps) {
-  const { slug } = await params;
+  const { locale: localeParam, slug } = await params;
+  const locale = normalizeLocale(localeParam);
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
-  const canonical = getAbsoluteSiteUrl(`/universities/${slug}`);
+  const alternates = getLocalizedAlternates(`/universities/${slug}`, locale);
+  const canonical = String(alternates.canonical);
   const title = university
     ? `${university.name} AI Policy: ChatGPT, GenAI Rules & Sources`
     : "University not found";
@@ -66,7 +70,7 @@ export async function generateMetadata({ params }: UniversityPageProps) {
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates,
     openGraph: {
       title,
       description,
@@ -77,7 +81,8 @@ export async function generateMetadata({ params }: UniversityPageProps) {
 }
 
 export default async function UniversityPage({ params }: UniversityPageProps) {
-  const { slug } = await params;
+  const { locale: localeParam, slug } = await params;
+  const locale = normalizeLocale(localeParam);
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
   const policyAnalysisProfile = await getPolicyAnalysisProfileBySlug(slug);
@@ -413,7 +418,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                     claim={claim}
                     id={claim.id ? `claim-${claim.id}` : undefined}
                     key={claim.id ?? claim.claimText}
-                    locale={DEFAULT_LOCALE}
+                    locale={locale}
                   />
                 ))}
               </div>
@@ -443,7 +448,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                     claim={claim}
                     id={claim.id ? `claim-${claim.id}` : undefined}
                     key={claim.id ?? claim.claimText}
-                    locale={DEFAULT_LOCALE}
+                    locale={locale}
                   />
                 ))}
               </div>

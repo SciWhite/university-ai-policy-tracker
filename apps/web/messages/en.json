@@ -1,0 +1,48 @@
+{
+  "Shell": {
+    "tagline": "Open, evidence-backed AI policy records for public reuse.",
+    "actions": {
+      "api": "API",
+      "github": "GitHub"
+    },
+    "navigation": {
+      "search": "Search",
+      "universities": "Universities",
+      "analysis": "Analysis",
+      "changes": "Changes",
+      "datasets": "Datasets",
+      "methodology": "Methodology",
+      "contribute": "Contribute"
+    },
+    "footer": {
+      "intro": "Open tracker metadata for citation and analysis. Not legal advice, academic integrity advice, or an official university statement.",
+      "dataAndApi": "Data and API",
+      "trustAndCitation": "Trust and citation",
+      "updates": "Updates",
+      "coverageAndReview": "Coverage and review",
+      "apiDocs": "API docs",
+      "publicApi": "Public API",
+      "mcpAlpha": "MCP alpha",
+      "aiPolicyDatabase": "AI Policy Database",
+      "reportsRss": "Reports RSS",
+      "changesRss": "Changes RSS",
+      "sourceHealth": "Source health",
+      "reviewWorkflow": "Review workflow",
+      "reviewQueue": "Review queue"
+    },
+    "locale": {
+      "label": "Language",
+      "prompt": "Your browser language is available.",
+      "switchTo": "Switch to {language}",
+      "stay": "Keep English",
+      "close": "Dismiss language suggestion"
+    },
+    "theme": {
+      "label": "Theme",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark",
+      "aria": "Theme mode: {mode}. Activate to switch theme."
+    }
+  }
+}

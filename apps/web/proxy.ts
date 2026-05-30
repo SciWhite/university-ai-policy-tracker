@@ -1,21 +1,21 @@
-import { NextResponse, type NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { getLocaleFromPathname } from "@/lib/i18n";
 
 export function proxy(request: NextRequest) {
-  const url = request.nextUrl.clone();
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set(
+    "x-uapt-locale",
+    getLocaleFromPathname(request.nextUrl.pathname)
+  );
 
-  if (url.pathname === "/coverage") {
-    url.pathname = "/coverage-dashboard";
-    return NextResponse.rewrite(url);
-  }
-
-  if (url.pathname === "/coverage/qs-2026") {
-    url.pathname = "/coverage-dashboard/qs-2026";
-    return NextResponse.rewrite(url);
-  }
-
-  return NextResponse.next();
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders
+    }
+  });
 }
 
 export const config = {
-  matcher: ["/coverage", "/coverage/qs-2026"]
+  matcher: "/((?!api|feeds|_next|_vercel|.*\\..*).*)"
 };

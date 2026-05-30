@@ -1,20 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPathname } from "@/lib/i18n";
+import { getShellMessages, interpolate } from "@/lib/i18n-messages";
 
 const THEME_STORAGE_KEY = "uapt-theme";
 const themePreferences = ["system", "light", "dark"] as const;
 
 type ThemePreference = (typeof themePreferences)[number];
 
-const themeLabels: Record<ThemePreference, string> = {
-  system: "System",
-  light: "Light",
-  dark: "Dark"
-};
-
 export function ThemeToggle() {
   const [preference, setPreference] = useState<ThemePreference>("system");
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const messages = getShellMessages(locale).theme;
 
   useEffect(() => {
     const stored = readStoredPreference();
@@ -29,16 +29,16 @@ export function ThemeToggle() {
     applyThemePreference(nextPreference);
   }
 
-  const label = themeLabels[preference];
+  const label = messages[preference];
 
   return (
     <button
-      aria-label={`Theme mode: ${label}. Activate to switch theme.`}
+      aria-label={interpolate(messages.aria, { mode: label })}
       className="theme-toggle"
       onClick={handleToggle}
       type="button"
     >
-      <span className="theme-toggle__label">Theme</span>
+      <span className="theme-toggle__label">{messages.label}</span>
       <span className="theme-toggle__value">{label}</span>
     </button>
   );

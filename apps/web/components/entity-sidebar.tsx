@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { CitationCopyActions } from "@/components/citation-copy-actions";
+import { DocumentLink as Link } from "@/components/document-link";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 

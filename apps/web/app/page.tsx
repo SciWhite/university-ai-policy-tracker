@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import {
   NO_ADVICE_BOUNDARY,
@@ -6,7 +5,7 @@ import {
   PUBLIC_API_VERSION
 } from "@uapt/shared";
 import { DataList, DataListRow } from "@/components/data-list";
-import { DocumentLink } from "@/components/document-link";
+import { DocumentLink as Link } from "@/components/document-link";
 import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { SearchAutocomplete } from "@/components/search-autocomplete";
@@ -15,6 +14,8 @@ import { searchIndexRecords, getSearchIndexRecords } from "@/lib/entity-search";
 import { getChangeRecords } from "@/lib/change-records";
 import { getPolicyAnalysisProfiles } from "@/lib/policy-analysis";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { normalizeLocale } from "@/lib/i18n";
 import { getStaticUniversityIndexRecords } from "@/lib/university-index-records";
 
 const formatter = new Intl.NumberFormat("en");
@@ -93,15 +94,25 @@ const homeAnswers = [
   }
 ] as const;
 
-export async function generateMetadata(): Promise<Metadata> {
-  const canonical = getAbsoluteSiteUrl("/");
+interface HomePageProps {
+  params?: Promise<{
+    locale?: string;
+  }>;
+}
+
+export async function generateMetadata({
+  params
+}: HomePageProps = {}): Promise<Metadata> {
+  const locale = normalizeLocale((await params)?.locale);
+  const alternates = getLocalizedAlternates("/", locale);
+  const canonical = String(alternates.canonical);
   const universities = await getStaticUniversityIndexRecords();
   const dynamicTitle = buildHomeTitle(universities.length);
 
   return {
     title: dynamicTitle,
     description,
-    alternates: { canonical },
+    alternates,
     openGraph: {
       title: dynamicTitle,
       description,
@@ -288,7 +299,7 @@ export default async function HomePage() {
             <ul>
               {group.links.map((link) => (
                 <li key={link.href}>
-                  <DocumentLink href={link.href}>{link.label}</DocumentLink>
+                  <Link href={link.href}>{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -380,10 +391,10 @@ export default async function HomePage() {
               replacing official university source language.
             </p>
             <div className="tag-row">
-              <DocumentLink href="/university-ai-policy-database">
+              <Link href="/university-ai-policy-database">
                 AI/search reference
-              </DocumentLink>
-              <DocumentLink href="/llms.txt">llms.txt</DocumentLink>
+              </Link>
+              <Link href="/llms.txt">llms.txt</Link>
             </div>
           </article>
           <article className="policy-card">
@@ -394,8 +405,8 @@ export default async function HomePage() {
               remain the final source for institutional wording.
             </p>
             <div className="tag-row">
-              <DocumentLink href="/citation">Citation guide</DocumentLink>
-              <DocumentLink href="/methodology">Methodology</DocumentLink>
+              <Link href="/citation">Citation guide</Link>
+              <Link href="/methodology">Methodology</Link>
             </div>
           </article>
           <article className="policy-card">
@@ -406,10 +417,10 @@ export default async function HomePage() {
               metadata under the versioned API namespace.
             </p>
             <div className="tag-row">
-              <DocumentLink href="/api-reference">API docs</DocumentLink>
-              <DocumentLink href={`/api/public/${PUBLIC_API_VERSION}/index.json`}>
+              <Link href="/api-reference">API docs</Link>
+              <Link href={`/api/public/${PUBLIC_API_VERSION}/index.json`}>
                 API index
-              </DocumentLink>
+              </Link>
             </div>
           </article>
         </div>

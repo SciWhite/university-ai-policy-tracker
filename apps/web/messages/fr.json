@@ -1,0 +1,48 @@
+{
+  "Shell": {
+    "tagline": "Dossiers ouverts et fondes sur des preuves sur les politiques IA universitaires.",
+    "actions": {
+      "api": "API",
+      "github": "GitHub"
+    },
+    "navigation": {
+      "search": "Recherche",
+      "universities": "Universites",
+      "analysis": "Analyse",
+      "changes": "Changements",
+      "datasets": "Jeux de donnees",
+      "methodology": "Methodologie",
+      "contribute": "Contribuer"
+    },
+    "footer": {
+      "intro": "Metadonnees ouvertes pour citation et analyse. Ce n'est pas un avis juridique, un avis d'integrite academique, ni une declaration officielle d'universite.",
+      "dataAndApi": "Donnees et API",
+      "trustAndCitation": "Confiance et citation",
+      "updates": "Mises a jour",
+      "coverageAndReview": "Couverture et revue",
+      "apiDocs": "Docs API",
+      "publicApi": "API publique",
+      "mcpAlpha": "MCP alpha",
+      "aiPolicyDatabase": "Base de politiques IA",
+      "reportsRss": "RSS rapports",
+      "changesRss": "RSS changements",
+      "sourceHealth": "Sante des sources",
+      "reviewWorkflow": "Processus de revue",
+      "reviewQueue": "File de revue"
+    },
+    "locale": {
+      "label": "Langue",
+      "prompt": "La langue de votre navigateur est disponible.",
+      "switchTo": "Passer en {language}",
+      "stay": "Garder l'anglais",
+      "close": "Masquer la suggestion de langue"
+    },
+    "theme": {
+      "label": "Theme",
+      "system": "Systeme",
+      "light": "Clair",
+      "dark": "Sombre",
+      "aria": "Mode theme : {mode}. Activer pour changer de theme."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "Shell": {
+    "tagline": "Otwarte, oparte na dowodach rekordy polityk AI uczelni do publicznego uzycia.",
+    "actions": {
+      "api": "API",
+      "github": "GitHub"
+    },
+    "navigation": {
+      "search": "Szukaj",
+      "universities": "Uczelnie",
+      "analysis": "Analiza",
+      "changes": "Zmiany",
+      "datasets": "Zbiory danych",
+      "methodology": "Metodyka",
+      "contribute": "Wklad"
+    },
+    "footer": {
+      "intro": "Otwarte metadane trackera do cytowania i analizy. To nie jest porada prawna, porada o uczciwosci akademickiej ani oficjalne stanowisko uczelni.",
+      "dataAndApi": "Dane i API",
+      "trustAndCitation": "Zaufanie i cytowanie",
+      "updates": "Aktualizacje",
+      "coverageAndReview": "Zakres i przeglad",
+      "apiDocs": "Dokumentacja API",
+      "publicApi": "Publiczne API",
+      "mcpAlpha": "MCP alpha",
+      "aiPolicyDatabase": "Baza polityk AI",
+      "reportsRss": "RSS raportow",
+      "changesRss": "RSS zmian",
+      "sourceHealth": "Stan zrodel",
+      "reviewWorkflow": "Proces przegladu",
+      "reviewQueue": "Kolejka przegladu"
+    },
+    "locale": {
+      "label": "Jezyk",
+      "prompt": "Jezyk Twojej przegladarki jest dostepny.",
+      "switchTo": "Przelacz na {language}",
+      "stay": "Zostan przy angielskim",
+      "close": "Ukryj sugestie jezyka"
+    },
+    "theme": {
+      "label": "Motyw",
+      "system": "System",
+      "light": "Jasny",
+      "dark": "Ciemny",
+      "aria": "Tryb motywu: {mode}. Aktywuj, aby zmienic motyw."
+    }
+  }
+}

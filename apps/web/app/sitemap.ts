@@ -8,6 +8,7 @@ import {
   themeLandingSpecs
 } from "@/lib/reference-pages";
 import { getPublishableAnalysisThemeSpecs } from "@/lib/policy-analysis-pages";
+import { NON_DEFAULT_LOCALES, withLocalePrefix } from "@/lib/i18n";
 import { getSiteBaseUrl } from "../lib/site-url";
 
 const staticRoutes = [
@@ -43,6 +44,15 @@ const referenceRoutes = [
   ...themeLandingSpecs.map((spec) => `/themes/${spec.slug}`)
 ] as const;
 
+const localizedStaticRoutes = [
+  "",
+  "/search",
+  "/universities",
+  "/methodology",
+  "/citation",
+  "/datasets"
+] as const;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteBaseUrl();
   const now = new Date();
@@ -57,6 +67,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: new URL(route, baseUrl).toString(),
       lastModified: now
     })),
+    ...NON_DEFAULT_LOCALES.flatMap((locale) =>
+      localizedStaticRoutes.map((route) => ({
+        url: new URL(withLocalePrefix(route || "/", locale), baseUrl).toString(),
+        lastModified: now
+      }))
+    ),
     ...referenceRoutes.map((route) => ({
       url: new URL(route, baseUrl).toString(),
       lastModified: now
@@ -73,6 +89,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: latestSourceDate ? new Date(latestSourceDate) : now
       };
     }),
+    ...NON_DEFAULT_LOCALES.flatMap((locale) =>
+      universities.map((university) => {
+        const latestSourceDate = getLatestSourceDate(university.sources);
+
+        return {
+          url: new URL(
+            withLocalePrefix(`/universities/${university.slug}`, locale),
+            baseUrl
+          ).toString(),
+          lastModified: latestSourceDate ? new Date(latestSourceDate) : now
+        };
+      })
+    ),
     ...changeRecords.map((record) => ({
       url: new URL(record.changeUrl, baseUrl).toString(),
       lastModified: getRecordLastModified(record, now)

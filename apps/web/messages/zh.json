@@ -1,0 +1,48 @@
+{
+  "Shell": {
+    "tagline": "开放、证据支撑的高校 AI 政策记录，可供公众复用。",
+    "actions": {
+      "api": "API",
+      "github": "GitHub"
+    },
+    "navigation": {
+      "search": "搜索",
+      "universities": "高校",
+      "analysis": "分析",
+      "changes": "更新",
+      "datasets": "数据集",
+      "methodology": "方法",
+      "contribute": "贡献"
+    },
+    "footer": {
+      "intro": "开放的追踪器元数据，可用于引用和分析。不是法律建议、学术诚信建议，也不是高校官方声明。",
+      "dataAndApi": "数据和 API",
+      "trustAndCitation": "信任和引用",
+      "updates": "更新",
+      "coverageAndReview": "覆盖和审核",
+      "apiDocs": "API 文档",
+      "publicApi": "公共 API",
+      "mcpAlpha": "MCP 测试版",
+      "aiPolicyDatabase": "AI 政策数据库",
+      "reportsRss": "报告 RSS",
+      "changesRss": "变更 RSS",
+      "sourceHealth": "来源健康",
+      "reviewWorkflow": "审核流程",
+      "reviewQueue": "审核队列"
+    },
+    "locale": {
+      "label": "语言",
+      "prompt": "此网站支持你的浏览器语言。",
+      "switchTo": "切换到{language}",
+      "stay": "继续使用英文",
+      "close": "关闭语言建议"
+    },
+    "theme": {
+      "label": "主题",
+      "system": "系统",
+      "light": "浅色",
+      "dark": "深色",
+      "aria": "主题模式：{mode}。点击切换主题。"
+    }
+  }
+}

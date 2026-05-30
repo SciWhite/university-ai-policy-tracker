@@ -3,6 +3,8 @@ import {
   universityIndexRankingSystems
 } from "@/lib/university-index-records";
 import { JsonLd } from "@/components/json-ld";
+import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { normalizeLocale } from "@/lib/i18n";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { UniversitiesIndexClient } from "./universities-index-client";
 
@@ -13,13 +15,23 @@ const title = "Universities | University AI Policy Tracker";
 const description =
   "Browse source-backed university AI policy records with ranks, review states, claim counts, official source attributions, and public JSON links.";
 
-export function generateMetadata() {
-  const canonical = getAbsoluteSiteUrl("/universities");
+interface UniversitiesPageProps {
+  params?: Promise<{
+    locale?: string;
+  }>;
+}
+
+export async function generateMetadata({
+  params
+}: UniversitiesPageProps = {}) {
+  const locale = normalizeLocale((await params)?.locale);
+  const alternates = getLocalizedAlternates("/universities", locale);
+  const canonical = String(alternates.canonical);
 
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates,
     openGraph: {
       title,
       description,
@@ -29,7 +41,8 @@ export function generateMetadata() {
   };
 }
 
-export default async function UniversitiesPage() {
+export default async function UniversitiesPage({ params }: UniversitiesPageProps) {
+  const locale = normalizeLocale((await params)?.locale);
   const records = await getStaticUniversityIndexRecords();
 
   return (
@@ -54,6 +67,7 @@ export default async function UniversitiesPage() {
         }}
       />
       <UniversitiesIndexClient
+        locale={locale}
         records={records}
         rankingSystems={universityIndexRankingSystems}
       />

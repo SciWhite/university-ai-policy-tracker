@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
-import Link from "next/link";
 import type {
   CatalogUniversityRanking,
   RankingSystemId
 } from "@uapt/shared";
 import { NO_ADVICE_BOUNDARY } from "@uapt/shared";
+import { DocumentLink as Link } from "@/components/document-link";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
+import { localizeHref, type SupportedLocale } from "@/lib/i18n";
 import type {
   StaticUniversityIndexRecord,
   UniversityIndexCoverageFilter,
@@ -18,6 +19,7 @@ import type {
 } from "@/lib/university-index-records";
 
 interface UniversitiesIndexClientProps {
+  locale: SupportedLocale;
   rankingSystems: UniversityIndexRankingSystem[];
   records: StaticUniversityIndexRecord[];
 }
@@ -39,6 +41,7 @@ const defaultFilters: UniversityIndexFilters = {
 };
 
 export function UniversitiesIndexClient({
+  locale,
   rankingSystems,
   records
 }: UniversitiesIndexClientProps) {
@@ -82,13 +85,13 @@ export function UniversitiesIndexClient({
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const nextUrl = buildFilterUrl(filters);
+    const nextUrl = buildFilterUrl(filters, locale);
     window.history.pushState({}, "", nextUrl);
   }
 
   function resetFilters() {
     setFilters(defaultFilters);
-    window.history.pushState({}, "", "/universities");
+    window.history.pushState({}, "", localizeHref("/universities", locale));
   }
 
   return (
@@ -157,7 +160,7 @@ export function UniversitiesIndexClient({
         </div>
 
         <form
-          action="/universities"
+          action={localizeHref("/universities", locale)}
           className="university-filter-form"
           method="get"
           onSubmit={handleSubmit}
@@ -433,7 +436,10 @@ function parseFilters(params: URLSearchParams): UniversityIndexFilters {
   };
 }
 
-function buildFilterUrl(filters: UniversityIndexFilters): string {
+function buildFilterUrl(
+  filters: UniversityIndexFilters,
+  locale: SupportedLocale
+): string {
   const params = new URLSearchParams();
   if (filters.q.trim()) params.set("q", filters.q.trim());
   if (filters.ranking !== defaultFilters.ranking) params.set("ranking", filters.ranking);
@@ -444,7 +450,9 @@ function buildFilterUrl(filters: UniversityIndexFilters): string {
   if (filters.order !== defaultFilters.order) params.set("order", filters.order);
   const query = params.toString();
 
-  return query ? `/universities?${query}` : "/universities";
+  const path = query ? `/universities?${query}` : "/universities";
+
+  return localizeHref(path, locale);
 }
 
 function parseRankingSystem(value: string): RankingSystemId {

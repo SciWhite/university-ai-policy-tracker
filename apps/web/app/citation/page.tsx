@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { DocumentLink as Link } from "@/components/document-link";
 import {
   NO_ADVICE_BOUNDARY,
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
@@ -10,6 +10,8 @@ import { CitationCopyActions } from "@/components/citation-copy-actions";
 import { JsonLd } from "@/components/json-ld";
 import { ReferenceBox } from "@/components/reference-box";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { normalizeLocale } from "@/lib/i18n";
 
 const title = "Citation | University AI Policy Tracker";
 const description =
@@ -34,13 +36,23 @@ const citationAnswers = [
   }
 ] as const;
 
-export function generateMetadata() {
-  const canonical = getAbsoluteSiteUrl("/citation");
+interface CitationPageProps {
+  params?: Promise<{
+    locale?: string;
+  }>;
+}
+
+export async function generateMetadata({
+  params
+}: CitationPageProps = {}) {
+  const locale = normalizeLocale((await params)?.locale);
+  const alternates = getLocalizedAlternates("/citation", locale);
+  const canonical = String(alternates.canonical);
 
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates,
     openGraph: {
       title,
       description,
