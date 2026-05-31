@@ -1,0 +1,473 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-sfax-20260531",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-university-of-sfax-20260531",
+      "entityType": "university",
+      "entitySlug": "university-of-sfax",
+      "startedAt": "2026-05-31T20:30:00.000Z",
+      "endedAt": "2026-05-31T20:44:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "query": "University of Sfax official site domain \"Université de Sfax\"",
+          "domain": "uss.rnu.tn",
+          "resultCount": 10,
+          "notes": "Firecrawl search identified https://uss.rnu.tn/ as the current official University of Sfax public website."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uss.rnu.tn (\"intelligence artificielle\" OR ChatGPT OR \"IA générative\" OR \"plagiat\" OR \"intégrité académique\")",
+          "domain": "uss.rnu.tn",
+          "resultCount": 10,
+          "notes": "Official-domain search found the Système Antiplagiat page and several AI-related news, scholarship, event, or procurement-style results. It did not find a current official ChatGPT or generative-AI use policy."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uss.rnu.tn \"ChatGPT\" \"Université de Sfax\"",
+          "domain": "uss.rnu.tn",
+          "resultCount": 0,
+          "notes": "No official-domain ChatGPT result was returned."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:uss.rnu.tn \"IA générative\" OR \"Intelligence Artificielle Générative\" OR \"outils d'IA\"",
+          "domain": "uss.rnu.tn",
+          "resultCount": 0,
+          "notes": "No official-domain generative-AI guidance result was returned."
+        },
+        {
+          "method": "site_search",
+          "query": "Firecrawl map search: intelligence artificielle ChatGPT IA générative plagiat Turnitin",
+          "domain": "uss.rnu.tn",
+          "resultCount": 0,
+          "notes": "Firecrawl map over the official site returned no links for the combined AI/plagiarism query."
+        },
+        {
+          "method": "public_web_search",
+          "query": "site:univ-sfax.tn \"intelligence artificielle\" \"Université de Sfax\"",
+          "domain": "univ-sfax.tn",
+          "resultCount": 1,
+          "notes": "Official-domain search found a University of Sfax PDF terms-of-reference document for capacity-building and certification including artificial-intelligence training."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "uss.rnu.tn",
+          "resultCount": 2,
+          "notes": "Direct HTTP checks confirmed https://uss.rnu.tn/robots.txt returned HTTP 200 with no disallow rules, and static fetches of public official pages returned HTTP 200."
+        },
+        {
+          "method": "canonical_domain",
+          "domain": "www.univ-sfax.tn",
+          "resultCount": 2,
+          "notes": "Direct HTTP checks confirmed robots.txt allows crawling with Crawl-Delay: 20, and the public PDF returned HTTP 200."
+        }
+      ],
+      "noSourceEscalationCompleted": true,
+      "candidateIds": [
+        "sc-usfax-antiplagiarism-turnitin",
+        "sc-usfax-tdr-ai-certification",
+        "sc-usfax-innovation-day-ai"
+      ],
+      "rejectionIds": [
+        "sr-usfax-innovation-day-ai"
+      ],
+      "summary": "Official-source discovery found adjacent academic-integrity evidence through the public anti-plagiarism/Turnitin page and an official AI capacity-building terms-of-reference PDF. No official University of Sfax ChatGPT, generative-AI use, AI assessment, AI citation, approved-tool, or AI data-handling policy was found in this staged search."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-usfax-antiplagiarism-turnitin",
+      "entityType": "university",
+      "entitySlug": "university-of-sfax",
+      "sourceUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+      "finalUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+      "sourceTitle": "Système Antiplagiat - Université de Sfax",
+      "sourceLanguage": "fr",
+      "sourceType": "academic_integrity",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uss.rnu.tn (\"intelligence artificielle\" OR ChatGPT OR \"IA générative\" OR \"plagiat\" OR \"intégrité académique\")",
+      "discoveredAt": "2026-05-31T20:33:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.12,
+      "policySpecificityScore": 0.62,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-31T20:39:00.000Z",
+      "verificationNotes": "Official University of Sfax page on the main public domain. It supports adjacent plagiarism-detection context only and does not mention AI or generative-AI use.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-usfax-tdr-ai-certification",
+      "entityType": "university",
+      "entitySlug": "university-of-sfax",
+      "sourceUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+      "finalUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+      "sourceTitle": "TDR-30-2024 : PAQ-COVID - Termes de référence",
+      "sourceLanguage": "fr",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:univ-sfax.tn \"intelligence artificielle\" \"Université de Sfax\"",
+      "discoveredAt": "2026-05-31T20:37:00.000Z",
+      "officialDomainConfidence": 0.93,
+      "aiRelevanceScore": 0.7,
+      "policySpecificityScore": 0.46,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-31T20:42:00.000Z",
+      "verificationNotes": "Official University of Sfax PDF terms-of-reference document. It supports a narrow AI training/certification source-status claim, not an AI-use or academic-integrity policy.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-usfax-innovation-day-ai",
+      "entityType": "university",
+      "entitySlug": "university-of-sfax",
+      "sourceUrl": "https://uss.rnu.tn/news_details/802",
+      "finalUrl": "https://uss.rnu.tn/news_details/802",
+      "sourceTitle": "Sfax Innovation Day. Détails",
+      "sourceLanguage": "fr",
+      "sourceType": "official_news_advisory",
+      "discoveryMethod": "public_web_search",
+      "queryUsed": "site:uss.rnu.tn (\"intelligence artificielle\" OR ChatGPT OR \"IA générative\" OR \"plagiat\" OR \"intégrité académique\")",
+      "discoveredAt": "2026-05-31T20:34:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.55,
+      "policySpecificityScore": 0.14,
+      "verificationStatus": "rejected",
+      "verifiedAt": "2026-05-31T20:40:00.000Z",
+      "verificationNotes": "Official AI-related event/news page, but it announces a conference and does not provide policy, assessment, citation, tool approval, or data-handling guidance.",
+      "rejectionReason": "event_or_news_only",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "source_rejection",
+      "sourceRejectionId": "sr-usfax-innovation-day-ai",
+      "sourceCandidateId": "sc-usfax-innovation-day-ai",
+      "entityType": "university",
+      "entitySlug": "university-of-sfax",
+      "sourceUrl": "https://uss.rnu.tn/news_details/802",
+      "finalUrl": "https://uss.rnu.tn/news_details/802",
+      "rejectedAt": "2026-05-31T20:40:00.000Z",
+      "rejectionReason": "event_or_news_only",
+      "checkedBy": "codex-openclaw-worker",
+      "evidenceSnippet": "Conférence : \"L’Intelligence Artificielle, la Géopolitique et la Finance Internationale : la nouvelle équation du pouvoir mondial\"",
+      "notes": "The page is official and AI-related, but it is an event announcement and was not used as claim evidence."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "crawl_plan",
+      "planId": "plan-university-of-sfax-20260531",
+      "createdAt": "2026-05-31T20:35:00.000Z",
+      "createdBy": "codex-openclaw-worker",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-sfax",
+          "sourceCandidateId": "sc-usfax-antiplagiarism-turnitin",
+          "sourceUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+          "sourceTitle": "Système Antiplagiat - Université de Sfax",
+          "sourceLanguage": "fr",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "academic_integrity",
+            "source_status"
+          ],
+          "robotsPolicy": "respect"
+        },
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-sfax",
+          "sourceCandidateId": "sc-usfax-tdr-ai-certification",
+          "sourceUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+          "sourceTitle": "TDR-30-2024 : PAQ-COVID - Termes de référence",
+          "sourceLanguage": "fr",
+          "allowedFetchModes": [
+            "firecrawl",
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "research",
+            "source_status"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Stop after official source snapshots support narrow adjacent-context claims.",
+        "Do not infer a University of Sfax AI-use policy from anti-plagiarism, capacity-building, procurement, scholarship, or event pages.",
+        "Do not use non-official search results, snippets, or third-party pages as claim evidence."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-usfax-antiplagiarism-turnitin-firecrawl",
+      "sourceCandidateId": "sc-usfax-antiplagiarism-turnitin",
+      "sourceUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+      "finalUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+      "attemptedAt": "2026-05-31T20:39:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "trackerCheckedAt": "2026-05-31T20:39:00.000Z",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 25894,
+      "contentHash": "f227e2cbc03d1312f9ad459670f0c4f49281fd87a1bfe47635452c6275a6c5c6",
+      "normalizedTextStorageKey": "not-staged:firecrawl-normalized-text"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-usfax-tdr-ai-certification-firecrawl",
+      "sourceCandidateId": "sc-usfax-tdr-ai-certification",
+      "sourceUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+      "finalUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+      "attemptedAt": "2026-05-31T20:42:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "sourceLastModified": "2024-09-19T09:50:00.000Z",
+      "trackerCheckedAt": "2026-05-31T20:42:00.000Z",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 3817,
+      "contentHash": "a6f3f88d8ee1991ab9e58a1ac3ee4a72c659a9d7f80f3c1830a7c8c5cf7852aa",
+      "normalizedTextStorageKey": "not-staged:firecrawl-pdf-normalized-text"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-usfax-antiplagiarism-turnitin",
+      "sourceCandidateId": "sc-usfax-antiplagiarism-turnitin",
+      "fetchAttemptId": "fa-usfax-antiplagiarism-turnitin-firecrawl",
+      "sourceUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+      "finalUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+      "sourceTitle": "Système Antiplagiat - Université de Sfax",
+      "sourceLanguage": "fr",
+      "contentHash": "f227e2cbc03d1312f9ad459670f0c4f49281fd87a1bfe47635452c6275a6c5c6",
+      "fetchedAt": "2026-05-31T20:39:00.000Z",
+      "trackerCheckedAt": "2026-05-31T20:39:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "not-staged:firecrawl-normalized-text",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-usfax-tdr-ai-certification",
+      "sourceCandidateId": "sc-usfax-tdr-ai-certification",
+      "fetchAttemptId": "fa-usfax-tdr-ai-certification-firecrawl",
+      "sourceUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+      "finalUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+      "sourceTitle": "TDR-30-2024 : PAQ-COVID - Termes de référence",
+      "sourceLanguage": "fr",
+      "contentHash": "a6f3f88d8ee1991ab9e58a1ac3ee4a72c659a9d7f80f3c1830a7c8c5cf7852aa",
+      "fetchedAt": "2026-05-31T20:42:00.000Z",
+      "sourceLastModified": "2024-09-19T09:50:00.000Z",
+      "trackerCheckedAt": "2026-05-31T20:42:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "not-staged:firecrawl-pdf-normalized-text",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-usfax-antiplagiarism-turnitin",
+      "entityType": "university",
+      "entitySlug": "university-of-sfax",
+      "claimType": "academic_integrity",
+      "claimText": "University of Sfax has an official public page for its anti-plagiarism system, stating that the university acquired Turnitin for plagiarism detection and invites permanent teachers to activate institutional accounts. The page does not mention AI or generative-AI tools.",
+      "normalizedValue": "official_turnitin_plagiarism_detection_context_not_ai_specific",
+      "sourceLanguage": "fr",
+      "confidence": 0.86,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-usfax-antiplagiarism-turnitin"
+      ],
+      "citation": {
+        "citationTitle": "Système Antiplagiat - Université de Sfax",
+        "sourceUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-sfax.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-sfax",
+        "publisher": "Université de Sfax",
+        "retrievedAt": "2026-05-31T20:39:00.000Z",
+        "trackerCheckedAt": "2026-05-31T20:39:00.000Z",
+        "snapshotHash": "f227e2cbc03d1312f9ad459670f0c4f49281fd87a1bfe47635452c6275a6c5c6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-usfax-tdr-ai-certification",
+      "entityType": "university",
+      "entitySlug": "university-of-sfax",
+      "claimType": "source_status",
+      "claimText": "An official University of Sfax terms-of-reference PDF for capacity-building and certification includes artificial intelligence among training/certification domains for teachers and students. This is AI training/capacity-building evidence, not a student or staff AI-use policy.",
+      "normalizedValue": "official_ai_training_certification_source_not_ai_use_policy",
+      "sourceLanguage": "fr",
+      "confidence": 0.8,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-usfax-tdr-ai-certification"
+      ],
+      "citation": {
+        "citationTitle": "TDR-30-2024 : PAQ-COVID - Termes de référence",
+        "sourceUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-sfax.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-sfax",
+        "publisher": "Université de Sfax",
+        "retrievedAt": "2026-05-31T20:42:00.000Z",
+        "sourceLastModified": "2024-09-19T09:50:00.000Z",
+        "trackerCheckedAt": "2026-05-31T20:42:00.000Z",
+        "snapshotHash": "a6f3f88d8ee1991ab9e58a1ac3ee4a72c659a9d7f80f3c1830a7c8c5cf7852aa",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-usfax-antiplagiarism-turnitin",
+      "claimId": "claim-usfax-antiplagiarism-turnitin",
+      "sourceSnapshotId": "ss-usfax-antiplagiarism-turnitin",
+      "sourceUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+      "finalUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+      "sourceTitle": "Système Antiplagiat - Université de Sfax",
+      "sourceLanguage": "fr",
+      "snapshotHash": "f227e2cbc03d1312f9ad459670f0c4f49281fd87a1bfe47635452c6275a6c5c6",
+      "evidenceSnippetOriginal": "Dans le cadre de l'acquisition de la solution TURNITIN pour la détection du plagiat, l’Université de Sfax invite ses enseignants permanents à vérifier leurs boîtes e-mail institutionnelles pour procéder à l'activation de leurs comptes.",
+      "evidenceSnippetDisplay": "The University of Sfax says it acquired Turnitin for plagiarism detection and invites permanent teachers to activate their institutional accounts.",
+      "evidenceLocator": "Système Antiplagiat page, main body",
+      "evidenceType": "official_source",
+      "relevance": 0.84,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Système Antiplagiat - Université de Sfax",
+        "sourceUrl": "https://uss.rnu.tn/page/systeme_antiplagiat",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-sfax.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-sfax",
+        "publisher": "Université de Sfax",
+        "retrievedAt": "2026-05-31T20:39:00.000Z",
+        "trackerCheckedAt": "2026-05-31T20:39:00.000Z",
+        "snapshotHash": "f227e2cbc03d1312f9ad459670f0c4f49281fd87a1bfe47635452c6275a6c5c6",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-usfax-tdr-ai-certification",
+      "claimId": "claim-usfax-tdr-ai-certification",
+      "sourceSnapshotId": "ss-usfax-tdr-ai-certification",
+      "sourceUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+      "finalUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+      "sourceTitle": "TDR-30-2024 : PAQ-COVID - Termes de référence",
+      "sourceLanguage": "fr",
+      "snapshotHash": "a6f3f88d8ee1991ab9e58a1ac3ee4a72c659a9d7f80f3c1830a7c8c5cf7852aa",
+      "evidenceSnippetOriginal": "Lot 2 : Assurer une formation en ligne complète et spécialisée sur les 6 thèmes suivants : Agile Leader Professional Certification; Cyber Security Foundation; Business Intelligence Analyst Professional Certification; Artificial Intelligence Professional Certificate; Big Data Professional Certification; Certified Ethical Hacking Professional Certification.",
+      "evidenceSnippetDisplay": "The official terms of reference include an online training/certification lot with Artificial Intelligence Professional Certificate among six themes.",
+      "evidenceLocator": "PDF page 3, Objectifs spécifiques, Lot 2",
+      "evidenceType": "pdf",
+      "relevance": 0.78,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "TDR-30-2024 : PAQ-COVID - Termes de référence",
+        "sourceUrl": "https://www.univ-sfax.tn/intranet/actualities/file_actualite/TDR-30-2024.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-sfax.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-sfax",
+        "publisher": "Université de Sfax",
+        "retrievedAt": "2026-05-31T20:42:00.000Z",
+        "sourceLastModified": "2024-09-19T09:50:00.000Z",
+        "trackerCheckedAt": "2026-05-31T20:42:00.000Z",
+        "snapshotHash": "a6f3f88d8ee1991ab9e58a1ac3ee4a72c659a9d7f80f3c1830a7c8c5cf7852aa",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "review_decision",
+      "decisionId": "rd-usfax-antiplagiarism-turnitin",
+      "claimId": "claim-usfax-antiplagiarism-turnitin",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow adjacent academic-integrity source-status claim. The source supports plagiarism-detection context only and does not support an AI-specific policy claim.",
+      "decidedAt": "2026-05-31T20:44:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "review_decision",
+      "decisionId": "rd-usfax-tdr-ai-certification",
+      "claimId": "claim-usfax-tdr-ai-certification",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "openclaw_agent",
+      "reviewer": "codex-openclaw-worker",
+      "notes": "Approved as a narrow source-status claim for official AI capacity-building/certification evidence. The PDF does not establish binding AI-use, assessment, citation, or data-handling rules.",
+      "decidedAt": "2026-05-31T20:44:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-sfax-20260531",
+      "artifactType": "report_draft",
+      "reportId": "report-university-of-sfax-20260531",
+      "title": "University of Sfax staged AI policy source review",
+      "generatedAt": "2026-05-31T20:44:00.000Z",
+      "draftPath": "content/reports/2026-05/university-of-sfax-ai-policy-source-review.mdx",
+      "summary": "Official-source discovery found adjacent University of Sfax evidence for plagiarism detection via Turnitin and AI capacity-building/certification through an official terms-of-reference PDF. The staged search did not identify a current official ChatGPT, generative-AI use, AI assessment, AI citation, approved-tool, or AI data-handling policy.",
+      "referencedClaimIds": [
+        "claim-usfax-antiplagiarism-turnitin",
+        "claim-usfax-tdr-ai-certification"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-sfax.json",
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-sfax.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "This staged run did not identify a current official University of Sfax AI-use or generative-AI policy.",
+        "The AI-related event page was rejected as event-only evidence and was not used for policy claims."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
