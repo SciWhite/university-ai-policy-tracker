@@ -1,5 +1,1 @@
-export {
-  default,
-  generateMetadata,
-  generateStaticParams
-} from "../../../changes/[releaseId]/page";
+export { default, generateMetadata } from "../../../changes/[releaseId]/page";
