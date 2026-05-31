@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node ../../scripts/prepare-web-runtime-data.mjs && next build",
     "lint": "tsc --noEmit -p tsconfig.json",
     "start": "next start",
     "typecheck": "tsc --noEmit -p tsconfig.json"

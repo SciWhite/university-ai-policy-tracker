@@ -17,6 +17,7 @@ import {
   getStagedPublicDatasetForManifest,
   type PublicReleaseManifest
 } from "./staged-public-data";
+import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 
 export type ReleaseDiffChangeType =
@@ -1006,22 +1007,6 @@ function parseManifest(content: string): PublicReleaseManifest | undefined {
   }
 
   return undefined;
-}
-
-async function findRepoRoot(): Promise<string> {
-  let current = process.cwd();
-
-  for (;;) {
-    try {
-      await readFile(path.join(current, "package.json"), "utf8");
-      await readdir(path.join(current, "apps"));
-      return current;
-    } catch {
-      const parent = path.dirname(current);
-      if (parent === current) return process.cwd();
-      current = parent;
-    }
-  }
 }
 
 function summarizeRows(rows: ReleaseDiffRow[]): ReleaseDiffCounts {

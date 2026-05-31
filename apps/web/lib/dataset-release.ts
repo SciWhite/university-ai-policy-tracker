@@ -21,6 +21,7 @@ import {
   getStagedPublicDataset
 } from "./staged-public-data";
 import { getLatestReleaseDiff, getReleaseSnapshotManifest } from "./release-diffs";
+import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 
 export interface DatasetReleaseArtifactContent {
@@ -516,23 +517,4 @@ async function readDataDictionary(): Promise<string> {
   const repoRoot = await findRepoRoot();
 
   return readFile(path.join(repoRoot, "DATA_DICTIONARY.md"), "utf8");
-}
-
-async function findRepoRoot(): Promise<string> {
-  let current = process.cwd();
-
-  for (;;) {
-    try {
-      await readFile(path.join(current, "package.json"), "utf8");
-      await readdir(path.join(current, "apps"));
-
-      return current;
-    } catch {
-      // Continue walking upward.
-    }
-
-    const parent = path.dirname(current);
-    if (parent === current) return process.cwd();
-    current = parent;
-  }
 }

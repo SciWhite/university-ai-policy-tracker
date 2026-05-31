@@ -36,6 +36,7 @@ import {
   type StagedSourceCandidate,
   type StagedSourceSnapshot
 } from "@uapt/shared";
+import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 
 interface RankingRecord {
@@ -267,35 +268,6 @@ async function buildPublicDatasetFromArtifacts(
     catalogUniversities,
     publicSummaries
   };
-}
-
-async function findRepoRoot(): Promise<string> {
-  let current = process.cwd();
-
-  for (;;) {
-    try {
-      await readFile(path.join(current, "package.json"), "utf8");
-      const stagingExists = await pathExists(path.join(current, "staging"));
-      const appsExists = await pathExists(path.join(current, "apps"));
-
-      if (stagingExists && appsExists) return current;
-    } catch {
-      // Continue walking upward.
-    }
-
-    const parent = path.dirname(current);
-    if (parent === current) return process.cwd();
-    current = parent;
-  }
-}
-
-async function pathExists(targetPath: string): Promise<boolean> {
-  try {
-    await readdir(targetPath);
-    return true;
-  } catch {
-    return false;
-  }
 }
 
 async function readStagedArtifacts(
