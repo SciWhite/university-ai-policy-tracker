@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import {
   DEFAULT_LOCALE,
-  SUPPORTED_LOCALES,
+  VISIBLE_LOCALES,
   getLocaleFromPathname,
   getLocaleLabel,
   getPathnameWithoutLocale,
@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
     <div className="language-switcher" aria-label={messages.label}>
       <span>{messages.label}</span>
       <div className="language-switcher__links">
-        {SUPPORTED_LOCALES.map((supportedLocale) => (
+        {VISIBLE_LOCALES.map((supportedLocale) => (
           <a
             aria-current={supportedLocale === locale ? "page" : undefined}
             href={localizeHref(switchBasePath, supportedLocale)}

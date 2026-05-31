@@ -14,6 +14,17 @@ export const DEFAULT_LOCALE: SupportedLocale = "en";
 export const NON_DEFAULT_LOCALES = SUPPORTED_LOCALES.filter(
   (locale) => locale !== DEFAULT_LOCALE
 );
+export const VISIBLE_LOCALES: readonly SupportedLocale[] = [
+  "en",
+  "zh",
+  "fr",
+  "pl"
+];
+export const HIDDEN_AUTO_LOCALES: readonly SupportedLocale[] = [
+  "es",
+  "nl",
+  "ms"
+];
 
 const localeLabels: Record<SupportedLocale, string> = {
   en: "English",
