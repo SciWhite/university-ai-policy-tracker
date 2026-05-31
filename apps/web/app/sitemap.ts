@@ -48,9 +48,12 @@ const localizedStaticRoutes = [
   "",
   "/search",
   "/universities",
+  "/analysis",
+  "/changes",
   "/methodology",
   "/citation",
-  "/datasets"
+  "/datasets",
+  "/contribute"
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
