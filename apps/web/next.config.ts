@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -12,6 +13,7 @@ const publicDataTraceFiles = [
 
 const nextConfig: NextConfig = {
   transpilePackages: ["@uapt/shared"],
+  outputFileTracingRoot: path.join(process.cwd(), "../.."),
   outputFileTracingIncludes: {
     "/[locale]": publicDataTraceFiles,
     "/[locale]/analysis": publicDataTraceFiles,
