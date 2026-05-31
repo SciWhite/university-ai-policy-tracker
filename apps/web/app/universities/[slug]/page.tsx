@@ -17,6 +17,7 @@ import { ReferenceTabs } from "@/components/reference-tabs";
 import { StateLabel } from "@/components/state-label";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getPolicyAnalysisProfileBySlug } from "@/lib/policy-analysis";
 import { getAnalysisPageQualityApiPath } from "@/lib/policy-analysis-pages";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -56,15 +57,18 @@ export async function generateMetadata({ params }: UniversityPageProps) {
   const locale = normalizeLocale(localeParam);
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
+  const displayName = university
+    ? getLocalizedInstitutionName(university.slug, university.name, locale)
+    : undefined;
   const alternates = getLocalizedAlternates(`/universities/${slug}`, locale);
   const canonical = String(alternates.canonical);
   const title = university
-    ? `${university.name} AI Policy: ChatGPT, GenAI Rules & Sources`
+    ? `${displayName} AI Policy: ChatGPT, GenAI Rules & Sources`
     : "University not found";
   const description = university && publicSummary
-    ? `${university.name} AI policy record with ${publicSummary.claims.length} source-backed claims from ${publicSummary.officialSources.length} official sources, review state, last checked date, and public JSON.`
+    ? `${displayName} AI policy record with ${publicSummary.claims.length} source-backed claims from ${publicSummary.officialSources.length} official sources, review state, last checked date, and public JSON.`
     : university
-      ? `${university.name} AI policy record with evidence-backed claims, official sources, review state, confidence, and public JSON.`
+      ? `${displayName} AI policy record with evidence-backed claims, official sources, review state, confidence, and public JSON.`
     : "University AI Policy Tracker record not found.";
 
   return {
@@ -90,6 +94,11 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   if (!university || !publicSummary) {
     notFound();
   }
+  const displayName = getLocalizedInstitutionName(
+    university.slug,
+    university.name,
+    locale
+  );
   const jsonUrl = getPublicJsonUrl(slug);
   const analysisPageQualityPath = getAnalysisPageQualityApiPath();
   const publicJsonUrl =
@@ -246,7 +255,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           </>
         }
         summary={recordLead}
-        title={university.name}
+        title={displayName}
       />
 
       <ReferenceTabs tabs={recordTabs} />
@@ -256,7 +265,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           <ReferenceBox
             description={`${publicSummary.schemaVersion} public contract`}
             id="overview"
-            title={`${university.name} AI policy short answer`}
+            title={`${displayName} AI policy short answer`}
           >
             <p>{shortAnswer}</p>
             <section

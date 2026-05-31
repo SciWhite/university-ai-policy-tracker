@@ -11,6 +11,7 @@ import { MetaLabel } from "@/components/meta-label";
 import { SearchAutocomplete } from "@/components/search-autocomplete";
 import { StateLabel } from "@/components/state-label";
 import { searchIndexRecords, getSearchIndexRecords } from "@/lib/entity-search";
+import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getChangeRecords } from "@/lib/change-records";
 import { getPolicyAnalysisProfiles } from "@/lib/policy-analysis";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -267,7 +268,11 @@ export default async function HomePage({ params }: HomePageProps) {
             >
               <div className="table-record-title">
                 <Link href={`/universities/${record.entitySlug}`}>
-                  {record.entityName}
+                  {getLocalizedInstitutionName(
+                    record.entitySlug,
+                    record.entityName,
+                    locale
+                  )}
                 </Link>
               </div>
               <p>{record.sourceBackedSnippet}</p>
@@ -299,7 +304,9 @@ export default async function HomePage({ params }: HomePageProps) {
                 </>
               }
             >
-              <div className="table-record-title">{record.name}</div>
+              <div className="table-record-title">
+                {getLocalizedInstitutionName(record.slug, record.name, locale)}
+              </div>
               <p>
                 {record.lastChangedAt
                   ? `${copy.changed} ${formatDate(record.lastChangedAt)}`

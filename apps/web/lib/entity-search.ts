@@ -7,6 +7,12 @@ import {
   type PublicEntitySummary
 } from "@uapt/shared";
 import { getPolicyAnalysisProfiles } from "./policy-analysis";
+import { getInstitutionLocalizedAliases } from "./institution-localization";
+import {
+  normalizeForSearch,
+  textMatchesNormalized,
+  tokenize
+} from "./search-text";
 import { getAbsoluteSiteUrl } from "./site-url";
 import { getStagedPublicDataset } from "./staged-public-data";
 
@@ -15,6 +21,7 @@ type EntityAliasKind =
   | "official_alias"
   | "slug"
   | "acronym"
+  | "localized_alias"
   | "domain"
   | "ranking_label"
   | "location";
@@ -406,6 +413,16 @@ function buildAliasRecords(
     );
   }
 
+  for (const alias of getInstitutionLocalizedAliases(summary.entity.slug)) {
+    addAlias(
+      alias,
+      "localized_alias",
+      "institution_localization",
+      0.93,
+      "Localized institution name or alias used for display and retrieval."
+    );
+  }
+
   for (const acronym of buildAcronymAliases(summary.entity.name)) {
     addAlias(
       acronym,
@@ -453,11 +470,13 @@ function scoreRecord(
 ): EntitySearchResult | undefined {
   const name = normalizeForSearch(record.entityName);
   const slug = normalizeForSearch(record.entitySlug);
-  const aliasMatches = record.aliases.filter((alias) =>
-    textMatchesNormalized(alias, normalizedQuery)
-  );
   const exactAliasMatches = record.aliases.filter(
     (alias) => normalizeForSearch(alias) === normalizedQuery
+  );
+  const aliasMatches = record.aliases.filter(
+    (alias) =>
+      normalizeForSearch(alias) !== normalizedQuery &&
+      textMatchesNormalized(alias, normalizedQuery)
   );
   const matchedFields: string[] = [];
   let score = 0;
@@ -623,36 +642,6 @@ function buildAcronymAliases(name: string): string[] {
   if (acronym.length >= 2 && acronym.length <= 8) aliases.add(acronym);
 
   return Array.from(aliases);
-}
-
-function normalizeForSearch(value: string): string {
-  return value
-    .normalize("NFKD")
-    .replace(/\p{Diacritic}/gu, "")
-    .toLowerCase()
-    .replace(/&/g, " and ")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim()
-    .replace(/\s+/g, " ");
-}
-
-function tokenize(value: string): string[] {
-  return Array.from(
-    new Set(
-      normalizeForSearch(value)
-        .split(" ")
-        .map((token) => token.trim())
-        .filter((token) => token.length > 1)
-    )
-  );
-}
-
-function textMatchesNormalized(value: string, normalizedQuery: string): boolean {
-  if (normalizedQuery.length <= 3) {
-    return tokenize(value).includes(normalizedQuery);
-  }
-
-  return normalizeForSearch(value).includes(normalizedQuery);
 }
 
 function fuzzyTokenMatches(queryToken: string, recordToken: string): boolean {

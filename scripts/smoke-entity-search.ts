@@ -6,13 +6,25 @@ import {
 } from "../apps/web/lib/entity-search";
 
 async function main(): Promise<void> {
-  const [entityIndex, searchIndex, mitResults, anuResults, disclosureResponse] =
+  const [
+    entityIndex,
+    searchIndex,
+    mitResults,
+    anuResults,
+    disclosureResponse,
+    pekingZhResults,
+    montrealFrResults,
+    warsawPlResults
+  ] =
     await Promise.all([
       getEntityResolutionIndexResponse(),
       getSearchIndexResponse(),
       searchEntities("MIT"),
       searchEntities("ANU"),
-      getSearchResponse("disclosure", { limit: 10 })
+      getSearchResponse("disclosure", { limit: 10 }),
+      searchEntities("北京大学"),
+      searchEntities("Université de Montréal"),
+      searchEntities("Uniwersytet Warszawski")
     ]);
 
   assert(entityIndex.data.count > 0, "entity resolution index is empty");
@@ -29,6 +41,18 @@ async function main(): Promise<void> {
   assert(
     disclosureResponse.data.results.length > 0,
     "policy-theme search should return public records"
+  );
+  assert(
+    pekingZhResults[0]?.entitySlug === "peking-university",
+    "Chinese localized search should resolve 北京大学"
+  );
+  assert(
+    montrealFrResults[0]?.entitySlug === "universite-de-montreal",
+    "French localized search should resolve Université de Montréal"
+  );
+  assert(
+    warsawPlResults[0]?.entitySlug === "university-of-warsaw",
+    "Polish localized search should resolve Uniwersytet Warszawski"
   );
   assert(
     !JSON.stringify(searchIndex).includes("staging/uapt-runs"),

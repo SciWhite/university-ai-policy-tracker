@@ -13,6 +13,7 @@ import { DocumentLink as Link } from "@/components/document-link";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import { getLocaleFromPathname, localizeHref } from "@/lib/i18n";
+import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 
 interface SearchAutocompleteProps {
   defaultValue?: string;
@@ -167,7 +168,11 @@ export function SearchAutocomplete({
             >
               <div className="search-autocomplete__option-main">
                 <Link href={`/universities/${result.entitySlug}`}>
-                  {result.entityName}
+                  {getLocalizedInstitutionName(
+                    result.entitySlug,
+                    result.entityName,
+                    locale
+                  )}
                 </Link>
                 <p>{result.sourceBackedSnippet}</p>
                 <div className="table-record-meta">

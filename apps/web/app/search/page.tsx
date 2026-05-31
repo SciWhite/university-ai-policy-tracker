@@ -12,6 +12,7 @@ import {
   searchIndexRecords,
   type SearchIndexRecord
 } from "@/lib/entity-search";
+import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { localizeHref, normalizeLocale, type SupportedLocale } from "@/lib/i18n";
@@ -351,7 +352,7 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
 
         {query ? (
           results.length ? (
-            <SearchResults copy={copy} results={results} />
+            <SearchResults copy={copy} locale={locale} results={results} />
           ) : (
             <p className="notice-card">{copy.empty}</p>
           )
@@ -378,7 +379,11 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
               >
                 <div className="table-record-title">
                   <Link href={`/universities/${record.entitySlug}`}>
-                    {record.entityName}
+                    {getLocalizedInstitutionName(
+                      record.entitySlug,
+                      record.entityName,
+                      locale
+                    )}
                   </Link>
                 </div>
                 <p>{record.fields.summary ?? "Open the public record."}</p>
@@ -471,9 +476,11 @@ async function fetchPublicJson<T>(pathname: string): Promise<T | undefined> {
 
 function SearchResults({
   copy,
+  locale,
   results
 }: {
   copy: (typeof searchCopy)[SupportedLocale];
+  locale: SupportedLocale;
   results: SearchResult[];
 }) {
   return (
@@ -500,7 +507,11 @@ function SearchResults({
         >
           <div className="table-record-title">
             <Link href={`/universities/${result.entitySlug}`}>
-              {result.entityName}
+              {getLocalizedInstitutionName(
+                result.entitySlug,
+                result.entityName,
+                locale
+              )}
             </Link>
           </div>
           <p>{result.sourceBackedSnippet}</p>

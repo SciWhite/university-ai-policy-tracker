@@ -9,7 +9,12 @@ import { DocumentLink as Link } from "@/components/document-link";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import { localizeHref, type SupportedLocale } from "@/lib/i18n";
+import {
+  getInstitutionLocalizedAliasesByLocale,
+  getLocalizedInstitutionName
+} from "@/lib/institution-localization";
 import { getPageCopy } from "@/lib/page-copy";
+import { normalizeForSearch, textMatchesNormalized } from "@/lib/search-text";
 import type {
   StaticUniversityIndexRecord,
   UniversityIndexCoverageFilter,
@@ -67,11 +72,12 @@ export function UniversitiesIndexClient({
   const filteredRecords = useMemo(
     () =>
       sortRecords(
-        filterRecords(allRecords, filters.q, filters.coverage),
+        filterRecords(allRecords, filters.q, filters.coverage, locale),
         filters.sort,
-        filters.order
+        filters.order,
+        locale
       ),
-    [allRecords, filters.coverage, filters.order, filters.q, filters.sort]
+    [allRecords, filters.coverage, filters.order, filters.q, filters.sort, locale]
   );
   const totalClaims = records.reduce((total, record) => total + record.claimCount, 0);
   const reviewedClaims = records.filter((record) =>
@@ -267,7 +273,11 @@ export function UniversitiesIndexClient({
                   <td>
                     <div className="table-record-title">
                       <Link href={`/universities/${record.slug}`}>
-                        {record.name}
+                        {getLocalizedInstitutionName(
+                          record.slug,
+                          record.name,
+                          locale
+                        )}
                       </Link>
                     </div>
                     <div className="table-record-subtitle">
@@ -339,42 +349,58 @@ function withSelectedRanking(
 function filterRecords(
   records: RecordWithSelectedRanking[],
   query: string,
-  coverage: UniversityIndexCoverageFilter
+  coverage: UniversityIndexCoverageFilter,
+  locale: SupportedLocale
 ): RecordWithSelectedRanking[] {
-  const normalizedQuery = query.trim().toLowerCase();
+  const normalizedQuery = normalizeForSearch(query);
 
   return records.filter((record) => {
     if (coverage === "ranked" && !record.selectedRanking) return false;
     if (coverage === "missing" && record.selectedRanking) return false;
     if (!normalizedQuery) return true;
 
-    return [record.name, record.country, record.region, record.summary]
+    return [
+      record.name,
+      getLocalizedInstitutionName(record.slug, record.name, locale),
+      ...getInstitutionLocalizedAliasesByLocale(record.slug, locale),
+      record.country,
+      record.region,
+      record.summary
+    ]
       .filter((value): value is string => Boolean(value))
-      .some((value) => value.toLowerCase().includes(normalizedQuery));
+      .some((value) => textMatchesNormalized(value, normalizedQuery));
   });
 }
 
 function sortRecords(
   records: RecordWithSelectedRanking[],
   sortKey: UniversityIndexSortKey,
-  sortOrder: UniversityIndexSortOrder
+  sortOrder: UniversityIndexSortOrder,
+  locale: SupportedLocale
 ): RecordWithSelectedRanking[] {
   const direction = sortOrder === "asc" ? 1 : -1;
 
   return [...records].sort((left, right) => {
-    const comparison = compareRecords(left, right, sortKey);
+    const comparison = compareRecords(left, right, sortKey, locale);
     if (comparison) return comparison * direction;
 
-    return left.name.localeCompare(right.name);
+    return getLocalizedInstitutionName(left.slug, left.name, locale).localeCompare(
+      getLocalizedInstitutionName(right.slug, right.name, locale)
+    );
   });
 }
 
 function compareRecords(
   left: RecordWithSelectedRanking,
   right: RecordWithSelectedRanking,
-  sortKey: UniversityIndexSortKey
+  sortKey: UniversityIndexSortKey,
+  locale: SupportedLocale
 ): number {
-  if (sortKey === "name") return left.name.localeCompare(right.name);
+  if (sortKey === "name") {
+    return getLocalizedInstitutionName(left.slug, left.name, locale).localeCompare(
+      getLocalizedInstitutionName(right.slug, right.name, locale)
+    );
+  }
   if (sortKey === "claims") return left.claimCount - right.claimCount;
   if (sortKey === "sources") return left.sourceCount - right.sourceCount;
   if (sortKey === "recent") return getFreshnessTime(left) - getFreshnessTime(right);
