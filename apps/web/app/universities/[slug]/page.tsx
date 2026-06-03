@@ -118,6 +118,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   const canonicalUrl = publicSummary.publicPageUrl ?? publicSummary.canonicalUrl;
   const citationReadySummary = buildCitationReadySummary({
     candidateClaimCount: candidateClaims.length,
+    displayName,
     officialSourceCount: publicSummary.officialSources.length,
     publicJsonUrl,
     reviewedClaimCount: reviewedClaims.length,
@@ -128,6 +129,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   const sourceLanguages = getSourceLanguages(publicSummary.claims);
   const recordLead = buildRecordLead({
     candidateClaimCount: candidateClaims.length,
+    displayName,
     officialSourceCount: publicSummary.officialSources.length,
     reviewedClaimCount: reviewedClaims.length,
     summary: publicSummary,
@@ -135,6 +137,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   });
   const shortAnswer = buildUniversityShortAnswer({
     candidateClaimCount: candidateClaims.length,
+    displayName,
     officialSourceCount: publicSummary.officialSources.length,
     reviewedClaimCount: reviewedClaims.length,
     summary: publicSummary,
@@ -594,6 +597,7 @@ function formatDate(value: string): string {
 
 interface RecordLeadInput {
   candidateClaimCount: number;
+  displayName: string;
   officialSourceCount: number;
   reviewedClaimCount: number;
   summary: PublicUniversitySummary;
@@ -602,6 +606,7 @@ interface RecordLeadInput {
 
 function buildRecordLead({
   candidateClaimCount,
+  displayName,
   officialSourceCount,
   reviewedClaimCount,
   summary,
@@ -615,11 +620,12 @@ function buildRecordLead({
     ? ` ${candidateClaimCount} candidate claim${candidateClaimCount === 1 ? "" : "s"} remain non-final.`
     : "";
 
-  return `${summary.entity.name} has ${totalClaimCount} source-backed AI policy claim${totalClaimCount === 1 ? "" : "s"} from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Review state: ${reviewText}; ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}.${candidateText}${checkedText}`;
+  return `${displayName} has ${totalClaimCount} source-backed AI policy claim${totalClaimCount === 1 ? "" : "s"} from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Review state: ${reviewText}; ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}.${candidateText}${checkedText}`;
 }
 
 interface CitationReadySummaryInput {
   candidateClaimCount: number;
+  displayName: string;
   officialSourceCount: number;
   publicJsonUrl: string;
   reviewedClaimCount: number;
@@ -629,6 +635,7 @@ interface CitationReadySummaryInput {
 
 function buildUniversityShortAnswer({
   candidateClaimCount,
+  displayName,
   officialSourceCount,
   reviewedClaimCount,
   summary,
@@ -643,11 +650,12 @@ function buildUniversityShortAnswer({
     : "";
   const rankingContext = extractRankingContext(summary.summary);
 
-  return `${summary.entity.name} has ${totalClaimCount} source-backed AI policy claim${totalClaimCount === 1 ? "" : "s"} from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}. The record review state is ${reviewText}; original-language evidence snippets, source URLs, confidence, and public JSON are preserved for citation.${candidateText}${checkedText}${rankingContext ? ` Discovery context: ${rankingContext}` : ""}`;
+  return `${displayName} has ${totalClaimCount} source-backed AI policy claim${totalClaimCount === 1 ? "" : "s"} from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}. The record review state is ${reviewText}; original-language evidence snippets, source URLs, confidence, and public JSON are preserved for citation.${candidateText}${checkedText}${rankingContext ? ` Discovery context: ${rankingContext}` : ""}`;
 }
 
 function buildCitationReadySummary({
   candidateClaimCount,
+  displayName,
   officialSourceCount,
   publicJsonUrl,
   reviewedClaimCount,
@@ -669,7 +677,7 @@ function buildCitationReadySummary({
     ? ` ${candidateClaimCount} claim${candidateClaimCount === 1 ? "" : "s"} still require review and should not be treated as final policy conclusions.`
     : "";
 
-  return `As of this public record, University AI Policy Tracker lists ${summary.entity.name} as ${reviewText} AI policy record ${checkedText}${changedText}. The record contains ${totalClaimCount} source-backed claim${totalClaimCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}, from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Original-language evidence snippets and source URLs remain canonical, with public JSON available at ${publicJsonUrl}.${confidenceText}${candidateText} This tracker is not legal advice, not academic integrity advice, and not an official university statement unless the linked source is the university's own official page.`;
+  return `As of this public record, University AI Policy Tracker lists ${displayName} as ${reviewText} AI policy record ${checkedText}${changedText}. The record contains ${totalClaimCount} source-backed claim${totalClaimCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}, from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Original-language evidence snippets and source URLs remain canonical, with public JSON available at ${publicJsonUrl}.${confidenceText}${candidateText} This tracker is not legal advice, not academic integrity advice, and not an official university statement unless the linked source is the university's own official page.`;
 }
 
 function extractRankingContext(summaryText: string): string {

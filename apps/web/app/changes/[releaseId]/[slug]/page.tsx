@@ -6,11 +6,14 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 import { getReleaseChangeRecords } from "@/lib/change-records";
+import { normalizeLocale } from "@/lib/i18n";
+import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getLatestReleaseDiff } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 interface ReleaseEntityChangePageProps {
   params: Promise<{
+    locale?: string;
     releaseId: string;
     slug: string;
   }>;
@@ -33,16 +36,20 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ReleaseEntityChangePageProps) {
-  const { releaseId, slug } = await params;
+  const { locale: localeParam, releaseId, slug } = await params;
+  const locale = normalizeLocale(localeParam);
   const record = (await getReleaseChangeRecords(releaseId))?.find(
     (item) => item.slug === slug
   );
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}/${slug}`);
+  const displayName = record
+    ? getLocalizedInstitutionName(record.slug, record.name, locale)
+    : undefined;
   const title = record
-    ? `${record.name} AI Policy Tracker Release Diff: ${releaseId}`
+    ? `${displayName} AI Policy Tracker Release Diff: ${releaseId}`
     : "Release change record not found";
   const description = record
-    ? `${record.name} tracker release diff for ${releaseId}: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
+    ? `${displayName} tracker release diff for ${releaseId}: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
     : "University AI Policy Tracker release change record not found.";
 
   return {
@@ -61,19 +68,21 @@ export async function generateMetadata({ params }: ReleaseEntityChangePageProps)
 export default async function ReleaseEntityChangePage({
   params
 }: ReleaseEntityChangePageProps) {
-  const { releaseId, slug } = await params;
+  const { locale: localeParam, releaseId, slug } = await params;
+  const locale = normalizeLocale(localeParam);
   const record = (await getReleaseChangeRecords(releaseId))?.find(
     (item) => item.slug === slug
   );
 
   if (!record) notFound();
+  const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
 
   return (
     <main className="page-shell page-shell--wide">
       <section className="entity-header">
         <div className="entity-header__main">
           <p className="entity-header__eyebrow">Release diff</p>
-          <h1>{record.name}</h1>
+          <h1>{displayName}</h1>
           <p className="entity-header__summary">
             Unified tracker diff for {releaseId}. Full source-page text is not
             published; short original-language evidence snippets are shown for
@@ -125,7 +134,7 @@ export default async function ReleaseEntityChangePage({
                 : "Initial tracked release."
             }
             lines={record.diffLines}
-            title={`${record.name} ${releaseId} diff`}
+            title={`${displayName} ${releaseId} diff`}
           />
         ) : (
           <p className="notice-card">

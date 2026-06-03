@@ -7,7 +7,8 @@ import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 import { getChangeRecords, type ChangeRecord } from "@/lib/change-records";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
-import { normalizeLocale } from "@/lib/i18n";
+import { normalizeLocale, type SupportedLocale } from "@/lib/i18n";
+import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getPageCopy } from "@/lib/page-copy";
 import { getLatestReleaseDiff } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -128,6 +129,11 @@ export default async function ChangesPage({ params }: ChangesPageProps) {
           <DataList className="timeline-list">
             {changedRecords.map((record) => {
               const primaryDate = record.lastChangedAt ?? record.lastCheckedAt;
+              const displayName = getLocalizedInstitutionName(
+                record.slug,
+                record.name,
+                locale
+              );
 
               return (
                 <DataListRow
@@ -169,8 +175,8 @@ export default async function ChangesPage({ params }: ChangesPageProps) {
                   <p className="timeline-list__date">
                     {primaryDate ? formatDate(primaryDate) : copy.noPublicDate}
                   </p>
-                  <h2>{record.name}</h2>
-                  <p>{getChangeSummary(record, copy)}</p>
+                  <h2>{displayName}</h2>
+                  <p>{getChangeSummary(record, copy, locale)}</p>
                 </DataListRow>
               );
             })}
@@ -195,10 +201,11 @@ export default async function ChangesPage({ params }: ChangesPageProps) {
 
 function getChangeSummary(
   record: ChangeRecord,
-  copy: ReturnType<typeof getPageCopy>["changes"]
+  copy: ReturnType<typeof getPageCopy>["changes"],
+  locale: SupportedLocale
 ): string {
   return copy.summary(
-    record.name,
+    getLocalizedInstitutionName(record.slug, record.name, locale),
     record.claimCount,
     record.sourceCount,
     record.lastChangedAt ? formatDate(record.lastChangedAt) : undefined,

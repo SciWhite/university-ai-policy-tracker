@@ -5,6 +5,7 @@ import {
 import { JsonLd } from "@/components/json-ld";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { normalizeLocale } from "@/lib/i18n";
+import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getPageCopy } from "@/lib/page-copy";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { UniversitiesIndexClient } from "./universities-index-client";
@@ -59,7 +60,7 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
             itemListElement: records.slice(0, 20).map((record, index) => ({
               "@type": "ListItem",
               position: index + 1,
-              name: record.name,
+              name: getLocalizedInstitutionName(record.slug, record.name, locale),
               url: getAbsoluteSiteUrl(`/universities/${record.slug}`)
             }))
           }

@@ -44,9 +44,17 @@ const records: Record<string, InstitutionLocalizationRecord> = {
     displayNames: { zh: "中南大学" },
     aliases: { zh: ["中南"] }
   },
+  "chang-gung-university": {
+    displayNames: { zh: "長庚大學" },
+    aliases: { zh: ["长庚大学", "長庚", "长庚"] }
+  },
   "china-agricultural-university": {
     displayNames: { zh: "中国农业大学" },
     aliases: { zh: ["中国农大"] }
+  },
+  "china-medical-university": {
+    displayNames: { zh: "中國醫藥大學" },
+    aliases: { zh: ["中国医药大学", "中醫大", "中医大"] }
   },
   "china-university-of-geosciences": {
     displayNames: { zh: "中国地质大学" },
@@ -63,6 +71,10 @@ const records: Record<string, InstitutionLocalizationRecord> = {
   "chongqing-university": {
     displayNames: { zh: "重庆大学" },
     aliases: { zh: ["重大"] }
+  },
+  "city-university-of-hong-kong": {
+    displayNames: { zh: "香港城市大學" },
+    aliases: { zh: ["香港城市大学", "城大", "CityUHK"] }
   },
   "concordia-university": {
     displayNames: { fr: "Université Concordia" },
@@ -95,9 +107,21 @@ const records: Record<string, InstitutionLocalizationRecord> = {
     displayNames: { pl: "Politechnika Gdańska" },
     aliases: { pl: ["PG", "Politechnika Gdanska"] }
   },
+  "epfl": {
+    displayNames: { fr: "École polytechnique fédérale de Lausanne" },
+    aliases: { fr: ["EPFL", "Polytechnique Lausanne"] }
+  },
   "harbin-institute-of-technology": {
     displayNames: { zh: "哈尔滨工业大学" },
     aliases: { zh: ["哈工大"] }
+  },
+  "hong-kong-baptist-university": {
+    displayNames: { zh: "香港浸會大學" },
+    aliases: { zh: ["香港浸会大学", "浸大", "HKBU"] }
+  },
+  "hong-kong-metropolitan-university": {
+    displayNames: { zh: "香港都會大學" },
+    aliases: { zh: ["香港都会大学", "都大", "HKMU"] }
   },
   "huazhong-agricultural-university": {
     displayNames: { zh: "华中农业大学" },
@@ -126,6 +150,10 @@ const records: Record<string, InstitutionLocalizationRecord> = {
     displayNames: { zh: "吉林大学" },
     aliases: { zh: ["吉大"] }
   },
+  "kaohsiung-medical-university": {
+    displayNames: { zh: "高雄醫學大學" },
+    aliases: { zh: ["高雄医学大学", "高醫", "高医"] }
+  },
   "lanzhou-university": {
     displayNames: { zh: "兰州大学" },
     aliases: { zh: ["兰大"] }
@@ -142,9 +170,61 @@ const records: Record<string, InstitutionLocalizationRecord> = {
     displayNames: { zh: "南京航空航天大学" },
     aliases: { zh: ["南航"] }
   },
+  "nanyang-technological-university": {
+    displayNames: { zh: "南洋理工大学" },
+    aliases: { zh: ["南大", "NTU Singapore"] }
+  },
   "nankai-university": {
     displayNames: { zh: "南开大学" },
     aliases: { zh: ["南开"] }
+  },
+  "national-central-university": {
+    displayNames: { zh: "國立中央大學" },
+    aliases: { zh: ["国立中央大学", "中央大學", "中央大学"] }
+  },
+  "national-cheng-kung-university": {
+    displayNames: { zh: "國立成功大學" },
+    aliases: { zh: ["国立成功大学", "成大", "NCKU"] }
+  },
+  "national-chengchi-university": {
+    displayNames: { zh: "國立政治大學" },
+    aliases: { zh: ["国立政治大学", "政大"] }
+  },
+  "national-chung-hsing-university": {
+    displayNames: { zh: "國立中興大學" },
+    aliases: { zh: ["国立中兴大学", "中興大學", "中兴大学"] }
+  },
+  "national-sun-yat-sen-university": {
+    displayNames: { zh: "國立中山大學" },
+    aliases: { zh: ["国立中山大学", "中山大學", "中山大学"] }
+  },
+  "national-taipei-university-of-technology": {
+    displayNames: { zh: "國立臺北科技大學" },
+    aliases: { zh: ["国立台北科技大学", "臺北科技大學", "台北科技大学", "北科大"] }
+  },
+  "national-taiwan-normal-university-ntnu": {
+    displayNames: { zh: "國立臺灣師範大學" },
+    aliases: { zh: ["国立台湾师范大学", "臺師大", "台师大", "NTNU"] }
+  },
+  "national-taiwan-university": {
+    displayNames: { zh: "國立臺灣大學" },
+    aliases: { zh: ["国立台湾大学", "臺大", "台大", "NTU"] }
+  },
+  "national-taiwan-university-of-science-and-technology-taiwan-tech": {
+    displayNames: { zh: "國立臺灣科技大學" },
+    aliases: { zh: ["国立台湾科技大学", "臺科大", "台科大", "Taiwan Tech"] }
+  },
+  "national-tsing-hua-university": {
+    displayNames: { zh: "國立清華大學" },
+    aliases: { zh: ["国立清华大学", "清大", "NTHU"] }
+  },
+  "national-university-of-singapore": {
+    displayNames: { zh: "新加坡国立大学" },
+    aliases: { zh: ["新国大", "国大", "NUS"] }
+  },
+  "national-yang-ming-chiao-tung-university": {
+    displayNames: { zh: "國立陽明交通大學" },
+    aliases: { zh: ["国立阳明交通大学", "陽明交大", "阳明交大", "NYCU"] }
   },
   "northwest-agriculture-and-forestry-university": {
     displayNames: { zh: "西北农林科技大学" },
@@ -222,9 +302,44 @@ const records: Record<string, InstitutionLocalizationRecord> = {
     displayNames: { zh: "清华大学" },
     aliases: { zh: ["清华"] }
   },
+  "taipei-medical-university-tmu": {
+    displayNames: { zh: "臺北醫學大學" },
+    aliases: { zh: ["台北医学大学", "北醫", "北医", "TMU"] }
+  },
+  "cuhk": {
+    displayNames: { zh: "香港中文大學" },
+    aliases: { zh: ["香港中文大学", "港中大", "CUHK"] }
+  },
+  "the-hong-kong-polytechnic-university": {
+    displayNames: { zh: "香港理工大學" },
+    aliases: { zh: ["香港理工大学", "理大", "PolyU"] }
+  },
+  "hkust": {
+    displayNames: { zh: "香港科技大學" },
+    aliases: { zh: ["香港科技大学", "港科大", "HKUST"] }
+  },
+  "university-of-hong-kong": {
+    displayNames: { zh: "香港大學" },
+    aliases: { zh: ["香港大学", "港大", "HKU"] }
+  },
+  "university-of-macau": {
+    displayNames: { zh: "澳門大學" },
+    aliases: { zh: ["澳门大学", "澳大"] }
+  },
+  "universite-catholique-de-louvain": {
+    displayNames: { fr: "Université catholique de Louvain" },
+    aliases: { fr: ["UCLouvain", "Louvain"] }
+  },
   "universite-claude-bernard-lyon-1": {
     displayNames: { fr: "Université Claude Bernard Lyon 1" },
     aliases: { fr: ["Lyon 1", "UCBL"] }
+  },
+  "universite-de-fribourg": {
+    displayNames: { fr: "Université de Fribourg" }
+  },
+  "universite-de-liege": {
+    displayNames: { fr: "Université de Liège" },
+    aliases: { fr: ["ULiège", "Universite de Liege"] }
   },
   "universite-de-lille": {
     displayNames: { fr: "Université de Lille" }
@@ -244,6 +359,10 @@ const records: Record<string, InstitutionLocalizationRecord> = {
   },
   "universite-de-strasbourg": {
     displayNames: { fr: "Université de Strasbourg" }
+  },
+  "universite-de-tunis-el-manar": {
+    displayNames: { fr: "Université de Tunis El Manar" },
+    aliases: { fr: ["Tunis El Manar"] }
   },
   "universite-du-quebec": {
     displayNames: { fr: "Université du Québec" },

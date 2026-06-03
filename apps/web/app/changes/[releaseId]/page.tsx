@@ -11,11 +11,14 @@ import {
   getReleaseChangeRecords,
   type ChangeRecord
 } from "@/lib/change-records";
+import { normalizeLocale, type SupportedLocale } from "@/lib/i18n";
+import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getKnownReleaseIds } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 interface ChangeDetailPageProps {
   params: Promise<{
+    locale?: string;
     releaseId: string;
   }>;
 }
@@ -39,7 +42,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ChangeDetailPageProps) {
-  const { releaseId } = await params;
+  const { locale: localeParam, releaseId } = await params;
+  const locale = normalizeLocale(localeParam);
   const releaseRecords = await getReleaseChangeRecords(releaseId);
   if (releaseRecords) {
     const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
@@ -60,11 +64,14 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
 
   const record = await getChangeRecordBySlug(releaseId);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
+  const displayName = record
+    ? getLocalizedInstitutionName(record.slug, record.name, locale)
+    : undefined;
   const title = record
-    ? `${record.name} AI Policy Tracker Release Diff | University AI Policy Tracker`
+    ? `${displayName} AI Policy Tracker Release Diff | University AI Policy Tracker`
     : "Change record not found";
   const description = record
-    ? `${record.name} tracker release diff with semantic categories for policy text, newly extracted claims, evidence, and source snapshots.`
+    ? `${displayName} tracker release diff with semantic categories for policy text, newly extracted claims, evidence, and source snapshots.`
     : "University AI Policy Tracker change record not found.";
 
   return {
@@ -83,20 +90,30 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
 export default async function ChangeDetailPage({
   params
 }: ChangeDetailPageProps) {
-  const { releaseId } = await params;
+  const { locale: localeParam, releaseId } = await params;
+  const locale = normalizeLocale(localeParam);
   const releaseRecords = await getReleaseChangeRecords(releaseId);
-  if (releaseRecords) return <ReleaseOverviewPage records={releaseRecords} releaseId={releaseId} />;
+  if (releaseRecords) {
+    return (
+      <ReleaseOverviewPage
+        locale={locale}
+        records={releaseRecords}
+        releaseId={releaseId}
+      />
+    );
+  }
 
   const record = await getChangeRecordBySlug(releaseId);
 
   if (!record) notFound();
+  const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
 
   return (
     <main className="page-shell page-shell--wide">
       <section className="entity-header">
         <div className="entity-header__main">
           <p className="entity-header__eyebrow">Change log</p>
-          <h1>{record.name}</h1>
+          <h1>{displayName}</h1>
           <p className="entity-header__summary">
             Release-to-release tracker diff with separate policy-text,
             newly-extracted claim, evidence, and source snapshot categories.
@@ -136,7 +153,7 @@ export default async function ChangeDetailPage({
             description="Current public record freshness and review state."
             title="Change summary"
           >
-            <p>{getSummaryText(record)}</p>
+            <p>{getSummaryText(record, locale)}</p>
             <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
             <p className="notice-card">
               Newly extracted claims are tracker additions and are not
@@ -177,7 +194,7 @@ export default async function ChangeDetailPage({
               <DiffBlock
                 description={getDiffDescription(record)}
                 lines={record.diffLines}
-                title={`${record.name} release diff`}
+                title={`${displayName} release diff`}
               />
             ) : (
               <p className="notice-card">
@@ -299,9 +316,11 @@ export default async function ChangeDetailPage({
 }
 
 function ReleaseOverviewPage({
+  locale,
   records,
   releaseId
 }: {
+  locale: SupportedLocale;
   records: ChangeRecord[];
   releaseId: string;
 }) {
@@ -353,7 +372,7 @@ function ReleaseOverviewPage({
           {changedRecords.map((record) => (
             <article className="source-attribution-row" key={record.slug}>
               <div>
-                <h3>{record.name}</h3>
+                <h3>{getLocalizedInstitutionName(record.slug, record.name, locale)}</h3>
                 <p>
                   Policy text {record.policyTextChanged}; newly extracted{" "}
                   {record.newlyExtractedClaims}; source snapshots{" "}
@@ -375,7 +394,8 @@ function ReleaseOverviewPage({
   );
 }
 
-function getSummaryText(record: ChangeRecord): string {
+function getSummaryText(record: ChangeRecord, locale: SupportedLocale): string {
+  const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
   const changed = record.lastChangedAt
     ? ` Latest tracked changed date: ${formatDate(record.lastChangedAt)}.`
     : " No tracked changed date is published yet.";
@@ -385,7 +405,7 @@ function getSummaryText(record: ChangeRecord): string {
       ? ` Latest tracker diff: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
       : " No tracker diff rows are recorded in the latest public release.";
 
-  return `${record.name} currently has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;
+  return `${displayName} currently has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;
 }
 
 function getDiffDescription(record: ChangeRecord): string {

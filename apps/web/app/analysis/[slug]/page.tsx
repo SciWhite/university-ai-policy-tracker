@@ -15,6 +15,8 @@ import {
   getPolicyAnalysisProfiles,
   getPolicyAnalysisApiPath
 } from "@/lib/policy-analysis";
+import { normalizeLocale, type SupportedLocale } from "@/lib/i18n";
+import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import {
   buildAnalysisCitationReadySummary,
   formatCoverageScore,
@@ -27,6 +29,7 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 interface AnalysisRouteProps {
   params: Promise<{
+    locale?: string;
     slug: string;
   }>;
 }
@@ -81,10 +84,11 @@ export async function generateMetadata({ params }: AnalysisRouteProps) {
 }
 
 export default async function AnalysisRoutePage({ params }: AnalysisRouteProps) {
-  const { slug } = await params;
+  const { locale: localeParam, slug } = await params;
+  const locale = normalizeLocale(localeParam);
 
   if (slug === "policy-coverage") {
-    return <PolicyCoveragePage />;
+    return <PolicyCoveragePage locale={locale} />;
   }
 
   const summary = await getAnalysisThemeSummary(slug);
@@ -121,7 +125,11 @@ export default async function AnalysisRoutePage({ params }: AnalysisRouteProps) 
               "@type": "ListItem",
               position: index + 1,
               url: row.profile.canonicalUrl,
-              name: row.profile.entityName
+              name: getLocalizedInstitutionName(
+                row.profile.entitySlug,
+                row.profile.entityName,
+                locale
+              )
             }))
           }
         }}
@@ -209,7 +217,11 @@ export default async function AnalysisRoutePage({ params }: AnalysisRouteProps) 
                   <td>
                     <div className="table-record-title">
                       <Link href={`/universities/${profile.entitySlug}`}>
-                        {profile.entityName}
+                        {getLocalizedInstitutionName(
+                          profile.entitySlug,
+                          profile.entityName,
+                          locale
+                        )}
                       </Link>
                     </div>
                     <div className="table-record-subtitle">
@@ -278,7 +290,7 @@ export default async function AnalysisRoutePage({ params }: AnalysisRouteProps) 
   );
 }
 
-async function PolicyCoveragePage() {
+async function PolicyCoveragePage({ locale }: { locale: SupportedLocale }) {
   const profiles = getCoverageRows(await getPolicyAnalysisProfiles());
   const canonical = getAbsoluteSiteUrl("/analysis/policy-coverage");
   const coverageScoresPath = `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`;
@@ -394,7 +406,11 @@ async function PolicyCoveragePage() {
                   <td>
                     <div className="table-record-title">
                       <Link href={`/universities/${profile.entitySlug}`}>
-                        {profile.entityName}
+                        {getLocalizedInstitutionName(
+                          profile.entitySlug,
+                          profile.entityName,
+                          locale
+                        )}
                       </Link>
                     </div>
                     <div className="table-record-subtitle">

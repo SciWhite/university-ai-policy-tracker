@@ -9,6 +9,7 @@ import {
 import { getPolicyAnalysisProfiles } from "./policy-analysis";
 import { getInstitutionLocalizedAliases } from "./institution-localization";
 import {
+  containsCjk,
   normalizeForSearch,
   textMatchesNormalized,
   tokenize
@@ -226,7 +227,13 @@ export function searchIndexRecords(
   const results = records
     .map((record) => scoreRecord(record, normalizedQuery, queryTokens))
     .filter((result): result is EntitySearchResult => Boolean(result))
-    .sort((left, right) => right.score - left.score || left.entityName.localeCompare(right.entityName))
+    .sort(
+      (left, right) =>
+        right.score - left.score ||
+        right.sourceCount - left.sourceCount ||
+        right.claimCount - left.claimCount ||
+        left.entityName.localeCompare(right.entityName)
+    )
     .slice(0, clampLimit(limit));
 
   return results;
@@ -470,6 +477,7 @@ function scoreRecord(
 ): EntitySearchResult | undefined {
   const name = normalizeForSearch(record.entityName);
   const slug = normalizeForSearch(record.entitySlug);
+  const cjkQuery = containsCjk(normalizedQuery);
   const exactAliasMatches = record.aliases.filter(
     (alias) => normalizeForSearch(alias) === normalizedQuery
   );
@@ -481,35 +489,47 @@ function scoreRecord(
   const matchedFields: string[] = [];
   let score = 0;
   let matchReason = "Token match in public record metadata.";
+  let directEntityMatch = false;
 
   if (normalizedQuery === slug) {
     score += 110;
     matchedFields.push("slug");
     matchReason = "Exact canonical slug match.";
+    directEntityMatch = true;
   }
   if (normalizedQuery === name) {
     score += 105;
     matchedFields.push("name");
     matchReason = "Exact canonical name match.";
+    directEntityMatch = true;
   } else if (textMatchesNormalized(record.entityName, normalizedQuery)) {
     score += 80;
     matchedFields.push("name");
     matchReason = "Canonical name contains the query.";
+    directEntityMatch = true;
   }
   if (exactAliasMatches.length) {
     score += 95;
     matchedFields.push("alias");
     matchReason = "Exact entity alias match.";
+    directEntityMatch = true;
   } else if (aliasMatches.length) {
     score += 72;
     matchedFields.push("alias");
     matchReason = "Entity alias contains the query.";
+    directEntityMatch = true;
   }
 
   const fieldMatches = getFieldMatches(record, normalizedQuery);
-  score += fieldMatches.score;
-  matchedFields.push(...fieldMatches.fields);
-  if (fieldMatches.reason && score < 80) matchReason = fieldMatches.reason;
+  if (!(cjkQuery && directEntityMatch)) {
+    score += fieldMatches.score;
+    matchedFields.push(...fieldMatches.fields);
+    if (fieldMatches.reason && score < 80) matchReason = fieldMatches.reason;
+  }
+
+  if (directEntityMatch) {
+    score += getStableQualityBonus(record);
+  }
 
   const matchingTokens = queryTokens.filter((token) =>
     record.searchTokens.includes(token)
@@ -607,6 +627,29 @@ function chooseSnippet(
   );
 
   return matched ?? record.fields.summary ?? "Open the canonical record for details.";
+}
+
+function getStableQualityBonus(record: SearchIndexRecord): number {
+  return (
+    getRankingBonus(record.fields.summary) +
+    Math.min(record.sourceCount, 5) * 2 +
+    Math.min(record.claimCount, 5)
+  );
+}
+
+function getRankingBonus(summary: string | undefined): number {
+  const match = summary?.match(/\brank\s*=?\s*(\d+)/i);
+  if (!match) return 0;
+
+  const rank = Number(match[1]);
+  if (!Number.isFinite(rank)) return 0;
+  if (rank <= 50) return 45;
+  if (rank <= 100) return 40;
+  if (rank <= 250) return 30;
+  if (rank <= 500) return 20;
+  if (rank <= 1000) return 10;
+
+  return 0;
 }
 
 function getDomainAliases(summary: PublicEntitySummary): string[] {
