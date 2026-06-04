@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260604-001",
-  "publishedAt": "2026-06-04T13:15:00.000Z",
-  "description": "Promotes the June 4 2026 QS200 maintenance policy-delta review for high-confidence Stanford University and UNSW Sydney source-backed AI policy changes. Remaining QS200 content_policy_delta candidates were held back pending usable prior source snapshots for true source-diff verification.",
+  "releaseId": "public-release-20260526-003",
+  "publishedAt": "2026-05-26T05:25:26.078Z",
+  "description": "Promotes the latest validated staged university AI-policy runs into the public dataset, including the QS rows 776-785 batch, while keeping source-health maintenance-only output out of canonical publication.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -777,8 +777,7 @@
     "staging/uapt-runs/uapt-zayed-university-20260517",
     "staging/uapt-runs/uapt-zhejiang-university-20260511",
     "staging/uapt-runs/uapt-zhengzhou-university-20260517",
-    "staging/uapt-runs/uapt-zurich-university-of-applied-sciences-zhaw-20260520",
-    "staging/uapt-runs/uapt-qs200-confirmed-policy-delta-20260604"
+    "staging/uapt-runs/uapt-zurich-university-of-applied-sciences-zhaw-20260520"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
@@ -786,9 +785,6 @@
     "uapt-qs200-stage2-batch1-20260517 remains excluded because it is a source-health maintenance run; dataset release validation forbids publishing maintenance-only runs as public claims.",
     "The previous public-release-20260526-002 promotion added 40 university runs plus one claim-evidence delta bundle for already-published universities.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
-    "Raw source documents are not published as tracker metadata; official source materials retain their original rights.",
-    "This release adds only high-confidence, source-backed maintenance deltas from Stanford University and UNSW Sydney.",
-    "The June 4 QS200 scan produced additional candidates, but 149 remaining candidates lacked usable old private source text in public-release-20260524-001 snapshots and were not promoted as policy changes.",
-    "Source-health and maintenance classifications are metadata only; they do not prove policy change without claim/evidence review."
+    "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]
 }
