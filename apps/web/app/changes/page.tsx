@@ -57,6 +57,20 @@ export default async function ChangesPage({ params }: ChangesPageProps) {
     (total, record) => total + record.sourceCount,
     0
   );
+  const historicalCounts = {
+    newlyExtractedClaims: changedRecords.reduce(
+      (total, record) => total + record.newlyExtractedClaims,
+      0
+    ),
+    policyTextChanged: changedRecords.reduce(
+      (total, record) => total + record.policyTextChanged,
+      0
+    ),
+    sourceTextChanged: changedRecords.reduce(
+      (total, record) => total + record.sourceTextChanged,
+      0
+    )
+  };
 
   return (
     <main className="page-shell page-shell--wide">
@@ -72,15 +86,15 @@ export default async function ChangesPage({ params }: ChangesPageProps) {
           <p>{copy.recordsWithDiffRows}</p>
         </div>
         <div>
-          <span>{releaseDiff.changeCounts.policyTextChanged}</span>
+          <span>{historicalCounts.policyTextChanged}</span>
           <p>{copy.policyTextChanges}</p>
         </div>
         <div>
-          <span>{releaseDiff.changeCounts.newlyExtractedClaims}</span>
+          <span>{historicalCounts.newlyExtractedClaims}</span>
           <p>{copy.newlyExtractedClaims}</p>
         </div>
         <div>
-          <span>{releaseDiff.changeCounts.sourceTextChanged}</span>
+          <span>{historicalCounts.sourceTextChanged}</span>
           <p>{copy.privateSourceTextChanges}</p>
         </div>
       </section>
@@ -122,7 +136,10 @@ export default async function ChangesPage({ params }: ChangesPageProps) {
               releaseDiff.previousReleaseId,
               totalSources,
               records.length
-            )}
+            )}{" "}
+            This timeline groups release-to-release changes by university, so
+            records that changed in multiple releases stay available from the
+            same university change page.
           </p>
         </div>
         {changedRecords.length ? (

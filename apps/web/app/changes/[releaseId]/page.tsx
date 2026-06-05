@@ -6,8 +6,7 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 import {
-  getChangeRecordBySlug,
-  getChangeRecords,
+  getEntityChangeHistory,
   getReleaseChangeRecords,
   type ChangeRecord
 } from "@/lib/change-records";
@@ -28,17 +27,9 @@ export const dynamicParams = true;
 export const revalidate = false;
 
 export async function generateStaticParams() {
-  const [records, releaseIds] = await Promise.all([
-    getChangeRecords(),
-    getKnownReleaseIds()
-  ]);
+  const releaseIds = await getKnownReleaseIds();
 
-  return [
-    ...records
-      .filter((record) => record.diffRows.length)
-      .map((record) => ({ releaseId: record.slug })),
-    ...releaseIds.map((releaseId) => ({ releaseId }))
-  ];
+  return releaseIds.map((releaseId) => ({ releaseId }));
 }
 
 export async function generateMetadata({ params }: ChangeDetailPageProps) {
@@ -62,16 +53,16 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
     };
   }
 
-  const record = await getChangeRecordBySlug(releaseId);
+  const history = await getEntityChangeHistory(releaseId);
   const canonical = getAbsoluteSiteUrl(`/changes/${releaseId}`);
-  const displayName = record
-    ? getLocalizedInstitutionName(record.slug, record.name, locale)
+  const displayName = history
+    ? getLocalizedInstitutionName(history.record.slug, history.record.name, locale)
     : undefined;
-  const title = record
+  const title = history
     ? `${displayName} AI Policy Tracker Release Diff | University AI Policy Tracker`
     : "Change record not found";
-  const description = record
-    ? `${displayName} tracker release diff with semantic categories for policy text, newly extracted claims, evidence, and source snapshots.`
+  const description = history
+    ? `${displayName} tracker change history across ${history.releaseRecords.length} public release diff records, with policy text, newly extracted claim, evidence, and source snapshot categories.`
     : "University AI Policy Tracker change record not found.";
 
   return {
@@ -92,20 +83,21 @@ export default async function ChangeDetailPage({
 }: ChangeDetailPageProps) {
   const { locale: localeParam, releaseId } = await params;
   const locale = normalizeLocale(localeParam);
-  const releaseRecords = await getReleaseChangeRecords(releaseId);
-  if (releaseRecords) {
+  const recordsForRelease = await getReleaseChangeRecords(releaseId);
+  if (recordsForRelease) {
     return (
       <ReleaseOverviewPage
         locale={locale}
-        records={releaseRecords}
+        records={recordsForRelease}
         releaseId={releaseId}
       />
     );
   }
 
-  const record = await getChangeRecordBySlug(releaseId);
+  const history = await getEntityChangeHistory(releaseId);
 
-  if (!record) notFound();
+  if (!history) notFound();
+  const { record, releaseRecords } = history;
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
 
   return (
@@ -115,7 +107,7 @@ export default async function ChangeDetailPage({
           <p className="entity-header__eyebrow">Change log</p>
           <h1>{displayName}</h1>
           <p className="entity-header__summary">
-            Release-to-release tracker diff with separate policy-text,
+            Release-to-release tracker diff history with separate policy-text,
             newly-extracted claim, evidence, and source snapshot categories.
           </p>
           <div className="entity-header__metadata">
@@ -133,8 +125,9 @@ export default async function ChangeDetailPage({
             <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
             <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
             {record.releaseId ? (
-              <MetaLabel label="Release">{record.releaseId}</MetaLabel>
+              <MetaLabel label="Latest release">{record.releaseId}</MetaLabel>
             ) : null}
+            <MetaLabel label="Release records">{releaseRecords.length}</MetaLabel>
           </div>
         </div>
         <div className="entity-header__actions">
@@ -154,6 +147,11 @@ export default async function ChangeDetailPage({
             title="Change summary"
           >
             <p>{getSummaryText(record, locale)}</p>
+            <p className="notice-card">
+              This page combines all public release diffs for{" "}
+              {displayName}. Individual release snapshots remain available from
+              their release-specific URLs.
+            </p>
             <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
             <p className="notice-card">
               Newly extracted claims are tracker additions and are not
@@ -187,14 +185,14 @@ export default async function ChangeDetailPage({
           </ReferenceBox>
 
           <ReferenceBox
-            description="Unified tracker diff generated from the previous and current public release snapshots."
-            title="Release diff"
+            description="Unified tracker diff generated from all public release snapshots for this university."
+            title="Combined release diff"
           >
             {record.diffLines.length ? (
               <DiffBlock
-                description={getDiffDescription(record)}
+                description={getCombinedDiffDescription(record, releaseRecords)}
                 lines={record.diffLines}
-                title={`${displayName} release diff`}
+                title={`${displayName} combined release diff`}
               />
             ) : (
               <p className="notice-card">
@@ -203,6 +201,68 @@ export default async function ChangeDetailPage({
               </p>
             )}
           </ReferenceBox>
+
+          <section className="record-section">
+            <div className="section-heading">
+              <h2>Release history</h2>
+              <p>
+                {releaseRecords.length}{" "}
+                {pluralize("public release diff", releaseRecords.length)}
+              </p>
+            </div>
+            <div className="source-attribution-list">
+              {releaseRecords.map((releaseRecord) => (
+                <article
+                  className="source-attribution-row"
+                  key={`${releaseRecord.releaseId}:${releaseRecord.slug}`}
+                >
+                  <div>
+                    <h3>{releaseRecord.releaseId}</h3>
+                    <p>
+                      {releaseRecord.previousReleaseId
+                        ? `Compared with ${releaseRecord.previousReleaseId}.`
+                        : "Initial tracked release."}
+                    </p>
+                    <div className="tag-row">
+                      <MetaLabel label="Policy text">
+                        {releaseRecord.policyTextChanged}
+                      </MetaLabel>
+                      <MetaLabel label="Newly extracted">
+                        {releaseRecord.newlyExtractedClaims}
+                      </MetaLabel>
+                      <MetaLabel label="Source snapshots">
+                        {releaseRecord.sourceSnapshotChanged}
+                      </MetaLabel>
+                      <MetaLabel label="Source text">
+                        {releaseRecord.sourceTextChanged}
+                      </MetaLabel>
+                    </div>
+                  </div>
+                  <div className="tag-row">
+                    {releaseRecord.releaseId ? (
+                      <Link href={`/changes/${releaseRecord.releaseId}/${record.slug}`}>
+                        Release diff
+                      </Link>
+                    ) : null}
+                    {releaseRecord.releaseId ? (
+                      <a
+                        href={`/api/public/v1/changes/${releaseRecord.releaseId}/${record.slug}.json`}
+                      >
+                        Diff JSON
+                      </a>
+                    ) : null}
+                  </div>
+                  {releaseRecord.diffLines.length ? (
+                    <DiffBlock
+                      description={getDiffDescription(releaseRecord)}
+                      lines={releaseRecord.diffLines}
+                      title={`${displayName} ${releaseRecord.releaseId} diff`}
+                    />
+                  ) : null}
+                </article>
+              ))}
+            </div>
+          </section>
 
           <section className="record-section">
             <div className="section-heading">
@@ -383,7 +443,7 @@ function ReleaseOverviewPage({
                 <Link href={`/changes/${releaseId}/${record.slug}`}>
                   Release diff
                 </Link>
-                <Link href={`/changes/${record.slug}`}>Latest diff</Link>
+                <Link href={`/changes/${record.slug}`}>University history</Link>
                 <Link href={record.universityUrl}>University page</Link>
               </div>
             </article>
@@ -414,6 +474,15 @@ function getDiffDescription(record: ChangeRecord): string {
   }
 
   return `Comparing ${record.previousReleaseId} to ${record.releaseId}.`;
+}
+
+function getCombinedDiffDescription(
+  record: ChangeRecord,
+  releaseRecords: ChangeRecord[]
+): string {
+  if (releaseRecords.length <= 1) return getDiffDescription(record);
+
+  return `Combining ${releaseRecords.length} public release diffs for this university. Each section below keeps the original release-to-release comparison.`;
 }
 
 function pluralize(label: string, count: number): string {

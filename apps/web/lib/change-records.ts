@@ -8,6 +8,7 @@ import {
 import { getStagedPublicDataset } from "./staged-public-data";
 import {
   getLatestReleaseDiff,
+  getKnownReleaseIds,
   getReleaseDiff,
   type ReleaseDiffRow,
   type ReleaseEntityDiff
@@ -80,15 +81,33 @@ export interface ChangeRecord {
   universityUrl: string;
 }
 
+export interface EntityChangeHistory {
+  record: ChangeRecord;
+  releaseRecords: ChangeRecord[];
+}
+
+let aggregateChangeRecordsPromise: Promise<ChangeRecord[]> | undefined;
+let allReleaseChangedRecordsPromise: Promise<ChangeRecord[]> | undefined;
+
 export async function getChangeRecords(): Promise<ChangeRecord[]> {
+  aggregateChangeRecordsPromise ??= buildAggregatedChangeRecords();
+
+  return aggregateChangeRecordsPromise;
+}
+
+async function buildAggregatedChangeRecords(): Promise<ChangeRecord[]> {
   const dataset = await getStagedPublicDataset();
-  const releaseDiff = await getLatestReleaseDiff().catch(() => undefined);
-  const diffsBySlug = new Map(
-    releaseDiff?.entities.map((entity) => [entity.entitySlug, entity]) ?? []
-  );
+  const releaseRecords = await getAllReleaseChangedRecords();
+  const releaseRecordsBySlug = groupBySlug(releaseRecords);
 
   return dataset.publicSummaries
-    .map((summary) => buildChangeRecord(summary, diffsBySlug.get(summary.entity.slug)))
+    .map((summary) =>
+      buildAggregateChangeRecord(
+        summary,
+        releaseRecordsBySlug.get(summary.entity.slug) ?? []
+      )
+    )
+    .filter((record) => record.diffRows.length)
     .sort(compareFreshness);
 }
 
@@ -116,6 +135,50 @@ export async function getChangeRecordBySlug(
   slug: string
 ): Promise<ChangeRecord | undefined> {
   return (await getChangeRecords()).find((record) => record.slug === slug);
+}
+
+export async function getEntityChangeHistory(
+  slug: string
+): Promise<EntityChangeHistory | undefined> {
+  const dataset = await getStagedPublicDataset();
+  const summary = dataset.publicSummaries.find((item) => item.entity.slug === slug);
+  const releaseRecords = (await getAllReleaseChangedRecords()).filter(
+    (record) => record.slug === slug
+  );
+
+  if (!summary && !releaseRecords.length) return undefined;
+
+  const record = summary
+    ? buildAggregateChangeRecord(summary, releaseRecords)
+    : buildDiffOnlyAggregateChangeRecord(slug, releaseRecords);
+
+  return {
+    record,
+    releaseRecords
+  };
+}
+
+async function getAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
+  allReleaseChangedRecordsPromise ??= buildAllReleaseChangedRecords();
+
+  return allReleaseChangedRecordsPromise;
+}
+
+async function buildAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
+  const releaseIds = await getKnownReleaseIds();
+  const records: ChangeRecord[] = [];
+
+  for (const releaseId of releaseIds) {
+    const releaseDiff = await getReleaseDiff(releaseId);
+    if (!releaseDiff?.previousReleaseId) continue;
+
+    const releaseRecords = await getReleaseChangeRecords(releaseId);
+    records.push(
+      ...(releaseRecords ?? []).filter((record) => record.diffRows.length)
+    );
+  }
+
+  return records.sort(compareFreshness);
 }
 
 function buildChangeRecord(
@@ -214,6 +277,99 @@ function buildDiffOnlyChangeRecord(diff: ReleaseEntityDiff): ChangeRecord {
     universityUrl: `/universities/${diff.entitySlug}`,
     unchanged: diff.unchanged
   };
+}
+
+function buildAggregateChangeRecord(
+  summary: PublicEntitySummary,
+  releaseRecords: ChangeRecord[]
+): ChangeRecord {
+  if (!releaseRecords.length) return buildChangeRecord(summary);
+
+  const aggregateDiff = buildAggregateEntityDiff(
+    summary.entity.slug,
+    summary.entity.name,
+    releaseRecords
+  );
+  const record = buildChangeRecord(summary, aggregateDiff);
+
+  return {
+    ...record,
+    changeUrl: `/changes/${summary.entity.slug}`,
+    lastChangedAt: latestIsoValue(releaseRecords.map((item) => item.lastChangedAt)),
+    lastCheckedAt:
+      latestIsoValue(releaseRecords.map((item) => item.lastCheckedAt)) ??
+      record.lastCheckedAt
+  };
+}
+
+function buildDiffOnlyAggregateChangeRecord(
+  slug: string,
+  releaseRecords: ChangeRecord[]
+): ChangeRecord {
+  const newest = releaseRecords[0];
+  const aggregateDiff = buildAggregateEntityDiff(
+    slug,
+    newest?.name ?? slug,
+    releaseRecords
+  );
+
+  return {
+    ...buildDiffOnlyChangeRecord(aggregateDiff),
+    changeUrl: `/changes/${slug}`,
+    lastChangedAt: latestIsoValue(releaseRecords.map((item) => item.lastChangedAt)),
+    lastCheckedAt: latestIsoValue(releaseRecords.map((item) => item.lastCheckedAt))
+  };
+}
+
+function buildAggregateEntityDiff(
+  slug: string,
+  name: string,
+  releaseRecords: ChangeRecord[]
+): ReleaseEntityDiff {
+  const latest = releaseRecords[0];
+  const rows = releaseRecords.flatMap((record) => record.diffRows);
+  const semanticCounts = countSemanticRows(rows);
+
+  return {
+    added: releaseRecords.reduce((total, record) => total + record.added, 0),
+    canonicalUrl: latest?.canonicalUrl ?? `/changes/${slug}`,
+    claimMetadataChanged: semanticCounts.claimMetadataChanged,
+    currentReleaseId: latest?.releaseId ?? "multiple-releases",
+    entityName: latest?.name ?? name,
+    entitySlug: slug,
+    evidenceChanged: semanticCounts.evidenceChanged,
+    lastChangedAt: latestIsoValue(releaseRecords.map((item) => item.lastChangedAt)),
+    lastCheckedAt: latestIsoValue(releaseRecords.map((item) => item.lastCheckedAt)),
+    modified: releaseRecords.reduce((total, record) => total + record.modified, 0),
+    newlyExtractedClaims: semanticCounts.newlyExtractedClaims,
+    previousReleaseId: latest?.previousReleaseId,
+    policyTextChanged: semanticCounts.policyTextChanged,
+    publicJsonUrl: latest?.publicJsonUrl ?? "",
+    removed: releaseRecords.reduce((total, record) => total + record.removed, 0),
+    rows,
+    sourceAdded: semanticCounts.sourceAdded,
+    sourceRemoved: semanticCounts.sourceRemoved,
+    sourceSnapshotChanged: semanticCounts.sourceSnapshotChanged,
+    sourceTextChanged: semanticCounts.sourceTextChanged,
+    trackerRemovedClaims: semanticCounts.trackerRemovedClaims,
+    unchanged: 0
+  };
+}
+
+function groupBySlug(records: ChangeRecord[]): Map<string, ChangeRecord[]> {
+  const grouped = new Map<string, ChangeRecord[]>();
+
+  for (const record of records) {
+    const recordsForSlug = grouped.get(record.slug) ?? [];
+    recordsForSlug.push(record);
+    grouped.set(record.slug, recordsForSlug);
+  }
+
+  for (const recordsForSlug of grouped.values()) {
+    recordsForSlug.sort(compareFreshness);
+  }
+
+  return grouped;
 }
 
 function buildSourceChangeRecord(source: SourceAttribution): SourceChangeRecord {
@@ -476,6 +632,12 @@ function compareFreshness(left: ChangeRecord, right: ChangeRecord): number {
   if (freshnessDifference) return freshnessDifference;
 
   return left.name.localeCompare(right.name);
+}
+
+function latestIsoValue(values: Array<string | undefined>): string | undefined {
+  return values
+    .filter((value): value is string => Boolean(value))
+    .sort((left, right) => new Date(right).getTime() - new Date(left).getTime())[0];
 }
 
 function getFreshnessTime(
