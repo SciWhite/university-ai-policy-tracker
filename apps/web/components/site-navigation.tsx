@@ -34,6 +34,7 @@ export function SiteNavigation({ items }: SiteNavigationProps) {
             aria-current={isActive ? "page" : undefined}
             href={localizeHref(item.href, locale)}
             key={item.href}
+            prefetch={false}
           >
             {labels[item.labelKey]}
           </Link>

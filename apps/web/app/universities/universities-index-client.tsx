@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useMemo, useState, type FormEvent } from "react";
 import type {
   CatalogUniversityRanking,
   RankingSystemId
@@ -24,9 +24,14 @@ import type {
 } from "@/lib/university-index-records";
 
 interface UniversitiesIndexClientProps {
+  initialRecords: StaticUniversityIndexRecord[];
   locale: SupportedLocale;
+  rankingCounts: Record<string, number>;
   rankingSystems: UniversityIndexRankingSystem[];
-  records: StaticUniversityIndexRecord[];
+  totalClaimCount: number;
+  totalRecordCount: number;
+  totalReviewedClaimCount: number;
+  totalSourceCount: number;
 }
 
 interface UniversityIndexFilters {
@@ -45,13 +50,51 @@ const defaultFilters: UniversityIndexFilters = {
   sort: "rank"
 };
 
+const fullIndexPath = "/api/public/v1/university-index.json";
+
 export function UniversitiesIndexClient({
+  initialRecords,
   locale,
+  rankingCounts,
   rankingSystems,
-  records
+  totalClaimCount,
+  totalRecordCount,
+  totalReviewedClaimCount,
+  totalSourceCount
 }: UniversitiesIndexClientProps) {
   const copy = getPageCopy(locale).universities;
   const [filters, setFilters] = useState<UniversityIndexFilters>(defaultFilters);
+  const [records, setRecords] = useState(initialRecords);
+  const [hasFullIndex, setHasFullIndex] = useState(false);
+  const [isLoadingFullIndex, setIsLoadingFullIndex] = useState(false);
+  const [fullIndexError, setFullIndexError] = useState(false);
+
+  const loadFullIndex = useCallback(async () => {
+    if (hasFullIndex || isLoadingFullIndex) return;
+
+    setIsLoadingFullIndex(true);
+    setFullIndexError(false);
+
+    try {
+      const response = await fetch(fullIndexPath);
+      if (!response.ok) throw new Error(`Index request failed: ${response.status}`);
+      const payload = (await response.json()) as {
+        data?: {
+          records?: StaticUniversityIndexRecord[];
+        };
+      };
+      const nextRecords = payload.data?.records;
+      if (!Array.isArray(nextRecords)) {
+        throw new Error("Index response did not include records.");
+      }
+      setRecords(nextRecords);
+      setHasFullIndex(true);
+    } catch {
+      setFullIndexError(true);
+    } finally {
+      setIsLoadingFullIndex(false);
+    }
+  }, [hasFullIndex, isLoadingFullIndex]);
 
   useEffect(() => {
     const syncFromLocation = () => {
@@ -63,6 +106,11 @@ export function UniversitiesIndexClient({
 
     return () => window.removeEventListener("popstate", syncFromLocation);
   }, []);
+
+  useEffect(() => {
+    if (!needsFullIndex(filters) || hasFullIndex) return;
+    void loadFullIndex();
+  }, [filters, hasFullIndex, loadFullIndex]);
 
   const selectedRankingLabel = getRankingLabel(filters.ranking, rankingSystems);
   const allRecords = useMemo(
@@ -79,16 +127,10 @@ export function UniversitiesIndexClient({
       ),
     [allRecords, filters.coverage, filters.order, filters.q, filters.sort, locale]
   );
-  const totalClaims = records.reduce((total, record) => total + record.claimCount, 0);
-  const reviewedClaims = records.filter((record) =>
-    record.reviewedClaimCount
-  ).reduce((total, record) => total + record.reviewedClaimCount, 0);
-  const candidateClaims = totalClaims - reviewedClaims;
-  const sourceCount = records.reduce(
-    (total, record) => total + record.sourceCount,
-    0
-  );
-  const rankedCount = allRecords.filter((record) => record.selectedRanking).length;
+  const candidateClaims = totalClaimCount - totalReviewedClaimCount;
+  const rankedCount = hasFullIndex
+    ? allRecords.filter((record) => record.selectedRanking).length
+    : (rankingCounts[filters.ranking] ?? 0);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -111,15 +153,15 @@ export function UniversitiesIndexClient({
 
       <section className="metrics-grid" aria-label={copy.coverageLabel}>
         <div>
-          <span>{records.length}</span>
+          <span>{totalRecordCount}</span>
           <p>{copy.universityRecords}</p>
         </div>
         <div>
-          <span>{totalClaims}</span>
+          <span>{totalClaimCount}</span>
           <p>{copy.sourceBackedClaims}</p>
         </div>
         <div>
-          <span>{sourceCount}</span>
+          <span>{totalSourceCount}</span>
           <p>{copy.officialSourceAttributions}</p>
         </div>
         <div>
@@ -250,10 +292,31 @@ export function UniversitiesIndexClient({
         </form>
 
         <div className="table-summary" data-university-visible-count={filteredRecords.length}>
-          {copy.showing(filteredRecords.length, records.length)}{" "}
+          {copy.showing(filteredRecords.length, totalRecordCount)}{" "}
           {filters.q ? <>{copy.searchSummary(filters.q)} </> : null}
           {copy.rankingView(selectedRankingLabel)}
         </div>
+        {!hasFullIndex ? (
+          <p className="notice-card">
+            Showing a fast first page of {records.length.toLocaleString("en-US")}{" "}
+            records. Search, filter, sort, or load the complete index to query all{" "}
+            {totalRecordCount.toLocaleString("en-US")} records.{" "}
+            <button
+              className="filter-reset-link"
+              disabled={isLoadingFullIndex}
+              onClick={() => void loadFullIndex()}
+              type="button"
+            >
+              {isLoadingFullIndex ? "Loading..." : "Load complete index"}
+            </button>
+          </p>
+        ) : null}
+        {fullIndexError ? (
+          <p className="notice-card">
+            The complete index could not be loaded. Public JSON remains available
+            from the dataset links.
+          </p>
+        ) : null}
 
         <div className="university-table-wrap">
           <table className="university-table">
@@ -327,6 +390,16 @@ export function UniversitiesIndexClient({
         ) : null}
       </section>
     </main>
+  );
+}
+
+function needsFullIndex(filters: UniversityIndexFilters): boolean {
+  return (
+    filters.q.trim().length > 0 ||
+    filters.coverage !== defaultFilters.coverage ||
+    filters.order !== defaultFilters.order ||
+    filters.ranking !== defaultFilters.ranking ||
+    filters.sort !== defaultFilters.sort
   );
 }
 

@@ -253,6 +253,39 @@ export interface MonthlyReport {
   type: "monthly";
 }
 
+export function getMonthlyReportCoverageSlug(
+  group: MonthlyReportMacroRegionGroup
+): string {
+  return group.anchorId.replace(/^coverage-/, "");
+}
+
+export function getMonthlyReportCoveragePath(
+  reportSlug: string,
+  group: MonthlyReportMacroRegionGroup
+): string {
+  return `/reports/monthly/${reportSlug}/coverage/${getMonthlyReportCoverageSlug(
+    group
+  )}`;
+}
+
+export async function getMonthlyReportCoverageGroup(
+  reportSlug: string,
+  coverageSlug: string
+): Promise<
+  | {
+      group: MonthlyReportMacroRegionGroup;
+      report: MonthlyReport;
+    }
+  | undefined
+> {
+  const report = await getMonthlyReport(reportSlug);
+  const group = report?.coverageGroups.find(
+    (candidate) => getMonthlyReportCoverageSlug(candidate) === coverageSlug
+  );
+
+  return report && group ? { group, report } : undefined;
+}
+
 export interface OutreachAsset {
   body: string;
   label: string;

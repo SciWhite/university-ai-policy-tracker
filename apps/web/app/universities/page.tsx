@@ -44,6 +44,27 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).universities;
   const records = await getStaticUniversityIndexRecords();
+  const initialRecords = getInitialUniversityIndexRecords(records);
+  const totalClaimCount = records.reduce(
+    (total, record) => total + record.claimCount,
+    0
+  );
+  const totalReviewedClaimCount = records.reduce(
+    (total, record) => total + record.reviewedClaimCount,
+    0
+  );
+  const totalSourceCount = records.reduce(
+    (total, record) => total + record.sourceCount,
+    0
+  );
+  const rankingCounts = Object.fromEntries(
+    universityIndexRankingSystems.map((system) => [
+      system.id,
+      records.filter((record) =>
+        record.rankings.some((ranking) => ranking.systemId === system.id)
+      ).length
+    ])
+  );
 
   return (
     <>
@@ -67,10 +88,35 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
         }}
       />
       <UniversitiesIndexClient
+        initialRecords={initialRecords}
         locale={locale}
-        records={records}
+        rankingCounts={rankingCounts}
         rankingSystems={universityIndexRankingSystems}
+        totalClaimCount={totalClaimCount}
+        totalRecordCount={records.length}
+        totalReviewedClaimCount={totalReviewedClaimCount}
+        totalSourceCount={totalSourceCount}
       />
     </>
   );
+}
+
+function getInitialUniversityIndexRecords(
+  records: Awaited<ReturnType<typeof getStaticUniversityIndexRecords>>
+) {
+  return records
+    .slice()
+    .sort((left, right) => {
+      const leftRank = left.rankings.find((ranking) => ranking.systemId === "qs");
+      const rightRank = right.rankings.find(
+        (ranking) => ranking.systemId === "qs"
+      );
+
+      return (
+        (leftRank?.rankNumber ?? Number.MAX_SAFE_INTEGER) -
+          (rightRank?.rankNumber ?? Number.MAX_SAFE_INTEGER) ||
+        left.name.localeCompare(right.name)
+      );
+    })
+    .slice(0, 100);
 }

@@ -17,10 +17,13 @@ type LocalizedLinkProps = ComponentProps<typeof Link> & {
 export function LocalizedLink({
   href,
   localeOverride,
+  prefetch = false,
   ...props
 }: LocalizedLinkProps) {
   const pathname = usePathname();
   const locale = localeOverride ?? getLocaleFromPathname(pathname);
 
-  return <Link href={localizeHref(href, locale)} {...props} />;
+  return (
+    <Link href={localizeHref(href, locale)} prefetch={prefetch} {...props} />
+  );
 }

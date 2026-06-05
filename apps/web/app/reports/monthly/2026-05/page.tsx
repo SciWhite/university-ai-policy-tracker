@@ -9,7 +9,8 @@ import { StateLabel } from "@/components/state-label";
 import {
   currentMonthlyReportSlug,
   formatReportDate,
-  getMonthlyReport
+  getMonthlyReport,
+  getMonthlyReportCoveragePath
 } from "@/lib/reports";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
@@ -198,87 +199,55 @@ export default async function May2026MonthlyReportPage() {
       </ReferenceBox>
 
       <ReferenceBox
-        description="All public university records in this baseline, grouped for AI answer engine retrieval. Ranking labels are discovery context only, not policy quality or compliance scores."
+        description="All public university records remain available as crawlable regional appendices. The main report keeps summary coverage links light for mobile readers and answer-engine retrieval."
         title="All university coverage"
       >
-        <ul className="compact-link-list" aria-label="Macro-region anchors">
+        <DataList>
           {report.coverageGroups.map((group) => (
-            <li key={group.macroRegion}>
-              <a href={`#${group.anchorId}`}>
-                {group.macroRegion} ({group.universityCount})
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <div className="coverage-region-list">
-          {report.coverageGroups.map((group) => (
-            <section
-              className="coverage-region"
-              id={group.anchorId}
+            <DataListRow
+              actions={
+                <Link href={getMonthlyReportCoveragePath(report.slug, group)}>
+                  Open appendix
+                </Link>
+              }
               key={group.macroRegion}
+              metadata={
+                <>
+                  <MetaLabel label="Records">{group.universityCount}</MetaLabel>
+                  <MetaLabel label="Countries/regions">
+                    {group.countryCount}
+                  </MetaLabel>
+                  <MetaLabel label="City/campus groups">
+                    {group.cityGroups.length}
+                  </MetaLabel>
+                </>
+              }
             >
               <h2>{group.macroRegion}</h2>
-              <p className="table-summary">
+              <p>
                 {group.universityCount.toLocaleString("en-US")} university
                 records across {group.countryCount.toLocaleString("en-US")}{" "}
-                country or region labels.
+                country or region labels. Largest groups:{" "}
+                {group.cityGroups
+                  .slice()
+                  .sort(
+                    (left, right) =>
+                      right.universityCount - left.universityCount ||
+                      left.cityCampusRegion.localeCompare(
+                        right.cityCampusRegion
+                      )
+                  )
+                  .slice(0, 5)
+                  .map(
+                    (cityGroup) =>
+                      `${cityGroup.cityCampusRegion} (${cityGroup.universityCount})`
+                  )
+                  .join(", ")}
+                .
               </p>
-              {group.cityGroups.map((cityGroup) => (
-                <section
-                  className="coverage-city"
-                  id={cityGroup.anchorId}
-                  key={`${group.macroRegion}-${cityGroup.cityCampusRegion}`}
-                >
-                  <h3>{cityGroup.cityCampusRegion}</h3>
-                  <p className="table-summary">
-                    {cityGroup.universityCount.toLocaleString("en-US")} records
-                    across {cityGroup.countryCount.toLocaleString("en-US")}{" "}
-                    country or region labels.
-                  </p>
-                  <div className="reference-table-wrap">
-                    <table className="reference-table report-coverage-table">
-                      <thead>
-                        <tr>
-                          <th scope="col">University</th>
-                          <th scope="col">Country/region</th>
-                          <th scope="col">Ranking label</th>
-                          <th scope="col">Claims</th>
-                          <th scope="col">Sources</th>
-                          <th scope="col">Last checked</th>
-                          <th scope="col">Links</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {cityGroup.rows.map((row) => (
-                          <tr key={row.slug}>
-                            <td>
-                              <Link className="table-record-title" href={row.recordUrl}>
-                                {row.name}
-                              </Link>
-                            </td>
-                            <td>{row.countryOrRegion}</td>
-                            <td>{row.rankingLabel}</td>
-                            <td>{row.claimCount}</td>
-                            <td>{row.sourceCount}</td>
-                            <td>{formatReportDate(row.lastCheckedAt)}</td>
-                            <td>
-                              <span className="table-record-meta">
-                                <Link href={row.recordUrl}>Record</Link>
-                                <a href={row.publicJsonUrl}>JSON</a>
-                                <Link href={row.changeUrl}>Changes</Link>
-                              </span>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </section>
-              ))}
-            </section>
+            </DataListRow>
           ))}
-        </div>
+        </DataList>
       </ReferenceBox>
 
       <ReferenceBox
