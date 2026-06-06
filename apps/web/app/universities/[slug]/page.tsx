@@ -66,7 +66,10 @@ export async function generateMetadata({ params }: UniversityPageProps) {
     ? `${displayName} AI Policy: ChatGPT, GenAI Rules & Sources`
     : "University not found";
   const description = university && publicSummary
-    ? `${displayName} AI policy record with ${publicSummary.claims.length} source-backed claims from ${publicSummary.officialSources.length} official sources, review state, last checked date, and public JSON.`
+    ? buildUniversityMetaDescription({
+        displayName,
+        summary: publicSummary
+      })
     : university
       ? `${displayName} AI policy record with evidence-backed claims, official sources, review state, confidence, and public JSON.`
     : "University AI Policy Tracker record not found.";
@@ -143,6 +146,11 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     summary: publicSummary,
     totalClaimCount: publicSummary.claims.length
   });
+  const prioritySearchContext = buildPrioritySearchContext({
+    displayName,
+    publicSummary,
+    slug
+  });
 
   return (
     <main className="page-shell page-shell--wide">
@@ -192,6 +200,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               <Link className="site-action" href={`/changes/${slug}`}>
                 Change log
               </Link>
+              <Link className="site-action" href="/reports/monthly/2026-05">
+                Monthly report
+              </Link>
               <Link className="site-action" href="/citation">
                 Citation rules
               </Link>
@@ -219,6 +230,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 <div>
                   <Link className="site-action" href={`/changes/${slug}`}>
                     Change log
+                  </Link>
+                  <Link className="site-action" href="/reports/monthly/2026-05">
+                    Monthly report
                   </Link>
                   <Link className="site-action" href="/datasets">
                     Dataset access
@@ -297,6 +311,29 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 ))}
               </ul>
             </section>
+            {prioritySearchContext ? (
+              <section
+                aria-labelledby="search-context"
+                className="citation-ready-summary"
+              >
+                <h3 id="search-context">Search context</h3>
+                <p>{prioritySearchContext}</p>
+                <div className="tag-row">
+                  <Link className="site-action" href={`/changes/${slug}`}>
+                    Change history
+                  </Link>
+                  <Link className="site-action" href="/reports/monthly/2026-05">
+                    Monthly report
+                  </Link>
+                  <Link className="site-action" href="/universities">
+                    University index
+                  </Link>
+                  <a className="site-action" href={publicJsonUrl}>
+                    Public JSON
+                  </a>
+                </div>
+              </section>
+            ) : null}
             <div className="tag-row">
               <MetaLabel label="Policy status">{policyStatus}</MetaLabel>
               <StateLabel reviewState={publicSummary.reviewState} />
@@ -602,6 +639,86 @@ interface RecordLeadInput {
   reviewedClaimCount: number;
   summary: PublicUniversitySummary;
   totalClaimCount: number;
+}
+
+const priorityDetailSlugs = new Set([
+  "edinburgh",
+  "university-of-oslo",
+  "university-of-leeds",
+  "university-of-technology-sydney",
+  "university-of-queensland",
+  "university-of-waterloo"
+]);
+
+function buildUniversityMetaDescription({
+  displayName,
+  summary
+}: {
+  displayName: string | undefined;
+  summary: PublicUniversitySummary;
+}): string {
+  const name = displayName ?? summary.entity.name;
+  const sourceLanguages = getSourceLanguages(summary.claims);
+  const checkedText = summary.lastCheckedAt
+    ? ` Last checked ${formatDate(summary.lastCheckedAt)}.`
+    : "";
+  const languageText = sourceLanguages.length
+    ? ` Source language: ${sourceLanguages.join(", ")}.`
+    : "";
+
+  return `${name} AI policy and ChatGPT/GenAI rule record with ${summary.claims.length} source-backed claims from ${summary.officialSources.length} official sources, review state, evidence snippets, and public JSON.${checkedText}${languageText}`;
+}
+
+function buildPrioritySearchContext({
+  displayName,
+  publicSummary,
+  slug
+}: {
+  displayName: string;
+  publicSummary: PublicUniversitySummary;
+  slug: string;
+}): string | undefined {
+  if (!priorityDetailSlugs.has(slug)) return undefined;
+
+  const searchableText = [
+    publicSummary.summary,
+    ...publicSummary.officialSources.map((source) => source.citationTitle),
+    ...publicSummary.officialSources.map((source) => source.sourceUrl),
+    ...publicSummary.claims.map((claim) => claim.claimText),
+    ...publicSummary.claims.flatMap((claim) =>
+      claim.evidence.map((evidence) => evidence.evidenceSnippet)
+    )
+  ].join(" ");
+  const contexts: string[] = [];
+
+  if (
+    (slug === "edinburgh" || slug === "university-of-leeds") &&
+    /digital education unit/i.test(searchableText)
+  ) {
+    contexts.push(
+      "matching public source text references Digital Education Unit context"
+    );
+  }
+
+  if (slug === "university-of-technology-sydney") {
+    contexts.push("this record is the canonical UTS AI policy entry");
+  }
+
+  if (slug === "university-of-oslo") {
+    contexts.push(
+      "this English canonical record is linked with localized display pages through hreflang"
+    );
+  }
+
+  if (!contexts.length) {
+    contexts.push(
+      "this priority record is monitored for university AI policy search visibility"
+    );
+  }
+
+  return `${displayName} is a priority search record for university AI policy discovery; ${contexts.join(
+    "; "
+  )}. Use the linked change history, monthly report, university index, and public JSON together for citation-safe context.`;
 }
 
 function buildRecordLead({

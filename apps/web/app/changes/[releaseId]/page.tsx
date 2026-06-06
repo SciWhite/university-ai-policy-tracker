@@ -5,6 +5,7 @@ import { DiffBlock } from "@/components/diff-block";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
+import { JsonLd } from "@/components/json-ld";
 import {
   getEntityChangeHistory,
   getReleaseChangeRecords,
@@ -59,10 +60,10 @@ export async function generateMetadata({ params }: ChangeDetailPageProps) {
     ? getLocalizedInstitutionName(history.record.slug, history.record.name, locale)
     : undefined;
   const title = history
-    ? `${displayName} AI Policy Tracker Release Diff | University AI Policy Tracker`
+    ? getEntityHistoryTitle(displayName, history.record)
     : "Change record not found";
   const description = history
-    ? `${displayName} tracker change history across ${history.releaseRecords.length} public release diff records, with policy text, newly extracted claim, evidence, and source snapshot categories.`
+    ? getEntityHistoryMetaDescription(history.record, history.releaseRecords, locale)
     : "University AI Policy Tracker change record not found.";
 
   return {
@@ -99,16 +100,45 @@ export default async function ChangeDetailPage({
   if (!history) notFound();
   const { record, releaseRecords } = history;
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
+  const summaryText = getSummaryText(record, locale);
+  const canonical = getAbsoluteSiteUrl(`/changes/${record.slug}`);
 
   return (
     <main className="page-shell page-shell--wide">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: `${displayName} AI policy change history`,
+          description: summaryText,
+          url: canonical,
+          dateModified: record.lastChangedAt ?? record.lastCheckedAt,
+          isPartOf: {
+            "@type": "WebSite",
+            name: "University AI Policy Tracker",
+            url: getAbsoluteSiteUrl("/")
+          },
+          mainEntity: {
+            "@type": "Dataset",
+            name: `${displayName} source-backed AI policy change history`,
+            description: summaryText,
+            url: canonical,
+            isAccessibleForFree: true,
+            distribution: {
+              "@type": "DataDownload",
+              name: `${displayName} public university JSON record`,
+              encodingFormat: "application/json",
+              contentUrl: record.publicJsonUrl
+            }
+          }
+        }}
+      />
       <section className="entity-header">
         <div className="entity-header__main">
           <p className="entity-header__eyebrow">Change log</p>
           <h1>{displayName}</h1>
           <p className="entity-header__summary">
-            Release-to-release tracker diff history with separate policy-text,
-            newly-extracted claim, evidence, and source snapshot categories.
+            {getEntityHistoryLead(record, releaseRecords.length)}
           </p>
           <div className="entity-header__metadata">
             <StateLabel reviewState={record.reviewState} />
@@ -137,6 +167,12 @@ export default async function ChangeDetailPage({
           <a className="site-action" href={record.publicJsonUrl}>
             Public JSON
           </a>
+          <Link className="site-action" href="/reports/monthly/2026-05">
+            Monthly report
+          </Link>
+          <Link className="site-action" href="/universities">
+            University index
+          </Link>
         </div>
       </section>
 
@@ -146,12 +182,20 @@ export default async function ChangeDetailPage({
             description="Current public record freshness and review state."
             title="Change summary"
           >
-            <p>{getSummaryText(record, locale)}</p>
+            <p>{summaryText}</p>
             <p className="notice-card">
               This page combines all public release diffs for{" "}
               {displayName}. Individual release snapshots remain available from
               their release-specific URLs.
             </p>
+            {!record.diffRows.length ? (
+              <p className="notice-card">
+                No release-to-release policy diff rows are recorded for this
+                university yet. The page still tracks current source-backed
+                claims, official source attributions, review state, source
+                freshness, and public JSON for discovery and citation.
+              </p>
+            ) : null}
             <p className="notice-card">{NO_ADVICE_BOUNDARY}</p>
             <p className="notice-card">
               Newly extracted claims are tracker additions and are not
@@ -365,6 +409,12 @@ export default async function ChangeDetailPage({
                 <Link href={record.universityUrl}>University record</Link>
               </li>
               <li>
+                <Link href="/reports/monthly/2026-05">Monthly report</Link>
+              </li>
+              <li>
+                <Link href="/universities">University index</Link>
+              </li>
+              <li>
                 <a href={record.publicJsonUrl}>Versioned public JSON</a>
               </li>
             </ul>
@@ -452,6 +502,45 @@ function ReleaseOverviewPage({
       </section>
     </main>
   );
+}
+
+function getEntityHistoryMetaDescription(
+  record: ChangeRecord,
+  releaseRecords: ChangeRecord[],
+  locale: SupportedLocale
+): string {
+  const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
+  const checkedText = record.lastCheckedAt
+    ? ` Last checked ${formatDate(record.lastCheckedAt)}.`
+    : "";
+
+  if (releaseRecords.length > 0 && record.diffRows.length > 0) {
+    return `${displayName} AI policy change history with ${releaseRecords.length} public release diff ${pluralize("record", releaseRecords.length)}, ${record.policyTextChanged} policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, source freshness, and public JSON.${checkedText}`;
+  }
+
+  return `${displayName} source-backed AI policy change history with ${record.claimCount} claim ${pluralize("record", record.claimCount)}, ${record.sourceCount} official source ${pluralize("attribution", record.sourceCount)}, review state, source freshness, and public JSON.${checkedText}`;
+}
+
+function getEntityHistoryTitle(
+  displayName: string | undefined,
+  record: ChangeRecord
+): string {
+  if (record.diffRows.length > 0) {
+    return `${displayName} AI Policy Change History | University AI Policy Tracker`;
+  }
+
+  return `${displayName} AI Policy Source History | University AI Policy Tracker`;
+}
+
+function getEntityHistoryLead(
+  record: ChangeRecord,
+  releaseRecordCount: number
+): string {
+  if (record.diffRows.length > 0) {
+    return "Release-to-release tracker diff history with separate policy-text, newly-extracted claim, evidence, and source snapshot categories.";
+  }
+
+  return `Source-backed change history with no release-to-release policy diff rows recorded yet; current claims, official sources, review state, and freshness remain visible across ${releaseRecordCount} public release ${pluralize("record", releaseRecordCount)}.`;
 }
 
 function getSummaryText(record: ChangeRecord, locale: SupportedLocale): string {

@@ -1502,6 +1502,8 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
+  overflow-wrap: anywhere;
   padding: 18px;
 }
 
@@ -1781,6 +1783,7 @@ h3 {
 .review-state-list {
   display: grid;
   gap: 14px;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .entity-record-main,

@@ -114,9 +114,9 @@ const en = {
     ]
   },
   universities: {
-    title: "Universities | University AI Policy Tracker",
+    title: "University AI Policy Database: Source-Backed GenAI Records",
     description:
-      "Browse source-backed university AI policy records with ranks, review states, claim counts, official source attributions, and public JSON links.",
+      "Browse university AI policy, ChatGPT, and GenAI rule records with official sources, review state, last checked dates, and public JSON links.",
     kicker: "Evidence records",
     heading: "Browse source-backed university AI policy records",
     lead:
@@ -127,6 +127,12 @@ const en = {
     officialSourceAttributions: "official source attributions",
     rankedRecords: (ranking: string) => `${ranking} ranked records`,
     answersLabel: "University index answers",
+    priorityTitle: "Priority university AI policy records",
+    priorityLead:
+      "High-impression records from Search Console, linked with their canonical policy pages, change history, official-source counts, and public JSON.",
+    priorityReportsLink: "Monthly report",
+    priorityChangeLink: "Change history",
+    priorityRecordLink: "Policy record",
     indexTitle: "Index",
     indexLead:
       "Ranking filters are discovery aids; policy claims still come from official sources.",

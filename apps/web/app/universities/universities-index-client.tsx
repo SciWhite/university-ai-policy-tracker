@@ -26,6 +26,7 @@ import type {
 interface UniversitiesIndexClientProps {
   initialRecords: StaticUniversityIndexRecord[];
   locale: SupportedLocale;
+  priorityRecords: StaticUniversityIndexRecord[];
   rankingCounts: Record<string, number>;
   rankingSystems: UniversityIndexRankingSystem[];
   totalClaimCount: number;
@@ -55,6 +56,7 @@ const fullIndexPath = "/api/public/v1/university-index.json";
 export function UniversitiesIndexClient({
   initialRecords,
   locale,
+  priorityRecords,
   rankingCounts,
   rankingSystems,
   totalClaimCount,
@@ -178,6 +180,62 @@ export function UniversitiesIndexClient({
           </article>
         ))}
       </section>
+
+      {priorityRecords.length ? (
+        <section className="section" aria-labelledby="priority-university-records">
+          <div className="section-heading">
+            <h2 id="priority-university-records">{copy.priorityTitle}</h2>
+            <p>{copy.priorityLead}</p>
+          </div>
+          <div className="source-attribution-list">
+            {priorityRecords.map((record) => {
+              const displayName = getLocalizedInstitutionName(
+                record.slug,
+                record.name,
+                locale
+              );
+
+              return (
+                <article className="source-attribution-row" key={record.slug}>
+                  <div>
+                    <h3>{displayName}</h3>
+                    <p>
+                      {record.claimCount} source-backed AI policy{" "}
+                      {record.claimCount === 1 ? "claim" : "claims"} from{" "}
+                      {record.sourceCount} official source{" "}
+                      {record.sourceCount === 1 ? "attribution" : "attributions"}.
+                    </p>
+                    <div className="tag-row">
+                      {record.reviewState ? (
+                        <StateLabel reviewState={record.reviewState} />
+                      ) : null}
+                      <MetaLabel label={copy.claims}>{record.claimCount}</MetaLabel>
+                      <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
+                      {record.lastCheckedAt ? (
+                        <MetaLabel label={copy.lastChecked}>
+                          {formatDate(record.lastCheckedAt)}
+                        </MetaLabel>
+                      ) : null}
+                    </div>
+                  </div>
+                  <div className="tag-row">
+                    <Link href={`/universities/${record.slug}`}>
+                      {copy.priorityRecordLink}
+                    </Link>
+                    <Link href={`/changes/${record.slug}`}>
+                      {copy.priorityChangeLink}
+                    </Link>
+                    <Link href="/reports/monthly/2026-05">
+                      {copy.priorityReportsLink}
+                    </Link>
+                    <a href={record.publicJsonUrl}>{copy.publicJson}</a>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      ) : null}
 
       <section
         className="section"

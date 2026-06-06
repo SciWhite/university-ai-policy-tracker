@@ -45,6 +45,7 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
   const copy = getPageCopy(locale).universities;
   const records = await getStaticUniversityIndexRecords();
   const initialRecords = getInitialUniversityIndexRecords(records);
+  const priorityRecords = getPriorityUniversityIndexRecords(records);
   const totalClaimCount = records.reduce(
     (total, record) => total + record.claimCount,
     0
@@ -78,7 +79,7 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
           mainEntity: {
             "@type": "ItemList",
             numberOfItems: records.length,
-            itemListElement: records.slice(0, 20).map((record, index) => ({
+            itemListElement: initialRecords.slice(0, 20).map((record, index) => ({
               "@type": "ListItem",
               position: index + 1,
               name: getLocalizedInstitutionName(record.slug, record.name, locale),
@@ -90,6 +91,7 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
       <UniversitiesIndexClient
         initialRecords={initialRecords}
         locale={locale}
+        priorityRecords={priorityRecords}
         rankingCounts={rankingCounts}
         rankingSystems={universityIndexRankingSystems}
         totalClaimCount={totalClaimCount}
@@ -101,10 +103,23 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
   );
 }
 
+const priorityUniversitySlugs = [
+  "edinburgh",
+  "university-of-oslo",
+  "university-of-leeds",
+  "university-of-technology-sydney",
+  "university-of-queensland",
+  "university-of-waterloo"
+] as const;
+
+const priorityUniversitySlugSet = new Set<string>(priorityUniversitySlugs);
+
 function getInitialUniversityIndexRecords(
   records: Awaited<ReturnType<typeof getStaticUniversityIndexRecords>>
 ) {
-  return records
+  const priorityRecords = getPriorityUniversityIndexRecords(records);
+  const priorityRecordSlugs = new Set(priorityRecords.map((record) => record.slug));
+  const rankedRecords = records
     .slice()
     .sort((left, right) => {
       const leftRank = left.rankings.find((ranking) => ranking.systemId === "qs");
@@ -118,5 +133,24 @@ function getInitialUniversityIndexRecords(
         left.name.localeCompare(right.name)
       );
     })
-    .slice(0, 100);
+    .filter((record) => !priorityRecordSlugs.has(record.slug));
+
+  return [...priorityRecords, ...rankedRecords].slice(0, 100);
+}
+
+function getPriorityUniversityIndexRecords(
+  records: Awaited<ReturnType<typeof getStaticUniversityIndexRecords>>
+) {
+  return records
+    .filter((record) => priorityUniversitySlugSet.has(record.slug))
+    .sort((left, right) => {
+      const leftIndex = priorityUniversitySlugs.indexOf(
+        left.slug as (typeof priorityUniversitySlugs)[number]
+      );
+      const rightIndex = priorityUniversitySlugs.indexOf(
+        right.slug as (typeof priorityUniversitySlugs)[number]
+      );
+
+      return leftIndex - rightIndex;
+    });
 }
