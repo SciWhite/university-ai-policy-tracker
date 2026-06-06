@@ -26,6 +26,7 @@ const primaryTabs = [
   { labelKey: "universities", href: "/universities" },
   { labelKey: "analysis", href: "/analysis" },
   { labelKey: "changes", href: "/changes" },
+  { labelKey: "reports", href: "/reports" },
   { labelKey: "datasets", href: "/datasets" },
   { labelKey: "methodology", href: "/methodology" },
   { labelKey: "contribute", href: "/contribute" }
