@@ -202,6 +202,11 @@ export function buildPublicApiIndexData(
         "Recent public source checks and changed institution records."
       ),
       endpoint(
+        "Changes index",
+        `/api/public/${PUBLIC_API_VERSION}/changes/index.json`,
+        "University-level change timeline index with filters, source-health summaries, and versioned public JSON links."
+      ),
+      endpoint(
         "Latest release diff",
         `/api/public/${PUBLIC_API_VERSION}/changes/latest.json`,
         "Latest release-to-release claim/evidence diff with added, removed, modified, and source snapshot change rows."

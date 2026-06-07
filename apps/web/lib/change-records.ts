@@ -1,9 +1,15 @@
 import {
+  OFFICIAL_SOURCE_RIGHTS_CAVEAT,
   PUBLIC_API_VERSION,
+  TRACKER_METADATA_LICENSE,
+  NO_ADVICE_BOUNDARY,
+  policyClaimTypeSchema,
   type ClaimReviewState,
   type PolicyClaim,
+  type PolicyClaimType,
   type PublicEntitySummary,
-  type SourceAttribution
+  type SourceAttribution,
+  buildPublicApiCitation
 } from "@uapt/shared";
 import { getStagedPublicDataset } from "./staged-public-data";
 import {
@@ -13,6 +19,7 @@ import {
   type ReleaseDiffRow,
   type ReleaseEntityDiff
 } from "./release-diffs";
+import { getPolicyThemeLabel } from "./policy-theme-labels";
 import { getSiteBaseUrl } from "./site-url";
 
 export interface DiffPreviewLine {
@@ -79,6 +86,110 @@ export interface ChangeRecord {
   trackerRemovedClaims: number;
   unchanged: number;
   universityUrl: string;
+  firstSeenAt?: string;
+  releaseCount: number;
+}
+
+export interface ChangeIndexThemeFacet {
+  count: number;
+  label: string;
+  theme: PolicyClaimType;
+}
+
+export interface ChangeIndexReviewFacet {
+  count: number;
+  label: string;
+  reviewState: ClaimReviewState;
+}
+
+export type ChangeIndexSourceHealthSeverity =
+  | "healthy"
+  | "warning"
+  | "error"
+  | "unknown";
+
+export interface ChangeIndexSourceHealthFacet {
+  count: number;
+  label: string;
+  severity: ChangeIndexSourceHealthSeverity;
+}
+
+export interface ChangeIndexPrimaryDiff {
+  changeCategory: string;
+  changeExplanation: string;
+  changeType: string;
+  newClaimText?: string;
+  newClaimType?: string;
+  oldClaimText?: string;
+  oldClaimType?: string;
+  previousReleaseId?: string;
+  releaseId: string;
+}
+
+export interface ChangeIndexRecord {
+  canonicalUrl: string;
+  changeUrl: string;
+  claimCount: number;
+  claimMetadataChanged: number;
+  confidence?: number;
+  evidenceChanged: number;
+  firstSeenAt?: string;
+  lastChangedAt?: string;
+  lastCheckedAt?: string;
+  name: string;
+  newlyExtractedClaims: number;
+  reviewedClaimCount: number;
+  policyTextChanged: number;
+  primaryDiff?: ChangeIndexPrimaryDiff;
+  primaryTheme?: PolicyClaimType;
+  publicJsonUrl: string;
+  releaseCount: number;
+  releaseId?: string;
+  removed: number;
+  reviewState: ClaimReviewState;
+  slug: string;
+  sourceAdded: number;
+  sourceCount: number;
+  sourceHealth: ChangeIndexSourceHealthSeverity;
+  sourceHealthLabel: string;
+  sourceRemoved: number;
+  sourceSnapshotChanged: number;
+  sourceTextChanged: number;
+  summary: string;
+  themes: ChangeIndexThemeFacet[];
+  trackerRemovedClaims: number;
+  universityUrl: string;
+}
+
+export interface ChangeIndexData {
+  apiVersion: typeof PUBLIC_API_VERSION;
+  canonicalUrl: string;
+  citation: ReturnType<typeof buildPublicApiCitation>;
+  data: {
+    facets: {
+      reviewStates: ChangeIndexReviewFacet[];
+      sourceHealth: ChangeIndexSourceHealthFacet[];
+      themes: ChangeIndexThemeFacet[];
+    };
+    records: ChangeIndexRecord[];
+    summary: {
+      claimCount: number;
+      newlyExtractedClaimsCount: number;
+      policyTextChangedCount: number;
+      recordCount: number;
+      reviewedClaimCount: number;
+      sourceHealthIssueCount: number;
+      sourceSnapshotChangedCount: number;
+      sourceTextChangedCount: number;
+    };
+  };
+  generatedAt: string;
+  license: typeof TRACKER_METADATA_LICENSE;
+  limitations: string[];
+  publicJsonUrl: string;
+  sourcePolicy: typeof OFFICIAL_SOURCE_RIGHTS_CAVEAT;
+  sourceRightsPolicy: typeof OFFICIAL_SOURCE_RIGHTS_CAVEAT;
+  trackerMetadataLicense: typeof TRACKER_METADATA_LICENSE;
 }
 
 export interface EntityChangeHistory {
@@ -88,11 +199,22 @@ export interface EntityChangeHistory {
 
 let aggregateChangeRecordsPromise: Promise<ChangeRecord[]> | undefined;
 let allReleaseChangedRecordsPromise: Promise<ChangeRecord[]> | undefined;
+let changeIndexPromise: Promise<ChangeIndexData> | undefined;
 
 export async function getChangeRecords(): Promise<ChangeRecord[]> {
   aggregateChangeRecordsPromise ??= buildAggregatedChangeRecords();
 
   return aggregateChangeRecordsPromise;
+}
+
+export async function getChangeIndexData(): Promise<ChangeIndexData> {
+  changeIndexPromise ??= buildChangeIndexData();
+
+  return changeIndexPromise;
+}
+
+export async function getChangeIndexResponse(): Promise<ChangeIndexData> {
+  return getChangeIndexData();
 }
 
 async function buildAggregatedChangeRecords(): Promise<ChangeRecord[]> {
@@ -181,6 +303,218 @@ async function buildAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
   return records.sort(compareFreshness);
 }
 
+async function buildChangeIndexData(): Promise<ChangeIndexData> {
+  const records = await getChangeRecords();
+  const indexRecords = records.map(buildChangeIndexRecord);
+  const facets = buildChangeIndexFacets(indexRecords);
+  const summary = buildChangeIndexSummary(indexRecords);
+  const canonicalUrl = `${getSiteBaseUrl()}/changes`;
+  const publicJsonUrl = `${getSiteBaseUrl()}/api/public/${PUBLIC_API_VERSION}/changes/index.json`;
+
+  return {
+    apiVersion: PUBLIC_API_VERSION,
+    canonicalUrl,
+    citation: buildPublicApiCitation({
+      citationTitle: "University AI Policy Tracker changes index",
+      canonicalUrl,
+      publicJsonUrl,
+      suggestedCitation:
+        "University AI Policy Tracker changes index. University AI Policy Tracker. Version v1. " +
+        canonicalUrl
+    }),
+    data: {
+      facets,
+      records: indexRecords,
+      summary
+    },
+    generatedAt: new Date().toISOString(),
+    license: TRACKER_METADATA_LICENSE,
+    limitations: [
+      "Change records are tracker metadata and do not publish official source text.",
+      "Newly extracted claims and source snapshot changes are not by themselves policy conclusions.",
+      NO_ADVICE_BOUNDARY
+    ],
+    publicJsonUrl,
+    sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    trackerMetadataLicense: TRACKER_METADATA_LICENSE
+  };
+}
+
+function buildChangeIndexRecord(record: ChangeRecord): ChangeIndexRecord {
+  const themes = countThemes(record);
+  const sourceHealth = summarizeRecordSourceHealth(record);
+
+  return {
+    canonicalUrl: record.canonicalUrl,
+    changeUrl: record.changeUrl,
+    claimCount: record.claimCount,
+    claimMetadataChanged: record.claimMetadataChanged,
+    confidence: record.confidence,
+    evidenceChanged: record.evidenceChanged,
+    firstSeenAt: record.firstSeenAt,
+    lastChangedAt: record.lastChangedAt,
+    lastCheckedAt: record.lastCheckedAt,
+    name: record.name,
+    newlyExtractedClaims: record.newlyExtractedClaims,
+    reviewedClaimCount: record.reviewedClaimCount,
+    policyTextChanged: record.policyTextChanged,
+    primaryDiff: pickPrimaryDiff(record),
+    primaryTheme: themes[0]?.theme,
+    publicJsonUrl: record.publicJsonUrl,
+    releaseCount: record.releaseCount,
+    releaseId: record.releaseId,
+    removed: record.removed,
+    reviewState: record.reviewState,
+    slug: record.slug,
+    sourceAdded: record.sourceAdded,
+    sourceCount: record.sourceCount,
+    sourceHealth: sourceHealth.severity,
+    sourceHealthLabel: sourceHealth.label,
+    sourceRemoved: record.sourceRemoved,
+    sourceSnapshotChanged: record.sourceSnapshotChanged,
+    sourceTextChanged: record.sourceTextChanged,
+    summary: record.summary,
+    themes,
+    trackerRemovedClaims: record.trackerRemovedClaims,
+    universityUrl: record.universityUrl
+  };
+}
+
+function buildChangeIndexFacets(records: ChangeIndexRecord[]) {
+  const reviewStates = new Map<ClaimReviewState, number>();
+  const sourceHealth = new Map<ChangeIndexSourceHealthSeverity, number>();
+  const themes = new Map<PolicyClaimType, number>();
+
+  for (const record of records) {
+    reviewStates.set(
+      record.reviewState,
+      (reviewStates.get(record.reviewState) ?? 0) + 1
+    );
+    sourceHealth.set(
+      record.sourceHealth,
+      (sourceHealth.get(record.sourceHealth) ?? 0) + 1
+    );
+
+    for (const theme of record.themes) {
+      themes.set(theme.theme, (themes.get(theme.theme) ?? 0) + 1);
+    }
+  }
+
+  return {
+    reviewStates: Array.from(reviewStates.entries())
+      .map(([reviewState, count]) => ({
+        reviewState,
+        count,
+        label: formatReviewState(reviewState)
+      }))
+      .sort((left, right) => right.count - left.count || left.label.localeCompare(right.label)),
+    sourceHealth: Array.from(sourceHealth.entries())
+      .map(([severity, count]) => ({
+        severity,
+        count,
+        label: formatSourceHealthSeverity(severity)
+      }))
+      .sort((left, right) => right.count - left.count || left.label.localeCompare(right.label)),
+    themes: Array.from(themes.entries())
+      .map(([theme, count]) => ({
+        theme,
+        count,
+        label: getPolicyThemeLabel(theme)
+      }))
+      .sort((left, right) => right.count - left.count || left.label.localeCompare(right.label))
+  };
+}
+
+function buildChangeIndexSummary(records: ChangeIndexRecord[]) {
+  return {
+    claimCount: records.reduce((total, record) => total + record.claimCount, 0),
+    newlyExtractedClaimsCount: records.reduce(
+      (total, record) => total + record.newlyExtractedClaims,
+      0
+    ),
+    policyTextChangedCount: records.reduce(
+      (total, record) => total + record.policyTextChanged,
+      0
+    ),
+    recordCount: records.length,
+    reviewedClaimCount: records.reduce(
+      (total, record) => total + record.reviewedClaimCount,
+      0
+    ),
+    sourceHealthIssueCount: records.filter(
+      (record) => record.sourceHealth !== "healthy"
+    ).length,
+    sourceSnapshotChangedCount: records.reduce(
+      (total, record) => total + record.sourceSnapshotChanged,
+      0
+    ),
+    sourceTextChangedCount: records.reduce(
+      (total, record) => total + record.sourceTextChanged,
+      0
+    )
+  };
+}
+
+function countThemes(record: ChangeRecord): ChangeIndexThemeFacet[] {
+  const themeCounts = new Map<PolicyClaimType, number>();
+
+  for (const claim of record.claimChanges) {
+    const parsedTheme = policyClaimTypeSchema.safeParse(claim.claimType);
+    const theme = parsedTheme.success ? parsedTheme.data : "other";
+    themeCounts.set(theme, (themeCounts.get(theme) ?? 0) + 1);
+  }
+
+  return Array.from(themeCounts.entries())
+    .map(([theme, count]) => ({
+      theme,
+      count,
+      label: getPolicyThemeLabel(theme)
+    }))
+    .sort((left, right) => right.count - left.count || left.label.localeCompare(right.label));
+}
+
+function summarizeRecordSourceHealth(
+  record: ChangeRecord
+): { label: string; severity: ChangeIndexSourceHealthSeverity } {
+  if (record.sourceRemoved > 0) {
+    return { label: "Source removed", severity: "error" };
+  }
+
+  if (
+    record.sourceSnapshotChanged > 0 ||
+    record.sourceTextChanged > 0 ||
+    record.sourceAdded > 0
+  ) {
+    return { label: "Source changed", severity: "warning" };
+  }
+
+  if (record.sourceCount > 0) {
+    return { label: "Healthy", severity: "healthy" };
+  }
+
+  return { label: "Unknown", severity: "unknown" };
+}
+
+function pickPrimaryDiff(record: ChangeRecord): ChangeIndexPrimaryDiff | undefined {
+  const preferredRow =
+    record.diffRows.find((row) => row.oldClaim || row.newClaim) ?? record.diffRows[0];
+
+  if (!preferredRow) return undefined;
+
+  return {
+    changeCategory: preferredRow.changeCategory,
+    changeExplanation: preferredRow.changeExplanation,
+    changeType: preferredRow.changeType,
+    newClaimText: preferredRow.newClaim?.claimText,
+    newClaimType: preferredRow.newClaim?.claimType,
+    oldClaimText: preferredRow.oldClaim?.claimText,
+    oldClaimType: preferredRow.oldClaim?.claimType,
+    previousReleaseId: preferredRow.previousReleaseId,
+    releaseId: preferredRow.releaseId
+  };
+}
+
 function buildChangeRecord(
   summary: PublicEntitySummary,
   diff?: ReleaseEntityDiff
@@ -235,7 +569,9 @@ function buildChangeRecord(
     claimChanges,
     diffLines: buildDiffPreview(summary, diff),
     trackerRemovedClaims: semanticCounts.trackerRemovedClaims,
-    unchanged: diff?.unchanged ?? 0
+    unchanged: diff?.unchanged ?? 0,
+    firstSeenAt: diff?.lastChangedAt ?? diff?.lastCheckedAt ?? summary.lastCheckedAt,
+    releaseCount: diff ? 1 : 0
   };
 }
 
@@ -275,7 +611,9 @@ function buildDiffOnlyChangeRecord(diff: ReleaseEntityDiff): ChangeRecord {
     summary: "",
     trackerRemovedClaims: semanticCounts.trackerRemovedClaims,
     universityUrl: `/universities/${diff.entitySlug}`,
-    unchanged: diff.unchanged
+    unchanged: diff.unchanged,
+    firstSeenAt: diff.lastChangedAt ?? diff.lastCheckedAt,
+    releaseCount: 1
   };
 }
 
@@ -295,6 +633,11 @@ function buildAggregateChangeRecord(
   return {
     ...record,
     changeUrl: `/changes/${summary.entity.slug}`,
+    firstSeenAt:
+      earliestIsoValue(
+        releaseRecords.map((item) => item.lastChangedAt ?? item.lastCheckedAt)
+      ) ?? record.firstSeenAt,
+    releaseCount: releaseRecords.length,
     lastChangedAt: latestIsoValue(releaseRecords.map((item) => item.lastChangedAt)),
     lastCheckedAt:
       latestIsoValue(releaseRecords.map((item) => item.lastCheckedAt)) ??
@@ -316,6 +659,10 @@ function buildDiffOnlyAggregateChangeRecord(
   return {
     ...buildDiffOnlyChangeRecord(aggregateDiff),
     changeUrl: `/changes/${slug}`,
+    firstSeenAt: earliestIsoValue(
+      releaseRecords.map((item) => item.lastChangedAt ?? item.lastCheckedAt)
+    ),
+    releaseCount: releaseRecords.length,
     lastChangedAt: latestIsoValue(releaseRecords.map((item) => item.lastChangedAt)),
     lastCheckedAt: latestIsoValue(releaseRecords.map((item) => item.lastCheckedAt))
   };
@@ -640,11 +987,47 @@ function latestIsoValue(values: Array<string | undefined>): string | undefined {
     .sort((left, right) => new Date(right).getTime() - new Date(left).getTime())[0];
 }
 
+function earliestIsoValue(values: Array<string | undefined>): string | undefined {
+  return values
+    .filter((value): value is string => Boolean(value))
+    .sort((left, right) => new Date(left).getTime() - new Date(right).getTime())[0];
+}
+
 function getFreshnessTime(
   value: Pick<ChangeRecord, "lastChangedAt" | "lastCheckedAt"> | ClaimChangeRecord
 ): number {
   const iso = value.lastChangedAt ?? value.lastCheckedAt;
   return iso ? new Date(iso).getTime() : 0;
+}
+
+function formatReviewState(reviewState: ClaimReviewState): string {
+  switch (reviewState) {
+    case "agent_reviewed":
+      return "Agent reviewed";
+    case "human_reviewed":
+      return "Human reviewed";
+    case "machine_candidate":
+      return "Machine candidate";
+    case "needs_review":
+      return "Needs review";
+    case "rejected":
+      return "Rejected";
+  }
+}
+
+function formatSourceHealthSeverity(
+  severity: ChangeIndexSourceHealthSeverity
+): string {
+  switch (severity) {
+    case "healthy":
+      return "Healthy";
+    case "warning":
+      return "Warning";
+    case "error":
+      return "Error";
+    case "unknown":
+      return "Unknown";
+  }
 }
 
 function isReviewedClaim(reviewState: string): boolean {

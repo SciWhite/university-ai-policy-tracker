@@ -633,25 +633,49 @@ const en = {
   changes: {
     title: "Recent Changes | University AI Policy Tracker",
     description:
-      "Recent tracker release diffs with newly extracted claims, comparable policy-text changes, source snapshot changes, review states, and versioned public JSON links.",
+      "Searchable university policy change timelines with old/new claim comparisons, source freshness, review states, and versioned public JSON links.",
     kicker: "Changes",
-    heading: "Tracker release changes and source freshness",
+    heading: "University policy change timelines",
     lead:
-      "Release-to-release tracker diffs for public university AI policy records. Newly extracted claims and source snapshot changes are separated from comparable policy-text changes.",
-    summaryLabel: "Recent changes summary",
-    recordsWithDiffRows: "records with tracker diff rows",
+      "Search and compare public university AI policy change records by theme, review state, source health, and release history.",
+    summaryLabel: "Change timeline summary",
+    recordsWithDiffRows: "change records with diff rows",
     policyTextChanges: "comparable policy-text changes",
     newlyExtractedClaims: "newly extracted claims",
     privateSourceTextChanges: "private source text changes",
-    answersLabel: "Change feed answer blocks",
+    answersLabel: "Change timeline answer blocks",
     artifactTitle: "Public changes artifact",
-    artifactDescription: "Versioned feed for records and agents.",
+    artifactDescription: "Versioned timeline for records and agents.",
     recentChangesJson: "Recent changes JSON",
     recentChangesJsonDescription:
       "Recent changed or checked records with canonical URLs, review states, claim counts, and claim evidence where available.",
     latestDiffJson: "Latest release diff JSON",
     latestDiffJsonDescription:
       "Latest release-to-release tracker diff with semantic categories for policy text, extracted claims, evidence, and source snapshots.",
+    indexJson: "Changes index JSON",
+    indexJsonDescription:
+      "Filter metadata and university-level timeline records for the /changes page.",
+    filtersTitle: "Timeline filters",
+    filtersLead:
+      "Filter by university text, policy theme, review state, source health, or sort order.",
+    searchLabel: "Search",
+    searchPlaceholder: "University, claim text, theme, citation...",
+    themeLabel: "Theme",
+    reviewLabel: "Review state",
+    sourceHealthLabel: "Source health",
+    sortLabel: "Sort",
+    applyFilters: "Apply filters",
+    resetFilters: "Reset",
+    allThemes: "All themes",
+    allReviewStates: "All review states",
+    allSourceHealth: "All source health",
+    sortChanged: "Most recently changed",
+    sortChecked: "Most recently checked",
+    sortClaims: "Most claims",
+    sortSources: "Most sources",
+    firstSeen: "First seen",
+    oldClaim: "Old claim",
+    newClaim: "New claim",
     timelineTitle: "Change timeline",
     timelineLead: (current: string, previous: string | undefined, sources: number, records: number) =>
       `Latest release ${current}${previous ? ` compared with ${previous}` : " is the initial tracked release"}. ${sources} source attributions across ${records} records.`,
@@ -670,19 +694,19 @@ const en = {
     boundaryLead: "Freshness signals only",
     answers: [
       {
-        title: "What changed means",
+        title: "What the timeline shows",
         text:
-          "A release diff compares the current promoted claim/evidence snapshot with the previous public release. A newly extracted claim is not necessarily newly published by the university."
+          "Each record combines the visible university page, public JSON, change history, and source freshness so search users can jump from a query to a citation-ready record."
       },
       {
-        title: "What source hash means",
+        title: "How to read claims",
         text:
-          "A changed snapshot hash means the same source URL produced different tracker content. It may reflect policy text, page layout, navigation, or metadata."
+          "Old and new claims show the latest tracked policy comparison. A newly extracted claim or source snapshot change is a tracker event, not automatically a policy conclusion."
       },
       {
-        title: "How agents should use it",
+        title: "How to reuse it",
         text:
-          "Use semantic fields such as policyTextChanged, newlyExtractedClaims, and sourceSnapshotChanged before describing a record as a policy update."
+          "Use the page citation block plus the linked JSON endpoints. The theme, review, and source-health filters are discovery aids, not policy judgments."
       }
     ],
     summary: (name: string, claims: number, sources: number, changedDate: string | undefined, diffRows: number, policy: number, extracted: number, snapshot: number, sourceText: number) =>

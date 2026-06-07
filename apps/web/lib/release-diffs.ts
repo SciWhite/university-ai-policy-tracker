@@ -219,21 +219,32 @@ type PrivateSourceTextDiffIndex = Map<string, PrivateSourceTextDiffRow>;
 
 const FUZZY_MATCH_THRESHOLD = 0.82;
 
+let knownReleaseManifestsPromise: Promise<PublicReleaseManifest[]> | undefined;
+const releaseDiffPromises = new Map<string, Promise<ReleaseDiff | undefined>>();
+const manifestDatasetPromises = new Map<string, ReturnType<typeof getStagedPublicDataset>>();
+const privateSourceTextDiffPromises = new Map<
+  string,
+  Promise<PrivateSourceTextDiffIndex>
+>();
+
 export async function getLatestReleaseDiff(): Promise<ReleaseDiff> {
   const currentManifest = await getRequiredCurrentManifest();
+  const diff = await getReleaseDiff(currentManifest.releaseId);
+  if (!diff) throw new Error(`Unknown release: ${currentManifest.releaseId}`);
 
-  return buildReleaseDiff(currentManifest.releaseId);
+  return diff;
 }
 
 export async function getReleaseDiff(
   releaseId: string
 ): Promise<ReleaseDiff | undefined> {
-  const manifests = await getKnownReleaseManifests();
-  const manifest = manifests.find((item) => item.releaseId === releaseId);
+  const cached = releaseDiffPromises.get(releaseId);
+  if (cached) return cached;
 
-  if (!manifest) return undefined;
+  const promise = buildCachedReleaseDiff(releaseId);
+  releaseDiffPromises.set(releaseId, promise);
 
-  return buildReleaseDiff(releaseId);
+  return promise;
 }
 
 export async function getLatestEntityReleaseDiff(
@@ -373,6 +384,17 @@ async function buildReleaseDiff(releaseId: string): Promise<ReleaseDiff> {
     sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
     sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT
   };
+}
+
+async function buildCachedReleaseDiff(
+  releaseId: string
+): Promise<ReleaseDiff | undefined> {
+  const manifests = await getKnownReleaseManifests();
+  const manifest = manifests.find((item) => item.releaseId === releaseId);
+
+  if (!manifest) return undefined;
+
+  return buildReleaseDiff(releaseId);
 }
 
 function buildEntityDiff(
@@ -867,7 +889,13 @@ async function getDatasetForManifest(manifest: PublicReleaseManifest) {
   const current = await getCurrentPublicReleaseManifest();
   if (current?.releaseId === manifest.releaseId) return getStagedPublicDataset();
 
-  return getStagedPublicDatasetForManifest(manifest);
+  const cached = manifestDatasetPromises.get(manifest.releaseId);
+  if (cached) return cached;
+
+  const promise = getStagedPublicDatasetForManifest(manifest);
+  manifestDatasetPromises.set(manifest.releaseId, promise);
+
+  return promise;
 }
 
 async function getRequiredCurrentManifest(): Promise<PublicReleaseManifest> {
@@ -900,6 +928,12 @@ async function getPreviousReleaseManifest(
 }
 
 async function getKnownReleaseManifests(): Promise<PublicReleaseManifest[]> {
+  knownReleaseManifestsPromise ??= buildKnownReleaseManifests();
+
+  return knownReleaseManifestsPromise;
+}
+
+async function buildKnownReleaseManifests(): Promise<PublicReleaseManifest[]> {
   const current = await getRequiredCurrentManifest();
   const repoRoot = await findRepoRoot();
   const historyRoot = path.join(repoRoot, "data", "public-releases", "history");
@@ -930,6 +964,23 @@ async function getKnownReleaseManifests(): Promise<PublicReleaseManifest[]> {
 }
 
 async function getPrivateSourceTextDiffIndex(
+  previousReleaseId: string,
+  currentReleaseId: string
+): Promise<PrivateSourceTextDiffIndex> {
+  const cacheKey = `${previousReleaseId}__${currentReleaseId}`;
+  const cached = privateSourceTextDiffPromises.get(cacheKey);
+  if (cached) return cached;
+
+  const promise = buildPrivateSourceTextDiffIndex(
+    previousReleaseId,
+    currentReleaseId
+  );
+  privateSourceTextDiffPromises.set(cacheKey, promise);
+
+  return promise;
+}
+
+async function buildPrivateSourceTextDiffIndex(
   previousReleaseId: string,
   currentReleaseId: string
 ): Promise<PrivateSourceTextDiffIndex> {

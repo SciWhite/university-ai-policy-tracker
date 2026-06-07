@@ -2265,6 +2265,39 @@ ol.timeline-list {
   text-transform: uppercase;
 }
 
+.change-claim-pair {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.change-claim-pair__item {
+  background: var(--color-canvas-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 10px;
+}
+
+.change-claim-pair__label {
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.change-claim-pair__text {
+  color: var(--color-text);
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
 @media (min-width: 720px) {
   h1 {
     font-size: 44px;
@@ -2474,6 +2507,10 @@ ol.timeline-list {
 
 @media (max-width: 560px) {
   .university-filter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .change-claim-pair {
     grid-template-columns: 1fr;
   }
 }
