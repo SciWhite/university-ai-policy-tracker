@@ -91,7 +91,6 @@ export default async function ChangesPage({ params, searchParams }: ChangesPageP
   const visibleSummary = summarizeRecords(filteredRecords);
   const activeFilterSummary = buildActiveFilterSummary(
     filters,
-    copy,
     index,
     filteredRecords.length
   );
@@ -127,7 +126,6 @@ export default async function ChangesPage({ params, searchParams }: ChangesPageP
       <section className="hero">
         <p className="kicker">{copy.kicker}</p>
         <h1>{copy.heading}</h1>
-        <p className="lead">{copy.lead}</p>
       </section>
 
       <section className="metrics-grid" aria-label={copy.summaryLabel}>
@@ -147,15 +145,6 @@ export default async function ChangesPage({ params, searchParams }: ChangesPageP
           <span>{visibleSummary.sourceHealthIssueCount}</span>
           <p>{copy.sourceHealthLabel}</p>
         </div>
-      </section>
-
-      <section className="answer-strip" aria-label={copy.answersLabel}>
-        {copy.answers.map((answer) => (
-          <article className="answer-card" key={answer.title}>
-            <h2>{answer.title}</h2>
-            <p>{answer.text}</p>
-          </article>
-        ))}
       </section>
 
       <ReferenceBox
@@ -198,7 +187,6 @@ export default async function ChangesPage({ params, searchParams }: ChangesPageP
       <section className="section">
         <div className="section-heading">
           <h2>{copy.filtersTitle}</h2>
-          <p>{copy.filtersLead}</p>
         </div>
 
         <form
@@ -521,7 +509,6 @@ function summarizeRecords(records: ChangeIndexRecord[]) {
 
 function buildActiveFilterSummary(
   filters: ParsedChangeFilters,
-  copy: ReturnType<typeof getPageCopy>["changes"],
   index: Awaited<ReturnType<typeof getChangeIndexData>>,
   visibleRecordCount: number
 ): string {
@@ -536,7 +523,7 @@ function buildActiveFilterSummary(
 
   return parts.length
     ? `Showing ${visibleRecordCount} of ${index.data.summary.recordCount} records filtered by ${parts.join(", ")}.`
-    : `Showing ${index.data.records.length} records. ${copy.filtersLead}`;
+    : `Showing ${index.data.records.length} records.`;
 }
 
 function buildRecordSummary(record: ChangeIndexRecord, locale: SupportedLocale): string {
