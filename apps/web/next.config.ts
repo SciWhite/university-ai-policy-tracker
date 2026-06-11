@@ -1,10 +1,18 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const publicDataTraceFiles = [".runtime-data/**/*"];
+const appRoot = path.dirname(fileURLToPath(import.meta.url));
+const workspaceRoot = path.resolve(appRoot, "../..");
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: workspaceRoot
+  },
   transpilePackages: ["@uapt/shared"],
+  outputFileTracingRoot: workspaceRoot,
   outputFileTracingIncludes: {
     "/[locale]": publicDataTraceFiles,
     "/[locale]/analysis": publicDataTraceFiles,
