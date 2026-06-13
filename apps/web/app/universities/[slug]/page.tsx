@@ -15,11 +15,11 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { ReferenceTabs } from "@/components/reference-tabs";
 import { StateLabel } from "@/components/state-label";
+import { getSourceDomain } from "@/lib/analytics-events";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getPolicyAnalysisProfileBySlug } from "@/lib/policy-analysis";
-import { getAnalysisPageQualityApiPath } from "@/lib/policy-analysis-pages";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 interface UniversityPageProps {
@@ -44,13 +44,8 @@ const recordTabs = [
   { label: "Citation", href: "#citation" }
 ] as const;
 
-export async function generateStaticParams() {
-  const universities = await getCatalogUniversities();
-
-  return universities.map((university) => ({
-    slug: university.slug
-  }));
-}
+export const dynamicParams = true;
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
@@ -103,7 +98,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     locale
   );
   const jsonUrl = getPublicJsonUrl(slug);
-  const analysisPageQualityPath = getAnalysisPageQualityApiPath();
   const publicJsonUrl =
     publicSummary.apiUrl ?? resolveUrl(jsonUrl, publicSummary.canonicalUrl);
   const publicJsonPath = new URL(publicJsonUrl).pathname;
@@ -128,29 +122,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     summary: publicSummary,
     totalClaimCount: publicSummary.claims.length
   });
-  const policySignals = buildPolicySignals(publicSummary.claims);
   const sourceLanguages = getSourceLanguages(publicSummary.claims);
-  const recordLead = buildRecordLead({
-    candidateClaimCount: candidateClaims.length,
-    displayName,
-    officialSourceCount: publicSummary.officialSources.length,
-    reviewedClaimCount: reviewedClaims.length,
-    summary: publicSummary,
-    totalClaimCount: publicSummary.claims.length
-  });
-  const shortAnswer = buildUniversityShortAnswer({
-    candidateClaimCount: candidateClaims.length,
-    displayName,
-    officialSourceCount: publicSummary.officialSources.length,
-    reviewedClaimCount: reviewedClaims.length,
-    summary: publicSummary,
-    totalClaimCount: publicSummary.claims.length
-  });
-  const prioritySearchContext = buildPrioritySearchContext({
-    displayName,
-    publicSummary,
-    slug
-  });
 
   return (
     <main className="page-shell page-shell--wide">
@@ -194,7 +166,12 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
         actions={
           <>
             <div className="entity-header__desktop-actions">
-              <a className="site-action" href={publicJsonUrl}>
+              <a
+                className="site-action"
+                data-analytics-entity-slug={slug}
+                data-analytics-event="record_public_json_click"
+                href={publicJsonUrl}
+              >
                 Public JSON
               </a>
               <Link className="site-action" href={`/changes/${slug}`}>
@@ -210,7 +187,13 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 Dataset access
               </Link>
               {policyAnalysisProfile ? (
-                <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
+                <a
+                  className="site-action"
+                  data-analytics-endpoint-kind="analysis"
+                  data-analytics-entity-slug={slug}
+                  data-analytics-event="api_link_click"
+                  href={policyAnalysisProfile.publicJsonUrl}
+                >
                   Analysis JSON
                 </a>
               ) : null}
@@ -219,7 +202,12 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               </Link>
             </div>
             <div className="entity-header__mobile-actions">
-              <a className="site-action" href={publicJsonUrl}>
+              <a
+                className="site-action"
+                data-analytics-entity-slug={slug}
+                data-analytics-event="record_public_json_click"
+                href={publicJsonUrl}
+              >
                 Public JSON
               </a>
               <Link className="site-action" href="/citation">
@@ -238,7 +226,13 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                     Dataset access
                   </Link>
                   {policyAnalysisProfile ? (
-                    <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
+                    <a
+                      className="site-action"
+                      data-analytics-endpoint-kind="analysis"
+                      data-analytics-entity-slug={slug}
+                      data-analytics-event="api_link_click"
+                      href={policyAnalysisProfile.publicJsonUrl}
+                    >
                       Analysis JSON
                     </a>
                   ) : null}
@@ -271,7 +265,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             ) : null}
           </>
         }
-        summary={recordLead}
         title={displayName}
       />
 
@@ -280,63 +273,15 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
       <div className="entity-record-layout">
         <div className="entity-record-main">
           <ReferenceBox
-            description={`${publicSummary.schemaVersion} public contract`}
             id="overview"
-            title={`${displayName} AI policy short answer`}
+            title="Record status"
           >
-            <p>{shortAnswer}</p>
-            <section
-              aria-labelledby="citation-ready-summary"
-              className="citation-ready-summary"
-            >
-              <h3 id="citation-ready-summary">Citation-ready summary</h3>
-              <p>{citationReadySummary}</p>
-              <div className="tag-row">
-                <MetaLabel label="Claim coverage">
-                  {formatClaimCoverage(reviewedClaims.length, candidateClaims.length)}
-                </MetaLabel>
-                <MetaLabel label="Source language">
-                  {sourceLanguages.length ? sourceLanguages.join(", ") : "Not specified"}
-                </MetaLabel>
-                <MetaLabel label="Public JSON">
-                  <a href={publicJsonUrl}>{publicJsonPath}</a>
-                </MetaLabel>
-              </div>
-            </section>
-            <section aria-labelledby="policy-signals" className="policy-signal-list">
-              <h3 id="policy-signals">Policy signals in this record</h3>
-              <ul className="compact-list">
-                {policySignals.map((signal) => (
-                  <li key={signal}>{signal}</li>
-                ))}
-              </ul>
-            </section>
-            {prioritySearchContext ? (
-              <section
-                aria-labelledby="search-context"
-                className="citation-ready-summary"
-              >
-                <h3 id="search-context">Search context</h3>
-                <p>{prioritySearchContext}</p>
-                <div className="tag-row">
-                  <Link className="site-action" href={`/changes/${slug}`}>
-                    Change history
-                  </Link>
-                  <Link className="site-action" href="/reports/monthly/2026-05">
-                    Monthly report
-                  </Link>
-                  <Link className="site-action" href="/universities">
-                    University index
-                  </Link>
-                  <a className="site-action" href={publicJsonUrl}>
-                    Public JSON
-                  </a>
-                </div>
-              </section>
-            ) : null}
             <div className="tag-row">
               <MetaLabel label="Policy status">{policyStatus}</MetaLabel>
               <StateLabel reviewState={publicSummary.reviewState} />
+              <MetaLabel label="Claim coverage">
+                {formatClaimCoverage(reviewedClaims.length, candidateClaims.length)}
+              </MetaLabel>
               <MetaLabel label="Evidence-backed claims">
                 {publicSummary.claims.length}
               </MetaLabel>
@@ -345,34 +290,34 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               <MetaLabel label="Official sources">
                 {publicSummary.officialSources.length}
               </MetaLabel>
+              <MetaLabel label="Source language">
+                {sourceLanguages.length ? sourceLanguages.join(", ") : "Not specified"}
+              </MetaLabel>
+              <MetaLabel label="Public JSON">
+                <a
+                  data-analytics-entity-slug={slug}
+                  data-analytics-event="record_public_json_click"
+                  href={publicJsonUrl}
+                >
+                  {publicJsonPath}
+                </a>
+              </MetaLabel>
             </div>
-            <p className="muted">
-              This reference record summarizes visible public data only.
-              Official sources and original-language evidence remain canonical;
-              confidence is separate from review state.
-            </p>
-            {candidateClaims.length ? (
-              <p className="notice-card">
-                This record includes candidate or needs-review claims. Candidate
-                claims are evidence-backed workflow records, not final policy
-                conclusions.
-              </p>
-            ) : null}
-            <p className="notice-card">
-              This page is not legal advice, not academic integrity advice, and
-              not an official university statement unless a linked source is the
-              university&apos;s own official page.
-            </p>
           </ReferenceBox>
 
           {policyAnalysisProfile ? (
             <ReferenceBox
-              description="Deterministic source-backed dimensions derived from this record's public claims."
               id="policy-profile"
               title="Policy profile"
               actions={
                 <>
-                  <a className="site-action" href={policyAnalysisProfile.publicJsonUrl}>
+                  <a
+                    className="site-action"
+                    data-analytics-endpoint-kind="analysis"
+                    data-analytics-entity-slug={slug}
+                    data-analytics-event="api_link_click"
+                    href={policyAnalysisProfile.publicJsonUrl}
+                  >
                     Analysis JSON
                   </a>
                   <Link className="site-action" href="/review#analysis-review">
@@ -394,15 +339,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                   {Math.round(policyAnalysisProfile.confidence * 100)}%
                 </MetaLabel>
               </div>
-              <p className="notice-card">
-                Policy profile rows are machine-candidate derived metadata. They
-                are not final policy conclusions; inspect the linked claim
-                evidence before reuse.
-              </p>
-              <p className="muted">
-                Analysis page-quality metadata is available at{" "}
-                <a href={analysisPageQualityPath}>{analysisPageQualityPath}</a>.
-              </p>
               <div className="analysis-dimension-list">
                 {policyAnalysisProfile.dimensions.map((dimension) => (
                   <article
@@ -447,11 +383,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                   </article>
                 ))}
               </div>
-              <p className="muted">
-                Coverage score measures breadth of public, source-backed
-                coverage only. It is not a policy quality, strictness, legal
-                adequacy, safety, or compliance score.
-              </p>
             </ReferenceBox>
           ) : null}
 
@@ -465,6 +396,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 {reviewedClaims.map((claim) => (
                   <ClaimEvidenceCard
                     claim={claim}
+                    entitySlug={slug}
                     id={claim.id ? `claim-${claim.id}` : undefined}
                     key={claim.id ?? claim.claimText}
                     locale={locale}
@@ -485,16 +417,12 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               <h2>Candidate claims</h2>
               <p>{candidateClaims.length} machine or needs-review claim</p>
             </div>
-            <p className="notice-card">
-              Candidate claims are not final policy conclusions. They preserve
-              source URL, source snapshot hash, evidence, confidence, and review
-              state so the record can be audited before review.
-            </p>
             {candidateClaims.length ? (
               <div className="claim-list">
                 {candidateClaims.map((claim) => (
                   <ClaimEvidenceCard
                     claim={claim}
+                    entitySlug={slug}
                     id={claim.id ? `claim-${claim.id}` : undefined}
                     key={claim.id ?? claim.claimText}
                     locale={locale}
@@ -525,7 +453,14 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                     <div>
                       <dt>Source URL</dt>
                       <dd>
-                        <a href={source.sourceUrl}>{source.sourceUrl}</a>
+                        <a
+                          data-analytics-entity-slug={slug}
+                          data-analytics-event="official_source_click"
+                          data-analytics-source-domain={getSourceDomain(source.sourceUrl)}
+                          href={source.sourceUrl}
+                        >
+                          {source.sourceUrl}
+                        </a>
                       </dd>
                     </div>
                     <div>
@@ -539,15 +474,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           </section>
 
           <ReferenceBox
-            description="Source-check timeline and diff-style claim/evidence preview."
             id="changes"
             title="Change log"
           >
-            <p>
-              View the public change record for this university, including
-              source snapshot hashes, claim review states, and a diff-style
-              preview of current source-backed evidence.
-            </p>
             <div className="tag-row">
               {publicSummary.lastCheckedAt ? (
                 <MetaLabel label="Last checked">
@@ -565,17 +494,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             </div>
           </ReferenceBox>
 
-          <ReferenceBox
-            description="Corrections create review tasks and do not directly change this public record."
-            title="Corrections and missing evidence"
-          >
-            <p>
-              If an official source is missing, stale, moved, blocked, or
-              incorrectly summarized, submit a source URL, policy change report,
-              or institution correction for review. Corrections must preserve
-              source URLs, source language, original evidence, review state, and
-              audit history.
-            </p>
+          <ReferenceBox title="Corrections">
             <div className="tag-row">
               <Link className="site-action" href="/contribute">
                 Open contribution paths
@@ -594,11 +513,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
         <EntitySidebar
           canonicalUrl={publicSummary.canonicalUrl}
           citationText={publicSummary.suggestedCitation}
-          license={publicSummary.license}
-          limitations={publicSummary.limitations}
+          entitySlug={slug}
           officialSourceCount={publicSummary.officialSources.length}
           publicJsonUrl={publicJsonUrl}
-          sourceRightsPolicy={publicSummary.sourceRightsPolicy}
         />
       </div>
     </main>
@@ -632,24 +549,6 @@ function formatDate(value: string): string {
   }).format(new Date(value));
 }
 
-interface RecordLeadInput {
-  candidateClaimCount: number;
-  displayName: string;
-  officialSourceCount: number;
-  reviewedClaimCount: number;
-  summary: PublicUniversitySummary;
-  totalClaimCount: number;
-}
-
-const priorityDetailSlugs = new Set([
-  "edinburgh",
-  "university-of-oslo",
-  "university-of-leeds",
-  "university-of-technology-sydney",
-  "university-of-queensland",
-  "university-of-waterloo"
-]);
-
 function buildUniversityMetaDescription({
   displayName,
   summary
@@ -669,77 +568,6 @@ function buildUniversityMetaDescription({
   return `${name} AI policy and ChatGPT/GenAI rule record with ${summary.claims.length} source-backed claims from ${summary.officialSources.length} official sources, review state, evidence snippets, and public JSON.${checkedText}${languageText}`;
 }
 
-function buildPrioritySearchContext({
-  displayName,
-  publicSummary,
-  slug
-}: {
-  displayName: string;
-  publicSummary: PublicUniversitySummary;
-  slug: string;
-}): string | undefined {
-  if (!priorityDetailSlugs.has(slug)) return undefined;
-
-  const searchableText = [
-    publicSummary.summary,
-    ...publicSummary.officialSources.map((source) => source.citationTitle),
-    ...publicSummary.officialSources.map((source) => source.sourceUrl),
-    ...publicSummary.claims.map((claim) => claim.claimText),
-    ...publicSummary.claims.flatMap((claim) =>
-      claim.evidence.map((evidence) => evidence.evidenceSnippet)
-    )
-  ].join(" ");
-  const contexts: string[] = [];
-
-  if (
-    (slug === "edinburgh" || slug === "university-of-leeds") &&
-    /digital education unit/i.test(searchableText)
-  ) {
-    contexts.push(
-      "matching public source text references Digital Education Unit context"
-    );
-  }
-
-  if (slug === "university-of-technology-sydney") {
-    contexts.push("this record is the canonical UTS AI policy entry");
-  }
-
-  if (slug === "university-of-oslo") {
-    contexts.push(
-      "this English canonical record is linked with localized display pages through hreflang"
-    );
-  }
-
-  if (!contexts.length) {
-    contexts.push(
-      "this priority record is monitored for university AI policy search visibility"
-    );
-  }
-
-  return `${displayName} is a priority search record for university AI policy discovery; ${contexts.join(
-    "; "
-  )}. Use the linked change history, monthly report, university index, and public JSON together for citation-safe context.`;
-}
-
-function buildRecordLead({
-  candidateClaimCount,
-  displayName,
-  officialSourceCount,
-  reviewedClaimCount,
-  summary,
-  totalClaimCount
-}: RecordLeadInput): string {
-  const reviewText = formatReviewState(summary.reviewState);
-  const checkedText = summary.lastCheckedAt
-    ? ` Last checked ${formatDate(summary.lastCheckedAt)}.`
-    : "";
-  const candidateText = candidateClaimCount
-    ? ` ${candidateClaimCount} candidate claim${candidateClaimCount === 1 ? "" : "s"} remain non-final.`
-    : "";
-
-  return `${displayName} has ${totalClaimCount} source-backed AI policy claim${totalClaimCount === 1 ? "" : "s"} from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Review state: ${reviewText}; ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}.${candidateText}${checkedText}`;
-}
-
 interface CitationReadySummaryInput {
   candidateClaimCount: number;
   displayName: string;
@@ -748,26 +576,6 @@ interface CitationReadySummaryInput {
   reviewedClaimCount: number;
   summary: PublicUniversitySummary;
   totalClaimCount: number;
-}
-
-function buildUniversityShortAnswer({
-  candidateClaimCount,
-  displayName,
-  officialSourceCount,
-  reviewedClaimCount,
-  summary,
-  totalClaimCount
-}: Omit<CitationReadySummaryInput, "publicJsonUrl">): string {
-  const reviewText = formatReviewState(summary.reviewState);
-  const checkedText = summary.lastCheckedAt
-    ? ` Last checked ${formatDate(summary.lastCheckedAt)}.`
-    : "";
-  const candidateText = candidateClaimCount
-    ? ` ${candidateClaimCount} candidate claim${candidateClaimCount === 1 ? "" : "s"} remain non-final.`
-    : "";
-  const rankingContext = extractRankingContext(summary.summary);
-
-  return `${displayName} has ${totalClaimCount} source-backed AI policy claim${totalClaimCount === 1 ? "" : "s"} from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}. The record review state is ${reviewText}; original-language evidence snippets, source URLs, confidence, and public JSON are preserved for citation.${candidateText}${checkedText}${rankingContext ? ` Discovery context: ${rankingContext}` : ""}`;
 }
 
 function buildCitationReadySummary({
@@ -795,73 +603,6 @@ function buildCitationReadySummary({
     : "";
 
   return `As of this public record, University AI Policy Tracker lists ${displayName} as ${reviewText} AI policy record ${checkedText}${changedText}. The record contains ${totalClaimCount} source-backed claim${totalClaimCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}, from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Original-language evidence snippets and source URLs remain canonical, with public JSON available at ${publicJsonUrl}.${confidenceText}${candidateText} This tracker is not legal advice, not academic integrity advice, and not an official university statement unless the linked source is the university's own official page.`;
-}
-
-function extractRankingContext(summaryText: string): string {
-  const [firstSentence = ""] = summaryText.split(/(?<=\.)\s+/);
-  return /\blisted as\b/i.test(firstSentence) ? firstSentence : "";
-}
-
-function buildPolicySignals(
-  claims: PublicUniversityClaim[]
-): string[] {
-  const claimTexts = claims.map((claim) => claim.claimText).join(" \n ");
-  const signals = new Set<string>();
-
-  for (const claim of claims) {
-    const label = claimTypeLabels[claim.claimType] ?? formatReviewState(claim.claimType);
-    signals.add(`Evidence includes ${label} claims.`);
-  }
-
-  const serviceNames = detectNamedAiServices(claimTexts);
-  if (serviceNames.length) {
-    signals.add(`Named AI services detected in public claims: ${serviceNames.join(", ")}.`);
-  } else {
-    signals.add("No specific AI service name is highlighted by the current public claim text.");
-  }
-
-  if (/\b(disclos|acknowledg|cite|citation|attribution)\w*/i.test(claimTexts)) {
-    signals.add("Disclosure, acknowledgment, citation, or attribution language appears in the public claim text.");
-  }
-
-  if (/\b(exam|assessment|coursework|assignment|homework|syllabus)\w*/i.test(claimTexts)) {
-    signals.add("Teaching, assessment, coursework, or syllabus-related language appears in the public claim text.");
-  }
-
-  if (/\b(privac|personal data|confidential|sensitive|FERPA|GDPR|security)\w*/i.test(claimTexts)) {
-    signals.add("Privacy, sensitive-data, or security language appears in the public claim text.");
-  }
-
-  return Array.from(signals).slice(0, 8);
-}
-
-const claimTypeLabels: Record<string, string> = {
-  academic_integrity: "Academic integrity",
-  ai_tool_treatment: "AI tool treatment",
-  other: "Other policy",
-  privacy: "Privacy",
-  procurement: "Procurement",
-  research: "Research",
-  security_review: "Security review",
-  source_status: "Source status",
-  teaching: "Teaching"
-};
-
-function detectNamedAiServices(text: string): string[] {
-  const serviceMatchers: Array<[string, RegExp]> = [
-    ["ChatGPT", /\bchatgpt\b/i],
-    ["DeepSeek", /\bdeepseek\b/i],
-    ["Microsoft Copilot", /\b(?:microsoft\s+)?copilot\b/i],
-    ["Claude", /\bclaude\b/i],
-    ["Gemini", /\bgemini\b/i],
-    ["Grammarly", /\bgrammarly\b/i],
-    ["DALL-E", /\bdall[-\s]?e\b/i],
-    ["Midjourney", /\bmidjourney\b/i]
-  ];
-
-  return serviceMatchers
-    .filter(([, matcher]) => matcher.test(text))
-    .map(([name]) => name);
 }
 
 function getSourceLanguages(
