@@ -394,7 +394,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 {reviewedClaims.map((claim) => (
                   <ClaimEvidenceCard
                     claim={claim}
-                    entitySlug={slug}
                     id={claim.id ? `claim-${claim.id}` : undefined}
                     key={claim.id ?? claim.claimText}
                     locale={locale}
@@ -420,7 +419,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 {candidateClaims.map((claim) => (
                   <ClaimEvidenceCard
                     claim={claim}
-                    entitySlug={slug}
                     id={claim.id ? `claim-${claim.id}` : undefined}
                     key={claim.id ?? claim.claimText}
                     locale={locale}
