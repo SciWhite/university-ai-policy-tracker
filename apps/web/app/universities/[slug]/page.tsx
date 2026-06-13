@@ -509,7 +509,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
         <EntitySidebar
           canonicalUrl={publicSummary.canonicalUrl}
           citationText={publicSummary.suggestedCitation}
-          entitySlug={slug}
           officialSourceCount={publicSummary.officialSources.length}
           publicJsonUrl={publicJsonUrl}
         />
