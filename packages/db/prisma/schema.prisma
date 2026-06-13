@@ -281,6 +281,46 @@ model CrawlRun {
   @@map("crawl_runs")
 }
 
+model AnalyticsEvent {
+  id                String   @id @default(cuid())
+  eventName         String   @map("event_name")
+  source            String   @default("client")
+  pathname          String
+  visitorId         String?  @map("visitor_id")
+  sessionId         String?  @map("session_id")
+  locale            String?
+  pageType          String?  @map("page_type")
+  entitySlug        String?  @map("entity_slug")
+  queryKind         String?  @map("query_kind")
+  queryLengthBucket String?  @map("query_length_bucket")
+  resultRank        Int?     @map("result_rank")
+  resultSource      String?  @map("result_source")
+  endpointKind      String?  @map("endpoint_kind")
+  targetKind        String?  @map("target_kind")
+  sourceDomain      String?  @map("source_domain")
+  navArea           String?  @map("nav_area")
+  footerGroup       String?  @map("footer_group")
+  exampleKey        String?  @map("example_key")
+  copyTarget        String?  @map("copy_target")
+  fromLocale        String?  @map("from_locale")
+  toLocale          String?  @map("to_locale")
+  fromTheme         String?  @map("from_theme")
+  toTheme           String?  @map("to_theme")
+  limitBucket       String?  @map("limit_bucket")
+  resultCountBucket String?  @map("result_count_bucket")
+  payload           Json?
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  @@index([eventName, createdAt])
+  @@index([pathname, createdAt])
+  @@index([visitorId, createdAt])
+  @@index([sessionId, createdAt])
+  @@index([entitySlug, createdAt])
+  @@index([pageType, createdAt])
+  @@index([source, createdAt])
+  @@map("analytics_events")
+}
+
 model ExtractionCandidate {
   id                String           @id @default(cuid())
   universityId      String           @map("university_id")

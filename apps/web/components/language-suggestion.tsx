@@ -16,6 +16,7 @@ import {
   type SupportedLocale
 } from "@/lib/i18n";
 import { getShellMessages, interpolate } from "@/lib/i18n-messages";
+import { trackResearchEvent } from "@/lib/analytics-client";
 
 const DISMISS_STORAGE_KEY = "uapt-locale-suggestion-dismissed";
 const CHOICE_STORAGE_KEY = "uapt-locale-choice";
@@ -86,7 +87,13 @@ export function LanguageSuggestion() {
   const targetHref = localizeHref(targetPath, suggestedLocale);
   const language = getLocaleLabel(suggestedLocale);
 
-  function dismiss() {
+  function dismiss(source: "stay" | "close") {
+    trackResearchEvent("language_suggestion_dismiss", {
+      locale,
+      suggested_locale: suggestedLocale ?? "unknown",
+      source
+    });
+
     try {
       window.localStorage.setItem(DISMISS_STORAGE_KEY, "1");
     } catch {
@@ -97,6 +104,11 @@ export function LanguageSuggestion() {
 
   function rememberChoice() {
     if (!suggestedLocale) return;
+
+    trackResearchEvent("language_suggestion_accept", {
+      locale,
+      suggested_locale: suggestedLocale
+    });
 
     try {
       window.localStorage.setItem(CHOICE_STORAGE_KEY, suggestedLocale);
@@ -112,13 +124,13 @@ export function LanguageSuggestion() {
       <a href={targetHref} hrefLang={suggestedLocale} onClick={rememberChoice}>
         {interpolate(messages.switchTo, { language })}
       </a>
-      <button onClick={dismiss} type="button">
+      <button onClick={() => dismiss("stay")} type="button">
         {messages.stay}
       </button>
       <button
         aria-label={messages.close}
         className="language-suggestion__close"
-        onClick={dismiss}
+        onClick={() => dismiss("close")}
         type="button"
       >
         x

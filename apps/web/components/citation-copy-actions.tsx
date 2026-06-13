@@ -7,6 +7,7 @@ type CopyTarget = "citation" | "canonicalUrl" | "publicJsonUrl";
 interface CitationCopyActionsProps {
   citationText: string;
   canonicalUrl: string;
+  entitySlug?: string;
   publicJsonUrl: string;
 }
 
@@ -19,6 +20,7 @@ const copyLabels: Record<CopyTarget, string> = {
 export function CitationCopyActions({
   citationText,
   canonicalUrl,
+  entitySlug,
   publicJsonUrl
 }: CitationCopyActionsProps) {
   const [copiedTarget, setCopiedTarget] = useState<CopyTarget | null>(null);
@@ -59,6 +61,9 @@ export function CitationCopyActions({
           <button
             aria-label={`Copy ${label}`}
             className="copy-button"
+            data-analytics-copy-target={item.target}
+            data-analytics-entity-slug={entitySlug}
+            data-analytics-event="citation_copy"
             data-copy-state={copied ? "copied" : "idle"}
             key={item.target}
             onClick={() => void handleCopy(item.target, item.value)}

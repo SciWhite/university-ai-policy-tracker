@@ -4,6 +4,13 @@ export {
   getPrismaClient
 } from "./client.js";
 export {
+  listAnalyticsEvents,
+  recordAnalyticsEvent,
+  type AnalyticsEventRecordInput,
+  type AnalyticsEventRow,
+  type AnalyticsEventSummary
+} from "./analytics.js";
+export {
   getCatalogUniversityBySlug,
   listCatalogSources,
   listCatalogTools,

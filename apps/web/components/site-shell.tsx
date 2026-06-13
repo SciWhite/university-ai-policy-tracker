@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
+import { AnalyticsEventBridge } from "@/components/analytics-event-bridge";
 import { DocumentLink } from "@/components/document-link";
 import { HtmlLangSync } from "@/components/html-lang-sync";
 import { LanguageSuggestion } from "@/components/language-suggestion";
@@ -104,16 +105,31 @@ export function SiteShell({ children, enableInsights }: SiteShellProps) {
         <LanguageSuggestion />
         <div className="site-header__top">
           <div className="site-brand">
-            <DocumentLink className="brand-link" href="/">
+            <DocumentLink
+              className="brand-link"
+              data-analytics-event="nav_click"
+              data-analytics-nav-area="brand"
+              href="/"
+            >
               University AI Policy Tracker
             </DocumentLink>
-            <p className="site-tagline">{shell.tagline}</p>
           </div>
           <div className="site-header__actions" aria-label="Primary actions">
-            <DocumentLink className="site-action" href="/api-reference">
+            <DocumentLink
+              className="site-action"
+              data-analytics-event="nav_click"
+              data-analytics-nav-area="header_action"
+              data-analytics-target-kind="api_reference"
+              href="/api-reference"
+            >
               {shell.actions.api}
             </DocumentLink>
-            <a className="site-action" href={githubRepositoryUrl}>
+            <a
+              className="site-action"
+              data-analytics-event="github_click"
+              data-analytics-nav-area="header_action"
+              href={githubRepositoryUrl}
+            >
               {shell.actions.github}
             </a>
             <LanguageSwitcher />
@@ -125,9 +141,6 @@ export function SiteShell({ children, enableInsights }: SiteShellProps) {
       {children}
       <footer className="site-footer">
         <div className="site-footer__inner">
-          <div className="site-footer__intro">
-            <p>{shell.footer.intro}</p>
-          </div>
           <nav className="site-footer__link-groups" aria-label="Secondary links">
             {secondaryLinkGroups.map((group) => (
               <section className="site-footer__group" key={group.labelKey}>
@@ -135,7 +148,11 @@ export function SiteShell({ children, enableInsights }: SiteShellProps) {
                 <ul>
                   {group.links.map((link) => (
                     <li key={link.href}>
-                      <DocumentLink href={link.href}>
+                      <DocumentLink
+                        data-analytics-event="footer_link_click"
+                        data-analytics-footer-group={group.labelKey}
+                        href={link.href}
+                      >
                         {footerLabels[link.labelKey] ??
                           navigationLabels[link.labelKey] ??
                           link.labelKey}
@@ -150,6 +167,7 @@ export function SiteShell({ children, enableInsights }: SiteShellProps) {
       </footer>
       {enableInsights ? (
         <>
+          <AnalyticsEventBridge />
           <Analytics />
           <SpeedInsights />
         </>

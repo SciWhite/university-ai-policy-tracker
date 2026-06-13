@@ -9,7 +9,8 @@
     "moduleResolution": "Bundler",
     "noEmit": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@uapt/db": ["../../packages/db/src/index.ts"]
     },
     "plugins": [
       {

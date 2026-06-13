@@ -12,6 +12,7 @@ import {
   type SupportedLocale
 } from "@/lib/i18n";
 import { getShellMessages } from "@/lib/i18n-messages";
+import { trackResearchEvent } from "@/lib/analytics-client";
 
 const LOCALE_STORAGE_KEY = "uapt-locale-choice";
 
@@ -23,6 +24,11 @@ export function LanguageSwitcher() {
   const switchBasePath = isLocalizablePath(pathname) ? unprefixedPathname : "/";
 
   function rememberLocale(nextLocale: SupportedLocale) {
+    trackResearchEvent("locale_switch", {
+      from_locale: locale,
+      to_locale: nextLocale
+    });
+
     try {
       window.localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale);
       window.localStorage.setItem("uapt-locale-suggestion-dismissed", "1");

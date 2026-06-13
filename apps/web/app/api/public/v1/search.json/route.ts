@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 import {
+  getCountBucket,
+  getLimitBucket,
+  getQueryAnalytics
+} from "@/lib/analytics-events";
+import { trackServerResearchEvent } from "@/lib/analytics-server";
+import {
   buildSearchResponse,
   searchIndexRecords,
   type SearchIndexRecord
@@ -19,6 +25,11 @@ export async function GET(request: Request) {
   const limit = Number(url.searchParams.get("limit") ?? 20);
   const records = await fetchSearchIndexRecords(request.url);
   const results = searchIndexRecords(records, query, { limit });
+  await trackServerResearchEvent("api_search_request", {
+    ...getQueryAnalytics(query),
+    limit_bucket: getLimitBucket(limit),
+    result_count_bucket: getCountBucket(results.length)
+  }, "/api/public/v1/search.json");
 
   return NextResponse.json(buildSearchResponse(query, results), {
     headers: searchCorsHeaders

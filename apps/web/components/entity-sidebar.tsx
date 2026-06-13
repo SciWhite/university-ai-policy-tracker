@@ -1,16 +1,15 @@
 import { CitationCopyActions } from "@/components/citation-copy-actions";
 import { DocumentLink as Link } from "@/components/document-link";
+import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
 
 interface EntitySidebarProps {
   canonicalUrl: string;
   citationText: string;
-  license: string;
-  limitations: readonly string[];
+  entitySlug?: string;
   officialSourceCount: number;
   publicJsonUrl: string;
-  sourceRightsPolicy: string;
 }
 
 const reviewStates = [
@@ -24,24 +23,28 @@ const reviewStates = [
 export function EntitySidebar({
   canonicalUrl,
   citationText,
-  license,
-  limitations,
+  entitySlug,
   officialSourceCount,
-  publicJsonUrl,
-  sourceRightsPolicy
+  publicJsonUrl
 }: EntitySidebarProps) {
   return (
     <aside className="entity-sidebar" aria-label="Record reference details">
       <ReferenceBox id="citation" title="Suggested citation" headingLevel="h3">
-        <p>{citationText}</p>
         <CitationCopyActions
           canonicalUrl={canonicalUrl}
           citationText={citationText}
+          entitySlug={entitySlug}
           publicJsonUrl={publicJsonUrl}
         />
         <ul className="source-list">
           <li>
-            <a href={canonicalUrl}>Canonical page</a>
+            <a
+              data-analytics-entity-slug={entitySlug}
+              data-analytics-event="record_canonical_click"
+              href={canonicalUrl}
+            >
+              Canonical page
+            </a>
           </li>
           <li>
             <Link href="/citation">Citation rules</Link>
@@ -50,13 +53,15 @@ export function EntitySidebar({
       </ReferenceBox>
 
       <ReferenceBox id="json" title="Public JSON" headingLevel="h3">
-        <p>
-          Versioned university record with claims, evidence, source attribution,
-          review state, confidence, and citation fields.
-        </p>
         <ul className="source-list">
           <li>
-            <a href={publicJsonUrl}>Open public JSON</a>
+            <a
+              data-analytics-entity-slug={entitySlug}
+              data-analytics-event="record_public_json_click"
+              href={publicJsonUrl}
+            >
+              Open public JSON
+            </a>
           </li>
           <li>
             <Link href="/datasets">Dataset access</Link>
@@ -65,16 +70,20 @@ export function EntitySidebar({
       </ReferenceBox>
 
       <ReferenceBox title="Official sources" headingLevel="h3">
-        <p>{officialSourceCount} source attribution record.</p>
-        <p className="muted">{sourceRightsPolicy}</p>
+        <MetaLabel label="Sources">{officialSourceCount}</MetaLabel>
       </ReferenceBox>
 
       <ReferenceBox title="License and limitations" headingLevel="h3">
-        <p>Tracker metadata: {license}</p>
-        <ul className="compact-list">
-          {limitations.map((limitation) => (
-            <li key={limitation}>{limitation}</li>
-          ))}
+        <ul className="source-list">
+          <li>
+            <Link href="/citation">Citation</Link>
+          </li>
+          <li>
+            <Link href="/methodology">Methodology</Link>
+          </li>
+          <li>
+            <Link href="/review">Review</Link>
+          </li>
         </ul>
       </ReferenceBox>
 
@@ -86,10 +95,6 @@ export function EntitySidebar({
             </li>
           ))}
         </ul>
-        <p className="muted">
-          Review state describes workflow status. Confidence is a separate
-          machine-assessed support score.
-        </p>
       </ReferenceBox>
     </aside>
   );

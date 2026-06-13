@@ -7,6 +7,10 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
+        userAgent: "*",
+        disallow: "/internal/analytics"
+      },
+      {
         userAgent: "OAI-SearchBot",
         allow: "/"
       },

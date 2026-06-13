@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: workspaceRoot
   },
-  transpilePackages: ["@uapt/shared"],
+  transpilePackages: ["@uapt/db", "@uapt/shared"],
   outputFileTracingRoot: workspaceRoot,
   outputFileTracingIncludes: {
     "/[locale]": publicDataTraceFiles,

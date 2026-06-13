@@ -32,6 +32,9 @@ export function SiteNavigation({ items }: SiteNavigationProps) {
         return (
           <Link
             aria-current={isActive ? "page" : undefined}
+            data-analytics-event="nav_click"
+            data-analytics-nav-area="primary"
+            data-analytics-target-kind={item.labelKey}
             href={localizeHref(item.href, locale)}
             key={item.href}
             prefetch={false}

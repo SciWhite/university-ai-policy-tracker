@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { getLocaleFromPathname } from "@/lib/i18n";
 import { getShellMessages, interpolate } from "@/lib/i18n-messages";
+import { trackResearchEvent } from "@/lib/analytics-client";
 
 const THEME_STORAGE_KEY = "uapt-theme";
 const themePreferences = ["system", "light", "dark"] as const;
@@ -27,6 +28,11 @@ export function ThemeToggle() {
     setPreference(nextPreference);
     storeThemePreference(nextPreference);
     applyThemePreference(nextPreference);
+    trackResearchEvent("theme_change", {
+      from_theme: preference,
+      locale,
+      to_theme: nextPreference
+    });
   }
 
   const label = messages[preference];

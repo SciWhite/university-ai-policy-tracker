@@ -12,9 +12,11 @@ import {
 } from "@/lib/i18n";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
+import { getSourceDomain } from "@/lib/analytics-events";
 
 interface ClaimEvidenceCardProps {
   claim: PolicyClaim;
+  entitySlug?: string;
   id?: string;
   locale?: SupportedLocale;
 }
@@ -30,6 +32,7 @@ const reviewNotes: Partial<Record<ClaimReviewState, string>> = {
 
 export function ClaimEvidenceCard({
   claim,
+  entitySlug,
   id,
   locale = DEFAULT_LOCALE
 }: ClaimEvidenceCardProps) {
@@ -83,6 +86,7 @@ export function ClaimEvidenceCard({
         {claim.evidence.map((evidence, index) => (
           <EvidenceBlock
             evidence={evidence}
+            entitySlug={entitySlug}
             index={index}
             key={`${evidence.sourceUrl}:${evidence.sourceSnapshotHash}:${index}`}
             locale={locale}
@@ -95,10 +99,12 @@ export function ClaimEvidenceCard({
 
 function EvidenceBlock({
   evidence,
+  entitySlug,
   index,
   locale
 }: {
   evidence: ClaimEvidence;
+  entitySlug?: string;
   index: number;
   locale: SupportedLocale;
 }) {
@@ -113,7 +119,14 @@ function EvidenceBlock({
         {evidence.evidenceSnippet}
         <footer>
           Source:{" "}
-          <a href={evidence.sourceUrl}>{evidence.attribution.citationTitle}</a>
+          <a
+            data-analytics-entity-slug={entitySlug}
+            data-analytics-event="official_source_click"
+            data-analytics-source-domain={getSourceDomain(evidence.sourceUrl)}
+            href={evidence.sourceUrl}
+          >
+            {evidence.attribution.citationTitle}
+          </a>
         </footer>
       </blockquote>
 

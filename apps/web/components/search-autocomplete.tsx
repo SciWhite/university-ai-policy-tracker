@@ -12,6 +12,8 @@ import { usePathname } from "next/navigation";
 import { DocumentLink as Link } from "@/components/document-link";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
+import { trackResearchEvent } from "@/lib/analytics-client";
+import { getQueryAnalytics } from "@/lib/analytics-events";
 import { getLocaleFromPathname, localizeHref } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 
@@ -51,6 +53,9 @@ export function SearchAutocomplete({
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
   const trimmedQuery = query.trim();
+  const queryAnalytics = getQueryAnalytics(trimmedQuery);
+  const queryKind = String(queryAnalytics.query_kind ?? "");
+  const queryLengthBucket = String(queryAnalytics.query_length_bucket ?? "");
   const activeResult = activeIndex >= 0 ? results[activeIndex] : undefined;
 
   useEffect(() => {
@@ -128,6 +133,13 @@ export function SearchAutocomplete({
       setStatus("idle");
     } else if (event.key === "Enter" && activeResult) {
       event.preventDefault();
+      trackResearchEvent("autocomplete_keyboard_open", {
+        entity_slug: activeResult.entitySlug,
+        locale,
+        page_type: "search",
+        result_rank: activeIndex + 1,
+        ...queryAnalytics
+      });
       window.location.assign(
         localizeHref(`/universities/${activeResult.entitySlug}`, locale)
       );
@@ -167,7 +179,14 @@ export function SearchAutocomplete({
               role="option"
             >
               <div className="search-autocomplete__option-main">
-                <Link href={`/universities/${result.entitySlug}`}>
+                <Link
+                  data-analytics-entity-slug={result.entitySlug}
+                  data-analytics-event="autocomplete_result_click"
+                  data-analytics-query-kind={queryKind}
+                  data-analytics-query-length-bucket={queryLengthBucket}
+                  data-analytics-result-rank={index + 1}
+                  href={`/universities/${result.entitySlug}`}
+                >
                   {getLocalizedInstitutionName(
                     result.entitySlug,
                     result.entityName,
@@ -184,7 +203,16 @@ export function SearchAutocomplete({
               <div className="search-autocomplete__option-actions">
                 <MetaLabel label="Claims">{result.claimCount}</MetaLabel>
                 <MetaLabel label="Sources">{result.sourceCount}</MetaLabel>
-                <a href={result.publicJsonUrl}>JSON</a>
+                <a
+                  data-analytics-entity-slug={result.entitySlug}
+                  data-analytics-event="autocomplete_json_click"
+                  data-analytics-query-kind={queryKind}
+                  data-analytics-query-length-bucket={queryLengthBucket}
+                  data-analytics-result-rank={index + 1}
+                  href={result.publicJsonUrl}
+                >
+                  JSON
+                </a>
               </div>
             </div>
           ))}
