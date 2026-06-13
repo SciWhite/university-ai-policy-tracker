@@ -1,5 +1,6 @@
 export {
   default,
-  generateMetadata,
-  generateStaticParams
+  generateMetadata
 } from "../../../universities/[slug]/page";
+
+export const dynamicParams = true;
