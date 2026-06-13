@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import {
-  getCatalogUniversities,
   getCatalogUniversityBySlug,
   getPublicJsonUrl,
   getPublicUniversitySummaryBySlug
@@ -15,7 +14,6 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { ReferenceTabs } from "@/components/reference-tabs";
 import { StateLabel } from "@/components/state-label";
-import { getSourceDomain } from "@/lib/analytics-events";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
@@ -540,6 +538,14 @@ function getPolicyStatus(
 
 function resolveUrl(pathOrUrl: string, baseUrl: string): string {
   return new URL(pathOrUrl, baseUrl).toString();
+}
+
+function getSourceDomain(href: string): string | undefined {
+  try {
+    return new URL(href).hostname.replace(/^www\./, "");
+  } catch {
+    return undefined;
+  }
 }
 
 function formatDate(value: string): string {
