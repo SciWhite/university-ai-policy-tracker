@@ -30,7 +30,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function PrivateAnalyticsPage() {
   const since = new Date(Date.now() - WINDOW_MS);
-  const rows = await listAnalyticsEvents(since);
+  const hasAnalyticsStore = Boolean(process.env.DATABASE_URL);
+  const rows = await loadAnalyticsRows(since);
   const summary = buildPrivateAnalyticsSummary(rows, since);
 
   return (
@@ -74,6 +75,18 @@ export default async function PrivateAnalyticsPage() {
         </article>
       </section>
 
+      {!hasAnalyticsStore ? (
+        <ReferenceBox
+          description="Local preview is falling back to an empty dashboard."
+          title="Analytics store unavailable"
+        >
+          <p>
+            DATABASE_URL is not set in this environment, so the page cannot
+            read mirrored analytics rows yet.
+          </p>
+        </ReferenceBox>
+      ) : null}
+
       <section className="metrics-grid" aria-label="Private analytics summary metrics">
         <div>
           <span>{formatCount(summary.visitors)}</span>
@@ -101,7 +114,7 @@ export default async function PrivateAnalyticsPage() {
         </div>
       </section>
 
-      {summary.events === 0 ? (
+      {hasAnalyticsStore && summary.events === 0 ? (
         <ReferenceBox
           description="The mirror will populate after the first tracked page view or event."
           title="No mirrored events yet"
@@ -256,6 +269,18 @@ export default async function PrivateAnalyticsPage() {
       </ReferenceBox>
     </main>
   );
+}
+
+async function loadAnalyticsRows(since: Date) {
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+
+  try {
+    return await listAnalyticsEvents(since);
+  } catch {
+    return [];
+  }
 }
 
 function funnelDescription(label: string): string {
