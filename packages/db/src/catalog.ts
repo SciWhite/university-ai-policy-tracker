@@ -42,7 +42,7 @@ export async function listCatalogUniversities(
     orderBy: [{ country: "asc" }, { name: "asc" }]
   });
 
-  return universities.map(mapCatalogUniversity);
+  return universities.map((university: any) => mapCatalogUniversity(university));
 }
 
 export async function getCatalogUniversityBySlug(
@@ -62,9 +62,9 @@ export async function listCatalogTools(
 ): Promise<CatalogToolSummary[]> {
   const universities = await listCatalogUniversities(client);
 
-  return aiTools.map((tool) => {
-    const universitiesWithTool = universities.filter((university) =>
-      university.sources.some((source) => source.tools.includes(tool))
+  return aiTools.map((tool: any) => {
+    const universitiesWithTool = universities.filter((university: any) =>
+      university.sources.some((source: any) => source.tools.includes(tool))
     );
 
     return {
@@ -72,7 +72,7 @@ export async function listCatalogTools(
       sourceCount: universities.reduce(
         (total, university) =>
           total +
-          university.sources.filter((source) => source.tools.includes(tool)).length,
+        university.sources.filter((source: any) => source.tools.includes(tool)).length,
         0
       ),
       universityCount: universitiesWithTool.length
@@ -85,8 +85,8 @@ export async function listCatalogSources(
 ): Promise<CatalogSourceRecord[]> {
   const universities = await listCatalogUniversities(client);
 
-  return universities.flatMap((university) =>
-    university.sources.map((source) => ({
+  return universities.flatMap((university: any) =>
+    university.sources.map((source: any) => ({
       ...source,
       universityName: university.name,
       universitySlug: university.slug
@@ -95,7 +95,9 @@ export async function listCatalogSources(
 }
 
 function mapCatalogUniversity(university: UniversityWithCatalog): CatalogUniversity {
-  const sources = university.policySources.map(mapCatalogSource);
+  const sources = university.policySources.map((source: any) =>
+    mapCatalogSource(source)
+  );
 
   return {
     id: university.id,

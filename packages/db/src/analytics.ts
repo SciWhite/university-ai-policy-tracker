@@ -118,7 +118,7 @@ export async function listAnalyticsEvents(
     orderBy: [{ createdAt: "asc" }, { id: "asc" }]
   });
 
-  return rows.map((row) => ({
+  return rows.map((row: any) => ({
     createdAt: row.createdAt.toISOString(),
     copyTarget: row.copyTarget,
     endpointKind: row.endpointKind,
