@@ -9,7 +9,7 @@ import { DataList, DataListRow } from "@/components/data-list";
 import { DocumentLink as Link } from "@/components/document-link";
 import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
-import { StateLabel } from "@/components/state-label";
+import { ToolRecordFields } from "@/components/tool-record-fields";
 import { getAllUniversityToolRecords } from "@/lib/tool-records";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
@@ -172,24 +172,9 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
                     <Link href={`/universities/${record.universitySlug}`}>
                       University record
                     </Link>
-                    <a href={record.evidence[0]?.sourceUrl}>Source</a>
                   </>
                 }
                 key={`${record.universitySlug}:${record.tool}`}
-                metadata={
-                  <>
-                    <MetaLabel label="Canonical tool">
-                      {formatToolLabel(record.tool)}
-                    </MetaLabel>
-                    <MetaLabel label="Availability">
-                      {formatToolAvailability(record.availability)}
-                    </MetaLabel>
-                    <MetaLabel label="Endorsement">
-                      {formatToolEndorsementType(record.endorsementType)}
-                    </MetaLabel>
-                    <StateLabel reviewState={record.reviewState} />
-                  </>
-                }
               >
                 <h2>{record.rawToolName}</h2>
                 <p>
@@ -197,12 +182,7 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
                     {record.universityName}
                   </Link>
                 </p>
-                <p className="muted">
-                  Canonical slug: {record.tool}. Evidence records:{" "}
-                  {record.evidence.length}. Tool status is derived from
-                  source-backed claim and evidence text.
-                </p>
-                <p>{record.evidence[0]?.evidenceSnippet}</p>
+                <ToolRecordFields record={record} />
               </DataListRow>
             ))}
           </DataList>
@@ -252,6 +232,9 @@ function filterRecords(
     const haystack = [
       record.universityName,
       record.universitySlug,
+      record.description ?? "",
+      record.howToObtain ?? "",
+      record.costToUser ?? "",
       record.rawToolName,
       record.tool,
       formatToolLabel(record.tool),

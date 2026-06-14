@@ -1,10 +1,5 @@
 import { notFound } from "next/navigation";
 import {
-  formatToolAvailability,
-  formatToolEndorsementType,
-  formatToolLabel
-} from "@uapt/shared";
-import {
   getCatalogUniversityBySlug,
   getPublicJsonUrl,
   getPublicUniversitySummaryBySlug
@@ -19,6 +14,7 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { ReferenceTabs } from "@/components/reference-tabs";
 import { StateLabel } from "@/components/state-label";
+import { ToolRecordFields } from "@/components/tool-record-fields";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
@@ -407,9 +403,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               <MetaLabel label="Derived tool records">
                 {toolRecords.length}
               </MetaLabel>
-              <MetaLabel label="Boundary">
-                Derived from claim/evidence text
-              </MetaLabel>
             </div>
             {toolRecords.length ? (
               <div className="analysis-dimension-list">
@@ -421,42 +414,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                   >
                     <div>
                       <h3>{record.rawToolName}</h3>
-                      <p>
-                        {formatToolAvailability(record.availability)} ·{" "}
-                        {formatToolEndorsementType(record.endorsementType)}
-                      </p>
-                      <p className="muted">
-                        Canonical tool: {formatToolLabel(record.tool)} (
-                        {record.tool}).{" "}
-                        Tool status is derived from source-backed public claim
-                        and evidence text. It does not replace official
-                        university source language.
-                      </p>
-                    </div>
-                    <div className="analysis-dimension-row__meta">
-                      <MetaLabel label="Canonical tool">
-                        {formatToolLabel(record.tool)}
-                      </MetaLabel>
-                      <MetaLabel label="Availability">
-                        {formatToolAvailability(record.availability)}
-                      </MetaLabel>
-                      <MetaLabel label="Endorsement">
-                        {formatToolEndorsementType(record.endorsementType)}
-                      </MetaLabel>
-                      <StateLabel prefix="" reviewState={record.reviewState} />
-                      <MetaLabel label="Evidence">
-                        {record.evidence.length}
-                      </MetaLabel>
-                    </div>
-                    <div className="analysis-dimension-row__links">
-                      {record.evidence.slice(0, 3).map((evidence) => (
-                        <a
-                          href={evidence.sourceUrl}
-                          key={`${record.tool}:${evidence.sourceUrl}:${evidence.snapshotHash}`}
-                        >
-                          Source
-                        </a>
-                      ))}
+                      <p className="muted">{record.universityName}</p>
+                      <ToolRecordFields record={record} />
                     </div>
                   </article>
                 ))}
