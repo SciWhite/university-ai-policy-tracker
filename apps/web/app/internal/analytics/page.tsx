@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { listAnalyticsEvents } from "@uapt/db";
 import { DataList, DataListRow } from "@/components/data-list";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
+import {
+  hasAnalyticsStore,
+  listMirroredAnalyticsEvents
+} from "@/lib/analytics-store";
 import { buildPrivateAnalyticsSummary } from "@/lib/private-analytics";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
@@ -30,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function PrivateAnalyticsPage() {
   const since = new Date(Date.now() - WINDOW_MS);
-  const hasAnalyticsStore = Boolean(process.env.DATABASE_URL);
+  const analyticsStoreAvailable = hasAnalyticsStore();
   const rows = await loadAnalyticsRows(since);
   const summary = buildPrivateAnalyticsSummary(rows, since);
 
@@ -75,7 +78,7 @@ export default async function PrivateAnalyticsPage() {
         </article>
       </section>
 
-      {!hasAnalyticsStore ? (
+      {!analyticsStoreAvailable ? (
         <ReferenceBox
           description="Local preview is falling back to an empty dashboard."
           title="Analytics store unavailable"
@@ -114,7 +117,7 @@ export default async function PrivateAnalyticsPage() {
         </div>
       </section>
 
-      {hasAnalyticsStore && summary.events === 0 ? (
+      {analyticsStoreAvailable && summary.events === 0 ? (
         <ReferenceBox
           description="The mirror will populate after the first tracked page view or event."
           title="No mirrored events yet"
@@ -272,12 +275,12 @@ export default async function PrivateAnalyticsPage() {
 }
 
 async function loadAnalyticsRows(since: Date) {
-  if (!process.env.DATABASE_URL) {
+  if (!hasAnalyticsStore()) {
     return [];
   }
 
   try {
-    return await listAnalyticsEvents(since);
+    return await listMirroredAnalyticsEvents(since);
   } catch {
     return [];
   }

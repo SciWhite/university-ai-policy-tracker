@@ -1,4 +1,3 @@
-import { recordAnalyticsEvent } from "@uapt/db";
 import { track } from "@vercel/analytics/server";
 import {
   buildAnalyticsEventRecord,
@@ -6,6 +5,7 @@ import {
   type AnalyticsEventName,
   type AnalyticsProperties
 } from "@/lib/analytics-events";
+import { recordMirroredAnalyticsEvent } from "@/lib/analytics-store";
 
 export async function trackServerResearchEvent(
   eventName: AnalyticsEventName,
@@ -24,7 +24,7 @@ export async function trackServerResearchEvent(
   }
 
   try {
-    await recordAnalyticsEvent(
+    await recordMirroredAnalyticsEvent(
       buildAnalyticsEventRecord({
         eventName,
         pathname,

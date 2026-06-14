@@ -1,4 +1,3 @@
-import { recordAnalyticsEvent } from "@uapt/db";
 import { NextResponse } from "next/server";
 import {
   buildAnalyticsEventRecord,
@@ -6,6 +5,7 @@ import {
   sanitizeAnalyticsProperties,
   type AnalyticsProperties
 } from "@/lib/analytics-events";
+import { recordMirroredAnalyticsEvent } from "@/lib/analytics-store";
 
 export const dynamic = "force-dynamic";
 
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
   );
 
   try {
-    await recordAnalyticsEvent(
+    await recordMirroredAnalyticsEvent(
       buildAnalyticsEventRecord({
         eventName,
         pathname,
