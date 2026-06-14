@@ -7,7 +7,7 @@ import type {
   ServiceTreatment
 } from "@uapt/shared";
 import { aiTools } from "@uapt/shared";
-import type { Prisma, PrismaClient } from "@prisma/client";
+import type { Prisma, PrismaClient } from "./prisma-client.js";
 import { getPrismaClient } from "./client.js";
 
 const universityCatalogInclude = {
@@ -25,11 +25,9 @@ const universityCatalogInclude = {
       }
     }
   }
-} satisfies Prisma.UniversityInclude;
+} as any;
 
-type UniversityWithCatalog = Prisma.UniversityGetPayload<{
-  include: typeof universityCatalogInclude;
-}>;
+type UniversityWithCatalog = any;
 
 export interface CatalogSourceRecord extends CatalogPolicySource {
   universityName: string;

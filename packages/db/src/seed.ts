@@ -13,13 +13,13 @@ import {
   DocumentStatus as PrismaDocumentStatus,
   ReviewState as PrismaReviewState,
   ServiceTreatment as PrismaServiceTreatment,
-  type Prisma,
   type PrismaClient
 } from "@prisma/client";
 import { getPrismaClient } from "./client.js";
 import { toDbEnum } from "./enums.js";
+import type { Prisma } from "./prisma-client.js";
 
-type SeedClient = PrismaClient | Prisma.TransactionClient;
+type SeedClient = any;
 
 export interface SeedResult {
   universities: number;

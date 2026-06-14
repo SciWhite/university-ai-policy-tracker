@@ -11,11 +11,11 @@ import {
   PolicyAuthority as PrismaPolicyAuthority,
   ReviewState as PrismaReviewState,
   ServiceTreatment as PrismaServiceTreatment,
-  type Prisma,
   type PrismaClient
 } from "@prisma/client";
 import { getPrismaClient } from "./client.js";
 import { toDbEnum } from "./enums.js";
+import type { Prisma } from "./prisma-client.js";
 
 export interface IngestedCrawlRunResult {
   id: string;

@@ -1,4 +1,4 @@
-import type { Prisma, PrismaClient } from "@prisma/client";
+import type { Prisma, PrismaClient } from "./prisma-client.js";
 import { getPrismaClient } from "./client.js";
 
 export interface AnalyticsEventRecordInput {
@@ -52,7 +52,7 @@ export interface AnalyticsEventRow {
   navArea?: string | null;
   pageType?: string | null;
   pathname: string;
-  payload?: Prisma.JsonValue | null;
+  payload?: unknown;
   sessionId?: string | null;
   queryKind?: string | null;
   queryLengthBucket?: string | null;
