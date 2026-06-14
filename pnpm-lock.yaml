@@ -50,6 +50,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@uapt/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@uapt/shared':
         specifier: workspace:*
         version: link:../../packages/shared
