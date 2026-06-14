@@ -1,7 +1,7 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260612-001",
-  "publishedAt": "2026-06-13T00:19:54.438Z",
+  "releaseId": "public-release-20260614-001",
+  "publishedAt": "2026-06-14T14:48:52.380Z",
   "description": "Promotes the latest validated staged university AI-policy runs into the public dataset while keeping source-health maintenance-only output out of canonical publication.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
@@ -798,7 +798,8 @@
     "staging/uapt-runs/uapt-zayed-university-20260517",
     "staging/uapt-runs/uapt-zhejiang-university-20260511",
     "staging/uapt-runs/uapt-zhengzhou-university-20260517",
-    "staging/uapt-runs/uapt-zurich-university-of-applied-sciences-zhaw-20260520"
+    "staging/uapt-runs/uapt-zurich-university-of-applied-sciences-zhaw-20260520",
+    "staging/uapt-runs/uapt-ai-tools-qs-1-10-20260614"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",

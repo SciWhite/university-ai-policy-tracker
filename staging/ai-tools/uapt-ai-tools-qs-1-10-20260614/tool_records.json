@@ -1,0 +1,434 @@
+{
+  "schemaVersion": "uapt-ai-tools-derived-staging-v1",
+  "runId": "uapt-ai-tools-qs-1-10-20260614",
+  "generatedAt": "2026-06-14T14:30:00.000Z",
+  "rankingSystem": "QS World University Rankings",
+  "rankingYear": 2026,
+  "rankRange": "1-10",
+  "crawlMode": "firecrawl_first",
+  "limitations": [
+    "Records are tool-level staging evidence, not official university conclusions.",
+    "Do not infer named tool availability from generic AI policy language.",
+    "snapshotHash values in this staging file are SHA-256 hashes of the captured evidence snippets; canonical ingestion should replace them with full source snapshot hashes.",
+    "NotebookLM is preserved in evidence snippets but is not represented as a separate tool because the v1 taxonomy does not yet include a notebooklm tool key."
+  ],
+  "records": [
+    {
+      "universitySlug": "massachusetts-institute-of-technology",
+      "universityName": "Massachusetts Institute of Technology (MIT)",
+      "qsRank": 1,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceTitle": "Generative AI tools available at MIT",
+          "evidenceSnippet": "Google Gemini | Text-based AI chatbot | MIT faculty, staff, and students | Free with an MIT Google Workspace account | Access Gemini via Touchstone with your MIT Kerberos account",
+          "snapshotHash": "1d3f2b69da753d7529a49e99c793eaafc34081b7f7263f32809d5a537825c363",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "massachusetts-institute-of-technology",
+      "universityName": "Massachusetts Institute of Technology (MIT)",
+      "qsRank": 1,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceTitle": "Generative AI tools available at MIT",
+          "evidenceSnippet": "Microsoft Copilot | Text-based AI chatbot; also capable of generating images | MIT faculty, staff, students, and affiliates | Free | Access Copilot via Touchstone with your MIT Kerberos account",
+          "snapshotHash": "5eede40781a2eed06395aef443f00e76201c92fb9f3a50660250606eed3dd59f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "massachusetts-institute-of-technology",
+      "universityName": "Massachusetts Institute of Technology (MIT)",
+      "qsRank": 1,
+      "tool": "chatgpt",
+      "rawToolName": "Open AI ChatGPT",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceTitle": "Generative AI tools available at MIT",
+          "evidenceSnippet": "Open AI ChatGPT | Advanced version of publicly available ChatGPT tool with added security and features | MIT faculty | Free | We recommend that faculty interested in ChatGPT contact IS&T about Parley",
+          "snapshotHash": "06606b6a429e291aeb3889f508d079f67e6ee9439813a9e0b8003d4275e94b39",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "massachusetts-institute-of-technology",
+      "universityName": "Massachusetts Institute of Technology (MIT)",
+      "qsRank": 1,
+      "tool": "institutional_ai_service",
+      "rawToolName": "Parley",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceTitle": "Generative AI tools available at MIT",
+          "evidenceSnippet": "Parley | Secure, MIT-hosted platform that allows users to interact with multiple popular generative AI models | MIT faculty, staff, and students | Free | Parley is available to all faculty, staff, and students",
+          "snapshotHash": "5abebb31eda112657342d0334c002273cc92cdd23ff3f1b39c4cf6d3baf6a2a6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "imperial-college-london",
+      "universityName": "Imperial College London",
+      "qsRank": 2,
+      "tool": "institutional_ai_service",
+      "rawToolName": "dAIsy",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+          "sourceTitle": "dAIsy- gen AI platform",
+          "evidenceSnippet": "dAIsy is Imperial College London’s secure AI platform, designed to give staff and students safe, easy access to multiple generative AI models (such as GPT, Claude, Deepseek, and others) through a single interface.",
+          "snapshotHash": "a4d3df9f2fc7ee36240c1ca4a6ad9fe96eaa86b20f5aaafb21605865bb4a98be",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "imperial-college-london",
+      "universityName": "Imperial College London",
+      "qsRank": 2,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+          "sourceTitle": "dAIsy- gen AI platform",
+          "evidenceSnippet": "Microsoft Copilot is also available to all staff and students to use. It has a built-in AI assistant designed to boost productivity in apps like Word, Excel, and Teams, using your Microsoft 365 data securely.",
+          "snapshotHash": "c6f85599726fed6dcefc294b696bace5daf4ee6e9b1ca6c42573b1c69cb48c2a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "stanford-university",
+      "universityName": "Stanford University",
+      "qsRank": 3,
+      "tool": "institutional_ai_service",
+      "rawToolName": "Stanford AI Playground",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://uit.stanford.edu/aiplayground",
+          "sourceTitle": "AI Playground Quick Start Guide",
+          "evidenceSnippet": "The Stanford AI Playground is a user-friendly platform, built on open-source technologies, that allows you to safely try various AI models from vendors like OpenAI, Google, and Anthropic in one spot.",
+          "snapshotHash": "f082f250967096bac6a93869f61780adaddb259a6349469bbd7a5c97f7a30933",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "stanford-university",
+      "universityName": "Stanford University",
+      "qsRank": 3,
+      "tool": "chatgpt",
+      "rawToolName": "Azure OpenAI / ChatGPT models in AI Playground",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://uit.stanford.edu/aiplayground",
+          "sourceTitle": "AI Playground Quick Start Guide",
+          "evidenceSnippet": "The AI Playground is being managed by University IT (UIT) as a pilot for most people at Stanford. This includes all active faculty, staff, students, postdocs, visiting scholars, sponsored affiliates, and fellows.",
+          "snapshotHash": "3912d2b7da87c4ff2a20f38836d11e64910385365f85288e9034c5214e50cb0d",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-oxford",
+      "universityName": "University of Oxford",
+      "qsRank": 4,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+          "sourceTitle": "Generative AI Tools | AI Competency Centre",
+          "evidenceSnippet": "ChatGPT Edu | Advanced content generation, summarisation, and complex reasoning | Confidential | University SSO | Free for all current Oxford staff and students (including College staff)",
+          "snapshotHash": "3658a35fe1eda729b7b28c50accdc16ca20d42c22660818e6ecc6d50e1142f4c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-oxford",
+      "universityName": "University of Oxford",
+      "qsRank": 4,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+          "sourceTitle": "Generative AI Tools | AI Competency Centre",
+          "evidenceSnippet": "Microsoft Copilot Chat | Web-grounded chat, summarisation, drafting, and web-based information retrieval | Confidential | University SSO | Free",
+          "snapshotHash": "779b11258782aa7ffb31dfd50e210318bd815fe0ae0c187f939f030b217cc3ce",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-oxford",
+      "universityName": "University of Oxford",
+      "qsRank": 4,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+          "sourceTitle": "Generative AI Tools | AI Competency Centre",
+          "evidenceSnippet": "Google Gemini | AI assistance integrated with Google Workspace and as a standalone chat | Confidential | University SSO | Free through the University Google Workspace",
+          "snapshotHash": "f623f05904ddf8c47d7eb00a4a3ea691780c81791ad0627500c23bf22f0f6f07",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "harvard-university",
+      "universityName": "Harvard University",
+      "qsRank": 5,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+          "sourceTitle": "AI Tool Comparison",
+          "evidenceSnippet": "Google Gemini (Basic) | Free for Harvard Google Workspace users",
+          "snapshotHash": "fa55a2b02d922a89d36993741bcafdc3046c2c37b9cd90297b9a6639733bfbf3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "harvard-university",
+      "universityName": "Harvard University",
+      "qsRank": 5,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+          "sourceTitle": "AI Tool Comparison",
+          "evidenceSnippet": "Microsoft Copilot (Basic) | Free for Harvard Microsoft 365 users",
+          "snapshotHash": "b31883f350b5d2e47d83ab58d9ec0e0f757660d4b6b11e13ad4ffd73dd9ee99e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "harvard-university",
+      "universityName": "Harvard University",
+      "qsRank": 5,
+      "tool": "chatgpt",
+      "rawToolName": "OpenAI ChatGPT Edu",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+          "sourceTitle": "AI Tool Comparison",
+          "evidenceSnippet": "OpenAI ChatGPT Edu | By request at additional cost. Requests approved by Schools and Units.",
+          "snapshotHash": "b2db03ac79ab066d4d882ee1fcd7826a8f53a58f4febc6e9ac34b13fb675e870",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-cambridge",
+      "universityName": "University of Cambridge",
+      "qsRank": 6,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
+          "sourceTitle": "AI guidance - Information Compliance",
+          "evidenceSnippet": "Copilot, Gemini and NotebookLM are already available to staff. Microsoft 365 Copilot is the basic licensed version of Copilot and is available via a staff login",
+          "snapshotHash": "990155e7d0ba75d2c9e7a577ebdcfd8b460e667fbddd21b2080e98b8d5852f28",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-cambridge",
+      "universityName": "University of Cambridge",
+      "qsRank": 6,
+      "tool": "gemini",
+      "rawToolName": "Gemini / NotebookLM",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
+          "sourceTitle": "AI guidance - Information Compliance",
+          "evidenceSnippet": "If it is necessary and beneficial to use GenAI tools, it is recommended that wherever practicable the University’s licensed GenAI tools, Copilot, Gemini and NotebookLM are utilised, regardless of the type of data that may be input.",
+          "snapshotHash": "0e4ade6f3cafa32a7a9119e21f8fec51313f517aeaa570954c2da98b0016a7d9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "eth-zurich",
+      "universityName": "ETH Zurich",
+      "qsRank": 7,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+          "sourceTitle": "AI Tools & Licenses",
+          "evidenceSnippet": "The use of Microsoft Copilot as well as Google Gemini and NotebookLM is currently recommended, as data-protected access is possible directly via an ETH account.",
+          "snapshotHash": "d10e6b48692ff631e9b4337f0ef9a5ad73599dff3ca569ebf051da74e66de890",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "eth-zurich",
+      "universityName": "ETH Zurich",
+      "qsRank": 7,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini / NotebookLM",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html",
+          "sourceTitle": "AI Tools & Licenses",
+          "evidenceSnippet": "The Gemini and NotebookLM offerings from Google, as well as Copilot from Microsoft, which are accessible via an ETH cloud subscription, are available to all ETH employees and students via secure access.",
+          "snapshotHash": "8563b0d2c459dc2fcd4124305a5ec6532249ec6ac373d1df3f094e89381499c5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "national-university-of-singapore",
+      "universityName": "National University of Singapore (NUS)",
+      "qsRank": 8,
+      "tool": "unspecified_ai_tool",
+      "rawToolName": "AI tools",
+      "availability": "conditionally_allowed",
+      "endorsementType": "not_specified",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+          "sourceTitle": "Policy for Use of AI in Teaching and Learning",
+          "evidenceSnippet": "Conversely, the default assumption for any unsupervised (e.g., “take home”) assessment task is that the use of AI tools is permitted so long as the use is duly acknowledged.",
+          "snapshotHash": "0f82a4b2805aafd7c3581770af9366a1b74cb42a11821991454eac7d12807f48",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ucl",
+      "universityName": "UCL",
+      "qsRank": 9,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ucl.ac.uk/news/2024/mar/more-secure-generative-ai-tool-available-staff-and-students",
+          "sourceTitle": "More secure generative AI tool available for staff and students",
+          "evidenceSnippet": "UCL staff and students can now access Microsoft Copilot. Microsoft Copilot is a safer generative AI tool than using the consumer-oriented generative AI services, provided you log in with your UCL credentials.",
+          "snapshotHash": "2543caa82b3d4b516ff532894d357d3fd9648d9734c6dd1a37a69c0fe912d426",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "california-institute-of-technology",
+      "universityName": "California Institute of Technology (Caltech)",
+      "qsRank": 10,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.imss.caltech.edu/services/ai",
+          "sourceTitle": "Generative AI - Information Management Systems and Services",
+          "evidenceSnippet": "For Caltech business, use only Caltech-managed, contract-approved, or SSO-protected AI tools. The restricted Microsoft Copilot (browser-based version) is available to Caltech users and may be used for institutional work where appropriate.",
+          "snapshotHash": "0f089b6fa3a727ccaaffdcddd6bc69e1e37d36f2bcfc3539368e1e9bc695d07a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    {
+      "universitySlug": "national-university-of-singapore",
+      "note": "Firecrawl did not find a public NUS-wide named approved-tools directory. The public teaching policy references NUS approved AI tools without exposing the list, so seed tools were not inferred."
+    },
+    {
+      "universitySlug": "university-of-cambridge",
+      "note": "OpenAI ChatGPT and Claude are mentioned as examples of LLMs, but the official availability statement applies to Copilot, Gemini and NotebookLM only."
+    },
+    {
+      "universitySlug": "eth-zurich",
+      "note": "ChatGPT and Claude appear under additional tools, not in the recommended/protected ETH account group, so they were not marked allowed."
+    },
+    {
+      "universitySlug": "stanford-university",
+      "note": "Stanford AI Playground clearly exposes OpenAI, Google, Anthropic and DeepSeek model families. The ChatGPT-normalized record is marked needs_review because the primary official tool is the Stanford-hosted platform rather than consumer ChatGPT."
+    }
+  ]
+}
