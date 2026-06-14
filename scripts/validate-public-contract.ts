@@ -5,6 +5,7 @@ import {
   publicEntitySummarySchema,
   publicRecentChangesEnvelopeSchema,
   publicRecentChangesResponseSchema,
+  publicToolsResponseSchema,
   publicUniversityListResponseSchema
 } from "@uapt/shared";
 
@@ -14,6 +15,7 @@ const apiIndex = publicApiIndexResponseSchema.parse(
 const universityList = publicUniversityListResponseSchema.parse(
   publicContractExamples.universityList
 );
+const tools = publicToolsResponseSchema.parse(publicContractExamples.toolsResponse);
 const summaries = publicContractExamples.universities.map((summary) =>
   publicEntitySummarySchema.parse(summary)
 );
@@ -42,5 +44,5 @@ const evidenceCount = summaries.reduce(
 );
 
 console.log(
-  `Validated ${apiIndex.data.endpoints.length} public endpoints, ${universityList.data.count} listed universities, ${summaryResponses.length} enveloped university records, ${summaries.length} public entity examples, ${claimCount} claims, ${evidenceCount} evidence records, and ${recentChanges.changes.length}/${recentChangesEnvelope.data.changes.length} recent-change records.`
+  `Validated ${apiIndex.data.endpoints.length} public endpoints, ${universityList.data.count} listed universities, ${tools.data.count} derived tool records, ${summaryResponses.length} enveloped university records, ${summaries.length} public entity examples, ${claimCount} claims, ${evidenceCount} evidence records, and ${recentChanges.changes.length}/${recentChangesEnvelope.data.changes.length} recent-change records.`
 );

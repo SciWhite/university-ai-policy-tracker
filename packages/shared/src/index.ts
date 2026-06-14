@@ -9,3 +9,4 @@ export * from "./dataset-release";
 export * from "./contributions";
 export * from "./analysis";
 export * from "./source-diff-candidates";
+export * from "./tools";

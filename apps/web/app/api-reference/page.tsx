@@ -58,6 +58,12 @@ const apiFamilies = [
       "One public university record's claim/evidence rows with source URL, source language, snapshot hash, confidence, and review state."
   },
   {
+    label: "AI tools directory",
+    path: `/api/public/${PUBLIC_API_VERSION}/tools.json`,
+    description:
+      "Derived university AI tool records with tool-level availability, endorsement type, review state, and evidence snippets. Tool records are discovery metadata, not official policy conclusions."
+  },
+  {
     label: "Recent changes",
     path: `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`,
     description:
@@ -294,6 +300,10 @@ export default function ApiReferencePage() {
           </li>
           <li>
             Alias matches, themes, and coverage scores do not create facts.
+          </li>
+          <li>
+            Tool records are derived from claim and evidence text; they do not
+            replace official university source language.
           </li>
         </ul>
       </ReferenceBox>

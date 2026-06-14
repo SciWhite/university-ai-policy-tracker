@@ -1,5 +1,10 @@
 import { notFound } from "next/navigation";
 import {
+  formatToolAvailability,
+  formatToolEndorsementType,
+  formatToolLabel
+} from "@uapt/shared";
+import {
   getCatalogUniversityBySlug,
   getPublicJsonUrl,
   getPublicUniversitySummaryBySlug
@@ -19,6 +24,7 @@ import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getPolicyAnalysisProfileBySlug } from "@/lib/policy-analysis";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { getUniversityToolRecords } from "@/lib/tool-records";
 
 interface UniversityPageProps {
   params: Promise<{
@@ -35,6 +41,7 @@ type PublicUniversityClaim = PublicUniversitySummary["claims"][number];
 const recordTabs = [
   { label: "Overview", href: "#overview" },
   { label: "Policy profile", href: "#policy-profile" },
+  { label: "AI tools", href: "#tools" },
   { label: "Claims", href: "#claims" },
   { label: "Sources", href: "#sources" },
   { label: "Changes", href: "#changes" },
@@ -86,6 +93,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
   const policyAnalysisProfile = await getPolicyAnalysisProfileBySlug(slug);
+  const toolRecords = await getUniversityToolRecords(slug);
 
   if (!university || !publicSummary) {
     notFound();
@@ -383,6 +391,78 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               </div>
             </ReferenceBox>
           ) : null}
+
+          <ReferenceBox
+            id="tools"
+            title="AI tools"
+            actions={
+              <>
+                <Link className="site-action" href="/tools">
+                  Tools directory
+                </Link>
+              </>
+            }
+          >
+            <div className="tag-row">
+              <MetaLabel label="Derived tool records">
+                {toolRecords.length}
+              </MetaLabel>
+              <MetaLabel label="Boundary">
+                Derived from claim/evidence text
+              </MetaLabel>
+            </div>
+            {toolRecords.length ? (
+              <div className="analysis-dimension-list">
+                {toolRecords.map((record) => (
+                  <article
+                    className="analysis-dimension-row"
+                    data-analysis-status={record.availability}
+                    key={`${record.universitySlug}:${record.tool}`}
+                  >
+                    <div>
+                      <h3>{formatToolLabel(record.tool)}</h3>
+                      <p>
+                        {formatToolAvailability(record.availability)} ·{" "}
+                        {formatToolEndorsementType(record.endorsementType)}
+                      </p>
+                      <p className="muted">
+                        Tool status is derived from source-backed public claim
+                        and evidence text. It does not replace official
+                        university source language.
+                      </p>
+                    </div>
+                    <div className="analysis-dimension-row__meta">
+                      <MetaLabel label="Availability">
+                        {formatToolAvailability(record.availability)}
+                      </MetaLabel>
+                      <MetaLabel label="Endorsement">
+                        {formatToolEndorsementType(record.endorsementType)}
+                      </MetaLabel>
+                      <StateLabel prefix="" reviewState={record.reviewState} />
+                      <MetaLabel label="Evidence">
+                        {record.evidence.length}
+                      </MetaLabel>
+                    </div>
+                    <div className="analysis-dimension-row__links">
+                      {record.evidence.slice(0, 3).map((evidence) => (
+                        <a
+                          href={evidence.sourceUrl}
+                          key={`${record.tool}:${evidence.sourceUrl}:${evidence.snapshotHash}`}
+                        >
+                          Source
+                        </a>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <p className="notice-card">
+                No tool-level evidence is published for this record yet. Broad
+                AI tool mentions are not expanded into named tool conclusions.
+              </p>
+            )}
+          </ReferenceBox>
 
           <section className="record-section" id="claims">
             <div className="section-heading">

@@ -45,6 +45,12 @@ const retrievalLinks = [
       "Source-backed records mentioning approved tools, licensed services, Copilot, procurement, or security review."
   },
   {
+    label: "AI tools directory",
+    href: "/tools",
+    description:
+      "Derived tool records with availability, endorsement type, review state, and source evidence."
+  },
+  {
     label: "Datasets",
     href: "/datasets",
     description:

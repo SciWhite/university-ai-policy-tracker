@@ -29,6 +29,12 @@ import {
 } from "./claims";
 import type { SeedPolicySource, SeedUniversity } from "./schemas";
 import { seedUniversities } from "./seed";
+import {
+  buildPublicToolsResponse,
+  deriveUniversityToolRecords,
+  publicToolsResponseSchema,
+  type PublicToolsResponse
+} from "./tools";
 
 export function buildSeedPublicEntitySummary(
   university: SeedUniversity,
@@ -61,7 +67,8 @@ export function buildSeedPublicEntitySummary(
           sourceSnapshotHash: attribution.snapshotHash,
           evidenceSnippet:
             `Seed catalog record: ${source.title}. This local example is a ` +
-            "contract placeholder, not a reviewed policy conclusion.",
+            "contract placeholder, not a reviewed policy conclusion. " +
+            buildSeedToolMentionSentence(source),
           evidenceSnippetDisplay:
             "Display helper: local seed metadata only. Original evidence remains canonical.",
           retrievedAt: source.lastCheckedAt,
@@ -195,6 +202,11 @@ export function buildPublicApiIndexData(
         `/api/public/${PUBLIC_API_VERSION}/claims/anu.json`,
         "One public university record's claim/evidence rows with source URL, source language, snapshot hash, confidence, and review state.",
         `/api/public/${PUBLIC_API_VERSION}/claims/{slug}.json`
+      ),
+      endpoint(
+        "AI tools directory",
+        `/api/public/${PUBLIC_API_VERSION}/tools.json`,
+        "Derived university AI tool records with tool-level availability, endorsement type, review state, and evidence snippets. Tool records are discovery metadata, not official policy conclusions."
       ),
       endpoint(
         "Recent changes",
@@ -410,6 +422,11 @@ export function buildPublicApiIndexData(
         "Policy analysis",
         "/analysis",
         "Deterministic source-backed policy analysis profiles, coverage scores, dimensions, and caveats."
+      ),
+      trustPage(
+        "AI tools",
+        "/tools",
+        "Derived AI tool directory with source-backed evidence, review state, and policy-boundary caveats."
       ),
       trustPage(
         "Coverage",
@@ -667,6 +684,11 @@ export const publicContractExamples = {
     DEFAULT_PUBLIC_SITE_BASE_URL,
     "2026-05-04T00:00:00.000Z"
   ),
+  toolsResponse: buildPublicToolsResponse(
+    deriveUniversityToolRecords(buildSeedPublicEntitySummaries()),
+    DEFAULT_PUBLIC_SITE_BASE_URL,
+    "2026-05-04T00:00:00.000Z"
+  ) satisfies PublicToolsResponse,
   universityResponses: buildSeedPublicEntitySummaries().map((summary) =>
     buildPublicEntitySummaryResponse(
       summary,
@@ -733,6 +755,22 @@ function buildSeedSourceAttribution(
     official: true,
     sourceRights: OFFICIAL_SOURCE_RIGHTS_CAVEAT
   };
+}
+
+function buildSeedToolMentionSentence(source: SeedPolicySource): string {
+  const labels: Record<string, string> = {
+    chatgpt: "ChatGPT",
+    microsoft_copilot: "Microsoft Copilot",
+    deepseek: "DeepSeek",
+    gemini: "Gemini",
+    claude: "Claude",
+    institutional_ai_service: "institutional AI service"
+  };
+  const tools = source.tools.map((tool) => labels[tool] ?? tool);
+
+  return tools.length
+    ? `Seed metadata names ${tools.join(", ")} without making a tool-level availability conclusion.`
+    : "Seed metadata does not name a specific AI tool.";
 }
 
 function normalizeClaimReviewState(value: string): ClaimReviewState {
