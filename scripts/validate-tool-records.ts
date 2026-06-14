@@ -79,6 +79,38 @@ assert.equal(
 );
 assert.equal(formatToolLabel("self_deploy"), "University-hosted platform");
 
+const normalizedSummary = buildSummary(
+  "normalized-tools-fixture",
+  "Normalized Tools Fixture",
+  [
+    buildClaim(
+      "Adobe Firefly is listed for Normalized Tools Fixture in an official university AI tools source.",
+      "agent_reviewed",
+      JSON.stringify({
+        tool: "adobe_firefly",
+        rawToolName: "Adobe Firefly",
+        description: "Generate or modify images via text prompts",
+        howToObtain: "Use the university Adobe Creative Cloud license",
+        costToUser: "Free",
+        availability: "allowed",
+        endorsementType: "institutionally_licensed_or_procured"
+      })
+    )
+  ]
+);
+
+const normalizedRecords = deriveUniversityToolRecordsForSummary(normalizedSummary);
+assert.equal(normalizedRecords[0]?.rawToolName, "Adobe Firefly");
+assert.equal(
+  normalizedRecords[0]?.description,
+  "Generate or modify images via text prompts"
+);
+assert.equal(
+  normalizedRecords[0]?.howToObtain,
+  "Use the university Adobe Creative Cloud license"
+);
+assert.equal(normalizedRecords[0]?.costToUser, "Free");
+
 const chinaSummary = buildSummary("china-tools-fixture", "China Tools Fixture", [
   buildClaim("Kimi | Available to students and staff through the university portal"),
   buildClaim("GLM | Available to students and staff through the university portal"),
@@ -149,6 +181,7 @@ assert.equal(
 publicToolsResponseSchema.parse(
   buildPublicToolsResponse([
     ...mitRecords,
+    ...normalizedRecords,
     ...chinaRecords,
     ...genericRecords,
     ...selfDeployRecords,
@@ -158,7 +191,7 @@ publicToolsResponseSchema.parse(
 );
 
 console.log(
-  `Validated ${mitRecords.length + chinaRecords.length + genericRecords.length + selfDeployRecords.length + institutionalRecords.length + blockedRecords.length} derived tool fixture records.`
+  `Validated ${mitRecords.length + normalizedRecords.length + chinaRecords.length + genericRecords.length + selfDeployRecords.length + institutionalRecords.length + blockedRecords.length} derived tool fixture records.`
 );
 
 function buildSummary(
@@ -216,13 +249,15 @@ function buildSummary(
 
 function buildClaim(
   text: string,
-  reviewState: ClaimReviewState = "agent_reviewed"
+  reviewState: ClaimReviewState = "agent_reviewed",
+  claimValue?: string
 ): PolicyClaim {
   return {
     entitySlug: "fixture",
     entityType: "university",
     claimType: "ai_tool_treatment",
     claimText: text,
+    claimValue,
     confidence: 0.9,
     reviewState,
     evidence: [

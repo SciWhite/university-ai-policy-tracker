@@ -17,7 +17,7 @@ Mode: Firecrawl-first. Search was used for official source discovery; markdown/P
 | 7 | ETH Zurich | https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html |
 | 8 | National University of Singapore (NUS) | https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf |
 | 9 | UCL | https://www.ucl.ac.uk/news/2024/mar/more-secure-generative-ai-tool-available-staff-and-students |
-| 10 | California Institute of Technology (Caltech) | https://www.imss.caltech.edu/services/ai |
+| 10 | California Institute of Technology (Caltech) | https://www.imss.caltech.edu/services/ai/caltech-ai |
 
 ## Data Quality Notes
 
@@ -28,6 +28,8 @@ Mode: Firecrawl-first. Search was used for official source discovery; markdown/P
 - NotebookLM now has a canonical taxonomy key and is split from Gemini when the source explicitly names it.
 - Named school-hosted platforms use `self_deploy` when the source presents a concrete platform such as Parley, dAIsy, Stanford AI Playground, or Harvard AI Sandbox.
 - Stanford and Imperial mention nested model providers inside their institutional platforms. Those provider/model mentions are not promoted into separate allowed tool records.
+- Tool records now carry concise `description`, `howToObtain`, and `costToUser` metadata when the official source exposes those fields or equivalent wording.
+- Caltech's official AI tools table was refreshed from the dedicated `caltech-ai` page and expanded to include Anthropic Claude Standard/Premium and Google Gemini Enterprise for Education Pro. Product variants are still collapsed where the v1 canonical slug model would otherwise merge multiple rows for the same vendor tool.
 - Harvard Google Gemini Pro and Microsoft Copilot Pro rows are omitted from canonical records because v1 slugs do not yet distinguish paid variants from Basic products without merging availability incorrectly.
 
 ## Next Actions

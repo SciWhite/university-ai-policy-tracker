@@ -102,6 +102,20 @@ export type UniversityToolRecord = z.infer<typeof universityToolRecordSchema>;
 export type PublicToolsData = z.infer<typeof publicToolsDataSchema>;
 export type PublicToolsResponse = z.infer<typeof publicToolsResponseSchema>;
 
+const normalizedToolClaimValueSchema = z
+  .object({
+    tool: derivedAiToolSchema.optional(),
+    rawToolName: z.string().min(1).optional(),
+    description: z.string().min(1).optional(),
+    howToObtain: z.string().min(1).optional(),
+    costToUser: z.string().min(1).optional(),
+    availability: toolAvailabilitySchema.optional(),
+    endorsementType: toolEndorsementTypeSchema.optional()
+  })
+  .passthrough();
+
+type NormalizedToolClaimValue = z.infer<typeof normalizedToolClaimValueSchema>;
+
 const genericToolPattern =
   /\b(?:ai tools?|generative ai tools?|genai tools?|ai services?|generative ai services?)\b/i;
 const genericPlatformPattern =
@@ -127,10 +141,22 @@ export function deriveUniversityToolRecordsForSummary(
   for (const claim of summary.claims) {
     if (claim.claimType !== "ai_tool_treatment") continue;
 
+    const normalizedValue = parseNormalizedToolClaimValue(claim.claimValue);
     const segments = getToolSegments(claim);
 
     for (const segment of segments) {
-      const mentions = getMentionedTools(segment.text, segment.rowLike);
+      const mentions = normalizedValue?.tool
+        ? [
+            {
+              tool: normalizedValue.tool,
+              rawToolName:
+                normalizedValue.rawToolName ??
+                getAiToolCatalogEntry(normalizedValue.tool).label,
+              provider: getAiToolCatalogEntry(normalizedValue.tool).provider,
+              label: getAiToolCatalogEntry(normalizedValue.tool).label
+            }
+          ]
+        : getMentionedTools(segment.text, segment.rowLike);
       const segmentTools = mentions.length
         ? mentions
         : deriveFallbackToolMentions(segment.text);
@@ -144,8 +170,10 @@ export function deriveUniversityToolRecordsForSummary(
           snapshotHash: segment.snapshotHash,
           reviewState: claim.reviewState
         });
-        const nextAvailability = classifyAvailability(segment.text);
-        const nextEndorsementType = classifyEndorsement(segment.text);
+        const nextAvailability =
+          normalizedValue?.availability ?? classifyAvailability(segment.text);
+        const nextEndorsementType =
+          normalizedValue?.endorsementType ?? classifyEndorsement(segment.text);
         const existing = buckets.get(key);
 
         if (!existing) {
@@ -156,6 +184,9 @@ export function deriveUniversityToolRecordsForSummary(
               universityName: summary.entity.name,
               rawToolName: mention.rawToolName,
               tool,
+              description: normalizedValue?.description,
+              howToObtain: normalizedValue?.howToObtain,
+              costToUser: normalizedValue?.costToUser,
               availability: nextAvailability,
               endorsementType: nextEndorsementType,
               reviewState: claim.reviewState,
@@ -176,6 +207,18 @@ export function deriveUniversityToolRecordsForSummary(
         existing.endorsementType = chooseEndorsementType(
           existing.endorsementType,
           nextEndorsementType
+        );
+        existing.description = chooseOptionalToolText(
+          existing.description,
+          normalizedValue?.description
+        );
+        existing.howToObtain = chooseOptionalToolText(
+          existing.howToObtain,
+          normalizedValue?.howToObtain
+        );
+        existing.costToUser = chooseOptionalToolText(
+          existing.costToUser,
+          normalizedValue?.costToUser
         );
         existing.reviewState = aggregateClaimReviewState([
           existing.reviewState,
@@ -370,6 +413,21 @@ function getToolSegments(claim: PolicyClaim): ToolSegment[] {
       rowLike: Boolean(rowText)
     }));
   });
+}
+
+function parseNormalizedToolClaimValue(
+  claimValue: string | undefined
+): NormalizedToolClaimValue | undefined {
+  if (!claimValue) return undefined;
+
+  try {
+    const parsed = JSON.parse(claimValue) as unknown;
+    const result = normalizedToolClaimValueSchema.safeParse(parsed);
+
+    return result.success ? result.data : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 interface ToolSegment {
@@ -569,6 +627,20 @@ function chooseRawToolName(current: string, next: string): string {
   if (current.length > next.length) return current;
 
   return current.localeCompare(next) <= 0 ? current : next;
+}
+
+function chooseOptionalToolText(
+  current: string | undefined,
+  next: string | undefined
+): string | undefined {
+  const currentText = current?.trim();
+  const nextText = next?.trim();
+
+  if (!currentText) return nextText || undefined;
+  if (!nextText) return currentText;
+  if (nextText.length > currentText.length) return nextText;
+
+  return currentText;
 }
 
 function isGenericToolSlug(tool: AiToolSlug): boolean {

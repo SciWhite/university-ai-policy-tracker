@@ -1,9 +1,4 @@
-import {
-  formatToolAvailability,
-  formatToolEndorsementType,
-  formatToolLabel,
-  type UniversityToolRecord
-} from "@uapt/shared";
+import { formatToolAvailability, type UniversityToolRecord } from "@uapt/shared";
 import { StateLabel } from "@/components/state-label";
 
 interface ToolRecordFieldsProps {
@@ -16,40 +11,33 @@ export function ToolRecordFields({ record }: ToolRecordFieldsProps) {
   return (
     <dl className="tool-record-fields">
       <div>
-        <dt>tool</dt>
-        <dd>
-          <span>{formatToolLabel(record.tool)}</span>
-          <span className="tool-record-fields__slug">({record.tool})</span>
-        </dd>
+        <dt>Tool</dt>
+        <dd>{record.rawToolName}</dd>
       </div>
       <div>
-        <dt>description</dt>
+        <dt>About</dt>
         <dd>{formatOptional(record.description)}</dd>
       </div>
       <div>
-        <dt>howToObtain</dt>
+        <dt>Access</dt>
         <dd>{formatOptional(record.howToObtain)}</dd>
       </div>
       <div>
-        <dt>costToUser</dt>
+        <dt>Cost</dt>
         <dd>{formatOptional(record.costToUser)}</dd>
       </div>
       <div>
-        <dt>availability</dt>
+        <dt>Availability</dt>
         <dd>{formatToolAvailability(record.availability)}</dd>
       </div>
       <div>
-        <dt>endorsementType</dt>
-        <dd>{formatToolEndorsementType(record.endorsementType)}</dd>
-      </div>
-      <div>
-        <dt>reviewState</dt>
+        <dt>Review</dt>
         <dd>
           <StateLabel prefix="" reviewState={record.reviewState} />
         </dd>
       </div>
       <div className="tool-record-fields__evidence">
-        <dt>evidence[]</dt>
+        <dt>Sources</dt>
         <dd>
           {evidenceLinks.length ? (
             <div className="tool-record-fields__evidence-links">

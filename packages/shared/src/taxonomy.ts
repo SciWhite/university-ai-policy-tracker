@@ -164,6 +164,9 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "Claude / Anthropic",
     provider: "Anthropic",
     aliases: [
+      "Anthropic Claude Standard",
+      "Anthropic Claude Premium",
+      "Anthropic Claude",
       "Claude for Enterprise",
       "Claude for Work",
       "Claude Pro",

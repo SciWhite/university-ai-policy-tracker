@@ -207,7 +207,7 @@ export function buildPublicApiIndexData(
       endpoint(
         "AI tools directory",
         `/api/public/${PUBLIC_API_VERSION}/tools.json`,
-        "Derived university AI tool records with tool-level availability, endorsement type, review state, and evidence snippets. Tool records are discovery metadata, not official policy conclusions."
+        "Derived university AI tool records with tool-level availability, review state, and evidence snippets. Tool records are discovery metadata, not official policy conclusions."
       ),
       endpoint(
         "Recent changes",

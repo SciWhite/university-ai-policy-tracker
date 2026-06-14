@@ -1,7 +1,6 @@
 import {
   PUBLIC_API_VERSION,
   formatToolAvailability,
-  formatToolEndorsementType,
   formatToolLabel,
   type UniversityToolRecord
 } from "@uapt/shared";
@@ -16,7 +15,6 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 interface ToolsPageProps {
   searchParams?: Promise<{
     availability?: string;
-    endorsementType?: string;
     q?: string;
     reviewState?: string;
     tool?: string;
@@ -25,7 +23,6 @@ interface ToolsPageProps {
 
 interface ToolFilters {
   availability?: string;
-  endorsementType?: string;
   q?: string;
   reviewState?: string;
   tool?: string;
@@ -34,7 +31,7 @@ interface ToolFilters {
 export const metadata = {
   title: "AI Tools | University AI Policy Tracker",
   description:
-    "Derived university AI tool records with tool-level evidence, availability, endorsement type, review state, and official source links."
+    "Derived university AI tool records with tool-level evidence, availability, review state, and official source links."
 };
 
 export default async function ToolsPage({ searchParams }: ToolsPageProps) {
@@ -43,9 +40,6 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
   const filteredRecords = filterRecords(records, filters);
   const tools = unique(records.map((record) => record.tool));
   const availabilities = unique(records.map((record) => record.availability));
-  const endorsementTypes = unique(
-    records.map((record) => record.endorsementType)
-  );
   const reviewStates = unique(records.map((record) => record.reviewState));
   const publicJsonPath = `/api/public/${PUBLIC_API_VERSION}/tools.json`;
 
@@ -129,20 +123,6 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
             </select>
           </label>
           <label>
-            <span>Endorsement</span>
-            <select
-              defaultValue={filters.endorsementType ?? ""}
-              name="endorsementType"
-            >
-              <option value="">All endorsement</option>
-              {endorsementTypes.map((endorsementType) => (
-                <option key={endorsementType} value={endorsementType}>
-                  {formatToolEndorsementType(endorsementType)}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
             <span>Review</span>
             <select defaultValue={filters.reviewState ?? ""} name="reviewState">
               <option value="">All review states</option>
@@ -200,7 +180,6 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
 function normalizeFilters(filters: ToolFilters): ToolFilters {
   return {
     availability: normalizeString(filters.availability),
-    endorsementType: normalizeString(filters.endorsementType),
     q: normalizeString(filters.q),
     reviewState: normalizeString(filters.reviewState),
     tool: normalizeString(filters.tool)
@@ -218,12 +197,6 @@ function filterRecords(
     if (filters.availability && record.availability !== filters.availability) {
       return false;
     }
-    if (
-      filters.endorsementType &&
-      record.endorsementType !== filters.endorsementType
-    ) {
-      return false;
-    }
     if (filters.reviewState && record.reviewState !== filters.reviewState) {
       return false;
     }
@@ -239,7 +212,6 @@ function filterRecords(
       record.tool,
       formatToolLabel(record.tool),
       formatToolAvailability(record.availability),
-      formatToolEndorsementType(record.endorsementType),
       ...record.evidence.map((evidence) => evidence.evidenceSnippet)
     ]
       .join(" ")
