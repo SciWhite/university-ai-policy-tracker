@@ -178,6 +178,9 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
                 key={`${record.universitySlug}:${record.tool}`}
                 metadata={
                   <>
+                    <MetaLabel label="Canonical tool">
+                      {formatToolLabel(record.tool)}
+                    </MetaLabel>
                     <MetaLabel label="Availability">
                       {formatToolAvailability(record.availability)}
                     </MetaLabel>
@@ -188,15 +191,16 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
                   </>
                 }
               >
-                <h2>{formatToolLabel(record.tool)}</h2>
+                <h2>{record.rawToolName}</h2>
                 <p>
                   <Link href={`/universities/${record.universitySlug}`}>
                     {record.universityName}
                   </Link>
                 </p>
                 <p className="muted">
-                  Evidence records: {record.evidence.length}. Tool status is
-                  derived from source-backed claim and evidence text.
+                  Canonical slug: {record.tool}. Evidence records:{" "}
+                  {record.evidence.length}. Tool status is derived from
+                  source-backed claim and evidence text.
                 </p>
                 <p>{record.evidence[0]?.evidenceSnippet}</p>
               </DataListRow>
@@ -248,6 +252,8 @@ function filterRecords(
     const haystack = [
       record.universityName,
       record.universitySlug,
+      record.rawToolName,
+      record.tool,
       formatToolLabel(record.tool),
       formatToolAvailability(record.availability),
       formatToolEndorsementType(record.endorsementType),

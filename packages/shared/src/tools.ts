@@ -12,9 +12,16 @@ import {
   type PolicyClaim,
   type PublicEntitySummary
 } from "./claims";
-import { aiTools, serviceTreatments } from "./taxonomy";
+import {
+  aiTools,
+  findToolMentions,
+  getAiToolCatalogEntry,
+  serviceTreatments,
+  type AiToolSlug,
+  type ToolMention
+} from "./taxonomy";
 
-export const derivedAiTools = [...aiTools, "unspecified_ai_tool"] as const;
+export const derivedAiTools = aiTools;
 
 export const toolAvailabilitySchema = z.enum(serviceTreatments);
 
@@ -38,6 +45,7 @@ export const toolEvidenceRecordSchema = z.object({
 export const universityToolRecordSchema = z.object({
   universitySlug: z.string().min(1),
   universityName: z.string().min(1),
+  rawToolName: z.string().min(1),
   tool: derivedAiToolSchema,
   availability: toolAvailabilitySchema,
   endorsementType: toolEndorsementTypeSchema,
@@ -91,21 +99,12 @@ export type UniversityToolRecord = z.infer<typeof universityToolRecordSchema>;
 export type PublicToolsData = z.infer<typeof publicToolsDataSchema>;
 export type PublicToolsResponse = z.infer<typeof publicToolsResponseSchema>;
 
-const toolPatterns: Array<{ tool: DerivedAiTool; pattern: RegExp }> = [
-  { tool: "microsoft_copilot", pattern: /\b(?:microsoft\s+)?copilot\b/i },
-  { tool: "chatgpt", pattern: /\bchatgpt\b|\bchat\s*gpt\b|\bopenai\b/i },
-  { tool: "deepseek", pattern: /\bdeepseek\b/i },
-  { tool: "gemini", pattern: /\bgemini\b|\bgoogle\s+ai\b/i },
-  { tool: "claude", pattern: /\bclaude\b|\banthropic\b/i },
-  {
-    tool: "institutional_ai_service",
-    pattern:
-      /\b(?:institutional|institutionally|university|campus|enterprise|managed)\s+(?:ai|generative ai|genai)\s+(?:service|tool|platform|system)\b/i
-  }
-];
-
 const genericToolPattern =
   /\b(?:ai tools?|generative ai tools?|genai tools?|ai services?|generative ai services?)\b/i;
+const genericPlatformPattern =
+  /\b(?:institutional|institutionally|university|campus|enterprise|managed|secure)\s+(?:ai|generative ai|genai)\s+(?:service|tool|platform|system)\b/i;
+const selfHostedPattern =
+  /\b(?:self-hosted|self hosted|locally hosted|hosted by|on-prem|on premise|university-hosted|mit-hosted|campus-hosted)\b/i;
 
 export function deriveUniversityToolRecords(
   summaries: PublicEntitySummary[]
@@ -123,16 +122,18 @@ export function deriveUniversityToolRecordsForSummary(
   const buckets = new Map<string, UniversityToolRecord>();
 
   for (const claim of summary.claims) {
+    if (claim.claimType !== "ai_tool_treatment") continue;
+
     const segments = getToolSegments(claim);
 
     for (const segment of segments) {
-      const tools = getMentionedTools(segment.text);
-      const genericOnly = !tools.length && genericToolPattern.test(segment.text);
-      const segmentTools: DerivedAiTool[] = genericOnly
-        ? ["unspecified_ai_tool"]
-        : tools;
+      const mentions = getMentionedTools(segment.text, segment.rowLike);
+      const segmentTools = mentions.length
+        ? mentions
+        : deriveFallbackToolMentions(segment.text);
 
-      for (const tool of segmentTools) {
+      for (const mention of segmentTools) {
+        const tool = mention.tool;
         const key = `${summary.entity.slug}:${tool}`;
         const evidence = toolEvidenceRecordSchema.parse({
           sourceUrl: segment.sourceUrl,
@@ -150,6 +151,7 @@ export function deriveUniversityToolRecordsForSummary(
             universityToolRecordSchema.parse({
               universitySlug: summary.entity.slug,
               universityName: summary.entity.name,
+              rawToolName: mention.rawToolName,
               tool,
               availability: nextAvailability,
               endorsementType: nextEndorsementType,
@@ -163,6 +165,10 @@ export function deriveUniversityToolRecordsForSummary(
         existing.availability = chooseAvailability(
           existing.availability,
           nextAvailability
+        );
+        existing.rawToolName = chooseRawToolName(
+          existing.rawToolName,
+          mention.rawToolName
         );
         existing.endorsementType = chooseEndorsementType(
           existing.endorsementType,
@@ -179,8 +185,18 @@ export function deriveUniversityToolRecordsForSummary(
     }
   }
 
-  return Array.from(buckets.values())
-    .map((record) => universityToolRecordSchema.parse(record))
+  const records = Array.from(buckets.values()).map((record) =>
+    universityToolRecordSchema.parse(record)
+  );
+  const hasSpecificToolRecord = records.some(
+    (record) => record.tool !== "unspecified_ai_tool"
+  );
+
+  return records
+    .filter(
+      (record) =>
+        !hasSpecificToolRecord || record.tool !== "unspecified_ai_tool"
+    )
     .sort(compareToolRecords);
 }
 
@@ -289,17 +305,7 @@ export function buildPublicToolsResponse(
 }
 
 export function formatToolLabel(tool: DerivedAiTool): string {
-  const labels: Record<DerivedAiTool, string> = {
-    chatgpt: "ChatGPT / OpenAI",
-    microsoft_copilot: "Microsoft Copilot",
-    deepseek: "DeepSeek",
-    gemini: "Gemini / Google AI",
-    claude: "Claude / Anthropic",
-    institutional_ai_service: "Institutional AI service",
-    unspecified_ai_tool: "Unspecified AI tool"
-  };
-
-  return labels[tool];
+  return getAiToolCatalogEntry(tool).label;
 }
 
 export function formatToolAvailability(availability: ToolAvailability): string {
@@ -331,30 +337,35 @@ function getToolSegments(claim: PolicyClaim): ToolSegment[] {
   return claim.evidence.flatMap((evidence) => {
     const sourceUrl = evidence.sourceUrl;
     const snapshotHash = evidence.sourceSnapshotHash;
+    const rowText = evidence.evidenceSnippet.includes("|")
+      ? evidence.evidenceSnippet.split("|")[0].trim()
+      : undefined;
     const fullText = [
       claim.claimText,
       claim.claimValue,
       evidence.evidenceSnippet,
-      evidence.evidenceSnippetDisplay,
-      evidence.attribution.citationTitle
+      evidence.evidenceSnippetDisplay
     ]
       .filter(Boolean)
       .join(" ");
+    const segments = rowText
+      ? [rowText]
+      : splitSentences(fullText).filter((sentence) => {
+          const mentionsTool =
+            getMentionedTools(sentence, false).length > 0 ||
+            deriveFallbackToolMentions(sentence).length > 0 ||
+            genericToolPattern.test(sentence);
 
-    return splitSentences(fullText)
-      .filter((sentence) => {
-        const mentionsTool =
-          getMentionedTools(sentence).length > 0 ||
-          genericToolPattern.test(sentence);
+          return mentionsTool;
+        });
 
-        return mentionsTool;
-      })
-      .map((sentence) => ({
-        text: sentence,
-        sourceUrl,
-        snapshotHash,
-        evidenceSnippet: clipSnippet(sentence)
-      }));
+    return segments.map((sentence) => ({
+      text: sentence,
+      sourceUrl,
+      snapshotHash,
+      evidenceSnippet: clipSnippet(rowText ? evidence.evidenceSnippet : sentence),
+      rowLike: Boolean(rowText)
+    }));
   });
 }
 
@@ -363,12 +374,66 @@ interface ToolSegment {
   sourceUrl: string;
   snapshotHash: string;
   evidenceSnippet: string;
+  rowLike: boolean;
 }
 
-function getMentionedTools(text: string): DerivedAiTool[] {
-  return toolPatterns
-    .filter(({ pattern }) => pattern.test(text))
-    .map(({ tool }) => tool);
+function getMentionedTools(text: string, rowLike: boolean): ToolMention[] {
+  const mentions = findToolMentions(text);
+  const specificMentions = mentions.filter(
+    ({ tool }) => !isGenericToolSlug(tool)
+  );
+  const selfHostedMentions = mentions.filter(({ tool }) => tool === "self_deploy");
+  const institutionalMentions = mentions.filter(
+    ({ tool }) => tool === "institutional_ai_service"
+  );
+
+  if (rowLike) {
+    return specificMentions.length
+      ? specificMentions
+      : selfHostedMentions.length
+        ? selfHostedMentions
+        : institutionalMentions;
+  }
+
+  if (selfHostedMentions.length) {
+    return selfHostedMentions;
+  }
+
+  if (specificMentions.length) {
+    return specificMentions;
+  }
+
+  if (institutionalMentions.length) {
+    return institutionalMentions;
+  }
+
+  return [];
+}
+
+function deriveFallbackToolMentions(text: string): ToolMention[] {
+  if (genericPlatformPattern.test(text)) {
+    return [
+      {
+        tool: "institutional_ai_service",
+        rawToolName: "Institutional AI service",
+        provider: "University",
+        label: getAiToolCatalogEntry("institutional_ai_service").label
+      }
+    ];
+  }
+
+  if (genericToolPattern.test(text)) {
+    return [
+      {
+        tool: "unspecified_ai_tool",
+        rawToolName: "AI tools",
+        provider: "Unknown",
+        label: getAiToolCatalogEntry("unspecified_ai_tool").label
+      }
+    ];
+  }
+
+  return [];
 }
 
 function classifyAvailability(text: string): ToolAvailability {
@@ -400,7 +465,7 @@ function classifyAvailability(text: string): ToolAvailability {
 }
 
 function classifyEndorsement(text: string): ToolEndorsementType {
-  if (/\b(?:self-hosted|self hosted|locally hosted|hosted by|on-prem|on premise)\b/i.test(text)) {
+  if (selfHostedPattern.test(text)) {
     return "self_hosted_system";
   }
 
@@ -490,7 +555,19 @@ function compareToolRecords(
   right: UniversityToolRecord
 ): number {
   return (
+    left.rawToolName.localeCompare(right.rawToolName) ||
     left.tool.localeCompare(right.tool) ||
     left.universityName.localeCompare(right.universityName)
   );
+}
+
+function chooseRawToolName(current: string, next: string): string {
+  if (next.length > current.length) return next;
+  if (current.length > next.length) return current;
+
+  return current.localeCompare(next) <= 0 ? current : next;
+}
+
+function isGenericToolSlug(tool: AiToolSlug): boolean {
+  return tool === "institutional_ai_service" || tool === "unspecified_ai_tool";
 }

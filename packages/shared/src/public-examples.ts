@@ -32,6 +32,7 @@ import { seedUniversities } from "./seed";
 import {
   buildPublicToolsResponse,
   deriveUniversityToolRecords,
+  formatToolLabel,
   publicToolsResponseSchema,
   type PublicToolsResponse
 } from "./tools";
@@ -758,15 +759,9 @@ function buildSeedSourceAttribution(
 }
 
 function buildSeedToolMentionSentence(source: SeedPolicySource): string {
-  const labels: Record<string, string> = {
-    chatgpt: "ChatGPT",
-    microsoft_copilot: "Microsoft Copilot",
-    deepseek: "DeepSeek",
-    gemini: "Gemini",
-    claude: "Claude",
-    institutional_ai_service: "institutional AI service"
-  };
-  const tools = source.tools.map((tool) => labels[tool] ?? tool);
+  const tools = source.tools.map((tool) =>
+    formatToolLabel(tool as Parameters<typeof formatToolLabel>[0])
+  );
 
   return tools.length
     ? `Seed metadata names ${tools.join(", ")} without making a tool-level availability conclusion.`

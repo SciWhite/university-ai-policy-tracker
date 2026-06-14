@@ -420,18 +420,23 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                     key={`${record.universitySlug}:${record.tool}`}
                   >
                     <div>
-                      <h3>{formatToolLabel(record.tool)}</h3>
+                      <h3>{record.rawToolName}</h3>
                       <p>
                         {formatToolAvailability(record.availability)} ·{" "}
                         {formatToolEndorsementType(record.endorsementType)}
                       </p>
                       <p className="muted">
+                        Canonical tool: {formatToolLabel(record.tool)} (
+                        {record.tool}).{" "}
                         Tool status is derived from source-backed public claim
                         and evidence text. It does not replace official
                         university source language.
                       </p>
                     </div>
                     <div className="analysis-dimension-row__meta">
+                      <MetaLabel label="Canonical tool">
+                        {formatToolLabel(record.tool)}
+                      </MetaLabel>
                       <MetaLabel label="Availability">
                         {formatToolAvailability(record.availability)}
                       </MetaLabel>
