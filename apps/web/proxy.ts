@@ -3,7 +3,10 @@ import { NextResponse, type NextRequest } from "next/server";
 const PRIVATE_ANALYTICS_USERNAME = "uapt";
 
 export function proxy(request: NextRequest) {
-  const token = process.env.INGESTION_TOKEN?.trim() ?? "";
+  const token =
+    process.env.INTERNAL_ANALYTICS_PASSWORD?.trim() ??
+    process.env.INGESTION_TOKEN?.trim() ??
+    "";
 
   if (!token && process.env.NODE_ENV !== "production") {
     return NextResponse.next();
