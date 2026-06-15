@@ -410,7 +410,7 @@ th {
 .site-footer__inner {
   display: grid;
   gap: 28px;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.7fr);
+  grid-template-columns: 1fr;
   padding-bottom: 24px;
   padding-top: 24px;
 }

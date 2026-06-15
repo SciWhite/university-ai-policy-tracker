@@ -31,7 +31,6 @@ interface UniversitiesIndexClientProps {
   rankingSystems: UniversityIndexRankingSystem[];
   totalClaimCount: number;
   totalRecordCount: number;
-  totalReviewedClaimCount: number;
   totalSourceCount: number;
 }
 
@@ -61,7 +60,6 @@ export function UniversitiesIndexClient({
   rankingSystems,
   totalClaimCount,
   totalRecordCount,
-  totalReviewedClaimCount,
   totalSourceCount
 }: UniversitiesIndexClientProps) {
   const copy = getPageCopy(locale).universities;
@@ -129,7 +127,6 @@ export function UniversitiesIndexClient({
       ),
     [allRecords, filters.coverage, filters.order, filters.q, filters.sort, locale]
   );
-  const candidateClaims = totalClaimCount - totalReviewedClaimCount;
   const rankedCount = hasFullIndex
     ? allRecords.filter((record) => record.selectedRanking).length
     : (rankingCounts[filters.ranking] ?? 0);
@@ -150,7 +147,6 @@ export function UniversitiesIndexClient({
       <section className="hero">
         <p className="kicker">{copy.kicker}</p>
         <h1>{copy.heading}</h1>
-        <p className="lead">{copy.lead}</p>
       </section>
 
       <section className="metrics-grid" aria-label={copy.coverageLabel}>
@@ -172,20 +168,10 @@ export function UniversitiesIndexClient({
         </div>
       </section>
 
-      <section className="answer-strip" aria-label={copy.answersLabel}>
-        {copy.answerCards.map((answer) => (
-          <article className="answer-card" key={answer.title}>
-            <h2>{answer.title}</h2>
-            <p>{answer.text}</p>
-          </article>
-        ))}
-      </section>
-
       {priorityRecords.length ? (
         <section className="section" aria-labelledby="priority-university-records">
           <div className="section-heading">
             <h2 id="priority-university-records">{copy.priorityTitle}</h2>
-            <p>{copy.priorityLead}</p>
           </div>
           <div className="source-attribution-list">
             {priorityRecords.map((record) => {
@@ -199,12 +185,6 @@ export function UniversitiesIndexClient({
                 <article className="source-attribution-row" key={record.slug}>
                   <div>
                     <h3>{displayName}</h3>
-                    <p>
-                      {record.claimCount} source-backed AI policy{" "}
-                      {record.claimCount === 1 ? "claim" : "claims"} from{" "}
-                      {record.sourceCount} official source{" "}
-                      {record.sourceCount === 1 ? "attribution" : "attributions"}.
-                    </p>
                     <div className="tag-row">
                       {record.reviewState ? (
                         <StateLabel reviewState={record.reviewState} />
@@ -244,7 +224,6 @@ export function UniversitiesIndexClient({
       >
         <div className="section-heading">
           <h2>{copy.indexTitle}</h2>
-          <p>{copy.indexLead}</p>
         </div>
 
         <form
@@ -439,11 +418,6 @@ export function UniversitiesIndexClient({
         {!filteredRecords.length ? (
           <p className="notice-card">
             {copy.noMatches}
-          </p>
-        ) : null}
-        {candidateClaims ? (
-          <p className="notice-card">
-            {copy.candidateNotice(candidateClaims)}
           </p>
         ) : null}
       </section>

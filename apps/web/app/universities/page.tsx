@@ -50,10 +50,6 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
     (total, record) => total + record.claimCount,
     0
   );
-  const totalReviewedClaimCount = records.reduce(
-    (total, record) => total + record.reviewedClaimCount,
-    0
-  );
   const totalSourceCount = records.reduce(
     (total, record) => total + record.sourceCount,
     0
@@ -96,7 +92,6 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
         rankingSystems={universityIndexRankingSystems}
         totalClaimCount={totalClaimCount}
         totalRecordCount={records.length}
-        totalReviewedClaimCount={totalReviewedClaimCount}
         totalSourceCount={totalSourceCount}
       />
     </>

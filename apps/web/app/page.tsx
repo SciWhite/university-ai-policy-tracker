@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import {
-  NO_ADVICE_BOUNDARY,
-  OFFICIAL_SOURCE_RIGHTS_CAVEAT,
-  PUBLIC_API_VERSION
-} from "@uapt/shared";
+import { PUBLIC_API_VERSION } from "@uapt/shared";
 import { DataList, DataListRow } from "@/components/data-list";
 import { DocumentLink as Link } from "@/components/document-link";
 import { JsonLd } from "@/components/json-ld";
@@ -169,9 +165,6 @@ export default async function HomePage({ params }: HomePageProps) {
         <div>
           <p className="kicker">{copy.kicker}</p>
           <h1 id="home-search-title">{pageTitle}</h1>
-          <p className="lead lead--compact">
-            {copy.lead}
-          </p>
           <form action="/search" className="home-search-form" method="get">
             <label className="visually-hidden" htmlFor="home-search-input">
               {copy.searchLabel}
@@ -190,9 +183,6 @@ export default async function HomePage({ params }: HomePageProps) {
               </Link>
             ))}
           </div>
-          <p className="compact-note">
-            {copy.note}
-          </p>
           <div className="tag-row hero-meta">
             <MetaLabel label={copy.publicJson}>{universitiesJsonPath}</MetaLabel>
             <MetaLabel label={copy.searchApi}>{searchJsonPath}</MetaLabel>
@@ -217,30 +207,6 @@ export default async function HomePage({ params }: HomePageProps) {
             <p>{copy.analysisProfiles}</p>
           </div>
         </aside>
-      </section>
-
-      <section className="answer-strip" aria-label={copy.answersLabel}>
-        {copy.homeAnswers.map((answer) => (
-          <article className="answer-card" key={answer.title}>
-            <h2>{answer.title}</h2>
-            <p>{answer.text}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="entry-group-grid" aria-label={copy.entryGroupsLabel}>
-        {copy.entryGroups.map((group) => (
-          <section className="entry-group" key={group.title}>
-            <h2>{group.title}</h2>
-            <ul>
-              {group.links.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
       </section>
 
       <section className="section compact-section">
@@ -317,44 +283,6 @@ export default async function HomePage({ params }: HomePageProps) {
             </DataListRow>
           ))}
         </DataList>
-      </section>
-
-      <section className="section compact-section">
-        <div className="section-heading">
-          <h2>{copy.agentRetrievalTitle}</h2>
-          <p>{copy.agentRetrievalLead}</p>
-        </div>
-        <div className="detail-grid">
-          <article className="policy-card">
-            <h3>{copy.aiSystemsTitle}</h3>
-            <p>{copy.aiSystemsText}</p>
-            <div className="tag-row">
-              <Link href="/university-ai-policy-database">
-                {copy.aiSearchReference}
-              </Link>
-              <Link href="/llms.txt">llms.txt</Link>
-            </div>
-          </article>
-          <article className="policy-card">
-            <h3>{copy.researchersTitle}</h3>
-            <p>{copy.researchersText}</p>
-            <div className="tag-row">
-              <Link href="/citation">{copy.citationGuide}</Link>
-              <Link href="/methodology">{copy.methodology}</Link>
-            </div>
-          </article>
-          <article className="policy-card">
-            <h3>{copy.developersTitle}</h3>
-            <p>{copy.developersText}</p>
-            <div className="tag-row">
-              <Link href="/api-reference">{copy.apiDocs}</Link>
-              <Link href={`/api/public/${PUBLIC_API_VERSION}/index.json`}>
-                {copy.apiIndex}
-              </Link>
-            </div>
-          </article>
-        </div>
-        <p className="notice-card">{OFFICIAL_SOURCE_RIGHTS_CAVEAT}</p>
       </section>
     </main>
   );
