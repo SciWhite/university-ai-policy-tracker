@@ -1,6 +1,7 @@
 export const aiTools = [
   "chatgpt",
   "codex",
+  "dalle",
   "claude",
   "deepseek",
   "gemini",
@@ -14,10 +15,12 @@ export const aiTools = [
   "azure_openai",
   "google_vertex_ai",
   "google_ai_studio",
+  "google_ai_pro",
   "google_workspace_studio",
   "salesforce_einstein",
   "zoom_ai_companion",
   "perplexity",
+  "grammarly",
   "scite_ai",
   "scopus_ai",
   "kimi",
@@ -159,6 +162,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     aliases: ["OpenAI Codex", "Codex"],
     category: "commercial_assistant"
   },
+  dalle: {
+    slug: "dalle",
+    label: "DALL-E / OpenAI",
+    provider: "OpenAI",
+    aliases: ["DALL-E", "DALL·E", "DALL∙E", "DALL E"],
+    category: "commercial_assistant"
+  },
   claude: {
     slug: "claude",
     label: "Claude / Anthropic",
@@ -269,6 +279,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     aliases: ["Google AI Studio", "AI Studio"],
     category: "cloud_platform"
   },
+  google_ai_pro: {
+    slug: "google_ai_pro",
+    label: "Google AI Pro",
+    provider: "Google",
+    aliases: ["Google AI Pro", "Google AI Pro Edu"],
+    category: "office_suite"
+  },
   google_workspace_studio: {
     slug: "google_workspace_studio",
     label: "Google Workspace Studio",
@@ -295,6 +312,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "Perplexity",
     provider: "Perplexity",
     aliases: ["Perplexity"],
+    category: "commercial_assistant"
+  },
+  grammarly: {
+    slug: "grammarly",
+    label: "Grammarly",
+    provider: "Grammarly",
+    aliases: ["Grammarly", "Grammarly for Education"],
     category: "commercial_assistant"
   },
   scite_ai: {

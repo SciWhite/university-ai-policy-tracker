@@ -163,7 +163,11 @@ export function deriveUniversityToolRecordsForSummary(
 
       for (const mention of segmentTools) {
         const tool = mention.tool;
-        const key = `${summary.entity.slug}:${tool}`;
+        const key = buildToolRecordKey(
+          summary.entity.slug,
+          tool,
+          normalizedValue?.rawToolName
+        );
         const evidence = toolEvidenceRecordSchema.parse({
           sourceUrl: segment.sourceUrl,
           evidenceSnippet: segment.evidenceSnippet,
@@ -641,6 +645,21 @@ function chooseOptionalToolText(
   if (nextText.length > currentText.length) return nextText;
 
   return currentText;
+}
+
+function buildToolRecordKey(
+  universitySlug: string,
+  tool: AiToolSlug,
+  rawToolName?: string
+): string {
+  const normalizedRawToolName = rawToolName
+    ?.trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+
+  return normalizedRawToolName
+    ? `${universitySlug}:${tool}:${normalizedRawToolName}`
+    : `${universitySlug}:${tool}`;
 }
 
 function isGenericToolSlug(tool: AiToolSlug): boolean {

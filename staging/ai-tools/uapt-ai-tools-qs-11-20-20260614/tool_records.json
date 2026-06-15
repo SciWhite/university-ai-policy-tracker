@@ -1,0 +1,1316 @@
+{
+  "schemaVersion": "uapt-ai-tools-derived-staging-v2",
+  "runId": "uapt-ai-tools-qs-11-20-20260614",
+  "generatedAt": "2026-06-15T01:26:05.188Z",
+  "rankingSystem": "QS World University Rankings",
+  "rankingYear": 2026,
+  "rankRange": "11-20",
+  "crawlMode": "firecrawl_first",
+  "limitations": [
+    "Records are tool-level staging evidence, not official university conclusions.",
+    "Do not infer named tool availability from generic AI policy language.",
+    "snapshotHash values in this staging file are SHA-256 hashes of the captured evidence snippets; canonical ingestion should replace them with full source snapshot hashes.",
+    "Official tool tables/directories are split one explicit row at a time; nested provider/model mentions inside platform descriptions are not promoted to allowed tool records by default.",
+    "Future-dated access commitments are represented as conditionally_allowed with the access timing preserved in howToObtain."
+  ],
+  "records": [
+    {
+      "universitySlug": "the-university-of-hong-kong",
+      "universityName": "The University of Hong Kong (HKU)",
+      "qsRank": 11,
+      "tool": "self_deploy",
+      "rawToolName": "HKU ChatGPT Web App",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://its.hku.hk/services/ai-as-a-service/hku-chatgpt/",
+          "sourceTitle": "HKUGenAI Tools - Information Technology Services",
+          "evidenceSnippet": "HKUGenAI Tools | HKU ChatGPT Web App | Staff and students can use selected large-language models for teaching, learning, work and research-related purposes; staff have unlimited requests per day except gpt-5.5, and students receive a monthly token quota.",
+          "snapshotHash": "e803ebe91f8568566f02f997b18afff10a11deea44146da41b2a0bf576cb4321",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "HKU-hosted chat interface for selected large-language models, limited to teaching, learning, work and research-related purposes.",
+      "howToObtain": "Use HKU ChatGPT Web App with HKU access; staff and students receive quota-based access.",
+      "costToUser": "Included within HKU quotas; self-pay subscription may increase quota for some services."
+    },
+    {
+      "universitySlug": "the-university-of-hong-kong",
+      "universityName": "The University of Hong Kong (HKU)",
+      "qsRank": 11,
+      "tool": "self_deploy",
+      "rawToolName": "HKU DALL∙E Web App",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://its.hku.hk/services/ai-as-a-service/hku-chatgpt/",
+          "sourceTitle": "HKUGenAI Tools - Information Technology Services",
+          "evidenceSnippet": "HKUGenAI Tools | HKU DALL∙E Web App | Staff and students can use image generation models including gpt-image and Gemini image models; staff have up to 70 requests per week and students use the monthly token quota.",
+          "snapshotHash": "bdb6b1616a5ce9d3367b223a2682ac8eb78cc8611a606d1a6a61cbbb3f82795a",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "HKU-hosted image generation web app using selected image generation models.",
+      "howToObtain": "Use HKU DALL∙E Web App with HKU access; staff and students receive quota-based access.",
+      "costToUser": "Included within HKU quotas; self-pay subscription may increase quota for some services."
+    },
+    {
+      "universitySlug": "the-university-of-hong-kong",
+      "universityName": "The University of Hong Kong (HKU)",
+      "qsRank": 11,
+      "tool": "institutional_ai_service",
+      "rawToolName": "HKU ITS Developer Portal API",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://its.hku.hk/services/ai-as-a-service/hku-chatgpt/",
+          "sourceTitle": "HKUGenAI Tools - Information Technology Services",
+          "evidenceSnippet": "HKUGenAI Tools | API Developer Portal (Staff) and API Developer Portal (Student) | HKU ITS provides API access to selected large-language, embedding, and image generation models powered by Microsoft Azure and Google Vertex AI services.",
+          "snapshotHash": "fcebe524a4dcb97b36ef7cb4da6ee848fa92a2fa4c76c0c2118ade19ec42dedd",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "HKU ITS developer API access for selected LLM, embedding, and image-generation services.",
+      "howToObtain": "Use the HKU ITS Developer Portal for staff or student API products.",
+      "costToUser": "Quota-based access; self-pay subscription may increase quota for some services."
+    },
+    {
+      "universitySlug": "nanyang-technological-university-singapore-ntu-singapore",
+      "universityName": "Nanyang Technological University, Singapore (NTU Singapore)",
+      "qsRank": 12,
+      "tool": "gemini",
+      "rawToolName": "Gemini Enterprise",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ntu.edu.sg/news/detail/empowering-students-to-thrive-in-the-age-of-ai",
+          "sourceTitle": "Empowering students to thrive in the age of AI | NTU Singapore",
+          "evidenceSnippet": "From August 2026, NTU will give all undergraduates full access to a suite of premium Google AI tools, such as Gemini Enterprise, Google AI Studio, and Vertex AI.",
+          "snapshotHash": "d7cfadda36fa112a5f8a1d6c903ba940c4d0bf7e8ae0f572b99089de673c3873",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Premium Google AI chat and assistant capability for NTU undergraduates.",
+      "howToObtain": "Planned full undergraduate access from August 2026.",
+      "costToUser": "Not specified; NTU states students will receive access and computing credits."
+    },
+    {
+      "universitySlug": "nanyang-technological-university-singapore-ntu-singapore",
+      "universityName": "Nanyang Technological University, Singapore (NTU Singapore)",
+      "qsRank": 12,
+      "tool": "google_ai_studio",
+      "rawToolName": "Google AI Studio",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ntu.edu.sg/news/detail/empowering-students-to-thrive-in-the-age-of-ai",
+          "sourceTitle": "Empowering students to thrive in the age of AI | NTU Singapore",
+          "evidenceSnippet": "From August 2026, NTU will give all undergraduates full access to a suite of premium Google AI tools, such as Gemini Enterprise, Google AI Studio, and Vertex AI.",
+          "snapshotHash": "d7cfadda36fa112a5f8a1d6c903ba940c4d0bf7e8ae0f572b99089de673c3873",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Google tool for building and experimenting with AI applications.",
+      "howToObtain": "Planned full undergraduate access from August 2026.",
+      "costToUser": "Not specified; NTU states students will receive access and computing credits."
+    },
+    {
+      "universitySlug": "nanyang-technological-university-singapore-ntu-singapore",
+      "universityName": "Nanyang Technological University, Singapore (NTU Singapore)",
+      "qsRank": 12,
+      "tool": "google_vertex_ai",
+      "rawToolName": "Vertex AI",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ntu.edu.sg/news/detail/empowering-students-to-thrive-in-the-age-of-ai",
+          "sourceTitle": "Empowering students to thrive in the age of AI | NTU Singapore",
+          "evidenceSnippet": "From August 2026, NTU will give all undergraduates full access to a suite of premium Google AI tools, such as Gemini Enterprise, Google AI Studio, and Vertex AI.",
+          "snapshotHash": "d7cfadda36fa112a5f8a1d6c903ba940c4d0bf7e8ae0f572b99089de673c3873",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Google AI development platform for building and deploying AI agents.",
+      "howToObtain": "Planned full undergraduate access from August 2026.",
+      "costToUser": "Not specified; NTU states students will receive access and computing credits."
+    },
+    {
+      "universitySlug": "nanyang-technological-university-singapore-ntu-singapore",
+      "universityName": "Nanyang Technological University, Singapore (NTU Singapore)",
+      "qsRank": 12,
+      "tool": "self_deploy",
+      "rawToolName": "NTU AI Learning Assistant (NALA)",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ntu.edu.sg/news/detail/empowering-students-to-thrive-in-the-age-of-ai",
+          "sourceTitle": "Empowering students to thrive in the age of AI | NTU Singapore",
+          "evidenceSnippet": "The University has built the NTU AI Learning Assistant (NALA), a platform that enables educators to develop AI tutors trained on course materials to help students address learning gaps.",
+          "snapshotHash": "46a154c92b7b149a270ed0ede33ef934e381a6b1ba30b9e3423305af2ae00d6e",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "NTU-built platform for educators to develop AI tutors trained on course materials.",
+      "howToObtain": "Deployed by educators in courses as part of NTU AI learning initiatives.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "institutional_ai_service",
+      "rawToolName": "Adobe Acrobat AI Assistant",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Adobe Acrobat AI Assistant (paid add-on) | SRDS Public | Document-wide Q&A, full summarization, insights extraction, advanced rewrite tools | Paid, Procurement purchase required | Only for non-sensitive information.",
+          "snapshotHash": "f86ee23016d8734ee5a5646ebc0bfa5f0ba5cedc158999aa547630bfeec6e45b",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Paid Adobe Acrobat add-on for document Q&A, summarization, insights extraction, and rewrite tools.",
+      "howToObtain": "Procurement purchase required.",
+      "costToUser": "Paid."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "claude",
+      "rawToolName": "Anthropic Claude Commercial Account",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Anthropic Claude Commercial Account | Approved up to SRDS low protection level | General Use | Free.",
+          "snapshotHash": "940758ff4d90642fcf4a83c46bbf8b6833b63cfafe72b2ed96799334b0d90d48",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Claude commercial account for general use with low-protection-level data.",
+      "howToObtain": "Use under UChicago SRDS low data restrictions.",
+      "costToUser": "Free."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "claude",
+      "rawToolName": "Anthropic Claude Enterprise Account",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Anthropic Claude Enterprise Account | Coming soon | General Use | Enterprise Supported.",
+          "snapshotHash": "39fe67a453e10f1a2be414cc08b799d6d8dc755abd90868963e4c88403a62db0",
+          "reviewState": "needs_review"
+        }
+      ],
+      "description": "Enterprise-supported Claude access announced as coming soon.",
+      "howToObtain": "Coming soon; UChicago says Claude Enterprise access will be phased in.",
+      "costToUser": "Enterprise supported."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "institutional_ai_service",
+      "rawToolName": "Azure AI",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Azure AI | Approved up to SRDS low protection level | General Use | Enterprise Supported | Only for non-sensitive information.",
+          "snapshotHash": "90d8e4730672f352ac794dbd0ea3afd3c2cc3eaa3b64f417669fcf1dceb42217",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Azure AI access for general use under low-protection-level restrictions.",
+      "howToObtain": "Use through UChicago cloud services and observe SRDS restrictions.",
+      "costToUser": "Enterprise supported."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT 3.5",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "ChatGPT 3.5 | Approved for data that is made publicly available by its source | General Use | Free | Only for non-sensitive information.",
+          "snapshotHash": "c8de63e502b2990d9921f28e64ef486405af4f7a862cd16eff5870d357a05368",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "ChatGPT 3.5 for public/non-sensitive information only.",
+      "howToObtain": "Use only for data made publicly available by its source.",
+      "costToUser": "Free."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT 4.0",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "ChatGPT 4.0 | Approved for data that is made publicly available by its source | General Use | Free | Only for non-sensitive information.",
+          "snapshotHash": "bbccd46731ee59f4e6ad55f1b8b3b65e5291eaf50836bfdbfff96bbe9d913992",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "ChatGPT 4.0 for public/non-sensitive information only.",
+      "howToObtain": "Use only for data made publicly available by its source.",
+      "costToUser": "Free."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "claude",
+      "rawToolName": "claude.ai",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "claude.ai | Approved up to SRDS low protection level | General Use | Paid, Procurement purchase required | Only for non-sensitive information; not to create website chatbots.",
+          "snapshotHash": "0cc786435f8e6d54c4da03fb8c029cafeeac320b1649cdc256f32c16c2d1214a",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Claude web service for general use with SRDS low restrictions.",
+      "howToObtain": "Procurement purchase required for paid use.",
+      "costToUser": "Paid."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "claude",
+      "rawToolName": "Claude Code on Amazon Bedrock",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Claude Code on Amazon Bedrock | Approved up to SRDS low protection level | AI-powered coding assistant | Paid, Procurement purchase required | Only for non-sensitive information.",
+          "snapshotHash": "1cd3cf45cbaf5aba51dd0c2de3a92496485743903ef415387fd51703792f3766",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "AI coding assistant using Claude Code on Amazon Bedrock.",
+      "howToObtain": "Procurement purchase required.",
+      "costToUser": "Paid."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Copilot | Approved up to SRDS high protection level | Various purposes to support Microsoft Products | Enterprise Supported | Can be used for sensitive information with IRB approval.",
+          "snapshotHash": "9ed5febb8379befe1fba230e86137d3b88566039c21c6ad3792356c2bdc23c6d",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Microsoft Copilot for Microsoft product support under UChicago data restrictions.",
+      "howToObtain": "Use enterprise-supported Copilot; sensitive information requires IRB approval where applicable.",
+      "costToUser": "Enterprise supported."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "gemini",
+      "rawToolName": "Gemini through UChicago Google Workspace",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Gemini through UChicago Google Workspace | Approved up to SRDS low protection level | Real-time research, complex reasoning, and Google Workspace integration | Enterprise-supported | Only non-sensitive data.",
+          "snapshotHash": "7218bf92d6fe08de4913252860fe7a6d75e358d598a768d0970ae2984e559397",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Gemini in UChicago Google Workspace for research, reasoning, and Workspace integration.",
+      "howToObtain": "Use through UChicago Google Workspace with non-sensitive data only.",
+      "costToUser": "Enterprise supported."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "google_workspace_studio",
+      "rawToolName": "Google Workspace Studio",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Google Workspace Studio | Approved up to SRDS low protection level | Build AI-driven agents and automated workflows using natural language | Enterprise-supported | Only non-sensitive data.",
+          "snapshotHash": "7e811a2a39d009b0da694a3ce5e709953cb6df23a0b37e82e5884d196be9e69d",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Google Workspace Studio for AI-driven agents and automated workflows.",
+      "howToObtain": "Enabled as a Google Workspace for Education core service; use only non-sensitive data.",
+      "costToUser": "Enterprise supported."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "github_copilot",
+      "rawToolName": "GitHub Copilot Business",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools",
+          "sourceTitle": "UChicago Generative AI Tools | University of Chicago",
+          "evidenceSnippet": "The University offers access to GitHub Copilot Business, an AI-powered software coding assistant developed by GitHub, OpenAI, and Microsoft; users incur a cost and must be part of an existing enterprise GitHub organization.",
+          "snapshotHash": "a92b8ac35b8e24b1f4847bf1e874be617b41fce0bd04589f097109ba3eb6ddeb",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "AI-powered software coding assistant under UChicago GitHub Copilot Business agreement.",
+      "howToObtain": "Unit leaders may contact IT Services; users must be in an enterprise GitHub organization.",
+      "costToUser": "Users incur a cost."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "institutional_ai_service",
+      "rawToolName": "Llama 4",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Llama 4 | Approved up to SRDS low protection level | Multimodal language model for text, image, audio, and video processing | Free | Only for non-sensitive information.",
+          "snapshotHash": "d8de361fb8a52d05406153da8d40049b440582ee81221e89544dbb85753b8d04",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Multimodal language model listed for text, image, audio, and video processing.",
+      "howToObtain": "Use only with non-sensitive information.",
+      "costToUser": "Free."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM through UChicago Google Workspace",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "NotebookLM through UChicago Google Workspace | Approved up to SRDS low protection level | AI-powered research and note-taking tool | Enterprise-supported | Contact UChicago to discuss specific use case.",
+          "snapshotHash": "e7261e674a42335a9d13c03f2e8b3cbc29423158e26f40712418b76162c16fbf",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "AI-powered research and note-taking tool through UChicago Google Workspace.",
+      "howToObtain": "Contact UChicago to discuss specific use case.",
+      "costToUser": "Enterprise supported."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "perplexity",
+      "rawToolName": "Perplexity.ai",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Perplexity.ai | Approved up to SRDS low protection level | AI-powered search and answer engine | Paid, Procurement purchase required | Free version may log and use identifiable queries for model improvement.",
+          "snapshotHash": "a1b2b930e4ec3c16f0b1ec036b38ee87045f7740c4d92b281f510d9c665bec56",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "AI search and answer engine with live web search.",
+      "howToObtain": "Procurement purchase required for paid use; observe privacy restrictions.",
+      "costToUser": "Paid."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "self_deploy",
+      "rawToolName": "PhoenixAI",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "PhoenixAI | General Use | Enterprise-supported | Can be used for sensitive information with IRB approval.",
+          "snapshotHash": "934d6d06cf771436d23428312629c2473a648888d734747405272db68e6f3ffa",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "UChicago generative AI chat service built with large language models and customized for the University community.",
+      "howToObtain": "Visit phoenixai.uchicago.edu and log in with CNetID and password.",
+      "costToUser": "Enterprise supported."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "google_vertex_ai",
+      "rawToolName": "Vertex AI",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Vertex AI | Approved for data that is made publicly available by its source | General Use | Paid, Procurement purchase required | Only for non-central GCP tenant.",
+          "snapshotHash": "be6d0392916345f2e27943184e9eb36e46cb8f9083a491be3472fa7089fb29cc",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Google Vertex AI for public-source data and general use.",
+      "howToObtain": "Procurement purchase required; only for non-central GCP tenant.",
+      "costToUser": "Paid."
+    },
+    {
+      "universitySlug": "university-of-chicago",
+      "universityName": "University of Chicago",
+      "qsRank": 13,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+          "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+          "evidenceSnippet": "Zoom AI Companion | Approved up to SRDS high protection level | Taking meeting notes | Enterprise-supported | Can be used to take notes that include sensitive information.",
+          "snapshotHash": "c768fcc16723e06a8e6fd537579ee8c1632bcb37badf44610b05c222ab0a3967",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Zoom AI Companion for meeting notes under UChicago data restrictions.",
+      "howToObtain": "Use enterprise-supported Zoom AI Companion.",
+      "costToUser": "Enterprise supported."
+    },
+    {
+      "universitySlug": "peking-university",
+      "universityName": "Peking University",
+      "qsRank": 14,
+      "tool": "deepseek",
+      "rawToolName": "DeepSeek",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://lrcguides.stl.pku.edu.cn/c.php?g=967766&p=7035212",
+          "sourceTitle": "Artificial Intelligence (AI) for Law School: Generative AI Tools",
+          "evidenceSnippet": "Artificial Intelligence (AI) for Law School: Generative AI Tools | General Purpose Generative AI Tools | Chat; Images; Video and Content Creation; Sound & Music; Prompt | DeepSeek; Kimi Chat.",
+          "snapshotHash": "c713a0458a13f2d245fba91e4196dbc4e06155e39b5cb47bf1d3ac73f864f991",
+          "reviewState": "needs_review"
+        }
+      ],
+      "description": "Listed in a PKU School of Transnational Law library guide for generative AI tools.",
+      "howToObtain": "Guide listing only; no university-wide access path identified.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "peking-university",
+      "universityName": "Peking University",
+      "qsRank": 14,
+      "tool": "kimi",
+      "rawToolName": "Kimi Chat",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://lrcguides.stl.pku.edu.cn/c.php?g=967766&p=7035212",
+          "sourceTitle": "Artificial Intelligence (AI) for Law School: Generative AI Tools",
+          "evidenceSnippet": "Artificial Intelligence (AI) for Law School: Generative AI Tools | General Purpose Generative AI Tools | Chat; Images; Video and Content Creation; Sound & Music; Prompt | DeepSeek; Kimi Chat.",
+          "snapshotHash": "c713a0458a13f2d245fba91e4196dbc4e06155e39b5cb47bf1d3ac73f864f991",
+          "reviewState": "needs_review"
+        }
+      ],
+      "description": "Listed in a PKU School of Transnational Law library guide for generative AI tools.",
+      "howToObtain": "Guide listing only; no university-wide access path identified.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "university-of-pennsylvania",
+      "universityName": "University of Pennsylvania",
+      "qsRank": 15,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat (Basic)",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+          "sourceTitle": "Penn Generative AI Tools & Resources",
+          "evidenceSnippet": "Microsoft Copilot Chat (Basic) | Full-range generative AI chat client running on ChatGPT | No additional charge over existing Microsoft 365 agreements; self-service available | Low, Moderate, and most High Risk Data except SSNs and credit card data.",
+          "snapshotHash": "f5dc5619383a1f8a106b85099a702d19452c3c29f7d1122083c34a7149cedf7a",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Generative AI chat client running on ChatGPT with Penn protections when logged into a University account.",
+      "howToObtain": "Self-service activation through Penn ISC; users must use a University account.",
+      "costToUser": "No additional charge over existing Microsoft 365 agreements."
+    },
+    {
+      "universitySlug": "university-of-pennsylvania",
+      "universityName": "University of Pennsylvania",
+      "qsRank": 15,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft M365 Copilot (Premium)",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+          "sourceTitle": "Penn Generative AI Tools & Resources",
+          "evidenceSnippet": "Microsoft M365 Copilot (Premium) | Integrates OpenAI ChatGPT or Anthropic Claude into Microsoft Office applications | Available for faculty and staff at $16.50 per month; contact IT Support Provider.",
+          "snapshotHash": "cc85f6888a25ab9dfa145cafe0288010d0e7bae03c78893fefa6497052189347",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Premium Microsoft 365 Copilot integrated into Office applications and work search.",
+      "howToObtain": "Faculty and staff should contact their IT Support Provider.",
+      "costToUser": "$16.50 per month."
+    },
+    {
+      "universitySlug": "university-of-pennsylvania",
+      "universityName": "University of Pennsylvania",
+      "qsRank": 15,
+      "tool": "institutional_ai_service",
+      "rawToolName": "Snowflake Data Analytics Platform & Consulting",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+          "sourceTitle": "Penn Generative AI Tools & Resources",
+          "evidenceSnippet": "Snowflake Data Analytics Platform & Consulting | Full data, analytics, and AI platform using industry-leading LLMs from OpenAI, Anthropic, Meta, and others | Costs based on consumption; contact ISC Support Provider.",
+          "snapshotHash": "c1ad73d4b0254f46361c3c63fd88df391e5554346b2ee1d46abf0ec5340a8477",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Data, analytics, and AI platform using LLMs from OpenAI, Anthropic, Meta, and others.",
+      "howToObtain": "Contact ISC Support Provider.",
+      "costToUser": "Consumption-based costs."
+    },
+    {
+      "universitySlug": "university-of-pennsylvania",
+      "universityName": "University of Pennsylvania",
+      "qsRank": 15,
+      "tool": "gemini",
+      "rawToolName": "Gemini for Google Workspace",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+          "sourceTitle": "Penn Generative AI Tools & Resources",
+          "evidenceSnippet": "Gemini for Google Workspace | Integrates generative AI into Google Workspace | Available for some faculty and staff at ASC, SEAS, and Wharton for $20 or $30 per month; contact IT Support Provider.",
+          "snapshotHash": "d88f769f31a310694a597626fe29b269934656b5f8ce28e2f30b418f03a3b6e0",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Generative AI integrated into Google Workspace for selected Penn schools.",
+      "howToObtain": "Available for some faculty and staff at ASC, SEAS, and Wharton; contact IT Support Provider.",
+      "costToUser": "$20 or $30 per month."
+    },
+    {
+      "universitySlug": "university-of-pennsylvania",
+      "universityName": "University of Pennsylvania",
+      "qsRank": 15,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+          "sourceTitle": "Penn Generative AI Tools & Resources",
+          "evidenceSnippet": "Google NotebookLM | AI Research Assistant focused on uploaded content | Available for some faculty and staff only at ASC, SEAS, and Wharton; contact IT Support Provider.",
+          "snapshotHash": "f7a62494c6d565ff8acb5740dd1f78ff7b86a99b9498ebfdc0b79232cb790762",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "AI research and note-taking assistant focused on uploaded content.",
+      "howToObtain": "Available for some faculty and staff at ASC, SEAS, and Wharton; contact IT Support Provider.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "university-of-pennsylvania",
+      "universityName": "University of Pennsylvania",
+      "qsRank": 15,
+      "tool": "grammarly",
+      "rawToolName": "Grammarly",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+          "sourceTitle": "Penn Generative AI Tools & Resources",
+          "evidenceSnippet": "Grammarly | Writing-centric tool with AI-assisted outlining, citation, and revision | Beginning January 2026, ISC will offer Grammarly for Education licenses as a paid service to Penn affiliates at $87/year.",
+          "snapshotHash": "4dcf2fe7b5ff49f583053c3976d83b3ad5e8ed1ffbf82ee39fd7b150b6c21ffc",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Writing assistant with AI-assisted outlining, citation, and revision.",
+      "howToObtain": "Contact IT Support Provider for Grammarly for Education licenses.",
+      "costToUser": "$87/year with annual commitment."
+    },
+    {
+      "universitySlug": "university-of-pennsylvania",
+      "universityName": "University of Pennsylvania",
+      "qsRank": 15,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+          "sourceTitle": "Penn Generative AI Tools & Resources",
+          "evidenceSnippet": "ChatGPT Edu | Full-range generative AI chat client for text, images, audio | Available for faculty and staff at $13 per month; students may have access when required in course or research experience and paid by the school, department, or instructor.",
+          "snapshotHash": "ed25c4480609684678d067d83202ee966d710d64e381a7ff4edbbd5d1ab5fddc",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Full-range generative AI chat client for text, images, and audio.",
+      "howToObtain": "Faculty and staff should contact IT Support Provider; students may have access when required and paid by school, department, or instructor.",
+      "costToUser": "$13 per month for faculty and staff."
+    },
+    {
+      "universitySlug": "university-of-pennsylvania",
+      "universityName": "University of Pennsylvania",
+      "qsRank": 15,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+          "sourceTitle": "Penn Generative AI Tools & Resources",
+          "evidenceSnippet": "Penn notes that ISC administers tools with AI plug-ins such as Box and Zoom AI Companion, and directs users to the base page for that service.",
+          "snapshotHash": "7f2156d7f816e73c76e679b64f04f8d253de8be4fc86a1f09ca65b2d94385e84",
+          "reviewState": "needs_review"
+        }
+      ],
+      "description": "AI plug-in administered through Penn Zoom resources.",
+      "howToObtain": "Refer to Penn Zoom service resources for plugin details.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "cornell-university",
+      "universityName": "Cornell University",
+      "qsRank": 16,
+      "tool": "self_deploy",
+      "rawToolName": "Cornell AI Platform",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+          "sourceTitle": "Tools & Resources - Cornell AI Innovation Hub",
+          "evidenceSnippet": "Cornell AI Innovation Hub lists Cornell AI Platform as a Pilot tool; to request access to any of these services, contact ai-support@cornell.edu and Cornell will help get users set up.",
+          "snapshotHash": "34a2e9efcb0fcb2f04ed57f45b75b008aab3144176cf8ca0d5ea33d567547f4c",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Cornell pilot AI platform listed by the AI Innovation Hub.",
+      "howToObtain": "Contact ai-support@cornell.edu for access setup.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "cornell-university",
+      "universityName": "Cornell University",
+      "qsRank": 16,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Basic",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+          "sourceTitle": "Tools & Resources - Cornell AI Innovation Hub",
+          "evidenceSnippet": "Cornell AI Innovation Hub lists Microsoft Copilot Basic as a General purpose tool; to request access to any of these services, contact ai-support@cornell.edu.",
+          "snapshotHash": "db970bfb8db000992b753599b318e7693ac2d2b04d79b1a3a08dc360789f7c86",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "General-purpose Microsoft Copilot access at Cornell.",
+      "howToObtain": "Contact ai-support@cornell.edu for access setup.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "cornell-university",
+      "universityName": "Cornell University",
+      "qsRank": 16,
+      "tool": "chatgpt",
+      "rawToolName": "OpenAI ChatGPT Edu",
+      "availability": "not_mentioned",
+      "endorsementType": "not_specified",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+          "sourceTitle": "Tools & Resources - Cornell AI Innovation Hub",
+          "evidenceSnippet": "Cornell AI Innovation Hub lists OpenAI ChatGPT Edu as Under Review among generative AI tools currently available or under consideration at Cornell.",
+          "snapshotHash": "d8a336efce174c273a0676ec70eab9bad5b63097a7bd3b2bf6b5a22db4ae4d50",
+          "reviewState": "needs_review"
+        }
+      ],
+      "description": "ChatGPT Edu listing under Cornell review.",
+      "howToObtain": "Under review; contact ai-support@cornell.edu for current status.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "cornell-university",
+      "universityName": "Cornell University",
+      "qsRank": 16,
+      "tool": "claude",
+      "rawToolName": "Claude",
+      "availability": "not_mentioned",
+      "endorsementType": "not_specified",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+          "sourceTitle": "Tools & Resources - Cornell AI Innovation Hub",
+          "evidenceSnippet": "Cornell AI Innovation Hub lists Claude as Under Review among generative AI tools currently available or under consideration at Cornell.",
+          "snapshotHash": "2a67f7f3254cffa3149d58ada791a3b268db0998df7d95176f967e5c2e07fab5",
+          "reviewState": "needs_review"
+        }
+      ],
+      "description": "Claude listing under Cornell review.",
+      "howToObtain": "Under review; contact ai-support@cornell.edu for current status.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "cornell-university",
+      "universityName": "Cornell University",
+      "qsRank": 16,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "availability": "not_mentioned",
+      "endorsementType": "not_specified",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+          "sourceTitle": "Tools & Resources - Cornell AI Innovation Hub",
+          "evidenceSnippet": "Cornell AI Innovation Hub lists Zoom AI Companion among generative AI tools currently available or under consideration at Cornell.",
+          "snapshotHash": "a1c2f9fd8ade3d44d3a6d416c22f2a42dd10d1551038dfab38728e2126401e47",
+          "reviewState": "needs_review"
+        }
+      ],
+      "description": "Zoom AI Companion listing on Cornell AI Innovation Hub.",
+      "howToObtain": "Contact ai-support@cornell.edu for access setup or current status.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "cornell-university",
+      "universityName": "Cornell University",
+      "qsRank": 16,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+          "sourceTitle": "Tools & Resources - Cornell AI Innovation Hub",
+          "evidenceSnippet": "Cornell AI Innovation Hub lists Adobe Firefly as a General purpose tool among generative AI tools available or under consideration at Cornell.",
+          "snapshotHash": "696f447887f06f4de5c9468bc34920652280d702b540d1642f7b8039903b171a",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "General-purpose Adobe Firefly access listed by Cornell AI Innovation Hub.",
+      "howToObtain": "Contact ai-support@cornell.edu for access setup.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "tsinghua-university",
+      "universityName": "Tsinghua University",
+      "qsRank": 17,
+      "tool": "self_deploy",
+      "rawToolName": "Xiaoda",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.tsinghua.edu.cn/en/info/1418/14423.htm",
+          "sourceTitle": "Tsinghua's student AI growth assistant 'Xiaoda'",
+          "evidenceSnippet": "Tsinghua launched a suite of transformative AI educational tools, including 'Xiaoda' — a student AI growth assistant; the chatbot-style interface was introduced to all incoming freshmen in 2024.",
+          "snapshotHash": "b01bd0fb58bd0e7b0af7cdce2a24fcebb62a9fceb7938c24bc1bb1059798eccf",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Tsinghua-developed student AI growth assistant for learning, guidance, self-awareness, and campus tasks.",
+      "howToObtain": "Introduced to incoming freshmen; designed for Tsinghua student development and campus services.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "tsinghua-university",
+      "universityName": "Tsinghua University",
+      "qsRank": 17,
+      "tool": "self_deploy",
+      "rawToolName": "AI Navigation Assistant",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://lib.tsinghua.edu.cn/en/info/1021/1416.htm",
+          "sourceTitle": "Tsinghua University Library AI Service New Experience",
+          "evidenceSnippet": "Tsinghua University Library collaborated with ZHIPU AI and system developers to develop two service tools: AI Navigation Assistant for AI-enhanced question answering relying on database navigation.",
+          "snapshotHash": "13813069518dad4d3cacf40f06f0ce3db1a8d720fbbb5848f5d96db934b47d30",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Library AI assistant for database-navigation question answering.",
+      "howToObtain": "Opened as a trial to all teachers and students; refer to Library AI Service Tools instructions.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "tsinghua-university",
+      "universityName": "Tsinghua University",
+      "qsRank": 17,
+      "tool": "self_deploy",
+      "rawToolName": "AI Reading Assistant",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://lib.tsinghua.edu.cn/en/info/1021/1416.htm",
+          "sourceTitle": "Tsinghua University Library AI Service New Experience",
+          "evidenceSnippet": "Tsinghua University Library collaborated with ZHIPU AI and system developers to develop two service tools: AI Reading Assistant for enhancing reading experiences through Discover@THU powered by AI.",
+          "snapshotHash": "c28a8498bba25f96a9c8d045d42df6c9dec061f4d09310d4c8955d591c93cee6",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Library AI assistant for reading support through Discover@THU.",
+      "howToObtain": "Opened as a trial to all teachers and students; refer to Library AI Service Tools instructions.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "self_deploy",
+      "rawToolName": "BearGPT",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | BearGPT | Can all Students Access: No | Student Employees: Yes | Employees: Yes, sign up for BearGPT | Recharge Service: No.",
+          "snapshotHash": "f06c99e6ca6d0a0b830f874361945e40808c3f67b5508a37f1149efa85cd409d",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Berkeley-listed generative chat tool with UC Berkeley licensing protections.",
+      "howToObtain": "Employees and eligible student employees can sign up; all-student access is not listed.",
+      "costToUser": "No recharge service."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "self_deploy",
+      "rawToolName": "Campus AI Sandbox (Beta)",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | Campus AI Sandbox (Beta) | Can all Students Access: No | Student Employees: Yes, sign up for Campus AI Sandbox | Employees: Yes, sign up for Campus AI Sandbox.",
+          "snapshotHash": "c8cce1c22ef5cd7e7cfb89fe1459f48a64a6aa7565b88194bacb33dfd8e3f6ca",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Berkeley beta AI sandbox listed under licensed generative chat tools.",
+      "howToObtain": "Eligible student employees and employees can sign up for Campus AI Sandbox.",
+      "costToUser": "No recharge service."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | ChatGPT | Can all Students Access: No | Student Employees: Yes | Employees: Yes, sign up for ChatGPT EDU | Recharge Service: Yes.",
+          "snapshotHash": "c1e548951710d1a59f000957753cc2070b3045bac29112a3452c005c26829763",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "ChatGPT EDU access listed by Berkeley AI Hub for eligible employees and student employees.",
+      "howToObtain": "Eligible users can sign up for ChatGPT EDU through Berkeley ServiceNow.",
+      "costToUser": "Recharge service."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini App",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | Google Gemini App | Can all Students Access: Yes, access Google Gemini here | Employees: Yes, access Google Gemini here.",
+          "snapshotHash": "c9c4451f35e168cc76fcb74e05ff0ec7fa8d5b00586695d1994cab31253100c0",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Google Gemini App with UC Berkeley licensing protections.",
+      "howToObtain": "Access Google Gemini with Berkeley authentication.",
+      "costToUser": "No recharge service."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | Microsoft Copilot | Can all Students Access: Yes, access Microsoft Copilot here | Employees: Yes, access Microsoft Copilot here.",
+          "snapshotHash": "04d95fd40ae731764e4909359ddd151509053f32888e7ba7dbbdc267aeb9931d",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Microsoft Copilot with UC Berkeley licensing protections.",
+      "howToObtain": "Access Microsoft Copilot with Berkeley authentication.",
+      "costToUser": "No recharge service."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "google_ai_pro",
+      "rawToolName": "Google AI Pro",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | Google AI Pro embedded in Google Workspace | Can Students Access: No | Can Employees Access: Yes, sign up here | Recharge Service: Yes.",
+          "snapshotHash": "4285d027bdf267413f5d7236f15cd9d9cddcc329687784b6328bba8054f4dbf8",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Google AI Pro embedded in Google Workspace for Berkeley employees.",
+      "howToObtain": "Employees can sign up through Berkeley ServiceNow; student access is not listed.",
+      "costToUser": "Recharge service."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM and NotebookLM Plus",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | Google NotebookLM and NotebookLM Plus | Access is expected to be available for NotebookLM, but not for NotebookLM Plus.",
+          "snapshotHash": "3846da911b2a95482085335cb77b5e3813c610d6e35eaff1b61c066b0fd4f119",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "NotebookLM and NotebookLM Plus listing under Berkeley productivity tools.",
+      "howToObtain": "NotebookLM access is expected; NotebookLM Plus is not expected to be available.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | Zoom AI Companion | Can Students Access: Yes | Employees: Yes | Automated meeting summary: Yes | Can answer open-ended questions about the meeting: Yes.",
+          "snapshotHash": "3ac71c20cc608469bfb6ed0662f46b27f9ca8364d0d52b122747abb04c8c3272",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Zoom AI Companion for meeting summaries, questions, and related meeting features.",
+      "howToObtain": "Use Berkeley Zoom AI Companion guidance and Berkeley Zoom access.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "adobe_firefly",
+      "rawToolName": "Firefly, Adobe Creative Cloud",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | Firefly, Adobe Creative Cloud | Can Students Access: Yes, get Adobe Firefly access here | Can Employees Access: Yes, get Adobe Firefly access here.",
+          "snapshotHash": "bbe589a0f32eecfa0d7b09d4d77ee4f7e2e4980a962a4195c2796f4ed9139708",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Adobe Firefly image generation through Adobe Creative Cloud.",
+      "howToObtain": "Use Berkeley Adobe Creative Cloud access.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Copilot for Microsoft 365",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | Tools Not Licensed | Productivity | Copilot for Microsoft 365 | Not available.",
+          "snapshotHash": "0bc4b84ba09c2db898bc2e878f1d16493eb71eb8d36800b1a900d92aadfdd945",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Microsoft 365 Copilot is listed by Berkeley as not licensed.",
+      "howToObtain": "Not available.",
+      "costToUser": "Not available."
+    },
+    {
+      "universitySlug": "university-of-california-berkeley",
+      "universityName": "University of California, Berkeley",
+      "qsRank": 17,
+      "tool": "dalle",
+      "rawToolName": "DALL-E",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.berkeley.edu/tools-services/licensed-ai-tools",
+          "sourceTitle": "Licensed AI Tools | Berkeley AI Hub",
+          "evidenceSnippet": "Licensed AI Tools | Tools Not Licensed | Image Generation | DALL-E | Not available.",
+          "snapshotHash": "b5fb5aeb5f4ae773755352d5cd2152954b0ba3586bf9dbb922388c54eb0310a5",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "DALL-E is listed by Berkeley as not licensed.",
+      "howToObtain": "Not available.",
+      "costToUser": "Not available."
+    },
+    {
+      "universitySlug": "the-university-of-melbourne",
+      "universityName": "The University of Melbourne",
+      "qsRank": 19,
+      "tool": "self_deploy",
+      "rawToolName": "SparkAI",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.unimelb.edu.au/ai/home/staff/gen-ai-tools",
+          "sourceTitle": "GenAI tools - The University of Melbourne",
+          "evidenceSnippet": "SparkAI is a secure environment where staff and graduate researchers can experiment with GenAI using private or confidential information; staff can upload and query data with a choice of large language models.",
+          "snapshotHash": "d8fbd78b311672a57b12802f13c9c8c87296df8ff0844c14c0c2c84527cfaafe",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Secure University of Melbourne environment for staff and graduate researchers to experiment with GenAI using private or confidential information.",
+      "howToObtain": "Access SparkAI through the University Spark portal; staff and graduate researchers are named audience.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "the-university-of-melbourne",
+      "universityName": "The University of Melbourne",
+      "qsRank": 19,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot (Web)",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.unimelb.edu.au/ai/home/staff/gen-ai-tools",
+          "sourceTitle": "GenAI tools - The University of Melbourne",
+          "evidenceSnippet": "All staff and students have access to Copilot (Web). Staff users who want to access Copilot (Work) will need to purchase an additional license through their local area.",
+          "snapshotHash": "eb00eacbdf674fbbf0558ed95da101d4c6ef4907ccffd9238a30b355ca01e00d",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Microsoft Copilot Web for all staff and students.",
+      "howToObtain": "All staff and students have access to Copilot Web; Copilot Work requires additional local-area license.",
+      "costToUser": "Copilot Web not specified; Copilot Work requires purchase of additional license."
+    },
+    {
+      "universitySlug": "the-university-of-melbourne",
+      "universityName": "The University of Melbourne",
+      "qsRank": 19,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.unimelb.edu.au/ai/home/staff/gen-ai-tools",
+          "sourceTitle": "GenAI tools - The University of Melbourne",
+          "evidenceSnippet": "Zoom AI Companion provides automated summaries and actionable insights during Zoom meetings; users can enable AI companion for meetings they host.",
+          "snapshotHash": "3156ef9abbdbc0d2436df44226c52bb851e67233301aabb0721f133188ac2307",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "Zoom AI Companion for automated summaries and actionable meeting insights.",
+      "howToObtain": "Enable AI Companion in meetings you host and use University Zoom guidance.",
+      "costToUser": "Not specified."
+    },
+    {
+      "universitySlug": "unsw-sydney",
+      "universityName": "UNSW Sydney",
+      "qsRank": 20,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+          "sourceTitle": "Using AI in university | Current Students - UNSW Sydney",
+          "evidenceSnippet": "UNSW student AI guidance says: Protect personal information. Do not include personal or sensitive information in prompts. For data privacy and protection, use Microsoft Copilot using your UNSW account.",
+          "snapshotHash": "a53d76627dfdfd494ae5becb947c280b54218bad5cb61511146293d7a74a6b47",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "description": "UNSW-recommended Copilot use path for data privacy and protection when using AI in study contexts.",
+      "howToObtain": "Use Microsoft Copilot with your UNSW account; acceptable use varies by course and assessment rules.",
+      "costToUser": "Not specified."
+    }
+  ]
+}

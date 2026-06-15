@@ -111,6 +111,40 @@ assert.equal(
 );
 assert.equal(normalizedRecords[0]?.costToUser, "Free");
 
+const normalizedVariantsSummary = buildSummary(
+  "normalized-variants-fixture",
+  "Normalized Variants Fixture",
+  [
+    buildClaim(
+      "ChatGPT 3.5 is listed in an official university AI tools source.",
+      "agent_reviewed",
+      JSON.stringify({
+        tool: "chatgpt",
+        rawToolName: "ChatGPT 3.5",
+        availability: "allowed",
+        endorsementType: "officially_endorsed"
+      })
+    ),
+    buildClaim(
+      "ChatGPT 4.0 is listed in an official university AI tools source.",
+      "agent_reviewed",
+      JSON.stringify({
+        tool: "chatgpt",
+        rawToolName: "ChatGPT 4.0",
+        availability: "allowed",
+        endorsementType: "officially_endorsed"
+      })
+    )
+  ]
+);
+
+const normalizedVariantRecords =
+  deriveUniversityToolRecordsForSummary(normalizedVariantsSummary);
+assert.deepEqual(
+  normalizedVariantRecords.map((record) => record.rawToolName).sort(),
+  ["ChatGPT 3.5", "ChatGPT 4.0"]
+);
+
 const chinaSummary = buildSummary("china-tools-fixture", "China Tools Fixture", [
   buildClaim("Kimi | Available to students and staff through the university portal"),
   buildClaim("GLM | Available to students and staff through the university portal"),
@@ -182,6 +216,7 @@ publicToolsResponseSchema.parse(
   buildPublicToolsResponse([
     ...mitRecords,
     ...normalizedRecords,
+    ...normalizedVariantRecords,
     ...chinaRecords,
     ...genericRecords,
     ...selfDeployRecords,
@@ -191,7 +226,7 @@ publicToolsResponseSchema.parse(
 );
 
 console.log(
-  `Validated ${mitRecords.length + normalizedRecords.length + chinaRecords.length + genericRecords.length + selfDeployRecords.length + institutionalRecords.length + blockedRecords.length} derived tool fixture records.`
+  `Validated ${mitRecords.length + normalizedRecords.length + normalizedVariantRecords.length + chinaRecords.length + genericRecords.length + selfDeployRecords.length + institutionalRecords.length + blockedRecords.length} derived tool fixture records.`
 );
 
 function buildSummary(
