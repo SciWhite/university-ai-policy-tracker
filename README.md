@@ -13,7 +13,7 @@ The public site is designed as reference infrastructure, not a login-only SaaS:
 
 Live site: <https://eduaipolicy.org>
 
-## Deployment Note
+## Production Deployment
 
 As of 2026-06-20, production runs on an OCI origin behind Cloudflare:
 
@@ -32,10 +32,43 @@ OCI production state:
 - Nginx site: `/etc/nginx/sites-available/uapt-eduaipolicy.org.conf`
 - Node runtime: `/opt/node-v22`
 
-Vercel project `project-zogep` under team `gmsca1997-2126s-projects` is legacy
-infrastructure only. Do not deploy production to Vercel, do not rely on Vercel
+Production must not deploy through Vercel anymore. Vercel may only be used for
+explicit preview/debug work if a future task asks for it. Do not rely on Vercel
 free-tier limits for production traffic, and do not commit `.vercel/`; it is
 local CLI linkage and is intentionally ignored.
+
+Canonical production deployment flow for future agents and threads:
+
+1. Make changes locally in this repository.
+2. Run the relevant local checks, at minimum:
+   `pnpm db:generate && pnpm --filter @uapt/web build`.
+3. Commit the production-ready changes.
+4. Push the commit to GitHub `origin/main`.
+5. SSH to the OCI server and update `/srv/uapt/app` from GitHub:
+
+   ```bash
+   sudo -u uapt env HOME=/srv/uapt git -C /srv/uapt/app fetch origin main
+   sudo -u uapt env HOME=/srv/uapt git -C /srv/uapt/app checkout main
+   sudo -u uapt env HOME=/srv/uapt git -C /srv/uapt/app reset --hard origin/main
+   ```
+
+6. On OCI, install/build/restart:
+
+   ```bash
+   sudo -u uapt env HOME=/srv/uapt PATH=/opt/node-v22/bin:$PATH \
+     bash -lc 'cd /srv/uapt/app && pnpm install --frozen-lockfile'
+
+   sudo -u uapt env HOME=/srv/uapt PATH=/opt/node-v22/bin:$PATH \
+     bash -lc 'set -a; source /srv/uapt/env/production.env; set +a; export UAPT_DISABLE_INTERNAL_FETCH=1; cd /srv/uapt/app && pnpm --filter @uapt/web build'
+
+   sudo systemctl restart uapt-web.service
+   ```
+
+7. Verify `uapt-web.service`, `nginx`, the public pages, key APIs, sitemap, and
+   `/internal/analytics`.
+
+Avoid ad hoc `rsync` deployments except for emergency recovery. The durable
+state should be GitHub `main` first, then OCI pulls from that commit.
 
 See `docs/oci-production-deployment.md` for the OCI deployment, verification,
 DNS cutover, TLS, and rollback notes.

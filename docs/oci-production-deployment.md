@@ -1,7 +1,9 @@
 # OCI Production Deployment
 
 This document records the production migration from Vercel to an OCI origin.
-Production deploys should use OCI; Vercel is no longer a production dependency.
+Production deploys must use OCI; Vercel is no longer a production dependency.
+The source of truth for deploys is GitHub `origin/main`, followed by an OCI
+pull/build/restart.
 
 ## Current State
 
@@ -88,8 +90,15 @@ strings.
 
 ## Build And Restart
 
-Use the existing SSH key documented in the CELPIP repository README. From the
-server:
+Use the existing SSH key documented in the CELPIP repository README. The
+standard deployment flow is:
+
+1. Commit and push the production-ready change to GitHub `origin/main`.
+2. SSH to the OCI host.
+3. Pull the exact GitHub state into `/srv/uapt/app`.
+4. Install, build, and restart `uapt-web.service`.
+
+From the server:
 
 ```bash
 sudo -u uapt env HOME=/srv/uapt git -C /srv/uapt/app fetch origin main
@@ -104,6 +113,10 @@ sudo -u uapt env HOME=/srv/uapt PATH=/opt/node-v22/bin:$PATH \
 
 sudo systemctl restart uapt-web.service
 ```
+
+Do not use Vercel for production deploys. Avoid direct `rsync` to `/srv/uapt/app`
+except during emergency recovery; if it is used, immediately follow up with a
+GitHub commit and an OCI `reset --hard origin/main` so production is reproducible.
 
 Status checks:
 
@@ -223,11 +236,8 @@ curl -fsS http://127.0.0.1:9000/api/ai-score/health
 
 ## Rollback
 
-Fastest rollback is DNS-level:
-
-1. Change Cloudflare `@` and `www` records back to the last known Vercel target.
-2. Leave `uapt-web.service` running while DNS propagates unless it is causing
-   local resource pressure.
+Normal rollback is Git-based on the OCI origin. Do not roll production back to
+Vercel.
 
 Origin rollback for a bad deploy:
 
@@ -237,6 +247,10 @@ sudo -u uapt env HOME=/srv/uapt PATH=/opt/node-v22/bin:$PATH \
   bash -lc 'set -a; source /srv/uapt/env/production.env; set +a; export UAPT_DISABLE_INTERNAL_FETCH=1; cd /srv/uapt/app && pnpm --filter @uapt/web build'
 sudo systemctl restart uapt-web.service
 ```
+
+DNS rollback should only be used for a Cloudflare or OCI origin emergency. In
+that case, point Cloudflare to a known-good OCI origin or maintenance endpoint,
+not to Vercel production infrastructure.
 
 Nginx rollback:
 

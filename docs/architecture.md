@@ -22,8 +22,12 @@ Recommended split:
    - Accepts limited, audited writes from OpenClaw.
 
 3. Public Web
-   - Prefer Vercel for the Next.js frontend.
-   - Alternative: separate OCI host behind Caddy or Nginx.
+   - Runs on the existing shared OCI server behind Cloudflare and nginx.
+   - Uses the isolated `uapt` Linux user, `/srv/uapt/app`, and
+     `uapt-web.service`.
+   - Deploy flow is GitHub `origin/main` first, then OCI pulls, builds, and
+     restarts the service.
+   - Vercel is not production infrastructure.
 
 ## Monorepo Shape
 

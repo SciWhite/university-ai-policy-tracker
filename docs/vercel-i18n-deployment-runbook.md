@@ -46,10 +46,10 @@ Expected build shape:
 - Static generation should remain around `9079/9079`.
 - Localized detail pages should show as dynamic (`ƒ`), not large new SSG sets.
 
-Production:
+Legacy Vercel preview/debug only:
 
 ```bash
-vercel inspect <deployment-url> --scope gmsca1997-2126s-projects --logs
+vercel inspect <deployment-url> --logs
 ```
 
 Look for:
@@ -89,4 +89,4 @@ That is 54 localized core URLs. Keep this matrix in `apps/web/app/sitemap.ts`.
 
 ## Operational Notes
 
-Vercel builds are slow for this project because thousands of pages are generated with one worker. Poll at low frequency and prefer deployment URLs over repeatedly hitting the production alias.
+Vercel builds are slow for this project because thousands of pages are generated with one worker. Poll at low frequency and prefer deployment URLs over repeatedly hitting the public site alias.
