@@ -1,6 +1,5 @@
 "use client";
 
-import { track } from "@vercel/analytics";
 import {
   sanitizeAnalyticsProperties,
   type AnalyticsDatabaseEventName,
@@ -19,12 +18,6 @@ export function trackResearchEvent(
     ...properties,
     pathname
   });
-
-  try {
-    track(eventName, sanitized);
-  } catch {
-    // Analytics must not affect navigation or interaction handlers.
-  }
 
   void mirrorAnalyticsEvent({
     eventName,

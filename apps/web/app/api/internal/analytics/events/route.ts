@@ -68,10 +68,13 @@ export async function POST(request: Request) {
   const properties = sanitizeAnalyticsProperties(
     isAnalyticsProperties(body.properties) ? body.properties : {}
   );
+  const requestAnalyticsContext = getRequestAnalyticsContext(request);
 
   try {
     await recordMirroredAnalyticsEvent(
       buildAnalyticsEventRecord({
+        countryCode: requestAnalyticsContext.countryCode,
+        deviceType: requestAnalyticsContext.deviceType,
         eventName,
         pathname,
         properties,
@@ -107,19 +110,82 @@ export async function POST(request: Request) {
   return emptyResponse();
 }
 
+function getRequestAnalyticsContext(request: Request): {
+  countryCode?: string;
+  deviceType?: string;
+} {
+  return {
+    countryCode: normalizeCountryCode(request.headers.get("cf-ipcountry")),
+    deviceType: detectDeviceType(request.headers)
+  };
+}
+
+function normalizeCountryCode(value: string | null): string | undefined {
+  const normalized = value?.trim().toUpperCase();
+  if (!normalized || normalized === "XX") return undefined;
+  return /^[A-Z]{2}$/.test(normalized) ? normalized : undefined;
+}
+
+function detectDeviceType(
+  headers: Headers
+): "bot" | "desktop" | "mobile" | "unknown" {
+  const userAgent = headers.get("user-agent")?.toLowerCase() ?? "";
+  if (!userAgent) return "unknown";
+
+  if (
+    /(bot|crawler|spider|crawling|slurp|bingpreview|facebookexternalhit|duckduckbot|baiduspider|yandexbot)/i.test(
+      userAgent
+    )
+  ) {
+    return "bot";
+  }
+
+  const mobileHint = headers.get("sec-ch-ua-mobile");
+  if (mobileHint === "?1") return "mobile";
+  if (mobileHint === "?0") return "desktop";
+
+  if (
+    /(mobile|iphone|ipad|ipod|android|tablet|kindle|silk|opera mini|iemobile)/i.test(
+      userAgent
+    )
+  ) {
+    return "mobile";
+  }
+
+  return "desktop";
+}
+
 function isTrustedOrigin(request: Request): boolean {
-  const expectedOrigin = new URL(request.url).origin;
+  const trustedOrigins = getTrustedOrigins(request);
   const origin = request.headers.get("origin");
-  if (origin) return origin === expectedOrigin;
+  if (origin) return trustedOrigins.has(origin);
 
   const referer = request.headers.get("referer");
   if (!referer) return false;
 
   try {
-    return new URL(referer).origin === expectedOrigin;
+    return trustedOrigins.has(new URL(referer).origin);
   } catch {
     return false;
   }
+}
+
+function getTrustedOrigins(request: Request): Set<string> {
+  const origins = new Set<string>([new URL(request.url).origin]);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  if (siteUrl) {
+    try {
+      origins.add(new URL(siteUrl).origin);
+    } catch {
+      // Ignore invalid deployment configuration and fall back to request headers.
+    }
+  }
+
+  const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+  const proto = request.headers.get("x-forwarded-proto") ?? "https";
+  if (host) origins.add(`${proto}://${host}`);
+
+  return origins;
 }
 
 function normalizePathname(pathname: string | undefined): string {

@@ -1,8 +1,6 @@
 "use client";
 
 import { NextIntlClientProvider } from "next-intl";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { AnalyticsEventBridge } from "@/components/analytics-event-bridge";
@@ -88,10 +86,9 @@ const messagesByLocale = {
 
 interface SiteShellProps {
   children: ReactNode;
-  enableInsights: boolean;
 }
 
-export function SiteShell({ children, enableInsights }: SiteShellProps) {
+export function SiteShell({ children }: SiteShellProps) {
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
   const shell = getShellMessages(locale);
@@ -165,13 +162,7 @@ export function SiteShell({ children, enableInsights }: SiteShellProps) {
           </nav>
         </div>
       </footer>
-      {enableInsights ? (
-        <>
-          <AnalyticsEventBridge />
-          <Analytics />
-          <SpeedInsights />
-        </>
-      ) : null}
+      <AnalyticsEventBridge />
     </NextIntlClientProvider>
   );
 }

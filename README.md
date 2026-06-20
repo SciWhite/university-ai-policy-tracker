@@ -13,6 +13,33 @@ The public site is designed as reference infrastructure, not a login-only SaaS:
 
 Live site: <https://eduaipolicy.org>
 
+## Deployment Note
+
+As of 2026-06-20, production runs on an OCI origin behind Cloudflare:
+
+```text
+Cloudflare DNS/CDN/WAF -> OCI 129.153.56.227 -> nginx -> uapt-web.service
+```
+
+OCI production state:
+
+- Server: shared OCI ARM host `129.153.56.227`
+- Runtime user: `uapt`
+- App directory: `/srv/uapt/app`
+- Environment file: `/srv/uapt/env/production.env`
+- Systemd service: `uapt-web.service`
+- Local app port: `127.0.0.1:3100`
+- Nginx site: `/etc/nginx/sites-available/uapt-eduaipolicy.org.conf`
+- Node runtime: `/opt/node-v22`
+
+Vercel project `project-zogep` under team `gmsca1997-2126s-projects` is legacy
+infrastructure only. Do not deploy production to Vercel, do not rely on Vercel
+free-tier limits for production traffic, and do not commit `.vercel/`; it is
+local CLI linkage and is intentionally ignored.
+
+See `docs/oci-production-deployment.md` for the OCI deployment, verification,
+DNS cutover, TLS, and rollback notes.
+
 ## Current Status
 
 The project is now a public beta of an evidence-backed policy database, not
@@ -84,6 +111,7 @@ Developer and agent surfaces:
 - public contract validator
 - OpenClaw artifact validator
 - local review cache and knowledge-review indexes
+- private mirrored analytics dashboard at `/internal/analytics`, protected by basic auth and backed by first-party event storage
 
 Review and coverage operations:
 

@@ -13,6 +13,33 @@ export interface PrivateAnalyticsDailyRow {
   visitors: number;
 }
 
+export interface PrivateAnalyticsCountryRow {
+  countryCode: string;
+  countryName: string;
+  events: number;
+  pageViews: number;
+  primaryLocale: string;
+  share: number;
+  visitors: number;
+}
+
+export interface PrivateAnalyticsCountryLanguageRow {
+  countryCode: string;
+  countryName: string;
+  locale: string;
+  pageViews: number;
+  share: number;
+  visitors: number;
+}
+
+export interface PrivateAnalyticsDeviceRow {
+  deviceType: string;
+  events: number;
+  pageViews: number;
+  share: number;
+  visitors: number;
+}
+
 export interface PrivateAnalyticsFunnelRow {
   count: number;
   label: string;
@@ -21,7 +48,10 @@ export interface PrivateAnalyticsFunnelRow {
 
 export interface PrivateAnalyticsSummary {
   bounceRate: number;
+  countries: PrivateAnalyticsCountryRow[];
+  countryLanguages: PrivateAnalyticsCountryLanguageRow[];
   daily: PrivateAnalyticsDailyRow[];
+  devices: PrivateAnalyticsDeviceRow[];
   engagedSessions: number;
   events: number;
   funnel: PrivateAnalyticsFunnelRow[];
@@ -31,6 +61,7 @@ export interface PrivateAnalyticsSummary {
   topDomains: PrivateAnalyticsCountRow[];
   topEntities: PrivateAnalyticsCountRow[];
   topEvents: PrivateAnalyticsCountRow[];
+  topLanguages: PrivateAnalyticsCountRow[];
   topPages: PrivateAnalyticsCountRow[];
   visitors: number;
 }
@@ -49,6 +80,7 @@ export function buildPrivateAnalyticsSummary(
     (row) => row.eventName
   );
   const pageCounts = countBy(pageViewRows, (row) => row.pathname);
+  const languageCounts = countBy(pageViewRows, (row) => normalizeLocale(row.locale));
   const entityCounts = countBy(rows, (row) => row.entitySlug ?? undefined);
   const domainCounts = countBy(rows, (row) => row.sourceDomain ?? undefined);
   const visitors = new Set(
@@ -84,7 +116,10 @@ export function buildPrivateAnalyticsSummary(
 
   return {
     bounceRate: sessions ? bounceSessions / sessions : 0,
+    countries: buildCountryRows(rows, pageViewRows),
+    countryLanguages: buildCountryLanguageRows(pageViewRows),
     daily: buildDailySeries(rows, since),
+    devices: buildDeviceRows(rows, pageViewRows),
     engagedSessions,
     events: rows.length,
     funnel: buildFunnel(eventCounts, pageViewRows.length),
@@ -94,22 +129,168 @@ export function buildPrivateAnalyticsSummary(
     topDomains: toCountRows(domainCounts),
     topEntities: toCountRows(entityCounts),
     topEvents: toCountRows(customEventCounts),
+    topLanguages: toCountRows(languageCounts),
     topPages: toCountRows(pageCounts),
     visitors
   };
+}
+
+function buildCountryRows(
+  rows: AnalyticsEventRow[],
+  pageViewRows: AnalyticsEventRow[]
+): PrivateAnalyticsCountryRow[] {
+  const buckets = new Map<
+    string,
+    {
+      events: number;
+      localeCounts: Map<string, number>;
+      pageViews: number;
+      visitors: Set<string>;
+    }
+  >();
+
+  for (const row of rows) {
+    const countryCode = normalizeCountryCode(row.countryCode);
+    const bucket = getCountryBucket(buckets, countryCode);
+    bucket.events += 1;
+  }
+
+  for (const row of pageViewRows) {
+    const countryCode = normalizeCountryCode(row.countryCode);
+    const locale = normalizeLocale(row.locale);
+    const bucket = getCountryBucket(buckets, countryCode);
+    bucket.pageViews += 1;
+    bucket.localeCounts.set(locale, (bucket.localeCounts.get(locale) ?? 0) + 1);
+    if (row.visitorId) bucket.visitors.add(row.visitorId);
+  }
+
+  const totalPageViews = pageViewRows.length;
+  return Array.from(buckets.entries())
+    .map(([countryCode, bucket]) => ({
+      countryCode,
+      countryName: getCountryName(countryCode),
+      events: bucket.events,
+      pageViews: bucket.pageViews,
+      primaryLocale: getTopMapKey(bucket.localeCounts) ?? "unknown",
+      share: shareOf(bucket.pageViews, totalPageViews),
+      visitors: bucket.visitors.size
+    }))
+    .sort((left, right) => {
+      if (right.pageViews !== left.pageViews) return right.pageViews - left.pageViews;
+      if (right.events !== left.events) return right.events - left.events;
+      return left.countryName.localeCompare(right.countryName);
+    })
+    .slice(0, 10);
+}
+
+function buildCountryLanguageRows(
+  pageViewRows: AnalyticsEventRow[]
+): PrivateAnalyticsCountryLanguageRow[] {
+  const countryTotals = new Map<string, number>();
+  const buckets = new Map<
+    string,
+    {
+      countryCode: string;
+      locale: string;
+      pageViews: number;
+      visitors: Set<string>;
+    }
+  >();
+
+  for (const row of pageViewRows) {
+    const countryCode = normalizeCountryCode(row.countryCode);
+    const locale = normalizeLocale(row.locale);
+    const key = `${countryCode}:${locale}`;
+    const bucket =
+      buckets.get(key) ??
+      {
+        countryCode,
+        locale,
+        pageViews: 0,
+        visitors: new Set<string>()
+      };
+
+    bucket.pageViews += 1;
+    if (row.visitorId) bucket.visitors.add(row.visitorId);
+    buckets.set(key, bucket);
+    countryTotals.set(countryCode, (countryTotals.get(countryCode) ?? 0) + 1);
+  }
+
+  return Array.from(buckets.values())
+    .map((bucket) => ({
+      countryCode: bucket.countryCode,
+      countryName: getCountryName(bucket.countryCode),
+      locale: bucket.locale,
+      pageViews: bucket.pageViews,
+      share: shareOf(bucket.pageViews, countryTotals.get(bucket.countryCode) ?? 0),
+      visitors: bucket.visitors.size
+    }))
+    .sort((left, right) => {
+      if (right.pageViews !== left.pageViews) return right.pageViews - left.pageViews;
+      return `${left.countryName}:${left.locale}`.localeCompare(`${right.countryName}:${right.locale}`);
+    })
+    .slice(0, 12);
+}
+
+function buildDeviceRows(
+  rows: AnalyticsEventRow[],
+  pageViewRows: AnalyticsEventRow[]
+): PrivateAnalyticsDeviceRow[] {
+  const buckets = new Map<
+    string,
+    {
+      events: number;
+      pageViews: number;
+      visitors: Set<string>;
+    }
+  >();
+
+  for (const row of rows) {
+    const deviceType = normalizeDeviceType(row.deviceType);
+    const bucket = getDeviceBucket(buckets, deviceType);
+    bucket.events += 1;
+  }
+
+  for (const row of pageViewRows) {
+    const deviceType = normalizeDeviceType(row.deviceType);
+    const bucket = getDeviceBucket(buckets, deviceType);
+    bucket.pageViews += 1;
+    if (row.visitorId) bucket.visitors.add(row.visitorId);
+  }
+
+  const totalPageViews = pageViewRows.length;
+  return Array.from(buckets.entries())
+    .map(([deviceType, bucket]) => ({
+      deviceType,
+      events: bucket.events,
+      pageViews: bucket.pageViews,
+      share: shareOf(bucket.pageViews, totalPageViews),
+      visitors: bucket.visitors.size
+    }))
+    .sort((left, right) => {
+      if (right.pageViews !== left.pageViews) return right.pageViews - left.pageViews;
+      return left.deviceType.localeCompare(right.deviceType);
+    });
 }
 
 function buildDailySeries(
   rows: AnalyticsEventRow[],
   since: Date
 ): PrivateAnalyticsDailyRow[] {
+  if (!rows.length) return [];
+
   const buckets = new Map<
     string,
     { events: number; pageViews: number; visitors: Set<string> }
   >();
+  const firstEventTime = rows.reduce(
+    (earliest, row) => Math.min(earliest, new Date(row.createdAt).getTime()),
+    Number.POSITIVE_INFINITY
+  );
+  const startTime = Math.max(since.getTime(), firstEventTime);
   const days = Math.max(
     1,
-    Math.round((Date.now() - since.getTime()) / DAY_MS)
+    Math.round((Date.now() - startTime) / DAY_MS) + 1
   );
 
   for (let index = 0; index < days; index += 1) {
@@ -208,6 +389,59 @@ function countBy<T>(
     });
 }
 
+function getCountryBucket(
+  buckets: Map<
+    string,
+    {
+      events: number;
+      localeCounts: Map<string, number>;
+      pageViews: number;
+      visitors: Set<string>;
+    }
+  >,
+  countryCode: string
+) {
+  const bucket =
+    buckets.get(countryCode) ??
+    {
+      events: 0,
+      localeCounts: new Map<string, number>(),
+      pageViews: 0,
+      visitors: new Set<string>()
+    };
+  buckets.set(countryCode, bucket);
+  return bucket;
+}
+
+function getDeviceBucket(
+  buckets: Map<
+    string,
+    {
+      events: number;
+      pageViews: number;
+      visitors: Set<string>;
+    }
+  >,
+  deviceType: string
+) {
+  const bucket =
+    buckets.get(deviceType) ??
+    {
+      events: 0,
+      pageViews: 0,
+      visitors: new Set<string>()
+    };
+  buckets.set(deviceType, bucket);
+  return bucket;
+}
+
+function getTopMapKey(counts: Map<string, number>): string | undefined {
+  return Array.from(counts.entries()).sort((left, right) => {
+    if (right[1] !== left[1]) return right[1] - left[1];
+    return left[0].localeCompare(right[0]);
+  })[0]?.[0];
+}
+
 function formatAnalyticsDate(date: Date): string {
   const formatter = new Intl.DateTimeFormat("en-CA", {
     day: "2-digit",
@@ -233,6 +467,29 @@ function isPresent(value: string | null | undefined): value is string {
   return Boolean(value);
 }
 
+function normalizeCountryCode(value: string | null | undefined): string {
+  const normalized = value?.trim().toUpperCase();
+  if (!normalized || normalized === "XX") return "unknown";
+  return /^[A-Z]{2}$/.test(normalized) ? normalized : "unknown";
+}
+
+function normalizeDeviceType(value: string | null | undefined): string {
+  const normalized = value?.trim().toLowerCase();
+  if (
+    normalized === "mobile" ||
+    normalized === "desktop" ||
+    normalized === "bot"
+  ) {
+    return normalized;
+  }
+  return "unknown";
+}
+
+function normalizeLocale(value: string | null | undefined): string {
+  const normalized = value?.trim().toLowerCase();
+  return normalized || "unknown";
+}
+
 function shareOf(value: number, total: number): number {
   if (!total) return 0;
   return value / total;
@@ -247,4 +504,13 @@ function toCountRows(
     ...row,
     share: shareOf(row.count, total)
   }));
+}
+
+const regionNameFormatter = new Intl.DisplayNames(["en"], {
+  type: "region"
+});
+
+function getCountryName(countryCode: string): string {
+  if (countryCode === "unknown") return "Unknown";
+  return regionNameFormatter.of(countryCode) ?? countryCode;
 }

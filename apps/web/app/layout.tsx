@@ -5,8 +5,6 @@ import { ThemeScript } from "@/components/theme-script";
 import { DEFAULT_LOCALE } from "@/lib/i18n";
 import { getSiteBaseUrl } from "@/lib/site-url";
 
-const isVercelDeployment = process.env.VERCEL === "1";
-
 export const metadata = {
   metadataBase: new URL(getSiteBaseUrl()),
   title: "University AI Policy Tracker",
@@ -43,7 +41,7 @@ export default async function RootLayout({
       </head>
       <body>
         <ThemeScript />
-        <SiteShell enableInsights={isVercelDeployment}>{children}</SiteShell>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

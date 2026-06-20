@@ -1,4 +1,3 @@
-import { track } from "@vercel/analytics/server";
 import {
   buildAnalyticsEventRecord,
   sanitizeAnalyticsProperties,
@@ -16,12 +15,6 @@ export async function trackServerResearchEvent(
     ...properties,
     pathname
   });
-
-  try {
-    await track(eventName, sanitized);
-  } catch {
-    // Analytics must not affect public API responses.
-  }
 
   try {
     await recordMirroredAnalyticsEvent(

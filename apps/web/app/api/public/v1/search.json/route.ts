@@ -18,6 +18,7 @@ const searchCorsHeaders = {
   "Access-Control-Allow-Methods": "GET, OPTIONS",
   "Access-Control-Allow-Origin": "*"
 };
+const internalNextBaseUrl = process.env.INTERNAL_NEXT_BASE_URL?.trim();
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -41,8 +42,9 @@ export function OPTIONS() {
 }
 
 async function fetchSearchIndexRecords(requestUrl: string): Promise<SearchIndexRecord[]> {
+  const baseUrl = internalNextBaseUrl || requestUrl;
   const response = await fetch(
-    new URL("/api/public/v1/search/index.json", requestUrl),
+    new URL("/api/public/v1/search/index.json", baseUrl),
     { next: { revalidate: 3600 } }
   );
 

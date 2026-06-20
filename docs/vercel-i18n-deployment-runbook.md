@@ -1,5 +1,8 @@
 # Vercel i18n Deployment Runbook
 
+> Legacy note: production now deploys to OCI behind Cloudflare. Use this
+> Vercel runbook only for historical debugging or explicit preview work.
+
 Short notes for future agents maintaining the localized web app.
 
 ## What Broke
@@ -46,7 +49,7 @@ Expected build shape:
 Production:
 
 ```bash
-vercel inspect <deployment-url> --scope sciwhites-projects --logs
+vercel inspect <deployment-url> --scope gmsca1997-2126s-projects --logs
 ```
 
 Look for:

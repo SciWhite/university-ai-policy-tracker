@@ -288,6 +288,8 @@ model AnalyticsEvent {
   pathname          String
   visitorId         String?  @map("visitor_id")
   sessionId         String?  @map("session_id")
+  countryCode       String?  @map("country_code")
+  deviceType        String?  @map("device_type")
   locale            String?
   pageType          String?  @map("page_type")
   entitySlug        String?  @map("entity_slug")
@@ -315,6 +317,8 @@ model AnalyticsEvent {
   @@index([pathname, createdAt])
   @@index([visitorId, createdAt])
   @@index([sessionId, createdAt])
+  @@index([countryCode, createdAt])
+  @@index([deviceType, createdAt])
   @@index([entitySlug, createdAt])
   @@index([pageType, createdAt])
   @@index([source, createdAt])

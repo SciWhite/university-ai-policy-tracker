@@ -25,6 +25,9 @@ type Parser<T> = {
 };
 
 const API_BASE_URL = process.env.API_PUBLIC_BASE_URL;
+const INTERNAL_API_BASE_URL = process.env.INTERNAL_NEXT_BASE_URL?.trim();
+const CATALOG_API_BASE_URL = process.env.CATALOG_API_BASE_URL?.trim();
+const DISABLE_INTERNAL_FETCH = process.env.UAPT_DISABLE_INTERNAL_FETCH === "1";
 
 export async function getCatalogUniversities(): Promise<CatalogUniversity[]> {
   const fromApi = await fetchApi("/universities", {
@@ -158,10 +161,17 @@ function getSeedCatalogSources(): CatalogSourceRecord[] {
 }
 
 async function fetchApi<T>(path: string, parser: Parser<T>): Promise<T | null> {
-  if (!API_BASE_URL) return null;
+  const isPublicApiPath = path.startsWith("/api/public/");
+  const baseUrl = isPublicApiPath
+    ? DISABLE_INTERNAL_FETCH
+      ? undefined
+      : INTERNAL_API_BASE_URL || API_BASE_URL
+    : CATALOG_API_BASE_URL;
+
+  if (!baseUrl) return null;
 
   try {
-    const response = await fetch(new URL(path, API_BASE_URL), {
+    const response = await fetch(new URL(path, baseUrl), {
       next: { revalidate: 60 }
     });
 

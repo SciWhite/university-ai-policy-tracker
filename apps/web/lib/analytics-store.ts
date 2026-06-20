@@ -6,8 +6,10 @@ import {
 } from "@uapt/db";
 
 interface SupabaseAnalyticsEventRow {
+  country_code?: string | null;
   copy_target?: string | null;
   created_at: string;
+  device_type?: string | null;
   endpoint_kind?: string | null;
   entity_slug?: string | null;
   event_name: string;
@@ -121,8 +123,10 @@ function mapSupabaseAnalyticsRow(
   row: SupabaseAnalyticsEventRow
 ): AnalyticsEventRow {
   return {
+    countryCode: row.country_code,
     copyTarget: row.copy_target,
     createdAt: new Date(row.created_at).toISOString(),
+    deviceType: row.device_type,
     endpointKind: row.endpoint_kind,
     entitySlug: row.entity_slug,
     eventName: row.event_name,

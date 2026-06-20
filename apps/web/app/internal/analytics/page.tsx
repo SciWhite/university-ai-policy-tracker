@@ -65,8 +65,8 @@ export default async function PrivateAnalyticsPage() {
         <article className="answer-card">
           <h2>What this excludes</h2>
           <p>
-            It does not read the Vercel dashboard directly and it does not
-            expose this page publicly or index it in robots.
+            It reads only the first-party mirror and does not expose this page
+            publicly or index it in robots.
           </p>
         </article>
         <article className="answer-card">
@@ -115,6 +115,18 @@ export default async function PrivateAnalyticsPage() {
           <span>{formatCount(summary.funnel[0]?.count ?? 0)}</span>
           <p>Search submits</p>
         </div>
+        <div>
+          <span>{summary.countries[0]?.countryName ?? "Unknown"}</span>
+          <p>Top country</p>
+        </div>
+        <div>
+          <span>{formatDeviceSplit(summary.devices)}</span>
+          <p>Mobile / desktop</p>
+        </div>
+        <div>
+          <span>{formatLocale(summary.topLanguages[0]?.label)}</span>
+          <p>Top language</p>
+        </div>
       </section>
 
       {analyticsStoreAvailable && summary.events === 0 ? (
@@ -127,29 +139,149 @@ export default async function PrivateAnalyticsPage() {
       ) : null}
 
       <ReferenceBox
+        description="Country is read from Cloudflare when available; old rows appear as unknown."
+        title="Countries"
+      >
+        {summary.countries.length ? (
+          <table aria-label="Analytics by country">
+            <thead>
+              <tr>
+                <th>Country</th>
+                <th>Page views</th>
+                <th>Visitors</th>
+                <th>Events</th>
+                <th>Primary language</th>
+                <th>Share</th>
+              </tr>
+            </thead>
+            <tbody>
+              {summary.countries.map((row) => (
+                <tr key={row.countryCode}>
+                  <td>{formatCountry(row.countryCode, row.countryName)}</td>
+                  <td>{formatCount(row.pageViews)}</td>
+                  <td>{formatCount(row.visitors)}</td>
+                  <td>{formatCount(row.events)}</td>
+                  <td>{formatLocale(row.primaryLocale)}</td>
+                  <td>{formatPercent(row.share)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No country data in this window yet.</p>
+        )}
+      </ReferenceBox>
+
+      <ReferenceBox
+        description="Device type is derived from coarse request headers and does not store the full user agent."
+        title="Devices"
+      >
+        {summary.devices.length ? (
+          <table aria-label="Analytics by device type">
+            <thead>
+              <tr>
+                <th>Device</th>
+                <th>Page views</th>
+                <th>Visitors</th>
+                <th>Events</th>
+                <th>Share</th>
+              </tr>
+            </thead>
+            <tbody>
+              {summary.devices.map((row) => (
+                <tr key={row.deviceType}>
+                  <td>{formatDeviceType(row.deviceType)}</td>
+                  <td>{formatCount(row.pageViews)}</td>
+                  <td>{formatCount(row.visitors)}</td>
+                  <td>{formatCount(row.events)}</td>
+                  <td>{formatPercent(row.share)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No device data in this window yet.</p>
+        )}
+      </ReferenceBox>
+
+      <ReferenceBox
+        description="Page-view language split by country for localization decisions."
+        title="Country x language"
+      >
+        {summary.countryLanguages.length ? (
+          <table aria-label="Analytics by country and page language">
+            <thead>
+              <tr>
+                <th>Country</th>
+                <th>Language</th>
+                <th>Page views</th>
+                <th>Visitors</th>
+                <th>Country share</th>
+              </tr>
+            </thead>
+            <tbody>
+              {summary.countryLanguages.map((row) => (
+                <tr key={`${row.countryCode}:${row.locale}`}>
+                  <td>{formatCountry(row.countryCode, row.countryName)}</td>
+                  <td>{formatLocale(row.locale)}</td>
+                  <td>{formatCount(row.pageViews)}</td>
+                  <td>{formatCount(row.visitors)}</td>
+                  <td>{formatPercent(row.share)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No country and language split in this window yet.</p>
+        )}
+      </ReferenceBox>
+
+      <ReferenceBox
         description="Daily mirrored activity, grouped in America/Toronto."
         title="Daily trend"
       >
-        <table aria-label="Daily analytics trend">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Page views</th>
-              <th>Visitors</th>
-              <th>Events</th>
-            </tr>
-          </thead>
-          <tbody>
-            {summary.daily.map((row) => (
-              <tr key={row.date}>
-                <td>{row.date}</td>
-                <td>{formatCount(row.pageViews)}</td>
-                <td>{formatCount(row.visitors)}</td>
-                <td>{formatCount(row.events)}</td>
-              </tr>
+        {groupDailyRowsByMonth(summary.daily).length ? (
+          <div className="data-list">
+            {groupDailyRowsByMonth(summary.daily).map((group) => (
+              <details
+                className="data-list-row"
+                key={group.month}
+                open={group.isCurrentMonth}
+              >
+                <summary>
+                  <strong>{group.label}</strong>
+                  <span>
+                    {formatCount(group.pageViews)} page views ·{" "}
+                    {formatCount(group.visitors)} visitors ·{" "}
+                    {formatCount(group.events)} events
+                  </span>
+                </summary>
+                <table aria-label={`Daily analytics trend for ${group.label}`}>
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Page views</th>
+                      <th>Visitors</th>
+                      <th>Events</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {group.rows.map((row) => (
+                      <tr key={row.date}>
+                        <td>{row.date}</td>
+                        <td>{formatCount(row.pageViews)}</td>
+                        <td>{formatCount(row.visitors)}</td>
+                        <td>{formatCount(row.events)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </details>
             ))}
-          </tbody>
-        </table>
+          </div>
+        ) : (
+          <p>No mirrored daily activity in this window yet.</p>
+        )}
       </ReferenceBox>
 
       <ReferenceBox description="Step-by-step path volume." title="Funnel">
@@ -315,9 +447,112 @@ function formatDateTime(value: string): string {
   }).format(new Date(value));
 }
 
+function formatCountry(countryCode: string, countryName: string): string {
+  return countryCode === "unknown" ? countryName : `${countryName} (${countryCode})`;
+}
+
+function formatDeviceSplit(
+  devices: Array<{ deviceType: string; pageViews: number }>
+): string {
+  const mobile = devices.find((row) => row.deviceType === "mobile")?.pageViews ?? 0;
+  const desktop = devices.find((row) => row.deviceType === "desktop")?.pageViews ?? 0;
+  const total = mobile + desktop;
+  if (!total) return "Unknown";
+  return `${formatPercent(mobile / total)} mobile`;
+}
+
+function formatDeviceType(value: string): string {
+  if (value === "mobile") return "Mobile";
+  if (value === "desktop") return "Desktop";
+  if (value === "bot") return "Bot";
+  return "Unknown";
+}
+
+function formatLocale(value: string | undefined): string {
+  if (!value || value === "unknown") return "Unknown";
+  const labels: Record<string, string> = {
+    en: "English",
+    es: "Spanish",
+    fr: "French",
+    ms: "Malay",
+    nl: "Dutch",
+    pl: "Polish",
+    zh: "Chinese"
+  };
+  return labels[value] ?? value.toUpperCase();
+}
+
 function formatPercent(value: number): string {
   return new Intl.NumberFormat("en-US", {
     maximumFractionDigits: 1,
     style: "percent"
   }).format(value);
+}
+
+function groupDailyRowsByMonth(
+  rows: Array<{
+    date: string;
+    events: number;
+    pageViews: number;
+    visitors: number;
+  }>
+) {
+  const currentMonth = formatAnalyticsMonth(new Date());
+  const groups = new Map<
+    string,
+    {
+      events: number;
+      isCurrentMonth: boolean;
+      label: string;
+      month: string;
+      pageViews: number;
+      rows: typeof rows;
+      visitors: number;
+    }
+  >();
+
+  for (const row of rows) {
+    const month = row.date.slice(0, 7);
+    const group =
+      groups.get(month) ??
+      {
+        events: 0,
+        isCurrentMonth: month === currentMonth,
+        label: formatMonthLabel(row.date),
+        month,
+        pageViews: 0,
+        rows: [],
+        visitors: 0
+      };
+
+    group.events += row.events;
+    group.pageViews += row.pageViews;
+    group.visitors += row.visitors;
+    group.rows.push(row);
+    groups.set(month, group);
+  }
+
+  return Array.from(groups.values()).sort((left, right) =>
+    right.month.localeCompare(left.month)
+  );
+}
+
+function formatAnalyticsMonth(date: Date): string {
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    month: "2-digit",
+    timeZone: "America/Toronto",
+    year: "numeric"
+  });
+  const parts = formatter.formatToParts(date);
+  const year = parts.find((part) => part.type === "year")?.value ?? "0000";
+  const month = parts.find((part) => part.type === "month")?.value ?? "00";
+  return `${year}-${month}`;
+}
+
+function formatMonthLabel(date: string): string {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    timeZone: "America/Toronto",
+    year: "numeric"
+  }).format(new Date(`${date}T12:00:00-04:00`));
 }

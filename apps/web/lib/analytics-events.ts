@@ -41,7 +41,9 @@ export type AnalyticsProperties = Record<string, AnalyticsValue | undefined>;
 const MAX_ANALYTICS_LENGTH = 255;
 
 export interface BuildAnalyticsEventRecordInput {
+  countryCode?: string;
   createdAt?: Date;
+  deviceType?: string;
   eventName: AnalyticsDatabaseEventName | string;
   pathname: string;
   properties?: AnalyticsProperties;
@@ -85,7 +87,9 @@ export function buildAnalyticsEventRecord(
     getEntitySlugFromPathname(pathname);
 
   return {
+    countryCode: truncateAnalyticsStringIfPresent(input.countryCode),
     createdAt: input.createdAt,
+    deviceType: truncateAnalyticsStringIfPresent(input.deviceType),
     entitySlug,
     eventName: truncateAnalyticsString(input.eventName),
     locale,

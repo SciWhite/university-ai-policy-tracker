@@ -11,6 +11,8 @@ import {
 
 export const dynamic = "force-dynamic";
 
+const internalNextBaseUrl = process.env.INTERNAL_NEXT_BASE_URL?.trim();
+
 interface WidgetSourceFreshnessRouteProps {
   params: Promise<{
     slug: string;
@@ -54,10 +56,11 @@ export function OPTIONS() {
 }
 
 async function fetchPublicSummary(requestUrl: string, slug: string) {
+  const baseUrl = internalNextBaseUrl || requestUrl;
   const response = await fetch(
     new URL(
       `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
-      requestUrl
+      baseUrl
     ),
     { next: { revalidate: 3600 } }
   );
@@ -73,8 +76,9 @@ async function fetchPublicSummary(requestUrl: string, slug: string) {
 }
 
 async function fetchSourceHealthRows(requestUrl: string, slug: string) {
+  const baseUrl = internalNextBaseUrl || requestUrl;
   const response = await fetch(
-    new URL(`/api/public/${PUBLIC_API_VERSION}/source-health.json`, requestUrl),
+    new URL(`/api/public/${PUBLIC_API_VERSION}/source-health.json`, baseUrl),
     { next: { revalidate: 3600 } }
   );
 

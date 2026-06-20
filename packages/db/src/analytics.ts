@@ -2,8 +2,10 @@ import type { Prisma, PrismaClient } from "./prisma-client.js";
 import { getPrismaClient } from "./client.js";
 
 export interface AnalyticsEventRecordInput {
+  countryCode?: string;
   copyTarget?: string;
   createdAt?: Date;
+  deviceType?: string;
   endpointKind?: string;
   entitySlug?: string;
   exampleKey?: string;
@@ -37,8 +39,10 @@ export interface AnalyticsEventSummary {
 }
 
 export interface AnalyticsEventRow {
+  countryCode?: string | null;
   createdAt: string;
   copyTarget?: string | null;
+  deviceType?: string | null;
   endpointKind?: string | null;
   entitySlug?: string | null;
   exampleKey?: string | null;
@@ -73,8 +77,10 @@ export async function recordAnalyticsEvent(
 ): Promise<{ id: string; eventName: string }> {
   const created = await client.analyticsEvent.create({
     data: {
+      countryCode: input.countryCode,
       copyTarget: input.copyTarget,
       createdAt: input.createdAt,
+      deviceType: input.deviceType,
       endpointKind: input.endpointKind,
       entitySlug: input.entitySlug,
       exampleKey: input.exampleKey,
@@ -119,8 +125,10 @@ export async function listAnalyticsEvents(
   });
 
   return rows.map((row: any) => ({
+    countryCode: row.countryCode,
     createdAt: row.createdAt.toISOString(),
     copyTarget: row.copyTarget,
+    deviceType: row.deviceType,
     endpointKind: row.endpointKind,
     entitySlug: row.entitySlug,
     exampleKey: row.exampleKey,

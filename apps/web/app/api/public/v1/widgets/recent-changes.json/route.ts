@@ -11,6 +11,8 @@ import {
 
 export const dynamic = "force-dynamic";
 
+const internalNextBaseUrl = process.env.INTERNAL_NEXT_BASE_URL?.trim();
+
 export async function GET(request: Request) {
   const changes = await fetchRecentChanges(request.url);
 
@@ -24,8 +26,9 @@ export function OPTIONS() {
 }
 
 async function fetchRecentChanges(requestUrl: string) {
+  const baseUrl = internalNextBaseUrl || requestUrl;
   const response = await fetch(
-    new URL(`/api/public/${PUBLIC_API_VERSION}/recent-changes.json`, requestUrl),
+    new URL(`/api/public/${PUBLIC_API_VERSION}/recent-changes.json`, baseUrl),
     { next: { revalidate: 3600 } }
   );
 
