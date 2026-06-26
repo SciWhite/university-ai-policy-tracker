@@ -4,7 +4,8 @@ import {
   sanitizeAnalyticsProperties,
   type AnalyticsDatabaseEventName,
   type AnalyticsEventName,
-  type AnalyticsProperties
+  type AnalyticsProperties,
+  type AnalyticsValue
 } from "@/lib/analytics-events";
 
 export function trackResearchEvent(
@@ -35,6 +36,7 @@ export function trackPageView(properties: AnalyticsProperties = {}) {
     if (isInternalAnalyticsPath(pathname)) return;
 
     const sanitized = sanitizeAnalyticsProperties({
+      ...getLandingAnalyticsProperties(pathname),
       ...properties,
       pathname
     });
@@ -100,6 +102,163 @@ async function mirrorAnalyticsEvent(input: MirrorAnalyticsEventInput) {
 function getCurrentPathname(): string {
   if (typeof window === "undefined") return "/";
   return window.location.pathname || "/";
+}
+
+const LANDING_CONTEXT_KEY = "uapt.analytics.landing_context";
+
+function getLandingAnalyticsProperties(pathname: string): AnalyticsProperties {
+  if (typeof window === "undefined") {
+    return {
+      landingPath: pathname,
+      sourceCategory: "unknown",
+      sourceName: "unknown"
+    };
+  }
+
+  const stored = readStoredLandingContext();
+  if (stored) return stored;
+
+  const searchParams = new URLSearchParams(window.location.search);
+  const utm = getUtmProperties(searchParams);
+  const referrerDomain = getExternalReferrerDomain(document.referrer);
+  const source = classifyInboundSource(utm.utmSource, referrerDomain);
+  const context: AnalyticsProperties = {
+    landingPath: pathname,
+    referrerDomain,
+    sourceCategory: source.category,
+    sourceName: source.name,
+    ...utm
+  };
+
+  try {
+    window.sessionStorage.setItem(LANDING_CONTEXT_KEY, JSON.stringify(context));
+  } catch {
+    // Session attribution is best-effort only.
+  }
+
+  return context;
+}
+
+function readStoredLandingContext(): AnalyticsProperties | undefined {
+  if (typeof window === "undefined") return undefined;
+
+  try {
+    const raw = window.sessionStorage.getItem(LANDING_CONTEXT_KEY);
+    if (!raw) return undefined;
+    const parsed = JSON.parse(raw) as Record<string, unknown>;
+    return {
+      landingPath: getStringValue(parsed.landingPath),
+      referrerDomain: getStringValue(parsed.referrerDomain),
+      sourceCategory: getStringValue(parsed.sourceCategory),
+      sourceName: getStringValue(parsed.sourceName),
+      utmSource: getStringValue(parsed.utmSource),
+      utmMedium: getStringValue(parsed.utmMedium),
+      utmCampaign: getStringValue(parsed.utmCampaign),
+      utmTerm: getStringValue(parsed.utmTerm),
+      utmContent: getStringValue(parsed.utmContent)
+    };
+  } catch {
+    return undefined;
+  }
+}
+
+function getUtmProperties(searchParams: URLSearchParams): AnalyticsProperties {
+  return {
+    utmSource: getSearchParam(searchParams, "utm_source"),
+    utmMedium: getSearchParam(searchParams, "utm_medium"),
+    utmCampaign: getSearchParam(searchParams, "utm_campaign"),
+    utmTerm: getSearchParam(searchParams, "utm_term"),
+    utmContent: getSearchParam(searchParams, "utm_content")
+  };
+}
+
+function getSearchParam(
+  searchParams: URLSearchParams,
+  key: string
+): string | undefined {
+  const value = searchParams.get(key)?.trim();
+  return value || undefined;
+}
+
+function getExternalReferrerDomain(referrer: string): string | undefined {
+  if (!referrer) return undefined;
+
+  try {
+    const referrerUrl = new URL(referrer);
+    if (referrerUrl.hostname === window.location.hostname) return undefined;
+    return normalizeDomain(referrerUrl.hostname);
+  } catch {
+    return undefined;
+  }
+}
+
+function classifyInboundSource(
+  utmSource: AnalyticsValue | undefined,
+  referrerDomain: string | undefined
+): { category: string; name: string } {
+  const source = typeof utmSource === "string" ? utmSource : undefined;
+  const candidate = normalizeSourceName(source ?? referrerDomain ?? "");
+  if (!candidate) {
+    return {
+      category: "direct",
+      name: "direct"
+    };
+  }
+
+  if (matchesAny(candidate, ["chatgpt", "openai", "oai"])) {
+    return { category: "ai", name: "chatgpt" };
+  }
+  if (candidate.includes("perplexity")) {
+    return { category: "ai", name: "perplexity" };
+  }
+  if (matchesAny(candidate, ["claude", "anthropic"])) {
+    return { category: "ai", name: "claude" };
+  }
+  if (matchesAny(candidate, ["gemini", "bard"])) {
+    return { category: "ai", name: "gemini" };
+  }
+  if (matchesAny(candidate, ["copilot", "microsoftcopilot"])) {
+    return { category: "ai", name: "copilot" };
+  }
+  if (candidate.includes("google")) {
+    return { category: "search", name: "google" };
+  }
+  if (candidate.includes("bing")) {
+    return { category: "search", name: "bing" };
+  }
+  if (matchesAny(candidate, ["duckduckgo", "ddg"])) {
+    return { category: "search", name: "duckduckgo" };
+  }
+  if (matchesAny(candidate, ["yahoo", "baidu", "yandex", "ecosia"])) {
+    return { category: "search", name: candidate };
+  }
+  if (matchesAny(candidate, ["linkedin", "facebook", "twitter", "x", "reddit"])) {
+    return { category: "social", name: candidate };
+  }
+
+  return {
+    category: source ? "campaign" : "referral",
+    name: candidate
+  };
+}
+
+function matchesAny(value: string, needles: string[]): boolean {
+  return needles.some((needle) => value.includes(needle));
+}
+
+function normalizeSourceName(value: string): string {
+  return normalizeDomain(value)
+    .replace(/\.(com|org|net|ai|io|co|edu|gov|ca|uk|cn|de|fr|au|jp)$/i, "")
+    .replace(/[^a-z0-9]+/gi, "")
+    .toLowerCase();
+}
+
+function normalizeDomain(value: string): string {
+  return value.trim().toLowerCase().replace(/^www\./, "");
+}
+
+function getStringValue(value: unknown): string | undefined {
+  return typeof value === "string" && value.length > 0 ? value : undefined;
 }
 
 function getAnalyticsVisitorId(): string | undefined {

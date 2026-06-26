@@ -88,6 +88,11 @@ classification. nginx forwards `CF-IPCountry`, `User-Agent`,
 country code and device type only; it does not store raw IPs or full user-agent
 strings.
 
+Inbound source attribution stores only source category, source name, referrer
+domain, landing path, and UTM fields. It must not store full referrer URLs. If
+Supabase analytics RPCs are used, keep the table and RPC mappings aligned with
+`docs/supabase-analytics-inbound-source-migration.md`.
+
 ## Build And Restart
 
 Use the existing SSH key documented in the CELPIP repository README. The

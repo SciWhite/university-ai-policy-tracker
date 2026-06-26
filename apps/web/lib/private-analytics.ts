@@ -1,15 +1,18 @@
 import type { AnalyticsEventRow } from "@uapt/db";
 
+export type AnalyticsPeriod = "day" | "week" | "month";
+
 export interface PrivateAnalyticsCountRow {
   count: number;
   label: string;
   share: number;
 }
 
-export interface PrivateAnalyticsDailyRow {
-  date: string;
+export interface PrivateAnalyticsTrendRow {
   events: number;
+  label: string;
   pageViews: number;
+  sessions: number;
   visitors: number;
 }
 
@@ -46,23 +49,37 @@ export interface PrivateAnalyticsFunnelRow {
   share: number;
 }
 
+export interface PrivateAnalyticsSourceRow {
+  pageViews: number;
+  referrerDomain: string;
+  sessions: number;
+  share: number;
+  sourceCategory: string;
+  sourceName: string;
+  visitors: number;
+}
+
 export interface PrivateAnalyticsSummary {
   bounceRate: number;
   countries: PrivateAnalyticsCountryRow[];
   countryLanguages: PrivateAnalyticsCountryLanguageRow[];
-  daily: PrivateAnalyticsDailyRow[];
   devices: PrivateAnalyticsDeviceRow[];
   engagedSessions: number;
   events: number;
   funnel: PrivateAnalyticsFunnelRow[];
   pageViews: number;
+  period: AnalyticsPeriod;
   recent: AnalyticsEventRow[];
   sessions: number;
+  sourceCategories: PrivateAnalyticsCountRow[];
+  sourceMix: PrivateAnalyticsSourceRow[];
   topDomains: PrivateAnalyticsCountRow[];
   topEntities: PrivateAnalyticsCountRow[];
   topEvents: PrivateAnalyticsCountRow[];
+  topLandingPages: PrivateAnalyticsCountRow[];
   topLanguages: PrivateAnalyticsCountRow[];
   topPages: PrivateAnalyticsCountRow[];
+  trend: PrivateAnalyticsTrendRow[];
   visitors: number;
 }
 
@@ -71,7 +88,8 @@ const ANALYTICS_TIME_ZONE = "America/Toronto";
 
 export function buildPrivateAnalyticsSummary(
   rows: AnalyticsEventRow[],
-  since: Date
+  since: Date,
+  period: AnalyticsPeriod = "day"
 ): PrivateAnalyticsSummary {
   const pageViewRows = rows.filter((row) => row.eventName === "page_view");
   const eventCounts = countBy(rows, (row) => row.eventName);
@@ -80,6 +98,7 @@ export function buildPrivateAnalyticsSummary(
     (row) => row.eventName
   );
   const pageCounts = countBy(pageViewRows, (row) => row.pathname);
+  const landingCounts = countBy(pageViewRows, (row) => row.landingPath ?? row.pathname);
   const languageCounts = countBy(pageViewRows, (row) => normalizeLocale(row.locale));
   const entityCounts = countBy(rows, (row) => row.entitySlug ?? undefined);
   const domainCounts = countBy(rows, (row) => row.sourceDomain ?? undefined);
@@ -87,7 +106,46 @@ export function buildPrivateAnalyticsSummary(
     pageViewRows.map((row) => row.visitorId).filter(isPresent)
   ).size;
 
+  const sessionStats = buildSessionStats(rows);
+  const sessions = sessionStats.size;
+  const engagedSessions = Array.from(sessionStats.values()).filter(
+    (stats) => stats.engaged
+  ).length;
+  const bounceSessions = Array.from(sessionStats.values()).filter(
+    (stats) => stats.pageViews === 1 && !stats.engaged
+  ).length;
+  const sourceMix = buildSourceRows(pageViewRows);
+
+  return {
+    bounceRate: sessions ? bounceSessions / sessions : 0,
+    countries: buildCountryRows(rows, pageViewRows),
+    countryLanguages: buildCountryLanguageRows(pageViewRows),
+    devices: buildDeviceRows(rows, pageViewRows),
+    engagedSessions,
+    events: rows.length,
+    funnel: buildFunnel(eventCounts, pageViewRows.length),
+    pageViews: pageViewRows.length,
+    period,
+    recent: rows.slice().reverse().slice(0, 30),
+    sessions,
+    sourceCategories: toCountRows(
+      countBy(pageViewRows, (row) => normalizeSourceCategory(row.sourceCategory))
+    ),
+    sourceMix,
+    topDomains: toCountRows(domainCounts),
+    topEntities: toCountRows(entityCounts),
+    topEvents: toCountRows(customEventCounts),
+    topLandingPages: toCountRows(landingCounts),
+    topLanguages: toCountRows(languageCounts),
+    topPages: toCountRows(pageCounts),
+    trend: buildPeriodSeries(rows, since, period),
+    visitors
+  };
+}
+
+function buildSessionStats(rows: AnalyticsEventRow[]) {
   const sessionStats = new Map<string, { engaged: boolean; pageViews: number }>();
+
   for (const row of rows) {
     const sessionKey = row.sessionId ?? row.visitorId;
     if (!sessionKey) continue;
@@ -106,33 +164,64 @@ export function buildPrivateAnalyticsSummary(
     sessionStats.set(sessionKey, stats);
   }
 
-  const sessions = sessionStats.size;
-  const engagedSessions = Array.from(sessionStats.values()).filter(
-    (stats) => stats.engaged
-  ).length;
-  const bounceSessions = Array.from(sessionStats.values()).filter(
-    (stats) => stats.pageViews === 1 && !stats.engaged
-  ).length;
+  return sessionStats;
+}
 
-  return {
-    bounceRate: sessions ? bounceSessions / sessions : 0,
-    countries: buildCountryRows(rows, pageViewRows),
-    countryLanguages: buildCountryLanguageRows(pageViewRows),
-    daily: buildDailySeries(rows, since),
-    devices: buildDeviceRows(rows, pageViewRows),
-    engagedSessions,
-    events: rows.length,
-    funnel: buildFunnel(eventCounts, pageViewRows.length),
-    pageViews: pageViewRows.length,
-    recent: rows.slice().reverse().slice(0, 25),
-    sessions,
-    topDomains: toCountRows(domainCounts),
-    topEntities: toCountRows(entityCounts),
-    topEvents: toCountRows(customEventCounts),
-    topLanguages: toCountRows(languageCounts),
-    topPages: toCountRows(pageCounts),
-    visitors
-  };
+function buildSourceRows(
+  pageViewRows: AnalyticsEventRow[]
+): PrivateAnalyticsSourceRow[] {
+  const buckets = new Map<
+    string,
+    {
+      pageViews: number;
+      referrerDomain: string;
+      sessions: Set<string>;
+      sourceCategory: string;
+      sourceName: string;
+      visitors: Set<string>;
+    }
+  >();
+
+  for (const row of pageViewRows) {
+    const sourceCategory = normalizeSourceCategory(row.sourceCategory);
+    const sourceName = normalizeSourceName(row.sourceName, sourceCategory);
+    const referrerDomain = normalizeText(row.referrerDomain);
+    const key = `${sourceCategory}:${sourceName}:${referrerDomain}`;
+    const bucket =
+      buckets.get(key) ??
+      {
+        pageViews: 0,
+        referrerDomain,
+        sessions: new Set<string>(),
+        sourceCategory,
+        sourceName,
+        visitors: new Set<string>()
+      };
+
+    bucket.pageViews += 1;
+    if (row.visitorId) bucket.visitors.add(row.visitorId);
+    if (row.sessionId) bucket.sessions.add(row.sessionId);
+    buckets.set(key, bucket);
+  }
+
+  const totalPageViews = pageViewRows.length;
+  return Array.from(buckets.values())
+    .map((bucket) => ({
+      pageViews: bucket.pageViews,
+      referrerDomain: bucket.referrerDomain,
+      sessions: bucket.sessions.size,
+      share: shareOf(bucket.pageViews, totalPageViews),
+      sourceCategory: bucket.sourceCategory,
+      sourceName: bucket.sourceName,
+      visitors: bucket.visitors.size
+    }))
+    .sort((left, right) => {
+      if (right.pageViews !== left.pageViews) return right.pageViews - left.pageViews;
+      return `${left.sourceCategory}:${left.sourceName}`.localeCompare(
+        `${right.sourceCategory}:${right.sourceName}`
+      );
+    })
+    .slice(0, 12);
 }
 
 function buildCountryRows(
@@ -180,7 +269,7 @@ function buildCountryRows(
       if (right.events !== left.events) return right.events - left.events;
       return left.countryName.localeCompare(right.countryName);
     })
-    .slice(0, 10);
+    .slice(0, 12);
 }
 
 function buildCountryLanguageRows(
@@ -227,7 +316,9 @@ function buildCountryLanguageRows(
     }))
     .sort((left, right) => {
       if (right.pageViews !== left.pageViews) return right.pageViews - left.pageViews;
-      return `${left.countryName}:${left.locale}`.localeCompare(`${right.countryName}:${right.locale}`);
+      return `${left.countryName}:${left.locale}`.localeCompare(
+        `${right.countryName}:${right.locale}`
+      );
     })
     .slice(0, 12);
 }
@@ -273,52 +364,57 @@ function buildDeviceRows(
     });
 }
 
-function buildDailySeries(
+function buildPeriodSeries(
   rows: AnalyticsEventRow[],
-  since: Date
-): PrivateAnalyticsDailyRow[] {
-  if (!rows.length) return [];
-
+  since: Date,
+  period: AnalyticsPeriod
+): PrivateAnalyticsTrendRow[] {
   const buckets = new Map<
     string,
-    { events: number; pageViews: number; visitors: Set<string> }
+    {
+      events: number;
+      label: string;
+      pageViews: number;
+      sessions: Set<string>;
+      visitors: Set<string>;
+    }
   >();
-  const firstEventTime = rows.reduce(
-    (earliest, row) => Math.min(earliest, new Date(row.createdAt).getTime()),
-    Number.POSITIVE_INFINITY
-  );
-  const startTime = Math.max(since.getTime(), firstEventTime);
-  const days = Math.max(
-    1,
-    Math.round((Date.now() - startTime) / DAY_MS) + 1
-  );
-
-  for (let index = 0; index < days; index += 1) {
-    const date = formatAnalyticsDate(new Date(Date.now() - (days - 1 - index) * DAY_MS));
-    buckets.set(date, {
-      events: 0,
-      pageViews: 0,
-      visitors: new Set<string>()
-    });
-  }
-
-  for (const row of rows) {
-    const bucket = buckets.get(formatAnalyticsDate(new Date(row.createdAt)));
-    if (!bucket) continue;
-
-    bucket.events += 1;
-    if (row.eventName === "page_view") {
-      bucket.pageViews += 1;
-      if (row.visitorId) {
-        bucket.visitors.add(row.visitorId);
-      }
+  const end = new Date();
+  for (
+    let cursor = new Date(since);
+    cursor.getTime() <= end.getTime();
+    cursor = new Date(cursor.getTime() + DAY_MS)
+  ) {
+    const bucket = getPeriodBucket(cursor, period);
+    if (!buckets.has(bucket.key)) {
+      buckets.set(bucket.key, {
+        events: 0,
+        label: bucket.label,
+        pageViews: 0,
+        sessions: new Set<string>(),
+        visitors: new Set<string>()
+      });
     }
   }
 
-  return Array.from(buckets.entries()).map(([date, bucket]) => ({
-    date,
+  for (const row of rows) {
+    const bucketKey = getPeriodBucket(new Date(row.createdAt), period);
+    const bucket = buckets.get(bucketKey.key);
+    if (!bucket) continue;
+
+    bucket.events += 1;
+    if (row.sessionId) bucket.sessions.add(row.sessionId);
+    if (row.eventName === "page_view") {
+      bucket.pageViews += 1;
+      if (row.visitorId) bucket.visitors.add(row.visitorId);
+    }
+  }
+
+  return Array.from(buckets.values()).map((bucket) => ({
     events: bucket.events,
+    label: bucket.label,
     pageViews: bucket.pageViews,
+    sessions: bucket.sessions.size,
     visitors: bucket.visitors.size
   }));
 }
@@ -435,6 +531,40 @@ function getDeviceBucket(
   return bucket;
 }
 
+function getPeriodBucket(
+  date: Date,
+  period: AnalyticsPeriod
+): { key: string; label: string } {
+  const day = formatAnalyticsDate(date);
+  if (period === "day") {
+    return {
+      key: day,
+      label: day.slice(5)
+    };
+  }
+  if (period === "month") {
+    const key = day.slice(0, 7);
+    return {
+      key,
+      label: key
+    };
+  }
+
+  const weekStart = getWeekStart(date);
+  const key = formatAnalyticsDate(weekStart);
+  return {
+    key,
+    label: `Wk ${key.slice(5)}`
+  };
+}
+
+function getWeekStart(date: Date): Date {
+  const current = new Date(`${formatAnalyticsDate(date)}T12:00:00Z`);
+  const day = current.getUTCDay() || 7;
+  current.setUTCDate(current.getUTCDate() - day + 1);
+  return current;
+}
+
 function getTopMapKey(counts: Map<string, number>): string | undefined {
   return Array.from(counts.entries()).sort((left, right) => {
     if (right[1] !== left[1]) return right[1] - left[1];
@@ -446,8 +576,8 @@ function formatAnalyticsDate(date: Date): string {
   const formatter = new Intl.DateTimeFormat("en-CA", {
     day: "2-digit",
     month: "2-digit",
-    year: "numeric",
-    timeZone: ANALYTICS_TIME_ZONE
+    timeZone: ANALYTICS_TIME_ZONE,
+    year: "numeric"
   });
   const parts = formatter.formatToParts(date);
   const year = parts.find((part) => part.type === "year")?.value ?? "0000";
@@ -490,6 +620,25 @@ function normalizeLocale(value: string | null | undefined): string {
   return normalized || "unknown";
 }
 
+function normalizeSourceCategory(value: string | null | undefined): string {
+  const normalized = normalizeText(value);
+  return normalized === "unknown" ? "direct" : normalized;
+}
+
+function normalizeSourceName(
+  value: string | null | undefined,
+  category = "unknown"
+): string {
+  const normalized = normalizeText(value);
+  if (normalized !== "unknown") return normalized;
+  return category === "direct" ? "direct" : "unknown";
+}
+
+function normalizeText(value: string | null | undefined): string {
+  const normalized = value?.trim().toLowerCase();
+  return normalized || "unknown";
+}
+
 function shareOf(value: number, total: number): number {
   if (!total) return 0;
   return value / total;
@@ -500,7 +649,7 @@ function toCountRows(
 ): PrivateAnalyticsCountRow[] {
   const total = counts.reduce((sum, row) => sum + row.count, 0);
 
-  return counts.slice(0, 8).map((row) => ({
+  return counts.slice(0, 12).map((row) => ({
     ...row,
     share: shareOf(row.count, total)
   }));

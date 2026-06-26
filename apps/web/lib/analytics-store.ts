@@ -31,7 +31,16 @@ interface SupabaseAnalyticsEventRow {
   result_source?: string | null;
   session_id?: string | null;
   source: string;
+  source_category?: string | null;
   source_domain?: string | null;
+  source_name?: string | null;
+  referrer_domain?: string | null;
+  landing_path?: string | null;
+  utm_source?: string | null;
+  utm_medium?: string | null;
+  utm_campaign?: string | null;
+  utm_term?: string | null;
+  utm_content?: string | null;
   target_kind?: string | null;
   to_locale?: string | null;
   to_theme?: string | null;
@@ -148,7 +157,16 @@ function mapSupabaseAnalyticsRow(
     resultSource: row.result_source,
     sessionId: row.session_id,
     source: row.source,
+    sourceCategory: row.source_category,
     sourceDomain: row.source_domain,
+    sourceName: row.source_name,
+    referrerDomain: row.referrer_domain,
+    landingPath: row.landing_path,
+    utmSource: row.utm_source,
+    utmMedium: row.utm_medium,
+    utmCampaign: row.utm_campaign,
+    utmTerm: row.utm_term,
+    utmContent: row.utm_content,
     targetKind: row.target_kind,
     toLocale: row.to_locale,
     toTheme: row.to_theme,

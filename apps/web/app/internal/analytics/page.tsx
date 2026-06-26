@@ -1,21 +1,32 @@
 import type { Metadata } from "next";
-import { DataList, DataListRow } from "@/components/data-list";
-import { MetaLabel } from "@/components/meta-label";
-import { ReferenceBox } from "@/components/reference-box";
+import type { ReactNode } from "react";
 import {
   hasAnalyticsStore,
   listMirroredAnalyticsEvents
 } from "@/lib/analytics-store";
-import { buildPrivateAnalyticsSummary } from "@/lib/private-analytics";
+import {
+  getGoogleSearchConsoleSummary,
+  type GscMetricRow
+} from "@/lib/google-search-console";
+import {
+  buildPrivateAnalyticsSummary,
+  type AnalyticsPeriod,
+  type PrivateAnalyticsCountRow,
+  type PrivateAnalyticsSummary
+} from "@/lib/private-analytics";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
-const WINDOW_DAYS = 30;
-const WINDOW_MS = WINDOW_DAYS * 24 * 60 * 60 * 1000;
 const title = "Private analytics | University AI Policy Tracker";
 const description =
-  "Private mirrored analytics for the public site. Access is restricted and the page is not indexed.";
+  "Private admin analytics for first-party behavior and Google Search Console visibility.";
 
 export const dynamic = "force-dynamic";
+
+interface PrivateAnalyticsPageProps {
+  searchParams?: Promise<{
+    period?: string;
+  }>;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -31,378 +42,436 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function PrivateAnalyticsPage() {
-  const since = new Date(Date.now() - WINDOW_MS);
+export default async function PrivateAnalyticsPage({
+  searchParams
+}: PrivateAnalyticsPageProps = {}) {
+  const period = normalizePeriod((await searchParams)?.period);
+  const windowDays = getWindowDays(period);
+  const since = new Date(Date.now() - windowDays * 24 * 60 * 60 * 1000);
+  const gscEndDate = new Date(Date.now() - 24 * 60 * 60 * 1000);
   const analyticsStoreAvailable = hasAnalyticsStore();
-  const rows = await loadAnalyticsRows(since);
-  const summary = buildPrivateAnalyticsSummary(rows, since);
+  const [rows, gsc] = await Promise.all([
+    loadAnalyticsRows(since),
+    getGoogleSearchConsoleSummary(since, gscEndDate)
+  ]);
+  const summary = buildPrivateAnalyticsSummary(rows, since, period);
 
   return (
-    <main className="page-shell page-shell--wide">
-      <section className="hero">
-        <p className="kicker">Private analytics</p>
-        <h1>First-party mirrored analytics</h1>
-        <p className="lead">
-          A private, basic-auth protected view of page views and custom events
-          mirrored from the public site over the last {WINDOW_DAYS} days.
-        </p>
-        <div className="tag-row hero-meta">
-          <MetaLabel label="Window">{WINDOW_DAYS} days</MetaLabel>
-          <MetaLabel label="Access">Basic auth</MetaLabel>
-          <MetaLabel label="Source">First-party mirror</MetaLabel>
-          <MetaLabel label="Scope">Page views + events</MetaLabel>
+    <main className="analytics-dashboard">
+      <header className="analytics-dashboard__header">
+        <div>
+          <p className="analytics-dashboard__eyebrow">Internal analytics</p>
+          <h1>Search visibility and onsite behavior</h1>
+          <p>
+            GSC metrics are search-side only. First-party metrics are onsite
+            page views, sessions, source attribution, geo, and tracked events.
+          </p>
         </div>
+        <nav className="analytics-period-tabs" aria-label="Analytics period">
+          {(["day", "week", "month"] as const).map((value) => (
+            <a
+              aria-current={period === value ? "page" : undefined}
+              href={`/internal/analytics?period=${value}`}
+              key={value}
+            >
+              {formatPeriod(value)}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      <section className="analytics-status-row" aria-label="Data source status">
+        <span>{windowDays} day window</span>
+        <span>Onsite: {analyticsStoreAvailable ? "connected" : "unavailable"}</span>
+        <span>GSC: {gsc.available ? "connected" : "unavailable"}</span>
+        <span>No full referrer URLs stored</span>
       </section>
 
-      <section className="answer-strip" aria-label="Private analytics summary">
-        <article className="answer-card">
-          <h2>What this shows</h2>
-          <p>
-            Mirrored page views, visitor/session counts, search submissions,
-            and downstream engagement from the public site.
-          </p>
-        </article>
-        <article className="answer-card">
-          <h2>What this excludes</h2>
-          <p>
-            It reads only the first-party mirror and does not expose this page
-            publicly or index it in robots.
-          </p>
-        </article>
-        <article className="answer-card">
-          <h2>Identity model</h2>
-          <p>
-            Visitor and session counts come from anonymous first-party IDs
-            stored in the browser for aggregation only.
-          </p>
-        </article>
-      </section>
-
-      {!analyticsStoreAvailable ? (
-        <ReferenceBox
-          description="Local preview is falling back to an empty dashboard."
-          title="Analytics store unavailable"
-        >
-          <p>
-            DATABASE_URL is not set in this environment, so the page cannot
-            read mirrored analytics rows yet.
-          </p>
-        </ReferenceBox>
+      {!analyticsStoreAvailable || !gsc.available ? (
+        <section className="analytics-alert-grid" aria-label="Analytics warnings">
+          {!analyticsStoreAvailable ? (
+            <div>
+              <strong>Onsite analytics unavailable</strong>
+              <span>DATABASE_URL or Supabase analytics env is not configured.</span>
+            </div>
+          ) : null}
+          {!gsc.available ? (
+            <div>
+              <strong>GSC unavailable</strong>
+              <span>{gsc.error ?? "Google Search Console credentials are not configured."}</span>
+            </div>
+          ) : null}
+        </section>
       ) : null}
 
-      <section className="metrics-grid" aria-label="Private analytics summary metrics">
-        <div>
-          <span>{formatCount(summary.visitors)}</span>
-          <p>Visitors</p>
-        </div>
-        <div>
-          <span>{formatCount(summary.sessions)}</span>
-          <p>Sessions</p>
-        </div>
-        <div>
-          <span>{formatCount(summary.pageViews)}</span>
-          <p>Page views</p>
-        </div>
-        <div>
-          <span>{formatCount(summary.events)}</span>
-          <p>Total events</p>
-        </div>
-        <div>
-          <span>{formatPercent(summary.bounceRate)}</span>
-          <p>Bounce rate</p>
-        </div>
-        <div>
-          <span>{formatCount(summary.funnel[0]?.count ?? 0)}</span>
-          <p>Search submits</p>
-        </div>
-        <div>
-          <span>{summary.countries[0]?.countryName ?? "Unknown"}</span>
-          <p>Top country</p>
-        </div>
-        <div>
-          <span>{formatDeviceSplit(summary.devices)}</span>
-          <p>Mobile / desktop</p>
-        </div>
-        <div>
-          <span>{formatLocale(summary.topLanguages[0]?.label)}</span>
-          <p>Top language</p>
-        </div>
+      <section className="analytics-kpi-grid" aria-label="Dashboard metrics">
+        <KpiCard label="Visitors" value={formatCount(summary.visitors)} source="Onsite" />
+        <KpiCard label="Sessions" value={formatCount(summary.sessions)} source="Onsite" />
+        <KpiCard label="Page views" value={formatCount(summary.pageViews)} source="Onsite" />
+        <KpiCard
+          label="Engaged"
+          value={formatPercent(safeRate(summary.engagedSessions, summary.sessions))}
+          source="Onsite"
+        />
+        <KpiCard label="Bounce" value={formatPercent(summary.bounceRate)} source="Onsite" />
+        <KpiCard label="GSC clicks" value={formatCount(gsc.totals.clicks)} source="Google" />
+        <KpiCard
+          label="GSC impressions"
+          value={formatCount(gsc.totals.impressions)}
+          source="Google"
+        />
+        <KpiCard label="GSC CTR" value={formatPercent(gsc.totals.ctr)} source="Google" />
+        <KpiCard label="Avg position" value={formatDecimal(gsc.totals.position)} source="Google" />
       </section>
 
-      {analyticsStoreAvailable && summary.events === 0 ? (
-        <ReferenceBox
-          description="The mirror will populate after the first tracked page view or event."
-          title="No mirrored events yet"
+      <section className="analytics-dashboard-grid">
+        <AnalyticsPanel
+          meta={`${formatPeriod(period)} buckets`}
+          title="Onsite trend"
         >
-          <p>Once the public site is exercised, this window will fill in automatically.</p>
-        </ReferenceBox>
-      ) : null}
+          <Sparkline values={summary.trend.map((row) => row.pageViews)} />
+          <CompactTable
+            columns={["Period", "Views", "Visitors", "Sessions", "Events"]}
+            rows={summary.trend.slice(-12).map((row) => [
+              row.label,
+              formatCount(row.pageViews),
+              formatCount(row.visitors),
+              formatCount(row.sessions),
+              formatCount(row.events)
+            ])}
+          />
+        </AnalyticsPanel>
 
-      <ReferenceBox
-        description="Country is read from Cloudflare when available; old rows appear as unknown."
-        title="Countries"
-      >
-        {summary.countries.length ? (
-          <table aria-label="Analytics by country">
-            <thead>
-              <tr>
-                <th>Country</th>
-                <th>Page views</th>
-                <th>Visitors</th>
-                <th>Events</th>
-                <th>Primary language</th>
-                <th>Share</th>
-              </tr>
-            </thead>
-            <tbody>
-              {summary.countries.map((row) => (
-                <tr key={row.countryCode}>
-                  <td>{formatCountry(row.countryCode, row.countryName)}</td>
-                  <td>{formatCount(row.pageViews)}</td>
-                  <td>{formatCount(row.visitors)}</td>
-                  <td>{formatCount(row.events)}</td>
-                  <td>{formatLocale(row.primaryLocale)}</td>
-                  <td>{formatPercent(row.share)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No country data in this window yet.</p>
-        )}
-      </ReferenceBox>
+        <AnalyticsPanel meta="Search-side visibility" title="GSC trend">
+          <Sparkline values={gsc.dateRows.map((row) => row.clicks)} />
+          <CompactTable
+            columns={["Date", "Clicks", "Impr.", "CTR", "Pos."]}
+            rows={gsc.dateRows.slice(-12).map((row) => [
+              row.key,
+              formatCount(row.clicks),
+              formatCount(row.impressions),
+              formatPercent(row.ctr),
+              formatDecimal(row.position)
+            ])}
+          />
+        </AnalyticsPanel>
 
-      <ReferenceBox
-        description="Device type is derived from coarse request headers and does not store the full user agent."
-        title="Devices"
-      >
-        {summary.devices.length ? (
-          <table aria-label="Analytics by device type">
-            <thead>
-              <tr>
-                <th>Device</th>
-                <th>Page views</th>
-                <th>Visitors</th>
-                <th>Events</th>
-                <th>Share</th>
-              </tr>
-            </thead>
-            <tbody>
-              {summary.devices.map((row) => (
-                <tr key={row.deviceType}>
-                  <td>{formatDeviceType(row.deviceType)}</td>
-                  <td>{formatCount(row.pageViews)}</td>
-                  <td>{formatCount(row.visitors)}</td>
-                  <td>{formatCount(row.events)}</td>
-                  <td>{formatPercent(row.share)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No device data in this window yet.</p>
-        )}
-      </ReferenceBox>
+        <AnalyticsPanel meta="First-party referrer and UTM" title="Source mix">
+          <SourceMixTable summary={summary} />
+        </AnalyticsPanel>
 
-      <ReferenceBox
-        description="Page-view language split by country for localization decisions."
-        title="Country x language"
-      >
-        {summary.countryLanguages.length ? (
-          <table aria-label="Analytics by country and page language">
-            <thead>
-              <tr>
-                <th>Country</th>
-                <th>Language</th>
-                <th>Page views</th>
-                <th>Visitors</th>
-                <th>Country share</th>
-              </tr>
-            </thead>
-            <tbody>
-              {summary.countryLanguages.map((row) => (
-                <tr key={`${row.countryCode}:${row.locale}`}>
-                  <td>{formatCountry(row.countryCode, row.countryName)}</td>
-                  <td>{formatLocale(row.locale)}</td>
-                  <td>{formatCount(row.pageViews)}</td>
-                  <td>{formatCount(row.visitors)}</td>
-                  <td>{formatPercent(row.share)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No country and language split in this window yet.</p>
-        )}
-      </ReferenceBox>
+        <AnalyticsPanel meta="Search visibility" title="Top GSC queries">
+          <GscRowsTable rows={gsc.queryRows} keyLabel="Query" />
+        </AnalyticsPanel>
 
-      <ReferenceBox
-        description="Daily mirrored activity, grouped in America/Toronto."
-        title="Daily trend"
-      >
-        {groupDailyRowsByMonth(summary.daily).length ? (
-          <div className="data-list">
-            {groupDailyRowsByMonth(summary.daily).map((group) => (
-              <details
-                className="data-list-row"
-                key={group.month}
-                open={group.isCurrentMonth}
-              >
-                <summary>
-                  <strong>{group.label}</strong>
-                  <span>
-                    {formatCount(group.pageViews)} page views ·{" "}
-                    {formatCount(group.visitors)} visitors ·{" "}
-                    {formatCount(group.events)} events
-                  </span>
-                </summary>
-                <table aria-label={`Daily analytics trend for ${group.label}`}>
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Page views</th>
-                      <th>Visitors</th>
-                      <th>Events</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {group.rows.map((row) => (
-                      <tr key={row.date}>
-                        <td>{row.date}</td>
-                        <td>{formatCount(row.pageViews)}</td>
-                        <td>{formatCount(row.visitors)}</td>
-                        <td>{formatCount(row.events)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </details>
-            ))}
-          </div>
-        ) : (
-          <p>No mirrored daily activity in this window yet.</p>
-        )}
-      </ReferenceBox>
+        <AnalyticsPanel meta="Onsite" title="Top landing pages">
+          <CountRowsTable rows={summary.topLandingPages} valueLabel="Views" />
+        </AnalyticsPanel>
 
-      <ReferenceBox description="Step-by-step path volume." title="Funnel">
-        <DataList>
-          {summary.funnel.map((row) => (
-            <DataListRow
-              key={row.label}
-              metadata={
-                <>
-                  <MetaLabel label="Count">{formatCount(row.count)}</MetaLabel>
-                  <MetaLabel label="Share">{formatPercent(row.share)}</MetaLabel>
-                </>
-              }
-            >
-              <h2>{row.label}</h2>
-              <p>{funnelDescription(row.label)}</p>
-            </DataListRow>
-          ))}
-        </DataList>
-      </ReferenceBox>
+        <AnalyticsPanel meta="Search visibility" title="Top GSC pages">
+          <GscRowsTable rows={gsc.pageRows} keyLabel="Page" />
+        </AnalyticsPanel>
 
-      <ReferenceBox description="Most visited paths from mirrored page views." title="Top pages">
-        <DataList>
-          {summary.topPages.map((row) => (
-            <DataListRow
-              key={row.label}
-              metadata={
-                <>
-                  <MetaLabel label="Views">{formatCount(row.count)}</MetaLabel>
-                  <MetaLabel label="Share">{formatPercent(row.share)}</MetaLabel>
-                </>
-              }
-            >
-              <h2>{row.label}</h2>
-              <p>Mirrored page views for this path.</p>
-            </DataListRow>
-          ))}
-        </DataList>
-      </ReferenceBox>
+        <AnalyticsPanel meta="Cloudflare country on requests" title="Onsite GEO">
+          <CompactTable
+            columns={["Country", "Views", "Visitors", "Lang.", "Share"]}
+            rows={summary.countries.map((row) => [
+              formatCountry(row.countryCode, row.countryName),
+              formatCount(row.pageViews),
+              formatCount(row.visitors),
+              formatLocale(row.primaryLocale),
+              formatPercent(row.share)
+            ])}
+          />
+        </AnalyticsPanel>
 
-      <ReferenceBox description="Most active entity slugs in the mirrored event stream." title="Top entities">
-        <DataList>
-          {summary.topEntities.map((row) => (
-            <DataListRow
-              key={row.label}
-              metadata={
-                <>
-                  <MetaLabel label="Hits">{formatCount(row.count)}</MetaLabel>
-                  <MetaLabel label="Share">{formatPercent(row.share)}</MetaLabel>
-                </>
-              }
-            >
-              <h2>{row.label}</h2>
-              <p>Entity slug observed in tracked events.</p>
-            </DataListRow>
-          ))}
-        </DataList>
-      </ReferenceBox>
+        <AnalyticsPanel meta="Search-side country" title="GSC GEO">
+          <GscRowsTable rows={gsc.countryRows} keyLabel="Country" transformKey={formatGscCountry} />
+        </AnalyticsPanel>
 
-      <ReferenceBox description="External hostnames observed in tracked links." title="Top source domains">
-        <DataList>
-          {summary.topDomains.map((row) => (
-            <DataListRow
-              key={row.label}
-              metadata={
-                <>
-                  <MetaLabel label="Hits">{formatCount(row.count)}</MetaLabel>
-                  <MetaLabel label="Share">{formatPercent(row.share)}</MetaLabel>
-                </>
-              }
-            >
-              <h2>{row.label}</h2>
-              <p>Source domain observed in mirrored events.</p>
-            </DataListRow>
-          ))}
-        </DataList>
-      </ReferenceBox>
+        <AnalyticsPanel meta="Tracked behavior" title="Event funnel">
+          <FunnelTable summary={summary} />
+        </AnalyticsPanel>
 
-      <ReferenceBox description="High-volume custom event names." title="Top events">
-        <DataList>
-          {summary.topEvents.map((row) => (
-            <DataListRow
-              key={row.label}
-              metadata={
-                <>
-                  <MetaLabel label="Events">{formatCount(row.count)}</MetaLabel>
-                  <MetaLabel label="Share">{formatPercent(row.share)}</MetaLabel>
-                </>
-              }
-            >
-              <h2>{row.label}</h2>
-              <p>Mirrored event count in the selected window.</p>
-            </DataListRow>
-          ))}
-        </DataList>
-      </ReferenceBox>
+        <AnalyticsPanel meta="Coarse request headers" title="Devices">
+          <CompactTable
+            columns={["Device", "Views", "Visitors", "Events", "Share"]}
+            rows={summary.devices.map((row) => [
+              formatDeviceType(row.deviceType),
+              formatCount(row.pageViews),
+              formatCount(row.visitors),
+              formatCount(row.events),
+              formatPercent(row.share)
+            ])}
+          />
+        </AnalyticsPanel>
 
-      <ReferenceBox description="Recent mirrored activity." title="Recent events">
-        <DataList>
-          {summary.recent.map((row) => (
-            <DataListRow
-              key={row.id}
-              metadata={
-                <>
-                  <MetaLabel label="When">
-                    {formatDateTime(row.createdAt)}
-                  </MetaLabel>
-                  <MetaLabel label="Source">{row.source}</MetaLabel>
-                  <MetaLabel label="Page type">
-                    {row.pageType ?? "unknown"}
-                  </MetaLabel>
-                </>
-              }
-            >
-              <h2>{row.eventName}</h2>
-              <p>{row.pathname}</p>
-            </DataListRow>
-          ))}
-        </DataList>
-      </ReferenceBox>
+        <AnalyticsPanel meta="Mirrored events" title="Top events">
+          <CountRowsTable rows={summary.topEvents} valueLabel="Events" />
+        </AnalyticsPanel>
+
+        <AnalyticsPanel meta="Recent stream" title="Recent events">
+          <CompactTable
+            columns={["When", "Event", "Path", "Source"]}
+            rows={summary.recent.slice(0, 12).map((row) => [
+              formatDateTime(row.createdAt),
+              row.eventName,
+              row.pathname,
+              row.sourceName ?? row.source
+            ])}
+          />
+        </AnalyticsPanel>
+      </section>
     </main>
+  );
+}
+
+function KpiCard({
+  label,
+  source,
+  value
+}: {
+  label: string;
+  source: string;
+  value: string;
+}) {
+  return (
+    <article>
+      <span>{source}</span>
+      <strong>{value}</strong>
+      <p>{label}</p>
+    </article>
+  );
+}
+
+function AnalyticsPanel({
+  children,
+  meta,
+  title
+}: {
+  children: ReactNode;
+  meta: string;
+  title: string;
+}) {
+  return (
+    <section className="analytics-panel">
+      <header>
+        <h2>{title}</h2>
+        <span>{meta}</span>
+      </header>
+      {children}
+    </section>
+  );
+}
+
+function CompactTable({
+  columns,
+  rows
+}: {
+  columns: string[];
+  rows: string[][];
+}) {
+  if (!rows.length) {
+    return <p className="analytics-empty">No data in this window.</p>;
+  }
+
+  return (
+    <div className="analytics-table-wrap">
+      <table className="analytics-table">
+        <thead>
+          <tr>
+            {columns.map((column) => (
+              <th key={column}>{column}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr key={`${row[0]}:${index}`}>
+              {row.map((cell, cellIndex) => (
+                <td key={`${cell}:${cellIndex}`}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function CountRowsTable({
+  rows,
+  valueLabel
+}: {
+  rows: PrivateAnalyticsCountRow[];
+  valueLabel: string;
+}) {
+  if (!rows.length) {
+    return <p className="analytics-empty">No data in this window.</p>;
+  }
+
+  return (
+    <div className="analytics-table-wrap">
+      <table className="analytics-table analytics-table--bars">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>{valueLabel}</th>
+            <th>Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.label}>
+              <td>{row.label}</td>
+              <td>{formatCount(row.count)}</td>
+              <td>
+                <InlineBar value={row.share} label={formatPercent(row.share)} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function SourceMixTable({ summary }: { summary: PrivateAnalyticsSummary }) {
+  if (!summary.sourceMix.length) {
+    return <p className="analytics-empty">No source data in this window yet.</p>;
+  }
+
+  return (
+    <div className="analytics-table-wrap">
+      <table className="analytics-table analytics-table--bars">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Category</th>
+            <th>Views</th>
+            <th>Visitors</th>
+            <th>Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          {summary.sourceMix.map((row) => (
+            <tr key={`${row.sourceCategory}:${row.sourceName}:${row.referrerDomain}`}>
+              <td>
+                <strong>{formatSourceName(row.sourceName)}</strong>
+                <span>{row.referrerDomain === "unknown" ? "" : row.referrerDomain}</span>
+              </td>
+              <td>{formatSourceCategory(row.sourceCategory)}</td>
+              <td>{formatCount(row.pageViews)}</td>
+              <td>{formatCount(row.visitors)}</td>
+              <td>
+                <InlineBar value={row.share} label={formatPercent(row.share)} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function GscRowsTable({
+  keyLabel,
+  rows,
+  transformKey = (value) => value
+}: {
+  keyLabel: string;
+  rows: GscMetricRow[];
+  transformKey?: (value: string) => string;
+}) {
+  if (!rows.length) {
+    return <p className="analytics-empty">No GSC rows in this window.</p>;
+  }
+
+  return (
+    <div className="analytics-table-wrap">
+      <table className="analytics-table">
+        <thead>
+          <tr>
+            <th>{keyLabel}</th>
+            <th>Clicks</th>
+            <th>Impr.</th>
+            <th>CTR</th>
+            <th>Pos.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.key}>
+              <td>{transformKey(row.key)}</td>
+              <td>{formatCount(row.clicks)}</td>
+              <td>{formatCount(row.impressions)}</td>
+              <td>{formatPercent(row.ctr)}</td>
+              <td>{formatDecimal(row.position)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function FunnelTable({ summary }: { summary: PrivateAnalyticsSummary }) {
+  return (
+    <div className="analytics-table-wrap">
+      <table className="analytics-table analytics-table--bars">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Count</th>
+            <th>Step rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          {summary.funnel.map((row) => (
+            <tr key={row.label}>
+              <td>{row.label}</td>
+              <td>{formatCount(row.count)}</td>
+              <td>
+                <InlineBar value={row.share} label={formatPercent(row.share)} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function InlineBar({ label, value }: { label: string; value: number }) {
+  const width = `${Math.max(0, Math.min(1, value)) * 100}%`;
+  return (
+    <span className="analytics-inline-bar">
+      <span style={{ width }} />
+      <em>{label}</em>
+    </span>
+  );
+}
+
+function Sparkline({ values }: { values: number[] }) {
+  const max = Math.max(...values, 0);
+  const points = values
+    .map((value, index) => {
+      const x = values.length <= 1 ? 0 : (index / (values.length - 1)) * 100;
+      const y = max ? 36 - (value / max) * 32 : 36;
+      return `${x.toFixed(2)},${y.toFixed(2)}`;
+    })
+    .join(" ");
+
+  return (
+    <svg
+      aria-hidden="true"
+      className="analytics-sparkline"
+      focusable="false"
+      preserveAspectRatio="none"
+      viewBox="0 0 100 40"
+    >
+      <polyline points={points} />
+    </svg>
   );
 }
 
@@ -418,21 +487,20 @@ async function loadAnalyticsRows(since: Date) {
   }
 }
 
-function funnelDescription(label: string): string {
-  switch (label) {
-    case "Search submits":
-      return "Searches submitted from the public site.";
-    case "Result clicks":
-      return "Autocomplete and search-result clicks.";
-    case "Record / source opens":
-      return "Canonical, JSON, and official source opens.";
-    case "Citation copies":
-      return "Citation and URL copy actions.";
-    case "API / JSON discovery":
-      return "API and JSON link discovery events.";
-    default:
-      return "Tracked event volume.";
-  }
+function normalizePeriod(value: string | undefined): AnalyticsPeriod {
+  return value === "week" || value === "month" ? value : "day";
+}
+
+function getWindowDays(period: AnalyticsPeriod): number {
+  if (period === "month") return 180;
+  if (period === "week") return 90;
+  return 30;
+}
+
+function formatPeriod(period: AnalyticsPeriod): string {
+  if (period === "day") return "Daily";
+  if (period === "week") return "Weekly";
+  return "Monthly";
 }
 
 function formatCount(value: number): string {
@@ -441,8 +509,10 @@ function formatCount(value: number): string {
 
 function formatDateTime(value: string): string {
   return new Intl.DateTimeFormat("en-CA", {
-    dateStyle: "medium",
-    timeStyle: "short",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
     timeZone: "America/Toronto"
   }).format(new Date(value));
 }
@@ -451,14 +521,8 @@ function formatCountry(countryCode: string, countryName: string): string {
   return countryCode === "unknown" ? countryName : `${countryName} (${countryCode})`;
 }
 
-function formatDeviceSplit(
-  devices: Array<{ deviceType: string; pageViews: number }>
-): string {
-  const mobile = devices.find((row) => row.deviceType === "mobile")?.pageViews ?? 0;
-  const desktop = devices.find((row) => row.deviceType === "desktop")?.pageViews ?? 0;
-  const total = mobile + desktop;
-  if (!total) return "Unknown";
-  return `${formatPercent(mobile / total)} mobile`;
+function formatGscCountry(value: string): string {
+  return value.toUpperCase();
 }
 
 function formatDeviceType(value: string): string {
@@ -482,6 +546,24 @@ function formatLocale(value: string | undefined): string {
   return labels[value] ?? value.toUpperCase();
 }
 
+function formatSourceCategory(value: string): string {
+  if (value === "ai") return "AI";
+  if (value === "search") return "Search";
+  if (value === "social") return "Social";
+  if (value === "campaign") return "Campaign";
+  if (value === "referral") return "Referral";
+  if (value === "direct") return "Direct";
+  return "Unknown";
+}
+
+function formatSourceName(value: string): string {
+  if (value === "chatgpt") return "ChatGPT";
+  if (value === "duckduckgo") return "DuckDuckGo";
+  if (value === "direct") return "Direct";
+  if (value === "unknown") return "Unknown";
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
 function formatPercent(value: number): string {
   return new Intl.NumberFormat("en-US", {
     maximumFractionDigits: 1,
@@ -489,70 +571,13 @@ function formatPercent(value: number): string {
   }).format(value);
 }
 
-function groupDailyRowsByMonth(
-  rows: Array<{
-    date: string;
-    events: number;
-    pageViews: number;
-    visitors: number;
-  }>
-) {
-  const currentMonth = formatAnalyticsMonth(new Date());
-  const groups = new Map<
-    string,
-    {
-      events: number;
-      isCurrentMonth: boolean;
-      label: string;
-      month: string;
-      pageViews: number;
-      rows: typeof rows;
-      visitors: number;
-    }
-  >();
-
-  for (const row of rows) {
-    const month = row.date.slice(0, 7);
-    const group =
-      groups.get(month) ??
-      {
-        events: 0,
-        isCurrentMonth: month === currentMonth,
-        label: formatMonthLabel(row.date),
-        month,
-        pageViews: 0,
-        rows: [],
-        visitors: 0
-      };
-
-    group.events += row.events;
-    group.pageViews += row.pageViews;
-    group.visitors += row.visitors;
-    group.rows.push(row);
-    groups.set(month, group);
-  }
-
-  return Array.from(groups.values()).sort((left, right) =>
-    right.month.localeCompare(left.month)
-  );
+function formatDecimal(value: number): string {
+  if (!Number.isFinite(value) || value <= 0) return "0";
+  return new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 1
+  }).format(value);
 }
 
-function formatAnalyticsMonth(date: Date): string {
-  const formatter = new Intl.DateTimeFormat("en-CA", {
-    month: "2-digit",
-    timeZone: "America/Toronto",
-    year: "numeric"
-  });
-  const parts = formatter.formatToParts(date);
-  const year = parts.find((part) => part.type === "year")?.value ?? "0000";
-  const month = parts.find((part) => part.type === "month")?.value ?? "00";
-  return `${year}-${month}`;
-}
-
-function formatMonthLabel(date: string): string {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    timeZone: "America/Toronto",
-    year: "numeric"
-  }).format(new Date(`${date}T12:00:00-04:00`));
+function safeRate(value: number, total: number): number {
+  return total ? value / total : 0;
 }

@@ -26,7 +26,16 @@ export interface AnalyticsEventRecordInput {
   resultRank?: number;
   resultSource?: string;
   source?: string;
+  sourceCategory?: string;
   sourceDomain?: string;
+  sourceName?: string;
+  referrerDomain?: string;
+  landingPath?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmTerm?: string;
+  utmContent?: string;
   visitorId?: string;
   targetKind?: string;
   toLocale?: string;
@@ -64,7 +73,16 @@ export interface AnalyticsEventRow {
   resultRank?: number | null;
   resultSource?: string | null;
   source: string;
+  sourceCategory?: string | null;
   sourceDomain?: string | null;
+  sourceName?: string | null;
+  referrerDomain?: string | null;
+  landingPath?: string | null;
+  utmSource?: string | null;
+  utmMedium?: string | null;
+  utmCampaign?: string | null;
+  utmTerm?: string | null;
+  utmContent?: string | null;
   visitorId?: string | null;
   targetKind?: string | null;
   toLocale?: string | null;
@@ -101,7 +119,16 @@ export async function recordAnalyticsEvent(
       resultRank: input.resultRank,
       resultSource: input.resultSource,
       source: input.source ?? "client",
+      sourceCategory: input.sourceCategory,
       sourceDomain: input.sourceDomain,
+      sourceName: input.sourceName,
+      referrerDomain: input.referrerDomain,
+      landingPath: input.landingPath,
+      utmSource: input.utmSource,
+      utmMedium: input.utmMedium,
+      utmCampaign: input.utmCampaign,
+      utmTerm: input.utmTerm,
+      utmContent: input.utmContent,
       visitorId: input.visitorId,
       targetKind: input.targetKind,
       toLocale: input.toLocale,
@@ -150,7 +177,16 @@ export async function listAnalyticsEvents(
     resultRank: row.resultRank,
     resultSource: row.resultSource,
     source: row.source,
+    sourceCategory: row.sourceCategory,
     sourceDomain: row.sourceDomain,
+    sourceName: row.sourceName,
+    referrerDomain: row.referrerDomain,
+    landingPath: row.landingPath,
+    utmSource: row.utmSource,
+    utmMedium: row.utmMedium,
+    utmCampaign: row.utmCampaign,
+    utmTerm: row.utmTerm,
+    utmContent: row.utmContent,
     visitorId: row.visitorId,
     targetKind: row.targetKind,
     toLocale: row.toLocale,

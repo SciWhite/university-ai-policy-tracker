@@ -884,6 +884,320 @@ h3 {
   margin: 8px 0 0;
 }
 
+.analytics-dashboard {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 28px 24px 44px;
+}
+
+.analytics-dashboard__header {
+  align-items: end;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding-bottom: 16px;
+}
+
+.analytics-dashboard__header h1 {
+  font-size: 26px;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.analytics-dashboard__header p {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 8px 0 0;
+  max-width: 720px;
+}
+
+.analytics-dashboard__eyebrow {
+  color: var(--color-accent);
+  font-size: 12px !important;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 0 0 6px !important;
+  text-transform: uppercase;
+}
+
+.analytics-period-tabs {
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  display: inline-grid;
+  flex: 0 0 auto;
+  grid-template-columns: repeat(3, minmax(72px, 1fr));
+  overflow: hidden;
+}
+
+.analytics-period-tabs a {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.analytics-period-tabs a + a {
+  border-left: 1px solid var(--color-border);
+}
+
+.analytics-period-tabs a[aria-current="page"] {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.analytics-status-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.analytics-status-row span {
+  background: var(--color-canvas-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 8px;
+}
+
+.analytics-alert-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 14px;
+}
+
+.analytics-alert-grid div {
+  background: var(--color-warning-surface);
+  border: 1px solid var(--color-warning-border);
+  border-radius: var(--radius-panel);
+  display: grid;
+  gap: 3px;
+  padding: 10px 12px;
+}
+
+.analytics-alert-grid strong {
+  color: var(--color-text);
+  font-size: 13px;
+}
+
+.analytics-alert-grid span {
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.analytics-kpi-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.analytics-kpi-grid article {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  min-width: 0;
+  padding: 10px 12px;
+}
+
+.analytics-kpi-grid span {
+  color: var(--color-text-muted);
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.analytics-kpi-grid strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1.15;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+
+.analytics-kpi-grid p {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  margin: 3px 0 0;
+}
+
+.analytics-dashboard-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.analytics-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  min-width: 0;
+  padding: 12px;
+}
+
+.analytics-panel header {
+  align-items: baseline;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.analytics-panel h2 {
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.analytics-panel header span {
+  color: var(--color-text-muted);
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.analytics-sparkline {
+  display: block;
+  height: 48px;
+  margin: 0 0 8px;
+  width: 100%;
+}
+
+.analytics-sparkline polyline {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.analytics-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.analytics-table {
+  border-collapse: collapse;
+  display: table;
+  font-size: 12px;
+  line-height: 1.35;
+  min-width: 100%;
+  table-layout: auto;
+}
+
+.analytics-table th,
+.analytics-table td {
+  border: 1px solid var(--color-border);
+  padding: 6px 7px;
+  vertical-align: middle;
+}
+
+.analytics-table th {
+  background: var(--color-canvas-subtle);
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.analytics-table td {
+  max-width: 320px;
+  overflow-wrap: anywhere;
+}
+
+.analytics-table td:not(:first-child) {
+  white-space: nowrap;
+}
+
+.analytics-table td:first-child strong,
+.analytics-table td:first-child span {
+  display: block;
+}
+
+.analytics-table td:first-child span {
+  color: var(--color-text-muted);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.analytics-inline-bar {
+  align-items: center;
+  display: grid;
+  gap: 7px;
+  grid-template-columns: minmax(54px, 1fr) 42px;
+  min-width: 104px;
+}
+
+.analytics-inline-bar span {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-reviewed));
+  border-radius: 999px;
+  display: block;
+  height: 7px;
+  min-width: 2px;
+}
+
+.analytics-inline-bar em {
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  text-align: right;
+}
+
+.analytics-empty {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+@media (max-width: 1180px) {
+  .analytics-kpi-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .analytics-dashboard {
+    padding: 20px 14px 32px;
+  }
+
+  .analytics-dashboard__header {
+    align-items: stretch;
+    display: grid;
+  }
+
+  .analytics-period-tabs {
+    width: 100%;
+  }
+
+  .analytics-kpi-grid,
+  .analytics-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-kpi-grid article {
+    padding: 9px 10px;
+  }
+
+  .analytics-kpi-grid strong {
+    font-size: 21px;
+  }
+}
+
 .text-card {
   color: var(--color-text);
   display: grid;
