@@ -73,15 +73,7 @@ export async function listMirroredAnalyticsEvents(
   since: Date
 ): Promise<AnalyticsEventRow[]> {
   if (hasSupabaseAnalyticsStore()) {
-    const rows = await callSupabaseRpc<SupabaseAnalyticsEventRow[]>(
-      "uapt_list_analytics_events",
-      {
-        p_secret: process.env.SUPABASE_ANALYTICS_SECRET,
-        p_since: since.toISOString()
-      }
-    );
-
-    return rows.map(mapSupabaseAnalyticsRow);
+    return listSupabaseAnalyticsEvents(since);
   }
 
   if (!process.env.DATABASE_URL) return [];
@@ -126,6 +118,68 @@ async function callSupabaseRpc<T = unknown>(
 
   if (response.status === 204) return undefined as T;
   return (await response.json()) as T;
+}
+
+const SUPABASE_ANALYTICS_PAGE_SIZE = 1000;
+const SUPABASE_ANALYTICS_MAX_ROWS = 20000;
+
+async function listSupabaseAnalyticsEvents(
+  since: Date
+): Promise<AnalyticsEventRow[]> {
+  const rows: SupabaseAnalyticsEventRow[] = [];
+
+  for (
+    let offset = 0;
+    offset < SUPABASE_ANALYTICS_MAX_ROWS;
+    offset += SUPABASE_ANALYTICS_PAGE_SIZE
+  ) {
+    const page = await listSupabaseAnalyticsEventsPage(since, offset);
+    rows.push(...page);
+    if (page.length < SUPABASE_ANALYTICS_PAGE_SIZE) break;
+  }
+
+  return rows
+    .map(mapSupabaseAnalyticsRow)
+    .sort((left, right) => {
+      const dateOrder =
+        new Date(left.createdAt).getTime() - new Date(right.createdAt).getTime();
+      if (dateOrder !== 0) return dateOrder;
+      return left.id.localeCompare(right.id);
+    });
+}
+
+async function listSupabaseAnalyticsEventsPage(
+  since: Date,
+  offset: number
+): Promise<SupabaseAnalyticsEventRow[]> {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY;
+  if (!url || !key) {
+    throw new Error("Supabase analytics store is not configured");
+  }
+
+  const requestUrl = new URL(`${url}/rest/v1/analytics_events`);
+  requestUrl.searchParams.set("select", "*");
+  requestUrl.searchParams.set("created_at", `gte.${since.toISOString()}`);
+  requestUrl.searchParams.set("order", "created_at.desc,id.desc");
+
+  const response = await fetch(requestUrl, {
+    cache: "no-store",
+    headers: {
+      apikey: key,
+      authorization: `Bearer ${key}`,
+      Range: `${offset}-${offset + SUPABASE_ANALYTICS_PAGE_SIZE - 1}`
+    }
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(
+      `Supabase analytics table read failed: ${response.status} ${text}`
+    );
+  }
+
+  return (await response.json()) as SupabaseAnalyticsEventRow[];
 }
 
 function mapSupabaseAnalyticsRow(
