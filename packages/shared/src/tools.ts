@@ -384,15 +384,18 @@ export function formatToolEndorsementType(
 }
 
 function getToolSegments(claim: PolicyClaim): ToolSegment[] {
+  const normalizedValue = parseNormalizedToolClaimValue(claim.claimValue);
+
   return claim.evidence.flatMap((evidence) => {
     const sourceUrl = evidence.sourceUrl;
     const snapshotHash = evidence.sourceSnapshotHash;
-    const rowText = evidence.evidenceSnippet.includes("|")
-      ? evidence.evidenceSnippet.split("|")[0].trim()
+    const displaySnippet =
+      evidence.evidenceSnippetDisplay ?? evidence.evidenceSnippet;
+    const rowText = displaySnippet.includes("|")
+      ? displaySnippet.split("|")[0].trim()
       : undefined;
     const fullText = [
       claim.claimText,
-      claim.claimValue,
       evidence.evidenceSnippet,
       evidence.evidenceSnippetDisplay
     ]
@@ -400,6 +403,8 @@ function getToolSegments(claim: PolicyClaim): ToolSegment[] {
       .join(" ");
     const segments = rowText
       ? [rowText]
+      : normalizedValue
+        ? [displaySnippet]
       : splitSentences(fullText).filter((sentence) => {
           const mentionsTool =
             getMentionedTools(sentence, false).length > 0 ||
@@ -413,7 +418,7 @@ function getToolSegments(claim: PolicyClaim): ToolSegment[] {
       text: sentence,
       sourceUrl,
       snapshotHash,
-      evidenceSnippet: clipSnippet(rowText ? evidence.evidenceSnippet : sentence),
+      evidenceSnippet: clipSnippet(rowText ? displaySnippet : sentence),
       rowLike: Boolean(rowText)
     }));
   });

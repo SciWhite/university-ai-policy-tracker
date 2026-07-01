@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260701-001",
-  "publishedAt": "2026-07-01T13:32:34Z",
-  "description": "Promotes validated QS21-30 AI tools staged runs into the public dataset while preserving conservative tool-level evidence boundaries.",
+  "releaseId": "public-release-20260614-001",
+  "publishedAt": "2026-06-15T04:34:24Z",
+  "description": "Promotes the latest validated staged university AI-policy runs into the public dataset while keeping source-health maintenance-only output out of canonical publication.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -800,14 +800,11 @@
     "staging/uapt-runs/uapt-zhengzhou-university-20260517",
     "staging/uapt-runs/uapt-zurich-university-of-applied-sciences-zhaw-20260520",
     "staging/uapt-runs/uapt-ai-tools-qs-1-10-20260614",
-    "staging/uapt-runs/uapt-ai-tools-qs-11-20-20260614",
-    "staging/uapt-runs/uapt-ai-tools-qs-21-25-20260701",
-    "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701"
+    "staging/uapt-runs/uapt-ai-tools-qs-11-20-20260614"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
-    "This release promotes validated QS21-30 AI tools staged runs with one tool-level record per explicit official source entry where available.",
-    "AI tools records are derived public claim/evidence artifacts; broad AI mentions are not expanded into named tool conclusions without tool-level evidence.",
+    "This release promotes 21 additional validated staged university runs beyond the previous public release.",
     "uapt-qs200-stage2-batch1-20260517 remains excluded because it is a source-health maintenance run; dataset release validation forbids publishing maintenance-only runs as public claims.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."

@@ -19,8 +19,45 @@ export const aiTools = [
   "google_workspace_studio",
   "salesforce_einstein",
   "zoom_ai_companion",
+  "mistral",
   "perplexity",
   "grammarly",
+  "synthesia",
+  "read_ai",
+  "turnitin_ai_detection",
+  "portkey",
+  "azure_ai",
+  "azure_ai_foundry",
+  "infomaniak_ai_tools",
+  "msty",
+  "ollama",
+  "grok",
+  "llama",
+  "lumo",
+  "publicai",
+  "answerthis",
+  "asta",
+  "elicit",
+  "scispace",
+  "rayyan",
+  "research_rabbit",
+  "customgpt",
+  "deepl",
+  "lens",
+  "dimensions",
+  "openalex",
+  "matilda",
+  "cogniti",
+  "contact_north_teachers_assistant_pro",
+  "contact_north_ai_tutor_pro",
+  "web_of_science_research_assistant",
+  "power_bi_copilot",
+  "copilot_studio",
+  "teams_premium",
+  "cnki_ai_academic",
+  "cnki_ai_enhanced_search",
+  "aminer_ai",
+  "yunsiku_humanities_qa",
   "scite_ai",
   "scopus_ai",
   "kimi",
@@ -307,6 +344,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     aliases: ["Zoom AI Companion"],
     category: "commercial_assistant"
   },
+  mistral: {
+    slug: "mistral",
+    label: "Mistral",
+    provider: "Mistral AI",
+    aliases: ["Mistral AI", "Mistral"],
+    category: "commercial_assistant"
+  },
   perplexity: {
     slug: "perplexity",
     label: "Perplexity",
@@ -320,6 +364,258 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     provider: "Grammarly",
     aliases: ["Grammarly", "Grammarly for Education"],
     category: "commercial_assistant"
+  },
+  synthesia: {
+    slug: "synthesia",
+    label: "Synthesia",
+    provider: "Synthesia",
+    aliases: ["Synthesia"],
+    category: "commercial_assistant"
+  },
+  read_ai: {
+    slug: "read_ai",
+    label: "Read.AI",
+    provider: "Read AI",
+    aliases: ["Read.AI", "Read AI"],
+    category: "commercial_assistant"
+  },
+  turnitin_ai_detection: {
+    slug: "turnitin_ai_detection",
+    label: "Turnitin AI Detection",
+    provider: "Turnitin",
+    aliases: ["Turnitin AI detection tool", "Turnitin AI Detection"],
+    category: "commercial_assistant"
+  },
+  portkey: {
+    slug: "portkey",
+    label: "Portkey",
+    provider: "Portkey",
+    aliases: ["Portkey"],
+    category: "cloud_platform"
+  },
+  azure_ai: {
+    slug: "azure_ai",
+    label: "Azure AI",
+    provider: "Microsoft",
+    aliases: ["Azure AI"],
+    category: "cloud_platform"
+  },
+  azure_ai_foundry: {
+    slug: "azure_ai_foundry",
+    label: "Azure AI Foundry",
+    provider: "Microsoft",
+    aliases: ["Azure AI Foundry"],
+    category: "cloud_platform"
+  },
+  infomaniak_ai_tools: {
+    slug: "infomaniak_ai_tools",
+    label: "Infomaniak AI Tools",
+    provider: "Infomaniak",
+    aliases: ["Infomaniak AI tools"],
+    category: "cloud_platform"
+  },
+  msty: {
+    slug: "msty",
+    label: "Msty",
+    provider: "Msty",
+    aliases: ["Msty"],
+    category: "commercial_assistant"
+  },
+  ollama: {
+    slug: "ollama",
+    label: "Ollama",
+    provider: "Ollama",
+    aliases: ["Ollama"],
+    category: "commercial_assistant"
+  },
+  grok: {
+    slug: "grok",
+    label: "Grok",
+    provider: "xAI",
+    aliases: ["Grok", "Grok (xAI)"],
+    category: "commercial_assistant"
+  },
+  llama: {
+    slug: "llama",
+    label: "Llama",
+    provider: "Meta",
+    aliases: ["Llama", "Llama (Meta)"],
+    category: "commercial_assistant"
+  },
+  lumo: {
+    slug: "lumo",
+    label: "Lumo",
+    provider: "Proton",
+    aliases: ["Lumo", "Lumo (Proton)"],
+    category: "commercial_assistant"
+  },
+  publicai: {
+    slug: "publicai",
+    label: "PublicAI",
+    provider: "PublicAI",
+    aliases: ["PublicAI", "PublicAI (Apertus interface)"],
+    category: "commercial_assistant"
+  },
+  answerthis: {
+    slug: "answerthis",
+    label: "AnswerThis",
+    provider: "AnswerThis",
+    aliases: ["AnswerThis"],
+    category: "commercial_assistant"
+  },
+  asta: {
+    slug: "asta",
+    label: "Asta",
+    provider: "Allen Institute for AI",
+    aliases: ["Asta"],
+    category: "commercial_assistant"
+  },
+  elicit: {
+    slug: "elicit",
+    label: "Elicit",
+    provider: "Elicit",
+    aliases: ["Elicit"],
+    category: "commercial_assistant"
+  },
+  scispace: {
+    slug: "scispace",
+    label: "SciSpace",
+    provider: "SciSpace",
+    aliases: ["SciSpace", "Scispace"],
+    category: "commercial_assistant"
+  },
+  rayyan: {
+    slug: "rayyan",
+    label: "Rayyan",
+    provider: "Rayyan",
+    aliases: ["Rayyan"],
+    category: "commercial_assistant"
+  },
+  research_rabbit: {
+    slug: "research_rabbit",
+    label: "Research Rabbit",
+    provider: "Research Rabbit",
+    aliases: ["Research Rabbit", "ResearchRabbit"],
+    category: "commercial_assistant"
+  },
+  customgpt: {
+    slug: "customgpt",
+    label: "CustomGPT",
+    provider: "OpenAI",
+    aliases: ["CustomGPT", "CustomGPT (OpenAI GPTs)"],
+    category: "commercial_assistant"
+  },
+  deepl: {
+    slug: "deepl",
+    label: "DeepL",
+    provider: "DeepL",
+    aliases: ["DeepL"],
+    category: "commercial_assistant"
+  },
+  lens: {
+    slug: "lens",
+    label: "Lens",
+    provider: "The Lens",
+    aliases: ["Lens"],
+    category: "commercial_assistant"
+  },
+  dimensions: {
+    slug: "dimensions",
+    label: "Dimensions",
+    provider: "Digital Science",
+    aliases: ["Dimensions"],
+    category: "commercial_assistant"
+  },
+  openalex: {
+    slug: "openalex",
+    label: "OpenAlex",
+    provider: "OurResearch",
+    aliases: ["OpenAlex"],
+    category: "commercial_assistant"
+  },
+  matilda: {
+    slug: "matilda",
+    label: "Matilda",
+    provider: "Matilda",
+    aliases: ["Matilda"],
+    category: "commercial_assistant"
+  },
+  cogniti: {
+    slug: "cogniti",
+    label: "Cogniti",
+    provider: "Cogniti",
+    aliases: ["Cogniti"],
+    category: "self_hosted_platform"
+  },
+  contact_north_teachers_assistant_pro: {
+    slug: "contact_north_teachers_assistant_pro",
+    label: "Contact North Teacher's Assistant Pro",
+    provider: "Contact North",
+    aliases: ["Contact North Teacher's Assistant Pro", "Teacher's Assistant Pro"],
+    category: "commercial_assistant"
+  },
+  contact_north_ai_tutor_pro: {
+    slug: "contact_north_ai_tutor_pro",
+    label: "Contact North AI Tutor Pro",
+    provider: "Contact North",
+    aliases: ["Contact North AI Tutor Pro", "AI Tutor Pro"],
+    category: "commercial_assistant"
+  },
+  web_of_science_research_assistant: {
+    slug: "web_of_science_research_assistant",
+    label: "Web of Science Research Assistant",
+    provider: "Clarivate",
+    aliases: ["Web of Science Research Assistant", "WoS Research Assistant Tool"],
+    category: "commercial_assistant"
+  },
+  power_bi_copilot: {
+    slug: "power_bi_copilot",
+    label: "Power BI Copilot",
+    provider: "Microsoft",
+    aliases: ["Power BI Copilot"],
+    category: "office_suite"
+  },
+  copilot_studio: {
+    slug: "copilot_studio",
+    label: "Microsoft Copilot Studio",
+    provider: "Microsoft",
+    aliases: ["Microsoft 365 Copilot Studio", "Microsoft Copilot Studio", "Copilot Studio"],
+    category: "office_suite"
+  },
+  teams_premium: {
+    slug: "teams_premium",
+    label: "Microsoft Teams Premium",
+    provider: "Microsoft",
+    aliases: ["Microsoft Teams Premium", "Teams Premium"],
+    category: "office_suite"
+  },
+  cnki_ai_academic: {
+    slug: "cnki_ai_academic",
+    label: "CNKI AI Academic Research Assistant",
+    provider: "CNKI",
+    aliases: ["CNKI AI学术研究助手", "CNKI AI Academic Research Assistant"],
+    category: "china_market"
+  },
+  cnki_ai_enhanced_search: {
+    slug: "cnki_ai_enhanced_search",
+    label: "CNKI AI Enhanced Search",
+    provider: "CNKI",
+    aliases: ["知网总库AI增强检索", "CNKI AI Enhanced Search"],
+    category: "china_market"
+  },
+  aminer_ai: {
+    slug: "aminer_ai",
+    label: "AMiner AI Research Assistant",
+    provider: "AMiner",
+    aliases: ["AMiner AI科研助手", "AMiner AI Research Assistant"],
+    category: "china_market"
+  },
+  yunsiku_humanities_qa: {
+    slug: "yunsiku_humanities_qa",
+    label: "Yun Siku Intelligent Q&A",
+    provider: "Yun Siku",
+    aliases: ["云四库智能问答系统", "Yun Siku Intelligent Q&A"],
+    category: "china_market"
   },
   scite_ai: {
     slug: "scite_ai",

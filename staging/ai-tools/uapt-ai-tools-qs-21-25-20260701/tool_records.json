@@ -1,0 +1,1398 @@
+{
+  "schemaVersion": "uapt-ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-21-25-20260701",
+  "generatedAt": "2026-07-01T00:00:00.000Z",
+  "records": [
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "self_deploy",
+      "rawToolName": "Clarity Platform",
+      "description": "Yale secure AI platform for chat, file-assisted workflows, custom agents, and some API use cases.",
+      "howToObtain": "Go to ai-chat.yale.edu and sign in with a Yale email.",
+      "costToUser": "Free except for Clarity API access",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+          "sourceTitle": "Yale’s AI Tools and Resources | AI at Yale",
+          "evidenceSnippet": "Yale lists Clarity Platform as a Yale-provided tool for staff, faculty, and students, free except for API access.",
+          "snapshotHash": "b1eaa229a16a1bb8ffb66833bf89855b6204bc5b4518c4da168f22dcfff789a9",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform",
+          "sourceTitle": "Clarity Platform | AI at Yale",
+          "evidenceSnippet": "Yale says it built a secure platform that gives faculty, students, and staff access to AI models at no cost for the chat experience.",
+          "snapshotHash": "84f785e56927bc2a9be951e3369ac067484efdf5f93fe1321b75e995d1a4e51f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot Chat",
+      "description": "Secure Microsoft-hosted AI chatbot for text generation, image generation, and document or image Q&A.",
+      "howToObtain": "Use copilot.microsoft.com and sign in with a Yale email.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/copilot-chat",
+          "sourceTitle": "Copilot Chat | AI at Yale",
+          "evidenceSnippet": "Yale says Copilot Chat is available to staff, faculty, and students age 18+ and is free when users log in with Yale credentials.",
+          "snapshotHash": "4c6712fff8b29f231521aa460a3c9253c3fb756bf6b752bc8b5b83634725e1c1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini for Education",
+      "description": "Google AI assistant under Yale Google Workspace for drafting, summarizing, file-assisted chat, and image generation.",
+      "howToObtain": "Go to gemini.google.com and sign in with a Yale Google Workspace account.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/google-gemini",
+          "sourceTitle": "Google Gemini for Education and NotebookLM | AI at Yale",
+          "evidenceSnippet": "Yale states Google Gemini for Education is available to Yale staff, faculty, and students age 18+, free of charge, with Yale Google Workspace.",
+          "snapshotHash": "870f8e904aa5943b2dc92426c630bb6e272c64e592b37eb2522d02b4a7ac5939",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "Research and note-taking tool for uploaded sources, summaries, Q&A, and audio overviews.",
+      "howToObtain": "Go to notebooklm.google.com and sign in with a Yale Google Workspace account.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/google-gemini",
+          "sourceTitle": "Google Gemini for Education and NotebookLM | AI at Yale",
+          "evidenceSnippet": "Yale separately describes NotebookLM as part of the Yale Google for Education offering.",
+          "snapshotHash": "3787210aebf568be7bd53005198a6a84e6eec303ba77f17903b7ecd4e25bf76b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "consensus",
+      "rawToolName": "Consensus",
+      "description": "AI-powered scholarly search tool for peer-reviewed literature and evidence-based summaries.",
+      "howToObtain": "Create a Consensus account using a Yale-affiliated email or Yale Google Workspace credentials.",
+      "costToUser": "Free on a trial basis through 12/31/2026",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/consensus",
+          "sourceTitle": "Consensus | AI at Yale",
+          "evidenceSnippet": "Yale says faculty, students, and researchers have trial access through December 31, 2026.",
+          "snapshotHash": "4663b21c8bb6bb0019a64112cf8273313f1f25eedad7d0ec0f5e1f34d757934d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "self_deploy",
+      "rawToolName": "BeaconAI",
+      "description": "YaleSites-integrated website chatbot for searching YaleSites pages and PDFs.",
+      "howToObtain": "Request Beacon for a site that uses the YaleSites platform.",
+      "costToUser": "Free",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+          "sourceTitle": "Yale’s AI Tools and Resources | AI at Yale",
+          "evidenceSnippet": "Yale lists BeaconAI as an AI chatbot integrated into YaleSites and available upon request for YaleSites.",
+          "snapshotHash": "d9bd5c2a7cfe71b99058cdccfad1dbcd8747c5d0fd3c90d4b18fc57c4f0927c7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom-integrated AI meeting assistant for summaries, Q&A, and meeting highlights.",
+      "howToObtain": "Use a Yale Zoom account.",
+      "costToUser": "Free with Yale Zoom account",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/zoom-ai-companion",
+          "sourceTitle": "Zoom AI Companion | AI at Yale",
+          "evidenceSnippet": "Yale says Zoom AI Companion is included in the Yale Zoom license and enabled by default for Yale Zoom account holders.",
+          "snapshotHash": "ec2aec70c232fdaa545f217a9a3c907829f948566b5954a8476d2fa3ea9f093e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "power_bi_copilot",
+      "rawToolName": "Power BI Copilot",
+      "description": "AI-enhanced Power BI feature for queries, report generation, and narrative summaries.",
+      "howToObtain": "Use Power BI Service on premium capacity with appropriate permissions.",
+      "costToUser": "Included in Fabric Power BI premium license",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/power-bi-copilot",
+          "sourceTitle": "Power BI Copilot | AI at Yale",
+          "evidenceSnippet": "Yale says Power BI Copilot is for staff and faculty and is available through premium-capacity workspaces.",
+          "snapshotHash": "3852535c51c09963c47973a01f19f4c13d7613fed014b79dfa927e2e91b11a8a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "Microsoft 365-integrated assistant for drafting, summarizing, spreadsheet analysis, and presentations.",
+      "howToObtain": "Request access through Yale ServiceNow.",
+      "costToUser": "$18 per user per month",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/microsoft-365-copilot",
+          "sourceTitle": "Microsoft 365 Copilot | AI at Yale",
+          "evidenceSnippet": "Yale says Microsoft 365 Copilot is available to staff and faculty age 18+, costs $18 per user per month, and requires a request workflow.",
+          "snapshotHash": "3be65879927f390521f6ae528b8bd914f5a4a341c91fc6ba6c2fb2310bab3128",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "copilot_studio",
+      "rawToolName": "Microsoft 365 Copilot Studio",
+      "description": "Custom-agent creation platform included with Yale Microsoft 365 Copilot licensing.",
+      "howToObtain": "Request Microsoft 365 Copilot through Yale; Copilot Studio is included with that license.",
+      "costToUser": "$18 per user per month via the M365 Copilot license",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+          "sourceTitle": "Yale’s AI Tools and Resources | AI at Yale",
+          "evidenceSnippet": "Yale lists Microsoft 365 Copilot Studio as available to staff and faculty with access tied to the M365 Copilot request process.",
+          "snapshotHash": "011b78ef1017da7b4cbc98ef28f61ac0ba71dbafb1afd9e82157c62839234322",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "teams_premium",
+      "rawToolName": "Teams Premium",
+      "description": "Microsoft Teams add-on with AI features for meeting support and summaries.",
+      "howToObtain": "Request access through Yale ServiceNow.",
+      "costToUser": "$1.88 per user per month",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/teams-premium",
+          "sourceTitle": "Teams Premium | AI at Yale",
+          "evidenceSnippet": "Yale says Teams Premium is for staff and faculty, costs $1.88 per user per month, and requires access to be requested through Yale.",
+          "snapshotHash": "36385c5f7a50a2f5b3c797c1ffb77d0599079ce520a31ec3cd75354637db2516",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "github_copilot",
+      "rawToolName": "GitHub Copilot",
+      "description": "AI coding assistant integrated into IDEs and code editors.",
+      "howToObtain": "Request access using Yale ServiceNow and follow editor-specific setup.",
+      "costToUser": "$19 per user per month",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources/github-copilot",
+          "sourceTitle": "GitHub Copilot | AI at Yale",
+          "evidenceSnippet": "Yale says GitHub Copilot is available to staff and faculty, priced at $19 per user per month, and obtained through a Yale request form.",
+          "snapshotHash": "fc854177370a83d523a2d6aaa4947a370cd0873089ddf8019e03d7ee34bb7cf4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "portkey",
+      "rawToolName": "Portkey",
+      "description": "API gateway SaaS for access to major model providers.",
+      "howToObtain": "Use Yale’s Portkey overview and related Clarity API access path.",
+      "costToUser": "Based on usage, billed to a COA",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+          "sourceTitle": "Yale’s AI Tools and Resources | AI at Yale",
+          "evidenceSnippet": "Yale lists Portkey as a SaaS API gateway for accessing models across cloud providers, available to staff and faculty with usage billed to a COA.",
+          "snapshotHash": "5d480d792bf7d80e53dd4ea4edf47a9e4139f8c9bd90fbd8f5234d1cbd4274b0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "azure_ai",
+      "rawToolName": "Azure AI",
+      "description": "Microsoft Azure-based access to AI models and services for application development.",
+      "howToObtain": "Follow Yale’s AI request review process through yaledata.yale.edu.",
+      "costToUser": "Based on usage",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+          "sourceTitle": "Yale’s AI Tools and Resources | AI at Yale",
+          "evidenceSnippet": "Yale’s developer tools table lists Azure AI for staff and faculty with usage-based pricing and access through Yale’s AI request review process.",
+          "snapshotHash": "fc89ab750d440e25f5e39bb973cf7ba2e5b8ab551039a656b8901158d5d31121",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "yale-university",
+      "universityName": "Yale University",
+      "qsRank": 21,
+      "tool": "aws_bedrock",
+      "rawToolName": "AWS Bedrock",
+      "description": "Amazon Bedrock model-access service for building AI applications.",
+      "howToObtain": "Follow Yale’s AI request review process through yaledata.yale.edu.",
+      "costToUser": "Based on usage",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.yale.edu/yales-ai-tools-and-resources",
+          "sourceTitle": "Yale’s AI Tools and Resources | AI at Yale",
+          "evidenceSnippet": "Yale’s developer tools table lists AWS Bedrock for staff and faculty with usage-based pricing and AI request review.",
+          "snapshotHash": "317d477b827b95c7b4e4519f411a46084a504739e0e18c82433dd5d37d480bcb",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "self_deploy",
+      "rawToolName": "EPFL Chatbot",
+      "description": "EPFL-hosted chatbot and semantic search tool over EPFL academic content.",
+      "howToObtain": "Access via EPFL Graph Search chatbot page.",
+      "costToUser": "Not specified",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/",
+          "sourceTitle": "(Gen)AI for Teaching and Learning - EPFL",
+          "evidenceSnippet": "CEDE tools section presents EPFL Chatbot as an AI-powered chatbot and semantic search tool for EPFL academic content.",
+          "snapshotHash": "f7dccd270d683cd4a303b87a2bddabfccc5fd756868d37e18ca7dadb645657bf",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "self_deploy",
+      "rawToolName": "aiaiapps",
+      "description": "EPFL teaching tool offering prompt-based helpers for quizzes, exercises, and image descriptions.",
+      "howToObtain": "Access via the aiaiapps EPFL site.",
+      "costToUser": "Not specified",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/",
+          "sourceTitle": "(Gen)AI for Teaching and Learning - EPFL",
+          "evidenceSnippet": "CEDE tools section presents aiaiapps as prompts for teachers to generate quizzes, exercises, and image descriptions.",
+          "snapshotHash": "fa281824cdbda3ff46ca6741b6ee4af65902681e1a04782cbdd1059a18b96b9f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "self_deploy",
+      "rawToolName": "EPFL Graph Search",
+      "description": "EPFL system for custom AI assistants and RAG workflows.",
+      "howToObtain": "Use EPFL Graph Search as referenced in teaching guidelines.",
+      "costToUser": "Not specified",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+          "sourceTitle": "Guidelines for the use of AI in teaching at EPFL",
+          "evidenceSnippet": "The guidelines say custom assistants can be configured within EPFL Graph Search.",
+          "snapshotHash": "92bcadca7438e3917ba249a23a4bb974704600d7f0bed304a8fb052041be2ab2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "infomaniak_ai_tools",
+      "rawToolName": "Infomaniak AI tools",
+      "description": "GUI/API option for open-source models with Swiss and European data-protection positioning.",
+      "howToObtain": "Use the Infomaniak AI tools service referenced in EPFL teaching guidelines.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+          "sourceTitle": "Guidelines for the use of AI in teaching at EPFL",
+          "evidenceSnippet": "The guidelines name Infomaniak AI tools as providing GUI and API access to open-source models with Swiss and European data-protection compliance.",
+          "snapshotHash": "2fa7860785a5ac6bfee1ea44033c27bb900620a9627abcc3a0e4a414505789a7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "msty",
+      "rawToolName": "Msty",
+      "description": "Local AI application for RAG/custom assistants and local models.",
+      "howToObtain": "Run locally on your own computer.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+          "sourceTitle": "Guidelines for the use of AI in teaching at EPFL",
+          "evidenceSnippet": "The guidelines say RAG and custom assistants can be tested locally with Msty.",
+          "snapshotHash": "07984599cb52caadae8ecf781a802aaa420e66865e6947e118cb11abb726597f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "ollama",
+      "rawToolName": "Ollama",
+      "description": "Local model runner named by EPFL for open-weight models.",
+      "howToObtain": "Use locally on your own computer.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/education/teaching/index-html/ai-teaching/guidelines-for-the-use-of-ai-in-teaching-at-epfl/",
+          "sourceTitle": "Guidelines for the use of AI in teaching at EPFL",
+          "evidenceSnippet": "The guidelines name Ollama as an easy-to-use option for running open-weight models locally.",
+          "snapshotHash": "10de918a331b06c9ebca860da9a779d29fe79f5855245bed5e42400a8255cf1b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT (OpenAI)",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists ChatGPT (OpenAI) in its Generative AI directory.",
+          "snapshotHash": "7fc6a48ca874912d9f54a696e17186bd134918d561d99762dae609ec9132dcbb",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "claude",
+      "rawToolName": "Claude (Anthropic)",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Claude (Anthropic) in its Generative AI directory.",
+          "snapshotHash": "6ef52dfab3d0a2f93d2123fac2435c377a4215ecfe7e89e5881cace3e58a5953",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "deepseek",
+      "rawToolName": "DeepSeek",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists DeepSeek in its Generative AI directory.",
+          "snapshotHash": "341983235cdef37f0da20c078223f1545e8c66b7a6f3309951a092ff72a6c160",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "gemini",
+      "rawToolName": "Gemini (Google)",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Gemini (Google) in its Generative AI directory.",
+          "snapshotHash": "ef62159eb542c77bce5466f9cff3d43de3508305affff2db757ed9db336960fd",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "github_copilot",
+      "rawToolName": "GitHub Copilot",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists GitHub Copilot in its Generative AI directory.",
+          "snapshotHash": "3c85d026e1d4a959f33302f06201adba73ceaf9f3aa721236a70b8d4b1218291",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "grok",
+      "rawToolName": "Grok (xAI)",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Grok (xAI) in its Generative AI directory.",
+          "snapshotHash": "42d3de0230dc6ef8a83df07085f532efe4b06cf4b93482e4790c91fe6e3371ea",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "llama",
+      "rawToolName": "Llama (Meta)",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Llama (Meta) in its Generative AI directory.",
+          "snapshotHash": "663595a2ad48fb9adb6facbed8ae9bbc2cd7a931e05c55500879e778d0e04970",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "lumo",
+      "rawToolName": "Lumo (Proton)",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Lumo (Proton) in its Generative AI directory.",
+          "snapshotHash": "25fb97d607f56e49b6f34e9fd084ad07cfba3613b8981b49c42ce1ce2a71ea9a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Microsoft Copilot in its Generative AI directory.",
+          "snapshotHash": "0ec2d9b068a74fbf931ec5805586c8867a095ed1b90f311159dbf4714c8a13ae",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "mistral",
+      "rawToolName": "Mistral AI",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Mistral AI in its Generative AI directory.",
+          "snapshotHash": "aa260a989d8329a6ed56a164a2e2d79bfd51b3da154f3217501c8507596deba0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "perplexity",
+      "rawToolName": "Perplexity",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Perplexity in its Generative AI directory.",
+          "snapshotHash": "5660ef49fab06a67fb8b1c39098f9737fcb6e159ae2e46c69613eb74e2d4a825",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "publicai",
+      "rawToolName": "PublicAI (Apertus interface)",
+      "description": "Listed by the EPFL Library as a generative AI tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists PublicAI (Apertus interface) in its Generative AI directory.",
+          "snapshotHash": "225a57ce12f1cd16e0feb548a3ab0a9e054e09b6ea36df2a86e681c97f977a83",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "answerthis",
+      "rawToolName": "AnswerThis",
+      "description": "Listed by the EPFL Library as a research assistant tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists AnswerThis in its Research Assistants directory.",
+          "snapshotHash": "46cc048cdb4d8975e240954ae79dfb13e8d4dbaf2bc8a4e854164d4889fb8bcb",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "asta",
+      "rawToolName": "Asta",
+      "description": "Listed by the EPFL Library as a research assistant tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Asta in its Research Assistants directory.",
+          "snapshotHash": "d43affbb1399863920058a6d7ff1f41f6e9df45bccf517db544b38fc7e880bb1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "consensus",
+      "rawToolName": "Consensus",
+      "description": "Listed by the EPFL Library as a research assistant tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Consensus in its Research Assistants directory.",
+          "snapshotHash": "b9159da1fbb1daef5911a7c4244838c3119abe0f014c1d0d708813a19e9b945e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "elicit",
+      "rawToolName": "Elicit",
+      "description": "Listed by the EPFL Library as a research assistant tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Elicit in its Research Assistants directory.",
+          "snapshotHash": "b227f1846c872c46cd908fd6798ee37d8b92703018b4c00bd729d7ceb1ffc026",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "rayyan",
+      "rawToolName": "Rayyan",
+      "description": "Listed by the EPFL Library as a research assistant tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Rayyan in its Research Assistants directory.",
+          "snapshotHash": "64a95f4dd146e8d4a3c6960aec334d3bfce349693a10af3e95f25c00f92fdfcb",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "research_rabbit",
+      "rawToolName": "Research Rabbit",
+      "description": "Listed by the EPFL Library as a research assistant tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Research Rabbit in its Research Assistants directory.",
+          "snapshotHash": "139881ec66f51e9277cda1658d5e494ea4717e99112c7d26bbcc08d12ac8f361",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "scite_ai",
+      "rawToolName": "Scite Assistant",
+      "description": "Listed by the EPFL Library as a research assistant tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Scite Assistant in its Research Assistants directory.",
+          "snapshotHash": "241446b2397ca639e911988c50ca116746b0a217a89239fc3bf2ebc52d3511c1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "customgpt",
+      "rawToolName": "CustomGPT (OpenAI GPTs)",
+      "description": "Listed by the EPFL Library as an AI-supported retrieval-augmented generation tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists CustomGPT (OpenAI GPTs) in its RAG directory.",
+          "snapshotHash": "a2e85a4611fbd6fb75c2a180f0f4e57d4085b70950f0861616d9d1c903f3a5fc",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM (Google)",
+      "description": "Listed by the EPFL Library as an AI-supported retrieval-augmented generation tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists NotebookLM (Google) in its RAG directory.",
+          "snapshotHash": "3c378af1474a62e70ab0f9cef386d4966e18c5de5a582dc8a8d6db2be2d25fe3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "deepl",
+      "rawToolName": "DeepL",
+      "description": "Listed by the EPFL Library as an AI-supported writing and language tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists DeepL in its Writing and Language Assistants directory.",
+          "snapshotHash": "4d661d1488badadc244eb3468c7beb963467d25495cea443f1cbdb3f415ac220",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "epfl",
+      "universityName": "EPFL - Ecole polytechnique federale de Lausanne",
+      "qsRank": 22,
+      "tool": "grammarly",
+      "rawToolName": "Grammarly",
+      "description": "Listed by the EPFL Library as an AI-supported writing and language tool.",
+      "howToObtain": "Use the vendor service linked from the EPFL Library guide.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.epfl.ch/campus/library/artificial-intelligence-and-scientific-information/",
+          "sourceTitle": "Artificial intelligence and scientific information - Library - EPFL",
+          "evidenceSnippet": "EPFL Library lists Grammarly in its Writing and Language Assistants directory.",
+          "snapshotHash": "2175978542720eee131dd417677a140af3de2cdb0b9f934cb7cad7ecd7f94c3c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "technical-university-of-munich",
+      "universityName": "Technical University of Munich",
+      "qsRank": 23,
+      "tool": "microsoft_copilot",
+      "rawToolName": "M365 Copilot Chat",
+      "description": "Microsoft Copilot Chat made officially usable at TUM alongside the M365 suite.",
+      "howToObtain": "Activate in TUMonline; further instructions are linked from the TUM M365 wiki.",
+      "costToUser": "No separate end-user fee stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digitalisierung.tum.de/m365-und-copilot/",
+          "sourceTitle": "M365 und Copilot",
+          "evidenceSnippet": "TUM says use of M365 Copilot Chat has been officially released and can be used after activation in TUMonline.",
+          "snapshotHash": "0957ba7e1dfd71a6c1ed133c5881dc702f8e7972d5a02cd661eee8917b6b2cf5",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy",
+          "sourceTitle": "TUM issues a comprehensive AI strategy",
+          "evidenceSnippet": "TUM says it acquired licenses for Microsoft Copilot and Grammarly.",
+          "snapshotHash": "408c799cc1ce41e53cbfd28ade69f0d6394798cd88aa14e4e0f018634621ebf4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "technical-university-of-munich",
+      "universityName": "Technical University of Munich",
+      "qsRank": 23,
+      "tool": "grammarly",
+      "rawToolName": "Grammarly",
+      "description": "AI-assisted writing tool for grammar, spelling, style, and tone support.",
+      "howToObtain": "Available to all TUM members; TUM digitalization page links access details.",
+      "costToUser": "No separate end-user fee stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digitalisierung.tum.de/en/grammarly-available-for-all-tum-members/",
+          "sourceTitle": "Grammarly available for all TUM members",
+          "evidenceSnippet": "TUM says Grammarly is available to all members of TUM.",
+          "snapshotHash": "7537c7bb26c0138d3959b52f2ce1edad8aa8efbd1abece89b9375cd6c5f26979",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy",
+          "sourceTitle": "TUM issues a comprehensive AI strategy",
+          "evidenceSnippet": "TUM says it acquired licenses for Microsoft Copilot and Grammarly.",
+          "snapshotHash": "408c799cc1ce41e53cbfd28ade69f0d6394798cd88aa14e4e0f018634621ebf4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "technical-university-of-munich",
+      "universityName": "Technical University of Munich",
+      "qsRank": 23,
+      "tool": "self_deploy",
+      "rawToolName": "OneTutor",
+      "description": "AI tutor software developed at TUM to answer lecture questions and offer tailored quizzes.",
+      "howToObtain": "Through lectures or courses using the tool; no campus-wide self-service path is stated.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.tum.de/en/news-and-events/all-news/press-releases/details/using-ai-tools-to-shape-the-future-of-higher-education-teaching",
+          "sourceTitle": "Using AI tools to shape the future of higher education teaching",
+          "evidenceSnippet": "TUM names OneTutor as part of AI-supported teaching initiatives.",
+          "snapshotHash": "4d5e5d1fd882245a4a4d541d0fbee390d14d843023ee646cfebdb76a7262e1b3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "technical-university-of-munich",
+      "universityName": "Technical University of Munich",
+      "qsRank": 23,
+      "tool": "self_deploy",
+      "rawToolName": "Artemis",
+      "description": "TUM-developed learning platform that gives exercises and direct task-specific feedback.",
+      "howToObtain": "Through lectures or courses using the tool; no campus-wide self-service path is stated.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.tum.de/en/news-and-events/all-news/press-releases/details/using-ai-tools-to-shape-the-future-of-higher-education-teaching",
+          "sourceTitle": "Using AI tools to shape the future of higher education teaching",
+          "evidenceSnippet": "TUM names Artemis as part of AI-supported teaching initiatives.",
+          "snapshotHash": "b85e3c3ef4e0a2ed7c450256b9bd2f4e8c11852ae66a93435a9a5bbdbc4078c1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "technical-university-of-munich",
+      "universityName": "Technical University of Munich",
+      "qsRank": 23,
+      "tool": "self_deploy",
+      "rawToolName": "Iris",
+      "description": "Chatbot paired with Artemis that acts as a tutor using hints and counter-questions.",
+      "howToObtain": "Through lectures or courses using the tool; no campus-wide self-service path is stated.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.tum.de/en/news-and-events/all-news/press-releases/details/using-ai-tools-to-shape-the-future-of-higher-education-teaching",
+          "sourceTitle": "Using AI tools to shape the future of higher education teaching",
+          "evidenceSnippet": "TUM names Iris as part of AI-supported teaching initiatives.",
+          "snapshotHash": "48ae90aa6768c41ae44069d3a20d2e0e2f86bc3682809b4fcbfda7947b2b349c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "jhu",
+      "universityName": "Johns Hopkins University",
+      "qsRank": 24,
+      "tool": "self_deploy",
+      "rawToolName": "HopGPT",
+      "description": "JHU secure AI environment providing access to multiple large language models.",
+      "howToObtain": "Use the HopGPT / Hopkins AI Lab access path documented by JHU.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://support.cmts.jhu.edu/hc/en-us/articles/36668004757517-AI-Tools",
+          "sourceTitle": "AI Tools - Johns Hopkins Engineering",
+          "evidenceSnippet": "JHU Engineering says HopGPT is available to all faculty, staff, and students.",
+          "snapshotHash": "a283507ee5c245d7e32a18e28912eb160b39afe8d1f2834f29efcf9b3eff98f9",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+          "sourceTitle": "Generative AI & Large Language Models - WSE IT",
+          "evidenceSnippet": "WSE says the first stop for GenAI users should be HopGPT, formerly Hopkins AI Lab, and that it is free to use.",
+          "snapshotHash": "c58ce735a8e52d84c9ff756fa506d54efd942259311f8258b0de1f021b0e83dd",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.jhu.edu/teaching-and-ai/",
+          "sourceTitle": "Teaching and AI | Teaching @ JHU",
+          "evidenceSnippet": "Teaching @ JHU says Hopkins AI Lab models run locally at JHU, making their use FERPA compliant.",
+          "snapshotHash": "7985e141de7372401203d1ce28c8b920289baf41c025a164816e67df051bd2da",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "jhu",
+      "universityName": "Johns Hopkins University",
+      "qsRank": 24,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot for Web",
+      "description": "Microsoft Copilot web chat for general productivity, research, and automation.",
+      "howToObtain": "Select Continue with Microsoft and log in with JHED ID and password.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://support.cmts.jhu.edu/hc/en-us/articles/36668004757517-AI-Tools",
+          "sourceTitle": "AI Tools - Johns Hopkins Engineering",
+          "evidenceSnippet": "JHU Engineering lists Copilot for Web under free AI tools and provides JHED sign-in instructions.",
+          "snapshotHash": "f890def0d1518767639b37a52e0ca105daef8b16efc907a4dc8dc54ea3cd17e2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "jhu",
+      "universityName": "Johns Hopkins University",
+      "qsRank": 24,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "Enterprise ChatGPT for Johns Hopkins full-time faculty and staff with education privacy controls.",
+      "howToObtain": "Submit the JHU ChatGPT Edu account request with cost center; an invite is sent for JHED login.",
+      "costToUser": "$8.50 base monthly cost plus usage, with WSE page noting usage tiers",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://support.cmts.jhu.edu/hc/en-us/articles/36668004757517-AI-Tools",
+          "sourceTitle": "AI Tools - Johns Hopkins Engineering",
+          "evidenceSnippet": "JHU says ChatGPT Edu is officially available for full-time faculty and staff and describes request and billing details.",
+          "snapshotHash": "2836d49f4bb4a37fd56c7837cc7e1a157937ac6df71cc6f3e22f1817e666a802",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://wseit.engineering.jhu.edu/get-help/generative-ai-chatgpt-information/",
+          "sourceTitle": "Generative AI & Large Language Models - WSE IT",
+          "evidenceSnippet": "WSE says ChatGPT EDU is available for faculty and staff users who need advanced capabilities.",
+          "snapshotHash": "ec52b19414bf4a75e5cfea6de8aae48ada1651f7b338b520f69209d88612f579",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "jhu",
+      "universityName": "Johns Hopkins University",
+      "qsRank": 24,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "M365-integrated Copilot connected to Microsoft 365 apps and data.",
+      "howToObtain": "Order from the Johns Hopkins Software Catalog with approval and cost center.",
+      "costToUser": "$215/user/year",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://support.cmts.jhu.edu/hc/en-us/articles/36668004757517-AI-Tools",
+          "sourceTitle": "AI Tools - Johns Hopkins Engineering",
+          "evidenceSnippet": "JHU says Copilot for M365 is available for $215/user/year, is HIPAA-compliant, and requires approval and cost center.",
+          "snapshotHash": "a03b5241740f80f918e0dc7ee1f0da2df2f84d449b69ee3c5aeb1ac618ca52c3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "princeton-university",
+      "universityName": "Princeton University",
+      "qsRank": 25,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "Secure AI-powered chat tool for Princeton work and education.",
+      "howToObtain": "Access Copilot Chat with Princeton credentials.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.princeton.edu/generative-ai/ai-tools",
+          "sourceTitle": "Princeton-supported AI Tools | Office of Information Technology",
+          "evidenceSnippet": "Princeton lists Microsoft 365 Copilot Chat under available University enterprise licenses.",
+          "snapshotHash": "f35707a9c7ca551a37630c471f2d800c198aeea65a4ec405e5fff69d462aae34",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://oit.princeton.edu/microsoft-copilot-princeton-university",
+          "sourceTitle": "Microsoft Copilot at Princeton University",
+          "evidenceSnippet": "OIT says Microsoft Copilot is available for use at Princeton University and should be used with a Princeton account for enterprise data protection.",
+          "snapshotHash": "d27e970fec449b61ef7ccc95ee659d1382d7eb7cadcc22846638d928cf67fcde",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "princeton-university",
+      "universityName": "Princeton University",
+      "qsRank": 25,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Creative Cloud Image Generation",
+      "description": "AI features in Adobe applications for image editing, summarization, layout generation, and visual adjustments.",
+      "howToObtain": "Access through Princeton Adobe Creative Cloud.",
+      "costToUser": "Not specified",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.princeton.edu/generative-ai/ai-tools",
+          "sourceTitle": "Princeton-supported AI Tools | Office of Information Technology",
+          "evidenceSnippet": "Princeton lists Adobe Creative Cloud Image Generation under available University enterprise licenses.",
+          "snapshotHash": "2f942b15c97257617a39ac40f0f2e87eeab8c8f5ff475c805a1a4edebab550c4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "princeton-university",
+      "universityName": "Princeton University",
+      "qsRank": 25,
+      "tool": "self_deploy",
+      "rawToolName": "AI Sandbox for Faculty Research",
+      "description": "Secure environment for faculty researchers to use multiple large language models.",
+      "howToObtain": "Use Princeton AI Sandbox service.",
+      "costToUser": "Not specified",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.princeton.edu/generative-ai/ai-tools",
+          "sourceTitle": "Princeton-supported AI Tools | Office of Information Technology",
+          "evidenceSnippet": "Princeton says it provides a secure environment for faculty researchers to make use of multiple LLMs.",
+          "snapshotHash": "030c48e748d3a455b0aaf1f84ea913c3d16a8a8262b74098616890aae201f388",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "princeton-university",
+      "universityName": "Princeton University",
+      "qsRank": 25,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "AI assistant built into Microsoft apps such as Word, Outlook, Excel, PowerPoint, and Teams.",
+      "howToObtain": "Available through Princeton pilot or linked training/access workflow.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.princeton.edu/generative-ai/ai-tools",
+          "sourceTitle": "Princeton-supported AI Tools | Office of Information Technology",
+          "evidenceSnippet": "Princeton lists Microsoft 365 Copilot under tools available for piloting.",
+          "snapshotHash": "b5aaa9d23428188b9bf0e67c31754dacb0d637faec4c2e04c30cb3321c36dda7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "princeton-university",
+      "universityName": "Princeton University",
+      "qsRank": 25,
+      "tool": "github_copilot",
+      "rawToolName": "GitHub Copilot",
+      "description": "AI coding assistant for software development.",
+      "howToObtain": "Available through Princeton pilot or linked training/access workflow.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.princeton.edu/generative-ai/ai-tools",
+          "sourceTitle": "Princeton-supported AI Tools | Office of Information Technology",
+          "evidenceSnippet": "Princeton lists GitHub Copilot under tools available for piloting.",
+          "snapshotHash": "345bea04f2e489d58ad9d67176892bf3e1f7afe4a936df03a50e9def8aadbd95",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "princeton-university",
+      "universityName": "Princeton University",
+      "qsRank": 25,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Meeting assistant for summaries and action items.",
+      "howToObtain": "Available through Princeton pilot or linked training/access workflow.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.princeton.edu/generative-ai/ai-tools",
+          "sourceTitle": "Princeton-supported AI Tools | Office of Information Technology",
+          "evidenceSnippet": "Princeton lists Zoom AI Companion under tools available for piloting.",
+          "snapshotHash": "37804da54da3668d547f96b6eb391a9c307b89d1c417114fc776e0021e0b5d63",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "princeton-university",
+      "universityName": "Princeton University",
+      "qsRank": 25,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "General-purpose Google AI assistant.",
+      "howToObtain": "Available through Princeton pilot or linked training/access workflow.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.princeton.edu/generative-ai/ai-tools",
+          "sourceTitle": "Princeton-supported AI Tools | Office of Information Technology",
+          "evidenceSnippet": "Princeton lists Google Gemini under tools available for piloting.",
+          "snapshotHash": "ab6f226fed6dd6af052cea9a93c39178bac9a5b5fbe45a7672ec11a607d0eac0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "princeton-university",
+      "universityName": "Princeton University",
+      "qsRank": 25,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "Research-focused AI tool that works with provided sources.",
+      "howToObtain": "Available through Princeton pilot or linked training/access workflow.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.princeton.edu/generative-ai/ai-tools",
+          "sourceTitle": "Princeton-supported AI Tools | Office of Information Technology",
+          "evidenceSnippet": "Princeton lists Google NotebookLM under tools available for piloting.",
+          "snapshotHash": "f8fdc78ced38eace984cf516eea4fa91b2aa95ce7e29d2faf002088e639a3ccc",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1108 @@
+{
+  "schemaVersion": "uapt-ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-26-30-20260701",
+  "generatedAt": "2026-07-01T00:00:00.000Z",
+  "records": [
+    {
+      "universitySlug": "university-of-sydney",
+      "universityName": "The University of Sydney",
+      "qsRank": 26,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot for Web",
+      "description": "University-endorsed text-based generative AI access via University login and protected mode.",
+      "howToObtain": "Students access copilot.cloud.microsoft and log in with UniKey using Okta.",
+      "costToUser": "Free",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+          "sourceTitle": "Using AI to learn - The University of Sydney",
+          "evidenceSnippet": "Sydney says students should use University-endorsed tools like Copilot and log in with UniKey using Okta.",
+          "snapshotHash": "1d350719a0fe18629d792a2f3e10eaa1b400a76ae1097e9f565cd772c5654df6",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/wp-content/uploads/2024/07/USYD-TEQSA-RFI-response.pdf",
+          "sourceTitle": "TEQSA Request for Information - University of Sydney Action Plan",
+          "evidenceSnippet": "Sydney says it worked with Microsoft to make Copilot for Web available across the institution for free.",
+          "snapshotHash": "fdee89a638ba317ac95e8df06d83423072e11752e5806125e53e1cd4a005e17d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-sydney",
+      "universityName": "The University of Sydney",
+      "qsRank": 26,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly",
+      "description": "Image-generation AI tool available to staff and some students.",
+      "howToObtain": "Use firefly.adobe.com where faculty/staff entitlement applies.",
+      "costToUser": "Free to all staff; student cost not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+          "sourceTitle": "Frequently asked questions about generative AI at Sydney",
+          "evidenceSnippet": "Sydney says staff and students in some faculties have access to Adobe Firefly.",
+          "snapshotHash": "efea6f1c00baf71432c77e7f13d43f37783b3f8fa25487a7b724b70d1eefa925",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/wp-content/uploads/2024/07/USYD-TEQSA-RFI-response.pdf",
+          "sourceTitle": "TEQSA Request for Information - University of Sydney Action Plan",
+          "evidenceSnippet": "Sydney says Adobe Firefly is available free to all staff at the University.",
+          "snapshotHash": "a5b7fd7a0c9be6b8cf2cb5155fc1069abd0e6770989bf83b22d37cb3c63d66be",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-sydney",
+      "universityName": "The University of Sydney",
+      "qsRank": 26,
+      "tool": "cogniti",
+      "rawToolName": "Vanilla GPT-4 agent in Cogniti",
+      "description": "Official Cogniti agent for a raw GPT-4 experience.",
+      "howToObtain": "Use the Vanilla GPT-4 agent in Cogniti.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "not_specified",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+          "sourceTitle": "Frequently asked questions about generative AI at Sydney",
+          "evidenceSnippet": "Sydney says University staff and students can use the Vanilla GPT-4 agent in Cogniti for a more raw GPT-4 experience.",
+          "snapshotHash": "9bc33881e30cc0ec0b7cc88f6b882d7e3a191a3ca16b46c93789f6208e0557d3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-sydney",
+      "universityName": "The University of Sydney",
+      "qsRank": 26,
+      "tool": "turnitin_ai_detection",
+      "rawToolName": "Turnitin AI detection tool",
+      "description": "AI-detection capability used when misuse of AI in assessment is suspected.",
+      "howToObtain": "Used by markers or teachers when investigating suspected misuse.",
+      "costToUser": "No direct student cost mentioned",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.sydney.edu.au/students/academic-integrity/artificial-intelligence.html",
+          "sourceTitle": "Artificial intelligence - The University of Sydney",
+          "evidenceSnippet": "Sydney says Turnitin has a tool for detecting AI use and that it may be used when a marker suspects unpermitted or unacknowledged AI use.",
+          "snapshotHash": "da39a2b97541976ddd6c71cbbd33b06bb3a23f833199297171025dcc725b770b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "mcgill-university",
+      "universityName": "McGill University",
+      "qsRank": 27,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "Enterprise-protected Microsoft Copilot Chat for questions, generation, and summarization.",
+      "howToObtain": "Access using McGill account guidance; McGill also links training.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+          "sourceTitle": "AI tools at McGill | IT Services",
+          "evidenceSnippet": "McGill lists Microsoft 365 Copilot Chat as available for use at McGill and free for staff, faculty, and students.",
+          "snapshotHash": "49bdf9ca3c3e0ed24dd4aafdda8fbcf0edac48429094c66cc6c66348ab838d6e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "mcgill-university",
+      "universityName": "McGill University",
+      "qsRank": 27,
+      "tool": "synthesia",
+      "rawToolName": "Synthesia",
+      "description": "AI video generation platform using avatars and multilingual voiceovers.",
+      "howToObtain": "See McGill IT Knowledge Base entry About Synthesia and request/assessment workflow.",
+      "costToUser": "$9,960 per seat/year, possible discounted price $7,980",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+          "sourceTitle": "AI tools at McGill | IT Services",
+          "evidenceSnippet": "McGill lists Synthesia as an available AI tool for staff and faculty, with protected data allowed only upon request and approval.",
+          "snapshotHash": "5b8d9eecd46b17cdc94a38fb1f0ac85f676980c01bb9a78980ac0e076063cbbf",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "mcgill-university",
+      "universityName": "McGill University",
+      "qsRank": 27,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu (OpenAI)",
+      "description": "Secure higher-education version of ChatGPT in testing at McGill.",
+      "howToObtain": "Access limited to departments, projects, or pilot participants; see McGill details page.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+          "sourceTitle": "AI tools at McGill | IT Services",
+          "evidenceSnippet": "McGill places ChatGPT Edu in the AI tools currently in testing section and says access may be limited to pilot participants.",
+          "snapshotHash": "6e8e9ac9b4ada6712144c0c04d6829025b6a821adb4e97dcde85c3f10434bd47",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "mcgill-university",
+      "universityName": "McGill University",
+      "qsRank": 27,
+      "tool": "copilot_studio",
+      "rawToolName": "Microsoft Copilot Studio",
+      "description": "Tool for building AI chatbots with limited coding.",
+      "howToObtain": "Contact ai@mcgill.ca for tools currently in testing.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+          "sourceTitle": "AI tools at McGill | IT Services",
+          "evidenceSnippet": "McGill lists Microsoft Copilot Studio in its testing section and says it is used to test the AskMcGill internal chatbot.",
+          "snapshotHash": "c53b9412ceb8c3a6a0ec50553ff6eb5da9bf4086115693c88c6a4e46de0cbc6b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "mcgill-university",
+      "universityName": "McGill University",
+      "qsRank": 27,
+      "tool": "teams_premium",
+      "rawToolName": "Microsoft Teams Premium with AI Features",
+      "description": "AI meeting summaries, translations, and recap features in Teams.",
+      "howToObtain": "Contact ai@mcgill.ca for testing access.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+          "sourceTitle": "AI tools at McGill | IT Services",
+          "evidenceSnippet": "McGill lists Microsoft Teams Premium with AI Features in its AI tools currently in testing section.",
+          "snapshotHash": "eb250bcfb050523632282fb4879e5767e8d08160d41a3d66909b809086350e8f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "mcgill-university",
+      "universityName": "McGill University",
+      "qsRank": 27,
+      "tool": "deepseek",
+      "rawToolName": "DeepSeek AI",
+      "description": "Prohibited AI tool due to data exposure and prompt injection risks.",
+      "howToObtain": "Not available for McGill use.",
+      "costToUser": "Not available",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+          "sourceTitle": "AI tools at McGill | IT Services",
+          "evidenceSnippet": "McGill says DeepSeek AI is not permitted for any McGill-managed or research-funded device.",
+          "snapshotHash": "60b91f8f1774a08254f6d2f5f87faf96b8ba8721ec2bc029ef2bbf2cbe9a3608",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "mcgill-university",
+      "universityName": "McGill University",
+      "qsRank": 27,
+      "tool": "read_ai",
+      "rawToolName": "Read.AI",
+      "description": "Unapproved AI meeting bot.",
+      "howToObtain": "Do not use for McGill activities; do not allow bots into meetings.",
+      "costToUser": "Not available",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+          "sourceTitle": "AI tools at McGill | IT Services",
+          "evidenceSnippet": "McGill says Read.AI and similar meeting bots are not approved for McGill use because of privacy and data-handling concerns.",
+          "snapshotHash": "a1c268d342472a56539ad8ecfe9544cbc09597566f5b89daa3268d2fdcd669ca",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT",
+      "description": "OpenAI chatbot named in PSL central academic regulation and Dauphine-PSL library guidance.",
+      "howToObtain": "No PSL provisioning path identified.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://static.psl.eu/sites/default/files/2025-07/39-2025_-_approbation_du_reglement_de_la_scolarite_de_luniversite_psl_et_des_reglements_des_etudes_des_formations_cpes-smd-cppe.pdf",
+          "sourceTitle": "Reglement de la scolarite de l'Universite PSL",
+          "evidenceSnippet": "PSL regulation says AI tools such as ChatGPT may be used only when authorized by the instructor and disclosed like a source citation.",
+          "snapshotHash": "2a97fe3833f756703250a062d223b74aa0e94358c1aa5127c402af6b76ff4cff",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://bu.dauphine.psl.eu/print.html?id_page=1023",
+          "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche",
+          "evidenceSnippet": "Dauphine-PSL library guidance lists ChatGPT among well-known generative AI tools.",
+          "snapshotHash": "49cb1d57fc9b2297765b97011e79fd58f61edc7096b995929816f5a29a87aeb5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "mistral",
+      "rawToolName": "Mistral",
+      "description": "Mistral is named by Dauphine-PSL library guidance, but not as a central approved PSL service.",
+      "howToObtain": "No PSL provisioning path identified.",
+      "costToUser": "Not specified",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://bu.dauphine.psl.eu/print.html?id_page=1023",
+          "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche",
+          "evidenceSnippet": "Dauphine-PSL library guidance names Mistral among AI or research-assistant tools without central PSL approval language.",
+          "snapshotHash": "168531cdc91c637569afb0ba5e0cf88a098b65244bf12f29f0912cbf86a762a8",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "gemini",
+      "rawToolName": "Gemini",
+      "description": "Gemini is named by Dauphine-PSL library guidance, but not as a central approved PSL service.",
+      "howToObtain": "No PSL provisioning path identified.",
+      "costToUser": "Not specified",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://bu.dauphine.psl.eu/print.html?id_page=1023",
+          "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche",
+          "evidenceSnippet": "Dauphine-PSL library guidance names Gemini among AI or research-assistant tools without central PSL approval language.",
+          "snapshotHash": "23d829ff152ba871d4aac87fc54019369d3682e1a8006c6b9bd8b3ee5e40fd6b",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot",
+      "description": "Copilot is named by Dauphine-PSL library guidance, but not as a central approved PSL service.",
+      "howToObtain": "No PSL provisioning path identified.",
+      "costToUser": "Not specified",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://bu.dauphine.psl.eu/print.html?id_page=1023",
+          "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche",
+          "evidenceSnippet": "Dauphine-PSL library guidance names Copilot among AI or research-assistant tools without central PSL approval language.",
+          "snapshotHash": "8150d75c19f3f7e00a85a6f8b19f09de7f3a8b9a890b2a29af33e15bdebd1d6c",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "elicit",
+      "rawToolName": "Elicit",
+      "description": "Elicit is named by Dauphine-PSL library guidance, but not as a central approved PSL service.",
+      "howToObtain": "No PSL provisioning path identified.",
+      "costToUser": "Freemium according to Dauphine-PSL guidance",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://bu.dauphine.psl.eu/print.html?id_page=1023",
+          "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche",
+          "evidenceSnippet": "Dauphine-PSL library guidance names Elicit among AI or research-assistant tools without central PSL approval language.",
+          "snapshotHash": "14876e7ea1870781f47bf27824ae712fecade74f2cd5253266a7353f983eb63d",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "scispace",
+      "rawToolName": "Scispace",
+      "description": "Scispace is named by Dauphine-PSL library guidance, but not as a central approved PSL service.",
+      "howToObtain": "No PSL provisioning path identified.",
+      "costToUser": "Freemium according to Dauphine-PSL guidance",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://bu.dauphine.psl.eu/print.html?id_page=1023",
+          "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche",
+          "evidenceSnippet": "Dauphine-PSL library guidance names Scispace among AI or research-assistant tools without central PSL approval language.",
+          "snapshotHash": "c6dda46dd76124b87e13844c920ec16494b87321d268c1edc96ecf811c0a7b4c",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "consensus",
+      "rawToolName": "Consensus",
+      "description": "Consensus is named by Dauphine-PSL library guidance, but not as a central approved PSL service.",
+      "howToObtain": "No PSL provisioning path identified.",
+      "costToUser": "Freemium according to Dauphine-PSL guidance",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://bu.dauphine.psl.eu/print.html?id_page=1023",
+          "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche",
+          "evidenceSnippet": "Dauphine-PSL library guidance names Consensus among AI or research-assistant tools without central PSL approval language.",
+          "snapshotHash": "67d5449ae9bc751440a8fdb25c9955f197ea43c3cf4655a7cc48f91be0cc6233",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "scite_ai",
+      "rawToolName": "Scite",
+      "description": "Scite is named by Dauphine-PSL library guidance, but not as a central approved PSL service.",
+      "howToObtain": "No PSL provisioning path identified.",
+      "costToUser": "Freemium according to Dauphine-PSL guidance",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://bu.dauphine.psl.eu/print.html?id_page=1023",
+          "sourceTitle": "Utiliser l'intelligence artificielle dans sa recherche",
+          "evidenceSnippet": "Dauphine-PSL library guidance names Scite among AI or research-assistant tools without central PSL approval language.",
+          "snapshotHash": "da09a2e487267eaf3196e9baf46aa331862b28bfd8b8acfa2d032b45b34dc860",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "lens",
+      "rawToolName": "Lens",
+      "description": "Lens is covered in official URFIST PSL bibliographic-search training materials.",
+      "howToObtain": "Use the external service referenced in URFIST PSL training.",
+      "costToUser": "Not specified",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://urfist.chartes.psl.eu/ressources/sortir-de-google-scholar-scopus-ou-web-science-que-valent-lens-dimensions-openalex-et",
+          "sourceTitle": "Sortir de Google Scholar, Scopus ou Web of Science",
+          "evidenceSnippet": "URFIST PSL presents Lens as one of the tools examined in bibliographic training.",
+          "snapshotHash": "3bd4c7eb6a5f127fad38348c6add553daa7e106a94b0065a8a2065e836776693",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "dimensions",
+      "rawToolName": "Dimensions",
+      "description": "Dimensions is covered in official URFIST PSL bibliographic-search training materials.",
+      "howToObtain": "Use the external service referenced in URFIST PSL training.",
+      "costToUser": "Not specified",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://urfist.chartes.psl.eu/ressources/sortir-de-google-scholar-scopus-ou-web-science-que-valent-lens-dimensions-openalex-et",
+          "sourceTitle": "Sortir de Google Scholar, Scopus ou Web of Science",
+          "evidenceSnippet": "URFIST PSL presents Dimensions as one of the tools examined in bibliographic training.",
+          "snapshotHash": "c6e00925c994109bbdc0fc1a107e8e13cddd0d17b87acf12b5cf7e69ec3f9ed1",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "openalex",
+      "rawToolName": "OpenAlex",
+      "description": "OpenAlex is covered in official URFIST PSL bibliographic-search training materials.",
+      "howToObtain": "Use the external service referenced in URFIST PSL training.",
+      "costToUser": "Not specified",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://urfist.chartes.psl.eu/ressources/sortir-de-google-scholar-scopus-ou-web-science-que-valent-lens-dimensions-openalex-et",
+          "sourceTitle": "Sortir de Google Scholar, Scopus ou Web of Science",
+          "evidenceSnippet": "URFIST PSL presents OpenAlex as one of the tools examined in bibliographic training.",
+          "snapshotHash": "ae77e97d0fcdd13980e758ae37474252dbe250e18503c1ae1637e470193d0559",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "universite-psl",
+      "universityName": "Universite PSL",
+      "qsRank": 28,
+      "tool": "matilda",
+      "rawToolName": "Matilda",
+      "description": "Matilda is covered in official URFIST PSL bibliographic-search training materials.",
+      "howToObtain": "Use the external service referenced in URFIST PSL training.",
+      "costToUser": "Not specified",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://urfist.chartes.psl.eu/ressources/sortir-de-google-scholar-scopus-ou-web-science-que-valent-lens-dimensions-openalex-et",
+          "sourceTitle": "Sortir de Google Scholar, Scopus ou Web of Science",
+          "evidenceSnippet": "URFIST PSL presents Matilda as one of the tools examined in bibliographic training.",
+          "snapshotHash": "94fe54e8a2a1efc8592019b68c7401f46dbde333c37188d797656ce894ad606d",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "cogniti",
+      "rawToolName": "Cogniti",
+      "description": "Course-specific generative AI virtual tutor platform integrated with Quercus.",
+      "howToObtain": "Add the Cogniti link in a Quercus course and request agent-creation rights.",
+      "costToUser": "Centrally funded",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists Cogniti among vetted and supported tools.",
+          "snapshotHash": "9d264feb3dd46824f67805f53bea05007a6762593da59bf2a4f4543f0f85a1b2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes Cogniti in the official generative AI tools directory.",
+          "snapshotHash": "e50f5713080973d48bba83b4f1e0bee3d0b39fe0d029da7ab4b1ea5560288d99",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Protected Microsoft Copilot Chat for general-purpose AI chat.",
+      "howToObtain": "Sign in with a U of T Microsoft 365 account at m365.cloud.microsoft/chat.",
+      "costToUser": "Free for eligible U of T users",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists Microsoft Copilot among vetted and supported tools.",
+          "snapshotHash": "0ef4327eb6045767978266b00a3fa79194788487f81ff35e1f8420d0e03eb196",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes Microsoft Copilot in the official generative AI tools directory.",
+          "snapshotHash": "03d1be423814d5419253ec1bca0c568798d394d1805236c2a33acbe28129bcfc",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "Enterprise ChatGPT environment for U of T.",
+      "howToObtain": "Confirm paid access through the Licensed Software Office or department.",
+      "costToUser": "Paid subscription required",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists ChatGPT Edu among vetted and supported tools.",
+          "snapshotHash": "6075725aa9ed5522033c42d8d762ad3b9e9c6fe2e2b77b1c3f993915cdc47f74",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes ChatGPT Edu in the official generative AI tools directory.",
+          "snapshotHash": "a128a0a61a746a8de51c1bef737a14c76109d11cbd417888f2a128f3183a54a5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "claude",
+      "rawToolName": "Claude for Education",
+      "description": "Anthropic Claude for Education pilot.",
+      "howToObtain": "Submit the U of T expression-of-interest form and join an approved pilot team.",
+      "costToUser": "No end-user price stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists Claude for Education among vetted and supported tools.",
+          "snapshotHash": "6afd3dc7ebcb61414654bc5e37265369eeec85c1acdc3163050e0c6d73a302ff",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes Claude for Education in the official generative AI tools directory.",
+          "snapshotHash": "60d8f5e359de0129b45afc5bbf6d86e6a1e2cd342505542588569d09a31182ea",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "contact_north_teachers_assistant_pro",
+      "rawToolName": "Contact North Teacher’s Assistant Pro",
+      "description": "Instructor-facing generative AI assistant.",
+      "howToObtain": "Open aiteachingassistantpro.ca.",
+      "costToUser": "Funded by Contact North / Government of Ontario",
+      "availability": "allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists Contact North Teacher’s Assistant Pro among vetted and supported tools.",
+          "snapshotHash": "3c702fb6721aa9a44f9ecd578a0f6fd9386ba10536dcad31528e21bbc0a21bb2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes Contact North Teacher’s Assistant Pro in the official generative AI tools directory.",
+          "snapshotHash": "0a07df65274d1d4e97cb3a95f75547377d3c4f67148b59d896d3b38d0b443ad7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "contact_north_ai_tutor_pro",
+      "rawToolName": "Contact North AI Tutor Pro",
+      "description": "Student-facing AI study tool.",
+      "howToObtain": "Open aitutorpro.ca.",
+      "costToUser": "Funded by Contact North / Government of Ontario",
+      "availability": "allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists Contact North AI Tutor Pro among vetted and supported tools.",
+          "snapshotHash": "b5047f7cb48d5683591a1ae13bc525e1afb6bc8e13c1e6744e6928bf266ac306",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes Contact North AI Tutor Pro in the official generative AI tools directory.",
+          "snapshotHash": "31c9b5de49da4c07a4c21935cad8987b6fd3034e190863782fe50fca8a398018",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "M365 Copilot",
+      "description": "Premium Microsoft 365 Copilot integrated into Microsoft apps.",
+      "howToObtain": "Submit a U of T request for the paid full version.",
+      "costToUser": "Additional paid fee-for-service license required",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists M365 Copilot among vetted and supported tools.",
+          "snapshotHash": "eacec0d24c118cd3c151f891299015b7bc79ffd0d28667a2b7695cbae6b36205",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes M365 Copilot in the official generative AI tools directory.",
+          "snapshotHash": "27e6aa7b5a464c8f79780b510d1fc77e3854c4fd3e632a98a5c54f2ee75b2706",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "teams_premium",
+      "rawToolName": "Teams Premium",
+      "description": "Microsoft Teams Premium add-on used as an AI meeting assistant.",
+      "howToObtain": "Submit a request through the Enterprise Service Centre.",
+      "costToUser": "No end-user price stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists Teams Premium among vetted and supported tools.",
+          "snapshotHash": "bf4d68ef1f649ec24c9f5b489d91bd5b3fa0b9b2e60f7937190836ee6ac8a7bb",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes Teams Premium in the official generative AI tools directory.",
+          "snapshotHash": "8e919f863dbe2fb0e838d2a20b843b4838e0fa7c2f9dae15e95ef8d10622648d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "azure_ai_foundry",
+      "rawToolName": "Azure AI Foundry",
+      "description": "Microsoft platform for building, deploying, and managing AI applications.",
+      "howToObtain": "Available via Landing Zones / SSG-Cloud.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "not_specified",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists Azure AI Foundry among vetted and supported tools.",
+          "snapshotHash": "ae5dc157ec7dd88be2225f059fc6a251e7da6c1c70f169ce1ab30aeb6ecda361",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes Azure AI Foundry in the official generative AI tools directory.",
+          "snapshotHash": "c758df36488e7f18d1199fa17b5142261fcb6f23423a5dd48525eca975db4b2a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "web_of_science_research_assistant",
+      "rawToolName": "Web of Science Research Assistant",
+      "description": "Generative-AI-powered research assistant within Web of Science.",
+      "howToObtain": "Open Web of Science through U of T access and select Research Assistant.",
+      "costToUser": "Included through U of T Libraries subscription",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists Web of Science Research Assistant among vetted and supported tools.",
+          "snapshotHash": "65dab9e924bf1b8c7904cfc12e4f3a7b2d92ff05401908d88d13286a8d80c9f6",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes Web of Science Research Assistant in the official generative AI tools directory.",
+          "snapshotHash": "e8b5dfac676966c91b1e33723f0767bbc43b16749c66de7c4724f2c49ed3264d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-toronto",
+      "universityName": "University of Toronto",
+      "qsRank": 29,
+      "tool": "scopus_ai",
+      "rawToolName": "Scopus AI",
+      "description": "Generative-AI-enhanced research search tool within Scopus.",
+      "howToObtain": "Access Scopus through U of T library login.",
+      "costToUser": "Included through U of T Libraries subscription",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "Tools & Training - Toward an AI-ready University",
+          "evidenceSnippet": "U of T lists Scopus AI among vetted and supported tools.",
+          "snapshotHash": "6e83afbd0fcdf51a533e07dcb1c692b0cb704471f43e3bbb1892fd831985855b",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teaching.utoronto.ca/teaching-uoft-genai/genai-tools/",
+          "sourceTitle": "Generative AI Tools - Centre for Teaching Support & Innovation",
+          "evidenceSnippet": "CTSI describes Scopus AI in the official generative AI tools directory.",
+          "snapshotHash": "585585647cdcf1ef6c5e2c2bb9c53e329ddafe17e12752892443241f653a2e79",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "self_deploy",
+      "rawToolName": "复旦大学AI办事大厅",
+      "description": "Fudan-hosted AI service hall inside eHall for online administrative workflows.",
+      "howToObtain": "Use Fudan eHall or the official entry path described by Fudan Information Office.",
+      "costToUser": "No separate user fee mentioned",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://xxb.fudan.edu.cn/0e/85/c33159a724613/page.htm",
+          "sourceTitle": "复旦eHall再升级！AI办事大厅上线",
+          "evidenceSnippet": "Fudan official sources name 复旦大学AI办事大厅 as an AI service or assistant.",
+          "snapshotHash": "52b1bb05711fc569d52da9e1f30e34e981b274444d1d38c25bb36f186c0ebdbe",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ecampus.fudan.edu.cn/31330/list.htm",
+          "sourceTitle": "部门大事记",
+          "evidenceSnippet": "Fudan Information Office history page records 复旦大学AI办事大厅 or the related AI service launch.",
+          "snapshotHash": "2cbfc2fafbb08d6c07b940aeb074ee232eac46e7c75d25080397ae967158c060",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "self_deploy",
+      "rawToolName": "复小搜",
+      "description": "Fudan-hosted semantic search assistant in eHall.",
+      "howToObtain": "Use Fudan eHall or the official entry path described by Fudan Information Office.",
+      "costToUser": "No separate user fee mentioned",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://news.fudan.edu.cn/2025/0314/c31a144496/page.htm",
+          "sourceTitle": "复旦eHall再升级，AI办事大厅上线",
+          "evidenceSnippet": "Fudan official sources name 复小搜 as an AI service or assistant.",
+          "snapshotHash": "9e1c448bb2646fb88244f318dea240ef20f587066f9ae8c860a516b5ae8d8fe9",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ecampus.fudan.edu.cn/31330/list.htm",
+          "sourceTitle": "部门大事记",
+          "evidenceSnippet": "Fudan Information Office history page records 复小搜 or the related AI service launch.",
+          "snapshotHash": "13fa9a347a0e1b1dcdbbf71812e0656650c33e1f0c48e8b04b0e9f13ed854418",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "self_deploy",
+      "rawToolName": "复小填",
+      "description": "Fudan-hosted intelligent form-filling tool in eHall.",
+      "howToObtain": "Use Fudan eHall or the official entry path described by Fudan Information Office.",
+      "costToUser": "No separate user fee mentioned",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://news.fudan.edu.cn/2025/0314/c31a144496/page.htm",
+          "sourceTitle": "复旦eHall再升级，AI办事大厅上线",
+          "evidenceSnippet": "Fudan official sources name 复小填 as an AI service or assistant.",
+          "snapshotHash": "6882a47bdefd312cd528f71c8a9e8f3a7866bacdf416c85445d5e0dab67c799a",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ecampus.fudan.edu.cn/31330/list.htm",
+          "sourceTitle": "部门大事记",
+          "evidenceSnippet": "Fudan Information Office history page records 复小填 or the related AI service launch.",
+          "snapshotHash": "6b0d030b66df30dab85be3bd190bb87b7b011aaf102a7d12e9f1dd19f0029cb3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "self_deploy",
+      "rawToolName": "复旦迎新助手",
+      "description": "Fudan-hosted onboarding smart agent for incoming students.",
+      "howToObtain": "Use Fudan eHall or the official entry path described by Fudan Information Office.",
+      "costToUser": "No separate user fee mentioned",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://xxb.fudan.edu.cn/92/b4/c33159a692916/page.htm",
+          "sourceTitle": "大模型迎新助手助力新生报到",
+          "evidenceSnippet": "Fudan official sources name 复旦迎新助手 as an AI service or assistant.",
+          "snapshotHash": "7ccfd07dcb3af31ef3a8283cc1cc1c8a39ee2af75052584f676d37b9815995f4",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ecampus.fudan.edu.cn/31330/list.htm",
+          "sourceTitle": "部门大事记",
+          "evidenceSnippet": "Fudan Information Office history page records 复旦迎新助手 or the related AI service launch.",
+          "snapshotHash": "386282c709359ce6cb8c16c8a38fa25ca94927ff75226a6f459aede75b264b8c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "self_deploy",
+      "rawToolName": "复小信",
+      "description": "Fudan smart Q&A assistant in the eHall ecosystem.",
+      "howToObtain": "Use Fudan eHall or the official entry path described by Fudan Information Office.",
+      "costToUser": "No separate user fee mentioned",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://xxb.fudan.edu.cn/0e/85/c33159a724613/page.htm",
+          "sourceTitle": "复旦eHall再升级！AI办事大厅上线",
+          "evidenceSnippet": "Fudan official sources name 复小信 as an AI service or assistant.",
+          "snapshotHash": "600eeeb044947e0e6b374c4e616706c1cb2b9c80d44caa44af55095560209d54",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ecampus.fudan.edu.cn/31330/list.htm",
+          "sourceTitle": "部门大事记",
+          "evidenceSnippet": "Fudan Information Office history page records 复小信 or the related AI service launch.",
+          "snapshotHash": "fdade32679d34c226411e14c10301f15f61a685c0587a4b886b5bac676e2b535",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "cnki_ai_academic",
+      "rawToolName": "CNKI AI学术研究助手",
+      "description": "CNKI AI academic research assistant.",
+      "howToObtain": "Visit aiplus.cnki.net, log in, and associate the institution.",
+      "costToUser": "No separate user fee mentioned",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://library.fudan.edu.cn/91/4c/c42757a692556/page.htm",
+          "sourceTitle": "CNKI AI学术研究助手试用",
+          "evidenceSnippet": "Fudan Library opened a trial for CNKI AI学术研究助手 and provides access instructions; the cited trial period has ended by the current crawl date.",
+          "snapshotHash": "c6ab520649b2eb21878f520205d38658715310d7988a9dce535827386d2c43e0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "cnki_ai_enhanced_search",
+      "rawToolName": "知网总库AI增强检索",
+      "description": "CNKI AI-enhanced literature search.",
+      "howToObtain": "Enter through the CNKI homepage AI-enhanced search and use institutional access.",
+      "costToUser": "No separate user fee mentioned",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://library.fudan.edu.cn/a2/d9/c42757a697049/page.htm",
+          "sourceTitle": "“知网总库AI增强检索”试用",
+          "evidenceSnippet": "Fudan Library opened a trial for 知网总库AI增强检索 and provides access instructions; the cited trial period has ended by the current crawl date.",
+          "snapshotHash": "533b10fccb69cc5006d0cb5725d2220b41d0b7166a9c01da7efb8872d6f60a64",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "scite_ai",
+      "rawToolName": "Scite.ai",
+      "description": "AI-assisted literature discovery and citation-evaluation tool.",
+      "howToObtain": "Use scite.ai from campus network or via VPN/library proxy.",
+      "costToUser": "No separate user fee mentioned",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://library.fudan.edu.cn/00/94/c42757a721044/page.htm",
+          "sourceTitle": "Scite.ai试用",
+          "evidenceSnippet": "Fudan Library opened a trial for Scite.ai and provides access instructions; the cited trial period has ended by the current crawl date.",
+          "snapshotHash": "9fafe079d6518486a22659d03ec90fd45ef99e0ea6587d007b0724a05d1dccc9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "aminer_ai",
+      "rawToolName": "AMiner AI科研助手",
+      "description": "AI conversational literature knowledge-base assistant.",
+      "howToObtain": "Use aminer.cn from campus network or via VPN/library proxy.",
+      "costToUser": "No separate user fee mentioned",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://library.fudan.edu.cn/f3/11/c42757a717585/page.htm",
+          "sourceTitle": "AMiner AI科研助手试用",
+          "evidenceSnippet": "Fudan Library opened a trial for AMiner AI科研助手 and provides access instructions; the cited trial period has ended by the current crawl date.",
+          "snapshotHash": "fad46f99774b86bb1f923f94bd72c69fad94bcb19608918245e09671bafad2c5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "fudan-university",
+      "universityName": "Fudan University",
+      "qsRank": 30,
+      "tool": "yunsiku_humanities_qa",
+      "rawToolName": "云四库智能问答系统",
+      "description": "Humanities-focused intelligent Q&A system.",
+      "howToObtain": "Use aiyskqa.cn/chatfudan from campus network or via VPN/library proxy.",
+      "costToUser": "Three free uses per day outside no-registration hours; no separate fee mentioned",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://library.fudan.edu.cn/08/c7/c42893a723143/page.htm",
+          "sourceTitle": "云四库智能问答系统试用",
+          "evidenceSnippet": "Fudan Library opened a trial for 云四库智能问答系统 and provides access instructions; the cited trial period has ended by the current crawl date.",
+          "snapshotHash": "ee883829d1189de70426ddb0284c38b7ec677fa1bc3fb71965cb061689d9859d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
