@@ -10,8 +10,11 @@ import {
 } from "@/lib/google-search-console";
 import {
   buildPrivateAnalyticsSummary,
+  getAnalyticsRowSourceName,
+  isBotAnalyticsRow,
   type AnalyticsPeriod,
   type PrivateAnalyticsCountRow,
+  type PrivateAnalyticsSourceRow,
   type PrivateAnalyticsSummary
 } from "@/lib/private-analytics";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -54,7 +57,10 @@ export default async function PrivateAnalyticsPage({
     loadAnalyticsRows(since),
     getGoogleSearchConsoleSummary(since, gscEndDate)
   ]);
-  const summary = buildPrivateAnalyticsSummary(rows, since, period);
+  const botRows = rows.filter(isBotAnalyticsRow);
+  const humanRows = rows.filter((row) => !isBotAnalyticsRow(row));
+  const summary = buildPrivateAnalyticsSummary(humanRows, since, period);
+  const botSummary = buildPrivateAnalyticsSummary(botRows, since, period);
 
   return (
     <main className="analytics-dashboard">
@@ -84,6 +90,7 @@ export default async function PrivateAnalyticsPage({
         <span>{windowDays} day window</span>
         <span>Onsite: {analyticsStoreAvailable ? "connected" : "unavailable"}</span>
         <span>GSC: {gsc.available ? "connected" : "unavailable"}</span>
+        <span>Default onsite KPI excludes bots</span>
         <span>No full referrer URLs stored</span>
       </section>
 
@@ -105,15 +112,20 @@ export default async function PrivateAnalyticsPage({
       ) : null}
 
       <section className="analytics-kpi-grid" aria-label="Dashboard metrics">
-        <KpiCard label="Visitors" value={formatCount(summary.visitors)} source="Onsite" />
-        <KpiCard label="Sessions" value={formatCount(summary.sessions)} source="Onsite" />
-        <KpiCard label="Page views" value={formatCount(summary.pageViews)} source="Onsite" />
+        <KpiCard label="Visitors" value={formatCount(summary.visitors)} source="Onsite human" />
+        <KpiCard label="Sessions" value={formatCount(summary.sessions)} source="Onsite human" />
+        <KpiCard label="Page views" value={formatCount(summary.pageViews)} source="Onsite human" />
         <KpiCard
           label="Engaged"
           value={formatPercent(safeRate(summary.engagedSessions, summary.sessions))}
-          source="Onsite"
+          source="Onsite human"
         />
-        <KpiCard label="Bounce" value={formatPercent(summary.bounceRate)} source="Onsite" />
+        <KpiCard label="Bounce" value={formatPercent(summary.bounceRate)} source="Onsite human" />
+        <KpiCard
+          label="Bot page views"
+          value={formatCount(botSummary.pageViews)}
+          source="Filtered"
+        />
         <KpiCard label="GSC clicks" value={formatCount(gsc.totals.clicks)} source="Google" />
         <KpiCard
           label="GSC impressions"
@@ -142,6 +154,11 @@ export default async function PrivateAnalyticsPage({
           />
         </AnalyticsPanel>
 
+        <AnalyticsPanel meta="Human visitors by inbound source" title="Visitor sources">
+          <SourceOverview summary={summary} />
+          <SourceVisitorTable rows={summary.visitorSourceMix} />
+        </AnalyticsPanel>
+
         <AnalyticsPanel meta="Search-side visibility" title="GSC trend">
           <Sparkline values={gsc.dateRows.map((row) => row.clicks)} />
           <CompactTable
@@ -156,7 +173,7 @@ export default async function PrivateAnalyticsPage({
           />
         </AnalyticsPanel>
 
-        <AnalyticsPanel meta="First-party referrer and UTM" title="Source mix">
+        <AnalyticsPanel meta="Human page views by first touch" title="Source mix">
           <SourceMixTable summary={summary} />
         </AnalyticsPanel>
 
@@ -193,10 +210,23 @@ export default async function PrivateAnalyticsPage({
           <FunnelTable summary={summary} />
         </AnalyticsPanel>
 
-        <AnalyticsPanel meta="Coarse request headers" title="Devices">
+        <AnalyticsPanel meta="Human request headers" title="Devices">
           <CompactTable
             columns={["Device", "Views", "Visitors", "Events", "Share"]}
             rows={summary.devices.map((row) => [
+              formatDeviceType(row.deviceType),
+              formatCount(row.pageViews),
+              formatCount(row.visitors),
+              formatCount(row.events),
+              formatPercent(row.share)
+            ])}
+          />
+        </AnalyticsPanel>
+
+        <AnalyticsPanel meta="Excluded from default KPIs" title="Bot diagnostics">
+          <CompactTable
+            columns={["Device", "Views", "Visitors", "Events", "Share"]}
+            rows={botSummary.devices.map((row) => [
               formatDeviceType(row.deviceType),
               formatCount(row.pageViews),
               formatCount(row.visitors),
@@ -217,7 +247,7 @@ export default async function PrivateAnalyticsPage({
               formatDateTime(row.createdAt),
               row.eventName,
               row.pathname,
-              row.sourceName ?? row.source
+              getAnalyticsRowSourceName(row) || row.source
             ])}
           />
         </AnalyticsPanel>
@@ -328,6 +358,60 @@ function CountRowsTable({
               <td>
                 <InlineBar value={row.share} label={formatPercent(row.share)} />
               </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function SourceOverview({ summary }: { summary: PrivateAnalyticsSummary }) {
+  if (!summary.sourceCategoryVisitors.length) {
+    return <p className="analytics-empty">No source data in this window yet.</p>;
+  }
+
+  return (
+    <div className="analytics-source-overview">
+      {summary.sourceCategoryVisitors.slice(0, 6).map((row) => (
+        <div key={row.label}>
+          <span>{formatSourceCategory(row.label)}</span>
+          <strong>{formatCount(row.count)}</strong>
+          <em>{formatPercent(row.share)}</em>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SourceVisitorTable({ rows }: { rows: PrivateAnalyticsSourceRow[] }) {
+  if (!rows.length) {
+    return <p className="analytics-empty">No visitor source data in this window yet.</p>;
+  }
+
+  return (
+    <div className="analytics-table-wrap">
+      <table className="analytics-table analytics-table--bars">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Category</th>
+            <th>Visitors</th>
+            <th>Sessions</th>
+            <th>Views</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={`${row.sourceCategory}:${row.sourceName}:${row.referrerDomain}:visitors`}>
+              <td>
+                <strong>{formatSourceName(row.sourceName)}</strong>
+                <span>{row.referrerDomain === "unknown" ? "" : row.referrerDomain}</span>
+              </td>
+              <td>{formatSourceCategory(row.sourceCategory)}</td>
+              <td>{formatCount(row.visitors)}</td>
+              <td>{formatCount(row.sessions)}</td>
+              <td>{formatCount(row.pageViews)}</td>
             </tr>
           ))}
         </tbody>

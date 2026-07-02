@@ -997,7 +997,7 @@ h3 {
 .analytics-kpi-grid {
   display: grid;
   gap: 8px;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(10, minmax(0, 1fr));
   margin-top: 14px;
 }
 
@@ -1085,6 +1085,39 @@ h3 {
   vector-effect: non-scaling-stroke;
 }
 
+.analytics-source-overview {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 8px;
+}
+
+.analytics-source-overview div {
+  background: var(--color-canvas-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  min-width: 0;
+  padding: 8px 9px;
+}
+
+.analytics-source-overview span,
+.analytics-source-overview em {
+  color: var(--color-text-muted);
+  display: block;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.analytics-source-overview strong {
+  display: block;
+  font-size: 20px;
+  line-height: 1.1;
+  margin: 3px 0 1px;
+  overflow-wrap: anywhere;
+}
+
 .analytics-table-wrap {
   max-width: 100%;
   overflow-x: auto;
@@ -1166,7 +1199,7 @@ h3 {
 
 @media (max-width: 1180px) {
   .analytics-kpi-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
@@ -1187,6 +1220,10 @@ h3 {
   .analytics-kpi-grid,
   .analytics-dashboard-grid {
     grid-template-columns: 1fr;
+  }
+
+  .analytics-source-overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .analytics-kpi-grid article {

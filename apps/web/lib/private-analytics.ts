@@ -71,6 +71,7 @@ export interface PrivateAnalyticsSummary {
   period: AnalyticsPeriod;
   recent: AnalyticsEventRow[];
   sessions: number;
+  sourceCategoryVisitors: PrivateAnalyticsCountRow[];
   sourceCategories: PrivateAnalyticsCountRow[];
   sourceMix: PrivateAnalyticsSourceRow[];
   topDomains: PrivateAnalyticsCountRow[];
@@ -81,6 +82,7 @@ export interface PrivateAnalyticsSummary {
   topPages: PrivateAnalyticsCountRow[];
   trend: PrivateAnalyticsTrendRow[];
   visitors: number;
+  visitorSourceMix: PrivateAnalyticsSourceRow[];
 }
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -98,10 +100,10 @@ export function buildPrivateAnalyticsSummary(
     (row) => row.eventName
   );
   const pageCounts = countBy(pageViewRows, (row) => row.pathname);
-  const landingCounts = countBy(pageViewRows, (row) => row.landingPath ?? row.pathname);
+  const landingCounts = countBy(pageViewRows, getRowLandingPath);
   const languageCounts = countBy(pageViewRows, (row) => normalizeLocale(row.locale));
   const entityCounts = countBy(rows, (row) => row.entitySlug ?? undefined);
-  const domainCounts = countBy(rows, (row) => row.sourceDomain ?? undefined);
+  const domainCounts = countBy(rows, getRowSourceDomain);
   const visitors = new Set(
     pageViewRows.map((row) => row.visitorId).filter(isPresent)
   ).size;
@@ -114,7 +116,7 @@ export function buildPrivateAnalyticsSummary(
   const bounceSessions = Array.from(sessionStats.values()).filter(
     (stats) => stats.pageViews === 1 && !stats.engaged
   ).length;
-  const sourceMix = buildSourceRows(pageViewRows);
+  const sourceRows = buildSourceRows(pageViewRows);
 
   return {
     bounceRate: sessions ? bounceSessions / sessions : 0,
@@ -128,10 +130,11 @@ export function buildPrivateAnalyticsSummary(
     period,
     recent: rows.slice().reverse().slice(0, 30),
     sessions,
+    sourceCategoryVisitors: buildSourceCategoryVisitorRows(pageViewRows),
     sourceCategories: toCountRows(
-      countBy(pageViewRows, (row) => normalizeSourceCategory(row.sourceCategory))
+      countBy(pageViewRows, getRowSourceCategory)
     ),
-    sourceMix,
+    sourceMix: sourceRows.slice(0, 12),
     topDomains: toCountRows(domainCounts),
     topEntities: toCountRows(entityCounts),
     topEvents: toCountRows(customEventCounts),
@@ -139,8 +142,27 @@ export function buildPrivateAnalyticsSummary(
     topLanguages: toCountRows(languageCounts),
     topPages: toCountRows(pageCounts),
     trend: buildPeriodSeries(rows, since, period),
-    visitors
+    visitors,
+    visitorSourceMix: sourceRows
+      .slice()
+      .sort((left, right) => {
+        if (right.visitors !== left.visitors) return right.visitors - left.visitors;
+        if (right.sessions !== left.sessions) return right.sessions - left.sessions;
+        if (right.pageViews !== left.pageViews) return right.pageViews - left.pageViews;
+        return `${left.sourceCategory}:${left.sourceName}`.localeCompare(
+          `${right.sourceCategory}:${right.sourceName}`
+        );
+      })
+      .slice(0, 12)
   };
+}
+
+export function isBotAnalyticsRow(row: AnalyticsEventRow): boolean {
+  return normalizeDeviceType(row.deviceType) === "bot";
+}
+
+export function getAnalyticsRowSourceName(row: AnalyticsEventRow): string {
+  return getRowSourceName(row);
 }
 
 function buildSessionStats(rows: AnalyticsEventRow[]) {
@@ -183,9 +205,9 @@ function buildSourceRows(
   >();
 
   for (const row of pageViewRows) {
-    const sourceCategory = normalizeSourceCategory(row.sourceCategory);
-    const sourceName = normalizeSourceName(row.sourceName, sourceCategory);
-    const referrerDomain = normalizeText(row.referrerDomain);
+    const sourceCategory = getRowSourceCategory(row);
+    const sourceName = getRowSourceName(row, sourceCategory);
+    const referrerDomain = getRowReferrerDomain(row);
     const key = `${sourceCategory}:${sourceName}:${referrerDomain}`;
     const bucket =
       buckets.get(key) ??
@@ -220,8 +242,31 @@ function buildSourceRows(
       return `${left.sourceCategory}:${left.sourceName}`.localeCompare(
         `${right.sourceCategory}:${right.sourceName}`
       );
-    })
-    .slice(0, 12);
+    });
+}
+
+function buildSourceCategoryVisitorRows(
+  pageViewRows: AnalyticsEventRow[]
+): PrivateAnalyticsCountRow[] {
+  const buckets = new Map<string, Set<string>>();
+
+  for (const row of pageViewRows) {
+    const category = getRowSourceCategory(row);
+    const visitors = buckets.get(category) ?? new Set<string>();
+    if (row.visitorId) visitors.add(row.visitorId);
+    buckets.set(category, visitors);
+  }
+
+  const counts = Array.from(buckets.entries())
+    .map(([label, visitors]) => ({
+      count: visitors.size,
+      label
+    }))
+    .sort((left, right) => {
+      if (right.count !== left.count) return right.count - left.count;
+      return left.label.localeCompare(right.label);
+    });
+  return toCountRows(counts);
 }
 
 function buildCountryRows(
@@ -618,6 +663,45 @@ function normalizeDeviceType(value: string | null | undefined): string {
 function normalizeLocale(value: string | null | undefined): string {
   const normalized = value?.trim().toLowerCase();
   return normalized || "unknown";
+}
+
+function getRowLandingPath(row: AnalyticsEventRow): string {
+  return getRowText(row, "landingPath", "landing_path") ?? row.pathname;
+}
+
+function getRowSourceCategory(row: AnalyticsEventRow): string {
+  return normalizeSourceCategory(getRowText(row, "sourceCategory", "source_category"));
+}
+
+function getRowSourceDomain(row: AnalyticsEventRow): string | undefined {
+  return getRowText(row, "sourceDomain", "source_domain");
+}
+
+function getRowSourceName(
+  row: AnalyticsEventRow,
+  category = getRowSourceCategory(row)
+): string {
+  return normalizeSourceName(getRowText(row, "sourceName", "source_name"), category);
+}
+
+function getRowReferrerDomain(row: AnalyticsEventRow): string {
+  return normalizeText(getRowText(row, "referrerDomain", "referrer_domain"));
+}
+
+function getRowText(
+  row: AnalyticsEventRow,
+  rowKey: keyof AnalyticsEventRow,
+  payloadKey: string
+): string | undefined {
+  const direct = row[rowKey];
+  if (typeof direct === "string" && direct.trim()) return direct;
+  return getPayloadString(row.payload, payloadKey);
+}
+
+function getPayloadString(payload: unknown, key: string): string | undefined {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return undefined;
+  const value = (payload as Record<string, unknown>)[key];
+  return typeof value === "string" && value.trim() ? value : undefined;
 }
 
 function normalizeSourceCategory(value: string | null | undefined): string {
