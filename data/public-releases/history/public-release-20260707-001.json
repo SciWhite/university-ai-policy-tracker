@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260709-001",
-  "publishedAt": "2026-07-08T18:14:33Z",
-  "description": "Promotes reviewed Durham University and University of Western Australia maintenance policy updates after repairing their staged OpenClaw bundles.",
+  "releaseId": "public-release-20260707-001",
+  "publishedAt": "2026-07-07T13:55:52Z",
+  "description": "Promotes a validated University of Pennsylvania CETLI generative AI teaching-source update from the 2026-07-07 QS200 maintenance review.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -803,16 +803,12 @@
     "staging/uapt-runs/uapt-ai-tools-qs-11-20-20260614",
     "staging/uapt-runs/uapt-ai-tools-qs-21-25-20260701",
     "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701",
-    "staging/uapt-runs/uapt-maintenance-light-university-of-pennsylvania-20260707",
-    "staging/uapt-runs/uapt-maintenance-light-durham-university-20260707",
-    "staging/uapt-runs/uapt-maintenance-light-the-university-of-western-australia-20260707"
+    "staging/uapt-runs/uapt-maintenance-light-university-of-pennsylvania-20260707"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
-    "This release promotes repaired and validated maintenance bundles for Durham University and The University of Western Australia from maintenance run maintenance-2026-07-07T04-40-28-942Z.",
-    "Durham University updates cover Senate-approved GenAI policy language, assessment-use categories, programme assessment-mix guidance, staff transparency/GDPR guidance, and postgraduate research policy approval from the public DCAD page.",
-    "The University of Western Australia updates add source-specific evidence from the 2026 student AI guide PDF for the DeepSeek prohibition and expanded privacy/IP guidance about UWA staff teaching materials.",
-    "The previous public-release-20260707-001 preserved the University of Pennsylvania CETLI update and remains in history.",
+    "This release promotes the validated University of Pennsylvania CETLI generative AI teaching-source update from maintenance run maintenance-2026-07-07T04-40-28-942Z.",
+    "Durham University and The University of Western Australia maintenance candidates remain held back because their generated bundles did not pass openclaw-artifact-v1 release validation.",
     "Duke University remains inconclusive after a DeepSeek lightweight review timeout and is not treated as either a no-change result or a policy-content update.",
     "The remaining reviewed rows produced no-promote notes for metadata, extractor, chrome, landing-page, source-health, or discovery-lead differences rather than confirmed policy-content updates.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",

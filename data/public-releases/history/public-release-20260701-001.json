@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260709-001",
-  "publishedAt": "2026-07-08T18:14:33Z",
-  "description": "Promotes reviewed Durham University and University of Western Australia maintenance policy updates after repairing their staged OpenClaw bundles.",
+  "releaseId": "public-release-20260701-001",
+  "publishedAt": "2026-07-01T13:32:34Z",
+  "description": "Promotes validated QS21-30 AI tools staged runs into the public dataset while preserving conservative tool-level evidence boundaries.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -802,19 +802,13 @@
     "staging/uapt-runs/uapt-ai-tools-qs-1-10-20260614",
     "staging/uapt-runs/uapt-ai-tools-qs-11-20-20260614",
     "staging/uapt-runs/uapt-ai-tools-qs-21-25-20260701",
-    "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701",
-    "staging/uapt-runs/uapt-maintenance-light-university-of-pennsylvania-20260707",
-    "staging/uapt-runs/uapt-maintenance-light-durham-university-20260707",
-    "staging/uapt-runs/uapt-maintenance-light-the-university-of-western-australia-20260707"
+    "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
-    "This release promotes repaired and validated maintenance bundles for Durham University and The University of Western Australia from maintenance run maintenance-2026-07-07T04-40-28-942Z.",
-    "Durham University updates cover Senate-approved GenAI policy language, assessment-use categories, programme assessment-mix guidance, staff transparency/GDPR guidance, and postgraduate research policy approval from the public DCAD page.",
-    "The University of Western Australia updates add source-specific evidence from the 2026 student AI guide PDF for the DeepSeek prohibition and expanded privacy/IP guidance about UWA staff teaching materials.",
-    "The previous public-release-20260707-001 preserved the University of Pennsylvania CETLI update and remains in history.",
-    "Duke University remains inconclusive after a DeepSeek lightweight review timeout and is not treated as either a no-change result or a policy-content update.",
-    "The remaining reviewed rows produced no-promote notes for metadata, extractor, chrome, landing-page, source-health, or discovery-lead differences rather than confirmed policy-content updates.",
+    "This release promotes validated QS21-30 AI tools staged runs with one tool-level record per explicit official source entry where available.",
+    "AI tools records are derived public claim/evidence artifacts; broad AI mentions are not expanded into named tool conclusions without tool-level evidence.",
+    "uapt-qs200-stage2-batch1-20260517 remains excluded because it is a source-health maintenance run; dataset release validation forbids publishing maintenance-only runs as public claims.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]

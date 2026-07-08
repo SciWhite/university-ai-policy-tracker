@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+      "artifactType": "crawl_plan",
+      "planId": "uapt-maintenance-light-upenn-20260707-plan",
+      "createdAt": "2026-07-07T04:40:28.942Z",
+      "createdBy": "Claw local maintenance review",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-pennsylvania",
+          "sourceCandidateId": "src-upenn-cetli-generative-ai",
+          "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+          "sourceTitle": "Generative AI & Your Teaching",
+          "sourceLanguage": "en",
+          "allowedFetchModes": ["http"],
+          "expectedThemes": ["academic_integrity", "ai_tool_treatment", "teaching"],
+          "robotsPolicy": "respect"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-upenn-cetli-generative-ai",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "sourceTitle": "Generative AI & Your Teaching",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-06T04:55:45Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.85,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-06T04:55:45Z",
+      "verificationNotes": "CETLI is Penn's Center for Excellence in Teaching, Learning and Innovation — official university teaching resource.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+      "artifactType": "source_discovery_trace",
+      "traceId": "uapt-maintenance-light-upenn-20260707-trace",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "startedAt": "2026-05-06T04:55:45Z",
+      "endedAt": "2026-07-07T04:40:28.942Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Source originally seeded from CETLI generative AI resource page during QS batch run."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance replay: Claw local reviewer compared fresh source fetch against prior snapshot and identified a substantive policy-content update in the Penn AI section heading and body text."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": ["src-upenn-cetli-generative-ai"],
+      "rejectionIds": [],
+      "summary": "Maintenance review of university-of-pennsylvania source https://cetli.upenn.edu/resources/generative-ai/ detected a real policy-content update: the section formerly titled 'Penn AI Guidance and Policies' now reads 'Penn AI Tools and Policies' with updated language about tool access and acceptable-use boundaries for student data."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-upenn-cetli-gai-20260707",
+      "sourceCandidateId": "src-upenn-cetli-generative-ai",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "attemptedAt": "2026-07-07T04:40:28.942Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "317eac9901371e051cd9d6455bf53ad3b6dc7c59db8a6382caae9013b78f87b8",
+      "durationMs": 3245,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260707/university-of-pennsylvania/normalized"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-upenn-cetli-gai-20260707",
+      "sourceCandidateId": "src-upenn-cetli-generative-ai",
+      "fetchAttemptId": "fetch-upenn-cetli-gai-20260707",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "sourceTitle": "Generative AI & Your Teaching",
+      "sourceLanguage": "en",
+      "contentHash": "317eac9901371e051cd9d6455bf53ad3b6dc7c59db8a6382caae9013b78f87b8",
+      "fetchedAt": "2026-07-07T04:40:28.942Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260707/university-of-pennsylvania/normalized",
+      "rawArtifactPaths": [],
+      "limitations": ["Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-upenn-cetli-tools-policy-20260707",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Penn's CETLI generative AI guidance page was updated from referring to 'Penn AI Guidance and Policies' to 'Penn AI Tools and Policies', adding that Penn offers access to AI tools and provides policies to help instructors and staff determine which tools are acceptable for different types of student data.",
+      "normalizedValue": "Penn CETLI generative AI teaching page updated to state that Penn offers access to AI tools and provides policies for acceptable tool use by student-data type.",
+      "sourceLanguage": "en",
+      "confidence": 0.85,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": ["ev-upenn-cetli-tools-policy-20260707"],
+      "citation": {
+        "citationTitle": "Generative AI & Your Teaching",
+        "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+        "publisher": "University of Pennsylvania / Center for Excellence in Teaching, Learning and Innovation",
+        "retrievedAt": "2026-07-07T04:40:28.942Z",
+        "snapshotHash": "317eac9901371e051cd9d6455bf53ad3b6dc7c59db8a6382caae9013b78f87b8",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-upenn-cetli-tools-policy-20260707",
+      "claimId": "cl-upenn-cetli-tools-policy-20260707",
+      "sourceSnapshotId": "snap-upenn-cetli-gai-20260707",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "sourceTitle": "Generative AI & Your Teaching",
+      "sourceLanguage": "en",
+      "snapshotHash": "317eac9901371e051cd9d6455bf53ad3b6dc7c59db8a6382caae9013b78f87b8",
+      "evidenceSnippetOriginal": "Penn AI Tools and Policies\n\nGenerative AI raises considerations related to privacy, intellectual property, academic integrity, and accessibility. Penn offers access to a number of AI tools and provides policies to help instructors and staff be aware of which tools are acceptable to use for different types of student data.",
+      "evidenceLocator": "Penn AI Tools and Policies section (formerly 'Penn AI Guidance and Policies')",
+      "evidenceType": "official_source",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Generative AI & Your Teaching",
+        "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+        "publisher": "University of Pennsylvania / Center for Excellence in Teaching, Learning and Innovation",
+        "retrievedAt": "2026-07-07T04:40:28.942Z",
+        "snapshotHash": "317eac9901371e051cd9d6455bf53ad3b6dc7c59db8a6382caae9013b78f87b8",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+      "artifactType": "review_decision",
+      "decisionId": "review-upenn-cetli-tools-policy-20260707",
+      "claimId": "cl-upenn-cetli-tools-policy-20260707",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Claw local maintenance review",
+      "notes": "The CETLI page's 'Penn AI Guidance and Policies' section was substantively updated to 'Penn AI Tools and Policies' with new language about Penn offering AI tool access and providing policies for acceptable use by student-data type. This is a real policy-content update reflecting an expanded institutional posture from pure guidance toward tool provision and data-classification-based access rules. Approving as a non-duplicate claim/evidence candidate from the delta between the May 2026 snapshot and the current live page.",
+      "decidedAt": "2026-07-07T04:40:28.942Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-university-of-pennsylvania-20260707",
+      "artifactType": "report_draft",
+      "reportId": "uapt-maintenance-light-upenn-20260707-report",
+      "title": "Maintenance review: University of Pennsylvania (CETLI generative AI page)",
+      "generatedAt": "2026-07-07T04:40:28.942Z",
+      "draftPath": "content/reports/maintenance-upenn-cetli-20260707.mdx",
+      "summary": "Maintenance review of https://cetli.upenn.edu/resources/generative-ai/ detected a real policy-content update. The 'Penn AI Guidance and Policies' section was retitled 'Penn AI Tools and Policies' with new language about Penn offering AI tool access and providing acceptable-use policies by student-data type. One claim/evidence candidate was promoted as agent_reviewed.",
+      "referencedClaimIds": ["cl-upenn-cetli-tools-policy-20260707"],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0"
+    }
+  ]
+}

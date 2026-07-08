@@ -1,0 +1,404 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-durham-university-20260707",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "artifactType": "crawl_plan",
+      "planId": "uapt-maintenance-light-durham-20260707-plan",
+      "createdAt": "2026-07-07T04:40:28.942Z",
+      "createdBy": "Codex local maintenance repair review",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "durham-university",
+          "sourceCandidateId": "sc-du-dcad-genai-lta-updated",
+          "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+          "sourceTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+          "sourceLanguage": "en-GB",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "academic_integrity",
+            "ai_tool_treatment",
+            "teaching",
+            "research"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Single-source maintenance repair: stop after confirming the queued source contains policy-content evidence and the bundle validates for release."
+      ]
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "sourceCandidateId": "sc-du-dcad-genai-lta-updated",
+      "entityType": "university",
+      "entitySlug": "durham-university",
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "finalUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "sourceTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+      "sourceLanguage": "en-GB",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "link_traversal",
+      "discoveredAt": "2026-07-07T13:18:52.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-07-07T13:18:52.000Z",
+      "verificationNotes": "Maintenance review: page content has been completely rewritten. Previously a DCAD resource-collection page listing GenAI links; now serves as Durham University's official public-facing GenAI policy statement referencing Senate approval in June 2026 and defining four assessment-use tiers. The old resource-list content moved to https://dcad-resourcebank.webspace.durham.ac.uk/2026/07/06/generative-ai-in-teaching-learning-and-assessment-resources/.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "artifactType": "source_discovery_trace",
+      "traceId": "uapt-maintenance-light-durham-20260707-trace",
+      "entityType": "university",
+      "entitySlug": "durham-university",
+      "startedAt": "2026-05-13T00:00:00Z",
+      "endedAt": "2026-07-07T13:18:52.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Source was already present in the tracker as a DCAD Generative AI in Learning, Teaching & Assessment source."
+        },
+        {
+          "method": "other",
+          "notes": "QS200 maintenance source-health review queued the page after a content-policy delta; local Codex repair verified the current public page against the staged evidence snippets."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-du-dcad-genai-lta-updated"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance repair review confirmed that the Durham DCAD GenAI page changed from a resource listing into a public policy page with Senate-approved GenAI policy language, assessment categories, programme assessment-mix guidance, staff transparency/GDPR guidance, and postgraduate research policy reference."
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "fetchAttemptId": "fa-du-dcad-genai-lta-maint-20260707",
+      "sourceCandidateId": "sc-du-dcad-genai-lta-updated",
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "finalUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "attemptedAt": "2026-07-07T13:18:52.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1646,
+      "contentHash": "f14baa18ffb070e305ae8913e36f815afde6b9f0c16744a11e61d0f925581531"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "sourceSnapshotId": "ss-du-dcad-genai-lta-maint-20260707",
+      "sourceCandidateId": "sc-du-dcad-genai-lta-updated",
+      "fetchAttemptId": "fa-du-dcad-genai-lta-maint-20260707",
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "finalUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "sourceTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+      "sourceLanguage": "en-GB",
+      "contentHash": "f14baa18ffb070e305ae8913e36f815afde6b9f0c16744a11e61d0f925581531",
+      "fetchedAt": "2026-07-07T13:18:52.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "claimId": "claim-du-genai-policy-senate-approved-june2026",
+      "entityType": "university",
+      "entitySlug": "durham-university",
+      "claimType": "source_status",
+      "claimText": "Durham University's GenAI policy for learning, teaching and assessment was approved by Senate in June 2026.",
+      "sourceLanguage": "en-GB",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-du-genai-policy-senate-approved-june2026"
+      ],
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "claimId": "claim-du-genai-assessment-categories",
+      "entityType": "university",
+      "entitySlug": "durham-university",
+      "claimType": "teaching",
+      "claimText": "Durham University categorises student assessments into four GenAI-use tiers: No GenAI Allowed, Selective (specified how GenAI may be used), Allowed (students may choose whether and how to use GenAI), and Embedded (using GenAI is required).",
+      "sourceLanguage": "en-GB",
+      "confidence": 0.96,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-du-genai-assessment-categories"
+      ],
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "claimId": "claim-du-genai-programme-mix-requirement",
+      "entityType": "university",
+      "entitySlug": "durham-university",
+      "claimType": "teaching",
+      "claimText": "Durham requires all programmes to be updated to ensure students have a mix of GenAI-secure and GenAI-open assessments.",
+      "sourceLanguage": "en-GB",
+      "confidence": 0.94,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-du-genai-programme-mix-requirement"
+      ],
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "claimId": "claim-du-genai-staff-transparency-teaching",
+      "entityType": "university",
+      "entitySlug": "durham-university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Durham staff may choose whether and how to use GenAI in teaching, but must be open and transparent about this and operate ethically and in compliance with GDPR.",
+      "sourceLanguage": "en-GB",
+      "confidence": 0.93,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-du-genai-staff-transparency-teaching"
+      ],
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "claimId": "claim-du-genai-pg-research-policy-approved",
+      "entityType": "university",
+      "entitySlug": "durham-university",
+      "claimType": "research",
+      "claimText": "Senate approved a specific policy for the use of GenAI in postgraduate research degrees alongside the main GenAI policy in June 2026.",
+      "sourceLanguage": "en-GB",
+      "confidence": 0.91,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-du-genai-pg-research-policy-approved"
+      ],
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z"
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "evidenceId": "ev-du-genai-policy-senate-approved-june2026",
+      "claimId": "claim-du-genai-policy-senate-approved-june2026",
+      "sourceSnapshotId": "ss-du-dcad-genai-lta-maint-20260707",
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "finalUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "sourceTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+      "sourceLanguage": "en-GB",
+      "snapshotHash": "f14baa18ffb070e305ae8913e36f815afde6b9f0c16744a11e61d0f925581531",
+      "evidenceSnippetOriginal": "An update to our GenAI policy was approved by our academic governing body Senate in June 2026.",
+      "evidenceLocator": "Appears under 'A University-wide approach' section heading.",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "evidenceId": "ev-du-genai-assessment-categories",
+      "claimId": "claim-du-genai-assessment-categories",
+      "sourceSnapshotId": "ss-du-dcad-genai-lta-maint-20260707",
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "finalUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "sourceTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+      "sourceLanguage": "en-GB",
+      "snapshotHash": "f14baa18ffb070e305ae8913e36f815afde6b9f0c16744a11e61d0f925581531",
+      "evidenceSnippetOriginal": "All programmes will make use of a range of assessments clearly identified as either: No GenAI Allowed (including some assessments where AI use is not possible, such as viva); Selective, where it will be specified how GenAI may be used; Allowed, where students may choose whether and how to use GenAI; Embedded, where using GenAI is required.",
+      "evidenceLocator": "Appears under 'GenAI Policy in Learning, Teaching and Assessment' heading as a bulleted list item.",
+      "evidenceType": "official_source",
+      "relevance": 0.99,
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "evidenceId": "ev-du-genai-programme-mix-requirement",
+      "claimId": "claim-du-genai-programme-mix-requirement",
+      "sourceSnapshotId": "ss-du-dcad-genai-lta-maint-20260707",
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "finalUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "sourceTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+      "sourceLanguage": "en-GB",
+      "snapshotHash": "f14baa18ffb070e305ae8913e36f815afde6b9f0c16744a11e61d0f925581531",
+      "evidenceSnippetOriginal": "Programmes are being updated to ensure that students have a mix of GenAI-secure and GenAI-open assessments.",
+      "evidenceLocator": "Appears under 'GenAI Policy in Learning, Teaching and Assessment' heading.",
+      "evidenceType": "official_source",
+      "relevance": 0.95,
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "evidenceId": "ev-du-genai-staff-transparency-teaching",
+      "claimId": "claim-du-genai-staff-transparency-teaching",
+      "sourceSnapshotId": "ss-du-dcad-genai-lta-maint-20260707",
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "finalUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "sourceTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+      "sourceLanguage": "en-GB",
+      "snapshotHash": "f14baa18ffb070e305ae8913e36f815afde6b9f0c16744a11e61d0f925581531",
+      "evidenceSnippetOriginal": "our staff can choose whether and how to use GenAI, being open and transparent about this. They must operate ethically and in compliance with GDPR.",
+      "evidenceLocator": "Appears under 'GenAI Policy in Learning, Teaching and Assessment' heading, teaching bullet point.",
+      "evidenceType": "official_source",
+      "relevance": 0.93,
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "evidenceId": "ev-du-genai-pg-research-policy-approved",
+      "claimId": "claim-du-genai-pg-research-policy-approved",
+      "sourceSnapshotId": "ss-du-dcad-genai-lta-maint-20260707",
+      "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "finalUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+      "sourceTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+      "sourceLanguage": "en-GB",
+      "snapshotHash": "f14baa18ffb070e305ae8913e36f815afde6b9f0c16744a11e61d0f925581531",
+      "evidenceSnippetOriginal": "Senate also approved a specific policy for the use of GenAI in postgraduate research degrees.",
+      "evidenceLocator": "Appears under 'A University-wide approach' section heading.",
+      "evidenceType": "official_source",
+      "relevance": 0.9,
+      "citation": {
+        "citationTitle": "Generative AI in Learning, Teaching & Assessment at Durham University",
+        "sourceUrl": "https://dcad-resourcebank.webspace.durham.ac.uk/2024/07/16/generative-ai-in-learning-teaching-assessment/",
+        "publisher": "Durham Centre for Academic Development",
+        "retrievedAt": "2026-07-07T13:18:52.000Z",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "decisionId": "rd-du-dcad-genai-lta-maint-overview-20260707",
+      "claimId": "claim-du-genai-policy-senate-approved-june2026",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Codex local maintenance reviewer",
+      "notes": "Local Codex repair review: approved the Durham maintenance candidates that are directly supported by the current public DCAD GenAI policy page. The Microsoft AI Skills Centre item from the remote candidate bundle was excluded from release because it is contextual news rather than a policy boundary.",
+      "decidedAt": "2026-07-07T13:18:52.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-durham-university-20260707",
+      "artifactType": "report_draft",
+      "reportId": "uapt-maintenance-light-durham-20260707-report",
+      "title": "Maintenance review: Durham University DCAD GenAI policy page",
+      "generatedAt": "2026-07-08T18:14:33Z",
+      "draftPath": "content/reports/maintenance-durham-genai-20260707.mdx",
+      "summary": "Local repair review validated Durham University policy-content updates from the DCAD Generative AI in Learning, Teaching & Assessment page. The release includes claims for Senate approval, assessment-use categories, programme assessment mix, staff transparency/GDPR duties, and postgraduate research policy approval. A non-policy Microsoft AI Skills Centre item from the remote candidate bundle was excluded.",
+      "referencedClaimIds": [
+        "claim-du-genai-policy-senate-approved-june2026",
+        "claim-du-genai-assessment-categories",
+        "claim-du-genai-programme-mix-requirement",
+        "claim-du-genai-staff-transparency-teaching",
+        "claim-du-genai-pg-research-policy-approved"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "This repair used the public current source and the July 7 maintenance candidate bundle; it does not publish raw page text.",
+        "Source-health timestamps are metadata only and do not prove the original university publication time."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

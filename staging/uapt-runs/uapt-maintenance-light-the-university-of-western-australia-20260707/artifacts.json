@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "artifactType": "crawl_plan",
+      "planId": "uapt-maintenance-light-uwa-20260707-plan",
+      "createdAt": "2026-07-07T04:40:28.942Z",
+      "createdBy": "Codex local maintenance repair review",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "the-university-of-western-australia",
+          "sourceCandidateId": "maint-src-uwa-002-20260707",
+          "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+          "sourceTitle": "Using Artificial Intelligence Tools at UWA: A Guide for Students",
+          "sourceLanguage": "en-AU",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "privacy",
+            "academic_integrity"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Single-source maintenance repair: stop after confirming the queued source contains policy-content evidence and the bundle validates for release."
+      ]
+    },
+    {
+      "artifactType": "source_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "sourceCandidateId": "maint-src-uwa-002-20260707",
+      "entityType": "university",
+      "entitySlug": "the-university-of-western-australia",
+      "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "sourceTitle": "Using Artificial Intelligence Tools at UWA: A Guide for Students",
+      "sourceLanguage": "en-AU",
+      "sourceType": "official_pdf",
+      "discoveryMethod": "link_traversal",
+      "discoveredAt": "2026-05-13T04:45:00Z",
+      "officialDomainConfidence": 1,
+      "aiRelevanceScore": 0.95,
+      "policySpecificityScore": 0.85,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-05-13T04:50:30Z"
+    },
+    {
+      "artifactType": "source_discovery_trace",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "traceId": "maint-trace-uwa-002-20260707",
+      "entityType": "university",
+      "entitySlug": "the-university-of-western-australia",
+      "startedAt": "2026-07-07T04:40:28.942Z",
+      "endedAt": "2026-07-07T13:20:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "link_traversal",
+          "domain": "www.uwa.edu.au",
+          "resultCount": 1,
+          "notes": "Lightweight maintenance recheck of existing known source URL. PDF retrieved via curl with browser-like User-Agent; httpStatus 200; cached by Cloudflare (age ~195721s); etag and lastModified unchanged from previous record."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "maint-src-uwa-002-20260707"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance recheck of the UWA student AI guide PDF (src-uwa-002 from run 20260513). Content hash changed from aecf591a0b5e39661c96b374c2dbcf4ddd6fcc67601adf912458167884fb893c (May 13) to 7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c (July 7). Source remains accessible and publicly downloadable via direct link without auth. The DeepSeek ban has been added to this consolidated PDF, along with expanded privacy/IP warnings. Core Tier 1/Tier 2/Tier 3 guidance and acknowledgement requirements remain substantively consistent with the May 2026 snapshot."
+    },
+    {
+      "artifactType": "fetch_attempt",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "fetchAttemptId": "maint-fetch-uwa-002-20260707",
+      "sourceCandidateId": "maint-src-uwa-002-20260707",
+      "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "finalUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "attemptedAt": "2026-07-07T13:19:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 1200,
+      "contentHash": "7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c"
+    },
+    {
+      "artifactType": "source_snapshot",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "sourceSnapshotId": "maint-snapshot-uwa-002-20260707",
+      "sourceCandidateId": "maint-src-uwa-002-20260707",
+      "fetchAttemptId": "maint-fetch-uwa-002-20260707",
+      "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "finalUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "sourceTitle": "Using Artificial Intelligence Tools at UWA: A Guide for Students",
+      "sourceLanguage": "en-AU",
+      "contentHash": "7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c",
+      "fetchedAt": "2026-07-07T13:19:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "rawArtifactPaths": []
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "evidenceId": "maint-evidence-uwa-002-001",
+      "claimId": "maint-claim-uwa-002-001",
+      "sourceSnapshotId": "maint-snapshot-uwa-002-20260707",
+      "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "finalUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "sourceTitle": "Using Artificial Intelligence Tools at UWA: A Guide for Students",
+      "sourceLanguage": "en-AU",
+      "snapshotHash": "7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c",
+      "evidenceSnippetOriginal": "Additionally, not all AI platforms are safe to use. The Department of Home Affairs has raised concerns on the safety and security of data shared with the AI tool DeepSeek. As such, UWA staff and students must not use DeepSeek in any way. UWA has blocked the use of DeepSeek on all University-managed networks and devices, and students should avoid using DeepSeek on their personal devices.",
+      "evidenceLocator": "Privacy, copyright, and AI",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Using Artificial Intelligence Tools at UWA: A Guide for Students",
+        "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+        "publisher": "The University of Western Australia",
+        "retrievedAt": "2026-07-07T13:19:00.000Z",
+        "snapshotHash": "7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "evidence_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "evidenceId": "maint-evidence-uwa-002-002",
+      "claimId": "maint-claim-uwa-002-002",
+      "sourceSnapshotId": "maint-snapshot-uwa-002-20260707",
+      "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "finalUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+      "sourceTitle": "Using Artificial Intelligence Tools at UWA: A Guide for Students",
+      "sourceLanguage": "en-AU",
+      "snapshotHash": "7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c",
+      "evidenceSnippetOriginal": "It is also important that you do not input any intellectual property or copyright material that is not your own, including the intellectual property of UWA or its staff – such as lecture slides, handouts, and unit reading material – as it is not yours to distribute.",
+      "evidenceLocator": "Privacy, copyright, and AI",
+      "evidenceType": "pdf",
+      "relevance": 0.88,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Using Artificial Intelligence Tools at UWA: A Guide for Students",
+        "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+        "publisher": "The University of Western Australia",
+        "retrievedAt": "2026-07-07T13:19:00.000Z",
+        "snapshotHash": "7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "claimId": "maint-claim-uwa-002-001",
+      "entityType": "university",
+      "entitySlug": "the-university-of-western-australia",
+      "claimType": "ai_tool_treatment",
+      "claimText": "UWA’s 2026 student AI guide now states that UWA staff and students must not use DeepSeek in any way, that UWA has blocked DeepSeek on University-managed networks and devices, and that students should avoid using DeepSeek on their personal devices.",
+      "normalizedValue": "deepseek_banned_explicitly",
+      "sourceLanguage": "en-AU",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "maint-evidence-uwa-002-001"
+      ],
+      "citation": {
+        "citationTitle": "Using Artificial Intelligence Tools at UWA: A Guide for Students",
+        "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+        "publisher": "The University of Western Australia",
+        "retrievedAt": "2026-07-07T13:19:00.000Z",
+        "snapshotHash": "7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "claim_candidate",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "claimId": "maint-claim-uwa-002-002",
+      "entityType": "university",
+      "entitySlug": "the-university-of-western-australia",
+      "claimType": "privacy",
+      "claimText": "UWA’s student AI guide expanded its privacy guidance to clarify that students must not input UWA staff intellectual property (lecture slides, handouts, unit reading material) into public AI systems.",
+      "normalizedValue": "staff_ip_not_for_ai_input",
+      "sourceLanguage": "en-AU",
+      "confidence": 0.88,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "maint-evidence-uwa-002-002"
+      ],
+      "citation": {
+        "citationTitle": "Using Artificial Intelligence Tools at UWA: A Guide for Students",
+        "sourceUrl": "https://www.uwa.edu.au/students/-/media/project/uwa/uwa/students/academic-support/using-artificial-intelligence-tools-at-uwa---a-guide-for-students-(2026).pdf",
+        "publisher": "The University of Western Australia",
+        "retrievedAt": "2026-07-07T13:19:00.000Z",
+        "snapshotHash": "7d754da317549a66ae03290631c1d199876d5b89fe3c00cf16431b6de471a46c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "decisionId": "maint-decision-uwa-002-001",
+      "claimId": "maint-claim-uwa-002-001",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Codex local maintenance reviewer",
+      "notes": "Local Codex repair review: approved after checking the current public 2026 UWA student AI guide PDF. The DeepSeek item should be understood as additional evidence in the consolidated student guide and may overlap with the existing askUWA DeepSeek claim.",
+      "decidedAt": "2026-07-07T13:20:00.000Z"
+    },
+    {
+      "artifactType": "review_decision",
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "decisionId": "maint-decision-uwa-002-002",
+      "claimId": "maint-claim-uwa-002-002",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Codex local maintenance reviewer",
+      "notes": "Local Codex repair review: approved after checking the current public 2026 UWA student AI guide PDF. The DeepSeek item should be understood as additional evidence in the consolidated student guide and may overlap with the existing askUWA DeepSeek claim.",
+      "decidedAt": "2026-07-07T13:20:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-the-university-of-western-australia-20260707",
+      "artifactType": "report_draft",
+      "reportId": "uapt-maintenance-light-uwa-20260707-report",
+      "title": "Maintenance review: UWA 2026 student AI guide PDF",
+      "generatedAt": "2026-07-08T18:14:33Z",
+      "draftPath": "content/reports/maintenance-uwa-ai-guide-20260707.mdx",
+      "summary": "Local repair review validated two policy-content updates in UWA's 2026 student AI guide PDF: the consolidated DeepSeek prohibition and expanded privacy/IP guidance that tells students not to input UWA staff teaching materials into public AI systems.",
+      "referencedClaimIds": [
+        "maint-claim-uwa-002-001",
+        "maint-claim-uwa-002-002"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "This repair used the public current PDF and the July 7 maintenance candidate bundle; it does not publish raw PDF text.",
+        "The DeepSeek prohibition overlaps with an existing askUWA-sourced claim and is released here as additional source-specific evidence from the consolidated student guide."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}
