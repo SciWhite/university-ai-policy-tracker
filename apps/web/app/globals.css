@@ -2658,7 +2658,6 @@ ol.timeline-list {
 
 .timeline-list__row {
   border-left: 3px solid var(--color-border);
-  grid-template-columns: minmax(0, 1fr);
 }
 
 .timeline-list__date {
@@ -2666,11 +2665,6 @@ ol.timeline-list {
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
-}
-
-.timeline-list__row .data-list-row__meta,
-.timeline-list__row .data-list-row__actions {
-  grid-column: auto;
 }
 
 .change-claim-pair {
@@ -2729,6 +2723,14 @@ ol.timeline-list {
 
   .data-list-row__actions {
     grid-column: 1 / -1;
+  }
+
+  .timeline-list__row.data-list-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timeline-list__row .data-list-row__actions {
+    grid-column: auto;
   }
 
   .api-endpoint-row {
