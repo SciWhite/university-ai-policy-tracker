@@ -265,7 +265,7 @@ const en = {
       analysisQuality: "Public analysis page gates.",
       reportsIndex: "Public report index.",
       outreach: "Media and newsletter copy with boundaries.",
-      chartData: "May 2026 monthly report chart data.",
+      chartData: "June 2026 monthly report chart data.",
       widgetIndex: "Widget discovery.",
       policyCoverageWidget: "Example coverage widget.",
       sourceFreshnessWidget: "Example source freshness widget.",

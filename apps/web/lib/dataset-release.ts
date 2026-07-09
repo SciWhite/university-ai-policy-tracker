@@ -18,7 +18,9 @@ import {
 } from "@uapt/shared";
 import {
   getCurrentPublicReleaseManifest,
-  getStagedPublicDataset
+  getStagedPublicDataset,
+  getStagedPublicDatasetForManifest,
+  type PublicReleaseManifest
 } from "./staged-public-data";
 import { getLatestReleaseDiff, getReleaseSnapshotManifest } from "./release-diffs";
 import { findRepoRoot } from "./repo-root";
@@ -103,8 +105,24 @@ export const datasetArtifactRouteSegments = datasetArtifactDefinitions.map(
 );
 
 export async function getDatasetRelease(): Promise<DatasetRelease> {
-  const dataset = await getStagedPublicDataset();
   const publicReleaseManifest = await getCurrentPublicReleaseManifest();
+  const dataset = await getStagedPublicDataset();
+
+  return buildDatasetRelease(dataset.publicSummaries, publicReleaseManifest);
+}
+
+export async function getDatasetReleaseForPublicManifest(
+  publicReleaseManifest: PublicReleaseManifest
+): Promise<DatasetRelease> {
+  const dataset = await getStagedPublicDatasetForManifest(publicReleaseManifest);
+
+  return buildDatasetRelease(dataset.publicSummaries, publicReleaseManifest);
+}
+
+async function buildDatasetRelease(
+  publicSummaries: PublicEntitySummary[],
+  publicReleaseManifest: PublicReleaseManifest | undefined
+): Promise<DatasetRelease> {
   const publishedAt =
     publicReleaseManifest?.publishedAt ?? new Date().toISOString();
   const generatedAt = publishedAt;
@@ -113,7 +131,7 @@ export async function getDatasetRelease(): Promise<DatasetRelease> {
     publicReleaseManifest?.releaseId ?? `public-release-${publishedAt.slice(0, 10)}`;
   const siteBaseUrl = getSiteBaseUrl();
   const canonicalUrl = new URL("/datasets", siteBaseUrl).toString();
-  const sortedSummaries = [...dataset.publicSummaries].sort((left, right) =>
+  const sortedSummaries = [...publicSummaries].sort((left, right) =>
     left.entity.name.localeCompare(right.entity.name)
   );
   const rawArtifacts = await buildRawArtifacts({

@@ -205,7 +205,7 @@ export function UniversitiesIndexClient({
                     <Link href={`/changes/${record.slug}`}>
                       {copy.priorityChangeLink}
                     </Link>
-                    <Link href="/reports/monthly/2026-05">
+                    <Link href="/reports/monthly/2026-06">
                       {copy.priorityReportsLink}
                     </Link>
                     <a href={record.publicJsonUrl}>{copy.publicJson}</a>

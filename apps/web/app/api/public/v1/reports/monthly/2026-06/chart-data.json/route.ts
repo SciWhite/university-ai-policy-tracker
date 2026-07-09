@@ -8,7 +8,7 @@ import { getMonthlyReport } from "@/lib/reports";
 
 export const dynamic = "force-static";
 
-const monthlyReportSlug = "2026-05";
+const monthlyReportSlug = "2026-06";
 
 export async function GET() {
   const report = await getMonthlyReport(monthlyReportSlug);

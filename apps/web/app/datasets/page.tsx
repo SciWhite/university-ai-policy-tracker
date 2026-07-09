@@ -136,7 +136,7 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
   const analysisCoverageScoresPath = `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`;
   const analysisPageQualityPath = `/api/public/${PUBLIC_API_VERSION}/analysis/page-quality.json`;
   const reportsIndexPath = `/api/public/${PUBLIC_API_VERSION}/reports/index.json`;
-  const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/monthly/2026-05/chart-data.json`;
+  const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/monthly/2026-06/chart-data.json`;
   const reportOutreachPath = `/api/public/${PUBLIC_API_VERSION}/reports/outreach.json`;
   const widgetIndexPath = `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`;
   const policyCoverageWidgetPath = `/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/${exampleSlug}.json`;
@@ -315,7 +315,7 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
             },
             {
               "@type": "DataDownload",
-              name: "May 2026 monthly report chart data",
+              name: "June 2026 monthly report chart data",
               encodingFormat: "application/json",
               contentUrl: reportChartDataUrl
             },
@@ -541,7 +541,7 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
               url={reportOutreachUrl}
             />
             <ApiEndpointRow
-              description="May 2026 monthly report chart data."
+              description="June 2026 monthly report chart data."
               label="Report chart data"
               path={reportChartDataPath}
               url={reportChartDataUrl}

@@ -13,7 +13,7 @@ import {
 } from "@/lib/reports";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
-const monthlyReportSlug = "2026-05";
+const monthlyReportSlug = "2026-06";
 
 export async function generateMetadata() {
   const report = await getMonthlyReport(monthlyReportSlug);
@@ -37,7 +37,7 @@ export async function generateMetadata() {
   };
 }
 
-export default async function May2026MonthlyReportPage() {
+export default async function June2026MonthlyReportPage() {
   const report = await getMonthlyReport(monthlyReportSlug);
 
   if (!report) return null;

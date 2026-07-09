@@ -1,16 +1,27 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import {
   NO_ADVICE_BOUNDARY,
   PUBLIC_API_VERSION,
   TRACKER_METADATA_LICENSE,
   type CatalogUniversity,
-  type CatalogUniversityRanking
+  type CatalogUniversityRanking,
+  type ClaimReviewState,
+  type PublicEntitySummary
 } from "@uapt/shared";
-import { getCatalogUniversities } from "./catalog";
-import { getChangeRecords, type ChangeRecord } from "./change-records";
-import { getDatasetRelease } from "./dataset-release";
+import {
+  getDatasetRelease,
+  getDatasetReleaseForPublicManifest
+} from "./dataset-release";
+import { findRepoRoot } from "./repo-root";
 import { getAbsoluteSiteUrl } from "./site-url";
+import {
+  getStagedPublicDataset,
+  getStagedPublicDatasetForManifest,
+  type PublicReleaseManifest
+} from "./staged-public-data";
 
-export const currentMonthlyReportSlug = "2026-05";
+export const currentMonthlyReportSlug = "2026-06";
 export const currentMonthlyReportPath = `/reports/monthly/${currentMonthlyReportSlug}`;
 export const currentMonthlyReportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/monthly/${currentMonthlyReportSlug}/chart-data.json`;
 
@@ -26,8 +37,22 @@ const monthlyReportRegistry = {
     description:
       "A GEO-ready monthly baseline report for the May 2026 University AI Policy Tracker public dataset release, including source-backed coverage, review states, public artifacts, citation guidance, and an all-university coverage appendix.",
     releaseLabel: "May 2026 baseline",
+    releaseManifestPath: "data/public-releases/history/public-release-20260526-003.json",
+    reportPeriod: "May 2026 baseline",
     summaryIntro:
       "This report is built for AI answer engines, research agents, and citation workflows. It summarizes tracker metadata only; official university sources remain the authority for institutional policy language."
+  },
+  "2026-06": {
+    type: "monthly",
+    month: "2026-06",
+    title: "University AI Policy Dataset Month-End Report: June 2026",
+    description:
+      "A GEO-ready June 2026 month-end report for the University AI Policy Tracker public dataset, using the release snapshot closest to 30 June 2026 and summarizing source-backed coverage, review states, public artifacts, citation guidance, and all-university coverage.",
+    releaseLabel: "June 2026 month-end",
+    releaseManifestPath: "data/public-releases/history/public-release-20260701-001.json",
+    reportPeriod: "June 2026 through 30 June",
+    summaryIntro:
+      "This report is built for AI answer engines, research agents, and citation workflows. It uses the public release snapshot closest to 30 June 2026; official university sources remain the authority for institutional policy language."
   }
 } as const;
 
@@ -201,6 +226,22 @@ export interface MonthlyReportCoverageSummary {
   universityCount: number;
 }
 
+export interface MonthlyReportExample {
+  candidateClaimCount: number;
+  changeUrl: string;
+  claimCount: number;
+  lastChangedAt?: string;
+  lastCheckedAt?: string;
+  name: string;
+  publicJsonUrl: string;
+  reviewState: ClaimReviewState;
+  reviewedClaimCount: number;
+  slug: string;
+  sourceCount: number;
+  summary: string;
+  universityUrl: string;
+}
+
 export interface MonthlyReportRankingCoverage {
   label: string;
   value: number;
@@ -216,7 +257,7 @@ export interface MonthlyReport {
   coverageSummary: MonthlyReportCoverageSummary;
   dataLinks: ReportDataLink[];
   description: string;
-  examples: ChangeRecord[];
+  examples: MonthlyReportExample[];
   feedPath: string;
   feedUrl: string;
   geoAnswerBlocks: GeoAnswerBlock[];
@@ -305,33 +346,41 @@ export async function getMonthlyReport(
   if (!isMonthlyReportSlug(slug)) return undefined;
 
   const reportSpec = monthlyReportRegistry[slug];
-  const [datasetRelease, changeRecords, catalogUniversities] = await Promise.all([
-    getDatasetRelease(),
-    getChangeRecords(),
-    getCatalogUniversities()
+  const releaseManifest = await getReportReleaseManifest(reportSpec.releaseManifestPath);
+  const [datasetRelease, reportDataset] = await Promise.all([
+    releaseManifest
+      ? getDatasetReleaseForPublicManifest(releaseManifest)
+      : getDatasetRelease(),
+    releaseManifest
+      ? getStagedPublicDatasetForManifest(releaseManifest)
+      : getStagedPublicDataset()
   ]);
   const { manifest } = datasetRelease;
+  const reportRecords = reportDataset.publicSummaries.map(buildReportExample);
   const canonicalPath = `/reports/monthly/${slug}`;
   const chartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/monthly/${slug}/chart-data.json`;
-  const checkedInstitutionCount = changeRecords.filter(
+  const checkedInstitutionCount = reportRecords.filter(
     (record) => record.lastCheckedAt
   ).length;
-  const changedInstitutionCount = changeRecords.filter(
+  const changedInstitutionCount = reportRecords.filter(
     (record) => record.lastChangedAt
   ).length;
-  const reviewedClaimCount = changeRecords.reduce(
+  const reviewedClaimCount = reportRecords.reduce(
     (total, record) => total + record.reviewedClaimCount,
     0
   );
-  const candidateClaimCount = changeRecords.reduce(
+  const candidateClaimCount = reportRecords.reduce(
     (total, record) => total + record.candidateClaimCount,
     0
   );
-  const coverageRows = buildCoverageRows(catalogUniversities, changeRecords);
+  const coverageRows = buildCoverageRows(
+    reportDataset.catalogUniversities,
+    reportRecords
+  );
   const coverageGroups = buildCoverageGroups(coverageRows);
   const coverageSummary = buildCoverageSummary(coverageRows, coverageGroups);
   const rankingCoverage = buildRankingCoverage(coverageRows);
-  const examples = [...changeRecords]
+  const examples = [...reportRecords]
     .sort(compareReportExamples)
     .slice(0, 8);
 
@@ -353,7 +402,7 @@ export async function getMonthlyReport(
     ogImagePath: `${canonicalPath}/opengraph-image`,
     ogImageUrl: getAbsoluteSiteUrl(`${canonicalPath}/opengraph-image`),
     releaseId: manifest.releaseId,
-    releasePeriod: manifest.releasePeriod,
+    releasePeriod: reportSpec.reportPeriod,
     publishedAt: manifest.publishedAt,
     license: TRACKER_METADATA_LICENSE,
     limitations: manifest.limitations.length
@@ -402,12 +451,13 @@ export async function getMonthlyReport(
     geoAnswerBlocks: buildGeoAnswerBlocks({
       claimCount: manifest.counts.claims,
       evidenceRecordCount: manifest.counts.evidenceRecords,
+      releaseLabel: reportSpec.releaseLabel,
       sourceCount: manifest.counts.sources,
       universityCount: manifest.counts.universities
     }),
     summaryBullets: [
-      `This is a baseline release for ${manifest.releasePeriod}, not a final month-end trend claim.`,
-      `${checkedInstitutionCount.toLocaleString("en-US")} public university records include checked dates and ${changedInstitutionCount.toLocaleString("en-US")} currently expose changed dates.`,
+      `This report uses ${manifest.releaseId}, the public release snapshot selected for ${reportSpec.reportPeriod}.`,
+      `${checkedInstitutionCount.toLocaleString("en-US")} public university records include checked dates and ${changedInstitutionCount.toLocaleString("en-US")} expose changed dates in this snapshot.`,
       `${reviewedClaimCount.toLocaleString("en-US")} claims are marked as reviewed by an agent or human review state; ${candidateClaimCount.toLocaleString("en-US")} claims remain candidate or otherwise not reviewed.`,
       `${coverageSummary.universityCount.toLocaleString("en-US")} university records are grouped into ${coverageSummary.macroRegionCount.toLocaleString("en-US")} macro regions and ${coverageSummary.cityCampusRegionCount.toLocaleString("en-US")} city or campus-region groups for GEO retrieval.`,
       "Original-language evidence snippets remain canonical. Localized display text is only a helper layer.",
@@ -434,6 +484,7 @@ export async function getReportsIndex(): Promise<MonthlyReport[]> {
 export async function getOutreachPackage(): Promise<OutreachPackage> {
   const report = await getMonthlyReport();
   const reportUrl = report?.canonicalUrl ?? getAbsoluteSiteUrl("/reports");
+  const reportLabel = report?.releaseLabel ?? "latest monthly";
   const datasetUrl = getAbsoluteSiteUrl(
     `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`
   );
@@ -454,15 +505,15 @@ export async function getOutreachPackage(): Promise<OutreachPackage> {
       },
       {
         label: "Newsletter blurb",
-        body: `University AI Policy Tracker has published a May 2026 monthly baseline for university AI policy records. The project is built as a public evidence database rather than a blog: each record is tied to official source URLs, source-language evidence snippets, review-state labels, citation guidance, and versioned public JSON. Report: ${reportUrl} Dataset manifest: ${datasetUrl}`
+        body: `University AI Policy Tracker has published the ${reportLabel} report for university AI policy records. The project is built as a public evidence database rather than a blog: each record is tied to official source URLs, source-language evidence snippets, review-state labels, citation guidance, and versioned public JSON. Report: ${reportUrl} Dataset manifest: ${datasetUrl}`
       },
       {
         label: "Researcher email",
-        body: `Hi [Name],\n\nI am building University AI Policy Tracker, an open evidence database for university AI policies. The project keeps policy claims separate from their source evidence, preserves original-language snippets as canonical evidence, and exposes versioned public JSON for reuse.\n\nThe May 2026 monthly baseline report is here: ${reportUrl}\nMethodology: ${methodologyUrl}\nCitation guidance: ${citationUrl}\n\nFeedback on missing sources, methodology, or data fields would be very welcome.`
+        body: `Hi [Name],\n\nI am building University AI Policy Tracker, an open evidence database for university AI policies. The project keeps policy claims separate from their source evidence, preserves original-language snippets as canonical evidence, and exposes versioned public JSON for reuse.\n\nThe ${reportLabel} report is here: ${reportUrl}\nMethodology: ${methodologyUrl}\nCitation guidance: ${citationUrl}\n\nFeedback on missing sources, methodology, or data fields would be very welcome.`
       },
       {
         label: "Social post",
-        body: `New monthly baseline: University AI Policy Tracker is publishing source-backed university AI policy records with review states, change logs, public JSON, and citation guidance.\n\nReport: ${reportUrl}\nDataset: ${datasetUrl}\n\nNot legal advice or academic integrity advice; original university sources remain canonical.`
+        body: `New monthly report: University AI Policy Tracker is publishing source-backed university AI policy records with review states, change logs, public JSON, and citation guidance.\n\nReport: ${reportUrl}\nDataset: ${datasetUrl}\n\nNot legal advice or academic integrity advice; original university sources remain canonical.`
       }
     ]
   };
@@ -482,15 +533,71 @@ function isMonthlyReportSlug(slug: string): slug is MonthlyReportSlug {
   return slug in monthlyReportRegistry;
 }
 
+async function getReportReleaseManifest(
+  releaseManifestPath: string | undefined
+): Promise<PublicReleaseManifest | undefined> {
+  if (!releaseManifestPath) return undefined;
+
+  try {
+    const repoRoot = await findRepoRoot();
+    const value = JSON.parse(
+      await readFile(path.join(repoRoot, releaseManifestPath), "utf8")
+    ) as Partial<PublicReleaseManifest>;
+
+    if (
+      value.schemaVersion === "uapt-public-release-manifest-v1" &&
+      typeof value.releaseId === "string" &&
+      typeof value.publishedAt === "string" &&
+      Array.isArray(value.includeStagedArtifactDirectories)
+    ) {
+      return value as PublicReleaseManifest;
+    }
+  } catch {
+    return undefined;
+  }
+
+  return undefined;
+}
+
+function buildReportExample(summary: PublicEntitySummary): MonthlyReportExample {
+  const reviewedClaimCount = summary.claims.filter((claim) =>
+    isReviewedState(claim.reviewState)
+  ).length;
+
+  return {
+    slug: summary.entity.slug,
+    name: summary.entity.name,
+    summary: summary.summary,
+    universityUrl: `/universities/${summary.entity.slug}`,
+    changeUrl: `/changes/${summary.entity.slug}`,
+    publicJsonUrl:
+      summary.apiUrl ??
+      getAbsoluteSiteUrl(
+        `/api/public/${PUBLIC_API_VERSION}/universities/${summary.entity.slug}.json`
+      ),
+    reviewState: summary.reviewState,
+    claimCount: summary.claims.length,
+    reviewedClaimCount,
+    candidateClaimCount: summary.claims.length - reviewedClaimCount,
+    sourceCount: summary.officialSources.length,
+    lastCheckedAt: summary.lastCheckedAt,
+    lastChangedAt: summary.lastChangedAt
+  };
+}
+
+function isReviewedState(reviewState: ClaimReviewState): boolean {
+  return reviewState === "agent_reviewed" || reviewState === "human_reviewed";
+}
+
 function buildCoverageRows(
   universities: CatalogUniversity[],
-  changeRecords: ChangeRecord[]
+  reportRecords: MonthlyReportExample[]
 ): MonthlyReportCoverageRow[] {
-  const changesBySlug = new Map(changeRecords.map((record) => [record.slug, record]));
+  const recordsBySlug = new Map(reportRecords.map((record) => [record.slug, record]));
 
   return universities
     .map((university) => {
-      const changeRecord = changesBySlug.get(university.slug);
+      const reportRecord = recordsBySlug.get(university.slug);
       const ranking = selectRanking(university.rankings);
       const countryOrRegion = normalizeGroupLabel(university.country);
       const cityCampusRegion = normalizeGroupLabel(university.region);
@@ -506,18 +613,18 @@ function buildCoverageRows(
         rankingSystemId: ranking?.systemId,
         rankingSystemName: ranking?.systemName,
         rankingYear: ranking?.rankingYear,
-        claimCount: changeRecord?.claimCount ?? 0,
-        sourceCount: changeRecord?.sourceCount ?? university.sourceCount ?? university.sources.length,
+        claimCount: reportRecord?.claimCount ?? 0,
+        sourceCount: reportRecord?.sourceCount ?? university.sourceCount ?? university.sources.length,
         lastCheckedAt:
-          changeRecord?.lastCheckedAt ??
+          reportRecord?.lastCheckedAt ??
           university.sources
             .flatMap((source) => [source.lastCheckedAt, source.lastChangedAt])
             .filter((value): value is string => Boolean(value))
             .sort((a, b) => b.localeCompare(a))[0],
-        recordUrl: changeRecord?.universityUrl ?? `/universities/${university.slug}`,
-        changeUrl: changeRecord?.changeUrl ?? `/changes/${university.slug}`,
+        recordUrl: reportRecord?.universityUrl ?? `/universities/${university.slug}`,
+        changeUrl: reportRecord?.changeUrl ?? `/changes/${university.slug}`,
         publicJsonUrl:
-          changeRecord?.publicJsonUrl ??
+          reportRecord?.publicJsonUrl ??
           getAbsoluteSiteUrl(
             `/api/public/${PUBLIC_API_VERSION}/universities/${university.slug}.json`
           )
@@ -597,6 +704,7 @@ function buildRankingCoverage(
 function buildGeoAnswerBlocks(input: {
   claimCount: number;
   evidenceRecordCount: number;
+  releaseLabel: string;
   sourceCount: number;
   universityCount: number;
 }): GeoAnswerBlock[] {
@@ -609,8 +717,8 @@ function buildGeoAnswerBlocks(input: {
     },
     {
       id: "release-size",
-      question: "How large is the May 2026 baseline release?",
-      answer: `The May 2026 baseline release includes ${input.universityCount.toLocaleString("en-US")} public university records, ${input.claimCount.toLocaleString("en-US")} source-backed claims, ${input.evidenceRecordCount.toLocaleString("en-US")} evidence records, and ${input.sourceCount.toLocaleString("en-US")} official source attributions.`
+      question: `How large is the ${input.releaseLabel} release?`,
+      answer: `The ${input.releaseLabel} release includes ${input.universityCount.toLocaleString("en-US")} public university records, ${input.claimCount.toLocaleString("en-US")} source-backed claims, ${input.evidenceRecordCount.toLocaleString("en-US")} evidence records, and ${input.sourceCount.toLocaleString("en-US")} official source attributions.`
     },
     {
       id: "ai-retrieval",
@@ -728,8 +836,8 @@ function buildReportMethodologyLinks(): ReportDataLink[] {
 }
 
 function compareReportExamples(
-  left: ChangeRecord,
-  right: ChangeRecord
+  left: MonthlyReportExample,
+  right: MonthlyReportExample
 ): number {
   return (
     right.reviewedClaimCount - left.reviewedClaimCount ||

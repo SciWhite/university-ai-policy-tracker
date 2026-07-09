@@ -10,7 +10,7 @@ import {
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { ReportCoverageTable } from "../../report-coverage-table";
 
-const monthlyReportSlug = "2026-05";
+const monthlyReportSlug = "2026-06";
 
 interface MonthlyReportCoveragePageProps {
   params: Promise<{

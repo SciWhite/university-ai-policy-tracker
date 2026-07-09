@@ -179,7 +179,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               <Link className="site-action" href={`/changes/${slug}`}>
                 Change log
               </Link>
-              <Link className="site-action" href="/reports/monthly/2026-05">
+              <Link className="site-action" href="/reports/monthly/2026-06">
                 Monthly report
               </Link>
               <Link className="site-action" href="/citation">
@@ -221,7 +221,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                   <Link className="site-action" href={`/changes/${slug}`}>
                     Change log
                   </Link>
-                  <Link className="site-action" href="/reports/monthly/2026-05">
+                  <Link className="site-action" href="/reports/monthly/2026-06">
                     Monthly report
                   </Link>
                   <Link className="site-action" href="/datasets">
