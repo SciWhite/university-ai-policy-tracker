@@ -1,0 +1,227 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-46-50-20260710",
+  "generatedAt": "2026-07-10T12:00:00.000Z",
+  "records": [
+    {
+      "universitySlug": "ucla",
+      "universityName": "University of California, Los Angeles (UCLA)",
+      "qsRank": 46,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini (Basic Tier)",
+      "description": "Google Gemini basic tier for UCLA users.",
+      "howToObtain": "Access via the web using UCLA Google Account. No activation required.",
+      "costToUser": "No additional cost.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://dts.ucla.edu/initiatives/ai/available-tools",
+          "sourceTitle": "Available AI Tools | Digital & Technology Solutions",
+          "evidenceSnippet": "Google Gemini (Basic Tier) | Eligibility: Faculty, Staff & Students | Activation: Access via the web using UCLA Google Account. No activation required. | Pricing: No Additional Cost",
+          "snapshotHash": "c91f2c7ce8eb8997b03201fc0a9f78fbaf581ad513b8e05296718f875f4ea0f4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ucla",
+      "universityName": "University of California, Los Angeles (UCLA)",
+      "qsRank": 46,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot (Basic Tier)",
+      "description": "Microsoft Copilot basic tier for UCLA users.",
+      "howToObtain": "Access with UCLA Microsoft account.",
+      "costToUser": "No additional cost.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://dts.ucla.edu/initiatives/ai/available-tools",
+          "sourceTitle": "Available AI Tools | Digital & Technology Solutions",
+          "evidenceSnippet": "Microsoft Copilot (Basic Tier) | Eligibility: Faculty, Staff & Students | Activation: Access using UCLA Microsoft account | Pricing: No Additional Cost",
+          "snapshotHash": "02799058e9f14eee0bd8bbf9809228310e02b687f7b73c9337c2af2b39499216",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ucla",
+      "universityName": "University of California, Los Angeles (UCLA)",
+      "qsRank": 46,
+      "tool": "chatgpt",
+      "rawToolName": "OpenAI ChatGPT",
+      "description": "ChatGPT Edu available to UCLA faculty and staff for purchase.",
+      "howToObtain": "Faculty and staff can purchase at negotiated price through UCLA Digital & Technology Solutions.",
+      "costToUser": "Specially negotiated purchase price.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://dts.ucla.edu/initiatives/ai/available-tools",
+          "sourceTitle": "Available AI Tools | Digital & Technology Solutions",
+          "evidenceSnippet": "UCLA Digital & Technology Solutions has made ChatGPT Edu available to our faculty and staff for purchase at a specially negotiated price.",
+          "snapshotHash": "744a2f5ae517773d5e295931308c64afa9bf9bbf5f1d7cc9985ced14b9304f3e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ucla",
+      "universityName": "University of California, Los Angeles (UCLA)",
+      "qsRank": 46,
+      "tool": "notebooklm",
+      "rawToolName": "Google Notebook LM",
+      "description": "Google AI research and note-taking service.",
+      "howToObtain": "Access through UCLA Google account where eligible.",
+      "costToUser": "No additional cost.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://dts.ucla.edu/initiatives/ai/available-tools",
+          "sourceTitle": "Available AI Tools | Digital & Technology Solutions",
+          "evidenceSnippet": "Google Notebook LM | Eligibility: Faculty, Staff & Students | Activation: Access via UCLA Google Account | Pricing: No Additional Cost",
+          "snapshotHash": "275aa6e4e341d89d1186e1fea5279cce1a82b3fb0cc62dd462dce07afd19e30c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ucla",
+      "universityName": "University of California, Los Angeles (UCLA)",
+      "qsRank": 46,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "M365 Copilot",
+      "description": "Microsoft 365 Copilot for UCLA schools and departments.",
+      "howToObtain": "Schools and departments can submit a license purchase request through Software Central.",
+      "costToUser": "License purchase required.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://dts.ucla.edu/initiatives/ai/available-tools",
+          "sourceTitle": "Available AI Tools | Digital & Technology Solutions",
+          "evidenceSnippet": "M365 Copilot ... Schools and departments can purchase M365 Copilot licenses by submitting a license purchase request through Software Central.",
+          "snapshotHash": "0a8dc027985483206d07afd7e093f6d5934c58980a5afc2195fa11d1fb4b19b8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ucla",
+      "universityName": "University of California, Los Angeles (UCLA)",
+      "qsRank": 46,
+      "tool": "gemini",
+      "rawToolName": "Gemini for Workspaces",
+      "description": "Gemini add-on for Google Workspace; not currently purchasable.",
+      "howToObtain": "Purchase instructions will be published when service becomes available.",
+      "costToUser": "Not available for purchase at this time.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://dts.ucla.edu/initiatives/ai/available-tools",
+          "sourceTitle": "Available AI Tools | Digital & Technology Solutions",
+          "evidenceSnippet": "Gemini for Workspaces: Is not available for purchase at this time. Instructions on how to purchase it will be published when the service becomes available.",
+          "snapshotHash": "9bd6f81cdcd5cf97e4d606479573f445fabfe2fe0ae933d0e220da5808296294",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ucla",
+      "universityName": "University of California, Los Angeles (UCLA)",
+      "qsRank": 46,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom meeting AI features in UCLA Zoom domain.",
+      "howToObtain": "Available in UCLA Zoom domain; default settings remain disabled for users.",
+      "costToUser": "No additional cost specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://dts.ucla.edu/initiatives/ai/available-tools",
+          "sourceTitle": "Available AI Tools | Digital & Technology Solutions",
+          "evidenceSnippet": "Zoom AI Companion features have been made available to all users in the UCLA Zoom domain. However, the default settings remain disabled for all users.",
+          "snapshotHash": "5a4a699f5ec5663d6826960bfbe5bb767cb1e5db3841a57bc58084246809eaa6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "delft-university-of-technology",
+      "universityName": "Delft University of Technology",
+      "qsRank": 47,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Web version of Microsoft Copilot recommended by TU Delft guidance.",
+      "howToObtain": "Log into Copilot with TU Delft credentials.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://filelist.tudelft.nl/me/Organisatie/Generative%20AI%20Guidelines%20for%20Students%20%E2%80%93%20Faculty%20of%20Mechanical%20Engineering%C2%A02026%20Jan.pdf",
+          "sourceTitle": "Generative AI Guidelines for Students - Faculty of Mechanical Engineering",
+          "evidenceSnippet": "With data safety and uniformity in mind, the TU Delft recommends using the web-version of Microsoft Copilot at this moment in time. You can log into Copilot with your TU Delft credentials.",
+          "snapshotHash": "86ca412d83329a875ccf86caa005d7d6a4196f092ccd5f203632e56dfec0631b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "shanghai-jiao-tong-university",
+      "universityName": "Shanghai Jiao Tong University",
+      "qsRank": 48,
+      "tool": "self_deploy",
+      "rawToolName": "DeepSeek 本地版",
+      "description": "由学校相关单位部署的本地 DeepSeek 模型服务，支持 DeepSeek、Qwen 等模型。",
+      "howToObtain": "按照上海交通大学相关平台入口使用。",
+      "costToUser": "未说明。",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://xflops.sjtu.edu.cn/hpc-start-guide/info-lit/get-info-efficiently/",
+          "sourceTitle": "如何高效获取信息 - HPC入门指南",
+          "evidenceSnippet": "DeepSeek 本地版：由 Xflops超算队协助上海交通大学网络信息中心部署的本地 DeepSeek 模型，现已支持 DeepSeek、Qwen 等模型。",
+          "snapshotHash": "f70f318d7c673b6ff46f197a0ec03eca9ecccfe28ffc8ab8daa30b787b8768fe",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "shanghai-jiao-tong-university",
+      "universityName": "Shanghai Jiao Tong University",
+      "qsRank": 48,
+      "tool": "self_deploy",
+      "rawToolName": "AI 应用平台",
+      "description": "上海交通大学 AI 应用平台，集成多种 AI 工具与服务。",
+      "howToObtain": "按照上海交通大学 AI 应用平台入口使用。",
+      "costToUser": "未说明。",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://xflops.sjtu.edu.cn/hpc-start-guide/info-lit/get-info-efficiently/",
+          "sourceTitle": "如何高效获取信息 - HPC入门指南",
+          "evidenceSnippet": "AI 应用平台：上海交通大学的 AI 应用平台，集成了多种 AI 工具与服务。",
+          "snapshotHash": "57045c1219fd56b87f0a5fd8aefa970e6925f69b3a1ab7574a065fafa59201ee",
+          "reviewState": "needs_review"
+        }
+      ]
+    }
+  ]
+}

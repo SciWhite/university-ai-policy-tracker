@@ -1,0 +1,755 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-41-45-20260710",
+  "generatedAt": "2026-07-10T12:00:00.000Z",
+  "records": [
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat (Basic)",
+      "description": "General-purpose AI chatbot using GPT and DALL-E models.",
+      "howToObtain": "Use a Northwestern Microsoft account.",
+      "costToUser": "Included with Northwestern Microsoft account.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Microsoft Copilot Chat (Basic) | General-purpose AI chatbot; uses GPT and DALL-E models from Open AI | Faculty, Staff, Students | ... | Included with Northwestern Microsoft account",
+          "snapshotHash": "d3bf5cb6f98073e225138a09bc3b0150ef82d38c89f84e09431167513ae365f5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot (Premium)",
+      "description": "Expanded AI tool embedded in Microsoft 365 applications, including Researcher and Analyst functions.",
+      "howToObtain": "Requires Microsoft 365 Copilot licensing.",
+      "costToUser": "Requires Microsoft 365 Copilot licensing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Microsoft 365 Copilot (Premium) | Expanded AI tool embedded in core Microsoft 365 applications; includes Researcher and Analyst functions | Faculty, Staff | ... | Requires Microsoft 365 Copilot licensing",
+          "snapshotHash": "ed65e99177d7a27a28ef23ba8f3ee12f85814e6bef0712116713eafb6ec8c3c1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft Copilot for Teams",
+      "description": "Meeting transcription, summaries, and action-item tagging in Teams.",
+      "howToObtain": "Requires Microsoft 365 Copilot licensing.",
+      "costToUser": "Requires Microsoft 365 Copilot licensing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Microsoft Copilot for Teams | Meeting transcriptions and summaries; tagging individual users with action items | Faculty, Staff | ... | Requires Microsoft 365 Copilot licensing",
+          "snapshotHash": "d514ac1292aa96fa988dd1851db340799d8295d206cdc1d9ba8a0b8de84707c4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "teams_premium",
+      "rawToolName": "Microsoft Teams Premium",
+      "description": "Premium Teams features including AI-supported meeting capabilities.",
+      "howToObtain": "Requires Teams Premium licensing.",
+      "costToUser": "Requires Teams Premium licensing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Microsoft Teams Premium | Premium Teams meeting features | Faculty, Staff | ... | Requires Teams Premium licensing",
+          "snapshotHash": "5d1d059690eeb2703df8f29e57ac5db43b7c79663cc2f8101df3819c1bb07549",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini (Coming Soon)",
+      "description": "Google generative AI assistant listed as coming soon.",
+      "howToObtain": "Not yet available from Northwestern at the time of capture.",
+      "costToUser": "Coming soon.",
+      "availability": "not_mentioned",
+      "endorsementType": "not_specified",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Google Gemini (Coming Soon) | AI assistant in Google Workspace | Coming Soon",
+          "snapshotHash": "cdbaecfd021a802fb92719a0fa5510c382acac18d4177a29be875f9481867608",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Business",
+      "description": "OpenAI ChatGPT Business for teams.",
+      "howToObtain": "Use only through approved business/department procurement where applicable.",
+      "costToUser": "Vendor subscription or department purchase.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "ChatGPT Business | ChatGPT for teams | Faculty, Staff | ... | Available by departmental purchase or vendor subscription",
+          "snapshotHash": "e15a01396e9423322380365164899b234b14d2ea5899822f186690cfad667d38",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "claude",
+      "rawToolName": "Claude Team",
+      "description": "Anthropic Claude Team for collaborative AI use.",
+      "howToObtain": "Use only through approved team/department procurement where applicable.",
+      "costToUser": "Vendor subscription or department purchase.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Claude Team | Anthropic Claude team workspace | Faculty, Staff | ... | Available by departmental purchase or vendor subscription",
+          "snapshotHash": "9f3fc1a42b147230a49a88e1766142dc242e88ba7286248e0a7b42e2d39e422b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "aws_bedrock",
+      "rawToolName": "Amazon Bedrock on Amazon Web Services",
+      "description": "Managed access to foundation models through AWS.",
+      "howToObtain": "Use through Northwestern AWS cloud services and approved account procedures.",
+      "costToUser": "Requires AWS cloud account/billing arrangement.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Amazon Bedrock on Amazon Web Services | AI model platform | Faculty, Staff | ... | Available through Northwestern AWS cloud services",
+          "snapshotHash": "b568e665f6cbe6f8cedbf87538b7c8ba5eb1d221d3fb73bc2c23df61d737cdbf",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "github_copilot",
+      "rawToolName": "GitHub Copilot",
+      "description": "AI coding assistant.",
+      "howToObtain": "Use GitHub Copilot through Northwestern-approved licensing.",
+      "costToUser": "Requires eligible license.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "GitHub Copilot | AI coding assistant | Faculty, Staff, Students | ... | Available through Northwestern licensing",
+          "snapshotHash": "422f0bc3d2cd34f6c96a418ddb51c671e393c49bccabf76b0ef493cf503317e0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "azure_ai_foundry",
+      "rawToolName": "Microsoft Foundry on Microsoft Azure",
+      "description": "Azure AI development platform.",
+      "howToObtain": "Use through Northwestern Microsoft Azure cloud services.",
+      "costToUser": "Requires Azure cloud account/billing arrangement.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Microsoft Foundry on Microsoft Azure | AI development platform | Faculty, Staff | ... | Available through Northwestern Azure cloud services",
+          "snapshotHash": "dda50024f1ff14be1c98210a40ffe88886af2c9c50290f212efe4649ce047151",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "google_vertex_ai",
+      "rawToolName": "Vertex AI on Google Cloud",
+      "description": "Google Cloud AI development platform.",
+      "howToObtain": "Use through Northwestern Google Cloud services.",
+      "costToUser": "Requires Google Cloud account/billing arrangement.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Vertex AI on Google Cloud | AI model platform | Faculty, Staff | ... | Available through Northwestern Google Cloud services",
+          "snapshotHash": "4586ca0e5204935d9e300c76dd3dd7ad8998f423416f2358097c9f2c89e4d884",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "adobe_creative_cloud",
+      "rawToolName": "Adobe Creative Cloud",
+      "description": "Adobe creative applications with AI-powered features.",
+      "howToObtain": "Use Northwestern Adobe Creative Cloud software access.",
+      "costToUser": "Available through Northwestern Adobe licensing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Adobe Creative Cloud software | Creative software with AI-powered features | Faculty, Staff, Students | ... | Available through Northwestern Adobe licensing",
+          "snapshotHash": "01430cbb31247fa403472be6652211cf5d9ae97a013a22f4aaffc7a546bfe72e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "arcgis",
+      "rawToolName": "ArcGIS",
+      "description": "GIS platform with AI-assisted analytics features.",
+      "howToObtain": "Use Northwestern ArcGIS software access.",
+      "costToUser": "Available through Northwestern software licensing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "ArcGIS | Geographic information system software with AI-assisted analytics | Faculty, Staff, Students | ... | Available through Northwestern software licensing",
+          "snapshotHash": "550fe7253a7e6386eeb4e164048ea30254250b0b2807b8a1df24bd2f4b804c3f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "endnote",
+      "rawToolName": "EndNote 2025",
+      "description": "Citation manager with AI-assisted research features.",
+      "howToObtain": "Use Northwestern EndNote software access.",
+      "costToUser": "Available through Northwestern software licensing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "EndNote 2025 | Citation manager with AI-assisted research features | Faculty, Staff, Students | ... | Available through Northwestern software licensing",
+          "snapshotHash": "b2ec5fd8722eba76e8af23feeb460e6b9559da33fb0822b99f9f5667f15cacc9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "panopto",
+      "rawToolName": "Panopto",
+      "description": "Video platform with AI-supported media features.",
+      "howToObtain": "Use Northwestern Panopto service access.",
+      "costToUser": "Available through Northwestern service licensing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Panopto | Video platform with AI-supported media features | Faculty, Staff, Students | ... | Available through Northwestern service licensing",
+          "snapshotHash": "645422df5e1ac194b83116c0084d0832e9dfe5ca4694d00fdec4f00cb247daf8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "northwestern-university",
+      "universityName": "Northwestern University",
+      "qsRank": 42,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion Meeting Features",
+      "description": "Zoom meeting AI features.",
+      "howToObtain": "Use Northwestern Zoom service settings where enabled.",
+      "costToUser": "Available through Northwestern Zoom licensing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.northwestern.edu/ai/tools-and-use-guidance/tools-and-use-guidance.html",
+          "sourceTitle": "Tools and Use Guidance: Information Technology - Northwestern University",
+          "evidenceSnippet": "Zoom AI Companion Meeting Features | Meeting AI features | Faculty, Staff, Students | ... | Available through Northwestern Zoom licensing",
+          "snapshotHash": "bd616081915b781a2c2c7edc1b315347f96fbe510ba8e4eb0d890d321b041972",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-queensland",
+      "universityName": "The University of Queensland",
+      "qsRank": 43,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "Microsoft Copilot Chat for UQ staff and students age 18+.",
+      "howToObtain": "Access with UQ Microsoft account.",
+      "costToUser": "Included with UQ Microsoft 365 licence.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://systems-training.its.uq.edu.au/systems/collaboration-tools/microsoft-365/copilot-chat-generative-ai",
+          "sourceTitle": "Copilot Chat (Generative AI) - Systems Training Hub - University of Queensland",
+          "evidenceSnippet": "Copilot Chat is included with our current Microsoft 365 licence and is available to all UQ staff and students 18+. It is the recommended tool at UQ.",
+          "snapshotHash": "d95fa8618df202749edf51165b4c6d1a5141502b28a07d728394a5fe7fcd4592",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-queensland",
+      "universityName": "The University of Queensland",
+      "qsRank": 43,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly",
+      "description": "Adobe image generation and editing tool within Creative Cloud.",
+      "howToObtain": "Use UQ Adobe Creative Cloud access.",
+      "costToUser": "Free for students through UQ-provided Adobe Creative Cloud access.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/ai-student-hub/ai-access-and-training",
+          "sourceTitle": "AI access and training - AI Student Hub - University of Queensland Library",
+          "evidenceSnippet": "UQ provides access to Microsoft Copilot Chat and Adobe Creative Cloud (including Firefly) for students to use for free.",
+          "snapshotHash": "f2bf98d0b89f4ac29337c86a1f27d7196857e69cf04dbd84f2def7ec08acf12b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-queensland",
+      "universityName": "The University of Queensland",
+      "qsRank": 43,
+      "tool": "linkedin_learning_ai",
+      "rawToolName": "LinkedIn Learning AI Coaching and Role Play",
+      "description": "AI coaching and role-play features inside LinkedIn Learning.",
+      "howToObtain": "Use UQ LinkedIn Learning access.",
+      "costToUser": "Available through UQ LinkedIn Learning access.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/ai-student-hub/ai-access-and-training",
+          "sourceTitle": "AI access and training - AI Student Hub - University of Queensland Library",
+          "evidenceSnippet": "LinkedIn Learning AI Coaching and Role Play are tools that can be used in the LinkedIn Learning platform. You can use AI coaching while doing courses to augment and personalise your learning.",
+          "snapshotHash": "c0f599623b6ab31c350fe231ba28b5909330c5a65d7c4d5673cd1e75dea7a91d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-queensland",
+      "universityName": "The University of Queensland",
+      "qsRank": 43,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT",
+      "description": "Public ChatGPT, not currently licensed by UQ.",
+      "howToObtain": "Use only outside UQ licensing and follow UQ guidance.",
+      "costToUser": "UQ currently does not provide a licence.",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://guides.library.uq.edu.au/tools-and-techniques/ai-student-hub/ai-access-and-training",
+          "sourceTitle": "AI access and training - AI Student Hub - University of Queensland Library",
+          "evidenceSnippet": "You may use and explore AI tools for which UQ does not have licences. UQ currently does not have a licence for ChatGPT.",
+          "snapshotHash": "942a2ce12237d37694a554fdc7f1488af5db82eef9a168ea94edbcc034f6d398",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "hkust",
+      "universityName": "The Hong Kong University of Science and Technology",
+      "qsRank": 44,
+      "tool": "self_deploy",
+      "rawToolName": "HKUST GenAI Platform",
+      "description": "HKUST-developed generative AI platform hosted on a secure and scalable cloud platform.",
+      "howToObtain": "Available to HKUST staff and students.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+          "sourceTitle": "Generative AI Tools | Information Technology Services Office",
+          "evidenceSnippet": "HKUST GenAI Platform is the first platform developed by ITSO and hosted on a secure and scalable cloud platform. Available to HKUST staff and students.",
+          "snapshotHash": "c2f75967274256e45be19d63a28a8ad36962b66df65fa6b33eb782796f6873c3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "hkust",
+      "universityName": "The Hong Kong University of Science and Technology",
+      "qsRank": 44,
+      "tool": "self_deploy",
+      "rawToolName": "Open WebUI",
+      "description": "ITSO-provided platform for supporting generative AI services.",
+      "howToObtain": "Available to HKUST staff and students.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+          "sourceTitle": "Generative AI Tools | Information Technology Services Office",
+          "evidenceSnippet": "Open WebUI is a new platform provided by ITSO for supporting generative AI services ... Available to HKUST staff and students.",
+          "snapshotHash": "eccf61a688ca319febd5f7c0f39525f2b52f9fb883392daeb62531ede8a348ba",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "hkust",
+      "universityName": "The Hong Kong University of Science and Technology",
+      "qsRank": 44,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini Enterprise",
+      "description": "Google Gemini Enterprise for subscribed HKUST staff.",
+      "howToObtain": "Subscribed staff can access at https://gemini.ust.hk.",
+      "costToUser": "Additional subscription.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+          "sourceTitle": "Generative AI Tools | Information Technology Services Office",
+          "evidenceSnippet": "Google Gemini Enterprise ... Available to HKUST staff with an additional subscription. Subscribed user can access at https://gemini.ust.hk.",
+          "snapshotHash": "e145503088f1e84fbd93dad504826d442c2ea15c25b2a7b338a46600644aa927",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "hkust",
+      "universityName": "The Hong Kong University of Science and Technology",
+      "qsRank": 44,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "Microsoft Copilot Chat for HKUST users.",
+      "howToObtain": "Use HKUST Microsoft account access where available.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools-comparison",
+          "sourceTitle": "Generative AI Tools Comparison | Information Technology Services Office",
+          "evidenceSnippet": "Microsoft Copilot Chat is listed in HKUST generative AI tools comparison for HKUST users.",
+          "snapshotHash": "ec9f6d3ae6aea5854b9ebb116a2e37f737d98ba3aa58634d7a963b44c77d51a8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "hkust",
+      "universityName": "The Hong Kong University of Science and Technology",
+      "qsRank": 44,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "Microsoft 365 Copilot for subscribed HKUST users.",
+      "howToObtain": "Use Microsoft 365 Copilot subscription where provisioned.",
+      "costToUser": "Subscription required.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools-comparison",
+          "sourceTitle": "Generative AI Tools Comparison | Information Technology Services Office",
+          "evidenceSnippet": "Microsoft 365 Copilot is listed in HKUST generative AI tools comparison with subscription-based availability.",
+          "snapshotHash": "532e3503b0d858cda1bce5fc107e331e058118a06d30b039ab73efd61d884ab8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "hkust",
+      "universityName": "The Hong Kong University of Science and Technology",
+      "qsRank": 44,
+      "tool": "self_deploy",
+      "rawToolName": "AI Chatbot for HKUST Drupal Platform",
+      "description": "HKUST Drupal platform chatbot service.",
+      "howToObtain": "Available for HKUST Drupal platform use cases.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+          "sourceTitle": "Generative AI Tools | Information Technology Services Office",
+          "evidenceSnippet": "AI Chatbot for HKUST Drupal Platform is listed by ITSO as one of HKUST generative AI services.",
+          "snapshotHash": "d28584fe2189522c594394ce289774ec822cd7773d4cb662adcfdbb2c4c2e8d6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "hkust",
+      "universityName": "The Hong Kong University of Science and Technology",
+      "qsRank": 44,
+      "tool": "self_deploy",
+      "rawToolName": "HKUST Generative AI API Service",
+      "description": "HKUST API service for generative AI use.",
+      "howToObtain": "Use according to ITSO API service access procedures.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+          "sourceTitle": "Generative AI Tools | Information Technology Services Office",
+          "evidenceSnippet": "HKUST Generative AI API Service is listed by ITSO as one of HKUST generative AI services.",
+          "snapshotHash": "bf8c7a615507aa5c107944a5ee0d56214169b9cf72ed567431e713bed416e763",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "hkust",
+      "universityName": "The Hong Kong University of Science and Technology",
+      "qsRank": 44,
+      "tool": "azure_openai",
+      "rawToolName": "Azure OpenAI API Access (Deprecated)",
+      "description": "Deprecated Azure OpenAI API access service.",
+      "howToObtain": "Deprecated; use successor services or ITSO guidance.",
+      "costToUser": "Not specified.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://itso.hkust.edu.hk/services/general-it-services/generative-ai-tools",
+          "sourceTitle": "Generative AI Tools | Information Technology Services Office",
+          "evidenceSnippet": "Azure OpenAI API Access (Deprecated) is listed by ITSO among HKUST generative AI tools.",
+          "snapshotHash": "0fc85b0128bdc8e133ff7e6bf4462f88700a01748a584b0a9523ecd1afd97101",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-michigan-ann-arbor",
+      "universityName": "University of Michigan-Ann Arbor",
+      "qsRank": 45,
+      "tool": "self_deploy",
+      "rawToolName": "U-M GPT",
+      "description": "U-M generative AI chat service.",
+      "howToObtain": "Available through U-M generative AI platform.",
+      "costToUser": "Free for active U-M faculty, staff, and students.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.umich.edu/resources/tools",
+          "sourceTitle": "AI Tools | U-M Generative AI",
+          "evidenceSnippet": "ITS offers a generative AI platform available to all active U-M faculty, staff, and students ... service offerings include U-M GPT, U-M Maizey, and U-M GPT Toolkit; secure, private, equitable, accessible, and free.",
+          "snapshotHash": "e064d8f2e34b7c9779b4b21eea88e110b0e08cb8c48b02934da2fb8a5aacf7ef",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-michigan-ann-arbor",
+      "universityName": "University of Michigan-Ann Arbor",
+      "qsRank": 45,
+      "tool": "self_deploy",
+      "rawToolName": "U-M Maizey",
+      "description": "U-M generative AI service for custom assistants and knowledge collections.",
+      "howToObtain": "Available through U-M generative AI platform.",
+      "costToUser": "Free for active U-M faculty, staff, and students.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.umich.edu/resources/tools",
+          "sourceTitle": "AI Tools | U-M Generative AI",
+          "evidenceSnippet": "ITS offers a generative AI platform available to all active U-M faculty, staff, and students ... service offerings include U-M GPT, U-M Maizey, and U-M GPT Toolkit; secure, private, equitable, accessible, and free.",
+          "snapshotHash": "e064d8f2e34b7c9779b4b21eea88e110b0e08cb8c48b02934da2fb8a5aacf7ef",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-michigan-ann-arbor",
+      "universityName": "University of Michigan-Ann Arbor",
+      "qsRank": 45,
+      "tool": "self_deploy",
+      "rawToolName": "U-M GPT Toolkit",
+      "description": "U-M toolkit for generative AI applications.",
+      "howToObtain": "Available through U-M generative AI platform.",
+      "costToUser": "Free for active U-M faculty, staff, and students.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.umich.edu/resources/tools",
+          "sourceTitle": "AI Tools | U-M Generative AI",
+          "evidenceSnippet": "ITS offers a generative AI platform available to all active U-M faculty, staff, and students ... service offerings include U-M GPT, U-M Maizey, and U-M GPT Toolkit; secure, private, equitable, accessible, and free.",
+          "snapshotHash": "e064d8f2e34b7c9779b4b21eea88e110b0e08cb8c48b02934da2fb8a5aacf7ef",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-michigan-ann-arbor",
+      "universityName": "University of Michigan-Ann Arbor",
+      "qsRank": 45,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Google generative AI service available to U-M community.",
+      "howToObtain": "Use University of Michigan Google account access.",
+      "costToUser": "Available to U-M faculty, staff, and students.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.umich.edu/resources/tools",
+          "sourceTitle": "AI Tools | U-M Generative AI",
+          "evidenceSnippet": "Google Gemini and Google NotebookLM are Google generative AI services available to all University of Michigan faculty, staff, and students.",
+          "snapshotHash": "a511ebcbf734aa3f7991846c67bf6e09f84bc158f4a785e829667bdd1723f62e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-michigan-ann-arbor",
+      "universityName": "University of Michigan-Ann Arbor",
+      "qsRank": 45,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "AI-powered research and note-taking assistant.",
+      "howToObtain": "Use University of Michigan Google account access.",
+      "costToUser": "Available to U-M faculty, staff, and students.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.umich.edu/resources/tools",
+          "sourceTitle": "AI Tools | U-M Generative AI",
+          "evidenceSnippet": "Google NotebookLM is an AI-powered research and note-taking assistant available to all University of Michigan faculty, staff, and students.",
+          "snapshotHash": "594ad899739a9a2d3a1b8daf033c8b2e1880621fa0be9f5b1e7ce0445ad56967",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-michigan-ann-arbor",
+      "universityName": "University of Michigan-Ann Arbor",
+      "qsRank": 45,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly",
+      "description": "Adobe generative image tool through Creative Cloud.",
+      "howToObtain": "Use U-M enterprise Adobe Creative Cloud license.",
+      "costToUser": "Free through U-M enterprise Adobe Creative Cloud license.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.umich.edu/resources/tools",
+          "sourceTitle": "AI Tools | U-M Generative AI",
+          "evidenceSnippet": "Adobe Firefly is available for free through the University of Michigan's enterprise Adobe Creative Cloud license to all University of Michigan faculty, staff, and students.",
+          "snapshotHash": "13c871a1586ebf51447b09e6a3afb437453a9c23bf0e0eecae603de2de54685c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}

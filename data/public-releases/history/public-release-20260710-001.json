@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260710-002",
-  "publishedAt": "2026-07-10T15:39:40Z",
-  "description": "Public release with validated QS41-50 AI tools records and prior QS31-40 AI tools release.",
+  "releaseId": "public-release-20260710-001",
+  "publishedAt": "2026-07-10T10:16:52Z",
+  "description": "Public release with validated QS31-40 AI tools records and the prior repaired maintenance policy updates.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -807,17 +807,14 @@
     "staging/uapt-runs/uapt-maintenance-light-durham-university-20260707",
     "staging/uapt-runs/uapt-maintenance-light-the-university-of-western-australia-20260707",
     "staging/uapt-runs/uapt-ai-tools-qs-31-35-20260710",
-    "staging/uapt-runs/uapt-ai-tools-qs-36-40-20260710",
-    "staging/uapt-runs/uapt-ai-tools-qs-41-45-20260710",
-    "staging/uapt-runs/uapt-ai-tools-qs-46-50-20260710"
+    "staging/uapt-runs/uapt-ai-tools-qs-36-40-20260710"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
-    "This release adds validated AI tools extraction runs for QS-ranked universities 41-45 and 46-50, with tool-level claim/evidence artifacts generated from official source-backed records.",
-    "QS41-50 AI tools records include expanded taxonomy coverage for official tool directories, university-hosted platforms, office-suite AI products, cloud AI services, and approved commercial tools when explicitly named by official sources.",
-    "Generic AI literacy lists and broad model-family mentions are not expanded into tool-level allowed records without explicit tool-level evidence.",
+    "This release adds validated AI tools extraction runs for QS-ranked universities 31-35 and 36-40, with tool-level claim/evidence artifacts generated from official source-backed records.",
+    "QS31-40 AI tools records include expanded taxonomy coverage for university-hosted platforms, office-suite AI products, cloud AI services, and region-specific commercial tools when explicitly named by official sources.",
     "AI tools records are tracker-derived metadata for navigation and comparison; they do not replace official university source language.",
-    "This release preserves public-release-20260710-001 in release history.",
+    "This release preserves the repaired and validated maintenance bundles from public-release-20260709-001 in release history.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]

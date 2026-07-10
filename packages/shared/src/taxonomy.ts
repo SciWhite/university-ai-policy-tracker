@@ -9,6 +9,7 @@ export const aiTools = [
   "microsoft_copilot",
   "microsoft_copilot_for_m365",
   "github_copilot",
+  "adobe_creative_cloud",
   "adobe_firefly",
   "aws_bedrock",
   "aws_sagemaker",
@@ -59,6 +60,10 @@ export const aiTools = [
   "power_bi_copilot",
   "copilot_studio",
   "teams_premium",
+  "arcgis",
+  "endnote",
+  "panopto",
+  "linkedin_learning_ai",
   "cnki_ai_academic",
   "cnki_ai_enhanced_search",
   "aminer_ai",
@@ -281,6 +286,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "GitHub Copilot",
     provider: "GitHub / Microsoft",
     aliases: ["GitHub Copilot", "Copilot for GitHub"],
+    category: "commercial_assistant"
+  },
+  adobe_creative_cloud: {
+    slug: "adobe_creative_cloud",
+    label: "Adobe Creative Cloud",
+    provider: "Adobe",
+    aliases: ["Adobe Creative Cloud", "Adobe Creative Cloud software"],
     category: "commercial_assistant"
   },
   adobe_firefly: {
@@ -633,6 +645,38 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     aliases: ["Microsoft Teams Premium", "Teams Premium"],
     category: "office_suite"
   },
+  arcgis: {
+    slug: "arcgis",
+    label: "ArcGIS",
+    provider: "Esri",
+    aliases: ["ArcGIS", "ArcGIS Pro"],
+    category: "commercial_assistant"
+  },
+  endnote: {
+    slug: "endnote",
+    label: "EndNote",
+    provider: "Clarivate",
+    aliases: ["EndNote", "EndNote 2025"],
+    category: "commercial_assistant"
+  },
+  panopto: {
+    slug: "panopto",
+    label: "Panopto",
+    provider: "Panopto",
+    aliases: ["Panopto"],
+    category: "commercial_assistant"
+  },
+  linkedin_learning_ai: {
+    slug: "linkedin_learning_ai",
+    label: "LinkedIn Learning AI",
+    provider: "LinkedIn",
+    aliases: [
+      "LinkedIn Learning AI Coaching",
+      "LinkedIn Learning AI Coaching and Role Play",
+      "LinkedIn Learning AI Role Play"
+    ],
+    category: "commercial_assistant"
+  },
   cnki_ai_academic: {
     slug: "cnki_ai_academic",
     label: "CNKI AI Academic Research Assistant",
@@ -769,6 +813,15 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
       "Parley",
       "dAIsy",
       "Stanford AI Playground",
+      "U-M GPT",
+      "U-M Maizey",
+      "U-M GPT Toolkit",
+      "HKUST GenAI Platform",
+      "Open WebUI",
+      "AI Chatbot for HKUST Drupal Platform",
+      "HKUST Generative AI API Service",
+      "DeepSeek 本地版",
+      "AI 应用平台",
       "AI Playground"
     ],
     category: "self_hosted_platform"
