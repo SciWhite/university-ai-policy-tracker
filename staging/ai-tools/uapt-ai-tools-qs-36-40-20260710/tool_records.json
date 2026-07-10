@@ -1,0 +1,1105 @@
+{
+  "schemaVersion": "uapt-ai-tool-records-v1",
+  "runId": "uapt-ai-tools-qs-36-40-20260710",
+  "generatedAt": "2026-07-10T00:00:00.000Z",
+  "records": [
+    {
+      "universitySlug": "monash",
+      "universityName": "Monash University",
+      "qsRank": 36,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Generative AI tool Monash presents for study and work use; public Monash pages describe text and image generation and recommend using Monash credentials.",
+      "howToObtain": "Access via Monash Copilot guidance pages; log in with Monash credentials.",
+      "costToUser": "Free for students; staff cost not stated on cited public pages.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.monash.edu/ai/ai-for-students",
+          "sourceTitle": "AI for Students - Artificial intelligence at Monash",
+          "evidenceSnippet": "Microsoft Copilot is a generative AI tool available to all Monash students.",
+          "snapshotHash": "a655849accafea30b3fc361c286930716112ae0ae2f0d97da938eeffe25c9bcc",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/microsoft-copilot",
+          "sourceTitle": "Microsoft Copilot - Student Academic Success",
+          "evidenceSnippet": "Make sure to log in using your Monash credentials before accessing Copilot.",
+          "snapshotHash": "9b4fccb88787604586f52ae9a43edb5e023195d4209130ae17539e585a57ae72",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/students/news/articles/using-generative-ai-at-monash",
+          "sourceTitle": "Using generative AI at Monash - Current students",
+          "evidenceSnippet": "As a Monash student, you have free access to CoPilot.",
+          "snapshotHash": "60ee3fd816962094c37c463ca3b9dfb4441d9d529dd86ae9344adc021afdbfa5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "monash",
+      "universityName": "Monash University",
+      "qsRank": 36,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Google Gemini app offered through Monash with opt-in access for eligible staff and students.",
+      "howToObtain": "Complete Monash opt-in, then sign in with a Monash account at Gemini.",
+      "costToUser": "Not stated on cited public pages.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.monash.edu/esolutions/ai/google-gemini",
+          "sourceTitle": "Google Gemini - eSolutions",
+          "evidenceSnippet": "Monash staff and students over the age of 18 can now opt in.",
+          "snapshotHash": "bfcd1ffed5f5ed9d86d126306b29b9301192a3908144db71e196cd7471bd0593",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/esolutions/ai/google-gemini",
+          "sourceTitle": "Google Gemini - eSolutions",
+          "evidenceSnippet": "Once you have opted in, you can access the tool by logging in with your Monash account.",
+          "snapshotHash": "5afe60cc6d436b1a698ab638db7c04f63813b19875aacfc5079ebf18dd8ea5f2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/ai/ai-for-students",
+          "sourceTitle": "AI for Students - Artificial intelligence at Monash",
+          "evidenceSnippet": "Google Gemini is a multimodal AI, currently for students aged 18 and over.",
+          "snapshotHash": "8a7f02b6596e84a5e9bd0d7237f7829058b21d5e6b67042d8aba8b7bc007135d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "monash",
+      "universityName": "Monash University",
+      "qsRank": 36,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "Monash presents NotebookLM as a standalone Google app and source-grounded research assistant available through the same Monash Gemini opt-in flow.",
+      "howToObtain": "Opt in through Monash Gemini access, then sign in with a Monash account at NotebookLM.",
+      "costToUser": "Not stated on cited public pages.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.monash.edu/ai/ai-for-students",
+          "sourceTitle": "AI for Students - Artificial intelligence at Monash",
+          "evidenceSnippet": "Notebook LM is a closed-source, source-grounded research assistant.",
+          "snapshotHash": "59916306213196fb49eabf85961a2e5e550c3ee3dbd4fc67c9e7ae6812cf3ef8",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/esolutions/ai/google-gemini",
+          "sourceTitle": "Google Gemini - eSolutions",
+          "evidenceSnippet": "You will also get access to NotebookLM, a standalone Google app.",
+          "snapshotHash": "ce61c8fe94d816f48884e9e696b147d64e43b067a5efc5593f56f7a77e9135a5",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/esolutions/ai/google-gemini",
+          "sourceTitle": "Google Gemini - eSolutions",
+          "evidenceSnippet": "You can access NotebookLM by logging in with your Monash account at notebooklm.google.com.",
+          "snapshotHash": "caf3cb00233e798117610bba0a25c53278e78a3c7dfabe734552b03fa95368a6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "monash",
+      "universityName": "Monash University",
+      "qsRank": 36,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "AI meeting assistant in Monash Zoom that can capture chat and audio to produce summaries, transcripts and action items.",
+      "howToObtain": "Use within Monash Zoom; host enables the AI Companion in meeting settings or toolbar.",
+      "costToUser": "Free of charge for Monash and affiliate staff; student pricing not stated on cited public pages.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.monash.edu/esolutions/learning-meeting-spaces/zoom-conferencing",
+          "sourceTitle": "Zoom conferencing - eSolutions",
+          "evidenceSnippet": "Zoom AI Companion is available free of charge for all Monash and affiliate staff.",
+          "snapshotHash": "c30b8ddafacad61dffd51b668354ac4df851aa226961f763fa66426392092e5d",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/zoom/zoom-ai-companion",
+          "sourceTitle": "Using Zoom AI Companion as a Monash student",
+          "evidenceSnippet": "Zoom AI Companion is an opt-in tool that captures chat and audio in meetings.",
+          "snapshotHash": "262be3395212273ee0eb5a5e77e548c14ba9184d0c75905b3748a214c812b0dc",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/student-academic-success/enhance-digital-capabilities/master-online-learning-systems/zoom/zoom-ai-companion",
+          "sourceTitle": "Using Zoom AI Companion as a Monash student",
+          "evidenceSnippet": "The meeting host controls whether AI Companion is enabled.",
+          "snapshotHash": "53edee9241666bd7799356242da00531186540b3a6b9fb48d09da80fb26e3794",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "monash",
+      "universityName": "Monash University",
+      "qsRank": 36,
+      "tool": "self_deploy",
+      "rawToolName": "ATLAS",
+      "description": "Monash-built AI platform for simulated professional or teaching scenarios, positioned as an educational platform and active research project.",
+      "howToObtain": "Access appears tied to Monash project or course participation; not presented as public self-service.",
+      "costToUser": "Not stated on cited public pages.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.monash.edu/education/research/projects/atlas",
+          "sourceTitle": "Authentic Teaching and Learning through Adaptive Simulations (ATLAS) - Monash Education",
+          "evidenceSnippet": "The ATLAS AI platform is designed to enhance teaching quality.",
+          "snapshotHash": "15cfb5a002712f995404a12d8360cf4b606378fdd72dacc385232c33c22675fd",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/education/research/projects/atlas",
+          "sourceTitle": "Authentic Teaching and Learning through Adaptive Simulations (ATLAS) - Monash Education",
+          "evidenceSnippet": "The ATLAS platform offers a unique, AI-driven simulation environment.",
+          "snapshotHash": "f4512a1fe31a702f6dc978407d1fb04b642227d9e89c072fc43b30527e0b4de4",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.monash.edu/education/research/hedi/news/atlas-ai-tool-shortlisted-for-qs-reimagine-education-awards-2024",
+          "sourceTitle": "ATLAS AI-Tool Shortlisted for QS Reimagine Education Awards 2024",
+          "evidenceSnippet": "ATLAS is described as a Monash-designed and built AI-powered educational platform.",
+          "snapshotHash": "231dae0e07c582c419b918fc00dad1d5505c00fbbc166b20b3971bc4e29151f8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "gemini",
+      "rawToolName": "Gemini",
+      "description": "Google generative AI available through ECCS Cloud Email under UTokyo’s Google Workspace environment.",
+      "howToObtain": "Use ECCS Cloud Email / UTokyo Google Workspace; some Gemini-in-Google-apps features are separate and licensed separately.",
+      "costToUser": "Base Gemini access is described as provided within the university Google Workspace arrangement; no user fee stated.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/google/gemini/",
+          "sourceTitle": "ECCSクラウドメールでのGeminiの利用について | utelecon",
+          "evidenceSnippet": "ECCSクラウドメールでは，Googleの生成AIであるGeminiを，一定の条件のもとで利用できます。",
+          "snapshotHash": "380d527858e7e5a7d1a226cacd5095a8fc98440c9af491bca8a4aefc9840e373",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/google/gemini/",
+          "sourceTitle": "ECCSクラウドメールでのGeminiの利用について | utelecon",
+          "evidenceSnippet": "東京大学のGoogle Workspaceの組織契約の中でGoogle社から無償で提供される「その他のGoogleサービス」としての利用があります。",
+          "snapshotHash": "b43bb9866c62c738aa56afde73852e59cac0efd86da878caa634a7feeed6d254",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Microsoft GPT-4-class web chat, provided to UTokyo members with commercial data protection.",
+      "howToObtain": "Go to the Microsoft Copilot chat URL and sign in with a UTokyo Account.",
+      "costToUser": "No new user fee stated.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/03-microsoft-copilot/",
+          "sourceTitle": "Microsoft Copilotによる生成AIチャットの提供について | utelecon",
+          "evidenceSnippet": "今回Microsoftのサービス変更により利用対象者が全構成員に拡大されました。",
+          "snapshotHash": "0fba5a940253c9ee29251741bcf8f753b22d1090ca4a194371597da5314a24e6",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/03-microsoft-copilot/",
+          "sourceTitle": "Microsoft Copilotによる生成AIチャットの提供について | utelecon",
+          "evidenceSnippet": "UTokyo Accountを持つ全構成員。",
+          "snapshotHash": "34b77257ced5221407fb9a1d48be2ad372d442ca95f5767ed690917165cad69f",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2024/03-microsoft-copilot/",
+          "sourceTitle": "Microsoft Copilotによる生成AIチャットの提供について | utelecon",
+          "evidenceSnippet": "既存の契約の下で提供されるため，新たな費用負担は発生しません。",
+          "snapshotHash": "5eab72689b687be37533b575aaf0a93aa8c2bd1b5ec4da6974b4ae371dd66579",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "google_ai_studio",
+      "rawToolName": "Google AI Studio",
+      "description": "Google AI Studio access was enabled for all ECCS Cloud Email users, but only within the free tier.",
+      "howToObtain": "Use an ECCS Cloud Email account; do not register a credit card for paid features.",
+      "costToUser": "Free-tier only through ECCS account use.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2025/1006_GoogleAIStudio/",
+          "sourceTitle": "Google AI StudioがECCSクラウドメールで利用可能になりました | utelecon",
+          "evidenceSnippet": "Google AI Studioについて、ECCSクラウドメールの全ユーザが利用できるように機能を解放しました。",
+          "snapshotHash": "32369a0a78ae74243e15af64866a56dd58bc6c1047dd2f385f9f1345363cd93b",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2025/1006_GoogleAIStudio/",
+          "sourceTitle": "Google AI StudioがECCSクラウドメールで利用可能になりました | utelecon",
+          "evidenceSnippet": "ただし、利用は無料の範囲内でお願いします。",
+          "snapshotHash": "02ebccd352a18a1521071b987432c0ec5e8616d12ddc3151e9b2b146a94c6aae",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "AI assistant features inside UTokyo Zoom, including in-meeting questions, summaries, and smart recording.",
+      "howToObtain": "Sign in to the UTokyo Zoom account and enable desired AI Companion features in settings.",
+      "costToUser": "No separate user fee stated.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/zoom/ai-companion/",
+          "sourceTitle": "Zoom AI Companionを使う | utelecon",
+          "evidenceSnippet": "東京大学のZoomアカウントでは，Zoomミーティング等における生成AIを活用したアシスタント機能である“Zoom AI Companion”を利用できます。",
+          "snapshotHash": "2f048b58dfc4cb0e72de90f6ade27450130f44cecdaf8f6b2fd27f2d4da2447d",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/zoom/ai-companion/",
+          "sourceTitle": "Zoom AI Companionを使う | utelecon",
+          "evidenceSnippet": "ミーティング要約：ミーティングで話し合われた内容の要約と次のステップを，AIがミーティング後に生成する機能です。",
+          "snapshotHash": "714ed381334af20c3803b6de8f6b3b7601dd53c068af8c0bdb54e9295cef107a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "Assistant tool listed by UTokyo for analyzing uploaded materials and generating summaries, organization, Q&A, and document support.",
+      "howToObtain": "Listed on UTokyo generative AI services page; UTokyo also lists it under ECCS Cloud Email / Google Workspace materials.",
+      "costToUser": "Not specified on the cited pages.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+          "sourceTitle": "生成AI関連情報 | utelecon",
+          "evidenceSnippet": "NotebookLM。GeminiのAIモデルを用いて，指定した資料等を分析させ，要約，整理，質問応答，資料作成などができる，アシスタントツールです。",
+          "snapshotHash": "6943d8dbff71124c26677e7700f9137dc9737ad6148db85f219bce68af4089ed",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/events/2025-09-10/slides/02_cloud_services.pdf",
+          "sourceTitle": "東京大学で利用可能な コミュニケーションツールとクラウドサービス",
+          "evidenceSnippet": "ECCSクラウドメール（Google Workspace） o Gemini o Google Notebook LM",
+          "snapshotHash": "8c92a0360d21c1e90003fc05a3d4a4de25a58e38c91c95d6da596fef909aae1e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "gemini",
+      "rawToolName": "Gemini for Google Workspace",
+      "description": "Gemini features inside Google Docs, Slides, and Forms for UTokyo Google Workspace users.",
+      "howToObtain": "Apply for a Google Workspace for Education Plus license matching student or staff status; after November 2, 2026, UTokyo says no application will be required.",
+      "costToUser": "No user fee stated on the cited page.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2026/0302-gemini-gws/",
+          "sourceTitle": "Googleドキュメント, Googleスライド, GoogleフォームでGeminiが使えるようになりました",
+          "evidenceSnippet": "2026年2月24日からECCSクラウドメールのアカウントを使ってGoogleドキュメント、Googleスライド、Googleフォームを利用する際にGeminiの機能にアクセスできるようになりました。",
+          "snapshotHash": "f5b34d11cc1bb24dc472de65a1575b74d0de75f64d56a8a3d66d5106bce93f3d",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/notice/2026/0302-gemini-gws/",
+          "sourceTitle": "Googleドキュメント, Googleスライド, GoogleフォームでGeminiが使えるようになりました",
+          "evidenceSnippet": "利用にあたってはGoogle Workspace for Education Plusライセンスの付加が必要になります。",
+          "snapshotHash": "61523cef5f09cb5b0a25755e3b7caca1e359187e5d85ab29c5aae25c3ef74c28",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "slack_ai",
+      "rawToolName": "Slack AI",
+      "description": "Slack AI is explicitly listed for UTokyo Slack, with basic features at roughly Pro-plan level.",
+      "howToObtain": "Use UTokyo Slack.",
+      "costToUser": "No separate user fee stated on the cited page.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+          "sourceTitle": "生成AI関連情報 | utelecon",
+          "evidenceSnippet": "UTokyo SlackにおけるSlack AI。Proプラン相当のベーシックな機能が利用可能です。",
+          "snapshotHash": "ee85a089edf78e4c8d9dd81d5810687c52e8004d2b60f38ed8b7346c0511c17b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "cisco_ai_assistant",
+      "rawToolName": "Cisco AI アシスタント",
+      "description": "Cisco AI Assistant is explicitly listed by UTokyo as an AI service in Webex.",
+      "howToObtain": "Use UTokyo Webex where available.",
+      "costToUser": "Not specified on the cited page.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+          "sourceTitle": "生成AI関連情報 | utelecon",
+          "evidenceSnippet": "WebexにおけるCisco AI アシスタント，Webex AI",
+          "snapshotHash": "bc94b4d234317b7df1d349c95960ef879410a0d41c5624bd39fc56d016388b17",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "webex_ai",
+      "rawToolName": "Webex AI",
+      "description": "Webex AI is explicitly listed by UTokyo as an AI service in Webex.",
+      "howToObtain": "Use UTokyo Webex where available.",
+      "costToUser": "Not specified on the cited page.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+          "sourceTitle": "生成AI関連情報 | utelecon",
+          "evidenceSnippet": "WebexにおけるCisco AI アシスタント，Webex AI",
+          "snapshotHash": "bc94b4d234317b7df1d349c95960ef879410a0d41c5624bd39fc56d016388b17",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "slido_ai",
+      "rawToolName": "Slido AI",
+      "description": "Slido AI is explicitly listed by UTokyo on its generative AI services page.",
+      "howToObtain": "Use UTokyo Slido / Webex-linked Slido environment.",
+      "costToUser": "Not specified on the cited page.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+          "sourceTitle": "生成AI関連情報 | utelecon",
+          "evidenceSnippet": "SlidoにおけるSlido AI",
+          "snapshotHash": "1aaf6fd40b9f3ac78971319b0498614ae700beada9530eff61b58a900fa04651",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Copilot in Teams",
+      "description": "Copilot in Teams is listed by UTokyo, but only for a limited subset of staff in a verification program.",
+      "howToObtain": "Available only to participating staff in the university business-process AI verification effort.",
+      "costToUser": "Not specified on the cited page.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+          "sourceTitle": "生成AI関連情報 | utelecon",
+          "evidenceSnippet": "Microsoft Teams(教職員のみに提供)におけるCopilot in Teams。",
+          "snapshotHash": "1d7ad2f579e74dafe094a75890f2982ca313b82e29f41c89d3ec6f39ed9ac0e9",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+          "sourceTitle": "生成AI関連情報 | utelecon",
+          "evidenceSnippet": "2026年3月現在，少人数ではありますが一定の条件のもとで検証に参加している教職員のみが利用できます。",
+          "snapshotHash": "a491840bce5ea14a38dc1c91e710de1e33580e778428137bfadc95b7c1096a24",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "azure_openai",
+      "rawToolName": "Azure OpenAI",
+      "description": "Azure OpenAI is offered through UTokyo Azure for browser and API use.",
+      "howToObtain": "Apply for a UTokyo Azure subscription; the cited page says login is limited to UTokyo Account holders and application is staff-only.",
+      "costToUser": "UTokyo Azure is university-credit-backed; per-use charges beyond free tiers are described separately in UTokyo Azure materials.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/research_computing/utokyo_azure/",
+          "sourceTitle": "UTokyo Azure | utelecon",
+          "evidenceSnippet": "OpenAI の AI システムをブラウザ経由で利用するサービスや，それをAPIで利用するサービス。",
+          "snapshotHash": "05c0fa61795a526ff89c3ceaf7d63d24918618fc40968a3b9ce1d3b342a68343",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/research_computing/utokyo_azure/ai/openai/",
+          "sourceTitle": "Azure OpenAI : UTokyo Azure 利用例 | utelecon",
+          "evidenceSnippet": "UTokyo Account 所有者のみログイン可。教職員のみ申請可。",
+          "snapshotHash": "256e838050a552338ae8052d9e04dd579286e437d18814a494489c9e96736e71",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "ai_chat_playground",
+      "rawToolName": "AI Chat Playground",
+      "description": "AI Chat Playground is explicitly listed as part of the UTokyo MATLAB Campus-Wide License offering.",
+      "howToObtain": "Use it through the UTokyo MATLAB Campus-Wide License environment.",
+      "costToUser": "Not specified on the cited page.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+          "sourceTitle": "生成AI関連情報 | utelecon",
+          "evidenceSnippet": "UTokyo MATLAB Campus-Wide LicenseにおけるAI Chat Playground",
+          "snapshotHash": "b674e2ac88f45fd85d4d8fcfc2d8d9d0d0e76446adaf669334ee6d558308d813",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "qsRank": 36,
+      "tool": "summon_research_assistant",
+      "rawToolName": "Summon Research Assistant（BETA版)",
+      "description": "Library-provided AI research assistant added to TREE for natural-language research support.",
+      "howToObtain": "Open TREE and select Summon Research Assistant; off campus, access TREE via EZproxy.",
+      "costToUser": "No separate user fee stated.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.lib.u-tokyo.ac.jp/ja/library/literacy/news/20250828",
+          "sourceTitle": "TREE新機能：生成AIツール「Summon Research Assistant（BETA版)」の提供開始 | 東京大学附属図書館",
+          "evidenceSnippet": "TREEに、生成AIツール「Summon Research Assistant（BETA版)」が追加されました。",
+          "snapshotHash": "6ec24ee5d7cf1e99c10f85aec9363919a704bf1d5f1c6ee5aa57a4e3caeb84c4",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.lib.u-tokyo.ac.jp/ja/library/literacy/news/20250828",
+          "sourceTitle": "TREE新機能：生成AIツール「Summon Research Assistant（BETA版)」の提供開始 | 東京大学附属図書館",
+          "evidenceSnippet": "TREEのトップページで「Summon Research Assistant」を選択すると利用できます。",
+          "snapshotHash": "4d76d22d4d7d6e6682e29c02fb23f982edca0627073a8be886134a30c88d08d2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "columbia",
+      "universityName": "Columbia University",
+      "qsRank": 38,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "Enterprise ChatGPT offering with Columbia-managed privacy/security controls, advanced data analysis, file/document workflows, web browsing, image generation/editing, custom GPTs, and Codex-powered agents.",
+      "howToObtain": "Request access with your Columbia UNI and chart string via Columbia ServiceNow; then log in to ChatGPT Education.",
+      "costToUser": "$300 annually per UNI via chart string.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/chatgpt-education",
+          "sourceTitle": "ChatGPT Education | Columbia University Information Technology",
+          "evidenceSnippet": "ChatGPT Edu, available to the Columbia University community, offers enterprise-grade security and data privacy, access to OpenAI's latest models, advanced data analysis, web browsing, image generation and editing, custom GPTs, and Codex-powered workspace agents.",
+          "snapshotHash": "6c2d4abab91101a00a35b2548d8409d8ce62388ae32e8b6e8a7e5365d12d6642",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/chatgpt-education",
+          "sourceTitle": "ChatGPT Education | Columbia University Information Technology",
+          "evidenceSnippet": "Pricing: $300 annually per user UNI via chart string.",
+          "snapshotHash": "c1e70ee5c16a31d757ac2dc4bb6eddaea266b42974d1231ef3c2356d31cb42af",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/chatgpt-education",
+          "sourceTitle": "ChatGPT Education | Columbia University Information Technology",
+          "evidenceSnippet": "What do I need to request access? Please provide us with your chart string and Columbia UNI to request access.",
+          "snapshotHash": "fe521942929d983fb6084bec9d598284b41bdae3a1657157b426aca0a901f024",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://provost.columbia.edu/content/office-senior-vice-provost/ai-policy",
+          "sourceTitle": "Generative AI Policy | Office of the Provost",
+          "evidenceSnippet": "The AI Team will publish a list of specific applications that have been vetted by CUIT and Procurement, and the list of these vetted Generative AI tools is posted on the AI Services website.",
+          "snapshotHash": "c36665b27d6041cef6e89b72c3711d74e1d15c30d6425ca8576a3e6c8e071ddf",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "columbia",
+      "universityName": "Columbia University",
+      "qsRank": 38,
+      "tool": "claude",
+      "rawToolName": "Claude for Education",
+      "description": "Anthropic Claude offering for teaching, learning, research, and administrative work with institutional controls, web search, file handling, analysis, coding, and image capabilities.",
+      "howToObtain": "Request access from the Columbia Claude for Education page and log in through Columbia authentication.",
+      "costToUser": "$300 annually per UNI via chart string.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/claude-education",
+          "sourceTitle": "Claude for Education | Columbia University Information Technology",
+          "evidenceSnippet": "Claude for Education is now available to the Columbia University community for teaching, learning, research, and administrative work across the university.",
+          "snapshotHash": "6d641f761d5d6fa039af4b4949dc3c71bd2d2947f1687e122754605722216fee",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/claude-education",
+          "sourceTitle": "Claude for Education | Columbia University Information Technology",
+          "evidenceSnippet": "Claude for Education is available to approved faculty and staff of the Columbia University community.",
+          "snapshotHash": "ea56bd7432f28014b2ef99c42693d6dcb40c24b0b7f264b8be9c42f26868918b",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/claude-education",
+          "sourceTitle": "Claude for Education | Columbia University Information Technology",
+          "evidenceSnippet": "Pricing: $300 annually per user UNI via chart string.",
+          "snapshotHash": "a7c76a4d76dd4e2cb19619b098b0b848a4de54ca52eed2e16ddf7a35ea71fd66",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/ai-services",
+          "sourceTitle": "AI Services | Columbia University Information Technology",
+          "evidenceSnippet": "This service is currently not available to CUIMC users as we do not have a BAA yet.",
+          "snapshotHash": "8df05f8635fb2e9f138a77ee56ae8ce9c7d90a4848ca2066e849aba677bc4245",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "columbia",
+      "universityName": "Columbia University",
+      "qsRank": 38,
+      "tool": "openai_api",
+      "rawToolName": "OpenAI API for Education",
+      "description": "Columbia-provided OpenAI API access for building apps, automating tasks, and running AI services at scale in a university-managed environment.",
+      "howToObtain": "Submit the Columbia ServiceNow request for an OpenAI API key.",
+      "costToUser": "Token-based pricing; requester sets a budget from $5 to $5,000; departmental chart string required.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/openai-api-education",
+          "sourceTitle": "OpenAI API for Education | Columbia University Information Technology",
+          "evidenceSnippet": "The OpenAI API is available to the Columbia University community with education security and privacy.",
+          "snapshotHash": "00074b886fed6f3a9d21969339d23f536a001dd148a230c08aef3cf0836d0c5c",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/openai-api-education",
+          "sourceTitle": "OpenAI API for Education | Columbia University Information Technology",
+          "evidenceSnippet": "You can use it to build apps, automate tasks, and run AI services at scale.",
+          "snapshotHash": "9dfc3e4e9a985cf90822517e763aba48533278ec32ca8cea553d407c865759e9",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/openai-api-education",
+          "sourceTitle": "OpenAI API for Education | Columbia University Information Technology",
+          "evidenceSnippet": "When requesting an OpenAI API key, you can set your budget amount, anywhere from $5 to $5,000. A departmental chart string is required.",
+          "snapshotHash": "42d1c7342f513a558b1c320367629a3a681e1b40ad754ba9379ecce438e5a73e",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/openai-api-education",
+          "sourceTitle": "OpenAI API for Education | Columbia University Information Technology",
+          "evidenceSnippet": "How can I get access to the API key? Click on the button at the top of this page that says 'Request for OpenAI API Key.'",
+          "snapshotHash": "38d1f9339857d5946440c2b97e7bd2717099f32d566f9d6fb2cadd35d91df95d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "columbia",
+      "universityName": "Columbia University",
+      "qsRank": 38,
+      "tool": "self_deploy",
+      "rawToolName": "CHAT",
+      "description": "Columbia-hosted multi-model AI chat platform powered by LibreChat, with customizable agents, file support, search/tool integrations, and spend tracking.",
+      "howToObtain": "Log in at Columbia CHAT portal with UNI credentials and request access through your school or department.",
+      "costToUser": "Paid service based on usage; official Columbia AICoP notes a default daily spend limit of 50 cents per user.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/chat",
+          "sourceTitle": "CHAT | Columbia University Information Technology",
+          "evidenceSnippet": "CHAT is Columbia University's advanced AI chat platform. It allows users to customize AI agents and can perform various language tasks.",
+          "snapshotHash": "eecdd9a2e0b74c42da51ec33031a8e84182d25f25ccad50d594537c145b06db2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/chat",
+          "sourceTitle": "CHAT | Columbia University Information Technology",
+          "evidenceSnippet": "Only UNI holders can access Chat. Users must request access, and approvals will be managed by the user's school / department.",
+          "snapshotHash": "9fa71a9733f8858b915e68439eb402d342a9fd7ce0d1b55848624e85af220b7c",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/chat",
+          "sourceTitle": "CHAT | Columbia University Information Technology",
+          "evidenceSnippet": "CHAT is a paid service based on usage. Users will have a daily usage limit in dollar amounts.",
+          "snapshotHash": "8a20283e6820460a77315d6211b40b97e426a49ab32479f9372b6c668a8f000b",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://etc.cuit.columbia.edu/AI-community-of-practice",
+          "sourceTitle": "AI: Community of Practice | Emerging Technologies",
+          "evidenceSnippet": "CHAT replaces the earlier CU-GPT service. It is a pay-as-you-go service with a default daily spend limit of 50 cents per user.",
+          "snapshotHash": "324ee2468a03098a67bd7084ccb92d776e8b796367134a187670ef5a8bc12426",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "columbia",
+      "universityName": "Columbia University",
+      "qsRank": 38,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Google's multimodal AI service in Columbia's education environment for text, images, code, web search, analysis, and research/administrative work.",
+      "howToObtain": "Use through Columbia's LionMail / Google Workspace environment; no separate request flow is stated on the cited Columbia pages.",
+      "costToUser": "Free under existing university licenses.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/google-gemini",
+          "sourceTitle": "Google Gemini | Columbia University Information Technology",
+          "evidenceSnippet": "Google Gemini is now available to the Columbia University community in a secure, education-focused environment.",
+          "snapshotHash": "02ae89def93af8045db77735b616082cb6bbc8d2d95349a64effd983ec5515ea",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://etc.cuit.columbia.edu/AI-community-of-practice",
+          "sourceTitle": "AI: Community of Practice | Emerging Technologies",
+          "evidenceSnippet": "Google Gemini and NotebookLM are now available to all active faculty, researchers, and administrators through Columbia's LionMail workspace.",
+          "snapshotHash": "b8ae948c4c9a4cb6c74e31798584024d6ad724cbf5f566c7f4e6f59eb2732a6a",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://etc.cuit.columbia.edu/AI-community-of-practice",
+          "sourceTitle": "AI: Community of Practice | Emerging Technologies",
+          "evidenceSnippet": "Gemini and NotebookLM are now part of Columbia's Google Workspace. Both tools are free to use under existing university licenses.",
+          "snapshotHash": "2d4c0571e7b9811ad8504be584ba5c60b4e0a8714416c93d404cea218b7bb1ba",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/google-gemini",
+          "sourceTitle": "Google Gemini | Columbia University Information Technology",
+          "evidenceSnippet": "Columbia says Gemini data is not used to train Google's models.",
+          "snapshotHash": "f9b44276e8b2afeec0c67b9928bf9e78258039d44f23408868ad38669f1753bf",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "columbia",
+      "universityName": "Columbia University",
+      "qsRank": 38,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "Google AI-powered research and note-taking assistant for organizing, summarizing, synthesizing, and querying user-provided documents and trusted sources.",
+      "howToObtain": "Use through Columbia's LionMail / Google Workspace environment; no separate request flow is stated on the cited Columbia pages.",
+      "costToUser": "Free under existing university licenses.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/notebooklm",
+          "sourceTitle": "NotebookLM | Columbia University Information Technology",
+          "evidenceSnippet": "NotebookLM is now available to the Columbia University community. This AI-powered research and note-taking assistant helps you organize, summarize, and synthesize information from your own documents and trusted sources.",
+          "snapshotHash": "0db288f3af52c25a5c480aafab0783bd4d4133eb07fc928d1459d9c8969a79cf",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://etc.cuit.columbia.edu/AI-community-of-practice",
+          "sourceTitle": "AI: Community of Practice | Emerging Technologies",
+          "evidenceSnippet": "Google Gemini and NotebookLM are now available to all active faculty, researchers, and administrators through Columbia's LionMail workspace.",
+          "snapshotHash": "b8ae948c4c9a4cb6c74e31798584024d6ad724cbf5f566c7f4e6f59eb2732a6a",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://etc.cuit.columbia.edu/AI-community-of-practice",
+          "sourceTitle": "AI: Community of Practice | Emerging Technologies",
+          "evidenceSnippet": "Gemini and NotebookLM are now part of Columbia's Google Workspace. Both tools are free to use under existing university licenses.",
+          "snapshotHash": "2d4c0571e7b9811ad8504be584ba5c60b4e0a8714416c93d404cea218b7bb1ba",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.cuit.columbia.edu/content/notebooklm",
+          "sourceTitle": "NotebookLM | Columbia University Information Technology",
+          "evidenceSnippet": "NotebookLM supports multi-document search and summarization for connected insights and integrates with Google Workspace tools.",
+          "snapshotHash": "6796a6ea6c2da2dbb264e6c8dcb23947c09d117ada90a71611776910f6f55aed",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "columbia",
+      "universityName": "Columbia University",
+      "qsRank": 38,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "CUIMC-approved HIPAA-compliant Microsoft Copilot enterprise access for workforce use in a secure/compliant environment.",
+      "howToObtain": "Use the CUIMC-approved enterprise version with a CUIMC-issued account.",
+      "costToUser": "Not specified on the cited Columbia page.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+          "sourceTitle": "AI and Generative Technology Use at CUIMC | CUIMC Information Technology",
+          "evidenceSnippet": "Columbia University provides access to HIPAA-compliant versions of OpenAI's ChatGPT and Microsoft Copilot.",
+          "snapshotHash": "f817a193521799bd29e433323a1fe2d36b6e86847dd867304cf6718c339bc71b",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+          "sourceTitle": "AI and Generative Technology Use at CUIMC | CUIMC Information Technology",
+          "evidenceSnippet": "Workforce members must access CUIMC-approved enterprise versions of AI tools using their CUIMC-issued accounts.",
+          "snapshotHash": "48fc0fd771a0e6a03809e80a18342298728bf4271680cad27cc5d236e77334d5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "snu",
+      "universityName": "Seoul National University",
+      "qsRank": 38,
+      "tool": "self_deploy",
+      "rawToolName": "스누AIChat",
+      "description": "SNU names this as its generative AI platform/service.",
+      "howToObtain": "Pilot access via mySNU portal per the SNU Information Systems & Technology page; also available in the SNU generative AI contest context.",
+      "costToUser": "Free in the contest FAQ; broader pilot pricing not stated in the cited pages.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ist.snu.ac.kr/author/admist/",
+          "sourceTitle": "정보화본부 - admist author archive",
+          "evidenceSnippet": "서울대학교 생성형 AI 플랫폼 \"스누AIChat\"이 오픈되었습니다. 운영대상은 재직 직원 전체이며 접속방법은 mySNU 포털입니다.",
+          "snapshotHash": "c6bf57fa31dde7e4f76ad85352230ddb9afd6956a00a4b83e7713627d11e2ead",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://contest.snu.ac.kr/",
+          "sourceTitle": "제1회 서울대학교 생성형 AI 경진대회",
+          "evidenceSnippet": "스누AIChat, 협력기관이 제공하는 마인드로직 인포미, 네이버 클로버 스튜디오는 무상으로 이용이 가능합니다.",
+          "snapshotHash": "2ddf33c14889ad0dd6933c632a7dcadb92aa6cfe4b6d49e4cc5df83d49874ef2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.snu.ac.kr/snunow/press?bbsidx=163480&md=v",
+          "sourceTitle": "생성형AI 경진대회 시상 - 서울대학교",
+          "evidenceSnippet": "각 팀은 서울대 생성형 AI 서비스(스누AIChat), 네이버 클로바 스튜디오, 마인드로직 인포미 등 협력 플랫폼을 활용했습니다.",
+          "snapshotHash": "161659f547381ee4d0d1977c5ea46ecb7fc4975bab36e6272c0a20bc1de95d92",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "snu",
+      "universityName": "Seoul National University",
+      "qsRank": 38,
+      "tool": "mindlogic_infomi",
+      "rawToolName": "마인드로직 인포미",
+      "description": "SNU explicitly names Mindlogic Infomi as a partner platform/tool available for contest use.",
+      "howToObtain": "Provided through the cooperating institution in the contest context.",
+      "costToUser": "Free in the contest FAQ.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://contest.snu.ac.kr/",
+          "sourceTitle": "제1회 서울대학교 생성형 AI 경진대회",
+          "evidenceSnippet": "스누AIChat, 협력기관이 제공하는 마인드로직 인포미, 네이버 클로버 스튜디오는 무상으로 이용이 가능합니다.",
+          "snapshotHash": "2ddf33c14889ad0dd6933c632a7dcadb92aa6cfe4b6d49e4cc5df83d49874ef2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.snu.ac.kr/snunow/press?bbsidx=163480&md=v",
+          "sourceTitle": "생성형AI 경진대회 시상 - 서울대학교",
+          "evidenceSnippet": "각 팀은 서울대 생성형 AI 서비스(스누AIChat), 네이버 클로바 스튜디오, 마인드로직 인포미 등 협력 플랫폼을 활용했습니다.",
+          "snapshotHash": "161659f547381ee4d0d1977c5ea46ecb7fc4975bab36e6272c0a20bc1de95d92",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "snu",
+      "universityName": "Seoul National University",
+      "qsRank": 38,
+      "tool": "naver_clova_studio",
+      "rawToolName": "네이버 클로버 스튜디오",
+      "description": "SNU explicitly names NAVER CLOVA Studio as a partner platform/tool available for contest use.",
+      "howToObtain": "Available in the contest context as a named collaboration platform.",
+      "costToUser": "Free in the contest FAQ.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://contest.snu.ac.kr/",
+          "sourceTitle": "제1회 서울대학교 생성형 AI 경진대회",
+          "evidenceSnippet": "스누AIChat, 협력기관이 제공하는 마인드로직 인포미, 네이버 클로버 스튜디오는 무상으로 이용이 가능합니다.",
+          "snapshotHash": "2ddf33c14889ad0dd6933c632a7dcadb92aa6cfe4b6d49e4cc5df83d49874ef2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.snu.ac.kr/snunow/press?bbsidx=163480&md=v",
+          "sourceTitle": "생성형AI 경진대회 시상 - 서울대학교",
+          "evidenceSnippet": "각 팀은 서울대 생성형 AI 서비스(스누AIChat), 네이버 클로바 스튜디오, 마인드로직 인포미 등 협력 플랫폼을 활용했습니다.",
+          "snapshotHash": "161659f547381ee4d0d1977c5ea46ecb7fc4975bab36e6272c0a20bc1de95d92",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ubc",
+      "universityName": "University of British Columbia",
+      "qsRank": 40,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT 5 (Without An Account)",
+      "description": "Generative AI chat tool that UBC allows instructors to require with caution when used without an account.",
+      "howToObtain": "Open ChatGPT without signing in; UBC says to ignore login/signup buttons.",
+      "costToUser": "Free",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.ctlt.ubc.ca/privacy-impact-assessments-for-generativeai-instructional-use-at-ubc/",
+          "sourceTitle": "Privacy Impact Assessments for GenerativeAI Instructional Use | AI In Teaching and Learning",
+          "evidenceSnippet": "ChatGPT 5 without an account is considered low risk and may be required in courses with caution.",
+          "snapshotHash": "5caf7bf935e24263815d34176213d779ba55b63057b1dda8f340ea8a40c930b1",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ai.ctlt.ubc.ca/chatgpt-without-an-account/",
+          "sourceTitle": "ChatGPT 5 (Without An Account) | AI In Teaching and Learning",
+          "evidenceSnippet": "UBC says ChatGPT 5 without an account does not require login and students should ignore login or sign-up buttons.",
+          "snapshotHash": "c353aaaaa6307dc475605abc46e4d61c094f879ba03e1029a3e33766531c68df",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ubc",
+      "universityName": "University of British Columbia",
+      "qsRank": 40,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT 5 (With An Account)",
+      "description": "Account-based ChatGPT use that UBC explicitly says must not be required in courses.",
+      "howToObtain": "Requires creating a ChatGPT account with email and phone number.",
+      "costToUser": "Not stated by UBC on the cited page.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.ctlt.ubc.ca/privacy-impact-assessments-for-generativeai-instructional-use-at-ubc/",
+          "sourceTitle": "Privacy Impact Assessments for GenerativeAI Instructional Use | AI In Teaching and Learning",
+          "evidenceSnippet": "UBC says students must not be required to sign up for or use ChatGPT 5 with an account.",
+          "snapshotHash": "0f0f20f6461cbf5efef3b089ca0cffd8b8ebf3061f8d7eb989abd6e364a47d04",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ai.ctlt.ubc.ca/chatgpt-4/",
+          "sourceTitle": "ChatGPT 5 (With An Account) | AI In Teaching and Learning",
+          "evidenceSnippet": "UBC says ChatGPT with an account requires signup and is not approved for required course use.",
+          "snapshotHash": "3e3118f8ac7f110e1f0a41b34b3110fbc2c251debd65f266ce7dcf999caf4c24",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ubc",
+      "universityName": "University of British Columbia",
+      "qsRank": 40,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot for Organizations",
+      "description": "UBC-guided Microsoft generative AI tool with privacy safeguards when used through the UBC-authenticated organizational version.",
+      "howToObtain": "Sign in at Copilot using UBC credentials; UBC also points users to Microsoft 365 access points.",
+      "costToUser": "Free / included for eligible UBC users.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.ctlt.ubc.ca/privacy-impact-assessments-for-generativeai-instructional-use-at-ubc/",
+          "sourceTitle": "Privacy Impact Assessments for GenerativeAI Instructional Use | AI In Teaching and Learning",
+          "evidenceSnippet": "Microsoft Copilot for Organizations may be recommended or required with caution for students using existing UBC credentials.",
+          "snapshotHash": "4c1d74339d6345fa90a4a06a8b81a2195d212e0eb09ca04b6445d46496681d76",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+          "sourceTitle": "Microsoft Copilot for Organizations | AI In Teaching and Learning",
+          "evidenceSnippet": "UBC says the tool is available for faculty, students, and staff and users should log in with UBC credentials.",
+          "snapshotHash": "60a22dcf3f9b4d391d90d5435d5e2f455f9a1f4679eecdf4a4ef49a8ea0f3444",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://lthub.ubc.ca/2024/09/03/what-to-know-about-working-with-gen-ai-at-ubc/",
+          "sourceTitle": "What to know about working with GenAI at UBC in September 2024 | Teaching with Technology",
+          "evidenceSnippet": "UBC says Copilot for Organizations is UBC-approved and available for free when accessed with UBC credentials.",
+          "snapshotHash": "024e96ac15fcfe81245e86e701546841358b76991f0554969255dd95f2068da3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ubc",
+      "universityName": "University of British Columbia",
+      "qsRank": 40,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom's integrated AI features at UBC, with current cited availability focused on meeting summaries.",
+      "howToObtain": "Use a UBC Zoom account and enable the feature subject to UBC terms, user guide, and institutional requirements.",
+      "costToUser": "Included within UBC campus Zoom licensing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.ubc.ca/services/teaching-learning-tools/zoom-video-conferencing",
+          "sourceTitle": "Zoom Video Conferencing | UBC IT",
+          "evidenceSnippet": "Zoom AI Meeting Summary helps generate summaries when enabled, and UBC says use is governed by its terms and requirements.",
+          "snapshotHash": "ed4ea4bc5e3d7bc701f3f14571a4228e6c30ec40116423cc9d085fdba85272b9",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://lthub.ubc.ca/guides/zoom-instructor-guide/",
+          "sourceTitle": "UBC Zoom Instructor Guide | Learning Technology Hub",
+          "evidenceSnippet": "UBC says only the Meeting Summary feature is currently available with its Zoom license.",
+          "snapshotHash": "b0bd67bd60f6e440e122968943d9c4f5c625288f2424a242d511017b559f589b",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://genai.ubc.ca/privacy-and-risk/",
+          "sourceTitle": "Privacy & Risk | Generative AI at UBC",
+          "evidenceSnippet": "UBC lists Zoom AI Companion and marks its review state as Complete.",
+          "snapshotHash": "a7f97972d8c7d18f66b50ca49bb47e643f706bd69d2e8421638e4a7485c37dd9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ubc",
+      "universityName": "University of British Columbia",
+      "qsRank": 40,
+      "tool": "notebooklm",
+      "rawToolName": "Google’s NotebookLM",
+      "description": "NotebookLM is listed in UBC's AI tools directory as a source-grounded LLM-style research assistant, but no UBC-specific access or approval model was found in the checked pages.",
+      "howToObtain": "Follow the NotebookLM link from UBC's AI tools page.",
+      "costToUser": "Not stated by UBC on the checked pages.",
+      "availability": "not_mentioned",
+      "endorsementType": "third_party_service",
+      "reviewState": "needs_review",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.ctlt.ubc.ca/tools/",
+          "sourceTitle": "Tools | AI In Teaching and Learning",
+          "evidenceSnippet": "UBC's tools page lists Google's NotebookLM and describes it as an LLM that lets you choose specific sources.",
+          "snapshotHash": "322b3d9ab7b77fa3582fa94a9f00338c84ddea5a43d3824a6e4442a83c912ffa",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ai.ctlt.ubc.ca/googles-notebook-llm/",
+          "sourceTitle": "Google’s NotebookLM | AI In Teaching and Learning",
+          "evidenceSnippet": "UBC has a dedicated NotebookLM tool page describing it as a virtual research assistant grounded in selected sources.",
+          "snapshotHash": "7bb239156dc973a5355de4f90771667954d0eb2b04a2c192520efe787e6bc2f7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}

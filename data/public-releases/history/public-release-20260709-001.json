@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260710-001",
-  "publishedAt": "2026-07-10T10:16:52Z",
-  "description": "Public release with validated QS31-40 AI tools records and the prior repaired maintenance policy updates.",
+  "releaseId": "public-release-20260709-001",
+  "publishedAt": "2026-07-08T18:14:33Z",
+  "description": "Promotes reviewed Durham University and University of Western Australia maintenance policy updates after repairing their staged OpenClaw bundles.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -805,16 +805,16 @@
     "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701",
     "staging/uapt-runs/uapt-maintenance-light-university-of-pennsylvania-20260707",
     "staging/uapt-runs/uapt-maintenance-light-durham-university-20260707",
-    "staging/uapt-runs/uapt-maintenance-light-the-university-of-western-australia-20260707",
-    "staging/uapt-runs/uapt-ai-tools-qs-31-35-20260710",
-    "staging/uapt-runs/uapt-ai-tools-qs-36-40-20260710"
+    "staging/uapt-runs/uapt-maintenance-light-the-university-of-western-australia-20260707"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
-    "This release adds validated AI tools extraction runs for QS-ranked universities 31-35 and 36-40, with tool-level claim/evidence artifacts generated from official source-backed records.",
-    "QS31-40 AI tools records include expanded taxonomy coverage for university-hosted platforms, office-suite AI products, cloud AI services, and region-specific commercial tools when explicitly named by official sources.",
-    "AI tools records are tracker-derived metadata for navigation and comparison; they do not replace official university source language.",
-    "This release preserves the repaired and validated maintenance bundles from public-release-20260709-001 in release history.",
+    "This release promotes repaired and validated maintenance bundles for Durham University and The University of Western Australia from maintenance run maintenance-2026-07-07T04-40-28-942Z.",
+    "Durham University updates cover Senate-approved GenAI policy language, assessment-use categories, programme assessment-mix guidance, staff transparency/GDPR guidance, and postgraduate research policy approval from the public DCAD page.",
+    "The University of Western Australia updates add source-specific evidence from the 2026 student AI guide PDF for the DeepSeek prohibition and expanded privacy/IP guidance about UWA staff teaching materials.",
+    "The previous public-release-20260707-001 preserved the University of Pennsylvania CETLI update and remains in history.",
+    "Duke University remains inconclusive after a DeepSeek lightweight review timeout and is not treated as either a no-change result or a policy-content update.",
+    "The remaining reviewed rows produced no-promote notes for metadata, extractor, chrome, landing-page, source-health, or discovery-lead differences rather than confirmed policy-content updates.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]

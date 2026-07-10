@@ -19,9 +19,14 @@ export const aiTools = [
   "google_workspace_studio",
   "salesforce_einstein",
   "zoom_ai_companion",
+  "openai_api",
   "mistral",
   "perplexity",
   "grammarly",
+  "slack_ai",
+  "cisco_ai_assistant",
+  "webex_ai",
+  "slido_ai",
   "synthesia",
   "read_ai",
   "turnitin_ai_detection",
@@ -57,7 +62,11 @@ export const aiTools = [
   "cnki_ai_academic",
   "cnki_ai_enhanced_search",
   "aminer_ai",
+  "mindlogic_infomi",
+  "naver_clova_studio",
   "yunsiku_humanities_qa",
+  "ai_chat_playground",
+  "summon_research_assistant",
   "scite_ai",
   "scopus_ai",
   "kimi",
@@ -344,6 +353,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     aliases: ["Zoom AI Companion"],
     category: "commercial_assistant"
   },
+  openai_api: {
+    slug: "openai_api",
+    label: "OpenAI API",
+    provider: "OpenAI",
+    aliases: ["OpenAI API", "OpenAI API for Education"],
+    category: "cloud_platform"
+  },
   mistral: {
     slug: "mistral",
     label: "Mistral",
@@ -364,6 +380,34 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     provider: "Grammarly",
     aliases: ["Grammarly", "Grammarly for Education"],
     category: "commercial_assistant"
+  },
+  slack_ai: {
+    slug: "slack_ai",
+    label: "Slack AI",
+    provider: "Slack",
+    aliases: ["Slack AI"],
+    category: "office_suite"
+  },
+  cisco_ai_assistant: {
+    slug: "cisco_ai_assistant",
+    label: "Cisco AI Assistant",
+    provider: "Cisco",
+    aliases: ["Cisco AI Assistant", "Cisco AI アシスタント"],
+    category: "office_suite"
+  },
+  webex_ai: {
+    slug: "webex_ai",
+    label: "Webex AI",
+    provider: "Cisco",
+    aliases: ["Webex AI"],
+    category: "office_suite"
+  },
+  slido_ai: {
+    slug: "slido_ai",
+    label: "Slido AI",
+    provider: "Cisco",
+    aliases: ["Slido AI"],
+    category: "office_suite"
   },
   synthesia: {
     slug: "synthesia",
@@ -610,12 +654,40 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     aliases: ["AMiner AI科研助手", "AMiner AI Research Assistant"],
     category: "china_market"
   },
+  mindlogic_infomi: {
+    slug: "mindlogic_infomi",
+    label: "Mindlogic Infomi",
+    provider: "Mindlogic",
+    aliases: ["마인드로직 인포미", "Mindlogic Infomi", "Infomi"],
+    category: "commercial_assistant"
+  },
+  naver_clova_studio: {
+    slug: "naver_clova_studio",
+    label: "NAVER CLOVA Studio",
+    provider: "NAVER",
+    aliases: ["네이버 클로버 스튜디오", "네이버 클로바 스튜디오", "NAVER CLOVA Studio", "CLOVA Studio"],
+    category: "commercial_assistant"
+  },
   yunsiku_humanities_qa: {
     slug: "yunsiku_humanities_qa",
     label: "Yun Siku Intelligent Q&A",
     provider: "Yun Siku",
     aliases: ["云四库智能问答系统", "Yun Siku Intelligent Q&A"],
     category: "china_market"
+  },
+  ai_chat_playground: {
+    slug: "ai_chat_playground",
+    label: "AI Chat Playground",
+    provider: "MathWorks",
+    aliases: ["AI Chat Playground"],
+    category: "commercial_assistant"
+  },
+  summon_research_assistant: {
+    slug: "summon_research_assistant",
+    label: "Summon Research Assistant",
+    provider: "Summon",
+    aliases: ["Summon Research Assistant", "Summon Research Assistant（BETA版)"],
+    category: "commercial_assistant"
   },
   scite_ai: {
     slug: "scite_ai",

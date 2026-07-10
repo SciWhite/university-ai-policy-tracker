@@ -1,0 +1,519 @@
+{
+  "schemaVersion": "uapt-ai-tool-records-v1",
+  "runId": "uapt-ai-tools-qs-31-35-20260710",
+  "generatedAt": "2026-07-10T00:00:00.000Z",
+  "records": [
+    {
+      "universitySlug": "kcl",
+      "universityName": "King's College London",
+      "qsRank": 31,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "King's names Microsoft Copilot as a generative AI text tool available through KCL Microsoft login, subject to academic-integrity and assessment-level rules.",
+      "howToObtain": "Log in with KCL Microsoft credentials; King's says students should use their KCL account.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+          "sourceTitle": "Generative AI: student guidance | King's College London",
+          "evidenceSnippet": "Microsoft Copilot is listed under text generation, and the page says it is available to all King's students with KCL Microsoft login credentials.",
+          "snapshotHash": "3ab0c2e31e3fe985387c835a30b89751dc2b70e13817a6336c296a4474355531",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/micro-level",
+          "sourceTitle": "Micro-level: GTAs/teachers/lecturers/PhD Supervisors | King's College London",
+          "evidenceSnippet": "Staff are told to try Microsoft Copilot and to log into their KCL account for protected search and increased data security.",
+          "snapshotHash": "6e92ca8ab77f291d6641027b60fe01b156b60f281dd3c5a0d8e301c4268a5538",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/doctoral-assessment",
+          "sourceTitle": "Generative AI: Guidance for doctoral students, supervisors and examiners | King's College London",
+          "evidenceSnippet": "King's says Copilot used while logged into a King's Microsoft account will not store or use inputs in that way, reducing some privacy risks.",
+          "snapshotHash": "69fec0f5f9b9d8e1a61f64f65172b9f0adbd9e7e42de032fad66bbef836eb832",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kcl",
+      "universityName": "King's College London",
+      "qsRank": 31,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT",
+      "description": "King's explicitly names ChatGPT as a generative AI tool students and staff may use within local assessment rules and acknowledgement requirements.",
+      "howToObtain": "Use the public ChatGPT service; King's does not describe a university procurement path.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+          "sourceTitle": "Generative AI: student guidance | King's College London",
+          "evidenceSnippet": "The student guidance lists ChatGPT as a text-generation tool and says King's does not ban any type of AI.",
+          "snapshotHash": "31d9e900d202bb4283d9e702d62796da1bce2a660b1322d344a4232bd58ce0c6",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/micro-level",
+          "sourceTitle": "Micro-level: GTAs/teachers/lecturers/PhD Supervisors | King's College London",
+          "evidenceSnippet": "Staff are advised to experiment with free versions such as ChatGPT, alongside Gemini and Claude AI.",
+          "snapshotHash": "74fa7c2dc1a952f8a97b9d8c927bbe34d830dc4a6f09fa9e9e705d19683cd592",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/macro-level",
+          "sourceTitle": "Macro-level guidance: University-wide principles and policy | King's College London",
+          "evidenceSnippet": "King's warns staff not to use unsupported tools such as ChatGPT to scrutinise student work without explicit permission.",
+          "snapshotHash": "a0be82e57e0927087bf0efe1231b52f69f28507364c57ea2e1b1a2be085aa489",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kcl",
+      "universityName": "King's College London",
+      "qsRank": 31,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "King's explicitly names Google Gemini as a generative AI tool that may be used within assessment guidance and academic-integrity expectations.",
+      "howToObtain": "Use the public Google Gemini service; King's references free versions rather than a campus license.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/student-guidance",
+          "sourceTitle": "Generative AI: student guidance | King's College London",
+          "evidenceSnippet": "The student guidance lists Google Gemini among text-generation tools and says King's does not ban AI use.",
+          "snapshotHash": "1cd1566758ce2572e46c91f2f0839687267150e672508fe8a931cb141b00b77a",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/micro-level",
+          "sourceTitle": "Micro-level: GTAs/teachers/lecturers/PhD Supervisors | King's College London",
+          "evidenceSnippet": "Staff are told to experiment with free versions such as Google Gemini, ChatGPT, and Claude AI.",
+          "snapshotHash": "f0cd2ee0bcad42c4f82c390f692b5d7c3d870bc1aeaca36e928119f06ae6b7bb",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/macro-level",
+          "sourceTitle": "Macro-level guidance: University-wide principles and policy | King's College London",
+          "evidenceSnippet": "King's expects students to acknowledge use of tools such as Microsoft Copilot, Google Gemini, or ChatGPT.",
+          "snapshotHash": "d4bf9312fd37b2b594fd89d444f62b488f20817aed77043e070b40a0bf5b4395",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kcl",
+      "universityName": "King's College London",
+      "qsRank": 31,
+      "tool": "claude",
+      "rawToolName": "Claude AI",
+      "description": "King's explicitly names Claude AI alongside mainstream generative AI tools; use is framed as permissible but subject to teaching, assessment, and integrity constraints.",
+      "howToObtain": "Use the public Claude service; King's references free versions and does not mention institutional procurement.",
+      "costToUser": "Not specified",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/micro-level",
+          "sourceTitle": "Micro-level: GTAs/teachers/lecturers/PhD Supervisors | King's College London",
+          "evidenceSnippet": "Staff are advised to experiment with free versions such as Google Gemini, ChatGPT, and Claude AI.",
+          "snapshotHash": "0c0e593651d54b3249af900848a15fb52a9229ecf69cc133338e27f166c5cbaf",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.kcl.ac.uk/about/strategy/learning-and-teaching/ai-guidance/meso-level",
+          "sourceTitle": "Meso-level guidance: departments, programmes and modules | King's College London",
+          "evidenceSnippet": "King's says tools such as ChatGPT, Google Gemini, Microsoft Copilot, and Claude AI were not developed by higher education providers.",
+          "snapshotHash": "e708138e330e08e12ac119edf44623c10ccf94e1d94d358c1e06d191e2a1149c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "anu",
+      "universityName": "Australian National University (ANU)",
+      "qsRank": 32,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot Enterprise",
+      "description": "ANU officially supports Microsoft Copilot as a generative AI chatbot/productivity assistant for drafting, summarising, generating insights, and image/text tasks.",
+      "howToObtain": "Sign in with an ANU account via the Microsoft 365 Applications Portal or directly at copilot.microsoft.com; ANU also points users to ANUConnect for support.",
+      "costToUser": "Free to ANU staff and students when accessed with an ANU account.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://services.anu.edu.au/information-technology/software-systems/microsoft-copilot-ai",
+          "sourceTitle": "Microsoft Copilot AI | Services",
+          "evidenceSnippet": "Microsoft Copilot is supported at ANU.",
+          "snapshotHash": "69ac0bfe95a59600f62971955f1b1151d23fe74647d064cbbfbe47ddc59a44c9",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+          "sourceTitle": "FAQs about AI - ANU Learning and Teaching",
+          "evidenceSnippet": "ANU says Microsoft Copilot is available for all ANU staff and students.",
+          "snapshotHash": "ce02b2bd360ac0a44c431f016cec40757dd71a3d7aec3ad75790562b3fae0520",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://learningandteaching.anu.edu.au/resources/how-to-access-and-use-microsoft-copilot/",
+          "sourceTitle": "How to access and use Microsoft Copilot - ANU Learning and Teaching",
+          "evidenceSnippet": "ANU says users should sign in with their ANU uID account to access Microsoft Copilot.",
+          "snapshotHash": "fd2109063112d4e0dfc418fcbd76dd26a15a108e243eb135b402861c814bdc7c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "anu",
+      "universityName": "Australian National University (ANU)",
+      "qsRank": 32,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly",
+      "description": "ANU officially provides Adobe Firefly as a generative AI image tool for text-to-image creation and image editing tasks.",
+      "howToObtain": "Sign in at firefly.adobe.com using an ANU uID account; staff have enterprise access, and some students in specific courses/disciplines also have access.",
+      "costToUser": "Free where ANU access is provided; staff are covered, while student access is limited to some courses/disciplines.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://learningandteaching.anu.edu.au/resources/artificial-intelligence-faqs/",
+          "sourceTitle": "FAQs about AI - ANU Learning and Teaching",
+          "evidenceSnippet": "ANU says staff have Adobe Firefly access and some students from specific courses and disciplines have access.",
+          "snapshotHash": "00b05fa99b647913f6714393bbc556825fb6894764002a10a814694e350b528c",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://learningandteaching.anu.edu.au/resources/how-to-access-and-use-adobe-firefly/",
+          "sourceTitle": "How to access and use Adobe Firefly - ANU Learning and Teaching",
+          "evidenceSnippet": "ANU describes Adobe Firefly as a generative AI image tool.",
+          "snapshotHash": "16e285c101b84b0f64938bf3cc46eb4a6a409a48367c7a388d338860fba70092",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.anu.edu.au/students/academic-skills/referencing-and-academic-integrity/academic-integrity-best-practice/guide",
+          "sourceTitle": "Guide for students: best practice when using Generative AI | Australian National University",
+          "evidenceSnippet": "ANU guidance says Adobe Firefly is available for ANU staff and students through enterprise licences.",
+          "snapshotHash": "a89c950678919df7fbcf2f76843fb1a125d7567e2e411855551744ecf6daac62",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "cuhk",
+      "universityName": "The Chinese University of Hong Kong (CUHK)",
+      "qsRank": 32,
+      "tool": "self_deploy",
+      "rawToolName": "CUHK AI Chatbot for Teaching Support",
+      "description": "CUHK-operated chatbot under the Pilot ChatGPT (& AI) Service for teaching support, with ChatGPT-based chat and image generation.",
+      "howToObtain": "Apply through the CUHK web form linked on the service page; justification and use cases are required.",
+      "costToUser": "Not stated as free; departmental/faculty/unit over-quota usage may incur charges.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://help.edtech.cuhk.edu.hk/docs/pilot-chatgpt-service-for-teaching-and-learning",
+          "sourceTitle": "Pilot ChatGPT (& AI) Service for Teaching and Learning | CUHK EdTech",
+          "evidenceSnippet": "CUHK AI Chatbot for Teaching Support is for teachers, TAs, and RPg students; prior application is required and access is restricted to CUHK network.",
+          "snapshotHash": "8493905657ee2c68104d87dd2cca7d62b48b38616bbf6cc93e821f9e38883a92",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://help.edtech.cuhk.edu.hk/docs/pilot-chatgpt-service-for-teaching-and-learning",
+          "sourceTitle": "Pilot ChatGPT (& AI) Service for Teaching and Learning | CUHK EdTech",
+          "evidenceSnippet": "The current version says the ChatGPT chatbot employs the gpt-3.5-turbo model and its image generation is under the DALL-E shortcut.",
+          "snapshotHash": "730fc953a67f11c332107bc1f3e213f7dbd4b9b8a114d9a7186e10956c11fa8d",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://cloud.itsc.cuhk.edu.hk/webform/view.php?id=13667353",
+          "sourceTitle": "Pilot ChatGPT (& AI) Service Application Form for Teaching Support",
+          "evidenceSnippet": "Official CUHK application form says the form is only for CUHK members.",
+          "snapshotHash": "3621e7cb03e47c9549ebf670a1b587d688c015bad7e5483e9b287a2a5c6eba33",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "cuhk",
+      "universityName": "The Chinese University of Hong Kong (CUHK)",
+      "qsRank": 32,
+      "tool": "self_deploy",
+      "rawToolName": "CUHK AI Chatbot for Learning Support",
+      "description": "CUHK-operated chatbot service for student learning activities under teacher approval within the Pilot ChatGPT (& AI) Service.",
+      "howToObtain": "Teachers or TAs request enablement for classes via the linked CUHK application form; individual students need teacher approval.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://help.edtech.cuhk.edu.hk/docs/pilot-chatgpt-service-for-teaching-and-learning",
+          "sourceTitle": "Pilot ChatGPT (& AI) Service for Teaching and Learning | CUHK EdTech",
+          "evidenceSnippet": "The page names CUHK AI Chatbot for Learning Support for students approved by teachers.",
+          "snapshotHash": "a943daac9d0c0c3ee5383920584cbe459921d8223783f9e71c614d993432ebd6",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://help.edtech.cuhk.edu.hk/docs/pilot-chatgpt-service-for-teaching-and-learning",
+          "sourceTitle": "Pilot ChatGPT (& AI) Service for Teaching and Learning | CUHK EdTech",
+          "evidenceSnippet": "It says teachers and TAs can apply to enable the service for classes, and applications from individual students will only be considered with teachers' approval.",
+          "snapshotHash": "c2583a8dc651ad3cde204c9d1bc022de170e850dab30959fe22aaa0f47177667",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "cuhk",
+      "universityName": "The Chinese University of Hong Kong (CUHK)",
+      "qsRank": 32,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat (Basic)",
+      "description": "Browser-based AI chat service with CUHK sign-in and enterprise data protection guidance.",
+      "howToObtain": "Sign in through CUHK Microsoft 365 in a web browser with CUHK credentials and DUO.",
+      "costToUser": "Free under current Microsoft 365 licenses.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-copilot-for-the-web/",
+          "sourceTitle": "Microsoft Copilot Chat (Basic) | CUHK Information Technology Services Centre",
+          "evidenceSnippet": "CUHK states Microsoft Copilot Chat (Basic) is an AI-powered productivity tool and says it is available to all students and staff.",
+          "snapshotHash": "abb2573eadb459406649314f406f70d7b52b9a5f1873fc532bc3b21f6b8d7803",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-copilot-for-the-web/",
+          "sourceTitle": "Microsoft Copilot Chat (Basic) | CUHK Information Technology Services Centre",
+          "evidenceSnippet": "CUHK lists the service charge as free, provided under current Microsoft 365 licenses, and gives browser sign-in steps via CUHK M365.",
+          "snapshotHash": "10f7e2b93b4c389856511d8882bae9f884033c0acf8bb7083d50632cf945f95e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "cuhk",
+      "universityName": "The Chinese University of Hong Kong (CUHK)",
+      "qsRank": 32,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "M365 Copilot (Premium)",
+      "description": "Paid Microsoft 365 Copilot service integrated with Word, Excel, PowerPoint, Outlook, Teams, and organizational data.",
+      "howToObtain": "Apply through the CUHK departmental subscription/application route, then access through the CUHK Microsoft 365 portal.",
+      "costToUser": "Charged; application required.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-365-copilot/",
+          "sourceTitle": "M365 Copilot (Premium) | CUHK Information Technology Services Centre",
+          "evidenceSnippet": "CUHK says M365 Copilot (Premium) is an AI-powered productivity tool integrating with Word, Excel, PowerPoint, Outlook, Teams, and more.",
+          "snapshotHash": "47932a57b5215916dc64951294b7f9a44a47d875023d428396f8d4fd48c0e48d",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.itsc.cuhk.edu.hk/all-it/email-messaging-and-collaboration/microsoft-365-copilot/",
+          "sourceTitle": "M365 Copilot (Premium) | CUHK Information Technology Services Centre",
+          "evidenceSnippet": "The service is available to all staff, project accounts and departmental accounts and is charged; application required.",
+          "snapshotHash": "91c644fe3198f97662f35e43d9f113ef1e7bc50d7a0adc29355c6a95900c3768",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "edinburgh",
+      "universityName": "The University of Edinburgh",
+      "qsRank": 34,
+      "tool": "self_deploy",
+      "rawToolName": "ELM (Edinburgh access to Language Models)",
+      "description": "The University of Edinburgh AI platform and secure gateway to multiple generative AI models.",
+      "howToObtain": "Access through the University ELM service; student guidance says all University of Edinburgh students have access.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm",
+          "sourceTitle": "ELM | Computing | Information Services",
+          "evidenceSnippet": "ELM is the University of Edinburgh's AI innovation platform, a central gateway providing safer access to Generative Artificial Intelligence.",
+          "snapshotHash": "27a61155bfb3f34bb78491090788a338797e84e8839b2cea6420c61a0dbb11d0",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/generative-ai-guidance-for-students/using-generative",
+          "sourceTitle": "Using generative AI in your studies: guidelines for students | Computing | Information Services",
+          "evidenceSnippet": "All University of Edinburgh students have free access to ELM, which offers a secure gateway to a range of generative AI models.",
+          "snapshotHash": "440d9f3a7f858ba438eb192ca998e34619730687588ea93f231b395f3723afc1",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/elm/elm-competence-centre/introduction-to-elm",
+          "sourceTitle": "Introduction to ELM | Computing | Information Services",
+          "evidenceSnippet": "ELM can assist all staff and students and is free to use for all staff and students.",
+          "snapshotHash": "9e77c644adfd610abc1b917d5c4473ba6b19fc551f037d6b4ace1db295ebb307",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "edinburgh",
+      "universityName": "The University of Edinburgh",
+      "qsRank": 34,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Official Edinburgh pages state students can access Microsoft Copilot through their University Microsoft account, and central IT documents available Copilot instances.",
+      "howToObtain": "Use your University Microsoft account; central IT says Edge Copilot chat is available by signing into Microsoft Edge with University credentials.",
+      "costToUser": "Free",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://teaching.maths.ed.ac.uk/undergraduate/studies/equipment",
+          "sourceTitle": "Technology and equipment | School of Mathematics Teaching",
+          "evidenceSnippet": "All University of Edinburgh students can access Microsoft Copilot through their University Microsoft account.",
+          "snapshotHash": "5052c90b4e67a6405eae4c9e79256ec18fccbfb657665d6497016508a7e7d1e0",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/ai-microsoft-365",
+          "sourceTitle": "AI in Microsoft 365 | Computing | Information Services",
+          "evidenceSnippet": "Currently, you can access the following Copilot instances: Copilot chat service within Edge.",
+          "snapshotHash": "9cb9a2b20b0b4ac3b24f17982f0c37fb9becb1bfad6e3a93f1ecb6198b96d677",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://information-services.ed.ac.uk/computing/comms-and-collab/ai-microsoft-365",
+          "sourceTitle": "AI in Microsoft 365 | Computing | Information Services",
+          "evidenceSnippet": "You can access this by signing into the Microsoft Edge browser with your University credentials.",
+          "snapshotHash": "fc40615ce78249854dc27364bfb42a3e95c33d4b76f6a9a48fba98bc3a0c5c67",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "manchester",
+      "universityName": "The University of Manchester",
+      "qsRank": 35,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "Microsoft 365 Copilot is presented as the University-wide AI suite for learning, research, and professional work.",
+      "howToObtain": "Receive access through the University Microsoft 365 Copilot rollout and associated training.",
+      "costToUser": "Included via a University licence; no personal purchase is stated on the cited pages.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+          "sourceTitle": "Approved Tools | AI Hub | StaffNet | The University of Manchester",
+          "evidenceSnippet": "65,000 colleagues and students will benefit from the full Microsoft 365 Copilot suite.",
+          "snapshotHash": "66bde5d4bce5084c9715482e71f1c14ed0cc8629b7ffbeefef76424d9e8a329d",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.manchester.ac.uk/about/news/world-first-ai-partnership-between-the-university-of-manchester-and-microsoft-announced/",
+          "sourceTitle": "World-first AI partnership between The University of Manchester and Microsoft announced",
+          "evidenceSnippet": "The University of Manchester becomes first university in the world to provide Microsoft 365 Copilot access and training to all students and staff.",
+          "snapshotHash": "edde345009bd4178d3645ed722bfd089c81efbbe0aac27a6609f9d277792ca4d",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://documents.manchester.ac.uk/display.aspx?DocID=79331",
+          "sourceTitle": "AI in Teaching and Learning Policy",
+          "evidenceSnippet": "University of Manchester Microsoft 365 Copilot access: This is the University licence for Microsoft Copilot.",
+          "snapshotHash": "8df520ea71bf0046e47854f34b4e843089c3d2efaf623f66e38c7a9101833e30",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "manchester",
+      "universityName": "The University of Manchester",
+      "qsRank": 35,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot Chat",
+      "description": "Copilot Chat is the University-approved conversational AI assistant for day-to-day work, accessible on the web or in Microsoft Teams.",
+      "howToObtain": "Log in with a University account and access it via web browser or Microsoft Teams.",
+      "costToUser": "Free for staff on managed computers; no personal purchase is indicated on the cited pages.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.itservices.manchester.ac.uk/ourservices/microsoft365/copilot/",
+          "sourceTitle": "Copilot | IT Services | The University of Manchester",
+          "evidenceSnippet": "Copilot Chat is available to everyone at the University of Manchester.",
+          "snapshotHash": "d395b381518a40dd7f2e611c8c991ad441a3b321fb262a736c9d744887ca03ec",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+          "sourceTitle": "Approved Tools | AI Hub | StaffNet | The University of Manchester",
+          "evidenceSnippet": "Copilot Chat is an AI-powered assistant available to everyone with a University account and accessible via a web browser or within Microsoft Teams.",
+          "snapshotHash": "1b5fdd0d8a8ea9e9919f06bc78570f14d646edb8dc57a6baa56af344501031f8",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.staffnet.manchester.ac.uk/seed/news-and-events/news/display/?id=33240",
+          "sourceTitle": "Using generative AI tools and resources | StaffNet | The University of Manchester",
+          "evidenceSnippet": "CoPilot Chat is free and available to all University staff on managed computers.",
+          "snapshotHash": "9b92920b08f0d16932df87ce0357e0452e449d3ae86643c4051274c410b20703",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "manchester",
+      "universityName": "The University of Manchester",
+      "qsRank": 35,
+      "tool": "self_deploy",
+      "rawToolName": "NebulaONE",
+      "description": "NebulaONE is an AI toolbox in the University cloud for creating custom AI agents with governance and no-code tooling.",
+      "howToObtain": "Request early access via the Nebula One Request Form mentioned on the AI Hub page.",
+      "costToUser": "Not stated on the cited pages.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+          "sourceTitle": "Approved Tools | AI Hub | StaffNet | The University of Manchester",
+          "evidenceSnippet": "NebulaONE is an AI toolbox built within UoM’s cloud environment. It uses market-leading models to help you create custom AI agents, no coding required.",
+          "snapshotHash": "21bcedfe435f1314a85f680acda2044da9cbf56b50c5ac5e5fcda10945bf2c72",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/",
+          "sourceTitle": "Approved Tools | AI Hub | StaffNet | The University of Manchester",
+          "evidenceSnippet": "The University says it recently started onboarding early adopters to test the NebulaONE AI system.",
+          "snapshotHash": "6d69f7620dc46776aa966cb75451efd90bed889882e204fe07edc36baebbbd30",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/news/display/?id=33933",
+          "sourceTitle": "Sign up for Greater Manchester AI Day! | StaffNet | The University of Manchester",
+          "evidenceSnippet": "Manchester describes nebulaONE as an AI platform built on Microsoft Azure.",
+          "snapshotHash": "b2773d79eb4b6ca93d500d7bd14db7826d7c0cd691610b352b1713614277559a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
