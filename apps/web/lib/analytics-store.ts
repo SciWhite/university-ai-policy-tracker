@@ -70,14 +70,77 @@ export async function recordMirroredAnalyticsEvent(
 }
 
 export async function listMirroredAnalyticsEvents(
-  since: Date
+  since: Date,
+  options: { excludeBots?: boolean } = {}
 ): Promise<AnalyticsEventRow[]> {
   if (hasSupabaseAnalyticsStore()) {
-    return listSupabaseAnalyticsEvents(since);
+    return listSupabaseAnalyticsEvents(since, options);
   }
 
   if (!process.env.DATABASE_URL) return [];
   return listAnalyticsEvents(since);
+}
+
+export interface AnalyticsStoreRollup {
+  behavior?: Array<{ label: string; rate: number; sessions: number }>;
+  botPageViews: number;
+  botTrend: Array<{ label: string; pageViews: number }>;
+  devices?: Array<{ label: string; pageViews: number; visitors: number }>;
+  geo?: Array<{ label: string; pageViews: number; visitors: number }>;
+  humanPageViews: number;
+  latestEventAt?: string;
+  recent?: Array<{
+    createdAt: string;
+    eventName: string;
+    pathname: string;
+    source: string;
+  }>;
+  sources?: Array<{ label: string; pageViews: number; visitors: number }>;
+  totals?: {
+    bounceRate: number;
+    engagedSessions: number;
+    events: number;
+    pageViews: number;
+    sessions: number;
+    visitors: number;
+  };
+  trend?: Array<{
+    events: number;
+    label: string;
+    pageViews: number;
+    sessions: number;
+    visitors: number;
+  }>;
+  unknownSourcePageViews: number;
+}
+
+export async function getMirroredAnalyticsRollup(input: {
+  countries: string[];
+  devices: string[];
+  from: string;
+  grain: "day" | "month" | "week";
+  locales: string[];
+  sources: string[];
+  to: string;
+}): Promise<AnalyticsStoreRollup | null> {
+  if (!hasSupabaseAnalyticsStore()) return null;
+  try {
+    return await callSupabaseRpc<AnalyticsStoreRollup>(
+      "uapt_private_analytics_rollup",
+      {
+        p_countries: input.countries,
+        p_devices: input.devices,
+        p_from: input.from,
+        p_grain: input.grain,
+        p_locales: input.locales,
+        p_secret: process.env.SUPABASE_ANALYTICS_SECRET,
+        p_sources: input.sources,
+        p_to: input.to
+      }
+    );
+  } catch {
+    return null;
+  }
 }
 
 function hasSupabaseAnalyticsStore(): boolean {
@@ -124,7 +187,8 @@ const SUPABASE_ANALYTICS_PAGE_SIZE = 1000;
 const SUPABASE_ANALYTICS_MAX_ROWS = 20000;
 
 async function listSupabaseAnalyticsEvents(
-  since: Date
+  since: Date,
+  options: { excludeBots?: boolean }
 ): Promise<AnalyticsEventRow[]> {
   const rows: SupabaseAnalyticsEventRow[] = [];
 
@@ -133,7 +197,7 @@ async function listSupabaseAnalyticsEvents(
     offset < SUPABASE_ANALYTICS_MAX_ROWS;
     offset += SUPABASE_ANALYTICS_PAGE_SIZE
   ) {
-    const page = await listSupabaseAnalyticsEventsPage(since, offset);
+    const page = await listSupabaseAnalyticsEventsPage(since, offset, options);
     rows.push(...page);
     if (page.length < SUPABASE_ANALYTICS_PAGE_SIZE) break;
   }
@@ -150,36 +214,20 @@ async function listSupabaseAnalyticsEvents(
 
 async function listSupabaseAnalyticsEventsPage(
   since: Date,
-  offset: number
+  offset: number,
+  options: { excludeBots?: boolean }
 ): Promise<SupabaseAnalyticsEventRow[]> {
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_ANON_KEY;
-  if (!url || !key) {
-    throw new Error("Supabase analytics store is not configured");
-  }
-
-  const requestUrl = new URL(`${url}/rest/v1/analytics_events`);
-  requestUrl.searchParams.set("select", "*");
-  requestUrl.searchParams.set("created_at", `gte.${since.toISOString()}`);
-  requestUrl.searchParams.set("order", "created_at.desc,id.desc");
-
-  const response = await fetch(requestUrl, {
-    cache: "no-store",
-    headers: {
-      apikey: key,
-      authorization: `Bearer ${key}`,
-      Range: `${offset}-${offset + SUPABASE_ANALYTICS_PAGE_SIZE - 1}`
+  return callSupabaseRpc<SupabaseAnalyticsEventRow[]>(
+    "uapt_list_analytics_events_window",
+    {
+      p_exclude_bots: Boolean(options.excludeBots),
+      p_limit: SUPABASE_ANALYTICS_PAGE_SIZE,
+      p_offset: offset,
+      p_secret: process.env.SUPABASE_ANALYTICS_SECRET,
+      p_since: since.toISOString(),
+      p_until: new Date(Date.now() + 60_000).toISOString()
     }
-  });
-
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(
-      `Supabase analytics table read failed: ${response.status} ${text}`
-    );
-  }
-
-  return (await response.json()) as SupabaseAnalyticsEventRow[];
+  );
 }
 
 function mapSupabaseAnalyticsRow(

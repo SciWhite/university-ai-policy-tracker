@@ -91,7 +91,8 @@ const ANALYTICS_TIME_ZONE = "America/Toronto";
 export function buildPrivateAnalyticsSummary(
   rows: AnalyticsEventRow[],
   since: Date,
-  period: AnalyticsPeriod = "day"
+  period: AnalyticsPeriod = "day",
+  until: Date = new Date()
 ): PrivateAnalyticsSummary {
   const pageViewRows = rows.filter((row) => row.eventName === "page_view");
   const eventCounts = countBy(rows, (row) => row.eventName);
@@ -125,7 +126,7 @@ export function buildPrivateAnalyticsSummary(
     devices: buildDeviceRows(rows, pageViewRows),
     engagedSessions,
     events: rows.length,
-    funnel: buildFunnel(eventCounts, pageViewRows.length),
+    funnel: buildBehaviorRates(rows, sessions),
     pageViews: pageViewRows.length,
     period,
     recent: rows.slice().reverse().slice(0, 30),
@@ -141,7 +142,7 @@ export function buildPrivateAnalyticsSummary(
     topLandingPages: toCountRows(landingCounts),
     topLanguages: toCountRows(languageCounts),
     topPages: toCountRows(pageCounts),
-    trend: buildPeriodSeries(rows, since, period),
+    trend: buildPeriodSeries(rows, since, period, until),
     visitors,
     visitorSourceMix: sourceRows
       .slice()
@@ -163,6 +164,18 @@ export function isBotAnalyticsRow(row: AnalyticsEventRow): boolean {
 
 export function getAnalyticsRowSourceName(row: AnalyticsEventRow): string {
   return getRowSourceName(row);
+}
+
+export function getAnalyticsRowSourceCategory(row: AnalyticsEventRow): string {
+  return getRowSourceCategory(row);
+}
+
+export function getAnalyticsRowLocale(row: AnalyticsEventRow): string {
+  return normalizeLocale(row.locale);
+}
+
+export function getAnalyticsRowDeviceType(row: AnalyticsEventRow): string {
+  return normalizeDeviceType(row.deviceType);
 }
 
 function buildSessionStats(rows: AnalyticsEventRow[]) {
@@ -412,7 +425,8 @@ function buildDeviceRows(
 function buildPeriodSeries(
   rows: AnalyticsEventRow[],
   since: Date,
-  period: AnalyticsPeriod
+  period: AnalyticsPeriod,
+  until: Date
 ): PrivateAnalyticsTrendRow[] {
   const buckets = new Map<
     string,
@@ -424,7 +438,7 @@ function buildPeriodSeries(
       visitors: Set<string>;
     }
   >();
-  const end = new Date();
+  const end = until;
   for (
     let cursor = new Date(since);
     cursor.getTime() <= end.getTime();
@@ -464,50 +478,50 @@ function buildPeriodSeries(
   }));
 }
 
-function buildFunnel(
-  eventCounts: Array<{ count: number; label: string }>,
-  pageViewCount: number
+function buildBehaviorRates(
+  rows: AnalyticsEventRow[],
+  sessionCount: number
 ): PrivateAnalyticsFunnelRow[] {
-  const searchSubmit = getCount(eventCounts, "search_submit");
-  const resultClick =
-    getCount(eventCounts, "search_result_record_click") +
-    getCount(eventCounts, "autocomplete_result_click");
-  const citationCopy = getCount(eventCounts, "citation_copy");
-  const recordOpen =
-    getCount(eventCounts, "record_canonical_click") +
-    getCount(eventCounts, "record_public_json_click") +
-    getCount(eventCounts, "official_source_click");
-  const apiDiscovery =
-    getCount(eventCounts, "api_link_click") +
-    getCount(eventCounts, "autocomplete_json_click");
-
-  return [
+  const stages = [
     {
-      count: searchSubmit,
-      label: "Search submits",
-      share: 1
+      events: new Set(["search_submit"]),
+      label: "Search submits"
     },
     {
-      count: resultClick,
-      label: "Result clicks",
-      share: shareOf(resultClick, searchSubmit)
+      events: new Set(["search_result_record_click", "autocomplete_result_click"]),
+      label: "Result clicks"
     },
     {
-      count: recordOpen,
-      label: "Record / source opens",
-      share: shareOf(recordOpen, resultClick || searchSubmit)
+      events: new Set([
+        "record_canonical_click",
+        "record_public_json_click",
+        "official_source_click"
+      ]),
+      label: "Record / source opens"
     },
     {
-      count: citationCopy,
-      label: "Citation copies",
-      share: shareOf(citationCopy, recordOpen || resultClick || searchSubmit)
+      events: new Set(["citation_copy"]),
+      label: "Citation copies"
     },
     {
-      count: apiDiscovery,
-      label: "API / JSON discovery",
-      share: shareOf(apiDiscovery, pageViewCount)
+      events: new Set(["api_link_click", "autocomplete_json_click"]),
+      label: "API / JSON discovery"
     }
   ];
+
+  return stages.map((stage) => {
+    const sessions = new Set<string>();
+    for (const row of rows) {
+      if (!stage.events.has(row.eventName)) continue;
+      const sessionKey = row.sessionId ?? row.visitorId;
+      if (sessionKey) sessions.add(sessionKey);
+    }
+    return {
+      count: sessions.size,
+      label: stage.label,
+      share: shareOf(sessions.size, sessionCount)
+    };
+  });
 }
 
 function countBy<T>(

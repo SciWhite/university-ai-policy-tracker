@@ -23,10 +23,8 @@ const themeInitScript = `
 
 export function ThemeScript() {
   return (
-    <Script
-      dangerouslySetInnerHTML={{ __html: themeInitScript }}
-      id="uapt-theme-init"
-      strategy="beforeInteractive"
-    />
+    <Script id="uapt-theme-init" strategy="beforeInteractive">
+      {themeInitScript}
+    </Script>
   );
 }

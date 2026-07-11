@@ -23,6 +23,7 @@
     "smoke:analysis-pages": "tsx scripts/smoke-analysis-pages.ts",
     "smoke:entity-search": "tsx scripts/smoke-entity-search.ts",
     "smoke:source-diffs": "tsx scripts/smoke-source-diff-candidates.ts",
+    "smoke:private-analytics": "tsx --tsconfig apps/web/tsconfig.json scripts/smoke-private-analytics-dashboard.ts",
     "build:review-cache": "tsx scripts/build-review-cache.ts",
     "maintenance:scan": "tsx scripts/maintenance-http-first-scan.ts",
     "snapshots:baseline": "tsx scripts/build-private-source-snapshots.ts",

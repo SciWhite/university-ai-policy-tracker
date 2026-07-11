@@ -41,7 +41,8 @@ interface GscApiRow {
 
 export async function getGoogleSearchConsoleSummary(
   startDate: Date,
-  endDate: Date
+  endDate: Date,
+  options: { detailRowLimit?: number } = {}
 ): Promise<GscSummary> {
   const siteUrl = process.env.GSC_SITE_URL ?? "sc-domain:eduaipolicy.org";
   const credentialPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
@@ -54,11 +55,15 @@ export async function getGoogleSearchConsoleSummary(
 
   try {
     const token = await getAccessToken(credentialPath);
+    const detailRowLimit = Math.max(
+      12,
+      Math.min(250, options.detailRowLimit ?? 12)
+    );
     const [dateRows, pageRows, queryRows, countryRows, deviceRows] =
       await Promise.all([
-        queryGsc(token, siteUrl, startDate, endDate, ["date"], 120),
-        queryGsc(token, siteUrl, startDate, endDate, ["page"], 12),
-        queryGsc(token, siteUrl, startDate, endDate, ["query"], 12),
+        queryGsc(token, siteUrl, startDate, endDate, ["date"], 240),
+        queryGsc(token, siteUrl, startDate, endDate, ["page"], detailRowLimit),
+        queryGsc(token, siteUrl, startDate, endDate, ["query"], detailRowLimit),
         queryGsc(token, siteUrl, startDate, endDate, ["country"], 12),
         queryGsc(token, siteUrl, startDate, endDate, ["device"], 8)
       ]);

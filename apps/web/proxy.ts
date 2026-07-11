@@ -45,7 +45,10 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/internal/analytics/:path*"]
+  matcher: [
+    "/internal/analytics/:path*",
+    "/api/internal/analytics/dashboard/:path*"
+  ]
 };
 
 function parseBasicAuth(
