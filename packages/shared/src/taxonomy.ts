@@ -23,6 +23,9 @@ export const aiTools = [
   "openai_api",
   "mistral",
   "perplexity",
+  "perplexity_comet",
+  "chatgpt_atlas",
+  "openclaw",
   "grammarly",
   "slack_ai",
   "cisco_ai_assistant",
@@ -384,6 +387,27 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "Perplexity",
     provider: "Perplexity",
     aliases: ["Perplexity"],
+    category: "commercial_assistant"
+  },
+  perplexity_comet: {
+    slug: "perplexity_comet",
+    label: "Comet",
+    provider: "Perplexity",
+    aliases: ["Comet", "Perplexity Comet", "Comet Browser"],
+    category: "commercial_assistant"
+  },
+  chatgpt_atlas: {
+    slug: "chatgpt_atlas",
+    label: "ChatGPT Atlas",
+    provider: "OpenAI",
+    aliases: ["ChatGPT Atlas", "Atlas"],
+    category: "commercial_assistant"
+  },
+  openclaw: {
+    slug: "openclaw",
+    label: "OpenClaw",
+    provider: "OpenClaw",
+    aliases: ["OpenClaw"],
     category: "commercial_assistant"
   },
   grammarly: {
@@ -822,6 +846,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
       "HKUST Generative AI API Service",
       "DeepSeek 本地版",
       "AI 应用平台",
+      "UvA AI Chat",
+      "PolyU GenAI",
+      "DukeGPT",
+      "MyGPT Builder",
+      "AI Gateway",
+      "exaBase Generative AI",
+      "kWhisper",
       "AI Playground"
     ],
     category: "self_hosted_platform"

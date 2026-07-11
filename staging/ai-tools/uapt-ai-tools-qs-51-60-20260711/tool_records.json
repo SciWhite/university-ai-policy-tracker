@@ -1,0 +1,652 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-51-60-20260711",
+  "generatedAt": "2026-07-11T04:20:00.000Z",
+  "records": [
+    {
+      "universitySlug": "carnegie-mellon-university",
+      "universityName": "Carnegie Mellon University",
+      "qsRank": 52,
+      "tool": "self_deploy",
+      "rawToolName": "AI Gateway",
+      "description": "AI developer tool that makes AI models easier to access via API keys.",
+      "howToObtain": "Use CMU AI Gateway service page.",
+      "costToUser": "No cost, but an Oracle String is required to pass on model endpoint costs.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+          "sourceTitle": "Protected AI Tools You Can Use - Computing Services",
+          "evidenceSnippet": "AI Gateway | AI Developer tool makes AI models easier to access. | Accessing management to models via API keys. | Faculty and Staff | No cost; however an Oracle String is required to pass on any costs incurred from using a model endpoint.",
+          "snapshotHash": "e25413acefd1ec35c60300d92336b17e44f09d5d308d7c8ab74224a085bcb2e5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "carnegie-mellon-university",
+      "universityName": "Carnegie Mellon University",
+      "qsRank": 52,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "OpenAI chatbot for research, writing, problem-solving, code, text, and image tasks.",
+      "howToObtain": "Faculty and staff can purchase through the university software catalog; students require faculty or staff sponsorship.",
+      "costToUser": "Tiered subscription model based on credit usage.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+          "sourceTitle": "Protected AI Tools You Can Use - Computing Services",
+          "evidenceSnippet": "ChatGPT Edu | Synthesizes info, summarizes, and generates content. | Research, writing, and problem-solving. | Faculty and Staff; Students sponsored by a faculty or staff member | Tiered subscription model based on credit usage",
+          "snapshotHash": "9ed0b26c00d5ffa8a9fdee54c3198b765a91acd5beb9bfb3800785044dd090c6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "carnegie-mellon-university",
+      "universityName": "Carnegie Mellon University",
+      "qsRank": 52,
+      "tool": "gemini",
+      "rawToolName": "Gemini Web App",
+      "description": "Google AI chatbot for text, voice, files, Google Apps, and search across formats.",
+      "howToObtain": "Use with CMU Andrew account.",
+      "costToUser": "Available with your Andrew account.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+          "sourceTitle": "Protected AI Tools You Can Use - Computing Services",
+          "evidenceSnippet": "Gemini Web App | Google's AI that handles text, voice, and files. | Meeting summaries, working with Google Apps, and searching across formats. | Students, Faculty, Staff, and Sponsored | Available with your Andrew account.",
+          "snapshotHash": "bf7731db8b5042073dbee6824c9ef9b6a115f81c88a8fd77b5088a8da4626d8a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "carnegie-mellon-university",
+      "universityName": "Carnegie Mellon University",
+      "qsRank": 52,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "AI support for Office tasks, images, and code.",
+      "howToObtain": "Use with CMU Andrew account.",
+      "costToUser": "Available with your Andrew account.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+          "sourceTitle": "Protected AI Tools You Can Use - Computing Services",
+          "evidenceSnippet": "Microsoft Copilot Chat | AI support for Office tasks, images, and code. | Microsoft files, documents, and coding help. | Students, Faculty, and Staff | Available with your Andrew account.",
+          "snapshotHash": "1eec2919a849855a088b85887a378fd5ffa978d38770134cdf02bc5c7459d713",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "carnegie-mellon-university",
+      "universityName": "Carnegie Mellon University",
+      "qsRank": 52,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "Google AI-powered notebook tool for uploaded sources, summaries, and podcasts.",
+      "howToObtain": "Use with CMU Andrew account.",
+      "costToUser": "Available with your Andrew account.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+          "sourceTitle": "Protected AI Tools You Can Use - Computing Services",
+          "evidenceSnippet": "NotebookLM | Creates AI-powered notebooks from uploads. | Organizing ideas, summarizing sources, and creating podcasts. | Students, Faculty, Staff, and Sponsored | Available with your Andrew account.",
+          "snapshotHash": "5b1d291d0c23704e2df90fbb24961c72b02787f8ada107b8f67880ac9955fd82",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "carnegie-mellon-university",
+      "universityName": "Carnegie Mellon University",
+      "qsRank": 52,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom meeting summaries and action items.",
+      "howToObtain": "Use with CMU Zoom/Andrew account.",
+      "costToUser": "Available with your Andrew account.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cmu.edu/computing/services/ai/tools/index.html",
+          "sourceTitle": "Protected AI Tools You Can Use - Computing Services",
+          "evidenceSnippet": "Zoom AI Companion | Adds summaries and action items to meetings. | Real-time help during virtual meetings. | Students, Faculty, Staff, and Sponsored | Available with your Andrew account.",
+          "snapshotHash": "05c6b6f0ad56a53b885e9e21914f5ac7b365421fa7647738799006fee0cd06ef",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-amsterdam",
+      "universityName": "University of Amsterdam",
+      "qsRank": 53,
+      "tool": "self_deploy",
+      "rawToolName": "UvA AI Chat",
+      "description": "UvA-developed AI chat service for safe experimentation within the UvA.",
+      "howToObtain": "Go to UvA AI Chat at aichat.uva.nl/chat.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://student.uva.nl/en/information/ai-tools-and-your-studies",
+          "sourceTitle": "AI tools and your studies",
+          "evidenceSnippet": "To help you use AI responsibly and allow you to experiment with the possibilities of GenAI, the UvA has developed its own tool called UvA AI Chat.",
+          "snapshotHash": "8f14813b9d7180d9e987137ec82af9de3f796f604211cc2e88210be140d947c7",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://student.uva.nl/en/information/uva-ai-chat",
+          "sourceTitle": "UvA AI Chat",
+          "evidenceSnippet": "With UvA AI Chat, you can safely experiment with AI within the UvA. This allows you to make use of the possibilities offered by AI without sharing your data with third parties.",
+          "snapshotHash": "4f191a6cefdbbb5dbcc457cfb97aa74201aa182b7e12dc0cf66c27ea871e3176",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-amsterdam",
+      "universityName": "University of Amsterdam",
+      "qsRank": 53,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT",
+      "description": "Commercial ChatGPT is not allowed in the context of UvA studies because of privacy regulations.",
+      "howToObtain": "Use UvA AI Chat instead where allowed by UvA guidance.",
+      "costToUser": "Not applicable.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://student.uva.nl/en/information/ai-tools-and-your-studies",
+          "sourceTitle": "AI tools and your studies",
+          "evidenceSnippet": "The use of commercial AI tools such as ChatGPT is not allowed in the context of your studies because these tools do not comply with the UvA’s privacy regulations.",
+          "snapshotHash": "d9beb19ba0bbfab47517af46181cc49b07c3af1aace0c15406484274d997e8c9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "the-hong-kong-polytechnic-university",
+      "universityName": "The Hong Kong Polytechnic University",
+      "qsRank": 54,
+      "tool": "self_deploy",
+      "rawToolName": "PolyU GenAI",
+      "description": "PolyU generative AI application for teaching and learning, research, and work-related activities.",
+      "howToObtain": "Access PolyU GenAI at genai.polyu.edu.hk with PolyU credentials.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.polyu.edu.hk/its/it-services/polyu-genai/",
+          "sourceTitle": "PolyU GenAI | Information Technology Services Office",
+          "evidenceSnippet": "The PolyU generative AI application is solely for PolyU staff and students to use for teaching and learning, research, and work-related activities only.",
+          "snapshotHash": "a80d0a619e53a66f76bc6938c5820a32b72906f56a8a8a529ab76706c2fb60ae",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "new-york-university",
+      "universityName": "New York University (NYU)",
+      "qsRank": 55,
+      "tool": "gemini",
+      "rawToolName": "Gemini & Gemini Pro",
+      "description": "Google AI chatbot for content creation, repetitive tasks, communications, and more.",
+      "howToObtain": "Use NYU Google AI Tools service info.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services.html",
+          "sourceTitle": "NYU AI Services & Tools",
+          "evidenceSnippet": "Gemini & Gemini Pro | An AI chatbot that can be used to create new content, streamline repetitive tasks, assist with communications, and more",
+          "snapshotHash": "e7531aa45fa3d23bf6de7a23200d2b1647153b9ac323488282c430e0895b2e37",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "new-york-university",
+      "universityName": "New York University (NYU)",
+      "qsRank": 55,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "AI research assistant that organizes sources and answers questions with citations.",
+      "howToObtain": "Use NYU NotebookLM service info.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services.html",
+          "sourceTitle": "NYU AI Services & Tools",
+          "evidenceSnippet": "NotebookLM | An AI research assistant that organizes your sources, generates study guides and reports, and answers questions with citations.",
+          "snapshotHash": "6b6aaa056407866225cceb099a6af738fdec4cfca22a63ba8f8f8a8fde844f38",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "new-york-university",
+      "universityName": "New York University (NYU)",
+      "qsRank": 55,
+      "tool": "google_ai_studio",
+      "rawToolName": "AI Studio",
+      "description": "Toolkit and API access for developers building AI apps.",
+      "howToObtain": "Use NYU AI Studio service info and approved Cloud Projects where needed.",
+      "costToUser": "Paid tier for approved Cloud Projects with additional needs.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services.html",
+          "sourceTitle": "NYU AI Services & Tools",
+          "evidenceSnippet": "AI Studio | Toolkit and API access for developers building AI apps, including a paid tier for approved Cloud Projects with additional needs",
+          "snapshotHash": "ea7ecfe81cd9943723baaa25ed6732964ccc6a7198c67a5db22ec713dceaeefd",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "new-york-university",
+      "universityName": "New York University (NYU)",
+      "qsRank": 55,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe CC, Express, & Firefly",
+      "description": "Adobe applications with integrated AI features.",
+      "howToObtain": "Use NYU Adobe service information.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services.html",
+          "sourceTitle": "NYU AI Services & Tools",
+          "evidenceSnippet": "Adobe CC, Express, & Firefly | Adobe has integrated AI features into most of the popular tools",
+          "snapshotHash": "9637ae252a9b405b395c5538e98f44bd3143c4dc65bc86e9b89b686eec27111b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "new-york-university",
+      "universityName": "New York University (NYU)",
+      "qsRank": 55,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Microsoft Copilot webchat for NYU users.",
+      "howToObtain": "Access Co-Pilot in the Webchat.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services.html",
+          "sourceTitle": "NYU AI Services & Tools",
+          "evidenceSnippet": "Microsoft Copilot | Access Co-Pilot in the Webchat",
+          "snapshotHash": "7e2bb1ff8ae10c18226bc9041a3a54f64597a1be5af3469a57d42b1cc3d2ac9f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "new-york-university",
+      "universityName": "New York University (NYU)",
+      "qsRank": 55,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI",
+      "description": "Zoom AI features for real-time meeting summaries, transcription, and chat.",
+      "howToObtain": "Use NYU Zoom service information.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services.html",
+          "sourceTitle": "NYU AI Services & Tools",
+          "evidenceSnippet": "Zoom AI | Real-time meeting summaries, automated transcriptions, and instant chat",
+          "snapshotHash": "8f7dabbe6fef4f3f95c4882b45a42cc9569696dbb21db3586f0a0cbcd5f3ace6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kyoto-university",
+      "universityName": "Kyoto University",
+      "qsRank": 57,
+      "tool": "gemini",
+      "rawToolName": "Gemini",
+      "description": "Google generative AI service for document creation, summarization, information organization, and simple research.",
+      "howToObtain": "Log in to Gemini with Kyoto University account access.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/en/services/gen-ai",
+          "sourceTitle": "Generative AI | Institute for Information Management and Communication, Kyoto University",
+          "evidenceSnippet": "Gemini | Student Faculty Staff | This is a generative AI service provided by Google. It can be used for document creation, summarization, information organization, and simple research.",
+          "snapshotHash": "1dbb1387337939dbc9c90274534f936b7fa100178fb6e2e062f50033a02cd894",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kyoto-university",
+      "universityName": "Kyoto University",
+      "qsRank": 57,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "Google generative AI service for uploaded materials, summaries, information organization, and Q&A.",
+      "howToObtain": "Log in to NotebookLM with Kyoto University account access.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/en/services/gen-ai",
+          "sourceTitle": "Generative AI | Institute for Information Management and Communication, Kyoto University",
+          "evidenceSnippet": "NotebookLM | Student Faculty Staff | This is a generative AI service provided by Google. Based on materials you upload, it can generate summaries, organize information, and answer questions.",
+          "snapshotHash": "0e212e01c8082afbc1f0114bad8ad2fa8a1c95a11260f3e89883b0491ed45d6b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kyoto-university",
+      "universityName": "Kyoto University",
+      "qsRank": 57,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "Microsoft generative AI service for document creation, information organization, and idea generation.",
+      "howToObtain": "Log in to Microsoft 365 Copilot Chat with Kyoto University account access.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/en/services/gen-ai",
+          "sourceTitle": "Generative AI | Institute for Information Management and Communication, Kyoto University",
+          "evidenceSnippet": "Microsoft 365 Copilot Chat | Student Faculty Staff | This is a generative AI service provided by Microsoft. It supports document creation, information organization, and idea generation.",
+          "snapshotHash": "fcf1b62e1261da2f7ff2c9a73342c20ba6cad7c8bc3d336939f0790c0ae0ae67",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kyoto-university",
+      "universityName": "Kyoto University",
+      "qsRank": 57,
+      "tool": "institutional_ai_service",
+      "rawToolName": "exaBase Generative AI",
+      "description": "Generative AI service provided by Kyoto University DX Promotion Office for staff.",
+      "howToObtain": "Use the exaBase Generative AI service link from Kyoto University DX portal.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/en/services/gen-ai",
+          "sourceTitle": "Generative AI | Institute for Information Management and Communication, Kyoto University",
+          "evidenceSnippet": "exaBase Generative AI (Provided by the DX Promotion Office) | Staff | This is a generative AI service provided by the DX Promotion Office.",
+          "snapshotHash": "3d9ae446443fd4001424e17fb856dd1f74fd3d721d9a093d99b0cf2c6e5ae42c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kyoto-university",
+      "universityName": "Kyoto University",
+      "qsRank": 57,
+      "tool": "self_deploy",
+      "rawToolName": "kWhisper (Trial Service)",
+      "description": "Trial AI transcription service provided by Kyoto University IIMC.",
+      "howToObtain": "Use kWhisper trial service.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.iimc.kyoto-u.ac.jp/en/services/gen-ai",
+          "sourceTitle": "Generative AI | Institute for Information Management and Communication, Kyoto University",
+          "evidenceSnippet": "kWhisper (Trial Service) | Faculty Staff | This is a trial transcription service that utilizes AI technologies, including generative AI, provided by The Institute for Information Management and Communication.",
+          "snapshotHash": "4333310d17c4d48c8ef1e23fc22f8fb84737e8f0a08524d0f4f66e8bb4e2b628",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ku-leuven",
+      "universityName": "KU Leuven",
+      "qsRank": 60,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot",
+      "description": "KU Leuven preferred GenAI tool with Microsoft contractual data protection.",
+      "howToObtain": "Use Copilot logged in with a KU Leuven account.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.kuleuven.be/english/genai",
+          "sourceTitle": "Generative AI at KU Leuven",
+          "evidenceSnippet": "Copilot is the preferred tool at KU Leuven. KU Leuven has a contractual agreement with Microsoft that also covers data protection.",
+          "snapshotHash": "27d44f24e33382379e827ef71b969ca0d77e4933a7b28a1a49b67cac632e38b8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ku-leuven",
+      "universityName": "KU Leuven",
+      "qsRank": 60,
+      "tool": "perplexity_comet",
+      "rawToolName": "Comet",
+      "description": "Agentic AI browser not permitted within KU Leuven.",
+      "howToObtain": "Do not use within KU Leuven under this guidance.",
+      "costToUser": "Not applicable.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.kuleuven.be/english/genai",
+          "sourceTitle": "Generative AI at KU Leuven",
+          "evidenceSnippet": "Within KU Leuven, the use of Agentic AI browsers (Comet, Atlas) and Agentic AI system assistants (OpenClaw) is therefore not permitted.",
+          "snapshotHash": "3e92ee655153120fc0707fb1bfcbecdc01f1accbf0b279c8cb3569401a63cef7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ku-leuven",
+      "universityName": "KU Leuven",
+      "qsRank": 60,
+      "tool": "chatgpt_atlas",
+      "rawToolName": "Atlas",
+      "description": "Agentic AI browser not permitted within KU Leuven.",
+      "howToObtain": "Do not use within KU Leuven under this guidance.",
+      "costToUser": "Not applicable.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.kuleuven.be/english/genai",
+          "sourceTitle": "Generative AI at KU Leuven",
+          "evidenceSnippet": "Within KU Leuven, the use of Agentic AI browsers (Comet, Atlas) and Agentic AI system assistants (OpenClaw) is therefore not permitted.",
+          "snapshotHash": "3e92ee655153120fc0707fb1bfcbecdc01f1accbf0b279c8cb3569401a63cef7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "ku-leuven",
+      "universityName": "KU Leuven",
+      "qsRank": 60,
+      "tool": "openclaw",
+      "rawToolName": "OpenClaw",
+      "description": "Agentic AI system assistant not permitted within KU Leuven.",
+      "howToObtain": "Do not use within KU Leuven under this guidance.",
+      "costToUser": "Not applicable.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.kuleuven.be/english/genai",
+          "sourceTitle": "Generative AI at KU Leuven",
+          "evidenceSnippet": "Within KU Leuven, the use of Agentic AI browsers (Comet, Atlas) and Agentic AI system assistants (OpenClaw) is therefore not permitted.",
+          "snapshotHash": "3e92ee655153120fc0707fb1bfcbecdc01f1accbf0b279c8cb3569401a63cef7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "duke-university",
+      "universityName": "Duke University",
+      "qsRank": 62,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "Duke educational license for ChatGPT, best for general-purpose writing, research, coding, and brainstorming.",
+      "howToObtain": "Place order for ChatGPT through Duke software manager.",
+      "costToUser": "Pre-paid, or reduced cost.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.duke.edu/ai-suite/",
+          "sourceTitle": "The Duke AI Suite | Office of Information Technology",
+          "evidenceSnippet": "ChatGPT | All Duke University users | General purpose chatbot use with standard ChatGPT interface | OpenAI's ChatGPT only | Pre-paid, or reduced cost | Sensitive (no PHI), governed by institutional agreement",
+          "snapshotHash": "f16920de8ca44f58d529cf87a715d7d127e764e3d8af807847618430112d5793",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "duke-university",
+      "universityName": "Duke University",
+      "qsRank": 62,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft CoPilot",
+      "description": "Microsoft 365-integrated AI tool approved for Duke University and Duke Health users.",
+      "howToObtain": "Access Copilot with NetID.",
+      "costToUser": "Free.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.duke.edu/ai-suite/",
+          "sourceTitle": "The Duke AI Suite | Office of Information Technology",
+          "evidenceSnippet": "Microsoft CoPilot | Designed to work with Microsoft 365 and approved for use within the Duke Health community. | Access Copilot",
+          "snapshotHash": "8e13a3b4c7400ec5512a44aa807c7dab7138014e3cbee95e4037fc1c102160dd",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "duke-university",
+      "universityName": "Duke University",
+      "qsRank": 62,
+      "tool": "self_deploy",
+      "rawToolName": "DukeGPT",
+      "description": "Duke-managed platform for exploring and comparing AI models and Duke-specific questions.",
+      "howToObtain": "Access DukeGPT at chat.ai.duke.edu.",
+      "costToUser": "No cost for basic use.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.duke.edu/ai-suite/",
+          "sourceTitle": "The Duke AI Suite | Office of Information Technology",
+          "evidenceSnippet": "DukeGPT | All Duke University users | Exploring AI models, learning | Curated selection of open-source and cloud models | No cost for basic use | Sensitive (no PHI), Duke-managed, data-protected",
+          "snapshotHash": "d6a743fe48e931b7ac7ca5676f1a18a03f05d68f0bd13bbc27b509e23e39804c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "duke-university",
+      "universityName": "Duke University",
+      "qsRank": 62,
+      "tool": "self_deploy",
+      "rawToolName": "MyGPT Builder",
+      "description": "Duke secure sandbox for custom AI environments and course or department tools.",
+      "howToObtain": "Visit the AI Dashboard.",
+      "costToUser": "Cost-recovery for some models, usage-based.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.duke.edu/ai-suite/",
+          "sourceTitle": "The Duke AI Suite | Office of Information Technology",
+          "evidenceSnippet": "MyGPT Builder | University faculty, researchers, staff | Custom AI environments, course-/department-specific tools | Curated selection of open-source and cloud models | Cost-recovery for some models, usage-based",
+          "snapshotHash": "6331dbee68dd265540e44395bd11ffa837589f9e07e82a46402293bf962bf9e6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "duke-university",
+      "universityName": "Duke University",
+      "qsRank": 62,
+      "tool": "self_deploy",
+      "rawToolName": "AI Gateway",
+      "description": "Duke API gateway for developers and advanced users building AI-powered apps and tools.",
+      "howToObtain": "Visit the AI Gateway through Duke AI Dashboard.",
+      "costToUser": "Cost-recovery service, usage-based.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.duke.edu/ai-suite/",
+          "sourceTitle": "The Duke AI Suite | Office of Information Technology",
+          "evidenceSnippet": "AI Gateway | Developers, advanced users | Building AI-powered apps and tools | Curated selection of open-source and cloud models, others by request, BYOKey for cloud | Cost-recovery service, usage-based",
+          "snapshotHash": "8e6169b66b092a7f97d59c4da26b0c63759b0cdeca08ec585ee4dad0d9af917c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
