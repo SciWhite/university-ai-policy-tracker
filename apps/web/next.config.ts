@@ -8,6 +8,7 @@ const appRoot = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(appRoot, "../..");
 
 const nextConfig: NextConfig = {
+  staticPageGenerationTimeout: 180,
   turbopack: {
     root: workspaceRoot
   },
