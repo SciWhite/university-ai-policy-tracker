@@ -851,8 +851,15 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
       "DukeGPT",
       "MyGPT Builder",
       "AI Gateway",
+      "CityUHK Chatbot",
+      "CityUHK IT Chatbot",
       "exaBase Generative AI",
       "kWhisper",
+      "TritonGPT",
+      "UT Spark",
+      "UT Sage",
+      "Illinois Chat",
+      "Illinois ChatGPT",
       "AI Playground"
     ],
     category: "self_hosted_platform"

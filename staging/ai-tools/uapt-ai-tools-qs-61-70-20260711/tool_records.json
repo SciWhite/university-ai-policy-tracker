@@ -1,0 +1,689 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-61-70-20260711",
+  "generatedAt": "2026-07-11T08:40:00.000Z",
+  "records": [
+    {
+      "universitySlug": "university-of-bristol",
+      "universityName": "University of Bristol",
+      "qsRank": 51,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot for Edge",
+      "description": "Microsoft Copilot access through the University Microsoft licence, recommended when students are asked to engage with AI to reduce data and privacy concerns.",
+      "howToObtain": "Log in with a University of Bristol email address.",
+      "costToUser": "Free through the University Microsoft licence.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/using-ai-in-assessment/what-generative-ai-tools-should-i-allow-or-encourage-my-students-to-use/",
+          "sourceTitle": "What generative AI tools should I allow or encourage my students to use?",
+          "evidenceSnippet": "We recommend for the time being using Copilot if you are asking your students to engage with AI in order to minimise data and privacy concerns.",
+          "snapshotHash": "e6cadfb081519f5bd431165462d6b4eab4c866f3c5823526db05e1438be8f6c7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "the-london-school-of-economics-and-political-science",
+      "universityName": "The London School of Economics and Political Science (LSE)",
+      "qsRank": 57,
+      "tool": "claude",
+      "rawToolName": "Claude",
+      "description": "Anthropic AI assistant available through LSE's Claude for Education partnership.",
+      "howToObtain": "Request access through LSE guidance; once approved, use Claude via web and mobile app.",
+      "costToUser": "Free for LSE students.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+          "sourceTitle": "Generative AI - LSE",
+          "evidenceSnippet": "Claude is an AI assistant from Anthropic, available to you through LSE's Claude for Education partnership. It's useful for working through complex material, getting coding help, breaking down difficult concepts, and thinking through research questions.",
+          "snapshotHash": "5b0218d74af942db0c37dae515a3692f46c4d80a43a20b9266358b459a75fc62",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "the-london-school-of-economics-and-political-science",
+      "universityName": "The London School of Economics and Political Science (LSE)",
+      "qsRank": 57,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "Microsoft Copilot Chat for writing, summarising, researching, and thinking through ideas.",
+      "howToObtain": "Sign in at copilot.microsoft.com with an LSE IT account.",
+      "costToUser": "Free for LSE students.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://info.lse.ac.uk/current-students/digital-skills-lab/Gen-AI",
+          "sourceTitle": "Generative AI - LSE",
+          "evidenceSnippet": "Microsoft Copilot Chat is available to all LSE students through your institutional account. You can use it to help with writing, summarising, researching, and thinking through ideas.",
+          "snapshotHash": "634cc41cd8cf72376ee67a2a9dc4a7e12c9b4223f5485685e2c935ec77b1c65c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "city-university-of-hong-kong",
+      "universityName": "City University of Hong Kong (CityUHK)",
+      "qsRank": 63,
+      "tool": "self_deploy",
+      "rawToolName": "CityUHK Chatbot",
+      "description": "CityUHK generative AI chatbot service providing staff and students access to GPT and DeepSeek models in a university environment.",
+      "howToObtain": "Access through the CityUHK Mobile App or the IT and Library Services section on the CityUHK Portal.",
+      "costToUser": "Free with monthly usage quota.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cityu.edu.hk/GenAI/",
+          "sourceTitle": "Generative AI | City University of Hong Kong",
+          "evidenceSnippet": "We provide GPT-5 mini, GPT-5.2 (ChatGPT), DeepSeek R1, and DeepSeek V4 Flash to all staff members and students free to use with monthly usage quota enforced.",
+          "snapshotHash": "25340cf08d619a01ee31de6db84be1df786eb57fb22687557e79697deff86eca",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "city-university-of-hong-kong",
+      "universityName": "City University of Hong Kong (CityUHK)",
+      "qsRank": 63,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot for Enterprise",
+      "description": "Microsoft Copilot for Enterprise included in CityUHK's Microsoft 365 licence.",
+      "howToObtain": "Access through CityUHK Microsoft 365 services.",
+      "costToUser": "No extra cost; included in the Microsoft 365 licence.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cityu.edu.hk/its/news-events/news/2024/09/16/microsoft-copilot-enterprise-now-available-all-staff-and-students",
+          "sourceTitle": "Microsoft Copilot for Enterprise: Now Available for All Staff and Students",
+          "evidenceSnippet": "Microsoft Copilot for Enterprise (Copilot) is included in the Microsoft 365 (M365) license at no extra cost and has no monthly usage caps.",
+          "snapshotHash": "6b6f9ec789f47c731217fab84571d51cf06f5af575af8296457856548bf33e86",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "city-university-of-hong-kong",
+      "universityName": "City University of Hong Kong (CityUHK)",
+      "qsRank": 63,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft Copilot for M365",
+      "description": "Paid Microsoft 365 Copilot add-on integrating with Word, Excel, PowerPoint, Outlook, and other M365 apps.",
+      "howToObtain": "Requires an additional licence approved by the Head of Department; staff should contact their department DNA.",
+      "costToUser": "Additional paid licence required.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.cityu.edu.hk/its/news-events/news/2024/09/16/microsoft-copilot-enterprise-now-available-all-staff-and-students",
+          "sourceTitle": "Microsoft Copilot for Enterprise: Now Available for All Staff and Students",
+          "evidenceSnippet": "Copilot also offers a standalone paid version – Microsoft Copilot for M365 (M365 Copilot), that integrates seamlessly with Word, Excel, PowerPoint, Outlook.",
+          "snapshotHash": "b2b9c126daad96b85050f442b697ac85adb9dc49c2aba5306d9aeaefef9c815b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-auckland",
+      "universityName": "The University of Auckland",
+      "qsRank": 65,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "Copilot side window for browser-based assistance with protected access through the University account.",
+      "howToObtain": "Sign in with a University of Auckland account in Edge or Chrome.",
+      "costToUser": "Free for University students and staff.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.auckland.ac.nz/en/students/my-tools/generative-ai.html",
+          "sourceTitle": "Generative Artificial Intelligence (Gen AI) - University of Auckland",
+          "evidenceSnippet": "These tools have been approved by our Cybersecurity team and give you protected access to: OpenAI’s GPT-4 Large Language Model.",
+          "snapshotHash": "a7fb33d4ea24cb4355f9cf30d23016704d1c633d5d0c28b9d96d662656d39b7d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-auckland",
+      "universityName": "The University of Auckland",
+      "qsRank": 65,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Google Gemini for drafting, summarising, brainstorming, and natural-language questions.",
+      "howToObtain": "Sign in with a University Google Workspace account at gemini.google.com.",
+      "costToUser": "Free for University students and staff.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.auckland.ac.nz/en/students/my-tools/generative-ai.html",
+          "sourceTitle": "Generative Artificial Intelligence (Gen AI) - University of Auckland",
+          "evidenceSnippet": "We recommend you use Google Gemini to help you draft, summarise, brainstorm, and answer questions in natural language.",
+          "snapshotHash": "24f702044e5138c995b679b2d63d953d7dc05d2fafadcac79c6082f8754fa205",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-auckland",
+      "universityName": "The University of Auckland",
+      "qsRank": 65,
+      "tool": "notebooklm",
+      "rawToolName": "Notebook LM",
+      "description": "AI-powered research assistant for exploring and asking questions about documents and sources.",
+      "howToObtain": "Sign in with a University Google Workspace account at notebooklm.google.com.",
+      "costToUser": "Free for University students and staff.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.auckland.ac.nz/en/students/my-tools/generative-ai.html",
+          "sourceTitle": "Generative Artificial Intelligence (Gen AI) - University of Auckland",
+          "evidenceSnippet": "Use Notebook LM as an AI-powered research assistant that helps you explore and ask questions about your own documents and sources.",
+          "snapshotHash": "ddcbcebb5894650aa50aa59c495262d2d0a0aa7d57d484a1ea3d7ee5f029caf2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-san-diego",
+      "universityName": "University of California, San Diego (UCSD)",
+      "qsRank": 66,
+      "tool": "self_deploy",
+      "rawToolName": "TritonGPT",
+      "description": "UC San Diego's preferred generative AI platform, securely hosted at the San Diego Supercomputer Center.",
+      "howToObtain": "Use TritonGPT at tritongpt.ucsd.edu.",
+      "costToUser": "Free.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://blink.ucsd.edu/technology/ai/",
+          "sourceTitle": "UC San Diego's Support of AI",
+          "evidenceSnippet": "TritonGPT, our preferred Generative AI platform, is securely hosted at the San Diego Supercomputer Center.",
+          "snapshotHash": "99dd1022b91d48f55813ddc0146814094c06d00711fff58ddb3f37a7f6c974f1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-san-diego",
+      "universityName": "University of California, San Diego (UCSD)",
+      "qsRank": 66,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom AI Companion features for meeting transcription, summarization, Q&A, and related meeting support.",
+      "howToObtain": "Enable through the UC San Diego Zoom web portal.",
+      "costToUser": "Free if the Zoom account is active.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://blink.ucsd.edu/technology/ai/",
+          "sourceTitle": "UC San Diego's Support of AI",
+          "evidenceSnippet": "Zoom AI Companion features include meeting transcription, summarization, Q&A, and more.",
+          "snapshotHash": "9d83f5ea8123921f92d6e850e25187ab83fc1164d4618c59c80a9c787dbcc9cc",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-san-diego",
+      "universityName": "University of California, San Diego (UCSD)",
+      "qsRank": 66,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot with Data Protection",
+      "description": "Microsoft Copilot chatbot with data protection for image generation, PDF summarization, content generation, and fact retrieval.",
+      "howToObtain": "Use through the Microsoft 365 portal.",
+      "costToUser": "Included with Microsoft 365 subscription.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://blink.ucsd.edu/technology/ai/",
+          "sourceTitle": "UC San Diego's Support of AI",
+          "evidenceSnippet": "Copilot with Data Protection is a chatbot that provides a simple chat experience.",
+          "snapshotHash": "574e44c029090d64bc0ed302f3dd89b4b303525c7200bde00fc8ffa729eff035",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-san-diego",
+      "universityName": "University of California, San Diego (UCSD)",
+      "qsRank": 66,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Copilot for Microsoft 365",
+      "description": "AI-powered productivity tool for Microsoft 365 apps including Word, Excel, PowerPoint, Outlook, and Teams.",
+      "howToObtain": "Use UC San Diego Microsoft individual software guidance.",
+      "costToUser": "Subscription required.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://blink.ucsd.edu/technology/ai/",
+          "sourceTitle": "UC San Diego's Support of AI",
+          "evidenceSnippet": "Copilot for Microsoft 365 is an AI-powered productivity tool that works alongside popular Microsoft 365 Apps.",
+          "snapshotHash": "a2e2d7adbcfcb7cdc11ec69ba156d7d51d60b2dcf93aac0c78aeb4bc8fc22233",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-san-diego",
+      "universityName": "University of California, San Diego (UCSD)",
+      "qsRank": 66,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Google Gemini, including Gems, available to UC San Diego campus students, faculty, and staff.",
+      "howToObtain": "Use UC San Diego Google Gemini and NotebookLM service guidance.",
+      "costToUser": "No cost specified for UC San Diego campus users.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://blink.ucsd.edu/technology/file-sharing/google/gemini-notebooklm.html",
+          "sourceTitle": "Google Gemini & NotebookLM",
+          "evidenceSnippet": "Google Gemini (including Gems) is currently available to all UC San Diego campus students, faculty, and staff.",
+          "snapshotHash": "07074daeedd90769f4d9e9136621e88ad16a6b452fb2d7fbc2ec53e1e07dc114",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-san-diego",
+      "universityName": "University of California, San Diego (UCSD)",
+      "qsRank": 66,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "AI-powered research and note-taking tool using Gemini for source-based summaries, questions, citations, ideas, and audio overviews.",
+      "howToObtain": "Use UC San Diego Google Gemini and NotebookLM service guidance.",
+      "costToUser": "No cost specified for UC San Diego campus users.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://blink.ucsd.edu/technology/file-sharing/google/gemini-notebooklm.html",
+          "sourceTitle": "Google Gemini & NotebookLM",
+          "evidenceSnippet": "NotebookLM is currently available to all UC San Diego campus students, faculty, and staff.",
+          "snapshotHash": "3f82b19ede6226ddfa759c42be0a19c6ba80fddd9956891d2701ac67ee57695a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-texas-at-austin",
+      "universityName": "University of Texas at Austin",
+      "qsRank": 68,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT (OpenAI)",
+      "description": "UT licensed version of ChatGPT with privacy protections for university use.",
+      "howToObtain": "Log in using a UT EID email address.",
+      "costToUser": "Free for standard use; elevated tiers are available for purchase.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://guides.lib.utexas.edu/AI/tools",
+          "sourceTitle": "Generative AI Tools - Artificial Intelligence (AI)",
+          "evidenceSnippet": "When using the UT licensed version, your data is not shared with OpenAI or used to train the model. See the Privacy Expectations section of the Acceptable Use Policy.",
+          "snapshotHash": "9038445c7a337229f7f59d25f0bc71601bc295e69f60a8e9caa8d440736b142a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-texas-at-austin",
+      "universityName": "University of Texas at Austin",
+      "qsRank": 68,
+      "tool": "claude",
+      "rawToolName": "Claude (Anthropic)",
+      "description": "UT licensed version of Claude with privacy protections for university use.",
+      "howToObtain": "Log in using a UT EID email address.",
+      "costToUser": "Free for standard use; elevated tiers are available for purchase.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://guides.lib.utexas.edu/AI/tools",
+          "sourceTitle": "Generative AI Tools - Artificial Intelligence (AI)",
+          "evidenceSnippet": "When using the UT licensed version, your data is not shared with Anthropic or used to train the model. See the Privacy Expectations section of the Acceptable Use Policy.",
+          "snapshotHash": "fe18ca46dc511ca334193a7c87e327fef497d1ce4e155409a8259fd0b3453201",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-texas-at-austin",
+      "universityName": "University of Texas at Austin",
+      "qsRank": 68,
+      "tool": "microsoft_copilot",
+      "rawToolName": "CoPilot (Microsoft)",
+      "description": "UT licensed Microsoft Copilot access with privacy protections.",
+      "howToObtain": "Log in using a UT EID email address.",
+      "costToUser": "Free; elevated tiers are available for purchase.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://guides.lib.utexas.edu/AI/tools",
+          "sourceTitle": "Generative AI Tools - Artificial Intelligence (AI)",
+          "evidenceSnippet": "When using the UT licensed version, your data is not shared with Microsoft or used to train the model. See the Privacy Expectations section of the Acceptable Use Policy.",
+          "snapshotHash": "f1c2f6f3cdc6e7316ea4a635ddca28b03424b73dee9fa5375ca6246ff309f7cf",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-texas-at-austin",
+      "universityName": "University of Texas at Austin",
+      "qsRank": 68,
+      "tool": "gemini",
+      "rawToolName": "Gemini (Google)",
+      "description": "UT licensed Google Gemini access with privacy protections.",
+      "howToObtain": "Log in using a UTexas Gmail address.",
+      "costToUser": "Free.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://guides.lib.utexas.edu/AI/tools",
+          "sourceTitle": "Generative AI Tools - Artificial Intelligence (AI)",
+          "evidenceSnippet": "When using the UT licensed version, your data is not shared with Google or used to train the model. See the Privacy Expectations section of the Acceptable Use Policy.",
+          "snapshotHash": "4a3fb0255989626817adc52af83d8bdb6da16f1aa7767c5a39f527887108ae68",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-texas-at-austin",
+      "universityName": "University of Texas at Austin",
+      "qsRank": 68,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM (Google)",
+      "description": "UT licensed Google NotebookLM access with privacy protections.",
+      "howToObtain": "Log in using a UTexas Gmail address.",
+      "costToUser": "Free.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://guides.lib.utexas.edu/AI/tools",
+          "sourceTitle": "Generative AI Tools - Artificial Intelligence (AI)",
+          "evidenceSnippet": "When using the UT licensed version, your data is not shared with Google or used to train the model. See the Privacy Expectations section of the Acceptable Use Policy.",
+          "snapshotHash": "4a3fb0255989626817adc52af83d8bdb6da16f1aa7767c5a39f527887108ae68",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-texas-at-austin",
+      "universityName": "University of Texas at Austin",
+      "qsRank": 68,
+      "tool": "self_deploy",
+      "rawToolName": "UT Sage",
+      "description": "UT-developed safe AI-powered tutor endorsed for use in UT classrooms.",
+      "howToObtain": "Use UT Sage with a UT EID where enabled for courses.",
+      "costToUser": "Free.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://guides.lib.utexas.edu/AI/tools",
+          "sourceTitle": "Generative AI Tools - Artificial Intelligence (AI)",
+          "evidenceSnippet": "Instructors may not access student chats. Student interactions with UT Sage are not used to train the model or shared with any outside company. For more information, see UT Sage FAQs.",
+          "snapshotHash": "9bb04f8dfdac152a3f373b255b9e9a6002c6278069166be59740c3e71bebd778",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-texas-at-austin",
+      "universityName": "University of Texas at Austin",
+      "qsRank": 68,
+      "tool": "self_deploy",
+      "rawToolName": "UT Spark",
+      "description": "UT's all-in-one AI platform powered by OpenAI and Microsoft Azure for faculty, staff, and students.",
+      "howToObtain": "Use UT Spark through UT Austin guidance for current faculty, staff, and students.",
+      "costToUser": "Free.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://fisd.utexas.edu/generative-ai-teaching-and-learning-tools",
+          "sourceTitle": "Generative AI in Teaching and Learning: Tools",
+          "evidenceSnippet": "UT’s all-in-one AI platform, powered by OpenAI and Microsoft Azure, available for free to all current faculty, staff and students.",
+          "snapshotHash": "269208edc7c3ce050342b3d13eb166bf8a7d8a27518b8127c77e3a52337c6c9a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-illinois-urbana-champaign",
+      "universityName": "University of Illinois Urbana-Champaign",
+      "qsRank": 70,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot Chat",
+      "description": "AI assistant for quick drafting, summaries, and everyday work in Microsoft tools.",
+      "howToObtain": "Included with Microsoft Office.",
+      "costToUser": "Included with Microsoft Office.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+          "sourceTitle": "AI Apps | Enterprise GenAI | Office of the Chief Information Officer",
+          "evidenceSnippet": "Copilot Chat | Best for quick drafting, summaries and everyday work in Microsoft tools | Students, faculty and staff | Included with Microsoft Office",
+          "snapshotHash": "5bef7b634faa76b570cdbe9cdebe1879a5c2518aa9fb25e39050a2a6524fc9e7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-illinois-urbana-champaign",
+      "universityName": "University of Illinois Urbana-Champaign",
+      "qsRank": 70,
+      "tool": "chatgpt",
+      "rawToolName": "Illinois ChatGPT",
+      "description": "Illinois ChatGPT for deeper writing, research, and complex problem-solving.",
+      "howToObtain": "Purchase through WebStore.",
+      "costToUser": "$11 per month on WebStore.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+          "sourceTitle": "AI Apps | Enterprise GenAI | Office of the Chief Information Officer",
+          "evidenceSnippet": "Illinois ChatGPT | Best for deeper writing, research, and complex problem-solving | Faculty and staff | $11 per month on WebStore",
+          "snapshotHash": "b921efcb9a472b0e191ec6a344b60b866765b93861ec966a731949577bfa923b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-illinois-urbana-champaign",
+      "universityName": "University of Illinois Urbana-Champaign",
+      "qsRank": 70,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Google Gemini for brainstorming, quick content creation, and general Q&A.",
+      "howToObtain": "Included with Google licence.",
+      "costToUser": "Included with Google licence.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+          "sourceTitle": "AI Apps | Enterprise GenAI | Office of the Chief Information Officer",
+          "evidenceSnippet": "Google Gemini | Best for brainstorming, quick content creation, and general Q&A | Students, faculty and staff | Included with Google license",
+          "snapshotHash": "a3e82c40fe10245d47d456b2d17ef8b29bd280f062604ff4e436db09aec5f38c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-illinois-urbana-champaign",
+      "universityName": "University of Illinois Urbana-Champaign",
+      "qsRank": 70,
+      "tool": "self_deploy",
+      "rawToolName": "Illinois Chat",
+      "description": "Customized chatbot development supported by Illinois Computes, NCSA, and the Office of the CIO.",
+      "howToObtain": "Use Illinois Chat at chat.illinois.edu.",
+      "costToUser": "No cost.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+          "sourceTitle": "AI Apps | Enterprise GenAI | Office of the Chief Information Officer",
+          "evidenceSnippet": "Illinois Chat | Customized chatbot development | Students, faculty & staff | No Cost. Supported by Illinois Computes, NCSA and Office of the CIO",
+          "snapshotHash": "d7fc6825f6546f14fec9c3c364720ea6293b2854414313f2ae7b7ec42430f4d1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-illinois-urbana-champaign",
+      "universityName": "University of Illinois Urbana-Champaign",
+      "qsRank": 70,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "Google NotebookLM for document-based research and synthesis.",
+      "howToObtain": "Included with Google licence.",
+      "costToUser": "Included with Google licence.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+          "sourceTitle": "AI Apps | Enterprise GenAI | Office of the Chief Information Officer",
+          "evidenceSnippet": "Google NotebookLM | Document-based research and synthesis | Students, faculty & staff | Included with Google license",
+          "snapshotHash": "f371b2a002988c72fa8ba867667946dca250d0a61ef1730e531bae815b4a4ed9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-illinois-urbana-champaign",
+      "universityName": "University of Illinois Urbana-Champaign",
+      "qsRank": 70,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom AI Companion for general AI reasoning and content creation.",
+      "howToObtain": "Included with Zoom.",
+      "costToUser": "Included with Zoom.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+          "sourceTitle": "AI Apps | Enterprise GenAI | Office of the Chief Information Officer",
+          "evidenceSnippet": "Zoom AI Companion | General AI reasoning and content creation | Students, faculty & staff | Included with Zoom",
+          "snapshotHash": "e09d65ae017c19f74ef286f385253d7c1325ec2b4f3d8935db92d6b36453b23f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-illinois-urbana-champaign",
+      "universityName": "University of Illinois Urbana-Champaign",
+      "qsRank": 70,
+      "tool": "teams_premium",
+      "rawToolName": "Microsoft Teams Premium",
+      "description": "Microsoft Teams Premium AI meeting tools and intelligent recap.",
+      "howToObtain": "Purchase through WebStore.",
+      "costToUser": "$2 per month on WebStore.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+          "sourceTitle": "AI Apps | Enterprise GenAI | Office of the Chief Information Officer",
+          "evidenceSnippet": "Microsoft Teams Premium | AI meeting tools and intelligent recap | Faculty & staff | $2 per month on WebStore",
+          "snapshotHash": "27e11412051282ed15c7e8993b4fcf08c8436c23e379d695cac98e0a5606f733",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-illinois-urbana-champaign",
+      "universityName": "University of Illinois Urbana-Champaign",
+      "qsRank": 70,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot Add-On",
+      "description": "Microsoft 365 Copilot add-on across Outlook, Word, Teams, and OneDrive.",
+      "howToObtain": "Purchase through WebStore.",
+      "costToUser": "$28 per month on WebStore.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+          "sourceTitle": "AI Apps | Enterprise GenAI | Office of the Chief Information Officer",
+          "evidenceSnippet": "Microsoft 365 Copilot Add-On | AI across Outlook, Word, Teams, and OneDrive | Faculty & staff | $28 per month on WebStore",
+          "snapshotHash": "0aca8d4da1355be3dce957c3bec452f8b33d5d1ad42e3adb24667fd68a6aa573",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-illinois-urbana-champaign",
+      "universityName": "University of Illinois Urbana-Champaign",
+      "qsRank": 70,
+      "tool": "github_copilot",
+      "rawToolName": "GitHub Copilot",
+      "description": "GitHub Copilot for code completion and developer productivity.",
+      "howToObtain": "Review University security and privacy resources before use.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "third_party_service",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://genai.illinois.edu/ai-apps/",
+          "sourceTitle": "AI Apps | Enterprise GenAI | Office of the Chief Information Officer",
+          "evidenceSnippet": "GitHub Copilot | Code completion and developer productivity | Faculty & staff | Review the Security and Privacy Resources before use.",
+          "snapshotHash": "02a5a91f08b16169219c4e22ae11459016b329ec0d44feb27e654ecf884f7b42",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
