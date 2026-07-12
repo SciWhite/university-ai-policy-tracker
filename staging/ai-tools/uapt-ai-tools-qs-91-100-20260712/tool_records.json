@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-91-100-20260712",
+  "generatedAt": "2026-07-12T15:50:56.000Z",
+  "records": [
+    {
+      "universitySlug": "the-university-of-sheffield",
+      "universityName": "The University of Sheffield",
+      "qsRank": 92,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Institutionally approved AI tool listed by the University of Sheffield for student generative AI use.",
+      "howToObtain": "Access Gemini through the linked Google Gemini app.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "officially_endorsed",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://sheffield.ac.uk/academic-skills/using-generative-ai",
+          "sourceTitle": "Using Generative AI | 301 | The University of Sheffield",
+          "evidenceSnippet": "Google Gemini is the University of Sheffield institutionally approved AI tool.",
+          "snapshotHash": "25d3074545caea467787e77149dec8d526a79d034bc543100ae637508e71c5f2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "uppsala-university",
+      "universityName": "Uppsala University",
+      "qsRank": 93,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot",
+      "description": "Microsoft Copilot browser chat available to Uppsala University students and staff with university data-protection coverage.",
+      "howToObtain": "Log in to Copilot with a Uppsala University student account, the same way as other Microsoft services.",
+      "costToUser": "Free access for students; staff access is also stated.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.uu.se/en/students/it-for-students/software/ai-tool",
+          "sourceTitle": "AI tool – Students – Uppsala University",
+          "evidenceSnippet": "Students at Uppsala University have free access to the AI tool Copilot. Copilot is an AI-driven chat tool from Microsoft.",
+          "snapshotHash": "b5f813acfea7864a84154f899bc45e3b96867a74ae5aebe3706804e45717cd8a",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.uu.se/en/students/it-for-students/software/ai-tool",
+          "sourceTitle": "AI tool – Students – Uppsala University",
+          "evidenceSnippet": "The service is available in browser form for all students and staff at the university. Log in with your student account.",
+          "snapshotHash": "66d5e813d7c26a7295806b53c01f63b55f1499703a698fa8a1faac13887f5fea",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-alberta",
+      "universityName": "University of Alberta",
+      "qsRank": 94,
+      "tool": "gemini",
+      "rawToolName": "Gemini",
+      "description": "Google Gemini app access for U of A users, supported by Information Services and Technology under the University of Alberta Google agreement.",
+      "howToObtain": "Use the Gemini web app or mobile app with a U of A account.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ualberta.ca/en/information-services-and-technology/news/2025/get-started-with-gemini-app.html",
+          "sourceTitle": "Get started with Gemini App - University of Alberta",
+          "evidenceSnippet": "Gemini is a generative AI-powered assistant that can help you save time, create captivating learning experiences and inspire fresh ideas — all in a private and secure environment.",
+          "snapshotHash": "9545c6daa692f0d4a035a5b1e06e729fe9fae630ff9cc4b3a4fe5cfcdb34cd9a",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.ualberta.ca/en/information-services-and-technology/news/2025/get-started-with-gemini-app.html",
+          "sourceTitle": "Get started with Gemini App - University of Alberta",
+          "evidenceSnippet": "The Gemini app is a core Google Workspace service supported by Information Services and Technology (IST) and is therefore included and protected by the University of Alberta's agreement with Google.",
+          "snapshotHash": "47a4fe81a6c8d3822cd736ad13fc268e39323059cf84d8aeb1c075751916f1a7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-technology-sydney",
+      "universityName": "University of Technology Sydney",
+      "qsRank": 96,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Preferred and approved UTS GenAI tool when signed into a UTS account, including use with university data.",
+      "howToObtain": "Log in with a UTS ID and password; UTS recommends Edge browser access, with limited access through Bing in other browsers.",
+      "costToUser": "Free for UTS staff and students.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://studyguides.lib.uts.edu.au/genai/utstools",
+          "sourceTitle": "UTS Tools - Generative AI - Study Guides",
+          "evidenceSnippet": "UTS staff and students have access to Microsoft Copilot. Copilot is a GenAI tool with GPT-4o and DALL-E that generates text or image content based on your prompts.",
+          "snapshotHash": "f00c6df240fbf4d4f180b4491827f262341cbc7c5f8368e3b9cb892c1e861d19",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://reshub.uts.edu.au/research-support/use-ai-research",
+          "sourceTitle": "Use of AI in Research | RES Hub - UTS",
+          "evidenceSnippet": "At UTS, Microsoft Copilot, when signed into a UTS account, is currently the only approved GenAI tool for use with university data, including internal, sensitive, and confidential information.",
+          "snapshotHash": "22a1e473be3e4aabed1fbf24189461ce800ad3aabf5ba649f0cff44d960fffe5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kit-karlsruhe-institute-of-technology",
+      "universityName": "KIT, Karlsruhe Institute of Technology",
+      "qsRank": 98,
+      "tool": "self_deploy",
+      "rawToolName": "KI-Toolbox",
+      "description": "KIT AI toolbox that gives KIT employees and students access to local and external language models through a web interface and API.",
+      "howToObtain": "Use the KI-Toolbox web interface with KIT credentials after completing the AI Competency Module; off-campus use may require KIT VPN.",
+      "costToUser": "Monthly standard budget for external models; direct user cost not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.zml.kit.edu/english/ki-toolbox-en.php",
+          "sourceTitle": "KIT - ZML - GenAI@KIT - KI-Toolbox",
+          "evidenceSnippet": "The KI-Toolbox gives all KIT employees access to various local and external language models (LLMs). There are two separate ways to use them: a web interface for interactive use and an application programming interface (API).",
+          "snapshotHash": "c01731cafab00ea686e890db74d729eb368619638f302b9efb4997a1dbd55ffe",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.zml.kit.edu/english/ki-toolbox-en.php",
+          "sourceTitle": "KIT - ZML - GenAI@KIT - KI-Toolbox",
+          "evidenceSnippet": "Since the start of the lecture period of the summer semester 2026, the AI toolbox has also been available to students at KIT.",
+          "snapshotHash": "bb75ad8f77c8249c3c3533b7c0dee243f7548fadf4d885671388a0c7e6d1b8f9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "kit-karlsruhe-institute-of-technology",
+      "universityName": "KIT, Karlsruhe Institute of Technology",
+      "qsRank": 98,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Microsoft Copilot access with commercial data protection for KIT members who meet Microsoft cloud and training requirements.",
+      "howToObtain": "Authenticate with a KIT account via the central KIT login page after agreeing to Microsoft cloud use and completing the AI training course.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.scc.kit.edu/en/services/copilot.php",
+          "sourceTitle": "Microsoft Copilot - Access with commercial data protection",
+          "evidenceSnippet": "The service provides access to the AI application Microsoft Copilot with commercial data protection for KIT members who have agreed to use MS cloud services.",
+          "snapshotHash": "2cbe1d0b14d11410ba59e34cebfd525187904334e99684cf44d25e389298a1b2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.scc.kit.edu/en/services/copilot.php",
+          "sourceTitle": "Microsoft Copilot - Access with commercial data protection",
+          "evidenceSnippet": "All KIT members who have agreed to use Microsoft cloud services have secure access to the generative AI Microsoft Copilot.",
+          "snapshotHash": "00cda5b680d7935d8d4245b30f9fea78b4bcd7330e0fd7ea7434610a29651066",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260712-003",
-  "publishedAt": "2026-07-12T16:05:00Z",
-  "description": "Public release with validated QS91-100 AI tools records plus prior QS81-90 AI tools release.",
+  "releaseId": "public-release-20260712-002",
+  "publishedAt": "2026-07-12T11:20:00Z",
+  "description": "Public release with validated QS81-90 AI tools records plus prior QS71-80 AI tools release.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -813,17 +813,16 @@
     "staging/uapt-runs/uapt-ai-tools-qs-51-60-20260711",
     "staging/uapt-runs/uapt-ai-tools-qs-61-70-20260711",
     "staging/uapt-runs/uapt-ai-tools-qs-71-80-20260712",
-    "staging/uapt-runs/uapt-ai-tools-qs-81-90-20260712",
-    "staging/uapt-runs/uapt-ai-tools-qs-91-100-20260712"
+    "staging/uapt-runs/uapt-ai-tools-qs-81-90-20260712"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
-    "This release adds a validated AI tools extraction run for QS rows 91-100, with tool-level claim/evidence artifacts generated from official source-backed records.",
-    "QS91-100 AI tools records include official AI services and institution-hosted platforms for Sheffield, Uppsala, Alberta, UTS, and KIT; Osaka, Durham, Nottingham, Politecnico di Milano, and Zurich were not expanded without tool-level evidence.",
-    "QS91-100 extraction keeps broad example lists, completed pilots such as bwGPT, and pages without current access/procurement evidence out of current tool availability records.",
+    "This release adds a validated AI tools extraction run for QS rows 81-90, with tool-level claim/evidence artifacts generated from official source-backed records.",
+    "QS81-90 AI tools records include official AI services and university-hosted platforms for Penn State, Leeds, Boston University, and Purdue; Washington, Adelaide, UBA, Tokyo Tech, Southampton, and Freie Universitaet Berlin were not expanded without tool-level evidence.",
+    "QS81-90 extraction keeps platform-internal model families such as OpenAI, Anthropic, Google, Meta, Claude, ChatGPT, and Gemini inside AI Studio or TerrierGPT as platform descriptions unless the university presents them as separate tool/service entries.",
     "Generic AI literacy lists and broad model-family mentions are not expanded into tool-level allowed records without explicit tool-level evidence.",
     "AI tools records are tracker-derived metadata for navigation and comparison; they do not replace official university source language.",
-    "This release preserves public-release-20260712-002 in release history.",
+    "This release preserves public-release-20260712-001 in release history.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]
