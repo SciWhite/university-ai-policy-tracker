@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260712-001",
-  "publishedAt": "2026-07-12T02:45:00Z",
-  "description": "Public release with validated QS71-80 AI tools records plus prior QS61-70 AI tools release.",
+  "releaseId": "public-release-20260711-002",
+  "publishedAt": "2026-07-11T08:55:00Z",
+  "description": "Public release with validated QS61-70 AI tools records plus prior QS51-60 AI tools release.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -811,16 +811,15 @@
     "staging/uapt-runs/uapt-ai-tools-qs-41-45-20260710",
     "staging/uapt-runs/uapt-ai-tools-qs-46-50-20260710",
     "staging/uapt-runs/uapt-ai-tools-qs-51-60-20260711",
-    "staging/uapt-runs/uapt-ai-tools-qs-61-70-20260711",
-    "staging/uapt-runs/uapt-ai-tools-qs-71-80-20260712"
+    "staging/uapt-runs/uapt-ai-tools-qs-61-70-20260711"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
-    "This release adds a validated AI tools extraction run for QS rows 71-80, with tool-level claim/evidence artifacts generated from official source-backed records.",
-    "QS71-80 AI tools records include official tool directories and university-hosted platforms for Lund, Warwick, Birmingham, UWA, KTH, Glasgow, and Heidelberg; Paris-Saclay, Sorbonne, and Trinity College Dublin were not expanded without tool-level evidence.",
+    "This release adds a validated AI tools extraction run for the QS row-level continuation after QS51-60, with tool-level claim/evidence artifacts generated from official source-backed records.",
+    "QS61-70 AI tools records include explicit official tool directories and university-hosted platforms for Bristol, LSE, CityUHK, Auckland, UCSD, UT Austin, and UIUC; NTU, KFUPM, and Brown were not expanded without tool-level evidence.",
     "Generic AI literacy lists and broad model-family mentions are not expanded into tool-level allowed records without explicit tool-level evidence.",
     "AI tools records are tracker-derived metadata for navigation and comparison; they do not replace official university source language.",
-    "This release preserves public-release-20260711-002 in release history.",
+    "This release preserves public-release-20260711-001 in release history.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]

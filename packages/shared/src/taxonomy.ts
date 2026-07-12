@@ -10,6 +10,7 @@ export const aiTools = [
   "microsoft_copilot_for_m365",
   "github_copilot",
   "adobe_creative_cloud",
+  "adobe_express",
   "adobe_firefly",
   "aws_bedrock",
   "aws_sagemaker",
@@ -63,6 +64,8 @@ export const aiTools = [
   "power_bi_copilot",
   "copilot_studio",
   "teams_premium",
+  "microsoft_powerpoint",
+  "miro",
   "arcgis",
   "endnote",
   "panopto",
@@ -296,6 +299,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "Adobe Creative Cloud",
     provider: "Adobe",
     aliases: ["Adobe Creative Cloud", "Adobe Creative Cloud software"],
+    category: "commercial_assistant"
+  },
+  adobe_express: {
+    slug: "adobe_express",
+    label: "Adobe Express",
+    provider: "Adobe",
+    aliases: ["Adobe Express"],
     category: "commercial_assistant"
   },
   adobe_firefly: {
@@ -669,6 +679,20 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     aliases: ["Microsoft Teams Premium", "Teams Premium"],
     category: "office_suite"
   },
+  microsoft_powerpoint: {
+    slug: "microsoft_powerpoint",
+    label: "Microsoft PowerPoint",
+    provider: "Microsoft",
+    aliases: ["Microsoft PowerPoint", "PowerPoint Designer", "Presentation Coach"],
+    category: "office_suite"
+  },
+  miro: {
+    slug: "miro",
+    label: "Miro",
+    provider: "Miro",
+    aliases: ["Miro"],
+    category: "commercial_assistant"
+  },
   arcgis: {
     slug: "arcgis",
     label: "ArcGIS",
@@ -860,6 +884,8 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
       "UT Sage",
       "Illinois Chat",
       "Illinois ChatGPT",
+      "YoKI",
+      "heiBOT-IT",
       "AI Playground"
     ],
     category: "self_hosted_platform"
