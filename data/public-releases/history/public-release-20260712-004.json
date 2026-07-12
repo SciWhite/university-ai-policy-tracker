@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260712-005",
-  "publishedAt": "2026-07-12T18:05:00Z",
-  "description": "Public release with validated QS111-120 AI tools records plus prior QS101-110 AI tools release.",
+  "releaseId": "public-release-20260712-004",
+  "publishedAt": "2026-07-12T16:30:00Z",
+  "description": "Public release with validated QS101-110 AI tools records plus prior QS91-100 AI tools release.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -815,19 +815,17 @@
     "staging/uapt-runs/uapt-ai-tools-qs-71-80-20260712",
     "staging/uapt-runs/uapt-ai-tools-qs-81-90-20260712",
     "staging/uapt-runs/uapt-ai-tools-qs-91-100-20260712",
-    "staging/uapt-runs/uapt-ai-tools-qs-101-110-20260712",
-    "staging/uapt-runs/uapt-ai-tools-qs-111-120-20260712"
+    "staging/uapt-runs/uapt-ai-tools-qs-101-110-20260712"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
-    "This release adds a validated AI tools extraction run for QS rows 111-120, with official source-backed tool-level claim/evidence artifacts.",
-    "QS111-120 AI tools records include Aalto AI Assistant, UC Davis Rocky and approved AI tools, Helsinki Copilot/CurreChat/Kontra, Rice supported AI tools, UiO GPT UiO, Waterloo Copilot, and Georgia Tech enterprise AI offerings.",
-    "Pontificia Universidad Catolica de Chile was not expanded because no official tool-level availability source was found in this pass.",
+    "This release adds a validated AI tools extraction run for QS rows 101-110, with official source-backed tool-level claim/evidence artifacts.",
+    "QS101-110 AI tools records include Utrecht Copilot restrictions, RWTHgpt, DTU approved AI tools, Queen Mary Copilot, UW-Madison university-wide and pay-as-you-go AI services, and St Andrews Copilot.",
+    "Lomonosov Moscow State University, Universidade de Sao Paulo, Tohoku University, and Qatar University were not expanded because no official tool-level availability source was found in this pass.",
     "Official tool tables/directories are split into one record per explicitly named tool; broad examples and model-family mentions are not promoted without tool-level evidence.",
-    "Self-hosted university platforms are published under their real product names with self_deploy taxonomy metadata.",
-    "Cloud and enterprise AI services are marked conditionally allowed when they require licensing, pilot access, loaner programs, or local approval.",
+    "Cloud AI services are marked conditionally allowed when they require licensing, pay-as-you-go access, or risk assessment.",
     "AI tools records are tracker-derived metadata for navigation and comparison; they do not replace official university source language.",
-    "This release preserves public-release-20260712-004 in release history.",
+    "This release preserves public-release-20260712-003 in release history.",
     "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]

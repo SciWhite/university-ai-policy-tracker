@@ -1,0 +1,708 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-111-120-20260712",
+  "generatedAt": "2026-07-12T17:55:00.000Z",
+  "records": [
+    {
+      "universitySlug": "aalto-university",
+      "universityName": "Aalto University",
+      "qsRank": 114,
+      "tool": "self_deploy",
+      "rawToolName": "Aalto AI Assistant",
+      "reviewState": "agent_reviewed",
+      "description": "Aalto's own chat-based AI assistant for staff and students, built by Aalto IT Services and School of Science/RSE service.",
+      "howToObtain": "Visit ai.aalto.fi, choose login, and sign in with an Aalto user ID.",
+      "costToUser": "No direct user charge; Aalto asks users to monitor monthly usage against internal limits.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.aalto.fi/en/student-guide/students-using-ai-in-your-studies-tools-tips-and-best-practices",
+          "sourceTitle": "Students: using AI in your studies - Aalto University",
+          "evidenceSnippet": "Aalto AI Assistant is the university's own AI tool. It is secure, free of charge, and data you input will not be used to train the model.",
+          "snapshotHash": "37df299d5f1490178ebdc710da84b1025452390ff060ed85e0cb457200fbaa63",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.aalto.fi/en/services/aalto-ai-assistant",
+          "sourceTitle": "Aalto AI Assistant - Aalto University",
+          "evidenceSnippet": "Whether you're a staff member or student, Aalto AI Assistant, our new AI tool, is here to support you in your daily activities.",
+          "snapshotHash": "873543b8f0b657b336746ed35d173f6d9f9fb5ae8e15758a83a7fad4e7fd3a06",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-davis",
+      "universityName": "University of California, Davis",
+      "qsRank": 114,
+      "tool": "self_deploy",
+      "rawToolName": "Rocky AI Chat",
+      "reviewState": "agent_reviewed",
+      "description": "UC Davis Aggie AI pilot for finding answers about UC Davis-specific topics and connecting with campus support services.",
+      "howToObtain": "Open Rocky AI Chat from the UC Davis Aggie AI tools page.",
+      "costToUser": "No cost for UC Davis and UC Davis Health students, faculty, and staff.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+          "sourceTitle": "AI Tools - UC Davis IET",
+          "evidenceSnippet": "Rocky AI Chat is ideal for finding answers about UC Davis-specific topics and connecting with campus support services. Available to UC Davis and UC Davis Health students, faculty and staff at no cost.",
+          "snapshotHash": "c211aafac1874ca07d184584ce18b5cc6a83d2ca81f7bd8742d7f3c2a1b7f6b8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-davis",
+      "universityName": "University of California, Davis",
+      "qsRank": 114,
+      "tool": "self_deploy",
+      "rawToolName": "Rocky in Canvas",
+      "reviewState": "agent_reviewed",
+      "description": "UC Davis limited pilot for finding answers from course-specific and instructor-approved content in Canvas.",
+      "howToObtain": "Available only in participating pilot courses.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+          "sourceTitle": "AI Tools - UC Davis IET",
+          "evidenceSnippet": "Rocky in Canvas is ideal for finding answers course-specific and instructor-approved content in UC Davis Canvas. Available as a limited pilot to a small number of courses.",
+          "snapshotHash": "d8eaf4599ab6b2fd2d35f96f6238cd60811e962cee4f86ad6bcd2b3f3a2aa51a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-davis",
+      "universityName": "University of California, Davis",
+      "qsRank": 114,
+      "tool": "self_deploy",
+      "rawToolName": "SiteFarm AI Features",
+      "reviewState": "agent_reviewed",
+      "description": "UC Davis pilot AI features for generating text, images, titles, alt tags, and related content in SiteFarm.",
+      "howToObtain": "Available as a pilot to UC Davis campus web content creators and managers.",
+      "costToUser": "No cost during the pilot.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+          "sourceTitle": "AI Tools - UC Davis IET",
+          "evidenceSnippet": "SiteFarm AI Features are ideal for generating text, images, titles, alt tags and more in the campus web content management system. Available at no cost as a pilot to UC Davis campus web content creators and managers.",
+          "snapshotHash": "b1062011bb934f4c125c6fd3c0f4e1a4db46940c5aa419cef04a61dc59d3867b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-davis",
+      "universityName": "University of California, Davis",
+      "qsRank": 114,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "reviewState": "agent_reviewed",
+      "description": "UC Davis Aggie AI-listed Zoom features for meeting summaries, action items, in-meeting questions, and smart transcriptions.",
+      "howToObtain": "Use the Zoom AI Companion entry linked from Aggie AI tools.",
+      "costToUser": "No cost for UC Davis students, faculty, and staff.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+          "sourceTitle": "AI Tools - UC Davis IET",
+          "evidenceSnippet": "Zoom AI Companion is built into Zoom and available at no cost to UC Davis students, faculty and staff.",
+          "snapshotHash": "7939141ba54b857d0dc86f42bf742f0e21872a43a208ed86147f08942355d09a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-davis",
+      "universityName": "University of California, Davis",
+      "qsRank": 114,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "reviewState": "agent_reviewed",
+      "description": "UC Davis Aggie AI-listed Google Workspace AI assistant for fact-checking, real-time knowledge, and multimodal work.",
+      "howToObtain": "Access through UC Davis Google Workspace.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+          "sourceTitle": "AI Tools - UC Davis IET",
+          "evidenceSnippet": "Google Gemini is available to UC Davis campus students, faculty and staff in the UC Davis Google Workspace.",
+          "snapshotHash": "edf3d99c55a7a112b2d8eeace83e93b3f3ce2bbdc18324140a3fd2f82b157035",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-davis",
+      "universityName": "University of California, Davis",
+      "qsRank": 114,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "reviewState": "agent_reviewed",
+      "description": "UC Davis Aggie AI-listed tool for organizing, summarizing, and synthesizing information from multiple documents.",
+      "howToObtain": "Access through the NotebookLM entry linked from Aggie AI tools.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+          "sourceTitle": "AI Tools - UC Davis IET",
+          "evidenceSnippet": "NotebookLM is ideal for organizing, summarizing, and synthesizing information from multiple documents into new, original content. Available to UC Davis campus students, faculty and staff.",
+          "snapshotHash": "a41ce0071e25cb901b89ab578c76770ac3d85f3d2318f50c55c451f78d143bf4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-davis",
+      "universityName": "University of California, Davis",
+      "qsRank": 114,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "reviewState": "agent_reviewed",
+      "description": "UC Davis Aggie AI-listed ChatGPT Edu subscription for research, data analysis, content creation, and writing.",
+      "howToObtain": "Available by subscription to UC Davis campus faculty and staff.",
+      "costToUser": "Subscription required.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+          "sourceTitle": "AI Tools - UC Davis IET",
+          "evidenceSnippet": "ChatGPT Edu is available by subscription to UC Davis campus faculty and staff. Coming soon to UCDH staff.",
+          "snapshotHash": "73b24cdb9cfc8e4c49f69b6bec743c45217604951ab56ca5a4175c387f401316",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-davis",
+      "universityName": "University of California, Davis",
+      "qsRank": 114,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "reviewState": "agent_reviewed",
+      "description": "UC Davis Aggie AI-listed Microsoft chat tool for drafting emails, summaries, presentations, and data analysis.",
+      "howToObtain": "Access via the UC Davis Microsoft 365 Copilot Chat product brief.",
+      "costToUser": "No cost for UC Davis and UC Davis Health students, faculty, and staff.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+          "sourceTitle": "AI Tools - UC Davis IET",
+          "evidenceSnippet": "Microsoft 365 Copilot Chat is available to UC Davis and UC Davis Health students, faculty, and staff at no cost.",
+          "snapshotHash": "ebfd3a0af734a2445cd229732512c398f57d184af77f8f238bbfc11ddafc9777",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-california-davis",
+      "universityName": "University of California, Davis",
+      "qsRank": 114,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly",
+      "reviewState": "agent_reviewed",
+      "description": "UC Davis Aggie AI-listed Adobe tool for generating and editing images, videos, and text.",
+      "howToObtain": "Use an eligible UC Davis campus Adobe account.",
+      "costToUser": "Available to UC Davis campus Adobe account holders.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://iet.ucdavis.edu/aggie-ai/ai-tools",
+          "sourceTitle": "AI Tools - UC Davis IET",
+          "evidenceSnippet": "Adobe Firefly is ideal for generating and editing images, videos, and text. Available to UC Davis campus Adobe account holders.",
+          "snapshotHash": "92573897591d0529dda69ab3434da80f790856b2d8bf708ddc206489546a2816",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-helsinki",
+      "universityName": "University of Helsinki",
+      "qsRank": 116,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot with commercial data protection",
+      "reviewState": "agent_reviewed",
+      "description": "University of Helsinki-supported Microsoft Copilot service for text and image generation with commercial data protection.",
+      "howToObtain": "Use https://copilot.cloud.microsoft as a Helsinki student or staff member over 18.",
+      "costToUser": "Free access for University of Helsinki students and staff over 18.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://helpdesk.it.helsinki.fi/en/instructions/information-security-and-cloud-services/cloud-services/generative-ai-university",
+          "sourceTitle": "Generative AI at the University - University of Helsinki IT Helpdesk",
+          "evidenceSnippet": "The University of Helsinki has two general-purpose generative AI solutions: Microsoft Copilot with commercial data protection, available for all students and staff members over the age of 18, and CurreChat.",
+          "snapshotHash": "55cac6faed7c7d70bcda8cdaf5bd649d839ad581ab447704141500323c419c33",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://helpdesk.it.helsinki.fi/en/instructions/information-security-and-cloud-services/cloud-services/generative-ai-university",
+          "sourceTitle": "Generative AI at the University - University of Helsinki IT Helpdesk",
+          "evidenceSnippet": "If you are a University of Helsinki student or staff member over the age of 18, you have free access to the Microsoft Copilot with commercial data protection service.",
+          "snapshotHash": "4e26211576b1e1688574c23eff8ba84536f9016da654f296f2a4402238741d02",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-helsinki",
+      "universityName": "University of Helsinki",
+      "qsRank": 116,
+      "tool": "self_deploy",
+      "rawToolName": "CurreChat",
+      "reviewState": "agent_reviewed",
+      "description": "University of Helsinki-created generative AI tool for staff and teaching use, running OpenAI models in the university's Microsoft Azure cloud service in the EU.",
+      "howToObtain": "Use https://curre.helsinki.fi/chat; teaching use requires the CurreChat form.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://helpdesk.it.helsinki.fi/en/instructions/information-security-and-cloud-services/cloud-services/generative-ai-university",
+          "sourceTitle": "Generative AI at the University - University of Helsinki IT Helpdesk",
+          "evidenceSnippet": "CurreChat is restricted for use by the staff and for teaching purposes.",
+          "snapshotHash": "e19d210f5067805b42ae821d5c3ac67c8d4a7fe1f225ed3b291dcad2399e1f19",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.helsinki.fi/en/helsinki-university-library/using-collections/ai-services",
+          "sourceTitle": "AI services at the University of Helsinki",
+          "evidenceSnippet": "CurreChat is a generative AI tool created for the University community. CurreChat uses large language models developed by OpenAI, located in the University of Helsinki's Microsoft Azure cloud service in the EU.",
+          "snapshotHash": "979f9bcee93520d378e422ade10226ef5785be4adc44f9542169e4792ba9e54b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-helsinki",
+      "universityName": "University of Helsinki",
+      "qsRank": 116,
+      "tool": "self_deploy",
+      "rawToolName": "Kontra",
+      "reviewState": "agent_reviewed",
+      "description": "University of Helsinki language model-based machine translation service for English, Swedish, and Finnish.",
+      "howToObtain": "Use translate.helsinki.fi from the University network or via VPN.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://helpdesk.it.helsinki.fi/en/instructions/information-security-and-cloud-services/cloud-services/generative-ai-university",
+          "sourceTitle": "Generative AI at the University - University of Helsinki IT Helpdesk",
+          "evidenceSnippet": "The University has a language model-based machine translation service called Kontra, which is available at https://translate.helsinki.fi.",
+          "snapshotHash": "03ffbd2972d2b00ef409d7e7e1d8aaccd4d9b71b2cde94aee12c389df00c8173",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.helsinki.fi/en/helsinki-university-library/using-collections/ai-services",
+          "sourceTitle": "AI services at the University of Helsinki",
+          "evidenceSnippet": "The Kontra translation engine developed at the University of Helsinki is available in the University network via a VPN connection.",
+          "snapshotHash": "adb125805dc808336e8864977a2f4068188747a9c5ec3bb887898be73ddb9256",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-college-dublin",
+      "universityName": "University College Dublin",
+      "qsRank": 118,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "reviewState": "agent_reviewed",
+      "description": "UCD College of Arts and Humanities guidance says students can access Google Gemini through UCD Connect to experiment with generative AI under institutional licensing.",
+      "howToObtain": "Access through a UCD Connect account.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ucd.ie/artshumanities/study/aifutures/trafficlightsystem/",
+          "sourceTitle": "Traffic Light System - UCD College of Arts and Humanities",
+          "evidenceSnippet": "Students have access to Google Gemini and Microsoft Co-Pilot through their UCD Connect accounts so you can experiment with generative AI without having to set up an account with a third party.",
+          "snapshotHash": "72e2002b76bc3864c305c139607726cc274b4aafda524ed4733d30eec4cb88fb",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-college-dublin",
+      "universityName": "University College Dublin",
+      "qsRank": 118,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Co-Pilot",
+      "reviewState": "agent_reviewed",
+      "description": "UCD College of Arts and Humanities guidance says students can access Microsoft Co-Pilot through UCD Connect under an institutional licence.",
+      "howToObtain": "Access through a UCD Connect account.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ucd.ie/artshumanities/study/aifutures/trafficlightsystem/",
+          "sourceTitle": "Traffic Light System - UCD College of Arts and Humanities",
+          "evidenceSnippet": "These tools are available through an institutional licence that offers greater data protection.",
+          "snapshotHash": "fbe3c0599d51c5fc3a7b371c41506b4e16ca07167ca9e7aee9d991cb0e8b568f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "leiden-university",
+      "universityName": "Leiden University",
+      "qsRank": 119,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT",
+      "reviewState": "agent_reviewed",
+      "description": "Leiden staff guidance says ChatGPT is not supported because data security and privacy are not guaranteed.",
+      "howToObtain": "Not supported by Leiden University.",
+      "costToUser": "Not applicable.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.medewerkers.universiteitleiden.nl/veiligheid/informatiebeveiliging-en-privacy/veilig-digitaal-werken/werken-met-ai",
+          "sourceTitle": "Werken met AI - Leiden University",
+          "evidenceSnippet": "ChatGPT wordt niet ondersteund door Universiteit Leiden. De veiligheid van je gegevens en je privacy is niet gegarandeerd.",
+          "snapshotHash": "622d0d7ad559e2599c4f6bc04fe55f724221f27d27e2cf6e23bb783fc0b7acb5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "rice-university",
+      "universityName": "Rice University",
+      "qsRank": 119,
+      "tool": "grammarly",
+      "rawToolName": "Grammarly",
+      "reviewState": "agent_reviewed",
+      "description": "Rice-supported writing assistant listed in Rice Digital Learning's AI tools hub.",
+      "howToObtain": "Use the Grammarly link from Rice's supported AI tools list; contact OIT Help Desk if login fails.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://digital.rice.edu/ai-education",
+          "sourceTitle": "AI in Education - Rice University Digital Learning",
+          "evidenceSnippet": "Rice University provides access to several AI-powered tools to support instruction, research, and administrative work. Rice-Supported AI Tools include Grammarly.",
+          "snapshotHash": "ef08c62dd09b0dbbd73142683e2f625faee57cb5b9f170248a0e52f7c94b30bb",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "rice-university",
+      "universityName": "Rice University",
+      "qsRank": 119,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom: AI Companion",
+      "reviewState": "agent_reviewed",
+      "description": "Rice-supported Zoom AI Companion access listed in Rice Digital Learning's AI tools hub.",
+      "howToObtain": "Use the Zoom AI Companion link from Rice's supported AI tools list.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://digital.rice.edu/ai-education",
+          "sourceTitle": "AI in Education - Rice University Digital Learning",
+          "evidenceSnippet": "Rice-Supported AI Tools include Zoom: AI Companion.",
+          "snapshotHash": "6412c1bda51efd7ae50446bfdd6c840177e3c2028497f2945878968e000a7caf",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "rice-university",
+      "universityName": "Rice University",
+      "qsRank": 119,
+      "tool": "microsoft_copilot",
+      "rawToolName": "AI Microsoft Copilot",
+      "reviewState": "agent_reviewed",
+      "description": "Rice-supported Microsoft Copilot access listed in Rice Digital Learning's AI tools hub.",
+      "howToObtain": "Use the AI Microsoft Copilot link from Rice's supported AI tools list.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://digital.rice.edu/ai-education",
+          "sourceTitle": "AI in Education - Rice University Digital Learning",
+          "evidenceSnippet": "Rice-Supported AI Tools include AI Microsoft Copilot.",
+          "snapshotHash": "7dfb1a765e90b446a18f9583003364165a780c180882d784eca24d95cd9272c3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "rice-university",
+      "universityName": "Rice University",
+      "qsRank": 119,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "reviewState": "agent_reviewed",
+      "description": "Rice-supported Google Gemini access listed in Rice Digital Learning's AI tools hub.",
+      "howToObtain": "Use the Google Gemini link from Rice's supported AI tools list.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://digital.rice.edu/ai-education",
+          "sourceTitle": "AI in Education - Rice University Digital Learning",
+          "evidenceSnippet": "Rice-Supported AI Tools include Google Gemini.",
+          "snapshotHash": "c5cd12537aa0fbf8ac3d05531e4641187bccf8b000639001187a1eb454664900",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "rice-university",
+      "universityName": "Rice University",
+      "qsRank": 119,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "reviewState": "agent_reviewed",
+      "description": "Rice-supported NotebookLM access listed in Rice Digital Learning's AI tools hub.",
+      "howToObtain": "Use the NotebookLM link from Rice's supported AI tools list.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://digital.rice.edu/ai-education",
+          "sourceTitle": "AI in Education - Rice University Digital Learning",
+          "evidenceSnippet": "Rice-Supported AI Tools include NotebookLM.",
+          "snapshotHash": "3ce13d184971c98738c51420a555866393d417296c914404a2c76e56a5c93d54",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-oslo",
+      "universityName": "University of Oslo",
+      "qsRank": 119,
+      "tool": "self_deploy",
+      "rawToolName": "GPT UiO",
+      "reviewState": "agent_reviewed",
+      "description": "University of Oslo-developed privacy-friendly GPT chat that lets UiO users use OpenAI models within UiO privacy requirements.",
+      "howToObtain": "Sign in to GPT UiO with FEIDE.",
+      "costToUser": "Free use is stated for students and staff at UiO and partners.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.uio.no/english/services/it/ai/gpt-uio/",
+          "sourceTitle": "GPT UiO - University of Oslo",
+          "evidenceSnippet": "GPT UiO is a University of Oslo-developed service that allows all users to use AI models from OpenAI within the privacy requirements set by UiO.",
+          "snapshotHash": "a37a4ffd7fe45e51693a4b3be24d906399eaec3418660e66bbf8e55ac046ec86",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.uio.no/english/services/it/ai/gpt-uio/",
+          "sourceTitle": "GPT UiO - University of Oslo",
+          "evidenceSnippet": "Students and staff at UiO and other partners can log in with FEIDE and freely use the service.",
+          "snapshotHash": "2fefda72f6fdb2bef291affa4cc886da3d80cb048ac333938b0b0d35df4392af",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-oslo",
+      "universityName": "University of Oslo",
+      "qsRank": 119,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "reviewState": "agent_reviewed",
+      "description": "UiO student guidance recommends Microsoft Copilot alongside GPT UiO for secure AI use.",
+      "howToObtain": "Use Microsoft Copilot through UiO-recommended access and follow course rules.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.uio.no/english/studies/resources/ai_student.html",
+          "sourceTitle": "How to use AI as a student - University of Oslo",
+          "evidenceSnippet": "We recommend using GPT UiO or Microsoft Copilot, as this ensures your data is secure. Neither personal information nor data you input will be shared further.",
+          "snapshotHash": "6b002982270477882d868dcb034134a45ee86deeeb0d916a47d9351540eb1a1c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-waterloo",
+      "universityName": "University of Waterloo",
+      "qsRank": 119,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "reviewState": "agent_reviewed",
+      "description": "Waterloo guidance directs users to use Microsoft Copilot through their UWaterloo account for privacy and security protection.",
+      "howToObtain": "Use Microsoft Copilot through a UWaterloo account.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://uwaterloo.ca/academic-integrity/artificial-intelligence-and-chatgpt",
+          "sourceTitle": "Artificial intelligence and ChatGPT - University of Waterloo",
+          "evidenceSnippet": "Microsoft Copilot should be used through your UWaterloo account in order to protect the privacy and security of the data that you enter.",
+          "snapshotHash": "1e481361a9b101b6398c46d6eb5d78e23945d3f653538e1104b22890be9f5f44",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+          "sourceTitle": "Artificial Intelligence at UW - University of Waterloo",
+          "evidenceSnippet": "University of Waterloo staff, faculty, have access to Microsoft Copilot through their institutional account.",
+          "snapshotHash": "fb57a515f5269979dd243cc9d9536cb7964674ac10b1fc8402fd8bded7ab70e8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "georgia-institute-of-technology",
+      "universityName": "Georgia Institute of Technology",
+      "qsRank": 123,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Enterprise AI chat service",
+      "reviewState": "agent_reviewed",
+      "description": "Georgia Tech enterprise Copilot chat tool with text, graphic, and code generation plus commercial data protection.",
+      "howToObtain": "Use Georgia Tech OIT's Copilot Chat getting-started route.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.gatech.edu/ai/resources",
+          "sourceTitle": "Resources for Available AI Tools - Georgia Tech OIT",
+          "evidenceSnippet": "The Copilot chat tool offers text, graphic, and code generation with commercial data protection.",
+          "snapshotHash": "1ce300b5366b4a838d7f0ac167c4153e5834f10a8d8d70e8b258282269df7270",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://af.gatech.edu/2024-03/georgia-tech-accelerates-access-generative-ai-tools-issues-official-guidance-ai-use",
+          "sourceTitle": "Georgia Tech Accelerates Access to Generative AI Tools",
+          "evidenceSnippet": "Georgia Tech is accelerating access to generative artificial intelligence tools with the recent addition of the Microsoft Copilot Enterprise AI chat service.",
+          "snapshotHash": "32c96f3773a83477edff01358869d0c4a6cf532c0d0362160d571ad673afce05",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "georgia-institute-of-technology",
+      "universityName": "Georgia Institute of Technology",
+      "qsRank": 123,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "reviewState": "agent_reviewed",
+      "description": "Georgia Tech enterprise Google Gemini access for faculty and staff through managed environments.",
+      "howToObtain": "Faculty and staff access Gemini at gemini.g.gatech.edu; students, affiliates, and temporary employees request a Google for Education license through MyAccess Packages.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.gatech.edu/georgia-tech-adds-gemini-and-notebook-lm-ai-service-offerings",
+          "sourceTitle": "Georgia Tech Adds Gemini and Notebook LM to AI Service Offerings",
+          "evidenceSnippet": "Georgia Tech's Office of Information Technology continues to accelerate access to enterprise AI tools with the recent addition of Google Gemini and NotebookLM, now available to faculty and staff.",
+          "snapshotHash": "7e8afe8942f4f395fd435bccefdfe05eb606f77e16830e642a790069332cd5e1",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://oit.gatech.edu/georgia-tech-adds-gemini-and-notebook-lm-ai-service-offerings",
+          "sourceTitle": "Georgia Tech Adds Gemini and Notebook LM to AI Service Offerings",
+          "evidenceSnippet": "Faculty and staff access to Gemini is available at https://gemini.g.gatech.edu.",
+          "snapshotHash": "14037827aa92418d8f92837a8726fe38c4a66905a503d91d3a0ca79e5f5e56e7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "georgia-institute-of-technology",
+      "universityName": "Georgia Institute of Technology",
+      "qsRank": 123,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "reviewState": "agent_reviewed",
+      "description": "Georgia Tech enterprise NotebookLM access for faculty and staff through managed environments.",
+      "howToObtain": "Faculty and staff access NotebookLM at notebooklm.g.gatech.edu; students, affiliates, and temporary employees request a Google for Education license through MyAccess Packages.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.gatech.edu/georgia-tech-adds-gemini-and-notebook-lm-ai-service-offerings",
+          "sourceTitle": "Georgia Tech Adds Gemini and Notebook LM to AI Service Offerings",
+          "evidenceSnippet": "NotebookLM functions as a research-focused assistant, which allows users to upload documents and receive responses grounded in their own provided data.",
+          "snapshotHash": "037181974f14ee0368f59009da9801d550568032be8d8178ddba830d25dc37ba",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://oit.gatech.edu/georgia-tech-adds-gemini-and-notebook-lm-ai-service-offerings",
+          "sourceTitle": "Georgia Tech Adds Gemini and Notebook LM to AI Service Offerings",
+          "evidenceSnippet": "Faculty and staff access to NotebookLM is available at https://notebooklm.g.gatech.edu.",
+          "snapshotHash": "5dad875fcd8a161b5872f62a397b3a6a8580534e19c0a88fe90aef80117abfa3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "georgia-institute-of-technology",
+      "universityName": "Georgia Institute of Technology",
+      "qsRank": 123,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Copilot for Microsoft 365",
+      "reviewState": "agent_reviewed",
+      "description": "Georgia Tech AI Smart Pass loaner program temporary access to Copilot for Microsoft 365 for faculty and staff project-based use.",
+      "howToObtain": "Apply through OIT's AI Smart Pass loaner program.",
+      "costToUser": "Temporary loaner access; cost not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.gatech.edu/ai/resources",
+          "sourceTitle": "Resources for Available AI Tools - Georgia Tech OIT",
+          "evidenceSnippet": "The AI Smart Pass loaner program provides temporary access to Copilot for Microsoft 365 and Open AI ChatGPT Edu for faculty and staff.",
+          "snapshotHash": "bbc20078a9c700cf291c0a0bd9cfdf82bf1bc46ec4ba0c7bdbc7a51eccbf8736",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "georgia-institute-of-technology",
+      "universityName": "Georgia Institute of Technology",
+      "qsRank": 123,
+      "tool": "chatgpt",
+      "rawToolName": "Open AI ChatGPT Edu",
+      "reviewState": "agent_reviewed",
+      "description": "Georgia Tech AI Smart Pass loaner program temporary access to OpenAI ChatGPT Edu for faculty and staff project-based use.",
+      "howToObtain": "Apply through OIT's AI Smart Pass loaner program.",
+      "costToUser": "Temporary loaner access; cost not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://oit.gatech.edu/ai/resources",
+          "sourceTitle": "Resources for Available AI Tools - Georgia Tech OIT",
+          "evidenceSnippet": "OIT invites Georgia Tech faculty and staff to participate in the AI Smart Pass loaner program, which provides temporary access to Copilot for Microsoft 365 and Open AI ChatGPT Edu.",
+          "snapshotHash": "b794ccbb243c987513164ff91c91552e096dce7eeec9a8afd8c438200b389b06",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
