@@ -1,0 +1,508 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-101-110-20260712",
+  "generatedAt": "2026-07-12T16:20:00.000Z",
+  "records": [
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "utrecht-university",
+      "universityName": "Utrecht University",
+      "qsRank": 103,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Utrecht says its Microsoft offering includes Copilot, but explicitly discourages student use while safe AI tooling is still being arranged.",
+      "howToObtain": "Included in the UU Microsoft offering; students are directed to follow UU AI conditions of use and note that UU discourages Copilot use.",
+      "costToUser": "Not specified.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/students/ai-tools-for-students/conditions-of-use-of-ai-tools",
+          "sourceTitle": "Conditions of use of AI tools by students - Utrecht University",
+          "evidenceSnippet": "The Microsoft offering from UU includes Copilot, but UU discourages using Copilot.",
+          "snapshotHash": "cecdcb89dfa11dfc56e16af71f6752f664caa297f505bc644844f0f545065299",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "rwth-aachen-university",
+      "universityName": "RWTH Aachen University",
+      "qsRank": 105,
+      "tool": "self_deploy",
+      "rawToolName": "RWTHgpt",
+      "description": "RWTHgpt is RWTH Aachen University's AI chatbot based on KI:connect, offering central access to generative AI models and applications.",
+      "howToObtain": "Open the KI:connect web interface, select RWTH, and log in through RWTH Single Sign-On.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://help.itc.rwth-aachen.de/en/service/1808737e10424937b76e564ed15d8028/",
+          "sourceTitle": "KI:connect / RWTHgpt - IT Center Help - RWTH Aachen University",
+          "evidenceSnippet": "RWTHgpt is the AI chatbot for RWTH Aachen University, based on KI:connect. With RWTHgpt, members of the RWTH Aachen University community can chat directly with an artificial intelligence system.",
+          "snapshotHash": "0834d087703217f69c02daefada8b02e23aa40ff49668433981a74fd2bacdcbe",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://help.itc.rwth-aachen.de/en/service/1808737e10424937b76e564ed15d8028/",
+          "sourceTitle": "KI:connect / RWTHgpt - IT Center Help - RWTH Aachen University",
+          "evidenceSnippet": "Persons with the status Student RWTH, Employee RWTH or Employee FB10 are authorized to access the RWTHgpt service.",
+          "snapshotHash": "c5ee3dd7f19227314e096a13c7c9aa4a65b3caf0111a206137baf36baca560ab",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "technical-university-of-denmark",
+      "universityName": "Technical University of Denmark",
+      "qsRank": 107,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot Chat",
+      "description": "DTU-approved Microsoft AI assistant for questions, text generation, analysis, emails, reports, and work-tool assistance.",
+      "howToObtain": "Log in with a DTU account and verify the green shield before use.",
+      "costToUser": "Available to everyone at DTU.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.inside.dtu.dk/en/it-information-technology/ai-technologies-at-dtu/vaelg-din-ai-vaerktoejskasse",
+          "sourceTitle": "Choose your AI tool - DTU Inside",
+          "evidenceSnippet": "The AI-tools listed below are approved by AIT. Copilot Chat is available to all at DTU, both employees and students.",
+          "snapshotHash": "5149ec8ad42e7a97213cfc030cd8ddde4b7a23708bbea1db7ebb935d4dcfac2c",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.inside.dtu.dk/en/it-information-technology/ai-technologies-at-dtu/vaelg-din-ai-vaerktoejskasse",
+          "sourceTitle": "Choose your AI tool - DTU Inside",
+          "evidenceSnippet": "Copilot Chat is safe to use when you are logged in with your DTU account and see the green shield. DTU has a data processing agreement with Microsoft.",
+          "snapshotHash": "29663009bd2cb1500bdfc64d5bd371719d30a01cbe26ab3f7f6db2ab9be75485",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "technical-university-of-denmark",
+      "universityName": "Technical University of Denmark",
+      "qsRank": 107,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Copilot 365",
+      "description": "DTU-approved licensed Copilot tier integrated into Microsoft 365 apps such as Outlook, Word, PowerPoint, Excel, and Teams.",
+      "howToObtain": "Manager approval, unit-funded license, and mandatory Copilot 365 onboarding e-learning are required before activation.",
+      "costToUser": "The unit pays for the license.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.inside.dtu.dk/en/it-information-technology/ai-technologies-at-dtu/vaelg-din-ai-vaerktoejskasse",
+          "sourceTitle": "Choose your AI tool - DTU Inside",
+          "evidenceSnippet": "Copilot 365 is the big brother compared to Copilot Chat and therefore requires an additional license.",
+          "snapshotHash": "e6528f029c02c2aff0a26625a2fc022b010c9953fa5c80d194557068600c76cb",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.inside.dtu.dk/en/it-information-technology/ai-technologies-at-dtu/vaelg-din-ai-vaerktoejskasse",
+          "sourceTitle": "Choose your AI tool - DTU Inside",
+          "evidenceSnippet": "A license must be approved by your immediate manager, as the unit pays for the license. Before the license can be activated, the employee must have completed and passed the mandatory e-learning course.",
+          "snapshotHash": "97c28d5bd89ff7f04a08954336286e5d27f654ea8d2bced5ab0418a1d4cb1293",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "technical-university-of-denmark",
+      "universityName": "Technical University of Denmark",
+      "qsRank": 107,
+      "tool": "copilot_studio",
+      "rawToolName": "Copilot Studio",
+      "description": "DTU-approved trial-phase tool for designing custom AI assistants and automation solutions.",
+      "howToObtain": "Contact IT Innovation in AIT through IT Support with a strong use case to participate in the trial.",
+      "costToUser": "Not specified.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.inside.dtu.dk/en/it-information-technology/ai-technologies-at-dtu/vaelg-din-ai-vaerktoejskasse",
+          "sourceTitle": "Choose your AI tool - DTU Inside",
+          "evidenceSnippet": "Copilot Studio is in a trial phase, but if you have a strong use case, you can contact IT Innovation in AIT through IT Support to participate in testing the tool.",
+          "snapshotHash": "3e5467f2a2e35ca8bee37a9b268eddb108fba02b2d3fdccfdca7d6e1feedea8c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "technical-university-of-denmark",
+      "universityName": "Technical University of Denmark",
+      "qsRank": 107,
+      "tool": "azure_ai_foundry",
+      "rawToolName": "Azure AI Foundry",
+      "description": "DTU-approved platform for advanced AI development and testing, including model work, data analysis, and intelligent solutions.",
+      "howToObtain": "Request license purchase through the DTU Service Portal under License Consulting; an Azure subscription and manager approval are required.",
+      "costToUser": "The unit pays for the license.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.inside.dtu.dk/en/it-information-technology/ai-technologies-at-dtu/vaelg-din-ai-vaerktoejskasse",
+          "sourceTitle": "Choose your AI tool - DTU Inside",
+          "evidenceSnippet": "Azure AI Foundry is a platform for advanced AI development and testing, where you can work with AI models, analyze data, and build intelligent solutions.",
+          "snapshotHash": "f5f978becbe10723c7885857638ca68162e26edc60b5dde3ea7a5c8a5fc021fa",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.inside.dtu.dk/en/it-information-technology/ai-technologies-at-dtu/vaelg-din-ai-vaerktoejskasse",
+          "sourceTitle": "Choose your AI tool - DTU Inside",
+          "evidenceSnippet": "A license must be approved by your immediate manager, as the unit pays for the license. The unit must also have an Azure Subscription for the license to work.",
+          "snapshotHash": "e24985bb38f04aa0fbccc55a2b89b425a99971001bab5c8f9fb34c512c39d8b6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "queen-mary-university-of-london",
+      "universityName": "Queen Mary University of London",
+      "qsRank": 110,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Queen Mary-supported Microsoft 365 AI tool for staff, positioned as the secure institutional option for AI exploration and use.",
+      "howToObtain": "Access through Queen Mary University credentials.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.qmul.ac.uk/queenmaryacademy/educators/resources/assessment-and-feedback/resources/generative-ai-and-chat-gpt/",
+          "sourceTitle": "Staff Guide to Generative AI - Queen Mary University of London",
+          "evidenceSnippet": "All Queen Mary staff have access to Microsoft Copilot through their University credentials. This platform is integrated within our Microsoft 365 environment.",
+          "snapshotHash": "ae3da8cb6b8c3a8972ba9ff789a823e7afc5c3f84c9ebdd7b05c00ba8ae6f5da",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.qmul.ac.uk/queenmaryacademy/educators/resources/assessment-and-feedback/resources/generative-ai-and-chat-gpt/",
+          "sourceTitle": "Staff Guide to Generative AI - Queen Mary University of London",
+          "evidenceSnippet": "Use Microsoft Copilot when working with sensitive, confidential, or internal-use-only information.",
+          "snapshotHash": "7db7c45d43ee08a6a0caa32093d7b6a78772da297a578100fa31c8d719fcf81d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "UW-Madison-vetted AI chatbot for productivity, text, translation, questions, images, and code under UW account protections.",
+      "howToObtain": "Launch Google Gemini and sign in with a UW NetID.",
+      "costToUser": "Free university-wide.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "UW-Madison has vetted and secured contracts for the generative AI services below. These tools are available university-wide for free.",
+          "snapshotHash": "480945ed3547d87bf7746c84d8f864d10f65485815c1b4ad93a7dbe5655cb26f",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "Google Gemini is an AI chatbot designed to enhance productivity and creativity through natural language interactions.",
+          "snapshotHash": "6b2bbee0904d1b8fd068cc804e55474cb5c6695d0e7d90f2dc5a9f2e3d29d6de",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot (Copilot Chat)",
+      "description": "UW-Madison Copilot Chat access through Microsoft 365 with NetID sign-in and enterprise data protections.",
+      "howToObtain": "Use Copilot Chat on the web or in Microsoft 365 apps with a UW NetID.",
+      "costToUser": "Free university-wide.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "Copilot Chat is available to all university students and employees as part of your UW-Madison Microsoft 365 account.",
+          "snapshotHash": "aac503d3eb41fffeca9bef3fb763fce8028c8ca2bf795b5ea9a596abded2778b",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://kb.wisc.edu/aisolutions/154501",
+          "sourceTitle": "Generative AI Tools Available at UW-Madison",
+          "evidenceSnippet": "Microsoft Copilot Chat | A secure AI chatbot for writing and explaining things | Web and app chat with enterprise protections when signed in with your UW account.",
+          "snapshotHash": "b3d4b11acee9cfd0028ab48ee60fffa049af93684e3a36c51091ee5d5f8e202c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "UW-Madison Google account tool for working with uploaded documents and other digital content with source-grounded outputs.",
+      "howToObtain": "Launch NotebookLM through the UW Google account.",
+      "costToUser": "Free university-wide.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "NotebookLM is an AI-powered notebook designed to help you understand and work with your uploaded documents and other digital content.",
+          "snapshotHash": "cd2ef04d6b9f5d42c5dabfef2256eab9e2af8ffd3a19ba3c66c84a8fa7b2812f",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "NotebookLM is included with your UW-Madison Google account.",
+          "snapshotHash": "73aeccdbb0909dced6b66ea5e803544b3a33436376160019d0fd1e38b7580d01",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "google_workspace_studio",
+      "rawToolName": "Google Workspace Studio",
+      "description": "UW-Madison-supported no-code platform for building Gemini-powered agents that automate tasks across Google Workspace.",
+      "howToObtain": "Sign in with NetID and open the Workspace Studio icon in UW-Madison Google Drive.",
+      "costToUser": "Included with UW access.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://kb.wisc.edu/aisolutions/154501",
+          "sourceTitle": "Generative AI Tools Available at UW-Madison",
+          "evidenceSnippet": "Google Workspace Studio | No-code platform for building Gemini-powered agents that automate tasks across Google Workspace.",
+          "snapshotHash": "51be53ed8d9736d3f68d48fd91d53b310fc8caa3d31ed23342fbaf858a6a4d0d",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://kb.wisc.edu/aisolutions/154501",
+          "sourceTitle": "Generative AI Tools Available at UW-Madison",
+          "evidenceSnippet": "Access: Sign in with your NetID and open the Workspace Studio icon in the top-right corner of your UW-Madison Google Drive.",
+          "snapshotHash": "0ba36f8ede176fe0ee9efab985df50344fc19c62c3fb801ca6e3576f36089a9b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "UW-Madison Zoom AI feature set for meeting summaries, action items, meeting Q&A, and third-party meeting note-taking.",
+      "howToObtain": "Enable host opt-in Zoom AI Companion features in UW Zoom.",
+      "costToUser": "Free university-wide.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "Zoom AI Companion can automatically create meeting summaries, identify action items and quickly answer questions about what happened during meetings.",
+          "snapshotHash": "1ec44b63416f8d6e273313916024f5b300099d87d1e39bb25776892d324dae40",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://kb.wisc.edu/aisolutions/154501",
+          "sourceTitle": "Generative AI Tools Available at UW-Madison",
+          "evidenceSnippet": "Use Zoom AI Companion (host must opt in) or Webex AI Assistant. Each provides summaries and action items when hosts turn AI features on.",
+          "snapshotHash": "b6ad7b17b25ab05947567ca71d7d71847088058f6f18929d8302c7c1835a4abc",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "webex_ai",
+      "rawToolName": "Webex AI Assistant",
+      "description": "UW-Madison-supported Cisco Webex AI meeting tool for real-time translation, transcription, voice commands, and summaries.",
+      "howToObtain": "Use supported Webex AI Assistant features in UW Webex.",
+      "costToUser": "Free university-wide.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "Webex AI Assistant is an AI-powered meeting tool that offers real-time translation, transcription, voice commands and post-meeting summaries.",
+          "snapshotHash": "7f8c3cfc3e7496b55b64e9e4d9a09836f8311165f6e88d0407c07ed89b56b510",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://kb.wisc.edu/aisolutions/154501",
+          "sourceTitle": "Generative AI Tools Available at UW-Madison",
+          "evidenceSnippet": "Webex AI Assistant | Meeting-focused AI for summaries and key points | Summaries, action items, real-time insights in meetings.",
+          "snapshotHash": "67d878efeb60824eaeb384f3e9fed0624667be8a3a21bb9ba6df6a5bd08cb494",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly",
+      "description": "UW-Madison-listed creative image generation and text-effects tool with Adobe commercial-safety positioning.",
+      "howToObtain": "Use UW-provided Adobe Firefly access; support is through Adobe rather than a dedicated campus support team.",
+      "costToUser": "UW provides access.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://kb.wisc.edu/aisolutions/154501",
+          "sourceTitle": "Generative AI Tools Available at UW-Madison",
+          "evidenceSnippet": "Adobe Firefly | Creative image generation and text effects | Commercially safer image generation.",
+          "snapshotHash": "e27a71157664e2c551b7b9f07c4d2a3064ccb42496d259ea183d56f70e4a89eb",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://kb.wisc.edu/aisolutions/154501",
+          "sourceTitle": "Generative AI Tools Available at UW-Madison",
+          "evidenceSnippet": "Support: Adobe (vendor). UW provides access, but there is no dedicated campus Firefly support team.",
+          "snapshotHash": "693b149bec15d964070a00a78b290c44f70e939b17b57fb21597c15ce59f882f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "aws_bedrock",
+      "rawToolName": "Amazon Web Services (AWS) Bedrock",
+      "description": "UW-Madison pay-as-you-go cloud AI service for building AI applications using foundation models.",
+      "howToObtain": "Available to faculty and staff through UW-Madison public cloud access; risk assessment is required before sensitive or restricted data use.",
+      "costToUser": "Pay-as-you-go.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "These enterprise AI services are available to university faculty and staff on a pay-as-you-go basis. Amazon Web Services (AWS) Bedrock.",
+          "snapshotHash": "cd77803dc4166216ff9fd5261f2e6662d9cc41fdfc25d7b9b371aba5c7ee2b52",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "Amazon Bedrock is a cloud service that makes it easy to build AI applications using foundation models from leading AI companies.",
+          "snapshotHash": "316cc230166ef12cf11c8ee3a257e20752681062c2e43456e49933d660699355",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "google_vertex_ai",
+      "rawToolName": "Google Cloud Platform AI Services",
+      "description": "UW-Madison pay-as-you-go GCP AI services with access to foundation models including Claude and Mixtral.",
+      "howToObtain": "Available to faculty and staff through GCP; Cybersecurity evaluation is required for sensitive or restricted data uses.",
+      "costToUser": "Pay-as-you-go.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "Google Cloud Platform (GCP) offers cloud computing resources and access to more than 90 foundation models, such as Claude from Anthropic and Mixtral from Mistral AI.",
+          "snapshotHash": "43e49da0fab44c19eb17548f0d5060ede6cec701bce915d2c28e6bba808e07ea",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "GCP is available to faculty and staff but requires Cybersecurity evaluation for uses involving sensitive or restricted data.",
+          "snapshotHash": "9e8781513e4d0866b57db54b828babbd178f33bfafe23fe1b82aba4ade46a05d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-wisconsin-madison",
+      "universityName": "University of Wisconsin-Madison",
+      "qsRank": 110,
+      "tool": "azure_ai",
+      "rawToolName": "Microsoft Azure AI Services",
+      "description": "UW-Madison Azure cloud AI service with OpenAI API access for faculty and staff.",
+      "howToObtain": "Request UW-Madison Azure AI access; Cybersecurity and public cloud risk assessment are required before sensitive or restricted data use.",
+      "costToUser": "Pay-as-you-go.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "UW-Madison's Azure service offers cloud computing resources, including access to OpenAI's API, for processing and storing public or internal data.",
+          "snapshotHash": "1b72abd1991a45f67bc9fd6458c5f9a6e5b2832c652627d90318532cb00f6c33",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://it.wisc.edu/generative-ai-services-uw-madison/",
+          "sourceTitle": "Generative AI Services at UW-Madison: Tools, Policies & Resources",
+          "evidenceSnippet": "It's available to faculty and staff but requires Cybersecurity evaluation for uses involving sensitive or restricted data.",
+          "snapshotHash": "4aa8ea16f1c37ceb96e9a6f158a077c2efc007abc7edd038b0fb1dbec7eadb01",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-st-andrews",
+      "universityName": "University of St Andrews",
+      "qsRank": 112,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "St Andrews-provided AI tool for staff and students, with Commercial Data Protection enabled.",
+      "howToObtain": "Use the university-provided Microsoft Copilot service; consult IT guidelines for access details.",
+      "costToUser": "Not specified.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.st-andrews.ac.uk/policy/academic-policies-assessment-examination-and-award-good-academic-practice/generative-ai-faqs-students-guidance.pdf",
+          "sourceTitle": "Generative AI - FAQs for students - University of St Andrews",
+          "evidenceSnippet": "The University's provided AI tool is Microsoft Copilot. This is available to all staff and students, with Commercial Data Protection services enabled.",
+          "snapshotHash": "0ef700fafd347cb66584b8a60449cf2aa033ce0731904cfee8affc2c57cb7e0b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}

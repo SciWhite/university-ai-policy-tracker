@@ -166,7 +166,7 @@ export function deriveUniversityToolRecordsForSummary(
         const key = buildToolRecordKey(
           summary.entity.slug,
           tool,
-          normalizedValue?.rawToolName
+          normalizedValue?.rawToolName ?? mention.rawToolName
         );
         const evidence = toolEvidenceRecordSchema.parse({
           sourceUrl: segment.sourceUrl,
