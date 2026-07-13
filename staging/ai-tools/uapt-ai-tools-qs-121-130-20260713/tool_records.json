@@ -1,0 +1,435 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-121-130-20260713",
+  "generatedAt": "2026-07-13T02:35:00.000Z",
+  "records": [
+    {
+      "universitySlug": "rmit-university",
+      "universityName": "RMIT University",
+      "qsRank": 125,
+      "tool": "self_deploy",
+      "rawToolName": "Val",
+      "reviewState": "agent_reviewed",
+      "description": "RMIT's private generative AI chatbot for student study support, powered by OpenAI models.",
+      "howToObtain": "Launch Val and sign in with an RMIT email and password.",
+      "costToUser": "Free for eligible RMIT students.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.rmit.edu.au/students/support-services/study-support/val",
+          "sourceTitle": "Val GenAI Chatbot - Your virtual learning assistant - RMIT University",
+          "evidenceSnippet": "Val is RMIT's generative artificial intelligence tool - powered by OpenAI's GPT-4.1, GPT-4o and o3-mini models. Val is private, secure and free for RMIT students to use.",
+          "snapshotHash": "3ceab139cfef4dced9f91420bb7c378180075cac24f94346760e6491d6a483c3",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.rmit.edu.au/students/news/2024/mar/five-ways-get-most-out-of-val",
+          "sourceTitle": "Five ways to get the most out of Val, RMIT's AI chatbot - RMIT University",
+          "evidenceSnippet": "Val is RMIT's official generative AI chatbot. It's powered by GPT-4o, but it's confidential, secure and free for RMIT students.",
+          "snapshotHash": "4ace1b45a16f19f025e2e7f891091385bce389610ef7891c762fc6dc336cb189",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "sungkyunkwan-university",
+      "universityName": "Sungkyunkwan University (SKKU)",
+      "qsRank": 126,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT",
+      "reviewState": "agent_reviewed",
+      "description": "SKKU's official ChatGPT information site provides access instructions, student use cases, instructor use cases, and misuse guidance.",
+      "howToObtain": "Use SKKU's ChatGPT Total Information guidance pages for access and use instructions.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "evidence": [
+        {
+          "sourceUrl": "https://chatgpt.skku.edu/chatgpt_eng/index.do",
+          "sourceTitle": "Sungkyunkwan University (SKKU) ChatGPT Total Information",
+          "evidenceSnippet": "The SKKU ChatGPT Total Information site includes Introducing ChatGPT, How to Use ChatGPT, ChatGPT as a Tool, Student Use Cases, Instructor Use Cases, and misuse guidance.",
+          "snapshotHash": "c715263db3aa72f052226a0eabdee1e84d8c1301dc529ca0042a0411c89227b4",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://skb.skku.edu/chatgpt_eng/chatGPT_ex_student.do",
+          "sourceTitle": "Sungkyunkwan University (SKKU) ChatGPT Total Information | Student Use Cases",
+          "evidenceSnippet": "SKKU student guidance lists possible ChatGPT uses including asking questions, writing feedback, research support, idea generation, language learning, programming help, and illustration keyword generation.",
+          "snapshotHash": "e0ec7d3edc20938d84e698cb19cc70cac658338b48a7b6f627fb6772f926b4a4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "sapienza-university-of-rome",
+      "universityName": "Sapienza University of Rome",
+      "qsRank": 128,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot Chat",
+      "reviewState": "agent_reviewed",
+      "description": "Microsoft Copilot Chat is presented by Sapienza as a generative AI solution integrated into the university's Microsoft 365 platform.",
+      "howToObtain": "Use Sapienza's Microsoft 365 environment; the source also linked training/webinar course pages.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.uniroma1.it/it/notizia/scopri-copilot-chat",
+          "sourceTitle": "Scopri Copilot Chat - Sapienza Università di Roma",
+          "evidenceSnippet": "Copilot Chat è la nuova soluzione basata su modelli di intelligenza artificiale generativa, ora integrata nella piattaforma Microsoft 365 della nostra università.",
+          "snapshotHash": "df1b9b605e0859153ac43356cc200035055445e760af7cb77b0e016f66376cbc",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://tlc-s.web.uniroma1.it/it/formazione-studenti-sullutilizzo-di-copilot-chat-di-microsoft",
+          "sourceTitle": "Formazione studenti sull'utilizzo di Copilot Chat di Microsoft - Sapienza TLC-S",
+          "evidenceSnippet": "The Sapienza TLC-S page describes Copilot Chat as a new generative AI solution integrated into Microsoft 365 and provides a student training course link.",
+          "snapshotHash": "e7bd1e4dc5455d301012fd8103fa80a25a97c0ca412b80eae9fcb41a1c558e8e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "humboldt-universitat-zu-berlin",
+      "universityName": "Humboldt-Universität zu Berlin",
+      "qsRank": 130,
+      "tool": "self_deploy",
+      "rawToolName": "HU AI Tools /chat",
+      "reviewState": "agent_reviewed",
+      "description": "Interactive chat interface for general AI tasks.",
+      "howToObtain": "Sign in with an HU account at ki-tools.hu-berlin.de/chat.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "AI Tools Overview / chat Interactive chat interface for general AI tasks ki-tools.hu-berlin.de/chat",
+          "snapshotHash": "b45e4976a9229eaaeffe87a5cb1612dc5fc8b13bb9eb1429a7061726f172e645",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "All data remains within the HU's domain. All AI services offered by Humboldt University are trustworthy AI systems: they comply with legal requirements, meet GDPR standards, do not store any input or output data, do not use input data for training purposes, and are operated exclusively within HU.",
+          "snapshotHash": "2a164eb1d6e872c5257fe5c5ad46ba3f3600ae4afdde2bfebd378b3e26b8c724",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "humboldt-universitat-zu-berlin",
+      "universityName": "Humboldt-Universität zu Berlin",
+      "qsRank": 130,
+      "tool": "self_deploy",
+      "rawToolName": "HU AI Tools /text",
+      "reviewState": "agent_reviewed",
+      "description": "Text editing without prompting via menu selection.",
+      "howToObtain": "Sign in with an HU account at ki-tools.hu-berlin.de/text.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "AI Tools Overview /text Text editing without prompting via menu selection ki-tools.hu-berlin.de/text",
+          "snapshotHash": "58f46c7e409f8cbad2b7f490e8c031a4485499149eafd98e3f48c8b6a4bbf8f2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "All data remains within the HU's domain. All AI services offered by Humboldt University are trustworthy AI systems: they comply with legal requirements, meet GDPR standards, do not store any input or output data, do not use input data for training purposes, and are operated exclusively within HU.",
+          "snapshotHash": "2a164eb1d6e872c5257fe5c5ad46ba3f3600ae4afdde2bfebd378b3e26b8c724",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "humboldt-universitat-zu-berlin",
+      "universityName": "Humboldt-Universität zu Berlin",
+      "qsRank": 130,
+      "tool": "self_deploy",
+      "rawToolName": "HU AI Tools /translate",
+      "reviewState": "agent_reviewed",
+      "description": "Translation of documents and long texts.",
+      "howToObtain": "Sign in with an HU account at ki-tools.hu-berlin.de/translate.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "AI Tools Overview /translate Translation of documents and long texts ki-tools.hu-berlin.de/translate",
+          "snapshotHash": "cd48c4060fc74e542486a6f54f3ffcf3b2a2c663a62c5419a4a35c2a86d0d1b2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "All data remains within the HU's domain. All AI services offered by Humboldt University are trustworthy AI systems: they comply with legal requirements, meet GDPR standards, do not store any input or output data, do not use input data for training purposes, and are operated exclusively within HU.",
+          "snapshotHash": "2a164eb1d6e872c5257fe5c5ad46ba3f3600ae4afdde2bfebd378b3e26b8c724",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "humboldt-universitat-zu-berlin",
+      "universityName": "Humboldt-Universität zu Berlin",
+      "qsRank": 130,
+      "tool": "self_deploy",
+      "rawToolName": "HU AI Tools /doc",
+      "reviewState": "agent_reviewed",
+      "description": "Upload multiple files and query them interactively.",
+      "howToObtain": "Sign in with an HU account at ki-tools.hu-berlin.de/doc.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "AI Tools Overview /doc Upload multiple files and interactively query them ki-tools.hu-berlin.de/doc",
+          "snapshotHash": "7fad6ff5680ad39d39f9149611ea2f254bbc37cc81bc23b5bee9ad79d1cebce6",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "All data remains within the HU's domain. All AI services offered by Humboldt University are trustworthy AI systems: they comply with legal requirements, meet GDPR standards, do not store any input or output data, do not use input data for training purposes, and are operated exclusively within HU.",
+          "snapshotHash": "2a164eb1d6e872c5257fe5c5ad46ba3f3600ae4afdde2bfebd378b3e26b8c724",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "humboldt-universitat-zu-berlin",
+      "universityName": "Humboldt-Universität zu Berlin",
+      "qsRank": 130,
+      "tool": "self_deploy",
+      "rawToolName": "HU AI Tools /stt",
+      "reviewState": "agent_reviewed",
+      "description": "Speech-to-text transcription for audio and video files.",
+      "howToObtain": "Sign in with an HU account at ki-tools.hu-berlin.de/stt.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "This tool allows you to transcribe spoken language from audio and video files and output it as text. The extracted transcriptions are automatically sent to your HU email address.",
+          "snapshotHash": "39ffe7e9a9bc62a5ca7a35d2f545a86a726a161bcc38dba3f12f585d294469f7",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "All data remains within the HU's domain. All AI services offered by Humboldt University are trustworthy AI systems: they comply with legal requirements, meet GDPR standards, do not store any input or output data, do not use input data for training purposes, and are operated exclusively within HU.",
+          "snapshotHash": "2a164eb1d6e872c5257fe5c5ad46ba3f3600ae4afdde2bfebd378b3e26b8c724",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "humboldt-universitat-zu-berlin",
+      "universityName": "Humboldt-Universität zu Berlin",
+      "qsRank": 130,
+      "tool": "self_deploy",
+      "rawToolName": "HU AI Tools /stt-helper",
+      "reviewState": "agent_reviewed",
+      "description": "Post-processing tool that turns spoken-language transcripts into structured text.",
+      "howToObtain": "Sign in with an HU account at ki-tools.hu-berlin.de/stt-helper.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "Post-processing of Transcriptions: To convert spoken language into conventionally readable text, we offer an additional tool.",
+          "snapshotHash": "904d7d6ff0e478c27572d854803d2489ffcb25ae40ea2cec4e72fdf8c977c8fd",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "All data remains within the HU's domain. All AI services offered by Humboldt University are trustworthy AI systems: they comply with legal requirements, meet GDPR standards, do not store any input or output data, do not use input data for training purposes, and are operated exclusively within HU.",
+          "snapshotHash": "2a164eb1d6e872c5257fe5c5ad46ba3f3600ae4afdde2bfebd378b3e26b8c724",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "humboldt-universitat-zu-berlin",
+      "universityName": "Humboldt-Universität zu Berlin",
+      "qsRank": 130,
+      "tool": "self_deploy",
+      "rawToolName": "HU AI Tools /vision",
+      "reviewState": "agent_reviewed",
+      "description": "Image analysis and visual information extraction using a vision-language model.",
+      "howToObtain": "Sign in with an HU account at ki-tools.hu-berlin.de/vision.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "Extracting Information from Images - Machine Vision: Using a Vision Language Model (VLM), images can be analyzed and information extracted from them.",
+          "snapshotHash": "9a6a04abb60972de230a557b18cd4c546227b1f723fffbfa2e21cd7b7d3dbe5a",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "All data remains within the HU's domain. All AI services offered by Humboldt University are trustworthy AI systems: they comply with legal requirements, meet GDPR standards, do not store any input or output data, do not use input data for training purposes, and are operated exclusively within HU.",
+          "snapshotHash": "2a164eb1d6e872c5257fe5c5ad46ba3f3600ae4afdde2bfebd378b3e26b8c724",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "humboldt-universitat-zu-berlin",
+      "universityName": "Humboldt-Universität zu Berlin",
+      "qsRank": 130,
+      "tool": "self_deploy",
+      "rawToolName": "HU AI Tools /dmp",
+      "reviewState": "agent_reviewed",
+      "description": "Generator for data management plan drafts.",
+      "howToObtain": "Sign in with an HU account at ki-tools.hu-berlin.de/dmp.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "Creating Data Management Plans: Based on curated, discipline-specific examples of real Data Management Plans (DMPs), draft DMPs can be generated.",
+          "snapshotHash": "66871c95798ccdbbfb4c764f20b280eebd02d17a74ddfbe5c63e884e932ce8f2",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "All data remains within the HU's domain. All AI services offered by Humboldt University are trustworthy AI systems: they comply with legal requirements, meet GDPR standards, do not store any input or output data, do not use input data for training purposes, and are operated exclusively within HU.",
+          "snapshotHash": "2a164eb1d6e872c5257fe5c5ad46ba3f3600ae4afdde2bfebd378b3e26b8c724",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "humboldt-universitat-zu-berlin",
+      "universityName": "Humboldt-Universität zu Berlin",
+      "qsRank": 130,
+      "tool": "self_deploy",
+      "rawToolName": "HU AI Tools /fdmassistent",
+      "reviewState": "agent_reviewed",
+      "description": "Research data management assistant based on institutional guidance and best practices.",
+      "howToObtain": "Sign in with an HU account at ki-tools.hu-berlin.de/fdmassistent.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "The FDM Assistant provides support in research data management. It is based on a curated knowledge base that consolidates institutional guidelines.",
+          "snapshotHash": "b06294dc14cb189e33aeabc329137fa6b57f5b0fed2584fff3888487c5daab49",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://ki.cms.hu-berlin.de/en/ai-tool",
+          "sourceTitle": "AI Tools - Artificial Intelligence at HU Berlin",
+          "evidenceSnippet": "All data remains within the HU's domain. All AI services offered by Humboldt University are trustworthy AI systems: they comply with legal requirements, meet GDPR standards, do not store any input or output data, do not use input data for training purposes, and are operated exclusively within HU.",
+          "snapshotHash": "2a164eb1d6e872c5257fe5c5ad46ba3f3600ae4afdde2bfebd378b3e26b8c724",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "aarhus-university",
+      "universityName": "Aarhus University",
+      "qsRank": 131,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "reviewState": "agent_reviewed",
+      "description": "Aarhus University staff guide for the basic enterprise version of Microsoft Copilot.",
+      "howToObtain": "Open copilot.microsoft.com and sign in with an AU ID.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://medarbejdere.au.dk/en/administration/it/guides/microsoft-copilot",
+          "sourceTitle": "Guide to using Microsoft Copilot - Aarhus University Staff Service",
+          "evidenceSnippet": "All AU employees have access to the basic enterprise version of Microsoft Copilot via their AU login.",
+          "snapshotHash": "26df85eaa8ad803124478f03790c4558434c7b17a8fdb47a64f233e894ccb5ec",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://medarbejdere.au.dk/en/administration/it/guides/microsoft-copilot",
+          "sourceTitle": "Guide to using Microsoft Copilot - Aarhus University Staff Service",
+          "evidenceSnippet": "How to find and sign in to Copilot: Open your browser and type 'copilot.microsoft.com'. Sign in using your AU ID.",
+          "snapshotHash": "40ea34fae3e25cacacec2fed3d71811ff281b232b3cc44d254b409087d2967f1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "aarhus-university",
+      "universityName": "Aarhus University",
+      "qsRank": 131,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Copilot 365",
+      "reviewState": "agent_reviewed",
+      "description": "Aarhus University states that access to the extended Copilot 365 version is not an option for IT security and data protection reasons.",
+      "howToObtain": "Not available according to the public staff guide.",
+      "costToUser": "Not applicable.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "evidence": [
+        {
+          "sourceUrl": "https://medarbejdere.au.dk/en/administration/it/guides/microsoft-copilot",
+          "sourceTitle": "Guide to using Microsoft Copilot - Aarhus University Staff Service",
+          "evidenceSnippet": "For IT security reasons, access to the extended version of Copilot 365 is not an option. This is due to data protection considerations and the potential access to sensitive data.",
+          "snapshotHash": "b78f651ba7a8821df6543b25a0563c2c0da47bf698579d40680b4e66429725e6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "universitySlug": "university-of-bath",
+      "universityName": "University of Bath",
+      "qsRank": 132,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "reviewState": "agent_reviewed",
+      "description": "University of Bath guidance identifies Microsoft Copilot as the university-provided GenAI tool for work use.",
+      "howToObtain": "Log into a Bath account and use copilot.microsoft.com, copilot.cloud.microsoft, or m65.cloud.microsoft/chat.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://teachinghub.bath.ac.uk/guide/introduction-to-microsoft-copilot/",
+          "sourceTitle": "Introduction to Microsoft Copilot - University of Bath Learning and Teaching Hub",
+          "evidenceSnippet": "Copilot is the only Generative AI tool available to all University staff when logged into a device with a Bath login.",
+          "snapshotHash": "24e07d3a9d0fb7e229eb7e9ec2b94527a43d34fb6a7970942fbff89a6ccf839e",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://teachinghub.bath.ac.uk/guide/what-is-generative-ai/",
+          "sourceTitle": "Generative AI - what is it? - University of Bath Learning and Teaching Hub",
+          "evidenceSnippet": "Microsoft Copilot is built into Microsoft Office and can be accessed directly at m65.cloud.microsoft/chat. It is the only GenAI tool provided by the University of Bath for work use and is made available to all staff and students.",
+          "snapshotHash": "1903cd69c59592828a2be1555053e5ac2872d32bee25b9d0d948ad4002b3a2e2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
