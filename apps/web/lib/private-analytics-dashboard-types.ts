@@ -133,6 +133,7 @@ export interface AnalyticsDashboardResponse {
   meta: {
     baselines: {
       attribution: string;
+      collector: string;
       tracking: string;
     };
     comparison: {

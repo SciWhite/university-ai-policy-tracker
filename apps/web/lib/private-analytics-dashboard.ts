@@ -36,6 +36,7 @@ import type {
 const ANALYTICS_TIME_ZONE = "America/Toronto";
 export const ANALYTICS_TRACKING_BASELINE = "2026-06-19";
 export const ANALYTICS_ATTRIBUTION_BASELINE = "2026-06-26";
+export const ANALYTICS_COLLECTOR_BASELINE = "2026-07-13";
 const MAX_RANGE_DAYS = 180;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -142,10 +143,20 @@ export async function getAnalyticsDashboard(
     previousRollupPromise
   ]);
   const rollupReady = Boolean(currentRollup && (!query.compare || previousRollup));
-  const [allRows, [currentGsc, previousGsc]] = await Promise.all([
-    loadRows(since, { excludeBots: false }),
+  const botDiagnosticFrom = loadFrom > ANALYTICS_COLLECTOR_BASELINE
+    ? loadFrom
+    : ANALYTICS_COLLECTOR_BASELINE;
+  const botDiagnosticRowsPromise = rollupReady && query.to >= ANALYTICS_COLLECTOR_BASELINE
+    ? loadRows(dateAtUtcNoon(shiftDate(botDiagnosticFrom, -1)), { excludeBots: false })
+    : Promise.resolve([]);
+  const [primaryRows, botDiagnosticRows, [currentGsc, previousGsc]] = await Promise.all([
+    loadRows(since, { excludeBots: rollupReady }),
+    botDiagnosticRowsPromise,
     gscPromise
   ]);
+  const allRows = rollupReady
+    ? primaryRows.concat(botDiagnosticRows.filter(isBotAnalyticsRow))
+    : primaryRows;
 
   const currentRangeRows = filterRowsByDate(allRows, query.from, query.to);
   const previousRangeRows = query.compare
@@ -210,6 +221,7 @@ export async function getAnalyticsDashboard(
     meta: {
       baselines: {
         attribution: ANALYTICS_ATTRIBUTION_BASELINE,
+        collector: ANALYTICS_COLLECTOR_BASELINE,
         tracking: ANALYTICS_TRACKING_BASELINE
       },
       comparison,

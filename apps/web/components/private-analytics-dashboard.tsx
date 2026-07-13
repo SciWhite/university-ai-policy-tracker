@@ -404,6 +404,7 @@ export function PrivateAnalyticsDashboard({
         <strong>{t.trust}</strong>
         <TrustItem date={data.meta.baselines.tracking} label={locale === "zh" ? "站内埋点开始" : "Onsite tracking started"} />
         <TrustItem date={data.meta.baselines.attribution} label={locale === "zh" ? "来源归因 v2" : "Attribution v2"} />
+        <TrustItem date={data.meta.baselines.collector} label={locale === "zh" ? "采集器 v2" : "Collector v2"} />
         <ComparisonItem item={data.meta.comparison.onsite} label={locale === "zh" ? "站内环比" : "Onsite comparison"} locale={locale} />
         <ComparisonItem item={data.meta.comparison.sources} label={locale === "zh" ? "来源环比" : "Source comparison"} locale={locale} />
         <ComparisonItem item={data.meta.comparison.gsc} label="GSC" locale={locale} />
@@ -519,7 +520,7 @@ export function PrivateAnalyticsDashboard({
           <div className="analytics-quality-grid">
             <article><span>{t.botRequests}</span><strong>{formatCount(current.botPageViews)}</strong><DashboardSparkline values={current.botTrend.map((row) => row.pageViews)} /></article>
             <article><span>{locale === "zh" ? "未知来源" : "Unknown source"}</span><strong>{formatPercent(current.unknownSourceShare)}</strong><p>{locale === "zh" ? "主 KPI 已剔除 Bot" : "Bots are excluded from main KPIs"}</p></article>
-            <article><span>{locale === "zh" ? "Bot 覆盖路径" : "Bot paths"}</span><strong>{formatCount(current.bot.uniquePaths)}</strong><p>{formatCount(current.bot.knownFamilyPageViews)} {locale === "zh" ? "次已识别" : "classified"}</p></article>
+            <article><span>{locale === "zh" ? "Bot 路径（v2 起）" : "Bot paths (since v2)"}</span><strong>{formatCount(current.bot.uniquePaths)}</strong><p>{formatCount(current.bot.knownFamilyPageViews)} {locale === "zh" ? "次已识别" : "classified"}</p></article>
             <article><span>{locale === "zh" ? "会话 ID 覆盖" : "Session ID coverage"}</span><strong>{formatPercent(current.quality.sessionIdCoverage)}</strong><p>{locale === "zh" ? "访客 ID" : "Visitor ID"}: {formatPercent(current.quality.visitorIdCoverage)}</p></article>
             <DataTable headers={[locale === "zh" ? "Bot family" : "Bot family", t.pageViews]} rows={current.bot.families.map((row) => ({ key: row.label, values: [row.label, formatCount(row.count)] }))} />
             <DataTable headers={[locale === "zh" ? "时间" : "When", locale === "zh" ? "事件" : "Event", locale === "zh" ? "路径" : "Path"]} rows={current.summary.recent.slice(0, 12).map((row) => ({ key: row.id, values: [formatDateTime(row.createdAt, locale), row.eventName, row.pathname] }))} />
