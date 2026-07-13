@@ -1,0 +1,548 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-131-140-20260713",
+  "generatedAt": "2026-07-13T05:45:00.000Z",
+  "records": [
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "macquarie-university",
+      "universityName": "Macquarie University (Sydney, Australia)",
+      "qsRank": 138,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "Macquarie staff are encouraged to use Microsoft Copilot Chat with their university account for AI work, and required to do so for work involving sensitive information.",
+      "howToObtain": "Log into Microsoft Copilot Chat with a Macquarie University account.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.mq.edu.au/__data/assets/pdf_file/0007/1333807/93e7447d1d6975a9a46cbe5499d7575d52670f18.pdf",
+          "sourceTitle": "Microsoft Copilot Chat - Macquarie University",
+          "evidenceSnippet": "Staff looking to utilise AI tools are encouraged to log into Microsoft Copilot Chat with your University account, and are required to do so for work that includes employee, student, health or critical or sensitive information.",
+          "snapshotHash": "24c3a1e0f128ee4a0b8188e916d3a2643401814f842e3224213ecb505e6122e5",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.mq.edu.au/__data/assets/pdf_file/0007/1333807/93e7447d1d6975a9a46cbe5499d7575d52670f18.pdf",
+          "sourceTitle": "Microsoft Copilot Chat - Macquarie University",
+          "evidenceSnippet": "Copilot Chat is a powerful AI solution running on our infrastructure using one of the latest language learning models (GPT-4o). Copilot Chat adheres to strict privacy standards.",
+          "snapshotHash": "41712ba92ee8b6e7df24cb70e7de839755b0ae43c5269401179d768dbb61eac3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "macquarie-university",
+      "universityName": "Macquarie University (Sydney, Australia)",
+      "qsRank": 138,
+      "tool": "deepseek",
+      "rawToolName": "DeepSeek",
+      "description": "Macquarie relays the Australian Government PSPF Direction banning DeepSeek products for projects receiving Commonwealth, State or Territory government funding.",
+      "howToObtain": "Not available for affected government-funded projects; applicable staff are asked to remove DeepSeek products.",
+      "costToUser": "Not applicable.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.mq.edu.au/__data/assets/pdf_file/0007/1333807/93e7447d1d6975a9a46cbe5499d7575d52670f18.pdf",
+          "sourceTitle": "Microsoft Copilot Chat - Macquarie University",
+          "evidenceSnippet": "Any projects receiving Commonwealth, State or Territory government funding are banned from using DeepSeek. Applicable staff are asked to remove DeepSeek products, applications and web services.",
+          "snapshotHash": "7876d1cf8977df664533796b4e85dd1508a2d65cc98090201352d7567f9b4f4a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "erasmus-university-rotterdam",
+      "universityName": "Erasmus University Rotterdam",
+      "qsRank": 140,
+      "tool": "institutional_ai_service",
+      "rawToolName": "Erudite",
+      "description": "EUR describes Erudite as a secure AI tool with ChatGPT-like functionality in a privacy-protected environment.",
+      "howToObtain": "Use the EUR-supported Erudite environment referenced by the university's teacher-support resources.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.eur.nl/en/news/supporting-teachers-using-ai",
+          "sourceTitle": "Supporting teachers in using AI - Erasmus University Rotterdam",
+          "evidenceSnippet": "At EUR, educators and students work with Erudite, a secure AI tool that offers similar functionalities to ChatGPT but operates within a privacy-protected environment.",
+          "snapshotHash": "99c5a5fd51262fc0e8b3a097a4c11ecab0498288545598558961d64e66a66881",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-north-carolina-at-chapel-hill",
+      "universityName": "University of North Carolina at Chapel Hill",
+      "qsRank": 140,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "UNC lists Microsoft Copilot as a general-use AI tool and ITS documents Microsoft 365 Copilot Chat with data protection.",
+      "howToObtain": "Access Copilot directly or through Microsoft Bing, signing in with a UNC Onyen account.",
+      "costToUser": "Basic license available to anyone with an Onyen; some users have a paid premium license.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.unc.edu/tools/",
+          "sourceTitle": "AI Tools at UNC",
+          "evidenceSnippet": "Microsoft Copilot is listed as an AI assistant integrated into Microsoft 365 apps, available to anyone with an onyen for Tier 1 and Tier 2 data.",
+          "snapshotHash": "a74302992b53f59017596d54874f89406d301d947e352da8c34e1ec080480ea6",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://its.unc.edu/ai/copilot/",
+          "sourceTitle": "Microsoft 365 Copilot Chat (with Data Protection) - UNC ITS",
+          "evidenceSnippet": "Microsoft 365 Copilot Chat (with Data Protection) is available to anyone with an Onyen. Everyone at UNC has the Copilot Chat basic license.",
+          "snapshotHash": "e3e2b47606dc1d5c0f5ee809f3fac3829bde7b4b1d80f8720eddb225d95d1859",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-north-carolina-at-chapel-hill",
+      "universityName": "University of North Carolina at Chapel Hill",
+      "qsRank": 140,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly",
+      "description": "UNC lists Adobe Firefly for image generation and image editing through the UNC Creative Cloud subscription.",
+      "howToObtain": "Access through the UNC Creative Cloud subscription.",
+      "costToUser": "Students and instructional faculty/staff: free; non-instructional faculty/staff: $25/year.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.unc.edu/tools/",
+          "sourceTitle": "AI Tools at UNC",
+          "evidenceSnippet": "Adobe Firefly is listed for generating images and text effects, accessible through the UNC Creative Cloud subscription; students and instructional faculty and staff are free, non-instructional faculty and staff are $25/year.",
+          "snapshotHash": "02e1c25836cc2427a587de91d18a3ace66def72390bd9f9c9cf3596cb47f78ad",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-north-carolina-at-chapel-hill",
+      "universityName": "University of North Carolina at Chapel Hill",
+      "qsRank": 140,
+      "tool": "self_deploy",
+      "rawToolName": "PromptLab",
+      "description": "UNC lists PromptLab as secure access to advanced LLMs from multiple leading service providers.",
+      "howToObtain": "Use PromptLab with a UNC Onyen.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.unc.edu/tools/",
+          "sourceTitle": "AI Tools at UNC",
+          "evidenceSnippet": "PromptLab is listed as secure access to advanced large language models from multiple leading service providers, available to anyone with an onyen for Tier 0 and Tier 1 data.",
+          "snapshotHash": "ede4b6a1926eb648d08b9a6cfb0178848034a778c299fc397c5cec4520d0ddab",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "self_deploy",
+      "rawToolName": "TAMU AI Chat",
+      "description": "Texas A&M's secure university-approved AI chat platform for GPT, Claude Sonnet, Gemini, and other models.",
+      "howToObtain": "Log in at tamu.ai with a Texas A&M NetID and password.",
+      "costToUser": "Campus members receive a limited number of free tokens each day; additional tokens may be purchasable later.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "Open to all Texas A&M students and employees, TAMU AI Chat provides staff, faculty, researchers, and students with a secure, university-approved platform to access OpenAI's GPT, Anthropic's Claude Sonnet, and Google's Gemini.",
+          "snapshotHash": "440ab9b72ddd1a9ee514b38e9d32c418a92c4cc2c8e70745f832822e86fd35fa",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.it.tamu.edu/services/services-by-category/communication-and-collaboration/tamu-ai-chat.html",
+          "sourceTitle": "TAMU AI Chat (BETA) - Texas A&M Technology Services",
+          "evidenceSnippet": "To use TAMU AI Chat, log in with your NetID and password at tamu.ai. You must be a Texas A&M employee or student to use the platform.",
+          "snapshotHash": "9ba13cc158320eaa9b4285096e1cc1946f9cfa8f4413ee5a289f7c952bb5f199",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "A secure Microsoft Copilot Chat service with data protection for Texas A&M students and employees.",
+      "howToObtain": "Sign in to Copilot Chat with a Texas A&M NetID and password.",
+      "costToUser": "No additional cost to eligible Texas A&M community members with a Microsoft A5 license.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "Free AI tools provided by the University to all students, faculty, and staff include Microsoft 365 Copilot Chat.",
+          "snapshotHash": "1f053d66dce4de117b92c6dfecd03172e32ae0074be24a60ce78c6ac09d40462",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.it.tamu.edu/services/services-by-category/communication-and-collaboration/microsoft-365-copilot-chat.html",
+          "sourceTitle": "Copilot Chat - Texas A&M Technology Services",
+          "evidenceSnippet": "Copilot Chat is available at no additional cost to Texas A&M community members with a Microsoft A5 license, including TAMU, TAMU-Galveston, and Texas A&M Health.",
+          "snapshotHash": "42886fcc3317a59c98c4d1d23398031fa9c3d8c8ebdaa8f385e681382ea57f5e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Google Gemini with data protection is an AI chatbot designed around search and supports more natural language queries. When logged in with your Texas A&M account, the data protection is activated.",
+      "howToObtain": "Log in to Gemini with a Texas A&M account.",
+      "costToUser": "Free AI tool provided by the University.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "Google Gemini with data protection is an AI chatbot designed around search and supports more natural language queries. When logged in with your Texas A&M account, the data protection is activated.",
+          "snapshotHash": "3a3c40613453b91445fba9e126da14dcbbfddf8bbc590de2c4344001c65dd4be",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "NotebookLM is an AI-powered tool that helps you research, write and organize information. To ensure data is protected, you must log in with your NetID and password.",
+      "howToObtain": "Log in to NotebookLM with a Texas A&M NetID and password.",
+      "costToUser": "Free AI tool provided by the University.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "NotebookLM is an AI-powered tool that helps you research, write and organize information. To ensure data is protected, you must log in with your NetID and password.",
+          "snapshotHash": "37945b581aeeebfcd1355de100a3bc0525fe76db87a2faf997e41cab3ae12be8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "Microsoft 365 Copilot is an AI assistant integrated into M365 apps like Word, Excel, PowerPoint, Outlook, and Teams.",
+      "howToObtain": "Purchase through the Texas A&M Software Center.",
+      "costToUser": "Subscription-based purchase for faculty and staff.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "Microsoft 365 Copilot is an AI assistant integrated into M365 apps like Word, Excel, PowerPoint, Outlook, and Teams.",
+          "snapshotHash": "b1d7404d2fcf0b513b9c2b6e1d164503b6adcdd5b617e1105e0b9f08a439164b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "teams_premium",
+      "rawToolName": "Microsoft Teams Premium",
+      "description": "Microsoft Teams Premium is an add-on subscription with advanced features focused on intelligence, personalization, and security.",
+      "howToObtain": "Purchase through the Texas A&M Software Center.",
+      "costToUser": "Subscription-based purchase for faculty and staff.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "Microsoft Teams Premium is an add-on subscription with advanced features focused on intelligence, personalization, and security.",
+          "snapshotHash": "7e2b575ee3c8952f811e5b8be7b98574daeb0a1d5f802fb41f3149d5c36adb0a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "google_ai_pro",
+      "rawToolName": "Google AI Pro",
+      "description": "Google AI Pro is an add-on subscription with advanced AI models to handle longer documents, track more details and offer advanced reasoning.",
+      "howToObtain": "Purchase through the Texas A&M Software Center.",
+      "costToUser": "Subscription-based purchase for faculty and staff.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "Google AI Pro is an add-on subscription with advanced AI models to handle longer documents, track more details and offer advanced reasoning.",
+          "snapshotHash": "ba7f329ba9b43f668413f523291a5c68f47c605d941672cc8990f2096f3e2a01",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "aws_bedrock",
+      "rawToolName": "Amazon Bedrock",
+      "description": "Development Platforms allow users to build, train, and launch AI apps using ready-to-use models; the page lists Amazon Bedrock with models from Anthropic, Meta, Cohere and Amazon Titan.",
+      "howToObtain": "Contact Technology Services to use an AI Development Platform.",
+      "costToUser": "Pay only for what you use; costs are billed through FAMIS accounts or internal TAMU invoices.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "Development Platforms allow users to build, train, and launch AI apps using ready-to-use models; the page lists Amazon Bedrock with models from Anthropic, Meta, Cohere and Amazon Titan.",
+          "snapshotHash": "6c767d741f271f957826666b9e40aa32f409fb79797adf89778077dd47f7cd26",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "azure_ai",
+      "rawToolName": "Microsoft Azure AI Services",
+      "description": "The Development Platforms section lists Microsoft Azure AI Services, including Azure OpenAI and Cognitive Services.",
+      "howToObtain": "Contact Technology Services to use an AI Development Platform.",
+      "costToUser": "Pay only for what you use; costs are billed through FAMIS accounts or internal TAMU invoices.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "The Development Platforms section lists Microsoft Azure AI Services, including Azure OpenAI and Cognitive Services.",
+          "snapshotHash": "0137cdb83e21e6a9800f5eff07c3cfe3c1913b12e5e609d34352c4ed2405a9a0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "google_vertex_ai",
+      "rawToolName": "Google Vertex AI",
+      "description": "The Development Platforms section lists Google Vertex AI as Google's machine learning infrastructure.",
+      "howToObtain": "Contact Technology Services to use an AI Development Platform.",
+      "costToUser": "Pay only for what you use; costs are billed through FAMIS accounts or internal TAMU invoices.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "The Development Platforms section lists Google Vertex AI as Google's machine learning infrastructure.",
+          "snapshotHash": "1d47920f4570babdbc63978c56ff4494bd91eb413d884c173b47802932a2a5c7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "aws_bedrock",
+      "rawToolName": "Amazon Bedrock Studio",
+      "description": "The Development Hubs section lists Amazon Bedrock Studio for experimenting with AI models, tailoring behavior, and building apps.",
+      "howToObtain": "Contact Technology Services to use an AI Development Hub.",
+      "costToUser": "Pay only for what you use; costs are billed through FAMIS accounts or internal TAMU invoices.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "The Development Hubs section lists Amazon Bedrock Studio for experimenting with AI models, tailoring behavior, and building apps.",
+          "snapshotHash": "a1c51640fca2c8790be1a627896f6f4b3c293e85b74a82a15403b5fb44031859",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "azure_ai_foundry",
+      "rawToolName": "Microsoft Azure AI Foundry",
+      "description": "The Development Hubs section lists Microsoft Azure AI Foundry as a collaborative environment for customizing AI models and developing scalable AI solutions.",
+      "howToObtain": "Contact Technology Services to use an AI Development Hub.",
+      "costToUser": "Pay only for what you use; costs are billed through FAMIS accounts or internal TAMU invoices.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "The Development Hubs section lists Microsoft Azure AI Foundry as a collaborative environment for customizing AI models and developing scalable AI solutions.",
+          "snapshotHash": "f4cadfec279e4e5b0903173077fe0ea3d0686021b7329350daa19b5b963066fb",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "copilot_studio",
+      "rawToolName": "Microsoft Copilot Studio",
+      "description": "The Development Hubs section lists Microsoft Copilot Studio for creating custom AI assistants, automating tasks, and building smart tools.",
+      "howToObtain": "Contact Technology Services to use an AI Development Hub.",
+      "costToUser": "Pay only for what you use; costs are billed through FAMIS accounts or internal TAMU invoices.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "The Development Hubs section lists Microsoft Copilot Studio for creating custom AI assistants, automating tasks, and building smart tools.",
+          "snapshotHash": "a12ac6c75d6cc3b740d30fd4317449d6c1f75d415d998efc884df9c4d6ac6442",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "google_ai_studio",
+      "rawToolName": "Google AI and Vertex Studio",
+      "description": "The Development Hubs section lists Google AI and Vertex Studio for exploring and customizing Google's AI models.",
+      "howToObtain": "Contact Technology Services to use an AI Development Hub.",
+      "costToUser": "Pay only for what you use; costs are billed through FAMIS accounts or internal TAMU invoices.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "The Development Hubs section lists Google AI and Vertex Studio for exploring and customizing Google's AI models.",
+          "snapshotHash": "26889206bc9a239bcc50810da696364bf1d66d2dca9baeaaf7bdc2aa79983cb4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "github_copilot",
+      "rawToolName": "GitHub Copilot",
+      "description": "GitHub Copilot is listed by Texas A&M Technology Services as an AI service under review.",
+      "howToObtain": "Not yet provided; the service is listed as under review.",
+      "costToUser": "Not specified.",
+      "availability": "not_mentioned",
+      "endorsementType": "not_specified",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "GitHub Copilot is listed by Texas A&M Technology Services as an AI service under review.",
+          "snapshotHash": "f7ccde2ea73e103f362075b95de5a74d165f8d833644b1ee5e2899ed0f887fc6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "texas-a-and-m-university",
+      "universityName": "Texas A&M University",
+      "qsRank": 144,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom AI Companion is listed by Texas A&M Technology Services as under review by the Office of the Provost.",
+      "howToObtain": "Not yet provided; the service is listed as under review.",
+      "costToUser": "Not specified.",
+      "availability": "not_mentioned",
+      "endorsementType": "not_specified",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+          "sourceTitle": "AI Services - Texas A&M Technology Services",
+          "evidenceSnippet": "Zoom AI Companion is listed by Texas A&M Technology Services as under review by the Office of the Provost.",
+          "snapshotHash": "0c5a424761bcd8057b159def3a61e4ce81ca37ea0ada652997e276d0eb099e18",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "technische-universitat-berlin",
+      "universityName": "Technische Universität Berlin (TU Berlin)",
+      "qsRank": 145,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "TU Berlin's Faculty VII one-year pilot project for licensed ChatGPT Edu.",
+      "howToObtain": "Pilot licenses are distributed to Faculty VII researchers, lecturers, staff, and students; course and project resources are hosted on ISIS.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.tu.berlin/en/wm/services/it-services-and-software/pilot-project-chatgpt-edu",
+          "sourceTitle": "Pilot project ChatGPT Edu - TU Berlin",
+          "evidenceSnippet": "TU Berlin is among the first universities in Germany to have licensed ChatGPT Edu. As a pilot project, ChatGPT Edu will be tested at Faculty VII for one year.",
+          "snapshotHash": "e3f6e20151872ef65653cc9c0c5915ee1021ae3eb7591a85821aa657eb995073",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://www.tu.berlin/en/wm/services/it-services-and-software/pilot-project-chatgpt-edu",
+          "sourceTitle": "Pilot project ChatGPT Edu - TU Berlin",
+          "evidenceSnippet": "The pilot project includes 300 ChatGPT Edu licenses, which are distributed to researchers, lecturers, technical/service/administrative staff, and students of Faculty VII.",
+          "snapshotHash": "683587cd16dabe805d9b204894de4d56602be9f18967936cfcca047d5902a7e2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
