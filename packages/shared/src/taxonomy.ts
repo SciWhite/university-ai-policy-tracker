@@ -82,6 +82,9 @@ export const aiTools = [
   "scite_ai",
   "scopus_ai",
   "wooflash",
+  "magicschool",
+  "playlab",
+  "brightspace_lumi_pro",
   "kimi",
   "glm",
   "minimax",
@@ -810,6 +813,27 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     provider: "Wooflash",
     aliases: ["Wooflash"],
     category: "commercial_assistant"
+  },
+  magicschool: {
+    slug: "magicschool",
+    label: "MagicSchool",
+    provider: "MagicSchool",
+    aliases: ["MagicSchool", "MagicSchool AI"],
+    category: "commercial_assistant"
+  },
+  playlab: {
+    slug: "playlab",
+    label: "Playlab",
+    provider: "Playlab",
+    aliases: ["Playlab", "Playlab AI"],
+    category: "commercial_assistant"
+  },
+  brightspace_lumi_pro: {
+    slug: "brightspace_lumi_pro",
+    label: "Brightspace Lumi Pro",
+    provider: "D2L Brightspace",
+    aliases: ["Brightspace Lumi Pro", "Lumi Pro"],
+    category: "office_suite"
   },
   kimi: {
     slug: "kimi",

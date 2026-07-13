@@ -1,0 +1,997 @@
+{
+  "schemaVersion": "uapt-ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-231-280-20260713",
+  "generatedAt": "2026-07-13T15:40:00.000Z",
+  "records": [
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-massachusetts-amherst",
+      "universityName": "University of Massachusetts Amherst",
+      "qsRank": 247,
+      "tool": "self_deploy",
+      "rawToolName": "UMass GenAI Platform",
+      "description": "A secure UMass Amherst generative AI platform with access to leading models including OpenAI, Anthropic, Meta, Cohere, and Mistral.",
+      "howToObtain": "Use the UMass GenAI Platform link from the IT GenAI products page.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.umass.edu/it/genai/products",
+          "sourceTitle": "GenAI Products - UMass Amherst Information Technology",
+          "evidenceSnippet": "UMass Amherst provides several generative AI products and lists the UMass GenAI Platform as housed within UMass Amherst's secure infrastructure for students, faculty, and staff.",
+          "snapshotHash": "b1fa034d10a10407cc602d9436270d477d846c894214084f26308a898ba8e306",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-massachusetts-amherst",
+      "universityName": "University of Massachusetts Amherst",
+      "qsRank": 247,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Copilot Chat is listed as an AI chatbot available with UMass NetID login.",
+      "howToObtain": "Log in with a UMass NetID through the linked Microsoft Copilot support path.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.umass.edu/it/genai/products",
+          "sourceTitle": "GenAI Products - UMass Amherst Information Technology",
+          "evidenceSnippet": "UMass Amherst's GenAI Products table lists Microsoft Copilot, says Copilot Chat is an AI chatbot, and marks it available to students, faculty, and staff.",
+          "snapshotHash": "09f1c327af03dc4b04d0320c15e9e99523b1adafd86139f826346229b987b7fc",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-massachusetts-amherst",
+      "universityName": "University of Massachusetts Amherst",
+      "qsRank": 247,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "Google NotebookLM is listed as a generative AI research assistant based on Gemini models.",
+      "howToObtain": "Request or access through the linked UMass service catalog item.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.umass.edu/it/genai/products",
+          "sourceTitle": "GenAI Products - UMass Amherst Information Technology",
+          "evidenceSnippet": "UMass Amherst lists Google NotebookLM as a generative AI research assistant and marks it available to UMass Amherst students, faculty, and staff.",
+          "snapshotHash": "5d39d0723daad44449987208072f24336a7a00e34a32a905b30aa142caa71635",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-massachusetts-amherst",
+      "universityName": "University of Massachusetts Amherst",
+      "qsRank": 247,
+      "tool": "chatgpt",
+      "rawToolName": "Free online ChatGPT",
+      "description": "Free online ChatGPT is explicitly not cleared for university data.",
+      "howToObtain": "Use is not cleared for university data; use approved UMass products for university work.",
+      "costToUser": "Free online service",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.umass.edu/it/genai/products",
+          "sourceTitle": "GenAI Products - UMass Amherst Information Technology",
+          "evidenceSnippet": "UMass Amherst's GenAI Products table says free versions of ChatGPT, Copilot, and other online services are not cleared for use with university data.",
+          "snapshotHash": "680b5f4b6691afc826c272da583adb6514de1ea2bb62654e3ff0de42ac349d81",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "vanderbilt-university",
+      "universityName": "Vanderbilt University",
+      "qsRank": 250,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "Vanderbilt lists ChatGPT Edu as a secure university-specific deployment of ChatGPT.",
+      "howToObtain": "Enter a Vanderbilt email address and select Vanderbilt University ChatGPT EDU.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.vanderbilt.edu/generative-ai/tools/",
+          "sourceTitle": "Generative AI Tools - Vanderbilt University",
+          "evidenceSnippet": "Vanderbilt's Generative AI Tools page lists ChatGPT Edu as a free enterprise supported tool with enhanced security and privacy features.",
+          "snapshotHash": "744d0449dca1314cfc2299dfc48a839a29b9278c9393d7a7b8a023005db89935",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "vanderbilt-university",
+      "universityName": "Vanderbilt University",
+      "qsRank": 250,
+      "tool": "self_deploy",
+      "rawToolName": "Amplify",
+      "description": "Vanderbilt lists Amplify as a Vanderbilt-customized chat model platform with on-campus data privacy.",
+      "howToObtain": "Access Amplify through vanderbilt.ai or Vanderbilt's Generative AI tools page.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.vanderbilt.edu/generative-ai/tools/",
+          "sourceTitle": "Generative AI Tools - Vanderbilt University",
+          "evidenceSnippet": "Vanderbilt's Generative AI Tools page lists Amplify as a free enterprise supported tool for Vanderbilt customized chat models with on-campus data privacy.",
+          "snapshotHash": "7a07d19187d20e946c3ff5f38050c2c5e14751eb06acf97e8a2e1fda8fae2c71",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "vanderbilt-university",
+      "universityName": "Vanderbilt University",
+      "qsRank": 250,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Vanderbilt lists Microsoft Copilot as a free enterprise supported generative AI tool.",
+      "howToObtain": "Access Copilot at copilot.microsoft.com with Vanderbilt-supported credentials.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.vanderbilt.edu/generative-ai/tools/",
+          "sourceTitle": "Generative AI Tools - Vanderbilt University",
+          "evidenceSnippet": "Vanderbilt says ChatGPT, Amplify, and Copilot are free enterprise supported tools with added security and privacy features.",
+          "snapshotHash": "1fb5eaf64bf2a19dfe885984fcb03bffc8ec4ec72b0be4dfe6be9616f429a13c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "vanderbilt-university",
+      "universityName": "Vanderbilt University",
+      "qsRank": 250,
+      "tool": "brightspace_lumi_pro",
+      "rawToolName": "Lumi Pro",
+      "description": "Vanderbilt says Brightspace includes the Lumi Pro AI feature for generating quiz questions.",
+      "howToObtain": "Use Lumi Pro inside Vanderbilt Brightspace.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.vanderbilt.edu/generative-ai/tools/",
+          "sourceTitle": "Generative AI Tools - Vanderbilt University",
+          "evidenceSnippet": "Vanderbilt's Generative AI Tools page says Brightspace includes the integrated AI feature Lumi Pro to generate quiz questions.",
+          "snapshotHash": "45dd24cd87947bdd29e07dc06078a53b567284e3352742f42b47f78feeac26b6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "the-university-of-arizona",
+      "universityName": "The University of Arizona",
+      "qsRank": 287,
+      "tool": "self_deploy",
+      "rawToolName": "U of A GenAI",
+      "description": "A secure FERPA-compliant AI chat environment for the University of Arizona community.",
+      "howToObtain": "Use the U of A GenAI link from the AI Tools, Training and Support page.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://responsibleai.arizona.edu/ai-arizona/ai-tools-training-support",
+          "sourceTitle": "AI Tools, Training and Support - The University of Arizona",
+          "evidenceSnippet": "The University of Arizona lists U of A GenAI as a secure FERPA-compliant environment for the campus community to chat with state-of-the-art LLMs.",
+          "snapshotHash": "104b77ad14ec6cd5579e5ab26604f95e4f4babb49dcca0ad9e45b24ded73c5c5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "the-university-of-arizona",
+      "universityName": "The University of Arizona",
+      "qsRank": 287,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom AI Companion is listed for meeting summaries, smart recordings, and chat assistance.",
+      "howToObtain": "Use the linked University of Arizona Zoom AI Companion information path.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://responsibleai.arizona.edu/ai-arizona/ai-tools-training-support",
+          "sourceTitle": "AI Tools, Training and Support - The University of Arizona",
+          "evidenceSnippet": "The University of Arizona AI tools page lists Zoom AI Companion for AI-enabled meeting summaries, smart recordings, and chat assistance.",
+          "snapshotHash": "df438ac4b1c753a932ad63073669a8ecba7c97e21740176810eafe3889acaeda",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "the-university-of-arizona",
+      "universityName": "The University of Arizona",
+      "qsRank": 287,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Microsoft Copilot is listed as a privacy-protected AI assistant embedded in Microsoft 365.",
+      "howToObtain": "Use Bing or Windows Copilot with a UA NetID.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://responsibleai.arizona.edu/ai-arizona/ai-tools-training-support",
+          "sourceTitle": "AI Tools, Training and Support - The University of Arizona",
+          "evidenceSnippet": "The University of Arizona lists Microsoft Copilot and says to use it via Bing or Windows Copilot with a UA NetID.",
+          "snapshotHash": "de84fc05ad336d6b366f323deab6f61cd0d8edb58ced2f9f6830db052f37c433",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "the-university-of-arizona",
+      "universityName": "The University of Arizona",
+      "qsRank": 287,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Google Gemini is listed as an AI-powered conversational assistant for web and Google Apps use.",
+      "howToObtain": "Sign in to a Google Workspace for Education account with a University of Arizona NetID.",
+      "costToUser": "No cost",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://responsibleai.arizona.edu/ai-arizona/ai-tools-training-support",
+          "sourceTitle": "AI Tools, Training and Support - The University of Arizona",
+          "evidenceSnippet": "The University of Arizona lists Google Gemini as available for students, faculty, and staff at no cost when signed into Google Workspace for Education with NetID.",
+          "snapshotHash": "190c324754d393221d3bbb1fe1850851af0b8428559cd43cb6972f5cffa29387",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "the-university-of-arizona",
+      "universityName": "The University of Arizona",
+      "qsRank": 287,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "NotebookLM is listed as an AI-powered research assistant for synthesizing user documents.",
+      "howToObtain": "Sign in with a University of Arizona NetID through the linked NotebookLM guidance.",
+      "costToUser": "No cost",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://responsibleai.arizona.edu/ai-arizona/ai-tools-training-support",
+          "sourceTitle": "AI Tools, Training and Support - The University of Arizona",
+          "evidenceSnippet": "The University of Arizona lists Google NotebookLM as available at no cost for students, faculty, and staff when signed in with NetID.",
+          "snapshotHash": "4c11f6f599332efbde67113f7d3411efd2e97c554d370cffada74a5e6ab91f0b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "the-university-of-arizona",
+      "universityName": "The University of Arizona",
+      "qsRank": 287,
+      "tool": "self_deploy",
+      "rawToolName": "AI Verde",
+      "description": "AI Verde is listed as a privacy-aware platform for teaching and research hosted on university infrastructure.",
+      "howToObtain": "Use the linked AI Verde page from the University of Arizona AI tools page.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://responsibleai.arizona.edu/ai-arizona/ai-tools-training-support",
+          "sourceTitle": "AI Tools, Training and Support - The University of Arizona",
+          "evidenceSnippet": "The University of Arizona lists AI Verde as a privacy-aware platform for teaching and research with customizable models and a secure chat interface hosted on university infrastructure.",
+          "snapshotHash": "d51a80e095af05dbaa43a744c786e06f99e9bf94a23f1a34f29887f9d6d40559",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "the-university-of-arizona",
+      "universityName": "The University of Arizona",
+      "qsRank": 287,
+      "tool": "institutional_ai_service",
+      "rawToolName": "CyVerse",
+      "description": "CyVerse is listed as an open science cloud platform offering AI/ML tools and high-powered computation.",
+      "howToObtain": "Use the linked CyVerse page from the University of Arizona AI tools page.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "officially_endorsed",
+      "evidence": [
+        {
+          "sourceUrl": "https://responsibleai.arizona.edu/ai-arizona/ai-tools-training-support",
+          "sourceTitle": "AI Tools, Training and Support - The University of Arizona",
+          "evidenceSnippet": "The University of Arizona lists CyVerse as an open science cloud platform offering AI/ML tools, data visualization, and high-powered computation.",
+          "snapshotHash": "8833ca3eaa5f2cd4c4e90ee23aea8b57ffbe113bf62216c1be51b37bda099c2b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "the-university-of-arizona",
+      "universityName": "The University of Arizona",
+      "qsRank": 287,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly & Creative Cloud",
+      "description": "Adobe Firefly and Creative Cloud generative AI tools are listed for image and text creation.",
+      "howToObtain": "Access with a University of Arizona Adobe login.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://responsibleai.arizona.edu/ai-arizona/ai-tools-training-support",
+          "sourceTitle": "AI Tools, Training and Support - The University of Arizona",
+          "evidenceSnippet": "The University of Arizona lists Adobe Firefly and Creative Cloud generative AI tools and says to access them with a UA Adobe login.",
+          "snapshotHash": "cd7063c19f3aac664d02c22abf81e59bb5bc67e19554271d45974351bb699aaf",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "self_deploy",
+      "rawToolName": "CWRU AI Playground",
+      "description": "Space for faculty and staff to explore AI apps, test use cases, and connect with AI Help Desk support.",
+      "howToObtain": "Use the CWRU AI Playground website.",
+      "costToUser": "Free",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists CWRU AI Playground with target users, description, best uses, and pricing model.",
+          "snapshotHash": "d9e44fb0c46fbb2638dd991238eb3056285c1cfc3b366683ecc812aafe65752b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "self_deploy",
+      "rawToolName": "CWRU AI Portal",
+      "description": "Secure internal AI portal with access to multiple models, saved chats, file uploads, and a prompt library.",
+      "howToObtain": "Use the CWRU AI Portal link.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists CWRU AI Portal with target users, description, best uses, and pricing model.",
+          "snapshotHash": "1d10b24911f32f51ff7024bdfdfd8c0b40e3c3d5e672fa72acff26a89c76e3be",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "scite_ai",
+      "rawToolName": "Scite Research Assistant",
+      "description": "AI-supported literature review and citation-context tool available through KSL and OpenAthens.",
+      "howToObtain": "Use Scite AI Research Assistant through KSL/OpenAthens.",
+      "costToUser": "Free tier + paid plans",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Scite Research Assistant with target users, description, best uses, and pricing model.",
+          "snapshotHash": "4434f145a331dcfeb0562e12302a212abc98d956c7734915c7af42dc259f0fba",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "self_deploy",
+      "rawToolName": "Spartan Answers",
+      "description": "Internal chatbot for CWRU information with source-backed responses and support guidance.",
+      "howToObtain": "Use the Spartan Answers chatbot link.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Spartan Answers with target users, description, best uses, and pricing model.",
+          "snapshotHash": "6faf1acfb262d00bf9c6158556fc237f70e31e118241dc47659ca03c30cd2978",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "adobe_express",
+      "rawToolName": "Adobe Express",
+      "description": "Web-based design tool with AI features such as text-to-image and generative fill.",
+      "howToObtain": "Use the Adobe Express website with CWRU access.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "officially_endorsed",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Adobe Express with target users, description, best uses, and pricing model.",
+          "snapshotHash": "f28e4036a9f6b1e9acabd0881a849732997c7d05057f6aa242f3fc21dd7b08a2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "institutional_ai_service",
+      "rawToolName": "AI Cloud Services",
+      "description": "Access to AWS, Azure, and GCP for advanced AI services, model APIs, Claude Code billing, and cloud credit opportunities.",
+      "howToObtain": "Use UTech's AI cloud services information path.",
+      "costToUser": "Paid",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists AI Cloud Services with target users, description, best uses, and pricing model.",
+          "snapshotHash": "7f553fd2e86e4943a1924406a44139c6bff03b06bff9d920f8f658611897837d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "google_ai_pro",
+      "rawToolName": "Google AI Pro",
+      "description": "AI assistant integrated with Gmail, Docs, Sheets, Slides, and Drive; includes Gemini Advanced, Canvas, Veo, Google Vids, and NotebookLM Plus.",
+      "howToObtain": "Use the available AI paid services path.",
+      "costToUser": "Paid",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Google AI Pro with target users, description, best uses, and pricing model.",
+          "snapshotHash": "10886a48ef67b89b96eda30e22a8afff37f6aa42bd76937b44bff9c4d82949d8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Generative AI chatbot with web access, Deep Research, image generation, and Gems.",
+      "howToObtain": "Use the Google Gemini website with university sign-in.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Google Gemini with target users, description, best uses, and pricing model.",
+          "snapshotHash": "39d05be468395ba98b9f4bb143011d03e55ccea54437fe606cf390b7b654f541",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "AI-powered notebook tool for uploaded files, webpages, YouTube videos, and Google Drive content.",
+      "howToObtain": "Use the Google NotebookLM website.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Google NotebookLM with target users, description, best uses, and pricing model.",
+          "snapshotHash": "70c3a957822de242c52348d446d6c2809c4445ab06d9ecf8da58a9a63b54679c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "github_copilot",
+      "rawToolName": "GitHub Enterprise Copilot",
+      "description": "Optional GitHub Enterprise add-on for generative AI coding workflows, including OpenAI Codex and Claude Code models.",
+      "howToObtain": "Use the CWRU available AI paid services path.",
+      "costToUser": "Paid",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists GitHub Enterprise Copilot with target users, description, best uses, and pricing model.",
+          "snapshotHash": "1a3bf69d87bae5cb3f0040a0dc97b8e31a78b3dc18219d58615e564cdbd19931",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "magicschool",
+      "rawToolName": "MagicSchool",
+      "description": "AI platform for educators and academic workflows, including lesson planning and classroom support.",
+      "howToObtain": "Use the MagicSchool website.",
+      "costToUser": "Free tier + paid plans",
+      "availability": "allowed",
+      "endorsementType": "officially_endorsed",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists MagicSchool with target users, description, best uses, and pricing model.",
+          "snapshotHash": "4a05c004fa894828eaa9671768a966e0360e3020a5a5bac7f2ee9fb03c30fe4b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "AI assistant integrated with Microsoft 365 for writing, summarizing, Excel analysis, PowerPoint creation, and research.",
+      "howToObtain": "Use the CWRU available AI paid services path.",
+      "costToUser": "Paid",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Microsoft 365 Copilot with target users, description, best uses, and pricing model.",
+          "snapshotHash": "25fe305516752e1e317003d04782bb514f5f04ec1a9cd248146cefeb62ea4f08",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Generative AI chatbot with web access and enterprise protections when signed in with university credentials.",
+      "howToObtain": "Use the Microsoft Copilot website with university credentials.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Microsoft Copilot with target users, description, best uses, and pricing model.",
+          "snapshotHash": "a2e1276dc53194afb163fd9f93364ba198b077029c042b70263df523e5d7a38e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "playlab",
+      "rawToolName": "Playlab",
+      "description": "Platform for building custom AI apps, tools, and classroom experiences.",
+      "howToObtain": "Use the Playlab website.",
+      "costToUser": "Free tier + paid plans",
+      "availability": "allowed",
+      "endorsementType": "officially_endorsed",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Playlab with target users, description, best uses, and pricing model.",
+          "snapshotHash": "ff98c8acf186408206e69213833686baa045e806115b6b532b8dcd0cabc3cd83",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "case-western-reserve-university",
+      "universityName": "Case Western Reserve University",
+      "qsRank": 294,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Built-in Zoom AI features such as meeting summaries, catch-up tools, transcripts, and smart recording features.",
+      "howToObtain": "Enable Zoom AI Companion in CWRU Zoom profile settings.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://case.edu/ai/tools-resources",
+          "sourceTitle": "Tools & Resources - AI at CWRU",
+          "evidenceSnippet": "Case Western Reserve University's AI Tools & Platforms table lists Zoom AI Companion with target users, description, best uses, and pricing model.",
+          "snapshotHash": "f5637a272c0f74076ea7ee7c7e55f1108a429e47f3554ea115af2954ad9cceb3",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-pittsburgh",
+      "universityName": "University of Pittsburgh",
+      "qsRank": 281,
+      "tool": "claude",
+      "rawToolName": "Claude for Education",
+      "description": "Pitt lists Claude for Education among available GenAI tools; faculty and staff access is available with student access coming soon.",
+      "howToObtain": "Log in through Pitt Passport SSO or use the linked Claude for Education guidance.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digital.pitt.edu/ai",
+          "sourceTitle": "Generative AI @ Pitt - Pitt Digital",
+          "evidenceSnippet": "Pitt Digital's Generative AI page lists Claude for Education under available or additionally approved GenAI tools and instructs users to log in through Pitt Passport for approved versions.",
+          "snapshotHash": "9b69016d7e470652e4640a38640b0880e7be9210342d835a64ea7a9c8f0f95d1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-pittsburgh",
+      "universityName": "University of Pittsburgh",
+      "qsRank": 281,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "Pitt lists Microsoft 365 Copilot Chat as an available university-approved GenAI tool.",
+      "howToObtain": "Log in with Pitt Passport SSO at m365.cloud.microsoft/chat.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digital.pitt.edu/ai",
+          "sourceTitle": "Generative AI @ Pitt - Pitt Digital",
+          "evidenceSnippet": "Pitt Digital's Generative AI page lists Microsoft 365 Copilot Chat under available or additionally approved GenAI tools and instructs users to log in through Pitt Passport for approved versions.",
+          "snapshotHash": "93adf1eebb599d9b44c65f8d1fb68a6834550ec394d1161cb308859182f003b9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-pittsburgh",
+      "universityName": "University of Pittsburgh",
+      "qsRank": 281,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Pitt lists Google Gemini as an available university-approved GenAI tool.",
+      "howToObtain": "Log in with Pitt Passport SSO at gemini.google.com/app.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digital.pitt.edu/ai",
+          "sourceTitle": "Generative AI @ Pitt - Pitt Digital",
+          "evidenceSnippet": "Pitt Digital's Generative AI page lists Google Gemini under available or additionally approved GenAI tools and instructs users to log in through Pitt Passport for approved versions.",
+          "snapshotHash": "2d92c9a438233f1e8e283d6e6e9da1e932ca7d21cafa4da4305c3fa9a4efce05",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-pittsburgh",
+      "universityName": "University of Pittsburgh",
+      "qsRank": 281,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "Pitt lists NotebookLM as an available university-approved GenAI tool.",
+      "howToObtain": "Log in with Pitt Passport SSO at notebooklm.google.com.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digital.pitt.edu/ai",
+          "sourceTitle": "Generative AI @ Pitt - Pitt Digital",
+          "evidenceSnippet": "Pitt Digital's Generative AI page lists NotebookLM under available or additionally approved GenAI tools and instructs users to log in through Pitt Passport for approved versions.",
+          "snapshotHash": "95160bc1cb269ff606ed3bae3361dfe78fbc3e3a740a6700d29551161499bb7e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-pittsburgh",
+      "universityName": "University of Pittsburgh",
+      "qsRank": 281,
+      "tool": "self_deploy",
+      "rawToolName": "PittGPT",
+      "description": "Pitt lists PittGPT as an available GenAI tool for faculty and staff only.",
+      "howToObtain": "Use PittGPT at gpt.pitt.edu.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digital.pitt.edu/ai",
+          "sourceTitle": "Generative AI @ Pitt - Pitt Digital",
+          "evidenceSnippet": "Pitt Digital's Generative AI page lists PittGPT under available or additionally approved GenAI tools and instructs users to log in through Pitt Passport for approved versions.",
+          "snapshotHash": "c91d603742fc2c4828ff4c583551ad4e7c249bf8a817a4cdfbe7c2375e3d08f6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-pittsburgh",
+      "universityName": "University of Pittsburgh",
+      "qsRank": 281,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Copilot In-App",
+      "description": "Pitt lists Copilot In-App within Microsoft 365 apps as additionally approved for restricted data.",
+      "howToObtain": "Use Copilot In-App within Microsoft 365 apps under Pitt-approved access.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digital.pitt.edu/ai",
+          "sourceTitle": "Generative AI @ Pitt - Pitt Digital",
+          "evidenceSnippet": "Pitt Digital's Generative AI page lists Copilot In-App under available or additionally approved GenAI tools and instructs users to log in through Pitt Passport for approved versions.",
+          "snapshotHash": "9a59a6bdd082b61032a7a3174a802224915e4015ad2389508b68943f55670cd0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-pittsburgh",
+      "universityName": "University of Pittsburgh",
+      "qsRank": 281,
+      "tool": "teams_premium",
+      "rawToolName": "Microsoft Teams Premium",
+      "description": "Pitt lists Microsoft Teams Premium as additionally approved for restricted data.",
+      "howToObtain": "Use the Pitt-approved Microsoft Teams Premium path.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digital.pitt.edu/ai",
+          "sourceTitle": "Generative AI @ Pitt - Pitt Digital",
+          "evidenceSnippet": "Pitt Digital's Generative AI page lists Microsoft Teams Premium under available or additionally approved GenAI tools and instructs users to log in through Pitt Passport for approved versions.",
+          "snapshotHash": "28c6a229db38eeb9d675251f4da7437c3731198ce98d2eadc67d96b6880764d9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-pittsburgh",
+      "universityName": "University of Pittsburgh",
+      "qsRank": 281,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Pitt lists Zoom AI Companion as additionally approved for restricted data.",
+      "howToObtain": "Use the Pitt-approved Zoom AI Companion path.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digital.pitt.edu/ai",
+          "sourceTitle": "Generative AI @ Pitt - Pitt Digital",
+          "evidenceSnippet": "Pitt Digital's Generative AI page lists Zoom AI Companion under available or additionally approved GenAI tools and instructs users to log in through Pitt Passport for approved versions.",
+          "snapshotHash": "c37cbd774e1becf7b0a9fb262346ae976fed8239b5a0708bfebfe0693ec83db8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-pittsburgh",
+      "universityName": "University of Pittsburgh",
+      "qsRank": 281,
+      "tool": "chatgpt",
+      "rawToolName": "Public ChatGPT",
+      "description": "Pitt says public AI services including ChatGPT are not approved for sensitive data.",
+      "howToObtain": "Use Pitt Passport-approved tools instead for private or restricted university data.",
+      "costToUser": "Public service",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.digital.pitt.edu/ai",
+          "sourceTitle": "Generative AI @ Pitt - Pitt Digital",
+          "evidenceSnippet": "Pitt Digital says only AI tools accessed through Pitt Passport are approved for private or restricted University data, and public AI services including ChatGPT are not approved for sensitive data.",
+          "snapshotHash": "0ecdf5e4a1cb13a618e44e6657d5bf66fb462d8471c9f0667c3b935c25f5c818",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "radboud-university",
+      "universityName": "Radboud University",
+      "qsRank": 279,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot Chat",
+      "description": "Radboud tells staff and students who wish to use AI to choose Copilot Chat.",
+      "howToObtain": "Access Copilot Chat at copilot.cloud.microsoft and log in with a Radboud account.",
+      "costToUser": "Covered by Microsoft licence when logged in",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ru.nl/en/about-us/news/using-generative-ai-at-radboud-university",
+          "sourceTitle": "Using generative AI at Radboud University",
+          "evidenceSnippet": "Radboud University says Copilot Chat is available and asks staff and students who wish to use AI to choose Copilot Chat.",
+          "snapshotHash": "c4056cd670be6952772be2cf3a06373cb7eb181c2c29e475d6b18fa586891765",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "radboud-university",
+      "universityName": "Radboud University",
+      "qsRank": 279,
+      "tool": "chatgpt",
+      "rawToolName": "Free ChatGPT",
+      "description": "Radboud says free tools like ChatGPT are not recommended because of privacy and security risks.",
+      "howToObtain": "Use Copilot Chat instead for university-supported generative AI use.",
+      "costToUser": "Free public service",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ru.nl/en/about-us/news/using-generative-ai-at-radboud-university",
+          "sourceTitle": "Using generative AI at Radboud University",
+          "evidenceSnippet": "Radboud University says use of free tools like ChatGPT and Google Gemini is not recommended because of privacy and security risks.",
+          "snapshotHash": "f1c800b476e708a4a11272750ed2c796d2f9bd5292753ed9230db6f79a45f7fe",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "radboud-university",
+      "universityName": "Radboud University",
+      "qsRank": 279,
+      "tool": "gemini",
+      "rawToolName": "Free Google Gemini",
+      "description": "Radboud says free tools like Google Gemini are not recommended because of privacy and security risks.",
+      "howToObtain": "Use Copilot Chat instead for university-supported generative AI use.",
+      "costToUser": "Free public service",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ru.nl/en/about-us/news/using-generative-ai-at-radboud-university",
+          "sourceTitle": "Using generative AI at Radboud University",
+          "evidenceSnippet": "Radboud University says use of free tools like ChatGPT and Google Gemini is not recommended because of privacy and security risks.",
+          "snapshotHash": "3a742951b912cd2ae130c26225527d505fbbd5cb85d882d656c411db3e9f0c4b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "radboud-university",
+      "universityName": "Radboud University",
+      "qsRank": 279,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "Radboud says it does not yet offer Microsoft 365 Copilot and cites SURF advice not to use it for the time being.",
+      "howToObtain": "Not offered by Radboud at the time of the source.",
+      "costToUser": "Paid service; not offered",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "not_specified",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ru.nl/en/about-us/news/using-generative-ai-at-radboud-university",
+          "sourceTitle": "Using generative AI at Radboud University",
+          "evidenceSnippet": "Radboud University says Microsoft 365 Copilot cannot be used for free and Radboud University does not yet offer it, in line with SURF's advice.",
+          "snapshotHash": "9c4b0049d98b8a6085e9bc4c6a452e738a1197716dc1993b1dfccda497f46392",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-waikato",
+      "universityName": "University of Waikato",
+      "qsRank": 281,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot with GPT-5",
+      "description": "Waikato says Microsoft Copilot with GPT-5 is available as a secure and reliable generative AI tool.",
+      "howToObtain": "Use Microsoft Copilot under University of Waikato guidance and academic integrity rules.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://libraryguides.waikato.ac.nz/publishing-research/aipublishing",
+          "sourceTitle": "AI & Scholarly Publishing - University of Waikato Library Guides",
+          "evidenceSnippet": "The University of Waikato library guide says Microsoft Copilot with GPT-5 is available to all University of Waikato staff and students as a secure and reliable Generative AI tool.",
+          "snapshotHash": "8e4762ad28255fac5963e8def40ad8c290b1c3df07e5210df154dd1996419086",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
