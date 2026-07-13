@@ -13,6 +13,7 @@ export interface AnalyticsEventRecordInput {
   footerGroup?: string;
   fromLocale?: string;
   fromTheme?: string;
+  id?: string;
   limitBucket?: string;
   locale?: string;
   navArea?: string;
@@ -106,6 +107,7 @@ export async function recordAnalyticsEvent(
       footerGroup: input.footerGroup,
       fromLocale: input.fromLocale,
       fromTheme: input.fromTheme,
+      id: input.id,
       limitBucket: input.limitBucket,
       locale: input.locale,
       navArea: input.navArea,

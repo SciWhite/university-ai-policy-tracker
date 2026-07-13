@@ -4,7 +4,11 @@ import {
   getLimitBucket,
   getQueryAnalytics
 } from "@/lib/analytics-events";
-import { trackServerResearchEvent } from "@/lib/analytics-server";
+import {
+  getLatencyBucket,
+  getServerRequestAnalytics,
+  trackServerResearchEvent
+} from "@/lib/analytics-server";
 import {
   buildSearchResponse,
   searchIndexRecords,
@@ -21,6 +25,7 @@ const searchCorsHeaders = {
 const internalNextBaseUrl = process.env.INTERNAL_NEXT_BASE_URL?.trim();
 
 export async function GET(request: Request) {
+  const startedAt = Date.now();
   const url = new URL(request.url);
   const query = url.searchParams.get("q") ?? "";
   const limit = Number(url.searchParams.get("limit") ?? 20);
@@ -28,7 +33,9 @@ export async function GET(request: Request) {
   const results = searchIndexRecords(records, query, { limit });
   await trackServerResearchEvent("api_search_request", {
     ...getQueryAnalytics(query),
+    ...getServerRequestAnalytics(request),
     limit_bucket: getLimitBucket(limit),
+    request_latency_bucket: getLatencyBucket(Date.now() - startedAt),
     result_count_bucket: getCountBucket(results.length)
   }, "/api/public/v1/search.json");
 

@@ -34,6 +34,54 @@ export function AnalyticsEventBridge() {
   useEffect(() => {
     if (pathname.startsWith("/internal/analytics")) return;
 
+    let remainingMs = 10_000;
+    let visibleSince = 0;
+    let timer: number | undefined;
+    let sent = false;
+
+    const sendEngaged = () => {
+      if (sent) return;
+      sent = true;
+      trackResearchEvent("session_engaged", {
+        active_time_bucket: "10s+",
+        entity_slug: pageEntitySlug,
+        locale,
+        page_type: pageType
+      });
+    };
+
+    const start = () => {
+      if (sent || document.visibilityState !== "visible") return;
+      visibleSince = Date.now();
+      timer = window.setTimeout(sendEngaged, remainingMs);
+    };
+
+    const pause = () => {
+      if (timer !== undefined) window.clearTimeout(timer);
+      timer = undefined;
+      if (visibleSince) {
+        remainingMs = Math.max(0, remainingMs - (Date.now() - visibleSince));
+        visibleSince = 0;
+      }
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") start();
+      else pause();
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    start();
+
+    return () => {
+      pause();
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [locale, pageEntitySlug, pageType, pathname]);
+
+  useEffect(() => {
+    if (pathname.startsWith("/internal/analytics")) return;
+
     function baseProperties(): AnalyticsProperties {
       return {
         locale,

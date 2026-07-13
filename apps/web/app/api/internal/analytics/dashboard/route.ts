@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import {
+  AnalyticsDashboardQueryError,
   getAnalyticsDashboard,
   parseAnalyticsDashboardQuery
 } from "@/lib/private-analytics-dashboard";
@@ -17,14 +18,15 @@ export async function GET(request: NextRequest) {
       }
     });
   } catch (error) {
+    const invalidQuery = error instanceof AnalyticsDashboardQueryError;
     return NextResponse.json(
       {
-        error: "analytics_dashboard_unavailable",
+        error: invalidQuery ? error.code : "analytics_dashboard_unavailable",
         message: error instanceof Error ? error.message : "Unknown error"
       },
       {
         headers: { "Cache-Control": "private, no-store, max-age=0" },
-        status: 503
+        status: invalidQuery ? 400 : 503
       }
     );
   }

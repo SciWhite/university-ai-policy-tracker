@@ -16,6 +16,7 @@ export function trackResearchEvent(
   if (isInternalAnalyticsPath(pathname)) return;
 
   const sanitized = sanitizeAnalyticsProperties({
+    collectorVersion: ANALYTICS_COLLECTOR_VERSION,
     ...properties,
     pathname
   });
@@ -34,9 +35,11 @@ export function trackPageView(properties: AnalyticsProperties = {}) {
   try {
     const pathname = getCurrentPathname();
     if (isInternalAnalyticsPath(pathname)) return;
+    const sessionId = getAnalyticsSessionId();
 
     const sanitized = sanitizeAnalyticsProperties({
-      ...getLandingAnalyticsProperties(pathname),
+      collectorVersion: ANALYTICS_COLLECTOR_VERSION,
+      ...getLandingAnalyticsProperties(pathname, sessionId),
       ...properties,
       pathname
     });
@@ -47,7 +50,7 @@ export function trackPageView(properties: AnalyticsProperties = {}) {
       properties: sanitized,
       source: "client",
       visitorId: getAnalyticsVisitorId(),
-      sessionId: getAnalyticsSessionId()
+      sessionId
     });
   } catch {
     // Analytics must not affect navigation or interaction handlers.
@@ -68,6 +71,7 @@ async function mirrorAnalyticsEvent(input: MirrorAnalyticsEventInput) {
   if (isInternalAnalyticsPath(input.pathname)) return;
 
   const body = JSON.stringify({
+    eventId: crypto.randomUUID(),
     eventName: input.eventName,
     pathname: input.pathname,
     properties: input.properties,
@@ -104,9 +108,15 @@ function getCurrentPathname(): string {
   return window.location.pathname || "/";
 }
 
+const ANALYTICS_COLLECTOR_VERSION = "2026-07-13-v2";
+const ANALYTICS_SESSION_KEY = "uapt.analytics.session_state";
+const ANALYTICS_SESSION_TIMEOUT_MS = 30 * 60 * 1000;
 const LANDING_CONTEXT_KEY = "uapt.analytics.landing_context";
 
-function getLandingAnalyticsProperties(pathname: string): AnalyticsProperties {
+function getLandingAnalyticsProperties(
+  pathname: string,
+  sessionId: string | undefined
+): AnalyticsProperties {
   if (typeof window === "undefined") {
     return {
       landingPath: pathname,
@@ -115,7 +125,7 @@ function getLandingAnalyticsProperties(pathname: string): AnalyticsProperties {
     };
   }
 
-  const stored = readStoredLandingContext();
+  const stored = readStoredLandingContext(sessionId);
   if (stored) return stored;
 
   const searchParams = new URLSearchParams(window.location.search);
@@ -131,7 +141,10 @@ function getLandingAnalyticsProperties(pathname: string): AnalyticsProperties {
   };
 
   try {
-    window.sessionStorage.setItem(LANDING_CONTEXT_KEY, JSON.stringify(context));
+    window.localStorage.setItem(
+      LANDING_CONTEXT_KEY,
+      JSON.stringify({ ...context, sessionId })
+    );
   } catch {
     // Session attribution is best-effort only.
   }
@@ -139,13 +152,16 @@ function getLandingAnalyticsProperties(pathname: string): AnalyticsProperties {
   return context;
 }
 
-function readStoredLandingContext(): AnalyticsProperties | undefined {
+function readStoredLandingContext(
+  sessionId: string | undefined
+): AnalyticsProperties | undefined {
   if (typeof window === "undefined") return undefined;
 
   try {
-    const raw = window.sessionStorage.getItem(LANDING_CONTEXT_KEY);
+    const raw = window.localStorage.getItem(LANDING_CONTEXT_KEY);
     if (!raw) return undefined;
     const parsed = JSON.parse(raw) as Record<string, unknown>;
+    if (!sessionId || parsed.sessionId !== sessionId) return undefined;
     return {
       landingPath: getStringValue(parsed.landingPath),
       referrerDomain: getStringValue(parsed.referrerDomain),
@@ -269,10 +285,36 @@ function getAnalyticsVisitorId(): string | undefined {
 }
 
 function getAnalyticsSessionId(): string | undefined {
-  return getOrCreateAnalyticsId(
-    "uapt.analytics.session_id",
-    () => sessionIdFallback
-  );
+  if (typeof window === "undefined") return sessionIdFallback;
+
+  const now = Date.now();
+  try {
+    const raw = window.localStorage.getItem(ANALYTICS_SESSION_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw) as { id?: unknown; lastActivityAt?: unknown };
+      if (
+        typeof parsed.id === "string" &&
+        typeof parsed.lastActivityAt === "number" &&
+        now - parsed.lastActivityAt < ANALYTICS_SESSION_TIMEOUT_MS
+      ) {
+        window.localStorage.setItem(
+          ANALYTICS_SESSION_KEY,
+          JSON.stringify({ id: parsed.id, lastActivityAt: now })
+        );
+        return parsed.id;
+      }
+    }
+
+    const id = crypto.randomUUID();
+    window.localStorage.setItem(
+      ANALYTICS_SESSION_KEY,
+      JSON.stringify({ id, lastActivityAt: now })
+    );
+    return id;
+  } catch {
+    sessionIdFallback ??= crypto.randomUUID();
+    return sessionIdFallback;
+  }
 }
 
 function getOrCreateAnalyticsId(

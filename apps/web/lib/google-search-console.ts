@@ -162,7 +162,7 @@ async function queryGsc(
     )}/searchAnalytics/query`,
     {
       body: JSON.stringify({
-        dataState: "all",
+        dataState: "final",
         dimensions,
         endDate: formatGscDate(endDate),
         rowLimit,

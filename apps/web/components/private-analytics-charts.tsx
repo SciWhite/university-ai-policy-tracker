@@ -145,13 +145,14 @@ export function DashboardSourceChart({
   rows: AnalyticsDashboardSourceTrendRow[];
 }) {
   const [active, setActive] = useState<{ index: number; key: SourceKey } | null>(null);
-  const keys: SourceKey[] = ["direct", "search", "ai", "referral", "other"];
+  const keys: SourceKey[] = ["direct", "search", "ai", "referral", "unknown", "other"];
   const colors: Record<SourceKey, string> = {
     ai: "var(--analytics-ai)",
     direct: "var(--analytics-direct)",
     other: "var(--analytics-other)",
     referral: "var(--analytics-referral)",
-    search: "var(--analytics-search)"
+    search: "var(--analytics-search)",
+    unknown: "var(--analytics-unknown)"
   };
   const max = Math.max(...rows.map((row) => keys.reduce((sum, key) => sum + row[key], 0)), 0);
 
@@ -333,7 +334,7 @@ export function DashboardMoverChart({
   );
 }
 
-type SourceKey = "ai" | "direct" | "other" | "referral" | "search";
+type SourceKey = "ai" | "direct" | "other" | "referral" | "search" | "unknown";
 
 function buildLinePath(
   values: number[],

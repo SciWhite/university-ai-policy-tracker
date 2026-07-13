@@ -192,11 +192,15 @@ function buildSessionStats(rows: AnalyticsEventRow[]) {
 
     if (row.eventName === "page_view") {
       stats.pageViews += 1;
-    } else {
+    } else if (MEANINGFUL_ENGAGEMENT_EVENTS.has(row.eventName)) {
       stats.engaged = true;
     }
 
     sessionStats.set(sessionKey, stats);
+  }
+
+  for (const stats of sessionStats.values()) {
+    if (stats.pageViews >= 2) stats.engaged = true;
   }
 
   return sessionStats;
@@ -719,9 +723,22 @@ function getPayloadString(payload: unknown, key: string): string | undefined {
 }
 
 function normalizeSourceCategory(value: string | null | undefined): string {
-  const normalized = normalizeText(value);
-  return normalized === "unknown" ? "direct" : normalized;
+  return normalizeText(value);
 }
+
+const MEANINGFUL_ENGAGEMENT_EVENTS = new Set([
+  "api_link_click",
+  "autocomplete_json_click",
+  "autocomplete_result_click",
+  "citation_copy",
+  "official_source_click",
+  "record_canonical_click",
+  "record_public_json_click",
+  "search_result_json_click",
+  "search_result_record_click",
+  "search_submit",
+  "session_engaged"
+]);
 
 function normalizeSourceName(
   value: string | null | undefined,

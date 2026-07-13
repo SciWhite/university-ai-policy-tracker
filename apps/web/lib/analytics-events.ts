@@ -22,6 +22,7 @@ export const ANALYTICS_EVENT_NAMES = [
   "search_result_json_click",
   "search_result_record_click",
   "search_submit",
+  "session_engaged",
   "theme_change"
 ] as const;
 
@@ -45,6 +46,7 @@ export interface BuildAnalyticsEventRecordInput {
   createdAt?: Date;
   deviceType?: string;
   eventName: AnalyticsDatabaseEventName | string;
+  id?: string;
   pathname: string;
   properties?: AnalyticsProperties;
   sessionId?: string;
@@ -92,6 +94,7 @@ export function buildAnalyticsEventRecord(
     deviceType: truncateAnalyticsStringIfPresent(input.deviceType),
     entitySlug,
     eventName: truncateAnalyticsString(input.eventName),
+    id: truncateAnalyticsStringIfPresent(input.id),
     locale,
     pageType,
     pathname,

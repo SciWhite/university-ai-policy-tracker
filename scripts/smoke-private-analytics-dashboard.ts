@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import type { AnalyticsEventRow } from "@uapt/db";
 import type { GscSummary } from "../apps/web/lib/google-search-console.ts";
 import {
+  buildComparisonEligibility,
   buildAnalyticsInsights,
   buildQueryOpportunities,
   parseAnalyticsDashboardQuery
@@ -12,12 +13,22 @@ import {
 } from "../apps/web/lib/private-analytics.ts";
 
 const parsed = parseAnalyticsDashboardQuery(
-  new URLSearchParams({ from: "2026-01-01", to: "2026-12-31", grain: "day" }),
+  new URLSearchParams({ from: "2026-01-01", to: "2026-06-29", grain: "day" }),
   new Date("2026-07-10T12:00:00Z")
 );
-assert.equal(parsed.to, "2026-12-31");
+assert.equal(parsed.to, "2026-06-29");
 assert.equal(daysBetween(parsed.from, parsed.to) + 1, 180);
 assert.equal(daysBetween(parsed.previousFrom, parsed.previousTo) + 1, 180);
+assert.throws(
+  () => parseAnalyticsDashboardQuery(
+    new URLSearchParams({ from: "2026-01-01", to: "2026-06-30" })
+  ),
+  /cannot exceed 180 days/
+);
+assert.throws(
+  () => parseAnalyticsDashboardQuery(new URLSearchParams({ grain: "hour" })),
+  /grain must be/
+);
 
 const rows: AnalyticsEventRow[] = [
   event("page-1", "page_view", "2026-07-01T14:00:00Z", "session-1", {
@@ -42,6 +53,28 @@ assert.equal(summary.funnel.find((row) => row.label === "Search submits")?.count
 assert.ok(summary.funnel.every((row) => row.share <= 1));
 assert.equal(summary.trend.length, 2);
 assert.equal(getAnalyticsRowSourceCategory(rows[0]), "ai");
+assert.equal(
+  getAnalyticsRowSourceCategory(
+    event("unknown-source", "page_view", "2026-07-02T15:00:00Z", "session-3")
+  ),
+  "unknown"
+);
+assert.equal(summary.engagedSessions, 1);
+
+const baselineComparison = buildComparisonEligibility(
+  {
+    compare: true,
+    filters: { countries: [], devices: [], locales: [], sources: [] },
+    from: "2026-07-01",
+    grain: "day",
+    previousFrom: "2026-06-01",
+    previousTo: "2026-06-30",
+    to: "2026-07-30"
+  },
+  gscSummary([])
+);
+assert.equal(baselineComparison.onsite.eligible, false);
+assert.equal(baselineComparison.sources.eligible, false);
 
 const gsc = gscSummary([
   { clicks: 1, ctr: 0.005, impressions: 240, key: "university ai policy", position: 8 },
@@ -52,9 +85,12 @@ assert.equal(opportunities.length, 1);
 assert.equal(opportunities[0]?.key, "university ai policy");
 
 const period = {
+  api: { clientKinds: [], latencyBuckets: [], queryKinds: [], requests: 0, zeroResultRequests: 0 },
+  bot: { families: [], knownFamilyPageViews: 0, uniquePaths: 0, unknownFamilyPageViews: 0 },
   botPageViews: 0,
   botTrend: [],
   latestEventAt: new Date().toISOString(),
+  quality: { collectorVersions: [], sessionIdCoverage: 1, visitorIdCoverage: 1 },
   sourceTrend: [],
   summary,
   unknownSourceShare: 0

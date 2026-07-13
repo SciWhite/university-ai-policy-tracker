@@ -54,14 +54,39 @@ export interface AnalyticsDashboardSourceTrendRow {
   other: number;
   referral: number;
   search: number;
+  unknown: number;
+}
+
+export interface AnalyticsDashboardApiMetrics {
+  clientKinds: Array<{ count: number; label: string }>;
+  latencyBuckets: Array<{ count: number; label: string }>;
+  queryKinds: Array<{ count: number; label: string }>;
+  requests: number;
+  zeroResultRequests: number;
+}
+
+export interface AnalyticsDashboardBotDiagnostics {
+  families: Array<{ count: number; label: string }>;
+  knownFamilyPageViews: number;
+  uniquePaths: number;
+  unknownFamilyPageViews: number;
+}
+
+export interface AnalyticsDashboardQuality {
+  collectorVersions: Array<{ count: number; label: string }>;
+  sessionIdCoverage: number;
+  visitorIdCoverage: number;
 }
 
 export interface AnalyticsDashboardPeriod {
+  api: AnalyticsDashboardApiMetrics;
+  bot: AnalyticsDashboardBotDiagnostics;
   botPageViews: number;
   botTrend: PrivateAnalyticsTrendRow[];
   latestEventAt?: string;
   sourceTrend: AnalyticsDashboardSourceTrendRow[];
   summary: PrivateAnalyticsSummary;
+  quality: AnalyticsDashboardQuality;
   unknownSourceShare: number;
 }
 
@@ -106,12 +131,22 @@ export interface AnalyticsDashboardResponse {
   };
   insights: AnalyticsDashboardInsight[];
   meta: {
+    baselines: {
+      attribution: string;
+      tracking: string;
+    };
+    comparison: {
+      gsc: { eligible: boolean; reason?: { en: string; zh: string } };
+      onsite: { eligible: boolean; reason?: { en: string; zh: string } };
+      sources: { eligible: boolean; reason?: { en: string; zh: string } };
+    };
     dataStatus: {
       gsc: "connected" | "unavailable";
       onsite: "connected" | "unavailable";
       rpc: "fallback" | "ready";
     };
     generatedAt: string;
+    gscCompleteThrough?: string;
     partialDay: boolean;
     query: AnalyticsDashboardQuery;
     timeZone: "America/Toronto";

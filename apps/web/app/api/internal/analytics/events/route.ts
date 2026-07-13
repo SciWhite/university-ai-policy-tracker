@@ -10,11 +10,11 @@ import { recordMirroredAnalyticsEvent } from "@/lib/analytics-store";
 export const dynamic = "force-dynamic";
 
 interface AnalyticsMirrorRequestBody {
+  eventId?: string;
   eventName?: string;
   pathname?: string;
   properties?: AnalyticsProperties;
   sessionId?: string;
-  source?: string;
   visitorId?: string;
 }
 
@@ -44,9 +44,20 @@ export async function POST(request: Request) {
     return errorResponse(403);
   }
 
+  if (!consumeAnalyticsRateLimit(request)) {
+    return errorResponse(429, { "Retry-After": "60" });
+  }
+
+  const declaredLength = Number(request.headers.get("content-length") ?? 0);
+  if (declaredLength > MAX_ANALYTICS_BODY_BYTES) return errorResponse(413);
+
   let body: AnalyticsMirrorRequestBody;
   try {
-    body = (await request.json()) as AnalyticsMirrorRequestBody;
+    const raw = await request.text();
+    if (new TextEncoder().encode(raw).byteLength > MAX_ANALYTICS_BODY_BYTES) {
+      return errorResponse(413);
+    }
+    body = JSON.parse(raw) as AnalyticsMirrorRequestBody;
   } catch {
     return errorResponse(400);
   }
@@ -55,8 +66,6 @@ export async function POST(request: Request) {
     typeof body.eventName === "string" ? body.eventName.trim() : "";
   const pathname =
     typeof body.pathname === "string" ? normalizePathname(body.pathname) : "";
-  const source = typeof body.source === "string" ? body.source.trim() : "client";
-
   if (!eventName || !pathname) {
     return errorResponse(400);
   }
@@ -69,6 +78,9 @@ export async function POST(request: Request) {
     isAnalyticsProperties(body.properties) ? body.properties : {}
   );
   const requestAnalyticsContext = getRequestAnalyticsContext(request);
+  if (requestAnalyticsContext.botFamily) {
+    properties.bot_family = requestAnalyticsContext.botFamily;
+  }
 
   try {
     await recordMirroredAnalyticsEvent(
@@ -76,10 +88,11 @@ export async function POST(request: Request) {
         countryCode: requestAnalyticsContext.countryCode,
         deviceType: requestAnalyticsContext.deviceType,
         eventName,
+        id: normalizeEventId(body.eventId),
         pathname,
         properties,
         sessionId: body.sessionId,
-        source,
+        source: "client",
         visitorId: body.visitorId
       })
     );
@@ -111,12 +124,15 @@ export async function POST(request: Request) {
 }
 
 function getRequestAnalyticsContext(request: Request): {
+  botFamily?: string;
   countryCode?: string;
   deviceType?: string;
 } {
+  const botFamily = detectBotFamily(request.headers.get("user-agent"));
   return {
+    botFamily,
     countryCode: normalizeCountryCode(request.headers.get("cf-ipcountry")),
-    deviceType: detectDeviceType(request.headers)
+    deviceType: botFamily ? "bot" : detectDeviceType(request.headers)
   };
 }
 
@@ -153,6 +169,28 @@ function detectDeviceType(
   }
 
   return "desktop";
+}
+
+function detectBotFamily(userAgentValue: string | null): string | undefined {
+  const userAgent = userAgentValue?.toLowerCase() ?? "";
+  if (!userAgent) return undefined;
+  const families: Array<[string, RegExp]> = [
+    ["googlebot", /googlebot|google-inspectiontool/],
+    ["bingbot", /bingbot|bingpreview/],
+    ["applebot", /applebot/],
+    ["duckduckbot", /duckduckbot/],
+    ["yandexbot", /yandexbot/],
+    ["baiduspider", /baiduspider/],
+    ["gptbot", /gptbot|chatgpt-user/],
+    ["claudebot", /claudebot|anthropic-ai/],
+    ["perplexitybot", /perplexitybot/]
+  ];
+  for (const [family, pattern] of families) {
+    if (pattern.test(userAgent)) return family;
+  }
+  return /(bot|crawler|spider|crawling|slurp|facebookexternalhit)/.test(userAgent)
+    ? "other_bot"
+    : undefined;
 }
 
 function isTrustedOrigin(request: Request): boolean {
@@ -193,6 +231,13 @@ function normalizePathname(pathname: string | undefined): string {
   return pathname.startsWith("/") ? pathname : `/${pathname}`;
 }
 
+function normalizeEventId(value: string | undefined): string | undefined {
+  const normalized = value?.trim();
+  return normalized && /^[0-9a-f-]{20,64}$/i.test(normalized)
+    ? normalized
+    : undefined;
+}
+
 function isAnalyticsProperties(
   value: unknown
 ): value is AnalyticsProperties {
@@ -208,14 +253,45 @@ function emptyResponse(): Response {
   });
 }
 
-function errorResponse(status: 400 | 403): NextResponse {
+function errorResponse(
+  status: 400 | 403 | 413 | 429,
+  headers: Record<string, string> = {}
+): NextResponse {
   return NextResponse.json(
     { ok: false },
     {
       headers: {
-        "Cache-Control": "no-store"
+        "Cache-Control": "no-store",
+        ...headers
       },
       status
     }
   );
+}
+
+const MAX_ANALYTICS_BODY_BYTES = 8_192;
+const ANALYTICS_RATE_LIMIT = 120;
+const ANALYTICS_RATE_WINDOW_MS = 60_000;
+const analyticsRateBuckets = new Map<string, { count: number; resetAt: number }>();
+
+function consumeAnalyticsRateLimit(request: Request): boolean {
+  const address =
+    request.headers.get("cf-connecting-ip") ??
+    request.headers.get("x-real-ip") ??
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  if (!address) return true;
+
+  const now = Date.now();
+  const bucket = analyticsRateBuckets.get(address);
+  if (!bucket || bucket.resetAt <= now) {
+    analyticsRateBuckets.set(address, { count: 1, resetAt: now + ANALYTICS_RATE_WINDOW_MS });
+    return true;
+  }
+  bucket.count += 1;
+  if (analyticsRateBuckets.size > 5_000) {
+    for (const [key, value] of analyticsRateBuckets) {
+      if (value.resetAt <= now) analyticsRateBuckets.delete(key);
+    }
+  }
+  return bucket.count <= ANALYTICS_RATE_LIMIT;
 }

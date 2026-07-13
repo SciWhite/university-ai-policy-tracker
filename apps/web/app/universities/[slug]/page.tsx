@@ -59,13 +59,15 @@ export async function generateMetadata({ params }: UniversityPageProps) {
   const alternates = getLocalizedAlternates(`/universities/${slug}`, locale);
   const canonical = String(alternates.canonical);
   const title = university
-    ? `${displayName} AI Policy: ChatGPT, GenAI Rules & Sources`
+    ? buildUniversityMetaTitle(slug, displayName, locale)
     : "University not found";
   const description = university && publicSummary
-    ? buildUniversityMetaDescription({
-        displayName,
-        summary: publicSummary
-      })
+    ? slug === "universitat-innsbruck"
+      ? buildInnsbruckMetaDescription(displayName, locale)
+      : buildUniversityMetaDescription({
+          displayName,
+          summary: publicSummary
+        })
     : university
       ? `${displayName} AI policy record with evidence-backed claims, official sources, review state, confidence, and public JSON.`
     : "University AI Policy Tracker record not found.";
@@ -125,6 +127,12 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     totalClaimCount: publicSummary.claims.length
   });
   const sourceLanguages = getSourceLanguages(publicSummary.claims);
+  const academicAiClaim = slug === "universitat-innsbruck"
+    ? publicSummary.claims.find(
+        (claim) => claim.id === "claim-uibk-academic-ai-and-copilot"
+      )
+    : undefined;
+  const academicAiSource = academicAiClaim?.evidence[0]?.sourceUrl;
 
   return (
     <main className="page-shell page-shell--wide">
@@ -160,7 +168,16 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               encodingFormat: "application/json",
               contentUrl: publicJsonUrl
             }
-          }
+          },
+          ...(academicAiClaim
+            ? {
+                about: {
+                  "@type": "Thing",
+                  name: "Academic AI at UIBK",
+                  sameAs: academicAiSource
+                }
+              }
+            : {})
         }}
       />
 
@@ -274,6 +291,42 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
       <div className="entity-record-layout">
         <div className="entity-record-main">
+          {academicAiClaim ? (
+            <ReferenceBox
+              actions={academicAiSource ? (
+                <a
+                  className="site-action"
+                  data-analytics-entity-slug={slug}
+                  data-analytics-event="official_source_click"
+                  data-analytics-source-domain={getSourceDomain(academicAiSource)}
+                  href={academicAiSource}
+                >
+                  {locale === "zh" ? "Academic AI 官方来源" : "Academic AI source"}
+                </a>
+              ) : undefined}
+              id="academic-ai-uibk"
+              title={locale === "zh" ? "UIBK 的 Academic AI" : "Academic AI at UIBK"}
+            >
+              <p className="entity-answer-lede">
+                {locale === "zh"
+                  ? "因斯布鲁克大学向在职员工提供运行于受保护环境中的 Academic AI，并推荐使用该校内模型；现有官方证据同时指出，出于数据保护原因，员工不得使用 Microsoft Copilot。"
+                  : "Universität Innsbruck provides Academic AI to active employees in a protected environment and recommends its institutional model; current official evidence also says staff use of Microsoft Copilot is prohibited for data-protection reasons."}
+              </p>
+              <div className="tag-row">
+                <MetaLabel label={locale === "zh" ? "使用对象" : "Access"}>
+                  {locale === "zh" ? "在职员工" : "Active employees"}
+                </MetaLabel>
+                <MetaLabel label={locale === "zh" ? "环境" : "Environment"}>
+                  {locale === "zh" ? "受保护" : "Protected"}
+                </MetaLabel>
+                <MetaLabel label="Microsoft Copilot">
+                  {locale === "zh" ? "员工禁止使用" : "Prohibited for staff"}
+                </MetaLabel>
+                <StateLabel reviewState={academicAiClaim.reviewState} />
+              </div>
+            </ReferenceBox>
+          ) : null}
+
           <ReferenceBox
             id="overview"
             title="Record status"
@@ -594,6 +647,29 @@ function formatDate(value: string): string {
     dateStyle: "medium",
     timeZone: "UTC"
   }).format(new Date(value));
+}
+
+function buildUniversityMetaTitle(
+  slug: string,
+  displayName: string | undefined,
+  locale: string
+): string {
+  if (slug === "universitat-innsbruck") {
+    return locale === "zh"
+      ? `UIBK Academic AI：${displayName} AI 政策与 Copilot 规则`
+      : "Academic AI at UIBK: Innsbruck AI Policy & Copilot Rules";
+  }
+  return `${displayName} AI Policy: ChatGPT, GenAI Rules & Sources`;
+}
+
+function buildInnsbruckMetaDescription(
+  displayName: string | undefined,
+  locale: string
+): string {
+  const name = displayName ?? "Universität Innsbruck";
+  return locale === "zh"
+    ? `${name}（UIBK）的 Academic AI 使用资格、受保护环境、Microsoft Copilot 数据保护限制，以及经过来源核验的 AI 政策证据。`
+    : `${name} (UIBK) Academic AI access, protected-environment details, Microsoft Copilot data-protection restrictions, and source-backed AI policy evidence.`;
 }
 
 function buildUniversityMetaDescription({

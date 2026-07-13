@@ -34,8 +34,14 @@ import type {
 } from "@/lib/private-analytics-dashboard-types";
 
 const ANALYTICS_TIME_ZONE = "America/Toronto";
+export const ANALYTICS_TRACKING_BASELINE = "2026-06-19";
+export const ANALYTICS_ATTRIBUTION_BASELINE = "2026-06-26";
 const MAX_RANGE_DAYS = 180;
 const DAY_MS = 24 * 60 * 60 * 1000;
+
+export class AnalyticsDashboardQueryError extends Error {
+  readonly code = "invalid_analytics_dashboard_query";
+}
 
 export function parseAnalyticsDashboardQuery(
   params: URLSearchParams,
@@ -43,32 +49,54 @@ export function parseAnalyticsDashboardQuery(
 ): AnalyticsDashboardQuery {
   const today = formatTorontoDate(now);
   const defaultTo = shiftDate(today, -1);
-  const requestedTo = normalizeDate(params.get("to")) ?? defaultTo;
-  const requestedFrom =
-    normalizeDate(params.get("from")) ?? shiftDate(requestedTo, -29);
+  const rawFrom = params.get("from");
+  const rawTo = params.get("to");
+  const normalizedFrom = normalizeDate(rawFrom);
+  const normalizedTo = normalizeDate(rawTo);
+  if (rawFrom !== null && !normalizedFrom) {
+    throw new AnalyticsDashboardQueryError("from must be a valid YYYY-MM-DD date");
+  }
+  if (rawTo !== null && !normalizedTo) {
+    throw new AnalyticsDashboardQueryError("to must be a valid YYYY-MM-DD date");
+  }
+  const requestedTo = normalizedTo ?? defaultTo;
+  const requestedFrom = normalizedFrom ?? shiftDate(requestedTo, -29);
   const orderedFrom = requestedFrom <= requestedTo ? requestedFrom : requestedTo;
   const orderedTo = requestedFrom <= requestedTo ? requestedTo : requestedFrom;
   const rangeDays = differenceInDays(orderedFrom, orderedTo) + 1;
-  const from = rangeDays > MAX_RANGE_DAYS
-    ? shiftDate(orderedTo, -(MAX_RANGE_DAYS - 1))
-    : orderedFrom;
+  if (rangeDays > MAX_RANGE_DAYS) {
+    throw new AnalyticsDashboardQueryError("Date range cannot exceed 180 days");
+  }
+  const rawGrain = params.get("grain");
+  if (rawGrain !== null && !["day", "week", "month"].includes(rawGrain)) {
+    throw new AnalyticsDashboardQueryError("grain must be day, week, or month");
+  }
+  const rawCompare = params.get("compare");
+  if (rawCompare !== null && !["previous", "none"].includes(rawCompare)) {
+    throw new AnalyticsDashboardQueryError("compare must be previous or none");
+  }
+  const rawFocus = params.get("focus");
+  if (rawFocus !== null && !normalizeFocus(rawFocus)) {
+    throw new AnalyticsDashboardQueryError("focus is not supported");
+  }
+  const from = orderedFrom;
   const to = orderedTo;
   const dayCount = differenceInDays(from, to) + 1;
   const previousTo = shiftDate(from, -1);
   const previousFrom = shiftDate(previousTo, -(dayCount - 1));
 
   return {
-    compare: params.get("compare") !== "none",
+    compare: rawCompare !== "none",
     filters: {
       countries: getRepeatedValues(params, "country"),
       devices: getRepeatedValues(params, "device"),
       locales: getRepeatedValues(params, "locale"),
       sources: getRepeatedValues(params, "source")
     },
-    focus: normalizeFocus(params.get("focus")),
+    focus: normalizeFocus(rawFocus),
     focusKey: normalizeText(params.get("focusKey")),
     from,
-    grain: normalizeGrain(params.get("grain"), dayCount),
+    grain: normalizeGrain(rawGrain, dayCount),
     previousFrom,
     previousTo,
     to
@@ -115,7 +143,7 @@ export async function getAnalyticsDashboard(
   ]);
   const rollupReady = Boolean(currentRollup && (!query.compare || previousRollup));
   const [allRows, [currentGsc, previousGsc]] = await Promise.all([
-    loadRows(since, { excludeBots: rollupReady }),
+    loadRows(since, { excludeBots: false }),
     gscPromise
   ]);
 
@@ -153,6 +181,7 @@ export async function getAnalyticsDashboard(
   const queryMovers = buildGscMovers(currentGsc.queryRows, previousGsc.queryRows);
   const gscPageMovers = buildGscMovers(currentGsc.pageRows, previousGsc.pageRows);
   const opportunities = buildQueryOpportunities(currentGsc);
+  const comparison = buildComparisonEligibility(query, currentGsc);
   const insights = buildAnalyticsInsights({
     analyticsStoreAvailable,
     current,
@@ -161,7 +190,8 @@ export async function getAnalyticsDashboard(
     pageMovers,
     previous,
     previousGsc,
-    sourceMovers
+    sourceMovers,
+    comparison
   });
 
   return {
@@ -178,12 +208,18 @@ export async function getAnalyticsDashboard(
     },
     insights,
     meta: {
+      baselines: {
+        attribution: ANALYTICS_ATTRIBUTION_BASELINE,
+        tracking: ANALYTICS_TRACKING_BASELINE
+      },
+      comparison,
       dataStatus: {
         gsc: currentGsc.available ? "connected" : "unavailable",
         onsite: analyticsStoreAvailable ? "connected" : "unavailable",
         rpc: rollupReady ? "ready" : "fallback"
       },
       generatedAt: new Date().toISOString(),
+      gscCompleteThrough: currentGsc.dateRows.at(-1)?.key,
       partialDay: query.to >= formatTorontoDate(new Date()),
       query,
       timeZone: ANALYTICS_TIME_ZONE
@@ -208,6 +244,7 @@ export function buildAnalyticsInsights(input: {
   previous: AnalyticsDashboardPeriod;
   previousGsc: GscSummary;
   sourceMovers: AnalyticsDashboardMover[];
+  comparison?: AnalyticsDashboardResponse["meta"]["comparison"];
 }): AnalyticsDashboardInsight[] {
   const insights: AnalyticsDashboardInsight[] = [];
   const { current, previous, currentGsc, previousGsc } = input;
@@ -261,7 +298,7 @@ export function buildAnalyticsInsights(input: {
     ));
   }
 
-  addMetricShiftInsight(insights, {
+  if (input.comparison?.onsite.eligible !== false) addMetricShiftInsight(insights, {
     current: current.summary.visitors,
     enLabel: "Visitors",
     id: "visitors-shift",
@@ -269,7 +306,7 @@ export function buildAnalyticsInsights(input: {
     previous: previous.summary.visitors,
     zhLabel: "访客"
   });
-  addMetricShiftInsight(insights, {
+  if (input.comparison?.gsc.eligible !== false) addMetricShiftInsight(insights, {
     current: currentGsc.totals.impressions,
     enLabel: "GSC impressions",
     id: "impressions-shift",
@@ -278,7 +315,9 @@ export function buildAnalyticsInsights(input: {
     zhLabel: "GSC 展现"
   });
 
-  const aiMover = input.sourceMovers.find((row) => row.label === "ai");
+  const aiMover = input.comparison?.sources.eligible === false
+    ? undefined
+    : input.sourceMovers.find((row) => row.label === "ai");
   if (
     aiMover &&
     aiMover.change !== null &&
@@ -322,7 +361,12 @@ function buildDashboardPeriod(
   grain: AnalyticsPeriod,
   rollup: AnalyticsStoreRollup | null
 ): AnalyticsDashboardPeriod {
-  const humanRows = rows.filter((row) => !isBotAnalyticsRow(row));
+  const humanRows = rows.filter(
+    (row) => !isBotAnalyticsRow(row) && row.source !== "server"
+  );
+  const apiRows = rows.filter(
+    (row) => row.source === "server" || row.eventName === "api_search_request"
+  );
   const botRows = rows.filter(isBotAnalyticsRow);
   const since = dateAtUtcNoon(from);
   const until = dateAtUtcNoon(to);
@@ -330,6 +374,8 @@ function buildDashboardPeriod(
   const botSummary = buildPrivateAnalyticsSummary(botRows, since, grain, until);
   const unknown = summary.sourceCategories.find((row) => row.label === "unknown");
   return {
+    api: buildApiMetrics(apiRows),
+    bot: buildBotDiagnostics(botRows),
     botPageViews: rollup?.botPageViews ?? botSummary.pageViews,
     botTrend: rollup
       ? rollup.botTrend.map((row) => ({
@@ -341,6 +387,7 @@ function buildDashboardPeriod(
         }))
       : botSummary.trend,
     latestEventAt: rollup?.latestEventAt ?? rows.at(-1)?.createdAt,
+    quality: buildQualityMetrics(humanRows),
     sourceTrend: buildSourceTrend(humanRows, summary.trend, grain),
     summary,
     unknownSourceShare: rollup?.humanPageViews
@@ -349,12 +396,136 @@ function buildDashboardPeriod(
   };
 }
 
+function buildApiMetrics(rows: AnalyticsEventRow[]) {
+  return {
+    clientKinds: countAnalyticsRows(rows, (row) => getPayloadText(row, "client_kind")),
+    latencyBuckets: countAnalyticsRows(
+      rows,
+      (row) => getPayloadText(row, "request_latency_bucket")
+    ),
+    queryKinds: countAnalyticsRows(rows, (row) => row.queryKind ?? undefined),
+    requests: rows.filter((row) => row.eventName === "api_search_request").length,
+    zeroResultRequests: rows.filter(
+      (row) => row.eventName === "api_search_request" && row.resultCountBucket === "0"
+    ).length
+  };
+}
+
+function buildBotDiagnostics(rows: AnalyticsEventRow[]) {
+  const pageViews = rows.filter((row) => row.eventName === "page_view");
+  const families = countAnalyticsRows(
+    pageViews,
+    (row) => getPayloadText(row, "bot_family") ?? "unclassified"
+  );
+  const knownFamilyPageViews = families
+    .filter((row) => row.label !== "unclassified" && row.label !== "other_bot")
+    .reduce((sum, row) => sum + row.count, 0);
+  return {
+    families,
+    knownFamilyPageViews,
+    uniquePaths: new Set(pageViews.map((row) => row.pathname)).size,
+    unknownFamilyPageViews: pageViews.length - knownFamilyPageViews
+  };
+}
+
+function buildQualityMetrics(rows: AnalyticsEventRow[]) {
+  const pageViews = rows.filter((row) => row.eventName === "page_view");
+  return {
+    collectorVersions: countAnalyticsRows(
+      rows,
+      (row) => getPayloadText(row, "collector_version") ?? "legacy"
+    ),
+    sessionIdCoverage: pageViews.length
+      ? pageViews.filter((row) => Boolean(row.sessionId)).length / pageViews.length
+      : 0,
+    visitorIdCoverage: pageViews.length
+      ? pageViews.filter((row) => Boolean(row.visitorId)).length / pageViews.length
+      : 0
+  };
+}
+
+function countAnalyticsRows(
+  rows: AnalyticsEventRow[],
+  getter: (row: AnalyticsEventRow) => string | undefined
+): Array<{ count: number; label: string }> {
+  const counts = new Map<string, number>();
+  for (const row of rows) {
+    const label = getter(row);
+    if (!label) continue;
+    counts.set(label, (counts.get(label) ?? 0) + 1);
+  }
+  return Array.from(counts, ([label, count]) => ({ count, label }))
+    .sort((left, right) => right.count - left.count || left.label.localeCompare(right.label));
+}
+
+function getPayloadText(row: AnalyticsEventRow, key: string): string | undefined {
+  if (!row.payload || typeof row.payload !== "object" || Array.isArray(row.payload)) {
+    return undefined;
+  }
+  const value = (row.payload as Record<string, unknown>)[key];
+  return typeof value === "string" && value.trim() ? value.trim().toLowerCase() : undefined;
+}
+
+export function buildComparisonEligibility(
+  query: AnalyticsDashboardQuery,
+  currentGsc: GscSummary
+): AnalyticsDashboardResponse["meta"]["comparison"] {
+  const disabledReason = {
+    en: "Previous-period comparison is disabled.",
+    zh: "未启用上一周期对比。"
+  };
+  const onsiteEligible = query.compare && query.previousFrom >= ANALYTICS_TRACKING_BASELINE;
+  const sourcesEligible = query.compare && query.previousFrom >= ANALYTICS_ATTRIBUTION_BASELINE;
+  const gscCompleteThrough = currentGsc.dateRows.at(-1)?.key;
+  const gscEligible = Boolean(
+    query.compare &&
+    currentGsc.available &&
+    gscCompleteThrough &&
+    gscCompleteThrough >= query.to
+  );
+  return {
+    gsc: {
+      eligible: gscEligible,
+      reason: gscEligible
+        ? undefined
+        : !query.compare
+          ? disabledReason
+          : {
+              en: `GSC finalized data currently ends at ${gscCompleteThrough ?? "an unavailable date"}.`,
+              zh: `GSC 已完成数据目前截止 ${gscCompleteThrough ?? "未知日期"}。`
+            }
+    },
+    onsite: {
+      eligible: onsiteEligible,
+      reason: onsiteEligible
+        ? undefined
+        : !query.compare
+          ? disabledReason
+          : {
+              en: `The previous period starts before the onsite tracking baseline (${ANALYTICS_TRACKING_BASELINE}).`,
+              zh: `上一周期早于站内埋点基线（${ANALYTICS_TRACKING_BASELINE}）。`
+            }
+    },
+    sources: {
+      eligible: sourcesEligible,
+      reason: sourcesEligible
+        ? undefined
+        : !query.compare
+          ? disabledReason
+          : {
+              en: `The previous period crosses the attribution v2 baseline (${ANALYTICS_ATTRIBUTION_BASELINE}).`,
+              zh: `上一周期跨越来源归因 v2 基线（${ANALYTICS_ATTRIBUTION_BASELINE}）。`
+            }
+    }
+  };
+}
+
 function applyFilters(
   rows: AnalyticsEventRow[],
   filters: AnalyticsDashboardFilters
 ): AnalyticsEventRow[] {
   return rows.filter((row) => {
-    if (isBotAnalyticsRow(row)) return true;
+    if (isBotAnalyticsRow(row) || row.source === "server") return true;
     if (
       filters.sources.length &&
       !filters.sources.includes(getAnalyticsRowSourceCategory(row))
@@ -408,7 +579,7 @@ function buildSourceTrend(
     const bucket = buckets.get(label);
     if (!bucket) continue;
     const category = getAnalyticsRowSourceCategory(row);
-    if (category === "direct" || category === "search" || category === "ai" || category === "referral") {
+    if (category === "direct" || category === "search" || category === "ai" || category === "referral" || category === "unknown") {
       bucket[category] += 1;
     } else {
       bucket.other += 1;
@@ -418,7 +589,7 @@ function buildSourceTrend(
 }
 
 function emptySourceTrendRow(label: string): AnalyticsDashboardSourceTrendRow {
-  return { ai: 0, direct: 0, label, other: 0, referral: 0, search: 0 };
+  return { ai: 0, direct: 0, label, other: 0, referral: 0, search: 0, unknown: 0 };
 }
 
 function buildMovers(
