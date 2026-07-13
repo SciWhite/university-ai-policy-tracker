@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260713-003",
-  "publishedAt": "2026-07-13T08:55:00Z",
-  "description": "Public release with validated QS141-160 AI tools records plus prior QS131-140 AI tools release.",
+  "releaseId": "public-release-20260713-002",
+  "publishedAt": "2026-07-13T05:55:00Z",
+  "description": "Public release with validated QS131-140 AI tools records plus prior QS121-130 AI tools release.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -818,15 +818,19 @@
     "staging/uapt-runs/uapt-ai-tools-qs-101-110-20260712",
     "staging/uapt-runs/uapt-ai-tools-qs-111-120-20260712",
     "staging/uapt-runs/uapt-ai-tools-qs-121-130-20260713",
-    "staging/uapt-runs/uapt-ai-tools-qs-131-140-20260713",
-    "staging/uapt-runs/uapt-ai-tools-qs-141-160-20260713"
+    "staging/uapt-runs/uapt-ai-tools-qs-131-140-20260713"
   ],
   "notes": [
     "Only directories listed here are promoted into public pages and /api/public/v1 JSON.",
-    "This release preserves public-release-20260713-002 in release history.",
-    "Adds QS141-160 official AI tool records for USC, Stockholm, Groningen, Liverpool, Cape Town, Vienna, Exeter, Geneva, Barcelona, Michigan State, Ghent, WashU, and York.",
-    "Schools without explicit public tool-level official evidence remain unexpanded; broad AI guidance is not promoted into named tool conclusions.",
+    "This release adds a validated AI tools extraction run for QS rows 131-140, with official source-backed tool-level claim/evidence artifacts.",
+    "QS131-140 AI tools records include Macquarie Microsoft Copilot Chat and DeepSeek treatment, Erasmus Erudite, UNC Microsoft Copilot/Adobe Firefly/PromptLab, Texas A&M AI Services, and TU Berlin ChatGPT Edu.",
+    "Universiti Sains Malaysia, UNAM, University of Bologna, Eindhoven University of Technology, and King Saud University were not expanded because no public official tool-level availability source was found in this pass.",
+    "Official tool tables/directories are split into one record per explicitly named tool; broad examples and model-family mentions are not promoted without tool-level evidence.",
+    "Self-hosted university platforms are published under their real product names with self_deploy taxonomy metadata.",
+    "Cloud and enterprise AI services are marked conditionally allowed when they require licensing, paid add-ons, funding accounts, or local approval.",
     "AI tools records are tracker-derived metadata for navigation and comparison; they do not replace official university source language.",
+    "This release preserves public-release-20260713-001 in release history.",
+    "New crawler output should remain in staging until reviewed, repaired if needed, validated, and then added to this manifest.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]
 }

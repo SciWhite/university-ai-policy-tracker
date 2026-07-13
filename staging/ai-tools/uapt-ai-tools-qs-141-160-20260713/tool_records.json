@@ -1,0 +1,843 @@
+{
+  "schemaVersion": "ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-141-160-20260713",
+  "generatedAt": "2026-07-13T08:45:52.000Z",
+  "records": [
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-southern-california",
+      "universityName": "University of Southern California",
+      "qsRank": 146,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "USC lists ChatGPT Edu as AI software available for university use.",
+      "howToObtain": "Log into USC's ChatGPT Edu workspace with a USC email account.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://itservices.usc.edu/ai/",
+          "sourceTitle": "Enterprise Artificial Intelligence (AI) Services - USC Information Technology Services",
+          "evidenceSnippet": "AI Software Available at USC ChatGPT Edu As part of our commitment to expanding equitable and responsible AI, ChatGPT Edu is available for university use. All active USC students, faculty, and staff can access ChatGPT Edu.",
+          "snapshotHash": "0e18ad9cc3a092cbf0b57210f221cd8a757f4118dd4168a0fdeb3de7142d26af",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-southern-california",
+      "universityName": "University of Southern California",
+      "qsRank": 146,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "USC lists Zoom AI Companion for meeting summaries, key points, and action items.",
+      "howToObtain": "Log in to Zoom at USC.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://itservices.usc.edu/ai/",
+          "sourceTitle": "Enterprise Artificial Intelligence (AI) Services - USC Information Technology Services",
+          "evidenceSnippet": "Zoom AI Companion helps make meetings more productive by automatically generating summaries, highlighting key points, and suggesting action items. Zoom AI Companion is available to all Zoom users. Login to Zoom at USC.",
+          "snapshotHash": "9bad95aa356d0012f274d8b7b34dc2571d07deb1f551cc424d4a2cdcc2c09e6b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-southern-california",
+      "universityName": "University of Southern California",
+      "qsRank": 146,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "USC lists Copilot Chat as a web-grounded AI assistant through Microsoft 365.",
+      "howToObtain": "Launch Copilot while signed in through Microsoft 365 with a USC account.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://itservices.usc.edu/ai/",
+          "sourceTitle": "Enterprise Artificial Intelligence (AI) Services - USC Information Technology Services",
+          "evidenceSnippet": "Microsoft Copilot Chat Copilot Chat is a web-grounded AI assistant available to all USC students, faculty, and staff through Microsoft 365. Launch Copilot.",
+          "snapshotHash": "b88801a924b07ca682203058caddd21b06d07f717d01e897e60744ebc320979e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-southern-california",
+      "universityName": "University of Southern California",
+      "qsRank": 146,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "USC lists Gemini as an AI assistant built into Google Workspace tools.",
+      "howToObtain": "Launch Gemini using USC Google Workspace access.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://itservices.usc.edu/ai/",
+          "sourceTitle": "Enterprise Artificial Intelligence (AI) Services - USC Information Technology Services",
+          "evidenceSnippet": "Google Gemini Google Gemini is an AI assistant built into Google Workspace tools like Docs, Gmail, Drive, and Meet. Gemini is available to all USC students, faculty, and staff. Launch Gemini.",
+          "snapshotHash": "66169d5d7044c6a9e49928d9660729431ea841e2f3b11c0e71b23d0167c42013",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-southern-california",
+      "universityName": "University of Southern California",
+      "qsRank": 146,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "USC lists NotebookLM as a smart note-taking tool for understanding and organizing user materials.",
+      "howToObtain": "Launch NotebookLM using USC Google Workspace access.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://itservices.usc.edu/ai/",
+          "sourceTitle": "Enterprise Artificial Intelligence (AI) Services - USC Information Technology Services",
+          "evidenceSnippet": "Google NotebookLM NotebookLM is a smart note-taking tool that helps you understand and organize your own materials, like documents or research. NotebookLM is available to all USC students, faculty, and staff.",
+          "snapshotHash": "d4eee3772d5868d0d9b774b150a1ccea4bc6d4fee33fc00505ee8a53e24c5ae8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "stockholm-university",
+      "universityName": "Stockholm University",
+      "qsRank": 147,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "Stockholm University lists Copilot Chat as an M365 AI tool with data protection.",
+      "howToObtain": "Sign in to Microsoft 365 with the university account, then use Edge, microsoft365.com, or Teams.",
+      "costToUser": "Included in the M365 license.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://medarbetare.su.se/en/support-and-service/it/ai-recourses-at-stockholm-university",
+          "sourceTitle": "AI resources at Stockholm University",
+          "evidenceSnippet": "Microsoft 365 Copilot Chat is an AI tool with data protection. It is available to all employees who are signed in to Microsoft 365. Differences between Copilot Chat and the full version of Copilot: Cost No, included in the M365 license.",
+          "snapshotHash": "0f205712f58d400e05fbcc2a648b2b40d0e3e9395cb1c49b3c3857b4cbdac0b9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "stockholm-university",
+      "universityName": "Stockholm University",
+      "qsRank": 147,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "Stockholm University lists full Microsoft 365 Copilot as a licensed product procured through existing license-purchase routines.",
+      "howToObtain": "Contact the local license administrator for a special Microsoft 365 Copilot license.",
+      "costToUser": "Approx. SEK 200 per user per month.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://medarbetare.su.se/en/support-and-service/it/ai-recourses-at-stockholm-university",
+          "sourceTitle": "AI resources at Stockholm University",
+          "evidenceSnippet": "Microsoft 365 Copilot is procured according to existing routines for license purchases - contact your license administrator for assistance. Available to: Requires a special license. Cost: Yes, approx. SEK 200 per user per month.",
+          "snapshotHash": "aa6c2196a3ae3853a5266f50941c5fbcbc11fc13eac1a2789e079dcde561377a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-groningen",
+      "universityName": "University of Groningen",
+      "qsRank": 147,
+      "tool": "mistral",
+      "rawToolName": "Vibe (formerly Le Chat)",
+      "description": "The University of Groningen lists Vibe, formerly Le Chat by Mistral AI, as a secure AI assistant pilot for UG.",
+      "howToObtain": "Access Vibe through mistral.ai/products/vibe and request an account using the UG Vibe account request form.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.rug.nl/cit/services/ai-office/ai-oplossingen/?lang=en",
+          "sourceTitle": "Available Tools and Software - AI Solutions - University of Groningen",
+          "evidenceSnippet": "Vibe (formerly Le Chat, by Mistral AI) is a secure and reliable AI assistant for the UG that can help with daily tasks. The AI assistant Vibe (Le Chat) will become available as a pilot within the UG. You can request an account using the request form for Vibe accounts.",
+          "snapshotHash": "9e42c703b09294e4614de643d820753db4bc46c48fa22fe671d221bbf05b4f1d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-liverpool",
+      "universityName": "University of Liverpool",
+      "qsRank": 147,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Liverpool identifies Microsoft Copilot as the endorsed generative AI chat tool for university work.",
+      "howToObtain": "Use Copilot Chat through Microsoft Edge, Microsoft 365, or the Microsoft 365 Copilot desktop app on managed Windows devices.",
+      "costToUser": "Copilot Chat is provided through Microsoft 365; paid Copilot for Microsoft 365 is separate.",
+      "availability": "allowed",
+      "endorsementType": "officially_endorsed",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.liverpool.ac.uk/about/the-university/reports-policies-and-governance/ai-at-liverpool/foundations-of-ai/",
+          "sourceTitle": "Foundations of AI - University of Liverpool",
+          "evidenceSnippet": "University of Liverpool tools Microsoft Copilot For University work, staff and students should use Microsoft Copilot - the endorsed generative AI chat tool. All staff and students have access to Copilot Chat through Microsoft's Edge browser or through Microsoft365.",
+          "snapshotHash": "bee69634d456fc3f1d2d9b169174c747dfa766abfa14dd11b9b6abe1d83c5f4b",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-cape-town",
+      "universityName": "University of Cape Town",
+      "qsRank": 150,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "UCT ICTS describes Copilot Chat as an AI companion with Enterprise Data Protection under UCT authentication.",
+      "howToObtain": "Use Copilot Chat with UCT single sign-on and multi-factor authentication.",
+      "costToUser": "No additional cost; it forms part of the Microsoft licence.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://icts.uct.ac.za/copilot-chat",
+          "sourceTitle": "Microsoft Copilot Chat - University of Cape Town ICTS",
+          "evidenceSnippet": "Copilot Chat is your very own artificial intelligence companion. It offers similar functionality to the AI tools that you currently need to pay for, at no additional cost as it forms part of your Microsoft licence.",
+          "snapshotHash": "eca6952d067ece432fd909f46c0a53d5a2537b8471d94d8d26bcd7f848198ca6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-vienna",
+      "universityName": "University of Vienna",
+      "qsRank": 152,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "The University of Vienna states that Microsoft Copilot is licensed for university use through its Microsoft campus contract.",
+      "howToObtain": "Access Microsoft 365 Copilot Chat through the Copilot website; employees may need to activate connected experiences.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://zid.univie.ac.at/en/copilot",
+          "sourceTitle": "Copilot - University of Vienna ZID",
+          "evidenceSnippet": "Use at the University of Vienna Microsoft Copilot is licensed for university use by the Microsoft campus contract (EES contract) of the University of Vienna. To use this feature, employees must order and activate the connected and optional connected experiences, while students do not need to take any action.",
+          "snapshotHash": "7d87b8ee9ab60245bb7ef7b50186bd982f33df5d4e58c0aa4dd76556c8bf8fab",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-vienna",
+      "universityName": "University of Vienna",
+      "qsRank": 152,
+      "tool": "self_deploy",
+      "rawToolName": "u:ai",
+      "description": "u:ai is the University of Vienna's official access point to AI models in a secure cloud environment.",
+      "howToObtain": "Use univie.academic-ai.at with a University of Vienna u:account.",
+      "costToUser": "Monthly credit of EUR 20.00; query costs are deducted from that credit.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://studieren.univie.ac.at/en/using-ai-in-your-studies/uai-the-university-of-viennas-ai-tool/",
+          "sourceTitle": "u:ai - The University of Vienna's AI tool",
+          "evidenceSnippet": "u:ai is the University of Vienna's official access point to AI models such as ChatGPT in a secure cloud environment. To access u:ai, you need your u:account. Access is via univie.academic-ai.at. You have a monthly credit of EUR 20.00 available for queries.",
+          "snapshotHash": "89efcb388f7659481c47a19052b835724b2d85e12a9d2ee9e0af79e1be9fd37d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "needs_review",
+      "universitySlug": "university-of-exeter",
+      "universityName": "University of Exeter",
+      "qsRank": 155,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Exeter names Microsoft Copilot as an example of University-licensed AI tools handled under contractual and privacy agreements.",
+      "howToObtain": "Request an AI tool license through the IT Service Desk.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.exeter.ac.uk/about/strategies/enabling-ai/",
+          "sourceTitle": "Enabling AI at Exeter",
+          "evidenceSnippet": "University provided and licensed tools When using University-licensed tools with your Exeter account (such as Microsoft Copilot), your data is handled in line with contractual and privacy agreements. To request an AI tool license, submit a request via the IT Service Desk.",
+          "snapshotHash": "d7fb06edcd3cd4557ab4f28608f6d0325b73d652e6fc0a82453614b1aa728dd0",
+          "reviewState": "needs_review"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-geneva",
+      "universityName": "University of Geneva",
+      "qsRank": 155,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot Chat",
+      "description": "UNIGE recommends authenticated Copilot Chat as a generative AI solution with protection through University-paid Microsoft 365 licences.",
+      "howToObtain": "Use the Copilot website in authenticated mode with an ISIs account and University of Geneva email address.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://catalogue-si.unige.ch/en/copilot-chat-eng",
+          "sourceTitle": "Copilot Chat - using generative AI - IT Service Catalog - UNIGE",
+          "evidenceSnippet": "Copilot Chat, in authenticated mode, offers protection for corporate data through the Microsoft 365 licences paid for by the University of Geneva. For this reason, Copilot Chat, in authenticated mode, is the recommended IAG solution. Copilot is available on a self-service basis to anyone with an ISIs account and a University of Geneva e-mail address.",
+          "snapshotHash": "3e66c72304027d7dcdf93ba6bb1544eea03e7e437bb5cb503008d9e5eeacb4ea",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "universitat-de-barcelona",
+      "universityName": "Universitat de Barcelona",
+      "qsRank": 160,
+      "tool": "microsoft_copilot",
+      "rawToolName": "MS Copilot per a Educacio",
+      "description": "UB lists Microsoft Copilot for Education with protected data when used through the corporate Microsoft account.",
+      "howToObtain": "Access Copilot with a corporate @ub.edu or @alumnes.ub.edu Microsoft account from copilot.microsoft.com, Bing, or Microsoft Edge.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ub.edu/informaticapersonal/programari/ms-copilot-per-educacio/",
+          "sourceTitle": "MS Copilot per a Educacio - Universitat de Barcelona",
+          "evidenceSnippet": "MS Copilot per a Educacio proporciona proteccio de les dades. Per a garantir la privacitat es important iniciar sessio a MS Copilot amb el compte MS corporatiu. Es pot accedir a MS Copilot sempre amb un compte corporatiu @ub.edu o @alumnes.ub.edu.",
+          "snapshotHash": "00c408694f0321ae678ea0bb9061dd1b3b69199c763def5ffbcf19373b2ecef9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "michigan-state-university",
+      "universityName": "Michigan State University",
+      "qsRank": 162,
+      "tool": "microsoft_copilot",
+      "rawToolName": "MSU-licensed Microsoft Copilot",
+      "description": "Microsoft Copilot is an AI-powered web chat assistant with enterprise data protection when logged in with MSU credentials.",
+      "howToObtain": "Login using MSU credentials at spartan365.msu.edu.",
+      "costToUser": "Available at no cost.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+          "sourceTitle": "AI Tools - Technology at MSU",
+          "evidenceSnippet": "MSU-licensed Microsoft Copilot is an AI-powered web chat assistant that provides answers, research insights, and content creation capabilities while maintaining enterprise data protection when logged in with MSU credentials. How to access: Available at no cost. Login using your MSU credentials at spartan365.msu.edu.",
+          "snapshotHash": "f270b832693eadbd53c045578a1962efc79036846f44d123da530358994adc02",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "michigan-state-university",
+      "universityName": "Michigan State University",
+      "qsRank": 162,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "MSU-licensed Microsoft 365 Copilot",
+      "description": "Microsoft 365 Copilot integrates Copilot into Microsoft 365 apps for writing, analysis, meeting summaries, and presentations.",
+      "howToObtain": "Purchase through the MSU Tech Store using department billing.",
+      "costToUser": "Available for purchase with departmental billing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+          "sourceTitle": "AI Tools - Technology at MSU",
+          "evidenceSnippet": "MSU-licensed Microsoft 365 Copilot integrates Copilot into Microsoft 365 apps. How to access: Available for purchase through the MSU Tech Store using department billing for MSU faculty, staff, and students.",
+          "snapshotHash": "dc674753fcdf73217f1b939fd5af586bb9757750cb60e7e00534294089bb3c4a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "michigan-state-university",
+      "universityName": "Michigan State University",
+      "qsRank": 162,
+      "tool": "chatgpt",
+      "rawToolName": "MSU-licensed OpenAI ChatGPT",
+      "description": "MSU lists OpenAI ChatGPT EDU as an enterprise-licensed assistant for study, tutoring, coding assistance, and creative writing.",
+      "howToObtain": "Purchase through the MSU Tech Store with departmental billing.",
+      "costToUser": "Available for purchase with departmental billing.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+          "sourceTitle": "AI Tools - Technology at MSU",
+          "evidenceSnippet": "MSU-licensed OpenAI ChatGPT OpenAI ChatGPT EDU is an advanced AI powered by latest GPT and OpenAI models. How to access: Available for purchase through the MSU Tech Store with departmental billing for MSU faculty, staff, and students.",
+          "snapshotHash": "7867773cc291d9eb372aa9233e64697b9a2dfb7d30acd37636f37569f752a597",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "michigan-state-university",
+      "universityName": "Michigan State University",
+      "qsRank": 162,
+      "tool": "gemini",
+      "rawToolName": "MSU-licensed Google Gemini",
+      "description": "MSU lists Google Gemini as an enterprise-licensed assistant for multimodal and research-intensive workflows.",
+      "howToObtain": "Login using MSU credentials at googleapps.msu.edu.",
+      "costToUser": "Available at no cost.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+          "sourceTitle": "AI Tools - Technology at MSU",
+          "evidenceSnippet": "MSU-licensed Google Gemini is an advanced AI powered by latest Gemini models with massive context window, native multimodal document analysis, and tight Google Workspace integration. How to access: Available at no cost. Login using your MSU credentials at googleapps.msu.edu.",
+          "snapshotHash": "06daebe2976ef93f030cd69aeab475da8b260468953888d033229df98116b0aa",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "michigan-state-university",
+      "universityName": "Michigan State University",
+      "qsRank": 162,
+      "tool": "notebooklm",
+      "rawToolName": "MSU-licensed Google NotebookLM",
+      "description": "MSU lists Google NotebookLM as an AI-powered research assistant grounded in user-uploaded sources.",
+      "howToObtain": "Login using MSU credentials at googleapps.msu.edu.",
+      "costToUser": "Available at no cost.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+          "sourceTitle": "AI Tools - Technology at MSU",
+          "evidenceSnippet": "MSU-licensed Google NotebookLM is an AI-powered research assistant that analyzes uploaded documents and generates study guides, briefings, mind maps, video and audio overviews grounded exclusively in your sources. How to access: Available at no cost. Login using your MSU credentials at googleapps.msu.edu.",
+          "snapshotHash": "2edcb1687c7714e4bf8ebd8eebe3beb87f9f8c1a9bcd5af71e14e4ddc165dfa4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "michigan-state-university",
+      "universityName": "Michigan State University",
+      "qsRank": 162,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "MSU-licensed Zoom AI Companion",
+      "description": "MSU lists Zoom AI Companion for meeting summaries, smart recordings, and real-time meeting assistance.",
+      "howToObtain": "Use MSU Zoom accounts at msu.zoom.us and enable features in Zoom settings or during meetings.",
+      "costToUser": "Available at no cost.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+          "sourceTitle": "AI Tools - Technology at MSU",
+          "evidenceSnippet": "MSU-licensed Zoom AI Companion is an AI-powered feature set integrated into Zoom that provides meeting summaries, smart recordings, and real-time assistance. How to access: Available at no cost using MSU Zoom accounts at msu.zoom.us.",
+          "snapshotHash": "e3c35bc676a8a307eb01f74d08dede7f69ec73dd78794552a473d8cf439af1f8",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "michigan-state-university",
+      "universityName": "Michigan State University",
+      "qsRank": 162,
+      "tool": "openai_api",
+      "rawToolName": "OpenAI API Platform",
+      "description": "MSU lists OpenAI's API Platform for programmatic access to OpenAI models using API keys.",
+      "howToObtain": "Request access through MSU's AI tools and services request process.",
+      "costToUser": "Market-rate pricing; departmental billing required.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+          "sourceTitle": "AI Tools - Technology at MSU",
+          "evidenceSnippet": "OpenAI's API Platform enables developers to integrate and use OpenAI models programmatically using API keys for custom applications and research projects. Access: Market-rate pricing; departmental billing required. Request access.",
+          "snapshotHash": "56f43def2a43b9a503a4ae4b83cb35937bd9cc8d2d8749f611043d305ff6c5a6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "michigan-state-university",
+      "universityName": "Michigan State University",
+      "qsRank": 162,
+      "tool": "google_vertex_ai",
+      "rawToolName": "Google Cloud Platform",
+      "description": "MSU lists Google Cloud Platform as providing access to Vertex AI and other Google Cloud services for enterprise AI solutions.",
+      "howToObtain": "Request access through MSU's GCP project creation process.",
+      "costToUser": "Market-rate pricing; departmental billing and project creation required.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+          "sourceTitle": "AI Tools - Technology at MSU",
+          "evidenceSnippet": "Google Cloud Platform (GCP) provides access to Vertex AI and other Google Cloud services for building and deploying complex enterprise AI solutions. Access: Market-rate pricing; departmental billing and project creation required. Request access.",
+          "snapshotHash": "0807a010b73ba9afeb8db7df41d2e2b7a802de8d6257fdd818c952cb641f69d2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "michigan-state-university",
+      "universityName": "Michigan State University",
+      "qsRank": 162,
+      "tool": "codex",
+      "rawToolName": "Codex Local",
+      "description": "MSU lists Codex Local for AI-assisted coding, code completion, and code generation in supported editors.",
+      "howToObtain": "Use via the ChatGPT Edu subscription purchased through the MSU Tech Store.",
+      "costToUser": "Included with ChatGPT Edu subscription.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+          "sourceTitle": "AI Tools - Technology at MSU",
+          "evidenceSnippet": "Codex Local enables AI-assisted coding, code completion, and code generation features within VSCode, Cursor, and Windsurf for supported languages. Access: Included with ChatGPT Edu subscription. Available via the MSU Tech Store with departmental billing.",
+          "snapshotHash": "5f99232296335c51bc92f9a13b3c70e159501b927f7940675adbd90ac910ce64",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "ghent-university",
+      "universityName": "Ghent University",
+      "qsRank": 162,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "Ghent University advocates Microsoft Copilot as a safer GenAI option and states everyone at Ghent has access to Copilot Chat with business data protection.",
+      "howToObtain": "Visit M365 Copilot and log in with a Ghent University account.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ugent.be/en/ghentuniv/mission/genai/copilot-and-other-tools",
+          "sourceTitle": "Copilot and other tools - Ghent University",
+          "evidenceSnippet": "Everyone at Ghent University has access to a more secure, high-performance GenAI tool: the Microsoft 365 Copilot Chat with business data protection. How to Log in to Copilot Chat? Visit M365 Copilot and log in with your Ghent University account.",
+          "snapshotHash": "1fe1e3a9008a5a6c12672cae34d372646bc007b9bf768e267f53ae355d809d86",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "gemini",
+      "rawToolName": "Gemini for Education",
+      "description": "Gemini for Education provides WashU access to Google's advanced AI models in a secure, education-focused environment.",
+      "howToObtain": "Log in with a WashU Key.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "Gemini for Education Available to Danforth Campus students, faculty and staff by logging in with your WashU Key. Part of Google Workspace, Gemini for Education provides access to Google's most advanced AI models in a secure, education-focused environment.",
+          "snapshotHash": "d09a8e9c3bbfc14e5324fe19a4a78c6f032e472dda08166e4aa9efc2dfa9ef94",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "WashU describes ChatGPT Edu as a secure consultant for analysis, coding, studying, deep research, and collaborative work.",
+      "howToObtain": "Undergraduate students complete the AI Literacy Canvas module; select faculty and staff are also eligible.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "ChatGPT Edu is your secure, comprehensive consultant for analysis, coding, studying, deep research and collaborative work. Available to undergraduate students who complete the AI Literacy Canvas module and select faculty and staff.",
+          "snapshotHash": "c0ef12807968608f8dfb3a611a122e7205e8415c9c481f994f03aa6b33aeceb7",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "box_ai",
+      "rawToolName": "Box AI",
+      "description": "WashU lists Box AI as an assistant built into Box for summarizing and generating insights from files while keeping data secure.",
+      "howToObtain": "Use the WashU Box platform where Box AI is available.",
+      "costToUser": "Available at no cost to WashU students, faculty and staff.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "Box AI Available at no cost to WashU students, faculty and staff. An intelligent assistant built directly into the Box platform that helps unlock the value of content faster and more easily.",
+          "snapshotHash": "6bfd415e391ba137d2d5cecf2500a43e66f61fc2387beb10cacd7e2e791a17c1",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "self_deploy",
+      "rawToolName": "Secure Ask WashU",
+      "description": "Secure Ask WashU is a WashU secure advanced AI chatbot with multi-file interaction, multiple models, and WashU-trained navigators.",
+      "howToObtain": "Use the Secure Ask WashU tool referenced from WashU's secure AI tools page.",
+      "costToUser": "Available at no cost to WashU students, faculty and staff.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "Secure Ask WashU Available at no cost to WashU students, faculty and staff. Secure advanced AI chatbot where users can interact with multiple files, select from different models and access similar features with OpenAI and Microsoft. Includes experimental WashU-trained navigators.",
+          "snapshotHash": "3a03dcd50cd1e7fd6553052faa9958f6b6f4391cb510475d040884fe83af87f0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "WashU lists Zoom AI Companion as an assistant integrated into Zoom for productivity and collaboration.",
+      "howToObtain": "Use WashU Zoom where Zoom AI Companion is available.",
+      "costToUser": "Available at no cost to WashU students, faculty and staff.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "Zoom AI Companion Available at no cost to WashU students, faculty and staff. An advanced AI assistant integrated into the Zoom experience. It delivers powerful and real-time capabilities to help users improve productivity and collaboration on the Zoom platform.",
+          "snapshotHash": "5aeca6605835a9ebdaf2608f1443c0829b3f4d409e326c8bfbc5cd13eb180ec0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "self_deploy",
+      "rawToolName": "Secure AI API Endpoints",
+      "description": "WashU lists secure AI API endpoints inside a secure sandbox for programmatic AI access.",
+      "howToObtain": "Request API access from WashU for eligible faculty, researchers, and staff.",
+      "costToUser": "Available for use at cost.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "Secure AI API Endpoints Available to WashU faculty, researchers, and staff upon request. API access to AI endpoints within the secure sandbox is available for use at cost, enabling customization, multiple LLMs, programmatic access, and more.",
+          "snapshotHash": "62762894d965e8091a7808dd2dfe9f3a838b913387bafdb570ebe2788d0d74e9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "WashU lists Microsoft 365 Copilot Chat as a protected web AI chat platform for users with active Microsoft 365 subscriptions.",
+      "howToObtain": "Log in with a WashU Key through Microsoft 365 Copilot Chat.",
+      "costToUser": "Available at no additional cost for WashU users with an active Microsoft 365 subscription.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "Microsoft 365 Copilot Chat AI chat platform that generates content in response to prompts. After logging in with a WashU Key, the environment is protected, and information entered remains internal to WashU. Available at no additional cost for all WashU users with an active Microsoft 365 subscription.",
+          "snapshotHash": "5dd6a45fe7a21a5d6d6f89b7cb7c833e75be57b8857fc679ab2f7a925f48df98",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "WashU lists NotebookLM as Google's AI-powered research tool for using multiple information sources in one workspace.",
+      "howToObtain": "Log in with a WashU Key where eligible; WashU Medicine access is by approved exception.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "NotebookLM Google's AI-powered research tool capable of referencing multiple sources of information in a single workspace. Available to Danforth Campus students, faculty, and staff by logging in with a WashU Key, and to WashU Medicine individuals by approved exception.",
+          "snapshotHash": "16a2861721ad9e2f201f009b41e603ae46be5cf2cdc1ada3ad1da1ec28fe6d82",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft Copilot for M365",
+      "description": "WashU lists Copilot for M365 for AI assistance inside Microsoft 365 applications.",
+      "howToObtain": "Use with an active Microsoft 365 subscription and obtain the additional-cost Copilot for M365 access.",
+      "costToUser": "Available at an additional cost for WashU users with an active Microsoft 365 subscription.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "Microsoft Copilot for M365 assists users in tasks such as drafting emails and generating reports. Available at an additional cost for all WashU users with an active Microsoft 365 subscription.",
+          "snapshotHash": "16a03fb79d0f2b21b891d0ec4b80a100b73e6b749998458dbd08fcc040101295",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "washington-university-in-st-louis",
+      "universityName": "Washington University in St. Louis",
+      "qsRank": 167,
+      "tool": "claude",
+      "rawToolName": "Claude Edu",
+      "description": "WashU lists Claude Edu as secure, private access to advanced AI models for academic and administrative work.",
+      "howToObtain": "Obtain the additional-cost Claude Edu access for eligible WashU faculty and staff.",
+      "costToUser": "Available at an additional cost to WashU faculty and staff.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Generative Artificial Intelligence - WashU Information Technology",
+          "evidenceSnippet": "Claude Edu This AI assistant provides secure, private access to advanced AI models for writing, research, coding, data analysis, and other academic and administrative work. Conversations are not used to train the model. Available at an additional cost to WashU faculty and staff.",
+          "snapshotHash": "0a144ba41544aff54f9e27265935e06c3532e8a03b935e255c6c336528f8f95d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-york",
+      "universityName": "University of York",
+      "qsRank": 169,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "York identifies Google Gemini as the University's preferred GenAI tool.",
+      "howToObtain": "Open Google Gemini and sign in with a York email address and password.",
+      "costToUser": "Funded by the University; the Education chat function is free using a University email address.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.york.ac.uk/it-services/tools/google-gemini/",
+          "sourceTitle": "Google Gemini - IT Services, University of York",
+          "evidenceSnippet": "Google Gemini is the University's preferred GenAI tool. Available to staff and students. We use the Education version of Gemini which means you can use the Chat function for free using your University email address.",
+          "snapshotHash": "85188004b218d689b18f1f42d1d994cc63c72aaa652814168efe2c930d2251fa",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-york",
+      "universityName": "University of York",
+      "qsRank": 169,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "York lists Google NotebookLM as an AI-powered research assistant for organizing and synthesizing sources.",
+      "howToObtain": "Open NotebookLM and sign in with a University email address; Google 2FA is required.",
+      "costToUser": "Funded by the University; no cost for standard use.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.york.ac.uk/it-services/tools/google-notebooklm/",
+          "sourceTitle": "Google NotebookLM - IT Services, University of York",
+          "evidenceSnippet": "Google NotebookLM is an AI-powered research assistant used to help you understand, organise and synthesise information. Available to staff and students. Funded by the University. There isn't a cost to you for standard use. Sign in with your University email address.",
+          "snapshotHash": "74815822db99a4bc8bb15cca45a6f84eac48153616acbf94dc99413dffe60c95",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-york",
+      "universityName": "University of York",
+      "qsRank": 169,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "York lists Microsoft Copilot as available to staff and students, while noting Gemini is the University's recommended GenAI tool.",
+      "howToObtain": "Open Microsoft Copilot, choose work or school sign-in, and enter a York email address and password.",
+      "costToUser": "Funded by the University; no cost for standard use.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.york.ac.uk/it-services/tools/microsoft-copilot/",
+          "sourceTitle": "Microsoft Copilot - IT Services, University of York",
+          "evidenceSnippet": "Available to staff and students. Funded by the University There isn't a cost to you for standard use. Access instructions Open Microsoft Copilot Select Sign in with a work or school account and enter your York email address and password.",
+          "snapshotHash": "b37d2ef038e9cfd981e29ea097f3123d9ddd39f03eb8a1eb730853cba3901300",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}

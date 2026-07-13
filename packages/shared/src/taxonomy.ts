@@ -21,6 +21,7 @@ export const aiTools = [
   "google_workspace_studio",
   "salesforce_einstein",
   "zoom_ai_companion",
+  "box_ai",
   "openai_api",
   "mistral",
   "perplexity",
@@ -376,6 +377,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "Zoom AI Companion",
     provider: "Zoom",
     aliases: ["Zoom AI Companion"],
+    category: "commercial_assistant"
+  },
+  box_ai: {
+    slug: "box_ai",
+    label: "Box AI",
+    provider: "Box",
+    aliases: ["Box AI"],
     category: "commercial_assistant"
   },
   openai_api: {
