@@ -45,6 +45,12 @@ let cachedAccessToken:
 let accessTokenRequest:
   | { credentialPath: string; promise: Promise<string> }
   | undefined;
+const gscSummaryCache = new Map<
+  string,
+  { expiresAt: number; summary: GscSummary }
+>();
+const gscSummaryRequests = new Map<string, Promise<GscSummary>>();
+const GSC_SUMMARY_CACHE_MS = 5 * 60 * 1000;
 
 export async function getGoogleSearchConsoleSummary(
   startDate: Date,
@@ -60,12 +66,53 @@ export async function getGoogleSearchConsoleSummary(
     });
   }
 
+  const detailRowLimit = Math.max(
+    12,
+    Math.min(250, options.detailRowLimit ?? 12)
+  );
+  const cacheKey = [
+    credentialPath,
+    siteUrl,
+    formatGscDate(startDate),
+    formatGscDate(endDate),
+    detailRowLimit
+  ].join("|");
+  const cached = gscSummaryCache.get(cacheKey);
+  if (cached && cached.expiresAt > Date.now()) return cached.summary;
+  const pending = gscSummaryRequests.get(cacheKey);
+  if (pending) return pending;
+
+  const request = loadGoogleSearchConsoleSummary(
+    credentialPath,
+    siteUrl,
+    startDate,
+    endDate,
+    detailRowLimit
+  ).then((summary) => {
+    gscSummaryCache.set(cacheKey, {
+      expiresAt: Date.now() + (summary.available ? GSC_SUMMARY_CACHE_MS : 30_000),
+      summary
+    });
+    pruneGscSummaryCache();
+    return summary;
+  }).finally(() => {
+    if (gscSummaryRequests.get(cacheKey) === request) {
+      gscSummaryRequests.delete(cacheKey);
+    }
+  });
+  gscSummaryRequests.set(cacheKey, request);
+  return request;
+}
+
+async function loadGoogleSearchConsoleSummary(
+  credentialPath: string,
+  siteUrl: string,
+  startDate: Date,
+  endDate: Date,
+  detailRowLimit: number
+): Promise<GscSummary> {
   try {
     const token = await getAccessToken(credentialPath);
-    const detailRowLimit = Math.max(
-      12,
-      Math.min(250, options.detailRowLimit ?? 12)
-    );
     const [dateRows, pageRows, queryRows, countryRows, deviceRows] =
       await Promise.all([
         queryGsc(token, siteUrl, startDate, endDate, ["date"], 240),
@@ -90,6 +137,18 @@ export async function getGoogleSearchConsoleSummary(
       error: error instanceof Error ? error.message : String(error),
       siteUrl
     });
+  }
+}
+
+function pruneGscSummaryCache() {
+  const now = Date.now();
+  for (const [key, value] of gscSummaryCache) {
+    if (value.expiresAt <= now) gscSummaryCache.delete(key);
+  }
+  while (gscSummaryCache.size > 32) {
+    const oldestKey = gscSummaryCache.keys().next().value;
+    if (typeof oldestKey !== "string") break;
+    gscSummaryCache.delete(oldestKey);
   }
 }
 
