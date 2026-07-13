@@ -39,6 +39,13 @@ interface GscApiRow {
   position?: number;
 }
 
+let cachedAccessToken:
+  | { credentialPath: string; expiresAt: number; token: string }
+  | undefined;
+let accessTokenRequest:
+  | { credentialPath: string; promise: Promise<string> }
+  | undefined;
+
 export async function getGoogleSearchConsoleSummary(
   startDate: Date,
   endDate: Date,
@@ -109,6 +116,33 @@ function emptyGscSummary(input: {
 }
 
 async function getAccessToken(credentialPath: string): Promise<string> {
+  if (
+    cachedAccessToken?.credentialPath === credentialPath &&
+    cachedAccessToken.expiresAt > Date.now()
+  ) {
+    return cachedAccessToken.token;
+  }
+  if (accessTokenRequest?.credentialPath === credentialPath) {
+    return accessTokenRequest.promise;
+  }
+
+  const promise = requestAccessToken(credentialPath)
+    .then((token) => {
+      cachedAccessToken = {
+        credentialPath,
+        expiresAt: Date.now() + 55 * 60 * 1000,
+        token
+      };
+      return token;
+    })
+    .finally(() => {
+      if (accessTokenRequest?.promise === promise) accessTokenRequest = undefined;
+    });
+  accessTokenRequest = { credentialPath, promise };
+  return promise;
+}
+
+async function requestAccessToken(credentialPath: string): Promise<string> {
   const creds = JSON.parse(
     fs.readFileSync(credentialPath, "utf8")
   ) as GoogleCredentials;

@@ -184,6 +184,7 @@ async function callSupabaseRpc<T = unknown>(
 }
 
 const SUPABASE_ANALYTICS_PAGE_SIZE = 1000;
+const SUPABASE_ANALYTICS_PAGE_BATCH = 4;
 const SUPABASE_ANALYTICS_MAX_ROWS = 20000;
 
 async function listSupabaseAnalyticsEvents(
@@ -195,11 +196,19 @@ async function listSupabaseAnalyticsEvents(
   for (
     let offset = 0;
     offset < SUPABASE_ANALYTICS_MAX_ROWS;
-    offset += SUPABASE_ANALYTICS_PAGE_SIZE
+    offset += SUPABASE_ANALYTICS_PAGE_SIZE * SUPABASE_ANALYTICS_PAGE_BATCH
   ) {
-    const page = await listSupabaseAnalyticsEventsPage(since, offset, options);
-    rows.push(...page);
-    if (page.length < SUPABASE_ANALYTICS_PAGE_SIZE) break;
+    const offsets = Array.from(
+      { length: SUPABASE_ANALYTICS_PAGE_BATCH },
+      (_, index) => offset + index * SUPABASE_ANALYTICS_PAGE_SIZE
+    ).filter((pageOffset) => pageOffset < SUPABASE_ANALYTICS_MAX_ROWS);
+    const pages = await Promise.all(
+      offsets.map((pageOffset) =>
+        listSupabaseAnalyticsEventsPage(since, pageOffset, options)
+      )
+    );
+    for (const page of pages) rows.push(...page);
+    if (pages.some((page) => page.length < SUPABASE_ANALYTICS_PAGE_SIZE)) break;
   }
 
   return rows
