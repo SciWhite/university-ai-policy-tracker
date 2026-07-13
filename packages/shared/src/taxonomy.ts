@@ -255,7 +255,7 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     slug: "deepseek",
     label: "DeepSeek",
     provider: "DeepSeek",
-    aliases: ["DeepSeek"],
+    aliases: ["DeepSeek", "DeepSeek-R1"],
     category: "china_market"
   },
   gemini: {
@@ -823,7 +823,7 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     slug: "consensus",
     label: "Consensus",
     provider: "Consensus",
-    aliases: ["Consensus"],
+    aliases: ["Consensus", "Consensus Enterprise"],
     category: "commercial_assistant"
   },
   quillbot: {
@@ -966,7 +966,10 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
       "Illinois ChatGPT",
       "YoKI",
       "heiBOT-IT",
-      "AI Playground"
+      "AI Playground",
+      "CSU-GPT",
+      "HAWKI",
+      "Chat AI (Academic Cloud)"
     ],
     category: "self_hosted_platform"
   },

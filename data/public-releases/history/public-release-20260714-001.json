@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260714-002",
-  "publishedAt": "2026-07-14T03:35:00Z",
-  "description": "Public release with validated QS381-430 official AI tools records plus prior QS331-380 AI tools release.",
+  "releaseId": "public-release-20260714-001",
+  "publishedAt": "2026-07-14T02:35:00Z",
+  "description": "Public release with validated QS331-380 official AI tools records plus prior QS281-330 AI tools release.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -824,14 +824,14 @@
     "staging/uapt-runs/uapt-ai-tools-qs-191-230-20260713",
     "staging/uapt-runs/uapt-ai-tools-qs-231-280-20260713",
     "staging/uapt-runs/uapt-ai-tools-qs-281-330-20260713",
-    "staging/uapt-runs/uapt-ai-tools-qs-331-380-20260714",
-    "staging/uapt-runs/uapt-ai-tools-qs-381-430-20260714"
+    "staging/uapt-runs/uapt-ai-tools-qs-331-380-20260714"
   ],
   "notes": [
-    "This release preserves public-release-20260714-001 in release history.",
-    "Adds QS381-430 official AI tool records for Iowa State, Stony Brook, UCR, UCSC, Colorado State, DCU, Tampere, Masaryk, Buffalo, IE University, Essex, Mannheim, Konstanz, Bayreuth, Pavia, and Shenzhen University.",
-    "Expands official tool directories row-by-row where pages name supported, licensed, approved, campus-hosted, or university-accessible tools.",
-    "Adds taxonomy aliases for DeepSeek-R1, CSU-GPT, HAWKI, Chat AI (Academic Cloud), and Consensus Enterprise so real product names are preserved while canonical slugs remain stable.",
+    "This release preserves public-release-20260713-007 in release history.",
+    "Adds QS331-380 official AI tool records for Mahidol University and University of Kent.",
+    "Mahidol Library and Knowledge Center AI research tools are expanded row-by-row where the page names access, audience, support, or restriction details.",
+    "University of Kent-supported ChatGPT Edu and Microsoft Copilot records are derived from official institutional-account and data-protection language.",
+    "Adds taxonomy slugs for Consensus, QuillBot, Trinka AI, Enago Read, and Enago Report so real product names are not collapsed into generic AI tool labels.",
     "Schools without explicit public tool-level official evidence remain unexpanded; broad AI guidance, course pages, theses, research PDFs, and generic tool examples are not promoted into named tool conclusions.",
     "AI tools records are tracker-derived metadata for navigation and comparison; they do not replace official university source language.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."

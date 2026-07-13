@@ -1,0 +1,645 @@
+{
+  "schemaVersion": "uapt-ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-381-430-20260714",
+  "generatedAt": "2026-07-14T03:20:00.000Z",
+  "records": [
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "iowa-state-university",
+      "universityName": "Iowa State University",
+      "qsRank": 449,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Microsoft Copilot is available to Iowa State faculty and staff with commercial data protection for university work.",
+      "howToObtain": "Log in to Microsoft Copilot and authenticate with ISU credentials.",
+      "costToUser": "Included in Iowa State's Microsoft license at no additional cost.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.inside.iastate.edu/article/2023/11/16/copilot",
+          "sourceTitle": "This artificial intelligence option offers data security - Iowa State University",
+          "evidenceSnippet": "Microsoft Copilot is available to all Iowa State faculty and staff, includes commercial data protection, and does not use Iowa State employee data to build the model.",
+          "snapshotHash": "5fc1ec4eb7b3b4692e9a5e641e5144c41fcc5c11b067ceb6d21855c9c8c7cedd",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "stony-brook-university-state-university-of-new-york",
+      "universityName": "Stony Brook University, State University of New York",
+      "qsRank": 452,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Enterprise",
+      "description": "Copilot provides AI chat for the web with models such as GPT-4 and DALL-E 3 under the campus license.",
+      "howToObtain": "Launch Copilot and sign in with a Stony Brook email account.",
+      "costToUser": "Included with the campus license.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.stonybrook.edu/services/copilot",
+          "sourceTitle": "Microsoft Copilot Enterprise - Stony Brook University Division of Information Technology",
+          "evidenceSnippet": "Copilot provides AI chat for the web with access to models like GPT-4 and DALL-E 3 included with the campus license.",
+          "snapshotHash": "4e6c8c1fae9b51d63ace6ad48b8589f739a394fea3549638e5ca6d8d455222e6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "stony-brook-university-state-university-of-new-york",
+      "universityName": "Stony Brook University, State University of New York",
+      "qsRank": 452,
+      "tool": "gemini",
+      "rawToolName": "Gemini",
+      "description": "Stony Brook's AI guide lists Gemini as a Google AI collaborator available through university Google services.",
+      "howToObtain": "Use the university Google Apps for Education path; advanced Google AI Pro access may require departmental purchase.",
+      "costToUser": "Base access is tied to the university Google license; Google AI Pro purchase may be required for advanced access.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.stonybrook.edu/guides/ai",
+          "sourceTitle": "AI Tools - Stony Brook University Division of Information Technology",
+          "evidenceSnippet": "The Stony Brook AI guide says its Google Apps for Education license provides access to chat with Gemini.",
+          "snapshotHash": "68e580170e427c128b85f45c33bc89425a2b03a9ad6919a11876e07c1fa1fbe0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "stony-brook-university-state-university-of-new-york",
+      "universityName": "Stony Brook University, State University of New York",
+      "qsRank": 452,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "Stony Brook's AI guide describes NotebookLM by Google as a virtual research assistant rooted in user-provided information.",
+      "howToObtain": "Use the university Google services path where eligible.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.stonybrook.edu/guides/ai",
+          "sourceTitle": "AI Tools - Stony Brook University Division of Information Technology",
+          "evidenceSnippet": "NotebookLM by Google is described by Stony Brook as a virtual research assistant rooted in information you can trust.",
+          "snapshotHash": "02217e30a5a17be2018e90f6d5128662b5e6d93dd27f7ed9443fb9cf32aebc6f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-california-riverside",
+      "universityName": "University of California, Riverside",
+      "qsRank": 440,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "UCR identifies Google Gemini as a protected Google generative AI platform under its enterprise agreement.",
+      "howToObtain": "Use UCR's protected Google AI access path where eligible.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://insideucr.ucr.edu/stories/2026/03/20/ucr-community-urged-use-google-ai-tools",
+          "sourceTitle": "UCR community urged to use Google AI tools - UC Riverside",
+          "evidenceSnippet": "UCR has secured an enterprise agreement with Google to provide protected access to its generative AI platforms Gemini and NotebookLM.",
+          "snapshotHash": "6e46a25c1ec7d2cfd25f9164b85c73e991815be842ba91a0ca8cdd30a9dd80ed",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-california-riverside",
+      "universityName": "University of California, Riverside",
+      "qsRank": 440,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "UCR identifies NotebookLM as a protected Google generative AI platform under its enterprise agreement.",
+      "howToObtain": "Use UCR's protected Google AI access path where eligible.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://insideucr.ucr.edu/stories/2026/03/20/ucr-community-urged-use-google-ai-tools",
+          "sourceTitle": "UCR community urged to use Google AI tools - UC Riverside",
+          "evidenceSnippet": "UCR has secured an enterprise agreement with Google to provide protected access to its generative AI platforms Gemini and NotebookLM.",
+          "snapshotHash": "6e46a25c1ec7d2cfd25f9164b85c73e991815be842ba91a0ca8cdd30a9dd80ed",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-california-santa-cruz",
+      "universityName": "University of California, Santa Cruz",
+      "qsRank": 458,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini Chat",
+      "description": "Google Gemini Chat is listed as a campus-licensed AI tool for UCSC staff.",
+      "howToObtain": "Access through the UCSC Google Workspace account where eligible.",
+      "costToUser": "Available at no cost with a UCSC account.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://its.ucsc.edu/its-news/secure-artificial-intelligence-tools-enabled-for-staff/",
+          "sourceTitle": "Secure Artificial Intelligence (AI) tools enabled for staff - UC Santa Cruz ITS",
+          "evidenceSnippet": "UC Santa Cruz staff can access campus-licensed AI tools Google Gemini Chat and Google NotebookLM.",
+          "snapshotHash": "e65e75ab2184cdc7afd3738ff332d5a7d97c1a6d694c1a22a4a5b509a9bf9ff0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-california-santa-cruz",
+      "universityName": "University of California, Santa Cruz",
+      "qsRank": 458,
+      "tool": "notebooklm",
+      "rawToolName": "Google NotebookLM",
+      "description": "Google NotebookLM is listed as a campus-licensed AI tool for UCSC staff.",
+      "howToObtain": "Access through the UCSC Google Workspace account where eligible.",
+      "costToUser": "Available at no cost with a UCSC account.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://its.ucsc.edu/its-news/secure-artificial-intelligence-tools-enabled-for-staff/",
+          "sourceTitle": "Secure Artificial Intelligence (AI) tools enabled for staff - UC Santa Cruz ITS",
+          "evidenceSnippet": "UC Santa Cruz staff can access campus-licensed AI tools Google Gemini Chat and Google NotebookLM.",
+          "snapshotHash": "e65e75ab2184cdc7afd3738ff332d5a7d97c1a6d694c1a22a4a5b509a9bf9ff0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-california-santa-cruz",
+      "universityName": "University of California, Santa Cruz",
+      "qsRank": 458,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom AI Companion is included in UCSC's comparison of campus-licensed AI tools.",
+      "howToObtain": "Access through the UCSC Zoom account where eligible.",
+      "costToUser": "Available at no cost with a UCSC account.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://its.ucsc.edu/get-support/it-guides/guide-comparison-of-ucsc-licensed-ai-tools/",
+          "sourceTitle": "Guide: Comparison of Campus-Licensed AI Tools - UC Santa Cruz ITS",
+          "evidenceSnippet": "The UC Santa Cruz campus-licensed AI tools guide lists Zoom AI Companion alongside Gemini and NotebookLM.",
+          "snapshotHash": "c5adb0a7d166df00d6c03dfc690803bbde27c0c3d190d40d336b33f11dd6267f",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "colorado-state-university",
+      "universityName": "Colorado State University",
+      "qsRank": 458,
+      "tool": "self_deploy",
+      "rawToolName": "CSU-GPT",
+      "description": "CSU-GPT gives students, faculty, and staff a secure way to use generative AI inside CSU's Microsoft Azure environment.",
+      "howToObtain": "Sign in at chat.colostate.edu with a CSU NetID.",
+      "costToUser": "Free",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.colostate.edu/csu-ai-hub/csu-gpt/",
+          "sourceTitle": "CSU-GPT - AI @ CSU - Colorado State University",
+          "evidenceSnippet": "CSU-GPT gives every student, faculty, and staff member a safe way to explore generative AI inside CSU's secure Microsoft Azure environment.",
+          "snapshotHash": "400e0e01d07381a30bf8d2528c90f9553d3e6669cdfec3bfd1d7adfcf10b443a",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "colorado-state-university",
+      "universityName": "Colorado State University",
+      "qsRank": 458,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "CSU lists Microsoft Copilot Chat as an approved option when users are logged in with their CSU NetID.",
+      "howToObtain": "Access Microsoft Copilot Chat while logged in with a CSU NetID.",
+      "costToUser": "Free with CSU NetID.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.colostate.edu/ai-tools/",
+          "sourceTitle": "AI Tools - AI @ CSU - Colorado State University",
+          "evidenceSnippet": "Colorado State lists Microsoft Copilot Chat as available when logged in with your CSU NetID.",
+          "snapshotHash": "a5db41abc3520d1cbed2f14fdf677f76cc711c5a211711067cf72316a0501b72",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "colorado-state-university",
+      "universityName": "Colorado State University",
+      "qsRank": 458,
+      "tool": "teams_premium",
+      "rawToolName": "Microsoft Teams Premium",
+      "description": "CSU lists Teams Premium for AI meeting notes and recaps while keeping conversations inside the CSU Microsoft tenant.",
+      "howToObtain": "Departments can request Teams Premium licenses.",
+      "costToUser": "$29/user/year",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.colostate.edu/ai-tools/",
+          "sourceTitle": "AI Tools - AI @ CSU - Colorado State University",
+          "evidenceSnippet": "Teams Premium provides meeting AI notes and recaps, and the CSU page notes conversations are kept within the CSU Microsoft tenant.",
+          "snapshotHash": "751dfa959956a029ff6788f2e3e2c6294dd8ffd69fac06a1c580097cde871b0d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "dublin-city-university",
+      "universityName": "Dublin City University",
+      "qsRank": 410,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "Google Gemini is listed in DCU's AI Hub as an authorised AI tool covered by formal contractual and data governance agreements.",
+      "howToObtain": "Log in with a DCU account.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.dcu.ie/dts/ai-hub",
+          "sourceTitle": "AI Hub - Dublin City University",
+          "evidenceSnippet": "DCU says it has formal contractual and data governance agreements with the authorised AI tools listed in its AI Hub, including Google Gemini.",
+          "snapshotHash": "25664efe380b58042094d2da45468fc6c6c806807f839fc599ce9a9c242094ba",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "dublin-city-university",
+      "universityName": "Dublin City University",
+      "qsRank": 410,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "NotebookLM is listed in DCU's AI Hub as an authorised AI tool covered by formal contractual and data governance agreements.",
+      "howToObtain": "Log in with a DCU account.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.dcu.ie/dts/ai-hub",
+          "sourceTitle": "AI Hub - Dublin City University",
+          "evidenceSnippet": "DCU says it has formal contractual and data governance agreements with the authorised AI tools listed in its AI Hub, including NotebookLM.",
+          "snapshotHash": "a8f556407c8b05aa0d206e62fce5026f1f07851870724affecffc095f1c6a244",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "dublin-city-university",
+      "universityName": "Dublin City University",
+      "qsRank": 410,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft CoPilot",
+      "description": "Microsoft CoPilot is listed in DCU's AI Hub as an authorised AI tool covered by formal contractual and data governance agreements.",
+      "howToObtain": "Log in with a DCU account.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.dcu.ie/dts/ai-hub",
+          "sourceTitle": "AI Hub - Dublin City University",
+          "evidenceSnippet": "DCU says it has formal contractual and data governance agreements with the authorised AI tools listed in its AI Hub, including Microsoft CoPilot.",
+          "snapshotHash": "37f1ea59d5ba116bd3f4abeb0ed349ed542d5e581e906233286851e6d4a1fd38",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "dublin-city-university",
+      "universityName": "Dublin City University",
+      "qsRank": 410,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "Zoom AI Companion is listed in DCU's AI Hub as an authorised AI tool covered by formal contractual and data governance agreements.",
+      "howToObtain": "Log in with a DCU account.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.dcu.ie/dts/ai-hub",
+          "sourceTitle": "AI Hub - Dublin City University",
+          "evidenceSnippet": "DCU says it has formal contractual and data governance agreements with the authorised AI tools listed in its AI Hub, including Zoom AI Companion.",
+          "snapshotHash": "4396b9da489d2c2579cafa5479eb0f0f81159a21c8e9afe6e1dcd9f2eb8f93d2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "tampere-university",
+      "universityName": "Tampere University",
+      "qsRank": 423,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot Chat",
+      "description": "Copilot Chat is available to adult Tampere University community members with a TUNI account.",
+      "howToObtain": "Log in with a TUNI ID.",
+      "costToUser": "Not stated",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.tuni.fi/en/it-services/handbook/artificial-intelligence/ai-applications/copilot-chat",
+          "sourceTitle": "Copilot Chat - Tampere Universities",
+          "evidenceSnippet": "Copilot Chat is available for all adult members of the Tampere University community with a TUNI account.",
+          "snapshotHash": "8f3ecf3365cfcf22d4d0533a023e4624717d163e6f1198ca9675315b98535b13",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "masaryk-university",
+      "universityName": "Masaryk University",
+      "qsRank": 430,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "Masaryk University's IT service page describes Microsoft Copilot Chat with commercial data protection for university users.",
+      "howToObtain": "Use copilot.cloud.microsoft or the M365 Apps Portal with a university account.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.muni.cz/en/services/microsoft-copilot-chat-with-commercial-data-protection",
+          "sourceTitle": "Microsoft Copilot Chat, Copilot and Copilot Studio - Masaryk University",
+          "evidenceSnippet": "Masaryk University says data provided to Microsoft Copilot Chat is protected against leakage outside the organization and is not used for further AI model training.",
+          "snapshotHash": "e1ba695784696bf3452cd9f04569662ff220357ea01381d5c5d9f22160d36d3d",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-at-buffalo-suny",
+      "universityName": "University at Buffalo SUNY",
+      "qsRank": 410,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "Microsoft Copilot Chat is available to UB students, faculty, and staff through the UB Microsoft 365 license.",
+      "howToObtain": "Log in through Microsoft 365 with a UB account.",
+      "costToUser": "Free with the UB Microsoft 365 license.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.buffalo.edu/ubit/service-guides/software/by-title/microsoft-365/copilot/chat.html",
+          "sourceTitle": "Microsoft Copilot Chat - University at Buffalo UBIT",
+          "evidenceSnippet": "Microsoft Copilot Chat is available for all UB students, faculty, and staff, and is included for free with the UB Microsoft 365 license.",
+          "snapshotHash": "8baf27c6519826796a937a1f92cd9d8f7d0b634ada431b2602f2ad9dd121225c",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "ie-university",
+      "universityName": "IE University",
+      "qsRank": 438,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Edu",
+      "description": "IE University announced a collaboration to integrate OpenAI tools and make ChatGPT Edu available in its academic ecosystem.",
+      "howToObtain": "Available through IE University's academic AI initiative.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.ie.edu/university/news-events/news/ie-university-becomes-one-first-top-universities-integrate-openai-tools-throughout-entire-academic-ecosystem/",
+          "sourceTitle": "IE University integrates OpenAI tools throughout its academic ecosystem",
+          "evidenceSnippet": "IE University says its OpenAI collaboration will make ChatGPT Edu available for students, faculty, and staff.",
+          "snapshotHash": "e73e4bf18b4119092005875b073294289843a8dd273f731fabc6efefc2f84308",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "essex-university-of",
+      "universityName": "Essex, University of",
+      "qsRank": 456,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft 365 Copilot Chat",
+      "description": "Microsoft 365 Copilot Chat is available to University of Essex staff with an Essex account.",
+      "howToObtain": "Sign in with an Essex account at copilot.cloud.microsoft.com.",
+      "costToUser": "Free for staff with an Essex account.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.essex.ac.uk/staff/it-services/copilot",
+          "sourceTitle": "Microsoft 365 Copilot Chat - University of Essex",
+          "evidenceSnippet": "The University of Essex says Copilot Chat is free to use and available to all staff with an Essex account.",
+          "snapshotHash": "cff24f066434ef31128db2fd7bcf4882b2422fd505842bc248d343ceb9b7f3db",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "universitat-mannheim",
+      "universityName": "Universität Mannheim",
+      "qsRank": 416,
+      "tool": "self_deploy",
+      "rawToolName": "HAWKI",
+      "description": "Mannheim lists HAWKI as the approved data-protection-compliant interface for official student use of AI-based language models.",
+      "howToObtain": "Access HAWKI with a Uni-ID.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.uni-mannheim.de/en/about/profile/digitalization/artificial-intelligence/ai-systems/",
+          "sourceTitle": "Approved AI Systems and Use of HAWKI - University of Mannheim",
+          "evidenceSnippet": "HAWKI is currently the only approved way for University of Mannheim students to use AI-based language models in an official context or for their studies.",
+          "snapshotHash": "1971710a0a6c1ea1dc17a27f00e492608bccc3727272e5a0591da7b709e02427",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "universitat-konstanz",
+      "universityName": "Universität Konstanz",
+      "qsRank": 440,
+      "tool": "self_deploy",
+      "rawToolName": "Chat AI (Academic Cloud)",
+      "description": "Konstanz KIM points users to Chat AI from Academic Cloud as a secure AI chat service for German university members.",
+      "howToObtain": "Use federated login with a university account.",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.kim.uni-konstanz.de/en/services/ai-at-kim/",
+          "sourceTitle": "AI at KIM - University of Konstanz",
+          "evidenceSnippet": "Chat AI offers members of universities in Germany a secure and user-friendly AI chat service.",
+          "snapshotHash": "d30baeaa26a89d8df1639c61daaf19b98c46bb6ecb58c568c265eaf9dd078106",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-bayreuth",
+      "universityName": "University of Bayreuth",
+      "qsRank": 448,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "Bayreuth says users can access ChatGPT and DALL-E securely through Microsoft Copilot with existing university licenses.",
+      "howToObtain": "Log in to Microsoft Copilot with a bt ID.",
+      "costToUser": "Free of charge via existing licenses.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.uni-bayreuth.de/en/chatgpt",
+          "sourceTitle": "Use of ChatGPT et al. at the University of Bayreuth",
+          "evidenceSnippet": "You can access ChatGPT and DALL-E free of charge and securely via existing licences by logging in to Microsoft Copilot with your bt ID.",
+          "snapshotHash": "924785bc815716fb7a4976f58bd107887cdd82416483ca47a3b62634ad34a835",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "universita-degli-studi-di-pavia",
+      "universityName": "Università degli Studi di Pavia",
+      "qsRank": 423,
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "rawToolName": "Gemini App",
+      "tool": "gemini",
+      "description": "Google's AI assistant for writing, summarising, analysing, and supporting study or work activities.",
+      "howToObtain": "Access with University of Pavia email credentials or from the Google menu.",
+      "costToUser": "Free with university email credentials.",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.unipv.it/en/ai-tools/",
+          "sourceTitle": "AI Tools - University of Pavia",
+          "evidenceSnippet": "The University of Pavia AI Tools catalog lists Gemini App as available for @unipv.it and @universitadipavia.it domains.",
+          "snapshotHash": "2fcd0004923a5b18c9e196ea5e2e3bad4d715aa16d35856a06d0c8a6bc19b599",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "universita-degli-studi-di-pavia",
+      "universityName": "Università degli Studi di Pavia",
+      "qsRank": 423,
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "rawToolName": "NotebookLM",
+      "tool": "notebooklm",
+      "description": "NotebookLM is listed for working with documents, sources, and user-uploaded materials.",
+      "howToObtain": "Access with University of Pavia email credentials or from the Google menu.",
+      "costToUser": "Free with university email credentials.",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.unipv.it/en/ai-tools/",
+          "sourceTitle": "AI Tools - University of Pavia",
+          "evidenceSnippet": "The University of Pavia AI Tools catalog lists NotebookLM as available for university students, faculty, and staff.",
+          "snapshotHash": "fda0b8b058cbf8e7afc5bf95c30f2659a95e347ff657223fa2ec3c8db741ff90",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "universita-degli-studi-di-pavia",
+      "universityName": "Università degli Studi di Pavia",
+      "qsRank": 423,
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "rawToolName": "Copilot Chat Basic",
+      "tool": "microsoft_copilot",
+      "description": "Copilot Chat Basic is listed as accessible with a University of Pavia Microsoft account.",
+      "howToObtain": "Access with the university Microsoft account after registration.",
+      "costToUser": "Free with university Microsoft account.",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.unipv.it/en/ai-tools/",
+          "sourceTitle": "AI Tools - University of Pavia",
+          "evidenceSnippet": "The University of Pavia AI Tools catalog says Copilot Chat Basic is accessible with the university Microsoft account after appropriate registration.",
+          "snapshotHash": "34cf62f3494eb69e04759c5aa533e47c658d22e134f49b677b45062576503cc6",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "universita-degli-studi-di-pavia",
+      "universityName": "Università degli Studi di Pavia",
+      "qsRank": 423,
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "rawToolName": "Consensus Enterprise",
+      "tool": "consensus",
+      "description": "Consensus Enterprise is listed as an intelligent literature search tool.",
+      "howToObtain": "Access with a University of Pavia email account.",
+      "costToUser": "Free with university email address during the trial period until 31 July 2026.",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.unipv.it/en/ai-tools/",
+          "sourceTitle": "AI Tools - University of Pavia",
+          "evidenceSnippet": "The University of Pavia AI Tools catalog lists Consensus Enterprise as an intelligent tool for literature search available with a university email account.",
+          "snapshotHash": "94f966cf7f8e797e082fcf615f5014fa9281825d9ecc4df8cd77d8fc42db2250",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "shenzhen-university",
+      "universityName": "Shenzhen University",
+      "qsRank": 452,
+      "tool": "deepseek",
+      "rawToolName": "DeepSeek-R1",
+      "description": "Shenzhen University announced a locally deployed full-scale DeepSeek-R1 model on the Ascend platform for university teaching and research services.",
+      "howToObtain": "Not stated",
+      "costToUser": "Not stated",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://en.szu.edu.cn/info/1014/1760.htm",
+          "sourceTitle": "Shenzhen University and Huawei unveil the full-scale DeepSeek-R1 model",
+          "evidenceSnippet": "The full-scale DeepSeek-R1 model is running on the Ascend platform, offering efficient and stable AI services for the entire university community.",
+          "snapshotHash": "ccd612b5201dda30d842f3a8a55edec5dc97dc3c2a53ae5821578b0c911aa030",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
