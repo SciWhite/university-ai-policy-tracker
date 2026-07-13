@@ -82,6 +82,11 @@ export const aiTools = [
   "scite_ai",
   "scopus_ai",
   "wooflash",
+  "consensus",
+  "quillbot",
+  "trinka_ai",
+  "enago_read",
+  "enago_report",
   "magicschool",
   "playlab",
   "brightspace_lumi_pro",
@@ -812,6 +817,41 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "Wooflash",
     provider: "Wooflash",
     aliases: ["Wooflash"],
+    category: "commercial_assistant"
+  },
+  consensus: {
+    slug: "consensus",
+    label: "Consensus",
+    provider: "Consensus",
+    aliases: ["Consensus"],
+    category: "commercial_assistant"
+  },
+  quillbot: {
+    slug: "quillbot",
+    label: "QuillBot",
+    provider: "QuillBot",
+    aliases: ["QuillBot"],
+    category: "commercial_assistant"
+  },
+  trinka_ai: {
+    slug: "trinka_ai",
+    label: "Trinka AI",
+    provider: "Trinka",
+    aliases: ["Trinka AI", "Trinka"],
+    category: "commercial_assistant"
+  },
+  enago_read: {
+    slug: "enago_read",
+    label: "Enago Read",
+    provider: "Enago",
+    aliases: ["Enago Read"],
+    category: "commercial_assistant"
+  },
+  enago_report: {
+    slug: "enago_report",
+    label: "Enago Report",
+    provider: "Enago",
+    aliases: ["Enago Report"],
     category: "commercial_assistant"
   },
   magicschool: {
