@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260713-007",
-  "publishedAt": "2026-07-13T17:40:00Z",
-  "description": "Public release with validated QS281-330 official AI tools records plus prior QS231-280 AI tools release.",
+  "releaseId": "public-release-20260713-006",
+  "publishedAt": "2026-07-13T15:55:00Z",
+  "description": "Public release with validated QS231-280 official AI tools records plus prior QS191-230 AI tools release.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -822,15 +822,13 @@
     "staging/uapt-runs/uapt-ai-tools-qs-141-160-20260713",
     "staging/uapt-runs/uapt-ai-tools-qs-161-190-20260713",
     "staging/uapt-runs/uapt-ai-tools-qs-191-230-20260713",
-    "staging/uapt-runs/uapt-ai-tools-qs-231-280-20260713",
-    "staging/uapt-runs/uapt-ai-tools-qs-281-330-20260713"
+    "staging/uapt-runs/uapt-ai-tools-qs-231-280-20260713"
   ],
   "notes": [
-    "This release preserves public-release-20260713-006 in release history.",
-    "Adds QS281-330 official AI tool records for CU Boulder, Rutgers, University of Oulu, and City St George's, University of London.",
-    "Rutgers and Oulu official tool directories are expanded row-by-row; CU Boulder ChatGPT Edu and Microsoft Copilot are captured from OIT source-backed tool language.",
-    "City St George's Library Services restrictions are published as limited research-context tool treatment records, not as approved tools.",
-    "Schools without explicit public tool-level official evidence remain unexpanded; broad AI guidance, course rules, dissertations, training pages, and generic tool examples are not promoted into named tool conclusions.",
+    "This release preserves public-release-20260713-005 in release history.",
+    "Adds QS231-280 official AI tool records for UMass Amherst, Vanderbilt, University of Arizona, Case Western Reserve, University of Pittsburgh, Radboud University, and University of Waikato.",
+    "Adds taxonomy slugs for MagicSchool, Playlab, and Brightspace Lumi Pro so real product names are not collapsed into generic AI tool labels.",
+    "Schools without explicit public tool-level official evidence remain unexpanded; broad AI guidance, course rules, training pages, and research PDFs are not promoted into named tool conclusions.",
     "AI tools records are tracker-derived metadata for navigation and comparison; they do not replace official university source language.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]
