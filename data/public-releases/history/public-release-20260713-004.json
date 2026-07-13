@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260713-005",
-  "publishedAt": "2026-07-13T13:32:00Z",
-  "description": "Public release with validated QS191-230 AI tools records plus prior QS161-190 AI tools release.",
+  "releaseId": "public-release-20260713-004",
+  "publishedAt": "2026-07-13T10:52:00Z",
+  "description": "Public release with validated QS161-190 AI tools records plus prior QS141-160 AI tools release.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -820,13 +820,12 @@
     "staging/uapt-runs/uapt-ai-tools-qs-121-130-20260713",
     "staging/uapt-runs/uapt-ai-tools-qs-131-140-20260713",
     "staging/uapt-runs/uapt-ai-tools-qs-141-160-20260713",
-    "staging/uapt-runs/uapt-ai-tools-qs-161-190-20260713",
-    "staging/uapt-runs/uapt-ai-tools-qs-191-230-20260713"
+    "staging/uapt-runs/uapt-ai-tools-qs-161-190-20260713"
   ],
   "notes": [
-    "This release preserves public-release-20260713-004 in release history.",
-    "Adds QS191-230 official AI tool records for Twente, Deakin, UMD College Park, Minnesota, Calgary, and Florida.",
-    "Schools without explicit public tool-level official evidence remain unexpanded; broad AI guidance, course rules, training pages, and research PDFs are not promoted into named tool conclusions.",
+    "This release preserves public-release-20260713-003 in release history.",
+    "Adds QS161-190 official AI tool records for ASU, McMaster, Emory, Ohio State, Queen's Kingston, UCLouvain, Wollongong, VU Amsterdam, NYCU, Queen's Belfast, Freiburg, and Gothenburg.",
+    "Schools without explicit public tool-level official evidence remain unexpanded; broad AI guidance is not promoted into named tool conclusions.",
     "AI tools records are tracker-derived metadata for navigation and comparison; they do not replace official university source language.",
     "Raw source documents are not published as tracker metadata; official source materials retain their original rights."
   ]

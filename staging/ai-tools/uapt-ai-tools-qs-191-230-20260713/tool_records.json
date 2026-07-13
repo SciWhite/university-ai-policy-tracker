@@ -1,0 +1,447 @@
+{
+  "schemaVersion": "uapt-ai-tools-staging-v1",
+  "runId": "uapt-ai-tools-qs-191-230-20260713",
+  "generatedAt": "2026-07-13T13:20:00.000Z",
+  "records": [
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-twente",
+      "universityName": "University of Twente",
+      "qsRank": 203,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "University of Twente says Microsoft Copilot is available for employees through a UT account.",
+      "howToObtain": "Use the Copilot website with a UT account.",
+      "costToUser": "Included within the university license according to the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.utwente.nl/en/learning-teaching/news-events/2024/4/1468349/available-for-all-employees-microsoft-copilot",
+          "sourceTitle": "Available for all employees: Microsoft Copilot - University of Twente",
+          "evidenceSnippet": "Microsoft Copilot is now available for employees at the University of Twente; users can work with it on the Copilot website using a UT account, and Copilot is included within the university license.",
+          "snapshotHash": "435b12fec74e1e960a8d8f47f0da1b8167739d960af2948a31d40f59b5aa1efc",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "deakin-university",
+      "universityName": "Deakin University",
+      "qsRank": 207,
+      "tool": "self_deploy",
+      "rawToolName": "Deakin GEM",
+      "description": "Deakin lists Deakin GEM as its secure generative AI platform for learning.",
+      "howToObtain": "Access Deakin GEM from the approved tools page or GEM landing page.",
+      "costToUser": "Free according to Deakin's public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.deakin.edu.au/students/study-support/study-resources/artificial-intelligence/approved-genai-tools-for-learning",
+          "sourceTitle": "Approved genAI tools for learning - Deakin University",
+          "evidenceSnippet": "Deakin provides a set of endorsed generative AI and digital learning tools and lists Deakin GEM as a secure genAI platform hosted in Australia.",
+          "snapshotHash": "6bc908fa458d8863fa320ac3222fd0168aa25f0e46227fe5d11fe5b5e1cc7f98",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "deakin-university",
+      "universityName": "Deakin University",
+      "qsRank": 207,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot for web",
+      "description": "Deakin lists Microsoft Copilot for web as an approved generative AI tool for learning.",
+      "howToObtain": "Launch via DeakinEdge and log in to a Microsoft account.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.deakin.edu.au/students/study-support/study-resources/artificial-intelligence/approved-genai-tools-for-learning",
+          "sourceTitle": "Approved genAI tools for learning - Deakin University",
+          "evidenceSnippet": "Deakin's approved genAI tools table lists Microsoft Copilot for web and says to launch it via DeakinEdge and log in to a Microsoft account.",
+          "snapshotHash": "8786dcfabebb75cbb160320559c9847d9440741cc7788c7be2bf56299e269666",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-maryland-college-park",
+      "universityName": "University of Maryland, College Park",
+      "qsRank": 207,
+      "tool": "self_deploy",
+      "rawToolName": "TerpAI",
+      "description": "UMD lists TerpAI as a Division of IT generative AI service for the UMD community.",
+      "howToObtain": "Access TerpAI through UMD's AI Resources service page.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai-resources.umd.edu/resources/services",
+          "sourceTitle": "Available Services - AI Resources @ UMD",
+          "evidenceSnippet": "UMD lists TerpAI under AI Services from the Division of IT and describes it as a generative AI tool for accessible and affordable AI at the University of Maryland.",
+          "snapshotHash": "b0da4c2234ea6ad1b7b95094f24206f588b2cc90583ca727f2f4783f70115ae0",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-maryland-college-park",
+      "universityName": "University of Maryland, College Park",
+      "qsRank": 207,
+      "tool": "self_deploy",
+      "rawToolName": "UMD Virtual Agent",
+      "description": "UMD lists UMD Virtual Agent as a university-developed generative AI chatbot service.",
+      "howToObtain": "Request or provision a virtual agent through UMD's listed service path.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "self_hosted_system",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai-resources.umd.edu/resources/services",
+          "sourceTitle": "Available Services - AI Resources @ UMD",
+          "evidenceSnippet": "UMD describes the UMD Virtual Agent as a generative AI chatbot developed at the university, with virtual study assistant and departmental assistant agents.",
+          "snapshotHash": "5dc190ec48f44865308629f27958b12412c2b7fe6ad6962b6d3b27160cc181a5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-maryland-college-park",
+      "universityName": "University of Maryland, College Park",
+      "qsRank": 207,
+      "tool": "chatgpt",
+      "rawToolName": "ChatGPT Enterprise at UMD",
+      "description": "UMD lists ChatGPT Enterprise as an AI service for staff, faculty, and students.",
+      "howToObtain": "Use an authorized UMD ChatGPT Enterprise account or UMD's ChatGPT licensing path.",
+      "costToUser": "UMD notes license charges are moving to a tier-based allocation model.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai-resources.umd.edu/resources/services",
+          "sourceTitle": "Available Services - AI Resources @ UMD",
+          "evidenceSnippet": "UMD says ChatGPT Enterprise at UMD provides staff, faculty, and students with access to OpenAI frontier models, with workspace restrictions for authorized accounts.",
+          "snapshotHash": "fece39ba9070006f2cbd442616c9f0d6e2d630ca0491fd7f89338f3bcef282ad",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-maryland-college-park",
+      "universityName": "University of Maryland, College Park",
+      "qsRank": 207,
+      "tool": "perplexity",
+      "rawToolName": "Perplexity Enterprise Pro",
+      "description": "UMD lists Perplexity Enterprise Pro as a one-year pilot for faculty and staff.",
+      "howToObtain": "Use UMD's Perplexity AI service information or support path for the pilot.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai-resources.umd.edu/resources/services",
+          "sourceTitle": "Available Services - AI Resources @ UMD",
+          "evidenceSnippet": "UMD says Perplexity Enterprise Pro is available as a one-year pilot to UMD faculty and staff.",
+          "snapshotHash": "9dc99519636b1bfe2f689f9e75640cd0b58a657ac097b915b47d027a5fe518cd",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-maryland-college-park",
+      "universityName": "University of Maryland, College Park",
+      "qsRank": 207,
+      "tool": "claude",
+      "rawToolName": "Anthropic Claude",
+      "description": "UMD says Claude passed its Software Risk Management audit and is approved for full usage, though departments must purchase Teams directly.",
+      "howToObtain": "Departments purchase Claude Teams plans directly through Anthropic until an institutional arrangement is available.",
+      "costToUser": "Department purchase required; UMD notes Claude Teams seat pricing constraints.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "officially_endorsed",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai-resources.umd.edu/resources/services",
+          "sourceTitle": "Available Services - AI Resources @ UMD",
+          "evidenceSnippet": "UMD says Claude has passed Software Risk Management security, privacy, and accessibility audit and has been approved for full usage across the university, but there is no campus-wide enterprise agreement.",
+          "snapshotHash": "8c3cb060125af65d878c26dd174d1d1743187e4a7a4d1490e7c74c72c8b64713",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-maryland-college-park",
+      "universityName": "University of Maryland, College Park",
+      "qsRank": 207,
+      "tool": "gemini",
+      "rawToolName": "Google Gemini",
+      "description": "UMD lists Google Gemini as an AI-powered productivity assistant integrated into Google Workspace.",
+      "howToObtain": "Use UMD's Google AI services and Gemini information paths.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai-resources.umd.edu/resources/services",
+          "sourceTitle": "Available Services - AI Resources @ UMD",
+          "evidenceSnippet": "UMD lists Google Gemini as an AI-powered productivity assistant integrated into Google Workspace and links to Google AI Services guidance.",
+          "snapshotHash": "54919de07da081039585023e6e0bec6781f23ab3b553d4b28e53cd418dacb699",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-maryland-college-park",
+      "universityName": "University of Maryland, College Park",
+      "qsRank": 207,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "UMD lists NotebookLM as a focused research and knowledge workspace built on Gemini models.",
+      "howToObtain": "Use NotebookLM through UMD's Google AI services guidance.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai-resources.umd.edu/resources/services",
+          "sourceTitle": "Available Services - AI Resources @ UMD",
+          "evidenceSnippet": "UMD says NotebookLM provides a focused research and knowledge workspace built on Gemini models for uploading source materials and querying them.",
+          "snapshotHash": "e414f6f4909ec5607acd79fcd460f14dc324e80ed1ca931aef72a20c18b84c06",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-maryland-college-park",
+      "universityName": "University of Maryland, College Park",
+      "qsRank": 207,
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "Microsoft 365 Copilot",
+      "description": "UMD lists Microsoft 365 Copilot as an AI-powered productivity assistant in the Microsoft 365 environment.",
+      "howToObtain": "Use UMD-managed Microsoft 365 Copilot licensing tiers where available by role and unit.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "conditionally_allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai-resources.umd.edu/resources/services",
+          "sourceTitle": "Available Services - AI Resources @ UMD",
+          "evidenceSnippet": "UMD says Microsoft 365 Copilot is available in licensed tiers that distinguish web-based and work-grounded experiences, with availability varying by license, role, and unit.",
+          "snapshotHash": "0840399e01ef916c7da9ddc60cfe041d6846bec330c010c2d79e456e09d0a45e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-maryland-college-park",
+      "universityName": "University of Maryland, College Park",
+      "qsRank": 207,
+      "tool": "adobe_firefly",
+      "rawToolName": "Adobe Firefly",
+      "description": "UMD lists Adobe Firefly as a generative AI tool in the Adobe Creative Cloud ecosystem.",
+      "howToObtain": "Use UMD's Adobe Firefly service information path.",
+      "costToUser": "Includes 1000 monthly generation credits according to UMD.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai-resources.umd.edu/resources/services",
+          "sourceTitle": "Available Services - AI Resources @ UMD",
+          "evidenceSnippet": "UMD lists Adobe Firefly and notes it comes with 1000 credits for asset generation, reset monthly.",
+          "snapshotHash": "6827e6248455945f7e420bf15483e203e6b322494242e732e52f900dd6cec6e5",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-minnesota-system",
+      "universityName": "University of Minnesota (System)",
+      "qsRank": 210,
+      "tool": "gemini",
+      "rawToolName": "Gemini",
+      "description": "UMN lists Gemini in its approved AI tools comparison for available tools.",
+      "howToObtain": "Access through UMN's Gemini with enterprise-grade data protection service path.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.umn.edu/services-technologies/resources/compare-ai-tools",
+          "sourceTitle": "Compare AI Tools - IT@UMN",
+          "evidenceSnippet": "UMN says only certain tools are approved for University of Minnesota data and lists Gemini in its available tools comparison.",
+          "snapshotHash": "a914aced158b71cb8772148187f96de619bc0a950137e96d87726911786e95dc",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-minnesota-system",
+      "universityName": "University of Minnesota (System)",
+      "qsRank": 210,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot",
+      "description": "UMN lists Microsoft Copilot with enterprise data protection in its approved AI tools comparison.",
+      "howToObtain": "Access through UMN's Microsoft Copilot with Enterprise Data Protection service path.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.umn.edu/services-technologies/resources/compare-ai-tools",
+          "sourceTitle": "Compare AI Tools - IT@UMN",
+          "evidenceSnippet": "UMN says only certain tools are approved for University of Minnesota data and lists Microsoft Copilot in its available tools comparison.",
+          "snapshotHash": "5e8f7e59b2dfabf81015234e937463212fad2e3217922ad5d8090061cfc302f4",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-minnesota-system",
+      "universityName": "University of Minnesota (System)",
+      "qsRank": 210,
+      "tool": "notebooklm",
+      "rawToolName": "NotebookLM",
+      "description": "UMN lists NotebookLM in its approved AI tools comparison.",
+      "howToObtain": "Access through UMN's NotebookLM service path.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.umn.edu/services-technologies/resources/compare-ai-tools",
+          "sourceTitle": "Compare AI Tools - IT@UMN",
+          "evidenceSnippet": "UMN's available tools comparison lists NotebookLM alongside Gemini, Microsoft Copilot, and Zoom AI Companion.",
+          "snapshotHash": "849fc85f4b102e292195372c0aa597082cd51bbc6f4ff247a5a6020e0ae61abe",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-minnesota-system",
+      "universityName": "University of Minnesota (System)",
+      "qsRank": 210,
+      "tool": "zoom_ai_companion",
+      "rawToolName": "Zoom AI Companion",
+      "description": "UMN lists Zoom AI Companion in its approved AI tools comparison.",
+      "howToObtain": "Access through UMN's Zoom AI Companion guidance path.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.umn.edu/services-technologies/resources/compare-ai-tools",
+          "sourceTitle": "Compare AI Tools - IT@UMN",
+          "evidenceSnippet": "UMN's available tools comparison lists Zoom AI Companion as an approved tool with enterprise-grade data protection.",
+          "snapshotHash": "a4f6ce7ef7b3d74f95bb1cd3c3bb6e39bd26d3478968703e4dad5cdf8448a356",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-minnesota-system",
+      "universityName": "University of Minnesota (System)",
+      "qsRank": 210,
+      "tool": "claude",
+      "rawToolName": "Claude",
+      "description": "UMN explicitly says Claude is not approved for institutional data.",
+      "howToObtain": "No UMN-approved institutional-data use path is published for this record.",
+      "costToUser": "Not applicable.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.umn.edu/services-technologies/resources/compare-ai-tools",
+          "sourceTitle": "Compare AI Tools - IT@UMN",
+          "evidenceSnippet": "UMN says other generative AI tools available online, for example Claude and Perplexity, are not approved for any institutional data at UMN, even when data is anonymized.",
+          "snapshotHash": "57eb31e0acbf8e9268eae3cca8f5096371dd715cc1c835a9d1eda96a462644a2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-minnesota-system",
+      "universityName": "University of Minnesota (System)",
+      "qsRank": 210,
+      "tool": "perplexity",
+      "rawToolName": "Perplexity",
+      "description": "UMN explicitly says Perplexity is not approved for institutional data.",
+      "howToObtain": "No UMN-approved institutional-data use path is published for this record.",
+      "costToUser": "Not applicable.",
+      "availability": "restricted_or_blocked",
+      "endorsementType": "third_party_service",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.umn.edu/services-technologies/resources/compare-ai-tools",
+          "sourceTitle": "Compare AI Tools - IT@UMN",
+          "evidenceSnippet": "UMN says other generative AI tools available online, for example Claude and Perplexity, are not approved for any institutional data at UMN, even when data is anonymized.",
+          "snapshotHash": "57eb31e0acbf8e9268eae3cca8f5096371dd715cc1c835a9d1eda96a462644a2",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-calgary",
+      "universityName": "University of Calgary",
+      "qsRank": 211,
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot Chat",
+      "description": "UCalgary publishes secure Microsoft Copilot Chat access for users with a UCalgary IT account.",
+      "howToObtain": "Sign in with UCalgary credentials in Edge, the Copilot Chat website, or the managed-device desktop icon.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://it.ucalgary.ca/it-security/microsoft-copilot-chat",
+          "sourceTitle": "Microsoft Copilot Chat - University of Calgary Information Technologies",
+          "evidenceSnippet": "UCalgary says a secure version of Microsoft Copilot Chat is available for anyone with a UCalgary IT account and must be accessed with UCalgary credentials.",
+          "snapshotHash": "42fd2c9a245880f1e787e1695e1d26bf8002a566da5aa85453aab691b86978ad",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    },
+    {
+      "reviewState": "agent_reviewed",
+      "universitySlug": "university-of-florida",
+      "universityName": "University of Florida",
+      "qsRank": 212,
+      "tool": "microsoft_copilot",
+      "rawToolName": "UF GPT / Microsoft Copilot",
+      "description": "UF guidance says UF GPT/Microsoft Copilot is the only AI tool approved by UF Integrated Risk Management at the time of the source.",
+      "howToObtain": "Use UF GPT/Microsoft Copilot with a GatorLink login.",
+      "costToUser": "Not specified by the public source.",
+      "availability": "allowed",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "evidence": [
+        {
+          "sourceUrl": "https://ics.ifas.ufl.edu/media/icsifasufledu/docs/edis/EDIS-AI-Factsheet.pdf",
+          "sourceTitle": "Guidelines for EDIS Authors When Using AI Tools - University of Florida",
+          "evidenceSnippet": "UF states that UF GPT/Microsoft Copilot, when used with a GatorLink login, is the only AI tool approved by UF Integrated Risk Management.",
+          "snapshotHash": "7765fb0e3f4c42c3fbf1faac89faa7941afc7669f93652d9dc63167c10f872cb",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
+}
