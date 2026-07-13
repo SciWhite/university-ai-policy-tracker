@@ -81,6 +81,7 @@ export const aiTools = [
   "summon_research_assistant",
   "scite_ai",
   "scopus_ai",
+  "wooflash",
   "kimi",
   "glm",
   "minimax",
@@ -801,6 +802,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "Scopus AI",
     provider: "Elsevier",
     aliases: ["Scopus AI"],
+    category: "commercial_assistant"
+  },
+  wooflash: {
+    slug: "wooflash",
+    label: "Wooflash",
+    provider: "Wooflash",
+    aliases: ["Wooflash"],
     category: "commercial_assistant"
   },
   kimi: {
