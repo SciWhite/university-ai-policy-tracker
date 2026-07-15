@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "uapt-ai-tools-release-candidate-v1",
+  "runId": "uapt-ai-tools-qs-top-430-20260715-005",
+  "generatedAt": "2026-07-15T17:20:43.896Z",
+  "scope": {
+    "qsRows": "1-430",
+    "ledgerRows": 430
+  },
+  "sourceRoot": "staging/ai-tools/re-audits/uapt-ai-tools-qs-top-430-20260715-005",
+  "sourceDocumentCount": 1,
+  "recordCount": 880,
+  "universityCount": 290,
+  "sourceCount": 360,
+  "duplicateRecordCount": 0,
+  "toolRecordsSha256": "f9ab1c7ca6f484122e5a464fffc00ca31c12cf8b9ed66b351885519486319468",
+  "sourceFiles": [
+    "staging/ai-tools/re-audits/uapt-ai-tools-qs-top-430-20260715-005/tool_records.json"
+  ]
+}

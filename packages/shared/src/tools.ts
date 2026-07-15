@@ -120,8 +120,11 @@ const genericToolPattern =
   /\b(?:ai tools?|generative ai tools?|genai tools?|ai services?|generative ai services?)\b/i;
 const genericPlatformPattern =
   /\b(?:institutional|institutionally|university|campus|enterprise|managed|secure)\s+(?:ai|generative ai|genai)\s+(?:service|tool|platform|system)\b/i;
+// A generic "hosted by" phrase is not evidence that the *university* runs the
+// system.  Keep this deliberately narrow: `self_hosted_system` is a positive
+// operational claim and must never be inferred from a vendor-hosted service.
 const selfHostedPattern =
-  /\b(?:self-hosted|self hosted|locally hosted|hosted by|on-prem|on premise|university-hosted|mit-hosted|campus-hosted)\b/i;
+  /\b(?:self-hosted|self hosted|locally hosted|on-prem(?:ise)?|university-hosted|campus-hosted|institution(?:ally)?-hosted|[a-z][a-z .'-]{1,80}\buniversity-hosted|hosted by (?:the )?(?:university|institution|campus)|operated by (?:the )?(?:university|institution|campus)|operated by [^.!?]{0,120}(?:for|at|of) (?:the )?(?:university|universit[aä]t|institution|campus)|von (?:der )?(?:universit[aä]t|hochschule) [^.!?]{0,80} betrieben(?:e[nrsm]?)?)\b/i;
 
 export function deriveUniversityToolRecords(
   summaries: PublicEntitySummary[]

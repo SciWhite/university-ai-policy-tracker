@@ -4,6 +4,7 @@ export const aiTools = [
   "dalle",
   "claude",
   "deepseek",
+  "gemma",
   "gemini",
   "notebooklm",
   "microsoft_copilot",
@@ -79,6 +80,7 @@ export const aiTools = [
   "yunsiku_humanities_qa",
   "ai_chat_playground",
   "summon_research_assistant",
+  "primo_research_assistant",
   "scite_ai",
   "scopus_ai",
   "wooflash",
@@ -302,6 +304,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "GitHub Copilot",
     provider: "GitHub / Microsoft",
     aliases: ["GitHub Copilot", "Copilot for GitHub"],
+    category: "commercial_assistant"
+  },
+  gemma: {
+    slug: "gemma",
+    label: "Gemma / Google",
+    provider: "Google",
+    aliases: ["Gemma-3-27B", "Gemma 3 27B", "Gemma"],
     category: "commercial_assistant"
   },
   adobe_creative_cloud: {
@@ -798,6 +807,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     aliases: ["Summon Research Assistant", "Summon Research Assistant（BETA版)"],
     category: "commercial_assistant"
   },
+  primo_research_assistant: {
+    slug: "primo_research_assistant",
+    label: "Primo Research Assistant",
+    provider: "Ex Libris",
+    aliases: ["Primo Research Assistant", "MultiSearch Research Assistant"],
+    category: "commercial_assistant"
+  },
   scite_ai: {
     slug: "scite_ai",
     label: "Scite",
@@ -969,7 +985,9 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
       "AI Playground",
       "CSU-GPT",
       "HAWKI",
-      "Chat AI (Academic Cloud)"
+      "Chat AI (Academic Cloud)",
+      "uniGPT",
+      "uniGPT internal models"
     ],
     category: "self_hosted_platform"
   },
@@ -985,7 +1003,10 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
       "managed AI platform",
       "campus AI service",
       "campus AI platform",
-      "secure AI platform"
+      "secure AI platform",
+      "UniGPT",
+      "My Learning Talk @Polimi",
+      "MyLearningTalk"
     ],
     category: "generic_bucket"
   },
