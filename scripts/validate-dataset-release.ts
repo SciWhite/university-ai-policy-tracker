@@ -109,7 +109,11 @@ async function main(): Promise<void> {
 
 async function assertNoMaintenanceRunsInCurrentRelease(): Promise<void> {
   const manifest = JSON.parse(
-    await readFile("data/public-releases/current.json", "utf8")
+    await readFile(
+      process.env.UAPT_PUBLIC_RELEASE_MANIFEST ??
+        "data/public-releases/current.json",
+      "utf8"
+    )
   ) as PublicReleaseInputManifest;
 
   for (const directory of manifest.includeStagedArtifactDirectories) {

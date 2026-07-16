@@ -1,0 +1,13 @@
+[Unit]
+Description=Build UAPT maintenance review queue from the latest completed scan
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=openclaw
+WorkingDirectory=/home/openclaw/workspace/university-ai-policy-tracker
+EnvironmentFile=-/home/openclaw/.config/uapt-maintenance.env
+ExecStart=/usr/bin/bash -lc 'set -euo pipefail; root=/home/openclaw/workspace/staging/uapt-maintenance; run=$$(find "$$root" -mindepth 1 -maxdepth 1 -type d -name "maintenance-*" -printf "%%f\n" | sort | tail -n1); test -n "$$run"; /home/linuxbrew/.linuxbrew/bin/pnpm maintenance:build-review-queue "$$root/$$run/source-health.json"'
+
+# This unit only creates review-queue.json/.md. It never starts OpenClaw,
+# modifies current.json, commits, pushes, or deploys.
