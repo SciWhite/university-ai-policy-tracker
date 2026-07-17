@@ -116,7 +116,13 @@ export function DashboardLineChart({
         </svg>
         {activeIndex !== null ? (
           <div
-            className="analytics-chart-tooltip"
+            className={`analytics-chart-tooltip${
+              activeIndex === 0
+                ? " analytics-chart-tooltip--start"
+                : activeIndex === labels.length - 1
+                  ? " analytics-chart-tooltip--end"
+                  : ""
+            }`}
             style={{ left: `${(activeIndex / Math.max(1, labels.length - 1)) * 100}%` }}
           >
             <strong>{labels[activeIndex]}</strong>

@@ -1905,7 +1905,9 @@ h3 {
   display: grid;
   font-size: 9px;
   gap: 2px;
-  max-width: 190px;
+  inline-size: max-content;
+  max-inline-size: min(190px, calc(100% - 12px));
+  min-inline-size: 118px;
   padding: 6px 7px;
   pointer-events: none;
   position: absolute;
@@ -1926,6 +1928,15 @@ h3 {
   color: var(--color-text-muted);
   display: flex;
   gap: 4px;
+  white-space: nowrap;
+}
+
+.analytics-chart-tooltip--start {
+  transform: none;
+}
+
+.analytics-chart-tooltip--end {
+  transform: translateX(-100%);
 }
 
 .analytics-source-chart rect {
