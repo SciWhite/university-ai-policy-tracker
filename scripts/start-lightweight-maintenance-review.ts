@@ -109,7 +109,9 @@ function startTarget(
 
   const command = retryCommand({
     ...options,
+    artifactDir,
     logFile,
+    noteFile,
     promptFile,
     sessionId,
   });
@@ -151,7 +153,9 @@ function startTarget(
 
 function retryCommand(
   input: Options & {
+    artifactDir: string;
     logFile: string;
+    noteFile: string;
     promptFile: string;
     sessionId: string;
   },
@@ -171,6 +175,7 @@ function retryCommand(
     "      exit 0",
     "    fi",
     "    code=$?",
+    `    if [ -s ${quote(input.noteFile)} ] || [ -s ${quote(path.join(input.artifactDir, "artifacts.json"))} ]; then echo "model=$model attempt=$attempt result_written_after_nonzero_exit=$code" >> ${quote(input.logFile)}; exit 0; fi`,
     `    if tail -n 24 ${quote(input.logFile)} | grep -Eqi ${quote(TRANSIENT_PATTERN)}; then klass=transient; else klass=permanent; fi`,
     `    echo "model=$model attempt=$attempt error_class=$klass exit=$code" >> ${quote(input.logFile)}`,
     '    [ "$klass" = transient ] || break',
