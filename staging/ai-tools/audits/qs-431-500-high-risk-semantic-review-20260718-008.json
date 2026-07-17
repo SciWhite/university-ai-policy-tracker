@@ -1,0 +1,304 @@
+{
+  "schemaVersion": "uapt-ai-tools-high-risk-semantic-review-v1",
+  "runId": "uapt-ai-tools-qs-431-500-20260718-008",
+  "generatedAt": "2026-07-18T12:00:00.000Z",
+  "scope": "Every 007 blocked/null row with at least one officialPageChecks007.potentialInstitutionalAccess=true signal",
+  "policy": "A heuristic signal must receive an independent semantic decision. The prior terminal label is not accepted as QA ground truth.",
+  "summary": {
+    "reviewed": 21,
+    "falseNegativesRepaired": 3,
+    "blockedNullRetained": 18,
+    "verifiedZero": 0
+  },
+  "decisions": [
+    {
+      "qsRow": 432,
+      "qsRank": 461,
+      "universityName": "Università Vita-Salute San Raffaele",
+      "officialDomain": "unisr.it",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 433,
+      "qsRank": 465,
+      "universityName": "Anna University",
+      "officialDomain": "annauniv.edu",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 441,
+      "qsRank": 473,
+      "universityName": "Johannes Kepler University Linz",
+      "officialDomain": "jku.at",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 443,
+      "qsRank": 473,
+      "universityName": "USI - Università della Svizzera italiana",
+      "officialDomain": "usi.ch",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 447,
+      "qsRank": 480,
+      "universityName": "Hiroshima University",
+      "officialDomain": "hiroshima-u.ac.jp",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "false_negative_repaired",
+      "rationale": "Official university text explicitly establishes institutional contract, licence, enterprise package, or partnership access.",
+      "sourceUrls": [
+        "https://www.hiroshima-u.ac.jp/en/ids/about"
+      ],
+      "recordIds": [
+        "hiroshima-university:microsoft_copilot:Copilot Chat",
+        "hiroshima-university:gemini:Google Gemini",
+        "hiroshima-university:notebooklm:NotebookLM"
+      ]
+    },
+    {
+      "qsRow": 450,
+      "qsRank": 482,
+      "universityName": "Duy Tan University",
+      "officialDomain": "duytan.edu.vn",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 453,
+      "qsRank": 485,
+      "universityName": "University of Trento",
+      "officialDomain": "unitn.it",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 460,
+      "qsRank": 491,
+      "universityName": "Universiti Utara Malaysia (UUM)",
+      "officialDomain": "uum.edu.my",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 461,
+      "qsRank": 494,
+      "universityName": "University of Bordeaux",
+      "officialDomain": "u-bordeaux.fr",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 467,
+      "qsRank": 499,
+      "universityName": "Tomsk State University",
+      "officialDomain": "tsu.ru",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 472,
+      "qsRank": 504,
+      "universityName": "Ewha Womans University",
+      "officialDomain": "ewha.ac.kr",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 474,
+      "qsRank": 504,
+      "universityName": "University of Guelph",
+      "officialDomain": "uoguelph.ca",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "false_negative_repaired",
+      "rationale": "Official university text explicitly establishes institutional contract, licence, enterprise package, or partnership access.",
+      "sourceUrls": [
+        "https://guides.lib.uoguelph.ca/ld.php?content_id=38392344"
+      ],
+      "recordIds": [
+        "university-of-guelph:microsoft_copilot:Microsoft 365 Copilot Chat"
+      ]
+    },
+    {
+      "qsRow": 475,
+      "qsRank": 509,
+      "universityName": "China Medical University",
+      "officialDomain": "cmu.edu.tw",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 482,
+      "qsRank": 575,
+      "universityName": "Brno University of Technology",
+      "officialDomain": "vut.cz",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 485,
+      "qsRank": 578,
+      "universityName": "Universidad Adolfo Ibáñez",
+      "officialDomain": "uai.cl",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 488,
+      "qsRank": 581,
+      "universityName": "Comillas Pontifical University",
+      "officialDomain": "comillas.edu",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 490,
+      "qsRank": 582,
+      "universityName": "University of Iceland",
+      "officialDomain": "hi.is",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 493,
+      "qsRank": 584,
+      "universityName": "University of Dhaka",
+      "officialDomain": "du.ac.bd",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 494,
+      "qsRank": 587,
+      "universityName": "American University",
+      "officialDomain": "american.edu",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "false_negative_repaired",
+      "rationale": "Official university text explicitly establishes institutional contract, licence, enterprise package, or partnership access.",
+      "sourceUrls": [
+        "https://www.american.edu/news/20260312-copilot-chat-can-help-au-community-with-daily-tasks.cfm",
+        "https://kogod.american.edu/news/kogod-school-of-business-partners-with-perplexity-to-expand-ai-access-for-all-students"
+      ],
+      "recordIds": [
+        "american-university:microsoft_copilot:Microsoft Copilot Chat",
+        "american-university:perplexity:Perplexity Enterprise Pro"
+      ]
+    },
+    {
+      "qsRow": 496,
+      "qsRank": 587,
+      "universityName": "Université Claude Bernard Lyon 1",
+      "officialDomain": "univ-lyon1.fr",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    },
+    {
+      "qsRow": 498,
+      "qsRank": 591,
+      "universityName": "Illinois Institute of Technology",
+      "officialDomain": "iit.edu",
+      "priorDecision": "blocked_insufficient_evidence",
+      "priorPotentialInstitutionalAccess": true,
+      "reviewProvider": "firecrawl_search_and_direct_official_page_review",
+      "decision": "blocked_null_retained",
+      "rationale": "No reviewed official text established a current institutional contract, licence/login, procurement, partnership access, or self-hosted service; generic guidance and research references remain excluded.",
+      "sourceUrls": [],
+      "recordIds": []
+    }
+  ]
+}

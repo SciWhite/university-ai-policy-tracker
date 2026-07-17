@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "uapt-ai-tools-search-quality-v1",
+  "runId": "uapt-ai-tools-qs-431-500-20260717-007",
+  "generatedAt": "2026-07-17T16:27:37.939Z",
+  "english": {
+    "queryCount": 490,
+    "validQueryCount": 201,
+    "emptyResultCount": 289,
+    "providerFailureCount": 0,
+    "officialDomainCandidateUrlCount": 1055,
+    "filteredIrrelevantUrlCount": 6026,
+    "providerDistribution": {
+      "yahoo_html": 384,
+      "bing_rss": 106
+    }
+  },
+  "localLanguage": {
+    "queryCount": 224,
+    "validQueryCount": 67,
+    "emptyResultCount": 157,
+    "providerFailureCount": 0,
+    "officialDomainCandidateUrlCount": 357,
+    "filteredIrrelevantUrlCount": 2347,
+    "providerDistribution": {
+      "bing_rss": 147,
+      "yahoo_html": 77
+    },
+    "languageDistribution": {
+      "it": 12,
+      "zh": 44,
+      "he": 4,
+      "es": 20,
+      "fr": 16,
+      "de": 20,
+      "ko": 12,
+      "ru": 12,
+      "ja": 8,
+      "vi": 4,
+      "el": 4,
+      "pl": 4,
+      "ar": 4,
+      "ms": 12,
+      "fa": 12,
+      "fi": 4,
+      "pt": 12,
+      "tr": 4,
+      "cs": 4,
+      "is": 4,
+      "hu": 4,
+      "bn": 4
+    }
+  },
+  "combined": {
+    "queryCount": 714,
+    "officialDomainCandidateUrlCount": 1412,
+    "filteredIrrelevantUrlCount": 8373,
+    "providerDistribution": {
+      "yahoo_html": 461,
+      "bing_rss": 253
+    },
+    "discoveryProviderResults": {
+      "firecrawl": 0,
+      "yahooHtmlQueries": 461,
+      "bingRssQueries": 253,
+      "directOfficialCandidatePages": 552,
+      "directOfficialFetchSuccesses": 475,
+      "note": "Firecrawl was permitted but not used in the final 007 matrix; ordinary search discovery plus direct official-domain crawling produced the retained audit trail."
+    },
+    "universitiesWithExplainableTerminal": 70,
+    "blockedNullCount": 49,
+    "blockedNullWithOfficialDomainSearch": 49,
+    "blockedNullWithOfficialCandidateCrawl": 43,
+    "officialCandidateCrawl": {
+      "universities": 70,
+      "universitiesWithCandidateUrls": 63,
+      "candidateUrls": 552,
+      "fetched": 475,
+      "fetchFailed": 77,
+      "relevantAiSurfaces": 150,
+      "potentialInstitutionalAccess": 133
+    }
+  }
+}

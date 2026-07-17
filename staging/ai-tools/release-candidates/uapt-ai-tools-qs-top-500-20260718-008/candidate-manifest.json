@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "uapt-ai-tools-release-candidate-v1",
+  "runId": "uapt-ai-tools-qs-top-500-20260718-008",
+  "generatedAt": "2026-07-18T12:00:00.000Z",
+  "scope": {
+    "qsRows": "1-500",
+    "ledgerRows": 500,
+    "extensionQsRows": "431-500",
+    "extensionLedgerRows": 70
+  },
+  "immutableBaseline": {
+    "runId": "uapt-ai-tools-qs-top-430-20260715-005",
+    "toolRecordsPath": "staging/ai-tools/release-candidates/uapt-ai-tools-qs-top-430-20260715-005/tool_records.json",
+    "toolRecordsSha256": "f9ab1c7ca6f484122e5a464fffc00ca31c12cf8b9ed66b351885519486319468"
+  },
+  "repairedExtension": {
+    "runId": "uapt-ai-tools-qs-431-500-20260718-008",
+    "sourceRunId": "uapt-ai-tools-qs-431-500-20260717-007",
+    "toolRecordsPath": "staging/ai-tools/release-candidates/uapt-ai-tools-qs-431-500-20260718-008/tool_records.json",
+    "toolRecordsSha256": "8645b33a4e51635b09e8b66d4a7d817e116544d7fe566c961ef2045a5d8bca3d"
+  },
+  "recordCount": 919,
+  "universityCount": 314,
+  "sourceCount": 388,
+  "extensionRecordCount": 39,
+  "extensionUniversityCount": 24,
+  "extensionSourceCount": 28,
+  "duplicateRecordCount": 0,
+  "dedupeKey": "universitySlug + canonical tool + normalized product name",
+  "toolRecordsSha256": "2086267d34502b5441c5f8b08f8578498850b55783f15c1a31ed28a37bf44f3f"
+}
