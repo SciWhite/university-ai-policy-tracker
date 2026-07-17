@@ -303,8 +303,11 @@ async function readStagedArtifacts(
 async function readPublicReleaseManifest(
   repoRoot: string
 ): Promise<PublicReleaseManifest | undefined> {
+  const configuredManifest = process.env.UAPT_PUBLIC_RELEASE_MANIFEST;
   const manifest = await readJson(
-    path.join(repoRoot, "data", "public-releases", "current.json")
+    configuredManifest
+      ? path.resolve(repoRoot, configuredManifest)
+      : path.join(repoRoot, "data", "public-releases", "current.json")
   );
 
   if (!isPublicReleaseManifest(manifest)) return undefined;

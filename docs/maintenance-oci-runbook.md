@@ -49,6 +49,53 @@ sudo systemctl enable --now uapt-maintenance-qs200.timer
 sudo systemctl enable --now uapt-maintenance-weekly-other.timer
 ```
 
+## Queue, lightweight review, and candidate flow
+
+Runtime scan/review output must remain outside the Git worktree at
+`/home/openclaw/workspace/staging/uapt-maintenance`. This prevents generated
+maintenance artifacts from blocking a later `git pull --ff-only`.
+
+Install the safe queue-only unit (it does not start a model or promote data):
+
+```bash
+sudo cp infra/systemd/uapt-maintenance-review-queue.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl start uapt-maintenance-review-queue.service
+```
+
+For a small, explicit batch after inspecting `review-queue.md`:
+
+```bash
+pnpm maintenance:start-light-review -- --run-id <run-id> \
+  --queue /home/openclaw/workspace/staging/uapt-maintenance/<run-id>/review-queue.json \
+  --model nvidia/z-ai/glm-5.2 --max-concurrency 1 --timeout 2400
+pnpm maintenance:collect-review-results -- <run-id> /home/openclaw/workspace/staging/uapt-maintenance
+pnpm maintenance:prepare-candidate -- --run-id <run-id> --maintenance-root /home/openclaw/workspace/staging/uapt-maintenance
+```
+
+The launcher starts only enough `uapt-light-review-*` units to fill
+`--max-concurrency`; default concurrency is 1. If the queue is larger, wait for
+the active unit to finish, collect results, inspect `operator-summary.md`, then
+run the launcher again for the next slot.
+
+Set fallback model/key profiles only in `/home/openclaw/.config/uapt-maintenance.env`
+or the local OpenClaw auth-profile/configuration, never in Git. Supported
+non-secret controls are `UAPT_MAINTENANCE_MODEL`,
+`UAPT_MAINTENANCE_FALLBACK_MODEL`, `UAPT_MAINTENANCE_RETRY_ATTEMPTS`, and
+`UAPT_MAINTENANCE_RETRY_BASE_MS`. The launcher records model ID, attempt, and
+error class only. It retries 429/5xx/timeout/gateway failures with exponential
+backoff, then tries the configured fallback model.
+
+Candidate creation never changes `data/public-releases/current.json`. Only
+after an explicit Codex/human confirmation may an operator run:
+
+```bash
+pnpm maintenance:promote-candidate -- --candidate data/public-releases/candidates/<candidate>.json --confirm
+```
+
+After that explicit promotion, commit scoped files, push `origin/main`, deploy
+through the OCI production runbook, and verify the required public APIs/pages.
+
 ## Manual Smoke Tests
 
 Do not run a large scan first. Start with dry runs:
