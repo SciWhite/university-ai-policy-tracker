@@ -35,10 +35,7 @@ async function main(): Promise<void> {
   const prefix = `uapt-maintenance-light-${sanitize(runId)}-`;
   const byItem = new Map<string, PendingResult>();
 
-  for (const file of [
-    ...(await files(path.join(base, "notes"))),
-    ...(await files(path.join(base, "logs"))),
-  ]) {
+  for (const file of await files(path.join(base, "logs"))) {
     const text = await readFile(file, "utf8");
     const item = path.basename(file, path.extname(file));
     mergeResult(byItem, {
@@ -46,6 +43,17 @@ async function main(): Promise<void> {
       classification: classifyNoteOrLog(text),
       detail: "Note/log only; no publishable conclusion inferred.",
       priority: 10,
+    });
+  }
+
+  for (const file of await files(path.join(base, "notes"))) {
+    const text = await readFile(file, "utf8");
+    const item = path.basename(file, path.extname(file));
+    mergeResult(byItem, {
+      item,
+      classification: classifyNoteOrLog(text),
+      detail: "Maintenance note only; no publishable conclusion inferred.",
+      priority: 20,
     });
   }
 
@@ -128,7 +136,7 @@ async function main(): Promise<void> {
 
 function mergeResult(results: Map<string, PendingResult>, result: PendingResult): void {
   const current = results.get(result.item);
-  if (!current || result.priority >= current.priority) {
+  if (!current || result.priority > current.priority) {
     results.set(result.item, result);
   }
 }
