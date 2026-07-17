@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260717-001",
-  "publishedAt": "2026-07-17T06:24:20.109Z",
-  "description": "Maintenance release candidate from maintenance-2026-07-08T05-22-35-416Z; awaiting explicit Codex promotion confirmation.",
+  "releaseId": "public-release-20260715-005",
+  "publishedAt": "2026-07-15T17:30:37Z",
+  "description": "Public observation release of the canonical QS top-430 AI tools re-audit bundle.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -802,8 +802,7 @@
     "staging/uapt-runs/uapt-maintenance-light-university-of-pennsylvania-20260707",
     "staging/uapt-runs/uapt-maintenance-light-durham-university-20260707",
     "staging/uapt-runs/uapt-maintenance-light-the-university-of-western-australia-20260707",
-    "staging/uapt-runs/uapt-ai-tools-qs-top-430-20260715-005",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-07-08T05-22-35-416Z-tufts-university-895e3cb8119d"
+    "staging/uapt-runs/uapt-ai-tools-qs-top-430-20260715-005"
   ],
   "notes": [
     "Preserves public-release-20260714-002 in release history and promotes staging/uapt-runs/uapt-ai-tools-qs-top-430-20260715-005 as an observation release.",
@@ -812,6 +811,5 @@
     "This observation release is being published for live product review while independent-QA scope and a small set of newly added records receive follow-up review.",
     "AI tool records are tracker-derived metadata for navigation and comparison; official university pages remain authoritative.",
     "Tracker metadata is open licensed; official source documents retain their original rights."
-  ],
-  "previousReleaseId": "public-release-20260715-005"
+  ]
 }
