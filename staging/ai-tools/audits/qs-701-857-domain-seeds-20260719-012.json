@@ -1,0 +1,4739 @@
+{
+  "schemaVersion": "uapt-ai-tools-domain-seeds-v1",
+  "runId": "uapt-ai-tools-qs-701-857-20260719-012",
+  "generatedAt": "2026-07-18T20:25:20.853Z",
+  "scope": {
+    "rows": [
+      701,
+      857
+    ],
+    "count": 157
+  },
+  "rows": [
+    {
+      "qsRow": 701,
+      "qsRank": 801,
+      "universityName": "Viet Nam National University Ho Chi Minh City (VNU-HCM)",
+      "countryOrRegion": "Vietnam",
+      "canonicalSlug": "viet-nam-national-university-ho-chi-minh-city-vnu-hcm",
+      "officialDomain": "vnuhcm.edu.vn",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "vnuhcm.edu.vn",
+          "score": 1010
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 702,
+      "qsRank": 801,
+      "universityName": "Zurich University of Applied Sciences (ZHAW)",
+      "countryOrRegion": "Switzerland",
+      "canonicalSlug": "zurich-university-of-applied-sciences-zhaw",
+      "officialDomain": "zhaw.ch",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "zhaw.ch",
+          "score": 11
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 703,
+      "qsRank": 851,
+      "universityName": "Addis Ababa University",
+      "countryOrRegion": "Ethiopia",
+      "canonicalSlug": "addis-ababa-university",
+      "officialDomain": "aau.edu.et",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "aau.edu.et",
+          "score": 15
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 704,
+      "qsRank": 851,
+      "universityName": "Altai State University",
+      "countryOrRegion": "Russia",
+      "canonicalSlug": "altai-state-university",
+      "officialDomain": "asu.ru",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "asu.ru",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 705,
+      "qsRank": 851,
+      "universityName": "Auburn University",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "auburn-university",
+      "officialDomain": "auburn.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "auburn.edu",
+          "score": 15
+        },
+        {
+          "domain": "service-now.com",
+          "score": 1
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 706,
+      "qsRank": 851,
+      "universityName": "Australian Catholic University",
+      "countryOrRegion": "Australia",
+      "canonicalSlug": "australian-catholic-university",
+      "officialDomain": "acu.edu.au",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "acu.edu.au",
+          "score": 15
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 707,
+      "qsRank": 851,
+      "universityName": "Beijing Jiaotong University",
+      "countryOrRegion": "China (Mainland)",
+      "canonicalSlug": "beijing-jiaotong-university",
+      "officialDomain": "bjtu.edu.cn",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "bjtu.edu.cn",
+          "score": 5
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 708,
+      "qsRank": 851,
+      "universityName": "Belarusian National Technical University (BNTU)",
+      "countryOrRegion": "Belarus",
+      "canonicalSlug": "belarusian-national-technical-university-bntu",
+      "officialDomain": "bntu.by",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "bntu.by",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 709,
+      "qsRank": 851,
+      "universityName": "Catania University",
+      "countryOrRegion": "Italy",
+      "canonicalSlug": "catania-university",
+      "officialDomain": "unict.it",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "unict.it",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 710,
+      "qsRank": 851,
+      "universityName": "China University of Geosciences",
+      "countryOrRegion": "China (Mainland)",
+      "canonicalSlug": "china-university-of-geosciences",
+      "officialDomain": "cug.edu.cn",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "cug.edu.cn",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 711,
+      "qsRank": 851,
+      "universityName": "Chungnam National University",
+      "countryOrRegion": "South Korea",
+      "canonicalSlug": "chungnam-national-university",
+      "officialDomain": "cnu.ac.kr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "cnu.ac.kr",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 712,
+      "qsRank": 851,
+      "universityName": "Dhofar University",
+      "countryOrRegion": "Oman",
+      "canonicalSlug": "dhofar-university",
+      "officialDomain": "du.edu.om",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "du.edu.om",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 713,
+      "qsRank": 851,
+      "universityName": "Edinburgh Napier University",
+      "countryOrRegion": "United Kingdom",
+      "canonicalSlug": "edinburgh-napier-university",
+      "officialDomain": "napier.ac.uk",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "napier.ac.uk",
+          "score": 11
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 714,
+      "qsRank": 851,
+      "universityName": "Effat University",
+      "countryOrRegion": "Saudi Arabia",
+      "canonicalSlug": "effat-university",
+      "officialDomain": "effatuniversity.edu.sa",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "effatuniversity.edu.sa",
+          "score": 1003
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 715,
+      "qsRank": 851,
+      "universityName": "Université du Québec",
+      "countryOrRegion": "Canada",
+      "canonicalSlug": "universite-du-quebec",
+      "officialDomain": "uquebec.ca",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uquebec.ca",
+          "score": 14
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 716,
+      "qsRank": 851,
+      "universityName": "Verona University",
+      "countryOrRegion": "Italy",
+      "canonicalSlug": "verona-university",
+      "officialDomain": "univr.it",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "univr.it",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 717,
+      "qsRank": 851,
+      "universityName": "VILNIUS TECH (Vilnius Gediminas Technical University)",
+      "countryOrRegion": "Lithuania",
+      "canonicalSlug": "vilnius-tech-vilnius-gediminas-technical-university",
+      "officialDomain": "vilniustech.lt",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "vilniustech.lt",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 718,
+      "qsRank": 851,
+      "universityName": "Worcester Polytechnic Institute",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "worcester-polytechnic-institute",
+      "officialDomain": "wpi.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "wpi.edu",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 719,
+      "qsRank": 851,
+      "universityName": "Wroclaw University of Science and Technology (Wrocław Tech)",
+      "countryOrRegion": "Poland",
+      "canonicalSlug": "wroclaw-university-of-science-and-technology-wroc-aw-tech",
+      "officialDomain": "pwr.edu.pl",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "pwr.edu.pl",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 720,
+      "qsRank": 851,
+      "universityName": "Yarmouk University",
+      "countryOrRegion": "Jordan",
+      "canonicalSlug": "yarmouk-university",
+      "officialDomain": "yu.edu.jo",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "yu.edu.jo",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 721,
+      "qsRank": 901,
+      "universityName": "American University of Central Asia",
+      "countryOrRegion": "Kyrgyzstan",
+      "canonicalSlug": "american-university-of-central-asia",
+      "officialDomain": "auca.kg",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "auca.kg",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 722,
+      "qsRank": 901,
+      "universityName": "Baku Engineering University",
+      "countryOrRegion": "Azerbaijan",
+      "canonicalSlug": "baku-engineering-university",
+      "officialDomain": "beu.edu.az",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "beu.edu.az",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 723,
+      "qsRank": 901,
+      "universityName": "Chonnam National University",
+      "countryOrRegion": "South Korea",
+      "canonicalSlug": "chonnam-national-university",
+      "officialDomain": "jnu.ac.kr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "jnu.ac.kr",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 724,
+      "qsRank": 901,
+      "universityName": "El Colegio de México, A.C.",
+      "countryOrRegion": "Mexico",
+      "canonicalSlug": "el-colegio-de-mexico-a-c",
+      "officialDomain": "colmex.mx",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "colmex.mx",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 725,
+      "qsRank": 901,
+      "universityName": "Gazi Üniversitesi",
+      "countryOrRegion": "Türkiye",
+      "canonicalSlug": "gazi-universitesi",
+      "officialDomain": "gazi.edu.tr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "gazi.edu.tr",
+          "score": 11
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 726,
+      "qsRank": 901,
+      "universityName": "Huazhong Agricultural University",
+      "countryOrRegion": "China (Mainland)",
+      "canonicalSlug": "huazhong-agricultural-university",
+      "officialDomain": "hzau.edu.cn",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "hzau.edu.cn",
+          "score": 14
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 727,
+      "qsRank": 901,
+      "universityName": "Jouf University",
+      "countryOrRegion": "Saudi Arabia",
+      "canonicalSlug": "jouf-university",
+      "officialDomain": "ju.edu.sa",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ju.edu.sa",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 728,
+      "qsRank": 901,
+      "universityName": "Kanazawa University",
+      "countryOrRegion": "Japan",
+      "canonicalSlug": "kanazawa-university",
+      "officialDomain": "kanazawa-u.ac.jp",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "kanazawa-u.ac.jp",
+          "score": 5
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 729,
+      "qsRank": 901,
+      "universityName": "Kansas State University",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "kansas-state-university",
+      "officialDomain": "k-state.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "k-state.edu",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 730,
+      "qsRank": 901,
+      "universityName": "Khon Kaen University",
+      "countryOrRegion": "Thailand",
+      "canonicalSlug": "khon-kaen-university",
+      "officialDomain": "kku.ac.th",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "kku.ac.th",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 731,
+      "qsRank": 901,
+      "universityName": "King Mongkut's University of Technology Thonburi",
+      "countryOrRegion": "Thailand",
+      "canonicalSlug": "king-mongkut-s-university-of-technology-thonburi",
+      "officialDomain": "kmutt.ac.th",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "kmutt.ac.th",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 732,
+      "qsRank": 901,
+      "universityName": "Lovely Professional University (LPU)",
+      "countryOrRegion": "India",
+      "canonicalSlug": "lovely-professional-university-lpu",
+      "officialDomain": "lpu.in",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "lpu.in",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 733,
+      "qsRank": 901,
+      "universityName": "Michigan Technological University",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "michigan-technological-university",
+      "officialDomain": "mtu.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "mtu.edu",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 734,
+      "qsRank": 901,
+      "universityName": "Nagasaki University",
+      "countryOrRegion": "Japan",
+      "canonicalSlug": "nagasaki-university",
+      "officialDomain": "nagasaki-u.ac.jp",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "nagasaki-u.ac.jp",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 735,
+      "qsRank": 901,
+      "universityName": "Osaka Metropolitan University",
+      "countryOrRegion": "Japan",
+      "canonicalSlug": "osaka-metropolitan-university",
+      "officialDomain": "omu.ac.jp",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "omu.ac.jp",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 736,
+      "qsRank": 901,
+      "universityName": "Panjab University",
+      "countryOrRegion": "India",
+      "canonicalSlug": "panjab-university",
+      "officialDomain": "puchd.ac.in",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "puchd.ac.in",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 737,
+      "qsRank": 901,
+      "universityName": "Saveetha Institute of Medical And Technical Sciences (SIMATS)",
+      "countryOrRegion": "India",
+      "canonicalSlug": "saveetha-institute-of-medical-and-technical-sciences-simats",
+      "officialDomain": "saveetha.com",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "saveetha.com",
+          "score": 5
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 738,
+      "qsRank": 901,
+      "universityName": "Taif University",
+      "countryOrRegion": "Saudi Arabia",
+      "canonicalSlug": "taif-university",
+      "officialDomain": "tu.edu.sa",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "tu.edu.sa",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 739,
+      "qsRank": 1001,
+      "universityName": "Universiti Malaysia Sabah (UMS)",
+      "countryOrRegion": "Malaysia",
+      "canonicalSlug": "universiti-malaysia-sabah-ums",
+      "officialDomain": "ums.edu.my",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ums.edu.my",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 740,
+      "qsRank": 1001,
+      "universityName": "Universiti Malaysia Sarawak (UNIMAS)",
+      "countryOrRegion": "Malaysia",
+      "canonicalSlug": "universiti-malaysia-sarawak-unimas",
+      "officialDomain": "unimas.my",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "unimas.my",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 741,
+      "qsRank": 1001,
+      "universityName": "Universiti Tun Hussein Onn Malaysia (UTHM)",
+      "countryOrRegion": "Malaysia",
+      "canonicalSlug": "universiti-tun-hussein-onn-malaysia-uthm",
+      "officialDomain": "uthm.edu.my",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uthm.edu.my",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 742,
+      "qsRank": 1001,
+      "universityName": "Universite Paris-Pantheon-Assas",
+      "countryOrRegion": "France",
+      "canonicalSlug": "universite-paris-pantheon-assas",
+      "officialDomain": "assas-universite.fr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "assas-universite.fr",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 743,
+      "qsRank": 1001,
+      "universityName": "University of Alabama at Birmingham",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-alabama-at-birmingham",
+      "officialDomain": "uab.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uab.edu",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 744,
+      "qsRank": 1001,
+      "universityName": "University of Anbar",
+      "countryOrRegion": "Iraq",
+      "canonicalSlug": "university-of-anbar",
+      "officialDomain": "uoanbar.edu.iq",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uoanbar.edu.iq",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 745,
+      "qsRank": 1001,
+      "universityName": "University of Arkansas Fayetteville",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-arkansas-fayetteville",
+      "officialDomain": "uark.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uark.edu",
+          "score": 19
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 746,
+      "qsRank": 1001,
+      "universityName": "University of Balamand",
+      "countryOrRegion": "Lebanon",
+      "canonicalSlug": "university-of-balamand",
+      "officialDomain": "balamand.edu.lb",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "balamand.edu.lb",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 747,
+      "qsRank": 1001,
+      "universityName": "University of Colombo",
+      "countryOrRegion": "Sri Lanka",
+      "canonicalSlug": "university-of-colombo",
+      "officialDomain": "cmb.ac.lk",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "cmb.ac.lk",
+          "score": 11
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 748,
+      "qsRank": 1001,
+      "universityName": "University of Denver",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-denver",
+      "officialDomain": "du.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "du.edu",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 749,
+      "qsRank": 1001,
+      "universityName": "University of Deusto",
+      "countryOrRegion": "Spain",
+      "canonicalSlug": "university-of-deusto",
+      "officialDomain": "deusto.es",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "deusto.es",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 750,
+      "qsRank": 1001,
+      "universityName": "University of East London",
+      "countryOrRegion": "United Kingdom",
+      "canonicalSlug": "university-of-east-london",
+      "officialDomain": "uel.ac.uk",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uel.ac.uk",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 751,
+      "qsRank": 1001,
+      "universityName": "University of Hradec Kralove",
+      "countryOrRegion": "Czechia",
+      "canonicalSlug": "university-of-hradec-kralove",
+      "officialDomain": "uhk.cz",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uhk.cz",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 752,
+      "qsRank": 1001,
+      "universityName": "University of Ibadan",
+      "countryOrRegion": "Nigeria",
+      "canonicalSlug": "university-of-ibadan",
+      "officialDomain": "ui.edu.ng",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ui.edu.ng",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 753,
+      "qsRank": 1001,
+      "universityName": "University of Idaho",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-idaho",
+      "officialDomain": "uidaho.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uidaho.edu",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 754,
+      "qsRank": 1001,
+      "universityName": "University of Ioannina",
+      "countryOrRegion": "Greece",
+      "canonicalSlug": "university-of-ioannina",
+      "officialDomain": "uoi.gr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uoi.gr",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 755,
+      "qsRank": 1001,
+      "universityName": "University of Isfahan",
+      "countryOrRegion": "Iran",
+      "canonicalSlug": "university-of-isfahan",
+      "officialDomain": "ui.ac.ir",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ui.ac.ir",
+          "score": 7
+        },
+        {
+          "domain": "ac.ir",
+          "score": 3
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 756,
+      "qsRank": 1001,
+      "universityName": "University of Karachi",
+      "countryOrRegion": "Pakistan",
+      "canonicalSlug": "university-of-karachi",
+      "officialDomain": "uok.edu.pk",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uok.edu.pk",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 757,
+      "qsRank": 1001,
+      "universityName": "University of Lagos",
+      "countryOrRegion": "Nigeria",
+      "canonicalSlug": "university-of-lagos",
+      "officialDomain": "unilag.edu.ng",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "unilag.edu.ng",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 758,
+      "qsRank": 1001,
+      "universityName": "University of Louisville",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-louisville",
+      "officialDomain": "louisville.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "louisville.edu",
+          "score": 22
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 759,
+      "qsRank": 1001,
+      "universityName": "University of Mississippi",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-mississippi",
+      "officialDomain": "olemiss.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "olemiss.edu",
+          "score": 15
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 760,
+      "qsRank": 1001,
+      "universityName": "University of Missouri, Kansas City",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-missouri-kansas-city",
+      "officialDomain": "umkc.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "umkc.edu",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 761,
+      "qsRank": 1001,
+      "universityName": "University of Murcia",
+      "countryOrRegion": "Spain",
+      "canonicalSlug": "university-of-murcia",
+      "officialDomain": "um.es",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "um.es",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 762,
+      "qsRank": 1001,
+      "universityName": "University of Nairobi",
+      "countryOrRegion": "Kenya",
+      "canonicalSlug": "university-of-nairobi",
+      "officialDomain": "uonbi.ac.ke",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uonbi.ac.ke",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 763,
+      "qsRank": 1001,
+      "universityName": "University of Naples Parthenope",
+      "countryOrRegion": "Italy",
+      "canonicalSlug": "university-of-naples-parthenope",
+      "officialDomain": "uniparthenope.it",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uniparthenope.it",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 764,
+      "qsRank": 1001,
+      "universityName": "University of Nevada - Reno",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-nevada-reno",
+      "officialDomain": "unr.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "unr.edu",
+          "score": 13
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 765,
+      "qsRank": 1001,
+      "universityName": "University of New England Australia",
+      "countryOrRegion": "Australia",
+      "canonicalSlug": "university-of-new-england-australia",
+      "officialDomain": "une.edu.au",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "une.edu.au",
+          "score": 15
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 766,
+      "qsRank": 1001,
+      "universityName": "University of New Hampshire",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-new-hampshire",
+      "officialDomain": "unh.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "unh.edu",
+          "score": 13
+        },
+        {
+          "domain": "usnh.edu",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 767,
+      "qsRank": 1001,
+      "universityName": "University of North Carolina at Charlotte",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-north-carolina-at-charlotte",
+      "officialDomain": "charlotte.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "charlotte.edu",
+          "score": 17
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 768,
+      "qsRank": 1001,
+      "universityName": "University of Parma",
+      "countryOrRegion": "Italy",
+      "canonicalSlug": "university-of-parma",
+      "officialDomain": "unipr.it",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "unipr.it",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 769,
+      "qsRank": 1001,
+      "universityName": "University of Regina",
+      "countryOrRegion": "Canada",
+      "canonicalSlug": "university-of-regina",
+      "officialDomain": "uregina.ca",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uregina.ca",
+          "score": 16
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 770,
+      "qsRank": 1001,
+      "universityName": "University of Rhode Island",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-rhode-island",
+      "officialDomain": "uri.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uri.edu",
+          "score": 16
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 771,
+      "qsRank": 1001,
+      "universityName": "University of South Bohemia in České Budějovice",
+      "countryOrRegion": "Czechia",
+      "canonicalSlug": "university-of-south-bohemia-in-ceske-budejovice",
+      "officialDomain": "jcu.cz",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "jcu.cz",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 772,
+      "qsRank": 1001,
+      "universityName": "University of Tabuk",
+      "countryOrRegion": "Saudi Arabia",
+      "canonicalSlug": "university-of-tabuk",
+      "officialDomain": "ut.edu.sa",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ut.edu.sa",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 773,
+      "qsRank": 1001,
+      "universityName": "University of Texas at San Antonio",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-texas-at-san-antonio",
+      "officialDomain": "utsa.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "utsa.edu",
+          "score": 15
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 774,
+      "qsRank": 1001,
+      "universityName": "University of Toledo",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-toledo",
+      "officialDomain": "utoledo.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "utoledo.edu",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 775,
+      "qsRank": 1001,
+      "universityName": "University of Tulsa",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-tulsa",
+      "officialDomain": "utulsa.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "utulsa.edu",
+          "score": 11
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 776,
+      "qsRank": 1001,
+      "universityName": "University of Vermont",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-vermont",
+      "officialDomain": "uvm.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uvm.edu",
+          "score": 14
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 777,
+      "qsRank": 1001,
+      "universityName": "University of Warmia and Mazury in Olsztyn",
+      "countryOrRegion": "Poland",
+      "canonicalSlug": "university-of-warmia-and-mazury-in-olsztyn",
+      "officialDomain": "uwm.edu.pl",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uwm.edu.pl",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 778,
+      "qsRank": 1001,
+      "universityName": "University of Wyoming",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-wyoming",
+      "officialDomain": "uwyo.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uwyo.edu",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 779,
+      "qsRank": 1001,
+      "universityName": "University of Algarve",
+      "countryOrRegion": "Portugal",
+      "canonicalSlug": "university-of-algarve",
+      "officialDomain": "ualg.pt",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ualg.pt",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 780,
+      "qsRank": 1001,
+      "universityName": "University of the Free State",
+      "countryOrRegion": "South Africa",
+      "canonicalSlug": "university-of-the-free-state",
+      "officialDomain": "ufs.ac.za",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ufs.ac.za",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 781,
+      "qsRank": 1001,
+      "universityName": "University of Zilina",
+      "countryOrRegion": "Slovakia",
+      "canonicalSlug": "university-of-zilina",
+      "officialDomain": "uniza.sk",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uniza.sk",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 782,
+      "qsRank": 1001,
+      "universityName": "Università degli Studi di Udine",
+      "countryOrRegion": "Italy",
+      "canonicalSlug": "universita-degli-studi-di-udine",
+      "officialDomain": "uniud.it",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uniud.it",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 783,
+      "qsRank": 1001,
+      "universityName": "University of Salento",
+      "countryOrRegion": "Italy",
+      "canonicalSlug": "university-of-salento",
+      "officialDomain": "unisalento.it",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "unisalento.it",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 784,
+      "qsRank": 1001,
+      "universityName": "Université Lumière Lyon 2",
+      "countryOrRegion": "France",
+      "canonicalSlug": "universite-lumiere-lyon-2",
+      "officialDomain": "univ-lyon2.fr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "univ-lyon2.fr",
+          "score": 14
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 785,
+      "qsRank": 1001,
+      "universityName": "Université Paris 13 Nord",
+      "countryOrRegion": "France",
+      "canonicalSlug": "universite-paris-13-nord",
+      "officialDomain": "univ-spn.fr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "univ-spn.fr",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 786,
+      "qsRank": 1001,
+      "universityName": "Université Toulouse 1 Capitole",
+      "countryOrRegion": "France",
+      "canonicalSlug": "universite-toulouse-1-capitole",
+      "officialDomain": "ut-capitole.fr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ut-capitole.fr",
+          "score": 11
+        },
+        {
+          "domain": "genially.com",
+          "score": 1
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 787,
+      "qsRank": 1001,
+      "universityName": "Universit de Bretagne Occidentale",
+      "countryOrRegion": "France",
+      "canonicalSlug": "universit-de-bretagne-occidentale",
+      "officialDomain": "univ-brest.fr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "univ-brest.fr",
+          "score": 13
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 788,
+      "qsRank": 1001,
+      "universityName": "University of Sfax",
+      "countryOrRegion": "Tunisia",
+      "canonicalSlug": "university-of-sfax",
+      "officialDomain": "univ-sfax.tn",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "univ-sfax.tn",
+          "score": 1004
+        },
+        {
+          "domain": "rnu.tn",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 789,
+      "qsRank": 1001,
+      "universityName": "Utah State University",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "utah-state-university",
+      "officialDomain": "usu.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "usu.edu",
+          "score": 16
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 790,
+      "qsRank": 1001,
+      "universityName": "VSB - Technical University of Ostrava",
+      "countryOrRegion": "Czechia",
+      "canonicalSlug": "vsb-technical-university-of-ostrava",
+      "officialDomain": "vsb.cz",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "vsb.cz",
+          "score": 15
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 791,
+      "qsRank": 1001,
+      "universityName": "Van Lang University",
+      "countryOrRegion": "Vietnam",
+      "canonicalSlug": "van-lang-university",
+      "officialDomain": "vlu.edu.vn",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "vlu.edu.vn",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 792,
+      "qsRank": 1001,
+      "universityName": "Warsaw University of Life Sciences SGGW (WULS-SGGW)",
+      "countryOrRegion": "Poland",
+      "canonicalSlug": "warsaw-university-of-life-sciences-sggw",
+      "officialDomain": "sggw.edu.pl",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "sggw.edu.pl",
+          "score": 1011
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 793,
+      "qsRank": 1001,
+      "universityName": "West Virginia University",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "west-virginia-university",
+      "officialDomain": "wvu.edu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "wvu.edu",
+          "score": 20
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 794,
+      "qsRank": 1001,
+      "universityName": "Xi'an Jiaotong Liverpool University",
+      "countryOrRegion": "China (Mainland)",
+      "canonicalSlug": "xi-an-jiaotong-liverpool-university",
+      "officialDomain": "xjtlu.edu.cn",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "xjtlu.edu.cn",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 795,
+      "qsRank": 1001,
+      "universityName": "Yokohama City University",
+      "countryOrRegion": "Japan",
+      "canonicalSlug": "yokohama-city-university",
+      "officialDomain": "yokohama-cu.ac.jp",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "yokohama-cu.ac.jp",
+          "score": 6
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 796,
+      "qsRank": 1001,
+      "universityName": "Yokohama National University",
+      "countryOrRegion": "Japan",
+      "canonicalSlug": "yokohama-national-university",
+      "officialDomain": "ynu.ac.jp",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ynu.ac.jp",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 797,
+      "qsRank": 1001,
+      "universityName": "Yuan Ze University",
+      "countryOrRegion": "Taiwan",
+      "canonicalSlug": "yuan-ze-university",
+      "officialDomain": "yzu.edu.tw",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "yzu.edu.tw",
+          "score": 7
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 798,
+      "qsRank": 1001,
+      "universityName": "Obuda University",
+      "countryOrRegion": "Hungary",
+      "canonicalSlug": "obuda-university",
+      "officialDomain": "uni-obuda.hu",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "uni-obuda.hu",
+          "score": 12
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 799,
+      "qsRank": 1201,
+      "universityName": "ADA University",
+      "countryOrRegion": "Azerbaijan",
+      "canonicalSlug": "ada-university",
+      "officialDomain": "ada.edu.az",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ada.edu.az",
+          "score": 11
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 800,
+      "qsRank": 1201,
+      "universityName": "Ahmadu Bello University, Zaria",
+      "countryOrRegion": "Nigeria",
+      "canonicalSlug": "ahmadu-bello-university-zaria",
+      "officialDomain": "abu.edu.ng",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "abu.edu.ng",
+          "score": 11
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 801,
+      "qsRank": 1201,
+      "universityName": "Al-Zaytoonah University of Jordan",
+      "countryOrRegion": "Jordan",
+      "canonicalSlug": "al-zaytoonah-university-of-jordan",
+      "officialDomain": "zuj.edu.jo",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "zuj.edu.jo",
+          "score": 15
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 802,
+      "qsRank": 1201,
+      "universityName": "Amman Arab University",
+      "countryOrRegion": "Jordan",
+      "canonicalSlug": "amman-arab-university",
+      "officialDomain": "aau.edu.jo",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "aau.edu.jo",
+          "score": 9
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 803,
+      "qsRank": 1201,
+      "universityName": "Ashoka University",
+      "countryOrRegion": "India",
+      "canonicalSlug": "ashoka-university",
+      "officialDomain": "ashoka.edu.in",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "ashoka.edu.in",
+          "score": 12
+        },
+        {
+          "domain": "edu.in",
+          "score": 3
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 804,
+      "qsRank": 1201,
+      "universityName": "Ataturk University",
+      "countryOrRegion": "Türkiye",
+      "canonicalSlug": "ataturk-university",
+      "officialDomain": "atauni.edu.tr",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "atauni.edu.tr",
+          "score": 8
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 805,
+      "qsRank": 1201,
+      "universityName": "BRAC University",
+      "countryOrRegion": "Bangladesh",
+      "canonicalSlug": "brac-university",
+      "officialDomain": "bracu.ac.bd",
+      "status": "resolved",
+      "resolutionMethod": "promoted_public_entity_sources",
+      "domainCandidates": [
+        {
+          "domain": "bracu.ac.bd",
+          "score": 10
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 806,
+      "qsRank": 1201,
+      "universityName": "Bahauddin Zakariya University",
+      "countryOrRegion": "Pakistan",
+      "canonicalSlug": "bahauddin-zakariya-university",
+      "officialDomain": "bzu.edu.pk",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "bzu.edu.pk",
+          "score": 1
+        },
+        {
+          "domain": "hec.gov.pk",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Bahauddin Zakariya University\" official university website",
+        "searchedAt": "2026-07-18T20:24:07.917Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-8cf3-72ba-9fab-f1254d0347ff",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://bzu.edu.pk/",
+            "title": "Bahauddin Zakariya University, Multan (Pakistan)",
+            "description": "Bahauddin Zakariya University is located in Multan, Punjab, Pakistan. It is the Largest university of South Punjab. Formerly known as Multan University, ..."
+          },
+          {
+            "url": "https://www.facebook.com/bzupakistan/",
+            "title": "Bahauddin Zakariya University (@bzupakistan)",
+            "description": "Admissions for Fall 2026 are now open at Bahauddin Zakariya University for Undergraduate and Associate Degree Programs. Ranked 601–800 globally in THE World ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Bahauddin_Zakariya_University",
+            "title": "Bahauddin Zakariya University",
+            "description": "Bahauddin Zakariya University was founded in 1975 as Multan University, and is today the second largest university in Punjab following University of the Punjab."
+          },
+          {
+            "url": "https://www.hec.gov.pk/english/universities/Pages/Punjab/Bahauddin-Zakariya-University.aspx",
+            "title": "Universities Bahauddin Zakariya University",
+            "description": "University. HEC · English · Universities. Bahauddin Zakariya University. Bahauddin Zakariya University (BZU), Multan ... Visit Website. http://www.bzu.edu.pk ..."
+          },
+          {
+            "url": "https://pk.linkedin.com/school/bzu/",
+            "title": "Bahauddin Zakariya University Employees, Location, Alumni",
+            "description": "Website: https://www.bzu.edu.pk/. External link for Bahauddin Zakariya University ; Industry: Higher Education ; Company size: 5,001-10,000 employees."
+          },
+          {
+            "url": "https://www.instagram.com/bzu.multan/?hl=en",
+            "title": "BZU Admission Help (@bzu.multan)",
+            "description": "Bahauddin Zakariya University Multan Exam & Admission Details & News Un-Official Account. Account Creater @shen_adn · www.apply.bzu.edu.pk · A Good News for the ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 807,
+      "qsRank": 1201,
+      "universityName": "Beijing Foreign Studies University",
+      "countryOrRegion": "China (Mainland)",
+      "canonicalSlug": "beijing-foreign-studies-university",
+      "officialDomain": "bfsu.edu.cn",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "bfsu.edu.cn",
+          "score": 3
+        },
+        {
+          "domain": "admissions.cn",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Beijing Foreign Studies University\" official university website",
+        "searchedAt": "2026-07-18T20:24:07.918Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-8d2f-70a9-85db-60c02705d428",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://en.bfsu.edu.cn/",
+            "title": "Beijing Foreign Studies University",
+            "description": "Beijing Foreign Studies University. Learn with an open mind. Serve a great ... Copyright © 2026 Beijing Foreign Studies University. All rights reserved ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Beijing_Foreign_Studies_University",
+            "title": "Beijing Foreign Studies University",
+            "description": "Beijing Foreign Studies University (BFSU; 北京外国语大学) is a public university in Haidian, Beijing, China. It is affiliated with the Ministry of Education."
+          },
+          {
+            "url": "https://osao.bfsu.edu.cn/",
+            "title": "Beijing Foreign Studies University",
+            "description": "Beijing Foreign Studies University (BFSU) commenced its international student education program in 1950, making it one of China's earliest higher education ..."
+          },
+          {
+            "url": "https://bfsu.admissions.cn/",
+            "title": "Beijing Foreign Studies University |Apply Online | Study in ...",
+            "description": "About Beijing Foreign Studies University ... As a major university under the direct leadership of the Chinese Ministry of Education, BFSU is not only the oldest, ..."
+          },
+          {
+            "url": "https://sio.bfsu.edu.cn/article/2026/03/06/538.html",
+            "title": "BFSU SIO 2026 Admissions Prospectus for International ...",
+            "description": "The School of International Organizations (SIO), Beijing Foreign Studies University (BFSU) is the first entity-based school of its kind in China ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/beijing-foreign-studies-university/5785242",
+            "title": "Beijing Foreign Studies University - Overview, News & ...",
+            "description": "What is Beijing Foreign Studies University's official website? Beijing Foreign Studies University's official website is www.bfsu.edu.cn. Sign Up For Free ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 808,
+      "qsRank": 1201,
+      "universityName": "Beijing University of Chinese Medicine",
+      "countryOrRegion": "China (Mainland)",
+      "canonicalSlug": "beijing-university-of-chinese-medicine",
+      "officialDomain": "bucm.edu.cn",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "bucm.edu.cn",
+          "score": 2
+        },
+        {
+          "domain": "csti.tw",
+          "score": 1
+        },
+        {
+          "domain": "sciopen.com",
+          "score": 1
+        },
+        {
+          "domain": "sicas.cn",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Beijing University of Chinese Medicine\" official university website",
+        "searchedAt": "2026-07-18T20:24:07.919Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-8d1d-7648-8456-8cdb4184b05d",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://english.bucm.edu.cn/",
+            "title": "Beijing University of Chinese Medicine",
+            "description": "Beijing University of Chinese Medicine celebrates 70th anniversary with global alumni events. Jul 01. 2026. \"Chinese Bridge\" Malaysian principals' cultural ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Beijing_University_of_Chinese_Medicine",
+            "title": "Beijing University of Chinese Medicine",
+            "description": "The Beijing University of Chinese Medicine is a public university in China. Founded in 1956, it is one of the first traditional Chinese medical institutions ..."
+          },
+          {
+            "url": "https://iec.bucm.edu.cn/english/admissions/undergraduate/index.htm",
+            "title": "Beijing University of Chinese Medicine International School",
+            "description": "Beijing University of Chinese Medicine (BUCM) is a national key university specializing in Traditional Chinese Medicine education. It was jointly established by ..."
+          },
+          {
+            "url": "http://nturanking.csti.tw/ranking/bySchoolName/Beijing%20University%20of%20Chinese%20Medicine",
+            "title": "Beijing University of Chinese Medicine - NTU Ranking",
+            "description": "Founded in 1956 the Beijing University of Chinese Medicine is one of the earliest established traditional Chinese medical institutions for higher learning in ..."
+          },
+          {
+            "url": "https://www.sciopen.com/journal/1006-2157",
+            "title": "Journal of Beijing University of Traditional Chinese Medicine",
+            "description": "... College of Traditional Chinese Medicine, is published by Beijing University of Chinese Medicine (BUCM) directly under Ministry of Education (MOE) since 1959."
+          },
+          {
+            "url": "https://m.sicas.cn/News/Detail?pid=1682",
+            "title": "2024 Beijing University of Chinese Medicine ...",
+            "description": "Beijing University of Chinese Medicine (BUCM), founded in 1956, a prestigious university in China, has been well-known for its leading subjects traditional ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 809,
+      "qsRank": 1201,
+      "universityName": "Benemerita Universidad Autonoma de Puebla",
+      "countryOrRegion": "Mexico",
+      "canonicalSlug": "benemerita-universidad-autonoma-de-puebla",
+      "officialDomain": "buap.mx",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "buap.mx",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "smapse.com",
+          "score": 1
+        },
+        {
+          "domain": "myuniuni.com",
+          "score": 1
+        },
+        {
+          "domain": "instudi.com",
+          "score": 1
+        },
+        {
+          "domain": "eduopinions.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Benemerita Universidad Autonoma de Puebla\" official university website",
+        "searchedAt": "2026-07-18T20:24:07.919Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-8d2d-770e-b198-db0a00c98d61",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.buap.mx/",
+            "title": "Benemérita Universidad Autónoma de Puebla",
+            "description": "Menú Inicio Ingreso Preparatorias Licenciaturas Oferta Educativa Media Superior y Superior, Semiescolarizada y A Distancia Posgrados … académicos repositorio ..."
+          },
+          {
+            "url": "https://www.unirank.org/mx/uni/benemerita-universidad-autonoma-de-puebla/",
+            "title": "Benemerita Universidad Autonoma de Puebla",
+            "description": "Founded in 1587, Benemerita Universidad Autonoma de Puebla (Autonomous University of Puebla) is a non-profit public higher education institution"
+          },
+          {
+            "url": "https://smapse.com/benemerita-universidad-autonoma-de-puebla-buap-autonomous-university-of-puebla/",
+            "title": "Benemérita Universidad Autónoma de Puebla (BUAP)",
+            "description": "Help with enrolment to Benemérita Universidad Autónoma de Puebla (BUAP). 2 programs available. Fees, reviews, photos and videos."
+          },
+          {
+            "url": "https://www.myuniuni.com/global/college/669?lang=en",
+            "title": "Benemerita Universidad Autonoma de Puebla|Global Universities",
+            "description": "Benemerita Universidad Autonoma de Puebla. 普埃布拉自治大学. World Ranking. 1272 USNEWS. 1501+ TIMES. - QS. - ARWU. Domestic Ranking. - USNEWS. - TIMES. - QS. - ..."
+          },
+          {
+            "url": "https://instudi.com/colleges/benemerita_universidad_autonoma_de_puebl_mx_017",
+            "title": "Benemerita Universidad Autonoma de Puebla",
+            "description": "Benemerita Universidad Autonoma de Puebla · At a glance · Overview · Profile · Admissions · Outcomes · Costs · Rankings · Academics ..."
+          },
+          {
+            "url": "https://www.eduopinions.com/universities/universities-in-mexico/benemerita-universidad-autonoma-de-puebla-buap/",
+            "title": "Benemérita Universidad Autónoma de Puebla in Mexico",
+            "description": "The Benemérita Universidad Autónoma de Puebla - BUAP offers courses related to the fields: Communication; Education; English Language & Literature; Business and ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 810,
+      "qsRank": 1201,
+      "universityName": "Beni-Suef University",
+      "countryOrRegion": "Egypt",
+      "canonicalSlug": "beni-suef-university",
+      "officialDomain": "bsu.edu.eg",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "bsu.edu.eg",
+          "score": 1
+        },
+        {
+          "domain": "springer.com",
+          "score": 1
+        },
+        {
+          "domain": "timeshighereducation.com",
+          "score": 1
+        },
+        {
+          "domain": "shanghairanking.com",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Beni-Suef University\" official university website",
+        "searchedAt": "2026-07-18T20:24:07.919Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-8cfd-70eb-9c88-676e3a5f89d4",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.bsu.edu.eg/",
+            "title": "جامعة بنى سويف",
+            "description": "المعاهد · الكليات النظرية · الكليات العملية · الكليات العملية · المراكز · الوحدات · اخر الأخبار · جامعة بني سويف تعلن عن برامج دبلومات مهنية ومتخصصة جديدة."
+          },
+          {
+            "url": "https://link.springer.com/journal/43088",
+            "title": "Beni-Suef University Journal of Basic and Applied Sciences",
+            "description": "The official journal of Beni-Suef University. Welcomes submissions of original research, literature reviews and matters arising. Editor-in-Chief. Osama Ahmed ..."
+          },
+          {
+            "url": "https://www.timeshighereducation.com/world-university-rankings/beni-suef-university",
+            "title": "Beni-Suef University | World University Rankings | THE",
+            "description": "Beni-Suef University (BSU) is a co-educational, non-profit public higher education institution, situated on the banks of the River Nile, 120km south of Cairo, ..."
+          },
+          {
+            "url": "https://www.shanghairanking.com/universities/beni-suef-university",
+            "title": "Beni-Suef University",
+            "description": "Beni-Suef University ranks #901-1000 in the 2023 Academic Ranking of World Universities. Decode Your University's Ranking Data. Download the Official Badge."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/beni-suef-university/399586567",
+            "title": "Beni-Suef University - Overview, News & Similar companies",
+            "description": "What is Beni-Suef University's official website? Beni-Suef University's official website is www.bsu.edu.eg. Sign Up For FreeTo access detailed company insights."
+          },
+          {
+            "url": "https://www.unirank.org/eg/uni/beni-suef-university/",
+            "title": "Beni-Suef University BSU 2026 Rankings, Courses, Tuition ...",
+            "description": "Click here to search Beni-Suef University's website for programs, courses, degrees, tuition fees, admission policy and requirements, acceptance rate, ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 811,
+      "qsRank": 1201,
+      "universityName": "Birzeit university",
+      "countryOrRegion": "Palestinian Territories",
+      "canonicalSlug": "birzeit-university",
+      "officialDomain": "birzeit.edu",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "birzeit.edu",
+          "score": 2
+        },
+        {
+          "domain": "timeshighereducation.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Birzeit university\" official university website",
+        "searchedAt": "2026-07-18T20:24:07.919Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-8ced-7086-979f-8c52867b6f1c",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.birzeit.edu/en",
+            "title": "Birzeit University",
+            "description": "Founded in 1972, Birzeit University is a leading educational institution and an intellectual hub that attracts top students and faculty."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Birzeit_University",
+            "title": "Birzeit University",
+            "description": "Birzeit University offers graduate and undergraduate programs in information technology, engineering, sciences, social policy, arts, law, nursing, pharmacy"
+          },
+          {
+            "url": "https://pas.birzeit.edu/",
+            "title": "Welcome to PAS | PAS - Birzeit University",
+            "description": "Email: pas-isp@birzeit.edu; Telephone: 02-2982153/5; WhatsApp: +970-592-299105. Copyright © 2026 - Birzeit University - PAS."
+          },
+          {
+            "url": "https://www.facebook.com/BirzeitUniversity/",
+            "title": "Birzeit University | جامعة بيرزيت | Ramallah",
+            "description": "Birzeit University | جامعة بيرزيت ... جامعة بيرزيت مؤسسة أكاديمية فلسطينية عربية رائدة، تُعد أولى مؤسسات التعليم العالي في فلسطين. تسهم في إعداد طلبة فاعلين وخدمة ..."
+          },
+          {
+            "url": "https://www.timeshighereducation.com/world-university-rankings/birzeit-university",
+            "title": "Birzeit University - Rankings",
+            "description": "Birzeit University was the first higher education institution to be established in Palestine. It provides students with the opportunity to realise their ..."
+          },
+          {
+            "url": "https://www.unirank.org/ps/uni/birzeit-university/",
+            "title": "Birzeit University BZU 2026 Rankings, Courses, Tuition & ...",
+            "description": "Established in 1975, Birzeit University is a non-profit private higher education institution located in the urban setting of the medium town of Birzeit."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 812,
+      "qsRank": 1201,
+      "universityName": "British University in Egypt",
+      "countryOrRegion": "Egypt",
+      "canonicalSlug": "british-university-in-egypt",
+      "officialDomain": "bue.edu.eg",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "bue.edu.eg",
+          "score": 1
+        },
+        {
+          "domain": "usnews.com",
+          "score": 1
+        },
+        {
+          "domain": "iau-hesd.net",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"British University in Egypt\" official university website",
+        "searchedAt": "2026-07-18T20:24:07.920Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-8d2a-77b4-83bb-f2bbbbbd8db4",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.bue.edu.eg/",
+            "title": "BUE: The British University in Egypt",
+            "description": "BUE · The British University in Egypt | BUE · Welcome to · President of The British University in Egypt Honoured by the Crown for Services to Education in the ..."
+          },
+          {
+            "url": "https://www.instagram.com/thebritishuniversityinegypt/?hl=en",
+            "title": "The British University in Egypt (BUE ...",
+            "description": "The Official Page of The British University in Egypt ... Missed our June Open Day? Here's a quick recap. ▶️ A day filled with campus tours, inspiring conversations ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/British_University_in_Egypt",
+            "title": "British University in Egypt",
+            "description": "The British University in Egypt is a private university in El Shorouk City, Cairo, Egypt. Its goal is to provide education in Egypt meeting UK university ..."
+          },
+          {
+            "url": "https://www.facebook.com/thebritishuniversityegypt/",
+            "title": "The British University in Egypt | Cairo",
+            "description": "The British University in Egypt, Cairo. 343436 likes · 3425 talking about this. The British University in Egypt welcomes you to its official Facebook page."
+          },
+          {
+            "url": "https://www.usnews.com/education/best-global-universities/british-university-in-egypt-512943",
+            "title": "British University in Egypt",
+            "description": "British University in Egypt is ranked #1105 in Best Global Universities. Schools are ranked according to their performance across a set of widely accepted ..."
+          },
+          {
+            "url": "https://iau-hesd.net/university/british-university-egypt-bue",
+            "title": "The British University in Egypt (BUE)",
+            "description": "The British University in Egypt (BUE). El Sherouk City , Suez Desert Road , Cairo 11837 - P.O. Box 43, Egypt. https://www.bue.edu.eg/. IAU WHED ID: IAU-016403."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 813,
+      "qsRank": 1201,
+      "universityName": "Brock University",
+      "countryOrRegion": "Canada",
+      "canonicalSlug": "brock-university",
+      "officialDomain": "brocku.ca",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "brocku.ca",
+          "score": 1
+        },
+        {
+          "domain": "bkstr.com",
+          "score": 1
+        },
+        {
+          "domain": "x.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Brock University\" official university website",
+        "searchedAt": "2026-07-18T20:24:11.192Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-97f6-738d-8cad-40096195f38b",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://brocku.ca/",
+            "title": "Brock University – Welcome to Brock",
+            "description": "Brock University is a comprehensive institution with rich academic programs and world-class research activity. Located in St. Catharines, in Ontario's ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Brock_University",
+            "title": "Brock University",
+            "description": "Brock University is a public research university in St. Catharines, Ontario, Canada. It is the only university in Canada in a UNESCO Biosphere Reserve."
+          },
+          {
+            "url": "https://www.facebook.com/brockuniversity/",
+            "title": "Brock University | Saint Catharines ON",
+            "description": "Brock University, Saint Catharines. 63389 likes · 398 talking about this · 91708 were here. Break through here. Come to #BrockU."
+          },
+          {
+            "url": "https://www.bkstr.com/brockstore/home",
+            "title": "Official Brock University Campus Store Apparel ...",
+            "description": "Let's Go Badgers! Shop official Brock University Apparel, Textbooks, Merchandise and Gear at the Brock University Bookstore. Best selection of spirit wear, ..."
+          },
+          {
+            "url": "https://x.com/BrockUniversity?lang=en",
+            "title": "Brock University (@BrockUniversity) / Posts / X",
+            "description": "Brock University (@BrockUniversity) - Posts - Official account of Brock University. Break through here. Come to #BrockU . | X (formerly Twitter)"
+          },
+          {
+            "url": "https://www.instagram.com/brockuniversity/?hl=en",
+            "title": "Brock University | BrockU (@brockuniversity)",
+            "description": "Brock University | BrockU. 57.9K followers. 5,233 following. Official Instagram account of Brock University. brockuniversity. Follow. Message."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 814,
+      "qsRank": 1201,
+      "universityName": "California Polytechnic State University",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "california-polytechnic-state-university",
+      "officialDomain": "calpoly.edu",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "calpoly.edu",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 815,
+      "qsRank": 1201,
+      "universityName": "Can Tho University",
+      "countryOrRegion": "Vietnam",
+      "canonicalSlug": "can-tho-university",
+      "officialDomain": "ctu.edu.vn",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "ctu.edu.vn",
+          "score": 2
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "nctu.edu.vn",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Can Tho University\" official university website",
+        "searchedAt": "2026-07-18T20:24:11.193Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-97b6-75ad-9628-ba60acb96ce7",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://en.ctu.edu.vn/",
+            "title": "Can Tho University",
+            "description": "Can Tho University Expanding International Cooperation with Chia Nan University of Pharmacy and Science, Taiwan · A Journey of Academic Learning and Cultural ..."
+          },
+          {
+            "url": "https://www.unirank.org/vn/uni/can-tho-university/",
+            "title": "Can Tho University CTU 2026 Rankings, Courses, Tuition ...",
+            "description": "Founded in 1966, Can Tho University is a non-profit public higher education institution located in the urban setting of the metropolis of Can Tho."
+          },
+          {
+            "url": "https://www.linkedin.com/school/ctudhct/",
+            "title": "Can Tho University Employees, Location, Alumni",
+            "description": "About us. This is the official LinkedIn account managed by Can Tho University. Website: https://www.ctu.edu.vn/. External link for Can Tho University. Industry ..."
+          },
+          {
+            "url": "https://en.ctu.edu.vn/introduction/campuses-of-ctu.html",
+            "title": "Campuses of CTU - Can Tho University",
+            "description": "Established on March 31st, 1966, Can Tho University, formerly Can Tho Higher Education Institute, has four faculties: Science, Law and Social Sciences, ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Can_Tho_University",
+            "title": "Can Tho University",
+            "description": "Can Tho University (Vietnamese: Đại học Cần Thơ ) is a public research university in Can Tho, Vietnam. Established in 1966, it is a multidisciplinary university ..."
+          },
+          {
+            "url": "https://nctu.edu.vn/eng/nam-can-tho-university-accompanies-students-with-disabilities",
+            "title": "Trường Đại học Nam Cần Thơ, Nam Can Tho University",
+            "description": "Discover All Programs With a wide range of 49 programs, Nam Can Tho University fulfills the learning needs of a broad student body, particularly in disciplines ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 816,
+      "qsRank": 1201,
+      "universityName": "Canterbury Christ Church University",
+      "countryOrRegion": "United Kingdom",
+      "canonicalSlug": "canterbury-christ-church-university",
+      "officialDomain": "canterbury.ac.uk",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "canterbury.ac.uk",
+          "score": 1
+        },
+        {
+          "domain": "ucas.com",
+          "score": 1
+        },
+        {
+          "domain": "studentconnect.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Canterbury Christ Church University\" official university website",
+        "searchedAt": "2026-07-18T20:24:11.194Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-97f0-77e4-9f8f-19532199429b",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.canterbury.ac.uk/",
+            "title": "Canterbury Christ Church University",
+            "description": "Join Canterbury Christ Church University in Kent - ranked top 10 in the UK for teaching quality and student experience (Good University Guide 2026)."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Canterbury_Christ_Church_University",
+            "title": "Canterbury Christ Church University",
+            "description": "Canterbury Christ Church University (CCCU) is a public research university located in Canterbury, Kent, England. Founded as a Church of England college for ..."
+          },
+          {
+            "url": "https://www.facebook.com/ChristChurchUni/",
+            "title": "Canterbury Christ Church University",
+            "description": "Call us on 01227 926000 or visit our website for full details: https://ow.ly/wBgr50ZjBTG ... Canterbury Christ Church University is at Canterbury Christ Church ..."
+          },
+          {
+            "url": "https://www.ucas.com/explore/unis/24bec0e2/canterbury-christ-church-university",
+            "title": "Canterbury Christ Church University",
+            "description": "Canterbury Christ Church University - Studying as a mature or commuting student ... Visit our website. Contact details. Emailcourses@canterbury.ac.uk."
+          },
+          {
+            "url": "https://www.instagram.com/canterburyccuni/?hl=en",
+            "title": "Canterbury Christ Church University │ CCCU ...",
+            "description": "Canterbury Christ Church University │ CCCU. 18.9K followers. 266 following. Official CCCU Canterbury & Medway 2nd in the UK for grads in employment ..."
+          },
+          {
+            "url": "https://studentconnect.org/universities/canterbury-christ-church-university",
+            "title": "Canterbury Christ Church University - Student Connect Ltd",
+            "description": "The Sunday Times Good University Guide for 2026 has revealed Canterbury Christ Church University is in the top 10 in the UK for teaching quality and student ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 817,
+      "qsRank": 1201,
+      "universityName": "Chang Jung Christian University",
+      "countryOrRegion": "Taiwan",
+      "canonicalSlug": "chang-jung-christian-university",
+      "officialDomain": "cjcu.edu.tw",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "cjcu.edu.tw",
+          "score": 1
+        },
+        {
+          "domain": "atmajaya.ac.id",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "timeshighereducation.com",
+          "score": 1
+        },
+        {
+          "domain": "free-apply.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Chang Jung Christian University\" official university website",
+        "searchedAt": "2026-07-18T20:24:11.194Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-97b9-74b9-8aa2-2ee12ded73b5",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.cjcu.edu.tw/en/",
+            "title": "Chang Jung Christian University",
+            "description": "We warmly welcome all those who are visiting these web pages for the first time and invite you to learn more about Chang Jung Christian University."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Chang_Jung_Christian_University",
+            "title": "Chang Jung Christian University",
+            "description": "Chang Jung Christian University is a private Presbyterian research university in Gueiren, Tainan, Taiwan. Chang Jung means everlasting glory in Mandarin."
+          },
+          {
+            "url": "https://www.atmajaya.ac.id/id/pages/cjcu-info/",
+            "title": "Chang Jung Christian University",
+            "description": "Chang Jung Christian University. Official Website Email: intl@mail.cjcu.edu.tw. Overview. Chang Jung Christian University (CJCU) is a private university ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/chang-jung-christian-university/430134088",
+            "title": "Chang Jung Christian University - Overview, News & Similar ...",
+            "description": "What is Chang Jung Christian University's official website? Chang Jung Christian University's official website is www.cjcu.edu.tw. Sign Up For FreeTo access ..."
+          },
+          {
+            "url": "https://www.timeshighereducation.com/world-university-rankings/chang-jung-christian-university",
+            "title": "Chang Jung Christian University | World University Rankings",
+            "description": "Chang Jung Christian University is a private university located in southern Taiwan, associated with Presbyterian beliefs. The university was founded in 1993 ..."
+          },
+          {
+            "url": "https://free-apply.com/en/university/1015800059",
+            "title": "Chang Jung Christian University",
+            "description": "Name of University is Chang Jung Christian University. Choose Study Program, Compare Tuition And Fees and Apply Online to Chang Jung Christian University."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 818,
+      "qsRank": 1201,
+      "universityName": "China University of Political Science and Law",
+      "countryOrRegion": "China (Mainland)",
+      "canonicalSlug": "china-university-of-political-science-and-law",
+      "officialDomain": "cupl.edu.cn",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "cupl.edu.cn",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 819,
+      "qsRank": 1201,
+      "universityName": "Chitkara University",
+      "countryOrRegion": "India",
+      "canonicalSlug": "chitkara-university",
+      "officialDomain": "chitkara.edu.in",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "chitkara.edu.in",
+          "score": 1
+        },
+        {
+          "domain": "chitkarauniversity.edu.in",
+          "score": 1
+        },
+        {
+          "domain": "onlinechitkarau.com",
+          "score": 1
+        },
+        {
+          "domain": "atmajaya.ac.id",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Chitkara University\" official university website",
+        "searchedAt": "2026-07-18T20:24:11.195Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-97f7-721a-87e4-1c30eb7f480f",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.chitkara.edu.in/",
+            "title": "Chitkara University - Best University In India (Punjab ...",
+            "description": "Chitkara University cultivates a vibrant ecosystem for startups, entrepreneurship, and innovation, making it one of the largest campus-based incubation ..."
+          },
+          {
+            "url": "https://www.chitkarauniversity.edu.in/",
+            "title": "Chitkara University Himachal Pradesh",
+            "description": "Chitkara University, ranked No. 1* in India, is recognised as one of the Best** colleges in the country across Engineering, Management and key ..."
+          },
+          {
+            "url": "https://www.instagram.com/chitkarau/?hl=en",
+            "title": "CHITKARA UNIVERSITY (@chitkarau)",
+            "description": "At Chitkara University, we are committed to fostering a culture of innovation and entrepreneurship by empowering young founders with the mentorship, resources, ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Chitkara_University,_Punjab",
+            "title": "Chitkara University, Punjab",
+            "description": "Chitkara University is a private university located in Rajpura, Punjab, India. It offers undergraduate programs, post-graduate program and doctoral programs"
+          },
+          {
+            "url": "https://onlinechitkarau.com/",
+            "title": "Chitkara University Online's MBA program",
+            "description": "Chitkara University, ranked no.1 in India, is a nurturing ground for future leaders, innovators, and change-makers. Our commitment to excellence, industry- ..."
+          },
+          {
+            "url": "https://www.atmajaya.ac.id/id/pages/chitkara-univ-info/",
+            "title": "Chitkara University",
+            "description": "Chitkara University. Official Website Email: international@chitkara.edu.in. Overview. Chitkara University is a private university located in Punjab, India."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 820,
+      "qsRank": 1201,
+      "universityName": "Cukurova University",
+      "countryOrRegion": "Türkiye",
+      "canonicalSlug": "cukurova-university",
+      "officialDomain": "cu.edu.tr",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "cu.edu.tr",
+          "score": 2
+        },
+        {
+          "domain": "eupeace.eu",
+          "score": 1
+        },
+        {
+          "domain": "studyinturkiye.gov.tr",
+          "score": 1
+        },
+        {
+          "domain": "timeshighereducation.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Cukurova University\" official university website",
+        "searchedAt": "2026-07-18T20:24:11.195Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-99af-70b9-bfbf-cc128da78622",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.cu.edu.tr/en/",
+            "title": "Cukurova University - Cukurova University",
+            "description": "History of Cukurova University · General Information · Mission, Vision, Basic Principles · Our Previous Rectors · Prof.Dr. Mithat ÖZSAN."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/%C3%87ukurova_University",
+            "title": "Çukurova University",
+            "description": "Çukurova University (Turkish: Çukurova Üniversitesi ) is a public research university located in Adana, Turkey. The university features sixteen faculties, ..."
+          },
+          {
+            "url": "https://www.eupeace.eu/wp-content/uploads/CU_Factsheet_2.pdf",
+            "title": "FACTSHEET",
+            "description": "Cukurova University Balcalı Campus, which was established on 20 thousands ... Website with courses available for all students: https://ebs.cu.edu.tr/en ..."
+          },
+          {
+            "url": "https://www.studyinturkiye.gov.tr/UniversityTurkey/Detail?uId=107211",
+            "title": "CUKUROVA UNIVERSITY",
+            "description": "CUKUROVA UNIVERSITY. Year of Foundation: 1973. OFFICIAL WEBSITE: https://www.cu.edu.tr. SOCIAL MEDIA LINKS:: CONTACT INFORMATION: : Cukurova University ..."
+          },
+          {
+            "url": "https://www.timeshighereducation.com/world-university-rankings/cukurova-university",
+            "title": "Cukurova University | World University Rankings | THE",
+            "description": "Find the latest world rank for Cukurova University and key information for prospective students.."
+          },
+          {
+            "url": "https://www.cu.edu.tr/",
+            "title": "Çukurova Üniversitesi - Çukurova Üniversitesi",
+            "description": "Ana Sayfa · Çukurova Üniversitesi · Balcalı Hastanesi · Haber Merkezi · Aday Öğrenci · İhale İlanları · E-Posta."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 821,
+      "qsRank": 1201,
+      "universityName": "Damascus University",
+      "countryOrRegion": "Syria",
+      "canonicalSlug": "damascus-university",
+      "officialDomain": "damascusuniversity.edu.sy",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "damascusuniversity.edu.sy",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 822,
+      "qsRank": 1201,
+      "universityName": "Delta University for Science and Technology",
+      "countryOrRegion": "Egypt",
+      "canonicalSlug": "delta-university-for-science-and-technology",
+      "officialDomain": "deltauniv.edu.eg",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "deltauniv.edu.eg",
+          "score": 1
+        },
+        {
+          "domain": "plymouth.ac.uk",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "instudi.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Delta University for Science and Technology\" official university website",
+        "searchedAt": "2026-07-18T20:24:14.371Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-a422-77cf-85c0-e00d3ea52b0f",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.deltauniv.edu.eg/",
+            "title": "Delta University For Science And Technology",
+            "description": "Delta University For Science And Technology is the first private University in Delta region."
+          },
+          {
+            "url": "https://www.plymouth.ac.uk/international/delta-university-for-science-and-technology",
+            "title": "Delta University for Science and Technology",
+            "description": "Delta University for Science and Technology is currently made up of 13 Faculties; Engineering, Artificial Intelligence, Renewable Energy, Pharmacy, Dentistry, ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/delta-university-for-science-and-technology/547324982",
+            "title": "Delta University For Science And Technology",
+            "description": "What is Delta University For Science And Technology's official website? Delta University For Science And Technology's official website is www.deltauniv.edu.eg."
+          },
+          {
+            "url": "https://www.unirank.org/eg/uni/delta-university-for-science-and-technology/",
+            "title": "Delta University for Science and Technology",
+            "description": "Founded in 2007, Delta University for Science and Technology is a non-profit private higher education institution located in the medium city of Mansoura ..."
+          },
+          {
+            "url": "https://www.facebook.com/deltauniv/",
+            "title": "Delta University | Mansourah",
+            "description": "Delta University for Science and Technology in Mansoura is one of the entities of Delta Group, established by presidential decree No."
+          },
+          {
+            "url": "https://instudi.com/colleges/delta_university_for_science_and_technol_eg_018",
+            "title": "Delta University for Science and Technology",
+            "description": "Delta University for Science and Technology · At a glance · Overview · Profile · Admissions · Outcomes · Costs · Rankings · Academics ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 823,
+      "qsRank": 1201,
+      "universityName": "Dokuz Eylul Universitesi",
+      "countryOrRegion": "Türkiye",
+      "canonicalSlug": "dokuz-eylul-universitesi",
+      "officialDomain": "deu.edu.tr",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "deu.edu.tr",
+          "score": 1
+        },
+        {
+          "domain": "europa.eu",
+          "score": 1
+        },
+        {
+          "domain": "iau-hesd.net",
+          "score": 1
+        },
+        {
+          "domain": "google.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Dokuz Eylul Universitesi\" official university website",
+        "searchedAt": "2026-07-18T20:24:14.371Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-a455-72a8-88b1-36324d64f535",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.deu.edu.tr/",
+            "title": "Dokuz Eylül Üniversitesi | Resmi Web Sitesi",
+            "description": "Dokuz Eylül Üniversitesi · Anasayfa; Üniversitemiz. Tarihçe · Misyonumuz · Vizyonumuz · Temel Değerlerimiz · Politikalarımız; Mevzuat. Yönetmelikler · Uygulama ..."
+          },
+          {
+            "url": "https://tr.wikipedia.org/wiki/Dokuz_Eyl%C3%BCl_%C3%9Cniversitesi",
+            "title": "Dokuz Eylül Üniversitesi",
+            "description": "Dokuz Eylül Üniversitesi (DEÜ), İzmir'de bulunan bir devlet üniversitesi. Türkiye'nin önde gelen yükseköğretim kurumlarından biridir."
+          },
+          {
+            "url": "https://youth.europa.eu/volunteering/organisation/47419_en",
+            "title": "DOKUZ EYLUL UNIVERSITESI | European Youth Portal",
+            "description": "DOKUZ EYLUL UNIVERSITESI. DOKUZ EYLUL UNIVERSITESI. CUMHURIYET BULVARI 144, ALSANCAK IZMIR, Türkiye. http://www.deu.edu.tr - +902324121212. Description of ..."
+          },
+          {
+            "url": "https://www.iau-hesd.net/university/dokuz-eylul-university",
+            "title": "Dokuz Eylül University | Higher Education and research for ...",
+            "description": "Dokuz Eylül University. Dokuz Eylül Üniversitesi. Alsancak, No: 144 35210, Cumhuriyet Blv, 35220, Konak, Türkiye. https://www.deu.edu.tr/. IAU WHED ID: IAU ..."
+          },
+          {
+            "url": "https://play.google.com/store/apps/details?id=tr.edu.deu.deumobil&hl=tr",
+            "title": "DEU Mobil - Google Play'de Uygulamalar",
+            "description": "Dokuz Eylül Üniversitesi'nin resmi mobil uygulaması \"DEU Mobil\", öğrencilerimiz, personelimiz ve kampüsümüzü ziyaret eden misafirlerimiz için yenilendi."
+          },
+          {
+            "url": "https://www.unirank.org/tr/uni/dokuz-eylul-universitesi/",
+            "title": "Dokuz Eylül Üniversitesi DEÜ 2026 Rankings, Courses, ...",
+            "description": "Founded in 1982, Dokuz Eylül Üniversitesi (Dokuz Eylül University) is a non-profit public higher education institution located in the metropolis of İzmir."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 824,
+      "qsRank": 1201,
+      "universityName": "Doshisha University",
+      "countryOrRegion": "Japan",
+      "canonicalSlug": "doshisha-university",
+      "officialDomain": "doshisha.ac.jp",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "doshisha.ac.jp",
+          "score": 2
+        },
+        {
+          "domain": "jpss.jp",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Doshisha University\" official university website",
+        "searchedAt": "2026-07-18T20:24:14.371Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-a499-74ec-b382-8bd4f3482502",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.doshisha.ac.jp/en/",
+            "title": "Doshisha University",
+            "description": "This is the official website of Doshisha University, founded in 1875. The site provides information on the university, its educational and research ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Doshisha_University",
+            "title": "Doshisha University",
+            "description": "Doshisha University (同志社大学 , Dōshisha daigaku), also referred to as Dodai (同大 , Dōdai), is a private university in Kyoto, Japan."
+          },
+          {
+            "url": "https://www.jpss.jp/en/univ/494/",
+            "title": "Doshisha University | JPSS for international students",
+            "description": "The website also provides detailed information about Doshisha University and ... Official site : https://www.doshisha.ac.jp/en/. Share: QQ · weibo · twitter ..."
+          },
+          {
+            "url": "https://gmba.doshisha.ac.jp/",
+            "title": "Doshisha Business School",
+            "description": "Doshisha University · Request Information · Contact. Search. Prospective Students · Current Students ... Copyright(C) Doshisha University All Rights Reserved."
+          },
+          {
+            "url": "https://www.facebook.com/ila.doshisha/",
+            "title": "The Institute for the Liberal Arts, Doshisha University",
+            "description": "We are delighted that you are considering the Institute for the Liberal Arts (ILA) at Doshisha University for your B.A. degree in Liberal Arts. [Admissions ..."
+          },
+          {
+            "url": "https://www.instagram.com/p/DQ5rbjME-KK/",
+            "title": "🎌🗻 𝗦𝗖𝗛𝗢𝗢𝗟 𝗣𝗥𝗢𝗠𝗢𝗧𝗜𝗢𝗡 🗻🎌 【DOSHISHA ...",
+            "description": "SCHOOL PROMOTION 【DOSHISHA UNIVERSITY 同志社大学】 Overview of Doshisha. Established in Kyoto, Japan in 1875 by Joseph Hardy Neesim, ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 825,
+      "qsRank": 1401,
+      "universityName": "Universidad La Salle, México",
+      "countryOrRegion": "Mexico",
+      "canonicalSlug": "universidad-la-salle-mexico",
+      "officialDomain": "lasalle.mx",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "kent.edu",
+          "score": 1
+        },
+        {
+          "domain": "lasalle.mx",
+          "score": 1
+        },
+        {
+          "domain": "uiw.edu",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidad La Salle, México\" official university website",
+        "searchedAt": "2026-07-18T20:24:14.372Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-a48d-75bf-af86-5d7e18e585af",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://en.wikipedia.org/wiki/Universidad_La_Salle_M%C3%A9xico",
+            "title": "Universidad La Salle México",
+            "description": "Universidad La Salle México. Former name. Colegio Cristobal Colon High School ... Official website · La Salle at the Institute of International Education."
+          },
+          {
+            "url": "https://www.topuniversities.com/universities/universidad-la-salle-mexico",
+            "title": "Universidad La Salle, México",
+            "description": "Universidad La Salle, México is one of the top Private not for Profit universities in Mexico City, Mexico. It is ranked #1401+ in QS World University Rankings ..."
+          },
+          {
+            "url": "https://www.kent.edu/globaleducation/education-abroad/universidad-la-salle-mexico-isep",
+            "title": "Universidad la Salle, Mexico - Study Abroad",
+            "description": "Universidad la Salle, Mexico - ISEP · Location · Term · Housing · Program Highlights · Application Deadlines · Program Dates · First, start an Education Abroad ..."
+          },
+          {
+            "url": "https://www.facebook.com/LaSalleMX/posts/universidad-la-salle-informa/821727743328808/",
+            "title": "Universidad La Salle, informa:",
+            "description": "Universidad La Salle México . Feb 2, 2024 . . Universidad La ... La Salle. 5y · Public · Three La Salle Schools in the Top 10. • De La Salle ..."
+          },
+          {
+            "url": "https://academia.lasalle.mx/wp-content/uploads/2023/02/Fact-Sheet-2023-compressed.pdf",
+            "title": "student exchange program - fact sheet",
+            "description": "Full name of the university. Universidad La Salle México. Website lasalle.mx. Address. Av. Benjamín Franklin 45, Colonia Condesa, Cuauhtémoc, 06140. Ciudad de ..."
+          },
+          {
+            "url": "https://www.uiw.edu/studyabroad/_docs/lasallemx_partner_2022-05-191.pdf",
+            "title": "Universidad La Salle México Fact Sheet",
+            "description": "Institution Universidad La Salle México. Address. Center for International, Education La Salle, CIEL. Benjamin Franklin 45, Col. Condesa. 06140, Ciudad de ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 826,
+      "qsRank": 1401,
+      "universityName": "ULACIT - Universidad Latinoamericana de Ciencia y Tecnología, Costa Rica",
+      "countryOrRegion": "Costa Rica",
+      "canonicalSlug": "ulacit-universidad-latinoamericana-de-ciencia-y-tecnologia-costa-rica",
+      "officialDomain": "ulacit.ac.cr",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "ulacit.ac.cr",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 827,
+      "qsRank": 1401,
+      "universityName": "Universidad Metropolitana",
+      "countryOrRegion": "Venezuela",
+      "canonicalSlug": "universidad-metropolitana",
+      "officialDomain": "unimet.edu.ve",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "unimet.edu.ve",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 828,
+      "qsRank": 1401,
+      "universityName": "Universidad Nacional Agraria la Molina",
+      "countryOrRegion": "Peru",
+      "canonicalSlug": "universidad-nacional-agraria-la-molina",
+      "officialDomain": "lamolina.edu.pe",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "lamolina.edu.pe",
+          "score": 1
+        },
+        {
+          "domain": "timeshighereducation.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "fao.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidad Nacional Agraria la Molina\" official university website",
+        "searchedAt": "2026-07-18T20:24:14.372Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-a48f-768c-b0f5-6dbaef814d97",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://en.wikipedia.org/wiki/National_Agrarian_University",
+            "title": "National Agrarian University",
+            "description": "It is considered one of the most important higher education institutions of Peru. National Agrarian University (UNALM). Universidad Nacional Agraria La Molina."
+          },
+          {
+            "url": "https://www.lamolina.edu.pe/",
+            "title": "Universidad Nacional Agraria La Molina",
+            "description": "Sitio web oficial de la Universidad Nacional Agraria La Molina."
+          },
+          {
+            "url": "https://www.timeshighereducation.com/world-university-rankings/universidad-nacional-agraria-la-molina",
+            "title": "Universidad Nacional Agraria La Molina | World University Rankings",
+            "description": "The Universidad Nacional Agraria La Molina was created in 1902 in Lima, Peru. The school's first campus location was in Fundo Santa Beatriz and its current ..."
+          },
+          {
+            "url": "https://www.unirank.org/pe/uni/universidad-nacional-agraria-la-molina/",
+            "title": "Universidad Nacional Agraria La Molina UNALM 2026 Rankings, ...",
+            "description": "Universidad Nacional Agraria La Molina (UNALM) offers courses and programs leading to officially recognized higher education degrees in several areas of study."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/universidad-nacional-agraria-la-molina/76826537",
+            "title": "Universidad Nacional Agraria La Molina - Overview, News & Similar ...",
+            "description": "What is Universidad Nacional Agraria La Molina's official website? Universidad Nacional Agraria La Molina's official website is www.lamolina.edu.pe. Sign Up ..."
+          },
+          {
+            "url": "https://www.fao.org/agris/data-provider/la-molina-national-agrarian-university",
+            "title": "La Molina National Agrarian University | FAO AGRIS",
+            "description": "The La Molina National Agrarian University (original name: Universidad Nacional Agraria La Molina – UNALM) is a public university located in Lima, Peru."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 829,
+      "qsRank": 1401,
+      "universityName": "Universidad Nacional de San Martín (UNSAM)",
+      "countryOrRegion": "Argentina",
+      "canonicalSlug": "universidad-nacional-de-san-martin-unsam",
+      "officialDomain": "unsam.edu.ar",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "unsam.edu.ar",
+          "score": 1
+        },
+        {
+          "domain": "grokipedia.com",
+          "score": 1
+        },
+        {
+          "domain": "uml.edu.ni",
+          "score": 1
+        },
+        {
+          "domain": "eduatlashub.com",
+          "score": 1
+        },
+        {
+          "domain": "wikimedia.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidad Nacional de San Martín (UNSAM)\" official university website",
+        "searchedAt": "2026-07-18T20:24:17.372Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-afdc-7648-9b53-f14c9dd1d6a2",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.unsam.edu.ar/",
+            "title": "Universidad Nacional de San Martín (UNSAM) – Sitio oficial",
+            "description": "La Universidad Nacional de San Martín (UNSAM) es una universidad pública argentina dedicada a la formación, la investigación y la vinculación con la ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/National_University_of_General_San_Mart%C3%ADn",
+            "title": "National University of General San Martín",
+            "description": "↑ \"UNSAM - Universidad Nacional de San Martín\". unsam.edu.ar (in Spanish) ... NU of SAM – official website. WikiMiniAtlas. 34°34′47″S 58°31′36″W ..."
+          },
+          {
+            "url": "https://grokipedia.com/page/National_University_of_San_Martn",
+            "title": "National University of San Martín",
+            "description": "The National University of San Martín (Universidad Nacional de San Martín, UNSAM) is a public research university in Argentina, founded in 1989 and ..."
+          },
+          {
+            "url": "https://climber.uml.edu.ni/index.jsp/virtual-library/M1a705/UniversidadNacionalDeSanMartin.pdf",
+            "title": "Universidad Nacional De San Martin",
+            "description": "The Universidad Nacional de San Martín (UNSAM) is a prestigious university located in Buenos. Aires, Argentina, renowned for its commitment to excellence in ..."
+          },
+          {
+            "url": "https://eduatlashub.com/universities/universidad-nacional-de-san-martin-unsam/",
+            "title": "Universidad Nacional de San Martín (UNSAM)",
+            "description": "Universidad Nacional de San Martín (UNSAM) is a large university in Argentina. It is ranked 1401+ in the QS World University Rankings 2026. Admissions ..."
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Category:Universidad_Nacional_de_General_San_Mart%C3%ADn",
+            "title": "Category:Universidad Nacional de General San Martín",
+            "description": "... Universidad Nacional de San Martín; UNSAM; Universidad Nacional de ... official website. +−. 300 m. 1000 ft. Wikimedia maps | Map data ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 830,
+      "qsRank": 1401,
+      "universityName": "Universidad Nacional del Sur",
+      "countryOrRegion": "Argentina",
+      "canonicalSlug": "universidad-nacional-del-sur",
+      "officialDomain": "uns.edu.ar",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "uns.edu.ar",
+          "score": 1
+        },
+        {
+          "domain": "audiala.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidad Nacional del Sur\" official university website",
+        "searchedAt": "2026-07-18T20:24:17.372Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-b06a-70bc-9e68-6fa0516873ce",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.uns.edu.ar/",
+            "title": "Universidad Nacional del Sur - Sitio oficial",
+            "description": "Universidad Nacional del Sur. Educación Universitaria e investigación de alto nivel. Bahía Blanca - República Argentina."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Universidad_Nacional_del_Sur",
+            "title": "Universidad Nacional del Sur",
+            "description": "The National University of the South (in Spanish: Universidad Nacional del Sur, UNS) is the largest national university in southern Argentina."
+          },
+          {
+            "url": "https://www.topuniversities.com/universities/universidad-nacional-del-sur",
+            "title": "Universidad Nacional del Sur",
+            "description": "Universidad Nacional del Sur is one of the top Public universities in Bahía Blanca, Argentina. It is ranked #1401+ in QS World University Rankings 2026."
+          },
+          {
+            "url": "https://audiala.com/en/argentina/bahia-blanca/universidad-nacional-del-sur",
+            "title": "Universidad Nacional Del Sur, Bahía Blanca: Visitor Guide 2026",
+            "description": "The Universidad Nacional del Sur (UNS) in Bahía Blanca, Argentina, is a cornerstone of higher education in southern Argentina, acclaimed for its academic ..."
+          },
+          {
+            "url": "https://www.unirank.org/ar/uni/universidad-nacional-del-sur/",
+            "title": "Universidad Nacional del Sur UNS 2026 Rankings, ...",
+            "description": "Click here to search Universidad Nacional del Sur's website for programs, courses, degrees, tuition fees, admission policy and requirements, acceptance rate, ..."
+          },
+          {
+            "url": "https://www.facebook.com/UNSBahiaBlanca/",
+            "title": "Universidad Nacional del Sur - UNS | Bahía Blanca",
+            "description": "Universidad Nacional del Sur - UNS, Bahía Blanca. 43428 likes · 2728 talking about this · 9543 were here. Página de Facebook oficial de la Universidad..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 831,
+      "qsRank": 1401,
+      "universityName": "Universidad de Cuenca",
+      "countryOrRegion": "Ecuador",
+      "canonicalSlug": "universidad-de-cuenca",
+      "officialDomain": "ucuenca.edu.ec",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "ucuenca.edu.ec",
+          "score": 2
+        },
+        {
+          "domain": "unitar.org",
+          "score": 1
+        },
+        {
+          "domain": "google.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidad de Cuenca\" official university website",
+        "searchedAt": "2026-07-18T20:24:17.372Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-b046-75c9-b5a6-78632bf53d71",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.ucuenca.edu.ec/",
+            "title": "Home - UCUENCA",
+            "description": "Universidad de Cuenca (Av. 12 de Abril y Av. Loja – Campus Central). event location_on · Imagen del evento. push_pin. XXV Intenational Finance Conference."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/University_of_Cuenca",
+            "title": "University of Cuenca",
+            "description": "The University of Cuenca (Spanish: Universidad de Cuenca) is an Ecuadorian university located in Cuenca. University of Cuenca is the principal university of ..."
+          },
+          {
+            "url": "https://unitar.org/ny/universities/universidad-de-cuenca",
+            "title": "University of Cuenca",
+            "description": "University Network for Sustainable Development; University of Cuenca. University of Cuenca. Universidad de Cuenca. Location. University of Cuenca. Av. 12 ..."
+          },
+          {
+            "url": "https://investigacion.ucuenca.edu.ec/en/home/index/",
+            "title": "Welcome to University of Cuenca Research",
+            "description": "Welcome to University of Cuenca Research. Search as ... All content on this site: Copyright © 2026 Universidad de Cuenca, its licensors, and contributors."
+          },
+          {
+            "url": "https://www.facebook.com/ucuenca/",
+            "title": "Universidad de Cuenca",
+            "description": "Universidad de Cuenca, Cuenca. 186818 likes · 2714 talking about this · 25687 were here. La Universidad de Cuenca tiene su sede en la ciudad de..."
+          },
+          {
+            "url": "https://play.google.com/store/apps/details?id=ec.edu.ucuenca.movil_app_ucuenca&hl=en_US",
+            "title": "UCuenca - Apps on Google Play",
+            "description": "Website · email. Support email. aplicaciones.moviles@ucuenca.edu.ec · shield. Privacy Policy. About the developer. Universidad de Cuenca. oscar ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 832,
+      "qsRank": 1401,
+      "universityName": "Universidad de Guanajuato",
+      "countryOrRegion": "Mexico",
+      "canonicalSlug": "universidad-de-guanajuato",
+      "officialDomain": "ugto.mx",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "ugto.mx",
+          "score": 3
+        },
+        {
+          "domain": "isepstudyabroad.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidad de Guanajuato\" official university website",
+        "searchedAt": "2026-07-18T20:24:17.373Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-b05c-7249-9623-f48200ac26a5",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.ugto.mx/en/",
+            "title": "University of Guanajuato",
+            "description": "Universidad de Guanajuato. The foundation of the University of Guanajuato goes back to the year 1732. Since then, the university adopted several names, until ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Universidad_de_Guanajuato",
+            "title": "Universidad de Guanajuato",
+            "description": "The Universidad de Guanajuato (in English, the University of Guanajuato) is ... Website, www.ugto.mx. Map. Wikimedia | © OpenStreetMap. The University's ..."
+          },
+          {
+            "url": "https://www3.ugto.mx/en/78-academic-programs",
+            "title": "Academic programs",
+            "description": "Universidad de Guanajuato. The foundation of the University of Guanajuato goes back to the year 1732. Since then, the university adopted several names, until ..."
+          },
+          {
+            "url": "https://search.isepstudyabroad.org/University/Detail/02fd7727-ac77-4b0e-bf41-c281201b854a",
+            "title": "Universidad de Guanajuato",
+            "description": "Universidad de Guanajuato, with a tradition of more than 260 years in public education, has distinguished itself for its quality of teaching."
+          },
+          {
+            "url": "https://www3.ugto.mx/en/150-student-visa-for-mexico",
+            "title": "Universidad de Guanajuato",
+            "description": "Universidad de Guanajuato. The foundation of the University of Guanajuato goes back to the year 1732. Since then, the university adopted several names, until ..."
+          },
+          {
+            "url": "https://www.topuniversities.com/universities/universidad-de-guanajuato",
+            "title": "Universidad de Guanajuato : Rankings, Fees & ...",
+            "description": "Universidad de Guanajuato is one of the top public universities in Guanajuato, Mexico. It is ranked #1401+ in QS World University Rankings 2026."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 833,
+      "qsRank": 1401,
+      "universityName": "Universidad de Panamá - UP",
+      "countryOrRegion": "Panama",
+      "canonicalSlug": "universidad-de-panama-up",
+      "officialDomain": "up.ac.pa",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "up.ac.pa",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 834,
+      "qsRank": 1401,
+      "universityName": "Universidad de Piura",
+      "countryOrRegion": "Peru",
+      "canonicalSlug": "universidad-de-piura",
+      "officialDomain": "udep.edu.pe",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "udep.edu.pe",
+          "score": 2
+        },
+        {
+          "domain": "vt.edu",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "ubc.ca",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidad de Piura\" official university website",
+        "searchedAt": "2026-07-18T20:24:17.374Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-b014-7084-ac84-bd7764c054e0",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.udep.edu.pe/",
+            "title": "UDEP: Universidad de Piura",
+            "description": "La Universidad de Piura forma personas con criterio y personalidad, capaces de mejorar la sociedad. La universidad busca ser un referente de excelencia ..."
+          },
+          {
+            "url": "https://sa.globaleducation.vt.edu/_customtags/ct_FileRetrieve.cfm?File_ID=010F7572734F06760305017406021C750F0E72140100047F6E73007300717C0A720E07037576017A76",
+            "title": "Universidad de piura",
+            "description": "Lima – Perú. Institution website: http://udep.edu.pe/ · UDEP 50 años. 3 ... Universidad de Piura has become a green lung for the city of Piura, protects ..."
+          },
+          {
+            "url": "https://www.unirank.org/pe/uni/universidad-de-piura/",
+            "title": "Universidad de Piura UDEP 2026 Rankings, Courses, Tuition & ...",
+            "description": "Click here to search Universidad de Piura's website for programs, courses, degrees, tuition fees, admission policy and requirements, acceptance rate, ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/University_of_Piura",
+            "title": "University of Piura",
+            "description": "The University of Piura (Spanish: Universidad de Piura ; \"UDEP\") is a private university in Peru. It has two campuses, the main one is in Piura, while a ..."
+          },
+          {
+            "url": "https://www.udep.edu.pe/en/graduaciones/",
+            "title": "Graduación - UDEP",
+            "description": "Lima Campus: Calle Mártir José Olaya 162, Miraflores. ☏(01) 2139600. Monday to Friday: 9:00 am to 6:00 pm. Universidad de Piura. RUC No. 20172627421. Managed ..."
+          },
+          {
+            "url": "https://goglobal.ubc.ca/go-global/programs-ubc-students/exchange/universidad-de-piura",
+            "title": "Universidad de Piura | Go Global - The University of British Columbia",
+            "description": "Universidad de Piura · Who can go? · Academic planning · Student experience · Finances and funding."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 835,
+      "qsRank": 1401,
+      "universityName": "Universidad de Tarapaca",
+      "countryOrRegion": "Chile",
+      "canonicalSlug": "universidad-de-tarapaca",
+      "officialDomain": "uta.cl",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "uta.cl",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "usnews.com",
+          "score": 1
+        },
+        {
+          "domain": "jstor.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidad de Tarapaca\" official university website",
+        "searchedAt": "2026-07-18T20:24:17.374Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-b00d-768f-8c76-5f93ac911a6a",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.uta.cl/",
+            "title": "Universidad de Tarapacá – Universidad del Estado",
+            "description": "Más noticias · Gabrielle Trasatti de Fundación Luksic imparte charla en la Universidad de Tarapacá sobre oportunidades de postgrado e investigación internacional."
+          },
+          {
+            "url": "https://www.unirank.org/cl/uni/universidad-de-tarapaca/",
+            "title": "Universidad de Tarapacá UTA 2026 Rankings, Courses, ...",
+            "description": "Click here to search Universidad de Tarapacá's website for programs, courses, degrees, tuition fees, admission policy and requirements, acceptance rate, ..."
+          },
+          {
+            "url": "https://www.usnews.com/education/best-global-universities/universidad-de-tarapaca-530243",
+            "title": "Universidad de Tarapaca in Chile - Global Universities",
+            "description": "Universidad de Tarapaca is ranked #1238 in Best Global Universities. Schools are ranked according to their performance across a set of widely accepted ..."
+          },
+          {
+            "url": "https://www.jstor.org/publisher/utarapaca",
+            "title": "Universidad de Tarapaca",
+            "description": "En el nacimiento de la Universidad de Tarapacá en la ciudad de Arica se funden las sedes de dos instituciones universitarias de larga data en nuestro país: La ..."
+          },
+          {
+            "url": "https://www.topuniversities.com/universities/universidad-de-tarapaca",
+            "title": "Universidad de Tarapaca : Rankings, Fees & Courses Details",
+            "description": "Universidad de Tarapaca is one of the top Public universities in Arica, Chile. It is ranked #1401+ in QS World University Rankings 2027. Rankings."
+          },
+          {
+            "url": "https://www.linkedin.com/school/university-of-tarapaca/",
+            "title": "Universidad de Tarapacá Employees, Location, Alumni",
+            "description": "Universidad de Tarapacá. Higher Education. Arica, Arica y Parinacota 31,186 followers. Universidad del estado de Chile, transfronteriza de excelencia académica."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 836,
+      "qsRank": 1401,
+      "universityName": "Universidad del Bío-Bío",
+      "countryOrRegion": "Chile",
+      "canonicalSlug": "universidad-del-bio-bio",
+      "officialDomain": "ubiobio.cl",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "ubiobio.cl",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "google.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidad del Bío-Bío\" official university website",
+        "searchedAt": "2026-07-18T20:24:17.374Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-b034-71a5-a42d-72f3b2581683",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.ubiobio.cl/",
+            "title": "Universidad del Bío-Bío, única universidad pública de las ...",
+            "description": "©2026 Todos los Derechos Reservados - Universidad del Bío-Bío. ©2026 Todos los Derechos Reservados Universidad del Bío-Bío. Enable JavaScript to ensure ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/universidad-del-bi%CC%81o-bi%CC%81o/372534326",
+            "title": "Universidad del Bío-Bío - Overview, News & Similar companies",
+            "description": "What is Universidad del Bío-Bío's official website? Universidad del Bío-Bío's official website is www.ubiobio.cl. Sign Up For FreeTo access detailed company ..."
+          },
+          {
+            "url": "https://www.unirank.org/cl/uni/universidad-del-bio-bio/",
+            "title": "Universidad del Bío-Bío UBB 2026 Rankings, Courses, ...",
+            "description": "Click here to search Universidad del Bío-Bío's website for programs, courses, degrees, tuition fees, admission policy and requirements, acceptance rate, ..."
+          },
+          {
+            "url": "https://www.instagram.com/reel/DVbRottgMyy/",
+            "title": "#VinculaciónUBB | ¿Cuáles son los principios que orientan la ...",
+            "description": "La investigación es el motor que impulsa el desarrollo científico, tecnológico y social. En la Universidad del Bío-Bío, nuestros programas de ..."
+          },
+          {
+            "url": "https://www.instagram.com/p/DYSMUI0jtXq/",
+            "title": "Esta semana en nuestro Stand informativo vocacional, ...",
+            "description": "Bueno, para comenzar, la Universidad del Bío-Bío es una universidad pública y estatal, acreditada por cinco años, lo que significa que está ..."
+          },
+          {
+            "url": "https://play.google.com/store/apps/details?id=com.diubb.yosoyubb&hl=en_US",
+            "title": "Yo Soy UBB - Apps on Google Play",
+            "description": "YoSoyUBB is the official application for students of the Universidad del Bío-Bío in Chile. In its new version it presents a renewed design, ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 837,
+      "qsRank": 1401,
+      "universityName": "Universidad del Zulia",
+      "countryOrRegion": "Venezuela",
+      "canonicalSlug": "universidad-del-zulia",
+      "officialDomain": "luz.edu.ve",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "luz.edu.ve",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 838,
+      "qsRank": 1401,
+      "universityName": "Universidade Federal de Uberlândia",
+      "countryOrRegion": "Brazil",
+      "canonicalSlug": "universidade-federal-de-uberlandia",
+      "officialDomain": "ufu.br",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "ufu.br",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "unesp.br",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "instudi.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universidade Federal de Uberlândia\" official university website",
+        "searchedAt": "2026-07-18T20:24:19.981Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-ba76-766f-87c7-f9c21a95bf4a",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://en.wikipedia.org/wiki/Federal_University_of_Uberl%C3%A2ndia",
+            "title": "Federal University of Uberlândia",
+            "description": "The Federal University of Uberlândia (Portuguese: Universidade Federal de Uberlândia , UFU) is a Brazilian public university, located in the southwest of ..."
+          },
+          {
+            "url": "http://ufu.br/",
+            "title": "Início | Universidade Federal de Uberlândia",
+            "description": "Universidade Federal de Uberlândia. Ministério da Educação. Acessibilidade A- A A+. Início. Universidade Federal de Uberlândia. Ministério da Educação ..."
+          },
+          {
+            "url": "https://www.unirank.org/br/uni/universidade-federal-de-uberlandia/",
+            "title": "Universidade Federal de Uberlândia",
+            "description": "Universidade Federal de Uberlândia (UFU) offers courses and programs leading to officially recognized higher education degrees such as pre-bachelor's degrees ( ..."
+          },
+          {
+            "url": "https://brics-nu.unesp.br/member-institutions/federal-university-of-uberlandia-ufu/",
+            "title": "Federal University of Uberlândia (UFU)",
+            "description": "Universidade Federal de Uberlândia (UFU) is a public, tuition-fee, multi-campus, Brazilian university located in the southeast of the country, ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/universidade-federal-de-uberla%CC%82ndia/430472640",
+            "title": "The Federal University of Uberlândia - Overview, News & ...",
+            "description": "The Universidade Federal de Uberlândia (UFU) offers a wide range of educational programs including undergraduate, graduate, and distance learning courses."
+          },
+          {
+            "url": "https://instudi.com/colleges/universidade_federal_de_uberlandia_br_009",
+            "title": "Universidade Federal de Uberlândia",
+            "description": "Universidade Federal de Uberlândia · At a glance · Overview · Profile · Admissions · Outcomes · Costs · Rankings · Academics ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 839,
+      "qsRank": 1401,
+      "universityName": "Universidade Federal do Rio Grande do Norte (UFRN)",
+      "countryOrRegion": "Brazil",
+      "canonicalSlug": "universidade-federal-do-rio-grande-do-norte-ufrn",
+      "officialDomain": "ufrn.br",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "ufrn.br",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 840,
+      "qsRank": 1401,
+      "universityName": "Universitas Andalas",
+      "countryOrRegion": "Indonesia",
+      "canonicalSlug": "universitas-andalas",
+      "officialDomain": "unand.ac.id",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "unand.ac.id",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universitas Andalas\" official university website",
+        "searchedAt": "2026-07-18T20:24:19.982Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-ba58-749f-a9dc-a1a0c5f5aac5",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.unand.ac.id/",
+            "title": "Universitas Andalas: Home",
+            "description": "Universitas Andalas, abbreviated Unand, is an accredited public university in West Sumatra, Indonesia. Known in science, technology, and social sciences."
+          },
+          {
+            "url": "https://www.instagram.com/unandofficial/?hl=en",
+            "title": "Universitas Andalas (@unandofficial) · Padang",
+            "description": "The Official Account of Universitas Andalas 13 September 1956. Untuk Kedjajaan Bangsa e-mail: humas@unand.ac.id. Akun resmi Universitas Andalas."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Andalas_University",
+            "title": "Andalas University",
+            "description": "Andalas University (Indonesian: Universitas Andalas , abbreviated Unand or ... External links. edit · Official website · Last edited 22 days ago by Zackmann08 ..."
+          },
+          {
+            "url": "https://www.instagram.com/reel/C7Ldn3IxASL/",
+            "title": "Welcome to Universitas Andalas all students of Department ...",
+            "description": "Welcome to Universitas Andalas all students of Department Nursing Science Universiti Malaya Students of Universiti Malaya learn about ..."
+          },
+          {
+            "url": "https://www.unirank.org/id/uni/universitas-andalas/",
+            "title": "Universitas Andalas UNAND 2026 Rankings, Courses, ...",
+            "description": "Universitas Andalas (Andalas University) is a non-profit public higher education institution located in the suburban setting of the large city of Padang."
+          },
+          {
+            "url": "https://www.topuniversities.com/universities/universitas-andalas",
+            "title": "Universitas Andalas : Rankings, Fees & Courses Details",
+            "description": "Universitas Andalas is one of the top Public universities in Padang, Indonesia. It is ranked #1401+ in QS World University Rankings 2027. Rankings."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 841,
+      "qsRank": 1401,
+      "universityName": "Universitas Islam Indonesia (UII)",
+      "countryOrRegion": "Indonesia",
+      "canonicalSlug": "universitas-islam-indonesia-uii",
+      "officialDomain": "uii.ac.id",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "uii.ac.id",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universitas Islam Indonesia (UII)\" official university website",
+        "searchedAt": "2026-07-18T20:24:19.982Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-ba75-74b1-9d1d-fd9457a1b6b2",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.uii.ac.id/en/",
+            "title": "Universitas Islam Indonesia (UII)",
+            "description": "Everyday at Universitas Islam Indonesia (UII), you will find an extensive study space to deepen your knowledge, develop your skills, and fostering new ideas ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/universitas-islam-indonesia/372532279",
+            "title": "Universitas Islam Indonesia - Overview, News & Similar ...",
+            "description": "2200 Website: www.uii.ac.id What does Universitas Islam Indonesia do? Universitas Islam Indonesia (UII) is a leading private university in Indonesia ..."
+          },
+          {
+            "url": "https://www.unirank.org/id/uni/universitas-islam-indonesia/",
+            "title": "Universitas Islam Indonesia UII 2026 Rankings, Courses, ...",
+            "description": "Universitas Islam Indonesia UII 2026 ranking & review including programs/courses, tuition, admission info, acceptance rate, accreditation & more."
+          },
+          {
+            "url": "https://www.instagram.com/reel/C4pu2EnLFpB/",
+            "title": "Universitas Islam Indonesia was established on 8th July 1945 ...",
+            "description": "UNIVERSITAS ISLAM INDONESIA UII GLOBAL Happy New Hijri Year May this new Hijri year bring peace, wisdom, growth and barakah to all of us 1448 ..."
+          },
+          {
+            "url": "https://www.facebook.com/IR.StudentUpdates/posts/-future-global-leaders-start-here-future-global-leaders-scholarship-2026-univers/909451134800068/",
+            "title": "Universitas Islam Indonesia (UII) 🎓 Level: Undergraduate & ...",
+            "description": "... Official Link (Visible): https://www.uii.ac.id/en/findus ... Host Country: Indonesia University: Universitas Islam Indonesia (UII) ..."
+          },
+          {
+            "url": "https://www.linkedin.com/school/universitas-islam-indonesia/",
+            "title": "Universitas Islam Indonesia Employees, Location, Alumni",
+            "description": "STI became the first national university which then evolved into a university and renamed to Universitas Islam Indonesia (UII) ... Website: http://www.uii.ac ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 842,
+      "qsRank": 1401,
+      "universityName": "Petra Christian University",
+      "countryOrRegion": "Indonesia",
+      "canonicalSlug": "petra-christian-university",
+      "officialDomain": "petra.ac.id",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "petra.ac.id",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "unipage.net",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Petra Christian University\" official university website",
+        "searchedAt": "2026-07-18T20:24:19.982Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-ba4d-7401-810e-93fbef649ada",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://petra.ac.id/",
+            "title": "Petra Christian University | Best in East Java",
+            "description": "Selamat Datang di. Petra Christian University! Sebagai perguruan tinggi swasta terbaik di Jawa Timur dan kedua di Indonesia, Petra Christian University ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/petra-christian-university/429652920",
+            "title": "Petra Christian University - Overview, News & Similar companies",
+            "description": "What is Petra Christian University's official website? Petra Christian University's official website is www.petra.ac.id. Sign Up For FreeTo access detailed ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Petra_Christian_University",
+            "title": "Petra Christian University",
+            "description": "Petra Christian University (Indonesian: Universitas Kristen Petra ) abbreviated as UKP or PCU, is a private Christian university in Indonesia, located in ..."
+          },
+          {
+            "url": "https://www.linkedin.com/school/universitas-kristen-petra/",
+            "title": "Petra Christian University Employees, Location, Alumni",
+            "description": "Website: http://www.petra.ac.id/. External link for Petra Christian University ; Industry: Higher Education ; Company size: 501-1,000 employees ; Headquarters ..."
+          },
+          {
+            "url": "https://www.unirank.org/id/uni/petra-christian-university/",
+            "title": "Petra Christian University 2026 Rankings, Courses, Tuition & ...",
+            "description": "Click here to search Petra Christian University's website for programs, courses, degrees, tuition fees, admission policy and requirements, acceptance rate, ..."
+          },
+          {
+            "url": "https://www.unipage.net/en/17940/petra_christian_university",
+            "title": "Petra Christian University: studying at Surabaya",
+            "description": "Petra Christian University ; Location: Surabaya, Indonesia ; Establishment year: 1961 ; Students: 7,999 ; International students: 69 ; Rating QS: #1401+."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 843,
+      "qsRank": 1401,
+      "universityName": "Universiti Sultan Zainal Abidin",
+      "countryOrRegion": "Malaysia",
+      "canonicalSlug": "universiti-sultan-zainal-abidin",
+      "officialDomain": "unisza.edu.my",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "unisza.edu.my",
+          "score": 2
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Universiti Sultan Zainal Abidin\" official university website",
+        "searchedAt": "2026-07-18T20:24:19.983Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-ba49-70ff-9700-d5cb6232723c",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.unisza.edu.my/",
+            "title": "UniSZA – Universiti Sultan Zainal Abidin: Ilmu Demi Faedah ...",
+            "description": "... ASASI BAGI SESI AKADEMIK 2026/2027 · SEMAKAN MENDUDUKI PENILAIAN ONLINE SESI IKLAN 2/2026 BAGI PENGAMBILAN STAF UNIVERSITI SULTAN ZAINAL ABIDIN (UniSZA) ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/universiti-sultan-zainal-abidin/425421235",
+            "title": "Universiti Sultan Zainal Abidin - Overview, News & Similar ...",
+            "description": "What is Universiti Sultan Zainal Abidin's official website? Universiti Sultan Zainal Abidin's official website is www.unisza.edu.my. Sign Up For FreeTo ..."
+          },
+          {
+            "url": "https://www.unirank.org/my/uni/universiti-sultan-zainal-abidin/",
+            "title": "Universiti Sultan Zainal Abidin UniSZA 2026 Rankings ...",
+            "description": "Click here to search Universiti Sultan Zainal Abidin's website for programs, courses, degrees, tuition fees, admission policy and requirements, acceptance rate, ..."
+          },
+          {
+            "url": "https://www.unisza.edu.my/student-international/",
+            "title": "International Students",
+            "description": "Universiti Sultan Zainal Abidin is the right choice for many reasons. Located in one of the most beautiful parts of Malaysia, UniSZA offers affordable ..."
+          },
+          {
+            "url": "https://www.instagram.com/uniszaedumy/?hl=en",
+            "title": "UniSZA (@uniszaedumy) · Kuala Terengganu",
+            "description": "20K followers · 4.3K+ posts · Universiti Sultan Zainal Abidin (Official Instagram) - Ilmu Demi Faedah Insan - #UniSZAIlmuDanAkhlak #UniSZA."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Universiti_Sultan_Zainal_Abidin",
+            "title": "Universiti Sultan Zainal Abidin",
+            "description": "Universiti Sultan Zainal Abidin, Kampung Gong Badak, 21300, Terengganu, Malaysia · Kuala Terengganu (Gong Badak; main campus and Batu Buruk; secondary campus)"
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 844,
+      "qsRank": 1401,
+      "universityName": "University of Da Nang",
+      "countryOrRegion": "Vietnam",
+      "canonicalSlug": "university-of-da-nang",
+      "officialDomain": "udn.vn",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "udn.vn",
+          "score": 2
+        },
+        {
+          "domain": "kuins.ac.jp",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"University of Da Nang\" official university website",
+        "searchedAt": "2026-07-18T20:24:19.985Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-ba51-7422-8b9b-e091b627da64",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://udn.vn/english",
+            "title": "The University of Da Nang (UD)",
+            "description": "THE UNIVERSITY OF DA NANG. THE UNIVERSITY OF DA NANG. No results found. Home; ABOUT US; Academics; Research; Cooperation; Learning Resource ..."
+          },
+          {
+            "url": "https://www.kuins.ac.jp/en/international/agreement/vietnam2.html",
+            "title": "University of Da Nang",
+            "description": "University of Da Nang · The University of Da Nang · http://www.udn.vn/english · Danang City · Spring semester: March-June Fall semester: August-January."
+          },
+          {
+            "url": "https://www.unirank.org/vn/uni/the-university-of-da-nang/",
+            "title": "The University of Da nang UD 2026 Rankings, Courses, ...",
+            "description": "Click here to search The University of Da nang's website for programs, courses, degrees, tuition fees, admission policy and requirements, acceptance rate, ..."
+          },
+          {
+            "url": "https://en.ued.udn.vn/",
+            "title": "Danang University of Education",
+            "description": "University of Science and Education - the University of Da Nang was ... Website: http://ued.udn.vn. Picture6. QR-code. QR-Code: News. Online: 19. Online19 ..."
+          },
+          {
+            "url": "https://www.facebook.com/udn.vn/posts/-danang-news-the-university-of-danang-the-pillar-of-regional-human-resources-the/1193875192783976/",
+            "title": "Đại học Đà Nẵng - The University of Danang",
+            "description": "... University of Da Nang has affirmed its leading role as a major university. The University of Da Nang has developed into a national university ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/university-of-da-nang/432291523",
+            "title": "University of Da Nang - Overview, News & Similar companies",
+            "description": "What is University of Da Nang's official website? University of Da Nang's official website is www.udn.vn. Sign Up For FreeTo access detailed company insights."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 845,
+      "qsRank": 1401,
+      "universityName": "University of Hawaii at Hilo",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-hawaii-at-hilo",
+      "officialDomain": "hawaii.edu",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "hawaii.edu",
+          "score": 1
+        },
+        {
+          "domain": "hiloathletics.com",
+          "score": 1
+        },
+        {
+          "domain": "x.com",
+          "score": 1
+        },
+        {
+          "domain": "collegetransfer.net",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"University of Hawaii at Hilo\" official university website",
+        "searchedAt": "2026-07-18T20:24:23.248Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-c6d1-7063-8fc3-0d71030a5218",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://hilo.hawaii.edu/",
+            "title": "University of Hawaii at Hilo",
+            "description": "The University of Hawaii at Hilo is a fully accredited, comprehensive liberal arts university located in Hilo, Hawaii, USA."
+          },
+          {
+            "url": "https://hiloathletics.com/",
+            "title": "Hawai'i Hilo Vulcans Athletics - Official Athletics Website",
+            "description": "The official athletics website for the University of Hawai'i Hilo Vulcans. ... The University of Hawaii at Hilo is an equal opportunity institution."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/University_of_Hawai%CA%BBi_at_Hilo",
+            "title": "University of Hawaiʻi at Hilo",
+            "description": "Website, hilo.hawaii.edu. Map. Wikimedia | © OpenStreetMap. University of Hawaiʻi at Hilo. The university has been accredited by the WASC Senior College and ..."
+          },
+          {
+            "url": "https://x.com/UHHilo",
+            "title": "University of Hawaii at Hilo (@UHHilo) / Posts / X",
+            "description": "University of Hawaii at Hilo. UHHilo. Location: Hilo, Hawaii. Website: https://linktr.ee/uhhilo."
+          },
+          {
+            "url": "https://www.facebook.com/uhhilo/posts/no-application-no-fee-no-stressdirect2uh-is-giving-hawai%CA%BBi-public-high-school-se/1366346022206559/",
+            "title": "University of Hawaiʻi at Hilo",
+            "description": "The University of Hawaiʻi at Hilo has been named one of the most ethnically diverse campuses among national universities by U.S. News and ..."
+          },
+          {
+            "url": "http://www.collegetransfer.net/UniversityOfHawaiiAtHilo/TransferProfile/tabid/145/Default.aspx",
+            "title": "University of Hawaii at Hilo",
+            "description": "University of Hawaii at Hilo ... Website: www.hilo.hawaii.eduOpens in a new window or tab. Email: Find us on: facebookExternal linkOpens in a new window or tab."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 846,
+      "qsRank": 1401,
+      "universityName": "University of Missouri Saint Louis",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-missouri-saint-louis",
+      "officialDomain": "umsl.edu",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "umsl.edu",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 847,
+      "qsRank": 1401,
+      "universityName": "University of Moratuwa",
+      "countryOrRegion": "Sri Lanka",
+      "canonicalSlug": "university-of-moratuwa",
+      "officialDomain": "uom.lk",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "uom.lk",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 848,
+      "qsRank": 1401,
+      "universityName": "University of Oradea",
+      "countryOrRegion": "Romania",
+      "canonicalSlug": "university-of-oradea",
+      "officialDomain": "uoradea.ro",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "uoradea.ro",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        },
+        {
+          "domain": "nih.gov",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"University of Oradea\" official university website",
+        "searchedAt": "2026-07-18T20:24:23.249Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-c73f-77b8-8a6a-868913860522",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.uoradea.ro/en/",
+            "title": "University of Oradea",
+            "description": "The University of Oradea is a dynamic academic community with a strong international focus, modern facilities, and a vibrant student life."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/University_of_Oradea",
+            "title": "University of Oradea",
+            "description": "The University of Oradea (UO or U of O) (Romanian: Universitatea din Oradea) is an accredited public university located in Oradea in north-western Romania."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/university-of-oradea/410843567",
+            "title": "University of Oradea - Overview, News & Similar companies",
+            "description": "What is University of Oradea's official website? University of Oradea's official website is www.uoradea.ro. Sign Up For FreeTo access detailed company insights."
+          },
+          {
+            "url": "https://www.facebook.com/100057364843428/posts/admissions-for-non-eu-candidates-at-the-university-of-oradea-will-be-open-from-1/1448220220433459/",
+            "title": "Admissions for Non-EU candidates at the University of Oradea will be open ...",
+            "description": "Admissions for Non-EU candidates at the University of Oradea will be open from 15 April to 14 July. Applications are submitted online."
+          },
+          {
+            "url": "https://www.facebook.com/UniversitateaDinOradea/posts/-some-places-are-shaped-by-generations-others-shape-generationsfor-decades-stude/1648836176686316/",
+            "title": "and carries something forward. This is where past, present, and future ...",
+            "description": "... University of Oradea. Each generation leaves something behind ... Website: www.unibuc.ro 2️⃣ Babeș-Bolyai University (Cluj-Napoca) ..."
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9498459/",
+            "title": "The Impact of the COVID-19 Pandemic on the Dental ... - PMC",
+            "description": "by AE Moca · 2022 · Cited by 13 — This is a free public service that operates in the building of the Faculty of Medicine and Pharmacy of the University of Oradea. At the beginning of the ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 849,
+      "qsRank": 1401,
+      "universityName": "University of Sri Jayawardenapura",
+      "countryOrRegion": "Sri Lanka",
+      "canonicalSlug": "university-of-sri-jayawardenapura",
+      "officialDomain": "sjp.ac.lk",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "sjp.ac.lk",
+          "score": 1
+        },
+        {
+          "domain": "eclbs.eu",
+          "score": 1
+        },
+        {
+          "domain": "eduopinions.com",
+          "score": 1
+        },
+        {
+          "domain": "tiktok.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"University of Sri Jayawardenapura\" official university website",
+        "searchedAt": "2026-07-18T20:24:23.249Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-c72c-7259-a5c8-7d34a8dc84af",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.facebook.com/hettigedon.karunaratne/posts/at-university-of-sri-jayawardenapura/26624885207135802/",
+            "title": "At University of Sri Jayawardenapura",
+            "description": "Congratulations to the University of Sri Jayawardenapura on becoming the number two ranked university in Sri Lanka in the latest January 2024 ..."
+          },
+          {
+            "url": "https://www.instagram.com/universitysjp/?hl=en",
+            "title": "University Sri Jayewardenepura (@universitysjp) · Nugegoda",
+            "description": "... University of Sri Jayawardenapura was opened under the patronage of President Maithripala Sirisena at Bandaranaike Memorial International Conference Hall ..."
+          },
+          {
+            "url": "https://www.sjp.ac.lk/pdf_uploads/Student_Hand_Book_Engilsh.pdf",
+            "title": "University of Sri Jayewardenepura",
+            "description": "In order to safe guard and further development of indigenous culture and ethics, this centre is located at the University of Sri jayawardenapura under the ..."
+          },
+          {
+            "url": "https://www.eclbs.eu/post/list-of-universities-in-sri-lanka",
+            "title": "List of Universities in Sri Lanka",
+            "description": "University of Ruhuna. University of Sri Jayawardenapura. University of the Visual & Performing Arts. University of Vocational Technology. Uva ..."
+          },
+          {
+            "url": "https://www.eduopinions.com/universities/universities-in-srilanka/university-of-jayawardenapura/",
+            "title": "University of Sri Jayewardenepura (reviews)",
+            "description": "First of all I'm proudly saying that I am an undergraduate at university of Sri Jayawardenapura (Sri Lanka). Studying in the best Management faculty in Sri ..."
+          },
+          {
+            "url": "https://www.tiktok.com/@janaka.prasad77/video/7400722236342095111",
+            "title": "University of Sri Jayewardenepura: Explore the Vibrant ...",
+            "description": "University of Sri Jayawardenapura - Faculty of Management ... Create Your Body Shape Website · Does Running Shape Your Body · Changing Body ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 850,
+      "qsRank": 1401,
+      "universityName": "University of Tripoli",
+      "countryOrRegion": "Libya",
+      "canonicalSlug": "university-of-tripoli",
+      "officialDomain": "uot.edu.ly",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "uot.edu.ly",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 851,
+      "qsRank": 1401,
+      "universityName": "University of West Bohemia",
+      "countryOrRegion": "Czechia",
+      "canonicalSlug": "university-of-west-bohemia",
+      "officialDomain": "zcu.cz",
+      "status": "resolved",
+      "resolutionMethod": "reviewed_override",
+      "domainCandidates": [
+        {
+          "domain": "zcu.cz",
+          "score": 1000
+        }
+      ],
+      "discovery": null
+    },
+    {
+      "qsRow": 852,
+      "qsRank": 1401,
+      "universityName": "University of the Pacific",
+      "countryOrRegion": "United States",
+      "canonicalSlug": "university-of-the-pacific",
+      "officialDomain": "pacific.edu",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "pacific.edu",
+          "score": 2
+        },
+        {
+          "domain": "pacifictigers.com",
+          "score": 1
+        },
+        {
+          "domain": "princetonreview.com",
+          "score": 1
+        },
+        {
+          "domain": "bkstr.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"University of the Pacific\" official university website",
+        "searchedAt": "2026-07-18T20:24:23.250Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-c70f-71ea-941a-42b307389379",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.pacific.edu/",
+            "title": "University of the Pacific - Experience-driven Education",
+            "description": "University of the Pacific is a private university devoted to experience-driven education that gives students pathways to the fastest growing sectors."
+          },
+          {
+            "url": "https://pacifictigers.com/",
+            "title": "University of the Pacific - Official Athletics Website",
+            "description": "The official athletics website for the University of the Pacific."
+          },
+          {
+            "url": "https://my.pacific.edu/",
+            "title": "MyPacific - University of the Pacific",
+            "description": "Apply for any of our stellar programs at University of the Pacific. Includes info on requesting transcripts, verifications, diplomas, and other official ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/University_of_the_Pacific_(United_States)",
+            "title": "University of the Pacific (United States)",
+            "description": "University of the Pacific (Pacific or UOP) is a private, historically Methodist-affiliated university with its main campus in Stockton, California, ..."
+          },
+          {
+            "url": "https://www.princetonreview.com/college/university-pacific-1023624",
+            "title": "University of the Pacific",
+            "description": "Applying to University of the Pacific ? Get up-to-date admissions statistics, SAT & ACT scores, student reviews, and more from The Princeton Review."
+          },
+          {
+            "url": "https://pacific.bkstr.com/",
+            "title": "Official University of the Pacific Bookstore | UOP Apparel ...",
+            "description": "Let's Go Tigers! Shop Official University of the Pacific Apparel, Textbooks, Merchandise and Gifts at the UOP Bookstore. Flat-Rate Shipping."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 853,
+      "qsRank": 1401,
+      "universityName": "Università degli studi di Bergamo",
+      "countryOrRegion": "Italy",
+      "canonicalSlug": "universita-degli-studi-di-bergamo",
+      "officialDomain": "unibg.it",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "unibg.it",
+          "score": 2
+        },
+        {
+          "domain": "crocuseurope.eu",
+          "score": 1
+        },
+        {
+          "domain": "beyondthestates.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Università degli studi di Bergamo\" official university website",
+        "searchedAt": "2026-07-18T20:24:26.377Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-d303-753b-94f7-90f54ce4fabd",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://en.unibg.it/",
+            "title": "University of Bergamo - University of Bergamo - UniBg",
+            "description": "Home page UniBg | Il sito web International dell'Università degli Studi di Bergamo."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/University_of_Bergamo",
+            "title": "University of Bergamo",
+            "description": "University of Bergamo ... The University of Bergamo (Italian: Università degli studi di Bergamo ; acronym: UniBG) is an Italian public university located in ..."
+          },
+          {
+            "url": "https://www.facebook.com/UniBergamo/",
+            "title": "Università degli studi di Bergamo (@UniBergamo)",
+            "description": "L'Università degli studi di Bergamo ha pubblicato il bando per l'assegnazione delle borse di studio e dei posti nelle residenze universitarie, destinati agli ..."
+          },
+          {
+            "url": "https://en.unibg.it/study/enrollment/foreign-students-join-us",
+            "title": "Foreign Students: Join Us | Università di Bergamo",
+            "description": "Università degli studi di Bergamo via Salvecchio 19 24129 Bergamo Cod. Fiscale 80004350163. P.IVA 01612800167. Centralino 035 2052111. Cookie settings; Privacy ..."
+          },
+          {
+            "url": "https://crocuseurope.eu/partners/universita-degli-studi-di-bergamo/",
+            "title": "Università degli studi di Bergamo",
+            "description": "The Università degli Studi di Bergamo (UniBg) is a state university located in the Lombardy province, Italy."
+          },
+          {
+            "url": "https://beyondthestates.com/schools/university-of-bergamo/",
+            "title": "University of Bergamo: Tuition, Degrees & Rankings",
+            "description": "The University of Bergamo (Italian: Università degli Studi di Bergamo, UNIBG) is a public research university located in Bergamo, Lombardy, Italy."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 854,
+      "qsRank": 1401,
+      "universityName": "Voronezh State University",
+      "countryOrRegion": "Russia",
+      "canonicalSlug": "voronezh-state-university",
+      "officialDomain": "vsu.ru",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "vsu.ru",
+          "score": 2
+        },
+        {
+          "domain": "tufts.edu",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Voronezh State University\" official university website",
+        "searchedAt": "2026-07-18T20:24:26.378Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-d346-743d-9a30-f48cd92f5a82",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.vsu.ru/english/",
+            "title": "Voronezh State University",
+            "description": "University members are to develop a programme for the production of nano- and microelectronic devices. Specialists from Voronezh State University will take ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Voronezh_State_University",
+            "title": "Voronezh State University",
+            "description": "Voronezh State University is one of the main universities in Central Russia, located in the city of Voronezh. The university was established in 1918 by ..."
+          },
+          {
+            "url": "http://www.vsu.ru/en/",
+            "title": "Voronezh State University",
+            "description": "Welcome to Voronezh State University. Galichya Gora Nature Reserve · Join our vibrant student community · Explore our impressive range of research ..."
+          },
+          {
+            "url": "https://www.instagram.com/vsu_eng/",
+            "title": "Voronezh State University (@vsu_eng)",
+            "description": "Welcome to the official account of Voronezh State University! News on life and traditions at VSU - and more!"
+          },
+          {
+            "url": "https://www.facebook.com/groups/1118721678607278/posts/2055852938227476/",
+            "title": "Voronezh state university of engineering and technology 🇷 ...",
+            "description": "Voronezh state university of engineering and technology Founded. : November 30, 1930 EECA Rank - [401-450] Rank In Russia. – 289 Rank in ..."
+          },
+          {
+            "url": "https://talloiresnetwork.tufts.edu/voronezh-state-university-russia/",
+            "title": "Voronezh State University (Russia)",
+            "description": "Voronezh State University's website>>. More information about VSU's community engagement work coming soon! Instagram Twitter Facebook Vimeo YouTube. Quick ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 855,
+      "qsRank": 1401,
+      "universityName": "Walailak University",
+      "countryOrRegion": "Thailand",
+      "canonicalSlug": "walailak-university",
+      "officialDomain": "wu.ac.th",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "wu.ac.th",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "zoominfo.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Walailak University\" official university website",
+        "searchedAt": "2026-07-18T20:24:26.379Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-d345-7563-9b17-2ecbf5581fe0",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.wu.ac.th/en",
+            "title": "Walailak University",
+            "description": "Walailak University Welcomes Eight International Assessors for First On-Site AUN-QA Assessment.. Research & Partnerships ..."
+          },
+          {
+            "url": "https://www.facebook.com/walailakchannel/posts/come-join-us-at-walailak-universitya-world-ranked-university-in-southern-thailan/1210556501104503/",
+            "title": "Come join us at Walailak University! A world-ranked ...",
+            "description": "Walailak University is ranked 601+ in Asia, Joint 13th in Thailand, According to Times Higher Education Asia University Rankings 2023. Please ..."
+          },
+          {
+            "url": "https://www.unirank.org/th/uni/walailak-university/",
+            "title": "Walailak University WU 2026 Rankings, Courses, Tuition & ...",
+            "description": "Click here to search Walailak University's website for programs, courses, degrees, tuition fees, admission policy and requirements, acceptance rate, ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Walailak_University",
+            "title": "Walailak University",
+            "description": "Walailak University (WU.) (Thai: มหาวิทยาลัยวลัยลักษณ์) is a public university, founded in 1992, located in Tha Sala District, Nakhon Si Thammarat Province, Thailand ..."
+          },
+          {
+            "url": "https://www.zoominfo.com/c/walailak-university/456499682",
+            "title": "Walailak University - Overview, News & Similar companies",
+            "description": "Frequently Asked Questions Regarding Walailak University. What is Walailak University's official website? Walailak University's official website is www.wu.ac.th."
+          },
+          {
+            "url": "https://www.facebook.com/FSRC.WU/posts/welcome-to-the-futuristic-science-research-center-school-of-science-walailak-uni/122177584880789248/",
+            "title": "Futuristic Science Research Center at Walailak University",
+            "description": "***Welcome to the Futuristic Science Research Center*** School of Science, Walailak University Our new programs are now open for applications ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 856,
+      "qsRank": 1401,
+      "universityName": "Yamaguchi University",
+      "countryOrRegion": "Japan",
+      "canonicalSlug": "yamaguchi-university",
+      "officialDomain": "yamaguchi-u.ac.jp",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "yamaguchi-u.ac.jp",
+          "score": 1
+        },
+        {
+          "domain": "hawaii.edu",
+          "score": 1
+        },
+        {
+          "domain": "kent.edu",
+          "score": 1
+        },
+        {
+          "domain": "niad.ac.jp",
+          "score": 1
+        },
+        {
+          "domain": "usnews.com",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Yamaguchi University\" official university website",
+        "searchedAt": "2026-07-18T20:24:26.379Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-d311-76e5-82a8-78d0e05c80ee",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.yamaguchi-u.ac.jp/english/index.html",
+            "title": "YAMAGUCHI UNIVERSITY",
+            "description": "Just another 山口大学様テストサイト site. ... Yamaguchi University Entrance Ceremony for the academic year 2026. Yamaguchi ..."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Yamaguchi_University",
+            "title": "Yamaguchi University",
+            "description": "Yamaguchi University (山口大学 , Yamaguchi daigaku) is a national university in Yamaguchi Prefecture, Japan. It has campuses at the cities of Yamaguchi and ..."
+          },
+          {
+            "url": "http://www.kauai.hawaii.edu/yamaguchi-university",
+            "title": "Yamaguchi University",
+            "description": "Yamaguchi University · A public university located in Yamaguchi Prefecture, Japan · Student population of about 10,000 at three different campuses. · Yamaguchi has ..."
+          },
+          {
+            "url": "https://www.kent.edu/globaleducation/education-abroad/yamaguchi-university-japan",
+            "title": "Yamaguchi University, Japan - Study Abroad",
+            "description": "Yamaguchi University is ideal for students who want to learn and improve upon their Japanese language skills."
+          },
+          {
+            "url": "https://jpcup.niad.ac.jp/institute/0340.html",
+            "title": "Yamaguchi University - Japanese College and ... - jpcup",
+            "description": "Yamaguchi University(山口大学) is a Japanese higher education Institution with Yoshida Campus (Yamaguchi), Kogushi Campus (Yamaguchi) and Tokiwa Campus ..."
+          },
+          {
+            "url": "https://www.usnews.com/education/best-global-universities/yamaguchi-university-505526",
+            "title": "Yamaguchi University Rankings",
+            "description": "Yamaguchi University is ranked #2179 in Best Global Universities. Schools are ranked according to their performance across a set of widely accepted indicators ..."
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "qsRow": 857,
+      "qsRank": 1401,
+      "universityName": "Youngsan University",
+      "countryOrRegion": "South Korea",
+      "canonicalSlug": "youngsan-university",
+      "officialDomain": "ysu.ac.kr",
+      "status": "resolved",
+      "resolutionMethod": "firecrawl_official_homepage_discovery",
+      "domainCandidates": [
+        {
+          "domain": "ysu.ac.kr",
+          "score": 1
+        },
+        {
+          "domain": "unirank.org",
+          "score": 1
+        },
+        {
+          "domain": "namsankoreancourse.com",
+          "score": 1
+        },
+        {
+          "domain": "edurank.org",
+          "score": 1
+        },
+        {
+          "domain": "unipage.net",
+          "score": 1
+        }
+      ],
+      "discovery": {
+        "query": "\"Youngsan University\" official university website",
+        "searchedAt": "2026-07-18T20:24:26.380Z",
+        "provider": "firecrawl_search_v2",
+        "searchId": "019f76e6-d34c-714c-b844-51a9696b4877",
+        "creditsUsed": 2,
+        "status": "ok",
+        "results": [
+          {
+            "url": "https://www.ysu.ac.kr/eng",
+            "title": "YOUNGSAN UNIVERSITY",
+            "description": "YOUNGSAN UNIVERSITY. 전체메뉴열기. ALL MENU. LANGUAGE. Korean; Vietnamse; English ... YOUNGSAN UNIVERSITY 서비스메뉴. 개인정보처리방침(Privacy Policy) · CAMPUS ..."
+          },
+          {
+            "url": "https://www.unirank.org/kr/uni/youngsan-university/",
+            "title": "Youngsan University YSU 2026 Rankings, Courses, ...",
+            "description": "Founded in 1997, Youngsan University is a non-profit private higher education institution located in the urban setting of the small city of Yangsan."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Youngsan_University",
+            "title": "Youngsan University",
+            "description": "Youngsan University is a private university in southeastern South Korea. It operates a main campus in Yangsan City, South Gyeongsang province."
+          },
+          {
+            "url": "https://namsankoreancourse.com/wp-content/uploads/2026/04/Degree-Program-Youngsan-University-Undergraduate-Graduate-Spring-2026-Guideline.pdf",
+            "title": "Youngsan University Admission Guidelines for New and Transfer ...",
+            "description": "“Y'sU, Wise U” Youngsan University is a university where students succeed. By flexibly changing the curriculum to respond to students' aptitudes and the ..."
+          },
+          {
+            "url": "https://edurank.org/uni/youngsan-university/",
+            "title": "Youngsan University [Acceptance Rate + Statistics + Tuition]",
+            "description": "Website: ysu.ac.kr. Languages: Korean. Acceptance rate: 50%*. * Youngsan University is among the institutions that don't provide data on ..."
+          },
+          {
+            "url": "https://www.unipage.net/en/21054/youngsan_university",
+            "title": "Youngsan University, Yangsan: cost of learning",
+            "description": "Youngsan University. Article score: 4.06 out of 5 (32 reviews). Looking for a university with high-quality education and affordable prices?"
+          }
+        ],
+        "error": null
+      }
+    }
+  ]
+}

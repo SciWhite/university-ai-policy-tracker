@@ -15,6 +15,7 @@ export const aiTools = [
   "adobe_firefly",
   "aws_bedrock",
   "aws_sagemaker",
+  "aws_kiro",
   "azure_openai",
   "google_vertex_ai",
   "google_ai_studio",
@@ -85,6 +86,8 @@ export const aiTools = [
   "primo_research_assistant",
   "scite_ai",
   "scopus_ai",
+  "osmosis_ai",
+  "thinglink_ai",
   "wooflash",
   "consensus",
   "quillbot",
@@ -352,6 +355,13 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     provider: "Amazon Web Services",
     aliases: ["AWS SageMaker", "AWS Sagemaker", "Amazon SageMaker", "SageMaker"],
     category: "cloud_platform"
+  },
+  aws_kiro: {
+    slug: "aws_kiro",
+    label: "Kiro / AWS",
+    provider: "Amazon Web Services",
+    aliases: ["AWS Kiro Pro", "Kiro Pro", "AWS Kiro", "Kiro"],
+    category: "commercial_assistant"
   },
   azure_openai: {
     slug: "azure_openai",
@@ -845,6 +855,20 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "Scopus AI",
     provider: "Elsevier",
     aliases: ["Scopus AI"],
+    category: "commercial_assistant"
+  },
+  osmosis_ai: {
+    slug: "osmosis_ai",
+    label: "Osmosis AI",
+    provider: "Osmosis",
+    aliases: ["Osmosis AI"],
+    category: "commercial_assistant"
+  },
+  thinglink_ai: {
+    slug: "thinglink_ai",
+    label: "ThingLink AI",
+    provider: "ThingLink",
+    aliases: ["ThingLink AI"],
     category: "commercial_assistant"
   },
   wooflash: {
