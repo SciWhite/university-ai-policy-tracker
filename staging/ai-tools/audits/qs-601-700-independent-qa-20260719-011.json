@@ -1,0 +1,1304 @@
+{
+  "schemaVersion": "uapt-ai-tools-independent-qa-v1",
+  "runId": "uapt-ai-tools-qs-601-700-20260719-011",
+  "generatedAt": "2026-07-18T19:31:45.275Z",
+  "scope": {
+    "positiveRecords": 71,
+    "positiveSources": 39,
+    "blockedSamples": 45,
+    "regionGroups": [
+      "North America",
+      "Continental Europe and other",
+      "South Asia",
+      "East Asia",
+      "UK and Ireland",
+      "Latin America"
+    ],
+    "method": "Independent pass over every evidence hash and verbatim quote; direct live re-fetch of all selected sources; spread sample of blocked rows; and explicit reverse review of every heuristic access surface."
+  },
+  "summary": {
+    "confirmed_positive": 71,
+    "false_positive": 0,
+    "false_negative": 0,
+    "inconclusive": 0,
+    "live_sources_reachable": 37,
+    "live_sources_checked": 39,
+    "blocked_rows_checked": 45
+  },
+  "positiveChecks": [
+    {
+      "recordId": "brandeis-university:gemini:Google Gemini",
+      "qsRow": 604,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "brandeis-university:microsoft_copilot:Microsoft Copilot Chat",
+      "qsRow": 604,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "brandeis-university:zoom_ai_companion:Zoom AI",
+      "qsRow": 604,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "syracuse-university:claude:Claude Enterprise",
+      "qsRow": 608,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "syracuse-university:gemini:Google Gemini",
+      "qsRow": 608,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "syracuse-university:institutional_ai_service:Clementine",
+      "qsRow": 608,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "syracuse-university:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 608,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "university-of-malta:gemini:Google Gemini",
+      "qsRow": 610,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-malta:notebooklm:NotebookLM",
+      "qsRow": 610,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-pecs:azure_ai_foundry:Azure AI Foundry",
+      "qsRow": 612,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "university-of-pecs:copilot_studio:Microsoft Copilot Studio",
+      "qsRow": 612,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-pecs:microsoft_copilot:Microsoft 365 Copilot Chat",
+      "qsRow": 612,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-pecs:microsoft_copilot_for_m365:Microsoft 365 Copilot",
+      "qsRow": 612,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "vytautas-magnus-university:scopus_ai:Scopus AI",
+      "qsRow": 614,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "vytautas-magnus-university:web_of_science_research_assistant:Web of Science Research Assistant",
+      "qsRow": 614,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "university-of-new-mexico:microsoft_copilot:Microsoft 365 Copilot Chat",
+      "qsRow": 616,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-new-mexico:microsoft_copilot_for_m365:Microsoft 365 Copilot",
+      "qsRow": 616,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "university-of-new-mexico:zoom_ai_companion:Zoom AI Companion",
+      "qsRow": 616,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-oregon:adobe_firefly:Adobe Firefly",
+      "qsRow": 617,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "university-of-oregon:microsoft_copilot:Microsoft Copilot with Data Protection",
+      "qsRow": 617,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "university-of-oregon:microsoft_copilot_for_m365:Microsoft 365 Copilot",
+      "qsRow": 617,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-oregon:web_of_science_research_assistant:Web of Science Research Assistant",
+      "qsRow": 617,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "bangladesh-university-of-engineering-and-technology:grammarly:Grammarly",
+      "qsRow": 620,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "bangladesh-university-of-engineering-and-technology:iris_ai:IRIS.AI",
+      "qsRow": 620,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "kaohsiung-medical-university:perplexity:Perplexity Pro",
+      "qsRow": 624,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "maynooth-university:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 633,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "philipps-universitat-marburg:chatgpt:OpenAI ChatGPT via Chat-AI",
+      "qsRow": 634,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "philipps-universitat-marburg:institutional_ai_service:Marburg AI Services",
+      "qsRow": 634,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "rutgers-university-newark:chatgpt:ChatGPT Edu",
+      "qsRow": 635,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "rutgers-university-newark:gemini:Google Gemini",
+      "qsRow": 635,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "rutgers-university-newark:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 635,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "rutgers-university-newark:microsoft_copilot_for_m365:Microsoft 365 Copilot",
+      "qsRow": 635,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "rutgers-university-newark:notebooklm:NotebookLM",
+      "qsRow": 635,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "carleton-university:microsoft_copilot:Microsoft 365 Copilot Chat",
+      "qsRow": 640,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "carleton-university:microsoft_copilot_for_m365:Microsoft 365 Copilot",
+      "qsRow": 640,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "carleton-university:scopus_ai:Scopus AI",
+      "qsRow": 640,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "carleton-university:web_of_science_research_assistant:Web of Science Research Assistant",
+      "qsRow": 640,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "georgia-state-university:microsoft_copilot:Microsoft Copilot Chat Enterprise",
+      "qsRow": 641,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "hong-kong-metropolitan-university:institutional_ai_service:HKMU ChatGPT Web Portal",
+      "qsRow": 642,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "technological-university-dublin:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 644,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "university-of-kentucky:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 648,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "wayne-state-university:chatgpt:ChatGPT",
+      "qsRow": 651,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "wayne-state-university:claude:Claude",
+      "qsRow": 651,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "wayne-state-university:cursor_ai:Cursor AI",
+      "qsRow": 651,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "wayne-state-university:gemini:Gemini Enterprise Agent Platform",
+      "qsRow": 651,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "wayne-state-university:institutional_ai_service:WarriorGPT",
+      "qsRow": 651,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "wayne-state-university:microsoft_copilot:Microsoft Copilot Chat",
+      "qsRow": 651,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "wayne-state-university:microsoft_copilot_for_m365:Microsoft Copilot",
+      "qsRow": 651,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "wayne-state-university:zoom_ai_companion:Zoom Smart AI Assistant",
+      "qsRow": 651,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "pontificia-universidad-catolica-de-valparaiso:gemini:Google Gemini",
+      "qsRow": 656,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "wake-forest-university:adobe_firefly:Adobe Firefly",
+      "qsRow": 657,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "wake-forest-university:gemini:Google Gemini Chat",
+      "qsRow": 657,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "wake-forest-university:microsoft_copilot:Microsoft Copilot Chat",
+      "qsRow": 657,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "wake-forest-university:notebooklm:NotebookLM",
+      "qsRow": 657,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "agh-university-of-krakow:microsoft_copilot_for_m365:Microsoft 365 Copilot",
+      "qsRow": 658,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "keele-university:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 667,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "middlesex-university:chatgpt:ChatGPT",
+      "qsRow": 668,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "middlesex-university:claude:Claude",
+      "qsRow": 668,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "middlesex-university:perplexity:Perplexity",
+      "qsRow": 668,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "the-new-school-new-york-city-and-paris:gemini:Google Gemini",
+      "qsRow": 674,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "the-new-school-new-york-city-and-paris:notebooklm:Google NotebookLM",
+      "qsRow": 674,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-brighton:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 685,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-maryland-baltimore:microsoft_copilot:Microsoft Copilot Chat",
+      "qsRow": 690,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-maryland-baltimore:microsoft_copilot_for_m365:Microsoft 365 Copilot",
+      "qsRow": 690,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "university-of-maryland-baltimore-county:gemini:Google Gemini AI",
+      "qsRow": 691,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-maryland-baltimore-county:institutional_ai_service:Amplify",
+      "qsRow": 691,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 2
+    },
+    {
+      "recordId": "university-of-maryland-baltimore-county:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 691,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-maryland-baltimore-county:notebooklm:NotebookLM",
+      "qsRow": 691,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 1
+    },
+    {
+      "recordId": "university-of-westminster:grammarly:Grammarly AI",
+      "qsRow": 697,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 3
+    },
+    {
+      "recordId": "university-of-westminster:institutional_ai_service:AI Assistant in Blackboard",
+      "qsRow": 697,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 3
+    },
+    {
+      "recordId": "university-of-westminster:microsoft_copilot:Microsoft Copilot Chat",
+      "qsRow": 697,
+      "outcome": "confirmed_positive",
+      "evidenceCount": 3
+    }
+  ],
+  "blockedChecks": [
+    {
+      "qsRow": 601,
+      "universityName": "Université de Tunis El Manar",
+      "countryOrRegion": "Tunisia",
+      "localLanguage": "fr",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 602,
+      "universityName": "Yildiz Technical University",
+      "countryOrRegion": "Türkiye",
+      "localLanguage": "tr",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 4,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 605,
+      "universityName": "Kaunas University of Technology",
+      "countryOrRegion": "Lithuania",
+      "localLanguage": "lt",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 606,
+      "universityName": "Plekhanov Russian University of Economics",
+      "countryOrRegion": "Russia",
+      "localLanguage": "ru",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 2,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 609,
+      "universityName": "The Catholic University of Korea (CUK)",
+      "countryOrRegion": "South Korea",
+      "localLanguage": "ko",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 613,
+      "universityName": "Victoria University",
+      "countryOrRegion": "Australia",
+      "localLanguage": "en",
+      "queryCount": 8,
+      "successfulQueries": 8,
+      "semanticSurfaces": 3,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 615,
+      "universityName": "Martin-Luther-Universität Halle-Wittenberg",
+      "countryOrRegion": "Germany",
+      "localLanguage": "de",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 619,
+      "universityName": "Université de Lorraine",
+      "countryOrRegion": "France",
+      "localLanguage": "fr",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 621,
+      "universityName": "Czech University of Life Sciences in Prague",
+      "countryOrRegion": "Czechia",
+      "localLanguage": "cs",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 3,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 623,
+      "universityName": "Jamia Millia Islamia",
+      "countryOrRegion": "India",
+      "localLanguage": "hi",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 626,
+      "universityName": "New Jersey Institute of Technology (NJIT)",
+      "countryOrRegion": "United States",
+      "localLanguage": "en",
+      "queryCount": 8,
+      "successfulQueries": 8,
+      "semanticSurfaces": 4,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 627,
+      "universityName": "Riga Technical University",
+      "countryOrRegion": "Latvia",
+      "localLanguage": "lv",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 629,
+      "universityName": "University of Bucharest",
+      "countryOrRegion": "Romania",
+      "localLanguage": "ro",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 3,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 630,
+      "universityName": "University of Nizwa",
+      "countryOrRegion": "Oman",
+      "localLanguage": "ar",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 632,
+      "universityName": "Holy Spirit University of Kaslik",
+      "countryOrRegion": "Lebanon",
+      "localLanguage": "ar",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 637,
+      "universityName": "Universitat Rovira i Virgili",
+      "countryOrRegion": "Spain",
+      "localLanguage": "es",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 2,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 638,
+      "universityName": "University of Calcutta",
+      "countryOrRegion": "India",
+      "localLanguage": "hi",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 643,
+      "universityName": "Kuwait University",
+      "countryOrRegion": "Kuwait",
+      "localLanguage": "ar",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 646,
+      "universityName": "Universidade Católica Portuguesa",
+      "countryOrRegion": "Portugal",
+      "localLanguage": "pt",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 3,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 647,
+      "universityName": "University of Alicante",
+      "countryOrRegion": "Spain",
+      "localLanguage": "es",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 2,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 650,
+      "universityName": "V. N. Karazin Kharkiv National University",
+      "countryOrRegion": "Ukraine",
+      "localLanguage": "uk",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 4,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 652,
+      "universityName": "Beijing University of Technology",
+      "countryOrRegion": "China (Mainland)",
+      "localLanguage": "zh",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 654,
+      "universityName": "Lanzhou University",
+      "countryOrRegion": "China (Mainland)",
+      "localLanguage": "zh",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 659,
+      "universityName": "Ahlia University",
+      "countryOrRegion": "Bahrain",
+      "localLanguage": "ar",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 2,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 660,
+      "universityName": "Alfaisal University",
+      "countryOrRegion": "Saudi Arabia",
+      "localLanguage": "ar",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 662,
+      "universityName": "Donghua University",
+      "countryOrRegion": "China (Mainland)",
+      "localLanguage": "zh",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 663,
+      "universityName": "Gdańsk University of Technology",
+      "countryOrRegion": "Poland",
+      "localLanguage": "pl",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 3,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 665,
+      "universityName": "Indian Institute of Technology Gandhinagar (IITGN)",
+      "countryOrRegion": "India",
+      "localLanguage": "hi",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 669,
+      "universityName": "National Technical University of Ukraine \"Igor Sikorsky Kyiv Polytechnic Institute\"",
+      "countryOrRegion": "Ukraine",
+      "localLanguage": "uk",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 670,
+      "universityName": "Northwest Agriculture and Forestry University",
+      "countryOrRegion": "China (Mainland)",
+      "localLanguage": "zh",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 672,
+      "universityName": "Politecnico di Bari",
+      "countryOrRegion": "Italy",
+      "localLanguage": "it",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 675,
+      "universityName": "Tokyo University of Science",
+      "countryOrRegion": "Japan",
+      "localLanguage": "ja",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 676,
+      "universityName": "Universidad San Francisco de Quito USFQ",
+      "countryOrRegion": "Ecuador",
+      "localLanguage": "es",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 678,
+      "universityName": "Universidad de Montevideo (UM)",
+      "countryOrRegion": "Uruguay",
+      "localLanguage": "es",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 679,
+      "universityName": "Universidade Federal de Santa Catarina",
+      "countryOrRegion": "Brazil",
+      "localLanguage": "pt",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 681,
+      "universityName": "Universidade de Brasília",
+      "countryOrRegion": "Brazil",
+      "localLanguage": "pt",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 683,
+      "universityName": "Universiti Malaysia Terengganu (UMT)",
+      "countryOrRegion": "Malaysia",
+      "localLanguage": "ms",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 684,
+      "universityName": "University of Bari",
+      "countryOrRegion": "Italy",
+      "localLanguage": "it",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 2,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 687,
+      "universityName": "University of Greenwich",
+      "countryOrRegion": "United Kingdom",
+      "localLanguage": "en",
+      "queryCount": 8,
+      "successfulQueries": 8,
+      "semanticSurfaces": 4,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 688,
+      "universityName": "University of Hyderabad",
+      "countryOrRegion": "India",
+      "localLanguage": "hi",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 692,
+      "universityName": "University of Modena and Reggio Emilia",
+      "countryOrRegion": "Italy",
+      "localLanguage": "it",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 694,
+      "universityName": "University of Palermo",
+      "countryOrRegion": "Italy",
+      "localLanguage": "it",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 695,
+      "universityName": "University of Salerno",
+      "countryOrRegion": "Italy",
+      "localLanguage": "it",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 698,
+      "universityName": "University of Wroclaw",
+      "countryOrRegion": "Poland",
+      "localLanguage": "pl",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 0,
+      "outcome": "blocked_null_boundary_confirmed"
+    },
+    {
+      "qsRow": 700,
+      "universityName": "Universität Duisburg-Essen",
+      "countryOrRegion": "Germany",
+      "localLanguage": "de",
+      "queryCount": 12,
+      "successfulQueries": 12,
+      "semanticSurfaces": 1,
+      "outcome": "blocked_null_boundary_confirmed"
+    }
+  ],
+  "liveChecks": [
+    {
+      "qsRow": 604,
+      "url": "https://www.brandeis.edu/its/software-systems/ai-tools/index.html",
+      "finalUrl": "https://www.brandeis.edu/its/software-systems/ai-tools/index.html",
+      "status": 403,
+      "contentType": "text/html",
+      "outcome": "live_fetch_boundary",
+      "contentLength": 0
+    },
+    {
+      "qsRow": 608,
+      "url": "https://its.syr.edu/aiforstudents/",
+      "finalUrl": "https://its.syr.edu/aiforstudents/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 5381
+    },
+    {
+      "qsRow": 610,
+      "url": "https://www.um.edu.mt/itservices/google/",
+      "finalUrl": "https://www.um.edu.mt/itservices/google/",
+      "status": 200,
+      "contentType": "text/html",
+      "outcome": "reachable_official_source",
+      "contentLength": 21603
+    },
+    {
+      "qsRow": 612,
+      "url": "https://it.pte.hu/hu/it/szolgaltatasok/szoftver-licencek",
+      "finalUrl": "https://it.pte.hu/hu/it/szolgaltatasok/szoftver-licencek",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 28298
+    },
+    {
+      "qsRow": 614,
+      "url": "https://biblioteka.vdu.lt/en/web-of-science-and-scopus-artificial-intelligence-tools/",
+      "finalUrl": "https://biblioteka.vdu.lt/en/web-of-science-and-scopus-artificial-intelligence-tools/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 2536
+    },
+    {
+      "qsRow": 616,
+      "url": "https://news.unm.edu/news/unm-announces-ai-tools-for-zoom-microsoft-and-apple",
+      "finalUrl": "https://news.unm.edu/news/unm-announces-ai-tools-for-zoom-microsoft-and-apple",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 6464
+    },
+    {
+      "qsRow": 616,
+      "url": "https://airesources.unm.edu/tools-and-training/microsoft-365-copilot.html",
+      "finalUrl": "https://airesources.unm.edu/tools-and-training/microsoft-365-copilot.html",
+      "status": 200,
+      "contentType": "text/html",
+      "outcome": "reachable_official_source",
+      "contentLength": 10363
+    },
+    {
+      "qsRow": 617,
+      "url": "https://researchguides.uoregon.edu/using-generative-AI/tools",
+      "finalUrl": "https://researchguides.uoregon.edu/using-generative-AI/tools",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 6864
+    },
+    {
+      "qsRow": 617,
+      "url": "https://service.uoregon.edu/TDClient/2030/Portal/Requests/Service/51614/AI-Subscription-based-Licenses-Purchase-Request",
+      "finalUrl": "https://service.uoregon.edu/TDClient/2030/Portal/Requests/Service/51614/AI-Subscription-based-Licenses-Purchase-Request",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 2592
+    },
+    {
+      "qsRow": 620,
+      "url": "http://lib.buet.ac.bd/home/index.php/ppage/com/software_services",
+      "finalUrl": "http://lib.buet.ac.bd/home/index.php/ppage/com/software_services",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 1372
+    },
+    {
+      "qsRow": 624,
+      "url": "https://olis.kmu.edu.tw/index.php/en-gb/research-resource/explore-ai/ai-tools-quick-guide",
+      "finalUrl": "https://olis.kmu.edu.tw/index.php/en-gb/research-resource/explore-ai/ai-tools-quick-guide",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 19120
+    },
+    {
+      "qsRow": 633,
+      "url": "https://www.maynoothuniversity.ie/student-success/your-academic-journey/how-can-i-use-genai-support-my-learning",
+      "finalUrl": "https://www.maynoothuniversity.ie/student-success/your-academic-journey/how-can-i-use-genai-support-my-learning",
+      "status": 403,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "live_fetch_boundary",
+      "contentLength": 0
+    },
+    {
+      "qsRow": 634,
+      "url": "https://www.uni-marburg.de/en/hrz/services/ai-services/chat-ai",
+      "finalUrl": "https://www.uni-marburg.de/en/hrz/services/ai-services/chat-ai",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 9535
+    },
+    {
+      "qsRow": 634,
+      "url": "https://www.uni-marburg.de/en/hrz/services/ai-services",
+      "finalUrl": "https://www.uni-marburg.de/en/hrz/services/ai-services",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 11252
+    },
+    {
+      "qsRow": 635,
+      "url": "https://it.rutgers.edu/2025/06/24/chatgpt-edu-subscriptions-now-available-in-rutgers-software-portal/",
+      "finalUrl": "https://it.rutgers.edu/2025/06/24/chatgpt-edu-subscriptions-now-available-in-rutgers-software-portal/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 7150
+    },
+    {
+      "qsRow": 635,
+      "url": "https://it.rutgers.edu/2025/01/16/update-on-ai-resources-and-tools-at-rutgers/",
+      "finalUrl": "https://it.rutgers.edu/2025/01/16/update-on-ai-resources-and-tools-at-rutgers/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 8602
+    },
+    {
+      "qsRow": 635,
+      "url": "https://it.rutgers.edu/ai/microsoft-365-copilot/",
+      "finalUrl": "https://it.rutgers.edu/ai/microsoft-365-copilot/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 6346
+    },
+    {
+      "qsRow": 635,
+      "url": "https://idt.camden.rutgers.edu/getting-started-with-notebooklm/",
+      "finalUrl": "https://idt.camden.rutgers.edu/getting-started-with-notebooklm/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 6478
+    },
+    {
+      "qsRow": 640,
+      "url": "https://carleton.ca/ai/microsoft-copilot/",
+      "finalUrl": "https://carleton.ca/ai/microsoft-copilot/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 2978
+    },
+    {
+      "qsRow": 640,
+      "url": "https://library.carleton.ca/library-news/ai-tools-now-available-scopus-and-web-science",
+      "finalUrl": "https://library.carleton.ca/library-news/ai-tools-now-available-scopus-and-web-science",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 2174
+    },
+    {
+      "qsRow": 641,
+      "url": "https://technology.gsu.edu/technology-services/productivity-collaboration/microsoft-copilot/",
+      "finalUrl": "https://technology.gsu.edu/technology-services/productivity-collaboration/microsoft-copilot/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 11846
+    },
+    {
+      "qsRow": 642,
+      "url": "https://chatgpt.hkmu.edu.hk/",
+      "finalUrl": "https://chatgpt.hkmu.edu.hk/",
+      "status": 200,
+      "contentType": "text/html",
+      "outcome": "reachable_official_source",
+      "contentLength": 2649
+    },
+    {
+      "qsRow": 644,
+      "url": "https://www.tudublin.ie/connect/technology-services/guides/microsoft-copilot-/",
+      "finalUrl": "https://www.tudublin.ie/connect/technology-services/guides/microsoft-copilot-/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 9394
+    },
+    {
+      "qsRow": 648,
+      "url": "https://catsai.uky.edu/news/microsoft-copilot-now-available-uk-students-faculty-and-staff",
+      "finalUrl": "https://catsai.uky.edu/news/microsoft-copilot-now-available-uk-students-faculty-and-staff",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 2614
+    },
+    {
+      "qsRow": 651,
+      "url": "https://tech.wayne.edu/help/wsuai",
+      "finalUrl": "https://tech.wayne.edu/help/wsuai",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 3852
+    },
+    {
+      "qsRow": 651,
+      "url": "https://services.wayne.edu/TDClient/277/Portal/KB/Article/20301/How-to-access-and-use-WarriorGPT-Wayne-State-s-standalone-generative-AI-chat-bot",
+      "finalUrl": "https://services.wayne.edu/TDClient/277/Portal/KB/Article/20301/How-to-access-and-use-WarriorGPT-Wayne-State-s-standalone-generative-AI-chat-bot",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 3843
+    },
+    {
+      "qsRow": 656,
+      "url": "https://www.pucv.cl/pucv/noticias/vida-universitaria/universidad-habilita-herramienta-gemini-ia-para-fortalecer-el-trabajo",
+      "finalUrl": "https://www.pucv.cl/pucv/noticias/vida-universitaria/universidad-habilita-herramienta-gemini-ia-para-fortalecer-el-trabajo",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 3878
+    },
+    {
+      "qsRow": 657,
+      "url": "https://ai.wfu.edu/licensed-ai-tools/",
+      "finalUrl": "https://ai.wfu.edu/licensed-ai-tools/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 8658
+    },
+    {
+      "qsRow": 658,
+      "url": "https://cri.agh.edu.pl/en/services/microsoft-365",
+      "finalUrl": "https://cri.agh.edu.pl/en/services/microsoft-365",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 5698
+    },
+    {
+      "qsRow": 667,
+      "url": "https://www.keele.ac.uk/media/keeleuniversity/policyzone20/studentandacademicservices/AI-in-Education-Framework-2025-1.pdf",
+      "finalUrl": "https://www.keele.ac.uk/media/keeleuniversity/policyzone20/studentandacademicservices/AI-in-Education-Framework-2025-1.pdf",
+      "status": 200,
+      "contentType": "application/pdf",
+      "outcome": "reachable_official_source",
+      "contentLength": 14921
+    },
+    {
+      "qsRow": 668,
+      "url": "https://libguides.mdx.ac.uk/c.php?g=724740&p=5270486",
+      "finalUrl": "https://libguides.mdx.ac.uk/c.php?g=724740&p=5270486",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 2951
+    },
+    {
+      "qsRow": 674,
+      "url": "https://services.newschool.edu/TDClient/32/Portal/KB/Category/186/Gemini",
+      "finalUrl": "https://services.newschool.edu/TDClient/32/Portal/KB/Category/186/Gemini",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 2142
+    },
+    {
+      "qsRow": 674,
+      "url": "https://services.newschool.edu/TDClient/32/Portal/Requests/Service/102/Google-NotebookLM",
+      "finalUrl": "https://services.newschool.edu/TDClient/32/Portal/Requests/Service/102/Google-NotebookLM",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 4068
+    },
+    {
+      "qsRow": 685,
+      "url": "https://blogs.brighton.ac.uk/talkingaboutteaching/2024/06/05/licensed-generative-ai-tools-at-uob/",
+      "finalUrl": "https://blogs.brighton.ac.uk/talkingaboutteaching/2024/06/05/licensed-generative-ai-tools-at-uob/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 11220
+    },
+    {
+      "qsRow": 690,
+      "url": "https://www.umaryland.edu/cits/training/microsoft-365/copilot/",
+      "finalUrl": "https://www.umaryland.edu/cits/training/microsoft-365/copilot/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 8350
+    },
+    {
+      "qsRow": 690,
+      "url": "https://www.umaryland.edu/cits/software/microsoft-365-copilot/",
+      "finalUrl": "https://www.umaryland.edu/cits/software/microsoft-365-copilot/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 3995
+    },
+    {
+      "qsRow": 691,
+      "url": "https://ai.umbc.edu/news/post/154186/",
+      "finalUrl": "https://ai.umbc.edu/news/post/154186/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 2459
+    },
+    {
+      "qsRow": 691,
+      "url": "https://my3.my.umbc.edu/groups/doit/posts/148330",
+      "finalUrl": "https://my3.my.umbc.edu/groups/doit/posts/148330",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "outcome": "reachable_official_source",
+      "contentLength": 5126
+    },
+    {
+      "qsRow": 697,
+      "url": "https://blog.westminster.ac.uk/ai/wp-content/uploads/sites/137/2025/09/External-GenAI-Guidance_2025.pdf",
+      "finalUrl": "https://blog.westminster.ac.uk/ai/wp-content/uploads/sites/137/2025/09/External-GenAI-Guidance_2025.pdf",
+      "status": 200,
+      "contentType": "application/pdf",
+      "outcome": "reachable_official_source",
+      "contentLength": 3955
+    }
+  ],
+  "manualBoundaryCases": [
+    {
+      "qsRow": 605,
+      "outcome": "excluded_expired_trial",
+      "rationale": "KTU Scopus AI trial ended 14 April 2024."
+    },
+    {
+      "qsRow": 621,
+      "outcome": "excluded_expired_trial",
+      "rationale": "CZU Scopus AI page states trial access only until October 2024."
+    },
+    {
+      "qsRow": 636,
+      "outcome": "excluded_generic_vendor_links",
+      "rationale": "Thapar page lists free and paid public Grammarly versions without institutional entitlement."
+    },
+    {
+      "qsRow": 650,
+      "outcome": "excluded_third_party_national_offer",
+      "rationale": "Google's Ukraine-wide student promotion is not a Karazin licence, procurement, account path, or self-hosted service."
+    },
+    {
+      "qsRow": 655,
+      "outcome": "excluded_policy_mentions",
+      "rationale": "NMBU guidance permits or discusses tools but does not establish institutional access."
+    },
+    {
+      "qsRow": 659,
+      "outcome": "excluded_false_heuristic",
+      "rationale": "Ahlia access phrases refer to assessment and grades, not the mentioned AI products."
+    },
+    {
+      "qsRow": 661,
+      "outcome": "excluded_teaching_resource",
+      "rationale": "Bournemouth teaching resources link public tools but do not establish university provision."
+    },
+    {
+      "qsRow": 663,
+      "outcome": "excluded_workshop_tools",
+      "rationale": "Gdansk workshop uses public tools and requires a Gmail account; it is not campus entitlement."
+    }
+  ],
+  "failures": []
+}

@@ -30,6 +30,8 @@ export const aiTools = [
   "chatgpt_atlas",
   "openclaw",
   "grammarly",
+  "cursor_ai",
+  "iris_ai",
   "slack_ai",
   "cisco_ai_assistant",
   "webex_ai",
@@ -454,6 +456,20 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     label: "Grammarly",
     provider: "Grammarly",
     aliases: ["Grammarly", "Grammarly for Education"],
+    category: "commercial_assistant"
+  },
+  cursor_ai: {
+    slug: "cursor_ai",
+    label: "Cursor AI",
+    provider: "Anysphere",
+    aliases: ["Cursor AI", "Cursor"],
+    category: "commercial_assistant"
+  },
+  iris_ai: {
+    slug: "iris_ai",
+    label: "Iris.ai",
+    provider: "Iris.ai",
+    aliases: ["IRIS.AI", "Iris.ai", "Iris AI"],
     category: "commercial_assistant"
   },
   slack_ai: {

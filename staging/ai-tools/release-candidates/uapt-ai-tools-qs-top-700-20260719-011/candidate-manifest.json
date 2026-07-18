@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "uapt-ai-tools-candidate-manifest-v1",
+  "candidateOnly": true,
+  "runId": "uapt-ai-tools-qs-top-700-20260719-011",
+  "generatedAt": "2026-07-18T19:37:52.600Z",
+  "baseline": {
+    "path": "staging/ai-tools/release-candidates/uapt-ai-tools-qs-top-600-20260718-009/tool_records.json",
+    "runId": "uapt-ai-tools-qs-top-600-20260718-009",
+    "sha256": "999035d954e75cadfd06fb263010f79ed0369823e4f7664582baa2cb983c5d1b",
+    "records": 985,
+    "immutable": true
+  },
+  "extension": {
+    "path": "staging/ai-tools/release-candidates/uapt-ai-tools-qs-601-700-20260719-011/tool_records.json",
+    "runId": "uapt-ai-tools-qs-601-700-20260719-011",
+    "records": 71,
+    "universities": 28,
+    "sources": 39
+  },
+  "output": {
+    "path": "staging/ai-tools/release-candidates/uapt-ai-tools-qs-top-700-20260719-011/tool_records.json",
+    "records": 1056,
+    "sha256": "7dae7b678b15fd9264963edb2eca0c22384bdf44c2d38a3a919d319f52247eb5"
+  },
+  "ledger": {
+    "path": "staging/ai-tools/audits/qs-601-700-ai-tools-audit-ledger-20260719-011.json",
+    "rows": 100
+  },
+  "semanticReview": {
+    "path": "staging/ai-tools/audits/qs-601-700-high-risk-semantic-review-20260719-011.json",
+    "reviewed": 241
+  }
+}

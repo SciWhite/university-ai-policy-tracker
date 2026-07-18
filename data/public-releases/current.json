@@ -1,8 +1,8 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260718-009",
-  "publishedAt": "2026-07-18T13:00:00.000Z",
-  "description": "QS top-600 AI tools 009 production release: fully re-audits QS rows 501-600 and extends the immutable Top-500 008 baseline with repaired official-source records.",
+  "releaseId": "public-release-20260719-011",
+  "publishedAt": "2026-07-18T19:37:52.600Z",
+  "description": "QS top-700 AI tools 011 release: repairs and fully re-audits exact QS source rows 601-700 while preserving the immutable 009 Top-600 production baseline.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -805,16 +805,18 @@
     "staging/uapt-runs/uapt-ai-tools-qs-top-430-20260715-005",
     "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-07-08T05-22-35-416Z-tufts-university-895e3cb8119d",
     "staging/uapt-runs/uapt-ai-tools-qs-top-500-20260718-008",
-    "staging/uapt-runs/uapt-ai-tools-qs-top-600-20260718-009"
+    "staging/uapt-runs/uapt-ai-tools-qs-top-600-20260718-009",
+    "staging/uapt-runs/uapt-ai-tools-qs-top-700-20260719-011"
   ],
   "notes": [
-    "Publishes 985 official-source AI tool records for 338 universities from 416 official university sources.",
-    "The repaired QS rows 501-600 extension contains 66 records across 24 universities from 28 official sources.",
-    "All 100 QS source rows were re-audited; 24 rows have positive records, 76 remain blocked/null, and none is asserted as a verified zero.",
-    "The repair run corrected public-suffix domain errors, repeated official-domain discovery, retained per-query and direct-fetch traces, and requires semantic QA rather than treating HTTP success as evidence of absence.",
-    "The immutable QS Top-500 008 baseline is preserved byte-for-byte at SHA-256 2086267d34502b5441c5f8b08f8578498850b55783f15c1a31ed28a37bf44f3f.",
-    "Promotion requires the official OpenClaw schema validator, dataset release validator, public contract, public-data audit, full pnpm check, and production build to pass.",
+    "Publishes 1056 official-source AI tool records for 366 universities from 455 official sources.",
+    "The QS rows 601-700 extension contains 71 records across 28 universities from 39 official sources.",
+    "All 100 exact source rows were re-audited with 1108 multilingual query traces; 0 Firecrawl failures remain explicit search boundaries and no blocked row is asserted as a verified zero.",
+    "All 241 semantic candidate/evidence surfaces have explicit source-level decisions.",
+    "The immutable Top-600 009 baseline is preserved byte-for-byte at SHA-256 999035d954e75cadfd06fb263010f79ed0369823e4f7664582baa2cb983c5d1b.",
+    "Promotion requires independent QA, release validation, public-data audit, full pnpm check, production build, and live API verification.",
     "Tracker metadata is open licensed; official source documents retain their original rights."
   ],
-  "previousReleaseId": "public-release-20260718-008"
+  "previousReleaseId": "public-release-20260718-009",
+  "candidateOnly": true
 }
