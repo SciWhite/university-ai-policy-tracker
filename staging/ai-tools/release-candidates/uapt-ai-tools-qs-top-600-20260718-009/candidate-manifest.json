@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "uapt-ai-tools-candidate-manifest-v1",
+  "candidateOnly": true,
+  "runId": "uapt-ai-tools-qs-top-600-20260718-009",
+  "generatedAt": "2026-07-18T13:00:00.000Z",
+  "baseline": {
+    "path": "staging/ai-tools/release-candidates/uapt-ai-tools-qs-top-500-20260718-008/tool_records.json",
+    "sha256": "2086267d34502b5441c5f8b08f8578498850b55783f15c1a31ed28a37bf44f3f",
+    "records": 919,
+    "immutable": true
+  },
+  "extension": {
+    "path": "staging/ai-tools/release-candidates/uapt-ai-tools-qs-501-600-20260718-009/tool_records.json",
+    "records": 66
+  },
+  "output": {
+    "path": "staging/ai-tools/release-candidates/uapt-ai-tools-qs-top-600-20260718-009/tool_records.json",
+    "records": 985
+  },
+  "highRiskReview": {
+    "path": "staging/ai-tools/audits/qs-501-600-high-risk-semantic-review-20260718-009.json",
+    "reviewed": 48
+  }
+}

@@ -1,0 +1,1936 @@
+{
+  "schemaVersion": "uapt-ai-tools-independent-qa-v2",
+  "runId": "uapt-ai-tools-qs-top-600-20260718-009",
+  "generatedAt": "2026-07-18T13:05:14.435Z",
+  "method": "Independent Firecrawl re-scrape with standard-HTTP retry for HTML pages. Positive evidence requires the exact original-language quote. Blocked samples come from the full repair pass, are scanned for both product and institutional-access semantics, and every semantic hit must either become a record or carry an explicit evidence-bound exclusion adjudication.",
+  "scope": {
+    "positiveRecords": 66,
+    "blockedSamples": 51,
+    "regionGroups": [
+      "United Arab Emirates",
+      "Taiwan",
+      "Hungary",
+      "Italy",
+      "Russia",
+      "Malaysia",
+      "United States",
+      "Chile",
+      "United Kingdom",
+      "Germany",
+      "South Korea",
+      "Lebanon",
+      "China (Mainland)",
+      "Saudi Arabia",
+      "Indonesia",
+      "Spain",
+      "Türkiye",
+      "Greece",
+      "Estonia",
+      "Czechia",
+      "Austria",
+      "Uruguay",
+      "Philippines",
+      "Pakistan",
+      "Israel",
+      "India",
+      "Slovakia",
+      "Vietnam",
+      "Cyprus",
+      "France",
+      "Ukraine",
+      "Bulgaria",
+      "Venezuela"
+    ]
+  },
+  "summary": {
+    "confirmed_positive": 66,
+    "false_positive": 0,
+    "false_negative": 0,
+    "sampled_page_no_access_evidence": 38,
+    "adjudicated_exclusion": 13,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "kind": "blocked",
+      "qsRow": 501,
+      "universityName": "Zayed University",
+      "countryOrRegion": "United Arab Emirates",
+      "url": "https://zuscholars.zu.ac.ae/cgi/viewcontent.cgi?article=7879&context=works",
+      "httpStatus": 200,
+      "finalUrl": "https://zuscholars.zu.ac.ae/cgi/viewcontent.cgi?article=7879&context=works",
+      "contentHash": "2da2d30ffa10b1d384bc1ea74e0456b790319979ff45badd19bc33bd5f5287d6",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT"
+        ],
+        "accessTerms": [
+          "available to"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "zuscholars.zu.ac.ae",
+        "rationale": "Repository paper about a prototype chatbot; it does not document a current university-provided or endorsed service."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "positive",
+      "recordId": "hasselt-university:microsoft_copilot:MS Copilot Pro",
+      "qsRow": 502,
+      "url": "https://www.uhasselt.be/en/aparte-sites-uhasselt-en/ai-hasselt-university/ai-tools",
+      "httpStatus": 200,
+      "finalUrl": "https://www.uhasselt.be/en/aparte-sites-uhasselt-en/ai-hasselt-university/ai-tools",
+      "contentHash": "f7b9bd956a177ecd93a37459ec7e665f45518f1b677b2b452e01326f5f77cd44",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "hasselt-university:gemini:Gemini Pro",
+      "qsRow": 502,
+      "url": "https://www.uhasselt.be/en/aparte-sites-uhasselt-en/ai-hasselt-university/ai-tools",
+      "httpStatus": 200,
+      "finalUrl": "https://www.uhasselt.be/en/aparte-sites-uhasselt-en/ai-hasselt-university/ai-tools",
+      "contentHash": "f7b9bd956a177ecd93a37459ec7e665f45518f1b677b2b452e01326f5f77cd44",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 503,
+      "universityName": "Taipei Medical University (TMU)",
+      "countryOrRegion": "Taiwan",
+      "url": "https://medicine-en.tmu.edu.tw/issue-comle-nguyen-quoc-khanh-professional-master-program-in-artificial-intelligence-in-medicine/",
+      "httpStatus": 200,
+      "finalUrl": "https://medicine-en.tmu.edu.tw/issue-comle-nguyen-quoc-khanh-professional-master-program-in-artificial-intelligence-in-medicine/",
+      "contentHash": "716a8394e0c4c148324456a3ab1fd7181efb1138967bed453049479e429fae8b",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "tulane-university:microsoft_copilot:Copilot (Microsoft)",
+      "qsRow": 504,
+      "url": "https://libguides.tulane.edu/AI/tools",
+      "httpStatus": 200,
+      "finalUrl": "https://libguides.tulane.edu/AI/tools",
+      "contentHash": "05780f58fe324f1adc336d1e57a4a74bec150af50d1f6d73444089774717456a",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 505,
+      "universityName": "University of Szeged",
+      "countryOrRegion": "Hungary",
+      "url": "https://www.sed.inf.u-szeged.hu/list/ai",
+      "httpStatus": 200,
+      "finalUrl": "https://www.sed.inf.u-szeged.hu/list/ai",
+      "contentHash": "387058a04d499bf727b6c8b80ab4a3c356253eb61cbf122f69f41aa3093e4ffc",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-texas-at-dallas:institutional_ai_service:CometAI",
+      "qsRow": 506,
+      "url": "https://oit.utdallas.edu/about/oit-ai-studio/",
+      "httpStatus": 200,
+      "finalUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
+      "contentHash": "f0a5d912251f0cb2a984edc7f28fd88db557a6d38908b86eb71e15bcd96f1bb8",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-texas-at-dallas:microsoft_copilot:Microsoft Copilot Chat",
+      "qsRow": 506,
+      "url": "https://oit.utdallas.edu/about/oit-ai-studio/",
+      "httpStatus": 200,
+      "finalUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
+      "contentHash": "f0a5d912251f0cb2a984edc7f28fd88db557a6d38908b86eb71e15bcd96f1bb8",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 507,
+      "universityName": "Canadian University Dubai",
+      "countryOrRegion": "United Arab Emirates",
+      "url": "https://www.cud.ac.ae/programs/undergraduate/bachelor-of-science-in-design-and-artificial-intelligence",
+      "httpStatus": 200,
+      "finalUrl": "https://www.cud.ac.ae/programs/undergraduate/bachelor-of-science-in-design-and-artificial-intelligence",
+      "contentHash": "27d04a349ddae50dedf66428c8afbb392c0f201b3acb04bdcdf9c4e458980820",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 508,
+      "universityName": "National Chengchi University",
+      "countryOrRegion": "Taiwan",
+      "url": "http://ici.nccu.edu.tw/eng/PageDoc?fid=14261",
+      "httpStatus": 200,
+      "finalUrl": "http://ici.nccu.edu.tw/eng/PageDoc?fid=14261",
+      "contentHash": "e6b0ca7da5e7625323478dfff8edc701e0168cb66edaeffad65e09bedb30d328",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT"
+        ],
+        "accessTerms": [
+          "students and faculty"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "ici.nccu.edu.tw",
+        "rationale": "Course and program copy mentions exploring ChatGPT; it does not provide institutional tool access."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-eastern-finland:scopus_ai:Scopus AI",
+      "qsRow": 509,
+      "url": "https://www.uef.fi/en/article/artificial-intelligence-in-information-retrieval-scopus-ai-and-web-of-science-research-assistant",
+      "httpStatus": 200,
+      "finalUrl": "https://www.uef.fi/en/article/artificial-intelligence-in-information-retrieval-scopus-ai-and-web-of-science-research-assistant",
+      "contentHash": "3676ae672076f35489c086ffaacee3ef3245d42407d433dc0ea3febbf97808f1",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-eastern-finland:web_of_science_research_assistant:Web of Science Research Assistant",
+      "qsRow": 509,
+      "url": "https://www.uef.fi/en/article/artificial-intelligence-in-information-retrieval-scopus-ai-and-web-of-science-research-assistant",
+      "httpStatus": 200,
+      "finalUrl": "https://www.uef.fi/en/article/artificial-intelligence-in-information-retrieval-scopus-ai-and-web-of-science-research-assistant",
+      "contentHash": "3676ae672076f35489c086ffaacee3ef3245d42407d433dc0ea3febbf97808f1",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-eastern-finland:microsoft_copilot:Microsoft 365 Copilot Enterprise",
+      "qsRow": 509,
+      "url": "https://www.uef.fi/en/library/artificial-intelligence-in-information-retrieval",
+      "httpStatus": 200,
+      "finalUrl": "https://www.uef.fi/en/library/artificial-intelligence-in-information-retrieval",
+      "contentHash": "5190a73e8e9bccf2e8897808012b9d5927f5df600d90b010090725872396979d",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-eastern-finland:primo_research_assistant:UEF Primo AI Research Assistant",
+      "qsRow": 509,
+      "url": "https://www.uef.fi/en/library/artificial-intelligence-in-information-retrieval",
+      "httpStatus": 200,
+      "finalUrl": "https://www.uef.fi/en/library/artificial-intelligence-in-information-retrieval",
+      "contentHash": "5190a73e8e9bccf2e8897808012b9d5927f5df600d90b010090725872396979d",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "the-university-of-tennessee-knoxville:claude:Anthropic Claude",
+      "qsRow": 510,
+      "url": "https://oit.utk.edu/ai/aihub/",
+      "httpStatus": 200,
+      "finalUrl": "https://oit.utk.edu/ai/aihub/",
+      "contentHash": "1879e5c5c06aa0f0853f28352b92c61d8fb19245a9c11c6462f1c5be7633dfda",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "the-university-of-tennessee-knoxville:gemini:Google Gemini",
+      "qsRow": 510,
+      "url": "https://oit.utk.edu/ai/aihub/",
+      "httpStatus": 200,
+      "finalUrl": "https://oit.utk.edu/ai/aihub/",
+      "contentHash": "1879e5c5c06aa0f0853f28352b92c61d8fb19245a9c11c6462f1c5be7633dfda",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "the-university-of-tennessee-knoxville:llama:Meta Llama",
+      "qsRow": 510,
+      "url": "https://oit.utk.edu/ai/aihub/",
+      "httpStatus": 200,
+      "finalUrl": "https://oit.utk.edu/ai/aihub/",
+      "contentHash": "1879e5c5c06aa0f0853f28352b92c61d8fb19245a9c11c6462f1c5be7633dfda",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "the-university-of-tennessee-knoxville:chatgpt:OpenAI ChatGPT",
+      "qsRow": 510,
+      "url": "https://oit.utk.edu/ai/aihub/",
+      "httpStatus": 200,
+      "finalUrl": "https://oit.utk.edu/ai/aihub/",
+      "contentHash": "1879e5c5c06aa0f0853f28352b92c61d8fb19245a9c11c6462f1c5be7633dfda",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "the-university-of-tennessee-knoxville:institutional_ai_service:UT AI Hub",
+      "qsRow": 510,
+      "url": "https://oit.utk.edu/ai/aihub/",
+      "httpStatus": 200,
+      "finalUrl": "https://oit.utk.edu/ai/aihub/",
+      "contentHash": "1879e5c5c06aa0f0853f28352b92c61d8fb19245a9c11c6462f1c5be7633dfda",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "the-university-of-tennessee-knoxville:perplexity:Perplexity",
+      "qsRow": 510,
+      "url": "https://oit.utk.edu/ai/aihub/",
+      "httpStatus": 200,
+      "finalUrl": "https://oit.utk.edu/ai/aihub/",
+      "contentHash": "1879e5c5c06aa0f0853f28352b92c61d8fb19245a9c11c6462f1c5be7633dfda",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "the-university-of-tennessee-knoxville:grok:xAI Grok",
+      "qsRow": 510,
+      "url": "https://oit.utk.edu/ai/aihub/",
+      "httpStatus": 200,
+      "finalUrl": "https://oit.utk.edu/ai/aihub/",
+      "contentHash": "1879e5c5c06aa0f0853f28352b92c61d8fb19245a9c11c6462f1c5be7633dfda",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 511,
+      "universityName": "University of Siena",
+      "countryOrRegion": "Italy",
+      "url": "https://allinclusive.unisi.it/en/2024/07/05/workshop-series-studying-with-generative-ai/",
+      "httpStatus": 200,
+      "finalUrl": "https://allinclusive.unisi.it/en/2024/07/05/workshop-series-studying-with-generative-ai/",
+      "contentHash": "0a08b0b44fce07d571f80e4b0c03282ea553a44ae743925d7bdbd924018506ae",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 512,
+      "universityName": "Peter the Great St. Petersburg Polytechnic University",
+      "countryOrRegion": "Russia",
+      "url": "https://english.spbstu.ru/media/news/international_activities/a-retraining-program-for-faculty-of-the-national-center-for-artificial-intelligence-and-robotics-of-/",
+      "httpStatus": 200,
+      "finalUrl": "https://english.spbstu.ru/media/news/international_activities/a-retraining-program-for-faculty-of-the-national-center-for-artificial-intelligence-and-robotics-of-/",
+      "contentHash": "28431104e961df16babbef0f3ba6914804b8949b8fbdd935f7fb1b3d2968e535",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "ulster-university:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 513,
+      "url": "https://guides.library.ulster.ac.uk/c.php?g=728295&p=5303879",
+      "httpStatus": 200,
+      "finalUrl": "https://guides.library.ulster.ac.uk/c.php?g=728295&p=5303879",
+      "contentHash": "95a9ad10c01295f85be06351e163671d881180a89c8706bc044849f54b9f2235",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 514,
+      "universityName": "Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA)",
+      "countryOrRegion": "Malaysia",
+      "url": "https://news.umpsa.edu.my/experts/ump-library-provides-best-service-new-norm",
+      "httpStatus": 200,
+      "finalUrl": "https://news.umpsa.edu.my/experts/ump-library-provides-best-service-new-norm",
+      "contentHash": "aebd8b754ca502a18f46930c63d58c7b26a9c97507ca989d136c0c27c77f65a5",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "access for"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 515,
+      "universityName": "City University of New York",
+      "countryOrRegion": "United States",
+      "url": "https://commons.hostos.cuny.edu/edtech/faculty/teaching-tools-guides-faculty-knowledge-base/llms-vs-conversational-search-engines/",
+      "httpStatus": 200,
+      "finalUrl": "https://commons.hostos.cuny.edu/edtech/faculty/teaching-tools-guides-faculty-knowledge-base/llms-vs-conversational-search-engines/",
+      "contentHash": "aac81a086b7ab70bce4dd5c02e6ad1dee4e07ac591080ed5c12ea5ae70e036a3",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT",
+          "Perplexity",
+          "Claude",
+          "claude",
+          "perplexity",
+          "Adobe Express"
+        ],
+        "accessTerms": [
+          "Access for",
+          "Log in with"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "commons.hostos.cuny.edu",
+        "rationale": "Evidence is specific to Hostos Community College and does not establish CUNY-wide access for the ranked university system."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 516,
+      "universityName": "International Islamic University Malaysia (IIUM)",
+      "countryOrRegion": "Malaysia",
+      "url": "http://irep.iium.edu.my/view/type/article/2020.default.html",
+      "httpStatus": 200,
+      "finalUrl": "http://irep.iium.edu.my/view/type/article/2020.default.html",
+      "contentHash": "ca026ce682a1f10d5a94806f9edd8ef8b3e527d63f777598ba9e1898b84c828a",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "perplexity"
+        ],
+        "accessTerms": [
+          "students and staff"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "irep.iium.edu.my",
+        "rationale": "Repository publication-index text produces lexical matches but does not document an institutional AI service."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 517,
+      "universityName": "Universidad de Concepción",
+      "countryOrRegion": "Chile",
+      "url": "https://alumni.udec.cl/beneficioclick/349",
+      "httpStatus": 200,
+      "finalUrl": "https://alumni.udec.cl/beneficioclick/349",
+      "contentHash": "fccb143a250186232e0276def6161da2e2be8fde963a53389bed459a4f627e42",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 518,
+      "universityName": "University of Plymouth",
+      "countryOrRegion": "United Kingdom",
+      "url": "https://www.plymouth.ac.uk/whats-on/teaching-and-learning-showcase-2026",
+      "httpStatus": 200,
+      "finalUrl": "https://www.plymouth.ac.uk/whats-on/teaching-and-learning-showcase-2026",
+      "contentHash": "a12c988f5f7e8d0acdb2e374a9f5484df7f92bb71a3da87398717e8bf4c6b83e",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "students and staff"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 519,
+      "universityName": "Christian-Albrechts-University zu Kiel",
+      "countryOrRegion": "Germany",
+      "url": "https://www.uni-kiel.de/en/tf/faculty/authorised-representative",
+      "httpStatus": 200,
+      "finalUrl": "https://www.uni-kiel.de/en/tf/faculty/authorised-representative",
+      "contentHash": "f670b80c19c9f2b0e19533542a0db2dfa9b6de2ca2ed44c3039dae7b6d67a4c4",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "available to",
+          "all students"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 520,
+      "universityName": "Dongguk University",
+      "countryOrRegion": "South Korea",
+      "url": "https://pure.dongguk.edu/en/organisations/department-of-computer-science-and-artificial-intelligence/",
+      "httpStatus": 200,
+      "finalUrl": "https://pure.dongguk.edu/en/organisations/department-of-computer-science-and-artificial-intelligence/",
+      "contentHash": "68b29333df1e6e9e978035ae14c393dccad9424b413e89ad94671d9e6dada6fe",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 521,
+      "universityName": "Saint Joseph University of Beirut (USJ)",
+      "countryOrRegion": "Lebanon",
+      "url": "https://efai25.usj.edu.lb/",
+      "httpStatus": 200,
+      "finalUrl": "https://efai25.usj.edu.lb/",
+      "contentHash": "18386ccb43187e8e7a244b112834136ae78e97bda07482cb5165afcb153db799",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 522,
+      "universityName": "Zhengzhou University",
+      "countryOrRegion": "China (Mainland)",
+      "url": "http://gxb.zzu.edu.cn/en/oa/DArticle.aspx?type=view&id=202204028",
+      "httpStatus": 200,
+      "finalUrl": "http://gxb.zzu.edu.cn/en/oa/DArticle.aspx?type=view&id=202204028",
+      "contentHash": "3d4820037a027d4f7211b929c96eb1924ae7b614ba42b30a7d139ede0d053be1",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 523,
+      "universityName": "Umm Al-Qura University",
+      "countryOrRegion": "Saudi Arabia",
+      "url": "https://uqu.edu.sa/en/App/Degrees/1831",
+      "httpStatus": 200,
+      "finalUrl": "https://uqu.edu.sa/en/App/Degrees/1831",
+      "contentHash": "dfda83c6efac8011d0f9778b7569c7f009d76e077ce36047d7a13570dbe488e8",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 524,
+      "universityName": "Diponegoro University",
+      "countryOrRegion": "Indonesia",
+      "url": "https://ilpus.undip.ac.id/en/post/7814/visiting-lecturer-enhancing-critical-thinking-skills-in-the-use-of-generative-ai-fact-checking-and-decision-making-2.html",
+      "httpStatus": 200,
+      "finalUrl": "https://ilpus.undip.ac.id/en/post/7814/visiting-lecturer-enhancing-critical-thinking-skills-in-the-use-of-generative-ai-fact-checking-and-decision-making-2.html",
+      "contentHash": "b6b7583f0bbea781ac1c16c70c749e47fa79d9e0aa470d17d88cdede3ed98487",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT"
+        ],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "oregon-state-university:institutional_ai_service:OSU AI Career Assistant",
+      "qsRow": 525,
+      "url": "https://career.oregonstate.edu/resumes-cvs-cover-letters/ai-tools-career-development",
+      "httpStatus": 200,
+      "finalUrl": "https://career.oregonstate.edu/resumes-cvs-cover-letters/ai-tools-career-development",
+      "contentHash": "4ca78785171d61977b7def12fddcd5dcbd5727e8d064364b22b9b6c636a820c1",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "oregon-state-university:microsoft_copilot:Copilot Chat for Web",
+      "qsRow": 525,
+      "url": "https://technology.oregonstate.edu/all-stories/start-year-copilot-chat-your-generative-ai-companion-osu",
+      "httpStatus": 200,
+      "finalUrl": "https://technology.oregonstate.edu/all-stories/start-year-copilot-chat-your-generative-ai-companion-osu",
+      "contentHash": "f4fd33ae9c05ca8c11afe5aa58b3ded98d8c8a919e04f8913fc1eee10f9b18de",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 526,
+      "universityName": "University of the Basque Country",
+      "countryOrRegion": "Spain",
+      "url": "https://mikrokredentzialak.ehu.eus/en/activity/foundations-generative-artificial-intelligence-development-teaching-higher-education-ehu",
+      "httpStatus": 200,
+      "finalUrl": "https://mikrokredentzialak.ehu.eus/en/activity/foundations-generative-artificial-intelligence-development-teaching-higher-education-ehu",
+      "contentHash": "60a86fbede17f996b3b7453a3c313ddbda535a6ef03746760c089584ee5718f8",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 527,
+      "universityName": "Yeshiva University",
+      "countryOrRegion": "United States",
+      "url": "https://www.yu.edu/katz/ai",
+      "httpStatus": 200,
+      "finalUrl": "https://www.yu.edu/katz/ai",
+      "contentHash": "b781cd4859c8ac7c6ef8cbeb57fb32350ed6f51923a8e67ff6cabea288185e82",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT",
+          "AI chatbot"
+        ],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 528,
+      "universityName": "Istanbul University",
+      "countryOrRegion": "Türkiye",
+      "url": "https://service-yayin.istanbul.edu.tr/api/webclient/PdfProxy?url=https%3A%2F%2Fcdn.istanbul.edu.tr%2Ffile%2FJTA6CLJ8T5%2F05B541DE16A14633B172731F0E4C035D",
+      "httpStatus": 200,
+      "finalUrl": "https://service-yayin.istanbul.edu.tr/api/webclient/PdfProxy?url=https%3A%2F%2Fcdn.istanbul.edu.tr%2Ffile%2FJTA6CLJ8T5%2F05B541DE16A14633B172731F0E4C035D",
+      "contentHash": "e4cace34523ff4ffc2450c7f71a4ea15624183677c2fb3d5d4871fd0128bead1",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT",
+          "CHATGPT"
+        ],
+        "accessTerms": [
+          "students and faculty"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "service-yayin.istanbul.edu.tr",
+        "rationale": "University-press research article studies AI adoption and mentions products in the literature; it does not document an Istanbul University tool service."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "positive",
+      "recordId": "missouri-university-of-science-and-technology:chatgpt:ChatGPT Education",
+      "qsRow": 529,
+      "url": "https://ece.mst.edu/resources/current-students/software/",
+      "httpStatus": 200,
+      "finalUrl": "https://ece.mst.edu/resources/current-students/software/",
+      "contentHash": "a4080a3b70b0d13197d525167ead848fa9c452a944e042e8599390e4ae64b8ae",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 530,
+      "universityName": "National Chung Hsing University",
+      "countryOrRegion": "Taiwan",
+      "url": "https://oia.nchu.edu.tw/index.php/5-global-mobility-en/5-7-other-resources-en/5-7-3-international-outlook-rewards-activity-en/4262-my-nchu-era-114-1-eg",
+      "httpStatus": 200,
+      "finalUrl": "https://oia.nchu.edu.tw/index.php/5-global-mobility-en/5-7-other-resources-en/5-7-3-international-outlook-rewards-activity-en/4262-my-nchu-era-114-1-eg",
+      "contentHash": "6748e71a3fa67f3f2ded30da0847e64e5f7f1b6c6f19f9ba654aca9187570384",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT",
+          "NotebookLM"
+        ],
+        "accessTerms": [
+          "provided to",
+          "Available to"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "my-nchu-era",
+        "rationale": "Student activity and competition page mentions AI products but does not offer campus tool access."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 531,
+      "universityName": "Universidade de Santiago de Compostela",
+      "countryOrRegion": "Spain",
+      "url": "https://www.usc.gal/en/studies/masters/engineering-and-architecture/masters-degree-artificial-intelligence/20232024/explainable-and-trustworthy-ai-18828-17979-2-102310",
+      "httpStatus": 200,
+      "finalUrl": "https://www.usc.gal/en/studies/masters/engineering-and-architecture/masters-degree-artificial-intelligence/20232024/explainable-and-trustworthy-ai-18828-17979-2-102310",
+      "contentHash": "fcecbf0a32fba47663fa7be092e4322f32315ae301e36205821cba10b72a04d1",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "provided to",
+          "all students"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 532,
+      "universityName": "University of Crete",
+      "countryOrRegion": "Greece",
+      "url": "https://find.lib.uoc.gr/EDS/Search?lookfor=%22Copilot+AI%22&type=SU",
+      "httpStatus": 200,
+      "finalUrl": "https://find.lib.uoc.gr/EDS/Search?lookfor=%22Copilot+AI%22&type=SU",
+      "contentHash": "9130beefeac2bfe164bbe8a4cee75d179ee11a1fb0a104d74fcef4eecd27c6a4",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-south-carolina:chatgpt:ChatGPT through USC License",
+      "qsRow": 533,
+      "url": "https://sc.edu/about/offices_and_divisions/division_of_information_technology/ai/faculty/",
+      "httpStatus": 200,
+      "finalUrl": "https://sc.edu/about/offices_and_divisions/division_of_information_technology/ai/faculty/",
+      "contentHash": "ac24f54951db5665f89d91e8b75fdb3bd534efe1ac8ceb73a180c71338dff226",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-south-carolina:microsoft_copilot:Microsoft Copilot",
+      "qsRow": 533,
+      "url": "https://sc.edu/about/offices_and_divisions/division_of_information_technology/ai/faculty/",
+      "httpStatus": 200,
+      "finalUrl": "https://sc.edu/about/offices_and_divisions/division_of_information_technology/ai/faculty/",
+      "contentHash": "ac24f54951db5665f89d91e8b75fdb3bd534efe1ac8ceb73a180c71338dff226",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 534,
+      "universityName": "Tallinn University of Technology (TalTech)",
+      "countryOrRegion": "Estonia",
+      "url": "https://ai.taltech.ee/en/taltechs-journey-with-artificial-intelligence-how-we-move-forward-together-as-a-university/",
+      "httpStatus": 200,
+      "finalUrl": "https://ai.taltech.ee/en/taltechs-journey-with-artificial-intelligence-how-we-move-forward-together-as-a-university/",
+      "contentHash": "ba8f5f5637cae426fb6cf41feb5dab6d856fc2763715e8eee2da9a410db5ab64",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT Edu"
+        ],
+        "accessTerms": [
+          "students and staff"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "ai.taltech.ee",
+        "rationale": "The page describes ChatGPT Edu as a future planned option, not a currently available service."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 535,
+      "universityName": "Saarland University",
+      "countryOrRegion": "Germany",
+      "url": "https://www.uni-saarland.de/en/news/sara-magliacane-wird-professorin-fuer-machine-learning-an-der-universitaet-des-saarlandes-44100.html",
+      "httpStatus": 200,
+      "finalUrl": "https://www.uni-saarland.de/en/news/sara-magliacane-wird-professorin-fuer-machine-learning-an-der-universitaet-des-saarlandes-44100.html",
+      "contentHash": "9192175d23a47adad528c84e4e2f84ed7805067c9a488199372775b5bd8dd958",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT"
+        ],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 536,
+      "universityName": "Lincoln University College",
+      "countryOrRegion": "Malaysia",
+      "url": "https://www.lincoln.edu.my/doctor-of-philosophy-in-management/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.lincoln.edu.my/doctor-of-philosophy-in-management/",
+      "contentHash": "ae1a3717a28490ff14d057e104e6c7f79295b138ad872012899e4dd5d12e3351",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "available to"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 537,
+      "universityName": "Universidad de Zaragoza",
+      "countryOrRegion": "Spain",
+      "url": "https://e-publica.unizar.es/en/articulo/how-does-chatgpt-score-in-a-public-economics-exam",
+      "httpStatus": 200,
+      "finalUrl": "https://e-publica.unizar.es/en/articulo/how-does-chatgpt-score-in-a-public-economics-exam",
+      "contentHash": "96e652dbc705e6951b5e0e147779c51a66c2acbf574141922698de3d2ba28c9e",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT",
+          "chatgpt",
+          "Claude"
+        ],
+        "accessTerms": [
+          "provided to",
+          "Student and staff"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "e-publica.unizar.es",
+        "rationale": "Academic article evaluates ChatGPT in an exam; it does not document university provision or endorsement."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 538,
+      "universityName": "University of Chemistry and Technology, Prague",
+      "countryOrRegion": "Czechia",
+      "url": "https://fchi.vscht.cz/sitemap-en?jazyk=en&lang=en",
+      "httpStatus": 200,
+      "finalUrl": "https://fchi.vscht.cz/sitemap-en?jazyk=en&lang=en",
+      "contentHash": "6c6c6965f0a467d9e9de5cff2bc805513d8d98b37e2496a3955b5d0ef113328e",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "all students",
+          "faculty staff and students"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "universite-de-fribourg:adobe_firefly:Adobe Firefly",
+      "qsRow": 539,
+      "url": "https://www.unifr.ch/it/fr/ia-generative.html",
+      "httpStatus": 200,
+      "finalUrl": "https://www.unifr.ch/it/fr/ia-generative.html",
+      "contentHash": "0b8fd5f35b5883c796aaf9dbe723a292c3ef73f1158cc78c1c1ac0069ef44567",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "universite-de-fribourg:microsoft_copilot:Microsoft Copilot Chat",
+      "qsRow": 539,
+      "url": "https://www.unifr.ch/it/fr/ia-generative.html",
+      "httpStatus": 200,
+      "finalUrl": "https://www.unifr.ch/it/fr/ia-generative.html",
+      "contentHash": "0b8fd5f35b5883c796aaf9dbe723a292c3ef73f1158cc78c1c1ac0069ef44567",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "abo-akademi-university:unspecified_ai_tool:Larabot",
+      "qsRow": 540,
+      "url": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
+      "httpStatus": 200,
+      "finalUrl": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
+      "contentHash": "401add17fde5a0241e61dc256d30fe73ad7c180283fdd4db6eddb7a2ddcf65f5",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "abo-akademi-university:unspecified_ai_tool:Duck AI",
+      "qsRow": 540,
+      "url": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
+      "httpStatus": 200,
+      "finalUrl": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
+      "contentHash": "401add17fde5a0241e61dc256d30fe73ad7c180283fdd4db6eddb7a2ddcf65f5",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "abo-akademi-university:microsoft_copilot:Microsoft 365 Copilot Chat",
+      "qsRow": 540,
+      "url": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
+      "httpStatus": 200,
+      "finalUrl": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
+      "contentHash": "401add17fde5a0241e61dc256d30fe73ad7c180283fdd4db6eddb7a2ddcf65f5",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "abo-akademi-university:unspecified_ai_tool:Buzz Transcribe",
+      "qsRow": 540,
+      "url": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
+      "httpStatus": 200,
+      "finalUrl": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
+      "contentHash": "401add17fde5a0241e61dc256d30fe73ad7c180283fdd4db6eddb7a2ddcf65f5",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 541,
+      "universityName": "Free University of Bozen-Bolzano",
+      "countryOrRegion": "Italy",
+      "url": "https://www.unibz.it/en/events/artificial-intelligence",
+      "httpStatus": 200,
+      "finalUrl": "https://www.unibz.it/en/events/artificial-intelligence",
+      "contentHash": "c3ded4d65233239f70fe02b92e18db641832c280da801a0e78fa4408de52e95b",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "provided to"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 542,
+      "universityName": "Inha University",
+      "countryOrRegion": "South Korea",
+      "url": "https://bridge-aix.inha.ac.kr/studio",
+      "httpStatus": 200,
+      "finalUrl": "https://bridge-aix.inha.ac.kr/studio",
+      "contentHash": "7dab410196f104f75e3fe168ae8dacb00003741f3cc03294fbbc49e5bf4936cf",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 543,
+      "universityName": "Manchester Metropolitan University.",
+      "countryOrRegion": "United Kingdom",
+      "url": "https://www.mmu.ac.uk/library/referencing-and-study-support/cite-and-reference/referencing-generative-AI-in-your-assessments",
+      "httpStatus": 200,
+      "finalUrl": "https://www.mmu.ac.uk/library/referencing-and-study-support/cite-and-reference/referencing-generative-AI-in-your-assessments",
+      "contentHash": "db00ae9a70685093f1832eb9325abab9843ffd8df41f9767b502d185c9850929",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT",
+          "chatgpt",
+          "Microsoft Copilot"
+        ],
+        "accessTerms": [
+          "available to"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "referencing-generative-AI",
+        "rationale": "Referencing guidance names AI products only as citation examples; it does not establish institutional access."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-manitoba:microsoft_copilot:Bing Chat Enterprise",
+      "qsRow": 544,
+      "url": "https://umanitoba.ca/centre-advancement-teaching-learning/integrity/artificial-intelligence",
+      "httpStatus": 200,
+      "finalUrl": "https://umanitoba.ca/centre-advancement-teaching-learning/integrity/artificial-intelligence",
+      "contentHash": "6f5dbc5ff3bb757dd786b600a32537eb52edebb2a6de2741c9105b2a3d862341",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-troms-the-arctic-university-of-norway:institutional_ai_service:ChatUiT",
+      "qsRow": 546,
+      "url": "https://en.uit.no/employee/communication-tips/chatuit&ai",
+      "httpStatus": 200,
+      "finalUrl": "https://en.uit.no/employee/communication-tips/chatuit&ai",
+      "contentHash": "48e699db8a66b26e6146c3e909e06b6e4be8f5df83006cedc7740cb155ad9c68",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-troms-the-arctic-university-of-norway:microsoft_copilot:Copilot Chat",
+      "qsRow": 546,
+      "url": "https://en.uit.no/employee/communication-tips/chatuit&ai",
+      "httpStatus": 200,
+      "finalUrl": "https://en.uit.no/employee/communication-tips/chatuit&ai",
+      "contentHash": "48e699db8a66b26e6146c3e909e06b6e4be8f5df83006cedc7740cb155ad9c68",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 547,
+      "universityName": "MGIMO University",
+      "countryOrRegion": "Russia",
+      "url": "https://english.mgimo.ru/structure/library/general-reading-room",
+      "httpStatus": 200,
+      "finalUrl": "https://english.mgimo.ru/structure/library/general-reading-room",
+      "contentHash": "ccce41eb55eb3d27a16a009b2a1b22d4314df1e106bbd1caf4598a11c0c10321",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 548,
+      "universityName": "Paris Lodron University of Salzburg",
+      "countryOrRegion": "Austria",
+      "url": "https://www.plus.ac.at/university-library/recherche-ausleihe/digitales-angebot/?lang=en",
+      "httpStatus": 200,
+      "finalUrl": "https://www.plus.ac.at/university-library/recherche-ausleihe/digitales-angebot/?lang=en",
+      "contentHash": "14d7fb6cc4ab68fa0c47bc4787e66a4971d4c3faae1da4b38678bbd59d802a60",
+      "provider": "firecrawl",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "available to"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 549,
+      "universityName": "Universidad de la República (Udelar)",
+      "countryOrRegion": "Uruguay",
+      "url": "https://nucleorea.ei.udelar.edu.uy/category/noticias/page/2/",
+      "httpStatus": 200,
+      "finalUrl": "https://nucleorea.ei.udelar.edu.uy/category/noticias/page/2/",
+      "contentHash": "010b1ece2457d1f0574ec38e463e535cba0625e271b9acb720a3c82fa3a1d10a",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 551,
+      "universityName": "China University of Mining and Technology",
+      "countryOrRegion": "China (Mainland)",
+      "url": "https://global.cumt.edu.cn/Around_Campus/Library/How_to_Use_the_Library.htm",
+      "httpStatus": 200,
+      "finalUrl": "https://global.cumt.edu.cn/Around_Campus/Library/How_to_Use_the_Library.htm",
+      "contentHash": "62f9191cdad4d58a9113f4ac27ea680645fa42fd4ece52f1f95ff9712c647bd1",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 552,
+      "universityName": "De La Salle University",
+      "countryOrRegion": "Philippines",
+      "url": "https://animorepository.dlsu.edu.ph/faculty_research/14311/",
+      "httpStatus": 200,
+      "finalUrl": "https://animorepository.dlsu.edu.ph/faculty_research/14311/",
+      "contentHash": "0ba00e9b6fd1fa5a00ef7c6d482e9a4d9261a54dbd0dd819af9540cf64148e08",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 553,
+      "universityName": "Konkuk University",
+      "countryOrRegion": "South Korea",
+      "url": "https://www.konkuk.ac.kr/en/14352/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGZW4lMkYxNTU4JTJGMTE1MzAzNCUyRmFydGNsVmlldy5kbyUzRnBhZ2UlM0QxJTI2c3JjaENvbHVtbiUzRCUyNnNyY2hXcmQlM0QlMjZiYnNDbFNlcSUzRCUyNmJic09wZW5XcmRTZXElM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNnJnc0VuZGRlU3RyJTNEJTI2aXNWaWV3TWluZSUzRGZhbHNlJTI2cGFzc3dvcmQlM0QlMjY%3D",
+      "httpStatus": 200,
+      "finalUrl": "https://www.konkuk.ac.kr/en/14352/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGZW4lMkYxNTU4JTJGMTE1MzAzNCUyRmFydGNsVmlldy5kbyUzRnBhZ2UlM0QxJTI2c3JjaENvbHVtbiUzRCUyNnNyY2hXcmQlM0QlMjZiYnNDbFNlcSUzRCUyNmJic09wZW5XcmRTZXElM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNnJnc0VuZGRlU3RyJTNEJTI2aXNWaWV3TWluZSUzRGZhbHNlJTI2cGFzc3dvcmQlM0QlMjY%3D",
+      "contentHash": "b8626c0a1b8416dd2fc430b54bbb4ea93d4b8138792db0e7309e66c8c0b6ced6",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 554,
+      "universityName": "University of Agriculture, Faisalabad",
+      "countryOrRegion": "Pakistan",
+      "url": "https://web.uaf.edu.pk/FacultyProfile/Profile/18",
+      "httpStatus": 200,
+      "finalUrl": "https://web.uaf.edu.pk/FacultyProfile/Profile/18",
+      "contentHash": "91d855df128f51f1372e87b803c81498b93bbfa69a1c63777de6aa163b566917",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-south-florida:microsoft_copilot:Copilot for Microsoft 365",
+      "qsRow": 555,
+      "url": "https://genai.usf.edu/genai-resources/tools",
+      "httpStatus": 200,
+      "finalUrl": "https://genai.usf.edu/genai-resources/tools",
+      "contentHash": "5db3147179716ead205b79a8efa971c5ec26afe40595c8f8d287d65c2153ffba",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-south-florida:microsoft_copilot:Microsoft Copilot Chat",
+      "qsRow": 555,
+      "url": "https://genai.usf.edu/genai-resources/tools",
+      "httpStatus": 200,
+      "finalUrl": "https://genai.usf.edu/genai-resources/tools",
+      "contentHash": "5db3147179716ead205b79a8efa971c5ec26afe40595c8f8d287d65c2153ffba",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-south-florida:institutional_ai_service:LINK",
+      "qsRow": 555,
+      "url": "https://guides.lib.usf.edu/AI/LINK",
+      "httpStatus": 200,
+      "finalUrl": "https://guides.lib.usf.edu/AI/LINK",
+      "contentHash": "22300c991326977f41e7c1786a34ab913a69303534a0192f8d5c593853a7cfac",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 557,
+      "universityName": "Bar-Ilan University",
+      "countryOrRegion": "Israel",
+      "url": "https://engineering.biu.ac.il/en/node/13338",
+      "httpStatus": 200,
+      "finalUrl": "https://engineering.biu.ac.il/en/node/13338",
+      "contentHash": "5ff557942588ea50d26e89c4e92ea925622a1eb2afc7e388e101df450ade702e",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "memorial-university-of-newfoundland:microsoft_copilot:Copilot Premium",
+      "qsRow": 560,
+      "url": "https://www.mun.ca/cio/it-services/communication-and-collaboration/microsoft-365/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.mun.ca/cio/it-services/communication-and-collaboration/microsoft-365/",
+      "contentHash": "b786dedac4cb22a2d09f1617b97fe34fa7f7f15e29e7ae11512d13c885e52b93",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "memorial-university-of-newfoundland:microsoft_copilot:Copilot Basic",
+      "qsRow": 560,
+      "url": "https://www.mun.ca/cio/it-services/communication-and-collaboration/microsoft-365/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.mun.ca/cio/it-services/communication-and-collaboration/microsoft-365/",
+      "contentHash": "b786dedac4cb22a2d09f1617b97fe34fa7f7f15e29e7ae11512d13c885e52b93",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 562,
+      "universityName": "Indian Institute of Technology Hyderabad (IITH)",
+      "countryOrRegion": "India",
+      "url": "https://mae.iith.ac.in/napc27/",
+      "httpStatus": 200,
+      "finalUrl": "https://mae.iith.ac.in/napc27/",
+      "contentHash": "879b1396d91cd1ebcb20445fbe03be56d89f5ef13af59dd26260407098edac24",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-oklahoma:adobe_firefly:Adobe Firefly",
+      "qsRow": 564,
+      "url": "https://www.ou.edu/content/dam/ai/documents/wgs-final-report.pdf",
+      "httpStatus": 200,
+      "finalUrl": "https://www.ou.edu/content/dam/ai/documents/wgs-final-report.pdf",
+      "contentHash": "5be2cc9e702030fdc915c14ad3b968166bc4bb8d452274faa51bed14b63bd5c8",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-oklahoma:microsoft_copilot:Microsoft Copilot chatbot",
+      "qsRow": 564,
+      "url": "https://www.ou.edu/content/dam/ai/documents/wgs-final-report.pdf",
+      "httpStatus": 200,
+      "finalUrl": "https://www.ou.edu/content/dam/ai/documents/wgs-final-report.pdf",
+      "contentHash": "5be2cc9e702030fdc915c14ad3b968166bc4bb8d452274faa51bed14b63bd5c8",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 567,
+      "universityName": "Karl-Franzens-Universitaet Graz",
+      "countryOrRegion": "Austria",
+      "url": "https://international.uni-graz.at/en/incoming-students-and-staff/incoming-students/artificial-intelligence-and-society/",
+      "httpStatus": 200,
+      "finalUrl": "https://international.uni-graz.at/en/incoming-students-and-staff/incoming-students/artificial-intelligence-and-society/",
+      "contentHash": "7d4453598b25ccd0293979ba11d102ec22eb0401612ffc78af40c84d84e50dbc",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT"
+        ],
+        "accessTerms": [
+          "students and staff"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "artificial-intelligence-and-society",
+        "rationale": "Qualification-program marketing uses ChatGPT as a general example; it does not offer an institution-provided ChatGPT account."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:claude:Claude Pro",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:claude:Claude via Lehigh LLM Gateway",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:microsoft_copilot:Copilot Pro",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:gemini:Gemini via Lehigh LLM Gateway",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:gemini:Google AI Pro",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:google_ai_studio:Google AI Studio",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:gemini:Google Gemini",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:institutional_ai_service:Lehigh LibreChat LLM Gateway",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:notebooklm:NotebookLM",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:chatgpt:OpenAI ChatGPT",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:chatgpt:OpenAI via Lehigh LLM Gateway",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "lehigh-university:perplexity:Perplexity via Lehigh LLM Gateway",
+      "qsRow": 568,
+      "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "httpStatus": 200,
+      "finalUrl": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+      "contentHash": "b0975b25cf899105d2d7719668305d30b094ef77dfbfb5225366b49a3c839685",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "palacky-university-olomouc:proquest_research_assistant:ProQuest Research Assistant",
+      "qsRow": 569,
+      "url": "https://ezdroje.upol.cz/aktuality.php?lang=en&all=1",
+      "httpStatus": 200,
+      "finalUrl": "https://ezdroje.upol.cz/aktuality.php?lang=en&all=1",
+      "contentHash": "75209cd23ad4e3a1b3fedfcf2d4b082552d80894ccb5a54d4d5fce8175e35e7f",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "stevens-institute-of-technology:microsoft_copilot:Microsoft Copilot with Data Protection",
+      "qsRow": 571,
+      "url": "https://www.stevens.edu/it/programs-projects/artificial-intelligence",
+      "httpStatus": 200,
+      "finalUrl": "https://www.stevens.edu/it/programs-projects/artificial-intelligence",
+      "contentHash": "e8febf30b9d2578d47c28e9dc050d7ca2a0979077928a468b847bc7978ab4b3f",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "tu-dortmund-university:institutional_ai_service:Academic Cloud ChatAI",
+      "qsRow": 572,
+      "url": "https://www.tu-dortmund.de/en/newsdetail/tu-dortmund-university-offers-chatgpt-access-for-all-members-48828/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.tu-dortmund.de/en/newsdetail/tu-dortmund-university-offers-chatgpt-access-for-all-members-48828/",
+      "contentHash": "3c8e43eba17e81376e59e7d1e1feb2c40394a076c811bd7ccfd7cdce38965abd",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "tu-dortmund-university:institutional_ai_service:Campus-AI",
+      "qsRow": 572,
+      "url": "https://www.tu-dortmund.de/en/newsdetail/tu-dortmund-university-offers-chatgpt-access-for-all-members-48828/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.tu-dortmund.de/en/newsdetail/tu-dortmund-university-offers-chatgpt-access-for-all-members-48828/",
+      "contentHash": "3c8e43eba17e81376e59e7d1e1feb2c40394a076c811bd7ccfd7cdce38965abd",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "tu-dortmund-university:chatgpt:ChatGPT-4o via Campus-AI",
+      "qsRow": 572,
+      "url": "https://www.tu-dortmund.de/en/newsdetail/tu-dortmund-university-offers-chatgpt-access-for-all-members-48828/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.tu-dortmund.de/en/newsdetail/tu-dortmund-university-offers-chatgpt-access-for-all-members-48828/",
+      "contentHash": "3c8e43eba17e81376e59e7d1e1feb2c40394a076c811bd7ccfd7cdce38965abd",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "ritsumeikan-university:adobe_firefly:Adobe Firefly",
+      "qsRow": 579,
+      "url": "https://www.ritsumei.ac.jp/pathways-future/eng/course/tool.html",
+      "httpStatus": 200,
+      "finalUrl": "https://www.ritsumei.ac.jp/pathways-future/eng/course/tool.html",
+      "contentHash": "e811d70db4ddede75e34781c4e78d227a63a22505e9a6ea80d563ff260f30273",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "ritsumeikan-university:adobe_express:Adobe Express (featuring Adobe Firefly)",
+      "qsRow": 579,
+      "url": "https://www.ritsumei.ac.jp/pathways-future/eng/course/tool.html",
+      "httpStatus": 200,
+      "finalUrl": "https://www.ritsumei.ac.jp/pathways-future/eng/course/tool.html",
+      "contentHash": "e811d70db4ddede75e34781c4e78d227a63a22505e9a6ea80d563ff260f30273",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 581,
+      "universityName": "Comenius University Bratislava",
+      "countryOrRegion": "Slovakia",
+      "url": "https://www.fpharm.uniba.sk/en/divisions/central-library/webinars-informations/nastroje-ai/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.fpharm.uniba.sk/en/divisions/central-library/webinars-informations/nastroje-ai/",
+      "contentHash": "77da71177ecdb0e936b135eb9938a7375b511e01223138bec91fca9e32da60fd",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "students and staff"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 582,
+      "universityName": "Ton Duc Thang University",
+      "countryOrRegion": "Vietnam",
+      "url": "https://aaf.tdtu.edu.vn/en/news/2026/workshop-application-artificial-intelligence-ai-teaching-accounting-simulation-courses",
+      "httpStatus": 200,
+      "finalUrl": "https://aaf.tdtu.edu.vn/en/news/2026/workshop-application-artificial-intelligence-ai-teaching-accounting-simulation-courses",
+      "contentHash": "8abfc1edf353c516f2cd6d50b45f02b0e2b5d417a29b88e24ba1cb39a6fc5a65",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 584,
+      "universityName": "Cyprus University of Technology",
+      "countryOrRegion": "Cyprus",
+      "url": "https://www.cut.ac.cy/faculties/fet/eecse/module-descriptions/?languageId=1",
+      "httpStatus": 200,
+      "finalUrl": "https://www.cut.ac.cy/faculties/fet/eecse/module-descriptions/?languageId=1",
+      "contentHash": "8852c7a8c18204322f7f7a41b549927ffcf8907189a1ecef2f820116ed7637ba",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [
+          "Perplexity"
+        ],
+        "accessTerms": [
+          "all students",
+          "available to",
+          "provided to",
+          "access for",
+          "students and staff"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "module-descriptions",
+        "rationale": "Course rules prohibit Perplexity during an exam; prohibition is not provision, procurement, or endorsement."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "positive",
+      "recordId": "toronto-metropolitan-university:gemini:Google Gemini Education",
+      "qsRow": 586,
+      "url": "https://www.torontomu.ca/courses/whats-new/2025/04/google-gemini-and-zoom-ai-companion-now-available-to-tmu-faculty/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.torontomu.ca/courses/whats-new/2025/04/google-gemini-and-zoom-ai-companion-now-available-to-tmu-faculty/",
+      "contentHash": "d139b3cea7dc8e786b85eb11834148076a4c8eaf4d18e05e168a0897783c7fb7",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "toronto-metropolitan-university:zoom_ai_companion:Zoom AI Companion",
+      "qsRow": 586,
+      "url": "https://www.torontomu.ca/courses/whats-new/2025/04/google-gemini-and-zoom-ai-companion-now-available-to-tmu-faculty/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.torontomu.ca/courses/whats-new/2025/04/google-gemini-and-zoom-ai-companion-now-available-to-tmu-faculty/",
+      "contentHash": "d139b3cea7dc8e786b85eb11834148076a4c8eaf4d18e05e168a0897783c7fb7",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "toronto-metropolitan-university:notebooklm:Google NotebookLM Education",
+      "qsRow": 586,
+      "url": "https://www.torontomu.ca/google/news/2026/04/gemini-and-notebook-lm-now-available-tmu-wide/",
+      "httpStatus": 200,
+      "finalUrl": "https://www.torontomu.ca/google/news/2026/04/gemini-and-notebook-lm-now-available-tmu-wide/",
+      "contentHash": "d1b88865d0d3bf6558c92ca5294c33f4d93b312315adb30507a62c5bb9046f60",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 587,
+      "universityName": "University of Hohenheim",
+      "countryOrRegion": "Germany",
+      "url": "https://www.uni-hohenheim.de/en/use-of-generative-ai-in-exams",
+      "httpStatus": 200,
+      "finalUrl": "https://www.uni-hohenheim.de/en/use-of-generative-ai-in-exams",
+      "contentHash": "6cdde32545ece3be1473c42fc1fdc6feb9c1fbfc16671bf50d2f26057f58c827",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT",
+          "Perplexity"
+        ],
+        "accessTerms": [
+          "all students"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "use-of-generative-ai-in-exams",
+        "rationale": "Exam guidance names public AI systems and permits use only when an examiner allows it; it does not document university-provided access."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-nebraska-lincoln:chatgpt:ChatGPT Enterprise via OpenAI Impact Program",
+      "qsRow": 588,
+      "url": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "httpStatus": 200,
+      "finalUrl": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "contentHash": "8d41dcf256b4bd5ce87abca6afbe0ef966eed2375b4a23b13d453e97ac53c578",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-nebraska-lincoln:microsoft_copilot:Copilot Chat",
+      "qsRow": 588,
+      "url": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "httpStatus": 200,
+      "finalUrl": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "contentHash": "8d41dcf256b4bd5ce87abca6afbe0ef966eed2375b4a23b13d453e97ac53c578",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-nebraska-lincoln:microsoft_copilot:Microsoft 365 Copilot",
+      "qsRow": 588,
+      "url": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "httpStatus": 200,
+      "finalUrl": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "contentHash": "8d41dcf256b4bd5ce87abca6afbe0ef966eed2375b4a23b13d453e97ac53c578",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-nebraska-lincoln:institutional_ai_service:NU Custom AI Services",
+      "qsRow": 588,
+      "url": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "httpStatus": 200,
+      "finalUrl": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "contentHash": "8d41dcf256b4bd5ce87abca6afbe0ef966eed2375b4a23b13d453e97ac53c578",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-nebraska-lincoln:zoom_ai_companion:Zoom AI Companion",
+      "qsRow": 588,
+      "url": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "httpStatus": 200,
+      "finalUrl": "https://researchdata.unl.edu/planning/artificial-intelligence/",
+      "contentHash": "8d41dcf256b4bd5ce87abca6afbe0ef966eed2375b4a23b13d453e97ac53c578",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 589,
+      "universityName": "Université de Rennes",
+      "countryOrRegion": "France",
+      "url": "https://actu.univ-rennes.fr/en/highlights/how-university-rennes-embracing-generative-ai",
+      "httpStatus": 200,
+      "finalUrl": "https://actu.univ-rennes.fr/en/highlights/how-university-rennes-embracing-generative-ai",
+      "contentHash": "262f63b0368cdcb227ee5fafa4ad914f5867e4ca4384dff7a8a53105b7944ed9",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 592,
+      "universityName": "Taras Shevchenko National University of Kyiv",
+      "countryOrRegion": "Ukraine",
+      "url": "https://aistds.knu.ua/en/archiving-and-long-term-open-access",
+      "httpStatus": 200,
+      "finalUrl": "https://aistds.knu.ua/en/archiving-and-long-term-open-access",
+      "contentHash": "d0abec17a9c405fae7230dacf297f0a1d39e9f840a03d814b637e42c94b75ca5",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "positive",
+      "recordId": "university-of-cincinnati:microsoft_copilot:Microsoft 365 Copilot Chat",
+      "qsRow": 594,
+      "url": "https://ai.uc.edu/ai-tools/ms-365-copilot-chat",
+      "httpStatus": 200,
+      "finalUrl": "https://ai.uc.edu/ai-tools/ms-365-copilot-chat",
+      "contentHash": "1553893ff6e27394a1f6cee38910480eb20459d6420dccbb3cdd21e3de020320",
+      "quoteFound": true,
+      "provider": "firecrawl",
+      "outcome": "confirmed_positive"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 598,
+      "universityName": "Sofia University \"St. Kliment Ohridski\"",
+      "countryOrRegion": "Bulgaria",
+      "url": "https://periodicals.uni-sofia.bg/index.php/Sofia-SSHjournal/about/submissions",
+      "httpStatus": 200,
+      "finalUrl": "https://periodicals.uni-sofia.bg/index.php/Sofia-SSHjournal/about/submissions",
+      "contentHash": "6991729fb944a2d449a8b02eeed8592a771c3901e4622d0c2a688f1147326885",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": [
+          "available to"
+        ]
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 599,
+      "universityName": "Texas Tech University",
+      "countryOrRegion": "United States",
+      "url": "https://guides.library.ttu.edu/artificialintelligencetools/copyright",
+      "httpStatus": 200,
+      "finalUrl": "https://guides.library.ttu.edu/artificialintelligencetools/copyright",
+      "contentHash": "9138c6152b262244d6653a94438a1610e17812af1c0b227180209ba8de337580",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [
+          "ChatGPT",
+          "AI Platform",
+          "chatgpt",
+          "google gemini",
+          "microsoft copilot"
+        ],
+        "accessTerms": [
+          "License for",
+          "license to"
+        ]
+      },
+      "screenedOutcome": "false_negative_candidate",
+      "adjudication": {
+        "decision": "exclude",
+        "reviewer": "manual_evidence_review",
+        "urlIncludes": "artificialintelligencetools/copyright",
+        "rationale": "Copyright guide discusses third-party licensing news and AI cases; it does not document a Texas Tech AI-tool licence."
+      },
+      "outcome": "adjudicated_exclusion"
+    },
+    {
+      "kind": "blocked",
+      "qsRow": 600,
+      "universityName": "Universidad Central de Venezuela",
+      "countryOrRegion": "Venezuela",
+      "url": "http://www.ucv.ve/bibliotecacentral",
+      "httpStatus": 200,
+      "finalUrl": "http://biblioteca.ucv.ve/portalbc/",
+      "contentHash": "3e2da8d18300637e2b675f357006c5a27ceee4d3b7b1d0ca536386d5baa34fdc",
+      "provider": "http_fallback",
+      "semanticSignals": {
+        "productTerms": [],
+        "accessTerms": []
+      },
+      "screenedOutcome": null,
+      "adjudication": null,
+      "outcome": "sampled_page_no_access_evidence"
+    }
+  ]
+}

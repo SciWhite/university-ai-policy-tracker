@@ -1,0 +1,863 @@
+{
+  "schemaVersion": "uapt-ai-tools-high-risk-semantic-review-v1",
+  "runId": "uapt-ai-tools-qs-501-600-20260718-009",
+  "generatedAt": "2026-07-18T13:00:00.000Z",
+  "policy": "Every potentialInstitutionalAccess signal is semantically reviewed; the signal is never treated as a record classifier.",
+  "summary": {
+    "reviewed": 48,
+    "positive": 23,
+    "blocked": 25
+  },
+  "decisions": [
+    {
+      "qsRow": 501,
+      "qsRank": 595,
+      "universityName": "Zayed University",
+      "officialDomain": "zu.ac.ae",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://zuscholars.zu.ac.ae/context/works/article/6907/viewcontent/Aisha_A_Custom_AI_Library_Chatbot_Using_the_ChatGPT_API_AAM.pdf",
+        "https://zuscholars.zu.ac.ae/cgi/viewcontent.cgi?article=7879&context=works",
+        "https://zuscholars.zu.ac.ae/cgi/viewcontent.cgi?article=8412&context=works",
+        "https://zuscholars.zu.ac.ae/cgi/viewcontent.cgi?article=8955&context=works"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 502,
+      "qsRank": 597,
+      "universityName": "Hasselt University",
+      "officialDomain": "uhasselt.be",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.uhasselt.be/en/aparte-sites-uhasselt-en/ai-hasselt-university/ai-tools"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "hasselt-university:gemini:Gemini Pro",
+        "hasselt-university:microsoft_copilot:MS Copilot Pro"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 504,
+      "qsRank": 597,
+      "universityName": "Tulane University",
+      "officialDomain": "tulane.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://it.tulane.edu/ais-widening-digital-divide",
+        "https://libguides.tulane.edu/AI/tools"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "tulane-university:microsoft_copilot:Copilot (Microsoft)"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 506,
+      "qsRank": 597,
+      "universityName": "University of Texas at Dallas",
+      "officialDomain": "utdallas.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://atlas.utdallas.edu/TDClient/30/Portal/KB/Article/1184/Artificial-Intelligence-and-Generative-AI-in-Higher-Education",
+        "https://atlas.utdallas.edu/TDClient/30/Portal/KB/Article/1384/Artificial-Intelligence-AI-and-Generative-AI-Gen-AI-Tools-Available-at-UTD",
+        "https://atlas.utdallas.edu/TDClient/30/Portal/KB/Category/451/CometAI",
+        "https://oit.utdallas.edu/about/oit-ai-studio/"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "university-of-texas-at-dallas:institutional_ai_service:CometAI",
+        "university-of-texas-at-dallas:microsoft_copilot:Microsoft Copilot Chat"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 508,
+      "qsRank": 604,
+      "universityName": "National Chengchi University",
+      "officialDomain": "nccu.edu.tw",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "http://ici.nccu.edu.tw/eng/PageDoc?fid=14261"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 509,
+      "qsRank": 604,
+      "universityName": "University of Eastern Finland",
+      "officialDomain": "uef.fi",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.uef.fi/en/library/artificial-intelligence-in-information-retrieval"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "university-of-eastern-finland:microsoft_copilot:Microsoft 365 Copilot Enterprise",
+        "university-of-eastern-finland:scopus_ai:Scopus AI",
+        "university-of-eastern-finland:primo_research_assistant:UEF Primo AI Research Assistant",
+        "university-of-eastern-finland:web_of_science_research_assistant:Web of Science Research Assistant"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 510,
+      "qsRank": 607,
+      "universityName": "The University of Tennessee, Knoxville",
+      "officialDomain": null,
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://oit.utk.edu/news/generative-ai/",
+        "https://oit.utk.edu/news/work-smarter-with-the-new-ut-ai-hub/"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "the-university-of-tennessee-knoxville:claude:Anthropic Claude",
+        "the-university-of-tennessee-knoxville:gemini:Google Gemini",
+        "the-university-of-tennessee-knoxville:llama:Meta Llama",
+        "the-university-of-tennessee-knoxville:chatgpt:OpenAI ChatGPT",
+        "the-university-of-tennessee-knoxville:perplexity:Perplexity",
+        "the-university-of-tennessee-knoxville:institutional_ai_service:UT AI Hub",
+        "the-university-of-tennessee-knoxville:grok:xAI Grok"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 511,
+      "qsRank": 607,
+      "universityName": "University of Siena",
+      "officialDomain": "unisi.it",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://usiena-air.unisi.it/retrieve/4ad2ef51-48c0-4d78-be25-0cc533f0b1b2/Using%20Generative%20Artificial-Cuomo-2023_compressed.pdf",
+        "https://usiena-air.unisi.it/retrieve/b84df77b-cf7c-4c45-8f7b-faafb627835c/Accuracy%20of%20ChatGPT-Generated%20Information-Vaira-2024.pdf"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 513,
+      "qsRank": 609,
+      "universityName": "Ulster University",
+      "officialDomain": "ulster.ac.uk",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://guides.library.ulster.ac.uk/c.php?g=728295&p=5303879",
+        "https://www.ulster.ac.uk/conference/genaiedu/june-2026",
+        "https://www.ulster.ac.uk/doctoralcollege/current/research-studies-guide/guidance-on-the-use-of-generative-ai-tools",
+        "https://www.ulster.ac.uk/learningenhancement/cqe/ai/guidance-for-staff"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "ulster-university:microsoft_copilot:Microsoft Copilot"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 515,
+      "qsRank": 613,
+      "universityName": "City University of New York",
+      "officialDomain": "cuny.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://commons.hostos.cuny.edu/edtech/ai/what-you-need-to-know-about-genai/",
+        "https://www.bmcc.cuny.edu/academics/digitaleducation/student-support/software-for-students/",
+        "https://commons.hostos.cuny.edu/edtech/faculty/teaching-tools-guides-faculty-knowledge-base/llms-vs-conversational-search-engines/",
+        "https://dhdebates.gc.cuny.edu/read/critical-infrastructure-studies-and-digital-humanities/section/cb6cce32-858b-49ce-95d3-b8e867ebe4b9"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 516,
+      "qsRank": 613,
+      "universityName": "International Islamic University Malaysia (IIUM)",
+      "officialDomain": "iium.edu.my",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "http://irep.iium.edu.my/view/type/article/2020.default.html",
+        "http://irep.iium.edu.my/view/type/article/2023.default.html",
+        "https://journals.iium.edu.my/iiumlj/index.php/iiumlj/article/download/978/487"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 523,
+      "qsRank": 622,
+      "universityName": "Umm Al-Qura University",
+      "officialDomain": "edu.sa",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://uqu.edu.sa/ccomp_csai/ProjectdetailsCSAI/"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 524,
+      "qsRank": 624,
+      "universityName": "Diponegoro University",
+      "officialDomain": "ac.id",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://unsia.ac.id/wp-content/uploads/2025/12/SISTEM-PENDIDIKAN-ONLINE-UNIVERSITAS-SIBER-ASIA-DI-ERA-ARTIFICIAL-INTELLIGENCE-Avenir-1.pdf"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 525,
+      "qsRank": 624,
+      "universityName": "Oregon State University",
+      "officialDomain": "oregonstate.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://blogs.oregonstate.edu/inspire/tag/ai/",
+        "https://blogs.oregonstate.edu/inspire/tag/artificial-intelligence/",
+        "https://technology.oregonstate.edu/all-stories/start-year-copilot-chat-your-generative-ai-companion-osu"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "oregon-state-university:microsoft_copilot:Copilot Chat for Web",
+        "oregon-state-university:institutional_ai_service:OSU AI Career Assistant"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 527,
+      "qsRank": 624,
+      "universityName": "Yeshiva University",
+      "officialDomain": "yu.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://larc.cardozo.yu.edu/2023.html"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 528,
+      "qsRank": 628,
+      "universityName": "Istanbul University",
+      "officialDomain": "edu.tr",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://iupress.istanbul.edu.tr/en/journal/bba/article/ai-chatgpt-applications-in-libraries-challenges-and-opportunities",
+        "https://iupress.istanbul.edu.tr/en/journal/connectist/article/use-of-generative-ai-in-news-production-in-turkiye-a-threat-or-an-opportunity",
+        "https://iupress.istanbul.edu.tr/en/journal/joda/article/measuring-artificial-intelligence-integration-in-higher-education-a-bibliometric-analysis-of-quantitative-studies",
+        "https://service-yayin.istanbul.edu.tr/api/webclient/PdfProxy?url=https%3A%2F%2Fcdn.istanbul.edu.tr%2Ffile%2FJTA6CLJ8T5%2F05B541DE16A14633B172731F0E4C035D"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 529,
+      "qsRank": 628,
+      "universityName": "Missouri University of Science and Technology",
+      "officialDomain": "mst.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://ece.mst.edu/resources/current-students/software/",
+        "https://itlc.mst.edu/abstracts/"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "missouri-university-of-science-and-technology:chatgpt:ChatGPT Education"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 530,
+      "qsRank": 628,
+      "universityName": "National Chung Hsing University",
+      "officialDomain": "nchu.edu.tw",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://oia.nchu.edu.tw/index.php/5-global-mobility-en/5-7-other-resources-en/5-7-3-international-outlook-rewards-activity-en/4262-my-nchu-era-114-1-eg"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 531,
+      "qsRank": 628,
+      "universityName": "Universidade de Santiago de Compostela",
+      "officialDomain": "usc.gal",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://libros.usc.gal/module/xeprotected/open?productId=1423&action=download"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 533,
+      "qsRank": 628,
+      "universityName": "University of South Carolina",
+      "officialDomain": "sc.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://sc.edu/about/offices_and_divisions/division_of_information_technology/ai/faculty/",
+        "https://sc.edu/about/offices_and_divisions/division_of_information_technology/ai/staff/",
+        "https://sc.edu/about/offices_and_divisions/division_of_information_technology/ai/students/",
+        "https://guides.library.sc.edu/az.php"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "university-of-south-carolina:chatgpt:ChatGPT through USC License",
+        "university-of-south-carolina:microsoft_copilot:Microsoft Copilot"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 534,
+      "qsRank": 635,
+      "universityName": "Tallinn University of Technology (TalTech)",
+      "officialDomain": "taltech.ee",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://ai.taltech.ee/en/taltechs-journey-with-artificial-intelligence-how-we-move-forward-together-as-a-university/",
+        "https://taltech.ee/en/news/glory-and-misery-artificial-intelligence-lecturers-perspective",
+        "https://ai.taltech.ee/en/"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 536,
+      "qsRank": 638,
+      "universityName": "Lincoln University College",
+      "officialDomain": "lincoln.edu.my",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.lincoln.edu.my/doctor-of-philosophy-in-management/"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 537,
+      "qsRank": 638,
+      "universityName": "Universidad de Zaragoza",
+      "officialDomain": "unizar.es",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://e-publica.unizar.es/en/articulo/how-does-chatgpt-score-in-a-public-economics-exam",
+        "https://zaguan.unizar.es/record/125909/files/texto_completo.pdf"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 539,
+      "qsRank": 642,
+      "universityName": "Université de Fribourg",
+      "officialDomain": "unifr.ch",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.unifr.ch/it/fr/ia-generative.html"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "universite-de-fribourg:adobe_firefly:Adobe Firefly",
+        "universite-de-fribourg:microsoft_copilot:Microsoft Copilot Chat"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 540,
+      "qsRank": 643,
+      "universityName": "Abo Akademi University",
+      "officialDomain": "abo.fi",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "abo-akademi-university:unspecified_ai_tool:Buzz Transcribe",
+        "abo-akademi-university:unspecified_ai_tool:Duck AI",
+        "abo-akademi-university:unspecified_ai_tool:Larabot",
+        "abo-akademi-university:microsoft_copilot:Microsoft 365 Copilot Chat"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 543,
+      "qsRank": 643,
+      "universityName": "Manchester Metropolitan University.",
+      "officialDomain": "mmu.ac.uk",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.mmu.ac.uk/library/referencing-and-study-support/cite-and-reference/referencing-generative-AI-in-your-assessments"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 544,
+      "qsRank": 643,
+      "universityName": "University of Manitoba",
+      "officialDomain": "umanitoba.ca",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://umanitoba.ca/centre-advancement-teaching-learning/integrity/artificial-intelligence",
+        "https://umanitoba.ca/centre-advancement-teaching-learning/um-academic-integrity-and-artificial-intelligence"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "university-of-manitoba:microsoft_copilot:Bing Chat Enterprise"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 546,
+      "qsRank": 648,
+      "universityName": "University of Tromsø The Arctic University of Norway",
+      "officialDomain": "uit.no",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://en.uit.no/employee/communication-tips/chatuit&ai"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "university-of-troms-the-arctic-university-of-norway:institutional_ai_service:ChatUiT",
+        "university-of-troms-the-arctic-university-of-norway:microsoft_copilot:Copilot Chat"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 560,
+      "qsRank": 660,
+      "universityName": "Memorial University of Newfoundland",
+      "officialDomain": "mun.ca",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.mun.ca/cio/it-services/communication-and-collaboration/microsoft-365/",
+        "https://www.mun.ca/medicine/media/production/medicine/documents/faculty-council/minutes/itac/iTAC%20Minutes%20January%2015%202026.pdf"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "memorial-university-of-newfoundland:microsoft_copilot:Copilot Basic",
+        "memorial-university-of-newfoundland:microsoft_copilot:Copilot Premium"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 562,
+      "qsRank": 664,
+      "universityName": "Indian Institute of Technology Hyderabad (IITH)",
+      "officialDomain": "ac.in",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://iith.ac.in/assets/files/Annual-Reports/Annual%20Report%202022%20-2023%20(English).pdf"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 564,
+      "qsRank": 664,
+      "universityName": "University of Oklahoma",
+      "officialDomain": "ou.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.ou.edu/content/dam/ai/documents/wgs-final-report.pdf"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "university-of-oklahoma:adobe_firefly:Adobe Firefly",
+        "university-of-oklahoma:microsoft_copilot:Microsoft Copilot chatbot"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 567,
+      "qsRank": 668,
+      "universityName": "Karl-Franzens-Universitaet Graz",
+      "officialDomain": "uni-graz.at",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://international.uni-graz.at/en/incoming-students-and-staff/incoming-students/artificial-intelligence-and-society/"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 568,
+      "qsRank": 668,
+      "universityName": "Lehigh University",
+      "officialDomain": "lehigh.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
+        "https://lts.lehigh.edu/news/curious-about-generative-ai-join-lts-office-hours-monthly-zoom"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "lehigh-university:claude:Claude Pro",
+        "lehigh-university:claude:Claude via Lehigh LLM Gateway",
+        "lehigh-university:microsoft_copilot:Copilot Pro",
+        "lehigh-university:gemini:Gemini via Lehigh LLM Gateway",
+        "lehigh-university:gemini:Google AI Pro",
+        "lehigh-university:google_ai_studio:Google AI Studio",
+        "lehigh-university:gemini:Google Gemini",
+        "lehigh-university:institutional_ai_service:Lehigh LibreChat LLM Gateway",
+        "lehigh-university:notebooklm:NotebookLM",
+        "lehigh-university:chatgpt:OpenAI ChatGPT",
+        "lehigh-university:chatgpt:OpenAI via Lehigh LLM Gateway",
+        "lehigh-university:perplexity:Perplexity via Lehigh LLM Gateway"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 569,
+      "qsRank": 668,
+      "universityName": "Palacký University Olomouc",
+      "officialDomain": "upol.cz",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.upol.cz/nc/en/news/news/clanek/ups-recommendations-for-the-use-of-generative-ai-models/",
+        "https://www.prf.upol.cz/nc/en/news/clanek/ups-recommendations-for-the-use-of-generative-ai-models/",
+        "https://ezdroje.upol.cz/aktuality.php?lang=en&all=1"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "palacky-university-olomouc:proquest_research_assistant:ProQuest Research Assistant"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 571,
+      "qsRank": 673,
+      "universityName": "Stevens Institute of Technology",
+      "officialDomain": "stevens.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.stevens.edu/it/programs-projects/artificial-intelligence"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "stevens-institute-of-technology:microsoft_copilot:Microsoft Copilot with Data Protection"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 572,
+      "qsRank": 673,
+      "universityName": "TU Dortmund University",
+      "officialDomain": "tu-dortmund.de",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.tu-dortmund.de/en/newsdetail/tu-dortmund-university-offers-chatgpt-access-for-all-members-48828/"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "tu-dortmund-university:institutional_ai_service:Academic Cloud ChatAI",
+        "tu-dortmund-university:institutional_ai_service:Campus-AI",
+        "tu-dortmund-university:chatgpt:ChatGPT-4o via Campus-AI"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 579,
+      "qsRank": 680,
+      "universityName": "Ritsumeikan University",
+      "officialDomain": "ritsumei.ac.jp",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.ritsumei.ac.jp/page.jsp?id=686958"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "ritsumeikan-university:adobe_express:Adobe Express (featuring Adobe Firefly)",
+        "ritsumeikan-university:adobe_firefly:Adobe Firefly"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 580,
+      "qsRank": 680,
+      "universityName": "Universitas Brawijaya",
+      "officialDomain": "ac.id",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://jitode.ub.ac.id/index.php/jitode/ai-tools"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 581,
+      "qsRank": 684,
+      "universityName": "Comenius University Bratislava",
+      "officialDomain": "uniba.sk",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.fpharm.uniba.sk/en/divisions/central-library/webinars-informations/nastroje-ai/"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 583,
+      "qsRank": 686,
+      "universityName": "China University of Petroleum, Beijing",
+      "officialDomain": "cup.edu.cn",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://library.cup.edu.cn/upload_files/file/20180726/_20180726111343.xlsx"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 584,
+      "qsRank": 686,
+      "universityName": "Cyprus University of Technology",
+      "officialDomain": "ac.cy",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.cut.ac.cy/faculties/fet/eecse/module-descriptions/?languageId=1",
+        "https://www.cut.ac.cy/faculties/fet/eecse/module-descriptions/modules-msc-AI-dataengineering/?languageId=1"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 586,
+      "qsRank": 711,
+      "universityName": "Toronto Metropolitan University (formerly Ryerson University)",
+      "officialDomain": null,
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.torontomu.ca/google/getting-started/google-gemini/",
+        "https://www.torontomu.ca/courses/whats-new/2025/04/google-gemini-and-zoom-ai-companion-now-available-to-tmu-faculty/",
+        "https://www.torontomu.ca/google/news/2025/04/google-gemini-now-available-to-tmu-faculty-and-staff/",
+        "https://www.torontomu.ca/google/news/2026/04/gemini-and-notebook-lm-now-available-tmu-wide/"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "toronto-metropolitan-university:gemini:Google Gemini Education",
+        "toronto-metropolitan-university:notebooklm:Google NotebookLM Education",
+        "toronto-metropolitan-university:zoom_ai_companion:Zoom AI Companion"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 587,
+      "qsRank": 711,
+      "universityName": "University of Hohenheim",
+      "officialDomain": "uni-hohenheim.de",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://digital.uni-hohenheim.de/fileadmin/einrichtungen/digital/Gimpel_et_al_2024_-__Generative__AI_Competencies_for_Future-proof_Graduates.pdf"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 588,
+      "qsRank": 711,
+      "universityName": "University of Nebraska - Lincoln",
+      "officialDomain": "unl.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://researchdata.unl.edu/planning/artificial-intelligence/",
+        "https://careers.unl.edu/job-internship-guide/chapter-6-using-ai-your-application-process/ai-tools-available/",
+        "https://teaching.unl.edu/resources/strategies-techniques/teaching-technology/explore-generative-ai/",
+        "https://academictech.unl.edu/learning-and-emerging-technologies/open-ai-impact-program/",
+        "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1000&context=prairie-ai"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "university-of-nebraska-lincoln:chatgpt:ChatGPT Enterprise via OpenAI Impact Program",
+        "university-of-nebraska-lincoln:microsoft_copilot:Copilot Chat",
+        "university-of-nebraska-lincoln:microsoft_copilot:Microsoft 365 Copilot",
+        "university-of-nebraska-lincoln:institutional_ai_service:NU Custom AI Services",
+        "university-of-nebraska-lincoln:zoom_ai_companion:Zoom AI Companion"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 589,
+      "qsRank": 711,
+      "universityName": "Université de Rennes",
+      "officialDomain": "univ-rennes.fr",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://actu.univ-rennes.fr/en/highlights/how-university-rennes-embracing-generative-ai"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 594,
+      "qsRank": 721,
+      "universityName": "University of Cincinnati",
+      "officialDomain": "uc.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://www.online.uc.edu/blog/business-benefits-artificial-intelligence-ai.html"
+      ],
+      "semanticDecision": "positive_records_added",
+      "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
+      "resultingRecordIds": [
+        "university-of-cincinnati:microsoft_copilot:Microsoft 365 Copilot Chat"
+      ],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 598,
+      "qsRank": 731,
+      "universityName": "Sofia University \"St. Kliment Ohridski\"",
+      "officialDomain": "uni-sofia.bg",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://periodicals.uni-sofia.bg/index.php/Sofia-SSHjournal/about/submissions",
+        "https://fmi.uni-sofia.bg/sites/default/files/dissertation_work_of_phd/dissertation_silvester_hasani.pdf"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    },
+    {
+      "qsRow": 599,
+      "qsRank": 731,
+      "universityName": "Texas Tech University",
+      "officialDomain": "ttu.edu",
+      "priorDecision": "potentialInstitutionalAccess signal requiring semantic review",
+      "reviewedSourceUrls": [
+        "https://guides.library.ttu.edu/artificialintelligencetools/copyright",
+        "https://www.depts.ttu.edu/tlpdc/ai-resources/teaching-with-ai.php"
+      ],
+      "semanticDecision": "blocked_null_retained",
+      "rationale": "Reviewed official material did not establish a current university provision, licence, procurement, account-based access entitlement, official partnership access, or self-hosted service. Generic references, teaching material, research output, policy, and off-scope subunit material remain excluded.",
+      "resultingRecordIds": [],
+      "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",
+      "reviewedAt": "2026-07-18T13:00:00.000Z"
+    }
+  ]
+}
