@@ -444,9 +444,9 @@
       "semanticDecision": "positive_records_added",
       "rationale": "Official source explicitly establishes a university provision, licence, account-based access path, or institution-operated service.",
       "resultingRecordIds": [
-        "abo-akademi-university:unspecified_ai_tool:Buzz Transcribe",
-        "abo-akademi-university:unspecified_ai_tool:Duck AI",
-        "abo-akademi-university:unspecified_ai_tool:Larabot",
+        "abo-akademi-university:buzz_transcribe:Buzz Transcribe",
+        "abo-akademi-university:duck_ai:Duck AI",
+        "abo-akademi-university:larabot:Larabot",
         "abo-akademi-university:microsoft_copilot:Microsoft 365 Copilot Chat"
       ],
       "reviewerOrigin": "qs-501-600-20260718-009-semantic-review",

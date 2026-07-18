@@ -1,7 +1,7 @@
 {
   "schemaVersion": "uapt-ai-tools-records-v1",
   "runId": "uapt-ai-tools-qs-501-600-20260718-009",
-  "generatedAt": "2026-07-18T13:03:14.230Z",
+  "generatedAt": "2026-07-18T13:18:41.004Z",
   "reviewState": "agent_reviewed",
   "records": [
     {
@@ -909,7 +909,7 @@
       "universityName": "Abo Akademi University",
       "qsRow": 540,
       "qsRank": 643,
-      "tool": "unspecified_ai_tool",
+      "tool": "buzz_transcribe",
       "rawToolName": "Buzz Transcribe",
       "description": "Åbo Akademi University recommends Buzz Transcribe as a data-secure transcription tool for Vasa övningsskola teachers and staff.",
       "availability": "allowed",
@@ -952,7 +952,7 @@
       "universityName": "Abo Akademi University",
       "qsRow": 540,
       "qsRank": 643,
-      "tool": "unspecified_ai_tool",
+      "tool": "duck_ai",
       "rawToolName": "Duck AI",
       "description": "Vasa övningsskola lists Duck AI as an approved privacy-oriented AI tool for users aged 13 and older.",
       "availability": "allowed",
@@ -1017,7 +1017,7 @@
       "universityName": "Abo Akademi University",
       "qsRow": 540,
       "qsRank": 643,
-      "tool": "unspecified_ai_tool",
+      "tool": "larabot",
       "rawToolName": "Larabot",
       "description": "Vasa övningsskola lists Larabot as an approved AI tool for pupils and students in grades 1–6.",
       "availability": "allowed",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "uapt-ai-tools-independent-qa-v2",
   "runId": "uapt-ai-tools-qs-top-600-20260718-009",
-  "generatedAt": "2026-07-18T13:05:14.435Z",
+  "generatedAt": "2026-07-18T13:19:43.581Z",
   "method": "Independent Firecrawl re-scrape with standard-HTTP retry for HTML pages. Positive evidence requires the exact original-language quote. Blocked samples come from the full repair pass, are scanned for both product and institutional-access semantics, and every semantic hit must either become a record or carry an explicit evidence-bound exclusion adjudication.",
   "scope": {
     "positiveRecords": 66,
@@ -317,7 +317,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "the-university-of-tennessee-knoxville:institutional_ai_service:UT AI Hub",
+      "recordId": "the-university-of-tennessee-knoxville:perplexity:Perplexity",
       "qsRow": 510,
       "url": "https://oit.utk.edu/ai/aihub/",
       "httpStatus": 200,
@@ -329,7 +329,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "the-university-of-tennessee-knoxville:perplexity:Perplexity",
+      "recordId": "the-university-of-tennessee-knoxville:institutional_ai_service:UT AI Hub",
       "qsRow": 510,
       "url": "https://oit.utk.edu/ai/aihub/",
       "httpStatus": 200,
@@ -969,7 +969,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "abo-akademi-university:unspecified_ai_tool:Larabot",
+      "recordId": "abo-akademi-university:buzz_transcribe:Buzz Transcribe",
       "qsRow": 540,
       "url": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
       "httpStatus": 200,
@@ -981,7 +981,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "abo-akademi-university:unspecified_ai_tool:Duck AI",
+      "recordId": "abo-akademi-university:duck_ai:Duck AI",
       "qsRow": 540,
       "url": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
       "httpStatus": 200,
@@ -1005,7 +1005,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "abo-akademi-university:unspecified_ai_tool:Buzz Transcribe",
+      "recordId": "abo-akademi-university:larabot:Larabot",
       "qsRow": 540,
       "url": "https://www.abo.fi/vos/wp-content/uploads/sites/2/2026/01/ai-riktlinjer-for-vasa-ovningsskola-2025-in-english.pdf",
       "httpStatus": 200,
@@ -1218,7 +1218,7 @@
       "url": "https://www.konkuk.ac.kr/en/14352/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGZW4lMkYxNTU4JTJGMTE1MzAzNCUyRmFydGNsVmlldy5kbyUzRnBhZ2UlM0QxJTI2c3JjaENvbHVtbiUzRCUyNnNyY2hXcmQlM0QlMjZiYnNDbFNlcSUzRCUyNmJic09wZW5XcmRTZXElM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNnJnc0VuZGRlU3RyJTNEJTI2aXNWaWV3TWluZSUzRGZhbHNlJTI2cGFzc3dvcmQlM0QlMjY%3D",
       "httpStatus": 200,
       "finalUrl": "https://www.konkuk.ac.kr/en/14352/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGZW4lMkYxNTU4JTJGMTE1MzAzNCUyRmFydGNsVmlldy5kbyUzRnBhZ2UlM0QxJTI2c3JjaENvbHVtbiUzRCUyNnNyY2hXcmQlM0QlMjZiYnNDbFNlcSUzRCUyNmJic09wZW5XcmRTZXElM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNnJnc0VuZGRlU3RyJTNEJTI2aXNWaWV3TWluZSUzRGZhbHNlJTI2cGFzc3dvcmQlM0QlMjY%3D",
-      "contentHash": "b8626c0a1b8416dd2fc430b54bbb4ea93d4b8138792db0e7309e66c8c0b6ced6",
+      "contentHash": "dd63c41cd79d78d76904b5798e4ddfcf81c4820059bd435b033a5d0124f03f5f",
       "provider": "http_fallback",
       "semanticSignals": {
         "productTerms": [],
@@ -1302,7 +1302,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "memorial-university-of-newfoundland:microsoft_copilot:Copilot Premium",
+      "recordId": "memorial-university-of-newfoundland:microsoft_copilot:Copilot Basic",
       "qsRow": 560,
       "url": "https://www.mun.ca/cio/it-services/communication-and-collaboration/microsoft-365/",
       "httpStatus": 200,
@@ -1314,7 +1314,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "memorial-university-of-newfoundland:microsoft_copilot:Copilot Basic",
+      "recordId": "memorial-university-of-newfoundland:microsoft_copilot:Copilot Premium",
       "qsRow": 560,
       "url": "https://www.mun.ca/cio/it-services/communication-and-collaboration/microsoft-365/",
       "httpStatus": 200,
@@ -1395,7 +1395,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "lehigh-university:claude:Claude Pro",
+      "recordId": "lehigh-university:claude:Claude via Lehigh LLM Gateway",
       "qsRow": 568,
       "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
       "httpStatus": 200,
@@ -1407,7 +1407,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "lehigh-university:claude:Claude via Lehigh LLM Gateway",
+      "recordId": "lehigh-university:claude:Claude Pro",
       "qsRow": 568,
       "url": "https://its.lehigh.edu/news/free-access-enhanced-ai-tools-lehigh-faculty-and-graduate-students",
       "httpStatus": 200,
@@ -1599,7 +1599,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "ritsumeikan-university:adobe_firefly:Adobe Firefly",
+      "recordId": "ritsumeikan-university:adobe_express:Adobe Express (featuring Adobe Firefly)",
       "qsRow": 579,
       "url": "https://www.ritsumei.ac.jp/pathways-future/eng/course/tool.html",
       "httpStatus": 200,
@@ -1611,7 +1611,7 @@
     },
     {
       "kind": "positive",
-      "recordId": "ritsumeikan-university:adobe_express:Adobe Express (featuring Adobe Firefly)",
+      "recordId": "ritsumeikan-university:adobe_firefly:Adobe Firefly",
       "qsRow": 579,
       "url": "https://www.ritsumei.ac.jp/pathways-future/eng/course/tool.html",
       "httpStatus": 200,
@@ -1667,7 +1667,7 @@
       "url": "https://www.cut.ac.cy/faculties/fet/eecse/module-descriptions/?languageId=1",
       "httpStatus": 200,
       "finalUrl": "https://www.cut.ac.cy/faculties/fet/eecse/module-descriptions/?languageId=1",
-      "contentHash": "8852c7a8c18204322f7f7a41b549927ffcf8907189a1ecef2f820116ed7637ba",
+      "contentHash": "31b0ee83857f898583f02378a829334f43d535ba5e922a5a9caa519838da056a",
       "provider": "http_fallback",
       "semanticSignals": {
         "productTerms": [

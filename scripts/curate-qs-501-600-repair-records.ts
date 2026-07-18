@@ -99,17 +99,17 @@ const specs: Spec[] = [
     evidenceQuotes: ["Teachers and staff at Vasa övningsskola can use the AI tools recommended by Åbo Akademi University in their work", "Microsoft 365 Copilot Chat is an AI assistant", "Data protection for companies", "abo.fi user account"]
   },
   {
-    qsRow: 540, urlIncludes: "ai-riktlinjer-for-vasa-ovningsskola", tool: "unspecified_ai_tool", rawToolName: "Buzz Transcribe",
+    qsRow: 540, urlIncludes: "ai-riktlinjer-for-vasa-ovningsskola", tool: "buzz_transcribe", rawToolName: "Buzz Transcribe",
     description: "Åbo Akademi University recommends Buzz Transcribe as a data-secure transcription tool for Vasa övningsskola teachers and staff.", endorsementType: "officially_endorsed", institutionalRelationship: "Included in Åbo Akademi's recommended AI tools for the university practice school.", accessAudience: "Vasa övningsskola teachers and staff.", accessStatus: "Current approved-tool guidance.", howToObtain: "Follow Åbo Akademi ICT's approved-tool guidance.", costToUser: "Not stated.",
     evidenceQuotes: ["Teachers and staff at Vasa övningsskola can use the AI tools recommended by Åbo Akademi University in their work", "Buzz Transcribe is an AI-based program for transcribing audio files, such as interviews, in a data-secure way"]
   },
   {
-    qsRow: 540, urlIncludes: "ai-riktlinjer-for-vasa-ovningsskola", tool: "unspecified_ai_tool", rawToolName: "Larabot",
+    qsRow: 540, urlIncludes: "ai-riktlinjer-for-vasa-ovningsskola", tool: "larabot", rawToolName: "Larabot",
     description: "Vasa övningsskola lists Larabot as an approved AI tool for pupils and students in grades 1–6.", endorsementType: "officially_endorsed", institutionalRelationship: "Approved by the Åbo Akademi practice school for pupil and student use.", accessAudience: "Vasa övningsskola pupils and students in grades 1–6.", accessStatus: "Current approved-tool guidance.", howToObtain: "Use Larabot through the official service link in the school guidance.", costToUser: "The guidance requires approved teaching tools to be available free of charge.",
     evidenceQuotes: ["Approved AI tools for pupils and students at Vasa övningsskola", "Larabot", "can be used in grades 1–6"]
   },
   {
-    qsRow: 540, urlIncludes: "ai-riktlinjer-for-vasa-ovningsskola", tool: "unspecified_ai_tool", rawToolName: "Duck AI",
+    qsRow: 540, urlIncludes: "ai-riktlinjer-for-vasa-ovningsskola", tool: "duck_ai", rawToolName: "Duck AI",
     description: "Vasa övningsskola lists Duck AI as an approved privacy-oriented AI tool for users aged 13 and older.", endorsementType: "officially_endorsed", institutionalRelationship: "Approved by the Åbo Akademi practice school for pupil and student use.", accessAudience: "Vasa övningsskola pupils and students aged 13 and older.", accessStatus: "Current approved-tool guidance.", howToObtain: "Use Duck AI through the official service link in the school guidance.", costToUser: "Free.",
     evidenceQuotes: ["Approved AI tools for pupils and students at Vasa övningsskola", "Duck AI", "can be used from the age of 13", "Duck AI is a generative AI service that is free and safe to use."]
   },
@@ -263,10 +263,16 @@ async function main() {
     [510, "the-university-of-tennessee-knoxville"],
     [539, "universite-de-fribourg"]
   ]);
+  const toolSlugOverrides = new Map<string, string>([
+    ["Buzz Transcribe", "buzz_transcribe"],
+    ["Larabot", "larabot"],
+    ["Duck AI", "duck_ai"]
+  ]);
   const records = document.records.map((record: Json) => {
     const universitySlug = canonicalSlugOverrides.get(record.qsRow);
     const rankingRow = rankingRows.get(record.qsRow);
-    return universitySlug ? { ...record, universitySlug, universityName: rankingRow?.name ?? record.universityName } : record;
+    const tool = toolSlugOverrides.get(record.rawToolName) ?? record.tool;
+    return { ...record, tool, ...(universitySlug ? { universitySlug, universityName: rankingRow?.name ?? record.universityName } : {}) };
   });
   const keys = new Set(records.map(recordId));
 

@@ -100,6 +100,9 @@ export const aiTools = [
   "ernie",
   "hunyuan",
   "yuanbao",
+  "buzz_transcribe",
+  "larabot",
+  "duck_ai",
   "self_deploy",
   "institutional_ai_service",
   "unspecified_ai_tool"
@@ -946,6 +949,27 @@ export const aiToolRegistry: Record<AiToolSlug, AiToolCatalogEntry> = {
     provider: "Tencent",
     aliases: ["Tencent Yuanbao", "Yuanbao"],
     category: "china_market"
+  },
+  buzz_transcribe: {
+    slug: "buzz_transcribe",
+    label: "Buzz Transcribe",
+    provider: "Buzz",
+    aliases: ["Buzz Transcribe"],
+    category: "commercial_assistant"
+  },
+  larabot: {
+    slug: "larabot",
+    label: "Larabot",
+    provider: "Larabot",
+    aliases: ["Larabot", "Larabot.se"],
+    category: "commercial_assistant"
+  },
+  duck_ai: {
+    slug: "duck_ai",
+    label: "Duck AI",
+    provider: "DuckDuckGo",
+    aliases: ["Duck AI"],
+    category: "commercial_assistant"
   },
   self_deploy: {
     slug: "self_deploy",
