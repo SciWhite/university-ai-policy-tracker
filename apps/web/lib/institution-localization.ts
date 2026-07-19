@@ -466,13 +466,13 @@ const records: Record<string, InstitutionLocalizationRecord> = {
 };
 
 export function getLocalizedInstitutionName(
-  slug: string,
+  _slug: string,
   fallbackName: string,
-  locale: SupportedLocale
+  _locale: SupportedLocale
 ): string {
-  if (locale === "en") return fallbackName;
-
-  return records[slug]?.displayNames?.[locale] ?? fallbackName;
+  // Public display names stay canonical across locales. Localized names remain
+  // available below as search aliases, but never replace the source entity name.
+  return fallbackName;
 }
 
 export function getInstitutionLocalizedAliases(slug: string): string[] {

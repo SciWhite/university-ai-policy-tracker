@@ -1,0 +1,718 @@
+{
+  "home": {
+    "metadataTitle": "Universiteits-AI-beleid Database: Zoek {count} bronondersteunde GenAI-beleidslijnen",
+    "description": "Zoek en citeer bronondersteunde universiteits-GenAI-beleidrecords met officiële bronnen, beoordelingsstatussen, openbaar JSON en citaatklaar bewijs.",
+    "kicker": "Database voor universitair AI-beleid",
+    "lead": "Vind, citeer en raadpleeg bronondersteunde universiteits-GenAI-beleidrecords. Zoek op instelling, brondomein, AI-tool, beleidsthema of openbare bewijszin.",
+    "searchLabel": "Zoek in publiek toegankelijke records van universitair AI-beleid",
+    "searchPlaceholder": "Zoek op universiteiten, onderwerpen, brondomeinen...",
+    "searchButton": "Zoeken",
+    "suggestedSearches": "Voorgestelde zoekopdrachten",
+    "note": "Zoeken is een navigatiehulp voor gepromote openbare records, geen beleidsconclusie. Open het record en de openbare JSON voordat u citeert.",
+    "publicJson": "Openbaar JSON",
+    "searchApi": "Zoek-API",
+    "license": "Licentie",
+    "universityRecords": "universiteitsrecords",
+    "sourceBackedClaims": "bronondersteunde beweringen",
+    "officialSourceAttributions": "officiële bronvermeldingen",
+    "analysisProfiles": "analyseprofielen",
+    "answersLabel": "Database-antwoordblokken",
+    "entryGroupsLabel": "Secundaire ingangen",
+    "matchingRecords": "Overeenkomende records",
+    "openSearch": "Zoeken openen",
+    "record": "Record",
+    "claims": "Beweringen",
+    "sources": "Bronnen",
+    "recentChecks": "Recente controles",
+    "viewChanges": "Wijzigingen bekijken",
+    "noPublicFreshnessDate": "Geen openbare actualiteitsdatum",
+    "agentRetrievalTitle": "Agent- en citaatopzoeking",
+    "agentRetrievalLead": "Gebruik canonieke pagina's en versiebeheerde openbare JSON samen.",
+    "aiSystemsTitle": "Voor AI/zoeksystemen",
+    "aiSystemsText": "Los een entiteit op met zoekopdrachten, open de canonieke universiteitsrecord en citeer bewijsmateriaal voor claims en openbare JSON-velden zonder de officiële brontaal van de universiteit te vervangen.",
+    "aiSearchReference": "AI/zoekreferentie",
+    "researchersTitle": "Voor onderzoekers en journalisten",
+    "researchersText": "Behandel tracker-metadata als een citatielaag. Officiële bronpagina's, PDF's en beleidsdocumenten behouden hun eigen rechten en blijven de definitieve bron voor institutionele formuleringen.",
+    "citationGuide": "Citatengids",
+    "methodology": "Methodologie",
+    "developersTitle": "Voor ontwikkelaars",
+    "developersText": "Openbare eindpunten bieden alleen-lezen records, zoekopdrachten, entiteiten, datasets, recente wijzigingen, analyseprofielen en citatiemetadata onder de versiebeheerde API-namespace.",
+    "apiDocs": "API-documentatie",
+    "apiIndex": "API-index",
+    "changed": "Gewijzigd",
+    "checked": "Gecontroleerd",
+    "homeAnswers": [
+      {
+        "title": "Wat deze database is",
+        "text": "Een openbare, bronondersteunde index van universiteits-GenAI-beleidsrecords met canonieke pagina's, beoordelingsstatus, bron-URL's, bewijsfragmenten en openbare JSON."
+      },
+      {
+        "title": "Wat deze database niet is",
+        "text": "Het is geen juridisch advies, advies over academische integriteit of een officiële verklaring van de universiteit. Officiële bronpagina's van de universiteit blijven canoniek."
+      },
+      {
+        "title": "Hoe records te citeren",
+        "text": "Citeer de zichtbare recordpagina en de bijbehorende openbare JSON samen, en behoud de bron-URL, beoordelingsstatus, betrouwbaarheid, datum laatste controle en bewijsmateriaal in de oorspronkelijke taal."
+      }
+    ],
+    "entryGroups": [
+      {
+        "title": "Start",
+        "links": [
+          {
+            "label": "Records zoeken",
+            "href": "/search"
+          },
+          {
+            "label": "Universiteiten",
+            "href": "/universities"
+          },
+          {
+            "label": "AI-beleid Database",
+            "href": "/university-ai-policy-database"
+          }
+        ]
+      },
+      {
+        "title": "Data en API",
+        "links": [
+          {
+            "label": "Datasets",
+            "href": "/datasets"
+          },
+          {
+            "label": "API",
+            "href": "/api-reference"
+          },
+          {
+            "label": "MCP",
+            "href": "/mcp"
+          },
+          {
+            "label": "Widgets",
+            "href": "/widgets"
+          }
+        ]
+      },
+      {
+        "title": "Updates",
+        "links": [
+          {
+            "label": "Wijzigingen",
+            "href": "/changes"
+          },
+          {
+            "label": "Rapporten",
+            "href": "/reports"
+          },
+          {
+            "label": "Feeds",
+            "href": "/feeds/atom.xml"
+          }
+        ]
+      },
+      {
+        "title": "Dekking en review",
+        "links": [
+          {
+            "label": "Dekking",
+            "href": "/coverage"
+          },
+          {
+            "label": "Bronnenkwaliteit",
+            "href": "/source-health"
+          },
+          {
+            "label": "Beoordeling",
+            "href": "/review"
+          },
+          {
+            "label": "Wachtrij",
+            "href": "/review/queue"
+          }
+        ]
+      },
+      {
+        "title": "Vertrouwen en citatie",
+        "links": [
+          {
+            "label": "Methodologie",
+            "href": "/methodology"
+          },
+          {
+            "label": "Citatie",
+            "href": "/citation"
+          },
+          {
+            "label": "llms.txt",
+            "href": "/llms.txt"
+          },
+          {
+            "label": "Bijdragen",
+            "href": "/contribute"
+          }
+        ]
+      }
+    ]
+  },
+  "universities": {
+    "title": "University AI Policy Database: Bronondersteunde GenAI-gegevens",
+    "description": "Blader door universitair AI-beleid, ChatGPT en GenAI-regelgegevens met officiële bronnen, beoordelingsstatus, laatste controledata en openbare JSON-links.",
+    "kicker": "Bewijsgegevens",
+    "heading": "Blader door bronondersteunde universitair AI-beleidgegevens",
+    "lead": "Filter openbare gegevens op instelling, rangschikkingsdekking, beweringen, officiële bronnen, beoordelingsstatus en versiegebonden openbare JSON.",
+    "coverageLabel": "Universiteitsdekking",
+    "universityRecords": "universiteitsgegevens",
+    "sourceBackedClaims": "bronondersteunde beweringen",
+    "officialSourceAttributions": "officiële bronvermeldingen",
+    "rankedRecords": "{ranking} gerangschikte records",
+    "answersLabel": "Universiteitsindexantwoorden",
+    "priorityTitle": "Prioritaire universiteits-AI-beleidrecords",
+    "priorityLead": "Records met hoge indruk uit Search Console, gekoppeld aan hun canonieke beleidspagina's, wijzigingsgeschiedenis, aantallen officiële bronnen en openbaar JSON.",
+    "priorityReportsLink": "Maandrapport",
+    "priorityChangeLink": "Wijzigingsgeschiedenis",
+    "priorityRecordLink": "Beleidrecord",
+    "indexTitle": "Index",
+    "indexLead": "Rangschikkingfilters zijn hulpmiddelen voor het vinden van informatie; beleidsclaims komen nog steeds uit officiële bronnen.",
+    "search": "Zoeken",
+    "searchPlaceholder": "Universiteit, land, stad",
+    "ranking": "Rangschikking",
+    "coverage": "Dekking",
+    "sort": "Sorteren",
+    "order": "Volgorde",
+    "allRecords": "Alle records",
+    "rankedInSelectedSystem": "Gerangschikt in geselecteerd systeem",
+    "missingSelectedRank": "Gekozen rang ontbreekt",
+    "selectedRanking": "Geselecteerde rangschikking",
+    "recentlyChecked": "Onlangs gecontroleerd",
+    "universityName": "Universiteitsnaam",
+    "claimCount": "Aantal claims",
+    "sourceCount": "Aantal bronnen",
+    "ascending": "Oplopend",
+    "descending": "Aflopend",
+    "apply": "Toepassen",
+    "reset": "Resetten",
+    "showing": "{visible} van {total} records weergegeven.",
+    "searchSummary": "Zoeken: \"{query}\".",
+    "rankingView": "Rangschikkingweergave: {ranking}.",
+    "university": "Universiteit",
+    "rank": "{ranking}-rang",
+    "claims": "Beweringen",
+    "sources": "Bronnen",
+    "lastChecked": "Laatst gecontroleerd",
+    "publicJson": "Openbaar JSON",
+    "locationUnknown": "Locatie onbekend",
+    "confidence": "Zekerheid",
+    "unknown": "Onbekend",
+    "json": "JSON",
+    "noMatches": "Geen records komen overeen met de huidige zoek- en rangschikkingsdekkingfilters.",
+    "candidateNotice": "{count} kandidaat- of tot-naschouwing-volgende claimrecords blijven zichtbaar voor controleerbaarheid. De beoordelingsstatus is los van de zekerheid.",
+    "notIndexed": "Niet geïndexeerd",
+    "partialSource": "gedeeltelijke bron",
+    "derivedOrder": "afgeleide volgorde",
+    "answerCards": [
+      {
+        "title": "Wat deze index dekt",
+        "text": "Gepromote, publiek toegankelijke universiteitsrecords met door bronnen onderbouwde aantallen claims, officiële brontoeschrijvingen, beoordelingsstatus en canonieke record-URL's."
+      },
+      {
+        "title": "Hoe u ranglijsten gebruikt",
+        "text": "Ranglijstfilters ondersteunen alleen het vinden en analyseren van dekking; ze creëren of overschrijven geen beleidsclaims."
+      },
+      {
+        "title": "Grens voor hergebruik",
+        "text": "De tracker is geen juridisch advies, advies over academische integriteit of een officiële universiteitsverklaring, tenzij de gekoppelde bron de eigen officiële pagina van de universiteit is."
+      }
+    ]
+  },
+  "datasets": {
+    "title": "Datasets | University AI Policy Tracker",
+    "description": "Geverifieerde openbare JSON-eindpunten, datasetconcepten, licenties, voorbehouden inzake bronrechten en citateverwachtingen voor University AI Policy Tracker.",
+    "kicker": "Datasets",
+    "heading": "Openbare JSON-artefacten en releasedata",
+    "leadPrefix": "Geverifieerde openbare JSON onder",
+    "leadSuffix": "opgebouwd uit dezelfde gepromote releasedataset als de zichtbare pagina's.",
+    "coverageLabel": "Huidige datasetdekking",
+    "publicUniversityRecords": "openbaar toegankelijke universiteitsgegevens",
+    "sourceBackedClaims": "door bronnen onderbouwde claims",
+    "officialSourceAttributions": "toeschrijvingen aan officiële bronnen",
+    "publicJsonSchemaVersion": "openbare JSON-schema-versie",
+    "releaseDownloadArtifacts": "downloadartefacten van releases",
+    "analysisProfiles": "analyseprofielen",
+    "answersLabel": "Datasetantwoordblokken",
+    "whatReusableTitle": "Wat kan worden hergebruikt",
+    "whatReusableText": "Trackermetadata, record-URL's, reviewstatussen, citervelden en openbare JSON-artefacten zijn herbruikbaar onder de trackermetadata-licentie.",
+    "externalTitle": "Wat blijft extern",
+    "externalText": "Officiële bronnen, pagin tekst, PDF's en universiteitsbeleidsformuleringen behouden hun oorspronkelijke rechten en voorwaarden.",
+    "retrieveTitle": "Hoe agents data ophalen",
+    "retrieveText": "Begin bij de API-index, los entiteiten op via zoekopdrachten, haal het canonieke universiteits-JSON op en citeer vervolgens bewijs voor claims en bron-URL's.",
+    "versionedJsonTitle": "Geverifieerde openbare JSON",
+    "versionedJsonDescription": "Live read-only artefacten gegroepeerd op gebruik.",
+    "coreRecords": "Kernrecords",
+    "searchAnalysis": "Zoeken en analyse",
+    "reportsEmbeds": "Rapporten en embeds",
+    "reviewIntegrations": "Review en integraties",
+    "releaseDownloadsTitle": "Downloads per datasetuitgave",
+    "releaseDownloadsDescription": "Bulkbestanden met rijtellingen, groottes en checksums.",
+    "release": "Uitgave",
+    "period": "Periode",
+    "published": "Gepubliceerd",
+    "rankingTitle": "Rangschikking- en indexgrenzen",
+    "rankingDescription": "Ontdekkingsinputs, geen beleidsconclusies.",
+    "githubTitle": "GitHub-trustassets",
+    "githubDescription": "Betrouwbaarheidsbestanden op repositoryniveau.",
+    "manifestTitle": "Huidige release-manifest",
+    "promotedRuns": "Gepromote runs",
+    "manifestText": "Het manifest bepaalt welke gereviewde staged artefactmappen worden gepromoot naar openbare pagina's en openbare JSON.",
+    "conceptsTitle": "Datasetconcepten",
+    "conceptsLead": "Wat de v1-records vandaag blootleggen",
+    "licenseTitle": "Licentie, rechten en citatie",
+    "trackerMetadata": "trackermetadata",
+    "trackerMetadataTitle": "Trackermetadata",
+    "officialRightsTitle": "Officiële bronrechten",
+    "citationExpectationsTitle": "Citatieverwachtingen",
+    "citationExpectationsText": "Citeer de canonieke pagina en het openbare JSON-bestand samen. Behoud bij hergebruik op claim-niveau de bron-URL, brontaal, snapshot-hash, beoordelingsstatus, betrouwbaarheid en het oorspronkelijke bewijsfragment.",
+    "citationRulesPrefix": "Citateregels zijn gedocumenteerd op",
+    "recentFreshnessPrefix": "De actualiteit van recente gegevens is zichtbaar op",
+    "apiGroups": {
+      "apiIndex": "Eindpuntontdekking en vertrouwenslinks.",
+      "universities": "Universiteitsgegevens met beoordelingsstatus, datums en JSON-URL's.",
+      "perUniversity": "Voorbeeld van een openbaar universiteitsrecord.",
+      "claims": "Voorbeeldrijen voor claim/bewijs.",
+      "recentChanges": "Gecontroleerde en gewijzigde records.",
+      "manifest": "Release-artefacten, rijtellingen, bestandsgroottes en checksums.",
+      "searchJson": "Entiteitzoekopdracht over gepromote openbare records.",
+      "searchIndex": "Veilige zoekindex; geen ruwe snapshots of staging-artefacten.",
+      "entityAliases": "Canonieke aliassen en ophaalhints.",
+      "analysisIndex": "Manifest van analyse-dimensies voor beleid.",
+      "analysisProfile": "Voorbeeld van een per-universiteit analysesprofiel.",
+      "coverageScores": "Scores voor de breedte van de dekking, niet voor de kwaliteit van het beleid.",
+      "analysisQuality": "Toegangsbeperkingen voor openbare analysepagina's.",
+      "reportsIndex": "Index van openbare rapporten.",
+      "outreach": "Tekst voor media en nieuwsbrieven met duidelijke grenzen.",
+      "chartData": "Grafiekgegevens van het maandrapport van juni 2026.",
+      "widgetIndex": "Widget-ontdekking.",
+      "policyCoverageWidget": "Voorbeeld van een dekking-widget.",
+      "sourceFreshnessWidget": "Voorbeeld van een widget voor bronactualiteit.",
+      "reviewStateWidget": "Voorbeeld van een widget voor beoordelingsstatus.",
+      "qsCoverage": "QS 2026-verzameling dekking.",
+      "sourceHealth": "Bronstatus voor reparatie- en hercrawlplanning.",
+      "reviewQueue": "Metadata van de wachtrij voor niet-gepromote staging-runs.",
+      "mcpManifest": "Alleen-lezen MCP-alpha-manifest.",
+      "mcpToolCatalog": "Alleen-lezen MCP-toolcatalogus.",
+      "citationMetadata": "Citatemallen en hergebruiksregels.",
+      "contributionIndex": "Metadata van het bijdrageproces.",
+      "reviewPolicy": "Beleidsregel voor beoordeling van bijdragen."
+    },
+    "concepts": [
+      {
+        "name": "Universiteiten",
+        "status": "Nu beschikbaar",
+        "description": "Canonieke universiteitsgegevens zijn beschikbaar als zichtbare pagina's en per universiteit openbare JSON-records."
+      },
+      {
+        "name": "Beweringen",
+        "status": "Beschikbaar binnen universiteits-JSON",
+        "description": "Claims bevatten claimtekst, claimtype, betrouwbaarheid, beoordelingsstatus, datums en bewijsarrays."
+      },
+      {
+        "name": "Bronnen",
+        "status": "Beschikbaar binnen openbare records",
+        "description": "Officiële bronnen verschijnen als brontoewijzingen en bewijsbron-URL's met rechtenvoorbehoud."
+      },
+      {
+        "name": "Momentopnames",
+        "status": "Hash-metadata nu beschikbaar",
+        "description": "Openbare records tonen bronmomentopname-hashes. Ruwe HTML, PDF's en screenshots worden niet gepubliceerd als tracker-metadata."
+      },
+      {
+        "name": "Recente wijzigingen",
+        "status": "Nu beschikbaar",
+        "description": "De JSON-feed van recente wijzigingen vat gecontroleerde en gewijzigde universiteitsrecords samen met beoordelingsstatussen."
+      },
+      {
+        "name": "Analyseprofielen",
+        "status": "Nu beschikbaar",
+        "description": "Deterministische beleidsanalyseprofielen leiden dimensies en dekkingscores af uit bestaande openbare claim-/bewijsrecords."
+      },
+      {
+        "name": "Dekkingsdashboards",
+        "status": "Nu beschikbaar",
+        "description": "QS-dekking, bronkwaliteit en metadata van de beoordelingswachtrij tonen de verzamelstatus en het werk van crawlers/beoordelaars zonder staging-claims te publiceren."
+      },
+      {
+        "name": "Entiteitsoplossing en zoekfunctie",
+        "status": "Nu beschikbaar",
+        "description": "Canonieke entiteitsaliassen en veilige zoekindexen verbeteren de herroepbaarheid zonder beleidsfeiten te creëren of onuitgegeven artefacten bloot te stellen."
+      }
+    ]
+  },
+  "methodology": {
+    "title": "Methodologie | University AI Policy Tracker",
+    "description": "Hoe University AI Policy Tracker bronnen ontdekt, pagina's vastlegt, bewijs koppelt, vertrouwen scheidt van beoordelingsstatus en citatieklare records publiceert.",
+    "kicker": "Methodologie",
+    "heading": "Hoe records bronondersteunde claims worden",
+    "lead": "Officiële bronnen, momentopnames, korte bewijsfragmenten, betrouwbaarheid en expliciete beoordelingsstatus.",
+    "answersLabel": "Methodologie-antwoordblokken",
+    "tocLabel": "Methodologiedelen",
+    "toc": {
+      "workflow": "Bewijsworkflow",
+      "reviewStates": "Beoordelingsstatussen",
+      "rankingBoundaries": "Rankinggrenzen",
+      "publicationRules": "Publicatieregels",
+      "limitations": "Beperkingen"
+    },
+    "workflowDescription": "Van het ontdekken van openbare bronnen tot citatierepare records.",
+    "reviewDescription": "Beoordelingsstatus is workflowstatus. Betrouwbaarheid is machinebeoordeelde ondersteuning.",
+    "rankingDescription": "Rankingrijen helpen bij het prioriteren en filteren van bronontdekking. Ze zijn geen beleidsclaims.",
+    "publicationDescription": "Wat er moet bestaan voordat een claim openbaar is.",
+    "limitationsDescription": "Bekende grenzen van de huidige bewijslaag.",
+    "footer": "Gebruik de citatiewijzer voor attributieregels, de datasetspagina voor publieke JSON-toegang en recente wijzigingen voor versheidssignalen.",
+    "links": {
+      "citationGuide": "citatiewijzer",
+      "datasetsPage": "datasetspagina",
+      "recentChanges": "recente wijzigingen"
+    },
+    "answers": [
+      {
+        "title": "Hoe records publiek worden",
+        "text": "Records worden publiek na bronontdekking, snapshot-hashing, claimextractie, bewijsbinding, labeltoewijzing van de reviewstatus en publicatie uit het gepromote publieke dataset."
+      },
+      {
+        "title": "Wat reviewstatus betekent",
+        "text": "Reviewstatus beschrijft de workflowstatus. Zekerheid is een aparte machinebeoordeelde ondersteuningscore en maakt een claim niet officieel."
+      },
+      {
+        "title": "Wat bewijs canoniek is",
+        "text": "Bewijs in de oorspronkelijke taal, bron-URL's en officiële universiteitspagina's blijven canoniek; vertalingen of samenvattingen zijn hulpmeta-gegevens."
+      }
+    ],
+    "workflowSteps": [
+      {
+        "title": "Bronontdekking",
+        "description": "Publieke universiteitsbeleidspagina's, onderwijsrichtlijnen, IT-/veiligheidspagina's, inkooppagina's, PDF's en bronvermeldende materialen."
+      },
+      {
+        "title": "Crawl en snapshot",
+        "description": "Opgehaalde brontekst ontvangt een inhoudshash voor toekomstige wijzigingscontroles."
+      },
+      {
+        "title": "Claimextractie",
+        "description": "Claims houden zekerheid gescheiden van reviewstatus."
+      },
+      {
+        "title": "Bewijsbinding",
+        "description": "Elke publieke claim heeft een bron-URL, snapshot-hash, bewijssnippet, brontaal en rechtenvoorbehoud nodig."
+      },
+      {
+        "title": "Wijzigingsdetectie",
+        "description": "Gewijzigde hashes kunnen nieuwe snapshots, kandidaten, claimupdates en wijzigingsrecords genereren."
+      },
+      {
+        "title": "Meertalige bron-eerst bewijs",
+        "description": "Bewijs in de oorspronkelijke taal is canoniek; vertalingen zijn weergavehulpmiddelen."
+      }
+    ],
+    "reviewStates": [
+      {
+        "label": "machine_candidate",
+        "description": "Geproduceerd door crawler, extractor of seed-proces; niet definitief."
+      },
+      {
+        "label": "needs_review",
+        "description": "Bron, extractie, datum of classificatie heeft controle nodig."
+      },
+      {
+        "label": "agent_reviewed",
+        "description": "Agent heeft bewijs en classificatie gecontroleerd."
+      },
+      {
+        "label": "human_reviewed",
+        "description": "Menselijke reviewer of deterministische publicatieregel heeft de bewering goedgekeurd."
+      },
+      {
+        "label": "rejected",
+        "description": "Alleen behouden voor auditcontext."
+      }
+    ],
+    "rankingRules": [
+      "QS 2026 blijft momenteel de belangrijkste bron voor crawl-batching om de openbare dekking uit te breiden.",
+      "THE 2026, ARWU 2025, U.S. News 2025-2026 en CWTS Leiden 2025 worden ondersteund als bronnen voor ranglijsten, indices en filters.",
+      "CWTS Leiden 2025 is een afgelede metriek volgorde, geen algehele wereldwijde universiteitsranglijst.",
+      "Verschillende rangjaarlijsten worden niet gepresenteerd als één verenigde 2026-ranglijst.",
+      "Ranglijstdata creëert of overschrijft geen beleidsbeweringen; zichtbare beweringen vereisen nog steeds officiële bronnen, bewijsfragmenten, betrouwbaarheid en reviewstatus."
+    ],
+    "publicationRules": [
+      "Elke openbare bewering vereist een bron-URL en een bron-snapshot-hash.",
+      "Bewijsfragmenten blijven kort, noodzakelijk en aan de bron toegeschreven.",
+      "Bewijs in de oorspronkelijke taal is canoniek; vertaling is alleen voor weergave.",
+      "Canonieke feiten en gelokaliseerde weergave moeten gescheiden blijven.",
+      "Kandidaat-beweringen moeten worden gelabeld en mogen niet als definitieve samenvattingen worden gebruikt.",
+      "Openbare pagina's en openbaar JSON moeten gegenereerd worden uit dezelfde gepromoteerde openbare releasedataset.",
+      "Officiële bronnen behouden hun oorspronkelijke rechten en voorwaarden."
+    ],
+    "limitations": [
+      "Universiteitsbeleid kan verspreid zijn over afdelingen, cursussen, PDF's en interne systemen.",
+      "Sporadische records blijven gelabeld als vroege dekking totdat gecontroleerd bewijs sterkere conclusies ondersteunt.",
+      "De tracker registreert metadata voor broncontrole en bewijs van beweringen; hij geeft geen juridisch of academisch-integriteitsadvies."
+    ]
+  },
+  "citation": {
+    "title": "Citering | University AI Policy Tracker",
+    "description": "Citaatformaten, regels voor bronvermelding, openbare JSON-velden, rechtenbehoud en adviesgrenzen voor University AI Policy Tracker.",
+    "kicker": "Citering",
+    "heading": "Citeer tracker-metadata en officiële bronnen apart",
+    "lead": "Houd de canonieke pagina, openbare JSON, bron-URL, snapshot-hash, beoordelingsstatus, betrouwbaarheid en oorspronkelijk bewijsmateriaal bij elkaar.",
+    "answersLabel": "Citaatantwoordblokken",
+    "tocLabel": "Citatieonderdelen",
+    "toc": {
+      "formats": "Voorgestelde formaten",
+      "fields": "Citatievelden",
+      "json": "Openbare JSON",
+      "ranking": "Rankingbronnen",
+      "rights": "Rechten en grenzen"
+    },
+    "formatsDescription": "Klaar-om-te-kopiëren voorbeelden.",
+    "universityPolicyRecord": "Universiteitsbeleidsrecord",
+    "datasetSurface": "Datasetoppervlak",
+    "changesFeed": "Wijzigingenfeed of -rapport",
+    "fieldsDescription": "Behoud deze velden.",
+    "pageDataIdentity": "Pagina- en data-identiteit",
+    "freshnessReview": "Versheid en beoordeling",
+    "sourceEvidence": "Bronbewijs",
+    "jsonDescription": "Geverifieerde records voor hergebruik.",
+    "apiIndex": "API-index",
+    "universitiesList": "Lijst van universiteiten",
+    "universityRecord": "Universiteitsrecord",
+    "recentChanges": "Recente wijzigingen",
+    "rankingDescription": "Referentie-indexen, geen beleidsranglijsten.",
+    "rightsDescription": "trackermetadata",
+    "browsePrefix": "Bekijk",
+    "readPrefix": "lees de",
+    "reviewPrefix": "of bekijk",
+    "universityRecords": "universiteitsrecords",
+    "methodology": "methodologie",
+    "datasetAccess": "datasettoegang",
+    "answers": [
+      {
+        "title": "Een universiteitsrecord citeren",
+        "text": "Citeer de zichtbare canonieke recordpagina samen met de bijbehorende openbare JSON-URL en bewaar vervolgens de bron-URL, beoordelingsstatus, betrouwbaarheid en datum van de laatste controle."
+      },
+      {
+        "title": "Bewijs voor een bewering citeren",
+        "text": "Neem bij hergebruik op beweringsniveau de beweringstekst, het bewijsfragment in de oorspronkelijke taal, de brontaal, bron-URL, momentopnamehash, betrouwbaarheid en beoordelingsstatus op."
+      },
+      {
+        "title": "Wat niet als officieel moet worden geciteerd",
+        "text": "Metadata van University AI Policy Tracker is geen officiële verklaring van een universiteit; citeer de gekoppelde officiële bronnen afzonderlijk voor de formulering van het instellingsbeleid."
+      }
+    ],
+    "identityRules": [
+      "Canonieke URL van de zichtbare openbare pagina.",
+      "Versiebeheerde openbare JSON-URL binnen de openbare API-naamruimte.",
+      "Openbare pagina's en openbare JSON moeten hetzelfde gepromote record uit de openbare uitgave beschrijven.",
+      "Schemaversie."
+    ],
+    "freshnessRules": [
+      "Datum van de laatste controle, waarop de bron voor het laatst is gecontroleerd.",
+      "Datum van de laatste wijziging, waarop een gevolgde bron of bewering is gewijzigd.",
+      "Beoordelingsstatus, die losstaat van de machinebetrouwbaarheid."
+    ],
+    "evidenceRules": [
+      "Officiële of duidelijk gelabelde bron-URL's.",
+      "Hashes van bronmomentopnamen voor traceerbaarheid van wijzigingen en citaten.",
+      "Korte bewijsfragmenten in de oorspronkelijke taal en brontaal."
+    ],
+    "rankingRules": [
+      "QS 2026 blijft momenteel de belangrijkste bron voor het batchen van crawls.",
+      "THE 2026, ARWU 2025, U.S. News 2025-2026 en CWTS Leiden 2025 worden ondersteund als bronnen voor ranglijsten, indices en filters.",
+      "CWTS Leiden 2025 is een afgelede metriek volgorde, geen algehele wereldwijde universiteitsranglijst.",
+      "Citeer geen gemengde rangjaar als één verenigde ranglijst van 2026. Citeer het tracker-record en de openbare JSON voor beleidsbewijs, en citeer de relevante ranglijstbron apart wanneer rangcontext van belang is."
+    ]
+  },
+  "analysis": {
+    "title": "Beleidsanalyse | University AI Policy Tracker",
+    "description": "Deterministische, op bewijs gebaseerde profielen voor universitair AI-beleid met bronclaim-IDs, beoordelingsstatussen, dekkingscores en versiegebonden openbare JSON.",
+    "kicker": "Beleidsanalyse",
+    "heading": "Op bronnen gebaseerde analyseprofielen, geen beleidsadvies",
+    "lead": "Afgeleide dimensies over openbare claim-/bewijsrecords. Elk niet-lege resultaat behoudt claim-IDs, bron-URL's, brontaal en bewijs.",
+    "profiles": "Profielen",
+    "schema": "Schema",
+    "publicApi": "Openbare API",
+    "coverageLabel": "Dekking van beleidsanalyse",
+    "analysisProfiles": "analyseprofielen",
+    "evidenceBackedDimensions": "op bewijs gebaseerde dimensies",
+    "averageCoverageScore": "gemiddelde score voor openbare dekking",
+    "sourceLanguagesPreserved": "behoud van brontalen",
+    "answersLabel": "Antwoordblokken beleidsanalyse",
+    "summaryTitle": "Samenvatting",
+    "summaryDescription": "Voor citatiecontext.",
+    "scoreNotice": "De score voor Beleidsdekking meet de breedte van openbare, door bronnen onderbouwde dekking. Het is geen score voor kwaliteit, strengheid, juridische toereikendheid, veiligheid of institutionele naleving.",
+    "tocLabel": "Analysesecties",
+    "toc": {
+      "meaning": "Grens",
+      "dimensions": "Dimensies",
+      "coverage": "Dekkingscore",
+      "themes": "Thema-analyse",
+      "quality": "Kwaliteitscontroles",
+      "review": "Beoordelingsworkflow",
+      "json": "Openbaar JSON",
+      "citation": "Citaat"
+    },
+    "meaningDescription": "Afgeleide metadata met brongelinks.",
+    "dimensionsDescription": "Alle dimensies zijn zichtbaar en contractueel onderbouwd.",
+    "coverageDescription": "De score is uitsluitend een maat voor de breedte van de dekking.",
+    "openCoverageTable": "Open dekkingslijst",
+    "coverageText": "De componenten van de dekkingscore tellen samen op tot 100 punten over categorieën voor openbaar bewijsmateriaal, zoals centraal beleid, academische integriteit, vermelding, cursussen, examens, privacy/gegevensinvoer, goedgekeurde hulpmiddelen en richtlijnen voor onderwijs of onderzoek.",
+    "coverageWarning": "De score mag nooit worden omschreven als het beste beleid, het slechtste beleid, de meest conforme, wettelijk veilige of institutioneel goedgekeurde.",
+    "qualityDescription": "Publicatiecontroles houden analysepagina's nuttig voor zoekmachines en AI-antwoordengines, zonder dunne pagina's te maken uit schaarse gegevens.",
+    "pageQualityJson": "Pagina-kwaliteit JSON",
+    "qualityStatus": "Huidige status pagina-kwaliteit: {status}. Het rapport dekt {count} openbare analysepagina's en houdt de beoordelingsstatus gescheiden van de publicatiereedheid van de pagina.",
+    "reviewDescription": "Kwaliteitscontroles publiceren geen canonieke analyse. Ze leiden twijfelachtige records door naar de beoordeling.",
+    "openReviewWorkflow": "Open beoordelingsworkflow",
+    "queue": "Wachtrij",
+    "publicMutation": "Openbare mutatie",
+    "notAllowed": "Niet toegestaan",
+    "reviewStates": "Beoordelingsstatussen",
+    "themesDescription": "Alleen thema's met voldoende openbaar bewijsmateriaal worden vanuit deze index gelinkt.",
+    "openAnalysis": "Open analyse",
+    "held": "Voldaan tot aanwijzing drempelwaarde",
+    "jsonDescription": "Gevergisse alleen-lezen-eindpunten voor hergebruik downstream.",
+    "citationDescription": "Gebruik de canonieke pagina en het openbare JSON-document samen.",
+    "suggestedCitation": "Voorgestelde citatie",
+    "answers": [
+      {
+        "title": "Wat analyse betekent",
+        "text": "Analyseprofielen zijn afgeleide metadata over openbare bewering-/bewijsrecords. Ze vatten beleidsdimensies samen zonder het bronbewijs te vervangen."
+      },
+      {
+        "title": "Wat de dekkingsscore betekent",
+        "text": "De dekkingsscore meet de breedte van zichtbaar openbaar bewijs, niet de beleidskwaliteit, veiligheid, legaliteit, strengheid of naleving."
+      },
+      {
+        "title": "Hoe analyse aan te citeren",
+        "text": "Citeer het analyse-JSON-document samen met de gerelateerde universiteitsrecord, basisbewerings-ID's, bron-URL's, beoordelingsstatus en oorspronkelijk bewijs."
+      }
+    ],
+    "boundaryRules": [
+      "Dimensies vatten openbare tracker-beweringen samen in consistente labels.",
+      "Bewijs in de oorspronkelijke taal blijft canoniek.",
+      "Zekerheid is los van de beoordelingsstatus.",
+      "\"not_mentioned\" betekent dat er geen overeenkomend openbaar tracker-bewijs aanwezig is in het huidige profiel.",
+      "Open basisbewerings-ID's en bron-URL's voor hergebruik."
+    ],
+    "evidenceBacked": "Onderbouwd met bewijs",
+    "notMentioned": "Niet vermeld",
+    "gate": "Poort",
+    "analysisIndex": "Analyse-index",
+    "analysisIndexDescription": "Manifest van analyse-eindpunten met dimensiedefinities en versiemetadata.",
+    "universityAnalysisProfile": "Universiteitsanalyseprofiel",
+    "universityAnalysisProfileDescription": "Voorbeeld van een analyseprofiel per universiteit met dimensies, basisbewijs en dekkingsscore.",
+    "coverageScores": "Dekkingsscores",
+    "coverageScoresDescription": "Lijst van dekkingsscores voor openbare analyseprofielen.",
+    "analysisPageQuality": "Kwaliteit van de analysepagina",
+    "analysisPageQualityDescription": "Alleen-lezen rapportage van pagina-kwaliteitscontroles, indexeerbaarheidsstatus, analyse-beoordelingsworkflow en grenzen van geen-advies."
+  },
+  "changes": {
+    "title": "Recente wijzigingen | University AI Policy Tracker",
+    "description": "Doorzoekbare tijdlijnen van beleidswijzigingen aan universiteiten met vergelijkingen van oude/nieuwe beweringen, bronversheid, beoordelingsstatussen en versienummerde openbare JSON-links.",
+    "kicker": "Wijzigingen",
+    "heading": "Tijdlijnen van beleidswijzigingen aan universiteiten",
+    "lead": "Zoek en vergelijk openbare registraties van AI-beleidswijzigingen aan universiteiten op thema, beoordelingsstatus, bronkwaliteit en publicatiegeschiedenis.",
+    "summaryLabel": "Samenvatting van de wijzigingstijdlijn",
+    "recordsWithDiffRows": "wijzigingsregistraties met diff-regels",
+    "policyTextChanges": "vergelijkbare wijzigingen in beleidstekst",
+    "newlyExtractedClaims": "nieuw geëxtraheerde beweringen",
+    "privateSourceTextChanges": "wijzigingen in bronnen van private tekst",
+    "answersLabel": "Antwoordblokken wijzigingstijdlijn",
+    "artifactTitle": "Openbaar artifact van wijzigingen",
+    "artifactDescription": "Versienummerde tijdlijn voor registraties en agents.",
+    "recentChangesJson": "JSON van recente wijzigingen",
+    "recentChangesJsonDescription": "Recent gewijzigde of gecontroleerde registraties met canonieke URL's, beoordelingsstatussen, aantal beweringen en bewijs voor beweringen waar beschikbaar.",
+    "latestDiffJson": "JSON van de laatste releasediff",
+    "latestDiffJsonDescription": "Laatste tracker-diff tussen releases met semantische categorieën voor beleidstekst, geëxtraheerde beweringen, bewijs en bron-snapshots.",
+    "indexJson": "Index-JSON van wijzigingen",
+    "indexJsonDescription": "Filtermetadata en universiteitsniveau tijdlijnregistraties voor de /changes-pagina.",
+    "filtersTitle": "Tijdlijnfilters",
+    "filtersLead": "Filter op universiteitstekst, beleidsthema, beoordelingsstatus, bronkwaliteit of sortervolgorde.",
+    "searchLabel": "Zoeken",
+    "searchPlaceholder": "Universiteit, claimtekst, thema, citaat...",
+    "themeLabel": "Thema",
+    "reviewLabel": "Beoordelingsstatus",
+    "sourceHealthLabel": "Brongezondheid",
+    "sortLabel": "Sorteren",
+    "applyFilters": "Filters toepassen",
+    "resetFilters": "Resetten",
+    "allThemes": "Alle thema's",
+    "allReviewStates": "Alle beoordelingsstatussen",
+    "allSourceHealth": "Alle brongezondheden",
+    "sortChanged": "Meest recent gewijzigd",
+    "sortChecked": "Meest recent gecontroleerd",
+    "sortClaims": "Meeste claims",
+    "sortSources": "Meeste bronnen",
+    "firstSeen": "Eerste keer gezien",
+    "oldClaim": "Oude claim",
+    "newClaim": "Nieuwe claim",
+    "timelineTitle": "Wijzigingstijdlijn",
+    "timelineLead": "Laatste release {current} vergeleken met {previous}. {sources} bronverwijzingen over {records} records.",
+    "changeDetail": "Wijzigingsdetails",
+    "universityPage": "Universiteitspagina",
+    "publicJson": "Openbaar JSON",
+    "diff": "Verschil",
+    "claims": "Beweringen",
+    "sources": "Bronnen",
+    "checked": "Gecontroleerd",
+    "changed": "Gewijzigd",
+    "noPublicDate": "Nog geen openbare datum",
+    "noChanges": "Er zijn geen wijzigingen in beweringen of onderbouwing geregistreerd voor de meest recente openbare publicatie. De versiebeheerde feed-URL blijft beschikbaar voor lezers en agents.",
+    "boundaryTitle": "Grens",
+    "boundaryLead": "Alleen versheidssignalen",
+    "answers": [
+      {
+        "title": "Wat de tijdlijn toont",
+        "text": "Elk record combineert de zichtbare universiteitspagina, openbaar JSON, wijzigingsgeschiedenis en bronversheid, zodat zoekgebruikers van een zoekopdracht naar een citaatgereed record kunnen springen."
+      },
+      {
+        "title": "Hoe beweringen te lezen",
+        "text": "Oude en nieuwe beweringen tonen de meest recente getrackte beleidsvergelijking. Een nieuw geëxtraheerde bewering of een wijziging in de bron-snapshot is een tracker-gebeurtenis, niet automatisch een beleidsconclusie."
+      },
+      {
+        "title": "Hoe het te hergebruiken",
+        "text": "Gebruik de citaatblok van de pagina plus de gekoppelde JSON-eindpunten. De thema-, review- en brongezondheidsfilters zijn hulpmiddelen voor ontdekking, geen beleidsoordelen."
+      }
+    ],
+    "summary": "{name} heeft {claims} bronondersteunde bewijssrecords en {sources} officiële brontoewijzingen. De meest recente getrackte gewijzigde datum is {changedDate}. Meest recente tracker-diff: {policy} vergelijkbare beleidstekstwijzigingen, {extracted} nieuw geëxtraheerde beweringen, {snapshot} bron-snapshotwijzigingen en {sourceText} privé-brontekstwijzigingen waar privésnapshots beschikbaar zijn."
+  },
+  "contribute": {
+    "title": "Bijdragen | University AI Policy Tracker",
+    "description": "Dien officiële universiteits-AI-beleidsbronnen, correcties, bewijs van AI-beleid op cursusniveau, vertaalcorrecties en datasetproblemen in voor een review-taakworkflow.",
+    "kicker": "Inname van bijdragen",
+    "heading": "Dien bewijs in voor een review-wachtrij",
+    "lead": "Bijdragen helpen de dekking uit te breiden, maar ze creëren geen canonieke beleidsfeiten direct. Elke bron-URL, correctie, vertaalcorrectie of inzending op cursusniveau begint als een review-taak met privacy-, auteursrecht-, bron- en bewijscontroles.",
+    "pathsTitle": "Bijdragepaden",
+    "pathsDescription": "De eerste live innamekanaal is GitHub-issue-sjablonen, zodat inzendingen zichtbaar, auditabel en reviewbaar zijn voordat ze worden gepubliceerd.",
+    "openTemplate": "Sjabloon openen",
+    "queue": "Wachtrij",
+    "canonicalFact": "Canoniek feit",
+    "no": "Nee",
+    "boundaryTitle": "Wat een inzending wel en niet kan doen",
+    "boundaryDescription": "Dit is de publicatielimiet voor alle bijdragetypes.",
+    "courseTitle": "Inzendingen op cursusniveau",
+    "courseDescription": "Beleid inzendingen op cursusniveau zijn nuttig, maar worden behandeld als bewijsrecords, niet als openbare commentaren.",
+    "courseText": "Cursusrecords moeten dezelfde claim/bewijsstructuur hergebruiken als universiteitsrecords: entiteit, term, brontype, claim, bewijs in de oorspronkelijke taal, bron taal, beoordelingsstatus en moderatiestatus. Plak geen volledige syllabi, LMS-inhoud, privé-studenteninformatie of niet-openbare docentengegevens.",
+    "allowedStart": "Toegestane startpunt",
+    "allowedStartValue": "Kort citaat of openbaar syllabus-URL voor beoordeling",
+    "initialState": "Initiële status",
+    "initialStateValue": "opdracht in afwachting van beoordeling, geen openbare claim",
+    "publicationModel": "Publicatiemodel",
+    "publicationModelValue": "claim/bewijs na moderatie en rechtencontrole",
+    "apiTitle": "Metadata bijdrage-API",
+    "apiDescription": "Machineleesbaar innamebeleid voor agents, ontwikkelaars en bijdragende partijen.",
+    "contributionIndex": "Bijdragenindex",
+    "contributionIndexDescription": "Bijdragewerkstromen, verplichte velden, GitHub-issue-sjabloon-URL's, veiligheidsmaatregelen en publicatieregels.",
+    "reviewPolicy": "Beoordelingsbeleid",
+    "reviewPolicyDescription": "Beoordelingswachtrijen, publicatiepoorten, moderatieregels en grenzen van bijdragebeoordeling.",
+    "readOnlyMetadata": "Alleen-lezend metadata",
+    "notice": "De tracker is geen juridisch advies, geen academische-integriteitsadvies en geen officiële universiteitsverklaring, tenzij een gekoppelde bron de eigen officiële pagina van de universiteit is."
+  }
+}

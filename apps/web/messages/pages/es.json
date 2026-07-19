@@ -1,0 +1,718 @@
+{
+  "home": {
+    "metadataTitle": "Base de datos de políticas de IA universitaria: Buscar {count} políticas de GenAI respaldadas por fuentes",
+    "description": "Busque y cite registros de políticas universitarias de GenAI respaldadas por fuentes con fuentes oficiales, estados de revisión, JSON público y evidencia lista para citar.",
+    "kicker": "Base de datos de políticas de IA universitaria",
+    "lead": "Encuentre, cite y recupere registros de políticas universitarias de GenAI respaldadas por fuentes. Busque por institución, dominio de fuente, herramienta de IA, tema de política o frase de evidencia pública.",
+    "searchLabel": "Buscar registros públicos de políticas de IA universitaria",
+    "searchPlaceholder": "Buscar universidades, temas, dominios de fuentes...",
+    "searchButton": "Buscar",
+    "suggestedSearches": "Búsquedas sugeridas",
+    "note": "La búsqueda es una ayuda de enrutamiento sobre registros públicos promovidos, no una conclusión de política. Abra el registro y el JSON público antes de citar.",
+    "publicJson": "JSON público",
+    "searchApi": "API de búsqueda",
+    "license": "Licencia",
+    "universityRecords": "registros universitarios",
+    "sourceBackedClaims": "afirmaciones respaldadas por fuentes",
+    "officialSourceAttributions": "atribuciones de fuentes oficiales",
+    "analysisProfiles": "perfiles de análisis",
+    "answersLabel": "Bloques de respuesta de la base de datos",
+    "entryGroupsLabel": "Entradas secundarias",
+    "matchingRecords": "Registros coincidentes",
+    "openSearch": "Abrir búsqueda",
+    "record": "Registro",
+    "claims": "Afirmaciones",
+    "sources": "Fuentes",
+    "recentChecks": "Verificaciones recientes",
+    "viewChanges": "Ver cambios",
+    "noPublicFreshnessDate": "Sin fecha de actualización pública",
+    "agentRetrievalTitle": "Recuperación de agentes y citas",
+    "agentRetrievalLead": "Utilice páginas canónicas y JSON público con versión juntos.",
+    "aiSystemsTitle": "Para sistemas de IA/búsqueda",
+    "aiSystemsText": "Resuelva una entidad con búsqueda, abra el registro canónico de la universidad y luego cite las pruebas de afirmaciones y los campos JSON públicos sin reemplazar el idioma oficial de la fuente universitaria.",
+    "aiSearchReference": "Referencia para IA/búsqueda",
+    "researchersTitle": "Para investigadores y periodistas",
+    "researchersText": "Trate los metadatos del rastreador como una capa de citación. Las páginas fuente oficiales, los PDFs y los documentos de política conservan sus propios derechos y siguen siendo la fuente definitiva para la redacción institucional.",
+    "citationGuide": "Guía de citación",
+    "methodology": "Metodología",
+    "developersTitle": "Para desarrolladores",
+    "developersText": "Los puntos finales públicos exponen registros de solo lectura, búsqueda, entidades, conjuntos de datos, cambios recientes, perfiles de análisis y metadatos de citación bajo el espacio de nombres de la API con versión.",
+    "apiDocs": "Documentación de la API",
+    "apiIndex": "Índice de la API",
+    "changed": "Cambiado",
+    "checked": "Verificado",
+    "homeAnswers": [
+      {
+        "title": "Qué es esta base de datos",
+        "text": "Un índice público respaldado por fuentes de registros de políticas GenAI universitarias con páginas canónicas, estado de revisión, URL de fuente, fragmentos de pruebas y JSON público."
+      },
+      {
+        "title": "Qué no es esta base de datos",
+        "text": "No es asesoramiento legal, asesoramiento sobre integridad académica ni una declaración oficial de la universidad. Las páginas fuente oficiales de las universidades siguen siendo canónicas."
+      },
+      {
+        "title": "Cómo citar registros",
+        "text": "Cite la página del registro visible y el JSON público correspondiente juntos, luego conserve la URL de fuente, el estado de revisión, la confianza, la fecha de última verificación y las pruebas en el idioma original."
+      }
+    ],
+    "entryGroups": [
+      {
+        "title": "Comenzar",
+        "links": [
+          {
+            "label": "Buscar registros",
+            "href": "/search"
+          },
+          {
+            "label": "Universidades",
+            "href": "/universities"
+          },
+          {
+            "label": "Base de datos de políticas de IA",
+            "href": "/university-ai-policy-database"
+          }
+        ]
+      },
+      {
+        "title": "Datos y API",
+        "links": [
+          {
+            "label": "Conjuntos de datos",
+            "href": "/datasets"
+          },
+          {
+            "label": "API",
+            "href": "/api-reference"
+          },
+          {
+            "label": "MCP",
+            "href": "/mcp"
+          },
+          {
+            "label": "Widgets",
+            "href": "/widgets"
+          }
+        ]
+      },
+      {
+        "title": "Actualizaciones",
+        "links": [
+          {
+            "label": "Cambios",
+            "href": "/changes"
+          },
+          {
+            "label": "Informes",
+            "href": "/reports"
+          },
+          {
+            "label": "Fuentes",
+            "href": "/feeds/atom.xml"
+          }
+        ]
+      },
+      {
+        "title": "Cobertura y revisión",
+        "links": [
+          {
+            "label": "Cobertura",
+            "href": "/coverage"
+          },
+          {
+            "label": "Salud de la fuente",
+            "href": "/source-health"
+          },
+          {
+            "label": "Revisión",
+            "href": "/review"
+          },
+          {
+            "label": "Cola de revisión",
+            "href": "/review/queue"
+          }
+        ]
+      },
+      {
+        "title": "Confianza y citas",
+        "links": [
+          {
+            "label": "Metodología",
+            "href": "/methodology"
+          },
+          {
+            "label": "Cita",
+            "href": "/citation"
+          },
+          {
+            "label": "llms.txt",
+            "href": "/llms.txt"
+          },
+          {
+            "label": "Contribuir",
+            "href": "/contribute"
+          }
+        ]
+      }
+    ]
+  },
+  "universities": {
+    "title": "Base de datos de políticas de IA universitaria: registros de GenAI respaldados por fuentes",
+    "description": "Explora los registros de políticas de IA universitaria, ChatGPT y reglas de GenAI con fuentes oficiales, estado de revisión, fechas de última verificación y enlaces JSON públicos.",
+    "kicker": "Registros con evidencia",
+    "heading": "Explora los registros de políticas de IA universitaria respaldados por fuentes",
+    "lead": "Filtra los registros públicos por institución, cobertura de clasificaciones, afirmaciones, fuentes oficiales, estado de revisión y JSON público con control de versiones.",
+    "coverageLabel": "Cobertura universitaria",
+    "universityRecords": "registros universitarios",
+    "sourceBackedClaims": "afirmaciones respaldadas por fuentes",
+    "officialSourceAttributions": "atribuciones de fuentes oficiales",
+    "rankedRecords": "registros clasificados por {ranking}",
+    "answersLabel": "respuestas del índice universitario",
+    "priorityTitle": "registros prioritarios de políticas de IA universitarias",
+    "priorityLead": "registros de alta impresión desde Search Console, vinculados a sus páginas canónicas de política, historial de cambios, recuentos de fuentes oficiales y JSON público.",
+    "priorityReportsLink": "informe mensual",
+    "priorityChangeLink": "historial de cambios",
+    "priorityRecordLink": "registro de política",
+    "indexTitle": "índice",
+    "indexLead": "los filtros de clasificación son ayudas para la exploración; las afirmaciones sobre políticas siguen procediendo de fuentes oficiales.",
+    "search": "buscar",
+    "searchPlaceholder": "universidad, país, ciudad",
+    "ranking": "clasificación",
+    "coverage": "cobertura",
+    "sort": "ordenar",
+    "order": "orden",
+    "allRecords": "todos los registros",
+    "rankedInSelectedSystem": "clasificados en el sistema seleccionado",
+    "missingSelectedRank": "falta la clasificación seleccionada",
+    "selectedRanking": "clasificación seleccionada",
+    "recentlyChecked": "comprobados recientemente",
+    "universityName": "nombre de la universidad",
+    "claimCount": "recuento de afirmaciones",
+    "sourceCount": "recuento de fuentes",
+    "ascending": "Ascendente",
+    "descending": "Descendente",
+    "apply": "Aplicar",
+    "reset": "Restablecer",
+    "showing": "Mostrando {visible} de {total} registros.",
+    "searchSummary": "Búsqueda: \"{query}\".",
+    "rankingView": "Vista de ranking: {ranking}.",
+    "university": "Universidad",
+    "rank": "Rango en {ranking}",
+    "claims": "Afirmaciones",
+    "sources": "Fuentes",
+    "lastChecked": "Última verificación",
+    "publicJson": "JSON público",
+    "locationUnknown": "Ubicación desconocida",
+    "confidence": "Confianza",
+    "unknown": "Desconocido",
+    "json": "JSON",
+    "noMatches": "No hay registros que coincidan con los filtros actuales de búsqueda y cobertura del ranking.",
+    "candidateNotice": "Quedan {count} registros candidatos o pendientes de revisión visibles para garantizar la auditoría. El estado de revisión es independiente de la confianza.",
+    "notIndexed": "No indexado",
+    "partialSource": "fuente parcial",
+    "derivedOrder": "orden derivado",
+    "answerCards": [
+      {
+        "title": "Qué cubre este índice",
+        "text": "Registros públicos de universidades promovidos con recuentos de afirmaciones respaldadas por fuentes, atribuciones oficiales de fuentes, estado de revisión y URL canónicas de los registros."
+      },
+      {
+        "title": "Cómo usar las clasificaciones",
+        "text": "Los filtros de clasificación solo apoyan la exploración y el análisis de cobertura; no crean ni anulan afirmaciones sobre políticas."
+      },
+      {
+        "title": "Límite de reutilización",
+        "text": "El rastreador no constituye asesoramiento legal, asesoramiento sobre integridad académica ni una declaración oficial de la universidad, a menos que la fuente vinculada sea la página oficial propia de la universidad."
+      }
+    ]
+  },
+  "datasets": {
+    "title": "Conjuntos de datos | University AI Policy Tracker",
+    "description": "Puntos finales JSON públicos con versiones, conceptos de conjuntos de datos, licencias, advertencias sobre derechos de fuente y expectativas de citación para University AI Policy Tracker.",
+    "kicker": "Conjuntos de datos",
+    "heading": "Artefactos JSON públicos y metadatos de lanzamiento",
+    "leadPrefix": "JSON público con versiones bajo",
+    "leadSuffix": "construido a partir del mismo conjunto de datos de lanzamiento promovido que las páginas visibles.",
+    "coverageLabel": "Cobertura actual del conjunto de datos",
+    "publicUniversityRecords": "registros públicos de universidades",
+    "sourceBackedClaims": "afirmaciones respaldadas por fuentes",
+    "officialSourceAttributions": "atribuciones a fuentes oficiales",
+    "publicJsonSchemaVersion": "versión del esquema JSON público",
+    "releaseDownloadArtifacts": "artefactos de descarga de lanzamiento",
+    "analysisProfiles": "perfiles de análisis",
+    "answersLabel": "Bloques de respuesta del conjunto de datos",
+    "whatReusableTitle": "Qué se puede reutilizar",
+    "whatReusableText": "Los metadatos del rastreador, las URL de los registros, los estados de revisión, los campos de citación y los artefactos JSON públicos son reutilizables bajo la licencia de metadatos del rastreador.",
+    "externalTitle": "Qué permanece externo",
+    "externalText": "Los documentos fuente oficiales, el texto de las páginas, los PDFs y el lenguaje de las políticas universitarias conservan sus derechos y términos originales.",
+    "retrieveTitle": "Cómo recuperan los agentes los datos",
+    "retrieveText": "Comience con el índice de la API, resuelva las entidades con búsqueda, obtenga el JSON canónico de la universidad y luego cite las pruebas de las afirmaciones y las URL de las fuentes.",
+    "versionedJsonTitle": "JSON público con versiones",
+    "versionedJsonDescription": "Artefactos de solo lectura en vivo agrupados por uso.",
+    "coreRecords": "Registros principales",
+    "searchAnalysis": "Búsqueda y análisis",
+    "reportsEmbeds": "Informes e incrustaciones",
+    "reviewIntegrations": "Revisión e integraciones",
+    "releaseDownloadsTitle": "Descargas de lanzamientos del conjunto de datos",
+    "releaseDownloadsDescription": "Archivos masivos con recuentos de filas, tamaños y sumas de verificación.",
+    "release": "Lanzamiento",
+    "period": "Período",
+    "published": "Publicado",
+    "rankingTitle": "Límites de clasificaciones e índices",
+    "rankingDescription": "Entradas para descubrimiento, no conclusiones de política.",
+    "githubTitle": "Activos de confianza de GitHub",
+    "githubDescription": "Activos de confianza a nivel de repositorio.",
+    "manifestTitle": "Manifiesto del lanzamiento actual",
+    "promotedRuns": "Ejecuciones promovidas",
+    "manifestText": "El manifiesto controla qué directorios de artefactos revisados y en espera se promueven a páginas públicas y JSON público.",
+    "conceptsTitle": "Conceptos del conjunto de datos",
+    "conceptsLead": "Lo que los registros v1 exponen hoy",
+    "licenseTitle": "Licencia, derechos y citación",
+    "trackerMetadata": "metadatos del tracker",
+    "trackerMetadataTitle": "Metadatos del tracker",
+    "officialRightsTitle": "Derechos de la fuente oficial",
+    "citationExpectationsTitle": "Expectativas de citación",
+    "citationExpectationsText": "Cite la página canónica y el JSON público conjuntamente. Para reutilización a nivel de afirmación, conserve la URL de origen, el idioma de origen, el hash de instantánea, el estado de revisión, la confianza y el fragmento de evidencia original.",
+    "citationRulesPrefix": "Las reglas de citación están documentadas en",
+    "recentFreshnessPrefix": "La frescura reciente de los datos es visible en",
+    "apiGroups": {
+      "apiIndex": "Descubrimiento de puntos finales y enlaces de confianza.",
+      "universities": "Registros universitarios con estado de revisión, fechas y URL de JSON.",
+      "perUniversity": "Ejemplo de registro universitario público.",
+      "claims": "Filas de ejemplo de afirmación/evidencia.",
+      "recentChanges": "Registros verificados y modificados.",
+      "manifest": "Artefactos de lanzamiento, conteo de filas, tamaños y sumas de verificación.",
+      "searchJson": "Búsqueda de entidades en registros públicos promovidos.",
+      "searchIndex": "Índice de búsqueda segura; sin instantáneas crudas ni artefactos de preparación.",
+      "entityAliases": "Alias canónicos y sugerencias de recuperación.",
+      "analysisIndex": "Manifiesto de dimensiones de análisis de políticas.",
+      "analysisProfile": "Perfil de ejemplo de análisis por universidad.",
+      "coverageScores": "Puntuaciones de amplitud de cobertura, no calidad de políticas.",
+      "analysisQuality": "Controles de la página de análisis público.",
+      "reportsIndex": "Índice de informes públicos.",
+      "outreach": "Texto para medios y boletines con límites definidos.",
+      "chartData": "Datos del gráfico del informe mensual de junio de 2026.",
+      "widgetIndex": "Descubrimiento de widgets.",
+      "policyCoverageWidget": "Widget de cobertura de ejemplo.",
+      "sourceFreshnessWidget": "Widget de frescura de fuentes de ejemplo.",
+      "reviewStateWidget": "Widget de estado de revisión de ejemplo.",
+      "qsCoverage": "Cobertura de la colección QS 2026.",
+      "sourceHealth": "Estado de origen para planificación de reparación y nueva indexación.",
+      "reviewQueue": "Metadatos de la cola de ejecución en entorno de pruebas sin promoción.",
+      "mcpManifest": "Manifiesto alfa de MCP de solo lectura.",
+      "mcpToolCatalog": "Catálogo de herramientas MCP de solo lectura.",
+      "citationMetadata": "Plantillas de citación y normas de reutilización.",
+      "contributionIndex": "Metadatos del flujo de trabajo de contribuciones.",
+      "reviewPolicy": "Política de revisión de contribuciones."
+    },
+    "concepts": [
+      {
+        "name": "Universidades",
+        "status": "Disponible ahora",
+        "description": "Los registros canónicos de universidades están disponibles como páginas visibles y registros JSON públicos por universidad."
+      },
+      {
+        "name": "Afirmaciones",
+        "status": "Disponible dentro del JSON de la universidad",
+        "description": "Las afirmaciones incluyen el texto de la afirmación, tipo de afirmación, nivel de confianza, estado de revisión, fechas y matrices de evidencia."
+      },
+      {
+        "name": "Fuentes",
+        "status": "Disponible dentro de los registros públicos",
+        "description": "Las fuentes oficiales aparecen como atribuciones de fuente y URL de fuentes de evidencia con advertencias sobre derechos."
+      },
+      {
+        "name": "Instantáneas",
+        "status": "Metadatos de hash disponibles ahora",
+        "description": "Los registros públicos exponen hashes de instantáneas de origen. El HTML sin procesar, los PDF y las capturas de pantalla no se publican como metadatos del rastreador."
+      },
+      {
+        "name": "Cambios recientes",
+        "status": "Disponible ahora",
+        "description": "La alimentación JSON de cambios recientes resume los registros universitarios revisados y modificados con estados de revisión."
+      },
+      {
+        "name": "Perfiles de análisis",
+        "status": "Disponible ahora",
+        "description": "Los perfiles de análisis de políticas deterministas derivan dimensiones y puntuaciones de cobertura a partir de registros públicos existentes de afirmaciones/evidencias."
+      },
+      {
+        "name": "Paneles de cobertura",
+        "status": "Disponible ahora",
+        "description": "Los metadatos de cobertura QS, salud de las fuentes y cola de revisión exponen el estado de la colección y el trabajo del rastreador/revisión sin publicar afirmaciones en fase de preparación."
+      },
+      {
+        "name": "Resolución de entidades y búsqueda",
+        "status": "Disponible ahora",
+        "description": "Los alias canónicos de entidades e índices de búsqueda seguros mejoran la recuperación sin crear hechos políticos ni exponer artefactos no publicados."
+      }
+    ]
+  },
+  "methodology": {
+    "title": "Metodología | University AI Policy Tracker",
+    "description": "Cómo University AI Policy Tracker descubre fuentes, captura páginas, vincula evidencias, separa la confianza del estado de revisión y publica registros listos para citar.",
+    "kicker": "Metodología",
+    "heading": "Cómo los registros se convierten en afirmaciones respaldadas por fuentes",
+    "lead": "Fuentes oficiales, instantáneas, fragmentos breves de evidencia, confianza y estado de revisión explícito.",
+    "answersLabel": "Bloques de respuesta de metodología",
+    "tocLabel": "Secciones de metodología",
+    "toc": {
+      "workflow": "Flujo de trabajo de evidencia",
+      "reviewStates": "Estados de revisión",
+      "rankingBoundaries": "Límites de clasificación",
+      "publicationRules": "Reglas de publicación",
+      "limitations": "Limitaciones"
+    },
+    "workflowDescription": "Desde el descubrimiento de fuentes públicas hasta registros listos para citar.",
+    "reviewDescription": "El estado de revisión es el estado del flujo de trabajo. La confianza es el apoyo evaluado por máquina.",
+    "rankingDescription": "Las filas de clasificación ayudan a priorizar y filtrar el descubrimiento de fuentes. No son afirmaciones políticas.",
+    "publicationDescription": "Lo que debe existir antes de que una afirmación sea pública.",
+    "limitationsDescription": "Límites conocidos de la capa de evidencia actual.",
+    "footer": "Utilice la guía de citación para las reglas de atribución, la página de conjuntos de datos para el acceso público a JSON y los cambios recientes como señales de actualidad.",
+    "links": {
+      "citationGuide": "guía de citación",
+      "datasetsPage": "página de conjuntos de datos",
+      "recentChanges": "cambios recientes"
+    },
+    "answers": [
+      {
+        "title": "Cómo se vuelven públicas las registros",
+        "text": "Los registros se vuelven públicos después del descubrimiento de la fuente, el hash de instantánea, la extracción de afirmaciones, la vinculación de evidencia, la etiquetado del estado de revisión y la publicación desde el conjunto de datos público promovido."
+      },
+      {
+        "title": "Qué significa el estado de revisión",
+        "text": "El estado de revisión describe el estado del flujo de trabajo. La confianza es una puntuación de apoyo evaluada por máquina independiente y no hace que una afirmación sea oficial."
+      },
+      {
+        "title": "Qué evidencia es canónica",
+        "text": "La evidencia en el idioma original, las URL de la fuente y las páginas oficiales de las universidades permanecen como canónicas; las traducciones o resúmenes son metadatos de ayuda."
+      }
+    ],
+    "workflowSteps": [
+      {
+        "title": "Descubrimiento de fuentes",
+        "description": "Páginas de políticas universitarias públicas, orientación docente, páginas de TI/seguridad, páginas de adquisiciones, PDFs y materiales con atribución de fuente."
+      },
+      {
+        "title": "Rastreo e instantánea",
+        "description": "El texto de la fuente obtenido recibe un hash de contenido para futuras verificaciones de cambios."
+      },
+      {
+        "title": "Extracción de afirmaciones",
+        "description": "Las afirmaciones mantienen la confianza separada del estado de revisión."
+      },
+      {
+        "title": "Vinculación de evidencia",
+        "description": "Cada afirmación pública necesita una URL de fuente, hash de instantánea, fragmento de evidencia, idioma de la fuente y advertencia de derechos."
+      },
+      {
+        "title": "Detección de cambios",
+        "description": "Los hashes cambiados pueden crear nuevas instantáneas, candidatos, actualizaciones de afirmaciones y registros de cambios."
+      },
+      {
+        "title": "Evidencia multilingüe con prioridad a la fuente",
+        "description": "La evidencia en el idioma original es canónica; las traducciones son ayudas de visualización."
+      }
+    ],
+    "reviewStates": [
+      {
+        "label": "machine_candidate",
+        "description": "Generado por un rastreador, extractor o proceso de semillas; no es definitivo."
+      },
+      {
+        "label": "needs_review",
+        "description": "La fuente, la extracción, la fecha o la clasificación requieren revisión."
+      },
+      {
+        "label": "agent_reviewed",
+        "description": "El agente verificó las pruebas y la clasificación."
+      },
+      {
+        "label": "human_reviewed",
+        "description": "Un revisor humano o una regla de publicación determinista aprobó la afirmación."
+      },
+      {
+        "label": "rejected",
+        "description": "Conservado únicamente para el contexto de auditoría."
+      }
+    ],
+    "rankingRules": [
+      "QS 2026 sigue siendo actualmente la principal fuente de lotes de rastreo para ampliar la cobertura pública.",
+      "THE 2026, ARWU 2025, U.S. News 2025-2026 y CWTS Leiden 2025 se admiten como fuentes de clasificaciones, índices y filtros.",
+      "CWTS Leiden 2025 es un orden de métricas derivadas, no una clasificación global general de universidades.",
+      "Los años de clasificación diferentes no se presentan como una única clasificación unificada de 2026.",
+      "Los datos de clasificación no crean ni anulan afirmaciones sobre políticas; las afirmaciones visibles siguen requiriendo fuentes oficiales, fragmentos de pruebas, confianza y estado de revisión."
+    ],
+    "publicationRules": [
+      "Toda afirmación pública necesita una URL de fuente y un hash de instantánea de la fuente.",
+      "Los fragmentos de pruebas deben ser breves, necesarios y atribuidos a la fuente.",
+      "Las pruebas en el idioma original son canónicas; la traducción es solo para visualización.",
+      "Los hechos canónicos y la visualización localizada deben mantenerse separados.",
+      "Las afirmaciones candidatas deben estar etiquetadas y no deben usarse como resúmenes definitivos.",
+      "Las páginas públicas y el JSON público deben generarse a partir del mismo conjunto de datos de lanzamiento público promovido.",
+      "Los documentos fuente oficiales conservan sus derechos y condiciones originales."
+    ],
+    "limitations": [
+      "Las políticas universitarias pueden distribuirse entre departamentos, cursos, archivos PDF y sistemas internos.",
+      "Los registros escasos permanecen etiquetados como cobertura inicial hasta que las pruebas revisadas respalden conclusiones más sólidas.",
+      "El rastreador registra los metadatos de verificación de fuentes y pruebas de afirmaciones; no proporciona asesoramiento legal ni sobre integridad académica."
+    ]
+  },
+  "citation": {
+    "title": "Cita | University AI Policy Tracker",
+    "description": "Formatos de cita, reglas de atribución de fuentes, campos JSON públicos, advertencias sobre derechos y límites de asesoramiento para University AI Policy Tracker.",
+    "kicker": "Cita",
+    "heading": "Cite por separado los metadatos del rastreador y las fuentes oficiales",
+    "lead": "Mantenga juntos la página canónica, el JSON público, la URL de origen, el hash de instantánea, el estado de revisión, la confianza y las pruebas originales.",
+    "answersLabel": "Bloques de respuesta de cita",
+    "tocLabel": "Secciones de cita",
+    "toc": {
+      "formats": "Formatos sugeridos",
+      "fields": "Campos de cita",
+      "json": "JSON público",
+      "ranking": "Fuentes de clasificación",
+      "rights": "Derechos y límites"
+    },
+    "formatsDescription": "Ejemplos listos para copiar.",
+    "universityPolicyRecord": "Registro de política universitaria",
+    "datasetSurface": "Superficie del conjunto de datos",
+    "changesFeed": "Flujo o informe de cambios",
+    "fieldsDescription": "Conservar estos campos.",
+    "pageDataIdentity": "Identidad de página y datos",
+    "freshnessReview": "Actualización y revisión",
+    "sourceEvidence": "Pruebas de origen",
+    "jsonDescription": "Registros versionados para reutilización.",
+    "apiIndex": "Índice API",
+    "universitiesList": "Lista de universidades",
+    "universityRecord": "Registro universitario",
+    "recentChanges": "Cambios recientes",
+    "rankingDescription": "Índices de referencia, no clasificaciones de políticas.",
+    "rightsDescription": "metadatos del rastreador",
+    "browsePrefix": "Explorar",
+    "readPrefix": "leer el",
+    "reviewPrefix": "o revisar",
+    "universityRecords": "registros universitarios",
+    "methodology": "metodología",
+    "datasetAccess": "acceso al conjunto de datos",
+    "answers": [
+      {
+        "title": "Cómo citar un registro universitario",
+        "text": "Cite la página canónica del registro visible y la URL JSON pública correspondiente juntas, luego conserve la URL de origen, el estado de revisión, la confianza y la fecha de última verificación."
+      },
+      {
+        "title": "Cómo citar las pruebas de una afirmación",
+        "text": "Para el reuso a nivel de afirmación, incluya el texto de la afirmación, un fragmento de pruebas en el idioma original, el idioma de origen, la URL de origen, el hash instantáneo, la confianza y el estado de revisión."
+      },
+      {
+        "title": "Qué no citar como oficial",
+        "text": "Los metadatos del University AI Policy Tracker no son una declaración oficial de la universidad; cite las fuentes oficiales vinculadas por separado para la redacción de la política institucional."
+      }
+    ],
+    "identityRules": [
+      "URL canónica para la página pública visible.",
+      "URL JSON pública con versión bajo el espacio de nombres de la API pública.",
+      "Las páginas públicas y el JSON público deben describir el mismo registro de lanzamiento público promovido.",
+      "Versión del esquema."
+    ],
+    "freshnessRules": [
+      "Fecha de última verificación, cuando se verificó por última vez la fuente.",
+      "Fecha de último cambio, cuando cambió una fuente o afirmación rastreada.",
+      "Estado de revisión, que es independiente de la confianza automática."
+    ],
+    "evidenceRules": [
+      "URLs de fuentes oficiales o claramente etiquetadas.",
+      "Hashes instantáneos de las fuentes para el seguimiento de cambios y citas.",
+      "Fragmentos de evidencia originales en el idioma original y lenguaje de la fuente."
+    ],
+    "rankingRules": [
+      "QS 2026 sigue siendo actualmente la principal fuente de procesamiento por lotes de rastreo.",
+      "THE 2026, ARWU 2025, U.S. News 2025-2026 y CWTS Leiden 2025 están soportados como fuentes de clasificación, índice y filtro.",
+      "CWTS Leiden 2025 es un orden de métricas derivadas, no una clasificación global general de universidades.",
+      "No cite años de clasificación mixtos como una única clasificación unificada de 2026. Cite el registro del tracker y el JSON público para la evidencia de políticas, y cite la fuente de clasificación relevante por separado cuando el contexto de la clasificación sea importante."
+    ]
+  },
+  "analysis": {
+    "title": "Análisis de políticas | University AI Policy Tracker",
+    "description": "Perfiles deterministas y respaldados por evidencia de análisis de políticas de IA universitaria con IDs de afirmaciones de origen, estados de revisión, puntuaciones de cobertura y JSON público versionado.",
+    "kicker": "Análisis de políticas",
+    "heading": "Perfiles de análisis respaldados por fuentes, no asesoramiento de políticas",
+    "lead": "Dimensiones derivadas sobre registros públicos de afirmaciones/evidencia. Cada resultado no vacío conserva los IDs de afirmación, las URLs de origen, el lenguaje de la fuente y la evidencia.",
+    "profiles": "Perfiles",
+    "schema": "Esquema",
+    "publicApi": "API pública",
+    "coverageLabel": "Cobertura del análisis de políticas",
+    "analysisProfiles": "perfiles de análisis",
+    "evidenceBackedDimensions": "dimensiones respaldadas por evidencia",
+    "averageCoverageScore": "puntuación promedio de cobertura pública",
+    "sourceLanguagesPreserved": "lenguajes de origen preservados",
+    "answersLabel": "Bloques de respuesta del análisis de políticas",
+    "summaryTitle": "Resumen",
+    "summaryDescription": "Para el contexto de citación.",
+    "scoreNotice": "La Puntuación de Cobertura de Políticas mide la amplitud de la cobertura pública respaldada por fuentes. No es una puntuación de calidad, rigor, adecuación legal, seguridad o cumplimiento institucional.",
+    "tocLabel": "Secciones de análisis",
+    "toc": {
+      "meaning": "Límite",
+      "dimensions": "Dimensiones",
+      "coverage": "Puntuación de cobertura",
+      "themes": "Análisis temático",
+      "quality": "Controles de calidad",
+      "review": "Flujo de revisión",
+      "json": "JSON público",
+      "citation": "Cita"
+    },
+    "meaningDescription": "Metadatos derivados con enlaces a la fuente.",
+    "dimensionsDescription": "Todas las dimensiones son visibles y están respaldadas por contratos.",
+    "coverageDescription": "La puntuación es únicamente una medida de amplitud de cobertura.",
+    "openCoverageTable": "Tabla de cobertura abierta",
+    "coverageText": "Los componentes de la puntuación de cobertura suman 100 puntos en categorías de evidencia pública, como orientación central, integridad académica, divulgación, trabajos académicos, exámenes, privacidad/ingreso de datos, herramientas aprobadas y orientación para la enseñanza o la investigación.",
+    "coverageWarning": "La puntuación no debe describirse nunca como la mejor política, la peor política, la más conforme, legalmente segura o institucionalmente respaldada.",
+    "qualityDescription": "Los controles de publicación mantienen las páginas de análisis útiles para la búsqueda y los motores de respuestas de IA sin convertir datos escasos en páginas con poco contenido.",
+    "pageQualityJson": "JSON de calidad de página",
+    "qualityStatus": "Estado actual de la calidad de la página: {status}. El informe abarca {count} páginas de análisis públicas y mantiene el estado de revisión separado de la preparación para la publicación de la página.",
+    "reviewDescription": "Las comprobaciones de calidad no publican el análisis canónico. Derivan los registros cuestionables hacia la revisión.",
+    "openReviewWorkflow": "Flujo de revisión abierto",
+    "queue": "Cola",
+    "publicMutation": "Mutación pública",
+    "notAllowed": "No permitido",
+    "reviewStates": "Estados de revisión",
+    "themesDescription": "Solo se enlazan desde este índice los temas con suficiente evidencia pública.",
+    "openAnalysis": "Análisis abierto",
+    "held": "Mantenido hasta alcanzar el umbral de evidencia",
+    "jsonDescription": "Puntos finales de lectura con versión para reutilización aguas abajo.",
+    "citationDescription": "Utilice la página canónica y el JSON público conjuntamente.",
+    "suggestedCitation": "Cita sugerida",
+    "answers": [
+      {
+        "title": "Qué significa análisis",
+        "text": "Los perfiles de análisis son metadatos derivados sobre registros públicos de afirmaciones/evidencia. Resumen las dimensiones de la política sin reemplazar la evidencia original."
+      },
+      {
+        "title": "Qué significa puntuación de cobertura",
+        "text": "La puntuación de cobertura mide la amplitud de la evidencia pública visible, no la calidad, seguridad, legalidad, rigor o cumplimiento de la política."
+      },
+      {
+        "title": "Cómo citar el análisis",
+        "text": "Cite el JSON del análisis junto con el registro universitario relacionado, los IDs de afirmaciones base, las URL de origen, el estado de revisión y la evidencia original."
+      }
+    ],
+    "boundaryRules": [
+      "Las dimensiones resumen las afirmaciones del rastreador público en etiquetas consistentes.",
+      "La evidencia en idioma original permanece canónica.",
+      "La confianza es independiente del estado de revisión.",
+      "\"not_mentioned\" significa que no hay evidencia coincidente del rastreador público presente en el perfil actual.",
+      "Abra los IDs de afirmaciones base y las URL de origen antes de reutilizar."
+    ],
+    "evidenceBacked": "Respaldado por evidencia",
+    "notMentioned": "No mencionado",
+    "gate": "Filtro",
+    "analysisIndex": "Índice de análisis",
+    "analysisIndexDescription": "Manifiesto del punto final de análisis con definiciones de dimensiones y metadatos de versión.",
+    "universityAnalysisProfile": "Perfil de análisis universitario",
+    "universityAnalysisProfileDescription": "Ejemplo de perfil de análisis por universidad con dimensiones, evidencia base y puntuación de cobertura.",
+    "coverageScores": "Puntuaciones de cobertura",
+    "coverageScoresDescription": "Lista de puntuaciones de cobertura para perfiles de análisis públicos.",
+    "analysisPageQuality": "Calidad de la página de análisis",
+    "analysisPageQualityDescription": "Informe de solo lectura sobre los controles de calidad de la página, el estado de indexabilidad, el flujo de trabajo de revisión del análisis y los límites sin asesoramiento."
+  },
+  "changes": {
+    "title": "Cambios recientes | University AI Policy Tracker",
+    "description": "Cronologías de cambios de políticas universitarias consultables con comparaciones de afirmaciones antiguas/nuevas, actualidad de las fuentes, estados de revisión y enlaces JSON públicos versionados.",
+    "kicker": "Cambios",
+    "heading": "Cronologías de cambios de políticas universitarias",
+    "lead": "Busque y compare registros públicos de cambios en las políticas de IA de universidades por tema, estado de revisión, salud de la fuente e historial de lanzamientos.",
+    "summaryLabel": "Resumen de la cronología de cambios",
+    "recordsWithDiffRows": "registros de cambios con filas de diferencias",
+    "policyTextChanges": "cambios comparables en el texto de las políticas",
+    "newlyExtractedClaims": "afirmaciones extraídas recientemente",
+    "privateSourceTextChanges": "cambios en el texto de fuentes privadas",
+    "answersLabel": "Bloques de respuesta de la cronología de cambios",
+    "artifactTitle": "Artefacto de cambios públicos",
+    "artifactDescription": "Cronología versionada para registros y agentes.",
+    "recentChangesJson": "JSON de cambios recientes",
+    "recentChangesJsonDescription": "Registros modificados o revisados recientemente con URL canónicas, estados de revisión, recuentos de afirmaciones y pruebas de afirmaciones cuando estén disponibles.",
+    "latestDiffJson": "JSON de diferencias del último lanzamiento",
+    "latestDiffJsonDescription": "Diferencias del rastreador entre lanzamientos más recientes con categorías semánticas para texto de políticas, afirmaciones extraídas, pruebas y instantáneas de fuentes.",
+    "indexJson": "JSON del índice de cambios",
+    "indexJsonDescription": "Metadatos de filtro y registros de cronología a nivel universitario para la página /changes.",
+    "filtersTitle": "Filtros de cronología",
+    "filtersLead": "Filtrar por texto de universidad, tema de política, estado de revisión, salud de la fuente u orden de clasificación.",
+    "searchLabel": "Buscar",
+    "searchPlaceholder": "Universidad, texto de la afirmación, tema, cita...",
+    "themeLabel": "Tema",
+    "reviewLabel": "Estado de revisión",
+    "sourceHealthLabel": "Salud de la fuente",
+    "sortLabel": "Ordenar",
+    "applyFilters": "Aplicar filtros",
+    "resetFilters": "Restablecer",
+    "allThemes": "Todos los temas",
+    "allReviewStates": "Todos los estados de revisión",
+    "allSourceHealth": "Toda la salud de las fuentes",
+    "sortChanged": "Modificado más recientemente",
+    "sortChecked": "Verificado más recientemente",
+    "sortClaims": "Más afirmaciones",
+    "sortSources": "Más fuentes",
+    "firstSeen": "Visto por primera vez",
+    "oldClaim": "Afirmación antigua",
+    "newClaim": "Nueva afirmación",
+    "timelineTitle": "Línea de tiempo de cambios",
+    "timelineLead": "Última versión {current} en comparación con {previous}. {sources} atribuciones de fuentes en {records} registros.",
+    "changeDetail": "Detalle del cambio",
+    "universityPage": "Página de la universidad",
+    "publicJson": "JSON público",
+    "diff": "Diferencia",
+    "claims": "Afirmaciones",
+    "sources": "Fuentes",
+    "checked": "Verificado",
+    "changed": "Modificado",
+    "noPublicDate": "Sin fecha pública aún",
+    "noChanges": "No se registran cambios en afirmaciones o pruebas para la última versión pública. La URL del feed con versiones sigue disponible para lectores y agentes.",
+    "boundaryTitle": "Límite",
+    "boundaryLead": "Solo señales de actualidad",
+    "answers": [
+      {
+        "title": "Qué muestra la línea de tiempo",
+        "text": "Cada registro combina la página visible de la universidad, el JSON público, el historial de cambios y la actualidad de las fuentes para que los usuarios de búsqueda puedan pasar de una consulta a un registro listo para citar."
+      },
+      {
+        "title": "Cómo leer las afirmaciones",
+        "text": "Las afirmaciones antiguas y nuevas muestran la última comparación de políticas rastreada. Una afirmación recién extraída o un cambio en una instantánea de fuente es un evento del rastreador, no automáticamente una conclusión sobre la política."
+      },
+      {
+        "title": "Cómo reutilizarlo",
+        "text": "Utilice el bloque de citación de la página junto con los puntos finales JSON enlazados. Los filtros de tema, revisión y estado de las fuentes son ayudas para la exploración, no juicios sobre políticas."
+      }
+    ],
+    "summary": "{name} tiene {claims} registros de afirmaciones respaldadas por fuentes y {sources} atribuciones oficiales de fuentes. La última fecha de cambio rastreada es {changedDate}. Último diff del rastreador: {policy} cambios comparables en el texto de la política, {extracted} afirmaciones recién extraídas, {snapshot} cambios en instantáneas de fuentes y {sourceText} cambios en texto de fuente privada donde hay instantáneas privadas disponibles."
+  },
+  "contribute": {
+    "title": "Contribuir | University AI Policy Tracker",
+    "description": "Envíe fuentes oficiales de políticas de IA universitarias, correcciones, pruebas de políticas de IA a nivel de curso, correcciones de traducción y problemas del conjunto de datos a un flujo de trabajo de tareas de revisión.",
+    "kicker": "Recepción de contribuciones",
+    "heading": "Enviar pruebas a una cola de revisión",
+    "lead": "Las contribuciones ayudan a ampliar la cobertura, pero no crean hechos canónicos de políticas directamente. Cada URL de fuente, corrección, arreglo de traducción o envío a nivel de curso comienza como una tarea de revisión con verificaciones de privacidad, derechos de autor, idioma de la fuente y pruebas.",
+    "pathsTitle": "Vías de contribución",
+    "pathsDescription": "El primer canal de recepción en vivo son las plantillas de problemas de GitHub, por lo que los envíos son visibles, auditables y revisables antes de la publicación.",
+    "openTemplate": "Abrir plantilla",
+    "queue": "Cola",
+    "canonicalFact": "Hecho canónico",
+    "no": "No",
+    "boundaryTitle": "Qué puede y qué no puede hacer una contribución",
+    "boundaryDescription": "Este es el límite de publicación para todos los tipos de contribución.",
+    "courseTitle": "Contribuciones a nivel de curso",
+    "courseDescription": "Las contribuciones de políticas a nivel de curso son útiles, pero se tratan como registros de evidencia, no como comentarios abiertos.",
+    "courseText": "Los registros de curso deben reutilizar la misma estructura de afirmación/evidencia que los registros universitarios: entidad, término, tipo de fuente, afirmación, evidencia en idioma original, idioma de la fuente, estado de revisión y estado de moderación. No peguen sílabos completos, contenido de LMS, información privada de estudiantes o datos no públicos de instructores.",
+    "allowedStart": "Punto de partida permitido",
+    "allowedStartValue": "Extracto breve o URL del sílabo público para revisión",
+    "initialState": "Estado inicial",
+    "initialStateValue": "tarea de revisión pendiente, no una afirmación pública",
+    "publicationModel": "Modelo de publicación",
+    "publicationModelValue": "afirmación/evidencia tras la moderación y revisión de derechos",
+    "apiTitle": "Metadatos de la API de contribución",
+    "apiDescription": "Política de ingesta legible por máquina para agentes, desarrolladores y colaboradores.",
+    "contributionIndex": "Índice de contribución",
+    "contributionIndexDescription": "Flujos de trabajo de contribución, campos obligatorios, URLs de plantillas de problemas de GitHub, salvaguardas y reglas de publicación.",
+    "reviewPolicy": "Política de revisión",
+    "reviewPolicyDescription": "Colas de revisión, puertas de publicación, reglas de moderación y límites de revisión de contribuciones.",
+    "readOnlyMetadata": "Metadatos de solo lectura",
+    "notice": "El rastreador no es asesoramiento legal, ni asesoramiento sobre integridad académica, y no es una declaración oficial de la universidad a menos que una fuente vinculada sea la página oficial propia de la universidad."
+  }
+}

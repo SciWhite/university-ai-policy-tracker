@@ -1,43 +1,46 @@
 import { formatToolAvailability, type UniversityToolRecord } from "@uapt/shared";
 import { StateLabel } from "@/components/state-label";
+import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
+import { translateSurfaceText } from "@/lib/surface-localization";
 
 interface ToolRecordFieldsProps {
   record: UniversityToolRecord;
+  locale?: SupportedLocale;
 }
 
-export function ToolRecordFields({ record }: ToolRecordFieldsProps) {
+export function ToolRecordFields({ locale = DEFAULT_LOCALE, record }: ToolRecordFieldsProps) {
   const evidenceLinks = record.evidence.slice(0, 3);
 
   return (
     <dl className="tool-record-fields">
       <div>
-        <dt>Tool</dt>
+        <dt>{translateSurfaceText("Tool", locale)}</dt>
         <dd>{record.rawToolName}</dd>
       </div>
       <div>
-        <dt>About</dt>
-        <dd>{formatOptional(record.description)}</dd>
+        <dt>{translateSurfaceText("About", locale)}</dt>
+        <dd>{formatOptional(record.description, locale)}</dd>
       </div>
       <div>
-        <dt>Access</dt>
-        <dd>{formatOptional(record.howToObtain)}</dd>
+        <dt>{translateSurfaceText("Access", locale)}</dt>
+        <dd>{formatOptional(record.howToObtain, locale)}</dd>
       </div>
       <div>
-        <dt>Cost</dt>
-        <dd>{formatOptional(record.costToUser)}</dd>
+        <dt>{translateSurfaceText("Cost", locale)}</dt>
+        <dd>{formatOptional(record.costToUser, locale)}</dd>
       </div>
       <div>
-        <dt>Availability</dt>
-        <dd>{formatToolAvailability(record.availability)}</dd>
+        <dt>{translateSurfaceText("Availability", locale)}</dt>
+        <dd>{translateSurfaceText(formatToolAvailability(record.availability), locale)}</dd>
       </div>
       <div>
-        <dt>Review</dt>
+        <dt>{translateSurfaceText("Review", locale)}</dt>
         <dd>
-          <StateLabel prefix="" reviewState={record.reviewState} />
+          <StateLabel locale={locale} prefix="" reviewState={record.reviewState} />
         </dd>
       </div>
       <div className="tool-record-fields__evidence">
-        <dt>Sources</dt>
+        <dt>{translateSurfaceText("Sources", locale)}</dt>
         <dd>
           {evidenceLinks.length ? (
             <div className="tool-record-fields__evidence-links">
@@ -46,12 +49,12 @@ export function ToolRecordFields({ record }: ToolRecordFieldsProps) {
                   href={evidence.sourceUrl}
                   key={`${record.tool}:${evidence.sourceUrl}:${evidence.snapshotHash}`}
                 >
-                  Source {index + 1}
+                  {translateSurfaceText("Source", locale)} {index + 1}
                 </a>
               ))}
             </div>
           ) : (
-            <span>Not specified</span>
+            <span>{translateSurfaceText("Not specified", locale)}</span>
           )}
         </dd>
       </div>
@@ -59,8 +62,8 @@ export function ToolRecordFields({ record }: ToolRecordFieldsProps) {
   );
 }
 
-function formatOptional(value?: string): string {
+function formatOptional(value: string | undefined, locale: SupportedLocale): string {
   const trimmed = value?.trim();
 
-  return trimmed || "Not specified";
+  return trimmed || translateSurfaceText("Not specified", locale);
 }

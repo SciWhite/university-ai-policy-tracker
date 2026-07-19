@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   DEFAULT_LOCALE,
   SUPPORTED_LOCALES,
+  isLocalizablePath,
   type SupportedLocale,
   withLocalePrefix
 } from "@/lib/i18n";
@@ -11,6 +12,10 @@ export function getLocalizedAlternates(
   pathname: string,
   locale: SupportedLocale = DEFAULT_LOCALE
 ): NonNullable<Metadata["alternates"]> {
+  if (!isLocalizablePath(pathname)) {
+    return { canonical: getAbsoluteSiteUrl(pathname) };
+  }
+
   const canonicalPath = withLocalePrefix(pathname, locale);
   const languages = Object.fromEntries(
     SUPPORTED_LOCALES.map((supportedLocale) => [

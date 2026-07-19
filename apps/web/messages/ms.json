@@ -2,6 +2,7 @@
   "Shell": {
     "tagline": "Rekod dasar AI universiti yang terbuka dan berasaskan bukti untuk kegunaan awam.",
     "actions": {
+      "label": "Tindakan utama",
       "api": "API",
       "github": "GitHub"
     },
@@ -16,6 +17,7 @@
       "contribute": "Sumbang"
     },
     "footer": {
+      "secondaryLinks": "Pautan sekunder",
       "intro": "Metadata penjejak terbuka untuk petikan dan analisis. Bukan nasihat undang-undang, nasihat integriti akademik, atau kenyataan rasmi universiti.",
       "dataAndApi": "Data dan API",
       "trustAndCitation": "Kepercayaan dan petikan",
@@ -24,10 +26,14 @@
       "apiDocs": "Dokumen API",
       "publicApi": "API awam",
       "mcpAlpha": "MCP alpha",
+      "widgets": "Widget",
+      "citation": "Petikan",
+      "llms": "LLMs.txt",
       "aiPolicyDatabase": "Pangkalan dasar AI",
       "reportsRss": "RSS laporan",
       "changesRss": "RSS perubahan",
       "sourceHealth": "Kesihatan sumber",
+      "coverage": "Liputan",
       "reviewWorkflow": "Aliran semakan",
       "reviewQueue": "Baris semakan"
     },

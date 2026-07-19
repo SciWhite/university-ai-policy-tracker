@@ -1,4 +1,6 @@
 import type { SourceHealthStatus } from "@/lib/review-dashboards";
+import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
+import { translateSurfaceText } from "@/lib/surface-localization";
 
 const labels: Record<SourceHealthStatus, string> = {
   agent_blocked_captcha_waf: "Agent WAF block",
@@ -31,12 +33,13 @@ const labels: Record<SourceHealthStatus, string> = {
 
 interface SourceHealthLabelProps {
   status: SourceHealthStatus;
+  locale?: SupportedLocale;
 }
 
-export function SourceHealthLabel({ status }: SourceHealthLabelProps) {
+export function SourceHealthLabel({ locale = DEFAULT_LOCALE, status }: SourceHealthLabelProps) {
   return (
     <span className="source-health-label" data-source-health={status}>
-      {labels[status]}
+      {translateSurfaceText(labels[status], locale)}
     </span>
   );
 }

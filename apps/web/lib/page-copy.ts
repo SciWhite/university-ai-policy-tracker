@@ -1,4 +1,10 @@
-import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
+import type { SupportedLocale } from "@/lib/i18n";
+import zhTranslations from "@/messages/pages/zh.json";
+import frTranslations from "@/messages/pages/fr.json";
+import plTranslations from "@/messages/pages/pl.json";
+import esTranslations from "@/messages/pages/es.json";
+import nlTranslations from "@/messages/pages/nl.json";
+import msTranslations from "@/messages/pages/ms.json";
 
 const en = {
   home: {
@@ -756,601 +762,167 @@ const en = {
   }
 };
 
-const coreTranslations: Record<
-  Exclude<SupportedLocale, "en">,
-  PartialDeep<typeof en>
-> = {
-  zh: {
-    datasets: {
-      kicker: "数据集",
-      heading: "公共 JSON 文件和发布元数据",
-      leadPrefix: "版本化公共 JSON 位于",
-      leadSuffix: "并由与可见页面相同的已发布数据集生成。",
-      publicUniversityRecords: "公共高校记录",
-      sourceBackedClaims: "有来源证据的声明",
-      officialSourceAttributions: "官方来源归属",
-      publicJsonSchemaVersion: "公共 JSON schema 版本",
-      releaseDownloadArtifacts: "发布下载文件",
-      analysisProfiles: "分析档案",
-      whatReusableTitle: "哪些内容可复用",
-      whatReusableText: "Tracker 元数据、记录 URL、审查状态、引用字段和公共 JSON 可按 tracker 元数据许可复用。",
-      externalTitle: "哪些内容仍属外部来源",
-      externalText: "官方来源文件、页面文字、PDF 和高校政策措辞保留原始权利和条款。",
-      retrieveTitle: "智能体如何检索数据",
-      retrieveText: "从 API 索引开始，用搜索解析实体，获取规范高校 JSON，然后引用声明证据和来源 URL。",
-      versionedJsonTitle: "版本化公共 JSON",
-      versionedJsonDescription: "按用途分组的实时只读文件。",
-      coreRecords: "核心记录",
-      searchAnalysis: "搜索和分析",
-      reportsEmbeds: "报告和嵌入",
-      reviewIntegrations: "审查和集成",
-      releaseDownloadsTitle: "数据集发布下载",
-      releaseDownloadsDescription: "包含行数、大小和校验和的批量文件。",
-      release: "发布",
-      period: "期间",
-      published: "发布时间",
-      rankingTitle: "排名和索引边界",
-      rankingDescription: "发现输入，不是政策结论。",
-      githubTitle: "GitHub 信任资产",
-      githubDescription: "仓库级信任材料。",
-      manifestTitle: "当前发布清单",
-      promotedRuns: "已发布运行",
-      manifestText: "该清单控制哪些已审查的暂存产物目录进入公共页面和公共 JSON。",
-      conceptsTitle: "数据集概念",
-      conceptsLead: "v1 记录当前公开的内容",
-      licenseTitle: "许可、权利和引用",
-      trackerMetadata: "tracker 元数据",
-      trackerMetadataTitle: "Tracker 元数据",
-      officialRightsTitle: "官方来源权利",
-      citationExpectationsTitle: "引用要求",
-      citationExpectationsText: "同时引用规范页面和公共 JSON。声明级复用应保留来源 URL、来源语言、快照哈希、审查状态、置信度和原始证据片段。",
-      citationRulesPrefix: "引用规则见",
-      recentFreshnessPrefix: "近期数据新鲜度见"
-    },
-    methodology: {
-      kicker: "方法",
-      heading: "记录如何成为有来源证据的声明",
-      lead: "官方来源、快照、短证据片段、置信度和明确审查状态。",
-      answersLabel: "方法说明",
-      tocLabel: "方法章节",
-      toc: {
-        workflow: "证据流程",
-        reviewStates: "审查状态",
-        rankingBoundaries: "排名边界",
-        publicationRules: "发布规则",
-        limitations: "限制"
-      },
-      workflowDescription: "从公共来源发现到可引用记录。",
-      reviewDescription: "审查状态是工作流状态；置信度是机器评估的支持度。",
-      rankingDescription: "排名行用于优先级和筛选，不是政策声明。",
-      publicationDescription: "公开声明前必须具备的内容。",
-      limitationsDescription: "当前证据层的已知边界。",
-      answers: [
-        { title: "记录如何公开", text: "记录经过来源发现、快照哈希、声明抽取、证据绑定、审查状态标注，并从已发布公共数据集生成后公开。" },
-        { title: "审查状态是什么意思", text: "审查状态描述工作流进度。置信度是独立的机器支持度分数，不会让声明变成官方结论。" },
-        { title: "什么证据是规范的", text: "原文证据、来源 URL 和官方高校页面保持规范；翻译或摘要只是辅助显示元数据。" }
-      ]
-    },
-    citation: {
-      kicker: "引用",
-      heading: "分别引用 tracker 元数据和官方来源",
-      lead: "把规范页面、公共 JSON、来源 URL、快照哈希、审查状态、置信度和原始证据放在一起。",
-      answersLabel: "引用说明",
-      tocLabel: "引用章节",
-      toc: {
-        formats: "建议格式",
-        fields: "引用字段",
-        json: "公共 JSON",
-        ranking: "排名来源",
-        rights: "权利和边界"
-      },
-      universityPolicyRecord: "高校政策记录",
-      datasetSurface: "数据集页面",
-      changesFeed: "变更 feed 或报告",
-      pageDataIdentity: "页面和数据身份",
-      freshnessReview: "新鲜度和审查",
-      sourceEvidence: "来源证据",
-      apiIndex: "API 索引",
-      universitiesList: "高校列表",
-      universityRecord: "高校记录",
-      recentChanges: "近期变更",
-      universityRecords: "高校记录",
-      methodology: "方法",
-      datasetAccess: "数据集访问",
-      answers: [
-        { title: "如何引用高校记录", text: "同时引用规范可见记录页和对应公共 JSON URL，并保留来源 URL、审查状态、置信度和最后检查日期。" },
-        { title: "如何引用声明证据", text: "声明级复用应包含声明文本、原文证据片段、来源语言、来源 URL、快照哈希、置信度和审查状态。" },
-        { title: "什么不能当作官方内容引用", text: "University AI Policy Tracker 元数据不是高校官方声明；机构政策措辞请另行引用链接的官方来源。" }
-      ]
-    },
-    analysis: {
-      kicker: "政策分析",
-      heading: "有来源证据的分析档案，不是政策建议",
-      lead: "基于公共声明/证据记录派生的维度。每个非空结果保留声明 ID、来源 URL、来源语言和证据。",
-      profiles: "档案",
-      publicApi: "公共 API",
-      analysisProfiles: "分析档案",
-      evidenceBackedDimensions: "有证据的维度",
-      averageCoverageScore: "平均公共覆盖分",
-      sourceLanguagesPreserved: "保留的来源语言",
-      answersLabel: "政策分析说明",
-      summaryTitle: "摘要",
-      tocLabel: "分析章节",
-      toc: {
-        meaning: "边界",
-        dimensions: "维度",
-        coverage: "覆盖分",
-        themes: "主题分析",
-        quality: "质量门槛",
-        review: "审查流程",
-        json: "公共 JSON",
-        citation: "引用"
-      },
-      openCoverageTable: "打开覆盖表",
-      pageQualityJson: "页面质量 JSON",
-      openReviewWorkflow: "打开审查流程",
-      queue: "队列",
-      publicMutation: "公共修改",
-      notAllowed: "不允许",
-      reviewStates: "审查状态",
-      openAnalysis: "打开分析",
-      held: "等待证据阈值",
-      evidenceBacked: "有证据",
-      notMentioned: "未提及",
-      gate: "门槛",
-      analysisIndex: "分析索引",
-      universityAnalysisProfile: "高校分析档案",
-      coverageScores: "覆盖分",
-      analysisPageQuality: "分析页面质量",
-      suggestedCitation: "建议引用",
-      answers: [
-        { title: "分析是什么意思", text: "分析档案是公共声明/证据记录上的派生元数据；它们总结政策维度，但不替代来源证据。" },
-        { title: "覆盖分是什么意思", text: "覆盖分衡量可见公共证据的广度，不代表政策质量、安全性、合法性、严格程度或合规性。" },
-        { title: "如何引用分析", text: "把分析 JSON 与相关高校记录、依据声明 ID、来源 URL、审查状态和原始证据一起引用。" }
-      ]
-    },
-    changes: {
-      kicker: "变更",
-      heading: "Tracker 发布变更和来源新鲜度",
-      lead: "公共高校 AI 政策记录的发布间 diff。新抽取声明和来源快照变更会与可比较政策文本变更分开。",
-      recordsWithDiffRows: "有 tracker diff 行的记录",
-      policyTextChanges: "可比较政策文本变更",
-      newlyExtractedClaims: "新抽取声明",
-      privateSourceTextChanges: "私有来源文本变更",
-      answersLabel: "变更 feed 说明",
-      artifactTitle: "公共变更文件",
-      artifactDescription: "面向读者和智能体的版本化 feed。",
-      recentChangesJson: "近期变更 JSON",
-      latestDiffJson: "最新发布 diff JSON",
-      timelineTitle: "变更时间线",
-      changeDetail: "变更详情",
-      universityPage: "高校页面",
-      publicJson: "公共 JSON",
-      diff: "Diff",
-      claims: "声明",
-      sources: "来源",
-      checked: "检查",
-      changed: "变更",
-      noPublicDate: "暂无公开日期",
-      boundaryTitle: "边界",
-      boundaryLead: "仅为新鲜度信号",
-      answers: [
-        { title: "changed 表示什么", text: "发布 diff 比较当前已发布声明/证据快照与上一公共发布。新抽取声明不一定表示高校刚发布。" },
-        { title: "来源哈希表示什么", text: "快照哈希变化表示同一来源 URL 产生了不同 tracker 内容，可能是政策文本、页面布局、导航或元数据变化。" },
-        { title: "智能体应如何使用", text: "描述政策更新前，应先使用 policyTextChanged、newlyExtractedClaims 和 sourceSnapshotChanged 等语义字段。" }
-      ]
-    },
-    contribute: {
-      kicker: "贡献入口",
-      heading: "把证据提交到审查队列",
-      lead: "贡献可以扩展覆盖范围，但不会直接创建规范政策事实。每个来源 URL、修正、翻译修复或课程级提交都会先成为审查任务。",
-      pathsTitle: "贡献路径",
-      openTemplate: "打开模板",
-      queue: "队列",
-      canonicalFact: "规范事实",
-      no: "否",
-      boundaryTitle: "提交可以和不可以做什么",
-      courseTitle: "课程级提交",
-      allowedStart: "允许的起点",
-      initialState: "初始状态",
-      publicationModel: "发布模型",
-      apiTitle: "贡献 API 元数据",
-      contributionIndex: "贡献索引",
-      reviewPolicy: "审查政策",
-      readOnlyMetadata: "只读元数据"
-    }
-  },
-  fr: {
-    datasets: { kicker: "Jeux de donnees", heading: "Artefacts JSON publics et metadonnees de version", leadPrefix: "JSON public versionne sous", leadSuffix: "cree depuis le meme jeu de donnees promu que les pages visibles.", publicUniversityRecords: "dossiers universitaires publics", sourceBackedClaims: "affirmations etayees", officialSourceAttributions: "sources officielles", analysisProfiles: "profils d'analyse", whatReusableTitle: "Ce qui peut etre reutilise", externalTitle: "Ce qui reste externe", retrieveTitle: "Comment les agents recuperent les donnees", versionedJsonTitle: "JSON public versionne", coreRecords: "Dossiers principaux", searchAnalysis: "Recherche et analyse", reportsEmbeds: "Rapports et integrations", reviewIntegrations: "Revue et integrations", conceptsTitle: "Concepts du jeu de donnees", licenseTitle: "Licence, droits et citation" },
-    methodology: { kicker: "Methodologie", heading: "Comment les dossiers deviennent des affirmations etayees", lead: "Sources officielles, instantanes, courts extraits de preuve, confiance et etat de revue explicite.", toc: { workflow: "Flux de preuve", reviewStates: "Etats de revue", rankingBoundaries: "Limites des classements", publicationRules: "Regles de publication", limitations: "Limites" } },
-    citation: { kicker: "Citation", heading: "Citez separement les metadonnees du tracker et les sources officielles", lead: "Gardez ensemble page canonique, JSON public, URL source, hash d'instantane, etat de revue, confiance et preuve originale.", toc: { formats: "Formats suggeres", fields: "Champs de citation", json: "JSON public", ranking: "Sources de classement", rights: "Droits et limites" } },
-    analysis: { kicker: "Analyse de politique", heading: "Profils d'analyse etayes, pas des conseils de politique", lead: "Dimensions derivees des dossiers publics de revendications et preuves.", analysisProfiles: "profils d'analyse", evidenceBackedDimensions: "dimensions etayees", averageCoverageScore: "score moyen de couverture", sourceLanguagesPreserved: "langues sources conservees", toc: { meaning: "Limite", dimensions: "Dimensions", coverage: "Score de couverture", themes: "Analyse thematique", quality: "Seuils qualite", review: "Flux de revue", json: "JSON public", citation: "Citation" } },
-    changes: { kicker: "Changements", heading: "Changements de version et fraicheur des sources", lead: "Diffs entre versions pour les dossiers publics de politiques IA universitaires.", recordsWithDiffRows: "dossiers avec lignes de diff", policyTextChanges: "changements de texte comparables", newlyExtractedClaims: "affirmations nouvellement extraites", privateSourceTextChanges: "changements de texte source prive", timelineTitle: "Chronologie des changements", boundaryTitle: "Limite", boundaryLead: "Signaux de fraicheur seulement" },
-    contribute: { kicker: "Contribution", heading: "Soumettre des preuves dans une file de revue", lead: "Les contributions elargissent la couverture mais ne creent pas directement des faits canoniques.", pathsTitle: "Chemins de contribution", openTemplate: "Ouvrir le modele", boundaryTitle: "Ce qu'une soumission peut faire", courseTitle: "Soumissions au niveau cours", apiTitle: "Metadonnees API de contribution" }
-  },
-  pl: {
-    datasets: { kicker: "Zbiory danych", heading: "Publiczne artefakty JSON i metadane wydania", leadPrefix: "Wersjonowany publiczny JSON w", leadSuffix: "zbudowany z tego samego wydania co widoczne strony.", publicUniversityRecords: "publiczne rekordy uczelni", sourceBackedClaims: "twierdzenia ze zrodlami", officialSourceAttributions: "oficjalne zrodla", analysisProfiles: "profile analizy", whatReusableTitle: "Co mozna ponownie uzyc", externalTitle: "Co pozostaje zewnetrzne", retrieveTitle: "Jak agenci pobieraja dane", versionedJsonTitle: "Wersjonowany publiczny JSON", coreRecords: "Rekordy glowne", searchAnalysis: "Wyszukiwanie i analiza", reportsEmbeds: "Raporty i osadzenia", reviewIntegrations: "Przeglad i integracje", conceptsTitle: "Pojecia zbioru danych", licenseTitle: "Licencja, prawa i cytowanie" },
-    methodology: { kicker: "Metodologia", heading: "Jak rekordy staja sie twierdzeniami ze zrodlami", lead: "Oficjalne zrodla, migawki, krotkie dowody, pewnosc i jawny stan przegladu.", toc: { workflow: "Przeplyw dowodow", reviewStates: "Stany przegladu", rankingBoundaries: "Granice rankingow", publicationRules: "Reguly publikacji", limitations: "Ograniczenia" } },
-    citation: { kicker: "Cytowanie", heading: "Cytuj metadane trackera i oficjalne zrodla oddzielnie", lead: "Zachowaj razem strone kanoniczna, publiczny JSON, URL zrodla, hash migawki, stan przegladu, pewnosc i oryginalny dowod.", toc: { formats: "Sugerowane formaty", fields: "Pola cytowania", json: "Publiczny JSON", ranking: "Zrodla rankingowe", rights: "Prawa i granice" } },
-    analysis: { kicker: "Analiza polityk", heading: "Profile analizy oparte na zrodlach, nie porady", lead: "Wymiary pochodne nad publicznymi rekordami twierdzen i dowodow.", analysisProfiles: "profile analizy", evidenceBackedDimensions: "wymiary z dowodami", averageCoverageScore: "sredni wynik pokrycia", sourceLanguagesPreserved: "zachowane jezyki zrodel", toc: { meaning: "Granica", dimensions: "Wymiary", coverage: "Wynik pokrycia", themes: "Analiza tematyczna", quality: "Bramki jakosci", review: "Przeplyw przegladu", json: "Publiczny JSON", citation: "Cytowanie" } },
-    changes: { kicker: "Zmiany", heading: "Zmiany wydan i swiezosc zrodel", lead: "Diffy miedzy wydaniami publicznych rekordow polityk AI uczelni.", recordsWithDiffRows: "rekordy z wierszami diff", policyTextChanges: "porownywalne zmiany tekstu", newlyExtractedClaims: "nowo wyodrebnione twierdzenia", privateSourceTextChanges: "prywatne zmiany tekstu zrodla", timelineTitle: "Os czasu zmian", boundaryTitle: "Granica", boundaryLead: "Tylko sygnaly swiezosci" },
-    contribute: { kicker: "Wklad", heading: "Przeslij dowody do kolejki przegladu", lead: "Wklady poszerzaja pokrycie, ale nie tworza bezposrednio faktow kanonicznych.", pathsTitle: "Sciezki wkladu", openTemplate: "Otworz szablon", boundaryTitle: "Co moze zrobic zgloszenie", courseTitle: "Zgloszenia kursowe", apiTitle: "Metadane API wkladu" }
-  },
-  es: {
-    datasets: { kicker: "Datos", heading: "Artefactos JSON publicos y metadatos de version", leadPrefix: "JSON publico versionado en", leadSuffix: "creado desde el mismo conjunto publicado que las paginas visibles.", publicUniversityRecords: "registros universitarios publicos", sourceBackedClaims: "afirmaciones con fuentes", officialSourceAttributions: "fuentes oficiales", analysisProfiles: "perfiles de analisis", whatReusableTitle: "Que se puede reutilizar", externalTitle: "Que sigue externo", retrieveTitle: "Como recuperan datos los agentes", versionedJsonTitle: "JSON publico versionado", coreRecords: "Registros centrales", searchAnalysis: "Busqueda y analisis", reportsEmbeds: "Reportes e incrustaciones", reviewIntegrations: "Revision e integraciones", conceptsTitle: "Conceptos del dataset", licenseTitle: "Licencia, derechos y cita" },
-    methodology: { kicker: "Metodologia", heading: "Como los registros se vuelven afirmaciones respaldadas", lead: "Fuentes oficiales, capturas, breves evidencias, confianza y estado de revision explicito.", toc: { workflow: "Flujo de evidencia", reviewStates: "Estados de revision", rankingBoundaries: "Limites de rankings", publicationRules: "Reglas de publicacion", limitations: "Limitaciones" } },
-    citation: { kicker: "Cita", heading: "Cita los metadatos del tracker y las fuentes oficiales por separado", lead: "Mantiene juntos la pagina canonica, JSON publico, URL fuente, hash, estado de revision, confianza y evidencia original.", toc: { formats: "Formatos sugeridos", fields: "Campos de cita", json: "JSON publico", ranking: "Fuentes de ranking", rights: "Derechos y limites" } },
-    analysis: { kicker: "Analisis de politicas", heading: "Perfiles de analisis con fuentes, no asesoramiento", lead: "Dimensiones derivadas sobre registros publicos de afirmaciones y evidencia.", analysisProfiles: "perfiles de analisis", evidenceBackedDimensions: "dimensiones con evidencia", averageCoverageScore: "puntaje medio de cobertura", sourceLanguagesPreserved: "idiomas fuente conservados", toc: { meaning: "Limite", dimensions: "Dimensiones", coverage: "Puntaje de cobertura", themes: "Analisis tematico", quality: "Controles de calidad", review: "Flujo de revision", json: "JSON publico", citation: "Cita" } },
-    changes: { kicker: "Cambios", heading: "Cambios de version y frescura de fuentes", lead: "Diffs entre versiones para registros publicos de politicas universitarias de IA.", recordsWithDiffRows: "registros con filas diff", policyTextChanges: "cambios comparables de texto", newlyExtractedClaims: "afirmaciones nuevas extraidas", privateSourceTextChanges: "cambios privados de texto fuente", timelineTitle: "Linea de tiempo de cambios", boundaryTitle: "Limite", boundaryLead: "Solo senales de frescura" },
-    contribute: { kicker: "Contribuir", heading: "Enviar evidencia a una cola de revision", lead: "Las contribuciones amplian la cobertura, pero no crean hechos canonicos directamente.", pathsTitle: "Vias de contribucion", openTemplate: "Abrir plantilla", boundaryTitle: "Que puede hacer un envio", courseTitle: "Envios de cursos", apiTitle: "Metadatos API de contribucion" }
-  },
-  nl: {
-    datasets: { kicker: "Datasets", heading: "Publieke JSON-bestanden en release-metadata", leadPrefix: "Geversioneerde publieke JSON onder", leadSuffix: "gebouwd uit dezelfde gepubliceerde dataset als de zichtbare pagina's.", publicUniversityRecords: "publieke universiteitsrecords", sourceBackedClaims: "brononderbouwde claims", officialSourceAttributions: "officiele bronnen", analysisProfiles: "analyseprofielen", whatReusableTitle: "Wat herbruikbaar is", externalTitle: "Wat extern blijft", retrieveTitle: "Hoe agents data ophalen", versionedJsonTitle: "Geversioneerde publieke JSON", coreRecords: "Kernrecords", searchAnalysis: "Zoeken en analyse", reportsEmbeds: "Rapporten en embeds", reviewIntegrations: "Review en integraties", conceptsTitle: "Datasetconcepten", licenseTitle: "Licentie, rechten en citatie" },
-    methodology: { kicker: "Methodologie", heading: "Hoe records brononderbouwde claims worden", lead: "Officiele bronnen, snapshots, korte bewijsfragmenten, vertrouwen en expliciete reviewstatus.", toc: { workflow: "Bewijsproces", reviewStates: "Reviewstatussen", rankingBoundaries: "Rankinggrenzen", publicationRules: "Publicatieregels", limitations: "Beperkingen" } },
-    citation: { kicker: "Citatie", heading: "Citeer tracker-metadata en officiele bronnen apart", lead: "Houd canonieke pagina, publieke JSON, bron-URL, snapshot-hash, reviewstatus, vertrouwen en origineel bewijs samen.", toc: { formats: "Voorgestelde formats", fields: "Citatievelden", json: "Publieke JSON", ranking: "Rankingbronnen", rights: "Rechten en grenzen" } },
-    analysis: { kicker: "Beleidsanalyse", heading: "Brononderbouwde analyseprofielen, geen beleidsadvies", lead: "Afgeleide dimensies over publieke claim- en bewijsrecords.", analysisProfiles: "analyseprofielen", evidenceBackedDimensions: "dimensies met bewijs", averageCoverageScore: "gemiddelde dekkingsscore", sourceLanguagesPreserved: "bewaarde brontalen", toc: { meaning: "Grens", dimensions: "Dimensies", coverage: "Dekkingsscore", themes: "Thema-analyse", quality: "Kwaliteitscontroles", review: "Reviewproces", json: "Publieke JSON", citation: "Citatie" } },
-    changes: { kicker: "Wijzigingen", heading: "Releasewijzigingen en bronversheid", lead: "Diffs tussen releases voor publieke universitaire AI-beleidsrecords.", recordsWithDiffRows: "records met diff-regels", policyTextChanges: "vergelijkbare tekstwijzigingen", newlyExtractedClaims: "nieuw geextraheerde claims", privateSourceTextChanges: "private brontekstwijzigingen", timelineTitle: "Wijzigingstijdlijn", boundaryTitle: "Grens", boundaryLead: "Alleen versheidssignalen" },
-    contribute: { kicker: "Bijdragen", heading: "Dien bewijs in bij een reviewrij", lead: "Bijdragen vergroten dekking, maar maken niet direct canonieke feiten.", pathsTitle: "Bijdragepaden", openTemplate: "Template openen", boundaryTitle: "Wat een inzending kan doen", courseTitle: "Cursusinzendingen", apiTitle: "API-metadata voor bijdragen" }
-  },
-  ms: {
-    datasets: { kicker: "Dataset", heading: "Artifak JSON awam dan metadata keluaran", leadPrefix: "JSON awam berversi di", leadSuffix: "dibina daripada dataset keluaran yang sama seperti halaman kelihatan.", publicUniversityRecords: "rekod universiti awam", sourceBackedClaims: "tuntutan bersumber", officialSourceAttributions: "sumber rasmi", analysisProfiles: "profil analisis", whatReusableTitle: "Apa yang boleh digunakan semula", externalTitle: "Apa yang kekal luaran", retrieveTitle: "Cara agen mendapatkan data", versionedJsonTitle: "JSON awam berversi", coreRecords: "Rekod teras", searchAnalysis: "Carian dan analisis", reportsEmbeds: "Laporan dan benaman", reviewIntegrations: "Semakan dan integrasi", conceptsTitle: "Konsep dataset", licenseTitle: "Lesen, hak dan petikan" },
-    methodology: { kicker: "Metodologi", heading: "Bagaimana rekod menjadi tuntutan bersumber", lead: "Sumber rasmi, petikan, bukti ringkas, keyakinan dan keadaan semakan jelas.", toc: { workflow: "Aliran bukti", reviewStates: "Keadaan semakan", rankingBoundaries: "Had ranking", publicationRules: "Peraturan penerbitan", limitations: "Had" } },
-    citation: { kicker: "Petikan", heading: "Petik metadata tracker dan sumber rasmi secara berasingan", lead: "Simpan halaman kanonik, JSON awam, URL sumber, hash petikan, keadaan semakan, keyakinan dan bukti asal bersama.", toc: { formats: "Format cadangan", fields: "Medan petikan", json: "JSON awam", ranking: "Sumber ranking", rights: "Hak dan had" } },
-    analysis: { kicker: "Analisis dasar", heading: "Profil analisis bersumber, bukan nasihat dasar", lead: "Dimensi terbitan atas rekod tuntutan dan bukti awam.", analysisProfiles: "profil analisis", evidenceBackedDimensions: "dimensi berbukti", averageCoverageScore: "skor liputan purata", sourceLanguagesPreserved: "bahasa sumber dikekalkan", toc: { meaning: "Had", dimensions: "Dimensi", coverage: "Skor liputan", themes: "Analisis tema", quality: "Pintu kualiti", review: "Aliran semakan", json: "JSON awam", citation: "Petikan" } },
-    changes: { kicker: "Perubahan", heading: "Perubahan keluaran dan kesegaran sumber", lead: "Diff antara keluaran untuk rekod dasar AI universiti awam.", recordsWithDiffRows: "rekod dengan baris diff", policyTextChanges: "perubahan teks dasar setara", newlyExtractedClaims: "tuntutan baru diekstrak", privateSourceTextChanges: "perubahan teks sumber peribadi", timelineTitle: "Garis masa perubahan", boundaryTitle: "Had", boundaryLead: "Isyarat kesegaran sahaja" },
-    contribute: { kicker: "Sumbang", heading: "Hantar bukti ke baris semakan", lead: "Sumbangan meluaskan liputan tetapi tidak terus mencipta fakta kanonik.", pathsTitle: "Laluan sumbangan", openTemplate: "Buka templat", boundaryTitle: "Apa yang boleh dibuat oleh hantaran", courseTitle: "Hantaran peringkat kursus", apiTitle: "Metadata API sumbangan" }
-  }
-};
-
-const pageCopies = {
-  en,
-  zh: localize(en, {
-    ...coreTranslations.zh,
-    home: {
-      metadataTitle: (count) => `高校 AI 政策数据库：搜索 ${count} 条有来源证据支撑的生成式 AI 政策`,
-      description: "搜索和引用有官方来源、审查状态、公共 JSON 与可引用证据的高校生成式 AI 政策记录。",
-      kicker: "高校 AI 政策数据库",
-      lead: "查找、引用并检索有来源证据支撑的高校生成式 AI 政策记录。可按机构、来源域名、AI 工具、政策主题或公共证据短语搜索。",
-      searchLabel: "搜索公共高校 AI 政策记录",
-      searchPlaceholder: "搜索高校、主题、来源域名...",
-      searchButton: "搜索",
-      suggestedSearches: "建议搜索",
-      note: "搜索只是公共记录的路由辅助，不是政策结论。引用前请打开记录页和公共 JSON。",
-      universityRecords: "高校记录",
-      sourceBackedClaims: "有来源证据的声明",
-      officialSourceAttributions: "官方来源归属",
-      analysisProfiles: "分析档案",
-      answersLabel: "数据库说明",
-      matchingRecords: "匹配记录",
-      openSearch: "打开搜索",
-      record: "记录",
-      claims: "声明",
-      sources: "来源",
-      recentChecks: "最近检查",
-      viewChanges: "查看变更",
-      noPublicFreshnessDate: "暂无公开更新时间",
-      agentRetrievalTitle: "智能体和引用检索",
-      agentRetrievalLead: "请同时使用规范页面和版本化公共 JSON。",
-      aiSystemsTitle: "面向 AI/搜索系统",
-      aiSystemsText: "先通过搜索解析实体，打开规范高校记录，再引用声明证据和公共 JSON 字段，不替换官方来源原文。",
-      researchersTitle: "面向研究者和记者",
-      researchersText: "把 tracker 元数据视为引用层。官方来源页面、PDF 和政策文件仍是机构措辞的最终来源。",
-      developersTitle: "面向开发者",
-      developersText: "公共端点在版本化 API 命名空间下提供只读记录、搜索、实体、数据集、近期变更、分析档案和引用元数据。",
-      changed: "变更于",
-      checked: "检查于",
-      homeAnswers: [
-        { title: "这个数据库是什么", text: "一个公开、来源支撑的高校生成式 AI 政策索引，包含规范页面、审查状态、来源 URL、证据片段和公共 JSON。" },
-        { title: "这个数据库不是什么", text: "它不是法律建议、学术诚信建议，也不是高校官方声明。官方高校来源页面仍是规范来源。" },
-        { title: "如何引用记录", text: "同时引用可见记录页和对应公共 JSON，并保留来源 URL、审查状态、置信度、最后检查日期和原文证据。" }
-      ]
-    },
-    universities: {
-      kicker: "证据记录",
-      heading: "浏览有来源证据支撑的高校 AI 政策记录",
-      lead: "按机构、排名覆盖、声明、官方来源、审查状态和版本化公共 JSON 筛选公共记录。",
-      universityRecords: "高校记录",
-      sourceBackedClaims: "有来源证据的声明",
-      officialSourceAttributions: "官方来源归属",
-      rankedRecords: (ranking) => `${ranking} 排名记录`,
-      indexTitle: "索引",
-      indexLead: "排名筛选只用于发现和覆盖分析；政策声明仍来自官方来源。",
-      search: "搜索",
-      searchPlaceholder: "高校、国家、城市",
-      ranking: "排名",
-      coverage: "覆盖",
-      sort: "排序",
-      order: "顺序",
-      allRecords: "全部记录",
-      rankedInSelectedSystem: "在所选体系中有排名",
-      missingSelectedRank: "缺少所选排名",
-      selectedRanking: "所选排名",
-      recentlyChecked: "最近检查",
-      universityName: "高校名称",
-      claimCount: "声明数量",
-      sourceCount: "来源数量",
-      ascending: "升序",
-      descending: "降序",
-      apply: "应用",
-      reset: "重置",
-      showing: (visible, total) => `显示 ${visible} / ${total} 条记录。`,
-      searchSummary: (query) => `搜索：“${query}”。`,
-      rankingView: (ranking) => `排名视图：${ranking}。`,
-      university: "高校",
-      rank: (ranking) => `${ranking} 排名`,
-      claims: "声明",
-      sources: "来源",
-      lastChecked: "最后检查",
-      publicJson: "公共 JSON",
-      locationUnknown: "位置未知",
-      confidence: "置信度",
-      unknown: "未知",
-      noMatches: "没有记录匹配当前搜索和排名覆盖筛选。",
-      notIndexed: "未索引",
-      partialSource: "部分来源",
-      derivedOrder: "派生排序",
-      answerCards: [
-        { title: "索引覆盖什么", text: "已发布的公共高校记录，包含有来源证据的声明数量、官方来源归属、审查状态和规范记录 URL。" },
-        { title: "如何使用排名", text: "排名筛选只支持发现和覆盖分析；它们不会创建或覆盖政策声明。" },
-        { title: "复用边界", text: "本 tracker 不是法律建议、学术诚信建议，也不是官方高校声明，除非链接来源本身是高校官方页面。" }
-      ]
-    }
-  }),
-  fr: localize(en, {
-    ...coreTranslations.fr,
-    home: {
-      metadataTitle: (count) => `Base de politiques IA universitaires : ${count} politiques GenAI etayees par des sources`,
-      kicker: "Base de politiques IA universitaires",
-      lead: "Trouvez, citez et recuperez des dossiers de politiques GenAI universitaires etayes par des sources.",
-      searchButton: "Rechercher",
-      searchPlaceholder: "Universites, themes, domaines sources...",
-      universityRecords: "dossiers universitaires",
-      sourceBackedClaims: "affirmations etayees par des sources",
-      officialSourceAttributions: "attributions de sources officielles",
-      analysisProfiles: "profils d'analyse",
-      matchingRecords: "Dossiers correspondants",
-      recentChecks: "Controles recents",
-      viewChanges: "Voir les changements",
-      homeAnswers: [
-        { title: "Ce qu'est cette base", text: "Un index public etaye par des sources pour les politiques GenAI universitaires, avec pages canoniques, etat de revue, URL sources, extraits de preuve et JSON public." },
-        { title: "Ce que cette base n'est pas", text: "Ce n'est pas un avis juridique, un conseil d'integrite academique, ni une declaration officielle d'universite. Les pages sources officielles restent canoniques." },
-        { title: "Comment citer les dossiers", text: "Citez ensemble la page visible et le JSON public correspondant, puis conservez URL source, etat de revue, confiance, date de controle et preuve en langue originale." }
-      ]
-    },
-    universities: {
-      kicker: "Dossiers de preuve",
-      heading: "Parcourir les dossiers de politiques IA universitaires etayes par des sources",
-      lead: "Filtrez les dossiers publics par etablissement, classement, affirmations, sources officielles, etat de revue et JSON public versionne.",
-      universityRecords: "dossiers universitaires",
-      sourceBackedClaims: "affirmations etayees",
-      officialSourceAttributions: "sources officielles",
-      rankedRecords: (ranking) => `dossiers classes ${ranking}`,
-      indexTitle: "Index",
-      search: "Rechercher",
-      ranking: "Classement",
-      coverage: "Couverture",
-      sort: "Tri",
-      order: "Ordre",
-      apply: "Appliquer",
-      reset: "Reinitialiser",
-      showing: (visible, total) => `${visible} dossiers affiches sur ${total}.`,
-      university: "Universite",
-      claims: "Affirmations",
-      sources: "Sources",
-      lastChecked: "Dernier controle",
-      noMatches: "Aucun dossier ne correspond aux filtres actuels.",
-      answerCards: [
-        { title: "Ce que couvre l'index", text: "Dossiers publics promus avec nombre d'affirmations etayees, sources officielles, etat de revue et URL canonique." },
-        { title: "Utiliser les classements", text: "Les filtres de classement servent seulement a la decouverte et a l'analyse de couverture." },
-        { title: "Limite de reutilisation", text: "Le tracker n'est pas un avis juridique, un conseil d'integrite academique ni une declaration officielle." }
-      ]
-    }
-  }),
-  pl: localize(en, {
-    ...coreTranslations.pl,
-    home: {
-      metadataTitle: (count) => `Baza polityk AI uczelni: ${count} rekordow GenAI opartych na zrodlach`,
-      kicker: "Baza polityk AI uczelni",
-      lead: "Znajduj, cytuj i pobieraj rekordy polityk GenAI uczelni oparte na zrodlach.",
-      searchButton: "Szukaj",
-      searchPlaceholder: "Uczelnie, tematy, domeny zrodel...",
-      universityRecords: "rekordy uczelni",
-      sourceBackedClaims: "twierdzenia ze zrodlami",
-      officialSourceAttributions: "oficjalne zrodla",
-      analysisProfiles: "profile analizy",
-      matchingRecords: "Pasujace rekordy",
-      recentChecks: "Ostatnie kontrole",
-      viewChanges: "Zobacz zmiany",
-      homeAnswers: [
-        { title: "Czym jest ta baza", text: "Publiczny indeks polityk GenAI uczelni oparty na zrodlach, z kanonicznymi stronami, stanem przegladu, URL zrodel, fragmentami dowodow i publicznym JSON." },
-        { title: "Czym ta baza nie jest", text: "Nie jest porada prawna, porada o uczciwosci akademickiej ani oficjalnym stanowiskiem uczelni." },
-        { title: "Jak cytowac rekordy", text: "Cytuj widoczna strone rekordu razem z publicznym JSON i zachowaj URL zrodla, stan przegladu, pewnosc, date kontroli i oryginalny dowod." }
-      ]
-    },
-    universities: {
-      kicker: "Rekordy dowodowe",
-      heading: "Przegladaj rekordy polityk AI uczelni oparte na zrodlach",
-      lead: "Filtruj rekordy publiczne wedlug instytucji, rankingow, twierdzen, zrodel, stanu przegladu i publicznego JSON.",
-      universityRecords: "rekordy uczelni",
-      sourceBackedClaims: "twierdzenia ze zrodlami",
-      officialSourceAttributions: "oficjalne zrodla",
-      rankedRecords: (ranking) => `rekordy w rankingu ${ranking}`,
-      indexTitle: "Indeks",
-      search: "Szukaj",
-      ranking: "Ranking",
-      coverage: "Pokrycie",
-      sort: "Sortuj",
-      order: "Kolejnosc",
-      apply: "Zastosuj",
-      reset: "Reset",
-      showing: (visible, total) => `Pokazuje ${visible} z ${total} rekordow.`,
-      university: "Uczelnia",
-      claims: "Twierdzenia",
-      sources: "Zrodla",
-      lastChecked: "Ostatnio sprawdzono",
-      noMatches: "Brak rekordow pasujacych do obecnych filtrow."
-    }
-  }),
-  es: localize(en, {
-    ...coreTranslations.es,
-    home: {
-      metadataTitle: (count) => `Base de politicas de IA universitarias: ${count} politicas GenAI con fuentes`,
-      kicker: "Base de politicas de IA universitarias",
-      lead: "Encuentra, cita y recupera registros universitarios de politicas GenAI respaldados por fuentes.",
-      searchButton: "Buscar",
-      searchPlaceholder: "Universidades, temas, dominios fuente...",
-      universityRecords: "registros universitarios",
-      sourceBackedClaims: "afirmaciones con fuentes",
-      officialSourceAttributions: "fuentes oficiales",
-      analysisProfiles: "perfiles de analisis",
-      matchingRecords: "Registros coincidentes",
-      recentChecks: "Revisiones recientes",
-      viewChanges: "Ver cambios"
-    },
-    universities: {
-      kicker: "Registros con evidencia",
-      heading: "Explora registros universitarios de politicas de IA respaldados por fuentes",
-      lead: "Filtra registros publicos por institucion, ranking, afirmaciones, fuentes oficiales, estado de revision y JSON publico.",
-      universityRecords: "registros universitarios",
-      sourceBackedClaims: "afirmaciones con fuentes",
-      officialSourceAttributions: "fuentes oficiales",
-      rankedRecords: (ranking) => `registros clasificados en ${ranking}`,
-      indexTitle: "Indice",
-      search: "Buscar",
-      ranking: "Ranking",
-      coverage: "Cobertura",
-      sort: "Ordenar",
-      order: "Orden",
-      apply: "Aplicar",
-      reset: "Restablecer",
-      showing: (visible, total) => `Mostrando ${visible} de ${total} registros.`,
-      university: "Universidad",
-      claims: "Afirmaciones",
-      sources: "Fuentes",
-      lastChecked: "Ultima revision",
-      noMatches: "No hay registros que coincidan con los filtros actuales."
-    }
-  }),
-  nl: localize(en, {
-    ...coreTranslations.nl,
-    home: {
-      metadataTitle: (count) => `Universitaire AI-beleidsdatabase: zoek ${count} brononderbouwde GenAI-beleidsrecords`,
-      kicker: "Universitaire AI-beleidsdatabase",
-      lead: "Vind, citeer en haal brononderbouwde GenAI-beleidsrecords van universiteiten op.",
-      searchButton: "Zoeken",
-      searchPlaceholder: "Universiteiten, onderwerpen, brondomeinen...",
-      universityRecords: "universiteitsrecords",
-      sourceBackedClaims: "brononderbouwde claims",
-      officialSourceAttributions: "officiele bronvermeldingen",
-      analysisProfiles: "analyseprofielen",
-      matchingRecords: "Overeenkomende records",
-      recentChecks: "Recente controles",
-      viewChanges: "Wijzigingen bekijken"
-    },
-    universities: {
-      kicker: "Bewijsrecords",
-      heading: "Bekijk brononderbouwde AI-beleidsrecords van universiteiten",
-      lead: "Filter publieke records op instelling, ranking, claims, officiele bronnen, reviewstatus en publieke JSON.",
-      universityRecords: "universiteitsrecords",
-      sourceBackedClaims: "brononderbouwde claims",
-      officialSourceAttributions: "officiele bronnen",
-      rankedRecords: (ranking) => `${ranking}-gerangschikte records`,
-      indexTitle: "Index",
-      search: "Zoeken",
-      ranking: "Ranking",
-      coverage: "Dekking",
-      sort: "Sorteren",
-      order: "Volgorde",
-      apply: "Toepassen",
-      reset: "Reset",
-      showing: (visible, total) => `${visible} van ${total} records getoond.`,
-      university: "Universiteit",
-      claims: "Claims",
-      sources: "Bronnen",
-      lastChecked: "Laatst gecontroleerd",
-      noMatches: "Geen records passen bij de huidige filters."
-    }
-  }),
-  ms: localize(en, {
-    ...coreTranslations.ms,
-    home: {
-      metadataTitle: (count) => `Pangkalan data dasar AI universiti: cari ${count} dasar GenAI bersumber`,
-      kicker: "Pangkalan data dasar AI universiti",
-      lead: "Cari, petik dan dapatkan rekod dasar GenAI universiti yang disokong sumber.",
-      searchButton: "Cari",
-      searchPlaceholder: "Universiti, topik, domain sumber...",
-      universityRecords: "rekod universiti",
-      sourceBackedClaims: "tuntutan bersumber",
-      officialSourceAttributions: "atribusi sumber rasmi",
-      analysisProfiles: "profil analisis",
-      matchingRecords: "Rekod sepadan",
-      recentChecks: "Semakan terkini",
-      viewChanges: "Lihat perubahan"
-    },
-    universities: {
-      kicker: "Rekod bukti",
-      heading: "Semak rekod dasar AI universiti yang disokong sumber",
-      lead: "Tapis rekod awam mengikut institusi, liputan ranking, tuntutan, sumber rasmi, keadaan semakan dan JSON awam.",
-      universityRecords: "rekod universiti",
-      sourceBackedClaims: "tuntutan bersumber",
-      officialSourceAttributions: "sumber rasmi",
-      rankedRecords: (ranking) => `rekod beranking ${ranking}`,
-      indexTitle: "Indeks",
-      search: "Cari",
-      ranking: "Ranking",
-      coverage: "Liputan",
-      sort: "Susun",
-      order: "Tertib",
-      apply: "Guna",
-      reset: "Tetap semula",
-      showing: (visible, total) => `Memaparkan ${visible} daripada ${total} rekod.`,
-      university: "Universiti",
-      claims: "Tuntutan",
-      sources: "Sumber",
-      lastChecked: "Semakan terakhir",
-      noMatches: "Tiada rekod sepadan dengan tapis semasa."
-    }
-  })
-} satisfies Record<SupportedLocale, typeof en>;
-
 type PageCopies = typeof en;
 
-export function getPageCopy(locale: SupportedLocale): PageCopies {
-  return pageCopies[locale] ?? pageCopies[DEFAULT_LOCALE];
-}
+const translationTrees = {
+  zh: zhTranslations,
+  fr: frTranslations,
+  pl: plTranslations,
+  es: esTranslations,
+  nl: nlTranslations,
+  ms: msTranslations
+} as const;
 
-function localize<T>(base: T, overrides: PartialDeep<T>): T {
-  return mergeDeep(base, overrides);
-}
-
-type PartialDeep<T> = {
-  [K in keyof T]?: T[K] extends (...args: never[]) => unknown
-    ? T[K]
-    : T[K] extends readonly (infer U)[]
-      ? readonly (PartialDeep<U> | U)[]
-      : T[K] extends object
-        ? PartialDeep<T[K]>
-        : T[K];
+const formatterArguments: Record<string, string[]> = {
+  "home.metadataTitle": ["count"],
+  "universities.rankedRecords": ["ranking"],
+  "universities.showing": ["visible", "total"],
+  "universities.searchSummary": ["query"],
+  "universities.rankingView": ["ranking"],
+  "universities.rank": ["ranking"],
+  "universities.candidateNotice": ["count"],
+  "analysis.qualityStatus": ["status", "count"]
 };
 
-function mergeDeep<T>(base: T, overrides: PartialDeep<T> | undefined): T {
-  if (!overrides) return base;
-  if (Array.isArray(base)) {
-    return (Array.isArray(overrides) ? overrides : base) as T;
-  }
-  if (!isPlainObject(base) || !isPlainObject(overrides)) {
-    return (overrides ?? base) as T;
+const localizedPageCopies: Record<SupportedLocale, PageCopies> = {
+  en,
+  zh: compilePageCopy(en, translationTrees.zh, "zh"),
+  fr: compilePageCopy(en, translationTrees.fr, "fr"),
+  pl: compilePageCopy(en, translationTrees.pl, "pl"),
+  es: compilePageCopy(en, translationTrees.es, "es"),
+  nl: compilePageCopy(en, translationTrees.nl, "nl"),
+  ms: compilePageCopy(en, translationTrees.ms, "ms")
+};
+
+export function getPageCopy(locale: SupportedLocale): PageCopies {
+  return localizedPageCopies[locale];
+}
+
+function compilePageCopy(
+  base: PageCopies,
+  translations: unknown,
+  locale: Exclude<SupportedLocale, "en">
+): PageCopies {
+  return compileNode(base, translations, locale) as PageCopies;
+}
+
+function compileNode(
+  base: unknown,
+  translated: unknown,
+  locale: Exclude<SupportedLocale, "en">,
+  currentPath = ""
+): unknown {
+  if (typeof base === "function") {
+    const conditional = getConditionalFormatter(locale, currentPath);
+    if (conditional) return conditional;
+    if (typeof translated !== "string") {
+      throw new Error(`Invalid translated formatter at ${locale}:${currentPath}`);
+    }
+    const argumentNames = formatterArguments[currentPath];
+    if (!argumentNames) {
+      throw new Error(`Missing formatter definition at ${locale}:${currentPath}`);
+    }
+    return (...args: unknown[]) =>
+      interpolateTemplate(
+        translated,
+        Object.fromEntries(argumentNames.map((name, index) => [name, args[index]]))
+      );
   }
 
-  const result: Record<string, unknown> = { ...base };
-  for (const key of Object.keys(overrides)) {
-    result[key] = mergeDeep(
-      (base as Record<string, unknown>)[key],
-      (overrides as Record<string, unknown>)[key] as never
+  if (Array.isArray(base)) {
+    if (!Array.isArray(translated) || translated.length !== base.length) {
+      throw new Error(`Invalid translated array at ${locale}:${currentPath}`);
+    }
+    return base.map((item, index) =>
+      compileNode(item, translated[index], locale, `${currentPath}[${index}]`)
     );
   }
 
-  return result as T;
+  if (isPlainObject(base)) {
+    if (!isPlainObject(translated)) {
+      throw new Error(`Invalid translated object at ${locale}:${currentPath}`);
+    }
+    return Object.fromEntries(
+      Object.entries(base).map(([key, value]) => [
+        key,
+        compileNode(
+          value,
+          translated[key],
+          locale,
+          currentPath ? `${currentPath}.${key}` : key
+        )
+      ])
+    );
+  }
+
+  if (typeof base === "string" && typeof translated !== "string") {
+    throw new Error(`Missing translated string at ${locale}:${currentPath}`);
+  }
+  return translated;
+}
+
+function interpolateTemplate(
+  template: string,
+  values: Record<string, unknown>
+): string {
+  return template.replace(/\{([^}]+)\}/g, (_match, key: string) =>
+    String(values[key] ?? "")
+  );
+}
+
+function getConditionalFormatter(
+  locale: Exclude<SupportedLocale, "en">,
+  path: string
+): ((...args: never[]) => string) | undefined {
+  if (path === "changes.timelineLead") {
+    return ((current: string, previous: string | undefined, sources: number, records: number) => {
+      const values = { current, previous: previous ?? "—", sources, records };
+      const templates = {
+        zh: "比较 {current} 与 {previous}，覆盖 {sources} 个来源、{records} 条高校记录。",
+        fr: "Comparaison de {current} avec {previous}, couvrant {sources} sources et {records} dossiers universitaires.",
+        pl: "Porównanie {current} z {previous}, obejmujące {sources} źródeł i {records} rekordów uczelni.",
+        es: "Comparación de {current} con {previous}, que abarca {sources} fuentes y {records} registros universitarios.",
+        nl: "Vergelijking van {current} met {previous}, voor {sources} bronnen en {records} universiteitsrecords.",
+        ms: "Perbandingan {current} dengan {previous}, meliputi {sources} sumber dan {records} rekod universiti."
+      };
+      return interpolateTemplate(templates[locale], values);
+    }) as (...args: never[]) => string;
+  }
+
+  if (path === "changes.summary") {
+    return ((name: string, claims: number, sources: number, changedDate: string | undefined, diffRows: number, policy: number, extracted: number, snapshot: number, sourceText: number) => {
+      const values = { name, claims, sources, changedDate, policy, extracted, snapshot, sourceText };
+      const baseTemplates = {
+        zh: "{name} 有 {claims} 条有来源证据的声明和 {sources} 个官方来源归属。",
+        fr: "{name} compte {claims} affirmations étayées et {sources} attributions de sources officielles.",
+        pl: "{name} ma {claims} twierdzeń popartych źródłami i {sources} oficjalnych atrybucji źródeł.",
+        es: "{name} tiene {claims} afirmaciones respaldadas y {sources} atribuciones de fuentes oficiales.",
+        nl: "{name} heeft {claims} brononderbouwde claims en {sources} officiële bronvermeldingen.",
+        ms: "{name} mempunyai {claims} tuntutan bersumber dan {sources} atribusi sumber rasmi."
+      };
+      const dateTemplates = {
+        zh: changedDate ? " 最近记录的变更日期是 {changedDate}。" : " 尚未发布变更日期。",
+        fr: changedDate ? " La dernière date de modification suivie est le {changedDate}." : " Aucune date de modification n’a encore été publiée.",
+        pl: changedDate ? " Ostatnia śledzona data zmiany to {changedDate}." : " Nie opublikowano jeszcze daty zmiany.",
+        es: changedDate ? " La última fecha de cambio registrada es {changedDate}." : " Aún no se ha publicado una fecha de cambio.",
+        nl: changedDate ? " De laatst gevolgde wijzigingsdatum is {changedDate}." : " Er is nog geen wijzigingsdatum gepubliceerd.",
+        ms: changedDate ? " Tarikh perubahan terkini yang dijejak ialah {changedDate}." : " Tiada tarikh perubahan diterbitkan lagi."
+      };
+      const diffTemplates = {
+        zh: diffRows ? " 最新 tracker 差异：{policy} 项可比较政策文本变更、{extracted} 条新抽取声明、{snapshot} 项来源快照变更，以及 {sourceText} 项可用私有快照的来源文本变更。" : " 最新发布没有记录声明或证据变更。",
+        fr: diffRows ? " Dernier diff du tracker : {policy} changements de texte comparables, {extracted} affirmations nouvellement extraites, {snapshot} changements d’instantané et {sourceText} changements de texte source lorsque les instantanés privés sont disponibles." : " Aucun changement d’affirmation ou de preuve n’est enregistré pour la dernière version.",
+        pl: diffRows ? " Najnowszy diff trackera: {policy} porównywalnych zmian tekstu zasad, {extracted} nowo wyodrębnionych twierdzeń, {snapshot} zmian migawek źródeł i {sourceText} zmian tekstu źródłowego, gdy dostępne są prywatne migawki." : " W najnowszym wydaniu nie odnotowano zmian twierdzeń ani dowodów.",
+        es: diffRows ? " Último diff del tracker: {policy} cambios comparables de texto, {extracted} afirmaciones recién extraídas, {snapshot} cambios de instantáneas y {sourceText} cambios de texto fuente cuando hay instantáneas privadas." : " No se registran cambios de afirmaciones o evidencias en la última versión.",
+        nl: diffRows ? " Laatste tracker-diff: {policy} vergelijkbare beleidstekstwijzigingen, {extracted} nieuw geëxtraheerde claims, {snapshot} bronmomentopnamewijzigingen en {sourceText} brontekstwijzigingen waar private momentopnamen beschikbaar zijn." : " Voor de nieuwste release zijn geen claim- of bewijswijzigingen geregistreerd.",
+        ms: diffRows ? " Diff tracker terkini: {policy} perubahan teks dasar yang boleh dibandingkan, {extracted} tuntutan baharu diekstrak, {snapshot} perubahan petikan sumber dan {sourceText} perubahan teks sumber apabila petikan peribadi tersedia." : " Tiada perubahan tuntutan atau bukti direkodkan bagi keluaran terkini."
+      };
+      return [baseTemplates[locale], dateTemplates[locale], diffTemplates[locale]]
+        .map((template) => interpolateTemplate(template, values))
+        .join("");
+    }) as (...args: never[]) => string;
+  }
+
+  return undefined;
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {

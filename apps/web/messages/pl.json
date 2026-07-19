@@ -1,7 +1,8 @@
 {
   "Shell": {
-    "tagline": "Otwarte, oparte na dowodach rekordy polityk AI uczelni do publicznego uzycia.",
+    "tagline": "Otwarte, oparte na dowodach rekordy polityk AI uczelni do publicznego użytku.",
     "actions": {
+      "label": "Główne działania",
       "api": "API",
       "github": "GitHub"
     },
@@ -13,37 +14,42 @@
       "reports": "Raporty",
       "datasets": "Zbiory danych",
       "methodology": "Metodyka",
-      "contribute": "Wklad"
+      "contribute": "Wkład"
     },
     "footer": {
-      "intro": "Otwarte metadane trackera do cytowania i analizy. To nie jest porada prawna, porada o uczciwosci akademickiej ani oficjalne stanowisko uczelni.",
+      "secondaryLinks": "Łącza dodatkowe",
+      "intro": "Otwarte metadane trackera do cytowania i analizy. Nie stanowią porady prawnej, wskazówek dotyczących rzetelności akademickiej ani oficjalnego stanowiska uczelni.",
       "dataAndApi": "Dane i API",
       "trustAndCitation": "Zaufanie i cytowanie",
       "updates": "Aktualizacje",
-      "coverageAndReview": "Zakres i przeglad",
+      "coverageAndReview": "Zakres i przegląd",
       "apiDocs": "Dokumentacja API",
       "publicApi": "Publiczne API",
       "mcpAlpha": "MCP alpha",
+      "widgets": "Widżety",
+      "citation": "Cytowanie",
+      "llms": "LLMs.txt",
       "aiPolicyDatabase": "Baza polityk AI",
-      "reportsRss": "RSS raportow",
+      "reportsRss": "RSS raportów",
       "changesRss": "RSS zmian",
-      "sourceHealth": "Stan zrodel",
-      "reviewWorkflow": "Proces przegladu",
-      "reviewQueue": "Kolejka przegladu"
+      "sourceHealth": "Stan źródeł",
+      "coverage": "Zakres",
+      "reviewWorkflow": "Proces przeglądu",
+      "reviewQueue": "Kolejka przeglądu"
     },
     "locale": {
-      "label": "Jezyk",
-      "prompt": "Jezyk Twojej przegladarki jest dostepny.",
-      "switchTo": "Przelacz na {language}",
-      "stay": "Zostan przy angielskim",
-      "close": "Ukryj sugestie jezyka"
+      "label": "Język",
+      "prompt": "Język Twojej przeglądarki jest dostępny.",
+      "switchTo": "Przełącz na {language}",
+      "stay": "Zostań przy angielskim",
+      "close": "Ukryj sugestię języka"
     },
     "theme": {
       "label": "Motyw",
       "system": "System",
       "light": "Jasny",
       "dark": "Ciemny",
-      "aria": "Tryb motywu: {mode}. Aktywuj, aby zmienic motyw."
+      "aria": "Tryb motywu: {mode}. Aktywuj, aby zmienić motyw."
     }
   }
 }

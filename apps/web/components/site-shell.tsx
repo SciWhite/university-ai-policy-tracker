@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { AnalyticsEventBridge } from "@/components/analytics-event-bridge";
 import { DocumentLink } from "@/components/document-link";
-import { HtmlLangSync } from "@/components/html-lang-sync";
 import { LanguageSuggestion } from "@/components/language-suggestion";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { SiteNavigation } from "@/components/site-navigation";
@@ -97,7 +96,6 @@ export function SiteShell({ children }: SiteShellProps) {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messagesByLocale[locale]}>
-      <HtmlLangSync />
       <header className="site-header">
         <LanguageSuggestion />
         <div className="site-header__top">
@@ -111,7 +109,7 @@ export function SiteShell({ children }: SiteShellProps) {
               University AI Policy Tracker
             </DocumentLink>
           </div>
-          <div className="site-header__actions" aria-label="Primary actions">
+          <div className="site-header__actions" aria-label={shell.actions.label}>
             <DocumentLink
               className="site-action"
               data-analytics-event="nav_click"
@@ -138,7 +136,7 @@ export function SiteShell({ children }: SiteShellProps) {
       {children}
       <footer className="site-footer">
         <div className="site-footer__inner">
-          <nav className="site-footer__link-groups" aria-label="Secondary links">
+          <nav className="site-footer__link-groups" aria-label={shell.footer.secondaryLinks}>
             {secondaryLinkGroups.map((group) => (
               <section className="site-footer__group" key={group.labelKey}>
                 <h2>{shell.footer[group.labelKey]}</h2>

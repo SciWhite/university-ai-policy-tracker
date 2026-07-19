@@ -17,6 +17,16 @@ import { getQueryAnalytics } from "@/lib/analytics-events";
 import { getLocaleFromPathname, localizeHref } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 
+const autocompleteCopy = {
+  en: { loading: "Loading suggestions...", empty: "No public records match this query.", error: "Suggestions are unavailable. Submit the search instead.", match: "Match", score: "Score", claims: "Claims", sources: "Sources" },
+  zh: { loading: "正在加载建议…", empty: "没有公开记录匹配此查询。", error: "暂时无法提供建议，请直接提交搜索。", match: "匹配", score: "得分", claims: "声明", sources: "来源" },
+  fr: { loading: "Chargement des suggestions…", empty: "Aucun enregistrement public ne correspond à cette requête.", error: "Les suggestions sont indisponibles. Lancez plutôt la recherche.", match: "Correspondance", score: "Score", claims: "Affirmations", sources: "Sources" },
+  pl: { loading: "Wczytywanie sugestii…", empty: "Brak publicznych rekordów pasujących do zapytania.", error: "Sugestie są niedostępne. Zamiast tego uruchom wyszukiwanie.", match: "Dopasowanie", score: "Wynik", claims: "Twierdzenia", sources: "Źródła" },
+  es: { loading: "Cargando sugerencias…", empty: "Ningún registro público coincide con esta consulta.", error: "Las sugerencias no están disponibles. Envía la búsqueda directamente.", match: "Coincidencia", score: "Puntuación", claims: "Afirmaciones", sources: "Fuentes" },
+  nl: { loading: "Suggesties laden…", empty: "Er komen geen openbare records overeen met deze zoekopdracht.", error: "Suggesties zijn niet beschikbaar. Voer de zoekopdracht rechtstreeks uit.", match: "Overeenkomst", score: "Score", claims: "Claims", sources: "Bronnen" },
+  ms: { loading: "Memuatkan cadangan…", empty: "Tiada rekod awam sepadan dengan pertanyaan ini.", error: "Cadangan tidak tersedia. Hantar carian secara terus.", match: "Padanan", score: "Skor", claims: "Tuntutan", sources: "Sumber" }
+} as const;
+
 interface SearchAutocompleteProps {
   defaultValue?: string;
   id: string;
@@ -52,6 +62,7 @@ export function SearchAutocomplete({
   const controllerRef = useRef<AbortController | null>(null);
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
+  const copy = autocompleteCopy[locale];
   const trimmedQuery = query.trim();
   const queryAnalytics = getQueryAnalytics(trimmedQuery);
   const queryKind = String(queryAnalytics.query_kind ?? "");
@@ -110,11 +121,11 @@ export function SearchAutocomplete({
   }, [trimmedQuery]);
 
   const panelMessage = useMemo(() => {
-    if (status === "loading") return "Loading suggestions...";
-    if (status === "empty") return "No public records match this query.";
-    if (status === "error") return "Suggestions are unavailable. Submit the search instead.";
+    if (status === "loading") return copy.loading;
+    if (status === "empty") return copy.empty;
+    if (status === "error") return copy.error;
     return "";
-  }, [status]);
+  }, [copy, status]);
 
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (!results.length) return;
@@ -195,14 +206,14 @@ export function SearchAutocomplete({
                 </Link>
                 <p>{result.sourceBackedSnippet}</p>
                 <div className="table-record-meta">
-                  <StateLabel reviewState={result.reviewState} />
-                  <MetaLabel label="Match">{result.matchReason}</MetaLabel>
-                  <MetaLabel label="Score">{result.score}</MetaLabel>
+                  <StateLabel locale={locale} reviewState={result.reviewState} />
+                  <MetaLabel label={copy.match}>{result.matchReason}</MetaLabel>
+                  <MetaLabel label={copy.score}>{result.score}</MetaLabel>
                 </div>
               </div>
               <div className="search-autocomplete__option-actions">
-                <MetaLabel label="Claims">{result.claimCount}</MetaLabel>
-                <MetaLabel label="Sources">{result.sourceCount}</MetaLabel>
+                <MetaLabel label={copy.claims}>{result.claimCount}</MetaLabel>
+                <MetaLabel label={copy.sources}>{result.sourceCount}</MetaLabel>
                 <a
                   data-analytics-entity-slug={result.entitySlug}
                   data-analytics-event="autocomplete_json_click"

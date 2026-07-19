@@ -341,7 +341,8 @@ export interface OutreachPackage {
 }
 
 export async function getMonthlyReport(
-  slug = currentMonthlyReportSlug
+  slug = currentMonthlyReportSlug,
+  locale = "en"
 ): Promise<MonthlyReport | undefined> {
   if (!isMonthlyReportSlug(slug)) return undefined;
 
@@ -422,23 +423,23 @@ export async function getMonthlyReport(
     metricCards: [
       {
         label: "public university records",
-        value: manifest.counts.universities.toLocaleString("en-US")
+        value: manifest.counts.universities.toLocaleString(locale)
       },
       {
         label: "records checked in release",
-        value: checkedInstitutionCount.toLocaleString("en-US")
+        value: checkedInstitutionCount.toLocaleString(locale)
       },
       {
         label: "records with changed dates",
-        value: changedInstitutionCount.toLocaleString("en-US")
+        value: changedInstitutionCount.toLocaleString(locale)
       },
       {
         label: "source-backed claims",
-        value: manifest.counts.claims.toLocaleString("en-US")
+        value: manifest.counts.claims.toLocaleString(locale)
       },
       {
         label: "evidence records",
-        value: manifest.counts.evidenceRecords.toLocaleString("en-US")
+        value: manifest.counts.evidenceRecords.toLocaleString(locale)
       }
     ],
     sourceLanguageChart: toChartData(manifest.counts.sourceLanguages),
@@ -453,13 +454,14 @@ export async function getMonthlyReport(
       evidenceRecordCount: manifest.counts.evidenceRecords,
       releaseLabel: reportSpec.releaseLabel,
       sourceCount: manifest.counts.sources,
-      universityCount: manifest.counts.universities
+      universityCount: manifest.counts.universities,
+      locale
     }),
     summaryBullets: [
       `This report uses ${manifest.releaseId}, the public release snapshot selected for ${reportSpec.reportPeriod}.`,
-      `${checkedInstitutionCount.toLocaleString("en-US")} public university records include checked dates and ${changedInstitutionCount.toLocaleString("en-US")} expose changed dates in this snapshot.`,
-      `${reviewedClaimCount.toLocaleString("en-US")} claims are marked as reviewed by an agent or human review state; ${candidateClaimCount.toLocaleString("en-US")} claims remain candidate or otherwise not reviewed.`,
-      `${coverageSummary.universityCount.toLocaleString("en-US")} university records are grouped into ${coverageSummary.macroRegionCount.toLocaleString("en-US")} macro regions and ${coverageSummary.cityCampusRegionCount.toLocaleString("en-US")} city or campus-region groups for GEO retrieval.`,
+      `${checkedInstitutionCount.toLocaleString(locale)} public university records include checked dates and ${changedInstitutionCount.toLocaleString(locale)} expose changed dates in this snapshot.`,
+      `${reviewedClaimCount.toLocaleString(locale)} claims are marked as reviewed by an agent or human review state; ${candidateClaimCount.toLocaleString(locale)} claims remain candidate or otherwise not reviewed.`,
+      `${coverageSummary.universityCount.toLocaleString(locale)} university records are grouped into ${coverageSummary.macroRegionCount.toLocaleString(locale)} macro regions and ${coverageSummary.cityCampusRegionCount.toLocaleString(locale)} city or campus-region groups for GEO retrieval.`,
       "Original-language evidence snippets remain canonical. Localized display text is only a helper layer.",
       "The tracker publishes metadata and evidence bindings; it does not provide legal advice or academic integrity advice."
     ],
@@ -468,9 +470,9 @@ export async function getMonthlyReport(
   };
 }
 
-export async function getReportsIndex(): Promise<MonthlyReport[]> {
+export async function getReportsIndex(locale = "en"): Promise<MonthlyReport[]> {
   const reports = await Promise.all(
-    Object.keys(monthlyReportRegistry).map((slug) => getMonthlyReport(slug))
+    Object.keys(monthlyReportRegistry).map((slug) => getMonthlyReport(slug, locale))
   );
 
   return reports
@@ -519,10 +521,10 @@ export async function getOutreachPackage(): Promise<OutreachPackage> {
   };
 }
 
-export function formatReportDate(value: string | undefined): string {
+export function formatReportDate(value: string | undefined, locale = "en"): string {
   if (!value) return "Unknown";
 
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat(locale, {
     day: "numeric",
     month: "long",
     year: "numeric"
@@ -704,6 +706,7 @@ function buildRankingCoverage(
 function buildGeoAnswerBlocks(input: {
   claimCount: number;
   evidenceRecordCount: number;
+  locale: string;
   releaseLabel: string;
   sourceCount: number;
   universityCount: number;
@@ -718,7 +721,7 @@ function buildGeoAnswerBlocks(input: {
     {
       id: "release-size",
       question: `How large is the ${input.releaseLabel} release?`,
-      answer: `The ${input.releaseLabel} release includes ${input.universityCount.toLocaleString("en-US")} public university records, ${input.claimCount.toLocaleString("en-US")} source-backed claims, ${input.evidenceRecordCount.toLocaleString("en-US")} evidence records, and ${input.sourceCount.toLocaleString("en-US")} official source attributions.`
+      answer: `The ${input.releaseLabel} release includes ${input.universityCount.toLocaleString(input.locale)} public university records, ${input.claimCount.toLocaleString(input.locale)} source-backed claims, ${input.evidenceRecordCount.toLocaleString(input.locale)} evidence records, and ${input.sourceCount.toLocaleString(input.locale)} official source attributions.`
     },
     {
       id: "ai-retrieval",

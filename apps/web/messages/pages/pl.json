@@ -1,0 +1,718 @@
+{
+  "home": {
+    "metadataTitle": "Baza danych polityk AI uniwersytetów: Wyszukaj {count} polityki GenAI z potwierdzonymi źródłami",
+    "description": "Wyszukuj i cytuj rekordy polityk GenAI uniwersytetów z potwierdzonymi źródłami, stanem weryfikacji, publicznym JSON i gotowymi do cytowania dowodami.",
+    "kicker": "Baza danych polityk AI uniwersytetów",
+    "lead": "Znajdź, cytuj i pobieraj rekordy polityk GenAI uniwersytetów z potwierdzonymi źródłami. Wyszukuj po instytucji, domenie źródłowej, narzędziu AI, temacie polityki lub publicznej frazie dowodowej.",
+    "searchLabel": "Wyszukaj publiczne rekordy polityk AI uczelni",
+    "searchPlaceholder": "Szukaj wśród uniwersytetów, tematów, domen źródłowych...",
+    "searchButton": "Wyszukaj",
+    "suggestedSearches": "Sugerowane wyszukiwania",
+    "note": "Wyszukiwanie to narzędzie nawigacyjne dla promowanych publicznych rekordów, a nie wniosek polityki. Otwórz rekord i publiczny JSON przed cytowaniem.",
+    "publicJson": "Publiczny JSON",
+    "searchApi": "API wyszukiwania",
+    "license": "Licencja",
+    "universityRecords": "rekordy uniwersytetów",
+    "sourceBackedClaims": "twierdzenia z potwierdzonymi źródłami",
+    "officialSourceAttributions": "oficjalne atrybucje źródeł",
+    "analysisProfiles": "profile analityczne",
+    "answersLabel": "Bloki odpowiedzi bazy danych",
+    "entryGroupsLabel": "Poboczne wejścia",
+    "matchingRecords": "Pasujące rekordy",
+    "openSearch": "Otwórz wyszukiwanie",
+    "record": "Rekord",
+    "claims": "Twierdzenia",
+    "sources": "Źródła",
+    "recentChecks": "Ostatnie weryfikacje",
+    "viewChanges": "Zobacz zmiany",
+    "noPublicFreshnessDate": "Brak publicznej daty aktualności",
+    "agentRetrievalTitle": "Pobieranie przez agentów i cytowanie",
+    "agentRetrievalLead": "Używaj kanonicznych stron i wersjonowanego publicznego JSON łącznie.",
+    "aiSystemsTitle": "Dla systemów AI/wyszukiwania",
+    "aiSystemsText": "Rozwiąż encję za pomocą wyszukiwania, otwórz kanoniczny rekord uniwersytetu, a następnie cytuj dowody twierdzeń i pola publicznego JSON, nie zastępując oficjalnego języka źródła uniwersyteckiego.",
+    "aiSearchReference": "Referencja dla AI/wyszukiwania",
+    "researchersTitle": "Dla badaczy i dzienników",
+    "researchersText": "Traktuj metadane tracker jako warstwę cytowań. Oficjalne strony źródłowe, pliki PDF i dokumenty polityki zachowują własne prawa i pozostają ostatecznym źródłem sformułowań instytucjonalnych.",
+    "citationGuide": "Przewodnik cytowania",
+    "methodology": "Metodologia",
+    "developersTitle": "Dla programistów",
+    "developersText": "Publiczne punkty końcowe udostępniają rekordy tylko do odczytu, wyszukiwanie, encje, zestawy danych, ostatnie zmiany, profile analityczne i metadane cytowań w przestrzeni nazw wersjonowanego API.",
+    "apiDocs": "Dokumentacja API",
+    "apiIndex": "Indeks API",
+    "changed": "Zmienione",
+    "checked": "Sprawdzone",
+    "homeAnswers": [
+      {
+        "title": "Czym jest ta baza danych",
+        "text": "Publiczny, oparty na źródłach indeks rekordów polityk GenAI uniwersytetów z kanonicznymi stronami, stanem weryfikacji, adresami URL źródeł, fragmentami dowodów i publicznym JSON."
+      },
+      {
+        "title": "Czym ta baza danych nie jest",
+        "text": "Nie jest to porada prawna, porada dotycząca uczciwości akademickiej ani oficjalne oświadczenie uniwersytetu. Oficjalne strony źródłowe uniwersytetów pozostają kanoniczne."
+      },
+      {
+        "title": "Jak cytować rekordy",
+        "text": "Cytuj widoczną stronę rekordu i odpowiadający publiczny JSON łącznie, zachowując adres URL źródła, stan weryfikacji, pewność, datę ostatniej weryfikacji i dowody w języku oryginalnym."
+      }
+    ],
+    "entryGroups": [
+      {
+        "title": "Rozpocznij",
+        "links": [
+          {
+            "label": "Szukaj rekordów",
+            "href": "/search"
+          },
+          {
+            "label": "Uniwersytety",
+            "href": "/universities"
+          },
+          {
+            "label": "Baza danych polityki AI",
+            "href": "/university-ai-policy-database"
+          }
+        ]
+      },
+      {
+        "title": "Dane i API",
+        "links": [
+          {
+            "label": "Zbiory danych",
+            "href": "/datasets"
+          },
+          {
+            "label": "API",
+            "href": "/api-reference"
+          },
+          {
+            "label": "MCP",
+            "href": "/mcp"
+          },
+          {
+            "label": "Widżety",
+            "href": "/widgets"
+          }
+        ]
+      },
+      {
+        "title": "Aktualizacje",
+        "links": [
+          {
+            "label": "Zmiany",
+            "href": "/changes"
+          },
+          {
+            "label": "Raporty",
+            "href": "/reports"
+          },
+          {
+            "label": "Kanały RSS",
+            "href": "/feeds/atom.xml"
+          }
+        ]
+      },
+      {
+        "title": "Zasięg i recenzja",
+        "links": [
+          {
+            "label": "Zasięg",
+            "href": "/coverage"
+          },
+          {
+            "label": "Stan źródeł",
+            "href": "/source-health"
+          },
+          {
+            "label": "Recenzja",
+            "href": "/review"
+          },
+          {
+            "label": "Kolejka",
+            "href": "/review/queue"
+          }
+        ]
+      },
+      {
+        "title": "Zaufanie i cytowanie",
+        "links": [
+          {
+            "label": "Metodologia",
+            "href": "/methodology"
+          },
+          {
+            "label": "Cytowanie",
+            "href": "/citation"
+          },
+          {
+            "label": "llms.txt",
+            "href": "/llms.txt"
+          },
+          {
+            "label": "Współpraca",
+            "href": "/contribute"
+          }
+        ]
+      }
+    ]
+  },
+  "universities": {
+    "title": "Baza danych polityki AI uniwersytetów: Rekordy GenAI z podaniem źródeł",
+    "description": "Przeglądaj rekordy dotyczące polityki AI uniwersytetów, ChatGPT i zasad GenAI z oficjalnymi źródłami, stanem recenzji, datami ostatniej weryfikacji i publicznymi linkami JSON.",
+    "kicker": "Rekordy dowodowe",
+    "heading": "Przeglądaj rekordy polityki AI uniwersytetów z podaniem źródeł",
+    "lead": "Filtruj publiczne rekordy według instytucji, zasięgu rankingów, twierdzeń, oficjalnych źródeł, stanu recenzji i wersjonowanego publicznego JSON.",
+    "coverageLabel": "Zasięg uniwersytetów",
+    "universityRecords": "rekordy uniwersytetów",
+    "sourceBackedClaims": "twierdzenia z podaniem źródeł",
+    "officialSourceAttributions": "oficjalne atrybucje źródeł",
+    "rankedRecords": "rekordy sklasyfikowane w {ranking}",
+    "answersLabel": "Odpowiedzi indeksu uniwersytetów",
+    "priorityTitle": "Priorytetowe rekordy polityki AI uniwersytetów",
+    "priorityLead": "Rekordy o wysokim wskaźniku wyświetleń z Search Console, powiązane ze swoimi kanonicznymi stronami polityki, historią zmian, liczbą oficjalnych źródeł i publicznym JSON-em.",
+    "priorityReportsLink": "Miesięczny raport",
+    "priorityChangeLink": "Historia zmian",
+    "priorityRecordLink": "Rekord polityki",
+    "indexTitle": "Indeks",
+    "indexLead": "Filtry rankingów to narzędzia do odkrywania; twierdzenia dotyczące polityki nadal pochodzą z oficjalnych źródeł.",
+    "search": "Szukaj",
+    "searchPlaceholder": "Uniwersytet, kraj, miasto",
+    "ranking": "Ranking",
+    "coverage": "Zasięg",
+    "sort": "Sortuj",
+    "order": "Kolejność",
+    "allRecords": "Wszystkie rekordy",
+    "rankedInSelectedSystem": "Sklassyfikowane w wybranym systemie",
+    "missingSelectedRank": "Brak wybranej pozycji rankingowej",
+    "selectedRanking": "Wybrany ranking",
+    "recentlyChecked": "Ostatnio sprawdzane",
+    "universityName": "Nazwa uniwersytetu",
+    "claimCount": "Liczba twierdzeń",
+    "sourceCount": "Liczba źródeł",
+    "ascending": "Rosnąco",
+    "descending": "Malejąco",
+    "apply": "Zastosuj",
+    "reset": "Resetuj",
+    "showing": "Wyświetlono {visible} z {total} rekordów.",
+    "searchSummary": "Wyszukiwanie: \"{query}\".",
+    "rankingView": "Widok rankingowy: {ranking}.",
+    "university": "Uniwersytet",
+    "rank": "pozycja w {ranking}",
+    "claims": "Twierdzenia",
+    "sources": "Źródła",
+    "lastChecked": "Ostatnio sprawdzono",
+    "publicJson": "Publiczny JSON",
+    "locationUnknown": "Lokalizacja nieznana",
+    "confidence": "Pewność",
+    "unknown": "Nieznane",
+    "json": "JSON",
+    "noMatches": "Żaden rekord nie pasuje do bieżących filtrów wyszukiwania i zasięgu rankingowego.",
+    "candidateNotice": "{count} rekordów twierdzeń kandydujących lub wymagających przeglądu pozostaje widocznych dla celów audytu. Stan przeglądu jest oddzielny od pewności.",
+    "notIndexed": "Nie zindeksowane",
+    "partialSource": "częściowe źródło",
+    "derivedOrder": "pochodna kolejność",
+    "answerCards": [
+      {
+        "title": "Co obejmuje ten indeks",
+        "text": "Opublikowane rekordy uczelni z liczbą twierdzeń popartych źródłami, oficjalnymi atrybucjami źródeł, stanem przeglądu i kanonicznymi adresami URL."
+      },
+      {
+        "title": "Jak korzystać z rankingów",
+        "text": "Filtry rankingowe służą wyłącznie do odkrywania i analizy zasięgu; nie tworzą ani nie nadpisują twierdzeń dotyczących polityki."
+      },
+      {
+        "title": "Granica ponownego użycia",
+        "text": "Tracker nie stanowi porady prawnej, porady w zakresie uczciwości akademickiej ani oficjalnego oświadczenia uniwersytetu, chyba że źródłem jest oficjalna strona uniwersytetu."
+      }
+    ]
+  },
+  "datasets": {
+    "title": "Zbiory danych | University AI Policy Tracker",
+    "description": "Wersjonowane publiczne punkty końcowe JSON, koncepcje zbiorów danych, licencjonowanie, zastrzeżenia dotyczące praw do źródeł oraz oczekiwania co do cytowania dla University AI Policy Tracker.",
+    "kicker": "Zbiory danych",
+    "heading": "Publiczne artefakty JSON i metadane wydania",
+    "leadPrefix": "Wersjonowany publiczny JSON pod",
+    "leadSuffix": "zbudowany z tego samego promowanego zbioru danych co widoczne strony.",
+    "coverageLabel": "Obecny zasięg zbioru danych",
+    "publicUniversityRecords": "publiczne rekordy uczelni",
+    "sourceBackedClaims": "twierdzenia oparte na źródłach",
+    "officialSourceAttributions": "oficjalne atrybucje źródeł",
+    "publicJsonSchemaVersion": "wersja publicznego schematu JSON",
+    "releaseDownloadArtifacts": "artefakty do pobrania z wydania",
+    "analysisProfiles": "profile analityczne",
+    "answersLabel": "Bloki odpowiedzi zbioru danych",
+    "whatReusableTitle": "Co można ponownie wykorzystać",
+    "whatReusableText": "Metadane trackera, URL rekordów, stany recenzji, pola cytowań i publiczne artefakty JSON można ponownie wykorzystywać na podstawie licencji metadanych trackera.",
+    "externalTitle": "Co pozostaje zewnętrzne",
+    "externalText": "Oficjalne dokumenty źródłowe, tekst stron, pliki PDF i język polityki uniwersytetów zachowują swoje oryginalne prawa i warunki.",
+    "retrieveTitle": "Jak agenty pobierają dane",
+    "retrieveText": "Zacznij od indeksu API, rozwiąż encje za pomocą wyszukiwania, pobierz kanoniczny JSON uniwersytetu, a następnie przytocz dowody twierdzeń i URL źródłowe.",
+    "versionedJsonTitle": "Wersjonowany publiczny JSON",
+    "versionedJsonDescription": "Żywotne artefakty tylko do odczytu, pogrupowane według zastosowania.",
+    "coreRecords": "Rekordy podstawowe",
+    "searchAnalysis": "Wyszukiwanie i analiza",
+    "reportsEmbeds": "Raporty i osadzenia",
+    "reviewIntegrations": "Recenzja i integracje",
+    "releaseDownloadsTitle": "Pobieranie wydań zbioru danych",
+    "releaseDownloadsDescription": "Pliki wsadowe z liczbą wierszy, rozmiarami i sumami kontrolnymi.",
+    "release": "Wydanie",
+    "period": "Okres",
+    "published": "Opublikowano",
+    "rankingTitle": "Granice rankingów i indeksów",
+    "rankingDescription": "Dane wejściowe do odkrywania, a nie wnioski dotyczące polityki.",
+    "githubTitle": "Aktywa zaufania GitHub",
+    "githubDescription": "Aktywa zaufania na poziomie repozytorium.",
+    "manifestTitle": "Aktualny manifest wydania",
+    "promotedRuns": "Promowane uruchomienia",
+    "manifestText": "Manifest kontroluje, które zatwierdzone katalogi artefaktów są promowane do publicznych stron i publicznego JSON.",
+    "conceptsTitle": "Koncepcje zbioru danych",
+    "conceptsLead": "Co rekordy v1 udostępniają obecnie",
+    "licenseTitle": "Licencja, prawa i cytowanie",
+    "trackerMetadata": "metadane trackera",
+    "trackerMetadataTitle": "Metadane trackera",
+    "officialRightsTitle": "Prawa do oficjalnych źródeł",
+    "citationExpectationsTitle": "Oczekiwania dotyczące cytowania",
+    "citationExpectationsText": "Cytuj kanoniczną stronę i publiczny plik JSON razem. W przypadku ponownego wykorzystania na poziomie twierdzeń zachowaj adres URL źródła, język źródłowy, skrót kontrolny migawki, stan weryfikacji, poziom zaufania oraz oryginalny fragment dowodowy.",
+    "citationRulesPrefix": "Zasady cytowania są udokumentowane pod adresem",
+    "recentFreshnessPrefix": "Aktualność najnowszych danych jest widoczna pod adresem",
+    "apiGroups": {
+      "apiIndex": "Odkrywanie punktów końcowych i linki zaufania.",
+      "universities": "Rejestry uczelni z informacjami o stanie weryfikacji, datach i adresach URL plików JSON.",
+      "perUniversity": "Przykładowy rekord publicznej uczelni.",
+      "claims": "Przykładowe wiersze twierdzeń/dowodów.",
+      "recentChanges": "Sprawdzone i zmienione rekordy.",
+      "manifest": "Artefakty wydania, liczba wierszy, rozmiary i sumy kontrolne.",
+      "searchJson": "Wyszukiwanie encji w promowanych publicznych rekordach.",
+      "searchIndex": "Bezpieczny indeks wyszukiwania; bez surowych migawek ani artefaktów z etapu staging.",
+      "entityAliases": "Kanoniczne aliasy i wskazówki dotyczące pobierania.",
+      "analysisIndex": "Manifest wymiarów analizy polityki.",
+      "analysisProfile": "Przykładowy profil analizy dla pojedynczej uczelni.",
+      "coverageScores": "Wyniki szerokości pokrycia, a nie jakości polityki.",
+      "analysisQuality": "Filtry publicznej strony analizy.",
+      "reportsIndex": "Indeks publicznych raportów.",
+      "outreach": "Materiały do mediów i newslettera z określonymi granicami.",
+      "chartData": "Dane wykresu miesięcznego raportu z czerwca 2026 r.",
+      "widgetIndex": "Odkrywanie widżetów.",
+      "policyCoverageWidget": "Przykładowy widżet pokrycia.",
+      "sourceFreshnessWidget": "Przykładowy widżet aktualności źródła.",
+      "reviewStateWidget": "Przykładowy widżet stanu weryfikacji.",
+      "qsCoverage": "Pokrycie zbioru QS 2026.",
+      "sourceHealth": "Status źródła w celu planowania napraw i ponownego indeksowania.",
+      "reviewQueue": "Metadane kolejki zadań z etapu staging, które nie zostały jeszcze promowane.",
+      "mcpManifest": "Manifest alfa MCP tylko do odczytu.",
+      "mcpToolCatalog": "Katalog narzędzi MCP tylko do odczytu.",
+      "citationMetadata": "Szablony cytowań i zasady ponownego wykorzystania.",
+      "contributionIndex": "Metadane procesu wnioskowania o wkładzie.",
+      "reviewPolicy": "Polityka weryfikacji wniosków o wkładzie."
+    },
+    "concepts": [
+      {
+        "name": "Uczelnie",
+        "status": "Dostępne teraz",
+        "description": "Kanoniczne rekordy uczelni są dostępne jako widoczne strony i publiczne rekordy JSON dla każdej uczelni."
+      },
+      {
+        "name": "Twierdzenia",
+        "status": "Dostępne wewnątrz pliku JSON uczelni",
+        "description": "Twierdzenia obejmują tekst twierdzenia, typ twierdzenia, poziom zaufania, stan weryfikacji, daty oraz tablice dowodów."
+      },
+      {
+        "name": "Źródła",
+        "status": "Dostępne wewnątrz publicznych rekordów",
+        "description": "Oficjalne źródła pojawiają się jako atrybucje źródeł i adresy URL źródeł dowodowych z zastrzeżeniami dotyczącymi praw."
+      },
+      {
+        "name": "Migawki",
+        "status": "Metadane skrótów kontrolnych dostępne teraz",
+        "description": "Publiczne rekordy ujawniają skróty kontrolne migawek źródeł. Surowe pliki HTML, PDF i zrzuty ekranu nie są publikowane jako metadane tracker."
+      },
+      {
+        "name": "Ostatnie zmiany",
+        "status": "Dostępne teraz",
+        "description": "Feed JSON z ostatnimi zmianami podsumowuje sprawdzone i zmienione rekordy uczelni wraz ze stanem weryfikacji."
+      },
+      {
+        "name": "Profile analizy",
+        "status": "Dostępne teraz",
+        "description": "Deterministyczne profile analizy polityki wyprowadzają wymiary i wskaźniki pokrycia z istniejących publicznych rekordów twierdzeń/dowodów."
+      },
+      {
+        "name": "Wykrywanie pokrycia",
+        "status": "Dostępne teraz",
+        "description": "Metadane dotyczące pokrycia QS, zdrowia źródel i kolejki recenzji ujawniają status zbierania oraz pracę crawlera/recenzenta bez publikowania twierdzeń z etapu staging."
+      },
+      {
+        "name": "Rozwiązywanie encji i wyszukiwanie",
+        "status": "Dostępne teraz",
+        "description": "Kanoniczne aliasy encji i bezpieczne indeksy wyszukiwania poprawiają recall bez tworzenia faktów polityki ani ujawniania nieopublikowanych artefaktów."
+      }
+    ]
+  },
+  "methodology": {
+    "title": "Metodologia | University AI Policy Tracker",
+    "description": "Jak University AI Policy Tracker odkrywa źródła, tworzy migawki stron, wiąże dowody, oddziela pewność od stanu recenzji i publikuje rekordy gotowe do cytowania.",
+    "kicker": "Metodologia",
+    "heading": "Jak rekordy stają się twierdzeniami opartymi na źródłach",
+    "lead": "Oficjalne źródła, migawki, krótkie fragmenty dowodów, pewność i wyraźny stan recenzji.",
+    "answersLabel": "Bloki odpowiedzi metodologiczne",
+    "tocLabel": "Sekcje metodologii",
+    "toc": {
+      "workflow": "Przepływ dowodów",
+      "reviewStates": "Stany recenzji",
+      "rankingBoundaries": "Granice rankingów",
+      "publicationRules": "Zasady publikacji",
+      "limitations": "Ograniczenia"
+    },
+    "workflowDescription": "Od odkrywania publicznych źródeł do rekordów gotowych do cytowania.",
+    "reviewDescription": "Stan recenzji to status przepływu pracy. Pewność to oceniane przez maszynę wsparcie.",
+    "rankingDescription": "Wiersze rankingów pomagają priorytetyzować i filtrować odkrywanie źródeł. Nie są to twierdzenia polityki.",
+    "publicationDescription": "Co musi istnieć, zanim twierdzenie stanie się publiczne.",
+    "limitationsDescription": "Znane granice obecnej warstwy dowodów.",
+    "footer": "Użyj przewodnika cytowania dla zasad atrybucji, strony zestawów danych dla publicznego dostępu JSON i ostatnich zmian jako sygnałów aktualności.",
+    "links": {
+      "citationGuide": "przewodnik cytowania",
+      "datasetsPage": "strona zestawów danych",
+      "recentChanges": "ostatnie zmiany"
+    },
+    "answers": [
+      {
+        "title": "Jak rekordy stają się publiczne",
+        "text": "Rekordy stają się publiczne po odkryciu źródła, hashowaniu migawki, ekstrakcji twierdzeń, wiązaniu dowodów, oznaczaniu stanu recenzji i publikacji z promowanego publicznego zestawu danych."
+      },
+      {
+        "title": "Co oznacza stan recenzji",
+        "text": "Stan recenzji opisuje status przepływu pracy. Pewność to osobny, oceniany przez maszynę wskaźnik wsparcia i nie czyni twierdzenia oficjalnym."
+      },
+      {
+        "title": "Co jest kanonicznym dowodem",
+        "text": "Dowody w języku oryginalnym, URL-e źródeł i oficjalne strony uniwersytetów pozostają kanoniczne; tłumaczenia lub streszczenia to metadane pomocnicze."
+      }
+    ],
+    "workflowSteps": [
+      {
+        "title": "Odkrywanie źródeł",
+        "description": "Publiczne strony polityki uniwersytetów, wytyczne dydaktyczne, strony IT/bezpieczeństwa, strony zamówień publicznych, pliki PDF i materiały z atrybucją źródłową."
+      },
+      {
+        "title": "Przeszukiwanie i migawki",
+        "description": "Pobrany tekst źródłowy otrzymuje hash treści do przyszłych kontroli zmian."
+      },
+      {
+        "title": "Ekstrakcja twierdzeń",
+        "description": "Twierdzenia utrzymują pewność oddzielnie od stanu recenzji."
+      },
+      {
+        "title": "Wiązanie dowodów",
+        "description": "Każde publiczne twierdzenie wymaga URL-a źródła, hasha migawki, fragmentu dowodu, języka źródła i zastrzeżenia dotyczącego praw."
+      },
+      {
+        "title": "Wykrywanie zmian",
+        "description": "Zmienione hashe mogą tworzyć nowe migawki, kandydatów, aktualizacje twierdzeń i rekordy zmian."
+      },
+      {
+        "title": "Wielojęzyczne dowody z priorytetem dla źródła",
+        "description": "Dowód w języku oryginalnym jest kanoniczny; tłumaczenia to pomocnicze elementy wyświetlania."
+      }
+    ],
+    "reviewStates": [
+      {
+        "label": "machine_candidate",
+        "description": "Wygenerowane przez crawlera, ekstraktor lub proces seed; nie jest to wersja ostateczna."
+      },
+      {
+        "label": "needs_review",
+        "description": "Źródło, ekstrakcja, data lub klasyfikacja wymagają weryfikacji."
+      },
+      {
+        "label": "agent_reviewed",
+        "description": "Agent sprawdził dowody i klasyfikację."
+      },
+      {
+        "label": "human_reviewed",
+        "description": "Przeglądacz ludzki lub deterministyczna reguła publikacji zatwierdził twierdzenie."
+      },
+      {
+        "label": "rejected",
+        "description": "Zachowane wyłącznie dla kontekstu audytowego."
+      }
+    ],
+    "rankingRules": [
+      "QS 2026 pozostaje obecnie głównym źródłem partii crawlowania w celu rozszerzenia publicznego zasięgu.",
+      "THE 2026, ARWU 2025, U.S. News 2025-2026 oraz CWTS Leiden 2025 są obsługiwane jako źródła rankingów, indeksów i filtrów.",
+      "CWTS Leiden 2025 to pochodna kolejność metryk, a nie ogólny globalny ranking uniwersytetów.",
+      "Różne lata rankingowe nie są prezentowane jako jeden zjednoczony ranking 2026.",
+      "Dane rankingowe nie tworzą ani nie nadpisują twierdzeń dotyczących polityki; widoczne twierdzenia nadal wymagają oficjalnych źródeł, fragmentów dowodów, pewności i stanu weryfikacji."
+    ],
+    "publicationRules": [
+      "Każdy publiczny komunikat wymaga adresu URL źródła i hasha migawki źródła.",
+      "Fragmenty dowodów pozostają krótkie, konieczne i przypisane do źródła.",
+      "Dowody w języku oryginalnym są kanoniczne; tłumaczenie służy wyłącznie do wyświetlania.",
+      "Kanoniczne fakty i lokalizacja wyświetlana muszą pozostawać oddzielne.",
+      "Kandydujące twierdzenia muszą być oznaczone i nie mogą być używane jako ostateczne podsumowania.",
+      "Strony publiczne i publiczny JSON powinny być generowane z tego samego promowanego zbioru danych publikacji publicznej.",
+      "Oficjalne dokumenty źródłowe zachowują swoje pierwotne prawa i warunki."
+    ],
+    "limitations": [
+      "Polityki uniwersytetów mogą być rozproszone między wydziały, kursy, pliki PDF i systemy wewnętrzne.",
+      "Niedopełnione rekordy pozostają oznaczone jako wczesny zasięg, dopóki zweryfikowane dowody nie potwierdzą silniejszych wniosków.",
+      "Tracker rejestruje metadane kontroli źródła i dowodów twierdzeń; nie udziela porad prawnych ani dotyczących uczciwości akademickiej."
+    ]
+  },
+  "citation": {
+    "title": "Cytowanie | University AI Policy Tracker",
+    "description": "Formaty cytowań, zasady przypisywania źródeł, pola publicznego JSONu, zastrzeżenia prawne i granice porad dla University AI Policy Tracker.",
+    "kicker": "Cytowanie",
+    "heading": "Cytuj metadane trackera i oficjalne źródła osobno",
+    "lead": "Zachowaj razem kanoniczną stronę, publiczny JSON, adres URL źródła, hash migawki, stan weryfikacji, pewność i oryginalne dowody.",
+    "answersLabel": "Bloki odpowiedzi cytowań",
+    "tocLabel": "Sekcje cytowań",
+    "toc": {
+      "formats": "Sugerowane formaty",
+      "fields": "Pola cytowania",
+      "json": "Publiczny JSON",
+      "ranking": "Źródła rankingów",
+      "rights": "Prawa i granice"
+    },
+    "formatsDescription": "Przykłady gotowe do kopiowania.",
+    "universityPolicyRecord": "Rekord polityki uniwersytetu",
+    "datasetSurface": "Powierzchnia zbioru danych",
+    "changesFeed": "Strumień zmian lub raport",
+    "fieldsDescription": "Zachowaj te pola.",
+    "pageDataIdentity": "Tożsamość strony i danych",
+    "freshnessReview": "Świeżość i weryfikacja",
+    "sourceEvidence": "Dowody źródłowe",
+    "jsonDescription": "Wersjonowane rekordy do ponownego użycia.",
+    "apiIndex": "Indeks API",
+    "universitiesList": "Lista uniwersytetów",
+    "universityRecord": "Rekord uniwersytetu",
+    "recentChanges": "Ostatnie zmiany",
+    "rankingDescription": "Indeksy referencyjne, a nie rankingi polityk.",
+    "rightsDescription": "metadane tracker'a",
+    "browsePrefix": "Przeglądaj",
+    "readPrefix": "przeczytaj",
+    "reviewPrefix": "lub przejrzyj",
+    "universityRecords": "rejestrów uniwersytetów",
+    "methodology": "metodologia",
+    "datasetAccess": "dostęp do zbioru danych",
+    "answers": [
+      {
+        "title": "Jak cytować rekord uniwersytetu",
+        "text": "Cytuj kanoniczną widoczną stronę rekordu oraz odpowiadający publiczny adres URL JSON łącznie, a następnie zachowaj źródłowy adres URL, stan recenzji, pewność i datę ostatniego sprawdzenia."
+      },
+      {
+        "title": "Jak cytować dowody na twierdzenie",
+        "text": "W przypadku ponownego wykorzystania na poziomie twierdzenia, uwzględnij tekst twierdzenia, fragment dowodu w języku oryginalnym, język źródła, adres URL źródła, sumę kontrolną migawki, pewność i stan recenzji."
+      },
+      {
+        "title": "Czego nie cytować jako oficjalnego",
+        "text": "Metadane University AI Policy Tracker nie są oficjalnym oświadczeniem uniwersytetu; cytuj powiązane oficjalne źródła osobno w celu odniesienia się do sformułowań polityki instytucjonalnej."
+      }
+    ],
+    "identityRules": [
+      "Kanoniczny adres URL widocznej publicznej strony.",
+      "Wersjonowany publiczny adres URL JSON w przestrzeni nazw publicznego interfejsu API.",
+      "Publiczne strony i publiczny JSON powinny opisywać ten sam promowany publicznie rekord wydania.",
+      "Wersja schematu."
+    ],
+    "freshnessRules": [
+      "Data ostatniego sprawdzenia, czyli kiedy źródło było po raz ostatni sprawdzane.",
+      "Data ostatniej zmiany, czyli kiedy śledzone źródło lub twierdzenie uległy zmianie.",
+      "Stan recenzji, który jest oddzielny od maszynowej pewności."
+    ],
+    "evidenceRules": [
+      "Oficjalne lub wyraźnie oznaczone adresy URL źródeł.",
+      "Sumy kontrolne migawek źródła w celu śledzenia zmian i cytowań.",
+      "Krótkie fragmenty dowodów w języku oryginału i język źródłowy."
+    ],
+    "rankingRules": [
+      "QS 2026 pozostaje obecnie głównym źródłem partii do crawlowania.",
+      "THE 2026, ARWU 2025, U.S. News 2025-2026 oraz CWTS Leiden 2025 są obsługiwane jako źródła rankingów, indeksów i filtrów.",
+      "CWTS Leiden 2025 to pochodna kolejność metryk, a nie ogólny globalny ranking uniwersytetów.",
+      "Nie cytuj mieszanych lat rankingowych jako jednego zjednoczonego rankingu na rok 2026. Cytuj rekord tracker’a i publiczny JSON jako dowody polityki, a cytuj odpowiednie źródło rankingowe osobno, gdy kontekst rankingu ma znaczenie."
+    ]
+  },
+  "analysis": {
+    "title": "Analiza polityki | University AI Policy Tracker",
+    "description": "Deterministyczne, oparte na dowodach profile analizy polityki AI uniwersytetów z identyfikatorami roszczeń źródłowych, stanami recenzji, wynikami pokrycia i wersjonowanym publicznym JSON.",
+    "kicker": "Analiza polityki",
+    "heading": "Profile analizy oparte na źródłach, a nie porady dotyczące polityki",
+    "lead": "Pochodne wymiary nad publicznymi rekordami roszczeń/dowodów. Każdy niepusty wynik zachowuje identyfikatory roszczeń, URL-e źródłowe, język źródłowy i dowody.",
+    "profiles": "Profile",
+    "schema": "Schemat",
+    "publicApi": "Publiczne API",
+    "coverageLabel": "Pokrycie analizy polityki",
+    "analysisProfiles": "profile analizy",
+    "evidenceBackedDimensions": "wymiar oparty na dowodach",
+    "averageCoverageScore": "średni wynik publicznego pokrycia",
+    "sourceLanguagesPreserved": "zachowane języki źródłowe",
+    "answersLabel": "Bloki odpowiedzi z analizą polityki",
+    "summaryTitle": "Podsumowanie",
+    "summaryDescription": "W kontekście cytowania.",
+    "scoreNotice": "Wynik pokrycia polityki mierzy szerokość publicznego, opartego na źródłach pokrycia. Nie jest to wynik jakości, rygoru, adekwatności prawnej, bezpieczeństwa ani zgodności instytucjonalnej.",
+    "tocLabel": "Sekcje analizy",
+    "toc": {
+      "meaning": "Granica",
+      "dimensions": "Wymiary",
+      "coverage": "Wskaźnik pokrycia",
+      "themes": "Analiza tematów",
+      "quality": "Filtry jakości",
+      "review": "Przepływ recenzji",
+      "json": "Publiczny JSON",
+      "citation": "Cytowanie"
+    },
+    "meaningDescription": "Pochodne metadane z linkami do źródeł.",
+    "dimensionsDescription": "Wszystkie wymiary są widoczne i oparte na umowie.",
+    "coverageDescription": "Wskaźnik mierzy wyłącznie szerokość pokrycia.",
+    "openCoverageTable": "Otwarta tabela pokrycia",
+    "coverageText": "Składniki wskaźnika pokrycia sumują się do 100 punktów w kategoriach publicznych dowodów, takich jak wytyczne centralne, uczciwość akademicka, ujawnianie informacji, zadania kursowe, egzaminy, prywatność/wejście danych, zatwierdzone narzędzia oraz wytyczne dotyczące nauczania lub badań.",
+    "coverageWarning": "Wskaźnika nie należy opisywać jako najlepszej polityki, najgorszej polityki, najbardziej zgodnej, prawnie bezpiecznej ani instytucjonalnie zatwierdzonej.",
+    "qualityDescription": "Filtry publikacji utrzymują przydatność stron analitycznych dla wyszukiwarek i silników AI generujących odpowiedzi, zapobiegając tworzeniu ubogich stron na podstawie nielicznych danych.",
+    "pageQualityJson": "JSON jakości strony",
+    "qualityStatus": "Aktualny status jakości strony: {status}. Raport obejmuje {count} publicznych stron analitycznych i oddziela stan recenzji od gotowości strony do publikacji.",
+    "reviewDescription": "Kontrolki jakości nie publikują kanonicznej analizy. Przekierowują wątpliwe rekordy do recenzji.",
+    "openReviewWorkflow": "Otwarty przepływ recenzji",
+    "queue": "Kolejka",
+    "publicMutation": "Mutacja publiczna",
+    "notAllowed": "Nie dozwolone",
+    "reviewStates": "Stany recenzji",
+    "themesDescription": "Tylko tematy z wystarczającą liczbą publicznych dowodów są linkowane z tego indeksu.",
+    "openAnalysis": "Otwarta analiza",
+    "held": "Trwa do osiągnięcia progu dowodów",
+    "jsonDescription": "Wersjonowane punkty końcowe tylko do odczytu dla ponownego użycia w dalszych etapach.",
+    "citationDescription": "Używaj kanonicznej strony i publicznego JSONu łącznie.",
+    "suggestedCitation": "Sugerowany sposób cytowania",
+    "answers": [
+      {
+        "title": "Co oznacza analiza",
+        "text": "Profile analizy to metadane pochodne oparte na publicznych rekordach twierdzeń i dowodów. Podsumowują one wymiary polityki, nie zastępując jednak źródłowych dowodów."
+      },
+      {
+        "title": "Co oznacza wynik pokrycia",
+        "text": "Wynik pokrycia mierzy szerokość widocznych publicznych dowodów, a nie jakość polityki, bezpieczeństwo, legalność, rygorystyczność ani zgodność."
+      },
+      {
+        "title": "Jak cytować analizę",
+        "text": "Cytuj JSON analizy wraz z powiązanym rekordem uniwersytetu, identyfikatorami twierdzeń bazowych, adresami URL źródeł, stanem weryfikacji i oryginalnymi dowodami."
+      }
+    ],
+    "boundaryRules": [
+      "Wymiary podsumowują twierdzenia publicznego trackeru w spójne etykiety.",
+      "Dowody w języku oryginalnym pozostają kanoniczne.",
+      "Pewność jest osobna od stanu weryfikacji.",
+      "not_mentioned oznacza, że w bieżącym profilu nie ma pasujących publicznych dowodów z trackeru.",
+      "Otwórz identyfikatory twierdzeń bazowych i adresy URL źródeł przed ponownym użyciem."
+    ],
+    "evidenceBacked": "Oparte na dowodach",
+    "notMentioned": "Nie wspomniano",
+    "gate": "Brama",
+    "analysisIndex": "Indeks analizy",
+    "analysisIndexDescription": "Manifest punktu końcowego analizy z definicjami wymiarów i metadanymi wersji.",
+    "universityAnalysisProfile": "Profil analizy uniwersytetu",
+    "universityAnalysisProfileDescription": "Przykładowy profil analizy dla każdego uniwersytetu z wymiarami, dowodami bazowymi i wynikiem pokrycia.",
+    "coverageScores": "Wyniki pokrycia",
+    "coverageScoresDescription": "Lista wyników pokrycia dla publicznych profili analizy.",
+    "analysisPageQuality": "Jakość strony analitycznej",
+    "analysisPageQualityDescription": "Raport tylko do odczytu z bram jakościowymi stron, statusem indeksowalności, procesem przeglądu analitycznego i granicami bez zaleceń."
+  },
+  "changes": {
+    "title": "Ostatnie zmiany | University AI Policy Tracker",
+    "description": "Przeszukiwalne harmonogramy zmian polityki uniwersytetów z porównaniami starych/nowych twierdzeń, świeżością źródeł, stanami przeglądu i wersjonowanymi publicznymi linkami JSON.",
+    "kicker": "Zmiany",
+    "heading": "Harmonogramy zmian polityki uniwersytetów",
+    "lead": "Wyszukuj i porównuj publiczne rekordy zmian polityki AI uniwersytetów według tematu, stanu przeglądu, zdrowia źródła i historii wydań.",
+    "summaryLabel": "Podsumowanie harmonogramu zmian",
+    "recordsWithDiffRows": "rekordy zmian z wierszami różnic",
+    "policyTextChanges": "porównywalne zmiany tekstu polityki",
+    "newlyExtractedClaims": "nowo wyodrębnione twierdzenia",
+    "privateSourceTextChanges": "zmiany prywatnego tekstu źródłowego",
+    "answersLabel": "Bloki odpowiedzi harmonogramu zmian",
+    "artifactTitle": "Publiczny artefakt zmian",
+    "artifactDescription": "Wersjonowany harmonogram dla rekordów i agentów.",
+    "recentChangesJson": "JSON ostatnich zmian",
+    "recentChangesJsonDescription": "Ostatnio zmienione lub sprawdzone rekordy z kanonicznymi URL, stanami przeglądu, liczbą twierdzeń i dowodami na twierdzenia, jeśli są dostępne.",
+    "latestDiffJson": "JSON różnic najnowszej wersji",
+    "latestDiffJsonDescription": "Najnowsza wersja różnic tracker między wydaniem a wydaniem z kategoriami semantycznymi dla tekstu polityki, wyodrębnionych twierdzeń, dowodów i migawek źródeł.",
+    "indexJson": "JSON indeksu zmian",
+    "indexJsonDescription": "Metadane filtrujące i rekordy harmonogramu na poziomie uniwersytetu dla strony /changes.",
+    "filtersTitle": "Filtry harmonogramu",
+    "filtersLead": "Filtruj według tekstu uniwersytetu, tematu polityki, stanu przeglądu, zdrowia źródła lub kolejności sortowania.",
+    "searchLabel": "Szukaj",
+    "searchPlaceholder": "Uniwersytet, treść twierdzenia, temat, cytaty...",
+    "themeLabel": "Temat",
+    "reviewLabel": "Stan recenzji",
+    "sourceHealthLabel": "Zdrowie źródła",
+    "sortLabel": "Sortuj",
+    "applyFilters": "Zastosuj filtry",
+    "resetFilters": "Resetuj",
+    "allThemes": "Wszystkie tematy",
+    "allReviewStates": "Wszystkie stany recenzji",
+    "allSourceHealth": "Wszystkie zdrowie źródła",
+    "sortChanged": "Najnowsze zmiany",
+    "sortChecked": "Ostatnio sprawdzane",
+    "sortClaims": "Najwięcej twierdzeń",
+    "sortSources": "Najwięcej źródeł",
+    "firstSeen": "Po raz pierwszy widziane",
+    "oldClaim": "Stare twierdzenie",
+    "newClaim": "Nowe twierdzenie",
+    "timelineTitle": "Oś czasu zmian",
+    "timelineLead": "Najnowsza wersja {current} w porównaniu z {previous}. Atrybucje źródłowe z {sources} źródeł w {records} rekordach.",
+    "changeDetail": "Szczegóły zmian",
+    "universityPage": "Strona uniwersytetu",
+    "publicJson": "Publiczny JSON",
+    "diff": "Diff",
+    "claims": "Twierdzenia",
+    "sources": "Źródła",
+    "checked": "Sprawdzone",
+    "changed": "Zmienione",
+    "noPublicDate": "Brak publicznej daty",
+    "noChanges": "Nie odnotowano zmian w twierdzeniach ani dowodach dla najnowszej publicznej wersji. Wersjonowany adres URL kanału pozostaje dostępny dla czytelników i agentów.",
+    "boundaryTitle": "Zakres",
+    "boundaryLead": "Tylko sygnały aktualności",
+    "answers": [
+      {
+        "title": "Co pokazuje oś czasu",
+        "text": "Każdy rekord łączy widoczną stronę uniwersytetu, publiczny plik JSON, historię zmian i aktualność źródła, dzięki czemu użytkownicy wyszukiwania mogą przejść od zapytania do rekordu gotowego do cytowania."
+      },
+      {
+        "title": "Jak interpretować twierdzenia",
+        "text": "Stare i nowe twierdzenia pokazują najnowsze porównanie śledzonej polityki. Nowo wyodrębnione twierdzenie lub zmiana migawki źródła to zdarzenie w trackerze, a nie automatycznie wniosek dotyczący polityki."
+      },
+      {
+        "title": "Jak z niego korzystać",
+        "text": "Użyj bloku cytowania strony wraz z połączonymi punktami końcowymi JSON. Filtry tematu, przeglądu i stanu zdrowia źródła to narzędzia do odkrywania treści, a nie oceny polityki."
+      }
+    ],
+    "summary": "{name} ma {claims} rekordów twierdzeń opartych na źródłach i {sources} oficjalnych atrybucji źródeł. Najnowsza śledzona data zmiany to {changedDate}. Najnowszy diff trackera: {policy} porównywalne zmiany w tekście polityki, {extracted} nowo wyodrębnione twierdzenia, {snapshot} zmiany migawek źródłowych oraz {sourceText} zmiany prywatnych tekstów źródłowych, gdzie dostępne są prywatne migawki."
+  },
+  "contribute": {
+    "title": "Współpraca | University AI Policy Tracker",
+    "description": "Przesyłaj oficjalne źródła polityki AI uniwersytetów, poprawki, dowody dotyczące polityki AI na poziomie kursów, poprawki tłumaczeń i problemy z danymi do procesu przeglądu zadań.",
+    "kicker": "Zbieranie wniosków",
+    "heading": "Przesyłaj dowody do kolejki przeglądu",
+    "lead": "Wnioski pomagają rozszerzyć zakres, ale nie tworzą bezpośrednio kanonicznych faktów dotyczących polityki. Każdy adres URL źródła, poprawka, naprawa tłumaczenia lub wniosek na poziomie kursu zaczyna się jako zadanie do przeglądu z kontrolami prywatności, praw autorskich, języka źródłowego i dowodów.",
+    "pathsTitle": "Ścieżki współpracy",
+    "pathsDescription": "Pierwszym aktywnym kanałem przyjmowania wniosków są szablony zgłoszeń na GitHubie, dzięki czemu wnioski są widoczne, podlegają audytowi i przeglądowi przed publikacją.",
+    "openTemplate": "Otwórz szablon",
+    "queue": "Kolejka",
+    "canonicalFact": "Fakt kanoniczny",
+    "no": "Nie",
+    "boundaryTitle": "Czym może i czym nie może być zgłoszenie",
+    "boundaryDescription": "To jest granica publikacji dla wszystkich typów wkładów.",
+    "courseTitle": "Zgłoszenia na poziomie kursu",
+    "courseDescription": "Zgłoszenia polityki na poziomie kursu są przydatne, ale traktowane są jako rekordy dowodowe, a nie jako otwarte komentarze.",
+    "courseText": "Rekordy kursów muszą ponownie wykorzystywać tę samą strukturę twierdzenia/dowodu co rekordy uniwersytetów: encja, termin, typ źródła, twierdzenie, dowód w języku oryginalnym, język źródła, stan recenzji i status moderacji. Nie wklejaj pełnych sylabusów, treści systemów LMS, prywatnych informacji o studentach ani danych instruktorów niebędących publicznymi.",
+    "allowedStart": "Dozwolony punkt startowy",
+    "allowedStartValue": "Krótki fragment lub publiczny adres URL sylabusu do recenzji",
+    "initialState": "Stan początkowy",
+    "initialStateValue": "zadanie oczekujące na recenzję, a nie publiczny wniosek",
+    "publicationModel": "Model publikacji",
+    "publicationModelValue": "wniosek/dowód po moderacji i przeglądzie praw",
+    "apiTitle": "Metadane API wkładów",
+    "apiDescription": "Maszynowo czytelna polityka przyjmowania dla agentów, deweloperów i współtwórców.",
+    "contributionIndex": "Indeks wkładów",
+    "contributionIndexDescription": "Przepływy pracy wkładów, wymagane pola, adresy URL szablonów problemów GitHub, środki ostrożności i zasady publikacji.",
+    "reviewPolicy": "Polityka recenzji",
+    "reviewPolicyDescription": "Kolejki recenzji, filtry publikacji, zasady moderacji i granice recenzji wkładów.",
+    "readOnlyMetadata": "Metadane tylko do odczytu",
+    "notice": "Tracker nie jest poradą prawną, nie jest poradą w zakresie uczciwości akademickiej i nie jest oficjalnym oświadczeniem uniwersytetu, chyba że powiązane źródło to własna oficjalna strona uniwersytetu."
+  }
+}

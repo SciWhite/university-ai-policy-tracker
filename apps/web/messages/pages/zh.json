@@ -1,0 +1,718 @@
+{
+  "home": {
+    "metadataTitle": "大学人工智能政策数据库：搜索 {count} 项有据可查的 GenAI 政策",
+  "description": "通过官方来源、审查状态、公开 JSON 和可供引用的证据，搜索并引用有据可查的大学 GenAI 政策记录。",
+    "kicker": "大学人工智能政策数据库",
+    "lead": "查找、引用并检索有据可查的大学 GenAI 政策记录。可按机构、来源域名、AI 工具、政策主题或公开证据短语进行搜索。",
+    "searchLabel": "搜索公开大学人工智能政策记录",
+    "searchPlaceholder": "搜索大学、主题、来源域名...",
+    "searchButton": "搜索",
+    "suggestedSearches": "推荐搜索",
+    "note": "搜索功能旨在辅助导航至推荐的公开记录，而非政策结论。在引用前，请先打开记录及公开 JSON。",
+    "publicJson": "公开 JSON",
+    "searchApi": "搜索 API",
+    "license": "许可协议",
+    "universityRecords": "大学记录",
+    "sourceBackedClaims": "有据可查的主张",
+    "officialSourceAttributions": "官方来源归属",
+    "analysisProfiles": "分析概况",
+    "answersLabel": "数据库回答模块",
+    "entryGroupsLabel": "次要入口",
+    "matchingRecords": "匹配记录",
+    "openSearch": "打开搜索",
+    "record": "记录",
+    "claims": "主张",
+    "sources": "来源",
+    "recentChecks": "最近核查",
+    "viewChanges": "查看更改",
+    "noPublicFreshnessDate": "无公开新鲜度日期",
+    "agentRetrievalTitle": "代理与引文检索",
+    "agentRetrievalLead": "结合使用规范页面和版本化公共 JSON。",
+    "aiSystemsTitle": "面向 AI/搜索系统",
+    "aiSystemsText": "通过搜索解析实体，打开规范大学记录，然后引用主张证据和公共 JSON 字段，且不替换官方大学源语言。",
+    "aiSearchReference": "AI/搜索参考",
+    "researchersTitle": "面向研究人员和记者",
+    "researchersText": "将追踪器元数据视为引文层。官方源页面、PDF 和政策文档保留其自身权利，并仍是机构措辞的最终来源。",
+    "citationGuide": "引文指南",
+    "methodology": "方法论",
+    "developersTitle": "面向开发者",
+    "developersText": "公共端点在版本化 API 命名空间下公开只读记录、搜索、实体、数据集、最近更改、分析配置文件和引文元数据。",
+    "apiDocs": "API 文档",
+    "apiIndex": "API 索引",
+    "changed": "已更改",
+    "checked": "已检查",
+    "homeAnswers": [
+      {
+        "title": "本数据库是什么",
+        "text": "一个公开的、有来源支持的大学 GenAI 政策记录索引，包含规范页面、审查状态、源 URL、证据片段和公共 JSON。"
+      },
+      {
+        "title": "本数据库不是什么",
+        "text": "它不是法律建议、学术诚信建议或官方大学声明。官方大学源页面仍为规范来源。"
+      },
+      {
+        "title": "如何引用记录",
+        "text": "同时引用可见的记录页面和匹配的公共 JSON，并保留源 URL、审查状态、置信度、最后检查日期和原始语言证据。"
+      }
+    ],
+    "entryGroups": [
+      {
+        "title": "开始",
+        "links": [
+          {
+            "label": "搜索记录",
+            "href": "/search"
+          },
+          {
+            "label": "大学",
+            "href": "/universities"
+          },
+          {
+            "label": "AI Policy Database",
+            "href": "/university-ai-policy-database"
+          }
+        ]
+      },
+      {
+        "title": "数据与 API",
+        "links": [
+          {
+            "label": "数据集",
+            "href": "/datasets"
+          },
+          {
+            "label": "API",
+            "href": "/api-reference"
+          },
+          {
+            "label": "MCP",
+            "href": "/mcp"
+          },
+          {
+            "label": "小部件",
+            "href": "/widgets"
+          }
+        ]
+      },
+      {
+        "title": "更新",
+        "links": [
+          {
+            "label": "变更",
+            "href": "/changes"
+          },
+          {
+            "label": "报告",
+            "href": "/reports"
+          },
+          {
+            "label": "订阅源",
+            "href": "/feeds/atom.xml"
+          }
+        ]
+      },
+      {
+        "title": "覆盖范围与审查",
+        "links": [
+          {
+            "label": "覆盖范围",
+            "href": "/coverage"
+          },
+          {
+            "label": "来源健康度",
+            "href": "/source-health"
+          },
+          {
+            "label": "审核",
+            "href": "/review"
+          },
+          {
+            "label": "队列",
+            "href": "/review/queue"
+          }
+        ]
+      },
+      {
+        "title": "信任与引用",
+        "links": [
+          {
+            "label": "方法论",
+            "href": "/methodology"
+          },
+          {
+            "label": "引用",
+            "href": "/citation"
+          },
+          {
+            "label": "llms.txt",
+            "href": "/llms.txt"
+          },
+          {
+            "label": "贡献",
+            "href": "/contribute"
+          }
+        ]
+      }
+    ]
+  },
+  "universities": {
+    "title": "大学人工智能政策数据库：有据可查的 GenAI 记录",
+    "description": "浏览带有官方来源、审核状态、最后检查日期和公开 JSON 链接的大学人工智能政策、ChatGPT 及 GenAI 规则记录。",
+    "kicker": "证据记录",
+    "heading": "浏览有据可查的大学人工智能政策记录",
+    "lead": "按机构、排名覆盖范围、主张、官方来源、审核状态及版本化公开 JSON 筛选公共记录。",
+    "coverageLabel": "大学覆盖范围",
+    "universityRecords": "大学记录",
+    "sourceBackedClaims": "有据可查的主张",
+    "officialSourceAttributions": "官方来源归属",
+    "rankedRecords": "{ranking} 排名记录",
+    "answersLabel": "大学索引答案",
+    "priorityTitle": "重点大学人工智能政策记录",
+    "priorityLead": "来自搜索控制台的印象量较高的记录，与其规范政策页面、变更历史、官方来源数量及公共 JSON 相关联。",
+    "priorityReportsLink": "月度报告",
+    "priorityChangeLink": "变更历史",
+    "priorityRecordLink": "政策记录",
+    "indexTitle": "索引",
+    "indexLead": "排名筛选器仅为发现辅助工具；政策声明仍源自官方来源。",
+    "search": "搜索",
+    "searchPlaceholder": "大学、国家、城市",
+    "ranking": "排名",
+    "coverage": "覆盖范围",
+    "sort": "排序",
+    "order": "顺序",
+    "allRecords": "所有记录",
+    "rankedInSelectedSystem": "在选定系统中排名",
+    "missingSelectedRank": "缺少选定排名",
+    "selectedRanking": "选定排名",
+    "recentlyChecked": "最近检查",
+    "universityName": "大学名称",
+    "claimCount": "声明数量",
+    "sourceCount": "来源数量",
+    "ascending": "升序",
+    "descending": "降序",
+    "apply": "应用",
+    "reset": "重置",
+    "showing": "显示 {visible} / {total} 条记录。",
+    "searchSummary": "搜索：\"{query}\"。",
+    "rankingView": "排名视图：{ranking}。",
+    "university": "大学",
+    "rank": "{ranking} 排名",
+    "claims": "声明",
+    "sources": "来源",
+    "lastChecked": "最后检查时间",
+    "publicJson": "公开 JSON",
+    "locationUnknown": "位置未知",
+    "confidence": "置信度",
+    "unknown": "未知",
+    "json": "JSON",
+    "noMatches": "没有记录符合当前的搜索和排名覆盖范围筛选条件。",
+    "candidateNotice": "保留 {count} 条候选或待审核声明记录以供审计。审核状态与置信度相互独立。",
+    "notIndexed": "未索引",
+    "partialSource": "部分来源",
+    "derivedOrder": "衍生顺序",
+    "answerCards": [
+      {
+        "title": "本索引涵盖范围",
+        "text": "包含来源支持的声明计数、官方来源归属、审核状态以及规范记录 URL 的公开大学记录。"
+      },
+      {
+        "title": "如何使用排名",
+        "text": "排名筛选器仅支持发现和覆盖率分析；它们不会创建或覆盖政策声明。"
+      },
+      {
+        "title": "重用边界",
+        "text": "除非链接来源是大学自己的官方页面，否则该追踪器不构成法律建议、学术诚信建议或大学正式声明。"
+      }
+    ]
+  },
+  "datasets": {
+    "title": "数据集 | University AI Policy Tracker",
+    "description": "版本化公共 JSON 端点、数据集概念、许可、来源权利注意事项以及 University AI Policy Tracker 的引用要求。",
+    "kicker": "数据集",
+    "heading": "公共 JSON 工件和发布元数据",
+    "leadPrefix": "版本化公共 JSON 位于",
+    "leadSuffix": "基于与可见页面相同的推广发布数据集构建。",
+    "coverageLabel": "当前数据集覆盖范围",
+    "publicUniversityRecords": "公开大学记录",
+    "sourceBackedClaims": "有来源支持的声明",
+    "officialSourceAttributions": "官方来源归属",
+    "publicJsonSchemaVersion": "公共 JSON 模式版本",
+    "releaseDownloadArtifacts": "发布下载工件",
+    "analysisProfiles": "分析配置文件",
+    "answersLabel": "数据集回答块",
+    "whatReusableTitle": "可重用的内容",
+    "whatReusableText": "追踪器元数据、记录 URL、审查状态、引用字段和公共 JSON 工件可根据追踪器元数据许可进行重用。",
+    "externalTitle": "保持外部的内容",
+    "externalText": "官方来源文档、页面文本、PDF 和大学政策语言保留其原始权利和条款。",
+    "retrieveTitle": "代理如何检索数据",
+    "retrieveText": "从 API 索引开始，通过搜索解析实体，获取规范大学 JSON，然后引用声明证据和来源 URL。",
+    "versionedJsonTitle": "带版本号的公开 JSON",
+    "versionedJsonDescription": "按用途分组的实时只读工件。",
+    "coreRecords": "核心记录",
+    "searchAnalysis": "搜索与分析",
+    "reportsEmbeds": "报告与嵌入",
+    "reviewIntegrations": "审查与集成",
+    "releaseDownloadsTitle": "数据集发布下载",
+    "releaseDownloadsDescription": "包含行数、大小和校验和的批量文件。",
+    "release": "版本",
+    "period": "周期",
+    "published": "发布日期",
+    "rankingTitle": "排名与指数边界",
+    "rankingDescription": "发现输入，而非政策结论。",
+    "githubTitle": "GitHub 信任资产",
+    "githubDescription": "仓库级信任资产。",
+    "manifestTitle": "当前发布清单",
+    "promotedRuns": "已推广的运行实例",
+    "manifestText": "该清单控制哪些经过审查的暂存工件目录被推广至公开页面和公开 JSON。",
+    "conceptsTitle": "数据集概念",
+    "conceptsLead": "v1 记录当前展示的内容",
+    "licenseTitle": "许可、权利与引用",
+    "trackerMetadata": "追踪器元数据",
+    "trackerMetadataTitle": "追踪器元数据",
+    "officialRightsTitle": "官方来源权利",
+    "citationExpectationsTitle": "引用规范",
+    "citationExpectationsText": "请同时引用规范页面和公开 JSON。若需复用具体主张，请保留来源 URL、源语言、快照哈希值、审核状态、置信度及原始证据片段。",
+    "citationRulesPrefix": "引用规则详见",
+    "recentFreshnessPrefix": "最新数据时效性可见于",
+    "apiGroups": {
+      "apiIndex": "端点发现与信任链接。",
+      "universities": "包含审核状态、日期及 JSON URL 的大学记录。",
+      "perUniversity": "公开大学记录示例。",
+      "claims": "主张/证据行示例。",
+      "recentChanges": "已核查及变更记录。",
+      "manifest": "发布产物、行数、大小及校验和。",
+      "searchJson": "针对已推广的公开记录的实体搜索。",
+      "searchIndex": "安全搜索索引；不含原始快照或暂存产物。",
+      "entityAliases": "规范别名与检索提示。",
+      "analysisIndex": "政策分析维度清单。",
+      "analysisProfile": "单所大学分析档案示例。",
+      "coverageScores": "覆盖广度评分，非政策质量评分。",
+      "analysisQuality": "公开分析页面入口。",
+      "reportsIndex": "公开报告索引。",
+      "outreach": "带边界说明的媒体与通讯文案。",
+      "chartData": "2026 年 6 月月度报告图表数据。",
+      "widgetIndex": "组件发现。",
+      "policyCoverageWidget": "覆盖范围组件示例。",
+      "sourceFreshnessWidget": "来源时效性组件示例。",
+      "reviewStateWidget": "审核状态组件示例。",
+      "qsCoverage": "QS 2026 收录范围。",
+      "sourceHealth": "用于修复和重新抓取计划的源状态。",
+      "reviewQueue": "未推广的暂存运行队列元数据。",
+      "mcpManifest": "只读 MCP alpha 清单。",
+      "mcpToolCatalog": "只读 MCP 工具目录。",
+      "citationMetadata": "引用模板和重用规则。",
+      "contributionIndex": "贡献工作流元数据。",
+      "reviewPolicy": "贡献审核政策。"
+    },
+    "concepts": [
+      {
+        "name": "大学",
+        "status": "现已可用",
+        "description": "标准大学记录以可见页面和每所大学的公开 JSON 记录形式提供。"
+      },
+      {
+        "name": "声明",
+        "status": "包含在大学 JSON 中",
+        "description": "声明包括声明文本、声明类型、置信度、审核状态、日期和证据数组。"
+      },
+      {
+        "name": "来源",
+        "status": "包含在公开记录中",
+        "description": "官方来源显示为来源归属和带有权利限制的证词来源 URL。"
+      },
+      {
+        "name": "快照",
+        "status": "哈希元数据现已可用",
+        "description": "公开记录显示源快照哈希值。原始 HTML、PDF 和截图不作为跟踪器元数据发布。"
+      },
+      {
+        "name": "最近更改",
+        "status": "现已可用",
+        "description": "最近更改 JSON 提要总结了已检查和已更改的大学记录及其审核状态。"
+      },
+      {
+        "name": "分析配置文件",
+        "status": "现已上线",
+        "description": "确定性政策分析配置文件从现有的公开声明/证据记录中推导维度和覆盖率分数。"
+      },
+      {
+        "name": "覆盖率仪表板",
+        "status": "现已上线",
+        "description": "QS 覆盖率、源健康状态和审核队列元数据揭示了收集状态以及爬虫/审核工作，而未发布暂存声明。"
+      },
+      {
+        "name": "实体解析与搜索",
+        "status": "现已上线",
+        "description": "规范实体别名和安全搜索索引提高了召回率，而未创建政策事实或暴露未发布的工件。"
+      }
+    ]
+  },
+  "methodology": {
+    "title": "方法论 | University AI Policy Tracker",
+    "description": "University AI Policy Tracker 如何发现来源、快照页面、绑定证据、将置信度与审核状态分离，并发布可供引用的记录。",
+    "kicker": "方法论",
+    "heading": "记录如何成为有来源支持的声明",
+    "lead": "官方来源、快照、简短证据片段、置信度以及明确的审核状态。",
+    "answersLabel": "方法论回答模块",
+    "tocLabel": "方法论章节",
+    "toc": {
+      "workflow": "证据工作流",
+      "reviewStates": "审核状态",
+      "rankingBoundaries": "排名边界",
+      "publicationRules": "发布规则",
+      "limitations": "局限性"
+    },
+    "workflowDescription": "从公开来源发现到可供引用的记录。",
+    "reviewDescription": "审核状态是工作流状态。置信度是机器评估的支持程度。",
+    "rankingDescription": "排名行有助于优先排序和过滤来源发现。它们不是政策声明。",
+    "publicationDescription": "在声明公开之前必须存在的内容。",
+    "limitationsDescription": "当前证据层的已知边界。",
+    "footer": "使用引用指南了解归属规则，数据集页面获取公共 JSON 访问权限，近期变更提供新鲜度信号。",
+    "links": {
+      "citationGuide": "引用指南",
+      "datasetsPage": "数据集页面",
+      "recentChanges": "近期变更"
+    },
+    "answers": [
+      {
+        "title": "记录如何公开",
+        "text": "记录在源发现、快照哈希、主张提取、证据绑定、审核状态标记以及从已推广的公共数据集中发布后变为公开。"
+      },
+      {
+        "title": "审核状态的含义",
+        "text": "审核状态描述工作流状态。置信度是一个独立的机器评估支持分数，并不使主张成为官方内容。"
+      },
+      {
+        "title": "什么是规范证据",
+        "text": "原始语言证据、源 URL 和大学官方页面保持规范；翻译或摘要为辅助元数据。"
+      }
+    ],
+    "workflowSteps": [
+      {
+        "title": "源发现",
+        "description": "公共大学政策页面、教学指南、IT/安全页面、采购页面、PDF 以及带有来源归属的材料。"
+      },
+      {
+        "title": "爬取与快照",
+        "description": "获取的源文本接收内容哈希，用于未来的变更检查。"
+      },
+      {
+        "title": "主张提取",
+        "description": "主张将置信度与审核状态分开保留。"
+      },
+      {
+        "title": "证据绑定",
+        "description": "每个公开的主张都需要源 URL、快照哈希、证据片段、源语言和权利注意事项。"
+      },
+      {
+        "title": "变更检测",
+        "description": "变更的哈希可创建新快照、候选项、主张更新和变更记录。"
+      },
+      {
+        "title": "多语言源优先证据",
+        "description": "原始语言证据为规范；翻译为显示辅助项。"
+      }
+    ],
+    "reviewStates": [
+      {
+        "label": "machine_candidate",
+        "description": "由爬虫、提取器或种子流程生成；非最终版本。"
+      },
+      {
+        "label": "needs_review",
+        "description": "来源、提取内容、日期或分类需要审核。"
+      },
+      {
+        "label": "agent_reviewed",
+        "description": "智能体已核查证据与分类。"
+      },
+      {
+        "label": "human_reviewed",
+        "description": "人工审核员或确定性发布规则已批准该主张。"
+      },
+      {
+        "label": "rejected",
+        "description": "仅保留以供审计参考。"
+      }
+    ],
+    "rankingRules": [
+      "QS 2026 目前仍是扩展公开覆盖范围时主要的爬取分批依据。",
+      "THE 2026、ARWU 2025、U.S. News 2025-2026 和 CWTS Leiden 2025 均可用作排名、索引和筛选来源。",
+      "CWTS Leiden 2025 是派生指标顺序，并非全球大学综合排名。",
+      "不同排名年份不合并展示为统一的 2026 年排名。",
+      "排名数据不会生成或覆盖政策声明；可见声明仍须具备官方来源、证据片段、置信度和审查状态。"
+    ],
+    "publicationRules": [
+      "每个公开主张均需包含来源 URL 和来源快照哈希值。",
+      "证据片段应保持简短、必要且注明来源。",
+      "原始语言证据为规范版本；翻译仅用于展示。",
+      "规范事实与本地化展示必须保持分离。",
+      "候选主张需进行标记，且不得作为最终摘要使用。",
+      "公共页面与公共 JSON 应由同一份已发布的公共版本数据集生成。",
+      "官方源文档保留其原始权利与条款。"
+    ],
+    "limitations": [
+      "大学政策可能分散于院系、课程、PDF 及内部系统中。",
+      "稀疏记录在审核证据支持更强结论前，仍标记为早期覆盖范围。",
+      "本追踪器记录来源检查和声明证据元数据；不提供法律建议或学术诚信建议。"
+    ]
+  },
+  "citation": {
+    "title": "引用 | University AI Policy Tracker",
+    "description": "University AI Policy Tracker 的引用格式、来源归属规则、公共 JSON 字段、权利注意事项及建议边界。",
+    "kicker": "引用",
+    "heading": "分别引用追踪器元数据和官方来源",
+    "lead": "将规范页面、公共 JSON、来源 URL、快照哈希值、审核状态、置信度及原始证据保持在一起。",
+    "answersLabel": "引用回答块",
+    "tocLabel": "引用部分",
+    "toc": {
+      "formats": "建议格式",
+      "fields": "引用字段",
+      "json": "公共 JSON",
+      "ranking": "排名来源",
+      "rights": "权利与边界"
+    },
+    "formatsDescription": "可直接复制的示例。",
+    "universityPolicyRecord": "大学政策记录",
+    "datasetSurface": "数据集概览",
+    "changesFeed": "变更源或报告",
+    "fieldsDescription": "保留这些字段。",
+    "pageDataIdentity": "页面与数据标识",
+    "freshnessReview": "时效性与审核",
+    "sourceEvidence": "来源证据",
+    "jsonDescription": "用于复用的版本化记录。",
+    "apiIndex": "API 索引",
+    "universitiesList": "大学列表",
+    "universityRecord": "大学记录",
+    "recentChanges": "最近更改",
+    "rankingDescription": "参考索引，而非政策排名。",
+    "rightsDescription": "追踪器元数据",
+    "browsePrefix": "浏览",
+    "readPrefix": "阅读",
+    "reviewPrefix": "或查阅",
+    "universityRecords": "大学记录",
+    "methodology": "方法论",
+    "datasetAccess": "数据集访问",
+    "answers": [
+      {
+        "title": "如何引用大学记录",
+        "text": "同时引用规范可见记录页面和匹配的公开 JSON URL，并保留来源 URL、审核状态、置信度以及最后检查日期。"
+      },
+      {
+        "title": "如何引用主张证据",
+        "text": "对于主张级别的重用，请包含主张文本、原始语言证据片段、来源语言、来源 URL、快照哈希值、置信度以及审核状态。"
+      },
+      {
+        "title": "不应作为官方内容引用的事项",
+        "text": "University AI Policy Tracker 元数据并非大学官方声明；如需引用机构政策措辞，请单独引用链接的官方来源。"
+      }
+    ],
+    "identityRules": [
+      "可见公开页面的规范 URL。",
+      "公共 API 命名空间下的版本化公开 JSON URL。",
+      "公开页面和公开 JSON 应描述相同的已推广公开发布记录。",
+      "模式版本。"
+    ],
+    "freshnessRules": [
+      "最后检查日期，即最近一次检查来源的日期。",
+      "最后更改日期，即受追踪的来源或主张发生变化的日期。",
+      "审核状态，独立于机器置信度。"
+    ],
+    "evidenceRules": [
+      "官方或明确标注的来源 URL。",
+      "用于变更和引用可追溯性的来源快照哈希值。",
+      "简短的原始语言证据片段及源语言。"
+    ],
+    "rankingRules": [
+      "QS 2026 目前仍是主要的爬取批处理来源。",
+      "THE 2026、ARWU 2025、U.S. News 2025-2026 和 CWTS Leiden 2025 作为排名、索引和筛选来源得到支持。",
+      "CWTS Leiden 2025 是一种衍生指标排序，而非全球大学综合排名。",
+      "切勿将混合的排名年份引用为统一的 2026 年排名。请引用追踪器记录和公开 JSON 作为政策证据，并在排名语境重要时单独引用相关排名来源。"
+    ]
+  },
+  "analysis": {
+    "title": "政策分析 | University AI Policy Tracker",
+    "description": "具有源主张 ID、审查状态、覆盖率分数和版本化公开 JSON 的确定性、有证据支持的大学人工智能政策分析档案。",
+    "kicker": "政策分析",
+    "heading": "基于来源的分析档案，而非政策建议",
+    "lead": "基于公开主张/证据记录的衍生维度。每个非空结果均保留主张 ID、源 URL、源语言和证据。",
+    "profiles": "档案",
+    "schema": "模式",
+    "publicApi": "公共 API",
+    "coverageLabel": "政策分析覆盖率",
+    "analysisProfiles": "分析档案",
+    "evidenceBackedDimensions": "有证据支持的维度",
+    "averageCoverageScore": "平均公开覆盖率分数",
+    "sourceLanguagesPreserved": "保留源语言",
+    "answersLabel": "政策分析回答块",
+    "summaryTitle": "摘要",
+    "summaryDescription": "用于引用语境。",
+    "scoreNotice": "政策覆盖率衡量公开、有来源支持的覆盖广度。它不是质量、严格程度、法律充分性、安全性或机构合规性分数。",
+    "tocLabel": "分析部分",
+    "toc": {
+      "meaning": "边界",
+      "dimensions": "维度",
+      "coverage": "覆盖率得分",
+      "themes": "主题分析",
+      "quality": "质量关卡",
+      "review": "审核工作流",
+      "json": "公开 JSON",
+      "citation": "引用"
+    },
+    "meaningDescription": "带有来源链接的衍生元数据。",
+    "dimensionsDescription": "所有维度均可见且有合同依据。",
+    "coverageDescription": "该得分仅为覆盖率广度指标。",
+    "openCoverageTable": "公开覆盖表",
+    "coverageText": "覆盖率得分组成部分在中央指导、学术诚信、披露、课程作业、考试、隐私/数据录入、批准工具以及教学或研究指导等公开证据类别中总计为 100 分。",
+    "coverageWarning": "该得分不应被描述为最佳政策、最差政策、最合规、法律安全或机构认可。",
+    "qualityDescription": "发布关卡确保分析页面对于搜索和 AI 问答引擎保持有用，而不会将稀疏数据转化为内容贫乏的页面。",
+    "pageQualityJson": "页面质量 JSON",
+    "qualityStatus": "当前页面质量状态：{status}。该报告涵盖 {count} 个公开分析页面，并将审核状态与页面发布准备度分开。",
+    "reviewDescription": "质量检查不发布规范分析。它们将存疑记录路由至审核环节。",
+    "openReviewWorkflow": "公开审核工作流",
+    "queue": "队列",
+    "publicMutation": "公开变更",
+    "notAllowed": "不允许",
+    "reviewStates": "审核状态",
+    "themesDescription": "仅链接具有足够公开证据的主题。",
+    "openAnalysis": "开放分析",
+    "held": "保留至达到证据阈值",
+    "jsonDescription": "面向下游复用的版本化只读端点。",
+    "citationDescription": "结合使用规范页面与公开 JSON。",
+    "suggestedCitation": "建议引用格式",
+    "answers": [
+      {
+        "title": "分析的含义",
+        "text": "分析配置文件是基于公开声明/证据记录衍生的元数据。它们对政策维度进行总结，但不替代原始证据。"
+      },
+      {
+        "title": "覆盖率分数的含义",
+        "text": "覆盖率分数衡量的是可见公开证据的广度，而非政策的质量、安全性、合法性、严格性或合规性。"
+      },
+      {
+        "title": "如何引用分析",
+        "text": "在引用分析 JSON 时，需包含相关大学记录、基础声明 ID、来源 URL、审核状态及原始证据。"
+      }
+    ],
+    "boundaryRules": [
+      "维度将公开追踪器中的声明汇总为一致的标签。",
+      "原始语言证据仍具规范效力。",
+      "置信度与审核状态相互独立。",
+      "not_mentioned 表示当前配置文件中不存在匹配的公开追踪器证据。",
+      "复用前请开放基础声明 ID 和来源 URL。"
+    ],
+    "evidenceBacked": "有证据支持",
+    "notMentioned": "未提及",
+    "gate": "门槛",
+    "analysisIndex": "分析索引",
+    "analysisIndexDescription": "包含维度定义和版本元数据的分析端点清单。",
+    "universityAnalysisProfile": "大学分析配置文件",
+    "universityAnalysisProfileDescription": "每所大学示例分析配置文件，包含维度、基础证据和覆盖率分数。",
+    "coverageScores": "覆盖率分数",
+    "coverageScoresDescription": "公开分析配置文件的覆盖率分数列表。",
+    "analysisPageQuality": "分析页面质量",
+    "analysisPageQualityDescription": "页面质量关卡、可索引状态、分析审查工作流以及无建议边界的只读报告。"
+  },
+  "changes": {
+    "title": "最近变更 | University AI Policy Tracker",
+    "description": "可搜索的大学政策变更时间线，包含新旧声明对比、来源时效性、审查状态以及版本化公共 JSON 链接。",
+    "kicker": "变更",
+    "heading": "大学政策变更时间线",
+    "lead": "按主题、审查状态、来源健康状况和发布历史搜索并比较公共大学 AI 政策变更记录。",
+    "summaryLabel": "变更时间线摘要",
+    "recordsWithDiffRows": "带有差异行的变更记录",
+    "policyTextChanges": "可比较的政策文本变更",
+    "newlyExtractedClaims": "新提取的声明",
+    "privateSourceTextChanges": "私有来源文本变更",
+    "answersLabel": "变更时间线回答块",
+    "artifactTitle": "公共变更工件",
+    "artifactDescription": "记录和代理的版本化时间线。",
+    "recentChangesJson": "最近变更 JSON",
+    "recentChangesJsonDescription": "带有规范 URL、审查状态、声明计数以及可用证据的最近变更或已检查记录。",
+    "latestDiffJson": "最新发布差异 JSON",
+    "latestDiffJsonDescription": "带有政策文本、提取声明、证据和来源快照的语义类别的最新发布间跟踪器差异。",
+    "indexJson": "变更索引 JSON",
+    "indexJsonDescription": "用于 /changes 页面的过滤元数据和大学级时间线记录。",
+    "filtersTitle": "时间线过滤器",
+    "filtersLead": "按大学文本、政策主题、审查状态、来源健康状况或排序顺序进行过滤。",
+    "searchLabel": "搜索",
+    "searchPlaceholder": "大学、声明文本、主题、引用...",
+    "themeLabel": "主题",
+    "reviewLabel": "审核状态",
+    "sourceHealthLabel": "来源可靠性",
+    "sortLabel": "排序",
+    "applyFilters": "应用筛选器",
+    "resetFilters": "重置",
+    "allThemes": "所有主题",
+    "allReviewStates": "所有审核状态",
+    "allSourceHealth": "所有来源可靠性",
+    "sortChanged": "最近变更",
+    "sortChecked": "最近检查",
+    "sortClaims": "声明最多",
+    "sortSources": "来源最多",
+    "firstSeen": "首次出现",
+    "oldClaim": "旧声明",
+    "newClaim": "新声明",
+    "timelineTitle": "变更时间线",
+    "timelineLead": "最新版本 {current} 与 {previous} 对比。{records} 条记录中包含 {sources} 个来源归属。",
+    "changeDetail": "变更详情",
+    "universityPage": "大学页面",
+    "publicJson": "公开 JSON",
+    "diff": "差异",
+    "claims": "声明",
+    "sources": "来源",
+    "checked": "已核查",
+    "changed": "已更改",
+    "noPublicDate": "尚无公开日期",
+    "noChanges": "最新公开发布版本未记录任何主张/证据变更。带版本的 feed URL 仍可供读者和智能体使用。",
+    "boundaryTitle": "边界",
+    "boundaryLead": "仅新鲜度信号",
+    "answers": [
+      {
+        "title": "时间线展示内容",
+        "text": "每条记录整合了可见的大学页面、公开 JSON、变更历史以及来源新鲜度，以便搜索用户从查询跳转至可引用的记录。"
+      },
+      {
+        "title": "如何解读主张",
+        "text": "旧主张与新主张展示了最新的追踪政策对比。新提取的主张或来源快照变更属于追踪器事件，并非自动构成政策结论。"
+      },
+      {
+        "title": "如何复用",
+        "text": "使用页面引用块及链接的 JSON 端点。主题、审查和来源健康过滤器为发现辅助工具，而非政策判断。"
+      }
+    ],
+    "summary": "{name} 拥有 {claims} 条有来源支撑的主张记录和 {sources} 个官方来源归属。最新追踪的变更日期为 {changedDate}。最新追踪器差异：{policy} 项可比政策文本变更，{extracted} 条新提取主张，{snapshot} 个来源快照变更，以及在可用私有快照时的 {sourceText} 处私有源文本变更。"
+  },
+  "contribute": {
+    "title": "贡献 | University AI Policy Tracker",
+    "description": "提交官方大学人工智能政策来源、更正、课程级人工智能政策证据、翻译修复及数据集问题，进入审查任务工作流。",
+    "kicker": "贡献接收",
+    "heading": "将证据提交至审查队列",
+    "lead": "贡献有助于扩大覆盖范围，但并不直接创建规范性政策事实。每个来源 URL、更正、翻译修复或课程级提交均作为审查任务启动，包含隐私、版权、源语言及证据核查。",
+    "pathsTitle": "贡献路径",
+    "pathsDescription": "首个实时接收渠道是 GitHub 问题模板，因此提交内容在发布前可见、可审计且可审查。",
+    "openTemplate": "打开模板",
+    "queue": "队列",
+    "canonicalFact": "规范性事实",
+    "no": "否",
+    "boundaryTitle": "提交内容可包含与不可包含的事项",
+    "boundaryDescription": "这是所有贡献类型的发布边界。",
+    "courseTitle": "课程级提交",
+    "courseDescription": "课程级政策提交很有用，但它们作为证据记录处理，而非公开评论。",
+    "courseText": "课程记录必须复用与大学记录相同的声明/证据结构：实体、术语、来源类型、声明、原始语言证据、源语言、审核状态和审核状态。请勿粘贴完整教学大纲、LMS 内容、学生私人信息或非公开的教师数据。",
+    "allowedStart": "允许的起点",
+    "allowedStartValue": "用于审核的简短摘录或公开教学大纲 URL",
+    "initialState": "初始状态",
+    "initialStateValue": "待审任务，而非公开声明",
+    "publicationModel": "发布模式",
+    "publicationModelValue": "经审核和权利审查后的声明/证据",
+    "apiTitle": "贡献 API 元数据",
+    "apiDescription": "面向代理、开发者和贡献者的机器可读接收政策。",
+    "contributionIndex": "贡献索引",
+    "contributionIndexDescription": "贡献工作流、必填字段、GitHub 问题模板 URL、保障措施和发布规则。",
+    "reviewPolicy": "审核政策",
+    "reviewPolicyDescription": "审核队列、发布关卡、审核规则和贡献审核边界。",
+    "readOnlyMetadata": "只读元数据",
+    "notice": "该追踪器不构成法律建议，也不构成学术诚信建议，除非链接来源为大学官方页面，否则不代表大学的正式声明。"
+  }
+}

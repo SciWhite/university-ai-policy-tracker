@@ -3,12 +3,15 @@ import { DocumentLink as Link } from "@/components/document-link";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
+import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
+import { translateSurfaceText } from "@/lib/surface-localization";
 
 interface EntitySidebarProps {
   canonicalUrl: string;
   citationText: string;
   entitySlug?: string;
   officialSourceCount: number;
+  locale?: SupportedLocale;
   publicJsonUrl: string;
 }
 
@@ -24,16 +27,19 @@ export function EntitySidebar({
   canonicalUrl,
   citationText,
   entitySlug,
+  locale = DEFAULT_LOCALE,
   officialSourceCount,
   publicJsonUrl
 }: EntitySidebarProps) {
+  const t = (value: string) => translateSurfaceText(value, locale);
   return (
-    <aside className="entity-sidebar" aria-label="Record reference details">
-      <ReferenceBox id="citation" title="Suggested citation" headingLevel="h3">
+    <aside className="entity-sidebar" aria-label={t("Record reference details")}>
+      <ReferenceBox id="citation" title={t("Suggested citation")} headingLevel="h3">
         <CitationCopyActions
           canonicalUrl={canonicalUrl}
           citationText={citationText}
           entitySlug={entitySlug}
+          locale={locale}
           publicJsonUrl={publicJsonUrl}
         />
         <ul className="source-list">
@@ -43,16 +49,16 @@ export function EntitySidebar({
               data-analytics-event="record_canonical_click"
               href={canonicalUrl}
             >
-              Canonical page
+              {t("Canonical page")}
             </a>
           </li>
           <li>
-            <Link href="/citation">Citation rules</Link>
+            <Link href="/citation">{t("Citation rules")}</Link>
           </li>
         </ul>
       </ReferenceBox>
 
-      <ReferenceBox id="json" title="Public JSON" headingLevel="h3">
+      <ReferenceBox id="json" title={t("Public JSON")} headingLevel="h3">
         <ul className="source-list">
           <li>
             <a
@@ -60,38 +66,38 @@ export function EntitySidebar({
               data-analytics-event="record_public_json_click"
               href={publicJsonUrl}
             >
-              Open public JSON
+              {t("Open public JSON")}
             </a>
           </li>
           <li>
-            <Link href="/datasets">Dataset access</Link>
+            <Link href="/datasets">{t("Dataset access")}</Link>
           </li>
         </ul>
       </ReferenceBox>
 
-      <ReferenceBox title="Official sources" headingLevel="h3">
-        <MetaLabel label="Sources">{officialSourceCount}</MetaLabel>
+      <ReferenceBox title={t("Official sources")} headingLevel="h3">
+        <MetaLabel label={t("Sources")}>{officialSourceCount}</MetaLabel>
       </ReferenceBox>
 
-      <ReferenceBox title="License and limitations" headingLevel="h3">
+      <ReferenceBox title={t("License and limitations")} headingLevel="h3">
         <ul className="source-list">
           <li>
-            <Link href="/citation">Citation</Link>
+            <Link href="/citation">{t("Citation")}</Link>
           </li>
           <li>
-            <Link href="/methodology">Methodology</Link>
+            <Link href="/methodology">{t("Methodology")}</Link>
           </li>
           <li>
-            <Link href="/review">Review</Link>
+            <Link href="/review">{t("Review")}</Link>
           </li>
         </ul>
       </ReferenceBox>
 
-      <ReferenceBox title="Review states" headingLevel="h3">
+      <ReferenceBox title={t("Review states")} headingLevel="h3">
         <ul className="review-state-list">
           {reviewStates.map((reviewState) => (
             <li key={reviewState}>
-              <StateLabel prefix="" reviewState={reviewState} />
+              <StateLabel locale={locale} prefix="" reviewState={reviewState} />
             </li>
           ))}
         </ul>

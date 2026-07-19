@@ -2,6 +2,7 @@
   "Shell": {
     "tagline": "Open, op bewijs gebaseerde AI-beleidsrecords van universiteiten voor publiek hergebruik.",
     "actions": {
+      "label": "Primaire acties",
       "api": "API",
       "github": "GitHub"
     },
@@ -16,7 +17,8 @@
       "contribute": "Bijdragen"
     },
     "footer": {
-      "intro": "Open tracker-metadata voor citatie en analyse. Geen juridisch advies, academisch-integriteitsadvies of officiele universiteitsverklaring.",
+      "secondaryLinks": "Secundaire links",
+      "intro": "Open trackermetadata voor citatie en analyse. Geen juridisch advies, advies over academische integriteit of officiële verklaring van een universiteit.",
       "dataAndApi": "Data en API",
       "trustAndCitation": "Vertrouwen en citatie",
       "updates": "Updates",
@@ -24,10 +26,14 @@
       "apiDocs": "API-docs",
       "publicApi": "Publieke API",
       "mcpAlpha": "MCP alpha",
+      "widgets": "Widgets",
+      "citation": "Citeren",
+      "llms": "LLMs.txt",
       "aiPolicyDatabase": "AI-beleidsdatabase",
       "reportsRss": "Rapporten RSS",
       "changesRss": "Wijzigingen RSS",
       "sourceHealth": "Bronstatus",
+      "coverage": "Dekking",
       "reviewWorkflow": "Reviewproces",
       "reviewQueue": "Reviewwachtrij"
     },

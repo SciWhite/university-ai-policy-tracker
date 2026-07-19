@@ -2,6 +2,7 @@
   "Shell": {
     "tagline": "开放、证据支撑的高校 AI 政策记录，可供公众复用。",
     "actions": {
+      "label": "主要操作",
       "api": "API",
       "github": "GitHub"
     },
@@ -16,6 +17,7 @@
       "contribute": "贡献"
     },
     "footer": {
+      "secondaryLinks": "辅助链接",
       "intro": "开放的追踪器元数据，可用于引用和分析。不是法律建议、学术诚信建议，也不是高校官方声明。",
       "dataAndApi": "数据和 API",
       "trustAndCitation": "信任和引用",
@@ -24,10 +26,14 @@
       "apiDocs": "API 文档",
       "publicApi": "公共 API",
       "mcpAlpha": "MCP 测试版",
+      "widgets": "Widgets",
+      "citation": "引用",
+      "llms": "LLMs.txt",
       "aiPolicyDatabase": "AI 政策数据库",
       "reportsRss": "报告 RSS",
       "changesRss": "变更 RSS",
       "sourceHealth": "来源健康",
+      "coverage": "覆盖情况",
       "reviewWorkflow": "审核流程",
       "reviewQueue": "审核队列"
     },

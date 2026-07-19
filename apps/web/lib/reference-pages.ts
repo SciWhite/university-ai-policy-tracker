@@ -286,16 +286,29 @@ export function countCandidateClaims(record: PublicReferenceRecord): number {
   return Math.max(record.claimCount - countReviewedClaims(record), 0);
 }
 
-export function formatDate(value: string | undefined): string {
+export function formatDate(value: string | undefined, locale = "en"): string {
   if (!value) return "Not published";
 
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat(locale, {
     dateStyle: "medium",
     timeZone: "UTC"
   }).format(new Date(value));
 }
 
 export function formatClaimType(value: string): string {
+  const labels: Record<string, string> = {
+    ai_tool_treatment: "AI tool treatment",
+    academic_integrity: "Academic integrity",
+    privacy: "Privacy",
+    teaching: "Teaching",
+    research: "Research",
+    security_review: "Security review",
+    procurement: "Procurement",
+    source_status: "Source status",
+    other: "Other"
+  };
+
+  if (labels[value]) return labels[value];
   return value
     .split("_")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))

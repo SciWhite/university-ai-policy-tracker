@@ -9,6 +9,12 @@ const workspaceRoot = path.resolve(appRoot, "../..");
 
 const nextConfig: NextConfig = {
   staticPageGenerationTimeout: 180,
+  experimental: {
+    cpus: 2,
+    memoryBasedWorkersCount: false,
+    staticGenerationMaxConcurrency: 2,
+    staticGenerationMinPagesPerWorker: 50
+  },
   turbopack: {
     root: workspaceRoot
   },
@@ -16,6 +22,7 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: workspaceRoot,
   outputFileTracingIncludes: {
     "/[locale]": publicDataTraceFiles,
+    "/[locale]/**/*": publicDataTraceFiles,
     "/[locale]/analysis": publicDataTraceFiles,
     "/[locale]/analysis/[slug]": publicDataTraceFiles,
     "/[locale]/changes": publicDataTraceFiles,

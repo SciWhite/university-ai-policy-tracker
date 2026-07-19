@@ -10,7 +10,7 @@ export const SUPPORTED_LOCALES = [
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 export type LocalizedValue = Partial<Record<SupportedLocale, string>>;
 
-export const DEFAULT_LOCALE: SupportedLocale = "en";
+export const DEFAULT_LOCALE = "en" satisfies SupportedLocale;
 export const NON_DEFAULT_LOCALES = SUPPORTED_LOCALES.filter(
   (locale) => locale !== DEFAULT_LOCALE
 );
@@ -28,10 +28,10 @@ export const HIDDEN_AUTO_LOCALES: readonly SupportedLocale[] = [
 
 const localeLabels: Record<SupportedLocale, string> = {
   en: "English",
-  zh: "Chinese",
-  fr: "Francais",
+  zh: "中文",
+  fr: "Français",
   pl: "Polski",
-  es: "Espanol",
+  es: "Español",
   nl: "Nederlands",
   ms: "Bahasa Melayu"
 };
@@ -40,8 +40,8 @@ const uiStrings = {
   originalEvidence: {
     en: "Original evidence",
     zh: "原始证据",
-    fr: "Evidence originale",
-    pl: "Oryginalny dowod",
+    fr: "Preuve originale",
+    pl: "Oryginalny dowód",
     es: "Evidencia original",
     nl: "Oorspronkelijk bewijs",
     ms: "Bukti asal"
@@ -49,7 +49,7 @@ const uiStrings = {
   localizedDisplay: {
     en: "Localized display",
     zh: "本地化显示",
-    fr: "Affichage localise",
+    fr: "Affichage localisé",
     pl: "Widok lokalny",
     es: "Vista localizada",
     nl: "Gelokaliseerde weergave",
@@ -59,7 +59,7 @@ const uiStrings = {
     en: "Source language",
     zh: "来源语言",
     fr: "Langue de la source",
-    pl: "Jezyk zrodla",
+    pl: "Język źródła",
     es: "Idioma de la fuente",
     nl: "Brontaal",
     ms: "Bahasa sumber"
@@ -67,9 +67,9 @@ const uiStrings = {
   snapshotHash: {
     en: "Snapshot hash",
     zh: "快照哈希",
-    fr: "Empreinte de l'instantane",
-    pl: "Hash migawki",
-    es: "Hash de instantanea",
+    fr: "Empreinte de l’instantané",
+    pl: "Skrót migawki",
+    es: "Hash de instantánea",
     nl: "Snapshot-hash",
     ms: "Hash petikan"
   }
@@ -79,13 +79,48 @@ const LOCALIZABLE_PATHS = [
   "/",
   "/search",
   "/universities",
+  "/university-ai-policy-database",
+  "/tools",
+  "/sources",
+  "/themes",
+  "/regions",
+  "/rankings",
   "/analysis",
   "/changes",
+  "/coverage",
+  "/coverage-dashboard",
+  "/source-health",
+  "/reports",
   "/methodology",
   "/datasets",
   "/citation",
   "/contribute"
 ] as const;
+
+const PHASE_TWO_LOCALIZABLE_PATHS = [
+  "/university-ai-policy-database",
+  "/tools",
+  "/sources",
+  "/themes",
+  "/regions",
+  "/rankings",
+  "/coverage",
+  "/coverage-dashboard",
+  "/source-health",
+  "/reports"
+] as const;
+
+export function isMultilingualPhaseTwoEnabled(): boolean {
+  return process.env.NEXT_PUBLIC_MULTILINGUAL_PHASE_TWO === "1";
+}
+
+export function isPhaseTwoLocalizablePath(pathname: string): boolean {
+  const { path } = splitPathSuffix(getPathnameWithoutLocale(pathname));
+
+  return PHASE_TWO_LOCALIZABLE_PATHS.some(
+    (prefix) => path === prefix || path.startsWith(`${prefix}/`)
+  );
+}
 
 export function isSupportedLocale(value: string): value is SupportedLocale {
   return SUPPORTED_LOCALES.includes(value as SupportedLocale);
@@ -143,6 +178,13 @@ export function getPathnameWithoutLocale(pathname: string): string {
 export function isLocalizablePath(pathname: string): boolean {
   const { path } = splitPathSuffix(getPathnameWithoutLocale(pathname));
 
+  if (
+    !isMultilingualPhaseTwoEnabled() &&
+    isPhaseTwoLocalizablePath(path)
+  ) {
+    return false;
+  }
+
   return LOCALIZABLE_PATHS.some((prefix) => {
     if (prefix === "/") return path === "/";
     return path === prefix || path.startsWith(`${prefix}/`);
@@ -193,13 +235,14 @@ function splitPathSuffix(pathname: string): { path: string; suffix: string } {
 }
 
 function isDocumentHref(href: string): boolean {
+  const { path } = splitPathSuffix(href);
   return (
-    href.startsWith("/api/") ||
-    href.startsWith("/feeds/") ||
-    href.endsWith(".txt") ||
-    href.endsWith(".json") ||
-    href.endsWith(".xml") ||
-    href.includes(".")
+    path.startsWith("/api/") ||
+    path.startsWith("/feeds/") ||
+    path.endsWith(".txt") ||
+    path.endsWith(".json") ||
+    path.endsWith(".xml") ||
+    path.includes(".")
   );
 }
 

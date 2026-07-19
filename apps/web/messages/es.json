@@ -1,41 +1,47 @@
 {
   "Shell": {
-    "tagline": "Registros abiertos y basados en evidencia sobre politicas universitarias de IA.",
+    "tagline": "Registros abiertos y basados en evidencia sobre políticas universitarias de IA.",
     "actions": {
+      "label": "Acciones principales",
       "api": "API",
       "github": "GitHub"
     },
     "navigation": {
       "search": "Buscar",
       "universities": "Universidades",
-      "analysis": "Analisis",
+      "analysis": "Análisis",
       "changes": "Cambios",
       "reports": "Informes",
       "datasets": "Datos",
-      "methodology": "Metodologia",
+      "methodology": "Metodología",
       "contribute": "Contribuir"
     },
     "footer": {
-      "intro": "Metadatos abiertos para cita y analisis. No es asesoramiento legal, de integridad academica ni una declaracion oficial universitaria.",
+      "secondaryLinks": "Enlaces secundarios",
+      "intro": "Metadatos abiertos para citas y análisis. No constituyen asesoramiento jurídico ni sobre integridad académica, ni una declaración oficial de una universidad.",
       "dataAndApi": "Datos y API",
       "trustAndCitation": "Confianza y cita",
       "updates": "Actualizaciones",
-      "coverageAndReview": "Cobertura y revision",
+      "coverageAndReview": "Cobertura y revisión",
       "apiDocs": "Docs API",
-      "publicApi": "API publica",
+      "publicApi": "API pública",
       "mcpAlpha": "MCP alfa",
-      "aiPolicyDatabase": "Base de politicas de IA",
+      "widgets": "Widgets",
+      "citation": "Citación",
+      "llms": "LLMs.txt",
+      "aiPolicyDatabase": "Base de políticas de IA",
       "reportsRss": "RSS de informes",
       "changesRss": "RSS de cambios",
       "sourceHealth": "Estado de fuentes",
-      "reviewWorkflow": "Flujo de revision",
-      "reviewQueue": "Cola de revision"
+      "coverage": "Cobertura",
+      "reviewWorkflow": "Flujo de revisión",
+      "reviewQueue": "Cola de revisión"
     },
     "locale": {
       "label": "Idioma",
-      "prompt": "El idioma de tu navegador esta disponible.",
+      "prompt": "El idioma de tu navegador está disponible.",
       "switchTo": "Cambiar a {language}",
-      "stay": "Mantener ingles",
+      "stay": "Mantener el inglés",
       "close": "Cerrar sugerencia de idioma"
     },
     "theme": {

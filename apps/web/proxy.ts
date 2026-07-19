@@ -1,4 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
+import {
+  isMultilingualPhaseTwoEnabled,
+  isPhaseTwoLocalizablePath,
+  stripLocalePrefix
+} from "@/lib/i18n";
 
 const PRIVATE_ANALYTICS_USERNAME = "uapt";
 const MAX_FAILED_ATTEMPTS = 5;
@@ -13,6 +18,22 @@ interface AuthFailureState {
 const authFailures = new Map<string, AuthFailureState>();
 
 export function proxy(request: NextRequest) {
+  const localizedPath = stripLocalePrefix(request.nextUrl.pathname);
+
+  if (localizedPath.hadLocalePrefix) {
+    if (
+      !isMultilingualPhaseTwoEnabled() &&
+      isPhaseTwoLocalizablePath(localizedPath.pathname)
+    ) {
+      return new NextResponse("Not Found", {
+        headers: { "Cache-Control": "no-store" },
+        status: 404
+      });
+    }
+
+    return NextResponse.next();
+  }
+
   const token =
     process.env.INTERNAL_ANALYTICS_PASSWORD?.trim() ??
     process.env.INGESTION_TOKEN?.trim() ??
@@ -46,6 +67,7 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
+    "/:locale(zh|fr|pl|es|nl|ms)/:path*",
     "/internal/analytics/:path*",
     "/api/internal/analytics/dashboard/:path*"
   ]

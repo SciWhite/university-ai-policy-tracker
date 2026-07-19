@@ -21,6 +21,7 @@ coverage/
 
 # Logs and local runtime files
 *.log
+apps/web/messages/**/*.partial
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*

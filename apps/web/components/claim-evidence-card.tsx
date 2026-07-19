@@ -13,6 +13,7 @@ import {
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import { getSourceDomain } from "@/lib/analytics-events";
+import { translateSurfaceText } from "@/lib/surface-localization";
 
 interface ClaimEvidenceCardProps {
   claim: PolicyClaim;
@@ -45,38 +46,42 @@ export function ClaimEvidenceCard({
       <header className="claim-evidence-card__header">
         <div>
           <p className="claim-evidence-card__type">
-            {formatClaimType(claim.claimType)}
+            {translateSurfaceText(formatClaimType(claim.claimType), locale)}
           </p>
           <h3>{claim.claimText}</h3>
         </div>
         <div className="claim-evidence-card__status">
-          <StateLabel reviewState={claim.reviewState} />
-          <MetaLabel label="Confidence">
+          <StateLabel locale={locale} reviewState={claim.reviewState} />
+          <MetaLabel label={translateSurfaceText("Confidence", locale)}>
             {Math.round(claim.confidence * 100)}%
           </MetaLabel>
         </div>
       </header>
 
       {claim.claimValue ? (
-        <p className="claim-value">Normalized value: {claim.claimValue}</p>
+        <p className="claim-value">
+          {translateSurfaceText("Normalized value", locale)}: {claim.claimValue}
+        </p>
       ) : null}
 
       {reviewNotes[claim.reviewState] ? (
-        <p className="claim-state-note">{reviewNotes[claim.reviewState]}</p>
+        <p className="claim-state-note">
+          {translateSurfaceText(reviewNotes[claim.reviewState] ?? "", locale)}
+        </p>
       ) : null}
 
       {claim.lastCheckedAt || claim.lastChangedAt ? (
         <dl className="claim-metadata-grid">
           {claim.lastCheckedAt ? (
             <div>
-              <dt>Last checked</dt>
-              <dd>{formatDate(claim.lastCheckedAt)}</dd>
+              <dt>{translateSurfaceText("Last checked", locale)}</dt>
+              <dd>{formatDate(claim.lastCheckedAt, locale)}</dd>
             </div>
           ) : null}
           {claim.lastChangedAt ? (
             <div>
-              <dt>Last changed</dt>
-              <dd>{formatDate(claim.lastChangedAt)}</dd>
+              <dt>{translateSurfaceText("Last changed", locale)}</dt>
+              <dd>{formatDate(claim.lastChangedAt, locale)}</dd>
             </div>
           ) : null}
         </dl>
@@ -112,13 +117,13 @@ function EvidenceBlock({
     <section className="evidence-block">
       <div className="evidence-block__heading">
         <p>{getUiString("originalEvidence", locale)}</p>
-        <span>Evidence {index + 1}</span>
+        <span>{translateSurfaceText("Evidence", locale)} {index + 1}</span>
       </div>
 
       <blockquote className="evidence-snippet">
         {evidence.evidenceSnippet}
         <footer>
-          Source:{" "}
+          {translateSurfaceText("Source", locale)}:{" "}
           <a
             data-analytics-entity-slug={entitySlug}
             data-analytics-event="official_source_click"
@@ -132,7 +137,9 @@ function EvidenceBlock({
 
       {evidence.evidenceSnippetDisplay ? (
         <div className="localized-evidence">
-          <p>{getUiString("localizedDisplay", locale)} only</p>
+          <p>
+            {getUiString("localizedDisplay", locale)} {translateSurfaceText("only", locale)}
+          </p>
           <p>{evidence.evidenceSnippetDisplay}</p>
         </div>
       ) : null}
@@ -140,7 +147,7 @@ function EvidenceBlock({
       <dl className="claim-metadata-grid">
         <div>
           <dt>{getUiString("sourceLanguage", locale)}</dt>
-          <dd>{formatSourceLanguage(evidence.sourceLanguage)}</dd>
+          <dd>{formatSourceLanguage(evidence.sourceLanguage, locale)}</dd>
         </div>
         <div>
           <dt>{getUiString("snapshotHash", locale)}</dt>
@@ -148,13 +155,13 @@ function EvidenceBlock({
         </div>
         {evidence.retrievedAt ? (
           <div>
-            <dt>Retrieved</dt>
-            <dd>{formatDate(evidence.retrievedAt)}</dd>
+            <dt>{translateSurfaceText("Retrieved", locale)}</dt>
+            <dd>{formatDate(evidence.retrievedAt, locale)}</dd>
           </div>
         ) : null}
         {evidence.snippetLocation ? (
           <div>
-            <dt>Evidence locator</dt>
+            <dt>{translateSurfaceText("Evidence locator", locale)}</dt>
             <dd>{evidence.snippetLocation}</dd>
           </div>
         ) : null}
@@ -170,8 +177,11 @@ function formatClaimType(value: string): string {
     .join(" ");
 }
 
-function formatSourceLanguage(value: string | undefined): string {
-  if (!value) return "Unknown";
+function formatSourceLanguage(
+  value: string | undefined,
+  locale: SupportedLocale
+): string {
+  if (!value) return translateSurfaceText("Unknown", locale);
 
   const normalized = value.toLowerCase().split("-")[0];
   if (!isSupportedLocale(normalized)) return value;
@@ -179,8 +189,8 @@ function formatSourceLanguage(value: string | undefined): string {
   return `${getLocaleLabel(normalized)} (${value})`;
 }
 
-function formatDate(value: string): string {
-  return new Intl.DateTimeFormat("en", {
+function formatDate(value: string, locale: SupportedLocale): string {
+  return new Intl.DateTimeFormat(locale, {
     dateStyle: "medium",
     timeZone: "UTC"
   }).format(new Date(value));

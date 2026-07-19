@@ -5,7 +5,7 @@ import ms from "@/messages/ms.json";
 import nl from "@/messages/nl.json";
 import pl from "@/messages/pl.json";
 import zh from "@/messages/zh.json";
-import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
+import type { SupportedLocale } from "@/lib/i18n";
 
 const messagesByLocale = {
   en,
@@ -20,7 +20,7 @@ const messagesByLocale = {
 export type ShellMessages = (typeof messagesByLocale)[SupportedLocale]["Shell"];
 
 export function getShellMessages(locale: SupportedLocale): ShellMessages {
-  return messagesByLocale[locale]?.Shell ?? messagesByLocale[DEFAULT_LOCALE].Shell;
+  return messagesByLocale[locale].Shell;
 }
 
 export function interpolate(

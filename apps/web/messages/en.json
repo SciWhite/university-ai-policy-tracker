@@ -2,6 +2,7 @@
   "Shell": {
     "tagline": "Open, evidence-backed AI policy records for public reuse.",
     "actions": {
+      "label": "Primary actions",
       "api": "API",
       "github": "GitHub"
     },
@@ -16,6 +17,7 @@
       "contribute": "Contribute"
     },
     "footer": {
+      "secondaryLinks": "Secondary links",
       "intro": "Open tracker metadata for citation and analysis. Not legal advice, academic integrity advice, or an official university statement.",
       "dataAndApi": "Data and API",
       "trustAndCitation": "Trust and citation",
@@ -24,10 +26,14 @@
       "apiDocs": "API docs",
       "publicApi": "Public API",
       "mcpAlpha": "MCP alpha",
+      "widgets": "Widgets",
+      "citation": "Citation",
+      "llms": "LLMs.txt",
       "aiPolicyDatabase": "AI Policy Database",
       "reportsRss": "Reports RSS",
       "changesRss": "Changes RSS",
       "sourceHealth": "Source health",
+      "coverage": "Coverage",
       "reviewWorkflow": "Review workflow",
       "reviewQueue": "Review queue"
     },

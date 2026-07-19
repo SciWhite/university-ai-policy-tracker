@@ -1,0 +1,718 @@
+{
+  "home": {
+    "metadataTitle": "Pangkalan Data Dasar AI Universiti: Cari {count} Dasar GenAI Berasaskan Sumber",
+    "description": "Cari dan sitatkan rekod dasar GenAI universiti berasaskan sumber dengan rasmi, status semakan, JSON awam, dan bukti sedia sitasi.",
+    "kicker": "Pangkalan data dasar AI universiti",
+    "lead": "Cari, sitatkan, dan ambil rekod dasar GenAI universiti berasaskan sumber. Cari mengikut institusi, domain sumber, alat AI, tema dasar, atau frasa bukti awam.",
+    "searchLabel": "Cari rekod awam dasar AI universiti",
+    "searchPlaceholder": "Cari universiti, topik, domain sumber...",
+    "searchButton": "Cari",
+    "suggestedSearches": "Carian yang dicadangkan",
+    "note": "Pencarian adalah alat laluan ke atas rekod awam yang dipromosikan, bukan kesimpulan dasar. Buka rekod dan JSON awam sebelum sitasi.",
+    "publicJson": "JSON Awam",
+    "searchApi": "API Carian",
+    "license": "Lesen",
+    "universityRecords": "rekod universiti",
+    "sourceBackedClaims": "tuntutan berasaskan sumber",
+    "officialSourceAttributions": "penisbahan sumber rasmi",
+    "analysisProfiles": "profil analisis",
+    "answersLabel": "Blok jawapan pangkalan data",
+    "entryGroupsLabel": "Pintu masuk sekunder",
+    "matchingRecords": "Rekod sepadan",
+    "openSearch": "Buka carian",
+    "record": "Rekod",
+    "claims": "Tuntutan",
+    "sources": "Sumber",
+    "recentChecks": "Semakan terkini",
+    "viewChanges": "Lihat perubahan",
+    "noPublicFreshnessDate": "Tiada tarikh kesegaran awam",
+    "agentRetrievalTitle": "Ejen dan pengambilan petikan",
+    "agentRetrievalLead": "Gunakan halaman kanonik dan JSON awam yang dikendalikan versi bersama-sama.",
+    "aiSystemsTitle": "Untuk sistem AI/pencarian",
+    "aiSystemsText": "Selesaikan entiti dengan pencarian, buka rekod universiti kanonik, kemudian petik bukti tuntutan dan medan JSON awam tanpa menggantikan bahasa sumber rasmi universiti.",
+    "aiSearchReference": "Rujukan AI/pencarian",
+    "researchersTitle": "Untuk penyelidik dan wartawan",
+    "researchersText": "Anggap metadata penjejak sebagai lapisan petikan. Halaman sumber rasmi, PDF, dan dokumen dasar mengekalkan hak masing-masing dan kekal sebagai sumber akhir untuk perkaian institusi.",
+    "citationGuide": "Panduan petikan",
+    "methodology": "Metodologi",
+    "developersTitle": "Untuk pembangun",
+    "developersText": "Hujung awam mendedahkan rekod baca-hanya, pencarian, entiti, set data, perubahan terkini, profil analisis, dan metadata petikan di bawah ruang nama API yang dikendalikan versi.",
+    "apiDocs": "Dokumen API",
+    "apiIndex": "Indeks API",
+    "changed": "Berubah",
+    "checked": "Disemak",
+    "homeAnswers": [
+      {
+        "title": "Apa itu pangkalan data ini",
+        "text": "Indeks awam yang disokong sumber bagi rekod dasar GenAI universiti dengan halaman kanonik, keadaan semakan, URL sumber, petikan bukti, dan JSON awam."
+      },
+      {
+        "title": "Apa yang bukan pangkalan data ini",
+        "text": "Ia bukanlah nasihat undang-undang, nasihat integriti akademik, atau kenyataan rasmi universiti. Halaman sumber rasmi universiti kekal kanonik."
+      },
+      {
+        "title": "Bagaimana untuk memetik rekod",
+        "text": "Petik halaman rekod yang kelihatan dan JSON awam yang sepadan bersama-sama, kemudian kekalkan URL sumber, keadaan semakan, keyakinan, tarikh terakhir disemak, dan bukti bahasa asal."
+      }
+    ],
+    "entryGroups": [
+      {
+        "title": "Mula",
+        "links": [
+          {
+            "label": "Cari rekod",
+            "href": "/search"
+          },
+          {
+            "label": "Universiti",
+            "href": "/universities"
+          },
+          {
+            "label": "AI Policy Database",
+            "href": "/university-ai-policy-database"
+          }
+        ]
+      },
+      {
+        "title": "Data and API",
+        "links": [
+          {
+            "label": "Set Data",
+            "href": "/datasets"
+          },
+          {
+            "label": "API",
+            "href": "/api-reference"
+          },
+          {
+            "label": "MCP",
+            "href": "/mcp"
+          },
+          {
+            "label": "Widget",
+            "href": "/widgets"
+          }
+        ]
+      },
+      {
+        "title": "Kemas Kini",
+        "links": [
+          {
+            "label": "Perubahan",
+            "href": "/changes"
+          },
+          {
+            "label": "Laporan",
+            "href": "/reports"
+          },
+          {
+            "label": "Saluran",
+            "href": "/feeds/atom.xml"
+          }
+        ]
+      },
+      {
+        "title": "Liputan dan semakan",
+        "links": [
+          {
+            "label": "Liputan",
+            "href": "/coverage"
+          },
+          {
+            "label": "Kesihatan sumber",
+            "href": "/source-health"
+          },
+          {
+            "label": "Semakan",
+            "href": "/review"
+          },
+          {
+            "label": "Barisan",
+            "href": "/review/queue"
+          }
+        ]
+      },
+      {
+        "title": "Kepercayaan dan petikan",
+        "links": [
+          {
+            "label": "Metodologi",
+            "href": "/methodology"
+          },
+          {
+            "label": "Petikan",
+            "href": "/citation"
+          },
+          {
+            "label": "llms.txt",
+            "href": "/llms.txt"
+          },
+          {
+            "label": "Sumbang",
+            "href": "/contribute"
+          }
+        ]
+      }
+    ]
+  },
+  "universities": {
+    "title": "Pangkalan Data Dasar AI Universiti: Rekod GenAI Berasaskan Sumber",
+    "description": "Layari rekod dasar AI universiti, ChatGPT, dan peraturan GenAI dengan sumber rasmi, keadaan semakan, tarikh terakhir diperiksa, dan pautan JSON awam.",
+    "kicker": "Rekod bukti",
+    "heading": "Layari rekod dasar AI universiti berasaskan sumber",
+    "lead": "Tapis rekod awam mengikut institusi, liputan penarafan, tuntutan, sumber rasmi, keadaan semakan, dan JSON awam yang dikendalikan versi.",
+    "coverageLabel": "Liputan universiti",
+    "universityRecords": "rekod universiti",
+    "sourceBackedClaims": "tuntutan berasaskan sumber",
+    "officialSourceAttributions": "penyisihan sumber rasmi",
+    "rankedRecords": "rekod yang disenaraikan {ranking}",
+    "answersLabel": "Jawapan indeks universiti",
+    "priorityTitle": "Rekod dasar AI universiti keutamaan",
+    "priorityLead": "Rekod kesan tinggi dari Search Console, dipautkan dengan halaman dasar kanonik mereka, sejarah perubahan, bilangan sumber rasmi, dan JSON awam.",
+    "priorityReportsLink": "Laporan bulanan",
+    "priorityChangeLink": "Sejarah perubahan",
+    "priorityRecordLink": "Rekod dasar",
+    "indexTitle": "Indeks",
+    "indexLead": "Penapis penarafan adalah alat penemuan; tuntutan dasar masih berasal dari sumber rasmi.",
+    "search": "Cari",
+    "searchPlaceholder": "Universiti, negara, bandar",
+    "ranking": "Penarafan",
+    "coverage": "Liputan",
+    "sort": "Susun",
+    "order": "Susunan",
+    "allRecords": "Semua rekod",
+    "rankedInSelectedSystem": "Disenaraikan dalam sistem terpilih",
+    "missingSelectedRank": "Kurang penarafan terpilih",
+    "selectedRanking": "Penarafan terpilih",
+    "recentlyChecked": "Semak baru-baru ini",
+    "universityName": "Nama universiti",
+    "claimCount": "Bilangan tuntutan",
+    "sourceCount": "Bilangan sumber",
+    "ascending": "Naik",
+    "descending": "Turun",
+    "apply": "Terapkan",
+    "reset": "Set Semula",
+    "showing": "Menunjukkan {visible} daripada {total} rekod.",
+    "searchSummary": "Carian: \"{query}\".",
+    "rankingView": "Pandangan ranking: {ranking}.",
+    "university": "Universiti",
+    "rank": "kedudukan {ranking}",
+    "claims": "Tuntutan",
+    "sources": "Sumber",
+    "lastChecked": "Semakan terakhir",
+    "publicJson": "JSON Awam",
+    "locationUnknown": "Lokasi tidak diketahui",
+    "confidence": "Keyakinan",
+    "unknown": "Tidak diketahui",
+    "json": "JSON",
+    "noMatches": "Tiada rekod sepadan dengan penapis liputan carian dan ranking semasa.",
+    "candidateNotice": "{count} rekod tuntutan calon atau perlu-semak kekal kelihatan untuk kebolehauditan. Semakan keadaan adalah berasingan daripada keyakinan.",
+    "notIndexed": "Tidak diindeks",
+    "partialSource": "sumber separa",
+    "derivedOrder": "terbitan tertib",
+    "answerCards": [
+      {
+        "title": "Apa yang diliput oleh indeks ini",
+        "text": "Rekod awam universiti yang diterbitkan dengan bilangan tuntutan berasaskan sumber, atribusi sumber rasmi, keadaan semakan dan URL rekod kanonikal."
+      },
+      {
+        "title": "Cara menggunakan ranking",
+        "text": "Penapis ranking menyokong penemuan dan analisis liputan sahaja; ia tidak mencipta atau mengatasi tuntutan dasar."
+      },
+      {
+        "title": "Sempadan penggunaan semula",
+        "text": "Penjejak ini bukan nasihat undang-undang, nasihat integriti akademik, atau kenyataan rasmi universiti melainkan sumber yang dipautkan ialah halaman rasmi universiti tersebut."
+      }
+    ]
+  },
+  "datasets": {
+    "title": "Set Data | University AI Policy Tracker",
+    "description": "Hujung JSON awam yang dikendalikan versi, konsep set data, lesen, teras hak sumber, dan jangkaan sitasi untuk University AI Policy Tracker.",
+    "kicker": "Set Data",
+    "heading": "Artefak JSON awam dan metadata pelepasan",
+    "leadPrefix": "JSON awam yang dikendalikan versi di bawah",
+    "leadSuffix": "dibina daripada set data pelepasan yang dipromosikan sama seperti halaman yang kelihatan.",
+    "coverageLabel": "Liputan set data semasa",
+    "publicUniversityRecords": "rekod awam universiti",
+    "sourceBackedClaims": "klaim yang disokong sumber",
+    "officialSourceAttributions": "penisahan rasmi sumber",
+    "publicJsonSchemaVersion": "versi skema JSON awam",
+    "releaseDownloadArtifacts": "artefak muat turun pelepasan",
+    "analysisProfiles": "profil analisis",
+    "answersLabel": "Blok jawapan set data",
+    "whatReusableTitle": "Apa yang boleh dikemaskini semula",
+    "whatReusableText": "Metadata penjejak, URL rekod, keadaan semakan, medan petikan, dan artefak JSON awam boleh dikemaskini semula di bawah lesen metadata penjejak.",
+    "externalTitle": "Apa yang kekal luaran",
+    "externalText": "Dokumen sumber rasmi, teks halaman, PDF, dan bahasa dasar universiti mengekalkan hak dan terma asal mereka.",
+    "retrieveTitle": "Bagaimana ejen mendapatkan data",
+    "retrieveText": "Mula dengan indeks API, selesaikan entiti dengan carian, ambil JSON universiti kanonikal, kemudian sitatkan bukti klaim dan URL sumber.",
+    "versionedJsonTitle": "JSON awam yang dikendalikan versi",
+    "versionedJsonDescription": "Artefak baca-hidup berkumpulan mengikut penggunaan.",
+    "coreRecords": "Rekod teras",
+    "searchAnalysis": "Carian dan analisis",
+    "reportsEmbeds": "Laporan dan penanaman",
+    "reviewIntegrations": "Semakan dan integrasi",
+    "releaseDownloadsTitle": "Muat turun pelepasan set data",
+    "releaseDownloadsDescription": "Fail pukal dengan bilangan baris, saiz, dan checksum.",
+    "release": "Pelepasan",
+    "period": "Tempoh",
+    "published": "Diterbitkan",
+    "rankingTitle": "Sempadan ranking dan indeks",
+    "rankingDescription": "Input penemuan, bukan kesimpulan dasar.",
+    "githubTitle": "Aset kepercayaan GitHub",
+    "githubDescription": "Aset kepercayaan peringkat repositori.",
+    "manifestTitle": "Manifest pelepasan semasa",
+    "promotedRuns": "Larian yang dipromosikan",
+    "manifestText": "Manifest mengawal direktori artefak peringkat yang disemak yang dipromosikan ke dalam halaman awam dan JSON awam.",
+    "conceptsTitle": "Konsep set data",
+    "conceptsLead": "Apa yang rekod v1 terdedahkan hari ini",
+    "licenseTitle": "Lesen, hak, dan petikan",
+    "trackerMetadata": "metadata penjejak",
+    "trackerMetadataTitle": "Metadata Penjejak",
+    "officialRightsTitle": "Hak sumber rasmi",
+    "citationExpectationsTitle": "Harapan sitasi",
+    "citationExpectationsText": "Sitasi halaman kanonik dan JSON awam bersama-sama. Untuk penggunaan semula peringkat tuntutan, kekalkan URL sumber, bahasa sumber, hamparan snapshot, keadaan semakan, keyakinan, dan petikan bukti asal.",
+    "citationRulesPrefix": "Peraturan sitasi didokumentasikan di",
+    "recentFreshnessPrefix": "Kesegaran data terkini kelihatan di",
+    "apiGroups": {
+      "apiIndex": "Penemuan hujah dan pautan kepercayaan.",
+      "universities": "Rekod universiti dengan keadaan semakan, tarikh, dan URL JSON.",
+      "perUniversity": "Contoh rekod awam universiti.",
+      "claims": "Baris tuntutan/bukti contoh.",
+      "recentChanges": "Rekod yang diperiksa dan diubah.",
+      "manifest": "Artefak pelepasan, bilangan baris, saiz, dan checksum.",
+      "searchJson": "Carian entiti merentasi rekod awam yang dipromosikan.",
+      "searchIndex": "Indeks carian selamat; tiada snapshot mentah atau artefak peralihan.",
+      "entityAliases": "Alias kanonik dan petua pengambilan semula.",
+      "analysisIndex": "Manifest dimensi analisis dasar.",
+      "analysisProfile": "Profil analisis contoh setiap universiti.",
+      "coverageScores": "Skor keluasan liputan, bukan kualiti dasar.",
+      "analysisQuality": "Gerbang halaman analisis awam.",
+      "reportsIndex": "Indeks laporan awam.",
+      "outreach": "Salinan media dan buletin dengan sempadan.",
+      "chartData": "Data carta laporan bulanan Jun 2026.",
+      "widgetIndex": "Penemuan widget.",
+      "policyCoverageWidget": "Widget liputan contoh.",
+      "sourceFreshnessWidget": "Widget kesegaran sumber contoh.",
+      "reviewStateWidget": "Widget keadaan semakan contoh.",
+      "qsCoverage": "Liputan koleksi QS 2026.",
+      "sourceHealth": "Status sumber untuk perancangan pembaikan dan penguraian semula.",
+      "reviewQueue": "Metadata barisan kerja peringkat pentas yang tidak dipromosikan.",
+      "mcpManifest": "Manifest alfa MCP baca sahaja.",
+      "mcpToolCatalog": "Katalog alat MCP baca sahaja.",
+      "citationMetadata": "Templat sitasi dan peraturan penggunaan semula.",
+      "contributionIndex": "Metadata aliran kerja sumbangan.",
+      "reviewPolicy": "Dasar semakan sumbangan."
+    },
+    "concepts": [
+      {
+        "name": "Universiti",
+        "status": "Boleh didapati sekarang",
+        "description": "Rekod universiti kanonikal boleh didapati sebagai halaman yang kelihatan dan rekod JSON awam setiap universiti."
+      },
+      {
+        "name": "Tuntutan",
+        "status": "Boleh didapati di dalam JSON universiti",
+        "description": "Tuntutan termasuk teks tuntutan, jenis tuntutan, keyakinan, keadaan semakan, tarikh, dan array bukti."
+      },
+      {
+        "name": "Sumber",
+        "status": "Boleh didapati di dalam rekod awam",
+        "description": "Sumber rasai muncul sebagai atribusi sumber dan URL sumber bukti dengan terma hak cipta."
+      },
+      {
+        "name": "Imbasan",
+        "status": "Metadata hash boleh didapati sekarang",
+        "description": "Rekod awam mendedahkan hash imbasan sumber. HTML mentah, PDF, dan tangkapan skrin tidak diterbitkan sebagai metadata penjejak."
+      },
+      {
+        "name": "Perubahan terkini",
+        "status": "Boleh didapati sekarang",
+        "description": "Suapan JSON perubahan terkini merumuskan rekod universiti yang diperiksa dan diubah dengan keadaan semakan."
+      },
+      {
+        "name": "Profil analisis",
+        "status": "Tersedia sekarang",
+        "description": "Profil analisis dasar deterministik terbit dimensi dan skor liputan daripada rekod tuntutan/bukti awam yang sedia ada."
+      },
+      {
+        "name": "Papan pemuka liputan",
+        "status": "Tersedia sekarang",
+        "description": "Log meta liputan QS, kesihatan sumber, dan baris gilir semak mendedahkan status pengumpulan dan kerja perayap/semak tanpa menerbitkan tuntutan peringkat."
+      },
+      {
+        "name": "Penyelesaian entiti dan carian",
+        "status": "Tersedia sekarang",
+        "description": "Alias entiti kanonikal dan indeks carian selamat meningkatkan panggilan semula tanpa mencipta fakta dasar atau mendedahkan artifak yang belum diterbitkan."
+      }
+    ]
+  },
+  "methodology": {
+    "title": "Metodologi | University AI Policy Tracker",
+    "description": "Bagaimana University AI Policy Tracker menemui sumber, mengambil gambar muka surat, mengikat bukti, memisahkan keyakinan daripada keadaan semak, dan menerbitkan rekod sedia sitasi.",
+    "kicker": "Metodologi",
+    "heading": "Bagaimana rekod menjadi tuntutan berasaskan sumber",
+    "lead": "Sumber rasmi, gambar muka surat, petikan bukti ringkas, keyakinan, dan keadaan semak tersurat.",
+    "answersLabel": "Blok jawapan metodologi",
+    "tocLabel": "Bahagian metodologi",
+    "toc": {
+      "workflow": "Alur kerja bukti",
+      "reviewStates": "Keadaan semak",
+      "rankingBoundaries": "Sempadan penarafan",
+      "publicationRules": "Peraturan penerbitan",
+      "limitations": "Had"
+    },
+    "workflowDescription": "Dari penemuan sumber awam kepada rekod sedia sitasi.",
+    "reviewDescription": "Keadaan semak ialah status alur kerja. Keyakinan ialah sokongan yang dinilai oleh mesin.",
+    "rankingDescription": "Baris penarafan membantu mengutamakan dan menapis penemuan sumber. Ia bukan tuntutan dasar.",
+    "publicationDescription": "Apa yang mesti wujud sebelum satu tuntutan menjadi awam.",
+    "limitationsDescription": "Sempadan yang diketahui bagi lapisan bukti semasa.",
+    "footer": "Gunakan panduan sitasi untuk peraturan atribusi, halaman set data untuk akses JSON awam, dan perubahan terkini untuk isyarat kesegaran.",
+    "links": {
+      "citationGuide": "panduan sitasi",
+      "datasetsPage": "halaman set data",
+      "recentChanges": "perubahan terkini"
+    },
+    "answers": [
+      {
+        "title": "Bagaimana rekod menjadi awam",
+        "text": "Rekod menjadi awam selepas penemuan sumber, penghimpitan snapshot, ekstraksi tuntutan, pengikatan bukti, pelabelan keadaan semakan, dan penerbitan daripada set data awam yang dipromosikan."
+      },
+      {
+        "title": "Maksud keadaan semakan",
+        "text": "Keadaan semakan menerangkan status aliran kerja. Keyakinan ialah skor sokongan yang dinilai oleh mesin secara berasingan dan tidak menjadikan tuntutan rasmi."
+      },
+      {
+        "title": "Bukti apa yang kanonikal",
+        "text": "Bukti bahasa asal, URL sumber, dan halaman universiti rasmi kekal kanonikal; terjemahan atau ringkasan ialah metadata pembantu."
+      }
+    ],
+    "workflowSteps": [
+      {
+        "title": "Penemuan sumber",
+        "description": "Halaman dasar universiti yang tersedia secara umum, panduan pengajaran, halaman IT/keselamatan, halaman perolehan, PDF dan bahan yang mempunyai atribusi sumber."
+      },
+      {
+        "title": "Rangkaian dan snapshot",
+        "description": "Teks sumber yang diambil menerima himpungan kandungan untuk semakan perubahan masa depan."
+      },
+      {
+        "title": "Ekstraksi tuntutan",
+        "description": "Tuntutan mengekalkan keyakinan secara berasingan daripada keadaan semakan."
+      },
+      {
+        "title": "Pengikatan bukti",
+        "description": "Setiap tuntutan awam memerlukan URL sumber, himpungan snapshot, petikan bukti, bahasa sumber, dan keistimewaan hak."
+      },
+      {
+        "title": "Pengesanan perubahan",
+        "description": "Himpungan yang berubah boleh mencipta snapshot baharu, calon, kemas kini tuntutan, dan rekod perubahan."
+      },
+      {
+        "title": "Bukti sumber pertama pelbagai bahasa",
+        "description": "Bukti bahasa asal adalah kanonikal; terjemahan ialah pembantu paparan."
+      }
+    ],
+    "reviewStates": [
+      {
+        "label": "machine_candidate",
+        "description": "Dihasilkan oleh crawler, extractor, atau proses seed; bukan akhir."
+      },
+      {
+        "label": "needs_review",
+        "description": "Sumber, ekstraksi, tarikh, atau pengelasan memerlukan semakan."
+      },
+      {
+        "label": "agent_reviewed",
+        "description": "Ejen telah menyemak bukti dan pengelasan."
+      },
+      {
+        "label": "human_reviewed",
+        "description": "Penyemak manusia atau peraturan terbitan deterministik telah menyetujui tuntutan tersebut."
+      },
+      {
+        "label": "rejected",
+        "description": "Dipelihara hanya untuk konteks audit."
+      }
+    ],
+    "rankingRules": [
+      "QS 2026 kekal sebagai sumber pengumpulan batch utama untuk mengembangkan liputan awam.",
+      "THE 2026, ARWU 2025, U.S. News 2025-2026, dan CWTS Leiden 2025 disokong sebagai sumber penarafan, indeks, dan penapis.",
+      "CWTS Leiden 2025 ialah susunan metrik terbitan, bukan penarafan universiti global keseluruhan.",
+      "Tahun penarafan yang berbeza tidak dibentangkan sebagai satu penarafan 2026 yang bersatu.",
+      "Data penarafan tidak mencipta atau mengatasi tuntutan dasar; tuntutan yang kelihatan masih memerlukan sumber rasmi, petikan bukti, keyakinan, dan keadaan semakan."
+    ],
+    "publicationRules": [
+      "Setiap tuntutan awam memerlukan URL sumber dan hamparan snapshot sumber.",
+      "Petikan bukti kekal ringkas, perlu, dan atribusi sumber.",
+      "Bukti bahasa asal adalah kanonik; terjemahan hanya untuk paparan.",
+      "Fakta kanonik dan paparan tempatan mesti kekal berasingan.",
+      "Tuntutan calon mesti dilabel dan tidak boleh digunakan sebagai ringkasan akhir.",
+      "Laman awam dan JSON awam harus dijana daripada set data pelepasan awam yang dipromosikan yang sama.",
+      "Dokumen sumber rasmi mengekalkan hak dan terma asal mereka."
+    ],
+    "limitations": [
+      "Dasar universiti boleh diedarkan merentas jabatan, kursus, PDF, dan sistem dalaman.",
+      "Rekod jarang kekal dilabel sebagai liputan awal sehingga bukti yang disemak menyokong kesimpulan yang lebih kukuh.",
+      "Penjejak merekodkan metadata semakan sumber dan bukti tuntutan; ia tidak memberikan nasihat undang-undang atau nasikh integriti akademik."
+    ]
+  },
+  "citation": {
+    "title": "Petikan | University AI Policy Tracker",
+    "description": "Format petikan, peraturan atribusi sumber, medan JSON awam, teras hak cipta, dan sempadan nasihat untuk University AI Policy Tracker.",
+    "kicker": "Petikan",
+    "heading": "Sitasi metadata penjejak dan sumber rasmi secara berasingan",
+    "lead": "Kekalkan halaman kanonik, JSON awam, URL sumber, huraian snapshot, keadaan semakan, keyakinan, dan bukti asal bersama.",
+    "answersLabel": "Blok jawapan petikan",
+    "tocLabel": "Bahagian petikan",
+    "toc": {
+      "formats": "Format yang dicadangkan",
+      "fields": "Medan petikan",
+      "json": "JSON Awam",
+      "ranking": "Sumber penarafan",
+      "rights": "Hak dan sempadan"
+    },
+    "formatsDescription": "Contoh sedia salin.",
+    "universityPolicyRecord": "Rekod dasar universiti",
+    "datasetSurface": "Permukaan set data",
+    "changesFeed": "Suapan atau laporan perubahan",
+    "fieldsDescription": "Kekalkan medan ini.",
+    "pageDataIdentity": "Identiti halaman dan data",
+    "freshnessReview": "Kesegaran dan semakan",
+    "sourceEvidence": "Bukti sumber",
+    "jsonDescription": "Rekod versi untuk penggunaan semula.",
+    "apiIndex": "Indeks API",
+    "universitiesList": "Senarai universiti",
+    "universityRecord": "Rekod universiti",
+    "recentChanges": "Perubahan terkini",
+    "rankingDescription": "Indeks rujukan, bukan kedudukan dasar.",
+    "rightsDescription": "metadata penjejak",
+    "browsePrefix": "Semak imbas",
+    "readPrefix": "baca",
+    "reviewPrefix": "atau semak semula",
+    "universityRecords": "rekod universiti",
+    "methodology": "metodologi",
+    "datasetAccess": "akses set data",
+    "answers": [
+      {
+        "title": "Cara sitasi rekod universiti",
+        "text": "Sitasi halaman rekod awam kanonik dan URL JSON awam yang sepadan bersama-sama, kemudian kekalkan URL sumber, keadaan semakan semula, keyakinan, dan tarikh terakhir diperiksa."
+      },
+      {
+        "title": "Cara sitasi bukti tuntutan",
+        "text": "Untuk penggunaan semula peringkat tuntutan, sertakan teks tuntutan, petikan bukti bahasa asal, bahasa sumber, URL sumber, huraian snapshot, keyakinan, dan keadaan semakan semula."
+      },
+      {
+        "title": "Apa yang tidak perlu disitaskan sebagai rasmi",
+        "text": "Metadata University AI Policy Tracker bukan kenyataan rasmi universiti; sitasi sumber rasmi yang dipautkan secara berasingan untuk perkataan dasar institusi."
+      }
+    ],
+    "identityRules": [
+      "URL kanonik untuk halaman awam yang kelihatan.",
+      "URL JSON awam versi di bawah ruang nama API awam.",
+      "Halaman awam dan JSON awam harus menerangkan rekod pelepasan awam yang dipromosikan yang sama.",
+      "Versi skema."
+    ],
+    "freshnessRules": [
+      "Tarikh terakhir diperiksa, apabila sumber terakhir diperiksa.",
+      "Tarikh terakhir diubah, apabila sumber atau tuntutan yang dipantau berubah.",
+      "Keadaan semakan semula, yang berasingan daripada keyakinan mesin."
+    ],
+    "evidenceRules": [
+      "URL sumber rasmi atau yang dilabel dengan jelas.",
+      "Huraian snapshot sumber untuk kejelesan perubahan dan sitasi.",
+      "Potongan bukti bahasa asal dan sumber bahasa."
+    ],
+    "rankingRules": [
+      "QS 2026 kekal sebagai sumber pengelompokan merayau utama buat masa ini.",
+      "THE 2026, ARWU 2025, U.S. News 2025-2026, dan CWTS Leiden 2025 disokong sebagai sumber penarafan, indeks, dan penapis.",
+      "CWTS Leiden 2025 ialah susunan metrik terbitan, bukan penarafan universiti global keseluruhan.",
+      "Jangan sitat tahun penarafan bercampur sebagai satu penarafan 2026 yang bersatu. Sitat rekod tracker dan JSON awam untuk bukti dasar, dan sitat sumber penarafan yang relevan secara berasingan apabila konteks penarafan penting."
+    ]
+  },
+  "analysis": {
+    "title": "Analisis Dasar | University AI Policy Tracker",
+    "description": "Profil analisis dasar AI universiti yang deterministik dan disokong bukti dengan ID tuntutan sumber, keadaan semakan, skor liputan, dan JSON awam yang dikendalikan versi.",
+    "kicker": "Analisis dasar",
+    "heading": "Profil analisis berasaskan sumber, bukan nasihat dasar",
+    "lead": "Dimensi terbitan ke atas rekod tuntutan/bukti awam. Setiap hasil bukan kosong mengekalkan ID tuntutan, URL sumber, bahasa sumber, dan bukti.",
+    "profiles": "Profil",
+    "schema": "Skema",
+    "publicApi": "API Awam",
+    "coverageLabel": "Liputan analisis dasar",
+    "analysisProfiles": "profil analisis",
+    "evidenceBackedDimensions": "dimensi berasaskan bukti",
+    "averageCoverageScore": "purata skor liputan awam",
+    "sourceLanguagesPreserved": "bahasa sumber dikekalkan",
+    "answersLabel": "Blok jawapan analisis dasar",
+    "summaryTitle": "Ringkasan",
+    "summaryDescription": "Untuk konteks sitatan.",
+    "scoreNotice": "Skor Liputan Dasar mengukur keluasan liputan awam yang disokong sumber. Ia bukan skor kualiti, ketegasan, kecukupan undang-undang, keselamatan, atau pematuhan institusi.",
+    "tocLabel": "Bahagian analisis",
+    "toc": {
+      "meaning": "Sempadan",
+      "dimensions": "Dimensi",
+      "coverage": "Skop liputan",
+      "themes": "Analisis tema",
+      "quality": "Gerbang kualiti",
+      "review": "Aliran kerja semakan",
+      "json": "JSON awam",
+      "citation": "Petikan"
+    },
+    "meaningDescription": "Metadata terbitan dengan pautan sumber.",
+    "dimensionsDescription": "Semua dimensi adalah kelihatan dan disokong oleh kontrak.",
+    "coverageDescription": "Skop ini hanyalah ukuran keluasan liputan sahaja.",
+    "openCoverageTable": "Jadual liputan terbuka",
+    "coverageText": "Komponen skor liputan berjumlah 100 mata merentas kategori bukti awam seperti panduan pusat, integriti akademik, pengungkapan, tugasan kursus, peperiksaan, privasi/pemasukan data, alat yang diluluskan, dan panduan pengajaran atau penyelidikan.",
+    "coverageWarning": "Skop ini tidak sepatutnya digambarkan sebagai polisi terbaik, polisi terburuk, paling mematuhi, selamat secara undang-undang, atau disokong oleh institusi.",
+    "qualityDescription": "Gerbang penerbitan memastikan halaman analisis kekal berguna untuk carian dan enjin jawapan AI tanpa menukar data yang jarang menjadi halaman nipis.",
+    "pageQualityJson": "JSON kualiti halaman",
+    "qualityStatus": "Status kualiti halaman semasa: {status}. Laporan ini merangkumi {count} halaman analisis awam dan mengekalkan keadaan semakan berasingan daripada kesiapan penerbitan halaman.",
+    "reviewDescription": "Semakan kualiti tidak menerbitkan analisis kanonik. Ia mengarah rekod yang diragui ke dalam semakan.",
+    "openReviewWorkflow": "Aliran kerja semakan terbuka",
+    "queue": "Barisan tunggu",
+    "publicMutation": "Mutasi awam",
+    "notAllowed": "Tidak dibenarkan",
+    "reviewStates": "Keadaan semakan",
+    "themesDescription": "Hanya tema dengan bukti awam yang mencukupi dipautkan dari indeks ini.",
+    "openAnalysis": "Analisis terbuka",
+    "held": "Disimpan sehingga ambang bukti dicapai",
+    "jsonDescription": "Hujung titik baca sahaja yang dikendalikan versi untuk penggunaan semula hiliran.",
+    "citationDescription": "Gunakan halaman kanonik dan JSON awam bersama-sama.",
+    "suggestedCitation": "Petikan yang dicadangkan",
+    "answers": [
+      {
+        "title": "Maksud analisis",
+        "text": "Profil analisis ialah metadata terbitan atas rekod tuntutan/bukti awam. Ia merangkum dimensi dasar tanpa menggantikan bukti sumber."
+      },
+      {
+        "title": "Maksud skor liputan",
+        "text": "Skor liputan mengukur keluasan bukti awam yang kelihatan, bukan kualiti dasar, keselamatan, kesahihan undang-undang, ketegasan, atau pematuhan."
+      },
+      {
+        "title": "Cara memetik analisis",
+        "text": "Petik JSON analisis bersama rekod universiti berkaitan, ID tuntutan asas, URL sumber, keadaan semakan, dan bukti asal."
+      }
+    ],
+    "boundaryRules": [
+      "Dimensi merangkum tuntutan penjejak awam ke dalam label yang konsisten.",
+      "Bukti bahasa asal kekal kanonik.",
+      "Keyakinan adalah berasingan daripada keadaan semakan.",
+      "\"not_mentioned\" bermaksud tiada bukti penjejak awam yang sepadan wujud dalam profil semasa.",
+      "Buka ID tuntutan asas dan URL sumber sebelum penggunaan semula."
+    ],
+    "evidenceBacked": "Disokong bukti",
+    "notMentioned": "Tidak disebut",
+    "gate": "Gerbang",
+    "analysisIndex": "Indeks analisis",
+    "analysisIndexDescription": "Manifest hujung titik analisis dengan definisi dimensi dan metadata versi.",
+    "universityAnalysisProfile": "Profil analisis universiti",
+    "universityAnalysisProfileDescription": "Contoh profil analisis setiap universiti dengan dimensi, bukti asas, dan skor liputan.",
+    "coverageScores": "Skor liputan",
+    "coverageScoresDescription": "Senarai skor liputan untuk profil analisis awam.",
+    "analysisPageQuality": "Kualiti halaman analisis",
+    "analysisPageQualityDescription": "Laporan baca sahaja bagi gerbang kualiti halaman, status indeksasi, aliran kerja semakan analisis, dan sempadan tanpa nasihat."
+  },
+  "changes": {
+    "title": "Perubahan Terkini | University AI Policy Tracker",
+    "description": "Garis masa perubahan dasar universiti yang boleh dicari dengan perbandingan tuntutan lama/baru, kesegaran sumber, keadaan semakan, dan pautan JSON awam yang versi.",
+    "kicker": "Perubahan",
+    "heading": "Garis masa perubahan dasar universiti",
+    "lead": "Cari dan bandingkan rekod awam perubahan dasar AI universiti mengikut tema, keadaan semakan, kesihatan sumber dan sejarah keluaran.",
+    "summaryLabel": "Ringkasan garis masa perubahan",
+    "recordsWithDiffRows": "rekod perubahan dengan baris perbezaan",
+    "policyTextChanges": "perubahan teks dasar yang boleh dibandingkan",
+    "newlyExtractedClaims": "tuntutan yang baru diekstrak",
+    "privateSourceTextChanges": "perubahan teks sumber peribadi",
+    "answersLabel": "Blok jawapan garis masa perubahan",
+    "artifactTitle": "Artefak perubahan awam",
+    "artifactDescription": "Garis masa versi untuk rekod dan ejen.",
+    "recentChangesJson": "JSON perubahan terkini",
+    "recentChangesJsonDescription": "Rekod yang baru diubah atau disemak dengan URL kanonikal, keadaan semakan, bilangan tuntutan, dan bukti tuntutan jika ada.",
+    "latestDiffJson": "JSON perbezaan pelepasan terkini",
+    "latestDiffJsonDescription": "Perbezaan tracker pelepasan-ke-pelepasan terkini dengan kategori semantik untuk teks dasar, tuntutan yang diekstrak, bukti, dan snapshot sumber.",
+    "indexJson": "JSON indeks perubahan",
+    "indexJsonDescription": "Metadata penapisan dan rekod garis masa peringkat universiti untuk halaman /changes.",
+    "filtersTitle": "Penapis garis masa",
+    "filtersLead": "Tapis mengikut teks universiti, tema dasar, keadaan semakan, kesihatan sumber, atau susunan.",
+    "searchLabel": "Cari",
+    "searchPlaceholder": "Universiti, teks tuntutan, tema, petikan...",
+    "themeLabel": "Tema",
+    "reviewLabel": "Keseimbangan semakan",
+    "sourceHealthLabel": "Kesihatan sumber",
+    "sortLabel": "Susun",
+    "applyFilters": "Terapkan penapis",
+    "resetFilters": "Set semula",
+    "allThemes": "Semua tema",
+    "allReviewStates": "Semua keseimbangan semakan",
+    "allSourceHealth": "Semua kesihatan sumber",
+    "sortChanged": "Terkini diubah",
+    "sortChecked": "Terkini diperiksa",
+    "sortClaims": "Paling banyak tuntutan",
+    "sortSources": "Paling banyak sumber",
+    "firstSeen": "Dikesan pertama",
+    "oldClaim": "Tuntutan lama",
+    "newClaim": "Tuntutan baharu",
+    "timelineTitle": "Garis masa perubahan",
+    "timelineLead": "Keluaran terkini {current} dibandingkan dengan {previous}. {sources} atribusi sumber merentasi {records} rekod.",
+    "changeDetail": "Butiran perubahan",
+    "universityPage": "Halaman universiti",
+    "publicJson": "JSON awam",
+    "diff": "Perbezaan",
+    "claims": "Tuntutan",
+    "sources": "Sumber",
+    "checked": "Disemak",
+    "changed": "Diubah",
+    "noPublicDate": "Tiada tarikh awam lagi",
+    "noChanges": "Tiada perubahan tuntutan/bukti yang direkodkan untuk keluaran awam terkini. URL suapan versi kekal tersedia untuk pembaca dan ejen.",
+    "boundaryTitle": "Sempadan",
+    "boundaryLead": "Isyarat kesegaran sahaja",
+    "answers": [
+      {
+        "title": "Apa yang ditunjukkan oleh garis masa",
+        "text": "Setiap rekod menggabungkan halaman universiti yang kelihatan, JSON awam, sejarah perubahan, dan kesegaran sumber supaya pengguna carian boleh melompat dari pertanyaan ke rekod sedia sitasi."
+      },
+      {
+        "title": "Cara membaca tuntutan",
+        "text": "Tuntutan lama dan baru menunjukkan perbandingan dasar yang dilacak terkini. Tuntutan yang diekstrak baharu atau perubahan tangkapan sumber adalah peristiwa penjejak, bukan secara automatik kesimpulan dasar."
+      },
+      {
+        "title": "Cara menggunakannya semula",
+        "text": "Gunakan blok sitasi halaman bersama titik akhir JSON yang dipautkan. Penapis tema, semakan, dan kesihatan sumber adalah alat penemuan, bukan penilaian dasar."
+      }
+    ],
+    "summary": "{name} mempunyai {claims} rekod tuntutan berasaskan sumber dan {sources} atribusi rasmi. Tarikh perubahan yang dilacak terkini ialah {changedDate}. Perbezaan penjejak terkini: {policy} perubahan teks dasar yang boleh dibandingkan, {extracted} tuntutan baharu yang diekstrak, {snapshot} perubahan tangkapan sumber, dan {sourceText} perubahan teks sumber peribadi di mana tangkapan peribadi tersedia."
+  },
+  "contribute": {
+    "title": "Sumbang | University AI Policy Tracker",
+    "description": "Hantar sumber dasar AI universiti rasmi, pembetulan, bukti dasar AI peringkat kursus, pembaikan terjemahan, dan isu set data ke dalam aliran kerja tugasan semakan.",
+    "kicker": "Penerimaan sumbangan",
+    "heading": "Hantar bukti ke dalam barisan semakan",
+    "lead": "Sumbangan membantu mengembangkan liputan, tetapi ia tidak mencipta fakta dasar kanonik secara langsung. Setiap URL sumber, pembetulan, pembaikan terjemahan, atau penghantaran peringkat kursus bermula sebagai tugasan semakan dengan pemeriksaan privasi, hak cipta, bahasa sumber, dan bukti.",
+    "pathsTitle": "Laluan sumbangan",
+    "pathsDescription": "Saluran penerimaan langsung pertama ialah templat isu GitHub, supaya penghantaran kelihatan, boleh diaudit, dan disemak sebelum penerbitan.",
+    "openTemplate": "Buka templat",
+    "queue": "Barisan",
+    "canonicalFact": "Fakta kanonik",
+    "no": "Tidak",
+    "boundaryTitle": "Apa yang boleh dan tidak boleh dilakukan oleh satu penyerahan",
+    "boundaryDescription": "Ini adalah sempadan penerbitan untuk semua jenis sumbangan.",
+    "courseTitle": "Penyerahan peringkat kursus",
+    "courseDescription": "Penyerahan dasar peringkat kursus adalah berguna, tetapi ia dikendalikan sebagai rekod bukti, bukan sebagai komen terbuka.",
+    "courseText": "Rekod kursus mesti menggunakan semula struktur tuntutan/bukti yang sama seperti rekod universiti: entiti, istilah, jenis sumber, tuntutan, bukti bahasa asal, bahasa sumber, keadaan semakan, dan status moderasi. Jangan tampal silabus penuh, kandungan LMS, maklumat pelajar peribadi, atau data pensyarah bukan awam.",
+    "allowedStart": "Mula yang dibenarkan",
+    "allowedStartValue": "Petikan ringkas atau URL silabus awam untuk semakan",
+    "initialState": "Keadaan awal",
+    "initialStateValue": "tugas semakan tertunda, bukan tuntutan awam",
+    "publicationModel": "Model penerbitan",
+    "publicationModelValue": "tuntutan/bukti selepas moderasi dan semakan hak",
+    "apiTitle": "Metadata API Sumbangan",
+    "apiDescription": "Dasar pengambilan boleh baca mesin untuk ejen, pembangun, dan penyumbang.",
+    "contributionIndex": "Indeks sumbangan",
+    "contributionIndexDescription": "Alur kerja sumbangan, medan diperlukan, URL templat isu GitHub, langkah keselamatan, dan peraturan penerbitan.",
+    "reviewPolicy": "Dasar semakan",
+    "reviewPolicyDescription": "Barisan tumpu semakan, gerbang penerbitan, peraturan moderasi, dan sempadan semakan sumbangan.",
+    "readOnlyMetadata": "Metadata baca sahaja",
+    "notice": "Penjejak ini bukan nasihat undang-undang, bukan nasihat integriti akademik, dan bukan kenyataan rasmi universiti melainkan sumber yang dipautkan adalah halaman rasmi universiti itu sendiri."
+  }
+}
