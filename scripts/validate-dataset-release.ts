@@ -17,12 +17,19 @@ const requiredArtifactIds = new Set([
 ]);
 
 interface PublicReleaseInputManifest {
+  candidateOnly?: boolean;
+  description: string;
   includeStagedArtifactDirectories: string[];
+  notes?: string[];
+  previousReleaseId?: string;
+  publishedAt: string;
+  releaseId: string;
 }
 
 void main();
 
 async function main(): Promise<void> {
+  await assertReleaseStateSemantics();
   await assertNoMaintenanceRunsInCurrentRelease();
 
   const release = await getDatasetRelease();
@@ -105,6 +112,120 @@ async function main(): Promise<void> {
   console.log(
     `Validated dataset release ${manifest.releaseId}: ${manifest.artifacts.length} artifacts, ${manifest.counts.universities} universities, ${manifest.counts.claims} claims, ${manifest.counts.sources} sources, ${manifest.counts.changes} changes, ${manifest.counts.evidenceRecords} evidence records.`
   );
+}
+
+async function assertReleaseStateSemantics(): Promise<void> {
+  const currentPath = "data/public-releases/current.json";
+  const historyDirectory = "data/public-releases/history";
+  const candidateDirectory = "data/public-releases/candidates";
+  const current = await readReleaseManifest(currentPath);
+  const history = await readReleaseManifests(historyDirectory);
+  const candidates = await readReleaseManifests(candidateDirectory);
+
+  assertPublishedManifest(current, currentPath);
+  for (const item of history) assertPublishedManifest(item.manifest, item.path);
+  for (const item of candidates) {
+    assertCandidateManifest(item.manifest, item.path);
+  }
+
+  const published = [
+    ...history.map((item) => item.manifest),
+    current
+  ].sort((left, right) => left.publishedAt.localeCompare(right.publishedAt));
+  const publishedIds = new Set(published.map((manifest) => manifest.releaseId));
+
+  if (published.at(-1)?.releaseId !== current.releaseId) {
+    throw new Error(
+      `Current release ${current.releaseId} is not the latest published manifest by publishedAt.`
+    );
+  }
+
+  for (let index = 0; index < published.length; index += 1) {
+    const manifest = published[index];
+    if (!manifest.previousReleaseId) continue;
+    if (!publishedIds.has(manifest.previousReleaseId)) {
+      throw new Error(
+        `Published release ${manifest.releaseId} points to unknown previous release ${manifest.previousReleaseId}.`
+      );
+    }
+
+    const chronologicalPrevious = published[index - 1]?.releaseId;
+    if (
+      chronologicalPrevious &&
+      manifest.previousReleaseId !== chronologicalPrevious
+    ) {
+      throw new Error(
+        `Published release ${manifest.releaseId} points to ${manifest.previousReleaseId}; chronological previous release is ${chronologicalPrevious}.`
+      );
+    }
+  }
+
+  console.log(
+    `Validated release-state semantics: ${candidates.length} candidates, ${history.length} historical releases, current ${current.releaseId}.`
+  );
+}
+
+function assertPublishedManifest(
+  manifest: PublicReleaseInputManifest,
+  manifestPath: string
+): void {
+  if (manifest.candidateOnly === true) {
+    throw new Error(`Published manifest is still candidateOnly: ${manifestPath}`);
+  }
+  if (
+    /candidate only|awaiting explicit .*promotion/i.test(manifest.description)
+  ) {
+    throw new Error(`Published manifest has candidate description: ${manifestPath}`);
+  }
+  if (
+    manifest.notes?.some((note) =>
+      /promotion requires|awaiting explicit .*promotion|must .*before promotion/i.test(
+        note
+      )
+    )
+  ) {
+    throw new Error(`Published manifest has pre-promotion notes: ${manifestPath}`);
+  }
+}
+
+function assertCandidateManifest(
+  manifest: PublicReleaseInputManifest,
+  manifestPath: string
+): void {
+  if (manifest.candidateOnly !== true) {
+    throw new Error(
+      `Candidate manifest is missing candidateOnly=true: ${manifestPath}`
+    );
+  }
+  if (!/candidate/i.test(manifest.description)) {
+    throw new Error(`Candidate manifest has a published description: ${manifestPath}`);
+  }
+}
+
+async function readReleaseManifests(
+  directory: string
+): Promise<Array<{ manifest: PublicReleaseInputManifest; path: string }>> {
+  const entries = (await readdir(directory))
+    .filter((name) => name.endsWith(".json"))
+    .sort();
+
+  return Promise.all(
+    entries.map(async (name) => {
+      const manifestPath = path.join(directory, name);
+      return {
+        manifest: await readReleaseManifest(manifestPath),
+        path: manifestPath
+      };
+    })
+  );
+}
+
+async function readReleaseManifest(
+  manifestPath: string
+): Promise<PublicReleaseInputManifest> {
+  return JSON.parse(
+    await readFile(manifestPath, "utf8")
+  ) as PublicReleaseInputManifest;
 }
 
 async function assertNoMaintenanceRunsInCurrentRelease(): Promise<void> {

@@ -807,12 +807,12 @@
     "staging/uapt-runs/uapt-ai-tools-qs-top-500-20260718-008"
   ],
   "notes": [
-    "Publishes 919 official-source AI tool records for 314 universities from 388 official university sources.",
+    "The release-scoped QS top-500 bundle contains 919 official-source AI tool records for 314 universities from 388 official university sources.",
     "The repaired 008 extension contains 39 records across 24 universities; its 70-row ledger has 24 positive rows, 0 verified-zero rows, and 46 blocked/null evidence-boundary rows.",
     "A semantic re-review of all 21 blocked rows carrying institutional-access signals repaired Hiroshima University, University of Guelph, and American University; the other 18 remain blocked/null rather than asserted zero.",
     "Permanent regressions require six newly recovered records: Hiroshima Copilot Chat, Gemini, and NotebookLM; Guelph Microsoft 365 Copilot Chat; and American University Copilot Chat and Perplexity Enterprise Pro.",
     "The immutable QS top-430 005 baseline is preserved byte-for-byte; the latest production manifest, including subsequent maintenance runs, is extended rather than replaced.",
-    "The OpenClaw bundle must contain all nine required artifact types before promotion. Tracker metadata is open licensed; official source documents retain their original rights."
+    "The OpenClaw schema, release, public-contract, public-data, check, and production-build gates passed before promotion. Tracker metadata is open licensed; official source documents retain their original rights."
   ],
-  "previousReleaseId": "public-release-20260715-005"
+  "previousReleaseId": "public-release-20260717-001"
 }

@@ -808,12 +808,12 @@
     "staging/uapt-runs/uapt-ai-tools-qs-top-600-20260718-009"
   ],
   "notes": [
-    "Publishes 985 official-source AI tool records for 338 universities from 416 official university sources.",
+    "The release-scoped QS top-600 bundle contains 985 official-source AI tool records for 338 universities from 416 official university sources.",
     "The repaired QS rows 501-600 extension contains 66 records across 24 universities from 28 official sources.",
     "All 100 QS source rows were re-audited; 24 rows have positive records, 76 remain blocked/null, and none is asserted as a verified zero.",
     "The repair run corrected public-suffix domain errors, repeated official-domain discovery, retained per-query and direct-fetch traces, and requires semantic QA rather than treating HTTP success as evidence of absence.",
     "The immutable QS Top-500 008 baseline is preserved byte-for-byte at SHA-256 2086267d34502b5441c5f8b08f8578498850b55783f15c1a31ed28a37bf44f3f.",
-    "Promotion requires the official OpenClaw schema validator, dataset release validator, public contract, public-data audit, full pnpm check, and production build to pass.",
+    "The OpenClaw schema, dataset-release, public-contract, public-data, full-check, and production-build gates passed before promotion.",
     "Tracker metadata is open licensed; official source documents retain their original rights."
   ],
   "previousReleaseId": "public-release-20260718-008"

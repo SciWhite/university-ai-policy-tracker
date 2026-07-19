@@ -3,6 +3,7 @@
   "releaseId": "public-release-20260715-005",
   "publishedAt": "2026-07-15T05:29:47.705Z",
   "description": "QS top-430 AI tools full re-audit candidate with one deduplicated canonical tool-record bundle.",
+  "candidateOnly": true,
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",

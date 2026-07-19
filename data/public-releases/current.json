@@ -2,7 +2,7 @@
   "schemaVersion": "uapt-public-release-manifest-v1",
   "releaseId": "public-release-20260719-012",
   "publishedAt": "2026-07-18T21:15:39.689Z",
-  "description": "QS top-857 AI tools 012 release: completes the remaining 157 exact source rows while preserving the immutable 011 Top-700 production baseline.",
+  "description": "Public QS top-857 AI tools 012 release: completes the remaining 157 exact source rows while preserving the immutable 011 Top-700 production baseline.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -810,15 +810,15 @@
     "staging/uapt-runs/uapt-ai-tools-qs-top-857-20260719-012"
   ],
   "notes": [
-    "Publishes 1141 official-source AI tool records for 396 universities from 501 official sources.",
+    "The release-scoped QS top-857 canonical bundle contains 1141 official-source AI tool records for 396 universities from 501 official sources.",
+    "The merged public tools endpoint exposes 1498 records across 525 universities; that endpoint total also includes other promoted source-backed tool records outside the release-scoped QS bundle.",
     "The QS rows 701-857 extension contains 85 records across 30 universities from 46 official sources.",
     "All 157 exact source rows were re-audited with 785 multilingual query traces; 0 Firecrawl failures remain explicit search boundaries and no blocked row is asserted as a verified zero.",
     "All 416 semantic candidate/evidence surfaces have explicit source-level decisions.",
     "The immutable Top-700 011 baseline is preserved byte-for-byte at SHA-256 7dae7b678b15fd9264963edb2eca0c22384bdf44c2d38a3a919d319f52247eb5.",
     "The ranking source contains 857 rows, so row 857 is the final available source row; there are no source rows 858-1000 in this repository snapshot.",
-    "Promotion requires independent QA, release validation, public-data audit, full pnpm check, production build, and live API verification.",
+    "Independent QA, release validation, public-data audit, full pnpm check, production build, and live API verification passed before promotion.",
     "Tracker metadata is open licensed; official source documents retain their original rights."
   ],
-  "previousReleaseId": "public-release-20260719-011",
-  "candidateOnly": true
+  "previousReleaseId": "public-release-20260719-011"
 }

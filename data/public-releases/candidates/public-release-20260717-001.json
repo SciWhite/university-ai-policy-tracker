@@ -3,6 +3,7 @@
   "releaseId": "public-release-20260717-001",
   "publishedAt": "2026-07-17T06:24:20.109Z",
   "description": "Maintenance release candidate from maintenance-2026-07-08T05-22-35-416Z; awaiting explicit Codex promotion confirmation.",
+  "candidateOnly": true,
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -806,10 +807,10 @@
     "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-07-08T05-22-35-416Z-tufts-university-895e3cb8119d"
   ],
   "notes": [
-    "Preserves public-release-20260714-002 in release history and promotes staging/uapt-runs/uapt-ai-tools-qs-top-430-20260715-005 as an observation release.",
+    "Builds on public-release-20260715-005 and proposes the reviewed Tufts University maintenance artifact for promotion.",
     "Contains 880 deduplicated AI tool records covering 290 universities and 360 official source URLs.",
     "The release ledger records 291 non-zero rows, 0 verified-zero rows, and 139 evidence-boundary rows; blocked rows are not presented as verified zeros.",
-    "This observation release is being published for live product review while independent-QA scope and a small set of newly added records receive follow-up review.",
+    "This candidate does not modify data/public-releases/current.json until the guarded release checks and explicit promotion step pass.",
     "AI tool records are tracker-derived metadata for navigation and comparison; official university pages remain authoritative.",
     "Tracker metadata is open licensed; official source documents retain their original rights."
   ],

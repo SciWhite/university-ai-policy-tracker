@@ -41,6 +41,31 @@ Before publishing a dataset release:
 9. Confirm report and outreach pages do not turn candidate records into final
    policy conclusions.
 
+## Release State Semantics
+
+Release manifests have three distinct roles:
+
+- `data/public-releases/candidates/*.json` is pre-promotion state. Every file
+  must set `candidateOnly: true`, describe itself as a candidate, and may list
+  gates that still need to pass.
+- `data/public-releases/history/*.json` is an immutable published snapshot. It
+  must not set `candidateOnly: true` or retain wording that says promotion is
+  still pending.
+- `data/public-releases/current.json` is the active public release. It follows
+  the same published-state rules as history and must be the newest published
+  manifest by `publishedAt`.
+
+`previousReleaseId` describes the public release chain, not the baseline used
+to assemble a scoped candidate. If a candidate was built from an older
+immutable data bundle while a maintenance release was already public, the
+promoted manifest must still point to that intervening public release.
+
+AI-tools counts also have two separate scopes. A release-scoped candidate
+bundle counts only the audited QS bundle named by that release. The public
+`/api/public/v1/tools.json` endpoint merges every promoted source-backed tool
+record, so its total may be larger. Release notes must label which count they
+are reporting.
+
 ## Artifact Rules
 
 - Public JSON and JSONL must be versioned under `/api/public/v1/...`.

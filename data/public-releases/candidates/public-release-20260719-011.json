@@ -2,7 +2,7 @@
   "schemaVersion": "uapt-public-release-manifest-v1",
   "releaseId": "public-release-20260719-011",
   "publishedAt": "2026-07-18T19:37:52.600Z",
-  "description": "QS top-700 AI tools 011 release: repairs and fully re-audits exact QS source rows 601-700 while preserving the immutable 009 Top-600 production baseline.",
+  "description": "Candidate only: QS top-700 AI tools 011 repairs and fully re-audits exact QS source rows 601-700 while preserving the immutable 009 Top-600 production baseline.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -809,7 +809,7 @@
     "staging/uapt-runs/uapt-ai-tools-qs-top-700-20260719-011"
   ],
   "notes": [
-    "Publishes 1056 official-source AI tool records for 366 universities from 455 official sources.",
+    "The release-scoped candidate bundle contains 1056 official-source AI tool records for 366 universities from 455 official sources.",
     "The QS rows 601-700 extension contains 71 records across 28 universities from 39 official sources.",
     "All 100 exact source rows were re-audited with 1108 multilingual query traces; 0 Firecrawl failures remain explicit search boundaries and no blocked row is asserted as a verified zero.",
     "All 241 semantic candidate/evidence surfaces have explicit source-level decisions.",
