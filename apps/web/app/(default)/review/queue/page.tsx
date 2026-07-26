@@ -4,6 +4,7 @@ import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { getReviewQueueData } from "@/lib/review-dashboards";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { formatDateShort } from "@/lib/format-date";
 
 const title = "Review Queue | University AI Policy Tracker";
 const description =
@@ -93,7 +94,7 @@ export default async function ReviewQueuePage() {
                   <td>{row.sourceCandidateCount}</td>
                   <td>{row.reviewDecisionCount}</td>
                   <td>{row.detectedSlugs.join(", ") || "—"}</td>
-                  <td>{row.lastArtifactAt ? formatDate(row.lastArtifactAt) : "—"}</td>
+                  <td>{row.lastArtifactAt ? formatDateShort(row.lastArtifactAt) : "—"}</td>
                   <td>{row.recommendedAction}</td>
                 </tr>
               ))}
@@ -118,10 +119,3 @@ export default async function ReviewQueuePage() {
   );
 }
 
-function formatDate(value: string): string {
-  return new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "short",
-    year: "numeric"
-  }).format(new Date(value));
-}

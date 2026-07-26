@@ -9,6 +9,7 @@ import {
 } from "@/lib/reference-pages";
 import { getPublishableAnalysisThemeSpecs } from "@/lib/policy-analysis-pages";
 import { getMonthlyReport, getMonthlyReportCoverageSlug } from "@/lib/reports";
+import { monthlyReportSlugs } from "@/lib/monthly-report-registry";
 import {
   DEFAULT_LOCALE,
   VISIBLE_LOCALES,
@@ -49,6 +50,10 @@ export function isSitemapSectionId(value: string): value is SitemapSectionId {
   return (SITEMAP_SECTION_IDS as readonly string[]).includes(value);
 }
 
+const monthlyReportRoutes = monthlyReportSlugs.map(
+  (slug) => `/reports/monthly/${slug}`
+);
+
 const staticRoutes = [
   "",
   "/university-ai-policy-database",
@@ -56,8 +61,7 @@ const staticRoutes = [
   "/tools",
   "/sources",
   "/reports",
-  "/reports/monthly/2026-05",
-  "/reports/monthly/2026-06",
+  ...monthlyReportRoutes,
   "/reports/outreach",
   "/widgets",
   "/search",
@@ -103,8 +107,7 @@ const phaseTwoLocalizedStaticRoutes = [
   "/coverage/qs-2026",
   "/source-health",
   "/reports",
-  "/reports/monthly/2026-05",
-  "/reports/monthly/2026-06",
+  ...monthlyReportRoutes,
   "/reports/outreach"
 ] as const;
 
@@ -233,10 +236,9 @@ async function getAnalysisThemeRoutes(): Promise<string[]> {
 }
 
 async function getReportCoverageRoutes(): Promise<string[]> {
-  const monthlyReports = await Promise.all([
-    getMonthlyReport("2026-05"),
-    getMonthlyReport("2026-06")
-  ]);
+  const monthlyReports = await Promise.all(
+    monthlyReportSlugs.map((slug) => getMonthlyReport(slug))
+  );
 
   return monthlyReports.flatMap((report) =>
     report

@@ -16,6 +16,7 @@ import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getKnownReleaseIds } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { formatDateMedium } from "@/lib/format-date";
 
 interface ChangeDetailPageProps {
   params: Promise<{
@@ -145,12 +146,12 @@ export default async function ChangeDetailPage({
             <StateLabel reviewState={record.reviewState} />
             {record.lastCheckedAt ? (
               <MetaLabel label="Last checked">
-                {formatDate(record.lastCheckedAt, locale)}
+                {formatDateMedium(record.lastCheckedAt, locale)}
               </MetaLabel>
             ) : null}
             {record.lastChangedAt ? (
               <MetaLabel label="Last changed">
-                {formatDate(record.lastChangedAt, locale)}
+                {formatDateMedium(record.lastChangedAt, locale)}
               </MetaLabel>
             ) : null}
             <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
@@ -512,7 +513,7 @@ function getEntityHistoryMetaDescription(
 ): string {
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
   const checkedText = record.lastCheckedAt
-    ? ` Last checked ${formatDate(record.lastCheckedAt, locale)}.`
+    ? ` Last checked ${formatDateMedium(record.lastCheckedAt, locale)}.`
     : "";
 
   if (releaseRecords.length > 0 && record.diffRows.length > 0) {
@@ -547,7 +548,7 @@ function getEntityHistoryLead(
 function getSummaryText(record: ChangeRecord, locale: SupportedLocale): string {
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
   const changed = record.lastChangedAt
-    ? ` Latest tracked changed date: ${formatDate(record.lastChangedAt, locale)}.`
+    ? ` Latest tracked changed date: ${formatDateMedium(record.lastChangedAt, locale)}.`
     : " No tracked changed date is published yet.";
 
   const diff =
@@ -577,13 +578,6 @@ function getCombinedDiffDescription(
 
 function pluralize(label: string, count: number): string {
   return count === 1 ? label : `${label}s`;
-}
-
-function formatDate(value: string, locale: SupportedLocale): string {
-  return new Intl.DateTimeFormat(locale, {
-    dateStyle: "medium",
-    timeZone: "UTC"
-  }).format(new Date(value));
 }
 
 function formatTimestamp(value: string, locale: SupportedLocale): string {

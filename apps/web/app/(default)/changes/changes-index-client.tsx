@@ -32,6 +32,7 @@ import type {
 import { localizeHref, type SupportedLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import type { ChangesIndexClientCopy } from "@/lib/page-copy";
+import { formatDateMedium } from "@/lib/format-date";
 
 type ChangeIndexFacets = ChangeIndexData["data"]["facets"];
 
@@ -402,17 +403,17 @@ export function ChangesIndexClient({
                       <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
                       <MetaLabel label={copy.firstSeen}>
                         {record.firstSeenAt
-                          ? formatDate(record.firstSeenAt, locale)
+                          ? formatDateMedium(record.firstSeenAt, locale)
                           : copy.noPublicDate}
                       </MetaLabel>
                       {record.lastCheckedAt ? (
                         <MetaLabel label={copy.checked}>
-                          {formatDate(record.lastCheckedAt, locale)}
+                          {formatDateMedium(record.lastCheckedAt, locale)}
                         </MetaLabel>
                       ) : null}
                       {record.lastChangedAt ? (
                         <MetaLabel label={copy.changed}>
-                          {formatDate(record.lastChangedAt, locale)}
+                          {formatDateMedium(record.lastChangedAt, locale)}
                         </MetaLabel>
                       ) : null}
                       <MetaLabel label="Releases">{record.releaseCount}</MetaLabel>
@@ -423,7 +424,7 @@ export function ChangesIndexClient({
                   }
                 >
                   <p className="timeline-list__date">
-                    {primaryDate ? formatDate(primaryDate, locale) : copy.noPublicDate}
+                    {primaryDate ? formatDateMedium(primaryDate, locale) : copy.noPublicDate}
                   </p>
                   <h2 data-i18n="preserve">{displayName}</h2>
                   <p>{record.summary || buildRecordSummary(record, locale)}</p>
@@ -523,7 +524,7 @@ function buildRecordSummary(
 ): string {
   const displayName = getLocalizedInstitutionName(record.slug, record.name, locale);
   const changedText = record.lastChangedAt
-    ? `Latest tracked change on ${formatDate(record.lastChangedAt, locale)}.`
+    ? `Latest tracked change on ${formatDateMedium(record.lastChangedAt, locale)}.`
     : "No public changed date has been published yet.";
   return `${displayName} has ${record.claimCount} source-backed claim records and ${record.sourceCount} official source attributions. ${changedText}`;
 }
@@ -537,9 +538,3 @@ function formatThemes(record: ChangeIndexRecord): string {
   return labels.join(", ");
 }
 
-function formatDate(value: string, locale: SupportedLocale): string {
-  return new Intl.DateTimeFormat(locale, {
-    dateStyle: "medium",
-    timeZone: "UTC"
-  }).format(new Date(value));
-}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { ApiEndpointRow } from "@/components/api-endpoint-row";
 import { CitationCopyActions } from "@/components/citation-copy-actions";
 import { DataList, DataListRow } from "@/components/data-list";
@@ -6,6 +7,7 @@ import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { ReferenceBox } from "@/components/reference-box";
 import { StateLabel } from "@/components/state-label";
+import { monthlyReportSlugs } from "@/lib/monthly-report-registry";
 import {
   formatReportDate,
   getMonthlyReport,
@@ -15,20 +17,34 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 
-const monthlyReportSlug = "2026-06";
+interface MonthlyReportPageProps {
+  params: Promise<{
+    locale?: string;
+    month: string;
+  }>;
+}
 
-export async function generateMetadata() {
-  const report = await getMonthlyReport(monthlyReportSlug);
-  const canonical = getAbsoluteSiteUrl(
-    `/reports/monthly/${monthlyReportSlug}`
-  );
+export const dynamic = "force-static";
+// dynamicParams stays on so unknown months render through the page, hit
+// notFound(), and get the branded group 404 with a real 404 status.
+export const dynamicParams = true;
+export const revalidate = false;
+
+export function generateStaticParams() {
+  return monthlyReportSlugs.map((month) => ({ month }));
+}
+
+export async function generateMetadata({ params }: MonthlyReportPageProps) {
+  const { month } = await params;
+  const report = await getMonthlyReport(month);
+  const canonical = getAbsoluteSiteUrl(`/reports/monthly/${month}`);
 
   return {
     title: report?.title ?? "Monthly Report | University AI Policy Tracker",
     description:
       report?.description ??
       "Monthly University AI Policy Tracker dataset report.",
-    alternates: getLocalizedAlternates(`/reports/monthly/${monthlyReportSlug}`, "en"),
+    alternates: getLocalizedAlternates(`/reports/monthly/${month}`, "en"),
     openGraph: {
       title: report?.title,
       description: report?.description,
@@ -39,15 +55,16 @@ export async function generateMetadata() {
   };
 }
 
-export default async function June2026MonthlyReportPage({
+export default async function MonthlyReportPage({
   params
-}: {
-  params?: Promise<{ locale?: string }>;
-} = {}) {
-  const locale = normalizeLocale((await params)?.locale);
-  const report = await getMonthlyReport(monthlyReportSlug, locale);
+}: MonthlyReportPageProps) {
+  const { locale: localeParam, month } = await params;
+  const locale = normalizeLocale(localeParam);
+  const report = await getMonthlyReport(month, locale);
 
-  if (!report) return null;
+  if (!report) {
+    notFound();
+  }
 
   const reportCitation = `University AI Policy Tracker. "${report.title}." Published ${formatReportDate(
     report.publishedAt,

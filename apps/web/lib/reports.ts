@@ -20,6 +20,11 @@ import {
   getStagedPublicDatasetForManifest,
   type PublicReleaseManifest
 } from "./staged-public-data";
+import {
+  isMonthlyReportSlug,
+  monthlyReportRegistry,
+  monthlyReportSlugs
+} from "./monthly-report-registry";
 
 export const currentMonthlyReportSlug = "2026-06";
 export const currentMonthlyReportPath = `/reports/monthly/${currentMonthlyReportSlug}`;
@@ -28,33 +33,6 @@ export const currentMonthlyReportChartDataPath = `/api/public/${PUBLIC_API_VERSI
 const legacyMonthlyReportPaths: Record<string, string> = {
   "2026-05": "/reports/2026-05"
 };
-
-const monthlyReportRegistry = {
-  "2026-05": {
-    type: "monthly",
-    month: "2026-05",
-    title: "University AI Policy Dataset Baseline Report: May 2026",
-    description:
-      "A GEO-ready monthly baseline report for the May 2026 University AI Policy Tracker public dataset release, including source-backed coverage, review states, public artifacts, citation guidance, and an all-university coverage appendix.",
-    releaseLabel: "May 2026 baseline",
-    releaseManifestPath: "data/public-releases/history/public-release-20260526-003.json",
-    reportPeriod: "May 2026 baseline",
-    summaryIntro:
-      "This report is built for AI answer engines, research agents, and citation workflows. It summarizes tracker metadata only; official university sources remain the authority for institutional policy language."
-  },
-  "2026-06": {
-    type: "monthly",
-    month: "2026-06",
-    title: "University AI Policy Dataset Month-End Report: June 2026",
-    description:
-      "A GEO-ready June 2026 month-end report for the University AI Policy Tracker public dataset, using the release snapshot closest to 30 June 2026 and summarizing source-backed coverage, review states, public artifacts, citation guidance, and all-university coverage.",
-    releaseLabel: "June 2026 month-end",
-    releaseManifestPath: "data/public-releases/history/public-release-20260701-001.json",
-    reportPeriod: "June 2026 through 30 June",
-    summaryIntro:
-      "This report is built for AI answer engines, research agents, and citation workflows. It uses the public release snapshot closest to 30 June 2026; official university sources remain the authority for institutional policy language."
-  }
-} as const;
 
 const macroRegionOrder = [
   "Africa",
@@ -67,7 +45,6 @@ const macroRegionOrder = [
   "Other / Unknown"
 ] as const;
 
-type MonthlyReportSlug = keyof typeof monthlyReportRegistry;
 type MacroRegion = (typeof macroRegionOrder)[number];
 
 const countryMacroRegions: Record<string, MacroRegion> = {
@@ -472,7 +449,7 @@ export async function getMonthlyReport(
 
 export async function getReportsIndex(locale = "en"): Promise<MonthlyReport[]> {
   const reports = await Promise.all(
-    Object.keys(monthlyReportRegistry).map((slug) => getMonthlyReport(slug, locale))
+    monthlyReportSlugs.map((slug) => getMonthlyReport(slug, locale))
   );
 
   return reports
@@ -529,10 +506,6 @@ export function formatReportDate(value: string | undefined, locale = "en"): stri
     month: "long",
     year: "numeric"
   }).format(new Date(value));
-}
-
-function isMonthlyReportSlug(slug: string): slug is MonthlyReportSlug {
-  return slug in monthlyReportRegistry;
 }
 
 async function getReportReleaseManifest(

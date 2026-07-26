@@ -13,6 +13,7 @@ import {
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { formatDateShort } from "@/lib/format-date";
 
 const title = "Coverage Dashboard | University AI Policy Tracker";
 const description =
@@ -89,7 +90,7 @@ export default async function CoveragePage({
           <MetaLabel label="Year">{coverage.ranking.year}</MetaLabel>
           <MetaLabel label="Rows">{coverage.summary.totalRows}</MetaLabel>
           <MetaLabel label="Generated">
-            {formatDate(coverage.generatedAt, locale)}
+            {formatDateShort(coverage.generatedAt, locale)}
           </MetaLabel>
         </div>
       </section>
@@ -285,10 +286,3 @@ function formatCoverageStatus(status: string): string {
   return "Missing";
 }
 
-function formatDate(value: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
-    day: "numeric",
-    month: "short",
-    year: "numeric"
-  }).format(new Date(value));
-}

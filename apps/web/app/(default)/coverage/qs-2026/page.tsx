@@ -11,6 +11,7 @@ import {
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { formatDateShort } from "@/lib/format-date";
 
 const title = "QS 2026 Coverage | University AI Policy Tracker";
 const description =
@@ -122,7 +123,7 @@ export default async function QsCoveragePage({
                       <span className="table-muted">Not public</span>
                     )}
                   </td>
-                  <td>{row.lastCheckedAt ? formatDate(row.lastCheckedAt, locale) : "—"}</td>
+                  <td>{row.lastCheckedAt ? formatDateShort(row.lastCheckedAt, locale) : "—"}</td>
                   <td>{row.recommendedAction}</td>
                 </tr>
               ))}
@@ -153,10 +154,3 @@ function formatCoverageStatus(status: CoverageStatus): string {
   return "Missing";
 }
 
-function formatDate(value: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
-    day: "numeric",
-    month: "short",
-    year: "numeric"
-  }).format(new Date(value));
-}

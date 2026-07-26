@@ -13,6 +13,7 @@ import { getStagedPublicDataset } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { formatDateMedium } from "@/lib/format-date";
 
 export const dynamic = "force-static";
 export const revalidate = false;
@@ -260,7 +261,7 @@ export default async function UniversityAiPolicyDatabasePage({
           <MetaLabel label="Search API">{searchJsonPath}</MetaLabel>
           {stats.lastCheckedAt ? (
             <MetaLabel label="Latest check">
-              {formatDate(stats.lastCheckedAt, locale)}
+              {formatDateMedium(stats.lastCheckedAt, locale)}
             </MetaLabel>
           ) : null}
         </div>
@@ -419,13 +420,6 @@ function buildTitle(universityCount: number, locale = "en"): string {
 
 function formatNumber(value: number, locale = "en"): string {
   return new Intl.NumberFormat(locale).format(value);
-}
-
-function formatDate(value: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
-    dateStyle: "medium",
-    timeZone: "UTC"
-  }).format(new Date(value));
 }
 
 function slugify(value: string): string {

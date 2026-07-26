@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MetaLabel } from "@/components/meta-label";
+import { monthlyReportSlugs } from "@/lib/monthly-report-registry";
 import {
   formatReportDate,
   getMonthlyReport,
@@ -11,38 +12,43 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { ReportCoverageTable } from "../../report-coverage-table";
 
-const monthlyReportSlug = "2026-06";
-
 interface MonthlyReportCoveragePageProps {
   params: Promise<{
+    month: string;
     region: string;
   }>;
 }
 
 export const dynamic = "force-static";
-export const dynamicParams = false;
+// dynamicParams stays on so unknown months/regions render through the page,
+// hit notFound(), and get the branded group 404 with a real 404 status.
+export const dynamicParams = true;
 export const revalidate = false;
 
 export async function generateStaticParams() {
-  const report = await getMonthlyReport(monthlyReportSlug);
+  const params = await Promise.all(
+    monthlyReportSlugs.map(async (month) => {
+      const report = await getMonthlyReport(month);
 
-  return (
-    report?.coverageGroups.map((group) => ({
-      region: getMonthlyReportCoverageSlug(group)
-    })) ?? []
+      return (
+        report?.coverageGroups.map((group) => ({
+          month,
+          region: getMonthlyReportCoverageSlug(group)
+        })) ?? []
+      );
+    })
   );
+
+  return params.flat();
 }
 
 export async function generateMetadata({
   params
 }: MonthlyReportCoveragePageProps) {
-  const { region } = await params;
-  const coverage = await getMonthlyReportCoverageGroup(
-    monthlyReportSlug,
-    region
-  );
+  const { month, region } = await params;
+  const coverage = await getMonthlyReportCoverageGroup(month, region);
   const canonical = getAbsoluteSiteUrl(
-    `/reports/monthly/${monthlyReportSlug}/coverage/${region}`
+    `/reports/monthly/${month}/coverage/${region}`
   );
 
   return {
@@ -53,7 +59,7 @@ export async function generateMetadata({
       ? `${coverage.group.macroRegion} university coverage appendix for ${coverage.report.title}, including public records, JSON links, source counts, and last checked dates.`
       : "Monthly University AI Policy Tracker coverage appendix not found.",
     alternates: getLocalizedAlternates(
-      `/reports/monthly/${monthlyReportSlug}/coverage/${region}`,
+      `/reports/monthly/${month}/coverage/${region}`,
       "en"
     ),
     openGraph: {
@@ -72,11 +78,8 @@ export async function generateMetadata({
 export default async function MonthlyReportCoveragePage({
   params
 }: MonthlyReportCoveragePageProps) {
-  const { region } = await params;
-  const coverage = await getMonthlyReportCoverageGroup(
-    monthlyReportSlug,
-    region
-  );
+  const { month, region } = await params;
+  const coverage = await getMonthlyReportCoverageGroup(month, region);
 
   if (!coverage) {
     notFound();

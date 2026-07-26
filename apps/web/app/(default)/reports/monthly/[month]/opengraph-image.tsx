@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
+import { getMonthlyReportShareImage } from "@/lib/monthly-report-registry";
 
-export const alt =
-  "University AI Policy Tracker May 2026 monthly baseline report share image";
+export const alt = "University AI Policy Tracker monthly report share image";
 export const contentType = "image/png";
 export const runtime = "edge";
 export const size = {
@@ -9,7 +9,14 @@ export const size = {
   width: 1200
 };
 
-export default function Image() {
+export default async function Image({
+  params
+}: {
+  params: Promise<{ month: string }>;
+}) {
+  const { month } = await params;
+  const shareImage = getMonthlyReportShareImage(month);
+
   return new ImageResponse(
     (
       <div
@@ -46,7 +53,7 @@ export default function Image() {
               maxWidth: 940
             }}
           >
-            May 2026 Monthly Baseline Report
+            {shareImage?.headline ?? "Monthly Report"}
           </div>
           <div
             style={{
@@ -69,7 +76,7 @@ export default function Image() {
           }}
         >
           <div style={{ color: "#57606a", fontSize: 28 }}>
-            eduaipolicy.org/reports/monthly/2026-05
+            eduaipolicy.org/reports/monthly/{month}
           </div>
           <div
             style={{

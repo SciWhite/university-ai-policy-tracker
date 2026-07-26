@@ -6,12 +6,13 @@ import {
 } from "@uapt/shared";
 import { getMonthlyReport } from "@/lib/reports";
 
-export const dynamic = "force-static";
-
-const monthlyReportSlug = "2026-05";
-
-export async function GET() {
-  const report = await getMonthlyReport(monthlyReportSlug);
+// Shared response builder for the monthly chart-data routes: the canonical
+// /reports/monthly/[month]/chart-data.json route and the legacy fixed-path
+// aliases serve identical payloads.
+export async function getMonthlyReportChartDataResponse(
+  month: string
+): Promise<NextResponse> {
+  const report = await getMonthlyReport(month);
 
   if (!report) {
     return NextResponse.json(

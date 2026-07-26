@@ -18,6 +18,7 @@ import {
 } from "@/lib/i18n";
 import { translateSurfaceText } from "@/lib/surface-localization";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import { formatDateShort } from "@/lib/format-date";
 
 const title = "Source Health | University AI Policy Tracker";
 const description =
@@ -323,7 +324,7 @@ function SourceHealthTable({
                 </div>
               </td>
               <td>
-                {row.lastCheckedAt ? formatDate(row.lastCheckedAt, locale) : t("Not checked")}
+                {row.lastCheckedAt ? formatDateShort(row.lastCheckedAt, locale) : t("Not checked")}
               </td>
               <td>{t(row.note)}</td>
             </tr>
@@ -398,14 +399,6 @@ function formatSeverity(severity: SourceHealthSeverity): string {
   if (severity === "error") return "Error";
   if (severity === "warning") return "Warning";
   return "Info";
-}
-
-function formatDate(value: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
-    day: "numeric",
-    month: "short",
-    year: "numeric"
-  }).format(new Date(value));
 }
 
 function getHost(value: string): string {

@@ -104,6 +104,9 @@ export function SearchAutocomplete({
           ? payload.data.results
           : [];
 
+        // A newer query may have aborted this request while json() resolved.
+        if (controller.signal.aborted) return;
+
         setResults(nextResults);
         setStatus(nextResults.length ? "ready" : "empty");
       } catch (error) {
@@ -177,7 +180,6 @@ export function SearchAutocomplete({
         aria-controls={listboxId}
         aria-expanded={isPanelOpen}
         autoComplete="off"
-        defaultValue={defaultValue}
         id={id}
         name={name}
         onChange={(event) => setQuery(event.target.value)}
@@ -185,6 +187,7 @@ export function SearchAutocomplete({
         placeholder={placeholder}
         role="combobox"
         type="search"
+        value={query}
       />
       <span className="visually-hidden" role="status">
         {announcement}

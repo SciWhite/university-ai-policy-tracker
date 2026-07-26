@@ -21,6 +21,7 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { normalizeLocale } from "@/lib/i18n";
 import { getPageCopy } from "@/lib/page-copy";
+import { formatDateMedium } from "@/lib/format-date";
 
 const githubRepositoryUrl =
   "https://github.com/SciWhite/university-ai-policy-tracker";
@@ -58,6 +59,77 @@ const rankingSourceBoundaries = [
   "CWTS Leiden 2025 is a derived metric order, not an overall global university rank.",
   "Different ranking years are not presented as one unified 2026 ranking."
 ] as const;
+
+type DatasetsCopy = ReturnType<typeof getPageCopy>["datasets"];
+
+interface DatasetEndpoint {
+  copyKey: keyof DatasetsCopy["apiGroups"];
+  jsonLdName: string;
+  label: string;
+  path: string;
+}
+
+interface DatasetEndpointGroup {
+  endpoints: DatasetEndpoint[];
+  headingKey: "coreRecords" | "searchAnalysis" | "reportsEmbeds" | "reviewIntegrations";
+}
+
+// Single source for the public endpoint directory: the JSON-LD distribution
+// list and the visible endpoint groups are both derived from this catalog.
+function buildEndpointGroups(exampleSlug: string): DatasetEndpointGroup[] {
+  const api = `/api/public/${PUBLIC_API_VERSION}`;
+
+  return [
+    {
+      headingKey: "coreRecords",
+      endpoints: [
+        { copyKey: "apiIndex", jsonLdName: "Public API index JSON", label: "API index JSON", path: `${api}/index.json` },
+        { copyKey: "universities", jsonLdName: "Universities list JSON", label: "Universities JSON", path: `${api}/universities.json` },
+        { copyKey: "perUniversity", jsonLdName: "University record JSON example", label: "Per-university JSON", path: `${api}/universities/${exampleSlug}.json` },
+        { copyKey: "claims", jsonLdName: "University claims JSON example", label: "Claims JSON", path: `${api}/claims/${exampleSlug}.json` },
+        { copyKey: "recentChanges", jsonLdName: "Recent changes JSON", label: "Recent changes JSON", path: `${api}/recent-changes.json` },
+        { copyKey: "manifest", jsonLdName: "Dataset release manifest", label: "Dataset manifest", path: `${api}/datasets/latest.json` }
+      ]
+    },
+    {
+      headingKey: "searchAnalysis",
+      endpoints: [
+        { copyKey: "searchJson", jsonLdName: "Entity search JSON example", label: "Search JSON", path: `${api}/search.json?q=mit` },
+        { copyKey: "searchIndex", jsonLdName: "Safe search index JSON", label: "Search index", path: `${api}/search/index.json` },
+        { copyKey: "entityAliases", jsonLdName: "Entity resolution index JSON", label: "Entity aliases", path: `${api}/entities/index.json` },
+        { copyKey: "analysisIndex", jsonLdName: "Policy analysis API index", label: "Analysis index", path: `${api}/analysis/index.json` },
+        { copyKey: "analysisProfile", jsonLdName: "University policy analysis JSON example", label: "Analysis profile", path: `${api}/analysis/universities/${exampleSlug}.json` },
+        { copyKey: "coverageScores", jsonLdName: "Policy coverage scores JSON", label: "Coverage scores", path: `${api}/analysis/coverage-scores.json` },
+        { copyKey: "analysisQuality", jsonLdName: "Analysis page quality JSON", label: "Analysis page quality", path: `${api}/analysis/page-quality.json` }
+      ]
+    },
+    {
+      headingKey: "reportsEmbeds",
+      endpoints: [
+        { copyKey: "reportsIndex", jsonLdName: "Reports index JSON", label: "Reports index", path: `${api}/reports/index.json` },
+        { copyKey: "outreach", jsonLdName: "Reports outreach package JSON", label: "Outreach package", path: `${api}/reports/outreach.json` },
+        { copyKey: "chartData", jsonLdName: "June 2026 monthly report chart data", label: "Report chart data", path: `${api}/reports/monthly/2026-06/chart-data.json` },
+        { copyKey: "widgetIndex", jsonLdName: "Widget discovery JSON", label: "Widget index", path: `${api}/widgets/index.json` },
+        { copyKey: "policyCoverageWidget", jsonLdName: "Policy coverage widget JSON example", label: "Policy coverage widget", path: `${api}/widgets/policy-coverage/${exampleSlug}.json` },
+        { copyKey: "sourceFreshnessWidget", jsonLdName: "Source freshness widget JSON example", label: "Source freshness widget", path: `${api}/widgets/source-freshness/${exampleSlug}.json` },
+        { copyKey: "reviewStateWidget", jsonLdName: "Review-state widget JSON example", label: "Review-state widget", path: `${api}/widgets/review-state/${exampleSlug}.json` }
+      ]
+    },
+    {
+      headingKey: "reviewIntegrations",
+      endpoints: [
+        { copyKey: "qsCoverage", jsonLdName: "QS 2026 coverage JSON", label: "QS coverage", path: `${api}/coverage/qs-2026.json` },
+        { copyKey: "sourceHealth", jsonLdName: "Source health JSON", label: "Source health", path: `${api}/source-health.json` },
+        { copyKey: "reviewQueue", jsonLdName: "Review queue JSON", label: "Review queue", path: `${api}/review/queue.json` },
+        { copyKey: "mcpManifest", jsonLdName: "Read-only MCP alpha manifest", label: "MCP manifest", path: `${api}/mcp/manifest.json` },
+        { copyKey: "mcpToolCatalog", jsonLdName: "MCP tool catalog", label: "MCP tool catalog", path: `${api}/mcp/tool-catalog.json` },
+        { copyKey: "citationMetadata", jsonLdName: "Citation metadata", label: "Citation metadata", path: `${api}/citation.json` },
+        { copyKey: "contributionIndex", jsonLdName: "Contribution workflow metadata", label: "Contribution index", path: `${api}/contributions/index.json` },
+        { copyKey: "reviewPolicy", jsonLdName: "Contribution review policy metadata", label: "Review policy", path: `${api}/contributions/review-policy.json` }
+      ]
+    }
+  ];
+}
 
 interface DatasetsPageProps {
   params?: Promise<{
@@ -116,72 +188,14 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
     0
   );
   const datasetsUrl = getAbsoluteSiteUrl("/datasets");
-  const apiIndexPath = `/api/public/${PUBLIC_API_VERSION}/index.json`;
-  const universitiesJsonPath = `/api/public/${PUBLIC_API_VERSION}/universities.json`;
-  const searchJsonPath = `/api/public/${PUBLIC_API_VERSION}/search.json?q=mit`;
-  const searchIndexPath = `/api/public/${PUBLIC_API_VERSION}/search/index.json`;
-  const entityIndexPath = `/api/public/${PUBLIC_API_VERSION}/entities/index.json`;
-  const latestDatasetManifestPath = `/api/public/${PUBLIC_API_VERSION}/datasets/latest.json`;
   const exampleSlug =
     summaries.find((summary) => summary.entity.slug === "anu")
       ?.entity.slug ??
     summaries[0]?.entity.slug ??
     universities[0]?.slug ??
     "anu";
-  const exampleUniversityPath = `/api/public/${PUBLIC_API_VERSION}/universities/${exampleSlug}.json`;
-  const exampleClaimsPath = `/api/public/${PUBLIC_API_VERSION}/claims/${exampleSlug}.json`;
-  const recentChangesPath = `/api/public/${PUBLIC_API_VERSION}/recent-changes.json`;
-  const analysisIndexPath = `/api/public/${PUBLIC_API_VERSION}/analysis/index.json`;
-  const exampleAnalysisPath = `/api/public/${PUBLIC_API_VERSION}/analysis/universities/${exampleSlug}.json`;
-  const analysisCoverageScoresPath = `/api/public/${PUBLIC_API_VERSION}/analysis/coverage-scores.json`;
-  const analysisPageQualityPath = `/api/public/${PUBLIC_API_VERSION}/analysis/page-quality.json`;
-  const reportsIndexPath = `/api/public/${PUBLIC_API_VERSION}/reports/index.json`;
-  const reportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/monthly/2026-06/chart-data.json`;
-  const reportOutreachPath = `/api/public/${PUBLIC_API_VERSION}/reports/outreach.json`;
-  const widgetIndexPath = `/api/public/${PUBLIC_API_VERSION}/widgets/index.json`;
-  const policyCoverageWidgetPath = `/api/public/${PUBLIC_API_VERSION}/widgets/policy-coverage/${exampleSlug}.json`;
-  const sourceFreshnessWidgetPath = `/api/public/${PUBLIC_API_VERSION}/widgets/source-freshness/${exampleSlug}.json`;
-  const reviewStateWidgetPath = `/api/public/${PUBLIC_API_VERSION}/widgets/review-state/${exampleSlug}.json`;
-  const mcpManifestPath = `/api/public/${PUBLIC_API_VERSION}/mcp/manifest.json`;
-  const mcpToolCatalogPath = `/api/public/${PUBLIC_API_VERSION}/mcp/tool-catalog.json`;
-  const citationMetadataPath = `/api/public/${PUBLIC_API_VERSION}/citation.json`;
-  const contributionIndexPath = `/api/public/${PUBLIC_API_VERSION}/contributions/index.json`;
-  const reviewPolicyPath = `/api/public/${PUBLIC_API_VERSION}/contributions/review-policy.json`;
-  const qsCoveragePath = `/api/public/${PUBLIC_API_VERSION}/coverage/qs-2026.json`;
-  const sourceHealthPath = `/api/public/${PUBLIC_API_VERSION}/source-health.json`;
-  const reviewQueuePath = `/api/public/${PUBLIC_API_VERSION}/review/queue.json`;
-  const apiIndexUrl = getAbsoluteSiteUrl(apiIndexPath);
-  const universitiesJsonUrl = getAbsoluteSiteUrl(universitiesJsonPath);
-  const searchJsonUrl = getAbsoluteSiteUrl(searchJsonPath);
-  const searchIndexUrl = getAbsoluteSiteUrl(searchIndexPath);
-  const entityIndexUrl = getAbsoluteSiteUrl(entityIndexPath);
-  const latestDatasetManifestUrl = getAbsoluteSiteUrl(
-    latestDatasetManifestPath
-  );
-  const exampleUniversityUrl = getAbsoluteSiteUrl(exampleUniversityPath);
-  const exampleClaimsUrl = getAbsoluteSiteUrl(exampleClaimsPath);
-  const recentChangesUrl = getAbsoluteSiteUrl(recentChangesPath);
-  const analysisIndexUrl = getAbsoluteSiteUrl(analysisIndexPath);
-  const exampleAnalysisUrl = getAbsoluteSiteUrl(exampleAnalysisPath);
-  const analysisCoverageScoresUrl = getAbsoluteSiteUrl(
-    analysisCoverageScoresPath
-  );
-  const analysisPageQualityUrl = getAbsoluteSiteUrl(analysisPageQualityPath);
-  const reportsIndexUrl = getAbsoluteSiteUrl(reportsIndexPath);
-  const reportChartDataUrl = getAbsoluteSiteUrl(reportChartDataPath);
-  const reportOutreachUrl = getAbsoluteSiteUrl(reportOutreachPath);
-  const widgetIndexUrl = getAbsoluteSiteUrl(widgetIndexPath);
-  const policyCoverageWidgetUrl = getAbsoluteSiteUrl(policyCoverageWidgetPath);
-  const sourceFreshnessWidgetUrl = getAbsoluteSiteUrl(sourceFreshnessWidgetPath);
-  const reviewStateWidgetUrl = getAbsoluteSiteUrl(reviewStateWidgetPath);
-  const mcpManifestUrl = getAbsoluteSiteUrl(mcpManifestPath);
-  const mcpToolCatalogUrl = getAbsoluteSiteUrl(mcpToolCatalogPath);
-  const citationMetadataUrl = getAbsoluteSiteUrl(citationMetadataPath);
-  const contributionIndexUrl = getAbsoluteSiteUrl(contributionIndexPath);
-  const reviewPolicyUrl = getAbsoluteSiteUrl(reviewPolicyPath);
-  const qsCoverageUrl = getAbsoluteSiteUrl(qsCoveragePath);
-  const sourceHealthUrl = getAbsoluteSiteUrl(sourceHealthPath);
-  const reviewQueueUrl = getAbsoluteSiteUrl(reviewQueuePath);
+  const endpointGroups = buildEndpointGroups(exampleSlug);
+  const allEndpoints = endpointGroups.flatMap((group) => group.endpoints);
 
   return (
     <main className="page-shell page-shell--wide">
@@ -205,174 +219,12 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
             url: getAbsoluteSiteUrl("/")
           },
           distribution: [
-            {
+            ...allEndpoints.map((endpoint) => ({
               "@type": "DataDownload",
-              name: "Public API index JSON",
+              name: endpoint.jsonLdName,
               encodingFormat: "application/json",
-              contentUrl: apiIndexUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Universities list JSON",
-              encodingFormat: "application/json",
-              contentUrl: universitiesJsonUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Entity search JSON example",
-              encodingFormat: "application/json",
-              contentUrl: searchJsonUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Safe search index JSON",
-              encodingFormat: "application/json",
-              contentUrl: searchIndexUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Entity resolution index JSON",
-              encodingFormat: "application/json",
-              contentUrl: entityIndexUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "University record JSON example",
-              encodingFormat: "application/json",
-              contentUrl: exampleUniversityUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "University claims JSON example",
-              encodingFormat: "application/json",
-              contentUrl: exampleClaimsUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Recent changes JSON",
-              encodingFormat: "application/json",
-              contentUrl: recentChangesUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Policy analysis API index",
-              encodingFormat: "application/json",
-              contentUrl: analysisIndexUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "University policy analysis JSON example",
-              encodingFormat: "application/json",
-              contentUrl: exampleAnalysisUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Policy coverage scores JSON",
-              encodingFormat: "application/json",
-              contentUrl: analysisCoverageScoresUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Analysis page quality JSON",
-              encodingFormat: "application/json",
-              contentUrl: analysisPageQualityUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Reports index JSON",
-              encodingFormat: "application/json",
-              contentUrl: reportsIndexUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Reports outreach package JSON",
-              encodingFormat: "application/json",
-              contentUrl: reportOutreachUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "QS 2026 coverage JSON",
-              encodingFormat: "application/json",
-              contentUrl: qsCoverageUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Source health JSON",
-              encodingFormat: "application/json",
-              contentUrl: sourceHealthUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Review queue JSON",
-              encodingFormat: "application/json",
-              contentUrl: reviewQueueUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Dataset release manifest",
-              encodingFormat: "application/json",
-              contentUrl: latestDatasetManifestUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "June 2026 monthly report chart data",
-              encodingFormat: "application/json",
-              contentUrl: reportChartDataUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Widget discovery JSON",
-              encodingFormat: "application/json",
-              contentUrl: widgetIndexUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Policy coverage widget JSON example",
-              encodingFormat: "application/json",
-              contentUrl: policyCoverageWidgetUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Source freshness widget JSON example",
-              encodingFormat: "application/json",
-              contentUrl: sourceFreshnessWidgetUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Review-state widget JSON example",
-              encodingFormat: "application/json",
-              contentUrl: reviewStateWidgetUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Read-only MCP alpha manifest",
-              encodingFormat: "application/json",
-              contentUrl: mcpManifestUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "MCP tool catalog",
-              encodingFormat: "application/json",
-              contentUrl: mcpToolCatalogUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Citation metadata",
-              encodingFormat: "application/json",
-              contentUrl: citationMetadataUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Contribution workflow metadata",
-              encodingFormat: "application/json",
-              contentUrl: contributionIndexUrl
-            },
-            {
-              "@type": "DataDownload",
-              name: "Contribution review policy metadata",
-              encodingFormat: "application/json",
-              contentUrl: reviewPolicyUrl
-            },
+              contentUrl: getAbsoluteSiteUrl(endpoint.path)
+            })),
             ...datasetReleaseManifest.artifacts.map((artifact) => ({
               "@type": "DataDownload",
               name: artifact.label,
@@ -440,189 +292,20 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
         title={copy.versionedJsonTitle}
       >
         <div className="endpoint-group-grid">
-          <section className="endpoint-group">
-            <h3>{copy.coreRecords}</h3>
-            <ApiEndpointRow
-              description="Endpoint discovery and trust links."
-              label="API index JSON"
-              path={apiIndexPath}
-              url={apiIndexUrl}
-            />
-            <ApiEndpointRow
-              description="University records with review state, dates, and JSON URLs."
-              label="Universities JSON"
-              path={universitiesJsonPath}
-              url={universitiesJsonUrl}
-            />
-            <ApiEndpointRow
-              description="Example public university record."
-              label="Per-university JSON"
-              path={exampleUniversityPath}
-              url={exampleUniversityUrl}
-            />
-            <ApiEndpointRow
-              description="Example claim/evidence rows."
-              label="Claims JSON"
-              path={exampleClaimsPath}
-              url={exampleClaimsUrl}
-            />
-            <ApiEndpointRow
-              description="Checked and changed records."
-              label="Recent changes JSON"
-              path={recentChangesPath}
-              url={recentChangesUrl}
-            />
-            <ApiEndpointRow
-              description="Release artifacts, row counts, sizes, and checksums."
-              label="Dataset manifest"
-              path={latestDatasetManifestPath}
-              url={latestDatasetManifestUrl}
-            />
-          </section>
-
-          <section className="endpoint-group">
-            <h3>{copy.searchAnalysis}</h3>
-            <ApiEndpointRow
-              description="Entity search over promoted public records."
-              label="Search JSON"
-              path={searchJsonPath}
-              url={searchJsonUrl}
-            />
-            <ApiEndpointRow
-              description="Safe search index; no raw snapshots or staging artifacts."
-              label="Search index"
-              path={searchIndexPath}
-              url={searchIndexUrl}
-            />
-            <ApiEndpointRow
-              description="Canonical aliases and retrieval hints."
-              label="Entity aliases"
-              path={entityIndexPath}
-              url={entityIndexUrl}
-            />
-            <ApiEndpointRow
-              description="Policy analysis dimension manifest."
-              label="Analysis index"
-              path={analysisIndexPath}
-              url={analysisIndexUrl}
-            />
-            <ApiEndpointRow
-              description="Example per-university analysis profile."
-              label="Analysis profile"
-              path={exampleAnalysisPath}
-              url={exampleAnalysisUrl}
-            />
-            <ApiEndpointRow
-              description="Coverage breadth scores, not policy quality."
-              label="Coverage scores"
-              path={analysisCoverageScoresPath}
-              url={analysisCoverageScoresUrl}
-            />
-            <ApiEndpointRow
-              description="Public analysis page gates."
-              label="Analysis page quality"
-              path={analysisPageQualityPath}
-              url={analysisPageQualityUrl}
-            />
-          </section>
-
-          <section className="endpoint-group">
-            <h3>{copy.reportsEmbeds}</h3>
-            <ApiEndpointRow
-              description="Public report index."
-              label="Reports index"
-              path={reportsIndexPath}
-              url={reportsIndexUrl}
-            />
-            <ApiEndpointRow
-              description="Media and newsletter copy with boundaries."
-              label="Outreach package"
-              path={reportOutreachPath}
-              url={reportOutreachUrl}
-            />
-            <ApiEndpointRow
-              description="June 2026 monthly report chart data."
-              label="Report chart data"
-              path={reportChartDataPath}
-              url={reportChartDataUrl}
-            />
-            <ApiEndpointRow
-              description="Widget discovery."
-              label="Widget index"
-              path={widgetIndexPath}
-              url={widgetIndexUrl}
-            />
-            <ApiEndpointRow
-              description="Example coverage widget."
-              label="Policy coverage widget"
-              path={policyCoverageWidgetPath}
-              url={policyCoverageWidgetUrl}
-            />
-            <ApiEndpointRow
-              description="Example source freshness widget."
-              label="Source freshness widget"
-              path={sourceFreshnessWidgetPath}
-              url={sourceFreshnessWidgetUrl}
-            />
-            <ApiEndpointRow
-              description="Example review-state widget."
-              label="Review-state widget"
-              path={reviewStateWidgetPath}
-              url={reviewStateWidgetUrl}
-            />
-          </section>
-
-          <section className="endpoint-group">
-            <h3>{copy.reviewIntegrations}</h3>
-            <ApiEndpointRow
-              description="QS 2026 collection coverage."
-              label="QS coverage"
-              path={qsCoveragePath}
-              url={qsCoverageUrl}
-            />
-            <ApiEndpointRow
-              description="Source status for repair and recrawl planning."
-              label="Source health"
-              path={sourceHealthPath}
-              url={sourceHealthUrl}
-            />
-            <ApiEndpointRow
-              description="Unpromoted staging run queue metadata."
-              label="Review queue"
-              path={reviewQueuePath}
-              url={reviewQueueUrl}
-            />
-            <ApiEndpointRow
-              description="Read-only MCP alpha manifest."
-              label="MCP manifest"
-              path={mcpManifestPath}
-              url={mcpManifestUrl}
-            />
-            <ApiEndpointRow
-              description="Read-only MCP tool catalog."
-              label="MCP tool catalog"
-              path={mcpToolCatalogPath}
-              url={mcpToolCatalogUrl}
-            />
-            <ApiEndpointRow
-              description="Citation templates and reuse rules."
-              label="Citation metadata"
-              path={citationMetadataPath}
-              url={citationMetadataUrl}
-            />
-            <ApiEndpointRow
-              description="Contribution workflow metadata."
-              label="Contribution index"
-              path={contributionIndexPath}
-              url={contributionIndexUrl}
-            />
-            <ApiEndpointRow
-              description="Contribution review policy."
-              label="Review policy"
-              path={reviewPolicyPath}
-              url={reviewPolicyUrl}
-            />
-          </section>
+          {endpointGroups.map((group) => (
+            <section className="endpoint-group" key={group.headingKey}>
+              <h3>{copy[group.headingKey]}</h3>
+              {group.endpoints.map((endpoint) => (
+                <ApiEndpointRow
+                  description={copy.apiGroups[endpoint.copyKey]}
+                  key={endpoint.path}
+                  label={endpoint.label}
+                  path={endpoint.path}
+                  url={getAbsoluteSiteUrl(endpoint.path)}
+                />
+              ))}
+            </section>
+          ))}
         </div>
       </ReferenceBox>
 
@@ -636,7 +319,7 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
             {datasetReleaseManifest.releasePeriod}
           </MetaLabel>
           <MetaLabel label={copy.published}>
-            {formatDate(datasetReleaseManifest.publishedAt, locale)}
+            {formatDateMedium(datasetReleaseManifest.publishedAt, locale)}
           </MetaLabel>
         </div>
         {datasetReleaseManifest.artifacts.map((artifact) => (
@@ -688,7 +371,7 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
           <div className="tag-row">
             <MetaLabel label={copy.release}>{manifest.releaseId}</MetaLabel>
             <MetaLabel label={copy.published}>
-              {formatDate(manifest.publishedAt, locale)}
+              {formatDateMedium(manifest.publishedAt, locale)}
             </MetaLabel>
             <MetaLabel label={copy.promotedRuns}>
               {manifest.includeStagedArtifactDirectories.length}
@@ -759,13 +442,6 @@ export default async function DatasetsPage({ params }: DatasetsPageProps) {
       </section>
     </main>
   );
-}
-
-function formatDate(value: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
-    dateStyle: "medium",
-    timeZone: "UTC"
-  }).format(new Date(value));
 }
 
 function formatArtifactStatus(artifact: {
