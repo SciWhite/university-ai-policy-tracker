@@ -655,6 +655,58 @@
       "reviewer": "claude-local-agent",
       "notes": "Source removed from the public web (https://elearn.squ.edu.om/pluginfile.php/2795003/block_html/content/Academic%20Integrity%20Guide%20for%20Students.pdf); no public official replacement found in the 2026-07-27 link-health repair. Claim needs re-sourcing or deprecation.",
       "decidedAt": "2026-07-27T02:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-sultan-qaboos-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-linkrot2-claim-squ-ai-citation-transparency-20260727b",
+      "claimId": "claim-squ-ai-citation-transparency",
+      "decision": "needs_changes",
+      "reviewState": "needs_review",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "CPS guide PDF removed from public Moodle. Official replacement identified: SQU Guidelines for using GenAI tools in Teaching, Learning and Assessment (Sep 2024), linked from the CETL page on squ.edu.om but hosted as a scanned Google Drive PDF; needs a human re-sourcing decision because scanned off-domain hosting fails the mechanical evidence-verification bar.",
+      "decidedAt": "2026-07-27T05:50:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-sultan-qaboos-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-linkrot2-claim-squ-ai-evaluation-20260727b",
+      "claimId": "claim-squ-ai-evaluation",
+      "decision": "needs_changes",
+      "reviewState": "needs_review",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "CPS guide PDF removed from public Moodle. Official replacement identified: SQU Guidelines for using GenAI tools in Teaching, Learning and Assessment (Sep 2024), linked from the CETL page on squ.edu.om but hosted as a scanned Google Drive PDF; needs a human re-sourcing decision because scanned off-domain hosting fails the mechanical evidence-verification bar.",
+      "decidedAt": "2026-07-27T05:50:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-sultan-qaboos-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-linkrot2-claim-squ-ai-misconduct-20260727b",
+      "claimId": "claim-squ-ai-misconduct",
+      "decision": "needs_changes",
+      "reviewState": "needs_review",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "CPS guide PDF removed from public Moodle. Official replacement identified: SQU Guidelines for using GenAI tools in Teaching, Learning and Assessment (Sep 2024), linked from the CETL page on squ.edu.om but hosted as a scanned Google Drive PDF; needs a human re-sourcing decision because scanned off-domain hosting fails the mechanical evidence-verification bar.",
+      "decidedAt": "2026-07-27T05:50:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-sultan-qaboos-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-linkrot2-claim-squ-ai-original-work-20260727b",
+      "claimId": "claim-squ-ai-original-work",
+      "decision": "needs_changes",
+      "reviewState": "needs_review",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "CPS guide PDF removed from public Moodle. Official replacement identified: SQU Guidelines for using GenAI tools in Teaching, Learning and Assessment (Sep 2024), linked from the CETL page on squ.edu.om but hosted as a scanned Google Drive PDF; needs a human re-sourcing decision because scanned off-domain hosting fails the mechanical evidence-verification bar.",
+      "decidedAt": "2026-07-27T05:50:00.000Z"
     }
   ]
 }

@@ -1,0 +1,366 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-gazi-universitesi-20260727",
+  "runPurpose": "claim_evidence_release",
+  "snippetPolicy": "verbatim_original_v2",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-gazi-universitesi-20260727",
+      "entityType": "university",
+      "entitySlug": "gazi-universitesi",
+      "startedAt": "2026-07-27T05:20:00.000Z",
+      "endedAt": "2026-07-27T05:20:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "domain": "gazi-universitesi",
+          "resultCount": 1,
+          "notes": "Multi-path discovery per the 2026-07 calibrated crawler policy (registry/academics/PDF paths), verified with rendered fetches."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-gazi-yz-kullanim-rehberi"
+      ],
+      "rejectionIds": [],
+      "summary": "Re-sources Gazi University claims from the new 2026 AI Center usage guide after the previous ethics PDF was removed; statements without support in the new guide are deprecated in the 20260521 run."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "crawl_plan",
+      "planId": "cp-uapt-gazi-universitesi-20260727",
+      "createdAt": "2026-07-27T05:20:00.000Z",
+      "createdBy": "claude-local-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "gazi-universitesi",
+          "sourceCandidateId": "sc-gazi-yz-kullanim-rehberi",
+          "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+          "sourceTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+          "sourceLanguage": "tr",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "ai policy"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Scoped extraction of the listed official sources only."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-gazi-yz-kullanim-rehberi",
+      "entityType": "university",
+      "entitySlug": "gazi-universitesi",
+      "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "finalUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "sourceTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+      "sourceLanguage": "tr",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "public_web_search",
+      "discoveredAt": "2026-07-27T05:20:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.92,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-07-27T05:20:00.000Z",
+      "verificationNotes": "New AI Center usage guide (PDF dated 2026-07-18) replacing the removed ethics-principles PDF.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-gazi-yz-kullanim-rehberi",
+      "sourceCandidateId": "sc-gazi-yz-kullanim-rehberi",
+      "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "finalUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "attemptedAt": "2026-07-27T05:20:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "trackerCheckedAt": "2026-07-27T05:20:00.000Z",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 6000,
+      "contentHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+      "normalizedTextStorageKey": "openclaw/uapt-gazi-universitesi-20260727/snapshots/gazi-yz-kullanim-rehberi"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-gazi-yz-kullanim-rehberi",
+      "sourceCandidateId": "sc-gazi-yz-kullanim-rehberi",
+      "fetchAttemptId": "fa-gazi-yz-kullanim-rehberi",
+      "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "finalUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "sourceTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+      "sourceLanguage": "tr",
+      "contentHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+      "fetchedAt": "2026-07-27T05:20:00.000Z",
+      "trackerCheckedAt": "2026-07-27T05:20:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-gazi-universitesi-20260727/snapshots/gazi-yz-kullanim-rehberi",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-gazi-rehber-2-20260727",
+      "entityType": "university",
+      "entitySlug": "gazi-universitesi",
+      "claimType": "academic_integrity",
+      "claimText": "Gazi University's AI Center usage guide tells users not to present AI output as their own original contribution and not to compromise academic integrity.",
+      "normalizedValue": "gazi_kullanim_rehberi_academic_integrity",
+      "sourceLanguage": "tr",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-gazi-rehber-2-20260727"
+      ],
+      "citation": {
+        "citationTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/gazi-universitesi.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/gazi-universitesi",
+        "publisher": "Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "retrievedAt": "2026-07-27T05:20:00.000Z",
+        "trackerCheckedAt": "2026-07-27T05:20:00.000Z",
+        "snapshotHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-gazi-rehber-2-20260727",
+      "claimId": "claim-gazi-rehber-2-20260727",
+      "sourceSnapshotId": "ss-gazi-yz-kullanim-rehberi",
+      "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "finalUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "sourceTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+      "sourceLanguage": "tr",
+      "snapshotHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+      "evidenceSnippetOriginal": "Yapay zekâ çıktısını özgün katkınız olarak sunmayın. Akademik dürüstlükten ödün vermeyin.",
+      "evidenceLocator": "Yapay Zekâ Kullanım Rehberi (2026)",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/gazi-universitesi.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/gazi-universitesi",
+        "publisher": "Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "retrievedAt": "2026-07-27T05:20:00.000Z",
+        "trackerCheckedAt": "2026-07-27T05:20:00.000Z",
+        "snapshotHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "evidenceSnippetDisplay": "Do not present AI output as your own original contribution, and do not compromise academic integrity."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "review_decision",
+      "decisionId": "rd-gazi-rehber-2-20260727",
+      "claimId": "claim-gazi-rehber-2-20260727",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Verbatim quote mechanically verified against a fresh rendered fetch on 2026-07-27 under snippetPolicy verbatim_original_v2.",
+      "decidedAt": "2026-07-27T05:20:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-gazi-rehber-4-20260727",
+      "entityType": "university",
+      "entitySlug": "gazi-universitesi",
+      "claimType": "teaching",
+      "claimText": "Gazi University's AI Center usage guide states that AI is only an assistive tool and that final decisions, academic evaluation, and responsibility always belong to the user.",
+      "normalizedValue": "gazi_kullanim_rehberi_teaching",
+      "sourceLanguage": "tr",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-gazi-rehber-4-20260727"
+      ],
+      "citation": {
+        "citationTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/gazi-universitesi.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/gazi-universitesi",
+        "publisher": "Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "retrievedAt": "2026-07-27T05:20:00.000Z",
+        "trackerCheckedAt": "2026-07-27T05:20:00.000Z",
+        "snapshotHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-gazi-rehber-4-20260727",
+      "claimId": "claim-gazi-rehber-4-20260727",
+      "sourceSnapshotId": "ss-gazi-yz-kullanim-rehberi",
+      "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "finalUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "sourceTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+      "sourceLanguage": "tr",
+      "snapshotHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+      "evidenceSnippetOriginal": "Unutulmamalıdır ki yapay zekâ yalnızca bir yardımcı araçtır; nihai karar, akademik değerlendirme ve sorumluluk her zaman kullanıcıya aittir.",
+      "evidenceLocator": "Yapay Zekâ Kullanım Rehberi (2026)",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/gazi-universitesi.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/gazi-universitesi",
+        "publisher": "Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "retrievedAt": "2026-07-27T05:20:00.000Z",
+        "trackerCheckedAt": "2026-07-27T05:20:00.000Z",
+        "snapshotHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "evidenceSnippetDisplay": "AI is only an assistive tool; the final decision, academic evaluation and responsibility always belong to the user."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "review_decision",
+      "decisionId": "rd-gazi-rehber-4-20260727",
+      "claimId": "claim-gazi-rehber-4-20260727",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Verbatim quote mechanically verified against a fresh rendered fetch on 2026-07-27 under snippetPolicy verbatim_original_v2.",
+      "decidedAt": "2026-07-27T05:20:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-gazi-rehber-5-20260727",
+      "entityType": "university",
+      "entitySlug": "gazi-universitesi",
+      "claimType": "research",
+      "claimText": "For research, Gazi University's AI Center usage guide states that scientific interpretation, the work's original contribution, the accuracy of results, and ethical responsibility rest with the researcher.",
+      "normalizedValue": "gazi_kullanim_rehberi_research",
+      "sourceLanguage": "tr",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-gazi-rehber-5-20260727"
+      ],
+      "citation": {
+        "citationTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/gazi-universitesi.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/gazi-universitesi",
+        "publisher": "Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "retrievedAt": "2026-07-27T05:20:00.000Z",
+        "trackerCheckedAt": "2026-07-27T05:20:00.000Z",
+        "snapshotHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-gazi-rehber-5-20260727",
+      "claimId": "claim-gazi-rehber-5-20260727",
+      "sourceSnapshotId": "ss-gazi-yz-kullanim-rehberi",
+      "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "finalUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+      "sourceTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+      "sourceLanguage": "tr",
+      "snapshotHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+      "evidenceSnippetOriginal": "bilimsel yorum, araştırmanın özgün katkısı, sonuçların doğruluğu, etik sorumluluk araştırmacıya aittir.",
+      "evidenceLocator": "Yapay Zekâ Kullanım Rehberi (2026)",
+      "evidenceType": "pdf",
+      "relevance": 0.95,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Yapay Zekâ Kullanım Rehberi – Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "sourceUrl": "https://aicenter.gazi.edu.tr/files/YZKullan%C4%B1mRehberi.pdf",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/gazi-universitesi.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/gazi-universitesi",
+        "publisher": "Gazi Üniversitesi Yapay Zekâ Merkezi",
+        "retrievedAt": "2026-07-27T05:20:00.000Z",
+        "trackerCheckedAt": "2026-07-27T05:20:00.000Z",
+        "snapshotHash": "73f151c31590f3a65da3323a12b9974beea1af0b686a5d356367ee15f571f1da",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "evidenceSnippetDisplay": "Scientific interpretation, original contribution, accuracy of results, and ethical responsibility rest with the researcher."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "review_decision",
+      "decisionId": "rd-gazi-rehber-5-20260727",
+      "claimId": "claim-gazi-rehber-5-20260727",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Verbatim quote mechanically verified against a fresh rendered fetch on 2026-07-27 under snippetPolicy verbatim_original_v2.",
+      "decidedAt": "2026-07-27T05:20:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260727",
+      "artifactType": "report_draft",
+      "reportId": "report-uapt-gazi-universitesi-20260727",
+      "title": "Gazi University AI Guide Re-Sourcing",
+      "generatedAt": "2026-07-27T05:20:00.000Z",
+      "draftPath": "content/reports/gazi-universitesi-20260727.mdx",
+      "summary": "Re-sources Gazi University claims from the new 2026 AI Center usage guide after the previous ethics PDF was removed; statements without support in the new guide are deprecated in the 20260521 run.",
+      "referencedClaimIds": [
+        "claim-gazi-rehber-2-20260727",
+        "claim-gazi-rehber-4-20260727",
+        "claim-gazi-rehber-5-20260727"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/gazi-universitesi.json",
+        "https://eduaipolicy.org/api/public/v1/claims/gazi-universitesi.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

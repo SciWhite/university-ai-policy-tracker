@@ -1,8 +1,8 @@
 {
  "schemaVersion": "uapt-public-release-manifest-v1",
- "releaseId": "public-release-20260727-015",
- "publishedAt": "2026-07-27T06:10:00.000Z",
- "description": "Coverage and re-sourcing release: adds institute-level policy runs for IIT Delhi, Edinburgh, and UC3M under the verbatim_original_v2 snippet policy, re-sources Gazi and Miami claims from live official replacements, and deprecates seven claims whose sources left the public web.",
+ "releaseId": "public-release-20260727-014",
+ "publishedAt": "2026-07-27T03:05:00.000Z",
+ "description": "Link-health repair release: relocates 25 dead or bot-blocked-404 official source URLs to their verified new locations across 29 staged runs, and flips 11 claims whose sources left the public web (WashU, Miami, SQU, Gazi) to needs_review pending re-sourcing.",
  "includeStagedArtifactDirectories": [
   "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
   "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -808,17 +808,12 @@
   "staging/uapt-runs/uapt-ai-tools-qs-top-600-20260718-009",
   "staging/uapt-runs/uapt-ai-tools-qs-top-700-20260719-011",
   "staging/uapt-runs/uapt-ai-tools-qs-top-857-20260719-012",
-  "staging/uapt-runs/uapt-tufts-university-20260726",
-  "staging/uapt-runs/uapt-edinburgh-20260727",
-  "staging/uapt-runs/uapt-gazi-universitesi-20260727",
-  "staging/uapt-runs/uapt-indian-institute-of-technology-delhi-20260727",
-  "staging/uapt-runs/uapt-universidad-carlos-iii-de-madrid-20260727",
-  "staging/uapt-runs/uapt-university-of-miami-20260727"
+  "staging/uapt-runs/uapt-tufts-university-20260726"
  ],
  "notes": [
-  "All new evidence carries mechanically verified verbatim quotes (fresh rendered fetches, 2026-07-27); non-English snippets include English display translations.",
-  "Deprecated: five Gazi claims (old ethics PDF removed; three statements re-sourced from the 2026 usage guide), the WashU DeepSeek advisory claim (advisory retired; general guidance already covered by live claims), and the Miami PETAL claim (re-sourced verbatim from the public UM Libraries guide).",
-  "SQU claims remain needs_review: an official Sep 2024 GenAI guideline exists but is hosted as a scanned off-domain PDF, which fails the mechanical evidence-verification bar; human re-sourcing decision required."
+  "Repairs driven by the 2026-07-26 full maintenance scan and a Firecrawl recheck: 20 of 50 flagged P1 URLs were bot-conditional 404s or render-only pages (recorded in data/source-health/firecrawl-blocked-source-checks-20260727.json), 25 were relocated with fetched-content verification, 4 sources are gone from the public web.",
+  "Snapshot hashes and retrievedAt values are unchanged for relocated URLs: the snapshots still describe the captured evidence; only the source pointers rotted.",
+  "This release also absorbs the entity-identity dedup landed on main after 013 (30 duplicate university slugs registered as aliases in data/entity-aliases.json), so public university and change counts move from 858 to 828 without any loss of claims or evidence."
  ],
- "previousReleaseId": "public-release-20260727-014"
+ "previousReleaseId": "public-release-20260726-013"
 }

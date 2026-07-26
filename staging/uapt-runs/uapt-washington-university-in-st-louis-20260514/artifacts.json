@@ -968,7 +968,7 @@
       "normalizedValue": "deepseek_not_safe_for_nonpublic_information",
       "sourceLanguage": "en-US",
       "confidence": 0.96,
-      "reviewState": "needs_review",
+      "reviewState": "rejected",
       "evidenceIds": [
         "ev-washu-deepseek-nonpublic-info"
       ],
@@ -1144,6 +1144,19 @@
       "reviewer": "claude-local-agent",
       "notes": "Source removed from the public web (https://it.wustl.edu/2025/02/specific-guidance-on-the-use-of-generative-ai-deepseek/); no public official replacement found in the 2026-07-27 link-health repair. Claim needs re-sourcing or deprecation.",
       "decidedAt": "2026-07-27T02:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-washington-university-in-st-louis-20260514",
+      "artifactType": "review_decision",
+      "decisionId": "rd-deprecate-claim-washu-deepseek-nonpublic-info-20260727",
+      "claimId": "claim-washu-deepseek-nonpublic-info",
+      "decision": "reject",
+      "reviewState": "rejected",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "DeepSeek-specific advisory retired from the public web sitewide; general AI security guidance is already covered by the live it.wustl.edu/ai claims in this run.",
+      "decidedAt": "2026-07-27T05:20:00.000Z"
     }
   ]
 }

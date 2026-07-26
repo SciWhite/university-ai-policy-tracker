@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-university-of-miami-20260727",
+  "runPurpose": "claim_evidence_release",
+  "snippetPolicy": "verbatim_original_v2",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260727",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-university-of-miami-20260727",
+      "entityType": "university",
+      "entitySlug": "university-of-miami",
+      "startedAt": "2026-07-27T05:50:00.000Z",
+      "endedAt": "2026-07-27T05:50:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "public_web_search",
+          "domain": "miami.edu",
+          "resultCount": 1,
+          "notes": "Searched public miami.edu surfaces after the PETAL guide moved behind SharePoint; UM Libraries AI guide reproduces the PETAL principles verbatim."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-miami-libraries-ai-guide"
+      ],
+      "rejectionIds": [],
+      "summary": "Re-sources the University of Miami PETAL per-course AI rules statement from the public UM Libraries AI guide, which reproduces the PETAL principles verbatim, after the PETAL site moved behind SharePoint sign-in."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260727",
+      "artifactType": "crawl_plan",
+      "planId": "cp-uapt-university-of-miami-20260727",
+      "createdAt": "2026-07-27T05:50:00.000Z",
+      "createdBy": "claude-local-agent",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-miami",
+          "sourceCandidateId": "sc-miami-libraries-ai-guide",
+          "sourceUrl": "https://guides.library.miami.edu/ai",
+          "sourceTitle": "Artificial Intelligence | University of Miami Libraries",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http",
+            "firecrawl"
+          ],
+          "expectedThemes": [
+            "per-course AI rules",
+            "PETAL principles"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Single-source re-sourcing run."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260727",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-miami-libraries-ai-guide",
+      "entityType": "university",
+      "entitySlug": "university-of-miami",
+      "sourceUrl": "https://guides.library.miami.edu/ai",
+      "finalUrl": "https://guides.library.miami.edu/ai",
+      "sourceTitle": "Artificial Intelligence | University of Miami Libraries",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "public_web_search",
+      "discoveredAt": "2026-07-27T05:50:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.97,
+      "policySpecificityScore": 0.9,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-07-27T05:50:00.000Z",
+      "verificationNotes": "Public UM Libraries guide; PETAL principles section verified verbatim via rendered fetch on 2026-07-27.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260727",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uapt-university-of-miami-20260727",
+      "sourceCandidateId": "sc-miami-libraries-ai-guide",
+      "sourceUrl": "https://guides.library.miami.edu/ai",
+      "finalUrl": "https://guides.library.miami.edu/ai",
+      "attemptedAt": "2026-07-27T05:50:00.000Z",
+      "fetchMode": "firecrawl",
+      "userAgentKind": "firecrawl",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "trackerCheckedAt": "2026-07-27T05:50:00.000Z",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "durationMs": 5000,
+      "contentHash": "172ce766f10d5a68cbabc410cbfdc088b34e09f661a00d645a745498cac69d35",
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-miami-20260727/snapshots/miami-libraries-ai-guide"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260727",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "ss-uapt-university-of-miami-20260727",
+      "sourceCandidateId": "sc-miami-libraries-ai-guide",
+      "fetchAttemptId": "fa-uapt-university-of-miami-20260727",
+      "sourceUrl": "https://guides.library.miami.edu/ai",
+      "finalUrl": "https://guides.library.miami.edu/ai",
+      "sourceTitle": "Artificial Intelligence | University of Miami Libraries",
+      "sourceLanguage": "en",
+      "contentHash": "172ce766f10d5a68cbabc410cbfdc088b34e09f661a00d645a745498cac69d35",
+      "fetchedAt": "2026-07-27T05:50:00.000Z",
+      "trackerCheckedAt": "2026-07-27T05:50:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-miami-20260727/snapshots/miami-libraries-ai-guide",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260727",
+      "artifactType": "claim_candidate",
+      "claimId": "claim-miami-petal-course-rules-20260727",
+      "entityType": "university",
+      "entitySlug": "university-of-miami",
+      "claimType": "academic_integrity",
+      "claimText": "University of Miami PETAL principles, as published on the UM Libraries AI guide, state that AI rules and practices may vary from class to class and discipline to discipline, and that students are responsible for staying informed of each instructor's expectations.",
+      "normalizedValue": "miami_petal_per_course_ai_rules",
+      "sourceLanguage": "en",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-miami-petal-course-rules-20260727"
+      ],
+      "citation": {
+        "citationTitle": "Artificial Intelligence | University of Miami Libraries",
+        "sourceUrl": "https://guides.library.miami.edu/ai",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-miami.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-miami",
+        "publisher": "University of Miami Libraries",
+        "retrievedAt": "2026-07-27T05:50:00.000Z",
+        "trackerCheckedAt": "2026-07-27T05:50:00.000Z",
+        "snapshotHash": "172ce766f10d5a68cbabc410cbfdc088b34e09f661a00d645a745498cac69d35",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260727",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-miami-petal-course-rules-20260727",
+      "claimId": "claim-miami-petal-course-rules-20260727",
+      "sourceSnapshotId": "ss-uapt-university-of-miami-20260727",
+      "sourceUrl": "https://guides.library.miami.edu/ai",
+      "finalUrl": "https://guides.library.miami.edu/ai",
+      "sourceTitle": "Artificial Intelligence | University of Miami Libraries",
+      "sourceLanguage": "en",
+      "snapshotHash": "172ce766f10d5a68cbabc410cbfdc088b34e09f661a00d645a745498cac69d35",
+      "evidenceSnippetOriginal": "The rules and practices on the use of AI may vary from class to class, discipline to discipline. Do not assume that what is acceptable in a Computer Science class will be acceptable in a Philosophy class. It is the student's responsibility to stay informed as to the instructor's expectations. When in doubt, ask.",
+      "evidenceLocator": "Section: Principles from UM PETAL Regarding AI",
+      "evidenceType": "official_source",
+      "relevance": 0.96,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Artificial Intelligence | University of Miami Libraries",
+        "sourceUrl": "https://guides.library.miami.edu/ai",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-miami.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-miami",
+        "publisher": "University of Miami Libraries",
+        "retrievedAt": "2026-07-27T05:50:00.000Z",
+        "trackerCheckedAt": "2026-07-27T05:50:00.000Z",
+        "snapshotHash": "172ce766f10d5a68cbabc410cbfdc088b34e09f661a00d645a745498cac69d35",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260727",
+      "artifactType": "review_decision",
+      "decisionId": "rd-miami-petal-course-rules-20260727",
+      "claimId": "claim-miami-petal-course-rules-20260727",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Verbatim quote mechanically verified against a fresh rendered fetch on 2026-07-27 under snippetPolicy verbatim_original_v2.",
+      "decidedAt": "2026-07-27T05:50:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260727",
+      "artifactType": "report_draft",
+      "reportId": "report-uapt-university-of-miami-20260727",
+      "title": "University of Miami PETAL Principles Re-Sourcing",
+      "generatedAt": "2026-07-27T05:50:00.000Z",
+      "draftPath": "content/reports/university-of-miami-20260727.mdx",
+      "summary": "Re-sources the University of Miami PETAL per-course AI rules statement from the public UM Libraries AI guide, which reproduces the PETAL principles verbatim, after the PETAL site moved behind SharePoint sign-in.",
+      "referencedClaimIds": [
+        "claim-miami-petal-course-rules-20260727"
+      ],
+      "publicJsonLinks": [
+        "https://eduaipolicy.org/api/public/v1/universities/university-of-miami.json",
+        "https://eduaipolicy.org/api/public/v1/claims/university-of-miami.json"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "rawArtifactPaths": []
+    }
+  ]
+}

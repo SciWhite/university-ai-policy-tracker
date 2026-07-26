@@ -345,7 +345,7 @@
       "normalizedValue": "course_specific_ai_rules_academic_integrity",
       "sourceLanguage": "en",
       "confidence": 0.9,
-      "reviewState": "needs_review",
+      "reviewState": "rejected",
       "evidenceIds": [
         "umiami-evidence-course-specific-ai-rules"
       ],
@@ -652,6 +652,19 @@
       "reviewer": "claude-local-agent",
       "notes": "Source removed from the public web (https://petal.miami.edu/teaching-guides-and-policies/teaching-and-learning-with-ai/index.html); no public official replacement found in the 2026-07-27 link-health repair. Claim needs re-sourcing or deprecation.",
       "decidedAt": "2026-07-27T02:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-university-of-miami-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-deprecate-umiami-claim-course-specific-ai-rules-20260727b",
+      "claimId": "umiami-claim-course-specific-ai-rules",
+      "decision": "reject",
+      "reviewState": "rejected",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "PETAL source moved behind SharePoint sign-in; statement re-sourced verbatim from the public UM Libraries AI guide in uapt-university-of-miami-20260727.",
+      "decidedAt": "2026-07-27T05:50:00.000Z"
     }
   ]
 }

@@ -367,7 +367,7 @@
       "normalizedValue": "generative_ai_guide_scope_staff_students",
       "sourceLanguage": "tr",
       "confidence": 0.93,
-      "reviewState": "needs_review",
+      "reviewState": "rejected",
       "evidenceIds": [
         "ev-gazi-guide-applies-staff-students"
       ],
@@ -396,7 +396,7 @@
       "normalizedValue": "generative_ai_use_disclosure_required_in_academic_work",
       "sourceLanguage": "tr",
       "confidence": 0.94,
-      "reviewState": "needs_review",
+      "reviewState": "rejected",
       "evidenceIds": [
         "ev-gazi-ai-use-disclosure"
       ],
@@ -425,7 +425,7 @@
       "normalizedValue": "generative_ai_cheating_plagiarism_academic_fraud",
       "sourceLanguage": "tr",
       "confidence": 0.94,
-      "reviewState": "needs_review",
+      "reviewState": "rejected",
       "evidenceIds": [
         "ev-gazi-ai-academic-dishonesty"
       ],
@@ -454,7 +454,7 @@
       "normalizedValue": "generative_ai_additional_source_not_original_work_replacement",
       "sourceLanguage": "tr",
       "confidence": 0.93,
-      "reviewState": "needs_review",
+      "reviewState": "rejected",
       "evidenceIds": [
         "ev-gazi-ai-not-original-work-replacement"
       ],
@@ -483,7 +483,7 @@
       "normalizedValue": "do_not_enter_personal_or_important_institutional_data",
       "sourceLanguage": "tr",
       "confidence": 0.91,
-      "reviewState": "needs_review",
+      "reviewState": "rejected",
       "evidenceIds": [
         "ev-gazi-ai-data-disclosure-risk"
       ],
@@ -875,6 +875,71 @@
       "reviewer": "claude-local-agent",
       "notes": "Source removed from the public web (https://aicenter.gazi.edu.tr/files/etik-ilkeler.pdf); no public official replacement found in the 2026-07-27 link-health repair. Claim needs re-sourcing or deprecation.",
       "decidedAt": "2026-07-27T02:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "rd-deprecate-cl-gazi-ai-academic-dishonesty-20260727",
+      "claimId": "cl-gazi-ai-academic-dishonesty",
+      "decision": "reject",
+      "reviewState": "rejected",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source PDF removed from the public web; the replacement 2026 usage guide does not support this statement's wording. Superseded by the uapt-gazi-universitesi-20260727 run.",
+      "decidedAt": "2026-07-27T05:20:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "rd-deprecate-cl-gazi-ai-data-disclosure-risk-20260727",
+      "claimId": "cl-gazi-ai-data-disclosure-risk",
+      "decision": "reject",
+      "reviewState": "rejected",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source PDF removed from the public web; the replacement 2026 usage guide does not support this statement's wording. Superseded by the uapt-gazi-universitesi-20260727 run.",
+      "decidedAt": "2026-07-27T05:20:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "rd-deprecate-cl-gazi-ai-not-original-work-replacement-20260727",
+      "claimId": "cl-gazi-ai-not-original-work-replacement",
+      "decision": "reject",
+      "reviewState": "rejected",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source PDF removed from the public web; the replacement 2026 usage guide does not support this statement's wording. Superseded by the uapt-gazi-universitesi-20260727 run.",
+      "decidedAt": "2026-07-27T05:20:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "rd-deprecate-cl-gazi-ai-use-disclosure-20260727",
+      "claimId": "cl-gazi-ai-use-disclosure",
+      "decision": "reject",
+      "reviewState": "rejected",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source PDF removed from the public web; the replacement 2026 usage guide does not support this statement's wording. Superseded by the uapt-gazi-universitesi-20260727 run.",
+      "decidedAt": "2026-07-27T05:20:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-gazi-universitesi-20260521",
+      "artifactType": "review_decision",
+      "decisionId": "rd-deprecate-cl-gazi-guide-applies-staff-students-20260727",
+      "claimId": "cl-gazi-guide-applies-staff-students",
+      "decision": "reject",
+      "reviewState": "rejected",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source PDF removed from the public web; the replacement 2026 usage guide does not support this statement's wording. Superseded by the uapt-gazi-universitesi-20260727 run.",
+      "decidedAt": "2026-07-27T05:20:00.000Z"
     }
   ]
 }

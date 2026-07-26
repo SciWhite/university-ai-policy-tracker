@@ -1,7 +1,7 @@
 ---
 title: Current Public Release
 authoritativeLevel: derived_snapshot
-generatedAt: 2026-07-26T18:44:03.341Z
+generatedAt: 2026-07-26T19:43:21.780Z
 sourceFiles:
   - data/public-releases/current.json
   - data/entity-aliases.json
@@ -20,19 +20,19 @@ manifest and generated public JSON remain authoritative for what is promoted.
 
 ## Release Manifest
 
-- Release ID: `public-release-20260727-014`
-- Published at: `2026-07-27T03:05:00.000Z`
-- Promoted artifact directories: 805
+- Release ID: `public-release-20260727-015`
+- Published at: `2026-07-27T06:10:00.000Z`
+- Promoted artifact directories: 810
 
 ## Public Dataset Summary
 
 | Metric | Value |
 | --- | ---: |
 | Public universities | 828 |
-| Public claims | 5450 |
-| Evidence records | 5715 |
-| Official source attributions | 3186 |
-| Public recent-change records | 470 |
+| Public claims | 5465 |
+| Evidence records | 5730 |
+| Official source attributions | 3193 |
+| Public recent-change records | 473 |
 
 Duplicate university identities are merged through `data/entity-aliases.json`
 before counting.
@@ -43,8 +43,8 @@ before counting.
 | --- | --- | ---: |
 | Entity | `agent_reviewed` | 827 |
 | Entity | `needs_review` | 1 |
-| Claim | `agent_reviewed` | 5439 |
-| Claim | `needs_review` | 11 |
+| Claim | `agent_reviewed` | 5461 |
+| Claim | `needs_review` | 4 |
 
 Review state is not the same as confidence. This snapshot does not change any
 review state.
@@ -56,12 +56,12 @@ tags appear across the evidence set.
 
 | Source language | Evidence count |
 | --- | ---: |
-| `en` | 3560 |
+| `en` | 3572 |
 | `de` | 274 |
 | `fr` | 174 |
-| `es` | 149 |
+| `es` | 155 |
 | `zh-CN` | 138 |
-| `en-US` | 132 |
+| `en-US` | 131 |
 | `ja` | 130 |
 | `it` | 117 |
 | `ko` | 107 |

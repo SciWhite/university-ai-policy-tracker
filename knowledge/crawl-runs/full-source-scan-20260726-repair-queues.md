@@ -192,3 +192,22 @@ Firecrawl recheck + relocation discovery closed the P1 queues in release
 
 Remaining open queues: 13 new render-verification rows, 7 new blocked rows,
 142 HTTP-failure retries (run from OCI or via Firecrawl on the normal cadence).
+
+## Queue clearing (2026-07-27, Firecrawl)
+
+The remaining P2/P3 queues were recleared with rendered fetches
+(`data/source-health/firecrawl-blocked-source-checks-20260727b.json`, 218 URLs:
+all render-verification and HTTP-failure rows plus the 7 new blocked rows):
+
+- 161 verified alive (74%) — plain-HTTP failures were bot-conditional or
+  render-related, not real outages; zero newly dead URLs found.
+- 10 opened with little extractable content — manual check queue.
+- 47 rendered fetches also failed — retry queue (many are hosts that also
+  block Firecrawl's egress; retry from OCI or on the next scan cadence).
+
+Re-sourcing outcomes for the four gone-from-public-web sources are recorded in
+release `public-release-20260727-015`: Gazi re-sourced from the 2026 usage
+guide (3 claims, 5 deprecated), Miami re-sourced verbatim from the public UM
+Libraries guide (1 claim, 1 deprecated), WashU DeepSeek claim deprecated
+(general guidance already covered), SQU held at needs_review pending a human
+decision on the scanned off-domain replacement document.

@@ -1,0 +1,4158 @@
+{
+ "schemaVersion": "uapt-source-health-agent-verification-v1",
+ "generatedAt": "2026-07-27T04:30:00.000Z",
+ "checkedWith": [
+  "firecrawl"
+ ],
+ "requestPolicy": "One fresh Firecrawl scrape per URL, no login/paywall/CAPTCHA bypass; robots-respecting rendered fetch.",
+ "summary": {
+  "firecrawl_failed": 47,
+  "firecrawl_verified": 161,
+  "firecrawl_opened_no_content": 10,
+  "total": 218
+ },
+ "records": [
+  {
+   "sourceUrl": "http://hea.uum.edu.my/images/2020/10/19/GL_TAKE_HOME_4_JULY_2020.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universiti-utara-malaysia-uum"
+   ],
+   "sourceTitle": "Guidelines for Online and Take-Home Assessments",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "http://rmc.uum.edu.my/component/content/article/945-panggilan-peserta-chatgpt-for-academic-writing?catid=185&Itemid=437",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universiti-utara-malaysia-uum"
+   ],
+   "sourceTitle": "Research Management Centre (RMC) - [Panggilan Peserta] ChatGPT for Academic Writing",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 502,
+    "metadataStatusCode": 502,
+    "contentExtracted": false,
+    "finalUrl": "http://rmc.uum.edu.my/component/content/article/945-panggilan-peserta-chatgpt-for-academic-writing?catid=185&Itemid=437",
+    "textLength": 23,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "http://www.it.fudan.edu.cn/Data/View/5005",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "fudan-university"
+   ],
+   "sourceTitle": "复旦大学关于在本科毕业论文（设计）中使用 AI 工具的规定（试行）",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://abu.edu.ng/abu-will-continue-to-support-individuals-and-groups-in-advancing-ai-in-learning/",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "ahmadu-bello-university-zaria"
+   ],
+   "sourceTitle": "'ABU will continue to support individuals and groups in advancing AI in learning'",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://abu.edu.ng/artificial-intelligence-key-pillar-in-abus-strategic-goal-says-vice-chancellor/",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "ahmadu-bello-university-zaria"
+   ],
+   "sourceTitle": "Artificial Intelligence key pillar in ABU's strategic goal, says Vice-Chancellor",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://abu.edu.ng/how-to-navigate-challenges-posed-by-artificial-intelligence-in-abu-by-vice-chancellor/",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "ahmadu-bello-university-zaria"
+   ],
+   "sourceTitle": "How to navigate challenges posed by Artificial Intelligence in ABU, by Vice-Chancellor",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://abu.edu.ng/wp-content/uploads/2023/08/abu-research-policy.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "ahmadu-bello-university-zaria"
+   ],
+   "sourceTitle": "Ahmadu Bello University Research Policy",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://academic.cmu.edu.tw/?q=zh-hant/node/69",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "china-medical-university"
+   ],
+   "sourceTitle": "生成式AI | 中國醫藥大學 教務處",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://academic.cmu.edu.tw/?q=zh-hant/node/69",
+    "textLength": 1755,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://actesreglementaires.sorbonne-universite.fr/_resources/CAC/ComFVU/DEL/Sorbonne-Universite-CFVU-Delib-20240620.pdf?download=true",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "sorbonne-university"
+   ],
+   "sourceTitle": "Commission de la formation et de la vie universitaire du conseil academique du 20 juin 2024 - Modalites de controle des connaissances 2024-2025",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://actesreglementaires.sorbonne-universite.fr/_resources/CAC/ComFVU/DEL/Sorbonne-Universite-CFVU-Delib-20240620.pdf?download=true",
+    "textLength": 439852,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://actus.ulb.be/fr/actus/vie-sur-les-campus/lia-a-lulb-%E2%80%93-histoire-de-savoirs",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universite-libre-de-bruxelles"
+   ],
+   "sourceTitle": "L’IA à l’ULB - Histoire de Savoirs | Actualités de l'ULB",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://actus.ulb.be/fr/actus/vie-sur-les-campus/lia-a-lulb-%E2%80%93-histoire-de-savoirs",
+    "textLength": 7957,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://admission.uet.edu.pk/privacypoliy.html",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-engineering-and-technology-uet-lahore"
+   ],
+   "sourceTitle": "Privacy Policy - University of Engineering and Technology, Lahore",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://admission.uet.edu.pk/notfound",
+    "textLength": 106,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://ai.unist.ac.kr/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "ulsan-national-institute-of-science-and-technology-unist"
+   ],
+   "sourceTitle": "UNIST AI Services",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://ai.unist.ac.kr/",
+    "textLength": 672,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://ai.usask.ca/guidelines/educator-guidelines-for-ai.php",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-saskatchewan"
+   ],
+   "sourceTitle": "Educator Guidelines for Use of AI",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://ai.usask.ca/guidelines/educator-guidelines-for-ai.php",
+    "textLength": 4438,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://aicenter.spbu.ru/courses",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "saint-petersburg-state-university"
+   ],
+   "sourceTitle": "Страница Обучение - Центр ИИ СПбГУ",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://aicenter.spbu.ru/courses",
+    "textLength": 68333,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://aiguide.cau.ac.kr/bm/bm-1.php",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "chung-ang-university-cau"
+   ],
+   "sourceTitle": "생성형 AI 규제 및 가이드라인 - 중앙대학교 생성형 AI 활용 안내 사이트",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://aiguide.cau.ac.kr/bm/bm-1.php",
+    "textLength": 3936,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://aiguide.hanyang.ac.kr/ethics/precaution",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "hanyang-university"
+   ],
+   "sourceTitle": "활용 시 유의사항 - AI@Hanyang",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://aiguide.hanyang.ac.kr/ethics/precaution",
+    "textLength": 441,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://aiguide.hanyang.ac.kr/guide/ai-guide",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "hanyang-university"
+   ],
+   "sourceTitle": "생성형 AI란? - AI@Hanyang",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://aiguide.hanyang.ac.kr/guide/ai-guide",
+    "textLength": 4357,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-science-and-technology-beijing"
+   ],
+   "sourceTitle": "北科大智搜平台",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD&module=default&timeStamp=1785094316108&current=1&sortType=score&searchType=3&beginDate=&endDate=&timeType=0&isAccurate=false",
+    "textLength": 992,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20%E8%A7%84%E8%8C%83%20%E5%AD%A6%E7%94%9F",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-science-and-technology-beijing"
+   ],
+   "sourceTitle": "北科大智搜平台",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://aisearch.ustb.edu.cn/#/index?searchWord=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20%E8%A7%84%E8%8C%83%20%E5%AD%A6%E7%94%9F&module=default&timeStamp=1785094326322&current=1&sortType=score&searchType=3&beginDate=&endDate=&timeType=0&isAccurate=false",
+    "textLength": 2158,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://aix.whu.edu.cn/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "wuhan-university"
+   ],
+   "sourceTitle": "武汉大学AI通识课程平台",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://aix.whu.edu.cn/indexcs/simple.jsp?loginErr=0",
+    "textLength": 1170,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://bibliotecadigital.udea.edu.co/bitstreams/39c70fc2-0683-4795-97d5-7c941489a96d/download",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "universidad-de-antioquia"
+   ],
+   "sourceTitle": "Uso de inteligencia artificial en el pregrado de Ciencia Politica de la UdeA",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://bibliotecadigital.udea.edu.co/challenge",
+    "textLength": 297,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://bsu.by/news/iskusstvennyy-intellekt-nikogda-ne-zamenit-prepodavatelya-no-mozhet-emu-pomoch-nikita-azarov-d/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "belarusian-state-university"
+   ],
+   "sourceTitle": "«Искусственный интеллект никогда не заменит преподавателя, но может ему помочь»: НИКИТА АЗАРОВ",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://bsu.by/news/iskusstvennyy-intellekt-nikogda-ne-zamenit-prepodavatelya-no-mozhet-emu-pomoch-nikita-azarov-d/",
+    "textLength": 11264,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://canvas.tue.nl/courses/17391/pages/artificial-intelligence-in-education",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "eindhoven-university-of-technology"
+   ],
+   "sourceTitle": "Artificial intelligence in Education: Online Learning & Education",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://canvas.tue.nl/courses/17391/pages/artificial-intelligence-in-education",
+    "textLength": 49510,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cfr.annauniv.edu/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "anna-university"
+   ],
+   "sourceTitle": "Centre For Research - Anna University",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cfr.annauniv.edu/research/academics/index.php",
+    "textLength": 7856,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cfr.annauniv.edu/research/announcements/Plagiarism-Policy.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "anna-university"
+   ],
+   "sourceTitle": "Plagiarism Policy - Centre for Research, Anna University, Chennai",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cfr.annauniv.edu/research/announcements/Plagiarism-Policy.pdf",
+    "textLength": 5559,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cfr.annauniv.edu/research/announcements/Research_misconduct.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "anna-university"
+   ],
+   "sourceTitle": "Research Misconduct - Centre for Research, Anna University",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cfr.annauniv.edu/research/announcements/Research_misconduct.pdf",
+    "textLength": 2597,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://chat.iust.ac.ir/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "iran-university-of-science-and-technology"
+   ],
+   "sourceTitle": "سامانه هوش مصنوعی دانشگاه علم و صنعت ایران",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://chat.iust.ac.ir/",
+    "textLength": 922,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cinia.blogs.usj.edu.lb/en/ai-educational-tool/chatgpt-3/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "saint-joseph-university-of-beirut-usj"
+   ],
+   "sourceTitle": "ChatGPT-3 - Center for Digital Innovation and AI",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cinia.blogs.usj.edu.lb/en/ai-educational-tool/chatgpt-3/",
+    "textLength": 19478,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cinia.blogs.usj.edu.lb/en/ai-educational-tool/le-chat-mistral-ai/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "saint-joseph-university-of-beirut-usj"
+   ],
+   "sourceTitle": "Le Chat - Mistral AI - Center for Digital Innovation and AI",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cinia.blogs.usj.edu.lb/en/ai-educational-tool/le-chat-mistral-ai/",
+    "textLength": 10290,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cinia.blogs.usj.edu.lb/en/catalogue-de-formations/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "saint-joseph-university-of-beirut-usj"
+   ],
+   "sourceTitle": "Catalogue de formations - Center for Digital Innovation and AI",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cinia.blogs.usj.edu.lb/en/catalogue-de-formations/",
+    "textLength": 51278,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cinia.blogs.usj.edu.lb/en/principes-directeurs/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "saint-joseph-university-of-beirut-usj"
+   ],
+   "sourceTitle": "Guiding Principles for Ethical Use of Artificial Intelligence in Higher Education Teaching and Learning",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cinia.blogs.usj.edu.lb/en/principes-directeurs/",
+    "textLength": 14094,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://clear.cuhk.edu.hk/web/technology-empowered-teaching/generative-ai-in-education/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "cuhk"
+   ],
+   "sourceTitle": "Generative AI in Education - Centre for Learning Enhancement And Research (CLEAR), CUHK",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://clear.cuhk.edu.hk/web/technology-empowered-teaching/generative-ai-in-education/",
+    "textLength": 6560,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cmb.ac.lk/cqa/policies-procedures",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-colombo"
+   ],
+   "sourceTitle": "CQA: Policies & Procedures | University of Colombo, Sri Lanka",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cmb.ac.lk/cqa/policies-procedures",
+    "textLength": 26098,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cmucfd.cmu.edu.tw/page/2071",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "china-medical-university"
+   ],
+   "sourceTitle": "AI 學術倫理 | 中國醫藥大學教師發展中心",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cmucfd.cmu.edu.tw/page/2071",
+    "textLength": 3552,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cmurdc.cmu.edu.tw/news_detail.php?sn=2360",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "china-medical-university"
+   ],
+   "sourceTitle": "【重要宣導】中國醫藥大學 生成式人工智慧應用於學術研究之參考指引",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cmurdc.cmu.edu.tw/news_detail.php?sn=2360",
+    "textLength": 3917,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://ctle.um.edu.mo/resource/faqs-for-students-using-generative-ai-tools-in-graded-assignments/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "university-of-macau"
+   ],
+   "sourceTitle": "FAQs for Students: Using Generative AI Tools in Graded Assignments",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://ctle.um.edu.mo/resource/faqs-for-students-using-generative-ai-tools-in-graded-assignments/",
+    "textLength": 10599,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "national-university-of-singapore"
+   ],
+   "sourceTitle": "NUS Policy for Use of AI in Teaching and Learning",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+    "textLength": 19354,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cu.edu.eg/ar/Cairo-University-News-15237.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "cairo-university"
+   ],
+   "sourceTitle": "فى اجتماع مجلس جامعة القاهرة : د. محمد سامي عبد الصادق يعلن إطلاق استراتيجية جامعة القاهرة للذكاء الاصطناعي",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cu.edu.eg/ar/Cairo-University-News-15237.html",
+    "textLength": 8859,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cu.edu.eg/cu.ai/CU_Posters.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "cairo-university"
+   ],
+   "sourceTitle": "Cairo University Policy On Responsible Use of AI 2025 Edition",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cu.edu.eg/cu.ai/CU_Posters.pdf",
+    "textLength": 8471,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://cu.edu.eg/userfiles/Strategic%20Plan%20of%20Cairo%20University%202025%20-%202030.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "cairo-university"
+   ],
+   "sourceTitle": "Cairo University Strategic Plan 2025 - 2030",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://cu.edu.eg/userfiles/Strategic%20Plan%20of%20Cairo%20University%202025%20-%202030.pdf",
+    "textLength": 144309,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://culturesciencesphysique.ens-lyon.fr/actualites/ia-generative-reflexions-pour-lenseignement-et-levaluation",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "ecole-normale-superieure-de-lyon"
+   ],
+   "sourceTitle": "IA générative - réflexions pour l'enseignement et l'évaluation",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://culturesciencesphysique.ens-lyon.fr/actualites/ia-generative-reflexions-pour-lenseignement-et-levaluation",
+    "textLength": 2247,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://disu.units.it/it/servizi-strumenti/servizi/Intelligenza-Artificiale",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-trieste"
+   ],
+   "sourceTitle": "Intelligenza Artificiale (IA) - Dipartimento di Studi Umanistici",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://disu.units.it/it/servizi-strumenti/servizi/Intelligenza-Artificiale",
+    "textLength": 2570,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://dokumenty.vsb.cz/docs/files/cs/befa2368-07a4-49c3-8582-d5934a32e3d8",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "vsb-technical-university-of-ostrava"
+   ],
+   "sourceTitle": "Pravidla a doporuceni pro vyuzivani AI na VSB-TUO",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://dokumenty.vsb.cz/docs/files/cs/befa2368-07a4-49c3-8582-d5934a32e3d8",
+    "textLength": 9838,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://drive.google.com/file/d/1URmmGBDwR5vKudskAzrUKZWHll16j5p1/view?usp=sharing",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "universidade-federal-do-rio-de-janeiro"
+   ],
+   "sourceTitle": "Recomendações à Reitoria sobre o Uso da Inteligência Artificial na UFRJ",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://drive.usercontent.google.com/download?id=1URmmGBDwR5vKudskAzrUKZWHll16j5p1&export=download",
+    "textLength": 43257,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://drive.google.com/file/d/1ZultuLWXNLJ53M43ExrYG8cIfwqcCnCO/view",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "chiba-university"
+   ],
+   "sourceTitle": "千葉大学の教育・学習における生成 AI の利用についての指針",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://drive.usercontent.google.com/download?id=1ZultuLWXNLJ53M43ExrYG8cIfwqcCnCO&export=download",
+    "textLength": 3931,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://edu.alexu.edu.eg/images/AI_english.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "alexandria-university"
+   ],
+   "sourceTitle": "An Operational Framework on the Integration of Artificial Intelligence in Scientific Research",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://edusupport.rug.nl/2429583561",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-groningen"
+   ],
+   "sourceTitle": "Dealing with fraud and risks",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://edusupport.rug.nl/2429583561/Instructor/Artificial+Intelligence+(AI)+in+education/Dealing+with+fraud+and+risks",
+    "textLength": 26804,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://elearning.bmh.manchester.ac.uk/ai-guidance-for-learners/",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "manchester"
+   ],
+   "sourceTitle": "AI Guidance for Learners - BMH Technology Enhanced Learning",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-jordan"
+   ],
+   "sourceTitle": "Application of Artificial Intelligence in Chemical Engineering",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://engineering.ju.edu.jo/Lists/Courses/Attachments/883/CHE-0905585-Application%20of%20Artificial%20Intelligence%20in%20Chemical%20Engineering-Sep-2025-Fall.pdf",
+    "textLength": 5385,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://examination.uom.edu.in/member.php?id=4",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-mumbai"
+   ],
+   "sourceTitle": "Hon'ble Vice Chancellor - University of Mumbai",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://fitb.itb.ac.id/panduan-penggunaan-ai-di-fitb-berdasarkan-pedoman-ai-itb-2024/",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "institut-teknologi-bandung"
+   ],
+   "sourceTitle": "Panduan Penggunaan Kecerdasan Buatan (Artificial Intelligence) untuk kegiatan Akademik di FITB",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://formazione.unipv.it/catalogo-completo-dei-corsi-di-formazione-la-pa/corso/formazione-di-follow-sullia-generativa-nella",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "universita-degli-studi-di-pavia"
+   ],
+   "sourceTitle": "Formazione di follow-up sull'IA generativa nella didattica delle lingue - UNIPV",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://gcronico.unal.edu.co/fileadmin/gcronico/Infografias_viejIAs.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universidad-nacional-de-colombia"
+   ],
+   "sourceTitle": "Recomendaciones para el uso de la IA en actividades de docencia, investigación y extensión universitaria",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://gcronico.unal.edu.co/fileadmin/gcronico/Infografias_viejIAs.pdf",
+    "textLength": 3073,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://genai.hkbu.edu.hk/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "hong-kong-baptist-university"
+   ],
+   "sourceTitle": "HKBU GenAI Platform",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://genai.hkbu.edu.hk/",
+    "textLength": 375,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://genai.ubc.ca/guidance/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "ubc"
+   ],
+   "sourceTitle": "UBC Guidance - Generative AI",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://genai.ubc.ca/guidance/",
+    "textLength": 2652,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://genai.uchicago.edu/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-chicago"
+   ],
+   "sourceTitle": "Generative AI at UChicago",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://genai.uchicago.edu/",
+    "textLength": 2213,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-chicago"
+   ],
+   "sourceTitle": "Generative AI Guidance",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://genai.uchicago.edu/about/generative-ai-guidance",
+    "textLength": 12701,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-chicago"
+   ],
+   "sourceTitle": "Relevant Policies for the Use of AI Tools",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://genai.uchicago.edu/about/relevant-policies-for-the-use-of-ai-tools",
+    "textLength": 7323,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-chicago"
+   ],
+   "sourceTitle": "Approved and Restricted AI Tools | University of Chicago",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://genai.uchicago.edu/generative-ai-tools/approved-and-restricted-ai-tools",
+    "textLength": 25400,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://genai.um.edu.mo/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "university-of-macau"
+   ],
+   "sourceTitle": "Guidelines on the Use of Generative Artificial Intelligence Tools",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://genai.um.edu.mo/",
+    "textLength": 6720,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://gongkai.cqu.edu.cn/info/1246/3127.htm",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "412",
+   "entitySlugs": [
+    "chongqing-university"
+   ],
+   "sourceTitle": "重庆大学处理学术不端行为办法（重大校[2016]342号）",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://gongkai.cqu.edu.cn/info/1246/3127.htm",
+    "textLength": 10265,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://graduate.mahidol.ac.th/storage/IT-SERVICE/Announce/PR07129.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "mahidol-university"
+   ],
+   "sourceTitle": "Guidelines for the Verification of Academic Plagiarism and the Use of Artificial Intelligence (AI) Tools in Teaching, Research, Thesis/Thematic Paper/Independent Study at the Graduate Level, Mahidol University, B.E. 2568 (2025)",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://graduate.mahidol.ac.th/storage/IT-SERVICE/Announce/PR07129.pdf",
+    "textLength": 7329,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://grs.um.edu.mo/wp-content/uploads/Guidelines-on-the-Use-of-Generative-Artificial-Intelligence-Tools.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "university-of-macau"
+   ],
+   "sourceTitle": "The University of Macau Guidelines on the Use of Generative Artificial Intelligence Tools",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://grs.um.edu.mo/wp-content/uploads/Guidelines-on-the-Use-of-Generative-Artificial-Intelligence-Tools.pdf",
+    "textLength": 4945,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://gsu.policystat.com/policy/token_access/3916c854-9eea-4e9c-a678-a8f0356f0f44/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "georgia-state-university"
+   ],
+   "sourceTitle": "AI Policy",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://gsu.policystat.com/policy/token_access/3916c854-9eea-4e9c-a678-a8f0356f0f44/",
+    "textLength": 10769,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://guides.library.unr.edu/apacitation/generativeai",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-nevada-reno"
+   ],
+   "sourceTitle": "Generative AI - APA Citation Guide (7th Edition) - Library Guides at University of Nevada, Reno",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://guides.library.unr.edu/apacitation/generativeai",
+    "textLength": 3472,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "snu"
+   ],
+   "sourceTitle": "중앙도서관 구독 전자자료의 생성형 AI활용 관련 유의사항 안내",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://health.snu.ac.kr/%ec%9d%bc%eb%b0%98%ea%b3%b5%ec%a7%80/?mod=document&uid=5406",
+    "textLength": 4295,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://iauelearning.iau.edu.sa/storage/policyandrules/policies_for_the_use_of_artificial_intelligence_education_and_scientific_research_en.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "imam-abdulrahman-bin-faisal-university-iau"
+   ],
+   "sourceTitle": "Policies For the Use of Artificial Intelligence in Education and Scientific Research",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://iauelearning.iau.edu.sa/storage/policyandrules/policies_for_the_use_of_artificial_intelligence_education_and_scientific_research_students_en.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "imam-abdulrahman-bin-faisal-university-iau"
+   ],
+   "sourceTitle": "Policies For the Use of Artificial Intelligence in Education and Scientific Research - Students",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://icto.um.edu.mo/teaching-learning-research/generative-ai/",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "university-of-macau"
+   ],
+   "sourceTitle": "Generative AI Tools | University of Macau ICTO",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://intranet.royalholloway.ac.uk/doctoral-school/researcher-development/gen-ai-guidance.aspx",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "royal-holloway-university-of-london"
+   ],
+   "sourceTitle": "Guidance on the Use of Generative AI in Postgraduate Research - Royal Holloway Doctoral School",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://intranet.royalholloway.ac.uk/students/assets/docs/pdf/academic-investigations/2526/student-guide-ai-related-allegations.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "royal-holloway-university-of-london"
+   ],
+   "sourceTitle": "Student Guidance to Artificial Intelligence (AI)-Related Offences",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://intranet.royalholloway.ac.uk/students/assets/docs/pdf/academic-investigations/2526/student-guide-ai-related-allegations.pdf",
+    "textLength": 15249,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/academic-misconduct-and-using-ai-responsibly.aspx",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "royal-holloway-university-of-london"
+   ],
+   "sourceTitle": "Academic Misconduct and using AI responsibly - Royal Holloway Student Intranet",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/academic-misconduct-and-using-ai-responsibly.aspx",
+    "textLength": 5183,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/ai-tools.aspx",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "royal-holloway-university-of-london"
+   ],
+   "sourceTitle": "AI Tools - Royal Holloway Student Intranet",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/ai-tools.aspx",
+    "textLength": 4042,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/ai-use-assessment.aspx",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "royal-holloway-university-of-london"
+   ],
+   "sourceTitle": "AI Use & Assessment - Royal Holloway Student Intranet",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/ai-use-assessment.aspx",
+    "textLength": 9788,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/generative-ai-opportunities-for-education-and-academic-integrity.aspx",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "royal-holloway-university-of-london"
+   ],
+   "sourceTitle": "Guidance on the Use of Generative AI - Royal Holloway Student Intranet",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/generative-ai-opportunities-for-education-and-academic-integrity.aspx",
+    "textLength": 4193,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/referencing-the-use-of-ai.aspx",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "royal-holloway-university-of-london"
+   ],
+   "sourceTitle": "Referencing the Use of AI - Royal Holloway Student Intranet",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://intranet.royalholloway.ac.uk/students/study/generative-ai/referencing-the-use-of-ai.aspx",
+    "textLength": 5654,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://iscexpo.gcuf.edu.pk/iscexpo2026-rules.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "government-college-university-faisalabad"
+   ],
+   "sourceTitle": "6th International Students' Convention & Expo 2026 Rules and Regulations",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://iscexpo.gcuf.edu.pk/iscexpo2026-rules.pdf",
+    "textLength": 84921,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://it.doshisha.ac.jp/files/joki/page/Soft_MS_t.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "403",
+   "entitySlugs": [
+    "doshisha-university"
+   ],
+   "sourceTitle": "Office 等）について【専任教職員の方】 Mic",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://it.doshisha.ac.jp/files/joki/page/Soft_MS_t.pdf",
+    "textLength": 3470,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: blocked_or_inconclusive)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://itdl.psau.edu.sa/en/policies",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "prince-sattam-bin-abdulaziz-university"
+   ],
+   "sourceTitle": "Policies | The General Administration of IT",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.psau.edu.sa/itdl/en/policies",
+    "textLength": 4646,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://ithelp.uoguelph.ca/ai-guidelines",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-guelph"
+   ],
+   "sourceTitle": "Information Security Guidelines for the Use of Generative Artificial Intelligence",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://ithelp.uoguelph.ca/ai-guidelines",
+    "textLength": 1115,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://jadavpuruniversity.in/storage/2024/07/PROFORMA-1_Statement_of_Originality_Page_6.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "jadavpur-university"
+   ],
+   "sourceTitle": "PROFORMA 1 Statement of Originality",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://jadavpuruniversity.in/storage/2024/07/PROFORMA-1_Statement_of_Originality_Page_6.pdf",
+    "textLength": 840,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://jadavpuruniversity.in/storage/2024/07/Procedure_as_per_Policy_on_Anti-Plagiarism_page_2.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "jadavpur-university"
+   ],
+   "sourceTitle": "Procedure as per Policy on Anti-Plagiarism, Jadavpur University",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://jadavpuruniversity.in/storage/2024/07/Procedure_as_per_Policy_on_Anti-Plagiarism_page_2.pdf",
+    "textLength": 1678,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://journals.zuj.edu.jo/zujjls/EN_Publish_Ethics.aspx",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "al-zaytoonah-university-of-jordan"
+   ],
+   "sourceTitle": "Publication Ethics",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://jwc.lzu.edu.cn/tongzhigonggao/shijianjiaoxue/2024/1021/278405.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "412",
+   "entitySlugs": [
+    "lanzhou-university"
+   ],
+   "sourceTitle": "关于做好2025届本科生毕业论文（设计）工作的通知",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://jwc.lzu.edu.cn/tongzhigonggao/shijianjiaoxue/2024/1021/278405.html",
+    "textLength": 3717,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://kim.uni-hohenheim.de/fileadmin/einrichtungen/kim-relaunch/dateien/downloads/GPTalk_Leitfaden_zum_Umgang_mit_GPTalk.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "university-of-hohenheim"
+   ],
+   "sourceTitle": "Leitfaden zum Umgang mit GPTalk",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 503,
+    "metadataStatusCode": 503,
+    "contentExtracted": false,
+    "finalUrl": "https://kim.uni-hohenheim.de/fileadmin/einrichtungen/kim-relaunch/dateien/downloads/GPTalk_Leitfaden_zum_Umgang_mit_GPTalk.pdf",
+    "textLength": 1979,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://kim.uni-hohenheim.de/gptalk",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "university-of-hohenheim"
+   ],
+   "sourceTitle": "GPTalk",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 503,
+    "metadataStatusCode": 503,
+    "contentExtracted": false,
+    "finalUrl": "https://kim.uni-hohenheim.de/gptalk",
+    "textLength": 1979,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://kpvk.pte.hu/sites/kpvk.pte.hu/files/ai_iranyelv_20250821.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-pecs"
+   ],
+   "sourceTitle": "A Pécsi Tudományegyetem Mesterséges Intelligencia Irányelve",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://kpvk.pte.hu/sites/kpvk.pte.hu/files/ai_iranyelv_20250821.pdf",
+    "textLength": 24495,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://library.bsu.by/images/sampledata/asimages/pdf/%D0%A7%D0%B5%D1%85%D0%BE%D0%B2%D0%B8%D1%87.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "belarusian-state-university"
+   ],
+   "sourceTitle": "Использование ИИ при подготовке научных и учебных работ. Генерируем правильно",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "daegu-gyeongbuk-institute-of-science-and-technology-dgist"
+   ],
+   "sourceTitle": "전자자료-데이터베이스-알파벳 | DGIST 전자도서관",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://library.dgist.ac.kr/eData/webdb.do",
+    "textLength": 30674,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://library.fiu.edu/ai/faculty",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "florida-international-university"
+   ],
+   "sourceTitle": "Academic Writing + Students - Artificial Intelligence Now: ChatGPT + AI Literacy Toolbox - FIU Libraries",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://library.fiu.edu/ai/faculty",
+    "textLength": 20976,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://library.fiu.edu/ai/students",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "florida-international-university"
+   ],
+   "sourceTitle": "Students + AI Use - Artificial Intelligence Now: ChatGPT + AI Literacy Toolbox - FIU Libraries",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://library.fiu.edu/ai/students",
+    "textLength": 6456,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://library.iitd.ac.in/page/newspaper-clippings-archive/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "indian-institute-of-technology-delhi"
+   ],
+   "sourceTitle": "Newspaper Clippings Archive - Central Library, IIT Delhi",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://library.iitd.ac.in/page/newspaper-clippings-archive/",
+    "textLength": 314755,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://library.syracuse.edu/blog/Generative-Artificial-Intelligence-in-the-Libraries/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "202",
+   "entitySlugs": [
+    "syracuse-university"
+   ],
+   "sourceTitle": "Generative Artificial Intelligence in the Libraries - Syracuse University Libraries",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://library.syracuse.edu/blog/Generative-Artificial-Intelligence-in-the-Libraries/",
+    "textLength": 7810,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://mgimo.ru/about/news/announce/chatgpt-lang-12-24/",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "mgimo-university"
+   ],
+   "sourceTitle": "Большие языковые модели в образовании: новая программа повышения квалификации для преподавателей МГИМО",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://mgimo.ru/about/news/announce/chatgpt-lang-12-24/",
+    "textLength": 27,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://mgimo.ru/about/news/departments/chatgpt-lang-12-24/",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "mgimo-university"
+   ],
+   "sourceTitle": "Преподаватели МГИМО прошли обучение на программе «Вуз-студент-ChatGPT: большие языковые модели в образовании»",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://mgimo.ru/about/news/departments/chatgpt-lang-12-24/",
+    "textLength": 27,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://msu.ru/news/novosti-mgu/mgu-podderzhivaet-vnedrenie-ii-v-obrazovatelnye-protsessy-.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "lomonosov-moscow-state-university"
+   ],
+   "sourceTitle": "МГУ поддерживает внедрение ИИ в образовательные процессы",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://msu.ru/news/novosti-mgu/mgu-podderzhivaet-vnedrenie-ii-v-obrazovatelnye-protsessy-.html",
+    "textLength": 5167,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://mx.general.hokudai.ac.jp/posts/tYaEpYIo",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "hokkaido-university"
+   ],
+   "sourceTitle": "Microsoft 365 Copilotの業務利用試行をはじめます",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://mx.general.hokudai.ac.jp/posts/tYaEpYIo",
+    "textLength": 6057,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://myresearchpath.duke.edu/using-generative-ai-artificial-intelligence-tools-research",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "duke-university"
+   ],
+   "sourceTitle": "Using Generative AI (Artificial Intelligence) tools in research",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://shib.oit.duke.edu/idp/authn/external?conversation=e1s1",
+    "textLength": 1829,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://mytimes.taylors.edu.my/mod/forum/discuss.php?d=104875",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "202",
+   "entitySlugs": [
+    "taylor-s-university"
+   ],
+   "sourceTitle": "What can you expect your lecturer or tutor to do if Turnitin's AI Writing detector tool reports a high score for the work you submitted?",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://mytimes.taylors.edu.my/mod/forum/discuss.php?d=104875",
+    "textLength": 3234,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://mytimes.taylors.edu.my/mod/forum/discuss.php?d=355990%22%20target%3D%22_blank",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "202",
+   "entitySlugs": [
+    "taylor-s-university"
+   ],
+   "sourceTitle": "Student Guidelines for the Use of Generative AI",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://mytimes.taylors.edu.my/mod/forum/discuss.php?d=355990%22%20target%3D%22_blank",
+    "textLength": 2618,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://nea.ui.ac.ir/page_451.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-isfahan"
+   ],
+   "sourceTitle": "رویکردهای نوین آموزشی - دستور العمل استفاده از ابزارهای هوش مصنوعی در پژوهش",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://nea.ui.ac.ir/page_451.html",
+    "textLength": 4300,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "moscow-institute-of-physics-and-technology-mipt-moscow-phystech"
+   ],
+   "sourceTitle": "В МФТИ предложили правила работы с искусственным интеллектом в образовании",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://new.mipt.ru/news/v-mfti-predlozhili-pravila-raboty-s-iskusstvennym-intellektom-v-obrazovanii",
+    "textLength": 10703,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://news.sbu.ac.ir/web/news/news-archive?sort=createDate-",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "shahid-beheshti-university-sbu"
+   ],
+   "sourceTitle": "SBU News Archive",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://odf.u-paris.fr/fr/offre-de-formation/diplome-d-universite-du-diu-1/sciences-technologies-sante-STS/diu-intelligence-artificielle-generative-en-sante-gen-ias-JI33GUD6.html",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "universite-paris-cite"
+   ],
+   "sourceTitle": "DIU Intelligence artificielle générative en santé (GEN-IAS)",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://odf.u-paris.fr/fr/offre-de-formation/diplome-d-universite-du-diu-1/sciences-technologies-sante-STS/diu-intelligence-artificielle-generative-en-sante-gen-ias-JI33GUD6.html",
+    "textLength": 172,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://oer.uclouvain.be/jspui/bitstream/20.500.12279/1079.2/1/IAGenerative_Groupe_de_Travail_UCLouvain_2024_06.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universite-catholique-de-louvain"
+   ],
+   "sourceTitle": "Note du Groupe de Travail sur l'Utilisation Responsable de l'IA Générative",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://oer.ums.edu.my/bitstream/handle/oer_source_files/3376/Panduan%20AI%20untuk%20Pelajar%20UMS%20-%20OER.pdf?sequence=1&isAllowed=y",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "universiti-malaysia-sabah-ums"
+   ],
+   "sourceTitle": "Panduan AI untuk Pelajar UMS: Etika & Tanggungjawab AI",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 503,
+    "metadataStatusCode": 503,
+    "contentExtracted": false,
+    "finalUrl": "https://oer.ums.edu.my/bitstream/handle/oer_source_files/3376/Panduan%20AI%20untuk%20Pelajar%20UMS%20-%20OER.pdf?sequence=1&isAllowed=y",
+    "textLength": 113,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://oer.ums.edu.my/handle/oer_source_files/3376",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "universiti-malaysia-sabah-ums"
+   ],
+   "sourceTitle": "Panduan AI untuk Pelajar UMS",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 503,
+    "metadataStatusCode": 503,
+    "contentExtracted": false,
+    "finalUrl": "https://oer.ums.edu.my/handle/oer_source_files/3376",
+    "textLength": 113,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://oit.utk.edu/ai/aihub/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "the-university-of-tennessee-knoxville"
+   ],
+   "sourceTitle": "UT AI Hub | Office of Innovative Technologies",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://oit.utk.edu/ai/aihub/",
+    "textLength": 342,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://online.spbu.ru/courses/ii-dlya-prepodavateley-innovatsionnye-tekhnologii-v-obrazovanii/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "saint-petersburg-state-university"
+   ],
+   "sourceTitle": "ИИ для преподавателей: инновационные технологии в образовании | Онлайн-курсы СПбГУ",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://online.spbu.ru/courses/ii-dlya-prepodavateley-innovatsionnye-tekhnologii-v-obrazovanii/",
+    "textLength": 12488,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://periodicos.sbu.unicamp.br/ojs/index.php/index/diretrizes",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universidade-estadual-de-campinas"
+   ],
+   "sourceTitle": "Política de Uso de IA",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://periodicos.sbu.unicamp.br/ojs/index.php/index/diretrizes",
+    "textLength": 5910,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://periodicos.unb.br/index.php/anuarioantropologico/instruautores",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universidade-de-brasilia"
+   ],
+   "sourceTitle": "Instrucao aos Autores | Anuario Antropologico",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://periodicos.unb.br/index.php/anuarioantropologico/instruautores",
+    "textLength": 15356,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://periodicos.unb.br/index.php/repam/about",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universidade-de-brasilia"
+   ],
+   "sourceTitle": "Sobre a Revista | Revista de Estudos e Pesquisas sobre as Americas",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://periodicos.unb.br/index.php/repam/about",
+    "textLength": 17552,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://periodicos.unb.br/index.php/sociedade/about",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universidade-de-brasilia"
+   ],
+   "sourceTitle": "Sobre a Revista | Sociedade e Estado",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://periodicos.unb.br/index.php/sociedade/about",
+    "textLength": 22793,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://philologia-journal.uni-sofia.bg/page/ethics",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "sofia-university-st-kliment-ohridski"
+   ],
+   "sourceTitle": "Публикационна етика - Списание Филология",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://philologia-journal.uni-sofia.bg/bg/page/ethics",
+    "textLength": 12409,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://policies.rutgers.edu/B.aspx?BookId=11914&PageId=459231&Search=academic%20integrity",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "rutgers-university-newark"
+   ],
+   "sourceTitle": "10.2.13 Academic Integrity Policy",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://policies.rutgers.edu/B.aspx?BookId=11914&PageId=459231&Search=academic%20integrity",
+    "textLength": 25378,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://policy.cuny.edu/general-policy/article-i/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "city-university-of-new-york"
+   ],
+   "sourceTitle": "Article I - CUNY Policy",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://policy.cuny.edu/general-policy/article-i/",
+    "textLength": 306938,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://polipapers.upv.es/index.php/cs/artificial_intelligence",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universitat-politecnica-de-valencia"
+   ],
+   "sourceTitle": "Politica de uso de Inteligencia Artificial",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://polipapers.upv.es/index.php/cs/artificial_intelligence",
+    "textLength": 7105,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://publicacions.uab.cat/en/journals/ai-policy",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universitat-autonoma-de-barcelona"
+   ],
+   "sourceTitle": "Policy on the use of artificial intelligence (AI) in articles",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://publicacions.uab.cat/en/journals/ai-policy",
+    "textLength": 7681,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://pucv.cl/pucv/site/docs/20240105/20240105160751/politica_de_integridad_academica_pucv.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "pontificia-universidad-catolica-de-valparaiso"
+   ],
+   "sourceTitle": "Politica de Integridad Academica PUCV",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://pucv.cl/pucv/site/docs/20240105/20240105160751/politica_de_integridad_academica_pucv.pdf",
+    "textLength": 45933,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://qau.edu.pk/qau-university-of-wah-and-birmingham-city-university-hold-workshop-on-accountable-ai-in-healthcare-system-of-pakistan/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "quaid-i-azam-university"
+   ],
+   "sourceTitle": "QAU, University of Wah and Birmingham City University hold workshop on accountable AI in healthcare system of Pakistan",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://qau.edu.pk/qau-university-of-wah-and-birmingham-city-university-hold-workshop-on-accountable-ai-in-healthcare-system-of-pakistan/",
+    "textLength": 3507,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://research.nchu.edu.tw/unit-article/mid/173",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "national-chung-hsing-university"
+   ],
+   "sourceTitle": "講座簡報 - 國立中興大學研究發展處",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://research.nchu.edu.tw/unit-article/mid/173",
+    "textLength": 1586,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://research.nchu.edu.tw/upfile/editor/files/1130515%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%BE%8C%E7%9A%84%E5%AD%B8%E8%A1%93%E5%80%AB%E7%90%86%E8%AD%B0%E9%A1%8C%E8%A7%A3%E6%9E%90(%E5%85%AC).pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "national-chung-hsing-university"
+   ],
+   "sourceTitle": "生成式AI之後的學術倫理議題解析",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://research.nchu.edu.tw/upfile/editor/files/1130515%E7%94%9F%E6%88%90%E5%BC%8FAI%E4%B9%8B%E5%BE%8C%E7%9A%84%E5%AD%B8%E8%A1%93%E5%80%AB%E7%90%86%E8%AD%B0%E9%A1%8C%E8%A7%A3%E6%9E%90(%E5%85%AC).pdf",
+    "textLength": 10668,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025830",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "indiana-university-bloomington"
+   ],
+   "sourceTitle": "Acceptable uses of generative AI services at IU",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0025830",
+    "textLength": 7645,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0026507",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "indiana-university-bloomington"
+   ],
+   "sourceTitle": "Generative AI tools at IU",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://servicenow.iu.edu/kb?id=kb_article_view&sysparm_article=KB0026507",
+    "textLength": 22219,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://services.pitt.edu/TDClient/33/Portal/KB/Article/3686/Using-Pitt-AI-Connect",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "500",
+   "entitySlugs": [
+    "university-of-pittsburgh"
+   ],
+   "sourceTitle": "Using Pitt AI Connect | University of Pittsburgh",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://passport.pitt.edu/idp/profile/SAML2/Redirect/SSO?execution=e1s1",
+    "textLength": 741,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://services.pitt.edu/TDClient/33/Portal/KB/PrintArticle?ID=3422",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "500",
+   "entitySlugs": [
+    "university-of-pittsburgh"
+   ],
+   "sourceTitle": "AI Tools Comparison Chart | University of Pittsburgh",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://passport.pitt.edu/idp/profile/SAML2/Redirect/SSO?execution=e1s1",
+    "textLength": 741,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://sites.tuni.fi/tlc-en/digital-pedagogy/artificial-intelligence-in-education/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "tampere-university"
+   ],
+   "sourceTitle": "Artificial intelligence in education",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://sites.tuni.fi/tlc-en/digital-pedagogy/artificial-intelligence-in-education/",
+    "textLength": 11524,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://support.wur.nl/esc?id=kb_article&sysparm_article=KB0016528",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "wageningen-university-and-research"
+   ],
+   "sourceTitle": "Artificial intelligence for searching & screening literature | Library guide",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://support.wur.nl/esc/en/search-the-collections/artificial-intelligence-for-searching-screening?id=kb_article&sysparm_article=KB0016528",
+    "textLength": 21056,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://support.wur.nl/esc?id=kb_article&sysparm_article=KB0016554",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "wageningen-university-and-research"
+   ],
+   "sourceTitle": "Student Charter 2025-2026",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://support.wur.nl/esc/en/student-statute/student-charter-2025-2026?id=kb_article&sysparm_article=KB0016554",
+    "textLength": 21,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://tech.calpoly.edu/space/CPKB/2638708737",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "california-polytechnic-state-university"
+   ],
+   "sourceTitle": "Official university AI tools source",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://tech.calpoly.edu/space/CPKB/2638708737/Zoom+AI+Companion",
+    "textLength": 10984,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://tech.calpoly.edu/space/CPKB/2709323777",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "california-polytechnic-state-university"
+   ],
+   "sourceTitle": "Official university AI tools source",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://tech.calpoly.edu/space/CPKB/2709323777/ChatGPT+Edu",
+    "textLength": 5424,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://tech.calpoly.edu/space/CPKB/2850226180",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "california-polytechnic-state-university"
+   ],
+   "sourceTitle": "Official university AI tools source",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://tech.calpoly.edu/space/CPKB/2850226180/Microsoft+365+Copilot+Chat+@+Cal+Poly",
+    "textLength": 4983,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://tech.calpoly.edu/space/CPKB/3342893057",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "california-polytechnic-state-university"
+   ],
+   "sourceTitle": "Official university AI tools source",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://tech.calpoly.edu/space/CPKB/3342893057",
+    "textLength": 128,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://tech.msu.edu/about/guidelines-policies/generative-ai/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "michigan-state-university"
+   ],
+   "sourceTitle": "Generative AI",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://tech.msu.edu/about/guidelines-policies/generative-ai/",
+    "textLength": 10627,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://tech.msu.edu/news/2026/02/powerful-ai-tools/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "michigan-state-university"
+   ],
+   "sourceTitle": "Powerful AI tools",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://tech.msu.edu/news/2026/02/powerful-ai-tools/",
+    "textLength": 6388,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://tech.msu.edu/technology/ai/security/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "michigan-state-university"
+   ],
+   "sourceTitle": "AI Security | Michigan State University - Technology at MSU",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://tech.msu.edu/technology/ai/security/",
+    "textLength": 8977,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://tech.msu.edu/technology/ai/tools/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "michigan-state-university"
+   ],
+   "sourceTitle": "AI Tools | Michigan State University - Technology at MSU",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://tech.msu.edu/technology/ai/tools/",
+    "textLength": 11499,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://ugs.cqu.edu.cn/info/1003/2873.htm",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "412",
+   "entitySlugs": [
+    "chongqing-university"
+   ],
+   "sourceTitle": "关于开展2026年重庆大学AI赋能课程平台专题系列培训的通知",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://ugs.cqu.edu.cn/info/1003/2873.htm",
+    "textLength": 2765,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://ugs.cqu.edu.cn/info/1004/2733.htm",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "412",
+   "entitySlugs": [
+    "chongqing-university"
+   ],
+   "sourceTitle": "重庆大学13门课程入选首批市级“人工智能+”重点建设课程",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://ugs.cqu.edu.cn/info/1004/2733.htm",
+    "textLength": 1466,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://utmcdex.utm.my/p-h-g/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universiti-teknologi-malaysia"
+   ],
+   "sourceTitle": "POLICY:HANDBOOK:PROCEDURE:GUIDELINES | UTM CDex",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://utmcdex.utm.my/p-h-g/",
+    "textLength": 3927,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=8a0050d847fac610bb2b9c7b116d4317",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-virginia"
+   ],
+   "sourceTitle": "Using AI at UVA: Guidelines & Terms of Use - UVA ITS",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=8a0050d847fac610bb2b9c7b116d4317",
+    "textLength": 13749,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=dbe41947dbe3f91066d98f38139619db",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-virginia"
+   ],
+   "sourceTitle": "AI Tools Home - UVA ITS",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=dbe41947dbe3f91066d98f38139619db",
+    "textLength": 6792,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://vnuhcm.edu.vn/bai-viet/dhqg-hcm-tham-du-dien-dan-plum-2025-tai-nus-trao-doi-ve-chinh-sach-ai-trong-dao-tao-va-nghien-cuu",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "viet-nam-national-university-ho-chi-minh-city-vnu-hcm"
+   ],
+   "sourceTitle": "ĐHQG-HCM tham dự Diễn đàn PLUM 2025 tại NUS: Trao đổi về chính sách AI trong đào tạo và nghiên cứu",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://vnuhcm.edu.vn/bai-viet/dhqg-hcm-tham-du-dien-dan-plum-2025-tai-nus-trao-doi-ve-chinh-sach-ai-trong-dao-tao-va-nghien-cuu",
+    "textLength": 8916,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://web.umons.ac.be/app/uploads/sites/34/2024/05/CharteIA-UMONS.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-mons"
+   ],
+   "sourceTitle": "Charte d’utilisation des systèmes d’intelligence artificielle générative dans les travaux universitaires à l’UMONS",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://web.umons.ac.be/app/uploads/sites/34/2024/05/CharteIA-UMONS.pdf",
+    "textLength": 9248,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://writingcenter.utk.edu/ai-tools-and-writing-information-for-students/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "the-university-of-tennessee-knoxville"
+   ],
+   "sourceTitle": "GenAI Tools and Writing: Information and Guidelines for Students",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://writingcenter.utk.edu/ai-tools-and-writing-information-for-students/",
+    "textLength": 13921,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://writingcenter.utk.edu/sample-syllabus-statements-for-ai-guidelines/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "the-university-of-tennessee-knoxville"
+   ],
+   "sourceTitle": "Sample syllabus statements for AI Guidelines",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://writingcenter.utk.edu/sample-syllabus-statements-for-ai-guidelines/",
+    "textLength": 3382,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.academic.ntust.edu.tw/var/file/48/1048/img/2554/886322966.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "national-taiwan-university-of-science-and-technology-taiwan-tech"
+   ],
+   "sourceTitle": "國立臺灣科技大學學生違反學術倫理案件處理要點",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.academic.ntust.edu.tw/var/file/48/1048/img/2554/886322966.pdf",
+    "textLength": 1870,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.adu.ac.ae/news-and-events/news/detail/2023/04/13/abu-dhabi-university-to-regulate-the-use-of-chatgpt-in-education",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "abu-dhabi-university"
+   ],
+   "sourceTitle": "Abu Dhabi University to regulate the use of ChatGPT in education",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.adu.ac.ae/news-and-events/news/detail/2023/04/13/abu-dhabi-university-to-regulate-the-use-of-chatgpt-in-education",
+    "textLength": 5041,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.adu.ac.ae/study/governance/office-of-academic-integrity/service-and-responsibilities",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "abu-dhabi-university"
+   ],
+   "sourceTitle": "Service and Responsibilities",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.adu.ac.ae/study/governance/office-of-academic-integrity/service-and-responsibilities",
+    "textLength": 8853,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.asu.ru/news/56712/",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "altai-state-university"
+   ],
+   "sourceTitle": "Искусственный интеллект в помощь преподавателям АлтГУ",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.asu.ru/news/60160/",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "altai-state-university"
+   ],
+   "sourceTitle": "В АлтГУ работают интеллектуальные помощники для студентов и преподавателей",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.aucegypt.edu/about/leadership/provost/use-of-artificial-intelligence-tools",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "the-american-university-in-cairo"
+   ],
+   "sourceTitle": "AUC's Statement on the Use of Artificial Intelligence Tools",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.bibl.ulaval.ca/services/soutien-a-lapprentissage/outils-dintelligence-artificielle-ia-en-recherche-documentaire",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universite-laval"
+   ],
+   "sourceTitle": "Outils d'intelligence artificielle (IA) en recherche documentaire",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.brandeis.edu/its/software-systems/ai-tools/index.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "403",
+   "entitySlugs": [
+    "brandeis-university"
+   ],
+   "sourceTitle": "AI Tools at Brandeis | Software and Systems | Information Technology Services | Brandeis University",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.brandeis.edu/its/software-systems/ai-tools/index.html",
+    "textLength": 2821,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: blocked_or_inconclusive)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.cc.ntust.edu.tw/p/404-1050-132687.php?Lang=zh-tw",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "national-taiwan-university-of-science-and-technology-taiwan-tech"
+   ],
+   "sourceTitle": "【資安/Security】使用生成式 AI 工具時，請勿提供個資或業務機敏資訊。",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.cc.ntust.edu.tw/p/404-1050-132687.php?Lang=zh-tw",
+    "textLength": 1478,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.citl.titech.ac.jp/download/annual/citl_annualreport_2024.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "tokyo-institute-of-technology-tokyo-tech"
+   ],
+   "sourceTitle": "教育革新センター 2024 年報 (CITL Annual Report 2024)",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.cityu.edu.hk/GenAI/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "city-university-of-hong-kong"
+   ],
+   "sourceTitle": "Generative AI | City University of Hong Kong",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.cityu.edu.hk/GenAI/",
+    "textLength": 6233,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.cityu.edu.hk/GenAI/get-started.htm",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "city-university-of-hong-kong"
+   ],
+   "sourceTitle": "Get Started with CityUHK Chatbot",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.cityu.edu.hk/GenAI/get-started.htm",
+    "textLength": 1245,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.cityu.edu.hk/GenAI/gpt-services.htm",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "city-university-of-hong-kong"
+   ],
+   "sourceTitle": "GPT Services for the University Community",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.cityu.edu.hk/GenAI/gpt-services.htm",
+    "textLength": 6421,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.cityu.edu.hk/GenAI/guidelines.htm",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "city-university-of-hong-kong"
+   ],
+   "sourceTitle": "Guidelines on the Use of Generative AI Tools in Teaching and Learning | City University of Hong Kong",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.cityu.edu.hk/GenAI/guidelines.htm",
+    "textLength": 1100,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.cityu.edu.hk/its/news-events/news/2024/09/16/microsoft-copilot-enterprise-now-available-all-staff-and-students",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "city-university-of-hong-kong"
+   ],
+   "sourceTitle": "Microsoft Copilot for Enterprise: Now Available for All Staff and Students",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.cityu.edu.hk/its/news-events/news/2024/09/16/microsoft-copilot-enterprise-now-available-all-staff-and-students",
+    "textLength": 3819,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.econ.msu.ru/students/aied/tr/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "lomonosov-moscow-state-university"
+   ],
+   "sourceTitle": "ИИ в образовании: преподавателям",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.econ.msu.ru/students/aied/tr/",
+    "textLength": 2031,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.faculte-sciences-sport.universite-paris-saclay.fr/sites/default/files/2025-09/reglement_des_etudes_licence_charte_des_examens_mcc-1er_cycle_25-26.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "universite-paris-saclay"
+   ],
+   "sourceTitle": "Règlement des études, MCC et charte des examens des formations de 1er cycle de l'Université Paris-Saclay 2025-2026",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.faculte-sciences-sport.universite-paris-saclay.fr/sites/default/files/2025-09/reglement_des_etudes_licence_charte_des_examens_mcc-1er_cycle_25-26.pdf",
+    "textLength": 68572,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.faculte-sciences-sport.universite-paris-saclay.fr/sites/default/files/2025-09/reglement_des_etudes_master_charte_des_examens_mcc_-_master_25-26.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "universite-paris-saclay"
+   ],
+   "sourceTitle": "Règlement des études, MCC et charte des examens des formations de master de l'Université Paris-Saclay 2025-2026",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.faculte-sciences-sport.universite-paris-saclay.fr/sites/default/files/2025-09/reglement_des_etudes_master_charte_des_examens_mcc_-_master_25-26.pdf",
+    "textLength": 50403,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.gymkhana.iith.ac.in/documents/Academic%20Handbook%202022%20(50th%20senate).pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "indian-institute-of-technology-hyderabad-iith"
+   ],
+   "sourceTitle": "Academics Handbook 2022, updated on 24 Aug 2022 till 50th Senate",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.hss.iitb.ac.in/sites/default/files/2026-03/HSS%20AI%20Policy%20-%20FINAL.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "indian-institute-of-technology-bombay"
+   ],
+   "sourceTitle": "AI Policy for Teaching, Research and Administration in the Department of HSS, IIT Bombay",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.hss.iitb.ac.in/sites/default/files/2026-03/HSS%20AI%20Policy%20-%20FINAL.pdf",
+    "textLength": 7511,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.iea.usp.br/noticias/os-desafios-do-chatgpt-para-a-universidade",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universidade-de-sao-paulo"
+   ],
+   "sourceTitle": "Os desafios do ChatGPT ao ensino e à pesquisa",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.iea.usp.br/noticias/os-desafios-do-chatgpt-para-a-universidade",
+    "textLength": 34614,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.iitkgp.ac.in/assets/pdf/bog212.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "indian-institute-of-technology-kharagpur"
+   ],
+   "sourceTitle": "212 - IIT Kharagpur",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.inha.ac.kr/bbs/kr/8/43877/artclView.do",
+   "status": "firecrawl_opened_no_content",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "inha-university"
+   ],
+   "sourceTitle": "2026년 SW중심대학 AI 문제해결 챌린지 「ICAC 2026」참여자 모집 (4.28.~5.8.)",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": false,
+    "finalUrl": "https://www.inha.ac.kr/bbs/kr/8/43877/artclView.do",
+    "textLength": 25,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch opened the page but extracted little; manual check needed."
+  },
+  {
+   "sourceUrl": "https://www.it.chula.ac.th/service/chulagenie/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "chulalongkorn-university"
+   ],
+   "sourceTitle": "ChulaGENIE - IT Chulalongkorn University",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.it.chula.ac.th/service/chulagenie/",
+    "textLength": 4249,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "403",
+   "entitySlugs": [
+    "university-of-oxford"
+   ],
+   "sourceTitle": "The University's AI provision | IT Services",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.ox.ac.uk/redirects-it-services",
+    "textLength": 5682,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: blocked_or_inconclusive)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.jcu.cz/images/UNIVERZITA/Dokumenty/opatreni-rektora/platna-opatreni/2024/r_567_vyuzivani-ai-pri-tvorbe-praci-studentu-ju.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-south-bohemia-in-ceske-budejovice"
+   ],
+   "sourceTitle": "Opatření rektora k využívání umělé inteligence při tvorbě písemných prací a jiných typů závěrečných prací studentů Jihočeské univerzity v Českých Budějovicích",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.jcu.cz/images/UNIVERZITA/Dokumenty/opatreni-rektora/platna-opatreni/2024/r_567_vyuzivani-ai-pri-tvorbe-praci-studentu-ju.pdf",
+    "textLength": 13372,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.kfu.edu.sa/ar/Documents/PolicyPa2021/index.html",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "king-faisal-university"
+   ],
+   "sourceTitle": "الشروط والأحكام والسياسات",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 595,
+    "metadataStatusCode": 595,
+    "contentExtracted": false,
+    "finalUrl": "http://mportal.kfu.edu.sa/",
+    "textLength": 24,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.latrobe.edu.au/library/guides/learning-guides/achieve@uni/artificial-intelligence-ai",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "403",
+   "entitySlugs": [
+    "la-trobe-university"
+   ],
+   "sourceTitle": "Artificial Intelligence (AI)",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.latrobe.edu.au/library/guides/learning-guides/achieve@uni/artificial-intelligence-ai",
+    "textLength": 1660,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: blocked_or_inconclusive)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.lib.tongji.edu.cn/index.php?classid=11979&newsid=34861&t=show",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "tongji-university"
+   ],
+   "sourceTitle": "【博观E得】好用又合规：请查收这份AI生成合成内容标识指南",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.lib.tongji.edu.cn/index.php?classid=11979&newsid=34861&t=show",
+    "textLength": 9292,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.lpu.in/skilldevelopment/details/1058/scholarly-writing-and-research-analytics-a-complete-skill-program",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "500",
+   "entitySlugs": [
+    "lovely-professional-university-lpu"
+   ],
+   "sourceTitle": "Scholarly Writing & Research Analytics - LPU Skill Dev Course",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 500,
+    "metadataStatusCode": 500,
+    "contentExtracted": false,
+    "finalUrl": "https://www.lpu.in/skilldevelopment/details/1058/scholarly-writing-and-research-analytics-a-complete-skill-program",
+    "textLength": 66,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.mu.ac.in/admin/upload/circular/864585.53%20(N)(Film,%20Television%20&%20New%20Media%20Production)%20Ethics%20and%20Etiquettes%20in%20Digital%20Technology%20-%20Sem%20III%202%20Credits%20(Humanities)(Vertical%203%20OE)%202025-26%20(NEP%202020).pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-mumbai"
+   ],
+   "sourceTitle": "Ethics and Etiquettes in Digital Technology - Sem III 2 Credits",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/Student-Learning-with-Generative-AI.html",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "new-york-university"
+   ],
+   "sourceTitle": "Student Learning with Generative AI - NYU",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools.html",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "new-york-university"
+   ],
+   "sourceTitle": "NYU Generative AI Guidance",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools/frequently-asked-questions.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "new-york-university"
+   ],
+   "sourceTitle": "Frequently Asked Questions About Teaching and AI - NYU",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools/frequently-asked-questions.html",
+    "textLength": 31927,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/ai-studio.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "new-york-university"
+   ],
+   "sourceTitle": "Google AI Studio",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/ai-studio.html",
+    "textLength": 6772,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/gemini.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "new-york-university"
+   ],
+   "sourceTitle": "Gemini & Gemini Pro",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/gemini.html",
+    "textLength": 10843,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/notebooklm.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "new-york-university"
+   ],
+   "sourceTitle": "Google NotebookLM",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/generative-ai-services/notebooklm.html",
+    "textLength": 7686,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.nyu.edu/life/information-technology/communication-and-collaboration/email-and-communication/nyu-zoom.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "new-york-university"
+   ],
+   "sourceTitle": "NYU Zoom (Web Meetings)",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.nyu.edu/life/information-technology/communication-and-collaboration/email-and-communication/nyu-zoom.html",
+    "textLength": 15681,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.nyu.edu/life/information-technology/computing-support/software/software/adobe_express.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "new-york-university"
+   ],
+   "sourceTitle": "Adobe Express",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.nyu.edu/life/information-technology/computing-support/software/software/adobe_express.html",
+    "textLength": 15290,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.nyu.edu/life/information-technology/computing-support/software/software/ms-office.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "new-york-university"
+   ],
+   "sourceTitle": "NYU Microsoft 365",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.nyu.edu/life/information-technology/computing-support/software/software/ms-office.html",
+    "textLength": 14309,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.poliba.it/it/zoe",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "politecnico-di-bari"
+   ],
+   "sourceTitle": "ZoE",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.poliba.it/en/zoe",
+    "textLength": 13584,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.purdue.edu/securepurdue/it-policies-standards/Application%20of%20AI.php",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "purdue-university"
+   ],
+   "sourceTitle": "Application of the Artificial Intelligence (AI) Use Policy",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.purdue.edu/securepurdue/it-policies-standards/Application%20of%20AI.php",
+    "textLength": 15442,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.qub.ac.uk/Research/Governance-ethics-and-integrity/Research-integrity/ArtificialIntelligence/",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "403",
+   "entitySlugs": [
+    "queens-university-belfast"
+   ],
+   "sourceTitle": "Artificial Intelligence | Research | Queen's University Belfast",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: blocked_or_inconclusive)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.sharif.ir/fa/%D8%B4%DB%8C%D9%88%D9%87%E2%80%8C%D9%86%D8%A7%D9%85%D9%87-%D8%A7%D9%86%D8%B6%D8%A8%D8%A7%D8%B7%DB%8C-%D8%AF%D8%A7%D9%86%D8%B4%D8%AC%D9%88%DB%8C%D8%A7%D9%86-%D9%85%D8%B5%D9%88%D8%A8-%D8%A2%D8%A8%D8%A7%D9%86-%DB%B1%DB%B4%DB%B0%DB%B1-",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "sharif-university-of-technology"
+   ],
+   "sourceTitle": "شیوه‌ نامه انضباطی دانشجویان - دانشگاه صنعتی شریف",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.sharif.ir/fa/%D8%B5%DB%8C%D8%A7%D9%86%D8%AA-%D8%A7%D8%B2-%D8%AF%D8%A7%D8%AF%D9%87%E2%80%8C%D9%87%D8%A7",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "sharif-university-of-technology"
+   ],
+   "sourceTitle": "صیانت از داده‌ها - دانشگاه صنعتی شریف",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.ua.pt/pt/inovacaopedagogica/academia",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "university-of-aveiro"
+   ],
+   "sourceTitle": "AcademIA - inovacaopedagogica - Universidade de Aveiro",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.uea.ac.uk/about/university-information/statutory-legal-policies/freedom-of-information/disclosure-log/foi_26-036-generative-ai-policies-in-medicine-programmes",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "405",
+   "entitySlugs": [
+    "university-of-east-anglia-uea"
+   ],
+   "sourceTitle": "FOI_26-036 Generative AI policies in Medicine programmes",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.uea.ac.uk/about/university-information/statutory-legal-policies/freedom-of-information/disclosure-log/foi_26-036-generative-ai-policies-in-medicine-programmes",
+    "textLength": 3946,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.uhasselt.be/media/nqwf2ahm/uhasselt_artifici%C3%ABle_intelligentiebeleidskader.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "hasselt-university"
+   ],
+   "sourceTitle": "Algemeen beleidskader UHasselt (Generatieve) Artificiële Intelligentie",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/celouniverzitni-pracoviste/oddeleni-informacnich-technologii/it-poradna/microsoft-365/umela-inteligence-v-ramci-ms-edge-pro-zamestnance",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-hradec-kralove"
+   ],
+   "sourceTitle": "Umělá inteligence dostupná pro zaměstnance/zaměstnankyně UHK",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.uhk.cz/cs/univerzita-hradec-kralove/uhk/celouniverzitni-pracoviste/oddeleni-informacnich-technologii/it-poradna/microsoft-365/umela-inteligence-v-ramci-ms-edge-pro-zamestnance",
+    "textLength": 6312,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.uhk.cz/file/edee/univerzita-hradec-kralove/uhk/uredni-deska/vnitrni-predpisy-a-ridici-akty/ridici-akty/prorektori/smernice-a-pokyny/2026/pokyny-k-vyuzivani-umele-inteligence-studenty-pri-plneni-studijnich-povinnosti-na-uhk.pdf?v20260324141326",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-hradec-kralove"
+   ],
+   "sourceTitle": "Pokyny k využívání umělé inteligence studenty při plnění studijních povinností na Univerzitě Hradec Králové",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.uhk.cz/file/edee/univerzita-hradec-kralove/uhk/uredni-deska/vnitrni-predpisy-a-ridici-akty/ridici-akty/prorektori/smernice-a-pokyny/2026/pokyny-k-vyuzivani-umele-inteligence-studenty-pri-plneni-studijnich-povinnosti-na-uhk.pdf?v20260324141326",
+    "textLength": 4785,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.ulb.be/fr/intelligence-artificielle/academ-ia",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universite-libre-de-bruxelles"
+   ],
+   "sourceTitle": "Plan Academ·IA - l'Intelligence Artificielle à l'ULB",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.ulb.be/fr/intelligence-artificielle/academ-ia",
+    "textLength": 23285,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.ulb.be/fr/intelligence-artificielle/ia-et-enseignement",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universite-libre-de-bruxelles"
+   ],
+   "sourceTitle": "L'IA dans nos enseignements",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.ulb.be/fr/intelligence-artificielle/ia-et-enseignement",
+    "textLength": 19372,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.ulb.be/medias/fichier/note-d-intention-relative-aux-outils-d-ia-dans-l-enseignement-a-l-ulb_1724754668779-pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universite-libre-de-bruxelles"
+   ],
+   "sourceTitle": "Note d’Intention Relative aux Outils d'Intelligence Artificielle dans l'Enseignement à l’ULB",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.ulb.be/medias/fichier/note-d-intention-relative-aux-outils-d-ia-dans-l-enseignement-a-l-ulb_1724754668779-pdf",
+    "textLength": 4796,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.ulb.be/medias/fichier/reglement-general-etudes-2025-2026_1760082503551-pdf?ID_FICHE=12785&INLINE=FALSE",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "universite-libre-de-bruxelles"
+   ],
+   "sourceTitle": "Règlement général des études 2025-2026",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.ulb.be/medias/fichier/reglement-general-etudes-2025-2026_1760082503551-pdf?ID_FICHE=12785&INLINE=FALSE",
+    "textLength": 220222,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.uni-hohenheim.de/einsatz-von-generativer-ki-in-pruefungen",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "university-of-hohenheim"
+   ],
+   "sourceTitle": "Einsatz von generativer KI in Prüfungen",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 503,
+    "metadataStatusCode": 503,
+    "contentExtracted": false,
+    "finalUrl": "https://www.uni-hohenheim.de/einsatz-von-generativer-ki-in-pruefungen",
+    "textLength": 1979,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.uni-hohenheim.de/fileadmin/uni_hohenheim/Netzzeitung/0_Artikel_2023/Empfehlungen_generative_KI_in_Pruefungen.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "503",
+   "entitySlugs": [
+    "university-of-hohenheim"
+   ],
+   "sourceTitle": "Empfehlungen zum Umgang mit generativen KI-Systemen im Zusammenhang mit akademischen Prüfungen",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 503,
+    "metadataStatusCode": 503,
+    "contentExtracted": false,
+    "finalUrl": "https://www.uni-hohenheim.de/fileadmin/uni_hohenheim/Netzzeitung/0_Artikel_2023/Empfehlungen_generative_KI_in_Pruefungen.pdf",
+    "textLength": 1979,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.uni-mannheim.de/media/Einrichtungen/Koordinationsstelle_Studieninformationen/Dokumente/Erstsemester/ChatGPT_Handreichung_Studierende_UMA_Stand_Mai_2023.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "universitat-mannheim"
+   ],
+   "sourceTitle": "ChatGPT im Studium",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.uni-mannheim.de/media/Einrichtungen/zll/Website_2.0/ChatGPT_Handreichung_Lehrende_UMA_Stand_Mai_2023.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "universitat-mannheim"
+   ],
+   "sourceTitle": "ChatGPT in der Lehre",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.uni-mannheim.de/media/Einrichtungen/zll/Website_2.0/ChatGPT_Handreichung_Lehrende_UMA_Stand_Mai_2023.pdf",
+    "textLength": 49003,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.uni.lu/wp-content/uploads/sites/9/2023/09/Chatbots_and_student_assessment_FAQ_for_students_08062023.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "202",
+   "entitySlugs": [
+    "university-of-luxembourg"
+   ],
+   "sourceTitle": "Chatbots and student assessment",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.uni.lu/wp-content/uploads/sites/9/2023/09/Chatbots_and_student_assessment_FAQ_for_students_08062023.pdf",
+    "textLength": 7512,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.uni.lu/wp-content/uploads/sites/9/2026/02/25170716/2026-Guidelines-AI-I2TL-16022026.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "202",
+   "entitySlugs": [
+    "university-of-luxembourg"
+   ],
+   "sourceTitle": "Guidelines on the Use of Generative AI for Teaching and Learning",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.uni.lu/wp-content/uploads/sites/9/2026/02/25170716/2026-Guidelines-AI-I2TL-16022026.pdf",
+    "textLength": 36512,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.uniparthenope.it:8443/ParthenopePortaleDidatticaRest/rest/render/media/995d8e7b0a18477cacbe3c9403ea8b9b",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-naples-parthenope"
+   ],
+   "sourceTitle": "Regolamento Generale di Ateneo",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.uniparthenope.it:8443/ParthenopePortaleDidatticaRest/rest/render/media/995d8e7b0a18477cacbe3c9403ea8b9b",
+    "textLength": 190930,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.uniparthenope.it:8443/ParthenopePortaleDidatticaRest/rest/render/media/c502a93f506742c48f685d88f7a4a56a",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "university-of-naples-parthenope"
+   ],
+   "sourceTitle": "Codice Etico e di Comportamento dell'Universita degli Studi di Napoli Parthenope",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.uniparthenope.it:8443/ParthenopePortaleDidatticaRest/rest/render/media/c502a93f506742c48f685d88f7a4a56a",
+    "textLength": 109909,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.univ-tlse3.fr/statuts-et-reglements-interieurs/charte-du-bon-usage-des-ia-generatives-a-luniversite",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "universite-paul-sabatier-toulouse-iii"
+   ],
+   "sourceTitle": "Charte du bon usage des IA generatives a l'universite",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.univ-tlse3.fr/statuts-et-reglements-interieurs/charte-du-bon-usage-des-ia-generatives-a-luniversite",
+    "textLength": 3126,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.univpm.it/Entra/Ateneo/Statuto_regolamenti_normativa/Codice_etico",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "500",
+   "entitySlugs": [
+    "universita-politecnica-delle-marche"
+   ],
+   "sourceTitle": "Codice etico",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.univpm.it/Entra/Ateneo/Statuto_regolamenti_normativa/Codice_etico",
+    "textLength": 20253,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.univpm.it/Entra/Regolamenti/Regolamento_del_Comitato_Etico_per_la_Ricerca_di_Ateneo",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "500",
+   "entitySlugs": [
+    "universita-politecnica-delle-marche"
+   ],
+   "sourceTitle": "Regolamento del Comitato Etico per la Ricerca di Ateneo",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.univpm.it/Entra/Regolamenti/Regolamento_del_Comitato_Etico_per_la_Ricerca_di_Ateneo",
+    "textLength": 12006,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.univpm.it/Entra/University_1/Statute_regulations_and_national_and_European_legislation/Research_Integrity_Charter/L/0",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "500",
+   "entitySlugs": [
+    "universita-politecnica-delle-marche"
+   ],
+   "sourceTitle": "Codice per l'integrita della Ricerca",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.univpm.it/Entra/University_1/Statute_regulations_and_national_and_European_legislation/Research_Integrity_Charter/L/0",
+    "textLength": 25692,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.up.pt/portal/documents/2090/Codigo_Etica_2026.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "403",
+   "entitySlugs": [
+    "university-of-porto"
+   ],
+   "sourceTitle": "Código de Ética da Universidade do Porto",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.up.pt/portal/documents/2090/Codigo_Etica_2026.pdf",
+    "textLength": 33277,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: blocked_or_inconclusive)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.up.pt/portal/pt/updigital/software/sistemas-inteligencia-artificial-generativa/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "403",
+   "entitySlugs": [
+    "university-of-porto"
+   ],
+   "sourceTitle": "Sistemas de Inteligência Artificial generativa",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.up.pt/portal/pt/updigital/software/sistemas-inteligencia-artificial-generativa/",
+    "textLength": 47552,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: blocked_or_inconclusive)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.utp.edu.my/Pages/Admission/Undergraduate/Bachelor-in-Information-Systems-(Hons).aspx",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "universiti-teknologi-petronas"
+   ],
+   "sourceTitle": "Bachelor in Information Systems (Hons)",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentExtracted": true,
+    "finalUrl": "https://www.utp.edu.my/Pages/Admission/Undergraduate/Bachelor-in-Information-Systems-(Hons).aspx",
+    "textLength": 21528,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Source alive via rendered fetch; plain-HTTP failure was bot-conditional or render-related."
+  },
+  {
+   "sourceUrl": "https://www.utp.edu.my/sites/Publishing/PublishingContent/Students/Student%20Rules/Student%20Integrity%20@%20UTP.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "This operation was aborted",
+   "entitySlugs": [
+    "universiti-teknologi-petronas"
+   ],
+   "sourceTitle": "Student Integrity Campaign",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www.zuj.edu.jo/ZUJ-CMS/Uploaded_Files/Documents_638985495612796697.pdf",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "fetch failed",
+   "entitySlugs": [
+    "al-zaytoonah-university-of-jordan"
+   ],
+   "sourceTitle": "Al-Zaytoonah University of Jordan Students' guidebook 2025/2026",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: http_failed)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  },
+  {
+   "sourceUrl": "https://www2.unesp.br/sharer.php?noticia=38172",
+   "status": "firecrawl_failed",
+   "originalHttpStatus": "200",
+   "entitySlugs": [
+    "unesp"
+   ],
+   "sourceTitle": "Formação vai orientar comunidade universitária sobre o uso responsável de sistemas de inteligência artificial no dia a dia",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T04:30:00.000Z",
+    "httpStatus": null,
+    "metadataStatusCode": null,
+    "contentExtracted": false,
+    "finalUrl": null,
+    "textLength": 0,
+    "note": "Queue-clearing recheck of 2026-07-26 scan row (origin status: needs_firecrawl_verification)."
+   },
+   "recommendedAction": "Rendered fetch failed; retry later or manual check."
+  }
+ ]
+}
