@@ -1,6 +1,6 @@
 {
   "schemaVersion": "uapt-entity-alias-v1",
-  "generatedAt": "2026-07-26T12:00:00.000Z",
+  "generatedAt": "2026-07-27T00:00:00.000Z",
   "notes": "Entity alias registry per docs/data-contract.md. Slug aliases resolve duplicate university identities created when later pipeline runs derived a fresh slug from ranking names instead of reusing the original record; the canonical slug is the original record holding the richer source history. Ranking-label aliases map QS 2026 institution names to canonical slugs so ranking joins can be exact instead of fuzzy. Aliases improve recall and identity resolution only; they never create policy facts.",
   "aliases": [
     {
@@ -92,26 +92,356 @@
       "lastReviewedAt": "2026-07-26T12:00:00.000Z"
     },
     {
+      "alias": "beihang-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "beihang-university-former-buaa",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Beihang University (former BUAA); every staged source on both sides is under buaa.edu.cn. Canonical is the dedicated run holding four buaa.edu.cn subdomains and a report draft, and is the slug apps/web/lib/institution-localization.ts is keyed on; the alias exists only in the bulk uapt-ai-tools-qs-top-* runs (news.buaa.edu.cn).",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "city-university-of-hong-kong-cityuhk",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "city-university-of-hong-kong",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for City University of Hong Kong (CityUHK); all staged sources on both sides are cityu.edu.hk, distinct from the hku.hk record. Canonical is the original dedicated run uapt-city-university-of-hong-kong-20260512 and the slug institution-localization.ts is keyed on; the alias exists only in the bulk uapt-ai-tools-qs-top-* runs.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "columbia-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "columbia",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Columbia University; all official hosts on both sides are columbia.edu subdomains. Canonical 'columbia' comes from the curated run uapt-qs26-30-20260509 with 10 distinct subdomains vs the alias's single ai.columbia.edu, and staged-public-data.ts already maps columbia-university to columbia for ranking joins.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "hamad-bin-khalifa-university-hbku",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "hamad-bin-khalifa-university",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Hamad Bin Khalifa University (HBKU); every staged source on both sides is hbku.edu.qa. Canonical is the dedicated run uapt-hamad-bin-khalifa-university-20260515 with a report draft; the alias exists only in the bulk uapt-ai-tools-qs-top-* runs.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "kings-college-london",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "kcl",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for King's College London; both sides are entirely kcl.ac.uk. Canonical 'kcl' is the original dedicated run uapt-kcl-20260510 publishing 6 sources / 12 claims; staged-public-data.ts already maps kings-college-london to kcl.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "monash-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "monash",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Monash University; both sides are monash.edu, with no monash.edu.my Malaysia-campus host on either side. Canonical 'monash' is the original dedicated run uapt-monash-20260510 publishing 9 sources; the alias exists only in the bulk uapt-ai-tools-qs-top-* runs.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "nanyang-technological-university-singapore-ntu-singapore",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "nanyang-technological-university",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Nanyang Technological University, Singapore; both sides are ntu.edu.sg, distinct from ntnu.edu.tw and ntnu.no. Canonical comes from the curated run uapt-repair-qs-top-policy-seeds-20260506 and is the slug institution-localization.ts is keyed on.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "national-taiwan-normal-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "national-taiwan-normal-university-ntnu",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for National Taiwan Normal University (NTNU), Taipei; every staged source on both sides is under ntnu.edu.tw, not ntnu.no or ntu.edu.sg. Canonical is the dedicated run uapt-national-taiwan-normal-university-ntnu-20260516 with a report draft and five distinct subdomains; the alias holds a single library-guide host.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "new-york-university-nyu",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "new-york-university",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for New York University (NYU); both sides are nyu.edu. Direction follows the registry convention: canonical is the original dedicated run uapt-new-york-university-20260512 with a report draft and three distinct hosts, while the alias exists only in the bulk uapt-ai-tools-qs-top-* runs on a single host. Published source counts are equal (6 vs 6).",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "pohang-university-of-science-and-technology-postech",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "pohang-university-of-science-and-technology",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for POSTECH; both sides are postech.ac.kr. Canonical is the dedicated run uapt-pohang-university-of-science-and-technology-20260514 with a report draft and three hosts including genai.postech.ac.kr; the alias's higher claim count comes from one libguides.postech.ac.kr page enumerated per tool across the bulk runs.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "southern-university-of-science-and-technology",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "southern-university-of-science-and-technology-sustech",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for SUSTech, Shenzhen; both sides are sustech.edu.cn. Canonical is the dedicated run uapt-southern-university-of-science-and-technology-sustech-20260516 with five distinct subdomains and is the slug institution-localization.ts is keyed on; the alias holds only coe.sustech.edu.cn.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "texas-a-m-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "texas-a-and-m-university",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Texas A&M University (College Station); every staged source on both sides is under tamu.edu, with no Texas A&M System sibling domain (tamuk.edu, tamucc.edu, tamut.edu) on either side. Canonical is the dedicated run uapt-texas-a-and-m-university-20260514 with seven hosts; the alias is built solely from it.tamu.edu pages and currently publishes country Unknown.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "the-ohio-state-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "ohio-state-university",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The Ohio State University; both sides are osu.edu. Canonical is the dedicated run uapt-ohio-state-university-20260515 plus a maintenance delta run, with five distinct subdomains; staged-public-data.ts already maps the-ohio-state-university to ohio-state-university.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "the-university-of-edinburgh",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "edinburgh",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The University of Edinburgh; both sides are ed.ac.uk. Canonical 'edinburgh' is the original dedicated run uapt-edinburgh-20260510 plus two maintenance delta runs, publishing 7 sources; staged-public-data.ts already maps the-university-of-edinburgh to edinburgh.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "the-university-of-hong-kong",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "university-of-hong-kong",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The University of Hong Kong; both sides are hku.hk, distinct from the cityu.edu.hk record. Direction follows the registry convention and preserves search recall: canonical is the older record from uapt-repair-qs-top-policy-seeds-20260506 with two distinct hosts, and is the slug institution-localization.ts is keyed on for the Chinese aliases.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "the-university-of-manchester",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "manchester",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The University of Manchester; both sides are manchester.ac.uk, with no mmu.ac.uk host on either side. Canonical 'manchester' is the original dedicated run uapt-manchester-20260510 with five distinct hosts; staged-public-data.ts already maps the-university-of-manchester to manchester.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "the-university-of-melbourne",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "university-of-melbourne",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The University of Melbourne; both sides are unimelb.edu.au. Canonical comes from the curated run uapt-qs14-20-20260506 with four distinct subdomains; staged-public-data.ts already maps the-university-of-melbourne to university-of-melbourne.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "the-university-of-new-south-wales-unsw-sydney",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "unsw-sydney",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for UNSW Sydney; both sides are unsw.edu.au. Canonical 'unsw-sydney' comes from the curated run uapt-qs14-20-20260506 plus uapt-qs200-confirmed-policy-delta-20260604, with five distinct hosts and 8 published sources; the alias exists only in the bulk uapt-ai-tools-qs-top-* runs.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "the-university-of-queensland",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "university-of-queensland",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The University of Queensland; both sides are uq.edu.au. Canonical is the dedicated run uapt-university-of-queensland-20260510 plus a maintenance delta run, with nine distinct subdomains; staged-public-data.ts already maps the-university-of-queensland to university-of-queensland.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "the-university-of-sydney",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "university-of-sydney",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The University of Sydney; both sides are sydney.edu.au, distinct from unsw.edu.au and uts.edu.au. Canonical is the original dedicated run uapt-university-of-sydney-20260510 publishing 8 sources; staged-public-data.ts already maps the-university-of-sydney to university-of-sydney.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "the-university-of-tokyo",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "u-tokyo",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The University of Tokyo; both sides centre on u-tokyo.ac.jp. Canonical 'u-tokyo' comes from the curated run uapt-qs26-30-20260509 with five distinct hosts and Japanese-language publisher metadata; staged-public-data.ts already maps the-university-of-tokyo to u-tokyo.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "toronto-metropolitan-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "toronto-metropolitan-university-formerly-ryerson-university",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Toronto Metropolitan University (formerly Ryerson); both sides are entirely torontomu.ca. Canonical is the dedicated run uapt-toronto-metropolitan-university-formerly-ryerson-university-20260518 with a report draft; the alias appears only in three of the bulk uapt-ai-tools-qs-top-* runs.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "universidad-carlos-iii-de-madrid",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "universidad-carlos-iii-de-madrid-uc3m",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Universidad Carlos III de Madrid (UC3M); both sides are uc3m.es, distinct from ucm.es, uam.es and upm.es. Canonical is the dedicated run uapt-universidad-carlos-iii-de-madrid-uc3m-20260516 with a report draft; the alias exists only in the bulk uapt-ai-tools-qs-top-* runs.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "universidad-nacional-autonoma-de-mexico-unam",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "universidad-nacional-autonoma-de-mexico",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Universidad Nacional Autónoma de México (UNAM); both sides are unam.mx and the alias host asistenteia.cuaed.unam.mx is a subdomain of the same CUAED unit present on the canonical side. Canonical is the dedicated run uapt-universidad-nacional-autonoma-de-mexico-20260514 with seven distinct subdomains.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "universite-catholique-de-louvain-uclouvain",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "universite-catholique-de-louvain",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Université catholique de Louvain; both sides are uclouvain.be, with no kuleuven.be host on either side, so this is not the separate KU Leuven. Canonical is the dedicated run uapt-universite-catholique-de-louvain-20260515 with a report draft and is the slug institution-localization.ts is keyed on.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "university-of-chinese-academy-of-sciences",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "university-of-chinese-academy-of-sciences-ucas",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for University of Chinese Academy of Sciences (UCAS); both sides are ucas.ac.cn and both include njc.ucas.ac.cn, the UCAS Nanjing College campus. Direction follows the registry convention and preserves search recall: canonical is the dedicated run uapt-university-of-chinese-academy-of-sciences-ucas-20260516 with a report draft and four subdomains, and is the slug institution-localization.ts is keyed on for the Chinese aliases.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "freie-universitat-berlin",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "freie-universitaet-berlin",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Transliteration twin slugs for Freie Universität Berlin; every staged source on both sides is under fu-berlin.de, with no tu-berlin.de / tu.berlin or hu-berlin.de host on either side. Canonical is the dedicated run uapt-freie-universitaet-berlin-20260513 with a report draft and nine staged sources; the alias has no ranking match and currently publishes country Unknown.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "ludwig-maximilians-universitaet-muenchen",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "ludwig-maximilians-universitat-munchen",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Transliteration twin slugs for Ludwig-Maximilians-Universität München; both sides are lmu.de, with no tum.de host on either side. Canonical is the dedicated run uapt-ludwig-maximilians-universitat-munchen-20260512 with a report draft and five distinct subdomains; the alias exists only in the bulk uapt-ai-tools-qs-top-* runs.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "technische-universitaet-berlin",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "technische-universitat-berlin",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Transliteration twin slugs for Technische Universität Berlin, distinct from the Freie Universität Berlin pair; both sides use the official tu.berlin domain and the canonical additionally uses tu-berlin.de. Canonical is the dedicated run uapt-technische-universitat-berlin-20260514 with a report draft and eight staged sources; the alias currently publishes country Unknown.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
+      "alias": "universitaet-stuttgart",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "universitat-stuttgart",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Transliteration twin slugs for Universität Stuttgart; both sides are uni-stuttgart.de and share the same underlying AI-tool whitelist page. Canonical is the dedicated run uapt-universitat-stuttgart-20260516 with a report draft across student/beschaeftigte/root uni-stuttgart.de; the alias currently publishes country Unknown.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
+    },
+    {
       "alias": "Beihang University (former BUAA)",
       "aliasType": "ranking_label",
       "entityType": "university",
-      "canonicalSlug": "beihang-university",
+      "canonicalSlug": "beihang-university-former-buaa",
       "sourceSystem": "qs_rankings",
       "matchConfidence": 1,
       "reviewState": "agent_reviewed",
-      "matchReason": "QS 2026 row 388 label includes the former BUAA acronym; tracker records use 'Beihang University'.",
-      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+      "matchReason": "QS 2026 row 388 label includes the former BUAA acronym; tracker records use 'Beihang University'. Canonical slug repointed to the merged record after the duplicate-identity review of 2026-07-27.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
     },
     {
       "alias": "Freie Universitaet Berlin",
       "aliasType": "ranking_label",
       "entityType": "university",
-      "canonicalSlug": "freie-universitat-berlin",
+      "canonicalSlug": "freie-universitaet-berlin",
       "sourceSystem": "qs_rankings",
       "matchConfidence": 1,
       "reviewState": "agent_reviewed",
-      "matchReason": "QS 2026 label uses 'ae' transliteration; tracker records use 'Freie Universität Berlin'.",
-      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+      "matchReason": "QS 2026 label uses 'ae' transliteration; tracker records use 'Freie Universität Berlin'. Canonical slug repointed to the merged record after the duplicate-identity review of 2026-07-27.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
     },
     {
       "alias": "KIT, Karlsruhe Institute of Technology",
@@ -139,12 +469,12 @@
       "alias": "Pohang University of Science And Technology (POSTECH)",
       "aliasType": "ranking_label",
       "entityType": "university",
-      "canonicalSlug": "pohang-university-of-science-and-technology-postech",
+      "canonicalSlug": "pohang-university-of-science-and-technology",
       "sourceSystem": "qs_rankings",
       "matchConfidence": 1,
       "reviewState": "agent_reviewed",
-      "matchReason": "QS 2026 label capitalizes 'And'; tracker records use lowercase 'and'.",
-      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+      "matchReason": "QS 2026 label capitalizes 'And'; tracker records use lowercase 'and'. Canonical slug repointed to the merged record after the duplicate-identity review of 2026-07-27.",
+      "lastReviewedAt": "2026-07-27T00:00:00.000Z"
     },
     {
       "alias": "The University of Auckland",

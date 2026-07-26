@@ -1,7 +1,7 @@
 ---
 title: Current Public Release
 authoritativeLevel: derived_snapshot
-generatedAt: 2026-07-26T15:27:43.023Z
+generatedAt: 2026-07-26T16:23:53.511Z
 sourceFiles:
   - data/public-releases/current.json
   - data/entity-aliases.json
@@ -28,11 +28,11 @@ manifest and generated public JSON remain authoritative for what is promoted.
 
 | Metric | Value |
 | --- | ---: |
-| Public universities | 858 |
+| Public universities | 828 |
 | Public claims | 5450 |
 | Evidence records | 5715 |
 | Official source attributions | 3186 |
-| Public recent-change records | 484 |
+| Public recent-change records | 470 |
 
 Duplicate university identities are merged through `data/entity-aliases.json`
 before counting.
@@ -41,7 +41,7 @@ before counting.
 
 | Scope | State | Count |
 | --- | --- | ---: |
-| Entity | `agent_reviewed` | 858 |
+| Entity | `agent_reviewed` | 828 |
 | Claim | `agent_reviewed` | 5450 |
 
 Review state is not the same as confidence. This snapshot does not change any
@@ -69,14 +69,14 @@ tags appear across the evidence set.
 
 ## Ranking Coverage In Public Dataset
 
-This table reports ranking metadata coverage for the 858
+This table reports ranking metadata coverage for the 828
 public universities. It does not imply that all rows in the ranking sources are
 covered.
 
 | Ranking source | Public coverage | Source rows | Source status |
 | --- | ---: | ---: | --- |
-| qs 2026 | 841/858 | 857/1000 | partial |
-| the 2026 | 484/858 | 1000/1000 | complete |
-| arwu 2025 | 440/858 | 1000/1000 | complete |
-| usnews 2025-2026 | 483/858 | 1000/1000 | complete |
-| cwts 2025 | 325/858 | 1000/1000 | complete |
+| qs 2026 | 816/828 | 857/1000 | partial |
+| the 2026 | 473/828 | 1000/1000 | complete |
+| arwu 2025 | 429/828 | 1000/1000 | complete |
+| usnews 2025-2026 | 476/828 | 1000/1000 | complete |
+| cwts 2025 | 319/828 | 1000/1000 | complete |

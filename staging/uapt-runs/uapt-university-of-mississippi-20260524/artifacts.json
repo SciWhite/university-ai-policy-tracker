@@ -718,12 +718,12 @@
       ],
       "citation": {
         "citationTitle": "University of Mississippi AI policy source bundle",
-        "sourceUrl": "https://guides.lib.olemiss.edu/c.php?g=1362389&p=10062389",
+        "sourceUrl": "https://guides.lib.olemiss.edu/c.php?g=1362389&p=10266256",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-mississippi.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-mississippi",
         "publisher": "University of Mississippi",
         "retrievedAt": "2026-05-24T16:20:00.000Z",
-        "snapshotHash": "6f9fe677ff8853280568270fd93529a07b5c25cc3705c1277a356132473386d5",
+        "snapshotHash": "cf5cbd7e1f41aae0887b7c20473c6c9c782cecd5be5558ada5dd10dc4675cb85",
         "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
       },
       "publishAsCanonical": false,

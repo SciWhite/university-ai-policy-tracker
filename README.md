@@ -107,11 +107,11 @@ Current public release:
 <!-- release-status:start -->
 
 - Release: `public-release-20260726-013` (published 2026-07-26)
-- Universities: 858
+- Universities: 828
 - Claims: 5450
 - Evidence records: 5715
 - Official source attributions: 3186
-- Entity review states: 858 `agent_reviewed`
+- Entity review states: 828 `agent_reviewed`
 - Claim review states: 5450 `agent_reviewed`
 - Source languages represented: 61 language tags across the evidence set
 
