@@ -128,8 +128,8 @@
       "sourceCandidateId": "src-utdallas-oit-genai",
       "entityType": "university",
       "entitySlug": "university-of-texas-at-dallas",
-      "sourceUrl": "https://oit.utdallas.edu/about/gen-ai/",
-      "finalUrl": "https://oit.utdallas.edu/about/gen-ai/",
+      "sourceUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
+      "finalUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
       "sourceTitle": "Gen AI - OIT | UT Dallas",
       "sourceLanguage": "en",
       "sourceType": "approved_tools",
@@ -141,8 +141,9 @@
       "policySpecificityScore": 0.75,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-17T04:33:49Z",
-      "verificationNotes": "Official OIT page listing UT Dallas AI tools and resource links.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official OIT page listing UT Dallas AI tools and resource links. URL relocated from https://oit.utdallas.edu/about/gen-ai/ on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -350,7 +351,7 @@
           "entityType": "university",
           "entitySlug": "university-of-texas-at-dallas",
           "sourceCandidateId": "src-utdallas-oit-genai",
-          "sourceUrl": "https://oit.utdallas.edu/about/gen-ai/",
+          "sourceUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
           "sourceTitle": "Gen AI - OIT | UT Dallas",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -451,8 +452,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fetch-utdallas-oit-genai",
       "sourceCandidateId": "src-utdallas-oit-genai",
-      "sourceUrl": "https://oit.utdallas.edu/about/gen-ai/",
-      "finalUrl": "https://oit.utdallas.edu/about/gen-ai/",
+      "sourceUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
+      "finalUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
       "attemptedAt": "2026-05-17T04:33:49Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -462,7 +463,8 @@
       "outcome": "success",
       "durationMs": 5514,
       "contentHash": "dc45cc8777a2e0db302ae49c3693bf2f13436d25981d4d0abc5f77c6cb737d1f",
-      "normalizedTextStorageKey": "openclaw/uapt-university-of-texas-at-dallas-20260517/snapshots/oit-genai"
+      "normalizedTextStorageKey": "openclaw/uapt-university-of-texas-at-dallas-20260517/snapshots/oit-genai",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -544,8 +546,8 @@
       "sourceSnapshotId": "snap-utdallas-oit-genai",
       "sourceCandidateId": "src-utdallas-oit-genai",
       "fetchAttemptId": "fetch-utdallas-oit-genai",
-      "sourceUrl": "https://oit.utdallas.edu/about/gen-ai/",
-      "finalUrl": "https://oit.utdallas.edu/about/gen-ai/",
+      "sourceUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
+      "finalUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
       "sourceTitle": "Gen AI - OIT | UT Dallas",
       "sourceLanguage": "en",
       "contentHash": "dc45cc8777a2e0db302ae49c3693bf2f13436d25981d4d0abc5f77c6cb737d1f",
@@ -553,7 +555,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw/uapt-university-of-texas-at-dallas-20260517/snapshots/oit-genai",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -736,7 +739,7 @@
       ],
       "citation": {
         "citationTitle": "Gen AI - OIT | UT Dallas",
-        "sourceUrl": "https://oit.utdallas.edu/about/gen-ai/",
+        "sourceUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-texas-at-dallas.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-dallas",
         "publisher": "The University of Texas at Dallas Office of Information Technology",
@@ -899,8 +902,8 @@
       "evidenceId": "ev-utdallas-ai-tools-page",
       "claimId": "claim-utdallas-ai-tools-page",
       "sourceSnapshotId": "snap-utdallas-oit-genai",
-      "sourceUrl": "https://oit.utdallas.edu/about/gen-ai/",
-      "finalUrl": "https://oit.utdallas.edu/about/gen-ai/",
+      "sourceUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
+      "finalUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
       "sourceTitle": "Gen AI - OIT | UT Dallas",
       "sourceLanguage": "en",
       "snapshotHash": "dc45cc8777a2e0db302ae49c3693bf2f13436d25981d4d0abc5f77c6cb737d1f",
@@ -912,7 +915,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "Gen AI - OIT | UT Dallas",
-        "sourceUrl": "https://oit.utdallas.edu/about/gen-ai/",
+        "sourceUrl": "https://oit.utdallas.edu/about/oit-ai-studio/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-texas-at-dallas.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-texas-at-dallas",
         "publisher": "The University of Texas at Dallas Office of Information Technology",

@@ -5,8 +5,8 @@
   "sourceCandidateId": "mcgill-ai-tools-approved",
   "entityType": "university",
   "entitySlug": "mcgill-university",
-  "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-  "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+  "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
   "sourceTitle": "AI tools at McGill",
   "sourceLanguage": "en",
   "sourceType": "approved_tools",
@@ -18,6 +18,7 @@
   "policySpecificityScore": 0.94,
   "verificationStatus": "verified",
   "verifiedAt": "2026-05-10T14:14:00.000Z",
-  "verificationNotes": "Official IT Services registry of approved and rejected AI tools. Microsoft 365 Copilot Chat approved for public data. Synthesia approved with restrictions. DeepSeek AI and Read.AI explicitly rejected. Any tool not listed as approved is automatically rejected.",
-  "robotsPolicy": "respect"
+  "verificationNotes": "Official IT Services registry of approved and rejected AI tools. Microsoft 365 Copilot Chat approved for public data. Synthesia approved with restrictions. DeepSeek AI and Read.AI explicitly rejected. Any tool not listed as approved is automatically rejected. URL relocated from https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill on 2026-07-27 after link-health repair; content match verified (search_result_only).",
+  "robotsPolicy": "respect",
+  "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
 }

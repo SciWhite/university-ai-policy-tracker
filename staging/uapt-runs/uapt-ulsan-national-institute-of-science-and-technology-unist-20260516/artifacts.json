@@ -63,7 +63,7 @@
           "entityType": "university",
           "entitySlug": "ulsan-national-institute-of-science-and-technology-unist",
           "sourceCandidateId": "sc-unist-generative-ai-guide-news",
-          "sourceUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
+          "sourceUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
           "sourceTitle": "UNIST Releases Generative AI Utilization Guide to Promote Smart Usage of ChatGPT",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -109,8 +109,8 @@
       "sourceCandidateId": "sc-unist-generative-ai-guide-news",
       "entityType": "university",
       "entitySlug": "ulsan-national-institute-of-science-and-technology-unist",
-      "sourceUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
-      "finalUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
+      "sourceUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
+      "finalUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
       "sourceTitle": "UNIST Releases Generative AI Utilization Guide to Promote Smart Usage of ChatGPT",
       "sourceLanguage": "en",
       "sourceType": "university_guidance",
@@ -122,8 +122,9 @@
       "policySpecificityScore": 0.82,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-16T05:24:00.000Z",
-      "verificationNotes": "Official UNIST News Center article by the Public Relations Team announcing a guidebook produced under the UNIST Education Innovation Task Force.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official UNIST News Center article by the Public Relations Team announcing a guidebook produced under the UNIST Education Innovation Task Force. URL relocated from https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/ on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -194,8 +195,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-unist-generative-ai-guide-news-http",
       "sourceCandidateId": "sc-unist-generative-ai-guide-news",
-      "sourceUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
-      "finalUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
+      "sourceUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
+      "finalUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
       "attemptedAt": "2026-05-16T05:24:00.000Z",
       "fetchMode": "http",
       "userAgentKind": "default",
@@ -205,7 +206,8 @@
       "outcome": "success",
       "durationMs": 2104,
       "contentHash": "10f99ebced2fae80d92460611a7a6eb918b85b583a293753b3f941d33fc66538",
-      "normalizedTextStorageKey": "staging/uapt-runs/uapt-ulsan-national-institute-of-science-and-technology-unist-20260516/normalized/unist-generative-ai-guide-news.txt"
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-ulsan-national-institute-of-science-and-technology-unist-20260516/normalized/unist-generative-ai-guide-news.txt",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -251,8 +253,8 @@
       "sourceSnapshotId": "ss-unist-generative-ai-guide-news",
       "sourceCandidateId": "sc-unist-generative-ai-guide-news",
       "fetchAttemptId": "fa-unist-generative-ai-guide-news-http",
-      "sourceUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
-      "finalUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
+      "sourceUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
+      "finalUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
       "sourceTitle": "UNIST Releases Generative AI Utilization Guide to Promote Smart Usage of ChatGPT",
       "sourceLanguage": "en",
       "contentHash": "10f99ebced2fae80d92460611a7a6eb918b85b583a293753b3f941d33fc66538",
@@ -260,7 +262,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-ulsan-national-institute-of-science-and-technology-unist-20260516/normalized/unist-generative-ai-guide-news.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -298,7 +301,7 @@
       ],
       "citation": {
         "citationTitle": "UNIST Releases Generative AI Utilization Guide to Promote Smart Usage of ChatGPT",
-        "sourceUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
+        "sourceUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/ulsan-national-institute-of-science-and-technology-unist.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/ulsan-national-institute-of-science-and-technology-unist",
         "publisher": "UNIST News Center",
@@ -374,8 +377,8 @@
       "evidenceId": "ev-unist-generative-ai-guide-purpose",
       "claimId": "claim-unist-generative-ai-guide-purpose",
       "sourceSnapshotId": "ss-unist-generative-ai-guide-news",
-      "sourceUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
-      "finalUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
+      "sourceUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
+      "finalUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
       "sourceTitle": "UNIST Releases Generative AI Utilization Guide to Promote Smart Usage of ChatGPT",
       "sourceLanguage": "en",
       "snapshotHash": "10f99ebced2fae80d92460611a7a6eb918b85b583a293753b3f941d33fc66538",
@@ -386,7 +389,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "UNIST Releases Generative AI Utilization Guide to Promote Smart Usage of ChatGPT",
-        "sourceUrl": "https://news.unist.ac.kr/unist-releases-generative-ai-utilization-guide-to-promote-smart-usage-of-chat-gpt/",
+        "sourceUrl": "https://edu.unist.ac.kr/%EF%BB%BF%EC%B1%97gpt-%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-%EC%93%B0%EB%8A%94%EB%B2%95-unist-%EC%83%9D%EC%84%B1%ED%98%95-ai-%ED%99%9C%EC%9A%A9-%EA%B0%80%EC%9D%B4%EB%93%9C-%EB%A7%88%EB%A0%A8/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/ulsan-national-institute-of-science-and-technology-unist.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/ulsan-national-institute-of-science-and-technology-unist",
         "publisher": "UNIST News Center",

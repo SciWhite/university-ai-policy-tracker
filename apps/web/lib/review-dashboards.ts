@@ -1412,54 +1412,72 @@ async function readPublicReleaseManifest(
 async function readFirecrawlSourceChecks(
   repoRoot: string
 ): Promise<FirecrawlSourceCheckIndex> {
-  const file = path.join(
-    repoRoot,
-    "data",
-    "source-health",
-    "firecrawl-blocked-source-checks-20260517.json"
-  );
+  const directory = path.join(repoRoot, "data", "source-health");
 
   try {
-    const document = await readJsonFile<FirecrawlSourceCheckDocument>(file);
+    // Dated check files accumulate over time; merge them all, letting the
+    // newest file win per URL so re-verification supersedes older verdicts.
+    const files = (await readdir(directory))
+      .filter(
+        (name) =>
+          name.startsWith("firecrawl-blocked-source-checks-") &&
+          name.endsWith(".json")
+      )
+      .sort();
+
+    if (!files.length) throw new Error("no firecrawl check files");
+
+    const documents: FirecrawlSourceCheckDocument[] = [];
+    for (const name of files) {
+      documents.push(
+        await readJsonFile<FirecrawlSourceCheckDocument>(
+          path.join(directory, name)
+        )
+      );
+    }
+
+    const recordsByUrl = new Map<
+      string,
+      FirecrawlSourceCheckDocument["records"][number]
+    >();
+    for (const item of documents) {
+      for (const record of item.records) {
+        recordsByUrl.set(normalizeUrl(record.sourceUrl), record);
+      }
+    }
+
+    const document: FirecrawlSourceCheckDocument = {
+      ...documents[documents.length - 1],
+      records: Array.from(recordsByUrl.values())
+    };
+
     return {
       checkedWith: document.checkedWith,
       generatedAt: document.generatedAt,
-      recordsByUrl: new Map(
-        document.records.map((record) => [
-          normalizeUrl(record.sourceUrl),
-          record
-        ])
-      ),
+      recordsByUrl,
       requestPolicy: document.requestPolicy,
+      // Summaries must be recomputed from the merged record set; per-file
+      // summary blocks only describe their own file.
       summary: {
-        blockedByClient:
-          document.summary?.blocked_by_client ??
-          document.records.filter((record) => record.status === "blocked_by_client")
-            .length,
-        browserTimeoutUnverified:
-          document.summary?.browser_timeout_unverified ??
-          document.records.filter(
-            (record) => record.status === "browser_timeout_unverified"
-          ).length,
-        browserVerified:
-          document.summary?.browser_verified ??
-          document.records.filter((record) => record.status === "browser_verified")
-            .length,
-        failed:
-          document.summary?.firecrawl_failed ??
-          document.records.filter((record) => record.status === "firecrawl_failed")
-            .length,
-        openedNoContent:
-          document.summary?.firecrawl_opened_no_content ??
-          document.records.filter(
-            (record) => record.status === "firecrawl_opened_no_content"
-          ).length,
-        total: document.summary?.total ?? document.records.length,
-        verified:
-          document.summary?.firecrawl_verified ??
-          document.records.filter(
-            (record) => record.status === "firecrawl_verified"
-          ).length
+        blockedByClient: document.records.filter(
+          (record) => record.status === "blocked_by_client"
+        ).length,
+        browserTimeoutUnverified: document.records.filter(
+          (record) => record.status === "browser_timeout_unverified"
+        ).length,
+        browserVerified: document.records.filter(
+          (record) => record.status === "browser_verified"
+        ).length,
+        failed: document.records.filter(
+          (record) => record.status === "firecrawl_failed"
+        ).length,
+        openedNoContent: document.records.filter(
+          (record) => record.status === "firecrawl_opened_no_content"
+        ).length,
+        total: document.records.length,
+        verified: document.records.filter(
+          (record) => record.status === "firecrawl_verified"
+        ).length
       }
     };
   } catch {

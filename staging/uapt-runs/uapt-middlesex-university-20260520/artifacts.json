@@ -84,7 +84,7 @@
           "entityType": "university",
           "entitySlug": "middlesex-university",
           "sourceCandidateId": "sc-mdx-generative-ai-referencing",
-          "sourceUrl": "https://libguides.mdx.ac.uk/AI/referencing",
+          "sourceUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
           "sourceTitle": "Referencing AI / Generative AI Personal Communications - Generative AI",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -189,8 +189,8 @@
       "sourceCandidateId": "sc-mdx-generative-ai-referencing",
       "entityType": "university",
       "entitySlug": "middlesex-university",
-      "sourceUrl": "https://libguides.mdx.ac.uk/AI/referencing",
-      "finalUrl": "https://libguides.mdx.ac.uk/AI/referencing",
+      "sourceUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
+      "finalUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
       "sourceTitle": "Referencing AI / Generative AI Personal Communications - Generative AI",
       "sourceLanguage": "en",
       "sourceType": "academic_integrity",
@@ -202,8 +202,9 @@
       "policySpecificityScore": 0.88,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-20T14:13:00.000Z",
-      "verificationNotes": "Firecrawl returned HTTP 200 for the official Middlesex Generative AI referencing page with tutor, citation, and academic integrity guidance.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Firecrawl returned HTTP 200 for the official Middlesex Generative AI referencing page with tutor, citation, and academic integrity guidance. URL relocated from https://libguides.mdx.ac.uk/AI/referencing on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -443,8 +444,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-mdx-generative-ai-referencing",
       "sourceCandidateId": "sc-mdx-generative-ai-referencing",
-      "sourceUrl": "https://libguides.mdx.ac.uk/AI/referencing",
-      "finalUrl": "https://libguides.mdx.ac.uk/AI/referencing",
+      "sourceUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
+      "finalUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
       "attemptedAt": "2026-05-20T14:13:00.000Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -454,7 +455,8 @@
       "outcome": "success",
       "durationMs": 1805,
       "contentHash": "12bed11aa51c26991b2b9cfe97b24b766056acff37b729d40487c0d8f877a786",
-      "normalizedTextStorageKey": "openclaw://normalized/uapt-middlesex-university-20260520/mdx-generative-ai-referencing"
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-middlesex-university-20260520/mdx-generative-ai-referencing",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -538,8 +540,8 @@
       "sourceSnapshotId": "ss-mdx-generative-ai-referencing",
       "sourceCandidateId": "sc-mdx-generative-ai-referencing",
       "fetchAttemptId": "fa-mdx-generative-ai-referencing",
-      "sourceUrl": "https://libguides.mdx.ac.uk/AI/referencing",
-      "finalUrl": "https://libguides.mdx.ac.uk/AI/referencing",
+      "sourceUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
+      "finalUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
       "sourceTitle": "Referencing AI / Generative AI Personal Communications - Generative AI",
       "sourceLanguage": "en",
       "contentHash": "12bed11aa51c26991b2b9cfe97b24b766056acff37b729d40487c0d8f877a786",
@@ -547,7 +549,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw://normalized/uapt-middlesex-university-20260520/mdx-generative-ai-referencing",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -675,7 +678,7 @@
       ],
       "citation": {
         "citationTitle": "Referencing AI / Generative AI Personal Communications - Generative AI",
-        "sourceUrl": "https://libguides.mdx.ac.uk/AI/referencing",
+        "sourceUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/middlesex-university.json",
         "publisher": "Middlesex University Library and Student Support",
         "retrievedAt": "2026-05-20T14:13:00.000Z",
@@ -795,8 +798,8 @@
       "evidenceId": "ev-mdx-ai-generated-work-integrity",
       "claimId": "claim-mdx-ai-generated-work-integrity",
       "sourceSnapshotId": "ss-mdx-generative-ai-referencing",
-      "sourceUrl": "https://libguides.mdx.ac.uk/AI/referencing",
-      "finalUrl": "https://libguides.mdx.ac.uk/AI/referencing",
+      "sourceUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
+      "finalUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
       "sourceTitle": "Referencing AI / Generative AI Personal Communications - Generative AI",
       "sourceLanguage": "en",
       "snapshotHash": "12bed11aa51c26991b2b9cfe97b24b766056acff37b729d40487c0d8f877a786",
@@ -806,7 +809,7 @@
       "relevance": 0.97,
       "citation": {
         "citationTitle": "Referencing AI / Generative AI Personal Communications - Generative AI",
-        "sourceUrl": "https://libguides.mdx.ac.uk/AI/referencing",
+        "sourceUrl": "https://libguides.mdx.ac.uk/AI/mdxaiusage",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/middlesex-university.json",
         "publisher": "Middlesex University Library and Student Support",
         "retrievedAt": "2026-05-20T14:13:00.000Z",

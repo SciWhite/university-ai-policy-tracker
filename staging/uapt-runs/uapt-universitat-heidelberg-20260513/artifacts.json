@@ -91,8 +91,8 @@
       "sourceCandidateId": "sc-hd-teaching-ai-page",
       "entityType": "university",
       "entitySlug": "universitat-heidelberg",
-      "sourceUrl": "https://www.heiskills.uni-heidelberg.de/de/ueber-uns/lehren-und-lernen/fuer-lehrende/kuenstliche-intelligenz-in-der-lehre",
-      "finalUrl": "https://www.heiskills.uni-heidelberg.de/de/ueber-uns/lehren-und-lernen/fuer-lehrende/kuenstliche-intelligenz-in-der-lehre",
+      "sourceUrl": "https://heiskills.uni-heidelberg.de/de/kuenstliche-intelligenz-in-der-lehre",
+      "finalUrl": "https://heiskills.uni-heidelberg.de/de/kuenstliche-intelligenz-in-der-lehre",
       "sourceTitle": "Künstliche Intelligenz in der Lehre - heiSKILLS",
       "sourceLanguage": "de",
       "sourceType": "teaching_guidance",
@@ -104,8 +104,9 @@
       "policySpecificityScore": 0.9,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-13T13:03:54.000Z",
-      "verificationNotes": "Official heiSKILLS teaching page that republishes the university-wide AI framework and links the German and English guideline PDFs.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official heiSKILLS teaching page that republishes the university-wide AI framework and links the German and English guideline PDFs. URL relocated from https://www.heiskills.uni-heidelberg.de/de/ueber-uns/lehren-und-lernen/fuer-lehrende/kuenstliche-intelligenz-in-der-lehre on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_candidate",
@@ -375,7 +376,7 @@
           "entityType": "university",
           "entitySlug": "universitat-heidelberg",
           "sourceCandidateId": "sc-hd-teaching-ai-page",
-          "sourceUrl": "https://www.heiskills.uni-heidelberg.de/de/ueber-uns/lehren-und-lernen/fuer-lehrende/kuenstliche-intelligenz-in-der-lehre",
+          "sourceUrl": "https://heiskills.uni-heidelberg.de/de/kuenstliche-intelligenz-in-der-lehre",
           "sourceTitle": "Künstliche Intelligenz in der Lehre - heiSKILLS",
           "sourceLanguage": "de",
           "allowedFetchModes": [
@@ -454,8 +455,8 @@
       "runId": "uapt-universitat-heidelberg-20260513",
       "fetchAttemptId": "fa-hd-teaching-ai-page",
       "sourceCandidateId": "sc-hd-teaching-ai-page",
-      "sourceUrl": "https://www.heiskills.uni-heidelberg.de/de/ueber-uns/lehren-und-lernen/fuer-lehrende/kuenstliche-intelligenz-in-der-lehre",
-      "finalUrl": "https://www.heiskills.uni-heidelberg.de/de/ueber-uns/lehren-und-lernen/fuer-lehrende/kuenstliche-intelligenz-in-der-lehre",
+      "sourceUrl": "https://heiskills.uni-heidelberg.de/de/kuenstliche-intelligenz-in-der-lehre",
+      "finalUrl": "https://heiskills.uni-heidelberg.de/de/kuenstliche-intelligenz-in-der-lehre",
       "attemptedAt": "2026-05-13T13:00:30.000Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -465,7 +466,8 @@
       "outcome": "success",
       "durationMs": 26385,
       "contentHash": "793c4dafc44a4fb90d4fcf5596fa93edfb607fe8e16774208597a2c26946a3d4",
-      "normalizedTextStorageKey": "firecrawl:019e216d-e700-707c-ac1b-684ff6e42158"
+      "normalizedTextStorageKey": "firecrawl:019e216d-e700-707c-ac1b-684ff6e42158",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "fetch_attempt",
@@ -530,8 +532,8 @@
       "sourceSnapshotId": "ss-hd-teaching-ai-page",
       "sourceCandidateId": "sc-hd-teaching-ai-page",
       "fetchAttemptId": "fa-hd-teaching-ai-page",
-      "sourceUrl": "https://www.heiskills.uni-heidelberg.de/de/ueber-uns/lehren-und-lernen/fuer-lehrende/kuenstliche-intelligenz-in-der-lehre",
-      "finalUrl": "https://www.heiskills.uni-heidelberg.de/de/ueber-uns/lehren-und-lernen/fuer-lehrende/kuenstliche-intelligenz-in-der-lehre",
+      "sourceUrl": "https://heiskills.uni-heidelberg.de/de/kuenstliche-intelligenz-in-der-lehre",
+      "finalUrl": "https://heiskills.uni-heidelberg.de/de/kuenstliche-intelligenz-in-der-lehre",
       "sourceTitle": "Künstliche Intelligenz in der Lehre - heiSKILLS",
       "sourceLanguage": "de",
       "contentHash": "793c4dafc44a4fb90d4fcf5596fa93edfb607fe8e16774208597a2c26946a3d4",
@@ -539,7 +541,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "firecrawl:019e216d-e700-707c-ac1b-684ff6e42158",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_snapshot",

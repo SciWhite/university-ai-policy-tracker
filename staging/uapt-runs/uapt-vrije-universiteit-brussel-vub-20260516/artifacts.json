@@ -108,8 +108,8 @@
       "sourceCandidateId": "src-vub-oer-2025-2026-pdf",
       "entityType": "university",
       "entitySlug": "vrije-universiteit-brussel-vub",
-      "sourceUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
-      "finalUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
+      "sourceUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
+      "finalUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
       "sourceTitle": "Education and Examination Regulations 2025-2026",
       "sourceLanguage": "en",
       "sourceType": "formal_policy",
@@ -121,8 +121,9 @@
       "policySpecificityScore": 0.91,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-16T05:09:00.000Z",
-      "verificationNotes": "Official VUB education regulations PDF; Article 118 directly addresses generative AI in the context of irregularities.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official VUB education regulations PDF; Article 118 directly addresses generative AI in the context of irregularities. URL relocated from https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -243,7 +244,7 @@
           "entityType": "university",
           "entitySlug": "vrije-universiteit-brussel-vub",
           "sourceCandidateId": "src-vub-oer-2025-2026-pdf",
-          "sourceUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
+          "sourceUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
           "sourceTitle": "Education and Examination Regulations 2025-2026",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -307,8 +308,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fetch-vub-oer-2025-2026-pdf",
       "sourceCandidateId": "src-vub-oer-2025-2026-pdf",
-      "sourceUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
-      "finalUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
+      "sourceUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
+      "finalUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
       "attemptedAt": "2026-05-16T05:09:00.000Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -318,7 +319,8 @@
       "outcome": "success",
       "durationMs": 6174,
       "contentHash": "9c36448fe92b2c14882c1e58152cc38b4829e076b082d82ba0978350f7657bd5",
-      "normalizedTextStorageKey": "staging/uapt-runs/uapt-vrije-universiteit-brussel-vub-20260516/snapshots/vub-oer-2025-2026-pdf.txt"
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-vrije-universiteit-brussel-vub-20260516/snapshots/vub-oer-2025-2026-pdf.txt",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -363,8 +365,8 @@
       "sourceSnapshotId": "snap-vub-oer-2025-2026-pdf",
       "sourceCandidateId": "src-vub-oer-2025-2026-pdf",
       "fetchAttemptId": "fetch-vub-oer-2025-2026-pdf",
-      "sourceUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
-      "finalUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
+      "sourceUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
+      "finalUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
       "sourceTitle": "Education and Examination Regulations 2025-2026",
       "sourceLanguage": "en",
       "contentHash": "9c36448fe92b2c14882c1e58152cc38b4829e076b082d82ba0978350f7657bd5",
@@ -372,7 +374,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-vrije-universiteit-brussel-vub-20260516/snapshots/vub-oer-2025-2026-pdf.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -660,7 +663,7 @@
       ],
       "citation": {
         "citationTitle": "Education and Examination Regulations 2025-2026",
-        "sourceUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
+        "sourceUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/vrije-universiteit-brussel-vub.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/vrije-universiteit-brussel-vub",
         "publisher": "Vrije Universiteit Brussel",
@@ -677,8 +680,8 @@
       "evidenceId": "ev-vub-student-ai-irregularity",
       "claimId": "claim-vub-student-ai-irregularity",
       "sourceSnapshotId": "snap-vub-oer-2025-2026-pdf",
-      "sourceUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
-      "finalUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
+      "sourceUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
+      "finalUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
       "sourceTitle": "Education and Examination Regulations 2025-2026",
       "sourceLanguage": "en",
       "snapshotHash": "9c36448fe92b2c14882c1e58152cc38b4829e076b082d82ba0978350f7657bd5",
@@ -688,7 +691,7 @@
       "relevance": 0.98,
       "citation": {
         "citationTitle": "Education and Examination Regulations 2025-2026",
-        "sourceUrl": "https://www.vub.be/sites/default/files/2025-07/2025_Reglementen_OER_2025-2026_ENG.pdf",
+        "sourceUrl": "https://www.vub.be/sites/default/files/2025-08/2025_Reglementen_OER_2025-2026_ENG.pdf",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/vrije-universiteit-brussel-vub.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/vrije-universiteit-brussel-vub",
         "publisher": "Vrije Universiteit Brussel",

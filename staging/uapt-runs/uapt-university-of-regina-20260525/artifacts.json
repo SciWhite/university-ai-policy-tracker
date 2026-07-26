@@ -112,7 +112,7 @@
           "entityType": "university",
           "entitySlug": "university-of-regina",
           "sourceCandidateId": "sc-uregina-ctl-genai-guidelines",
-          "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+          "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
           "sourceTitle": "Generative AI at the U of Regina",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -222,8 +222,8 @@
       "sourceCandidateId": "sc-uregina-ctl-genai-guidelines",
       "entityType": "university",
       "entitySlug": "university-of-regina",
-      "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
-      "finalUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+      "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
+      "finalUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
       "sourceTitle": "Generative AI at the U of Regina",
       "sourceLanguage": "en",
       "sourceType": "teaching_guidance",
@@ -235,8 +235,9 @@
       "policySpecificityScore": 0.92,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-25T06:24:19.000Z",
-      "verificationNotes": "Official Centre for Teaching and Learning page labelled guidelines for faculty and instructors, last updated August 23, 2023.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official Centre for Teaching and Learning page labelled guidelines for faculty and instructors, last updated August 23, 2023. URL relocated from https://ctl.uregina.ca/generative-ai-at-the-university-of-regina on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -406,8 +407,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-uregina-ctl-genai-guidelines-firecrawl",
       "sourceCandidateId": "sc-uregina-ctl-genai-guidelines",
-      "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
-      "finalUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+      "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
+      "finalUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
       "attemptedAt": "2026-05-25T06:24:19.000Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -417,7 +418,8 @@
       "outcome": "success",
       "durationMs": 3306,
       "contentHash": "165d1213815a7524b0561aca56313418d2c6d09eaf8986654cc21f5da6bc5c73",
-      "normalizedTextStorageKey": "hash-only:165d1213815a7524b0561aca56313418d2c6d09eaf8986654cc21f5da6bc5c73"
+      "normalizedTextStorageKey": "hash-only:165d1213815a7524b0561aca56313418d2c6d09eaf8986654cc21f5da6bc5c73",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -500,8 +502,8 @@
       "sourceSnapshotId": "ss-uregina-ctl-genai-guidelines",
       "sourceCandidateId": "sc-uregina-ctl-genai-guidelines",
       "fetchAttemptId": "fa-uregina-ctl-genai-guidelines-firecrawl",
-      "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
-      "finalUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+      "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
+      "finalUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
       "sourceTitle": "Generative AI at the U of Regina",
       "sourceLanguage": "en",
       "contentHash": "165d1213815a7524b0561aca56313418d2c6d09eaf8986654cc21f5da6bc5c73",
@@ -509,7 +511,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "hash-only:165d1213815a7524b0561aca56313418d2c6d09eaf8986654cc21f5da6bc5c73",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -681,7 +684,7 @@
       ],
       "citation": {
         "citationTitle": "Generative AI at the U of Regina",
-        "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+        "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-regina.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-regina",
         "publisher": "University of Regina Centre for Teaching and Learning",
@@ -710,7 +713,7 @@
       ],
       "citation": {
         "citationTitle": "Generative AI at the U of Regina",
-        "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+        "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-regina.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-regina",
         "publisher": "University of Regina Centre for Teaching and Learning",
@@ -898,8 +901,8 @@
       "evidenceId": "ev-uregina-instructor-ai-guidelines",
       "claimId": "claim-uregina-instructor-ai-guidelines",
       "sourceSnapshotId": "ss-uregina-ctl-genai-guidelines",
-      "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
-      "finalUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+      "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
+      "finalUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
       "sourceTitle": "Generative AI at the U of Regina",
       "sourceLanguage": "en",
       "snapshotHash": "165d1213815a7524b0561aca56313418d2c6d09eaf8986654cc21f5da6bc5c73",
@@ -910,7 +913,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "Generative AI at the U of Regina",
-        "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+        "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-regina.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-regina",
         "publisher": "University of Regina Centre for Teaching and Learning",
@@ -926,8 +929,8 @@
       "evidenceId": "ev-uregina-ai-detection-tools",
       "claimId": "claim-uregina-ai-detection-tools",
       "sourceSnapshotId": "ss-uregina-ctl-genai-guidelines",
-      "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
-      "finalUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+      "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
+      "finalUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
       "sourceTitle": "Generative AI at the U of Regina",
       "sourceLanguage": "en",
       "snapshotHash": "165d1213815a7524b0561aca56313418d2c6d09eaf8986654cc21f5da6bc5c73",
@@ -938,7 +941,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "Generative AI at the U of Regina",
-        "sourceUrl": "https://ctl.uregina.ca/generative-ai-at-the-university-of-regina",
+        "sourceUrl": "https://www.uregina.ca/generative-ai-hub/instructor-resources.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-regina.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-regina",
         "publisher": "University of Regina Centre for Teaching and Learning",

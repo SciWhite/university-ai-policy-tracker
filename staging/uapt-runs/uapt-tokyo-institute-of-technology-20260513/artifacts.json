@@ -72,8 +72,9 @@
       "policySpecificityScore": 0.82,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-13T14:11:22.000Z",
-      "verificationNotes": "Official Science Tokyo policies page listing the generative AI utilization guideline PDF under university policies.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official Science Tokyo policies page listing the generative AI utilization guideline PDF under university policies. URL relocated from https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3 on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_candidate",
@@ -82,8 +83,8 @@
       "sourceCandidateId": "sc-tokyotech-isct-genai-guideline-pdf",
       "entityType": "university",
       "entitySlug": "tokyo-institute-of-technology",
-      "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
-      "finalUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "finalUrl": "https://www.isct.ac.jp/ja/001/about/policies",
       "sourceTitle": "東京科学大学 生成 AI 利用ガイドライン",
       "sourceLanguage": "ja",
       "sourceType": "official_pdf",
@@ -95,8 +96,9 @@
       "policySpecificityScore": 0.97,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-13T14:11:22.000Z",
-      "verificationNotes": "Current official Science Tokyo PDF guideline revised 2025-09-05, linked from the official policies page and covering education, research, clinical, patent, security, and responsibility considerations for generative AI.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Current official Science Tokyo PDF guideline revised 2025-09-05, linked from the official policies page and covering education, research, clinical, patent, security, and responsibility considerations for generative AI. URL relocated from https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3 on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_candidate",
@@ -307,7 +309,7 @@
           "entityType": "university",
           "entitySlug": "tokyo-institute-of-technology",
           "sourceCandidateId": "sc-tokyotech-isct-genai-guideline-pdf",
-          "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+          "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
           "sourceTitle": "東京科学大学 生成 AI 利用ガイドライン",
           "sourceLanguage": "ja",
           "allowedFetchModes": [
@@ -366,7 +368,8 @@
       "outcome": "success",
       "durationMs": 5109,
       "contentHash": "3ad356bb7d7ca2abcdc08a9c53b7df2da4365bf6e96e1ab404d53285f943e9d0",
-      "normalizedTextStorageKey": "openclaw://normalized/uapt-tokyo-institute-of-technology-20260513/isct-policies.md"
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-tokyo-institute-of-technology-20260513/isct-policies.md",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "fetch_attempt",
@@ -374,8 +377,8 @@
       "runId": "uapt-tokyo-institute-of-technology-20260513",
       "fetchAttemptId": "fa-tokyotech-isct-genai-guideline-firecrawl",
       "sourceCandidateId": "sc-tokyotech-isct-genai-guideline-pdf",
-      "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
-      "finalUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "finalUrl": "https://www.isct.ac.jp/ja/001/about/policies",
       "attemptedAt": "2026-05-13T14:06:55.000Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -385,7 +388,8 @@
       "outcome": "success",
       "durationMs": 11462,
       "contentHash": "7092cc6e85742fcf3af563fd1f7b795618e084da3dc973a2577cce68959dcb64",
-      "normalizedTextStorageKey": "openclaw://normalized/uapt-tokyo-institute-of-technology-20260513/isct-genai-guideline.md"
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-tokyo-institute-of-technology-20260513/isct-genai-guideline.md",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "fetch_attempt",
@@ -422,7 +426,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw://normalized/uapt-tokyo-institute-of-technology-20260513/isct-policies.md",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_snapshot",
@@ -431,8 +436,8 @@
       "sourceSnapshotId": "ss-tokyotech-isct-genai-guideline",
       "sourceCandidateId": "sc-tokyotech-isct-genai-guideline-pdf",
       "fetchAttemptId": "fa-tokyotech-isct-genai-guideline-firecrawl",
-      "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
-      "finalUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "finalUrl": "https://www.isct.ac.jp/ja/001/about/policies",
       "sourceTitle": "東京科学大学 生成 AI 利用ガイドライン",
       "sourceLanguage": "ja",
       "contentHash": "7092cc6e85742fcf3af563fd1f7b795618e084da3dc973a2577cce68959dcb64",
@@ -440,7 +445,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw://normalized/uapt-tokyo-institute-of-technology-20260513/isct-genai-guideline.md",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_snapshot",
@@ -507,7 +513,7 @@
       ],
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -536,7 +542,7 @@
       ],
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -565,7 +571,7 @@
       ],
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -594,7 +600,7 @@
       ],
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -623,7 +629,7 @@
       ],
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -652,7 +658,7 @@
       ],
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -698,8 +704,8 @@
       "evidenceId": "ev-tokyotech-genai-guideline-scope",
       "claimId": "cl-tokyotech-genai-guideline-scope",
       "sourceSnapshotId": "ss-tokyotech-isct-genai-guideline",
-      "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
-      "finalUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "finalUrl": "https://www.isct.ac.jp/ja/001/about/policies",
       "sourceTitle": "東京科学大学 生成 AI 利用ガイドライン",
       "sourceLanguage": "ja",
       "snapshotHash": "7092cc6e85742fcf3af563fd1f7b795618e084da3dc973a2577cce68959dcb64",
@@ -711,7 +717,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -727,8 +733,8 @@
       "evidenceId": "ev-tokyotech-genai-not-total-ban",
       "claimId": "cl-tokyotech-genai-not-total-ban",
       "sourceSnapshotId": "ss-tokyotech-isct-genai-guideline",
-      "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
-      "finalUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "finalUrl": "https://www.isct.ac.jp/ja/001/about/policies",
       "sourceTitle": "東京科学大学 生成 AI 利用ガイドライン",
       "sourceLanguage": "ja",
       "snapshotHash": "7092cc6e85742fcf3af563fd1f7b795618e084da3dc973a2577cce68959dcb64",
@@ -740,7 +746,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -756,8 +762,8 @@
       "evidenceId": "ev-tokyotech-genai-confidential-info",
       "claimId": "cl-tokyotech-genai-confidential-info",
       "sourceSnapshotId": "ss-tokyotech-isct-genai-guideline",
-      "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
-      "finalUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "finalUrl": "https://www.isct.ac.jp/ja/001/about/policies",
       "sourceTitle": "東京科学大学 生成 AI 利用ガイドライン",
       "sourceLanguage": "ja",
       "snapshotHash": "7092cc6e85742fcf3af563fd1f7b795618e084da3dc973a2577cce68959dcb64",
@@ -769,7 +775,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -785,8 +791,8 @@
       "evidenceId": "ev-tokyotech-genai-output-responsibility",
       "claimId": "cl-tokyotech-genai-output-responsibility",
       "sourceSnapshotId": "ss-tokyotech-isct-genai-guideline",
-      "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
-      "finalUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "finalUrl": "https://www.isct.ac.jp/ja/001/about/policies",
       "sourceTitle": "東京科学大学 生成 AI 利用ガイドライン",
       "sourceLanguage": "ja",
       "snapshotHash": "7092cc6e85742fcf3af563fd1f7b795618e084da3dc973a2577cce68959dcb64",
@@ -798,7 +804,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -814,8 +820,8 @@
       "evidenceId": "ev-tokyotech-instructor-guidance-syllabus",
       "claimId": "cl-tokyotech-instructor-guidance-syllabus",
       "sourceSnapshotId": "ss-tokyotech-isct-genai-guideline",
-      "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
-      "finalUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "finalUrl": "https://www.isct.ac.jp/ja/001/about/policies",
       "sourceTitle": "東京科学大学 生成 AI 利用ガイドライン",
       "sourceLanguage": "ja",
       "snapshotHash": "7092cc6e85742fcf3af563fd1f7b795618e084da3dc973a2577cce68959dcb64",
@@ -827,7 +833,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",
@@ -843,8 +849,8 @@
       "evidenceId": "ev-tokyotech-research-journal-disclosure",
       "claimId": "cl-tokyotech-research-journal-disclosure",
       "sourceSnapshotId": "ss-tokyotech-isct-genai-guideline",
-      "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
-      "finalUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+      "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
+      "finalUrl": "https://www.isct.ac.jp/ja/001/about/policies",
       "sourceTitle": "東京科学大学 生成 AI 利用ガイドライン",
       "sourceLanguage": "ja",
       "snapshotHash": "7092cc6e85742fcf3af563fd1f7b795618e084da3dc973a2577cce68959dcb64",
@@ -856,7 +862,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "東京科学大学 生成 AI 利用ガイドライン",
-        "sourceUrl": "https://www.isct.ac.jp/plugins/cms/component_download_file.php?type=1&pageId=2886&contentsId=&contentsDataId=&prevId=&key=4901c445de3a749e41bcb8c8b6219bcf.pdf&fileName=%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%20%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3",
+        "sourceUrl": "https://www.isct.ac.jp/ja/001/about/policies",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/tokyo-institute-of-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/tokyo-institute-of-technology",
         "publisher": "Institute of Science Tokyo",

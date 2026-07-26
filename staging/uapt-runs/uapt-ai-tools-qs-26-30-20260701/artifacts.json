@@ -129,7 +129,7 @@
           "entityType": "university",
           "entitySlug": "mcgill-university",
           "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
-          "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+          "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
           "sourceTitle": "AI tools at McGill | IT Services",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -590,8 +590,8 @@
       "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
       "entityType": "university",
       "entitySlug": "mcgill-university",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "sourceType": "approved_tools",
@@ -602,8 +602,9 @@
       "policySpecificityScore": 0.95,
       "verificationStatus": "verified",
       "verifiedAt": "2026-07-01T00:00:00.000Z",
-      "verificationNotes": "Added by AI tools artifact rebuild from staged official source evidence.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Added by AI tools artifact rebuild from staged official source evidence. URL relocated from https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill on 2026-07-27 after link-health repair; content match verified (search_result_only).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -611,8 +612,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-mcgill-university-f8155cb17c9e",
       "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "attemptedAt": "2026-07-01T00:00:00.000Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -622,7 +623,8 @@
       "outcome": "success",
       "durationMs": 0,
       "contentHash": "49bdf9ca3c3e0ed24dd4aafdda8fbcf0edac48429094c66cc6c66348ab838d6e",
-      "normalizedTextStorageKey": "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701/snapshots/sc-mcgill-university-f8155cb17c9e.txt"
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701/snapshots/sc-mcgill-university-f8155cb17c9e.txt",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -1662,7 +1664,7 @@
       ],
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -1680,8 +1682,8 @@
       "sourceSnapshotId": "ss-mcgill-university-microsoft-copilot-5-1",
       "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
       "fetchAttemptId": "fa-mcgill-university-f8155cb17c9e",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "contentHash": "49bdf9ca3c3e0ed24dd4aafdda8fbcf0edac48429094c66cc6c66348ab838d6e",
@@ -1689,7 +1691,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701/snapshots/ss-mcgill-university-microsoft-copilot-5-1.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -1698,8 +1701,8 @@
       "evidenceId": "ev-mcgill-university-microsoft-copilot-5-1",
       "claimId": "cl-mcgill-university-microsoft-copilot-5",
       "sourceSnapshotId": "ss-mcgill-university-microsoft-copilot-5-1",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "snapshotHash": "49bdf9ca3c3e0ed24dd4aafdda8fbcf0edac48429094c66cc6c66348ab838d6e",
@@ -1710,7 +1713,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -1750,7 +1753,7 @@
       ],
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -1768,8 +1771,8 @@
       "sourceSnapshotId": "ss-mcgill-university-synthesia-6-1",
       "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
       "fetchAttemptId": "fa-mcgill-university-f8155cb17c9e",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "contentHash": "5b8d9eecd46b17cdc94a38fb1f0ac85f676980c01bb9a78980ac0e076063cbbf",
@@ -1777,7 +1780,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701/snapshots/ss-mcgill-university-synthesia-6-1.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -1786,8 +1790,8 @@
       "evidenceId": "ev-mcgill-university-synthesia-6-1",
       "claimId": "cl-mcgill-university-synthesia-6",
       "sourceSnapshotId": "ss-mcgill-university-synthesia-6-1",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "snapshotHash": "5b8d9eecd46b17cdc94a38fb1f0ac85f676980c01bb9a78980ac0e076063cbbf",
@@ -1798,7 +1802,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -1838,7 +1842,7 @@
       ],
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -1856,8 +1860,8 @@
       "sourceSnapshotId": "ss-mcgill-university-chatgpt-7-1",
       "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
       "fetchAttemptId": "fa-mcgill-university-f8155cb17c9e",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "contentHash": "6e8e9ac9b4ada6712144c0c04d6829025b6a821adb4e97dcde85c3f10434bd47",
@@ -1865,7 +1869,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701/snapshots/ss-mcgill-university-chatgpt-7-1.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -1874,8 +1879,8 @@
       "evidenceId": "ev-mcgill-university-chatgpt-7-1",
       "claimId": "cl-mcgill-university-chatgpt-7",
       "sourceSnapshotId": "ss-mcgill-university-chatgpt-7-1",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "snapshotHash": "6e8e9ac9b4ada6712144c0c04d6829025b6a821adb4e97dcde85c3f10434bd47",
@@ -1886,7 +1891,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -1926,7 +1931,7 @@
       ],
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -1944,8 +1949,8 @@
       "sourceSnapshotId": "ss-mcgill-university-copilot-studio-8-1",
       "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
       "fetchAttemptId": "fa-mcgill-university-f8155cb17c9e",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "contentHash": "c53b9412ceb8c3a6a0ec50553ff6eb5da9bf4086115693c88c6a4e46de0cbc6b",
@@ -1953,7 +1958,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701/snapshots/ss-mcgill-university-copilot-studio-8-1.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -1962,8 +1968,8 @@
       "evidenceId": "ev-mcgill-university-copilot-studio-8-1",
       "claimId": "cl-mcgill-university-copilot-studio-8",
       "sourceSnapshotId": "ss-mcgill-university-copilot-studio-8-1",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "snapshotHash": "c53b9412ceb8c3a6a0ec50553ff6eb5da9bf4086115693c88c6a4e46de0cbc6b",
@@ -1974,7 +1980,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -2014,7 +2020,7 @@
       ],
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -2032,8 +2038,8 @@
       "sourceSnapshotId": "ss-mcgill-university-teams-premium-9-1",
       "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
       "fetchAttemptId": "fa-mcgill-university-f8155cb17c9e",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "contentHash": "eb250bcfb050523632282fb4879e5767e8d08160d41a3d66909b809086350e8f",
@@ -2041,7 +2047,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701/snapshots/ss-mcgill-university-teams-premium-9-1.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -2050,8 +2057,8 @@
       "evidenceId": "ev-mcgill-university-teams-premium-9-1",
       "claimId": "cl-mcgill-university-teams-premium-9",
       "sourceSnapshotId": "ss-mcgill-university-teams-premium-9-1",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "snapshotHash": "eb250bcfb050523632282fb4879e5767e8d08160d41a3d66909b809086350e8f",
@@ -2062,7 +2069,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -2102,7 +2109,7 @@
       ],
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -2120,8 +2127,8 @@
       "sourceSnapshotId": "ss-mcgill-university-deepseek-10-1",
       "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
       "fetchAttemptId": "fa-mcgill-university-f8155cb17c9e",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "contentHash": "60b91f8f1774a08254f6d2f5f87faf96b8ba8721ec2bc029ef2bbf2cbe9a3608",
@@ -2129,7 +2136,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701/snapshots/ss-mcgill-university-deepseek-10-1.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -2138,8 +2146,8 @@
       "evidenceId": "ev-mcgill-university-deepseek-10-1",
       "claimId": "cl-mcgill-university-deepseek-10",
       "sourceSnapshotId": "ss-mcgill-university-deepseek-10-1",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "snapshotHash": "60b91f8f1774a08254f6d2f5f87faf96b8ba8721ec2bc029ef2bbf2cbe9a3608",
@@ -2150,7 +2158,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -2190,7 +2198,7 @@
       ],
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",
@@ -2208,8 +2216,8 @@
       "sourceSnapshotId": "ss-mcgill-university-read-ai-11-1",
       "sourceCandidateId": "sc-mcgill-university-f8155cb17c9e",
       "fetchAttemptId": "fa-mcgill-university-f8155cb17c9e",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "contentHash": "a1c268d342472a56539ad8ecfe9544cbc09597566f5b89daa3268d2fdcd669ca",
@@ -2217,7 +2225,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701/snapshots/ss-mcgill-university-read-ai-11-1.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -2226,8 +2235,8 @@
       "evidenceId": "ev-mcgill-university-read-ai-11-1",
       "claimId": "cl-mcgill-university-read-ai-11",
       "sourceSnapshotId": "ss-mcgill-university-read-ai-11-1",
-      "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-      "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+      "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+      "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
       "sourceTitle": "AI tools at McGill | IT Services",
       "sourceLanguage": "en",
       "snapshotHash": "a1c268d342472a56539ad8ecfe9544cbc09597566f5b89daa3268d2fdcd669ca",
@@ -2238,7 +2247,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI tools at McGill | IT Services",
-        "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+        "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/mcgill-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/mcgill-university",
         "publisher": "McGill University",

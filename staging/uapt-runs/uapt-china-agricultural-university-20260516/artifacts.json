@@ -60,8 +60,8 @@
       "sourceCandidateId": "sc-cau-grad-genai-thesis-integrity-reminder",
       "entityType": "university",
       "entitySlug": "china-agricultural-university",
-      "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
-      "finalUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+      "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
+      "finalUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
       "sourceTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
       "sourceLanguage": "zh-CN",
       "sourceType": "academic_integrity",
@@ -73,8 +73,9 @@
       "policySpecificityScore": 0.93,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-17T01:33:18Z",
-      "verificationNotes": "The page is hosted by the China Agricultural University Graduate School on yz.cau.edu.cn, appears under 学位论文写作规范, names contentSource as 研究生院, and directly sets AI-use integrity reminders for graduate degree theses or degree-application practice成果.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "The page is hosted by the China Agricultural University Graduate School on yz.cau.edu.cn, appears under 学位论文写作规范, names contentSource as 研究生院, and directly sets AI-use integrity reminders for graduate degree theses or degree-application practice成果. URL relocated from https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_candidate",
@@ -189,7 +190,7 @@
           "entityType": "university",
           "entitySlug": "china-agricultural-university",
           "sourceCandidateId": "sc-cau-grad-genai-thesis-integrity-reminder",
-          "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+          "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
           "sourceTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
           "sourceLanguage": "zh-CN",
           "allowedFetchModes": [
@@ -235,8 +236,8 @@
       "runId": "uapt-china-agricultural-university-20260516",
       "fetchAttemptId": "fa-cau-grad-genai-thesis-integrity-reminder",
       "sourceCandidateId": "sc-cau-grad-genai-thesis-integrity-reminder",
-      "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
-      "finalUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+      "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
+      "finalUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
       "attemptedAt": "2026-05-17T01:33:18Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -246,7 +247,8 @@
       "outcome": "success",
       "durationMs": 8847,
       "contentHash": "27c5d3049215585d897f95813387c4242588486ba44a9a874a99563c9e24c26e",
-      "normalizedTextStorageKey": "openclaw/uapt-china-agricultural-university-20260516/snapshots/ss-cau-grad-genai-thesis-integrity-reminder.txt"
+      "normalizedTextStorageKey": "openclaw/uapt-china-agricultural-university-20260516/snapshots/ss-cau-grad-genai-thesis-integrity-reminder.txt",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "fetch_attempt",
@@ -274,8 +276,8 @@
       "sourceSnapshotId": "ss-cau-grad-genai-thesis-integrity-reminder",
       "sourceCandidateId": "sc-cau-grad-genai-thesis-integrity-reminder",
       "fetchAttemptId": "fa-cau-grad-genai-thesis-integrity-reminder",
-      "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
-      "finalUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+      "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
+      "finalUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
       "sourceTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
       "sourceLanguage": "zh-CN",
       "contentHash": "27c5d3049215585d897f95813387c4242588486ba44a9a874a99563c9e24c26e",
@@ -283,7 +285,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw/uapt-china-agricultural-university-20260516/snapshots/ss-cau-grad-genai-thesis-integrity-reminder.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_snapshot",
@@ -321,7 +324,7 @@
       ],
       "citation": {
         "citationTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
-        "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+        "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/china-agricultural-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/china-agricultural-university",
         "publisher": "中国农业大学研究生院",
@@ -339,8 +342,8 @@
       "evidenceId": "ev-cau-grad-genai-core-content-prohibited",
       "claimId": "claim-cau-grad-genai-core-content-prohibited",
       "sourceSnapshotId": "ss-cau-grad-genai-thesis-integrity-reminder",
-      "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
-      "finalUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+      "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
+      "finalUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
       "sourceTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
       "sourceLanguage": "zh-CN",
       "snapshotHash": "27c5d3049215585d897f95813387c4242588486ba44a9a874a99563c9e24c26e",
@@ -352,7 +355,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
-        "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+        "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/china-agricultural-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/china-agricultural-university",
         "publisher": "中国农业大学研究生院",
@@ -392,7 +395,7 @@
       ],
       "citation": {
         "citationTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
-        "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+        "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/china-agricultural-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/china-agricultural-university",
         "publisher": "中国农业大学研究生院",
@@ -410,8 +413,8 @@
       "evidenceId": "ev-cau-grad-genai-disclosure-registered-tools",
       "claimId": "claim-cau-grad-genai-disclosure-registered-tools",
       "sourceSnapshotId": "ss-cau-grad-genai-thesis-integrity-reminder",
-      "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
-      "finalUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+      "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
+      "finalUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
       "sourceTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
       "sourceLanguage": "zh-CN",
       "snapshotHash": "27c5d3049215585d897f95813387c4242588486ba44a9a874a99563c9e24c26e",
@@ -423,7 +426,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
-        "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+        "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/china-agricultural-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/china-agricultural-university",
         "publisher": "中国农业大学研究生院",
@@ -463,7 +466,7 @@
       ],
       "citation": {
         "citationTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
-        "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+        "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/china-agricultural-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/china-agricultural-university",
         "publisher": "中国农业大学研究生院",
@@ -481,8 +484,8 @@
       "evidenceId": "ev-cau-grad-genai-confidential-data-warning",
       "claimId": "claim-cau-grad-genai-confidential-data-warning",
       "sourceSnapshotId": "ss-cau-grad-genai-thesis-integrity-reminder",
-      "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
-      "finalUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+      "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
+      "finalUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
       "sourceTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
       "sourceLanguage": "zh-CN",
       "snapshotHash": "27c5d3049215585d897f95813387c4242588486ba44a9a874a99563c9e24c26e",
@@ -494,7 +497,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "关于我校研究生在学位论文或申请学位实践成果中合理使用生成式人工智能的诚信提醒",
-        "sourceUrl": "https://yz.cau.edu.cn/art/2025/4/7/art_41482_1097933.html",
+        "sourceUrl": "https://gradsch1.cau.edu.cn/art/2025/4/7/art_53277_1064105.html",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/china-agricultural-university.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/china-agricultural-university",
         "publisher": "中国农业大学研究生院",

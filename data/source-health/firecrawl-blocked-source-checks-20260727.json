@@ -1,0 +1,414 @@
+{
+ "schemaVersion": "uapt-source-health-agent-verification-v1",
+ "generatedAt": "2026-07-27T02:05:00.000Z",
+ "checkedWith": [
+  "firecrawl"
+ ],
+ "requestPolicy": "One fresh Firecrawl scrape per URL, no login/paywall/CAPTCHA bypass; robots-respecting rendered fetch.",
+ "summary": {
+  "total": 20,
+  "firecrawl_verified": 20
+ },
+ "records": [
+  {
+   "sourceUrl": "https://ctl.korea.ac.kr/ctl/about/notice-common.do?articleNo=805534&attachNo=311772&mode=download&totalBoardNo=&totalNoticeYn=",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "404",
+   "entitySlugs": [
+    "korea-university"
+   ],
+   "sourceTitle": "Korea University 2026 AI Utilization Guidelines English",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://ctl.korea.ac.kr/ctl/index.do",
+    "textLength": 2687,
+    "note": "Rendered fetch returned full page content; plain-HTTP 404 is bot-conditional."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://emha.coph.ntu.edu.tw/uploads/law/tw/%E5%81%A5%E7%AE%A1%E6%89%80%E6%95%99%E5%AD%B8%E7%A0%94%E7%A9%B6%E8%A1%8C%E7%82%BA%E5%AE%88%E5%89%87-20250512%E7%99%BC%E5%B8%83.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "404",
+   "entitySlugs": [
+    "national-taiwan-university"
+   ],
+   "sourceTitle": "國立臺灣大學健康政策與管理研究所教學研究行為守則",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://emha.coph.ntu.edu.tw/home.jsp?lang=tw",
+    "textLength": 11396,
+    "note": "Rendered fetch returned full page content; plain-HTTP 404 is bot-conditional."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://ai.tamu.edu/_files/_documents/tamu-cte-genai-syllabus-statement-considerations.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "404",
+   "entitySlugs": [
+    "texas-a-and-m-university"
+   ],
+   "sourceTitle": "Generative AI Syllabus Statement Considerations",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://ai.tamu.edu/_files/_documents/tamu-cte-genai-syllabus-statement-considerations.pdf",
+    "textLength": 14316,
+    "note": "Rendered fetch returned full page content; plain-HTTP 404 is bot-conditional."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://ai.tamu.edu/learn-with-ai/index.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "404",
+   "entitySlugs": [
+    "texas-a-and-m-university"
+   ],
+   "sourceTitle": "Learn With AI | Artificial Intelligence",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://ai.tamu.edu/learn-with-ai/index.html",
+    "textLength": 11221,
+    "note": "Rendered fetch returned full page content; plain-HTTP 404 is bot-conditional."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://ai.tamu.edu/teach-with-ai/detection.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "404",
+   "entitySlugs": [
+    "texas-a-and-m-university"
+   ],
+   "sourceTitle": "AI Detection Tools | Artificial Intelligence",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://ai.tamu.edu/teach-with-ai/detection.html",
+    "textLength": 9372,
+    "note": "Rendered fetch returned full page content; plain-HTTP 404 is bot-conditional."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://ai.tamu.edu/teach-with-ai/use-guidelines-and-ethics.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "404",
+   "entitySlugs": [
+    "texas-a-and-m-university"
+   ],
+   "sourceTitle": "Use Guidelines and Ethics | Artificial Intelligence",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://ai.tamu.edu/teach-with-ai/use-guidelines-and-ethics.html",
+    "textLength": 29810,
+    "note": "Rendered fetch returned full page content; plain-HTTP 404 is bot-conditional."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://www.it.tamu.edu/ai-services/ai-services-comparison.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "404",
+   "entitySlugs": [
+    "texas-a-and-m-university"
+   ],
+   "sourceTitle": "Texas A&M AI Services Comparison | Technology Services",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://www.it.tamu.edu/ai-services/ai-services-comparison.html",
+    "textLength": 3255,
+    "note": "Rendered fetch returned full page content; plain-HTTP 404 is bot-conditional."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://www.it.tamu.edu/ai-services/index.html",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "404",
+   "entitySlugs": [
+    "texas-a-and-m-university"
+   ],
+   "sourceTitle": "AI Services | Technology Services",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://www.it.tamu.edu/ai-services/index.html",
+    "textLength": 10662,
+    "note": "Rendered fetch returned full page content; plain-HTTP 404 is bot-conditional."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://it.mst.edu/ai/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "404",
+   "entitySlugs": [
+    "missouri-university-of-science-and-technology"
+   ],
+   "sourceTitle": "AI at S&T - Information Technology | Missouri S&T",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://brklink.apps.mst.edu/cgi/handler.pl/it.mst.edu/ai/",
+    "textLength": 2512,
+    "note": "Rendered fetch returned full page content; plain-HTTP 404 is bot-conditional."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://its.hku.hk/services/research-computing/artificial-intelligence-ai/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "university-of-hong-kong"
+   ],
+   "sourceTitle": "AI Computing Platform – Research Computing, HKU ITS",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://hpc.hku.hk/ai/",
+    "textLength": 628,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://www.viceprovostundergrad.utoronto.ca/16072-2/teaching-initiatives/generative-artificial-intelligence/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "university-of-toronto"
+   ],
+   "sourceTitle": "Generative Artificial Intelligence in the Classroom: FAQ's",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://www.vptl.utoronto.ca/",
+    "textLength": 4131,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://ctl.gatech.edu/resources/syllabus/policies",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "georgia-institute-of-technology"
+   ],
+   "sourceTitle": "Establishing Course Policies - Center for Teaching and Learning",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://ctl.gatech.edu/policies/",
+    "textLength": 17134,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://teachingcenter.msu.edu/teaching-resources/guidance-on-gen-ai-in-instructional-settings",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "michigan-state-university"
+   ],
+   "sourceTitle": "Guidance on Generative Artificial Intelligence in Instructional Settings",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://ai.msu.edu/",
+    "textLength": 2586,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://ppid.ui.ac.id/wp-content/uploads/2025/09/V2DAFT1.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "universitas-indonesia"
+   ],
+   "sourceTitle": "Daftar Peraturan Rektor Tahun 2025",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://ppid.ui.ac.id/",
+    "textLength": 10476,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://www.aau.edu.et/news/detail?title=AAU~Launches~Orientation~for~Incoming~Students,~Emphasizes~Academic~Discipline",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "addis-ababa-university"
+   ],
+   "sourceTitle": "AAU Launches Orientation for Incoming Students, Emphasizes Academic Discipline",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://www.aau.edu.et/news/detail?title=AAU~Launches~Orientation~for~Incoming~Students,~Emphasizes~Academic~Discipline",
+    "textLength": 4232,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://www.latrobe.edu.au/mylatrobe/using-artificial-intelligence-ai-responsibly/",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "la-trobe-university"
+   ],
+   "sourceTitle": "Using Artificial Intelligence (AI) responsibly",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://www.latrobe.edu.au/mylatrobe/using-artificial-intelligence-ai-responsibly/",
+    "textLength": 20456,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://libguides.sun.ac.za/education/AI",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "stellenbosch-university"
+   ],
+   "sourceTitle": "Academic Integrity & AI - Education - Library guides / Biblioteekgidse at Stellenbosch University",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://libguides.sun.ac.za/c.php?g=1497969&p=11190973",
+    "textLength": 3828,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://u-szeged.hu/oktig/mesterseges/mi-tmutato-szte-hallgato",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "university-of-szeged"
+   ],
+   "sourceTitle": "A mesterséges intelligencia elfogadható és felelős használata a Szegedi Tudományegyetemen",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://u-szeged.hu/download.php?docID=173902",
+    "textLength": 31665,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://u-szeged.hu/oktig/mesterseges/mi-tmutato-szte-oktato",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "university-of-szeged"
+   ],
+   "sourceTitle": "Útmutató a Szegedi Tudományegyetem oktatóinak a generatív mesterséges intelligencia tudatos integrálásához az oktatásban",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://u-szeged.hu/download.php?docID=173903",
+    "textLength": 40410,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  },
+  {
+   "sourceUrl": "https://academicintegrity.wvu.edu/files/d/6f4a1587-ff74-4a15-a2b6-19abcd20c4cb/ai-student-faq.pdf",
+   "status": "firecrawl_verified",
+   "originalHttpStatus": "200_soft_404_suspect",
+   "entitySlugs": [
+    "west-virginia-university"
+   ],
+   "sourceTitle": "Artificial Intelligence Student FAQ",
+   "firecrawl": {
+    "checkedAt": "2026-07-27T02:05:00.000Z",
+    "httpStatus": 200,
+    "metadataStatusCode": 200,
+    "contentType": "text/html",
+    "contentExtracted": true,
+    "finalUrl": "https://provost.wvu.edu/academic-integrity/",
+    "textLength": 1364,
+    "note": "Rendered fetch confirmed live content at the final URL; deep-link redirect is not a removal."
+   },
+   "recommendedAction": "Firecrawl fresh scrape verified this URL after the 2026-07-26 maintenance scan classified it as dead or suspected soft-404."
+  }
+ ]
+}

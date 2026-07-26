@@ -4,8 +4,8 @@
   "runId": "uapt-mcgill-university-20260510",
   "fetchAttemptId": "mcgill-fa-005",
   "sourceCandidateId": "mcgill-ai-tools-approved",
-  "sourceUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
-  "finalUrl": "https://www.mcgill.ca/it/long-distance-authorization-code/ai-tools-mcgill",
+  "sourceUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
+  "finalUrl": "https://www.mcgill.ca/it/ai/ai-tools-mcgill",
   "attemptedAt": "2026-05-10T14:35:00.000Z",
   "fetchMode": "firecrawl",
   "userAgentKind": "firecrawl",
@@ -14,5 +14,6 @@
   "robotsAllowed": true,
   "outcome": "success",
   "contentHash": "8a89030dff58ebc25b045f9ab0dcfaba0f8699625752be03016500f44d392533",
-  "durationMs": 1280
+  "durationMs": 1280,
+  "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
 }

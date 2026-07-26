@@ -309,7 +309,7 @@
       "normalizedValue": "GenAI may support learning; students expected to produce original work and check with teacher before use.",
       "sourceLanguage": "en",
       "confidence": 0.88,
-      "reviewState": "agent_reviewed",
+      "reviewState": "needs_review",
       "evidenceIds": [
         "evidence-squ-ai-original-work"
       ],
@@ -338,7 +338,7 @@
       "normalizedValue": "Incorrect AI use is treated as academic misconduct under SQU academic misconduct handling.",
       "sourceLanguage": "en",
       "confidence": 0.9,
-      "reviewState": "agent_reviewed",
+      "reviewState": "needs_review",
       "evidenceIds": [
         "evidence-squ-ai-misconduct"
       ],
@@ -367,7 +367,7 @@
       "normalizedValue": "Students should critically evaluate AI-generated content before using it.",
       "sourceLanguage": "en",
       "confidence": 0.87,
-      "reviewState": "agent_reviewed",
+      "reviewState": "needs_review",
       "evidenceIds": [
         "evidence-squ-ai-evaluation"
       ],
@@ -396,7 +396,7 @@
       "normalizedValue": "Students intending to use GenAI should discuss it with the teacher and cite AI tool use.",
       "sourceLanguage": "en",
       "confidence": 0.89,
-      "reviewState": "agent_reviewed",
+      "reviewState": "needs_review",
       "evidenceIds": [
         "evidence-squ-ai-citation-transparency"
       ],
@@ -603,6 +603,58 @@
       "trackerMetadataLicense": "CC-BY-4.0",
       "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-sultan-qaboos-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-linkrot-claim-squ-ai-citation-transparency-20260727",
+      "claimId": "claim-squ-ai-citation-transparency",
+      "decision": "needs_changes",
+      "reviewState": "needs_review",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source removed from the public web (https://elearn.squ.edu.om/pluginfile.php/2795003/block_html/content/Academic%20Integrity%20Guide%20for%20Students.pdf); no public official replacement found in the 2026-07-27 link-health repair. Claim needs re-sourcing or deprecation.",
+      "decidedAt": "2026-07-27T02:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-sultan-qaboos-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-linkrot-claim-squ-ai-evaluation-20260727",
+      "claimId": "claim-squ-ai-evaluation",
+      "decision": "needs_changes",
+      "reviewState": "needs_review",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source removed from the public web (https://elearn.squ.edu.om/pluginfile.php/2795003/block_html/content/Academic%20Integrity%20Guide%20for%20Students.pdf); no public official replacement found in the 2026-07-27 link-health repair. Claim needs re-sourcing or deprecation.",
+      "decidedAt": "2026-07-27T02:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-sultan-qaboos-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-linkrot-claim-squ-ai-misconduct-20260727",
+      "claimId": "claim-squ-ai-misconduct",
+      "decision": "needs_changes",
+      "reviewState": "needs_review",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source removed from the public web (https://elearn.squ.edu.om/pluginfile.php/2795003/block_html/content/Academic%20Integrity%20Guide%20for%20Students.pdf); no public official replacement found in the 2026-07-27 link-health repair. Claim needs re-sourcing or deprecation.",
+      "decidedAt": "2026-07-27T02:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-sultan-qaboos-university-20260516",
+      "artifactType": "review_decision",
+      "decisionId": "rd-linkrot-claim-squ-ai-original-work-20260727",
+      "claimId": "claim-squ-ai-original-work",
+      "decision": "needs_changes",
+      "reviewState": "needs_review",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source removed from the public web (https://elearn.squ.edu.om/pluginfile.php/2795003/block_html/content/Academic%20Integrity%20Guide%20for%20Students.pdf); no public official replacement found in the 2026-07-27 link-health repair. Claim needs re-sourcing or deprecation.",
+      "decidedAt": "2026-07-27T02:40:00.000Z"
     }
   ]
 }

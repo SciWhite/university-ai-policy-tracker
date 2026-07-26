@@ -100,7 +100,7 @@
           "entityType": "university",
           "entitySlug": "university-of-california-santa-barbara",
           "sourceCandidateId": "sc-ucsb-writing-program-ai-policy",
-          "sourceUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
+          "sourceUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
           "sourceTitle": "UCSB Writing Program AI Policy",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -242,8 +242,8 @@
       "sourceCandidateId": "sc-ucsb-writing-program-ai-policy",
       "entityType": "university",
       "entitySlug": "university-of-california-santa-barbara",
-      "sourceUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
-      "finalUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
+      "sourceUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
+      "finalUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
       "sourceTitle": "UCSB Writing Program AI Policy",
       "sourceLanguage": "en",
       "sourceType": "teaching_guidance",
@@ -255,8 +255,9 @@
       "policySpecificityScore": 0.84,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-15T04:40:00.000Z",
-      "verificationNotes": "Official UCSB Writing Program page scoped to writing instruction and AI writing technology policy.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official UCSB Writing Program page scoped to writing instruction and AI writing technology policy. URL relocated from https://www.writing.ucsb.edu/resources/faculty/ai-policy on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -489,8 +490,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-ucsb-writing-program-ai-policy",
       "sourceCandidateId": "sc-ucsb-writing-program-ai-policy",
-      "sourceUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
-      "finalUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
+      "sourceUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
+      "finalUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
       "attemptedAt": "2026-05-15T04:40:00.000Z",
       "fetchMode": "http",
       "userAgentKind": "default",
@@ -499,7 +500,8 @@
       "robotsAllowed": true,
       "outcome": "success",
       "contentHash": "5c44eec81eb5e2ef4116c246b42c699252550347c99e4c6f6c4708eb8fb19742",
-      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-california-santa-barbara-20260515/snapshots/writing-program-ai-policy.normalized.txt"
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-california-santa-barbara-20260515/snapshots/writing-program-ai-policy.normalized.txt",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -598,8 +600,8 @@
       "sourceSnapshotId": "ss-ucsb-writing-program-ai-policy",
       "sourceCandidateId": "sc-ucsb-writing-program-ai-policy",
       "fetchAttemptId": "fa-ucsb-writing-program-ai-policy",
-      "sourceUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
-      "finalUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
+      "sourceUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
+      "finalUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
       "sourceTitle": "UCSB Writing Program AI Policy",
       "sourceLanguage": "en",
       "contentHash": "5c44eec81eb5e2ef4116c246b42c699252550347c99e4c6f6c4708eb8fb19742",
@@ -607,7 +609,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-california-santa-barbara-20260515/snapshots/writing-program-ai-policy.normalized.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -888,7 +891,7 @@
       ],
       "citation": {
         "citationTitle": "UCSB Writing Program AI Policy",
-        "sourceUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
+        "sourceUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-california-santa-barbara.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-california-santa-barbara",
         "publisher": "University of California, Santa Barbara",
@@ -1167,8 +1170,8 @@
       "evidenceId": "ev-ucsb-writing-program-ai-attribution",
       "claimId": "claim-ucsb-writing-program-ai-attribution",
       "sourceSnapshotId": "ss-ucsb-writing-program-ai-policy",
-      "sourceUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
-      "finalUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
+      "sourceUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
+      "finalUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
       "sourceTitle": "UCSB Writing Program AI Policy",
       "sourceLanguage": "en",
       "snapshotHash": "5c44eec81eb5e2ef4116c246b42c699252550347c99e4c6f6c4708eb8fb19742",
@@ -1180,7 +1183,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "UCSB Writing Program AI Policy",
-        "sourceUrl": "https://www.writing.ucsb.edu/resources/faculty/ai-policy",
+        "sourceUrl": "https://writing.ucsb.edu/ucsb-writing-program-ai-policy",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-california-santa-barbara.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-california-santa-barbara",
         "publisher": "University of California, Santa Barbara",

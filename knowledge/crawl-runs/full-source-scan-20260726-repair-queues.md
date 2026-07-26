@@ -169,3 +169,26 @@ Retry these from the OCI host or via Firecrawl before treating them as unhealthy
 a single Mac-side scan cannot distinguish bot-blocking from real outages.
 
 Machine-readable copy: `knowledge/crawl-runs/full-source-scan-20260726-repair-queues.json`.
+
+## Resolution (2026-07-27)
+
+Firecrawl recheck + relocation discovery closed the P1 queues in release
+`public-release-20260727-014`:
+
+- 20 of 50 P1 URLs were false deaths: bot-conditional 404s or render-only
+  pages, all alive via rendered fetch. Recorded in
+  `data/source-health/firecrawl-blocked-source-checks-20260727.json` (the
+  review dashboard now merges all dated check files).
+- 25 URLs were relocated with fetched-content verification and rewritten
+  across 29 staged runs (snapshot hashes and retrievedAt unchanged; only the
+  rotted pointers moved). Notable: Manchester AI Hub restructure, CAU grad
+  school move to gradsch1.cau.edu.cn, TCD GenAI statement v2 (2026), VUB OER
+  re-upload, Wyoming/Middlesex LibGuide renames.
+- 4 sources left the public web with no citable replacement: WashU DeepSeek
+  advisory (removed), Miami PETAL AI guide (moved behind SharePoint sign-in),
+  SQU academic integrity guide PDF, Gazi ethics PDF. Their 11 claims are now
+  `needs_review` pending re-sourcing or deprecation.
+- 1 low-value URL (Middlesex deleted guide, no claims attached) was left as-is.
+
+Remaining open queues: 13 new render-verification rows, 7 new blocked rows,
+142 HTTP-failure retries (run from OCI or via Firecrawl on the normal cadence).

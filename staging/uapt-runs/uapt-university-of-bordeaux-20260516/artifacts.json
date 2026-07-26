@@ -9,8 +9,8 @@
       "sourceCandidateId": "sc-bordeaux-iag-resources",
       "entityType": "university",
       "entitySlug": "university-of-bordeaux",
-      "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
-      "finalUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
+      "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
+      "finalUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
       "sourceTitle": "Intelligences artificielles génératives",
       "sourceLanguage": "fr",
       "sourceType": "teaching_guidance",
@@ -22,8 +22,9 @@
       "policySpecificityScore": 0.86,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-17T00:09:01Z",
-      "verificationNotes": "Official University of Bordeaux teaching support page under enseigner.u-bordeaux.fr, updated 10/04/2026, describing generative AI resources for the teaching community.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official University of Bordeaux teaching support page under enseigner.u-bordeaux.fr, updated 10/04/2026, describing generative AI resources for the teaching community. URL relocated from https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -299,7 +300,7 @@
           "entityType": "university",
           "entitySlug": "university-of-bordeaux",
           "sourceCandidateId": "sc-bordeaux-iag-resources",
-          "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
+          "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
           "sourceTitle": "Intelligences artificielles génératives",
           "sourceLanguage": "fr",
           "allowedFetchModes": [
@@ -362,8 +363,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-bordeaux-iag-resources",
       "sourceCandidateId": "sc-bordeaux-iag-resources",
-      "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
-      "finalUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
+      "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
+      "finalUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
       "attemptedAt": "2026-05-17T00:09:01Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -373,7 +374,8 @@
       "outcome": "success",
       "durationMs": 3061,
       "contentHash": "79f511e629315f8aeec3fdbd7c55cc29afeb2ecab5aa907b63af9e19e6a5e4e6",
-      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-bordeaux-20260516/snapshots/bordeaux-iag-resources.txt"
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-bordeaux-20260516/snapshots/bordeaux-iag-resources.txt",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -435,8 +437,8 @@
       "sourceSnapshotId": "ss-bordeaux-iag-resources",
       "sourceCandidateId": "sc-bordeaux-iag-resources",
       "fetchAttemptId": "fa-bordeaux-iag-resources",
-      "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
-      "finalUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
+      "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
+      "finalUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
       "sourceTitle": "Intelligences artificielles génératives",
       "sourceLanguage": "fr",
       "contentHash": "79f511e629315f8aeec3fdbd7c55cc29afeb2ecab5aa907b63af9e19e6a5e4e6",
@@ -444,7 +446,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-university-of-bordeaux-20260516/snapshots/bordeaux-iag-resources.txt",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -500,7 +503,7 @@
       ],
       "citation": {
         "citationTitle": "Intelligences artificielles génératives",
-        "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
+        "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-bordeaux.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-bordeaux",
         "publisher": "University of Bordeaux",
@@ -576,8 +579,8 @@
       "evidenceId": "ev-bordeaux-teaching-iag-resources",
       "claimId": "claim-bordeaux-teaching-iag-resources",
       "sourceSnapshotId": "ss-bordeaux-iag-resources",
-      "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
-      "finalUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
+      "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
+      "finalUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
       "sourceTitle": "Intelligences artificielles génératives",
       "sourceLanguage": "fr",
       "snapshotHash": "79f511e629315f8aeec3fdbd7c55cc29afeb2ecab5aa907b63af9e19e6a5e4e6",
@@ -589,7 +592,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "Intelligences artificielles génératives",
-        "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-et-ressources/IAG",
+        "sourceUrl": "https://enseigner.u-bordeaux.fr/outils-ressources-communaute/IAG",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-bordeaux.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-bordeaux",
         "publisher": "University of Bordeaux",

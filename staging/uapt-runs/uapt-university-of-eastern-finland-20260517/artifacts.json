@@ -64,8 +64,8 @@
       "sourceCandidateId": "sc-uef-kamu-ai-policy",
       "entityType": "university",
       "entitySlug": "university-of-eastern-finland",
-      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
-      "finalUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
       "sourceLanguage": "en",
       "sourceType": "university_guidance",
@@ -77,8 +77,9 @@
       "policySpecificityScore": 0.96,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-17T04:34:00.000Z",
-      "verificationNotes": "Official UEF Kamu page titled AI Policy for Students at the University of Eastern Finland, last modified 25 February 2025, with direct guidance on student AI use, disclosure, Copilot, external services, theses, personal data, and confidential information.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official UEF Kamu page titled AI Policy for Students at the University of Eastern Finland, last modified 25 February 2025, with direct guidance on student AI use, disclosure, Copilot, external services, theses, personal data, and confidential information. URL relocated from https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/ on 2026-07-27 after link-health repair; content match verified (fetched_content_match). URL relocated from https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/ on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -87,8 +88,8 @@
       "sourceCandidateId": "sc-uef-kamu-ai-guideline-scope",
       "entityType": "university",
       "entitySlug": "university-of-eastern-finland",
-      "sourceUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
-      "finalUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "Definition of artificial intelligence and application of the guidelines - UEF Kamu",
       "sourceLanguage": "en",
       "sourceType": "university_guidance",
@@ -100,8 +101,9 @@
       "policySpecificityScore": 0.88,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-17T04:34:00.000Z",
-      "verificationNotes": "Official UEF Kamu page defining the AI services covered by the guidelines and stating that the guidelines apply as a general guideline at the University of Eastern Finland.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official UEF Kamu page defining the AI services covered by the guidelines and stating that the guidelines apply as a general guideline at the University of Eastern Finland. URL relocated from https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/ on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -275,7 +277,7 @@
           "entityType": "university",
           "entitySlug": "university-of-eastern-finland",
           "sourceCandidateId": "sc-uef-kamu-ai-policy",
-          "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+          "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
           "sourceTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -294,7 +296,7 @@
           "entityType": "university",
           "entitySlug": "university-of-eastern-finland",
           "sourceCandidateId": "sc-uef-kamu-ai-guideline-scope",
-          "sourceUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
+          "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
           "sourceTitle": "Definition of artificial intelligence and application of the guidelines - UEF Kamu",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -319,8 +321,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-uef-kamu-ai-policy-http",
       "sourceCandidateId": "sc-uef-kamu-ai-policy",
-      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
-      "finalUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "attemptedAt": "2026-05-17T04:34:00.000Z",
       "fetchMode": "http",
       "userAgentKind": "default",
@@ -330,7 +332,8 @@
       "outcome": "success",
       "durationMs": 765,
       "contentHash": "da974a55931b8602952a1e3ff44140c9d0c105a1a57d8bd6e32ff1d2c417e3b2",
-      "normalizedTextStorageKey": "openclaw://snapshots/university-of-eastern-finland/20260517/uef-kamu-ai-policy"
+      "normalizedTextStorageKey": "openclaw://snapshots/university-of-eastern-finland/20260517/uef-kamu-ai-policy",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -338,8 +341,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-uef-kamu-ai-guideline-scope-http",
       "sourceCandidateId": "sc-uef-kamu-ai-guideline-scope",
-      "sourceUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
-      "finalUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "attemptedAt": "2026-05-17T04:34:00.000Z",
       "fetchMode": "http",
       "userAgentKind": "default",
@@ -349,7 +352,8 @@
       "outcome": "success",
       "durationMs": 707,
       "contentHash": "64ffeb68fbf823da519ad1ff8857156f2b07cf1a53574002592e18e9af59d46a",
-      "normalizedTextStorageKey": "openclaw://snapshots/university-of-eastern-finland/20260517/uef-kamu-ai-guideline-scope"
+      "normalizedTextStorageKey": "openclaw://snapshots/university-of-eastern-finland/20260517/uef-kamu-ai-guideline-scope",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -391,8 +395,8 @@
       "sourceSnapshotId": "ss-uef-kamu-ai-policy-20260517",
       "sourceCandidateId": "sc-uef-kamu-ai-policy",
       "fetchAttemptId": "fa-uef-kamu-ai-policy-http",
-      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
-      "finalUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
       "sourceLanguage": "en",
       "contentHash": "da974a55931b8602952a1e3ff44140c9d0c105a1a57d8bd6e32ff1d2c417e3b2",
@@ -400,7 +404,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw://snapshots/university-of-eastern-finland/20260517/uef-kamu-ai-policy",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -409,8 +414,8 @@
       "sourceSnapshotId": "ss-uef-kamu-ai-guideline-scope-20260517",
       "sourceCandidateId": "sc-uef-kamu-ai-guideline-scope",
       "fetchAttemptId": "fa-uef-kamu-ai-guideline-scope-http",
-      "sourceUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
-      "finalUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "Definition of artificial intelligence and application of the guidelines - UEF Kamu",
       "sourceLanguage": "en",
       "contentHash": "64ffeb68fbf823da519ad1ff8857156f2b07cf1a53574002592e18e9af59d46a",
@@ -418,7 +423,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw://snapshots/university-of-eastern-finland/20260517/uef-kamu-ai-guideline-scope",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -438,7 +444,7 @@
       ],
       "citation": {
         "citationTitle": "Definition of artificial intelligence and application of the guidelines - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -467,7 +473,7 @@
       ],
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -496,7 +502,7 @@
       ],
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -525,7 +531,7 @@
       ],
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -554,7 +560,7 @@
       ],
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -583,7 +589,7 @@
       ],
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -601,8 +607,8 @@
       "evidenceId": "ev-uef-ai-guidelines-general-scope",
       "claimId": "claim-uef-ai-guidelines-general-scope",
       "sourceSnapshotId": "ss-uef-kamu-ai-guideline-scope-20260517",
-      "sourceUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
-      "finalUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "Definition of artificial intelligence and application of the guidelines - UEF Kamu",
       "sourceLanguage": "en",
       "snapshotHash": "64ffeb68fbf823da519ad1ff8857156f2b07cf1a53574002592e18e9af59d46a",
@@ -613,7 +619,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "Definition of artificial intelligence and application of the guidelines - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/accordions/38482-definition-of-artificial-intelligence-and-application-of-the-guidelines/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -629,8 +635,8 @@
       "evidenceId": "ev-uef-student-ai-use-disclosure",
       "claimId": "claim-uef-student-ai-use-disclosure",
       "sourceSnapshotId": "ss-uef-kamu-ai-policy-20260517",
-      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
-      "finalUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
       "sourceLanguage": "en",
       "snapshotHash": "da974a55931b8602952a1e3ff44140c9d0c105a1a57d8bd6e32ff1d2c417e3b2",
@@ -641,7 +647,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -657,8 +663,8 @@
       "evidenceId": "ev-uef-ai-nondisclosure-fraud-process",
       "claimId": "claim-uef-ai-nondisclosure-fraud-process",
       "sourceSnapshotId": "ss-uef-kamu-ai-policy-20260517",
-      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
-      "finalUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
       "sourceLanguage": "en",
       "snapshotHash": "da974a55931b8602952a1e3ff44140c9d0c105a1a57d8bd6e32ff1d2c417e3b2",
@@ -669,7 +675,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -685,8 +691,8 @@
       "evidenceId": "ev-uef-copilot-and-external-ai-accounts",
       "claimId": "claim-uef-copilot-and-external-ai-accounts",
       "sourceSnapshotId": "ss-uef-kamu-ai-policy-20260517",
-      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
-      "finalUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
       "sourceLanguage": "en",
       "snapshotHash": "da974a55931b8602952a1e3ff44140c9d0c105a1a57d8bd6e32ff1d2c417e3b2",
@@ -697,7 +703,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -713,8 +719,8 @@
       "evidenceId": "ev-uef-ai-personal-confidential-data",
       "claimId": "claim-uef-ai-personal-confidential-data",
       "sourceSnapshotId": "ss-uef-kamu-ai-policy-20260517",
-      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
-      "finalUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
       "sourceLanguage": "en",
       "snapshotHash": "da974a55931b8602952a1e3ff44140c9d0c105a1a57d8bd6e32ff1d2c417e3b2",
@@ -725,7 +731,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",
@@ -741,8 +747,8 @@
       "evidenceId": "ev-uef-ai-thesis-independent-work",
       "claimId": "claim-uef-ai-thesis-independent-work",
       "sourceSnapshotId": "ss-uef-kamu-ai-policy-20260517",
-      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
-      "finalUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+      "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
+      "finalUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
       "sourceTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
       "sourceLanguage": "en",
       "snapshotHash": "da974a55931b8602952a1e3ff44140c9d0c105a1a57d8bd6e32ff1d2c417e3b2",
@@ -753,7 +759,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "AI POLICY FOR STUDENTS AT THE UNIVERSITY OF EASTERN FINLAND - UEF Kamu",
-        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/students-rights-and-obligations/the-use-of-ai-in-teaching-and-research/",
+        "sourceUrl": "https://kamu.uef.fi/en/tietopankki/degree-student/studies/ground-rules/ai-policy-guidelines-for-students/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/university-of-eastern-finland.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/university-of-eastern-finland",
         "publisher": "University of Eastern Finland",

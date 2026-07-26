@@ -968,7 +968,7 @@
       "normalizedValue": "deepseek_not_safe_for_nonpublic_information",
       "sourceLanguage": "en-US",
       "confidence": 0.96,
-      "reviewState": "agent_reviewed",
+      "reviewState": "needs_review",
       "evidenceIds": [
         "ev-washu-deepseek-nonpublic-info"
       ],
@@ -1131,6 +1131,19 @@
       "trackerMetadataLicense": "CC-BY-4.0",
       "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-washington-university-in-st-louis-20260514",
+      "artifactType": "review_decision",
+      "decisionId": "rd-linkrot-claim-washu-deepseek-nonpublic-info-20260727",
+      "claimId": "claim-washu-deepseek-nonpublic-info",
+      "decision": "needs_changes",
+      "reviewState": "needs_review",
+      "reviewerType": "local_reviewer",
+      "reviewer": "claude-local-agent",
+      "notes": "Source removed from the public web (https://it.wustl.edu/2025/02/specific-guidance-on-the-use-of-generative-ai-deepseek/); no public official replacement found in the 2026-07-27 link-health repair. Claim needs re-sourcing or deprecation.",
+      "decidedAt": "2026-07-27T02:40:00.000Z"
     }
   ]
 }

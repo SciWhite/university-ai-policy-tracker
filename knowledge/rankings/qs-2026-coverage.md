@@ -1,7 +1,7 @@
 ---
 title: QS 2026 Coverage
 authoritativeLevel: derived_snapshot
-generatedAt: 2026-07-26T16:23:53.511Z
+generatedAt: 2026-07-26T18:44:03.341Z
 sourceFiles:
   - data/rankings/qs-world-university-rankings-2026-top-100.json
   - data/public-releases/current.json

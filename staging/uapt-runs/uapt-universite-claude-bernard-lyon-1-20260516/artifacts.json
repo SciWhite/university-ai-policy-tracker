@@ -101,7 +101,7 @@
       "sourceCandidateId": "sc-lyon1-icap-h5p-ai",
       "entityType": "university",
       "entitySlug": "universite-claude-bernard-lyon-1",
-      "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207",
+      "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=197",
       "finalUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207&perpage=1000&order=ASC&sort=307",
       "sourceTitle": "Convertir des activités H5P en questions pour l'activité Test Moodle avec l'IA (et vice versa)",
       "sourceLanguage": "fr",
@@ -114,8 +114,9 @@
       "policySpecificityScore": 0.55,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-17T03:25:25.000Z",
-      "verificationNotes": "Official iCAP Formations page on a Lyon 1 subdomain, retrieved with HTTP 200; scope is teacher training, not a binding policy.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official iCAP Formations page on a Lyon 1 subdomain, retrieved with HTTP 200; scope is teacher training, not a binding policy. URL relocated from https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207 on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -287,7 +288,7 @@
           "entityType": "university",
           "entitySlug": "universite-claude-bernard-lyon-1",
           "sourceCandidateId": "sc-lyon1-icap-h5p-ai",
-          "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207",
+          "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=197",
           "sourceTitle": "Convertir des activités H5P en questions pour l'activité Test Moodle avec l'IA (et vice versa)",
           "sourceLanguage": "fr",
           "allowedFetchModes": [
@@ -353,7 +354,7 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-lyon1-icap-h5p-ai-firecrawl",
       "sourceCandidateId": "sc-lyon1-icap-h5p-ai",
-      "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207",
+      "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=197",
       "finalUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207&perpage=1000&order=ASC&sort=307",
       "attemptedAt": "2026-05-17T03:24:54.000Z",
       "fetchMode": "firecrawl",
@@ -364,7 +365,8 @@
       "outcome": "success",
       "durationMs": 17136,
       "contentHash": "67b90900b00bdbb560b47a89b97f5a2a652e43d7a998bbeef405e21a9b24f83a",
-      "normalizedTextStorageKey": "openclaw/uapt-universite-claude-bernard-lyon-1-20260516/snapshots/icap-h5p-ai"
+      "normalizedTextStorageKey": "openclaw/uapt-universite-claude-bernard-lyon-1-20260516/snapshots/icap-h5p-ai",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -409,7 +411,7 @@
       "sourceSnapshotId": "ss-lyon1-icap-h5p-ai",
       "sourceCandidateId": "sc-lyon1-icap-h5p-ai",
       "fetchAttemptId": "fa-lyon1-icap-h5p-ai-firecrawl",
-      "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207",
+      "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=197",
       "finalUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207&perpage=1000&order=ASC&sort=307",
       "sourceTitle": "Convertir des activités H5P en questions pour l'activité Test Moodle avec l'IA (et vice versa)",
       "sourceLanguage": "fr",
@@ -418,7 +420,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw/uapt-universite-claude-bernard-lyon-1-20260516/snapshots/icap-h5p-ai",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -496,7 +499,7 @@
       ],
       "citation": {
         "citationTitle": "Convertir des activités H5P en questions pour l'activité Test Moodle avec l'IA (et vice versa)",
-        "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207",
+        "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=197",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-claude-bernard-lyon-1.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/universite-claude-bernard-lyon-1",
         "publisher": "iCAP Formations, Université Claude Bernard Lyon 1",
@@ -572,7 +575,7 @@
       "evidenceId": "ev-lyon1-icap-teacher-h5p-ai-training",
       "claimId": "claim-lyon1-icap-teacher-h5p-ai-training",
       "sourceSnapshotId": "ss-lyon1-icap-h5p-ai",
-      "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207",
+      "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=197",
       "finalUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207&perpage=1000&order=ASC&sort=307",
       "sourceTitle": "Convertir des activités H5P en questions pour l'activité Test Moodle avec l'IA (et vice versa)",
       "sourceLanguage": "fr",
@@ -585,7 +588,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "Convertir des activités H5P en questions pour l'activité Test Moodle avec l'IA (et vice versa)",
-        "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=207",
+        "sourceUrl": "https://icap-formations.univ-lyon1.fr/mod/data/view.php?d=4&rid=197",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/universite-claude-bernard-lyon-1.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/universite-claude-bernard-lyon-1",
         "publisher": "iCAP Formations, Université Claude Bernard Lyon 1",

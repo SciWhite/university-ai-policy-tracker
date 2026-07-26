@@ -73,8 +73,8 @@
       "sourceCandidateId": "sc-tcd-college-statement-genai",
       "entityType": "university",
       "entitySlug": "trinity-college-dublin-the-university-of-dublin",
-      "sourceUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
-      "finalUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
+      "sourceUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
+      "finalUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
       "sourceTitle": "College Statement on Artificial Intelligence and Generative AI in Teaching, Learning, Assessment & Research",
       "sourceLanguage": "en",
       "sourceType": "official_pdf",
@@ -86,8 +86,9 @@
       "policySpecificityScore": 0.96,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-13T05:03:38.000Z",
-      "verificationNotes": "Official Centre for Academic Practice PDF with university-level GenAI statement covering teaching, learning, assessment and research.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official Centre for Academic Practice PDF with university-level GenAI statement covering teaching, learning, assessment and research. URL relocated from https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_candidate",
@@ -340,7 +341,7 @@
           "entityType": "university",
           "entitySlug": "trinity-college-dublin-the-university-of-dublin",
           "sourceCandidateId": "sc-tcd-college-statement-genai",
-          "sourceUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
+          "sourceUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
           "sourceTitle": "College Statement on Artificial Intelligence and Generative AI in Teaching, Learning, Assessment & Research",
           "sourceLanguage": "en",
           "allowedFetchModes": [
@@ -487,8 +488,8 @@
       "runId": "uapt-trinity-college-dublin-the-university-of-dublin-20260513",
       "fetchAttemptId": "fa-tcd-college-statement-genai",
       "sourceCandidateId": "sc-tcd-college-statement-genai",
-      "sourceUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
-      "finalUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
+      "sourceUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
+      "finalUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
       "attemptedAt": "2026-05-13T05:03:38.000Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -498,7 +499,8 @@
       "outcome": "success",
       "durationMs": 1734,
       "contentHash": "67b2a1c29ae6b790fd9f51f7f5cd468f0b4fab0bd07ff3cef405c442e8f81859",
-      "normalizedTextStorageKey": "openclaw://uapt-trinity-college-dublin-the-university-of-dublin-20260513/snapshots/college-statement-genai"
+      "normalizedTextStorageKey": "openclaw://uapt-trinity-college-dublin-the-university-of-dublin-20260513/snapshots/college-statement-genai",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "fetch_attempt",
@@ -677,8 +679,8 @@
       "sourceSnapshotId": "ss-tcd-college-statement-genai",
       "sourceCandidateId": "sc-tcd-college-statement-genai",
       "fetchAttemptId": "fa-tcd-college-statement-genai",
-      "sourceUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
-      "finalUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
+      "sourceUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
+      "finalUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
       "sourceTitle": "College Statement on Artificial Intelligence and Generative AI in Teaching, Learning, Assessment & Research",
       "sourceLanguage": "en",
       "contentHash": "67b2a1c29ae6b790fd9f51f7f5cd468f0b4fab0bd07ff3cef405c442e8f81859",
@@ -686,7 +688,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw://uapt-trinity-college-dublin-the-university-of-dublin-20260513/snapshots/college-statement-genai",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "artifactType": "source_snapshot",
@@ -861,7 +864,7 @@
       ],
       "citation": {
         "citationTitle": "College Statement on Artificial Intelligence and Generative AI in Teaching, Learning, Assessment & Research",
-        "sourceUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
+        "sourceUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/trinity-college-dublin-the-university-of-dublin.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/trinity-college-dublin-the-university-of-dublin",
         "publisher": "Trinity College Dublin",
@@ -1081,8 +1084,8 @@
       "evidenceId": "ev-tcd-central-statement-ai-treatment",
       "claimId": "claim-tcd-central-statement-ai-treatment",
       "sourceSnapshotId": "ss-tcd-college-statement-genai",
-      "sourceUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
-      "finalUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
+      "sourceUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
+      "finalUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
       "sourceTitle": "College Statement on Artificial Intelligence and Generative AI in Teaching, Learning, Assessment & Research",
       "sourceLanguage": "en",
       "snapshotHash": "67b2a1c29ae6b790fd9f51f7f5cd468f0b4fab0bd07ff3cef405c442e8f81859",
@@ -1094,7 +1097,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "College Statement on Artificial Intelligence and Generative AI in Teaching, Learning, Assessment & Research",
-        "sourceUrl": "https://www.tcd.ie/media/tcd/academic-practice/pdfs/college-statement-on-genai.pdf",
+        "sourceUrl": "https://www.tcd.ie/media/tcd/academic-affairs/pdfs/College_Statement_on_GenAI_v2_2026.pdf",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/trinity-college-dublin-the-university-of-dublin.json",
         "publisher": "Trinity College Dublin",
         "retrievedAt": "2026-05-13T05:03:38.000Z",

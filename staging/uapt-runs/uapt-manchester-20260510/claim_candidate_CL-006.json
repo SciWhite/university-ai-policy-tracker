@@ -8,10 +8,12 @@
   "reviewState": "agent_reviewed",
   "publishAsCanonical": false,
   "isCanonical": false,
-  "evidenceIds": ["EV-006"],
+  "evidenceIds": [
+    "EV-006"
+  ],
   "citation": {
     "citationTitle": "Guidelines | AI Hub - StaffNet - The University of Manchester",
-    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+    "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/ai-guidelines-and-policies/ai-guidelines-overview/guidelines/",
     "publisher": "The University of Manchester",
     "retrievedAt": "2026-05-10T14:10:00Z",
     "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."

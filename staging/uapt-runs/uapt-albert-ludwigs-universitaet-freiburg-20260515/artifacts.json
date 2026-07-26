@@ -116,8 +116,8 @@
       "sourceCandidateId": "sc-freiburg-ub-ai-study-de",
       "entityType": "university",
       "entitySlug": "albert-ludwigs-universitaet-freiburg",
-      "sourceUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
-      "finalUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
+      "sourceUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
+      "finalUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
       "sourceTitle": "Künstliche Intelligenz im Uni-Kontext",
       "sourceLanguage": "de",
       "sourceType": "university_guidance",
@@ -128,9 +128,10 @@
       "policySpecificityScore": 0.84,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-15T12:30:33Z",
-      "verificationNotes": "Official University Library guidance page for students using generative AI in academic work and literature research.",
+      "verificationNotes": "Official University Library guidance page for students using generative AI in academic work and literature research. URL relocated from https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/ on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
       "robotsPolicy": "respect",
-      "queryUsed": "site:ub.uni-freiburg.de KI im Studium ChatGPT Datenschutz Urheberrecht"
+      "queryUsed": "site:ub.uni-freiburg.de KI im Studium ChatGPT Datenschutz Urheberrecht",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -300,7 +301,7 @@
           "entityType": "university",
           "entitySlug": "albert-ludwigs-universitaet-freiburg",
           "sourceCandidateId": "sc-freiburg-ub-ai-study-de",
-          "sourceUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
+          "sourceUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
           "sourceTitle": "Künstliche Intelligenz im Uni-Kontext",
           "sourceLanguage": "de",
           "allowedFetchModes": [
@@ -366,8 +367,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fa-freiburg-ub-ai-study-de",
       "sourceCandidateId": "sc-freiburg-ub-ai-study-de",
-      "sourceUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
-      "finalUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
+      "sourceUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
+      "finalUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
       "attemptedAt": "2026-05-15T12:30:33Z",
       "fetchMode": "http",
       "userAgentKind": "default",
@@ -377,7 +378,8 @@
       "outcome": "success",
       "durationMs": 423,
       "contentHash": "607a7fdd2ee881df7c9431bc190b195e7ca50b9965e1c7b525a1c00cd4050f01",
-      "normalizedTextStorageKey": "openclaw://normalized/uapt-albert-ludwigs-universitaet-freiburg-20260515/ss-freiburg-ub-ai-study-de"
+      "normalizedTextStorageKey": "openclaw://normalized/uapt-albert-ludwigs-universitaet-freiburg-20260515/ss-freiburg-ub-ai-study-de",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -422,8 +424,8 @@
       "sourceSnapshotId": "ss-freiburg-ub-ai-study-de",
       "sourceCandidateId": "sc-freiburg-ub-ai-study-de",
       "fetchAttemptId": "fa-freiburg-ub-ai-study-de",
-      "sourceUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
-      "finalUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
+      "sourceUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
+      "finalUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
       "sourceTitle": "Künstliche Intelligenz im Uni-Kontext",
       "sourceLanguage": "de",
       "contentHash": "607a7fdd2ee881df7c9431bc190b195e7ca50b9965e1c7b525a1c00cd4050f01",
@@ -431,7 +433,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "openclaw://normalized/uapt-albert-ludwigs-universitaet-freiburg-20260515/ss-freiburg-ub-ai-study-de",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -625,7 +628,7 @@
       ],
       "citation": {
         "citationTitle": "Künstliche Intelligenz im Uni-Kontext",
-        "sourceUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
+        "sourceUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/albert-ludwigs-universitaet-freiburg.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/albert-ludwigs-universitaet-freiburg",
         "publisher": "Universität Freiburg",
@@ -817,8 +820,8 @@
       "evidenceId": "ev-freiburg-student-transparency-output-check",
       "claimId": "claim-freiburg-student-transparency-output-check",
       "sourceSnapshotId": "ss-freiburg-ub-ai-study-de",
-      "sourceUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
-      "finalUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
+      "sourceUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
+      "finalUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
       "sourceTitle": "Künstliche Intelligenz im Uni-Kontext",
       "sourceLanguage": "de",
       "snapshotHash": "607a7fdd2ee881df7c9431bc190b195e7ca50b9965e1c7b525a1c00cd4050f01",
@@ -830,7 +833,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "Künstliche Intelligenz im Uni-Kontext",
-        "sourceUrl": "https://www.ub.uni-freiburg.de/unterstuetzung/einfuehrungen-und-kurse/ki-im-studium/",
+        "sourceUrl": "https://www.ub.uni-freiburg.de/lernen-arbeiten/einfuehrungen-und-kurse/ki-im-studium/",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/albert-ludwigs-universitaet-freiburg.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/albert-ludwigs-universitaet-freiburg",
         "publisher": "Universität Freiburg",

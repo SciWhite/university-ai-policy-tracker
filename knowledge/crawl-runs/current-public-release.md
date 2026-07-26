@@ -1,7 +1,7 @@
 ---
 title: Current Public Release
 authoritativeLevel: derived_snapshot
-generatedAt: 2026-07-26T16:23:53.511Z
+generatedAt: 2026-07-26T18:44:03.341Z
 sourceFiles:
   - data/public-releases/current.json
   - data/entity-aliases.json
@@ -20,8 +20,8 @@ manifest and generated public JSON remain authoritative for what is promoted.
 
 ## Release Manifest
 
-- Release ID: `public-release-20260726-013`
-- Published at: `2026-07-26T15:40:00.000Z`
+- Release ID: `public-release-20260727-014`
+- Published at: `2026-07-27T03:05:00.000Z`
 - Promoted artifact directories: 805
 
 ## Public Dataset Summary
@@ -41,8 +41,10 @@ before counting.
 
 | Scope | State | Count |
 | --- | --- | ---: |
-| Entity | `agent_reviewed` | 828 |
-| Claim | `agent_reviewed` | 5450 |
+| Entity | `agent_reviewed` | 827 |
+| Entity | `needs_review` | 1 |
+| Claim | `agent_reviewed` | 5439 |
+| Claim | `needs_review` | 11 |
 
 Review state is not the same as confidence. This snapshot does not change any
 review state.

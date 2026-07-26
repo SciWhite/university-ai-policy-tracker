@@ -9,7 +9,7 @@
   "sourceLanguage": "en",
   "robotsPolicy": "respect",
   "sourceCandidateId": "SC-001",
-  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/",
+  "sourceUrl": "https://www.staffnet.manchester.ac.uk/ai-hub/ai-guidelines-and-policies/ai-guidelines-overview/guidelines/",
   "sourceTitle": "Guidelines | AI Hub - StaffNet - The University of Manchester",
   "sourceType": "university_guidance",
   "discoveryMethod": "public_web_search",
@@ -18,5 +18,6 @@
   "aiRelevanceScore": 0.98,
   "policySpecificityScore": 0.95,
   "verificationStatus": "verified",
-  "verificationNotes": "Official university-wide AI guidelines page on StaffNet AI Hub. Published Feb 2025, last edited Oct 2025. Contains five core principles and detailed guidance for teaching/learning, research, and approved tools. Owned by University AI Strategy Group."
+  "verificationNotes": "Official university-wide AI guidelines page on StaffNet AI Hub. Published Feb 2025, last edited Oct 2025. Contains five core principles and detailed guidance for teaching/learning, research, and approved tools. Owned by University AI Strategy Group. URL relocated from https://www.staffnet.manchester.ac.uk/ai-hub/guidelines/ on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+  "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
 }

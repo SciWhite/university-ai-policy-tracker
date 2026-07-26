@@ -68,8 +68,8 @@
       "sourceCandidateId": "src-ecust-ai-faculty-training-20240325",
       "entityType": "university",
       "entitySlug": "east-china-university-of-science-and-technology",
-      "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
-      "finalUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "finalUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
       "sourceTitle": "我校启动人工智能师资培训，积极推进教育数智化建设",
       "sourceLanguage": "zh-Hans",
       "sourceType": "teaching_guidance",
@@ -81,8 +81,9 @@
       "policySpecificityScore": 0.66,
       "verificationStatus": "verified",
       "verifiedAt": "2026-05-18T04:26:55Z",
-      "verificationNotes": "Official ECUST central news page. Supports narrow claims about AI faculty training and planned AI+ graduate course development, not a binding student AI-use policy.",
-      "robotsPolicy": "respect"
+      "verificationNotes": "Official ECUST central news page. Supports narrow claims about AI faculty training and planned AI+ graduate course development, not a binding student AI-use policy. URL relocated from https://ecust.edu.cn/2024/0322/c729a178903/page.htm on 2026-07-27 after link-health repair; content match verified (fetched_content_match).",
+      "robotsPolicy": "respect",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -174,7 +175,7 @@
           "entityType": "university",
           "entitySlug": "east-china-university-of-science-and-technology",
           "sourceCandidateId": "src-ecust-ai-faculty-training-20240325",
-          "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+          "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
           "sourceTitle": "我校启动人工智能师资培训，积极推进教育数智化建设",
           "sourceLanguage": "zh-Hans",
           "allowedFetchModes": [
@@ -221,8 +222,8 @@
       "artifactType": "fetch_attempt",
       "fetchAttemptId": "fetch-ecust-ai-faculty-training-20240325",
       "sourceCandidateId": "src-ecust-ai-faculty-training-20240325",
-      "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
-      "finalUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "finalUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
       "attemptedAt": "2026-05-18T04:26:55Z",
       "fetchMode": "firecrawl",
       "userAgentKind": "firecrawl",
@@ -232,7 +233,8 @@
       "outcome": "success",
       "durationMs": 8013,
       "contentHash": "64b014a0fc9ac475ad4bc8c9dcbfcd7079d47bc730008a0ecfc3db7a02828499",
-      "normalizedTextStorageKey": "staging/uapt-runs/uapt-east-china-university-of-science-and-technology-20260518/artifacts.json#snapshot-ecust-ai-faculty-training-20240325"
+      "normalizedTextStorageKey": "staging/uapt-runs/uapt-east-china-university-of-science-and-technology-20260518/artifacts.json#snapshot-ecust-ai-faculty-training-20240325",
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -279,8 +281,8 @@
       "sourceSnapshotId": "snapshot-ecust-ai-faculty-training-20240325",
       "sourceCandidateId": "src-ecust-ai-faculty-training-20240325",
       "fetchAttemptId": "fetch-ecust-ai-faculty-training-20240325",
-      "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
-      "finalUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "finalUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
       "sourceTitle": "我校启动人工智能师资培训，积极推进教育数智化建设",
       "sourceLanguage": "zh-Hans",
       "contentHash": "64b014a0fc9ac475ad4bc8c9dcbfcd7079d47bc730008a0ecfc3db7a02828499",
@@ -288,7 +290,8 @@
       "httpStatus": 200,
       "robotsAllowed": true,
       "normalizedTextStorageKey": "staging/uapt-runs/uapt-east-china-university-of-science-and-technology-20260518/artifacts.json#snapshot-ecust-ai-faculty-training-20240325",
-      "rawArtifactPaths": []
+      "rawArtifactPaths": [],
+      "trackerCheckedAt": "2026-07-27T02:40:00.000Z"
     },
     {
       "schemaVersion": "openclaw-artifact-v1",
@@ -328,7 +331,7 @@
       "lastChangedAt": "2024-03-25T00:00:00Z",
       "citation": {
         "citationTitle": "我校启动人工智能师资培训，积极推进教育数智化建设",
-        "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+        "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/east-china-university-of-science-and-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/east-china-university-of-science-and-technology",
         "publisher": "华东理工大学",
@@ -359,7 +362,7 @@
       "lastChangedAt": "2024-03-25T00:00:00Z",
       "citation": {
         "citationTitle": "我校启动人工智能师资培训，积极推进教育数智化建设",
-        "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+        "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/east-china-university-of-science-and-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/east-china-university-of-science-and-technology",
         "publisher": "华东理工大学",
@@ -408,8 +411,8 @@
       "evidenceId": "ev-ecust-ai-faculty-training-20240325",
       "claimId": "claim-ecust-ai-faculty-training-20240325",
       "sourceSnapshotId": "snapshot-ecust-ai-faculty-training-20240325",
-      "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
-      "finalUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "finalUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
       "sourceTitle": "我校启动人工智能师资培训，积极推进教育数智化建设",
       "sourceLanguage": "zh-Hans",
       "snapshotHash": "64b014a0fc9ac475ad4bc8c9dcbfcd7079d47bc730008a0ecfc3db7a02828499",
@@ -421,7 +424,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "我校启动人工智能师资培训，积极推进教育数智化建设",
-        "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+        "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/east-china-university-of-science-and-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/east-china-university-of-science-and-technology",
         "publisher": "华东理工大学",
@@ -437,8 +440,8 @@
       "evidenceId": "ev-ecust-ai-plus-graduate-courses-20240325",
       "claimId": "claim-ecust-ai-plus-graduate-courses-20240325",
       "sourceSnapshotId": "snapshot-ecust-ai-faculty-training-20240325",
-      "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
-      "finalUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
+      "finalUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
       "sourceTitle": "我校启动人工智能师资培训，积极推进教育数智化建设",
       "sourceLanguage": "zh-Hans",
       "snapshotHash": "64b014a0fc9ac475ad4bc8c9dcbfcd7079d47bc730008a0ecfc3db7a02828499",
@@ -450,7 +453,7 @@
       "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "citation": {
         "citationTitle": "我校启动人工智能师资培训，积极推进教育数智化建设",
-        "sourceUrl": "https://ecust.edu.cn/2024/0322/c729a178903/page.htm",
+        "sourceUrl": "https://www.ecust.edu.cn/2024/0322/c729a178903/page.htm",
         "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/east-china-university-of-science-and-technology.json",
         "canonicalUrl": "https://eduaipolicy.org/universities/east-china-university-of-science-and-technology",
         "publisher": "华东理工大学",
