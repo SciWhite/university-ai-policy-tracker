@@ -268,6 +268,15 @@ export async function getKnownReleaseIds(): Promise<string[]> {
   return (await getKnownReleaseManifests()).map((manifest) => manifest.releaseId);
 }
 
+export async function getKnownReleaseSummaries(): Promise<
+  Array<{ releaseId: string; publishedAt: string }>
+> {
+  return (await getKnownReleaseManifests()).map((manifest) => ({
+    releaseId: manifest.releaseId,
+    publishedAt: manifest.publishedAt
+  }));
+}
+
 export async function getReleaseClaimSnapshotRows(
   releaseId: string
 ): Promise<ReleaseClaimSnapshot[] | undefined> {

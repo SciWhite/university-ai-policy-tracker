@@ -10,10 +10,7 @@ const baseUrl = new URL(process.env.UAPT_SMOKE_BASE_URL ?? "http://127.0.0.1:310
 
 async function main() {
   const phaseTwoEnabled = isMultilingualPhaseTwoEnabled();
-  const sitemap = await readText(new URL("/sitemap.xml", baseUrl));
-  const sitemapPaths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
-    (match) => new URL(decodeXml(match[1])).pathname
-  );
+  const sitemapPaths = await readSitemapPaths();
   const englishPaths = sitemapPaths.filter(
     (pathname) => !stripLocalePrefix(pathname).hadLocalePrefix
   );
@@ -92,6 +89,28 @@ async function main() {
   console.log(
     `i18n HTTP smoke passed: phase ${phaseTwoEnabled ? "two" : "one"}, ${SUPPORTED_LOCALES.length} locales x ${paths.length} representative routes`
   );
+}
+
+async function readSitemapPaths(): Promise<string[]> {
+  const index = await readText(new URL("/sitemap.xml", baseUrl));
+  const indexLocs = [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
+    decodeXml(match[1])
+  );
+
+  if (!index.includes("<sitemapindex")) {
+    return indexLocs.map((loc) => new URL(loc).pathname);
+  }
+
+  const children = await Promise.all(
+    indexLocs.map(async (loc) => {
+      const child = await readText(new URL(new URL(loc).pathname, baseUrl));
+      return [...child.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
+        (match) => new URL(decodeXml(match[1])).pathname
+      );
+    })
+  );
+
+  return children.flat();
 }
 
 async function checkPhaseTwoGate(
