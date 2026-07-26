@@ -1468,6 +1468,13 @@ h3 {
   justify-content: flex-start;
 }
 
+/* The status column is width-capped next to long claim titles; badges must
+   wrap as whole pills, never break mid-word inside one. */
+.claim-evidence-card__status .meta-label,
+.claim-evidence-card__status .state-label {
+  white-space: nowrap;
+}
+
 .claim-evidence-card__type {
   color: var(--color-accent);
   font-size: var(--text-xs);

@@ -12,6 +12,7 @@ import {
   searchIndexRecords
 } from "@/lib/entity-search";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
+import { localizeMatchReason } from "@/lib/match-reason-labels";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { localizeHref, normalizeLocale, type SupportedLocale } from "@/lib/i18n";
@@ -567,7 +568,9 @@ function SearchResults({
           </div>
           <p data-i18n="preserve">{result.sourceBackedSnippet}</p>
           <div className="table-record-meta">
-            <MetaLabel label={copy.match}>{result.matchReason}</MetaLabel>
+            <MetaLabel label={copy.match}>
+              {localizeMatchReason(result.matchReason, locale)}
+            </MetaLabel>
             {result.confidence !== undefined ? (
               <MetaLabel label={copy.confidence}>
                 {Math.round(result.confidence * 100)}%

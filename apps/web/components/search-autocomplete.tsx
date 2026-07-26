@@ -15,6 +15,7 @@ import { trackResearchEvent } from "@/lib/analytics-client";
 import { getQueryAnalytics } from "@/lib/analytics-events";
 import { getLocaleFromPathname, localizeHref } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
+import { localizeMatchReason } from "@/lib/match-reason-labels";
 
 const autocompleteCopy = {
   en: { loading: "Loading suggestions...", empty: "No public records match this query.", error: "Suggestions are unavailable. Submit the search instead.", match: "Match", score: "Score", claims: "Claims", sources: "Sources", resultsReady: (count: number) => `${count} suggestions available. Use the up and down arrow keys to browse.` },
@@ -226,7 +227,9 @@ export function SearchAutocomplete({
                   <p>{result.sourceBackedSnippet}</p>
                   <div className="table-record-meta">
                     <StateLabel locale={locale} reviewState={result.reviewState} />
-                    <MetaLabel label={copy.match}>{result.matchReason}</MetaLabel>
+                    <MetaLabel label={copy.match}>
+                      {localizeMatchReason(result.matchReason, locale)}
+                    </MetaLabel>
                     <MetaLabel label={copy.score}>{result.score}</MetaLabel>
                   </div>
                 </div>
