@@ -23,19 +23,24 @@ const searchCopy: Record<
     aliases: string;
     apiBoxTitle: string;
     button: string;
+    claims: string;
+    confidence: string;
     description: string;
     empty: string;
     entities: string;
     highSignal: string;
     kicker: string;
+    match: string;
     matches: string;
     placeholder: string;
     record: string;
     reset: string;
     resultsFor: (query: string) => string;
+    score: string;
     searchApi: string;
     searchJson: string;
     searchLabel: string;
+    sources: string;
     suggestedRecords: string;
     title: string;
   }
@@ -45,6 +50,8 @@ const searchCopy: Record<
     aliases: "aliases",
     apiBoxTitle: "Search APIs",
     button: "Search",
+    claims: "Claims",
+    confidence: "Confidence",
     description:
       "Search public university AI policy records by university name, alias, source domain, claim text, and analysis dimension.",
     empty:
@@ -52,14 +59,17 @@ const searchCopy: Record<
     entities: "entities",
     highSignal: "High-signal records",
     kicker: "Search",
+    match: "Match",
     matches: "matches",
     placeholder: "University, topic, source domain...",
     record: "Record",
     reset: "Reset",
     resultsFor: (query) => `Results for "${query}"`,
+    score: "Score",
     searchApi: "search API",
     searchJson: "Search JSON",
     searchLabel: "Search public records",
+    sources: "Sources",
     suggestedRecords: "suggested records",
     title: "Find source-backed university AI policy records"
   },
@@ -68,19 +78,24 @@ const searchCopy: Record<
     aliases: "别名",
     apiBoxTitle: "搜索 API",
     button: "搜索",
+    claims: "声明",
+    confidence: "置信度",
     description: "按高校名称、别名、来源域名、声明文本和分析维度搜索公共高校 AI 政策记录。",
     empty: "没有公共记录匹配此查询。当前公共发布可能还没有推广该机构或主题的记录。",
     entities: "实体",
     highSignal: "高信号记录",
     kicker: "搜索",
+    match: "匹配",
     matches: "匹配",
     placeholder: "高校、主题、来源域名...",
     record: "记录",
     reset: "重置",
     resultsFor: (query) => `"${query}" 的结果`,
+    score: "得分",
     searchApi: "搜索 API",
     searchJson: "搜索 JSON",
     searchLabel: "搜索公共记录",
+    sources: "来源",
     suggestedRecords: "建议记录",
     title: "查找有来源证据支撑的高校 AI 政策记录"
   },
@@ -89,84 +104,104 @@ const searchCopy: Record<
     aliases: "alias",
     apiBoxTitle: "API de recherche",
     button: "Rechercher",
+    claims: "Affirmations",
+    confidence: "Confiance",
     description:
       "Rechercher les politiques IA universitaires publiques par nom, alias, domaine source, texte de revendication et dimension d'analyse.",
     empty:
-      "Aucun dossier public ne correspond a cette requete. La version publique actuelle peut ne pas encore contenir de dossier promu pour cet etablissement ou ce sujet.",
-    entities: "entites",
-    highSignal: "Dossiers a fort signal",
+      "Aucun dossier public ne correspond à cette requête. La version publique actuelle peut ne pas encore contenir de dossier promu pour cet établissement ou ce sujet.",
+    entities: "entités",
+    highSignal: "Dossiers à fort signal",
     kicker: "Recherche",
-    matches: "resultats",
-    placeholder: "Universite, sujet, domaine source...",
+    match: "Correspondance",
+    matches: "résultats",
+    placeholder: "Université, sujet, domaine source...",
     record: "Dossier",
-    reset: "Reinitialiser",
-    resultsFor: (query) => `Resultats pour \"${query}\"`,
+    reset: "Réinitialiser",
+    resultsFor: (query) => `Résultats pour « ${query} »`,
+    score: "Score",
     searchApi: "API de recherche",
     searchJson: "JSON de recherche",
     searchLabel: "Rechercher les dossiers publics",
-    suggestedRecords: "dossiers suggeres",
-    title: "Trouver des dossiers de politiques IA universitaires appuyes par des sources"
+    sources: "Sources",
+    suggestedRecords: "dossiers suggérés",
+    title: "Trouver des dossiers de politiques IA universitaires appuyés par des sources"
   },
   pl: {
     alias: "Alias",
     aliases: "aliasy",
     apiBoxTitle: "API wyszukiwania",
     button: "Szukaj",
-    description: "Szukaj publicznych rekordow polityk AI wedlug uczelni, aliasu, domeny zrodla, tekstu roszczenia i wymiaru analizy.",
-    empty: "Brak publicznych rekordow pasujacych do zapytania.",
+    claims: "Twierdzenia",
+    confidence: "Pewność",
+    description: "Szukaj publicznych rekordów polityk AI według uczelni, aliasu, domeny źródła, tekstu twierdzenia i wymiaru analizy.",
+    empty: "Brak publicznych rekordów pasujących do zapytania.",
     entities: "jednostki",
     highSignal: "Rekordy o wysokim sygnale",
     kicker: "Szukaj",
+    match: "Dopasowanie",
     matches: "wyniki",
-    placeholder: "Uczelnia, temat, domena zrodla...",
+    placeholder: "Uczelnia, temat, domena źródła...",
     record: "Rekord",
     reset: "Reset",
-    resultsFor: (query) => `Wyniki dla \"${query}\"`,
+    resultsFor: (query) => `Wyniki dla „${query}”`,
+    score: "Wynik",
     searchApi: "API wyszukiwania",
     searchJson: "JSON wyszukiwania",
-    searchLabel: "Szukaj publicznych rekordow",
+    searchLabel: "Szukaj publicznych rekordów",
+    sources: "Źródła",
     suggestedRecords: "sugerowane rekordy",
-    title: "Znajdz rekordy polityk AI uczelni oparte na zrodlach"
+    title: "Znajdź rekordy polityk AI uczelni oparte na źródłach"
   },
   es: {
     alias: "Alias",
     aliases: "alias",
-    apiBoxTitle: "API de busqueda",
+    apiBoxTitle: "API de búsqueda",
     button: "Buscar",
-    description: "Busca registros publicos de politicas universitarias de IA por universidad, alias, dominio fuente, texto y dimension de analisis.",
-    empty: "No hay registros publicos que coincidan con esta busqueda.",
+    claims: "Afirmaciones",
+    confidence: "Confianza",
+    description: "Busca registros públicos de políticas universitarias de IA por universidad, alias, dominio fuente, texto y dimensión de análisis.",
+    empty: "No hay registros públicos que coincidan con esta búsqueda.",
     entities: "entidades",
     highSignal: "Registros destacados",
     kicker: "Buscar",
+    match: "Coincidencia",
     matches: "coincidencias",
     placeholder: "Universidad, tema, dominio fuente...",
     record: "Registro",
     reset: "Restablecer",
-    resultsFor: (query) => `Resultados para \"${query}\"`,
-    searchApi: "API de busqueda",
-    searchJson: "JSON de busqueda",
-    searchLabel: "Buscar registros publicos",
+    resultsFor: (query) => `Resultados para "${query}"`,
+    score: "Puntuación",
+    searchApi: "API de búsqueda",
+    searchJson: "JSON de búsqueda",
+    searchLabel: "Buscar registros públicos",
+    sources: "Fuentes",
     suggestedRecords: "registros sugeridos",
-    title: "Encuentra registros universitarios de politicas de IA respaldados por fuentes"
+    title: "Encuentra registros universitarios de políticas de IA respaldados por fuentes"
   },
   nl: {
     alias: "Alias",
     aliases: "aliassen",
     apiBoxTitle: "Zoek-API's",
     button: "Zoeken",
+    claims: "Claims",
+    confidence: "Vertrouwen",
     description: "Zoek publieke AI-beleidsrecords op universiteitsnaam, alias, brondomein, claimtekst en analysedimensie.",
     empty: "Geen publieke records komen overeen met deze zoekopdracht.",
     entities: "entiteiten",
     highSignal: "Sterke records",
     kicker: "Zoeken",
+    match: "Overeenkomst",
     matches: "matches",
     placeholder: "Universiteit, onderwerp, brondomein...",
     record: "Record",
     reset: "Reset",
-    resultsFor: (query) => `Resultaten voor \"${query}\"`,
+    resultsFor: (query) => `Resultaten voor "${query}"`,
+    score: "Score",
     searchApi: "zoek-API",
     searchJson: "Zoek-JSON",
     searchLabel: "Zoek publieke records",
+    sources: "Bronnen",
     suggestedRecords: "voorgestelde records",
     title: "Vind brononderbouwde AI-beleidsrecords van universiteiten"
   },
@@ -175,19 +210,24 @@ const searchCopy: Record<
     aliases: "alias",
     apiBoxTitle: "API carian",
     button: "Cari",
+    claims: "Tuntutan",
+    confidence: "Keyakinan",
     description: "Cari rekod dasar AI universiti yang tersedia kepada umum mengikut nama universiti, alias, domain sumber, teks tuntutan dan dimensi analisis.",
     empty: "Tiada rekod awam sepadan dengan carian ini.",
     entities: "entiti",
     highSignal: "Rekod isyarat tinggi",
     kicker: "Cari",
+    match: "Padanan",
     matches: "padanan",
     placeholder: "Universiti, topik, domain sumber...",
     record: "Rekod",
     reset: "Tetap semula",
-    resultsFor: (query) => `Hasil untuk \"${query}\"`,
+    resultsFor: (query) => `Hasil untuk "${query}"`,
+    score: "Skor",
     searchApi: "API carian",
     searchJson: "JSON carian",
     searchLabel: "Cari rekod awam",
+    sources: "Sumber",
     suggestedRecords: "rekod cadangan",
     title: "Cari rekod dasar AI universiti yang disokong sumber"
   }
@@ -376,9 +416,9 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
                 key={record.entitySlug}
                 metadata={
                   <>
-                    <StateLabel reviewState={record.reviewState} />
-                    <MetaLabel label="Claims">{record.claimCount}</MetaLabel>
-                    <MetaLabel label="Sources">{record.sourceCount}</MetaLabel>
+                    <StateLabel locale={locale} reviewState={record.reviewState} />
+                    <MetaLabel label={copy.claims}>{record.claimCount}</MetaLabel>
+                    <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
                   </>
                 }
               >
@@ -501,10 +541,10 @@ function SearchResults({
           key={result.entitySlug}
           metadata={
             <>
-              <StateLabel reviewState={result.reviewState} />
-              <MetaLabel label="Score">{result.score}</MetaLabel>
-              <MetaLabel label="Claims">{result.claimCount}</MetaLabel>
-              <MetaLabel label="Sources">{result.sourceCount}</MetaLabel>
+              <StateLabel locale={locale} reviewState={result.reviewState} />
+              <MetaLabel label={copy.score}>{result.score}</MetaLabel>
+              <MetaLabel label={copy.claims}>{result.claimCount}</MetaLabel>
+              <MetaLabel label={copy.sources}>{result.sourceCount}</MetaLabel>
             </>
           }
         >
@@ -527,9 +567,9 @@ function SearchResults({
           </div>
           <p data-i18n="preserve">{result.sourceBackedSnippet}</p>
           <div className="table-record-meta">
-            <MetaLabel label="Match">{result.matchReason}</MetaLabel>
+            <MetaLabel label={copy.match}>{result.matchReason}</MetaLabel>
             {result.confidence !== undefined ? (
-              <MetaLabel label="Confidence">
+              <MetaLabel label={copy.confidence}>
                 {Math.round(result.confidence * 100)}%
               </MetaLabel>
             ) : null}
