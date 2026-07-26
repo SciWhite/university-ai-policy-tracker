@@ -26,6 +26,11 @@ After the first-stage checks have remained healthy for at least 72 hours, set
 rebuild, restart, and rerun the seven-language HTTP smoke test before announcing
 the second stage.
 
+Status: phase two is ENABLED in production. Phase one shipped 2026-07-20; the
+flag is set in `/srv/uapt/env/production.env` on the OCI host, and phase-two
+routes were verified live on 2026-07-26 (`/zh/tools`, `/zh/coverage`,
+`/fr/rankings/qs-2026` all return 200 and appear in the locale sitemaps).
+
 ## Rollback boundary
 
 Translation and localized-route changes can be rolled back independently of public data. Never replace or promote `/api/public/v1` data as part of a multilingual UI rollback.

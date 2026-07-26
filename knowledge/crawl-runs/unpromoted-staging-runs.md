@@ -1,102 +1,54 @@
 ---
 title: Unpromoted Staging Runs
 authoritativeLevel: derived_snapshot
-generatedAt: 2026-05-12T10:41:26-04:00
+generatedAt: 2026-07-26T12:01:58.037Z
 sourceFiles:
   - data/public-releases/current.json
   - staging/uapt-runs/
-  - scripts/validate-openclaw-artifacts.ts
 sourceCommands:
-  - find staging/uapt-runs -maxdepth 1 -mindepth 1 -type d
-  - pnpm validate:openclaw-artifacts <candidate-run>
-refreshCadence: after each OpenClaw or OpenCode staged run
+  - pnpm knowledge:update
+refreshCadence: after each public release promotion or staged run
 canonicalBoundary: This file is a staging review summary only. Unpromoted runs are not public data.
 ---
-
 # Unpromoted Staging Runs
 
 This file lists staging directories under `staging/uapt-runs/` that are not
-listed in `data/public-releases/current.json`. It is a planning snapshot for
-review and repair work.
-
-Unpromoted data must not be used by public pages or public JSON until a run is
-reviewed, repaired if needed, validated, added to the public release manifest,
-and re-audited.
+listed in `data/public-releases/current.json`. Unpromoted data must not be
+used by public pages or public JSON until a run is reviewed, validated, added
+to the public release manifest, and re-audited.
 
 ## Summary
 
 | Category | Count |
 | --- | ---: |
-| Staging directories checked | 39 |
-| Manifest-promoted staging directories | 28 |
-| Promoted legacy `data/openclaw-staging` directories | 3 |
-| Unpromoted staging candidate directories | 10 |
-| Archive directory | 1 |
-| Unpromoted candidates passing artifact validator | 10 |
-| Unpromoted candidates failing artifact validator | 0 |
+| Staging directories checked | 826 |
+| Manifest-promoted staging directories | 801 |
+| Unpromoted staging directories | 25 |
 
-## Unpromoted Candidate Runs
+## Unpromoted Directories
 
-| Run directory | Detected slug | JSON files | Claims | Evidence | Sources | Languages | Validator status | Likely reason not promoted | Recommended next action |
-| --- | --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |
-| `staging/uapt-runs/uapt-carnegie-mellon-university-20260512` | `carnegie-mellon-university` | 42 | 7 | 7 | 6 | `en` | pass | New repaired staging run after current release manifest | Review and consider adding to next manifest if source/citation quality is acceptable |
-| `staging/uapt-runs/uapt-johns-hopkins-university-20260510` | `johns-hopkins-university` | 37 | 6 | 6 | 6 | `en` | pass | Separate run exists while public dataset already exposes JHU as `jhu` with entity `needs_review` | Resolve slug/canonical entity mapping and review why public entity remains `needs_review` |
-| `staging/uapt-runs/uapt-yonsei-university-20260512` | `yonsei-university` | 21 | 4 | 4 | 1 | `en` | pass | New repaired staging run after current release manifest | Review limited source count and consider next manifest promotion |
-| `staging/uapt-runs/uapt-the-london-school-of-economics-and-political-science-20260512` | `the-london-school-of-economics-and-political-science` | 53 | 8 | 8 | 10 | `en` | pass | New staging run after initial snapshot | Review source breadth and decide whether to promote |
-| `staging/uapt-runs/uapt-kyoto-university-20260512` | `kyoto-university` | 39 | 7 | 7 | 6 | `ja` | pass | New staging run after initial snapshot | Review Japanese original-language evidence and decide whether to promote |
-| `staging/uapt-runs/uapt-ludwig-maximilians-universitat-munchen-20260512` | `ludwig-maximilians-universitat-munchen` | 40 | 6 | 6 | 8 | `de`, `en` | pass | New staging run after initial snapshot | Review German/English source handling and decide whether to promote |
-| `staging/uapt-runs/uapt-universiti-malaya-20260512` | `universiti-malaya` | 1 bundled JSON | 6 | 6 | 6 | `en` | pass | New staging run after initial snapshot | Review bundled artifact structure and decide whether to promote |
-| `staging/uapt-runs/uapt-the-hong-kong-polytechnic-university-20260512` | `the-hong-kong-polytechnic-university` | 35 | 5 | 6 | 6 | `en` | pass | New staging run, currently untracked/unpromoted in local workspace | Stage/review intentionally, then decide whether to promote |
-| `staging/uapt-runs/uapt-university-of-bristol-20260512` | `university-of-bristol` | 27 | 4 | 4 | 4 | `en` | pass | New staging run, currently untracked/unpromoted in local workspace | Stage/review intentionally, then decide whether to promote |
-| `staging/uapt-runs/uapt-new-york-university-20260512` | `new-york-university` | 30 | 4 | 4 | 5 | `en` | pass | Repaired after earlier schema/hash failures; still unpromoted | Review for possible next manifest promotion |
-
-## Validator Notes
-
-The following commands were run for the current snapshot:
-
-```bash
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-carnegie-mellon-university-20260512
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-yonsei-university-20260512
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-johns-hopkins-university-20260510
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-the-hong-kong-polytechnic-university-20260512
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-university-of-bristol-20260512
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-new-york-university-20260512
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-the-london-school-of-economics-and-political-science-20260512
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-kyoto-university-20260512
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-ludwig-maximilians-universitat-munchen-20260512
-pnpm validate:openclaw-artifacts staging/uapt-runs/uapt-universiti-malaya-20260512
-```
-
-Passing candidate outputs:
-
-- CMU: 42 artifacts; required families present; 7 claims; 7 evidence
-  candidates; 7 review decisions.
-- Yonsei: 21 artifacts; required families present; 4 claims; 4 evidence
-  candidates; 4 review decisions; only 1 source candidate/snapshot.
-- JHU: 37 artifacts; required families present; 6 claims; 6 evidence
-  candidates; 6 review decisions.
-- PolyU: 35 artifacts; required families present; 5 claims; 6 evidence
-  candidates; 5 review decisions.
-- Bristol: 27 artifacts; required families present; 4 claims; 4 evidence
-  candidates; 4 review decisions.
-- LSE: 53 artifacts; required families present; 8 claims; 8 evidence
-  candidates; 8 review decisions.
-- Kyoto: 39 artifacts; required families present; 7 claims; 7 evidence
-  candidates; 7 review decisions; evidence language is `ja`.
-- LMU Munich: 40 artifacts; required families present; 6 claims; 6 evidence
-  candidates; 6 review decisions; languages are `de` and `en`.
-- Universiti Malaya: 36 artifacts in one bundle JSON; required families
-  present; 6 claims; 6 evidence candidates; 6 review decisions.
-- NYU: 30 artifacts; required families present after repair; 4 claims; 4
-  evidence candidates; 4 review decisions.
-
-## Archive Directory
-
-`staging/uapt-runs/_archives` is not a candidate release directory and contains
-no JSON files in this snapshot.
-
-## Do Not Use As Canonical
-
-Unpromoted runs are staging data. They can guide review and repair, but they
-must not appear in public JSON, ranking pages, university pages, analysis pages,
-or citation examples until promoted through the manifest workflow.
+- `staging/uapt-runs/uapt-ai-tools-qs-1-10-20260614`
+- `staging/uapt-runs/uapt-ai-tools-qs-101-110-20260712`
+- `staging/uapt-runs/uapt-ai-tools-qs-11-20-20260614`
+- `staging/uapt-runs/uapt-ai-tools-qs-111-120-20260712`
+- `staging/uapt-runs/uapt-ai-tools-qs-121-130-20260713`
+- `staging/uapt-runs/uapt-ai-tools-qs-131-140-20260713`
+- `staging/uapt-runs/uapt-ai-tools-qs-141-160-20260713`
+- `staging/uapt-runs/uapt-ai-tools-qs-161-190-20260713`
+- `staging/uapt-runs/uapt-ai-tools-qs-191-230-20260713`
+- `staging/uapt-runs/uapt-ai-tools-qs-21-25-20260701`
+- `staging/uapt-runs/uapt-ai-tools-qs-231-280-20260713`
+- `staging/uapt-runs/uapt-ai-tools-qs-26-30-20260701`
+- `staging/uapt-runs/uapt-ai-tools-qs-281-330-20260713`
+- `staging/uapt-runs/uapt-ai-tools-qs-31-35-20260710`
+- `staging/uapt-runs/uapt-ai-tools-qs-331-380-20260714`
+- `staging/uapt-runs/uapt-ai-tools-qs-36-40-20260710`
+- `staging/uapt-runs/uapt-ai-tools-qs-381-430-20260714`
+- `staging/uapt-runs/uapt-ai-tools-qs-41-45-20260710`
+- `staging/uapt-runs/uapt-ai-tools-qs-46-50-20260710`
+- `staging/uapt-runs/uapt-ai-tools-qs-51-60-20260711`
+- `staging/uapt-runs/uapt-ai-tools-qs-61-70-20260711`
+- `staging/uapt-runs/uapt-ai-tools-qs-71-80-20260712`
+- `staging/uapt-runs/uapt-ai-tools-qs-81-90-20260712`
+- `staging/uapt-runs/uapt-ai-tools-qs-91-100-20260712`
+- `staging/uapt-runs/uapt-qs200-stage2-batch1-20260517`
