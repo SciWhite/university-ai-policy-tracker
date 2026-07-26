@@ -30,6 +30,7 @@ export const toolEndorsementTypeSchema = z.enum([
   "institutionally_licensed_or_procured",
   "self_hosted_system",
   "third_party_service",
+  "explicitly_not_endorsed",
   "not_specified"
 ]);
 
@@ -366,6 +367,8 @@ export function formatToolAvailability(availability: ToolAvailability): string {
     allowed: "Allowed",
     conditionally_allowed: "Conditionally allowed",
     restricted_or_blocked: "Blocked / restricted",
+    under_review: "Under review",
+    not_recommended: "Not recommended",
     not_mentioned: "Unknown"
   };
 
@@ -380,6 +383,7 @@ export function formatToolEndorsementType(
     institutionally_licensed_or_procured: "Licensed or procured",
     self_hosted_system: "Self-hosted",
     third_party_service: "Third-party service",
+    explicitly_not_endorsed: "Not endorsed by the university",
     not_specified: "Not specified"
   };
 
@@ -511,11 +515,23 @@ function deriveFallbackToolMentions(text: string): ToolMention[] {
 
 function classifyAvailability(text: string): ToolAvailability {
   if (
-    /\b(?:prohibit(?:ed)?|not\s+permitted|not\s+allowed|forbidden|blocked|must\s+not|may\s+not|cannot|can't|do\s+not\s+use|unauthori[sz]ed)\b/i.test(
+    /\b(?:prohibit(?:ed)?|not\s+permitted|not\s+allowed|forbidden|blocked|must\s+not|may\s+not|cannot|can't|do\s+not\s+use|unauthori[sz]ed|not\s+approved)\b/i.test(
       text
     )
   ) {
     return "restricted_or_blocked";
+  }
+
+  if (/\b(?:not\s+recommended|discouraged|advise[sd]?\s+against)\b/i.test(text)) {
+    return "not_recommended";
+  }
+
+  if (
+    /\b(?:under\s+(?:it\s+)?review|under\s+evaluation|being\s+(?:evaluated|reviewed)|pending\s+(?:review|approval)|review\s+in\s+progress)\b/i.test(
+      text
+    )
+  ) {
+    return "under_review";
   }
 
   if (
@@ -538,6 +554,14 @@ function classifyAvailability(text: string): ToolAvailability {
 }
 
 function classifyEndorsement(text: string): ToolEndorsementType {
+  if (
+    /\b(?:not\s+(?:part\s+of\s+)?(?:the\s+)?(?:recommended|supported|endorsed|approved)|not\s+recommended\s+and\s+supported|are\s+not\s+approved|not\s+endorsed)\b/i.test(
+      text
+    )
+  ) {
+    return "explicitly_not_endorsed";
+  }
+
   if (selfHostedPattern.test(text)) {
     return "self_hosted_system";
   }
@@ -565,7 +589,9 @@ function chooseAvailability(
   next: ToolAvailability
 ): ToolAvailability {
   const rank: Record<ToolAvailability, number> = {
-    restricted_or_blocked: 4,
+    restricted_or_blocked: 6,
+    not_recommended: 5,
+    under_review: 4,
     conditionally_allowed: 3,
     allowed: 2,
     not_mentioned: 1
@@ -579,8 +605,9 @@ function chooseEndorsementType(
   next: ToolEndorsementType
 ): ToolEndorsementType {
   const rank: Record<ToolEndorsementType, number> = {
-    self_hosted_system: 5,
-    institutionally_licensed_or_procured: 4,
+    self_hosted_system: 6,
+    institutionally_licensed_or_procured: 5,
+    explicitly_not_endorsed: 4,
     officially_endorsed: 3,
     third_party_service: 2,
     not_specified: 1

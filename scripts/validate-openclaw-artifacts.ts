@@ -5,6 +5,7 @@ import {
   PUBLIC_API_VERSION,
   openClawArtifactBundleSchema,
   openClawStagedArtifactSchema,
+  type OpenClawSnippetPolicy,
   type OpenClawStagedArtifact
 } from "@uapt/shared";
 import { ZodError } from "zod";
@@ -35,9 +36,11 @@ type ValidationIssue = {
 async function main() {
   const targetDir = process.argv[2] ?? DEFAULT_STAGING_DIR;
   const issues: ValidationIssue[] = [];
-  const artifacts = await loadArtifacts(targetDir, issues);
+  const snippetPolicies = new Map<string, OpenClawSnippetPolicy>();
+  const artifacts = await loadArtifacts(targetDir, issues, snippetPolicies);
 
   validateArtifactSet(artifacts, issues);
+  validateVerbatimSnippets(artifacts, snippetPolicies, issues);
 
   if (issues.length) {
     console.error(`OpenClaw artifact validation failed for ${targetDir}`);
@@ -61,7 +64,8 @@ async function main() {
 
 async function loadArtifacts(
   targetDir: string,
-  issues: ValidationIssue[]
+  issues: ValidationIssue[],
+  snippetPolicies: Map<string, OpenClawSnippetPolicy>
 ): Promise<OpenClawStagedArtifact[]> {
   const files = await collectJsonFiles(targetDir, issues);
   const artifacts: OpenClawStagedArtifact[] = [];
@@ -69,7 +73,7 @@ async function loadArtifacts(
   for (const file of files) {
     try {
       const parsed = JSON.parse(await readFile(file, "utf8")) as unknown;
-      const values = extractArtifactValues(parsed);
+      const values = extractArtifactValues(parsed, snippetPolicies);
 
       for (const value of values) {
         const result = openClawStagedArtifactSchema.safeParse(value);
@@ -119,11 +123,19 @@ async function collectJsonFiles(
   return files.flat().sort();
 }
 
-function extractArtifactValues(value: unknown): unknown[] {
+function extractArtifactValues(
+  value: unknown,
+  snippetPolicies: Map<string, OpenClawSnippetPolicy>
+): unknown[] {
   if (Array.isArray(value)) return value;
 
   const bundle = openClawArtifactBundleSchema.safeParse(value);
-  if (bundle.success) return bundle.data.artifacts;
+  if (bundle.success) {
+    if (bundle.data.snippetPolicy) {
+      snippetPolicies.set(bundle.data.runId, bundle.data.snippetPolicy);
+    }
+    return bundle.data.artifacts;
+  }
 
   return [value];
 }
@@ -426,6 +438,71 @@ function validateClaimsAndEvidence(
     if (snapshotHashes.size && !snapshotHashes.has(evidenceArtifact.snapshotHash)) {
       issues.push({
         message: `Evidence ${evidenceArtifact.evidenceId} snapshotHash does not match a staged source snapshot`
+      });
+    }
+  }
+}
+
+// Snippet policy calibration (2026-07): sampled production evidence showed
+// English paraphrases stored as the "original" snippet for non-English sources
+// (e.g. es/it/en-summarized records), which breaks automated re-verification
+// against the live page and violates the original-language evidence principle.
+// Runs that declare `snippetPolicy: "verbatim_original_v2"` promise verbatim
+// source-language quotes; these checks enforce the promise where it is
+// mechanically detectable. Legacy runs are exempt to keep published history valid.
+const NON_LATIN_SCRIPT_RANGES: Record<string, RegExp> = {
+  ar: /[؀-ۿ]/,
+  fa: /[؀-ۿ]/,
+  he: /[֐-׿]/,
+  ru: /[Ѐ-ӿ]/,
+  uk: /[Ѐ-ӿ]/,
+  bg: /[Ѐ-ӿ]/,
+  el: /[Ͱ-Ͽ]/,
+  th: /[฀-๿]/,
+  hi: /[ऀ-ॿ]/,
+  zh: /[一-鿿]/,
+  ja: /[぀-ヿ一-鿿]/,
+  ko: /[가-힯]/
+};
+const ENGLISH_REPORTING_PATTERN =
+  /\b(?:says|states|lists|provides|describes|indicates|announces|presents|reports)\b/i;
+
+function validateVerbatimSnippets(
+  artifacts: OpenClawStagedArtifact[],
+  snippetPolicies: Map<string, OpenClawSnippetPolicy>,
+  issues: ValidationIssue[]
+): void {
+  for (const artifact of artifacts) {
+    if (artifact.artifactType !== "evidence_candidate") continue;
+    if (snippetPolicies.get(artifact.runId) !== "verbatim_original_v2") continue;
+
+    const language = artifact.sourceLanguage.split("-")[0].toLowerCase();
+    const snippet = artifact.evidenceSnippetOriginal;
+
+    if (language === "en") continue;
+
+    if (!artifact.evidenceSnippetDisplay) {
+      issues.push({
+        message: `Evidence ${artifact.evidenceId} (${artifact.sourceLanguage}) must carry an English evidenceSnippetDisplay under verbatim_original_v2`
+      });
+    }
+
+    const scriptRange = NON_LATIN_SCRIPT_RANGES[language];
+    if (scriptRange && !scriptRange.test(snippet)) {
+      issues.push({
+        message: `Evidence ${artifact.evidenceId} declares sourceLanguage ${artifact.sourceLanguage} but evidenceSnippetOriginal contains no ${language} script characters; verbatim_original_v2 requires the verbatim source-language quote`
+      });
+      continue;
+    }
+
+    const asciiRatio =
+      snippet.length === 0
+        ? 1
+        : snippet.split("").filter((char) => char.charCodeAt(0) < 128).length /
+          snippet.length;
+    if (!scriptRange && asciiRatio > 0.97 && ENGLISH_REPORTING_PATTERN.test(snippet)) {
+      issues.push({
+        message: `Evidence ${artifact.evidenceId} (${artifact.sourceLanguage}) evidenceSnippetOriginal reads like an English paraphrase (reporting verb, pure ASCII); verbatim_original_v2 requires the verbatim source-language quote`
       });
     }
   }

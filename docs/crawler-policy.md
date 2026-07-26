@@ -12,6 +12,34 @@ Canonical public domain: `https://eduaipolicy.org`. Crawler output may include t
 4. Use opencli for browser/control workflows when it materially improves reliability.
 5. Use Firecrawl as a fallback for difficult extraction or structured crawl tasks.
 
+JS-render escalation rule (2026-07 calibration): when an HTTP 200 response
+yields fewer than ~400 normalized text characters, treat the page as a
+JS-rendered shell, not as evidence. Escalate to rendered fetch (Playwright or
+Firecrawl) before extraction or health classification. A 2026-07 production
+sample found SPA guidance sites (for example `aiguide.hanyang.ac.kr`) whose
+plain-HTTP body contains only skip links.
+
+## Discovery Recall
+
+Tool pages from IT departments are the easiest sources to find, and sampled
+coverage showed they crowd out higher-authority policy documents. For every
+university, discovery must attempt, and the discovery trace must record,
+beyond the IT/tools path:
+
+- registry / academic-office paths (`registry.*`, `academics.*`, senate or
+  examination regulations) for assessment and misconduct rules;
+- provost / teaching-center paths for teaching guidance;
+- library paths for citation and copyright guidance;
+- `pdf_discovery` for official policy PDFs, which frequently hold the
+  campus-wide rules that HTML pages only summarize.
+
+Negative and interim tool statuses are claims, not noise. When an official
+source lists a tool as not approved, not recommended, under review, or
+web-version-only, stage a claim candidate with the matching availability
+(`restricted_or_blocked`, `not_recommended`, `under_review`,
+`conditionally_allowed`) and endorsement (`explicitly_not_endorsed`) values
+instead of skipping the row.
+
 ## Robots, Access, And Rate Limits
 
 - Respect robots.txt and site-specific crawl rules.
@@ -37,6 +65,17 @@ Every classification and public claim candidate should preserve:
 
 Every public claim must additionally preserve a short evidence snippet tied to the source URL and source snapshot hash. Long source passages should not be copied into tracker metadata.
 
+Verbatim snippet policy (2026-07 calibration): `evidenceSnippetOriginal` must
+be a verbatim quote in the source language. Summaries, translations, and
+reporting-voice paraphrases ("The university states that ...") belong only in
+`evidenceSnippetDisplay`. New runs must declare
+`"snippetPolicy": "verbatim_original_v2"` in their artifact bundle; the
+validator then rejects non-English sources whose original snippet carries no
+source-language script or reads as an English paraphrase, and requires an
+English `evidenceSnippetDisplay` for non-English sources. Verbatim originals
+keep original-language evidence canonical and make automated re-verification
+against the live page possible.
+
 ## Change Detection
 
 Run extraction only after source content changes:
@@ -46,6 +85,21 @@ Run extraction only after source content changes:
 3. Compute content hash.
 4. If hash is unchanged, update last checked metadata and stop.
 5. If hash changed, create snapshot, diff, extraction candidate, claim/evidence candidate, and review task.
+
+Link-health calibration (2026-07): an HTTP 200 is not proof the source is
+alive. The maintenance scan additionally flags:
+
+- `dead_link` for HTTP 404/410, which queues URL relocation (same-domain site
+  search and redirect discovery) before any claim deprecation;
+- `suspected_soft_404` when a 200 body fingerprints as a not-found page
+  (multilingual tombstone wording) or when a deep link silently collapses to
+  the domain root or a one-segment section index.
+
+Both states route to the repair queue instead of counting as healthy. A
+2026-07 sample caught `kamu.uef.fi` pages returning localized not-found bodies
+and `yz.cau.edu.cn` deep links redirecting to a section index while
+source-health still reported `ok`. High-churn platforms (LibGuides and similar
+CMS guides) deserve shorter re-check cycles than stable policy PDFs.
 
 ## Local Ingestion Contract
 

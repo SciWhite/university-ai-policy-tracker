@@ -145,6 +145,8 @@ export const serviceTreatments = [
   "allowed",
   "conditionally_allowed",
   "restricted_or_blocked",
+  "under_review",
+  "not_recommended",
   "not_mentioned"
 ] as const;
 

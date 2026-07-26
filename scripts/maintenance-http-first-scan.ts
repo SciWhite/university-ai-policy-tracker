@@ -9,6 +9,7 @@ type Stage1Status =
   | "baseline_recorded"
   | "blocked_or_inconclusive"
   | "changed_hash"
+  | "dead_link"
   | "firecrawl_failed"
   | "firecrawl_opened_no_content"
   | "firecrawl_verified_changed"
@@ -19,6 +20,7 @@ type Stage1Status =
   | "not_scanned"
   | "repair_queue"
   | "suspected_policy_update"
+  | "suspected_soft_404"
   | "unchanged";
 
 interface CliOptions {
@@ -62,6 +64,7 @@ interface MaintenanceTarget {
 
 interface HttpResult {
   accessStatus: "blocked" | "failed" | "ok";
+  bodyProbe?: string;
   contentHash?: string;
   contentLength?: string;
   contentType?: string;
@@ -71,6 +74,7 @@ interface HttpResult {
   httpStatus?: number;
   lastModified?: string;
   readable: boolean;
+  textLength: number;
   title?: string;
 }
 
@@ -125,6 +129,18 @@ const DEFAULT_STATE_FILE = ".local/maintenance-state/source-hashes.json";
 const FIRECRAWL_ENDPOINT = "https://api.firecrawl.dev/v2/scrape";
 const POLICY_SIGNAL_PATTERN =
   /\b(ai|artificial intelligence|generative ai|genai|chatgpt|copilot|deepseek|academic integrity|student conduct|assessment|exam|coursework|syllabus)\b/i;
+// Soft-404 calibration (2026-07): sampled sources returned HTTP 200 while
+// serving a "page not found" body or silently redirecting deep links to a
+// section index (kamu.uef.fi, yz.cau.edu.cn). Hash comparison alone reads that
+// as an ordinary content change, so the scan now fingerprints tombstone
+// wording and deep-link-to-root redirects explicitly.
+const SOFT_404_PATTERN =
+  /(page (?:not|cannot be|could not be) found|could not be found|no longer (?:available|exists)|has been (?:deleted|removed|moved)|does not exist|error 404|404 error|sivua ei l[öo]ytynyt|seite nicht gefunden|p[áa]gina no encontrada|pagina non trovata|page introuvable|页面不存在|找不到页面|未找到|无法找到|페이지를 찾을 수 없습니다|ページが見つかりません)/i;
+// JS-render calibration (2026-07): SPA sources (e.g. aiguide.hanyang.ac.kr)
+// return a near-empty HTML shell to plain HTTP; below this many normalized
+// characters the page is treated as render-required and escalated to
+// Firecrawl instead of being classified from the shell.
+const RENDER_TEXT_THRESHOLD = 400;
 
 void main();
 
@@ -376,6 +392,7 @@ async function fetchHttpMetadata(
 
     return {
       accessStatus: response.ok ? "ok" : isBlockedStatus(response.status) ? "blocked" : "failed",
+      bodyProbe: normalized.slice(0, 3000),
       contentHash,
       contentLength: response.headers.get("content-length") ?? undefined,
       contentType,
@@ -384,13 +401,15 @@ async function fetchHttpMetadata(
       httpStatus: response.status,
       lastModified: response.headers.get("last-modified") ?? undefined,
       readable: Boolean(contentHash),
+      textLength: normalized.length,
       title: extractTitle(text)
     };
   } catch (error) {
     return {
       accessStatus: "failed",
       error: error instanceof Error ? error.message : String(error),
-      readable: false
+      readable: false,
+      textLength: 0
     };
   } finally {
     clearTimeout(timeout);
@@ -447,6 +466,17 @@ function classifyHttpResult(
   };
 
   if (http.accessStatus !== "ok") {
+    if (http.httpStatus === 404 || http.httpStatus === 410) {
+      return {
+        ...base,
+        diffClass: "source_removed_candidate",
+        openClawQueueStatus: "not_queued",
+        recommendedAction:
+          "Dead link (HTTP 404/410). Queue URL relocation: site search and redirect discovery on the same domain before deprecating claims.",
+        status: "dead_link"
+      };
+    }
+
     return {
       ...base,
       diffClass: "http_or_access_noise",
@@ -459,28 +489,28 @@ function classifyHttpResult(
     };
   }
 
-  if (!http.readable || !http.contentHash) {
-    const hasPriorChangeSignal = Boolean(
-      previous &&
-        ((http.finalUrl && previous.finalUrl && http.finalUrl !== previous.finalUrl) ||
-          (http.etag && previous.etag && http.etag !== previous.etag) ||
-          (http.lastModified &&
-            previous.lastModified &&
-            http.lastModified !== previous.lastModified))
-    );
-
+  if (!http.readable || !http.contentHash || http.textLength < RENDER_TEXT_THRESHOLD) {
     return {
       ...base,
-      diffClass: hasPriorChangeSignal
-        ? "metadata_or_chrome_delta"
-        : "http_or_access_noise",
+      diffClass: "metadata_or_chrome_delta",
       openClawQueueStatus: "not_queued",
-      recommendedAction: hasPriorChangeSignal
-        ? "HTTP metadata changed but content is unreliable; send to Firecrawl verification."
-        : "Record inconclusive HTTP read. Do not escalate without a prior change signal.",
-      status: hasPriorChangeSignal
-        ? "needs_firecrawl_verification"
-        : "blocked_or_inconclusive"
+      recommendedAction:
+        "HTTP 200 with little or no extractable text; page is likely JS-rendered or an empty shell. Verify via Firecrawl rendering before classifying.",
+      status: "needs_firecrawl_verification"
+    };
+  }
+
+  const softNotFound =
+    SOFT_404_PATTERN.test(`${http.title ?? ""}\n${http.bodyProbe ?? ""}`) ||
+    isDeepLinkCollapsedToIndex(target.sourceUrl, http.finalUrl);
+  if (softNotFound) {
+    return {
+      ...base,
+      diffClass: "source_removed_candidate",
+      openClawQueueStatus: "not_queued",
+      recommendedAction:
+        "HTTP 200 but the body reads as a not-found page or the deep link collapsed to a section index. Treat as suspected soft-404; queue URL relocation.",
+      status: "suspected_soft_404"
     };
   }
 
@@ -653,6 +683,7 @@ function summarize(rows: MaintenanceRow[]): Record<string, number> {
     blocked_or_inconclusive: 0,
     changed_hash: 0,
     content_policy_delta: 0,
+    dead_link: 0,
     firecrawl_verified_changed: 0,
     http_or_access_noise: 0,
     http_failed: 0,
@@ -660,7 +691,9 @@ function summarize(rows: MaintenanceRow[]): Record<string, number> {
     needs_openclaw: 0,
     scanned: rows.length,
     source_index_expansion: 0,
+    source_removed_candidate: 0,
     suspected_changed: 0,
+    suspected_soft_404: 0,
     unchanged: 0
   };
 
@@ -695,6 +728,8 @@ function renderMarkdown(report: MaintenanceReport): string {
     "",
     `Needs Firecrawl verification: ${countStatus(report.rows, "needs_firecrawl_verification")}`,
     `Needs OpenClaw lightweight review: ${countDiffClass(report.rows, "content_policy_delta")}`,
+    `Dead links (HTTP 404/410): ${countStatus(report.rows, "dead_link")}`,
+    `Suspected soft-404 (200 with not-found body or collapsed deep link): ${countStatus(report.rows, "suspected_soft_404")}`,
     "",
     "## Caveats",
     "",
@@ -726,6 +761,30 @@ function countDiffClass(rows: MaintenanceRow[], diffClass: SourceDiffClass): num
 
 function escapeTable(value: string): string {
   return value.replaceAll("|", "\\|").replace(/\s+/g, " ").trim();
+}
+
+// A deep source URL that now resolves to the domain root or a one-segment
+// section index is a relocation signal even when the server answers 200.
+function isDeepLinkCollapsedToIndex(
+  sourceUrl: string,
+  finalUrl: string | undefined
+): boolean {
+  if (!finalUrl) return false;
+
+  try {
+    const source = new URL(sourceUrl);
+    const final = new URL(finalUrl);
+    const sourceDepth = pathDepth(source.pathname);
+    const finalDepth = pathDepth(final.pathname);
+
+    return sourceDepth >= 2 && finalDepth <= 1 && final.pathname !== source.pathname;
+  } catch {
+    return false;
+  }
+}
+
+function pathDepth(pathname: string): number {
+  return pathname.split("/").filter(Boolean).length;
 }
 
 function stateKey(value: { entitySlug: string; sourceUrl: string }): string {

@@ -1,7 +1,7 @@
 ---
 title: Unpromoted Staging Runs
 authoritativeLevel: derived_snapshot
-generatedAt: 2026-07-26T12:01:58.037Z
+generatedAt: 2026-07-26T15:27:43.023Z
 sourceFiles:
   - data/public-releases/current.json
   - staging/uapt-runs/
@@ -21,8 +21,8 @@ to the public release manifest, and re-audited.
 
 | Category | Count |
 | --- | ---: |
-| Staging directories checked | 826 |
-| Manifest-promoted staging directories | 801 |
+| Staging directories checked | 827 |
+| Manifest-promoted staging directories | 802 |
 | Unpromoted staging directories | 25 |
 
 ## Unpromoted Directories

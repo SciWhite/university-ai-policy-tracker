@@ -25,6 +25,15 @@ export const openClawRunPurposeSchema = z.enum([
   "source_health_maintenance"
 ]);
 
+// Snippet policy calibration (2026-07): `verbatim_original_v2` runs promise that
+// every evidenceSnippetOriginal is a verbatim source-language quote, with
+// translations carried only in evidenceSnippetDisplay. Legacy runs predate the
+// rule and keep `legacy_display` semantics.
+export const openClawSnippetPolicySchema = z.enum([
+  "legacy_display",
+  "verbatim_original_v2"
+]);
+
 const fetchModeSchema = z.enum(["http", "playwright", "opencli", "firecrawl"]);
 const discoveryMethodSchema = z.enum([
   "canonical_domain",
@@ -348,6 +357,7 @@ export const openClawArtifactBundleSchema = z.object({
   ),
   runId: z.string().min(1),
   runPurpose: openClawRunPurposeSchema.optional(),
+  snippetPolicy: openClawSnippetPolicySchema.optional(),
   artifacts: z.array(openClawStagedArtifactSchema).min(1)
 });
 
@@ -366,3 +376,4 @@ export type StagedReportDraft = z.infer<typeof stagedReportDraftSchema>;
 export type OpenClawStagedArtifact = z.infer<typeof openClawStagedArtifactSchema>;
 export type OpenClawArtifactBundle = z.infer<typeof openClawArtifactBundleSchema>;
 export type OpenClawRunPurpose = z.infer<typeof openClawRunPurposeSchema>;
+export type OpenClawSnippetPolicy = z.infer<typeof openClawSnippetPolicySchema>;
