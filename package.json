@@ -19,6 +19,7 @@
     "smoke:reference-pages": "tsx scripts/smoke-reference-pages.ts",
     "smoke:i18n-http": "tsx scripts/smoke-i18n-http.ts",
     "typecheck": "pnpm -r typecheck",
+    "audit:l0-consistency": "tsx scripts/audit-l0-dataset-consistency.ts",
     "audit:public-data": "tsx scripts/audit-public-data.ts",
     "audit:policy-analysis": "tsx scripts/audit-policy-analysis.ts",
     "smoke:analysis-pages": "tsx scripts/smoke-analysis-pages.ts",
