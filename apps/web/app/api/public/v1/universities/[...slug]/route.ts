@@ -4,6 +4,7 @@ import {
   getCatalogUniversities,
   getPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
+import { getAliasSlugs, getCanonicalSlugForAlias } from "@/lib/entity-aliases";
 import { getSiteBaseUrl } from "@/lib/site-url";
 
 export const dynamic = "force-static";
@@ -17,19 +18,31 @@ interface PublicUniversityRouteProps {
 
 export async function generateStaticParams() {
   const universities = await getCatalogUniversities();
+  const aliasSlugs = await getAliasSlugs();
 
-  return universities.flatMap((university) => [
-    { slug: [university.slug] },
-    { slug: [`${university.slug}.json`] }
-  ]);
+  return [...universities.map((university) => university.slug), ...aliasSlugs].flatMap(
+    (slug) => [{ slug: [slug] }, { slug: [`${slug}.json`] }]
+  );
 }
 
 export async function GET(_request: Request, { params }: PublicUniversityRouteProps) {
   const { slug } = await params;
   const slugPath = slug.join("/");
-  const universitySlug = slugPath.endsWith(".json")
+  const hasJsonSuffix = slugPath.endsWith(".json");
+  const universitySlug = hasJsonSuffix
     ? slugPath.slice(0, -".json".length)
     : slugPath;
+  const canonicalSlug = await getCanonicalSlugForAlias(universitySlug);
+
+  if (canonicalSlug) {
+    return NextResponse.redirect(
+      new URL(
+        `/api/public/v1/universities/${canonicalSlug}${hasJsonSuffix ? ".json" : ""}`,
+        getSiteBaseUrl()
+      ),
+      308
+    );
+  }
   const summary = await getPublicUniversitySummaryBySlug(universitySlug);
 
   if (!summary) {

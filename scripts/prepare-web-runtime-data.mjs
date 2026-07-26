@@ -17,6 +17,7 @@ await mkdir(targetRoot, { recursive: true });
 await copyPath("DATA_DICTIONARY.md");
 await copyPath(path.join("data", "public-releases"));
 await copyPath(path.join("data", "rankings"));
+await copyPath(path.join("data", "entity-aliases.json"));
 
 const manifest = JSON.parse(await readFile(currentManifestPath, "utf8"));
 

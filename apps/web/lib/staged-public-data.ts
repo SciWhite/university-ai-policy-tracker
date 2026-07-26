@@ -36,6 +36,7 @@ import {
   type StagedSourceCandidate,
   type StagedSourceSnapshot
 } from "@uapt/shared";
+import { getEntityAliasResolver } from "./entity-aliases";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 
@@ -242,7 +243,9 @@ async function buildPublicDatasetFromArtifacts(
 ): Promise<PublicDataset> {
   const rankingSources = await readRankingSources(repoRoot);
   const rankingBySlug = buildRankingIndex(rankingSources);
-  const byEntity = groupArtifactsByEntity(artifacts);
+  const byEntity = groupArtifactsByEntity(
+    await canonicalizeArtifactSlugs(artifacts)
+  );
   const publicSummaries = Array.from(byEntity.values())
     .map((entityArtifacts) =>
       buildPublicSummary(
@@ -268,6 +271,27 @@ async function buildPublicDatasetFromArtifacts(
     catalogUniversities,
     publicSummaries
   };
+}
+
+// Entity identity resolution: staged artifacts filed under a registered alias
+// slug (data/entity-aliases.json) are rewritten to the canonical slug before
+// grouping, so duplicate university identities merge into one public record.
+async function canonicalizeArtifactSlugs(
+  artifacts: OpenClawStagedArtifact[]
+): Promise<OpenClawStagedArtifact[]> {
+  const { slugAliases } = await getEntityAliasResolver();
+  if (!slugAliases.size) return artifacts;
+
+  return artifacts.map((artifact) => {
+    if (!("entitySlug" in artifact) || typeof artifact.entitySlug !== "string") {
+      return artifact;
+    }
+    const canonicalSlug = slugAliases.get(artifact.entitySlug);
+
+    return canonicalSlug
+      ? { ...artifact, entitySlug: canonicalSlug }
+      : artifact;
+  });
 }
 
 async function readStagedArtifacts(

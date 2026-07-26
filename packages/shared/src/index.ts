@@ -3,6 +3,7 @@ export * from "./schemas";
 export * from "./seed";
 export * from "./ingest";
 export * from "./claims";
+export * from "./entity-alias";
 export * from "./public-examples";
 export * from "./openclaw-artifacts";
 export * from "./dataset-release";

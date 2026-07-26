@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
   getCatalogUniversityBySlug,
   getPublicJsonUrl,
@@ -15,7 +15,8 @@ import { ReferenceBox } from "@/components/reference-box";
 import { ReferenceTabs } from "@/components/reference-tabs";
 import { StateLabel } from "@/components/state-label";
 import { ToolRecordFields } from "@/components/tool-record-fields";
-import { normalizeLocale } from "@/lib/i18n";
+import { normalizeLocale, withLocalePrefix } from "@/lib/i18n";
+import { getCanonicalSlugForAlias } from "@/lib/entity-aliases";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getPolicyAnalysisProfileBySlug } from "@/lib/policy-analysis";
@@ -51,6 +52,7 @@ export const revalidate = 3600;
 export async function generateMetadata({ params }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
+  await redirectAliasSlug(slug, localeParam);
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
   const displayName = university
@@ -86,9 +88,28 @@ export async function generateMetadata({ params }: UniversityPageProps) {
   };
 }
 
+// Registered alias slugs (data/entity-aliases.json) permanently redirect to
+// the canonical university record instead of rendering a duplicate.
+async function redirectAliasSlug(
+  slug: string,
+  localeParam: string | undefined
+): Promise<void> {
+  const canonicalSlug = await getCanonicalSlugForAlias(slug);
+
+  if (canonicalSlug) {
+    permanentRedirect(
+      withLocalePrefix(
+        `/universities/${canonicalSlug}`,
+        normalizeLocale(localeParam)
+      )
+    );
+  }
+}
+
 export default async function UniversityPage({ params }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
+  await redirectAliasSlug(slug, localeParam);
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
   const policyAnalysisProfile = await getPolicyAnalysisProfileBySlug(slug);

@@ -6,6 +6,7 @@ import {
   PUBLIC_API_VERSION,
   TRACKER_METADATA_LICENSE,
   buildPublicApiCitation,
+  normalizeEntityAliasName,
   openClawRunPurposeSchema,
   openClawStagedArtifactSchema,
   type CatalogUniversity,
@@ -16,6 +17,7 @@ import {
   type StagedSourceCandidate,
   type StagedSourceSnapshot
 } from "@uapt/shared";
+import { getEntityAliasResolver } from "./entity-aliases";
 import { getStagedPublicDataset } from "./staged-public-data";
 import { getAbsoluteSiteUrl } from "./site-url";
 
@@ -378,6 +380,8 @@ export interface ReviewQueueData {
 
 interface DashboardContext {
   agentSourceChecks: AgentSourceCheckIndex;
+  /** normalized ranking-label alias -> canonical slug (data/entity-aliases.json) */
+  aliasNameToSlug: ReadonlyMap<string, string>;
   catalogUniversities: CatalogUniversity[];
   firecrawlSourceChecks: FirecrawlSourceCheckIndex;
   manifest: PublicReleaseManifest | undefined;
@@ -637,13 +641,15 @@ async function buildDashboardContext(): Promise<DashboardContext> {
     ranking,
     manifest,
     firecrawlSourceChecks,
-    agentSourceChecks
+    agentSourceChecks,
+    aliasResolver
   ] = await Promise.all([
     getStagedPublicDataset(),
     readJsonFile<RankingDocument>(path.join(repoRoot, QS_2026_TOP_100)),
     readPublicReleaseManifest(repoRoot),
     readFirecrawlSourceChecks(repoRoot),
-    readAgentSourceChecks(repoRoot)
+    readAgentSourceChecks(repoRoot),
+    getEntityAliasResolver()
   ]);
   const stagingRuns = await buildStagingRunSummaries(
     repoRoot,
@@ -653,6 +659,7 @@ async function buildDashboardContext(): Promise<DashboardContext> {
 
   return {
     agentSourceChecks,
+    aliasNameToSlug: aliasResolver.nameAliases,
     catalogUniversities: dataset.catalogUniversities,
     firecrawlSourceChecks,
     manifest,
@@ -692,7 +699,11 @@ function buildCoverageRows(context: DashboardContext): CoverageRow[] {
       guessedSlug,
       ...(QS_SLUG_ALIASES[guessedSlug] ?? [])
     ]);
+    const registrySlug = context.aliasNameToSlug.get(
+      normalizeEntityAliasName(university.name)
+    );
     const publicSummary =
+      (registrySlug ? publicBySlug.get(registrySlug) : undefined) ??
       publicByRank.get(university.rankNumber) ??
       publicByName.get(normalizeName(university.name)) ??
       Array.from(aliases)

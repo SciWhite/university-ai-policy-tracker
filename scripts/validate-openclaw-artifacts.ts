@@ -450,6 +450,30 @@ function validateReviewDecisions(
       });
     }
   }
+
+  // A claim's own reviewState must agree with its newest review decision.
+  // Decisions take precedence in the public merge layer, so a drifting claim
+  // record silently misreports the raw dataset (scripts/sync-claim-review-states.ts repairs drift).
+  const newestDecisionByClaim = new Map<string, (typeof decisions)[number]>();
+  for (const decision of decisions) {
+    const previous = newestDecisionByClaim.get(decision.claimId);
+    if (!previous || decision.decidedAt > previous.decidedAt) {
+      newestDecisionByClaim.set(decision.claimId, decision);
+    }
+  }
+
+  const claims = artifacts.filter(
+    (artifact): artifact is Extract<OpenClawStagedArtifact, { artifactType: "claim_candidate" }> =>
+      artifact.artifactType === "claim_candidate"
+  );
+  for (const claim of claims) {
+    const decision = newestDecisionByClaim.get(claim.claimId);
+    if (decision && claim.reviewState !== decision.reviewState) {
+      issues.push({
+        message: `Claim ${claim.claimId} reviewState '${claim.reviewState}' contradicts its newest review decision ${decision.decisionId} ('${decision.reviewState}'); run scripts/sync-claim-review-states.ts`
+      });
+    }
+  }
 }
 
 function validateVersionedPublicLinks(

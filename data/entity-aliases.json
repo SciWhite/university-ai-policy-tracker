@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "uapt-entity-alias-v1",
+  "generatedAt": "2026-07-26T12:00:00.000Z",
+  "notes": "Entity alias registry per docs/data-contract.md. Slug aliases resolve duplicate university identities created when later pipeline runs derived a fresh slug from ranking names instead of reusing the original record; the canonical slug is the original record holding the richer source history. Ranking-label aliases map QS 2026 institution names to canonical slugs so ranking joins can be exact instead of fuzzy. Aliases improve recall and identity resolution only; they never create policy facts.",
+  "aliases": [
+    {
+      "alias": "johns-hopkins-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "jhu",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Johns Hopkins University created by a QS-name-derived run; live records for both slugs carry the identical entity name. Canonical jhu record holds 8 official sources vs 1.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "epfl-ecole-polytechnique-federale-de-lausanne",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "epfl",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for EPFL – École polytechnique fédérale de Lausanne; identical entity name on both slugs. Canonical epfl record holds 6 official sources vs 2.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "university-of-british-columbia",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "ubc",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for University of British Columbia; identical entity name on both slugs. Canonical ubc record holds 13 official sources and 19 claims vs 1 and 1.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "university-of-california-los-angeles-ucla",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "ucla",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for University of California, Los Angeles (UCLA); identical entity name on both slugs. Canonical ucla record holds the original source history (3 sources vs 1).",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "the-chinese-university-of-hong-kong-cuhk",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "cuhk",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The Chinese University of Hong Kong (CUHK); identical entity name on both slugs. Canonical cuhk record holds 7 official sources and 12 claims vs 3 and 4.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "the-hong-kong-university-of-science-and-technology",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "hkust",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for The Hong Kong University of Science and Technology; identical entity name on both slugs. Canonical hkust record holds 7 official sources vs 1.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "australian-national-university-anu",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "anu",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Australian National University (ANU); identical entity name on both slugs. Canonical anu record holds 12 official sources and 29 claims vs 1 and 1.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "seoul-national-university",
+      "aliasType": "slug",
+      "entityType": "university",
+      "canonicalSlug": "snu",
+      "sourceSystem": "uapt_staging",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "Duplicate slug for Seoul National University; identical entity name on both slugs. Canonical snu record holds 7 official sources and 16 claims vs 1 and 1.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "Beihang University (former BUAA)",
+      "aliasType": "ranking_label",
+      "entityType": "university",
+      "canonicalSlug": "beihang-university",
+      "sourceSystem": "qs_rankings",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "QS 2026 row 388 label includes the former BUAA acronym; tracker records use 'Beihang University'.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "Freie Universitaet Berlin",
+      "aliasType": "ranking_label",
+      "entityType": "university",
+      "canonicalSlug": "freie-universitat-berlin",
+      "sourceSystem": "qs_rankings",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "QS 2026 label uses 'ae' transliteration; tracker records use 'Freie Universität Berlin'.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "KIT, Karlsruhe Institute of Technology",
+      "aliasType": "ranking_label",
+      "entityType": "university",
+      "canonicalSlug": "karlsruhe-institute-of-technology-kit",
+      "sourceSystem": "qs_rankings",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "QS 2026 label leads with the KIT acronym; tracker records use 'Karlsruhe Institute of Technology (KIT)'.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "Macquarie University (Sydney, Australia)",
+      "aliasType": "ranking_label",
+      "entityType": "university",
+      "canonicalSlug": "macquarie-university",
+      "sourceSystem": "qs_rankings",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "QS 2026 row 138 label carries a city/country suffix; tracker records use 'Macquarie University'.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "Pohang University of Science And Technology (POSTECH)",
+      "aliasType": "ranking_label",
+      "entityType": "university",
+      "canonicalSlug": "pohang-university-of-science-and-technology-postech",
+      "sourceSystem": "qs_rankings",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "QS 2026 label capitalizes 'And'; tracker records use lowercase 'and'.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "The University of Auckland",
+      "aliasType": "ranking_label",
+      "entityType": "university",
+      "canonicalSlug": "university-of-auckland",
+      "sourceSystem": "qs_rankings",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "QS 2026 label carries a leading 'The'; tracker records use 'University of Auckland'.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    },
+    {
+      "alias": "The University of Sheffield",
+      "aliasType": "ranking_label",
+      "entityType": "university",
+      "canonicalSlug": "university-of-sheffield",
+      "sourceSystem": "qs_rankings",
+      "matchConfidence": 1,
+      "reviewState": "agent_reviewed",
+      "matchReason": "QS 2026 label carries a leading 'The'; tracker records use 'University of Sheffield'.",
+      "lastReviewedAt": "2026-07-26T12:00:00.000Z"
+    }
+  ]
+}
