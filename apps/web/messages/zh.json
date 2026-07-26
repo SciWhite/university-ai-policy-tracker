@@ -7,6 +7,7 @@
       "github": "GitHub"
     },
     "navigation": {
+      "label": "主导航",
       "search": "搜索",
       "universities": "高校",
       "analysis": "分析",
@@ -50,6 +51,7 @@
       "light": "浅色",
       "dark": "深色",
       "aria": "主题模式：{mode}。点击切换主题。"
-    }
+    },
+    "skipToContent": "跳到主要内容"
   }
 }

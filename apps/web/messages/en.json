@@ -7,6 +7,7 @@
       "github": "GitHub"
     },
     "navigation": {
+      "label": "Primary navigation",
       "search": "Search",
       "universities": "Universities",
       "analysis": "Analysis",
@@ -50,6 +51,7 @@
       "light": "Light",
       "dark": "Dark",
       "aria": "Theme mode: {mode}. Activate to switch theme."
-    }
+    },
+    "skipToContent": "Skip to content"
   }
 }

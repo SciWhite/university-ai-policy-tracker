@@ -9,7 +9,6 @@ import {
   type KeyboardEvent
 } from "react";
 import { usePathname } from "next/navigation";
-import { DocumentLink as Link } from "@/components/document-link";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import { trackResearchEvent } from "@/lib/analytics-client";
@@ -18,13 +17,13 @@ import { getLocaleFromPathname, localizeHref } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 
 const autocompleteCopy = {
-  en: { loading: "Loading suggestions...", empty: "No public records match this query.", error: "Suggestions are unavailable. Submit the search instead.", match: "Match", score: "Score", claims: "Claims", sources: "Sources" },
-  zh: { loading: "正在加载建议…", empty: "没有公开记录匹配此查询。", error: "暂时无法提供建议，请直接提交搜索。", match: "匹配", score: "得分", claims: "声明", sources: "来源" },
-  fr: { loading: "Chargement des suggestions…", empty: "Aucun enregistrement public ne correspond à cette requête.", error: "Les suggestions sont indisponibles. Lancez plutôt la recherche.", match: "Correspondance", score: "Score", claims: "Affirmations", sources: "Sources" },
-  pl: { loading: "Wczytywanie sugestii…", empty: "Brak publicznych rekordów pasujących do zapytania.", error: "Sugestie są niedostępne. Zamiast tego uruchom wyszukiwanie.", match: "Dopasowanie", score: "Wynik", claims: "Twierdzenia", sources: "Źródła" },
-  es: { loading: "Cargando sugerencias…", empty: "Ningún registro público coincide con esta consulta.", error: "Las sugerencias no están disponibles. Envía la búsqueda directamente.", match: "Coincidencia", score: "Puntuación", claims: "Afirmaciones", sources: "Fuentes" },
-  nl: { loading: "Suggesties laden…", empty: "Er komen geen openbare records overeen met deze zoekopdracht.", error: "Suggesties zijn niet beschikbaar. Voer de zoekopdracht rechtstreeks uit.", match: "Overeenkomst", score: "Score", claims: "Claims", sources: "Bronnen" },
-  ms: { loading: "Memuatkan cadangan…", empty: "Tiada rekod awam sepadan dengan pertanyaan ini.", error: "Cadangan tidak tersedia. Hantar carian secara terus.", match: "Padanan", score: "Skor", claims: "Tuntutan", sources: "Sumber" }
+  en: { loading: "Loading suggestions...", empty: "No public records match this query.", error: "Suggestions are unavailable. Submit the search instead.", match: "Match", score: "Score", claims: "Claims", sources: "Sources", resultsReady: (count: number) => `${count} suggestions available. Use the up and down arrow keys to browse.` },
+  zh: { loading: "正在加载建议…", empty: "没有公开记录匹配此查询。", error: "暂时无法提供建议，请直接提交搜索。", match: "匹配", score: "得分", claims: "声明", sources: "来源", resultsReady: (count: number) => `有 ${count} 条建议。使用上下方向键浏览。` },
+  fr: { loading: "Chargement des suggestions…", empty: "Aucun enregistrement public ne correspond à cette requête.", error: "Les suggestions sont indisponibles. Lancez plutôt la recherche.", match: "Correspondance", score: "Score", claims: "Affirmations", sources: "Sources", resultsReady: (count: number) => `${count} suggestions disponibles. Utilisez les flèches haut et bas pour parcourir.` },
+  pl: { loading: "Wczytywanie sugestii…", empty: "Brak publicznych rekordów pasujących do zapytania.", error: "Sugestie są niedostępne. Zamiast tego uruchom wyszukiwanie.", match: "Dopasowanie", score: "Wynik", claims: "Twierdzenia", sources: "Źródła", resultsReady: (count: number) => `Dostępne sugestie: ${count}. Użyj klawiszy strzałek w górę i w dół, aby przeglądać.` },
+  es: { loading: "Cargando sugerencias…", empty: "Ningún registro público coincide con esta consulta.", error: "Las sugerencias no están disponibles. Envía la búsqueda directamente.", match: "Coincidencia", score: "Puntuación", claims: "Afirmaciones", sources: "Fuentes", resultsReady: (count: number) => `${count} sugerencias disponibles. Usa las teclas de flecha arriba y abajo para navegar.` },
+  nl: { loading: "Suggesties laden…", empty: "Er komen geen openbare records overeen met deze zoekopdracht.", error: "Suggesties zijn niet beschikbaar. Voer de zoekopdracht rechtstreeks uit.", match: "Overeenkomst", score: "Score", claims: "Claims", sources: "Bronnen", resultsReady: (count: number) => `${count} suggesties beschikbaar. Gebruik de pijltjestoetsen omhoog en omlaag om te bladeren.` },
+  ms: { loading: "Memuatkan cadangan…", empty: "Tiada rekod awam sepadan dengan pertanyaan ini.", error: "Cadangan tidak tersedia. Hantar carian secara terus.", match: "Padanan", score: "Skor", claims: "Tuntutan", sources: "Sumber", resultsReady: (count: number) => `${count} cadangan tersedia. Gunakan kekunci anak panah atas dan bawah untuk melihat.` }
 } as const;
 
 interface SearchAutocompleteProps {
@@ -127,7 +126,27 @@ export function SearchAutocomplete({
     return "";
   }, [copy, status]);
 
+  function openResult(result: SuggestionResult, rank: number) {
+    trackResearchEvent("autocomplete_keyboard_open", {
+      entity_slug: result.entitySlug,
+      locale,
+      page_type: "search",
+      result_rank: rank,
+      ...queryAnalytics
+    });
+    window.location.assign(
+      localizeHref(`/universities/${result.entitySlug}`, locale)
+    );
+  }
+
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Escape") {
+      setActiveIndex(-1);
+      setResults([]);
+      setStatus("idle");
+      return;
+    }
+
     if (!results.length) return;
 
     if (event.key === "ArrowDown") {
@@ -138,24 +157,15 @@ export function SearchAutocomplete({
       setActiveIndex((current) =>
         current <= 0 ? results.length - 1 : current - 1
       );
-    } else if (event.key === "Escape") {
-      setActiveIndex(-1);
-      setResults([]);
-      setStatus("idle");
     } else if (event.key === "Enter" && activeResult) {
       event.preventDefault();
-      trackResearchEvent("autocomplete_keyboard_open", {
-        entity_slug: activeResult.entitySlug,
-        locale,
-        page_type: "search",
-        result_rank: activeIndex + 1,
-        ...queryAnalytics
-      });
-      window.location.assign(
-        localizeHref(`/universities/${activeResult.entitySlug}`, locale)
-      );
+      openResult(activeResult, activeIndex + 1);
     }
   }
+
+  const isPanelOpen = status === "ready" || panelMessage !== "";
+  const announcement =
+    status === "ready" ? copy.resultsReady(results.length) : panelMessage;
 
   return (
     <div className="search-autocomplete">
@@ -165,7 +175,7 @@ export function SearchAutocomplete({
         }
         aria-autocomplete="list"
         aria-controls={listboxId}
-        aria-expanded={status === "ready" || status === "loading"}
+        aria-expanded={isPanelOpen}
         autoComplete="off"
         defaultValue={defaultValue}
         id={id}
@@ -176,57 +186,70 @@ export function SearchAutocomplete({
         role="combobox"
         type="search"
       />
-      {status === "ready" || panelMessage ? (
-        <div className="search-autocomplete__panel" id={listboxId} role="listbox">
+      <span className="visually-hidden" role="status">
+        {announcement}
+      </span>
+      {isPanelOpen ? (
+        <div className="search-autocomplete__panel">
           {panelMessage ? (
             <p className="search-autocomplete__status">{panelMessage}</p>
           ) : null}
-          {results.map((result, index) => (
-            <div
-              aria-selected={activeIndex === index}
-              className="search-autocomplete__option"
-              id={`${listboxId}-${result.entitySlug}`}
-              key={result.entitySlug}
-              role="option"
-            >
-              <div className="search-autocomplete__option-main">
-                <Link
-                  data-analytics-entity-slug={result.entitySlug}
-                  data-analytics-event="autocomplete_result_click"
-                  data-analytics-query-kind={queryKind}
-                  data-analytics-query-length-bucket={queryLengthBucket}
-                  data-analytics-result-rank={index + 1}
-                  href={`/universities/${result.entitySlug}`}
-                >
-                  {getLocalizedInstitutionName(
-                    result.entitySlug,
-                    result.entityName,
-                    locale
-                  )}
-                </Link>
-                <p>{result.sourceBackedSnippet}</p>
-                <div className="table-record-meta">
-                  <StateLabel locale={locale} reviewState={result.reviewState} />
-                  <MetaLabel label={copy.match}>{result.matchReason}</MetaLabel>
-                  <MetaLabel label={copy.score}>{result.score}</MetaLabel>
+          <div id={listboxId} role="listbox">
+            {results.map((result, index) => (
+              // Options carry a single action (open the record) to satisfy the
+              // combobox contract; keyboard users activate them with Enter via
+              // aria-activedescendant, so the option itself is not focusable.
+              <div
+                aria-selected={activeIndex === index}
+                className="search-autocomplete__option"
+                data-analytics-entity-slug={result.entitySlug}
+                data-analytics-event="autocomplete_result_click"
+                data-analytics-query-kind={queryKind}
+                data-analytics-query-length-bucket={queryLengthBucket}
+                data-analytics-result-rank={index + 1}
+                id={`${listboxId}-${result.entitySlug}`}
+                key={result.entitySlug}
+                onClick={() => openResult(result, index + 1)}
+                role="option"
+              >
+                <div className="search-autocomplete__option-main">
+                  <span className="search-autocomplete__option-title">
+                    {getLocalizedInstitutionName(
+                      result.entitySlug,
+                      result.entityName,
+                      locale
+                    )}
+                  </span>
+                  <p>{result.sourceBackedSnippet}</p>
+                  <div className="table-record-meta">
+                    <StateLabel locale={locale} reviewState={result.reviewState} />
+                    <MetaLabel label={copy.match}>{result.matchReason}</MetaLabel>
+                    <MetaLabel label={copy.score}>{result.score}</MetaLabel>
+                  </div>
+                </div>
+                <div className="search-autocomplete__option-actions">
+                  <MetaLabel label={copy.claims}>{result.claimCount}</MetaLabel>
+                  <MetaLabel label={copy.sources}>{result.sourceCount}</MetaLabel>
+                  {/* Mouse-only shortcut: nested interactive content is not
+                      allowed inside an option, so it is hidden from AT and
+                      removed from the tab order. */}
+                  <a
+                    aria-hidden="true"
+                    data-analytics-entity-slug={result.entitySlug}
+                    data-analytics-event="autocomplete_json_click"
+                    data-analytics-query-kind={queryKind}
+                    data-analytics-query-length-bucket={queryLengthBucket}
+                    data-analytics-result-rank={index + 1}
+                    href={result.publicJsonUrl}
+                    onClick={(event) => event.stopPropagation()}
+                    tabIndex={-1}
+                  >
+                    JSON
+                  </a>
                 </div>
               </div>
-              <div className="search-autocomplete__option-actions">
-                <MetaLabel label={copy.claims}>{result.claimCount}</MetaLabel>
-                <MetaLabel label={copy.sources}>{result.sourceCount}</MetaLabel>
-                <a
-                  data-analytics-entity-slug={result.entitySlug}
-                  data-analytics-event="autocomplete_json_click"
-                  data-analytics-query-kind={queryKind}
-                  data-analytics-query-length-bucket={queryLengthBucket}
-                  data-analytics-result-rank={index + 1}
-                  href={result.publicJsonUrl}
-                >
-                  JSON
-                </a>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       ) : null}
     </div>

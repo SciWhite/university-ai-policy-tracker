@@ -25,7 +25,7 @@ export function SiteNavigation({ items }: SiteNavigationProps) {
   const unprefixedPathname = getPathnameWithoutLocale(pathname);
 
   return (
-    <nav className="site-nav" aria-label={labels.search}>
+    <nav className="site-nav" aria-label={labels.label}>
       {items.map((item) => {
         const isActive = matchesPath(unprefixedPathname, item.href);
 

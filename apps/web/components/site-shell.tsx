@@ -96,6 +96,9 @@ export function SiteShell({ children }: SiteShellProps) {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messagesByLocale[locale]}>
+      <a className="skip-link" href="#main-content">
+        {shell.skipToContent}
+      </a>
       <header className="site-header">
         <LanguageSuggestion />
         <div className="site-header__top">
@@ -133,7 +136,9 @@ export function SiteShell({ children }: SiteShellProps) {
         </div>
         <SiteNavigation items={primaryTabs} />
       </header>
-      {children}
+      <div id="main-content" tabIndex={-1}>
+        {children}
+      </div>
       <footer className="site-footer">
         <div className="site-footer__inner">
           <nav className="site-footer__link-groups" aria-label={shell.footer.secondaryLinks}>

@@ -45,7 +45,11 @@
   --color-evidence-border: var(--color-border-default);
   --color-source: var(--color-accent-fg);
   --shadow-card: none;
-  --shadow-focus: 0 0 0 3px rgba(9, 105, 218, 0.18);
+  /* Solid double ring: inner canvas-colored gap keeps the accent ring above
+     3:1 contrast against both the control and the page background. */
+  --color-focus-ring: #0969da;
+  --shadow-focus: 0 0 0 2px var(--color-canvas-default),
+    0 0 0 4px var(--color-focus-ring);
   --radius-control: 6px;
   --radius-panel: 8px;
 }
@@ -77,7 +81,7 @@
     --color-candidate-border: #9e6a03;
     --color-warning-border: #9e6a03;
     --color-danger-border: #da3633;
-    --shadow-focus: 0 0 0 3px rgba(88, 166, 255, 0.25);
+    --color-focus-ring: #58a6ff;
   }
 }
 
@@ -107,7 +111,7 @@
   --color-candidate-border: #9e6a03;
   --color-warning-border: #9e6a03;
   --color-danger-border: #da3633;
-  --shadow-focus: 0 0 0 3px rgba(88, 166, 255, 0.25);
+  --color-focus-ring: #58a6ff;
 }
 
 :root[data-theme="light"] {
@@ -347,21 +351,14 @@ th {
   border-color: var(--color-accent-fg);
 }
 
-.site-action:focus-visible,
-.brand-link:focus-visible,
-.site-nav a:focus-visible,
-.site-footer a:focus-visible,
-.reference-tabs a:focus-visible,
-.data-list-row a:focus-visible,
-.api-endpoint-row a:focus-visible,
-.docs-toc a:focus-visible,
-.theme-toggle:focus-visible,
-.copy-button:focus-visible,
-.text-card:focus-visible,
-.search-autocomplete__option-main a:focus-visible,
-.search-autocomplete__option-actions a:focus-visible {
+/* Global focus ring: zero-specificity so component rules can still override.
+   The transparent outline keeps a visible rectangle in forced-colors mode;
+   [tabindex="-1"] targets (like the skip-link destination) are excluded. */
+:where(a, button, input, select, textarea, summary,
+    [tabindex]:not([tabindex="-1"])):focus-visible {
   box-shadow: var(--shadow-focus);
-  outline: none;
+  outline: 2px solid transparent;
+  outline-offset: 1px;
 }
 
 .site-nav {
@@ -486,6 +483,25 @@ th {
   width: 1px;
 }
 
+.skip-link {
+  background: var(--color-canvas-overlay);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  color: var(--color-accent-fg);
+  font-weight: 600;
+  left: 12px;
+  padding: 10px 16px;
+  position: absolute;
+  text-decoration: none;
+  top: 12px;
+  transform: translateY(-250%);
+  z-index: 100;
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
 .search-hero {
   align-items: start;
   display: grid;
@@ -567,6 +583,7 @@ th {
 }
 
 .search-autocomplete__option {
+  cursor: pointer;
   display: grid;
   gap: 12px;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -586,7 +603,8 @@ th {
   min-width: 0;
 }
 
-.search-autocomplete__option-main > a {
+.search-autocomplete__option-main > a,
+.search-autocomplete__option-title {
   color: var(--color-source);
   font-weight: 800;
 }
@@ -1362,15 +1380,6 @@ h3 {
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
-
-.analytics-dashboard button:focus-visible,
-.analytics-dashboard input:focus-visible,
-.analytics-dashboard select:focus-visible,
-.analytics-dashboard summary:focus-visible,
-.analytics-dashboard [tabindex="0"]:focus-visible {
-  box-shadow: var(--shadow-focus);
-  outline: 0;
 }
 
 .analytics-dashboard__header {
@@ -3191,7 +3200,6 @@ h3 {
 .entity-header__tool-menu summary:focus-visible {
   border-color: var(--color-accent-emphasis);
   color: var(--color-accent-fg);
-  outline: none;
 }
 
 .entity-header__tool-menu div {

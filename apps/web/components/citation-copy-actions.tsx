@@ -65,14 +65,13 @@ export function CitationCopyActions({
   ];
 
   return (
-    <div aria-label={copy.actions} className="copy-actions">
+    <div aria-label={copy.actions} className="copy-actions" role="group">
       {items.map((item) => {
         const copied = copiedTarget === item.target;
         const label = copy.labels[item.target];
 
         return (
           <button
-            aria-label={`${copy.copy} ${label}`}
             className="copy-button"
             data-analytics-copy-target={item.target}
             data-analytics-entity-slug={entitySlug}
@@ -86,6 +85,11 @@ export function CitationCopyActions({
           </button>
         );
       })}
+      {/* Announces the copied state; the visible button text swap alone is
+          not read out by screen readers. */}
+      <span className="visually-hidden" role="status">
+        {copiedTarget ? `${copy.copied}: ${copy.labels[copiedTarget]}` : ""}
+      </span>
     </div>
   );
 }
