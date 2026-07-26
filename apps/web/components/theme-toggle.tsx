@@ -80,14 +80,22 @@ function storeThemePreference(preference: ThemePreference) {
   }
 }
 
+// data-theme always carries a resolved value ("light" | "dark") so the
+// stylesheet only needs one dark token block; the inline theme-init script
+// keeps a resolved "system" preference in sync with OS changes.
 function applyThemePreference(preference: ThemePreference) {
   if (typeof document === "undefined") return;
 
-  if (preference === "system") {
-    document.documentElement.removeAttribute("data-theme");
-  } else {
-    document.documentElement.dataset.theme = preference;
-  }
+  document.documentElement.dataset.theme =
+    preference === "system" ? resolveSystemTheme() : preference;
+}
+
+function resolveSystemTheme(): "light" | "dark" {
+  if (typeof window === "undefined" || !window.matchMedia) return "light";
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
 function isThemePreference(value: string | null): value is ThemePreference {

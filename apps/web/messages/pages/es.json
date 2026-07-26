@@ -41,6 +41,14 @@
     "apiIndex": "Índice de la API",
     "changed": "Cambiado",
     "checked": "Verificado",
+    "heading": "Busca registros de políticas de IA universitarias respaldados por fuentes",
+    "matchingRecordsFor": "Resultados de ejemplo para «{query}»",
+    "browseTitle": "Explora la base de datos",
+    "browseLead": "Accede a cada conjunto de registros públicos por tema de política, región, índice de clasificación, fuente oficial o herramienta de IA concreta.",
+    "browseThemesTitle": "Temas de políticas",
+    "browseRegionsTitle": "Regiones",
+    "browseRankingsTitle": "Índices de clasificación",
+    "browseDirectoriesTitle": "Directorios",
     "homeAnswers": [
       {
         "title": "Qué es esta base de datos",

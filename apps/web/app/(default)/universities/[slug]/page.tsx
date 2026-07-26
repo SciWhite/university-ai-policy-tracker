@@ -17,6 +17,7 @@ import { ReferenceTabs } from "@/components/reference-tabs";
 import { StateLabel } from "@/components/state-label";
 import { ToolRecordFields } from "@/components/tool-record-fields";
 import { normalizeLocale, withLocalePrefix } from "@/lib/i18n";
+import { formatSnapshotHash } from "@/lib/snapshot-hash";
 import { getCanonicalSlugForAlias } from "@/lib/entity-aliases";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
@@ -39,12 +40,12 @@ type PublicUniversityClaim = PublicUniversitySummary["claims"][number];
 const recordTabs = [
   { label: "Overview", href: "#overview" },
   { label: "Policy profile", href: "#policy-profile" },
-  { label: "AI tools", href: "#tools" },
   { label: "Claims", href: "#claims" },
+  { label: "AI tools", href: "#tools" },
   { label: "Sources", href: "#sources" },
   { label: "Changes", href: "#changes" },
-  { label: "JSON", href: "#json" },
-  { label: "Citation", href: "#citation" }
+  { label: "JSON", href: "#json", spy: false },
+  { label: "Citation", href: "#citation", spy: false }
 ] as const;
 
 export const dynamicParams = true;
@@ -148,16 +149,17 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     publicSummary.officialSources.length
   );
   const canonicalUrl = publicSummary.publicPageUrl ?? publicSummary.canonicalUrl;
-  const citationReadySummary = buildCitationReadySummary({
-    candidateClaimCount: candidateClaims.length,
-    displayName,
-    officialSourceCount: publicSummary.officialSources.length,
-    publicJsonUrl,
-    reviewedClaimCount: reviewedClaims.length,
-    locale,
-    summary: publicSummary,
-    totalClaimCount: publicSummary.claims.length
-  });
+  const { citationReady: citationReadySummary, lede: recordSummaryLede } =
+    buildRecordSummaryParts({
+      candidateClaimCount: candidateClaims.length,
+      displayName,
+      officialSourceCount: publicSummary.officialSources.length,
+      publicJsonUrl,
+      reviewedClaimCount: reviewedClaims.length,
+      locale,
+      summary: publicSummary,
+      totalClaimCount: publicSummary.claims.length
+    });
   const sourceLanguages = getSourceLanguages(publicSummary.claims);
   const academicAiClaim = slug === "universitat-innsbruck"
     ? publicSummary.claims.find(
@@ -361,35 +363,41 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
           <ReferenceBox
             id="overview"
-            title="Record status"
+            title="Record summary"
           >
+            <p className="entity-answer-lede">{recordSummaryLede}</p>
             <div className="tag-row">
               <MetaLabel label="Policy status">{policyStatus}</MetaLabel>
-              <StateLabel reviewState={publicSummary.reviewState} />
               <MetaLabel label="Claim coverage">
                 {formatClaimCoverage(reviewedClaims.length, candidateClaims.length)}
               </MetaLabel>
-              <MetaLabel label="Evidence-backed claims">
-                {publicSummary.claims.length}
-              </MetaLabel>
-              <MetaLabel label="Reviewed">{reviewedClaims.length}</MetaLabel>
-              <MetaLabel label="Candidate">{candidateClaims.length}</MetaLabel>
               <MetaLabel label="Official sources">
                 {publicSummary.officialSources.length}
               </MetaLabel>
               <MetaLabel label="Source language">
                 {sourceLanguages.length ? sourceLanguages.join(", ") : "Not specified"}
               </MetaLabel>
-              <MetaLabel label="Public JSON">
-                <a
-                  data-analytics-entity-slug={slug}
-                  data-analytics-event="record_public_json_click"
-                  href={publicJsonUrl}
-                >
-                  {publicJsonPath}
-                </a>
-              </MetaLabel>
             </div>
+            <details className="record-audit-details">
+              <summary>Audit and provenance details</summary>
+              <div className="tag-row">
+                <StateLabel reviewState={publicSummary.reviewState} />
+                <MetaLabel label="Evidence-backed claims">
+                  {publicSummary.claims.length}
+                </MetaLabel>
+                <MetaLabel label="Reviewed">{reviewedClaims.length}</MetaLabel>
+                <MetaLabel label="Candidate">{candidateClaims.length}</MetaLabel>
+                <MetaLabel label="Public JSON">
+                  <a
+                    data-analytics-entity-slug={slug}
+                    data-analytics-event="record_public_json_click"
+                    href={publicJsonUrl}
+                  >
+                    {publicJsonPath}
+                  </a>
+                </MetaLabel>
+              </div>
+            </details>
           </ReferenceBox>
 
           {policyAnalysisProfile ? (
@@ -473,46 +481,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             </ReferenceBox>
           ) : null}
 
-          <ReferenceBox
-            id="tools"
-            title="AI tools"
-            actions={
-              <>
-                <Link className="site-action" href="/tools">
-                  Tools directory
-                </Link>
-              </>
-            }
-          >
-            <div className="tag-row">
-              <MetaLabel label="Derived tool records">
-                {toolRecords.length}
-              </MetaLabel>
-            </div>
-            {toolRecords.length ? (
-              <div className="analysis-dimension-list">
-                {toolRecords.map((record) => (
-                  <article
-                    className="analysis-dimension-row"
-                    data-analysis-status={record.availability}
-                    key={`${record.universitySlug}:${record.tool}`}
-                  >
-                    <div>
-                      <h3>{record.rawToolName}</h3>
-                      <p className="muted">{record.universityName}</p>
-                      <ToolRecordFields record={record} />
-                    </div>
-                  </article>
-                ))}
-              </div>
-            ) : (
-              <p className="notice-card">
-                No tool-level evidence is published for this record yet. Broad
-                AI tool mentions are not expanded into named tool conclusions.
-              </p>
-            )}
-          </ReferenceBox>
-
           <section className="record-section" id="claims">
             <div className="section-heading">
               <h2>Evidence-backed claims</h2>
@@ -557,6 +525,46 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             ) : null}
           </section>
 
+          <ReferenceBox
+            id="tools"
+            title="AI tools"
+            actions={
+              <>
+                <Link className="site-action" href="/tools">
+                  Tools directory
+                </Link>
+              </>
+            }
+          >
+            <div className="tag-row">
+              <MetaLabel label="Derived tool records">
+                {toolRecords.length}
+              </MetaLabel>
+            </div>
+            {toolRecords.length ? (
+              <div className="analysis-dimension-list">
+                {toolRecords.map((record) => (
+                  <article
+                    className="analysis-dimension-row"
+                    data-analysis-status={record.availability}
+                    key={`${record.universitySlug}:${record.tool}`}
+                  >
+                    <div>
+                      <h3>{record.rawToolName}</h3>
+                      <p className="muted">{record.universityName}</p>
+                      <ToolRecordFields record={record} />
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <p className="notice-card">
+                No tool-level evidence is published for this record yet. Broad
+                AI tool mentions are not expanded into named tool conclusions.
+              </p>
+            )}
+          </ReferenceBox>
+
           <section className="record-section" id="sources">
             <div className="section-heading">
               <h2>Official sources</h2>
@@ -590,7 +598,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                     </div>
                     <div>
                       <dt>Snapshot hash</dt>
-                      <dd className="hash-value">{source.snapshotHash}</dd>
+                      <dd className="hash-value" title={source.snapshotHash}>
+                        {formatSnapshotHash(source.snapshotHash)}
+                      </dd>
                     </div>
                   </dl>
                 </article>
@@ -736,7 +746,15 @@ interface CitationReadySummaryInput {
   totalClaimCount: number;
 }
 
-function buildCitationReadySummary({
+interface RecordSummaryParts {
+  // Short human-readable answer rendered at the top of the record page.
+  lede: string;
+  // Lede plus canonical-evidence and no-advice boilerplate, used for JSON-LD
+  // and citation contexts.
+  citationReady: string;
+}
+
+function buildRecordSummaryParts({
   candidateClaimCount,
   displayName,
   officialSourceCount,
@@ -745,7 +763,7 @@ function buildCitationReadySummary({
   locale,
   summary,
   totalClaimCount
-}: CitationReadySummaryInput): string {
+}: CitationReadySummaryInput): RecordSummaryParts {
   const checkedText = summary.lastCheckedAt
     ? `last checked on ${formatDate(summary.lastCheckedAt, locale)}`
     : "with no last-checked date published yet";
@@ -760,8 +778,15 @@ function buildCitationReadySummary({
   const candidateText = candidateClaimCount
     ? ` ${candidateClaimCount} claim${candidateClaimCount === 1 ? "" : "s"} still require review and should not be treated as final policy conclusions.`
     : "";
+  const opening = `As of this public record, University AI Policy Tracker lists ${displayName} as ${reviewText} AI policy record ${checkedText}${changedText}. The record contains ${totalClaimCount} source-backed claim${totalClaimCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}, from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}.`;
+  const canonicalText = ` Original-language evidence snippets and source URLs remain canonical, with public JSON available at ${publicJsonUrl}.`;
+  const disclaimerText =
+    " This tracker is not legal advice, not academic integrity advice, and not an official university statement unless the linked source is the university's own official page.";
 
-  return `As of this public record, University AI Policy Tracker lists ${displayName} as ${reviewText} AI policy record ${checkedText}${changedText}. The record contains ${totalClaimCount} source-backed claim${totalClaimCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}, from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}. Original-language evidence snippets and source URLs remain canonical, with public JSON available at ${publicJsonUrl}.${confidenceText}${candidateText} This tracker is not legal advice, not academic integrity advice, and not an official university statement unless the linked source is the university's own official page.`;
+  return {
+    lede: `${opening}${confidenceText}${candidateText}`,
+    citationReady: `${opening}${canonicalText}${confidenceText}${candidateText}${disclaimerText}`
+  };
 }
 
 function getSourceLanguages(

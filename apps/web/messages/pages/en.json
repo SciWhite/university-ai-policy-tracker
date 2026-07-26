@@ -41,6 +41,14 @@
     "apiIndex": "API index",
     "changed": "Changed",
     "checked": "Checked",
+    "heading": "Search source-backed university AI policy records",
+    "matchingRecordsFor": "Sample results for \"{query}\"",
+    "browseTitle": "Browse the database",
+    "browseLead": "Reach every public record set by policy theme, region, ranking index, official source, or named AI tool.",
+    "browseThemesTitle": "Policy themes",
+    "browseRegionsTitle": "Regions",
+    "browseRankingsTitle": "Ranking indexes",
+    "browseDirectoriesTitle": "Directories",
     "homeAnswers": [
       {
         "title": "What this database is",

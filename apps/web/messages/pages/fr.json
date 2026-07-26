@@ -41,6 +41,14 @@
     "apiIndex": "Index API",
     "changed": "Modifié",
     "checked": "Vérifié",
+    "heading": "Rechercher des dossiers de politiques IA universitaires étayés par des sources",
+    "matchingRecordsFor": "Exemples de résultats pour « {query} »",
+    "browseTitle": "Parcourir la base de données",
+    "browseLead": "Accédez à chaque ensemble de dossiers publics par thème de politique, région, index de classement, source officielle ou outil IA nommé.",
+    "browseThemesTitle": "Thèmes de politiques",
+    "browseRegionsTitle": "Régions",
+    "browseRankingsTitle": "Index de classement",
+    "browseDirectoriesTitle": "Répertoires",
     "homeAnswers": [
       {
         "title": "Ce qu'est cette base de données",

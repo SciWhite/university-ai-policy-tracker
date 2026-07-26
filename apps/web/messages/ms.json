@@ -36,7 +36,14 @@
       "sourceHealth": "Kesihatan sumber",
       "coverage": "Liputan",
       "reviewWorkflow": "Aliran semakan",
-      "reviewQueue": "Baris semakan"
+      "reviewQueue": "Baris semakan",
+      "browse": "Layari rekod",
+      "aiTools": "Alat AI",
+      "sources": "Sumber",
+      "themeAiDisclosure": "Pendedahan AI",
+      "regionUnitedStates": "Amerika Syarikat",
+      "regionUnitedKingdom": "United Kingdom",
+      "rankingQs2026": "QS 2026"
     },
     "locale": {
       "label": "Bahasa",

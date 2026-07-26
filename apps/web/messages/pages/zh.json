@@ -1,7 +1,7 @@
 {
   "home": {
     "metadataTitle": "大学人工智能政策数据库：搜索 {count} 项有据可查的 GenAI 政策",
-  "description": "通过官方来源、审查状态、公开 JSON 和可供引用的证据，搜索并引用有据可查的大学 GenAI 政策记录。",
+    "description": "通过官方来源、审查状态、公开 JSON 和可供引用的证据，搜索并引用有据可查的大学 GenAI 政策记录。",
     "kicker": "大学人工智能政策数据库",
     "lead": "查找、引用并检索有据可查的大学 GenAI 政策记录。可按机构、来源域名、AI 工具、政策主题或公开证据短语进行搜索。",
     "searchLabel": "搜索公开大学人工智能政策记录",
@@ -41,6 +41,14 @@
     "apiIndex": "API 索引",
     "changed": "已更改",
     "checked": "已检查",
+    "heading": "检索有来源依据的大学 AI 政策记录",
+    "matchingRecordsFor": "示例检索结果：“{query}”",
+    "browseTitle": "浏览数据库",
+    "browseLead": "按政策主题、地区、排名索引、官方来源或具体 AI 工具进入每一组公开记录。",
+    "browseThemesTitle": "政策主题",
+    "browseRegionsTitle": "地区",
+    "browseRankingsTitle": "排名索引",
+    "browseDirectoriesTitle": "目录",
     "homeAnswers": [
       {
         "title": "本数据库是什么",

@@ -1,4 +1,5 @@
 import type { SourceHealthStatus } from "@/lib/review-dashboards";
+import { badgeToneClass, type BadgeTone } from "@/lib/badge-tones";
 import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
 import { translateSurfaceText } from "@/lib/surface-localization";
 
@@ -31,6 +32,35 @@ const labels: Record<SourceHealthStatus, string> = {
   unknown_error: "Unknown error"
 };
 
+const tones: Record<SourceHealthStatus, BadgeTone> = {
+  ok: "positive",
+  redirected: "positive",
+  agent_verified_accessible: "positive",
+  rejected_not_policy_evidence: "positive",
+  browser_verified: "positive",
+  firecrawl_verified: "positive",
+  changed_hash: "warning",
+  not_found: "warning",
+  agent_fetch_failed: "warning",
+  agent_unresolved: "warning",
+  agent_verified_404: "warning",
+  agent_verified_empty: "warning",
+  agent_verified_redirect_unrelated: "warning",
+  blocked_by_client: "warning",
+  browser_timeout_unverified: "warning",
+  firecrawl_opened_no_content: "warning",
+  unknown_error: "warning",
+  forbidden: "danger",
+  robots_blocked: "danger",
+  login_wall: "danger",
+  paywall: "danger",
+  agent_blocked_captcha_waf: "danger",
+  agent_blocked_login: "danger",
+  agent_blocked_robots: "danger",
+  firecrawl_failed: "danger",
+  captcha_or_waf: "danger"
+};
+
 interface SourceHealthLabelProps {
   status: SourceHealthStatus;
   locale?: SupportedLocale;
@@ -38,7 +68,10 @@ interface SourceHealthLabelProps {
 
 export function SourceHealthLabel({ locale = DEFAULT_LOCALE, status }: SourceHealthLabelProps) {
   return (
-    <span className="source-health-label" data-source-health={status}>
+    <span
+      className={badgeToneClass("source-health-label", tones[status])}
+      data-source-health={status}
+    >
       {translateSurfaceText(labels[status], locale)}
     </span>
   );

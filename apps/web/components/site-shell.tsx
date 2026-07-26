@@ -32,6 +32,17 @@ const primaryTabs = [
 
 const secondaryLinkGroups = [
   {
+    labelKey: "browse",
+    links: [
+      { labelKey: "aiTools", href: "/tools" },
+      { labelKey: "sources", href: "/sources" },
+      { labelKey: "themeAiDisclosure", href: "/themes/ai-disclosure" },
+      { labelKey: "regionUnitedStates", href: "/regions/united-states" },
+      { labelKey: "regionUnitedKingdom", href: "/regions/united-kingdom" },
+      { labelKey: "rankingQs2026", href: "/rankings/qs-2026" }
+    ]
+  },
+  {
     labelKey: "dataAndApi",
     links: [
       { labelKey: "datasets", href: "/datasets" },

@@ -36,7 +36,14 @@
       "sourceHealth": "来源健康",
       "coverage": "覆盖情况",
       "reviewWorkflow": "审核流程",
-      "reviewQueue": "审核队列"
+      "reviewQueue": "审核队列",
+      "browse": "浏览记录",
+      "aiTools": "AI 工具",
+      "sources": "来源",
+      "themeAiDisclosure": "AI 披露",
+      "regionUnitedStates": "美国",
+      "regionUnitedKingdom": "英国",
+      "rankingQs2026": "QS 2026"
     },
     "locale": {
       "label": "语言",

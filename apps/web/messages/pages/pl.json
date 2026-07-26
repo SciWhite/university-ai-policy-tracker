@@ -41,6 +41,14 @@
     "apiIndex": "Indeks API",
     "changed": "Zmienione",
     "checked": "Sprawdzone",
+    "heading": "Wyszukuj rekordy polityk AI uczelni poparte źródłami",
+    "matchingRecordsFor": "Przykładowe wyniki dla „{query}”",
+    "browseTitle": "Przeglądaj bazę danych",
+    "browseLead": "Docieraj do każdego zbioru publicznych rekordów według motywu polityki, regionu, indeksu rankingowego, oficjalnego źródła lub konkretnego narzędzia AI.",
+    "browseThemesTitle": "Motywy polityk",
+    "browseRegionsTitle": "Regiony",
+    "browseRankingsTitle": "Indeksy rankingowe",
+    "browseDirectoriesTitle": "Katalogi",
     "homeAnswers": [
       {
         "title": "Czym jest ta baza danych",

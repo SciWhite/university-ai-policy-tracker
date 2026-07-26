@@ -13,6 +13,7 @@ import {
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import { getSourceDomain } from "@/lib/analytics-events";
+import { formatSnapshotHash } from "@/lib/snapshot-hash";
 import { translateSurfaceText } from "@/lib/surface-localization";
 
 interface ClaimEvidenceCardProps {
@@ -151,7 +152,9 @@ function EvidenceBlock({
         </div>
         <div>
           <dt>{getUiString("snapshotHash", locale)}</dt>
-          <dd className="hash-value">{evidence.sourceSnapshotHash}</dd>
+          <dd className="hash-value" title={evidence.sourceSnapshotHash}>
+            {formatSnapshotHash(evidence.sourceSnapshotHash)}
+          </dd>
         </div>
         {evidence.retrievedAt ? (
           <div>

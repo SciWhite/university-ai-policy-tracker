@@ -36,7 +36,14 @@
       "sourceHealth": "Santé des sources",
       "coverage": "Couverture",
       "reviewWorkflow": "Processus de revue",
-      "reviewQueue": "File de revue"
+      "reviewQueue": "File de revue",
+      "browse": "Parcourir les dossiers",
+      "aiTools": "Outils IA",
+      "sources": "Sources",
+      "themeAiDisclosure": "Divulgation de l'IA",
+      "regionUnitedStates": "États-Unis",
+      "regionUnitedKingdom": "Royaume-Uni",
+      "rankingQs2026": "QS 2026"
     },
     "locale": {
       "label": "Langue",

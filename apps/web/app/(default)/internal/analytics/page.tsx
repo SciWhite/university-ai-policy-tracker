@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./analytics.css";
 import { cookies } from "next/headers";
 import { PrivateAnalyticsDashboard } from "@/components/private-analytics-dashboard";
 import {

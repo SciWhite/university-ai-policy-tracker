@@ -4,6 +4,7 @@ import { getPageCopy } from "../apps/web/lib/page-copy";
 
 const formatterArguments: Record<string, string[]> = {
   "home.metadataTitle": ["{count}"],
+  "home.matchingRecordsFor": ["{query}"],
   "universities.rankedRecords": ["{ranking}"],
   "universities.showing": ["{visible}", "{total}"],
   "universities.searchSummary": ["{query}"],

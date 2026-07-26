@@ -41,6 +41,14 @@
     "apiIndex": "Indeks API",
     "changed": "Berubah",
     "checked": "Disemak",
+    "heading": "Cari rekod dasar AI universiti yang disokong sumber",
+    "matchingRecordsFor": "Contoh hasil untuk “{query}”",
+    "browseTitle": "Layari pangkalan data",
+    "browseLead": "Capai setiap set rekod awam mengikut tema dasar, wilayah, indeks ranking, sumber rasmi atau alat AI tertentu.",
+    "browseThemesTitle": "Tema dasar",
+    "browseRegionsTitle": "Wilayah",
+    "browseRankingsTitle": "Indeks ranking",
+    "browseDirectoriesTitle": "Direktori",
     "homeAnswers": [
       {
         "title": "Apa itu pangkalan data ini",

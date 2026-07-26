@@ -1,6 +1,21 @@
+import type { AnalysisReviewState, ClaimReviewState } from "@uapt/shared";
+import { badgeToneClass, type BadgeTone } from "@/lib/badge-tones";
 import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
 
-const stateLabels: Record<SupportedLocale, Record<string, string>> = {
+// Every review state the shared contracts can emit; a new enum value fails to
+// compile here until it gets a label and a tone.
+type KnownReviewState = ClaimReviewState | AnalysisReviewState;
+
+const stateTones: Record<KnownReviewState, BadgeTone> = {
+  machine_candidate: "warning",
+  agent_reviewed: "positive",
+  human_reviewed: "positive",
+  institution_verified: "positive",
+  needs_review: "warning",
+  rejected: "danger"
+};
+
+const stateLabels: Record<SupportedLocale, Record<KnownReviewState, string>> = {
   en: { machine_candidate: "Machine candidate", agent_reviewed: "Agent reviewed", human_reviewed: "Human reviewed", institution_verified: "Institution verified", needs_review: "Needs review", rejected: "Rejected" },
   zh: { machine_candidate: "机器候选", agent_reviewed: "智能体已审核", human_reviewed: "人工已审核", institution_verified: "机构已核验", needs_review: "需要审核", rejected: "已拒绝" },
   fr: { machine_candidate: "Candidat machine", agent_reviewed: "Révisé par un agent", human_reviewed: "Révisé par une personne", institution_verified: "Vérifié par l’établissement", needs_review: "À réviser", rejected: "Rejeté" },
@@ -27,19 +42,28 @@ interface StateLabelProps {
 }
 
 export function StateLabel({ locale = DEFAULT_LOCALE, reviewState, prefix = "Review" }: StateLabelProps) {
-  const label = stateLabels[locale][reviewState] ?? formatUnknownState(reviewState);
-  const knownState = Object.prototype.hasOwnProperty.call(stateLabels.en, reviewState);
+  const knownState = isKnownReviewState(reviewState);
+  const label = knownState
+    ? stateLabels[locale][reviewState]
+    : formatUnknownState(reviewState);
   const localizedPrefix = prefix === "Review" ? reviewPrefixes[locale] : prefix;
 
   return (
     <span
-      className="state-label"
+      className={badgeToneClass(
+        "state-label",
+        knownState ? stateTones[reviewState] : "neutral"
+      )}
       data-review-state={knownState ? reviewState : "unknown"}
     >
       {prefix ? `${localizedPrefix}: ` : null}
       {label}
     </span>
   );
+}
+
+function isKnownReviewState(value: string): value is KnownReviewState {
+  return Object.prototype.hasOwnProperty.call(stateTones, value);
 }
 
 function formatUnknownState(value: string): string {

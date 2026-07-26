@@ -1,4 +1,5 @@
 import type { AnalysisDimensionStatus } from "@uapt/shared";
+import { badgeToneClass, type BadgeTone } from "@/lib/badge-tones";
 import { DEFAULT_LOCALE, type SupportedLocale } from "@/lib/i18n";
 import { translateSurfaceText } from "@/lib/surface-localization";
 
@@ -20,13 +21,28 @@ const analysisStatusLabels: Record<AnalysisDimensionStatus, string> = {
   insufficient_public_evidence: "Insufficient public evidence"
 };
 
+const analysisStatusTones: Record<AnalysisDimensionStatus, BadgeTone> = {
+  allowed: "positive",
+  recommended: "positive",
+  required: "positive",
+  conditionally_allowed: "warning",
+  unclear: "warning",
+  insufficient_public_evidence: "warning",
+  not_mentioned: "warning",
+  restricted: "danger",
+  blocked: "danger"
+};
+
 export function AnalysisStatusLabel({
   locale = DEFAULT_LOCALE,
   prefix = "Status",
   status
 }: AnalysisStatusLabelProps) {
   return (
-    <span className="analysis-status-label" data-analysis-status={status}>
+    <span
+      className={badgeToneClass("analysis-status-label", analysisStatusTones[status])}
+      data-analysis-status={status}
+    >
       {prefix ? `${translateSurfaceText(prefix, locale)}: ` : null}
       {translateSurfaceText(formatAnalysisStatus(status), locale)}
     </span>

@@ -36,7 +36,14 @@
       "sourceHealth": "Stan źródeł",
       "coverage": "Zakres",
       "reviewWorkflow": "Proces przeglądu",
-      "reviewQueue": "Kolejka przeglądu"
+      "reviewQueue": "Kolejka przeglądu",
+      "browse": "Przeglądanie rekordów",
+      "aiTools": "Narzędzia SI",
+      "sources": "Źródła",
+      "themeAiDisclosure": "Oświadczenie o użyciu AI",
+      "regionUnitedStates": "Stany Zjednoczone",
+      "regionUnitedKingdom": "Wielka Brytania",
+      "rankingQs2026": "QS 2026"
     },
     "locale": {
       "label": "Język",

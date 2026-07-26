@@ -36,7 +36,14 @@
       "sourceHealth": "Bronstatus",
       "coverage": "Dekking",
       "reviewWorkflow": "Reviewproces",
-      "reviewQueue": "Reviewwachtrij"
+      "reviewQueue": "Reviewwachtrij",
+      "browse": "Records verkennen",
+      "aiTools": "AI-tools",
+      "sources": "Bronnen",
+      "themeAiDisclosure": "AI-openbaarmaking",
+      "regionUnitedStates": "Verenigde Staten",
+      "regionUnitedKingdom": "Verenigd Koninkrijk",
+      "rankingQs2026": "QS 2026"
     },
     "locale": {
       "label": "Taal",

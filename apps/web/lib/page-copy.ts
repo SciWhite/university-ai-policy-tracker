@@ -57,6 +57,15 @@ const en = {
     apiIndex: "API index",
     changed: "Changed",
     checked: "Checked",
+    heading: "Search source-backed university AI policy records",
+    matchingRecordsFor: (query: string) => `Sample results for "${query}"`,
+    browseTitle: "Browse the database",
+    browseLead:
+      "Reach every public record set by policy theme, region, ranking index, official source, or named AI tool.",
+    browseThemesTitle: "Policy themes",
+    browseRegionsTitle: "Regions",
+    browseRankingsTitle: "Ranking indexes",
+    browseDirectoriesTitle: "Directories",
     homeAnswers: [
       {
         title: "What this database is",
@@ -776,6 +785,7 @@ const translationTrees = {
 
 const formatterArguments: Record<string, string[]> = {
   "home.metadataTitle": ["count"],
+  "home.matchingRecordsFor": ["query"],
   "universities.rankedRecords": ["ranking"],
   "universities.showing": ["visible", "total"],
   "universities.searchSummary": ["query"],
@@ -797,6 +807,21 @@ const localizedPageCopies: Record<SupportedLocale, PageCopies> = {
 
 export function getPageCopy(locale: SupportedLocale): PageCopies {
   return localizedPageCopies[locale];
+}
+
+// Localized labels for the shared BrowseEntryGroups component; the same block
+// appears on the homepage and the universities index.
+export function getBrowseEntryGroupsCopy(locale: SupportedLocale) {
+  const home = getPageCopy(locale).home;
+
+  return {
+    title: home.browseTitle,
+    lead: home.browseLead,
+    themesTitle: home.browseThemesTitle,
+    regionsTitle: home.browseRegionsTitle,
+    rankingsTitle: home.browseRankingsTitle,
+    directoriesTitle: home.browseDirectoriesTitle
+  };
 }
 
 // English source templates for the universities formatter functions. Must stay

@@ -41,6 +41,14 @@
     "apiIndex": "API-index",
     "changed": "Gewijzigd",
     "checked": "Gecontroleerd",
+    "heading": "Zoek brononderbouwde records van universitair AI-beleid",
+    "matchingRecordsFor": "Voorbeeldresultaten voor “{query}”",
+    "browseTitle": "Verken de database",
+    "browseLead": "Bereik elke set openbare records via beleidsthema, regio, rankingindex, officiële bron of specifieke AI-tool.",
+    "browseThemesTitle": "Beleidsthema's",
+    "browseRegionsTitle": "Regio's",
+    "browseRankingsTitle": "Rankingindexen",
+    "browseDirectoriesTitle": "Overzichten",
     "homeAnswers": [
       {
         "title": "Wat deze database is",

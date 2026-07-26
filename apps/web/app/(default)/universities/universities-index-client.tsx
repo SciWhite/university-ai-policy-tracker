@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type FormEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  type FormEvent,
+  type ReactNode
+} from "react";
 import type {
   CatalogUniversityRanking,
   RankingSystemId
@@ -25,6 +32,7 @@ import type {
 } from "@/lib/university-index-records";
 
 interface UniversitiesIndexClientProps {
+  browseSlot?: ReactNode;
   copy: UniversitiesIndexClientCopy;
   initialRecords: StaticUniversityIndexRecord[];
   locale: SupportedLocale;
@@ -105,6 +113,7 @@ const fullIndexCopy: Record<SupportedLocale, {
 };
 
 export function UniversitiesIndexClient({
+  browseSlot,
   copy,
   initialRecords,
   locale,
@@ -491,6 +500,8 @@ export function UniversitiesIndexClient({
           </p>
         ) : null}
       </section>
+
+      {browseSlot}
     </main>
   );
 }

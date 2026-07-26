@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PUBLIC_API_VERSION } from "@uapt/shared";
+import { BrowseEntryGroups } from "@/components/browse-entry-groups";
 import { DataList, DataListRow } from "@/components/data-list";
 import { DocumentLink as Link } from "@/components/document-link";
 import { JsonLd } from "@/components/json-ld";
@@ -13,7 +14,7 @@ import { getPolicyAnalysisProfiles } from "@/lib/policy-analysis";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { normalizeLocale } from "@/lib/i18n";
-import { getPageCopy } from "@/lib/page-copy";
+import { getBrowseEntryGroupsCopy, getPageCopy } from "@/lib/page-copy";
 import { getStaticUniversityIndexRecords } from "@/lib/university-index-records";
 
 const quickQueries = [
@@ -23,6 +24,10 @@ const quickQueries = [
   "approved tools",
   "academic integrity"
 ] as const;
+
+// The "sample results" section below the search hero is a pre-run search for
+// this query, not a curated or complete list.
+const sampleQuery = "disclosure";
 
 interface HomePageProps {
   params?: Promise<{
@@ -72,7 +77,7 @@ export default async function HomePage({ params }: HomePageProps) {
     0
   );
   const recentRecords = changeRecords.slice(0, 5);
-  const suggestedRecords = searchIndexRecords(searchRecords, "disclosure", {
+  const suggestedRecords = searchIndexRecords(searchRecords, sampleQuery, {
     limit: 5
   });
   const pageTitle = copy.metadataTitle(formatNumber(universities.length, locale));
@@ -162,7 +167,8 @@ export default async function HomePage({ params }: HomePageProps) {
       <section className="search-hero" aria-labelledby="home-search-title">
         <div>
           <p className="kicker">{copy.kicker}</p>
-          <h1 id="home-search-title">{pageTitle}</h1>
+          <h1 id="home-search-title">{copy.heading}</h1>
+          <p className="lead lead--compact">{copy.lead}</p>
           <form action="/search" className="home-search-form" method="get">
             <label className="visually-hidden" htmlFor="home-search-input">
               {copy.searchLabel}
@@ -207,11 +213,25 @@ export default async function HomePage({ params }: HomePageProps) {
         </aside>
       </section>
 
+      <section aria-label={copy.answersLabel} className="answer-strip">
+        {copy.homeAnswers.map((answer) => (
+          <article className="answer-card" key={answer.title}>
+            <h2>{answer.title}</h2>
+            <p>{answer.text}</p>
+          </article>
+        ))}
+      </section>
+
+      <BrowseEntryGroups copy={getBrowseEntryGroupsCopy(locale)} locale={locale} />
+
       <section className="section compact-section">
         <div className="section-heading">
-          <h2>{copy.matchingRecords}</h2>
-          <Link href="/search?q=disclosure">{copy.openSearch}</Link>
+          <h2>{copy.matchingRecordsFor(sampleQuery)}</h2>
+          <Link href={`/search?q=${encodeURIComponent(sampleQuery)}`}>
+            {copy.openSearch}
+          </Link>
         </div>
+        <p className="compact-note">{copy.note}</p>
         <DataList>
           {suggestedRecords.map((record) => (
             <DataListRow

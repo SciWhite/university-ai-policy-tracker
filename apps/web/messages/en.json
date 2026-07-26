@@ -36,7 +36,14 @@
       "sourceHealth": "Source health",
       "coverage": "Coverage",
       "reviewWorkflow": "Review workflow",
-      "reviewQueue": "Review queue"
+      "reviewQueue": "Review queue",
+      "browse": "Browse records",
+      "aiTools": "AI tools",
+      "sources": "Sources",
+      "themeAiDisclosure": "AI disclosure",
+      "regionUnitedStates": "United States",
+      "regionUnitedKingdom": "United Kingdom",
+      "rankingQs2026": "QS 2026"
     },
     "locale": {
       "label": "Language",
