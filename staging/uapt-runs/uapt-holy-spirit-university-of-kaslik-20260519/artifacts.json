@@ -2,6 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-holy-spirit-university-of-kaslik-20260519",
   "runPurpose": "claim_evidence_release",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "schemaVersion": "openclaw-artifact-v1",

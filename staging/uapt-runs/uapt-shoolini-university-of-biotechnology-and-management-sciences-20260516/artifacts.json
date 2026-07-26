@@ -1,6 +1,7 @@
 {
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-shoolini-university-of-biotechnology-and-management-sciences-20260516",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "schemaVersion": "openclaw-artifact-v1",

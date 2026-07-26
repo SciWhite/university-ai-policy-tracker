@@ -1,6 +1,7 @@
 {
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-royal-holloway-university-of-london-20260516",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "schemaVersion": "openclaw-artifact-v1",

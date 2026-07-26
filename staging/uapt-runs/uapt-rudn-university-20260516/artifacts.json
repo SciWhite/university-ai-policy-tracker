@@ -1,6 +1,7 @@
 {
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-rudn-university-20260516",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "artifactType": "source_discovery_trace",

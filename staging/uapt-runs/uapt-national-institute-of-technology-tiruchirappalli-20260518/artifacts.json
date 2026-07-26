@@ -2,6 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-national-institute-of-technology-tiruchirappalli-20260518",
   "runPurpose": "claim_evidence_release",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "schemaVersion": "openclaw-artifact-v1",

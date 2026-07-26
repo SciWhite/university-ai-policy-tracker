@@ -1,6 +1,7 @@
 {
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-indian-institute-of-technology-bombay-20260514",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "artifactType": "source_discovery_trace",

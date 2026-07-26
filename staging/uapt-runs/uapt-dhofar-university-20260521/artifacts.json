@@ -2,6 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-dhofar-university-20260521",
   "runPurpose": "claim_evidence_release",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "schemaVersion": "openclaw-artifact-v1",

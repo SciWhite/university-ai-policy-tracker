@@ -2,6 +2,7 @@
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-westminster-20260520",
   "runPurpose": "claim_evidence_release",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "artifactType": "source_discovery_trace",

@@ -1,6 +1,7 @@
 {
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-southampton-20260513",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "schemaVersion": "openclaw-artifact-v1",

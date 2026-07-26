@@ -1,6 +1,7 @@
 {
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-university-of-oklahoma-20260517",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "artifactType": "source_discovery_trace",

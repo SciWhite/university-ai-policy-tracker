@@ -62,3 +62,6 @@ UNIVERSITY_AI_POLICY_TRACKER_HANDOFF.md
 # Prisma generated output
 packages/db/generated/
 .vercel
+
+# Claude Code local config
+.claude/

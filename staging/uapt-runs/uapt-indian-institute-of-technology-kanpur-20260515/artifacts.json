@@ -1,6 +1,7 @@
 {
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-indian-institute-of-technology-kanpur-20260515",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "artifactType": "crawl_plan",

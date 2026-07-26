@@ -1,6 +1,7 @@
 {
   "schemaVersion": "openclaw-artifact-v1",
   "runId": "uapt-rice-university-20260514",
+  "snippetPolicy": "legacy_display",
   "artifacts": [
     {
       "artifactType": "source_discovery_trace",
