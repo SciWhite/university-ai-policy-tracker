@@ -9,7 +9,7 @@
   "claimText": "SNU Library warns that not citing generative AI use in papers risks plagiarism charges; researchers must cite AI use according to journal-specific styles (MLA, APA, Chicago).",
   "sourceLanguage": "ko",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-006b"
   ],

@@ -9,7 +9,7 @@
   "claimText": "NUS has an institutional Policy for Use of AI in Teaching and Learning, supplemented by AI guidelines infographics and resources for students.",
   "sourceLanguage": "en",
   "confidence": 0.88,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-nus-1"
   ],

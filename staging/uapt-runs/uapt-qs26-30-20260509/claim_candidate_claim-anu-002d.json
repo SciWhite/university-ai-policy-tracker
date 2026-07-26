@@ -9,7 +9,7 @@
   "claimText": "ANU allows individual colleges and disciplines to set their own policies on whether AI is permitted for specific assessment tasks, rather than imposing a university-wide blanket rule.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-002d"
   ],

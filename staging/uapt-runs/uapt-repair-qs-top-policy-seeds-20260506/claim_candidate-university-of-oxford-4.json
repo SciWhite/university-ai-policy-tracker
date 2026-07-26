@@ -9,7 +9,7 @@
   "claimText": "All cloud-based generative AI tools must be subject to a security risk assessment before being used with University information. Free and open-source services generally cannot complete a full assessment and should not be used for confidential information.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-university-of-oxford-ai-security-risk-assessment"
   ],

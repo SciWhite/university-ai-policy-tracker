@@ -9,7 +9,7 @@
   "claimText": "ANU approved six institutional AI principles via Academic Board in June 2023, covering excellence/integrity, research engagement, clear guidance, AI literacy, access/privacy/security, and collaborative policy development.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-001"
   ],

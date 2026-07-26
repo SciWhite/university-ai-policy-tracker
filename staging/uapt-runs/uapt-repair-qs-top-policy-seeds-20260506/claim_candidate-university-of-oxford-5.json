@@ -9,7 +9,7 @@
   "claimText": "ChatGPT Edu and Google Gemini, when licensed via the AI Competency Centre, have been approved for processing of Confidential University data by the Information Security team. University data processed through these licensed platforms will not be used to train AI models. Confidential data must only be used with the University's approved, SSO-protected platforms.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-university-of-oxford-ai-chatgpt-edu-approved",
     "evd-university-of-oxford-ai-gemini-approved",

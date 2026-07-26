@@ -9,7 +9,7 @@
   "claimText": "CUIMC requires a formal IT Risk Assessment review before deploying any locally installed AI models (LLM, NLP, ML) to evaluate security, privacy, and compliance risks.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-005d"
   ],

@@ -9,7 +9,7 @@
   "claimText": "SNU Library notes that many research institutions lack clear AI policies, and researchers operate in uncertainty or within extremely limited scope.",
   "sourceLanguage": "ko",
   "confidence": 0.8,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-004b"
   ],

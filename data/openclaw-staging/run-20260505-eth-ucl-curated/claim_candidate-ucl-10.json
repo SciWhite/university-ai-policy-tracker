@@ -9,7 +9,7 @@
   "claimText": "UCL uses a 3-category assessment framework for GenAI: Category 1 requires own work only; Category 2 permits GenAI with acknowledgement; Category 3 includes essential GenAI use as part of the assessment.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-ucl-7980b6aee4cd4cc4"
   ],

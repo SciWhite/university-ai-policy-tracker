@@ -9,7 +9,7 @@
   "claimText": "University-wide: Faculty should be clear with students about their policies on permitted uses of generative AI in classes and on academic work. Students are encouraged to ask instructors for clarification about these policies as needed.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-harvard-university-faculty-policy-communication"
   ],

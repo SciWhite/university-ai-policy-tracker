@@ -9,12 +9,12 @@
   "claimText": "For PGR summative assessment (transfer, confirmation, thesis), the following AI uses are permitted without declaration: local editing tools (grammar assistants, spell-checkers, code debuggers making small local changes); AI for background research, language translation, bibliography creation, and general subject understanding; and AI for coding where coding serves a research purpose but is not the substantive output. Students remain responsible for correctness of any code used.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-university-of-oxford-ai-pgr-permitted-uses"
   ],
   "citation": {
-    "citationTitle": "Generative AI Use \u2014 Mathematical, Physical and Life Sciences Division",
+    "citationTitle": "Generative AI Use — Mathematical, Physical and Life Sciences Division",
     "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
     "publisher": "University of Oxford, MPLS Division",
     "retrievedAt": "2026-05-06T00:57:57Z",

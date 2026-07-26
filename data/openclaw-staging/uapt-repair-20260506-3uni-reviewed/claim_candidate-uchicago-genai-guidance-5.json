@@ -9,7 +9,7 @@
   "claimText": "At the University of Chicago, if a proposed AI tool use exceeds standard risk tolerance but is not prohibited by compliance regulations, a Risk Acceptance Letter may be prepared to document reviewed and accepted risks under specific conditions.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-uchicago-genai-guidance-5"
   ],

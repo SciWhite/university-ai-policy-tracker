@@ -9,7 +9,7 @@
   "claimText": "NTU requires students to disclose the use of AI tools in their submissions and to always refer to their module's AI use policy for specific expectations.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-ntu-7"
   ],

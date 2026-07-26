@@ -9,7 +9,7 @@
   "claimText": "SNU Library advises researchers to check target journal editorial policies from the planning stage, as policies vary on whether LLMs can be listed as authors and whether AI-generated text is permitted.",
   "sourceLanguage": "ko",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-006a"
   ],

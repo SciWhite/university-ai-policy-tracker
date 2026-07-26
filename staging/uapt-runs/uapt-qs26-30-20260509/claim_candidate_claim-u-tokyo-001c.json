@@ -9,7 +9,7 @@
   "claimText": "UTokyo requires instructors who allow AI use to explain associated risks to students: information leakage, data concentration in few companies, copyright concerns, and potential bias.",
   "sourceLanguage": "ja",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-001c"
   ],

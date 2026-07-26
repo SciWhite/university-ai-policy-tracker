@@ -9,8 +9,10 @@
   "claimText": "Caltech admissions prohibits applicants from copying and pasting directly from an AI generator, relying on AI-generated content to outline or draft essays, replacing their unique voice with AI-generated content, or translating essays via AI.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
-  "evidenceIds": ["ec-caltech-admissions-ethics-2"],
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ec-caltech-admissions-ethics-2"
+  ],
   "citation": {
     "citationTitle": "Undergraduate and Graduate Admissions AI Policy: Guidelines for Fall Applicants",
     "sourceUrl": "https://www.admissions.caltech.edu/apply/first-year-applicants/supplemental-application-essays/ethical-use-of-ai-guidelines-for-fall-applicants",

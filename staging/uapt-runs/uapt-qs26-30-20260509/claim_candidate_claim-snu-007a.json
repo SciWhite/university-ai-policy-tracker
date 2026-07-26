@@ -9,7 +9,7 @@
   "claimText": "SNU Library warns that uploading subscribed e-resources to ChatGPT, Claude, Gemini or similar AI services, or performing bulk downloads, may exceed publisher license terms and could result in access being blocked for the entire university.",
   "sourceLanguage": "ko",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-007a"
   ],

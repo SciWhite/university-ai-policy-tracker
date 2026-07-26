@@ -9,7 +9,7 @@
   "claimText": "ANU maintains an 'AI Essentials' resource collection for using supported AI tools while discussing best practice with students.",
   "sourceLanguage": "en",
   "confidence": 0.55,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-008a"
   ],

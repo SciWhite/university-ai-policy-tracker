@@ -9,7 +9,7 @@
   "claimText": "SNU's AI Guidelines require compliance with core ethical standards (transparency, accuracy, privacy, information security, accountability) throughout the entire AI use process, with domain-specific considerations for education, research, and administration.",
   "sourceLanguage": "ko",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-003b"
   ],

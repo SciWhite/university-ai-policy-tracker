@@ -9,7 +9,7 @@
   "claimText": "UTokyo leaves decisions on AI tool use in individual classes to faculty, who should decide based on maximizing educational effectiveness rather than following a blanket university rule.",
   "sourceLanguage": "ja",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-001b"
   ],

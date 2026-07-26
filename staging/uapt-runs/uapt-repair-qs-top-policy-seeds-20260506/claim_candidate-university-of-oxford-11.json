@@ -9,7 +9,7 @@
   "claimText": "Unauthorised use of generative AI falls under the University's plagiarism regulations and is subject to academic penalties in summative assessments. Students must learn and practise academic skills of note-taking and clear attribution to differentiate their own work from AI-derived material. Where AI use is authorised, students should give clear acknowledgment of how it has been used.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-university-of-oxford-ai-plagiarism-guidance"
   ],

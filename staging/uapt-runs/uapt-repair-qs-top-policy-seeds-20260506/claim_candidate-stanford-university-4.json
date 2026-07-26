@@ -9,7 +9,7 @@
   "claimText": "For Stanford Graduate School of Business (GSB) MBA and MSx courses, instructors may not ban student use of AI tools for take-home coursework, including assignments and exams. Instructors may choose whether to allow AI for in-class work. For PhD and undergraduate courses, GSB follows the university-wide Generative AI Policy Guidance from the Office of Community Standards.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-stanford-university-gsb-ai-policy-1"
   ],

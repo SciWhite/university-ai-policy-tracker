@@ -9,7 +9,7 @@
   "claimText": "HKU's GenAI research guidelines are positioned as an institutional policy under the Research Integrity framework, approved by Senate in September 2025.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-hku-6"
   ],

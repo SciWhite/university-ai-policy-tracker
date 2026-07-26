@@ -9,7 +9,7 @@
   "claimText": "UTokyo warns faculty that AI detection tools should not be over-relied upon, as their judgments are insufficient evidence of inappropriate student AI use.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-004d"
   ],

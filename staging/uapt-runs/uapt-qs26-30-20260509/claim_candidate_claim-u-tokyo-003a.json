@@ -9,7 +9,7 @@
   "claimText": "UTokyo does not enforce a blanket prohibition on generative AI tools; it actively explores their potential and provides practical guidance.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-003a"
   ],

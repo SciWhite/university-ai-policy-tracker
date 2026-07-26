@@ -9,7 +9,7 @@
   "claimText": "HKU's Guidelines on the Responsible Use of Generative AI in Research were formally approved by the Senate on September 23, 2025 and are now in effect.",
   "sourceLanguage": "en",
   "confidence": 0.97,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-hku-5"
   ],

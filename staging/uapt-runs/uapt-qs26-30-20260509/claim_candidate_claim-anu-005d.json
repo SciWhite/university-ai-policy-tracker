@@ -9,7 +9,7 @@
   "claimText": "ANU guidance acknowledges that traditional assessments like generic essays and multiple-choice tests are more vulnerable to AI misuse, and recommends redesigning tasks with authentic, specific contexts.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-005d"
   ],

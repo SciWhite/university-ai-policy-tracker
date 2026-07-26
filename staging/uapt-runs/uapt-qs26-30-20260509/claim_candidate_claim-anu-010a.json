@@ -9,7 +9,7 @@
   "claimText": "ANU was developing governance document changes to require students to acknowledge any use of artificial intelligence in their work (as of early 2023).",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-010a"
   ],

@@ -9,7 +9,7 @@
   "claimText": "ANU prohibits uploading student work to AI platforms without consent, including for feedback or marking purposes, citing privacy and data security reasons.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-005b"
   ],

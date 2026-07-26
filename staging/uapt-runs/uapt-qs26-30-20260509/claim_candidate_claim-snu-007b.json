@@ -9,7 +9,7 @@
   "claimText": "SNU Library states that most e-resource subscription agreements only permit viewing, downloading, and printing; using resources for AI training/analysis or uploading to third-party AI services requires separate authorization.",
   "sourceLanguage": "ko",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-007b"
   ],

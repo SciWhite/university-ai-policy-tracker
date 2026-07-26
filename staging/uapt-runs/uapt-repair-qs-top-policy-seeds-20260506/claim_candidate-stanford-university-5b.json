@@ -9,7 +9,7 @@
   "claimText": "Stanford School of Medicine MD and MSPA programs strictly prohibit entering confidential research data, patient data, or protected health information (PHI) into public AI platforms. Use of patient-identifying information or PHI in public AI tools is strictly forbidden. Students must use Stanford-approved AI platforms (e.g., Stanford Healthcare Secure GPT, Stanford AI Playground) when handling sensitive data.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-stanford-university-md-phi-prohibition-1"
   ],

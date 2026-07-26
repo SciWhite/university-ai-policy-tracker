@@ -9,7 +9,7 @@
   "claimText": "University-wide: All vendor generative AI tools not currently offered by HUIT must be assessed for risk by Harvard's Information Security and Data Privacy office prior to use in Harvard work. Contact HUIT before procuring any generative AI tool.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-harvard-university-vendor-assessment"
   ],

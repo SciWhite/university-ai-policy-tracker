@@ -9,7 +9,7 @@
   "claimText": "NUS requires students to cite AI-generated content according to style guide conventions and to check assignment guidelines for specific AI use instructions.",
   "sourceLanguage": "en",
   "confidence": 0.88,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-nus-2"
   ],

@@ -9,7 +9,7 @@
   "claimText": "Teachers College example syllabus statements require citations or disclosure detailing specific AI tools and models used when AI use is permitted.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-007b"
   ],

@@ -9,7 +9,7 @@
   "claimText": "University-wide: Users are responsible for any content they publish or share that includes AI-generated material. AI-generated content may be inaccurate, misleading, entirely fabricated (hallucinations), or contain copyrighted material.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-harvard-university-content-responsibility"
   ],

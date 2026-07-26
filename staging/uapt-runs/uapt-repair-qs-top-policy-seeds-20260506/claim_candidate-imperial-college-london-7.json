@@ -9,7 +9,7 @@
   "claimText": "All Imperial staff and students have access to Microsoft Copilot with Commercial Data Protection when signed in using their Imperial credentials. Microsoft Copilot has no access to organizational data in the Microsoft 365 Graph. Chat results are not saved or made available to Microsoft, and data does not pass outside the organisation.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-imperial-college-london-7"
   ],

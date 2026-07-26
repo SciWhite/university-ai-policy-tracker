@@ -9,7 +9,7 @@
   "claimText": "UTokyo provides AI features embedded in multiple platforms (Zoom AI Companion, Slack AI, Cisco AI Assistant, Slido AI, Copilot in Teams) through university-wide contracts.",
   "sourceLanguage": "ja",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-006b"
   ],

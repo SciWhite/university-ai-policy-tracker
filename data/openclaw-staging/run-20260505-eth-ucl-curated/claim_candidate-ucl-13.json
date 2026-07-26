@@ -9,7 +9,7 @@
   "claimText": "UCL permits using GenAI to help with spelling, grammar, and language tone in assessments, but it must not change the content and meaning of what the student has written.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-ucl-4024b23195d63d8c"
   ],

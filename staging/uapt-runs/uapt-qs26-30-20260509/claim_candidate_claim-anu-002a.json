@@ -9,7 +9,7 @@
   "claimText": "Submitting AI-generated content as one's own work constitutes a breach of ANU's academic integrity rules.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-002a"
   ],

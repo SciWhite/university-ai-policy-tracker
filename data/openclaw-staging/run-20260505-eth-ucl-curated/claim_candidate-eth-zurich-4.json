@@ -9,7 +9,7 @@
   "claimText": "Violations of GenAI guidelines such as use of unauthorised aids or non-disclosure of their use are subject to disciplinary action under existing performance assessment rules and the declaration of originality.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-eth-zurich-ef9390780fb7d69a"
   ],

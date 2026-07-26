@@ -9,7 +9,7 @@
   "claimText": "UTokyo states that submitting AI-generated answers by copy-pasting them entirely provides no learning effect and should basically not be permitted.",
   "sourceLanguage": "ja",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-001d"
   ],

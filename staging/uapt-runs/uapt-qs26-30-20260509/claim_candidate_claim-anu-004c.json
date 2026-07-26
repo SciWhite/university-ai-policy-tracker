@@ -9,7 +9,7 @@
   "claimText": "ANU provides Copilot Enterprise and Adobe Firefly as enterprise-licensed AI tools with data protection for staff and students using ANU accounts.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-004c"
   ],

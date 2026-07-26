@@ -9,7 +9,7 @@
   "claimText": "UTokyo requires instructors to clearly state their AI stance per class/assignment, and when allowing AI use, to explain risks: information leakage, data concentration, copyright concerns, and potential bias.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-004c"
   ],

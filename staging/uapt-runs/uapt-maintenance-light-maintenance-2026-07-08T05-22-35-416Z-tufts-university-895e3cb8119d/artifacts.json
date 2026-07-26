@@ -148,7 +148,7 @@
       "normalizedValue": "unapproved_ai_tools_require_review_for_tufts_work",
       "sourceLanguage": "en-US",
       "confidence": 0.95,
-      "reviewState": "needs_review",
+      "reviewState": "agent_reviewed",
       "supersedesClaimId": "claim-tufts-tts-unapproved-tools",
       "evidenceIds": [
         "ev-tufts-tts-v2-unapproved-tools"
@@ -176,7 +176,7 @@
       "normalizedValue": "restricted_confidential_contract_data_not_entered_unless_tool_approved",
       "sourceLanguage": "en-US",
       "confidence": 0.95,
-      "reviewState": "needs_review",
+      "reviewState": "agent_reviewed",
       "supersedesClaimId": "claim-tufts-tts-restricted-data",
       "evidenceIds": [
         "ev-tufts-tts-v2-restricted-data"
@@ -204,7 +204,7 @@
       "normalizedValue": "user_accountable_for_all_ai_outputs",
       "sourceLanguage": "en-US",
       "confidence": 0.93,
-      "reviewState": "needs_review",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "ev-tufts-tts-v2-accountability"
       ],
@@ -231,7 +231,7 @@
       "normalizedValue": "tts_page_no_longer_crossreferences_specific_existing_policies",
       "sourceLanguage": "en-US",
       "confidence": 0.96,
-      "reviewState": "needs_review",
+      "reviewState": "rejected",
       "evidenceIds": [
         "ev-tufts-tts-v2-missing-policies-section"
       ],
@@ -433,6 +433,58 @@
       "trackerMetadataLicense": "CC-BY-4.0",
       "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
       "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-07-08T05-22-35-416Z-tufts-university-895e3cb8119d",
+      "artifactType": "review_decision",
+      "decisionId": "rd-tufts-tts-v2-unapproved-tools-scope-confirm-20260726",
+      "claimId": "claim-tufts-tts-v2-unapproved-tools",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Claude Code maintenance review",
+      "notes": "Scope confirmation completed: the live page at https://it.tufts.edu/ai/guidance-using-ai-tufts was re-fetched on 2026-07-26 and the claim language was found verbatim ('Seek Approval When Using Tools Not Pre-Approved' section). Upgrading the 2026-07-08 approve/needs_review decision to agent_reviewed.",
+      "decidedAt": "2026-07-26T12:30:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-07-08T05-22-35-416Z-tufts-university-895e3cb8119d",
+      "artifactType": "review_decision",
+      "decisionId": "rd-tufts-tts-v2-restricted-data-scope-confirm-20260726",
+      "claimId": "claim-tufts-tts-v2-restricted-data",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Claude Code maintenance review",
+      "notes": "Scope confirmation completed: the live page at https://it.tufts.edu/ai/guidance-using-ai-tufts was re-fetched on 2026-07-26 and the claim language was found verbatim (restricted/regulated data list incl. FERPA and HIPAA). Upgrading the 2026-07-08 approve/needs_review decision to agent_reviewed.",
+      "decidedAt": "2026-07-26T12:30:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-07-08T05-22-35-416Z-tufts-university-895e3cb8119d",
+      "artifactType": "review_decision",
+      "decisionId": "rd-tufts-tts-v2-accountability-scope-confirm-20260726",
+      "claimId": "claim-tufts-tts-v2-accountability",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Claude Code maintenance review",
+      "notes": "Scope confirmation completed: the live page at https://it.tufts.edu/ai/guidance-using-ai-tufts was re-fetched on 2026-07-26 and the claim language was found verbatim ('Be Accountable' section). Upgrading the 2026-07-08 approve/needs_review decision to agent_reviewed.",
+      "decidedAt": "2026-07-26T12:30:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-07-08T05-22-35-416Z-tufts-university-895e3cb8119d",
+      "artifactType": "review_decision",
+      "decisionId": "rd-tufts-tts-v2-no-follow-existing-policies-scope-confirm-20260726",
+      "claimId": "claim-tufts-tts-v2-no-follow-existing-policies",
+      "decision": "reject",
+      "reviewState": "rejected",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Claude Code maintenance review",
+      "notes": "Observation claim no longer holds: the live page re-fetched on 2026-07-26 again contains the 'Follow Existing Tufts Policies' section ('All use of generative AI at Tufts must align with: Standards of Professional Conduct and Integrity...'). The removal documented from the 2026-07-08 snapshot has been reverted, so the claim is outdated and must not publish.",
+      "decidedAt": "2026-07-26T12:30:00.000Z"
     }
   ]
 }

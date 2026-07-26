@@ -9,7 +9,7 @@
   "claimText": "MIT holds users responsible for the accuracy of any information they publish, including AI-generated content. Users must be aware that AI-generated information may be inaccurate, incomplete, misleading, biased, fabricated, or contain third-party intellectual property.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-massachusetts-institute-of-technology-5"
   ],

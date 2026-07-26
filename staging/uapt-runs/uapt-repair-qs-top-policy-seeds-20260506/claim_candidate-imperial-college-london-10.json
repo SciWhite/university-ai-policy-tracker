@@ -9,7 +9,7 @@
   "claimText": "Imperial College London has established five Generative AI Principles (aligned with Imperial Values: Respect, Collaboration, Excellence, Integrity, Innovation) to provide a foundational framework for approaches to using generative AI in teaching, learning and assessment university-wide. The principles cover promoting critical use of AI, adopting a consistent ethical approach, and building a proactive research community around AI in education.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-imperial-college-london-10"
   ],

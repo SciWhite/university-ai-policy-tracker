@@ -9,7 +9,7 @@
   "claimText": "ANU permits course conveners to explicitly limit or encourage generative AI use; students must check class summaries and assessment outlines for AI requirements.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-004a"
   ],

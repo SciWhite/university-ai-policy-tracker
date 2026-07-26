@@ -9,7 +9,7 @@
   "claimText": "At ANU, using AI-generated content when not permitted and claiming authorship without acknowledgment constitutes a breach of academic integrity.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-005a"
   ],

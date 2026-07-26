@@ -9,7 +9,7 @@
   "claimText": "JHU is working to ensure AI tools procured on behalf of the university meet privacy and security standards.",
   "sourceLanguage": "en",
   "confidence": 0.7,
-  "reviewState": "needs_review",
+  "reviewState": "rejected",
   "evidenceIds": [
     "ev-jhu-008a"
   ],

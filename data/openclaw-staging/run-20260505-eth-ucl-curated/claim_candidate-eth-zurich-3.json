@@ -9,7 +9,7 @@
   "claimText": "Lecturers determine whether and how GenAI may be used in their courses and for respective assessments. Teaching materials created with GenAI must be subjected to quality control by the lecturer.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-eth-zurich-e5374d1ca5f40302"
   ],

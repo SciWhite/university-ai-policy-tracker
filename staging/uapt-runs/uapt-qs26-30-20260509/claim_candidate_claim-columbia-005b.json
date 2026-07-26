@@ -9,7 +9,7 @@
   "claimText": "CUIMC restricts sensitive data (PHI, RHI, PII) use with AI to HIPAA-compliant platforms only (ChatGPT Education, approved Microsoft Copilot, CHAT with compliant models); research use requires IRB approval.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-005b"
   ],

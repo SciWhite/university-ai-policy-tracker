@@ -9,7 +9,7 @@
   "claimText": "ANU prohibits using AI to collect, use, store, or disclose personal information without express consent from the individual(s).",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-003a"
   ],

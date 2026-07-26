@@ -9,7 +9,7 @@
   "claimText": "NTU states that misrepresenting AI-generated content as one's own work is considered academic misconduct under the 2025 NTU Academic Integrity Handbook.",
   "sourceLanguage": "en",
   "confidence": 0.92,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-ntu-6"
   ],

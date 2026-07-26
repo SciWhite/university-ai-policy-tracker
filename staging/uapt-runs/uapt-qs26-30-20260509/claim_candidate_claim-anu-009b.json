@@ -9,7 +9,7 @@
   "claimText": "The ANU Library LibGuide catalogs major publisher policies on AI: ACM prohibits AI authorship but permits disclosed use; Nature, Science, Elsevier, IEEE, and others require disclosure of AI use in manuscripts.",
   "sourceLanguage": "en",
   "confidence": 0.8,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-009b"
   ],

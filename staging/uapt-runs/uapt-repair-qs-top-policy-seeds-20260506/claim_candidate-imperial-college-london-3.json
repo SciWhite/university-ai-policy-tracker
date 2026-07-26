@@ -9,7 +9,7 @@
   "claimText": "Individual departments at Imperial may allow or prohibit the use of generative AI for specific assessments. Local (team/department/faculty) instructions take precedence over university-wide guidance. Students should check their department's current policy on using and disclosing generative AI in academic work and follow their module leader's instructions.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-imperial-college-london-3"
   ],

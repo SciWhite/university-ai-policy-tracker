@@ -9,7 +9,7 @@
   "claimText": "UTokyo instructs faculty not to input exam questions directly into generative AI tools, as exams are highly confidential documents.",
   "sourceLanguage": "ja",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-001f"
   ],

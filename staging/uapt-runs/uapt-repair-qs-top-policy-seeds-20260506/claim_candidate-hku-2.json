@@ -9,7 +9,7 @@
   "claimText": "HKU states that input data used with generative AI should comply with data protection laws and university policies, and that users should avoid sharing sensitive, confidential, or proprietary information with GenAI platforms.",
   "sourceLanguage": "en",
   "confidence": 0.94,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-hku-2"
   ],

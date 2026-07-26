@@ -9,7 +9,7 @@
   "claimText": "Use of generative AI tools at MIT must comply with all applicable federal and state laws and orders (including FERPA, HIPAA, Massachusetts Data Protection Standards, export control laws, and the Executive Order on Safe, Secure, and Trustworthy Development and Use of AI), Institute policies (including 10.1 Academic and Research Misconduct, 11.0 Privacy and Disclosure of Personal Information, and 13.0 Information Policies), Information Protection guidelines, and the Institute's Written Information Security Program (WISP), plus any additional policies established by the user's department, lab, center, or institute (DLCI).",
   "sourceLanguage": "en",
   "confidence": 0.97,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-massachusetts-institute-of-technology-3"
   ],

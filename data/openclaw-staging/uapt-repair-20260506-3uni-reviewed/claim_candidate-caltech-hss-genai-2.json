@@ -9,8 +9,10 @@
   "claimText": "The Caltech HSS generative AI policy applies to all assignments including major papers, exams, discussion board posts, reflections, and problem sets.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
-  "evidenceIds": ["ec-caltech-hss-genai-2"],
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ec-caltech-hss-genai-2"
+  ],
   "citation": {
     "citationTitle": "HSS Policy on Generative AI",
     "sourceUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",

@@ -9,7 +9,7 @@
   "claimText": "NTU states that generative AI should not be listed as an author of any paper with NTU affiliation, or as a Principal Investigator, Co-PI, or collaborator in research proposals.",
   "sourceLanguage": "en",
   "confidence": 0.97,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-ntu-3"
   ],

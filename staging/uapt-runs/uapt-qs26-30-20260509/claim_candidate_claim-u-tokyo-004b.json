@@ -9,7 +9,7 @@
   "claimText": "UTokyo advises faculty to test their own assignments with generative AI tools to understand how well AI can complete them, and use this understanding to inform assessment design.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-004b"
   ],

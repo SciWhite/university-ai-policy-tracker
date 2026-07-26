@@ -9,7 +9,7 @@
   "claimText": "The ANU Library LibGuide references the ARC policy requiring disclosure of generative AI use in grant applications, accuracy verification, and originality compliance.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-009a"
   ],

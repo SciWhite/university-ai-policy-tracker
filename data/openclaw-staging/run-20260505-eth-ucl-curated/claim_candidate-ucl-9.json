@@ -9,7 +9,7 @@
   "claimText": "UCL designates Microsoft Copilot as its approved GenAI tool due to its enhanced data protection, positioning it as a more secure alternative to other GenAI services.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-ucl-890fc7705499f94f"
   ],

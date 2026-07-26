@@ -9,7 +9,7 @@
   "claimText": "NUS requires prior approval from Head of Department or relevant Deanery before using AI tools to provide instruction, feedback, or marks to students, submitted via an AI Risk Assessment.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-nus-4"
   ],

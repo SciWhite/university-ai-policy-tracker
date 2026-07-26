@@ -9,7 +9,7 @@
   "claimText": "SNU Library guidance states that researchers should use AI to improve research efficiency while maintaining research ethics and practicing responsible AI use.",
   "sourceLanguage": "ko",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-004a"
   ],

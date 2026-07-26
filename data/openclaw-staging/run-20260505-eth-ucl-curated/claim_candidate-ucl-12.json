@@ -9,7 +9,7 @@
   "claimText": "UCL provides Studiosity, a GenAI-powered service available 24/7 to all current students at all levels of study, to support academic writing and referencing skills.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-ucl-ff89b182cc863301"
   ],

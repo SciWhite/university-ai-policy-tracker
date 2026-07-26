@@ -9,7 +9,7 @@
   "claimText": "Columbia Law School requires all generative AI use to comply with university data protection policy; confidential or personal information must not be shared with AI tools unless retention and training use is disabled.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-004d"
   ],

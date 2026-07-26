@@ -9,7 +9,7 @@
   "claimText": "Staff setting summative assessment must: declare whether/how students can use AI; review assessment design for alignment with permitted AI use; ensure equality of baseline AI tool provision where authorised; specify declaration forms for student AI use; only identify suspected unauthorised AI use through marking or university-endorsed detection tools (none currently endorsed); and handle misconduct under usual disciplinary regulations.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-university-of-oxford-ai-assessment-staff-duties"
   ],

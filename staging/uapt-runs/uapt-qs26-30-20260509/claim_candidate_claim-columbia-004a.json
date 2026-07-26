@@ -9,7 +9,7 @@
   "claimText": "Columbia Law School prohibits generative AI use in exams, final papers, and for drafting any part of work submitted for credit, even if fully documented.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-004a"
   ],

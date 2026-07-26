@@ -14,7 +14,7 @@
       "normalizedValue": "prohibited_with_exceptions",
       "sourceLanguage": "en",
       "confidence": 0.95,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-info-compliance-1a",
         "evidence-cam-info-compliance-1b"
@@ -44,7 +44,7 @@
       "normalizedValue": "licensed_tools_mandated",
       "sourceLanguage": "en",
       "confidence": 0.95,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-info-compliance-2a",
         "evidence-cam-info-compliance-2b"
@@ -74,7 +74,7 @@
       "normalizedValue": "licensed_no_training",
       "sourceLanguage": "en",
       "confidence": 0.92,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-info-compliance-3a"
       ],
@@ -103,7 +103,7 @@
       "normalizedValue": "human_review_required",
       "sourceLanguage": "en",
       "confidence": 0.95,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-info-compliance-4a",
         "evidence-cam-info-compliance-4b"
@@ -162,7 +162,7 @@
       "normalizedValue": "isra_dpia_required",
       "sourceLanguage": "en",
       "confidence": 0.9,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-info-compliance-6a",
         "evidence-cam-info-compliance-6b"
@@ -192,7 +192,7 @@
       "normalizedValue": "unacknowledged_ai_is_misconduct",
       "sourceLanguage": "en",
       "confidence": 0.98,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-assessment-1a"
       ],
@@ -221,7 +221,7 @@
       "normalizedValue": "ai_detection_not_reliable",
       "sourceLanguage": "en",
       "confidence": 0.95,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-assessment-2a"
       ],
@@ -279,7 +279,7 @@
       "normalizedValue": "broadly_permitted",
       "sourceLanguage": "en",
       "confidence": 0.95,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-education-1a",
         "evidence-cam-education-1b"
@@ -309,7 +309,7 @@
       "normalizedValue": "general_principles",
       "sourceLanguage": "en",
       "confidence": 0.85,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-education-2a"
       ],
@@ -338,7 +338,7 @@
       "normalizedValue": "framework_not_centralized_policy",
       "sourceLanguage": "en",
       "confidence": 0.92,
-      "reviewState": "machine_candidate",
+      "reviewState": "agent_reviewed",
       "evidenceIds": [
         "evidence-cam-framework-1a"
       ],

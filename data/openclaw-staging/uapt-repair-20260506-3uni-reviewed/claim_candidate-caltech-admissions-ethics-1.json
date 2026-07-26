@@ -9,7 +9,7 @@
   "claimText": "Caltech admissions requires all Fall 2026 applicants to review its admissions guidelines on the ethical use of AI before submitting supplemental essays. Failure to comply may result in rescission of admission.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-caltech-admissions-ethics-1"
   ],

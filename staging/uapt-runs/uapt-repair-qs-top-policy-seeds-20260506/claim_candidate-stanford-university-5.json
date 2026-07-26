@@ -9,7 +9,7 @@
   "claimText": "Stanford School of Medicine MD and MSPA programs have a formal AI policy: students may use AI for learning, clarification, and grammar/style editing unless contrary to assignment instructions. AI use for closed-book exams or assignments where internet is restricted is prohibited unless explicitly authorized by faculty. Students are responsible for all AI-generated content they submit, must disclose and cite substantial AI contributions, and violations may result in disciplinary action.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-stanford-university-md-ai-policy-1"
   ],

@@ -9,7 +9,7 @@
   "claimText": "ANU Law School prohibits using generative AI to draft assessment content; all submitted work must be the student's own independent and original work.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-006a"
   ],

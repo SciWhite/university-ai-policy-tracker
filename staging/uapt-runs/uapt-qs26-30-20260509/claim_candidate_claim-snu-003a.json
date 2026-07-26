@@ -9,7 +9,7 @@
   "claimText": "SNU's AI Guidelines establish basic principles requiring members to understand AI tool purposes and characteristics, apply critical thinking, and balance creativity with social responsibility.",
   "sourceLanguage": "ko",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-003a"
   ],

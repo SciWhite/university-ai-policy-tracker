@@ -9,7 +9,7 @@
   "claimText": "NTU states that not citing or acknowledging the use of generative AI could be considered plagiarism (a form of research misconduct), especially if GenAI was used to generate ideas or for literature reviews.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-ntu-2"
   ],

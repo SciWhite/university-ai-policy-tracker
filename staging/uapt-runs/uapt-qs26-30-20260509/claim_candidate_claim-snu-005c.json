@@ -9,7 +9,7 @@
   "claimText": "SNU Library provides an AI ethics checklist requiring researchers to cite AI sources, avoid rights infringement, not input sensitive information, cross-verify AI outputs, and use AI only as a supplementary tool.",
   "sourceLanguage": "ko",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-005c"
   ],

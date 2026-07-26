@@ -9,7 +9,7 @@
   "claimText": "JHU Engineering's Center for Teaching and Learning Design provides school-specific guidance on student use of generative AI.",
   "sourceLanguage": "en",
   "confidence": 0.6,
-  "reviewState": "needs_review",
+  "reviewState": "rejected",
   "evidenceIds": [
     "ev-jhu-004a"
   ],

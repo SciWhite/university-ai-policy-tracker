@@ -9,7 +9,7 @@
   "claimText": "UTokyo warns students to never input confidential information, personal information, or unpublished research results into AI tools, as the information might be leaked or used for AI training.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-003d"
   ],

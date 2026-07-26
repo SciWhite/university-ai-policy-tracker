@@ -9,7 +9,7 @@
   "claimText": "NUS policy states that representing AI output as one's own work without acknowledgement is plagiarism; students who submit AI-generated work without acknowledging its use can be sanctioned for academic dishonesty.",
   "sourceLanguage": "en",
   "confidence": 0.96,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-nus-7"
   ],

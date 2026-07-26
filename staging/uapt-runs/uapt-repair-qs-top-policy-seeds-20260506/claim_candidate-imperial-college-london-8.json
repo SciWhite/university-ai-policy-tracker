@@ -9,7 +9,7 @@
   "claimText": "Users of Imperial's dAIsy AI platform must always apply critical judgment to AI outputs. Generative AI can produce inaccurate or biased outputs ('hallucinate'), omit context, or reflect training-data biases. Users remain accountable for the accuracy, legality, and appropriateness of any content they submit or share through the platform.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-imperial-college-london-8"
   ],

@@ -9,7 +9,7 @@
   "claimText": "Research at Imperial that involves people, personal data, or sensitive topics may require ethics approval, a Data Protection Impact Assessment (DPIA), and data-governance controls before using any AI tool. Researchers must verify whether their use of AI in research requires special approval, particularly when uploading private or confidential research data.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-imperial-college-london-6"
   ],

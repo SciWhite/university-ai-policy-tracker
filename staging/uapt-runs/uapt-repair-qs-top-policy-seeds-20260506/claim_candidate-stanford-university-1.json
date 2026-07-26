@@ -9,7 +9,7 @@
   "claimText": "Stanford's BCA issued guidance on generative AI use, and the Office of Community Standards recommends that instructors give advance notice to students when using AI detection software.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-stanford-university-bca-genai-guidance-1"
   ],

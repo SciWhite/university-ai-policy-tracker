@@ -9,7 +9,7 @@
   "claimText": "IS&T recommends that MIT community members consult with IS&T before purchasing or using generative AI tools, and recommends using tools already licensed by IS&T for the MIT community.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-massachusetts-institute-of-technology-1"
   ],

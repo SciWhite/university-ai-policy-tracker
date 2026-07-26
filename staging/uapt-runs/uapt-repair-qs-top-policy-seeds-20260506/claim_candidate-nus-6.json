@@ -9,7 +9,7 @@
   "claimText": "NUS policy states that verdicts from AI detection tools are not admissible as conclusive evidence in disciplinary processes to charge students with academic dishonesty or to penalize student work.",
   "sourceLanguage": "en",
   "confidence": 0.96,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-nus-6"
   ],

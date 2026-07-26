@@ -9,7 +9,7 @@
   "claimText": "NTU states that the use of generative AI beyond basic spelling and grammar checks should be acknowledged and cited in research outputs, publications, and presentations.",
   "sourceLanguage": "en",
   "confidence": 0.96,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-ntu-1"
   ],

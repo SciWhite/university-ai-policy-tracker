@@ -9,7 +9,7 @@
   "claimText": "UTokyo warns that using AI-generated results as-is may entail future legal risks related to copyright and design rights.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-003e"
   ],

@@ -9,7 +9,7 @@
   "claimText": "Stanford University IT (UIT) advises users to avoid inputting Moderate or High Risk Data into third-party AI platforms or tools not covered by a Stanford Business Associates Agreement, whether using a personal or Stanford account. Users should opt out of sharing chat data with third-party AI providers when possible.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-stanford-university-uit-responsible-ai-1"
   ],

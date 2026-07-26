@@ -9,7 +9,7 @@
   "claimText": "UTokyo has established security guidelines for generative AI use (March 2024), referenced in the AI service policy.",
   "sourceLanguage": "ja",
   "confidence": 0.8,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-002c"
   ],

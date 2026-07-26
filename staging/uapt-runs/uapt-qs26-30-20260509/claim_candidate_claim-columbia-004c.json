@@ -9,7 +9,7 @@
   "claimText": "Columbia Law School permits students to use generative AI for studying, brainstorming, and identifying typographical errors, but not for writing, editing, revising, or translating text.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-004c"
   ],

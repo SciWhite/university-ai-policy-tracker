@@ -9,7 +9,7 @@
   "claimText": "UTokyo policy states that even when AI use is allowed, simply copying and pasting AI-generated answers should not be accepted as it provides no learning effect.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-004e"
   ],

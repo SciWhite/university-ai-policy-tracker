@@ -9,8 +9,10 @@
   "claimText": "The Caltech HSS generative AI policy states that generative AI may promote learning in some contexts and impede it in others, and instructors prioritize student learning in setting these policies.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
-  "evidenceIds": ["ec-caltech-hss-genai-4"],
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ec-caltech-hss-genai-4"
+  ],
   "citation": {
     "citationTitle": "HSS Policy on Generative AI",
     "sourceUrl": "https://www.hss.caltech.edu/hss-policies/hss-policy-on-generative-ai",

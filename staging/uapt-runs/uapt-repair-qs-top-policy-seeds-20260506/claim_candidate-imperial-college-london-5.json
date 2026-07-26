@@ -9,7 +9,7 @@
   "claimText": "Breaches of Imperial's dAIsy Use Policy may lead to action under Academic Misconduct procedures for students and HR/disciplinary processes for staff, as well as under Information Security and Data Protection policies. Sanctions may include removal of access, grade penalties, or formal disciplinary measures.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-imperial-college-london-5"
   ],

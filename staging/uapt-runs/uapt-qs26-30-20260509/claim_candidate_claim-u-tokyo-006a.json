@@ -9,7 +9,7 @@
   "claimText": "UTokyo provides Gemini and Microsoft 365 Copilot Chat as university-wide contracted AI chat services; there is no university-wide ChatGPT contract.",
   "sourceLanguage": "ja",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-006a"
   ],

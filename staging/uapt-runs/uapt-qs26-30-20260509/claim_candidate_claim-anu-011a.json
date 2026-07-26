@@ -9,7 +9,7 @@
   "claimText": "ANU does not ban generative AI, but the College of Asia & the Pacific distinguishes between appropriate and inappropriate uses based on whether AI replaces or supports student skill development.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-011a"
   ],

@@ -9,7 +9,7 @@
   "claimText": "Columbia Law School's default AI prohibition can be overridden by individual instructors who set more permissive policies in writing in their syllabus.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-004b"
   ],

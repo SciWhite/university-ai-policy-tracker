@@ -9,7 +9,7 @@
   "claimText": "ANU Law School warns that academic integrity findings related to AI misuse may have long-term consequences for law students, as misconduct must be disclosed when applying for admission to legal practice.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-006d"
   ],

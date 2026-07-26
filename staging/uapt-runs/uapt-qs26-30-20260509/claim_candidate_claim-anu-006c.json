@@ -9,7 +9,7 @@
   "claimText": "ANU Law School requires students to explicitly declare AI tool usage in the first footnote of submitted work, including tool names, purpose, and extent of use.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-006c"
   ],

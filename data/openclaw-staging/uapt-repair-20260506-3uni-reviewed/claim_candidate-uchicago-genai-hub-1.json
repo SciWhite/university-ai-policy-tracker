@@ -9,8 +9,10 @@
   "claimText": "The University of Chicago provides a central hub at genai.uchicago.edu for information on generative AI tools, training, resources, and guidance for the university community.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
-  "evidenceIds": ["ec-uchicago-genai-hub-1"],
+  "reviewState": "agent_reviewed",
+  "evidenceIds": [
+    "ec-uchicago-genai-hub-1"
+  ],
   "citation": {
     "citationTitle": "Generative AI at UChicago",
     "sourceUrl": "https://genai.uchicago.edu/",

@@ -9,7 +9,7 @@
   "claimText": "University of Tokyo will not uniformly prohibit generative AI tools like ChatGPT in education; instead, it actively explores their potential while continuing dialogue on practical knowledge and long-term impact.",
   "sourceLanguage": "ja",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-001a"
   ],

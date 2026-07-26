@@ -9,7 +9,7 @@
   "claimText": "FAS (Faculty of Arts and Sciences) Office of Undergraduate Education policy: All faculty are required to inform students of the policies governing generative AI use in class. Faculty should post their AI policy on their Canvas site.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-harvard-university-oue-required-policy"
   ],

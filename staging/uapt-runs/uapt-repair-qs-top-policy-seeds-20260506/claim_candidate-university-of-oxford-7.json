@@ -9,7 +9,7 @@
   "claimText": "Unapproved AI transcription bots should not be used in Teams meetings. The inbuilt Teams Transcription facility or Microsoft Copilot may be used subject to appropriate data protection considerations. Other AI transcription bot services should be avoided, and meeting organisers should set options to prevent participants from adding unapproved transcription bots.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-university-of-oxford-ai-transcription-bots"
   ],

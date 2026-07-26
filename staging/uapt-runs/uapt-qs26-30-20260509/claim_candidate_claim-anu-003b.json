@@ -9,7 +9,7 @@
   "claimText": "ANU requires that only university-approved AI solutions/software be used to ensure appropriate data governance, information security, and licensing.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-003b"
   ],

@@ -9,7 +9,7 @@
   "claimText": "NTU prohibits uploading confidential, sensitive, or personal data to external generative AI platforms unless specific conditions are met: legal compliance, restricted access, no data retention, and written permission from data owners.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-ntu-4"
   ],

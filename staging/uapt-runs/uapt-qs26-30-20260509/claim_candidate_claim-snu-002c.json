@@ -9,7 +9,7 @@
   "claimText": "SNU's AI Guidelines for research require cross-verification of AI outputs for errors/bias, protection of research data and confidential information, and documentation of AI use for research reproducibility.",
   "sourceLanguage": "ko",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-002c"
   ],

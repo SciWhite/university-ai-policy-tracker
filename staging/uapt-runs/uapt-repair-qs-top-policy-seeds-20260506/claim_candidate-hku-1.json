@@ -9,7 +9,7 @@
   "claimText": "HKU states that researchers should clearly disclose generative AI tool usage in research outputs, publications, and presentations, including the type of GenAI used, data sources, and potential limitations.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-hku-1"
   ],

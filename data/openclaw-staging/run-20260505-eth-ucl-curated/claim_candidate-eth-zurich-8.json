@@ -9,7 +9,7 @@
   "claimText": "ETH Zurich requires transparency about GenAI use: students must declare which tools they used and for which parts of their work; lecturers must communicate when GenAI use is permitted and make their own GenAI use visible.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-eth-zurich-e443a529c83397c3"
   ],

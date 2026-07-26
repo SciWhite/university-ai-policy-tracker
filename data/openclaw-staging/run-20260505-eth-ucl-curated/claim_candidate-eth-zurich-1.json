@@ -9,7 +9,7 @@
   "claimText": "ETH Zurich advocates a proactive approach to the use of generative AI in educational contexts, emphasising responsible use among students and lecturers.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-eth-zurich-044ba6833e251b28"
   ],

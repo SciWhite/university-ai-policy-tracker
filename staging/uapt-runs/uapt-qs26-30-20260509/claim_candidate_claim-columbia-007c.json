@@ -9,7 +9,7 @@
   "claimText": "All Teachers College example syllabus statements include provisions for students with disabilities who have AI-related accommodations through OASID.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-007c"
   ],

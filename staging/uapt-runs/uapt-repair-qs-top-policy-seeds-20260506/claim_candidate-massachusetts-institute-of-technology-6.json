@@ -9,7 +9,7 @@
   "claimText": "MIT prohibits the use of generative AI for purposes that may require in-depth risk assessments without prior consultation with ai-guidance@mit.edu. Such purposes include recruitment and hiring of employees, evaluating student academic performance, making investment decisions, and complaint and dispute resolution.",
   "sourceLanguage": "en",
   "confidence": 0.94,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-massachusetts-institute-of-technology-6"
   ],

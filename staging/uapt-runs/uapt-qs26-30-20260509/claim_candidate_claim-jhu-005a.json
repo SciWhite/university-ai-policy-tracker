@@ -9,7 +9,7 @@
   "claimText": "JHU Engineering for Professionals provides faculty-facing guidance with detailed generative AI use categories, including categories where AI may not be used in any form.",
   "sourceLanguage": "en",
   "confidence": 0.7,
-  "reviewState": "needs_review",
+  "reviewState": "rejected",
   "evidenceIds": [
     "ev-jhu-005a"
   ],

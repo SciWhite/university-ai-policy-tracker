@@ -9,7 +9,7 @@
   "claimText": "SNU Library cites COPE's position that AI tools cannot be listed as authors because they cannot take responsibility for research results and lack legal personality.",
   "sourceLanguage": "ko",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-005a"
   ],

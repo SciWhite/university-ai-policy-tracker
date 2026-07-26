@@ -9,7 +9,7 @@
   "claimText": "Unless explicitly authorised, using generative AI to create assessed work may be treated as an academic offence such as contract cheating under Imperial's Plagiarism, Academic Integrity & Exam Offences regulations. Improper use of AI can be investigated under the University's Academic Misconduct procedures.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-imperial-college-london-1"
   ],

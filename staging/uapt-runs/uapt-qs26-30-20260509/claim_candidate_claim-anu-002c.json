@@ -9,7 +9,7 @@
   "claimText": "ANU endorses Copilot Enterprise as the primary AI tool for staff and students, accessed via ANU accounts; non-endorsed tools carry security risks the university cannot guarantee.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-002c"
   ],

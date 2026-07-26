@@ -9,7 +9,7 @@
   "claimText": "University-wide: Only Harvard-offered versions of generative AI tools carry stated data classification protections. Publicly-available versions of the same tools should not be used for Harvard work. Approved tools (Harvard AI Sandbox, Google Gemini, Microsoft Copilot Chat, ChatGPT Edu, Adobe Firefly) are approved for Level 3 data and below.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-harvard-university-approved-tools-classification"
   ],

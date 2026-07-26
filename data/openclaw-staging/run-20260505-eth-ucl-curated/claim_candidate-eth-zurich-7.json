@@ -9,7 +9,7 @@
   "claimText": "ETH Zurich states that technical recognition of AI-generated output is currently unreliable and will probably remain so; trust in such methods is not appropriate.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-eth-zurich-0c73d66c1817b427"
   ],

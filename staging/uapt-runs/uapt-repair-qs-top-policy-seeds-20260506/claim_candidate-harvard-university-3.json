@@ -9,7 +9,7 @@
   "claimText": "University-wide: AI meeting assistants (AI note takers or bots) should not be used in Harvard meetings, with the exception of approved tools with contractual protections including enterprise agreements with appropriate security and privacy protections, or tools as part of limited HUIT-directed pilot programs.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-harvard-university-ai-meeting-assistants"
   ],

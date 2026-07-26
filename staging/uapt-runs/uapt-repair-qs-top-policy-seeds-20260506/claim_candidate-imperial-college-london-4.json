@@ -9,7 +9,7 @@
   "claimText": "Imperial's dAIsy AI platform uses University SSO authentication with auditing. Prompts and metadata are logged for operational monitoring, and AI model providers are configured not to train on user data. Users' prompts and responses are not used to train external AI models. dAIsy is approved for use with unrestricted data within Imperial's secure infrastructure.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-imperial-college-london-4"
   ],

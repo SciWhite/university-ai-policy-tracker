@@ -9,7 +9,7 @@
   "claimText": "CUIMC provides HIPAA-compliant versions of ChatGPT Education and Microsoft Copilot as approved AI chatbot tools; workforce members must use CUIMC-issued accounts for compliance.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-005a"
   ],

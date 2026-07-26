@@ -9,7 +9,7 @@
   "claimText": "No generative AI tools, including those licensed by IS&T, are approved for use with High Risk MIT information. Additionally, MIT does not recommend using publicly available GenAI tools not subject to an Institute licensing agreement for MIT research and educational activities, even with Low Risk or Medium Risk information.",
   "sourceLanguage": "en",
   "confidence": 0.98,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-massachusetts-institute-of-technology-2",
     "evd-massachusetts-institute-of-technology-9"

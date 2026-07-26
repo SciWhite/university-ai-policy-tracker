@@ -9,7 +9,7 @@
   "claimText": "Students undertaking summative assessment must: complete assessment in line with the AI use declaration for each assignment; acknowledge their AI use via a formal declaration in the prescribed format; and understand that submitting work breaching AI specifications constitutes cheating and may constitute plagiarism, handled under usual disciplinary regulations.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-university-of-oxford-ai-assessment-student-duties"
   ],

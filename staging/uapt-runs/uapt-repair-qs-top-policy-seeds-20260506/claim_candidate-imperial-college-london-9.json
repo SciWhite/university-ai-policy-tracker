@@ -9,7 +9,7 @@
   "claimText": "Users of Imperial's dAIsy platform must not upload third-party content they are not permitted to share. Reuse of AI outputs must comply with licensing and academic citation norms. When communicating externally, dAIsy outputs must not be presented as Imperial's position without approval.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-imperial-college-london-9"
   ],

@@ -9,7 +9,7 @@
   "claimText": "JHU provides official syllabus statement templates, including options that prohibit students from using ChatGPT or other AI tools to generate written content for assignments.",
   "sourceLanguage": "en",
   "confidence": 0.7,
-  "reviewState": "needs_review",
+  "reviewState": "rejected",
   "evidenceIds": [
     "ev-jhu-003a"
   ],

@@ -9,7 +9,7 @@
   "claimText": "As of March 2026, Google Gemini, NotebookLM, and Anthropic Claude are not approved for use with sensitive data at CUIMC; they may only be used with non-sensitive, non-confidential data.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-columbia-005c"
   ],

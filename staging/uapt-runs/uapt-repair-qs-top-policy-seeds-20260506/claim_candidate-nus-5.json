@@ -9,7 +9,7 @@
   "claimText": "NUS policy sets the default assumption that AI tool use is permitted for unsupervised (take-home) assessments, provided use is duly acknowledged; assessments forbidding AI must be conducted in-person and instructor-supervised.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-nus-5"
   ],

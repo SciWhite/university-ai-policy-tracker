@@ -9,7 +9,7 @@
   "claimText": "ANU handles suspected generative AI misuse through the same academic misconduct procedure as other integrity breaches, including giving students the opportunity to respond.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-005c"
   ],

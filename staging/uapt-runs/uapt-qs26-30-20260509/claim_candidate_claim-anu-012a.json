@@ -9,7 +9,7 @@
   "claimText": "ANU published a PDF FAQ document 'Chat GPT and other generative AI tools: What ANU academics need to know' covering ChatGPT introduction, assessment impact, and institutional response (content also referenced in ANU's blog post).",
   "sourceLanguage": "en",
   "confidence": 0.6,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-012a"
   ],

@@ -9,7 +9,7 @@
   "claimText": "SNU requires instructors to communicate AI tool usage policies (permitted/prohibited scope and reporting methods) through syllabi, and students must comply.",
   "sourceLanguage": "ko",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-002b"
   ],

@@ -9,7 +9,7 @@
   "claimText": "JHU Engineering CTLD maintains an academic integrity page specifically addressing ChatGPT and AI-related concerns.",
   "sourceLanguage": "en",
   "confidence": 0.6,
-  "reviewState": "needs_review",
+  "reviewState": "rejected",
   "evidenceIds": [
     "ev-jhu-006a"
   ],

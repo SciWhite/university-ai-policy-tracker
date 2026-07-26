@@ -9,7 +9,7 @@
   "claimText": "NUS policy requires that wherever NUS data is involved, only NUS-approved AI tools should be used.",
   "sourceLanguage": "en",
   "confidence": 0.94,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-nus-8"
   ],

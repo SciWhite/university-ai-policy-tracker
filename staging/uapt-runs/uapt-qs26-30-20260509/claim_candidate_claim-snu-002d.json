@@ -9,7 +9,7 @@
   "claimText": "SNU's AI Guidelines require transparent disclosure of AI use, fact and source verification, copyright/privacy/information security compliance, bias correction, and awareness of accountability.",
   "sourceLanguage": "ko",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-002d"
   ],

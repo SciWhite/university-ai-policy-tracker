@@ -9,7 +9,7 @@
   "claimText": "ANU CAP guidelines state there is a very strong presumption against any use of generative AI or translation programs in language courses, and advise non-language students to check with convenors before using AI for translation.",
   "sourceLanguage": "en",
   "confidence": 0.85,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-011c"
   ],

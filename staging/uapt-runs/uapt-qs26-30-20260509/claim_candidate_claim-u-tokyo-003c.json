@@ -9,7 +9,7 @@
   "claimText": "UTokyo states it is unacceptable to present AI-generated text as one's own when submitting class assignments.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-003c"
   ],

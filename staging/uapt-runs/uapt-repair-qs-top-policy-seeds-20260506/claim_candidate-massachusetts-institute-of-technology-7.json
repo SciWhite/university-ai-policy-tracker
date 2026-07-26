@@ -9,7 +9,7 @@
   "claimText": "MIT departments, labs, centers, and institutes (DLCIs) already using a generative AI tool or service must ensure that the tool complies with all Institute policies and Information Protection guidelines, and must contact ai-guidance@mit.edu for consultation or assessment if needed.",
   "sourceLanguage": "en",
   "confidence": 0.93,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-massachusetts-institute-of-technology-7"
   ],

@@ -9,7 +9,7 @@
   "claimText": "JHU maintains a central Generative AI Tool Guidance hub on Teaching @ JHU covering teaching and learning applications.",
   "sourceLanguage": "en",
   "confidence": 0.65,
-  "reviewState": "needs_review",
+  "reviewState": "rejected",
   "evidenceIds": [
     "ev-jhu-001a"
   ],

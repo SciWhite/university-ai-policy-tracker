@@ -9,7 +9,7 @@
   "claimText": "The University's policy on AI use in summative assessment is based on three principles endorsed by Education Committee in Trinity term 2025: (1) educational practice must be grounded in values of integrity, honesty and transparency, which must be clearly articulated and frequently discussed; (2) every discrete unit of assessment must be carefully designed to be fit for its specific purposes, clearly articulated to students; (3) every summative assessment must be accompanied by a clear explanation of what appropriate assistance is permitted and what is forbidden, specifying how students should report assistance received.",
   "sourceLanguage": "en",
   "confidence": 0.95,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-university-of-oxford-ai-three-principles"
   ],

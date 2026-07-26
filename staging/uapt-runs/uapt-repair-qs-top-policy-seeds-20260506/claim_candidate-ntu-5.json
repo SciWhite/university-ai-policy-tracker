@@ -9,7 +9,7 @@
   "claimText": "NTU guidelines state that AI detector tools should be used with caution due to frequent false positives and negatives, ease of bypass, and bias against non-native English writing patterns.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "evd-ntu-5"
   ],

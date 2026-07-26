@@ -9,7 +9,7 @@
   "claimText": "UCL defines academic misconduct in the context of GenAI as gaining an unfair advantage over other students; there is no single list of fair and unfair uses as it depends on the assessment category.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-ucl-5b5c58fabb319675"
   ],

@@ -9,7 +9,7 @@
   "claimText": "ANU CAP guidelines identify using AI-produced text as one's own, using AI to generate assignment structures, and using AI to rephrase others' work to avoid plagiarism detection as inappropriate uses that constitute academic integrity issues.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-anu-011b"
   ],

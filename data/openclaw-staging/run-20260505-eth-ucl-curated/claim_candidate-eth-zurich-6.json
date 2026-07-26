@@ -9,7 +9,7 @@
   "claimText": "Students must refrain from disclosing copyrighted, private, or confidential information to commercial GenAI clients unless expressly permitted, and must respect privacy and copyright of content they work with.",
   "sourceLanguage": "en",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ec-eth-zurich-f0cc94fd752680e0"
   ],

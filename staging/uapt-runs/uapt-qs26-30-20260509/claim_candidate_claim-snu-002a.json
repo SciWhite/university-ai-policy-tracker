@@ -9,7 +9,7 @@
   "claimText": "SNU's AI Guidelines do not uniformly restrict or prohibit AI use; they establish standards to support rational judgment and ethical, creative use based on autonomy and trust.",
   "sourceLanguage": "ko",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-snu-002a"
   ],

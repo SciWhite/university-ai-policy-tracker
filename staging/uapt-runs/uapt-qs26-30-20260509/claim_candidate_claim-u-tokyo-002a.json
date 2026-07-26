@@ -9,7 +9,7 @@
   "claimText": "UTokyo centers its university-wide generative AI service on Microsoft Copilot, leveraging existing Microsoft contracts for low operational and cost burden.",
   "sourceLanguage": "ja",
   "confidence": 0.9,
-  "reviewState": "machine_candidate",
+  "reviewState": "agent_reviewed",
   "evidenceIds": [
     "ev-u-tokyo-002a"
   ],
