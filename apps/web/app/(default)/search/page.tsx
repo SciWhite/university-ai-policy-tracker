@@ -9,8 +9,7 @@ import { getQueryAnalytics } from "@/lib/analytics-events";
 import {
   getEntityResolutionRecords,
   getSearchIndexRecords,
-  searchIndexRecords,
-  type SearchIndexRecord
+  searchIndexRecords
 } from "@/lib/entity-search";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -239,8 +238,8 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
   const queryLengthBucket = String(queryAnalytics.query_length_bucket ?? "");
   const searchPath = localizeHref("/search", locale);
   const [searchIndex, entityIndex] = await Promise.all([
-    fetchSearchIndexRecords(),
-    fetchEntityIndexSummary()
+    getSearchIndexRecords(),
+    getEntityIndexSummary()
   ]);
   const results = searchIndexRecords(searchIndex, query, { limit: 30 });
   const suggestedRecords = [...searchIndex]
@@ -442,56 +441,18 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
 
 type SearchResult = ReturnType<typeof searchIndexRecords>[number];
 
-async function fetchSearchIndexRecords(): Promise<SearchIndexRecord[]> {
-  const payload = await fetchPublicJson<{
-    data?: {
-      records?: SearchIndexRecord[];
-    };
-  }>(`/api/public/${PUBLIC_API_VERSION}/search/index.json`);
-
-  if (Array.isArray(payload?.data?.records)) return payload.data.records;
-
-  return getSearchIndexRecords();
-}
-
-async function fetchEntityIndexSummary(): Promise<{
+// The public search/entity index endpoints serve the exact same in-process
+// dataset, so read it directly instead of HTTP round-trips back to this app.
+async function getEntityIndexSummary(): Promise<{
   aliasCount: number;
   count: number;
 }> {
-  const payload = await fetchPublicJson<{
-    data?: {
-      aliasCount?: number;
-      count?: number;
-    };
-  }>(`/api/public/${PUBLIC_API_VERSION}/entities/index.json`);
-
-  if (payload?.data) {
-    return {
-      aliasCount: Number(payload.data.aliasCount ?? 0),
-      count: Number(payload.data.count ?? 0)
-    };
-  }
-
   const records = await getEntityResolutionRecords();
 
   return {
     aliasCount: records.reduce((total, record) => total + record.aliasCount, 0),
     count: records.length
   };
-}
-
-async function fetchPublicJson<T>(pathname: string): Promise<T | undefined> {
-  try {
-    const response = await fetch(getAbsoluteSiteUrl(pathname), {
-      cache: "no-store"
-    });
-
-    if (!response.ok) return undefined;
-
-    return (await response.json()) as T;
-  } catch {
-    return undefined;
-  }
 }
 
 function SearchResults({

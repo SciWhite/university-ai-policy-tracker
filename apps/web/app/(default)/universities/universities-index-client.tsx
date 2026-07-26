@@ -8,12 +8,13 @@ import type {
 import { DocumentLink as Link } from "@/components/document-link";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
+import { formatCopyTemplate } from "@/lib/copy-templates";
 import { localizeHref, type SupportedLocale } from "@/lib/i18n";
 import {
   getInstitutionLocalizedAliasesByLocale,
   getLocalizedInstitutionName
 } from "@/lib/institution-localization";
-import { getPageCopy } from "@/lib/page-copy";
+import type { UniversitiesIndexClientCopy } from "@/lib/page-copy";
 import { normalizeForSearch, textMatchesNormalized } from "@/lib/search-text";
 import type {
   StaticUniversityIndexRecord,
@@ -24,6 +25,7 @@ import type {
 } from "@/lib/university-index-records";
 
 interface UniversitiesIndexClientProps {
+  copy: UniversitiesIndexClientCopy;
   initialRecords: StaticUniversityIndexRecord[];
   locale: SupportedLocale;
   priorityRecords: StaticUniversityIndexRecord[];
@@ -103,6 +105,7 @@ const fullIndexCopy: Record<SupportedLocale, {
 };
 
 export function UniversitiesIndexClient({
+  copy,
   initialRecords,
   locale,
   priorityRecords,
@@ -112,7 +115,6 @@ export function UniversitiesIndexClient({
   totalRecordCount,
   totalSourceCount
 }: UniversitiesIndexClientProps) {
-  const copy = getPageCopy(locale).universities;
   const indexCopy = fullIndexCopy[locale];
   const [filters, setFilters] = useState<UniversityIndexFilters>(defaultFilters);
   const [records, setRecords] = useState(initialRecords);
@@ -215,7 +217,11 @@ export function UniversitiesIndexClient({
         </div>
         <div>
           <span>{rankedCount}</span>
-          <p>{copy.rankedRecords(selectedRankingLabel)}</p>
+          <p>
+            {formatCopyTemplate(copy.templates.rankedRecords, {
+              ranking: selectedRankingLabel
+            })}
+          </p>
         </div>
       </section>
 
@@ -380,9 +386,20 @@ export function UniversitiesIndexClient({
         </form>
 
         <div className="table-summary" data-university-visible-count={filteredRecords.length}>
-          {copy.showing(filteredRecords.length, totalRecordCount)}{" "}
-          {filters.q ? <>{copy.searchSummary(filters.q)} </> : null}
-          {copy.rankingView(selectedRankingLabel)}
+          {formatCopyTemplate(copy.templates.showing, {
+            visible: filteredRecords.length,
+            total: totalRecordCount
+          })}{" "}
+          {filters.q ? (
+            <>
+              {formatCopyTemplate(copy.templates.searchSummary, {
+                query: filters.q
+              })}{" "}
+            </>
+          ) : null}
+          {formatCopyTemplate(copy.templates.rankingView, {
+            ranking: selectedRankingLabel
+          })}
         </div>
         {!hasFullIndex ? (
           <p className="notice-card">
@@ -409,7 +426,11 @@ export function UniversitiesIndexClient({
             <thead>
               <tr>
                 <th>{copy.university}</th>
-                <th>{copy.rank(selectedRankingLabel)}</th>
+                <th>
+                  {formatCopyTemplate(copy.templates.rank, {
+                    ranking: selectedRankingLabel
+                  })}
+                </th>
                 <th>{copy.claims}</th>
                 <th>{copy.sources}</th>
                 <th>{copy.lastChecked}</th>
@@ -574,7 +595,7 @@ function getFreshnessTime(record: StaticUniversityIndexRecord): number {
 
 function renderRanking(
   ranking: CatalogUniversityRanking | undefined,
-  copy: ReturnType<typeof getPageCopy>["universities"]
+  copy: UniversitiesIndexClientCopy
 ) {
   if (!ranking) return <span className="table-muted">{copy.notIndexed}</span>;
 

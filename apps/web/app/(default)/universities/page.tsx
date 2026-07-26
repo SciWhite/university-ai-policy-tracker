@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/json-ld";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { normalizeLocale } from "@/lib/i18n";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
-import { getPageCopy } from "@/lib/page-copy";
+import { getPageCopy, getUniversitiesIndexClientCopy } from "@/lib/page-copy";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { UniversitiesIndexClient } from "./universities-index-client";
 
@@ -85,6 +85,7 @@ export default async function UniversitiesPage({ params }: UniversitiesPageProps
         }}
       />
       <UniversitiesIndexClient
+        copy={getUniversitiesIndexClientCopy(locale)}
         initialRecords={initialRecords}
         locale={locale}
         priorityRecords={priorityRecords}

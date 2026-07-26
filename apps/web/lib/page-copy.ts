@@ -1,3 +1,4 @@
+import { formatCopyTemplate } from "@/lib/copy-templates";
 import type { SupportedLocale } from "@/lib/i18n";
 import zhTranslations from "@/messages/pages/zh.json";
 import frTranslations from "@/messages/pages/fr.json";
@@ -798,6 +799,64 @@ export function getPageCopy(locale: SupportedLocale): PageCopies {
   return localizedPageCopies[locale];
 }
 
+// English source templates for the universities formatter functions. Must stay
+// in sync with the `en` formatters above; other locales already store these as
+// template strings in messages/pages/<locale>.json.
+const enUniversitiesCopyTemplates = {
+  rank: "{ranking} rank",
+  rankedRecords: "{ranking} ranked records",
+  rankingView: "Ranking view: {ranking}.",
+  searchSummary: 'Search: "{query}".',
+  showing: "Showing {visible} of {total} records."
+} as const;
+
+// Serializable copy for the /universities client island: formatter functions
+// are replaced by template strings so the server page can pass a single
+// locale's copy as props instead of bundling every locale JSON client-side.
+export function getUniversitiesIndexClientCopy(locale: SupportedLocale) {
+  const {
+    answerCards: _answerCards,
+    candidateNotice: _candidateNotice,
+    rank: _rank,
+    rankedRecords: _rankedRecords,
+    rankingView: _rankingView,
+    searchSummary: _searchSummary,
+    showing: _showing,
+    ...strings
+  } = getPageCopy(locale).universities;
+  const templates =
+    locale === "en"
+      ? enUniversitiesCopyTemplates
+      : {
+          rank: translationTrees[locale].universities.rank,
+          rankedRecords: translationTrees[locale].universities.rankedRecords,
+          rankingView: translationTrees[locale].universities.rankingView,
+          searchSummary: translationTrees[locale].universities.searchSummary,
+          showing: translationTrees[locale].universities.showing
+        };
+
+  return { ...strings, templates };
+}
+
+export type UniversitiesIndexClientCopy = ReturnType<
+  typeof getUniversitiesIndexClientCopy
+>;
+
+// Serializable copy for the /changes client island: the changes copy is plain
+// strings apart from the formatter functions and answer cards dropped here.
+export function getChangesIndexClientCopy(locale: SupportedLocale) {
+  const {
+    answers: _answers,
+    summary: _summary,
+    timelineLead: _timelineLead,
+    ...strings
+  } = getPageCopy(locale).changes;
+
+  return strings;
+}
+
+export type ChangesIndexClientCopy = ReturnType<typeof getChangesIndexClientCopy>;
+
 function compilePageCopy(
   base: PageCopies,
   translations: unknown,
@@ -823,7 +882,7 @@ function compileNode(
       throw new Error(`Missing formatter definition at ${locale}:${currentPath}`);
     }
     return (...args: unknown[]) =>
-      interpolateTemplate(
+      formatCopyTemplate(
         translated,
         Object.fromEntries(argumentNames.map((name, index) => [name, args[index]]))
       );
@@ -861,15 +920,6 @@ function compileNode(
   return translated;
 }
 
-function interpolateTemplate(
-  template: string,
-  values: Record<string, unknown>
-): string {
-  return template.replace(/\{([^}]+)\}/g, (_match, key: string) =>
-    String(values[key] ?? "")
-  );
-}
-
 function getConditionalFormatter(
   locale: Exclude<SupportedLocale, "en">,
   path: string
@@ -885,7 +935,7 @@ function getConditionalFormatter(
         nl: "Vergelijking van {current} met {previous}, voor {sources} bronnen en {records} universiteitsrecords.",
         ms: "Perbandingan {current} dengan {previous}, meliputi {sources} sumber dan {records} rekod universiti."
       };
-      return interpolateTemplate(templates[locale], values);
+      return formatCopyTemplate(templates[locale], values);
     }) as (...args: never[]) => string;
   }
 
@@ -917,7 +967,7 @@ function getConditionalFormatter(
         ms: diffRows ? " Diff tracker terkini: {policy} perubahan teks dasar yang boleh dibandingkan, {extracted} tuntutan baharu diekstrak, {snapshot} perubahan petikan sumber dan {sourceText} perubahan teks sumber apabila petikan peribadi tersedia." : " Tiada perubahan tuntutan atau bukti direkodkan bagi keluaran terkini."
       };
       return [baseTemplates[locale], dateTemplates[locale], diffTemplates[locale]]
-        .map((template) => interpolateTemplate(template, values))
+        .map((template) => formatCopyTemplate(template, values))
         .join("");
     }) as (...args: never[]) => string;
   }

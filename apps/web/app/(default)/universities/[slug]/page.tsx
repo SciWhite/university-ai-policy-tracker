@@ -1,5 +1,6 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import {
+  getCatalogUniversities,
   getCatalogUniversityBySlug,
   getPublicJsonUrl,
   getPublicUniversitySummaryBySlug
@@ -48,6 +49,14 @@ const recordTabs = [
 
 export const dynamicParams = true;
 export const revalidate = 3600;
+
+// Alias slugs stay on-demand: they permanently redirect via redirectAliasSlug
+// and dynamicParams keeps them resolvable without prerendering redirect pages.
+export async function generateStaticParams() {
+  const universities = await getCatalogUniversities();
+
+  return universities.map((university) => ({ slug: university.slug }));
+}
 
 export async function generateMetadata({ params }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;

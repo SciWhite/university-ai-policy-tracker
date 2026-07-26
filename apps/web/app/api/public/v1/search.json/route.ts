@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import {
   getCountBucket,
   getLimitBucket,
@@ -11,8 +11,8 @@ import {
 } from "@/lib/analytics-server";
 import {
   buildSearchResponse,
-  searchIndexRecords,
-  type SearchIndexRecord
+  getSearchIndexRecords,
+  searchIndexRecords
 } from "@/lib/entity-search";
 
 export const dynamic = "force-dynamic";
@@ -22,22 +22,30 @@ const searchCorsHeaders = {
   "Access-Control-Allow-Methods": "GET, OPTIONS",
   "Access-Control-Allow-Origin": "*"
 };
-const internalNextBaseUrl = process.env.INTERNAL_NEXT_BASE_URL?.trim();
 
 export async function GET(request: Request) {
   const startedAt = Date.now();
   const url = new URL(request.url);
   const query = url.searchParams.get("q") ?? "";
   const limit = Number(url.searchParams.get("limit") ?? 20);
-  const records = await fetchSearchIndexRecords(request.url);
+  const records = await getSearchIndexRecords();
   const results = searchIndexRecords(records, query, { limit });
-  await trackServerResearchEvent("api_search_request", {
+  const analytics = {
     ...getQueryAnalytics(query),
     ...getServerRequestAnalytics(request),
     limit_bucket: getLimitBucket(limit),
     request_latency_bucket: getLatencyBucket(Date.now() - startedAt),
     result_count_bucket: getCountBucket(results.length)
-  }, "/api/public/v1/search.json");
+  };
+  // Mirror analytics after the response is sent; the write must never add
+  // latency to the suggestion hot path.
+  after(() =>
+    trackServerResearchEvent(
+      "api_search_request",
+      analytics,
+      "/api/public/v1/search.json"
+    )
+  );
 
   return NextResponse.json(buildSearchResponse(query, results), {
     headers: searchCorsHeaders
@@ -46,22 +54,4 @@ export async function GET(request: Request) {
 
 export function OPTIONS() {
   return new Response(null, { headers: searchCorsHeaders });
-}
-
-async function fetchSearchIndexRecords(requestUrl: string): Promise<SearchIndexRecord[]> {
-  const baseUrl = internalNextBaseUrl || requestUrl;
-  const response = await fetch(
-    new URL("/api/public/v1/search/index.json", baseUrl),
-    { next: { revalidate: 3600 } }
-  );
-
-  if (!response.ok) return [];
-
-  const payload = (await response.json()) as {
-    data?: {
-      records?: SearchIndexRecord[];
-    };
-  };
-
-  return Array.isArray(payload.data?.records) ? payload.data.records : [];
 }

@@ -12,12 +12,12 @@ export function RootDocument({ children, locale }: RootDocumentProps) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <ThemeScript />
         <link href="/feeds/reports.xml" rel="alternate" title="University AI Policy Tracker reports RSS" type="application/rss+xml" />
         <link href="/feeds/recent-changes.xml" rel="alternate" title="University AI Policy Tracker recent changes RSS" type="application/rss+xml" />
         <link href="/feeds/atom.xml" rel="alternate" title="University AI Policy Tracker Atom feed" type="application/atom+xml" />
       </head>
       <body>
-        <ThemeScript />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>

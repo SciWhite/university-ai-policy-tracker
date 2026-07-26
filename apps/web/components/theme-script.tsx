@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 const themeInitScript = `
 (() => {
   try {
@@ -21,10 +19,13 @@ const themeInitScript = `
 })();
 `;
 
+// Rendered as a raw inline script in <head> so the stored theme applies before
+// first paint; next/script's beforeInteractive queues behind the async runtime.
 export function ThemeScript() {
   return (
-    <Script id="uapt-theme-init" strategy="beforeInteractive">
-      {themeInitScript}
-    </Script>
+    <script
+      dangerouslySetInnerHTML={{ __html: themeInitScript }}
+      id="uapt-theme-init"
+    />
   );
 }
