@@ -2,8 +2,8 @@
  "schemaVersion": "uapt-public-release-manifest-v1",
  "releaseId": "public-release-20260801-001",
  "publishedAt": "2026-08-01T16:46:58.055Z",
- "candidateOnly": false,
- "description": "Published maintenance release: current official AI-tools evidence for Michigan State University and UNIST, with July 2026 month-end report surfaces and held-back candidates preserved.",
+ "candidateOnly": true,
+ "description": "Maintenance release candidate from manual-review-20260802; awaiting explicit Codex promotion confirmation.",
  "includeStagedArtifactDirectories": [
   "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
   "data/openclaw-staging/run-20260505-eth-ucl-curated",

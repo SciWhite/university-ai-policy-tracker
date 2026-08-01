@@ -108,7 +108,7 @@ function buildEndpointGroups(exampleSlug: string): DatasetEndpointGroup[] {
       endpoints: [
         { copyKey: "reportsIndex", jsonLdName: "Reports index JSON", label: "Reports index", path: `${api}/reports/index.json` },
         { copyKey: "outreach", jsonLdName: "Reports outreach package JSON", label: "Outreach package", path: `${api}/reports/outreach.json` },
-        { copyKey: "chartData", jsonLdName: "June 2026 monthly report chart data", label: "Report chart data", path: `${api}/reports/monthly/2026-06/chart-data.json` },
+        { copyKey: "chartData", jsonLdName: "July 2026 monthly report chart data", label: "Report chart data", path: `${api}/reports/monthly/2026-07/chart-data.json` },
         { copyKey: "widgetIndex", jsonLdName: "Widget discovery JSON", label: "Widget index", path: `${api}/widgets/index.json` },
         { copyKey: "policyCoverageWidget", jsonLdName: "Policy coverage widget JSON example", label: "Policy coverage widget", path: `${api}/widgets/policy-coverage/${exampleSlug}.json` },
         { copyKey: "sourceFreshnessWidget", jsonLdName: "Source freshness widget JSON example", label: "Source freshness widget", path: `${api}/widgets/source-freshness/${exampleSlug}.json` },

@@ -1,9 +1,8 @@
 {
  "schemaVersion": "uapt-public-release-manifest-v1",
- "releaseId": "public-release-20260801-001",
- "publishedAt": "2026-08-01T16:46:58.055Z",
- "candidateOnly": false,
- "description": "Published maintenance release: current official AI-tools evidence for Michigan State University and UNIST, with July 2026 month-end report surfaces and held-back candidates preserved.",
+ "releaseId": "public-release-20260727-015",
+ "publishedAt": "2026-07-27T06:10:00.000Z",
+ "description": "Coverage and re-sourcing release: adds institute-level policy runs for IIT Delhi, Edinburgh, and UC3M under the verbatim_original_v2 snippet policy, re-sources Gazi and Miami claims from live official replacements, and deprecates seven claims whose sources left the public web.",
  "includeStagedArtifactDirectories": [
   "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
   "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -814,15 +813,12 @@
   "staging/uapt-runs/uapt-gazi-universitesi-20260727",
   "staging/uapt-runs/uapt-indian-institute-of-technology-delhi-20260727",
   "staging/uapt-runs/uapt-universidad-carlos-iii-de-madrid-20260727",
-  "staging/uapt-runs/uapt-university-of-miami-20260727",
-  "staging/uapt-runs/uapt-maintenance-msu-unist-20260802"
+  "staging/uapt-runs/uapt-university-of-miami-20260727"
  ],
  "notes": [
   "All new evidence carries mechanically verified verbatim quotes (fresh rendered fetches, 2026-07-27); non-English snippets include English display translations.",
   "Deprecated: five Gazi claims (old ethics PDF removed; three statements re-sourced from the 2026 usage guide), the WashU DeepSeek advisory claim (advisory retired; general guidance already covered by live claims), and the Miami PETAL claim (re-sourced verbatim from the public UM Libraries guide).",
-  "SQU claims remain needs_review: an official Sep 2024 GenAI guideline exists but is hosted as a scanned off-domain PDF, which fails the mechanical evidence-verification bar; human re-sourcing decision required.",
-  "Manual Codex review adds current official AI-tools evidence for Michigan State University and UNIST under staging/uapt-runs/uapt-maintenance-msu-unist-20260802.",
-  "The current UNIST AI Services page retains Copilot availability after license allocation but does not state that service was extended beyond the older July 31, 2026 end date; no extension is inferred."
+  "SQU claims remain needs_review: an official Sep 2024 GenAI guideline exists but is hosted as a scanned off-domain PDF, which fails the mechanical evidence-verification bar; human re-sourcing decision required."
  ],
- "previousReleaseId": "public-release-20260727-015"
+ "previousReleaseId": "public-release-20260727-014"
 }

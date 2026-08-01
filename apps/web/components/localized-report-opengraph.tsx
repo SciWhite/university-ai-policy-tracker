@@ -8,46 +8,52 @@ const copy = {
     badge: "公共月报",
     description: "有来源证据的高校 AI 政策记录、来源 URL、审查状态、变更日志和全量高校 GEO 覆盖。",
     may: "2026 年 5 月基线月报",
-    june: "2026 年 6 月月末报告"
+    june: "2026 年 6 月月末报告",
+    july: "2026 年 7 月月末报告"
   },
   fr: {
     badge: "Rapport mensuel public",
     description: "Dossiers universitaires sur l’IA étayés par des sources, URL, états de revue, journaux de modifications et couverture GEO complète.",
     may: "Rapport mensuel de référence — mai 2026",
-    june: "Rapport de fin de mois — juin 2026"
+    june: "Rapport de fin de mois — juin 2026",
+    july: "Rapport de fin de mois — juillet 2026"
   },
   pl: {
     badge: "Publiczny raport miesięczny",
     description: "Rekordy polityk AI uczelni poparte źródłami, adresy URL, stany przeglądu, dzienniki zmian i pełne pokrycie GEO.",
     may: "Miesięczny raport bazowy — maj 2026",
-    june: "Raport na koniec miesiąca — czerwiec 2026"
+    june: "Raport na koniec miesiąca — czerwiec 2026",
+    july: "Raport na koniec miesiąca — lipiec 2026"
   },
   es: {
     badge: "Informe mensual público",
     description: "Registros universitarios de políticas de IA respaldados por fuentes, URL, estados de revisión, cambios y cobertura GEO completa.",
     may: "Informe mensual de referencia — mayo de 2026",
-    june: "Informe de cierre mensual — junio de 2026"
+    june: "Informe de cierre mensual — junio de 2026",
+    july: "Informe de cierre mensual — julio de 2026"
   },
   nl: {
     badge: "Openbaar maandrapport",
     description: "Brononderbouwde universitaire AI-beleidsrecords, bron-URL’s, beoordelingsstatussen, wijzigingslogboeken en volledige GEO-dekking.",
     may: "Maandelijks nulrapport — mei 2026",
-    june: "Maandeindrapport — juni 2026"
+    june: "Maandeindrapport — juni 2026",
+    july: "Maandeindrapport — juli 2026"
   },
   ms: {
     badge: "Laporan bulanan awam",
     description: "Rekod dasar AI universiti bersumber, URL sumber, status semakan, log perubahan dan liputan GEO semua universiti.",
     may: "Laporan garis dasar bulanan — Mei 2026",
-    june: "Laporan akhir bulan — Jun 2026"
+    june: "Laporan akhir bulan — Jun 2026",
+    july: "Laporan akhir bulan — Julai 2026"
   }
 } as const;
 
 export function createLocalizedReportImage(
   locale: Exclude<SupportedLocale, "en">,
-  month: "2026-05" | "2026-06"
+  month: "2026-05" | "2026-06" | "2026-07"
 ) {
   const strings = copy[locale];
-  const title = month === "2026-05" ? strings.may : strings.june;
+  const title = month === "2026-05" ? strings.may : month === "2026-06" ? strings.june : strings.july;
   return new ImageResponse(
     (
       <div

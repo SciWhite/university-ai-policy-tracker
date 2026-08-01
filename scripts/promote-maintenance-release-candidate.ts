@@ -1,5 +1,5 @@
 import { existsSync } from "node:fs";
-import { copyFile, mkdir, readFile } from "node:fs/promises";
+import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 
@@ -14,7 +14,14 @@ async function main(): Promise<void> {
     throw Error("Refusing promotion without explicit --confirm.");
   }
 
-  const next = JSON.parse(await readFile(candidate, "utf8"));
+  const candidateManifest = JSON.parse(await readFile(candidate, "utf8"));
+  const next = {
+    ...candidateManifest,
+    candidateOnly: false,
+    description: String(candidateManifest.description ?? "")
+      .replace(/; awaiting explicit Codex promotion confirmation\.?/i, ".")
+      .replace(/candidate from/i, "published maintenance release from")
+  };
   if (!next.releaseId || !Array.isArray(next.includeStagedArtifactDirectories)) {
     throw Error("Invalid candidate manifest");
   }
@@ -28,7 +35,7 @@ async function main(): Promise<void> {
     await copyFile(currentPath, history);
   }
 
-  await copyFile(candidate, currentPath);
+  await writeFile(currentPath, `${JSON.stringify(next, null, 2)}\n`);
 
   for (const args of [
     ["pnpm", "validate:dataset-release"],

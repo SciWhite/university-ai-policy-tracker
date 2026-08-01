@@ -25,7 +25,7 @@ async function main() {
         pick(englishPaths, /^\/themes\/[^/]+$/),
         pick(englishPaths, /^\/regions\/[^/]+$/),
         pick(englishPaths, /^\/rankings\/[^/]+$/),
-        pick(englishPaths, /^\/reports\/monthly\/2026-06\/coverage\/[^/]+$/)
+        pick(englishPaths, /^\/reports\/monthly\/2026-07\/coverage\/[^/]+$/)
       ]
     : [];
   const phaseOneStaticPaths = [
@@ -49,6 +49,7 @@ async function main() {
     "/reports",
     "/reports/monthly/2026-05",
     "/reports/monthly/2026-06",
+    "/reports/monthly/2026-07",
     "/reports/outreach"
   ];
   const paths = [

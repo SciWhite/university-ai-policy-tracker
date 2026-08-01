@@ -26,7 +26,7 @@ import {
   monthlyReportSlugs
 } from "./monthly-report-registry";
 
-export const currentMonthlyReportSlug = "2026-06";
+export const currentMonthlyReportSlug = "2026-07";
 export const currentMonthlyReportPath = `/reports/monthly/${currentMonthlyReportSlug}`;
 export const currentMonthlyReportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/monthly/${currentMonthlyReportSlug}/chart-data.json`;
 

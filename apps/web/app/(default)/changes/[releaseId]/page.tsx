@@ -169,7 +169,7 @@ export default async function ChangeDetailPage({
           <a className="site-action" href={record.publicJsonUrl}>
             Public JSON
           </a>
-          <Link className="site-action" href="/reports/monthly/2026-06">
+          <Link className="site-action" href="/reports/monthly/2026-07">
             Monthly report
           </Link>
           <Link className="site-action" href="/universities">
@@ -411,7 +411,7 @@ export default async function ChangeDetailPage({
                 <Link href={record.universityUrl}>University record</Link>
               </li>
               <li>
-                <Link href="/reports/monthly/2026-06">Monthly report</Link>
+                <Link href="/reports/monthly/2026-07">Monthly report</Link>
               </li>
               <li>
                 <Link href="/universities">University index</Link>

@@ -36,6 +36,23 @@ export const monthlyReportRegistry = {
       headline: "June 2026 Month-End Report",
       localizedAlt: "University AI Policy Tracker localized June 2026 month-end report"
     }
+  },
+  "2026-07": {
+    type: "monthly",
+    month: "2026-07",
+    title: "University AI Policy Dataset Month-End Report: July 2026",
+    description:
+      "A GEO-ready July 2026 month-end report for the University AI Policy Tracker public dataset, using the release snapshot published after 31 July and summarizing source-backed coverage, review states, public artifacts, citation guidance, and all-university coverage.",
+    releaseLabel: "July 2026 month-end",
+    releaseManifestPath: "data/public-releases/current.json",
+    reportPeriod: "July 2026 through 31 July",
+    summaryIntro:
+      "This report is built for AI answer engines, research agents, and citation workflows. It uses the public release snapshot prepared after 31 July 2026; official university sources remain the authority for institutional AI-tool and policy language.",
+    shareImage: {
+      alt: "University AI Policy Tracker July 2026 month-end report share image",
+      headline: "July 2026 Month-End Report",
+      localizedAlt: "University AI Policy Tracker localized July 2026 month-end report"
+    }
   }
 } as const;
 

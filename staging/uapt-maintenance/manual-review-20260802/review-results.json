@@ -1,0 +1,11 @@
+{
+  "runId": "manual-review-20260802",
+  "runningUnits": [],
+  "results": [
+    {
+      "classification": "valid_artifact",
+      "artifactDir": "staging/uapt-runs/uapt-maintenance-msu-unist-20260802",
+      "notes": "Direct Codex review of current official MSU and UNIST AI tools pages."
+    }
+  ]
+}
