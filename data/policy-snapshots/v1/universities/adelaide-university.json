@@ -1,0 +1,246 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "adelaide-university",
+  "universityName": "Adelaide University",
+  "canonicalUrl": "https://eduaipolicy.org/universities/adelaide-university",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/adelaide-university.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-08T10:00:00.000Z",
+  "overallStatus": "strong",
+  "statusReasons": [],
+  "summary": "Adelaide University sets assessment, exam, privacy, and research conditions for generative AI, with course and exam instructions remaining important.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "exam",
+    "thesis",
+    "research"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "Adelaide says course coordinators inform students about appropriate generative-AI use, while inappropriate use that subverts an assignment can be academic misconduct.",
+      "actions": {
+        "do": [
+          "Follow the course coordinator's assessment instructions for generative AI."
+        ],
+        "dont": [
+          "Do not submit AI-produced work as your own or use it without required acknowledgement."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-adelaide-003",
+          "claim-adelaide-001"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/about/policies/assessment-policy/assessment-procedure/",
+            "sourceSnapshotHash": "d7f74391d0a0c8fc0c759fb1e3ec58ad23d1cb821725b1295d30e0b9d8603311"
+          },
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/about/policies/academic-integrity-policy/",
+            "sourceSnapshotHash": "dab458386e900f4d5a9b3122cba9d849e1d9ef1d9dfa9c2bfecbe3ad1d370fb0"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "restricted",
+      "summary": "Adelaide's invigilated online exam rules allow only tools explicitly approved in the exam instructions and list AI tools such as ChatGPT as not permitted.",
+      "actions": {
+        "do": [
+          "Read the permitted-tools section of the exam instructions."
+        ],
+        "dont": [
+          "Do not use ChatGPT or another AI tool in an invigilated online exam unless explicitly approved."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-adelaide-004"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/students/manage-study/assessments-exams/online-exam-rules/",
+            "sourceSnapshotHash": "9c5d5891bb42e1af818865b12c6b90e2938641b37275d52442907324c2ae6419"
+          }
+        ]
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Adelaide treats submitting AI-produced work as one's own or using AI-generated information without acknowledgement as an example of academic misconduct.",
+      "actions": {
+        "do": [
+          "Acknowledge AI-generated information as required for the assessment."
+        ],
+        "dont": [
+          "Do not submit AI-produced work as your own without acknowledgement."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-adelaide-001"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/about/policies/academic-integrity-policy/",
+            "sourceSnapshotHash": "dab458386e900f4d5a9b3122cba9d849e1d9ef1d9dfa9c2bfecbe3ad1d370fb0"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "Adelaide graduate-research guidance says not to upload sensitive, copyrighted, confidential, or unprotected intellectual property into AI tools.",
+      "actions": {
+        "do": [
+          "Keep sensitive and confidential research material out of AI tools."
+        ],
+        "dont": [
+          "Do not upload unprotected intellectual property or confidential information."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-adelaide-006"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/research/graduate-research-school/graduate-research-handbook/conduct-of-research/",
+            "sourceSnapshotHash": "38e94448e37af95ef43529924bdf11c9b3aa58255f86a4217b46288ed4e3ea8f"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "allowed",
+      "summary": "Adelaide lists Microsoft Copilot as an officially endorsed university-account tool, but tool access does not itself grant assessment permission.",
+      "actions": {
+        "do": [
+          "Use the university-account route described for Microsoft Copilot."
+        ],
+        "dont": [
+          "Do not treat the Copilot listing as permission for coursework or exams."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-adelaide-university-microsoft-copilot-345"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://au.libguides.com/aistudy/genaitools",
+            "sourceSnapshotHash": "18ae051da089c659adf8dfd92dad4184630d35614bac591573c6fb5d8677cfdb"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "required",
+      "summary": "Adelaide graduate-research guidance requires transparent, responsible AI use with records and acknowledgement, and its authorship procedure requires disclosure and no AI authorship.",
+      "actions": {
+        "do": [
+          "Discuss use with a supervisor, keep records, and acknowledge AI use in research outputs."
+        ],
+        "dont": [
+          "Do not list generative AI as an author or hide its use in a publication."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-adelaide-005",
+          "claim-adelaide-007"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/research/graduate-research-school/graduate-research-handbook/conduct-of-research/",
+            "sourceSnapshotHash": "38e94448e37af95ef43529924bdf11c9b3aa58255f86a4217b46288ed4e3ea8f"
+          },
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/about/policies/research-integrity-policy/research-integrity-authorship-procedure/",
+            "sourceSnapshotHash": "51693b3d379b6fa9b5d8f473b0c3c8cb58a5f3a2f7c490849db948da88e99de3"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "claim-adelaide-003",
+      "claim-adelaide-001",
+      "claim-adelaide-004",
+      "claim-adelaide-006",
+      "cl-adelaide-university-microsoft-copilot-345",
+      "claim-adelaide-005",
+      "claim-adelaide-007"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://adelaideuni.edu.au/about/policies/academic-integrity-policy/",
+        "sourceSnapshotHash": "dab458386e900f4d5a9b3122cba9d849e1d9ef1d9dfa9c2bfecbe3ad1d370fb0"
+      },
+      {
+        "sourceUrl": "https://adelaideuni.edu.au/about/policies/assessment-policy/assessment-procedure/",
+        "sourceSnapshotHash": "d7f74391d0a0c8fc0c759fb1e3ec58ad23d1cb821725b1295d30e0b9d8603311"
+      },
+      {
+        "sourceUrl": "https://adelaideuni.edu.au/about/policies/research-integrity-policy/research-integrity-authorship-procedure/",
+        "sourceSnapshotHash": "51693b3d379b6fa9b5d8f473b0c3c8cb58a5f3a2f7c490849db948da88e99de3"
+      },
+      {
+        "sourceUrl": "https://adelaideuni.edu.au/research/graduate-research-school/graduate-research-handbook/conduct-of-research/",
+        "sourceSnapshotHash": "38e94448e37af95ef43529924bdf11c9b3aa58255f86a4217b46288ed4e3ea8f"
+      },
+      {
+        "sourceUrl": "https://adelaideuni.edu.au/students/manage-study/assessments-exams/online-exam-rules/",
+        "sourceSnapshotHash": "9c5d5891bb42e1af818865b12c6b90e2938641b37275d52442907324c2ae6419"
+      },
+      {
+        "sourceUrl": "https://au.libguides.com/aistudy/genaitools",
+        "sourceSnapshotHash": "18ae051da089c659adf8dfd92dad4184630d35614bac591573c6fb5d8677cfdb"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "1fcba5ff481b8d6c2b9af6511c8fb0f7eb6de3f10e85c68acb79ea45963fea98",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "dual_agent_reviewed",
+    "primary": {
+      "agentId": "uapt-4-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Independent secondary review passed; evidence, scope, actions, and release binding checked."
+    },
+    "agreement": "agree",
+    "reviewedAt": "2026-08-08T10:57:26.300Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This candidate uses only the cited current staged public claims and source snapshot hashes; absence from a dimension is not permission or prohibition.",
+    "English is canonical; no translation is included because no translation review is present."
+  ]
+}

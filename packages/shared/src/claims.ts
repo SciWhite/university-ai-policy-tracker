@@ -182,6 +182,14 @@ export const publicEntitySummarySchema = z.object({
   limitations: z.array(z.string().min(1)).default([NO_ADVICE_BOUNDARY]),
   officialSources: z.array(sourceAttributionSchema),
   claims: z.array(policyClaimSchema),
+  policySnapshot: z
+    .object({
+      publicJsonUrl: z.string().url(),
+      overallStatus: z.enum(["strong", "stale", "needs_review"]),
+      releaseId: z.string().min(1),
+      basisFingerprint: z.string().regex(/^[a-f0-9]{64}$/)
+    })
+    .optional(),
   suggestedCitation: z.string().min(1)
 });
 

@@ -23,6 +23,10 @@ export const ANALYTICS_EVENT_NAMES = [
   "search_result_record_click",
   "search_submit",
   "session_engaged",
+  "snapshot_card_expand",
+  "snapshot_evidence",
+  "snapshot_role",
+  "snapshot_scope",
   "theme_change"
 ] as const;
 

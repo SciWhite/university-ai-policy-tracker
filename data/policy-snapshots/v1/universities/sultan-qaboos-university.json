@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "sultan-qaboos-university",
+  "universityName": "Sultan Qaboos University",
+  "canonicalUrl": "http://localhost:3000/universities/sultan-qaboos-university",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/sultan-qaboos-university.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete"
+  ],
+  "summary": "In the Centre for Preparatory Studies, check with your teacher, produce original work, and cite AI use; do not infer a university-wide exam, data, tool, or research rule.",
+  "audiences": [
+    "students"
+  ],
+  "scope": "unit_specific",
+  "academicContexts": [
+    "assignment"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "The Centre for Preparatory Studies guide says AI may enhance learning but students must produce original work; incorrect use may be academic misconduct. Scope: CPS guide and assignments.",
+      "actions": {
+        "do": [
+          "Check with your teacher and produce original work."
+        ],
+        "dont": [
+          "Do not treat the CPS guide as blanket permission for every SQU course."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-squ-ai-misconduct",
+          "claim-squ-ai-original-work"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://elearn.squ.edu.om/pluginfile.php/2795003/block_html/content/Academic%20Integrity%20Guide%20for%20Students.pdf",
+            "sourceSnapshotHash": "e6e7ccaa6daba24df43a7ffa0ee3784c42d9e41b1303966ac5e7f6a888f4948c"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No source-backed exam-specific rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "The CPS guide tells students to discuss intended AI use with the teacher and cite AI tools in the work. Scope: CPS student guide.",
+      "actions": {
+        "do": [
+          "Discuss the tool and purpose with your teacher and cite its use."
+        ],
+        "dont": [
+          "Do not omit the AI citation required by the guide."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-squ-ai-citation-transparency"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://elearn.squ.edu.om/pluginfile.php/2795003/block_html/content/Academic%20Integrity%20Guide%20for%20Students.pdf",
+            "sourceSnapshotHash": "e6e7ccaa6daba24df43a7ffa0ee3784c42d9e41b1303966ac5e7f6a888f4948c"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "not_mentioned",
+      "summary": "No source-backed student data-entry rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "not_mentioned",
+      "summary": "The cited guide mentions examples such as ChatGPT but does not establish an institutionally approved-tool list; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "not_mentioned",
+      "summary": "No source-backed research-publication rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "claim-squ-ai-citation-transparency",
+      "claim-squ-ai-misconduct",
+      "claim-squ-ai-original-work"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://elearn.squ.edu.om/pluginfile.php/2795003/block_html/content/Academic%20Integrity%20Guide%20for%20Students.pdf",
+        "sourceSnapshotHash": "e6e7ccaa6daba24df43a7ffa0ee3784c42d9e41b1303966ac5e7f6a888f4948c"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "2367c6cb22ecb2fa359687211fccafd65248d15b64cfbf2212bce60a9e1d1c0e",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-5-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Second-round review confirms the direct summary, but underlying claims remain unreviewed; snapshot stays fail-closed."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+  ]
+}

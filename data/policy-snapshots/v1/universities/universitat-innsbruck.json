@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "universitat-innsbruck",
+  "universityName": "Universität Innsbruck",
+  "canonicalUrl": "http://localhost:3000/universities/universitat-innsbruck",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/universitat-innsbruck.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete",
+    "translation_needs_review"
+  ],
+  "summary": "At Universität Innsbruck, check your course, faculty, or exam rule, use only explicitly permitted exam aids, disclose research AI use, protect personal or confidential data, and do not cite AI as an author.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "exam",
+    "thesis",
+    "research"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "Course leaders may decide permitted AI tools and must communicate rules clearly; faculty rules may apply. Scope: teaching and course work.",
+      "actions": {
+        "do": [
+          "Check the course leader or faculty rule before using AI."
+        ],
+        "dont": [
+          "Do not assume an unnamed tool is permitted."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-uibk-teaching-exam-ai-rules"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.uibk.ac.at/de/universitaet/digitalisierung/ki-uni-innsbruck/faqs/",
+            "sourceSnapshotHash": "76b96c82a5a825c9d94c923724f132ac9df9bc0e1ff2308212501a1e2b4a964d"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "conditionally_allowed",
+      "summary": "For examinations, permitted aids including AI must be identified explicitly; unnamed aids are prohibited. Scope: Universität Innsbruck examination guidance.",
+      "actions": {
+        "do": [
+          "Check the exam’s explicitly permitted aids."
+        ],
+        "dont": [
+          "Do not use an unnamed AI aid in an exam."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-uibk-teaching-exam-ai-rules"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.uibk.ac.at/de/universitaet/digitalisierung/ki-uni-innsbruck/faqs/",
+            "sourceSnapshotHash": "76b96c82a5a825c9d94c923724f132ac9df9bc0e1ff2308212501a1e2b4a964d"
+          }
+        ]
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Research guidance requires transparent AI-use details, and Psychology and Sport Science guidance requires description and citation in written work. Scope: research guidance and that faculty guideline.",
+      "actions": {
+        "do": [
+          "Name the tool, scope, and purpose when the cited rule applies."
+        ],
+        "dont": [
+          "Do not generalize the Psychology and Sport Science rule to another faculty."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-uibk-psychsport-written-work-ai",
+          "claim-uibk-research-ai-disclosure"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.uibk.ac.at/de/isw/studium/ki-guidelines/",
+            "sourceSnapshotHash": "3a821ae62408b794fd2e0cb3c67db87703f59d0d7c611ccb9659df0b6e4cfa18"
+          },
+          {
+            "sourceUrl": "https://www.uibk.ac.at/de/universitaet/digitalisierung/ki-uni-innsbruck/faqs/",
+            "sourceSnapshotHash": "76b96c82a5a825c9d94c923724f132ac9df9bc0e1ff2308212501a1e2b4a964d"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "The FAQ advises avoiding personal data, warns confidential data may lose confidentiality, and excludes personal or copyright-protected data from freely accessible tools. Scope: orientation framework.",
+      "actions": {
+        "do": [
+          "Remove personal data where possible and use an appropriate protected path."
+        ],
+        "dont": [
+          "Do not put confidential or personal data into a freely accessible AI tool."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-uibk-privacy-confidential-data"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.uibk.ac.at/de/universitaet/digitalisierung/ki-uni-innsbruck/faqs/",
+            "sourceSnapshotHash": "76b96c82a5a825c9d94c923724f132ac9df9bc0e1ff2308212501a1e2b4a964d"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "The FAQ lists a University of Innsbruck Document Analysis Tool as an official service. Listing the service is not permission for a student course, exam, or research task.",
+      "actions": {
+        "do": [
+          "Check service eligibility and the applicable course or project rule."
+        ],
+        "dont": [
+          "Do not infer assessment permission from the service listing."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-universitat-innsbruck-institutional-ai-service-766"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.uibk.ac.at/en/about-us/digitization/ai-and-university/faqs/",
+            "sourceSnapshotHash": "21947fcd3e636c8626c816ad1f1fc1f43742a1e0a72a179b1ac9ac82ad2904e4"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "required",
+      "summary": "Research guidance requires transparent AI-use reporting and says AI should not be cited as an author. Scope: Universität Innsbruck research and scientific work.",
+      "actions": {
+        "do": [
+          "Report AI use with the tool name, scope, and purpose."
+        ],
+        "dont": [
+          "Do not cite AI as an author."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-uibk-research-ai-disclosure"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.uibk.ac.at/de/universitaet/digitalisierung/ki-uni-innsbruck/faqs/",
+            "sourceSnapshotHash": "76b96c82a5a825c9d94c923724f132ac9df9bc0e1ff2308212501a1e2b4a964d"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "cl-universitat-innsbruck-institutional-ai-service-766",
+      "claim-uibk-privacy-confidential-data",
+      "claim-uibk-psychsport-written-work-ai",
+      "claim-uibk-research-ai-disclosure",
+      "claim-uibk-teaching-exam-ai-rules"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://www.uibk.ac.at/de/isw/studium/ki-guidelines/",
+        "sourceSnapshotHash": "3a821ae62408b794fd2e0cb3c67db87703f59d0d7c611ccb9659df0b6e4cfa18"
+      },
+      {
+        "sourceUrl": "https://www.uibk.ac.at/de/universitaet/digitalisierung/ki-uni-innsbruck/faqs/",
+        "sourceSnapshotHash": "76b96c82a5a825c9d94c923724f132ac9df9bc0e1ff2308212501a1e2b4a964d"
+      },
+      {
+        "sourceUrl": "https://www.uibk.ac.at/en/about-us/digitization/ai-and-university/faqs/",
+        "sourceSnapshotHash": "21947fcd3e636c8626c816ad1f1fc1f43742a1e0a72a179b1ac9ac82ad2904e4"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "4156373fe30e9c8a79370313147f86a81e5e3c1143a835850deb9959cc1890af",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-5-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "imperial-college-london",
+  "universityName": "Imperial College London",
+  "canonicalUrl": "https://eduaipolicy.org/universities/imperial-college-london",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/imperial-college-london.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-08T10:00:00.000Z",
+  "overallStatus": "strong",
+  "statusReasons": [],
+  "summary": "Imperial's public guidance combines university principles with department-level assessment decisions, while dAIsy access does not replace local academic or research rules.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "exam",
+    "research"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "Imperial departments may allow or prohibit generative AI for specific assessments, and unauthorised use may be treated as an academic offence.",
+      "actions": {
+        "do": [
+          "Follow the current department and module leader instructions for the assessment."
+        ],
+        "dont": [
+          "Do not treat university-wide principles or tool access as assessment permission."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-imperial-college-london-dept-assessment-policy",
+          "clm-imperial-college-london-ai-misconduct"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c"
+          },
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+            "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "insufficient_public_evidence",
+      "summary": "Imperial's cited guidance refers to exam-offence regulations but does not provide a specific student AI rule for every exam format.",
+      "actions": {
+        "do": [
+          "Check the current exam instructions and applicable academic-integrity regulations."
+        ],
+        "dont": [
+          "Do not infer exam permission from dAIsy or general AI principles."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-imperial-college-london-ai-misconduct"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+            "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a"
+          }
+        ]
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Imperial asks students to include a statement acknowledging generative-AI use for all assessed work, subject to possible department additions.",
+      "actions": {
+        "do": [
+          "Include the required tool, publisher, URL, and use description in the acknowledgement."
+        ],
+        "dont": [
+          "Do not omit the acknowledgement or assume department details are optional."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-imperial-college-london-ai-acknowledgment"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+            "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "conditionally_allowed",
+      "summary": "Imperial describes dAIsy as approved for unrestricted data in its secure infrastructure, while sensitive research may require ethics or DPIA controls.",
+      "actions": {
+        "do": [
+          "Check data-governance and approval requirements before using sensitive research data."
+        ],
+        "dont": [
+          "Do not upload private or confidential research data without required approvals."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-imperial-college-london-daisy-privacy",
+          "clm-imperial-college-london-research-ethics"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "allowed",
+      "summary": "Imperial lists dAIsy as an officially endorsed AI service, but that access record does not replace assessment or research rules.",
+      "actions": {
+        "do": [
+          "Use the Imperial access and authentication route for dAIsy where applicable."
+        ],
+        "dont": [
+          "Do not treat dAIsy access as permission for a particular assessment or study."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-imperial-college-london-institutional-ai-service-17"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "sourceSnapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "conditionally_allowed",
+      "summary": "Imperial research involving people, personal data, or sensitive topics may require ethics approval, a DPIA, and data-governance controls before AI use.",
+      "actions": {
+        "do": [
+          "Verify whether ethics, DPIA, or other research approval is required."
+        ],
+        "dont": [
+          "Do not use AI with sensitive research data before required approvals are in place."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-imperial-college-london-research-ethics"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "clm-imperial-college-london-dept-assessment-policy",
+      "clm-imperial-college-london-ai-misconduct",
+      "clm-imperial-college-london-ai-acknowledgment",
+      "clm-imperial-college-london-daisy-privacy",
+      "clm-imperial-college-london-research-ethics",
+      "cl-imperial-college-london-institutional-ai-service-17"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+        "sourceSnapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979"
+      },
+      {
+        "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+        "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c"
+      },
+      {
+        "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+        "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "e36416299c01541632ffd853923a4a748f7364021eaff75e293a634827580cd6",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "dual_agent_reviewed",
+    "primary": {
+      "agentId": "uapt-4-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Independent secondary review passed; evidence, scope, actions, and release binding checked."
+    },
+    "agreement": "agree",
+    "reviewedAt": "2026-08-08T10:57:26.300Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This candidate uses only the cited current staged public claims and source snapshot hashes; absence from a dimension is not permission or prohibition.",
+    "English is canonical; no translation is included because no translation review is present."
+  ]
+}

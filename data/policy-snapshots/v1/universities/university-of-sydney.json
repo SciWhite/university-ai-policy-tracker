@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "university-of-sydney",
+  "universityName": "The University of Sydney",
+  "canonicalUrl": "https://eduaipolicy.org/universities/university-of-sydney",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-sydney.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-08T10:00:00.000Z",
+  "overallStatus": "strong",
+  "statusReasons": [],
+  "summary": "The University of Sydney publishes a two-lane assessment model in which unit instructions and supervised-assessment rules determine when AI may be used.",
+  "audiences": [
+    "students"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "exam"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "Sydney's open-assessment approach permits AI unless a unit coordinator says otherwise, while assessment procedures identify the permitted tools and acknowledgement method.",
+      "actions": {
+        "do": [
+          "Check the unit outline and coordinator's AI instructions for the assessment."
+        ],
+        "dont": [
+          "Do not treat the open-assessment approach as permission for every task."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "usyd-claim-3",
+          "usyd-claim-10"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+            "sourceSnapshotHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926"
+          },
+          {
+            "sourceUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
+            "sourceSnapshotHash": "4981f1bde50adc698d04d6110ef088d95f760d85cb0601080d3743d90a9e9f2f"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "conditionally_allowed",
+      "summary": "Supervised examinations and supervised in-semester tests are excluded from Sydney's described default, so their own instructions control.",
+      "actions": {
+        "do": [
+          "Check whether the assessment is supervised and follow its specific instructions."
+        ],
+        "dont": [
+          "Do not carry the open-assessment rule into a supervised exam or test."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "usyd-claim-3"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+            "sourceSnapshotHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926"
+          }
+        ]
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Sydney says students who use AI in assessments must acknowledge it, including generative translation, paraphrasing, and referencing tools.",
+      "actions": {
+        "do": [
+          "Acknowledge every AI tool used in an assessment as required by the course."
+        ],
+        "dont": [
+          "Do not submit AI-assisted assessment work without acknowledgement."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "usyd-claim-8"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+            "sourceSnapshotHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "Sydney's guardrails say confidential, personal, proprietary, and other sensitive information should not be entered into AI tools.",
+      "actions": {
+        "do": [
+          "Keep confidential and sensitive information out of AI tools."
+        ],
+        "dont": [
+          "Do not enter personal or proprietary information into an AI prompt."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "usyd-claim-5"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+            "sourceSnapshotHash": "058efdd957971901a0e660842c9c6489291b59f707f0ce8389586021ae393a1e"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "allowed",
+      "summary": "Sydney provides students free access to Microsoft Copilot for Web and recommends university-endorsed protected mode, but access is not assessment permission.",
+      "actions": {
+        "do": [
+          "Use the university login and protected mode described by Sydney when choosing Copilot."
+        ],
+        "dont": [
+          "Do not treat Copilot access as permission in coursework or exams."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "usyd-claim-6"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+            "sourceSnapshotHash": "0edbaa77a8cc4fd2407d6ed65f68954e7e29f69cc44faccf486a53323b774b01"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "not_mentioned",
+      "summary": "No research or publication rule is included in this snapshot.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "usyd-claim-3",
+      "usyd-claim-10",
+      "usyd-claim-8",
+      "usyd-claim-5",
+      "usyd-claim-6"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+        "sourceSnapshotHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926"
+      },
+      {
+        "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+        "sourceSnapshotHash": "058efdd957971901a0e660842c9c6489291b59f707f0ce8389586021ae393a1e"
+      },
+      {
+        "sourceUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
+        "sourceSnapshotHash": "4981f1bde50adc698d04d6110ef088d95f760d85cb0601080d3743d90a9e9f2f"
+      },
+      {
+        "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+        "sourceSnapshotHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7"
+      },
+      {
+        "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+        "sourceSnapshotHash": "0edbaa77a8cc4fd2407d6ed65f68954e7e29f69cc44faccf486a53323b774b01"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "cec24b3818bcd6d7a09f4ba0971f0be59deede16d62e3d8c2fad2ec08aaeeb1b",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "dual_agent_reviewed",
+    "primary": {
+      "agentId": "uapt-4-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Independent secondary review passed; evidence, scope, actions, and release binding checked."
+    },
+    "agreement": "agree",
+    "reviewedAt": "2026-08-08T10:57:26.300Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This candidate uses only the cited current staged public claims and source snapshot hashes; absence from a dimension is not permission or prohibition.",
+    "English is canonical; no translation is included because no translation review is present."
+  ]
+}

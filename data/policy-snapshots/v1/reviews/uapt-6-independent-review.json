@@ -1,0 +1,882 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-independent-review-v1",
+  "reviewId": "uapt-6-independent-review-20260808-r2",
+  "reviewMethod": "dual_agent",
+  "reviewer": "uapt-6-secondary-reviewer",
+  "model": "gpt-5",
+  "reviewedAt": "2026-08-08T11:15:00.000Z",
+  "indexFile": "data/policy-snapshots/v1/index.json",
+  "releaseId": "public-release-20260801-001",
+  "expectedEntryCount": 24,
+  "decisions": [
+    {
+      "universitySlug": "aalto-university",
+      "cohort": "uapt-5-risk",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/aalto-university.json",
+        "basisFingerprint": "f46c38e5cedd1e99035f22892b71567dab950e7c4bc6b4b31a36ad2b82e73a17",
+        "claimIds": [
+          "claim-aalto-001",
+          "claim-aalto-003",
+          "claim-aalto-004",
+          "claim-aalto-005",
+          "claim-aalto-006",
+          "claim-aalto-007"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/aalto-ai-assistant",
+            "sourceSnapshotHash": "330183fc23fddc499069006a28597089b36901f76566019d6fe2760d3cedc9ef"
+          },
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/ai-services",
+            "sourceSnapshotHash": "886b062e76d07d69036c049d926cc3a7c73de370d69953eafcba4b8a7bafba4d"
+          },
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/guidance-for-the-use-of-artificial-intelligence-in-teaching-and-learning-at-aalto-university",
+            "sourceSnapshotHash": "4db4b642cb227232de72c398741283540631c0a4ba8b59ebe4f19606ab856c18"
+          },
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/responsible-use-of-artificial-intelligence-in-the-research-process",
+            "sourceSnapshotHash": "7f99c4162b26beaa0cccc86a7f23aeef160309fcdb96bb6928f5784979fa6356"
+          },
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/tips-for-using-artificial-intelligence-for-students",
+            "sourceSnapshotHash": "6d22f359e1a1d060578395e55f242fe6905940732e59d2476cfa8c080196a9ff"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "harvard-university",
+      "cohort": "uapt-5-risk",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/harvard-university.json",
+        "basisFingerprint": "9e8aba612b627ba06b1a3f30e4fbcb38b07d7d3413957f663b24df1dcfe6d54a",
+        "claimIds": [
+          "clm-harvard-university-ai-tools-not-authors",
+          "clm-harvard-university-approved-tools-classification",
+          "clm-harvard-university-data-protection",
+          "clm-harvard-university-faculty-policy-communication",
+          "clm-harvard-university-hgse-attribution",
+          "clm-harvard-university-oue-required-policy"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://ari.hms.harvard.edu/ai",
+            "sourceSnapshotHash": "5a0b3ca35d6c341bf7e2c09bbbe76560699e6854b9379f341ce805aa07ea9002"
+          },
+          {
+            "sourceUrl": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+            "sourceSnapshotHash": "fb0bf75a8ed53e121f6e34ef1515da466df40d276a62edf37c164e6ad23dc00f"
+          },
+          {
+            "sourceUrl": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+            "sourceSnapshotHash": "3e6fca23917609658637c8ea866df8c57d8fe14b1e9093f213ccaa4f23995fea"
+          },
+          {
+            "sourceUrl": "https://www.huit.harvard.edu/ai/guidelines",
+            "sourceSnapshotHash": "9d196aae4d265663c3d4ccb4c342259dbf2eac4f105b5b66c5bf2a08924ac089"
+          },
+          {
+            "sourceUrl": "https://www.huit.harvard.edu/ai/tools",
+            "sourceSnapshotHash": "9003257c800e0ac7fd5b5556b4fe2b08748cb6c70334cf9affa03215ab56f1f9"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "jagiellonian-university",
+      "cohort": "uapt-5-risk",
+      "decision": "needs_review",
+      "issueCodes": [
+        "TRANSLATION_REVIEW_MISSING"
+      ],
+      "notes": [
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/jagiellonian-university.json",
+        "basisFingerprint": "ffd9d6eea96c0fde3fbbfb1c231401bd7b3fd8ba91b31616a4ea039fd6f5df7c",
+        "claimIds": [
+          "claim-jagiellonian-ai-use-permitted-teaching",
+          "claim-jagiellonian-instructors-set-ai-rules",
+          "claim-jagiellonian-students-disclose-ai-use"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://bip.uj.edu.pl/documents/1384597/159749054/zarz_115_2025.pdf",
+            "sourceSnapshotHash": "7e20ba62f7662156d51b66f5cf3049df9e067cf252e9b61b53102450f9a4310a"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "massachusetts-institute-of-technology",
+      "cohort": "uapt-5-risk",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/massachusetts-institute-of-technology.json",
+        "basisFingerprint": "36886848be6d933aff4f571d34a16448d7230209fbf72cbbf003476504cca0d5",
+        "claimIds": [
+          "clm-massachusetts-institute-of-technology-approved-tools-list",
+          "clm-massachusetts-institute-of-technology-disclosure",
+          "clm-massachusetts-institute-of-technology-high-risk-prohibition"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://ist.mit.edu/ai-guidance",
+            "sourceSnapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d"
+          },
+          {
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "sourceSnapshotHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "national-university-of-singapore",
+      "cohort": "uapt-5-risk",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/national-university-of-singapore.json",
+        "basisFingerprint": "3994d5b96933cdf9f75800ef8d5cf8c03a2d99f7ba214eea2ac6549807583068",
+        "claimIds": [
+          "cl-national-university-of-singapore-institutional-ai-service-48",
+          "clm-nus-approved-tools-only",
+          "clm-nus-cite-ai-tools",
+          "clm-nus-unacknowledged-plagiarism",
+          "clm-nus-unsupervised-default-permitted"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+            "sourceSnapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f"
+          },
+          {
+            "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+            "sourceSnapshotHash": "ee53c1275ceaed742d7aeb1d24af41a37b89872b2b8b9506e101838a8f5b3d22"
+          },
+          {
+            "sourceUrl": "https://news.nus.edu.sg/nus-it-wins-digital-achievers-team-award-at-tech-leader-awards-2025-for-groundbreaking-ai-know-project/",
+            "sourceSnapshotHash": "6c6dd9398d1212ad5dfebd98c29269b2d2437e297b14a8319dbe7f735936b73f"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "snu",
+      "cohort": "uapt-5-risk",
+      "decision": "needs_review",
+      "issueCodes": [
+        "TRANSLATION_REVIEW_MISSING"
+      ],
+      "notes": [
+        "Second-round basis rebind is current; non-English source rendering still lacks translation review."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/snu.json",
+        "basisFingerprint": "48a067b4d9b2cfb07388a9ce68913c5efd1478f21083b18dfa7e6ba8264404b0",
+        "claimIds": [
+          "cl-seoul-national-university-chatgpt-224",
+          "claim-snu-002b",
+          "claim-snu-002c",
+          "claim-snu-002d",
+          "claim-snu-005b",
+          "claim-snu-007a"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+            "sourceSnapshotHash": "3d941c521ca708ba82c9ad7ddec034f2e67f66484ee559bc080073cddf3cc8d1"
+          },
+          {
+            "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+            "sourceSnapshotHash": "014b2989d41c4b86415d870e423ccd92f0f7d1904c7af8b6ad8639c0234a6d31"
+          },
+          {
+            "sourceUrl": "https://www.snu.ac.kr/snunow/press?bbsidx=170942&md=v",
+            "sourceSnapshotHash": "ed205254b7dd602667eda2398311bfcc51afbdf57e1db6e057591f239ff892f5"
+          },
+          {
+            "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+            "sourceSnapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "stanford-university",
+      "cohort": "uapt-5-risk",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/stanford-university.json",
+        "basisFingerprint": "16761fb0847c12dde607b48d5d75aa1d1b56e7dc88ed1d6673a752c68b26c058",
+        "claimIds": [
+          "cl-stanford-university-chatgpt-18",
+          "clm-stanford-university-law-school-ai-policy",
+          "clm-stanford-university-md-ai-policy",
+          "clm-stanford-university-md-phi-prohibition",
+          "clm-stanford-university-pwr-genai-policy",
+          "clm-stanford-university-uit-responsible-ai"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+            "sourceSnapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9"
+          },
+          {
+            "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+            "sourceSnapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385"
+          },
+          {
+            "sourceUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+            "sourceSnapshotHash": "2e601e4a5b47215c842712627c3631375d0eb2ac936abbf1816a04b1bc8c0d2b"
+          },
+          {
+            "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+            "sourceSnapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b"
+          },
+          {
+            "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+            "sourceSnapshotHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "sultan-qaboos-university",
+      "cohort": "uapt-5-risk",
+      "decision": "needs_review",
+      "issueCodes": [
+        "BASIS_CLAIM_UNREVIEWED"
+      ],
+      "notes": [
+        "Second-round review confirms the direct summary, but underlying claims remain unreviewed; snapshot stays fail-closed."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/sultan-qaboos-university.json",
+        "basisFingerprint": "2367c6cb22ecb2fa359687211fccafd65248d15b64cfbf2212bce60a9e1d1c0e",
+        "claimIds": [
+          "claim-squ-ai-citation-transparency",
+          "claim-squ-ai-misconduct",
+          "claim-squ-ai-original-work"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://elearn.squ.edu.om/pluginfile.php/2795003/block_html/content/Academic%20Integrity%20Guide%20for%20Students.pdf",
+            "sourceSnapshotHash": "e6e7ccaa6daba24df43a7ffa0ee3784c42d9e41b1303966ac5e7f6a888f4948c"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "tsinghua-university",
+      "cohort": "uapt-5-risk",
+      "decision": "needs_review",
+      "issueCodes": [
+        "TRANSLATION_REVIEW_MISSING"
+      ],
+      "notes": [
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/tsinghua-university.json",
+        "basisFingerprint": "09f22542f9f708f6d0df430bc77abd6ebb9804e06267d8023fcdeaa993765451",
+        "claimIds": [
+          "cl-tsinghua-university-institutional-ai-service-138",
+          "claim-tsinghua-university-1",
+          "claim-tsinghua-university-2",
+          "claim-tsinghua-university-3",
+          "claim-tsinghua-university-4",
+          "claim-tsinghua-university-7",
+          "claim-tsinghua-university-8"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://www.tsinghua.edu.cn/en/info/1418/14423.htm",
+            "sourceSnapshotHash": "9434473ddaca8d2fe980f2b46610c83958db3c7c6e5fd1a87b68b3ed03947233"
+          },
+          {
+            "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+            "sourceSnapshotHash": "4f2a7359e91b646b62f296ba5f53eb673d2aeee1697230e17dd2469aef70ab35"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "cohort": "uapt-5-risk",
+      "decision": "needs_review",
+      "issueCodes": [
+        "TRANSLATION_REVIEW_MISSING"
+      ],
+      "notes": [
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/u-tokyo.json",
+        "basisFingerprint": "f35d6df7b165d1bcdc48b6fdb15850236811abc4dfa4b95e966fe2005ab4f9a7",
+        "claimIds": [
+          "claim-u-tokyo-001f",
+          "claim-u-tokyo-003b",
+          "claim-u-tokyo-003c",
+          "claim-u-tokyo-003d",
+          "claim-u-tokyo-004e",
+          "claim-u-tokyo-006a"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/docs/ai-tools-in-classes/",
+            "sourceSnapshotHash": "a2d2b0215bffee212da1f1ac8327c3005394815ca2e83d64ceb82da219300ca3"
+          },
+          {
+            "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes-students/",
+            "sourceSnapshotHash": "dbccbf9afb2ac7d67ba02b804a842ef7e381fd755f58f22d91f8ec2daf32b79b"
+          },
+          {
+            "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/en/docs/ai-tools-in-classes/",
+            "sourceSnapshotHash": "4d15ee0bda1c13f01a9818fdb69ced5ce0231b3cbd2c600448293a7a5b3b2446"
+          },
+          {
+            "sourceUrl": "https://utelecon.adm.u-tokyo.ac.jp/online/topics/generative-ai/",
+            "sourceSnapshotHash": "aa11e592ae53358ad1ea4849becdaf72a5a612ed14b52b11ff5df5f07112750f"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "universitat-innsbruck",
+      "cohort": "uapt-5-risk",
+      "decision": "needs_review",
+      "issueCodes": [
+        "TRANSLATION_REVIEW_MISSING"
+      ],
+      "notes": [
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/universitat-innsbruck.json",
+        "basisFingerprint": "4156373fe30e9c8a79370313147f86a81e5e3c1143a835850deb9959cc1890af",
+        "claimIds": [
+          "cl-universitat-innsbruck-institutional-ai-service-766",
+          "claim-uibk-privacy-confidential-data",
+          "claim-uibk-psychsport-written-work-ai",
+          "claim-uibk-research-ai-disclosure",
+          "claim-uibk-teaching-exam-ai-rules"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://www.uibk.ac.at/de/isw/studium/ki-guidelines/",
+            "sourceSnapshotHash": "3a821ae62408b794fd2e0cb3c67db87703f59d0d7c611ccb9659df0b6e4cfa18"
+          },
+          {
+            "sourceUrl": "https://www.uibk.ac.at/de/universitaet/digitalisierung/ki-uni-innsbruck/faqs/",
+            "sourceSnapshotHash": "76b96c82a5a825c9d94c923724f132ac9df9bc0e1ff2308212501a1e2b4a964d"
+          },
+          {
+            "sourceUrl": "https://www.uibk.ac.at/en/about-us/digitization/ai-and-university/faqs/",
+            "sourceSnapshotHash": "21947fcd3e636c8626c816ad1f1fc1f43742a1e0a72a179b1ac9ac82ad2904e4"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "university-of-cambridge",
+      "cohort": "uapt-5-risk",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/university-of-cambridge.json",
+        "basisFingerprint": "42a54182656b030fadda858acd57f48be74d467f006b3a81f86056d56d9e894e",
+        "claimIds": [
+          "claim-cam-assessment-1",
+          "claim-cam-education-1",
+          "claim-cam-framework-1",
+          "claim-cam-info-compliance-1",
+          "claim-cam-info-compliance-2",
+          "claim-cam-info-compliance-3"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://blendedlearning.cam.ac.uk/ai-policy-framework",
+            "sourceSnapshotHash": "302c375ca4d833fc139f28a463695e5ded09fcd91d5bbb1ed5ce422793556c0e"
+          },
+          {
+            "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/generative-ai-and-assessment",
+            "sourceSnapshotHash": "6161308c973dc0f2b6475bb14f5d742f8111860ecf3b504e011644f24b4c83b7"
+          },
+          {
+            "sourceUrl": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/generative-ai-and-education",
+            "sourceSnapshotHash": "ed37b015a563c98b7c75db062d1611988c7ec53f8426b87d644decc8dc1fc9ee"
+          },
+          {
+            "sourceUrl": "https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance",
+            "sourceSnapshotHash": "3ae7dc73509c43e87ebc9c757253f27448c0ec9a736f0a80e24e39cbbeb194c1"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "university-of-oxford",
+      "cohort": "uapt-5-risk",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/university-of-oxford.json",
+        "basisFingerprint": "799216b4a937bbeee5dbc5046ae120576941669ed4fc75b33e7ad3d320abc61b",
+        "claimIds": [
+          "cl-university-of-oxford-chatgpt-21",
+          "clm-university-of-oxford-ai-approved-platforms-confidential",
+          "clm-university-of-oxford-ai-assessment-student-duties",
+          "clm-university-of-oxford-ai-pgr-declaration-requirement",
+          "clm-university-of-oxford-ai-pgr-permitted-uses",
+          "clm-university-of-oxford-ai-pgr-prohibited-uses",
+          "clm-university-of-oxford-ai-three-principles"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+            "sourceSnapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c"
+          },
+          {
+            "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "sourceSnapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e"
+          },
+          {
+            "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+            "sourceSnapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e"
+          },
+          {
+            "sourceUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+            "sourceSnapshotHash": "6abb77311f43f70e8af1d23ccb75bbd35bd34098129bb0260b38de9d4effb1f2"
+          },
+          {
+            "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+            "sourceSnapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "zhejiang-university",
+      "cohort": "uapt-5-risk",
+      "decision": "needs_review",
+      "issueCodes": [
+        "TRANSLATION_REVIEW_MISSING"
+      ],
+      "notes": [
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/zhejiang-university.json",
+        "basisFingerprint": "259beaaf66161556420eb31dc60f009073d205f3580158b15dc1bb74a97e1620",
+        "claimIds": [
+          "cl-zhejiang-university-institutional-ai-service-265",
+          "claim-zju-001"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://ai.zju.edu.cn/2026/0112/c89504a3127572/page.htm",
+            "sourceSnapshotHash": "346468ffbb62c6b6228c8d9ced87f2b1e796d5a79dfda3a61b6281dc813a58fb"
+          },
+          {
+            "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+            "sourceSnapshotHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "unsw-sydney",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [
+        "Second-round independent review passed; rebased claim, source hashes, direct summary, and fingerprint checked."
+      ],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/unsw-sydney.json",
+        "basisFingerprint": "9788db146bfaa75b835d2230162403b0e77dab06611292582af7dee249b2abd1",
+        "claimIds": [
+          "claim-unsw-sydney-2",
+          "claim-unsw-sydney-3",
+          "claim-unsw-sydney-22",
+          "claim-unsw-sydney-8",
+          "cl-the-university-of-new-south-wales-unsw-sydney-microsoft-copilot-150"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+            "sourceSnapshotHash": "2fb44fd83942ce5729dfc30b56ed295ca2883a13d06441b427ca9b6acfc841ca"
+          },
+          {
+            "sourceUrl": "https://www.unsw.edu.au/myit/services/software-applications/using-copilot-chat",
+            "sourceSnapshotHash": "7dc6944cec54319fdf8d1eaf55c057ae31f19f3410746ac94b4ecde7b34405b5"
+          },
+          {
+            "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+            "sourceSnapshotHash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "cornell-university",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/cornell-university.json",
+        "basisFingerprint": "4fc37d095daa765e805274bc511b2015b15484febac1536cecc7cfc6ab535938",
+        "claimIds": [
+          "claim-cornell-university-15",
+          "claim-cornell-university-20",
+          "claim-cornell-university-5",
+          "claim-cornell-university-19",
+          "cl-cornell-university-microsoft-copilot-137",
+          "claim-cornell-university-21"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+            "sourceSnapshotHash": "f5c1bec49069c3ca5be50da497caeb4b1849d6cabb25464c859034ca6da1439f"
+          },
+          {
+            "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+            "sourceSnapshotHash": "b1a7c670aa0bf99b4502416ec7c7250135b063b6991367a057f5d2a1ca97251d"
+          },
+          {
+            "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+            "sourceSnapshotHash": "dc5bf374079a8450be06eca45adafca010faa27d86c5d2ea70da2fca9a166662"
+          },
+          {
+            "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+            "sourceSnapshotHash": "deeacd6dce5b944ffc00d979b34c83f57677a2f04ceb39c803a701b72d8caab6"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "university-of-sydney",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/university-of-sydney.json",
+        "basisFingerprint": "cec24b3818bcd6d7a09f4ba0971f0be59deede16d62e3d8c2fad2ec08aaeeb1b",
+        "claimIds": [
+          "usyd-claim-3",
+          "usyd-claim-10",
+          "usyd-claim-8",
+          "usyd-claim-5",
+          "usyd-claim-6"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/aligning-our-assessments-to-the-age-of-generative-ai/",
+            "sourceSnapshotHash": "40b1a9c73e76e9eeb8c7d22e91d920e679dd28271b27494172e6110c6b48f926"
+          },
+          {
+            "sourceUrl": "https://educational-innovation.sydney.edu.au/teaching@sydney/frequently-asked-questions-about-generative-ai-at-sydney/",
+            "sourceSnapshotHash": "058efdd957971901a0e660842c9c6489291b59f707f0ce8389586021ae393a1e"
+          },
+          {
+            "sourceUrl": "https://www.sydney.edu.au/policies/a-to-z-policy/assessment-procedures.html",
+            "sourceSnapshotHash": "4981f1bde50adc698d04d6110ef088d95f760d85cb0601080d3743d90a9e9f2f"
+          },
+          {
+            "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use.html",
+            "sourceSnapshotHash": "abfbc1fd30f4e356a25ac73a7426ed5703af63a9f5e0307b37c2fd249d0d68d7"
+          },
+          {
+            "sourceUrl": "https://www.sydney.edu.au/students/responsible-ai-use/using-ai-to-learn.html",
+            "sourceSnapshotHash": "0edbaa77a8cc4fd2407d6ed65f68954e7e29f69cc44faccf486a53323b774b01"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "de-la-salle-university",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/de-la-salle-university.json",
+        "basisFingerprint": "44403990d57584bd0671d53148f4daf1105d30da53692519bed22ec79018f192",
+        "claimIds": [
+          "claim-dlsu-generative-ai-syllabus-policy",
+          "claim-dlsu-generative-ai-academic-dishonesty",
+          "claim-dlsu-generative-ai-disclosure",
+          "claim-dlsu-generative-ai-privacy",
+          "claim-dlsu-generative-ai-policy-scope"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://old.dlsu.edu.ph/wp-content/uploads/pdf/provost/forms/policy-for-generative-ai-in-education.pdf",
+            "sourceSnapshotHash": "31b25b9b5073abb49d65320953056a69fabc6e112858a4cda77e68c997582122"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "university-of-auckland",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/university-of-auckland.json",
+        "basisFingerprint": "5b1a9a90ece25453fdc8a9d07b241c8093de708a2e79bc0537a8c60f31d46ebf",
+        "claimIds": [
+          "claim-auckland-001",
+          "claim-university-of-auckland-024",
+          "claim-auckland-006",
+          "claim-university-of-auckland-026"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://www.auckland.ac.nz/en/about-us/about-the-university/policy-hub/education-student-experience/assessment/assessment-courses-procedures.html",
+            "sourceSnapshotHash": "cb08abc2372ce4a0201f7356b9e0f452ec6982a0a69869161eda38c4571162d7"
+          },
+          {
+            "sourceUrl": "https://www.auckland.ac.nz/en/law/current-students/llb-information/academic-information/student-use-of-ai.html",
+            "sourceSnapshotHash": "8bc2a31021263ac98b61f9a4b9d64233653ebc5f929bed9e738cbca59a1e123b"
+          },
+          {
+            "sourceUrl": "https://teachwell.auckland.ac.nz/learning-technologies/technology-enhanced-learning/gen-ai-usage-standard/",
+            "sourceSnapshotHash": "06a9e04ba9faec6b2fb33ff8c410d865105706b75a19d8fcc1e0d0bd058709c4"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "imperial-college-london",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/imperial-college-london.json",
+        "basisFingerprint": "e36416299c01541632ffd853923a4a748f7364021eaff75e293a634827580cd6",
+        "claimIds": [
+          "clm-imperial-college-london-dept-assessment-policy",
+          "clm-imperial-college-london-ai-misconduct",
+          "clm-imperial-college-london-ai-acknowledgment",
+          "clm-imperial-college-london-daisy-privacy",
+          "clm-imperial-college-london-research-ethics",
+          "cl-imperial-college-london-institutional-ai-service-17"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "sourceSnapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979"
+          },
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c"
+          },
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+            "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "university-of-melbourne",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/university-of-melbourne.json",
+        "basisFingerprint": "4743664a83e1e9802d4289d1fab8398ce7e679b20301f40ba0e61c5d76b4abd2",
+        "claimIds": [
+          "claim-university-of-melbourne-1",
+          "claim-university-of-melbourne-6",
+          "claim-university-of-melbourne-12",
+          "claim-university-of-melbourne-2",
+          "claim-university-of-melbourne-7",
+          "claim-university-of-melbourne-15"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+            "sourceSnapshotHash": "54286d0127fc2d6826311ee036d374fc42248d2986de9de0cee50029e6ef2bc0"
+          },
+          {
+            "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+            "sourceSnapshotHash": "38a9f306c6e6483e7784e5e616122c7521ffa8ac19f085604f8ccedbc5efc3d6"
+          },
+          {
+            "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+            "sourceSnapshotHash": "abcf41948894b2245f1d8e574b503b05b140de1cac8365fd05e164adc4c152a0"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "utrecht-university",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/utrecht-university.json",
+        "basisFingerprint": "7bf8c2a281073e051b86c8300816097e0ace41cd8a10eea65fc1617da26fba1f",
+        "claimIds": [
+          "cl-uu-ai-index",
+          "cl-uu-student-ai-tool-conditions",
+          "cl-uu-research-personal-data",
+          "claim-utrecht-university-037"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/researchers/risks-and-limitations",
+            "sourceSnapshotHash": "5b6e9fe5ccc2973699356533d4d4ce447953f182e924866ece6cb6ac13393263"
+          },
+          {
+            "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/students/ai-index",
+            "sourceSnapshotHash": "40924ad17b0105194d875f42dbab9ce4d834d67d239cae32fb5039424a6252a7"
+          },
+          {
+            "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/students/conditions-of-use-of-ai-tools",
+            "sourceSnapshotHash": "f51ecf39e9973f15e4057fef99c5e170510fa8b10e03f58be1d934266da7245b"
+          },
+          {
+            "sourceUrl": "https://www.uu.nl/en/organisation/ai-policy/teachers",
+            "sourceSnapshotHash": "a998d39e74207e3df88c4c9b498aed8686e9ca831126d73329da1824efead112"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "adelaide-university",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/adelaide-university.json",
+        "basisFingerprint": "1fcba5ff481b8d6c2b9af6511c8fb0f7eb6de3f10e85c68acb79ea45963fea98",
+        "claimIds": [
+          "claim-adelaide-003",
+          "claim-adelaide-001",
+          "claim-adelaide-004",
+          "claim-adelaide-006",
+          "cl-adelaide-university-microsoft-copilot-345",
+          "claim-adelaide-005",
+          "claim-adelaide-007"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/about/policies/academic-integrity-policy/",
+            "sourceSnapshotHash": "dab458386e900f4d5a9b3122cba9d849e1d9ef1d9dfa9c2bfecbe3ad1d370fb0"
+          },
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/about/policies/assessment-policy/assessment-procedure/",
+            "sourceSnapshotHash": "d7f74391d0a0c8fc0c759fb1e3ec58ad23d1cb821725b1295d30e0b9d8603311"
+          },
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/about/policies/research-integrity-policy/research-integrity-authorship-procedure/",
+            "sourceSnapshotHash": "51693b3d379b6fa9b5d8f473b0c3c8cb58a5f3a2f7c490849db948da88e99de3"
+          },
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/research/graduate-research-school/graduate-research-handbook/conduct-of-research/",
+            "sourceSnapshotHash": "38e94448e37af95ef43529924bdf11c9b3aa58255f86a4217b46288ed4e3ea8f"
+          },
+          {
+            "sourceUrl": "https://adelaideuni.edu.au/students/manage-study/assessments-exams/online-exam-rules/",
+            "sourceSnapshotHash": "9c5d5891bb42e1af818865b12c6b90e2938641b37275d52442907324c2ae6419"
+          },
+          {
+            "sourceUrl": "https://au.libguides.com/aistudy/genaitools",
+            "sourceSnapshotHash": "18ae051da089c659adf8dfd92dad4184630d35614bac591573c6fb5d8677cfdb"
+          }
+        ]
+      }
+    },
+    {
+      "universitySlug": "ubc",
+      "cohort": "uapt-4-traffic",
+      "decision": "pass",
+      "issueCodes": [],
+      "notes": [],
+      "evidence": {
+        "snapshotFile": "data/policy-snapshots/v1/universities/ubc.json",
+        "basisFingerprint": "c3e61feed68a55f2209948b34624419309ec4dfa453d4b81bb2f1f4bcfe95e89",
+        "claimIds": [
+          "CL-003",
+          "claim-ubc-012",
+          "CL-007",
+          "CL-005",
+          "CL-009"
+        ],
+        "sourceRefs": [
+          {
+            "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+            "sourceSnapshotHash": "69418a2cf0a62587a706b8e975a48664bccab8e9ff42b04bd3df297f0a17b690"
+          },
+          {
+            "sourceUrl": "https://genai.ubc.ca/guidance/principles/",
+            "sourceSnapshotHash": "0e6f376cd2d07ed3ed0fb7aceed5e0ca29bcc3544d2ec9e29e442118aeaf252b"
+          },
+          {
+            "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+            "sourceSnapshotHash": "6cc7152af150ad693e13c238d0454c827bf88c1d9a687642fda6ad15e048e598"
+          },
+          {
+            "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/guidelines-for-all-uses-of-genai-in-teaching-learning/",
+            "sourceSnapshotHash": "0a10700e5b9ae757ebb2e087e23f3969882265c8e7727c23a77f543c3319f882"
+          },
+          {
+            "sourceUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+            "sourceSnapshotHash": "afea061c3cea022533d348adacb8127d3df7c836b2facac08dcf7fdd9db95f7f"
+          }
+        ]
+      }
+    }
+  ],
+  "decisionCounts": {
+    "pass": 17,
+    "return_to_author": 0,
+    "needs_review": 7
+  },
+  "publicationStatusCounts": {
+    "strong": 17,
+    "needs_review": 7
+  }
+}

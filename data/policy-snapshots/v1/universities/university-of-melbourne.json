@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "university-of-melbourne",
+  "universityName": "The University of Melbourne",
+  "canonicalUrl": "https://eduaipolicy.org/universities/university-of-melbourne",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-melbourne.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-08T10:00:00.000Z",
+  "overallStatus": "strong",
+  "statusReasons": [],
+  "summary": "The University of Melbourne asks students to follow subject-level AI boundaries, cite permitted use, and protect university and personal information.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "research"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "Melbourne subject coordinators set the bounds of appropriate GenAI use, and students are told to check before using it for assessment work.",
+      "actions": {
+        "do": [
+          "Ask the Subject Coordinator and read the subject's AI boundaries before use."
+        ],
+        "dont": [
+          "Do not assume another subject's AI rules apply to this subject."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-university-of-melbourne-1",
+          "claim-university-of-melbourne-6"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+            "sourceSnapshotHash": "abcf41948894b2245f1d8e574b503b05b140de1cac8365fd05e164adc4c152a0"
+          },
+          {
+            "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+            "sourceSnapshotHash": "38a9f306c6e6483e7784e5e616122c7521ffa8ac19f085604f8ccedbc5efc3d6"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No exam-specific student rule is included in this snapshot.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Melbourne students must appropriately cite GenAI use in preparing assessment submissions.",
+      "actions": {
+        "do": [
+          "Cite GenAI use in the assessment format required for the subject."
+        ],
+        "dont": [
+          "Do not submit GenAI-assisted assessment work without the required citation."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-university-of-melbourne-12"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+            "sourceSnapshotHash": "38a9f306c6e6483e7784e5e616122c7521ffa8ac19f085604f8ccedbc5efc3d6"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "Melbourne tells students not to upload personal, confidential, sensitive, or private information to GenAI tools.",
+      "actions": {
+        "do": [
+          "Keep personal and confidential information out of GenAI tools."
+        ],
+        "dont": [
+          "Do not upload personal information or private subject material without permission."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-university-of-melbourne-2"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+            "sourceSnapshotHash": "abcf41948894b2245f1d8e574b503b05b140de1cac8365fd05e164adc4c152a0"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "Melbourne lists SparkAI as an endorsed tool, but the retained tool record does not establish student assessment permission.",
+      "actions": {
+        "do": [
+          "Use SparkAI only within the applicable University guidance and account scope."
+        ],
+        "dont": [
+          "Do not treat a listed tool as permission for a student assessment."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-university-of-melbourne-7"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+            "sourceSnapshotHash": "38a9f306c6e6483e7784e5e616122c7521ffa8ac19f085604f8ccedbc5efc3d6"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "required",
+      "summary": "Melbourne says GenAI-generated or substantially altered material in research outputs may be used only when acknowledged under University and Australian research-conduct policy.",
+      "actions": {
+        "do": [
+          "Acknowledge GenAI-generated or substantially altered material in research outputs."
+        ],
+        "dont": [
+          "Do not present substantially AI-generated research material without acknowledgement."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-university-of-melbourne-15"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+            "sourceSnapshotHash": "54286d0127fc2d6826311ee036d374fc42248d2986de9de0cee50029e6ef2bc0"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "claim-university-of-melbourne-1",
+      "claim-university-of-melbourne-6",
+      "claim-university-of-melbourne-12",
+      "claim-university-of-melbourne-2",
+      "claim-university-of-melbourne-7",
+      "claim-university-of-melbourne-15"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://about.unimelb.edu.au/__data/assets/pdf_file/0032/396446/UoM-Submission-Inquiry-into-Generative-AI-in-Education-FINAL.pdf",
+        "sourceSnapshotHash": "54286d0127fc2d6826311ee036d374fc42248d2986de9de0cee50029e6ef2bc0"
+      },
+      {
+        "sourceUrl": "https://melbourne-cshe.unimelb.edu.au/resources/topics/assessment-and-feedback/specific-help/ai-in-teaching-and-learning",
+        "sourceSnapshotHash": "38a9f306c6e6483e7784e5e616122c7521ffa8ac19f085604f8ccedbc5efc3d6"
+      },
+      {
+        "sourceUrl": "https://students.unimelb.edu.au/academic-skills/resources/study-skills/learning-with-genai/GenAI-at-Melbourne",
+        "sourceSnapshotHash": "abcf41948894b2245f1d8e574b503b05b140de1cac8365fd05e164adc4c152a0"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "4743664a83e1e9802d4289d1fab8398ce7e679b20301f40ba0e61c5d76b4abd2",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "dual_agent_reviewed",
+    "primary": {
+      "agentId": "uapt-4-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Independent secondary review passed; evidence, scope, actions, and release binding checked."
+    },
+    "agreement": "agree",
+    "reviewedAt": "2026-08-08T10:57:26.300Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This candidate uses only the cited current staged public claims and source snapshot hashes; absence from a dimension is not permission or prohibition.",
+    "English is canonical; no translation is included because no translation review is present."
+  ]
+}

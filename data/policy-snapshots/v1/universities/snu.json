@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "snu",
+  "universityName": "Seoul National University",
+  "canonicalUrl": "http://localhost:3000/universities/snu",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/snu.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete",
+    "translation_needs_review"
+  ],
+  "summary": "At Seoul National University, follow the syllabus AI rule, disclose and document research use, protect research data and subscribed resources, and treat ChatGPT Edu’s listing as separate from academic permission.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "research",
+    "teaching_preparation"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "SNU requires instructors to communicate permitted or prohibited scope and reporting methods through syllabi. Scope: course-level instructor communication.",
+      "actions": {
+        "do": [
+          "Read the syllabus for the course-specific AI rule."
+        ],
+        "dont": [
+          "Do not infer a course rule from a general SNU service listing."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-snu-002b"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+            "sourceSnapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No source-backed SNU student exam rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "SNU guidance requires transparent AI-use disclosure and cited research guidance requires authors to state which tools were used and how. Scope: SNU guidance and Library-reproduced research guidance.",
+      "actions": {
+        "do": [
+          "Disclose the AI tool and use in the format required by the applicable guidance."
+        ],
+        "dont": [
+          "Do not omit AI-use disclosure from work covered by the cited rule."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-snu-002d",
+          "claim-snu-005b"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+            "sourceSnapshotHash": "014b2989d41c4b86415d870e423ccd92f0f7d1904c7af8b6ad8639c0234a6d31"
+          },
+          {
+            "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+            "sourceSnapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "SNU guidance emphasizes protection of research data and warns that uploading subscribed e-resources to third-party AI may exceed license terms. Scope: research and Library guidance.",
+      "actions": {
+        "do": [
+          "Check data and subscription terms before uploading material."
+        ],
+        "dont": [
+          "Do not upload protected research or subscribed resources to an unapproved AI service."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-snu-002c",
+          "claim-snu-007a"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+            "sourceSnapshotHash": "3d941c521ca708ba82c9ad7ddec034f2e67f66484ee559bc080073cddf3cc8d1"
+          },
+          {
+            "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+            "sourceSnapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "A public SNU source lists ChatGPT Edu as an official tool record. The listing is separate from course, assessment, data, or research permission.",
+      "actions": {
+        "do": [
+          "Verify eligibility and the course or project rule before use."
+        ],
+        "dont": [
+          "Do not infer academic permission from the listed service."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-seoul-national-university-chatgpt-224"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.snu.ac.kr/snunow/press?bbsidx=170942&md=v",
+            "sourceSnapshotHash": "ed205254b7dd602667eda2398311bfcc51afbdf57e1db6e057591f239ff892f5"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "required",
+      "summary": "SNU research guidance requires output checking, data protection, reproducibility documentation, and disclosure of AI tools and use. Scope: SNU research and Library guidance.",
+      "actions": {
+        "do": [
+          "Document and verify AI use in the research process."
+        ],
+        "dont": [
+          "Do not list AI as an author or conceal how it contributed."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-snu-002c",
+          "claim-snu-005b"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+            "sourceSnapshotHash": "014b2989d41c4b86415d870e423ccd92f0f7d1904c7af8b6ad8639c0234a6d31"
+          },
+          {
+            "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+            "sourceSnapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "cl-seoul-national-university-chatgpt-224",
+      "claim-snu-002b",
+      "claim-snu-002c",
+      "claim-snu-002d",
+      "claim-snu-005b",
+      "claim-snu-007a"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://health.snu.ac.kr/?kboard_content_redirect=5406",
+        "sourceSnapshotHash": "3d941c521ca708ba82c9ad7ddec034f2e67f66484ee559bc080073cddf3cc8d1"
+      },
+      {
+        "sourceUrl": "https://libguide.snu.ac.kr/c.php?g=321558&p=7079320",
+        "sourceSnapshotHash": "014b2989d41c4b86415d870e423ccd92f0f7d1904c7af8b6ad8639c0234a6d31"
+      },
+      {
+        "sourceUrl": "https://www.snu.ac.kr/snunow/press?bbsidx=170942&md=v",
+        "sourceSnapshotHash": "ed205254b7dd602667eda2398311bfcc51afbdf57e1db6e057591f239ff892f5"
+      },
+      {
+        "sourceUrl": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=166511",
+        "sourceSnapshotHash": "e9c106e79c28d107a9507e7e35b742851851b6066357156a3559b69ee75346aa"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "48a067b4d9b2cfb07388a9ce68913c5efd1478f21083b18dfa7e6ba8264404b0",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-5-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Second-round basis rebind is current; non-English source rendering still lacks translation review."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+  ]
+}

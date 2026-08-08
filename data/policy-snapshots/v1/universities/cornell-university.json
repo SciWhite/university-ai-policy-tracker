@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "cornell-university",
+  "universityName": "Cornell University",
+  "canonicalUrl": "https://eduaipolicy.org/universities/cornell-university",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/cornell-university.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-08T10:00:00.000Z",
+  "overallStatus": "strong",
+  "statusReasons": [],
+  "summary": "Cornell's public guidance leaves AI-use decisions to course or faculty policy and pairs conditional use with attribution and privacy limits.",
+  "audiences": [
+    "students",
+    "faculty"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "research"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "Cornell describes course-level choices that may prohibit, allow with attribution, or encourage generative AI.",
+      "actions": {
+        "do": [
+          "Read the syllabus and assignment policy for the specific course."
+        ],
+        "dont": [
+          "Do not assume a general university-wide permission to use AI."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-cornell-university-15",
+          "claim-cornell-university-20"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+            "sourceSnapshotHash": "dc5bf374079a8450be06eca45adafca010faa27d86c5d2ea70da2fca9a166662"
+          },
+          {
+            "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+            "sourceSnapshotHash": "b1a7c670aa0bf99b4502416ec7c7250135b063b6991367a057f5d2a1ca97251d"
+          },
+          {
+            "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+            "sourceSnapshotHash": "deeacd6dce5b944ffc00d979b34c83f57677a2f04ceb39c803a701b72d8caab6"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No exam-specific student rule is included in this snapshot.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "When GenAI is permitted, Cornell advises documentation and attribution, including citing the tool creator for direct quotations.",
+      "actions": {
+        "do": [
+          "Document and attribute permitted AI use as your course instructions require."
+        ],
+        "dont": [
+          "Do not omit attribution when AI-generated text is quoted directly."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-cornell-university-5"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+            "sourceSnapshotHash": "dc5bf374079a8450be06eca45adafca010faa27d86c5d2ea70da2fca9a166662"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "Cornell's IT guidance prohibits entering confidential, proprietary, regulated, sensitive, or restricted Cornell information into public AI tools.",
+      "actions": {
+        "do": [
+          "Keep confidential and restricted Cornell information out of public AI tools."
+        ],
+        "dont": [
+          "Do not upload sensitive or regulated Cornell information to a public AI vendor."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-cornell-university-19"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+            "sourceSnapshotHash": "b1a7c670aa0bf99b4502416ec7c7250135b063b6991367a057f5d2a1ca97251d"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "Cornell lists Microsoft Copilot Basic in an official tool source, but the listing is not assessment permission.",
+      "actions": {
+        "do": [
+          "Check the current access conditions for the listed Cornell service."
+        ],
+        "dont": [
+          "Do not treat a listed tool as permission for a course or exam."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-cornell-university-microsoft-copilot-137"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+            "sourceSnapshotHash": "f5c1bec49069c3ca5be50da497caeb4b1849d6cabb25464c859034ca6da1439f"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "unclear",
+      "summary": "Cornell says academic research use is governed by a separate task-force report, which this snapshot does not summarize.",
+      "actions": {
+        "do": [
+          "Consult research-specific Cornell guidance before using AI in research."
+        ],
+        "dont": [
+          "Do not transfer coursework rules to research without checking the research framework."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-cornell-university-21"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+            "sourceSnapshotHash": "b1a7c670aa0bf99b4502416ec7c7250135b063b6991367a057f5d2a1ca97251d"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "claim-cornell-university-15",
+      "claim-cornell-university-20",
+      "claim-cornell-university-5",
+      "claim-cornell-university-19",
+      "cl-cornell-university-microsoft-copilot-137",
+      "claim-cornell-university-21"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://innovationhub.ai.cornell.edu/tools-resources/",
+        "sourceSnapshotHash": "f5c1bec49069c3ca5be50da497caeb4b1849d6cabb25464c859034ca6da1439f"
+      },
+      {
+        "sourceUrl": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+        "sourceSnapshotHash": "b1a7c670aa0bf99b4502416ec7c7250135b063b6991367a057f5d2a1ca97251d"
+      },
+      {
+        "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+        "sourceSnapshotHash": "dc5bf374079a8450be06eca45adafca010faa27d86c5d2ea70da2fca9a166662"
+      },
+      {
+        "sourceUrl": "https://teaching.cornell.edu/generative-artificial-intelligence/cu-committee-report-generative-artificial-intelligence-education",
+        "sourceSnapshotHash": "deeacd6dce5b944ffc00d979b34c83f57677a2f04ceb39c803a701b72d8caab6"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "4fc37d095daa765e805274bc511b2015b15484febac1536cecc7cfc6ab535938",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "dual_agent_reviewed",
+    "primary": {
+      "agentId": "uapt-4-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Independent secondary review passed; evidence, scope, actions, and release binding checked."
+    },
+    "agreement": "agree",
+    "reviewedAt": "2026-08-08T10:57:26.300Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This candidate uses only the cited current staged public claims and source snapshot hashes; absence from a dimension is not permission or prohibition.",
+    "English is canonical; no translation is included because no translation review is present."
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "zhejiang-university",
+  "universityName": "Zhejiang University",
+  "canonicalUrl": "http://localhost:3000/universities/zhejiang-university",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/zhejiang-university.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete",
+    "translation_needs_review"
+  ],
+  "summary": "At Zhejiang University, follow the course or project rule before using the listed institutional service; for Journal of Zhejiang University-SCIENCE submissions, disclose substantive AI use and do not list AI as an author.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "thesis",
+    "research",
+    "teaching_preparation"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "not_mentioned",
+      "summary": "No source-backed Zhejiang student coursework rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No source-backed Zhejiang student exam rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Journal of Zhejiang University-SCIENCE requires explicit and detailed disclosure of substantive generative-AI use in manuscript preparation. Scope: that journal’s publication policy.",
+      "actions": {
+        "do": [
+          "Check the journal policy and disclose substantive AI use in detail."
+        ],
+        "dont": [
+          "Do not apply the journal rule to every Zhejiang assessment without checking."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-zju-001"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+            "sourceSnapshotHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "not_mentioned",
+      "summary": "No source-backed Zhejiang student data-entry rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "An official Zhejiang source lists 浙大先生智能体平台 as an institutional AI service. The listing is not course, assessment, thesis, or research permission.",
+      "actions": {
+        "do": [
+          "Check eligibility and the rule for the task before using the service."
+        ],
+        "dont": [
+          "Do not infer student assessment permission from a service listing."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-zhejiang-university-institutional-ai-service-265"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://ai.zju.edu.cn/2026/0112/c89504a3127572/page.htm",
+            "sourceSnapshotHash": "346468ffbb62c6b6228c8d9ced87f2b1e796d5a79dfda3a61b6281dc813a58fb"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "restricted",
+      "summary": "The cited journal policy bars AI or LLM authorship, keeps authors responsible for content, and requires detailed disclosure of substantive use. Scope: Journal of Zhejiang University-SCIENCE.",
+      "actions": {
+        "do": [
+          "Follow the journal’s AI disclosure and authorship requirements."
+        ],
+        "dont": [
+          "Do not list AI as a manuscript author or co-author."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-zju-001"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+            "sourceSnapshotHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "cl-zhejiang-university-institutional-ai-service-265",
+      "claim-zju-001"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://ai.zju.edu.cn/2026/0112/c89504a3127572/page.htm",
+        "sourceSnapshotHash": "346468ffbb62c6b6228c8d9ced87f2b1e796d5a79dfda3a61b6281dc813a58fb"
+      },
+      {
+        "sourceUrl": "https://jzus.zju.edu.cn/Policy.php",
+        "sourceSnapshotHash": "a761a8ab9587f53a6f50d853e152e0cdf9a93c6886115322c6f89b71967ba327"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "259beaaf66161556420eb31dc60f009073d205f3580158b15dc1bb74a97e1620",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-5-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+  ]
+}

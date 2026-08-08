@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "unsw-sydney",
+  "universityName": "The University of New South Wales (UNSW Sydney)",
+  "canonicalUrl": "https://eduaipolicy.org/universities/unsw-sydney",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/unsw-sydney.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-08T10:00:00.000Z",
+  "overallStatus": "strong",
+  "statusReasons": [],
+  "summary": "UNSW's public assessment framework includes both no-assistance and permitted categories, so course instructions control whether students may use AI.",
+  "audiences": [
+    "students"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "UNSW's assessment framework includes both no-assistance and permitted categories, so course instructions control whether students may use AI.",
+      "actions": {
+        "do": [
+          "Read the assessment instructions or course rules before using AI."
+        ],
+        "dont": [
+          "Do not use AI when the assessment is marked No Assistance."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-unsw-sydney-2",
+          "claim-unsw-sydney-3"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+            "sourceSnapshotHash": "2fb44fd83942ce5729dfc30b56ed295ca2883a13d06441b427ca9b6acfc841ca"
+          },
+          {
+            "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+            "sourceSnapshotHash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No exam-specific student rule is included in this snapshot.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "UNSW requires students to acknowledge AI and other sources in assessment work.",
+      "actions": {
+        "do": [
+          "Acknowledge and reference AI use when it is permitted in an assessment."
+        ],
+        "dont": [
+          "Do not present permitted AI use without the required acknowledgement."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-unsw-sydney-22"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+            "sourceSnapshotHash": "2fb44fd83942ce5729dfc30b56ed295ca2883a13d06441b427ca9b6acfc841ca"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "UNSW advises students not to put personal, sensitive, or intellectual-property information into AI prompts.",
+      "actions": {
+        "do": [
+          "Keep personal and sensitive information out of AI prompts."
+        ],
+        "dont": [
+          "Do not enter names, emails, zIDs, addresses, or intellectual property into an AI prompt."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-unsw-sydney-8"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+            "sourceSnapshotHash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "allowed",
+      "summary": "UNSW lists Microsoft Copilot Chat as an institutionally licensed service, but that listing does not itself grant assessment permission.",
+      "actions": {
+        "do": [
+          "Use the university account and security route described for Microsoft Copilot Chat."
+        ],
+        "dont": [
+          "Do not treat tool availability as permission in coursework or exams."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-the-university-of-new-south-wales-unsw-sydney-microsoft-copilot-150"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.unsw.edu.au/myit/services/software-applications/using-copilot-chat",
+            "sourceSnapshotHash": "7dc6944cec54319fdf8d1eaf55c057ae31f19f3410746ac94b4ecde7b34405b5"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "not_mentioned",
+      "summary": "No research or publication rule is included in this snapshot.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "claim-unsw-sydney-2",
+      "claim-unsw-sydney-3",
+      "claim-unsw-sydney-22",
+      "claim-unsw-sydney-8",
+      "cl-the-university-of-new-south-wales-unsw-sydney-microsoft-copilot-150"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://www.teaching.unsw.edu.au/ai/guidance-to-student",
+        "sourceSnapshotHash": "2fb44fd83942ce5729dfc30b56ed295ca2883a13d06441b427ca9b6acfc841ca"
+      },
+      {
+        "sourceUrl": "https://www.unsw.edu.au/myit/services/software-applications/using-copilot-chat",
+        "sourceSnapshotHash": "7dc6944cec54319fdf8d1eaf55c057ae31f19f3410746ac94b4ecde7b34405b5"
+      },
+      {
+        "sourceUrl": "https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai",
+        "sourceSnapshotHash": "4704ba661be84136e6a699c4c456d300349b5ac06faf2b965655c75a4aebc44a"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "9788db146bfaa75b835d2230162403b0e77dab06611292582af7dee249b2abd1",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "dual_agent_reviewed",
+    "primary": {
+      "agentId": "uapt-4-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T11:15:00.000Z",
+      "notes": "Second-round independent review passed; rebased claim, source hashes, direct summary, and fingerprint checked."
+    },
+    "agreement": "agree",
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This candidate uses only the cited current staged public claims and source snapshot hashes; absence from a dimension is not permission or prohibition.",
+    "English is canonical; no translation is included because no translation review is present."
+  ]
+}

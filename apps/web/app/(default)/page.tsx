@@ -16,6 +16,8 @@ import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { normalizeLocale } from "@/lib/i18n";
 import { getBrowseEntryGroupsCopy, getPageCopy } from "@/lib/page-copy";
 import { getStaticUniversityIndexRecords } from "@/lib/university-index-records";
+import { IntentFlow } from "@/components/intent-flow";
+import { getSiteOgImageUrl } from "@/components/site-opengraph";
 
 const quickQueries = [
   "disclosure",
@@ -52,6 +54,7 @@ export async function generateMetadata({
     openGraph: {
       title: dynamicTitle,
       description: copy.description,
+      images: [getSiteOgImageUrl(locale)],
       url: canonical,
       type: "website"
     }
@@ -221,6 +224,8 @@ export default async function HomePage({ params }: HomePageProps) {
           </article>
         ))}
       </section>
+
+      <IntentFlow locale={locale} />
 
       <BrowseEntryGroups copy={getBrowseEntryGroupsCopy(locale)} locale={locale} />
 

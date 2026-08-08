@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "tsinghua-university",
+  "universityName": "Tsinghua University",
+  "canonicalUrl": "http://localhost:3000/universities/tsinghua-university",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/tsinghua-university.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete",
+    "translation_needs_review"
+  ],
+  "summary": "At Tsinghua, follow the course AI norm, disclose AI use, keep sensitive or classified data out of AI operations, and do not copy AI output or use it to ghostwrite graduate theses; Xiaoda’s listing is not assessment permission.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "thesis",
+    "research",
+    "teaching_preparation"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "restricted",
+      "summary": "Tsinghua prohibits directly copying or mechanically paraphrasing AI output as coursework and asks instructors to state course norms. Scope: official education principles and course guidance.",
+      "actions": {
+        "do": [
+          "Read the course AI norm and keep your work independently produced."
+        ],
+        "dont": [
+          "Do not submit copied or mechanically paraphrased AI output as coursework."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-tsinghua-university-1",
+          "claim-tsinghua-university-7"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+            "sourceSnapshotHash": "4f2a7359e91b646b62f296ba5f53eb673d2aeee1697230e17dd2469aef70ab35"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No source-backed student exam-specific rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Tsinghua requires teachers and students to disclose AI use and AI-generated content in accordance with regulations. Scope: official education principles.",
+      "actions": {
+        "do": [
+          "Follow the applicable disclosure requirement for AI use or output."
+        ],
+        "dont": [
+          "Do not conceal AI use where the regulations require disclosure."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-tsinghua-university-3"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+            "sourceSnapshotHash": "4f2a7359e91b646b62f296ba5f53eb673d2aeee1697230e17dd2469aef70ab35"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "Tsinghua prohibits use of sensitive, classified, or unauthorized data to train or operate AI models. Scope: official education principles.",
+      "actions": {
+        "do": [
+          "Keep sensitive and classified data out of AI operations unless expressly authorized."
+        ],
+        "dont": [
+          "Do not enter unauthorized or classified data into an AI model."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-tsinghua-university-4"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+            "sourceSnapshotHash": "4f2a7359e91b646b62f296ba5f53eb673d2aeee1697230e17dd2469aef70ab35"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "Tsinghua official material lists Xiaoda as an institutional AI service. Listing or provision is not permission for a specific course, exam, thesis, or research task.",
+      "actions": {
+        "do": [
+          "Check eligibility and the course or project rule before using Xiaoda."
+        ],
+        "dont": [
+          "Do not infer assessment permission from the service listing."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-tsinghua-university-institutional-ai-service-138"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.tsinghua.edu.cn/en/info/1418/14423.htm",
+            "sourceSnapshotHash": "9434473ddaca8d2fe980f2b46610c83958db3c7c6e5fd1a87b68b3ed03947233"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "restricted",
+      "summary": "Tsinghua prohibits AI-assisted ghostwriting, plagiarism, and fabrication in graduate theses and requires supervisory oversight. Scope: graduate training and theses.",
+      "actions": {
+        "do": [
+          "Follow supervisor guidance and keep thesis work original."
+        ],
+        "dont": [
+          "Do not use AI to replace required independent academic training or ghostwrite a thesis."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-tsinghua-university-2",
+          "claim-tsinghua-university-8"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+            "sourceSnapshotHash": "4f2a7359e91b646b62f296ba5f53eb673d2aeee1697230e17dd2469aef70ab35"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "cl-tsinghua-university-institutional-ai-service-138",
+      "claim-tsinghua-university-1",
+      "claim-tsinghua-university-2",
+      "claim-tsinghua-university-3",
+      "claim-tsinghua-university-4",
+      "claim-tsinghua-university-7",
+      "claim-tsinghua-university-8"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://www.tsinghua.edu.cn/en/info/1418/14423.htm",
+        "sourceSnapshotHash": "9434473ddaca8d2fe980f2b46610c83958db3c7c6e5fd1a87b68b3ed03947233"
+      },
+      {
+        "sourceUrl": "https://www.tsinghua.edu.cn/info/1176/122770.htm",
+        "sourceSnapshotHash": "4f2a7359e91b646b62f296ba5f53eb673d2aeee1697230e17dd2469aef70ab35"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "09f22542f9f708f6d0df430bc77abd6ebb9804e06267d8023fcdeaa993765451",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-5-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+  ]
+}

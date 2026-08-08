@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "aalto-university",
+  "universityName": "Aalto University",
+  "canonicalUrl": "http://localhost:3000/universities/aalto-university",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/aalto-university.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "overallStatus": "strong",
+  "statusReasons": [],
+  "summary": "Check your Aalto course or task instructions before using AI; the guidance also requires disclosure of AI-generated content, limits sensitive data in Aalto AI Assistant, and requires transparent research use.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "research",
+    "teaching_preparation"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "University guidance allows AI support unless the course teacher says otherwise; course- or task-specific restrictions must be clear. Scope: course learning tasks.",
+      "actions": {
+        "do": [
+          "Read the course or task instructions before using AI."
+        ],
+        "dont": [
+          "Do not use AI contrary to the teacher instructions."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-aalto-001",
+          "claim-aalto-003"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/guidance-for-the-use-of-artificial-intelligence-in-teaching-and-learning-at-aalto-university",
+            "sourceSnapshotHash": "4db4b642cb227232de72c398741283540631c0a4ba8b59ebe4f19606ab856c18"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No source-backed exam-specific student rule is included here; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Student guidance says to mark AI-generated content and identify the model or service, date, and generation context. Scope: student text and coursework.",
+      "actions": {
+        "do": [
+          "Mark AI-generated content and cite the tool details required by the guidance."
+        ],
+        "dont": [
+          "Do not present AI-generated content as your own."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-aalto-004"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/tips-for-using-artificial-intelligence-for-students",
+            "sourceSnapshotHash": "6d22f359e1a1d060578395e55f242fe6905940732e59d2476cfa8c080196a9ff"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "Aalto AI Assistant permits public, internal, and confidential data but excludes secret, special-category, and otherwise sensitive personal data. Scope: that service, not every AI tool.",
+      "actions": {
+        "do": [
+          "Check the data classification before using Aalto AI Assistant."
+        ],
+        "dont": [
+          "Do not enter secret or sensitive personal data into the service."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-aalto-005"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/aalto-ai-assistant",
+            "sourceSnapshotHash": "330183fc23fddc499069006a28597089b36901f76566019d6fe2760d3cedc9ef"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "Aalto AI Assistant is described as an official service available to Aaltonians. Availability is separate from permission for a particular course, assessment, or research task.",
+      "actions": {
+        "do": [
+          "Treat the service listing as an availability signal and check the task rule."
+        ],
+        "dont": [
+          "Do not infer assessment permission from an official tool listing."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-aalto-006"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/ai-services",
+            "sourceSnapshotHash": "886b062e76d07d69036c049d926cc3a7c73de370d69953eafcba4b8a7bafba4d"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "required",
+      "summary": "Research guidance requires transparent description of AI use, rejects AI authorship, and cautions against feeding personal-data research into online AI tools. Scope: research process.",
+      "actions": {
+        "do": [
+          "Describe how AI was used so the research process is reproducible."
+        ],
+        "dont": [
+          "Do not list AI as an author or hide substantive use."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-aalto-007"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.aalto.fi/en/services/responsible-use-of-artificial-intelligence-in-the-research-process",
+            "sourceSnapshotHash": "7f99c4162b26beaa0cccc86a7f23aeef160309fcdb96bb6928f5784979fa6356"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "claim-aalto-001",
+      "claim-aalto-003",
+      "claim-aalto-004",
+      "claim-aalto-005",
+      "claim-aalto-006",
+      "claim-aalto-007"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://www.aalto.fi/en/services/aalto-ai-assistant",
+        "sourceSnapshotHash": "330183fc23fddc499069006a28597089b36901f76566019d6fe2760d3cedc9ef"
+      },
+      {
+        "sourceUrl": "https://www.aalto.fi/en/services/ai-services",
+        "sourceSnapshotHash": "886b062e76d07d69036c049d926cc3a7c73de370d69953eafcba4b8a7bafba4d"
+      },
+      {
+        "sourceUrl": "https://www.aalto.fi/en/services/guidance-for-the-use-of-artificial-intelligence-in-teaching-and-learning-at-aalto-university",
+        "sourceSnapshotHash": "4db4b642cb227232de72c398741283540631c0a4ba8b59ebe4f19606ab856c18"
+      },
+      {
+        "sourceUrl": "https://www.aalto.fi/en/services/responsible-use-of-artificial-intelligence-in-the-research-process",
+        "sourceSnapshotHash": "7f99c4162b26beaa0cccc86a7f23aeef160309fcdb96bb6928f5784979fa6356"
+      },
+      {
+        "sourceUrl": "https://www.aalto.fi/en/services/tips-for-using-artificial-intelligence-for-students",
+        "sourceSnapshotHash": "6d22f359e1a1d060578395e55f242fe6905940732e59d2476cfa8c080196a9ff"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "f46c38e5cedd1e99035f22892b71567dab950e7c4bc6b4b31a36ad2b82e73a17",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "dual_agent_reviewed",
+    "primary": {
+      "agentId": "uapt-5-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+    },
+    "secondary": {
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T11:15:00.000Z",
+      "notes": "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
+    },
+    "agreement": "agree",
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+  ]
+}

@@ -5,57 +5,40 @@ import {
   getPublicJsonUrl,
   getPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
-import { AnalysisStatusLabel } from "@/components/analysis-status-label";
 import { ClaimEvidenceCard } from "@/components/claim-evidence-card";
-import { DocumentLink as Link } from "@/components/document-link";
 import { EntityHeader } from "@/components/entity-header";
-import { EntitySidebar } from "@/components/entity-sidebar";
 import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
-import { ReferenceBox } from "@/components/reference-box";
-import { ReferenceTabs } from "@/components/reference-tabs";
-import { StateLabel } from "@/components/state-label";
-import { ToolRecordFields } from "@/components/tool-record-fields";
+import { NoReviewedSnapshotState, StudentPolicySnapshot, isStrongStudentSnapshot, normalizeStudentSnapshotRole } from "@/components/student-policy-snapshot";
+import { DocumentLink as Link } from "@/components/document-link";
 import { normalizeLocale, withLocalePrefix } from "@/lib/i18n";
-import { formatSnapshotHash } from "@/lib/snapshot-hash";
 import { getCanonicalSlugForAlias } from "@/lib/entity-aliases";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
-import { getPolicyAnalysisProfileBySlug } from "@/lib/policy-analysis";
+import { getLoadedPolicySnapshotBySlug } from "@/lib/policy-snapshots";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
-import { getUniversityToolRecords } from "@/lib/tool-records";
+import { formatSnapshotHash } from "@/lib/snapshot-hash";
+import { getSiteOgImageUrl } from "@/components/site-opengraph";
 
 interface UniversityPageProps {
   params: Promise<{
     locale?: string;
     slug: string;
   }>;
+  searchParams?: Promise<{
+    for?: string | string[];
+  }>;
 }
 
 type PublicUniversitySummary = NonNullable<
   Awaited<ReturnType<typeof getPublicUniversitySummaryBySlug>>
 >;
-type PublicUniversityClaim = PublicUniversitySummary["claims"][number];
-
-const recordTabs = [
-  { label: "Overview", href: "#overview" },
-  { label: "Policy profile", href: "#policy-profile" },
-  { label: "Claims", href: "#claims" },
-  { label: "AI tools", href: "#tools" },
-  { label: "Sources", href: "#sources" },
-  { label: "Changes", href: "#changes" },
-  { label: "JSON", href: "#json", spy: false },
-  { label: "Citation", href: "#citation", spy: false }
-] as const;
 
 export const dynamicParams = true;
 export const revalidate = 3600;
 
-// Alias slugs stay on-demand: they permanently redirect via redirectAliasSlug
-// and dynamicParams keeps them resolvable without prerendering redirect pages.
 export async function generateStaticParams() {
   const universities = await getCatalogUniversities();
-
   return universities.map((university) => ({ slug: university.slug }));
 }
 
@@ -71,18 +54,10 @@ export async function generateMetadata({ params }: UniversityPageProps) {
   const alternates = getLocalizedAlternates(`/universities/${slug}`, locale);
   const canonical = String(alternates.canonical);
   const title = university
-    ? buildUniversityMetaTitle(slug, displayName, locale)
+    ? `${displayName} AI policy | University AI Policy Tracker`
     : "University not found";
   const description = university && publicSummary
-    ? slug === "universitat-innsbruck"
-      ? buildInnsbruckMetaDescription(displayName, locale)
-      : buildUniversityMetaDescription({
-          displayName,
-          locale,
-          summary: publicSummary
-        })
-    : university
-      ? `${displayName} AI policy record with evidence-backed claims, official sources, review state, confidence, and public JSON.`
+    ? `${displayName} AI policy record with reviewed claims, official sources, and a student-first policy snapshot.`
     : "University AI Policy Tracker record not found.";
 
   return {
@@ -92,81 +67,50 @@ export async function generateMetadata({ params }: UniversityPageProps) {
     openGraph: {
       title,
       description,
+      images: [getSiteOgImageUrl(locale)],
       url: canonical,
       type: "article"
     }
   };
 }
 
-// Registered alias slugs (data/entity-aliases.json) permanently redirect to
-// the canonical university record instead of rendering a duplicate.
-async function redirectAliasSlug(
-  slug: string,
-  localeParam: string | undefined
-): Promise<void> {
-  const canonicalSlug = await getCanonicalSlugForAlias(slug);
-
-  if (canonicalSlug) {
-    permanentRedirect(
-      withLocalePrefix(
-        `/universities/${canonicalSlug}`,
-        normalizeLocale(localeParam)
-      )
-    );
-  }
-}
-
-export default async function UniversityPage({ params }: UniversityPageProps) {
+export default async function UniversityPage({
+  params,
+  searchParams
+}: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
-  const university = await getCatalogUniversityBySlug(slug);
-  const publicSummary = await getPublicUniversitySummaryBySlug(slug);
-  const policyAnalysisProfile = await getPolicyAnalysisProfileBySlug(slug);
-  const toolRecords = await getUniversityToolRecords(slug);
 
-  if (!university || !publicSummary) {
-    notFound();
-  }
+  const [university, publicSummary, loadedSnapshot] = await Promise.all([
+    getCatalogUniversityBySlug(slug),
+    getPublicUniversitySummaryBySlug(slug),
+    getLoadedPolicySnapshotBySlug(slug)
+  ]);
+
+  if (!university || !publicSummary) notFound();
+
   const displayName = getLocalizedInstitutionName(
     university.slug,
     university.name,
     locale
   );
-  const jsonUrl = getPublicJsonUrl(slug);
-  const publicJsonUrl =
-    publicSummary.apiUrl ?? resolveUrl(jsonUrl, publicSummary.canonicalUrl);
-  const publicJsonPath = new URL(publicJsonUrl).pathname;
+  const publicJsonUrl = publicSummary.apiUrl ?? resolveUrl(
+    getPublicJsonUrl(slug),
+    publicSummary.canonicalUrl
+  );
   const reviewedClaims = publicSummary.claims.filter((claim) =>
     isReviewedClaim(claim.reviewState)
   );
-  const candidateClaims = publicSummary.claims.filter(
-    (claim) => !isReviewedClaim(claim.reviewState)
-  );
-  const policyStatus = getPolicyStatus(
-    reviewedClaims.length,
-    candidateClaims.length,
-    publicSummary.officialSources.length
+  const strongSnapshot = isStrongStudentSnapshot(loadedSnapshot);
+  const role = normalizeStudentSnapshotRole((await searchParams)?.for);
+  const citationReadySummary = buildCitationSummary(
+    displayName,
+    publicSummary,
+    publicJsonUrl,
+    reviewedClaims.length
   );
   const canonicalUrl = publicSummary.publicPageUrl ?? publicSummary.canonicalUrl;
-  const { citationReady: citationReadySummary, lede: recordSummaryLede } =
-    buildRecordSummaryParts({
-      candidateClaimCount: candidateClaims.length,
-      displayName,
-      officialSourceCount: publicSummary.officialSources.length,
-      publicJsonUrl,
-      reviewedClaimCount: reviewedClaims.length,
-      locale,
-      summary: publicSummary,
-      totalClaimCount: publicSummary.claims.length
-    });
-  const sourceLanguages = getSourceLanguages(publicSummary.claims);
-  const academicAiClaim = slug === "universitat-innsbruck"
-    ? publicSummary.claims.find(
-        (claim) => claim.id === "claim-uibk-academic-ai-and-copilot"
-      )
-    : undefined;
-  const academicAiSource = academicAiClaim?.evidence[0]?.sourceUrl;
 
   return (
     <main className="page-shell page-shell--wide">
@@ -177,8 +121,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           name: publicSummary.citationTitle,
           description: citationReadySummary,
           url: canonicalUrl,
-          dateModified:
-            publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt,
+          dateModified: publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt,
           isPartOf: {
             "@type": "WebSite",
             name: "University AI Policy Tracker",
@@ -202,474 +145,199 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               encodingFormat: "application/json",
               contentUrl: publicJsonUrl
             }
-          },
-          ...(academicAiClaim
-            ? {
-                about: {
-                  "@type": "Thing",
-                  name: "Academic AI at UIBK",
-                  sameAs: academicAiSource
-                }
-              }
-            : {})
+          }
         }}
       />
 
       <EntityHeader
-        actions={
-          <>
-            <div className="entity-header__desktop-actions">
-              <a
-                className="site-action"
-                data-analytics-entity-slug={slug}
-                data-analytics-event="record_public_json_click"
-                href={publicJsonUrl}
-              >
-                Public JSON
-              </a>
-              <Link className="site-action" href={`/changes/${slug}`}>
-                Change log
-              </Link>
-              <Link className="site-action" href="/reports/monthly/2026-07">
-                Monthly report
-              </Link>
-              <Link className="site-action" href="/citation">
-                Citation rules
-              </Link>
-              <Link className="site-action" href="/datasets">
-                Dataset access
-              </Link>
-              {policyAnalysisProfile ? (
-                <a
-                  className="site-action"
-                  data-analytics-endpoint-kind="analysis"
-                  data-analytics-entity-slug={slug}
-                  data-analytics-event="api_link_click"
-                  href={policyAnalysisProfile.publicJsonUrl}
-                >
-                  Analysis JSON
-                </a>
-              ) : null}
-              <Link className="site-action" href="/contribute">
-                Submit correction
-              </Link>
-            </div>
-            <div className="entity-header__mobile-actions">
-              <a
-                className="site-action"
-                data-analytics-entity-slug={slug}
-                data-analytics-event="record_public_json_click"
-                href={publicJsonUrl}
-              >
-                Public JSON
-              </a>
-              <Link className="site-action" href="/citation">
-                Citation rules
-              </Link>
-              <details className="entity-header__tool-menu">
-                <summary>More tools</summary>
-                <div>
-                  <Link className="site-action" href={`/changes/${slug}`}>
-                    Change log
-                  </Link>
-                  <Link className="site-action" href="/reports/monthly/2026-07">
-                    Monthly report
-                  </Link>
-                  <Link className="site-action" href="/datasets">
-                    Dataset access
-                  </Link>
-                  {policyAnalysisProfile ? (
-                    <a
-                      className="site-action"
-                      data-analytics-endpoint-kind="analysis"
-                      data-analytics-entity-slug={slug}
-                      data-analytics-event="api_link_click"
-                      href={policyAnalysisProfile.publicJsonUrl}
-                    >
-                      Analysis JSON
-                    </a>
-                  ) : null}
-                  <Link className="site-action" href="/contribute">
-                    Submit correction
-                  </Link>
-                </div>
-              </details>
-            </div>
-          </>
-        }
         eyebrow={`${university.region}, ${university.country}`}
         metadata={
           <>
-            {publicSummary.lastCheckedAt ? (
-              <MetaLabel label="Last checked">
-                {formatDate(publicSummary.lastCheckedAt, locale)}
-              </MetaLabel>
-            ) : null}
-            {publicSummary.lastChangedAt ? (
-              <MetaLabel label="Last changed">
-                {formatDate(publicSummary.lastChangedAt, locale)}
-              </MetaLabel>
-            ) : null}
-            <StateLabel reviewState={publicSummary.reviewState} />
-            {publicSummary.confidence !== undefined ? (
-              <MetaLabel label="Confidence">
-                {Math.round(publicSummary.confidence * 100)}%
-              </MetaLabel>
-            ) : null}
+            <MetaLabel label="Ranking">
+              {formatRanking(university.rankings)}
+            </MetaLabel>
+            <MetaLabel label="Updated">
+              {formatDate(
+                publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt,
+                locale
+              )}
+            </MetaLabel>
           </>
         }
         title={<span data-i18n="preserve">{displayName}</span>}
       />
 
-      <ReferenceTabs tabs={recordTabs} />
-
-      <div className="entity-record-layout">
-        <div className="entity-record-main">
-          {academicAiClaim ? (
-            <ReferenceBox
-              actions={academicAiSource ? (
-                <a
-                  className="site-action"
-                  data-analytics-entity-slug={slug}
-                  data-analytics-event="official_source_click"
-                  data-analytics-source-domain={getSourceDomain(academicAiSource)}
-                  href={academicAiSource}
-                >
-                  {locale === "zh" ? "Academic AI 官方来源" : "Academic AI source"}
-                </a>
-              ) : undefined}
-              id="academic-ai-uibk"
-              title={locale === "zh" ? "UIBK 的 Academic AI" : "Academic AI at UIBK"}
-            >
-              <p className="entity-answer-lede">
-                {locale === "zh"
-                  ? "因斯布鲁克大学向在职员工提供运行于受保护环境中的 Academic AI，并推荐使用该校内模型；现有官方证据同时指出，出于数据保护原因，员工不得使用 Microsoft Copilot。"
-                  : "Universität Innsbruck provides Academic AI to active employees in a protected environment and recommends its institutional model; current official evidence also says staff use of Microsoft Copilot is prohibited for data-protection reasons."}
-              </p>
-              <div className="tag-row">
-                <MetaLabel label={locale === "zh" ? "使用对象" : "Access"}>
-                  {locale === "zh" ? "在职员工" : "Active employees"}
-                </MetaLabel>
-                <MetaLabel label={locale === "zh" ? "环境" : "Environment"}>
-                  {locale === "zh" ? "受保护" : "Protected"}
-                </MetaLabel>
-                <MetaLabel label="Microsoft Copilot">
-                  {locale === "zh" ? "员工禁止使用" : "Prohibited for staff"}
-                </MetaLabel>
-                <StateLabel reviewState={academicAiClaim.reviewState} />
-              </div>
-            </ReferenceBox>
-          ) : null}
-
-          <ReferenceBox
-            id="overview"
-            title="Record summary"
-          >
-            <p className="entity-answer-lede">{recordSummaryLede}</p>
-            <div className="tag-row">
-              <MetaLabel label="Policy status">{policyStatus}</MetaLabel>
-              <MetaLabel label="Claim coverage">
-                {formatClaimCoverage(reviewedClaims.length, candidateClaims.length)}
-              </MetaLabel>
-              <MetaLabel label="Official sources">
-                {publicSummary.officialSources.length}
-              </MetaLabel>
-              <MetaLabel label="Source language">
-                {sourceLanguages.length ? sourceLanguages.join(", ") : "Not specified"}
-              </MetaLabel>
-            </div>
-            <details className="record-audit-details">
-              <summary>Audit and provenance details</summary>
-              <div className="tag-row">
-                <StateLabel reviewState={publicSummary.reviewState} />
-                <MetaLabel label="Evidence-backed claims">
-                  {publicSummary.claims.length}
-                </MetaLabel>
-                <MetaLabel label="Reviewed">{reviewedClaims.length}</MetaLabel>
-                <MetaLabel label="Candidate">{candidateClaims.length}</MetaLabel>
-                <MetaLabel label="Public JSON">
-                  <a
-                    data-analytics-entity-slug={slug}
-                    data-analytics-event="record_public_json_click"
-                    href={publicJsonUrl}
-                  >
-                    {publicJsonPath}
-                  </a>
-                </MetaLabel>
-              </div>
-            </details>
-          </ReferenceBox>
-
-          {policyAnalysisProfile ? (
-            <ReferenceBox
-              id="policy-profile"
-              title="Policy profile"
-              actions={
-                <>
-                  <a
-                    className="site-action"
-                    data-analytics-endpoint-kind="analysis"
-                    data-analytics-entity-slug={slug}
-                    data-analytics-event="api_link_click"
-                    href={policyAnalysisProfile.publicJsonUrl}
-                  >
-                    Analysis JSON
-                  </a>
-                  <Link className="site-action" href="/review#analysis-review">
-                    Analysis review
-                  </Link>
-                </>
-              }
-            >
-              <div className="tag-row">
-                <MetaLabel label="Coverage score">
-                  {policyAnalysisProfile.coverageScore.score}/
-                  {policyAnalysisProfile.coverageScore.maxScore}
-                </MetaLabel>
-                <MetaLabel label="Coverage label">
-                  {policyAnalysisProfile.coverageScore.label.replaceAll("_", " ")}
-                </MetaLabel>
-                <StateLabel reviewState={policyAnalysisProfile.reviewState} />
-                <MetaLabel label="Analysis confidence">
-                  {Math.round(policyAnalysisProfile.confidence * 100)}%
-                </MetaLabel>
-              </div>
-              <div className="analysis-dimension-list">
-                {policyAnalysisProfile.dimensions.map((dimension) => (
-                  <article
-                    className="analysis-dimension-row"
-                    data-analysis-status={dimension.status}
-                    key={dimension.key}
-                  >
-                    <div>
-                      <h3>{dimension.label}</h3>
-                      <p>{dimension.summary}</p>
-                      {dimension.notMentionedReason ? (
-                        <p className="muted">{dimension.notMentionedReason}</p>
-                      ) : null}
-                    </div>
-                    <div className="analysis-dimension-row__meta">
-                      <AnalysisStatusLabel
-                        prefix=""
-                        status={dimension.status}
-                      />
-                      <StateLabel
-                        prefix=""
-                        reviewState={dimension.reviewState}
-                      />
-                      <MetaLabel label="Confidence">
-                        {Math.round(dimension.confidence * 100)}%
-                      </MetaLabel>
-                      <MetaLabel label="Evidence">
-                        {dimension.evidenceCount}
-                      </MetaLabel>
-                      <MetaLabel label="Sources">{dimension.sourceCount}</MetaLabel>
-                    </div>
-                    <div className="analysis-dimension-row__links">
-                      {dimension.basis.slice(0, 3).map((basis) => (
-                        <Link
-                          href={`#claim-${basis.claimId}`}
-                          key={`${dimension.key}:${basis.claimId}`}
-                        >
-                          Claim {basis.claimId}
-                        </Link>
-                      ))}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </ReferenceBox>
-          ) : null}
-
-          <section className="record-section" id="claims">
-            <div className="section-heading">
-              <h2>Evidence-backed claims</h2>
-              <p>{reviewedClaims.length} reviewed evidence-backed public claim</p>
-            </div>
-            {reviewedClaims.length ? (
-              <div className="claim-list">
-                {reviewedClaims.map((claim) => (
-                  <ClaimEvidenceCard
-                    claim={claim}
-                    id={claim.id ? `claim-${claim.id}` : undefined}
-                    key={claim.id ?? claim.claimText}
-                    locale={locale}
-                  />
-                ))}
-              </div>
-            ) : (
-              <p className="notice-card">
-                No reviewed claims are published for this record yet. Candidate
-                claims remain visible below for source-review workflow
-                transparency.
-              </p>
-            )}
-          </section>
-
-          <section className="record-section">
-            <div className="section-heading">
-              <h2>Candidate claims</h2>
-              <p>{candidateClaims.length} machine or needs-review claim</p>
-            </div>
-            {candidateClaims.length ? (
-              <div className="claim-list">
-                {candidateClaims.map((claim) => (
-                  <ClaimEvidenceCard
-                    claim={claim}
-                    id={claim.id ? `claim-${claim.id}` : undefined}
-                    key={claim.id ?? claim.claimText}
-                    locale={locale}
-                  />
-                ))}
-              </div>
-            ) : null}
-          </section>
-
-          <ReferenceBox
-            id="tools"
-            title="AI tools"
-            actions={
-              <>
-                <Link className="site-action" href="/tools">
-                  Tools directory
-                </Link>
-              </>
-            }
-          >
-            <div className="tag-row">
-              <MetaLabel label="Derived tool records">
-                {toolRecords.length}
-              </MetaLabel>
-            </div>
-            {toolRecords.length ? (
-              <div className="analysis-dimension-list">
-                {toolRecords.map((record) => (
-                  <article
-                    className="analysis-dimension-row"
-                    data-analysis-status={record.availability}
-                    key={`${record.universitySlug}:${record.tool}`}
-                  >
-                    <div>
-                      <h3>{record.rawToolName}</h3>
-                      <p className="muted">{record.universityName}</p>
-                      <ToolRecordFields record={record} />
-                    </div>
-                  </article>
-                ))}
-              </div>
-            ) : (
-              <p className="notice-card">
-                No tool-level evidence is published for this record yet. Broad
-                AI tool mentions are not expanded into named tool conclusions.
-              </p>
-            )}
-          </ReferenceBox>
-
-          <section className="record-section" id="sources">
-            <div className="section-heading">
-              <h2>Official sources</h2>
-              <p>{publicSummary.officialSources.length} source attribution</p>
-            </div>
-            <div className="source-attribution-list">
-              {publicSummary.officialSources.map((source) => (
-                <article
-                  className="source-attribution-row"
-                  key={`${source.sourceUrl}:${source.snapshotHash}`}
-                >
-                  <div>
-                    <h3 data-i18n="preserve">{source.citationTitle}</h3>
-                    <p className="muted">
-                      {source.publisher ?? "Official university source"}
-                    </p>
-                  </div>
-                  <dl className="source-attribution-row__meta">
-                    <div>
-                      <dt>Source URL</dt>
-                      <dd>
-                        <a
-                          data-analytics-entity-slug={slug}
-                          data-analytics-event="official_source_click"
-                          data-analytics-source-domain={getSourceDomain(source.sourceUrl)}
-                          href={source.sourceUrl}
-                        >
-                          {source.sourceUrl}
-                        </a>
-                      </dd>
-                    </div>
-                    <div>
-                      <dt>Snapshot hash</dt>
-                      <dd className="hash-value" title={source.snapshotHash}>
-                        {formatSnapshotHash(source.snapshotHash)}
-                      </dd>
-                    </div>
-                  </dl>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <ReferenceBox
-            id="changes"
-            title="Change log"
-          >
-            <div className="tag-row">
-              {publicSummary.lastCheckedAt ? (
-                <MetaLabel label="Last checked">
-                  {formatDate(publicSummary.lastCheckedAt, locale)}
-                </MetaLabel>
-              ) : null}
-              {publicSummary.lastChangedAt ? (
-                <MetaLabel label="Last changed">
-                  {formatDate(publicSummary.lastChangedAt, locale)}
-                </MetaLabel>
-              ) : null}
-              <Link className="site-action" href={`/changes/${slug}`}>
-                Open change log
-              </Link>
-            </div>
-          </ReferenceBox>
-
-          <ReferenceBox title="Corrections">
-            <div className="tag-row">
-              <Link className="site-action" href="/contribute">
-                Open contribution paths
-              </Link>
-              <Link className="site-action" href="/review">
-                Review workflow
-              </Link>
-            </div>
-          </ReferenceBox>
-
-          <section className="record-section">
-            <Link href="/universities">Back to universities</Link>
-          </section>
-        </div>
-
-        <EntitySidebar
-          canonicalUrl={publicSummary.canonicalUrl}
-          citationText={publicSummary.suggestedCitation}
-          officialSourceCount={publicSummary.officialSources.length}
-          publicJsonUrl={publicJsonUrl}
+      {strongSnapshot ? (
+        <StudentPolicySnapshot
+          claims={reviewedClaims}
+          entitySlug={slug}
+          locale={locale}
+          role={role}
+          snapshot={loadedSnapshot.snapshot}
         />
-      </div>
+      ) : (
+        <NoReviewedSnapshotState />
+      )}
+
+      <section className="student-record-section" id="claims">
+        <div className="section-heading">
+          <div>
+            <p className="student-policy__eyebrow">Reviewed record</p>
+            <h2>Reviewed claims</h2>
+          </div>
+          <p>{reviewedClaims.length} reviewed claim{reviewedClaims.length === 1 ? "" : "s"}</p>
+        </div>
+        {reviewedClaims.length ? (
+          <div className="claim-list">
+            {reviewedClaims.map((claim) => (
+              <ClaimEvidenceCard
+                claim={claim}
+                entitySlug={slug}
+                id={claim.id ? `claim-${claim.id}` : undefined}
+                key={claim.id ?? claim.claimText}
+                locale={locale}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="notice-card">No reviewed claims are published for this record yet.</p>
+        )}
+      </section>
+
+      <section className="student-record-section" id="sources">
+        <div className="section-heading">
+          <div>
+            <p className="student-policy__eyebrow">Source record</p>
+            <h2>Official sources</h2>
+          </div>
+          <p>{publicSummary.officialSources.length} source{publicSummary.officialSources.length === 1 ? "" : "s"}</p>
+        </div>
+        <div className="student-source-attribution-list">
+          {publicSummary.officialSources.map((source) => (
+            <article
+              className="student-source-attribution"
+              key={`${source.sourceUrl}:${source.snapshotHash}`}
+            >
+              <div>
+                <h3>{source.citationTitle}</h3>
+                <p className="muted">{source.publisher ?? "Official university source"}</p>
+              </div>
+              <dl>
+                <div>
+                  <dt>Source URL</dt>
+                  <dd>
+                    <a
+                      data-analytics-entity-slug={slug}
+                      data-analytics-event="official_source_click"
+                      data-analytics-source-domain={getSourceDomain(source.sourceUrl)}
+                      href={source.sourceUrl}
+                    >
+                      {source.sourceUrl}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Snapshot hash</dt>
+                  <dd className="hash-value" title={source.snapshotHash}>
+                    {formatSnapshotHash(source.snapshotHash)}
+                  </dd>
+                </div>
+              </dl>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="student-record-info" id="record-info">
+        <details>
+          <summary>Record information, JSON &amp; citation</summary>
+          <div className="student-record-info__body">
+            <div className="tag-row" id="snapshot-scope">
+              <MetaLabel label="Review">
+                {formatReviewState(publicSummary.reviewState)}
+              </MetaLabel>
+              <MetaLabel label="Confidence">
+                {publicSummary.confidence === undefined
+                  ? "Not listed"
+                  : `${Math.round(publicSummary.confidence * 100)}%`}
+              </MetaLabel>
+              <MetaLabel label="Snapshot status">
+                {loadedSnapshot?.validation.effectiveStatus ?? "Not published"}
+              </MetaLabel>
+              {loadedSnapshot ? (
+                <MetaLabel label="Snapshot hash">
+                  <span
+                    className="hash-value"
+                    title={loadedSnapshot.snapshot.basisFingerprint}
+                  >
+                    {formatSnapshotHash(loadedSnapshot.snapshot.basisFingerprint)}
+                  </span>
+                </MetaLabel>
+              ) : null}
+              <MetaLabel label="JSON">
+                <a
+                  data-analytics-entity-slug={slug}
+                  data-analytics-event="record_public_json_click"
+                  href={publicJsonUrl}
+                >
+                  Public JSON
+                </a>
+              </MetaLabel>
+            </div>
+            <p className="student-record-info__citation">
+              <strong>Citation:</strong> {publicSummary.suggestedCitation}
+            </p>
+            <p className="muted">
+              Original university source language remains canonical. This tracker is not an official university statement.
+            </p>
+            <Link className="site-action" href={`/changes/${slug}`}>
+              Open change log
+            </Link>
+          </div>
+        </details>
+      </section>
     </main>
   );
+}
+
+async function redirectAliasSlug(
+  slug: string,
+  localeParam: string | undefined
+): Promise<void> {
+  const canonicalSlug = await getCanonicalSlugForAlias(slug);
+  if (canonicalSlug) {
+    permanentRedirect(
+      withLocalePrefix(
+        `/universities/${canonicalSlug}`,
+        normalizeLocale(localeParam)
+      )
+    );
+  }
 }
 
 function isReviewedClaim(reviewState: string): boolean {
   return reviewState === "agent_reviewed" || reviewState === "human_reviewed";
 }
 
-function getPolicyStatus(
-  reviewedClaimCount: number,
-  candidateClaimCount: number,
-  sourceCount: number
+function formatRanking(
+  rankings: Array<{ systemId: string; systemName: string; rankingYear: number | string; rankText: string }>
 ): string {
-  if (reviewedClaimCount > 0) return "Reviewed evidence-backed record";
-  if (candidateClaimCount > 0) return "Candidate evidence-backed record";
-  if (sourceCount > 0) return "Source-attributed record";
+  const ranking = rankings.find((item) => item.systemId === "qs") ?? rankings[0];
+  return ranking
+    ? `${ranking.systemName} ${ranking.rankingYear}: ${ranking.rankText}`
+    : "Not listed";
+}
 
-  return "No public claim record yet";
+function formatDate(value: string | undefined, locale: string): string {
+  if (!value) return "Not listed";
+  return new Intl.DateTimeFormat(locale, {
+    dateStyle: "medium",
+    timeZone: "UTC"
+  }).format(new Date(value));
+}
+
+function formatReviewState(value: string): string {
+  return value.replaceAll("_", " ");
 }
 
 function resolveUrl(pathOrUrl: string, baseUrl: string): string {
@@ -684,143 +352,14 @@ function getSourceDomain(href: string): string | undefined {
   }
 }
 
-function formatDate(value: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
-    dateStyle: "medium",
-    timeZone: "UTC"
-  }).format(new Date(value));
-}
-
-function buildUniversityMetaTitle(
-  slug: string,
-  displayName: string | undefined,
-  locale: string
+function buildCitationSummary(
+  displayName: string,
+  summary: PublicUniversitySummary,
+  publicJsonUrl: string,
+  reviewedClaimCount: number
 ): string {
-  if (slug === "universitat-innsbruck") {
-    return locale === "zh"
-      ? `UIBK Academic AI：${displayName} AI 政策与 Copilot 规则`
-      : "Academic AI at UIBK: Innsbruck AI Policy & Copilot Rules";
-  }
-  return `${displayName} AI Policy: ChatGPT, GenAI Rules & Sources`;
-}
-
-function buildInnsbruckMetaDescription(
-  displayName: string | undefined,
-  locale: string
-): string {
-  const name = displayName ?? "Universität Innsbruck";
-  return locale === "zh"
-    ? `${name}（UIBK）的 Academic AI 使用资格、受保护环境、Microsoft Copilot 数据保护限制，以及经过来源核验的 AI 政策证据。`
-    : `${name} (UIBK) Academic AI access, protected-environment details, Microsoft Copilot data-protection restrictions, and source-backed AI policy evidence.`;
-}
-
-function buildUniversityMetaDescription({
-  displayName,
-  locale,
-  summary
-}: {
-  displayName: string | undefined;
-  locale: string;
-  summary: PublicUniversitySummary;
-}): string {
-  const name = displayName ?? summary.entity.name;
-  const sourceLanguages = getSourceLanguages(summary.claims);
-  const checkedText = summary.lastCheckedAt
-    ? ` Last checked ${formatDate(summary.lastCheckedAt, locale)}.`
+  const update = summary.lastCheckedAt
+    ? ` Last checked ${formatDate(summary.lastCheckedAt, "en")}.`
     : "";
-  const languageText = sourceLanguages.length
-    ? ` Source language: ${sourceLanguages.join(", ")}.`
-    : "";
-
-  return `${name} AI policy and ChatGPT/GenAI rule record with ${summary.claims.length} source-backed claims from ${summary.officialSources.length} official sources, review state, evidence snippets, and public JSON.${checkedText}${languageText}`;
-}
-
-interface CitationReadySummaryInput {
-  candidateClaimCount: number;
-  displayName: string;
-  officialSourceCount: number;
-  publicJsonUrl: string;
-  reviewedClaimCount: number;
-  locale: string;
-  summary: PublicUniversitySummary;
-  totalClaimCount: number;
-}
-
-interface RecordSummaryParts {
-  // Short human-readable answer rendered at the top of the record page.
-  lede: string;
-  // Lede plus canonical-evidence and no-advice boilerplate, used for JSON-LD
-  // and citation contexts.
-  citationReady: string;
-}
-
-function buildRecordSummaryParts({
-  candidateClaimCount,
-  displayName,
-  officialSourceCount,
-  publicJsonUrl,
-  reviewedClaimCount,
-  locale,
-  summary,
-  totalClaimCount
-}: CitationReadySummaryInput): RecordSummaryParts {
-  const checkedText = summary.lastCheckedAt
-    ? `last checked on ${formatDate(summary.lastCheckedAt, locale)}`
-    : "with no last-checked date published yet";
-  const changedText = summary.lastChangedAt
-    ? ` and last changed on ${formatDate(summary.lastChangedAt, locale)}`
-    : "";
-  const reviewText = formatReviewStateForRecord(summary.reviewState);
-  const confidenceText =
-    summary.confidence !== undefined
-      ? ` The entity-level confidence is ${Math.round(summary.confidence * 100)}%.`
-      : "";
-  const candidateText = candidateClaimCount
-    ? ` ${candidateClaimCount} claim${candidateClaimCount === 1 ? "" : "s"} still require review and should not be treated as final policy conclusions.`
-    : "";
-  const opening = `As of this public record, University AI Policy Tracker lists ${displayName} as ${reviewText} AI policy record ${checkedText}${changedText}. The record contains ${totalClaimCount} source-backed claim${totalClaimCount === 1 ? "" : "s"}, including ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"}, from ${officialSourceCount} official source attribution${officialSourceCount === 1 ? "" : "s"}.`;
-  const canonicalText = ` Original-language evidence snippets and source URLs remain canonical, with public JSON available at ${publicJsonUrl}.`;
-  const disclaimerText =
-    " This tracker is not legal advice, not academic integrity advice, and not an official university statement unless the linked source is the university's own official page.";
-
-  return {
-    lede: `${opening}${confidenceText}${candidateText}`,
-    citationReady: `${opening}${canonicalText}${confidenceText}${candidateText}${disclaimerText}`
-  };
-}
-
-function getSourceLanguages(
-  claims: PublicUniversityClaim[]
-): string[] {
-  const languages = new Set<string>();
-
-  for (const claim of claims) {
-    for (const evidence of claim.evidence) {
-      if (evidence.sourceLanguage) languages.add(evidence.sourceLanguage);
-    }
-  }
-
-  return Array.from(languages).sort((left, right) => left.localeCompare(right));
-}
-
-function formatClaimCoverage(
-  reviewedClaimCount: number,
-  candidateClaimCount: number
-): string {
-  if (!candidateClaimCount) {
-    return `${reviewedClaimCount} reviewed`;
-  }
-
-  return `${reviewedClaimCount} reviewed, ${candidateClaimCount} needs review`;
-}
-
-function formatReviewState(value: string): string {
-  return value.replaceAll("_", " ");
-}
-
-function formatReviewStateForRecord(value: string): string {
-  const phrase = value.replaceAll("_", "-");
-  const article = /^[aeiou]/i.test(phrase) ? "an" : "a";
-
-  return `${article} ${phrase}`;
+  return `${displayName} AI policy record with ${reviewedClaimCount} reviewed claim${reviewedClaimCount === 1 ? "" : "s"} from ${summary.officialSources.length} official source${summary.officialSources.length === 1 ? "" : "s"}.${update} Public JSON: ${publicJsonUrl}.`;
 }
