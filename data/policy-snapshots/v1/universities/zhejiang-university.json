@@ -13,7 +13,7 @@
     "review_incomplete",
     "translation_needs_review"
   ],
-  "summary": "Student-first machine candidate for Zhejiang University institutional-tool and Journal of Zhejiang University-SCIENCE records. The journal policy is publication-specific and is not generalized to every Zhejiang course or thesis.",
+  "summary": "At Zhejiang University, follow the course or project rule before using the listed institutional service; for Journal of Zhejiang University-SCIENCE submissions, disclose substantive AI use and do not list AI as an author.",
   "audiences": [
     "students",
     "researchers"

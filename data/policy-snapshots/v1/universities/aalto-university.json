@@ -12,7 +12,7 @@
   "statusReasons": [
     "review_incomplete"
   ],
-  "summary": "Student-first machine candidate for Aalto University guidance and student/research guidance. Course or task instructions control AI use; separate data, disclosure, tool, and research rules apply only within their cited contexts.",
+  "summary": "Check your Aalto course or task instructions before using AI; the guidance also requires disclosure of AI-generated content, limits sensitive data in Aalto AI Assistant, and requires transparent research use.",
   "audiences": [
     "students",
     "researchers"

@@ -13,7 +13,7 @@
     "review_incomplete",
     "translation_needs_review"
   ],
-  "summary": "Student-first machine candidate from Tsinghua Guiding Principles and related official tool material. It keeps course, graduate-training, disclosure, data, and tool statements distinct; Chinese-source claims are summarized in English without adding a translation record.",
+  "summary": "At Tsinghua, follow the course AI norm, disclose AI use, keep sensitive or classified data out of AI operations, and do not copy AI output or use it to ghostwrite graduate theses; Xiaoda’s listing is not assessment permission.",
   "audiences": [
     "students",
     "researchers"

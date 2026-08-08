@@ -15,7 +15,7 @@
     "basis_claim_missing",
     "basis_fingerprint_mismatch"
   ],
-  "summary": "Student-first machine candidate for Seoul National University AI Guidelines and Library guidance. Korean-source claims are summarized in English without a translation record; teaching, research, library, and service scopes remain separate.",
+  "summary": "At Seoul National University, follow the syllabus AI rule, disclose and document research use, protect research data and subscribed resources, and treat ChatGPT Edu’s listing as separate from academic permission.",
   "audiences": [
     "students",
     "researchers"
@@ -108,7 +108,7 @@
       "basis": {
         "claimIds": [
           "claim-snu-002c",
-          "claim-snu-007b"
+          "claim-snu-007a"
         ],
         "sources": [
           {
@@ -183,7 +183,7 @@
       "claim-snu-002c",
       "claim-snu-002d",
       "claim-snu-005b",
-      "claim-snu-007b"
+      "claim-snu-007a"
     ],
     "sources": [
       {
@@ -205,7 +205,7 @@
     ]
   },
   "releaseId": "public-release-20260801-001",
-  "basisFingerprint": "2557da364b79d4794ca322dcb20076fc06848fe4ff17f95524611e63bfebc8de",
+  "basisFingerprint": "48a067b4d9b2cfb07388a9ce68913c5efd1478f21083b18dfa7e6ba8264404b0",
   "review": {
     "reviewMethod": "dual_agent",
     "reviewState": "needs_review",
