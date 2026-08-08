@@ -89,6 +89,23 @@ Each GitHub release should include:
 - no legal advice / no academic integrity advice boundary;
 - source rights caveat for official university materials.
 
+## GitHub Tag and Release
+
+After promotion and validation are complete:
+
+1. Use the exact promoted `releaseId` as the Git tag; do not substitute a
+   calendar date or software version. Resolve the tag target to the commit that
+   promoted `data/public-releases/current.json`.
+2. Create and push an annotated tag, for example:
+   `git tag -a "$RELEASE_ID" "$PROMOTION_COMMIT" -m "Public dataset release: $RELEASE_ID"`
+   followed by `git push origin "refs/tags/$RELEASE_ID"`.
+3. Create a published GitHub Release from that tag. Attach the generated
+   release manifest, `checksums.txt`, and only tracker-created public metadata
+   artifacts that have been verified against those checksums.
+4. Read back the tag object and resolve it to the promotion commit. Then verify
+   the GitHub Release tag, draft/prerelease state, notes, asset names, sizes,
+   and checksums before treating the release as complete.
+
 ## Zenodo Archive Plan
 
 Zenodo should be used after the public contract is stable enough for external
