@@ -2,11 +2,11 @@ import React from "react";
 import type {
   PolicyClaim,
   PolicySnapshot,
+  PolicySnapshotAudience,
   PolicySnapshotDimension,
   PolicySnapshotDimensionKey,
   PolicySnapshotDimensionStatus
 } from "@uapt/shared";
-import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import { getSourceDomain } from "@/lib/analytics-events";
 import { formatSnapshotHash } from "@/lib/snapshot-hash";
@@ -32,44 +32,90 @@ export type StudentSnapshotRole = (typeof STUDENT_SNAPSHOT_ROLES)[number];
 
 const roleCopy: Record<
   StudentSnapshotRole,
-  { label: string; audience: string; focus: string }
+  {
+    label: string;
+    audience: string;
+    audienceKeys: readonly PolicySnapshotAudience[];
+    focus: string;
+  }
 > = {
   student: {
     label: "Student",
     audience: "For students",
+    audienceKeys: ["students"],
     focus: "Coursework, exams, and disclosure"
   },
   instructor: {
     label: "Instructor",
     audience: "For instructors",
+    audienceKeys: ["faculty"],
     focus: "Teaching and assessment"
   },
   researcher: {
     label: "Researcher",
     audience: "For researchers",
+    audienceKeys: ["researchers"],
     focus: "Research and publication"
   },
   staff: {
     label: "Staff",
     audience: "For staff",
+    audienceKeys: ["staff", "administrators"],
     focus: "Privacy and university-provided tools"
   }
 };
 
+const roleDimensionPriority: Record<
+  StudentSnapshotRole,
+  readonly PolicySnapshotDimensionKey[]
+> = {
+  student: [
+    "coursework",
+    "exams",
+    "disclosure",
+    "privacy_data",
+    "approved_tools",
+    "research_publication"
+  ],
+  instructor: [
+    "exams",
+    "coursework",
+    "disclosure",
+    "approved_tools",
+    "privacy_data",
+    "research_publication"
+  ],
+  researcher: [
+    "research_publication",
+    "privacy_data",
+    "disclosure",
+    "approved_tools",
+    "coursework",
+    "exams"
+  ],
+  staff: [
+    "privacy_data",
+    "approved_tools",
+    "disclosure",
+    "research_publication",
+    "coursework",
+    "exams"
+  ]
+};
+
 const dimensionCopy: Record<
   PolicySnapshotDimensionKey,
-  { title: string; icon: string; extraScope?: string }
+  { title: string; extraScope?: string }
 > = {
-  coursework: { title: "Coursework & assignments", icon: "A" },
-  exams: { title: "Exams & assessment", icon: "E" },
-  disclosure: { title: "Disclosure & citation", icon: "C" },
-  privacy_data: { title: "Privacy & sensitive data", icon: "P" },
+  coursework: { title: "Coursework & assignments" },
+  exams: { title: "Exams & assessment" },
+  disclosure: { title: "Disclosure & citation" },
+  privacy_data: { title: "Privacy & sensitive data" },
   approved_tools: {
     title: "University-provided AI tools",
-    icon: "T",
     extraScope: "Provision ≠ coursework permission"
   },
-  research_publication: { title: "Research & publication", icon: "R" }
+  research_publication: { title: "Research & publication" }
 };
 
 const statusCopy: Record<PolicySnapshotDimensionStatus, string> = {
@@ -128,12 +174,13 @@ export function getSnapshotDimensions(
 
 export function collectSnapshotActions(
   snapshot: PolicySnapshot,
-  action: "do" | "dont"
+  action: "do" | "dont",
+  role: StudentSnapshotRole = "student"
 ): string[] {
   const seen = new Set<string>();
   const values: string[] = [];
 
-  for (const dimension of getSnapshotDimensions(snapshot)) {
+  for (const dimension of getRolePrioritizedDimensions(snapshot, role)) {
     for (const value of dimension.actions[action]) {
       if (seen.has(value)) continue;
       seen.add(value);
@@ -143,6 +190,32 @@ export function collectSnapshotActions(
   }
 
   return values;
+}
+
+export function getRolePrioritizedDimensions(
+  snapshot: PolicySnapshot,
+  role: StudentSnapshotRole
+): PolicySnapshotDimension[] {
+  const priority = new Map(
+    roleDimensionPriority[role].map((key, index) => [key, index])
+  );
+
+  return getSnapshotDimensions(snapshot)
+    .slice()
+    .sort(
+      (left, right) =>
+        (priority.get(left.key) ?? Number.MAX_SAFE_INTEGER) -
+        (priority.get(right.key) ?? Number.MAX_SAFE_INTEGER)
+    );
+}
+
+export function isSnapshotRoleSupported(
+  snapshot: PolicySnapshot,
+  role: StudentSnapshotRole
+): boolean {
+  return roleCopy[role].audienceKeys.some((audience) =>
+    snapshot.audiences.includes(audience)
+  );
 }
 
 export function isStrongStudentSnapshot(
@@ -164,9 +237,16 @@ export function StudentPolicySnapshot({
   snapshot
 }: StudentPolicySnapshotProps) {
   const dimensions = getSnapshotDimensions(snapshot);
-  const doItems = collectSnapshotActions(snapshot, "do");
-  const dontItems = collectSnapshotActions(snapshot, "dont");
+  const roleSupported = isSnapshotRoleSupported(snapshot, role);
+  const doItems = roleSupported ? collectSnapshotActions(snapshot, "do", role) : [];
+  const dontItems = roleSupported
+    ? collectSnapshotActions(snapshot, "dont", role)
+    : [];
   const currentRole = roleCopy[role];
+  const prioritizedKeys = getRolePrioritizedDimensions(snapshot, role)
+    .slice(0, 3)
+    .map((dimension) => dimension.key)
+    .join(",");
 
   return (
     <section
@@ -174,12 +254,14 @@ export function StudentPolicySnapshot({
       className="student-policy"
       data-snapshot-status="strong"
       data-snapshot-role={role}
+      data-snapshot-role-supported={roleSupported ? "true" : "false"}
+      data-snapshot-role-priority={prioritizedKeys}
     >
       <div className="student-policy__overall">
         <StatusIcon status="strong" />
         <div>
           <h2 id="student-policy-heading">Reviewed policy snapshot</h2>
-          <p>Source-backed guidance is available for this university.</p>
+          <p>{snapshot.summary}</p>
         </div>
       </div>
 
@@ -199,6 +281,13 @@ export function StudentPolicySnapshot({
           <p className="student-policy__eyebrow">Audience</p>
           <p className="student-policy__role-focus">
             {currentRole.audience} · {currentRole.focus}
+          </p>
+          <p
+            className={`student-policy__role-coverage${roleSupported ? "" : " student-policy__role-coverage--unsupported"}`}
+          >
+            {roleSupported
+              ? "Reviewed material is available for this audience."
+              : `No reviewed ${currentRole.label.toLowerCase()}-specific guidance; general conclusions only.`}
           </p>
         </div>
         <nav aria-label="Snapshot audience" className="student-policy__roles">
@@ -284,9 +373,7 @@ function SnapshotDimensionCard({
       data-snapshot-status={dimension.status}
     >
       <div className="student-snapshot-card__summary">
-        <div aria-hidden="true" className="student-snapshot-card__icon">
-          {copy.icon}
-        </div>
+        <DimensionIcon dimension={dimension.key} />
         <div className="student-snapshot-card__content">
           <h3>{copy.title}</h3>
           <p className="student-snapshot-card__status">
@@ -390,6 +477,56 @@ function SnapshotDimensionCard({
         </div>
       </details>
     </article>
+  );
+}
+
+function DimensionIcon({
+  dimension
+}: {
+  dimension: PolicySnapshotDimensionKey;
+}) {
+  return (
+    <span aria-hidden="true" className="student-snapshot-card__icon">
+      <svg
+        focusable="false"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {dimension === "coursework" ? (
+          <>
+            <path d="M5 3.5h7.5L17 8v12.5H5z" key="document" />
+            <path d="M12.5 3.5V8H17M8 11h5M8 14h3" key="document-lines" />
+            <path d="m14.5 16.5 4.1-4.1 2 2-4.1 4.1-2.7.7z" key="document-pencil" />
+          </>
+        ) : dimension === "exams" ? (
+          <>
+            <rect height="15" key="clipboard" rx="1.5" width="14" x="5" y="5.5" />
+            <path d="M9 5.5V4h6v1.5M9 12l2 2 4-4" key="clipboard-check" />
+          </>
+        ) : dimension === "disclosure" ? (
+          <>
+            <path d="M5 8h5v4H7v4h3M14 8h5v4h-3v4h3" key="quotes" />
+          </>
+        ) : dimension === "privacy_data" ? (
+          <>
+            <path d="M12 3.5 19 6v5c0 4.4-2.7 7.7-7 10-4.3-2.3-7-5.6-7-10V6z" key="shield" />
+            <rect height="5" key="lock" rx="1" width="7" x="8.5" y="10" />
+            <path d="M10 10V8.8a2 2 0 0 1 4 0V10" key="lock-shackle" />
+          </>
+        ) : dimension === "approved_tools" ? (
+          <>
+            <rect height="9" key="chip" rx="2" width="9" x="4" y="9" />
+            <path d="M7 6v3M10 6v3M13 6v3M7 18v2M10 18v2M13 18v2M4 12H2M4 15H2M17 12h2M17 15h2" key="chip-pins" />
+            <path d="m18 3 .7 2.3L21 6l-2.3.7L18 9l-.7-2.3L15 6l2.3-.7z" key="spark" />
+          </>
+        ) : (
+          <>
+            <path d="M4 5.5c2.6-.8 5.3-.4 8 1.2v12c-2.7-1.6-5.4-2-8-1.2zM20 5.5c-2.6-.8-5.3-.4-8 1.2v12c2.7-1.6 5.4-2 8-1.2z" key="book" />
+            <path d="M12 6.7v12" key="book-spine" />
+          </>
+        )}
+      </svg>
+    </span>
   );
 }
 

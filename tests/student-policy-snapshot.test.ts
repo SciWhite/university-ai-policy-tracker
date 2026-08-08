@@ -10,7 +10,9 @@ import {
   STUDENT_SNAPSHOT_DIMENSION_ORDER,
   collectSnapshotActions,
   getSnapshotDimensions,
+  getRolePrioritizedDimensions,
   isStrongStudentSnapshot,
+  isSnapshotRoleSupported,
   normalizeStudentSnapshotRole
 } from "../apps/web/components/student-policy-snapshot";
 import { getStagedPublicSummaryBySlug } from "../apps/web/lib/staged-public-data";
@@ -46,6 +48,27 @@ test("student snapshot quick guidance is deduplicated and capped at three", asyn
     "Write thesis and APM text in your own words."
   ]);
   assert.equal(collectSnapshotActions(snapshot, "dont").length, 3);
+});
+
+test("role lenses prioritize relevant reviewed dimensions and fail closed", async () => {
+  const snapshot = await readFixture();
+
+  assert.deepEqual(
+    getRolePrioritizedDimensions(snapshot, "researcher").map(
+      (dimension) => dimension.key
+    ),
+    [
+      "research_publication",
+      "privacy_data",
+      "disclosure",
+      "approved_tools",
+      "coursework",
+      "exams"
+    ]
+  );
+  assert.equal(collectSnapshotActions(snapshot, "do", "researcher")[0], "Write thesis and APM text in your own words.");
+  assert.equal(isSnapshotRoleSupported(snapshot, "researcher"), true);
+  assert.equal(isSnapshotRoleSupported(snapshot, "staff"), false);
 });
 
 test("role query values fail closed to the student view", () => {
@@ -113,6 +136,11 @@ test("strong snapshot markup keeps the role lens and six-card order in SSR", asy
     previous = next;
   }
   assert.match(html, /data-snapshot-role="researcher"/);
+  assert.match(html, /data-snapshot-role-supported="true"/);
+  assert.match(html, /data-snapshot-role-priority="research_publication,privacy_data,disclosure"/);
+  assert.match(html, new RegExp(snapshot.summary.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.match(html, /<svg[^>]+viewBox="0 0 24 24"/);
+  assert.doesNotMatch(html, /student-snapshot-card__icon[^>]*>A</);
   assert.match(html, /href="\?for=instructor"/);
   assert.match(html, /data-analytics-event="snapshot_card_expand"/);
   assert.match(html, /data-analytics-event="snapshot_scope"/);

@@ -2521,6 +2521,17 @@ h3 {
   margin: 2px 0 0;
 }
 
+.student-policy__role-coverage {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin: 5px 0 0;
+  max-width: 58ch;
+}
+
+.student-policy__role-coverage--unsupported {
+  color: var(--color-warning);
+}
+
 .student-policy__roles {
   display: flex;
   flex-wrap: wrap;
@@ -2585,6 +2596,16 @@ h3 {
   font-weight: 800;
   height: 28px;
   width: 28px;
+}
+
+.student-snapshot-card__icon svg {
+  fill: none;
+  height: 18px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+  width: 18px;
 }
 
 .student-snapshot-card__content,
