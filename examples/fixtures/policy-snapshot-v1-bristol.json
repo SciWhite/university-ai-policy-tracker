@@ -16,26 +16,23 @@
   "academicContexts": ["assignment", "exam", "thesis", "research"],
   "dimensions": [
     {
-      "key": "disclosure",
-      "status": "not_mentioned",
-      "summary": "No source-backed disclosure instruction is included in this snapshot.",
-      "actions": {"do": [], "dont": []},
-      "basis": {"claimIds": [], "sources": []}
-    },
-    {
       "key": "coursework",
       "status": "conditionally_allowed",
-      "summary": "AI use varies by assessment category and the instructions set the permitted use.",
+      "summary": "AI use varies by assessment category; use beyond limited language help may be cheating unless instructions allow more.",
       "actions": {
         "do": ["Check the assessment instructions before using AI."],
-        "dont": ["Do not assume a general page overrides the assessment category."]
+        "dont": ["Do not use AI beyond the permitted limits without explicit instructions."]
       },
       "basis": {
-        "claimIds": ["claim-bristol-001", "claim-bristol-003"],
+        "claimIds": ["claim-bristol-001", "claim-bristol-002", "claim-bristol-003"],
         "sources": [
           {
             "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
             "sourceSnapshotHash": "37b0e7d3dd50bec5d10915bb613220c112704886141cd9d248a82776642385ed"
+          },
+          {
+            "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+            "sourceSnapshotHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a"
           },
           {
             "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
@@ -53,14 +50,25 @@
         "dont": ["Do not use AI when the assessment is Category 1 prohibited."]
       },
       "basis": {
-        "claimIds": ["claim-bristol-003"],
+        "claimIds": ["claim-bristol-002", "claim-bristol-003"],
         "sources": [
+          {
+            "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+            "sourceSnapshotHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a"
+          },
           {
             "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
             "sourceSnapshotHash": "076c72c33eff9a4492777ac3731ec4ba5255f18c0449757f4d3f9f48e9084017"
           }
         ]
       }
+    },
+    {
+      "key": "disclosure",
+      "status": "not_mentioned",
+      "summary": "No source-backed disclosure instruction is included in this snapshot.",
+      "actions": {"do": [], "dont": []},
+      "basis": {"claimIds": [], "sources": []}
     },
     {
       "key": "privacy_data",
@@ -70,33 +78,29 @@
       "basis": {"claimIds": [], "sources": []}
     },
     {
-      "key": "academic_integrity",
+      "key": "approved_tools",
+      "status": "not_mentioned",
+      "summary": "No source-backed approved-tool list is included in this snapshot.",
+      "actions": {"do": [], "dont": []},
+      "basis": {"claimIds": [], "sources": []}
+    },
+    {
+      "key": "research_publication",
       "status": "restricted",
-      "summary": "Bristol treats AI use beyond limited language help as cheating unless assessment instructions allow more.",
+      "summary": "Bristol does not permit generative AI to write text used in a research thesis or APM report.",
       "actions": {
-        "do": ["Follow the stated limits and keep your own authorship clear."],
-        "dont": ["Do not use AI beyond the permitted limits without explicit instructions."]
+        "do": ["Write thesis and APM text in your own words."],
+        "dont": ["Do not use generative AI to write thesis or APM text."]
       },
       "basis": {
-        "claimIds": ["claim-bristol-002", "claim-bristol-004"],
+        "claimIds": ["claim-bristol-004"],
         "sources": [
-          {
-            "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
-            "sourceSnapshotHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a"
-          },
           {
             "sourceUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
             "sourceSnapshotHash": "e7650f617311bc07db8be26780653990911db1d83b4a12b497d5b00b099443b0"
           }
         ]
       }
-    },
-    {
-      "key": "approved_tools",
-      "status": "not_mentioned",
-      "summary": "No source-backed approved-tool list is included in this snapshot.",
-      "actions": {"do": [], "dont": []},
-      "basis": {"claimIds": [], "sources": []}
     }
   ],
   "basis": {

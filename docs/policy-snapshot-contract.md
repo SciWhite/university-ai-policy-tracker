@@ -31,8 +31,10 @@ effective status. Existing claim/evidence fields and meanings are unchanged.
 - English (`canonicalLocale: "en"`) is canonical. Localized prose is optional,
   display-only, and each locale must include `review.status`, reviewer, date,
   `sourceLocale: "en"`, and `displayOnly: true`.
-- Every file has six dimensions: `disclosure`, `coursework`, `exams`,
-  `privacy_data`, `academic_integrity`, and `approved_tools`.
+- Every file has six dimensions: `coursework`, `exams`, `disclosure`,
+  `privacy_data`, `approved_tools`, and `research_publication`. Academic-
+  integrity facts remain represented through the coursework, exams, or
+  disclosure dimensions rather than a separate dimension.
 - A non-`not_mentioned` dimension must carry claim IDs and source URL/hash
   pairs. `not_mentioned` carries no actions and no basis.
 - `do`/`dont` actions are short reviewed display guidance. They are not legal,

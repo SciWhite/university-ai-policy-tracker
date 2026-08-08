@@ -39,6 +39,17 @@ test("strong fixture matches current public claims, source hashes, and release",
   );
   assert.equal(loaded.validation.effectiveStatus, "strong");
   assert.equal(loaded.validation.expectedBasisFingerprint, fixture.basisFingerprint);
+  assert.deepEqual(
+    fixture.dimensions.map((dimension) => dimension.key),
+    [
+      "coursework",
+      "exams",
+      "disclosure",
+      "privacy_data",
+      "approved_tools",
+      "research_publication"
+    ]
+  );
 });
 
 test("a release change downgrades a strong snapshot to stale", async () => {

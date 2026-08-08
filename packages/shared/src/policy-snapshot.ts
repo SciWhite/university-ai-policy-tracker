@@ -31,12 +31,12 @@ export const policySnapshotScopeSchema = z.enum([
 ]);
 
 export const policySnapshotDimensionKeySchema = z.enum([
-  "disclosure",
   "coursework",
   "exams",
+  "disclosure",
   "privacy_data",
-  "academic_integrity",
-  "approved_tools"
+  "approved_tools",
+  "research_publication"
 ]);
 
 export const policySnapshotDimensionStatusSchema = z.enum([
