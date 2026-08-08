@@ -39,8 +39,15 @@ effective status. Existing claim/evidence fields and meanings are unchanged.
   pairs. `not_mentioned` carries no actions and no basis.
 - `do`/`dont` actions are short reviewed display guidance. They are not legal,
   academic-integrity, or university-authoritative advice.
+- Every snapshot review records `reviewMethod: "dual_agent"`; an approving
+  secondary review is required before a snapshot can become `strong`.
 - `strong` requires two agreeing approving agent reviews, a non-empty basis,
   and reviewed localized prose when translations are present.
+
+The independent UAPT 6 review is retained at
+`data/policy-snapshots/v1/reviews/uapt-6-independent-review.json`. It has one
+machine-readable decision and evidence-pointer set for each indexed snapshot;
+its notes are issue summaries only and do not replace claim or source records.
 
 ## Fail-closed status
 

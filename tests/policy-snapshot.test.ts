@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import path from "node:path";
 import {
+  policySnapshotIndependentReviewSchema,
   policySnapshotIndexSchema,
   policySnapshotSchema
 } from "@uapt/shared";
@@ -58,6 +59,7 @@ test("strong fixture matches current public claims, source hashes, and release",
   const fixture = policySnapshotSchema.parse(
     JSON.parse(await readFile(fixturePath, "utf8"))
   );
+  assert.equal(fixture.review.reviewMethod, "dual_agent");
   const [summary, release] = await Promise.all([
     getStagedPublicSummaryBySlug(fixture.universitySlug),
     getCurrentPublicReleaseManifest()
@@ -163,13 +165,21 @@ test("strong schema rejects an incomplete dual-agent review", async () => {
   );
 });
 
-test("all cohort candidates are schema-valid and evidence-bound", async () => {
+test("all indexed snapshots are schema-valid and evidence-bound", async () => {
   const root = path.join(process.cwd(), "data", "policy-snapshots", "v1");
   const index = policySnapshotIndexSchema.parse(
     JSON.parse(await readFile(path.join(root, "index.json"), "utf8"))
   );
   const release = await getCurrentPublicReleaseManifest();
   assert(release);
+  const review = policySnapshotIndependentReviewSchema.parse(
+    JSON.parse(
+      await readFile(
+        path.join(root, "reviews", "uapt-6-independent-review.json"),
+        "utf8"
+      )
+    )
+  );
   assert.deepEqual(
     index.entries.map((entry) => entry.universitySlug),
     cohortSlugs
@@ -190,18 +200,30 @@ test("all cohort candidates are schema-valid and evidence-bound", async () => {
       summary,
       release.releaseId
     );
-
-    assert.equal(snapshot.overallStatus, "needs_review");
-    assert.equal(snapshot.review.reviewState, "needs_review");
-    assert.equal(snapshot.review.secondary.agentId, "pending-independent-review");
-    assert.equal(snapshot.review.secondary.decision, "needs_review");
-    assert.deepEqual(snapshot.translations, []);
-    assert.equal(validation.effectiveStatus, "needs_review");
-    assert.equal(validation.expectedBasisFingerprint, snapshot.basisFingerprint);
-    assert(validation.issues.length >= 1);
-    assert(
-      validation.issues.every((issue) => issue.code === "review_incomplete")
+    const decision = review.decisions.find(
+      (item) => item.universitySlug === entry.universitySlug
     );
+    assert(decision);
+    const expectedStatus = decision.decision === "pass" ? "strong" : "needs_review";
+
+    assert.equal(snapshot.overallStatus, expectedStatus);
+    assert.equal(snapshot.review.reviewMethod, "dual_agent");
+    assert.equal(
+      snapshot.review.secondary.agentId,
+      "uapt-6-secondary-reviewer"
+    );
+    assert.equal(
+      snapshot.review.secondary.decision,
+      expectedStatus === "strong" ? "approve" : "needs_review"
+    );
+    assert.deepEqual(snapshot.translations, []);
+    assert.equal(validation.effectiveStatus, expectedStatus);
+    if (expectedStatus === "strong") {
+      assert.equal(validation.expectedBasisFingerprint, snapshot.basisFingerprint);
+      assert.deepEqual(validation.issues, []);
+    } else {
+      assert(validation.issues.length >= 1);
+    }
     assert.equal(entry.basisFingerprint, snapshot.basisFingerprint);
     assert.equal(entry.releaseId, release.releaseId);
   }

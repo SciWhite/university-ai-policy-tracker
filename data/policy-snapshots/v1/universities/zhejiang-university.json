@@ -10,7 +10,8 @@
   "generatedAt": "2026-08-01T16:46:58.055Z",
   "overallStatus": "needs_review",
   "statusReasons": [
-    "review_incomplete"
+    "review_incomplete",
+    "translation_needs_review"
   ],
   "summary": "Student-first machine candidate for Zhejiang University institutional-tool and Journal of Zhejiang University-SCIENCE records. The journal policy is publication-specific and is not generalized to every Zhejiang course or thesis.",
   "audiences": [
@@ -155,6 +156,7 @@
   "releaseId": "public-release-20260801-001",
   "basisFingerprint": "259beaaf66161556420eb31dc60f009073d205f3580158b15dc1bb74a97e1620",
   "review": {
+    "reviewMethod": "dual_agent",
     "reviewState": "needs_review",
     "primary": {
       "agentId": "uapt-5-primary-author",
@@ -164,14 +166,14 @@
       "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
     },
     "secondary": {
-      "agentId": "pending-independent-review",
-      "model": "pending independent reviewer",
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
       "decision": "needs_review",
-      "reviewedAt": "2026-08-01T16:46:58.055Z",
-      "notes": "Pending independent secondary review; no dual-agent approval is asserted."
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Independent review returned candidate metadata/copy issues; snapshot remains fail-closed."
     },
     "agreement": "disagree",
-    "reviewedAt": "2026-08-01T16:46:58.055Z"
+    "reviewedAt": "2026-08-08T10:57:26.300Z"
   },
   "translations": [],
   "limitations": [

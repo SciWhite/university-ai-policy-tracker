@@ -8,10 +8,8 @@
   "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/de-la-salle-university.json",
   "canonicalLocale": "en",
   "generatedAt": "2026-08-08T10:00:00.000Z",
-  "overallStatus": "needs_review",
-  "statusReasons": [
-    "review_incomplete"
-  ],
+  "overallStatus": "strong",
+  "statusReasons": [],
   "summary": "De La Salle University's generative-AI policy is course- and disclosure-focused and explicitly limited to generative AI rather than AI generally.",
   "audiences": [
     "students",
@@ -166,7 +164,8 @@
   "releaseId": "public-release-20260801-001",
   "basisFingerprint": "44403990d57584bd0671d53148f4daf1105d30da53692519bed22ec79018f192",
   "review": {
-    "reviewState": "needs_review",
+    "reviewMethod": "dual_agent",
+    "reviewState": "dual_agent_reviewed",
     "primary": {
       "agentId": "uapt-4-primary-author",
       "model": "gpt-5",
@@ -175,14 +174,14 @@
       "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
     },
     "secondary": {
-      "agentId": "pending-independent-review",
-      "model": "pending-independent-review",
-      "decision": "needs_review",
-      "reviewedAt": "2026-08-08T10:00:00.000Z",
-      "notes": "Pending independent review; no second review has been completed."
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Independent secondary review passed; evidence, scope, actions, and release binding checked."
     },
-    "agreement": "disagree",
-    "reviewedAt": "2026-08-08T10:00:00.000Z"
+    "agreement": "agree",
+    "reviewedAt": "2026-08-08T10:57:26.300Z"
   },
   "translations": [],
   "limitations": [

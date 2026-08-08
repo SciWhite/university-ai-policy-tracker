@@ -132,6 +132,7 @@
   "releaseId": "public-release-20260801-001",
   "basisFingerprint": "8ea138fc912e815a0e58184e0a2c5b49dd08ff96dd43a6eb9148c5aa1c175395",
   "review": {
+    "reviewMethod": "dual_agent",
     "reviewState": "dual_agent_reviewed",
     "primary": {
       "agentId": "uapt-wave1-primary",

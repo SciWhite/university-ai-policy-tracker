@@ -194,6 +194,7 @@
   "releaseId": "public-release-20260801-001",
   "basisFingerprint": "f46c38e5cedd1e99035f22892b71567dab950e7c4bc6b4b31a36ad2b82e73a17",
   "review": {
+    "reviewMethod": "dual_agent",
     "reviewState": "needs_review",
     "primary": {
       "agentId": "uapt-5-primary-author",
@@ -203,14 +204,14 @@
       "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
     },
     "secondary": {
-      "agentId": "pending-independent-review",
-      "model": "pending independent reviewer",
+      "agentId": "uapt-6-secondary-reviewer",
+      "model": "gpt-5",
       "decision": "needs_review",
-      "reviewedAt": "2026-08-01T16:46:58.055Z",
-      "notes": "Pending independent secondary review; no dual-agent approval is asserted."
+      "reviewedAt": "2026-08-08T10:57:26.300Z",
+      "notes": "Independent review returned candidate metadata/copy issues; snapshot remains fail-closed."
     },
     "agreement": "disagree",
-    "reviewedAt": "2026-08-01T16:46:58.055Z"
+    "reviewedAt": "2026-08-08T10:57:26.300Z"
   },
   "translations": [],
   "limitations": [

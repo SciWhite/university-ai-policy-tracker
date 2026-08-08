@@ -53,6 +53,7 @@
     "validate:analysis-contract": "tsx scripts/validate-analysis-contract.ts",
     "validate:policy-snapshot": "tsx scripts/validate-policy-snapshot.ts",
     "test:policy-snapshot": "tsx --test tests/policy-snapshot.test.ts",
+    "test:policy-snapshot-review": "tsx --test tests/policy-snapshot-independent-review.test.ts",
     "test:visual-assets": "tsx --test tests/visual-assets.test.ts",
     "smoke:policy-snapshot": "tsx scripts/smoke-policy-snapshot.ts",
     "validate:i18n": "NEXT_PUBLIC_MULTILINGUAL_PHASE_TWO=1 tsx scripts/validate-i18n.ts",

@@ -164,6 +164,7 @@ export const policySnapshotAgentReviewSchema = z
 
 export const policySnapshotReviewSchema = z
   .object({
+    reviewMethod: z.literal("dual_agent"),
     reviewState: z.enum(["dual_agent_reviewed", "needs_review"]),
     primary: policySnapshotAgentReviewSchema,
     secondary: policySnapshotAgentReviewSchema,
@@ -171,6 +172,88 @@ export const policySnapshotReviewSchema = z
     reviewedAt: z.string().datetime()
   })
   .strict();
+
+export const POLICY_SNAPSHOT_INDEPENDENT_REVIEW_SCHEMA_VERSION =
+  "uapt-policy-snapshot-independent-review-v1";
+
+export const policySnapshotIndependentReviewDecisionSchema = z
+  .object({
+    universitySlug: slugSchema,
+    cohort: z.enum(["uapt-4-traffic", "uapt-5-risk"]),
+    decision: z.enum(["pass", "return_to_author", "needs_review"]),
+    issueCodes: z
+      .array(z.string().regex(/^[A-Z0-9_]+$/))
+      .max(10),
+    notes: z.array(z.string().min(1).max(180)).max(10),
+    evidence: z
+      .object({
+        snapshotFile: z
+          .string()
+          .regex(/^data\/policy-snapshots\/v1\/universities\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$/),
+        basisFingerprint: z.string().regex(/^[a-f0-9]{64}$/),
+        claimIds: z.array(z.string().min(1)).max(100),
+        sourceRefs: z.array(policySnapshotSourceRefSchema).max(100)
+      })
+      .strict()
+  })
+  .strict();
+
+export const policySnapshotIndependentReviewSchema = z
+  .object({
+    schemaVersion: z.literal(
+      POLICY_SNAPSHOT_INDEPENDENT_REVIEW_SCHEMA_VERSION
+    ),
+    reviewId: z.string().regex(/^uapt-6-independent-review-[a-z0-9-]+$/),
+    reviewMethod: z.literal("dual_agent"),
+    reviewer: z.string().min(1).max(120),
+    model: z.string().min(1).max(160),
+    reviewedAt: z.string().datetime(),
+    indexFile: z.literal("data/policy-snapshots/v1/index.json"),
+    releaseId: releaseIdSchema,
+    expectedEntryCount: z.literal(24),
+    decisions: z
+      .array(policySnapshotIndependentReviewDecisionSchema)
+      .length(24),
+    decisionCounts: z
+      .object({
+        pass: z.number().int().nonnegative(),
+        return_to_author: z.number().int().nonnegative(),
+        needs_review: z.number().int().nonnegative()
+      })
+      .strict(),
+    publicationStatusCounts: z
+      .object({
+        strong: z.number().int().nonnegative(),
+        needs_review: z.number().int().nonnegative()
+      })
+      .strict()
+  })
+  .strict()
+  .superRefine((review, context) => {
+    const slugs = review.decisions.map((decision) => decision.universitySlug);
+    if (new Set(slugs).size !== slugs.length) {
+      context.addIssue({
+        code: "custom",
+        message: "independent review decision slugs must be unique",
+        path: ["decisions"]
+      });
+    }
+
+    const counts = review.decisions.reduce(
+      (result, decision) => {
+        result[decision.decision] += 1;
+        return result;
+      },
+      { pass: 0, return_to_author: 0, needs_review: 0 }
+    );
+    if (JSON.stringify(counts) !== JSON.stringify(review.decisionCounts)) {
+      context.addIssue({
+        code: "custom",
+        message: "independent review decisionCounts do not match decisions",
+        path: ["decisionCounts"]
+      });
+    }
+  });
 
 export const policySnapshotTranslationReviewSchema = z
   .object({
@@ -481,6 +564,12 @@ export type PolicySnapshotAgentReview = z.infer<
   typeof policySnapshotAgentReviewSchema
 >;
 export type PolicySnapshotReview = z.infer<typeof policySnapshotReviewSchema>;
+export type PolicySnapshotIndependentReviewDecision = z.infer<
+  typeof policySnapshotIndependentReviewDecisionSchema
+>;
+export type PolicySnapshotIndependentReview = z.infer<
+  typeof policySnapshotIndependentReviewSchema
+>;
 export type PolicySnapshotTranslationReview = z.infer<
   typeof policySnapshotTranslationReviewSchema
 >;
