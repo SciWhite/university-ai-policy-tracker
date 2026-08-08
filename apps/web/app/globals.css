@@ -833,6 +833,106 @@ th {
   margin: 8px 0 0;
 }
 
+.intent-flow {
+  background: var(--color-canvas-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  margin-top: 28px;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+}
+
+.intent-flow__heading,
+.intent-flow__steps {
+  position: relative;
+  z-index: 1;
+}
+
+.intent-flow__heading h2 {
+  font-size: var(--text-xl);
+  margin: 0;
+}
+
+.intent-flow__steps {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.intent-flow__item {
+  min-width: 0;
+  position: relative;
+}
+
+.intent-flow__step {
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  min-height: 112px;
+  padding: 12px 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.intent-flow__step:hover,
+.intent-flow__step:focus-visible {
+  border-color: var(--color-accent-emphasis);
+  color: var(--color-accent-fg);
+}
+
+.intent-flow__step > span:last-child {
+  font-size: var(--text-md);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.intent-flow__icon {
+  align-items: center;
+  color: var(--color-accent-fg);
+  display: inline-flex;
+  height: 24px;
+  justify-content: center;
+  width: 24px;
+}
+
+.intent-flow__connector {
+  color: var(--color-accent-fg);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.intent-flow__texture {
+  bottom: -42px;
+  height: 260px;
+  margin: 0;
+  opacity: 0.22;
+  pointer-events: none;
+  position: absolute;
+  right: 6px;
+  width: 260px;
+}
+
+.intent-flow__texture img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
 .entry-group h2,
 .entry-group h3,
 .endpoint-group h3 {

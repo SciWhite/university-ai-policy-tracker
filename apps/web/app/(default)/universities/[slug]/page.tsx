@@ -18,6 +18,7 @@ import { getLocalizedInstitutionName } from "@/lib/institution-localization";
 import { getLoadedPolicySnapshotBySlug } from "@/lib/policy-snapshots";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { formatSnapshotHash } from "@/lib/snapshot-hash";
+import { getSiteOgImageUrl } from "@/components/site-opengraph";
 
 interface UniversityPageProps {
   params: Promise<{
@@ -66,6 +67,7 @@ export async function generateMetadata({ params }: UniversityPageProps) {
     openGraph: {
       title,
       description,
+      images: [getSiteOgImageUrl(locale)],
       url: canonical,
       type: "article"
     }
