@@ -19,14 +19,44 @@ import nlMessages from "@/messages/nl.json";
 import plMessages from "@/messages/pl.json";
 import zhMessages from "@/messages/zh.json";
 
-const primaryTabs = [
+const primaryNavigation = [
   { labelKey: "search", href: "/search" },
   { labelKey: "universities", href: "/universities" },
-  { labelKey: "analysis", href: "/analysis" },
-  { labelKey: "changes", href: "/changes" },
-  { labelKey: "reports", href: "/reports" },
-  { labelKey: "datasets", href: "/datasets" },
-  { labelKey: "methodology", href: "/methodology" },
+  {
+    labelKey: "explore",
+    links: [
+      { labelKey: "aiTools", href: "/tools" },
+      { labelKey: "sources", href: "/sources" },
+      { labelKey: "themeAiDisclosure", href: "/themes/ai-disclosure" },
+      { labelKey: "regionUnitedStates", href: "/regions/united-states" },
+      { labelKey: "regionUnitedKingdom", href: "/regions/united-kingdom" },
+      { labelKey: "rankingQs2026", href: "/rankings/qs-2026" }
+    ]
+  },
+  {
+    labelKey: "updates",
+    links: [
+      { labelKey: "changes", href: "/changes" },
+      { labelKey: "reports", href: "/reports" },
+      { labelKey: "reportsRss", href: "/feeds/reports.xml" },
+      { labelKey: "changesRss", href: "/feeds/recent-changes.xml" }
+    ]
+  },
+  {
+    labelKey: "researchData",
+    links: [
+      { labelKey: "analysis", href: "/analysis" },
+      { labelKey: "datasets", href: "/datasets" },
+      { labelKey: "apiDocs", href: "/api-reference" },
+      { labelKey: "publicApi", href: "/api/public/v1/index.json" },
+      { labelKey: "methodology", href: "/methodology" },
+      { labelKey: "citation", href: "/citation" },
+      { labelKey: "coverage", href: "/coverage" },
+      { labelKey: "sourceHealth", href: "/source-health" },
+      { labelKey: "reviewWorkflow", href: "/review" },
+      { labelKey: "reviewQueue", href: "/review/queue" }
+    ]
+  },
   { labelKey: "contribute", href: "/contribute" }
 ] as const;
 
@@ -145,7 +175,32 @@ export function SiteShell({ children }: SiteShellProps) {
             <ThemeToggle />
           </div>
         </div>
-        <SiteNavigation items={primaryTabs} />
+        <SiteNavigation
+          items={primaryNavigation}
+          mobileUtilities={
+            <>
+              <DocumentLink
+                className="site-action"
+                data-analytics-event="nav_click"
+                data-analytics-nav-area="mobile_menu"
+                data-analytics-target-kind="api_reference"
+                href="/api-reference"
+              >
+                {shell.actions.api}
+              </DocumentLink>
+              <a
+                className="site-action"
+                data-analytics-event="github_click"
+                data-analytics-nav-area="mobile_menu"
+                href={githubRepositoryUrl}
+              >
+                {shell.actions.github}
+              </a>
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </>
+          }
+        />
       </header>
       <div id="main-content" tabIndex={-1}>
         {children}
