@@ -140,12 +140,17 @@ export function buildPolicySnapshotResponse(
   generatedAt = new Date().toISOString()
 ): PolicySnapshotResponse {
   const snapshot = loaded.snapshot;
+  const canonicalUrl = new URL(
+    `/universities/${snapshot.universitySlug}`,
+    siteBaseUrl
+  ).toString();
   const publicJsonUrl = new URL(
     `/api/public/${PUBLIC_API_VERSION}/policy-snapshots/universities/${snapshot.universitySlug}.json`,
     siteBaseUrl
   ).toString();
   const data = policySnapshotSchema.parse({
     ...snapshot,
+    canonicalUrl,
     overallStatus: loaded.validation.effectiveStatus,
     statusReasons:
       loaded.validation.effectiveStatus === "strong"
@@ -159,7 +164,7 @@ export function buildPolicySnapshotResponse(
   return policySnapshotResponseSchema.parse({
     apiVersion: PUBLIC_API_VERSION,
     generatedAt,
-    canonicalUrl: snapshot.canonicalUrl,
+    canonicalUrl,
     license: TRACKER_METADATA_LICENSE,
     trackerMetadataLicense: TRACKER_METADATA_LICENSE,
     sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
@@ -169,11 +174,11 @@ export function buildPolicySnapshotResponse(
       : [NO_ADVICE_BOUNDARY],
     citation: buildPublicApiCitation({
       citationTitle: `${snapshot.universityName} student policy snapshot`,
-      canonicalUrl: snapshot.canonicalUrl,
+      canonicalUrl,
       publicJsonUrl,
       suggestedCitation:
         `University AI Policy Tracker. "${snapshot.universityName} student policy snapshot." ` +
-        `Version ${POLICY_SNAPSHOT_SCHEMA_VERSION}. ${snapshot.canonicalUrl}`
+        `Version ${POLICY_SNAPSHOT_SCHEMA_VERSION}. ${canonicalUrl}`
     }),
     data
   });
