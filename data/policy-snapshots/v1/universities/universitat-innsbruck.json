@@ -216,10 +216,10 @@
       "model": "gpt-5",
       "decision": "needs_review",
       "reviewedAt": "2026-08-08T10:57:26.300Z",
-      "notes": "Independent review returned candidate metadata/copy issues; snapshot remains fail-closed."
+      "notes": "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
     },
     "agreement": "disagree",
-    "reviewedAt": "2026-08-08T10:57:26.300Z"
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
   },
   "translations": [],
   "limitations": [

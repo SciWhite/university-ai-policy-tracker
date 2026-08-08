@@ -153,10 +153,10 @@
       "model": "gpt-5",
       "decision": "needs_review",
       "reviewedAt": "2026-08-08T10:57:26.300Z",
-      "notes": "Independent review recorded a basis blocker; snapshot remains fail-closed."
+      "notes": "Second-round review confirms the direct summary, but underlying claims remain unreviewed; snapshot stays fail-closed."
     },
     "agreement": "disagree",
-    "reviewedAt": "2026-08-08T10:57:26.300Z"
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
   },
   "translations": [],
   "limitations": [

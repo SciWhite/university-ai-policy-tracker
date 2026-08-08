@@ -31,18 +31,48 @@ test("UAPT 6 review artifact covers exactly the indexed 24 snapshots", async () 
     index.entries.map((entry) => entry.universitySlug)
   );
   assert.deepEqual(review.decisionCounts, {
-    pass: 9,
-    return_to_author: 12,
-    needs_review: 3
+    pass: 17,
+    return_to_author: 0,
+    needs_review: 7
   });
   assert.deepEqual(review.publicationStatusCounts, {
-    strong: 9,
-    needs_review: 15
+    strong: 17,
+    needs_review: 7
   });
   assert.deepEqual(
     (await readdir(path.join(root, "universities"))).sort(),
     index.entries.map((entry) => entry.file.replace("universities/", "")).sort()
   );
+});
+
+test("second-round blockers remain fail-closed", async () => {
+  const review = await readReview();
+  const bySlug = new Map(
+    review.decisions.map((decision) => [decision.universitySlug, decision])
+  );
+
+  for (const slug of [
+    "jagiellonian-university",
+    "snu",
+    "tsinghua-university",
+    "u-tokyo",
+    "universitat-innsbruck",
+    "zhejiang-university"
+  ]) {
+    assert.deepEqual(bySlug.get(slug)?.issueCodes, [
+      "TRANSLATION_REVIEW_MISSING"
+    ]);
+    assert.equal(bySlug.get(slug)?.decision, "needs_review");
+  }
+
+  assert.deepEqual(bySlug.get("sultan-qaboos-university")?.issueCodes, [
+    "BASIS_CLAIM_UNREVIEWED"
+  ]);
+  assert.equal(
+    bySlug.get("sultan-qaboos-university")?.decision,
+    "needs_review"
+  );
+  assert.equal(bySlug.get("unsw-sydney")?.decision, "pass");
 });
 
 test("UAPT 6 decisions preserve evidence pointers and fail-closed statuses", async () => {
@@ -87,11 +117,11 @@ test("API loader reports the reviewed strong and fail-closed counts", async () =
   assert.equal(loaded.entries.length, 24);
   assert.equal(
     loaded.entries.filter((entry) => entry.overallStatus === "strong").length,
-    9
+    17
   );
   assert.equal(
     loaded.entries.filter((entry) => entry.overallStatus === "needs_review").length,
-    15
+    7
   );
   assert.equal(
     loaded.entries.filter((entry) => entry.overallStatus === "stale").length,

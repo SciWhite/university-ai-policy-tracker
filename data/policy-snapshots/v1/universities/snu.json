@@ -11,9 +11,7 @@
   "overallStatus": "needs_review",
   "statusReasons": [
     "review_incomplete",
-    "translation_needs_review",
-    "basis_claim_missing",
-    "basis_fingerprint_mismatch"
+    "translation_needs_review"
   ],
   "summary": "At Seoul National University, follow the syllabus AI rule, disclose and document research use, protect research data and subscribed resources, and treat ChatGPT Edu’s listing as separate from academic permission.",
   "audiences": [
@@ -221,10 +219,10 @@
       "model": "gpt-5",
       "decision": "needs_review",
       "reviewedAt": "2026-08-08T10:57:26.300Z",
-      "notes": "Independent review recorded a basis blocker; snapshot remains fail-closed."
+      "notes": "Second-round basis rebind is current; non-English source rendering still lacks translation review."
     },
     "agreement": "disagree",
-    "reviewedAt": "2026-08-08T10:57:26.300Z"
+    "reviewedAt": "2026-08-08T11:15:00.000Z"
   },
   "translations": [],
   "limitations": [

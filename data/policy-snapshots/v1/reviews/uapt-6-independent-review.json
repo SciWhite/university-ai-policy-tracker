@@ -1,10 +1,10 @@
 {
   "schemaVersion": "uapt-policy-snapshot-independent-review-v1",
-  "reviewId": "uapt-6-independent-review-20260808",
+  "reviewId": "uapt-6-independent-review-20260808-r2",
   "reviewMethod": "dual_agent",
   "reviewer": "uapt-6-secondary-reviewer",
   "model": "gpt-5",
-  "reviewedAt": "2026-08-08T10:57:26.300Z",
+  "reviewedAt": "2026-08-08T11:15:00.000Z",
   "indexFile": "data/policy-snapshots/v1/index.json",
   "releaseId": "public-release-20260801-001",
   "expectedEntryCount": 24,
@@ -12,12 +12,10 @@
     {
       "universitySlug": "aalto-university",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
-      "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY"
-      ],
+      "decision": "pass",
+      "issueCodes": [],
       "notes": [
-        "Summary retains candidate/process wording."
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/aalto-university.json",
@@ -57,12 +55,10 @@
     {
       "universitySlug": "harvard-university",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
-      "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY"
-      ],
+      "decision": "pass",
+      "issueCodes": [],
       "notes": [
-        "Summary retains candidate/process wording."
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/harvard-university.json",
@@ -102,14 +98,12 @@
     {
       "universitySlug": "jagiellonian-university",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
+      "decision": "needs_review",
       "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY",
         "TRANSLATION_REVIEW_MISSING"
       ],
       "notes": [
-        "Summary retains candidate/process wording.",
-        "Non-English-source rendering lacks translation review."
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/jagiellonian-university.json",
@@ -130,12 +124,10 @@
     {
       "universitySlug": "massachusetts-institute-of-technology",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
-      "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY"
-      ],
+      "decision": "pass",
+      "issueCodes": [],
       "notes": [
-        "Summary retains candidate/process wording."
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/massachusetts-institute-of-technology.json",
@@ -160,12 +152,10 @@
     {
       "universitySlug": "national-university-of-singapore",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
-      "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY"
-      ],
+      "decision": "pass",
+      "issueCodes": [],
       "notes": [
-        "Summary retains candidate/process wording."
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/national-university-of-singapore.json",
@@ -198,27 +188,21 @@
       "cohort": "uapt-5-risk",
       "decision": "needs_review",
       "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY",
-        "TRANSLATION_REVIEW_MISSING",
-        "BASIS_CLAIM_MISSING",
-        "BASIS_FINGERPRINT_MISMATCH"
+        "TRANSLATION_REVIEW_MISSING"
       ],
       "notes": [
-        "Summary retains candidate/process wording.",
-        "Non-English-source rendering lacks translation review.",
-        "Indexed basis claim is absent from the current public summary.",
-        "Basis fingerprint does not match the current public basis."
+        "Second-round basis rebind is current; non-English source rendering still lacks translation review."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/snu.json",
-        "basisFingerprint": "2557da364b79d4794ca322dcb20076fc06848fe4ff17f95524611e63bfebc8de",
+        "basisFingerprint": "48a067b4d9b2cfb07388a9ce68913c5efd1478f21083b18dfa7e6ba8264404b0",
         "claimIds": [
           "cl-seoul-national-university-chatgpt-224",
           "claim-snu-002b",
           "claim-snu-002c",
           "claim-snu-002d",
           "claim-snu-005b",
-          "claim-snu-007b"
+          "claim-snu-007a"
         ],
         "sourceRefs": [
           {
@@ -243,12 +227,10 @@
     {
       "universitySlug": "stanford-university",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
-      "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY"
-      ],
+      "decision": "pass",
+      "issueCodes": [],
       "notes": [
-        "Summary retains candidate/process wording."
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/stanford-university.json",
@@ -290,12 +272,10 @@
       "cohort": "uapt-5-risk",
       "decision": "needs_review",
       "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY",
         "BASIS_CLAIM_UNREVIEWED"
       ],
       "notes": [
-        "Summary retains candidate/process wording.",
-        "Indexed basis claim remains unreviewed."
+        "Second-round review confirms the direct summary, but underlying claims remain unreviewed; snapshot stays fail-closed."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/sultan-qaboos-university.json",
@@ -316,14 +296,12 @@
     {
       "universitySlug": "tsinghua-university",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
+      "decision": "needs_review",
       "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY",
         "TRANSLATION_REVIEW_MISSING"
       ],
       "notes": [
-        "Summary retains candidate/process wording.",
-        "Non-English-source rendering lacks translation review."
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/tsinghua-university.json",
@@ -352,14 +330,12 @@
     {
       "universitySlug": "u-tokyo",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
+      "decision": "needs_review",
       "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY",
         "TRANSLATION_REVIEW_MISSING"
       ],
       "notes": [
-        "Summary retains candidate/process wording.",
-        "Non-English-source rendering lacks translation review."
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/u-tokyo.json",
@@ -395,14 +371,12 @@
     {
       "universitySlug": "universitat-innsbruck",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
+      "decision": "needs_review",
       "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY",
         "TRANSLATION_REVIEW_MISSING"
       ],
       "notes": [
-        "Summary retains candidate/process wording.",
-        "Non-English-source rendering lacks translation review."
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/universitat-innsbruck.json",
@@ -433,12 +407,10 @@
     {
       "universitySlug": "university-of-cambridge",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
-      "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY"
-      ],
+      "decision": "pass",
+      "issueCodes": [],
       "notes": [
-        "Summary retains candidate/process wording."
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/university-of-cambridge.json",
@@ -474,12 +446,10 @@
     {
       "universitySlug": "university-of-oxford",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
-      "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY"
-      ],
+      "decision": "pass",
+      "issueCodes": [],
       "notes": [
-        "Summary retains candidate/process wording."
+        "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/university-of-oxford.json",
@@ -520,14 +490,12 @@
     {
       "universitySlug": "zhejiang-university",
       "cohort": "uapt-5-risk",
-      "decision": "return_to_author",
+      "decision": "needs_review",
       "issueCodes": [
-        "SUMMARY_PROCESS_COMMENTARY",
         "TRANSLATION_REVIEW_MISSING"
       ],
       "notes": [
-        "Summary retains candidate/process wording.",
-        "Non-English-source rendering lacks translation review."
+        "Second-round summary and basis review passed; non-English source rendering still lacks translation review."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/zhejiang-university.json",
@@ -551,20 +519,16 @@
     {
       "universitySlug": "unsw-sydney",
       "cohort": "uapt-4-traffic",
-      "decision": "needs_review",
-      "issueCodes": [
-        "BASIS_CLAIM_MISSING",
-        "BASIS_FINGERPRINT_MISMATCH"
-      ],
+      "decision": "pass",
+      "issueCodes": [],
       "notes": [
-        "Indexed basis claim is absent from the current public summary.",
-        "Basis fingerprint does not match the current public basis."
+        "Second-round independent review passed; rebased claim, source hashes, direct summary, and fingerprint checked."
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/unsw-sydney.json",
-        "basisFingerprint": "22cb255eaba72e5ae2231f7873659166baedfc503d16d16c74664645e9ed1d95",
+        "basisFingerprint": "9788db146bfaa75b835d2230162403b0e77dab06611292582af7dee249b2abd1",
         "claimIds": [
-          "claim-unsw-sydney-23",
+          "claim-unsw-sydney-2",
           "claim-unsw-sydney-3",
           "claim-unsw-sydney-22",
           "claim-unsw-sydney-8",
@@ -907,12 +871,12 @@
     }
   ],
   "decisionCounts": {
-    "pass": 9,
-    "return_to_author": 12,
-    "needs_review": 3
+    "pass": 17,
+    "return_to_author": 0,
+    "needs_review": 7
   },
   "publicationStatusCounts": {
-    "strong": 9,
-    "needs_review": 15
+    "strong": 17,
+    "needs_review": 7
   }
 }
