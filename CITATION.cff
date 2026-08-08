@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "University AI Policy Tracker"
-message: "If you use this dataset or tracker metadata, please cite the tracker and retain official source URLs, source language, snapshot hashes, review state, confidence, and original evidence snippets."
+message: "If you use this dataset or tracker metadata, please cite the tracker and retain official source URLs, source language, snapshot hashes, review state, confidence, and original evidence snippets. Repository software is separately licensed under Apache-2.0; see DATA_LICENSE.md for the tracker metadata boundary."
 type: dataset
 authors:
   - name: "University AI Policy Tracker contributors"

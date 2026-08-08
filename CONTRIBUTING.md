@@ -28,6 +28,9 @@ state.
 - Translation/evidence display correction: `.github/ISSUE_TEMPLATE/translation-evidence-correction.yml`
 - Dataset/API issue: `.github/ISSUE_TEMPLATE/dataset-issue.yml`
 
+For pull requests, use the repository checklist in
+[`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md).
+
 ## Evidence Rules
 
 Every public claim must have evidence.
@@ -96,6 +99,11 @@ For staged OpenClaw output, also make sure `pnpm validate:openclaw-artifacts` pa
 This project is not legal advice, not academic integrity advice, and not an official university statement unless the linked source is the university's own official page.
 
 Contributions should preserve that boundary in code, docs, page copy, and public JSON.
+
+Original repository software is covered by [`LICENSE`](LICENSE). Tracker-created
+metadata and dataset outputs are covered by [`DATA_LICENSE.md`](DATA_LICENSE.md).
+Official university source pages, PDFs, screenshots, excerpts, and other
+third-party materials retain their original rights and terms.
 
 ## Course-Level Evidence Boundary
 

@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "description": "Public, SEO-first university AI policy change intelligence tracker.",
+  "license": "Apache-2.0",
+  "homepage": "https://eduaipolicy.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SciWhite/university-ai-policy-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SciWhite/university-ai-policy-tracker/issues"
+  },
   "packageManager": "pnpm@10.0.0",
   "engines": {
     "node": ">=20"

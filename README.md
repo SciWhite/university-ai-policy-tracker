@@ -1,98 +1,41 @@
 # University AI Policy Tracker
 
-An open, evidence-backed database of university AI policy records.
+An open, evidence-backed database and public infrastructure layer for tracking
+how universities publish and change AI policy and guidance.
 
-The public site is designed as reference infrastructure, not a login-only SaaS:
+Live site: <https://eduaipolicy.org> · Repository:
+<https://github.com/SciWhite/university-ai-policy-tracker>
 
-- source-backed claims tied to official university URLs
-- original-language evidence snippets
-- visible confidence and review state
-- versioned public JSON under `/api/public/v1/...`
-- change and freshness pages
-- citation-ready university records
+## Overview
 
-Live site: <https://eduaipolicy.org>
+The project turns fragmented official university pages into source-attributed,
+citation-ready records. It is designed for researchers, universities,
+maintainers, and agent or data integrations that need a durable public record,
+not a login-only SaaS product.
 
-## Production Deployment
+## Public Infrastructure And Impact
 
-As of 2026-06-20, production runs on an OCI origin behind Cloudflare:
+The following signals are intentionally tied to public, reproducible sources:
 
-```text
-Cloudflare DNS/CDN/WAF -> OCI 129.153.56.227 -> nginx -> uapt-web.service
-```
+- **Public release scale:** As of the `public-release-20260801-001` release
+  (2026-08-01), the published dataset contains 828 university records, 5,476
+  claims, 5,741 evidence records, 3,195 official-source attributions, and 61
+  source-language tags. See the [release manifest](https://eduaipolicy.org/api/public/v1/datasets/latest.json).
+- **Distribution:** As of 2026-08-08, the public API index lists 43 versioned
+  v1 endpoints for records, search, changes, datasets, citations, widgets, and
+  read-only agent/MCP discovery. See the [API index](https://eduaipolicy.org/api/public/v1/index.json).
+- **Maintenance:** The repository has 317 commits through 2026-08-01. The
+  public GitHub snapshot on 2026-08-08 showed 22 stars and 3 forks; no package
+  download count is claimed. See [GitHub](https://github.com/SciWhite/university-ai-policy-tracker).
+- **Evidence discipline:** Public records retain official URLs, source
+  language, short original-language evidence, snapshot hashes, confidence, and
+  review state. API logs, search visibility, and first-party onsite analytics
+  are kept as separate evidence streams; bot or internal refresh traffic is not
+  presented as human adoption.
 
-OCI production state:
-
-- Server: shared OCI ARM host `129.153.56.227`
-- Runtime user: `uapt`
-- App directory: `/srv/uapt/app`
-- Environment file: `/srv/uapt/env/production.env`
-- Systemd service: `uapt-web.service`
-- Local app port: `127.0.0.1:3100`
-- Nginx site: `/etc/nginx/sites-available/uapt-eduaipolicy.org.conf`
-- Node runtime: `/opt/node-v22`
-
-Production must not deploy through Vercel anymore. Vercel may only be used for
-explicit preview/debug work if a future task asks for it. Do not rely on Vercel
-free-tier limits for production traffic, and do not commit `.vercel/`; it is
-local CLI linkage and is intentionally ignored.
-
-### SSH Access
-
-From the development Mac, the existing SSH configuration provides the
-production-host alias. Connect as the host administrator with:
-
-```bash
-ssh hermes-agent-prod
-```
-
-This resolves to `ubuntu@129.153.56.227` and uses the locally configured
-dedicated identity. If the alias is unavailable on another authorized machine,
-use its approved private key explicitly:
-
-```bash
-ssh -i /path/to/approved-oci-key -o IdentitiesOnly=yes ubuntu@129.153.56.227
-```
-
-Do not put private keys, `/srv/uapt/env/production.env`, or their values in
-this repository. After connecting, use `sudo` for the `uapt` application user
-and systemd commands below.
-
-Canonical production deployment flow for future agents and threads:
-
-1. Make changes locally in this repository.
-2. Run the relevant local checks, at minimum:
-   `pnpm db:generate && pnpm --filter @uapt/web build`.
-3. Commit the production-ready changes.
-4. Push the commit to GitHub `origin/main`.
-5. SSH to the OCI server and update `/srv/uapt/app` from GitHub:
-
-   ```bash
-   sudo -u uapt env HOME=/srv/uapt git -C /srv/uapt/app fetch origin main
-   sudo -u uapt env HOME=/srv/uapt git -C /srv/uapt/app checkout main
-   sudo -u uapt env HOME=/srv/uapt git -C /srv/uapt/app reset --hard origin/main
-   ```
-
-6. On OCI, install/build/restart:
-
-   ```bash
-   sudo -u uapt env HOME=/srv/uapt PATH=/opt/node-v22/bin:$PATH \
-     bash -lc 'cd /srv/uapt/app && pnpm install --frozen-lockfile'
-
-   sudo -u uapt env HOME=/srv/uapt PATH=/opt/node-v22/bin:$PATH \
-     bash -lc 'set -a; source /srv/uapt/env/production.env; set +a; export UAPT_DISABLE_INTERNAL_FETCH=1; cd /srv/uapt/app && pnpm --filter @uapt/web build'
-
-   sudo systemctl restart uapt-web.service
-   ```
-
-7. Verify `uapt-web.service`, `nginx`, the public pages, key APIs, sitemap, and
-   `/internal/analytics`.
-
-Avoid ad hoc `rsync` deployments except for emergency recovery. The durable
-state should be GitHub `main` first, then OCI pulls from that commit.
-
-See `docs/oci-production-deployment.md` for the OCI deployment, verification,
-DNS cutover, TLS, and rollback notes.
+Production deployment and maintainer-only operational procedures live in the
+runbooks under [`docs/`](docs/), while this README focuses on the public
+contract, contribution path, and evidence boundary.
 
 ## Current Status
 
@@ -106,13 +49,13 @@ Current public release:
 
 <!-- release-status:start -->
 
-- Release: `public-release-20260727-015` (published 2026-07-27)
+- Release: `public-release-20260801-001` (published 2026-08-01)
 - Universities: 828
-- Claims: 5465
-- Evidence records: 5730
-- Official source attributions: 3193
+- Claims: 5476
+- Evidence records: 5741
+- Official source attributions: 3195
 - Entity review states: 827 `agent_reviewed`, 1 `needs_review`
-- Claim review states: 5461 `agent_reviewed`, 4 `needs_review`
+- Claim review states: 5472 `agent_reviewed`, 4 `needs_review`
 - Source languages represented: 61 language tags across the evidence set
 
 Generated by `pnpm readme:update-status` from the release manifest and staged merge.
@@ -285,33 +228,6 @@ OpenClaw must not:
 
 See `docs/openclaw-data-prs.md` and `docs/agent-workflow.md`.
 
-## Agent Google Search Console Access
-
-Agents can pull Google Search Console data for the live site with a local
-service-account credential. The credential must stay outside Git:
-
-- env file: `.env.agents.local`
-- key file: `.local/secrets/gsc-eduaipolicy-service-account.json`
-- property: `sc-domain:eduaipolicy.org`
-- scope: `https://www.googleapis.com/auth/webmasters.readonly`
-
-Load the local env file before querying:
-
-```bash
-set -a
-source .env.agents.local
-set +a
-```
-
-Confirm the files are ignored before relying on or changing them:
-
-```bash
-git check-ignore -v .env.agents.local .local/secrets/gsc-eduaipolicy-service-account.json
-```
-
-Do not print, paste, commit, or summarize the private key. See `AGENTS.md` for
-the package-free Node JWT example used to query the Search Analytics API.
-
 ## Verification
 
 The main local quality gate is:
@@ -339,6 +255,7 @@ Recent production verification covered:
 - `/api/public/v1/claims/anu.json`
 - widget endpoints for review state, source freshness, and policy coverage
 - `/sitemap.xml`, `/llms.txt`, and `/robots.txt`
+- the private `/internal/analytics` surface is not part of the public API
 
 Browser checks verified that the search and coverage pages render without
 horizontal overflow and without current console errors or warnings.
@@ -374,6 +291,11 @@ Machine-readable citation metadata is in `CITATION.cff`.
 
 ## License And Source Rights
 
-Tracker metadata is intended for CC BY 4.0 reuse with attribution.
-
-Official source documents, page text, PDFs, screenshots, and other source materials retain their original rights and terms. The tracker records URLs, short evidence snippets, source metadata, and hashes for citation and verification.
+- Original software and code authored for this repository are licensed under
+  [Apache-2.0](LICENSE).
+- Tracker-created metadata and dataset outputs are licensed under [CC BY 4.0](DATA_LICENSE.md)
+  with attribution.
+- University source pages, PDFs, screenshots, excerpts, logos, and other
+  third-party materials retain their original rights and terms and are not
+  relicensed by this repository. The tracker publishes URLs, short evidence
+  snippets, source metadata, and hashes for citation and verification.
