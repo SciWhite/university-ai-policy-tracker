@@ -205,6 +205,17 @@ export function buildPublicApiIndexData(
         `/api/public/${PUBLIC_API_VERSION}/claims/{slug}.json`
       ),
       endpoint(
+        "Student policy snapshot index",
+        `/api/public/${PUBLIC_API_VERSION}/policy-snapshots/index.json`,
+        "Manifest for independently authored uapt-policy-snapshot-v1 university files, including publication status and basis fingerprints."
+      ),
+      endpoint(
+        "University student policy snapshot",
+        `/api/public/${PUBLIC_API_VERSION}/policy-snapshots/universities/anu.json`,
+        "A reviewed, student-first policy snapshot with six dimensions, concise actions, source basis, release ID, and fail-closed status.",
+        `/api/public/${PUBLIC_API_VERSION}/policy-snapshots/universities/{slug}.json`
+      ),
+      endpoint(
         "AI tools directory",
         `/api/public/${PUBLIC_API_VERSION}/tools.json`,
         "Derived university AI tool records with tool-level availability, review state, and evidence snippets. Tool records are discovery metadata, not official policy conclusions."

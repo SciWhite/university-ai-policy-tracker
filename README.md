@@ -90,6 +90,14 @@ Policy analysis layer:
 - page-quality and review workflow surfaces
 - explicit boundary that analysis summaries are not final policy conclusions
 
+Student policy snapshot foundation:
+
+- independent `uapt-policy-snapshot-v1` schemas and per-university authoring
+  files
+- fail-closed dual-agent review and claim/source/release fingerprint checks
+- versioned snapshot index and university JSON endpoints (Wave 1 index is
+  empty until a reviewed snapshot release is explicitly promoted)
+
 Data distribution:
 
 - versioned public API under `/api/public/v1/...`
@@ -151,6 +159,8 @@ Versioned public JSON:
 - Search index: <https://eduaipolicy.org/api/public/v1/search/index.json>
 - Entity index: <https://eduaipolicy.org/api/public/v1/entities/index.json>
 - Analysis index: <https://eduaipolicy.org/api/public/v1/analysis/index.json>
+- Student policy snapshot index: <https://eduaipolicy.org/api/public/v1/policy-snapshots/index.json>
+- University student policy snapshot: `https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/{slug}.json`
 - QS coverage: <https://eduaipolicy.org/api/public/v1/coverage/qs-2026.json>
 - Source health: <https://eduaipolicy.org/api/public/v1/source-health.json>
 - Review queue: <https://eduaipolicy.org/api/public/v1/review/queue.json>

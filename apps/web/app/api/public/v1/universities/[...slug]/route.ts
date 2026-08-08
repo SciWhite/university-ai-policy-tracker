@@ -5,6 +5,7 @@ import {
   getPublicUniversitySummaryBySlug
 } from "@/lib/catalog";
 import { getAliasSlugs, getCanonicalSlugForAlias } from "@/lib/entity-aliases";
+import { getPublicUniversityPolicySnapshotLink } from "@/lib/policy-snapshots";
 import { getSiteBaseUrl } from "@/lib/site-url";
 
 export const dynamic = "force-static";
@@ -52,7 +53,15 @@ export async function GET(_request: Request, { params }: PublicUniversityRoutePr
     );
   }
 
+  const policySnapshot = await getPublicUniversityPolicySnapshotLink(
+    summary.entity.slug,
+    getSiteBaseUrl()
+  );
+  const summaryWithOptionalSnapshot = policySnapshot
+    ? { ...summary, policySnapshot }
+    : summary;
+
   return NextResponse.json(
-    buildPublicEntitySummaryResponse(summary, getSiteBaseUrl())
+    buildPublicEntitySummaryResponse(summaryWithOptionalSnapshot, getSiteBaseUrl())
   );
 }

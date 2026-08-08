@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "university-of-bristol",
+  "universityName": "University of Bristol",
+  "canonicalUrl": "https://eduaipolicy.org/universities/university-of-bristol",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-bristol.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-05-12T06:00:00.000Z",
+  "overallStatus": "strong",
+  "statusReasons": [],
+  "summary": "Bristol publishes assessment-specific AI categories and separate academic-integrity guidance; students should check the instructions for each assessment.",
+  "audiences": ["students", "researchers"],
+  "scope": "mixed",
+  "academicContexts": ["assignment", "exam", "thesis", "research"],
+  "dimensions": [
+    {
+      "key": "disclosure",
+      "status": "not_mentioned",
+      "summary": "No source-backed disclosure instruction is included in this snapshot.",
+      "actions": {"do": [], "dont": []},
+      "basis": {"claimIds": [], "sources": []}
+    },
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "AI use varies by assessment category and the instructions set the permitted use.",
+      "actions": {
+        "do": ["Check the assessment instructions before using AI."],
+        "dont": ["Do not assume a general page overrides the assessment category."]
+      },
+      "basis": {
+        "claimIds": ["claim-bristol-001", "claim-bristol-003"],
+        "sources": [
+          {
+            "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+            "sourceSnapshotHash": "37b0e7d3dd50bec5d10915bb613220c112704886141cd9d248a82776642385ed"
+          },
+          {
+            "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+            "sourceSnapshotHash": "076c72c33eff9a4492777ac3731ec4ba5255f18c0449757f4d3f9f48e9084017"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "conditionally_allowed",
+      "summary": "Assessment categories range from prohibited to integral; the assessment instructions control.",
+      "actions": {
+        "do": ["Confirm the category for the specific assessment."],
+        "dont": ["Do not use AI when the assessment is Category 1 prohibited."]
+      },
+      "basis": {
+        "claimIds": ["claim-bristol-003"],
+        "sources": [
+          {
+            "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+            "sourceSnapshotHash": "076c72c33eff9a4492777ac3731ec4ba5255f18c0449757f4d3f9f48e9084017"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "not_mentioned",
+      "summary": "No source-backed data-entry instruction is included in this snapshot.",
+      "actions": {"do": [], "dont": []},
+      "basis": {"claimIds": [], "sources": []}
+    },
+    {
+      "key": "academic_integrity",
+      "status": "restricted",
+      "summary": "Bristol treats AI use beyond limited language help as cheating unless assessment instructions allow more.",
+      "actions": {
+        "do": ["Follow the stated limits and keep your own authorship clear."],
+        "dont": ["Do not use AI beyond the permitted limits without explicit instructions."]
+      },
+      "basis": {
+        "claimIds": ["claim-bristol-002", "claim-bristol-004"],
+        "sources": [
+          {
+            "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+            "sourceSnapshotHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a"
+          },
+          {
+            "sourceUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+            "sourceSnapshotHash": "e7650f617311bc07db8be26780653990911db1d83b4a12b497d5b00b099443b0"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "not_mentioned",
+      "summary": "No source-backed approved-tool list is included in this snapshot.",
+      "actions": {"do": [], "dont": []},
+      "basis": {"claimIds": [], "sources": []}
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "claim-bristol-001",
+      "claim-bristol-002",
+      "claim-bristol-003",
+      "claim-bristol-004"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://www.bristol.ac.uk/academic-quality/pg/ai-tools-and-thesis-writing/",
+        "sourceSnapshotHash": "e7650f617311bc07db8be26780653990911db1d83b4a12b497d5b00b099443b0"
+      },
+      {
+        "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/",
+        "sourceSnapshotHash": "37b0e7d3dd50bec5d10915bb613220c112704886141cd9d248a82776642385ed"
+      },
+      {
+        "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/academic-integrity/",
+        "sourceSnapshotHash": "a6de8d5d6e7d833e65504e8ba3cbd5c547e50d755e583bf416228eaa39c3e14a"
+      },
+      {
+        "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/using-artificial-intelligence/",
+        "sourceSnapshotHash": "076c72c33eff9a4492777ac3731ec4ba5255f18c0449757f4d3f9f48e9084017"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "8ea138fc912e815a0e58184e0a2c5b49dd08ff96dd43a6eb9148c5aa1c175395",
+  "review": {
+    "reviewState": "dual_agent_reviewed",
+    "primary": {
+      "agentId": "uapt-wave1-primary",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-05-12T06:00:00.000Z",
+      "notes": "Checked each concise action against the cited claim basis."
+    },
+    "secondary": {
+      "agentId": "uapt-wave1-secondary",
+      "model": "gpt-5-review",
+      "decision": "approve",
+      "reviewedAt": "2026-05-12T06:05:00.000Z",
+      "notes": "Confirmed scope, uncertainty labels, and no-advice boundary."
+    },
+    "agreement": "agree",
+    "reviewedAt": "2026-05-12T06:05:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "English is canonical; any localized prose is display-only and requires translation review."
+  ]
+}

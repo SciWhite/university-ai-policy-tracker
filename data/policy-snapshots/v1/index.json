@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-index-v1",
+  "apiVersion": "v1",
+  "snapshotSchemaVersion": "uapt-policy-snapshot-v1",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "releaseId": "public-release-20260801-001",
+  "entries": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "Wave 1 includes the contract and loader foundation only; university snapshot files are added through a reviewed release process."
+  ]
+}
