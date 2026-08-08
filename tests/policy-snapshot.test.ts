@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import assert from "node:assert/strict";
 import test from "node:test";
 import path from "node:path";
@@ -7,7 +7,6 @@ import {
   policySnapshotSchema
 } from "@uapt/shared";
 import {
-  getLoadedPolicySnapshotIndex,
   loadPolicySnapshotFixture,
   validatePolicySnapshotAgainstPublicData
 } from "../apps/web/lib/policy-snapshots";
@@ -38,7 +37,22 @@ const riskCohortSlugs = [
   "university-of-cambridge",
   "university-of-oxford",
   "zhejiang-university"
-];
+] as const;
+
+const trafficCohortSlugs = [
+  "unsw-sydney",
+  "cornell-university",
+  "university-of-sydney",
+  "de-la-salle-university",
+  "university-of-auckland",
+  "imperial-college-london",
+  "university-of-melbourne",
+  "utrecht-university",
+  "adelaide-university",
+  "ubc"
+] as const;
+
+const cohortSlugs = [...riskCohortSlugs, ...trafficCohortSlugs] as const;
 
 test("strong fixture matches current public claims, source hashes, and release", async () => {
   const fixture = policySnapshotSchema.parse(
@@ -149,36 +163,46 @@ test("strong schema rejects an incomplete dual-agent review", async () => {
   );
 });
 
-test("risk cohort snapshots are complete, deterministic, and conservatively reviewed", async () => {
+test("all cohort candidates are schema-valid and evidence-bound", async () => {
+  const root = path.join(process.cwd(), "data", "policy-snapshots", "v1");
   const index = policySnapshotIndexSchema.parse(
-    JSON.parse(
-      await readFile(
-        path.join(process.cwd(), "data", "policy-snapshots", "v1", "index.json"),
-        "utf8"
-      )
-    )
+    JSON.parse(await readFile(path.join(root, "index.json"), "utf8"))
   );
+  const release = await getCurrentPublicReleaseManifest();
+  assert(release);
   assert.deepEqual(
     index.entries.map((entry) => entry.universitySlug),
-    riskCohortSlugs
+    cohortSlugs
+  );
+  assert.deepEqual(
+    (await readdir(path.join(root, "universities"))).sort(),
+    cohortSlugs.map((slug) => `${slug}.json`).sort()
   );
 
-  const loadedIndex = await getLoadedPolicySnapshotIndex();
-  assert.equal(loadedIndex.entries.length, riskCohortSlugs.length);
-  for (const entry of loadedIndex.entries) {
-    assert.equal(entry.overallStatus, "needs_review");
-    assert.equal(
-      entry.loaded.validation.expectedBasisFingerprint,
-      entry.loaded.snapshot.basisFingerprint
+  for (const entry of index.entries) {
+    const snapshot = policySnapshotSchema.parse(
+      JSON.parse(await readFile(path.join(root, entry.file), "utf8"))
     );
-    assert.equal(entry.loaded.snapshot.review.primary.decision, "approve");
-    assert.equal(
-      entry.loaded.snapshot.review.secondary.agentId,
-      "pending-independent-review"
+    const summary = await getStagedPublicSummaryBySlug(entry.universitySlug);
+    assert(summary);
+    const validation = validatePolicySnapshotAgainstPublicData(
+      snapshot,
+      summary,
+      release.releaseId
     );
-    assert.equal(entry.loaded.snapshot.review.secondary.decision, "needs_review");
-    assert.deepEqual(entry.loaded.snapshot.statusReasons, ["review_incomplete"]);
-    assert.equal(entry.loaded.snapshot.translations.length, 0);
-    assert.equal(entry.loaded.snapshot.dimensions.length, 6);
+
+    assert.equal(snapshot.overallStatus, "needs_review");
+    assert.equal(snapshot.review.reviewState, "needs_review");
+    assert.equal(snapshot.review.secondary.agentId, "pending-independent-review");
+    assert.equal(snapshot.review.secondary.decision, "needs_review");
+    assert.deepEqual(snapshot.translations, []);
+    assert.equal(validation.effectiveStatus, "needs_review");
+    assert.equal(validation.expectedBasisFingerprint, snapshot.basisFingerprint);
+    assert(validation.issues.length >= 1);
+    assert(
+      validation.issues.every((issue) => issue.code === "review_incomplete")
+    );
+    assert.equal(entry.basisFingerprint, snapshot.basisFingerprint);
+    assert.equal(entry.releaseId, release.releaseId);
   }
 });

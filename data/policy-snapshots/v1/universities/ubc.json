@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "ubc",
+  "universityName": "University of British Columbia",
+  "canonicalUrl": "https://eduaipolicy.org/universities/ubc",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/ubc.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-08T10:00:00.000Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete"
+  ],
+  "summary": "UBC requires permission for GenAI in assessed work, pairs approved institutional access with privacy safeguards, and requires disclosure when use is allowed.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "exam",
+    "thesis"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "UBC says students may use GenAI for assessed work only when expressly permitted by the instructor, supervisor, or program.",
+      "actions": {
+        "do": [
+          "Obtain express permission for the specific assessed work."
+        ],
+        "dont": [
+          "Do not assume a general UBC tool listing permits coursework use."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "CL-003"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+            "sourceSnapshotHash": "6cc7152af150ad693e13c238d0454c827bf88c1d9a687642fda6ad15e048e598"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "conditionally_allowed",
+      "summary": "UBC includes exams among assessed work that require express permission before GenAI use.",
+      "actions": {
+        "do": [
+          "Check the instructor, supervisor, or program's express exam permission."
+        ],
+        "dont": [
+          "Do not use GenAI in an exam without express permission."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "CL-003"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+            "sourceSnapshotHash": "6cc7152af150ad693e13c238d0454c827bf88c1d9a687642fda6ad15e048e598"
+          }
+        ]
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "UBC says educators should tell students when and how to acknowledge GenAI use when it is allowed in assessed work.",
+      "actions": {
+        "do": [
+          "Follow the stated method for acknowledging permitted GenAI use."
+        ],
+        "dont": [
+          "Do not omit the acknowledgement required for allowed assessed use."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-ubc-012"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/guidelines-for-all-uses-of-genai-in-teaching-learning/",
+            "sourceSnapshotHash": "0a10700e5b9ae757ebb2e087e23f3969882265c8e7727c23a77f543c3319f882"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "UBC says personal information must not be entered into a generative-AI tool that has not passed its FIPPA compliance assessment.",
+      "actions": {
+        "do": [
+          "Check FIPPA compliance before sharing personal information."
+        ],
+        "dont": [
+          "Do not enter personal information into a tool without the required UBC privacy assessment."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "CL-007"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://genai.ubc.ca/guidance/principles/",
+            "sourceSnapshotHash": "0e6f376cd2d07ed3ed0fb7aceed5e0ca29bcc3544d2ec9e29e442118aeaf252b"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "allowed",
+      "summary": "UBC identifies Microsoft Copilot for Organizations as an approved institutional chatbot for users with UBC credentials, but access is not assessment permission.",
+      "actions": {
+        "do": [
+          "Use the approved institutional route and UBC credentials where applicable."
+        ],
+        "dont": [
+          "Do not treat institutional approval as permission for a particular assessment."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "CL-005"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+            "sourceSnapshotHash": "69418a2cf0a62587a706b8e975a48664bccab8e9ff42b04bd3df297f0a17b690"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "required",
+      "summary": "UBC graduate students need approval for substantive GenAI use in research and thesis work and must include a GenAI use statement in the thesis preface.",
+      "actions": {
+        "do": [
+          "Obtain supervisor or committee approval and include the required thesis statement."
+        ],
+        "dont": [
+          "Do not use substantive GenAI in thesis work without the required approval."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "CL-009"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+            "sourceSnapshotHash": "afea061c3cea022533d348adacb8127d3df7c836b2facac08dcf7fdd9db95f7f"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "CL-003",
+      "claim-ubc-012",
+      "CL-007",
+      "CL-005",
+      "CL-009"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://ai.ctlt.ubc.ca/microsoft-copilot-for-organizations/",
+        "sourceSnapshotHash": "69418a2cf0a62587a706b8e975a48664bccab8e9ff42b04bd3df297f0a17b690"
+      },
+      {
+        "sourceUrl": "https://genai.ubc.ca/guidance/principles/",
+        "sourceSnapshotHash": "0e6f376cd2d07ed3ed0fb7aceed5e0ca29bcc3544d2ec9e29e442118aeaf252b"
+      },
+      {
+        "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/",
+        "sourceSnapshotHash": "6cc7152af150ad693e13c238d0454c827bf88c1d9a687642fda6ad15e048e598"
+      },
+      {
+        "sourceUrl": "https://genai.ubc.ca/guidance/teaching-learning-guidelines/guidelines-for-all-uses-of-genai-in-teaching-learning/",
+        "sourceSnapshotHash": "0a10700e5b9ae757ebb2e087e23f3969882265c8e7727c23a77f543c3319f882"
+      },
+      {
+        "sourceUrl": "https://www.grad.ubc.ca/current-students/student-responsibilities/use-generative-ai",
+        "sourceSnapshotHash": "afea061c3cea022533d348adacb8127d3df7c836b2facac08dcf7fdd9db95f7f"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "c3e61feed68a55f2209948b34624419309ec4dfa453d4b81bb2f1f4bcfe95e89",
+  "review": {
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-4-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
+    },
+    "secondary": {
+      "agentId": "pending-independent-review",
+      "model": "pending-independent-review",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Pending independent review; no second review has been completed."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-08T10:00:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This candidate uses only the cited current staged public claims and source snapshot hashes; absence from a dimension is not permission or prohibition.",
+    "English is canonical; no translation is included because no translation review is present."
+  ]
+}

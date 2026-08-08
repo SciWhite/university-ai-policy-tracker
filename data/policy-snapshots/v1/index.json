@@ -2,7 +2,7 @@
   "schemaVersion": "uapt-policy-snapshot-index-v1",
   "apiVersion": "v1",
   "snapshotSchemaVersion": "uapt-policy-snapshot-v1",
-  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "generatedAt": "2026-08-08T10:00:00.000Z",
   "releaseId": "public-release-20260801-001",
   "entries": [
     {
@@ -157,6 +157,116 @@
       "releaseId": "public-release-20260801-001",
       "generatedAt": "2026-08-01T16:46:58.055Z",
       "basisFingerprint": "259beaaf66161556420eb31dc60f009073d205f3580158b15dc1bb74a97e1620",
+      "locales": []
+    },
+    {
+      "universitySlug": "unsw-sydney",
+      "universityName": "The University of New South Wales (UNSW Sydney)",
+      "file": "universities/unsw-sydney.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/unsw-sydney.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "22cb255eaba72e5ae2231f7873659166baedfc503d16d16c74664645e9ed1d95",
+      "locales": []
+    },
+    {
+      "universitySlug": "cornell-university",
+      "universityName": "Cornell University",
+      "file": "universities/cornell-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/cornell-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "4fc37d095daa765e805274bc511b2015b15484febac1536cecc7cfc6ab535938",
+      "locales": []
+    },
+    {
+      "universitySlug": "university-of-sydney",
+      "universityName": "The University of Sydney",
+      "file": "universities/university-of-sydney.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-sydney.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "cec24b3818bcd6d7a09f4ba0971f0be59deede16d62e3d8c2fad2ec08aaeeb1b",
+      "locales": []
+    },
+    {
+      "universitySlug": "de-la-salle-university",
+      "universityName": "De La Salle University",
+      "file": "universities/de-la-salle-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/de-la-salle-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "44403990d57584bd0671d53148f4daf1105d30da53692519bed22ec79018f192",
+      "locales": []
+    },
+    {
+      "universitySlug": "university-of-auckland",
+      "universityName": "The University of Auckland",
+      "file": "universities/university-of-auckland.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-auckland.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "5b1a9a90ece25453fdc8a9d07b241c8093de708a2e79bc0537a8c60f31d46ebf",
+      "locales": []
+    },
+    {
+      "universitySlug": "imperial-college-london",
+      "universityName": "Imperial College London",
+      "file": "universities/imperial-college-london.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/imperial-college-london.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "e36416299c01541632ffd853923a4a748f7364021eaff75e293a634827580cd6",
+      "locales": []
+    },
+    {
+      "universitySlug": "university-of-melbourne",
+      "universityName": "The University of Melbourne",
+      "file": "universities/university-of-melbourne.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-melbourne.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "4743664a83e1e9802d4289d1fab8398ce7e679b20301f40ba0e61c5d76b4abd2",
+      "locales": []
+    },
+    {
+      "universitySlug": "utrecht-university",
+      "universityName": "Utrecht University",
+      "file": "universities/utrecht-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/utrecht-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "7bf8c2a281073e051b86c8300816097e0ace41cd8a10eea65fc1617da26fba1f",
+      "locales": []
+    },
+    {
+      "universitySlug": "adelaide-university",
+      "universityName": "Adelaide University",
+      "file": "universities/adelaide-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/adelaide-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "1fcba5ff481b8d6c2b9af6511c8fb0f7eb6de3f10e85c68acb79ea45963fea98",
+      "locales": []
+    },
+    {
+      "universitySlug": "ubc",
+      "universityName": "University of British Columbia",
+      "file": "universities/ubc.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/ubc.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-08T10:00:00.000Z",
+      "basisFingerprint": "c3e61feed68a55f2209948b34624419309ec4dfa453d4b81bb2f1f4bcfe95e89",
       "locales": []
     }
   ],

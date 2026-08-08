@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "de-la-salle-university",
+  "universityName": "De La Salle University",
+  "canonicalUrl": "https://eduaipolicy.org/universities/de-la-salle-university",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/de-la-salle-university.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-08T10:00:00.000Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete"
+  ],
+  "summary": "De La Salle University's generative-AI policy is course- and disclosure-focused and explicitly limited to generative AI rather than AI generally.",
+  "audiences": [
+    "students",
+    "faculty",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "research"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "DLSU requires each course syllabus to state generative-AI use levels, while prohibited use or failure to disclose can be academic dishonesty.",
+      "actions": {
+        "do": [
+          "Read the Generative AI Use Policy section in the course syllabus."
+        ],
+        "dont": [
+          "Do not use generative AI where the course policy prohibits it."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-dlsu-generative-ai-syllabus-policy",
+          "claim-dlsu-generative-ai-academic-dishonesty"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://old.dlsu.edu.ph/wp-content/uploads/pdf/provost/forms/policy-for-generative-ai-in-education.pdf",
+            "sourceSnapshotHash": "31b25b9b5073abb49d65320953056a69fabc6e112858a4cda77e68c997582122"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No exam-specific rule is included in the retained DLSU basis.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "DLSU says faculty and students must provide a written disclosure statement when generative AI is used in material, presentations, or submissions.",
+      "actions": {
+        "do": [
+          "Provide the written generative-AI disclosure required by the policy."
+        ],
+        "dont": [
+          "Do not omit disclosure when generative AI was used."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-dlsu-generative-ai-disclosure"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://old.dlsu.edu.ph/wp-content/uploads/pdf/provost/forms/policy-for-generative-ai-in-education.pdf",
+            "sourceSnapshotHash": "31b25b9b5073abb49d65320953056a69fabc6e112858a4cda77e68c997582122"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "DLSU's policy says personal, highly sensitive, internal, proprietary, and confidential information should never be shared with generative-AI services.",
+      "actions": {
+        "do": [
+          "Keep personal, confidential, and proprietary information out of generative-AI services."
+        ],
+        "dont": [
+          "Do not upload internal university documents or proprietary research."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-dlsu-generative-ai-privacy"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://old.dlsu.edu.ph/wp-content/uploads/pdf/provost/forms/policy-for-generative-ai-in-education.pdf",
+            "sourceSnapshotHash": "31b25b9b5073abb49d65320953056a69fabc6e112858a4cda77e68c997582122"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "not_mentioned",
+      "summary": "No approved or institutionally provided AI-tool list is included in this snapshot.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "insufficient_public_evidence",
+      "summary": "The cited policy says it applies to research, but the retained public basis does not provide research-specific permission or prohibition.",
+      "actions": {
+        "do": [
+          "Check current research-specific instructions before using generative AI."
+        ],
+        "dont": [
+          "Do not infer research permission from the policy's stated scope alone."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-dlsu-generative-ai-policy-scope"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://old.dlsu.edu.ph/wp-content/uploads/pdf/provost/forms/policy-for-generative-ai-in-education.pdf",
+            "sourceSnapshotHash": "31b25b9b5073abb49d65320953056a69fabc6e112858a4cda77e68c997582122"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "claim-dlsu-generative-ai-syllabus-policy",
+      "claim-dlsu-generative-ai-academic-dishonesty",
+      "claim-dlsu-generative-ai-disclosure",
+      "claim-dlsu-generative-ai-privacy",
+      "claim-dlsu-generative-ai-policy-scope"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://old.dlsu.edu.ph/wp-content/uploads/pdf/provost/forms/policy-for-generative-ai-in-education.pdf",
+        "sourceSnapshotHash": "31b25b9b5073abb49d65320953056a69fabc6e112858a4cda77e68c997582122"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "44403990d57584bd0671d53148f4daf1105d30da53692519bed22ec79018f192",
+  "review": {
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-4-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
+    },
+    "secondary": {
+      "agentId": "pending-independent-review",
+      "model": "pending-independent-review",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-08T10:00:00.000Z",
+      "notes": "Pending independent review; no second review has been completed."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-08T10:00:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This candidate uses only the cited current staged public claims and source snapshot hashes; absence from a dimension is not permission or prohibition.",
+    "English is canonical; no translation is included because no translation review is present."
+  ]
+}
