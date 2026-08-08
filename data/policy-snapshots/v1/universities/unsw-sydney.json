@@ -37,7 +37,7 @@
       },
       "basis": {
         "claimIds": [
-          "claim-unsw-sydney-23",
+          "claim-unsw-sydney-2",
           "claim-unsw-sydney-3"
         ],
         "sources": [
@@ -153,7 +153,7 @@
   ],
   "basis": {
     "claimIds": [
-      "claim-unsw-sydney-23",
+      "claim-unsw-sydney-2",
       "claim-unsw-sydney-3",
       "claim-unsw-sydney-22",
       "claim-unsw-sydney-8",
@@ -175,7 +175,7 @@
     ]
   },
   "releaseId": "public-release-20260801-001",
-  "basisFingerprint": "22cb255eaba72e5ae2231f7873659166baedfc503d16d16c74664645e9ed1d95",
+  "basisFingerprint": "9788db146bfaa75b835d2230162403b0e77dab06611292582af7dee249b2abd1",
   "review": {
     "reviewMethod": "dual_agent",
     "reviewState": "needs_review",
