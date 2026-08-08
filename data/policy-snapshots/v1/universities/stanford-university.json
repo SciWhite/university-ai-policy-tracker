@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "stanford-university",
+  "universityName": "Stanford University",
+  "canonicalUrl": "http://localhost:3000/universities/stanford-university",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/stanford-university.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete"
+  ],
+  "summary": "Student-first machine candidate combining Stanford-wide guidance with GSB, School of Medicine, Law, and PWR policies. These unit-specific rules vary materially; no single Stanford-wide student permission or prohibition is asserted.",
+  "audiences": [
+    "students"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "exam"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "Stanford unit policies differ: MD/MSPA allows defined learning uses, Law permits defined support, and PWR prohibits composing or revising major assignments. Scope: cited programs only.",
+      "actions": {
+        "do": [
+          "Use the policy for your Stanford school or course."
+        ],
+        "dont": [
+          "Do not apply a different Stanford school’s AI rule to your course."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-stanford-university-law-school-ai-policy",
+          "clm-stanford-university-md-ai-policy",
+          "clm-stanford-university-pwr-genai-policy"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+            "sourceSnapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9"
+          },
+          {
+            "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+            "sourceSnapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385"
+          },
+          {
+            "sourceUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+            "sourceSnapshotHash": "2e601e4a5b47215c842712627c3631375d0eb2ac936abbf1816a04b1bc8c0d2b"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "conditionally_allowed",
+      "summary": "MD/MSPA prohibits AI in closed-book or restricted-internet exams unless authorized; Law requires advance written authorization for exam use. Scope: cited programs.",
+      "actions": {
+        "do": [
+          "Check the specific exam instructions and authorization."
+        ],
+        "dont": [
+          "Do not use AI in a cited restricted exam without explicit authorization."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-stanford-university-law-school-ai-policy",
+          "clm-stanford-university-md-ai-policy"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+            "sourceSnapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9"
+          },
+          {
+            "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+            "sourceSnapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385"
+          }
+        ]
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Stanford MD/MSPA policy requires disclosure and citation of substantial AI contributions. Scope: those programs, not all Stanford courses.",
+      "actions": {
+        "do": [
+          "Disclose and cite substantial AI contributions when the MD/MSPA policy applies."
+        ],
+        "dont": [
+          "Do not generalize this unit rule to another Stanford program."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-stanford-university-md-ai-policy"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+            "sourceSnapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "Stanford guidance restricts confidential, patient, PHI, and moderate/high-risk data in public or uncovered third-party AI tools. Scope: School of Medicine and UIT guidance.",
+      "actions": {
+        "do": [
+          "Use the Stanford-approved platform path for sensitive data."
+        ],
+        "dont": [
+          "Do not enter PHI or high-risk data into a public AI platform."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-stanford-university-md-phi-prohibition",
+          "clm-stanford-university-uit-responsible-ai"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+            "sourceSnapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385"
+          },
+          {
+            "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+            "sourceSnapshotHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "Stanford lists ChatGPT Edu as an official university AI tool. The listing indicates provision or endorsement, not permission for a particular class, exam, or submission.",
+      "actions": {
+        "do": [
+          "Confirm eligibility and the course or assessment rule before use."
+        ],
+        "dont": [
+          "Do not infer academic permission from the university tool listing."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-stanford-university-chatgpt-18"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+            "sourceSnapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "not_mentioned",
+      "summary": "No source-backed Stanford research-publication rule is included in this candidate; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "cl-stanford-university-chatgpt-18",
+      "clm-stanford-university-law-school-ai-policy",
+      "clm-stanford-university-md-ai-policy",
+      "clm-stanford-university-md-phi-prohibition",
+      "clm-stanford-university-pwr-genai-policy",
+      "clm-stanford-university-uit-responsible-ai"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+        "sourceSnapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9"
+      },
+      {
+        "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+        "sourceSnapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385"
+      },
+      {
+        "sourceUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+        "sourceSnapshotHash": "2e601e4a5b47215c842712627c3631375d0eb2ac936abbf1816a04b1bc8c0d2b"
+      },
+      {
+        "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+        "sourceSnapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b"
+      },
+      {
+        "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+        "sourceSnapshotHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "16761fb0847c12dde607b48d5d75aa1d1b56e7dc88ed1d6673a752c68b26c058",
+  "review": {
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-5-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+    },
+    "secondary": {
+      "agentId": "pending-independent-review",
+      "model": "pending independent reviewer",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Pending independent secondary review; no dual-agent approval is asserted."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-01T16:46:58.055Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+  ]
+}

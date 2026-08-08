@@ -4,9 +4,167 @@
   "snapshotSchemaVersion": "uapt-policy-snapshot-v1",
   "generatedAt": "2026-08-01T16:46:58.055Z",
   "releaseId": "public-release-20260801-001",
-  "entries": [],
+  "entries": [
+    {
+      "universitySlug": "aalto-university",
+      "universityName": "Aalto University",
+      "file": "universities/aalto-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/aalto-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "f46c38e5cedd1e99035f22892b71567dab950e7c4bc6b4b31a36ad2b82e73a17",
+      "locales": []
+    },
+    {
+      "universitySlug": "harvard-university",
+      "universityName": "Harvard University",
+      "file": "universities/harvard-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/harvard-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "9e8aba612b627ba06b1a3f30e4fbcb38b07d7d3413957f663b24df1dcfe6d54a",
+      "locales": []
+    },
+    {
+      "universitySlug": "jagiellonian-university",
+      "universityName": "Jagiellonian University",
+      "file": "universities/jagiellonian-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/jagiellonian-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "ffd9d6eea96c0fde3fbbfb1c231401bd7b3fd8ba91b31616a4ea039fd6f5df7c",
+      "locales": []
+    },
+    {
+      "universitySlug": "massachusetts-institute-of-technology",
+      "universityName": "Massachusetts Institute of Technology (MIT)",
+      "file": "universities/massachusetts-institute-of-technology.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/massachusetts-institute-of-technology.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "36886848be6d933aff4f571d34a16448d7230209fbf72cbbf003476504cca0d5",
+      "locales": []
+    },
+    {
+      "universitySlug": "national-university-of-singapore",
+      "universityName": "National University of Singapore (NUS)",
+      "file": "universities/national-university-of-singapore.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/national-university-of-singapore.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "3994d5b96933cdf9f75800ef8d5cf8c03a2d99f7ba214eea2ac6549807583068",
+      "locales": []
+    },
+    {
+      "universitySlug": "snu",
+      "universityName": "Seoul National University",
+      "file": "universities/snu.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/snu.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "2557da364b79d4794ca322dcb20076fc06848fe4ff17f95524611e63bfebc8de",
+      "locales": []
+    },
+    {
+      "universitySlug": "stanford-university",
+      "universityName": "Stanford University",
+      "file": "universities/stanford-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/stanford-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "16761fb0847c12dde607b48d5d75aa1d1b56e7dc88ed1d6673a752c68b26c058",
+      "locales": []
+    },
+    {
+      "universitySlug": "sultan-qaboos-university",
+      "universityName": "Sultan Qaboos University",
+      "file": "universities/sultan-qaboos-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/sultan-qaboos-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "2367c6cb22ecb2fa359687211fccafd65248d15b64cfbf2212bce60a9e1d1c0e",
+      "locales": []
+    },
+    {
+      "universitySlug": "tsinghua-university",
+      "universityName": "Tsinghua University",
+      "file": "universities/tsinghua-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/tsinghua-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "09f22542f9f708f6d0df430bc77abd6ebb9804e06267d8023fcdeaa993765451",
+      "locales": []
+    },
+    {
+      "universitySlug": "u-tokyo",
+      "universityName": "The University of Tokyo",
+      "file": "universities/u-tokyo.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/u-tokyo.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "f35d6df7b165d1bcdc48b6fdb15850236811abc4dfa4b95e966fe2005ab4f9a7",
+      "locales": []
+    },
+    {
+      "universitySlug": "universitat-innsbruck",
+      "universityName": "Universität Innsbruck",
+      "file": "universities/universitat-innsbruck.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/universitat-innsbruck.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "4156373fe30e9c8a79370313147f86a81e5e3c1143a835850deb9959cc1890af",
+      "locales": []
+    },
+    {
+      "universitySlug": "university-of-cambridge",
+      "universityName": "University of Cambridge",
+      "file": "universities/university-of-cambridge.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-cambridge.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "42a54182656b030fadda858acd57f48be74d467f006b3a81f86056d56d9e894e",
+      "locales": []
+    },
+    {
+      "universitySlug": "university-of-oxford",
+      "universityName": "University of Oxford",
+      "file": "universities/university-of-oxford.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-oxford.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "799216b4a937bbeee5dbc5046ae120576941669ed4fc75b33e7ad3d320abc61b",
+      "locales": []
+    },
+    {
+      "universitySlug": "zhejiang-university",
+      "universityName": "Zhejiang University",
+      "file": "universities/zhejiang-university.json",
+      "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/zhejiang-university.json",
+      "overallStatus": "needs_review",
+      "releaseId": "public-release-20260801-001",
+      "generatedAt": "2026-08-01T16:46:58.055Z",
+      "basisFingerprint": "259beaaf66161556420eb31dc60f009073d205f3580158b15dc1bb74a97e1620",
+      "locales": []
+    }
+  ],
   "limitations": [
     "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
-    "Wave 1 includes the contract and loader foundation only; university snapshot files are added through a reviewed release process."
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
   ]
 }

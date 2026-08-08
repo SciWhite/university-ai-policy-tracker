@@ -1,0 +1,227 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "national-university-of-singapore",
+  "universityName": "National University of Singapore (NUS)",
+  "canonicalUrl": "http://localhost:3000/universities/national-university-of-singapore",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/national-university-of-singapore.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete"
+  ],
+  "summary": "Student-first machine candidate for NUS teaching-and-learning policy, citation guidance, and university AI services. Assessment rules and NUS-data tool restrictions are kept separate; listed services do not grant blanket student permission.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "exam"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "NUS treats unacknowledged AI output presented as a student’s own work as plagiarism and separately requires citation guidance to be followed. Scope: teaching-and-learning policy and student citation guidance.",
+      "actions": {
+        "do": [
+          "Read the assignment instructions and acknowledge or cite AI use as required."
+        ],
+        "dont": [
+          "Do not submit AI output as your own without acknowledgement."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-nus-cite-ai-tools",
+          "clm-nus-unacknowledged-plagiarism"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+            "sourceSnapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f"
+          },
+          {
+            "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+            "sourceSnapshotHash": "ee53c1275ceaed742d7aeb1d24af41a37b89872b2b8b9506e101838a8f5b3d22"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "conditionally_allowed",
+      "summary": "NUS sets a default that AI use is permitted for unsupervised take-home assessments when acknowledged; assessments forbidding AI must be in-person and supervised. Scope: NUS policy, subject to the specific assessment.",
+      "actions": {
+        "do": [
+          "Check whether the assessment is supervised and follow its stated AI rule."
+        ],
+        "dont": [
+          "Do not assume the take-home default applies to an assessment with a contrary rule."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-nus-unsupervised-default-permitted"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+            "sourceSnapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f"
+          }
+        ]
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "NUS requires citation of AI-generated content according to style conventions and treats unacknowledged AI output as plagiarism. Scope: student academic work.",
+      "actions": {
+        "do": [
+          "Cite AI-generated content using the applicable style guidance."
+        ],
+        "dont": [
+          "Do not omit acknowledgement when AI contributed to submitted work."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-nus-cite-ai-tools",
+          "clm-nus-unacknowledged-plagiarism"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+            "sourceSnapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f"
+          },
+          {
+            "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+            "sourceSnapshotHash": "ee53c1275ceaed742d7aeb1d24af41a37b89872b2b8b9506e101838a8f5b3d22"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "Where NUS data is involved, the NUS policy requires use of NUS-approved AI tools. Scope: NUS data, not every personal tool or every student task.",
+      "actions": {
+        "do": [
+          "Use an NUS-approved tool when NUS data is involved."
+        ],
+        "dont": [
+          "Do not upload NUS data to an unapproved AI service."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-nus-approved-tools-only"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+            "sourceSnapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "NUS records list institutional AI services and separately require NUS-approved tools when NUS data is involved. Provision or listing is not permission for a course or assessment.",
+      "actions": {
+        "do": [
+          "Verify eligibility, data conditions, and the assessment rule before use."
+        ],
+        "dont": [
+          "Do not infer student assessment permission from an NUS service listing."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-national-university-of-singapore-institutional-ai-service-48",
+          "clm-nus-approved-tools-only"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+            "sourceSnapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f"
+          },
+          {
+            "sourceUrl": "https://news.nus.edu.sg/nus-it-wins-digital-achievers-team-award-at-tech-leader-awards-2025-for-groundbreaking-ai-know-project/",
+            "sourceSnapshotHash": "6c6dd9398d1212ad5dfebd98c29269b2d2437e297b14a8319dbe7f735936b73f"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "not_mentioned",
+      "summary": "No source-backed NUS research-publication rule is included in this candidate; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "cl-national-university-of-singapore-institutional-ai-service-48",
+      "clm-nus-approved-tools-only",
+      "clm-nus-cite-ai-tools",
+      "clm-nus-unacknowledged-plagiarism",
+      "clm-nus-unsupervised-default-permitted"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://ctlt.nus.edu.sg/wp-content/uploads/2026/04/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+        "sourceSnapshotHash": "96587c9cdfd8612eb7eaf96a6104c2789e51031a4388abcd6f7aa01e46750c1f"
+      },
+      {
+        "sourceUrl": "https://libguides.nus.edu.sg/citation/ai",
+        "sourceSnapshotHash": "ee53c1275ceaed742d7aeb1d24af41a37b89872b2b8b9506e101838a8f5b3d22"
+      },
+      {
+        "sourceUrl": "https://news.nus.edu.sg/nus-it-wins-digital-achievers-team-award-at-tech-leader-awards-2025-for-groundbreaking-ai-know-project/",
+        "sourceSnapshotHash": "6c6dd9398d1212ad5dfebd98c29269b2d2437e297b14a8319dbe7f735936b73f"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "3994d5b96933cdf9f75800ef8d5cf8c03a2d99f7ba214eea2ac6549807583068",
+  "review": {
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-5-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+    },
+    "secondary": {
+      "agentId": "pending-independent-review",
+      "model": "pending independent reviewer",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Pending independent secondary review; no dual-agent approval is asserted."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-01T16:46:58.055Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+  ]
+}

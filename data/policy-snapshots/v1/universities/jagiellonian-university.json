@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "jagiellonian-university",
+  "universityName": "Jagiellonian University",
+  "canonicalUrl": "http://localhost:3000/universities/jagiellonian-university",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/jagiellonian-university.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-08-01T16:46:58.055Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete"
+  ],
+  "summary": "Student-first machine candidate based on Jagiellonian Rector Ordinance No. 115/2025. It covers teaching activities, coursework, and theses only as stated in that ordinance; no separate exam or data rule is inferred.",
+  "audiences": [
+    "students"
+  ],
+  "scope": "university_wide",
+  "academicContexts": [
+    "assignment",
+    "thesis",
+    "teaching_preparation"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "The ordinance permits AI-based tools in teaching activities while requiring transparent course rules from teaching staff. Scope: ordinance-defined teaching activities.",
+      "actions": {
+        "do": [
+          "Check the transparent AI rule given for your course."
+        ],
+        "dont": [
+          "Do not assume the general ordinance replaces the instructor course rule."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-jagiellonian-ai-use-permitted-teaching",
+          "claim-jagiellonian-instructors-set-ai-rules"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://bip.uj.edu.pl/documents/1384597/159749054/zarz_115_2025.pdf",
+            "sourceSnapshotHash": "7e20ba62f7662156d51b66f5cf3049df9e067cf252e9b61b53102450f9a4310a"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "not_mentioned",
+      "summary": "No source-backed exam-specific rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "Students must clearly mark AI-generated parts of coursework, theses, or other assignments. Scope: the cited Rector Ordinance.",
+      "actions": {
+        "do": [
+          "Mark the parts of your work generated with AI-based tools."
+        ],
+        "dont": [
+          "Do not submit AI-generated parts without the required marking."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-jagiellonian-students-disclose-ai-use"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://bip.uj.edu.pl/documents/1384597/159749054/zarz_115_2025.pdf",
+            "sourceSnapshotHash": "7e20ba62f7662156d51b66f5cf3049df9e067cf252e9b61b53102450f9a4310a"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "not_mentioned",
+      "summary": "No source-backed student data-entry rule is included; this is not evidence of permission or prohibition.",
+      "actions": {
+        "do": [],
+        "dont": []
+      },
+      "basis": {
+        "claimIds": [],
+        "sources": []
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "The ordinance permits use of AI-based tools in teaching activities but does not make a general course or assessment permission decision for every tool.",
+      "actions": {
+        "do": [
+          "Check the course rule for the particular tool and task."
+        ],
+        "dont": [
+          "Do not read “AI-based tools” as a blanket assessment approval."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-jagiellonian-ai-use-permitted-teaching"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://bip.uj.edu.pl/documents/1384597/159749054/zarz_115_2025.pdf",
+            "sourceSnapshotHash": "7e20ba62f7662156d51b66f5cf3049df9e067cf252e9b61b53102450f9a4310a"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "required",
+      "summary": "The cited ordinance expressly includes theses among work whose AI-generated parts must be clearly marked. Scope: that ordinance, not a separate journal policy.",
+      "actions": {
+        "do": [
+          "Check the ordinance before using AI in thesis work and mark generated parts."
+        ],
+        "dont": [
+          "Do not generalize this to external publication rules without checking the publisher."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "claim-jagiellonian-students-disclose-ai-use"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://bip.uj.edu.pl/documents/1384597/159749054/zarz_115_2025.pdf",
+            "sourceSnapshotHash": "7e20ba62f7662156d51b66f5cf3049df9e067cf252e9b61b53102450f9a4310a"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "claim-jagiellonian-ai-use-permitted-teaching",
+      "claim-jagiellonian-instructors-set-ai-rules",
+      "claim-jagiellonian-students-disclose-ai-use"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://bip.uj.edu.pl/documents/1384597/159749054/zarz_115_2025.pdf",
+        "sourceSnapshotHash": "7e20ba62f7662156d51b66f5cf3049df9e067cf252e9b61b53102450f9a4310a"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260801-001",
+  "basisFingerprint": "ffd9d6eea96c0fde3fbbfb1c231401bd7b3fd8ba91b31616a4ea039fd6f5df7c",
+  "review": {
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "uapt-5-primary-author",
+      "model": "gpt-5",
+      "decision": "approve",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+    },
+    "secondary": {
+      "agentId": "pending-independent-review",
+      "model": "pending independent reviewer",
+      "decision": "needs_review",
+      "reviewedAt": "2026-08-01T16:46:58.055Z",
+      "notes": "Pending independent secondary review; no dual-agent approval is asserted."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-08-01T16:46:58.055Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
+    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
+    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
+    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+  ]
+}

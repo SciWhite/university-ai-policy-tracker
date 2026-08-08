@@ -3,9 +3,11 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import path from "node:path";
 import {
+  policySnapshotIndexSchema,
   policySnapshotSchema
 } from "@uapt/shared";
 import {
+  getLoadedPolicySnapshotIndex,
   loadPolicySnapshotFixture,
   validatePolicySnapshotAgainstPublicData
 } from "../apps/web/lib/policy-snapshots";
@@ -20,6 +22,23 @@ const fixturePath = path.join(
   "fixtures",
   "policy-snapshot-v1-bristol.json"
 );
+
+const riskCohortSlugs = [
+  "aalto-university",
+  "harvard-university",
+  "jagiellonian-university",
+  "massachusetts-institute-of-technology",
+  "national-university-of-singapore",
+  "snu",
+  "stanford-university",
+  "sultan-qaboos-university",
+  "tsinghua-university",
+  "u-tokyo",
+  "universitat-innsbruck",
+  "university-of-cambridge",
+  "university-of-oxford",
+  "zhejiang-university"
+];
 
 test("strong fixture matches current public claims, source hashes, and release", async () => {
   const fixture = policySnapshotSchema.parse(
@@ -128,4 +147,38 @@ test("strong schema rejects an incomplete dual-agent review", async () => {
       }
     })
   );
+});
+
+test("risk cohort snapshots are complete, deterministic, and conservatively reviewed", async () => {
+  const index = policySnapshotIndexSchema.parse(
+    JSON.parse(
+      await readFile(
+        path.join(process.cwd(), "data", "policy-snapshots", "v1", "index.json"),
+        "utf8"
+      )
+    )
+  );
+  assert.deepEqual(
+    index.entries.map((entry) => entry.universitySlug),
+    riskCohortSlugs
+  );
+
+  const loadedIndex = await getLoadedPolicySnapshotIndex();
+  assert.equal(loadedIndex.entries.length, riskCohortSlugs.length);
+  for (const entry of loadedIndex.entries) {
+    assert.equal(entry.overallStatus, "needs_review");
+    assert.equal(
+      entry.loaded.validation.expectedBasisFingerprint,
+      entry.loaded.snapshot.basisFingerprint
+    );
+    assert.equal(entry.loaded.snapshot.review.primary.decision, "approve");
+    assert.equal(
+      entry.loaded.snapshot.review.secondary.agentId,
+      "pending-independent-review"
+    );
+    assert.equal(entry.loaded.snapshot.review.secondary.decision, "needs_review");
+    assert.deepEqual(entry.loaded.snapshot.statusReasons, ["review_incomplete"]);
+    assert.equal(entry.loaded.snapshot.translations.length, 0);
+    assert.equal(entry.loaded.snapshot.dimensions.length, 6);
+  }
 });

@@ -8,6 +8,7 @@ import {
 } from "@uapt/shared";
 import {
   buildPolicySnapshotResponse,
+  getLoadedPolicySnapshotIndex,
   loadPolicySnapshotFixture,
   validatePolicySnapshotAgainstPublicData
 } from "../apps/web/lib/policy-snapshots";
@@ -17,6 +18,23 @@ import {
 } from "../apps/web/lib/staged-public-data";
 
 void main();
+
+const RISK_COHORT_SLUGS = [
+  "aalto-university",
+  "harvard-university",
+  "jagiellonian-university",
+  "massachusetts-institute-of-technology",
+  "national-university-of-singapore",
+  "snu",
+  "stanford-university",
+  "sultan-qaboos-university",
+  "tsinghua-university",
+  "u-tokyo",
+  "universitat-innsbruck",
+  "university-of-cambridge",
+  "university-of-oxford",
+  "zhejiang-university"
+] as const;
 
 async function main(): Promise<void> {
   const fixturePath = path.join(
@@ -78,9 +96,47 @@ async function main(): Promise<void> {
       index.snapshotSchemaVersion === POLICY_SNAPSHOT_SCHEMA_VERSION,
     "Invalid policy snapshot index versions"
   );
+  assert(
+    index.releaseId === release.releaseId,
+    `Snapshot index release ${index.releaseId} does not match current release ${release.releaseId}`
+  );
+  assert(
+    JSON.stringify(index.entries.map((entry) => entry.universitySlug)) ===
+      JSON.stringify(RISK_COHORT_SLUGS),
+    "Risk cohort index entries must contain exactly the deterministic slug order"
+  );
+
+  const loadedIndex = await getLoadedPolicySnapshotIndex();
+  assert(
+    loadedIndex.entries.length === RISK_COHORT_SLUGS.length,
+    `Expected ${RISK_COHORT_SLUGS.length} loaded cohort snapshots, got ${loadedIndex.entries.length}`
+  );
+  for (const entry of loadedIndex.entries) {
+    assert(
+      entry.overallStatus === "needs_review",
+      `${entry.universitySlug} must remain needs_review at candidate stage`
+    );
+    assert(
+      entry.loaded.validation.expectedBasisFingerprint ===
+        entry.loaded.snapshot.basisFingerprint,
+      `${entry.universitySlug} basis fingerprint does not match current claims and sources`
+    );
+    assert(
+      entry.loaded.snapshot.review.primary.decision === "approve" &&
+        entry.loaded.snapshot.review.secondary.agentId ===
+          "pending-independent-review" &&
+        entry.loaded.snapshot.review.secondary.decision === "needs_review",
+      `${entry.universitySlug} must record primary authorship and pending independent review`
+    );
+    assert(
+      entry.loaded.snapshot.statusReasons.includes("review_incomplete") &&
+        entry.loaded.snapshot.translations.length === 0,
+      `${entry.universitySlug} must be an English-only incomplete-review candidate`
+    );
+  }
 
   console.log(
-    `Validated ${POLICY_SNAPSHOT_SCHEMA_VERSION} fixture ${fixture.universitySlug}: six dimensions, ${fixture.basis.claimIds.length} basis claims, ${fixture.basis.sources.length} source hashes, strong/stale fail-closed checks passed; public index entries=${index.entries.length}.`
+    `Validated ${POLICY_SNAPSHOT_SCHEMA_VERSION} fixture ${fixture.universitySlug}: six dimensions, ${fixture.basis.claimIds.length} basis claims, ${fixture.basis.sources.length} source hashes, strong/stale fail-closed checks passed; risk cohort entries=${index.entries.length}, all needs_review fingerprints and review boundaries passed.`
   );
 }
 
