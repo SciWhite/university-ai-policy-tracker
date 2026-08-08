@@ -37,31 +37,36 @@ const roleCopy: Record<
     audience: string;
     audienceKeys: readonly PolicySnapshotAudience[];
     focus: string;
+    unsupportedLabel: string;
   }
 > = {
   student: {
     label: "Student",
     audience: "For students",
     audienceKeys: ["students"],
-    focus: "Coursework, exams, and disclosure"
+    focus: "Coursework, exams, and disclosure",
+    unsupportedLabel: "student"
   },
   instructor: {
     label: "Instructor",
     audience: "For instructors",
     audienceKeys: ["faculty"],
-    focus: "Teaching and assessment"
+    focus: "Teaching and assessment",
+    unsupportedLabel: "instructor"
   },
   researcher: {
     label: "Researcher",
     audience: "For researchers",
     audienceKeys: ["researchers"],
-    focus: "Research and publication"
+    focus: "Research and publication",
+    unsupportedLabel: "researcher"
   },
   staff: {
-    label: "Staff",
+    label: "Staff & institutional data",
     audience: "For staff",
     audienceKeys: ["staff", "administrators"],
-    focus: "Privacy and university-provided tools"
+    focus: "Privacy and university-provided tools",
+    unsupportedLabel: "staff"
   }
 };
 
@@ -287,7 +292,7 @@ export function StudentPolicySnapshot({
           >
             {roleSupported
               ? "Reviewed material is available for this audience."
-              : `No reviewed ${currentRole.label.toLowerCase()}-specific guidance; general conclusions only.`}
+              : `No reviewed ${currentRole.unsupportedLabel}-specific guidance; general conclusions only.`}
           </p>
         </div>
         <nav aria-label="Snapshot audience" className="student-policy__roles">

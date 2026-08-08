@@ -142,8 +142,24 @@ test("strong snapshot markup keeps the role lens and six-card order in SSR", asy
   assert.match(html, /<svg[^>]+viewBox="0 0 24 24"/);
   assert.doesNotMatch(html, /student-snapshot-card__icon[^>]*>A</);
   assert.match(html, /href="\?for=instructor"/);
+  assert.match(html, /href="\?for=staff">Staff &amp; institutional data</);
   assert.match(html, /data-analytics-event="snapshot_card_expand"/);
   assert.match(html, /data-analytics-event="snapshot_scope"/);
   assert.match(html, /data-analytics-event="snapshot_evidence"/);
   assert.match(html, /Provision ≠ coursework permission/);
+
+  const staffHtml = renderToStaticMarkup(
+    React.createElement(StudentPolicySnapshot, {
+      claims,
+      entitySlug: snapshot.universitySlug,
+      role: "staff",
+      snapshot
+    })
+  );
+  assert.match(staffHtml, /href="\?for=staff">Staff &amp; institutional data</);
+  assert.match(
+    staffHtml,
+    /No reviewed staff-specific guidance; general conclusions only\./
+  );
+  assert.doesNotMatch(staffHtml, /staff &amp; institutional data-specific/);
 });
