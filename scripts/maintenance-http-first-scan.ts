@@ -39,9 +39,19 @@ interface CliOptions {
 
 interface SourceStateRecord {
   checkedAt: string;
+  /**
+   * Legacy single-hash field. It is retained only so existing private state
+   * files remain readable; it must not be used for comparisons because a
+   * Firecrawl markdown hash and a direct HTTP extraction hash are not
+   * comparable.
+   */
   contentHash?: string;
   etag?: string;
   finalUrl?: string;
+  firecrawlContentHash?: string;
+  firecrawlCheckedAt?: string;
+  httpContentHash?: string;
+  httpCheckedAt?: string;
   lastModified?: string;
   title?: string;
 }
@@ -457,11 +467,12 @@ function classifyHttpResult(
     httpStatus: http.httpStatus,
     lastModified: http.lastModified,
     previousFinalUrl: previous?.finalUrl ?? target.previousFinalUrl,
-    previousMaintenanceHash: previous?.contentHash,
+    previousMaintenanceHash: previous?.httpContentHash,
     previousSnapshotHash: target.previousSnapshotHash,
     qsRank: target.qsRank,
     sourceTitle: target.sourceTitle,
     sourceUrl: target.sourceUrl,
+    sourceDiffBasis: "http_content_hash",
     title: http.title
   };
 
@@ -514,7 +525,11 @@ function classifyHttpResult(
     };
   }
 
-  if (!previous?.contentHash) {
+  // Do not fall back to the legacy `contentHash`: older state files mixed
+  // direct HTTP and rendered Firecrawl hashes, which made JS-rendered pages
+  // appear changed on every alternating fetch. The first scan after this
+  // schema change deliberately establishes a modality-specific baseline.
+  if (!previous?.httpContentHash) {
     return {
       ...base,
       diffClass: "metadata_or_chrome_delta",
@@ -524,7 +539,7 @@ function classifyHttpResult(
     };
   }
 
-  if (http.contentHash === previous.contentHash) {
+  if (http.contentHash === previous.httpContentHash) {
     return {
       ...base,
       diffClass: "metadata_or_chrome_delta",
@@ -614,12 +629,19 @@ async function verifyWithFirecrawl(
       };
     }
 
-    const changed = previous?.contentHash && previous.contentHash !== contentHash;
+    // Firecrawl's markdown normalization is a separate representation from
+    // direct HTTP extraction. Compare only against an earlier Firecrawl
+    // baseline, never against the last direct HTTP hash.
+    const previousFirecrawlHash = previous?.firecrawlContentHash;
+    const changed =
+      previousFirecrawlHash !== undefined && previousFirecrawlHash !== contentHash;
     const hasPolicySignal = POLICY_SIGNAL_PATTERN.test(`${title ?? ""}\n${target.sourceTitle}`);
 
     return {
       ...row,
       contentHash,
+      previousMaintenanceHash: previousFirecrawlHash,
+      sourceDiffBasis: "firecrawl_markdown_hash",
       diffClass: changed && hasPolicySignal
         ? "content_policy_delta"
         : "metadata_or_chrome_delta",
@@ -628,8 +650,14 @@ async function verifyWithFirecrawl(
       recommendedAction:
         changed && hasPolicySignal
           ? "Firecrawl verified changed content with policy signal. Queue one lightweight OpenClaw review."
-          : "Firecrawl extracted content, but no policy-change escalation is justified.",
-      status: changed && hasPolicySignal ? "needs_openclaw" : "firecrawl_verified_changed",
+          : previousFirecrawlHash
+            ? "Firecrawl extracted content, but no policy-change escalation is justified."
+            : "Recorded first Firecrawl markdown baseline. No OpenClaw action.",
+      status: changed && hasPolicySignal
+        ? "needs_openclaw"
+        : previousFirecrawlHash
+          ? "firecrawl_verified_changed"
+          : "baseline_recorded",
       title
     };
   } catch (error) {
@@ -648,14 +676,28 @@ async function verifyWithFirecrawl(
 
 function updateStateFromRow(state: MaintenanceState, row: MaintenanceRow): void {
   if (!row.contentHash) return;
-  state.records[stateKey(row)] = {
+  const key = stateKey(row);
+  const previous = state.records[key];
+  const next: SourceStateRecord = {
+    ...previous,
     checkedAt: row.checkedAt,
+    // Keep a current generic value for backwards-compatible diagnostics only.
     contentHash: row.contentHash,
     etag: row.etag,
     finalUrl: row.finalUrl,
     lastModified: row.lastModified,
     title: row.title
   };
+
+  if (row.sourceDiffBasis === "firecrawl_markdown_hash") {
+    next.firecrawlCheckedAt = row.checkedAt;
+    next.firecrawlContentHash = row.contentHash;
+  } else if (row.sourceDiffBasis === "http_content_hash") {
+    next.httpCheckedAt = row.checkedAt;
+    next.httpContentHash = row.contentHash;
+  }
+
+  state.records[key] = next;
 }
 
 async function readState(file: string): Promise<MaintenanceState> {

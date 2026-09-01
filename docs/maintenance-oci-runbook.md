@@ -55,6 +55,12 @@ Runtime scan/review output must remain outside the Git worktree at
 `/home/openclaw/workspace/staging/uapt-maintenance`. This prevents generated
 maintenance artifacts from blocking a later `git pull --ff-only`.
 
+The scanner keeps separate private baselines for direct HTTP extraction and
+Firecrawl-rendered markdown. Never compare hashes across those two extraction
+modes: a JS-rendered page can otherwise look changed on every alternating
+scan. When upgrading an older single-hash state file, the first successful
+fetch for each mode records a new baseline and must not enter the review queue.
+
 Install the safe queue-only unit (it does not start a model or promote data):
 
 ```bash
