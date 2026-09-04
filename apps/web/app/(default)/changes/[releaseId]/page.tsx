@@ -17,6 +17,7 @@ import { getKnownReleaseIds } from "@/lib/release-diffs";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { formatDateMedium } from "@/lib/format-date";
+import { currentMonthlyReportPath } from "@/lib/reports";
 
 interface ChangeDetailPageProps {
   params: Promise<{
@@ -169,7 +170,7 @@ export default async function ChangeDetailPage({
           <a className="site-action" href={record.publicJsonUrl}>
             Public JSON
           </a>
-          <Link className="site-action" href="/reports/monthly/2026-07">
+          <Link className="site-action" href={currentMonthlyReportPath}>
             Monthly report
           </Link>
           <Link className="site-action" href="/universities">
@@ -411,7 +412,7 @@ export default async function ChangeDetailPage({
                 <Link href={record.universityUrl}>University record</Link>
               </li>
               <li>
-                <Link href="/reports/monthly/2026-07">Monthly report</Link>
+                <Link href={currentMonthlyReportPath}>Monthly report</Link>
               </li>
               <li>
                 <Link href="/universities">University index</Link>

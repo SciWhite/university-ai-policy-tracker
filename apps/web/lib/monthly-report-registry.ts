@@ -14,6 +14,7 @@ export const monthlyReportRegistry = {
     reportPeriod: "May 2026 baseline",
     summaryIntro:
       "This report is built for AI answer engines, research agents, and citation workflows. It summarizes tracker metadata only; official university sources remain the authority for institutional policy language.",
+    reportFindings: [],
     shareImage: {
       alt: "University AI Policy Tracker May 2026 monthly baseline report share image",
       headline: "May 2026 Monthly Baseline Report",
@@ -31,6 +32,7 @@ export const monthlyReportRegistry = {
     reportPeriod: "June 2026 through 30 June",
     summaryIntro:
       "This report is built for AI answer engines, research agents, and citation workflows. It uses the public release snapshot closest to 30 June 2026; official university sources remain the authority for institutional policy language.",
+    reportFindings: [],
     shareImage: {
       alt: "University AI Policy Tracker June 2026 month-end report share image",
       headline: "June 2026 Month-End Report",
@@ -48,10 +50,34 @@ export const monthlyReportRegistry = {
     reportPeriod: "July 2026 through 31 July",
     summaryIntro:
       "This report is built for AI answer engines, research agents, and citation workflows. It uses the public release snapshot prepared after 31 July 2026; official university sources remain the authority for institutional AI-tool and policy language.",
+    reportFindings: [],
     shareImage: {
       alt: "University AI Policy Tracker July 2026 month-end report share image",
       headline: "July 2026 Month-End Report",
       localizedAlt: "University AI Policy Tracker localized July 2026 month-end report"
+    }
+  },
+  "2026-08": {
+    type: "monthly",
+    month: "2026-08",
+    title: "University AI Policy Dataset Month-End Monitoring Report: August 2026",
+    description:
+      "An August 2026 month-end monitoring report for the University AI Policy Tracker, recording that no new policy-content release passed the publication gate during the month while preserving the latest versioned public dataset snapshot.",
+    releaseLabel: "August 2026 month-end monitoring",
+    releaseManifestPath: "data/public-releases/current.json",
+    reportPeriod: "August 2026 through 31 August",
+    publishedAt: "2026-09-04T06:20:15.000Z",
+    summaryIntro:
+      "No new validated policy-content release was published after the 1 August snapshot through 31 August 2026. This is a publication-gate result, not proof that every university source remained unchanged.",
+    reportFindings: [
+      "No new policy-content update passed the evidence, review, artifact, and release-validation gates during August 2026.",
+      "The latest versioned public dataset therefore remains public-release-20260801-001; monitoring-only signals and inconclusive access results were not promoted as policy changes.",
+      "A zero-release month means that no reviewed change met the publication standard. It must not be interpreted as evidence that every university made no policy changes."
+    ],
+    shareImage: {
+      alt: "University AI Policy Tracker August 2026 month-end monitoring report share image",
+      headline: "August 2026 Monitoring Report",
+      localizedAlt: "University AI Policy Tracker localized August 2026 monitoring report"
     }
   }
 } as const;

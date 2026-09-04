@@ -26,7 +26,7 @@ import {
   monthlyReportSlugs
 } from "./monthly-report-registry";
 
-export const currentMonthlyReportSlug = "2026-07";
+export const currentMonthlyReportSlug = "2026-08";
 export const currentMonthlyReportPath = `/reports/monthly/${currentMonthlyReportSlug}`;
 export const currentMonthlyReportChartDataPath = `/api/public/${PUBLIC_API_VERSION}/reports/monthly/${currentMonthlyReportSlug}/chart-data.json`;
 
@@ -381,7 +381,8 @@ export async function getMonthlyReport(
     ogImageUrl: getAbsoluteSiteUrl(`${canonicalPath}/opengraph-image`),
     releaseId: manifest.releaseId,
     releasePeriod: reportSpec.reportPeriod,
-    publishedAt: manifest.publishedAt,
+    publishedAt:
+      "publishedAt" in reportSpec ? reportSpec.publishedAt : manifest.publishedAt,
     license: TRACKER_METADATA_LICENSE,
     limitations: manifest.limitations.length
       ? manifest.limitations
@@ -435,6 +436,7 @@ export async function getMonthlyReport(
       locale
     }),
     summaryBullets: [
+      ...reportSpec.reportFindings,
       `This report uses ${manifest.releaseId}, the public release snapshot selected for ${reportSpec.reportPeriod}.`,
       `${checkedInstitutionCount.toLocaleString(locale)} public university records include checked dates and ${changedInstitutionCount.toLocaleString(locale)} expose changed dates in this snapshot.`,
       `${reviewedClaimCount.toLocaleString(locale)} claims are marked as reviewed by an agent or human review state; ${candidateClaimCount.toLocaleString(locale)} claims remain candidate or otherwise not reviewed.`,

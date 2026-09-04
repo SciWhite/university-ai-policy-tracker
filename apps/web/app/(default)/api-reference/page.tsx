@@ -9,6 +9,7 @@ import {
   widgetScriptPath
 } from "@/lib/developer-surfaces";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
+import { currentMonthlyReportChartDataPath } from "@/lib/reports";
 
 const title = "API Reference | University AI Policy Tracker";
 const description =
@@ -125,9 +126,9 @@ const apiFamilies = [
   },
   {
     label: "Report chart data",
-    path: `/api/public/${PUBLIC_API_VERSION}/reports/monthly/2026-07/chart-data.json`,
+    path: currentMonthlyReportChartDataPath,
     description:
-      "Chart-ready source-language, review-state, region coverage, city/campus coverage, and ranking coverage distributions for the July 2026 month-end report."
+      "Chart-ready source-language, review-state, region coverage, city/campus coverage, and ranking coverage distributions for the latest monthly report."
   },
   {
     label: "Reports outreach package",
