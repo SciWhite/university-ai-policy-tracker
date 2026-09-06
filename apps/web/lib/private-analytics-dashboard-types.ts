@@ -1,3 +1,4 @@
+import type { BingMetricRow, BingSummary } from "@/lib/bing-webmaster";
 import type { GscMetricRow, GscSummary } from "@/lib/google-search-console";
 import type {
   AnalyticsPeriod,
@@ -118,6 +119,14 @@ export interface AnalyticsDashboardDetail {
 }
 
 export interface AnalyticsDashboardResponse {
+  bing: {
+    current: BingSummary;
+    movers: {
+      pages: AnalyticsDashboardMover[];
+      queries: AnalyticsDashboardMover[];
+    };
+    previous: BingSummary;
+  };
   detail?: AnalyticsDashboardDetail;
   filterOptions: AnalyticsDashboardFilterOptions;
   gsc: {
@@ -137,11 +146,13 @@ export interface AnalyticsDashboardResponse {
       tracking: string;
     };
     comparison: {
+      bing: { eligible: boolean; reason?: { en: string; zh: string } };
       gsc: { eligible: boolean; reason?: { en: string; zh: string } };
       onsite: { eligible: boolean; reason?: { en: string; zh: string } };
       sources: { eligible: boolean; reason?: { en: string; zh: string } };
     };
     dataStatus: {
+      bing: "connected" | "unavailable";
       gsc: "connected" | "unavailable";
       onsite: "connected" | "unavailable";
       rpc: "fallback" | "ready";

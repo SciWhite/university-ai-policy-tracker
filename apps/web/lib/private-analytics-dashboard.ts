@@ -6,6 +6,11 @@ import {
   type AnalyticsStoreRollup
 } from "@/lib/analytics-store";
 import {
+  getBingWebmasterSummary,
+  type BingMetricRow,
+  type BingSummary
+} from "@/lib/bing-webmaster";
+import {
   getGoogleSearchConsoleSummary,
   type GscMetricRow,
   type GscSummary
@@ -138,6 +143,20 @@ export async function getAnalyticsDashboard(
         )
       : Promise.resolve(emptyGscSummary())
   ]);
+  const bingPromise = Promise.all([
+    getBingWebmasterSummary(
+      dateAtUtcNoon(query.from),
+      dateAtUtcNoon(query.to),
+      { detailRowLimit: 250 }
+    ),
+    query.compare
+      ? getBingWebmasterSummary(
+          dateAtUtcNoon(query.previousFrom),
+          dateAtUtcNoon(query.previousTo),
+          { detailRowLimit: 250 }
+        )
+      : Promise.resolve(emptyBingSummary())
+  ]);
   const [currentRollup, previousRollup] = await Promise.all([
     currentRollupPromise,
     previousRollupPromise
@@ -149,10 +168,11 @@ export async function getAnalyticsDashboard(
   const botDiagnosticRowsPromise = rollupReady && query.to >= ANALYTICS_COLLECTOR_BASELINE
     ? loadRows(dateAtUtcNoon(shiftDate(botDiagnosticFrom, -1)), { excludeBots: false })
     : Promise.resolve([]);
-  const [primaryRows, botDiagnosticRows, [currentGsc, previousGsc]] = await Promise.all([
+  const [primaryRows, botDiagnosticRows, [currentGsc, previousGsc], [currentBing, previousBing]] = await Promise.all([
     loadRows(since, { excludeBots: rollupReady }),
     botDiagnosticRowsPromise,
-    gscPromise
+    gscPromise,
+    bingPromise
   ]);
   const allRows = rollupReady
     ? primaryRows.concat(botDiagnosticRows.filter(isBotAnalyticsRow))
@@ -191,8 +211,10 @@ export async function getAnalyticsDashboard(
   );
   const queryMovers = buildGscMovers(currentGsc.queryRows, previousGsc.queryRows);
   const gscPageMovers = buildGscMovers(currentGsc.pageRows, previousGsc.pageRows);
+  const bingQueryMovers = buildBingMovers(currentBing.queryRows, previousBing.queryRows);
+  const bingPageMovers = buildBingMovers(currentBing.pageRows, previousBing.pageRows);
   const opportunities = buildQueryOpportunities(currentGsc);
-  const comparison = buildComparisonEligibility(query, currentGsc);
+  const comparison = buildComparisonEligibility(query, currentGsc, currentBing);
   const insights = buildAnalyticsInsights({
     analyticsStoreAvailable,
     current,
@@ -206,6 +228,14 @@ export async function getAnalyticsDashboard(
   });
 
   return {
+    bing: {
+      current: currentBing,
+      movers: {
+        pages: bingPageMovers,
+        queries: bingQueryMovers
+      },
+      previous: previousBing
+    },
     detail: buildDetail(query, current, previous, currentGsc, previousGsc),
     filterOptions,
     gsc: {
@@ -226,6 +256,7 @@ export async function getAnalyticsDashboard(
       },
       comparison,
       dataStatus: {
+        bing: currentBing.available ? "connected" : "unavailable",
         gsc: currentGsc.available ? "connected" : "unavailable",
         onsite: analyticsStoreAvailable ? "connected" : "unavailable",
         rpc: rollupReady ? "ready" : "fallback"
@@ -480,7 +511,8 @@ function getPayloadText(row: AnalyticsEventRow, key: string): string | undefined
 
 export function buildComparisonEligibility(
   query: AnalyticsDashboardQuery,
-  currentGsc: GscSummary
+  currentGsc: GscSummary,
+  currentBing?: BingSummary
 ): AnalyticsDashboardResponse["meta"]["comparison"] {
   const disabledReason = {
     en: "Previous-period comparison is disabled.",
@@ -495,7 +527,23 @@ export function buildComparisonEligibility(
     gscCompleteThrough &&
     gscCompleteThrough >= query.to
   );
+  const bingEligible = Boolean(
+    query.compare &&
+    currentBing?.available &&
+    currentBing.dateRows.length > 0
+  );
   return {
+    bing: {
+      eligible: bingEligible,
+      reason: bingEligible
+        ? undefined
+        : !query.compare
+          ? disabledReason
+          : {
+              en: "Bing data is unavailable or has no date rows for this range.",
+              zh: "Bing 数据不可用或此范围内无日期数据。"
+            }
+    },
     gsc: {
       eligible: gscEligible,
       reason: gscEligible
@@ -616,6 +664,16 @@ function buildMovers(
 function buildGscMovers(
   currentRows: GscMetricRow[],
   previousRows: GscMetricRow[]
+): AnalyticsDashboardMover[] {
+  return buildMoverRows(
+    new Map(currentRows.map((row) => [row.key, row.impressions])),
+    new Map(previousRows.map((row) => [row.key, row.impressions]))
+  );
+}
+
+function buildBingMovers(
+  currentRows: BingMetricRow[],
+  previousRows: BingMetricRow[]
 ): AnalyticsDashboardMover[] {
   return buildMoverRows(
     new Map(currentRows.map((row) => [row.key, row.impressions])),
@@ -858,6 +916,16 @@ function emptyGscSummary(): GscSummary {
     countryRows: [],
     dateRows: [],
     deviceRows: [],
+    pageRows: [],
+    queryRows: [],
+    totals: { clicks: 0, ctr: 0, impressions: 0, position: 0 }
+  };
+}
+
+function emptyBingSummary(): BingSummary {
+  return {
+    available: false,
+    dateRows: [],
     pageRows: [],
     queryRows: [],
     totals: { clicks: 0, ctr: 0, impressions: 0, position: 0 }
