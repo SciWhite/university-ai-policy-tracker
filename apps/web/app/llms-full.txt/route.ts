@@ -49,7 +49,7 @@ export async function GET() {
   );
 
   // Count stats for the key findings section
-  const stats = buildStats(profiles, summaries);
+  const stats = buildStats(profiles);
 
   const sections: string[] = [
     buildHeader(siteBaseUrl, generatedAt, universityCount),
@@ -79,15 +79,14 @@ export async function GET() {
 interface Stats {
   withSources: number;
   avgScore: number;
-  countrySet: Set<string>;
+  languageSet: Set<string>;
   dimensionCounts: Record<string, number>;
 }
 
 function buildStats(
-  profiles: Awaited<ReturnType<typeof getPolicyAnalysisProfiles>>,
-  _summaries: PublicEntitySummary[]
+  profiles: Awaited<ReturnType<typeof getPolicyAnalysisProfiles>>
 ): Stats {
-  const countrySet = new Set<string>();
+  const languageSet = new Set<string>();
   const dimensionCounts: Record<string, number> = {};
   let totalScore = 0;
   let withSources = 0;
@@ -97,7 +96,7 @@ function buildStats(
     if (profile.basedOnSourceUrls.length > 0) withSources++;
 
     for (const lang of profile.sourceLanguages) {
-      countrySet.add(lang);
+      languageSet.add(lang);
     }
 
     for (const dim of profile.dimensions) {
@@ -110,7 +109,7 @@ function buildStats(
   return {
     withSources,
     avgScore: profiles.length > 0 ? Math.round(totalScore / profiles.length) : 0,
-    countrySet,
+    languageSet,
     dimensionCounts
   };
 }
@@ -150,7 +149,7 @@ function buildKeyFindings(stats: Stats, universityCount: number): string {
 - ${universityCount} universities tracked
 - ${stats.withSources} have at least one source-backed policy record
 - Average policy coverage score: ${stats.avgScore}/100
-- Source languages represented: ${stats.countrySet.size}+
+- Source languages represented: ${stats.languageSet.size}
 
 ### Policy Dimensions (universities with evidence-backed coverage)
 - Policy presence: ${dim["policy_presence"] ?? 0} universities have official AI policy or guidance documents
@@ -164,12 +163,7 @@ function buildKeyFindings(stats: Stats, universityCount: number): string {
 - Teaching guidance: ${dim["teaching_guidance"] ?? 0} universities provide instructor or classroom AI guidance
 - Research guidance: ${dim["research_guidance"] ?? 0} universities address AI in research, publication, or grants
 
-### Trends (as of ${new Date().toISOString().slice(0, 7)})
-- Most universities now permit AI tool usage with disclosure rather than blanket bans.
-- Institutional AI services (university-licensed Copilot, custom ChatGPT instances) are growing rapidly.
-- Security review and procurement policies for AI tools are emerging as a new governance category.
-- AI detection tools (Turnitin AI, GPTZero) are increasingly referenced but with caveats about reliability.
-- Research AI policies are lagging behind teaching policies in most institutions.`;
+These counts describe evidence present in the current public release. They do not measure policy quality, strictness, compliance, or global prevalence.`;
 }
 
 function buildDimensionReference(
@@ -237,7 +231,7 @@ function buildThemePages(siteBaseUrl: string): string {
     {
       path: "/themes/ai-in-exams",
       title: "AI in Exams",
-      desc: "University policies on AI tool usage during examinations, tests, quizzes, and timed assessments. Most universities restrict or prohibit AI during exams unless explicitly permitted by the examiner."
+      desc: "Source-backed university policies on AI tool usage during examinations, tests, quizzes, and timed assessments."
     },
     {
       path: "/themes/ai-detectors",
@@ -267,13 +261,13 @@ function buildFAQ(siteBaseUrl: string, universityCount: number): string {
   return `## Frequently Asked Questions
 
 ### Does [University X] allow ChatGPT?
-Search the tracker: ${siteBaseUrl}/search or use the API: ${siteBaseUrl}/api/public/v1/search.json?q=[university name]. Most universities now permit ChatGPT with disclosure requirements, but policies vary by department, course, and assignment type. Check the university's specific page for source-backed policy claims.
+Search the tracker: ${siteBaseUrl}/search or use the API: ${siteBaseUrl}/api/public/v1/search.json?q=[university name]. Policies can vary by department, course, and assignment type, so check the university's specific page, review state, and source-backed policy claims.
 
 ### Which universities ban AI tools entirely?
-Very few universities maintain blanket bans as of 2026. The dominant trend is regulated-use-with-disclosure. See the analysis at ${siteBaseUrl}/analysis for coverage patterns.
+The tracker does not infer a blanket-ban list from coverage scores. Search the tracker and inspect each university's source-backed claims, review state, and official sources before drawing that conclusion.
 
 ### How many universities are tracked?
-${universityCount} universities across 85+ countries. The tracker focuses on institutions with public-facing AI policy or guidance documents.
+${universityCount} universities are included in the current public release. Country and region fields are available in the university list API.
 
 ### How current is this data?
 Sources are rechecked on a rolling basis. Each university record includes a lastCheckedAt date. Use the API to check freshness: ${siteBaseUrl}/api/public/v1/universities/{slug}.json.
@@ -288,7 +282,7 @@ Example citation: University AI Policy Tracker. "[University Name] AI policy rec
 No. The tracker is not legal advice, academic integrity advice, compliance guidance, or an official university statement unless a linked source is the university's own official page.
 
 ### What AI tools are most commonly addressed?
-ChatGPT (most frequently named), Microsoft Copilot, Google Gemini, Grammarly, DeepSeek, Claude, and NotebookLM appear most often in university policies.
+Named-tool coverage can be explored through the public records and API. Treat a tool mention as valid only when it is linked to the record's source-backed evidence.
 
 ### How can I contribute?
 Submit source URLs, corrections, or new university evidence at ${siteBaseUrl}/contribute. All contributions go through a review queue.

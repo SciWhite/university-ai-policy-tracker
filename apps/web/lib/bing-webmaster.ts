@@ -11,8 +11,8 @@
  *   - GetPageStats           → pageRows (per-page clicks/impressions)
  *   - GetQueryStats          → queryRows (per-query clicks/impressions)
  *
- * The Bing API returns the full available history (~3 months). Rows are
- * filtered to the requested date range client-side.
+ * The Bing API returns the available history rather than accepting a date
+ * range. Rows are filtered and detail rows are aggregated client-side.
  */
 
 export interface BingMetricRow {
@@ -42,7 +42,7 @@ export interface BingSummary {
 // Bing API response shapes
 // ---------------------------------------------------------------------------
 
-interface BingApiRow {
+export interface BingApiRow {
   AvgClickPosition?: number;
   AvgImpressionPosition?: number;
   Clicks?: number;
@@ -145,20 +145,19 @@ async function loadBingSummary(
 
     // Filter daily rows to the requested date range
     const filteredDateRows = dailyRows
-      .map(toBingMetricRow)
-      .filter((row) => row.key >= startStr && row.key <= endStr);
+      .map(toBingDateMetricRow)
+      .filter((row) => row.key >= startStr && row.key <= endStr)
+      .sort((a, b) => a.key.localeCompare(b.key));
 
-    // Page and query rows don't have reliable dates in the Bing API,
-    // so we return the top N across the full available period.
-    const filteredPageRows = pageRows
-      .map(toBingMetricRow)
-      .sort((a, b) => b.impressions - a.impressions)
-      .slice(0, detailRowLimit);
-
-    const filteredQueryRows = queryRows
-      .map(toBingMetricRow)
-      .sort((a, b) => b.impressions - a.impressions)
-      .slice(0, detailRowLimit);
+    // Bing emits one QueryStats row per key and reporting date. GetPageStats
+    // uses the Query property for the page URL, so both endpoints need the
+    // same range filter and aggregation before they can be compared.
+    const allPageRows = aggregateBingDetailRows(pageRows, startStr, endStr);
+    const allQueryRows = aggregateBingDetailRows(queryRows, startStr, endStr);
+    const filteredPageRows = allPageRows.slice(0, detailRowLimit);
+    const filteredQueryRows = allQueryRows.slice(0, detailRowLimit);
+    const totals = getMetricTotals(filteredDateRows);
+    totals.position = getMetricTotals(allQueryRows).position;
 
     return {
       available: true,
@@ -166,7 +165,7 @@ async function loadBingSummary(
       pageRows: filteredPageRows,
       queryRows: filteredQueryRows,
       siteUrl,
-      totals: getMetricTotals(filteredDateRows)
+      totals
     };
   } catch (error) {
     return emptyBingSummary({
@@ -206,21 +205,61 @@ async function queryBing(
 // Row conversion
 // ---------------------------------------------------------------------------
 
-function toBingMetricRow(row: BingApiRow): BingMetricRow {
+function toBingDateMetricRow(row: BingApiRow): BingMetricRow {
   const clicks = row.Clicks ?? 0;
   const impressions = row.Impressions ?? 0;
   const position = row.AvgImpressionPosition ?? 0;
-  // Determine the key: date, query, or page URL
-  const key = row.Date
-    ? parseBingDate(row.Date)
-    : (row.Query ?? "unknown");
   return {
     clicks,
     ctr: impressions > 0 ? clicks / impressions : 0,
     impressions,
-    key,
+    key: row.Date ? parseBingDate(row.Date) : "unknown",
     position
   };
+}
+
+export function aggregateBingDetailRows(
+  rows: BingApiRow[],
+  startDate: string,
+  endDate: string
+): BingMetricRow[] {
+  const grouped = new Map<
+    string,
+    { clicks: number; impressions: number; weightedPosition: number }
+  >();
+
+  for (const row of rows) {
+    const date = row.Date ? parseBingDate(row.Date) : "unknown";
+    const key = row.Query?.trim();
+    if (!key || date < startDate || date > endDate) continue;
+    const current = grouped.get(key) ?? {
+      clicks: 0,
+      impressions: 0,
+      weightedPosition: 0
+    };
+    const clicks = row.Clicks ?? 0;
+    const impressions = row.Impressions ?? 0;
+    current.clicks += clicks;
+    current.impressions += impressions;
+    current.weightedPosition += (row.AvgImpressionPosition ?? 0) * impressions;
+    grouped.set(key, current);
+  }
+
+  return [...grouped.entries()]
+    .map(([key, value]) => ({
+      clicks: value.clicks,
+      ctr: value.impressions ? value.clicks / value.impressions : 0,
+      impressions: value.impressions,
+      key,
+      position: value.impressions
+        ? value.weightedPosition / value.impressions
+        : 0
+    }))
+    .sort((a, b) =>
+      b.impressions - a.impressions ||
+      b.clicks - a.clicks ||
+      a.key.localeCompare(b.key)
+    );
 }
 
 /**

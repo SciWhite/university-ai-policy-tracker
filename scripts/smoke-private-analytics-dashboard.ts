@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import type { AnalyticsEventRow } from "@uapt/db";
+import { aggregateBingDetailRows } from "../apps/web/lib/bing-webmaster.ts";
 import type { GscSummary } from "../apps/web/lib/google-search-console.ts";
 import {
   buildComparisonEligibility,
@@ -60,6 +61,26 @@ assert.equal(
   "unknown"
 );
 assert.equal(summary.engagedSessions, 1);
+
+const bingRows = aggregateBingDetailRows(
+  [
+    bingRow("2026-07-01", "university ai policy", 3, 30, 4),
+    bingRow("2026-07-02", "university ai policy", 2, 20, 6),
+    bingRow("2026-06-30", "outside range", 99, 100, 1),
+    bingRow("2026-07-02", "https://eduaipolicy.org/universities/example", 1, 10, 8)
+  ],
+  "2026-07-01",
+  "2026-07-02"
+);
+assert.equal(bingRows.length, 2);
+assert.deepEqual(bingRows[0], {
+  clicks: 5,
+  ctr: 0.1,
+  impressions: 50,
+  key: "university ai policy",
+  position: 4.8
+});
+assert.equal(bingRows[1]?.key, "https://eduaipolicy.org/universities/example");
 
 const baselineComparison = buildComparisonEligibility(
   {
@@ -147,6 +168,22 @@ function gscSummary(queryRows: GscSummary["queryRows"]): GscSummary {
       impressions,
       position: 8
     }
+  };
+}
+
+function bingRow(
+  date: string,
+  query: string,
+  clicks: number,
+  impressions: number,
+  position: number
+) {
+  return {
+    AvgImpressionPosition: position,
+    Clicks: clicks,
+    Date: `/Date(${new Date(`${date}T07:00:00Z`).getTime()}-0700)/`,
+    Impressions: impressions,
+    Query: query
   };
 }
 

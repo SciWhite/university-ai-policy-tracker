@@ -14,6 +14,7 @@ import {
   DashboardSourceChart,
   DashboardSparkline
 } from "@/components/private-analytics-charts";
+import type { BingMetricRow } from "@/lib/bing-webmaster";
 import type { GscMetricRow } from "@/lib/google-search-console";
 import type {
   AnalyticsDashboardFocus,
@@ -44,6 +45,11 @@ const copy = {
     allSources: "All sources",
     avgPosition: "Avg position",
     behavior: "Onsite behavior",
+    bingClicks: "Bing clicks",
+    bingCtr: "Bing CTR",
+    bingExplorer: "Bing search explorer",
+    bingImpressions: "Bing impressions",
+    bingSearchTrend: "Bing visibility trend",
     botRequests: "Bot page views",
     clicks: "GSC clicks",
     close: "Close",
@@ -109,6 +115,11 @@ const copy = {
     allSources: "全部来源",
     avgPosition: "平均排名",
     behavior: "站内使用行为",
+    bingClicks: "Bing 点击",
+    bingCtr: "Bing CTR",
+    bingExplorer: "Bing 搜索明细",
+    bingImpressions: "Bing 展现",
+    bingSearchTrend: "Bing 可见性趋势",
     botRequests: "Bot 浏览量",
     clicks: "GSC 点击",
     close: "关闭",
@@ -181,6 +192,7 @@ export function PrivateAnalyticsDashboard({
   const [requestError, setRequestError] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState(0);
   const [gscMetric, setGscMetric] = useState<"clicks" | "ctr" | "impressions" | "position">("clicks");
+  const [bingMetric, setBingMetric] = useState<"clicks" | "ctr" | "impressions">("clicks");
   const [moverTab, setMoverTab] = useState<"pages" | "queries" | "sources">("queries");
   const [drawer, setDrawer] = useState<DrawerState | null>(null);
   const firstRender = useRef(true);
@@ -229,6 +241,8 @@ export function PrivateAnalyticsDashboard({
   const previous = data.onsite.previous;
   const gsc = data.gsc.current;
   const previousGsc = data.gsc.previous;
+  const bing = data.bing.current;
+  const previousBing = data.bing.previous;
   const engagedRate = safeRate(current.summary.engagedSessions, current.summary.sessions);
   const previousEngagedRate = safeRate(previous.summary.engagedSessions, previous.summary.sessions);
   const sourceLabels = {
@@ -327,6 +341,24 @@ export function PrivateAnalyticsDashboard({
     });
   }
 
+  function openBingRow(row: BingMetricRow, focus: "page" | "query") {
+    const previousRow = (focus === "query" ? previousBing.queryRows : previousBing.pageRows)
+      .find((item) => item.key === row.key);
+    openDrawer({
+      current: row.impressions,
+      focus,
+      key: row.key,
+      previous: previousRow?.impressions ?? 0,
+      rows: [
+        [t.bingClicks, formatCount(row.clicks)],
+        [t.bingImpressions, formatCount(row.impressions)],
+        [t.bingCtr, formatPercent(row.ctr)],
+        [t.avgPosition, formatDecimal(row.position)]
+      ],
+      title: row.key
+    });
+  }
+
   function openMover(row: AnalyticsDashboardMover) {
     const focus = moverTab === "queries" ? "query" : moverTab === "pages" ? "landing" : "source";
     openDrawer({
@@ -394,6 +426,7 @@ export function PrivateAnalyticsDashboard({
       <section className="analytics-status-row" aria-label="Data source status">
         <StatusPill label="Onsite" status={data.meta.dataStatus.onsite} t={t} />
         <StatusPill label="GSC" status={data.meta.dataStatus.gsc} t={t} />
+        <StatusPill label="Bing" status={data.meta.dataStatus.bing} t={t} />
         <span>{query.from} → {query.to}</span>
         <span>{t.generated}: {formatDateTime(data.meta.generatedAt, locale)}</span>
         {data.meta.gscCompleteThrough ? <span>{t.gscFinal}: {data.meta.gscCompleteThrough}</span> : null}
@@ -408,6 +441,7 @@ export function PrivateAnalyticsDashboard({
         <ComparisonItem item={data.meta.comparison.onsite} label={locale === "zh" ? "站内环比" : "Onsite comparison"} locale={locale} />
         <ComparisonItem item={data.meta.comparison.sources} label={locale === "zh" ? "来源环比" : "Source comparison"} locale={locale} />
         <ComparisonItem item={data.meta.comparison.gsc} label="GSC" locale={locale} />
+        <ComparisonItem item={data.meta.comparison.bing} label="Bing" locale={locale} />
       </section>
 
       {loading ? <div aria-live="polite" className="analytics-loading-bar">{t.loading}</div> : null}
@@ -439,6 +473,9 @@ export function PrivateAnalyticsDashboard({
         <KpiCard comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.impressions} label={t.impressions} onClick={() => openMetric("impressions", t.impressions, gsc.totals.impressions, previousGsc.totals.impressions, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.impressions} spark={gsc.dateRows.map((row) => row.impressions)} />
         <KpiCard comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.ctr} format="percent" label={t.ctr} onClick={() => openMetric("rate", t.ctr, gsc.totals.ctr, previousGsc.totals.ctr, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.ctr} spark={gsc.dateRows.map((row) => row.ctr * 100)} />
         <KpiCard comparable={data.meta.comparison.gsc.eligible} current={gsc.totals.position} format="decimal" label={t.avgPosition} onClick={() => openMetric("position", t.avgPosition, gsc.totals.position, previousGsc.totals.position, data.meta.comparison.gsc.eligible)} previous={previousGsc.totals.position} reverseTone spark={gsc.dateRows.map((row) => row.position)} />
+        <KpiCard comparable={data.meta.comparison.bing.eligible} current={bing.totals.clicks} label={t.bingClicks} onClick={() => openMetric("bingClicks", t.bingClicks, bing.totals.clicks, previousBing.totals.clicks, data.meta.comparison.bing.eligible)} previous={previousBing.totals.clicks} spark={bing.dateRows.map((row) => row.clicks)} />
+        <KpiCard comparable={data.meta.comparison.bing.eligible} current={bing.totals.impressions} label={t.bingImpressions} onClick={() => openMetric("bingImpressions", t.bingImpressions, bing.totals.impressions, previousBing.totals.impressions, data.meta.comparison.bing.eligible)} previous={previousBing.totals.impressions} spark={bing.dateRows.map((row) => row.impressions)} />
+        <KpiCard comparable={data.meta.comparison.bing.eligible} current={bing.totals.ctr} format="percent" label={t.bingCtr} onClick={() => openMetric("rate", t.bingCtr, bing.totals.ctr, previousBing.totals.ctr, data.meta.comparison.bing.eligible)} previous={previousBing.totals.ctr} spark={bing.dateRows.map((row) => row.ctr * 100)} />
       </section>
 
       <section className="analytics-growth-grid">
@@ -469,6 +506,21 @@ export function PrivateAnalyticsDashboard({
             ]}
           />
         </DashboardPanel>
+        <DashboardPanel
+          action={<MetricTabs includePosition={false} metric={bingMetric} onChange={(metric) => setBingMetric(metric as typeof bingMetric)} />}
+          index="03B"
+          meta="Bing Webmaster Tools"
+          title={t.bingSearchTrend}
+        >
+          <DashboardLineChart
+            emptyLabel={t.noData}
+            labels={bing.dateRows.map((row) => row.key.slice(5))}
+            series={[
+              { color: "var(--analytics-ai)", key: bingMetric, label: bingMetricLabel(bingMetric, t), values: bing.dateRows.map((row) => metricValue(row, bingMetric)) },
+              ...(data.meta.comparison.bing.eligible ? [{ color: "var(--color-text-muted)", dashed: true, key: "previous", label: t.previous, values: previousBing.dateRows.map((row) => metricValue(row, bingMetric)) }] : [])
+            ]}
+          />
+        </DashboardPanel>
         <DashboardPanel index="04" meta={t.onsite} title={t.sourceComposition}>
           <DashboardSourceChart emptyLabel={t.noData} labels={sourceLabels} onSelect={(source) => openSourceDrawer(source, data, locale, openDrawer)} rows={current.sourceTrend} />
         </DashboardPanel>
@@ -492,6 +544,13 @@ export function PrivateAnalyticsDashboard({
           <div className="analytics-detail-grid">
             <DataTable headers={[t.queries, t.clicks, t.impressions, t.ctr, t.avgPosition]} rows={gsc.queryRows.slice(0, 20).map((row) => ({ key: row.key, onClick: () => openGscRow(row, "query"), values: [row.key, formatCount(row.clicks), formatCount(row.impressions), formatPercent(row.ctr), formatDecimal(row.position)] }))} />
             <DataTable headers={[t.pages, t.clicks, t.impressions, t.ctr, t.avgPosition]} rows={gsc.pageRows.slice(0, 20).map((row) => ({ key: row.key, onClick: () => openGscRow(row, "page"), values: [shortPath(row.key), formatCount(row.clicks), formatCount(row.impressions), formatPercent(row.ctr), formatDecimal(row.position)] }))} />
+          </div>
+        </DetailSection>
+        <DetailSection index="07B" title={t.bingExplorer}>
+          {!data.meta.comparison.bing.eligible && data.meta.comparison.bing.reason ? <p className="analytics-comparison-note">{data.meta.comparison.bing.reason[locale]}</p> : null}
+          <div className="analytics-detail-grid">
+            <DataTable headers={[t.queries, t.bingClicks, t.bingImpressions, t.bingCtr, t.avgPosition]} rows={bing.queryRows.slice(0, 20).map((row) => ({ key: row.key, onClick: () => openBingRow(row, "query"), values: [row.key, formatCount(row.clicks), formatCount(row.impressions), formatPercent(row.ctr), formatDecimal(row.position)] }))} />
+            <DataTable headers={[t.pages, t.bingClicks, t.bingImpressions, t.bingCtr, t.avgPosition]} rows={bing.pageRows.slice(0, 20).map((row) => ({ key: row.key, onClick: () => openBingRow(row, "page"), values: [shortPath(row.key), formatCount(row.clicks), formatCount(row.impressions), formatPercent(row.ctr), formatDecimal(row.position)] }))} />
           </div>
         </DetailSection>
         <DetailSection index="08" title={t.behavior}>
@@ -567,8 +626,11 @@ function StatusPill({ label, status, t }: { label: string; status: "connected" |
   return <span className={status === "connected" ? "is-connected" : "is-warning"}><i />{label}: {status === "connected" ? t.connected : t.unavailable}</span>;
 }
 
-function MetricTabs({ metric, onChange }: { metric: "clicks" | "ctr" | "impressions" | "position"; onChange: (metric: "clicks" | "ctr" | "impressions" | "position") => void }) {
-  return <div className="analytics-segmented">{(["clicks", "impressions", "ctr", "position"] as const).map((item) => <button aria-pressed={metric === item} key={item} onClick={() => onChange(item)} type="button">{item === "impressions" ? "Impr." : item === "position" ? "Pos." : item.toUpperCase()}</button>)}</div>;
+function MetricTabs({ includePosition = true, metric, onChange }: { includePosition?: boolean; metric: "clicks" | "ctr" | "impressions" | "position"; onChange: (metric: "clicks" | "ctr" | "impressions" | "position") => void }) {
+  const metrics = includePosition
+    ? (["clicks", "impressions", "ctr", "position"] as const)
+    : (["clicks", "impressions", "ctr"] as const);
+  return <div className="analytics-segmented">{metrics.map((item) => <button aria-pressed={metric === item} key={item} onClick={() => onChange(item)} type="button">{item === "impressions" ? "Impr." : item === "position" ? "Pos." : item.toUpperCase()}</button>)}</div>;
 }
 
 function DataTable({ headers, rows }: { headers: string[]; rows: Array<{ key: string; onClick?: () => void; values: string[] }> }) {
@@ -601,6 +663,7 @@ function queryToParams(query: AnalyticsDashboardQuery) {
 
 function metricValue(row: GscMetricRow, metric: "clicks" | "ctr" | "impressions" | "position") { return metric === "ctr" ? row.ctr * 100 : row[metric]; }
 function metricLabel(metric: "clicks" | "ctr" | "impressions" | "position", t: typeof copy.en | typeof copy.zh) { return metric === "clicks" ? t.clicks : metric === "impressions" ? t.impressions : metric === "ctr" ? t.ctr : t.avgPosition; }
+function bingMetricLabel(metric: "clicks" | "ctr" | "impressions", t: typeof copy.en | typeof copy.zh) { return metric === "clicks" ? t.bingClicks : metric === "impressions" ? t.bingImpressions : t.bingCtr; }
 function safeRate(value: number, total: number) { return total ? value / total : 0; }
 function formatCount(value: number) { return new Intl.NumberFormat("en-US").format(Math.round(value)); }
 function formatDecimal(value: number) { return new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(value); }
