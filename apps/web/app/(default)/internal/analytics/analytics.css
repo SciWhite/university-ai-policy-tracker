@@ -77,6 +77,13 @@
   font-weight: 500;
 }
 
+.analytics-ai-summary {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 12px;
+}
+
 /* Private analytics growth dashboard */
 .analytics-dashboard {
   --analytics-onsite: var(--color-accent);

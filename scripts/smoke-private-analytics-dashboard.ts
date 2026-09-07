@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import type { AnalyticsEventRow } from "@uapt/db";
 import { aggregateBingDetailRows } from "../apps/web/lib/bing-webmaster.ts";
+import {
+  parseBingAiOverviewCsv,
+  parseBingAiPagesCsv,
+  parseBingAiQueriesCsv
+} from "../apps/web/lib/bing-ai-performance.ts";
 import type { GscSummary } from "../apps/web/lib/google-search-console.ts";
 import {
   buildComparisonEligibility,
@@ -81,6 +86,19 @@ assert.deepEqual(bingRows[0], {
   position: 4.8
 });
 assert.equal(bingRows[1]?.key, "https://eduaipolicy.org/universities/example");
+
+const bingAiDates = parseBingAiOverviewCsv(
+  '\uFEFF"Date","Citations","Cited Pages"\r\n"9/5/2026 12:00:00 AM","12","4"\r\n'
+);
+assert.deepEqual(bingAiDates, [{ citations: 12, citedPages: 4, key: "2026-09-05" }]);
+assert.deepEqual(
+  parseBingAiPagesCsv('"Page","Citations"\n"https://eduaipolicy.org/a","7"\n'),
+  [{ citations: 7, key: "https://eduaipolicy.org/a" }]
+);
+assert.deepEqual(
+  parseBingAiQueriesCsv('"Grounding Query","Intent","Topic","Citations","Citation Share"\n"ai policy","Informational","AI, Policy","5","12.5%"\n'),
+  [{ citationShare: 0.125, citations: 5, intent: "Informational", key: "ai policy", topic: "AI, Policy" }]
+);
 
 const baselineComparison = buildComparisonEligibility(
   {

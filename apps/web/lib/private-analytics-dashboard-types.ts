@@ -1,4 +1,5 @@
 import type { BingMetricRow, BingSummary } from "@/lib/bing-webmaster";
+import type { BingAiPerformanceSnapshot } from "@/lib/bing-ai-performance";
 import type { GscMetricRow, GscSummary } from "@/lib/google-search-console";
 import type {
   AnalyticsPeriod,
@@ -119,6 +120,7 @@ export interface AnalyticsDashboardDetail {
 }
 
 export interface AnalyticsDashboardResponse {
+  bingAi: BingAiPerformanceSnapshot;
   bing: {
     current: BingSummary;
     movers: {

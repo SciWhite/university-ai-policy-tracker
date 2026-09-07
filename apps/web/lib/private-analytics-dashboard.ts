@@ -10,6 +10,7 @@ import {
   type BingMetricRow,
   type BingSummary
 } from "@/lib/bing-webmaster";
+import { getBingAiPerformanceSnapshot } from "@/lib/bing-ai-performance";
 import {
   getGoogleSearchConsoleSummary,
   type GscMetricRow,
@@ -157,6 +158,7 @@ export async function getAnalyticsDashboard(
         )
       : Promise.resolve(emptyBingSummary())
   ]);
+  const bingAiPromise = getBingAiPerformanceSnapshot();
   const [currentRollup, previousRollup] = await Promise.all([
     currentRollupPromise,
     previousRollupPromise
@@ -168,11 +170,12 @@ export async function getAnalyticsDashboard(
   const botDiagnosticRowsPromise = rollupReady && query.to >= ANALYTICS_COLLECTOR_BASELINE
     ? loadRows(dateAtUtcNoon(shiftDate(botDiagnosticFrom, -1)), { excludeBots: false })
     : Promise.resolve([]);
-  const [primaryRows, botDiagnosticRows, [currentGsc, previousGsc], [currentBing, previousBing]] = await Promise.all([
+  const [primaryRows, botDiagnosticRows, [currentGsc, previousGsc], [currentBing, previousBing], bingAi] = await Promise.all([
     loadRows(since, { excludeBots: rollupReady }),
     botDiagnosticRowsPromise,
     gscPromise,
-    bingPromise
+    bingPromise,
+    bingAiPromise
   ]);
   const allRows = rollupReady
     ? primaryRows.concat(botDiagnosticRows.filter(isBotAnalyticsRow))
@@ -228,6 +231,7 @@ export async function getAnalyticsDashboard(
   });
 
   return {
+    bingAi,
     bing: {
       current: currentBing,
       movers: {

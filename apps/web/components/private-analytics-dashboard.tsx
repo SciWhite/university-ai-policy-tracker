@@ -44,21 +44,29 @@ const copy = {
     allLocales: "All languages",
     allSources: "All sources",
     avgPosition: "Avg position",
+    avgCitedPages: "Avg. cited pages / day",
     behavior: "Onsite behavior",
+    bingAiExplorer: "Bing AI citation details",
+    bingAiCaveat: "CSV snapshot; Bing reports AI Performance as a sample of overall citation activity.",
+    bingAiSnapshot: "Bing AI citation snapshot",
     bingClicks: "Bing clicks",
     bingCtr: "Bing CTR",
     bingExplorer: "Bing search explorer",
     bingImpressions: "Bing impressions",
     bingSearchTrend: "Bing visibility trend",
     botRequests: "Bot page views",
+    citationShare: "Citation share",
+    citations: "AI citations",
+    citedPages: "Cited pages",
     clicks: "GSC clicks",
     close: "Close",
     compare: "Compare previous period",
     connected: "Connected",
     country: "Country",
+    coverage: "Coverage",
     ctr: "GSC CTR",
     customRange: "Custom range",
-    dataScope: "Onsite filters do not alter GSC metrics",
+    dataScope: "Onsite filters do not alter search or AI metrics",
     day: "Daily",
     device: "Device",
     direct: "Direct",
@@ -69,6 +77,8 @@ const copy = {
     gscFinal: "GSC final through",
     growthPulse: "Growth pulse",
     impressions: "GSC impressions",
+    imported: "Imported",
+    intent: "Intent",
     insights: "What changed",
     landingPages: "Landing pages",
     language: "Language",
@@ -100,7 +110,9 @@ const copy = {
     sourceComposition: "Acquisition composition",
     sources: "Sources",
     sourcesGeo: "Sources & GEO",
+    snapshot: "CSV snapshot",
     title: "Search visibility and acquisition",
+    topic: "Topic",
     to: "To",
     unavailable: "Unavailable",
     visitors: "Visitors",
@@ -114,21 +126,29 @@ const copy = {
     allLocales: "全部语言",
     allSources: "全部来源",
     avgPosition: "平均排名",
+    avgCitedPages: "日均被引用页面",
     behavior: "站内使用行为",
+    bingAiExplorer: "Bing AI 引用明细",
+    bingAiCaveat: "CSV 快照；Bing 将 AI Performance 标注为整体引用活动的抽样数据。",
+    bingAiSnapshot: "Bing AI 引用快照",
     bingClicks: "Bing 点击",
     bingCtr: "Bing CTR",
     bingExplorer: "Bing 搜索明细",
     bingImpressions: "Bing 展现",
     bingSearchTrend: "Bing 可见性趋势",
     botRequests: "Bot 浏览量",
+    citationShare: "引用占比",
+    citations: "AI 引用次数",
+    citedPages: "被引用页面",
     clicks: "GSC 点击",
     close: "关闭",
     compare: "与上一周期对比",
     connected: "已连接",
     country: "国家",
+    coverage: "覆盖区间",
     ctr: "GSC CTR",
     customRange: "自定义范围",
-    dataScope: "站内筛选不会改变 GSC 指标",
+    dataScope: "站内筛选不会改变搜索或 AI 指标",
     day: "按日",
     device: "设备",
     direct: "直接访问",
@@ -139,6 +159,8 @@ const copy = {
     gscFinal: "GSC 完整数据截止",
     growthPulse: "增长脉搏",
     impressions: "GSC 展现",
+    imported: "导入时间",
+    intent: "意图",
     insights: "发生了什么",
     landingPages: "落地页",
     language: "语言",
@@ -170,7 +192,9 @@ const copy = {
     sourceComposition: "访问来源构成",
     sources: "来源",
     sourcesGeo: "来源与地区",
+    snapshot: "CSV 快照",
     title: "搜索可见性与访问增长",
+    topic: "主题",
     to: "结束",
     unavailable: "不可用",
     visitors: "访客",
@@ -243,6 +267,7 @@ export function PrivateAnalyticsDashboard({
   const previousGsc = data.gsc.previous;
   const bing = data.bing.current;
   const previousBing = data.bing.previous;
+  const bingAi = data.bingAi;
   const engagedRate = safeRate(current.summary.engagedSessions, current.summary.sessions);
   const previousEngagedRate = safeRate(previous.summary.engagedSessions, previous.summary.sessions);
   const sourceLabels = {
@@ -427,8 +452,11 @@ export function PrivateAnalyticsDashboard({
         <StatusPill label="Onsite" status={data.meta.dataStatus.onsite} t={t} />
         <StatusPill label="GSC" status={data.meta.dataStatus.gsc} t={t} />
         <StatusPill label="Bing" status={data.meta.dataStatus.bing} t={t} />
+        <span className={bingAi.available ? "is-connected" : "is-warning"}><i />Bing AI: {bingAi.available ? t.snapshot : t.unavailable}</span>
         <span>{query.from} → {query.to}</span>
         <span>{t.generated}: {formatDateTime(data.meta.generatedAt, locale)}</span>
+        {bingAi.coverageStart && bingAi.coverageEnd ? <span>{t.coverage}: {bingAi.coverageStart} → {bingAi.coverageEnd}</span> : null}
+        {bingAi.importedAt ? <span>{t.imported}: {formatDateTime(bingAi.importedAt, locale)}</span> : null}
         {data.meta.gscCompleteThrough ? <span>{t.gscFinal}: {data.meta.gscCompleteThrough}</span> : null}
         {data.meta.partialDay ? <span className="is-warning">{t.partial}</span> : null}
       </section>
@@ -521,6 +549,29 @@ export function PrivateAnalyticsDashboard({
             ]}
           />
         </DashboardPanel>
+        <DashboardPanel
+          className="analytics-panel--wide"
+          index="03C"
+          meta={bingAi.available ? `${t.coverage}: ${bingAi.coverageStart} → ${bingAi.coverageEnd}` : t.unavailable}
+          title={t.bingAiSnapshot}
+        >
+          {bingAi.available ? (
+            <>
+              <div className="analytics-ai-summary">
+                <MetricSummary label={t.citations} value={formatCount(bingAi.totals.citations)} />
+                <MetricSummary label={t.avgCitedPages} value={formatDecimal(bingAi.totals.averageCitedPages)} />
+              </div>
+              <DashboardLineChart
+                emptyLabel={t.noData}
+                labels={bingAi.dateRows.map((row) => row.key.slice(5))}
+                series={[
+                  { color: "var(--analytics-ai)", key: "citations", label: t.citations, values: bingAi.dateRows.map((row) => row.citations) },
+                  { color: "var(--analytics-search)", key: "citedPages", label: t.citedPages, values: bingAi.dateRows.map((row) => row.citedPages) }
+                ]}
+              />
+            </>
+          ) : <p className="analytics-empty">{bingAi.error ?? t.noData}</p>}
+        </DashboardPanel>
         <DashboardPanel index="04" meta={t.onsite} title={t.sourceComposition}>
           <DashboardSourceChart emptyLabel={t.noData} labels={sourceLabels} onSelect={(source) => openSourceDrawer(source, data, locale, openDrawer)} rows={current.sourceTrend} />
         </DashboardPanel>
@@ -552,6 +603,19 @@ export function PrivateAnalyticsDashboard({
             <DataTable headers={[t.queries, t.bingClicks, t.bingImpressions, t.bingCtr, t.avgPosition]} rows={bing.queryRows.slice(0, 20).map((row) => ({ key: row.key, onClick: () => openBingRow(row, "query"), values: [row.key, formatCount(row.clicks), formatCount(row.impressions), formatPercent(row.ctr), formatDecimal(row.position)] }))} />
             <DataTable headers={[t.pages, t.bingClicks, t.bingImpressions, t.bingCtr, t.avgPosition]} rows={bing.pageRows.slice(0, 20).map((row) => ({ key: row.key, onClick: () => openBingRow(row, "page"), values: [shortPath(row.key), formatCount(row.clicks), formatCount(row.impressions), formatPercent(row.ctr), formatDecimal(row.position)] }))} />
           </div>
+        </DetailSection>
+        <DetailSection index="07C" open title={t.bingAiExplorer}>
+          {bingAi.available ? (
+            <>
+              <p className="analytics-comparison-note">
+                {t.bingAiCaveat} {t.coverage}: {bingAi.coverageStart} → {bingAi.coverageEnd} · {t.imported}: {bingAi.importedAt ? formatDateTime(bingAi.importedAt, locale) : "—"}
+              </p>
+              <div className="analytics-detail-grid">
+                <DataTable headers={[t.queries, t.intent, t.topic, t.citations, t.citationShare]} rows={bingAi.queryRows.map((row) => ({ key: row.key, values: [row.key, row.intent ?? "—", row.topic ?? "—", formatCount(row.citations), formatPercent(row.citationShare)] }))} />
+                <DataTable headers={[t.pages, t.citations]} rows={bingAi.pageRows.map((row) => ({ key: row.key, values: [shortPath(row.key), formatCount(row.citations)] }))} />
+              </div>
+            </>
+          ) : <p className="analytics-empty">{bingAi.error ?? t.noData}</p>}
         </DetailSection>
         <DetailSection index="08" title={t.behavior}>
           <div className="analytics-detail-grid">
