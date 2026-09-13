@@ -1,3 +1,5 @@
+import { hasCurrentIndexRecoveryBasis } from "@/lib/index-recovery-basis";
+import { getIndexRecoveryLastModified } from "@/lib/index-recovery-dates";
 import { notFound, permanentRedirect } from "next/navigation";
 import {
   getCatalogUniversities,
@@ -11,14 +13,29 @@ import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { NoReviewedSnapshotState, StudentPolicySnapshot, isStrongStudentSnapshot, normalizeStudentSnapshotRole } from "@/components/student-policy-snapshot";
 import { DocumentLink as Link } from "@/components/document-link";
+import { RelatedUniversities } from "@/components/related-universities";
+import { UniversityClaimGroups } from "@/components/university-claim-groups";
 import { normalizeLocale, withLocalePrefix } from "@/lib/i18n";
 import { getCanonicalSlugForAlias } from "@/lib/entity-aliases";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
+import {
+  buildIndexRecoveryDescription,
+  buildIndexRecoveryTitle,
+  getIndexRecoveryPilotLocaleRestriction,
+  indexRecoveryPilotContent,
+  isIndexRecoveryPilotSlug
+} from "@/lib/index-recovery-pilot";
 import { getLoadedPolicySnapshotBySlug } from "@/lib/policy-snapshots";
+import { selectRelatedUniversities } from "@/lib/related-universities";
+import { getStagedPublicSummaries } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { formatSnapshotHash } from "@/lib/snapshot-hash";
 import { getSiteOgImageUrl } from "@/components/site-opengraph";
+import {
+  groupReviewedClaimsByClaimType,
+  groupReviewedClaimsBySnapshotDimensions
+} from "@/lib/university-claims-organization";
 
 interface UniversityPageProps {
   params: Promise<{
@@ -51,14 +68,37 @@ export async function generateMetadata({ params }: UniversityPageProps) {
   const displayName = university
     ? getLocalizedInstitutionName(university.slug, university.name, locale)
     : undefined;
-  const alternates = getLocalizedAlternates(`/universities/${slug}`, locale);
+  const pilotLocaleRestriction = getIndexRecoveryPilotLocaleRestriction(slug);
+  const alternates = getLocalizedAlternates(
+    `/universities/${slug}`,
+    locale,
+    pilotLocaleRestriction ? { restrictLocales: pilotLocaleRestriction } : undefined
+  );
   const canonical = String(alternates.canonical);
-  const title = university
-    ? `${displayName} AI policy | University AI Policy Tracker`
-    : "University not found";
-  const description = university && publicSummary
-    ? `${displayName} AI policy record with reviewed claims, official sources, and a student-first policy snapshot.`
-    : "University AI Policy Tracker record not found.";
+
+  const metadataSnapshot = isIndexRecoveryPilotSlug(slug)
+    ? await getLoadedPolicySnapshotBySlug(slug) : undefined;
+  const basisVerified = Boolean(publicSummary && hasCurrentIndexRecoveryBasis(slug, publicSummary.claims));
+  const titleBasisVerified = basisVerified && (isStrongStudentSnapshot(metadataSnapshot) ||
+    (isIndexRecoveryPilotSlug(slug) && Boolean(indexRecoveryPilotContent[slug].claimsSummary)));
+  const pilotTitle = university && displayName
+    ? buildIndexRecoveryTitle(displayName, slug, titleBasisVerified)
+    : undefined;
+  const pilotDescription = university && publicSummary
+    ? await buildPilotDescription(slug, publicSummary)
+    : undefined;
+
+  const title = pilotTitle
+    ? `${pilotTitle} | University AI Policy Tracker`
+    : university
+      ? `${displayName} AI policy | University AI Policy Tracker`
+      : "University not found";
+  const description = pilotDescription ??
+    (university && publicSummary
+      ? isIndexRecoveryPilotSlug(slug)
+        ? `${displayName} AI policy record with reviewed claims and official sources.`
+        : `${displayName} AI policy record with reviewed claims, official sources, and a student-first policy snapshot.`
+      : "University AI Policy Tracker record not found.");
 
   return {
     title,
@@ -72,6 +112,29 @@ export async function generateMetadata({ params }: UniversityPageProps) {
       type: "article"
     }
   };
+}
+
+async function buildPilotDescription(
+  slug: string,
+  publicSummary: PublicUniversitySummary
+): Promise<string | undefined> {
+  if (!isIndexRecoveryPilotSlug(slug)) return undefined;
+
+  const loadedSnapshot = await getLoadedPolicySnapshotBySlug(slug);
+  const strongSnapshotSummary = isStrongStudentSnapshot(loadedSnapshot)
+    ? loadedSnapshot.snapshot.summary
+    : undefined;
+  const reviewedClaimCount = publicSummary.claims.filter((claim) =>
+    isReviewedClaim(claim.reviewState)
+  ).length;
+
+  return buildIndexRecoveryDescription({
+    slug,
+    basisVerified: hasCurrentIndexRecoveryBasis(slug, publicSummary.claims),
+    strongSnapshotSummary,
+    reviewedClaimCount,
+    officialSourceCount: publicSummary.officialSources.length
+  });
 }
 
 export default async function UniversityPage({
@@ -112,6 +175,45 @@ export default async function UniversityPage({
   );
   const canonicalUrl = publicSummary.publicPageUrl ?? publicSummary.canonicalUrl;
 
+  const pilotSlug = isIndexRecoveryPilotSlug(slug) ? slug : undefined;
+  const pilotContent = pilotSlug
+    ? indexRecoveryPilotContent[pilotSlug]
+    : undefined;
+  const pilotClaimsSummary =
+    pilotContent?.claimsSummary && !strongSnapshot && hasCurrentIndexRecoveryBasis(slug, publicSummary.claims)
+      ? pilotContent.claimsSummary
+      : undefined;
+  const pilotSeoDescription = pilotSlug
+    ? buildIndexRecoveryDescription({
+        slug,
+        basisVerified: hasCurrentIndexRecoveryBasis(slug, publicSummary.claims),
+        strongSnapshotSummary: strongSnapshot
+          ? loadedSnapshot.snapshot.summary
+          : undefined,
+        reviewedClaimCount: reviewedClaims.length,
+        officialSourceCount: publicSummary.officialSources.length
+      })
+    : undefined;
+  const claimGroups = pilotContent
+    ? strongSnapshot
+      ? groupReviewedClaimsBySnapshotDimensions(
+          reviewedClaims,
+          loadedSnapshot.snapshot
+        )
+      : groupReviewedClaimsByClaimType(reviewedClaims)
+    : undefined;
+  const relatedUniversities = pilotSlug
+    ? selectRelatedUniversities(
+        slug,
+        await getCatalogUniversities(),
+        await getStagedPublicSummaries()
+      )
+    : undefined;
+  const structuredDescription = pilotSeoDescription ?? citationReadySummary;
+  const structuredDateModified = pilotSlug
+    ? (await getIndexRecoveryLastModified(slug)).toISOString()
+    : publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt;
+
   return (
     <main className="page-shell page-shell--wide">
       <JsonLd
@@ -119,9 +221,9 @@ export default async function UniversityPage({
           "@context": "https://schema.org",
           "@type": "WebPage",
           name: publicSummary.citationTitle,
-          description: citationReadySummary,
+          description: structuredDescription,
           url: canonicalUrl,
-          dateModified: publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt,
+          dateModified: structuredDateModified,
           isPartOf: {
             "@type": "WebSite",
             name: "University AI Policy Tracker",
@@ -130,7 +232,7 @@ export default async function UniversityPage({
           mainEntity: {
             "@type": "Dataset",
             name: publicSummary.citationTitle,
-            description: citationReadySummary,
+            description: structuredDescription,
             url: canonicalUrl,
             license: "https://creativecommons.org/licenses/by/4.0/",
             isAccessibleForFree: true,
@@ -187,18 +289,37 @@ export default async function UniversityPage({
           </div>
           <p>{reviewedClaims.length} reviewed claim{reviewedClaims.length === 1 ? "" : "s"}</p>
         </div>
-        {reviewedClaims.length ? (
-          <div className="claim-list">
-            {reviewedClaims.map((claim) => (
-              <ClaimEvidenceCard
-                claim={claim}
-                entitySlug={slug}
-                id={claim.id ? `claim-${claim.id}` : undefined}
-                key={claim.id ?? claim.claimText}
-                locale={locale}
-              />
-            ))}
+        {pilotClaimsSummary ? (
+          <div className="index-recovery-summary">
+            <p>{pilotClaimsSummary.summary}</p>
+            <p className="muted">
+              Summary of the {reviewedClaims.length} agent-reviewed claims in
+              this record, with their original scope. No student policy
+              snapshot has been published for this university yet, and this
+              summary is not an official university statement.
+            </p>
           </div>
+        ) : null}
+        {reviewedClaims.length ? (
+          claimGroups ? (
+            <UniversityClaimGroups
+              entitySlug={slug}
+              groups={claimGroups}
+              locale={locale}
+            />
+          ) : (
+            <div className="claim-list">
+              {reviewedClaims.map((claim) => (
+                <ClaimEvidenceCard
+                  claim={claim}
+                  entitySlug={slug}
+                  id={claim.id ? `claim-${claim.id}` : undefined}
+                  key={claim.id ?? claim.claimText}
+                  locale={locale}
+                />
+              ))}
+            </div>
+          )
         ) : (
           <p className="notice-card">No reviewed claims are published for this record yet.</p>
         )}
@@ -247,6 +368,10 @@ export default async function UniversityPage({
           ))}
         </div>
       </section>
+
+      {relatedUniversities?.length ? (
+        <RelatedUniversities universities={relatedUniversities} />
+      ) : null}
 
       <section className="student-record-info" id="record-info">
         <details>
