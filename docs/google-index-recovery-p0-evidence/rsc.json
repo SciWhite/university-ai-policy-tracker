@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "harvard-university",
+    "status": 200,
+    "contentType": "text/x-component"
+  },
+  {
+    "slug": "university-of-bristol",
+    "status": 200,
+    "contentType": "text/x-component"
+  },
+  {
+    "slug": "university-of-cambridge",
+    "status": 200,
+    "contentType": "text/x-component"
+  }
+]

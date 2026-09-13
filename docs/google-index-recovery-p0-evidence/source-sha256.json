@@ -1,0 +1,9 @@
+{
+  "apps/web/lib/index-recovery-pilot.ts": "9de6ab93b51bf2025a0c9cc339f19354fae8253e9574b2bfe28a94d6730be3e9",
+  "apps/web/lib/index-recovery-basis.ts": "e701e29766ac8d4036d82e74ba5197eb362e1d6f9cc4e4808b60f1fceec71fb5",
+  "apps/web/lib/index-recovery-dates.ts": "8320416a377c733f7d0d8a8c43174418a5f27745629d8f658ee066eda20a41ff",
+  "apps/web/lib/sitemap-sections.ts": "506f1bb12cce264ce0d276e02d66804ebe5303578df9ab83e6064fbbc2c09d9d",
+  "apps/web/app/(default)/universities/[slug]/page.tsx": "58fb81acb0151af473f680b02e609b5c8c8c3b0bec083e1edc14a837397f94d3",
+  "tests/index-recovery-pilot.test.ts": "2e5054b4311575c6fa74fea14494d525d529c49e9c345b7bd2583adb2a06c7e6",
+  "apps/web/.runtime-data/data/public-releases/current.json": "6ea988a5c65ffd54fd375336ff777b66d64e422da99370a17beb0f432db947c9"
+}
