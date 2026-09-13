@@ -108,6 +108,18 @@ const roleDimensionPriority: Record<
   ]
 };
 
+export const STUDENT_SNAPSHOT_DIMENSION_TITLES: Record<
+  PolicySnapshotDimensionKey,
+  string
+> = {
+  coursework: "Coursework & assignments",
+  exams: "Exams & assessment",
+  disclosure: "Disclosure & citation",
+  privacy_data: "Privacy & sensitive data",
+  approved_tools: "University-provided AI tools",
+  research_publication: "Research & publication"
+};
+
 const dimensionCopy: Record<
   PolicySnapshotDimensionKey,
   { title: string; extraScope?: string }

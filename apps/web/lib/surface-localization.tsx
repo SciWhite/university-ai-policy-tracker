@@ -20,6 +20,10 @@ import {
   type SupportedLocale
 } from "@/lib/i18n";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
+import {
+  getIndexRecoveryPilotLocaleRestriction,
+  getIndexRecoveryPilotSlugFromPath
+} from "@/lib/index-recovery-pilot";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 const localizedStrings = {
@@ -209,7 +213,17 @@ export function localizeSurfaceMetadata(
   locale: SupportedLocale
 ): Metadata {
   const localized = localizeSurfaceValue(metadata, locale) as Metadata;
-  const alternates = getLocalizedAlternates(pathname, locale);
+  // University detail pages in the index-recovery pilot declare only the
+  // English alternate because their substantive body (claims, evidence,
+  // snapshot prose) has not passed translation review in other locales.
+  // The restriction applies to both the default and locale routes so the
+  // emitted alternate sets stay self-consistent.
+  const pilotRestriction = getIndexRecoveryPilotLocaleRestriction(
+    getIndexRecoveryPilotSlugFromPath(pathname)
+  );
+  const alternates = getLocalizedAlternates(pathname, locale, {
+    restrictLocales: pilotRestriction
+  });
   const canonical = String(alternates.canonical);
   return {
     ...localized,

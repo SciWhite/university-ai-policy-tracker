@@ -1,0 +1,158 @@
+[
+  {
+    "baseline": "baseline-cambridge-desktop-claims.png",
+    "candidate": "candidate-cambridge-desktop-claims.png",
+    "size": [
+      1440,
+      900
+    ],
+    "differenceBounds": null
+  },
+  {
+    "baseline": "baseline-cambridge-desktop-first.png",
+    "candidate": "candidate-cambridge-desktop-first.png",
+    "size": [
+      1440,
+      900
+    ],
+    "differenceBounds": null
+  },
+  {
+    "baseline": "baseline-cambridge-mobile-claims.png",
+    "candidate": "candidate-cambridge-mobile-claims.png",
+    "size": [
+      390,
+      844
+    ],
+    "differenceBounds": null
+  },
+  {
+    "baseline": "baseline-cambridge-mobile-first.png",
+    "candidate": "candidate-cambridge-mobile-first.png",
+    "size": [
+      390,
+      844
+    ],
+    "differenceBounds": null
+  },
+  {
+    "baseline": "baseline-harvard-desktop-claims.png",
+    "candidate": "candidate-harvard-desktop-claims.png",
+    "size": [
+      1440,
+      900
+    ],
+    "differenceBounds": [
+      128,
+      86,
+      1312,
+      900
+    ]
+  },
+  {
+    "baseline": "baseline-harvard-desktop-first.png",
+    "candidate": "candidate-harvard-desktop-first.png",
+    "size": [
+      1440,
+      900
+    ],
+    "differenceBounds": null
+  },
+  {
+    "baseline": "baseline-harvard-desktop-researcher.png",
+    "candidate": "candidate-harvard-desktop-researcher.png",
+    "size": [
+      1440,
+      900
+    ],
+    "differenceBounds": null
+  },
+  {
+    "baseline": "baseline-harvard-mobile-claims.png",
+    "candidate": "candidate-harvard-mobile-claims.png",
+    "size": [
+      390,
+      844
+    ],
+    "differenceBounds": [
+      16,
+      124,
+      374,
+      844
+    ]
+  },
+  {
+    "baseline": "baseline-harvard-mobile-first.png",
+    "candidate": "candidate-harvard-mobile-first.png",
+    "size": [
+      390,
+      844
+    ],
+    "differenceBounds": null
+  },
+  {
+    "baseline": "baseline-harvard-mobile-researcher.png",
+    "candidate": "candidate-harvard-mobile-researcher.png",
+    "size": [
+      390,
+      844
+    ],
+    "differenceBounds": null
+  },
+  {
+    "baseline": "baseline-manchester-desktop-claims.png",
+    "candidate": "candidate-manchester-desktop-claims.png",
+    "size": [
+      1440,
+      900
+    ],
+    "differenceBounds": [
+      128,
+      86,
+      1312,
+      900
+    ]
+  },
+  {
+    "baseline": "baseline-manchester-desktop-first.png",
+    "candidate": "candidate-manchester-desktop-first.png",
+    "size": [
+      1440,
+      900
+    ],
+    "differenceBounds": [
+      128,
+      516,
+      1312,
+      900
+    ]
+  },
+  {
+    "baseline": "baseline-manchester-mobile-claims.png",
+    "candidate": "candidate-manchester-mobile-claims.png",
+    "size": [
+      390,
+      844
+    ],
+    "differenceBounds": [
+      16,
+      124,
+      374,
+      844
+    ]
+  },
+  {
+    "baseline": "baseline-manchester-mobile-first.png",
+    "candidate": "candidate-manchester-mobile-first.png",
+    "size": [
+      390,
+      844
+    ],
+    "differenceBounds": [
+      16,
+      645,
+      374,
+      844
+    ]
+  }
+]

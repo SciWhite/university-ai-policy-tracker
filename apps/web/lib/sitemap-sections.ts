@@ -1,3 +1,4 @@
+import { getIndexRecoveryLastModified } from "@/lib/index-recovery-dates";
 import type { CatalogPolicySource } from "@uapt/shared";
 import { getCatalogUniversities } from "@/lib/catalog";
 import { getChangeRecords, getReleaseChangeRecords } from "@/lib/change-records";
@@ -18,6 +19,9 @@ import {
   type SupportedLocale
 } from "@/lib/i18n";
 import { getSiteBaseUrl } from "@/lib/site-url";
+import {
+  isIndexRecoveryPilotSlug
+} from "@/lib/index-recovery-pilot";
 
 export interface SitemapEntry {
   url: string;
@@ -156,14 +160,16 @@ async function buildUniversitiesSection(): Promise<SitemapEntry[]> {
   const publishedAt = await getSitemapLastPublishedAt();
   const universities = await getCatalogUniversities();
 
-  return universities.map((university) => {
+  return Promise.all(universities.map(async (university) => {
     const latestSourceDate = getLatestSourceDate(university.sources);
 
     return {
       url: new URL(`/universities/${university.slug}`, baseUrl).toString(),
-      lastModified: latestSourceDate ? new Date(latestSourceDate) : publishedAt
+      lastModified: isIndexRecoveryPilotSlug(university.slug)
+        ? await getIndexRecoveryLastModified(university.slug)
+        : latestSourceDate ? new Date(latestSourceDate) : publishedAt
     };
-  });
+  }));
 }
 
 async function buildChangesSection(): Promise<SitemapEntry[]> {
@@ -214,7 +220,7 @@ async function buildLocaleSection(
     url: new URL(withLocalePrefix(route || "/", locale), baseUrl).toString(),
     lastModified: publishedAt
   }));
-  const universityEntries = universities.map((university) => {
+  const universityEntries = await Promise.all(universities.map(async (university) => {
     const latestSourceDate = getLatestSourceDate(university.sources);
 
     return {
@@ -222,9 +228,11 @@ async function buildLocaleSection(
         withLocalePrefix(`/universities/${university.slug}`, locale),
         baseUrl
       ).toString(),
-      lastModified: latestSourceDate ? new Date(latestSourceDate) : publishedAt
+      lastModified: isIndexRecoveryPilotSlug(university.slug)
+        ? await getIndexRecoveryLastModified(university.slug)
+        : latestSourceDate ? new Date(latestSourceDate) : publishedAt
     };
-  });
+  }));
 
   return [...staticEntries, ...universityEntries];
 }
