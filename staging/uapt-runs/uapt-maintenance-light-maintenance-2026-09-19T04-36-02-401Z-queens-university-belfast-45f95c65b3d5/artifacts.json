@@ -1,0 +1,292 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+  "runPurpose": "claim_evidence_release",
+  "reviewState": "agent_reviewed",
+  "publishAsCanonical": false,
+  "isCanonical": false,
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "createdAt": "2026-09-19T23:25:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "queens-university-belfast",
+          "sourceCandidateId": "src-qub-using-ai",
+          "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+          "sourceTitle": "Using AI in Education: Tools and Systems at QUB - Queen's DigiHub",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "privacy",
+            "teaching"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-qub-using-ai",
+      "entityType": "university",
+      "entitySlug": "queens-university-belfast",
+      "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "finalUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "sourceTitle": "Using AI in Education: Tools and Systems at QUB - Queen's DigiHub",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-15T12:34:36Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-19T23:25:00.000Z",
+      "verificationNotes": "Queen's University Belfast Digital Learning Hub (DigiHub) official guidance on AI tools and systems.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "entityType": "university",
+      "entitySlug": "queens-university-belfast",
+      "startedAt": "2026-05-15T12:34:36Z",
+      "endedAt": "2026-09-19T23:25:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Source originally seeded as part of QUB Digital Learning AI portal."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-19T04-36-02-401Z flagged content_policy_delta. Review identified genuine policy updates: Microsoft Copilot access was expanded to all students (previously faculty and staff only) with Enterprise Data Protection, and institutional access to Google Gemini Edu and Gemini Notebook was introduced."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-qub-using-ai"
+      ],
+      "rejectionIds": [],
+      "summary": "Identified genuine policy updates on QUB Supported AI Tools: Microsoft Copilot Chat is now provided to all students in addition to staff with Enterprise Data Protection, and institutional access to Google Gemini Edu and Gemini Notebook is now provided via QUB credentials."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "sourceCandidateId": "src-qub-using-ai",
+      "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "finalUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "attemptedAt": "2026-09-19T23:25:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "6d50ad9e911a79948ae9fada5f41a76a6d2a1ebfd8942ebcc640aa63400a3ce2",
+      "durationMs": 1250,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/queens-university-belfast/src-qub-using-ai",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "sourceCandidateId": "src-qub-using-ai",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "finalUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "sourceTitle": "Using AI in Education: Tools and Systems at QUB - Queen's DigiHub",
+      "sourceLanguage": "en",
+      "contentHash": "6d50ad9e911a79948ae9fada5f41a76a6d2a1ebfd8942ebcc640aa63400a3ce2",
+      "fetchedAt": "2026-09-19T23:25:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/queens-university-belfast/src-qub-using-ai",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-qub-copilot-staff-students-20260919",
+      "entityType": "university",
+      "entitySlug": "queens-university-belfast",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Queen's University Belfast provides all staff and students with access to Microsoft Copilot Chat as an approved secure AI tool using their @qub.ac.uk email address, which provides Enterprise Data Protection ensuring conversations are not used to train public models.",
+      "normalizedValue": "Copilot Chat with Enterprise Data Protection available to all staff and students with QUB login",
+      "sourceLanguage": "en",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-qub-copilot-staff-students-20260919"
+      ],
+      "citation": {
+        "citationTitle": "Using AI in Education: Tools and Systems at QUB - Queen's DigiHub",
+        "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+        "finalUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/queens-university-belfast.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/queens-university-belfast",
+        "publisher": "Queen's University Belfast",
+        "retrievedAt": "2026-09-19T23:25:00.000Z",
+        "snapshotHash": "6d50ad9e911a79948ae9fada5f41a76a6d2a1ebfd8942ebcc640aa63400a3ce2",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-qub-gemini-edu-notebook-20260919",
+      "entityType": "university",
+      "entitySlug": "queens-university-belfast",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Queen's University Belfast provides staff and students with access to Google Gemini Edu and Gemini Notebook using their QUB email and password credentials, providing a secure version of Gemini.",
+      "normalizedValue": "Google Gemini Edu and Gemini Notebook available to staff and students with QUB credentials",
+      "sourceLanguage": "en",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-qub-gemini-edu-notebook-20260919"
+      ],
+      "citation": {
+        "citationTitle": "Using AI in Education: Tools and Systems at QUB - Queen's DigiHub",
+        "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+        "finalUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/queens-university-belfast.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/queens-university-belfast",
+        "publisher": "Queen's University Belfast",
+        "retrievedAt": "2026-09-19T23:25:00.000Z",
+        "snapshotHash": "6d50ad9e911a79948ae9fada5f41a76a6d2a1ebfd8942ebcc640aa63400a3ce2",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-qub-copilot-staff-students-20260919",
+      "claimId": "cl-qub-copilot-staff-students-20260919",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "finalUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "sourceTitle": "Using AI in Education: Tools and Systems at QUB - Queen's DigiHub",
+      "sourceLanguage": "en",
+      "snapshotHash": "6d50ad9e911a79948ae9fada5f41a76a6d2a1ebfd8942ebcc640aa63400a3ce2",
+      "evidenceSnippetOriginal": "All Queen’s University staff and students have access to Microsoft Copilot Chat, providing a secure AI tool to support learning, study, and academic tasks. To use Copilot, please log in using your @qub.ac.uk email address. Logging in this way provides Enterprise Data Protection, and means that your conversations are not used to train public models. Copilot Chat is supported officially on Microsoft Edge and Chrome (using the latest Stable Channel update).",
+      "evidenceSnippetDisplay": "All Queen’s University staff and students have access to Microsoft Copilot Chat with Enterprise Data Protection when logging in with @qub.ac.uk email.",
+      "evidenceLocator": "Using AI > QUB Supported AI Tools",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Using AI in Education: Tools and Systems at QUB - Queen's DigiHub",
+        "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+        "finalUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/queens-university-belfast.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/queens-university-belfast",
+        "publisher": "Queen's University Belfast",
+        "retrievedAt": "2026-09-19T23:25:00.000Z",
+        "snapshotHash": "6d50ad9e911a79948ae9fada5f41a76a6d2a1ebfd8942ebcc640aa63400a3ce2",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-qub-gemini-edu-notebook-20260919",
+      "claimId": "cl-qub-gemini-edu-notebook-20260919",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "finalUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+      "sourceTitle": "Using AI in Education: Tools and Systems at QUB - Queen's DigiHub",
+      "sourceLanguage": "en",
+      "snapshotHash": "6d50ad9e911a79948ae9fada5f41a76a6d2a1ebfd8942ebcc640aa63400a3ce2",
+      "evidenceSnippetOriginal": "Queen's staff and students also have access to a Google Gemini Edu by logging in with your QUB email and password, providing you with a secure version of Gemini. You can also use your QUB credentials to access Gemini Notebook.",
+      "evidenceSnippetDisplay": "Queen’s staff and students have access to Google Gemini Edu and Gemini Notebook using QUB email credentials.",
+      "evidenceLocator": "Using AI > QUB Supported AI Tools",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Using AI in Education: Tools and Systems at QUB - Queen's DigiHub",
+        "sourceUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+        "finalUrl": "https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/queens-university-belfast.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/queens-university-belfast",
+        "publisher": "Queen's University Belfast",
+        "retrievedAt": "2026-09-19T23:25:00.000Z",
+        "snapshotHash": "6d50ad9e911a79948ae9fada5f41a76a6d2a1ebfd8942ebcc640aa63400a3ce2",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5-1",
+      "claimId": "cl-qub-copilot-staff-students-20260919",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Approved update to Copilot Chat availability. Previously limited to faculty and staff in 2026-05 baseline, now explicitly covers all Queen's University staff and students with Enterprise Data Protection.",
+      "decidedAt": "2026-09-19T23:25:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5-2",
+      "claimId": "cl-qub-gemini-edu-notebook-20260919",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Approved new institutional AI tooling claim. Queen's University Belfast now officially provides Google Gemini Edu and Gemini Notebook to staff and students using QUB institutional credentials.",
+      "decidedAt": "2026-09-19T23:25:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+      "title": "Maintenance Review: Queen's University Belfast (DigiHub Using AI - Supported AI Tools Expansion)",
+      "generatedAt": "2026-09-19T23:25:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5.mdx",
+      "summary": "Maintenance review of https://blogs.qub.ac.uk/digitallearning/ai/understanding-ai/using-ai/ verified genuine institutional policy updates: Microsoft Copilot Chat access has expanded to all staff and students (with Enterprise Data Protection), and institutional access to Google Gemini Edu and Gemini Notebook has been added.",
+      "referencedClaimIds": [
+        "cl-qub-copilot-staff-students-20260919",
+        "cl-qub-gemini-edu-notebook-20260919"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}

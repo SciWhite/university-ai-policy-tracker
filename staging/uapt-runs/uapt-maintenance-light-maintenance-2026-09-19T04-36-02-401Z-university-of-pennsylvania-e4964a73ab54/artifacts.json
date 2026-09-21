@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "createdAt": "2026-09-19T21:08:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-pennsylvania",
+          "sourceCandidateId": "src-upenn-cetli-generative-ai",
+          "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+          "sourceTitle": "Generative AI & Your Teaching",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "academic_integrity",
+            "ai_detectors",
+            "ferpa_privacy",
+            "teaching"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-upenn-cetli-generative-ai",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "sourceTitle": "Generative AI & Your Teaching",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-06T04:55:45Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-19T21:08:00.000Z",
+      "verificationNotes": "CETLI is Penn's Center for Excellence in Teaching, Learning and Innovation \u2014 official university teaching guidance authority.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "startedAt": "2026-05-06T04:55:45Z",
+      "endedAt": "2026-09-19T21:08:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Source originally seeded from CETLI generative AI resource page during QS baseline crawl."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-19T04-36-02-401Z detected content_policy_delta against baseline snapshot; review identified new substantive policy-level guidance prohibiting uploading student work into AI detectors under FERPA and Penn privacy policies."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-upenn-cetli-generative-ai"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of University of Pennsylvania source https://cetli.upenn.edu/resources/generative-ai/ identified a genuine policy-content update adding explicit institutional guidance against uploading student work into AI detectors due to FERPA, Penn privacy policies, unreliability, and bias."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "sourceCandidateId": "src-upenn-cetli-generative-ai",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "attemptedAt": "2026-09-19T21:08:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "98fa2938e0dfba4e175a89eb3b95adc216df428c8012361bb58a8bcbbb989b36",
+      "durationMs": 1520,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/university-of-pennsylvania/src-upenn-cetli-generative-ai",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "sourceCandidateId": "src-upenn-cetli-generative-ai",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "sourceTitle": "Generative AI & Your Teaching",
+      "sourceLanguage": "en",
+      "contentHash": "98fa2938e0dfba4e175a89eb3b95adc216df428c8012361bb58a8bcbbb989b36",
+      "fetchedAt": "2026-09-19T21:08:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/university-of-pennsylvania/src-upenn-cetli-generative-ai",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-upenn-cetli-ai-detector-ban-20260919",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "claimType": "academic_integrity",
+      "claimText": "Penn's Center for Excellence in Teaching, Learning and Innovation (CETLI) instructs faculty that in all cases they should not upload student work into AI detectors, stating that uploading student work without consent violates FERPA and Penn privacy policies, and noting that AI detectors are not accurate enough to serve as evidence of misconduct due to frequent bias.",
+      "normalizedValue": "Penn CETLI instructs instructors not to upload student work into AI detectors, citing FERPA, Penn privacy policies, unreliability, and bias.",
+      "sourceLanguage": "en",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-upenn-cetli-ai-detector-ban-20260919"
+      ],
+      "citation": {
+        "citationTitle": "Generative AI & Your Teaching",
+        "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+        "publisher": "University of Pennsylvania / Center for Excellence in Teaching, Learning and Innovation",
+        "retrievedAt": "2026-09-19T21:08:00.000Z",
+        "snapshotHash": "98fa2938e0dfba4e175a89eb3b95adc216df428c8012361bb58a8bcbbb989b36",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-upenn-cetli-ai-detector-ban-20260919",
+      "claimId": "cl-upenn-cetli-ai-detector-ban-20260919",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+      "sourceTitle": "Generative AI & Your Teaching",
+      "sourceLanguage": "en",
+      "snapshotHash": "98fa2938e0dfba4e175a89eb3b95adc216df428c8012361bb58a8bcbbb989b36",
+      "evidenceSnippetOriginal": "In all cases, you should not upload the student\u2019s work into an \u201cAI detector.\u201d Uploading a student\u2019s work without their consent is a violation of FERPA and Penn\u2019s privacy policies. These tools are also not accurate enough to be treated as evidence of misconduct as they exhibit frequent bias.",
+      "evidenceLocator": "Frequently Asked Questions, What should I do if I suspect a student has misused AI?",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Generative AI & Your Teaching",
+        "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/",
+        "publisher": "University of Pennsylvania / Center for Excellence in Teaching, Learning and Innovation",
+        "retrievedAt": "2026-09-19T21:08:00.000Z",
+        "snapshotHash": "98fa2938e0dfba4e175a89eb3b95adc216df428c8012361bb58a8bcbbb989b36",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "claimId": "cl-upenn-cetli-ai-detector-ban-20260919",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update on Penn's CETLI Generative AI & Your Teaching page. The FAQ guidance introduces an explicit prohibition against uploading student submissions into AI detectors without consent, grounding the rule in FERPA and Penn privacy policies, and advising that detector results cannot be treated as misconduct evidence due to inaccuracy and bias.",
+      "decidedAt": "2026-09-19T21:08:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+      "title": "Maintenance Review: University of Pennsylvania (CETLI Generative AI Page - AI Detector Guidance)",
+      "generatedAt": "2026-09-19T21:08:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54.mdx",
+      "summary": "Maintenance review of https://cetli.upenn.edu/resources/generative-ai/ identified a genuine policy-content update. CETLI guidance explicitly instructs instructors not to upload student work into AI detectors, citing FERPA, Penn privacy policies, lack of accuracy, and frequent bias. Promoted one agent_reviewed claim candidate.",
+      "referencedClaimIds": [
+        "cl-upenn-cetli-ai-detector-ban-20260919"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0"
+    }
+  ]
+}

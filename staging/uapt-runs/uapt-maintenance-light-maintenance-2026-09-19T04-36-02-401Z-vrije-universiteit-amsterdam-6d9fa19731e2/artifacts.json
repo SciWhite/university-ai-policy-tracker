@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "createdAt": "2026-09-19T23:14:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "vrije-universiteit-amsterdam",
+          "sourceCandidateId": "sc-vrije-universiteit-amsterdam-6d9fa19731e2",
+          "sourceUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+          "sourceTitle": "Generative AI, Copilot, Gemini and ChatGPT",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "security_review",
+            "data_protection",
+            "authorized_applications"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "verified_target_completed",
+        "scope_claims_to_student_generative_ai_guidance"
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "entityType": "university",
+      "entitySlug": "vrije-universiteit-amsterdam",
+      "sourceUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+      "finalUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+      "sourceTitle": "Generative AI, Copilot, Gemini and ChatGPT",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-15T12:45:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-19T23:14:00.000Z",
+      "verificationNotes": "Official VU Amsterdam student examinations guidance on Generative AI, Copilot, Gemini and ChatGPT, updated on September 16, 2026, establishing formal data processing agreements and terms for institutional Google Gemini and Gemini Notebook access alongside Microsoft Copilot.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "entityType": "university",
+      "entitySlug": "vrije-universiteit-amsterdam",
+      "startedAt": "2026-05-15T12:45:00.000Z",
+      "endedAt": "2026-09-19T23:14:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Tracked official VU Amsterdam student examinations guidance on Generative AI under candidate sc-vrije-universiteit-amsterdam-6d9fa19731e2."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-19T04-36-02-401Z detected content_policy_delta against baseline snapshot 133cb28c0b4209878719e1ea3b0564ce1cde07f106a4db147999285839ebd8d0. Verification confirmed an official update on September 16, 2026, retitled to include Gemini and adding formal coverage for Google Gemini and Gemini Notebook under Google Workspace for Education Terms."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-vrije-universiteit-amsterdam-6d9fa19731e2"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of VU Amsterdam student examinations guidance verified a genuine policy-content update updated on September 16, 2026. The guidance expanded beyond Microsoft Copilot to formally authorize Google Gemini and Gemini Notebook (formerly NotebookLM) under Google Workspace for Education Fundamentals, forbidding human moderation review or model training on chats when logged in with VU credentials, while prohibiting instructors from requiring unlicensed AI tools."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "sourceCandidateId": "sc-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "sourceUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+      "finalUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+      "attemptedAt": "2026-09-19T23:13:18.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "383fe3aea98a782229353b1efe86f1fd1d45462ad3b4c283b4d071f590fb115c",
+      "durationMs": 350,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/vrije-universiteit-amsterdam/sc-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "sourceCandidateId": "sc-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "sourceUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+      "finalUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+      "sourceTitle": "Generative AI, Copilot, Gemini and ChatGPT",
+      "sourceLanguage": "en",
+      "contentHash": "383fe3aea98a782229353b1efe86f1fd1d45462ad3b4c283b4d071f590fb115c",
+      "fetchedAt": "2026-09-19T23:13:18.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/vrije-universiteit-amsterdam/sc-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-vu-authorized-ai-data-protection-20260919",
+      "entityType": "university",
+      "entitySlug": "vrije-universiteit-amsterdam",
+      "claimType": "security_review",
+      "claimText": "VU Amsterdam student examinations guidance establishes that instructors cannot require students to use unlicensed AI applications (such as ChatGPT, Claude, or Grok), while identifying authorized tools covered by formal institutional data processing agreements: Microsoft Copilot for Web, Google Gemini and Gemini Notebook (under Google Workspace for Education Fundamentals), Cogniti on Azure, and integrated didactical tools (Canvas, FeedbackFruits, Writefull), provided students log in with VU credentials and never submit sensitive personal or research data.",
+      "normalizedValue": "Teachers cannot require unlicensed AI tools; formal data processing agreements cover VU-licensed Microsoft Copilot for Web, Google Gemini / Gemini Notebook, and Cogniti, with no human chat review or model training when logged in with VU credentials.",
+      "sourceLanguage": "en",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-vu-authorized-ai-data-protection-20260919"
+      ],
+      "citation": {
+        "citationTitle": "Generative AI, Copilot, Gemini and ChatGPT",
+        "sourceUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/vrije-universiteit-amsterdam.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/vrije-universiteit-amsterdam",
+        "publisher": "Vrije Universiteit Amsterdam",
+        "retrievedAt": "2026-09-19T23:13:18.000Z",
+        "snapshotHash": "383fe3aea98a782229353b1efe86f1fd1d45462ad3b4c283b4d071f590fb115c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-vu-authorized-ai-data-protection-20260919",
+      "claimId": "cl-vu-authorized-ai-data-protection-20260919",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "sourceUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+      "finalUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+      "sourceTitle": "Generative AI, Copilot, Gemini and ChatGPT",
+      "sourceLanguage": "en",
+      "snapshotHash": "383fe3aea98a782229353b1efe86f1fd1d45462ad3b4c283b4d071f590fb115c",
+      "evidenceSnippetOriginal": "VU Amsterdam has a contract and a data processing agreement with the supplier Google. These contain all kinds of provisions that prohibit the supplier from using personal data of VU employees and VU students for their own purposes, such as reselling. Gemini and Gemini Notebook (formerly NotebookLM) are core services covered by the Google Workspace for Education Fundamentals Terms of Service. If you use your Google Workspace for Education account with Gemini and Gemini Notebook, your chats will not be reviewed by human moderators and will not be used in any other way to improve generative AI models. To use this chatbot securely, log in with your VU credentials.",
+      "evidenceLocator": "Data protection and privacy, Google Gemini and Gemini Notebook section",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Generative AI, Copilot, Gemini and ChatGPT",
+        "sourceUrl": "https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/claims/vrije-universiteit-amsterdam.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/vrije-universiteit-amsterdam",
+        "publisher": "Vrije Universiteit Amsterdam",
+        "retrievedAt": "2026-09-19T23:13:18.000Z",
+        "snapshotHash": "383fe3aea98a782229353b1efe86f1fd1d45462ad3b4c283b4d071f590fb115c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "claimId": "cl-vu-authorized-ai-data-protection-20260919",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update on VU Amsterdam student examinations guidance updated on September 16, 2026. The revised policy expands authorized institutional AI tools to formally include Google Gemini and Gemini Notebook under Google Workspace for Education Fundamentals, provides explicit contractual data protection guarantees preventing human review or model training, and confirms teachers cannot require unlicensed AI tools.",
+      "decidedAt": "2026-09-19T23:14:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+      "title": "Maintenance Review: Vrije Universiteit Amsterdam (Google Gemini and Data Protection Policy Update)",
+      "generatedAt": "2026-09-19T23:14:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2.mdx",
+      "summary": "Maintenance review of https://vu.nl/en/student/examinations/generative-ai-your-use-our-expectations confirmed a genuine policy-content update updated on September 16, 2026. The guidance added institutional authorization for Google Gemini and Gemini Notebook under Google Workspace for Education Fundamentals, establishing explicit data protection guarantees prohibiting model training or human moderation on VU student chats, while reaffirming that instructors may only require AI tools for which VU Amsterdam maintains formal data processing licenses. Promoted one agent_reviewed claim candidate.",
+      "referencedClaimIds": [
+        "cl-vu-authorized-ai-data-protection-20260919"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0"
+    }
+  ]
+}

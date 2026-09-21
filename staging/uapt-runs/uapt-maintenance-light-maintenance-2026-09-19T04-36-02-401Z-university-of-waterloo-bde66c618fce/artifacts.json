@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "createdAt": "2026-09-19T22:25:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-waterloo",
+          "sourceCandidateId": "sc-university-of-waterloo-bde66c618fce",
+          "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+          "sourceTitle": "Teaching and GenAI at Waterloo | Associate Vice-President, Academic | University of Waterloo",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching",
+            "academic_integrity",
+            "student_data_protection",
+            "equity_and_accessibility"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-university-of-waterloo-bde66c618fce",
+      "entityType": "university",
+      "entitySlug": "university-of-waterloo",
+      "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "finalUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "sourceTitle": "Teaching and GenAI at Waterloo | Associate Vice-President, Academic | University of Waterloo",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-07-12T17:55:00.000Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-19T22:25:00.000Z",
+      "verificationNotes": "Official AVPA page providing institutional recommendations applying UW Principles of AI Enablement to teaching and learning.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "entityType": "university",
+      "entitySlug": "university-of-waterloo",
+      "startedAt": "2026-07-12T17:55:00.000Z",
+      "endedAt": "2026-09-19T22:25:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Tracked AVPA AI hub URL under Waterloo source candidate sc-university-of-waterloo-bde66c618fce."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-19T04-36-02-401Z detected content_policy_delta against baseline snapshot; review identified new institutional guidance published August 18, 2026: Applying UW Principles of AI Enablement to Teaching and Learning."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-university-of-waterloo-bde66c618fce"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of University of Waterloo AVPA source https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw identified a genuine policy-content update published August 18, 2026, establishing teaching and learning principles: data protection under Policy 46, prohibition on uploading student work/course materials to insecure AI tools, syllabus disclosure requirements, and equity considerations."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "sourceCandidateId": "sc-university-of-waterloo-bde66c618fce",
+      "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "finalUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "attemptedAt": "2026-09-19T22:25:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "781408155c679d31c2e9c2708afa5b739845d0960357555e0096884ecc1a3acd",
+      "durationMs": 320,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/university-of-waterloo/sc-university-of-waterloo-bde66c618fce",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "sourceCandidateId": "sc-university-of-waterloo-bde66c618fce",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "finalUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "sourceTitle": "Teaching and GenAI at Waterloo | Associate Vice-President, Academic | University of Waterloo",
+      "sourceLanguage": "en",
+      "contentHash": "781408155c679d31c2e9c2708afa5b739845d0960357555e0096884ecc1a3acd",
+      "fetchedAt": "2026-09-19T22:25:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/university-of-waterloo/sc-university-of-waterloo-bde66c618fce",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-waterloo-avpa-student-data-protection-20260919",
+      "entityType": "university",
+      "entitySlug": "university-of-waterloo",
+      "claimType": "security_review",
+      "claimText": "Waterloo AVPA guidance on Applying UW Principles of AI Enablement to Teaching and Learning states that GenAI use must consider data security, prohibiting uploading student work or course materials to insecure AI tools, and specifying that student information such as identification or grades is subject to Policy 46 (Information Management) and must not be uploaded to AI tools that do not meet institutional security requirements.",
+      "normalizedValue": "Student work, course materials, and student information (Policy 46) must not be uploaded to insecure AI tools.",
+      "sourceLanguage": "en",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-waterloo-avpa-student-data-protection-20260919"
+      ],
+      "citation": {
+        "citationTitle": "Teaching and GenAI at Waterloo | Associate Vice-President, Academic | University of Waterloo",
+        "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+        "publisher": "University of Waterloo / Associate Vice-President, Academic",
+        "retrievedAt": "2026-09-19T22:25:00.000Z",
+        "snapshotHash": "781408155c679d31c2e9c2708afa5b739845d0960357555e0096884ecc1a3acd",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-waterloo-avpa-student-data-protection-20260919",
+      "claimId": "cl-waterloo-avpa-student-data-protection-20260919",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "finalUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+      "sourceTitle": "Teaching and GenAI at Waterloo | Associate Vice-President, Academic | University of Waterloo",
+      "sourceLanguage": "en",
+      "snapshotHash": "781408155c679d31c2e9c2708afa5b739845d0960357555e0096884ecc1a3acd",
+      "evidenceSnippetOriginal": "GenAI use in teaching and learning must consider the security of student data, course materials, and other intellectual property. Instructors and students must select AI tools that provide an appropriate level of data protection, following university guidance. Neither course materials nor student work should be uploaded to insecure AI tools that might share them without permission. Student information such as identification or grades is subject to Policy 46 – Information Management and must not be uploaded to AI tools that do not meet institutional security requirements.",
+      "evidenceLocator": "Safe & fair use: Responsible, ethical, inclusive AI",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Teaching and GenAI at Waterloo | Associate Vice-President, Academic | University of Waterloo",
+        "sourceUrl": "https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw",
+        "publisher": "University of Waterloo / Associate Vice-President, Academic",
+        "retrievedAt": "2026-09-19T22:25:00.000Z",
+        "snapshotHash": "781408155c679d31c2e9c2708afa5b739845d0960357555e0096884ecc1a3acd",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "claimId": "cl-waterloo-avpa-student-data-protection-20260919",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update on Waterloo AVPA Teaching and GenAI page published August 18, 2026. The new institutional guidance applies UW Principles of AI Enablement to teaching and learning, explicitly requiring data protection for student work, course materials, and student records under Policy 46.",
+      "decidedAt": "2026-09-19T22:25:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+      "title": "Maintenance Review: University of Waterloo (AVPA Teaching and GenAI Guidelines)",
+      "generatedAt": "2026-09-19T22:25:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce.mdx",
+      "summary": "Maintenance review of https://uwaterloo.ca/associate-vice-president-academic/artificial-intelligence-uw identified a genuine policy-content update published August 18, 2026 (Applying UW Principles of AI Enablement to Teaching and Learning). The AVPA guidelines establish institutional rules protecting student data and course materials under Policy 46, requiring instructor disclosure on course outlines, and addressing equity and accessibility. Promoted one agent_reviewed claim candidate.",
+      "referencedClaimIds": [
+        "cl-waterloo-avpa-student-data-protection-20260919"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0"
+    }
+  ]
+}

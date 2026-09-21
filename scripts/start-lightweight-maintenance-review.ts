@@ -52,9 +52,16 @@ function main(): void {
     return;
   }
 
-  const active = options.dryRun ? 0 : activeReviewUnitCount();
+  const activeUnits = options.dryRun ? [] : activeReviewUnitNames();
+  const active = activeUnits.length;
+  const eligible = targets.filter(
+    (item) =>
+      !activeUnits.some((name) =>
+        name.startsWith(unitPrefix(options.runId, item.itemId)),
+      ),
+  );
   const availableSlots = Math.max(0, options.maxConcurrency - active);
-  const batch = options.dryRun ? targets : targets.slice(0, availableSlots);
+  const batch = options.dryRun ? eligible : eligible.slice(0, availableSlots);
 
   if (!batch.length) {
     console.log(
@@ -97,7 +104,7 @@ function startTarget(
     `uapt-maintenance-light-${safeRunId}-${safeItemId}`,
   );
   const sessionId = `uapt-${safeRunId}-${safeItemId}`.slice(0, 120);
-  const unit = `uapt-light-review-${safeRunId.slice(0, 40)}-${safeItemId.slice(0, 80)}`;
+  const unit = `${unitPrefix(options.runId, target.itemId)}-${Date.now()}`;
 
   if (!options.dryRun) {
     writeOwnedFile(
@@ -321,7 +328,7 @@ function priorFailure(logs: string, id: string): boolean {
   }
 }
 
-function activeReviewUnitCount(): number {
+function activeReviewUnitNames(): string[] {
   const result = spawnSync(
     "systemctl",
     [
@@ -333,11 +340,13 @@ function activeReviewUnitCount(): number {
     ],
     { encoding: "utf8" },
   );
-  if (result.status !== 0) return 0;
+  if (result.status !== 0) return [];
   return result.stdout
     .split("\n")
     .map((line) => line.trim())
-    .filter(Boolean).length;
+    .filter(Boolean)
+    .map((line) => line.split(/\s+/)[0])
+    .filter((name) => name.startsWith("uapt-light-review-"));
 }
 
 function ensureDir(directory: string): void {
@@ -388,6 +397,10 @@ function isPermissionError(error: unknown): boolean {
 
 function hash(value: string): string {
   return createHash("sha256").update(value).digest("hex").slice(0, 12);
+}
+
+function unitPrefix(runId: string, itemId: string): string {
+  return `uapt-light-review-${sanitize(runId).slice(0, 40)}-${sanitize(itemId).slice(0, 80)}`;
 }
 
 function sanitize(value: string): string {

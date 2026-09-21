@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "createdAt": "2026-09-19T21:14:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-pennsylvania",
+          "sourceCandidateId": "src-upenn-cetli-ai-tools-policies",
+          "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+          "sourceTitle": "Penn AI Tools and Policies",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tools",
+            "student_privacy",
+            "ferpa",
+            "teaching"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-upenn-cetli-ai-tools-policies",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+      "sourceTitle": "Penn AI Tools and Policies",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-06T04:55:45Z",
+      "officialDomainConfidence": 0.98,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-19T21:14:00.000Z",
+      "verificationNotes": "CETLI is Penn\u2019s Center for Excellence in Teaching, Learning and Innovation \u2014 official university teaching guidance authority.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "startedAt": "2026-05-06T04:55:45Z",
+      "endedAt": "2026-09-19T21:14:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Source originally seeded from CETLI guidance page during QS baseline crawl."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-19T04-36-02-401Z flagged content_policy_delta against baseline snapshot; review confirmed substantive policy-level update to institutional AI tool licensing (adding PennChat, Anthropic Claude Enterprise, Articulate AI) and updated acceptable data restrictions on unlicensed tools."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-upenn-cetli-ai-tools-policies"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of University of Pennsylvania source https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/ confirmed a genuine policy-content update including the deployment of PennChat with daily token allotments for FERPA/HIPAA records and updated rules restricting unlicensed tool use."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "sourceCandidateId": "src-upenn-cetli-ai-tools-policies",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+      "attemptedAt": "2026-09-19T21:14:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "c3c149c1b33b272116349a98f488e09c599b7ae06eb59670d67b7515f36fefd4",
+      "durationMs": 1480,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/university-of-pennsylvania/src-upenn-cetli-ai-tools-policies",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "sourceCandidateId": "src-upenn-cetli-ai-tools-policies",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+      "sourceTitle": "Penn AI Tools and Policies",
+      "sourceLanguage": "en",
+      "contentHash": "c3c149c1b33b272116349a98f488e09c599b7ae06eb59670d67b7515f36fefd4",
+      "fetchedAt": "2026-09-19T21:14:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/university-of-pennsylvania/src-upenn-cetli-ai-tools-policies",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-upenn-cetli-licensed-tools-pennchat-20260919",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "claimType": "other",
+      "claimText": "Penn\u2019s Center for Excellence in Teaching, Learning and Innovation (CETLI) maintains updated institutional guidance on Penn-licensed AI tools, providing community access to PennChat (with free daily token allotments for FERPA-protected educational records and HIPAA-protected health information via PennKey while on campus or VPN), alongside Anthropic Enterprise (Claude), Articulate AI Assistant, Adobe Express, and Copilot Chat, while mandating that instructors must not require students to enter personal information or intellectual property into unlicensed tools.",
+      "normalizedValue": "Penn provides institutional access to licensed AI tools including PennChat, Anthropic Enterprise, and Copilot Chat for FERPA/HIPAA data, while prohibiting mandatory student entry of personal info or IP into unlicensed tools.",
+      "sourceLanguage": "en",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-upenn-cetli-licensed-tools-pennchat-20260919"
+      ],
+      "citation": {
+        "citationTitle": "Penn AI Tools and Policies",
+        "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+        "publisher": "University of Pennsylvania / Center for Excellence in Teaching, Learning and Innovation",
+        "retrievedAt": "2026-09-19T21:14:00.000Z",
+        "snapshotHash": "c3c149c1b33b272116349a98f488e09c599b7ae06eb59670d67b7515f36fefd4",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-upenn-cetli-licensed-tools-pennchat-20260919",
+      "claimId": "cl-upenn-cetli-licensed-tools-pennchat-20260919",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+      "finalUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+      "sourceTitle": "Penn AI Tools and Policies",
+      "sourceLanguage": "en",
+      "snapshotHash": "c3c149c1b33b272116349a98f488e09c599b7ae06eb59670d67b7515f36fefd4",
+      "evidenceSnippetOriginal": "Penn offers access to a number of AI tools. While these Penn-licensed tools provide some added privacy protections, it is important to be aware of which tools are acceptable to use for different types of student data. ... PennChat: Free daily token allotment; \u2022FERPA-protected educational records \u2022HIPAA-protected health information; Log in with PennKey while on campus or connected to VPN ... Do not require students to enter personal information or intellectual property into an unlicensed AI tool.",
+      "evidenceLocator": "Penn-Licensed AI Tools and Publicly Available AI Tools sections",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Penn AI Tools and Policies",
+        "sourceUrl": "https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/",
+        "publisher": "University of Pennsylvania / Center for Excellence in Teaching, Learning and Innovation",
+        "retrievedAt": "2026-09-19T21:14:00.000Z",
+        "snapshotHash": "c3c149c1b33b272116349a98f488e09c599b7ae06eb59670d67b7515f36fefd4",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "claimId": "cl-upenn-cetli-licensed-tools-pennchat-20260919",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update on Penn CETLI AI Tools and Policies page (updated August 18, 2026). Substantive updates include adding institutional support for PennChat (free daily token allotment, FERPA and HIPAA compliance), Anthropic Enterprise (Claude), Articulate AI Assistant, and narrowing restrictions on unlicensed tools to explicitly bar requiring students to submit intellectual property or personal information.",
+      "decidedAt": "2026-09-19T21:14:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+      "title": "Maintenance Review: University of Pennsylvania (CETLI Penn AI Tools and Policies Update)",
+      "generatedAt": "2026-09-19T21:14:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a.mdx",
+      "summary": "Maintenance review of https://cetli.upenn.edu/resources/generative-ai/penn-ai-guidance-and-policies/ confirmed a substantive policy-content update (August 18, 2026 update). Penn expanded licensed AI tools to include PennChat, Anthropic Enterprise Claude, and Articulate AI Assistant, and updated data restrictions prohibiting mandatory student entry of intellectual property into unlicensed tools.",
+      "referencedClaimIds": [
+        "cl-upenn-cetli-licensed-tools-pennchat-20260919"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0"
+    }
+  ]
+}

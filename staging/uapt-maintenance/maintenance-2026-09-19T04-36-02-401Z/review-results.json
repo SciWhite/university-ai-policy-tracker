@@ -1,0 +1,710 @@
+{
+ "schemaVersion": "uapt-maintenance-review-results-v1",
+ "runId": "maintenance-2026-09-19T04-36-02-401Z",
+ "generatedAt": "2026-09-21T07:35:15.090Z",
+ "runningUnits": [],
+ "results": [
+  {
+   "item": "aarhus-university-37ed96f87ecd",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "adelaide-university-7dbadd890183",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "brown-university-3b9b14d44abe",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "brown-university-4e34609f3393",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "brown-university-8bcf721f48dd",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "california-institute-of-technology-de5581cbcf12",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "chalmers-university-of-technology-19f9a862e058",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "cornell-university-0c2ef6d64e66",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "cornell-university-4c511cfe9419",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "cornell-university-65eb2e3f885c",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "cornell-university-6ee15abe5438",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "cornell-university-a26d3b349405",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "cornell-university-b8ac3efd541a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "cuhk-1598c9da9f4a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "cuhk-8bee6a8d25ae",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "cuhk-cbe08b414bd8",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "delft-university-of-technology-d60a01308e43",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "duke-university-f717dce045ea",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "edinburgh-160924fe9c8b",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "edinburgh-3e0403a46887",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "edinburgh-7891d15a433e",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "edinburgh-c9b7bcb243e4",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "eindhoven-university-of-technology-97c1af399d72",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "emory-university-eff6859d134a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "erasmus-university-rotterdam-af3711580184",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "hanyang-university-3ac0cbb31a9d",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "hanyang-university-55e4a600e534",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "hkust-f835ac135a8c",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "hokkaido-university-3446eb697656",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "imperial-college-london-016fde40dba6",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "imperial-college-london-33bb5c6c0495",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "imperial-college-london-9232e5d8538c",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "imperial-college-london-fd0382a53eb9",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "indian-institute-of-technology-madras-d2120081527a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "kcl-1cd3a466f4a7",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "khalifa-university-61b039d56f58",
+   "artifactDir": "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-khalifa-university-61b039d56f58",
+   "classification": "valid_artifact",
+   "detail": "Artifact validator passed."
+  },
+  {
+   "item": "khalifa-university-818972309e93",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "king-saud-university-7a0c35a88aa6",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "kth-royal-institute-of-technology-fc5d207e5761",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "kyoto-university-8d6a70127014",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "lund-university-af38bc7d0988",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "manchester-16f9a0c0a076",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "nanyang-technological-university-1475fe073936",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "national-tsing-hua-university-e02095c607e2",
+   "artifactDir": "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+   "classification": "valid_artifact",
+   "detail": "Artifact validator passed."
+  },
+  {
+   "item": "national-university-of-singapore-a26a6ac8bc0d",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "national-yang-ming-chiao-tung-university-2852143ee3cd",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "northwestern-university-634bcd5b5578",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "northwestern-university-d1c5fdfc60a7",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "northwestern-university-ff99ad22dd86",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "ohio-state-university-a71375f359e1",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "pohang-university-of-science-and-technology-0bfa2009445e",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "pohang-university-of-science-and-technology-1507648b1b90",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "purdue-university-9131864e2363",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "queens-university-belfast-3d706ba6e07b",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "queens-university-belfast-45f95c65b3d5",
+   "artifactDir": "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-queens-university-belfast-45f95c65b3d5",
+   "classification": "valid_artifact",
+   "detail": "Artifact validator passed."
+  },
+  {
+   "item": "queens-university-belfast-a70629847fc1",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "queens-university-belfast-bd44d8146b42",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "queens-university-belfast-c22add34bf88",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "queens-university-belfast-c3dfd40c5d4c",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "queens-university-belfast-db334876cbbd",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "rmit-university-0de8521d4214",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "rmit-university-21d57f993823",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "rmit-university-2b9d43a2439e",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "rmit-university-5c4596865c74",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "snu-41c438adb1f5",
+   "classification": "blocked",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "snu-55205b53b462",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "sorbonne-university-8b9c6041585f",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "stanford-university-3d0f3631c6b0",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "stanford-university-5fa83bdbf67f",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "stanford-university-65fba01f0551",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "stanford-university-7f5d76108cf2",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "stanford-university-81362b7b553d",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "sungkyunkwan-university-0b3a9b1bf0ed",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-sheffield-35946676f48e",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-sheffield-571dc4f52bc7",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-sheffield-697c5fbcbfd2",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-sheffield-ab00415b9ccb",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-sheffield-ba6c09af6981",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-sheffield-e5070dd52b44",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-warwick-2f309b717313",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-warwick-d55f739fe13f",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-western-australia-060a4d967918",
+   "classification": "blocked",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "the-university-of-western-australia-d7100511dc0a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "tongji-university-9a8628287b27",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "ubc-3ec79b1280a8",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "ucla-efb808c7f3f1",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "universitas-indonesia-7867260cb59e",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-auckland-575c56d1bde7",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-auckland-b2faa315e30d",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-basel-0ef4f4557cd4",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-basel-e42a10a89fc2",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-bath-49fa9f2ef482",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-bath-a38a297ba835",
+   "classification": "blocked",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-bristol-d735b4f58cdc",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-california-berkeley-d4962d919e1c",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-cambridge-99bd61e5ec0a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-cambridge-a0e23bae45e6",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-cambridge-d13065c8f69c",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-cambridge-d5b24de58ce4",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-exeter-7069712ecd8e",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-geneva-4b45ce185d8a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-geneva-7d6ae7cffb55",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-geneva-ed904d52dbcb",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-helsinki-5ae40696fcae",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-helsinki-67fd05b05cba",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-hong-kong-ee39126330b5",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-illinois-urbana-champaign-2c51e0ed7e3a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-north-carolina-at-chapel-hill-5111adf5efb8",
+   "classification": "needs_human_review",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-north-carolina-at-chapel-hill-ca853886e498",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-nottingham-1644968e3875",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-nottingham-7b6fe0d0c255",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-nottingham-e665499602e8",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-pennsylvania-73ae78678f87",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-pennsylvania-8c07c6c87a5a",
+   "artifactDir": "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
+   "classification": "valid_artifact",
+   "detail": "Artifact validator passed."
+  },
+  {
+   "item": "university-of-pennsylvania-e4964a73ab54",
+   "artifactDir": "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
+   "classification": "valid_artifact",
+   "detail": "Artifact validator passed."
+  },
+  {
+   "item": "university-of-southampton-e811454a5fd5",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-southern-california-68a9698b6ce2",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-sydney-b5523b649961",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-sydney-b8c0cebdd645",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-toronto-994132b40127",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-toronto-e412f2fea41a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-washington-57b1e98fb4e6",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-washington-5b7a76dd9697",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-waterloo-bde66c618fce",
+   "artifactDir": "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
+   "classification": "valid_artifact",
+   "detail": "Artifact validator passed."
+  },
+  {
+   "item": "university-of-waterloo-dc5aafd8b568",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-wisconsin-madison-d733dbb6b25e",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "university-of-wollongong-5337d6698aa9",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "unsw-sydney-4b498a12b841",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "vrije-universiteit-amsterdam-6d9fa19731e2",
+   "artifactDir": "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
+   "classification": "valid_artifact",
+   "detail": "Artifact validator passed."
+  },
+  {
+   "item": "wageningen-university-and-research-4acbe12e4b7a",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "washington-university-in-st-louis-20b98e978902",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "washington-university-in-st-louis-f94b7c4bdbd6",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "wuhan-university-d017d78ba052",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "yale-university-02394743ff01",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "yale-university-12aa31178990",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "yale-university-28d0be4dccf1",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "yale-university-71049e0305eb",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "yale-university-b88f1751e6c3",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  },
+  {
+   "item": "yale-university-f17d78d45f71",
+   "classification": "no_promote",
+   "detail": "Maintenance note only; no publishable conclusion inferred."
+  }
+ ]
+}

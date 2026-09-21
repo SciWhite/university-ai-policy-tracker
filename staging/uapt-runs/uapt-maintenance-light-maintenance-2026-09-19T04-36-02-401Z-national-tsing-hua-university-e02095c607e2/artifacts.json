@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "createdAt": "2026-09-19T23:05:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "national-tsing-hua-university",
+          "sourceCandidateId": "sc-national-tsing-hua-university-e02095c607e2",
+          "sourceUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+          "sourceTitle": "人工智慧、磨課師與數位學習 AI, MOOCs, and Digital Learning",
+          "sourceLanguage": "zh-Hant",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "teaching_assessment",
+            "ai_detection_tools",
+            "two_lane_approach",
+            "syllabus_ethics_statement"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-national-tsing-hua-university-e02095c607e2",
+      "entityType": "university",
+      "entitySlug": "national-tsing-hua-university",
+      "sourceUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+      "finalUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+      "sourceTitle": "人工智慧、磨課師與數位學習 AI, MOOCs, and Digital Learning",
+      "sourceLanguage": "zh-Hant",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-15T00:00:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-19T23:05:00.000Z",
+      "verificationNotes": "Official NTHU Center for Teaching and Learning Development index linking the newly issued third edition (September 1, 2026) of the NTHU Implementation Guidelines on AI Ethics Statements and Learning Assessment.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "entityType": "university",
+      "entitySlug": "national-tsing-hua-university",
+      "startedAt": "2026-05-15T00:00:00.000Z",
+      "endedAt": "2026-09-19T23:05:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Tracked official NTHU Center for Teaching and Learning Development AI/digital learning portal URL."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-19T04-36-02-401Z detected content_policy_delta against baseline snapshot. Verification confirmed NTHU CTLD added the newly updated third edition (September 1, 2026) of the Implementation Guidelines on AI Ethics Statements and Learning Assessment."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-national-tsing-hua-university-e02095c607e2"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of NTHU CTLD source https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw identified a genuine policy-content update: the release of the 3rd edition (September 1, 2026) of the NTHU Implementation Guidelines on AI Ethics Statements and Learning Assessment, introducing explicit guidance advising instructors against using third-party AI detection tools and recommending the Two-Lane Approach for assessment."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "sourceCandidateId": "sc-national-tsing-hua-university-e02095c607e2",
+      "sourceUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+      "finalUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+      "attemptedAt": "2026-09-19T23:05:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "cdc91a168506710bc25f48d1e01642a418bed9a67905768d93c1aed54a1465ea",
+      "durationMs": 340,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/national-tsing-hua-university/sc-national-tsing-hua-university-e02095c607e2",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "sourceCandidateId": "sc-national-tsing-hua-university-e02095c607e2",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "sourceUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+      "finalUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+      "sourceTitle": "人工智慧、磨課師與數位學習 AI, MOOCs, and Digital Learning",
+      "sourceLanguage": "zh-Hant",
+      "contentHash": "cdc91a168506710bc25f48d1e01642a418bed9a67905768d93c1aed54a1465ea",
+      "fetchedAt": "2026-09-19T23:05:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260919/national-tsing-hua-university/sc-national-tsing-hua-university-e02095c607e2",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-nthu-ctld-ai-detection-avoidance-20260919",
+      "entityType": "university",
+      "entitySlug": "national-tsing-hua-university",
+      "claimType": "security_review",
+      "claimText": "National Tsing Hua University (NTHU) Center for Teaching and Learning Development guidance advises faculty against relying on third-party AI detection tools as primary evidence of student AI use, citing false positive risks, privacy and data leakage concerns, and equity disparities for non-native English speakers.",
+      "normalizedValue": "NTHU advises faculty not to use third-party AI detection tools as primary evidence due to false positive, privacy, and fairness risks.",
+      "sourceLanguage": "zh-Hant",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-nthu-ctld-ai-detection-avoidance-20260919"
+      ],
+      "citation": {
+        "citationTitle": "人工智慧、磨課師與數位學習 AI, MOOCs, and Digital Learning",
+        "sourceUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+        "publisher": "National Tsing Hua University / Center for Teaching and Learning Development",
+        "retrievedAt": "2026-09-19T23:05:00.000Z",
+        "snapshotHash": "cdc91a168506710bc25f48d1e01642a418bed9a67905768d93c1aed54a1465ea",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-nthu-ctld-ai-detection-avoidance-20260919",
+      "claimId": "cl-nthu-ctld-ai-detection-avoidance-20260919",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "sourceUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+      "finalUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+      "sourceTitle": "人工智慧、磨課師與數位學習 AI, MOOCs, and Digital Learning",
+      "sourceLanguage": "zh-Hant",
+      "snapshotHash": "cdc91a168506710bc25f48d1e01642a418bed9a67905768d93c1aed54a1465ea",
+      "evidenceSnippetOriginal": "本校不建議教師以第三方AI偵測工具作為判斷學生是否使用AI的主要依據。在真實情境中，學生多將AI用於構思、潤飾或局部生成，這使得偵測工具極易產生誤判（false positives）。再者，這類工具不僅可能衍生隱私與資料外洩風險，對非英語母語或不同社經背景的學生亦有公平性疑慮。因此，AI偵測結果不應單獨作為認定學術不誠信的證據；若過度依賴此類工具，反而會破壞師生間的信任，不利於建立健康的教學環境。",
+      "evidenceSnippetDisplay": "NTHU does not recommend that instructors use third-party AI detection tools as the primary basis for determining whether students have used AI. In real-world settings, students often use AI for ideation, polishing, or partial generation, making such tools highly prone to false positives. Moreover, these tools may create privacy and data-leakage risks and raise fairness concerns for non-native English speakers and students from different socioeconomic backgrounds. AI detection results should therefore not be used alone as evidence of academic misconduct.",
+      "evidenceLocator": "國立清華大學AI倫理聲明與學習評量實施指引 2.2 避免使用第三方AI偵測工具",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "人工智慧、磨課師與數位學習 AI, MOOCs, and Digital Learning",
+        "sourceUrl": "https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw",
+        "publisher": "National Tsing Hua University / Center for Teaching and Learning Development",
+        "retrievedAt": "2026-09-19T23:05:00.000Z",
+        "snapshotHash": "cdc91a168506710bc25f48d1e01642a418bed9a67905768d93c1aed54a1465ea",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "claimId": "cl-nthu-ctld-ai-detection-avoidance-20260919",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update on NTHU Center for Teaching and Learning Development portal, which introduced the September 1, 2026 (3rd edition) Implementation Guidelines on AI Ethics Statements and Learning Assessment, specifically establishing non-reliance on third-party AI detection tools.",
+      "decidedAt": "2026-09-19T23:05:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2",
+      "title": "Maintenance Review: National Tsing Hua University (AI Ethics and Learning Assessment Guidelines 3rd Edition)",
+      "generatedAt": "2026-09-19T23:05:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-national-tsing-hua-university-e02095c607e2.mdx",
+      "summary": "Maintenance review of https://ctld.site.nthu.edu.tw/p/412-1217-20815.php?Lang=zh-tw verified a genuine policy update with the release of the September 1, 2026 3rd edition of the NTHU Implementation Guidelines on AI Ethics Statements and Learning Assessment. The updated policy advises instructors against relying on third-party AI detection tools due to false positive, privacy, and equity concerns, and adopts the Two-Lane Approach for assessment. Promoted one agent_reviewed claim candidate.",
+      "referencedClaimIds": [
+        "cl-nthu-ctld-ai-detection-avoidance-20260919"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0"
+    }
+  ]
+}

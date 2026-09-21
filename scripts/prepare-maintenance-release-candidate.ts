@@ -54,6 +54,7 @@ async function main(): Promise<void> {
     ...baseline,
     releaseId: path.basename(candidate, ".json"),
     publishedAt: new Date().toISOString(),
+    candidateOnly: true,
     description: `Maintenance release candidate from ${runId}; awaiting explicit Codex promotion confirmation.`,
     previousReleaseId: baseline.releaseId,
     includeStagedArtifactDirectories: unique([
