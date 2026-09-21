@@ -227,8 +227,8 @@
       }
     ]
   },
-  "releaseId": "public-release-20260801-001",
-  "basisFingerprint": "799216b4a937bbeee5dbc5046ae120576941669ed4fc75b33e7ad3d320abc61b",
+  "releaseId": "public-release-20260921-001",
+  "basisFingerprint": "fa64425dbc8507c264be954de41c2813335b7800a454ed33a00d70dbc9fcec46",
   "review": {
     "reviewMethod": "dual_agent",
     "reviewState": "dual_agent_reviewed",
