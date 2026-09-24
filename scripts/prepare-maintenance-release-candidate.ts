@@ -38,7 +38,10 @@ async function main(): Promise<void> {
         (result) =>
           result.classification === "valid_artifact" && typeof result.artifactDir === "string",
       )
-      .map((result) => result.artifactDir as string),
+      .map((result) => {
+        const dir = result.artifactDir as string;
+        return path.isAbsolute(dir) ? path.relative(process.cwd(), dir) : dir;
+      }),
   );
 
   if (!validArtifactDirs.length) {
