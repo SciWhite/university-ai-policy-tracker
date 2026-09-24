@@ -219,7 +219,7 @@ function parseArgs(args: string[]): Options {
     fallbackModel: process.env.UAPT_MAINTENANCE_FALLBACK_MODEL,
     maintenanceRoot: process.env.UAPT_MAINTENANCE_ROOT ?? DEFAULT_ROOT,
     maxConcurrency: 1,
-    model: process.env.UAPT_MAINTENANCE_MODEL ?? "nvidia/z-ai/glm-5.2",
+    model: process.env.UAPT_MAINTENANCE_MODEL ?? "newapi/cliproxy/gemini-3.8-flash-high",
     queue: undefined,
     repo: process.cwd(),
     retryAttempts: Number(process.env.UAPT_MAINTENANCE_RETRY_ATTEMPTS ?? 3),
