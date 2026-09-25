@@ -9,6 +9,7 @@ import {
 } from "@/lib/catalog";
 import { ClaimEvidenceCard } from "@/components/claim-evidence-card";
 import { EntityHeader } from "@/components/entity-header";
+import { PolicySceneHero } from "@/components/policy-scene-hero";
 import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
 import { NoReviewedSnapshotState, StudentPolicySnapshot, isStrongStudentSnapshot, normalizeStudentSnapshotRole } from "@/components/student-policy-snapshot";
@@ -27,6 +28,7 @@ import {
   isIndexRecoveryPilotSlug
 } from "@/lib/index-recovery-pilot";
 import { getLoadedPolicySnapshotBySlug } from "@/lib/policy-snapshots";
+import { getPolicyScenePilot } from "@/lib/policy-scene-pilot";
 import { selectRelatedUniversities } from "@/lib/related-universities";
 import { getStagedPublicSummaries } from "@/lib/staged-public-data";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
@@ -183,6 +185,12 @@ export default async function UniversityPage({
     pilotContent?.claimsSummary && !strongSnapshot && hasCurrentIndexRecoveryBasis(slug, publicSummary.claims)
       ? pilotContent.claimsSummary
       : undefined;
+  const policyScene = getPolicyScenePilot(
+    slug,
+    publicSummary.claims,
+    strongSnapshot,
+    Boolean(pilotClaimsSummary)
+  );
   const pilotSeoDescription = pilotSlug
     ? buildIndexRecoveryDescription({
         slug,
@@ -268,6 +276,8 @@ export default async function UniversityPage({
         }
         title={<span data-i18n="preserve">{displayName}</span>}
       />
+
+      {policyScene ? <PolicySceneHero scene={policyScene} /> : null}
 
       {strongSnapshot ? (
         <StudentPolicySnapshot

@@ -28,6 +28,8 @@ import { getStagedCatalogUniversities, getStagedPublicSummaries } from "../apps/
 import { UniversityClaimGroups } from "../apps/web/components/university-claim-groups";
 import { RelatedUniversities } from "../apps/web/components/related-universities";
 import { STUDENT_SNAPSHOT_DIMENSION_ORDER } from "../apps/web/components/student-policy-snapshot";
+import { getPolicyScenePilot } from "../apps/web/lib/policy-scene-pilot";
+import { PolicySceneHero } from "../apps/web/components/policy-scene-hero";
 import type { PolicyClaim } from "@uapt/shared";
 
 function reviewedClaimsOf(claims: PolicyClaim[]): PolicyClaim[] {
@@ -60,6 +62,34 @@ test("the pilot allowlist is exactly the ten reviewed slugs", () => {
     getIndexRecoveryPilotSlugFromPath("/universities"),
     undefined
   );
+});
+
+test("scene pilot stays limited to two evidence-backed states", async () => {
+  const harvard = await getStagedPublicSummaryBySlug("harvard-university");
+  const manchester = await getStagedPublicSummaryBySlug("manchester");
+  assert(harvard);
+  assert(manchester);
+
+  const harvardScene = getPolicyScenePilot(
+    "harvard-university", harvard.claims, true, false
+  );
+  const manchesterScene = getPolicyScenePilot(
+    "manchester", manchester.claims, false, true
+  );
+  assert(harvardScene);
+  assert(manchesterScene);
+  assert.equal(getPolicyScenePilot("harvard-university", harvard.claims, false, false), undefined);
+  assert.equal(getPolicyScenePilot("manchester", manchester.claims, true, true), undefined);
+  assert.equal(getPolicyScenePilot("manchester", manchester.claims, false, false), undefined);
+  assert.equal(getPolicyScenePilot("university-of-oxford", harvard.claims, true, true), undefined);
+  assert.equal(getPolicyScenePilot("harvard-university", [], true, false), undefined);
+
+  const harvardHtml = renderToStaticMarkup(React.createElement(PolicySceneHero, { scene: harvardScene }));
+  const manchesterHtml = renderToStaticMarkup(React.createElement(PolicySceneHero, { scene: manchesterScene }));
+  assert.match(harvardHtml, /href="#student-policy-heading"/);
+  assert.match(manchesterHtml, /href="#claims"/);
+  assert.match(manchesterHtml, /No reviewed student policy snapshot has been published yet/);
+  assert.doesNotMatch(harvardHtml, /No reviewed student policy snapshot/);
 });
 
 test("the pilot content version is a fixed traceable date", () => {
