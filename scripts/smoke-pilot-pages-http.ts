@@ -3,6 +3,7 @@ import {
   INDEX_RECOVERY_PILOT_SLUGS,
   indexRecoveryPilotContent
 } from "../apps/web/lib/index-recovery-pilot";
+import { getIndexRecoveryLastModified } from "../apps/web/lib/index-recovery-dates";
 
 /**
  * Production smoke test for the ten index-recovery pilot university pages.
@@ -146,10 +147,11 @@ async function probePilotPage(
     failures.push(`pilot title theme missing: "${theme}"`);
   }
 
-  const dateModifiedMarker = `"dateModified":"${INDEX_RECOVERY_CONTENT_VERSION}T00:00:00.000Z"`;
+  const expectedDate = (await getIndexRecoveryLastModified(slug)).toISOString();
+  const dateModifiedMarker = `"dateModified":"${expectedDate}"`;
   if (!body.includes(dateModifiedMarker)) {
     failures.push(
-      `JSON-LD dateModified does not match content version ${INDEX_RECOVERY_CONTENT_VERSION}`
+      `JSON-LD dateModified does not match expected ${expectedDate}`
     );
   }
 
