@@ -2,8 +2,8 @@
   "schemaVersion": "uapt-public-release-manifest-v1",
   "releaseId": "public-release-20260924-002",
   "publishedAt": "2026-09-24T23:31:02.306Z",
-  "candidateOnly": false,
-  "description": "Published maintenance release from maintenance-2026-09-24T12-50-29-097Z: 828 full audit verified policy updates for Columbia, Lund, Universidad Adolfo Ibáñez, UC Irvine, Guelph, UNH, Oregon, UPenn, Toronto, UNSW Sydney, and WashU (11 claims: AI detection bans, autonomous coding agents, licensed tools, syllabus disclosures, and data classification matrices).",
+  "candidateOnly": true,
+  "description": "Maintenance release candidate from maintenance-2026-09-24T12-50-29-097Z; awaiting explicit Codex promotion confirmation.",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",

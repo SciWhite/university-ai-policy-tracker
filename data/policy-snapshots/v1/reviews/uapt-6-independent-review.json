@@ -6,7 +6,7 @@
   "model": "gpt-5",
   "reviewedAt": "2026-08-08T11:15:00.000Z",
   "indexFile": "data/policy-snapshots/v1/index.json",
-  "releaseId": "public-release-20260921-001",
+  "releaseId": "public-release-20260924-002",
   "expectedEntryCount": 24,
   "decisions": [
     {
@@ -19,7 +19,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/aalto-university.json",
-        "basisFingerprint": "320b58911889b024e715b0a8fbe3a0bb52a5c44ec2269efcaed9e6e842d1c619",
+        "basisFingerprint": "30045bb195af89228f19d84e5386379cd6e6724c02093b02dc8c06cc1ad0283b",
         "claimIds": [
           "claim-aalto-001",
           "claim-aalto-003",
@@ -62,7 +62,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/harvard-university.json",
-        "basisFingerprint": "dd4b6b5e6d749b3b4ce84608bcf2093006c6df6213b8e618069e39b3cb315e53",
+        "basisFingerprint": "38bddb00f75d6e1f297a7d1b2978bbda1959f687cf9f28d4d44d375f80e450b3",
         "claimIds": [
           "clm-harvard-university-ai-tools-not-authors",
           "clm-harvard-university-approved-tools-classification",
@@ -107,7 +107,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/jagiellonian-university.json",
-        "basisFingerprint": "0a94600908348eaae0d4d8979cbe8a46ac79ec2b6748230dfff15d649ea7493c",
+        "basisFingerprint": "e19ec1dcdad74184a9ec3d36ea988e88b5bb051dbd19eb2e79638496ba5b4187",
         "claimIds": [
           "claim-jagiellonian-ai-use-permitted-teaching",
           "claim-jagiellonian-instructors-set-ai-rules",
@@ -131,7 +131,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/massachusetts-institute-of-technology.json",
-        "basisFingerprint": "0c1fc62d38c5f48e4968cf3593bb9f4f0805929e799938d31dee25a915ee2aea",
+        "basisFingerprint": "81ca9d510fdfbf56c28c4db4c4ade057c3ddd263775b983b9b92f2edf0f9c919",
         "claimIds": [
           "clm-massachusetts-institute-of-technology-approved-tools-list",
           "clm-massachusetts-institute-of-technology-disclosure",
@@ -159,7 +159,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/national-university-of-singapore.json",
-        "basisFingerprint": "da5e1b4a11bdeffd61bf63aa4e24650b8a602b3b08f345958f2306328be1a1c6",
+        "basisFingerprint": "36ba754102db8255511698e5b1bc500196a9b542390a9004e873416c74b464b2",
         "claimIds": [
           "cl-national-university-of-singapore-institutional-ai-service-48",
           "clm-nus-approved-tools-only",
@@ -195,7 +195,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/snu.json",
-        "basisFingerprint": "3d43c241eb016136b35ad2a336d05a6fe3f8e545a2470f5f46761f7e332aae84",
+        "basisFingerprint": "cf18b34d55783903e363702fe531f6a5ddc94674e0c07ce1c640d037e3482e65",
         "claimIds": [
           "cl-seoul-national-university-chatgpt-224",
           "claim-snu-002b",
@@ -234,7 +234,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/stanford-university.json",
-        "basisFingerprint": "f0d3d691075c1bb496a6922f5009533e25db4e13bfb39e1ce1cc2d04b323e438",
+        "basisFingerprint": "a366bd08a1736fb5f9076a96a2d7f53088f558300fe09b5b28c64200faf632c3",
         "claimIds": [
           "cl-stanford-university-chatgpt-18",
           "clm-stanford-university-law-school-ai-policy",
@@ -279,7 +279,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/sultan-qaboos-university.json",
-        "basisFingerprint": "a9d275300aaedcbc113e866e158ece26ab11b67659889cf4b0de5e3db2602c98",
+        "basisFingerprint": "4be5f1d7f232ab4cbd96b8760c741230148a236042d8c9246cac69f54130357d",
         "claimIds": [
           "claim-squ-ai-citation-transparency",
           "claim-squ-ai-misconduct",
@@ -305,7 +305,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/tsinghua-university.json",
-        "basisFingerprint": "48bb5c6aa5473155b175a10281bb6d874dfd69f006fdd0e7a1a3b7a85eb0f982",
+        "basisFingerprint": "e886b1b44c839e43d8679e0eeb71b15e0e9efdf05fdf27079d98fd004644cb65",
         "claimIds": [
           "cl-tsinghua-university-institutional-ai-service-138",
           "claim-tsinghua-university-1",
@@ -339,7 +339,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/u-tokyo.json",
-        "basisFingerprint": "b45f841082d98155e8a4214bf5716cd8b34e55562f84bfe23fcbbb22712ef7af",
+        "basisFingerprint": "8c2b227e2091793adcd1ace71afc771bf0b173d967fa9d7c7dc19c66590a845e",
         "claimIds": [
           "claim-u-tokyo-001f",
           "claim-u-tokyo-003b",
@@ -380,7 +380,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/universitat-innsbruck.json",
-        "basisFingerprint": "9e1eb01dbab4037815e72b702fe526d60e7eaf3345fc4e8cd1b68d214ef9580b",
+        "basisFingerprint": "bfe11bc288ed91096c1f8bc9b97d18f5004ed8cd01079426a207ff8c8229d054",
         "claimIds": [
           "cl-universitat-innsbruck-institutional-ai-service-766",
           "claim-uibk-privacy-confidential-data",
@@ -414,7 +414,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/university-of-cambridge.json",
-        "basisFingerprint": "576e4d439d6bfe1c991c6c2fc7ea175b55acdf9d6449c27baf5067a98766755d",
+        "basisFingerprint": "6b98c81d6fd13a4bb64589c0e016f593386d24755be36476624a5f333963e249",
         "claimIds": [
           "claim-cam-assessment-1",
           "claim-cam-education-1",
@@ -453,7 +453,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/university-of-oxford.json",
-        "basisFingerprint": "fa64425dbc8507c264be954de41c2813335b7800a454ed33a00d70dbc9fcec46",
+        "basisFingerprint": "6868fe473ad639398a0078b06d1e19dd358ae8c52e4c92dc4e29745daa1ded7b",
         "claimIds": [
           "cl-university-of-oxford-chatgpt-21",
           "clm-university-of-oxford-ai-approved-platforms-confidential",
@@ -499,7 +499,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/zhejiang-university.json",
-        "basisFingerprint": "d57b7c4b60ba53439841ef7e838460e97ab38a804e66e79949cfa26b4c1178a9",
+        "basisFingerprint": "9c9bb4380dc85a6b28f8e939f2d6a2f0917f1c0421bccef269f08d09c2feaca0",
         "claimIds": [
           "cl-zhejiang-university-institutional-ai-service-265",
           "claim-zju-001"
@@ -526,7 +526,7 @@
       ],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/unsw-sydney.json",
-        "basisFingerprint": "2f39ae77664994a508c85fb5b78630a9291a6092b2ea4bb1770a3fb16b17bab4",
+        "basisFingerprint": "454b0cb22d2b8cb75d3e62ecb85f5848af3a276fff1a0eae40d4e15d68c891c6",
         "claimIds": [
           "claim-unsw-sydney-2",
           "claim-unsw-sydney-3",
@@ -558,7 +558,7 @@
       "notes": [],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/cornell-university.json",
-        "basisFingerprint": "58682694f46b527d0338f4ff24a9be55757fe4430fe33e7bacef63352e42dde7",
+        "basisFingerprint": "2b317f16051653f7ae350ac09cfc92d4a7a5aef171120120a1b0e4b93d5fbfd6",
         "claimIds": [
           "claim-cornell-university-15",
           "claim-cornell-university-20",
@@ -595,7 +595,7 @@
       "notes": [],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/university-of-sydney.json",
-        "basisFingerprint": "d7d789c44b1e753717ad554f78d68cbc73c6d101911b9a1c25839067131d8225",
+        "basisFingerprint": "279b9cb4da6c7f0eb5d23bccb940b71f0f6ec2f8347d6e33a5bccd0f28775625",
         "claimIds": [
           "usyd-claim-3",
           "usyd-claim-10",
@@ -635,7 +635,7 @@
       "notes": [],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/de-la-salle-university.json",
-        "basisFingerprint": "5eb5461e6e2eb1a10e6684d5cc0c6b3036c06052980713e0a44497c988f9180d",
+        "basisFingerprint": "e8bfc92602bd60f5db9e58edc3ad2b806959a177dec836de62e0dfb9a39b5ed4",
         "claimIds": [
           "claim-dlsu-generative-ai-syllabus-policy",
           "claim-dlsu-generative-ai-academic-dishonesty",
@@ -659,7 +659,7 @@
       "notes": [],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/university-of-auckland.json",
-        "basisFingerprint": "a60244a65109bc868c8a3f559a5a9e7f3a125b8aab406dea207fc40aca1a580a",
+        "basisFingerprint": "585c8b1d6cfc445d049e001ea16599cc3c32d3694b95a8bdfd7baaa1140c735d",
         "claimIds": [
           "claim-auckland-001",
           "claim-university-of-auckland-024",
@@ -690,7 +690,7 @@
       "notes": [],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/imperial-college-london.json",
-        "basisFingerprint": "14ab4e655a532979c6a226efff54fe4df9773596ee120afeee10d6a69f5bc717",
+        "basisFingerprint": "b041c04a14980c2245bbb55ce01c9d5c21c229fdfa5c5a9a40a32ede0aaddcd9",
         "claimIds": [
           "clm-imperial-college-london-dept-assessment-policy",
           "clm-imperial-college-london-ai-misconduct",
@@ -723,7 +723,7 @@
       "notes": [],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/university-of-melbourne.json",
-        "basisFingerprint": "e0b909dc7cfafb41deaab07acdcc998aabb89054229a4ec3b52258f03422dd92",
+        "basisFingerprint": "b925c866b0e4ce357a2d45c2b36f7085f3710518c2853bab7b706b498cc97ccc",
         "claimIds": [
           "claim-university-of-melbourne-1",
           "claim-university-of-melbourne-6",
@@ -756,7 +756,7 @@
       "notes": [],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/utrecht-university.json",
-        "basisFingerprint": "1e97add9e92b716edbedb8cbce7a2c6d635751806392f6826f82fb55a5ac3318",
+        "basisFingerprint": "67e4b625c86092daaf286e53942faac4149c65b00b9e5b699201cdfed496a0ef",
         "claimIds": [
           "cl-uu-ai-index",
           "cl-uu-student-ai-tool-conditions",
@@ -791,7 +791,7 @@
       "notes": [],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/adelaide-university.json",
-        "basisFingerprint": "1e0f981c384c15cc554f238f5bd96e49b9445a93c252875735cd56ef93fbcb89",
+        "basisFingerprint": "00118c3ca408d4c841d1c5ffe708b745bf8fb4369c708ddb7428cdd7c3cbb012",
         "claimIds": [
           "claim-adelaide-003",
           "claim-adelaide-001",
@@ -837,7 +837,7 @@
       "notes": [],
       "evidence": {
         "snapshotFile": "data/policy-snapshots/v1/universities/ubc.json",
-        "basisFingerprint": "e924fed71da4a73ff7990ed8a158c420aa48ec14a30cec32fdaea43a7006690d",
+        "basisFingerprint": "32243fe402a176b874bdff8918fc65ac39572359d042cac0d3900a6408577b21",
         "claimIds": [
           "CL-003",
           "claim-ubc-012",

@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "createdAt": "2026-09-24T16:05:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "columbia",
+          "sourceCandidateId": "sc-columbia-91e3b0fb3b29",
+          "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+          "sourceTitle": "AI and Generative Technology Use at CUIMC | CUIMC Information Technology",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "data_classification",
+            "hipaa_compliance",
+            "phi_and_sensitive_data"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Review CUIMC AI tools and generative technology policy matrix against repository baseline.",
+        "Verify genuine policy updates including role-based guidance, expanded AI Tools x Data Classification matrix, and tool approval status for Sensitive Data."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-columbia-91e3b0fb3b29",
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+      "finalUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+      "sourceTitle": "AI and Generative Technology Use at CUIMC | CUIMC Information Technology",
+      "sourceLanguage": "en",
+      "sourceType": "approved_tools",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-07-10T00:00:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.98,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T16:05:00.000Z",
+      "verificationNotes": "Official Columbia University Irving Medical Center (CUIMC) Information Technology guidance page detailing role-based AI use and comprehensive AI Tools x Data Classification approval matrix.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "startedAt": "2026-07-10T00:00:00.000Z",
+      "endedAt": "2026-09-24T16:05:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Official CUIMC AI guidance URL monitored under maintenance item columbia-91e3b0fb3b29."
+        },
+        {
+          "method": "other",
+          "notes": "Automated maintenance scan maintenance-2026-09-24T12-50-29-097Z flagged content_policy_delta against baseline snapshot hash 5370b6d21d358ee223320340b907194d5b5f90a0698dd128fae2e4005d5432da. Detailed inspection confirmed substantive policy restructuring and matrix expansion, introducing 4 role-based guidance sections and a detailed 23-row AI Tools x Data Classification matrix."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-columbia-91e3b0fb3b29"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of CUIMC source https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc confirmed genuine policy updates: transition to role-tailored rules across clinicians, researchers, students, and administrative staff, and formal promulgation of the August 2026 AI Tools x Data Classification matrix distinguishing HIPAA-cleared tools from non-approved tools."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-columbia-91e3b0fb3b29-20260924",
+      "sourceCandidateId": "sc-columbia-91e3b0fb3b29",
+      "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+      "finalUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+      "attemptedAt": "2026-09-24T12:53:41.676Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "1b96d738b69fc3a8ca9c83a8f836b205d7a112ebef3b38821b37747955183db4",
+      "durationMs": 346,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/columbia/sc-columbia-91e3b0fb3b29",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "sourceCandidateId": "sc-columbia-91e3b0fb3b29",
+      "fetchAttemptId": "fa-columbia-91e3b0fb3b29-20260924",
+      "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+      "finalUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+      "sourceTitle": "AI and Generative Technology Use at CUIMC | CUIMC Information Technology",
+      "sourceLanguage": "en",
+      "contentHash": "1b96d738b69fc3a8ca9c83a8f836b205d7a112ebef3b38821b37747955183db4",
+      "fetchedAt": "2026-09-24T12:53:41.676Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/columbia/sc-columbia-91e3b0fb3b29",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-columbia-cuimc-ai-matrix-20260924",
+      "entityType": "university",
+      "entitySlug": "columbia",
+      "claimType": "ai_tool_treatment",
+      "claimText": "CUIMC maintains an official AI Tools × Data Classification matrix governing use with Sensitive Data (PHI, PII, RHI) versus Confidential/Internal and Public data; availability through central CUIT does not constitute approval for Sensitive Data under HIPAA.",
+      "normalizedValue": "{\"policy\":\"ai_tools_data_classification_matrix\",\"framework\":\"role_and_data_classification\",\"phi_approved_tools\":[\"columbia_chatgpt_education\",\"cu_ai_toolkit_openai_models\",\"microsoft_copilot_chat\",\"microsoft_m365_copilot\",\"microsoft_copilot_fabric\",\"openai_chatgpt_desktop_codex\",\"openai_chatgpt_education_api_excluding_web_search\",\"aws_bedrock_compliant_architecture\"],\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_supported\"}",
+      "sourceLanguage": "en",
+      "confidence": 0.98,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-columbia-cuimc-ai-matrix-20260924"
+      ],
+      "citation": {
+        "citationTitle": "AI and Generative Technology Use at CUIMC | CUIMC Information Technology",
+        "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/columbia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/columbia",
+        "publisher": "Columbia University Irving Medical Center",
+        "retrievedAt": "2026-09-24T12:53:41.676Z",
+        "snapshotHash": "1b96d738b69fc3a8ca9c83a8f836b205d7a112ebef3b38821b37747955183db4",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-columbia-cuimc-ai-matrix-20260924",
+      "claimId": "cl-columbia-cuimc-ai-matrix-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+      "finalUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+      "sourceTitle": "AI and Generative Technology Use at CUIMC | CUIMC Information Technology",
+      "sourceLanguage": "en",
+      "snapshotHash": "1b96d738b69fc3a8ca9c83a8f836b205d7a112ebef3b38821b37747955183db4",
+      "evidenceSnippetOriginal": "You may notice a tool is available University-wide through CUIT but not approved for Sensitive Data at CUIMC. The reason is HIPAA. CUIMC operates as part of a HIPAA covered entity. Much of the data here is PHI/RHI, so a tool is only approved for Sensitive Data when Columbia has a Business Associate Agreement (BAA) or equivalent contractual protections in place and the tool is configured to keep data inside the protected CUIMC environment... Bottom line: availability ≠ approval for Sensitive Data.",
+      "evidenceSnippetDisplay": "You may notice a tool is available University-wide through CUIT but not approved for Sensitive Data at CUIMC. The reason is HIPAA. CUIMC operates as part of a HIPAA covered entity. Much of the data here is PHI/RHI, so a tool is only approved for Sensitive Data when Columbia has a Business Associate Agreement (BAA) or equivalent contractual protections in place and the tool is configured to keep data inside the protected CUIMC environment... Bottom line: availability ≠ approval for Sensitive Data.",
+      "evidenceLocator": "Section: Why Does the Same Tool Get a Different Answer at CU vs. CUIMC?",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "AI and Generative Technology Use at CUIMC | CUIMC Information Technology",
+        "sourceUrl": "https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/columbia.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/columbia",
+        "publisher": "Columbia University Irving Medical Center",
+        "retrievedAt": "2026-09-24T12:53:41.676Z",
+        "snapshotHash": "1b96d738b69fc3a8ca9c83a8f836b205d7a112ebef3b38821b37747955183db4",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "claimId": "cl-columbia-cuimc-ai-matrix-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy update: CUIMC restructured and expanded its AI guidance into role-based sections and a formal 23-tool AI Tools x Data Classification matrix (effective August 2026), codifying BAA requirements, tool-specific Sensitive Data restrictions, and institutional procurement distinctions across CUIT and CUIMC IT.",
+      "decidedAt": "2026-09-24T16:05:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
+      "title": "Maintenance Review: Columbia University (CUIMC AI Tools × Data Classification Framework)",
+      "generatedAt": "2026-09-24T16:05:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29.mdx",
+      "summary": "Maintenance review of https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc verified genuine policy updates: adoption of an August 2026 role-based guidance architecture across clinicians, researchers, trainees, and staff, and formal publication of the comprehensive 23-row AI Tools × Data Classification matrix governing institutional HIPAA/BAA compliance.",
+      "referencedClaimIds": [
+        "cl-columbia-cuimc-ai-matrix-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}

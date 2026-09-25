@@ -13,8 +13,9 @@ data/policy-snapshots/v1/index.json
 data/policy-snapshots/v1/universities/{slug}.json
 ```
 
-The Wave 1 index is intentionally empty. The Bristol file under
-`examples/fixtures/` is a validator fixture, not a promoted public snapshot.
+Wave 1 contains 24 indexed university snapshots. The Bristol file under
+`examples/fixtures/` remains a validator fixture, not a promoted public
+snapshot.
 
 Public routes are:
 
@@ -76,3 +77,23 @@ pnpm smoke:policy-snapshot
 
 These checks validate the fixture, assert stale behavior after a release
 change, inspect the versioned index, and do not promote data or deploy.
+
+## Rolling additions after Wave 1
+
+The current shared independent-review schema and validator still encode the
+exact Wave 1 cohort and review count. Before adding the twenty-fifth indexed
+university, make them index-driven without weakening the release gate:
+
+- every indexed file must parse and match the current public entity and release;
+- an unindexed university file must fail validation;
+- a primary-only candidate may be indexed only as `needs_review`, using the
+  schema-required non-approving `pending-independent-review` secondary
+  placeholder and `agreement: "disagree"`;
+- `strong` still requires a matching independent-review `pass` decision, two
+  approving reviews, agreement, and a current basis fingerprint;
+- the existing 24 review decisions and their effective statuses must remain
+  unchanged during the validator migration.
+
+Do not turn that pending placeholder into a reviewer or approval merely to
+satisfy the old exact-cohort assertion. The independent reviewer owns the real
+secondary decision.

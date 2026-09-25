@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "createdAt": "2026-09-24T14:45:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-pennsylvania",
+          "sourceCandidateId": "src-upenn-isc-generative-ai-tools",
+          "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+          "sourceTitle": "Penn Generative AI Tools & Resources | Information Systems & Computing",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "data_classification",
+            "procurement"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-upenn-isc-generative-ai-tools",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+      "finalUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+      "sourceTitle": "Penn Generative AI Tools & Resources | Information Systems & Computing",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-06-14T00:00:00Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T14:45:00.000Z",
+      "verificationNotes": "Penn Information Systems & Computing (ISC) official university AI tools and data classification resource page.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "startedAt": "2026-06-14T00:00:00Z",
+      "endedAt": "2026-09-24T14:45:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Source seeded from ISC AI tools and resources page."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-24T12-50-29-097Z flagged content_policy_delta against baseline snapshot (contentHash 2c98a20ccafab81657eefe254c25c3e666740e92fb34c1c10ce445ac3e758c40). Live review confirmed the official addition of Claude Anthropic enterprise contracts and updated university data-tier eligibility rules."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-upenn-isc-generative-ai-tools"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of University of Pennsylvania source https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources confirmed a genuine policy-content update adding Claude Anthropic enterprise licenses and data protection terms to the university AI tools inventory."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "sourceCandidateId": "src-upenn-isc-generative-ai-tools",
+      "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+      "finalUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+      "attemptedAt": "2026-09-24T14:45:00.000Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "2c98a20ccafab81657eefe254c25c3e666740e92fb34c1c10ce445ac3e758c40",
+      "durationMs": 750,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-pennsylvania/src-upenn-isc-generative-ai-tools",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "sourceCandidateId": "src-upenn-isc-generative-ai-tools",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+      "finalUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+      "sourceTitle": "Penn Generative AI Tools & Resources | Information Systems & Computing",
+      "sourceLanguage": "en",
+      "contentHash": "2c98a20ccafab81657eefe254c25c3e666740e92fb34c1c10ce445ac3e758c40",
+      "fetchedAt": "2026-09-24T14:45:00.000Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-pennsylvania/src-upenn-isc-generative-ai-tools",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-university-of-pennsylvania-claude-anthropic-20260924",
+      "entityType": "university",
+      "entitySlug": "university-of-pennsylvania",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Claude Anthropic is listed for University of Pennsylvania in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+      "normalizedValue": "{\"tool\": \"claude\", \"rawToolName\": \"Claude Anthropic\", \"description\": \"Full-range generative AI chat client providing web search enhanced with generative AI to create novel content (text, images, code).\", \"howToObtain\": \"Annual commitment required; enterprise contract managed by ISC.\", \"costToUser\": \"$16/user/month standard; $50/user/month premium.\", \"availability\": \"conditionally_allowed\", \"endorsementType\": \"institutionally_licensed_or_procured\"}",
+      "sourceLanguage": "en",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-university-of-pennsylvania-claude-anthropic-20260924"
+      ],
+      "citation": {
+        "citationTitle": "Penn Generative AI Tools & Resources | Information Systems & Computing",
+        "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-pennsylvania.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-pennsylvania",
+        "publisher": "University of Pennsylvania",
+        "retrievedAt": "2026-09-24T14:45:00.000Z",
+        "snapshotHash": "2c98a20ccafab81657eefe254c25c3e666740e92fb34c1c10ce445ac3e758c40",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-university-of-pennsylvania-claude-anthropic-20260924",
+      "claimId": "cl-university-of-pennsylvania-claude-anthropic-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+      "finalUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+      "sourceTitle": "Penn Generative AI Tools & Resources | Information Systems & Computing",
+      "sourceLanguage": "en",
+      "snapshotHash": "2c98a20ccafab81657eefe254c25c3e666740e92fb34c1c10ce445ac3e758c40",
+      "evidenceSnippetOriginal": "Claude Anthropic: Full-range generative AI chat client that provides web search enhanced with generative AI to create novel content (text, images, code). $16/user/month standard; $50/user/month premium annual commitment required. Low and Moderate Risk Data. Do not input sensitive data including HIPAA data, personal health information (PHI), financial account information, SSNs, and credit card data.",
+      "evidenceSnippetDisplay": "Claude Anthropic: Full-range generative AI chat client that provides web search enhanced with generative AI to create novel content (text, images, code). $16/user/month standard; $50/user/month premium annual commitment required. Low and Moderate Risk Data. Do not input sensitive data including HIPAA data, personal health information (PHI), financial account information, SSNs, and credit card data.",
+      "evidenceLocator": "Tools table, Claude Anthropic row",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Penn Generative AI Tools & Resources | Information Systems & Computing",
+        "sourceUrl": "https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-pennsylvania.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-pennsylvania",
+        "publisher": "University of Pennsylvania",
+        "retrievedAt": "2026-09-24T14:45:00.000Z",
+        "snapshotHash": "2c98a20ccafab81657eefe254c25c3e666740e92fb34c1c10ce445ac3e758c40",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "claimId": "cl-university-of-pennsylvania-claude-anthropic-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update on Penn ISC's Generative AI Tools & Resources page. Claude Anthropic enterprise licenses ($16/user/month standard, $50/user/month premium) have been officially added to the university's negotiated contracts table, permitting Low and Moderate Risk Data and explicitly prohibiting HIPAA/PHI, financial account info, SSNs, and credit card data.",
+      "decidedAt": "2026-09-24T14:45:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
+      "title": "Maintenance Review: University of Pennsylvania (ISC Generative AI Tools - Claude Anthropic Enterprise Provisioning)",
+      "generatedAt": "2026-09-24T14:45:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f.mdx",
+      "summary": "Maintenance review of https://isc.upenn.edu/ai/tools/penn-generative-ai-tools-resources identified a genuine policy-content update. Penn ISC added Claude Anthropic enterprise contracts to its official generative AI tools roster, specifying pricing tiers ($16 standard, $50 premium) and restricting inputs to Low and Moderate Risk Data while prohibiting sensitive HIPAA, PHI, financial, SSN, and credit card data. Promoted one agent_reviewed claim candidate.",
+      "referencedClaimIds": [
+        "cl-university-of-pennsylvania-claude-anthropic-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0"
+    }
+  ]
+}

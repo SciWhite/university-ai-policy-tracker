@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "createdAt": "2026-09-24T16:40:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "lund-university",
+          "sourceCandidateId": "sc-lund-staff-ai-20260924",
+          "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+          "sourceTitle": "AI at Lund University | Staff Pages",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "teaching",
+            "academic_integrity",
+            "student_guidelines",
+            "institutional_policy"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Review official Lund University staff AI portal and newly promulgated Education Board guidelines against repository baseline.",
+        "Verify genuine policy updates including the Education Board Guidelines for First and Second-Cycle Education adopted June 2026 / effective August 2026, and expanded staff AI tool licenses (M365 Copilot, DeepL, ChatGPT Edu)."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-lund-staff-ai-20260924",
+      "entityType": "university",
+      "entitySlug": "lund-university",
+      "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "finalUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "sourceTitle": "AI at Lund University | Staff Pages",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-13T02:24:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T16:40:00.000Z",
+      "verificationNotes": "Official Lund University staff guidance portal featuring institutional AI principles, centrally licensed tools (M365 Copilot, DeepL, ChatGPT Edu), and the June 2026 Education Board Guidelines for First and Second-Cycle Education (effective 15 August 2026).",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "entityType": "university",
+      "entitySlug": "lund-university",
+      "startedAt": "2026-05-13T02:24:00.000Z",
+      "endedAt": "2026-09-24T16:40:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Target URL monitored under maintenance item lund-university-ba53907ad0e6."
+        },
+        {
+          "method": "other",
+          "notes": "Automated maintenance scan maintenance-2026-09-24T12-50-29-097Z flagged content_policy_delta against previous hash. Live inspection confirmed genuine policy content update: addition of the newly approved Education Board 'Guidelines for the use of Generative AI in First and Second-Cycle Education at Lund University' (decision STYR 2026/1456, entered into force 15 August 2026), replacing provisional guidance with binding rules for course syllabi, assessment design, and permitted tool restrictions."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-lund-staff-ai-20260924"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university confirmed genuine policy update: incorporation and promulgation of the Education Board Guidelines for First and Second-Cycle Education (effective August 15, 2026), establishing binding syllabus and examination requirements when generative AI is available."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "sourceCandidateId": "sc-lund-staff-ai-20260924",
+      "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "finalUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "attemptedAt": "2026-09-24T12:58:27.542Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "44c3f81d6316da2ad64cb8702aa2891cfa191bdd8c5f0f596e891e001ce7be9a",
+      "durationMs": 420,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/lund-university/sc-lund-staff-ai-20260924",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "sourceCandidateId": "sc-lund-staff-ai-20260924",
+      "fetchAttemptId": "fa-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "finalUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "sourceTitle": "AI at Lund University | Staff Pages",
+      "sourceLanguage": "en",
+      "contentHash": "44c3f81d6316da2ad64cb8702aa2891cfa191bdd8c5f0f596e891e001ce7be9a",
+      "fetchedAt": "2026-09-24T12:58:27.542Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/lund-university/sc-lund-staff-ai-20260924",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-lund-education-board-guidelines-20260924",
+      "entityType": "university",
+      "entitySlug": "lund-university",
+      "claimType": "teaching",
+      "claimText": "Lund University Education Board approved regulatory guidelines for first and second-cycle education (effective 15 August 2026) requiring course syllabi to clearly specify assessed learning outcomes in an AI-available environment, and mandating that any course restrictions or reporting requirements for generative AI be explicitly and consistently communicated to all students.",
+      "normalizedValue": "{\"policy\":\"guidelines_for_generative_ai_in_first_and_second_cycle_education\",\"approvingBody\":\"Education Board\",\"regNo\":\"STYR 2026/1456\",\"decisionDate\":\"2026-06-17\",\"effectiveDate\":\"2026-08-15\",\"scope\":\"first_and_second_cycle_education\",\"corePrinciples\":[\"support_not_replace_human_competence\",\"transparency\",\"individual_responsibility\",\"fairness_and_bias_review\",\"sustainability\"],\"syllabusRequirements\":\"must clearly specify knowledge, skills and assessment in AI-available environments\",\"restrictionRequirements\":\"must communicate permitted/prohibited uses and reporting requirements\",\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_supported\"}",
+      "sourceLanguage": "en",
+      "confidence": 0.98,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-lund-education-board-guidelines-20260924"
+      ],
+      "citation": {
+        "citationTitle": "AI at Lund University | Staff Pages",
+        "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/lund-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/lund-university",
+        "publisher": "Lund University",
+        "retrievedAt": "2026-09-24T12:58:27.542Z",
+        "snapshotHash": "44c3f81d6316da2ad64cb8702aa2891cfa191bdd8c5f0f596e891e001ce7be9a",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-lund-education-board-guidelines-20260924",
+      "claimId": "cl-lund-education-board-guidelines-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "finalUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+      "sourceTitle": "AI at Lund University | Staff Pages",
+      "sourceLanguage": "en",
+      "snapshotHash": "44c3f81d6316da2ad64cb8702aa2891cfa191bdd8c5f0f596e891e001ce7be9a",
+      "evidenceSnippetOriginal": "Guidelines for Generative AI in Education: The Education Board has approved guidelines for the use of generative AI in first and second-cycle education. This document establishes a framework to ensure transparency, fairness and security in the integration of AI into teaching, learning and assessment. [Guidelines for the use of Generative AI in First and Second-Cycle Education at Lund University (pdf)]",
+      "evidenceSnippetDisplay": "Guidelines for Generative AI in Education: The Education Board has approved guidelines for the use of generative AI in first and second-cycle education. This document establishes a framework to ensure transparency, fairness and security in the integration of AI into teaching, learning and assessment. [Guidelines for the use of Generative AI in First and Second-Cycle Education at Lund University (pdf)]",
+      "evidenceLocator": "Section: Guidelines for Generative AI in Education",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "AI at Lund University | Staff Pages",
+        "sourceUrl": "https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/lund-university.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/lund-university",
+        "publisher": "Lund University",
+        "retrievedAt": "2026-09-24T12:58:27.542Z",
+        "snapshotHash": "44c3f81d6316da2ad64cb8702aa2891cfa191bdd8c5f0f596e891e001ce7be9a",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "claimId": "cl-lund-education-board-guidelines-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy update: Lund University updated its central staff AI portal to officially promulgate the Education Board Guidelines for First and Second-Cycle Education (decision STYR 2026/1456, entered into force 15 August 2026). The regulatory document codifies core principles (support, transparency, responsibility, fairness, sustainability), mandates explicit syllabus requirements regarding learning outcome assessment when GenAI is present, and sets clear rules for course-level GenAI restrictions.",
+      "decidedAt": "2026-09-24T16:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
+      "title": "Maintenance Review: Lund University (Education Board Guidelines for First and Second-Cycle Education)",
+      "generatedAt": "2026-09-24T16:40:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6.mdx",
+      "summary": "Maintenance review of https://www.staff.lu.se/support-and-tools/it-mail-and-telephony/ai-lund-university confirmed genuine policy update: publication and implementation of the Lund University Education Board Guidelines for the use of Generative AI in First and Second-Cycle Education (STYR 2026/1456, effective 15 August 2026), introducing binding institutional rules for course syllabi, assessment design, and explicit communication of permissible and restricted generative AI use.",
+      "referencedClaimIds": [
+        "cl-lund-education-board-guidelines-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}

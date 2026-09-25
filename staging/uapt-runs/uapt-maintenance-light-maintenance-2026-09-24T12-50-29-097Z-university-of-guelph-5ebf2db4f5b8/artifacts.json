@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "createdAt": "2026-09-24T21:05:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-guelph",
+          "sourceCandidateId": "sc-university-of-guelph-5ebf2db4f5b8",
+          "sourceUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+          "sourceTitle": "Provisional Recommendations for the Use of Generative AI",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "academic_integrity",
+            "teaching",
+            "ai_detection",
+            "assessment",
+            "data_protection"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Review updated University of Guelph OTL generative AI guidance memo against repository baseline.",
+        "Verify genuine policy updates including the September 3, 2026 institutional guidance update issued by AVPA and AVP-GPS, prohibiting AI-based autonomous grading and formally banning AI detection tools from supporting academic integrity allegations."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-university-of-guelph-5ebf2db4f5b8",
+      "entityType": "university",
+      "entitySlug": "university-of-guelph",
+      "sourceUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "finalUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "sourceTitle": "Provisional Recommendations for the Use of Generative AI",
+      "sourceLanguage": "en",
+      "sourceType": "university_guidance",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-16T23:45:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T21:05:00.000Z",
+      "verificationNotes": "Official University of Guelph Office of Teaching and Learning guidance document updated September 3, 2026 by Acting AVP (Academic) and AVP (Graduate and Postdoctoral Studies) on teaching and learning with generative AI.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "entityType": "university",
+      "entitySlug": "university-of-guelph",
+      "startedAt": "2026-05-16T23:45:00.000Z",
+      "endedAt": "2026-09-24T21:05:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Monitored seed item sc-university-of-guelph-5ebf2db4f5b8 at https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai."
+        },
+        {
+          "method": "other",
+          "notes": "Automated maintenance scan maintenance-2026-09-24T12-50-29-097Z flagged content_policy_delta against baseline snapshot. Live review confirmed genuine policy content update: the page now publishes a comprehensive September 3, 2026 institutional memo ('Teaching and learning with generative AI this fall') from Brian Husband, Acting AVP (Academic) and Sean Lyons, AVP (Graduate and Postdoctoral Studies), officially updating the 2023 provisional recommendations."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-university-of-guelph-5ebf2db4f5b8"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of University of Guelph OTL AI recommendations verified a substantive policy-content update: formal issuance of the September 3, 2026 guidelines prohibiting autonomous AI grading, strictly banning the use of AI detection tools to support allegations of academic integrity breaches, and defining rules for student personal data and third-party AI platforms."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "sourceCandidateId": "sc-university-of-guelph-5ebf2db4f5b8",
+      "sourceUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "finalUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "attemptedAt": "2026-09-24T13:52:23.590Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "a0d485b93352af793975113b1d3dcee2aca7039efc3ba61b203fbdbebdaee449",
+      "durationMs": 450,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-guelph/sc-university-of-guelph-5ebf2db4f5b8",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "sourceCandidateId": "sc-university-of-guelph-5ebf2db4f5b8",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "sourceUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "finalUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "sourceTitle": "Provisional Recommendations for the Use of Generative AI",
+      "sourceLanguage": "en",
+      "contentHash": "a0d485b93352af793975113b1d3dcee2aca7039efc3ba61b203fbdbebdaee449",
+      "fetchedAt": "2026-09-24T13:52:23.590Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-guelph/sc-university-of-guelph-5ebf2db4f5b8",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-university-of-guelph-fall2026-ai-guidelines-20260924",
+      "entityType": "university",
+      "entitySlug": "university-of-guelph",
+      "claimType": "academic_integrity",
+      "claimText": "University of Guelph guidelines for fall 2026 mandate that substantive academic evaluations must never be made independently by AI as grading is a human decision requiring instructor discretion, and explicitly prohibit the use of AI detection tools to support allegations of academic integrity breaches.",
+      "normalizedValue": "{\"policy\": \"teaching_and_learning_with_generative_ai_fall_2026\", \"issuingBodies\": [\"Associate Vice-President (Academic)\", \"Assistant Vice-President, Graduate and Postdoctoral Studies\", \"Office of Teaching and Learning\"], \"date\": \"2026-09-03\", \"autonomousGrading\": \"prohibited\", \"aiDetectionSoftwareUse\": \"not_approved_and_cannot_support_misconduct_allegation\", \"instructorAuthority\": \"instructor_determined\", \"studentDataInPublicAi\": \"confidential_personal_information_sharing_prohibited\", \"approvedInstitutionalAi\": \"microsoft_copilot_sso_enterprise_data_protection\", \"ancillaryFeesRule\": \"assessments_max_30_percent_of_final_grade\"}",
+      "sourceLanguage": "en",
+      "confidence": 0.98,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-university-of-guelph-fall2026-ai-guidelines-20260924"
+      ],
+      "citation": {
+        "citationTitle": "Provisional Recommendations for the Use of Generative AI",
+        "sourceUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-guelph.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-guelph",
+        "publisher": "University of Guelph Office of Teaching and Learning",
+        "retrievedAt": "2026-09-24T13:52:23.590Z",
+        "snapshotHash": "a0d485b93352af793975113b1d3dcee2aca7039efc3ba61b203fbdbebdaee449",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-university-of-guelph-fall2026-ai-guidelines-20260924",
+      "claimId": "cl-university-of-guelph-fall2026-ai-guidelines-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "sourceUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "finalUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+      "sourceTitle": "Provisional Recommendations for the Use of Generative AI",
+      "sourceLanguage": "en",
+      "snapshotHash": "a0d485b93352af793975113b1d3dcee2aca7039efc3ba61b203fbdbebdaee449",
+      "evidenceSnippetOriginal": "Substantive academic evaluations should never be made independently by AI: a grade is a human decision at this University and Senate-approved grading procedures require the exercise of discretion by instructors. ... Use of tools for detecting AI use are not approved at Guelph and cannot be used to support an allegation of a breach of academic integrity.",
+      "evidenceSnippetDisplay": "Substantive academic evaluations should never be made independently by AI: a grade is a human decision at this University and Senate-approved grading procedures require the exercise of discretion by instructors. ... Use of tools for detecting AI use are not approved at Guelph and cannot be used to support an allegation of a breach of academic integrity.",
+      "evidenceLocator": "Top Four Guidelines & Detailed Guidelines: Academic Integrity",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Provisional Recommendations for the Use of Generative AI",
+        "sourceUrl": "https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-guelph.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-guelph",
+        "publisher": "University of Guelph Office of Teaching and Learning",
+        "retrievedAt": "2026-09-24T13:52:23.590Z",
+        "snapshotHash": "a0d485b93352af793975113b1d3dcee2aca7039efc3ba61b203fbdbebdaee449",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "claimId": "cl-university-of-guelph-fall2026-ai-guidelines-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine institutional policy update: University of Guelph published updated fall 2026 guidelines issued by Acting AVP (Academic) Brian Husband and AVP (Graduate and Postdoctoral Studies) Sean Lyons on September 3, 2026. The guidance explicitly forbids autonomous AI grading (grades must be human decisions exercising instructor discretion under Senate regulations), explicitly bars AI detection tools from being used to support academic integrity breach allegations, restricts student identifiable work from being entered into public AI tools, and outlines rules for third-party platforms under the Ancillary Fees policy.",
+      "decidedAt": "2026-09-24T21:05:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
+      "title": "Maintenance Review: University of Guelph (Fall 2026 Generative AI Teaching & Learning Guidelines)",
+      "generatedAt": "2026-09-24T21:05:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8.mdx",
+      "summary": "Maintenance review of https://otl.uoguelph.ca/teaching-assessment-resources/teaching-context-ai/provisional-recommendations-use-generative-ai confirmed a substantive policy-content update. The University of Guelph formally updated its 2023 provisional recommendations with a September 3, 2026 memorandum from the Acting AVP (Academic) and AVP (Graduate and Postdoctoral Studies), establishing that academic grading cannot be performed autonomously by AI and that AI detection tools are not approved and cannot support academic integrity breach allegations.",
+      "referencedClaimIds": [
+        "cl-university-of-guelph-fall2026-ai-guidelines-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}

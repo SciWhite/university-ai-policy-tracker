@@ -1,0 +1,214 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "createdAt": "2026-09-24T21:40:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-oregon",
+          "sourceCandidateId": "sc-uo-ai-service-offerings",
+          "sourceUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=140911",
+          "sourceTitle": "AI Service Offerings",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "approved_tools",
+            "ai_tool_treatment",
+            "data_classification",
+            "privacy"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-uo-ai-service-offerings",
+      "entityType": "university",
+      "entitySlug": "university-of-oregon",
+      "sourceUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=140911",
+      "finalUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/Article/140911/AI-Service-Offerings",
+      "sourceTitle": "AI Service Offerings",
+      "sourceLanguage": "en",
+      "sourceType": "approved_tools",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-19T21:03:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T21:40:00.000Z",
+      "verificationNotes": "Official University of Oregon Service Portal knowledge-base article 140911 providing institutional policy guidance on approved and supported AI services, approved data classifications per tool, and terms for external AI services.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "entityType": "university",
+      "entitySlug": "university-of-oregon",
+      "startedAt": "2026-05-19T21:03:00.000Z",
+      "endedAt": "2026-09-24T21:40:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Monitored seed item university-of-oregon-1b78f53729a1 at https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=140911."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-24T12-50-29-097Z flagged content_policy_delta against baseline snapshot hash 6394aaf90142f8cf2f67ef32a23cb1039a97b204b565eced72320c83399feef7. Live review confirmed substantive policy update: UO updated its AI service offerings and data security governance matrix to explicitly permit Red, Amber, and Green data in Microsoft Copilot Basic and Microsoft 365 Copilot Premium, while restricting other supported tools and uncontracted services to Green (low-risk) data."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-uo-ai-service-offerings"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of University of Oregon KB article 140911 verified genuine policy updates: Microsoft Copilot (Basic and M365 Copilot Premium) is now approved for Red, Amber, and Green institutional data classifications, expanding beyond the prior blanket green-data restriction."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "sourceCandidateId": "sc-uo-ai-service-offerings",
+      "sourceUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=140911",
+      "finalUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/Article/140911/AI-Service-Offerings",
+      "attemptedAt": "2026-09-24T13:56:19.512Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "7ec011dcc5f0c8d7ac60028009a115f9aedf3040d26136d16cd37809e643c549",
+      "durationMs": 512,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-oregon/sc-uo-ai-service-offerings",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "sourceCandidateId": "sc-uo-ai-service-offerings",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "sourceUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=140911",
+      "finalUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/Article/140911/AI-Service-Offerings",
+      "sourceTitle": "AI Service Offerings",
+      "sourceLanguage": "en",
+      "contentHash": "7ec011dcc5f0c8d7ac60028009a115f9aedf3040d26136d16cd37809e643c549",
+      "fetchedAt": "2026-09-24T13:56:19.512Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-oregon/sc-uo-ai-service-offerings",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-uo-approved-ai-services-data-classification-20260924",
+      "entityType": "university",
+      "entitySlug": "university-of-oregon",
+      "claimType": "ai_tool_treatment",
+      "claimText": "University of Oregon AI Service Offerings guidance approves Microsoft Copilot Basic and Microsoft 365 Copilot Premium for Red, Amber, and Green institutional data classifications, while restricting Adobe Firefly, Apple Intelligence, TeamDynamix KB Chatbot, Zoom AI Companion, and all uncontracted third-party AI tools to Green (low-risk) data only.",
+      "normalizedValue": "{\"supported_services\": {\"microsoft_copilot_basic\": \"red_amber_green_data\", \"microsoft_365_copilot_premium\": \"red_amber_green_data\", \"adobe_firefly\": \"green_data_only\", \"apple_intelligence\": \"green_data_only\", \"teamdynamix_kb_chatbot\": \"green_data_only\", \"zoom_ai_companion\": \"green_data_only\"}, \"uncontracted_third_party_tools\": \"green_data_only\"}",
+      "sourceLanguage": "en",
+      "confidence": 0.98,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uo-approved-ai-services-data-classification-20260924"
+      ],
+      "citation": {
+        "citationTitle": "AI Service Offerings",
+        "sourceUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=140911",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-oregon.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-oregon",
+        "publisher": "University of Oregon Service Portal",
+        "retrievedAt": "2026-09-24T13:56:19.512Z",
+        "snapshotHash": "7ec011dcc5f0c8d7ac60028009a115f9aedf3040d26136d16cd37809e643c549",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uo-approved-ai-services-data-classification-20260924",
+      "claimId": "cl-uo-approved-ai-services-data-classification-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "sourceUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=140911",
+      "finalUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/Article/140911/AI-Service-Offerings",
+      "sourceTitle": "AI Service Offerings",
+      "sourceLanguage": "en",
+      "snapshotHash": "7ec011dcc5f0c8d7ac60028009a115f9aedf3040d26136d16cd37809e643c549",
+      "evidenceSnippetOriginal": "Here are the AI tools supported or available at the UO, including their operational status and links to additional information. ... Microsoft Copilot\u2014Basic: Red, amber, and green data ... Microsoft 365 Copilot\u2014Premium: Red, amber, and green data ... Adobe Firefly: Green data only ... Zoom AI Companion: Green data only ... Status of other AI services: Warning! At this time, only low-risk (green) data has been approved for entry into any AI tools listed below.",
+      "evidenceSnippetDisplay": "Here are the AI tools supported or available at the UO, including their operational status and links to additional information. ... Microsoft Copilot\u2014Basic: Red, amber, and green data ... Microsoft 365 Copilot\u2014Premium: Red, amber, and green data ... Adobe Firefly: Green data only ... Zoom AI Companion: Green data only ... Status of other AI services: Warning! At this time, only low-risk (green) data has been approved for entry into any AI tools listed below.",
+      "evidenceLocator": "UO-supported services table and Status of other AI services section",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "AI Service Offerings",
+        "sourceUrl": "https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=140911",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-oregon.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-oregon",
+        "publisher": "University of Oregon Service Portal",
+        "retrievedAt": "2026-09-24T13:56:19.512Z",
+        "snapshotHash": "7ec011dcc5f0c8d7ac60028009a115f9aedf3040d26136d16cd37809e643c549",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "claimId": "cl-uo-approved-ai-services-data-classification-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update in UO Service Portal article 140911: the university has updated its institutional AI service governance from a blanket green-data restriction to formally approving Microsoft Copilot (Basic and M365 Copilot Premium) for Red, Amber, and Green data classifications, while keeping other supported tools and uncontracted external tools restricted to Green (low-risk) data.",
+      "decidedAt": "2026-09-24T21:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
+      "title": "Maintenance Review: University of Oregon (AI Service Offerings and Data Classifications)",
+      "generatedAt": "2026-09-24T21:40:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1.mdx",
+      "summary": "Maintenance review of University of Oregon KB Article 140911 (https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=140911) confirmed a substantive policy-content update. UO established a granular data classification matrix approving Microsoft Copilot Basic and Microsoft 365 Copilot Premium for Red, Amber, and Green institutional data, while retaining a strict Green-data-only restriction for Adobe Firefly, Apple Intelligence, TeamDynamix KB Chatbot, Zoom AI Companion, and all uncontracted third-party AI services. Promoted one agent_reviewed claim candidate.",
+      "referencedClaimIds": [
+        "cl-uo-approved-ai-services-data-classification-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}

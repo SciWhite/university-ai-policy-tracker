@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "createdAt": "2026-09-24T17:53:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "washington-university-in-st-louis",
+          "sourceCandidateId": "sc-washington-university-in-st-louis-20b98e978902",
+          "sourceUrl": "https://it.wustl.edu/ai/",
+          "sourceTitle": "Tools & Infrastructure - Artificial Intelligence",
+          "sourceLanguage": "en-US",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "privacy",
+            "phi_and_sensitive_data",
+            "procurement"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Review WashU Enterprise AI Tools matrix, data classification rules, and developer coding agent policies against repository baseline.",
+        "Verify genuine policy updates including PHI/FERPA approval status per enterprise tool, coding agent restrictions, and procurement procedures."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-washington-university-in-st-louis-20b98e978902",
+      "entityType": "university",
+      "entitySlug": "washington-university-in-st-louis",
+      "sourceUrl": "https://it.wustl.edu/ai/",
+      "finalUrl": "https://ai.washu.edu/tools/",
+      "sourceTitle": "Tools & Infrastructure - Artificial Intelligence",
+      "sourceLanguage": "en-US",
+      "sourceType": "approved_tools",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-15T03:21:06.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.98,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T17:53:00.000Z",
+      "verificationNotes": "Official Washington University in St. Louis Artificial Intelligence Tools & Infrastructure portal (ai.washu.edu/tools/) establishing university enterprise AI tool approvals, PHI/FERPA eligibility, and developer agent rules.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "entityType": "university",
+      "entitySlug": "washington-university-in-st-louis",
+      "startedAt": "2026-05-15T03:21:06.000Z",
+      "endedAt": "2026-09-24T17:53:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Monitored university source URL https://it.wustl.edu/ai/ tracking IT AI policies under item washington-university-in-st-louis-20b98e978902."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-24T12-50-29-097Z flagged content_policy_delta against baseline snapshot hash 5b8a9f00cc8755397b44997bf5453ed161a2848fb6be6c41b2c538b600ec200e. Detailed inspection confirmed substantive policy updates including the official WashU Enterprise AI Tools matrix with distinct PHI vs FERPA approval tiers, explicit coding agent restrictions (Claude Code, Codex, GitHub Copilot prohibited for PHI), and updated sensitive data / IP rules."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-washington-university-in-st-louis-20b98e978902"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of Washington University in St. Louis source https://it.wustl.edu/ai/ (redirecting to https://ai.washu.edu/tools/) confirmed a genuine policy-content update: formal publication of the WashU Enterprise AI Tools matrix specifying PHI and FERPA approval status per tool, explicit requirements and prohibitions for developer coding agents, and updated IP/sensitive data prohibitions."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-washington-university-in-st-louis-20b98e978902-20260924",
+      "sourceCandidateId": "sc-washington-university-in-st-louis-20b98e978902",
+      "sourceUrl": "https://it.wustl.edu/ai/",
+      "finalUrl": "https://ai.washu.edu/tools/",
+      "attemptedAt": "2026-09-24T13:08:07.180Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "c73546dfa2b5d6e90bee48b285223d65b8e57c991402032ba656f95090ec88d3",
+      "durationMs": 450,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/washington-university-in-st-louis/washington-university-in-st-louis-20b98e978902",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "sourceCandidateId": "sc-washington-university-in-st-louis-20b98e978902",
+      "fetchAttemptId": "fa-washington-university-in-st-louis-20b98e978902-20260924",
+      "sourceUrl": "https://it.wustl.edu/ai/",
+      "finalUrl": "https://ai.washu.edu/tools/",
+      "sourceTitle": "Tools & Infrastructure - Artificial Intelligence",
+      "sourceLanguage": "en-US",
+      "contentHash": "c73546dfa2b5d6e90bee48b285223d65b8e57c991402032ba656f95090ec88d3",
+      "fetchedAt": "2026-09-24T13:08:07.180Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/washington-university-in-st-louis/washington-university-in-st-louis-20b98e978902",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-washington-university-in-st-louis-enterprise-tools-phi-matrix-20260924",
+      "entityType": "university",
+      "entitySlug": "washington-university-in-st-louis",
+      "claimType": "ai_tool_treatment",
+      "claimText": "WashU provides students, faculty, and staff with secure enterprise AI tools approved for general university and FERPA data, but restricts Protected Health Information (PHI) use to specific approved tools (Gemini, Claude Secure, ChatGPT Edu, Ask WashU), while Gemini Notebook, Claude Edu, Copilot Chat, and developer coding agents (Claude Code, Codex, GitHub Copilot) are explicitly not approved for WashU PHI.",
+      "normalizedValue": "{\"policy\": \"washu_enterprise_ai_tools_matrix\", \"framework\": \"data_classification_and_phi_governance\", \"phi_approved_tools\": [\"gemini\", \"claude_secure\", \"chatgpt_edu\", \"ask_washu\"], \"phi_prohibited_or_not_approved_tools\": [\"gemini_notebook\", \"claude_edu\", \"copilot_chat\", \"claude_code\", \"codex\", \"github_copilot\"], \"ferpa_approved_tools\": [\"gemini\", \"claude_edu\", \"claude_secure\", \"chatgpt_edu\", \"ask_washu\", \"copilot_chat\"], \"developer_coding_agent_rules\": \"codex_requires_addendum_and_exception_request; developer_agents_prohibited_for_phi\", \"availability\": \"conditionally_allowed\", \"endorsementType\": \"institutionally_supported\"}",
+      "sourceLanguage": "en-US",
+      "confidence": 0.98,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-washington-university-in-st-louis-enterprise-tools-phi-matrix-20260924"
+      ],
+      "citation": {
+        "citationTitle": "Tools & Infrastructure - Artificial Intelligence",
+        "sourceUrl": "https://it.wustl.edu/ai/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/washington-university-in-st-louis.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/washington-university-in-st-louis",
+        "publisher": "Washington University in St. Louis Information Technology",
+        "retrievedAt": "2026-09-24T17:53:00.000Z",
+        "snapshotHash": "c73546dfa2b5d6e90bee48b285223d65b8e57c991402032ba656f95090ec88d3",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-washington-university-in-st-louis-enterprise-tools-phi-matrix-20260924",
+      "claimId": "cl-washington-university-in-st-louis-enterprise-tools-phi-matrix-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "sourceUrl": "https://it.wustl.edu/ai/",
+      "finalUrl": "https://ai.washu.edu/tools/",
+      "sourceTitle": "Tools & Infrastructure - Artificial Intelligence",
+      "sourceLanguage": "en-US",
+      "snapshotHash": "c73546dfa2b5d6e90bee48b285223d65b8e57c991402032ba656f95090ec88d3",
+      "evidenceSnippetOriginal": "WashU provides students, faculty, and staff with access to secure, institutionally supported generative AI tools... These tools include built-in data protections to safeguard university information, and all are approved for general university data use. However, not every tool is approved for use with WashU protected health information (PHI). See the comparison table below for details... Gemini Notebook, Claude Edu, and Copilot Chat are currently not approved for use with PHI.",
+      "evidenceSnippetDisplay": "WashU provides secure enterprise AI tools approved for general university data and FERPA, but restricts WashU Protected Health Information (PHI) to specific approved tools (Gemini, Claude Secure, ChatGPT Edu, Ask WashU), while Gemini Notebook, Claude Edu, Copilot Chat, and developer coding agents are not approved for PHI.",
+      "evidenceLocator": "Section: WashU Enterprise AI Tools & For Developers",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Tools & Infrastructure - Artificial Intelligence",
+        "sourceUrl": "https://it.wustl.edu/ai/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/washington-university-in-st-louis.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/washington-university-in-st-louis",
+        "publisher": "Washington University in St. Louis Information Technology",
+        "retrievedAt": "2026-09-24T17:53:00.000Z",
+        "snapshotHash": "c73546dfa2b5d6e90bee48b285223d65b8e57c991402032ba656f95090ec88d3",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "claimId": "cl-washington-university-in-st-louis-enterprise-tools-phi-matrix-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update: WashU updated its official AI Tools & Infrastructure portal (ai.washu.edu/tools/), replacing the high-level generic tool list with an explicit Enterprise AI Tool matrix differentiating PHI-approved tools (Gemini, Claude Secure, ChatGPT Edu, Ask WashU) from non-PHI approved tools (Gemini Notebook, Claude Edu, Copilot Chat), and establishing formal developer coding agent boundaries (prohibiting Claude Code, Codex, and GitHub Copilot from PHI, and requiring an addendum and exception review for Codex).",
+      "decidedAt": "2026-09-24T17:53:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902",
+      "title": "Maintenance Review: Washington University in St. Louis (Enterprise AI Tools & PHI Data Governance Matrix)",
+      "generatedAt": "2026-09-24T17:53:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902.mdx",
+      "summary": "Maintenance review of https://it.wustl.edu/ai/ (redirecting to https://ai.washu.edu/tools/) confirmed a genuine policy-content update. WashU established a structured Enterprise AI Tools matrix specifying availability, student/faculty entitlements, and strict distinctions between FERPA approval and WashU Protected Health Information (PHI) approval, alongside explicit governance and access restriction policies for developer coding agents (Claude Code, Codex, GitHub Copilot). Promoted one agent_reviewed claim candidate.",
+      "referencedClaimIds": [
+        "cl-washington-university-in-st-louis-enterprise-tools-phi-matrix-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}

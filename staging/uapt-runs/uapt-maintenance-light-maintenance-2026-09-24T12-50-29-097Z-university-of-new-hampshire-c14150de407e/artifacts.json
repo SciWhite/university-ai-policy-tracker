@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "createdAt": "2026-09-24T21:40:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-new-hampshire",
+          "sourceCandidateId": "sc-usnh-ai-chatbots-overview",
+          "sourceUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/ArticleDet?ID=5322",
+          "sourceTitle": "USNH AI Chatbots: Overview",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "approved_tools",
+            "ai_tool_treatment",
+            "data_classification",
+            "privacy",
+            "autonomous_agents"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Review updated USNH AI Chatbots KB article against repository baseline.",
+        "Verify genuine policy updates including explicit data tier handling (up to Tier III data with USNH credentials), autonomous agents guidance under DeepThought, and updated Copilot with Enterprise Data Protection (EDP) specifications."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-usnh-ai-chatbots-overview",
+      "entityType": "university",
+      "entitySlug": "university-of-new-hampshire",
+      "sourceUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/ArticleDet?ID=5322",
+      "finalUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/Article/5322/USNH-AI-Chatbots-Overview",
+      "sourceTitle": "USNH AI Chatbots: Overview",
+      "sourceLanguage": "en",
+      "sourceType": "approved_tools",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-25T06:17:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T21:40:00.000Z",
+      "verificationNotes": "Official University System of New Hampshire (USNH) Knowledge Base article providing institutional policy guidance on approved generative AI platforms (Copilot Chat with EDP and DeepThought), use case matrices up to Tier III data, and support for coding and autonomous agents.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "entityType": "university",
+      "entitySlug": "university-of-new-hampshire",
+      "startedAt": "2026-05-25T06:17:00.000Z",
+      "endedAt": "2026-09-24T21:40:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Monitored seed item university-of-new-hampshire-c14150de407e at https://td.usnh.edu/TDClient/60/Portal/KB/ArticleDet?ID=5322."
+        },
+        {
+          "method": "other",
+          "notes": "Automated maintenance scan maintenance-2026-09-24T12-50-29-097Z detected content_policy_delta against baseline snapshot hash e6f301e2f51be835e221891a7cff434f7129630089068313f42b15430cf532cf. Live review confirmed substantive updates: the policy guidance has transitioned from the previous generic warning to a detailed use case matrix approving Microsoft Copilot with Enterprise Data Protection (EDP) and DeepThought for institutional data up to Tier III (with USNH login), while designating DeepThought for autonomous agents and coding integration via RCC Support."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-usnh-ai-chatbots-overview"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of USNH AI Chatbots KB article 5322 verified genuine institutional policy updates: approval of Microsoft Copilot with EDP and DeepThought for up to Tier III institutional data when authenticated with USNH credentials, explicit support and governance pathways for autonomous agents via DeepThought and RCC Support, and guidance for premium model access with public data."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "sourceCandidateId": "sc-usnh-ai-chatbots-overview",
+      "sourceUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/ArticleDet?ID=5322",
+      "finalUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/Article/5322/USNH-AI-Chatbots-Overview",
+      "attemptedAt": "2026-09-24T13:55:50.770Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "5bfb1fcc1b9067dfa2cfb8506194a4158a148413d3d2f7af90407622ae54c892",
+      "durationMs": 512,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-new-hampshire/sc-usnh-ai-chatbots-overview",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "sourceCandidateId": "sc-usnh-ai-chatbots-overview",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "sourceUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/ArticleDet?ID=5322",
+      "finalUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/Article/5322/USNH-AI-Chatbots-Overview",
+      "sourceTitle": "USNH AI Chatbots: Overview",
+      "sourceLanguage": "en",
+      "contentHash": "5bfb1fcc1b9067dfa2cfb8506194a4158a148413d3d2f7af90407622ae54c892",
+      "fetchedAt": "2026-09-24T13:55:50.770Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-new-hampshire/sc-usnh-ai-chatbots-overview",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-usnh-approved-ai-tier3-autonomous-agents-20260924",
+      "entityType": "university",
+      "entitySlug": "university-of-new-hampshire",
+      "claimType": "ai_tool_treatment",
+      "claimText": "USNH designates Microsoft Copilot Chat with Enterprise Data Protection (EDP) and DeepThought as approved generative AI platforms permitted for institutional data up to Tier III when authenticated with USNH credentials, and designates DeepThought for technical workflows including coding, development integration, and autonomous agents.",
+      "normalizedValue": "{\"approved_platforms\": [\"Microsoft Copilot Chat with EDP\", \"DeepThought\"], \"data_tiers_allowed\": \"up_to_tier_iii_with_usnh_credentials\", \"autonomous_agents\": {\"recommended_tool\": \"DeepThought\", \"governance_contact\": \"RCC Support\"}, \"coding_integration\": {\"recommended_tool\": \"DeepThought\", \"governance_contact\": \"RCC Support\"}, \"premium_models_usage\": \"public_data_only_unless_approved\"}",
+      "sourceLanguage": "en",
+      "confidence": 0.98,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-usnh-approved-ai-tier3-autonomous-agents-20260924"
+      ],
+      "citation": {
+        "citationTitle": "USNH AI Chatbots: Overview",
+        "sourceUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/ArticleDet?ID=5322",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-new-hampshire.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-new-hampshire",
+        "publisher": "University System of New Hampshire Knowledge Base",
+        "retrievedAt": "2026-09-24T13:55:50.770Z",
+        "snapshotHash": "5bfb1fcc1b9067dfa2cfb8506194a4158a148413d3d2f7af90407622ae54c892",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-usnh-approved-ai-tier3-autonomous-agents-20260924",
+      "claimId": "cl-usnh-approved-ai-tier3-autonomous-agents-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "sourceUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/ArticleDet?ID=5322",
+      "finalUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/Article/5322/USNH-AI-Chatbots-Overview",
+      "sourceTitle": "USNH AI Chatbots: Overview",
+      "sourceLanguage": "en",
+      "snapshotHash": "5bfb1fcc1b9067dfa2cfb8506194a4158a148413d3d2f7af90407622ae54c892",
+      "evidenceSnippetOriginal": "Microsoft Copilot Chat with Enterprise Data Protection (EDP) and DeepThought are USNH's approved generative AI platforms. ... Both Copilot Chat with EDP and DeepThought may be used with approved institutional data in accordance with USNH data classification guidelines. ... General AI use (up to Tier III data*): DeepThought or Microsoft Copilot with EDP ... Autonomous agents (AI that completes tasks independently): DeepThought ... * Users must be logged in with their USNH credentials when using sensitive data.",
+      "evidenceSnippetDisplay": "Microsoft Copilot Chat with Enterprise Data Protection (EDP) and DeepThought are USNH's approved generative AI platforms. ... Both Copilot Chat with EDP and DeepThought may be used with approved institutional data in accordance with USNH data classification guidelines. ... General AI use (up to Tier III data*): DeepThought or Microsoft Copilot with EDP ... Autonomous agents (AI that completes tasks independently): DeepThought ... * Users must be logged in with their USNH credentials when using sensitive data.",
+      "evidenceLocator": "Get Started with Copilot and DeepThought & Which AI Tool Should I Use? table",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "USNH AI Chatbots: Overview",
+        "sourceUrl": "https://td.usnh.edu/TDClient/60/Portal/KB/ArticleDet?ID=5322",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-new-hampshire.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-new-hampshire",
+        "publisher": "University System of New Hampshire Knowledge Base",
+        "retrievedAt": "2026-09-24T13:55:50.770Z",
+        "snapshotHash": "5bfb1fcc1b9067dfa2cfb8506194a4158a148413d3d2f7af90407622ae54c892",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "artifactType": "review_decision",
+      "decisionId": "dec-usnh-approved-ai-tier3-autonomous-agents-20260924",
+      "claimId": "cl-usnh-approved-ai-tier3-autonomous-agents-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine institutional policy update: USNH KB article 5322 now provides a formalized AI tool use matrix establishing Microsoft Copilot with EDP and DeepThought as approved institutional platforms permitting up to Tier III data when authenticated, and introduces explicit institutional support and guidance for autonomous AI agents.",
+      "decidedAt": "2026-09-24T21:40:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
+      "title": "Maintenance Review: University of New Hampshire / USNH (Approved AI Platforms, Tier III Data, and Autonomous Agents)",
+      "generatedAt": "2026-09-24T21:40:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e.mdx",
+      "summary": "Maintenance review of USNH AI Chatbots KB article (https://td.usnh.edu/TDClient/60/Portal/KB/ArticleDet?ID=5322) confirmed substantive institutional policy updates: approval of Microsoft Copilot with Enterprise Data Protection (EDP) and DeepThought for institutional data up to Tier III when authenticated with USNH credentials, alongside formal categorization and support pathways for autonomous agents.",
+      "referencedClaimIds": [
+        "cl-usnh-approved-ai-tier3-autonomous-agents-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}

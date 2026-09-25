@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "createdAt": "2026-09-24T20:25:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "universidad-adolfo-ibanez",
+          "sourceCandidateId": "sc-universidad-adolfo-ibanez-82937d1bf713",
+          "sourceUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+          "sourceTitle": "Artificial Intelligence for Academia | Universidad Adolfo Ib\u00e1\u00f1ez",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "formal_policy",
+            "teaching",
+            "research",
+            "security_review"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Review Universidad Adolfo Ibanez AI for Academia source against baseline repository data.",
+        "Verify genuine policy updates including the publication of the official UAI Artificial Intelligence Policy (dated July 6, 2026) and associated official policy documents."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-universidad-adolfo-ibanez-82937d1bf713",
+      "entityType": "university",
+      "entitySlug": "universidad-adolfo-ibanez",
+      "sourceUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+      "finalUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+      "sourceTitle": "Artificial Intelligence for Academia | Universidad Adolfo Ib\u00e1\u00f1ez",
+      "sourceLanguage": "en",
+      "sourceType": "formal_policy",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-17T01:54:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T20:25:00.000Z",
+      "verificationNotes": "Official UAI Artificial Intelligence for Academia institutional portal providing access to official university AI policy documents, ethical principles, governance bodies, and faculty teaching guidelines.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "entityType": "university",
+      "entitySlug": "universidad-adolfo-ibanez",
+      "startedAt": "2026-05-17T01:54:00.000Z",
+      "endedAt": "2026-09-24T20:25:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Monitored university source item universidad-adolfo-ibanez-82937d1bf713 tracking https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia."
+        },
+        {
+          "method": "other",
+          "notes": "Maintenance scan maintenance-2026-09-24T12-50-29-097Z flagged content_policy_delta against baseline snapshot hash fb3dcdc70d60a869350e270e1ca855f0828041992fd7c4c95db1959ed9716f44. Detailed comparison confirmed genuine policy-content update: formal publication of the official 'UAI Artificial Intelligence Policy' (dated July 6, 2026), establishing a comprehensive university-wide institutional AI governance framework across all campuses, students, faculty, and administration, resolving the baseline limitation."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-universidad-adolfo-ibanez-82937d1bf713"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review confirmed a genuine policy-content update: Universidad Adolfo Ibanez published its formal institutional Artificial Intelligence Policy (dated July 6, 2026) and associated official documents (Responsible AI Use Guide for Faculty, AI Report 2025) directly through the portal, establishing institutional AI governance bodies, sensitive data controls, and faculty/student ethical standards."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "sourceCandidateId": "sc-universidad-adolfo-ibanez-82937d1bf713",
+      "sourceUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+      "finalUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+      "attemptedAt": "2026-09-24T13:40:35.990Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "94577266748fe64f0c0f4327705db6c9fa6523d7756da6560a22840dba68a21c",
+      "durationMs": 420,
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "sourceCandidateId": "sc-universidad-adolfo-ibanez-82937d1bf713",
+      "fetchAttemptId": "fa-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "sourceUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+      "finalUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+      "sourceTitle": "Artificial Intelligence for Academia | Universidad Adolfo Ib\u00e1\u00f1ez",
+      "sourceLanguage": "en",
+      "contentHash": "94577266748fe64f0c0f4327705db6c9fa6523d7756da6560a22840dba68a21c",
+      "fetchedAt": "2026-09-24T13:40:35.990Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-uai-institutional-ai-policy-framework-20260924",
+      "entityType": "university",
+      "entitySlug": "universidad-adolfo-ibanez",
+      "claimType": "teaching",
+      "claimText": "Universidad Adolfo Ib\u00e1\u00f1ez established an official institutional Artificial Intelligence Policy (dated July 6, 2026) governing all students, faculty, researchers, staff, and leadership across all campuses, establishing a tri-part governance structure (Executive Committee, AI Hub, Advisory Committee), mandatory institutional tool vetting for sensitive data, continuous monitoring of agentic AI systems, and mandatory disclosure of AI tools in research publications.",
+      "normalizedValue": "{\"policy\":\"uai_artificial_intelligence_policy\",\"date\":\"2026-07-06\",\"scope\":\"all_campuses_students_faculty_researchers_staff\",\"governance\":[\"executive_committee_for_ai\",\"ai_hub\",\"advisory_committee\"],\"corePrinciples\":[\"ai_and_critical_thinking\",\"human_oversight_and_responsibility\",\"transparency_and_ethics\",\"privacy_and_information_security\",\"equitable_access\",\"academic_excellence_and_research\",\"gradual_implementation\"],\"sensitiveDataGovernance\":\"mandatory_directorate_approval_and_risk_analysis; unauthorized_tools_limited_to_public_data\",\"researchRequirement\":\"mandatory_disclosure_of_ai_use_in_evaluations_and_publications\",\"cybersecurity\":\"active_cysoc_monitoring_of_agentic_ai_and_sensitive_data\",\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_supported\"}",
+      "sourceLanguage": "en",
+      "confidence": 0.98,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uai-institutional-ai-policy-framework-20260924"
+      ],
+      "citation": {
+        "citationTitle": "Artificial Intelligence for Academia | Universidad Adolfo Ib\u00e1\u00f1ez",
+        "sourceUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universidad-adolfo-ibanez.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-adolfo-ibanez",
+        "publisher": "Universidad Adolfo Ib\u00e1\u00f1ez",
+        "retrievedAt": "2026-09-24T20:25:00.000Z",
+        "snapshotHash": "94577266748fe64f0c0f4327705db6c9fa6523d7756da6560a22840dba68a21c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uai-institutional-ai-policy-framework-20260924",
+      "claimId": "cl-uai-institutional-ai-policy-framework-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "sourceUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+      "finalUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+      "sourceTitle": "Artificial Intelligence for Academia | Universidad Adolfo Ib\u00e1\u00f1ez",
+      "sourceLanguage": "en",
+      "snapshotHash": "94577266748fe64f0c0f4327705db6c9fa6523d7756da6560a22840dba68a21c",
+      "evidenceSnippetOriginal": "Official Documents Learn about and download institutional policies, ethical use guides, and principles that guide the incorporation of AI at UAI. UAI Artificial Intelligence Policy Encourages, regulates, and guides its responsible use in teaching, research, and management. Learn more Responsible AI Use Guide for UAI Faculty Supports the pedagogical application of AI through a personalized design, based on UAI's unique characteristics and aligned with international best practices.",
+      "evidenceSnippetDisplay": "Official Documents: Learn about and download institutional policies, ethical use guides, and principles that guide the incorporation of AI at UAI. UAI Artificial Intelligence Policy: Encourages, regulates, and guides its responsible use in teaching, research, and management... Responsible AI Use Guide for UAI Faculty: Supports the pedagogical application of AI through a personalized design, based on UAI's unique characteristics and aligned with international best practices.",
+      "evidenceLocator": "Section: Official Documents",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Artificial Intelligence for Academia | Universidad Adolfo Ib\u00e1\u00f1ez",
+        "sourceUrl": "https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/universidad-adolfo-ibanez.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/universidad-adolfo-ibanez",
+        "publisher": "Universidad Adolfo Ib\u00e1\u00f1ez",
+        "retrievedAt": "2026-09-24T20:25:00.000Z",
+        "snapshotHash": "94577266748fe64f0c0f4327705db6c9fa6523d7756da6560a22840dba68a21c",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "claimId": "cl-uai-institutional-ai-policy-framework-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update: Universidad Adolfo Ibanez published its comprehensive institutional Artificial Intelligence Policy (dated July 6, 2026) alongside official guides ('Responsible AI Use Guide for UAI Faculty') on its official AI for Academia portal, replacing earlier vague statements and resolving the baseline limitation regarding lack of formal published policy documents. Promoted claim candidate to agent_reviewed.",
+      "decidedAt": "2026-09-24T20:25:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
+      "title": "Maintenance Review: Universidad Adolfo Ib\u00e1\u00f1ez (Institutional AI Policy Framework & Official Policy Documents)",
+      "generatedAt": "2026-09-24T20:25:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713.mdx",
+      "summary": "Maintenance review of https://www.uai.cl/cuerpo-academico/desarrollo-academico/artificial-intelligence-for-academia confirmed a genuine policy-content update: Universidad Adolfo Ibanez formally released and published its official 'UAI Artificial Intelligence Policy' (approved July 6, 2026) and associated official guidance documents ('Responsible AI Use Guide for UAI Faculty', 'Artificial Intelligence Report 2025'). The policy establishes an institutional governance structure, mandates tool evaluation for sensitive data, requires standardized disclosure in research, and establishes active CySOC cybersecurity monitoring for agentic AI systems.",
+      "referencedClaimIds": [
+        "cl-uai-institutional-ai-policy-framework-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}

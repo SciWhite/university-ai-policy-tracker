@@ -1,9 +1,9 @@
 {
   "schemaVersion": "uapt-public-release-manifest-v1",
-  "releaseId": "public-release-20260924-002",
-  "publishedAt": "2026-09-24T23:31:02.306Z",
+  "releaseId": "public-release-20260921-001",
+  "publishedAt": "2026-09-21T12:09:36.959Z",
   "candidateOnly": false,
-  "description": "Published maintenance release from maintenance-2026-09-24T12-50-29-097Z: 828 full audit verified policy updates for Columbia, Lund, Universidad Adolfo Ibáñez, UC Irvine, Guelph, UNH, Oregon, UPenn, Toronto, UNSW Sydney, and WashU (11 claims: AI detection bans, autonomous coding agents, licensed tools, syllabus disclosures, and data classification matrices).",
+  "description": "Published maintenance release from maintenance-2026-09-19T04-36-02-401Z: verified policy updates for Khalifa University, National Tsing Hua University, Queens University Belfast, University of Pennsylvania, University of Waterloo, and VU Amsterdam (8 claims: AI detector restrictions, licensed tool expansions, student data protection, authorized-tool requirements).",
   "includeStagedArtifactDirectories": [
     "data/openclaw-staging/run-20260505-cambridge-contract-v2-clean",
     "data/openclaw-staging/run-20260505-eth-ucl-curated",
@@ -822,18 +822,7 @@
     "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-8c07c6c87a5a",
     "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-pennsylvania-e4964a73ab54",
     "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-university-of-waterloo-bde66c618fce",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-columbia-91e3b0fb3b29",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-lund-university-ba53907ad0e6",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-universidad-adolfo-ibanez-82937d1bf713",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-guelph-5ebf2db4f5b8",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-new-hampshire-c14150de407e",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-oregon-1b78f53729a1",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-pennsylvania-a974e388c90f",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-unsw-sydney-1f3adbb70096",
-    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-washington-university-in-st-louis-20b98e978902"
+    "staging/uapt-runs/uapt-maintenance-light-maintenance-2026-09-19T04-36-02-401Z-vrije-universiteit-amsterdam-6d9fa19731e2"
   ],
   "notes": [
     "All new evidence carries mechanically verified verbatim quotes (fresh rendered fetches, 2026-07-27); non-English snippets include English display translations.",
@@ -842,5 +831,5 @@
     "Manual Codex review adds current official AI-tools evidence for Michigan State University and UNIST under staging/uapt-runs/uapt-maintenance-msu-unist-20260802.",
     "The current UNIST AI Services page retains Copilot availability after license allocation but does not state that service was extended beyond the older July 31, 2026 end date; no extension is inferred."
   ],
-  "previousReleaseId": "public-release-20260921-001"
+  "previousReleaseId": "public-release-20260801-001"
 }

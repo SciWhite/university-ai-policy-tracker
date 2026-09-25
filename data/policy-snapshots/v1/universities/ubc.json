@@ -198,8 +198,8 @@
       }
     ]
   },
-  "releaseId": "public-release-20260921-001",
-  "basisFingerprint": "e924fed71da4a73ff7990ed8a158c420aa48ec14a30cec32fdaea43a7006690d",
+  "releaseId": "public-release-20260924-002",
+  "basisFingerprint": "32243fe402a176b874bdff8918fc65ac39572359d042cac0d3900a6408577b21",
   "review": {
     "reviewMethod": "dual_agent",
     "reviewState": "dual_agent_reviewed",

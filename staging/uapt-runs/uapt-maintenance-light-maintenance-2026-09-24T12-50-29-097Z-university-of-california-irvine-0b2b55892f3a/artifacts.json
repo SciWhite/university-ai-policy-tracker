@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "createdAt": "2026-09-24T20:55:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-california-irvine",
+          "sourceCandidateId": "src-uci-security-ai-tools",
+          "sourceUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+          "sourceTitle": "Use Artificial Intelligence Tools Securely | UCI Information Security",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "data_classification",
+            "security_review",
+            "privacy"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ],
+      "stopConditions": [
+        "Review UCI Information Security AI guidance against repository baseline.",
+        "Verify genuine policy additions including Agentic AI security rules and Anthropic Claude classification."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "src-uci-security-ai-tools",
+      "entityType": "university",
+      "entitySlug": "university-of-california-irvine",
+      "sourceUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+      "finalUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+      "sourceTitle": "Use Artificial Intelligence Tools Securely | UCI Information Security",
+      "sourceLanguage": "en",
+      "sourceType": "it_security_privacy",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-05-16T04:48:00.000Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.98,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T20:55:00.000Z",
+      "verificationNotes": "Official UC Irvine Information Security guidance defining data protection levels for AI services, procurement rules, and security precautions for agentic AI tools.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "entityType": "university",
+      "entitySlug": "university-of-california-irvine",
+      "startedAt": "2026-05-16T04:48:00.000Z",
+      "endedAt": "2026-09-24T20:55:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Official UCI Information Security URL monitored under item university-of-california-irvine-0b2b55892f3a."
+        },
+        {
+          "method": "other",
+          "notes": "Automated maintenance scan maintenance-2026-09-24T12-50-29-097Z flagged content_policy_delta against baseline snapshot hash 14d8fadc1bb8c211619ca265b3ae66f72801b46a0f16a97bb9bdab82bcc9af5c. Review confirmed genuine policy updates: scope broadened from chatbots to agentic tools, explicit security risk rules established for agentic AI data access, and Anthropic Claude added to the permitted data levels table."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "src-uci-security-ai-tools"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of UCI Information Security page https://www.security.uci.edu/how-to/ai-chatbot/ confirmed genuine policy-content updates: page scope expanded from chatbots to agentic tools, addition of explicit system access and data risk guidance for agentic AI, and addition of Anthropic Claude (Non-UCI) restricted to P1 data."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "sourceCandidateId": "src-uci-security-ai-tools",
+      "sourceUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+      "finalUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+      "attemptedAt": "2026-09-24T13:50:31.118Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "b05c906e564acb713ad055103c7190432a74b3ebb8e7e6e16c512dc9cb992e2d",
+      "durationMs": 335,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-california-irvine/src-uci-security-ai-tools",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "sourceCandidateId": "src-uci-security-ai-tools",
+      "fetchAttemptId": "fetch-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "sourceUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+      "finalUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+      "sourceTitle": "Use Artificial Intelligence Tools Securely | UCI Information Security",
+      "sourceLanguage": "en",
+      "contentHash": "b05c906e564acb713ad055103c7190432a74b3ebb8e7e6e16c512dc9cb992e2d",
+      "fetchedAt": "2026-09-24T13:50:31.118Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-california-irvine/src-uci-security-ai-tools",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-uci-security-agentic-claude-20260924",
+      "entityType": "university",
+      "entitySlug": "university-of-california-irvine",
+      "claimType": "ai_tool_treatment",
+      "claimText": "UCI Information Security broadens institutional AI security guidance to cover agentic AI tools alongside chatbots, mandating caution over system data access, and lists non-UCI Anthropic Claude as approved for Protection Level 1 (P1) data only.",
+      "normalizedValue": "{\"scope\": [\"chatbots\", \"agentic_tools\"], \"agentic_guidance\": \"treat_system_data_access_with_equal_risk_caution\", \"allowed_tools_data_levels\": {\"UCI ZotGPT\": [\"P1\", \"P2\", \"P3\"], \"UCI Microsoft Copilot\": [\"P1\", \"P2\", \"P3\"], \"UCI Google Gemini\": [\"P1\", \"P2\", \"P3\"], \"OpenAI ChatGPT\": [\"P1\"], \"Microsoft Copilot (Non-UCI)\": [\"P1\"], \"Google Gemini (Non-UCI)\": [\"P1\"], \"Anthropic Claude (Non-UCI)\": [\"P1\"]}, \"p4_rule\": \"default_unacceptable_without_exception_review\"}",
+      "sourceLanguage": "en",
+      "confidence": 0.98,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-uci-security-agentic-claude-20260924"
+      ],
+      "citation": {
+        "citationTitle": "Use Artificial Intelligence Tools Securely | UCI Information Security",
+        "sourceUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-california-irvine.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-california-irvine",
+        "publisher": "UCI Information Security",
+        "retrievedAt": "2026-09-24T13:50:31.118Z",
+        "snapshotHash": "b05c906e564acb713ad055103c7190432a74b3ebb8e7e6e16c512dc9cb992e2d",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-uci-security-agentic-claude-20260924",
+      "claimId": "cl-uci-security-agentic-claude-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "sourceUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+      "finalUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+      "sourceTitle": "Use Artificial Intelligence Tools Securely | UCI Information Security",
+      "sourceLanguage": "en",
+      "snapshotHash": "b05c906e564acb713ad055103c7190432a74b3ebb8e7e6e16c512dc9cb992e2d",
+      "evidenceSnippetOriginal": "Similarly, be aware of what data any Agentic AI tools you are using can access on your systems, and treat that with the same risk level and caution as if it was being entered into a chatbot... Below is a list of services and the appropriate data that can be used with them based on protection level... AI Service Allowed Data Protection Level(s)... Anthropic Claude (Non-UCI) P1",
+      "evidenceSnippetDisplay": "Similarly, be aware of what data any Agentic AI tools you are using can access on your systems, and treat that with the same risk level and caution as if it was being entered into a chatbot... Below is a list of services and the appropriate data that can be used with them based on protection level... AI Service Allowed Data Protection Level(s)... Anthropic Claude (Non-UCI) P1",
+      "evidenceLocator": "Section: Use Artificial Intelligence Tools Securely & Available Services and Appropriate Data Use Cases",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "Use Artificial Intelligence Tools Securely | UCI Information Security",
+        "sourceUrl": "https://www.security.uci.edu/how-to/ai-chatbot/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-california-irvine.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-california-irvine",
+        "publisher": "UCI Information Security",
+        "retrievedAt": "2026-09-24T13:50:31.118Z",
+        "snapshotHash": "b05c906e564acb713ad055103c7190432a74b3ebb8e7e6e16c512dc9cb992e2d",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uci-security-agentic-claude-20260924",
+      "claimId": "cl-uci-security-agentic-claude-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy-content update on UCI Information Security page: guidance retitled from AI Chatbots to AI Tools, introduced security directives governing system data access by Agentic AI tools, and added non-UCI Anthropic Claude to the institutional data classification matrix restricted to P1 data.",
+      "decidedAt": "2026-09-24T20:55:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a",
+      "title": "Maintenance Review: University of California, Irvine (Information Security AI Tools & Agentic Guidance)",
+      "generatedAt": "2026-09-24T20:55:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-california-irvine-0b2b55892f3a.mdx",
+      "summary": "Maintenance review of https://www.security.uci.edu/how-to/ai-chatbot/ verified genuine policy-content updates: expansion of institutional security policy from conversational chatbots to agentic AI tools, mandatory risk caution regarding data accessed by agentic tools on user systems, and the addition of Anthropic Claude (Non-UCI) to the data protection level table (P1 only).",
+      "referencedClaimIds": [
+        "cl-uci-security-agentic-claude-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}

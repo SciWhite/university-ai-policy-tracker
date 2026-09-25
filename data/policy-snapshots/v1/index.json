@@ -3,7 +3,7 @@
   "apiVersion": "v1",
   "snapshotSchemaVersion": "uapt-policy-snapshot-v1",
   "generatedAt": "2026-08-08T11:15:00.000Z",
-  "releaseId": "public-release-20260921-001",
+  "releaseId": "public-release-20260924-002",
   "entries": [
     {
       "universitySlug": "aalto-university",
@@ -11,9 +11,9 @@
       "file": "universities/aalto-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/aalto-university.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "320b58911889b024e715b0a8fbe3a0bb52a5c44ec2269efcaed9e6e842d1c619",
+      "basisFingerprint": "30045bb195af89228f19d84e5386379cd6e6724c02093b02dc8c06cc1ad0283b",
       "locales": []
     },
     {
@@ -22,9 +22,9 @@
       "file": "universities/harvard-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/harvard-university.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "dd4b6b5e6d749b3b4ce84608bcf2093006c6df6213b8e618069e39b3cb315e53",
+      "basisFingerprint": "38bddb00f75d6e1f297a7d1b2978bbda1959f687cf9f28d4d44d375f80e450b3",
       "locales": []
     },
     {
@@ -33,9 +33,9 @@
       "file": "universities/jagiellonian-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/jagiellonian-university.json",
       "overallStatus": "needs_review",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "0a94600908348eaae0d4d8979cbe8a46ac79ec2b6748230dfff15d649ea7493c",
+      "basisFingerprint": "e19ec1dcdad74184a9ec3d36ea988e88b5bb051dbd19eb2e79638496ba5b4187",
       "locales": []
     },
     {
@@ -44,9 +44,9 @@
       "file": "universities/massachusetts-institute-of-technology.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/massachusetts-institute-of-technology.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "0c1fc62d38c5f48e4968cf3593bb9f4f0805929e799938d31dee25a915ee2aea",
+      "basisFingerprint": "81ca9d510fdfbf56c28c4db4c4ade057c3ddd263775b983b9b92f2edf0f9c919",
       "locales": []
     },
     {
@@ -55,9 +55,9 @@
       "file": "universities/national-university-of-singapore.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/national-university-of-singapore.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "da5e1b4a11bdeffd61bf63aa4e24650b8a602b3b08f345958f2306328be1a1c6",
+      "basisFingerprint": "36ba754102db8255511698e5b1bc500196a9b542390a9004e873416c74b464b2",
       "locales": []
     },
     {
@@ -66,9 +66,9 @@
       "file": "universities/snu.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/snu.json",
       "overallStatus": "needs_review",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "3d43c241eb016136b35ad2a336d05a6fe3f8e545a2470f5f46761f7e332aae84",
+      "basisFingerprint": "cf18b34d55783903e363702fe531f6a5ddc94674e0c07ce1c640d037e3482e65",
       "locales": []
     },
     {
@@ -77,9 +77,9 @@
       "file": "universities/stanford-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/stanford-university.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "f0d3d691075c1bb496a6922f5009533e25db4e13bfb39e1ce1cc2d04b323e438",
+      "basisFingerprint": "a366bd08a1736fb5f9076a96a2d7f53088f558300fe09b5b28c64200faf632c3",
       "locales": []
     },
     {
@@ -88,9 +88,9 @@
       "file": "universities/sultan-qaboos-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/sultan-qaboos-university.json",
       "overallStatus": "needs_review",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "a9d275300aaedcbc113e866e158ece26ab11b67659889cf4b0de5e3db2602c98",
+      "basisFingerprint": "4be5f1d7f232ab4cbd96b8760c741230148a236042d8c9246cac69f54130357d",
       "locales": []
     },
     {
@@ -99,9 +99,9 @@
       "file": "universities/tsinghua-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/tsinghua-university.json",
       "overallStatus": "needs_review",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "48bb5c6aa5473155b175a10281bb6d874dfd69f006fdd0e7a1a3b7a85eb0f982",
+      "basisFingerprint": "e886b1b44c839e43d8679e0eeb71b15e0e9efdf05fdf27079d98fd004644cb65",
       "locales": []
     },
     {
@@ -110,9 +110,9 @@
       "file": "universities/u-tokyo.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/u-tokyo.json",
       "overallStatus": "needs_review",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "b45f841082d98155e8a4214bf5716cd8b34e55562f84bfe23fcbbb22712ef7af",
+      "basisFingerprint": "8c2b227e2091793adcd1ace71afc771bf0b173d967fa9d7c7dc19c66590a845e",
       "locales": []
     },
     {
@@ -121,9 +121,9 @@
       "file": "universities/universitat-innsbruck.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/universitat-innsbruck.json",
       "overallStatus": "needs_review",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "9e1eb01dbab4037815e72b702fe526d60e7eaf3345fc4e8cd1b68d214ef9580b",
+      "basisFingerprint": "bfe11bc288ed91096c1f8bc9b97d18f5004ed8cd01079426a207ff8c8229d054",
       "locales": []
     },
     {
@@ -132,9 +132,9 @@
       "file": "universities/university-of-cambridge.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-cambridge.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "576e4d439d6bfe1c991c6c2fc7ea175b55acdf9d6449c27baf5067a98766755d",
+      "basisFingerprint": "6b98c81d6fd13a4bb64589c0e016f593386d24755be36476624a5f333963e249",
       "locales": []
     },
     {
@@ -143,9 +143,9 @@
       "file": "universities/university-of-oxford.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-oxford.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "fa64425dbc8507c264be954de41c2813335b7800a454ed33a00d70dbc9fcec46",
+      "basisFingerprint": "6868fe473ad639398a0078b06d1e19dd358ae8c52e4c92dc4e29745daa1ded7b",
       "locales": []
     },
     {
@@ -154,9 +154,9 @@
       "file": "universities/zhejiang-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/zhejiang-university.json",
       "overallStatus": "needs_review",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "d57b7c4b60ba53439841ef7e838460e97ab38a804e66e79949cfa26b4c1178a9",
+      "basisFingerprint": "9c9bb4380dc85a6b28f8e939f2d6a2f0917f1c0421bccef269f08d09c2feaca0",
       "locales": []
     },
     {
@@ -165,9 +165,9 @@
       "file": "universities/unsw-sydney.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/unsw-sydney.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "2f39ae77664994a508c85fb5b78630a9291a6092b2ea4bb1770a3fb16b17bab4",
+      "basisFingerprint": "454b0cb22d2b8cb75d3e62ecb85f5848af3a276fff1a0eae40d4e15d68c891c6",
       "locales": []
     },
     {
@@ -176,9 +176,9 @@
       "file": "universities/cornell-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/cornell-university.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "58682694f46b527d0338f4ff24a9be55757fe4430fe33e7bacef63352e42dde7",
+      "basisFingerprint": "2b317f16051653f7ae350ac09cfc92d4a7a5aef171120120a1b0e4b93d5fbfd6",
       "locales": []
     },
     {
@@ -187,9 +187,9 @@
       "file": "universities/university-of-sydney.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-sydney.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "d7d789c44b1e753717ad554f78d68cbc73c6d101911b9a1c25839067131d8225",
+      "basisFingerprint": "279b9cb4da6c7f0eb5d23bccb940b71f0f6ec2f8347d6e33a5bccd0f28775625",
       "locales": []
     },
     {
@@ -198,9 +198,9 @@
       "file": "universities/de-la-salle-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/de-la-salle-university.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "5eb5461e6e2eb1a10e6684d5cc0c6b3036c06052980713e0a44497c988f9180d",
+      "basisFingerprint": "e8bfc92602bd60f5db9e58edc3ad2b806959a177dec836de62e0dfb9a39b5ed4",
       "locales": []
     },
     {
@@ -209,9 +209,9 @@
       "file": "universities/university-of-auckland.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-auckland.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "a60244a65109bc868c8a3f559a5a9e7f3a125b8aab406dea207fc40aca1a580a",
+      "basisFingerprint": "585c8b1d6cfc445d049e001ea16599cc3c32d3694b95a8bdfd7baaa1140c735d",
       "locales": []
     },
     {
@@ -220,9 +220,9 @@
       "file": "universities/imperial-college-london.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/imperial-college-london.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "14ab4e655a532979c6a226efff54fe4df9773596ee120afeee10d6a69f5bc717",
+      "basisFingerprint": "b041c04a14980c2245bbb55ce01c9d5c21c229fdfa5c5a9a40a32ede0aaddcd9",
       "locales": []
     },
     {
@@ -231,9 +231,9 @@
       "file": "universities/university-of-melbourne.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-melbourne.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "e0b909dc7cfafb41deaab07acdcc998aabb89054229a4ec3b52258f03422dd92",
+      "basisFingerprint": "b925c866b0e4ce357a2d45c2b36f7085f3710518c2853bab7b706b498cc97ccc",
       "locales": []
     },
     {
@@ -242,9 +242,9 @@
       "file": "universities/utrecht-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/utrecht-university.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "1e97add9e92b716edbedb8cbce7a2c6d635751806392f6826f82fb55a5ac3318",
+      "basisFingerprint": "67e4b625c86092daaf286e53942faac4149c65b00b9e5b699201cdfed496a0ef",
       "locales": []
     },
     {
@@ -253,9 +253,9 @@
       "file": "universities/adelaide-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/adelaide-university.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "1e0f981c384c15cc554f238f5bd96e49b9445a93c252875735cd56ef93fbcb89",
+      "basisFingerprint": "00118c3ca408d4c841d1c5ffe708b745bf8fb4369c708ddb7428cdd7c3cbb012",
       "locales": []
     },
     {
@@ -264,9 +264,9 @@
       "file": "universities/ubc.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/ubc.json",
       "overallStatus": "strong",
-      "releaseId": "public-release-20260921-001",
+      "releaseId": "public-release-20260924-002",
       "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "e924fed71da4a73ff7990ed8a158c420aa48ec14a30cec32fdaea43a7006690d",
+      "basisFingerprint": "32243fe402a176b874bdff8918fc65ac39572359d042cac0d3900a6408577b21",
       "locales": []
     }
   ],

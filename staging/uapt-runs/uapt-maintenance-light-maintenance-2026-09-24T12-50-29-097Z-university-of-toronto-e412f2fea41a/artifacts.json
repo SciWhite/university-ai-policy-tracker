@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "openclaw-artifact-v1",
+  "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+  "runPurpose": "claim_evidence_release",
+  "artifacts": [
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "artifactType": "crawl_plan",
+      "planId": "plan-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "createdAt": "2026-09-24T15:25:00.000Z",
+      "createdBy": "Crawl Worker (crawl-worker)",
+      "targets": [
+        {
+          "entityType": "university",
+          "entitySlug": "university-of-toronto",
+          "sourceCandidateId": "sc-university-of-toronto-e412f2fea41a",
+          "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+          "sourceTitle": "AI Kitchen & Tools – University of Toronto",
+          "sourceLanguage": "en",
+          "allowedFetchModes": [
+            "http"
+          ],
+          "expectedThemes": [
+            "ai_tool_treatment",
+            "approved_tools",
+            "data_classification"
+          ],
+          "robotsPolicy": "respect"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "artifactType": "source_candidate",
+      "sourceCandidateId": "sc-university-of-toronto-e412f2fea41a",
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+      "finalUrl": "https://ai.utoronto.ca/ai-kitchen/",
+      "sourceTitle": "AI Kitchen & Tools – University of Toronto",
+      "sourceLanguage": "en",
+      "sourceType": "approved_tools",
+      "discoveryMethod": "operator_seed",
+      "discoveredAt": "2026-07-15T17:20:43.896Z",
+      "officialDomainConfidence": 0.99,
+      "aiRelevanceScore": 0.99,
+      "policySpecificityScore": 0.95,
+      "verificationStatus": "verified",
+      "verifiedAt": "2026-09-24T15:25:00.000Z",
+      "verificationNotes": "Official University of Toronto AI Kitchen & Tools hub providing central institutional vetting, Level 3 data approval, and tool catalog.",
+      "robotsPolicy": "respect"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "artifactType": "source_discovery_trace",
+      "traceId": "trace-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "startedAt": "2026-07-15T17:20:43.896Z",
+      "endedAt": "2026-09-24T15:25:00.000Z",
+      "methodsAttempted": [
+        {
+          "method": "operator_seed",
+          "notes": "Baseline seeded URL https://ai.utoronto.ca/tools-and-training/ permanently redirected to https://ai.utoronto.ca/ai-kitchen/."
+        },
+        {
+          "method": "other",
+          "notes": "Automated maintenance check maintenance-2026-09-24T12-50-29-097Z flagged content_policy_delta. Review verified substantial expansion: official launch of AI Kitchen vetting framework, formal institutional procurement of ChatGPT Edu (OpenAI), Cogniti course tutors, and Microsoft GitHub Copilot Business for Level 3 data or below."
+        }
+      ],
+      "noSourceEscalationCompleted": false,
+      "candidateIds": [
+        "sc-university-of-toronto-e412f2fea41a"
+      ],
+      "rejectionIds": [],
+      "summary": "Maintenance review of University of Toronto AI tools catalog confirmed significant policy additions including ChatGPT Edu, Cogniti, and GitHub Copilot Business under institutional Level 3 data vetting."
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "artifactType": "fetch_attempt",
+      "fetchAttemptId": "fa-university-of-toronto-e412f2fea41a-20260924",
+      "sourceCandidateId": "sc-university-of-toronto-e412f2fea41a",
+      "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+      "finalUrl": "https://ai.utoronto.ca/ai-kitchen/",
+      "attemptedAt": "2026-09-24T12:52:26.030Z",
+      "fetchMode": "http",
+      "userAgentKind": "browser_like",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "robotsAllowed": true,
+      "outcome": "success",
+      "contentHash": "53259fc3cbc0482c097207b35ec214930a496ad90cd7cc3dd776678d829a5282",
+      "durationMs": 288,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-toronto/sc-university-of-toronto-e412f2fea41a",
+      "rawArtifactPaths": []
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "artifactType": "source_snapshot",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "sourceCandidateId": "sc-university-of-toronto-e412f2fea41a",
+      "fetchAttemptId": "fa-university-of-toronto-e412f2fea41a-20260924",
+      "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+      "finalUrl": "https://ai.utoronto.ca/ai-kitchen/",
+      "sourceTitle": "AI Kitchen & Tools – University of Toronto",
+      "sourceLanguage": "en",
+      "contentHash": "53259fc3cbc0482c097207b35ec214930a496ad90cd7cc3dd776678d829a5282",
+      "fetchedAt": "2026-09-24T12:52:26.030Z",
+      "httpStatus": 200,
+      "robotsAllowed": true,
+      "normalizedTextStorageKey": "private-source-snapshot://maintenance-20260924/university-of-toronto/sc-university-of-toronto-e412f2fea41a",
+      "rawArtifactPaths": [],
+      "limitations": [
+        "Source-health timestamps are metadata only, not claim evidence and not proof of university publication timing."
+      ]
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "artifactType": "claim_candidate",
+      "claimId": "cl-university-of-toronto-chatgpt-edu-20260924",
+      "entityType": "university",
+      "entitySlug": "university-of-toronto",
+      "claimType": "ai_tool_treatment",
+      "claimText": "ChatGPT Edu (OpenAI) is listed for University of Toronto in an official university AI tools source. Derived availability: conditionally allowed. Derived endorsement type: institutionally licensed or procured.",
+      "normalizedValue": "{\"tool\": \"chatgpt_edu\", \"rawToolName\": \"ChatGPT Edu (OpenAI)\", \"description\": \"A secure large language model and AI assistant officially vetted for Level 3 data (or below) under strong institutional data, IP, privacy, and contract terms.\", \"howToObtain\": \"Learn more via Knowledge Base and submit request through the IT Service Centre.\", \"costToUser\": \"Negotiated pricing.\", \"availability\": \"conditionally_allowed\", \"endorsementType\": \"institutionally_licensed_or_procured\"}",
+      "sourceLanguage": "en",
+      "confidence": 0.98,
+      "reviewState": "agent_reviewed",
+      "evidenceIds": [
+        "ev-university-of-toronto-chatgpt-edu-20260924"
+      ],
+      "citation": {
+        "citationTitle": "AI Kitchen & Tools – University of Toronto",
+        "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-toronto",
+        "publisher": "University of Toronto",
+        "retrievedAt": "2026-09-24T12:52:26.030Z",
+        "snapshotHash": "53259fc3cbc0482c097207b35ec214930a496ad90cd7cc3dd776678d829a5282",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      },
+      "publishAsCanonical": false,
+      "isCanonical": false
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "artifactType": "evidence_candidate",
+      "evidenceId": "ev-university-of-toronto-chatgpt-edu-20260924",
+      "claimId": "cl-university-of-toronto-chatgpt-edu-20260924",
+      "sourceSnapshotId": "snap-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+      "finalUrl": "https://ai.utoronto.ca/ai-kitchen/",
+      "sourceTitle": "AI Kitchen & Tools – University of Toronto",
+      "sourceLanguage": "en",
+      "snapshotHash": "53259fc3cbc0482c097207b35ec214930a496ad90cd7cc3dd776678d829a5282",
+      "evidenceSnippetOriginal": "ChatGPT Edu (OpenAI): A secure large language model and AI assistant. For Staff, Faculty, Librarians. Negotiated pricing. Learn more via the Knowledge Base and submit a request through the IT Service Centre. Limited Seats. Every tool accessed through the AI Kitchen meets the following standards: Officially vetted by the University of Toronto; Strong data, IP, privacy, and contract terms; Approved for Level 3 data (or below).",
+      "evidenceSnippetDisplay": "ChatGPT Edu (OpenAI): A secure large language model and AI assistant. For Staff, Faculty, Librarians. Negotiated pricing. Learn more via the Knowledge Base and submit a request through the IT Service Centre. Limited Seats. Every tool accessed through the AI Kitchen meets the following standards: Officially vetted by the University of Toronto; Strong data, IP, privacy, and contract terms; Approved for Level 3 data (or below).",
+      "evidenceLocator": "AI tools for teaching, research or administrative work table, ChatGPT Edu row",
+      "evidenceType": "official_source",
+      "relevance": 0.98,
+      "rightsNote": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+      "citation": {
+        "citationTitle": "AI Kitchen & Tools – University of Toronto",
+        "sourceUrl": "https://ai.utoronto.ca/tools-and-training/",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-toronto.json",
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-toronto",
+        "publisher": "University of Toronto",
+        "retrievedAt": "2026-09-24T12:52:26.030Z",
+        "snapshotHash": "53259fc3cbc0482c097207b35ec214930a496ad90cd7cc3dd776678d829a5282",
+        "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+      }
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "artifactType": "review_decision",
+      "decisionId": "dec-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "claimId": "cl-university-of-toronto-chatgpt-edu-20260924",
+      "decision": "approve",
+      "reviewState": "agent_reviewed",
+      "reviewerType": "local_reviewer",
+      "reviewer": "Crawl Worker (crawl-worker)",
+      "notes": "Verified genuine policy update: University of Toronto officially launched the AI Kitchen tools roster, officially procuring ChatGPT Edu (OpenAI) with institutional negotiated pricing and Level 3 data approval for staff, faculty, and librarians.",
+      "decidedAt": "2026-09-24T15:25:00.000Z"
+    },
+    {
+      "schemaVersion": "openclaw-artifact-v1",
+      "runId": "uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "artifactType": "report_draft",
+      "reportId": "rep-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a",
+      "title": "Maintenance Review: University of Toronto (AI Kitchen Tools Hub - ChatGPT Edu Institutional Procurement)",
+      "generatedAt": "2026-09-24T15:25:00.000Z",
+      "draftPath": "content/reports/maintenance-uapt-maintenance-light-maintenance-2026-09-24T12-50-29-097Z-university-of-toronto-e412f2fea41a.mdx",
+      "summary": "Maintenance review of https://ai.utoronto.ca/tools-and-training/ (redirected to https://ai.utoronto.ca/ai-kitchen/) verified genuine policy additions: official launch of the AI Kitchen institutional vetting framework, establishing Level 3 data approval and institutional contract terms, and official procurement of ChatGPT Edu (OpenAI) for faculty, staff, and librarians.",
+      "referencedClaimIds": [
+        "cl-university-of-toronto-chatgpt-edu-20260924"
+      ],
+      "limitations": [
+        "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+        "Source-health timestamps are metadata only and do not constitute claim evidence or proof of university publication timing."
+      ],
+      "trackerMetadataLicense": "CC-BY-4.0",
+      "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ]
+}
