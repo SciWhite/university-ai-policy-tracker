@@ -32,6 +32,7 @@ interface SearchAutocompleteProps {
   id: string;
   name: string;
   placeholder: string;
+  preserveQueryOnEscape?: boolean;
 }
 
 interface SuggestionResult {
@@ -52,7 +53,8 @@ export function SearchAutocomplete({
   defaultValue = "",
   id,
   name,
-  placeholder
+  placeholder,
+  preserveQueryOnEscape = false
 }: SearchAutocompleteProps) {
   const [query, setQuery] = useState(defaultValue);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -145,6 +147,9 @@ export function SearchAutocomplete({
 
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Escape") {
+      if (preserveQueryOnEscape) {
+        event.preventDefault();
+      }
       setActiveIndex(-1);
       setResults([]);
       setStatus("idle");

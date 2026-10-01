@@ -1,5 +1,6 @@
 "use client";
 
+import { preservePolicyReferenceSearch } from "@/lib/policy-reference-preview";
 import { Suspense, useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import {
@@ -97,7 +98,14 @@ function LanguageSwitcherLinks({ search }: { search: string }) {
             href={hrefFor(supportedLocale)}
             hrefLang={supportedLocale}
             key={supportedLocale}
-            onClick={() => rememberLocale(supportedLocale)}
+            onClick={(event) => {
+              const target = preservePolicyReferenceSearch(hrefFor(supportedLocale), window.location.search);
+              rememberLocale(supportedLocale);
+              if (target.includes("layout=reference-v4") || target.includes("layout=home-v4")) {
+                event.preventDefault();
+                window.location.assign(target);
+              }
+            }}
           >
             {supportedLocale === DEFAULT_LOCALE ? "EN" : supportedLocale.toUpperCase()}
           </a>

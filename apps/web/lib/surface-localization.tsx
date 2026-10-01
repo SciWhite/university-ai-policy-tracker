@@ -177,7 +177,7 @@ export function localizeSurfaceTree(
   }
   if (typeof node === "string") return translateSurfaceText(node, locale);
   if (typeof node === "number") return node;
-  if (Array.isArray(node)) return node.map((child) => localizeSurfaceTree(child, locale));
+  if (Array.isArray(node)) return Children.map(node, (child) => localizeSurfaceTree(child, locale));
   if (!isValidElement(node)) return node;
 
   const element = node as ReactElement<Record<string, unknown>>;
@@ -189,8 +189,8 @@ export function localizeSurfaceTree(
   for (const [key, value] of Object.entries(props)) {
     if (key === "href" || key === "action") {
       if (typeof value === "string") props[key] = localizeHref(value, locale);
-    } else if (key === "children" && preserveChildren) {
-      continue;
+    } else if (key === "children") {
+      if (!preserveChildren) props.children = localizeSurfaceTree(value as ReactNode, locale);
     } else if (key.endsWith("Url") && typeof value === "string") {
       props[key] = localizeAbsoluteSiteUrl(value, locale) ?? value;
     } else if (key === "data") {

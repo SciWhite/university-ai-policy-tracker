@@ -1,7 +1,11 @@
+import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
+import { withLocalePrefix, type SupportedLocale } from "@/lib/i18n";
 import type { RelatedUniversityRef } from "@/lib/related-universities";
 
 interface RelatedUniversitiesProps {
   universities: RelatedUniversityRef[];
+  locale?: SupportedLocale;
+  localizeUi?: boolean;
 }
 
 /**
@@ -10,24 +14,25 @@ interface RelatedUniversitiesProps {
  * visual language. The disclaimer keeps the links navigational: a related
  * record never implies the same policy position.
  */
-export function RelatedUniversities({ universities }: RelatedUniversitiesProps) {
+export function RelatedUniversities({ universities, locale = "en", localizeUi = false }: RelatedUniversitiesProps) {
   if (!universities.length) return null;
+  const t = (value: string) => localizeUi ? translatePolicyReferenceUi(value, locale) : value;
 
   return (
     <section className="student-record-section" id="related-universities">
       <div className="section-heading">
         <div>
           <p className="student-policy__eyebrow">Explore</p>
-          <h2>Related university AI policy records</h2>
+          <h2>{t("Related university AI policy records")}</h2>
         </div>
         <p>
-          {universities.length} record{universities.length === 1 ? "" : "s"}
+          {t(`${universities.length} record${universities.length === 1 ? "" : "s"}`)}
         </p>
       </div>
       <ul className="related-university-list">
         {universities.map((university) => (
           <li key={university.slug}>
-            <a href={`/universities/${university.slug}`}>{university.name}</a>
+            <a href={localizeUi ? withLocalePrefix(`/universities/${university.slug}`, locale) : `/universities/${university.slug}`}>{university.name}</a>
             <span className="related-university-list__meta">
               {university.country}
             </span>

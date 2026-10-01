@@ -1,3 +1,5 @@
+import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
+import { isStudentOnlyPolicyPage } from "@/lib/policy-page-audience";
 import React from "react";
 import type {
   PolicyClaim,
@@ -11,6 +13,9 @@ import { StateLabel } from "@/components/state-label";
 import { getSourceDomain } from "@/lib/analytics-events";
 import { formatSnapshotHash } from "@/lib/snapshot-hash";
 import type { SupportedLocale } from "@/lib/i18n";
+import { PolicySceneCard } from "@/components/policy-scene-story";
+import { PolicyQuickGuide } from "@/components/policy-quick-guide";
+import type { PolicyScenePilot } from "@/lib/policy-scene-pilot";
 
 export const STUDENT_SNAPSHOT_DIMENSION_ORDER: readonly PolicySnapshotDimensionKey[] = [
   "coursework",
@@ -135,6 +140,89 @@ const dimensionCopy: Record<
   research_publication: { title: "Research & publication" }
 };
 
+const compactDimensionSummaries: Record<string, Record<PolicySnapshotDimensionKey, string>> = {
+  "harvard-university": {
+    coursework: "Your instructor's assignment rule decides how AI may be used.",
+    exams: "No reviewed exam-specific rule is available here.",
+    disclosure: "HGSE assignments require recording permitted AI use.",
+    privacy_data: "Confidential Harvard data needs an assessed, approved tool.",
+    approved_tools: "Tool availability does not grant course permission.",
+    research_publication: "HMS research guidance requires transparent use and human authorship."
+  },
+  "unsw-sydney": {
+    coursework: "This assessment's category decides what AI assistance is allowed.",
+    exams: "No reviewed exam-specific rule is available here.",
+    disclosure: "Acknowledge AI and other sources in assessment work.",
+    privacy_data: "Keep personal, sensitive and IP information out of prompts.",
+    approved_tools: "Copilot Chat access does not grant assessment permission.",
+    research_publication: "No reviewed research or publication rule is available here."
+  },
+  "university-of-sydney": {
+    coursework: "Check this unit's AI and assessment instructions.",
+    exams: "Supervised exams and tests have their own instructions.",
+    disclosure: "Acknowledge AI tools, including generative translation and paraphrasing.",
+    privacy_data: "Keep confidential, personal and other sensitive data out of AI tools.",
+    approved_tools: "Copilot access does not grant assessment permission.",
+    research_publication: "No reviewed research or publication rule is available here."
+  },
+  "national-university-of-singapore": {
+    coursework: "Do not submit unacknowledged AI output as your own work.",
+    exams: "Check this assessment's rule; supervised tests differ from take-home work.",
+    disclosure: "Cite AI-generated content using the required style.",
+    privacy_data: "NUS data requires NUS-approved AI tools.",
+    approved_tools: "Tool availability does not grant assessment permission.",
+    research_publication: "No reviewed research or publication rule is available here."
+  },
+  "university-of-oxford": {
+    coursework: "Follow the AI declaration for this summative assessment.",
+    exams: "Breaching a summative assessment's AI rule can be misconduct.",
+    disclosure: "Acknowledge AI in summative work; PGR theses require a statement.",
+    privacy_data: "Confidential University data needs an approved protected platform.",
+    approved_tools: "Tool approval does not grant assessment permission.",
+    research_publication: "PGR thesis and assessment rules limit substantive AI writing."
+  },
+  "utrecht-university": {
+    coursework: "Your teacher sets the AI index level for this task.",
+    exams: "No reviewed exam-specific rule is available here.",
+    disclosure: "No reviewed disclosure instruction is available here.",
+    privacy_data: "Do not use your UU student email for external AI accounts.",
+    approved_tools: "A tool list does not grant task permission.",
+    research_publication: "Research data needs separate data-protection checks."
+  },
+  "imperial-college-london": {
+    coursework: "Your department decides AI use for this assessment.",
+    exams: "No rule for every exam format is in the reviewed basis.",
+    disclosure: "Include an AI-use statement in assessed work.",
+    privacy_data: "Sensitive research data may need extra approval and controls.",
+    approved_tools: "dAIsy access does not grant assessment permission.",
+    research_publication: "Research with people or personal data may need ethics and data checks."
+  },
+  "adelaide-university": {
+    coursework: "Follow your course coordinator's AI instructions.",
+    exams: "Invigilated online exams allow only explicitly approved tools.",
+    disclosure: "Acknowledge AI-generated information; do not pass it off as yours.",
+    privacy_data: "Graduate research guidance restricts sensitive-data uploads.",
+    approved_tools: "Copilot access does not grant assessment permission.",
+    research_publication: "Research use needs transparent records and human authorship."
+  },
+  "de-la-salle-university": {
+    coursework: "Check the GenAI use level in this course syllabus.",
+    exams: "No reviewed exam-specific rule is available here.",
+    disclosure: "Provide a written statement when GenAI contributes to a submission.",
+    privacy_data: "Keep personal and confidential information out of GenAI.",
+    approved_tools: "No approved-tool list is in the reviewed snapshot.",
+    research_publication: "No research-specific permission is in the retained basis."
+  },
+  ubc: {
+    coursework: "Get express permission for this assessed work.",
+    exams: "Get express permission before using GenAI in an exam.",
+    disclosure: "Follow the educator's acknowledgement rule for permitted use.",
+    privacy_data: "Personal data needs a tool that passed FIPPA assessment.",
+    approved_tools: "Institutional tool access does not grant assessment permission.",
+    research_publication: "Graduate research AI use needs approval and thesis disclosure."
+  }
+};
+
 const statusCopy: Record<PolicySnapshotDimensionStatus, string> = {
   allowed: "Allowed in this scope",
   conditionally_allowed: "Conditional",
@@ -170,6 +258,8 @@ interface StudentPolicySnapshotProps {
   locale?: SupportedLocale;
   role: StudentSnapshotRole;
   snapshot: PolicySnapshot;
+  scene?: PolicyScenePilot;
+  guidanceInHero?: boolean;
 }
 
 export function normalizeStudentSnapshotRole(
@@ -250,9 +340,14 @@ export function StudentPolicySnapshot({
   claims,
   entitySlug,
   locale = "en",
-  role,
-  snapshot
+  role: requestedRole,
+  snapshot,
+  scene,
+  guidanceInHero = false
 }: StudentPolicySnapshotProps) {
+  const t = (value: string) => guidanceInHero ? translatePolicyReferenceUi(value, locale) : value;
+  const studentOnly = isStudentOnlyPolicyPage(entitySlug);
+  const role = studentOnly ? "student" : requestedRole;
   const dimensions = getSnapshotDimensions(snapshot);
   const roleSupported = isSnapshotRoleSupported(snapshot, role);
   const doItems = roleSupported ? collectSnapshotActions(snapshot, "do", role) : [];
@@ -260,6 +355,7 @@ export function StudentPolicySnapshot({
     ? collectSnapshotActions(snapshot, "dont", role)
     : [];
   const currentRole = roleCopy[role];
+  const compactPolicyScene = Boolean(scene?.quickGuide);
   const prioritizedKeys = getRolePrioritizedDimensions(snapshot, role)
     .slice(0, 3)
     .map((dimension) => dimension.key)
@@ -268,21 +364,25 @@ export function StudentPolicySnapshot({
   return (
     <section
       aria-labelledby="student-policy-heading"
-      className="student-policy"
+      className={`student-policy${compactPolicyScene ? " student-policy--compact" : ""}${scene?.studentFirst ? " student-policy--student-first" : ""}`}
       data-snapshot-status="strong"
       data-snapshot-role={role}
       data-snapshot-role-supported={roleSupported ? "true" : "false"}
       data-snapshot-role-priority={prioritizedKeys}
     >
-      <div className="student-policy__overall">
-        <StatusIcon status="strong" />
-        <div>
-          <h2 id="student-policy-heading">Reviewed policy snapshot</h2>
-          <p>{snapshot.summary}</p>
+      {guidanceInHero ? <h2 id="student-policy-heading">{t("Explore the policy by topic")}</h2> : compactPolicyScene && scene ? (
+        <PolicyQuickGuide headingId="student-policy-heading" scene={scene} />
+      ) : (
+        <div className="student-policy__overall">
+          <StatusIcon status="strong" />
+          <div>
+            <h2 id="student-policy-heading">Reviewed policy snapshot</h2>
+            <p>{snapshot.summary}</p>
+          </div>
         </div>
-      </div>
+      )}
 
-      {doItems.length || dontItems.length ? (
+      {!compactPolicyScene && (doItems.length || dontItems.length) ? (
         <div aria-label="Quick guidance" className="student-policy__actions">
           {doItems.length ? (
             <ActionList items={doItems} kind="do" />
@@ -295,19 +395,23 @@ export function StudentPolicySnapshot({
 
       <div className="student-policy__role-row">
         <div>
-          <p className="student-policy__eyebrow">Audience</p>
-          <p className="student-policy__role-focus">
-            {currentRole.audience} · {currentRole.focus}
-          </p>
-          <p
-            className={`student-policy__role-coverage${roleSupported ? "" : " student-policy__role-coverage--unsupported"}`}
-          >
-            {roleSupported
-              ? "Reviewed material is available for this audience."
-              : `No reviewed ${currentRole.unsupportedLabel}-specific guidance; general conclusions only.`}
-          </p>
+          <p className="student-policy__eyebrow">{studentOnly ? "Student guide" : "Audience"}</p>
+          {compactPolicyScene ? null : (
+            <p className="student-policy__role-focus">
+              {currentRole.audience} · {currentRole.focus}
+            </p>
+          )}
+          {!roleSupported || !compactPolicyScene ? (
+            <p
+              className={`student-policy__role-coverage${roleSupported ? "" : " student-policy__role-coverage--unsupported"}`}
+            >
+              {roleSupported
+                ? "Reviewed material is available for this audience."
+                : `No reviewed ${currentRole.unsupportedLabel}-specific guidance; general conclusions only.`}
+            </p>
+          ) : null}
         </div>
-        <nav aria-label="Snapshot audience" className="student-policy__roles">
+        {studentOnly ? null : <nav aria-label="Snapshot audience" className="student-policy__roles">
           {STUDENT_SNAPSHOT_ROLES.map((candidate) => (
             <a
               aria-current={candidate === role ? "page" : undefined}
@@ -320,17 +424,21 @@ export function StudentPolicySnapshot({
               {roleCopy[candidate].label}
             </a>
           ))}
-        </nav>
+        </nav>}
       </div>
 
       <div className="student-policy__grid">
         {dimensions.map((dimension) => (
           <SnapshotDimensionCard
             claims={claims}
+            compact={compactPolicyScene}
+            localizeUi={guidanceInHero}
             dimension={dimension}
             entitySlug={entitySlug}
             key={dimension.key}
             locale={locale}
+            role={role}
+            scene={scene}
             snapshot={snapshot}
           />
         ))}
@@ -339,36 +447,28 @@ export function StudentPolicySnapshot({
   );
 }
 
-export function NoReviewedSnapshotState() {
-  return (
-    <section
-      aria-labelledby="student-policy-heading"
-      className="student-policy student-policy--empty"
-      data-snapshot-status="not_available"
-    >
-      <div className="student-policy__overall">
-        <StatusIcon status="not_available" />
-        <div>
-          <h2 id="student-policy-heading">No reviewed summary yet</h2>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function SnapshotDimensionCard({
+  localizeUi = false,
   claims,
+  compact,
   dimension,
   entitySlug,
   locale,
+  role,
+  scene,
   snapshot
 }: {
   claims: PolicyClaim[];
+  compact: boolean;
+  localizeUi?: boolean;
   dimension: PolicySnapshotDimension;
   entitySlug: string;
   locale: SupportedLocale;
+  role: StudentSnapshotRole;
+  scene?: PolicyScenePilot;
   snapshot: PolicySnapshot;
 }) {
+  const t = (value: string) => localizeUi ? translatePolicyReferenceUi(value, locale) : value;
   const copy = dimensionCopy[dimension.key];
   const basisClaims = new Map(
     claims
@@ -382,23 +482,31 @@ function SnapshotDimensionCard({
   }));
   const contexts = getDimensionContexts(dimension.key, snapshot.academicContexts);
   const detailsId = `snapshot-evidence-${dimension.key}`;
+  const sceneCards = scene?.storyCards?.filter(
+    (card) => card.placement === dimension.key || (!card.placement && card.evidenceHref === `#snapshot-${dimension.key}`)
+  ) ?? [];
+  const studentScenes = sceneCards.filter((card) => card.audience !== "research");
+  const researchScenes = sceneCards.filter((card) => card.audience === "research");
 
   return (
     <article
       className="student-snapshot-card"
       data-snapshot-dimension={dimension.key}
       data-snapshot-status={dimension.status}
+      id={`snapshot-${dimension.key}`}
     >
       <div className="student-snapshot-card__summary">
         <DimensionIcon dimension={dimension.key} />
         <div className="student-snapshot-card__content">
-          <h3>{copy.title}</h3>
+          <h3>{t(copy.title)}</h3>
           <p className="student-snapshot-card__status">
             <StatusIcon status={dimension.status} />
-            <span>{statusCopy[dimension.status]}</span>
+            <span>{t(statusCopy[dimension.status])}</span>
           </p>
-          <p className="student-snapshot-card__sentence">{dimension.summary}</p>
-          <div className="student-snapshot-card__scopes">
+          {scene?.studentFirst && studentScenes.length ? null : <p className="student-snapshot-card__sentence">
+            {compact && scene ? (compactDimensionSummaries[scene.slug]?.[dimension.key] ?? dimension.summary) : dimension.summary}
+          </p>}
+          {compact ? null : <div className="student-snapshot-card__scopes">
             <a
               data-analytics-entity-slug={entitySlug}
               data-analytics-event="snapshot_scope"
@@ -406,15 +514,27 @@ function SnapshotDimensionCard({
               data-analytics-snapshot-scope={snapshot.scope}
               href="#snapshot-scope"
             >
-              Scope: {scopeCopy[snapshot.scope]}
+              {t("Scope")}: {localizeUi ? translatePolicyReferenceUi(scopeCopy[snapshot.scope], locale) : scopeCopy[snapshot.scope]}
             </a>
             {contexts.map((context) => (
               <span key={context}>{contextCopy[context] ?? context}</span>
             ))}
             {copy.extraScope ? <span>{copy.extraScope}</span> : null}
-          </div>
+          </div>}
         </div>
       </div>
+
+      {studentScenes.map((card) => (
+        <PolicySceneCard card={card} compact={compact && !scene?.showGallerySummaries} readableArtwork={Boolean(scene?.showGallerySummaries)} locale={localizeUi ? locale : "en"} evidenceLabel={compact ? t("View evidence") : scene?.evidenceLabel ?? "Read the evidence"} key={card.artworkSrc} />
+      ))}
+      {researchScenes.length ? (
+        <details className="policy-scene-research" open={role === "researcher"}>
+          <summary>{t("Research guidance")} ({researchScenes.length})</summary>
+          {researchScenes.map((card) => (
+              <PolicySceneCard card={card} compact={compact && !scene?.showGallerySummaries} readableArtwork={Boolean(scene?.showGallerySummaries)} locale={localizeUi ? locale : "en"} evidenceLabel={compact ? t("View evidence") : scene?.evidenceLabel ?? "Read the evidence"} key={card.artworkSrc} />
+          ))}
+        </details>
+      ) : null}
 
       <details className="student-snapshot-card__details">
         <summary
@@ -426,12 +546,32 @@ function SnapshotDimensionCard({
           <span aria-hidden="true" className="student-snapshot-card__disclosure">
             +
           </span>
-          Reviewed evidence &amp; official sources
+          {t("Reviewed evidence & official sources")}
         </summary>
         <div className="student-snapshot-card__evidence" id={detailsId}>
+          {compact ? (
+            <div className="student-snapshot-card__full-context">
+              <p>{dimension.summary}</p>
+              <div className="student-snapshot-card__scopes">
+                <a
+                  data-analytics-entity-slug={entitySlug}
+                  data-analytics-event="snapshot_scope"
+                  data-analytics-snapshot-dimension={dimension.key}
+                  data-analytics-snapshot-scope={snapshot.scope}
+                  href="#snapshot-scope"
+                >
+                  {t("Scope")}: {localizeUi ? translatePolicyReferenceUi(scopeCopy[snapshot.scope], locale) : scopeCopy[snapshot.scope]}
+                </a>
+                {contexts.map((context) => (
+                  <span key={context}>{contextCopy[context] ?? context}</span>
+                ))}
+                {copy.extraScope ? <span>{copy.extraScope}</span> : null}
+              </div>
+            </div>
+          ) : null}
           {basisClaims.size ? (
             <div>
-              <h4>Reviewed evidence</h4>
+              <h4>{t("Reviewed evidence")}</h4>
               <div className="student-evidence-list">
                 {[...basisClaims.values()].map((claim) => (
                   <article className="student-evidence" key={claim.id}>
@@ -464,12 +604,12 @@ function SnapshotDimensionCard({
               </div>
             </div>
           ) : (
-            <p className="muted">No reviewed evidence is included in this dimension.</p>
+            <p className="muted">{t("No reviewed evidence is included in this dimension.")}</p>
           )}
 
           {sourceAttributions.length ? (
             <div>
-              <h4>Official sources</h4>
+              <h4>{t("Official sources")}</h4>
               <ul className="student-source-list">
                 {sourceAttributions.map((source) => (
                   <li key={`${source.sourceUrl}:${source.sourceSnapshotHash}`}>

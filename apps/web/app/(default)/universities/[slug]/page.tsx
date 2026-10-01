@@ -1,3 +1,8 @@
+import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
+import { isStudentOnlyPolicyPage } from "@/lib/policy-page-audience";
+import { isPublishedV4University, isPolicyReferencePreview, preparePolicyReferenceScene } from "@/lib/policy-reference-preview";
+import { PolicyReferenceLayout, PolicyReferenceHero } from "@/components/policy-reference-layout";
+import { PolicyReferenceInteractions } from "@/components/policy-reference-interactions";
 import { hasCurrentIndexRecoveryBasis } from "@/lib/index-recovery-basis";
 import { getIndexRecoveryLastModified } from "@/lib/index-recovery-dates";
 import { notFound, permanentRedirect } from "next/navigation";
@@ -10,9 +15,12 @@ import {
 import { ClaimEvidenceCard } from "@/components/claim-evidence-card";
 import { EntityHeader } from "@/components/entity-header";
 import { PolicySceneHero } from "@/components/policy-scene-hero";
+import { PolicySceneStory } from "@/components/policy-scene-story";
+import { PolicyQuickGuide, PolicySceneGallery } from "@/components/policy-quick-guide";
+import { PolicyRecordHashReveal } from "@/components/policy-record-hash-reveal";
 import { JsonLd } from "@/components/json-ld";
 import { MetaLabel } from "@/components/meta-label";
-import { NoReviewedSnapshotState, StudentPolicySnapshot, isStrongStudentSnapshot, normalizeStudentSnapshotRole } from "@/components/student-policy-snapshot";
+import { StudentPolicySnapshot, isStrongStudentSnapshot, normalizeStudentSnapshotRole } from "@/components/student-policy-snapshot";
 import { DocumentLink as Link } from "@/components/document-link";
 import { RelatedUniversities } from "@/components/related-universities";
 import { UniversityClaimGroups } from "@/components/university-claim-groups";
@@ -46,6 +54,7 @@ interface UniversityPageProps {
   }>;
   searchParams?: Promise<{
     for?: string | string[];
+    layout?: string | string[];
   }>;
 }
 
@@ -61,7 +70,7 @@ export async function generateStaticParams() {
   return universities.map((university) => ({ slug: university.slug }));
 }
 
-export async function generateMetadata({ params }: UniversityPageProps) {
+export async function generateMetadata({ params, searchParams }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
@@ -106,6 +115,7 @@ export async function generateMetadata({ params }: UniversityPageProps) {
     title,
     description,
     alternates,
+    ...(isPolicyReferencePreview(slug, (await searchParams)?.layout) ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       title,
       description,
@@ -168,7 +178,8 @@ export default async function UniversityPage({
     isReviewedClaim(claim.reviewState)
   );
   const strongSnapshot = isStrongStudentSnapshot(loadedSnapshot);
-  const role = normalizeStudentSnapshotRole((await searchParams)?.for);
+  const pageQuery = await searchParams;
+  const role = isStudentOnlyPolicyPage(slug) ? "student" : normalizeStudentSnapshotRole(pageQuery?.for);
   const citationReadySummary = buildCitationSummary(
     displayName,
     publicSummary,
@@ -185,12 +196,23 @@ export default async function UniversityPage({
     pilotContent?.claimsSummary && !strongSnapshot && hasCurrentIndexRecoveryBasis(slug, publicSummary.claims)
       ? pilotContent.claimsSummary
       : undefined;
+  const isPublished = isPublishedV4University(slug);
+  const isPreview = isPolicyReferencePreview(slug, pageQuery?.layout);
   const policyScene = getPolicyScenePilot(
     slug,
     publicSummary.claims,
     strongSnapshot,
-    Boolean(pilotClaimsSummary)
+    Boolean(pilotClaimsSummary),
+    { isPreview: isPublished || isPreview }
   );
+  const compactPolicyPilot = Boolean(policyScene?.quickGuide);
+  const referencePreview = Boolean(
+    policyScene?.quickGuide &&
+    (strongSnapshot || pilotClaimsSummary || policyScene?.claimsOnly || Boolean(policyScene?.snapshotNotice)) &&
+    (isPublished || isPreview)
+  );
+  const referenceUi = (value: string) => referencePreview ? translatePolicyReferenceUi(value, locale) : value;
+  const referenceScene = referencePreview && policyScene ? preparePolicyReferenceScene(policyScene) : policyScene;
   const pilotSeoDescription = pilotSlug
     ? buildIndexRecoveryDescription({
         slug,
@@ -202,7 +224,7 @@ export default async function UniversityPage({
         officialSourceCount: publicSummary.officialSources.length
       })
     : undefined;
-  const claimGroups = pilotContent
+  const claimGroups = (pilotContent || policyScene?.studentFirst)
     ? strongSnapshot
       ? groupReviewedClaimsBySnapshotDimensions(
           reviewedClaims,
@@ -223,7 +245,7 @@ export default async function UniversityPage({
     : publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt;
 
   return (
-    <main className="page-shell page-shell--wide">
+    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-policy-layout={referencePreview ? "reference-v4" : undefined}>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -259,14 +281,18 @@ export default async function UniversityPage({
         }}
       />
 
+      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot}>
       <EntityHeader
         eyebrow={`${university.region}, ${university.country}`}
         metadata={
           <>
-            <MetaLabel label="Ranking">
-              {formatRanking(university.rankings)}
-            </MetaLabel>
-            <MetaLabel label="Updated">
+            {referencePreview ? <MetaLabel label={referenceUi("Review")}>{referenceUi(formatReviewState(publicSummary.reviewState))}</MetaLabel> : null}
+            {compactPolicyPilot ? null : (
+              <MetaLabel label="Ranking">
+                {formatRanking(university.rankings)}
+              </MetaLabel>
+            )}
+            <MetaLabel label={referenceUi("Updated")}>
               {formatDate(
                 publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt,
                 locale
@@ -277,7 +303,9 @@ export default async function UniversityPage({
         title={<span data-i18n="preserve">{displayName}</span>}
       />
 
-      {policyScene ? <PolicySceneHero scene={policyScene} /> : null}
+      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} /> : <PolicySceneHero scene={policyScene} /> : null}
+      {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
+      {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
       {strongSnapshot ? (
         <StudentPolicySnapshot
@@ -285,21 +313,23 @@ export default async function UniversityPage({
           entitySlug={slug}
           locale={locale}
           role={role}
+          scene={referenceScene}
           snapshot={loadedSnapshot.snapshot}
+          guidanceInHero={referencePreview}
         />
-      ) : (
-        <NoReviewedSnapshotState />
-      )}
+      ) : null}
+      {policyScene?.quickGuide && !strongSnapshot ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
+      {referencePreview ? <PolicyReferenceInteractions /> : compactPolicyPilot ? <PolicyRecordHashReveal /> : null}
 
-      <section className="student-record-section" id="claims">
+      <section className={`student-record-section${compactPolicyPilot ? " student-record-section--compact" : ""}`} id="claims">
         <div className="section-heading">
           <div>
             <p className="student-policy__eyebrow">Reviewed record</p>
-            <h2>Reviewed claims</h2>
+            <h2>{referenceUi("Reviewed claims")}</h2>
           </div>
-          <p>{reviewedClaims.length} reviewed claim{reviewedClaims.length === 1 ? "" : "s"}</p>
+          <p>{referenceUi(`${reviewedClaims.length} reviewed claim${reviewedClaims.length === 1 ? "" : "s"}`)}</p>
         </div>
-        {pilotClaimsSummary ? (
+        {pilotClaimsSummary && !compactPolicyPilot ? (
           <div className="index-recovery-summary">
             <p>{pilotClaimsSummary.summary}</p>
             <p className="muted">
@@ -310,12 +340,20 @@ export default async function UniversityPage({
             </p>
           </div>
         ) : null}
-        {reviewedClaims.length ? (
+        {policyScene?.sourceUpdate ? <aside id="current-source-supplement" className="policy-source-update" aria-label="Current official source supplement">
+        <p>{policyScene.sourceUpdate.text}</p>
+        <a href={policyScene.sourceUpdate.href} target="_blank" rel="noopener noreferrer">Read the current official source →</a>
+      </aside> : null}
+      {reviewedClaims.length ? (
           claimGroups ? (
             <UniversityClaimGroups
               entitySlug={slug}
               groups={claimGroups}
               locale={locale}
+              scene={compactPolicyPilot ? undefined : policyScene}
+              role={role}
+              collapsible={compactPolicyPilot}
+              localizeUi={referencePreview}
             />
           ) : (
             <div className="claim-list">
@@ -335,72 +373,46 @@ export default async function UniversityPage({
         )}
       </section>
 
-      <section className="student-record-section" id="sources">
+      <section className={`student-record-section${compactPolicyPilot ? " student-record-section--compact" : ""}`} id="sources">
         <div className="section-heading">
           <div>
             <p className="student-policy__eyebrow">Source record</p>
-            <h2>Official sources</h2>
+            <h2>{referenceUi("Official sources")}</h2>
           </div>
-          <p>{publicSummary.officialSources.length} source{publicSummary.officialSources.length === 1 ? "" : "s"}</p>
+          <p>{referenceUi(`${publicSummary.officialSources.length} source${publicSummary.officialSources.length === 1 ? "" : "s"}`)}</p>
         </div>
-        <div className="student-source-attribution-list">
-          {publicSummary.officialSources.map((source) => (
-            <article
-              className="student-source-attribution"
-              key={`${source.sourceUrl}:${source.snapshotHash}`}
-            >
-              <div>
-                <h3>{source.citationTitle}</h3>
-                <p className="muted">{source.publisher ?? "Official university source"}</p>
-              </div>
-              <dl>
-                <div>
-                  <dt>Source URL</dt>
-                  <dd>
-                    <a
-                      data-analytics-entity-slug={slug}
-                      data-analytics-event="official_source_click"
-                      data-analytics-source-domain={getSourceDomain(source.sourceUrl)}
-                      href={source.sourceUrl}
-                    >
-                      {source.sourceUrl}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt>Snapshot hash</dt>
-                  <dd className="hash-value" title={source.snapshotHash}>
-                    {formatSnapshotHash(source.snapshotHash)}
-                  </dd>
-                </div>
-              </dl>
-            </article>
-          ))}
-        </div>
+        {compactPolicyPilot ? (
+          <details className="policy-record-sources">
+            <summary>{referenceUi("Open official source list")} <span aria-hidden="true">⌄</span></summary>
+            <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={referencePreview} />
+          </details>
+        ) : (
+          <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={referencePreview} />
+        )}
       </section>
 
       {relatedUniversities?.length ? (
-        <RelatedUniversities universities={relatedUniversities} />
+        <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi={referencePreview} />
       ) : null}
 
       <section className="student-record-info" id="record-info">
         <details>
-          <summary>Record information, JSON &amp; citation</summary>
+          <summary>{referenceUi("Record information, JSON & citation")}</summary>
           <div className="student-record-info__body">
             <div className="tag-row" id="snapshot-scope">
-              <MetaLabel label="Review">
-                {formatReviewState(publicSummary.reviewState)}
+              <MetaLabel label={referenceUi("Review")}>
+                {referenceUi(formatReviewState(publicSummary.reviewState))}
               </MetaLabel>
-              <MetaLabel label="Confidence">
+              <MetaLabel label={referenceUi("Confidence")}>
                 {publicSummary.confidence === undefined
                   ? "Not listed"
                   : `${Math.round(publicSummary.confidence * 100)}%`}
               </MetaLabel>
-              <MetaLabel label="Snapshot status">
-                {loadedSnapshot?.validation.effectiveStatus ?? "Not published"}
+              <MetaLabel label={referenceUi("Snapshot status")}>
+                {referenceUi(loadedSnapshot?.validation.effectiveStatus ?? "Not published")}
               </MetaLabel>
               {loadedSnapshot ? (
-                <MetaLabel label="Snapshot hash">
+                <MetaLabel label={referenceUi("Snapshot hash")}>
                   <span
                     className="hash-value"
                     title={loadedSnapshot.snapshot.basisFingerprint}
@@ -409,13 +421,13 @@ export default async function UniversityPage({
                   </span>
                 </MetaLabel>
               ) : null}
-              <MetaLabel label="JSON">
+              <MetaLabel label={referenceUi("JSON")}>
                 <a
                   data-analytics-entity-slug={slug}
                   data-analytics-event="record_public_json_click"
                   href={publicJsonUrl}
                 >
-                  Public JSON
+                  {referenceUi("Public JSON")}
                 </a>
               </MetaLabel>
             </div>
@@ -431,6 +443,8 @@ export default async function UniversityPage({
           </div>
         </details>
       </section>
+      {referencePreview ? <p className="policy-reference-print-note">Saved from University AI Policy Tracker. This record summarizes the cited sources; it is not an official university statement or assessment permission. Source and review dates are listed above. Hashes identify retained content, not authorization.</p> : null}
+      </PolicyReferenceLayout>
     </main>
   );
 }
@@ -452,6 +466,56 @@ async function redirectAliasSlug(
 
 function isReviewedClaim(reviewState: string): boolean {
   return reviewState === "agent_reviewed" || reviewState === "human_reviewed";
+}
+
+function OfficialSourceAttributionList({
+  sources,
+  slug,
+  locale = "en",
+  localizeUi = false
+}: {
+  sources: PublicUniversitySummary["officialSources"];
+  slug: string;
+  locale?: import("@/lib/i18n").SupportedLocale;
+  localizeUi?: boolean;
+}) {
+  const t = (value: string) => localizeUi ? translatePolicyReferenceUi(value, locale) : value;
+  return (
+    <div className="student-source-attribution-list">
+      {sources.map((source) => (
+        <article
+          className="student-source-attribution"
+          key={`${source.sourceUrl}:${source.snapshotHash}`}
+        >
+          <div>
+            <h3>{source.citationTitle}</h3>
+            <p className="muted">{source.publisher ?? "Official university source"}</p>
+          </div>
+          <dl>
+            <div>
+              <dt>{t("Source URL")}</dt>
+              <dd>
+                <a
+                  data-analytics-entity-slug={slug}
+                  data-analytics-event="official_source_click"
+                  data-analytics-source-domain={getSourceDomain(source.sourceUrl)}
+                  href={source.sourceUrl}
+                >
+                  {source.sourceUrl}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>{t("Snapshot hash")}</dt>
+              <dd className="hash-value" title={source.snapshotHash}>
+                {formatSnapshotHash(source.snapshotHash)}
+              </dd>
+            </div>
+          </dl>
+        </article>
+      ))}
+    </div>
+  );
 }
 
 function formatRanking(

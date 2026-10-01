@@ -27,9 +27,11 @@ import { getLoadedPolicySnapshotBySlug } from "../apps/web/lib/policy-snapshots"
 import { getStagedCatalogUniversities, getStagedPublicSummaries } from "../apps/web/lib/staged-public-data";
 import { UniversityClaimGroups } from "../apps/web/components/university-claim-groups";
 import { RelatedUniversities } from "../apps/web/components/related-universities";
-import { STUDENT_SNAPSHOT_DIMENSION_ORDER } from "../apps/web/components/student-policy-snapshot";
+import { STUDENT_SNAPSHOT_DIMENSION_ORDER, StudentPolicySnapshot } from "../apps/web/components/student-policy-snapshot";
 import { getPolicyScenePilot } from "../apps/web/lib/policy-scene-pilot";
 import { PolicySceneHero } from "../apps/web/components/policy-scene-hero";
+import { PolicySceneStory, policySceneCardId } from "../apps/web/components/policy-scene-story";
+import { PolicyQuickGuide, PolicySceneGallery } from "../apps/web/components/policy-quick-guide";
 import type { PolicyClaim } from "@uapt/shared";
 
 function reviewedClaimsOf(claims: PolicyClaim[]): PolicyClaim[] {
@@ -40,9 +42,10 @@ function reviewedClaimsOf(claims: PolicyClaim[]): PolicyClaim[] {
   );
 }
 
-test("the pilot allowlist is exactly the ten reviewed slugs", () => {
-  assert.equal(INDEX_RECOVERY_PILOT_SLUGS.length, 10);
+test("the illustrated cohort is exactly twenty reviewed slugs", () => {
+  assert.equal(INDEX_RECOVERY_PILOT_SLUGS.length, 20);
   assert.equal(isIndexRecoveryPilotSlug("university-of-oxford"), true);
+  assert.equal(isIndexRecoveryPilotSlug("university-of-surrey"), true);
   assert.equal(isIndexRecoveryPilotSlug("university-of-cambridge"), false);
   assert.equal(isIndexRecoveryPilotSlug("the-university-of-oxford"), false);
 
@@ -64,36 +67,46 @@ test("the pilot allowlist is exactly the ten reviewed slugs", () => {
   );
 });
 
-test("scene pilot stays limited to two evidence-backed states", async () => {
+test("scene cohort stays limited to twenty evidence-backed states", async () => {
+  const strongSlugs = [
+    "harvard-university", "unsw-sydney", "university-of-sydney",
+    "national-university-of-singapore", "university-of-oxford", "utrecht-university",
+    "imperial-college-london", "adelaide-university", "de-la-salle-university", "ubc",
+    "university-of-auckland"
+  ];
+  const claimsSummarySlugs = [
+    "university-of-bristol", "manchester", "edinburgh", "deakin-university", "university-of-surrey",
+    "university-of-queensland", "university-of-johannesburg", "anu", "durham-university"
+  ];
+  assert.deepEqual(new Set([...strongSlugs, ...claimsSummarySlugs]), new Set(INDEX_RECOVERY_PILOT_SLUGS));
+
+  for (const slug of [...strongSlugs, ...claimsSummarySlugs]) {
+    const summary = await getStagedPublicSummaryBySlug(slug);
+    assert(summary);
+    const hasStrongSnapshot = strongSlugs.includes(slug);
+    const scene = getPolicyScenePilot(slug, summary.claims, hasStrongSnapshot, !hasStrongSnapshot);
+    assert(scene, slug);
+    const html = renderToStaticMarkup(React.createElement(PolicySceneHero, { scene }));
+    assert.match(html, new RegExp(`data-policy-scene="${slug}"`));
+    assert.match(html, hasStrongSnapshot ? /href="#student-policy-heading"/ : slug === "university-of-queensland" ? /href="https:\/\/itali\.uq\.edu\.au\/node\/11633"/ : /href="#claims"/);
+    if (hasStrongSnapshot) {
+      assert.doesNotMatch(html, /No reviewed student policy snapshot/);
+    } else if (["university-of-queensland", "university-of-bristol", "durham-university"].includes(slug)) {
+      assert.doesNotMatch(html, /No reviewed student policy snapshot/);
+    } else {
+      assert.match(html, /No reviewed student policy snapshot has been published yet/);
+    }
+    assert.equal(getPolicyScenePilot(slug, summary.claims, !hasStrongSnapshot, hasStrongSnapshot), undefined);
+    assert.equal(getPolicyScenePilot(slug, [], hasStrongSnapshot, !hasStrongSnapshot), undefined);
+  }
+
   const harvard = await getStagedPublicSummaryBySlug("harvard-university");
-  const manchester = await getStagedPublicSummaryBySlug("manchester");
   assert(harvard);
-  assert(manchester);
-
-  const harvardScene = getPolicyScenePilot(
-    "harvard-university", harvard.claims, true, false
-  );
-  const manchesterScene = getPolicyScenePilot(
-    "manchester", manchester.claims, false, true
-  );
-  assert(harvardScene);
-  assert(manchesterScene);
-  assert.equal(getPolicyScenePilot("harvard-university", harvard.claims, false, false), undefined);
-  assert.equal(getPolicyScenePilot("manchester", manchester.claims, true, true), undefined);
-  assert.equal(getPolicyScenePilot("manchester", manchester.claims, false, false), undefined);
-  assert.equal(getPolicyScenePilot("university-of-oxford", harvard.claims, true, true), undefined);
-  assert.equal(getPolicyScenePilot("harvard-university", [], true, false), undefined);
-
-  const harvardHtml = renderToStaticMarkup(React.createElement(PolicySceneHero, { scene: harvardScene }));
-  const manchesterHtml = renderToStaticMarkup(React.createElement(PolicySceneHero, { scene: manchesterScene }));
-  assert.match(harvardHtml, /href="#student-policy-heading"/);
-  assert.match(manchesterHtml, /href="#claims"/);
-  assert.match(manchesterHtml, /No reviewed student policy snapshot has been published yet/);
-  assert.doesNotMatch(harvardHtml, /No reviewed student policy snapshot/);
+  assert.equal(getPolicyScenePilot("university-of-cambridge", harvard.claims, true, false), undefined);
 });
 
 test("the pilot content version is a fixed traceable date", () => {
-  assert.equal(INDEX_RECOVERY_CONTENT_VERSION, "2026-09-13");
+  assert.equal(INDEX_RECOVERY_CONTENT_VERSION, "2026-09-27");
   assert.equal(
     Number.isNaN(new Date(INDEX_RECOVERY_CONTENT_VERSION).getTime()),
     false
@@ -217,6 +230,34 @@ test("pilot hreflang declares only reviewed locales; other paths unchanged", () 
     getIndexRecoveryPilotLocaleRestriction("university-of-cambridge"),
     undefined
   );
+
+  // The 10 extension universities retain full upstream multilingual hreflang eligibility
+  const extensionSlugs = [
+    "university-of-surrey",
+    "imperial-college-london",
+    "adelaide-university",
+    "de-la-salle-university",
+    "ubc",
+    "university-of-queensland",
+    "university-of-johannesburg",
+    "anu",
+    "durham-university",
+    "university-of-auckland"
+  ] as const;
+
+  for (const slug of extensionSlugs) {
+    assert.equal(
+      getIndexRecoveryPilotLocaleRestriction(slug),
+      undefined,
+      `${slug} must not be restricted to English-only hreflang`
+    );
+    const alternates = getLocalizedAlternates(`/universities/${slug}`, "en");
+    assert.deepEqual(
+      Object.keys(alternates.languages ?? {}),
+      ["en", "zh", "fr", "pl", "es", "nl", "ms", "x-default"],
+      `${slug} must retain full 7-locale hreflang alternates`
+    );
+  }
 });
 
 test("snapshot-dimension grouping keeps every reviewed claim exactly once", async () => {
@@ -422,9 +463,9 @@ test("Bristol metadata retains the assessment permission exception", () => {
 });
 
 test("content dates use substantive changes and reviewed snapshot generation", () => {
-  assert.equal(indexRecoveryContentDate([undefined, "invalid", "2026-07-01"]).toISOString(), "2026-09-13T00:00:00.000Z");
-  assert.equal(indexRecoveryContentDate(["2026-09-20T01:00:00Z"]).toISOString(), "2026-09-20T01:00:00.000Z");
-  assert.equal(indexRecoveryContentDate(["2026-09-20"], "2026-09-22T01:00:00Z").toISOString(), "2026-09-22T01:00:00.000Z");
+  assert.equal(indexRecoveryContentDate([undefined, "invalid", "2026-07-01"]).toISOString(), "2026-09-27T00:00:00.000Z");
+  assert.equal(indexRecoveryContentDate(["2026-09-20T01:00:00Z"]).toISOString(), "2026-09-27T00:00:00.000Z");
+  assert.equal(indexRecoveryContentDate(["2026-09-20"], "2026-09-28T01:00:00Z").toISOString(), "2026-09-28T01:00:00.000Z");
 });
 
 
@@ -432,6 +473,140 @@ test("check-only updates never refresh pilot content dates", () => {
   const before = [{lastChangedAt: "2026-07-01", lastCheckedAt: "2026-09-01"}];
   const after = [{lastChangedAt: "2026-07-01", lastCheckedAt: "2026-10-01"}];
   assert.equal(indexRecoveryRecordDate(before).toISOString(), indexRecoveryRecordDate(after).toISOString());
-  assert.equal(indexRecoveryRecordDate([{lastCheckedAt: "2026-10-01"}]).toISOString(), "2026-09-13T00:00:00.000Z");
-  assert.equal(indexRecoveryRecordDate([{lastChangedAt: "2026-09-25", lastCheckedAt: "2026-10-01"}]).toISOString(), "2026-09-25T00:00:00.000Z");
+  assert.equal(indexRecoveryRecordDate([{lastCheckedAt: "2026-10-01"}]).toISOString(), "2026-09-27T00:00:00.000Z");
+  assert.equal(indexRecoveryRecordDate([{lastChangedAt: "2026-09-25", lastCheckedAt: "2026-10-01"}]).toISOString(), "2026-09-27T00:00:00.000Z");
+});
+
+test("pilot pages have evidence-linked images and disclose snapshot-less scope", async () => {
+  const noSnapshotSlugs = new Set(["university-of-bristol", "manchester", "edinburgh", "deakin-university", "university-of-surrey", "university-of-queensland", "university-of-johannesburg", "anu", "durham-university"]);
+  const expectedCardCounts: Record<string, number> = {
+    "harvard-university": 2,
+    "unsw-sydney": 4,
+    "university-of-sydney": 3,
+    "national-university-of-singapore": 2,
+    "university-of-oxford": 4,
+    "utrecht-university": 2,
+    "university-of-bristol": 3,
+    manchester: 4,
+    edinburgh: 4,
+    "deakin-university": 3,
+    "university-of-surrey": 2,
+    "imperial-college-london": 3,
+    "adelaide-university": 3,
+    "de-la-salle-university": 3,
+    ubc: 4,
+    "university-of-queensland": 2,
+    "university-of-johannesburg": 2,
+    anu: 4,
+    "durham-university": 3,
+    "university-of-auckland": 3
+  };
+  for (const slug of INDEX_RECOVERY_PILOT_SLUGS) {
+    const summary = await getStagedPublicSummaryBySlug(slug);
+    assert(summary);
+    const strong = !noSnapshotSlugs.has(slug);
+    const scene = getPolicyScenePilot(slug, summary.claims, strong, !strong);
+    assert(scene);
+    assert.equal(scene.storyCards?.length, expectedCardCounts[slug], slug);
+    assert.equal(scene.scenarioChecks, undefined);
+    assert.equal(Boolean(scene.quickGuide), true, slug);
+    const quickGuideImages = scene.quickGuide
+      ? [scene.quickGuide.do.artworkSrc, scene.quickGuide.dont.artworkSrc]
+      : [];
+    for (const imagePath of [scene.artworkSrc, ...scene.storyCards!.map((card) => card.artworkSrc), ...quickGuideImages]) {
+      const bytes = await readFile(path.join(process.cwd(), "apps/web/public", imagePath));
+      assert.equal(bytes[0], 0xff, imagePath);
+      assert.equal(bytes[1], 0xd8, imagePath);
+      assert(bytes.length < 700_000, `${imagePath} is too large for the pilot`);
+    }
+    const storyHtml = renderToStaticMarkup(React.createElement(PolicySceneStory, { scene }));
+    assert.match(storyHtml, /aria-label="Illustrated policy guide"/);
+    const reviewedClaims = reviewedClaimsOf(summary.claims);
+    const loaded = strong ? await getLoadedPolicySnapshotBySlug(slug) : undefined;
+    const policyHtml = strong && loaded
+      ? renderToStaticMarkup(React.createElement(StudentPolicySnapshot, {
+          claims: reviewedClaims,
+          entitySlug: slug,
+          role: "student",
+          scene,
+          snapshot: loaded.snapshot
+        }))
+      : [
+          scene.quickGuide ? renderToStaticMarkup(React.createElement(PolicySceneGallery, { scene })) : "",
+          renderToStaticMarkup(React.createElement(UniversityClaimGroups, {
+            entitySlug: slug,
+            groups: groupReviewedClaimsByClaimType(reviewedClaims),
+            locale: "en",
+            scene: scene.quickGuide ? undefined : scene,
+            collapsible: Boolean(scene.quickGuide)
+          }))
+        ].join("");
+    for (const card of scene.storyCards!) {
+      if (card.evidenceHref.startsWith("https://")) {
+        assert.match(card.evidenceHref, /^https:\/\/(www\.uu\.nl|ctlt\.nus\.edu\.sg|itali\.uq\.edu\.au|registrar\.gse\.harvard\.edu|old\.dlsu\.edu\.ph|www\.bristol\.ac\.uk|www\.auckland\.ac\.nz)\//);
+        if (strong) assert(card.placement && loaded?.snapshot.dimensions.some((dimension) => dimension.key === card.placement), `${slug}: external source card has no snapshot placement`);
+      } else {
+        const target = card.evidenceHref.slice(1);
+        if (strong) assert(loaded?.snapshot.dimensions.some((dimension) => `snapshot-${dimension.key}` === target), `${slug}: ${target}`);
+        else assert(reviewedClaims.some((claim) => `claim-${claim.id}` === target), `${slug}: ${target}`);
+      }
+      assert(policyHtml.includes(`id="${policySceneCardId(card)}"`), `${slug}: card missing from policy section`);
+      assert(policyHtml.includes(`href="${card.evidenceHref}"`), `${slug}: evidence link missing`);
+      if (card.audience !== "research") assert(storyHtml.includes(`#${policySceneCardId(card)}`));
+    }
+    if (strong) {
+      assert(!scene.snapshotNotice);
+    } else if (["university-of-queensland", "university-of-bristol", "durham-university"].includes(slug)) {
+      assert.equal(scene.claimsOnly, true);
+      assert.equal(scene.snapshotNotice, undefined);
+      assert.match(scene.quickGuide?.scopeNote ?? "", /without a complete reviewed student snapshot|not a complete reviewed student snapshot|no reviewed student-policy snapshot/);
+    } else {
+      assert.equal(scene.snapshotNotice, "No reviewed student policy snapshot has been published yet.");
+      const heroHtml = renderToStaticMarkup(React.createElement(PolicySceneHero, { scene }));
+      assert.match(heroHtml, /No reviewed student policy snapshot has been published yet/);
+    }
+    if (scene.quickGuide) {
+      const guideHtml = strong ? policyHtml : renderToStaticMarkup(React.createElement(PolicyQuickGuide, { scene }));
+      assert.match(guideHtml, /Policy at a glance/);
+      assert.match(guideHtml, /href="#claims"/);
+      assert.match(guideHtml, /href="#sources"/);
+      for (const panel of [scene.quickGuide.do, scene.quickGuide.dont]) {
+        assert.equal(panel.checks.length, 3);
+        for (const check of panel.checks) {
+          if (check.evidenceHref.startsWith("https://")) {
+            assert.match(check.evidenceHref, /^https:\/\//);
+          } else {
+            const target = check.evidenceHref.slice(1);
+            if (strong) assert(loaded?.snapshot.dimensions.some((dimension) => `snapshot-${dimension.key}` === target), `${slug}: ${target}`);
+            else assert(reviewedClaims.some((claim) => `claim-${claim.id}` === target), `${slug}: ${target}`);
+          }
+          assert(guideHtml.includes(`href="${check.evidenceHref}"`));
+        }
+      }
+      if (!strong) assert.match(policyHtml, /<details class="claim-dimension-group__details"/);
+    }
+  }
+  const harvard = await getStagedPublicSummaryBySlug("harvard-university");
+  assert(harvard);
+  const harvardScene = getPolicyScenePilot("harvard-university", harvard.claims, true, false);
+  assert.equal(harvardScene?.storyCards?.[0]?.placement, "coursework");
+  assert.equal(harvardScene?.storyCards?.[0]?.evidenceHref, "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy");
+  assert(harvardScene?.storyCards?.some((card) => card.artworkSrc === "/assets/policy-scenes/harvard-hgse.jpg"));
+  const unsw = await getStagedPublicSummaryBySlug("unsw-sydney");
+  assert(unsw);
+  const unswScene = getPolicyScenePilot("unsw-sydney", unsw.claims, true, false);
+  assert(unswScene?.storyCards?.some((card) => card.evidenceHref === "#snapshot-approved_tools"));
+  const manchesterForStudent = await getStagedPublicSummaryBySlug("manchester");
+  assert(manchesterForStudent);
+  assert(manchesterForStudent.claims.some((claim) => claim.id === "CL-010" && (claim.reviewState === "agent_reviewed" || claim.reviewState === "human_reviewed")));
+  const manchesterStudentScene = getPolicyScenePilot("manchester", manchesterForStudent.claims, false, true);
+  assert(manchesterStudentScene?.storyCards?.some((card) => card.evidenceHref === "#claim-CL-010"));
+  const oxford = await getStagedPublicSummaryBySlug("university-of-oxford");
+  assert(oxford);
+  const oxfordScene = getPolicyScenePilot("university-of-oxford", oxford.claims, true, false);
+  assert(oxfordScene?.storyCards?.some((card) => card.evidenceHref === "#snapshot-research_publication"));
+  const edinburgh = await getStagedPublicSummaryBySlug("edinburgh");
+  assert(edinburgh);
+  const edinburghScene = getPolicyScenePilot("edinburgh", edinburgh.claims, false, true);
+  assert(edinburghScene?.storyCards?.some((card) => card.evidenceHref === "#claim-claim-edinburgh-006"));
 });

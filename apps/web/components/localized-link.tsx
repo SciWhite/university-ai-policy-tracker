@@ -17,6 +17,7 @@ type LocalizedLinkProps = ComponentProps<typeof Link> & {
 export function LocalizedLink({
   href,
   localeOverride,
+  locale: _legacyLocale,
   prefetch = false,
   ...props
 }: LocalizedLinkProps) {

@@ -9,7 +9,6 @@ import { SearchAutocomplete } from "@/components/search-autocomplete";
 import { StateLabel } from "@/components/state-label";
 import { searchIndexRecords, getSearchIndexRecords } from "@/lib/entity-search";
 import { getLocalizedInstitutionName } from "@/lib/institution-localization";
-import { getChangeRecords } from "@/lib/change-records";
 import { getPolicyAnalysisProfiles } from "@/lib/policy-analysis";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
@@ -18,6 +17,11 @@ import { getBrowseEntryGroupsCopy, getPageCopy } from "@/lib/page-copy";
 import { getStaticUniversityIndexRecords } from "@/lib/university-index-records";
 import { IntentFlow } from "@/components/intent-flow";
 import { getSiteOgImageUrl } from "@/components/site-opengraph";
+
+import { isHomeV4Preview } from "@/lib/home-v4-preview";
+import { getHomeV4Copy } from "@/lib/home-v4-copy";
+import { getVerifiedHomeV4Guides } from "@/lib/home-v4-guides";
+import { HomeV4View } from "@/components/home-v4-view";
 
 const quickQueries = [
   "disclosure",
@@ -35,25 +39,53 @@ interface HomePageProps {
   params?: Promise<{
     locale?: string;
   }>;
+  searchParams?: Promise<{
+    [key: string]: string | string[] | undefined;
+  }>;
 }
 
 export async function generateMetadata({
-  params
+  params,
+  searchParams
 }: HomePageProps = {}): Promise<Metadata> {
   const locale = normalizeLocale((await params)?.locale);
-  const copy = getPageCopy(locale).home;
-  const alternates = getLocalizedAlternates("/", locale);
-  const canonical = String(alternates.canonical);
-  const universities = await getStaticUniversityIndexRecords();
-  const dynamicTitle = copy.metadataTitle(formatNumber(universities.length, locale));
+  const layout = (await searchParams)?.layout;
 
-  return {
-    title: dynamicTitle,
-    description: copy.description,
-    alternates,
-    openGraph: {
+  if (layout === "legacy") {
+    const copy = getPageCopy(locale).home;
+    const alternates = getLocalizedAlternates("/", locale);
+    const canonical = String(alternates.canonical);
+    const universities = await getStaticUniversityIndexRecords();
+    const dynamicTitle = copy.metadataTitle(formatNumber(universities.length, locale));
+
+    return {
       title: dynamicTitle,
       description: copy.description,
+      alternates,
+      openGraph: {
+        title: dynamicTitle,
+        description: copy.description,
+        images: [getSiteOgImageUrl(locale)],
+        url: canonical,
+        type: "website"
+      }
+    };
+  }
+
+  // Published Home V4 is now DEFAULT in production and development
+  const v4Copy = getHomeV4Copy(locale);
+  const alternates = getLocalizedAlternates("/", locale);
+  const canonical = String(alternates.canonical);
+  const isPreview = isHomeV4Preview(layout);
+
+  return {
+    title: v4Copy.metaTitle,
+    description: v4Copy.metaDescription,
+    alternates,
+    ...(isPreview ? { robots: { index: false, follow: false } } : {}),
+    openGraph: {
+      title: v4Copy.metaTitle,
+      description: v4Copy.metaDescription,
       images: [getSiteOgImageUrl(locale)],
       url: canonical,
       type: "website"
@@ -61,16 +93,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function HomePage({ params }: HomePageProps) {
+export default async function HomePage({ params, searchParams }: HomePageProps) {
   const locale = normalizeLocale((await params)?.locale);
-  const copy = getPageCopy(locale).home;
-  const [universities, analysisProfiles, changeRecords, searchRecords] =
-    await Promise.all([
-      getStaticUniversityIndexRecords(),
-      getPolicyAnalysisProfiles(),
-      getChangeRecords(),
-      getSearchIndexRecords()
-    ]);
+  const layout = (await searchParams)?.layout;
+
+  const universities = await getStaticUniversityIndexRecords();
   const claimCount = universities.reduce(
     (total, university) => total + university.claimCount,
     0
@@ -79,7 +106,37 @@ export default async function HomePage({ params }: HomePageProps) {
     (total, university) => total + university.sourceCount,
     0
   );
-  const recentRecords = changeRecords.slice(0, 5);
+  // The homepage needs check dates, not every release's evidence/text diff.
+  const recentRecords = universities
+    .filter((record) => record.lastCheckedAt && record.reviewedClaimCount > 0)
+    .sort((a, b) => (b.lastCheckedAt ?? "").localeCompare(a.lastCheckedAt ?? "") || a.slug.localeCompare(b.slug))
+    .slice(0, 5);
+
+  if (layout !== "legacy") {
+    const verifiedGuides = await getVerifiedHomeV4Guides();
+    const eligibleGuideSlugs = verifiedGuides.filter((g) => g.isEligible).map((g) => g.slug);
+    const isPreview = isHomeV4Preview(layout);
+    return (
+      <main className="page-shell home-v4-shell page-shell--wide">
+        <HomeV4View
+          locale={locale}
+          universities={universities}
+          claimCount={claimCount}
+          sourceCount={sourceCount}
+          recentRecords={recentRecords}
+          eligibleGuideSlugs={eligibleGuideSlugs}
+          isPreview={isPreview}
+        />
+      </main>
+    );
+  }
+
+  const [analysisProfiles, searchRecords] = await Promise.all([
+    getPolicyAnalysisProfiles(),
+    getSearchIndexRecords()
+  ]);
+
+  const copy = getPageCopy(locale).home;
   const suggestedRecords = searchIndexRecords(searchRecords, sampleQuery, {
     limit: 5
   });
@@ -190,11 +247,23 @@ export default async function HomePage({ params }: HomePageProps) {
               </Link>
             ))}
           </div>
+          {locale === "en" ? <nav aria-label="Illustrated student guides" className="home-student-guides">
+            <p>Start with a student guide</p>
+            <div>
+              <Link href="/universities/stanford-university">Stanford</Link>
+              <Link href="/universities/harvard-university">Harvard</Link>
+              <Link href="/universities/university-of-bristol">Bristol</Link>
+              <Link href="/universities/national-university-of-singapore">NUS</Link>
+              <Link href="/universities">Find your university →</Link>
+            </div>
+          </nav> : null}
+          <details className="home-data-links"><summary>{copy.publicJson} & API</summary>
           <div className="tag-row hero-meta">
             <MetaLabel label={copy.publicJson}>{universitiesJsonPath}</MetaLabel>
             <MetaLabel label={copy.searchApi}>{searchJsonPath}</MetaLabel>
             <MetaLabel label={copy.license}>CC-BY-4.0 metadata</MetaLabel>
           </div>
+          </details>
         </div>
         <aside className="search-hero__side" aria-label="Public dataset counts">
           <div>
@@ -249,7 +318,7 @@ export default async function HomePage({ params }: HomePageProps) {
               key={record.entitySlug}
               metadata={
                 <>
-                  <StateLabel reviewState={record.reviewState} />
+                  {record.reviewState ? <StateLabel reviewState={record.reviewState} /> : null}
                   <MetaLabel label={copy.claims}>{record.claimCount}</MetaLabel>
                   <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
                 </>
@@ -280,14 +349,14 @@ export default async function HomePage({ params }: HomePageProps) {
             <DataListRow
               actions={
                 <>
-                  <Link href={record.universityUrl}>{copy.record}</Link>
+                  <Link href={`/universities/${record.slug}`}>{copy.record}</Link>
                   <a href={record.publicJsonUrl}>JSON</a>
                 </>
               }
               key={record.slug}
               metadata={
                 <>
-                  <StateLabel reviewState={record.reviewState} />
+                  {record.reviewState ? <StateLabel reviewState={record.reviewState} /> : null}
                   <MetaLabel label={copy.claims}>{record.claimCount}</MetaLabel>
                   <MetaLabel label={copy.sources}>{record.sourceCount}</MetaLabel>
                 </>
@@ -297,11 +366,9 @@ export default async function HomePage({ params }: HomePageProps) {
                 {getLocalizedInstitutionName(record.slug, record.name, locale)}
               </div>
               <p>
-                {record.lastChangedAt
-                  ? `${copy.changed} ${formatDate(record.lastChangedAt, locale)}`
-                  : record.lastCheckedAt
-                    ? `${copy.checked} ${formatDate(record.lastCheckedAt, locale)}`
-                    : copy.noPublicFreshnessDate}
+                {record.lastCheckedAt
+                  ? `${copy.checked} ${formatDate(record.lastCheckedAt, locale)}`
+                  : copy.noPublicFreshnessDate}
               </p>
             </DataListRow>
           ))}

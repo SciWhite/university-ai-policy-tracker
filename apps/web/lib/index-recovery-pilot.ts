@@ -3,12 +3,14 @@ import { DEFAULT_LOCALE, getPathnameWithoutLocale, type SupportedLocale } from "
 /**
  * P0 Google index-recovery pilot (2026-09-12).
  *
- * Scope: a fixed allowlist of ten university detail pages receives
+ * Scope: a fixed allowlist of twenty university detail pages receives
  * content-expression and metadata recovery only. Non-pilot pages keep the
- * pre-existing templates exactly. The pilot deliberately mixes universities
+ * pre-existing templates exactly. The initial ten-page pilot mixes universities
  * with an effective `strong` student policy snapshot (Harvard, UNSW, Sydney,
  * NUS, Oxford, Utrecht) and universities with no published snapshot
- * (Bristol, Manchester, Edinburgh, Deakin).
+ * (Bristol, Manchester, Edinburgh, Deakin). The five-page V1-to-V3 extension
+ * adds four strong snapshots and a claims-only Surrey page. The next five
+ * add a strong Auckland snapshot and four claims-only records.
  *
  * Everything in this module is deterministic static data. No model calls and
  * no request-time generation: the curated summaries below were authored once
@@ -23,7 +25,7 @@ import { DEFAULT_LOCALE, getPathnameWithoutLocale, type SupportedLocale } from "
  *   for coursework or exams; local scope stays local.
  */
 
-export const INDEX_RECOVERY_CONTENT_VERSION = "2026-09-13";
+export const INDEX_RECOVERY_CONTENT_VERSION = "2026-09-27";
 
 export const INDEX_RECOVERY_PILOT_SLUGS = [
   "harvard-university",
@@ -35,7 +37,17 @@ export const INDEX_RECOVERY_PILOT_SLUGS = [
   "university-of-bristol",
   "manchester",
   "edinburgh",
-  "deakin-university"
+  "deakin-university",
+  "university-of-surrey",
+  "imperial-college-london",
+  "adelaide-university",
+  "de-la-salle-university",
+  "ubc",
+  "university-of-queensland",
+  "university-of-johannesburg",
+  "anu",
+  "durham-university",
+  "university-of-auckland"
 ] as const;
 
 export type IndexRecoveryPilotSlug = (typeof INDEX_RECOVERY_PILOT_SLUGS)[number];
@@ -52,7 +64,7 @@ export interface IndexRecoveryPilotContent {
   titleTheme: string;
   /**
    * Claims-derived summary. Only defined for pilots without a published
-   * snapshot (Bristol, Manchester, Edinburgh, Deakin).
+   * snapshot (Bristol, Manchester, Edinburgh, Deakin, Surrey).
    */
   claimsSummary?: IndexRecoveryClaimsSummary;
 }
@@ -155,6 +167,58 @@ export const indexRecoveryPilotContent: Record<
         "assessment development, and limits HDR thesis use to copyediting " +
         "and proofreading."
     }
+  },
+  "university-of-surrey": {
+    titleTheme: "assessment briefs and approved-tool data checks",
+    claimsSummary: {
+      summary:
+        "Surrey advises students to check the assessment brief or module leader before using generative AI for a task. Its GenAI procedure requires users to read the procedure and restricts personal, confidential, and commercially sensitive information to tools approved for that data. My AI Surrey is listed as a university service, but that listing does not decide permission for an assessment.",
+      metaDescription:
+        "Surrey students should check their assessment brief or module leader for task-specific AI use; protected data requires an appropriately approved tool. No reviewed student policy snapshot is published."
+    }
+  },
+  "imperial-college-london": {
+    titleTheme: "department assessment rules and AI acknowledgement"
+  },
+  "adelaide-university": {
+    titleTheme: "course, invigilated exam and acknowledgement rules"
+  },
+  "de-la-salle-university": {
+    titleTheme: "syllabus AI levels and written disclosure"
+  },
+  ubc: {
+    titleTheme: "express assessment permission and personal-data limits"
+  },
+  "university-of-queensland": {
+    titleTheme: "course-profile AI rules and acknowledgement",
+    claimsSummary: {
+      summary: "UQ course profiles and assessment directions set when and how AI may be used, including machine translation. Students must acknowledge AI use in assessment, including brainstorming, editing and proofreading; unattributed use or use against staff directions can be academic misconduct. UQ has disabled Turnitin's AI writing indicator since Semester 2, 2025.",
+      metaDescription: "UQ course profiles set task-specific AI rules, students must acknowledge AI use in assessment, and the Turnitin AI writing indicator has been disabled since Semester 2, 2025."
+    }
+  },
+  "university-of-johannesburg": {
+    titleTheme: "course rules and AI acknowledgement",
+    claimsSummary: {
+      summary: "University of Johannesburg students are directed to the applicable course, department, faculty and university AI rules before producing assignments. Its reviewed practice note says AI use should be acknowledged, and presenting AI-generated work as one's own is academic dishonesty. This is a summary of reviewed statements, not a complete student permission list.",
+      metaDescription: "UJ students should check course, department and faculty AI rules, acknowledge AI use, and not present AI-generated work as their own."
+    }
+  },
+  anu: {
+    titleTheme: "course-convener rules and Law School limits",
+    claimsSummary: {
+      summary: "ANU lets course conveners and colleges set AI requirements for individual assessments, so students should check class summaries and assessment outlines. Submitting AI-generated content as one's own breaches academic integrity. ANU Law School has narrower rules: AI drafting is prohibited for graded assignments, while permitted limited use must be declared in the first footnote. Personal information needs express consent before use with AI.",
+      metaDescription: "ANU assessment AI rules vary by course and college; AI-generated work must not be claimed as one's own. Law School drafting and disclosure rules are narrower, and personal information requires consent."
+    }
+  },
+  "durham-university": {
+    titleTheme: "four assessment tiers and Common Awards limits",
+    claimsSummary: {
+      summary: "Durham describes four assessment tiers: No GenAI Allowed, Selective, Allowed and Embedded. Students should use the tier and task instructions for their own assessment. The separate Common Awards rules require an AI declaration in summative assignments and prohibit presenting AI-generated substantive content as the student's own. Those Common Awards requirements are not a campus-wide rule for every module.",
+      metaDescription: "Durham uses four GenAI assessment tiers. Common Awards summative assignments have a separate AI declaration and substantive-content rule; check the tier for your own task."
+    }
+  },
+  "university-of-auckland": {
+    titleTheme: "Two-Lane assessments and Law School limits"
   }
 };
 
@@ -178,13 +242,34 @@ export function getIndexRecoveryPilotSlugFromPath(
   return slug && isIndexRecoveryPilotSlug(slug) ? slug : undefined;
 }
 
+/**
+ * Original 10-school SEO restriction cohort from upstream main.
+ * Preserved independently of the expanded 20 curated content/scene basis and 33 published V4 UI cohort.
+ */
+export const ORIGINAL_INDEX_RECOVERY_SEO_RESTRICTION_SLUGS = [
+  "harvard-university",
+  "unsw-sydney",
+  "university-of-sydney",
+  "national-university-of-singapore",
+  "university-of-oxford",
+  "utrecht-university",
+  "university-of-bristol",
+  "manchester",
+  "edinburgh",
+  "deakin-university"
+] as const;
+
+export function isOriginalIndexRecoverySeoRestrictionSlug(slug: string): boolean {
+  return (ORIGINAL_INDEX_RECOVERY_SEO_RESTRICTION_SLUGS as readonly string[]).includes(slug);
+}
+
 export function getIndexRecoveryPilotLocaleRestriction(
   slug: string | undefined
 ): readonly SupportedLocale[] | undefined {
   // University detail pages have not passed any translation review for their
   // substantive body (claims, evidence, snapshot prose stay English/original
-  // on every locale route), so pilot pages only declare the English alternate.
-  return slug && isIndexRecoveryPilotSlug(slug) ? [DEFAULT_LOCALE] : undefined;
+  // on every locale route), so original pilot pages only declare the English alternate.
+  return slug && isOriginalIndexRecoverySeoRestrictionSlug(slug) ? [DEFAULT_LOCALE] : undefined;
 }
 
 export interface IndexRecoveryDescriptionInput {
