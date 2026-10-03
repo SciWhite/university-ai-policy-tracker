@@ -12,3 +12,5 @@ export * from "./analysis";
 export * from "./source-diff-candidates";
 export * from "./tools";
 export * from "./policy-snapshot";
+
+export * from "./search-text";

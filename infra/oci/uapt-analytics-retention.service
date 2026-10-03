@@ -1,0 +1,16 @@
+[Unit]
+Description=Apply UAPT 13-month analytics retention
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=uapt
+Group=uapt
+WorkingDirectory=/srv/uapt/app
+EnvironmentFile=/srv/uapt/env/production.env
+Environment=PATH=/opt/node-v22/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/opt/node-v22/bin/pnpm exec tsx scripts/analytics-retention.ts --apply
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true

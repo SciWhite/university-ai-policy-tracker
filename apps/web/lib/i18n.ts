@@ -76,6 +76,7 @@ const uiStrings = {
 } satisfies Record<string, LocalizedValue>;
 
 const LOCALIZABLE_PATHS = [
+  "/contact", "/support", "/privacy", "/terms", "/mcp",
   "/",
   "/search",
   "/universities",

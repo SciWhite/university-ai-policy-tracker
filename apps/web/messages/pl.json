@@ -32,7 +32,7 @@
       "coverageAndReview": "Zakres i przegląd",
       "apiDocs": "Dokumentacja API",
       "publicApi": "Publiczne API",
-      "mcpAlpha": "MCP alpha",
+      "mcpAlpha": "ChatGPT / MCP",
       "widgets": "Widżety",
       "citation": "Cytowanie",
       "llms": "LLMs.txt",
@@ -49,7 +49,12 @@
       "themeAiDisclosure": "Oświadczenie o użyciu AI",
       "regionUnitedStates": "Stany Zjednoczone",
       "regionUnitedKingdom": "Wielka Brytania",
-      "rankingQs2026": "QS 2026"
+      "rankingQs2026": "QS 2026",
+      "contact": "Kontakt",
+      "support": "Pomoc",
+      "privacy": "Prywatność",
+      "terms": "Warunki",
+      "supportAndPrivacy": "Pomoc i prywatność"
     },
     "locale": {
       "label": "Język",

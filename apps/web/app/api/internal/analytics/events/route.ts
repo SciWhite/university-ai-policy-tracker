@@ -1,3 +1,4 @@
+import { requestAnalyticsOptedOut } from "@/lib/analytics-preference";
 import { NextResponse } from "next/server";
 import {
   buildAnalyticsEventRecord,
@@ -19,6 +20,7 @@ interface AnalyticsMirrorRequestBody {
 }
 
 export async function POST(request: Request) {
+  if (requestAnalyticsOptedOut(request.headers)) return emptyResponse();
   const startedAt = Date.now();
   const route = "/api/internal/analytics/events";
 

@@ -32,7 +32,7 @@
       "coverageAndReview": "覆盖和审核",
       "apiDocs": "API 文档",
       "publicApi": "公共 API",
-      "mcpAlpha": "MCP 测试版",
+      "mcpAlpha": "ChatGPT / MCP",
       "widgets": "Widgets",
       "citation": "引用",
       "llms": "LLMs.txt",
@@ -49,7 +49,12 @@
       "themeAiDisclosure": "AI 披露",
       "regionUnitedStates": "美国",
       "regionUnitedKingdom": "英国",
-      "rankingQs2026": "QS 2026"
+      "rankingQs2026": "QS 2026",
+      "contact": "联系",
+      "support": "支持",
+      "privacy": "隐私",
+      "terms": "使用条款",
+      "supportAndPrivacy": "支持与隐私"
     },
     "locale": {
       "label": "语言",

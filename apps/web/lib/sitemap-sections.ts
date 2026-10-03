@@ -59,6 +59,7 @@ const monthlyReportRoutes = monthlyReportSlugs.map(
 );
 
 const staticRoutes = [
+  "/contact", "/support", "/privacy", "/terms",
   "",
   "/university-ai-policy-database",
   "/universities",
@@ -92,6 +93,7 @@ const referenceRoutes = [
 ] as const;
 
 const phaseOneLocalizedStaticRoutes = [
+  "/contact", "/support", "/privacy", "/terms", "/mcp",
   "",
   "/search",
   "/universities",
@@ -146,6 +148,7 @@ async function buildCoreSection(): Promise<SitemapEntry[]> {
 
   return [
     ...staticRoutes,
+    ...["es", "nl", "ms"].flatMap(locale => ["contact", "support", "privacy", "terms", "mcp"].map(kind => `/${locale}/${kind}`)),
     ...referenceRoutes,
     ...analysisThemeRoutes,
     ...reportCoverageRoutes

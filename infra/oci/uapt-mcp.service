@@ -1,0 +1,24 @@
+[Unit]
+Description=University AI Policy Tracker read-only MCP
+After=network.target
+
+[Service]
+Type=simple
+User=uapt
+Group=uapt
+WorkingDirectory=/srv/uapt/app
+EnvironmentFile=/srv/uapt/env/mcp.env
+Environment=PATH=/opt/node-v22/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=NODE_ENV=production
+ExecStart=/opt/node-v22/bin/pnpm exec tsx apps/mcp/src/server.ts
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/uapt/mcp-telemetry
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

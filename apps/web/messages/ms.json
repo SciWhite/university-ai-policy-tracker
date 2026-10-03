@@ -32,7 +32,7 @@
       "coverageAndReview": "Liputan dan semakan",
       "apiDocs": "Dokumen API",
       "publicApi": "API awam",
-      "mcpAlpha": "MCP alpha",
+      "mcpAlpha": "ChatGPT / MCP",
       "widgets": "Widget",
       "citation": "Petikan",
       "llms": "LLMs.txt",
@@ -49,7 +49,12 @@
       "themeAiDisclosure": "Pendedahan AI",
       "regionUnitedStates": "Amerika Syarikat",
       "regionUnitedKingdom": "United Kingdom",
-      "rankingQs2026": "QS 2026"
+      "rankingQs2026": "QS 2026",
+      "contact": "Hubungi",
+      "support": "Sokongan",
+      "privacy": "Privasi",
+      "terms": "Terma",
+      "supportAndPrivacy": "Sokongan dan privasi"
     },
     "locale": {
       "label": "Bahasa",

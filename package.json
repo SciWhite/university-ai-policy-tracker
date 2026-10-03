@@ -75,7 +75,10 @@
     "db:seed": "pnpm --filter @uapt/db seed",
     "ingest:sample": "tsx scripts/local-ingest-sample.ts",
     "infra:up": "docker compose -f infra/docker/docker-compose.yml up -d",
-    "infra:down": "docker compose -f infra/docker/docker-compose.yml down"
+    "infra:down": "docker compose -f infra/docker/docker-compose.yml down",
+    "mcp:export": "tsx --tsconfig apps/web/tsconfig.json scripts/export-mcp-catalog.ts",
+    "mcp:start": "pnpm --filter @uapt/mcp start",
+    "test:mcp": "pnpm --filter @uapt/mcp test"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
