@@ -4,6 +4,9 @@ import { translateSurfaceText } from "@/lib/surface-localization";
 // Interface translations only. Native policy prose and original evidence stay unchanged.
 const languages = ["zh", "fr", "pl", "es", "nl", "ms"] as const;
 export const policyReferenceUi = {
+  "Source check and dated evidence": [
+    "来源核查与历史证据", "Vérification des sources et preuves datées", "Kontrola źródeł i datowane dowody", "Comprobación de fuentes y evidencia fechada", "Broncontrole en gedateerd bewijs", "Semakan sumber dan bukti bertarikh"
+  ],
   "On this page": [
     "本页目录",
     "Sur cette page",

@@ -61,6 +61,10 @@ const primaryNavigation = [
 ] as const;
 
 const secondaryLinkGroups = [
+  { labelKey: "supportAndPrivacy", links: [
+    { labelKey: "contact", href: "/contact" }, { labelKey: "support", href: "/support" },
+    { labelKey: "privacy", href: "/privacy" }, { labelKey: "terms", href: "/terms" }
+  ] },
   {
     labelKey: "browse",
     links: [

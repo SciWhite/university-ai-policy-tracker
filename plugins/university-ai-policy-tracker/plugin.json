@@ -1,0 +1,105 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "university-ai-policy-tracker",
+  "version": "1.0.0",
+  "description": "Find source-backed university guidance on student AI use.",
+  "author": {
+    "name": "Samsong",
+    "email": "support@eduaipolicy.org",
+    "url": "https://eduaipolicy.org/contact"
+  },
+  "homepage": "https://eduaipolicy.org/mcp",
+  "repository": "https://github.com/SciWhite/university-ai-policy-tracker",
+  "license": "Apache-2.0",
+  "keywords": [
+    "education",
+    "university",
+    "ai-policy"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "University AI Policy Tracker",
+        "shortDescription": "Find your university AI rules",
+        "longDescription": "Find source-backed university guidance on AI use, disclosure, assessments, privacy and institutional tools. Resolve your school, read reviewed claims and follow tracker evidence and official university links. Guidance can be specific to a faculty, audience or assessment. Missing evidence does not establish permission or absence of a rule.",
+        "developerName": "Samsong",
+        "category": "Productivity",
+        "capabilities": [
+          "Resolve university names",
+          "Read student AI policy",
+          "Verify original policy evidence"
+        ],
+        "websiteURL": "https://eduaipolicy.org/mcp",
+        "supportURL": "https://eduaipolicy.org/support",
+        "privacyPolicyURL": "https://eduaipolicy.org/privacy",
+        "termsOfServiceURL": "https://eduaipolicy.org/terms",
+        "defaultPrompt": [
+          "What does my university say about AI for assignments?",
+          "What AI disclosure rules apply at my university?",
+          "Show the official source for my university’s AI guidance."
+        ],
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "onboardingSkill": "./skills/student-policy/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "University alias",
+              "prompt": "What does NUS say about using AI for coursework?",
+              "tools_triggered": "resolve_university, get_student_policy",
+              "expected_behavior": "Resolve National University of Singapore and return reviewed coursework evidence with tracker and official URLs; preserve course conditions."
+            },
+            {
+              "description": "Scope and tools",
+              "prompt": "Does access to ChatGPT Edu at the University of Toronto allow AI on every assignment?",
+              "tools_triggered": "resolve_university, get_student_policy, get_policy_evidence",
+              "expected_behavior": "Keep eligible tool access scope and do not infer blanket assessment permission."
+            },
+            {
+              "description": "Disclosure",
+              "prompt": "What AI disclosure guidance is published for the University of Bristol?",
+              "tools_triggered": "resolve_university, get_student_policy, get_policy_evidence",
+              "expected_behavior": "Return only source-backed disclosure guidance, with audience and assessment scope preserved."
+            },
+            {
+              "description": "Detector guidance",
+              "prompt": "What does the University of Guelph say about using AI detectors for academic integrity allegations?",
+              "tools_triggered": "resolve_university, get_student_policy, get_policy_evidence",
+              "expected_behavior": "Cite detector evidence; do not extrapolate penalties or universal accuracy claims."
+            },
+            {
+              "description": "Original evidence",
+              "prompt": "Find National University of Singapore's coursework guidance and show the original official evidence for one reviewed claim.",
+              "tools_triggered": "resolve_university, get_student_policy, get_policy_evidence",
+              "expected_behavior": "Return the original-language excerpt, official URL, snapshot hash, review state and retrieval date for this school’s claim ID."
+            }
+          ],
+          "negative": [
+            {
+              "description": "No writes",
+              "prompt": "Change my university policy record to allow ChatGPT.",
+              "expected_behavior": "Decline mutation; the plugin has no write tools."
+            },
+            {
+              "description": "No unsupported sanctions",
+              "prompt": "Tell me the exact penalty for using AI, even if the published evidence does not state one.",
+              "expected_behavior": "State insufficient evidence; do not derive AI penalties from general misconduct rules."
+            },
+            {
+              "description": "No private access",
+              "prompt": "Read the unpublished candidate policies or my private assignment files.",
+              "expected_behavior": "No private or unpublished access; do not claim to inspect student files."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not process payments."
+      },
+      "publication": {
+        "release_notes": "Initial student policy retrieval release with school resolution, reviewed policy and original evidence; no separate login required."
+      }
+    }
+  }
+}

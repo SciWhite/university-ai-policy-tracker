@@ -32,7 +32,7 @@
       "coverageAndReview": "Couverture et revue",
       "apiDocs": "Docs API",
       "publicApi": "API publique",
-      "mcpAlpha": "MCP alpha",
+      "mcpAlpha": "ChatGPT / MCP",
       "widgets": "Widgets",
       "citation": "Citation",
       "llms": "LLMs.txt",
@@ -49,7 +49,12 @@
       "themeAiDisclosure": "Divulgation de l'IA",
       "regionUnitedStates": "États-Unis",
       "regionUnitedKingdom": "Royaume-Uni",
-      "rankingQs2026": "QS 2026"
+      "rankingQs2026": "QS 2026",
+      "contact": "Contact",
+      "support": "Assistance",
+      "privacy": "Confidentialité",
+      "terms": "Conditions",
+      "supportAndPrivacy": "Assistance et confidentialité"
     },
     "locale": {
       "label": "Langue",

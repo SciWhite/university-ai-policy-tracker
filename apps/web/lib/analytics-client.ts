@@ -1,5 +1,7 @@
 "use client";
 
+import { analyticsOptedOut } from "@/lib/analytics-preference";
+
 import {
   sanitizeAnalyticsProperties,
   type AnalyticsDatabaseEventName,
@@ -13,7 +15,7 @@ export function trackResearchEvent(
   properties: AnalyticsProperties = {}
 ) {
   const pathname = getCurrentPathname();
-  if (isInternalAnalyticsPath(pathname)) return;
+  if (analyticsOptedOut() || isInternalAnalyticsPath(pathname)) return;
 
   const sanitized = sanitizeAnalyticsProperties({
     collectorVersion: ANALYTICS_COLLECTOR_VERSION,
@@ -34,7 +36,7 @@ export function trackResearchEvent(
 export function trackPageView(properties: AnalyticsProperties = {}) {
   try {
     const pathname = getCurrentPathname();
-    if (isInternalAnalyticsPath(pathname)) return;
+    if (analyticsOptedOut() || isInternalAnalyticsPath(pathname)) return;
     const sessionId = getAnalyticsSessionId();
 
     const sanitized = sanitizeAnalyticsProperties({
@@ -68,7 +70,7 @@ interface MirrorAnalyticsEventInput {
 
 async function mirrorAnalyticsEvent(input: MirrorAnalyticsEventInput) {
   if (typeof window === "undefined") return;
-  if (isInternalAnalyticsPath(input.pathname)) return;
+  if (analyticsOptedOut() || isInternalAnalyticsPath(input.pathname)) return;
 
   const body = JSON.stringify({
     eventId: crypto.randomUUID(),
@@ -354,3 +356,7 @@ function isInternalAnalyticsPath(pathname: string): boolean {
 
 let visitorIdFallback: string | undefined;
 let sessionIdFallback: string | undefined;
+
+if (typeof window !== "undefined") {
+  window.addEventListener("uapt-analytics-preference", () => { visitorIdFallback = undefined; sessionIdFallback = undefined; });
+}

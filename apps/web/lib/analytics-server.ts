@@ -1,3 +1,4 @@
+import { requestAnalyticsOptedOut } from "@/lib/analytics-preference";
 import {
   buildAnalyticsEventRecord,
   sanitizeAnalyticsProperties,
@@ -11,6 +12,7 @@ export async function trackServerResearchEvent(
   properties: AnalyticsProperties = {},
   pathname = "/"
 ) {
+  if (properties.analyticsOptOut === true) return;
   const sanitized = sanitizeAnalyticsProperties({
     collectorVersion: "2026-07-13-v2",
     ...properties,
@@ -37,6 +39,7 @@ export function getServerRequestAnalytics(
   const userAgent = request.headers.get("user-agent")?.toLowerCase() ?? "";
   const botFamily = getBotFamily(userAgent);
   return {
+    analyticsOptOut: requestAnalyticsOptedOut(request.headers),
     bot_family: botFamily,
     client_kind: botFamily
       ? "bot"

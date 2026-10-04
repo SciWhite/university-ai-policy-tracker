@@ -36,6 +36,7 @@ export function PolicyReferenceHero({ scene, locale = "en" }: { scene: PolicySce
       {locale !== "en" ? <p className="policy-reference-language-note">{translate("Policy guidance below is in English; official evidence remains in its original language.", locale)}</p> : null}
       {scene.claimsOnly || scene.snapshotNotice ? <p className="policy-reference-language-note">{translate("No reviewed student policy snapshot has been published yet.", locale)}</p> : null}
       {scene.scopeDetail ? <details className="policy-scope-detail"><summary>{translate("Scope and transition details", locale)}</summary><p lang="en" data-i18n="preserve">{scene.scopeDetail}</p></details> : null}
+      {scene.sourceUpdate ? <p className="policy-reference-language-note"><a href="#current-source-supplement">{translate("Source check and dated evidence", locale)}</a></p> : null}
     </div>
     <div className="policy-reference-actions">
       {(["do", "dont"] as const).map(kind => <article key={kind} className={`policy-reference-action policy-reference-action--${kind}`}>

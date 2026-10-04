@@ -32,7 +32,7 @@
       "coverageAndReview": "Dekking en review",
       "apiDocs": "API-docs",
       "publicApi": "Publieke API",
-      "mcpAlpha": "MCP alpha",
+      "mcpAlpha": "ChatGPT / MCP",
       "widgets": "Widgets",
       "citation": "Citeren",
       "llms": "LLMs.txt",
@@ -49,7 +49,12 @@
       "themeAiDisclosure": "AI-openbaarmaking",
       "regionUnitedStates": "Verenigde Staten",
       "regionUnitedKingdom": "Verenigd Koninkrijk",
-      "rankingQs2026": "QS 2026"
+      "rankingQs2026": "QS 2026",
+      "contact": "Contact",
+      "support": "Ondersteuning",
+      "privacy": "Privacy",
+      "terms": "Voorwaarden",
+      "supportAndPrivacy": "Ondersteuning en privacy"
     },
     "locale": {
       "label": "Taal",

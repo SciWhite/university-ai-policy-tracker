@@ -65,3 +65,6 @@ packages/db/generated/
 
 # Claude Code local config
 .claude/
+
+# MCP frozen runtime catalog and anonymous aggregates
+apps/mcp/.runtime-data/
