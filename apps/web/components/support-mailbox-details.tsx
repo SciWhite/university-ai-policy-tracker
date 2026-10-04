@@ -14,5 +14,5 @@ export function SupportMailboxDetails({locale}:{locale:SupportedLocale}) {
     }).catch(()=>{});
     return ()=>controller.abort();
   },[]);
-  return details ? <dl><dt>{labels[locale][0]}</dt><dd>{details.provider}</dd><dt>{labels[locale][1]}</dt><dd lang="en">{details.retention}</dd></dl> : null;
+  return details ? <><dl><dt>{labels[locale][0]}</dt><dd>{details.provider}</dd><dt>{labels[locale][1]}</dt><dd lang="en">{details.retention}</dd></dl><p><a href="https://www.zoho.com/mail/help/data-deletion-policy.html" target="_blank" rel="noreferrer" lang="en">Zoho Mail deletion policy</a></p></> : null;
 }

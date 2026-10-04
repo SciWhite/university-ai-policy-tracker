@@ -56,23 +56,32 @@ and September report.
 
 ## Pre-release dependencies
 
-The user provisions a real commercial `support@eduaipolicy.org` mailbox with
-direct inbound and outbound email, not forwarding. Confirm the actual provider
-and retention settings. Run `node scripts/verify-support-email.mjs
---dkim-selector=<provider-selector>`, then test inbound delivery, outbound reply
-from support@ and SPF/DKIM/DMARC authentication in received headers. Only mark
-the verification report's three delivery/authentication test fields `passed`
-after observing the actual messages. Credentials remain outside Git.
+The user confirmed that `support@eduaipolicy.org` is a Zoho Mail Free
+organization mailbox, with no custom eDiscovery or archival retention policy.
+Ordinary active-mailbox messages do not expire automatically after a fixed age.
+If a user account or the organization is deleted, Zoho provides a 30-day
+recovery period and permanently deletes related data after it ends; see Zoho's
+[mail deletion and retention policy](https://www.zoho.com/mail/help/data-deletion-policy.html).
+The user confirmed direct inbound/outbound tests with an external Gmail account
+on 2026-10-03. On 2026-10-04, the user supplied the authentication results from
+the original Gmail message headers: SPF, DKIM and DMARC all passed, with DKIM
+selector `zmail`. A separate agent DNS check confirmed MX, SPF, DMARC and the
+`zmail` DKIM public key. The local acceptance record keeps the user-observed
+headers separate from agent-checked DNS; this agent did not open the mailbox or
+receive the raw header text. Credentials remain outside Git.
 
 Set `UAPT_SUPPORT_EMAIL_PROVIDER` and `UAPT_SUPPORT_EMAIL_RETENTION` in the web
 runtime environment; these facts appear through `/api/plugin/status` without
 another website build. Use a concise English retention description for the
 canonical policy. Email-provider details are rendered on Privacy. Current
-read-only DNS checks show Zoho MX, one SPF and one DMARC record; DKIM selector,
-and authentication-header acceptance remain open. On 2026-10-03, the user
-confirmed Zoho direct inbound/outbound delivery tested successfully with an
-external Gmail account. This is user-observed delivery evidence, distinct from
-agent DNS and authentication-header checks. Mailbox retention is not yet known.
+read-only DNS checks from 2026-10-04 confirm Zoho MX, SPF, DMARC and the `zmail`
+DKIM key. Direct delivery was user-tested with Gmail on 2026-10-03, and the
+user-observed original message headers passed SPF, DKIM and DMARC on 2026-10-04.
+These are separate evidence sources; the agent did not open the mailbox or
+receive the raw header text. Retention is confirmed as described above; do not
+describe the 30-day recovery window as active-mailbox expiry. The mailbox's
+Spam/Trash cleanup interval remains unconfirmed and is not stated on the Privacy
+page.
 
 Immediately before the combined release, activate the report locally with the
 actual publication timestamp:
