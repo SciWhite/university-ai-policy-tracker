@@ -9,9 +9,12 @@ fi
 : "${UAPT_SUPPORT_EMAIL_PROVIDER:?Business email provider must be confirmed}"
 : "${UAPT_SUPPORT_EMAIL_RETENTION:?Actual mailbox retention settings must be confirmed}"
 : "${UAPT_MAIL_VERIFICATION_FILE:?Provide the completed mailbox verification report}"
+: "${UAPT_RELEASE_SITE_URL:?Verified production site URL must be provided}"
+# Tests expect their own default origins; scope the public URL to the actual Next build.
+unset NEXT_PUBLIC_SITE_URL
 node --input-type=module <<'JS'
 import {readFileSync} from 'node:fs';
-const site=new URL(process.env.NEXT_PUBLIC_SITE_URL ?? '');
+const site=new URL(process.env.UAPT_RELEASE_SITE_URL ?? '');
 if(site.protocol !== 'https:' || !['eduaipolicy.org','www.eduaipolicy.org'].includes(site.hostname) || site.port || site.username || site.password)throw new Error('Production site URL must be the verified public HTTPS domain');
 const report=JSON.parse(readFileSync(process.env.UAPT_MAIL_VERIFICATION_FILE,'utf8'));
 if(report.address !== 'support@eduaipolicy.org' || report.inboundTest !== 'passed' || report.outboundTest !== 'passed' || report.authenticationHeaders !== 'passed')throw new Error('Mailbox send/receive acceptance is incomplete');
@@ -33,5 +36,5 @@ pnpm validate:policy-snapshot
 pnpm validate:dataset-release
 pnpm --filter @uapt/web typecheck
 # One whole-site production build for the combined release.
-UAPT_DISABLE_INTERNAL_FETCH=1 pnpm --filter @uapt/web build
+NEXT_PUBLIC_SITE_URL="$UAPT_RELEASE_SITE_URL" UAPT_DISABLE_INTERNAL_FETCH=1 pnpm --filter @uapt/web build
 node scripts/check-student-build.mjs

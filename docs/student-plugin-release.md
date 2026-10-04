@@ -100,8 +100,9 @@ inactive. Do not use the dataset's September timestamp as report publication.
 Use a clean OCI release checkout of the accepted GitHub SHA under
 `/srv/uapt/releases/`; leave the active checkout and build running. Load the
 protected production environment without printing it and invoke
-`scripts/build-student-release.sh`, with `NEXT_PUBLIC_SITE_URL` set to the
-verified public HTTPS domain. This exports the frozen MCP catalog and
+`scripts/build-student-release.sh`, with `UAPT_RELEASE_SITE_URL` set to the
+verified public HTTPS domain. The release script passes that value to the Next
+build only, so test defaults remain isolated. This exports the frozen MCP catalog and
 performs exactly one Next production build for the approved batch. The script
 fails before building if mailbox acceptance or September activation is missing.
 
