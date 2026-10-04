@@ -128,10 +128,22 @@ async function assertReleaseStateSemantics(): Promise<void> {
     assertCandidateManifest(item.manifest, item.path);
   }
 
-  const published = [
-    ...history.map((item) => item.manifest),
-    current
-  ].sort((left, right) => left.publishedAt.localeCompare(right.publishedAt));
+  const publishedById = new Map<string, PublicReleaseInputManifest>();
+  for (const manifest of [...history.map((item) => item.manifest), current]) {
+    const duplicate = publishedById.get(manifest.releaseId);
+    if (duplicate) {
+      if (JSON.stringify(duplicate) !== JSON.stringify(manifest)) {
+        throw new Error(
+          `Published release ID ${manifest.releaseId} has conflicting manifests.`
+        );
+      }
+      continue;
+    }
+    publishedById.set(manifest.releaseId, manifest);
+  }
+  const published = [...publishedById.values()].sort((left, right) =>
+    left.publishedAt.localeCompare(right.publishedAt)
+  );
   const publishedIds = new Set(published.map((manifest) => manifest.releaseId));
 
   if (published.at(-1)?.releaseId !== current.releaseId) {
