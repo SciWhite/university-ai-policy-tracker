@@ -30,6 +30,7 @@ pnpm exec tsx --tsconfig apps/web/tsconfig.json --test \
 pnpm --filter @uapt/mcp typecheck
 pnpm validate:i18n
 pnpm validate:policy-snapshot
+pnpm validate:dataset-release
 pnpm --filter @uapt/web typecheck
 # One whole-site production build for the combined release.
 UAPT_DISABLE_INTERNAL_FETCH=1 pnpm --filter @uapt/web build
