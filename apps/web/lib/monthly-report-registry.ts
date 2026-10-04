@@ -1,8 +1,11 @@
+import { september2026ReportDraft } from "./monthly-report-drafts";
 // Pure per-month report specs. Publishing a new monthly report means adding
 // one entry here; the /reports/monthly/[month] routes, coverage appendices,
 // and share images are all generated from it. This module must stay free of
 // Node built-ins so the edge-runtime opengraph-image routes can import it.
 export const monthlyReportRegistry = {
+  "2026-09": { ...september2026ReportDraft, publishedAt: "2026-10-04T14:54:00.000+00:00" },
+
   "2026-05": {
     type: "monthly",
     month: "2026-05",
