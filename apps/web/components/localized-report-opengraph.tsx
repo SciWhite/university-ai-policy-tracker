@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import type { SupportedLocale } from "@/lib/i18n";
+import type { MonthlyReportSlug } from "@/lib/monthly-report-registry";
 
 export const localizedReportImageSize = { height: 630, width: 1200 };
 
@@ -10,7 +11,8 @@ const copy = {
     may: "2026 年 5 月基线月报",
     june: "2026 年 6 月月末报告",
     july: "2026 年 7 月月末报告",
-    august: "2026 年 8 月监测月报"
+    august: "2026 年 8 月监测月报",
+    september: "2026 年 9 月月末报告"
   },
   fr: {
     badge: "Rapport mensuel public",
@@ -18,7 +20,8 @@ const copy = {
     may: "Rapport mensuel de référence — mai 2026",
     june: "Rapport de fin de mois — juin 2026",
     july: "Rapport de fin de mois — juillet 2026",
-    august: "Rapport de suivi mensuel — août 2026"
+    august: "Rapport de suivi mensuel — août 2026",
+    september: "Rapport de fin de mois — septembre 2026"
   },
   pl: {
     badge: "Publiczny raport miesięczny",
@@ -26,7 +29,8 @@ const copy = {
     may: "Miesięczny raport bazowy — maj 2026",
     june: "Raport na koniec miesiąca — czerwiec 2026",
     july: "Raport na koniec miesiąca — lipiec 2026",
-    august: "Miesięczny raport monitorujący — sierpień 2026"
+    august: "Miesięczny raport monitorujący — sierpień 2026",
+    september: "Raport na koniec miesiąca — wrzesień 2026"
   },
   es: {
     badge: "Informe mensual público",
@@ -34,7 +38,8 @@ const copy = {
     may: "Informe mensual de referencia — mayo de 2026",
     june: "Informe de cierre mensual — junio de 2026",
     july: "Informe de cierre mensual — julio de 2026",
-    august: "Informe mensual de seguimiento — agosto de 2026"
+    august: "Informe mensual de seguimiento — agosto de 2026",
+    september: "Informe de cierre mensual — septiembre de 2026"
   },
   nl: {
     badge: "Openbaar maandrapport",
@@ -42,7 +47,8 @@ const copy = {
     may: "Maandelijks nulrapport — mei 2026",
     june: "Maandeindrapport — juni 2026",
     july: "Maandeindrapport — juli 2026",
-    august: "Maandelijks monitoringrapport — augustus 2026"
+    august: "Maandelijks monitoringrapport — augustus 2026",
+    september: "Maandeindrapport — september 2026"
   },
   ms: {
     badge: "Laporan bulanan awam",
@@ -50,23 +56,23 @@ const copy = {
     may: "Laporan garis dasar bulanan — Mei 2026",
     june: "Laporan akhir bulan — Jun 2026",
     july: "Laporan akhir bulan — Julai 2026",
-    august: "Laporan pemantauan bulanan — Ogos 2026"
+    august: "Laporan pemantauan bulanan — Ogos 2026",
+    september: "Laporan akhir bulan — September 2026"
   }
 } as const;
 
 export function createLocalizedReportImage(
   locale: Exclude<SupportedLocale, "en">,
-  month: "2026-05" | "2026-06" | "2026-07" | "2026-08"
+  month: MonthlyReportSlug
 ) {
   const strings = copy[locale];
-  const title =
-    month === "2026-05"
-      ? strings.may
-      : month === "2026-06"
-        ? strings.june
-        : month === "2026-07"
-          ? strings.july
-          : strings.august;
+  const title = {
+    "2026-05": strings.may,
+    "2026-06": strings.june,
+    "2026-07": strings.july,
+    "2026-08": strings.august,
+    "2026-09": strings.september
+  }[month];
   return new ImageResponse(
     (
       <div
