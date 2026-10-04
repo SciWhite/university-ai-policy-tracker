@@ -1,7 +1,7 @@
 import type { PolicyScenePilot, PolicySceneStoryCard } from "@/lib/policy-scene-pilot";
 
 /**
- * Published cohort of all 33 V4 university pages authorized for production release.
+ * V4 university pages selected for production; additions ship with the combined release.
  * On normal URLs in production and development, these universities receive the V4 layout by default.
  */
 export const publishedV4UniversitySlugs = [
@@ -19,7 +19,8 @@ export const publishedV4UniversitySlugs = [
   "university-of-exeter", "keele-university", "university-of-glasgow",
   "tilburg-university", "university-of-aberdeen", "flinders-university",
   "kingston-university-london", "university-of-victoria-uvic",
-  "chalmers-university-of-technology", "cardiff-university"
+  "chalmers-university-of-technology", "cardiff-university",
+  "aalto-university", "cornell-university", "university-of-melbourne"
 ] as const;
 
 export type PublishedV4UniversitySlug = (typeof publishedV4UniversitySlugs)[number];

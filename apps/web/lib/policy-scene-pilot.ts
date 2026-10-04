@@ -1,6 +1,7 @@
 import { hasCurrentIndexRecoveryBasis, reviewedClaimsFingerprint } from "@/lib/index-recovery-basis";
 import { isIndexRecoveryPilotSlug, type IndexRecoveryPilotSlug } from "@/lib/index-recovery-pilot";
 import type { PolicyClaim } from "@uapt/shared";
+import { readyV4IllustrationBasis, readyV4Scenes, type ReadyV4UniversitySlug } from "./policy-scene-ready-v4";
 
 export type ScenarioStatus = "Can, with limits" | "Do not";
 export type PolicyEvidenceHref = `#snapshot-${string}` | `#claim-${string}` | "#claims" | `https://${string}`;
@@ -43,6 +44,7 @@ export interface PolicySceneQuickGuide {
 
 export type IllustratedPilotSlug =
   | IndexRecoveryPilotSlug
+  | ReadyV4UniversitySlug
   | "stanford-university"
   | "university-of-cambridge"
   | "massachusetts-institute-of-technology"
@@ -85,6 +87,7 @@ export interface PolicyScenePilot {
 const noSnapshotNotice = "No reviewed student policy snapshot has been published yet.";
 
 const scenes: Record<IllustratedPilotSlug, PolicyScenePilot> = {
+  ...readyV4Scenes,
   "stanford-university": {
     slug: "stanford-university",
     studentFirst: true,
@@ -1852,6 +1855,11 @@ export function getPolicyScenePilot(
   hasClaimsSummary: boolean,
   _options?: PolicyScenePilotOptions
 ): PolicyScenePilot | undefined {
+  if (Object.hasOwn(readyV4IllustrationBasis, slug)) {
+    const key = slug as ReadyV4UniversitySlug;
+    if (!hasStrongSnapshot || reviewedClaimsFingerprint(claims) !== readyV4IllustrationBasis[key]) return undefined;
+    return scenes[key];
+  }
   // Published claims-only illustration gate for ten universities.
   if (Object.hasOwn(claimsOnlyIllustrationBasis, slug)) {
     if (hasStrongSnapshot) return undefined;

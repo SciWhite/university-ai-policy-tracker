@@ -92,7 +92,7 @@ test('next ten V4 illustrations are active in production default, reject strong 
   }
 });
 test('student pages ignore legacy audience requests without changing reviewed audiences',async()=>{
- for(const slug of ['harvard-university','national-university-of-singapore','utrecht-university','de-la-salle-university','imperial-college-london','adelaide-university','university-of-auckland','stanford-university','ubc','university-of-cambridge','massachusetts-institute-of-technology']){
+ for(const slug of ['harvard-university','national-university-of-singapore','utrecht-university','de-la-salle-university','imperial-college-london','adelaide-university','university-of-auckland','stanford-university','ubc','university-of-cambridge','massachusetts-institute-of-technology','aalto-university','cornell-university','university-of-melbourne']){
  const loaded=await getLoadedPolicySnapshotBySlug(slug);assert(loaded);const before=JSON.stringify(loaded.snapshot.audiences);
  const html=renderToStaticMarkup(<StudentPolicySnapshot claims={[]} entitySlug={slug} locale="en" role="researcher" snapshot={loaded.snapshot}/>);
  assert.match(html,/data-snapshot-role="student"/);assert.doesNotMatch(html,/aria-label="Snapshot audience"/);assert.equal(JSON.stringify(loaded.snapshot.audiences),before);
@@ -105,8 +105,8 @@ test('student pages ignore legacy audience requests without changing reviewed au
  assert.equal(isStudentOnlyPolicyPage('massachusetts-institute-of-technology'),true);
 });
 test('other schools retain their audience selector',async()=>{
- const loaded=await getLoadedPolicySnapshotBySlug('aalto-university');assert(loaded);
- const html=renderToStaticMarkup(<StudentPolicySnapshot claims={[]} entitySlug="aalto-university" locale="en" role="researcher" snapshot={loaded.snapshot}/>);
+ const loaded=await getLoadedPolicySnapshotBySlug('snu');assert(loaded);
+ const html=renderToStaticMarkup(<StudentPolicySnapshot claims={[]} entitySlug="snu" locale="en" role="researcher" snapshot={loaded.snapshot}/>);
  assert.match(html,/aria-label="Snapshot audience"/);assert.match(html,/data-snapshot-role="researcher"/);
 });
 test('source supplements identify retained records and current policy boundaries',async()=>{

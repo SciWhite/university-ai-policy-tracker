@@ -15,7 +15,7 @@ import { getPolicyScenePilot } from "../apps/web/lib/policy-scene-pilot";
 
 test("comparison cannot activate in production or for another university", () => {
   assert.equal(isPolicyReferencePreview("stanford-university", "reference-v4", "production"), false);
-  assert.equal(isPolicyReferencePreview("aalto-university", "reference-v4", "development"), false);
+  assert.equal(isPolicyReferencePreview("jagiellonian-university", "reference-v4", "development"), false);
   assert.equal(isPolicyReferencePreview("stanford-university", undefined, "development"), false);
   assert.equal(isPolicyReferencePreview("stanford-university", ["reference-v4"], "development"), false);
   assert.equal(isPolicyReferencePreview("stanford-university", "reference-v4", "development"), true);
@@ -142,5 +142,5 @@ test("localizing static child arrays gives stable React keys", () => {
 test("language switch fallback preserves only authorized development comparisons", () => {
   assert.equal(preservePolicyReferenceSearch("/zh/universities/harvard-university", "?layout=reference-v4", "development"), "/zh/universities/harvard-university?layout=reference-v4");
   assert.equal(preservePolicyReferenceSearch("/fr/universities/stanford-university", "?layout=reference-v4", "production"), "/fr/universities/stanford-university");
-  assert.equal(preservePolicyReferenceSearch("/zh/universities/aalto-university", "?layout=reference-v4", "development"), "/zh/universities/aalto-university");
+  assert.equal(preservePolicyReferenceSearch("/zh/universities/jagiellonian-university", "?layout=reference-v4", "development"), "/zh/universities/jagiellonian-university");
 });

@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-03",
+  "assets": [
+    {
+      "asset": "/assets/policy-scenes/aalto-mechanism-hero-v1.jpg",
+      "model": "gemini-3.1-flash-image",
+      "rawCandidate": "aalto-hero-v1.jpg",
+      "rawSha256": "b3258d181f171676410ffe434dcabdffcb1856275899e33121bb48686d42eb66",
+      "sha256": "04df005033efb7618619db4dde2fec8517ff36d5472c06d9bfdc5e063f803b50",
+      "bytes": 201551,
+      "width": 1264,
+      "height": 848,
+      "embeddedText": "CHECK THIS TASK",
+      "inspection": "Full-size lettering, scope and character inspected; responsive browser verification separately recorded."
+    },
+    {
+      "asset": "/assets/policy-scenes/aalto-mechanism-do-v1.jpg",
+      "model": "muse-image",
+      "rawCandidate": "aalto-do-muse-v1.webp",
+      "rawSha256": "ca9429083483c5bb9a1176ee1629659f2dadcb735e53402f23c95c0838e6937a",
+      "sha256": "7446de26852a8aa44d69e8e069e6bc18dd055be89c56a7d2b35fc868882df067",
+      "bytes": 152575,
+      "width": 1280,
+      "height": 853,
+      "embeddedText": "DO / MARK AI CONTENT",
+      "inspection": "Full-size lettering, scope and character inspected; responsive browser verification separately recorded."
+    },
+    {
+      "asset": "/assets/policy-scenes/aalto-mechanism-dont-v1.jpg",
+      "model": "gemini-3.1-flash-image",
+      "rawCandidate": "aalto-dont-v1.jpg",
+      "rawSha256": "7ffab5830b18acfa329cd323887f434dc14d78d58d5e5b32c3a68581311e76e2",
+      "sha256": "015ed77e40f3c0786aafb34cff1e46b36acc840e0c27a5828cad9b43cbde479b",
+      "bytes": 173810,
+      "width": 1264,
+      "height": 848,
+      "embeddedText": "DON'T / NO SECRET DATA / SECRET",
+      "inspection": "Full-size lettering, scope and character inspected; responsive browser verification separately recorded."
+    },
+    {
+      "asset": "/assets/policy-scenes/cornell-mechanism-hero-v1.jpg",
+      "model": "gemini-3.1-flash-image",
+      "rawCandidate": "cornell-hero-v1.jpg",
+      "rawSha256": "e3f3e607180fd09d225d2cd46ab817a7da78c65336bf3e0fb5768aef81a7392a",
+      "sha256": "b6b18a8221e3977ec865e8bd80fcf21718deaa709001892e96b0fa92173fa922",
+      "bytes": 154235,
+      "width": 1264,
+      "height": 848,
+      "embeddedText": "FIND YOUR COURSE POLICY",
+      "inspection": "Full-size lettering, scope and character inspected; responsive browser verification separately recorded."
+    },
+    {
+      "asset": "/assets/policy-scenes/cornell-mechanism-do-v1.jpg",
+      "model": "built-in image generation",
+      "rawCandidate": "exec-0745f1eb-972d-4e63-b19a-c5248055fa32.png",
+      "rawSha256": "12d6d68c1eea92edaf38e9e730d75bf166a81c17cf66d5b57a5c5b968d3dc977",
+      "sha256": "0f1f667828a4c589302ee970aabe4eb0efd3f4e3ab64621402d4ce9ef15cf7c7",
+      "bytes": 222370,
+      "width": 1280,
+      "height": 853,
+      "embeddedText": "DO / ATTRIBUTE PERMITTED USE",
+      "inspection": "Full-size lettering, scope and character inspected; responsive browser verification separately recorded."
+    },
+    {
+      "asset": "/assets/policy-scenes/cornell-mechanism-dont-v1.jpg",
+      "model": "built-in image edit",
+      "rawCandidate": "exec-12408c92-3052-4a2d-86fd-7d7edc3fb3a6.png",
+      "rawSha256": "f2b89f2c70f0d2bfa8b3e529964fd4540b402881cf02fa37a5ceb08d0f8620c1",
+      "sha256": "f1503fcdf96f0ca19721ca31e61a6c7f86585e1f712b30fcb115da32baf42770",
+      "bytes": 205295,
+      "width": 1280,
+      "height": 853,
+      "embeddedText": "DON'T / UPLOAD RESTRICTED DATA",
+      "inspection": "Full-size lettering, scope and character inspected; responsive browser verification separately recorded."
+    },
+    {
+      "asset": "/assets/policy-scenes/melbourne-mechanism-hero-v1.jpg",
+      "model": "gemini-3.1-flash-image",
+      "rawCandidate": "melbourne-hero-v1.jpg",
+      "rawSha256": "cf307159ae97352c8226c61756c483f2c9106998882adac5a1b2489a77ffb45c",
+      "sha256": "666b592e01d05da05a447d74177dafc0587fcd316b0a7e89531251e2c7d57ef0",
+      "bytes": 165206,
+      "width": 1264,
+      "height": 848,
+      "embeddedText": "CHECK YOUR SUBJECT / SUBJECT",
+      "inspection": "Full-size lettering, scope and character inspected; responsive browser verification separately recorded."
+    },
+    {
+      "asset": "/assets/policy-scenes/melbourne-mechanism-do-v1.jpg",
+      "model": "built-in image generation",
+      "rawCandidate": "exec-b211d172-1c22-4f65-bd3d-f7ef528fd872.png",
+      "rawSha256": "db61531afd43bb176eaca7748f4e9ba43a393b5631e8d1853b80f558a87578ea",
+      "sha256": "4817aee18e29383fc385f645bed936c327fc357fac629e35af4927f05ad381df",
+      "bytes": 193901,
+      "width": 1280,
+      "height": 853,
+      "embeddedText": "DO / ASK BEFORE ASSESSMENT",
+      "inspection": "Full-size lettering, scope and character inspected; responsive browser verification separately recorded."
+    },
+    {
+      "asset": "/assets/policy-scenes/melbourne-mechanism-dont-v1.jpg",
+      "model": "built-in image generation",
+      "rawCandidate": "exec-2b54f852-fce4-4d9e-9349-957831d43860.png",
+      "rawSha256": "88cdbc9f3db2d486ac79bf2bd16f90f239fb95dc6d080c280aa4a89d03259ad1",
+      "sha256": "0674f8a947a8a737bc663eb954dc7704a5096294bd9c65666f9e7ba12fe1d0b8",
+      "bytes": 209014,
+      "width": 1280,
+      "height": 853,
+      "embeddedText": "DON'T / ASSUME PERMISSION",
+      "inspection": "Full-size lettering, scope and character inspected; responsive browser verification separately recorded."
+    }
+  ]
+}

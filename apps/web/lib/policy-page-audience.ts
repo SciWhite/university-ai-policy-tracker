@@ -11,7 +11,8 @@ const studentPages = new Set([
   "university-of-exeter", "keele-university", "university-of-glasgow",
   "tilburg-university", "university-of-aberdeen", "flinders-university",
   "kingston-university-london", "university-of-victoria-uvic",
-  "chalmers-university-of-technology", "cardiff-university"
+  "chalmers-university-of-technology", "cardiff-university",
+  "aalto-university", "cornell-university", "university-of-melbourne"
 ]);
 export function isStudentOnlyPolicyPage(slug: string): boolean {
   return studentPages.has(slug);

@@ -24,6 +24,9 @@ pnpm db:generate
 pnpm mcp:export
 pnpm test:mcp
 pnpm exec tsx --test tests/analytics-preference.test.ts
+pnpm exec tsx --tsconfig apps/web/tsconfig.json --test \
+  tests/policy-reference-preview.test.tsx tests/student-first-policy-pages.test.tsx \
+  tests/index-recovery-pilot.test.ts tests/visual-assets.test.ts tests/v4-ready-expansion.test.tsx
 pnpm --filter @uapt/mcp typecheck
 pnpm validate:i18n
 pnpm validate:policy-snapshot

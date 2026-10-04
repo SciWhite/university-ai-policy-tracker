@@ -39,6 +39,21 @@ Workspace typechecking/lint, public-contract validation, i18n and
   existing production events were not removed. The daily timer is not enabled
   until the combined deployment.
 
+## Additional V4 university pages
+
+The combined release includes Aalto, Cornell and Melbourne, taking the V4
+cohort from 33 to 36. All 17 effective strong snapshots now have a V4 guide;
+no pending snapshot or private enforcement candidate is promoted. Nine new
+optimized images reuse the existing character/style and evidence-linked layout.
+The authored guide requires unchanged reviewed fingerprints and a strong
+snapshot. Melbourne visibly separates the moved current student source from
+older unverified citation/privacy/tool evidence. See
+`docs/policy-hero-candidates/v4-ready-three-20261003/brief.md` for provenance,
+source-check limitations and local acceptance (105 tests, 21 seven-language
+HTTP/browser routes, 18 viewport/theme combinations). Include these routes
+in the same production build and post-deploy acceptance as the plugin pages
+and September report.
+
 ## Pre-release dependencies
 
 The user provisions a real commercial `support@eduaipolicy.org` mailbox with

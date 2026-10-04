@@ -1,0 +1,4 @@
+# Keep raw generation candidates local; selected optimized assets live under public/.
+*.jpg
+*.png
+*.webp
