@@ -54,7 +54,8 @@
       "support": "Assistance",
       "privacy": "Confidentialité",
       "terms": "Conditions",
-      "supportAndPrivacy": "Assistance et confidentialité"
+      "supportAndPrivacy": "Assistance et confidentialité",
+      "about": "À propos"
     },
     "locale": {
       "label": "Langue",

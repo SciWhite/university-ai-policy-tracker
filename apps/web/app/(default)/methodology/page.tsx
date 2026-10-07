@@ -7,6 +7,8 @@ import { getAbsoluteSiteUrl } from "@/lib/site-url";
 import { getLocalizedAlternates } from "@/lib/i18n-metadata";
 import { normalizeLocale } from "@/lib/i18n";
 import { getPageCopy } from "@/lib/page-copy";
+import { AgentMethods } from "@/components/agent-methods";
+import { getProjectCopy } from "@/lib/project-copy";
 
 interface MethodologyPageProps {
   params?: Promise<{
@@ -38,6 +40,7 @@ export async function generateMetadata({
 export default async function MethodologyPage({ params }: MethodologyPageProps) {
   const locale = normalizeLocale((await params)?.locale);
   const copy = getPageCopy(locale).methodology;
+  const agentCopy = getProjectCopy(locale);
 
   return (
     <main className="page-shell">
@@ -73,6 +76,7 @@ export default async function MethodologyPage({ params }: MethodologyPageProps) 
       <div className="docs-layout">
         <aside className="docs-toc" aria-label={copy.tocLabel}>
           <a href="#workflow">{copy.toc.workflow}</a>
+          <a href="#agents">{agentCopy.agentsTitle}</a>
           <a href="#review-states">{copy.toc.reviewStates}</a>
           <a href="#ranking-boundaries">{copy.toc.rankingBoundaries}</a>
           <a href="#publication-rules">{copy.toc.publicationRules}</a>
@@ -94,6 +98,8 @@ export default async function MethodologyPage({ params }: MethodologyPageProps) 
               ))}
             </ol>
           </ReferenceBox>
+
+          <AgentMethods locale={locale} />
 
           <ReferenceBox
             description={copy.reviewDescription}

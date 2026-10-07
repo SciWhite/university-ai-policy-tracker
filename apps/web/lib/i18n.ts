@@ -93,6 +93,7 @@ const LOCALIZABLE_PATHS = [
   "/source-health",
   "/reports",
   "/methodology",
+  "/about",
   "/datasets",
   "/citation",
   "/contribute"

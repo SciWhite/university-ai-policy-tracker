@@ -79,6 +79,9 @@ Public reference site:
 - dark mode tokens and initial i18n scaffolding
 - homepage, university index, methodology, citation, datasets, changes,
   reports, contribution, review, API reference, widgets, and MCP pages
+- project background and agent working methods at [About](https://eduaipolicy.org/about)
+- evidence-linked student policy pages with a separate tool-access module and
+  source-based handling, review, and support information
 
 Policy analysis layer:
 
@@ -135,6 +138,7 @@ Review and coverage operations:
 
 Core trust pages:
 
+- About: <https://eduaipolicy.org/about>
 - Methodology: <https://eduaipolicy.org/methodology>
 - Citation: <https://eduaipolicy.org/citation>
 - Datasets: <https://eduaipolicy.org/datasets>

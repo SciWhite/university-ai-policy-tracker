@@ -1,0 +1,116 @@
+[
+  {
+    "id": "eth-zurich-misconduct-unauthorised-tools-and-non-disclosure",
+    "statement": "Using AI tools contrary to lecturer instructions, including using unauthorised tools or failing to disclose their use, constitutes a violation subject to disciplinary action under existing processes.",
+    "scope": {
+      "level": "university",
+      "unit": "ETH Zurich",
+      "audience": "students",
+      "qualifiers": []
+    },
+    "kind": "official_guidance",
+    "evidence": [
+      {
+        "sourceId": "cache-b7878af90bf5d9ed",
+        "quote": "If AI tools are used contrary to the lecturer's instructions, the existing processes continue to apply. Violations such as the use of unauthorised tools or failure to disclose their use will be subject to disciplinary action (see also external page Disziplinarverordnung ETH Zurich).",
+        "lineStart": 87,
+        "lineEnd": 87,
+        "sourceSnapshotHash": "bede8207bc3b799ca72bfd6f5986261076730a50ca92ee6d90547d78aa600828",
+        "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+        "retrievedAt": "2026-10-02T02:25:00.264665+00:00"
+      }
+    ]
+  },
+  {
+    "id": "eth-zurich-detection-reliability-limitation",
+    "statement": "Technical recognition of output generated using generative AI is currently unreliable and will probably remain so in the future, and trust in such a method is therefore not appropriate.",
+    "scope": {
+      "level": "university",
+      "unit": "ETH Zurich",
+      "audience": "all members",
+      "qualifiers": []
+    },
+    "kind": "official_guidance",
+    "evidence": [
+      {
+        "sourceId": "cache-b7878af90bf5d9ed",
+        "quote": "Technical recognition of output generated using generative AI is currently unreliable and will probably remain so in the future. Trust in such a method is therefore not appropriate.",
+        "lineStart": 84,
+        "lineEnd": 84,
+        "sourceSnapshotHash": "bede8207bc3b799ca72bfd6f5986261076730a50ca92ee6d90547d78aa600828",
+        "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+        "retrievedAt": "2026-10-02T02:25:00.264665+00:00"
+      }
+    ]
+  },
+  {
+    "id": "eth-zurich-assessment-permission-lecturer-authority",
+    "statement": "ETH Zurich teaching guidance states that lecturers determine whether and how GenAI may be used in their courses and respective assessments, and encourages clear rules and communication.",
+    "scope": {
+      "level": "unknown",
+      "unit": null,
+      "audience": "lecturers",
+      "qualifiers": [
+        "ETH-issued teaching guidance about courses; not a specific adopted course policy."
+      ]
+    },
+    "kind": "official_guidance",
+    "evidence": [
+      {
+        "sourceId": "source-db95b0600465a006",
+        "quote": "• Responsibility: As a lecturer you are responsible for the content you provide to your students. This means that\nteaching materials created with GenAI must be subjected to quality control by you, including checking for possible\nbias. You determine whether and how GenAI may be used in your courses and for the respective assessments.",
+        "lineStart": 24,
+        "lineEnd": 26,
+        "sourceSnapshotHash": "89a4198947942c929009aa4660fe2089dd7dfed05633144ee5e52f04abd840e4",
+        "sourceUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf",
+        "retrievedAt": "2026-10-02T17:42:24.979496+00:00"
+      }
+    ]
+  },
+  {
+    "id": "eth-zurich-disclosure-declaration-of-originality",
+    "statement": "Declarations of originality at ETH Zurich include two options regarding generative AI (either generative AI technologies were not used, or generative AI use as a tool and its source declarations were agreed with the supervisor), and the choice of option and its implementation should be defined and agreed in advance between lecturers and students.",
+    "scope": {
+      "level": "university",
+      "unit": "ETH Zurich",
+      "audience": "students",
+      "qualifiers": [
+        "Bachelor, Master's, and Doctoral students"
+      ]
+    },
+    "kind": "official_guidance",
+    "evidence": [
+      {
+        "sourceId": "cache-b7878af90bf5d9ed",
+        "quote": "ETH Zurich's declarations of originality were adapted to include a passage on the use of artificial intelligence. These now include two options with the following focus on the use of generative artificial intelligence:\nGenerative AI technologies were not used.\nThe use of generative AI as a tool and its source declarations has been agreed with the supervisor.\nThe choice of option and its implementation in the second case should be clearly defined in advance and agreed between lecturers and students.",
+        "lineStart": 77,
+        "lineEnd": 80,
+        "sourceSnapshotHash": "bede8207bc3b799ca72bfd6f5986261076730a50ca92ee6d90547d78aa600828",
+        "sourceUrl": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+        "retrievedAt": "2026-10-02T02:25:00.264665+00:00"
+      }
+    ]
+  },
+  {
+    "id": "eth-zurich-disclosure-transparency-obligation",
+    "statement": "ETH teaching guidance asks students to clearly declare which GenAI tools were used for which parts of their work. If a tool is cited, the correct citation style should be used.",
+    "scope": {
+      "level": "university",
+      "unit": "ETH Zurich",
+      "audience": "students",
+      "qualifiers": []
+    },
+    "kind": "official_guidance",
+    "evidence": [
+      {
+        "sourceId": "source-db95b0600465a006",
+        "quote": "• Transparency: Be transparent about your use of GenAI. Clearly declare which tools you have used for which part of\nyour work, and if you cite a tool make sure you apply the correct citing style.",
+        "lineStart": 15,
+        "lineEnd": 16,
+        "sourceSnapshotHash": "89a4198947942c929009aa4660fe2089dd7dfed05633144ee5e52f04abd840e4",
+        "sourceUrl": "https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf",
+        "retrievedAt": "2026-10-02T17:42:24.979496+00:00"
+      }
+    ]
+  }
+]

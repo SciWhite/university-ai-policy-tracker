@@ -1,0 +1,2061 @@
+{
+  "pins": {
+    "ucl": "d6eb4f4f418467c3dcba08c829157d653dcaff13fc30f1fe3aff966b4f5d1f72",
+    "yale-university": "5486c6a0fba63d5b34a57b922bfb36909c81d4a687317ac489d8058a0918c313",
+    "princeton-university": "e092c65d0b9c883d08e07f28a970b48867f21e7045f451441a570730d1c9bc83",
+    "university-of-chicago": "600741e8695ae5e87fffb318a9302928e57ca2a8a98cc12df49548910b0c2adb",
+    "university-of-toronto": "8ff1f98d7df81b7e9a615d7353fad54090211ae44ca6601744ce52e436852412",
+    "university-of-california-san-diego": "8a0662bf752e6a3b9692a6e3065b8c8cd4c8d1ab739dd5d146ba8d0da0a6e57a",
+    "trinity-college-dublin-the-university-of-dublin": "f14df5f931cb3d2062d5b6b0ee460f788d1cdab920dfb5ae3f3fa420641a5a43",
+    "university-of-illinois-urbana-champaign": "ee9bcf4fd31bc20ad05f29487792bc0554c01896f18d0a11b3cb729426121e3b",
+    "university-of-texas-at-austin": "190986f119af5d2e72c2d0b6af6781ab3ab336f0416a0fec98d6a10b4000178f",
+    "university-of-birmingham": "f6de90db8699a98e684f33e2007419df3f3773e74779b00ff7ece19854d1939b",
+    "lund-university": "b59e620e8404e77e02a48eecf21c557c64d686a2cb944118e44f9f2dba3e2746",
+    "brown-university": "e16ab50f04ac60c537f93d17bea7b62e1c2fb290594e370967171fa40f37734b",
+    "pennsylvania-state-university": "131f7d0c4715597945805848f7b665848f657ab4f55fd599a9dc60aec29543c7",
+    "university-of-washington": "bef6597a9936cf75407aed7a26aef0401bf4b171cb85e591a714cf66aa90b2b9",
+    "kth-royal-institute-of-technology": "28d1bc1f4355c163941f9bb9a85002ac03f54462e82ff5e3847c312ce63a77b7",
+    "university-of-california-berkeley": "ac83b4b6cf829b7ffe5bf2d1a8962091a98da1162203497ad5798cb175c8c6f9",
+    "carnegie-mellon-university": "c6556e2fe4291813a4685ae111d15c2c181005d375f36760697c96e21761276f",
+    "the-university-of-western-australia": "9f28c3dabe5b412cda70fc431ae02b2f733c007d74b47eccccc9e7fbaf1380c4",
+    "university-of-amsterdam": "a4ad4e548f8ad21e57f518a895a371fb26d9c73e55c790cf188578e4a2539f2c",
+    "the-london-school-of-economics-and-political-science": "5c02cbf50bb9829e42c884557a92a0bde3bec7b9412287a619d5db212ca7f6ee",
+    "cuhk": "788f71cb1839c8f82eb0156177f00968b0c841010c3edab5776799c6d90c9293",
+    "university-of-michigan-ann-arbor": "ec451588fe671353511e41282ffeef82783640ee5a84faeb9f3248af89a790c3",
+    "ucla": "45fc27536c2e9750e4064edac27dac8ae3ad1fc7cb899763b49c506cee7d281c",
+    "university-of-alberta": "89da2f85d22fc56cc8fd6042ad07e44435d0e677a8b82e94d9c00a2bff5400b5",
+    "the-university-of-warwick": "11df5d8b904075849f3c8f4a04cb6855bb1d8b38907e6acf54b44407af8b4965",
+    "california-institute-of-technology": "3e2d32ec0a1539b06e269d55817cf5ad997afebb8f05511a636916ee90b73e3d",
+    "yonsei-university": "cf3f4d462cb727d41615c700ed9a4f3e61ba48a97ceee79e1877e97d69a081f1",
+    "duke-university": "926fedb3df800a01a1e9b7831b51213294174f1453bc6799265dc9865daee808",
+    "nanyang-technological-university": "07d8091b65e3514f1abfe4e46fb8644a7c9f9e8c52cb7509d56c57bbe78f8036",
+    "ku-leuven": "4aee8317930f16dedd181f107b0f93b83e81d0b8572edfaad6c1048e35391be8",
+    "northwestern-university": "e90e456bac87905edef70c6e377dc03e9c1371666c13dd797f2ad50c8f5e4a74",
+    "universite-psl": "91cea7c4735730d3b38b50e50c72440b9fe132746aec63e9e8c56134a27f4b7c",
+    "new-york-university": "1d753aaddd0d224542d5dddced55d8cfa4ba877072c9660f348f6fbaf36c8e75",
+    "city-university-of-hong-kong": "0aec19aae62334d4441961c3535216a0819742777875f960730ea82485b80e8e",
+    "the-hong-kong-polytechnic-university": "950b08a3857b0d45d05db38c5c3bcb74ec7eb8c31c86cd5f39d5ea38992b0147"
+  },
+  "scenes": {
+    "ucl": {
+      "slug": "ucl",
+      "eyebrow": "Local student guide",
+      "title": "Read your task instructions; a conversation is not a finding.",
+      "guidance": "These additions cover UCL guidance on marking and specified academic misconduct appeals. They do not provide a complete permission list.",
+      "scopeDetail": "These additions cover UCL guidance on marking and specified academic misconduct appeals. They do not provide a complete permission list.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable school or task rules.",
+      "artworkSrc": "/assets/policy-scenes/v5-ucl-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "These additions cover UCL guidance on marking and specified academic misconduct appeals. They do not provide a complete permission list.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-ucl-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of a scoped next action; the selectable guidance below gives the actual conditions.",
+          "checks": [
+            {
+              "text": "Read the applicable task and academic misconduct instructions.",
+              "evidenceHref": "https://www.ucl.ac.uk/study/sites/study/files/2026-09/Chapter%206%20Student%20Casework%20Framework%202026-27.pdf"
+            },
+            {
+              "text": "Use the specified form for an available misconduct appeal.",
+              "evidenceHref": "https://www.ucl.ac.uk/study/sites/study/files/2026-09/Chapter%206%20Student%20Casework%20Framework%202026-27.pdf"
+            },
+            {
+              "text": "If appealing an Investigatory Viva penalty, check Section 7 Stage 3.",
+              "evidenceHref": "https://www.ucl.ac.uk/study/sites/study/files/2026-09/Chapter%206%20Student%20Casework%20Framework%202026-27.pdf"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-ucl-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of an action to avoid within the scope stated below.",
+          "checks": [
+            {
+              "text": "Do not treat a quick conversation as a finding of misconduct.",
+              "evidenceHref": "https://www.ucl.ac.uk/teaching-learning/generative-ai-hub/genai-and-assessments"
+            },
+            {
+              "text": "Do not confuse an Investigatory Viva route with every other decision.",
+              "evidenceHref": "https://www.ucl.ac.uk/study/sites/study/files/2026-09/Chapter%206%20Student%20Casework%20Framework%202026-27.pdf"
+            },
+            {
+              "text": "Do not miss the applicable appeal deadline.",
+              "evidenceHref": "https://www.ucl.ac.uk/study/sites/study/files/2026-09/Chapter%206%20Student%20Casework%20Framework%202026-27.pdf"
+            }
+          ]
+        }
+      }
+    },
+    "yale-university": {
+      "slug": "yale-university",
+      "eyebrow": "Local student guide",
+      "title": "Find your school’s rule and procedure.",
+      "guidance": "Yale College and Yale School of Public Health have distinct scopes. CAPI response and appeal information below applies only to YSPH.",
+      "scopeDetail": "Yale College and Yale School of Public Health have distinct scopes. CAPI response and appeal information below applies only to YSPH.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable school or task rules.",
+      "artworkSrc": "/assets/policy-scenes/v5-yale-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "Yale College and Yale School of Public Health have distinct scopes. CAPI response and appeal information below applies only to YSPH.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-yale-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of a scoped next action; the selectable guidance below gives the actual conditions.",
+          "checks": [
+            {
+              "text": "Check whether the rule covers Yale College or YSPH.",
+              "evidenceHref": "https://catalog.yale.edu/undergraduate-regulations/regulations/academic-dishonesty/"
+            },
+            {
+              "text": "YSPH CAPI: respond in writing to a formal charge.",
+              "evidenceHref": "https://catalog.yale.edu/ysph/academic-policies/ysph-committee-academic-professional-integrity-capi/"
+            },
+            {
+              "text": "YSPH: check the grounds and timing before appealing.",
+              "evidenceHref": "https://catalog.yale.edu/ysph/academic-policies/ysph-committee-academic-professional-integrity-capi/"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-yale-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of an action to avoid within the scope stated below.",
+          "checks": [
+            {
+              "text": "Do not submit unacknowledged AI-generated text as your own.",
+              "evidenceHref": "https://catalog.yale.edu/ysph/academic-policies/ysph-committee-academic-professional-integrity-capi/"
+            },
+            {
+              "text": "Do not apply YSPH CAPI deadlines to all Yale schools.",
+              "evidenceHref": "https://catalog.yale.edu/ysph/academic-policies/ysph-committee-academic-professional-integrity-capi/"
+            },
+            {
+              "text": "Do not expect a YSPH adviser to speak as your advocate.",
+              "evidenceHref": "https://catalog.yale.edu/ysph/academic-policies/ysph-committee-academic-professional-integrity-capi/"
+            }
+          ]
+        }
+      }
+    },
+    "princeton-university": {
+      "slug": "princeton-university",
+      "eyebrow": "Local student guide",
+      "title": "Check the task and the appropriate disciplinary body.",
+      "guidance": "Undergraduate in-class tests use the Honor Committee; outside-class academic work uses the Committee on Discipline. Authorized academic support and AI attribution remain task-specific.",
+      "scopeDetail": "Undergraduate in-class tests use the Honor Committee; outside-class academic work uses the Committee on Discipline. Authorized academic support and AI attribution remain task-specific.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable school or task rules.",
+      "artworkSrc": "/assets/policy-scenes/v5-princeton-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "Undergraduate in-class tests use the Honor Committee; outside-class academic work uses the Committee on Discipline. Authorized academic support and AI attribution remain task-specific.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-princeton-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of a scoped next action; the selectable guidance below gives the actual conditions.",
+          "checks": [
+            {
+              "text": "Follow the instructor’s permitted-use parameters and disclose AI use.",
+              "evidenceHref": "https://rrr.princeton.edu/students-and-university/24-academic-regulations"
+            },
+            {
+              "text": "Undergraduate academic work: use Princeton-authorized tutoring support.",
+              "evidenceHref": "https://rrr.princeton.edu/students-and-university/24-academic-regulations"
+            },
+            {
+              "text": "Match a hearing or appeal to the correct disciplinary body.",
+              "evidenceHref": "https://scholarlyintegrity.princeton.edu/disciplinary-process/undergraduate-process/procedures"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-princeton-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of an action to avoid within the scope stated below.",
+          "checks": [
+            {
+              "text": "Do not present generated or paraphrased AI output as your own.",
+              "evidenceHref": "https://rrr.princeton.edu/students-and-university/24-academic-regulations"
+            },
+            {
+              "text": "Do not use unauthorized external tutoring, including AI tutoring bots, for undergraduate academic requirements.",
+              "evidenceHref": "https://rrr.princeton.edu/students-and-university/24-academic-regulations"
+            },
+            {
+              "text": "Do not merge Honor Committee and COD appeal routes.",
+              "evidenceHref": "https://scholarlyintegrity.princeton.edu/disciplinary-process/undergraduate-process/procedures"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-chicago": {
+      "slug": "university-of-chicago",
+      "eyebrow": "Local student guide",
+      "title": "Check your academic unit’s written procedure.",
+      "guidance": "The AI citation rule is Harris-specific. The Area Disciplinary Systems outline does not replace individual academic units’ written procedures.",
+      "scopeDetail": "The AI citation rule is Harris-specific. The Area Disciplinary Systems outline does not replace individual academic units’ written procedures.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable school or task rules.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-chicago-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The AI citation rule is Harris-specific. The Area Disciplinary Systems outline does not replace individual academic units’ written procedures.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-chicago-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of a scoped next action; the selectable guidance below gives the actual conditions.",
+          "checks": [
+            {
+              "text": "Harris coursework: cite your use of AI tools.",
+              "evidenceHref": "https://harris.uchicago.edu/student-life/dean-of-students-office/policies"
+            },
+            {
+              "text": "Check your unit’s procedure before arranging support.",
+              "evidenceHref": "https://studentmanual.uchicago.edu/student-life-conduct/university-disciplinary-systems/area-disciplinary-systems/"
+            },
+            {
+              "text": "Notify the Dean in advance if a supporter will attend an Area Committee meeting.",
+              "evidenceHref": "https://studentmanual.uchicago.edu/student-life-conduct/university-disciplinary-systems/area-disciplinary-systems/"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-chicago-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of an action to avoid within the scope stated below.",
+          "checks": [
+            {
+              "text": "Do not apply the Harris AI rule to every academic unit.",
+              "evidenceHref": "https://harris.uchicago.edu/student-life/dean-of-students-office/policies"
+            },
+            {
+              "text": "Do not expect the support person to speak or question witnesses for you.",
+              "evidenceHref": "https://studentmanual.uchicago.edu/student-life-conduct/university-disciplinary-systems/area-disciplinary-systems/"
+            },
+            {
+              "text": "Do not turn an Area sanction list into an automatic AI penalty.",
+              "evidenceHref": "https://studentmanual.uchicago.edu/student-life-conduct/university-disciplinary-systems/area-disciplinary-systems/"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-toronto": {
+      "slug": "university-of-toronto",
+      "eyebrow": "Local student guide",
+      "title": "Check instructor permission and respond to your notice.",
+      "guidance": "The captured Code is effective July 1, 2025. Instructor discussions, Dean meetings and University Tribunal appeals are separate stages with different protections.",
+      "scopeDetail": "The captured Code is effective July 1, 2025. Instructor discussions, Dean meetings and University Tribunal appeals are separate stages with different protections.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable school or task rules.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-toronto-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The captured Code is effective July 1, 2025. Instructor discussions, Dean meetings and University Tribunal appeals are separate stages with different protections.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-toronto-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of a scoped next action; the selectable guidance below gives the actual conditions.",
+          "checks": [
+            {
+              "text": "Check the instructor’s permission before using AI to complete assessed work.",
+              "evidenceHref": "https://governingcouncil.utoronto.ca/adfg/page/processes/academic-discipline-academic-discipline-appeals/academic-discipline/at-faculty-division"
+            },
+            {
+              "text": "Read and respond to the actual Dean meeting notice.",
+              "evidenceHref": "https://governingcouncil.utoronto.ca/secretariat/policies/code-behaviour-academic-matters-0"
+            },
+            {
+              "text": "Seek advice and confirm eligibility for legal support.",
+              "evidenceHref": "https://governingcouncil.utoronto.ca/secretariat/policies/code-behaviour-academic-matters-0"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-toronto-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Illustration of an action to avoid within the scope stated below.",
+          "checks": [
+            {
+              "text": "Do not use an unauthorized AI aid to complete an assessment.",
+              "evidenceHref": "https://governingcouncil.utoronto.ca/adfg/page/processes/academic-discipline-academic-discipline-appeals/academic-discipline/at-faculty-division"
+            },
+            {
+              "text": "Do not ignore a Dean meeting invitation.",
+              "evidenceHref": "https://governingcouncil.utoronto.ca/secretariat/policies/code-behaviour-academic-matters-0"
+            },
+            {
+              "text": "Do not apply the Tribunal appeal deadline to every Dean decision.",
+              "evidenceHref": "https://governingcouncil.utoronto.ca/secretariat/policies/code-behaviour-academic-matters-0"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-california-san-diego": {
+      "slug": "university-of-california-san-diego",
+      "eyebrow": "Local student guide",
+      "title": "Check task permission; seek help for the actual procedure.",
+      "guidance": "The captured administrative guidelines distinguish violation points, professional judgement and faculty academic sanctions. An appeal here covers specified administrative sanctions.",
+      "scopeDetail": "The captured administrative guidelines distinguish violation points, professional judgement and faculty academic sanctions. An appeal here covers specified administrative sanctions.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-california-san-diego-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The captured administrative guidelines distinguish violation points, professional judgement and faculty academic sanctions. An appeal here covers specified administrative sanctions.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-california-san-diego-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check assignment rules before using outside or AI help.",
+              "evidenceHref": "#enforcement-university-of-california-san-diego-local-fact-04"
+            },
+            {
+              "text": "Contact the Office of Student Advocacy yourself if you need help.",
+              "evidenceHref": "#enforcement-university-of-california-san-diego-local-fact-09"
+            },
+            {
+              "text": "For eligible administrative appeals, check the sanction-letter date.",
+              "evidenceHref": "#enforcement-university-of-california-san-diego-local-fact-07"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-california-san-diego-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not present another person’s or AI-assisted work without acknowledgement.",
+              "evidenceHref": "#enforcement-university-of-california-san-diego-local-fact-04"
+            },
+            {
+              "text": "Do not treat violation points as an automatic penalty.",
+              "evidenceHref": "#enforcement-university-of-california-san-diego-local-fact-03"
+            },
+            {
+              "text": "Do not assume an appeal pauses every sanction.",
+              "evidenceHref": "#enforcement-university-of-california-san-diego-local-fact-08"
+            }
+          ]
+        }
+      }
+    },
+    "trinity-college-dublin-the-university-of-dublin": {
+      "slug": "trinity-college-dublin-the-university-of-dublin",
+      "eyebrow": "Local student guide",
+      "title": "Credit GenAI; distinguish poor practice from misconduct.",
+      "guidance": "The captured AI statement and integrity guidance distinguish four levels. The indicative severity form is not an AI detector, and Level 4 referral is not automatic expulsion.",
+      "scopeDetail": "The captured AI statement and integrity guidance distinguish four levels. The indicative severity form is not an AI detector, and Level 4 referral is not automatic expulsion.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-trinity-college-dublin-the-university-of-dublin-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The captured AI statement and integrity guidance distinguish four levels. The indicative severity form is not an AI detector, and Level 4 referral is not automatic expulsion.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-trinity-college-dublin-the-university-of-dublin-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Reference GenAI sentences and quotations used in academic work.",
+              "evidenceHref": "#enforcement-trinity-college-dublin-the-university-of-dublin-local-fact-02"
+            },
+            {
+              "text": "For Level 1, check correction or referencing-penalty options.",
+              "evidenceHref": "#enforcement-trinity-college-dublin-the-university-of-dublin-local-fact-06"
+            },
+            {
+              "text": "If referred to the Junior Dean, read the separate procedure.",
+              "evidenceHref": "#enforcement-trinity-college-dublin-the-university-of-dublin-local-fact-09"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-trinity-college-dublin-the-university-of-dublin-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not submit GenAI output as your own work.",
+              "evidenceHref": "#enforcement-trinity-college-dublin-the-university-of-dublin-local-fact-02"
+            },
+            {
+              "text": "Do not confuse indicative severity with an AI-detector score.",
+              "evidenceHref": "#enforcement-trinity-college-dublin-the-university-of-dublin-local-fact-05"
+            },
+            {
+              "text": "Do not assume all four levels have the same consequence.",
+              "evidenceHref": "#enforcement-trinity-college-dublin-the-university-of-dublin-local-fact-06"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-illinois-urbana-champaign": {
+      "slug": "university-of-illinois-urbana-champaign",
+      "eyebrow": "Local student guide",
+      "title": "Check the task rule and the notice that applies to your route.",
+      "guidance": "Student Code 1-405 separates ordinary instructor decisions, EO review for recommended suspension/dismissal, and written acceptance of Category 1 sanctions. The captured general prohibition does not expressly name AI.",
+      "scopeDetail": "Student Code 1-405 separates ordinary instructor decisions, EO review for recommended suspension/dismissal, and written acceptance of Category 1 sanctions. The captured general prohibition does not expressly name AI.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-illinois-urbana-champaign-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "Student Code 1-405 separates ordinary instructor decisions, EO review for recommended suspension/dismissal, and written acceptance of Category 1 sanctions. The captured general prohibition does not expressly name AI.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-illinois-urbana-champaign-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Use only instructor-authorised external help during exams.",
+              "evidenceHref": "#enforcement-university-of-illinois-urbana-champaign-local-fact-01"
+            },
+            {
+              "text": "Identify whether your appeal starts with Instructor Decision Notice or EO Notice.",
+              "evidenceHref": "#enforcement-university-of-illinois-urbana-champaign-local-fact-05"
+            },
+            {
+              "text": "Arrange a consultant within the hearing rules.",
+              "evidenceHref": "#enforcement-university-of-illinois-urbana-champaign-local-fact-08"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-illinois-urbana-champaign-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not treat a Category 1 written waiver as every student’s waiver.",
+              "evidenceHref": "#enforcement-university-of-illinois-urbana-champaign-local-fact-02"
+            },
+            {
+              "text": "Do not expect a consultant to participate or testify.",
+              "evidenceHref": "#enforcement-university-of-illinois-urbana-champaign-local-fact-08"
+            },
+            {
+              "text": "Do not mistake the expected review duration for your filing deadline.",
+              "evidenceHref": "#enforcement-university-of-illinois-urbana-champaign-local-fact-07"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-texas-at-austin": {
+      "slug": "university-of-texas-at-austin",
+      "eyebrow": "Local student guide",
+      "title": "Match the notice to the correct Chapter 11 route.",
+      "guidance": "Administrative dispositions and hearing appeals have different starting events. Chapter 11 defines days and a 5pm submission rule. Detector guidance restricts contracts and privacy, not every detector unconditionally.",
+      "scopeDetail": "Administrative dispositions and hearing appeals have different starting events. Chapter 11 defines days and a 5pm submission rule. Detector guidance restricts contracts and privacy, not every detector unconditionally.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-texas-at-austin-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "Administrative dispositions and hearing appeals have different starting events. Chapter 11 defines days and a 5pm submission rule. Detector guidance restricts contracts and privacy, not every detector unconditionally.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-texas-at-austin-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check the contract and privacy conditions in detector guidance.",
+              "evidenceHref": "#enforcement-university-of-texas-at-austin-local-fact-01"
+            },
+            {
+              "text": "For an administrative disposition, check the branch and signing date.",
+              "evidenceHref": "#enforcement-university-of-texas-at-austin-local-fact-07"
+            },
+            {
+              "text": "For a hearing appeal, check the notification and defined-day rules.",
+              "evidenceHref": "#enforcement-university-of-texas-at-austin-local-fact-08"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-texas-at-austin-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not expect an advisor to advocate or address the hearing panel.",
+              "evidenceHref": "#enforcement-university-of-texas-at-austin-local-fact-05"
+            },
+            {
+              "text": "Do not confuse interim measures with suspended sanctions on appeal.",
+              "evidenceHref": "#enforcement-university-of-texas-at-austin-local-fact-09"
+            },
+            {
+              "text": "Do not treat a contract restriction as an unconditional detector ban.",
+              "evidenceHref": "#enforcement-university-of-texas-at-austin-local-fact-01"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-birmingham": {
+      "slug": "university-of-birmingham",
+      "eyebrow": "Local student guide",
+      "title": "Keep the first meeting request separate from the later appeal.",
+      "guidance": "The captured integrity code is for the 2026–27 cohort. The initial 10-working-day request and later 15-working-day College decision appeal use different routes; the first start is not precise enough to calculate.",
+      "scopeDetail": "The captured integrity code is for the 2026–27 cohort. The initial 10-working-day request and later 15-working-day College decision appeal use different routes; the first start is not precise enough to calculate.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-birmingham-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The captured integrity code is for the 2026–27 cohort. The initial 10-working-day request and later 15-working-day College decision appeal use different routes; the first start is not precise enough to calculate.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-birmingham-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Keep authorship accurate when using any permitted help.",
+              "evidenceHref": "#enforcement-university-of-birmingham-local-fact-01"
+            },
+            {
+              "text": "For an initial meeting outcome, contact the Investigating Officer about the request.",
+              "evidenceHref": "#enforcement-university-of-birmingham-local-fact-04"
+            },
+            {
+              "text": "For a College Committee appeal, check the Outcome Report sending date.",
+              "evidenceHref": "#enforcement-university-of-birmingham-local-fact-06"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-birmingham-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not combine the 10-day and 15-day routes.",
+              "evidenceHref": "#enforcement-university-of-birmingham-local-fact-06"
+            },
+            {
+              "text": "Do not describe normal route restrictions as loss of every appeal right.",
+              "evidenceHref": "#enforcement-university-of-birmingham-local-fact-05"
+            },
+            {
+              "text": "Do not turn referral into automatic expulsion.",
+              "evidenceHref": "#enforcement-university-of-birmingham-local-fact-03"
+            }
+          ]
+        }
+      }
+    },
+    "lund-university": {
+      "slug": "lund-university",
+      "eyebrow": "Local student guide",
+      "title": "Check both conditions and explain the work.",
+      "guidance": "The teaching FAQ describes unauthorised aid and presenting generated work as one’s own together. The general disciplinary guide covers response, review and support without an AI-specific fixed penalty.",
+      "scopeDetail": "The teaching FAQ describes unauthorised aid and presenting generated work as one’s own together. The general disciplinary guide covers response, review and support without an AI-specific fixed penalty.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-lund-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The teaching FAQ describes unauthorised aid and presenting generated work as one’s own together. The general disciplinary guide covers response, review and support without an AI-specific fixed penalty.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-lund-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check the syllabus or assignment rules and authorship requirements.",
+              "evidenceHref": "#enforcement-lund-university-local-fact-09"
+            },
+            {
+              "text": "Respond to the Legal Division invitation with your own statement.",
+              "evidenceHref": "#enforcement-lund-university-local-fact-02"
+            },
+            {
+              "text": "Contact student ombudsmen or Student Health for appropriate support.",
+              "evidenceHref": "#enforcement-lund-university-local-fact-06"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-lund-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not detach one condition from the FAQ’s two-condition description.",
+              "evidenceHref": "#enforcement-lund-university-local-fact-09"
+            },
+            {
+              "text": "Do not assume a reported concern already establishes misconduct.",
+              "evidenceHref": "#enforcement-lund-university-local-fact-02"
+            },
+            {
+              "text": "Do not treat the reported common suspension period as automatic.",
+              "evidenceHref": "#enforcement-lund-university-local-fact-04"
+            }
+          ]
+        }
+      }
+    },
+    "brown-university": {
+      "slug": "brown-university",
+      "eyebrow": "Local student guide",
+      "title": "Check your student group, notice and evidence.",
+      "guidance": "The Provost communication distinguishes undergraduate, graduate and medical routes. Appeal wording in the bulletin and linked older PDF differs in start-day detail; confirm your applicable procedure.",
+      "scopeDetail": "The Provost communication distinguishes undergraduate, graduate and medical routes. Appeal wording in the bulletin and linked older PDF differs in start-day detail; confirm your applicable procedure.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-brown-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The Provost communication distinguishes undergraduate, graduate and medical routes. Appeal wording in the bulletin and linked older PDF differs in start-day detail; confirm your applicable procedure.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-brown-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Ask about the actual task expectations before using AI.",
+              "evidenceHref": "#enforcement-brown-university-local-fact-01"
+            },
+            {
+              "text": "Review submitted evidence and prepare your own statement.",
+              "evidenceHref": "#enforcement-brown-university-local-fact-05"
+            },
+            {
+              "text": "Confirm your student group and applicable dean’s appeal procedure.",
+              "evidenceHref": "#enforcement-brown-university-local-fact-06"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-brown-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not treat the concern as an automatic finding or penalty.",
+              "evidenceHref": "#enforcement-brown-university-local-fact-03"
+            },
+            {
+              "text": "Do not assume a private resolution can bypass the University process.",
+              "evidenceHref": "#enforcement-brown-university-local-fact-01"
+            },
+            {
+              "text": "Do not assume every student group has the same referral channel.",
+              "evidenceHref": "#enforcement-brown-university-local-fact-02"
+            }
+          ]
+        }
+      }
+    },
+    "pennsylvania-state-university": {
+      "slug": "pennsylvania-state-university",
+      "eyebrow": "Local student guide",
+      "title": "Ask your instructor; respond to your actual notice.",
+      "guidance": "G9 is for undergraduates doing undergraduate work; graduate work follows GCAC805. Academic findings and administrative Action Plans are different decisions. Unverified detector-draft guidance is not included.",
+      "scopeDetail": "G9 is for undergraduates doing undergraduate work; graduate work follows GCAC805. Academic findings and administrative Action Plans are different decisions. Unverified detector-draft guidance is not included.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-pennsylvania-state-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "G9 is for undergraduates doing undergraduate work; graduate work follows GCAC805. Academic findings and administrative Action Plans are different decisions. Unverified detector-draft guidance is not included.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-pennsylvania-state-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Ask the instructor if the intended AI use is unclear.",
+              "evidenceHref": "#enforcement-pennsylvania-state-university-local-fact-04"
+            },
+            {
+              "text": "Return the integrity form within your campus or College’s stated period.",
+              "evidenceHref": "#enforcement-pennsylvania-state-university-local-fact-05"
+            },
+            {
+              "text": "Confirm which academic or administrative decision you want reviewed.",
+              "evidenceHref": "#enforcement-pennsylvania-state-university-local-fact-11"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-pennsylvania-state-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not expect a support person to speak or represent you.",
+              "evidenceHref": "#enforcement-pennsylvania-state-university-local-fact-06"
+            },
+            {
+              "text": "Do not treat XF as an automatic consequence of AI use.",
+              "evidenceHref": "#enforcement-pennsylvania-state-university-local-fact-09"
+            },
+            {
+              "text": "Do not treat an administrative conference as a new academic finding.",
+              "evidenceHref": "#enforcement-pennsylvania-state-university-local-fact-12"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-washington": {
+      "slug": "university-of-washington",
+      "eyebrow": "Local student guide",
+      "title": "Check expectations; distinguish an allegation from a finding.",
+      "guidance": "The saved SGP209 page has 2017 effective/revision history and its latest governing version remains unverified. Review routes are described, but conflicting 21-day starting events are not converted into a countdown.",
+      "scopeDetail": "The saved SGP209 page has 2017 effective/revision history and its latest governing version remains unverified. Review routes are described, but conflicting 21-day starting events are not converted into a countdown.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-washington-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The saved SGP209 page has 2017 effective/revision history and its latest governing version remains unverified. Review routes are described, but conflicting 21-day starting events are not converted into a countdown.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-washington-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check the instructor’s expectations for AI-assisted work.",
+              "evidenceHref": "#enforcement-university-of-washington-local-fact-02"
+            },
+            {
+              "text": "Read the Initial Order and the evidence-standard explanation.",
+              "evidenceHref": "#enforcement-university-of-washington-local-fact-04"
+            },
+            {
+              "text": "Seek appropriate support or accommodation through the conduct resources.",
+              "evidenceHref": "#enforcement-university-of-washington-local-fact-06"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-washington-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not submit copied AI output as your own work.",
+              "evidenceHref": "#enforcement-university-of-washington-local-fact-02"
+            },
+            {
+              "text": "Do not assume refusal to participate stops the case.",
+              "evidenceHref": "#enforcement-university-of-washington-local-fact-05"
+            },
+            {
+              "text": "Do not use one disputed 21-day start for every review route.",
+              "evidenceHref": "#enforcement-university-of-washington-local-fact-07"
+            }
+          ]
+        }
+      }
+    },
+    "kth-royal-institute-of-technology": {
+      "slug": "kth-royal-institute-of-technology",
+      "eyebrow": "Local student guide",
+      "title": "Check the assessment rule and use the chance to comment.",
+      "guidance": "The captured disciplinary provisions are a general framework, not an AI-specific penalty table. President and Disciplinary Board powers differ; no filing deadline is invented.",
+      "scopeDetail": "The captured disciplinary provisions are a general framework, not an AI-specific penalty table. President and Disciplinary Board powers differ; no filing deadline is invented.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-kth-royal-institute-of-technology-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The captured disciplinary provisions are a general framework, not an AI-specific penalty table. President and Disciplinary Board powers differ; no filing deadline is invented.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-kth-royal-institute-of-technology-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check which aids are prohibited for the assessment.",
+              "evidenceHref": "#enforcement-kth-royal-institute-of-technology-local-fact-04"
+            },
+            {
+              "text": "Use the opportunity to comment during the investigation.",
+              "evidenceHref": "#enforcement-kth-royal-institute-of-technology-local-fact-05"
+            },
+            {
+              "text": "Check whether an outcome comes from the President or the Board.",
+              "evidenceHref": "#enforcement-kth-royal-institute-of-technology-local-fact-07"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-kth-royal-institute-of-technology-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not assume a report is already a misconduct finding.",
+              "evidenceHref": "#enforcement-kth-royal-institute-of-technology-local-fact-05"
+            },
+            {
+              "text": "Do not present a possible maximum suspension as automatic.",
+              "evidenceHref": "#enforcement-kth-royal-institute-of-technology-local-fact-07"
+            },
+            {
+              "text": "Do not treat the detector guidance as a ban on every detector.",
+              "evidenceHref": "#enforcement-kth-royal-institute-of-technology-local-fact-09"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-california-berkeley": {
+      "slug": "university-of-california-berkeley",
+      "eyebrow": "Local student guide",
+      "title": "Read the decision letter and identify your review route.",
+      "guidance": "Berkeley’s Code distinguishes non-separation resolutions, separation-sanction-only appeals and post-hearing appeals. A timely appeal can stay sanctions without removing interim measures.",
+      "scopeDetail": "Berkeley’s Code distinguishes non-separation resolutions, separation-sanction-only appeals and post-hearing appeals. A timely appeal can stay sanctions without removing interim measures.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-california-berkeley-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "Berkeley’s Code distinguishes non-separation resolutions, separation-sanction-only appeals and post-hearing appeals. A timely appeal can stay sanctions without removing interim measures.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-california-berkeley-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Identify whether the resolution includes a separation sanction.",
+              "evidenceHref": "#enforcement-university-of-california-berkeley-local-fact-04"
+            },
+            {
+              "text": "Read both intent and full-appeal deadlines for the sanction-only branch.",
+              "evidenceHref": "#enforcement-university-of-california-berkeley-local-fact-05"
+            },
+            {
+              "text": "Confirm written permission before bringing an advisor or supporter.",
+              "evidenceHref": "#enforcement-university-of-california-berkeley-local-fact-03"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-california-berkeley-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not expect an advisor or supporter to write or speak for you.",
+              "evidenceHref": "#enforcement-university-of-california-berkeley-local-fact-03"
+            },
+            {
+              "text": "Do not add ten days after the five-day intent period.",
+              "evidenceHref": "#enforcement-university-of-california-berkeley-local-fact-05"
+            },
+            {
+              "text": "Do not mistake the appeal officer’s response period for your filing deadline.",
+              "evidenceHref": "#enforcement-university-of-california-berkeley-local-fact-07"
+            }
+          ]
+        }
+      }
+    },
+    "carnegie-mellon-university": {
+      "slug": "carnegie-mellon-university",
+      "eyebrow": "Local student guide",
+      "title": "Check the syllabus and the stage of any review.",
+      "guidance": "The captured AI communication is dated 2023; confirm current course instructions. Academic Review Meeting review and Academic Responsibility Panel appeal have separate seven-day rules.",
+      "scopeDetail": "The captured AI communication is dated 2023; confirm current course instructions. Academic Review Meeting review and Academic Responsibility Panel appeal have separate seven-day rules.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-carnegie-mellon-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The captured AI communication is dated 2023; confirm current course instructions. Academic Review Meeting review and Academic Responsibility Panel appeal have separate seven-day rules.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-carnegie-mellon-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Confirm express instructor permission before using generative AI.",
+              "evidenceHref": "#enforcement-carnegie-mellon-university-local-fact-01"
+            },
+            {
+              "text": "Use the opportunity to explain your work in the course investigation.",
+              "evidenceHref": "#enforcement-carnegie-mellon-university-local-fact-03"
+            },
+            {
+              "text": "Ask the process advisor which review or appeal route applies.",
+              "evidenceHref": "#enforcement-carnegie-mellon-university-local-fact-05"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-carnegie-mellon-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not treat a strong detection indication as misconduct by itself.",
+              "evidenceHref": "#enforcement-carnegie-mellon-university-local-fact-02"
+            },
+            {
+              "text": "Do not assume both seven-day routes use calendar days.",
+              "evidenceHref": "#enforcement-carnegie-mellon-university-local-fact-06"
+            },
+            {
+              "text": "Do not turn a course-level recommendation into direct expulsion.",
+              "evidenceHref": "#enforcement-carnegie-mellon-university-local-fact-04"
+            }
+          ]
+        }
+      }
+    },
+    "the-university-of-western-australia": {
+      "slug": "the-university-of-western-australia",
+      "eyebrow": "Local student guide",
+      "title": "Read the notice and match the decision to its appeal authority.",
+      "guidance": "Regulation 27 has different Head of School, Deputy Vice-Chancellor and Vice-Chancellor routes. The regulation 15 starting point differs in precision between the regulation and student guide.",
+      "scopeDetail": "Regulation 27 has different Head of School, Deputy Vice-Chancellor and Vice-Chancellor routes. The regulation 15 starting point differs in precision between the regulation and student guide.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-the-university-of-western-australia-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "Regulation 27 has different Head of School, Deputy Vice-Chancellor and Vice-Chancellor routes. The regulation 15 starting point differs in precision between the regulation and student guide.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-the-university-of-western-australia-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Read the evidence accompanying the concern and prepare your explanation.",
+              "evidenceHref": "#enforcement-the-university-of-western-australia-local-fact-03"
+            },
+            {
+              "text": "Contact the UWA Student Guild for support with grounds and a statement.",
+              "evidenceHref": "#enforcement-the-university-of-western-australia-local-fact-04"
+            },
+            {
+              "text": "Match the regulation number to the appropriate appeal authority.",
+              "evidenceHref": "#enforcement-the-university-of-western-australia-local-fact-05"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-the-university-of-western-australia-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not treat notification as proof of misconduct.",
+              "evidenceHref": "#enforcement-the-university-of-western-australia-local-fact-03"
+            },
+            {
+              "text": "Do not assume an appeal automatically stays sanctions.",
+              "evidenceHref": "#enforcement-the-university-of-western-australia-local-fact-07"
+            },
+            {
+              "text": "Do not calculate a regulation 15 deadline by silently merging sources.",
+              "evidenceHref": "#enforcement-the-university-of-western-australia-local-fact-06"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-amsterdam": {
+      "slug": "university-of-amsterdam",
+      "eyebrow": "Local student guide",
+      "title": "Check programme scope and preserve the appeal period.",
+      "guidance": "The AI permission statement applies to Law School master programmes. CBE fraud/plagiarism appeals use the decision-sending date, not the grade-registration date; pro-forma guidance is available.",
+      "scopeDetail": "The AI permission statement applies to Law School master programmes. CBE fraud/plagiarism appeals use the decision-sending date, not the grade-registration date; pro-forma guidance is available.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-amsterdam-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The AI permission statement applies to Law School master programmes. CBE fraud/plagiarism appeals use the decision-sending date, not the grade-registration date; pro-forma guidance is available.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-amsterdam-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Law master students: confirm express permission and transparent AI use.",
+              "evidenceHref": "#enforcement-university-of-amsterdam-local-fact-01"
+            },
+            {
+              "text": "Check the decision-sending date for a CBE misconduct appeal.",
+              "evidenceHref": "#enforcement-university-of-amsterdam-local-fact-05"
+            },
+            {
+              "text": "If grounds are not ready, read the timely pro-forma appeal guidance.",
+              "evidenceHref": "#enforcement-university-of-amsterdam-local-fact-06"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-amsterdam-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not submit partly AI-generated text as your own work.",
+              "evidenceHref": "#enforcement-university-of-amsterdam-local-fact-01"
+            },
+            {
+              "text": "Do not assume contacting a teacher extends the six-week deadline.",
+              "evidenceHref": "#enforcement-university-of-amsterdam-local-fact-06"
+            },
+            {
+              "text": "Do not read Turnitin Similarity as an AI-generation probability.",
+              "evidenceHref": "#enforcement-university-of-amsterdam-local-fact-08"
+            }
+          ]
+        }
+      }
+    },
+    "the-london-school-of-economics-and-political-science": {
+      "slug": "the-london-school-of-economics-and-political-science",
+      "eyebrow": "Local student guide",
+      "title": "Check the submission year, department permission and notice.",
+      "guidance": "The new regulations apply to assessments submitted in 2026/27 or later. Minimum departmental response time, representative notice and Panel appeal are three different periods.",
+      "scopeDetail": "The new regulations apply to assessments submitted in 2026/27 or later. Minimum departmental response time, representative notice and Panel appeal are three different periods.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-the-london-school-of-economics-and-political-science-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The new regulations apply to assessments submitted in 2026/27 or later. Minimum departmental response time, representative notice and Panel appeal are three different periods.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-the-london-school-of-economics-and-political-science-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check the rules in force for your assessment’s submission year.",
+              "evidenceHref": "#enforcement-the-london-school-of-economics-and-political-science-local-fact-01"
+            },
+            {
+              "text": "Follow the department’s permissions for any AI-assisted assessment work.",
+              "evidenceHref": "#enforcement-the-london-school-of-economics-and-political-science-local-fact-02"
+            },
+            {
+              "text": "Prepare a response and seek independent SU advice.",
+              "evidenceHref": "#enforcement-the-london-school-of-economics-and-political-science-local-fact-04"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-the-london-school-of-economics-and-political-science-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not use unauthorised AI assistance for any part of the assessment.",
+              "evidenceHref": "#enforcement-the-london-school-of-economics-and-political-science-local-fact-02"
+            },
+            {
+              "text": "Do not treat a minimum ten-day response window as a universal appeal deadline.",
+              "evidenceHref": "#enforcement-the-london-school-of-economics-and-political-science-local-fact-03"
+            },
+            {
+              "text": "Do not assume sanctions or resubmission are the same in every case.",
+              "evidenceHref": "#enforcement-the-london-school-of-economics-and-political-science-local-fact-05"
+            }
+          ]
+        }
+      }
+    },
+    "cuhk": {
+      "slug": "cuhk",
+      "eyebrow": "Local student guide",
+      "title": "Identify the course provider and review the actual report.",
+      "guidance": "Initial committee/FTP and direct SCSD decisions have separate seven-working-day appeal routes. VeriGuide similarity and suggested AI-detection syllabus wording are different evidence types.",
+      "scopeDetail": "Initial committee/FTP and direct SCSD decisions have separate seven-working-day appeal routes. VeriGuide similarity and suggested AI-detection syllabus wording are different evidence types.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-cuhk-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "Initial committee/FTP and direct SCSD decisions have separate seven-working-day appeal routes. VeriGuide similarity and suggested AI-detection syllabus wording are different evidence types.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-cuhk-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Identify the unit providing the course, including MBChB exceptions.",
+              "evidenceHref": "#enforcement-cuhk-local-fact-01"
+            },
+            {
+              "text": "Review the relevant similarity-report sections before committee referral.",
+              "evidenceHref": "#enforcement-cuhk-local-fact-05"
+            },
+            {
+              "text": "Choose the appeal path that matches the original decision-maker.",
+              "evidenceHref": "#enforcement-cuhk-local-fact-03"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-cuhk-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not treat similarity as an AI-detection proof standard.",
+              "evidenceHref": "#enforcement-cuhk-local-fact-05"
+            },
+            {
+              "text": "Do not treat a suggested template as actual detector use in every course.",
+              "evidenceHref": "#enforcement-cuhk-local-fact-06"
+            },
+            {
+              "text": "Do not apply plagiarism minimum penalties to every AI use.",
+              "evidenceHref": "#enforcement-cuhk-local-fact-02"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-michigan-ann-arbor": {
+      "slug": "university-of-michigan-ann-arbor",
+      "eyebrow": "Local student guide",
+      "title": "LSA: identify the instructor or SAA route.",
+      "guidance": "These procedures apply to LSA. Pending-case rules, college sanctions and Academic Judiciary Committee appeals are not presented as rules for every Michigan school.",
+      "scopeDetail": "These procedures apply to LSA. Pending-case rules, college sanctions and Academic Judiciary Committee appeals are not presented as rules for every Michigan school.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-michigan-ann-arbor-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "These procedures apply to LSA. Pending-case rules, college sanctions and Academic Judiciary Committee appeals are not presented as rules for every Michigan school.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-michigan-ann-arbor-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check whether the case belongs to instructor resolution or SAA.",
+              "evidenceHref": "#enforcement-university-of-michigan-ann-arbor-local-fact-01"
+            },
+            {
+              "text": "Prepare your statement and notify SAA before bringing a supporter.",
+              "evidenceHref": "#enforcement-university-of-michigan-ann-arbor-local-fact-03"
+            },
+            {
+              "text": "For an LSA appeal, check the resolution-letter date and permitted grounds.",
+              "evidenceHref": "#enforcement-university-of-michigan-ann-arbor-local-fact-06"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-michigan-ann-arbor-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not assume an unresolved allegation already establishes responsibility.",
+              "evidenceHref": "#enforcement-university-of-michigan-ann-arbor-local-fact-02"
+            },
+            {
+              "text": "Do not mistake the Student Honor Council representative for your advocate.",
+              "evidenceHref": "#enforcement-university-of-michigan-ann-arbor-local-fact-04"
+            },
+            {
+              "text": "Do not assume LSA sanctions stop or can only decrease during appeal.",
+              "evidenceHref": "#enforcement-university-of-michigan-ann-arbor-local-fact-07"
+            }
+          ]
+        }
+      }
+    },
+    "ucla": {
+      "slug": "ucla",
+      "eyebrow": "Local student guide",
+      "title": "Read the resolution and distinguish intent from full appeal.",
+      "guidance": "The UCLA Code defines Days as University business days. Non-separation, separation and post-hearing routes differ; an additional five-day period is not an invented single deadline.",
+      "scopeDetail": "The UCLA Code defines Days as University business days. Non-separation, separation and post-hearing routes differ; an additional five-day period is not an invented single deadline.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-ucla-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The UCLA Code defines Days as University business days. Non-separation, separation and post-hearing routes differ; an additional five-day period is not an invented single deadline.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-ucla-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Identify whether Suspension or Dismissal is in the resolution.",
+              "evidenceHref": "#enforcement-ucla-local-fact-04"
+            },
+            {
+              "text": "For separation cases, distinguish a hearing request from sanction-only appeal.",
+              "evidenceHref": "#enforcement-ucla-local-fact-05"
+            },
+            {
+              "text": "Choose or request an advisor within the Code’s participation limits.",
+              "evidenceHref": "#enforcement-ucla-local-fact-03"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-ucla-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not expect an advisor to speak or interfere for you.",
+              "evidenceHref": "#enforcement-ucla-local-fact-03"
+            },
+            {
+              "text": "Do not assume both administrative routes go to the same appeal authority.",
+              "evidenceHref": "#enforcement-ucla-local-fact-05"
+            },
+            {
+              "text": "Do not mistake the authority’s twenty-day period for your filing deadline.",
+              "evidenceHref": "#enforcement-ucla-local-fact-07"
+            }
+          ]
+        }
+      }
+    },
+    "university-of-alberta": {
+      "slug": "university-of-alberta",
+      "eyebrow": "Local student guide",
+      "title": "Understand NDAO and the complaint process before choosing.",
+      "guidance": "NDAO requires agreement and has conditions for later record removal. The student guidance is an overview; the linked formal Appendix B was not fully obtained.",
+      "scopeDetail": "NDAO requires agreement and has conditions for later record removal. The student guidance is an overview; the linked formal Appendix B was not fully obtained.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-university-of-alberta-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "NDAO requires agreement and has conditions for later record removal. The student guidance is an overview; the linked formal Appendix B was not fully obtained.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-alberta-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Use the opportunity to respond and understand the offered options.",
+              "evidenceHref": "#enforcement-university-of-alberta-local-fact-01"
+            },
+            {
+              "text": "Ask the Office of the Student Ombuds about the actual process.",
+              "evidenceHref": "#enforcement-university-of-alberta-local-fact-05"
+            },
+            {
+              "text": "Before agreeing to NDAO, read the admission and record-removal conditions.",
+              "evidenceHref": "#enforcement-university-of-alberta-local-fact-02"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-university-of-alberta-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not assume NDAO is offered or agreed automatically.",
+              "evidenceHref": "#enforcement-university-of-alberta-local-fact-01"
+            },
+            {
+              "text": "Do not treat completion alone as immediate record removal.",
+              "evidenceHref": "#enforcement-university-of-alberta-local-fact-02"
+            },
+            {
+              "text": "Do not present the captured outcomes as a complete formal list.",
+              "evidenceHref": "#enforcement-university-of-alberta-local-fact-04"
+            }
+          ]
+        }
+      }
+    },
+    "the-university-of-warwick": {
+      "slug": "the-university-of-warwick",
+      "eyebrow": "Local student guide",
+      "title": "Distinguish poor practice, misconduct and Panel powers.",
+      "guidance": "Regulation 11 separates poor academic practice from misconduct. B4.4 consideration and B5 appeal differ; University handling targets are not student filing deadlines.",
+      "scopeDetail": "Regulation 11 separates poor academic practice from misconduct. B4.4 consideration and B5 appeal differ; University handling targets are not student filing deadlines.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-the-university-of-warwick-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "Regulation 11 separates poor academic practice from misconduct. B4.4 consideration and B5 appeal differ; University handling targets are not student filing deadlines.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-the-university-of-warwick-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Read the distinction between poor practice and unfair-advantage misconduct.",
+              "evidenceHref": "#enforcement-the-university-of-warwick-local-fact-01"
+            },
+            {
+              "text": "Prepare your own response and request appropriate support or adjustments.",
+              "evidenceHref": "#enforcement-the-university-of-warwick-local-fact-05"
+            },
+            {
+              "text": "Check whether you need B4.4 consideration or B5 appeal.",
+              "evidenceHref": "#enforcement-the-university-of-warwick-local-fact-06"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-the-university-of-warwick-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not generalise poor-practice academic judgement limits to all appeals.",
+              "evidenceHref": "#enforcement-the-university-of-warwick-local-fact-02"
+            },
+            {
+              "text": "Do not treat a sixty- or thirty-day target as an inflexible legal deadline.",
+              "evidenceHref": "#enforcement-the-university-of-warwick-local-fact-04"
+            },
+            {
+              "text": "Do not use the B4.4 ten-day window as an invented B5 deadline.",
+              "evidenceHref": "#enforcement-the-university-of-warwick-local-fact-07"
+            }
+          ]
+        }
+      }
+    },
+    "california-institute-of-technology": {
+      "slug": "california-institute-of-technology",
+      "eyebrow": "Local student guide",
+      "title": "Read your options before choosing Early Resolution.",
+      "guidance": "The captured undergraduate Honor Code distinguishes eligible Early Resolution from the full Board process. Detector guidance strongly discourages use but is not a universal ban.",
+      "scopeDetail": "The captured undergraduate Honor Code distinguishes eligible Early Resolution from the full Board process. Detector guidance strongly discourages use but is not a universal ban.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-california-institute-of-technology-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The captured undergraduate Honor Code distinguishes eligible Early Resolution from the full Board process. Detector guidance strongly discourages use but is not a universal ban.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-california-institute-of-technology-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check the task’s permitted resources before using assistance.",
+              "evidenceHref": "#enforcement-california-institute-of-technology-local-fact-01"
+            },
+            {
+              "text": "Compare Early Resolution with the full Board option.",
+              "evidenceHref": "#enforcement-california-institute-of-technology-local-fact-02"
+            },
+            {
+              "text": "Ask about an eligible Caltech-community advisor.",
+              "evidenceHref": "#enforcement-california-institute-of-technology-local-fact-08"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 268
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-california-institute-of-technology-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not assume Early Resolution retains the full hearing or appeal.",
+              "evidenceHref": "#enforcement-california-institute-of-technology-local-fact-03"
+            },
+            {
+              "text": "Do not treat choosing not to speak as an automatic finding.",
+              "evidenceHref": "#enforcement-california-institute-of-technology-local-fact-09"
+            },
+            {
+              "text": "Do not turn detector guidance into a binding university-wide ban.",
+              "evidenceHref": "#enforcement-california-institute-of-technology-local-fact-16"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 269
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 269
+    },
+    "yonsei-university": {
+      "slug": "yonsei-university",
+      "eyebrow": "Local student guide",
+      "title": "Separate coursework guidance from research-integrity objections.",
+      "guidance": "The 2024 AI guidance and research-integrity procedures have different scopes. The research objection period is 30 unspecified days; ordinary coursework appeal rights are not established here.",
+      "scopeDetail": "The 2024 AI guidance and research-integrity procedures have different scopes. The research objection period is 30 unspecified days; ordinary coursework appeal rights are not established here.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-yonsei-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The 2024 AI guidance and research-integrity procedures have different scopes. The research objection period is 30 unspecified days; ordinary coursework appeal rights are not established here.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-yonsei-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Acknowledge AI-generated content with proper attribution.",
+              "evidenceHref": "#enforcement-yonsei-university-local-fact-06"
+            },
+            {
+              "text": "For research results, check the notification and objection route.",
+              "evidenceHref": "#enforcement-yonsei-university-local-fact-03"
+            },
+            {
+              "text": "Treat the named detection tools as reference-only guidance.",
+              "evidenceHref": "#enforcement-yonsei-university-local-fact-07"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 268
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-yonsei-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not apply the research objection clock to coursework.",
+              "evidenceHref": "#enforcement-yonsei-university-local-fact-03"
+            },
+            {
+              "text": "Do not read 60-day institutional handling as your filing deadline.",
+              "evidenceHref": "#enforcement-yonsei-university-local-fact-04"
+            },
+            {
+              "text": "Do not assume detector scores establish responsibility.",
+              "evidenceHref": "#enforcement-yonsei-university-local-fact-07"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 269
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 269
+    },
+    "duke-university": {
+      "slug": "duke-university",
+      "eyebrow": "Local student guide",
+      "title": "Check express course permission and read the resolution letter.",
+      "guidance": "The Community Standard and captured OSCCS process do not establish every graduate or professional-school procedure. A Conduct Board request has a letter-specific three-day deadline.",
+      "scopeDetail": "The Community Standard and captured OSCCS process do not establish every graduate or professional-school procedure. A Conduct Board request has a letter-specific three-day deadline.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-duke-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The Community Standard and captured OSCCS process do not establish every graduate or professional-school procedure. A Conduct Board request has a letter-specific three-day deadline.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-duke-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Confirm express instructor permission for assignment or exam AI.",
+              "evidenceHref": "#enforcement-duke-university-local-fact-01"
+            },
+            {
+              "text": "Ask about a trained Community Standard Advocate.",
+              "evidenceHref": "#enforcement-duke-university-local-fact-04"
+            },
+            {
+              "text": "Use the opportunity to inspect and respond to hearing evidence.",
+              "evidenceHref": "#enforcement-duke-university-local-fact-06"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 268
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-duke-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not ignore a properly notified hearing; request any needed reschedule promptly.",
+              "evidenceHref": "#enforcement-duke-university-local-fact-03"
+            },
+            {
+              "text": "Do not assume a requested Board hearing can only lower outcomes.",
+              "evidenceHref": "#enforcement-duke-university-local-fact-05"
+            },
+            {
+              "text": "Do not wait until after the deadline to seek an appeal exception.",
+              "evidenceHref": "#enforcement-duke-university-local-fact-09"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 269
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 269
+    },
+    "nanyang-technological-university": {
+      "slug": "nanyang-technological-university",
+      "eyebrow": "Local student guide",
+      "title": "Keep AI research use transparent and experimental data genuine.",
+      "guidance": "These supplements concern research integrity, AI visuals and text similarity. RIO reporting and the preliminary-inquiry target are not a universal coursework appeal process.",
+      "scopeDetail": "These supplements concern research integrity, AI visuals and text similarity. RIO reporting and the preliminary-inquiry target are not a universal coursework appeal process.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-nanyang-technological-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "These supplements concern research integrity, AI visuals and text similarity. RIO reporting and the preliminary-inquiry target are not a universal coursework appeal process.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-nanyang-technological-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Cite AI contributions and put direct AI quotations in quotation marks.",
+              "evidenceHref": "#enforcement-nanyang-technological-university-local-fact-01"
+            },
+            {
+              "text": "Label AI visuals and record reproducible methods and tools.",
+              "evidenceHref": "#enforcement-nanyang-technological-university-local-fact-04"
+            },
+            {
+              "text": "Consult the research-integrity contacts when unsure.",
+              "evidenceHref": "#enforcement-nanyang-technological-university-local-fact-09"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 268
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-nanyang-technological-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not pass AI visuals off as experimental data outside the stated exception.",
+              "evidenceHref": "#enforcement-nanyang-technological-university-local-fact-04"
+            },
+            {
+              "text": "Do not treat 45 days as your hard appeal deadline.",
+              "evidenceHref": "#enforcement-nanyang-technological-university-local-fact-10"
+            },
+            {
+              "text": "Do not equate text similarity with an AI-generation finding.",
+              "evidenceHref": "#enforcement-nanyang-technological-university-local-fact-12"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 269
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 269
+    },
+    "ku-leuven": {
+      "slug": "ku-leuven",
+      "eyebrow": "Local student guide",
+      "title": "Identify the examination decision and keep your drafts.",
+      "guidance": "The 2026–27 rules distinguish internal examination appeals, severe-fraud discipline and incoming exchange cases. The seven-calendar-day start depends on decision category.",
+      "scopeDetail": "The 2026–27 rules distinguish internal examination appeals, severe-fraud discipline and incoming exchange cases. The seven-calendar-day start depends on decision category.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-ku-leuven-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The 2026–27 rules distinguish internal examination appeals, severe-fraud discipline and incoming exchange cases. The seven-calendar-day start depends on decision category.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-ku-leuven-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check the permission and transparency requirements for GenAI.",
+              "evidenceHref": "#enforcement-ku-leuven-local-fact-02"
+            },
+            {
+              "text": "Use the examination ombudsperson hearing protection.",
+              "evidenceHref": "#enforcement-ku-leuven-local-fact-04"
+            },
+            {
+              "text": "Keep interim versions and be prepared to explain your assignment.",
+              "evidenceHref": "#enforcement-ku-leuven-local-fact-11"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 268
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-ku-leuven-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not assume KU Leuven sets the final penalty for incoming exchange students.",
+              "evidenceHref": "#enforcement-ku-leuven-local-fact-03"
+            },
+            {
+              "text": "Do not select a seven-day clock before classifying the decision.",
+              "evidenceHref": "#enforcement-ku-leuven-local-fact-07"
+            },
+            {
+              "text": "Do not merge different external Council routes into one universal entitlement.",
+              "evidenceHref": "#enforcement-ku-leuven-local-fact-10"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 269
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 269
+    },
+    "northwestern-university": {
+      "slug": "northwestern-university",
+      "eyebrow": "Local student guide",
+      "title": "Read the notice and identify your school’s process.",
+      "guidance": "University Parts A/B, general Part C and TGS appeal wording must stay distinct. Some ten-business-day starts are unspecified, and TGS uses two different start expressions.",
+      "scopeDetail": "University Parts A/B, general Part C and TGS appeal wording must stay distinct. Some ten-business-day starts are unspecified, and TGS uses two different start expressions.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-northwestern-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "University Parts A/B, general Part C and TGS appeal wording must stay distinct. Some ten-business-day starts are unspecified, and TGS uses two different start expressions.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-northwestern-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Attribute work produced by generative AI or another resource.",
+              "evidenceHref": "#enforcement-northwestern-university-local-fact-01"
+            },
+            {
+              "text": "Read the written facts and evidence before your meeting.",
+              "evidenceHref": "#enforcement-northwestern-university-local-fact-04"
+            },
+            {
+              "text": "Contact the relevant school’s academic-integrity contact.",
+              "evidenceHref": "#enforcement-northwestern-university-local-fact-11"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 223
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-northwestern-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not equate a written concern with a completed responsibility finding.",
+              "evidenceHref": "#enforcement-northwestern-university-local-fact-04"
+            },
+            {
+              "text": "Do not rewrite TGS decision wording as a receipt-based date.",
+              "evidenceHref": "#enforcement-northwestern-university-local-fact-10"
+            },
+            {
+              "text": "Do not assume a first offense always or never means separation.",
+              "evidenceHref": "#enforcement-northwestern-university-local-fact-07"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 223
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 223
+    },
+    "universite-psl": {
+      "slug": "universite-psl",
+      "eyebrow": "Local student guide",
+      "title": "Check teacher permission and disclose permitted AI use.",
+      "guidance": "The captured 2025 common scholastic regulation and CIENS charter have separate scopes. Examination participation and diploma issuance differ while discipline is pending.",
+      "scopeDetail": "The captured 2025 common scholastic regulation and CIENS charter have separate scopes. Examination participation and diploma issuance differ while discipline is pending.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-universite-psl-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The captured 2025 common scholastic regulation and CIENS charter have separate scopes. Examination participation and diploma issuance differ while discipline is pending.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-universite-psl-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check whether your teacher permits the particular AI use.",
+              "evidenceHref": "#enforcement-universite-psl-local-fact-01"
+            },
+            {
+              "text": "Explicitly acknowledge AI use where it is permitted.",
+              "evidenceHref": "#enforcement-universite-psl-local-fact-01"
+            },
+            {
+              "text": "Read the pending-decision rules for exams and provisional results.",
+              "evidenceHref": "#enforcement-universite-psl-local-fact-05"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 223
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-universite-psl-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not hide AI use under the applicable disclosure rule.",
+              "evidenceHref": "#enforcement-universite-psl-local-fact-01"
+            },
+            {
+              "text": "Do not infer AI-detector reliability from an originality-checking clause.",
+              "evidenceHref": "#enforcement-universite-psl-local-fact-03"
+            },
+            {
+              "text": "Do not invent a full local sanctions list from a code reference.",
+              "evidenceHref": "#enforcement-universite-psl-local-fact-06"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 223
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 223
+    },
+    "new-york-university": {
+      "slug": "new-york-university",
+      "eyebrow": "Local student guide",
+      "title": "Check school scope before choosing a review route.",
+      "guidance": "The conduct procedure here is Tandon’s; the AI-detector advice is Steinhardt faculty guidance. The seven-business-day Dean appeal is limited to SAC suspension or expulsion decisions.",
+      "scopeDetail": "The conduct procedure here is Tandon’s; the AI-detector advice is Steinhardt faculty guidance. The seven-business-day Dean appeal is limited to SAC suspension or expulsion decisions.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-new-york-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The conduct procedure here is Tandon’s; the AI-detector advice is Steinhardt faculty guidance. The seven-business-day Dean appeal is limited to SAC suspension or expulsion decisions.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-new-york-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Check whether the Tandon procedure applies to your case.",
+              "evidenceHref": "#enforcement-new-york-university-local-fact-02"
+            },
+            {
+              "text": "Prepare your evidence and understand Chair-led witness questions.",
+              "evidenceHref": "#enforcement-new-york-university-local-fact-03"
+            },
+            {
+              "text": "For an eligible appeal, check the decision-sending date.",
+              "evidenceHref": "#enforcement-new-york-university-local-fact-05"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 268
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-new-york-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not treat a general Tandon definition as an explicit AI rule.",
+              "evidenceHref": "#enforcement-new-york-university-local-fact-01"
+            },
+            {
+              "text": "Do not assume an appeal automatically stays a sanction.",
+              "evidenceHref": "#enforcement-new-york-university-local-fact-06"
+            },
+            {
+              "text": "Do not turn detector caution into a university-wide ban.",
+              "evidenceHref": "#enforcement-new-york-university-local-fact-07"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 269
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 269
+    },
+    "city-university-of-hong-kong": {
+      "slug": "city-university-of-hong-kong",
+      "eyebrow": "Local student guide",
+      "title": "Follow course parameters and prepare a timely explanation.",
+      "guidance": "The captured rules distinguish ordinary first offences from fabricated references and other serious categories. Written explanation, interview timing, companion notice and appeal are separate periods.",
+      "scopeDetail": "The captured rules distinguish ordinary first offences from fabricated references and other serious categories. Written explanation, interview timing, companion notice and appeal are separate periods.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-city-university-of-hong-kong-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "The captured rules distinguish ordinary first offences from fabricated references and other serious categories. Written explanation, interview timing, companion notice and appeal are separate periods.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-city-university-of-hong-kong-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Follow Course Leader parameters and acknowledge permitted AI.",
+              "evidenceHref": "#enforcement-city-university-of-hong-kong-local-fact-01"
+            },
+            {
+              "text": "Check the five-working-day written-response requirement.",
+              "evidenceHref": "#enforcement-city-university-of-hong-kong-local-fact-05"
+            },
+            {
+              "text": "Tell the committee about any eligible companion in advance.",
+              "evidenceHref": "#enforcement-city-university-of-hong-kong-local-fact-06"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 268
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-city-university-of-hong-kong-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not fabricate citations or references with AI.",
+              "evidenceHref": "#enforcement-city-university-of-hong-kong-local-fact-01"
+            },
+            {
+              "text": "Do not assume the ordinary first-offence rule covers fabricated references.",
+              "evidenceHref": "#enforcement-city-university-of-hong-kong-local-fact-02"
+            },
+            {
+              "text": "Do not assume an appeal panel can only reduce a penalty.",
+              "evidenceHref": "#enforcement-city-university-of-hong-kong-local-fact-10"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 269
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 269
+    },
+    "the-hong-kong-polytechnic-university": {
+      "slug": "the-hong-kong-polytechnic-university",
+      "eyebrow": "Local student guide",
+      "title": "Read the notice and identify the decision being appealed.",
+      "guidance": "SDC hearings, minimum response time, service rules and appeals from 7.1.2 unit decisions are different provisions. A campus companion attends the SDC meeting as an observer.",
+      "scopeDetail": "SDC hearings, minimum response time, service rules and appeals from 7.1.2 unit decisions are different provisions. A campus companion attends the SDC meeting as an observer.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "Editorial illustration: a student checks the applicable assessment or procedure instructions.",
+      "artworkSrc": "/assets/policy-scenes/v5-the-hong-kong-polytechnic-university-hero.webp",
+      "artworkLandscape": true,
+      "artworkContainsText": true,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "SDC hearings, minimum response time, service rules and appeals from 7.1.2 unit decisions are different provisions. A campus companion attends the SDC meeting as an observer.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v5-the-hong-kong-polytechnic-university-do.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "Student prepares a response or checks the applicable guidance; complete conditions appear in the selectable text.",
+          "checks": [
+            {
+              "text": "Confirm task permission before submitting AI-generated material.",
+              "evidenceHref": "#enforcement-the-hong-kong-polytechnic-university-local-fact-01"
+            },
+            {
+              "text": "Read the SDC notice and use the written-representation opportunity.",
+              "evidenceHref": "#enforcement-the-hong-kong-polytechnic-university-local-fact-08"
+            },
+            {
+              "text": "For a 7.1.2 unit decision, check receipt of the decision letter.",
+              "evidenceHref": "#enforcement-the-hong-kong-polytechnic-university-local-fact-10"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 268
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v5-the-hong-kong-polytechnic-university-dont.webp",
+          "artworkLandscape": true,
+          "artworkAlt": "An action or assumption to avoid; this image does not determine responsibility or punishment.",
+          "checks": [
+            {
+              "text": "Do not expect the accompanying observer to join the SDC discussion.",
+              "evidenceHref": "#enforcement-the-hong-kong-polytechnic-university-local-fact-09"
+            },
+            {
+              "text": "Do not treat the seven-day unit appeal as a further appeal from every SDC decision.",
+              "evidenceHref": "#enforcement-the-hong-kong-polytechnic-university-local-fact-10"
+            },
+            {
+              "text": "Do not convert a minimum seven-day response period into a receipt-based clock.",
+              "evidenceHref": "#enforcement-the-hong-kong-polytechnic-university-local-fact-08"
+            }
+          ],
+          "artworkWidth": 1200,
+          "artworkHeight": 269
+        }
+      },
+      "artworkWidth": 1200,
+      "artworkHeight": 269
+    }
+  }
+}

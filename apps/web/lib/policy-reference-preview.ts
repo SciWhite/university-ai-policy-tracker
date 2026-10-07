@@ -29,8 +29,32 @@ export function isPublishedV4University(slug: string): boolean {
   return publishedV4UniversitySlugs.some(candidate => candidate === slug);
 }
 
-/** Legacy preview allowlist alias pointing to the published cohort. */
-export const policyReferencePreviewSlugs = publishedV4UniversitySlugs;
+/** New V5 pages and selected V4 pages whose shared modules are included in this release. */
+export const publishedStudentGuideSlugs = [
+  "california-institute-of-technology", "yonsei-university", "duke-university", "nanyang-technological-university", "ku-leuven", "northwestern-university", "universite-psl", "new-york-university", "city-university-of-hong-kong", "the-hong-kong-polytechnic-university",
+  "university-of-california-berkeley", "carnegie-mellon-university", "the-university-of-western-australia", "university-of-amsterdam", "the-london-school-of-economics-and-political-science", "cuhk", "university-of-michigan-ann-arbor", "ucla", "university-of-alberta", "the-university-of-warwick",
+  "university-of-california-san-diego", "trinity-college-dublin-the-university-of-dublin", "university-of-illinois-urbana-champaign", "university-of-texas-at-austin", "university-of-birmingham", "lund-university", "brown-university", "pennsylvania-state-university", "university-of-washington", "kth-royal-institute-of-technology",
+  "ucl", "yale-university", "princeton-university", "university-of-chicago", "university-of-toronto",
+  "stanford-university", "harvard-university", "national-university-of-singapore", "utrecht-university", "imperial-college-london",
+  "unsw-sydney", "university-of-sydney", "university-of-oxford", "adelaide-university", "de-la-salle-university", "university-of-queensland",
+  "university-of-auckland", "university-of-bristol", "manchester", "edinburgh", "ubc", "university-of-johannesburg", "anu",
+  "deakin-university", "university-of-surrey", "durham-university", "university-of-cambridge", "massachusetts-institute-of-technology",
+  "university-of-exeter", "keele-university", "university-of-glasgow", "tilburg-university", "university-of-aberdeen",
+  "flinders-university", "kingston-university-london", "university-of-victoria-uvic", "chalmers-university-of-technology", "cardiff-university"
+] as const;
+
+export const publishedUniversityAiToolsSlugs = publishedStudentGuideSlugs;
+
+export function isPublishedPolicyReferencePage(slug: string): boolean {
+  return isPublishedV4University(slug) || publishedStudentGuideSlugs.some(candidate => candidate === slug);
+}
+
+export function isPublishedUniversityAiToolsModule(slug: string): boolean {
+  return publishedUniversityAiToolsSlugs.some(candidate => candidate === slug);
+}
+
+/** Local comparisons remain noindex; published cohorts also remain usable as development comparisons. */
+export const policyReferencePreviewSlugs = [...new Set([...publishedV4UniversitySlugs, ...publishedStudentGuideSlugs])];
 
 export function isPolicyReferencePreview(slug: string, layout: unknown, environment = process.env.NODE_ENV) {
   return environment === "development" && policyReferencePreviewSlugs.some(candidate => candidate === slug) && layout === "reference-v4";

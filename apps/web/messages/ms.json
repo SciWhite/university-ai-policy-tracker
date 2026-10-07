@@ -54,7 +54,8 @@
       "support": "Sokongan",
       "privacy": "Privasi",
       "terms": "Terma",
-      "supportAndPrivacy": "Sokongan dan privasi"
+      "supportAndPrivacy": "Sokongan dan privasi",
+      "about": "Tentang projek"
     },
     "locale": {
       "label": "Bahasa",

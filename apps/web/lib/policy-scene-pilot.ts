@@ -2,6 +2,7 @@ import { hasCurrentIndexRecoveryBasis, reviewedClaimsFingerprint } from "@/lib/i
 import { isIndexRecoveryPilotSlug, type IndexRecoveryPilotSlug } from "@/lib/index-recovery-pilot";
 import type { PolicyClaim } from "@uapt/shared";
 import { readyV4IllustrationBasis, readyV4Scenes, type ReadyV4UniversitySlug } from "./policy-scene-ready-v4";
+import newV5Scenes from "@/lib/enforcement-v5-new-scenes.json";
 
 export type ScenarioStatus = "Can, with limits" | "Do not";
 export type PolicyEvidenceHref = `#snapshot-${string}` | `#claim-${string}` | "#claims" | `https://${string}`;
@@ -1853,8 +1854,18 @@ export function getPolicyScenePilot(
   claims: PolicyClaim[],
   hasStrongSnapshot: boolean,
   hasClaimsSummary: boolean,
-  _options?: PolicyScenePilotOptions
+  options?: PolicyScenePilotOptions
 ): PolicyScenePilot | undefined {
+  if (Object.hasOwn(newV5Scenes.scenes, slug)) {
+    if (!options?.isPreview) return undefined;
+    const key = slug as keyof typeof newV5Scenes.scenes;
+    if (reviewedClaimsFingerprint(claims) !== newV5Scenes.pins[key]) return undefined;
+    return {
+      ...(newV5Scenes.scenes[key] as PolicyScenePilot),
+      claimsOnly: !hasStrongSnapshot,
+      snapshotNotice: !hasStrongSnapshot ? noSnapshotNotice : undefined
+    };
+  }
   if (Object.hasOwn(readyV4IllustrationBasis, slug)) {
     const key = slug as ReadyV4UniversitySlug;
     if (!hasStrongSnapshot || reviewedClaimsFingerprint(claims) !== readyV4IllustrationBasis[key]) return undefined;

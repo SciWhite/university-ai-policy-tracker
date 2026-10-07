@@ -54,7 +54,8 @@
       "support": "支持",
       "privacy": "隐私",
       "terms": "使用条款",
-      "supportAndPrivacy": "支持与隐私"
+      "supportAndPrivacy": "支持与隐私",
+      "about": "关于"
     },
     "locale": {
       "label": "语言",

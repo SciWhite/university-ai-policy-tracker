@@ -54,7 +54,8 @@
       "support": "Support",
       "privacy": "Privacy",
       "terms": "Terms",
-      "supportAndPrivacy": "Support and privacy"
+      "supportAndPrivacy": "Support and privacy",
+      "about": "About"
     },
     "locale": {
       "label": "Language",

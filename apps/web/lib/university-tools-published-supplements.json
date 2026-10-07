@@ -1,0 +1,174 @@
+{
+  "university-of-bristol": [
+    {
+      "universitySlug": "university-of-bristol",
+      "universityName": "university-of-bristol",
+      "tool": "microsoft_copilot",
+      "rawToolName": "Microsoft Copilot for Edge",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "availability": "allowed",
+      "description": "BILT teaching guidance describes free access for staff and students through the university Microsoft licence, with university-email sign-in. Assessment permission remains task-specific.",
+      "reviewState": "agent_reviewed",
+      "checkedAt": "2026-10-07",
+      "sourceLanguage": "en",
+      "evidence": [
+        {
+          "sourceUrl": "https://www.bristol.ac.uk/bilt/sharing-practice/guides/guidance-on-ai/using-ai-in-assessment/what-generative-ai-tools-should-i-allow-or-encourage-my-students-to-use/",
+          "evidenceSnippet": "Microsoft Copilot\nfor Edge\nbrowser\nis available to all staff and students free of charge through the University Microsoft licence.",
+          "snapshotHash": "7be519d650d77fbc5e56781a0da491cddd0b38418506ef89435fb95702bbc3de",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ],
+  "the-university-of-warwick": [
+    {
+      "universitySlug": "the-university-of-warwick",
+      "universityName": "the-university-of-warwick",
+      "tool": "microsoft_copilot",
+      "rawToolName": "Copilot",
+      "endorsementType": "officially_endorsed",
+      "availability": "conditionally_allowed",
+      "description": "Academic Development Centre guidance for educators recommends Copilot. The surrounding data-security guidance addresses systems provided to staff; student eligibility is not established by this extract.",
+      "reviewState": "agent_reviewed",
+      "checkedAt": "2026-10-07",
+      "sourceLanguage": "en",
+      "evidence": [
+        {
+          "sourceUrl": "https://warwick.ac.uk/fac/cross_fac/academic-development/ai/tools/",
+          "evidenceSnippet": "Copilot\nis the recommended tool and no special licence is required.",
+          "snapshotHash": "c983b1cac4e44182b539d2f4315b2c2c555cd81d14238ab73681368f8469fe6e",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ],
+  "pennsylvania-state-university": [
+    {
+      "universitySlug": "pennsylvania-state-university",
+      "universityName": "pennsylvania-state-university",
+      "tool": "self_deploy",
+      "rawToolName": "AI Studio",
+      "endorsementType": "not_specified",
+      "availability": "not_mentioned",
+      "description": "Listed in Penn State’s current AI services directory. This directory does not establish eligible users, cost or assessment permission for each product.",
+      "reviewState": "agent_reviewed",
+      "checkedAt": "2026-10-07",
+      "sourceLanguage": "en",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.psu.edu/ai-services",
+          "evidenceSnippet": "Current Services\nAI Studio\nStandard Copilot\nM365 Copilot\nFirefly\nGemini\nGemini Notebook",
+          "snapshotHash": "349a9a9104abbd28de147353174d9d240936576c329d056816373f1c71c01ae3",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "relationship": "institutional_directory"
+    },
+    {
+      "universitySlug": "pennsylvania-state-university",
+      "universityName": "pennsylvania-state-university",
+      "tool": "microsoft_copilot",
+      "rawToolName": "Standard Copilot",
+      "endorsementType": "not_specified",
+      "availability": "not_mentioned",
+      "description": "Listed in Penn State’s current AI services directory. This directory does not establish eligible users, cost or assessment permission for each product.",
+      "reviewState": "agent_reviewed",
+      "checkedAt": "2026-10-07",
+      "sourceLanguage": "en",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.psu.edu/ai-services",
+          "evidenceSnippet": "Current Services\nAI Studio\nStandard Copilot\nM365 Copilot\nFirefly\nGemini\nGemini Notebook",
+          "snapshotHash": "349a9a9104abbd28de147353174d9d240936576c329d056816373f1c71c01ae3",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "relationship": "institutional_directory"
+    },
+    {
+      "universitySlug": "pennsylvania-state-university",
+      "universityName": "pennsylvania-state-university",
+      "tool": "microsoft_copilot_for_m365",
+      "rawToolName": "M365 Copilot",
+      "endorsementType": "not_specified",
+      "availability": "not_mentioned",
+      "description": "Listed in Penn State’s current AI services directory. This directory does not establish eligible users, cost or assessment permission for each product.",
+      "reviewState": "agent_reviewed",
+      "checkedAt": "2026-10-07",
+      "sourceLanguage": "en",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.psu.edu/ai-services",
+          "evidenceSnippet": "Current Services\nAI Studio\nStandard Copilot\nM365 Copilot\nFirefly\nGemini\nGemini Notebook",
+          "snapshotHash": "349a9a9104abbd28de147353174d9d240936576c329d056816373f1c71c01ae3",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "relationship": "institutional_directory"
+    },
+    {
+      "universitySlug": "pennsylvania-state-university",
+      "universityName": "pennsylvania-state-university",
+      "tool": "adobe_firefly",
+      "rawToolName": "Firefly",
+      "endorsementType": "not_specified",
+      "availability": "not_mentioned",
+      "description": "Listed in Penn State’s current AI services directory. This directory does not establish eligible users, cost or assessment permission for each product.",
+      "reviewState": "agent_reviewed",
+      "checkedAt": "2026-10-07",
+      "sourceLanguage": "en",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.psu.edu/ai-services",
+          "evidenceSnippet": "Current Services\nAI Studio\nStandard Copilot\nM365 Copilot\nFirefly\nGemini\nGemini Notebook",
+          "snapshotHash": "349a9a9104abbd28de147353174d9d240936576c329d056816373f1c71c01ae3",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "relationship": "institutional_directory"
+    },
+    {
+      "universitySlug": "pennsylvania-state-university",
+      "universityName": "pennsylvania-state-university",
+      "tool": "gemini",
+      "rawToolName": "Gemini",
+      "endorsementType": "not_specified",
+      "availability": "not_mentioned",
+      "description": "Listed in Penn State’s current AI services directory. This directory does not establish eligible users, cost or assessment permission for each product.",
+      "reviewState": "agent_reviewed",
+      "checkedAt": "2026-10-07",
+      "sourceLanguage": "en",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.psu.edu/ai-services",
+          "evidenceSnippet": "Current Services\nAI Studio\nStandard Copilot\nM365 Copilot\nFirefly\nGemini\nGemini Notebook",
+          "snapshotHash": "349a9a9104abbd28de147353174d9d240936576c329d056816373f1c71c01ae3",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "relationship": "institutional_directory"
+    },
+    {
+      "universitySlug": "pennsylvania-state-university",
+      "universityName": "pennsylvania-state-university",
+      "tool": "notebooklm",
+      "rawToolName": "Gemini Notebook",
+      "endorsementType": "not_specified",
+      "availability": "not_mentioned",
+      "description": "Listed in Penn State’s current AI services directory. This directory does not establish eligible users, cost or assessment permission for each product.",
+      "reviewState": "agent_reviewed",
+      "checkedAt": "2026-10-07",
+      "sourceLanguage": "en",
+      "evidence": [
+        {
+          "sourceUrl": "https://ai.psu.edu/ai-services",
+          "evidenceSnippet": "Current Services\nAI Studio\nStandard Copilot\nM365 Copilot\nFirefly\nGemini\nGemini Notebook",
+          "snapshotHash": "349a9a9104abbd28de147353174d9d240936576c329d056816373f1c71c01ae3",
+          "reviewState": "agent_reviewed"
+        }
+      ],
+      "relationship": "institutional_directory"
+    }
+  ]
+}

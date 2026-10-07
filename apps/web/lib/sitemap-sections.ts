@@ -59,7 +59,7 @@ const monthlyReportRoutes = monthlyReportSlugs.map(
 );
 
 const staticRoutes = [
-  "/contact", "/support", "/privacy", "/terms",
+  "/contact", "/support", "/privacy", "/terms", "/about",
   "",
   "/university-ai-policy-database",
   "/universities",
@@ -100,6 +100,7 @@ const phaseOneLocalizedStaticRoutes = [
   "/analysis",
   "/changes",
   "/methodology",
+  "/about",
   "/citation",
   "/datasets",
   "/contribute"
@@ -163,7 +164,7 @@ async function buildUniversitiesSection(): Promise<SitemapEntry[]> {
   const publishedAt = await getSitemapLastPublishedAt();
   const universities = await getCatalogUniversities();
 
-  return Promise.all(universities.map(async (university) => {
+  const universityEntries = await Promise.all(universities.map(async (university) => {
     const latestSourceDate = getLatestSourceDate(university.sources);
 
     return {
@@ -173,6 +174,10 @@ async function buildUniversitiesSection(): Promise<SitemapEntry[]> {
         : latestSourceDate ? new Date(latestSourceDate) : publishedAt
     };
   }));
+  return [...universityEntries, {
+    url: new URL("/universities/eth-zurich", baseUrl).toString(),
+    lastModified: new Date("2026-10-02T00:00:00.000Z")
+  }];
 }
 
 async function buildChangesSection(): Promise<SitemapEntry[]> {
@@ -236,6 +241,10 @@ async function buildLocaleSection(
         : latestSourceDate ? new Date(latestSourceDate) : publishedAt
     };
   }));
+  universityEntries.push({
+    url: new URL(withLocalePrefix("/universities/eth-zurich", locale), baseUrl).toString(),
+    lastModified: new Date("2026-10-02T00:00:00.000Z")
+  });
 
   return [...staticEntries, ...universityEntries];
 }

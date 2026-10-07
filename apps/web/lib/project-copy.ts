@@ -1,0 +1,120 @@
+import type { SupportedLocale } from "@/lib/i18n";
+
+const projectCopy = {
+  "en": {
+    "title": "About the project",
+    "lead": "An independent project making university AI rules easier to find, cite and follow.",
+    "project": "University AI Policy Tracker started in Canada in May 2026. It is independently maintained and self-funded, and has not incorporated as a company.",
+    "agentsTitle": "How we use agents",
+    "agents": "Agents help with development, official-source discovery, evidence extraction, translation drafts and policy audits. Our workflow has used Claude, Codex and Antigravity; the tools vary by task.",
+    "tools": "HTTP fetches, browser tools and Firecrawl collect source material. Agents help organize and review it. A generated answer is not a university policy: published claims must remain tied to original quotations, source URLs, snapshot hashes and explicit review states.",
+    "dataTitle": "Sources, review and publication",
+    "review": "New findings enter staging as candidates. Review checks wording, audience, policy scope, exceptions and dates before promotion to a public release. Original-language evidence remains canonical; translations and summaries help readers navigate it.",
+    "data": "Source text, hashes and review records support change tracking and reproducibility. Contact us with an official source or a correction; avoid sending private student records or confidential documents.",
+    "historyTitle": "Selected repository history",
+    "sourceHistory": "Source checks and evidence re-sourcing",
+    "auditHistory": "Live-fetch and evidence audit tools",
+    "methodology": "Methodology",
+    "contact": "Contact"
+  },
+  "zh": {
+    "title": "关于项目",
+    "lead": "一个独立维护的项目，让大学 AI 规则更容易查找、引用和理解。",
+    "project": "University AI Policy Tracker 于 2026 年 5 月在加拿大启动，由维护者独立运营并自筹资金，目前尚未注册为公司。",
+    "agentsTitle": "我们如何使用 agents",
+    "agents": "Agents 协助开发、发现官方来源、提取证据、起草翻译和审查政策。工作流使用过 Claude、Codex 和 Antigravity，具体工具随任务选择。",
+    "tools": "HTTP 抓取、浏览器工具和 Firecrawl 负责采集来源材料，agents 协助整理和审查。生成的回答不等于大学政策：公开声明必须关联原文引用、来源网址、快照哈希和明确的审查状态。",
+    "dataTitle": "来源、审查与发布",
+    "review": "新发现先作为候选内容进入暂存区。发布前检查措辞、适用对象、政策范围、例外和日期，再纳入公开版本。原始语言证据始终是依据，翻译和摘要用于帮助阅读。",
+    "data": "来源文本、哈希和审查记录支持变更追踪与复核。欢迎提供官方来源或纠错信息；请避免发送学生私密记录或保密文件。",
+    "historyTitle": "部分仓库记录",
+    "sourceHistory": "来源核查与证据重新采集",
+    "auditHistory": "实时抓取与证据审计工具",
+    "methodology": "方法说明",
+    "contact": "联系"
+  },
+  "fr": {
+    "title": "À propos du projet",
+    "lead": "Un projet indépendant pour trouver, citer et comprendre les règles universitaires sur l’IA.",
+    "project": "University AI Policy Tracker a démarré au Canada en mai 2026. Le projet est indépendant, autofinancé et n’est pas constitué en société.",
+    "agentsTitle": "Comment nous utilisons les agents",
+    "agents": "Les agents aident au développement, à la recherche de sources officielles, à l’extraction de preuves, aux brouillons de traduction et aux audits. Nous avons utilisé Claude, Codex et Antigravity selon les tâches.",
+    "tools": "Les requêtes HTTP, les outils de navigateur et Firecrawl collectent les sources. Les agents aident à les organiser et à les vérifier. Une réponse générée n’est pas une politique universitaire : les affirmations publiées doivent conserver les citations originales, les URL, les empreintes des captures et les états de révision.",
+    "dataTitle": "Sources, révision et publication",
+    "review": "Les nouveaux résultats sont d’abord des candidats en zone de préparation. La révision vérifie les termes, le public, la portée, les exceptions et les dates avant publication. Les preuves dans la langue originale restent la référence ; traductions et résumés facilitent la lecture.",
+    "data": "Les textes sources, empreintes et dossiers de révision permettent de suivre les changements et de reproduire les vérifications. Envoyez une source officielle ou une correction, sans dossiers étudiants privés ni documents confidentiels.",
+    "historyTitle": "Exemples dans le dépôt",
+    "sourceHistory": "Vérification des sources et nouvelle collecte de preuves",
+    "auditHistory": "Outils de collecte et d’audit des preuves",
+    "methodology": "Méthodologie",
+    "contact": "Contact"
+  },
+  "pl": {
+    "title": "O projekcie",
+    "lead": "Niezależny projekt ułatwiający wyszukiwanie, cytowanie i rozumienie zasad używania AI na uczelniach.",
+    "project": "University AI Policy Tracker powstał w Kanadzie w maju 2026 r. Jest utrzymywany niezależnie, finansowany ze środków własnych i nie został zarejestrowany jako spółka.",
+    "agentsTitle": "Jak korzystamy z agentów",
+    "agents": "Agenci pomagają w rozwoju, wyszukiwaniu oficjalnych źródeł, wydobywaniu dowodów, szkicach tłumaczeń i audytach zasad. Korzystaliśmy z Claude, Codex i Antigravity, dobierając narzędzia do zadania.",
+    "tools": "Żądania HTTP, narzędzia przeglądarkowe i Firecrawl zbierają materiały źródłowe. Agenci pomagają je porządkować i weryfikować. Wygenerowana odpowiedź nie jest zasadą uczelni: publikowane twierdzenia muszą mieć oryginalne cytaty, adresy źródeł, skróty migawek i jawny stan weryfikacji.",
+    "dataTitle": "Źródła, weryfikacja i publikacja",
+    "review": "Nowe ustalenia trafiają najpierw do obszaru roboczego jako kandydaci. Przed publikacją sprawdzane są sformułowania, odbiorcy, zakres, wyjątki i daty. Dowody w języku oryginału pozostają podstawą; tłumaczenia i podsumowania ułatwiają lekturę.",
+    "data": "Teksty źródłowe, skróty i zapisy weryfikacji wspierają śledzenie zmian i odtwarzalność. Prześlij oficjalne źródło lub korektę, unikając prywatnych danych studentów i poufnych dokumentów.",
+    "historyTitle": "Wybrane zapisy w repozytorium",
+    "sourceHistory": "Sprawdzanie źródeł i ponowne zbieranie dowodów",
+    "auditHistory": "Narzędzia pobierania i audytu dowodów",
+    "methodology": "Metodologia",
+    "contact": "Kontakt"
+  },
+  "es": {
+    "title": "Acerca del proyecto",
+    "lead": "Un proyecto independiente para encontrar, citar y comprender las normas universitarias sobre IA.",
+    "project": "University AI Policy Tracker comenzó en Canadá en mayo de 2026. Se mantiene de forma independiente, se autofinancia y no está constituido como empresa.",
+    "agentsTitle": "Cómo usamos agentes",
+    "agents": "Los agentes ayudan con desarrollo, búsqueda de fuentes oficiales, extracción de evidencias, borradores de traducción y auditorías. Hemos utilizado Claude, Codex y Antigravity según la tarea.",
+    "tools": "Las solicitudes HTTP, las herramientas de navegador y Firecrawl recopilan las fuentes. Los agentes ayudan a organizarlas y revisarlas. Una respuesta generada no es una norma universitaria: las afirmaciones publicadas deben conservar citas originales, URL, hashes de las capturas y estados explícitos de revisión.",
+    "dataTitle": "Fuentes, revisión y publicación",
+    "review": "Los nuevos hallazgos entran primero como candidatos en preparación. La revisión comprueba redacción, destinatarios, alcance, excepciones y fechas antes de publicar. La evidencia en el idioma original sigue siendo la referencia; traducciones y resúmenes facilitan su lectura.",
+    "data": "Los textos fuente, hashes y registros de revisión permiten seguir cambios y reproducir comprobaciones. Envíanos una fuente oficial o una corrección, evitando registros privados de estudiantes y documentos confidenciales.",
+    "historyTitle": "Ejemplos del repositorio",
+    "sourceHistory": "Comprobación de fuentes y nueva recopilación de evidencias",
+    "auditHistory": "Herramientas de recopilación y auditoría de evidencias",
+    "methodology": "Metodología",
+    "contact": "Contacto"
+  },
+  "nl": {
+    "title": "Over het project",
+    "lead": "Een onafhankelijk project om AI-regels van universiteiten te vinden, te citeren en te begrijpen.",
+    "project": "University AI Policy Tracker begon in Canada in mei 2026. Het wordt onafhankelijk onderhouden en zelf gefinancierd en is niet als bedrijf geregistreerd.",
+    "agentsTitle": "Hoe we agents gebruiken",
+    "agents": "Agents helpen bij ontwikkeling, het vinden van officiële bronnen, bewijsextractie, vertaalconcepten en beleidsaudits. We hebben Claude, Codex en Antigravity gebruikt, afhankelijk van de taak.",
+    "tools": "HTTP-verzoeken, browsertools en Firecrawl verzamelen bronmateriaal. Agents helpen het te ordenen en te controleren. Een gegenereerd antwoord is geen universiteitsbeleid: gepubliceerde uitspraken moeten gekoppeld blijven aan oorspronkelijke citaten, bron-URL’s, snapshothashes en expliciete beoordelingsstatussen.",
+    "dataTitle": "Bronnen, beoordeling en publicatie",
+    "review": "Nieuwe bevindingen worden eerst als kandidaten opgeslagen. Voor publicatie worden formulering, doelgroep, reikwijdte, uitzonderingen en datums gecontroleerd. Bewijs in de oorspronkelijke taal blijft leidend; vertalingen en samenvattingen helpen bij het lezen.",
+    "data": "Bronteksten, hashes en beoordelingsgegevens ondersteunen het volgen van wijzigingen en reproduceerbaarheid. Stuur een officiële bron of correctie, zonder privégegevens van studenten of vertrouwelijke documenten.",
+    "historyTitle": "Voorbeelden uit de repository",
+    "sourceHistory": "Broncontroles en opnieuw verzameld bewijs",
+    "auditHistory": "Tools voor ophalen en bewijsaudits",
+    "methodology": "Methodologie",
+    "contact": "Contact"
+  },
+  "ms": {
+    "title": "Tentang projek",
+    "lead": "Projek bebas untuk mencari, memetik dan memahami peraturan AI universiti.",
+    "project": "University AI Policy Tracker bermula di Kanada pada Mei 2026. Projek ini diselenggara secara bebas, dibiayai sendiri dan belum diperbadankan sebagai syarikat.",
+    "agentsTitle": "Cara kami menggunakan agents",
+    "agents": "Agents membantu pembangunan, penemuan sumber rasmi, pengekstrakan bukti, draf terjemahan dan audit dasar. Kami telah menggunakan Claude, Codex dan Antigravity mengikut tugas.",
+    "tools": "Permintaan HTTP, alat pelayar dan Firecrawl mengumpulkan bahan sumber. Agents membantu menyusun dan menyemaknya. Jawapan yang dijana bukan dasar universiti: kenyataan yang diterbitkan mesti dipautkan kepada petikan asal, URL sumber, hash petikan sumber dan status semakan yang jelas.",
+    "dataTitle": "Sumber, semakan dan penerbitan",
+    "review": "Penemuan baharu masuk sebagai calon dalam ruang penyediaan. Semakan menilai ungkapan, khalayak, skop, pengecualian dan tarikh sebelum penerbitan. Bukti dalam bahasa asal kekal sebagai rujukan; terjemahan dan ringkasan membantu pembacaan.",
+    "data": "Teks sumber, hash dan rekod semakan menyokong penjejakan perubahan dan kebolehulangan. Hantar sumber rasmi atau pembetulan tanpa rekod peribadi pelajar atau dokumen sulit.",
+    "historyTitle": "Contoh sejarah repositori",
+    "sourceHistory": "Semakan sumber dan pengumpulan semula bukti",
+    "auditHistory": "Alat pengambilan sumber dan audit bukti",
+    "methodology": "Metodologi",
+    "contact": "Hubungi"
+  }
+} as const;
+
+export function getProjectCopy(locale: SupportedLocale) {
+  return projectCopy[locale];
+}

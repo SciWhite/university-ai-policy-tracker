@@ -48,6 +48,7 @@ const publicRouteFiles = [
   "reports/outreach/page.tsx",
   "datasets/page.tsx",
   "methodology/page.tsx",
+  "about/page.tsx",
   "citation/page.tsx",
   "contribute/page.tsx"
 ] as const;

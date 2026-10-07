@@ -1,6 +1,13 @@
 import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
 import { isStudentOnlyPolicyPage } from "@/lib/policy-page-audience";
-import { isPublishedV4University, isPolicyReferencePreview, preparePolicyReferenceScene } from "@/lib/policy-reference-preview";
+import { isPublishedPolicyReferencePage, isPublishedUniversityAiToolsModule, isPolicyReferencePreview, preparePolicyReferenceScene } from "@/lib/policy-reference-preview";
+import { PolicySupplements } from "@/components/policy-supplements";
+import { UniversityAiTools } from "@/components/university-ai-tools";
+import { EnforcementTaskEntrances, EnforcementV4Refresh, enforcementV4RefreshSlugs } from "@/components/enforcement-v4-refresh";
+import { localizeV5Scene } from "@/lib/enforcement-v5-scene-zh";
+import { getUniversityToolRecords } from "@/lib/university-tools";
+import { approvedPolicySupplementSlugs } from "@/lib/policy-supplements";
+import { EthEnforcementPreview, isEthEnforcementPreview } from "@/components/eth-enforcement-preview";
 import { PolicyReferenceLayout, PolicyReferenceHero } from "@/components/policy-reference-layout";
 import { PolicyReferenceInteractions } from "@/components/policy-reference-interactions";
 import { hasCurrentIndexRecoveryBasis } from "@/lib/index-recovery-basis";
@@ -74,6 +81,17 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
+  if (isEthEnforcementPreview(slug, (await searchParams)?.layout)) {
+    const title = "ETH Zurich AI policy evidence | University AI Policy Tracker";
+    const description = "An independent sample of five source-backed ETH Zurich policy facts. Specific penalties and appeal deadlines were not established in the reviewed material; this is an evidence gap, not a finding that no rules exist.";
+    return {
+      title,
+      description,
+      alternates: getLocalizedAlternates("/universities/eth-zurich", locale),
+      ...(process.env.NODE_ENV === "development" ? { robots: { index: false, follow: false } } : {}),
+      openGraph: { title, description, images: [getSiteOgImageUrl(locale)], type: "article" }
+    };
+  }
   const university = await getCatalogUniversityBySlug(slug);
   const publicSummary = await getPublicUniversitySummaryBySlug(slug);
   const displayName = university
@@ -156,6 +174,7 @@ export default async function UniversityPage({
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
+  if (isEthEnforcementPreview(slug, (await searchParams)?.layout)) return <EthEnforcementPreview locale={locale} />;
 
   const [university, publicSummary, loadedSnapshot] = await Promise.all([
     getCatalogUniversityBySlug(slug),
@@ -196,19 +215,23 @@ export default async function UniversityPage({
     pilotContent?.claimsSummary && !strongSnapshot && hasCurrentIndexRecoveryBasis(slug, publicSummary.claims)
       ? pilotContent.claimsSummary
       : undefined;
-  const isPublished = isPublishedV4University(slug);
+  const isPublished = isPublishedPolicyReferencePage(slug);
   const isPreview = isPolicyReferencePreview(slug, pageQuery?.layout);
-  const policyScene = getPolicyScenePilot(
+  const basePolicyScene = getPolicyScenePilot(
     slug,
     publicSummary.claims,
     strongSnapshot,
     Boolean(pilotClaimsSummary),
     { isPreview: isPublished || isPreview }
   );
+  const enforcementPage = isPublished && enforcementV4RefreshSlugs.includes(slug);
+  const policyScene = enforcementPage && locale === "zh" && basePolicyScene
+    ? localizeV5Scene(basePolicyScene)
+    : basePolicyScene;
   const compactPolicyPilot = Boolean(policyScene?.quickGuide);
   const referencePreview = Boolean(
-    policyScene?.quickGuide &&
-    (strongSnapshot || pilotClaimsSummary || policyScene?.claimsOnly || Boolean(policyScene?.snapshotNotice)) &&
+    (policyScene?.quickGuide || enforcementPage) &&
+    (strongSnapshot || pilotClaimsSummary || policyScene?.claimsOnly || Boolean(policyScene?.snapshotNotice) || enforcementPage) &&
     (isPublished || isPreview)
   );
   const referenceUi = (value: string) => referencePreview ? translatePolicyReferenceUi(value, locale) : value;
@@ -281,7 +304,7 @@ export default async function UniversityPage({
         }}
       />
 
-      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot}>
+      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot} enforcement={enforcementPage}>
       <EntityHeader
         eyebrow={`${university.region}, ${university.country}`}
         metadata={
@@ -303,7 +326,8 @@ export default async function UniversityPage({
         title={<span data-i18n="preserve">{displayName}</span>}
       />
 
-      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} /> : <PolicySceneHero scene={policyScene} /> : null}
+      {enforcementPage ? <EnforcementTaskEntrances locale={locale} /> : null}
+      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} /> : <PolicySceneHero scene={policyScene} /> : null}
       {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
       {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
@@ -319,6 +343,9 @@ export default async function UniversityPage({
         />
       ) : null}
       {policyScene?.quickGuide && !strongSnapshot ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
+      {enforcementPage ? <EnforcementV4Refresh slug={slug} locale={locale} /> : null}
+      {isPublishedUniversityAiToolsModule(slug) ? <UniversityAiTools locale={locale} records={await getUniversityToolRecords(publicSummary)} /> : null}
+      {approvedPolicySupplementSlugs.includes(slug) ? <PolicySupplements slug={slug} locale={locale} claims={reviewedClaims} /> : null}
       {referencePreview ? <PolicyReferenceInteractions /> : compactPolicyPilot ? <PolicyRecordHashReveal /> : null}
 
       <section className={`student-record-section${compactPolicyPilot ? " student-record-section--compact" : ""}`} id="claims">

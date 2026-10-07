@@ -50,6 +50,7 @@ const primaryNavigation = [
       { labelKey: "apiDocs", href: "/api-reference" },
       { labelKey: "publicApi", href: "/api/public/v1/index.json" },
       { labelKey: "methodology", href: "/methodology" },
+      { labelKey: "about", href: "/about" },
       { labelKey: "citation", href: "/citation" },
       { labelKey: "coverage", href: "/coverage" },
       { labelKey: "sourceHealth", href: "/source-health" },
