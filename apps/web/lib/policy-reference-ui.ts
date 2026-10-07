@@ -4,6 +4,8 @@ import { translateSurfaceText } from "@/lib/surface-localization";
 // Interface translations only. Native policy prose and original evidence stay unchanged.
 const languages = ["zh", "fr", "pl", "es", "nl", "ms"] as const;
 export const policyReferenceUi = {
+  "Site interpretation; official evidence remains in its original language.": ["本站解读；官方证据保留原文。", "Interprétation du site ; les preuves officielles restent dans leur langue d’origine.", "Interpretacja serwisu; oficjalne dowody pozostają w języku oryginału.", "Interpretación del sitio; la evidencia oficial se conserva en su idioma original.", "Interpretatie van deze site; officieel bewijs blijft in de oorspronkelijke taal.", "Tafsiran laman; bukti rasmi kekal dalam bahasa asal."],
+  "More policy information": ["更多政策信息", "Informations complémentaires sur les règles", "Dodatkowe informacje o zasadach", "Más información sobre las normas", "Meer beleidsinformatie", "Maklumat dasar tambahan"],
   "Source check and dated evidence": [
     "来源核查与历史证据", "Vérification des sources et preuves datées", "Kontrola źródeł i datowane dowody", "Comprobación de fuentes y evidencia fechada", "Broncontrole en gedateerd bewijs", "Semakan sumber dan bukti bertarikh"
   ],
@@ -355,7 +357,7 @@ const additionalUi: Record<string, readonly string[]> = {
   "Procurement": ["采购", "Achats", "Zakupy", "Adquisiciones", "Inkoop", "Perolehan"],
   "Source Status": ["来源状态", "État de la source", "Status źródła", "Estado de la fuente", "Bronstatus", "Status sumber"],
   "Other": ["其他", "Autres", "Inne", "Otros", "Overige", "Lain-lain"],
-  "No reviewed student policy snapshot has been published yet.": ["尚未发布已审核的学生政策快照。", "Aucun aperçu vérifié de la politique étudiante n’a encore été publié.", "Nie opublikowano jeszcze zweryfikowanego podsumowania zasad dla studentów.", "Aún no se ha publicado un resumen revisado de la política para estudiantes.", "Er is nog geen beoordeeld overzicht van het studentenbeleid gepubliceerd.", "Ringkasan dasar pelajar yang disemak belum diterbitkan."],
+  "No reviewed student policy snapshot has been published yet.": ["尚无完整的学生政策摘要；可先查看已收录条款及来源。", "Aucun résumé complet des règles pour les étudiants n’est disponible ; consultez les énoncés et sources recueillis.", "Pełne podsumowanie zasad dla studentów nie jest jeszcze dostępne; sprawdź zebrane stwierdzenia i źródła.", "Aún no hay un resumen completo de las normas para estudiantes; consulta las afirmaciones y fuentes recopiladas.", "Er is nog geen volledige samenvatting van de studentenregels; bekijk de verzamelde uitspraken en bronnen.", "Ringkasan lengkap peraturan pelajar belum tersedia; rujuk pernyataan dan sumber yang dikumpulkan."],
   "Scope and transition details": ["适用范围与过渡细节", "Champ d’application et transition", "Zakres i zasady przejściowe", "Alcance y transición", "Reikwijdte en overgang", "Skop dan peralihan"],
   "Common situations": ["常见情境", "Situations courantes", "Typowe sytuacje", "Situaciones habituales", "Veelvoorkomende situaties", "Situasi lazim"],
   "Find your next step": ["找到下一步", "Trouvez votre prochaine étape", "Znajdź kolejny krok", "Encuentra tu siguiente paso", "Vind je volgende stap", "Cari langkah seterusnya"],
@@ -389,7 +391,7 @@ const countWords = {
 } as const;
 
 export function translatePolicyReferenceUi(value: string, locale: SupportedLocale): string {
-  if (locale === "en") return value;
+  if (locale === "en") return value === "No reviewed student policy snapshot has been published yet." ? "A complete student policy summary is not available yet; see the collected claims and sources." : value;
   const entry = policyReferenceUi[value as keyof typeof policyReferenceUi] ?? additionalUi[value];
   if (entry) return entry[languages.indexOf(locale)];
   const count = value.match(/^(\d+) (reviewed claims?|sources?|records?)$/);

@@ -8,7 +8,7 @@ import { localizeV5Scene } from "@/lib/enforcement-v5-scene-zh";
 import { getUniversityToolRecords } from "@/lib/university-tools";
 import { approvedPolicySupplementSlugs } from "@/lib/policy-supplements";
 import { EthEnforcementPreview, isEthEnforcementPreview } from "@/components/eth-enforcement-preview";
-import { PolicyReferenceLayout, PolicyReferenceHero } from "@/components/policy-reference-layout";
+import { PolicyReferenceLayout, PolicyReferenceHero, PolicyReferenceReview } from "@/components/policy-reference-layout";
 import { PolicyReferenceInteractions } from "@/components/policy-reference-interactions";
 import { hasCurrentIndexRecoveryBasis } from "@/lib/index-recovery-basis";
 import { getIndexRecoveryLastModified } from "@/lib/index-recovery-dates";
@@ -304,12 +304,12 @@ export default async function UniversityPage({
         }}
       />
 
-      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot} enforcement={enforcementPage}>
+      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={approvedPolicySupplementSlugs.includes(slug)}>
       <EntityHeader
         eyebrow={`${university.region}, ${university.country}`}
         metadata={
           <>
-            {referencePreview ? <MetaLabel label={referenceUi("Review")}>{referenceUi(formatReviewState(publicSummary.reviewState))}</MetaLabel> : null}
+            {referencePreview ? <MetaLabel label={referenceUi("Review")}>{referencePreview ? <PolicyReferenceReview state={publicSummary.reviewState} locale={locale} /> : formatReviewState(publicSummary.reviewState)}</MetaLabel> : null}
             {compactPolicyPilot ? null : (
               <MetaLabel label="Ranking">
                 {formatRanking(university.rankings)}
@@ -327,7 +327,7 @@ export default async function UniversityPage({
       />
 
       {enforcementPage ? <EnforcementTaskEntrances locale={locale} /> : null}
-      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} /> : <PolicySceneHero scene={policyScene} /> : null}
+      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={approvedPolicySupplementSlugs.includes(slug)} /> : <PolicySceneHero scene={policyScene} /> : null}
       {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
       {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
@@ -428,7 +428,7 @@ export default async function UniversityPage({
           <div className="student-record-info__body">
             <div className="tag-row" id="snapshot-scope">
               <MetaLabel label={referenceUi("Review")}>
-                {referenceUi(formatReviewState(publicSummary.reviewState))}
+                {referencePreview ? <PolicyReferenceReview state={publicSummary.reviewState} locale={locale} /> : formatReviewState(publicSummary.reviewState)}
               </MetaLabel>
               <MetaLabel label={referenceUi("Confidence")}>
                 {publicSummary.confidence === undefined

@@ -4,7 +4,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { isPolicyReferencePreview, policyReferencePreviewSlugs, preparePolicyReferenceScene, preservePolicyReferenceSearch } from "../apps/web/lib/policy-reference-preview";
 import { PolicySceneGallery } from "../apps/web/components/policy-quick-guide";
-import { PolicyReferenceHero } from "../apps/web/components/policy-reference-layout";
+import { PolicyReferenceReview, PolicyReferenceHero } from "../apps/web/components/policy-reference-layout";
 import { StudentPolicySnapshot } from "../apps/web/components/student-policy-snapshot";
 import { getStagedPublicSummaryBySlug } from "../apps/web/lib/staged-public-data";
 import { getLoadedPolicySnapshotBySlug } from "../apps/web/lib/policy-snapshots";
@@ -55,7 +55,7 @@ for (const slug of policyReferencePreviewSlugs.filter(slug => slug !== "stanford
       const scene = getPolicyScenePilot(slug, summary.claims, false, true, { isPreview: true });
       assert(scene?.quickGuide);
       const html = renderToStaticMarkup(<PolicyReferenceHero scene={scene} locale="zh" />);
-      assert(html.includes("尚未发布已审核的学生政策快照"));
+      assert(html.includes("尚无完整的学生政策摘要"));
       const nav = renderToStaticMarkup(<PolicyReferenceNavigation claimsOnly locale="zh" />);
       assert(!nav.includes("#snapshot-"));
       for (const panel of [scene.quickGuide.do, scene.quickGuide.dont]) {
@@ -143,4 +143,45 @@ test("language switch fallback preserves only authorized development comparisons
   assert.equal(preservePolicyReferenceSearch("/zh/universities/harvard-university", "?layout=reference-v4", "development"), "/zh/universities/harvard-university?layout=reference-v4");
   assert.equal(preservePolicyReferenceSearch("/fr/universities/stanford-university", "?layout=reference-v4", "production"), "/fr/universities/stanford-university");
   assert.equal(preservePolicyReferenceSearch("/zh/universities/jagiellonian-university", "?layout=reference-v4", "development"), "/zh/universities/jagiellonian-university");
+});
+
+test("directories only expose modules rendered by the page, in all seven locales", () => {
+  for (const locale of SUPPORTED_LOCALES) {
+    const absent = renderToStaticMarkup(<PolicyReferenceNavigation claimsOnly locale={locale} />);
+    assert(!absent.includes('#university-ai-tools'));
+    assert(!absent.includes('#policy-supplements'));
+    const present = renderToStaticMarkup(<PolicyReferenceNavigation claimsOnly locale={locale} tools supplements enforcement />);
+    for (const target of ['#university-ai-tools', '#policy-supplements', '#enforcement-evidence']) assert(present.includes(`href="${target}"`));
+    assert(present.includes(translatePolicyReferenceUi('More policy information', locale)));
+    assert(!present.includes('#snapshot-'));
+  }
+});
+
+test("localized summaries do not claim to be English and preserve evidence and module navigation", async () => {
+  const summary = await getStagedPublicSummaryBySlug('stanford-university');
+  assert(summary);
+  const base = getPolicyScenePilot('stanford-university', summary.claims, true, false);
+  assert(base?.quickGuide);
+  const scene = { ...base, claimsOnly: true, guidance: '中文行动摘要' };
+  const localized = renderToStaticMarkup(<PolicyReferenceHero scene={scene} locale="zh" localizedActions tools supplements enforcement />);
+  assert(localized.includes('本站解读；官方证据保留原文。'));
+  assert(!localized.includes('以下政策指南保留英文'));
+  assert(localized.includes('尚无完整的学生政策摘要'));
+  for (const target of ['#university-ai-tools', '#policy-supplements', '#enforcement-evidence']) assert(localized.includes(`href="${target}"`));
+  const original = renderToStaticMarkup(<PolicyReferenceHero scene={scene} locale="fr" />);
+  assert(original.includes(translatePolicyReferenceUi('Policy guidance below is in English; official evidence remains in its original language.', 'fr')));
+  const english = renderToStaticMarkup(<PolicyReferenceHero scene={scene} />);
+  assert(english.includes('A complete student policy summary is not available yet'));
+});
+
+
+test("review labels describe the actual recorded review method without upgrading its status", () => {
+  for (const locale of SUPPORTED_LOCALES) {
+    const agent = renderToStaticMarkup(<PolicyReferenceReview state="agent_reviewed" locale={locale} />);
+    assert(agent.includes(`href="${locale === 'en' ? '' : '/' + locale}/methodology"`));
+    assert(!agent.includes('已由代理审核'));
+    const human = renderToStaticMarkup(<PolicyReferenceReview state="human_reviewed" locale={locale} />);
+    assert(!human.includes('methodology'));
+    assert(human.includes(translatePolicyReferenceUi('human reviewed', locale)));
+  }
 });
