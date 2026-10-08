@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "revision": "tulsa-v5-001",
+  "slug": "university-of-tulsa",
+  "claimsFingerprint": "aea140ca9ce272207742a93ee03dd331bde26874dcd7e3ab57c046b7e9dcb25b",
+  "publicationApproved": true,
+  "localePolicy": "en-zh-other-five-explicit-en-fallback",
+  "scene": {
+    "slug": "university-of-tulsa",
+    "studentFirst": true,
+    "claimsOnly": true,
+    "snapshotNotice": "No reviewed student policy snapshot has been published yet.",
+    "eyebrow": "Student guide · Library guidance and course permission",
+    "title": "Ask for the actual course or department AI policy.",
+    "guidance": "McFarlin Library’s guide is educational and explicitly is not university-wide AI policy. Ask the professor before coursework use, follow the required disclosure detail and verify outputs. TU Copilot SSO guidance establishes access, not task permission. Formal academic misconduct rules are college/Provost matters; universal sanctions and clocks remain unverified.",
+    "evidenceLabel": "See what to do",
+    "evidenceHref": "#quick-guide",
+    "artworkAlt": "University of Tulsa educational library guidance: hero scene with a student checking permission, disclosure or tool-access limits.",
+    "artworkSrc": "/tulsa-v5/assets/policy-scenes/bing-v5-tulsa-hero.webp",
+    "artworkContainsText": true,
+    "artworkLandscape": true,
+    "storyLayout": "mechanisms",
+    "showGallerySummaries": true,
+    "scopeDetail": "McFarlin Library’s guide is educational and explicitly is not university-wide AI policy. Ask the professor before coursework use, follow the required disclosure detail and verify outputs. TU Copilot SSO guidance establishes access, not task permission. Formal academic misconduct rules are college/Provost matters; universal sanctions and clocks remain unverified.",
+    "quickGuide": {
+      "scopeNote": "McFarlin Library’s guide is educational and explicitly is not university-wide AI policy. Ask the professor before coursework use, follow the required disclosure detail and verify outputs. TU Copilot SSO guidance establishes access, not task permission. Formal academic misconduct rules are college/Provost matters; universal sanctions and clocks remain unverified.",
+      "do": {
+        "artworkSrc": "/tulsa-v5/assets/policy-scenes/bing-v5-tulsa-do.webp",
+        "artworkLandscape": true,
+        "artworkAlt": "University of Tulsa educational library guidance: do scene with a student checking permission, disclosure or tool-access limits.",
+        "checks": [
+          {
+            "text": "Ask the professor or department chair for the applicable AI policy.",
+            "evidenceHref": "#enforcement-university-of-tulsa-bing-v5-01"
+          },
+          {
+            "text": "Explain permitted assistance in the detail the professor requires.",
+            "evidenceHref": "#enforcement-university-of-tulsa-bing-v5-03"
+          },
+          {
+            "text": "Verify outputs with reliable academic sources yourself.",
+            "evidenceHref": "#enforcement-university-of-tulsa-bing-v5-04"
+          }
+        ],
+        "artworkWidth": 1264,
+        "artworkHeight": 848
+      },
+      "dont": {
+        "artworkSrc": "/tulsa-v5/assets/policy-scenes/bing-v5-tulsa-dont.webp",
+        "artworkLandscape": true,
+        "artworkAlt": "University of Tulsa educational library guidance: dont scene with a student checking permission, disclosure or tool-access limits.",
+        "checks": [
+          {
+            "text": "Do not read the library guide as university-wide AI policy.",
+            "evidenceHref": "#enforcement-university-of-tulsa-bing-v5-01"
+          },
+          {
+            "text": "Do not infer coursework permission from TU Copilot access.",
+            "evidenceHref": "#enforcement-university-of-tulsa-bing-v5-02"
+          },
+          {
+            "text": "Do not treat an illustrative disclosure as every course’s exact requirement.",
+            "evidenceHref": "#enforcement-university-of-tulsa-bing-v5-03"
+          }
+        ],
+        "artworkWidth": 1264,
+        "artworkHeight": 848
+      }
+    },
+    "artworkWidth": 1264,
+    "artworkHeight": 848
+  },
+  "records": [
+    {
+      "id": "university-of-tulsa-bing-v5-01",
+      "group": "trigger",
+      "statement": "McFarlin Library’s guide is educational and explicitly does not represent generative-AI policy for the whole University of Tulsa. It advises requesting coursework or department AI policies from professors or department chairs; the guide was updated 14 September 2026.",
+      "scope": {
+        "level": "unit",
+        "unit": "McFarlin Library educational guide",
+        "audience": "students",
+        "qualifiers": [
+          "McFarlin Library educational guidance explicitly is not university-wide AI policy. College/Provost academic policies and programme-specific handbooks govern formal misconduct; no universal formal clock established."
+        ]
+      },
+      "appliesToAI": "explicit_ai",
+      "conditions": [],
+      "exceptions": [],
+      "evidence": [
+        {
+          "sourceId": "bing-v5-university-of-tulsa-library",
+          "sourceUrl": "https://libraries.utulsa.edu/generativeAI",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "69fd632b9c5d0f2b71b23f7b93d6a0be7af7a706d25d6df7322d349ad56c5351",
+          "retrievedAt": "2026-10-08T00:46:24.825192+00:00",
+          "quote": "Disclaimer\nInformation contained on this website is educational in nature and does not represent the generative-AI use policies for the entirety of The University of Tulsa. If you have questions about using generative-AI tools for your course work or in your department, McFarlin encourages you to reach out to your professors or department chairs and request their generative-AI or AI policies.\nGenerative AI Information Guide © 2025 by Kathryn Thomas is licensed under CC BY-SA 4.0\nNext: Choosing Tools and Creating Prompts >>\nLast Updated: Sep 14, 2026 10:16 AM",
+          "lineStart": 114,
+          "lineEnd": 118
+        }
+      ],
+      "localSummary": {
+        "zh": "McFarlin Library 指南属于教育性指导，明确不代表 University of Tulsa 的全校 GenAI 政策。建议向教授或系主任索取课程／院系 AI 规则；指南更新于 2026 年 9 月 14 日。"
+      },
+      "translationSourceHash": "94a515935125e00a9edf0c839b642421c11a82b9cc43dd8b502310ab609c45e5",
+      "deadlines": [],
+      "sourceNature": "official_guidance",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "university-of-tulsa-bing-v5-02",
+      "group": "support",
+      "statement": "The library guide says TU encourages Microsoft Copilot and describes free enterprise-protected access through TU SSO, Microsoft authentication and Work selection. This is verified institutional-access guidance, not permission to use it for every assessment, nor a live account-login test.",
+      "scope": {
+        "level": "unit",
+        "unit": "McFarlin Library educational guide",
+        "audience": "students",
+        "qualifiers": [
+          "McFarlin Library educational guidance explicitly is not university-wide AI policy. College/Provost academic policies and programme-specific handbooks govern formal misconduct; no universal formal clock established."
+        ]
+      },
+      "appliesToAI": "explicit_ai",
+      "conditions": [],
+      "exceptions": [],
+      "evidence": [
+        {
+          "sourceId": "bing-v5-university-of-tulsa-copilot",
+          "sourceUrl": "https://libraries.utulsa.edu/c.php?g=1459769&p=10854800",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "913336d424c9d15c402b06e13f5dd347d8dfd7525aeb18e6de9b0236bc295bcd",
+          "retrievedAt": "2026-10-08T00:46:25.417948+00:00",
+          "quote": "The University of Tulsa encourages the use of Microsoft's Copilot LLM.\nWhen you use your TU SSO credentials to login to Copilot, you are accessing an enterprise-protected version of Copilot. This level of access is included in your TU Office Suite - you are not required to pay anything. This enterprise account provides an extra layer of security, and seamlessly integrates into your existing Microsoft applications.\nIt requires the Edge browser to work seamlessly.\nTo ensure that you are taking advantage of your TU enterprise protection in Copilot, please follow the steps below.\nOpen the Edge browser.\nGo to office.utulsa.edu\nBEFORE you ask a question, select \"Sign in\" in the top right corner of the screen.\nThen select \"Continue with Microsoft\" as your sign-in option.\nUse your TU SSO credentials (abc0000@utulsa.edu)\nNote: You will need to authenticate your login using Microsoft Authenticator.\nIt will then ask, \"Which Copilot experience are you looking for?\" - select Work.\nNote: You should see your UTulsa username below the Work option.\nYou are now logged in.\nNote: You should see a small green shield in the top right corner, indicating you are enterprise protected!",
+          "lineStart": 74,
+          "lineEnd": 87
+        }
+      ],
+      "localSummary": {
+        "zh": "图书馆指南称 TU 鼓励 Microsoft Copilot，并说明通过 TU SSO、Microsoft 身份验证和 Work 选项可免费使用企业保护访问。这是已核对的学校访问指导，不是所有评估的使用许可，也不是实际账号登录测试。"
+      },
+      "translationSourceHash": "a60cf235249cc4cc318c9e9dd98428d24cd1f4d9088c959310ee11cff9db6b3f",
+      "deadlines": [],
+      "sourceNature": "official_guidance",
+      "emphasis": {
+        "en": [
+          "Microsoft Copilot"
+        ],
+        "zh": [
+          "Microsoft Copilot"
+        ]
+      }
+    },
+    {
+      "id": "university-of-tulsa-bing-v5-03",
+      "group": "trigger",
+      "statement": "The library’s disclosure example is illustrative: professors may require less or more detail. Best practice is to check with the professor before using any generative-AI tool, then follow the actual disclosure requirements.",
+      "scope": {
+        "level": "unit",
+        "unit": "McFarlin Library educational guide",
+        "audience": "students",
+        "qualifiers": [
+          "McFarlin Library educational guidance explicitly is not university-wide AI policy. College/Provost academic policies and programme-specific handbooks govern formal misconduct; no universal formal clock established."
+        ]
+      },
+      "appliesToAI": "explicit_ai",
+      "conditions": [],
+      "exceptions": [],
+      "evidence": [
+        {
+          "sourceId": "bing-v5-university-of-tulsa-cite",
+          "sourceUrl": "https://libraries.utulsa.edu/c.php?g=1459769&p=10854579",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "a0f91ccb94998af637d40f6a7b4eabf3fdc9d835bafd990a740ad4587ea582b1",
+          "retrievedAt": "2026-10-08T00:46:25.669942+00:00",
+          "quote": "Example Disclosure Statements\nPlease note this example is a very detailed AI disclosure statement. Professors may require less or more specific notes about your generative-AI use for course work. Best practice is to always check with your professor before using any generative-AI tools.",
+          "lineStart": 88,
+          "lineEnd": 89
+        }
+      ],
+      "localSummary": {
+        "zh": "图书馆披露示例仅用于说明；教授可能要求更少或更多详情。建议使用任何 GenAI 工具前先询问教授，再按实际披露要求执行。"
+      },
+      "translationSourceHash": "ec6656393d81024b55ac15647363c3aa5129e7571388d676e62c3c46a8653676",
+      "deadlines": [],
+      "sourceNature": "official_guidance",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "university-of-tulsa-bing-v5-04",
+      "group": "trigger",
+      "statement": "Users remain responsible for fact checking regardless of the tool. Before coursework use, the library suggests asking whether the request would be inappropriate to make of a live tutor; this is educational guidance rather than a formal misconduct finding.",
+      "scope": {
+        "level": "unit",
+        "unit": "McFarlin Library educational guide",
+        "audience": "students",
+        "qualifiers": [
+          "McFarlin Library educational guidance explicitly is not university-wide AI policy. College/Provost academic policies and programme-specific handbooks govern formal misconduct; no universal formal clock established."
+        ]
+      },
+      "appliesToAI": "explicit_ai",
+      "conditions": [],
+      "exceptions": [],
+      "evidence": [
+        {
+          "sourceId": "bing-v5-university-of-tulsa-copilot",
+          "sourceUrl": "https://libraries.utulsa.edu/c.php?g=1459769&p=10854800",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "913336d424c9d15c402b06e13f5dd347d8dfd7525aeb18e6de9b0236bc295bcd",
+          "retrievedAt": "2026-10-08T00:46:25.417948+00:00",
+          "quote": "When choosing a generative-AI tool it is important to consider what you need the tool to assist you with. Are you looking to have a difficult concept broken down? Do you need help judging the tone of writing? Not sure which search terms you could use to find articles in a database? Curious to see if your wording is as clear and direct as you believe it to be? All of these scenarios could benefit from the assistive use of a generative-AI tool.\nNot all generative-AI tools are built the same, so it is important to know what the tool was designed to do. When considering a large language model (Copilot, ChatGPT, Perplexity) try using it like a Socratic partner. LLMs can take in large amounts of text with detailed language which makes them a great choice for brainstorming or conceptual understanding. However, there are also many tools that are more single-task oriented, which can help you with every day tasks in addition to your academic life.\nRegardless of the tool you choose, you need to write prompts that are CLEAR, and remember it is still your responsibility to fact check any information. This page outlines some important notes on specific tools, their intended uses, and guidelines for creating improved prompts that will yield better results.\nBefore you use a generative AI tool for course work, ask yourself this question...\n\"Am I about to ask this Generative AI tool to do something I wouldn't ask a live tutor to do?\"\nSource: Ellen Carillo, Professor of English and Writing Coordinator, University of Connecticut",
+          "lineStart": 88,
+          "lineEnd": 93
+        }
+      ],
+      "localSummary": {
+        "zh": "无论使用何种工具，用户仍须核实事实。课程使用前，图书馆建议想一想：这是否也是不适合要求真人导师代做的事情；这是教育指导，不是正式违规认定。"
+      },
+      "translationSourceHash": "05089378c282f017ce1122aec7f5ecb30f14c1a0c55b2f909dccdf7be5a9150d",
+      "deadlines": [],
+      "sourceNature": "official_guidance",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "university-of-tulsa-bing-v5-05",
+      "group": "appeal",
+      "statement": "Tulsa’s student handbook explains that additional programme handbooks may apply and academic misconduct policies are established, published and enforced by the colleges and Provost’s Office. The reviewed public guide does not establish one universal AI sanction, hearing or appeal deadline.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "students",
+        "qualifiers": [
+          "McFarlin Library educational guidance explicitly is not university-wide AI policy. College/Provost academic policies and programme-specific handbooks govern formal misconduct; no universal formal clock established."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "conditions": [],
+      "exceptions": [],
+      "evidence": [
+        {
+          "sourceId": "bing-v5-university-of-tulsa-handbook",
+          "sourceUrl": "https://utulsa.edu/student-life/student-resources/student-handbook-policies/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "7710c818f2066798bf2673a40277b8f4304c499d81bc2dc1f47717fce42832dd",
+          "retrievedAt": "2026-10-08T00:46:24.596573+00:00",
+          "quote": "The rules, regulations, and policies contained on this page apply to all TU students, full-time and part-time, including, but not limited to undergraduates, graduates, law school students, athletes, residence hall occupants, apartment occupants, members of fraternities and sororities and commuting students. In addition to the rules, regulations and policies contained here, other handbooks specific for certain groups of students apply as well. Therefore, the Policies & Procedures Handbook for School of Nursing, Sports Medicine Handbook, Student-Athlete Handbook, Academic Bulletins, College of Law Handbook containing the Policies and Regulations and Law School Student Code of Conduct, The Guide to Living on Campus, Office of Research and Sponsored Programs: Policies, Procedures & Guidelines, or Student Union Facilities booklet also may apply to you.\nThese policies do not constitute a contract. These policies provide information and represent certain significant policies of the University. Academic policies, including policies relating to academic misconduct, are established, published, and enforced by the colleges and the Office of the Provost.\nPolicies are subject to change at any time due to federal law or as deemed necessary by the university.",
+          "lineStart": 284,
+          "lineEnd": 286
+        }
+      ],
+      "localSummary": {
+        "zh": "Tulsa 学生手册说明：可能另有专业手册适用；学术违规政策由 colleges 及 Provost’s Office 制定、发布和执行。已核对的公开指导不能证明存在统一的 AI 处分、听证或申诉期限。"
+      },
+      "translationSourceHash": "a96f7bec31a864a3248e4d792a576fd0e66e92440a193261be2e9ee0428b7b92",
+      "deadlines": [],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "university-of-tulsa-bing-v5-06",
+      "group": "support",
+      "statement": "Tulsa’s public accessibility page provides Student Access, student-accommodation resources and an Accessibility Services Portal. This is a verified support entry point, not evidence that an academic-misconduct deadline is automatically extended.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "students",
+        "qualifiers": [
+          "McFarlin Library educational guidance explicitly is not university-wide AI policy. College/Provost academic policies and programme-specific handbooks govern formal misconduct; no universal formal clock established."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "conditions": [],
+      "exceptions": [],
+      "evidence": [
+        {
+          "sourceId": "bing-v5-university-of-tulsa-accessibility",
+          "sourceUrl": "https://utulsa.edu/student-life/accessibility/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "7aa1e780298149d3becf012939b4a5e28d33b97dc04a1a0a626bebf25c352397",
+          "retrievedAt": "2026-10-08T01:00:25.410198+00:00",
+          "quote": "About Student Access\nAccessibility for Students\nStudent Coaching Groups\nAccommodations for Visitors\nAccessibility FAQs\nForms, Guidelines, Policies\nD-CARES\nThe University of Tulsa is committed to full and equal access for all. Accessibility @ UTulsa provides leadership and support through inclusive and affirming practices in all campus programs, initiatives, services, and aids.\nAccessibility Services Portal\nAccessibility Resources\nADA Campus Map\nCaneCareers\nReport A Concern\nRights & Responsibilities\nAccommodations for Visitors\nAccommodations for Students",
+          "lineStart": 282,
+          "lineEnd": 297
+        }
+      ],
+      "localSummary": {
+        "zh": "Tulsa 公开无障碍页面提供 Student Access、学生调整资源及 Accessibility Services Portal。这是已核对的支持入口，不代表学术违规期限自动延长。"
+      },
+      "translationSourceHash": "98e05f18ce133a0eb7075cc0675f33c1d6018d6ef61d10187f1367724562e474",
+      "deadlines": [],
+      "sourceNature": "official_guidance",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    }
+  ]
+}
