@@ -17,7 +17,7 @@ export const trustContent = {
       "English is the canonical text; translations assist reading."
     ],
     "contact": [
-      "University AI Policy Tracker is independently operated by Samsong. Contact support@eduaipolicy.org for support, privacy requests or corrections.",
+      "University AI Policy Tracker is a Canadian public-interest EdTech initiative operated by an independent Canadian company. Sam Song is the founder and operator. Contact support@eduaipolicy.org for support, privacy requests or corrections.",
       "For a correction, include the university, page or claim ID and official source URL. Do not send student records, private coursework or sensitive personal information."
     ],
     "support": [
@@ -33,6 +33,7 @@ export const trustContent = {
       "Support email: support@eduaipolicy.org uses Zoho Mail Free for an organization mailbox. No custom eDiscovery or archival retention policy is configured. Messages in the active mailbox are not automatically deleted after a fixed age. If a user account or the organization is deleted, Zoho provides a 30-day recovery period; related data are permanently deleted after that period. Ask for deletion or clarification by email. Do not send private coursework."
     ],
     "terms": [
+      "University AI Policy Tracker is operated in Canada as a public-interest education technology service. The tracker is independent from the universities and institutions whose published policies it indexes.",
       "This is an independent public reference service, not an official university statement. Linked original university policies and course or assessment instructions govern; the tracker does not grant permission or provide legal or academic-integrity advice.",
       "Evidence can have a limited audience, unit or effective period. A retrieval date is not an effective date. We cannot guarantee completeness or uninterrupted availability. Request corrections using the official source.",
       "Tracker metadata uses CC BY 4.0 with attribution. Original source documents retain their owners’ rights and terms. Use the read-only service reasonably; do not interfere with availability or try to access unpublished material."
@@ -60,7 +61,7 @@ export const trustContent = {
       "英文为规范正文，译文帮助理解。"
     ],
     "contact": [
-      "University AI Policy Tracker 由 Samsong 独立运营。支持、隐私请求和数据纠错请联系 support@eduaipolicy.org。",
+      "University AI Policy Tracker 是由独立加拿大公司运营的公益导向教育科技项目。Sam Song 是创始人及运营者。支持、隐私请求和数据纠错请联系 support@eduaipolicy.org。",
       "纠错时请提供学校、页面或声明 ID，以及学校官方来源链接。请勿发送学生记录、私人作业或敏感个人信息。"
     ],
     "support": [
@@ -76,6 +77,7 @@ export const trustContent = {
       "支持邮件：support@eduaipolicy.org 使用 Zoho Mail Free 组织邮箱，未配置自定义 eDiscovery 或归档保留规则。活动邮箱中的邮件不会按固定存放期限自动删除。若用户账号或整个组织被删除，Zoho 提供 30 天恢复期；期满后相关数据将被永久删除。可通过邮箱要求删除或询问处理方式。不要发送私人作业。"
     ],
     "terms": [
+      "University AI Policy Tracker 在加拿大作为公益导向的教育科技服务运营，独立于其所收录政策的大学和机构。",
       "本站为独立公共参考服务，不是学校官方声明。学校原文以及课程和考核要求具有决定作用；本站不授予使用权限，也不提供法律或学术诚信建议。",
       "证据可能只适用于特定人群、院系或时期。抓取日期不是生效日期。本站无法保证覆盖完整或服务持续可用；纠错请提供官方来源。",
       "网站整理的元数据采用 CC BY 4.0，使用时需署名。学校原文保留权利人的版权和条款。请合理使用只读服务，不干扰服务或尝试获取未公开资料。"
@@ -103,7 +105,7 @@ export const trustContent = {
       "Le texte anglais fait référence ; les traductions facilitent la lecture."
     ],
     "contact": [
-      "University AI Policy Tracker est exploité indépendamment par Samsong. Écrivez à support@eduaipolicy.org pour l’assistance, la confidentialité ou les corrections.",
+      "Une initiative EdTech canadienne d’intérêt public, exploitée par une entreprise indépendante. Pays : Canada · Création : mai 2026 · Fondateur / exploitant : Sam Song. Contact: support@eduaipolicy.org",
       "Pour une correction, indiquez l’université, la page ou l’identifiant de l’affirmation et le lien officiel. N’envoyez pas de dossiers étudiants, de travaux privés ni de données personnelles sensibles."
     ],
     "support": [
@@ -119,6 +121,7 @@ export const trustContent = {
       "Courriels : support@eduaipolicy.org utilise Zoho Mail Free pour une boîte d’organisation. Aucune règle personnalisée d’eDiscovery ou d’archivage n’est configurée. Les messages de la boîte active ne sont pas supprimés automatiquement après une durée fixe. En cas de suppression d’un compte utilisateur ou de l’organisation, Zoho prévoit une période de récupération de 30 jours ; les données associées sont ensuite supprimées définitivement. Demandez une suppression ou des précisions par courriel. N’envoyez pas de travaux privés."
     ],
     "terms": [
+      "University AI Policy Tracker est exploité au Canada comme service de technologie éducative d’intérêt public, indépendant des universités et institutions dont il indexe les politiques publiées.",
       "Ce service indépendant est une référence publique, pas une déclaration officielle d’université. Les sources originales et les instructions des cours ou évaluations font autorité. Le tracker ne donne aucune permission ni conseil juridique ou d’intégrité académique.",
       "Une preuve peut concerner un public, une unité ou une période limitée. La date de collecte n’est pas la date d’effet. L’exhaustivité et la disponibilité permanente ne sont pas garanties. Utilisez une source officielle pour demander une correction.",
       "Les métadonnées du tracker sont sous CC BY 4.0 avec attribution. Les documents originaux gardent leurs droits et conditions. Utilisez raisonnablement le service en lecture seule, sans perturber sa disponibilité ni chercher des contenus non publiés."
@@ -146,7 +149,7 @@ export const trustContent = {
       "Tekst angielski jest podstawowy; tłumaczenia pomagają w lekturze."
     ],
     "contact": [
-      "University AI Policy Tracker prowadzi niezależnie Samsong. W sprawach pomocy, prywatności i korekt pisz na support@eduaipolicy.org.",
+      "Kanadyjska inicjatywa EdTech w interesie publicznym, prowadzona przez niezależną firmę. Kraj: Kanada · Początek: maj 2026 · Założyciel / operator: Sam Song. Contact: support@eduaipolicy.org",
       "Przy korekcie podaj uczelnię, stronę lub identyfikator twierdzenia oraz oficjalne źródło. Nie wysyłaj dokumentacji studentów, prywatnych prac ani wrażliwych danych."
     ],
     "support": [
@@ -162,6 +165,7 @@ export const trustContent = {
       "E-mail: support@eduaipolicy.org korzysta z organizacyjnej skrzynki Zoho Mail Free. Nie skonfigurowano niestandardowej polityki eDiscovery ani archiwizacji. Wiadomości w aktywnej skrzynce nie są automatycznie usuwane po określonym czasie. Po usunięciu konta użytkownika lub całej organizacji Zoho zapewnia 30-dniowy okres odzyskiwania; po nim powiązane dane są trwale usuwane. Poproś e-mailem o usunięcie lub wyjaśnienia. Nie wysyłaj prywatnych prac."
     ],
     "terms": [
+      "University AI Policy Tracker działa w Kanadzie jako usługa technologii edukacyjnej w interesie publicznym, niezależna od uczelni i instytucji, których opublikowane zasady indeksuje.",
       "To niezależny publiczny serwis informacyjny, nie oficjalne stanowisko uczelni. Wiążące są źródła uczelni i instrukcje kursów lub oceniania. Tracker nie udziela zgody ani porad prawnych lub dotyczących uczciwości akademickiej.",
       "Dowody mogą dotyczyć określonej grupy, jednostki lub okresu. Data pobrania nie jest datą wejścia w życie. Nie gwarantujemy kompletności ani ciągłości działania. Korekty zgłaszaj z oficjalnym źródłem.",
       "Metadane trackera są na licencji CC BY 4.0 z uznaniem autorstwa. Oryginalne dokumenty zachowują prawa właścicieli. Korzystaj rozsądnie z usługi odczytu, nie zakłócaj jej działania i nie próbuj uzyskać nieopublikowanych materiałów."
@@ -189,7 +193,7 @@ export const trustContent = {
       "El texto inglés es el canónico; las traducciones facilitan la lectura."
     ],
     "contact": [
-      "Samsong gestiona University AI Policy Tracker de forma independiente. Escribe a support@eduaipolicy.org para ayuda, privacidad o correcciones.",
+      "Una iniciativa canadiense de EdTech de interés público, operada por una empresa independiente. País: Canadá · Fundación: mayo de 2026 · Fundador / operador: Sam Song. Contact: support@eduaipolicy.org",
       "Indica universidad, página o identificador de afirmación y fuente oficial. No envíes expedientes estudiantiles, trabajos privados ni datos personales sensibles."
     ],
     "support": [
@@ -205,6 +209,7 @@ export const trustContent = {
       "Correo: support@eduaipolicy.org usa un buzón organizativo de Zoho Mail Free. No hay una política personalizada de eDiscovery ni de archivo. Los mensajes del buzón activo no se eliminan automáticamente tras un plazo fijo. Si se elimina una cuenta de usuario o toda la organización, Zoho ofrece un periodo de recuperación de 30 días; después, los datos relacionados se eliminan permanentemente. Solicita la eliminación o aclaraciones por correo. No envíes trabajos privados."
     ],
     "terms": [
+      "University AI Policy Tracker opera en Canadá como servicio de tecnología educativa de interés público, independiente de las universidades e instituciones cuyas políticas publicadas indexa.",
       "Servicio público independiente de referencia, no declaración oficial universitaria. Rigen los documentos oficiales y las instrucciones del curso o evaluación. El tracker no otorga permiso ni asesoramiento jurídico o de integridad académica.",
       "Las pruebas pueden limitarse a un público, unidad o periodo. La fecha de recopilación no es la de vigencia. No garantizamos exhaustividad ni disponibilidad continua. Solicita correcciones con una fuente oficial.",
       "Metadatos bajo CC BY 4.0 con atribución. Los documentos originales conservan sus derechos y condiciones. Usa razonablemente el servicio de lectura, sin interferir ni intentar acceder a materiales no publicados."
@@ -232,7 +237,7 @@ export const trustContent = {
       "De Engelse tekst is leidend; vertalingen ondersteunen het lezen."
     ],
     "contact": [
-      "Samsong beheert University AI Policy Tracker onafhankelijk. Mail support@eduaipolicy.org voor ondersteuning, privacyvragen of correcties.",
+      "Een Canadees EdTech-initiatief in het algemeen belang, beheerd door een onafhankelijk bedrijf. Land: Canada · Opgericht: mei 2026 · Oprichter / beheerder: Sam Song. Contact: support@eduaipolicy.org",
       "Vermeld universiteit, pagina of claim-ID en de officiële bron. Stuur geen studentendossiers, privéopdrachten of gevoelige persoonsgegevens."
     ],
     "support": [
@@ -248,6 +253,7 @@ export const trustContent = {
       "E-mail: support@eduaipolicy.org gebruikt een organisatorische Zoho Mail Free-mailbox. Er is geen aangepast eDiscovery- of archiveringsbeleid ingesteld. Berichten in de actieve mailbox worden niet automatisch na een vaste termijn verwijderd. Als een gebruikersaccount of de hele organisatie wordt verwijderd, biedt Zoho een herstelperiode van 30 dagen; daarna worden de bijbehorende gegevens permanent verwijderd. Vraag per e-mail om verwijdering of uitleg. Stuur geen privéopdrachten."
     ],
     "terms": [
+      "University AI Policy Tracker wordt in Canada beheerd als educatieve technologiedienst in het algemeen belang, onafhankelijk van de universiteiten en instellingen waarvan het gepubliceerde beleid indexeert.",
       "Onafhankelijke openbare referentiedienst, geen officiële universiteitsverklaring. Originele bronnen en cursus- of beoordelingsinstructies zijn bepalend. De tracker geeft geen toestemming of juridisch dan wel academisch-integriteitsadvies.",
       "Bewijs kan beperkt zijn tot een doelgroep, eenheid of periode. Ophaaldatum is geen ingangsdatum. Volledigheid en voortdurende beschikbaarheid zijn niet gegarandeerd. Vraag correcties met een officiële bron.",
       "Trackermetadata vallen onder CC BY 4.0 met naamsvermelding. Brondocumenten behouden eigen rechten en voorwaarden. Gebruik de leesdienst redelijk, verstoor haar niet en probeer geen ongepubliceerde informatie te verkrijgen."
@@ -275,7 +281,7 @@ export const trustContent = {
       "Teks Inggeris ialah rujukan utama; terjemahan membantu pembacaan."
     ],
     "contact": [
-      "University AI Policy Tracker dikendalikan secara bebas oleh Samsong. Hubungi support@eduaipolicy.org untuk sokongan, permintaan privasi atau pembetulan.",
+      "Inisiatif EdTech Kanada untuk kepentingan awam, dikendalikan oleh syarikat bebas. Negara: Kanada · Diasaskan: Mei 2026 · Pengasas / pengendali: Sam Song. Contact: support@eduaipolicy.org",
       "Nyatakan universiti, halaman atau ID dakwaan serta URL sumber rasmi. Jangan hantar rekod pelajar, tugasan peribadi atau maklumat peribadi sensitif."
     ],
     "support": [
@@ -291,6 +297,7 @@ export const trustContent = {
       "E-mel sokongan: support@eduaipolicy.org menggunakan peti mel organisasi Zoho Mail Free. Tiada dasar eDiscovery atau arkib tersuai dikonfigurasi. Mesej dalam peti mel aktif tidak dipadam secara automatik selepas tempoh tetap. Jika akaun pengguna atau seluruh organisasi dipadam, Zoho menyediakan tempoh pemulihan 30 hari; selepas itu data berkaitan dipadam secara kekal. Minta pemadaman atau penjelasan melalui e-mel. Jangan hantar tugasan peribadi."
     ],
     "terms": [
+      "University AI Policy Tracker dikendalikan di Kanada sebagai perkhidmatan teknologi pendidikan untuk kepentingan awam, bebas daripada universiti dan institusi yang dasar terbitannya diindeks.",
       "Perkhidmatan rujukan awam bebas, bukan kenyataan rasmi universiti. Sumber asal dan arahan kursus atau penilaian menjadi rujukan utama. Tracker tidak memberikan kebenaran atau nasihat undang-undang atau integriti akademik.",
       "Bukti boleh terhad kepada golongan, unit atau tempoh tertentu. Tarikh pengambilan bukan tarikh kuat kuasa. Kelengkapan dan ketersediaan berterusan tidak dijamin. Sertakan sumber rasmi untuk pembetulan.",
       "Metadata tracker menggunakan CC BY 4.0 dengan atribusi. Dokumen asal mengekalkan hak dan terma pemilik. Gunakan perkhidmatan baca sahaja secara munasabah, jangan mengganggu atau cuba mendapatkan bahan belum diterbitkan."

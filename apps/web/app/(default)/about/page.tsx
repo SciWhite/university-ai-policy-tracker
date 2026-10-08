@@ -1,3 +1,4 @@
+import { OrganizationIdentity } from "@/components/organization-identity";
 import { AgentMethods } from "@/components/agent-methods";
 import { DocumentLink as Link } from "@/components/document-link";
 import { ReferenceBox } from "@/components/reference-box";
@@ -27,8 +28,10 @@ export default async function AboutPage({ params }: Props) {
         <h1>{copy.title}</h1>
         <p className="lead">{copy.lead}</p>
         <p>{copy.project}</p>
+        <p>{copy.purpose}</p>
       </section>
       <div className="docs-content">
+        <OrganizationIdentity locale={locale} />
         <AgentMethods locale={locale} />
         <ReferenceBox id="sources-and-review" title={copy.dataTitle}>
           <p>{copy.review}</p>

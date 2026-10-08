@@ -6,6 +6,13 @@ how universities publish and change AI policy and guidance.
 Live site: <https://eduaipolicy.org> · Repository:
 <https://github.com/SciWhite/university-ai-policy-tracker>
 
+## Project and operator
+
+University AI Policy Tracker is a Canadian public-interest EdTech initiative
+operated by an independent Canadian company. Founded in May 2026, the project
+operates on a public-interest, non-commercial basis. Founder and operator:
+Sam Song. Contact: support@eduaipolicy.org.
+
 ## Overview
 
 The project turns fragmented official university pages into source-attributed,

@@ -1,3 +1,4 @@
+import { organizationIdentity } from "@/lib/organization-identity";
 import type { Metadata } from "next";
 import { PUBLIC_API_VERSION } from "@uapt/shared";
 import { BrowseEntryGroups } from "@/components/browse-entry-groups";
@@ -150,15 +151,7 @@ export default async function HomePage({ params, searchParams }: HomePageProps) 
         data={{
           "@context": "https://schema.org",
           "@graph": [
-            {
-              "@id": getAbsoluteSiteUrl("/#organization"),
-              "@type": "Organization",
-              name: "University AI Policy Tracker",
-              sameAs: [
-                "https://github.com/SciWhite/university-ai-policy-tracker"
-              ],
-              url: getAbsoluteSiteUrl("/")
-            },
+            organizationIdentity,
             {
               "@id": getAbsoluteSiteUrl("/#website"),
               "@type": "WebSite",

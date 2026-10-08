@@ -1,3 +1,5 @@
+import { getProjectCopy } from "@/lib/project-copy";
+import { organizationIdentity } from "@/lib/organization-identity";
 import React from "react";
 import { PUBLIC_API_VERSION } from "@uapt/shared";
 import { DocumentLink as Link } from "@/components/document-link";
@@ -78,17 +80,12 @@ export function HomeV4View({
 
   return (
     <div className="home-v4" data-i18n="preserve">
+      <p className="compact-note">{getProjectCopy(locale).lead} <Link href="/about" localeOverride={locale}>{getProjectCopy(locale).title}</Link></p>
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@graph": [
-            {
-              "@id": getAbsoluteSiteUrl("/#organization"),
-              "@type": "Organization",
-              name: "University AI Policy Tracker",
-              sameAs: ["https://github.com/SciWhite/university-ai-policy-tracker"],
-              url: getAbsoluteSiteUrl("/")
-            },
+            organizationIdentity,
             {
               "@id": getAbsoluteSiteUrl(localizeHref("/#website", locale)),
               "@type": "WebSite",

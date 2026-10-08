@@ -3,10 +3,10 @@ import type { SupportedLocale } from "@/lib/i18n";
 const projectCopy = {
   "en": {
     "title": "About the project",
-    "lead": "An independent project making university AI rules easier to find, cite and follow.",
-    "project": "University AI Policy Tracker started in Canada in May 2026. It is independently maintained and self-funded, and has not incorporated as a company.",
+    "lead": "A Canadian public-interest EdTech initiative operated by an independent company.",
+    "project": "University AI Policy Tracker was founded in Canada in May 2026 and is operated by a small independent Canadian company. It builds open, source-backed infrastructure to help students, educators and researchers find, compare and cite university AI policies.",
     "agentsTitle": "How we use agents",
-    "agents": "Agents help with development, official-source discovery, evidence extraction, translation drafts and policy audits. Our workflow has used Claude, Codex and Antigravity; the tools vary by task.",
+    "agents": "Claude, Codex and other AI tools support product development, official-source discovery and review, structured evidence extraction, translation drafts and policy audits. Our workflow has used Claude Code and Antigravity; tools vary by task.",
     "tools": "HTTP fetches, browser tools and Firecrawl collect source material. Agents help organize and review it. A generated answer is not a university policy: published claims must remain tied to original quotations, source URLs, snapshot hashes and explicit review states.",
     "dataTitle": "Sources, review and publication",
     "review": "New findings enter staging as candidates. Review checks wording, audience, policy scope, exceptions and dates before promotion to a public release. Original-language evidence remains canonical; translations and summaries help readers navigate it.",
@@ -15,14 +15,18 @@ const projectCopy = {
     "sourceHistory": "Source checks and evidence re-sourcing",
     "auditHistory": "Live-fetch and evidence audit tools",
     "methodology": "Methodology",
-    "contact": "Contact"
+    "contact": "Contact",
+    "purpose": "The project is operated on a public-interest, non-commercial basis. Its public datasets, APIs, reports and read-only MCP access make published institutional AI rules easier to verify and use.",
+    "organizationTitle": "Organization",
+    "operator": "Operated by an independent Canadian company",
+    "organizationDetails": "Country: Canada · Founded: May 2026 · Founder / operator: Sam Song"
   },
   "zh": {
     "title": "关于项目",
-    "lead": "一个独立维护的项目，让大学 AI 规则更容易查找、引用和理解。",
-    "project": "University AI Policy Tracker 于 2026 年 5 月在加拿大启动，由维护者独立运营并自筹资金，目前尚未注册为公司。",
+    "lead": "由独立加拿大公司运营的公益导向教育科技项目。",
+    "project": "University AI Policy Tracker 于 2026 年 5 月在加拿大创立，由一家小型独立加拿大公司运营。项目建设开放、以来源为依据的基础设施，帮助学生、教育工作者和研究人员查找、比较和引用大学 AI 政策。",
     "agentsTitle": "我们如何使用 agents",
-    "agents": "Agents 协助开发、发现官方来源、提取证据、起草翻译和审查政策。工作流使用过 Claude、Codex 和 Antigravity，具体工具随任务选择。",
+    "agents": "Claude、Codex 及其他 AI 工具协助产品开发、官方来源发现与核查、结构化证据提取、翻译草稿和政策审查。工作流使用过 Claude Code 和 Antigravity，具体工具随任务选择。",
     "tools": "HTTP 抓取、浏览器工具和 Firecrawl 负责采集来源材料，agents 协助整理和审查。生成的回答不等于大学政策：公开声明必须关联原文引用、来源网址、快照哈希和明确的审查状态。",
     "dataTitle": "来源、审查与发布",
     "review": "新发现先作为候选内容进入暂存区。发布前检查措辞、适用对象、政策范围、例外和日期，再纳入公开版本。原始语言证据始终是依据，翻译和摘要用于帮助阅读。",
@@ -31,12 +35,16 @@ const projectCopy = {
     "sourceHistory": "来源核查与证据重新采集",
     "auditHistory": "实时抓取与证据审计工具",
     "methodology": "方法说明",
-    "contact": "联系"
+    "contact": "联系",
+    "purpose": "项目以公益导向、非商业方式运营，通过公开数据集、API、报告和只读 MCP 接口，让已发布的大学 AI 规则更容易核实和使用。",
+    "organizationTitle": "运营组织",
+    "operator": "由独立加拿大公司运营",
+    "organizationDetails": "国家：加拿大 · 创立：2026 年 5 月 · 创始人／运营者：Sam Song"
   },
   "fr": {
     "title": "À propos du projet",
-    "lead": "Un projet indépendant pour trouver, citer et comprendre les règles universitaires sur l’IA.",
-    "project": "University AI Policy Tracker a démarré au Canada en mai 2026. Le projet est indépendant, autofinancé et n’est pas constitué en société.",
+    "lead": "Une initiative EdTech canadienne d’intérêt public, exploitée par une entreprise indépendante.",
+    "project": "University AI Policy Tracker a été fondé au Canada en mai 2026 et est exploité par une petite entreprise canadienne indépendante. Il construit une infrastructure ouverte et fondée sur les sources pour aider étudiants, enseignants et chercheurs à trouver, comparer et citer les politiques universitaires sur l’IA.",
     "agentsTitle": "Comment nous utilisons les agents",
     "agents": "Les agents aident au développement, à la recherche de sources officielles, à l’extraction de preuves, aux brouillons de traduction et aux audits. Nous avons utilisé Claude, Codex et Antigravity selon les tâches.",
     "tools": "Les requêtes HTTP, les outils de navigateur et Firecrawl collectent les sources. Les agents aident à les organiser et à les vérifier. Une réponse générée n’est pas une politique universitaire : les affirmations publiées doivent conserver les citations originales, les URL, les empreintes des captures et les états de révision.",
@@ -47,12 +55,16 @@ const projectCopy = {
     "sourceHistory": "Vérification des sources et nouvelle collecte de preuves",
     "auditHistory": "Outils de collecte et d’audit des preuves",
     "methodology": "Méthodologie",
-    "contact": "Contact"
+    "contact": "Contact",
+    "purpose": "Le projet fonctionne dans l’intérêt public et sur une base non commerciale. Ses jeux de données publics, API, rapports et accès MCP en lecture seule facilitent la vérification et l’utilisation des règles publiées.",
+    "organizationTitle": "Organisation",
+    "operator": "Exploité par une entreprise canadienne indépendante",
+    "organizationDetails": "Pays : Canada · Création : mai 2026 · Fondateur / exploitant : Sam Song"
   },
   "pl": {
     "title": "O projekcie",
-    "lead": "Niezależny projekt ułatwiający wyszukiwanie, cytowanie i rozumienie zasad używania AI na uczelniach.",
-    "project": "University AI Policy Tracker powstał w Kanadzie w maju 2026 r. Jest utrzymywany niezależnie, finansowany ze środków własnych i nie został zarejestrowany jako spółka.",
+    "lead": "Kanadyjska inicjatywa EdTech w interesie publicznym, prowadzona przez niezależną firmę.",
+    "project": "University AI Policy Tracker powstał w Kanadzie w maju 2026 r. i jest prowadzony przez małą niezależną kanadyjską firmę. Tworzy otwartą infrastrukturę opartą na źródłach, pomagając studentom, nauczycielom i badaczom znajdować, porównywać i cytować uczelniane zasady AI.",
     "agentsTitle": "Jak korzystamy z agentów",
     "agents": "Agenci pomagają w rozwoju, wyszukiwaniu oficjalnych źródeł, wydobywaniu dowodów, szkicach tłumaczeń i audytach zasad. Korzystaliśmy z Claude, Codex i Antigravity, dobierając narzędzia do zadania.",
     "tools": "Żądania HTTP, narzędzia przeglądarkowe i Firecrawl zbierają materiały źródłowe. Agenci pomagają je porządkować i weryfikować. Wygenerowana odpowiedź nie jest zasadą uczelni: publikowane twierdzenia muszą mieć oryginalne cytaty, adresy źródeł, skróty migawek i jawny stan weryfikacji.",
@@ -63,12 +75,16 @@ const projectCopy = {
     "sourceHistory": "Sprawdzanie źródeł i ponowne zbieranie dowodów",
     "auditHistory": "Narzędzia pobierania i audytu dowodów",
     "methodology": "Metodologia",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "purpose": "Projekt działa w interesie publicznym i na zasadach niekomercyjnych. Publiczne zbiory danych, API, raporty i dostęp MCP tylko do odczytu ułatwiają weryfikację i korzystanie z opublikowanych zasad.",
+    "organizationTitle": "Organizacja",
+    "operator": "Prowadzony przez niezależną kanadyjską firmę",
+    "organizationDetails": "Kraj: Kanada · Początek: maj 2026 · Założyciel / operator: Sam Song"
   },
   "es": {
     "title": "Acerca del proyecto",
-    "lead": "Un proyecto independiente para encontrar, citar y comprender las normas universitarias sobre IA.",
-    "project": "University AI Policy Tracker comenzó en Canadá en mayo de 2026. Se mantiene de forma independiente, se autofinancia y no está constituido como empresa.",
+    "lead": "Una iniciativa canadiense de EdTech de interés público, operada por una empresa independiente.",
+    "project": "University AI Policy Tracker se fundó en Canadá en mayo de 2026 y lo opera una pequeña empresa canadiense independiente. Construye infraestructura abierta y basada en fuentes para ayudar a estudiantes, docentes e investigadores a encontrar, comparar y citar políticas universitarias sobre IA.",
     "agentsTitle": "Cómo usamos agentes",
     "agents": "Los agentes ayudan con desarrollo, búsqueda de fuentes oficiales, extracción de evidencias, borradores de traducción y auditorías. Hemos utilizado Claude, Codex y Antigravity según la tarea.",
     "tools": "Las solicitudes HTTP, las herramientas de navegador y Firecrawl recopilan las fuentes. Los agentes ayudan a organizarlas y revisarlas. Una respuesta generada no es una norma universitaria: las afirmaciones publicadas deben conservar citas originales, URL, hashes de las capturas y estados explícitos de revisión.",
@@ -79,12 +95,16 @@ const projectCopy = {
     "sourceHistory": "Comprobación de fuentes y nueva recopilación de evidencias",
     "auditHistory": "Herramientas de recopilación y auditoría de evidencias",
     "methodology": "Metodología",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "purpose": "El proyecto opera con fines de interés público y de forma no comercial. Sus conjuntos de datos públicos, API, informes y acceso MCP de solo lectura facilitan verificar y utilizar las normas publicadas.",
+    "organizationTitle": "Organización",
+    "operator": "Operado por una empresa canadiense independiente",
+    "organizationDetails": "País: Canadá · Fundación: mayo de 2026 · Fundador / operador: Sam Song"
   },
   "nl": {
     "title": "Over het project",
-    "lead": "Een onafhankelijk project om AI-regels van universiteiten te vinden, te citeren en te begrijpen.",
-    "project": "University AI Policy Tracker begon in Canada in mei 2026. Het wordt onafhankelijk onderhouden en zelf gefinancierd en is niet als bedrijf geregistreerd.",
+    "lead": "Een Canadees EdTech-initiatief in het algemeen belang, beheerd door een onafhankelijk bedrijf.",
+    "project": "University AI Policy Tracker is in mei 2026 in Canada opgericht en wordt beheerd door een klein onafhankelijk Canadees bedrijf. Het bouwt open, brongebaseerde infrastructuur waarmee studenten, docenten en onderzoekers AI-beleid van universiteiten kunnen vinden, vergelijken en citeren.",
     "agentsTitle": "Hoe we agents gebruiken",
     "agents": "Agents helpen bij ontwikkeling, het vinden van officiële bronnen, bewijsextractie, vertaalconcepten en beleidsaudits. We hebben Claude, Codex en Antigravity gebruikt, afhankelijk van de taak.",
     "tools": "HTTP-verzoeken, browsertools en Firecrawl verzamelen bronmateriaal. Agents helpen het te ordenen en te controleren. Een gegenereerd antwoord is geen universiteitsbeleid: gepubliceerde uitspraken moeten gekoppeld blijven aan oorspronkelijke citaten, bron-URL’s, snapshothashes en expliciete beoordelingsstatussen.",
@@ -95,12 +115,16 @@ const projectCopy = {
     "sourceHistory": "Broncontroles en opnieuw verzameld bewijs",
     "auditHistory": "Tools voor ophalen en bewijsaudits",
     "methodology": "Methodologie",
-    "contact": "Contact"
+    "contact": "Contact",
+    "purpose": "Het project werkt in het algemeen belang en op niet-commerciële basis. Openbare datasets, API’s, rapporten en alleen-lezen MCP-toegang maken gepubliceerde regels gemakkelijker te controleren en te gebruiken.",
+    "organizationTitle": "Organisatie",
+    "operator": "Beheerd door een onafhankelijk Canadees bedrijf",
+    "organizationDetails": "Land: Canada · Opgericht: mei 2026 · Oprichter / beheerder: Sam Song"
   },
   "ms": {
     "title": "Tentang projek",
-    "lead": "Projek bebas untuk mencari, memetik dan memahami peraturan AI universiti.",
-    "project": "University AI Policy Tracker bermula di Kanada pada Mei 2026. Projek ini diselenggara secara bebas, dibiayai sendiri dan belum diperbadankan sebagai syarikat.",
+    "lead": "Inisiatif EdTech Kanada untuk kepentingan awam, dikendalikan oleh syarikat bebas.",
+    "project": "University AI Policy Tracker diasaskan di Kanada pada Mei 2026 dan dikendalikan oleh sebuah syarikat kecil Kanada yang bebas. Ia membina infrastruktur terbuka berasaskan sumber untuk membantu pelajar, pendidik dan penyelidik mencari, membandingkan dan memetik dasar AI universiti.",
     "agentsTitle": "Cara kami menggunakan agents",
     "agents": "Agents membantu pembangunan, penemuan sumber rasmi, pengekstrakan bukti, draf terjemahan dan audit dasar. Kami telah menggunakan Claude, Codex dan Antigravity mengikut tugas.",
     "tools": "Permintaan HTTP, alat pelayar dan Firecrawl mengumpulkan bahan sumber. Agents membantu menyusun dan menyemaknya. Jawapan yang dijana bukan dasar universiti: kenyataan yang diterbitkan mesti dipautkan kepada petikan asal, URL sumber, hash petikan sumber dan status semakan yang jelas.",
@@ -111,7 +135,11 @@ const projectCopy = {
     "sourceHistory": "Semakan sumber dan pengumpulan semula bukti",
     "auditHistory": "Alat pengambilan sumber dan audit bukti",
     "methodology": "Metodologi",
-    "contact": "Hubungi"
+    "contact": "Hubungi",
+    "purpose": "Projek ini dikendalikan untuk kepentingan awam secara bukan komersial. Set data awam, API, laporan dan akses MCP baca sahaja memudahkan pengesahan dan penggunaan peraturan yang diterbitkan.",
+    "organizationTitle": "Organisasi",
+    "operator": "Dikendalikan oleh syarikat Kanada yang bebas",
+    "organizationDetails": "Negara: Kanada · Diasaskan: Mei 2026 · Pengasas / pengendali: Sam Song"
   }
 } as const;
 
