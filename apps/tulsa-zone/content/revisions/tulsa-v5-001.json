@@ -304,5 +304,35 @@
       }
     }
   ],
-  "tools": []
+  "tools": [
+    {
+      "universitySlug": "university-of-tulsa",
+      "universityName": "University of Tulsa",
+      "rawToolName": "Copilot",
+      "tool": "microsoft_copilot",
+      "availability": "not_mentioned",
+      "endorsementType": "institutionally_licensed_or_procured",
+      "reviewState": "agent_reviewed",
+      "evidence": [
+        {
+          "sourceUrl": "https://libraries.utulsa.edu/c.php?g=1459769&p=10854800",
+          "evidenceSnippet": "University of Tulsa's McFarlin Library Generative AI guide says the university encourages Microsoft's Copilot LLM and describes TU SSO access as an enterprise-protected Copilot experience included with the TU Office Suite.",
+          "snapshotHash": "a5b8081056d5d971ffad00b7d7c271bd7aff6056bb83eecb8657c36a648476e9",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://libraries.utulsa.edu/c.php?g=1459769&p=10854800",
+          "evidenceSnippet": "The University of Tulsa encourages the use of Microsoft's Copilot LLM.",
+          "snapshotHash": "a5b8081056d5d971ffad00b7d7c271bd7aff6056bb83eecb8657c36a648476e9",
+          "reviewState": "agent_reviewed"
+        },
+        {
+          "sourceUrl": "https://libraries.utulsa.edu/c.php?g=1459769&p=10854800",
+          "evidenceSnippet": "When you use your TU SSO credentials to login to Copilot, you are accessing an enterprise-protected version of Copilot.",
+          "snapshotHash": "a5b8081056d5d971ffad00b7d7c271bd7aff6056bb83eecb8657c36a648476e9",
+          "reviewState": "agent_reviewed"
+        }
+      ]
+    }
+  ]
 }
