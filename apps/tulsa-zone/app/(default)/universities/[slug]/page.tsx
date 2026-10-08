@@ -1,4 +1,4 @@
-const isAllowedTulsaSlug = (slug:string):boolean => slug === "university-of-tulsa";
+import {runtimeUniversitySlugs,isRuntimeUniversity} from "@zone/lib/schools";
 import {loadTulsaContent} from "@zone/lib/runtime-content";
 import {EnforcementV4Refresh as RuntimeEnforcement} from "@zone/components/runtime-enforcement";
 import {localizeV5Scene as localizeRuntimeScene} from "@zone/lib/scene-zh";
@@ -76,12 +76,12 @@ type PublicUniversitySummary = NonNullable<
 export const dynamicParams = true;
 export const revalidate = false;
 
-export async function generateStaticParams(){return [{slug:"university-of-tulsa"}];}
+export async function generateStaticParams(){return runtimeUniversitySlugs.map(slug=>({slug}));}
 
 export async function generateMetadata({ params, searchParams }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
-  if(!isAllowedTulsaSlug(slug))notFound();
+  if(!isRuntimeUniversity(slug))notFound();
   await redirectAliasSlug(slug, localeParam);
   if (isEthEnforcementPreview(slug, (await searchParams)?.layout)) {
     const title = "ETH Zurich AI policy evidence | University AI Policy Tracker";
@@ -175,7 +175,7 @@ export default async function UniversityPage({
 }: UniversityPageProps) {
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
-  if(!isAllowedTulsaSlug(slug))notFound();
+  if(!isRuntimeUniversity(slug))notFound();
   await redirectAliasSlug(slug, localeParam);
   if (isEthEnforcementPreview(slug, (await searchParams)?.layout)) return <EthEnforcementPreview locale={locale} />;
 
@@ -218,10 +218,10 @@ export default async function UniversityPage({
     pilotContent?.claimsSummary && !strongSnapshot && hasCurrentIndexRecoveryBasis(slug, publicSummary.claims)
       ? pilotContent.claimsSummary
       : undefined;
-  const isPublished = slug === "university-of-tulsa" || isPublishedPolicyReferencePage(slug);
+  const isPublished = isRuntimeUniversity(slug) || isPublishedPolicyReferencePage(slug);
   const isPreview = isPolicyReferencePreview(slug, pageQuery?.layout);
   const runtimeContent = await loadTulsaContent(slug, publicSummary.claims);
-  const basePolicyScene = runtimeContent?.scene ?? getPolicyScenePilot(
+  const basePolicyScene = (runtimeContent ? {...runtimeContent.scene,claimsOnly: !strongSnapshot,snapshotNotice: strongSnapshot ? undefined : runtimeContent.scene.snapshotNotice} : undefined) ?? getPolicyScenePilot(
     slug,
     publicSummary.claims,
     strongSnapshot,
@@ -308,7 +308,7 @@ export default async function UniversityPage({
         }}
       />
 
-      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot} enforcement={enforcementPage} tools={(slug === "university-of-tulsa" || isPublishedUniversityAiToolsModule(slug))} supplements={approvedPolicySupplementSlugs.includes(slug)}>
+      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot} enforcement={enforcementPage} tools={(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug))} supplements={approvedPolicySupplementSlugs.includes(slug)}>
       <EntityHeader
         eyebrow={`${university.region}, ${university.country}`}
         metadata={
@@ -331,7 +331,7 @@ export default async function UniversityPage({
       />
 
       {enforcementPage ? <EnforcementTaskEntrances locale={locale} /> : null}
-      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={(slug === "university-of-tulsa" || isPublishedUniversityAiToolsModule(slug))} supplements={approvedPolicySupplementSlugs.includes(slug)} /> : <PolicySceneHero scene={policyScene} /> : null}
+      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug))} supplements={approvedPolicySupplementSlugs.includes(slug)} /> : <PolicySceneHero scene={policyScene} /> : null}
       {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
       {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
@@ -348,7 +348,7 @@ export default async function UniversityPage({
       ) : null}
       {policyScene?.quickGuide && !strongSnapshot ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
       {enforcementPage ? <RuntimeEnforcement slug={slug} locale={locale} records={runtimeContent.records} /> : null}
-      {(slug === "university-of-tulsa" || isPublishedUniversityAiToolsModule(slug)) ? <UniversityAiTools locale={locale} records={runtimeContent.tools ?? await getUniversityToolRecords(publicSummary)} /> : null}
+      {(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug)) ? <UniversityAiTools locale={locale} records={runtimeContent.tools ?? await getUniversityToolRecords(publicSummary)} /> : null}
       {approvedPolicySupplementSlugs.includes(slug) ? <PolicySupplements slug={slug} locale={locale} claims={reviewedClaims} /> : null}
       {referencePreview ? <PolicyReferenceInteractions /> : compactPolicyPilot ? <PolicyRecordHashReveal /> : null}
 

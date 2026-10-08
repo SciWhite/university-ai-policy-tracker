@@ -1,0 +1,2 @@
+export const runtimeUniversitySlugs = ["university-of-glasgow", "imperial-college-london", "university-of-sydney", "university-of-exeter", "keele-university", "university-of-auckland", "cardiff-university", "flinders-university", "university-of-aberdeen", "university-of-tulsa"] as const;
+export function isRuntimeUniversity(slug:string):boolean{return (runtimeUniversitySlugs as readonly string[]).includes(slug);}
