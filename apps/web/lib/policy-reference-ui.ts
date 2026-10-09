@@ -81,6 +81,14 @@ export const policyReferenceUi = {
     "Officiële bronnen",
     "Sumber rasmi"
   ],
+  "Related source evidence": [
+    "相关来源证据",
+    "Preuves de source associées",
+    "Powiązane dowody źródłowe",
+    "Evidencia de la fuente relacionada",
+    "Bijbehorend bronbewijs",
+    "Bukti sumber berkaitan"
+  ],
   "About this record": [
     "关于此记录",
     "À propos de cette fiche",

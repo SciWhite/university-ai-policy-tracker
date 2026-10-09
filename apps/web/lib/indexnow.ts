@@ -11,6 +11,8 @@ export const DEFAULT_INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
 
 export const INDEXNOW_MAX_URLS_PER_CALL = 10000;
 export const INDEXNOW_DEFAULT_BATCH_SIZE = 1000;
+const MAX_PUBLISHED_SITEMAP_DOCUMENTS = 100;
+const MAX_PUBLISHED_SITEMAP_BYTES = 20 * 1024 * 1024;
 
 export interface IndexNowPayload {
   host: string;
@@ -71,6 +73,92 @@ export function chunkUrls(urls: string[], chunkSize: number): string[][] {
     chunks.push(urls.slice(i, i + chunkSize));
   }
   return chunks;
+}
+
+function decodeXmlText(value: string): string {
+  return value
+    .replace(/&#x([\da-f]+);/gi, (_, hex: string) => String.fromCodePoint(Number.parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, decimal: string) => String.fromCodePoint(Number.parseInt(decimal, 10)))
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&amp;/g, "&");
+}
+
+function sitemapLocs(xml: string): string[] {
+  return Array.from(xml.matchAll(/<loc(?:\s[^>]*)?>([\s\S]*?)<\/loc>/gi), (match) =>
+    decodeXmlText(match[1].trim())
+  ).filter(Boolean);
+}
+
+/** Reads the currently published sitemap index and its same-origin child sitemaps. */
+export async function getPublishedSitemapIndexNowUrls(
+  baseUrl: string = DEFAULT_INDEXNOW_BASE_URL,
+  fetcher: typeof fetch = fetch
+): Promise<string[]> {
+  const site = new URL(baseUrl);
+  const sitemapOrigin = site.origin;
+  const pending = [{ url: new URL("/sitemap.xml", site).toString(), depth: 0 }];
+  const visited = new Set<string>();
+  const urls = new Set<string>();
+
+  while (pending.length > 0) {
+    const next = pending.shift()!;
+    const sitemapUrl = new URL(next.url);
+    if (sitemapUrl.origin !== sitemapOrigin) {
+      throw new Error(`Published sitemap URL is outside ${sitemapOrigin}`);
+    }
+    if (visited.has(sitemapUrl.toString())) continue;
+    if (visited.size >= MAX_PUBLISHED_SITEMAP_DOCUMENTS) {
+      throw new Error("Published sitemap index exceeds the document limit");
+    }
+    visited.add(sitemapUrl.toString());
+
+    const response = await fetcher(sitemapUrl);
+    if (!response.ok) {
+      throw new Error(`Published sitemap returned HTTP ${response.status}: ${sitemapUrl.pathname}`);
+    }
+    const xml = await response.text();
+    if (Buffer.byteLength(xml, "utf8") > MAX_PUBLISHED_SITEMAP_BYTES) {
+      throw new Error(`Published sitemap is larger than ${MAX_PUBLISHED_SITEMAP_BYTES} bytes`);
+    }
+    const locs = sitemapLocs(xml);
+    if (/<sitemapindex(?:\s|>)/i.test(xml)) {
+      if (next.depth >= 1) throw new Error("Nested published sitemap indexes are not supported");
+      for (const loc of locs) {
+        const child = new URL(loc, sitemapUrl);
+        if (child.origin !== sitemapOrigin) {
+          throw new Error(`Published child sitemap is outside ${sitemapOrigin}`);
+        }
+        pending.push({ url: child.toString(), depth: next.depth + 1 });
+      }
+      continue;
+    }
+    if (!/<urlset(?:\s|>)/i.test(xml)) {
+      throw new Error(`Published sitemap has an unrecognized XML root: ${sitemapUrl.pathname}`);
+    }
+    for (const loc of locs) {
+      const publishedUrl = new URL(loc, site);
+      if (publishedUrl.origin !== sitemapOrigin) {
+        throw new Error(`Published URL is outside ${sitemapOrigin}`);
+      }
+      urls.add(normalizeIndexNowUrl(publishedUrl.toString(), baseUrl));
+    }
+  }
+
+  return Array.from(urls);
+}
+
+/** Returns changed URLs that are currently present in the public sitemap. */
+export async function intersectIndexNowUrlsWithPublishedSitemap(
+  changedUrls: string[],
+  baseUrl: string = DEFAULT_INDEXNOW_BASE_URL,
+  fetcher: typeof fetch = fetch
+): Promise<string[]> {
+  const published = new Set(await getPublishedSitemapIndexNowUrls(baseUrl, fetcher));
+  const normalized = Array.from(new Set(changedUrls.map((url) => normalizeIndexNowUrl(url, baseUrl))));
+  return normalized.filter((url) => published.has(url));
 }
 
 /**

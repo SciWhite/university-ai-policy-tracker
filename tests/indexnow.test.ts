@@ -9,7 +9,9 @@ import {
   normalizeIndexNowUrl,
   chunkUrls,
   submitToIndexNow,
-  getLatestReleaseIndexNowUrls
+  getLatestReleaseIndexNowUrls,
+  getPublishedSitemapIndexNowUrls,
+  intersectIndexNowUrlsWithPublishedSitemap
 } from "../apps/web/lib/indexnow";
 
 test("IndexNow key verification file exists in public directory", () => {
@@ -93,4 +95,83 @@ test("getLatestReleaseIndexNowUrls extracts changed URLs from current release", 
       `URL ${url} should start with https://eduaipolicy.org`
     );
   }
+});
+
+test("published sitemap URLs are read from the index and same-origin child files", async () => {
+  const responses = new Map([
+    ["https://eduaipolicy.org/sitemap.xml", `<?xml version="1.0"?><sitemapindex><sitemap><loc>https://eduaipolicy.org/sitemaps/core.xml</loc></sitemap><sitemap><loc>https://eduaipolicy.org/sitemaps/universities.xml</loc></sitemap></sitemapindex>`],
+    ["https://eduaipolicy.org/sitemaps/core.xml", `<?xml version="1.0"?><urlset><url><loc>https://eduaipolicy.org/</loc></url><url><loc>https://eduaipolicy.org/changes?from=2026&amp;lang=en</loc></url></urlset>`],
+    ["https://eduaipolicy.org/sitemaps/universities.xml", `<?xml version="1.0"?><urlset><url><loc>https://eduaipolicy.org/universities/bristol</loc></url></urlset>`]
+  ]);
+  const fetcher: typeof fetch = async (input) => {
+    const xml = responses.get(String(input));
+    assert.ok(xml, `Unexpected sitemap request: ${String(input)}`);
+    return new Response(xml, { status: 200, headers: { "content-type": "application/xml" } });
+  };
+
+  assert.deepEqual(
+    await getPublishedSitemapIndexNowUrls(DEFAULT_INDEXNOW_BASE_URL, fetcher),
+    [
+      "https://eduaipolicy.org/",
+      "https://eduaipolicy.org/changes",
+      "https://eduaipolicy.org/universities/bristol"
+    ]
+  );
+});
+
+test("custom URL submissions are restricted to the published sitemap intersection", async () => {
+  const fetcher: typeof fetch = async (input) => {
+    const url = String(input);
+    const xml = url.endsWith("/sitemap.xml")
+      ? `<sitemapindex><sitemap><loc>https://eduaipolicy.org/sitemaps/universities.xml</loc></sitemap></sitemapindex>`
+      : `<urlset><url><loc>https://eduaipolicy.org/universities/bristol</loc></url><url><loc>https://eduaipolicy.org/zh/universities/bristol</loc></url></urlset>`;
+    return new Response(xml, { status: 200 });
+  };
+
+  assert.deepEqual(
+    await intersectIndexNowUrlsWithPublishedSitemap(
+      [
+        "/universities/bristol?source=release",
+        "https://eduaipolicy.org/zh/universities/bristol",
+        "/es/universities/bristol",
+        "/universities/bristol"
+      ],
+      DEFAULT_INDEXNOW_BASE_URL,
+      fetcher
+    ),
+    ["https://eduaipolicy.org/universities/bristol", "https://eduaipolicy.org/zh/universities/bristol"]
+  );
+});
+
+test("combined latest, all-sitemap, and custom candidates are deduplicated and sitemap-filtered", async () => {
+  const fetcher: typeof fetch = async (input) => {
+    const url = String(input);
+    const xml = url.endsWith("/sitemap.xml")
+      ? `<sitemapindex><sitemap><loc>https://eduaipolicy.org/sitemaps/universities.xml</loc></sitemap></sitemapindex>`
+      : `<urlset><url><loc>https://eduaipolicy.org/universities/bristol</loc></url><url><loc>https://eduaipolicy.org/zh/universities/bristol</loc></url></urlset>`;
+    return new Response(xml, { status: 200 });
+  };
+  const latestCandidates = ["/universities/bristol", "/es/universities/bristol"];
+  const allSitemapCandidates = ["/universities/bristol", "/zh/universities/bristol"];
+  const customCandidates = ["/nl/universities/bristol", "/zh/universities/bristol"];
+
+  assert.deepEqual(
+    await intersectIndexNowUrlsWithPublishedSitemap(
+      [...latestCandidates, ...allSitemapCandidates, ...customCandidates],
+      DEFAULT_INDEXNOW_BASE_URL,
+      fetcher
+    ),
+    ["https://eduaipolicy.org/universities/bristol", "https://eduaipolicy.org/zh/universities/bristol"]
+  );
+});
+
+test("published sitemap collection fails closed on cross-origin entries", async () => {
+  const fetcher: typeof fetch = async () => new Response(
+    `<urlset><url><loc>https://example.org/universities/bristol</loc></url></urlset>`,
+    { status: 200 }
+  );
+  await assert.rejects(
+    () => getPublishedSitemapIndexNowUrls(DEFAULT_INDEXNOW_BASE_URL, fetcher),
+    /outside https:\/\/eduaipolicy\.org/
+  );
 });

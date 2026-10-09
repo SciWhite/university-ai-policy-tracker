@@ -6,6 +6,7 @@ import {
   DEFAULT_INDEXNOW_BASE_URL,
   DEFAULT_INDEXNOW_ENDPOINT,
   getLatestReleaseIndexNowUrls,
+  intersectIndexNowUrlsWithPublishedSitemap,
   getAllIndexNowUrls,
   submitToIndexNow,
   normalizeIndexNowUrl
@@ -118,16 +119,26 @@ async function main(): Promise<void> {
   }
 
   // Deduplicate and normalize
-  const finalUrls = Array.from(new Set(urls.map((u) => normalizeIndexNowUrl(u, baseUrl))));
+  const candidateUrls = Array.from(new Set(urls.map((u) => normalizeIndexNowUrl(u, baseUrl))));
+  const finalUrls = dryRun
+    ? candidateUrls
+    : candidateUrls.length > 0
+      ? await intersectIndexNowUrlsWithPublishedSitemap(candidateUrls, baseUrl)
+      : [];
+  if (dryRun) {
+    console.log(`\nOffline preview: ${candidateUrls.length} locally collected URLs. Published sitemap filtering is not fetched in dry-run; live submissions will retain only the current public sitemap intersection.`);
+  } else {
+    console.log(`\nPublished sitemap filter: ${candidateUrls.length} candidate URLs -> ${finalUrls.length} published URLs; ${candidateUrls.length - finalUrls.length} excluded.`);
+  }
 
-  console.log(`\nTotal unique URLs to submit: ${finalUrls.length}`);
+  console.log(`\nTotal unique URLs ${dryRun ? "in preview" : "to submit"}: ${finalUrls.length}`);
   console.log("Sample URLs (up to 10):");
   finalUrls.slice(0, 10).forEach((u, i) => console.log(`  ${i + 1}. ${u}`));
   if (finalUrls.length > 10) {
     console.log(`  ... and ${finalUrls.length - 10} more`);
   }
 
-  console.log("\nSubmitting to IndexNow...");
+  console.log(dryRun ? "\nSimulating submission locally..." : "\nSubmitting to IndexNow...");
   const results = await submitToIndexNow({
     urls: finalUrls,
     key,

@@ -317,7 +317,7 @@ export default async function UniversityPage({
         }}
       />
 
-      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot} enforcement={enforcementPage} tools={(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug))} supplements={approvedPolicySupplementSlugs.includes(slug)}>
+      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot} enforcement={hasEnforcementRecords} tools={(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug))} supplements={approvedPolicySupplementSlugs.includes(slug)}>
       <EntityHeader
         eyebrow={`${university.region}, ${university.country}`}
         metadata={
@@ -340,7 +340,7 @@ export default async function UniversityPage({
       />
 
       {hasEnforcementRecords ? <EnforcementTaskEntrances locale={locale} /> : null}
-      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug))} supplements={approvedPolicySupplementSlugs.includes(slug)} /> : <PolicySceneHero scene={policyScene} /> : null}
+      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={hasEnforcementRecords} tools={(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug))} supplements={approvedPolicySupplementSlugs.includes(slug)} /> : <PolicySceneHero scene={policyScene} /> : null}
       {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
       {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
@@ -370,8 +370,9 @@ export default async function UniversityPage({
           <p>{referenceUi(`${displayedReviewedClaims.length} reviewed claim${displayedReviewedClaims.length === 1 ? "" : "s"}`)}</p>
         </div>
         {claimHold ? (
-          <aside className="policy-source-update" data-policy-claim-hold={claimHold.claimId}>
+          <aside id={`claim-${claimHold.claimId}`} className="policy-source-update" data-policy-claim-hold={claimHold.claimId}>
             <p lang={locale}>{claimHold.notes[locale]}</p>
+            <a href={claimHold.evidenceHref}>{referenceUi("Related source evidence")}</a>
             <a href={claimHold.sourceUrl} target="_blank" rel="noopener noreferrer">{referenceUi("Official sources")} ↗</a>
           </aside>
         ) : null}
