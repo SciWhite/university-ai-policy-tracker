@@ -4219,6 +4219,11 @@ ol.timeline-list {
 }
 @media print {
   .page-shell.policy-reference { container-type: normal; max-width: none; }
+  /* Use block flow at printable width so wrapped metadata cannot cover the guide. */
+  .policy-reference .entity-header { display: block; break-inside: avoid; }
+  .policy-reference .entity-header__main { max-width: none; }
+  .policy-reference .entity-header__metadata { display: block; }
+  .policy-reference .entity-header__metadata > * { display: inline-block; margin: 0 8px 8px 0; }
   .policy-reference-body, .policy-reference-hero, .policy-reference-actions { display: block; }
   .policy-reference-nav, .policy-reference-art, .policy-reference .policy-scene-card__image, .policy-reference .student-policy__role-row { display: none !important; }
   .policy-reference :is(details, article, section) { max-height: none; overflow: visible; }

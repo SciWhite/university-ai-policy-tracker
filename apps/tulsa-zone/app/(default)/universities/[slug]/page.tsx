@@ -199,6 +199,8 @@ export default async function UniversityPage({
   const reviewedClaims = publicSummary.claims.filter((claim) =>
     isReviewedClaim(claim.reviewState)
   );
+  const heldClaimId = slug === "erasmus-university-rotterdam" ? "cl-eur-phd-genai-guidance" : undefined;
+  const displayedReviewedClaims = reviewedClaims.filter((claim) => claim.id !== heldClaimId);
   const strongSnapshot = isStrongStudentSnapshot(loadedSnapshot);
   const pageQuery = await searchParams;
   const role = isStudentOnlyPolicyPage(slug) ? "student" : normalizeStudentSnapshotRole(pageQuery?.for);
@@ -206,7 +208,7 @@ export default async function UniversityPage({
     displayName,
     publicSummary,
     publicJsonUrl,
-    reviewedClaims.length
+    displayedReviewedClaims.length
   );
   const canonicalUrl = publicSummary.publicPageUrl ?? publicSummary.canonicalUrl;
 
@@ -221,7 +223,13 @@ export default async function UniversityPage({
   const isPublished = isRuntimeUniversity(slug) || isPublishedPolicyReferencePage(slug);
   const isPreview = isPolicyReferencePreview(slug, pageQuery?.layout);
   const runtimeContent = await loadTulsaContent(slug, publicSummary.claims);
-  const basePolicyScene = (runtimeContent ? {...runtimeContent.scene,claimsOnly: !strongSnapshot,snapshotNotice: strongSnapshot ? undefined : runtimeContent.scene.snapshotNotice} : undefined) ?? getPolicyScenePilot(
+  const claimHold = runtimeContent?.claimHold;
+  const runtimeScene = runtimeContent
+    ? locale === "zh"
+      ? runtimeContent.sceneZh ?? localizeRuntimeScene(runtimeContent.scene)
+      : runtimeContent.scene
+    : undefined;
+  const basePolicyScene = (runtimeScene ? {...runtimeScene,claimsOnly: !strongSnapshot,snapshotNotice: strongSnapshot ? undefined : runtimeScene.snapshotNotice} : undefined) ?? getPolicyScenePilot(
     slug,
     publicSummary.claims,
     strongSnapshot,
@@ -229,8 +237,9 @@ export default async function UniversityPage({
     { isPreview: isPublished || isPreview }
   );
   const enforcementPage = Boolean(runtimeContent) || isPublished && enforcementV4RefreshSlugs.includes(slug);
+  const hasEnforcementRecords = Boolean(runtimeContent?.records.length);
   const policyScene = enforcementPage && locale === "zh" && basePolicyScene
-    ? (runtimeContent ? localizeRuntimeScene(basePolicyScene) : localizeV5Scene(basePolicyScene))
+    ? (runtimeContent ? basePolicyScene : localizeV5Scene(basePolicyScene))
     : basePolicyScene;
   const compactPolicyPilot = Boolean(policyScene?.quickGuide);
   const referencePreview = Boolean(
@@ -247,17 +256,17 @@ export default async function UniversityPage({
         strongSnapshotSummary: strongSnapshot
           ? loadedSnapshot.snapshot.summary
           : undefined,
-        reviewedClaimCount: reviewedClaims.length,
+        reviewedClaimCount: displayedReviewedClaims.length,
         officialSourceCount: publicSummary.officialSources.length
       })
     : undefined;
   const claimGroups = (pilotContent || policyScene?.studentFirst)
     ? strongSnapshot
       ? groupReviewedClaimsBySnapshotDimensions(
-          reviewedClaims,
+          displayedReviewedClaims,
           loadedSnapshot.snapshot
         )
-      : groupReviewedClaimsByClaimType(reviewedClaims)
+      : groupReviewedClaimsByClaimType(displayedReviewedClaims)
     : undefined;
   const relatedUniversities = pilotSlug
     ? selectRelatedUniversities(
@@ -330,14 +339,14 @@ export default async function UniversityPage({
         title={<span data-i18n="preserve">{displayName}</span>}
       />
 
-      {enforcementPage ? <EnforcementTaskEntrances locale={locale} /> : null}
+      {hasEnforcementRecords ? <EnforcementTaskEntrances locale={locale} /> : null}
       {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug))} supplements={approvedPolicySupplementSlugs.includes(slug)} /> : <PolicySceneHero scene={policyScene} /> : null}
       {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
       {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
       {strongSnapshot ? (
         <StudentPolicySnapshot
-          claims={reviewedClaims}
+          claims={displayedReviewedClaims}
           entitySlug={slug}
           locale={locale}
           role={role}
@@ -349,7 +358,7 @@ export default async function UniversityPage({
       {policyScene?.quickGuide && !strongSnapshot ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
       {enforcementPage ? <RuntimeEnforcement slug={slug} locale={locale} records={runtimeContent.records} /> : null}
       {(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug)) ? <UniversityAiTools locale={locale} records={runtimeContent.tools ?? await getUniversityToolRecords(publicSummary)} /> : null}
-      {approvedPolicySupplementSlugs.includes(slug) ? <PolicySupplements slug={slug} locale={locale} claims={reviewedClaims} /> : null}
+      {approvedPolicySupplementSlugs.includes(slug) ? <PolicySupplements slug={slug} locale={locale} claims={displayedReviewedClaims} /> : null}
       {referencePreview ? <PolicyReferenceInteractions /> : compactPolicyPilot ? <PolicyRecordHashReveal /> : null}
 
       <section className={`student-record-section${compactPolicyPilot ? " student-record-section--compact" : ""}`} id="claims">
@@ -358,13 +367,19 @@ export default async function UniversityPage({
             <p className="student-policy__eyebrow">Reviewed record</p>
             <h2>{referenceUi("Reviewed claims")}</h2>
           </div>
-          <p>{referenceUi(`${reviewedClaims.length} reviewed claim${reviewedClaims.length === 1 ? "" : "s"}`)}</p>
+          <p>{referenceUi(`${displayedReviewedClaims.length} reviewed claim${displayedReviewedClaims.length === 1 ? "" : "s"}`)}</p>
         </div>
+        {claimHold ? (
+          <aside className="policy-source-update" data-policy-claim-hold={claimHold.claimId}>
+            <p lang={locale}>{claimHold.notes[locale]}</p>
+            <a href={claimHold.sourceUrl} target="_blank" rel="noopener noreferrer">{referenceUi("Official sources")} ↗</a>
+          </aside>
+        ) : null}
         {pilotClaimsSummary && !compactPolicyPilot ? (
           <div className="index-recovery-summary">
             <p>{pilotClaimsSummary.summary}</p>
             <p className="muted">
-              Summary of the {reviewedClaims.length} agent-reviewed claims in
+              Summary of the {displayedReviewedClaims.length} agent-reviewed claims in
               this record, with their original scope. No student policy
               snapshot has been published for this university yet, and this
               summary is not an official university statement.
@@ -375,7 +390,7 @@ export default async function UniversityPage({
         <p>{policyScene.sourceUpdate.text}</p>
         <a href={policyScene.sourceUpdate.href} target="_blank" rel="noopener noreferrer">Read the current official source →</a>
       </aside> : null}
-      {reviewedClaims.length ? (
+      {displayedReviewedClaims.length ? (
           claimGroups ? (
             <UniversityClaimGroups
               entitySlug={slug}
@@ -388,7 +403,7 @@ export default async function UniversityPage({
             />
           ) : (
             <div className="claim-list">
-              {reviewedClaims.map((claim) => (
+              {displayedReviewedClaims.map((claim) => (
                 <ClaimEvidenceCard
                   claim={claim}
                   entitySlug={slug}

@@ -17,6 +17,37 @@ const copy: Record<SupportedLocale, string[]> = {
  ms: ["Apakah yang berlaku jika penggunaan AI menimbulkan kebimbangan?", "Pencetus, proses dan pilihan", "Apabila kebimbangan timbul", "Cara memberikan respons", "Hasil yang mungkin", "Semakan dan rayuan", "Sokongan dan penyesuaian", "Bukti pengesanan", "Bukti rasmi", "Skop", "Rangka kerja salah laku umum", "Peruntukan berkaitan AI", "Panduan sumber", "Pengumpulan dan versi", "Tambahan berasaskan sumber yang diterbitkan. Ringkasan Inggeris dan petikan asal dipisahkan daripada rekod yang disemak. Proses dan hasil bukan hukuman automatik bagi penggunaan AI. Pemakaian semasa belum disahkan secara bebas; semak skop dan versi sumber.", "Lihat dakwaan yang disemak", "Dikumpulkan", "Syarat dan pengecualian"]
 };
 
+const modalityCopy: Record<SupportedLocale, { label: string; values: Record<string, string> }> = {
+ en: { label: "Modality", values: { prohibited: "Prohibited", descriptive: "Descriptive", permitted: "Permitted", possible: "Possible", mandatory: "Mandatory", normal: "Normal", informational: "Informational", recommended: "Recommended", mixed_recommendation_and_prohibition: "Recommendation and prohibition", prohibition: "Prohibition", recommendation: "Recommendation", obligation: "Obligation" } },
+ zh: { label: "规范语气", values: { prohibited: "禁止", descriptive: "描述性", permitted: "允许", possible: "可能", mandatory: "强制", normal: "通常", informational: "信息性", recommended: "建议", mixed_recommendation_and_prohibition: "建议与禁止并存", prohibition: "禁止", recommendation: "建议", obligation: "义务" } },
+ fr: { label: "Modalité", values: { prohibited: "Interdit", descriptive: "Descriptif", permitted: "Autorisé", possible: "Possible", mandatory: "Obligatoire", normal: "Normal", informational: "Informatif", recommended: "Recommandé", mixed_recommendation_and_prohibition: "Recommandation et interdiction", prohibition: "Interdiction", recommendation: "Recommandation", obligation: "Obligation" } },
+ pl: { label: "Charakter", values: { prohibited: "Zakaz", descriptive: "Opisowy", permitted: "Dozwolone", possible: "Możliwy", mandatory: "Obowiązkowe", normal: "Normalnie", informational: "Informacyjny", recommended: "Zalecane", mixed_recommendation_and_prohibition: "Zalecenie i zakaz", prohibition: "Zakaz", recommendation: "Zalecenie", obligation: "Obowiązek" } },
+ es: { label: "Modalidad", values: { prohibited: "Prohibido", descriptive: "Descriptivo", permitted: "Permitido", possible: "Posible", mandatory: "Obligatorio", normal: "Normal", informational: "Informativo", recommended: "Recomendado", mixed_recommendation_and_prohibition: "Recomendación y prohibición", prohibition: "Prohibición", recommendation: "Recomendación", obligation: "Obligación" } },
+ nl: { label: "Modaliteit", values: { prohibited: "Verboden", descriptive: "Beschrijvend", permitted: "Toegestaan", possible: "Mogelijk", mandatory: "Verplicht", normal: "Normaal", informational: "Informatief", recommended: "Aanbevolen", mixed_recommendation_and_prohibition: "Aanbeveling en verbod", prohibition: "Verbod", recommendation: "Aanbeveling", obligation: "Verplichting" } },
+ ms: { label: "Modality", values: { prohibited: "Dilarang", descriptive: "Deskriptif", permitted: "Dibenarkan", possible: "Mungkin", mandatory: "Wajib", normal: "Biasa", informational: "Maklumat", recommended: "Disyorkan", mixed_recommendation_and_prohibition: "Syor dan larangan", prohibition: "Larangan", recommendation: "Syor", obligation: "Kewajipan" } }
+};
+
+const applicabilityCopy: Record<SupportedLocale, Record<string, string>> = {
+ en: { source_status_only: "Source-status information", general_support_only: "General support only", unknown: "AI applicability not established" },
+ zh: { source_status_only: "来源状态信息", general_support_only: "一般支持信息", unknown: "尚未确认 AI 适用性" },
+ fr: { source_status_only: "État de la source", general_support_only: "Soutien général uniquement", unknown: "Applicabilité à l’IA non établie" },
+ pl: { source_status_only: "Informacja o stanie źródła", general_support_only: "Wyłącznie ogólne wsparcie", unknown: "Nie ustalono zastosowania do AI" },
+ es: { source_status_only: "Estado de la fuente", general_support_only: "Solo apoyo general", unknown: "No se ha establecido la aplicabilidad a la IA" },
+ nl: { source_status_only: "Bronstatus", general_support_only: "Alleen algemene ondersteuning", unknown: "Toepasselijkheid op AI niet vastgesteld" },
+ ms: { source_status_only: "Status sumber", general_support_only: "Sokongan umum sahaja", unknown: "Pemakaian kepada AI belum ditetapkan" }
+};
+
+function modalityLabel(value: string | undefined, locale: SupportedLocale): string | undefined {
+ if (!value) return undefined;
+ return modalityCopy[locale].values[value] ?? value.replaceAll("_", " ");
+}
+
+function applicabilityLabel(value: string, locale: SupportedLocale, fallback: string): string {
+ if (value === "general_misconduct_framework") return fallback;
+ if (value === "explicit_ai") return locale === "zh" ? "AI 明示条款" : locale === "fr" ? "Disposition explicite sur l’IA" : locale === "pl" ? "Zapis dotyczący AI" : locale === "es" ? "Disposición sobre IA" : locale === "nl" ? "Bepaling over AI" : locale === "ms" ? "Peruntukan berkaitan AI" : "AI-specific source";
+ return applicabilityCopy[locale][value] ?? fallback;
+}
+
 export function EnforcementTaskEntrances({ locale }: { locale: SupportedLocale }) {
  const u = v5Ui(locale);
  return <nav className="enforcement-task-entrances" aria-label={u[0]}>
@@ -26,7 +57,7 @@ export function EnforcementTaskEntrances({ locale }: { locale: SupportedLocale }
 }
 
 export function EnforcementV4Refresh({ slug, locale, records }: { slug: string; locale: SupportedLocale; records: any[] }) {
- if (!records) return null;
+ if (!records?.length) return null;
  const l = copy[locale], u = v5Ui(locale), dc = v5Display(locale);
  const dates = Array.from(new Set(records.flatMap(f => f.evidence.map((e:any) => e.retrievedAt.slice(0,10))))).sort();
  return <section id="enforcement-evidence" className="enforcement-refresh">
@@ -37,7 +68,7 @@ export function EnforcementV4Refresh({ slug, locale, records }: { slug: string; 
    const facts = records.filter(f=>f.group===g || g === "support" && f.group === "detection"); if(!facts.length) return null;
    return <section className="enforcement-refresh-group" key={g} id={`enforcement-group-${g}`}><h3>{l[i+2]}{g === "support" && facts.some(f=>f.group === "detection") ? ` · ${l[7]}` : ""}</h3>
     {facts.map(f => <article key={f.id} className="enforcement-refresh-fact" id={`enforcement-fact-${f.id}`}>
-     <div className="enforcement-refresh-tags"><span>{f.appliesToAI === "general_misconduct_framework" ? l[10] : l[11]}</span><span>{f.sourceNature === "support_service" ? l[6] : f.sourceNature === "official_guidance" ? u[13] : u[12]}</span>{f.group === "detection" ? <span>{l[7]}</span> : null}</div>
+     <div className="enforcement-refresh-tags"><span>{applicabilityLabel(f.appliesToAI, locale, l[12])}</span><span>{f.sourceNature === "support_service" ? l[6] : f.sourceNature === "official_guidance" ? u[13] : u[12]}</span>{modalityLabel(f.modality, locale) ? <span>{modalityCopy[locale].label}: {modalityLabel(f.modality, locale)}</span> : null}{f.group === "detection" ? <span>{l[7]}</span> : null}</div>
      <div className="enforcement-interpretation"><p className="enforcement-interpretation-label">{u[4]}</p><p lang={locale === "zh" ? "zh" : "en"} data-i18n="preserve">{locale === "zh" && createHash("sha256").update(f.statement).digest("hex") === f.translationSourceHash ? <PolicySummaryEmphasis text={f.localSummary.zh} phrases={f.emphasis.zh} policy /> : <PolicySummaryEmphasis text={f.statement} phrases={f.emphasis.en} policy />}</p></div>
      {f.deadlines.length > 0 ? <div className="enforcement-deadlines">{f.deadlines.map((d:any,j:number) => <div key={j} className={`enforcement-deadline${d.normativity === "endeavour" ? " enforcement-deadline--target" : ""}`}>
       <strong><span lang={locale === "zh" ? "zh" : "en"} data-i18n="preserve">{v5ProcedureName(d.procedure, locale)}</span> · {d.direction === "at_least_duration" ? "≥ " : ""}{d.value} {v5DayUnit(d.unit, locale)}</strong>
