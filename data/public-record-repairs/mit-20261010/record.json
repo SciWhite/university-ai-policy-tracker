@@ -1,0 +1,1372 @@
+{
+  "schemaVersion": "v1",
+  "citationTitle": "Massachusetts Institute of Technology (MIT) AI Policy Tracker record",
+  "canonicalUrl": "https://eduaipolicy.org/universities/massachusetts-institute-of-technology",
+  "publicPageUrl": "https://eduaipolicy.org/universities/massachusetts-institute-of-technology",
+  "apiUrl": "https://eduaipolicy.org/api/public/v1/universities/massachusetts-institute-of-technology.json",
+  "entityType": "university",
+  "entitySlug": "massachusetts-institute-of-technology",
+  "entity": {
+    "type": "university",
+    "slug": "massachusetts-institute-of-technology",
+    "name": "Massachusetts Institute of Technology (MIT)",
+    "canonicalUrl": "https://eduaipolicy.org/universities/massachusetts-institute-of-technology",
+    "aliases": [
+      "QS 2026 1"
+    ],
+    "summary": "MIT's record was corrected against official sources on October 10, 2026. It includes 26 current reviewed claims and 2 explicitly held historical provisions. Course-specific permission remains separate from tool access."
+  },
+  "summary": "MIT's record was corrected against official sources on October 10, 2026. It includes 26 current reviewed claims and 2 explicitly held historical provisions. Course-specific permission remains separate from tool access.",
+  "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+  "lastChangedAt": "2026-10-10T18:52:29.198Z",
+  "confidence": 0.95,
+  "reviewState": "needs_review",
+  "license": "CC-BY-4.0",
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourcePolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "Scoped published repair: mit-20261010. The global dataset release ID is unchanged; this record revision is identified by its own hash.",
+    "Two historical provisions remain needs_review. Current sources were recaptured; historical snippet authenticity remains a separate audit question.",
+    "Confidence is an extraction/review signal, not a calibrated factual accuracy rate."
+  ],
+  "officialSources": [
+    {
+      "id": "mit-current-guidance-3d3eb666df03",
+      "sourceUrl": "https://ist.mit.edu/ai-guidance",
+      "finalUrl": "https://ist.mit.edu/ai-guidance",
+      "citationTitle": "Guidance for use of Generative AI tools | Information Systems & Technology",
+      "publisher": "Massachusetts Institute of Technology",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "mit-current-eo-9f8e1d4f0b9f",
+      "sourceUrl": "https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/",
+      "finalUrl": "https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/",
+      "citationTitle": "Removing Barriers to American Leadership in Artificial Intelligence – The White House",
+      "publisher": "The White House",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "9f8e1d4f0b9fbfa842fb712b41dc7ce047f1fdcea55be22fa2dda3fda4d4d3f1",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "mit-current-tools-ac43a7066382",
+      "sourceUrl": "https://ist.mit.edu/ai-tools",
+      "finalUrl": "https://ist.mit.edu/ai-tools",
+      "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+      "publisher": "Massachusetts Institute of Technology",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "mit-current-library-1c23576c5204",
+      "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+      "finalUrl": "https://libguides.mit.edu/cite-AI-tools",
+      "citationTitle": "Home - Citing AI tools - LibGuides at MIT Libraries",
+      "publisher": "Massachusetts Institute of Technology",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "ss-massachusetts-institute-of-technology-1",
+      "sourceUrl": "https://ist.mit.edu/ai-guidance",
+      "citationTitle": "Guidance for use of Generative AI tools",
+      "publisher": "MIT Information Systems and Technology",
+      "retrievedAt": "2026-05-06T00:57:37.427Z",
+      "trackerCheckedAt": "2026-05-06T00:57:37.427Z",
+      "snapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+      "sourceType": "archived_official_source",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "mit-current-chair-c68938b92850",
+      "sourceUrl": "https://facultygovernance.mit.edu/communications-chair",
+      "finalUrl": "https://facultygovernance.mit.edu/communications-chair",
+      "citationTitle": "Communications from the Chair | MIT Faculty Governance",
+      "publisher": "Massachusetts Institute of Technology",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "c68938b928504a4644936cba95a8acbce17912fc3fd5d1bccb8a998bd6987cc2",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "mit-current-report-db443298d69a",
+      "sourceUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+      "finalUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+      "citationTitle": "Report of MIT's Ad Hoc Committee on AI Use, August 13, 2026",
+      "publisher": "Massachusetts Institute of Technology",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "db443298d69a4153dfeb2a52d07c0c4c18377330d7084a2811cbd552ef5311f5",
+      "sourceType": "official_pdf",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "mit-current-tll-82cf3a20cb9a",
+      "sourceUrl": "https://tll.mit.edu/teaching-resources/course-design/ai-in-teaching-learning/gen-ai-your-course/",
+      "finalUrl": "https://tll.mit.edu/teaching-resources/course-design/ai-in-teaching-learning/gen-ai-your-course/",
+      "citationTitle": "Generative AI & Your Course – Teaching + Learning Lab",
+      "publisher": "Massachusetts Institute of Technology",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "82cf3a20cb9a2bb0e92c2cb9d3c6667c7f719c47edf74afaedf105fbbba371e3",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "mit-current-couhes-8418b339b394",
+      "sourceUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+      "finalUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+      "citationTitle": "Artificial Intelligence (AI) in Research | Committee on the Use of Humans as Experimental Subjects",
+      "publisher": "Massachusetts Institute of Technology",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "8418b339b3944fca6189fc45b25d3406707b194c068cca04fa8db772ca2d03f6",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "mit-current-support-bdad20ea10cd",
+      "sourceUrl": "https://cod.mit.edu/resources/",
+      "finalUrl": "https://cod.mit.edu/resources/",
+      "citationTitle": "Resources and Links – Committee on Discipline",
+      "publisher": "Massachusetts Institute of Technology",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "bdad20ea10cd5569c84ae51759692213107b2498c852bf2b340bf4ebbd152fda",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "mit-current-cod11-c33d5269053f",
+      "sourceUrl": "https://cod.mit.edu/rules/section11/",
+      "finalUrl": "https://cod.mit.edu/rules/section11/",
+      "citationTitle": "XI. Sanctions – Committee on Discipline",
+      "publisher": "Massachusetts Institute of Technology",
+      "retrievedAt": "2026-10-10T18:52:29.198Z",
+      "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+      "snapshotHash": "c33d5269053f582639b0b253d440b51cdf535d94f153e69346fe86b4dc27eebc",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ],
+  "claims": [
+    {
+      "id": "clm-massachusetts-institute-of-technology-high-risk-prohibition",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "privacy",
+      "claimText": "MIT does not permit Medium Risk data in publicly available GenAI tools. High Risk MIT information must not be used with any GenAI tool, including MIT enterprise tools; report an existing high-risk disclosure to security@mit.edu immediately. Public tools are not recommended for Low Risk MIT data.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-tute-of-technology-high-risk-prohibition",
+          "sourceUrl": "https://ist.mit.edu/ai-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+          "evidenceSnippet": "Do not use high-risk information with Generative AI tools, including MIT enterprise Generative AI tools.",
+          "snippetLocation": "Determine the Risk Level of Your Data Before Using AI Tools, risk matrix and ** footnote; normalized text lines 61-61",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-guidance-3d3eb666df03",
+            "sourceUrl": "https://ist.mit.edu/ai-guidance",
+            "finalUrl": "https://ist.mit.edu/ai-guidance",
+            "citationTitle": "Guidance for use of Generative AI tools | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "mit-20261010-medium-risk-matrix",
+          "sourceUrl": "https://ist.mit.edu/ai-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+          "evidenceSnippet": "Medium Risk Data Not allowed Allowed",
+          "snippetLocation": "Risk matrix: public tool versus MIT-licensed tool; normalized text lines 50-52",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-guidance-3d3eb666df03",
+            "sourceUrl": "https://ist.mit.edu/ai-guidance",
+            "finalUrl": "https://ist.mit.edu/ai-guidance",
+            "citationTitle": "Guidance for use of Generative AI tools | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "mit-20261010-low-risk-matrix",
+          "sourceUrl": "https://ist.mit.edu/ai-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+          "evidenceSnippet": "Low Risk Data Not recommended* Allowed",
+          "snippetLocation": "Risk matrix: public tool versus MIT-licensed tool; normalized text lines 47-49",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-guidance-3d3eb666df03",
+            "sourceUrl": "https://ist.mit.edu/ai-guidance",
+            "finalUrl": "https://ist.mit.edu/ai-guidance",
+            "citationTitle": "Guidance for use of Generative AI tools | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-compliance",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "MIT guidance requires GenAI use to comply with applicable law, Institute policies, Information Protection guidelines, WISP, and applicable DLCI policies. The linked IS&T page still mentions EO 14110; that revoked order is not presented here as a current legal obligation.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-setts-institute-of-technology-compliance",
+          "sourceUrl": "https://ist.mit.edu/ai-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+          "evidenceSnippet": "As with any use of information technology at MIT, ensure that your use of generative AI tools and services complies with all applicable federal and state laws and orders (including, without limitation, FERPA, HIPAA, Massachusetts Data Protection Standards , export control laws, and Executive Order on the Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence ), Institute policies (including 10.1 Academic and Research Misconduct , 11.0 Privacy and Disclosure of Personal Information , and 13.0 Information Policies ), follows all guidelines outlined on Information Protection , the Institute's Written Information Security Program (WISP), and complies with any",
+          "snippetLocation": "Compliance with Federal and State Laws and Orders; normalized text lines 99-113",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-guidance-3d3eb666df03",
+            "sourceUrl": "https://ist.mit.edu/ai-guidance",
+            "finalUrl": "https://ist.mit.edu/ai-guidance",
+            "citationTitle": "Guidance for use of Generative AI tools | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "mit-20261010-compliance-institute",
+          "sourceUrl": "https://ist.mit.edu/ai-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+          "evidenceSnippet": "Information Protection , the Institute's Written Information Security Program (WISP), and complies with any additional policies established by your department, lab, center, or institute (DLCI).",
+          "snippetLocation": "Compliance with Federal and State Laws and Orders, closing clause; normalized text lines 112-113",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-guidance-3d3eb666df03",
+            "sourceUrl": "https://ist.mit.edu/ai-guidance",
+            "finalUrl": "https://ist.mit.edu/ai-guidance",
+            "citationTitle": "Guidance for use of Generative AI tools | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "mit-20261010-eo-revocation",
+          "sourceUrl": "https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9f8e1d4f0b9fbfa842fb712b41dc7ce047f1fdcea55be22fa2dda3fda4d4d3f1",
+          "evidenceSnippet": "the revoked Executive Order 14110 of October 30, 2023 (Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence).",
+          "snippetLocation": "January 23, 2025 order, §5(a); normalized text lines 17-17",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-eo-9f8e1d4f0b9f",
+            "sourceUrl": "https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/",
+            "finalUrl": "https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/",
+            "citationTitle": "Removing Barriers to American Leadership in Artificial Intelligence – The White House",
+            "publisher": "The White House",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "9f8e1d4f0b9fbfa842fb712b41dc7ce047f1fdcea55be22fa2dda3fda4d4d3f1",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-adobe-firefly-1",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Adobe Firefly is listed by MIT IS&T for MIT faculty, staff, and students. Cost: Free. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"adobe_firefly\",\"rawToolName\":\"Adobe Firefly\",\"description\":\"Generate or modify images via text prompts\",\"howToObtain\":\"MIT's Adobe Creative Cloud license\",\"costToUser\":\"Free\",\"availability\":\"allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty, staff, and students\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010--institute-of-technology-adobe-firefly-1",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Adobe Firefly Generate or modify images via text prompts MIT faculty, staff, and students Free MIT's Adobe Creative Cloud license",
+          "snippetLocation": "Generative AI tools table: Adobe Firefly row, all five columns; normalized text lines 49-54",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-aws-bedrock-2",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "AWS Bedrock is listed by MIT IS&T for MIT faculty and staff. Cost: Institute cost object required. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"aws_bedrock\",\"rawToolName\":\"AWS Bedrock\",\"description\":\"Developer access to third-party large language models (e.g., Anthropic, A21 Labs, Stable Diffusion) via API\",\"howToObtain\":\"Register for an AWS account through IS&T's MIT Cloud Accounts program\",\"costToUser\":\"Institute cost object required\",\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty and staff\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-ts-institute-of-technology-aws-bedrock-2",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "AWS Bedrock Developer access to third-party large language models (e.g., Anthropic, A21 Labs, Stable Diffusion) via API MIT faculty and staff Institute cost object required Register for an AWS account through IS&T's MIT Cloud Accounts program",
+          "snippetLocation": "Generative AI tools table: AWS Bedrock row, all five columns; normalized text lines 55-61",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-aws-sagemaker-3",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "AWS Sagemaker is listed by MIT IS&T for MIT faculty and staff. Cost: Institute cost object required. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"aws_sagemaker\",\"rawToolName\":\"AWS Sagemaker\",\"description\":\"Managed AI/ML model access and training\",\"howToObtain\":\"Register for an AWS account through IS&T's MIT Cloud Accounts program\",\"costToUser\":\"Institute cost object required\",\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty and staff\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010--institute-of-technology-aws-sagemaker-3",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "AWS Sagemaker Managed AI/ML model access and training MIT faculty and staff Institute cost object required Register for an AWS account through IS&T's MIT Cloud Accounts program",
+          "snippetLocation": "Generative AI tools table: AWS Sagemaker row, all five columns; normalized text lines 62-68",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-azure-openai-4",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Azure OpenAI is listed by MIT IS&T for MIT faculty and staff. Cost: Institute cost object required. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"azure_openai\",\"rawToolName\":\"Azure OpenAI\",\"description\":\"Developer access to Azure OpenAI and other cognitive services (e.g., Whisper, DALL-E)\",\"howToObtain\":\"Register for an Azure account through IS&T's MIT Cloud Accounts program\",\"costToUser\":\"Institute cost object required\",\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty and staff\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-s-institute-of-technology-azure-openai-4",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Azure OpenAI Developer access to Azure OpenAI and other cognitive services (e.g., Whisper, DALL-E) MIT faculty and staff Institute cost object required Register for an Azure account through IS&T's MIT Cloud Accounts program",
+          "snippetLocation": "Generative AI tools table: Azure OpenAI row, all five columns; normalized text lines 69-75",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-chatgpt-5",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Open AI ChatGPT is listed by MIT IS&T for MIT faculty, staff, and students. Cost: Free. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"chatgpt\",\"rawToolName\":\"Open AI ChatGPT\",\"description\":\"Access equivalent to ChatGPT Pro is available with with added security and features\",\"howToObtain\":\"We recommend accessing OpenAI models through Parley , or log into ChatGPT with your MIT email\",\"costToUser\":\"Free\",\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty, staff, and students\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-usetts-institute-of-technology-chatgpt-5",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Open AI ChatGPT Access equivalent to ChatGPT Pro is available with with added security and features MIT faculty, staff, and students Free We recommend accessing OpenAI models through Parley , or log into ChatGPT with your MIT email",
+          "snippetLocation": "Generative AI tools table: Open AI ChatGPT row, all five columns; normalized text lines 106-112",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-gemini-6",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Google Gemini is listed by MIT IS&T for MIT faculty, staff, and students. Cost: Free with an MIT Google Workspace account. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"gemini\",\"rawToolName\":\"Google Gemini\",\"description\":\"Text-based AI chatbot\",\"howToObtain\":\"Access Gemini via Touchstone with your MIT Kerberos account\",\"costToUser\":\"Free with an MIT Google Workspace account\",\"availability\":\"allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty, staff, and students\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-husetts-institute-of-technology-gemini-6",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Google Gemini Text-based AI chatbot MIT faculty, staff, and students Free with an MIT Google Workspace account Access Gemini via Touchstone with your MIT Kerberos account",
+          "snippetLocation": "Generative AI tools table: Google Gemini row, all five columns; normalized text lines 76-81",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-google-vertex-ai-7",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Google Vertex is listed by MIT IS&T for MIT faculty and staff. Cost: Institute cost object required. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"google_vertex_ai\",\"rawToolName\":\"Google Vertex\",\"description\":\"Developer access to Google's AI models\",\"howToObtain\":\"Register for a GCP account through IS&T's MIT Cloud Accounts program\",\"costToUser\":\"Institute cost object required\",\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty and staff\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-stitute-of-technology-google-vertex-ai-7",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Google Vertex Developer access to Google's AI models MIT faculty and staff Institute cost object required Register for a GCP account through IS&T's MIT Cloud Accounts program",
+          "snippetLocation": "Generative AI tools table: Google Vertex row, all five columns; normalized text lines 88-94",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-microsoft-copilot-8",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Microsoft Copilot is listed by MIT IS&T for MIT faculty, staff, students, and affiliates. Cost: Free. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"microsoft_copilot\",\"rawToolName\":\"Microsoft Copilot\",\"description\":\"Text-based AI chatbot; also capable of generating images\",\"howToObtain\":\"Access Copilot via Touchstone with your MIT Kerberos account\",\"costToUser\":\"Free\",\"availability\":\"allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty, staff, students, and affiliates\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-titute-of-technology-microsoft-copilot-8",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Microsoft Copilot Text-based AI chatbot; also capable of generating images MIT faculty, staff, students, and affiliates Free Access Copilot via Touchstone with your MIT Kerberos account",
+          "snippetLocation": "Generative AI tools table: Microsoft Copilot row, all five columns; normalized text lines 95-100",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-microsoft-copilot-for-m365-9",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Microsoft Copilot for M365 is listed by MIT IS&T for MIT faculty, staff, and students. Cost: Institute cost object required. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"microsoft_copilot_for_m365\",\"rawToolName\":\"Microsoft Copilot for M365\",\"description\":\"AI add-on for Microsoft 365 products (Word, PowerPoint, Excel, etc.)\",\"howToObtain\":\"Request an account through the IS&T ServiceNow portal\",\"costToUser\":\"Institute cost object required\",\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty, staff, and students\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010--technology-microsoft-copilot-for-m365-9",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Microsoft Copilot for M365 AI add-on for Microsoft 365 products (Word, PowerPoint, Excel, etc.) MIT faculty, staff, and students Institute cost object required Request an account through the IS&T ServiceNow portal",
+          "snippetLocation": "Generative AI tools table: Microsoft Copilot for M365 row, all five columns; normalized text lines 101-105",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-notebooklm-10",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Google NotebookLM is listed by MIT IS&T for MIT faculty, staff, and students. Cost: Free with an MIT Google Workspace account. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"notebooklm\",\"rawToolName\":\"Google NotebookLM\",\"description\":\"Research assistant and note-taking tool\",\"howToObtain\":\"Access NotebookLM via Touchstone with your MIT Kerberos account\",\"costToUser\":\"Free with an MIT Google Workspace account\",\"availability\":\"allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty, staff, and students\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-ts-institute-of-technology-notebooklm-10",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Google NotebookLM Research assistant and note-taking tool MIT faculty, staff, and students Free with an MIT Google Workspace account Access NotebookLM via Touchstone with your MIT Kerberos account",
+          "snippetLocation": "Generative AI tools table: Google NotebookLM row, all five columns; normalized text lines 82-87",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-salesforce-einstein-11",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Salesforce Einstein is listed by MIT IS&T for MIT faculty and staff. Cost: Institute cost object required. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"salesforce_einstein\",\"rawToolName\":\"Salesforce Einstein\",\"description\":\"Delivers AI-powered predictions and generated content (customized prompts, skills, models, etc).\",\"howToObtain\":\"Contact IS&T's Salesforce Licensing\",\"costToUser\":\"Institute cost object required\",\"availability\":\"conditionally_allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty and staff\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-ute-of-technology-salesforce-einstein-11",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Salesforce Einstein Delivers AI-powered predictions and generated content (customized prompts, skills, models, etc). MIT faculty and staff Institute cost object required Contact IS&T's Salesforce Licensing",
+          "snippetLocation": "Generative AI tools table: Salesforce Einstein row, all five columns; normalized text lines 118-123",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-self-deploy-12",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Parley is listed by MIT IS&T for MIT faculty, staff, and students. Cost: Free. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"self_deploy\",\"rawToolName\":\"Parley\",\"description\":\"Secure, MIT-hosted platform that allows users to interact with multiple popular generative AI models\",\"howToObtain\":\"Parley is available to all faculty, staff, and students\",\"costToUser\":\"Free\",\"availability\":\"allowed\",\"endorsementType\":\"self_hosted_system\",\"availableTo\":\"MIT faculty, staff, and students\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-s-institute-of-technology-self-deploy-12",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Parley Secure, MIT-hosted platform that allows users to interact with multiple popular generative AI models MIT faculty, staff, and students Free Parley is available to all faculty, staff, and students",
+          "snippetLocation": "Generative AI tools table: Parley row, all five columns; normalized text lines 113-117",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-massachusetts-institute-of-technology-zoom-ai-companion-13",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Zoom AI Companion is listed by MIT IS&T for MIT faculty, staff, students, and affiliates. Cost: Free. Institutional access and data restrictions do not establish assessment permission.",
+      "claimValue": "{\"tool\":\"zoom_ai_companion\",\"rawToolName\":\"Zoom AI Companion\",\"description\":\"AI add-on for meeting summaries, AI Companion questions, smart recording, and whiteboard content generation features\",\"howToObtain\":\"Enable features by signing into MIT's Zoom portal via Touchstone\",\"costToUser\":\"Free\",\"availability\":\"allowed\",\"endorsementType\":\"institutionally_licensed_or_procured\",\"availableTo\":\"MIT faculty, staff, students, and affiliates\",\"dataCondition\":\"MIT-licensed access only; low/medium-risk information; no High Risk information\",\"assessmentPermission\":\"not_established_by_tool_access\"}",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-itute-of-technology-zoom-ai-companion-13",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "Zoom AI Companion AI add-on for meeting summaries, AI Companion questions, smart recording, and whiteboard content generation features MIT faculty, staff, students, and affiliates Free Enable features by signing into MIT's Zoom portal via Touchstone",
+          "snippetLocation": "Generative AI tools table: Zoom AI Companion row, all five columns; normalized text lines 124-130",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-disclosure",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "MIT Libraries advises citing or acknowledging AI contributions in academic papers and consulting the applicable school, class, and publication policies. This is citation guidance, not a universal assessment-use permission or a new university-wide mandatory disclosure rule.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-setts-institute-of-technology-disclosure",
+          "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+          "evidenceSnippet": "If AI is used in the creation of an academic paper in any way, it should be cited in the text and references and/or in the acknowledgements.",
+          "snippetLocation": "Can AI be an author? / Important!; normalized text lines 25-25",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-library-1c23576c5204",
+            "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+            "finalUrl": "https://libguides.mit.edu/cite-AI-tools",
+            "citationTitle": "Home - Citing AI tools - LibGuides at MIT Libraries",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "mit-20261010-citation-scope",
+          "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+          "evidenceSnippet": "Know the AI use and citation policy for the school, class, and/or publication for which you are writing.",
+          "snippetLocation": "Important!; normalized text lines 52-52",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-library-1c23576c5204",
+            "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+            "finalUrl": "https://libguides.mit.edu/cite-AI-tools",
+            "citationTitle": "Home - Citing AI tools - LibGuides at MIT Libraries",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-ai-procurement-review",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "procurement",
+      "claimText": "Purchasing new GenAI tools at MIT requires the VPF procurement process. For a tool not on IS&T's list, request an assessment from ai-guidance@mit.edu before use or purchase.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-tute-of-technology-ai-procurement-review",
+          "sourceUrl": "https://ist.mit.edu/ai-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+          "evidenceSnippet": "If you wish to purchase new Generative AI tools, you must go through the VPF procurement process to ensure the vendor agreement has the appropriate terms.",
+          "snippetLocation": "Generative AI Tools Licensed by MIT, final paragraph; normalized text lines 74-74",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-guidance-3d3eb666df03",
+            "sourceUrl": "https://ist.mit.edu/ai-guidance",
+            "finalUrl": "https://ist.mit.edu/ai-guidance",
+            "citationTitle": "Guidance for use of Generative AI tools | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-accuracy-responsibility",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "research",
+      "claimText": "MIT Libraries states that authors are responsible for their work and advises verifying information provided by generative AI. Scope: academic and research writing guidance.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-te-of-technology-accuracy-responsibility",
+          "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+          "evidenceSnippet": "Authors are responsible for all content in their work.",
+          "snippetLocation": "Can AI be an author?; normalized text lines 25-25",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-library-1c23576c5204",
+            "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+            "finalUrl": "https://libguides.mit.edu/cite-AI-tools",
+            "citationTitle": "Home - Citing AI tools - LibGuides at MIT Libraries",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "mit-20261010-accuracy-check",
+          "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+          "evidenceSnippet": "Be sure to verify information provided by generative AI tools.",
+          "snippetLocation": "Note about the accuracy AI tools’ outputs; normalized text lines 48-48",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-library-1c23576c5204",
+            "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+            "finalUrl": "https://libguides.mit.edu/cite-AI-tools",
+            "citationTitle": "Home - Citing AI tools - LibGuides at MIT Libraries",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-approved-tools-list",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "security_review",
+      "claimText": "IS&T lists MIT-licensed GenAI tools approved for low- and medium-risk information. Tools not listed require an assessment before use or purchase; no GenAI tool is approved for High Risk MIT information. Tool access does not authorize coursework or exam use.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-titute-of-technology-approved-tools-list",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "If a tool or service you wish to use is not included below, contact ai-guidance@mit.edu to request an assessment before moving forward with use or purchase.",
+          "snippetLocation": "Opening assessment requirement and approved-tools heading; normalized text lines 32-34",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "mit-20261010-approved-tools-risk",
+          "sourceUrl": "https://ist.mit.edu/ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+          "evidenceSnippet": "The following tools are approved for use with low- and medium-risk information",
+          "snippetLocation": "Available through IS&T for use by MIT; normalized text lines 42-43",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tools-ac43a7066382",
+            "sourceUrl": "https://ist.mit.edu/ai-tools",
+            "finalUrl": "https://ist.mit.edu/ai-tools",
+            "citationTitle": "Generative AI tools available at MIT | Information Systems & Technology",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-risk-assessment-uses",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "source_status",
+      "claimText": "Historical IS&T guidance captured on May 6, 2026: MIT prohibits the use of generative AI for purposes that may require in-depth risk assessments without prior consultation with ai-guidance@mit.edu. Such purposes include recruitment and hiring of employees, evaluating student academic performance, making investment decisions, and complaint and dispute resolution. This specific provision is not reproduced on the current guidance page; its current applicability has not been confirmed.",
+      "confidence": 0.94,
+      "reviewState": "needs_review",
+      "lastCheckedAt": "2026-05-06T00:57:37.427Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "evd-massachusetts-institute-of-technology-6",
+          "sourceUrl": "https://ist.mit.edu/ai-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+          "evidenceSnippet": "Do not use generative AI for purposes that may require in-depth risk assessments without contacting ai-guidance@mit.edu. Examples include: recruitment and hiring of employees, evaluating student academic performance, making investment decisions, and complaint and dispute resolution.",
+          "snippetLocation": "Section: 'Consult with IS&T before purchasing or using generative AI tools'",
+          "retrievedAt": "2026-05-06T00:57:37.427Z",
+          "attribution": {
+            "id": "ss-massachusetts-institute-of-technology-1",
+            "sourceUrl": "https://ist.mit.edu/ai-guidance",
+            "citationTitle": "Guidance for use of Generative AI tools",
+            "publisher": "MIT Information Systems and Technology",
+            "retrievedAt": "2026-05-06T00:57:37.427Z",
+            "trackerCheckedAt": "2026-05-06T00:57:37.427Z",
+            "snapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+            "sourceType": "archived_official_source",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ],
+      "claimValue": "{\"auditStatus\": \"STALE\", \"historicalClaimText\": \"MIT prohibits the use of generative AI for purposes that may require in-depth risk assessments without prior consultation with ai-guidance@mit.edu. Such purposes include recruitment and hiring of employees, evaluating student academic performance, making investment decisions, and complaint and dispute resolution.\", \"currentApplicability\": \"unverified\", \"auditRevision\": \"mit-20261010\"}"
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-existing-tool-review",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "source_status",
+      "claimText": "Historical IS&T guidance captured on May 6, 2026: MIT departments, labs, centers, and institutes (DLCIs) already using a generative AI tool or service must ensure that the tool complies with all Institute policies and Information Protection guidelines, and must contact ai-guidance@mit.edu for consultation or assessment if needed. This specific provision is not reproduced on the current guidance page; its current applicability has not been confirmed.",
+      "confidence": 0.93,
+      "reviewState": "needs_review",
+      "lastCheckedAt": "2026-05-06T00:57:37.427Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "evd-massachusetts-institute-of-technology-7",
+          "sourceUrl": "https://ist.mit.edu/ai-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+          "evidenceSnippet": "If an MIT DLCI is already using a generative AI tool or service, ensure that the tool complies with all Institute policies and Information Protection guidelines. Contact ai-guidance@mit.edu if you have a need for a consultation or assessment.",
+          "snippetLocation": "Section: 'Consult with IS&T before purchasing or using generative AI tools'",
+          "retrievedAt": "2026-05-06T00:57:37.427Z",
+          "attribution": {
+            "id": "ss-massachusetts-institute-of-technology-1",
+            "sourceUrl": "https://ist.mit.edu/ai-guidance",
+            "citationTitle": "Guidance for use of Generative AI tools",
+            "publisher": "MIT Information Systems and Technology",
+            "retrievedAt": "2026-05-06T00:57:37.427Z",
+            "trackerCheckedAt": "2026-05-06T00:57:37.427Z",
+            "snapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d",
+            "sourceType": "archived_official_source",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ],
+      "claimValue": "{\"auditStatus\": \"STALE\", \"historicalClaimText\": \"MIT departments, labs, centers, and institutes (DLCIs) already using a generative AI tool or service must ensure that the tool complies with all Institute policies and Information Protection guidelines, and must contact ai-guidance@mit.edu for consultation or assessment if needed.\", \"currentApplicability\": \"unverified\", \"auditRevision\": \"mit-20261010\"}"
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-course-policy-framework",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "For Fall 2026, MIT faculty guidance states that there are no Institute-wide requirements for setting classroom AI-use policies. Instructors are encouraged to publish clear course policies; sample policy menus are not adopted rules for every course.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-course-policy-framework",
+          "sourceUrl": "https://facultygovernance.mit.edu/communications-chair",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "c68938b928504a4644936cba95a8acbce17912fc3fd5d1bccb8a998bd6987cc2",
+          "evidenceSnippet": "For Fall 2026, as in previous years, there are no Institute-wide requirements for setting policies on AI use in classes.",
+          "snippetLocation": "Generative AI Use Policies, first paragraph; normalized text lines 40-40",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-chair-c68938b92850",
+            "sourceUrl": "https://facultygovernance.mit.edu/communications-chair",
+            "finalUrl": "https://facultygovernance.mit.edu/communications-chair",
+            "citationTitle": "Communications from the Chair | MIT Faculty Governance",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "c68938b928504a4644936cba95a8acbce17912fc3fd5d1bccb8a998bd6987cc2",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-detector-output-not-sufficient",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "MIT's August 13, 2026 committee report states that COD does not consider AI-detector output alone sufficient for an AI-related academic integrity case. This records the committee's description of COD practice, not a blanket detector ban.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-detector-output-not-sufficient",
+          "sourceUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "db443298d69a4153dfeb2a52d07c0c4c18377330d7084a2811cbd552ef5311f5",
+          "evidenceSnippet": "the COD itself does not consider AI detector output alone sufficient.",
+          "snippetLocation": "PDF actual page 19 (printed page 17), §3.1.9, Preparing our disciplinary system; normalized text lines 38-38",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-report-db443298d69a",
+            "sourceUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+            "finalUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+            "citationTitle": "Report of MIT's Ad Hoc Committee on AI Use, August 13, 2026",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "db443298d69a4153dfeb2a52d07c0c4c18377330d7084a2811cbd552ef5311f5",
+            "sourceType": "official_pdf",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-tll-detector-recommendation",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "MIT TLL strongly recommends against using AI-detection tools. This is teaching guidance, not a university-wide statutory prohibition.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-tll-detector-recommendation",
+          "sourceUrl": "https://tll.mit.edu/teaching-resources/course-design/ai-in-teaching-learning/gen-ai-your-course/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "82cf3a20cb9a2bb0e92c2cb9d3c6667c7f719c47edf74afaedf105fbbba371e3",
+          "evidenceSnippet": "Please note that TLL strongly recommends against the use of AI detection tools for the reasons described in the articles above.",
+          "snippetLocation": "Define Acceptable Use, AI-detection resources; normalized text lines 71-71",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-tll-82cf3a20cb9a",
+            "sourceUrl": "https://tll.mit.edu/teaching-resources/course-design/ai-in-teaching-learning/gen-ai-your-course/",
+            "finalUrl": "https://tll.mit.edu/teaching-resources/course-design/ai-in-teaching-learning/gen-ai-your-course/",
+            "citationTitle": "Generative AI & Your Course – Teaching + Learning Lab",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "82cf3a20cb9a2bb0e92c2cb9d3c6667c7f719c47edf74afaedf105fbbba371e3",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-thesis-ai-acknowledgment",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "research",
+      "claimText": "MIT's August 2026 committee report recommends AI-use statements in all theses and says AI should not be listed as a co-author. Researchers should also check journal and conference requirements. This is a committee recommendation; a new mandatory thesis rule has not been established by this source.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-thesis-ai-acknowledgment",
+          "sourceUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "db443298d69a4153dfeb2a52d07c0c4c18377330d7084a2811cbd552ef5311f5",
+          "evidenceSnippet": "All theses should include a statement about how AI was used in the production of the thesis. AI should never be listed as a co-author.",
+          "snippetLocation": "PDF actual page 24 (printed page 22), §3.2.6; normalized text lines 48-48",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-report-db443298d69a",
+            "sourceUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+            "finalUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+            "citationTitle": "Report of MIT's Ad Hoc Committee on AI Use, August 13, 2026",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "db443298d69a4153dfeb2a52d07c0c4c18377330d7084a2811cbd552ef5311f5",
+            "sourceType": "official_pdf",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-human-subject-ai-consent",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "research",
+      "claimText": "For applicable AI human-subjects research applications, COUHES guidance requires available Data Cards and adequate consent transparency. Model Cards are recommended when developing or further developing a model; this does not apply to all coursework.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-human-subject-ai-consent",
+          "sourceUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "8418b339b3944fca6189fc45b25d3406707b194c068cca04fa8db772ca2d03f6",
+          "evidenceSnippet": "Investigators must include a Data Card when available for the particular research project.",
+          "snippetLocation": "When appropriate, submitting a new application involving AI; normalized text lines 11-13",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-couhes-8418b339b394",
+            "sourceUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+            "finalUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+            "citationTitle": "Artificial Intelligence (AI) in Research | Committee on the Use of Humans as Experimental Subjects",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "8418b339b3944fca6189fc45b25d3406707b194c068cca04fa8db772ca2d03f6",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "mit-20261010-human-subject-consent",
+          "sourceUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "8418b339b3944fca6189fc45b25d3406707b194c068cca04fa8db772ca2d03f6",
+          "evidenceSnippet": "In addition to the Data and Model Cards, investigators must ensure the Consent provides adequate information for subjects to make a fully informed decision and transparency in the use of AI and study purpose is paramount.",
+          "snippetLocation": "Consent paragraph; normalized text lines 25-27",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-couhes-8418b339b394",
+            "sourceUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+            "finalUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+            "citationTitle": "Artificial Intelligence (AI) in Research | Committee on the Use of Humans as Experimental Subjects",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "8418b339b3944fca6189fc45b25d3406707b194c068cca04fa8db772ca2d03f6",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "mit-20261010-human-subject-model-card",
+          "sourceUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "8418b339b3944fca6189fc45b25d3406707b194c068cca04fa8db772ca2d03f6",
+          "evidenceSnippet": "If the purpose of the research is to develop a new AI model or further develop an existing AI model, investigators should include a Model Card",
+          "snippetLocation": "Model Card recommendation; normalized text lines 19-20",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-couhes-8418b339b394",
+            "sourceUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+            "finalUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+            "citationTitle": "Artificial Intelligence (AI) in Research | Committee on the Use of Humans as Experimental Subjects",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "8418b339b3944fca6189fc45b25d3406707b194c068cca04fa8db772ca2d03f6",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-cod-disability-accommodations",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Students needing disability accommodations to participate in a COD process are directed to Disability and Access Services. This is a general disciplinary procedure resource, not an AI-specific sanction.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-cod-disability-accommodations",
+          "sourceUrl": "https://cod.mit.edu/resources/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "bdad20ea10cd5569c84ae51759692213107b2498c852bf2b340bf4ebbd152fda",
+          "evidenceSnippet": "If you have a disability and need an accommodation to participate in any part of the COD process, please contact Disability and Access Services",
+          "snippetLocation": "Student Disability and Access Services; normalized text lines 25-26",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-support-bdad20ea10cd",
+            "sourceUrl": "https://cod.mit.edu/resources/",
+            "finalUrl": "https://cod.mit.edu/resources/",
+            "citationTitle": "Resources and Links – Committee on Discipline",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "bdad20ea10cd5569c84ae51759692213107b2498c852bf2b340bf4ebbd152fda",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-massachusetts-institute-of-technology-suspension-return-limits",
+      "entitySlug": "massachusetts-institute-of-technology",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Permission to return to MIT after suspension does not guarantee return to the same department, degree program, lab group, or related position. This is a general COD sanction condition, not an AI-specific penalty.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-10-10T18:52:29.198Z",
+      "lastChangedAt": "2026-10-10T18:52:29.198Z",
+      "evidence": [
+        {
+          "id": "mit-20261010-suspension-return-limits",
+          "sourceUrl": "https://cod.mit.edu/rules/section11/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "c33d5269053f582639b0b253d440b51cdf535d94f153e69346fe86b4dc27eebc",
+          "evidenceSnippet": "Students allowed to return to the Institute after being suspended are not guaranteed to be able to return to the department, specific degree program, lab group, or any related position that they were in prior to their suspension.",
+          "snippetLocation": "§XI.D, paragraph after permission to return; normalized text lines 32-32",
+          "retrievedAt": "2026-10-10T18:52:29.198Z",
+          "attribution": {
+            "id": "mit-current-cod11-c33d5269053f",
+            "sourceUrl": "https://cod.mit.edu/rules/section11/",
+            "finalUrl": "https://cod.mit.edu/rules/section11/",
+            "citationTitle": "XI. Sanctions – Committee on Discipline",
+            "publisher": "Massachusetts Institute of Technology",
+            "retrievedAt": "2026-10-10T18:52:29.198Z",
+            "trackerCheckedAt": "2026-10-10T18:52:29.198Z",
+            "snapshotHash": "c33d5269053f582639b0b253d440b51cdf535d94f153e69346fe86b4dc27eebc",
+            "sourceType": "official_guidance",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    }
+  ],
+  "suggestedCitation": "University AI Policy Tracker. MIT AI policy record. Scoped repair mit-20261010. Last checked October 10, 2026. https://eduaipolicy.org/universities/massachusetts-institute-of-technology"
+}

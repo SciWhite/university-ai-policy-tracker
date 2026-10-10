@@ -357,6 +357,10 @@ export default async function UniversityPage({
       ) : null}
       {policyScene?.quickGuide && !strongSnapshot ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
       {enforcementPage ? <RuntimeEnforcement slug={slug} locale={locale} records={runtimeContent.records} /> : null}
+      {runtimeContent?.heldClaims?.length ? <aside className="policy-source-update" aria-label={locale === "zh" ? "待核查历史记录" : "Historical provisions awaiting verification"}>
+        <p>{locale === "zh" ? "以下历史条款的现行适用性尚未确认，不作为当前行动要求。" : "The current applicability of these historical provisions is unconfirmed; they are not current action requirements."}</p>
+        {runtimeContent.heldClaims.map((claim: {id:string;text:string;sourceUrl:string}) => <details key={claim.id} id={`claim-${claim.id}`}><summary>{claim.id}</summary><p lang="en">{claim.text}</p><a href={claim.sourceUrl}>{referenceUi("Official sources")}</a></details>)}
+      </aside> : null}
       {(isRuntimeUniversity(slug) || isPublishedUniversityAiToolsModule(slug)) ? <UniversityAiTools locale={locale} records={runtimeContent.tools ?? await getUniversityToolRecords(publicSummary)} /> : null}
       {approvedPolicySupplementSlugs.includes(slug) ? <PolicySupplements slug={slug} locale={locale} claims={displayedReviewedClaims} /> : null}
       {referencePreview ? <PolicyReferenceInteractions /> : compactPolicyPilot ? <PolicyRecordHashReveal /> : null}

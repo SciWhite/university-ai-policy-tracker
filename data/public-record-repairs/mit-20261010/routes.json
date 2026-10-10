@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "/universities/massachusetts-institute-of-technology",
+    "/zh/universities/massachusetts-institute-of-technology",
+    "/fr/universities/massachusetts-institute-of-technology",
+    "/pl/universities/massachusetts-institute-of-technology",
+    "/es/universities/massachusetts-institute-of-technology",
+    "/nl/universities/massachusetts-institute-of-technology",
+    "/ms/universities/massachusetts-institute-of-technology"
+  ],
+  "apis": [
+    "/api/public/v1/universities/massachusetts-institute-of-technology.json",
+    "/api/public/v1/universities/massachusetts-institute-of-technology",
+    "/api/public/v1/claims/massachusetts-institute-of-technology",
+    "/api/public/v1/policy-snapshots/universities/massachusetts-institute-of-technology.json",
+    "/api/public/v1/tools.json",
+    "/api/public/v1/coverage/qs-2026.json",
+    "/api/public/v1/university-index.json",
+    "/api/public/v1/universities.json",
+    "/api/public/v1/search/index.json",
+    "/api/public/v1/search.json",
+    "/api/public/v1/policy-snapshots/index.json",
+    "/api/public/v1/recent-changes.json"
+  ],
+  "controls": [
+    "/",
+    "/universities/imperial-college-london",
+    "/zh/universities/university-of-oxford",
+    "/api/public/v1/universities/imperial-college-london.json"
+  ]
+}

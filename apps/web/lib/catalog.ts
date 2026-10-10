@@ -14,6 +14,7 @@ import {
   type PublicEntitySummary
 } from "@uapt/shared";
 import { getSiteBaseUrl } from "./site-url";
+import { isRepairedUniversity } from "./public-record-repairs";
 import {
   getStagedCatalogSources,
   getStagedCatalogUniversities,
@@ -44,6 +45,7 @@ export async function getCatalogUniversities(): Promise<CatalogUniversity[]> {
 export async function getCatalogUniversityBySlug(
   slug: string
 ): Promise<CatalogUniversity | undefined> {
+  if (isRepairedUniversity(slug)) return (await getStagedCatalogUniversities()).find(s => s.slug === slug);
   const fromApi = await fetchApi(`/universities/${slug}`, catalogUniversitySchema);
 
   if (fromApi) return fromApi;
@@ -78,6 +80,7 @@ export async function getCatalogSources(): Promise<CatalogSourceRecord[]> {
 export async function getPublicUniversitySummaryBySlug(
   slug: string
 ): Promise<PublicEntitySummary | undefined> {
+  if (isRepairedUniversity(slug)) return getStagedPublicSummaryBySlug(slug);
   const fromApi = await fetchApi(
     `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
     {

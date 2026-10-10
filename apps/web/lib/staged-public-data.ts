@@ -39,6 +39,7 @@ import {
 import { getEntityAliasResolver } from "./entity-aliases";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
+import { applyPublishedRecordRepairs } from "./public-record-repairs";
 
 interface RankingRecord {
   rowNumber: number;
@@ -222,7 +223,7 @@ async function buildStagedPublicDataset(): Promise<PublicDataset> {
   const repoRoot = await findRepoRoot();
   const manifest = await readPublicReleaseManifest(repoRoot);
 
-  if (manifest) return buildStagedPublicDatasetFromManifest(repoRoot, manifest);
+  if (manifest) return buildStagedPublicDatasetFromManifest(repoRoot, manifest, true);
 
   const artifacts = await readStagedArtifacts(repoRoot);
   return buildPublicDatasetFromArtifacts(repoRoot, artifacts);
@@ -230,23 +231,25 @@ async function buildStagedPublicDataset(): Promise<PublicDataset> {
 
 async function buildStagedPublicDatasetFromManifest(
   repoRoot: string,
-  manifest: PublicReleaseManifest
+  manifest: PublicReleaseManifest,
+  applyRepairs = false
 ): Promise<PublicDataset> {
   const artifacts = await readStagedArtifacts(repoRoot, manifest);
 
-  return buildPublicDatasetFromArtifacts(repoRoot, artifacts);
+  return buildPublicDatasetFromArtifacts(repoRoot, artifacts, applyRepairs);
 }
 
 async function buildPublicDatasetFromArtifacts(
   repoRoot: string,
-  artifacts: OpenClawStagedArtifact[]
+  artifacts: OpenClawStagedArtifact[],
+  applyRepairs = false
 ): Promise<PublicDataset> {
   const rankingSources = await readRankingSources(repoRoot);
   const rankingBySlug = buildRankingIndex(rankingSources);
   const byEntity = groupArtifactsByEntity(
     await canonicalizeArtifactSlugs(artifacts)
   );
-  const publicSummaries = Array.from(byEntity.values())
+  const originalSummaries = Array.from(byEntity.values())
     .map((entityArtifacts) =>
       buildPublicSummary(
         entityArtifacts,
@@ -255,6 +258,9 @@ async function buildPublicDatasetFromArtifacts(
     )
     .filter((summary): summary is PublicEntitySummary => Boolean(summary))
     .sort((left, right) => left.entity.name.localeCompare(right.entity.name));
+  const publicSummaries = applyRepairs
+    ? await applyPublishedRecordRepairs(repoRoot, originalSummaries)
+    : originalSummaries;
   const catalogUniversities = publicSummaries.map((summary) =>
     buildCatalogUniversity(summary, rankingBySlug.get(summary.entity.slug))
   );

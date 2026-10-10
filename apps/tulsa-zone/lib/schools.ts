@@ -12,6 +12,7 @@ export const previouslyPublishedRuntimeUniversitySlugs = [
 ] as const;
 
 export const newRuntimeUniversitySlugs = [
+  "massachusetts-institute-of-technology",
   "university-of-bristol",
   "ucl",
   "unsw-sydney",
@@ -175,6 +176,7 @@ export const newRuntimeUniversitySlugs = [
 ] as const;
 
 export const runtimeUniversitySlugs = [
+  "massachusetts-institute-of-technology",
   "university-of-glasgow",
   "imperial-college-london",
   "university-of-sydney",

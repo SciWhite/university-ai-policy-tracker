@@ -85,8 +85,9 @@ test("UAPT 6 decisions preserve evidence pointers and fail-closed statuses", asy
   );
 
   for (const entry of index.entries) {
+    const repaired = entry.universitySlug === "massachusetts-institute-of-technology";
     const snapshot = policySnapshotSchema.parse(
-      JSON.parse(await readFile(path.join(root, entry.file), "utf8"))
+      JSON.parse(await readFile(repaired ? "data/public-record-repairs/mit-20261010/historical-student-snapshot.json" : path.join(root, entry.file), "utf8"))
     );
     const decision = decisions.get(entry.universitySlug);
     assert(decision);
@@ -97,7 +98,7 @@ test("UAPT 6 decisions preserve evidence pointers and fail-closed statuses", asy
 
     const expectedStatus = decision.decision === "pass" ? "strong" : "needs_review";
     assert.equal(snapshot.overallStatus, expectedStatus);
-    assert.equal(entry.overallStatus, expectedStatus);
+    assert.equal(entry.overallStatus, repaired ? "needs_review" : expectedStatus);
     if (expectedStatus === "strong") {
       assert.equal(snapshot.review.reviewState, "dual_agent_reviewed");
       assert.equal(snapshot.review.secondary.decision, "approve");
@@ -117,11 +118,11 @@ test("API loader reports the reviewed strong and fail-closed counts", async () =
   assert.equal(loaded.entries.length, 24);
   assert.equal(
     loaded.entries.filter((entry) => entry.overallStatus === "strong").length,
-    17
+    16
   );
   assert.equal(
     loaded.entries.filter((entry) => entry.overallStatus === "needs_review").length,
-    7
+    8
   );
   assert.equal(
     loaded.entries.filter((entry) => entry.overallStatus === "stale").length,

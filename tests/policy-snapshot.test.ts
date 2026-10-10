@@ -204,13 +204,14 @@ test("all indexed snapshots are schema-valid and evidence-bound", async () => {
       (item) => item.universitySlug === entry.universitySlug
     );
     assert(decision);
-    const expectedStatus = decision.decision === "pass" ? "strong" : "needs_review";
+    const repaired = entry.universitySlug === "massachusetts-institute-of-technology";
+    const expectedStatus = decision.decision === "pass" && !repaired ? "strong" : "needs_review";
 
     assert.equal(snapshot.overallStatus, expectedStatus);
     assert.equal(snapshot.review.reviewMethod, "dual_agent");
     assert.equal(
       snapshot.review.secondary.agentId,
-      "uapt-6-secondary-reviewer"
+      repaired ? "independent-review-pending" : "uapt-6-secondary-reviewer"
     );
     assert.equal(
       snapshot.review.secondary.decision,

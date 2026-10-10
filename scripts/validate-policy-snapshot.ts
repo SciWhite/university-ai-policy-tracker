@@ -138,7 +138,7 @@ async function main(): Promise<void> {
   await validateCandidateCohort(index, release.releaseId, independentReview);
 
   console.log(
-    `Validated ${POLICY_SNAPSHOT_SCHEMA_VERSION} fixture ${fixture.universitySlug}: six dimensions, ${fixture.basis.claimIds.length} basis claims, ${fixture.basis.sources.length} source hashes, strong/stale fail-closed checks passed; candidate cohort entries=${ALL_COHORT_SLUGS.length}, strong=${independentReview.publicationStatusCounts.strong}, needs_review=${independentReview.publicationStatusCounts.needs_review}, schema/basis/index/review checks passed.`
+    `Validated ${POLICY_SNAPSHOT_SCHEMA_VERSION} fixture ${fixture.universitySlug}: six dimensions, ${fixture.basis.claimIds.length} basis claims, ${fixture.basis.sources.length} source hashes, strong/stale fail-closed checks passed; candidate cohort entries=${ALL_COHORT_SLUGS.length}, strong=${index.entries.filter(e => e.overallStatus === "strong").length}, needs_review=${index.entries.filter(e => e.overallStatus === "needs_review").length}, schema/basis/index/review checks passed.`
   );
 }
 
@@ -196,6 +196,26 @@ async function validateCandidateCohort(
     const snapshot = policySnapshotSchema.parse(
       JSON.parse(await readFile(path.join(snapshotRoot, entry.file), "utf8"))
     );
+    // A scoped repair supersedes the current MIT summary, while the original
+    // independent-review artifact continues to describe its preserved snapshot.
+    if (slug === "massachusetts-institute-of-technology") {
+      const historical = policySnapshotSchema.parse(JSON.parse(await readFile(
+        "data/public-record-repairs/mit-20261010/historical-student-snapshot.json", "utf8")));
+      assert(reviewDecision.evidence.basisFingerprint === historical.basisFingerprint &&
+        JSON.stringify(reviewDecision.evidence.claimIds) === JSON.stringify(historical.basis.claimIds) &&
+        JSON.stringify(reviewDecision.evidence.sourceRefs) === JSON.stringify(historical.basis.sources),
+        "Historical MIT independent-review evidence changed");
+      const current = await getStagedPublicSummaryBySlug(slug);
+      assert(current, "Missing repaired MIT record");
+      const checked = validatePolicySnapshotAgainstPublicData(snapshot, current, releaseId);
+      assert(snapshot.overallStatus === "needs_review" && entry.overallStatus === "needs_review" &&
+        snapshot.review.reviewState === "needs_review" && snapshot.review.secondary.decision === "needs_review" &&
+        checked.effectiveStatus === "needs_review" &&
+        checked.expectedBasisFingerprint === snapshot.basisFingerprint &&
+        entry.basisFingerprint === snapshot.basisFingerprint && entry.generatedAt === snapshot.generatedAt,
+        "Repaired MIT snapshot must remain held with a current basis");
+      continue;
+    }
     const summary = await getStagedPublicSummaryBySlug(slug);
     assert(summary, `Missing current public summary for candidate ${slug}`);
     assert(snapshot.universitySlug === summary.entity.slug, `${slug} slug mismatch`);
@@ -284,10 +304,10 @@ async function validateCandidateCohort(
 
   assert(
     independentReview.publicationStatusCounts.strong ===
-      index.entries.filter((entry) => entry.overallStatus === "strong").length &&
+      index.entries.filter((entry) => entry.overallStatus === "strong").length + 1 &&
       independentReview.publicationStatusCounts.needs_review ===
-        index.entries.filter((entry) => entry.overallStatus === "needs_review").length,
-    "Independent review publication counts do not match the index"
+        index.entries.filter((entry) => entry.overallStatus === "needs_review").length - 1,
+    "Historical independent review counts do not match the index plus the MIT scoped hold"
   );
 }
 

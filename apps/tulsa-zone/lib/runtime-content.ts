@@ -133,6 +133,15 @@ const loadPackage = cache(async () => {
       }
     }
 
+    if (school.heldClaims !== undefined) {
+      if (slug !== "massachusetts-institute-of-technology" || !Array.isArray(school.heldClaims) ||
+          school.heldClaims.length !== 2 || school.heldClaims.some((claim: any) =>
+            Object.keys(claim).sort().join(",") !== "id,sourceUrl,text" ||
+            typeof claim.id !== "string" || typeof claim.text !== "string" || !isWebUrl(claim.sourceUrl))) {
+        throw new Error(`Invalid historical hold for ${slug}`);
+      }
+    }
+
     if (school.tools !== undefined) {
       if (!Array.isArray(school.tools)) throw new Error(`Invalid tools for ${slug}`);
       for (const tool of school.tools) assertToolRecord(tool, slug);
@@ -159,6 +168,10 @@ export const loadTulsaContent = cache(async (slug: string, claims: any[]) => {
   const school = (await loadPackage()).schools[slug];
   if (school.claimsFingerprint !== reviewedClaimsFingerprint(claims)) {
     throw new Error(`Canonical claim fingerprint mismatch for ${slug}`);
+  }
+  if (school.heldClaims && school.heldClaims.some((held: any) =>
+      !claims.some(claim => claim.id === held.id && claim.reviewState === "needs_review" && claim.claimText === held.text))) {
+    throw new Error(`Historical hold does not match canonical claims for ${slug}`);
   }
   return school;
 });

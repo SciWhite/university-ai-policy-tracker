@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "uapt-public-record-repairs-v1",
+  "revision": "mit-20261010",
+  "slug": "massachusetts-institute-of-technology",
+  "publicationApproved": true,
+  "publishedAt": "2026-10-10T18:52:29.198Z",
+  "baselineClaimsFingerprint": "505b231ef5d9cd1b77fd98fff2deb52956c1c661e30b17ba077ffbe1dd12cc78",
+  "recordSha256": "7d0521f54b818e7dd7b627cc785203e7f844c5cf8006a64368f653f0023cd32c",
+  "scope": "MIT only; global historical release manifests remain unchanged"
+}

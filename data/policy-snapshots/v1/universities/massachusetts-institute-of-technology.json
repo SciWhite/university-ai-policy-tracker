@@ -7,37 +7,49 @@
   "canonicalUrl": "http://localhost:3000/universities/massachusetts-institute-of-technology",
   "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/massachusetts-institute-of-technology.json",
   "canonicalLocale": "en",
-  "generatedAt": "2026-08-01T16:46:58.055Z",
-  "overallStatus": "strong",
-  "statusReasons": [],
-  "summary": "For MIT work, use the approved tool and data-risk path, disclose academic or research AI use, and keep High Risk MIT information out of generative AI; check your course or exam instructions for any further rule.",
+  "generatedAt": "2026-10-10T18:52:29.198Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete"
+  ],
+  "summary": "MIT data restrictions and tool access are separate from course permission. This corrected student summary awaits independent secondary review; consult the current reviewed claims and official sources.",
   "audiences": [
     "students",
     "researchers"
   ],
-  "scope": "university_wide",
+  "scope": "mixed",
   "academicContexts": [
+    "assignment",
+    "exam",
+    "thesis",
     "research",
     "administrative_work"
   ],
   "dimensions": [
     {
       "key": "coursework",
-      "status": "not_mentioned",
-      "summary": "No source-backed MIT student coursework permission rule is included; this is not evidence of permission or prohibition.",
+      "status": "unclear",
+      "summary": "Course-specific rules determine assessment permission; MIT does not impose a single classroom AI policy.",
       "actions": {
         "do": [],
         "dont": []
       },
       "basis": {
-        "claimIds": [],
-        "sources": []
+        "claimIds": [
+          "clm-massachusetts-institute-of-technology-course-policy-framework"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://facultygovernance.mit.edu/communications-chair",
+            "sourceSnapshotHash": "c68938b928504a4644936cba95a8acbce17912fc3fd5d1bccb8a998bd6987cc2"
+          }
+        ]
       }
     },
     {
       "key": "exams",
       "status": "not_mentioned",
-      "summary": "No source-backed MIT student exam-use rule is included; this is not evidence of permission or prohibition.",
+      "summary": "No universal exam permission is established; follow the actual exam instructions.",
       "actions": {
         "do": [],
         "dont": []
@@ -49,15 +61,11 @@
     },
     {
       "key": "disclosure",
-      "status": "required",
-      "summary": "MIT advises disclosure of generative-AI use for academic, educational, and research-related uses. Scope: MIT community guidance.",
+      "status": "recommended",
+      "summary": "MIT Libraries provides citation guidance; applicable class and publication requirements may differ.",
       "actions": {
-        "do": [
-          "Disclose AI use in the academic or research context covered by the guidance."
-        ],
-        "dont": [
-          "Do not publish AI-assisted research without disclosing the nature of that use."
-        ]
+        "do": [],
+        "dont": []
       },
       "basis": {
         "claimIds": [
@@ -65,8 +73,8 @@
         ],
         "sources": [
           {
-            "sourceUrl": "https://ist.mit.edu/ai-guidance",
-            "sourceSnapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d"
+            "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+            "sourceSnapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05"
           }
         ]
       }
@@ -74,28 +82,19 @@
     {
       "key": "privacy_data",
       "status": "restricted",
-      "summary": "MIT states that no generative-AI tool is approved for High Risk MIT information, and public tools are not recommended for MIT research or educational activities.",
+      "summary": "Public GenAI must not receive Medium Risk MIT data; no GenAI tool may receive High Risk MIT data.",
       "actions": {
-        "do": [
-          "Classify MIT information and use only the permitted risk path."
-        ],
-        "dont": [
-          "Do not put High Risk MIT information into a generative-AI tool."
-        ]
+        "do": [],
+        "dont": []
       },
       "basis": {
         "claimIds": [
-          "clm-massachusetts-institute-of-technology-approved-tools-list",
           "clm-massachusetts-institute-of-technology-high-risk-prohibition"
         ],
         "sources": [
           {
             "sourceUrl": "https://ist.mit.edu/ai-guidance",
-            "sourceSnapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d"
-          },
-          {
-            "sourceUrl": "https://ist.mit.edu/ai-tools",
-            "sourceSnapshotHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b"
+            "sourceSnapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2"
           }
         ]
       }
@@ -103,14 +102,10 @@
     {
       "key": "approved_tools",
       "status": "conditionally_allowed",
-      "summary": "MIT maintains an IS&T-licensed approved-tools list for low- and medium-risk information. A listed tool is an institutional path, not permission for a particular class, exam, or research output.",
+      "summary": "MIT-licensed tool access is subject to eligibility and data restrictions and is not assessment permission.",
       "actions": {
-        "do": [
-          "Check the current MIT list and data-risk condition before use."
-        ],
-        "dont": [
-          "Do not infer course or assessment permission from the list."
-        ]
+        "do": [],
+        "dont": []
       },
       "basis": {
         "claimIds": [
@@ -119,31 +114,27 @@
         "sources": [
           {
             "sourceUrl": "https://ist.mit.edu/ai-tools",
-            "sourceSnapshotHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b"
+            "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c"
           }
         ]
       }
     },
     {
       "key": "research_publication",
-      "status": "required",
-      "summary": "MIT guidance calls for disclosure when research results rely on AI-generated content. No broader MIT authorship rule is asserted here.",
+      "status": "recommended",
+      "summary": "The August 2026 committee report recommends thesis AI-use statements and excluding AI from co-authorship; this is not a newly established mandatory thesis rule.",
       "actions": {
-        "do": [
-          "Describe AI involvement in research-related work where the guidance applies."
-        ],
-        "dont": [
-          "Do not hide AI-generated content relied on in published research."
-        ]
+        "do": [],
+        "dont": []
       },
       "basis": {
         "claimIds": [
-          "clm-massachusetts-institute-of-technology-disclosure"
+          "clm-massachusetts-institute-of-technology-thesis-ai-acknowledgment"
         ],
         "sources": [
           {
-            "sourceUrl": "https://ist.mit.edu/ai-guidance",
-            "sourceSnapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d"
+            "sourceUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+            "sourceSnapshotHash": "db443298d69a4153dfeb2a52d07c0c4c18377330d7084a2811cbd552ef5311f5"
           }
         ]
       }
@@ -151,49 +142,63 @@
   ],
   "basis": {
     "claimIds": [
-      "clm-massachusetts-institute-of-technology-approved-tools-list",
+      "clm-massachusetts-institute-of-technology-course-policy-framework",
       "clm-massachusetts-institute-of-technology-disclosure",
-      "clm-massachusetts-institute-of-technology-high-risk-prohibition"
+      "clm-massachusetts-institute-of-technology-high-risk-prohibition",
+      "clm-massachusetts-institute-of-technology-approved-tools-list",
+      "clm-massachusetts-institute-of-technology-thesis-ai-acknowledgment"
     ],
     "sources": [
       {
+        "sourceUrl": "https://facultygovernance.mit.edu/communications-chair",
+        "sourceSnapshotHash": "c68938b928504a4644936cba95a8acbce17912fc3fd5d1bccb8a998bd6987cc2"
+      },
+      {
+        "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+        "sourceSnapshotHash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05"
+      },
+      {
         "sourceUrl": "https://ist.mit.edu/ai-guidance",
-        "sourceSnapshotHash": "9f5d98b57ae0a98780b717171db014845705949710b3e8247db979042e50878d"
+        "sourceSnapshotHash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2"
       },
       {
         "sourceUrl": "https://ist.mit.edu/ai-tools",
-        "sourceSnapshotHash": "3a95a461a608ebd8222ef258a338f4f76dda14250d21168165e89167d83d419b"
+        "sourceSnapshotHash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c"
+      },
+      {
+        "sourceUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+        "sourceSnapshotHash": "db443298d69a4153dfeb2a52d07c0c4c18377330d7084a2811cbd552ef5311f5"
       }
     ]
   },
   "releaseId": "public-release-20260924-002",
-  "basisFingerprint": "81ca9d510fdfbf56c28c4db4c4ade057c3ddd263775b983b9b92f2edf0f9c919",
+  "basisFingerprint": "90b898910f5449e9c22786cde7de93b20d1fac2b131f655be7a074f25faf3773",
   "review": {
     "reviewMethod": "dual_agent",
-    "reviewState": "dual_agent_reviewed",
+    "reviewState": "needs_review",
     "primary": {
-      "agentId": "uapt-5-primary-author",
-      "model": "gpt-5",
+      "agentId": "codex-mit-repair-author",
+      "model": "GPT-6",
       "decision": "approve",
-      "reviewedAt": "2026-08-01T16:46:58.055Z",
-      "notes": "Primary author review recorded for this machine candidate; the snapshot is not a student conclusion."
+      "reviewedAt": "2026-10-10T18:52:29.198Z",
+      "notes": "Current sources recaptured and scoped claims checked; no second reviewer claimed."
     },
     "secondary": {
-      "agentId": "uapt-6-secondary-reviewer",
-      "model": "gpt-5",
-      "decision": "approve",
-      "reviewedAt": "2026-08-08T11:15:00.000Z",
-      "notes": "Second-round independent review passed; direct summary, scoped claims, source hashes, and basis fingerprint checked."
+      "agentId": "independent-review-pending",
+      "model": "not-run",
+      "decision": "needs_review",
+      "reviewedAt": "2026-10-10T18:52:29.198Z",
+      "notes": "No secondary review conducted for this revision. Timestamp records the pending state."
     },
-    "agreement": "agree",
-    "reviewedAt": "2026-08-08T11:15:00.000Z"
+    "agreement": "disagree",
+    "reviewedAt": "2026-10-10T18:52:29.198Z"
   },
   "translations": [],
   "limitations": [
     "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
-    "This is a machine-candidate snapshot, not a student conclusion; overallStatus remains needs_review pending independent secondary review.",
-    "Scope follows the cited source role and unit. A faculty, school, department, course, assessment, library, or staff rule is not generalized university-wide.",
-    "English is canonical. Source evidence may be multilingual; no translation is provided or independently reviewed in this candidate.",
-    "A university-provided, licensed, or listed tool is not by itself permission to use it in a course, assessment, thesis, or research project."
+    "This corrected student summary awaits independent secondary review; it is not an official MIT determination.",
+    "Tool availability is not permission for a class, assessment, thesis, or research project.",
+    "English official evidence is canonical; the interface language does not imply a translated policy.",
+    "Two historical IS&T provisions remain unverified for current applicability."
   ]
 }

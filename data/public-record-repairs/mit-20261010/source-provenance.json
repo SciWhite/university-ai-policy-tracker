@@ -1,0 +1,101 @@
+[
+  {
+    "key": "eo",
+    "sourceUrl": "https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "a885386972cc8e5e08fa8691f7351b94d5f1d3576b6b75502eba779f6b60e1c3",
+    "normalizedTextSha256": "9f8e1d4f0b9fbfa842fb712b41dc7ce047f1fdcea55be22fa2dda3fda4d4d3f1",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 295362
+  },
+  {
+    "key": "guidance",
+    "sourceUrl": "https://ist.mit.edu/ai-guidance",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "5e96eeda71dda53c7fe2aa2fdcf5b44109558c147584aebe8051baef4ec669c5",
+    "normalizedTextSha256": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 49152
+  },
+  {
+    "key": "tools",
+    "sourceUrl": "https://ist.mit.edu/ai-tools",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "a77a393b3e78ec87c4a3eb78d6b408f7086f18cec76d75631d45986cc8b13d1c",
+    "normalizedTextSha256": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 48671
+  },
+  {
+    "key": "library",
+    "sourceUrl": "https://libguides.mit.edu/cite-AI-tools",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "d2c565fc6b9cfd749fd26461389db66310937c7709d1b2d1735ecdd03fb10ea7",
+    "normalizedTextSha256": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 90551
+  },
+  {
+    "key": "chair",
+    "sourceUrl": "https://facultygovernance.mit.edu/communications-chair",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "35600330d520d2c31c6c52eb06901e2602113caaa3041f17c3071465c190584e",
+    "normalizedTextSha256": "c68938b928504a4644936cba95a8acbce17912fc3fd5d1bccb8a998bd6987cc2",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 32872
+  },
+  {
+    "key": "tll",
+    "sourceUrl": "https://tll.mit.edu/teaching-resources/course-design/ai-in-teaching-learning/gen-ai-your-course/",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "372f03ef3200fe5d023f2b9dd34cd5b45d10b2afe8fdb03778ad81489c85fcaa",
+    "normalizedTextSha256": "82cf3a20cb9a2bb0e92c2cb9d3c6667c7f719c47edf74afaedf105fbbba371e3",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 209660
+  },
+  {
+    "key": "report",
+    "sourceUrl": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "eba14345d7fee5727f399bc01f0f69ef2e2542e924b947947147027e7a3c0a49",
+    "normalizedTextSha256": "db443298d69a4153dfeb2a52d07c0c4c18377330d7084a2811cbd552ef5311f5",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 2313823
+  },
+  {
+    "key": "couhes",
+    "sourceUrl": "https://couhes.mit.edu/researchers/guidelines/artificial-intelligence-ai-research",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "5389cf01df2b020fe708051cb7d7a03cc55098a37aa84396846837e2043f80aa",
+    "normalizedTextSha256": "8418b339b3944fca6189fc45b25d3406707b194c068cca04fa8db772ca2d03f6",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 60694
+  },
+  {
+    "key": "cod11",
+    "sourceUrl": "https://cod.mit.edu/rules/section11/",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "a08c3151b357301dee5fbc2223476e525faf8c80ac95c3551094dcffcdd1697b",
+    "normalizedTextSha256": "c33d5269053f582639b0b253d440b51cdf535d94f153e69346fe86b4dc27eebc",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 101940
+  },
+  {
+    "key": "cod12",
+    "sourceUrl": "https://cod.mit.edu/rules/section12/",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "6ca55735b4aca08a8c4c79f1e818e4a037f36a5ccb7527968798e59c6b945b03",
+    "normalizedTextSha256": "b21adc25e7594f27f9ed8b969cc6c31bf4d0392e41eb05eab5e813313c639f0d",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 85859
+  },
+  {
+    "key": "support",
+    "sourceUrl": "https://cod.mit.edu/resources/",
+    "retrievedAt": "2026-10-10T18:52:29.198Z",
+    "rawSha256": "66a2068a2b05c78509f46672b854cdc49b22c707673d6fbb38af82c532c446f2",
+    "normalizedTextSha256": "bdad20ea10cd5569c84ae51759692213107b2498c852bf2b340bf4ebbd152fda",
+    "normalization": "HTML textContent, whitespace normalization; PDF extracted text with actual page markers",
+    "rawBytes": 77409
+  }
+]

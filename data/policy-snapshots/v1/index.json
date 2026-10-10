@@ -43,10 +43,10 @@
       "universityName": "Massachusetts Institute of Technology (MIT)",
       "file": "universities/massachusetts-institute-of-technology.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/massachusetts-institute-of-technology.json",
-      "overallStatus": "strong",
+      "overallStatus": "needs_review",
       "releaseId": "public-release-20260924-002",
-      "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "81ca9d510fdfbf56c28c4db4c4ade057c3ddd263775b983b9b92f2edf0f9c919",
+      "generatedAt": "2026-10-10T18:52:29.198Z",
+      "basisFingerprint": "90b898910f5449e9c22786cde7de93b20d1fac2b131f655be7a074f25faf3773",
       "locales": []
     },
     {
