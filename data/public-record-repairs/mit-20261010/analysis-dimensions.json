@@ -1,0 +1,86 @@
+{
+  "policy_presence": {
+    "status": "unclear",
+    "claimIds": [
+      "clm-massachusetts-institute-of-technology-course-policy-framework",
+      "clm-massachusetts-institute-of-technology-approved-tools-list"
+    ],
+    "summary": "MIT publishes official AI guidance and tool restrictions; this does not establish a single Institute-wide classroom AI-use policy."
+  },
+  "ai_disclosure": {
+    "status": "recommended",
+    "claimIds": [
+      "clm-massachusetts-institute-of-technology-disclosure"
+    ],
+    "summary": "MIT Libraries provides citation and acknowledgment guidance. Applicable class and publication requirements may differ; no universal mandatory disclosure rule is established here."
+  },
+  "coursework": {
+    "status": "unclear",
+    "claimIds": [
+      "clm-massachusetts-institute-of-technology-course-policy-framework"
+    ],
+    "summary": "Course-specific policies determine assessment permission. The faculty guidance does not establish a universal coursework permission or prohibition."
+  },
+  "exams": {
+    "status": "not_mentioned",
+    "claimIds": [],
+    "summary": "No universal exam permission or prohibition is established by this reviewed record. Follow the actual exam instructions; tool access is not exam permission."
+  },
+  "privacy_data_entry": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-massachusetts-institute-of-technology-high-risk-prohibition"
+    ],
+    "summary": "Public GenAI must not receive Medium Risk MIT data. No GenAI tool may receive High Risk MIT data; public tools are not recommended for Low Risk MIT data."
+  },
+  "academic_integrity": {
+    "status": "unclear",
+    "claimIds": [
+      "clm-massachusetts-institute-of-technology-detector-output-not-sufficient",
+      "clm-massachusetts-institute-of-technology-suspension-return-limits"
+    ],
+    "summary": "The committee describes COD detector-evidence limits; general COD return conditions are not AI-specific penalties. These sources do not establish automatic AI sanctions."
+  },
+  "approved_tools": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-massachusetts-institute-of-technology-approved-tools-list",
+      "clm-massachusetts-institute-of-technology-ai-procurement-review"
+    ],
+    "summary": "MIT-licensed tools have eligibility and data conditions. Their institutional approval is separate from permission for a class or assessment."
+  },
+  "named_ai_services": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "cl-massachusetts-institute-of-technology-chatgpt-5",
+      "cl-massachusetts-institute-of-technology-microsoft-copilot-8",
+      "cl-massachusetts-institute-of-technology-self-deploy-12"
+    ],
+    "summary": "The official directory names ChatGPT, Microsoft Copilot, Parley and other services. Use the tool records for current institutional access and data conditions; assessment permission is separate."
+  },
+  "teaching_guidance": {
+    "status": "recommended",
+    "claimIds": [
+      "clm-massachusetts-institute-of-technology-course-policy-framework",
+      "clm-massachusetts-institute-of-technology-tll-detector-recommendation"
+    ],
+    "summary": "Instructors are encouraged to state clear course policies. TLL strongly recommends against AI detection tools; this is guidance rather than an Institute-wide detector ban."
+  },
+  "research_guidance": {
+    "status": "unclear",
+    "claimIds": [
+      "clm-massachusetts-institute-of-technology-thesis-ai-acknowledgment",
+      "clm-massachusetts-institute-of-technology-human-subject-ai-consent",
+      "clm-massachusetts-institute-of-technology-accuracy-responsibility"
+    ],
+    "summary": "The committee recommends thesis AI-use statements; applicable COUHES applications have mandatory Data Card and consent requirements. These distinct scopes must not be collapsed into one universal research rule."
+  },
+  "security_procurement": {
+    "status": "required",
+    "claimIds": [
+      "clm-massachusetts-institute-of-technology-ai-procurement-review",
+      "clm-massachusetts-institute-of-technology-approved-tools-list"
+    ],
+    "summary": "Purchasing a new GenAI tool requires VPF procurement. Request assessment before using or purchasing a tool not on the IS&T list."
+  }
+}

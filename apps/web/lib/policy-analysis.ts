@@ -1,3 +1,4 @@
+import mitAnalysisDimensions from "../../../data/public-record-repairs/mit-20261010/analysis-dimensions.json";
 import {
   NO_ADVICE_BOUNDARY,
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
@@ -514,14 +515,22 @@ function buildDimension(
   summary: PublicEntitySummary,
   definition: DimensionDefinition
 ): PolicyAnalysisDimension {
-  const claims = selectClaims(summary.claims, definition);
+  const repair = summary.entity.slug === "massachusetts-institute-of-technology"
+    ? mitAnalysisDimensions[definition.key] : undefined;
+  const claims = repair ? repair.claimIds.map(id => {
+    const claim = summary.claims.find(c => c.id === id);
+    if (!claim || !["agent_reviewed", "human_reviewed"].includes(claim.reviewState)) {
+      throw new Error(`MIT analysis basis is missing or held: ${id}`);
+    }
+    return claim;
+  }) : selectClaims(summary.claims, definition);
 
   if (!claims.length) {
     return {
       key: definition.key,
       label: definition.label,
       status: "not_mentioned",
-      summary: definition.emptySummary,
+      summary: repair?.summary ?? definition.emptySummary,
       explanation:
         "This is an absence-of-evidence marker for the current tracker profile, not proof that no such policy exists.",
       evidenceClaimIds: [],
@@ -536,7 +545,7 @@ function buildDimension(
     };
   }
 
-  const status = deriveStatus(definition, claims);
+  const status = repair?.status as AnalysisDimensionStatus | undefined ?? deriveStatus(definition, claims);
   const basis = claims.map((claim) => {
     const evidence = claim.evidence[0];
 
@@ -557,9 +566,9 @@ function buildDimension(
     key: definition.key,
     label: definition.label,
     status,
-    normalizedValue: deriveNormalizedValue(definition, status, claims),
-    summary: buildDimensionSummary(summary.entity.name, definition, status, claims),
-    explanation: buildDimensionExplanation(definition, status, claims),
+    normalizedValue: repair ? `mit_scoped_review:${definition.key}:${status}` : deriveNormalizedValue(definition, status, claims),
+    summary: repair?.summary ?? buildDimensionSummary(summary.entity.name, definition, status, claims),
+    explanation: repair ? "Scoped MIT source interpretation from the current reviewed claims listed in basis; historical held provisions are excluded. This derived profile does not replace course instructions or the pending independent student-summary review. Confidence is an uncalibrated extraction signal, not accuracy." : buildDimensionExplanation(definition, status, claims),
     evidenceClaimIds,
     evidenceSourceUrls,
     sourceLanguages,

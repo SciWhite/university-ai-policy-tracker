@@ -46,3 +46,11 @@ test('bounded API refuses an unlisted university record',async()=>{
  const response=await GET(new Request('https://eduaipolicy.org/api/public/v1/universities/harvard-university.json'),{params:Promise.resolve({path:['universities','harvard-university.json']})});
  assert.equal(response.status,404);
 });
+test('MIT derived dimensions preserve modality and scope rather than keyword inference',async()=>{
+ const {getPolicyAnalysisProfileBySlug}=await import('../apps/web/lib/policy-analysis');
+ const profile=await getPolicyAnalysisProfileBySlug(slug);assert(profile);
+ const byKey=new Map(profile.dimensions.map(d=>[d.key,d]));
+ assert.equal(byKey.get('ai_disclosure')!.status,'recommended');assert.equal(byKey.get('exams')!.status,'not_mentioned');assert.equal(byKey.get('privacy_data_entry')!.status,'restricted');assert.equal(byKey.get('security_procurement')!.status,'required');
+ assert(!profile.basedOnClaimIds.some(id=>id.endsWith('existing-tool-review')||id.endsWith('risk-assessment-uses')));
+ assert(!byKey.get('coursework')!.evidenceClaimIds.some(id=>id.startsWith('cl-')));
+});
