@@ -53,9 +53,11 @@ export function ClaimEvidenceCard({
         </div>
         <div className="claim-evidence-card__status">
           <StateLabel locale={locale} reviewState={claim.reviewState} />
-          <MetaLabel label={translateSurfaceText("Confidence", locale)}>
-            {Math.round(claim.confidence * 100)}%
-          </MetaLabel>
+          {claim.entitySlug === "massachusetts-institute-of-technology" ?
+            <span lang={locale === "zh" ? "zh" : "en"} data-i18n="preserve">{locale === "zh" ? "审核信号不代表准确率" : "Review signal is not an accuracy score"}</span> :
+            <MetaLabel label={translateSurfaceText("Confidence", locale)}>
+              {Math.round(claim.confidence * 100)}%
+            </MetaLabel>}
         </div>
       </header>
 
