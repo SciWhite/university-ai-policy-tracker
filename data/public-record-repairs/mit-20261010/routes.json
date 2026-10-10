@@ -20,7 +20,22 @@
     "/api/public/v1/search/index.json",
     "/api/public/v1/search.json",
     "/api/public/v1/policy-snapshots/index.json",
-    "/api/public/v1/recent-changes.json"
+    "/api/public/v1/recent-changes.json",
+    "/api/public/v1/claims/massachusetts-institute-of-technology.json",
+    "/api/public/v1/policy-snapshots/universities/massachusetts-institute-of-technology",
+    "/api/public/v1/analysis/universities/massachusetts-institute-of-technology",
+    "/api/public/v1/analysis/universities/massachusetts-institute-of-technology.json",
+    "/api/public/v1/widgets/university-status/massachusetts-institute-of-technology",
+    "/api/public/v1/widgets/university-status/massachusetts-institute-of-technology.json",
+    "/api/public/v1/widgets/review-state/massachusetts-institute-of-technology",
+    "/api/public/v1/widgets/review-state/massachusetts-institute-of-technology.json",
+    "/api/public/v1/widgets/policy-coverage/massachusetts-institute-of-technology",
+    "/api/public/v1/widgets/policy-coverage/massachusetts-institute-of-technology.json",
+    "/api/public/v1/widgets/source-freshness/massachusetts-institute-of-technology",
+    "/api/public/v1/widgets/source-freshness/massachusetts-institute-of-technology.json",
+    "/api/public/v1/analysis/index.json",
+    "/api/public/v1/analysis/coverage-scores.json",
+    "/api/public/v1/analysis/page-quality.json"
   ],
   "controls": [
     "/",
