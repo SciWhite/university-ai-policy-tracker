@@ -5,6 +5,7 @@ import {
   openClawRunPurposeSchema,
   publicDatasetReleaseManifestSchema
 } from "@uapt/shared";
+import { validatePublishedReleaseChain } from "./lib/release-state";
 import { getDatasetRelease } from "../apps/web/lib/dataset-release";
 
 const requiredArtifactIds = new Set([
@@ -128,52 +129,10 @@ async function assertReleaseStateSemantics(): Promise<void> {
     assertCandidateManifest(item.manifest, item.path);
   }
 
-  const publishedById = new Map<string, PublicReleaseInputManifest>();
-  for (const manifest of [...history.map((item) => item.manifest), current]) {
-    const duplicate = publishedById.get(manifest.releaseId);
-    if (duplicate) {
-      if (JSON.stringify(duplicate) !== JSON.stringify(manifest)) {
-        throw new Error(
-          `Published release ID ${manifest.releaseId} has conflicting manifests.`
-        );
-      }
-      continue;
-    }
-    publishedById.set(manifest.releaseId, manifest);
-  }
-  const published = [...publishedById.values()].sort((left, right) =>
-    left.publishedAt.localeCompare(right.publishedAt)
-  );
-  const publishedIds = new Set(published.map((manifest) => manifest.releaseId));
-
-  if (published.at(-1)?.releaseId !== current.releaseId) {
-    throw new Error(
-      `Current release ${current.releaseId} is not the latest published manifest by publishedAt.`
-    );
-  }
-
-  for (let index = 0; index < published.length; index += 1) {
-    const manifest = published[index];
-    if (!manifest.previousReleaseId) continue;
-    if (!publishedIds.has(manifest.previousReleaseId)) {
-      throw new Error(
-        `Published release ${manifest.releaseId} points to unknown previous release ${manifest.previousReleaseId}.`
-      );
-    }
-
-    const chronologicalPrevious = published[index - 1]?.releaseId;
-    if (
-      chronologicalPrevious &&
-      manifest.previousReleaseId !== chronologicalPrevious
-    ) {
-      throw new Error(
-        `Published release ${manifest.releaseId} points to ${manifest.previousReleaseId}; chronological previous release is ${chronologicalPrevious}.`
-      );
-    }
-  }
+  const { published, identicalCopies } = validatePublishedReleaseChain(current, history);
 
   console.log(
-    `Validated release-state semantics: ${candidates.length} candidates, ${history.length} historical releases, current ${current.releaseId}.`
+    `Validated release-state semantics: ${candidates.length} candidates, ${published.length} unique published releases, ${identicalCopies} identical archive copies, current ${current.releaseId}.`
   );
 }
 

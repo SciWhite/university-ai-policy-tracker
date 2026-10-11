@@ -1,5 +1,6 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { requirePolicySync } from "./lib/require-policy-sync";
 import {
   computePolicySnapshotBasisFingerprint
 } from "../apps/web/lib/policy-snapshots";
@@ -38,7 +39,7 @@ import {
  * content edit.
  *
  * Usage:
- *   pnpm snapshots:repin-release            # apply (with per-snapshot verification)
+ *   pnpm snapshots:repin-release -- --sync-ledger <event.json> # apply after gate
  *   pnpm snapshots:repin-release -- --dry-run
  *
  * After running, re-run: pnpm validate:policy-snapshot, then sync
@@ -63,6 +64,10 @@ async function writeJson(file: string, value: unknown): Promise<void> {
 }
 
 async function main(): Promise<void> {
+  if (!DRY_RUN) {
+    const at = process.argv.indexOf("--sync-ledger");
+    await requirePolicySync({ ledgerPath: at < 0 ? undefined : process.argv[at + 1], basisFile: process.env.UAPT_PUBLIC_RELEASE_MANIFEST ?? "data/public-releases/current.json", allowedTypes: ["policy_release"] });
+  }
   const release = await getCurrentPublicReleaseManifest();
   if (!release?.releaseId) throw new Error("Missing current public release manifest");
   const newReleaseId = release.releaseId;

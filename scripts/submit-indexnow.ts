@@ -1,5 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
+import { requirePolicySync, runSyncGate } from "./lib/require-policy-sync";
 import {
   DEFAULT_INDEXNOW_KEY,
   DEFAULT_INDEXNOW_HOST,
@@ -26,6 +28,7 @@ Modes (choose at least one):
 
 Options:
   --dry-run               Simulate submission without making real network requests
+  --sync-ledger <file>     Required for live submission; fresh public readback and exact URL scope
   --key <key>             Override IndexNow API key (default: ${DEFAULT_INDEXNOW_KEY})
   --host <host>           Override host (default: ${DEFAULT_INDEXNOW_HOST})
   --base-url <url>        Override base URL (default: https://<host>)
@@ -37,10 +40,10 @@ Examples:
   pnpm indexnow:dry-run
 
   # Submit latest release changes to Bing / IndexNow:
-  pnpm indexnow:latest
+  pnpm indexnow:latest --sync-ledger <event.json>
 
   # Submit full site URLs:
-  pnpm indexnow:all
+  pnpm indexnow:all --sync-ledger <event.json>
 
   # Submit specific pages:
   tsx --tsconfig apps/web/tsconfig.json scripts/submit-indexnow.ts --urls /universities/oxford,/changes
@@ -65,6 +68,8 @@ async function main(): Promise<void> {
   const isLatest = args.includes("--latest");
   const isAll = args.includes("--all");
   const rawUrlsArg = getArgValue("--urls");
+  const ledgerPath = getArgValue("--sync-ledger");
+  const syncEvent = dryRun ? undefined : await requirePolicySync({ ledgerPath, basisFile: process.env.UAPT_PUBLIC_RELEASE_MANIFEST ?? "data/public-releases/current.json", allowedTypes: ["policy_release", "index_notification"], requirePublicReadback: true });
 
   if (!isLatest && !isAll && !rawUrlsArg) {
     console.error("Error: Please specify submission mode: --latest, --all, or --urls <url1,url2,...>\n");
@@ -120,15 +125,34 @@ async function main(): Promise<void> {
 
   // Deduplicate and normalize
   const candidateUrls = Array.from(new Set(urls.map((u) => normalizeIndexNowUrl(u, baseUrl))));
-  const finalUrls = dryRun
-    ? candidateUrls
-    : candidateUrls.length > 0
-      ? await intersectIndexNowUrlsWithPublishedSitemap(candidateUrls, baseUrl)
-      : [];
-  if (dryRun) {
-    console.log(`\nOffline preview: ${candidateUrls.length} locally collected URLs. Published sitemap filtering is not fetched in dry-run; live submissions will retain only the current public sitemap intersection.`);
-  } else {
-    console.log(`\nPublished sitemap filter: ${candidateUrls.length} candidate URLs -> ${finalUrls.length} published URLs; ${candidateUrls.length - finalUrls.length} excluded.`);
+  // Reject out-of-scope requests before any public sitemap network request.
+  if (syncEvent && ledgerPath) {
+    const proof = syncEvent.scopeArtifact as { path: string; sha256: string };
+    const bytes = fs.readFileSync(path.resolve(path.dirname(ledgerPath), proof.path));
+    if (createHash("sha256").update(bytes).digest("hex") !== proof.sha256) throw Error("Notification scope changed after validation.");
+    const scope = JSON.parse(bytes.toString("utf8")) as { changedUrls?: string[] };
+    if (!Array.isArray(scope.changedUrls) || candidateUrls.some((url) => !scope.changedUrls!.includes(url))) throw Error("Notification URLs exceed the frozen synchronization scope.");
+  }
+  const finalUrls = dryRun ? candidateUrls : candidateUrls.length > 0
+    ? await intersectIndexNowUrlsWithPublishedSitemap(candidateUrls, baseUrl) : [];
+  if (dryRun) console.log(`Offline preview: ${candidateUrls.length} local URLs; live submission also filters against the published sitemap.`);
+  else console.log(`Published sitemap filter: ${candidateUrls.length} candidate URLs -> ${finalUrls.length} published URLs.`);
+  if (!dryRun && finalUrls.length === 0) throw Error("No eligible URLs; no notification sent.");
+  let completionPath: string | undefined;
+  let notificationPath: string | undefined;
+  let notificationScope: { universities: Array<{ slug: string }>; changedUrls: string[] } | undefined;
+  if (syncEvent && ledgerPath) {
+    const scopeProof = syncEvent.scopeArtifact as { path: string; sha256: string };
+    const scopeBytes = fs.readFileSync(path.resolve(path.dirname(ledgerPath), scopeProof.path));
+    if (createHash("sha256").update(scopeBytes).digest("hex") !== scopeProof.sha256) throw Error("Notification scope changed after validation.");
+    notificationScope = JSON.parse(scopeBytes.toString("utf8"));
+    if (!notificationScope || !Array.isArray(notificationScope.changedUrls) || finalUrls.some((url) => !notificationScope!.changedUrls.includes(url))) {
+      throw Error("Notification URLs exceed the frozen synchronization scope.");
+    }
+    const stamp = Date.now().toString();
+    notificationPath = path.resolve(path.dirname(ledgerPath), `notification-${stamp}.json`);
+    completionPath = path.resolve(path.dirname(ledgerPath), `completion-indexnow-${stamp}.json`);
+    fs.writeFileSync(notificationPath, JSON.stringify({ status: "pending", urls: finalUrls }), { flag: "wx" });
   }
 
   console.log(`\nTotal unique URLs ${dryRun ? "in preview" : "to submit"}: ${finalUrls.length}`);
@@ -139,13 +163,17 @@ async function main(): Promise<void> {
   }
 
   console.log(dryRun ? "\nSimulating submission locally..." : "\nSubmitting to IndexNow...");
-  const results = await submitToIndexNow({
+  let results: Awaited<ReturnType<typeof submitToIndexNow>>;
+  try { results = await submitToIndexNow({
     urls: finalUrls,
     key,
     host,
     dryRun,
     endpoint
-  });
+  }); } catch (error) {
+    if (notificationPath) fs.writeFileSync(notificationPath, JSON.stringify({ status: "failed", urls: finalUrls, error: String(error), indexingConfirmed: false }));
+    throw error;
+  }
 
   console.log("\n=== Submission Results ===");
   let allOk = true;
@@ -162,6 +190,15 @@ async function main(): Promise<void> {
     if (!res.ok) {
       allOk = false;
     }
+  }
+
+  if (syncEvent && notificationPath && completionPath && notificationScope) {
+    const receipt = { schemaVersion: "uapt-policy-surface-receipt-v1", surface: "notifications", basisSha256: syncEvent.basisSha256, checkedAt: new Date().toISOString(), checkedSlugs: notificationScope.universities.map((u) => u.slug), checks: { requestRecorded: true, responsesRecorded: true, indexingNotAssumed: true }, urls: finalUrls, results, status: allOk ? "accepted" : "failed", indexingConfirmed: false };
+    const bytes = `${JSON.stringify(receipt, null, 2)}\n`;
+    fs.writeFileSync(notificationPath, bytes);
+    const completion = { ...syncEvent, eventId: `${syncEvent.eventId}-indexnow-${Date.now()}`, generatedAt: new Date().toISOString(), surfaces: { ...(syncEvent.surfaces as Record<string, unknown>), notifications: { status: allOk ? "updated" : "failed", evidence: [{ path: path.basename(notificationPath), sha256: createHash("sha256").update(bytes).digest("hex"), basisSha256: syncEvent.basisSha256 }] } } };
+    fs.writeFileSync(completionPath, `${JSON.stringify(completion, null, 2)}\n`, { flag: "wx" });
+    if (allOk) runSyncGate(completionPath, "complete");
   }
 
   if (dryRun) {

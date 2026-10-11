@@ -1,6 +1,8 @@
 import { createHash } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { chmod, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { spawnSync } from "node:child_process";
+import { readLimitedBytes, saveSourceEvidence, type SourceEvidence } from "./lib/maintenance-source-evidence";
 import type { PublicEntitySummary, SourceDiffClass } from "@uapt/shared";
 import { getStagedPublicDataset } from "../apps/web/lib/staged-public-data";
 
@@ -72,7 +74,10 @@ interface MaintenanceTarget {
   previousFinalUrl?: string;
 }
 
+
+
 interface HttpResult {
+  sourceEvidence?: SourceEvidence[];
   accessStatus: "blocked" | "failed" | "ok";
   bodyProbe?: string;
   contentHash?: string;
@@ -89,6 +94,7 @@ interface HttpResult {
 }
 
 interface MaintenanceRow {
+  sourceEvidence?: SourceEvidence[];
   accessStatus?: HttpResult["accessStatus"];
   checkedAt: string;
   contentHash?: string;
@@ -156,12 +162,22 @@ void main();
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
+  const outputRelative = path.relative(process.cwd(), path.resolve(options.outputDir));
+  if (!options.dryRun && !outputRelative.startsWith(`..${path.sep}`) && !path.isAbsolute(outputRelative) &&
+    spawnSync("git", ["check-ignore", "--quiet", path.resolve(options.outputDir)]).status !== 0) {
+    throw Error("Raw maintenance evidence requires an ignored or external private output directory.");
+  }
   const generatedAt = new Date().toISOString();
   const runId = `maintenance-${generatedAt.replace(/[:.]/g, "-")}`;
   const dataset = await getStagedPublicDataset();
   const state = await readState(options.stateFile);
   const targets = selectTargets(dataset.publicSummaries, dataset.catalogUniversities, options);
   const rows: MaintenanceRow[] = [];
+  const runDir = path.join(options.outputDir, runId);
+  if (!options.dryRun) {
+    await mkdir(runDir, { recursive: true, mode: 0o700 });
+    await chmod(runDir, 0o700);
+  }
   let firecrawlAttempts = 0;
 
   for (const target of targets) {
@@ -189,8 +205,8 @@ async function main(): Promise<void> {
       continue;
     }
 
-    const http = await fetchHttpMetadata(target, options);
-    let row = classifyHttpResult(target, http, previous, checkedAt);
+    const http = await fetchHttpMetadata(target, options, runDir);
+    let row: MaintenanceRow = { ...classifyHttpResult(target, http, previous, checkedAt), sourceEvidence: http.sourceEvidence };
 
     if (
       row.status === "needs_firecrawl_verification" &&
@@ -198,7 +214,7 @@ async function main(): Promise<void> {
       firecrawlAttempts < options.firecrawlLimit
     ) {
       firecrawlAttempts += 1;
-      row = await verifyWithFirecrawl(target, row, previous, options);
+      row = await verifyWithFirecrawl(target, row, previous, options, runDir);
     }
 
     rows.push(row);
@@ -215,7 +231,7 @@ async function main(): Promise<void> {
       "Maintenance metadata is not claim evidence.",
       "HTTP failure, blocked responses, and Firecrawl failure do not prove policy change.",
       "Firecrawl verification does not upgrade review state or source officialness.",
-      "No raw source text, HTML, PDF text, screenshots, or credentials are written by this scanner."
+      "Private response-entity bytes and rendered markdown are retained separately with hashes and truncation flags. They are unreviewed evidence, never public policy or approval. No credentials or browser state are retained."
     ],
     generatedAt,
     mode: options.mode,
@@ -241,6 +257,10 @@ async function main(): Promise<void> {
     "utf8"
   );
 
+  const sync = spawnSync(process.env.UAPT_INVENTORY_PYTHON ?? "python3",
+    ["scripts/record-maintenance-sync.py", runDir, "--kind", "scan"], { encoding: "utf8" });
+  if (sync.status !== 0) throw Error(`Scan sync receipt failed: ${sync.stderr || sync.error?.message}`);
+  console.log(`Synchronization event: ${sync.stdout.trim()}`);
   console.log(`Maintenance scan ${runId}`);
   console.log(`Targets: ${targets.length}`);
   console.log(`Summary: ${JSON.stringify(report.summary)}`);
@@ -381,7 +401,8 @@ function dedupeSources(summary: PublicEntitySummary) {
 
 async function fetchHttpMetadata(
   target: MaintenanceTarget,
-  options: CliOptions
+  options: CliOptions,
+  runDir: string
 ): Promise<HttpResult> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), options.timeoutMs);
@@ -396,12 +417,15 @@ async function fetchHttpMetadata(
       signal: controller.signal
     });
     const contentType = response.headers.get("content-type") ?? undefined;
-    const text = response.ok ? await readLimitedText(response, options.maxBytes) : "";
+    const captured = response.ok ? await readLimitedBytes(response, options.maxBytes) : undefined;
+    const text = captured ? new TextDecoder("utf8", { fatal: false }).decode(captured.bytes) : "";
+    const sourceEvidence = captured ? [await saveSourceEvidence(runDir, target.sourceUrl, "http_decoded_entity", captured.bytes, captured.truncated)] : [];
     const normalized = normalizeSourceText(text, contentType);
     const contentHash = normalized ? sha256(normalized) : undefined;
 
     return {
       accessStatus: response.ok ? "ok" : isBlockedStatus(response.status) ? "blocked" : "failed",
+      sourceEvidence,
       bodyProbe: normalized.slice(0, 3000),
       contentHash,
       contentLength: response.headers.get("content-length") ?? undefined,
@@ -426,25 +450,6 @@ async function fetchHttpMetadata(
   }
 }
 
-async function readLimitedText(response: Response, maxBytes: number): Promise<string> {
-  if (!response.body) return "";
-  const reader = response.body.getReader();
-  const chunks: Uint8Array[] = [];
-  let total = 0;
-
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done || !value) break;
-    chunks.push(value);
-    total += value.byteLength;
-    if (total >= maxBytes) {
-      await reader.cancel();
-      break;
-    }
-  }
-
-  return new TextDecoder("utf8", { fatal: false }).decode(Buffer.concat(chunks));
-}
 
 function classifyHttpResult(
   target: MaintenanceTarget,
@@ -565,7 +570,8 @@ async function verifyWithFirecrawl(
   target: MaintenanceTarget,
   row: MaintenanceRow,
   previous: SourceStateRecord | undefined,
-  options: CliOptions
+  options: CliOptions,
+  runDir: string
 ): Promise<MaintenanceRow> {
   const apiKey = process.env.FIRECRAWL_API_KEY;
   if (!apiKey) {
@@ -612,6 +618,8 @@ async function verifyWithFirecrawl(
       data?: { markdown?: string; metadata?: { title?: string; sourceURL?: string } };
     };
     const markdown = payload.data?.markdown ?? "";
+    const sourceEvidence = [...(row.sourceEvidence ?? []),
+      await saveSourceEvidence(runDir, target.sourceUrl, "firecrawl_markdown", Buffer.from(markdown, "utf8"), false)];
     const normalized = normalizeSourceText(markdown, "text/markdown");
     const contentHash = normalized ? sha256(normalized) : undefined;
     const title = payload.data?.metadata?.title ?? row.title;
@@ -625,6 +633,7 @@ async function verifyWithFirecrawl(
         recommendedAction:
           "Firecrawl opened the source but did not extract meaningful content. Move to repair queue.",
         status: "firecrawl_opened_no_content",
+        sourceEvidence,
         title
       };
     }
@@ -642,6 +651,7 @@ async function verifyWithFirecrawl(
       contentHash,
       previousMaintenanceHash: previousFirecrawlHash,
       sourceDiffBasis: "firecrawl_markdown_hash",
+      sourceEvidence,
       diffClass: changed && hasPolicySignal
         ? "content_policy_delta"
         : "metadata_or_chrome_delta",

@@ -1,20 +1,27 @@
 import { existsSync } from "node:fs";
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import path from "node:path";
+import { requirePolicySync } from "./lib/require-policy-sync";
 
 async function main(): Promise<void> {
   const candidate = value("--candidate");
   if (!candidate) {
     throw Error(
-      "Usage: tsx scripts/promote-maintenance-release-candidate.ts --candidate <candidate.json> --confirm",
+      "Usage: tsx scripts/promote-maintenance-release-candidate.ts --candidate <candidate.json> --sync-ledger <event.json> --confirm",
     );
   }
   if (!process.argv.includes("--confirm")) {
     throw Error("Refusing promotion without explicit --confirm.");
   }
 
-  const candidateManifest = JSON.parse(await readFile(candidate, "utf8"));
+  // Check frozen synchronization receipts before touching current/history manifests.
+  const ledgerPath = value("--sync-ledger");
+  const ledger = await requirePolicySync({ ledgerPath, basisFile: candidate, allowedTypes: ["policy_release"] });
+  const candidateBytes = await readFile(candidate);
+  if (createHash("sha256").update(candidateBytes).digest("hex") !== ledger.basisSha256) throw Error("Candidate changed after synchronization validation.");
+  const candidateManifest = JSON.parse(candidateBytes.toString("utf8"));
   const next = {
     ...candidateManifest,
     candidateOnly: false,

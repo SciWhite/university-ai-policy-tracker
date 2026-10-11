@@ -320,3 +320,11 @@ Machine-readable citation metadata is in `CITATION.cff`.
   third-party materials retain their original rights and terms and are not
   relicensed by this repository. The tracker publishes URLs, short evidence
   snippets, source metadata, and hashes for citation and verification.
+
+## Policy evidence maintenance
+
+Crawl, audit, repair and indexing tasks follow the versioned requirements and
+[policy evidence integration runbook](docs/policy-evidence-integration-runbook.md).
+[OpenClaw scheduled maintenance](docs/openclaw-policy-maintenance-contract.md)
+uses the same evidence boundaries and synchronization requirements. Private
+inventories, raw responses and audit bundles stay outside published data.

@@ -74,6 +74,8 @@ function main(): void {
     ensureDir(prompts);
     ensureDir(logs);
     ensureDir(notes);
+    mkdirSync(path.join(runRoot, "review-coverage"), { recursive: true, mode: 0o700 });
+    mkdirSync(path.join(runRoot, "source-evidence"), { recursive: true, mode: 0o700 });
   }
 
   for (const target of batch) {
@@ -98,9 +100,8 @@ function startTarget(
   const logFile = path.join(runRoot, "logs", `${safeItemId}.log`);
   const noteFile = path.join(runRoot, "notes", `${safeItemId}.md`);
   const artifactDir = path.join(
-    options.repo,
-    "staging",
-    "uapt-runs",
+    options.maintenanceRoot,
+    "artifact-runs",
     `uapt-maintenance-light-${safeRunId}-${safeItemId}`,
   );
   const sessionId = `uapt-${safeRunId}-${safeItemId}`.slice(0, 120);
@@ -140,6 +141,7 @@ function startTarget(
         {
           itemId: target.itemId,
           model: options.model,
+          prompt: prompt(target, artifactDir, noteFile, options),
           fallbackModel: options.fallbackModel,
           retries: options.retryAttempts,
           sessionId,
@@ -201,9 +203,11 @@ function prompt(
 ): string {
   return [
     "You are conducting one lightweight University AI Policy Tracker review.",
-    "Do NOT invoke policy-manager/full workflow, write production DB, push main, deploy, publish canonical claims, bypass access controls, or store raw HTML/PDF/screenshots/browser data/secrets.",
+    "Do NOT invoke policy-manager/full workflow, write production DB, push main, deploy, publish canonical claims, bypass access controls, or store raw evidence in Git/public paths, browser state or secrets.",
     "",
     `Run ${options.runId}; source item ${target.itemId}; entity ${target.entitySlug}; URL ${target.sourceUrl}.`,
+    "",
+    readFileSync(path.join(options.repo, "docs/openclaw-policy-maintenance-contract.md"), "utf8"),
     "",
     "First compare against the current repository public data and the latest source-health signal. Only a genuine policy-content update may create a publishable artifact bundle.",
     "",

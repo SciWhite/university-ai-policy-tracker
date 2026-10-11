@@ -3,6 +3,30 @@
 This runbook installs the HTTP-first maintenance scanner on the OpenClaw OCI
 host without making OpenClaw responsible for routine scans.
 
+## Current evidence and synchronization standard
+
+Use [the integration runbook](policy-evidence-integration-runbook.md) and
+[OpenClaw maintenance contract](openclaw-policy-maintenance-contract.md).
+Scans preserve private response-entity bytes and separately identified rendered
+markdown, with hashes and truncation flags. Every scan/result collection emits
+an artifact-bound synchronization event. These remain health/candidate records,
+not policy approval. Public policy releases must update the affected university
+changes/history/diff surfaces in the same release.
+
+The existing host-local unprivileged adapter can be updated with:
+
+```bash
+python3 infra/openclaw/update-maintenance-contract.py \
+  --repo /home/openclaw/workspace/university-ai-policy-tracker \
+  --bin-dir /home/openclaw/.openclaw/bin --apply
+```
+
+Back up and inspect the adapter first. Keep user-systemd isolation; this command
+starts no models, timers, releases or notifications. New artifacts live under
+`/home/openclaw/workspace/staging/uapt-maintenance/artifact-runs`; collectors also
+read historical artifact paths. Hosts without the private integrated inventory
+record that gap explicitly. They must not claim a complete university audit.
+
 ## Boundaries
 
 - Routine scans run through `pnpm maintenance:scan`, not the OpenClaw

@@ -17,6 +17,8 @@
     "node": ">=20"
   },
   "scripts": {
+    "release:local-check": "node scripts/uapt-release.mjs local-check",
+    "release:inspect": "node scripts/uapt-release.mjs inspect",
     "dev": "pnpm --parallel --filter @uapt/web --filter @uapt/api dev",
     "dev:web": "pnpm --filter @uapt/web dev",
     "dev:api": "pnpm --filter @uapt/api dev",

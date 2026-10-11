@@ -204,3 +204,14 @@ The cache is excluded from Git. It is a low-token local analysis database for
 joins across public release data, staging runs, QS coverage, analysis profiles,
 and non-authoritative reference-sheet summaries. It is not a production
 database and cannot publish claims.
+
+## Integrated Evidence Inventory
+
+For cross-workspace historical evidence and audit preparation, start with
+`policy-inventory/current.md` and the private pointer
+`.local/policy-inventory/current.json`. This separate inventory preserves
+frozen originals and includes explicit candidate, held and published layers.
+Its SQLite is `.local/policy-inventory/revisions/<revision>/inventory.sqlite`;
+it does not replace the older review cache or imply current official-policy
+verification. Follow `docs/policy-evidence-integration-runbook.md` for new
+versions, single-university bundles, remaining IDs and synchronization receipts.

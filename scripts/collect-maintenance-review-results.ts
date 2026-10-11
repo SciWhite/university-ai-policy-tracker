@@ -57,12 +57,13 @@ async function main(): Promise<void> {
     });
   }
 
-  if (existsSync(runsRoot)) {
-    for (const entry of await readdir(runsRoot, { withFileTypes: true })) {
+  for (const artifactRoot of new Set([runsRoot, path.join(root, "artifact-runs"), path.resolve("staging/uapt-runs")])) {
+    if (!existsSync(artifactRoot)) continue;
+    for (const entry of await readdir(artifactRoot, { withFileTypes: true })) {
       if (!entry.isDirectory() || !entry.name.startsWith(prefix)) continue;
 
       const item = entry.name.slice(prefix.length);
-      const artifactDir = path.join(runsRoot, entry.name);
+      const artifactDir = path.join(artifactRoot, entry.name);
       const artifactFile = path.join(artifactDir, "artifacts.json");
       if (!existsSync(artifactFile)) continue;
 
@@ -131,7 +132,10 @@ async function main(): Promise<void> {
       "",
     ].join("\n"),
   );
-  console.log(JSON.stringify({ ...counts, runningUnits: runningUnits.length }));
+  const sync = spawnSync(process.env.UAPT_INVENTORY_PYTHON ?? "python3",
+    ["scripts/record-maintenance-sync.py", base, "--kind", "review"], { encoding: "utf8" });
+  if (sync.status !== 0) throw Error(`Review sync receipt failed: ${sync.stderr || sync.error?.message}`);
+  console.log(JSON.stringify({ ...counts, runningUnits: runningUnits.length, syncEvent: sync.stdout.trim() }));
 }
 
 function mergeResult(results: Map<string, PendingResult>, result: PendingResult): void {
