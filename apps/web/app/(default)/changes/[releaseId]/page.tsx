@@ -560,7 +560,7 @@ function getSummaryText(record: ChangeRecord, locale: SupportedLocale): string {
 
   const diff =
     record.diffRows.length > 0
-      ? ` Latest tracker diff: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
+      ? ` Combined tracker history: ${record.policyTextChanged} comparable policy-text changes, ${record.newlyExtractedClaims} newly extracted claims, ${record.sourceSnapshotChanged} source snapshot changes.`
       : " No tracker diff rows are recorded in the latest public release.";
 
   return `${displayName} currently has ${record.claimCount} ${pluralize("source-backed claim record", record.claimCount)} and ${record.sourceCount} ${pluralize("official source attribution", record.sourceCount)}.${changed}${diff}`;
