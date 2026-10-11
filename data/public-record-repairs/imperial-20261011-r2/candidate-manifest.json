@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "uapt-public-record-repairs-v1",
+  "revision": "imperial-20261011-r2",
+  "slug": "imperial-college-london",
+  "publicationApproved": true,
+  "independentAcceptance": "passed",
+  "createdAt": "2026-10-11T05:12:50.945Z",
+  "baselineClaimsFingerprint": "0b465d7890d980b2a36ae110de87c6dc63e18f43511b3f8d7cba074d73eafcf6",
+  "recordSha256": "c7e4678ce088060e8d2b51cd817c3fa0360853db8908400749ddc0b0331126f7",
+  "candidateSnapshotBasisFingerprint": "772dc03ef918fb33b5e9b6525feff812e202368a60b8eedb79ed7995e9d5f795",
+  "scope": "Imperial only; original release and all other university records retained. Student summary held for a new dual-agent review.",
+  "analysisSha256": "16f9bc26859cbd0a37d3cce89c77e23d14195fdbc8e83341a4941a6f05428956",
+  "snapshotSha256": "fe3214ce2e1ab0adca71701ab246b89eac155ac19ee9e57acd270d86f4713bf8",
+  "publishedAt": "2026-10-11T05:12:50.945Z"
+}
