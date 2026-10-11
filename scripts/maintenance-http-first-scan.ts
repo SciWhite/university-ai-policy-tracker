@@ -408,18 +408,37 @@ async function fetchHttpMetadata(
   const timeout = setTimeout(() => controller.abort(), options.timeoutMs);
 
   try {
-    const response = await fetch(target.sourceUrl, {
-      headers: {
-        Accept: "text/html,application/xhtml+xml,text/plain,application/xml;q=0.9,*/*;q=0.5",
-        "User-Agent": "UniversityAIPolicyTrackerBot/0.1 (+https://eduaipolicy.org/methodology)"
-      },
-      redirect: "follow",
-      signal: controller.signal
-    });
+    let currentUrl = target.sourceUrl;
+    let response: Response | undefined;
+    const accessEvidence: SourceEvidence[] = [];
+    for (let redirects = 0; redirects < 6; redirects += 1) {
+      const access = spawnSync(process.env.UAPT_INVENTORY_PYTHON ?? "python3",
+        ["scripts/policy-maintenance-access.py", currentUrl, path.join(runDir, "robots-evidence")],
+        { encoding: "utf8", timeout: 100000 });
+      if (access.status !== 0) throw Error("Robots/public-origin verification unavailable; no policy body fetched.");
+      const decision = JSON.parse(access.stdout) as { status: string; delay?: number; error?: string; sourceEvidence: SourceEvidence[] };
+      accessEvidence.push(...decision.sourceEvidence.map((proof) => ({ ...proof, path: path.join("robots-evidence", proof.path) })));
+      if (decision.status !== "allowed") return { accessStatus: "blocked", error: decision.status,
+        finalUrl: currentUrl, sourceEvidence: accessEvidence, readable: false, textLength: 0 };
+      await new Promise((resolve) => setTimeout(resolve, (decision.delay ?? 0.2) * 1000));
+      response = await fetch(currentUrl, {
+        headers: {
+          Accept: "text/html,application/xhtml+xml,text/plain,application/xml;q=0.9,*/*;q=0.5",
+          "User-Agent": "UniversityPolicyEvidenceAudit/1.0 (+https://eduaipolicy.org/methodology)"
+        }, redirect: "manual", signal: controller.signal
+      });
+      if (![301, 302, 303, 307, 308].includes(response.status)) break;
+      const location = response.headers.get("location");
+      await response.body?.cancel();
+      if (!location) throw Error("Redirect has no target; source remains unresolved.");
+      currentUrl = new URL(location, currentUrl).toString();
+      response = undefined;
+    }
+    if (!response) throw Error("Source redirect limit exceeded; no final policy body fetched.");
     const contentType = response.headers.get("content-type") ?? undefined;
     const captured = response.ok ? await readLimitedBytes(response, options.maxBytes) : undefined;
     const text = captured ? new TextDecoder("utf8", { fatal: false }).decode(captured.bytes) : "";
-    const sourceEvidence = captured ? [await saveSourceEvidence(runDir, target.sourceUrl, "http_decoded_entity", captured.bytes, captured.truncated)] : [];
+    const sourceEvidence = [...accessEvidence, ...(captured ? [await saveSourceEvidence(runDir, target.sourceUrl, "http_decoded_entity", captured.bytes, captured.truncated)] : [])];
     const normalized = normalizeSourceText(text, contentType);
     const contentHash = normalized ? sha256(normalized) : undefined;
 

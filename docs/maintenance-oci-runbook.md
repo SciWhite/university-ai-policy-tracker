@@ -7,7 +7,8 @@ host without making OpenClaw responsible for routine scans.
 
 Use [the integration runbook](policy-evidence-integration-runbook.md) and
 [OpenClaw maintenance contract](openclaw-policy-maintenance-contract.md).
-Scans preserve private response-entity bytes and separately identified rendered
+Scans check robots/public origins before policy requests and at each redirect;
+unresolved/disallowed origins remain gaps. Scans preserve private response-entity bytes and separately identified rendered
 markdown, with hashes and truncation flags. Every scan/result collection emits
 an artifact-bound synchronization event. These remain health/candidate records,
 not policy approval. Public policy releases must update the affected university
