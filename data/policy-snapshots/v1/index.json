@@ -219,10 +219,10 @@
       "universityName": "Imperial College London",
       "file": "universities/imperial-college-london.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/imperial-college-london.json",
-      "overallStatus": "strong",
+      "overallStatus": "needs_review",
       "releaseId": "public-release-20260924-002",
-      "generatedAt": "2026-08-08T10:00:00.000Z",
-      "basisFingerprint": "b041c04a14980c2245bbb55ce01c9d5c21c229fdfa5c5a9a40a32ede0aaddcd9",
+      "generatedAt": "2026-10-11T04:22:01.914Z",
+      "basisFingerprint": "3c66518cf0bd8c7f52f465fcff1291a0d7d28a620a70ae2df9890d735174c1db",
       "locales": []
     },
     {

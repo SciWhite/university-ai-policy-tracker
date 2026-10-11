@@ -1,0 +1,85 @@
+{
+  "policy_presence": {
+    "status": "unclear",
+    "claimIds": [
+      "clm-imperial-college-london-genai-principles",
+      "cl-imperial-college-london-institutional-ai-service-17"
+    ],
+    "summary": "Imperial publishes official generative AI principles and the institutional dAIsy platform; this does not establish a single university-wide classroom AI policy."
+  },
+  "ai_disclosure": {
+    "status": "recommended",
+    "claimIds": [
+      "clm-imperial-college-london-ai-acknowledgment"
+    ],
+    "summary": "Imperial Library recommends acknowledgment in assessed work. When dAIsy is permitted for assessed work, its Use Policy requires acknowledgment; follow the department or assessment brief for the required details."
+  },
+  "coursework": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-imperial-college-london-dept-assessment-policy",
+      "clm-imperial-college-london-ai-misconduct"
+    ],
+    "summary": "Departments decide assessment permissions individually. Unauthorised AI use in assessed work may be treated as academic misconduct."
+  },
+  "exams": {
+    "status": "not_mentioned",
+    "claimIds": [],
+    "summary": "No universal exam permission or prohibition is established by this reviewed record. Check specific exam instructions; tool access does not convey exam permission."
+  },
+  "privacy_data_entry": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-imperial-college-london-copilot-data-protection",
+      "clm-imperial-college-london-daisy-privacy"
+    ],
+    "summary": "dAIsy is approved for unrestricted data within Imperial infrastructure. Copilot Chat has enterprise protections and Exchange audit logging; enabled web grounding can send generated queries to the separate Bing service under different terms. Follow applicable institutional data rules."
+  },
+  "academic_integrity": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-imperial-college-london-ai-detection-2026",
+      "clm-imperial-college-london-academic-misconduct-appeals",
+      "clm-imperial-college-london-daisy-sanctions"
+    ],
+    "summary": "Imperial does not use Turnitin's AI-writing detection in assessment in 2026–27. The ten College working-day appeal deadline applies under the Academic Misconduct procedure following formal notification of the relevant decision. Postgraduate research misconduct is routed to Ordinance D17; this record does not establish its appeal deadline."
+  },
+  "approved_tools": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "cl-imperial-college-london-institutional-ai-service-17"
+    ],
+    "summary": "dAIsy is Imperial's institutional platform. Basic access is provided to staff and students; Developer access is restricted to approved staff. Access is subject to token quotas and does not grant assessment permission."
+  },
+  "named_ai_services": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "cl-imperial-college-london-chatgpt-14",
+      "cl-imperial-college-london-claude-15",
+      "cl-imperial-college-london-deepseek-16"
+    ],
+    "summary": "Selected GPT, Claude, and DeepSeek models are accessible via dAIsy. This does not establish standalone vendor subscriptions or assessment use permissions."
+  },
+  "teaching_guidance": {
+    "status": "recommended",
+    "claimIds": [
+      "clm-imperial-college-london-genai-principles",
+      "clm-imperial-college-london-dept-assessment-policy"
+    ],
+    "summary": "Imperial presents three areas of generative AI principles underpinned by five core Values. Departmental assessment permissions remain specific to the course or task."
+  },
+  "research_guidance": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-imperial-college-london-research-ethics"
+    ],
+    "summary": "Research involving personal data, sensitive topics, or people may require ethics approval, a DPIA, and data-governance controls before AI use."
+  },
+  "security_procurement": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-imperial-college-london-daisy-privacy"
+    ],
+    "summary": "dAIsy uses SSO and audit logging within Imperial's secure infrastructure. Data handling is governed by institutional IT Conditions of Use."
+  }
+}

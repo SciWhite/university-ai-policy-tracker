@@ -198,9 +198,9 @@ async function validateCandidateCohort(
     );
     // A scoped repair supersedes the current MIT summary, while the original
     // independent-review artifact continues to describe its preserved snapshot.
-    if (slug === "massachusetts-institute-of-technology") {
+    if (["massachusetts-institute-of-technology", "imperial-college-london"].includes(slug)) {
       const historical = policySnapshotSchema.parse(JSON.parse(await readFile(
-        "data/public-record-repairs/mit-20261010/historical-student-snapshot.json", "utf8")));
+        `data/public-record-repairs/${slug === "imperial-college-london" ? "imperial-20261011" : "mit-20261010"}/historical-student-snapshot.json`, "utf8")));
       assert(reviewDecision.evidence.basisFingerprint === historical.basisFingerprint &&
         JSON.stringify(reviewDecision.evidence.claimIds) === JSON.stringify(historical.basis.claimIds) &&
         JSON.stringify(reviewDecision.evidence.sourceRefs) === JSON.stringify(historical.basis.sources),
@@ -302,12 +302,13 @@ async function validateCandidateCohort(
     }
   }
 
+  const scopedHolds = ["massachusetts-institute-of-technology", "imperial-college-london"].filter(slug => index.entries.some(entry => entry.universitySlug === slug && entry.overallStatus === "needs_review") && reviewBySlug.get(slug)?.decision === "pass").length;
   assert(
     independentReview.publicationStatusCounts.strong ===
-      index.entries.filter((entry) => entry.overallStatus === "strong").length + 1 &&
+      index.entries.filter((entry) => entry.overallStatus === "strong").length + scopedHolds &&
       independentReview.publicationStatusCounts.needs_review ===
-        index.entries.filter((entry) => entry.overallStatus === "needs_review").length - 1,
-    "Historical independent review counts do not match the index plus the MIT scoped hold"
+        index.entries.filter((entry) => entry.overallStatus === "needs_review").length - scopedHolds,
+    "Historical independent review counts do not match the index plus explicit scoped holds"
   );
 }
 

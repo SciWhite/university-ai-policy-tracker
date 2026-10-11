@@ -15,6 +15,7 @@ interface UniversityClaimGroupsProps {
   role?: "student" | "instructor" | "researcher" | "staff";
   collapsible?: boolean;
   localizeUi?: boolean;
+  draftPreview?: boolean;
 }
 
 /**
@@ -31,7 +32,8 @@ export function UniversityClaimGroups({
   scene,
   role = "student",
   collapsible = false,
-  localizeUi = false
+  localizeUi = false,
+  draftPreview = false
 }: UniversityClaimGroupsProps) {
   const t = (value: string) => localizeUi ? translatePolicyReferenceUi(value, locale) : value;
   return (
@@ -77,7 +79,7 @@ export function UniversityClaimGroups({
                 <summary id={`claim-group-${group.key}`}>
                   <span>{t(group.title)}</span>
                   <span className="claim-dimension-group__count">
-                    {t(formatClaimGroupCount(group.claims.length))}
+                    {draftPreview && process.env.NODE_ENV !== "production" ? `${group.claims.length} candidate claims` : t(formatClaimGroupCount(group.claims.length))}
                   </span>
                   <span aria-hidden="true" className="claim-dimension-group__chevron">⌄</span>
                 </summary>
@@ -88,7 +90,7 @@ export function UniversityClaimGroups({
                 <h3 id={`claim-group-${group.key}`}>
                   {t(group.title)}
                   <span className="claim-dimension-group__count">
-                    {t(formatClaimGroupCount(group.claims.length))}
+                    {draftPreview && process.env.NODE_ENV !== "production" ? `${group.claims.length} candidate claims` : t(formatClaimGroupCount(group.claims.length))}
                   </span>
                 </h3>
                 {claimList}

@@ -1,0 +1,36 @@
+import {readFile,writeFile,mkdir,copyFile} from 'node:fs/promises';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {publicEntitySummarySchema,policySnapshotSchema} from '@uapt/shared';
+import {computePolicySnapshotBasisFingerprint} from '../apps/web/lib/policy-snapshots';
+import {reviewedClaimsFingerprint} from '../apps/web/lib/index-recovery-basis';
+const slug='imperial-college-london';
+const hash=(v:Buffer|string)=>createHash('sha256').update(v).digest('hex');
+const json=async(p:string)=>JSON.parse(await readFile(p,'utf8'));
+const write=async(p:string,v:unknown)=>writeFile(p,JSON.stringify(v,null,2)+'\n');
+async function main(){
+ const input=process.env.UAPT_IMPERIAL_ACCEPTED_PACKAGE;
+ const acceptance=process.env.UAPT_IMPERIAL_ACCEPTANCE_FILE;
+ if(!input||!acceptance)throw Error('Explicit accepted package and acceptance file are required');
+ const verdict=await json(acceptance);const manifest=await json(path.join(input,'candidate-manifest.json'));
+ const bytes=await readFile(path.join(input,'record.json'));
+ if(verdict.outcome!=='PASSED'||verdict.recordSha256!==hash(bytes)||manifest.recordSha256!==hash(bytes)||manifest.publicationApproved!==false)throw Error('Package was not accepted at this exact hash');
+ const now=new Date().toISOString();const dir='data/public-record-repairs/imperial-20261011';await mkdir(dir,{recursive:true});
+ const record=publicEntitySummarySchema.parse(JSON.parse(bytes.toString()));
+ record.reviewState='agent_reviewed';record.lastChangedAt=now;
+ record.summary='Imperial applies course-specific assessment permission. Conditional dAIsy acknowledgment, institutional tool access, Copilot enterprise and Bing data boundaries, and scoped misconduct appeals are recorded from official evidence. The separate student summary remains pending review.';
+ record.limitations=record.limitations.filter(v=>!v.startsWith('Local candidate revision'));
+ record.limitations.push('This scoped record repair was checked against current official sources. The separate student summary has not received a new dual-agent approval. Historical source dates and hashes remain distinct from current checks.');
+ record.suggestedCitation=`University AI Policy Tracker. Imperial College London AI policy record. Revision imperial-20261011. https://eduaipolicy.org/universities/${slug}`;
+ for(const c of record.claims)c.reviewState='agent_reviewed';
+ publicEntitySummarySchema.parse(record);await write(dir+'/record.json',record);
+ for(const name of ['analysis-dimensions.json','baseline.json','historical-student-snapshot.json','source-provenance.json'])await copyFile(path.join(input,name),dir+'/'+name);
+ const snapshot=await json(path.join(input,'candidate-student-snapshot.json'));snapshot.basisFingerprint=computePolicySnapshotBasisFingerprint(snapshot.releaseId,snapshot.basis,record.claims);snapshot.generatedAt=now;
+ policySnapshotSchema.parse(snapshot);await write(dir+'/candidate-student-snapshot.json',snapshot);
+ const pub={...manifest,revision:'imperial-20261011',publicationApproved:true,independentAcceptance:'passed',publishedAt:now,recordSha256:hash(await readFile(dir+'/record.json')),analysisSha256:hash(await readFile(dir+'/analysis-dimensions.json')),snapshotSha256:hash(await readFile(dir+'/candidate-student-snapshot.json')),candidateSnapshotBasisFingerprint:snapshot.basisFingerprint,scope:'Imperial only; original release and all other university records retained. Student summary held for a new dual-agent review.'};
+ await write(dir+'/candidate-manifest.json',pub);await write('data/public-record-repairs/imperial-current.json',pub);
+ const snapshotPath=`data/policy-snapshots/v1/universities/${slug}.json`;await write(snapshotPath,snapshot);
+ const index=await json('data/policy-snapshots/v1/index.json');Object.assign(index.entries.find((e:any)=>e.universitySlug===slug),{overallStatus:'needs_review',generatedAt:now,basisFingerprint:snapshot.basisFingerprint,locales:[]});await write('data/policy-snapshots/v1/index.json',index);
+ console.log(JSON.stringify({revision:pub.revision,claims:record.claims.length,evidence:record.claims.reduce((n,c)=>n+c.evidence.length,0),recordSha256:pub.recordSha256,snapshotStatus:snapshot.overallStatus}));
+}
+main().catch(e=>{console.error(e.message);process.exitCode=1});

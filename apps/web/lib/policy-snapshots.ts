@@ -1,3 +1,4 @@
+import { isCandidateRepairPreview, loadCandidateRecordRepair } from "./public-record-repairs";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -106,6 +107,10 @@ export async function getLoadedPolicySnapshotBySlug(
 
   const loaded = await loadPolicySnapshotBySlug(slug, entry.file);
   if (!loaded) return undefined;
+
+  if (isCandidateRepairPreview(slug)) {
+    return loaded;
+  }
 
   return loaded.snapshot.universityName === entry.universityName &&
     loaded.snapshot.releaseId === entry.releaseId &&
@@ -406,15 +411,18 @@ async function loadPolicySnapshotBySlug(
 ): Promise<LoadedPolicySnapshot | undefined> {
   const repoRoot = await findRepoRoot();
   const file = relativeFile ?? `universities/${slug}.json`;
-  if (!isSafeSnapshotFile(slug, file)) return undefined;
-
   let raw: unknown;
-  try {
-    raw = JSON.parse(
-      await readFile(path.join(repoRoot, ...SNAPSHOT_DATA_ROOT, file), "utf8")
-    );
-  } catch {
-    return undefined;
+  if (isCandidateRepairPreview(slug)) {
+    raw = (await loadCandidateRecordRepair(repoRoot, slug)).snapshot;
+  } else {
+    if (!isSafeSnapshotFile(slug, file)) return undefined;
+    try {
+      raw = JSON.parse(
+        await readFile(path.join(repoRoot, ...SNAPSHOT_DATA_ROOT, file), "utf8")
+      );
+    } catch {
+      return undefined;
+    }
   }
 
   const snapshot = policySnapshotSchema.safeParse(raw);

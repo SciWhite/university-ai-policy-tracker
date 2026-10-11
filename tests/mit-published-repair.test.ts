@@ -14,7 +14,7 @@ test('scoped repair preserves historical release and every other university',asy
  assert.equal(before.claims.length,21);assert.equal(after.claims.length,28);
  for(const c of before.claims)assert(after.claims.some(x=>x.id===c.id));
  assert.equal(after.claims.filter(c=>c.reviewState==='needs_review').length,2);
- assert.deepEqual(current.publicSummaries.filter(s=>s.entity.slug!==slug),old.publicSummaries.filter(s=>s.entity.slug!==slug));
+ assert.deepEqual(current.publicSummaries.filter(s=>![slug,"imperial-college-london"].includes(s.entity.slug)),old.publicSummaries.filter(s=>![slug,"imperial-college-london"].includes(s.entity.slug)));
  const baseline=publicEntitySummarySchema.parse(JSON.parse(await readFile('data/public-record-repairs/mit-20261010/baseline.json','utf8')));
  assert.deepEqual(JSON.parse(JSON.stringify(before.claims)),baseline.claims);
 });

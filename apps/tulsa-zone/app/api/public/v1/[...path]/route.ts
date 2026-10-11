@@ -20,7 +20,7 @@ import {GET as pageQuality} from '@/app/api/public/v1/analysis/page-quality.json
 import {getUniversityStatusWidget,getReviewStateWidget,getPolicyCoverageWidget,getSourceFreshnessWidget,widgetCorsHeaders} from '@/lib/developer-surfaces';
 
 export const dynamic='force-dynamic';
-const slug='massachusetts-institute-of-technology';
+const slugs=['massachusetts-institute-of-technology','imperial-college-london'];
 export async function GET(request:Request,{params}:{params:Promise<{path:string[]}>}){
  const path=(await params).path.join('/');
  const common:Record<string,()=>Promise<Response>|Response>={
@@ -31,23 +31,25 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
  if(path==='recent-changes.json')return recentChanges();
  if(path==='search.json')return search(request);
  if(Object.hasOwn(common,path))return common[path]();
+ for (const slug of slugs) {
  if(path===`claims/${slug}`||path===`claims/${slug}.json`)return claimsEndpoint(request,{params:Promise.resolve({slug})});
  if(path===`analysis/universities/${slug}`||path===`analysis/universities/${slug}.json`)return analysisEndpoint(request,{params:Promise.resolve({slug})});
  const widgetPaths=Object.fromEntries(Object.entries({'university-status':getUniversityStatusWidget,'review-state':getReviewStateWidget,'policy-coverage':getPolicyCoverageWidget,'source-freshness':getSourceFreshnessWidget}).flatMap(([kind,load])=>[[`widgets/${kind}/${slug}`,load],[`widgets/${kind}/${slug}.json`,load]]));
  if(Object.hasOwn(widgetPaths,path)){
    const payload=await widgetPaths[path](slug);
-   return NextResponse.json(payload??{error:'MIT widget unavailable'},{status:payload?200:503,headers:{...widgetCorsHeaders,'Cache-Control':'private, no-store, no-transform'}});
+   return NextResponse.json(payload??{error:'Repair widget unavailable'},{status:payload?200:503,headers:{...widgetCorsHeaders,'Cache-Control':'private, no-store, no-transform'}});
  }
  if(path===`universities/${slug}.json`||path===`universities/${slug}`){
   const summary=await getStagedPublicSummaryBySlug(slug);
-  if(!summary)return NextResponse.json({error:'Published MIT record unavailable'},{status:503});
+  if(!summary)return NextResponse.json({error:'Published repair record unavailable'},{status:503});
   const policySnapshot=await getPublicUniversityPolicySnapshotLink(slug,getSiteBaseUrl());
   return NextResponse.json(buildPublicEntitySummaryResponse({...summary,...(policySnapshot?{policySnapshot}:{})},getSiteBaseUrl()),{headers:{'Cache-Control':'private, no-store, no-transform'}});
  }
  if(path===`policy-snapshots/universities/${slug}.json`||path===`policy-snapshots/universities/${slug}`){
   const snapshot=await getLoadedPolicySnapshotBySlug(slug);
-  if(!snapshot)return NextResponse.json({error:'MIT snapshot unavailable'},{status:503});
+  if(!snapshot)return NextResponse.json({error:'Repair snapshot unavailable'},{status:503});
   return NextResponse.json(buildPolicySnapshotResponse(snapshot,getSiteBaseUrl()),{headers:{'Cache-Control':'private, no-store, no-transform'}});
+ }
  }
  return NextResponse.json({error:'Outside bounded repair scope'},{status:404});
 }

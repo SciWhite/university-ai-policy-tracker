@@ -1,4 +1,5 @@
 import mitAnalysisDimensions from "../../../data/public-record-repairs/mit-20261010/analysis-dimensions.json";
+import { getRepairAnalysisContext } from "./public-record-repairs";
 import {
   NO_ADVICE_BOUNDARY,
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
@@ -460,7 +461,7 @@ async function buildPolicyAnalysisProfiles(): Promise<PolicyAnalysisProfile[]> {
     .sort((left, right) => left.entityName.localeCompare(right.entityName));
 }
 
-function buildPolicyAnalysisProfile(
+export function buildPolicyAnalysisProfile(
   summary: PublicEntitySummary
 ): PolicyAnalysisProfile {
   const generatedAt = latestIso(
@@ -515,15 +516,25 @@ function buildDimension(
   summary: PublicEntitySummary,
   definition: DimensionDefinition
 ): PolicyAnalysisDimension {
-  const repair = summary.entity.slug === "massachusetts-institute-of-technology"
-    ? mitAnalysisDimensions[definition.key] : undefined;
-  const claims = repair ? repair.claimIds.map(id => {
-    const claim = summary.claims.find(c => c.id === id);
-    if (!claim || !["agent_reviewed", "human_reviewed"].includes(claim.reviewState)) {
-      throw new Error(`MIT analysis basis is missing or held: ${id}`);
-    }
-    return claim;
-  }) : selectClaims(summary.claims, definition);
+  const isMit = summary.entity.slug === "massachusetts-institute-of-technology";
+  const imperialContext = summary.entity.slug === "imperial-college-london" ? getRepairAnalysisContext(summary) : undefined;
+  const isImperialCandidate = Boolean(imperialContext);
+  const repair = isMit ? mitAnalysisDimensions[definition.key] : imperialContext?.dimensions[definition.key];
+  const claims = repair
+    ? repair.claimIds.map((id) => {
+        const claim = summary.claims.find((c) => c.id === id);
+        if (!claim) {
+          throw new Error(`Analysis basis is missing: ${id}`);
+        }
+        if (
+          isMit &&
+          !["agent_reviewed", "human_reviewed"].includes(claim.reviewState)
+        ) {
+          throw new Error(`MIT analysis basis is missing or held: ${id}`);
+        }
+        return claim;
+      })
+    : selectClaims(summary.claims, definition);
 
   if (!claims.length) {
     return {
@@ -545,7 +556,9 @@ function buildDimension(
     };
   }
 
-  const status = repair?.status as AnalysisDimensionStatus | undefined ?? deriveStatus(definition, claims);
+  const status =
+    (repair?.status as AnalysisDimensionStatus | undefined) ??
+    deriveStatus(definition, claims);
   const basis = claims.map((claim) => {
     const evidence = claim.evidence[0];
 
@@ -562,13 +575,31 @@ function buildDimension(
   const evidenceSourceUrls = unique(basis.map((item) => item.sourceUrl));
   const sourceLanguages = unique(basis.map((item) => item.sourceLanguage));
 
+  const isCandidateContext =
+    imperialContext && !imperialContext.publicationApproved;
+  const explanation = isMit
+    ? "Scoped MIT source interpretation from the current reviewed claims listed in basis; historical held provisions are excluded. This derived profile does not replace course instructions or the pending independent student-summary review. Confidence is an uncalibrated extraction signal, not accuracy."
+    : isImperialCandidate
+    ? isCandidateContext
+      ? "Scoped Imperial College London source interpretation from candidate claims listed in basis; pending independent secondary review (publicationApproved=false). This derived profile does not replace course instructions or assessment briefs. Confidence is an uncalibrated extraction signal, not accuracy."
+      : "Scoped Imperial College London source interpretation from reviewed claims listed in basis. This derived profile does not replace course instructions or assessment briefs. Confidence is an uncalibrated extraction signal, not accuracy."
+    : buildDimensionExplanation(definition, status, claims);
+
+  const normalizedValue = isMit
+    ? `mit_scoped_review:${definition.key}:${status}`
+    : isImperialCandidate
+    ? `imperial_scoped_${imperialContext?.publicationApproved ? "review" : "candidate"}:${definition.key}:${status}`
+    : deriveNormalizedValue(definition, status, claims);
+
   return {
     key: definition.key,
     label: definition.label,
     status,
-    normalizedValue: repair ? `mit_scoped_review:${definition.key}:${status}` : deriveNormalizedValue(definition, status, claims),
-    summary: repair?.summary ?? buildDimensionSummary(summary.entity.name, definition, status, claims),
-    explanation: repair ? "Scoped MIT source interpretation from the current reviewed claims listed in basis; historical held provisions are excluded. This derived profile does not replace course instructions or the pending independent student-summary review. Confidence is an uncalibrated extraction signal, not accuracy." : buildDimensionExplanation(definition, status, claims),
+    normalizedValue,
+    summary:
+      repair?.summary ??
+      buildDimensionSummary(summary.entity.name, definition, status, claims),
+    explanation,
     evidenceClaimIds,
     evidenceSourceUrls,
     sourceLanguages,

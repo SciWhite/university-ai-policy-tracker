@@ -1,3 +1,5 @@
+import { buildPolicyAnalysisProfile } from "@/lib/policy-analysis";
+import { isCandidateRepairPreview } from "@/lib/public-record-repairs";
 import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
 import { isStudentOnlyPolicyPage } from "@/lib/policy-page-audience";
 import { isPublishedPolicyReferencePage, isPublishedUniversityAiToolsModule, isPolicyReferencePreview, preparePolicyReferenceScene } from "@/lib/policy-reference-preview";
@@ -193,8 +195,9 @@ export default async function UniversityPage({
     getPublicJsonUrl(slug),
     publicSummary.canonicalUrl
   );
+  const draftPreview = isCandidateRepairPreview(slug);
   const reviewedClaims = publicSummary.claims.filter((claim) =>
-    isReviewedClaim(claim.reviewState)
+    draftPreview || isReviewedClaim(claim.reviewState)
   );
   const strongSnapshot = isStrongStudentSnapshot(loadedSnapshot);
   const pageQuery = await searchParams;
@@ -305,6 +308,7 @@ export default async function UniversityPage({
       />
 
       <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={approvedPolicySupplementSlugs.includes(slug)}>
+      {draftPreview ? <aside data-i18n="preserve" role="status">LOCAL CANDIDATE PREVIEW — pending review; not published. All evidence remains in its original language.</aside> : null}
       <EntityHeader
         eyebrow={`${university.region}, ${university.country}`}
         metadata={
@@ -331,6 +335,8 @@ export default async function UniversityPage({
       {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
       {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
+      {draftPreview ? <section id="candidate-analysis" data-i18n="preserve"><h2>Candidate analysis (pending review)</h2>{buildPolicyAnalysisProfile(publicSummary).dimensions.map(d => <article key={d.key}><h3>{d.key}: {d.status}</h3><p>{d.summary}</p></article>)}</section> : null}
+      {draftPreview && loadedSnapshot ? <section id="candidate-snapshot" data-i18n="preserve"><h2>Candidate student summary (needs review)</h2><p>{loadedSnapshot.snapshot.summary}</p>{loadedSnapshot.snapshot.dimensions.map(d => <article key={d.key}><h3>{d.key}: {d.status}</h3><p>{d.summary}</p>{d.basis.claimIds.map(id => <a key={id} href={`#claim-${id}`}>{id} </a>)}</article>)}</section> : null}
       {strongSnapshot ? (
         <StudentPolicySnapshot
           claims={reviewedClaims}
@@ -344,7 +350,7 @@ export default async function UniversityPage({
       ) : null}
       {policyScene?.quickGuide && !strongSnapshot ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
       {enforcementPage ? <EnforcementV4Refresh slug={slug} locale={locale} /> : null}
-      {isPublishedUniversityAiToolsModule(slug) ? <UniversityAiTools locale={locale} records={await getUniversityToolRecords(publicSummary)} /> : null}
+      {isPublishedUniversityAiToolsModule(slug) ? <UniversityAiTools draftPreview={draftPreview} locale={locale} records={await getUniversityToolRecords(publicSummary)} /> : null}
       {approvedPolicySupplementSlugs.includes(slug) ? <PolicySupplements slug={slug} locale={locale} claims={reviewedClaims} /> : null}
       {referencePreview ? <PolicyReferenceInteractions /> : compactPolicyPilot ? <PolicyRecordHashReveal /> : null}
 
@@ -354,7 +360,7 @@ export default async function UniversityPage({
             <p className="student-policy__eyebrow">Reviewed record</p>
             <h2>{referenceUi("Reviewed claims")}</h2>
           </div>
-          <p>{referenceUi(`${reviewedClaims.length} reviewed claim${reviewedClaims.length === 1 ? "" : "s"}`)}</p>
+          <p>{draftPreview ? `${reviewedClaims.length} candidate claims (needs review)` : referenceUi(`${reviewedClaims.length} reviewed claim${reviewedClaims.length === 1 ? "" : "s"}`)}</p>
         </div>
         {pilotClaimsSummary && !compactPolicyPilot ? (
           <div className="index-recovery-summary">
@@ -374,6 +380,7 @@ export default async function UniversityPage({
       {reviewedClaims.length ? (
           claimGroups ? (
             <UniversityClaimGroups
+              draftPreview={draftPreview}
               entitySlug={slug}
               groups={claimGroups}
               locale={locale}
@@ -517,6 +524,7 @@ function OfficialSourceAttributionList({
           <div>
             <h3>{source.citationTitle}</h3>
             <p className="muted">{source.publisher ?? "Official university source"}</p>
+            {slug === "imperial-college-london" && source.sourceUrl.includes("dAIsy-use-guidance-and-process-flows") ? <p data-i18n="preserve" lang={locale === "zh" ? "zh" : "en"}>{locale === "zh" ? "历史来源目前无法访问（HTTP 404）；保留原历史哈希，当前主张不以此证明政策有效。" : "Historical source currently unavailable (HTTP 404). Original historical hash retained; current claims do not rely on this source."}</p> : null}
           </div>
           <dl>
             <div>

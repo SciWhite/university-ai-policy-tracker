@@ -1,0 +1,721 @@
+{
+  "schemaVersion": "v1",
+  "citationTitle": "Imperial College London AI Policy Tracker record",
+  "canonicalUrl": "https://eduaipolicy.org/universities/imperial-college-london",
+  "publicPageUrl": "https://eduaipolicy.org/universities/imperial-college-london",
+  "apiUrl": "https://eduaipolicy.org/api/public/v1/universities/imperial-college-london.json",
+  "entityType": "university",
+  "entitySlug": "imperial-college-london",
+  "entity": {
+    "type": "university",
+    "slug": "imperial-college-london",
+    "name": "Imperial College London",
+    "canonicalUrl": "https://eduaipolicy.org/universities/imperial-college-london",
+    "aliases": [
+      "QS 2026 2"
+    ],
+    "summary": "Imperial College London is listed as QS 2026 rank 2. Imperial College London has 14 source-backed AI policy claim records from 15 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state."
+  },
+  "summary": "Imperial College London is listed as QS 2026 rank 2. Imperial College London has 14 source-backed AI policy claim records from 15 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+  "lastCheckedAt": "2026-07-18T21:31:39.689Z",
+  "lastChangedAt": "2026-07-18T21:31:39.689Z",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "license": "CC-BY-4.0",
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourcePolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "officialSources": [
+    {
+      "id": "sc-imperial-college-london-11",
+      "sourceUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/registry/academic-governance/public/academic-policy/academic-integrity/Academic-Misconduct-Policy-and-Procedure-v1.3-15.03.23.pdf",
+      "finalUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/registry/academic-governance/public/academic-policy/academic-integrity/Academic-Misconduct-Policy-and-Procedure-v1.3-15.03.23.pdf",
+      "citationTitle": "Academic Misconduct Policy and Procedure v1.3",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "e18e689fab16090afeeda5d2a10cf35446680c79f4abdda4cf3123080e2ff70f",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-9",
+      "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "finalUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+      "citationTitle": "CfAE guidance on GenAI",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "c794af509524965d8f332d7d8642188675dacd61aeb7e823107852bc0c3612b4",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-7",
+      "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+      "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+      "citationTitle": "dAIsy - gen AI platform",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "8dc0a4bb59590569f70a2399ea34c8fbae4663a08e2149e2abd90bdbcb41c307",
+      "sourceType": "other",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-14",
+      "sourceUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/ict/public/dAIsy-use-guidance-and-process-flows-(2).pdf",
+      "finalUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/ict/public/dAIsy-use-guidance-and-process-flows-(2).pdf",
+      "citationTitle": "dAIsy Use Guidance and Process Flows",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "3aeae8408592870b542839d1b36267f13b253cf812ad76914cef60acbbc88b50",
+      "sourceType": "other",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-5",
+      "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+      "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+      "citationTitle": "dAIsy Use Policy",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-33bb5c6c0495",
+      "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+      "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+      "citationTitle": "dAIsy- gen AI platform | Administration and support services | Imperial College London",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-07-15T17:36:43.896Z",
+      "trackerCheckedAt": "2026-07-15T17:36:43.896Z",
+      "snapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-12",
+      "sourceUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/legal-services-office/public/data-protection/DPA-CoP-08---Use-of-Artificial-Intelligence-(AI).pdf",
+      "finalUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/legal-services-office/public/data-protection/DPA-CoP-08---Use-of-Artificial-Intelligence-(AI).pdf",
+      "citationTitle": "DPA Code of Practice 08 - Use of Artificial Intelligence (AI)",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "8601a0b478d76febaf8673ba6dab08156d088ecdc39948686dae963f8cb83ec6",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-3",
+      "sourceUrl": "https://www.imperial.ac.uk/about/education/resources/ai-education-hub/",
+      "finalUrl": "https://www.imperial.ac.uk/about/education/resources/ai-education-hub/",
+      "citationTitle": "Generative AI & Education Guidance Hub",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "c1b43f695f5252cc358c8c048002eff508e526c53919926aebfec81be96fba0f",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-2",
+      "sourceUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/",
+      "finalUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/",
+      "citationTitle": "Generative AI and Study Guidance Hub",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "f0c7617376f41a0fba19dda0cb756e12bb4791dd04f5b14f61a2be9a1d61dc8e",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-1",
+      "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+      "finalUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+      "citationTitle": "Generative AI guidance",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-4",
+      "sourceUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/generative-ai-principles/",
+      "finalUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/generative-ai-principles/",
+      "citationTitle": "Generative AI Principles",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "8e2e65292a63189e93172810ff4ba9ff98e77d13894233c506f64f803d0bc94f",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-13",
+      "sourceUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/secretariat/public/college-governance/charters-statutes-ordinances-regulations/policies-regulations-codes-of-practice/information-systems-security/ICT-CoP-06-Conditions-of-Use-of-IT-Resources.pdf",
+      "finalUrl": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/secretariat/public/college-governance/charters-statutes-ordinances-regulations/policies-regulations-codes-of-practice/information-systems-security/ICT-CoP-06-Conditions-of-Use-of-IT-Resources.pdf",
+      "citationTitle": "ICT Code of Practice 06 - Conditions of Use of IT Resources",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "031b49dcb6d1d4ad95452cfcc63dde8052e06e2051d39f901c121cc62dadd00c",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-6",
+      "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+      "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+      "citationTitle": "Microsoft Copilot",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "315c865f429a17a2085919a998fa5bf0d58a9e2342651f629314ad4f868ec8f1",
+      "sourceType": "other",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-10",
+      "sourceUrl": "https://www.imperial.ac.uk/student-records-and-data/for-current-students/undergraduate-and-taught-postgraduate/exams-assessments-and-regulations/plagiarism-academic-integrity--exam-offences/",
+      "finalUrl": "https://www.imperial.ac.uk/student-records-and-data/for-current-students/undergraduate-and-taught-postgraduate/exams-assessments-and-regulations/plagiarism-academic-integrity--exam-offences/",
+      "citationTitle": "Plagiarism, Academic Integrity & Exam Offences",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "817c92dd2088d8fd2f0d29adee3d0d6826d94ed1f247ef50002597b580474c4c",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-imperial-college-london-8",
+      "sourceUrl": "https://www.imperial.ac.uk/staff/educational-development/teaching-toolkit/use-of-generative-ai-for-teaching-learning-and-assessment/",
+      "finalUrl": "https://www.imperial.ac.uk/staff/educational-development/teaching-toolkit/use-of-generative-ai-for-teaching-learning-and-assessment/",
+      "citationTitle": "Use of generative AI for teaching, learning and assessment",
+      "publisher": "imperial.ac.uk",
+      "retrievedAt": "2026-05-06T01:00:08Z",
+      "trackerCheckedAt": "2026-05-06T01:00:08Z",
+      "snapshotHash": "f0623fd99fcfa8bfcecaba8d8953cf07d1bab64b2c40b34fc9987a3a73888cf5",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ],
+  "claims": [
+    {
+      "id": "cl-imperial-college-london-chatgpt-14",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "GPT in dAIsy is listed for Imperial College London in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+      "claimValue": "{\"tool\":\"chatgpt\",\"rawToolName\":\"GPT in dAIsy\",\"description\":\"GPT model access through Imperial dAIsy.\",\"howToObtain\":\"Use the Imperial dAIsy interface as staff or student.\",\"costToUser\":\"Not specified; proof-of-concept phase.\",\"availability\":\"allowed\",\"endorsementType\":\"officially_endorsed\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:33:43.896Z",
+      "lastChangedAt": "2026-07-15T17:33:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-imperial-college-london-chatgpt-14-1",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+          "sourceLanguage": "en-GB",
+          "sourceSnapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979",
+          "evidenceSnippet": "Imperial's official dAIsy page says staff and students can access multiple models through one interface and expressly names GPT among them.",
+          "evidenceSnippetDisplay": "Imperial's official dAIsy page says staff and students can access multiple models through one interface and expressly names GPT among them.",
+          "retrievedAt": "2026-07-15T17:33:43.896Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-chatgpt-14-1",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "citationTitle": "dAIsy- gen AI platform | Administration and support services | Imperial College London",
+            "publisher": "Imperial College London",
+            "retrievedAt": "2026-07-15T17:33:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:33:43.896Z",
+            "snapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-imperial-college-london-claude-15",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Claude in dAIsy is listed for Imperial College London in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+      "claimValue": "{\"tool\":\"claude\",\"rawToolName\":\"Claude in dAIsy\",\"description\":\"Claude model access through Imperial dAIsy.\",\"howToObtain\":\"Use the Imperial dAIsy interface as staff or student.\",\"costToUser\":\"Not specified; proof-of-concept phase.\",\"availability\":\"allowed\",\"endorsementType\":\"officially_endorsed\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:34:43.896Z",
+      "lastChangedAt": "2026-07-15T17:34:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-imperial-college-london-claude-15-1",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+          "sourceLanguage": "en-GB",
+          "sourceSnapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979",
+          "evidenceSnippet": "Imperial's official dAIsy page says staff and students can access multiple models through one interface and expressly names Claude among them.",
+          "evidenceSnippetDisplay": "Imperial's official dAIsy page says staff and students can access multiple models through one interface and expressly names Claude among them.",
+          "retrievedAt": "2026-07-15T17:34:43.896Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-claude-15-1",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "citationTitle": "dAIsy- gen AI platform | Administration and support services | Imperial College London",
+            "publisher": "Imperial College London",
+            "retrievedAt": "2026-07-15T17:34:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:34:43.896Z",
+            "snapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-imperial-college-london-deepseek-16",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "DeepSeek in dAIsy is listed for Imperial College London in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+      "claimValue": "{\"tool\":\"deepseek\",\"rawToolName\":\"DeepSeek in dAIsy\",\"description\":\"DeepSeek model access through Imperial dAIsy.\",\"howToObtain\":\"Use the Imperial dAIsy interface as staff or student.\",\"costToUser\":\"Not specified; proof-of-concept phase.\",\"availability\":\"allowed\",\"endorsementType\":\"officially_endorsed\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:35:43.896Z",
+      "lastChangedAt": "2026-07-15T17:35:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-imperial-college-london-deepseek-16-1",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+          "sourceLanguage": "en-GB",
+          "sourceSnapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979",
+          "evidenceSnippet": "Imperial's official dAIsy page says staff and students can access multiple models through one interface and expressly names DeepSeek among them.",
+          "evidenceSnippetDisplay": "Imperial's official dAIsy page says staff and students can access multiple models through one interface and expressly names DeepSeek among them.",
+          "retrievedAt": "2026-07-15T17:35:43.896Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-deepseek-16-1",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "citationTitle": "dAIsy- gen AI platform | Administration and support services | Imperial College London",
+            "publisher": "Imperial College London",
+            "retrievedAt": "2026-07-15T17:35:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:35:43.896Z",
+            "snapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-imperial-college-london-institutional-ai-service-17",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "dAIsy is listed for Imperial College London in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+      "claimValue": "{\"tool\":\"institutional_ai_service\",\"rawToolName\":\"dAIsy\",\"description\":\"Imperial's secure multi-model GenAI platform.\",\"howToObtain\":\"Use the Imperial dAIsy interface as staff or student.\",\"costToUser\":\"Not specified; proof-of-concept phase.\",\"availability\":\"allowed\",\"endorsementType\":\"officially_endorsed\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:36:43.896Z",
+      "lastChangedAt": "2026-07-15T17:36:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-imperial-college-london-institutional-ai-service-17-1",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+          "sourceLanguage": "en-GB",
+          "sourceSnapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979",
+          "evidenceSnippet": "Imperial's official dAIsy page describes it as Imperial College London's secure AI platform, designed to give staff and students safe access to multiple generative AI models through one interface.",
+          "evidenceSnippetDisplay": "Imperial's official dAIsy page describes it as Imperial College London's secure AI platform, designed to give staff and students safe access to multiple generative AI models through one interface.",
+          "retrievedAt": "2026-07-15T17:36:43.896Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-institutional-ai-service-17-1",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "finalUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "citationTitle": "dAIsy- gen AI platform | Administration and support services | Imperial College London",
+            "publisher": "Imperial College London",
+            "retrievedAt": "2026-07-15T17:36:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:36:43.896Z",
+            "snapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-ai-misconduct",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Unless explicitly authorised, using generative AI to create assessed work may be treated as an academic offence such as contract cheating under Imperial's Plagiarism, Academic Integrity & Exam Offences regulations. Improper use of AI can be investigated under the University's Academic Misconduct procedures.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-1",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+          "evidenceSnippet": "Unless explicitly authorised, using AI to create assessed work may be treated as an offence such as contract cheating under Imperial's Plagiarism, Academic Integrity & Exam Offences regulations. Familiarise yourself with Imperial's Academic Misconduct Policy for rules on appropriate AI usage.",
+          "snippetLocation": "Library Services - Generative AI guidance: 'Appropriate academic use of generative AI' section",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-1",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+            "citationTitle": "Generative AI guidance",
+            "publisher": "Imperial College London Library Services",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-dept-assessment-policy",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "Individual departments at Imperial may allow or prohibit the use of generative AI for specific assessments. Local (team/department/faculty) instructions take precedence over university-wide guidance. Students should check their department's current policy on using and disclosing generative AI in academic work and follow their module leader's instructions.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-3",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+          "evidenceSnippet": "Individual departments may allow or prohibit GenAI for specific assessments; local (team/department/faculty) instructions take precedence. Always check the brief and acknowledge permitted AI use as directed.",
+          "snippetLocation": "dAIsy Use Policy Section 5(i) - Responsible uses: Assessment-related use",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-5",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "citationTitle": "dAIsy Use Policy",
+            "publisher": "Imperial College London ICT",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-daisy-privacy",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "privacy",
+      "claimText": "Imperial's dAIsy AI platform uses University SSO authentication with auditing. Prompts and metadata are logged for operational monitoring, and AI model providers are configured not to train on user data. Users' prompts and responses are not used to train external AI models. dAIsy is approved for use with unrestricted data within Imperial's secure infrastructure.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-4",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+          "evidenceSnippet": "dAIsy uses University SSO and auditing. Logs (prompts/metadata) are retained for operational monitoring. Model providers are configured to not train on your data.",
+          "snippetLocation": "dAIsy Use Policy Section 6 - Data handling, security and privacy",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-5",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "citationTitle": "dAIsy Use Policy",
+            "publisher": "Imperial College London ICT",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-daisy-sanctions",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Breaches of Imperial's dAIsy Use Policy may lead to action under Academic Misconduct procedures for students and HR/disciplinary processes for staff, as well as under Information Security and Data Protection policies. Sanctions may include removal of access, grade penalties, or formal disciplinary measures.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-5",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+          "evidenceSnippet": "Breaches may lead to action under Academic Misconduct (students) and HR/disciplinary processes (staff), as well as Information Security and Data Protection policies. Sanctions may include removal of access, grade penalties, or formal disciplinary measures.",
+          "snippetLocation": "dAIsy Use Policy Section 13 - Compliance and sanctions",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-5",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "citationTitle": "dAIsy Use Policy",
+            "publisher": "Imperial College London ICT",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-ai-acknowledgment",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "Students should include a statement acknowledging their use of generative AI tools for all assessed work, specifying the tool name and version, publisher, URL, a brief description of how it was used, and confirmation that the work is their own. Further requirements such as prompts used, date of output, the output obtained, and how it was modified may also be required by individual departments.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:57:44Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-2",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+          "evidenceSnippet": "You should include a statement to acknowledge your use of generative AI tools for all assessed work, in accordance with guidelines from your department or course team. This statement should be written in complete sentences and include the following information: Name and version of the generative AI tool e.g. Copilot, ChatGPT-5; Publisher (name of company that provides the AI system) e.g. Microsoft, OpenAI; URL of the AI tool; Brief description (single sentence) of the way in which the tool was used; Confirmation that the work is your own.",
+          "snippetLocation": "Library Services - Generative AI guidance: 'Acknowledging and referencing use of generative AI tools' section",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-1",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+            "citationTitle": "Generative AI guidance",
+            "publisher": "Imperial College London Library Services",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-research-ethics",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "research",
+      "claimText": "Research at Imperial that involves people, personal data, or sensitive topics may require ethics approval, a Data Protection Impact Assessment (DPIA), and data-governance controls before using any AI tool. Researchers must verify whether their use of AI in research requires special approval, particularly when uploading private or confidential research data.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-6",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+          "evidenceSnippet": "Research that involves people, personal data, or sensitive topics may require ethics approval, a Data Protection Impact Assessment (DPIA), and data-governance controls before using any AI tool.",
+          "snippetLocation": "dAIsy Use Policy Section 5(iii) - Responsible uses: Research use",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-5",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "citationTitle": "dAIsy Use Policy",
+            "publisher": "Imperial College London ICT",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-copilot-data-protection",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "All Imperial staff and students have access to Microsoft Copilot with Commercial Data Protection when signed in using their Imperial credentials. Microsoft Copilot has no access to organizational data in the Microsoft 365 Graph. Chat results are not saved or made available to Microsoft, and data does not pass outside the organisation.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-7",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "315c865f429a17a2085919a998fa5bf0d58a9e2342651f629314ad4f868ec8f1",
+          "evidenceSnippet": "All Imperial staff and students have access to Microsoft Copilot. You should ensure you sign in to use Copilot so that you are using the secure version of Microsoft Copilot with Commercial Data Protection. MS Copilot has no access to organizational data in the Microsoft 365 Graph. Your data is protected and the chat results are NOT saved or made available for Microsoft, so the data does not pass outside of the organisation.",
+          "snippetLocation": "ICT page on Microsoft Copilot - access and data protection sections",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-6",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+            "citationTitle": "Microsoft Copilot",
+            "publisher": "Imperial College London ICT",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "315c865f429a17a2085919a998fa5bf0d58a9e2342651f629314ad4f868ec8f1",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-user-accountability",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "Users of Imperial's dAIsy AI platform must always apply critical judgment to AI outputs. Generative AI can produce inaccurate or biased outputs ('hallucinate'), omit context, or reflect training-data biases. Users remain accountable for the accuracy, legality, and appropriateness of any content they submit or share through the platform.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-8",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+          "evidenceSnippet": "Always apply critical judgement. GenAI can 'hallucinate', omit context, or reflect training-data biases. Users remain accountable for the accuracy, legality, and appropriateness of any content they submit or share.",
+          "snippetLocation": "dAIsy Use Policy Section 8 - Quality, bias and human oversight",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-5",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "citationTitle": "dAIsy Use Policy",
+            "publisher": "Imperial College London ICT",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-daisy-copyright-ip",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "Users of Imperial's dAIsy platform must not upload third-party content they are not permitted to share. Reuse of AI outputs must comply with licensing and academic citation norms. When communicating externally, dAIsy outputs must not be presented as Imperial's position without approval.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:57:05Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-9",
+          "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+          "evidenceSnippet": "Do not upload third-party content you are not permitted to share. Ensure that any reuse of AI outputs complies with licensing and academic citation norms. When communicating externally, do not present dAIsy outputs as Imperial's position without approval.",
+          "snippetLocation": "dAIsy Use Policy Sections 11 (Copyright and IP) and 12 (Communications and transparency)",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-5",
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "citationTitle": "dAIsy Use Policy",
+            "publisher": "Imperial College London ICT",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-imperial-college-london-genai-principles",
+      "entitySlug": "imperial-college-london",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "Imperial College London has established five Generative AI Principles (aligned with Imperial Values: Respect, Collaboration, Excellence, Integrity, Innovation) to provide a foundational framework for approaches to using generative AI in teaching, learning and assessment university-wide. The principles cover promoting critical use of AI, adopting a consistent ethical approach, and building a proactive research community around AI in education.",
+      "confidence": 0.85,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:00:08Z",
+      "lastChangedAt": "2026-05-06T01:57:05Z",
+      "evidence": [
+        {
+          "id": "evd-imperial-college-london-10",
+          "sourceUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/generative-ai-principles/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "8e2e65292a63189e93172810ff4ba9ff98e77d13894233c506f64f803d0bc94f",
+          "evidenceSnippet": "These principles are intended to provide a starting point for approaches to using generative AI in teaching, learning and assessment at Imperial. Imperial supports the use of the principles to frame and underpin activities university-wide as we as a community explore the use of generative AI, progress and develop policy, and establish guidelines. The principles are underpinned by Imperial's core Values. ... Promoting the critical use of generative AI in teaching, learning and assessment. Adopting a consistent ethical approach to the use of generative AI. Building a proactive research community around the use of generative AI.",
+          "snippetLocation": "Generative AI Principles page - introductory and principles sections",
+          "retrievedAt": "2026-05-06T01:00:08Z",
+          "attribution": {
+            "id": "ss-imperial-college-london-4",
+            "sourceUrl": "https://www.imperial.ac.uk/students/academic-support/ai-and-study-guidance-hub/generative-ai-principles/",
+            "citationTitle": "Generative AI Principles",
+            "publisher": "Imperial College London",
+            "retrievedAt": "2026-05-06T01:00:08Z",
+            "trackerCheckedAt": "2026-05-06T01:00:08Z",
+            "snapshotHash": "8e2e65292a63189e93172810ff4ba9ff98e77d13894233c506f64f803d0bc94f",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    }
+  ],
+  "policySnapshot": {
+    "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/imperial-college-london.json",
+    "overallStatus": "strong",
+    "releaseId": "public-release-20260924-002",
+    "basisFingerprint": "b041c04a14980c2245bbb55ce01c9d5c21c229fdfa5c5a9a40a32ede0aaddcd9"
+  },
+  "suggestedCitation": "University AI Policy Tracker. \"Imperial College London AI Policy Tracker record.\" Last checked July 18, 2026. https://eduaipolicy.org/universities/imperial-college-london"
+}

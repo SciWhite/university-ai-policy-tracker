@@ -39,7 +39,11 @@ import {
 import { getEntityAliasResolver } from "./entity-aliases";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
-import { applyPublishedRecordRepairs } from "./public-record-repairs";
+import {
+  applyPublishedRecordRepairs,
+  applyCandidateRecordRepairs,
+  isCandidateRepairUniversity
+} from "./public-record-repairs";
 
 interface RankingRecord {
   rowNumber: number;
@@ -143,6 +147,10 @@ const LOCATION_OVERRIDES: Record<string, { country: string; region: string }> = 
 };
 
 let datasetPromise: Promise<PublicDataset> | undefined;
+
+export function resetStagedPublicDatasetCache(): void {
+  datasetPromise = undefined;
+}
 
 export async function getStagedPublicDataset(): Promise<PublicDataset> {
   datasetPromise ??= buildStagedPublicDataset();
@@ -258,9 +266,14 @@ async function buildPublicDatasetFromArtifacts(
     )
     .filter((summary): summary is PublicEntitySummary => Boolean(summary))
     .sort((left, right) => left.entity.name.localeCompare(right.entity.name));
-  const publicSummaries = applyRepairs
+  let publicSummaries = applyRepairs
     ? await applyPublishedRecordRepairs(repoRoot, originalSummaries)
     : originalSummaries;
+
+  const candidateSlug = process.env.UAPT_CANDIDATE_REPAIR_SLUG;
+  if (applyRepairs && candidateSlug && isCandidateRepairUniversity(candidateSlug)) {
+    publicSummaries = await applyCandidateRecordRepairs(repoRoot, publicSummaries, candidateSlug);
+  }
   const catalogUniversities = publicSummaries.map((summary) =>
     buildCatalogUniversity(summary, rankingBySlug.get(summary.entity.slug))
   );

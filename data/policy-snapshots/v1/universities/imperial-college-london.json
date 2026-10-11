@@ -7,10 +7,12 @@
   "canonicalUrl": "https://eduaipolicy.org/universities/imperial-college-london",
   "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/imperial-college-london.json",
   "canonicalLocale": "en",
-  "generatedAt": "2026-08-08T10:00:00.000Z",
-  "overallStatus": "strong",
-  "statusReasons": [],
-  "summary": "Imperial's public guidance combines university principles with department-level assessment decisions, while dAIsy access does not replace local academic or research rules.",
+  "generatedAt": "2026-10-11T04:22:01.914Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete"
+  ],
+  "summary": "Imperial combines university principles with course-specific assessment permission. Tool access is separate from permission. Library recommendations and conditional dAIsy acknowledgment obligations are distinguished. This student summary remains pending a separate dual-agent review.",
   "audiences": [
     "students",
     "researchers"
@@ -42,11 +44,11 @@
         "sources": [
           {
             "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
-            "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c"
+            "sourceSnapshotHash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c"
           },
           {
             "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
-            "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a"
+            "sourceSnapshotHash": "2e567ceca27cd46d650756418734c196a1430a01bbde3b67d5f18649363609f7"
           }
         ]
       }
@@ -70,21 +72,23 @@
         "sources": [
           {
             "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
-            "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a"
+            "sourceSnapshotHash": "2e567ceca27cd46d650756418734c196a1430a01bbde3b67d5f18649363609f7"
           }
         ]
       }
     },
     {
       "key": "disclosure",
-      "status": "required",
-      "summary": "Imperial asks students to include a statement acknowledging generative-AI use for all assessed work, subject to possible department additions.",
+      "status": "recommended",
+      "summary": "Imperial Library recommends acknowledgment in assessed work. When dAIsy is permitted for assessed work, its Use Policy requires acknowledgment; follow the department or assessment brief for the required details.",
       "actions": {
         "do": [
-          "Include the required tool, publisher, URL, and use description in the acknowledgement."
+          "Follow department and assessment brief instructions for specific acknowledgment requirements.",
+          "Where dAIsy or other GenAI is permitted for assessed work, acknowledge the tool, version, and prompt approach in accordance with the dAIsy Use Policy and Library guidelines."
         ],
         "dont": [
-          "Do not omit the acknowledgement or assume department details are optional."
+          "Do not assume general Library advice replaces specific department requirements.",
+          "Do not use generative AI for assessed work without verifying if it is permitted."
         ]
       },
       "basis": {
@@ -94,7 +98,15 @@
         "sources": [
           {
             "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
-            "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a"
+            "sourceSnapshotHash": "2e567ceca27cd46d650756418734c196a1430a01bbde3b67d5f18649363609f7"
+          },
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+            "sourceSnapshotHash": "063a6b52eabaed46eb5c5d3cea1024d361ce8e7d616eafdc56088a32d97215a6"
+          },
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "sourceSnapshotHash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c"
           }
         ]
       }
@@ -102,7 +114,7 @@
     {
       "key": "privacy_data",
       "status": "conditionally_allowed",
-      "summary": "Imperial describes dAIsy as approved for unrestricted data in its secure infrastructure, while sensitive research may require ethics or DPIA controls.",
+      "summary": "dAIsy permits unrestricted data under Imperial rules. Copilot Chat has enterprise protections and Exchange audit logging; enabled web grounding can send generated queries to Bing under separate terms. Sensitive research may require ethics or DPIA approval.",
       "actions": {
         "do": [
           "Check data-governance and approval requirements before using sensitive research data."
@@ -114,26 +126,39 @@
       "basis": {
         "claimIds": [
           "clm-imperial-college-london-daisy-privacy",
+          "clm-imperial-college-london-copilot-data-protection",
           "clm-imperial-college-london-research-ethics"
         ],
         "sources": [
           {
             "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
-            "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c"
+            "sourceSnapshotHash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c"
+          },
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+            "sourceSnapshotHash": "91e1d2fd709853d7fc4b9f1797544b57b678367116cdd1e35cf68ad01904844f"
+          },
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+            "sourceSnapshotHash": "bb463aeac8b767f868ee0e6d920ef619dce035d0d7180ba1f02056563b852942"
+          },
+          {
+            "sourceUrl": "https://learn.microsoft.com/en-us/copilot/privacy-and-protections",
+            "sourceSnapshotHash": "1918a036aeb7f40e5d583d0f1493e18180cf55e790758123d04c9985722fdd8f"
           }
         ]
       }
     },
     {
       "key": "approved_tools",
-      "status": "allowed",
-      "summary": "Imperial lists dAIsy as an officially endorsed AI service, but that access record does not replace assessment or research rules.",
+      "status": "conditionally_allowed",
+      "summary": "Imperial provides dAIsy for staff and students with Basic access under token limits; Developer access is staff-only. Platform access does not replace assessment or research rules.",
       "actions": {
         "do": [
-          "Use the Imperial access and authentication route for dAIsy where applicable."
+          "Use institutional single sign-on when accessing dAIsy or Microsoft Copilot."
         ],
         "dont": [
-          "Do not treat dAIsy access as permission for a particular assessment or study."
+          "Do not treat dAIsy or Copilot access as permission for a particular assessment or exam."
         ]
       },
       "basis": {
@@ -143,7 +168,11 @@
         "sources": [
           {
             "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
-            "sourceSnapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979"
+            "sourceSnapshotHash": "91e1d2fd709853d7fc4b9f1797544b57b678367116cdd1e35cf68ad01904844f"
+          },
+          {
+            "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+            "sourceSnapshotHash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c"
           }
         ]
       }
@@ -167,7 +196,7 @@
         "sources": [
           {
             "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
-            "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c"
+            "sourceSnapshotHash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c"
           }
         ]
       }
@@ -179,50 +208,64 @@
       "clm-imperial-college-london-ai-misconduct",
       "clm-imperial-college-london-ai-acknowledgment",
       "clm-imperial-college-london-daisy-privacy",
+      "clm-imperial-college-london-copilot-data-protection",
       "clm-imperial-college-london-research-ethics",
       "cl-imperial-college-london-institutional-ai-service-17"
     ],
     "sources": [
       {
-        "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
-        "sourceSnapshotHash": "ca7073c79287c6a14a49a046579f0186a55d2af0fe04e85c6937cc78a759a979"
-      },
-      {
         "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
-        "sourceSnapshotHash": "af7248595f4e6390847e500476a0e0840e335c3205db15df5ed3c70b042e480c"
+        "sourceSnapshotHash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c"
       },
       {
         "sourceUrl": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
-        "sourceSnapshotHash": "abae555edd554e7837059feeb0e11971007f3a1fd5f27b644be02f87ae23d41a"
+        "sourceSnapshotHash": "2e567ceca27cd46d650756418734c196a1430a01bbde3b67d5f18649363609f7"
+      },
+      {
+        "sourceUrl": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+        "sourceSnapshotHash": "063a6b52eabaed46eb5c5d3cea1024d361ce8e7d616eafdc56088a32d97215a6"
+      },
+      {
+        "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/",
+        "sourceSnapshotHash": "91e1d2fd709853d7fc4b9f1797544b57b678367116cdd1e35cf68ad01904844f"
+      },
+      {
+        "sourceUrl": "https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/office-365/microsoft-copilot/",
+        "sourceSnapshotHash": "bb463aeac8b767f868ee0e6d920ef619dce035d0d7180ba1f02056563b852942"
+      },
+      {
+        "sourceUrl": "https://learn.microsoft.com/en-us/copilot/privacy-and-protections",
+        "sourceSnapshotHash": "1918a036aeb7f40e5d583d0f1493e18180cf55e790758123d04c9985722fdd8f"
       }
     ]
   },
   "releaseId": "public-release-20260924-002",
-  "basisFingerprint": "b041c04a14980c2245bbb55ce01c9d5c21c229fdfa5c5a9a40a32ede0aaddcd9",
+  "basisFingerprint": "3c66518cf0bd8c7f52f465fcff1291a0d7d28a620a70ae2df9890d735174c1db",
   "review": {
     "reviewMethod": "dual_agent",
-    "reviewState": "dual_agent_reviewed",
+    "reviewState": "needs_review",
     "primary": {
-      "agentId": "uapt-4-primary-author",
-      "model": "gpt-5",
+      "agentId": "codex-imperial-repair-author",
+      "model": "GPT-6",
       "decision": "approve",
-      "reviewedAt": "2026-08-08T10:00:00.000Z",
-      "notes": "Primary author checked the cited public claim wording, scope, and conservative actions."
+      "reviewedAt": "2026-10-11T04:14:04.459406Z",
+      "notes": "Revised summary authored from source-backed claims; no independent second review of this new summary claimed."
     },
     "secondary": {
-      "agentId": "uapt-6-secondary-reviewer",
-      "model": "gpt-5",
-      "decision": "approve",
-      "reviewedAt": "2026-08-08T10:57:26.300Z",
-      "notes": "Independent secondary review passed; evidence, scope, actions, and release binding checked."
+      "agentId": "independent-summary-review-pending",
+      "model": "not-run",
+      "decision": "needs_review",
+      "reviewedAt": "2026-10-11T04:14:04.459406Z",
+      "notes": "Pending independent review of the revised summary; no inherited approval."
     },
-    "agreement": "agree",
-    "reviewedAt": "2026-08-08T10:57:26.300Z"
+    "agreement": "disagree",
+    "reviewedAt": "2026-10-11T04:14:04.459406Z"
   },
   "translations": [],
   "limitations": [
     "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
-    "This candidate uses only the cited current staged public claims and source snapshot hashes; absence from a dimension is not permission or prohibition.",
-    "English is canonical; no translation is included because no translation review is present."
+    "This candidate student summary awaits independent secondary review; publicationApproved=false.",
+    "Tool availability is not permission for a class, assessment, thesis, or research project.",
+    "English official evidence is canonical."
   ]
 }
