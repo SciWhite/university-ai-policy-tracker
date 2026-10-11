@@ -49,9 +49,15 @@ export async function readCorrectionChangeCache<T>(name: string): Promise<T | un
   const root = path.join(await findRepoRoot(), "data/public-record-repairs");
   const journal = await readFile(path.join(root, "change-log.json"));
   const manifest = JSON.parse(await readFile(path.join(root, "change-cache/manifest.json"), "utf8"));
+  if (manifest.schemaVersion !== "uapt-public-correction-change-cache-v1" || manifest.baselineSha256 !== createHash("sha256").update(await readFile(path.join(root, "change-index-baseline.json"))).digest("hex")) throw new Error("Change index baseline identity mismatch");
   if (manifest.journalSha256 !== createHash("sha256").update(journal).digest("hex")) throw new Error("Change cache is not synchronized with the policy correction journal");
   if (!Object.hasOwn(manifest.files, name) || !/^[a-z0-9.-]+\.json$/.test(name)) throw new Error("Unknown change cache projection");
   const bytes = await readFile(path.join(root, "change-cache", name));
   if (createHash("sha256").update(bytes).digest("hex") !== manifest.files[name]) throw new Error("Change cache projection hash mismatch");
-  return JSON.parse(bytes.toString()) as T;
+  const payload = JSON.parse(bytes.toString());
+  for (const entry of await readRecordCorrectionChanges()) {
+    const record = name === "index.json" ? payload.data?.records?.find((item: {slug:string}) => item.slug === entry.slug) : name === `${entry.slug}.json` ? payload.record : undefined;
+    if ((name === "index.json" || name === `${entry.slug}.json`) && (!record || record.releaseId !== entry.revision || record.recordSha256 !== entry.recordSha256 || record.lastChangedAt !== entry.publishedAt)) throw new Error("Change projection does not match the published correction");
+  }
+  return payload as T;
 }

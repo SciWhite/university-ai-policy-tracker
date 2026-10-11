@@ -11,6 +11,9 @@ import {
   type SourceAttribution,
   buildPublicApiCitation
 } from "@uapt/shared";
+import {readFile} from "node:fs/promises";
+import path from "node:path";
+import {findRepoRoot} from "./repo-root";
 import {readCorrectionChangeCache,readRecordCorrectionChanges} from "./record-correction-changes";
 import { getStagedPublicDataset } from "./staged-public-data";
 import {
@@ -316,7 +319,17 @@ async function buildAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
 
 async function buildChangeIndexData(): Promise<ChangeIndexData> {
   const records = await getChangeRecords();
-  const indexRecords = records.map(buildChangeIndexRecord);
+  const computedRecords = records.map(buildChangeIndexRecord);
+  // Scope this correction release to the two audited schools. Preserve every
+  // other published index row instead of silently recalculating global history.
+  const baseline = JSON.parse(await readFile(path.join(await findRepoRoot(), "data/public-record-repairs/change-index-baseline.json"), "utf8")) as ChangeIndexData;
+  const corrections = await readRecordCorrectionChanges();
+  const corrected = corrections.map(entry => {
+    const record = computedRecords.find(item => item.slug === entry.slug);
+    if (!record) throw new Error("Missing corrected change index record");
+    return record;
+  });
+  const indexRecords = [...corrected, ...baseline.data.records.filter(item => !corrections.some(entry => entry.slug === item.slug))];
   const facets = buildChangeIndexFacets(indexRecords);
   const summary = buildChangeIndexSummary(indexRecords);
   const canonicalUrl = `${getSiteBaseUrl()}/changes`;

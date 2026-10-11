@@ -12,6 +12,11 @@ test('scoped policy corrections appear in history, indexes and complete claim di
  const index=await getChangeIndexData();
  const latest=await getLatestReleaseDiff();
  assert.equal(latest.releaseId,'public-release-20260924-002');
+ const publishedBaseline=JSON.parse(await readFile('data/public-record-repairs/change-index-baseline.json','utf8'));
+ const scopedSlugs=new Set(entries.map(entry=>entry.slug));
+ assert.equal(index.data.records.length,publishedBaseline.data.records.length);
+ for(const row of publishedBaseline.data.records) if(!scopedSlugs.has(row.slug)) assert.deepEqual(index.data.records.find(r=>r.slug===row.slug),row);
+ assert.ok(index.data.records.every(r=>r.canonicalUrl.startsWith('https://eduaipolicy.org/')&&r.publicJsonUrl.startsWith('https://eduaipolicy.org/')));
  assert.equal(latest.scopedCorrections?.length,2);
  assert.ok(latest.entities.every(entity => entity.rows.every(row => !row.newClaim?.claimId?.startsWith('cl-imperial-current-'))));
  assert.equal(latest.entities.find(e => e.entitySlug==='imperial-college-london')?.rows.some(row => row.newSnapshotHash==='91e1d2fd709853d7fc4b9f1797544b57b678367116cdd1e35cf68ad01904844f'),false);

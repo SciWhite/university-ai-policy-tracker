@@ -17,8 +17,9 @@ async function main(){
    await writeFile(path.join(dir,name),bytes);
    files[name]=createHash('sha256').update(bytes).digest('hex');
  }
+ const baselineSha256=createHash("sha256").update(await readFile("data/public-record-repairs/change-index-baseline.json")).digest("hex");
  const journalSha256=createHash('sha256').update(await readFile('data/public-record-repairs/change-log.json')).digest('hex');
- await writeFile(path.join(dir,'manifest.json'),JSON.stringify({schemaVersion:'uapt-public-correction-change-cache-v1',journalSha256,files},null,2)+'\n');
+ await writeFile(path.join(dir,'manifest.json'),JSON.stringify({schemaVersion:'uapt-public-correction-change-cache-v1',journalSha256,baselineSha256,files},null,2)+'\n');
  console.log({projections:Object.keys(files),journalSha256});
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});
