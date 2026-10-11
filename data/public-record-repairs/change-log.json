@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "uapt-record-correction-changes-v1",
+  "entries": [
+    {
+      "slug": "massachusetts-institute-of-technology",
+      "revision": "mit-20261010",
+      "publishedAt": "2026-10-10T18:52:29.198Z",
+      "recordSha256": "7d0521f54b818e7dd7b627cc785203e7f844c5cf8006a64368f653f0023cd32c",
+      "baselineClaimsFingerprint": "505b231ef5d9cd1b77fd98fff2deb52956c1c661e30b17ba077ffbe1dd12cc78",
+      "pinFile": "current.json",
+      "previousReleaseId": "public-release-20260924-002",
+      "publicationKind": "scoped_record_correction",
+      "summary": "Independent MIT audit correction: course-level assessment scope, institutional tools and data restrictions, recommendation versus requirement, and a student summary held for renewed review."
+    },
+    {
+      "slug": "imperial-college-london",
+      "revision": "imperial-20261011-r2",
+      "publishedAt": "2026-10-11T05:12:50.945Z",
+      "recordSha256": "c7e4678ce088060e8d2b51cd817c3fa0360853db8908400749ddc0b0331126f7",
+      "baselineClaimsFingerprint": "0b465d7890d980b2a36ae110de87c6dc63e18f43511b3f8d7cba074d73eafcf6",
+      "pinFile": "imperial-current.json",
+      "previousReleaseId": "public-release-20260924-002",
+      "publicationKind": "scoped_record_correction",
+      "summary": "Independent Imperial audit correction: institutional dAIsy model access, assessment disclosure, Copilot retention and search conditions, 2026–27 detector guidance, scoped misconduct appeals, and a student summary held for renewed review."
+    }
+  ]
+}

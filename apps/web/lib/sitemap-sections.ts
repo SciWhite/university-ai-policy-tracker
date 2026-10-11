@@ -1,7 +1,8 @@
 import { getIndexRecoveryLastModified } from "@/lib/index-recovery-dates";
 import type { CatalogPolicySource } from "@uapt/shared";
 import { getCatalogUniversities } from "@/lib/catalog";
-import { getChangeRecords, getReleaseChangeRecords } from "@/lib/change-records";
+import { getChangeIndexData, getReleaseChangeRecords } from "@/lib/change-records";
+import { readRecordCorrectionChanges } from "@/lib/record-correction-changes";
 import { getKnownReleaseSummaries } from "@/lib/release-diffs";
 import {
   rankingLandingSpecs,
@@ -183,9 +184,9 @@ async function buildUniversitiesSection(): Promise<SitemapEntry[]> {
 async function buildChangesSection(): Promise<SitemapEntry[]> {
   const baseUrl = getSiteBaseUrl();
   const publishedAt = await getSitemapLastPublishedAt();
-  const changeRecords = await getChangeRecords();
+  const changeRecords = (await getChangeIndexData()).data.records;
   const releases = await getKnownReleaseSummaries();
-  const recentReleases = releases.slice(-RECENT_RELEASE_SITEMAP_COUNT);
+  const recentReleases = [...releases.slice(-RECENT_RELEASE_SITEMAP_COUNT), ...(await readRecordCorrectionChanges()).map(entry => ({releaseId: entry.revision, publishedAt: entry.publishedAt}))];
   const releaseEntries = await Promise.all(
     recentReleases.map(async ({ releaseId, publishedAt: releasePublishedAt }) => {
       const records = (await getReleaseChangeRecords(releaseId)) ?? [];

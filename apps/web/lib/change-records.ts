@@ -11,6 +11,7 @@ import {
   type SourceAttribution,
   buildPublicApiCitation
 } from "@uapt/shared";
+import {readCorrectionChangeCache,readRecordCorrectionChanges} from "./record-correction-changes";
 import { getStagedPublicDataset } from "./staged-public-data";
 import {
   getLatestReleaseDiff,
@@ -52,6 +53,9 @@ export interface ClaimChangeRecord {
 }
 
 export interface ChangeRecord {
+  publicationKind?: "scoped_record_correction";
+  changeSummary?: string;
+  recordSha256?: string;
   added: number;
   candidateClaimCount: number;
   canonicalUrl: string;
@@ -127,6 +131,9 @@ export interface ChangeIndexPrimaryDiff {
 }
 
 export interface ChangeIndexRecord {
+  publicationKind?: "scoped_record_correction";
+  changeSummary?: string;
+  recordSha256?: string;
   canonicalUrl: string;
   changeUrl: string;
   claimCount: number;
@@ -208,7 +215,7 @@ export async function getChangeRecords(): Promise<ChangeRecord[]> {
 }
 
 export async function getChangeIndexData(): Promise<ChangeIndexData> {
-  changeIndexPromise ??= buildChangeIndexData();
+  changeIndexPromise ??= readCorrectionChangeCache<ChangeIndexData>("index.json").then(cached => cached ?? buildChangeIndexData());
 
   return changeIndexPromise;
 }
@@ -262,6 +269,10 @@ export async function getChangeRecordBySlug(
 export async function getEntityChangeHistory(
   slug: string
 ): Promise<EntityChangeHistory | undefined> {
+  if ((await readRecordCorrectionChanges()).some(entry => entry.slug === slug)) {
+    const cached = await readCorrectionChangeCache<EntityChangeHistory>(`${slug}.json`);
+    if (cached) return cached;
+  }
   const dataset = await getStagedPublicDataset();
   const summary = dataset.publicSummaries.find((item) => item.entity.slug === slug);
   const releaseRecords = (await getAllReleaseChangedRecords()).filter(
@@ -348,6 +359,9 @@ function buildChangeIndexRecord(record: ChangeRecord): ChangeIndexRecord {
   return {
     canonicalUrl: record.canonicalUrl,
     changeUrl: record.changeUrl,
+    publicationKind: record.publicationKind,
+    changeSummary: record.changeSummary,
+    recordSha256: record.recordSha256,
     claimCount: record.claimCount,
     claimMetadataChanged: record.claimMetadataChanged,
     confidence: record.confidence,
@@ -544,7 +558,10 @@ function buildChangeRecord(
         siteBaseUrl
       ).toString(),
     lastCheckedAt: summary.lastCheckedAt,
-    lastChangedAt: summary.lastChangedAt,
+    lastChangedAt: diff?.lastChangedAt ?? summary.lastChangedAt,
+    publicationKind: diff?.publicationKind,
+    changeSummary: diff?.changeSummary,
+    recordSha256: diff?.recordSha256,
     confidence: summary.confidence,
     reviewState: summary.reviewState,
     claimCount: summary.claims.length,
@@ -682,6 +699,9 @@ function buildAggregateEntityDiff(
     canonicalUrl: latest?.canonicalUrl ?? `/changes/${slug}`,
     claimMetadataChanged: semanticCounts.claimMetadataChanged,
     currentReleaseId: latest?.releaseId ?? "multiple-releases",
+    publicationKind: latest?.publicationKind,
+    changeSummary: latest?.changeSummary,
+    recordSha256: latest?.recordSha256,
     entityName: latest?.name ?? name,
     entitySlug: slug,
     evidenceChanged: semanticCounts.evidenceChanged,

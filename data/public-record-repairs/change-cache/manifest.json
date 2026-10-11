@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "uapt-public-correction-change-cache-v1",
+  "journalSha256": "c6a10746971eda1e394951fbbc19d599da6fcb94141c7ef415cb631561432927",
+  "files": {
+    "index.json": "def84cf7ccbced8d5a91bbf3e4b01fa344516f33cb2992705f6824261508ab27",
+    "imperial-college-london.json": "e545b0b71bbe5a9fa3068e4f6fe0cfc430ac1436ed51cdfd5ad4ad9890591ac4",
+    "massachusetts-institute-of-technology.json": "08311f636865147e96b68b0dd85c05ef8a674e98b33b70b9d40f286cc2cfce4b"
+  }
+}

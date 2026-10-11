@@ -1,11 +1,11 @@
-import { getChangeRecords } from "@/lib/change-records";
+import { getChangeIndexData } from "@/lib/change-records";
 import { toRfc822Date, xmlEscape, xmlResponse } from "@/lib/feed";
 import { getAbsoluteSiteUrl } from "@/lib/site-url";
 
 export const dynamic = "force-static";
 
 export async function GET() {
-  const records = (await getChangeRecords()).slice(0, 50);
+  const records = (await getChangeIndexData()).data.records.slice(0, 50);
   const siteUrl = getAbsoluteSiteUrl("/");
   const feedUrl = getAbsoluteSiteUrl("/feeds/recent-changes.xml");
   const latestDate = records[0]?.lastChangedAt ?? records[0]?.lastCheckedAt;
@@ -13,7 +13,7 @@ export async function GET() {
     .map((record) => {
       const url = getAbsoluteSiteUrl(record.changeUrl);
       const freshness = record.lastChangedAt ?? record.lastCheckedAt;
-      const description = `${record.summary} Claims: ${record.claimCount}. Reviewed claims: ${record.reviewedClaimCount}. Candidate or non-reviewed claims: ${record.candidateClaimCount}. Review state: ${record.reviewState}.`;
+      const description = `${record.summary} Claims: ${record.claimCount}. Reviewed claims: ${record.reviewedClaimCount}. Candidate or non-reviewed claims: ${record.claimCount - record.reviewedClaimCount}. Review state: ${record.reviewState}.`;
 
       return `<item>
   <title>${xmlEscape(`${record.name} AI policy change record`)}</title>

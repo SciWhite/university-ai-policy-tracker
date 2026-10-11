@@ -136,6 +136,11 @@ export default async function ChangeDetailPage({
           }
         }}
       />
+      {record.publicationKind === "scoped_record_correction" ? (
+        <p className="notice-card" data-i18n="preserve">
+          Tracker audit correction: {record.changeSummary} Published in the tracker on {record.lastChangedAt}. This date does not establish a university policy publication or effective date. Historical global releases remain unchanged. Student summary approval is tracked separately.
+        </p>
+      ) : null}
       <section className="entity-header">
         <div className="entity-header__main">
           <p className="entity-header__eyebrow">Change log</p>
@@ -441,6 +446,7 @@ function ReleaseOverviewPage({
 
   return (
     <main className="page-shell page-shell--wide">
+      {records[0]?.publicationKind === "scoped_record_correction" ? <p className="notice-card" data-i18n="preserve">Tracker audit correction: {records[0].changeSummary} This is a scoped tracker correction, not a newly established university policy publication or effective date. Historical global releases remain unchanged.</p> : null}
       <section className="hero">
         <p className="kicker">Release diff</p>
         <h1>University AI Policy Tracker Release Diff: {releaseId}</h1>

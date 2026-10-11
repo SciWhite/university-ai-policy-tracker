@@ -2,6 +2,7 @@ import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {publicEntitySummarySchema, type PublicEntitySummary} from '@uapt/shared';
+import {readRecordCorrectionChanges, readCorrectionChangeCache} from './record-correction-changes';
 import {reviewedClaimsFingerprint} from './index-recovery-basis';
 
 // Explicit reviewed scope. This is not a loader for private crawl candidates.
@@ -11,6 +12,8 @@ export function isRepairedUniversity(slug: string) {
 }
 
 export async function applyPublishedRecordRepairs(repoRoot: string, summaries: PublicEntitySummary[]) {
+  await readRecordCorrectionChanges(repoRoot);
+  await readCorrectionChangeCache("index.json");
   const bytes = await readFile(path.join(repoRoot, 'data/public-record-repairs/mit-20261010/record.json'));
   const manifest = JSON.parse(await readFile(path.join(repoRoot, 'data/public-record-repairs/current.json'), 'utf8'));
   if (manifest.schemaVersion !== 'uapt-public-record-repairs-v1' || manifest.publicationApproved !== true ||

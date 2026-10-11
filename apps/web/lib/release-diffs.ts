@@ -17,6 +17,8 @@ import {
   getStagedPublicDatasetForManifest,
   type PublicReleaseManifest
 } from "./staged-public-data";
+import { readRecordCorrectionChanges, readRecordCorrectionSummary } from "./record-correction-changes";
+import { reviewedClaimsFingerprint } from "./index-recovery-basis";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
 
@@ -132,6 +134,9 @@ export interface ReleaseDiffRow {
 }
 
 export interface ReleaseEntityDiff {
+  publicationKind?: "scoped_record_correction";
+  changeSummary?: string;
+  recordSha256?: string;
   added: number;
   canonicalUrl: string;
   claimMetadataChanged: number;
@@ -157,6 +162,9 @@ export interface ReleaseEntityDiff {
 }
 
 export interface ReleaseDiff {
+  publicationKind?: "scoped_record_correction";
+  changeSummary?: string;
+  scopedCorrections?: ReleaseDiff[];
   apiVersion: typeof PUBLIC_API_VERSION;
   canonicalUrl: string;
   changeCounts: ReleaseDiffCounts;
@@ -232,7 +240,9 @@ export async function getLatestReleaseDiff(): Promise<ReleaseDiff> {
   const diff = await getReleaseDiff(currentManifest.releaseId);
   if (!diff) throw new Error(`Unknown release: ${currentManifest.releaseId}`);
 
-  return diff;
+  const entries = await readRecordCorrectionChanges();
+  const scopedCorrections = await Promise.all(entries.map(entry => getReleaseDiff(entry.revision)));
+  return {...diff, scopedCorrections: scopedCorrections.filter((item): item is ReleaseDiff => !!item)};
 }
 
 export async function getReleaseDiff(
@@ -250,9 +260,9 @@ export async function getReleaseDiff(
 export async function getLatestEntityReleaseDiff(
   slug: string
 ): Promise<ReleaseEntityDiff | undefined> {
-  const diff = await getLatestReleaseDiff();
-
-  return getEntityDiff(diff, slug);
+  const correction = (await readRecordCorrectionChanges()).find(entry => entry.slug === slug);
+  const diff = correction ? await getReleaseDiff(correction.revision) : await getLatestReleaseDiff();
+  return diff ? getEntityDiff(diff, slug) : undefined;
 }
 
 export async function getEntityReleaseDiff(
@@ -265,7 +275,7 @@ export async function getEntityReleaseDiff(
 }
 
 export async function getKnownReleaseIds(): Promise<string[]> {
-  return (await getKnownReleaseManifests()).map((manifest) => manifest.releaseId);
+  return [...(await readRecordCorrectionChanges()).map(entry => entry.revision), ...(await getKnownReleaseManifests()).map(manifest => manifest.releaseId)];
 }
 
 export async function getKnownReleaseSummaries(): Promise<
@@ -401,7 +411,26 @@ async function buildCachedReleaseDiff(
   const manifests = await getKnownReleaseManifests();
   const manifest = manifests.find((item) => item.releaseId === releaseId);
 
-  if (!manifest) return undefined;
+  if (!manifest) {
+    const correction = (await readRecordCorrectionChanges()).find(entry => entry.revision === releaseId);
+    if (!correction) return undefined;
+    const baselineManifest = await getManifestByReleaseId(correction.previousReleaseId);
+    if (!baselineManifest) throw new Error("Correction baseline release unavailable");
+    const baseline = (await getDatasetForManifest(baselineManifest)).publicSummaries.find(item => item.entity.slug === correction.slug);
+    if (!baseline || reviewedClaimsFingerprint(baseline.claims) !== correction.baselineClaimsFingerprint) throw new Error("Correction change baseline mismatch");
+    const summary = await readRecordCorrectionSummary(correction);
+    const correctionManifest = {...baselineManifest, releaseId: correction.revision, publishedAt: correction.publishedAt};
+    const entity = buildEntityDiff(correctionManifest, baselineManifest, baseline, summary, new Map());
+    entity.lastChangedAt = correction.publishedAt;
+    entity.publicationKind = correction.publicationKind;
+    entity.changeSummary = correction.summary;
+    entity.recordSha256 = correction.recordSha256;
+    for (const row of entity.rows) {
+      row.changeExplanation = `Tracker audit correction, not evidence of a new university policy publication. ${row.changeExplanation}`;
+      row.limitations = [...row.limitations, "Correction publication time is a tracker timestamp; university effective dates are not inferred."];
+    }
+    return {apiVersion: PUBLIC_API_VERSION, canonicalUrl: new URL(`/changes/${releaseId}`, getSiteBaseUrl()).toString(), changeCounts: summarizeRows(entity.rows), currentReleaseId: releaseId, entities: [entity], generatedAt: correction.publishedAt, license: TRACKER_METADATA_LICENSE, limitations: ["Scoped tracker record correction; the historical global release remains unchanged.", NO_ADVICE_BOUNDARY], previousReleaseId: correction.previousReleaseId, releaseId, sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT, sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT, publicationKind: correction.publicationKind, changeSummary: correction.summary};
+  }
 
   return buildReleaseDiff(releaseId);
 }
@@ -895,9 +924,7 @@ function getEntityDiff(
 }
 
 async function getDatasetForManifest(manifest: PublicReleaseManifest) {
-  const current = await getCurrentPublicReleaseManifest();
-  if (current?.releaseId === manifest.releaseId) return getStagedPublicDataset();
-
+  // Historical manifests must never inherit later per-university repair overlays.
   const cached = manifestDatasetPromises.get(manifest.releaseId);
   if (cached) return cached;
 

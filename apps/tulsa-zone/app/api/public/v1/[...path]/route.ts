@@ -8,6 +8,10 @@ import {GET as coverage} from '@/app/api/public/v1/coverage/qs-2026.json/route';
 import {GET as universityIndex} from '@/app/api/public/v1/university-index.json/route';
 import {GET as universities} from '@/app/api/public/v1/universities.json/route';
 import {GET as searchIndex} from '@/app/api/public/v1/search/index.json/route';
+import {getChangeIndexResponse} from '@/lib/change-records';
+import {getLatestReleaseDiff,getReleaseDiff,getLatestEntityReleaseDiff,getEntityReleaseDiff} from '@/lib/release-diffs';
+import {getStagedRecentChangesEnvelope} from '@/lib/staged-public-data';
+import {buildRecentChangesWidgetFromPublicChanges} from '@/lib/developer-surfaces';
 import {GET as recentChanges} from '@/app/api/public/v1/recent-changes.json/route';
 import {GET as search,OPTIONS as searchOptions} from '@/app/api/public/v1/search.json/route';
 import {GET as snapshotIndex} from '@/app/api/public/v1/policy-snapshots/index.json/route';
@@ -29,6 +33,15 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
   'analysis/index.json':analysisIndex,'analysis/coverage-scores.json':coverageScores,'analysis/page-quality.json':pageQuality
  };
  if(path==='recent-changes.json')return recentChanges();
+ if(path==='changes/index.json')return NextResponse.json(await getChangeIndexResponse());
+ if(path==='changes/latest.json')return NextResponse.json(await getLatestReleaseDiff());
+ if(path==='widgets/recent-changes.json')return NextResponse.json(buildRecentChangesWidgetFromPublicChanges((await getStagedRecentChangesEnvelope()).data.changes,10),{headers:widgetCorsHeaders});
+ if(path.startsWith('changes/')) {
+   const parts=path.split('/').slice(1).map(part=>part.replace(/\.json$/, ''));
+   const payload=parts[0]==='latest'&&parts[1] ? await getLatestEntityReleaseDiff(parts[1]) : parts[1] ? await getEntityReleaseDiff(parts[0],parts[1]) : await getReleaseDiff(parts[0]);
+   return NextResponse.json(payload??{error:'Change diff not found'},{status:payload?200:404});
+ }
+
  if(path==='search.json')return search(request);
  if(Object.hasOwn(common,path))return common[path]();
  for (const slug of slugs) {
