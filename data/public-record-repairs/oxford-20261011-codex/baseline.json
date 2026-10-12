@@ -1,0 +1,708 @@
+{
+  "schemaVersion": "v1",
+  "citationTitle": "University of Oxford AI Policy Tracker record",
+  "canonicalUrl": "http://localhost:3000/universities/university-of-oxford",
+  "publicPageUrl": "http://localhost:3000/universities/university-of-oxford",
+  "apiUrl": "http://localhost:3000/api/public/v1/universities/university-of-oxford.json",
+  "entityType": "university",
+  "entitySlug": "university-of-oxford",
+  "entity": {
+    "type": "university",
+    "slug": "university-of-oxford",
+    "name": "University of Oxford",
+    "canonicalUrl": "http://localhost:3000/universities/university-of-oxford",
+    "aliases": [
+      "QS 2026 4"
+    ],
+    "summary": "University of Oxford is listed as QS 2026 rank 4. University of Oxford has 15 source-backed AI policy claim records from 7 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state."
+  },
+  "summary": "University of Oxford is listed as QS 2026 rank 4. University of Oxford has 15 source-backed AI policy claim records from 7 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+  "lastCheckedAt": "2026-07-18T21:38:39.689Z",
+  "lastChangedAt": "2026-07-18T21:38:39.689Z",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "license": "CC-BY-4.0",
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourcePolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "officialSources": [
+    {
+      "id": "sc-university-of-oxford-1",
+      "sourceUrl": "https://ctl.ox.ac.uk/ai",
+      "finalUrl": "https://ctl.ox.ac.uk/ai",
+      "citationTitle": "AI and academic practice | Centre for Teaching and Learning",
+      "publisher": "ctl.ox.ac.uk",
+      "retrievedAt": "2026-05-06T00:57:57Z",
+      "trackerCheckedAt": "2026-05-06T00:57:57Z",
+      "snapshotHash": "ca36f4631166d8e1a2175fc8836878552b4a14fa98d336b0ab4ddc20435456f8",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-university-of-oxford-2",
+      "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+      "finalUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+      "citationTitle": "AI use in summative assessment",
+      "publisher": "governance.admin.ox.ac.uk",
+      "retrievedAt": "2026-05-06T00:57:57Z",
+      "trackerCheckedAt": "2026-05-06T00:57:57Z",
+      "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-university-of-oxford-3",
+      "sourceUrl": "https://ctl.ox.ac.uk/ai-tools-in-teaching",
+      "finalUrl": "https://ctl.ox.ac.uk/ai-tools-in-teaching",
+      "citationTitle": "An introduction to the use of generative AI tools in teaching",
+      "publisher": "ctl.ox.ac.uk",
+      "retrievedAt": "2026-05-06T00:57:57Z",
+      "trackerCheckedAt": "2026-05-06T00:57:57Z",
+      "snapshotHash": "9414bd7307cd58218608ce57b4e8bc2f6f1dd910fb69e1747ffcbc21fb7ca0d9",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-university-of-oxford-0190a2c30cad",
+      "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+      "finalUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+      "citationTitle": "Generative AI Tools | AI Competency Centre",
+      "publisher": "oerc.ox.ac.uk",
+      "retrievedAt": "2026-07-15T17:43:43.896Z",
+      "trackerCheckedAt": "2026-07-15T17:43:43.896Z",
+      "snapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-university-of-oxford-5",
+      "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+      "finalUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+      "citationTitle": "Generative AI Use — Mathematical, Physical and Life Sciences Division",
+      "publisher": "mpls.ox.ac.uk",
+      "retrievedAt": "2026-05-06T00:57:57Z",
+      "trackerCheckedAt": "2026-05-06T00:57:57Z",
+      "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-university-of-oxford-6",
+      "sourceUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+      "finalUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+      "citationTitle": "The University's AI provision | IT Services",
+      "publisher": "it.ox.ac.uk",
+      "retrievedAt": "2026-05-06T00:57:58Z",
+      "trackerCheckedAt": "2026-05-06T00:57:58Z",
+      "snapshotHash": "6abb77311f43f70e8af1d23ccb75bbd35bd34098129bb0260b38de9d4effb1f2",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-university-of-oxford-4",
+      "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+      "finalUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+      "citationTitle": "Use Generative AI services safely",
+      "publisher": "infosec.ox.ac.uk",
+      "retrievedAt": "2026-05-06T00:57:58Z",
+      "trackerCheckedAt": "2026-05-06T00:57:58Z",
+      "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ],
+  "claims": [
+    {
+      "id": "cl-university-of-oxford-chatgpt-21",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "ChatGPT Edu is listed for University of Oxford in an official university AI tools source. Derived availability: allowed. Derived endorsement type: not specified.",
+      "claimValue": "{\"tool\":\"chatgpt\",\"rawToolName\":\"ChatGPT Edu\",\"description\":\"Oxford lists ChatGPT Edu for confidential work through University SSO.\",\"howToObtain\":\"University SSO.\",\"costToUser\":\"Free for current Oxford staff and students.\",\"availability\":\"allowed\",\"endorsementType\":\"not_specified\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:40:43.896Z",
+      "lastChangedAt": "2026-07-15T17:40:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-university-of-oxford-chatgpt-21-1",
+          "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e",
+          "evidenceSnippet": "ChatGPT Edu | Advanced content generation, summarisation, and complex reasoning | Confidential | University SSO | Free for all current Oxford staff and students (including College staff).",
+          "evidenceSnippetDisplay": "ChatGPT Edu | Advanced content generation, summarisation, and complex reasoning | Confidential | University SSO | Free for all current Oxford staff and students (including College staff).",
+          "retrievedAt": "2026-07-15T17:40:43.896Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-chatgpt-21-1",
+            "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "finalUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "citationTitle": "Generative AI Tools | AI Competency Centre",
+            "publisher": "University of Oxford",
+            "retrievedAt": "2026-07-15T17:40:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:40:43.896Z",
+            "snapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-university-of-oxford-codex-22",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Codex is listed for University of Oxford in an official university AI tools source. Derived availability: allowed. Derived endorsement type: not specified.",
+      "claimValue": "{\"tool\":\"codex\",\"rawToolName\":\"Codex\",\"description\":\"Oxford lists Codex for coding assistance through University SSO.\",\"howToObtain\":\"University SSO.\",\"costToUser\":\"Free for current Oxford staff and students.\",\"availability\":\"allowed\",\"endorsementType\":\"not_specified\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:41:43.896Z",
+      "lastChangedAt": "2026-07-15T17:41:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-university-of-oxford-codex-22-1",
+          "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e",
+          "evidenceSnippet": "Codex | Coding assistance, file organisation, and workflow automation | Confidential | University SSO | Free for all current Oxford staff and students (including College staff).",
+          "evidenceSnippetDisplay": "Codex | Coding assistance, file organisation, and workflow automation | Confidential | University SSO | Free for all current Oxford staff and students (including College staff).",
+          "retrievedAt": "2026-07-15T17:41:43.896Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-codex-22-1",
+            "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "finalUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "citationTitle": "Generative AI Tools | AI Competency Centre",
+            "publisher": "University of Oxford",
+            "retrievedAt": "2026-07-15T17:41:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:41:43.896Z",
+            "snapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-university-of-oxford-gemini-23",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Google Gemini is listed for University of Oxford in an official university AI tools source. Derived availability: allowed. Derived endorsement type: not specified.",
+      "claimValue": "{\"tool\":\"gemini\",\"rawToolName\":\"Google Gemini\",\"description\":\"Oxford lists Google Gemini through University Google Workspace.\",\"howToObtain\":\"University SSO.\",\"costToUser\":\"Free through University Google Workspace.\",\"availability\":\"allowed\",\"endorsementType\":\"not_specified\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:42:43.896Z",
+      "lastChangedAt": "2026-07-15T17:42:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-university-of-oxford-gemini-23-1",
+          "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e",
+          "evidenceSnippet": "Google Gemini | AI assistance integrated with Google Workspace and as a standalone chat | Confidential | University SSO | Free through the University Google Workspace.",
+          "evidenceSnippetDisplay": "Google Gemini | AI assistance integrated with Google Workspace and as a standalone chat | Confidential | University SSO | Free through the University Google Workspace.",
+          "retrievedAt": "2026-07-15T17:42:43.896Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-gemini-23-1",
+            "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "finalUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "citationTitle": "Generative AI Tools | AI Competency Centre",
+            "publisher": "University of Oxford",
+            "retrievedAt": "2026-07-15T17:42:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:42:43.896Z",
+            "snapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-university-of-oxford-microsoft-copilot-24",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Microsoft Copilot Chat is listed for University of Oxford in an official university AI tools source. Derived availability: allowed. Derived endorsement type: not specified.",
+      "claimValue": "{\"tool\":\"microsoft_copilot\",\"rawToolName\":\"Microsoft Copilot Chat\",\"description\":\"Oxford lists Microsoft Copilot Chat for confidential use through University SSO.\",\"howToObtain\":\"University SSO.\",\"costToUser\":\"Free.\",\"availability\":\"allowed\",\"endorsementType\":\"not_specified\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:43:43.896Z",
+      "lastChangedAt": "2026-07-15T17:43:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-university-of-oxford-microsoft-copilot-24-1",
+          "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e",
+          "evidenceSnippet": "Microsoft Copilot Chat | Web-grounded chat, summarisation, drafting, and web-based information retrieval | Confidential | University SSO | Free.",
+          "evidenceSnippetDisplay": "Microsoft Copilot Chat | Web-grounded chat, summarisation, drafting, and web-based information retrieval | Confidential | University SSO | Free.",
+          "retrievedAt": "2026-07-15T17:43:43.896Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-microsoft-copilot-24-1",
+            "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "finalUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "citationTitle": "Generative AI Tools | AI Competency Centre",
+            "publisher": "University of Oxford",
+            "retrievedAt": "2026-07-15T17:43:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:43:43.896Z",
+            "snapshotHash": "f67422e7a8c696c660cd1134306bd0d5afa95d4a2b3f5c08bd0abbd4326ecf3e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-assessment-staff-duties",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Staff setting summative assessment must: declare whether/how students can use AI; review assessment design for alignment with permitted AI use; ensure equality of baseline AI tool provision where authorised; specify declaration forms for student AI use; only identify suspected unauthorised AI use through marking or university-endorsed detection tools (none currently endorsed); and handle misconduct under usual disciplinary regulations.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:57Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-assessment-staff-duties",
+          "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+          "evidenceSnippet": "Those setting summative assessment must\n- declare whether and how students can use AI in summative assessment, e.g. by a category system for different assignments on courses.\n- review their summative assessment design and criteria by task to ensure alignment with the permitted use of AI\n- where students are authorised to use AI tools for their summative assessments, ensure that there is an equality of baseline provision of appropriate AI tools.\n- specify the forms of declaration expected of students\n- only identify suspected unauthorised use of AI in summative assessment through the marking process or through AI detection tools that have university endorsement. NB. as at the date of the l...",
+          "snippetLocation": "Staff duties section",
+          "retrievedAt": "2026-05-06T00:57:57Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-2",
+            "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+            "citationTitle": "AI use in summative assessment",
+            "publisher": "University of Oxford Education Committee",
+            "retrievedAt": "2026-05-06T00:57:57Z",
+            "trackerCheckedAt": "2026-05-06T00:57:57Z",
+            "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-pgr-declaration-requirement",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Oxford requires postgraduate research students to include a statement on their use of generative AI in their final thesis submission.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:57Z",
+      "lastChangedAt": "2026-05-06T01:57:05Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-pgr-declaration-requirement",
+          "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+          "evidenceSnippet": "Students are required to include a statement on their use of Gen AI in their final submitted thesis. This is effective as of submission in Trinity Term 2026, but it is recommended that such a statement is included in every thesis submitted from the point of publication of this guidance. The statement should be placed immediately after the abstract. The statement must include a formal declaration that any Gen AI use complies with University, divisional and (where applicable) departmental guidance, where and how Gen AI has been used in preparation of the thesis and summarising how specific uses of Gen AI will be referenced in the text",
+          "snippetLocation": "Acknowledging and referencing use of generative AI tools section",
+          "retrievedAt": "2026-05-06T00:57:57Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-5",
+            "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+            "citationTitle": "Generative AI Use — Mathematical, Physical and Life Sciences Division",
+            "publisher": "University of Oxford, MPLS Division",
+            "retrievedAt": "2026-05-06T00:57:57Z",
+            "trackerCheckedAt": "2026-05-06T00:57:57Z",
+            "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-assessment-student-duties",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Students undertaking summative assessment must: complete assessment in line with the AI use declaration for each assignment; acknowledge their AI use via a formal declaration in the prescribed format; and understand that submitting work breaching AI specifications constitutes cheating and may constitute plagiarism, handled under usual disciplinary regulations.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:57Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-assessment-student-duties",
+          "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+          "evidenceSnippet": "Students undertaking summative assessment must\n- complete summative assessment in line with the declaration as to whether and how AI can be used in each specific assignment they will complete for their course.\n- acknowledge their use of AI as part of the summative assessment submission and use a formal declaration in the format prescribed by the assessment setter.\n- be aware that submitting work that breaches the specifications defined for a particular assignment constitutes cheating and may constitute plagiarism; cases of suspected unauthorised use of AI will be handled under the usual disciplinary Regulations and using the associated processes.",
+          "snippetLocation": "Student duties section",
+          "retrievedAt": "2026-05-06T00:57:57Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-2",
+            "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+            "citationTitle": "AI use in summative assessment",
+            "publisher": "University of Oxford Education Committee",
+            "retrievedAt": "2026-05-06T00:57:57Z",
+            "trackerCheckedAt": "2026-05-06T00:57:57Z",
+            "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-three-principles",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "The University's policy on AI use in summative assessment is based on three principles endorsed by Education Committee in Trinity term 2025: (1) educational practice must be grounded in values of integrity, honesty and transparency, which must be clearly articulated and frequently discussed; (2) every discrete unit of assessment must be carefully designed to be fit for its specific purposes, clearly articulated to students; (3) every summative assessment must be accompanied by a clear explanation of what appropriate assistance is permitted and what is forbidden, specifying how students should report assistance received.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:57Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-three-principles",
+          "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+          "evidenceSnippet": "The policy is based on three principles for acceptable use of AI which were endorsed by Education Committee during Trinity term 2025:\n- Educational practice in teaching and assessment must be grounded in values of integrity, honesty and transparency. These values need to be clearly articulated and frequently discussed.\n- Every discrete unit of assessment must be carefully designed to be fit for its specific purposes. These purposes need to be clearly articulated to students.\n- Every element of summative assessment must be accompanied by a clear explanation of what appropriate assistance is permitted and what is forbidden. Where assistance is permitted, the assignment should specify exactl...",
+          "snippetLocation": "Three principles section",
+          "retrievedAt": "2026-05-06T00:57:57Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-2",
+            "sourceUrl": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+            "citationTitle": "AI use in summative assessment",
+            "publisher": "University of Oxford Education Committee",
+            "retrievedAt": "2026-05-06T00:57:57Z",
+            "trackerCheckedAt": "2026-05-06T00:57:57Z",
+            "snapshotHash": "dc16c703b23186b5ab18fa8cf527cbe294fbe4b153872be7f2a0752a6f28805c",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-security-risk-assessment",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "All cloud-based generative AI tools must be subject to a security risk assessment before being used with University information. Free and open-source services generally cannot complete a full assessment and should not be used for confidential information.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:58Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-security-risk-assessment",
+          "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+          "evidenceSnippet": "Before any processing of Internal or Confidential information using generative AI services, the following steps must be taken to mitigate risk.\n1. As with all service providers holding or processing university information, information supplied to the tool in the form of questions or other artefacts is typically stored by the third-party service provider and is subject to the threats from cyber criminals and other malicious actors, such as hostile nation states. Therefore, all cloud-based Generative AI tools should be subject to a security risk assessment before being used. The Information Security GRC Team has a TPSA tool to help complete an assessment. It is generally not possible to com...",
+          "snippetLocation": "Risk to confidentiality section",
+          "retrievedAt": "2026-05-06T00:57:58Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-4",
+            "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+            "citationTitle": "Use Generative AI services safely",
+            "publisher": "University of Oxford Information Security Team",
+            "retrievedAt": "2026-05-06T00:57:58Z",
+            "trackerCheckedAt": "2026-05-06T00:57:58Z",
+            "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-approved-platforms-confidential",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "ChatGPT Edu and Google Gemini, when licensed via the AI Competency Centre, have been approved for processing of Confidential University data by the Information Security team. University data processed through these licensed platforms will not be used to train AI models. Confidential data must only be used with the University's approved, SSO-protected platforms.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:58Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-chatgpt-edu-approved",
+          "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+          "evidenceSnippet": "ChatGPT Edu, licensed via the AI Competency Centre, has been approved for processing of Confidential University data by the Information Security team. University data processed by ChatGPT Edu under an AI Competency Centre licence will not be used to train the AI model.",
+          "snippetLocation": "ChatGPT Edu section",
+          "retrievedAt": "2026-05-06T00:57:58Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-4",
+            "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+            "citationTitle": "Use Generative AI services safely",
+            "publisher": "University of Oxford Information Security Team",
+            "retrievedAt": "2026-05-06T00:57:58Z",
+            "trackerCheckedAt": "2026-05-06T00:57:58Z",
+            "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "evd-university-of-oxford-ai-gemini-approved",
+          "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+          "evidenceSnippet": "Google Gemini, licensed via the AI Competency Centre, has been approved for processing of Confidential University data by the Information Security team. University data processed by Google Gemini under an AI Competency Centre licence will not be used to train the AI model.",
+          "snippetLocation": "Google Gemini section",
+          "retrievedAt": "2026-05-06T00:57:58Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-4",
+            "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+            "citationTitle": "Use Generative AI services safely",
+            "publisher": "University of Oxford Information Security Team",
+            "retrievedAt": "2026-05-06T00:57:58Z",
+            "trackerCheckedAt": "2026-05-06T00:57:58Z",
+            "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "evd-university-of-oxford-ai-confidential-sso",
+          "sourceUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "6abb77311f43f70e8af1d23ccb75bbd35bd34098129bb0260b38de9d4effb1f2",
+          "evidenceSnippet": "The University provides several enterprise-grade AI tools that have passed internal Third-Party Security Assessments (TPSA). Accessing these tools via Single Sign-On (SSO) ensures that user data is not used to train external AI models. Confidential data must only be used with the University's approved, SSO-protected platforms.",
+          "snippetLocation": "University-supported AI Platforms section",
+          "retrievedAt": "2026-05-06T00:57:58Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-6",
+            "sourceUrl": "https://www.it.ox.ac.uk/article/university-ai-provision-2026",
+            "citationTitle": "The University's AI provision | IT Services",
+            "publisher": "University of Oxford IT Services",
+            "retrievedAt": "2026-05-06T00:57:58Z",
+            "trackerCheckedAt": "2026-05-06T00:57:58Z",
+            "snapshotHash": "6abb77311f43f70e8af1d23ccb75bbd35bd34098129bb0260b38de9d4effb1f2",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-pgr-prohibited-uses",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "For PGR students, the following uses of generative AI are not permitted in summative assessments: substantive original writing by GenAI (verbatim or closely paraphrased for chapters or parts thereof) which constitutes plagiarism; using AI to produce plots or data visualisations directly from prompts; and entering private or confidential data into third-party AI tools.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:57Z",
+      "lastChangedAt": "2026-05-06T01:57:05Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-pgr-prohibited-uses",
+          "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+          "evidenceSnippet": "Substantive original writing by Gen AI, including either verbatim or closely paraphrased use of Gen AI content, for, e.g., chapters, or parts of chapters, including introduction or conclusion chapters or for a literature review, would fall under the definition of plagiarism or be otherwise a failure of research integrity and is therefore not permissible.\nThe use of generative AI to produce plots or data visualisations directly from prompts is prohibited.\nPrivate or confidential data must not be entered into third-party AI tools.",
+          "snippetLocation": "Non-Permissible use section",
+          "retrievedAt": "2026-05-06T00:57:57Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-5",
+            "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+            "citationTitle": "Generative AI Use — Mathematical, Physical and Life Sciences Division",
+            "publisher": "University of Oxford, MPLS Division",
+            "retrievedAt": "2026-05-06T00:57:57Z",
+            "trackerCheckedAt": "2026-05-06T00:57:57Z",
+            "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-custom-gpt-rules",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "External custom GPTs should not be used to process confidential University data or sensitive personal data. No non-public University data (including confidential, internal, or personal data) may be incorporated in any custom GPT shared with external users.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:58Z",
+      "lastChangedAt": "2026-05-06T01:57:05Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-custom-gpt-external",
+          "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+          "evidenceSnippet": "External custom GPTs should not be used to process confidential University data or sensitive personal data. If you are considering inputting internal University data to an external custom GPT, please discuss this with the Information Security GRC team in advance. Any inputting of personal data to an external custom GPT should also be discussed with the Information Compliance team.",
+          "snippetLocation": "Accessing external custom GPTs section",
+          "retrievedAt": "2026-05-06T00:57:58Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-4",
+            "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+            "citationTitle": "Use Generative AI services safely",
+            "publisher": "University of Oxford Information Security Team",
+            "retrievedAt": "2026-05-06T00:57:58Z",
+            "trackerCheckedAt": "2026-05-06T00:57:58Z",
+            "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        },
+        {
+          "id": "evd-university-of-oxford-ai-custom-gpt-sharing",
+          "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+          "evidenceSnippet": "Be aware that any information incorporated in a custom GPT, either as Instructions specifying the behaviour of the GPT or as Documents uploaded to the GPT, may be accessed by users of the custom GPT. No non-public University data should be incorporated in any custom GPT that you intend to share with external users. For the avoidance of doubt, this includes any confidential or internal University data, as well as any personal data.",
+          "snippetLocation": "Sharing custom GPTs externally section",
+          "retrievedAt": "2026-05-06T00:57:58Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-4",
+            "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+            "citationTitle": "Use Generative AI services safely",
+            "publisher": "University of Oxford Information Security Team",
+            "retrievedAt": "2026-05-06T00:57:58Z",
+            "trackerCheckedAt": "2026-05-06T00:57:58Z",
+            "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-transcription-bots",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "Unapproved AI transcription bots should not be used in Teams meetings. The inbuilt Teams Transcription facility or Microsoft Copilot may be used subject to appropriate data protection considerations. Other AI transcription bot services should be avoided, and meeting organisers should set options to prevent participants from adding unapproved transcription bots.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:58Z",
+      "lastChangedAt": "2026-05-06T01:57:44Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-transcription-bots",
+          "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+          "evidenceSnippet": "There should be no use of unapproved AI transcription bots in Teams meetings by any participants.\nIt is permissible to record meetings using the inbuilt Teams Transcription facility or Microsoft's Copilot subject to appropriate data protection considerations.\nUse of any AI transcription bot services other than the inbuilt Teams Transcription or Microsoft's Copilot should be avoided.\nMeeting options should be set by the organisers so as to prevent internal or external meeting participants from adding unapproved transcription bots.",
+          "snippetLocation": "AI transcription bots in meetings section",
+          "retrievedAt": "2026-05-06T00:57:58Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-4",
+            "sourceUrl": "https://www.infosec.ox.ac.uk/use-generative-ai-services-such-as-chatgpt-safely",
+            "citationTitle": "Use Generative AI services safely",
+            "publisher": "University of Oxford Information Security Team",
+            "retrievedAt": "2026-05-06T00:57:58Z",
+            "trackerCheckedAt": "2026-05-06T00:57:58Z",
+            "snapshotHash": "9bbf71bffc824494cb7a1d67b222766e18ac06caeb82946a797b485c0561c17e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-pgr-permitted-uses",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "For PGR summative assessment (transfer, confirmation, thesis), the following AI uses are permitted without declaration: local editing tools (grammar assistants, spell-checkers, code debuggers making small local changes); AI for background research, language translation, bibliography creation, and general subject understanding; and AI for coding where coding serves a research purpose but is not the substantive output. Students remain responsible for correctness of any code used.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:57Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-pgr-permitted-uses",
+          "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+          "evidenceSnippet": "The use of local editing tools—such as grammar assistants, code debuggers, and spell-checkers—is permitted and need not be declared. These tools only make small, local changes (for example, fixing spelling, grammar, or small pieces of code), usually affecting just a few words or tokens at a time.\nThe use of AI tools for background research, language translation, creation of bibliography indices and general subject understanding is allowed and does not have to be declared.\nUse of Gen AI for coding purposes is permitted, where the coding serves a purpose in the research but is not the substantive output of the project.",
+          "snippetLocation": "Permissible use section",
+          "retrievedAt": "2026-05-06T00:57:57Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-5",
+            "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+            "citationTitle": "Generative AI Use — Mathematical, Physical and Life Sciences Division",
+            "publisher": "University of Oxford, MPLS Division",
+            "retrievedAt": "2026-05-06T00:57:57Z",
+            "trackerCheckedAt": "2026-05-06T00:57:57Z",
+            "snapshotHash": "6919aedf33483a2f0ea58ff0ecf690348f7d294d0d20bba8049f6e53dea1fa06",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-university-of-oxford-ai-plagiarism-guidance",
+      "entitySlug": "university-of-oxford",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Unauthorised use of generative AI falls under the University's plagiarism regulations and is subject to academic penalties in summative assessments. Students must learn and practise academic skills of note-taking and clear attribution to differentiate their own work from AI-derived material. Where AI use is authorised, students should give clear acknowledgment of how it has been used.",
+      "confidence": 0.85,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T00:57:57Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-university-of-oxford-ai-plagiarism-guidance",
+          "sourceUrl": "https://ctl.ox.ac.uk/ai-tools-in-teaching",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9414bd7307cd58218608ce57b4e8bc2f6f1dd910fb69e1747ffcbc21fb7ca0d9",
+          "evidenceSnippet": "Students using AI during their studies must learn and practise the same academic skills of note-taking and clear attribution which are safeguards against plagiarism, ensuring clear differentiation of their own work from any text or material derived from generative AI tools. Unauthorised use of AI falls under the plagiarism regulations and would be subject to academic penalties in summative assessments. Where the use of generative AI in preparing work for examination has been authorised by the department, faculty or programme, students should give clear acknowledgment of how it has been used in their work.",
+          "snippetLocation": "Generative AI tools and plagiarism section",
+          "retrievedAt": "2026-05-06T00:57:57Z",
+          "attribution": {
+            "id": "ss-university-of-oxford-3",
+            "sourceUrl": "https://ctl.ox.ac.uk/ai-tools-in-teaching",
+            "citationTitle": "An introduction to the use of generative AI tools in teaching",
+            "publisher": "University of Oxford Centre for Teaching and Learning",
+            "retrievedAt": "2026-05-06T00:57:57Z",
+            "trackerCheckedAt": "2026-05-06T00:57:57Z",
+            "snapshotHash": "9414bd7307cd58218608ce57b4e8bc2f6f1dd910fb69e1747ffcbc21fb7ca0d9",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    }
+  ],
+  "suggestedCitation": "University AI Policy Tracker. \"University of Oxford AI Policy Tracker record.\" Last checked July 18, 2026. http://localhost:3000/universities/university-of-oxford"
+}

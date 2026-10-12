@@ -1,0 +1,95 @@
+{
+  "policy_presence": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-stanford-university-bca-honor-code-framework",
+      "clm-stanford-university-bca-genai-guidance"
+    ],
+    "summary": "Stanford Board on Conduct Affairs (BCA) establishes a university-wide Honor Code framework treating AI analogously to assistance from another person. Individual schools (GSB, Law, MD, PWR) publish specific unit guidelines."
+  },
+  "ai_disclosure": {
+    "status": "recommended",
+    "claimIds": [
+      "clm-stanford-university-bca-genai-guidance",
+      "clm-stanford-university-md-ai-policy",
+      "clm-stanford-university-law-school-ai-policy"
+    ],
+    "summary": "BCA says students should acknowledge non-incidental AI assistance. MD/MSPA requires disclosure and citation of substantial contributions. Law requires advance disclosure and written permission in its default policy."
+  },
+  "coursework": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-stanford-university-bca-honor-code-framework",
+      "clm-stanford-university-gsb-ai-policy",
+      "clm-stanford-university-pwr-genai-policy",
+      "clm-stanford-university-law-school-ai-policy"
+    ],
+    "summary": "Instructors set course-specific permissions. Having AI complete coursework without permission is an Honor Code breach. PWR limits major composition; GSB MBA/MSx courses cannot ban AI for take-home work (in-class differs; PhD/undergraduate follow university BCA guidance)."
+  },
+  "exams": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-stanford-university-gsb-ai-policy",
+      "clm-stanford-university-law-school-ai-policy",
+      "clm-stanford-university-md-ai-policy"
+    ],
+    "summary": "GSB MBA/MSx instructors may not ban AI for take-home exams; in-class rules may differ. Law’s default policy requires advance written approval. MD/MSPA prohibits closed-book/no-internet use unless instructors explicitly advise otherwise."
+  },
+  "privacy_data_entry": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-stanford-university-md-phi-prohibition",
+      "clm-stanford-university-uit-responsible-ai",
+      "clm-stanford-university-ucomm-ai-guidelines"
+    ],
+    "summary": "Public AI tools must not receive PHI. AI Playground is approved for High-Risk non-PHI, with PHI review pending. Institutional services require approval for the data class; this is separate from clinical and assessment permission."
+  },
+  "academic_integrity": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-stanford-university-bca-honor-code-framework",
+      "clm-stanford-university-law-school-ai-policy"
+    ],
+    "summary": "BCA treats AI like human assistance under its default guidance. OCS recommends advance notice for detection software. At Law, unauthorized use may result in a lower grade, including F, and/or OCS referral."
+  },
+  "approved_tools": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "cl-stanford-university-chatgpt-18",
+      "cl-stanford-university-claude-19",
+      "cl-stanford-university-google-gemini-20"
+    ],
+    "summary": "UIT provides institutional access to OpenAI ChatGPT Edu, Anthropic Claude for Education, and Google Gemini Enterprise at no cost for SUNet ID holders through August 2027. Tool availability is separate from classroom permission."
+  },
+  "named_ai_services": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "cl-stanford-university-chatgpt-18",
+      "cl-stanford-university-claude-19",
+      "cl-stanford-university-google-gemini-20"
+    ],
+    "summary": "Institutional ChatGPT Edu, Claude for Education, and Gemini Enterprise are centrally provisioned. ChatGPT Edu and Gemini Enterprise have BAA/DRA PHI clearance; Claude for Education does not."
+  },
+  "teaching_guidance": {
+    "status": "recommended",
+    "claimIds": [
+      "clm-stanford-university-bca-genai-guidance",
+      "claim-stanford-university-maintenance-20260604-3"
+    ],
+    "summary": "Faculty are advised to specify AI expectations in course syllabi and provide advance notice if using AI detection tools. Administrative Guide controls operational boundaries."
+  },
+  "research_guidance": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-stanford-university-md-ai-policy"
+    ],
+    "summary": "For MD/MSPA, substantial AI contributions must be disclosed and cited; AI may not be an author. These are School of Medicine educational rules, not a verified university-wide research publication policy."
+  },
+  "security_procurement": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-stanford-university-uit-responsible-ai"
+    ],
+    "summary": "UIT distinguishes data-risk approval for institutional tools from classroom permission. UComm audience-facing tools and workflows require the applicable human review and approval; this guidance has a communications scope."
+  }
+}

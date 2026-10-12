@@ -25,7 +25,7 @@
       "sourceHealth": [
         {
           "severity": "warning",
-          "count": 450,
+          "count": 448,
           "label": "Warning"
         },
         {
@@ -35,7 +35,7 @@
         },
         {
           "severity": "error",
-          "count": 1,
+          "count": 3,
           "label": "Error"
         }
       ],
@@ -62,12 +62,12 @@
         },
         {
           "theme": "source_status",
-          "count": 147,
+          "count": 148,
           "label": "Source status"
         },
         {
           "theme": "research",
-          "count": 142,
+          "count": 143,
           "label": "Research"
         },
         {
@@ -88,6 +88,152 @@
       ]
     },
     "records": [
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/stanford-university",
+        "changeUrl": "/changes/stanford-university",
+        "publicationKind": "scoped_record_correction",
+        "changeSummary": "Stanford combines BCA guidance with distinct GSB, Law, MD/MSPA and PWR rules. GSB MBA/MSx take-home AI use cannot be banned by instructors; in-class rules differ. Institutional tool access is separate from assessment and clinical permission.",
+        "recordSha256": "69225e6246c7991d6466d24ab6a598766bf8f0193a78b4cab14c36ed99f8ef13",
+        "claimCount": 15,
+        "claimMetadataChanged": 7,
+        "confidence": 0.97,
+        "evidenceChanged": 45,
+        "firstSeenAt": "2026-06-04T13:10:00.000Z",
+        "lastChangedAt": "2026-10-12T00:00:04.318Z",
+        "lastCheckedAt": "2026-10-12T00:00:04.318Z",
+        "name": "Stanford University",
+        "newlyExtractedClaims": 7,
+        "reviewedClaimCount": 15,
+        "policyTextChanged": 8,
+        "primaryDiff": {
+          "changeCategory": "policy_text_changed",
+          "changeExplanation": "Tracker audit correction, not evidence of a new university policy publication. The tracker matched an old claim to a new claim and the claim text or normalized value changed between release snapshots.",
+          "changeType": "claim_modified",
+          "newClaimText": "OpenAI ChatGPT Edu is available to all current Stanford faculty, staff, students, and postdocs with an active SUNet ID at no cost during the university pilot through August 2027. Access requires submitting an activation request form and logging in via Stanford single sign-on (SSO). ChatGPT Edu is approved for Low Risk and High Risk non-PHI data, and is approved for Protected Health Information (PHI) under Stanford's Business Associate Agreement (BAA) and Data Risk Assessment (DRA). Free pilot access is separate from paid higher tiers. Students must follow the applicable school, course and task rules; institutional access is not assessment permission.",
+          "newClaimType": "ai_tool_treatment",
+          "oldClaimText": "OpenAI ChatGPT Edu is listed for Stanford University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+          "oldClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260924-002",
+          "releaseId": "stanford-20261011-codex"
+        },
+        "primaryTheme": "teaching",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/stanford-university.json",
+        "releaseCount": 4,
+        "releaseId": "stanford-20261011-codex",
+        "removed": 23,
+        "reviewState": "agent_reviewed",
+        "slug": "stanford-university",
+        "sourceAdded": 3,
+        "sourceCount": 9,
+        "sourceHealth": "error",
+        "sourceHealthLabel": "Source removed",
+        "sourceRemoved": 7,
+        "sourceSnapshotChanged": 7,
+        "sourceTextChanged": 0,
+        "summary": "Stanford combines BCA guidance with distinct GSB, Law, MD/MSPA and PWR rules. GSB MBA/MSx take-home AI use cannot be banned by instructors; in-class rules differ. Institutional tool access is separate from assessment and clinical permission.",
+        "themes": [
+          {
+            "theme": "teaching",
+            "count": 5,
+            "label": "Teaching"
+          },
+          {
+            "theme": "other",
+            "count": 4,
+            "label": "Other policy"
+          },
+          {
+            "theme": "ai_tool_treatment",
+            "count": 3,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "academic_integrity",
+            "count": 2,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "privacy",
+            "count": 1,
+            "label": "Privacy"
+          }
+        ],
+        "trackerRemovedClaims": 1,
+        "universityUrl": "/universities/stanford-university"
+      },
+      {
+        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-oxford",
+        "changeUrl": "/changes/university-of-oxford",
+        "publicationKind": "scoped_record_correction",
+        "changeSummary": "Oxford requires assessment-specific AI instructions and declarations. MPLS research-student rules have a divisional scope. Research policy distinguishes should declare from conditional must. Some security/tool guidance has migrated; access is not assessment permission.",
+        "recordSha256": "094a6160d3640c7f2880e6140ef203fe0ad53fe7edc5c892caad3e66f7b26ea3",
+        "claimCount": 16,
+        "claimMetadataChanged": 2,
+        "confidence": 0.97,
+        "evidenceChanged": 41,
+        "firstSeenAt": "2026-06-14T18:52:00.000Z",
+        "lastChangedAt": "2026-10-12T00:00:04.318Z",
+        "lastCheckedAt": "2026-10-12T00:00:04.318Z",
+        "name": "University of Oxford",
+        "newlyExtractedClaims": 12,
+        "reviewedClaimCount": 16,
+        "policyTextChanged": 13,
+        "primaryDiff": {
+          "changeCategory": "policy_text_changed",
+          "changeExplanation": "Tracker audit correction, not evidence of a new university policy publication. The tracker matched an old claim to a new claim and the claim text or normalized value changed between release snapshots.",
+          "changeType": "claim_modified",
+          "newClaimText": "Oxford’s public AI Competency Centre tool guide lists ChatGPT Edu as a University SSO platform with a Confidential TPSA rating. Standard access is listed as free; Microsoft 365 Copilot and Google Gemini Pro are separate paid products. The guide has moved to OxIntranet and is no longer maintained; check successor guidance for current terms. Tool access is not assessment permission.",
+          "newClaimType": "ai_tool_treatment",
+          "oldClaimText": "ChatGPT Edu is listed for University of Oxford in an official university AI tools source. Derived availability: allowed. Derived endorsement type: not specified.",
+          "oldClaimType": "ai_tool_treatment",
+          "previousReleaseId": "public-release-20260924-002",
+          "releaseId": "oxford-20261011-codex"
+        },
+        "primaryTheme": "academic_integrity",
+        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-oxford.json",
+        "releaseCount": 3,
+        "releaseId": "oxford-20261011-codex",
+        "removed": 29,
+        "reviewState": "agent_reviewed",
+        "slug": "university-of-oxford",
+        "sourceAdded": 3,
+        "sourceCount": 5,
+        "sourceHealth": "error",
+        "sourceHealthLabel": "Source removed",
+        "sourceRemoved": 4,
+        "sourceSnapshotChanged": 4,
+        "sourceTextChanged": 0,
+        "summary": "Oxford requires assessment-specific AI instructions and declarations. MPLS research-student rules have a divisional scope. Research policy distinguishes should declare from conditional must. Some security/tool guidance has migrated; access is not assessment permission.",
+        "themes": [
+          {
+            "theme": "academic_integrity",
+            "count": 7,
+            "label": "Academic integrity"
+          },
+          {
+            "theme": "ai_tool_treatment",
+            "count": 4,
+            "label": "AI tool treatment"
+          },
+          {
+            "theme": "source_status",
+            "count": 3,
+            "label": "Source status"
+          },
+          {
+            "theme": "other",
+            "count": 1,
+            "label": "Other policy"
+          },
+          {
+            "theme": "research",
+            "count": 1,
+            "label": "Research"
+          }
+        ],
+        "trackerRemovedClaims": 7,
+        "universityUrl": "/universities/university-of-oxford"
+      },
       {
         "canonicalUrl": "https://eduaipolicy.org/universities/imperial-college-london",
         "changeUrl": "/changes/imperial-college-london",
@@ -25964,132 +26110,6 @@
         "universityUrl": "/universities/harvard-university"
       },
       {
-        "canonicalUrl": "https://eduaipolicy.org/universities/university-of-oxford",
-        "changeUrl": "/changes/university-of-oxford",
-        "claimCount": 15,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-18T21:38:39.689Z",
-        "lastChangedAt": "2026-07-18T21:38:39.689Z",
-        "lastCheckedAt": "2026-07-18T21:38:39.689Z",
-        "name": "University of Oxford",
-        "newlyExtractedClaims": 4,
-        "reviewedClaimCount": 15,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "ChatGPT Edu is listed for University of Oxford in an official university AI tools source. Derived availability: allowed. Derived endorsement type: not specified.",
-          "newClaimType": "ai_tool_treatment",
-          "previousReleaseId": "public-release-20260714-002",
-          "releaseId": "public-release-20260715-005"
-        },
-        "primaryTheme": "academic_integrity",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/university-of-oxford.json",
-        "releaseCount": 1,
-        "releaseId": "public-release-20260715-005",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "university-of-oxford",
-        "sourceAdded": 1,
-        "sourceCount": 7,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "University of Oxford is listed as QS 2026 rank 4. University of Oxford has 15 source-backed AI policy claim records from 7 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "academic_integrity",
-            "count": 7,
-            "label": "Academic integrity"
-          },
-          {
-            "theme": "ai_tool_treatment",
-            "count": 4,
-            "label": "AI tool treatment"
-          },
-          {
-            "theme": "other",
-            "count": 4,
-            "label": "Other policy"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/university-of-oxford"
-      },
-      {
-        "canonicalUrl": "https://eduaipolicy.org/universities/stanford-university",
-        "changeUrl": "/changes/stanford-university",
-        "claimCount": 15,
-        "claimMetadataChanged": 0,
-        "confidence": 0.97,
-        "evidenceChanged": 0,
-        "firstSeenAt": "2026-07-18T21:34:39.689Z",
-        "lastChangedAt": "2026-07-18T21:34:39.689Z",
-        "lastCheckedAt": "2026-07-18T21:34:39.689Z",
-        "name": "Stanford University",
-        "newlyExtractedClaims": 6,
-        "reviewedClaimCount": 15,
-        "policyTextChanged": 0,
-        "primaryDiff": {
-          "changeCategory": "newly_extracted_claim",
-          "changeExplanation": "This claim was newly extracted or newly promoted in the tracker release. It is not necessarily newly published by the university.",
-          "changeType": "claim_added",
-          "newClaimText": "Stanford University Communications says its AI guidelines for marketing and communications complement existing university policy, and if they conflict with the Administrative Guide, the Administrative Guide controls.",
-          "newClaimType": "other",
-          "previousReleaseId": "public-release-20260526-003",
-          "releaseId": "public-release-20260612-001"
-        },
-        "primaryTheme": "teaching",
-        "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/universities/stanford-university.json",
-        "releaseCount": 2,
-        "releaseId": "public-release-20260612-001",
-        "removed": 0,
-        "reviewState": "agent_reviewed",
-        "slug": "stanford-university",
-        "sourceAdded": 1,
-        "sourceCount": 15,
-        "sourceHealth": "warning",
-        "sourceHealthLabel": "Source changed",
-        "sourceRemoved": 0,
-        "sourceSnapshotChanged": 0,
-        "sourceTextChanged": 0,
-        "summary": "Stanford University is listed as QS 2026 rank 3. Stanford University has 15 source-backed AI policy claim records from 15 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
-        "themes": [
-          {
-            "theme": "teaching",
-            "count": 5,
-            "label": "Teaching"
-          },
-          {
-            "theme": "other",
-            "count": 4,
-            "label": "Other policy"
-          },
-          {
-            "theme": "ai_tool_treatment",
-            "count": 3,
-            "label": "AI tool treatment"
-          },
-          {
-            "theme": "academic_integrity",
-            "count": 2,
-            "label": "Academic integrity"
-          },
-          {
-            "theme": "privacy",
-            "count": 1,
-            "label": "Privacy"
-          }
-        ],
-        "trackerRemovedClaims": 0,
-        "universityUrl": "/universities/stanford-university"
-      },
-      {
         "canonicalUrl": "https://eduaipolicy.org/universities/the-university-of-western-australia",
         "changeUrl": "/changes/the-university-of-western-australia",
         "claimCount": 13,
@@ -29739,17 +29759,17 @@
       }
     ],
     "summary": {
-      "claimCount": 4028,
-      "newlyExtractedClaimsCount": 1630,
-      "policyTextChangedCount": 48,
+      "claimCount": 4029,
+      "newlyExtractedClaimsCount": 1639,
+      "policyTextChangedCount": 69,
       "recordCount": 463,
-      "reviewedClaimCount": 4026,
+      "reviewedClaimCount": 4027,
       "sourceHealthIssueCount": 451,
-      "sourceSnapshotChangedCount": 129,
+      "sourceSnapshotChangedCount": 140,
       "sourceTextChangedCount": 0
     }
   },
-  "generatedAt": "2026-10-11T14:17:07.115Z",
+  "generatedAt": "2026-10-12T00:08:49.094Z",
   "license": "CC-BY-4.0",
   "limitations": [
     "Change records are tracker metadata and do not publish official source text.",

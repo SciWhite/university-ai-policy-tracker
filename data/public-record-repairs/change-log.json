@@ -22,6 +22,28 @@
       "previousReleaseId": "public-release-20260924-002",
       "publicationKind": "scoped_record_correction",
       "summary": "Independent Imperial audit correction: institutional dAIsy model access, assessment disclosure, Copilot retention and search conditions, 2026–27 detector guidance, scoped misconduct appeals, and a student summary held for renewed review."
+    },
+    {
+      "slug": "stanford-university",
+      "revision": "stanford-20261011-codex",
+      "publishedAt": "2026-10-12T00:00:04.318Z",
+      "recordSha256": "69225e6246c7991d6466d24ab6a598766bf8f0193a78b4cab14c36ed99f8ef13",
+      "baselineClaimsFingerprint": "295468d92021e9c4d7c199c6ca7189eed2d5585a9d6e664772eb2220f3f3afd8",
+      "pinFile": "stanford-current.json",
+      "previousReleaseId": "public-release-20260924-002",
+      "publicationKind": "scoped_record_correction",
+      "summary": "Stanford combines BCA guidance with distinct GSB, Law, MD/MSPA and PWR rules. GSB MBA/MSx take-home AI use cannot be banned by instructors; in-class rules differ. Institutional tool access is separate from assessment and clinical permission."
+    },
+    {
+      "slug": "university-of-oxford",
+      "revision": "oxford-20261011-codex",
+      "publishedAt": "2026-10-12T00:00:04.318Z",
+      "recordSha256": "094a6160d3640c7f2880e6140ef203fe0ad53fe7edc5c892caad3e66f7b26ea3",
+      "baselineClaimsFingerprint": "7fe89dd2478f017b26b46f0e14b07b2afb28c508ee85d9da874d2727d2ad713f",
+      "pinFile": "oxford-current.json",
+      "previousReleaseId": "public-release-20260924-002",
+      "publicationKind": "scoped_record_correction",
+      "summary": "Oxford requires assessment-specific AI instructions and declarations. MPLS research-student rules have a divisional scope. Research policy distinguishes should declare from conditional must. Some security/tool guidance has migrated; access is not assessment permission."
     }
   ]
 }

@@ -1,12 +1,12 @@
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {publicEntitySummarySchema, type PublicEntitySummary} from '@uapt/shared';
+import {publicEntitySummarySchema, policyAnalysisDimensionKeySchema, analysisDimensionStatusSchema, policySnapshotSchema, type PublicEntitySummary} from '@uapt/shared';
 import {readRecordCorrectionChanges, readCorrectionChangeCache} from './record-correction-changes';
 import {reviewedClaimsFingerprint} from './index-recovery-basis';
 
 // Explicit reviewed scope. This is not a loader for private crawl candidates.
-export const repairedUniversitySlugs = ['massachusetts-institute-of-technology', 'imperial-college-london'] as const;
+export const repairedUniversitySlugs = ['massachusetts-institute-of-technology', 'imperial-college-london', 'stanford-university', 'university-of-oxford'] as const;
 export function isRepairedUniversity(slug: string) {
   return (repairedUniversitySlugs as readonly string[]).includes(slug);
 }
@@ -31,7 +31,16 @@ export async function applyPublishedRecordRepairs(repoRoot: string, summaries: P
   if (new Set(repaired.claims.map(c => c.id)).size !== repaired.claims.length) throw new Error('Duplicate repaired claim');
   const withMit = summaries.map(s => s.entity.slug === manifest.slug ? repaired : s);
   try { await readFile(path.join(repoRoot, 'data/public-record-repairs/imperial-current.json')); } catch (error) { if ((error as NodeJS.ErrnoException).code === 'ENOENT') return withMit; throw error; }
-  return applyImperialPublishedRepair(repoRoot, withMit);
+  let repairedSummaries = await applyImperialPublishedRepair(repoRoot, withMit);
+  for (const [slug, prefix] of [['stanford-university', 'stanford'], ['university-of-oxford', 'oxford']] as const) {
+    const pin = JSON.parse(await readFile(path.join(repoRoot, 'data/public-record-repairs', `${prefix}-current.json`), 'utf8'));
+    const loaded = await loadImperialRepair(repoRoot, pin.revision, true, slug);
+    if (pin.recordSha256 !== loaded.manifest.recordSha256 || pin.analysisSha256 !== loaded.manifest.analysisSha256 || pin.snapshotSha256 !== loaded.manifest.snapshotSha256) throw new Error('Scoped repair pin mismatch');
+    const base = repairedSummaries.find(item => item.entity.slug === slug);
+    if (!base || reviewedClaimsFingerprint(base.claims) !== pin.baselineClaimsFingerprint || base.claims.some(c => !loaded.repaired.claims.some(r => r.id === c.id))) throw new Error('Scoped repair baseline or complete Claim ID set changed');
+    repairedSummaries = repairedSummaries.map(item => item.entity.slug === slug ? loaded.repaired : item);
+  }
+  return repairedSummaries;
 }
 
 
@@ -49,10 +58,10 @@ export function getRepairAnalysisContext(summary: PublicEntitySummary): RepairAn
   return context;
 }
 function safeRevision(revision: string) {
-  if (!/^imperial-(?:candidate-)?[a-z0-9-]+$/.test(revision)) throw new Error('Unsafe Imperial repair revision');
+  if (!/^(?:imperial|stanford|oxford)-(?:candidate-)?[a-z0-9-]+$/.test(revision)) throw new Error('Unsafe Imperial repair revision');
   return revision;
 }
-export async function loadImperialRepair(repoRoot: string, revision: string, publicationApproved: boolean) {
+export async function loadImperialRepair(repoRoot: string, revision: string, publicationApproved: boolean, expectedSlug = 'imperial-college-london') {
   const dir = path.join(repoRoot, 'data/public-record-repairs', safeRevision(revision));
   const [recordBytes, analysisBytes, snapshotBytes, manifestBytes] = await Promise.all([
     readFile(path.join(dir, 'record.json')), readFile(path.join(dir, 'analysis-dimensions.json')),
@@ -60,7 +69,7 @@ export async function loadImperialRepair(repoRoot: string, revision: string, pub
   ]);
   const manifest = JSON.parse(manifestBytes.toString());
   const hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
-  if (manifest.schemaVersion !== 'uapt-public-record-repairs-v1' || manifest.slug !== 'imperial-college-london' ||
+  if (manifest.schemaVersion !== 'uapt-public-record-repairs-v1' || manifest.slug !== expectedSlug ||
       manifest.revision !== revision || manifest.publicationApproved !== publicationApproved ||
       manifest.recordSha256 !== hash(recordBytes) || manifest.analysisSha256 !== hash(analysisBytes) ||
       manifest.snapshotSha256 !== hash(snapshotBytes)) throw new Error('Imperial repair artifact identity mismatch');
@@ -70,6 +79,9 @@ export async function loadImperialRepair(repoRoot: string, revision: string, pub
   if (!publicationApproved && repaired.claims.some(c => c.reviewState !== 'needs_review')) throw new Error('Candidate review state must remain held');
   if (publicationApproved && (manifest.independentAcceptance !== 'passed' || repaired.claims.some(c => !['agent_reviewed','human_reviewed'].includes(c.reviewState)))) throw new Error('Published repair lacks reviewed claims');
   const dimensions = JSON.parse(analysisBytes.toString()) as RepairAnalysisContext['dimensions'];
+  if (Object.keys(dimensions).length !== policyAnalysisDimensionKeySchema.options.length) throw new Error('Incomplete repair analysis dimensions');
+  for (const [key, item] of Object.entries(dimensions)) { policyAnalysisDimensionKeySchema.parse(key); analysisDimensionStatusSchema.parse(item.status); if (item.claimIds.some(id => !repaired.claims.some(claim => claim.id === id))) throw new Error('Missing repair analysis basis'); }
+  policySnapshotSchema.parse(JSON.parse(snapshotBytes.toString()));
   contexts.set(repaired, {revision, publicationApproved, fingerprint:claimsDigest(repaired), dimensions});
   return {repaired, manifest, snapshot:JSON.parse(snapshotBytes.toString())};
 }

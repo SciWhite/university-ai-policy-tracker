@@ -13,7 +13,6 @@ import {getLatestReleaseDiff,getReleaseDiff,getLatestEntityReleaseDiff,getEntity
 import {getStagedRecentChangesEnvelope} from '@/lib/staged-public-data';
 import {buildRecentChangesWidgetFromPublicChanges} from '@/lib/developer-surfaces';
 import {GET as recentChanges} from '@/app/api/public/v1/recent-changes.json/route';
-import {GET as search,OPTIONS as searchOptions} from '@/app/api/public/v1/search.json/route';
 import {GET as snapshotIndex} from '@/app/api/public/v1/policy-snapshots/index.json/route';
 
 import {GET as claimsEndpoint} from '@/app/api/public/v1/claims/[slug]/route';
@@ -24,7 +23,7 @@ import {GET as pageQuality} from '@/app/api/public/v1/analysis/page-quality.json
 import {getUniversityStatusWidget,getReviewStateWidget,getPolicyCoverageWidget,getSourceFreshnessWidget,widgetCorsHeaders} from '@/lib/developer-surfaces';
 
 export const dynamic='force-dynamic';
-const slugs=['massachusetts-institute-of-technology','imperial-college-london'];
+const slugs=['massachusetts-institute-of-technology','imperial-college-london','stanford-university','university-of-oxford'];
 export async function GET(request:Request,{params}:{params:Promise<{path:string[]}>}){
  const path=(await params).path.join('/');
  const common:Record<string,()=>Promise<Response>|Response>={
@@ -42,7 +41,7 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
    return NextResponse.json(payload??{error:'Change diff not found'},{status:payload?200:404});
  }
 
- if(path==='search.json')return search(request);
+ if(path==='search.json')return (await import('@/app/api/public/v1/search.json/route')).GET(request);
  if(Object.hasOwn(common,path))return common[path]();
  for (const slug of slugs) {
  if(path===`claims/${slug}`||path===`claims/${slug}.json`)return claimsEndpoint(request,{params:Promise.resolve({slug})});
@@ -67,4 +66,4 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
  return NextResponse.json({error:'Outside bounded repair scope'},{status:404});
 }
 
-export function OPTIONS(){return searchOptions();}
+export async function OPTIONS(){return (await import('@/app/api/public/v1/search.json/route')).OPTIONS();}

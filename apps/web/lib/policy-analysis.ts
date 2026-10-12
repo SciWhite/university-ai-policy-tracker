@@ -517,7 +517,7 @@ function buildDimension(
   definition: DimensionDefinition
 ): PolicyAnalysisDimension {
   const isMit = summary.entity.slug === "massachusetts-institute-of-technology";
-  const imperialContext = summary.entity.slug === "imperial-college-london" ? getRepairAnalysisContext(summary) : undefined;
+  const imperialContext = getRepairAnalysisContext(summary);
   const isImperialCandidate = Boolean(imperialContext);
   const repair = isMit ? mitAnalysisDimensions[definition.key] : imperialContext?.dimensions[definition.key];
   const claims = repair
@@ -581,8 +581,8 @@ function buildDimension(
     ? "Scoped MIT source interpretation from the current reviewed claims listed in basis; historical held provisions are excluded. This derived profile does not replace course instructions or the pending independent student-summary review. Confidence is an uncalibrated extraction signal, not accuracy."
     : isImperialCandidate
     ? isCandidateContext
-      ? "Scoped Imperial College London source interpretation from candidate claims listed in basis; pending independent secondary review (publicationApproved=false). This derived profile does not replace course instructions or assessment briefs. Confidence is an uncalibrated extraction signal, not accuracy."
-      : "Scoped Imperial College London source interpretation from reviewed claims listed in basis. This derived profile does not replace course instructions or assessment briefs. Confidence is an uncalibrated extraction signal, not accuracy."
+      ? "Scoped university source interpretation from candidate claims listed in basis; pending independent secondary review (publicationApproved=false). This derived profile does not replace course instructions or assessment briefs. Confidence is an uncalibrated extraction signal, not accuracy."
+      : "Scoped university source interpretation from reviewed claims listed in basis. This derived profile does not replace course instructions or assessment briefs. Confidence is an uncalibrated extraction signal, not accuracy."
     : buildDimensionExplanation(definition, status, claims);
 
   const normalizedValue = isMit

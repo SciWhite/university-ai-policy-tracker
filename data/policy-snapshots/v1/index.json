@@ -76,10 +76,10 @@
       "universityName": "Stanford University",
       "file": "universities/stanford-university.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/stanford-university.json",
-      "overallStatus": "strong",
+      "overallStatus": "needs_review",
       "releaseId": "public-release-20260924-002",
-      "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "a366bd08a1736fb5f9076a96a2d7f53088f558300fe09b5b28c64200faf632c3",
+      "generatedAt": "2026-10-12T00:00:04.318Z",
+      "basisFingerprint": "d3cc1902545dc8012b76ed82cddb33b5bfc7677f75328acd6e87776ba2150d29",
       "locales": []
     },
     {
@@ -142,10 +142,10 @@
       "universityName": "University of Oxford",
       "file": "universities/university-of-oxford.json",
       "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-oxford.json",
-      "overallStatus": "strong",
+      "overallStatus": "needs_review",
       "releaseId": "public-release-20260924-002",
-      "generatedAt": "2026-08-01T16:46:58.055Z",
-      "basisFingerprint": "6868fe473ad639398a0078b06d1e19dd358ae8c52e4c92dc4e29745daa1ded7b",
+      "generatedAt": "2026-10-12T00:00:04.318Z",
+      "basisFingerprint": "e461133c1e7e08758b1b53e87ad4ebcb76e1af7978a7596718f2f0f6a06d22c0",
       "locales": []
     },
     {

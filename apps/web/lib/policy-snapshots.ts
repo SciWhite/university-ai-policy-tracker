@@ -412,7 +412,11 @@ async function loadPolicySnapshotBySlug(
   const repoRoot = await findRepoRoot();
   const file = relativeFile ?? `universities/${slug}.json`;
   let raw: unknown;
-  if (isCandidateRepairPreview(slug)) {
+  if (slug === 'stanford-university' || slug === 'university-of-oxford') {
+    const prefix = slug === 'stanford-university' ? 'stanford' : 'oxford';
+    const pin = JSON.parse(await readFile(path.join(repoRoot, 'data/public-record-repairs', `${prefix}-current.json`), 'utf8'));
+    raw = JSON.parse(await readFile(path.join(repoRoot, 'data/public-record-repairs', pin.revision, 'candidate-student-snapshot.json'), 'utf8'));
+  } else if (isCandidateRepairPreview(slug)) {
     raw = (await loadCandidateRecordRepair(repoRoot, slug)).snapshot;
   } else {
     if (!isSafeSnapshotFile(slug, file)) return undefined;

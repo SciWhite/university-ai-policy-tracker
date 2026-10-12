@@ -23,7 +23,7 @@ export async function readRecordCorrectionChanges(repoRoot?: string) {
   if (journal.schemaVersion !== "uapt-record-correction-changes-v1" || !Array.isArray(journal.entries)) throw new Error("Invalid record correction change log");
   const entries = journal.entries as RecordCorrectionChange[];
   if (new Set(entries.map(entry => entry.revision)).size !== entries.length) throw new Error("Duplicate correction change revision");
-  for (const pinFile of ["current.json", "imperial-current.json"]) {
+  for (const pinFile of ["current.json", "imperial-current.json", "stanford-current.json", "oxford-current.json"]) {
     const pin = JSON.parse(await readFile(path.join(root, pinFile), "utf8"));
     const entry = entries.find(item => item.pinFile === pinFile && item.revision === pin.revision);
     if (!entry || entry.slug !== pin.slug || entry.publishedAt !== pin.publishedAt || entry.recordSha256 !== pin.recordSha256 || entry.baselineClaimsFingerprint !== pin.baselineClaimsFingerprint || entry.publicationKind !== "scoped_record_correction" || !entry.summary || !entry.previousReleaseId || pin.publicationApproved !== true) throw new Error(`Published policy repair requires a synchronized change log: ${pin.slug}`);

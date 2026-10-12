@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "uapt-public-record-repairs-v1",
+  "revision": "stanford-20261011-codex",
+  "slug": "stanford-university",
+  "publicationApproved": true,
+  "independentAcceptance": "passed",
+  "createdAt": "2026-10-12T00:00:04.318Z",
+  "publishedAt": "2026-10-12T00:00:04.318Z",
+  "baselineClaimsFingerprint": "295468d92021e9c4d7c199c6ca7189eed2d5585a9d6e664772eb2220f3f3afd8",
+  "recordSha256": "69225e6246c7991d6466d24ab6a598766bf8f0193a78b4cab14c36ed99f8ef13",
+  "analysisSha256": "bcf0de3dec0ca3a93f5c84a1ecaccc0449fe17a6577ff3deb2cc1ad07b24f68e",
+  "snapshotSha256": "10a1e4748cf1e6aaaee5a2a7cafd895e868c98a33f3dbee9b9468a60026ebd84",
+  "scope": "Scoped claim correction; student snapshot held; historical public release retained; full supplementary audit remains partial.",
+  "candidateSnapshotBasisFingerprint": "d3cc1902545dc8012b76ed82cddb33b5bfc7677f75328acd6e87776ba2150d29"
+}

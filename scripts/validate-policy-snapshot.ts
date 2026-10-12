@@ -198,9 +198,9 @@ async function validateCandidateCohort(
     );
     // A scoped repair supersedes the current MIT summary, while the original
     // independent-review artifact continues to describe its preserved snapshot.
-    if (["massachusetts-institute-of-technology", "imperial-college-london"].includes(slug)) {
+    if (["massachusetts-institute-of-technology", "imperial-college-london", "stanford-university", "university-of-oxford"].includes(slug)) {
       const historical = policySnapshotSchema.parse(JSON.parse(await readFile(
-        `data/public-record-repairs/${slug === "imperial-college-london" ? "imperial-20261011" : "mit-20261010"}/historical-student-snapshot.json`, "utf8")));
+        `data/public-record-repairs/${slug === "imperial-college-london" ? "imperial-20261011" : slug === "stanford-university" ? "stanford-20261011-codex" : slug === "university-of-oxford" ? "oxford-20261011-codex" : "mit-20261010"}/historical-student-snapshot.json`, "utf8")));
       assert(reviewDecision.evidence.basisFingerprint === historical.basisFingerprint &&
         JSON.stringify(reviewDecision.evidence.claimIds) === JSON.stringify(historical.basis.claimIds) &&
         JSON.stringify(reviewDecision.evidence.sourceRefs) === JSON.stringify(historical.basis.sources),
@@ -302,7 +302,7 @@ async function validateCandidateCohort(
     }
   }
 
-  const scopedHolds = ["massachusetts-institute-of-technology", "imperial-college-london"].filter(slug => index.entries.some(entry => entry.universitySlug === slug && entry.overallStatus === "needs_review") && reviewBySlug.get(slug)?.decision === "pass").length;
+  const scopedHolds = ["massachusetts-institute-of-technology", "imperial-college-london", "stanford-university", "university-of-oxford"].filter(slug => index.entries.some(entry => entry.universitySlug === slug && entry.overallStatus === "needs_review") && reviewBySlug.get(slug)?.decision === "pass").length;
   assert(
     independentReview.publicationStatusCounts.strong ===
       index.entries.filter((entry) => entry.overallStatus === "strong").length + scopedHolds &&

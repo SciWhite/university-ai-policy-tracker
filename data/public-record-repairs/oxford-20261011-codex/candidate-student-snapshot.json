@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "uapt-policy-snapshot-v1",
+  "apiVersion": "v1",
+  "entityType": "university",
+  "universitySlug": "university-of-oxford",
+  "universityName": "University of Oxford",
+  "canonicalUrl": "https://eduaipolicy.org/universities/university-of-oxford",
+  "publicJsonUrl": "https://eduaipolicy.org/api/public/v1/policy-snapshots/universities/university-of-oxford.json",
+  "canonicalLocale": "en",
+  "generatedAt": "2026-10-12T00:00:04.318Z",
+  "overallStatus": "needs_review",
+  "statusReasons": [
+    "review_incomplete"
+  ],
+  "summary": "Oxford requires assessment-specific AI instructions and declarations. MPLS research-student rules have a divisional scope. Research policy distinguishes should declare from conditional must. Some security/tool guidance has migrated; access is not assessment permission.",
+  "audiences": [
+    "students",
+    "researchers"
+  ],
+  "scope": "mixed",
+  "academicContexts": [
+    "assignment",
+    "exam",
+    "research"
+  ],
+  "dimensions": [
+    {
+      "key": "coursework",
+      "status": "conditionally_allowed",
+      "summary": "Follow the AI-use declaration for each summative assessment. Breaching task specifications constitutes cheating and may constitute plagiarism. Permitted AI use requires the prescribed acknowledgement.",
+      "actions": {
+        "do": [
+          "Follow the applicable unit, course and task instructions.",
+          "Consult the linked original English evidence and current University guidance."
+        ],
+        "dont": [
+          "Do not infer assessment or clinical permission from tool access."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-university-of-oxford-ai-assessment-student-duties",
+          "clm-university-of-oxford-ai-three-principles"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.ox.ac.uk/about/how-we-are-run/policies-and-statements/policy-hub/ai-use-in-summative-assessment",
+            "sourceSnapshotHash": "c725c98b7e7badc9fdf128437fde97c7565fb4043a51894865475beca7a32f38"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exams",
+      "status": "conditionally_allowed",
+      "summary": "Assessment-specific instructions determine permitted AI assistance. Tool access does not grant exam permission. Check the rules for the task, course and department.",
+      "actions": {
+        "do": [
+          "Follow the applicable unit, course and task instructions.",
+          "Consult the linked original English evidence and current University guidance."
+        ],
+        "dont": [
+          "Do not infer assessment or clinical permission from tool access."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-university-of-oxford-ai-assessment-student-duties"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.ox.ac.uk/about/how-we-are-run/policies-and-statements/policy-hub/ai-use-in-summative-assessment",
+            "sourceSnapshotHash": "c725c98b7e7badc9fdf128437fde97c7565fb4043a51894865475beca7a32f38"
+          }
+        ]
+      }
+    },
+    {
+      "key": "disclosure",
+      "status": "required",
+      "summary": "MPLS thesis statements apply from Trinity Term 2026. Supporting AI code should be declared, excluding debugging. Oxford research policy says substantive use should be declared; conditional prompt/output duties are separate.",
+      "actions": {
+        "do": [
+          "Follow the applicable unit, course and task instructions.",
+          "Consult the linked original English evidence and current University guidance."
+        ],
+        "dont": [
+          "Do not infer assessment or clinical permission from tool access."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-university-of-oxford-ai-pgr-declaration-requirement",
+          "clm-university-of-oxford-ai-pgr-permitted-uses",
+          "clm-university-of-oxford-research-genai-substantive-use-2026"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+            "sourceSnapshotHash": "e0bf113fcd1b6c38b2d8ebc7dd94036db081d6918f76d85a02f06e0feab32c47"
+          },
+          {
+            "sourceUrl": "https://www.ox.ac.uk/research/support/governance-and-committees/research-policies/policy-for-using-generative-ai-in",
+            "sourceSnapshotHash": "e5abe760ea3b64d4e5bc73551cd42acb0924ea639df31cf8a0dd05a36fa66287"
+          }
+        ]
+      }
+    },
+    {
+      "key": "privacy_data",
+      "status": "restricted",
+      "summary": "University SSO tools have specified data ratings; consumer accounts do not inherit them. Detailed public security guidance has moved. Current custom-GPT and transcription-bot conditions remain unverified.",
+      "actions": {
+        "do": [
+          "Follow the applicable unit, course and task instructions.",
+          "Consult the linked original English evidence and current University guidance."
+        ],
+        "dont": [
+          "Do not infer assessment or clinical permission from tool access."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-university-of-oxford-ai-approved-platforms-confidential",
+          "clm-university-of-oxford-ai-pgr-prohibited-uses"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524"
+          },
+          {
+            "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+            "sourceSnapshotHash": "e0bf113fcd1b6c38b2d8ebc7dd94036db081d6918f76d85a02f06e0feab32c47"
+          }
+        ]
+      }
+    },
+    {
+      "key": "approved_tools",
+      "status": "conditionally_allowed",
+      "summary": "The retiring Oxford public guide lists ChatGPT Edu, Codex, Gemini and Copilot Chat as SSO platforms. Standard access and paid upgrades differ. Consult successor guidance; tool access is not assessment permission.",
+      "actions": {
+        "do": [
+          "Follow the applicable unit, course and task instructions.",
+          "Consult the linked original English evidence and current University guidance."
+        ],
+        "dont": [
+          "Do not infer assessment or clinical permission from tool access."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "cl-university-of-oxford-chatgpt-21",
+          "clm-university-of-oxford-ai-approved-platforms-confidential"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+            "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524"
+          }
+        ]
+      }
+    },
+    {
+      "key": "research_publication",
+      "status": "restricted",
+      "summary": "Discrete-tool substantive research use should be declared; prompts/outputs must be available where relevant. MPLS supporting code is permitted only when it is not substantive output; debugging is exempt from declaration.",
+      "actions": {
+        "do": [
+          "Follow the applicable unit, course and task instructions.",
+          "Consult the linked original English evidence and current University guidance."
+        ],
+        "dont": [
+          "Do not infer assessment or clinical permission from tool access."
+        ]
+      },
+      "basis": {
+        "claimIds": [
+          "clm-university-of-oxford-research-genai-substantive-use-2026",
+          "clm-university-of-oxford-ai-pgr-prohibited-uses"
+        ],
+        "sources": [
+          {
+            "sourceUrl": "https://www.ox.ac.uk/research/support/governance-and-committees/research-policies/policy-for-using-generative-ai-in",
+            "sourceSnapshotHash": "e5abe760ea3b64d4e5bc73551cd42acb0924ea639df31cf8a0dd05a36fa66287"
+          },
+          {
+            "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+            "sourceSnapshotHash": "e0bf113fcd1b6c38b2d8ebc7dd94036db081d6918f76d85a02f06e0feab32c47"
+          }
+        ]
+      }
+    }
+  ],
+  "basis": {
+    "claimIds": [
+      "clm-university-of-oxford-ai-assessment-student-duties",
+      "clm-university-of-oxford-ai-three-principles",
+      "clm-university-of-oxford-ai-pgr-declaration-requirement",
+      "clm-university-of-oxford-ai-pgr-permitted-uses",
+      "clm-university-of-oxford-research-genai-substantive-use-2026",
+      "clm-university-of-oxford-ai-approved-platforms-confidential",
+      "clm-university-of-oxford-ai-pgr-prohibited-uses",
+      "cl-university-of-oxford-chatgpt-21"
+    ],
+    "sources": [
+      {
+        "sourceUrl": "https://www.ox.ac.uk/about/how-we-are-run/policies-and-statements/policy-hub/ai-use-in-summative-assessment",
+        "sourceSnapshotHash": "c725c98b7e7badc9fdf128437fde97c7565fb4043a51894865475beca7a32f38"
+      },
+      {
+        "sourceUrl": "https://www.mpls.ox.ac.uk/graduate-school/information-for-postgraduate-research-students/generative-ai",
+        "sourceSnapshotHash": "e0bf113fcd1b6c38b2d8ebc7dd94036db081d6918f76d85a02f06e0feab32c47"
+      },
+      {
+        "sourceUrl": "https://www.ox.ac.uk/research/support/governance-and-committees/research-policies/policy-for-using-generative-ai-in",
+        "sourceSnapshotHash": "e5abe760ea3b64d4e5bc73551cd42acb0924ea639df31cf8a0dd05a36fa66287"
+      },
+      {
+        "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
+        "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524"
+      }
+    ]
+  },
+  "releaseId": "public-release-20260924-002",
+  "basisFingerprint": "e461133c1e7e08758b1b53e87ad4ebcb76e1af7978a7596718f2f0f6a06d22c0",
+  "review": {
+    "reviewMethod": "dual_agent",
+    "reviewState": "needs_review",
+    "primary": {
+      "agentId": "antigravity-oxford-repair-author",
+      "model": "gemini-3.8-flash-high",
+      "decision": "approve",
+      "reviewedAt": "2026-10-11T20:00:00.000Z",
+      "notes": "Revised candidate student summary authored from official source-backed claims; held pending independent secondary review."
+    },
+    "secondary": {
+      "agentId": "independent-summary-review-pending",
+      "model": "not-run",
+      "decision": "needs_review",
+      "reviewedAt": "2026-10-11T20:00:00.000Z",
+      "notes": "Pending independent secondary review; no inherited approval."
+    },
+    "agreement": "disagree",
+    "reviewedAt": "2026-10-11T20:00:00.000Z"
+  },
+  "translations": [],
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page.",
+    "This candidate student summary awaits independent secondary review; publicationApproved=false.",
+    "Tool availability is not permission for a class, assessment, thesis, or research project.",
+    "English official evidence is canonical."
+  ]
+}

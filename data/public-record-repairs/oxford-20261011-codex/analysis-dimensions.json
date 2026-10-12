@@ -1,0 +1,96 @@
+{
+  "policy_presence": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-university-of-oxford-ai-three-principles",
+      "clm-university-of-oxford-ai-assessment-student-duties"
+    ],
+    "summary": "Oxford publishes official generative AI policies for summative assessment and research, setting clear boundaries across teaching, learning, and research output."
+  },
+  "ai_disclosure": {
+    "status": "required",
+    "claimIds": [
+      "clm-university-of-oxford-ai-pgr-declaration-requirement",
+      "clm-university-of-oxford-ai-pgr-permitted-uses",
+      "clm-university-of-oxford-research-genai-substantive-use-2026"
+    ],
+    "summary": "Summative assessments require the prescribed declaration for permitted AI use. MPLS thesis statements apply from Trinity Term 2026. Oxford research policy says substantive discrete-tool use should be declared; conditional prompt/output duties are distinct."
+  },
+  "coursework": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-university-of-oxford-ai-assessment-student-duties",
+      "clm-university-of-oxford-ai-assessment-staff-duties"
+    ],
+    "summary": "Students must follow the AI-use declaration for each summative assessment. A breach constitutes cheating and may constitute plagiarism; permitted use must be acknowledged in the specified format."
+  },
+  "exams": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-university-of-oxford-ai-assessment-student-duties"
+    ],
+    "summary": "Assessment instructions define permitted assistance. Institutional AI access does not grant exam permission; check the specific task, department and assessment conditions."
+  },
+  "privacy_data_entry": {
+    "status": "restricted",
+    "claimIds": [
+      "clm-university-of-oxford-ai-security-risk-assessment",
+      "clm-university-of-oxford-ai-approved-platforms-confidential",
+      "clm-university-of-oxford-ai-custom-gpt-rules"
+    ],
+    "summary": "Use institutional services approved for the data and purpose. The former detailed security URL has moved; current custom-GPT and transcription conditions remain unverified. Do not infer consumer-account approval from an institutional tool rating."
+  },
+  "academic_integrity": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-university-of-oxford-ai-plagiarism-guidance",
+      "clm-university-of-oxford-ai-assessment-student-duties",
+      "clm-university-of-oxford-ai-assessment-staff-duties"
+    ],
+    "summary": "Unauthorised AI use falls under plagiarism and cheating regulations handled by the Proctors. Oxford does not endorse commercial digital AI writing detection tools for disciplinary determinations."
+  },
+  "approved_tools": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "cl-university-of-oxford-chatgpt-21",
+      "cl-university-of-oxford-microsoft-copilot-24"
+    ],
+    "summary": "Oxford centrally licenses ChatGPT Edu and Microsoft Copilot Chat for staff and students via SSO with enterprise confidential data protections."
+  },
+  "named_ai_services": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "cl-university-of-oxford-chatgpt-21",
+      "cl-university-of-oxford-codex-22",
+      "cl-university-of-oxford-gemini-23",
+      "cl-university-of-oxford-microsoft-copilot-24"
+    ],
+    "summary": "ChatGPT Edu, Codex, Google Gemini, and Microsoft Copilot Chat are listed with University SSO access under Confidential classification in public guidance."
+  },
+  "teaching_guidance": {
+    "status": "recommended",
+    "claimIds": [
+      "clm-university-of-oxford-ai-three-principles",
+      "clm-university-of-oxford-ai-assessment-staff-duties"
+    ],
+    "summary": "Staff must clearly declare whether and how AI can be used in summative assessments, ensure baseline tool equality when required, and design assessments around the University's three core principles."
+  },
+  "research_guidance": {
+    "status": "conditionally_allowed",
+    "claimIds": [
+      "clm-university-of-oxford-research-genai-substantive-use-2026",
+      "clm-university-of-oxford-ai-pgr-prohibited-uses",
+      "clm-university-of-oxford-ai-pgr-permitted-uses"
+    ],
+    "summary": "Oxford research policy says substantive discrete-tool use should be declared, with prompts/outputs made available where relevant. MPLS supporting-code rules apply only when coding is not substantive output; debugging is exempt from declaration."
+  },
+  "security_procurement": {
+    "status": "insufficient_public_evidence",
+    "claimIds": [
+      "clm-university-of-oxford-ai-security-risk-assessment",
+      "clm-university-of-oxford-ai-approved-platforms-confidential",
+      "clm-university-of-oxford-ai-transcription-bots"
+    ],
+    "summary": "Detailed public security guidance has migrated to successor University channels. Current assessment, custom-GPT and bot conditions were not retrieved; historical guidance is not a current procurement or data approval."
+  }
+}

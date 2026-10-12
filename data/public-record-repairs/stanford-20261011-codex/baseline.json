@@ -1,0 +1,754 @@
+{
+  "schemaVersion": "v1",
+  "citationTitle": "Stanford University AI Policy Tracker record",
+  "canonicalUrl": "http://localhost:3000/universities/stanford-university",
+  "publicPageUrl": "http://localhost:3000/universities/stanford-university",
+  "apiUrl": "http://localhost:3000/api/public/v1/universities/stanford-university.json",
+  "entityType": "university",
+  "entitySlug": "stanford-university",
+  "entity": {
+    "type": "university",
+    "slug": "stanford-university",
+    "name": "Stanford University",
+    "canonicalUrl": "http://localhost:3000/universities/stanford-university",
+    "aliases": [
+      "QS 2026 3"
+    ],
+    "summary": "Stanford University is listed as QS 2026 rank 3. Stanford University has 15 source-backed AI policy claim records from 15 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state."
+  },
+  "summary": "Stanford University is listed as QS 2026 rank 3. Stanford University has 15 source-backed AI policy claim records from 15 official source attributions. The public record preserves original-language evidence snippets, source URLs, snapshot hashes, confidence, and review state.",
+  "lastCheckedAt": "2026-07-18T21:34:39.689Z",
+  "lastChangedAt": "2026-07-18T21:34:39.689Z",
+  "confidence": 0.97,
+  "reviewState": "agent_reviewed",
+  "license": "CC-BY-4.0",
+  "trackerMetadataLicense": "CC-BY-4.0",
+  "sourcePolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "sourceRightsPolicy": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms.",
+  "limitations": [
+    "This tracker is not legal advice, not academic integrity advice, and not an official university statement unless a linked source is the university's own official page."
+  ],
+  "officialSources": [
+    {
+      "id": "sc-stanford-university-5",
+      "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+      "finalUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+      "citationTitle": "3.32: Generative Artificial Intelligence (AI) Policy - MD Program",
+      "publisher": "med.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-11",
+      "sourceUrl": "https://ctl.stanford.edu/aimes/ai-learning-guide-students",
+      "finalUrl": "https://ctl.stanford.edu/aimes/ai-learning-guide-students",
+      "citationTitle": "AI and Your Learning: A Guide for Students - CTL",
+      "publisher": "ctl.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "c9dd6af1164a6ab29ac9dde288a088cf60cd67846700fdbc28dc822851135ab6",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "src-stanford-ucomm-ai-guidelines-20260604",
+      "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+      "finalUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+      "citationTitle": "AI Guidelines for Marketing and Communications",
+      "publisher": "ucomm.stanford.edu",
+      "retrievedAt": "2026-06-04T13:10:00.000Z",
+      "sourceLastModified": "2026-06-02T19:08:52.000Z",
+      "trackerCheckedAt": "2026-06-04T13:10:00.000Z",
+      "snapshotHash": "feee7b541ca11dbfa2de4d7d85528ba5cd9b8583be126ec1201459728876aa15",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-9",
+      "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+      "finalUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+      "citationTitle": "AI Guidelines for Marketing and Communications",
+      "publisher": "ucomm.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "9c5e79c1de806eb64ddd8fc7c3e70d95c560eaab5d03f1246333e9076e3a7c3b",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-3",
+      "sourceUrl": "https://ctl.stanford.edu/aimes",
+      "finalUrl": "https://ctl.stanford.edu/aimes",
+      "citationTitle": "AI Meets Education at Stanford (AIMES)",
+      "publisher": "ctl.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "57e3fd0e204837f5675b4d7574bc0e80c8a3ea77ed35f25d633d980877f8d2f9",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-8",
+      "sourceUrl": "https://uit.stanford.edu/aiplayground",
+      "finalUrl": "https://uit.stanford.edu/aiplayground",
+      "citationTitle": "AI Playground Quick Start Guide - University IT",
+      "publisher": "uit.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "56d7c59c0b23d411ad4aa7ec660eadd239c0a02c6f4bbf186cd75e79054971e6",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-10",
+      "sourceUrl": "https://ctl.stanford.edu/aimes/ai-teaching-strategies",
+      "finalUrl": "https://ctl.stanford.edu/aimes/ai-teaching-strategies",
+      "citationTitle": "AI Teaching Strategies - Center for Teaching and Learning",
+      "publisher": "ctl.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "65d00154666c1b4fbf8e2c8123467527013c2e721c00ffbceb9d61c185f9896e",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-4",
+      "sourceUrl": "https://tlhub.stanford.edu/docs/course-policies-on-generative-ai-use/",
+      "finalUrl": "https://tlhub.stanford.edu/docs/course-policies-on-generative-ai-use/",
+      "citationTitle": "Course Policies on Generative AI Use - Teaching & Learning Hub",
+      "publisher": "tlhub.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "7a0aaf5bf9c0e744c48334dbb29c2358e597631cec05db608374c0ff3bdcd950",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-1",
+      "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+      "finalUrl": "https://communitystandards.stanford.edu/policies-guidance%23policies-guidance-links/bca-guidance-recommendations#generative-ai-policy-guidance",
+      "citationTitle": "Generative AI Policy Guidance - Office of Community Standards (BCA)",
+      "publisher": "communitystandards.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "93e12eb9985a32023807300b0474d1f5d6e2ebf3a3d39dab18febe5ae6b47866",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-5a3a4ca3d542",
+      "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+      "finalUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+      "citationTitle": "New AI Tools for Stanford Arrive June 30 | University IT",
+      "publisher": "uit.stanford.edu",
+      "retrievedAt": "2026-07-15T17:39:43.896Z",
+      "trackerCheckedAt": "2026-07-15T17:39:43.896Z",
+      "snapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-7",
+      "sourceUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+      "finalUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+      "citationTitle": "PWR Policy on the Use of GenAI and LLMs",
+      "publisher": "pwr.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "2e601e4a5b47215c842712627c3631375d0eb2ac936abbf1816a04b1bc8c0d2b",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-13",
+      "sourceUrl": "https://provost.stanford.edu/2025/01/09/report-of-the-ai-at-stanford-advisory-committee/",
+      "finalUrl": "https://provost.stanford.edu/news/report-ai-stanford-advisory-committee",
+      "citationTitle": "Report of the AI at Stanford Advisory Committee (AISAC)",
+      "publisher": "provost.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "c05edef17acd65c126b10c2dbc09754f6c45166b3a3e9c22b5e0d93afc8823a7",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-2",
+      "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+      "finalUrl": "https://uit.stanford.edu/security/responsibleai",
+      "citationTitle": "Responsible AI at Stanford - University IT",
+      "publisher": "uit.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-12",
+      "sourceUrl": "https://uit.stanford.edu/ai",
+      "finalUrl": "https://uit.stanford.edu/ai",
+      "citationTitle": "University IT AI Hub",
+      "publisher": "uit.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "4a81586fe631363a2723400e8cb208bdae6a10b4967630ca57c30a7c94b76005",
+      "sourceType": "official_guidance",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    },
+    {
+      "id": "sc-stanford-university-6",
+      "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+      "finalUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+      "citationTitle": "Use of Generative AI Technology - Stanford Law School",
+      "publisher": "law.stanford.edu",
+      "retrievedAt": "2026-05-06T01:07:22Z",
+      "trackerCheckedAt": "2026-05-06T01:07:22Z",
+      "snapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9",
+      "sourceType": "official_policy_page",
+      "official": true,
+      "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+    }
+  ],
+  "claims": [
+    {
+      "id": "cl-stanford-university-chatgpt-18",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "OpenAI ChatGPT Edu is listed for Stanford University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+      "claimValue": "{\"tool\":\"chatgpt\",\"rawToolName\":\"OpenAI ChatGPT Edu\",\"description\":\"Stanford provides ChatGPT Edu to faculty, students, postdocs, and staff through a campus pilot.\",\"howToObtain\":\"Confirm Stanford identity through the service and agree to responsible-use terms.\",\"costToUser\":\"Not specified.\",\"availability\":\"allowed\",\"endorsementType\":\"officially_endorsed\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:37:43.896Z",
+      "lastChangedAt": "2026-07-15T17:37:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-stanford-university-chatgpt-18-1",
+          "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b",
+          "evidenceSnippet": "OpenAI ChatGPT Edu will be available to Stanford faculty, students, postdocs, and staff on June 30 as part of a campus pilot through August 2027. All Stanford faculty, students, postdocs, and staff will have access to ChatGPT Edu.",
+          "evidenceSnippetDisplay": "OpenAI ChatGPT Edu will be available to Stanford faculty, students, postdocs, and staff on June 30 as part of a campus pilot through August 2027. All Stanford faculty, students, postdocs, and staff will have access to ChatGPT Edu.",
+          "retrievedAt": "2026-07-15T17:37:43.896Z",
+          "attribution": {
+            "id": "ss-stanford-university-chatgpt-18-1",
+            "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+            "finalUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+            "citationTitle": "New AI Tools for Stanford Arrive June 30 | University IT",
+            "publisher": "Stanford University",
+            "retrievedAt": "2026-07-15T17:37:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:37:43.896Z",
+            "snapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-stanford-university-claude-19",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Anthropic Claude for Education is listed for Stanford University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+      "claimValue": "{\"tool\":\"claude\",\"rawToolName\":\"Anthropic Claude for Education\",\"description\":\"Stanford provides Claude for Education to faculty, students, postdocs, and staff through a campus pilot.\",\"howToObtain\":\"Submit the service request, complete Stanford SSO, and accept responsible-use terms.\",\"costToUser\":\"Not specified.\",\"availability\":\"allowed\",\"endorsementType\":\"officially_endorsed\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:38:43.896Z",
+      "lastChangedAt": "2026-07-15T17:38:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-stanford-university-claude-19-1",
+          "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b",
+          "evidenceSnippet": "Anthropic Claude for Education will be available to Stanford faculty, students, postdocs, and staff as part of a campus pilot through August 2027. Claude for Education access requires submitting a request form, confirming Stanford identity through single sign-on, and agreeing to responsible-use terms before account activation.",
+          "evidenceSnippetDisplay": "Anthropic Claude for Education will be available to Stanford faculty, students, postdocs, and staff as part of a campus pilot through August 2027. Claude for Education access requires submitting a request form, confirming Stanford identity through single sign-on, and agreeing to responsible-use terms before account activation.",
+          "retrievedAt": "2026-07-15T17:38:43.896Z",
+          "attribution": {
+            "id": "ss-stanford-university-claude-19-1",
+            "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+            "finalUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+            "citationTitle": "New AI Tools for Stanford Arrive June 30 | University IT",
+            "publisher": "Stanford University",
+            "retrievedAt": "2026-07-15T17:38:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:38:43.896Z",
+            "snapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cl-stanford-university-google-gemini-20",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "ai_tool_treatment",
+      "claimText": "Google Gemini Enterprise is listed for Stanford University in an official university AI tools source. Derived availability: allowed. Derived endorsement type: officially endorsed.",
+      "claimValue": "{\"tool\":\"google_gemini\",\"rawToolName\":\"Google Gemini Enterprise\",\"description\":\"Stanford provides Gemini Enterprise to faculty, students, postdocs, and staff with Stanford Google accounts through a campus pilot.\",\"howToObtain\":\"Sign in using a Stanford SUNet ID through the Gemini Enterprise service.\",\"costToUser\":\"Not specified.\",\"availability\":\"allowed\",\"endorsementType\":\"officially_endorsed\"}",
+      "confidence": 0.97,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-07-15T17:39:43.896Z",
+      "lastChangedAt": "2026-07-15T17:39:43.896Z",
+      "evidence": [
+        {
+          "id": "ev-stanford-university-google-gemini-20-1",
+          "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b",
+          "evidenceSnippet": "Google Gemini Enterprise will be available to Stanford faculty, students, postdocs, and staff as part of a campus pilot through August 2027. All Stanford faculty, students, postdocs, and staff with a Stanford Google account will have access to Gemini Enterprise starting June 30.",
+          "evidenceSnippetDisplay": "Google Gemini Enterprise will be available to Stanford faculty, students, postdocs, and staff as part of a campus pilot through August 2027. All Stanford faculty, students, postdocs, and staff with a Stanford Google account will have access to Gemini Enterprise starting June 30.",
+          "retrievedAt": "2026-07-15T17:39:43.896Z",
+          "attribution": {
+            "id": "ss-stanford-university-google-gemini-20-1",
+            "sourceUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+            "finalUrl": "https://uit.stanford.edu/news/new-ai-tools-stanford-arrive-june-30",
+            "citationTitle": "New AI Tools for Stanford Arrive June 30 | University IT",
+            "publisher": "Stanford University",
+            "retrievedAt": "2026-07-15T17:39:43.896Z",
+            "trackerCheckedAt": "2026-07-15T17:39:43.896Z",
+            "snapshotHash": "781d1d63e70fa155432461a0cb3cbea6b22ac6213b3aadaf8e94812e5d0c416b",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-stanford-university-bca-genai-guidance",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Stanford's BCA issued guidance on generative AI use, and the Office of Community Standards recommends that instructors give advance notice to students when using AI detection software.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:07:22Z",
+      "lastChangedAt": "2026-05-06T01:57:44Z",
+      "evidence": [
+        {
+          "id": "evd-stanford-university-bca-genai-guidance-1",
+          "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "93e12eb9985a32023807300b0474d1f5d6e2ebf3a3d39dab18febe5ae6b47866",
+          "evidenceSnippet": "To give sufficient space for instructors to explore uses of generative AI tools in their courses, and to set clear guidelines to students about what uses are and are not consistent with the Stanford Honor Code, the BCA has set forth policy guidance regarding generative AI in the context of coursework. Note: Guidance adopted on February 16, 2023. As part of the BCA's guidance on clear communication of a course's generative AI policy, OCS recommends course instructors provide clear advance notice that they may use detection software to review work submitted for use of generative AI.",
+          "snippetLocation": "Generative AI Policy Guidance section",
+          "retrievedAt": "2026-05-06T01:07:22Z",
+          "attribution": {
+            "id": "ss-stanford-university-1",
+            "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+            "citationTitle": "Generative AI Policy Guidance - Office of Community Standards (BCA)",
+            "publisher": "Stanford University Office of Community Standards",
+            "retrievedAt": "2026-05-06T01:07:22Z",
+            "trackerCheckedAt": "2026-05-06T01:07:22Z",
+            "snapshotHash": "93e12eb9985a32023807300b0474d1f5d6e2ebf3a3d39dab18febe5ae6b47866",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-stanford-university-gsb-ai-policy",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "For Stanford Graduate School of Business (GSB) MBA and MSx courses, instructors may not ban student use of AI tools for take-home coursework, including assignments and exams. Instructors may choose whether to allow AI for in-class work. For PhD and undergraduate courses, GSB follows the university-wide Generative AI Policy Guidance from the Office of Community Standards.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:07:22Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-stanford-university-gsb-ai-policy-1",
+          "sourceUrl": "https://tlhub.stanford.edu/docs/course-policies-on-generative-ai-use/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "7a0aaf5bf9c0e744c48334dbb29c2358e597631cec05db608374c0ff3bdcd950",
+          "evidenceSnippet": "GSB Policy MBA/MSx courses: Instructors may not ban student use of AI tools for take-home coursework, including assignments and exams. Instructors may choose whether to allow student use of AI tools for in-class work, including exams. PhD/Undergraduate courses: Follow the Generative AI Policy Guidance from Stanford's Office of Community Standards.",
+          "snippetLocation": "GSB Guidelines on Classroom AI Use / GSB Policy section",
+          "retrievedAt": "2026-05-06T01:07:22Z",
+          "attribution": {
+            "id": "ss-stanford-university-4",
+            "sourceUrl": "https://tlhub.stanford.edu/docs/course-policies-on-generative-ai-use/",
+            "citationTitle": "Course Policies on Generative AI Use - Teaching & Learning Hub",
+            "publisher": "Stanford Teaching & Learning Hub",
+            "retrievedAt": "2026-05-06T01:07:22Z",
+            "trackerCheckedAt": "2026-05-06T01:07:22Z",
+            "snapshotHash": "7a0aaf5bf9c0e744c48334dbb29c2358e597631cec05db608374c0ff3bdcd950",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-stanford-university-md-ai-policy",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "Stanford School of Medicine MD and MSPA programs have a formal AI policy: students may use AI for learning, clarification, and grammar/style editing unless contrary to assignment instructions. AI use for closed-book exams or assignments where internet is restricted is prohibited unless explicitly authorized by faculty. Students are responsible for all AI-generated content they submit, must disclose and cite substantial AI contributions, and violations may result in disciplinary action.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:07:22Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-stanford-university-md-ai-policy-1",
+          "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385",
+          "evidenceSnippet": "Learning and Clarification: Students may utilize AI to enhance their understanding of medical concepts, definitions, and for grammar/style editing, provided it does not conflict with specific assignment instructions or be inconsistent with faculty-authorized tasks. The use of AI tools is discouraged for any activities in which students are evaluated on their own knowledge or skills, unless explicitly granted permission by the faculty. Any substantial contributions from AI tools on assignments, presentations, and scholarly abstracts or proposals must be disclosed and properly cited. Students are responsible for any AI-generated content they submit, even if flawed or biased. All MD and MSPA...",
+          "snippetLocation": "Permitted Uses and Privacy, Assessments, Acknowledgement and Citation, Accuracy & Accountability sections",
+          "retrievedAt": "2026-05-06T01:07:22Z",
+          "attribution": {
+            "id": "ss-stanford-university-5",
+            "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+            "citationTitle": "3.32: Generative Artificial Intelligence (AI) Policy - MD Program",
+            "publisher": "Stanford School of Medicine",
+            "retrievedAt": "2026-05-06T01:07:22Z",
+            "trackerCheckedAt": "2026-05-06T01:07:22Z",
+            "snapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-stanford-university-md-phi-prohibition",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "privacy",
+      "claimText": "Stanford School of Medicine MD and MSPA programs strictly prohibit entering confidential research data, patient data, or protected health information (PHI) into public AI platforms. Use of patient-identifying information or PHI in public AI tools is strictly forbidden. Students must use Stanford-approved AI platforms (e.g., Stanford Healthcare Secure GPT, Stanford AI Playground) when handling sensitive data.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:07:22Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-stanford-university-md-phi-prohibition-1",
+          "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385",
+          "evidenceSnippet": "To ensure that patient confidentiality is maintained at all times, no confidential research, patient data, or other protected health information (PHI) is to be entered into public AI platforms (e.g., ChatGPT, Gemini, OpenEvidence, Doximity, etc.). Patient Confidential Data: The use of patient-identifying information or protected health information (PHI) in public AI tools is strictly forbidden.",
+          "snippetLocation": "Permitted Uses and Privacy / Patient Confidential Data sections",
+          "retrievedAt": "2026-05-06T01:07:22Z",
+          "attribution": {
+            "id": "ss-stanford-university-5",
+            "sourceUrl": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+            "citationTitle": "3.32: Generative Artificial Intelligence (AI) Policy - MD Program",
+            "publisher": "Stanford School of Medicine",
+            "retrievedAt": "2026-05-06T01:07:22Z",
+            "trackerCheckedAt": "2026-05-06T01:07:22Z",
+            "snapshotHash": "230e4b8ce6f9a1a61f5408696e2021dfc45f79cb7d105f850eb22413e24fc385",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-stanford-university-law-school-ai-policy",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "Stanford Law School instructors set their own AI policies; in the absence of a course-specific policy, students may use generative AI to support learning and develop or refine their own ideas, but may not use AI to generate content presented as their own work. Using AI during an exam or to draft/revise submitted work is not permitted unless disclosed in advance and explicitly authorized in writing by the instructor. Unauthorized use may result in an F grade and/or referral to Stanford's Office of Community Standards.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:07:22Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-stanford-university-law-school-ai-policy-1",
+          "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9",
+          "evidenceSnippet": "In the absence of a course-specific AI policy set by the instructor, students may use generative AI tools to support their learning and to aid in the development or refinement of their own ideas, provided they do not use such tools to generate content that is then presented as their own work. The use of generative AI while taking an exam or to draft or revise any portion of submitted work is not permitted unless (1) fully disclosed in advance of its use by the student to the instructor, and (2) explicitly authorized by the instructor in writing prior to the student's use of the tool. Unauthorized use of AI tools may result in a lower grade, including a grade of F, and/or a referral to Sta...",
+          "snippetLocation": "Policy body, paragraphs 2-3",
+          "retrievedAt": "2026-05-06T01:07:22Z",
+          "attribution": {
+            "id": "ss-stanford-university-6",
+            "sourceUrl": "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+            "citationTitle": "Use of Generative AI Technology - Stanford Law School",
+            "publisher": "Stanford Law School",
+            "retrievedAt": "2026-05-06T01:07:22Z",
+            "trackerCheckedAt": "2026-05-06T01:07:22Z",
+            "snapshotHash": "6b775ecc8b3fbe6f25ddf584e4e69297b73474f5b44330c0130dfaba915c0be9",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-stanford-university-pwr-genai-policy",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "Stanford's Program in Writing and Rhetoric (PWR) prohibits students from using generative AI or LLMs to compose drafts or revisions for any major assignment in PWR courses, including composing or revising portions of essays or scripts, including paraphrases of LLM-generated writing. Students may not rely on generative AI summaries of sources. Violation of PWR's AI policy is treated as an Honor Code violation and results in referral to the Office of Community Standards.",
+      "confidence": 0.95,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:07:22Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-stanford-university-pwr-genai-policy-1",
+          "sourceUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "2e601e4a5b47215c842712627c3631375d0eb2ac936abbf1816a04b1bc8c0d2b",
+          "evidenceSnippet": "Students may not use generative AI or LLMs to compose the drafts or revisions for any of the major assignments in their PWR classes. This includes using generative AI to compose or revise portions of their essay or scripts (from individual phrases or sentences to longer passages) or including in their essays/scripts paraphrases of LLM-generated writing or paraphrases of source material generated by LLMs. Violation of PWR's AI policy is considered an Honor Code violation and will result in the involvement of Stanford's Office of Community Standards (OCS).",
+          "snippetLocation": "PWR Policy on GenAI Use in PWR classes section",
+          "retrievedAt": "2026-05-06T01:07:22Z",
+          "attribution": {
+            "id": "ss-stanford-university-7",
+            "sourceUrl": "https://pwr.stanford.edu/about-pwr/pwr-policies/pwr-policy-use-genai-and-llms",
+            "citationTitle": "PWR Policy on the Use of GenAI and LLMs",
+            "publisher": "Stanford Program in Writing and Rhetoric",
+            "retrievedAt": "2026-05-06T01:07:22Z",
+            "trackerCheckedAt": "2026-05-06T01:07:22Z",
+            "snapshotHash": "2e601e4a5b47215c842712627c3631375d0eb2ac936abbf1816a04b1bc8c0d2b",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "claim-stanford-university-maintenance-20260604-2",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "Stanford University Communications says AI use for marketing and communications should not waive or diminish professional, ethical, or legal obligations, and that applicable laws and Stanford policies continue to apply when AI is used.",
+      "claimValue": "No AI exceptionalism: laws, Stanford policies, and professional obligations continue to apply to AI use.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-06-04T13:10:00.000Z",
+      "lastChangedAt": "2026-06-04T13:10:00.000Z",
+      "evidence": [
+        {
+          "id": "evidence-stanford-university-maintenance-20260604-2",
+          "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "feee7b541ca11dbfa2de4d7d85528ba5cd9b8583be126ec1201459728876aa15",
+          "evidenceSnippet": "Please keep in mind that in general, use of AI should not waive or diminish professional, ethical, or legal obligations (“no AI exceptionalism”)—all applicable laws and Stanford policies continue to apply when AI is used.",
+          "retrievedAt": "2026-06-04T13:10:00.000Z",
+          "attribution": {
+            "id": "snap-stanford-ucomm-ai-guidelines-20260604",
+            "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+            "finalUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+            "citationTitle": "AI Guidelines for Marketing and Communications",
+            "publisher": "ucomm.stanford.edu",
+            "retrievedAt": "2026-06-04T13:10:00.000Z",
+            "sourceLastModified": "2026-06-02T19:08:52.000Z",
+            "trackerCheckedAt": "2026-06-04T13:10:00.000Z",
+            "snapshotHash": "feee7b541ca11dbfa2de4d7d85528ba5cd9b8583be126ec1201459728876aa15",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-stanford-university-bca-honor-code-framework",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "academic_integrity",
+      "claimText": "Stanford's Bechtel Center for Advising (BCA) provides guidance on generative AI in the context of the Honor Code, noting that acceptable AI use depends on individual instructor and course policies.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:07:22Z",
+      "lastChangedAt": "2026-05-06T01:57:44Z",
+      "evidence": [
+        {
+          "id": "evd-stanford-university-bca-honor-code-framework-1",
+          "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "93e12eb9985a32023807300b0474d1f5d6e2ebf3a3d39dab18febe5ae6b47866",
+          "evidenceSnippet": "To give sufficient space for instructors to explore uses of generative AI tools in their courses, and to set clear guidelines to students about what uses are and are not consistent with the Stanford Honor Code, the BCA has set forth policy guidance regarding generative AI in the context of coursework. Note: Guidance adopted on February 16, 2023.",
+          "snippetLocation": "Generative AI Policy Guidance section (adopted Feb 16, 2023)",
+          "retrievedAt": "2026-05-06T01:07:22Z",
+          "attribution": {
+            "id": "ss-stanford-university-1",
+            "sourceUrl": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+            "citationTitle": "Generative AI Policy Guidance - Office of Community Standards (BCA)",
+            "publisher": "Stanford University Office of Community Standards",
+            "retrievedAt": "2026-05-06T01:07:22Z",
+            "trackerCheckedAt": "2026-05-06T01:07:22Z",
+            "snapshotHash": "93e12eb9985a32023807300b0474d1f5d6e2ebf3a3d39dab18febe5ae6b47866",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-stanford-university-uit-responsible-ai",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "Stanford University IT (UIT) advises users to avoid inputting Moderate or High Risk Data into third-party AI platforms or tools not covered by a Stanford Business Associates Agreement, whether using a personal or Stanford account. Users should opt out of sharing chat data with third-party AI providers when possible.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:07:22Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-stanford-university-uit-responsible-ai-1",
+          "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e",
+          "evidenceSnippet": "Avoid inputting any sensitive data, such as Moderate or High Risk Data, whether using a personal or Stanford account with a third-party AI platform or tool that is not covered by a Stanford Business Associates Agreement. It's recommended to opt out of sharing data for AI iterative learning wherever possible. If generative AI is to be used to interact with users, obtain their informed consent. If your final product is significantly influenced by an AI platform, consider informing people how you used AI and cite appropriately.",
+          "snippetLocation": "Safety Measures section and Recommended Best Practices",
+          "retrievedAt": "2026-05-06T01:07:22Z",
+          "attribution": {
+            "id": "ss-stanford-university-2",
+            "sourceUrl": "https://uit.stanford.edu/security/responsibleai",
+            "citationTitle": "Responsible AI at Stanford - University IT",
+            "publisher": "Stanford University IT",
+            "retrievedAt": "2026-05-06T01:07:22Z",
+            "trackerCheckedAt": "2026-05-06T01:07:22Z",
+            "snapshotHash": "889383e990589f5baaeb6fd771505b4dfb6b5fcadef2d644ea5535950237194e",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "clm-stanford-university-ucomm-ai-guidelines",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "Stanford University Communications (UComm) has issued AI guidelines for marketing and communications staff requiring: human oversight of all AI-generated content (non-delegable personal responsibility), adherence to university policies, prohibition on inputting confidential or legally privileged information into generative AI tools, prohibition on using AI to promote for-profit organizations or engage in political advocacy, and prohibition on using high-risk data in prompts. Stanford AI Playground is recommended as the primary platform. These guidelines apply to all regular staff, interns, casual employees, and consultants in marketing and communications functions.",
+      "confidence": 0.9,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-05-06T01:07:22Z",
+      "lastChangedAt": "2026-05-06T01:16:00Z",
+      "evidence": [
+        {
+          "id": "evd-stanford-university-ucomm-ai-guidelines-1",
+          "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "9c5e79c1de806eb64ddd8fc7c3e70d95c560eaab5d03f1246333e9076e3a7c3b",
+          "evidenceSnippet": "These guidelines apply to all regular staff, interns, casual employees, and consultants. You are personally responsible for oversight of any content you produce using AI to ensure that content is accurate, in alignment with institutional values, and in compliance with the policies set forth in this document. You are personally responsible for conforming to this requirement and this responsibility may not be delegated to another employee. You may not provide any confidential or legally privileged information of Stanford or a third party to generative AI tools. Do not use high-risk data in your prompts or include such data as attachments to your prompts.",
+          "snippetLocation": "Introduction, Scope, Responsible and Ethical Usage, Compliance sections",
+          "retrievedAt": "2026-05-06T01:07:22Z",
+          "attribution": {
+            "id": "ss-stanford-university-9",
+            "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+            "citationTitle": "AI Guidelines for Marketing and Communications",
+            "publisher": "Stanford University Communications",
+            "retrievedAt": "2026-05-06T01:07:22Z",
+            "trackerCheckedAt": "2026-05-06T01:07:22Z",
+            "snapshotHash": "9c5e79c1de806eb64ddd8fc7c3e70d95c560eaab5d03f1246333e9076e3a7c3b",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "claim-stanford-university-maintenance-20260604-1",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "other",
+      "claimText": "Stanford University Communications says its AI guidelines for marketing and communications complement existing university policy, and if they conflict with the Administrative Guide, the Administrative Guide controls.",
+      "claimValue": "Administrative Guide controls when Stanford UComm AI guidelines conflict with university policy.",
+      "confidence": 0.89,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-06-04T13:10:00.000Z",
+      "lastChangedAt": "2026-06-04T13:10:00.000Z",
+      "evidence": [
+        {
+          "id": "evidence-stanford-university-maintenance-20260604-1",
+          "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "feee7b541ca11dbfa2de4d7d85528ba5cd9b8583be126ec1201459728876aa15",
+          "evidenceSnippet": "These guidelines complement existing university policy. If there is a conflict between this document and a policy in the Administrative Guide, the Administrative Guide controls.",
+          "retrievedAt": "2026-06-04T13:10:00.000Z",
+          "attribution": {
+            "id": "snap-stanford-ucomm-ai-guidelines-20260604",
+            "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+            "finalUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+            "citationTitle": "AI Guidelines for Marketing and Communications",
+            "publisher": "ucomm.stanford.edu",
+            "retrievedAt": "2026-06-04T13:10:00.000Z",
+            "sourceLastModified": "2026-06-02T19:08:52.000Z",
+            "trackerCheckedAt": "2026-06-04T13:10:00.000Z",
+            "snapshotHash": "feee7b541ca11dbfa2de4d7d85528ba5cd9b8583be126ec1201459728876aa15",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "claim-stanford-university-maintenance-20260604-3",
+      "entitySlug": "stanford-university",
+      "entityType": "university",
+      "claimType": "teaching",
+      "claimText": "Stanford University Communications says its AI guidelines build on the AI at Stanford Advisory Committee view that AI should augment human capabilities rather than replace them.",
+      "claimValue": "Stanford UComm AI guidance frames AI as augmenting rather than replacing human capabilities.",
+      "confidence": 0.84,
+      "reviewState": "agent_reviewed",
+      "lastCheckedAt": "2026-06-04T13:10:00.000Z",
+      "lastChangedAt": "2026-06-04T13:10:00.000Z",
+      "evidence": [
+        {
+          "id": "evidence-stanford-university-maintenance-20260604-3",
+          "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+          "sourceLanguage": "en",
+          "sourceSnapshotHash": "feee7b541ca11dbfa2de4d7d85528ba5cd9b8583be126ec1201459728876aa15",
+          "evidenceSnippet": "These guidelines build on direction from the AI at Stanford Advisory Committee, whose report held that AI should be used to augment human capabilities, not replace them.",
+          "retrievedAt": "2026-06-04T13:10:00.000Z",
+          "attribution": {
+            "id": "snap-stanford-ucomm-ai-guidelines-20260604",
+            "sourceUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+            "finalUrl": "https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",
+            "citationTitle": "AI Guidelines for Marketing and Communications",
+            "publisher": "ucomm.stanford.edu",
+            "retrievedAt": "2026-06-04T13:10:00.000Z",
+            "sourceLastModified": "2026-06-02T19:08:52.000Z",
+            "trackerCheckedAt": "2026-06-04T13:10:00.000Z",
+            "snapshotHash": "feee7b541ca11dbfa2de4d7d85528ba5cd9b8583be126ec1201459728876aa15",
+            "sourceType": "official_policy_page",
+            "official": true,
+            "sourceRights": "Tracker metadata is open licensed. Official source documents, page text, PDFs, and other source materials retain their original rights and terms."
+          }
+        }
+      ]
+    }
+  ],
+  "suggestedCitation": "University AI Policy Tracker. \"Stanford University AI Policy Tracker record.\" Last checked July 18, 2026. http://localhost:3000/universities/stanford-university"
+}
