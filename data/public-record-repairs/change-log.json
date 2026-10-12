@@ -38,7 +38,7 @@
       "slug": "university-of-oxford",
       "revision": "oxford-20261011-codex",
       "publishedAt": "2026-10-12T00:00:04.318Z",
-      "recordSha256": "094a6160d3640c7f2880e6140ef203fe0ad53fe7edc5c892caad3e66f7b26ea3",
+      "recordSha256": "3d559bfccd1e22bb84139fd74c76f2f31cbd6d04f9e31aa3f836c5c3602026df",
       "baselineClaimsFingerprint": "7fe89dd2478f017b26b46f0e14b07b2afb28c508ee85d9da874d2727d2ad713f",
       "pinFile": "oxford-current.json",
       "previousReleaseId": "public-release-20260924-002",

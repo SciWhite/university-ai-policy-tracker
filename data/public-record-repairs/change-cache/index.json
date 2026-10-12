@@ -166,7 +166,7 @@
         "changeUrl": "/changes/university-of-oxford",
         "publicationKind": "scoped_record_correction",
         "changeSummary": "Oxford requires assessment-specific AI instructions and declarations. MPLS research-student rules have a divisional scope. Research policy distinguishes should declare from conditional must. Some security/tool guidance has migrated; access is not assessment permission.",
-        "recordSha256": "094a6160d3640c7f2880e6140ef203fe0ad53fe7edc5c892caad3e66f7b26ea3",
+        "recordSha256": "3d559bfccd1e22bb84139fd74c76f2f31cbd6d04f9e31aa3f836c5c3602026df",
         "claimCount": 16,
         "claimMetadataChanged": 2,
         "confidence": 0.97,
@@ -29769,7 +29769,7 @@
       "sourceTextChangedCount": 0
     }
   },
-  "generatedAt": "2026-10-12T00:08:49.094Z",
+  "generatedAt": "2026-10-12T00:12:02.032Z",
   "license": "CC-BY-4.0",
   "limitations": [
     "Change records are tracker metadata and do not publish official source text.",

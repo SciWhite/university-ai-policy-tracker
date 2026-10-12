@@ -111,12 +111,12 @@
       "lastChangedAt": "2026-10-12T00:00:04.318Z",
       "evidence": [
         {
-          "id": "ev-cl-university-of-oxford-chatgpt-21-codex-4500830ff040",
+          "id": "ev-cl-university-of-oxford-chatgpt-21-codex-f917ce7f0cb3",
           "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
           "sourceLanguage": "en",
           "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
-          "evidenceSnippet": "ChatGPT Edu",
-          "snippetLocation": "Captured official text line 20; HTML text extraction; raw source retained privately",
+          "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
+          "snippetLocation": "Quick tool selection guide: ChatGPT Edu row, all five table columns",
           "retrievedAt": "2026-10-11T23:52:41.438597Z",
           "attribution": {
             "id": "ss-oxford-tools-codex-20261011",
@@ -169,12 +169,12 @@
       "lastChangedAt": "2026-10-12T00:00:04.318Z",
       "evidence": [
         {
-          "id": "ev-cl-university-of-oxford-codex-22-codex-a82302466c5b",
+          "id": "ev-cl-university-of-oxford-codex-22-codex-4164a09835c6",
           "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
           "sourceLanguage": "en",
           "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
-          "evidenceSnippet": "Codex and ChatGPT Work",
-          "snippetLocation": "Captured official text line 21; HTML text extraction; raw source retained privately",
+          "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
+          "snippetLocation": "Quick tool selection guide: Codex row, all five table columns",
           "retrievedAt": "2026-10-11T23:52:41.438597Z",
           "attribution": {
             "id": "ss-oxford-tools-codex-20261011",
@@ -227,12 +227,12 @@
       "lastChangedAt": "2026-10-12T00:00:04.318Z",
       "evidence": [
         {
-          "id": "ev-cl-university-of-oxford-gemini-23-codex-4b0ea167aa85",
+          "id": "ev-cl-university-of-oxford-gemini-23-codex-f51b26b22ddb",
           "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
           "sourceLanguage": "en",
           "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
-          "evidenceSnippet": "Google Gemini",
-          "snippetLocation": "Captured official text line 85; HTML text extraction; raw source retained privately",
+          "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
+          "snippetLocation": "Quick tool selection guide: Google Gemini row, all five table columns",
           "retrievedAt": "2026-10-11T23:52:41.438597Z",
           "attribution": {
             "id": "ss-oxford-tools-codex-20261011",
@@ -285,12 +285,12 @@
       "lastChangedAt": "2026-10-12T00:00:04.318Z",
       "evidence": [
         {
-          "id": "ev-cl-university-of-oxford-microsoft-copilot-24-codex-d8b184996adb",
+          "id": "ev-cl-university-of-oxford-microsoft-copilot-24-codex-8e27105557a1",
           "sourceUrl": "https://oerc.ox.ac.uk/ai-centre/generative-ai-tools",
           "sourceLanguage": "en",
           "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
-          "evidenceSnippet": "Microsoft Copilot Chat",
-          "snippetLocation": "Captured official text line 80; HTML text extraction; raw source retained privately",
+          "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
+          "snippetLocation": "Quick tool selection guide: Microsoft Copilot Chat row, all five table columns",
           "retrievedAt": "2026-10-11T23:52:41.438597Z",
           "attribution": {
             "id": "ss-oxford-tools-codex-20261011",

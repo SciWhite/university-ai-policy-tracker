@@ -11,7 +11,7 @@
     "lastChangedAt": "2026-10-12T00:00:04.318Z",
     "publicationKind": "scoped_record_correction",
     "changeSummary": "Oxford requires assessment-specific AI instructions and declarations. MPLS research-student rules have a divisional scope. Research policy distinguishes should declare from conditional must. Some security/tool guidance has migrated; access is not assessment permission.",
-    "recordSha256": "094a6160d3640c7f2880e6140ef203fe0ad53fe7edc5c892caad3e66f7b26ea3",
+    "recordSha256": "3d559bfccd1e22bb84139fd74c76f2f31cbd6d04f9e31aa3f836c5c3602026df",
     "confidence": 0.97,
     "reviewState": "agent_reviewed",
     "claimCount": 16,
@@ -50,7 +50,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "ChatGPT Edu",
+              "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -73,7 +73,7 @@
         },
         "newEvidence": [
           {
-            "evidenceSnippet": "ChatGPT Edu",
+            "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
             "retrievedAt": "2026-10-11T23:52:41.438597Z",
             "sourceLanguage": "en",
             "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -162,7 +162,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "ChatGPT Edu",
+              "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -185,7 +185,7 @@
         },
         "newEvidence": [
           {
-            "evidenceSnippet": "ChatGPT Edu",
+            "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
             "retrievedAt": "2026-10-11T23:52:41.438597Z",
             "sourceLanguage": "en",
             "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -254,7 +254,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "ChatGPT Edu",
+              "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -346,7 +346,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "ChatGPT Edu",
+              "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -439,7 +439,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Codex and ChatGPT Work",
+              "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -462,7 +462,7 @@
         },
         "newEvidence": [
           {
-            "evidenceSnippet": "Codex and ChatGPT Work",
+            "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
             "retrievedAt": "2026-10-11T23:52:41.438597Z",
             "sourceLanguage": "en",
             "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -551,7 +551,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Codex and ChatGPT Work",
+              "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -574,7 +574,7 @@
         },
         "newEvidence": [
           {
-            "evidenceSnippet": "Codex and ChatGPT Work",
+            "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
             "retrievedAt": "2026-10-11T23:52:41.438597Z",
             "sourceLanguage": "en",
             "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -643,7 +643,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Codex and ChatGPT Work",
+              "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -735,7 +735,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Codex and ChatGPT Work",
+              "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -828,7 +828,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Google Gemini",
+              "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -851,7 +851,7 @@
         },
         "newEvidence": [
           {
-            "evidenceSnippet": "Google Gemini",
+            "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
             "retrievedAt": "2026-10-11T23:52:41.438597Z",
             "sourceLanguage": "en",
             "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -940,7 +940,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Google Gemini",
+              "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -963,7 +963,7 @@
         },
         "newEvidence": [
           {
-            "evidenceSnippet": "Google Gemini",
+            "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
             "retrievedAt": "2026-10-11T23:52:41.438597Z",
             "sourceLanguage": "en",
             "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -1032,7 +1032,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Google Gemini",
+              "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -1124,7 +1124,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Google Gemini",
+              "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -1217,7 +1217,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Microsoft Copilot Chat",
+              "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -1240,7 +1240,7 @@
         },
         "newEvidence": [
           {
-            "evidenceSnippet": "Microsoft Copilot Chat",
+            "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
             "retrievedAt": "2026-10-11T23:52:41.438597Z",
             "sourceLanguage": "en",
             "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -1329,7 +1329,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Microsoft Copilot Chat",
+              "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -1352,7 +1352,7 @@
         },
         "newEvidence": [
           {
-            "evidenceSnippet": "Microsoft Copilot Chat",
+            "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
             "retrievedAt": "2026-10-11T23:52:41.438597Z",
             "sourceLanguage": "en",
             "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -1421,7 +1421,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Microsoft Copilot Chat",
+              "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -1513,7 +1513,7 @@
           "entitySlug": "university-of-oxford",
           "evidence": [
             {
-              "evidenceSnippet": "Microsoft Copilot Chat",
+              "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -7000,7 +7000,7 @@
       {
         "type": "insert",
         "newLineNumber": 5,
-        "value": "Evidence (en, d0283973388d): ChatGPT Edu"
+        "value": "Evidence (en, d0283973388d): ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)"
       },
       {
         "type": "insert",
@@ -7027,7 +7027,7 @@
       {
         "type": "insert",
         "newLineNumber": 10,
-        "value": "Evidence (en, d0283973388d): ChatGPT Edu"
+        "value": "Evidence (en, d0283973388d): ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)"
       },
       {
         "type": "insert",
@@ -7123,7 +7123,7 @@
       {
         "type": "insert",
         "newLineNumber": 22,
-        "value": "Evidence (en, d0283973388d): Codex and ChatGPT Work"
+        "value": "Evidence (en, d0283973388d): Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)"
       },
       {
         "type": "insert",
@@ -7150,7 +7150,7 @@
       {
         "type": "insert",
         "newLineNumber": 27,
-        "value": "Evidence (en, d0283973388d): Codex and ChatGPT Work"
+        "value": "Evidence (en, d0283973388d): Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)"
       },
       {
         "type": "insert",
@@ -7246,7 +7246,7 @@
       {
         "type": "insert",
         "newLineNumber": 39,
-        "value": "Evidence (en, d0283973388d): Google Gemini"
+        "value": "Evidence (en, d0283973388d): Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace"
       },
       {
         "type": "insert",
@@ -7273,7 +7273,7 @@
       {
         "type": "insert",
         "newLineNumber": 44,
-        "value": "Evidence (en, d0283973388d): Google Gemini"
+        "value": "Evidence (en, d0283973388d): Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace"
       },
       {
         "type": "insert",
@@ -7369,7 +7369,7 @@
       {
         "type": "insert",
         "newLineNumber": 56,
-        "value": "Evidence (en, d0283973388d): Microsoft Copilot Chat"
+        "value": "Evidence (en, d0283973388d): Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree"
       },
       {
         "type": "insert",
@@ -7396,7 +7396,7 @@
       {
         "type": "insert",
         "newLineNumber": 61,
-        "value": "Evidence (en, d0283973388d): Microsoft Copilot Chat"
+        "value": "Evidence (en, d0283973388d): Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree"
       },
       {
         "type": "insert",
@@ -9359,7 +9359,7 @@
       "lastChangedAt": "2026-10-12T00:00:04.318Z",
       "publicationKind": "scoped_record_correction",
       "changeSummary": "Oxford requires assessment-specific AI instructions and declarations. MPLS research-student rules have a divisional scope. Research policy distinguishes should declare from conditional must. Some security/tool guidance has migrated; access is not assessment permission.",
-      "recordSha256": "094a6160d3640c7f2880e6140ef203fe0ad53fe7edc5c892caad3e66f7b26ea3",
+      "recordSha256": "3d559bfccd1e22bb84139fd74c76f2f31cbd6d04f9e31aa3f836c5c3602026df",
       "confidence": 0.97,
       "reviewState": "agent_reviewed",
       "claimCount": 16,
@@ -9398,7 +9398,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "ChatGPT Edu",
+                "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9421,7 +9421,7 @@
           },
           "newEvidence": [
             {
-              "evidenceSnippet": "ChatGPT Edu",
+              "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9510,7 +9510,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "ChatGPT Edu",
+                "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9533,7 +9533,7 @@
           },
           "newEvidence": [
             {
-              "evidenceSnippet": "ChatGPT Edu",
+              "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9602,7 +9602,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "ChatGPT Edu",
+                "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9694,7 +9694,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "ChatGPT Edu",
+                "evidenceSnippet": "ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9787,7 +9787,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Codex and ChatGPT Work",
+                "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9810,7 +9810,7 @@
           },
           "newEvidence": [
             {
-              "evidenceSnippet": "Codex and ChatGPT Work",
+              "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9899,7 +9899,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Codex and ChatGPT Work",
+                "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9922,7 +9922,7 @@
           },
           "newEvidence": [
             {
-              "evidenceSnippet": "Codex and ChatGPT Work",
+              "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -9991,7 +9991,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Codex and ChatGPT Work",
+                "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10083,7 +10083,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Codex and ChatGPT Work",
+                "evidenceSnippet": "Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10176,7 +10176,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Google Gemini",
+                "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10199,7 +10199,7 @@
           },
           "newEvidence": [
             {
-              "evidenceSnippet": "Google Gemini",
+              "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10288,7 +10288,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Google Gemini",
+                "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10311,7 +10311,7 @@
           },
           "newEvidence": [
             {
-              "evidenceSnippet": "Google Gemini",
+              "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10380,7 +10380,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Google Gemini",
+                "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10472,7 +10472,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Google Gemini",
+                "evidenceSnippet": "Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10565,7 +10565,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Microsoft Copilot Chat",
+                "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10588,7 +10588,7 @@
           },
           "newEvidence": [
             {
-              "evidenceSnippet": "Microsoft Copilot Chat",
+              "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10677,7 +10677,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Microsoft Copilot Chat",
+                "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10700,7 +10700,7 @@
           },
           "newEvidence": [
             {
-              "evidenceSnippet": "Microsoft Copilot Chat",
+              "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
               "retrievedAt": "2026-10-11T23:52:41.438597Z",
               "sourceLanguage": "en",
               "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10769,7 +10769,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Microsoft Copilot Chat",
+                "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -10861,7 +10861,7 @@
             "entitySlug": "university-of-oxford",
             "evidence": [
               {
-                "evidenceSnippet": "Microsoft Copilot Chat",
+                "evidenceSnippet": "Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree",
                 "retrievedAt": "2026-10-11T23:52:41.438597Z",
                 "sourceLanguage": "en",
                 "sourceSnapshotHash": "d0283973388d0f220c9734bb327ae84b04d6e8951cc19b30786db3af3264c524",
@@ -15205,7 +15205,7 @@
         {
           "type": "insert",
           "newLineNumber": 5,
-          "value": "Evidence (en, d0283973388d): ChatGPT Edu"
+          "value": "Evidence (en, d0283973388d): ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)"
         },
         {
           "type": "insert",
@@ -15232,7 +15232,7 @@
         {
           "type": "insert",
           "newLineNumber": 10,
-          "value": "Evidence (en, d0283973388d): ChatGPT Edu"
+          "value": "Evidence (en, d0283973388d): ChatGPT Edu\nAdvanced content generation, summarisation, and complex reasoning\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)"
         },
         {
           "type": "insert",
@@ -15328,7 +15328,7 @@
         {
           "type": "insert",
           "newLineNumber": 22,
-          "value": "Evidence (en, d0283973388d): Codex and ChatGPT Work"
+          "value": "Evidence (en, d0283973388d): Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)"
         },
         {
           "type": "insert",
@@ -15355,7 +15355,7 @@
         {
           "type": "insert",
           "newLineNumber": 27,
-          "value": "Evidence (en, d0283973388d): Codex and ChatGPT Work"
+          "value": "Evidence (en, d0283973388d): Codex\nCoding assistance, file organisation, and workflow automation\nConfidential\nUniversity SSO\nFree for all current Oxford staff and students (including College staff)"
         },
         {
           "type": "insert",
@@ -15451,7 +15451,7 @@
         {
           "type": "insert",
           "newLineNumber": 39,
-          "value": "Evidence (en, d0283973388d): Google Gemini"
+          "value": "Evidence (en, d0283973388d): Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace"
         },
         {
           "type": "insert",
@@ -15478,7 +15478,7 @@
         {
           "type": "insert",
           "newLineNumber": 44,
-          "value": "Evidence (en, d0283973388d): Google Gemini"
+          "value": "Evidence (en, d0283973388d): Google Gemini\nAI assistance integrated with Google Workspace and as a standalone chat\nConfidential\nUniversity SSO\nFree through the University Google Workspace"
         },
         {
           "type": "insert",
@@ -15574,7 +15574,7 @@
         {
           "type": "insert",
           "newLineNumber": 56,
-          "value": "Evidence (en, d0283973388d): Microsoft Copilot Chat"
+          "value": "Evidence (en, d0283973388d): Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree"
         },
         {
           "type": "insert",
@@ -15601,7 +15601,7 @@
         {
           "type": "insert",
           "newLineNumber": 61,
-          "value": "Evidence (en, d0283973388d): Microsoft Copilot Chat"
+          "value": "Evidence (en, d0283973388d): Microsoft Copilot Chat\nWeb-grounded chat, summarisation, drafting, and web-based information retrieval\nConfidential\nUniversity SSO\nFree"
         },
         {
           "type": "insert",
