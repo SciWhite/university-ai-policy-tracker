@@ -285,7 +285,8 @@ export default async function UniversityPage({
     : publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt;
 
   return (
-    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-policy-layout={referencePreview ? "reference-v4" : undefined}>
+    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}${scopedCorrection ? " scoped-policy-correction" : ""}`} data-policy-layout={referencePreview ? "reference-v4" : undefined}>
+      {scopedCorrection ? <style>{`.scoped-policy-correction .student-source-attribution-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));min-width:0}.scoped-policy-correction .student-source-attribution{min-width:0;overflow-wrap:anywhere}`}</style> : null}
       <JsonLd
         data={{
           "@context": "https://schema.org",
