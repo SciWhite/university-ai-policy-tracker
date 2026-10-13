@@ -98,7 +98,7 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
-  if (isEthEnforcementPreview(slug, (await searchParams)?.layout)) {
+  if (isEthEnforcementPreview(slug, (await searchParams)?.layout) && !isPolicyV6Preview(slug, (await searchParams)?.layout)) {
     const title = "ETH Zurich AI policy evidence | University AI Policy Tracker";
     const description = "An independent sample of five source-backed ETH Zurich policy facts. Specific penalties and appeal deadlines were not established in the reviewed material; this is an evidence gap, not a finding that no rules exist.";
     return {
@@ -191,7 +191,7 @@ export default async function UniversityPage({
   const { locale: localeParam, slug } = await params;
   const locale = normalizeLocale(localeParam);
   await redirectAliasSlug(slug, localeParam);
-  if (isEthEnforcementPreview(slug, (await searchParams)?.layout)) return <EthEnforcementPreview locale={locale} />;
+  if (isEthEnforcementPreview(slug, (await searchParams)?.layout) && !isPolicyV6Preview(slug, (await searchParams)?.layout)) return <EthEnforcementPreview locale={locale} />;
 
   const pageQuery = await searchParams;
   const uiLab = isPolicyV6Preview(slug, pageQuery?.layout);
