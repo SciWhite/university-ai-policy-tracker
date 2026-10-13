@@ -1,4 +1,4 @@
-import {publishedV6Slugs,publishedV6Enabled} from "./policy-v6-published";
+import {publishedV6Slugs,publishedV6Enabled} from "./policy-v6-published-gate";
 /** Six reference schools; historical cohort stays stable for acceptance and art pins. */
 export const policyV6Slugs = [
   "harvard-university",

@@ -6,8 +6,8 @@ import type {LabSchool} from './policy-v6';
 import type {LocalV6Bundle} from './policy-v6-bundle';
 import type {LocalV6Evidence} from './policy-v6-local-evidence';
 import pointer from '../../../data/public-v6-pages/current.json';
-export const publishedV6Slugs=pointer.slugs;
-export const publishedV6Enabled=()=>process.env.UAPT_V6_PUBLISHED_PAGES==='1';
+import {publishedV6Slugs,publishedV6Enabled} from './policy-v6-published-gate';
+export {publishedV6Slugs,publishedV6Enabled} from './policy-v6-published-gate';
 interface LocaleData {schools:LabSchool[];views:Record<string,LocalV6Bundle>;localEvidence:Record<string,LocalV6Evidence>;entities:Record<string,unknown>;related:Record<string,unknown>}
 let cached:{releaseId:string;slugs:string[];locales:Record<SupportedLocale,LocaleData>}|undefined;
 export function readPublishedV6(){
