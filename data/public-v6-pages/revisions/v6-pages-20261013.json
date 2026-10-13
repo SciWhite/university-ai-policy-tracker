@@ -5839,12 +5839,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 22,
-          "heldClaims": [
-            {
-              "id": "enforcement:national-university-of-singapore:nus-fact-5",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -6335,16 +6330,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 14,
-          "heldClaims": [
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-              "text": "Retained for separate review; not promoted."
-            },
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -7260,12 +7246,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 30,
-          "heldClaims": [
-            {
-              "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -10554,12 +10535,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 22,
-            "heldClaims": [
-              {
-                "id": "enforcement:national-university-of-singapore:nus-fact-5",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -12303,16 +12279,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 14,
-            "heldClaims": [
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-                "text": "Retained for separate review; not promoted."
-              },
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -15712,12 +15679,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 30,
-            "heldClaims": [
-              {
-                "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -39611,12 +39573,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 22,
-          "heldClaims": [
-            {
-              "id": "enforcement:national-university-of-singapore:nus-fact-5",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -40107,16 +40064,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 14,
-          "heldClaims": [
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-              "text": "Retained for separate review; not promoted."
-            },
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -41032,12 +40980,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 30,
-          "heldClaims": [
-            {
-              "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -44326,12 +44269,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 22,
-            "heldClaims": [
-              {
-                "id": "enforcement:national-university-of-singapore:nus-fact-5",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -46075,16 +46013,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 14,
-            "heldClaims": [
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-                "text": "Retained for separate review; not promoted."
-              },
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -49484,12 +49413,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 30,
-            "heldClaims": [
-              {
-                "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -73383,12 +73307,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 22,
-          "heldClaims": [
-            {
-              "id": "enforcement:national-university-of-singapore:nus-fact-5",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -73879,16 +73798,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 14,
-          "heldClaims": [
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-              "text": "Retained for separate review; not promoted."
-            },
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -74804,12 +74714,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 30,
-          "heldClaims": [
-            {
-              "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -78098,12 +78003,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 22,
-            "heldClaims": [
-              {
-                "id": "enforcement:national-university-of-singapore:nus-fact-5",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -79847,16 +79747,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 14,
-            "heldClaims": [
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-                "text": "Retained for separate review; not promoted."
-              },
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -83256,12 +83147,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 30,
-            "heldClaims": [
-              {
-                "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -107155,12 +107041,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 22,
-          "heldClaims": [
-            {
-              "id": "enforcement:national-university-of-singapore:nus-fact-5",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -107651,16 +107532,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 14,
-          "heldClaims": [
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-              "text": "Retained for separate review; not promoted."
-            },
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -108576,12 +108448,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 30,
-          "heldClaims": [
-            {
-              "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -111870,12 +111737,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 22,
-            "heldClaims": [
-              {
-                "id": "enforcement:national-university-of-singapore:nus-fact-5",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -113619,16 +113481,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 14,
-            "heldClaims": [
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-                "text": "Retained for separate review; not promoted."
-              },
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -117028,12 +116881,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 30,
-            "heldClaims": [
-              {
-                "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -140927,12 +140775,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 22,
-          "heldClaims": [
-            {
-              "id": "enforcement:national-university-of-singapore:nus-fact-5",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -141423,16 +141266,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 14,
-          "heldClaims": [
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-              "text": "Retained for separate review; not promoted."
-            },
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -142348,12 +142182,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 30,
-          "heldClaims": [
-            {
-              "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -145642,12 +145471,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 22,
-            "heldClaims": [
-              {
-                "id": "enforcement:national-university-of-singapore:nus-fact-5",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -147391,16 +147215,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 14,
-            "heldClaims": [
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-                "text": "Retained for separate review; not promoted."
-              },
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -150800,12 +150615,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 30,
-            "heldClaims": [
-              {
-                "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -174699,12 +174509,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 22,
-          "heldClaims": [
-            {
-              "id": "enforcement:national-university-of-singapore:nus-fact-5",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -175195,16 +175000,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 14,
-          "heldClaims": [
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-              "text": "Retained for separate review; not promoted."
-            },
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -176120,12 +175916,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 30,
-          "heldClaims": [
-            {
-              "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -179414,12 +179205,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 22,
-            "heldClaims": [
-              {
-                "id": "enforcement:national-university-of-singapore:nus-fact-5",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -181163,16 +180949,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 14,
-            "heldClaims": [
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-                "text": "Retained for separate review; not promoted."
-              },
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -184572,12 +184349,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 30,
-            "heldClaims": [
-              {
-                "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -208471,12 +208243,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 22,
-          "heldClaims": [
-            {
-              "id": "enforcement:national-university-of-singapore:nus-fact-5",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -208967,16 +208734,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 14,
-          "heldClaims": [
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-              "text": "Retained for separate review; not promoted."
-            },
-            {
-              "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -209892,12 +209650,7 @@
           "snapshotStatus": "published_reviewed_page_supplement",
           "newReviewPending": true,
           "reviewedClaimCount": 30,
-          "heldClaims": [
-            {
-              "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-              "text": "Retained for separate review; not promoted."
-            }
-          ],
+          "heldClaims": [],
           "topics": [
             {
               "key": "coursework",
@@ -213186,12 +212939,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 22,
-            "heldClaims": [
-              {
-                "id": "enforcement:national-university-of-singapore:nus-fact-5",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -214935,16 +214683,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 14,
-            "heldClaims": [
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-investigation-notice-deadline",
-                "text": "Retained for separate review; not promoted."
-              },
-              {
-                "id": "enforcement:ucl:ucl-disciplinary-appeal-committee-format",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",
@@ -218344,12 +218083,7 @@
             "snapshotStatus": "published_reviewed_page_supplement",
             "newReviewPending": true,
             "reviewedClaimCount": 30,
-            "heldClaims": [
-              {
-                "id": "enforcement:california-institute-of-technology:california-institute-of-technology-local-fact-15",
-                "text": "Retained for separate review; not promoted."
-              }
-            ],
+            "heldClaims": [],
             "topics": [
               {
                 "key": "coursework",

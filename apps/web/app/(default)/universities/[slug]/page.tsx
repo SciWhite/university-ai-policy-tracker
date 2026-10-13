@@ -367,7 +367,7 @@ export default async function UniversityPage({
         title={<span data-i18n="preserve">{uiLab ? getPolicyV6UniversityTitle(slug, displayName) : displayName}</span>}
       />
 
-      {uiLab ? <PolicyV6Intro /> : null}
+      {uiLab ? <><PolicyV6Intro />{locale !== "en" ? <p className="muted" data-i18n="preserve">{locale === "zh" ? "政策正文和证据保留原英文；界面翻译不代表政策译文已审核。" : "Policy wording and evidence retain their original English. Interface translation is not a reviewed policy translation."}</p> : null}</> : null}
       {enforcementPage ? <EnforcementTaskEntrances locale={locale} /> : null}
       {policyScene ? referencePreview ? <PolicyReferenceHero uiLab={uiLab} scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements} /> : <PolicySceneHero scene={policyScene} /> : null}
       {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
@@ -448,6 +448,7 @@ export default async function UniversityPage({
         )}
       </section>
 
+      {uiLab && publicSummary.claims.some(claim => !isReviewedClaim(claim.reviewState)) ? <section className="student-record-section" id="v6-held-public-claims"><h2>{locale === "zh" ? "暂缓结论与历史证据" : "Held conclusions and historical evidence"}</h2><p>{locale === "zh" ? "以下记录保留原始链接和引文；现行适用性未确认，不作为已审核规则。" : "These records retain their original anchors and quotations. Current applicability is unconfirmed; they are excluded from reviewed conclusions."}</p>{publicSummary.claims.filter(claim => !isReviewedClaim(claim.reviewState)).map(claim => <ClaimEvidenceCard key={claim.id} claim={claim} entitySlug={slug} locale={locale} showConfidence={false} id={`claim-${claim.id}`} />)}</section> : null}
       <section className={`student-record-section${compactPolicyPilot ? " student-record-section--compact" : ""}`} id="sources">
         <div className="section-heading">
           <div>
