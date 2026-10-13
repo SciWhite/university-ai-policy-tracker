@@ -1,3 +1,18 @@
+import { UniversityMark } from "@/components/university-mark";
+import { PolicyV6HeaderLocation } from "@/components/policy-v6-header-location";
+import { getPolicyV6UniversityTitle } from "@/lib/policy-v6-university-title";
+import { getLocalV6Bundle } from "@/lib/policy-v6-bundle";
+import { PolicyV6BundlePage } from "@/components/policy-v6-bundle-page";
+import { PolicyV6Sources } from "@/components/policy-v6-sources";
+import { PolicyV6ClaimGroups } from "@/components/policy-v6-claim-groups";
+import { getLocalV6Evidence } from '@/lib/policy-v6-local-evidence';
+import { PolicyV6LocalPage } from '@/components/policy-v6-local-page';
+import { policyV6AgentReviewLabel } from '@/lib/policy-v6-review';
+import { getPolicyV6IllustratedScene } from '@/lib/policy-v6-illustrated-scene';
+import { PolicyV6RecordTopics } from '@/components/policy-v6-record-topics';
+import { Fragment } from 'react';
+import { PolicyV6Provider, PolicyV6Actions, PolicyV6Intro, PolicyV6ChecklistFaq, PolicyV6Faq } from '@/components/policy-v6';
+import { getPolicyV6Data, isPolicyV6Preview } from '@/lib/policy-v6';
 import { buildPolicyAnalysisProfile } from "@/lib/policy-analysis";
 import { isCandidateRepairPreview } from "@/lib/public-record-repairs";
 import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
@@ -135,7 +150,7 @@ export async function generateMetadata({ params, searchParams }: UniversityPageP
     title,
     description,
     alternates,
-    ...(isPolicyReferencePreview(slug, (await searchParams)?.layout) ? { robots: { index: false, follow: false } } : {}),
+    ...((process.env.NODE_ENV === "development" && (isPolicyReferencePreview(slug, (await searchParams)?.layout) || isPolicyV6Preview(slug, (await searchParams)?.layout))) ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       title,
       description,
@@ -178,6 +193,21 @@ export default async function UniversityPage({
   await redirectAliasSlug(slug, localeParam);
   if (isEthEnforcementPreview(slug, (await searchParams)?.layout)) return <EthEnforcementPreview locale={locale} />;
 
+  const pageQuery = await searchParams;
+  const uiLab = isPolicyV6Preview(slug, pageQuery?.layout);
+  const localBundle = uiLab ? getLocalV6Bundle(slug, locale) : undefined;
+  if (localBundle) {
+    const [identity, data, catalog, summaries] = await Promise.all([getCatalogUniversityBySlug(slug), getPolicyV6Data(locale, slug), getCatalogUniversities(), getStagedPublicSummaries()]);
+    if (!identity) notFound();
+    return <PolicyV6BundlePage university={identity} data={data} view={localBundle} locale={locale} relatedUniversities={selectRelatedUniversities(slug, catalog, summaries, 4, true)} />;
+  }
+  const localEvidence = uiLab ? getLocalV6Evidence(slug) : undefined;
+  if (localEvidence) {
+    const [localUniversity, localData, localCatalog, localSummaries] = await Promise.all([getCatalogUniversityBySlug(slug), getPolicyV6Data(locale, slug), getCatalogUniversities(), getStagedPublicSummaries()]);
+    if (!localUniversity) notFound();
+    return <PolicyV6LocalPage university={localUniversity} data={localData} evidence={localEvidence} locale={locale} relatedUniversities={selectRelatedUniversities(slug, localCatalog, localSummaries, 4, true)}/>;
+  }
+
   const [university, publicSummary, loadedSnapshot] = await Promise.all([
     getCatalogUniversityBySlug(slug),
     getPublicUniversitySummaryBySlug(slug),
@@ -200,7 +230,8 @@ export default async function UniversityPage({
     draftPreview || isReviewedClaim(claim.reviewState)
   );
   const strongSnapshot = isStrongStudentSnapshot(loadedSnapshot);
-  const pageQuery = await searchParams;
+  const labData = uiLab ? await getPolicyV6Data(locale, slug) : undefined;
+  const LabProvider = labData ? PolicyV6Provider : Fragment;
   const role = isStudentOnlyPolicyPage(slug) ? "student" : normalizeStudentSnapshotRole(pageQuery?.for);
   const citationReadySummary = buildCitationSummary(
     displayName,
@@ -220,19 +251,22 @@ export default async function UniversityPage({
       : undefined;
   const isPublished = isPublishedPolicyReferencePage(slug);
   const isPreview = isPolicyReferencePreview(slug, pageQuery?.layout);
-  const basePolicyScene = getPolicyScenePilot(
+  const originalPolicyScene = getPolicyScenePilot(
     slug,
     publicSummary.claims,
     strongSnapshot,
     Boolean(pilotClaimsSummary),
     { isPreview: isPublished || isPreview }
   );
-  const enforcementPage = isPublished && enforcementV4RefreshSlugs.includes(slug);
+  const v6School = labData?.schools.find(s => s.slug === slug);
+  const basePolicyScene = uiLab && v6School ? getPolicyV6IllustratedScene(v6School, locale) ?? originalPolicyScene : originalPolicyScene;
+  const showSupplements = approvedPolicySupplementSlugs.includes(slug) && (!uiLab || slug === "harvard-university");
+  const enforcementPage = isPublished && enforcementV4RefreshSlugs.includes(slug) && (!uiLab || slug === "harvard-university");
   const policyScene = enforcementPage && locale === "zh" && basePolicyScene
     ? localizeV5Scene(basePolicyScene)
     : basePolicyScene;
   const compactPolicyPilot = Boolean(policyScene?.quickGuide);
-  const referencePreview = Boolean(
+  const referencePreview = uiLab || Boolean(
     (policyScene?.quickGuide || enforcementPage) &&
     (strongSnapshot || pilotClaimsSummary || policyScene?.claimsOnly || Boolean(policyScene?.snapshotNotice) || enforcementPage) &&
     (isPublished || isPreview)
@@ -258,20 +292,20 @@ export default async function UniversityPage({
         )
       : groupReviewedClaimsByClaimType(reviewedClaims)
     : undefined;
-  const relatedUniversities = pilotSlug
-    ? selectRelatedUniversities(
+  const relatedUniversities = selectRelatedUniversities(
         slug,
         await getCatalogUniversities(),
-        await getStagedPublicSummaries()
-      )
-    : undefined;
+        await getStagedPublicSummaries(),
+        4,
+        uiLab
+      );
   const structuredDescription = pilotSeoDescription ?? citationReadySummary;
   const structuredDateModified = pilotSlug
     ? (await getIndexRecoveryLastModified(slug)).toISOString()
     : publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt;
 
   return (
-    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-policy-layout={referencePreview ? "reference-v4" : undefined}>
+    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-policy-layout={uiLab ? "v6" : referencePreview ? "reference-v4" : undefined}>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -307,13 +341,16 @@ export default async function UniversityPage({
         }}
       />
 
-      <PolicyReferenceLayout enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={approvedPolicySupplementSlugs.includes(slug)}>
+      <LabProvider {...(labData ? { data: labData } : {})}>
+      <PolicyReferenceLayout uiLab={uiLab} enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot && !uiLab} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements}>
       {draftPreview ? <aside data-i18n="preserve" role="status">LOCAL CANDIDATE PREVIEW — pending review; not published. All evidence remains in its original language.</aside> : null}
       <EntityHeader
-        eyebrow={`${university.region}, ${university.country}`}
-        metadata={
+        actions={uiLab ? <div id="v6-header-actions"><PolicyV6Actions /></div> : undefined}
+        leading={uiLab ? <UniversityMark slug={slug} size="hero" /> : undefined}
+        eyebrow={uiLab ? <PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={publicSummary.lastCheckedAt} changedAt={publicSummary.lastChangedAt} locale={locale} /> : `${university.region}, ${university.country}`}
+        metadata={uiLab ? undefined :
           <>
-            {referencePreview ? <MetaLabel label={referenceUi("Review")}>{referencePreview ? <PolicyReferenceReview state={publicSummary.reviewState} locale={locale} /> : formatReviewState(publicSummary.reviewState)}</MetaLabel> : null}
+            {referencePreview ? <MetaLabel label={referenceUi("Review")}><PolicyReferenceReview state={publicSummary.reviewState} locale={locale} /></MetaLabel> : null}
             {compactPolicyPilot ? null : (
               <MetaLabel label="Ranking">
                 {formatRanking(university.rankings)}
@@ -321,17 +358,18 @@ export default async function UniversityPage({
             )}
             <MetaLabel label={referenceUi("Updated")}>
               {formatDate(
-                publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt,
+                uiLab ? publicSummary.lastCheckedAt ?? publicSummary.lastChangedAt : publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt,
                 locale
               )}
             </MetaLabel>
           </>
         }
-        title={<span data-i18n="preserve">{displayName}</span>}
+        title={<span data-i18n="preserve">{uiLab ? getPolicyV6UniversityTitle(slug, displayName) : displayName}</span>}
       />
 
+      {uiLab ? <PolicyV6Intro /> : null}
       {enforcementPage ? <EnforcementTaskEntrances locale={locale} /> : null}
-      {policyScene ? referencePreview ? <PolicyReferenceHero scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={approvedPolicySupplementSlugs.includes(slug)} /> : <PolicySceneHero scene={policyScene} /> : null}
+      {policyScene ? referencePreview ? <PolicyReferenceHero uiLab={uiLab} scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements} /> : <PolicySceneHero scene={policyScene} /> : null}
       {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
       {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
@@ -346,12 +384,15 @@ export default async function UniversityPage({
           scene={referenceScene}
           snapshot={loadedSnapshot.snapshot}
           guidanceInHero={referencePreview}
+          uiLab={uiLab}
         />
       ) : null}
+      {labData ? <PolicyV6RecordTopics data={labData} additionalOnly={strongSnapshot} /> : null}
       {policyScene?.quickGuide && !strongSnapshot ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
-      {enforcementPage ? <EnforcementV4Refresh slug={slug} locale={locale} /> : null}
-      {isPublishedUniversityAiToolsModule(slug) ? <UniversityAiTools draftPreview={draftPreview} locale={locale} records={await getUniversityToolRecords(publicSummary)} /> : null}
-      {approvedPolicySupplementSlugs.includes(slug) ? <PolicySupplements slug={slug} locale={locale} claims={reviewedClaims} /> : null}
+      {enforcementPage ? <EnforcementV4Refresh slug={slug} locale={locale} uiLab={uiLab} /> : null}
+      {isPublishedUniversityAiToolsModule(slug) ? <UniversityAiTools uiLab={uiLab} draftPreview={draftPreview} locale={locale} records={await getUniversityToolRecords(publicSummary)} /> : null}
+      {uiLab ? <PolicyV6ChecklistFaq includeFaq={false} /> : null}
+      {showSupplements ? <PolicySupplements slug={slug} locale={locale} claims={reviewedClaims} /> : null}
       {referencePreview ? <PolicyReferenceInteractions /> : compactPolicyPilot ? <PolicyRecordHashReveal /> : null}
 
       <section className={`student-record-section${compactPolicyPilot ? " student-record-section--compact" : ""}`} id="claims">
@@ -378,7 +419,7 @@ export default async function UniversityPage({
         <a href={policyScene.sourceUpdate.href} target="_blank" rel="noopener noreferrer">Read the current official source →</a>
       </aside> : null}
       {reviewedClaims.length ? (
-          claimGroups ? (
+          uiLab ? <PolicyV6ClaimGroups entitySlug={slug} groups={claimGroups ?? groupReviewedClaimsByClaimType(reviewedClaims)} locale={locale} /> : claimGroups ? (
             <UniversityClaimGroups
               draftPreview={draftPreview}
               entitySlug={slug}
@@ -415,7 +456,7 @@ export default async function UniversityPage({
           </div>
           <p>{referenceUi(`${publicSummary.officialSources.length} source${publicSummary.officialSources.length === 1 ? "" : "s"}`)}</p>
         </div>
-        {compactPolicyPilot ? (
+        {uiLab ? <PolicyV6Sources sources={publicSummary.officialSources} slug={slug} locale={locale} /> : compactPolicyPilot ? (
           <details className="policy-record-sources">
             <summary>{referenceUi("Open official source list")} <span aria-hidden="true">⌄</span></summary>
             <OfficialSourceAttributionList sources={publicSummary.officialSources} slug={slug} locale={locale} localizeUi={referencePreview} />
@@ -426,7 +467,7 @@ export default async function UniversityPage({
       </section>
 
       {relatedUniversities?.length ? (
-        <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi={referencePreview} />
+        <RelatedUniversities universities={relatedUniversities} locale={locale} localizeUi={referencePreview} uiLab={uiLab} />
       ) : null}
 
       <section className="student-record-info" id="record-info">
@@ -435,7 +476,7 @@ export default async function UniversityPage({
           <div className="student-record-info__body">
             <div className="tag-row" id="snapshot-scope">
               <MetaLabel label={referenceUi("Review")}>
-                {referencePreview ? <PolicyReferenceReview state={publicSummary.reviewState} locale={locale} /> : formatReviewState(publicSummary.reviewState)}
+                {uiLab && v6School?.v6ReviewState === "agent_reviewed" ? <span className="policy-v6-review" data-v6-review-state="agent_reviewed">{policyV6AgentReviewLabel(locale)}</span> : referencePreview ? <PolicyReferenceReview state={publicSummary.reviewState} locale={locale} /> : formatReviewState(publicSummary.reviewState)}
               </MetaLabel>
               <MetaLabel label={referenceUi("Confidence")}>
                 {publicSummary.confidence === undefined
@@ -478,7 +519,9 @@ export default async function UniversityPage({
         </details>
       </section>
       {referencePreview ? <p className="policy-reference-print-note">Saved from University AI Policy Tracker. This record summarizes the cited sources; it is not an official university statement or assessment permission. Source and review dates are listed above. Hashes identify retained content, not authorization.</p> : null}
+      {uiLab ? <PolicyV6Faq /> : null}
       </PolicyReferenceLayout>
+      </LabProvider>
     </main>
   );
 }

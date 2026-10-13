@@ -1,26 +1,31 @@
 import type {
   ClaimEvidence,
   ClaimReviewState,
-  PolicyClaim
+  PolicyClaim,
 } from "@uapt/shared";
 import {
   DEFAULT_LOCALE,
   getLocaleLabel,
   getUiString,
   isSupportedLocale,
-  type SupportedLocale
+  type SupportedLocale,
 } from "@/lib/i18n";
 import { MetaLabel } from "@/components/meta-label";
 import { StateLabel } from "@/components/state-label";
 import { getSourceDomain } from "@/lib/analytics-events";
 import { formatSnapshotHash } from "@/lib/snapshot-hash";
 import { translateSurfaceText } from "@/lib/surface-localization";
+import { policyV6DensityCopy } from "@/lib/policy-v6-density-copy";
+import { policyV6AgentReviewLabel } from "@/lib/policy-v6-review";
 
 interface ClaimEvidenceCardProps {
   claim: PolicyClaim;
   entitySlug?: string;
   id?: string;
   locale?: SupportedLocale;
+  showConfidence?: boolean;
+  compact?: boolean;
+  scopeNote?: string;
 }
 
 const reviewNotes: Partial<Record<ClaimReviewState, string>> = {
@@ -29,39 +34,61 @@ const reviewNotes: Partial<Record<ClaimReviewState, string>> = {
   needs_review:
     "This claim is held for review because the evidence or classification needs another pass.",
   rejected:
-    "This claim is retained for audit context and should not be treated as a public conclusion."
+    "This claim is retained for audit context and should not be treated as a public conclusion.",
 };
 
 export function ClaimEvidenceCard({
   claim,
   entitySlug,
   id,
-  locale = DEFAULT_LOCALE
+  locale = DEFAULT_LOCALE,
+  showConfidence = true,
+  compact = false,
+  scopeNote,
 }: ClaimEvidenceCardProps) {
   return (
     <article
-      className="claim-evidence-card"
+      className={`claim-evidence-card${compact ? " claim-evidence-card--compact" : ""}`}
       data-review-state={claim.reviewState}
       id={id}
     >
       <header className="claim-evidence-card__header">
         <div>
-          <p className="claim-evidence-card__type">
-            {translateSurfaceText(formatClaimType(claim.claimType), locale)}
-          </p>
+          {!compact ? (
+            <p className="claim-evidence-card__type">
+              {translateSurfaceText(formatClaimType(claim.claimType), locale)}
+            </p>
+          ) : null}
           <h3>{claim.claimText}</h3>
         </div>
         <div className="claim-evidence-card__status">
-          <StateLabel locale={locale} reviewState={claim.reviewState} />
-          {["massachusetts-institute-of-technology", "imperial-college-london"].includes(claim.entitySlug ?? "") ?
-            <span lang={locale === "zh" ? "zh" : "en"} data-i18n="preserve">{locale === "zh" ? "审核信号不代表准确率" : "Review signal is not an accuracy score"}</span> :
+          {compact ? (
+            <span className="policy-v6-review">
+              {policyV6AgentReviewLabel(locale)}
+            </span>
+          ) : (
+            <StateLabel locale={locale} reviewState={claim.reviewState} />
+          )}
+          {!showConfidence ? null : [
+              "massachusetts-institute-of-technology",
+              "imperial-college-london",
+            ].includes(claim.entitySlug ?? "") ? (
+            <span lang={locale === "zh" ? "zh" : "en"} data-i18n="preserve">
+              {locale === "zh"
+                ? "审核信号不代表准确率"
+                : "Review signal is not an accuracy score"}
+            </span>
+          ) : (
             <MetaLabel label={translateSurfaceText("Confidence", locale)}>
               {Math.round(claim.confidence * 100)}%
-            </MetaLabel>}
+            </MetaLabel>
+          )}
         </div>
       </header>
 
-      {claim.claimValue ? (
+      {scopeNote ? <p className="claim-state-note" data-i18n="preserve" lang="en">{locale === "zh" ? "适用范围（英文原记录）" : "Scope"}: {scopeNote}</p> : null}
+
+      {!compact && claim.claimValue ? (
         <p className="claim-value">
           {translateSurfaceText("Normalized value", locale)}: {claim.claimValue}
         </p>
@@ -73,7 +100,21 @@ export function ClaimEvidenceCard({
         </p>
       ) : null}
 
-      {claim.lastCheckedAt || claim.lastChangedAt ? (
+      {compact ? (
+        claim.lastCheckedAt || claim.lastChangedAt ? (
+          <p className="policy-v6-claimDate">
+            {claim.lastCheckedAt
+              ? policyV6DensityCopy(locale).checked
+              : translateSurfaceText("Last changed", locale)}{" "}
+            <time dateTime={claim.lastCheckedAt ?? claim.lastChangedAt}>
+              {formatDate(
+                (claim.lastCheckedAt ?? claim.lastChangedAt)!,
+                locale,
+              )}
+            </time>
+          </p>
+        ) : null
+      ) : claim.lastCheckedAt || claim.lastChangedAt ? (
         <dl className="claim-metadata-grid">
           {claim.lastCheckedAt ? (
             <div>
@@ -98,6 +139,7 @@ export function ClaimEvidenceCard({
             index={index}
             key={`${evidence.sourceUrl}:${evidence.sourceSnapshotHash}:${index}`}
             locale={locale}
+            compact={compact}
           />
         ))}
       </div>
@@ -109,18 +151,22 @@ function EvidenceBlock({
   evidence,
   entitySlug,
   index,
-  locale
+  locale,
+  compact = false,
 }: {
   evidence: ClaimEvidence;
   entitySlug?: string;
   index: number;
   locale: SupportedLocale;
+  compact?: boolean;
 }) {
   return (
     <section className="evidence-block">
       <div className="evidence-block__heading">
         <p>{getUiString("originalEvidence", locale)}</p>
-        <span>{translateSurfaceText("Evidence", locale)} {index + 1}</span>
+        <span>
+          {translateSurfaceText("Evidence", locale)} {index + 1}
+        </span>
       </div>
 
       <blockquote className="evidence-snippet">
@@ -141,36 +187,46 @@ function EvidenceBlock({
       {evidence.evidenceSnippetDisplay ? (
         <div className="localized-evidence">
           <p>
-            {getUiString("localizedDisplay", locale)} {translateSurfaceText("only", locale)}
+            {getUiString("localizedDisplay", locale)}{" "}
+            {translateSurfaceText("only", locale)}
           </p>
           <p>{evidence.evidenceSnippetDisplay}</p>
         </div>
       ) : null}
 
-      <dl className="claim-metadata-grid">
-        <div>
-          <dt>{getUiString("sourceLanguage", locale)}</dt>
-          <dd>{formatSourceLanguage(evidence.sourceLanguage, locale)}</dd>
-        </div>
-        <div>
-          <dt>{getUiString("snapshotHash", locale)}</dt>
-          <dd className="hash-value" title={evidence.sourceSnapshotHash}>
-            {formatSnapshotHash(evidence.sourceSnapshotHash)}
-          </dd>
-        </div>
-        {evidence.retrievedAt ? (
+      {compact ? (
+        evidence.snippetLocation ? (
+          <p className="policy-v6-evidenceLocator">
+            <strong>{translateSurfaceText("Evidence locator", locale)}:</strong>{" "}
+            <span data-i18n="preserve">{evidence.snippetLocation}</span>
+          </p>
+        ) : null
+      ) : (
+        <dl className="claim-metadata-grid">
           <div>
-            <dt>{translateSurfaceText("Retrieved", locale)}</dt>
-            <dd>{formatDate(evidence.retrievedAt, locale)}</dd>
+            <dt>{getUiString("sourceLanguage", locale)}</dt>
+            <dd>{formatSourceLanguage(evidence.sourceLanguage, locale)}</dd>
           </div>
-        ) : null}
-        {evidence.snippetLocation ? (
           <div>
-            <dt>{translateSurfaceText("Evidence locator", locale)}</dt>
-            <dd>{evidence.snippetLocation}</dd>
+            <dt>{getUiString("snapshotHash", locale)}</dt>
+            <dd className="hash-value" title={evidence.sourceSnapshotHash}>
+              {formatSnapshotHash(evidence.sourceSnapshotHash)}
+            </dd>
           </div>
-        ) : null}
-      </dl>
+          {evidence.retrievedAt ? (
+            <div>
+              <dt>{translateSurfaceText("Retrieved", locale)}</dt>
+              <dd>{formatDate(evidence.retrievedAt, locale)}</dd>
+            </div>
+          ) : null}
+          {evidence.snippetLocation ? (
+            <div>
+              <dt>{translateSurfaceText("Evidence locator", locale)}</dt>
+              <dd>{evidence.snippetLocation}</dd>
+            </div>
+          ) : null}
+        </dl>
+      )}
     </section>
   );
 }
@@ -184,7 +240,7 @@ export function formatClaimType(value: string): string {
 
 function formatSourceLanguage(
   value: string | undefined,
-  locale: SupportedLocale
+  locale: SupportedLocale,
 ): string {
   if (!value) return translateSurfaceText("Unknown", locale);
 
@@ -197,6 +253,6 @@ function formatSourceLanguage(
 function formatDate(value: string, locale: SupportedLocale): string {
   return new Intl.DateTimeFormat(locale, {
     dateStyle: "medium",
-    timeZone: "UTC"
+    timeZone: "UTC",
   }).format(new Date(value));
 }

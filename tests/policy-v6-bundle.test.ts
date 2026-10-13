@@ -1,0 +1,37 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { getLocalV6Bundle, parseLocalV6Bundle } from '../apps/web/lib/policy-v6-bundle';
+import { isPolicyV6Preview } from '../apps/web/lib/policy-v6-gate';
+const fingerprint='a'.repeat(64);
+function fixture(){
+ const source={sourceUrl:'https://example.edu/policy',citationTitle:'Test source',snapshotHash:'b'.repeat(64),sourceType:'official_guidance',official:true};
+ const evidence={quote:'Test excerpt for contract verification.',url:source.sourceUrl,title:source.citationTitle,language:'en'};
+ return {schemaVersion:'uapt-v6-local-view-v1',publicationApproved:false,sourceBundleSha256:fingerprint,
+ school:{slug:'test-school',fingerprint,topics:['coursework','exams','disclosure','privacy_data','approved_tools','research_publication'].map(key=>({key,title:key,status:'unclear',statusLabel:'Unclear',summary:'Test summary.',scope:'Test scope.',basisKind:'local_reviewed_bundle',actions:[],sources:[{url:source.sourceUrl,hash:source.snapshotHash}],claims:[{id:'test-source',text:'Test source',evidence:[evidence]}]})),additionalTopics:[]},
+ claims:[{id:'test-claim',entitySlug:'test-school',entityType:'university',claimType:'other',claimText:'Test claim.',confidence:0,reviewState:'agent_reviewed',evidence:[{sourceUrl:source.sourceUrl,sourceSnapshotHash:source.snapshotHash,evidenceSnippet:evidence.quote,attribution:source}]}],sources:[source],tools:[],gaps:['Test held gap'],remainingRecordKeys:['held-test'],topicLabels:{coursework:{en:'Coursework',zh:'课程作业'},'coursework:status':{en:'Unclear',zh:'未明确'}},hero:{}};
+}
+function parse(view:object){const raw=Buffer.from(JSON.stringify(view));return parseLocalV6Bundle(raw,'test-school',{sha256:createHash('sha256').update(raw).digest('hex'),sourceBundleSha256:fingerprint},'zh');}
+test('local view preserves held gaps and localizes UI without approving a snapshot',()=>{
+ const view=parse(fixture());assert.equal(view.school.topics[0].title,'课程作业');assert.deepEqual(view.remainingRecordKeys,['held-test']);assert.equal(view.publicationApproved,false);assert.equal(view.school.v6ReviewState,undefined);
+});
+test('exact bytes, identity, topic coverage and nonreviewed claims fail closed',()=>{
+ const raw=Buffer.from(JSON.stringify(fixture()));assert.throws(()=>parseLocalV6Bundle(raw,'test-school',{sha256:'0'.repeat(64),sourceBundleSha256:fingerprint},'en'));
+ const wrongId=fixture();wrongId.school.slug='different';assert.throws(()=>parse(wrongId));
+ const incomplete=fixture();incomplete.school.topics.pop();assert.throws(()=>parse(incomplete));
+ const held=fixture();held.claims[0].reviewState='needs_review';assert.throws(()=>parse(held));
+ const missingQuote=fixture();missingQuote.school.topics[0].claims[0].evidence[0].quote='';assert.throws(()=>parse(missingQuote));
+});
+test('UCL is a separate local pilot; production cannot read the private view',()=>{
+ assert.equal(isPolicyV6Preview('ucl','v6','development'),true);assert.equal(isPolicyV6Preview('ucl','v6','production'),false);
+ const original=process.env.NODE_ENV;process.env.NODE_ENV='production';try {assert.equal(getLocalV6Bundle('ucl','en'),undefined);}finally{if(original===undefined)delete process.env.NODE_ENV;else process.env.NODE_ENV=original;}
+});
+test('new bundle pilots stay local and reject omitted, held or mis-scoped records',()=>{
+ for(const slug of ['california-institute-of-technology','eth-zurich','national-university-of-singapore']) {
+  assert.equal(isPolicyV6Preview(slug,'v6','development'),true);
+  assert.equal(isPolicyV6Preview(slug,'v6','production'),false);
+ }
+ const held={...fixture(),heldDraftIds:['test-claim']};assert.throws(()=>parse(held));
+ const missing={...fixture(),auditCoverage:{publicClaimIds:['test-claim','omitted'],excludedClaims:[],originalObjectCount:2,analysisDimensionKeys:[],institutionAuditStatus:'PARTIAL'}};assert.throws(()=>parse(missing));
+ const scoped={...fixture(),scopedToolNames:['Invented service']};assert.throws(()=>parse(scoped));
+});

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 interface EntityHeaderProps {
   actions?: ReactNode;
   eyebrow?: ReactNode;
+  leading?: ReactNode;
   metadata?: ReactNode;
   summary?: ReactNode;
   title: ReactNode;
@@ -11,13 +12,15 @@ interface EntityHeaderProps {
 export function EntityHeader({
   actions,
   eyebrow,
+  leading,
   metadata,
   summary,
   title
 }: EntityHeaderProps) {
   return (
     <section className="entity-header">
-      <div className="entity-header__main">
+      <div className={`entity-header__main${leading ? " entity-header__main--with-mark" : ""}`}>
+        {leading ? <div className="entity-header__leading">{leading}</div> : null}
         {eyebrow ? <p className="entity-header__eyebrow">{eyebrow}</p> : null}
         <h1>{title}</h1>
         {summary ? <p className="entity-header__summary">{summary}</p> : null}

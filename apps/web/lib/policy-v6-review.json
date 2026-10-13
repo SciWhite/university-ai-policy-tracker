@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "uapt-v6-local-agent-approval-v1",
+  "reviewState": "agent_reviewed",
+  "approvalBasis": "User confirmed that ChatGPT agent reviews passed and requested all six local V6 pages be marked reviewed. Frozen source, IDs, quote fidelity and page integration are additionally validated in this task.",
+  "humanReviewRequired": false,
+  "publicationApproved": false,
+  "publicSnapshotPromotion": false,
+  "universities": {
+    "stanford-university": {
+      "fingerprint": "515718f8f1b2d0139a1f21daef6afcb79025e74806afdcd5bdf4dce58af93543"
+    },
+    "imperial-college-london": {
+      "fingerprint": "08f1f1e1b66e49f8c54a19ce897ffd3de91e9a16dadaf87afbb984a8995f09fd"
+    },
+    "massachusetts-institute-of-technology": {
+      "fingerprint": "697ed1939d0b6dfb0c13b52601489851837a44ee4a9d50b212553fe28d244813"
+    },
+    "university-of-oxford": {
+      "fingerprint": "ab79242afa99b8d47106da8821c03d926d361a9f26b1419c06539e47f589fe4c"
+    },
+    "harvard-university": {
+      "fingerprint": "5503db1a6bb858dd3e09558d63d2c724ee7a5e35e661198022abdaadec4ec853"
+    },
+    "university-of-cambridge": {
+      "fingerprint": "7de40eac86b630b3bf190fc0b753e646ae78b4dfd3682bfbcc5b263b587391a5"
+    }
+  }
+}

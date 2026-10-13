@@ -16,6 +16,7 @@ export interface RelatedUniversityRef {
   slug: string;
   name: string;
   country: string;
+  region?: string;
 }
 
 const MIN_REVIEWED_CLAIMS = 2;
@@ -23,13 +24,54 @@ const MIN_REVIEWED_CLAIMS = 2;
 interface Candidate extends RelatedUniversityRef {
   reviewedCount: number;
   sharedTypes: number;
+  proximity: number;
+}
+
+// Small, explicit metropolitan groups; unmatched places keep the same-city rule.
+// Country is always checked, so Cambridge UK and Cambridge US never share a group.
+const metroAreas: Record<string, string[]> = {
+  "United States:boston": [
+    "boston",
+    "cambridge",
+    "medford",
+    "waltham",
+    "chestnut hill",
+  ],
+  "United States:bay-area": [
+    "stanford",
+    "palo alto",
+    "berkeley",
+    "san francisco",
+    "oakland",
+    "santa clara",
+    "san jose",
+  ],
+};
+function proximity(
+  country: string,
+  currentCountry: string,
+  region: string | undefined,
+  currentRegion: string | undefined,
+) {
+  if (country !== currentCountry || !region || !currentRegion) return 0;
+  const city = region.trim().toLowerCase();
+  if (city === currentRegion) return 2;
+  return Object.entries(metroAreas).some(
+    ([key, cities]) =>
+      key.startsWith(`${country}:`) &&
+      cities.includes(city) &&
+      cities.includes(currentRegion),
+  )
+    ? 1
+    : 0;
 }
 
 export function selectRelatedUniversities(
   currentSlug: string,
   catalogUniversities: CatalogUniversity[],
   publicSummaries: PublicEntitySummary[],
-  limit = 5
+  limit = 5,
+  preferGeography = false,
 ): RelatedUniversityRef[] {
   const reviewedTypesBySlug = new Map<
     string,
@@ -39,18 +81,22 @@ export function selectRelatedUniversities(
     const reviewed = summary.claims.filter(
       (claim) =>
         claim.reviewState === "agent_reviewed" ||
-        claim.reviewState === "human_reviewed"
+        claim.reviewState === "human_reviewed",
     );
     reviewedTypesBySlug.set(summary.entity.slug, {
       count: reviewed.length,
-      types: new Set(reviewed.map((claim) => claim.claimType))
+      types: new Set(reviewed.map((claim) => claim.claimType)),
     });
   }
 
   const current = reviewedTypesBySlug.get(currentSlug);
   const currentCountry = catalogUniversities.find(
-    (university) => university.slug === currentSlug
+    (university) => university.slug === currentSlug,
   )?.country;
+  const currentRegion = catalogUniversities
+    .find((u) => u.slug === currentSlug)
+    ?.region?.trim()
+    .toLowerCase();
   if (!current || !currentCountry) return [];
 
   const candidates: Candidate[] = [];
@@ -63,14 +109,21 @@ export function selectRelatedUniversities(
       slug: university.slug,
       name: university.name,
       country: university.country,
+      region: university.region,
+      proximity: proximity(
+        university.country,
+        currentCountry,
+        university.region,
+        currentRegion,
+      ),
       reviewedCount: reviewed.count,
-      sharedTypes: [...current.types].filter((type) =>
-        reviewed.types.has(type)
-      ).length
+      sharedTypes: [...current.types].filter((type) => reviewed.types.has(type))
+        .length,
     });
   }
 
   const byTopicThenName = (left: Candidate, right: Candidate): number =>
+    (preferGeography ? right.proximity - left.proximity : 0) ||
     right.sharedTypes - left.sharedTypes ||
     right.reviewedCount - left.reviewedCount ||
     left.name.localeCompare(right.name);
@@ -81,8 +134,13 @@ export function selectRelatedUniversities(
       .sort(byTopicThenName),
     ...candidates
       .filter((candidate) => candidate.country !== currentCountry)
-      .sort(byTopicThenName)
+      .sort(byTopicThenName),
   ].slice(0, Math.max(1, limit));
 
-  return selected.map(({ slug, name, country }) => ({ slug, name, country }));
+  return selected.map(({ slug, name, country, region }) => ({
+    slug,
+    name,
+    country,
+    ...(preferGeography && region ? { region } : {}),
+  }));
 }

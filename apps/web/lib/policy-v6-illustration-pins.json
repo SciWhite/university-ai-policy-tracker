@@ -1,0 +1,42 @@
+{
+  "stanford-university": {
+    "fingerprint": "515718f8f1b2d0139a1f21daef6afcb79025e74806afdcd5bdf4dce58af93543",
+    "hero": "/assets/policy-scenes/stanford-hero-v2.jpg",
+    "do": "/assets/policy-scenes/stanford-do-v2.jpg",
+    "dont": "/assets/policy-scenes/stanford-dont-v2.jpg",
+    "square": false
+  },
+  "imperial-college-london": {
+    "fingerprint": "08f1f1e1b66e49f8c54a19ce897ffd3de91e9a16dadaf87afbb984a8995f09fd",
+    "hero": "/assets/policy-scenes/imperial-mechanism-hero-v1.jpg",
+    "do": "/assets/policy-scenes/imperial-mechanism-do-v1.jpg",
+    "dont": "/assets/policy-scenes/imperial-mechanism-dont-v1.jpg",
+    "square": false
+  },
+  "massachusetts-institute-of-technology": {
+    "fingerprint": "697ed1939d0b6dfb0c13b52601489851837a44ee4a9d50b212553fe28d244813",
+    "hero": "/assets/policy-scenes/mit-mechanism-hero-v2.jpg",
+    "do": "/assets/policy-scenes/mit-mechanism-do-v3.jpg",
+    "dont": "/assets/policy-scenes/mit-mechanism-dont-v3.jpg",
+    "square": false
+  },
+  "university-of-oxford": {
+    "fingerprint": "ab79242afa99b8d47106da8821c03d926d361a9f26b1419c06539e47f589fe4c",
+    "hero": "/assets/policy-scenes/oxford-comic.jpg",
+    "do": "/assets/policy-scenes/oxford-do-quick-guide.jpg",
+    "dont": "/assets/policy-scenes/oxford-dont-quick-guide.jpg",
+    "square": true
+  },
+  "harvard-university": {
+    "fingerprint": "5503db1a6bb858dd3e09558d63d2c724ee7a5e35e661198022abdaadec4ec853",
+    "hero": "/assets/policy-scenes/harvard-mechanism-hero-v2.jpg",
+    "do": "/assets/policy-scenes/harvard-mechanism-do.jpg",
+    "dont": "/assets/policy-scenes/harvard-mechanism-dont.jpg"
+  },
+  "university-of-cambridge": {
+    "fingerprint": "7de40eac86b630b3bf190fc0b753e646ae78b4dfd3682bfbcc5b263b587391a5",
+    "hero": "/assets/policy-scenes/cambridge-mechanism-hero-v2.jpg",
+    "do": "/assets/policy-scenes/cambridge-mechanism-do-v3.jpg",
+    "dont": "/assets/policy-scenes/cambridge-mechanism-dont-v3.jpg"
+  }
+}

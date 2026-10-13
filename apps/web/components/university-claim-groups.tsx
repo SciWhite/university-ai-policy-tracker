@@ -16,6 +16,7 @@ interface UniversityClaimGroupsProps {
   collapsible?: boolean;
   localizeUi?: boolean;
   draftPreview?: boolean;
+  showConfidence?: boolean;
 }
 
 /**
@@ -33,7 +34,8 @@ export function UniversityClaimGroups({
   role = "student",
   collapsible = false,
   localizeUi = false,
-  draftPreview = false
+  draftPreview = false,
+  showConfidence = true
 }: UniversityClaimGroupsProps) {
   const t = (value: string) => localizeUi ? translatePolicyReferenceUi(value, locale) : value;
   return (
@@ -51,6 +53,7 @@ export function UniversityClaimGroups({
                     <PolicySceneCard card={card} evidenceLabel={scene?.evidenceLabel ?? "Read the evidence"} key={card.artworkSrc} />
                   ))}
                   <ClaimEvidenceCard
+                    showConfidence={showConfidence}
                     claim={claim}
                     entitySlug={entitySlug}
                     id={claim.id ? `claim-${claim.id}` : undefined}

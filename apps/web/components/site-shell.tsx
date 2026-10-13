@@ -155,7 +155,16 @@ export function SiteShell({ children }: SiteShellProps) {
               data-analytics-nav-area="brand"
               href="/"
             >
-              University AI Policy Tracker
+              <img
+                className="site-brand-icon"
+                src="/assets/brand/uapt-icon-32.png"
+                srcSet="/assets/brand/uapt-icon-32.png 1x, /assets/brand/uapt-icon-64.png 2x"
+                width="32"
+                height="32"
+                alt=""
+                decoding="async"
+              />
+              <span>University AI Policy Tracker</span>
             </DocumentLink>
           </div>
           <div className="site-header__actions" aria-label={shell.actions.label}>

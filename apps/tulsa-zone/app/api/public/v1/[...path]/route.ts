@@ -1,3 +1,4 @@
+import {readPublishedV6,publishedV6School,publishedV6Bundle,publishedV6Evidence} from "@/lib/policy-v6-published";
 import {NextResponse} from 'next/server';
 import {buildPublicEntitySummaryResponse} from '@uapt/shared';
 import {getStagedPublicSummaryBySlug} from '@/lib/staged-public-data';
@@ -26,6 +27,8 @@ export const dynamic='force-dynamic';
 const slugs=['massachusetts-institute-of-technology','imperial-college-london','stanford-university','university-of-oxford'];
 export async function GET(request:Request,{params}:{params:Promise<{path:string[]}>}){
  const path=(await params).path.join('/');
+ if(path==='policy-pages/v6.json')return NextResponse.json(readPublishedV6(),{headers:{'Cache-Control':'private, no-store, no-transform'}});
+ if(path==='policy-pages/v6/changes/latest.json'){const data=readPublishedV6()!;return NextResponse.json({schemaVersion:'uapt-page-supplement-diff-v1',releaseId:data.releaseId,canonicalDatasetChanged:false,publicationKind:'reviewed_page_supplement',changes:data.slugs.map(slug=>({slug,href:'/changes/'+data.releaseId+'/'+slug,basisFingerprint:publishedV6School(slug,'en')!.fingerprint,reviewedDisplayClaimIds:(publishedV6Bundle(slug,'en')?.claims??publishedV6Evidence(slug)?.record.claims??[]).map(c=>c.id)}))});}
  const common:Record<string,()=>Promise<Response>|Response>={
   'tools.json':tools,'coverage/qs-2026.json':coverage,'university-index.json':universityIndex,
   'universities.json':universities,'search/index.json':searchIndex,'policy-snapshots/index.json':snapshotIndex,

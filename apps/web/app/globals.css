@@ -1,3 +1,5 @@
+@import "../components/policy-v6.css";
+
 :root {
   color-scheme: light;
   --color-canvas-default: #ffffff;
@@ -316,6 +318,25 @@ th {
   line-height: 1.2;
   text-decoration: none;
 }
+
+.site-brand .brand-link { display: inline-flex; align-items: center; gap: 9px; }
+.site-brand-icon { width: 32px; height: 32px; flex: none; object-fit: contain; border-radius: 5px; }
+.university-mark { display: inline-flex; justify-content: center; align-items: center; flex: none; width: 32px; height: 32px; border: 1px solid var(--color-border); border-radius: 7px; background: var(--color-canvas-subtle); color: var(--color-text-muted); vertical-align: middle; }
+.university-mark > svg { width: 65%; height: 65%; }
+.university-mark--chip { width: 24px; height: 24px; border-radius: 5px; }
+.university-mark--hero { width: 64px; height: 64px; border-radius: 10px; }
+.university-mark--accepted { padding: 3px; background: #fff; }
+.university-mark--accepted > img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.university-mark--reversed { background: #17324d; border-color: #17324d; }
+.university-mark--wide { width: 112px; }
+.university-mark--wide.university-mark--chip { width: 80px; }
+.university-mark--wide.university-mark--hero { width: 176px; }
+.policy-v6-searchResults .university-mark.university-mark--wide { width: 96px; }
+.related-university-list li > a { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.related-university-list li > a > span:last-child { min-width: 0; }
+.related-university-list li > a strong { display: block; font-weight: 600; overflow-wrap: anywhere; }
+.related-university-list li > a small { display: block; margin-top: 5px; }
+@media (max-width: 600px) { .site-brand-icon { width: 26px; height: 26px; } .university-mark--hero { width: 48px; height: 48px; } }
 
 .site-tagline {
   color: var(--color-text-muted);

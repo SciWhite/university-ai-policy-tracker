@@ -1,3 +1,5 @@
+import { PolicyV6Artwork } from './policy-v6-artwork';
+import { PolicyV6TopicControls } from './policy-v6';
 import { translatePolicyReferenceUi } from "@/lib/policy-reference-ui";
 import { isStudentOnlyPolicyPage } from "@/lib/policy-page-audience";
 import React from "react";
@@ -260,6 +262,7 @@ interface StudentPolicySnapshotProps {
   snapshot: PolicySnapshot;
   scene?: PolicyScenePilot;
   guidanceInHero?: boolean;
+  uiLab?: boolean;
 }
 
 export function normalizeStudentSnapshotRole(
@@ -343,7 +346,8 @@ export function StudentPolicySnapshot({
   role: requestedRole,
   snapshot,
   scene,
-  guidanceInHero = false
+  guidanceInHero = false,
+  uiLab = false
 }: StudentPolicySnapshotProps) {
   const t = (value: string) => guidanceInHero ? translatePolicyReferenceUi(value, locale) : value;
   const studentOnly = isStudentOnlyPolicyPage(entitySlug);
@@ -433,6 +437,7 @@ export function StudentPolicySnapshot({
             claims={claims}
             compact={compactPolicyScene}
             localizeUi={guidanceInHero}
+            uiLab={uiLab}
             dimension={dimension}
             entitySlug={entitySlug}
             key={dimension.key}
@@ -448,6 +453,7 @@ export function StudentPolicySnapshot({
 }
 
 function SnapshotDimensionCard({
+  uiLab = false,
   localizeUi = false,
   claims,
   compact,
@@ -461,6 +467,7 @@ function SnapshotDimensionCard({
   claims: PolicyClaim[];
   compact: boolean;
   localizeUi?: boolean;
+  uiLab?: boolean;
   dimension: PolicySnapshotDimension;
   entitySlug: string;
   locale: SupportedLocale;
@@ -524,6 +531,7 @@ function SnapshotDimensionCard({
         </div>
       </div>
 
+      {uiLab && !studentScenes.length ? <PolicyV6Artwork section={dimension.key} schoolSlug={entitySlug} className="policy-v6-topic-art"/> : null}
       {studentScenes.map((card) => (
         <PolicySceneCard card={card} compact={compact && !scene?.showGallerySummaries} readableArtwork={Boolean(scene?.showGallerySummaries)} locale={localizeUi ? locale : "en"} evidenceLabel={compact ? t("View evidence") : scene?.evidenceLabel ?? "Read the evidence"} key={card.artworkSrc} />
       ))}
@@ -536,7 +544,90 @@ function SnapshotDimensionCard({
         </details>
       ) : null}
 
-      <details className="student-snapshot-card__details">
+      {uiLab ? <PolicyV6TopicControls dimensionKey={dimension.key} originalEvidence={        <div className="student-snapshot-card__evidence" >
+          {compact ? (
+            <div className="student-snapshot-card__full-context">
+              <p>{dimension.summary}</p>
+              <div className="student-snapshot-card__scopes">
+                <a
+                  data-analytics-entity-slug={entitySlug}
+                  data-analytics-event="snapshot_scope"
+                  data-analytics-snapshot-dimension={dimension.key}
+                  data-analytics-snapshot-scope={snapshot.scope}
+                  href="#snapshot-scope"
+                >
+                  {t("Scope")}: {localizeUi ? translatePolicyReferenceUi(scopeCopy[snapshot.scope], locale) : scopeCopy[snapshot.scope]}
+                </a>
+                {contexts.map((context) => (
+                  <span key={context}>{contextCopy[context] ?? context}</span>
+                ))}
+                {copy.extraScope ? <span>{copy.extraScope}</span> : null}
+              </div>
+            </div>
+          ) : null}
+          {basisClaims.size ? (
+            <div>
+              <h4>{t("Reviewed evidence")}</h4>
+              <div className="student-evidence-list">
+                {[...basisClaims.values()].map((claim) => (
+                  <article className="student-evidence" key={claim.id}>
+                    <div className="student-evidence__heading">
+                      <h5>{claim.claimText}</h5>
+                      <StateLabel locale={locale} prefix="" reviewState={claim.reviewState} />
+                    </div>
+                    {claim.evidence.map((evidence, index) => (
+                      <blockquote
+                        className="student-evidence__quote"
+                        key={`${evidence.sourceUrl}:${index}`}
+                      >
+                        {evidence.evidenceSnippet}
+                        <footer>
+                          <a
+                            data-analytics-entity-slug={entitySlug}
+                            data-analytics-event="snapshot_evidence"
+                            data-analytics-snapshot-dimension={dimension.key}
+                            data-analytics-snapshot-evidence="claim"
+                            data-analytics-source-domain={getSourceDomain(evidence.sourceUrl)}
+                            href={evidence.sourceUrl}
+                          >
+                            {evidence.attribution.citationTitle}
+                          </a>
+                        </footer>
+                      </blockquote>
+                    ))}
+                  </article>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p className="muted">{t("No reviewed evidence is included in this dimension.")}</p>
+          )}
+
+          {sourceAttributions.length ? (
+            <div>
+              <h4>{t("Official sources")}</h4>
+              <ul className="student-source-list">
+                {sourceAttributions.map((source) => (
+                  <li key={`${source.sourceUrl}:${source.sourceSnapshotHash}`}>
+                    <a
+                      data-analytics-entity-slug={entitySlug}
+                      data-analytics-event="snapshot_evidence"
+                      data-analytics-snapshot-dimension={dimension.key}
+                      data-analytics-snapshot-evidence="source"
+                      data-analytics-source-domain={getSourceDomain(source.sourceUrl)}
+                      href={source.sourceUrl}
+                    >
+                      {source.title}
+                    </a>
+                    <span className="hash-value" title={source.sourceSnapshotHash}>
+                      {formatSnapshotHash(source.sourceSnapshotHash)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>} /> : (      <details className="student-snapshot-card__details">
         <summary
           aria-controls={detailsId}
           data-analytics-entity-slug={entitySlug}
@@ -632,7 +723,7 @@ function SnapshotDimensionCard({
             </div>
           ) : null}
         </div>
-      </details>
+      </details>)}
     </article>
   );
 }

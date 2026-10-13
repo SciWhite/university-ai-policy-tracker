@@ -1,3 +1,4 @@
+import { PolicyV6Artwork } from "@/components/policy-v6-artwork";
 import { PolicySummaryEmphasis } from "@/components/policy-summary-emphasis";
 import React from "react";
 import { createHash } from "node:crypto";
@@ -25,13 +26,14 @@ export function EnforcementTaskEntrances({ locale }: { locale: SupportedLocale }
  </nav>;
 }
 
-export function EnforcementV4Refresh({ slug, locale }: { slug: string; locale: SupportedLocale }) {
+export function EnforcementV4Refresh({ slug, locale, uiLab = false }: { slug: string; locale: SupportedLocale; uiLab?: boolean }) {
  const records: (typeof data)[keyof typeof data][number][] | undefined = data[slug as keyof typeof data];
  if (!records) return null;
  const l = copy[locale], u = v5Ui(locale), dc = v5Display(locale);
  const dates = Array.from(new Set(records.flatMap(f => f.evidence.map(e => e.retrievedAt.slice(0,10))))).sort();
  return <section id="enforcement-evidence" className="enforcement-refresh">
   <header className="enforcement-refresh-heading"><div><h2>{l[0]}</h2><p className="enforcement-refresh-scope">{u[10]}: {dates.join(" / ")} · {u[11]}</p></div><a href="#claims">{v5RecordLink(locale)} ↗</a></header>
+  {uiLab ? <PolicyV6Artwork section="academic_integrity" className="policy-v6-section-art"/> : null}
   <nav className="enforcement-refresh-nav" aria-label={l[1]}>{groups.map((g,i) => records.some(f => f.group===g || g === "support" && f.group === "detection") ? <a key={g} href={`#enforcement-group-${g}`}>{l[i+2]}{g === "support" && records.some(f => f.group === "detection") ? ` · ${l[7]}` : ""}</a> : null)}</nav>
   {locale !== "en" && locale !== "zh" ? <p className="policy-reference-language-note">{u[15]}</p> : null}
   <div className="enforcement-refresh-grid">{groups.map((g,i) => {

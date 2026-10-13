@@ -1,0 +1,192 @@
+{
+  "assets": {
+    "coursework": {
+      "src": "/assets/policy-scenes/v6-20261011/coursework.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student and instructor read an assignment brief together."
+    },
+    "exams": {
+      "src": "/assets/policy-scenes/v6-20261011/exams.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student checks an exam instruction sheet before starting."
+    },
+    "disclosure": {
+      "src": "/assets/policy-scenes/v6-20261011/disclosure.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student records a working process beside a draft."
+    },
+    "privacy_data": {
+      "src": "/assets/policy-scenes/v6-20261011/privacy_data.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student separates a private folder from general study notes."
+    },
+    "approved_tools": {
+      "src": "/assets/policy-scenes/v6-20261011/approved_tools.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student asks a campus adviser about institutional account access."
+    },
+    "research_publication": {
+      "src": "/assets/policy-scenes/v6-20261011/research_publication.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student checks a draft against reference books."
+    },
+    "academic_integrity": {
+      "src": "/assets/policy-scenes/v6-20261011/academic_integrity.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student and adviser review drafts and the working process."
+    },
+    "teaching_guidance": {
+      "src": "/assets/policy-scenes/v6-20261011/teaching_guidance.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Instructor explains a task brief to students."
+    },
+    "security_procurement": {
+      "src": "/assets/policy-scenes/v6-20261011/security_procurement.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student and IT adviser examine an abstract data-flow sketch."
+    },
+    "checklist": {
+      "src": "/assets/policy-scenes/v6-20261011/checklist.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student reviews instructions, notes and references before submitting."
+    },
+    "faq": {
+      "src": "/assets/policy-scenes/v6-20261011/faq.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student discusses questions with a campus peer adviser."
+    },
+    "evidence": {
+      "src": "/assets/policy-scenes/v6-20261011/evidence.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Student traces a claim back to its source documents."
+    },
+    "harvard-hls-exam": {
+      "src": "/assets/policy-scenes/v6-harvard-cambridge-20261012/harvard-hls-exam.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "HLS Graduate Program student checks the examination instructions."
+    },
+    "harvard-social-studies-attestation": {
+      "src": "/assets/policy-scenes/v6-harvard-cambridge-20261012/harvard-social-studies-attestation.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Social Studies student and supervisor review thesis forms and stages."
+    },
+    "cambridge-engineering": {
+      "src": "/assets/policy-scenes/v6-harvard-cambridge-20261012/cambridge-engineering.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Engineering Triposes student compares their own draft with technical notes."
+    },
+    "cambridge-research-data": {
+      "src": "/assets/policy-scenes/v6-harvard-cambridge-20261012/cambridge-research-data.jpg",
+      "width": 1280,
+      "height": 858,
+      "alt": "Research student and adviser check a data plan and funding conditions."
+    }
+  },
+  "schoolTopics": {
+    "harvard-university": {
+      "coursework": {
+        "src": "/assets/policy-scenes/harvard-mechanism-thought.jpg",
+        "width": 1280,
+        "height": 853,
+        "alt": "HGSE-specific scene: student develops their own argument."
+      },
+      "disclosure": {
+        "src": "/assets/policy-scenes/harvard-hgse.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "HGSE-specific scene: student records permitted AI use."
+      }
+    },
+    "stanford-university": {
+      "disclosure": {
+        "src": "/assets/policy-scenes/stanford-disclosure-v2.jpg",
+        "width": 1280,
+        "height": 858,
+        "alt": "MD/MSPA-specific scene: student records substantial permitted AI contributions.",
+        "scope": {
+          "en": "Illustration scope: MD/MSPA. Read the evidence for other schools and courses.",
+          "zh": "插图范围：MD/MSPA。其他学院及课程请阅读对应证据。"
+        }
+      },
+      "privacy_data": {
+        "src": "/assets/policy-scenes/stanford-privacy-v2.jpg",
+        "width": 1280,
+        "height": 858,
+        "alt": "Medicine scene: patient information is kept away from public AI tools.",
+        "scope": {
+          "en": "Illustration scope: Medicine and patient information in public AI tools.",
+          "zh": "插图范围：医学院及公开 AI 工具中的患者信息。"
+        }
+      }
+    },
+    "imperial-college-london": {
+      "coursework": {
+        "src": "/assets/policy-scenes/imperial-department.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "Student reads a department assessment brief."
+      },
+      "disclosure": {
+        "src": "/assets/policy-scenes/imperial-acknowledge.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "Student records AI use beside assessed work."
+      },
+      "approved_tools": {
+        "src": "/assets/policy-scenes/imperial-tool.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "Student distinguishes institutional tool access from the assignment rule."
+      }
+    },
+    "university-of-oxford": {
+      "coursework": {
+        "src": "/assets/policy-scenes/oxford-assessment-declaration.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "Student checks the AI declaration for a summative assessment."
+      },
+      "disclosure": {
+        "src": "/assets/policy-scenes/oxford-pgr-statement.jpg",
+        "width": 1254,
+        "height": 1254,
+        "alt": "MPLS postgraduate research illustration: student prepares a thesis AI-use statement.",
+        "scope": {
+          "en": "Illustration scope: MPLS postgraduate research. Follow the applicable thesis declaration requirements.",
+          "zh": "插图范围：MPLS 研究生研究。请核对适用的论文声明要求。"
+        }
+      },
+      "privacy_data": {
+        "src": "/assets/policy-scenes/oxford-protected.jpg",
+        "width": 1254,
+        "height": 1254,
+        "alt": "Student separates confidential data from an unapproved public AI workspace."
+      },
+      "research_publication": {
+        "src": "/assets/policy-scenes/oxford-pgr-plots.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "MPLS assessed research illustration: student creates their own plots instead of using AI prompts.",
+        "scope": {
+          "en": "Illustration scope: MPLS assessed research. Read the source for restrictions, permitted uses and conditions.",
+          "zh": "插图范围：MPLS 研究评估。限制、获准用途及条件请阅读原文。"
+        }
+      }
+    }
+  }
+}

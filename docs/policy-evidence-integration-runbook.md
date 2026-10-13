@@ -200,9 +200,3 @@ python3 scripts/policy-gap-crawl.py <same-queue.json> \
 ```
 
 sourceLevelId 保持 URL＋声明版本＋问题身份，当前 URL 去重取回后回挂全部版本组。检查 public HTTP(S)、robots、跨域跳转与每 origin 节流；保留原始响应、robots 历史与逐 URL 凭据，不绕过验证壳或登录。JSONL 与原始对象支持断点保留；损坏/重复凭据不静默跳过。当前 raw body 不会覆盖历史 sourceSnapshotHash，不会关闭未做引文或现行版本审核的缺口；retrieved 只是取回成功，软 404 或与政策无关的正文仍须审查。
-
-## 7. OpenClaw scheduled maintenance
-
-现有每日 batch 使用 [维护合同](openclaw-policy-maintenance-contract.md)。扫描器在私有 run 目录保存 HTTP 解码实体字节和单独标识的 Firecrawl markdown，并标注截断；不改写历史基线。每次扫描和审核结果收集自动生成独立同步事件，无公开变更时明确排除公开面。
-
-候选产物改存 maintenance root 的 artifact-runs，collector 兼容只读旧仓库路径。主机本地 user-systemd adapter 通过 infra/openclaw/update-maintenance-contract.py 更新，保留回滚副本，不能改回 sudo 启动。此更新不改变定时频率、模型、并发、通知或发布权限。没有本机私有库存的远程主机必须记录 inventory_not_available_on_host。
