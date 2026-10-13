@@ -51,7 +51,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
         <ul>{view.gaps.map((gap) => <li key={gap} data-i18n="preserve" lang="en">{gap}</li>)}</ul>
         <ul>{view.remainingRecordKeys.map((key) => <li key={key} data-i18n="preserve">{key}</li>)}</ul>
         <ul>{view.heldDraftIds?.map((key) => <li key={key} data-i18n="preserve">{key} — {locale === "zh" ? "暂缓，未作为已核实结论展示" : "Held; excluded from verified conclusions"}</li>)}</ul>
-        <ul>{view.auditCoverage?.excludedClaims.map((claim) => <li key={claim.id} data-i18n="preserve">{claim.id} — {claim.auditStatus}</li>)}</ul>
+        <ul>{view.auditCoverage?.excludedClaims?.map((claim) => <li key={claim.id} data-i18n="preserve">{claim.id} — {claim.auditStatus}</li>)}</ul>
         <a href={`/api/public/v1/universities/${university.slug}.json`}>{locale === "zh" ? "原公开基线 JSON" : "Published baseline JSON"}</a>
       </details></section>
       <PolicyV6Faq />
