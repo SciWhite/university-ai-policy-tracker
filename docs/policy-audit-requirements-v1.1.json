@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "uapt-audit-requirements-v1",
+  "version": "1.1.0",
+  "extensionPolicy": "Append stable IDs in new versions. Old runs remain not_checked for newly added IDs. Missing policy is not inferred from retrieval failure.",
+  "requirements": [
+    {
+      "id": "permission.coursework",
+      "question": "What uses are permitted or prohibited in coursework, by whom and under which conditions?"
+    },
+    {
+      "id": "permission.exams",
+      "question": "What restrictions apply to exams and specific assessment settings?"
+    },
+    {
+      "id": "permission.hierarchy",
+      "question": "How do university, unit and course rules interact according to official authority?"
+    },
+    {
+      "id": "disclosure.requirements",
+      "question": "Which acknowledgement, citation and process records are mandatory, recommended or discretionary?"
+    },
+    {
+      "id": "integrity.classification",
+      "question": "Which misconduct rules explicitly cover AI and which are general frameworks?"
+    },
+    {
+      "id": "integrity.detection",
+      "question": "Are AI detectors used, permitted or restricted, and what evidentiary role is supported?"
+    },
+    {
+      "id": "integrity.procedure",
+      "question": "Who investigates and decides, and what response, hearing or representation rights apply?"
+    },
+    {
+      "id": "integrity.sanctions",
+      "question": "What outcomes are possible or required and for which groups, cases and repeat offences?"
+    },
+    {
+      "id": "integrity.appeals",
+      "question": "What review or appeal stages, deadlines, units, start events and exceptions apply?"
+    },
+    {
+      "id": "integrity.support",
+      "question": "What relevant advocacy, support, accessibility or accompaniment is provided and to whom?"
+    },
+    {
+      "id": "privacy.data",
+      "question": "Which personal, confidential, research or classified data may be used and subject to what approval?"
+    },
+    {
+      "id": "privacy.retention",
+      "question": "What logging, retention, audit, search-query, training and third-party conditions apply?"
+    },
+    {
+      "id": "tools.access",
+      "question": "Which named tools and versions are available, to which users and with which accounts, seats and costs?"
+    },
+    {
+      "id": "tools.endorsement",
+      "question": "Distinguish access, recommendation, procurement and data approval from assessment permission."
+    },
+    {
+      "id": "research.theses_publication",
+      "question": "Which research, thesis, publication, authorship and disclosure rules apply?"
+    },
+    {
+      "id": "governance.security_procurement",
+      "question": "Which ethics, security, procurement or use-case approvals apply?"
+    },
+    {
+      "id": "rights.copyright",
+      "question": "Which copyright, ownership or confidential-material restrictions are explicit?"
+    },
+    {
+      "id": "rights.accessibility",
+      "question": "Which reasonable adjustment or assistive-use exceptions are explicit?"
+    },
+    {
+      "id": "teaching.ai_grading_uploads",
+      "question": "What restrictions govern AI grading or uploading student work, including consent?"
+    },
+    {
+      "id": "sources.discovery",
+      "question": "Record registry/academic, teaching, library, IT, research and policy-PDF discovery, scoped to the institution."
+    },
+    {
+      "id": "sources.verbatim",
+      "question": "Bind original-language quotes and necessary context to exact snapshots and actual PDF locations."
+    },
+    {
+      "id": "sources.current_version",
+      "question": "Distinguish publication, effective, revision, retrieval and review dates; seek superseding and conflicting official sources."
+    },
+    {
+      "id": "sources.health_hashes",
+      "question": "Check redirects, soft failures, extraction shells, hash kind and historical snapshot relationships."
+    },
+    {
+      "id": "coverage.all_objects",
+      "question": "Cover every public Claim ID and separate supplementary, tool, held and student-snapshot objects."
+    },
+    {
+      "id": "publication.sync",
+      "question": "Record every applicable data, changes, MCP, snapshot, runtime, sitemap and notification synchronization result."
+    },
+    {
+      "id": "coverage.tool_discovery",
+      "question": "Reconcile separately published tool IDs and MCP discovery, including eligibility, costs and evidence; claim totals are insufficient."
+    },
+    {
+      "id": "permission.derivation_basis",
+      "question": "Do not derive coursework/exam permission or coverage from tool access alone; validate referenced IDs and independently review scope and modality."
+    },
+    {
+      "id": "presentation.projection_consistency",
+      "question": "Reconcile reviewed facts, scope and modality across topics, quick guides, FAQ, actions, comparison and illustration copy."
+    },
+    {
+      "id": "sources.pdf_single_artifact",
+      "question": "Bind original PDF bytes, extraction, physical-page rendering and quote locations to one artifact; distinguish frozen verification from current live-byte verification."
+    },
+    {
+      "id": "provenance.version_time_layers",
+      "question": "Separate global dataset, university and page revisions and all policy, capture, review, publication, index and response timestamps."
+    },
+    {
+      "id": "history.immutable_readback",
+      "question": "Read historical revisions from their frozen packages; verify cold and stable changes/history routes and all affected change surfaces."
+    },
+    {
+      "id": "acceptance.stage_coverage",
+      "question": "Record exact tested sets and local, committed, pushed, candidate, deployed and public-verified stages; retain failures without inflating semantic approval."
+    },
+    {
+      "id": "presentation.detail_completeness",
+      "question": "Keep the existing clean UI; make all applicable public evidence and audit detail traceable through existing detail/history entries without exposing private artifacts."
+    }
+  ],
+  "parentVersion": "1.0.0"
+}

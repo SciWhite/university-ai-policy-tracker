@@ -1,12 +1,12 @@
 # V6 大学页接入规范
 
-日期：2026-10-13。状态：本地模板规范，六校基准 + UCL 单校适配试点；不是生产发布规范或整校政策审计结论。
+更新：2026-10-14。适用：V6 本地适配及已发布数据接入；保留六校历史基准、UCL 和三校试点凭据。页面接入、政策语义审核、学生摘要资格及发布验收分别成立。生产操作另遵循 release-routing-policy.md。
 
 ## 先读这一段
 
 新增学校采用 **已审核资料 → 显式字段映射 → 脚本生成本地 view → 共享 V6 组件 → 验收**。不要让 AI 对照 Harvard 截图重新写 JSX/CSS，也不要复制一份学校专用页面。AI 的职责是核对范围、状态、关键例外、翻译和图文对应；脚本负责重复转换、哈希、证据引用及格式检查。
 
-V6 当前代码在 `policy-v6-local` 开发工作树，主仓库还没有完整 V6 实现。进入任何线程，先核对实际 checkout 与文件存在性。当前机器工作树为 `/Users/newvolume/.codex/worktrees/policy-v6-local/university-ai-policy-tracker`；这只是本机定位信息，不是其他机器固定路径。不要从主仓库启动任务后误以为已有 V6；不要重置共享脏工作树或覆盖其他线程文件。
+V6 已有发布实现；早期 `policy-v6-local` 是历史开发位置。进入任何线程先核对实际 checkout、代码 SHA、文件、选定内容包和公开版本；本地旧 checkout 可能仍只有文档。不要以目录名判断能力，不重置共享脏工作树或覆盖其他线程文件。公开记录与本地候选不可互换。
 
 这份规范描述现有行为；UCL 试点首次补出了通用的本地资料适配入口。它支持 `uapt-private-repaired-evidence-bundle-v1` 形状的修复包，**尚非任意爬虫 JSON 一键导入器**。不同格式应先做一次格式适配，不能削弱证据与审核门槛。
 
@@ -19,7 +19,7 @@ V6 当前代码在 `policy-v6-local` 开发工作树，主仓库还没有完整 
 | 学生指南 / Do / Don't | 复用现有图，行动各最多三项；具体范围在正文 | EN/ZH 简短标题、范围、行动、图资产映射 |
 | 学校特殊情境 | 可选；只有真实院系/课程/学位例外才添加 | 明确范围和证据，不复制 HLS/HMS/Engineering 文案 |
 | 六个主题 | coursework、exams、disclosure、privacy_data、approved_tools、research_publication | 摘要、状态、证据、条件/例外；缺资料保留明确缺口 |
-| 补充主题 | academic_integrity、teaching_guidance、security_procurement；默认折叠 | 有依据才填，不把 11 个分析维变成 11 个学生主题 |
+| 补充主题 | academic_integrity、teaching_guidance、security_procurement；有已核实范围时可显式扩展如 admissions；默认折叠 | 有依据才填，不把 11 个分析维变成 11 个学生主题 |
 | AI 工具 | 默认一行，超出展开全部；机构一般工具优先；特殊院内工具默认折叠 | 产品原名、获取条件、费用未知项、原文和适用范围 |
 | 提交清单 | 四项卡片，宽屏两列；本浏览器保存 | 共享文案，不是合规证明 |
 | 已审核条款 | 分类卡片；详情浮层；完整引文和定位器保留 | 经过筛选的主张/候选规则，未审项单列 |
@@ -35,7 +35,7 @@ V6 当前代码在 `policy-v6-local` 开发工作树，主仓库还没有完整 
 
 | 入口 | 职责 |
 | --- | --- |
-| `apps/web/lib/policy-v6-gate.ts` | 六校历史基准和新增本地试点名单分开；development + 显式 `?layout=v6` |
+| `apps/web/lib/policy-v6-gate.ts` | 历史基准/本地试点与已发布 allowlist 分开；本地 development + 显式参数，生产由 published gate 控制 |
 | `apps/web/lib/policy-v6.ts` | `LabSchool` / `LabTopic` 展示合同；strong snapshot / published analysis / 本地包依据分开 |
 | `apps/web/lib/policy-v6-bundle.ts` | 通用本地 view 读取、哈希/身份/基本合同验证；生产拒绝读取 |
 | `scripts/prepare-v6-local-bundle.py` | 显式 mapping 驱动的修复包转换；不调用模型、不联网、不选指针、不发布 |
@@ -147,3 +147,48 @@ Caltech、ETH Zurich、NUS 已分别接入独立 bundle preview 队列；六校�
 - 工具的资格、费用、模式、数据审批、教学许可分别呈现。员工/研究项目/课程/消费者模式使用显式 `scopedToolNames`，默认折叠；所有模式仍保留原文浮层。转换产品身份不扩公共 taxonomy。
 - 六个学生主题与三个补充主题是展示映射，不是完整 11 维分析或 25 项爬取要求的替代物。其余分析、历史来源及操作凭据留在证据层。不得用页面接入通过声称全校审计无缺口或所有存档都已展示。
 - V6 私有预览通过不代表普通页面/API/snapshot/MCP/changes/search 已采用新数据。未来政策发布仍须在同一 release 更新学校 changes/history/diff 及适用同步面；本地任务另登记同步事件并保留公网面排除理由。
+
+
+## 2026-10-14 数据与证据接入补充
+
+新任务冻结 `docs/policy-audit-requirements-v1.1.json`（1.1.0），保留 1.0.0 库存及审核。新要求覆盖从 not_checked 开始。下一次新库存通过 resolver 的 requirementsRegistry 显式选择新文件；不得原地改旧库存 requirements.json、哈希或批准结果。1.0.0 的库存诊断通过不代表已覆盖 1.1.0。
+
+### 展示边界
+
+保持现有页面骨架、间距、卡片和交互。不因后台修复在 Hero、快捷摘要或正文增加开发说明、审计统计、版本解释横幅或重复免责声明。摘要只保留学生做决定需要的规则、范围、条件与未知项；详细原文、定位、历史版本及适用审计结论由现有卡片详情、证据和 changes 入口展开。后台响应可含追溯元数据，不自动转成页面解释文案。
+
+保留 V5 有价值的纪律程序内容与全部证据；所有适用的公开内容须能通过现有入口追溯。私有绝对路径、运行日志、凭据、内部提示词与未审 draft 不公开。详细信息无现有入口时先记录接入缺口，不用删内容或在首页堆文字解决。
+
+### 数据集合与结论依据
+
+分别登记当前 Claim IDs、独立工具对象、来源对象、held/history IDs、学生摘要版本及补充主题，逐集合对账。`approved_tools` MCP 查询核对公开工具集合、人员资格、费用、账号与证据；Claim 数量相等不能证明工具完整。工具访问不建立课程、考试或敏感数据授权；范围不足的研究规则不得投射成全校课程规则。
+
+对每个学生结论保存对应 Claim/evidence IDs、规范强度及适用范围。主题、快捷摘要、FAQ、Do/Don't、对比及插图文案应使用同一受审依据；条款改动后核查全部投影。招生等补充主题使用现有合法 claimType 和显式映射，不扩未支持的枚举或复制学校 JSX。
+
+候选审核时对目标学校冻结大学 JSON 与分析 JSON，执行后台结构校验：
+
+```bash
+pnpm exec tsx scripts/validate-assessment-evidence.ts <university.json> <analysis.json>
+```
+
+校验拒绝课程/考试仅有工具依据、缺失/重复/外校 basis IDs 和无依据的许可结论。它是显式调用的非写入门禁，尚未接入全部历史分析生成器或生产 runtime；不能声称当前线上已自动拦截。通过仅建立结构条件，不证明混合证据中的范围、强度或语义正确；这些仍独立审核。
+
+### 来源与 PDF
+
+逐来源保存原始字节、提取文本、引文的独立哈希及 hash kind/scope；批次哈希不可当成每个 URL 自身 SHA。URL + 版本哈希维持来源身份，同 URL 多历史版本不误合并。绑定校验必须拒绝跨来源引用错配，不能为让 MCP 通过而关闭 hash gate。
+
+PDF 从同一保存原件完成文件类型检查、原始哈希、文本提取、封面及规则物理页渲染、条款和引文定位。HTTP 200 返回 HTML 不是 PDF 成功。缓存文本/截图差异本身不证明 STALE；冻结原件验证与现网字节验证分别报告，未取得现网原件继续保留 gap。
+
+### 版本、时间与审核
+
+区分 datasetReleaseId 全局基线、universityRevisionId 学校修订及页面/内容包版本；先检查已有字段，再决定修复，不能改历史 ID 消除表面歧义。历史 changes/JSON 按请求的冻结修订读取，不用最新包重解释旧记录。
+
+分别保留政策发布、生效、修订、取回、实际复核、包准备/发布、切换、索引基线及响应生成时间。响应变新不刷新所有 Claim 的 lastCheckedAt。审批只绑定受审指纹；已完成 ChatGPT agent 审核的相关记录可按现有契约标 agent_reviewed，不创造 human/dual-agent 或 institution_verified。
+
+### 验收及同步
+
+记录 LOCAL_PREPARED、COMMITTED、PUSHED、CANDIDATE_ACCEPTED、DEPLOYED、PUBLIC_VERIFIED 的实际达到阶段及凭据，不以单个总状态掩盖未完成项。源码检查、结构通过、一致性抽查、官方语义审核、视觉验收各列覆盖范围。跨语言原文一致不是全部原文实时准确率；隐藏 DOM 标题、测试定位失败与可见 UI 缺陷分别判断。
+
+目标 changes/history 冷启动和稳定运行都须验收；超时保留 failed，不能被其他通过项抵销。公开提升同一 release 完成学校 changes、history、索引、latest diff、recent changes、RSS；即使只改工具或 Tracker 元数据，也按实际影响登记。无政策变化不制造大学新规。候选读回与公网读回分别执行当前 2.0.0 合同。学校/Claim/工具/语言/路由数量从冻结包得出，不硬编码示例数字。
+
+生产代码地图补充：`lib/policy-v6-published.ts` 和 `lib/v6-effective-records.ts` 分别读取公开页面包和有效记录；`data/public-v6-pages`、`data/public-v6-records` 保存修订和指针。MCP 目录消费独立工具对象；索引 provenance 是响应元数据。这些入口的具体可用性仍以实际 checkout 为准；本地新增代码不自动等于线上实现。

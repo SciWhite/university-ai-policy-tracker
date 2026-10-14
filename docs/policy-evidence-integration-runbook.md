@@ -200,3 +200,10 @@ python3 scripts/policy-gap-crawl.py <same-queue.json> \
 ```
 
 sourceLevelId 保持 URL＋声明版本＋问题身份，当前 URL 去重取回后回挂全部版本组。检查 public HTTP(S)、robots、跨域跳转与每 origin 节流；保留原始响应、robots 历史与逐 URL 凭据，不绕过验证壳或登录。JSONL 与原始对象支持断点保留；损坏/重复凭据不静默跳过。当前 raw body 不会覆盖历史 sourceSnapshotHash，不会关闭未做引文或现行版本审核的缺口；retrieved 只是取回成功，软 404 或与政策无关的正文仍须审查。
+
+
+### 2026-10-14 新任务要求版本
+
+V6 证据接入与政策修复的新任务使用 `docs/policy-audit-requirements-v1.1.json`（1.1.0）。保留上述默认 CLI 的 1.0.0 历史库存诊断行为；未来新库存显式设置 resolver 的 `requirementsRegistry` 为新路径，生成新 requirements-coverage，不原地改当前库存、旧基线、knowledge 冻结字节或历史批准。旧库存检查通过只确认旧依据完整；新任务另冻结 1.1.0 registry，并将新增稳定 ID 的历史覆盖记为 not_checked。
+
+新版本覆盖工具发现、课程/考试派生依据、展示投影、同原件 PDF、版本/时间层次、历史读回、验收阶段以及详情完整性。详细输入和验收见 V6 指南及模板。后台 validate-assessment-evidence.ts 按目标冻结 JSON 显式执行；它尚未接入生产分析生成器，不宣称历史结果已修复，也不替代语义审核。
