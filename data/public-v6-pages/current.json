@@ -1,7 +1,7 @@
 {
-  "path": "revisions/v6-hku-20261014-r2.json",
-  "sha256": "6697580d5867636d182db91a5c117fa8dd4994a344df2c5753b3cb21a0cc62a4",
-  "releaseId": "v6-hku-20261014-r2",
+  "path": "revisions/v6-hku-20261014-r3.json",
+  "sha256": "3f5266f675fff51dd3a652567aacdfedbaff76e88fdf47c981db89ff9cc5d6ff",
+  "releaseId": "v6-hku-20261014-r3",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
