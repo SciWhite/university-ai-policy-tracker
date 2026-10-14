@@ -1,3 +1,4 @@
+import {v6ReviewedAnalysisOverride} from "./v6-effective-records";
 import mitAnalysisDimensions from "../../../data/public-record-repairs/mit-20261010/analysis-dimensions.json";
 import { getRepairAnalysisContext } from "./public-record-repairs";
 import {
@@ -519,7 +520,7 @@ function buildDimension(
   const isMit = summary.entity.slug === "massachusetts-institute-of-technology";
   const imperialContext = getRepairAnalysisContext(summary);
   const isImperialCandidate = Boolean(imperialContext);
-  const repair = isMit ? mitAnalysisDimensions[definition.key] : imperialContext?.dimensions[definition.key];
+  const repair = v6ReviewedAnalysisOverride(summary)?.[definition.key] ?? (isMit ? mitAnalysisDimensions[definition.key] : imperialContext?.dimensions[definition.key]);
   const claims = repair
     ? repair.claimIds.map((id) => {
         const claim = summary.claims.find((c) => c.id === id);

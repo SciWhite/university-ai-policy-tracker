@@ -1,7 +1,7 @@
 {
-  "path": "revisions/v6-followup-20261014.json",
-  "sha256": "02543dd25cee707dfb2f07e60b1aac12dbddc629e62e30a6fbfca88ef1e20688",
-  "releaseId": "v6-followup-20261014",
+  "path": "revisions/v6-hku-20261014-r2.json",
+  "sha256": "6697580d5867636d182db91a5c117fa8dd4994a344df2c5753b3cb21a0cc62a4",
+  "releaseId": "v6-hku-20261014-r2",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
@@ -12,6 +12,7 @@
     "eth-zurich",
     "national-university-of-singapore",
     "ucl",
-    "california-institute-of-technology"
+    "california-institute-of-technology",
+    "university-of-hong-kong"
   ]
 }

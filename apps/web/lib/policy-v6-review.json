@@ -93,6 +93,12 @@
       "reviewedAt": "2026-10-14T16:32:08.768Z",
       "method": "agent_scoped_followup",
       "revision": "v6-followup-20261014"
+    },
+    "university-of-hong-kong": {
+      "fingerprint": "6f9e5c430a58f00cd088eea56eee34f3f9c92e5e056e1a846d7532cccdac2479",
+      "reviewedAt": "2026-10-14T20:31:43.148170Z",
+      "method": "agent_scoped_hku_review",
+      "revision": "v6-hku-20261014-r2"
     }
   }
 }

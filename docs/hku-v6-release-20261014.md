@@ -1,0 +1,13 @@
+# HKU V6 scoped correction — 2026-10-14
+
+Authorized scope: The University of Hong Kong evidence repair and shared V6 integration; publish the prepared Caltech Fall 2027 obligation, independent MCP tool discovery and index provenance with the same small-zone release. Preserve the frontend composition and the old main service. This is not a full-site release or a completed institution-wide audit.
+
+HKU: 31 reviewed current claims (all 16 original IDs retained, 15 added), 10 separately identified tools and 10 source attributions. Formal research PDF clauses are bounded to research; TALIC guidance and Faculty of Law requirements retain their own authority and audience. A new fingerprint-bound HKU analysis override removes tool-only coursework/exam permission. Old evidence summaries with added headings or ellipses are replaced by continuous source excerpts; original records remain in the historical baseline.
+
+HKU raw PDF, text and physical pages 4–6 were independently retrieved and checked. ITS rendered-page retrieval succeeded after the direct collector could not resolve robots; those source hashes explicitly bind normalized extracted text, not raw HTTP bytes. The historical shared ITS batch hash is retained as an unresolved reconstruction item. Internal teaching policy, current MALCS rules and general appeal procedures remain gaps. The institution audit is PARTIAL; no strong student snapshot is created.
+
+Caltech's production changes route responded in 0.061 seconds during preflight. The prior local development timeout is not established as a production defect; the new OCI candidate must pass a first-request test and stable readback before cutover. NUS direct downloads from local and OCI networks returned HTML, not PDF; no policy or PDF version is rewritten on that basis. The frozen original and live-byte verification gap remain.
+
+Seven pending student snapshots and historical held decisions are preserved. Unchanged schools' policy claims and source-check dates are unchanged. The shared zone is selected through exact tested routes with its own assets; canonical aggregate APIs, MCP, corresponding changes/history/index/diff/recent/RSS and sitemap are reconciled in the same release. IndexNow, if submitted, covers only actually changed URLs and acceptance is not indexing proof.
+
+Local source/evidence, failed first validation, candidate/public readback, frozen SHA/BUILD_ID/package hashes, synchronization 2.0.0 receipts and rollback configuration are kept in the private `.local/hku-v6-20261014/` evidence directory. This source note describes the release plan and review scope; actual deployment and acceptance status must be read from the final receipts.
