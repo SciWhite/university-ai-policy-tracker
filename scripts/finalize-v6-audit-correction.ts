@@ -6,6 +6,16 @@ async function main(){
 const dir='.local/v6-audit-fix';const raw=JSON.parse(await readFile(dir+'/prepared-records.json','utf8'));const pages=JSON.parse(await readFile(dir+'/prepared-pages.json','utf8'));const digest=(o:unknown)=>createHash('sha256').update(JSON.stringify(o)).digest('hex');
 const normalize=(o:any):any=>{if(Array.isArray(o))return o.map(normalize);if(o&&typeof o==='object')return Object.fromEntries(Object.entries(o).map(([k,v])=>[k,typeof v==='string'&&/(At|Modified)$/.test(k)&&v.endsWith('+00:00')?v.replace(/\+00:00$/,'Z'):normalize(v)]));return o;};
 const bindingProof=JSON.parse(await readFile(dir+'/source-binding-proof.json','utf8'));
+for(const data of Object.values(pages.locales) as any[]){
+ const view=data.views['california-institute-of-technology'];
+ view.hero.scope.en='In HSS, use AI only as explicitly allowed by the instructor in the course materials; assume other uses are disallowed. Bi 1 rules are course-specific. Admissions rules concern applications; tool access does not approve assessment or sensitive-data use.';
+ view.hero.scope.zh='HSS 仅允许教师在课程材料中明确准许的 AI 使用方式；未明确准许的用途应视为不允许。Bi 1 规则仅适用于该课程。招生规则针对申请；工具可用不代表作业或敏感资料获准。';
+ const school=data.schools.find((s:any)=>s.slug==='california-institute-of-technology');
+ school.topics.find((t:any)=>t.key==='exams').summary='In HSS, the course-material permissions apply to all assignments, including exams; uses not specifically allowed should be assumed disallowed. Bi 1 is a separate course example with its own assessment design, not an institute-wide rule.';
+ data.views.ucl.remainingRecordKeys=['enforcement:ucl:ucl-disciplinary-investigation-notice-deadline','enforcement:ucl:ucl-disciplinary-appeal-committee-format'];
+ data.views['national-university-of-singapore'].remainingRecordKeys=['enforcement:national-university-of-singapore:nus-fact-5'];
+}
+
 for(const summary of raw.summaries){const proof=bindingProof[summary.entity.slug];if(!proof)continue;
  for(const claim of summary.claims)for(const e of claim.evidence){
   const id=e.id?.replace(/:part-\d+$/,'');const b=proof.bindings[id];if(!b)throw Error('Missing verified original binding '+e.id);
