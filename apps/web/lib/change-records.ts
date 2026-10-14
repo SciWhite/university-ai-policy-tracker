@@ -1,3 +1,4 @@
+import {v6FrozenHistory} from "./v6-history-cache";
 import {readV6RecordCorrections,readV6RecordCorrectionRevision} from "./v6-effective-records";
 import {
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
@@ -280,6 +281,11 @@ export async function getChangeRecordBySlug(
 export async function getEntityChangeHistory(
   slug: string
 ): Promise<EntityChangeHistory | undefined> {
+  const frozen = v6FrozenHistory(slug);
+  if (frozen) {
+    const corrected = readV6RecordCorrections()!.summaries.find(s => s.entity.slug === slug)!;
+    return {record:v6ChangeRecord(corrected),releaseRecords:[v6ChangeRecord(corrected),...frozen]};
+  }
   if ((await readRecordCorrectionChanges()).some(entry => entry.slug === slug)) {
     const cached = await readCorrectionChangeCache<EntityChangeHistory>(`${slug}.json`);
     if (cached) {const corrected=readV6RecordCorrections()?.summaries.find(s=>s.entity.slug===slug);return corrected?{record:v6ChangeRecord(corrected),releaseRecords:[v6ChangeRecord(corrected),...cached.releaseRecords]}:cached;}
