@@ -86,5 +86,13 @@
       "method": "agent_scoped_correction",
       "revision": "v6-audit-fix-20261014"
     }
+  },
+  "followupCorrections": {
+    "california-institute-of-technology": {
+      "fingerprint": "ac16401e0d7bc2dba928daede61333e76566d8760c4007fb34645ba4a977c2ba",
+      "reviewedAt": "2026-10-14T16:32:08.768Z",
+      "method": "agent_scoped_followup",
+      "revision": "v6-followup-20261014"
+    }
   }
 }

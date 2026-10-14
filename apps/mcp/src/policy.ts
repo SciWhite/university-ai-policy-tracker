@@ -31,18 +31,20 @@ export class PolicyService {
   policy(slug: string, requested: Topic[] = []) {
     const record = this.bySlug.get(slug);
     if (!record) return { ...this.base(), status: "not_found", message: "No eligible published record matched this slug. Resolve the university first." };
+    const tools = !requested.length || requested.includes("approved_tools") ? record.tools : undefined;
     const snapshot = record.snapshot;
     const dimensions = snapshot?.dimensions.filter(d => (!requested.length || requested.includes(d.key)) &&
       !["not_mentioned", "insufficient_public_evidence"].includes(d.status)) ?? [];
     const relevantClaims = requested.length ? record.summary.claims.filter(c =>
       dimensions.some(d => d.basis.claimIds.includes(c.id!)) || requested.some(t => claimMatchesTopic(c, t))) : record.summary.claims;
     const claims = relevantClaims.slice(0,15);
-    const insufficientTopics = requested.filter(t => !dimensions.some(d => d.key === t) && !relevantClaims.some(c => claimMatchesTopic(c,t)));
-    return { ...this.recordBase(record), status: claims.length || dimensions.length ? "ok" : "insufficient_evidence", university: record.summary.entity.name, slug,
+    const insufficientTopics = requested.filter(t => !(t === "approved_tools" && tools?.length) && !dimensions.some(d => d.key === t) && !relevantClaims.some(c => claimMatchesTopic(c,t)));
+    return { ...this.recordBase(record), status: claims.length || dimensions.length || tools?.length ? "ok" : "insufficient_evidence", university: record.summary.entity.name, slug,
       lastCheckedAt: record.summary.lastCheckedAt, trackerUrl: tracker(slug), publicJsonUrl: `https://eduaipolicy.org/api/public/v1/universities/${slug}.json`,
       ...(snapshot ? { snapshotStatus: "strong", scope: snapshot.scope, audiences: snapshot.audiences, summary: requested.length ? undefined : snapshot.summary } : { snapshotStatus: "unavailable", summary: record.summary.claims.length ? "Reviewed claims are provided below; no eligible current student summary is available." : "No eligible reviewed claims are currently available. This does not mean the university has no policy." }),
       dimensions, claims: claims.map(c => ({ id: c.id, claimType: c.claimType, text: c.claimText, confidence: c.confidence, reviewState: c.reviewState,
         lastCheckedAt: c.lastCheckedAt, trackerEvidenceUrl: `${tracker(slug)}#claim-${encodeURIComponent(c.id!)}`, officialSourceUrls: [...new Set(c.evidence.map(e => e.sourceUrl))] })),
+      ...(tools ? { tools, totalToolRecords: tools.length, toolEvidenceNotice: "These are separately published tool and access records, not additional policy claims. Preserve procurement, cost, user eligibility, data and service-mode conditions. Access or a catalogue listing does not establish course, assessment or sensitive-data permission." } : {}),
       totalRelevantClaims: relevantClaims.length, remainingClaimIds: relevantClaims.slice(15).map(c => c.id), insufficientTopics,
       ...(insufficientTopics.length ? { evidenceNotice: "The published evidence does not support a conclusion for these topics. This does not mean the university has no rule." } : {}) };
   }

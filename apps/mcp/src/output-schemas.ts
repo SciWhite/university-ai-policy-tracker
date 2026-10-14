@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { policyClaimSchema, policySnapshotSchema } from "@uapt/shared";
+import { policyClaimSchema, policySnapshotSchema, universityToolRecordSchema } from "@uapt/shared";
 import { topicSchema } from "./catalog.js";
 
 const base = {
@@ -37,6 +37,9 @@ export const policyOutput = z.object({
     confidence: z.number(), reviewState: policyClaimSchema.shape.reviewState,
     lastCheckedAt: z.string().datetime().optional(), trackerEvidenceUrl: z.string().url(), officialSourceUrls: z.array(z.string().url())
   })).optional(),
+  tools: z.array(universityToolRecordSchema).optional(),
+  totalToolRecords: z.number().int().nonnegative().optional(),
+  toolEvidenceNotice: z.string().optional(),
   totalRelevantClaims: z.number().int().nonnegative().optional(),
   remainingClaimIds: z.array(z.string()).optional(),
   insufficientTopics: z.array(topicSchema).optional(), evidenceNotice: z.string().optional()

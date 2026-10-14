@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { z } from "zod";
-import { publicEntitySummarySchema, policySnapshotSchema } from "@uapt/shared";
+import { publicEntitySummarySchema, policySnapshotSchema, universityToolRecordSchema } from "@uapt/shared";
 
 export const topics = ["coursework", "exams", "disclosure", "privacy_data", "approved_tools", "research_publication", "academic_integrity", "ai_detection"] as const;
 export const topicSchema = z.enum(topics);
@@ -21,7 +21,8 @@ export const catalogPayloadSchema = z.object({
     recordSha256: z.string().regex(/^[a-f0-9]{64}$/).optional(),
     recordPublishedAt: z.string().datetime().optional(),
     snapshotUnavailableReason: z.enum(["pending_review","not_published"]).optional(),
-    historicalClaimIds: z.array(z.string()).optional()
+    historicalClaimIds: z.array(z.string()).optional(),
+    tools: z.array(universityToolRecordSchema).optional()
   }))
 });
 export type Catalog = z.infer<typeof catalogPayloadSchema>;
@@ -50,6 +51,10 @@ export async function loadCatalog(file: string): Promise<Catalog> {
     seen.add(slug);
     if (eligibleClaims(record).length !== record.summary.claims.length) throw new Error("Ineligible catalog claim");
     if (new Set(record.summary.claims.map(c => c.id)).size !== record.summary.claims.length) throw new Error("Duplicate catalog claim");
+    for (const tool of record.tools ?? []) {
+      if (tool.universitySlug !== slug || !["agent_reviewed", "human_reviewed"].includes(tool.reviewState) ||
+        tool.evidence.some(e => !["agent_reviewed", "human_reviewed"].includes(e.reviewState) || !["https:", "http:"].includes(new URL(e.sourceUrl).protocol))) throw new Error("Ineligible catalog tool");
+    }
     const snapshot = record.snapshot;
     if (snapshot && (snapshot.releaseId !== catalog.releaseId || snapshot.universitySlug !== slug || snapshot.overallStatus !== "strong")) throw new Error("Ineligible snapshot");
     if (snapshot) {
