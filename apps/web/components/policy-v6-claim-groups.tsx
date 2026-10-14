@@ -1,3 +1,4 @@
+import {policyV6ScopeLabel} from "@/lib/policy-v6-evidence-labels";
 import React from "react";
 import type { SupportedLocale } from "@/lib/i18n";
 import type { ClaimGroup } from "@/lib/university-claims-organization";
@@ -68,7 +69,7 @@ export function PolicyV6ClaimGroups({
                 id={claim.id ? `claim-${claim.id}` : undefined}
                 showConfidence={false}
                 compact
-                scopeNote={claim.id ? claimScopes?.[claim.id] : undefined}
+                scopeNote={claim.id && claimScopes?.[claim.id] ? policyV6ScopeLabel(claimScopes[claim.id],locale) : undefined}
               />
             ))}
           </div>

@@ -1,3 +1,4 @@
+import {readV6RecordCorrections} from "./v6-effective-records";
 import {
   OFFICIAL_SOURCE_RIGHTS_CAVEAT,
   PUBLIC_API_VERSION,
@@ -214,13 +215,20 @@ let changeIndexPromise: Promise<ChangeIndexData> | undefined;
 export async function getChangeRecords(): Promise<ChangeRecord[]> {
   aggregateChangeRecordsPromise ??= buildAggregatedChangeRecords();
 
-  return aggregateChangeRecordsPromise;
+  const rows = await aggregateChangeRecordsPromise;
+  const correction = readV6RecordCorrections();
+  if (!correction) return rows;
+  return [...correction.summaries.map(v6ChangeRecord), ...rows.filter(r => !correction.recordRevisions[r.slug])];
 }
 
 export async function getChangeIndexData(): Promise<ChangeIndexData> {
   changeIndexPromise ??= readCorrectionChangeCache<ChangeIndexData>("index.json").then(cached => cached ?? buildChangeIndexData());
 
-  return changeIndexPromise;
+  const cached = await changeIndexPromise;
+  const correction = readV6RecordCorrections();
+  if (!correction) return cached;
+  const records = [...correction.summaries.map(s => buildChangeIndexRecord(v6ChangeRecord(s))), ...cached.data.records.filter(r => !correction.recordRevisions[r.slug])];
+  return {...cached, data: {...cached.data, records, facets: buildChangeIndexFacets(records), summary: buildChangeIndexSummary(records)}};
 }
 
 export async function getChangeIndexResponse(): Promise<ChangeIndexData> {
@@ -274,7 +282,7 @@ export async function getEntityChangeHistory(
 ): Promise<EntityChangeHistory | undefined> {
   if ((await readRecordCorrectionChanges()).some(entry => entry.slug === slug)) {
     const cached = await readCorrectionChangeCache<EntityChangeHistory>(`${slug}.json`);
-    if (cached) return cached;
+    if (cached) {const corrected=readV6RecordCorrections()?.summaries.find(s=>s.entity.slug===slug);return corrected?{record:v6ChangeRecord(corrected),releaseRecords:[v6ChangeRecord(corrected),...cached.releaseRecords]}:cached;}
   }
   const dataset = await getStagedPublicDataset();
   const summary = dataset.publicSummaries.find((item) => item.entity.slug === slug);
@@ -288,10 +296,8 @@ export async function getEntityChangeHistory(
     ? buildAggregateChangeRecord(summary, releaseRecords)
     : buildDiffOnlyAggregateChangeRecord(slug, releaseRecords);
 
-  return {
-    record,
-    releaseRecords
-  };
+  const corrected=readV6RecordCorrections()?.summaries.find(s=>s.entity.slug===slug);
+  return corrected?{record:v6ChangeRecord(corrected),releaseRecords:[v6ChangeRecord(corrected),...releaseRecords]}:{record,releaseRecords};
 }
 
 async function getAllReleaseChangedRecords(): Promise<ChangeRecord[]> {
@@ -1065,4 +1071,9 @@ function formatSourceHealthSeverity(
 
 function isReviewedClaim(reviewState: string): boolean {
   return reviewState === "agent_reviewed" || reviewState === "human_reviewed";
+}
+
+function v6ChangeRecord(summary:PublicEntitySummary):ChangeRecord {
+ const p=readV6RecordCorrections()!;const slug=summary.entity.slug;const diff=p.changesBySlug[slug];
+ return {slug,name:summary.entity.name,releaseId:p.revision,previousReleaseId:"baseline-v6-pages-20261013",publicationKind:"scoped_record_correction",recordSha256:p.recordRevisions[slug].recordSha256,changeSummary:"Reviewed scoped record correction; historical held claims remain excluded from current policy conclusions.",summary:summary.summary,canonicalUrl:`${getSiteBaseUrl()}/changes/${p.revision}/${slug}`,changeUrl:`/changes/${p.revision}/${slug}`,universityUrl:`/universities/${slug}`,publicJsonUrl:summary.apiUrl!,claimCount:summary.claims.length,reviewedClaimCount:summary.claims.length,candidateClaimCount:0,sourceCount:summary.officialSources.length,reviewState:summary.reviewState,lastCheckedAt:summary.lastCheckedAt,lastChangedAt:p.publishedAt,added:diff.addedClaimIds.length,modified:diff.updatedClaimIds.length,removed:diff.heldClaimIds.length,newlyExtractedClaims:diff.addedClaimIds.length,trackerRemovedClaims:diff.heldClaimIds.length,claimMetadataChanged:diff.updatedClaimIds.length,evidenceChanged:diff.updatedClaimIds.length,policyTextChanged:0,unchanged:summary.claims.length-diff.addedClaimIds.length-diff.updatedClaimIds.length,sourceAdded:0,sourceRemoved:0,sourceSnapshotChanged:0,sourceTextChanged:0,diffLines:[],diffRows:[],claimChanges:summary.claims.map(c=>({claimId:c.id,claimText:c.claimText,claimType:c.claimType,confidence:c.confidence,evidenceCount:c.evidence.length,lastCheckedAt:c.lastCheckedAt,lastChangedAt:c.lastChangedAt,reviewState:c.reviewState,sourceLanguages:[...new Set(c.evidence.map(e=>e.sourceLanguage??"en"))]})),sourceChanges:summary.officialSources,releaseCount:1};
 }

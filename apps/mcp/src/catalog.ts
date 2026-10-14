@@ -16,7 +16,12 @@ export const catalogPayloadSchema = z.object({
     summary: publicEntitySummarySchema,
     aliases: z.array(z.string()),
     country: z.string().optional(),
-    snapshot: policySnapshotSchema.optional()
+    snapshot: policySnapshotSchema.optional(),
+    universityRevisionId: z.string().optional(),
+    recordSha256: z.string().regex(/^[a-f0-9]{64}$/).optional(),
+    recordPublishedAt: z.string().datetime().optional(),
+    snapshotUnavailableReason: z.enum(["pending_review","not_published"]).optional(),
+    historicalClaimIds: z.array(z.string()).optional()
   }))
 });
 export type Catalog = z.infer<typeof catalogPayloadSchema>;

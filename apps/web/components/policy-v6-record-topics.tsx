@@ -1,3 +1,4 @@
+import {policyV6ScopeLabel,policyV6EvidenceLabel} from "@/lib/policy-v6-evidence-labels";
 import React from "react";
 import type { PolicyV6Data, LabTopic } from "@/lib/policy-v6";
 import { policyV6RecordCopy } from "@/lib/policy-v6-record-copy";
@@ -65,8 +66,8 @@ export function PolicyV6RecordTopics({
                       {claim.text}
                     </h4>
                     <small>
-                      {claim.id} · {copy.claimChecked}:{" "}
-                      {claim.checkedAt?.slice(0, 10) ?? "—"}
+                      {claim.id} · {claim.basisObjectType === "source" ? copy.retrieved : copy.claimChecked}:{" "}
+                      {claim.basisObjectType === "source" ? [...new Set(claim.evidence.map(e=>e.retrievedAt?.slice(0,10)).filter(Boolean))].join(", ") || policyV6EvidenceLabel("date_unrecorded",data.locale) : claim.checkedAt?.slice(0, 10) ?? policyV6EvidenceLabel("date_unrecorded",data.locale)}
                     </small>
                     {claim.evidence.map((e, i) => (
                       <blockquote

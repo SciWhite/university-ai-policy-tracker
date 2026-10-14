@@ -1,0 +1,14 @@
+import type {SupportedLocale} from './i18n';
+import type {SourceAttribution} from '@uapt/shared';
+const labels={
+ university_official:{en:'University official source',zh:'大学官方来源',fr:'Source officielle de l’université',pl:'Oficjalne źródło uczelni',es:'Fuente oficial universitaria',nl:'Officiële universiteitsbron',ms:'Sumber rasmi universiti'},
+ government_external:{en:'External government reference',zh:'外部政府参考资料',fr:'Référence gouvernementale externe',pl:'Zewnętrzne źródło rządowe',es:'Referencia gubernamental externa',nl:'Externe overheidsreferentie',ms:'Rujukan kerajaan luar'},
+ vendor_documentation:{en:'Vendor documentation',zh:'供应商产品说明',fr:'Documentation du fournisseur',pl:'Dokumentacja dostawcy',es:'Documentación del proveedor',nl:'Documentatie van leverancier',ms:'Dokumentasi pembekal'},
+ archived_source:{en:'Archived source',zh:'历史存档来源',fr:'Source archivée',pl:'Źródło archiwalne',es:'Fuente archivada',nl:'Gearchiveerde bron',ms:'Sumber arkib'},
+ historical_unavailable:{en:'Historical source; previously recorded unavailable',zh:'历史来源；此前记录为不可访问',fr:'Source historique précédemment indisponible',pl:'Historyczne źródło wcześniej niedostępne',es:'Fuente histórica antes no disponible',nl:'Historische bron, eerder niet beschikbaar',ms:'Sumber sejarah, sebelumnya tidak tersedia'},
+ scoped_tools:{en:'Tools for specific users and service modes',zh:'特定对象与服务模式的工具',fr:'Outils pour des utilisateurs et modes spécifiques',pl:'Narzędzia dla określonych użytkowników i trybów',es:'Herramientas para usuarios y modos específicos',nl:'Tools voor specifieke gebruikers en modi',ms:'Alat untuk pengguna dan mod tertentu'},
+ date_unrecorded:{en:'Date not recorded',zh:'未记录日期',fr:'Date non enregistrée',pl:'Data nie została zapisana',es:'Fecha no registrada',nl:'Datum niet vastgelegd',ms:'Tarikh tidak direkodkan'}
+}as const;
+export function policyV6EvidenceLabel(key:keyof typeof labels,locale:SupportedLocale){return labels[key][locale];}
+export function policySourceRole(source:SourceAttribution){const host=new URL(source.sourceUrl).hostname;if(source.sourceType==='archived_official_source')return 'archived_source';if(source.sourceUrl.includes('dAIsy-use-guidance-and-process-flows'))return 'historical_unavailable';if(/(^|\.)(whitehouse\.gov|fedlex\.admin\.ch)$/.test(host))return 'government_external';if(/(^|\.)(microsoft\.com|openai\.com|anthropic\.com|google\.com)$/.test(host))return 'vendor_documentation';return 'university_official';}
+export function policyV6ScopeLabel(scope:string,locale:SupportedLocale){if(scope==='university_wide_with_course_discretion')return locale==='zh'?'全校教学与学习；具体课程考核由教师规定':'University teaching and learning; instructor-specific assessment rules apply';if(scope==='undergraduate_honor_code_respondents')return locale==='zh'?'接受 Honor Code 程序调查的本科生':'Undergraduate respondents in an Honor Code proceeding';return /^[a-z]+(?:_[a-z]+)+$/.test(scope)?scope.replaceAll('_',' '):scope;}

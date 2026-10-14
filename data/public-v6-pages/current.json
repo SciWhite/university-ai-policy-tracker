@@ -1,7 +1,7 @@
 {
-  "path": "revisions/v6-pages-20261013.json",
-  "sha256": "22f5065b047e0b7c730bc3cb023f92e7cda61bfde974949b6ef026127d338bfa",
-  "releaseId": "v6-pages-20261013",
+  "path": "revisions/v6-audit-fix-20261014.json",
+  "sha256": "7461ceed2f9bee1aa725348950f19673a4b4b237f5d67b55668af7cc20c71864",
+  "releaseId": "v6-audit-fix-20261014",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",

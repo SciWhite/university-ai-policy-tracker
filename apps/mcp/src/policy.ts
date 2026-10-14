@@ -11,7 +11,7 @@ export class PolicyService {
     "Live availability of official URLs is not checked by these tools. If a source cannot be opened, identify the answer as based on recorded evidence and do not claim fresh verification."] }; }
   private recordBase(record: Record) {
     const base = this.base();
-    return {...base, limitations:[...new Set([...base.limitations,...record.summary.limitations,...(record.snapshot?.limitations ?? [])])]};
+    return {...base,...(record.universityRevisionId?{datasetReleaseId:this.catalog.releaseId,universityRevisionId:record.universityRevisionId,recordSha256:record.recordSha256,recordPublishedAt:record.recordPublishedAt,snapshotUnavailableReason:record.snapshotUnavailableReason,historicalClaimIds:record.historicalClaimIds}:{}), limitations:[...new Set([...base.limitations,...record.summary.limitations,...(record.snapshot?.limitations ?? [])])]};
   }
   resolve(name: string) {
     const query = normalizeForSearch(name);
@@ -23,7 +23,7 @@ export class PolicyService {
     }).filter(r => r.score > 0).sort((a,b) => b.score-a.score || a.record.summary.entity.slug.localeCompare(b.record.summary.entity.slug));
     const exact = matches.filter(m => m.score === 2);
     const resolved = exact.length === 1 || (exact.length === 0 && matches.length === 1);
-    return { ...this.base(), status: matches.length ? resolved ? "resolved" : "ambiguous" : "not_found",
+    return { ...(resolved?this.recordBase((exact[0]??matches[0]).record):this.base()), status: matches.length ? resolved ? "resolved" : "ambiguous" : "not_found",
       candidates: matches.slice(0,10).map(({record}) => ({ slug: record.summary.entity.slug, name: record.summary.entity.name, country: record.country, trackerUrl: tracker(record.summary.entity.slug) })),
       ...(resolved ? { slug: (exact[0] ?? matches[0]).record.summary.entity.slug } : {}),
       ...(matches.length > 10 ? { moreCandidates: true } : {}) };

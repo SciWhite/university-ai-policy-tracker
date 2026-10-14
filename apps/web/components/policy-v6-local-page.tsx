@@ -1,3 +1,5 @@
+import {PolicyV6HeldRecords} from "./policy-v6-held-records";
+import {PolicyV6RecordLinks} from "./policy-v6-record-links";
 import React from "react";
 import type { SupportedLocale } from "@/lib/i18n";
 import type { PolicyV6Data } from "@/lib/policy-v6";
@@ -251,6 +253,7 @@ export function PolicyV6LocalPage({
               locale={locale}
             />
           </section>
+          <PolicyV6HeldRecords slug={university.slug} locale={locale}/>
           <section
             className="student-record-section student-record-section--compact"
             id="sources"
@@ -271,17 +274,18 @@ export function PolicyV6LocalPage({
           <section className="student-record-info" id="record-info">
             <details>
               <summary>{t("Record information, JSON & citation")}</summary>
+              <PolicyV6RecordLinks slug={university.slug} locale={locale}/>
               <p>
                 {zh
-                  ? "V6 使用已审核的新采集补充资料；canonical JSON 保留数据发布基线，页面补充变更已单独登记。"
-                  : "V6 presents reviewed source-based supplementary material; canonical JSON retains the dataset baseline and page supplement changes are recorded separately."}
+                  ? "本次范围限定修订将已审核现行记录同步至大学 JSON 与 MCP；旧基线和旧审核批准另存历史。"
+                  : "This scoped correction publishes the reviewed current record to the university JSON and MCP. Previous baseline records and review approvals are retained separately in history."}
               </p>
               <p>{school.revision}</p>
               <p className="hash-value" data-i18n="preserve">
                 {evidence.fingerprint}
               </p>
               <a href={evidence.originalRecord.apiUrl}>
-                {zh ? "查看原公开基线 JSON" : "View published baseline JSON"}
+                {zh ? "查看当前已审核 JSON" : "View current reviewed JSON"}
               </a>
               <p>
                 {zh

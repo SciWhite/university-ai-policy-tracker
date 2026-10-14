@@ -1,0 +1,17 @@
+{
+  "path": "revisions/v6-audit-fix-20261014.json",
+  "sha256": "45e501702f0eb89b9714f8817c2d20719d57cece4de69d1c2fa9b3dc92f5dbdc",
+  "revision": "v6-audit-fix-20261014",
+  "slugs": [
+    "massachusetts-institute-of-technology",
+    "imperial-college-london",
+    "stanford-university",
+    "university-of-oxford",
+    "harvard-university",
+    "university-of-cambridge",
+    "eth-zurich",
+    "national-university-of-singapore",
+    "ucl",
+    "california-institute-of-technology"
+  ]
+}

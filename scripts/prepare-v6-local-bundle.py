@@ -36,9 +36,25 @@ def prepare(root, mapping):
     for b in bindings.values():
         assert b["sourceId"] in sources and digest(b["quote"].encode()) == b["quoteSha256"]
 
+    def source_file(s, kind):
+        for name in [s.get(kind + "File"), s.get(kind + "Path")]:
+            if not name: continue
+            for path in [root / name, root / "outputs" / name]:
+                path = path.resolve()
+                if path.is_relative_to(root) and path.is_file(): return path
+        raise ValueError("Missing frozen " + kind + " source: " + s["sourceId"])
+
+    for s in sources.values():
+        for kind in ["raw", "text"]:
+            assert digest(source_file(s, kind).read_bytes()) == s[kind + "Sha256"], s["sourceId"]
+    for b in bindings.values():
+        s = sources[b["sourceId"]]
+        assert b["quote"] in source_file(s, "text").read_text(), "Evidence/source mismatch requires explicit review: " + b["evidenceId"]
+        assert b["sourceUrl"] == s["url"], "Evidence URL mismatch: " + b["evidenceId"]
+
     def source(sid):
         s = sources[sid]
-        result = {"id": sid, "sourceUrl": s["url"], "citationTitle": s["title"], "snapshotHash": s["textSha256"], "sourceType": "official_pdf" if s.get("documentKind") == "pdf" or s.get("isPdf") else "official_guidance", "official": True}
+        result = {"id": sid, "sourceUrl": s["url"], "citationTitle": s["title"], "snapshotHash": s["rawSha256"], "sourceType": "official_pdf" if s.get("documentKind") == "pdf" or s.get("isPdf") else "official_guidance", "official": True}
         if s.get("publisher"): result["publisher"] = s["publisher"]
         if s.get("retrievedAt"): result["retrievedAt"] = s["retrievedAt"].replace("+00:00", "Z")
         return result
@@ -47,7 +63,7 @@ def prepare(root, mapping):
         b = bindings[eid]
         s = sources[b["sourceId"]]
         location = mapping.get("evidenceLocations", {}).get(eid) or b.get("location", "")
-        result = {"id": eid, "sourceUrl": b["sourceUrl"], "sourceLanguage": s.get("language") or "en", "sourceSnapshotHash": b["sourceSnapshotHash"], "evidenceSnippet": b["quote"], "snippetLocation": (location + "; " if location else "") + "Lines %s–%s; characters %s–%s" % (b["lineStart"], b["lineEnd"], b["charStart"], b["charEnd"]), "attribution": source(b["sourceId"])}
+        result = {"id": eid, "sourceUrl": b["sourceUrl"], "sourceLanguage": s.get("language") or "en", "sourceSnapshotHash": s["rawSha256"], "evidenceSnippet": b["quote"], "snippetLocation": (location + "; " if location else "") + "Extracted text SHA256 %s; original binding lines %s–%s; characters %s–%s" % (s["textSha256"], b["lineStart"], b["lineEnd"], b["charStart"], b["charEnd"]), "attribution": source(b["sourceId"])}
         if s.get("retrievedAt"): result["retrievedAt"] = s["retrievedAt"].replace("+00:00", "Z")
         return result
 

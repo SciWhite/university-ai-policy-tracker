@@ -1,3 +1,6 @@
+import {PolicyV6HeldRecords} from "@/components/policy-v6-held-records";
+import {PolicyV6RecordLinks} from "@/components/policy-v6-record-links";
+import {readV6RecordCorrections} from "@/lib/v6-effective-records";
 import { UniversityMark } from "@/components/university-mark";
 import { PolicyV6HeaderLocation } from "@/components/policy-v6-header-location";
 import { getPolicyV6UniversityTitle } from "@/lib/policy-v6-university-title";
@@ -448,7 +451,7 @@ export default async function UniversityPage({
         )}
       </section>
 
-      {uiLab && publicSummary.claims.some(claim => !isReviewedClaim(claim.reviewState)) ? <section className="student-record-section" id="v6-held-public-claims"><h2>{locale === "zh" ? "暂缓结论与历史证据" : "Held conclusions and historical evidence"}</h2><p>{locale === "zh" ? "以下记录保留原始链接和引文；现行适用性未确认，不作为已审核规则。" : "These records retain their original anchors and quotations. Current applicability is unconfirmed; they are excluded from reviewed conclusions."}</p>{publicSummary.claims.filter(claim => !isReviewedClaim(claim.reviewState)).map(claim => <ClaimEvidenceCard key={claim.id} claim={claim} entitySlug={slug} locale={locale} showConfidence={false} id={`claim-${claim.id}`} />)}</section> : null}
+      {uiLab ? <PolicyV6HeldRecords slug={slug} locale={locale}/> : null}
       <section className={`student-record-section${compactPolicyPilot ? " student-record-section--compact" : ""}`} id="sources">
         <div className="section-heading">
           <div>
@@ -507,6 +510,7 @@ export default async function UniversityPage({
                 </a>
               </MetaLabel>
             </div>
+            {uiLab ? <PolicyV6RecordLinks slug={slug} locale={locale}/> : null}
             <p className="student-record-info__citation">
               <strong>Citation:</strong> {publicSummary.suggestedCitation}
             </p>

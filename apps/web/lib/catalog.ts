@@ -1,3 +1,4 @@
+import {v6CorrectedSummary} from "./v6-effective-records";
 import {
   aiTools,
   catalogSourceRecordSchema,
@@ -81,6 +82,7 @@ export async function getPublicUniversitySummaryBySlug(
   slug: string
 ): Promise<PublicEntitySummary | undefined> {
   if (isRepairedUniversity(slug) || isCandidateRepairPreview(slug)) return getStagedPublicSummaryBySlug(slug);
+  const corrected=v6CorrectedSummary(slug);if(corrected)return corrected;
   const fromApi = await fetchApi(
     `/api/public/${PUBLIC_API_VERSION}/universities/${slug}.json`,
     {

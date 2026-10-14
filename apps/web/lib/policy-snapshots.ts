@@ -1,3 +1,4 @@
+import {v6CorrectedSnapshot} from "./v6-effective-records";
 import { isCandidateRepairPreview, loadCandidateRecordRepair } from "./public-record-repairs";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
@@ -69,15 +70,16 @@ export async function getLoadedPolicySnapshotIndex(): Promise<LoadedPolicySnapsh
   const entries: PolicySnapshotIndexEntryWithLoaded[] = [];
 
   for (const entry of index.entries) {
-    const loaded = await loadPolicySnapshotBySlug(entry.universitySlug, entry.file);
+    const corrected = v6CorrectedSnapshot(entry.universitySlug);
+    const loaded = corrected ? await getLoadedPolicySnapshotBySlug(entry.universitySlug) : await loadPolicySnapshotBySlug(entry.universitySlug, entry.file);
     if (!loaded) continue;
 
-    const indexedMismatch =
+    const indexedMismatch = !corrected && (
       loaded.snapshot.universityName !== entry.universityName ||
       loaded.snapshot.releaseId !== entry.releaseId ||
       loaded.snapshot.generatedAt !== entry.generatedAt ||
       loaded.snapshot.basisFingerprint !== entry.basisFingerprint ||
-      loaded.snapshot.publicJsonUrl !== entry.publicJsonUrl;
+      loaded.snapshot.publicJsonUrl !== entry.publicJsonUrl);
     const indexedLoaded = indexedMismatch
       ? withIndexMismatch(loaded, entry)
       : loaded;
@@ -101,6 +103,8 @@ export async function getLoadedPolicySnapshotIndex(): Promise<LoadedPolicySnapsh
 export async function getLoadedPolicySnapshotBySlug(
   slug: string
 ): Promise<LoadedPolicySnapshot | undefined> {
+  const corrected=v6CorrectedSnapshot(slug);
+  if(corrected){const summary=await getStagedPublicSummaryBySlug(slug);if(!summary)throw Error("Missing corrected snapshot record");return {snapshot:corrected,validation:validatePolicySnapshotAgainstPublicData(corrected,summary,corrected.releaseId)};}
   const index = await getPolicySnapshotIndexManifest();
   const entry = index.entries.find((item) => item.universitySlug === slug);
   if (!entry) return undefined;

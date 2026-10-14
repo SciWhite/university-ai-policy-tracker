@@ -1,3 +1,4 @@
+import {applyV6RecordCorrections} from "./v6-effective-records";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import {
@@ -274,6 +275,7 @@ async function buildPublicDatasetFromArtifacts(
   if (applyRepairs && candidateSlug && isCandidateRepairUniversity(candidateSlug)) {
     publicSummaries = await applyCandidateRecordRepairs(repoRoot, publicSummaries, candidateSlug);
   }
+  if (applyRepairs) publicSummaries = applyV6RecordCorrections(publicSummaries);
   const catalogUniversities = publicSummaries.map((summary) =>
     buildCatalogUniversity(summary, rankingBySlug.get(summary.entity.slug))
   );

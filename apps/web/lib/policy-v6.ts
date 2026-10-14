@@ -36,6 +36,7 @@ export interface LabTopic {
     id: string;
     text: string;
     checkedAt?: string;
+    basisObjectType?: "source";
     evidence: {
       quote: string;
       url: string;

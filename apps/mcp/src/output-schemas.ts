@@ -5,7 +5,13 @@ import { topicSchema } from "./catalog.js";
 const base = {
   releaseId: z.string(),
   releasePublishedAt: z.string().datetime(),
-  limitations: z.array(z.string()).describe("Scope and time limitations that must accompany the answer")
+  limitations: z.array(z.string()).describe("Scope and time limitations that must accompany the answer"),
+  datasetReleaseId: z.string().optional(),
+  universityRevisionId: z.string().optional(),
+  recordSha256: z.string().regex(/^[a-f0-9]{64}$/).optional(),
+  recordPublishedAt: z.string().datetime().optional(),
+  snapshotUnavailableReason: z.enum(["pending_review","not_published"]).optional(),
+  historicalClaimIds: z.array(z.string()).optional()
 };
 export const resolutionOutput = z.object({
   ...base,

@@ -24,5 +24,67 @@
     "university-of-cambridge": {
       "fingerprint": "7de40eac86b630b3bf190fc0b753e646ae78b4dfd3682bfbcc5b263b587391a5"
     }
+  },
+  "scopedCorrections": {
+    "massachusetts-institute-of-technology": {
+      "fingerprint": "4ec5718f11f00c1aa797df9c1c9b1cc12b3d53008f55a1ea04c107a8e8bc24ae",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    },
+    "imperial-college-london": {
+      "fingerprint": "f42affcf950f80c77f48d2cf1ee59abc09f156edfbb7147f8c03864bf2fb2211",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    },
+    "stanford-university": {
+      "fingerprint": "876a43c925e7fbd82f3e1a61421223137962a982adbfc21cd93cef561bbd5a57",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    },
+    "university-of-oxford": {
+      "fingerprint": "a4db6825d13a132190212368ef91024da1db9f674df838a82853b92381d683e9",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    },
+    "harvard-university": {
+      "fingerprint": "d8763300b4684c89754559a85f3779845372ae96ca7ab21bc2f8c0fd00ef047f",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    },
+    "university-of-cambridge": {
+      "fingerprint": "6dd675a9d1b3affb3423c9da152b74e8357e93ccafa23432aba218b3565767f1",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    },
+    "eth-zurich": {
+      "fingerprint": "0318627152f6c22e70b727831eb2a046ac48f2e7c310c84878edfa5a97f2a8f8",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    },
+    "national-university-of-singapore": {
+      "fingerprint": "97d0794f815a925d0374717e5236c212b98a63e4e198dde8c0eb6da874726220",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    },
+    "ucl": {
+      "fingerprint": "cca8d4203abf6478c2d9cf06d85034d057d5c48568a52a742f6ccde51e06aeef",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    },
+    "california-institute-of-technology": {
+      "fingerprint": "126802271eee75cf653cb03e9768b4be55cbf3f2a9f6fd91dc70fb2060bffd52",
+      "reviewedAt": "2026-10-14T02:23:21.633198Z",
+      "method": "agent_scoped_correction",
+      "revision": "v6-audit-fix-20261014"
+    }
   }
 }

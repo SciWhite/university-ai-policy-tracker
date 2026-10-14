@@ -1,3 +1,5 @@
+import {readV6RecordCorrections,v6RecordRevision} from "@/lib/v6-effective-records";
+import {readPublishedV6Revision} from "@/lib/policy-v6-published";
 import {readPublishedV6,publishedV6School,publishedV6Bundle,publishedV6Evidence} from "@/lib/policy-v6-published";
 import {NextResponse} from 'next/server';
 import {buildPublicEntitySummaryResponse} from '@uapt/shared';
@@ -24,11 +26,16 @@ import {GET as pageQuality} from '@/app/api/public/v1/analysis/page-quality.json
 import {getUniversityStatusWidget,getReviewStateWidget,getPolicyCoverageWidget,getSourceFreshnessWidget,widgetCorsHeaders} from '@/lib/developer-surfaces';
 
 export const dynamic='force-dynamic';
-const slugs=['massachusetts-institute-of-technology','imperial-college-london','stanford-university','university-of-oxford'];
+const slugs=readV6RecordCorrections()?.summaries.map(s=>s.entity.slug)??[];
 export async function GET(request:Request,{params}:{params:Promise<{path:string[]}>}){
  const path=(await params).path.join('/');
+ const correction=readV6RecordCorrections()!;
+ if(path.startsWith('policy-pages/v6/revisions/')){const revision=path.split('/').at(-1)!.replace(/\.json$/,'');const data=readPublishedV6Revision(revision);return NextResponse.json(data??{error:'Revision not found'},{status:data?200:404});}
+ if(path==='record-corrections/latest.json')return NextResponse.json({schemaVersion:'uapt-scoped-record-diff-v1',revision:correction.revision,datasetReleaseId:correction.datasetReleaseId,publishedAt:correction.publishedAt,changes:correction.changesBySlug});
+ const history=path.match(/^universities\/([a-z0-9-]+)\/revisions\/(baseline-v6-pages-20261013|v6-audit-fix-20261014)\.json$/);
+ if(history&&slugs.includes(history[1])){const slug=history[1],historical=history[2].startsWith('baseline-');const record=historical?correction.historical[slug].baseline:correction.summaries.find(s=>s.entity.slug===slug)!;return NextResponse.json({...buildPublicEntitySummaryResponse(record,'https://eduaipolicy.org'),recordRevision:history[2],historical,heldClaims:historical?correction.historical[slug].heldClaims:correction.heldBySlug[slug],historicalSnapshot:historical?correction.historical[slug].snapshot:undefined,notice:historical?'Historical baseline; not current permission or snapshot approval.':'Current scoped reviewed record.'});}
  if(path==='policy-pages/v6.json')return NextResponse.json(readPublishedV6(),{headers:{'Cache-Control':'private, no-store, no-transform'}});
- if(path==='policy-pages/v6/changes/latest.json'){const data=readPublishedV6()!;return NextResponse.json({schemaVersion:'uapt-page-supplement-diff-v1',releaseId:data.releaseId,canonicalDatasetChanged:false,publicationKind:'reviewed_page_supplement',changes:data.slugs.map(slug=>({slug,href:'/changes/'+data.releaseId+'/'+slug,basisFingerprint:publishedV6School(slug,'en')!.fingerprint,reviewedDisplayClaimIds:(publishedV6Bundle(slug,'en')?.claims??publishedV6Evidence(slug)?.record.claims??[]).map(c=>c.id)}))});}
+ if(path==='policy-pages/v6/changes/latest.json'){const data=readPublishedV6()!;return NextResponse.json({schemaVersion:'uapt-page-supplement-diff-v1',releaseId:data.releaseId,canonicalDatasetChanged:true,publicationKind:'scoped_record_correction',changes:data.slugs.map(slug=>({slug,href:'/changes/'+data.releaseId+'/'+slug,basisFingerprint:publishedV6School(slug,'en')!.fingerprint,reviewedDisplayClaimIds:correction.summaries.find(s=>s.entity.slug===slug)!.claims.map(c=>c.id),...correction.changesBySlug[slug]}))});}
  const common:Record<string,()=>Promise<Response>|Response>={
   'tools.json':tools,'coverage/qs-2026.json':coverage,'university-index.json':universityIndex,
   'universities.json':universities,'search/index.json':searchIndex,'policy-snapshots/index.json':snapshotIndex,
@@ -36,12 +43,12 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
  };
  if(path==='recent-changes.json')return recentChanges();
  if(path==='changes/index.json')return NextResponse.json(await getChangeIndexResponse());
- if(path==='changes/latest.json')return NextResponse.json(await getLatestReleaseDiff());
+ if(path==='changes/latest.json')return NextResponse.json({...await getLatestReleaseDiff(),scopedRecordCorrection:{revision:correction.revision,publishedAt:correction.publishedAt,changes:correction.changesBySlug}});
  if(path==='widgets/recent-changes.json')return NextResponse.json(buildRecentChangesWidgetFromPublicChanges((await getStagedRecentChangesEnvelope()).data.changes,10),{headers:widgetCorsHeaders});
  if(path.startsWith('changes/')) {
    const parts=path.split('/').slice(1).map(part=>part.replace(/\.json$/, ''));
    const payload=parts[0]==='latest'&&parts[1] ? await getLatestEntityReleaseDiff(parts[1]) : parts[1] ? await getEntityReleaseDiff(parts[0],parts[1]) : await getReleaseDiff(parts[0]);
-   return NextResponse.json(payload??{error:'Change diff not found'},{status:payload?200:404});
+   return NextResponse.json(payload?{...payload,...(parts[0]==='latest'&&correction.changesBySlug[parts[1]]?{scopedRecordCorrection:{revision:correction.revision,...correction.changesBySlug[parts[1]]}}:{})}:{error:'Change diff not found'},{status:payload?200:404});
  }
 
  if(path==='search.json')return (await import('@/app/api/public/v1/search.json/route')).GET(request);
@@ -58,11 +65,11 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
   const summary=await getStagedPublicSummaryBySlug(slug);
   if(!summary)return NextResponse.json({error:'Published repair record unavailable'},{status:503});
   const policySnapshot=await getPublicUniversityPolicySnapshotLink(slug,getSiteBaseUrl());
-  return NextResponse.json(buildPublicEntitySummaryResponse({...summary,...(policySnapshot?{policySnapshot}:{})},getSiteBaseUrl()),{headers:{'Cache-Control':'private, no-store, no-transform'}});
+  return NextResponse.json({...buildPublicEntitySummaryResponse({...summary,...(policySnapshot?{policySnapshot}:{})},'https://eduaipolicy.org'),recordRevision:v6RecordRevision(slug),historicalRecordsUrl:`https://eduaipolicy.org/api/public/v1/universities/${slug}/revisions/baseline-v6-pages-20261013.json`},{headers:{'Cache-Control':'private, no-store, no-transform'}});
  }
  if(path===`policy-snapshots/universities/${slug}.json`||path===`policy-snapshots/universities/${slug}`){
   const snapshot=await getLoadedPolicySnapshotBySlug(slug);
-  if(!snapshot)return NextResponse.json({error:'Repair snapshot unavailable'},{status:503});
+  if(!snapshot)return NextResponse.json({error:'Student snapshot not published',reasonCode:'not_published',recordRevision:v6RecordRevision(slug)},{status:404});
   return NextResponse.json(buildPolicySnapshotResponse(snapshot,getSiteBaseUrl()),{headers:{'Cache-Control':'private, no-store, no-transform'}});
  }
  }

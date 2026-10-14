@@ -1,3 +1,4 @@
+import {policyV6EvidenceLabel} from "@/lib/policy-v6-evidence-labels";
 import React, { type ReactNode, type CSSProperties } from "react";
 import type { UniversityToolRecord } from "@uapt/shared";
 import type { SupportedLocale } from "@/lib/i18n";
@@ -78,7 +79,7 @@ export function UniversityAiTools({
       className="university-ai-tools student-record-section"
       aria-labelledby={`${sectionId}-title`}
     >
-      <h2 id={`${sectionId}-title`}>{ui[0]}</h2>
+      <h2 id={`${sectionId}-title`}>{sectionId==="university-ai-tools-scoped"?policyV6EvidenceLabel("scoped_tools",locale):ui[0]}</h2>
       {!uiLab ? <p className="university-ai-tools__boundary">{ui[1]}</p> : null}
       {!supported.length ? (
         <p className="muted">{ui[3]}</p>

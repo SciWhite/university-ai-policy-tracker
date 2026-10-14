@@ -18,5 +18,6 @@ export function policyV6ReviewState(
   fingerprint: string,
 ): "agent_reviewed" | undefined {
   const pins = approval.universities as Record<string, { fingerprint: string }>;
-  return pins[slug]?.fingerprint === fingerprint ? "agent_reviewed" : undefined;
+  const corrections=approval.scopedCorrections as Record<string,{fingerprint:string}>;
+  return pins[slug]?.fingerprint === fingerprint || corrections[slug]?.fingerprint===fingerprint ? "agent_reviewed" : undefined;
 }
