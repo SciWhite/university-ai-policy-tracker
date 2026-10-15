@@ -10,5 +10,5 @@ test('Imperial scoped action/readthrough projection preserves MIT and binds exac
  for(const image of guide.images)assert.equal(createHash('sha256').update(await readFile('apps/web/public'+image.src)).digest('hex'),image.sha256);
  assert.equal(getV6StudentActions({...school,fingerprint:'different'}),undefined);
  const appeal=guide.claims['clm-imperial-college-london-academic-misconduct-appeals'];assert.match(appeal.text,/ten College working days/);assert.match(appeal.text,/D17/);assert(appeal.evidence.some(e=>e.quote.includes('ten College working days')));
- for(const s of data.schools.filter(s=>!['imperial-college-london','massachusetts-institute-of-technology'].includes(s.slug)))assert.equal(getV6StudentActions(s),undefined);
+ for(const s of data.schools.filter(s=>!['imperial-college-london','massachusetts-institute-of-technology'].includes(s.slug)))assert(getV6StudentActions(s));
 });

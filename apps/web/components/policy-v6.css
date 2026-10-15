@@ -2284,126 +2284,126 @@
 }
 .v6-student-guide__deadline { border-inline-start:3px solid var(--color-accent); padding-inline-start:12px; margin:14px 0; }
 
-/* Imperial-only evidence-first variant. Existing university compositions remain unchanged. */
-[data-ui-experience="imperial-compact"] .v6-imperial-identity-note { display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:center; margin:8px 0 18px; font-size:12px; color:var(--color-text-muted); }
-[data-ui-experience="imperial-compact"] .v6-imperial-identity-note a { font-size:14px; font-weight:600; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column li>div { width:100%; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column li span { display:block; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column li small { display:inline-block; margin:2px 10px 0 0; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column li button { font-size:12px; border:0; background:none; padding:4px 0; color:var(--color-accent); text-decoration:underline; text-underline-offset:3px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column ul { gap:12px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__concern-button { text-decoration:none; }
-[data-ui-experience="imperial-compact"] .v6-imperial-report { display:inline-block; margin-top:14px; font-size:12px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-reading-label { color:var(--color-text-muted); font-size:11px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-status-help { margin:10px 0; }
-[data-ui-experience="imperial-compact"] .v6-imperial-status-help summary { font-size:12px; color:var(--color-accent); cursor:pointer; }
-[data-ui-experience="imperial-compact"] .v6-imperial-status-help p { line-height:1.6; font-size:13px; margin:8px 0; }
-[data-ui-experience="imperial-compact"] .v6-imperial-topic-illustration { margin:12px 0 6px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-topic-illustration summary { cursor:pointer; font-size:12px; color:var(--color-text-muted); }
-[data-ui-experience="imperial-compact"] .v6-imperial-topic-illustration .policy-v6-topic-art { height:100px; max-height:100px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-topic-illustration img { height:100px; object-fit:contain; }
-[data-ui-experience="imperial-compact"] .v6-imperial-faq { margin:28px 0; padding-top:16px; border-top:1px solid var(--color-border); }
-[data-ui-experience="imperial-compact"] .v6-imperial-faq>summary { cursor:pointer; font-weight:600; }
-[data-ui-experience="imperial-compact"] .v6-imperial-faq .policy-v6-faq>h2 { display:none; }
-.v6-imperial-concern { padding:0; width:min(780px,calc(100vw - 40px)); max-width:none; max-height:90dvh; border:1px solid var(--color-border); border-radius:12px; color:var(--color-text); background:var(--color-canvas-default); box-shadow:0 16px 60px #0003; }
-.v6-imperial-concern::backdrop { background:rgb(0 0 0 / .35); }
-.v6-imperial-concern>header { position:sticky; top:0; z-index:1; display:flex; justify-content:space-between; align-items:start; gap:20px; padding:20px 24px; border-bottom:1px solid var(--color-border); background:var(--color-canvas-default); }
-.v6-imperial-concern h2 { font-size:22px; margin:0; }
-.v6-imperial-concern>header p { margin:6px 0 0; font-size:12px; color:var(--color-text-muted); }
-.v6-imperial-concern button { cursor:pointer; padding:8px 12px; border:1px solid var(--color-border); border-radius:6px; color:var(--color-text); background:var(--color-canvas-subtle); }
-.v6-imperial-concern__body { padding:8px 24px 28px; line-height:1.7; }
-.v6-imperial-concern__body nav { display:flex; gap:16px; flex-wrap:wrap; padding:8px 0 16px; border-bottom:1px solid var(--color-border); font-size:14px; }
-.v6-imperial-concern__body>section { scroll-margin-top:120px; margin-top:24px; }
-.v6-imperial-concern__body h3 { margin:0 0 12px; font-size:18px; }
-.v6-imperial-evidence { border-bottom:1px solid var(--color-border); padding:4px 0 14px; margin:0 0 12px; line-height:1.65; }
-.v6-imperial-evidence>p { margin:8px 0; }
-.v6-imperial-evidence summary { cursor:pointer; color:var(--color-accent); font-size:13px; }
-.v6-imperial-evidence blockquote { border-inline-start:2px solid var(--color-border); margin:12px 0; padding-inline-start:12px; overflow-wrap:anywhere; white-space:pre-wrap; }
-.v6-imperial-evidence small { overflow-wrap:anywhere; color:var(--color-text-muted); }
-.v6-imperial-concern footer { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
-.v6-imperial-share-url { width:100%; min-width:0; padding:8px; font-size:12px; border:1px solid var(--color-border); background:var(--color-canvas-default); color:var(--color-text); }
+/* Shared compact evidence template, promoted from the accepted Imperial composition. */
+[data-ui-experience="compact-evidence"] .v6-compact-identity-note { display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:center; margin:8px 0 18px; font-size:12px; color:var(--color-text-muted); }
+[data-ui-experience="compact-evidence"] .v6-compact-identity-note a { font-size:14px; font-weight:600; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__column li>div { width:100%; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__column li span { display:block; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__column li small { display:inline-block; margin:2px 10px 0 0; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__column li button { font-size:12px; border:0; background:none; padding:4px 0; color:var(--color-accent); text-decoration:underline; text-underline-offset:3px; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__column ul { gap:12px; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__concern-button { text-decoration:none; }
+[data-ui-experience="compact-evidence"] .v6-compact-report { display:inline-block; margin-top:14px; font-size:12px; }
+[data-ui-experience="compact-evidence"] .v6-compact-reading-label { color:var(--color-text-muted); font-size:11px; }
+[data-ui-experience="compact-evidence"] .v6-compact-status-help { margin:10px 0; }
+[data-ui-experience="compact-evidence"] .v6-compact-status-help summary { font-size:12px; color:var(--color-accent); cursor:pointer; }
+[data-ui-experience="compact-evidence"] .v6-compact-status-help p { line-height:1.6; font-size:13px; margin:8px 0; }
+[data-ui-experience="compact-evidence"] .v6-compact-topic-illustration { margin:12px 0 6px; }
+[data-ui-experience="compact-evidence"] .v6-compact-topic-illustration summary { cursor:pointer; font-size:12px; color:var(--color-text-muted); }
+[data-ui-experience="compact-evidence"] .v6-compact-topic-illustration .policy-v6-topic-art { height:100px; max-height:100px; }
+[data-ui-experience="compact-evidence"] .v6-compact-topic-illustration img { height:100px; object-fit:contain; }
+[data-ui-experience="compact-evidence"] .v6-compact-faq { margin:28px 0; padding-top:16px; border-top:1px solid var(--color-border); }
+[data-ui-experience="compact-evidence"] .v6-compact-faq>summary { cursor:pointer; font-weight:600; }
+[data-ui-experience="compact-evidence"] .v6-compact-faq .policy-v6-faq>h2 { display:none; }
+.v6-compact-concern { padding:0; width:min(780px,calc(100vw - 40px)); max-width:none; max-height:90dvh; border:1px solid var(--color-border); border-radius:12px; color:var(--color-text); background:var(--color-canvas-default); box-shadow:0 16px 60px #0003; }
+.v6-compact-concern::backdrop { background:rgb(0 0 0 / .35); }
+.v6-compact-concern>header { position:sticky; top:0; z-index:1; display:flex; justify-content:space-between; align-items:start; gap:20px; padding:20px 24px; border-bottom:1px solid var(--color-border); background:var(--color-canvas-default); }
+.v6-compact-concern h2 { font-size:22px; margin:0; }
+.v6-compact-concern>header p { margin:6px 0 0; font-size:12px; color:var(--color-text-muted); }
+.v6-compact-concern button { cursor:pointer; padding:8px 12px; border:1px solid var(--color-border); border-radius:6px; color:var(--color-text); background:var(--color-canvas-subtle); }
+.v6-compact-concern__body { padding:8px 24px 28px; line-height:1.7; }
+.v6-compact-concern__body nav { display:flex; gap:16px; flex-wrap:wrap; padding:8px 0 16px; border-bottom:1px solid var(--color-border); font-size:14px; }
+.v6-compact-concern__body>section { scroll-margin-top:120px; margin-top:24px; }
+.v6-compact-concern__body h3 { margin:0 0 12px; font-size:18px; }
+.v6-compact-evidence { border-bottom:1px solid var(--color-border); padding:4px 0 14px; margin:0 0 12px; line-height:1.65; }
+.v6-compact-evidence>p { margin:8px 0; }
+.v6-compact-evidence summary { cursor:pointer; color:var(--color-accent); font-size:13px; }
+.v6-compact-evidence blockquote { border-inline-start:2px solid var(--color-border); margin:12px 0; padding-inline-start:12px; overflow-wrap:anywhere; white-space:pre-wrap; }
+.v6-compact-evidence small { overflow-wrap:anywhere; color:var(--color-text-muted); }
+.v6-compact-concern footer { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+.v6-compact-share-url { width:100%; min-width:0; padding:8px; font-size:12px; border:1px solid var(--color-border); background:var(--color-canvas-default); color:var(--color-text); }
 @media(max-width:600px){
- [data-ui-experience="imperial-compact"] .entity-header h1 { font-size:30px; line-height:1.15; }
- [data-ui-experience="imperial-compact"] .entity-header { margin-bottom:12px; }
- [data-ui-experience="imperial-compact"] .v6-imperial-identity-note { margin:6px 0 14px; }
- [data-ui-experience="imperial-compact"] .policy-v6-questions a { padding:12px; }
- [data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__actions { gap:16px; }
- .v6-imperial-concern { width:100vw; height:100dvh; max-height:100dvh; margin:0; inset:0; border:0; border-radius:0; }
- .v6-imperial-concern>header { padding:16px; }
- .v6-imperial-concern h2 { font-size:20px; }
- .v6-imperial-concern>header button { font-size:12px; white-space:nowrap; }
- .v6-imperial-concern__body { padding:4px 16px 24px; }
+ [data-ui-experience="compact-evidence"] .entity-header h1 { font-size:30px; line-height:1.15; }
+ [data-ui-experience="compact-evidence"] .entity-header { margin-bottom:12px; }
+ [data-ui-experience="compact-evidence"] .v6-compact-identity-note { margin:6px 0 14px; }
+ [data-ui-experience="compact-evidence"] .policy-v6-questions a { padding:12px; }
+ [data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__actions { gap:16px; }
+ .v6-compact-concern { width:100vw; height:100dvh; max-height:100dvh; margin:0; inset:0; border:0; border-radius:0; }
+ .v6-compact-concern>header { padding:16px; }
+ .v6-compact-concern h2 { font-size:20px; }
+ .v6-compact-concern>header button { font-size:12px; white-space:nowrap; }
+ .v6-compact-concern__body { padding:4px 16px 24px; }
 }
 @media print{
- body:has(.v6-imperial-concern[open]) :is(.site-header,.site-footer,.policy-reference-nav,.policy-reference-content> :not(.policy-v6-intro):not(.v6-student-guide)) { display:none!important; }
- body:has(.v6-imperial-concern[open]) .v6-imperial-guide> :not(dialog) { display:none!important; }
- body:has(.v6-imperial-concern[open]) .v6-imperial-concern { position:static; width:100%; max-height:none; height:auto; margin:0; border:0; box-shadow:none; overflow:visible; }
- body:has(.v6-imperial-concern[open]) .v6-imperial-concern>header { position:static; }
- body:has(.v6-imperial-concern[open]) .v6-imperial-concern :is(button,footer,nav) { display:none!important; }
+ body:has(.v6-compact-concern[open]) :is(.site-header,.site-footer,.policy-reference-nav,.policy-reference-content> :not(.policy-v6-intro):not(.v6-student-guide)) { display:none!important; }
+ body:has(.v6-compact-concern[open]) .v6-compact-guide> :not(dialog) { display:none!important; }
+ body:has(.v6-compact-concern[open]) .v6-compact-concern { position:static; width:100%; max-height:none; height:auto; margin:0; border:0; box-shadow:none; overflow:visible; }
+ body:has(.v6-compact-concern[open]) .v6-compact-concern>header { position:static; }
+ body:has(.v6-compact-concern[open]) .v6-compact-concern :is(button,footer,nav) { display:none!important; }
 }
 
 /* Local Imperial refinement: direct quotes, compact action metadata and long-evidence reading. */
-[data-ui-experience="imperial-compact"] .v6-imperial-action-meta { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-[data-ui-experience="imperial-compact"] .v6-imperial-action-meta small { margin:0!important; padding:0!important; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-imperial-action-meta .policy-v6-popoverAnchor { display:inline-flex; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-imperial-action-meta>.policy-v6-popoverAnchor>button { min-height:44px; padding:8px 4px; }
-.v6-imperial-action-scope { margin:0 0 8px; font-size:12px; }
-.v6-imperial-action-scope>summary { cursor:pointer; color:var(--color-text-muted); }
-.v6-imperial-concern__header-actions { display:flex; align-items:center; flex-shrink:0; gap:8px; }
-.v6-imperial-concern__header-actions button { min-width:44px; min-height:44px; }
-.v6-imperial-concern .v6-imperial-share-top { display:inline-flex; align-items:center; justify-content:center; padding:10px; }
-.v6-imperial-live-status { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+[data-ui-experience="compact-evidence"] .v6-compact-action-meta { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+[data-ui-experience="compact-evidence"] .v6-compact-action-meta small { margin:0!important; padding:0!important; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-compact-action-meta .policy-v6-popoverAnchor { display:inline-flex; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-compact-action-meta>.policy-v6-popoverAnchor>button { min-height:44px; padding:8px 4px; }
+.v6-compact-action-scope { margin:0 0 8px; font-size:12px; }
+.v6-compact-action-scope>summary { cursor:pointer; color:var(--color-text-muted); }
+.v6-compact-concern__header-actions { display:flex; align-items:center; flex-shrink:0; gap:8px; }
+.v6-compact-concern__header-actions button { min-width:44px; min-height:44px; }
+.v6-compact-concern .v6-compact-share-top { display:inline-flex; align-items:center; justify-content:center; padding:10px; }
+.v6-compact-live-status { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 @media(max-width:600px){
  .policy-v6-popover[data-mobile-reading="expanded"] .policy-v6-popoverHeader { padding-top:12px; padding-bottom:12px; border-bottom:1px solid var(--color-border); }
  .policy-v6-popover[data-mobile-reading] .policy-v6-popoverClose { min-width:44px; min-height:44px; }
- [data-ui-experience="imperial-compact"] .v6-imperial-identity-note { row-gap:4px; align-items:baseline; }
- .v6-imperial-concern>header { gap:8px; }
- .v6-imperial-concern>header h2 { font-size:18px; }
+ [data-ui-experience="compact-evidence"] .v6-compact-identity-note { row-gap:4px; align-items:baseline; }
+ .v6-compact-concern>header { gap:8px; }
+ .v6-compact-concern>header h2 { font-size:18px; }
 }
 
 /* Imperial local density review: no decorative artwork or reserved illustration space. */
-[data-ui-experience="imperial-compact"] .policy-v6-intro { margin:16px 0 22px; }
-[data-ui-experience="imperial-compact"] .policy-v6-questions { gap:10px; margin:8px 0; }
-[data-ui-experience="imperial-compact"] .policy-v6-questions>a { min-height:94px; padding:12px; gap:6px; align-content:start; }
-[data-ui-experience="imperial-compact"] .policy-v6-questions strong { font-size:16px; line-height:1.4; }
-[data-ui-experience="imperial-compact"] .policy-v6-questions small { font-size:14px; }
-[data-ui-experience="imperial-compact"] .v6-student-guide__column--do { border-color:var(--color-success-fg); }
-[data-ui-experience="imperial-compact"] .v6-student-guide__column--dont { border-color:var(--color-danger-fg); }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="allowed"] { color:var(--color-success-fg); }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="prohibited"] { color:var(--color-danger-fg); }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="caution"] { color:var(--color-attention-fg); }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="neutral"] { color:var(--color-text-muted); }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-policy__grid { grid-auto-rows:1fr; align-items:stretch; gap:14px; }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card { height:100%; min-height:0; padding:16px; gap:10px; }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card__summary { flex:1; }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card__sentence { font-weight:500; line-height:1.6; margin-top:6px; }
-[data-ui-experience="imperial-compact"] .policy-v6-topicFooter { gap:4px 8px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide { margin:24px 0; }
+[data-ui-experience="compact-evidence"] .policy-v6-intro { margin:16px 0 22px; }
+[data-ui-experience="compact-evidence"] .policy-v6-questions { gap:10px; margin:8px 0; }
+[data-ui-experience="compact-evidence"] .policy-v6-questions>a { min-height:94px; padding:12px; gap:6px; align-content:start; }
+[data-ui-experience="compact-evidence"] .policy-v6-questions strong { font-size:16px; line-height:1.4; }
+[data-ui-experience="compact-evidence"] .policy-v6-questions small { font-size:14px; }
+[data-ui-experience="compact-evidence"] .v6-student-guide__column--do { border-color:var(--color-success-fg); }
+[data-ui-experience="compact-evidence"] .v6-student-guide__column--dont { border-color:var(--color-danger-fg); }
+[data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content [data-policy-tone="allowed"] { color:var(--color-success-fg); }
+[data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content [data-policy-tone="prohibited"] { color:var(--color-danger-fg); }
+[data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content [data-policy-tone="caution"] { color:var(--color-attention-fg); }
+[data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content [data-policy-tone="neutral"] { color:var(--color-text-muted); }
+[data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-policy__grid { grid-auto-rows:1fr; align-items:stretch; gap:14px; }
+[data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card { height:100%; min-height:0; padding:16px; gap:10px; }
+[data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card__summary { flex:1; }
+[data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card__sentence { font-weight:500; line-height:1.6; margin-top:6px; }
+[data-ui-experience="compact-evidence"] .policy-v6-topicFooter { gap:4px 8px; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide { margin:24px 0; }
 @media(min-width:1000px){
- [data-ui-experience="imperial-compact"] .policy-v6-questions { grid-template-columns:repeat(4,minmax(0,1fr)); }
+ [data-ui-experience="compact-evidence"] .policy-v6-questions { grid-template-columns:repeat(4,minmax(0,1fr)); }
 }
 @media(max-width:600px){
- [data-ui-experience="imperial-compact"] .policy-v6-questions>a { min-height:100px; padding:10px; }
- [data-ui-experience="imperial-compact"] .policy-v6-questions strong { font-size:15px; }
+ [data-ui-experience="compact-evidence"] .policy-v6-questions>a { min-height:100px; padding:10px; }
+ [data-ui-experience="compact-evidence"] .policy-v6-questions strong { font-size:15px; }
 }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .student-snapshot-card .student-snapshot-card__status[data-policy-tone="prohibited"] { color:var(--color-danger-fg); }
+[data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content .student-snapshot-card .student-snapshot-card__status[data-policy-tone="prohibited"] { color:var(--color-danger-fg); }
 
 /* Imperial: remove standalone dividers and explanatory copy from the reading flow. */
-[data-ui-experience="imperial-compact"] .v6-imperial-university-search { font-size:14px; font-weight:600; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__concern { border:0; }
-[data-ui-experience="imperial-compact"] .policy-v6-tools #university-ai-tools { border-top:0; padding-top:0; margin-top:12px; }
+[data-ui-experience="compact-evidence"] .v6-compact-university-search { font-size:14px; font-weight:600; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__concern { border:0; }
+[data-ui-experience="compact-evidence"] .policy-v6-tools #university-ai-tools { border-top:0; padding-top:0; margin-top:12px; }
 
 /* Imperial local review: accessible action shortcut and neutral action prose. */
-[data-ui-experience="imperial-compact"] .v6-imperial-independence { margin:6px 0 16px; color:var(--color-text-muted); font-size:12px; line-height:1.5; }
-[data-ui-experience="imperial-compact"] .policy-v6-introFoot { justify-content:space-between; gap:8px 20px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-check-entry { display:inline-flex; align-items:center; gap:10px; min-height:44px; color:var(--color-accent); text-underline-offset:3px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-check-entry strong { font-size:14px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-check-entry>span { font-size:12px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column { border-top:0; border-inline-start:2px solid var(--color-success-fg); padding:0 0 0 12px; }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column--dont { border-inline-start-color:var(--color-danger-fg); }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-imperial-action-text { color:var(--color-text); }
-[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-imperial-action-meta small { font-size:12px; font-weight:500; line-height:1.5; }
+[data-ui-experience="compact-evidence"] .v6-compact-independence { margin:6px 0 16px; color:var(--color-text-muted); font-size:12px; line-height:1.5; }
+[data-ui-experience="compact-evidence"] .policy-v6-introFoot { justify-content:space-between; gap:8px 20px; }
+[data-ui-experience="compact-evidence"] .v6-compact-check-entry { display:inline-flex; align-items:center; gap:10px; min-height:44px; color:var(--color-accent); text-underline-offset:3px; }
+[data-ui-experience="compact-evidence"] .v6-compact-check-entry strong { font-size:14px; }
+[data-ui-experience="compact-evidence"] .v6-compact-check-entry>span { font-size:12px; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__column { border-top:0; border-inline-start:2px solid var(--color-success-fg); padding:0 0 0 12px; }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-student-guide__column--dont { border-inline-start-color:var(--color-danger-fg); }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-compact-action-text { color:var(--color-text); }
+[data-ui-experience="compact-evidence"] .v6-compact-guide .v6-compact-action-meta small { font-size:12px; font-weight:500; line-height:1.5; }
 @media(max-width:600px){
- [data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-policy__grid { grid-auto-rows:auto; }
- [data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card { height:auto; }
+ [data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-policy__grid { grid-auto-rows:auto; }
+ [data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card { height:auto; }
 }

@@ -44,7 +44,7 @@ export function PolicyReferenceNavigation({ inline = false, locale = "en", claim
 }
 
 export function PolicyReferenceHero({ scene, locale = "en", localizedActions = false, emphasizeActions = false, enforcement = false, tools = false, supplements = false, uiLab = false }: NavigationOptions & { scene: PolicyScenePilot; localizedActions?: boolean; emphasizeActions?: boolean }) {
-  if(uiLab&&publishedV6Enabled()&&['massachusetts-institute-of-technology','imperial-college-london'].includes(scene.slug))return null;
+  if(uiLab&&publishedV6Enabled())return null;
   if (!scene.quickGuide) return null;
   return <section className="policy-reference-hero" id="quick-guide" aria-labelledby="policy-scene-heading">
     <div className="policy-reference-intro">

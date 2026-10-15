@@ -1,5 +1,6 @@
 import {createHash} from 'node:crypto';
 import registry from '../../../data/policy-v6-student-actions.json';
+import compactRegistry from '../../../data/policy-v6-compact-projections.json';
 import {readV6RecordCorrections} from './v6-effective-records';
 import type {LabSchool} from './policy-v6';
 import procedureSupplements from './enforcement-v4-refresh-data.json';
@@ -23,7 +24,10 @@ export interface V6StudentActions {
 }
 /** A newly reviewed projection, never an automatic re-pin of old illustration approvals. */
 export function getV6StudentActions(school:LabSchool):V6StudentActions|undefined {
- const guide=(registry.schools as Record<string,V6StudentActions>)[school.slug];
+ const accepted=(registry.schools as Record<string,V6StudentActions>)[school.slug];
+ const projection=(compactRegistry.schools as unknown as Record<string,V6StudentActions & {inheritsAcceptedActions?:boolean;topicBasis:Record<string,string>}>)[school.slug];
+ if(projection && Object.entries(projection.topicBasis).some(([key,summary])=>[...school.topics,...school.additionalTopics].find(t=>t.key===key)?.summary!==summary))return undefined;
+ const guide=projection?.inheritsAcceptedActions&&accepted?{...accepted,...projection}:projection??accepted;
  if(!guide)return undefined;
  const published=readV6RecordCorrections();
  const summary=published?.summaries.find(s=>s.entity.slug===school.slug);
@@ -38,5 +42,5 @@ export function getV6StudentActions(school:LabSchool):V6StudentActions|undefined
   if(!claim||!['agent_reviewed','human_reviewed'].includes(claim.reviewState)||claim.claimText!==row.text||JSON.stringify(claim.evidence.map(e=>({quote:e.evidenceSnippet,url:e.sourceUrl,language:e.sourceLanguage,hash:e.sourceSnapshotHash,location:e.snippetLocation??''})))!==JSON.stringify(row.evidence))return undefined;
  }
  if([...guide.do,...guide.dont].some(action=>!action.claimIds.length||action.claimIds.some(id=>!guide.claims[id]))||Object.values(guide.procedures).flat().some(id=>!guide.claims[id]))return undefined;
- return structuredClone(guide);
+ return structuredClone({...guide,slug:school.slug,experience:'compact_evidence' as const});
 }

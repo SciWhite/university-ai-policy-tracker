@@ -1,44 +1,16 @@
 'use client';
 import React from 'react';
-import type {V6StudentActions,StudentAction,StudentGuideClaim} from '@/lib/policy-v6-student-actions';
+import type {V6StudentActions} from '@/lib/policy-v6-student-actions';
 import type {SupportedLocale} from '@/lib/i18n';
-import {PolicyV6Popover} from './policy-v6-popover';
-import {PolicyV6ImperialGuide} from './policy-v6-imperial-guide';
-const copy:Record<SupportedLocale,string[]>={
- en:['AI use guide','Before you submit','Do','Don’t','Scope & official evidence','Requirement in this scope','Source guidance','Site advice','AI use questioned?','Investigation, possible outcomes & review','Investigation & response','Possible outcomes','Review & appeal','No verified, specific procedure or deadline is included in the current evidence. Check the applicable university procedure.','Close','Scenario illustrations','Illustrations show situations; current rules and their scope are in the text and evidence.','Open full illustration','Original evidence','Guide evidence has changed. Check the current topic evidence before deciding.','English guidance; original evidence retains its source language.'],
- zh:['AI 使用指引','提交前快速检查','建议做','应避免','适用范围与官方原文','本范围要求','来源建议','本站建议','收到 AI 使用疑虑？','调查、可能后果与复核','调查与回应','可能的处理结果','复核与申诉','当前证据尚未涵盖可核实的具体程序或期限，请查适用的校方程序。','关闭','情境插画','插画帮助理解情境；现行规则与适用范围以文字及原文为准。','打开完整插画','官方原文','指引依据已变化，请先查看当前主题证据再作判断。','指引正文暂以英文提供，官方原文保留来源语言。'],
- fr:['Guide d’utilisation de l’IA','Avant de remettre un travail','À faire','À éviter','Portée et sources officielles','Exigence dans ce cadre','Conseil de la source','Conseil du site','Usage de l’IA mis en cause ?','Enquête, suites possibles et recours','Enquête et réponse','Suites possibles','Réexamen et recours','Aucune procédure ni échéance précise vérifiée ne figure dans les preuves actuelles. Consultez la procédure applicable.','Fermer','Illustrations de situations','Les illustrations présentent des situations ; le texte et les sources précisent les règles actuelles.','Ouvrir l’illustration','Source officielle','Les preuves du guide ont changé. Consultez les sources actuelles.','Conseils en anglais ; les preuves gardent leur langue originale.'],
- pl:['Wskazówki korzystania z AI','Przed oddaniem pracy','Co robić','Czego unikać','Zakres i oficjalne źródła','Wymóg w tym zakresie','Zalecenie źródła','Wskazówka serwisu','Wątpliwości dotyczące AI?','Postępowanie, możliwe skutki i odwołanie','Postępowanie i odpowiedź','Możliwe skutki','Weryfikacja i odwołanie','Aktualne dowody nie zawierają potwierdzonej szczegółowej procedury ani terminu. Sprawdź właściwe zasady uczelni.','Zamknij','Ilustracje sytuacji','Ilustracje pokazują sytuacje; aktualne zasady i zakres określają tekst oraz źródła.','Otwórz ilustrację','Oficjalne źródło','Podstawa wskazówek uległa zmianie. Sprawdź aktualne źródła.','Wskazówki po angielsku; dowody zachowują język źródła.'],
- es:['Guía de uso de IA','Antes de entregar','Qué hacer','Qué evitar','Ámbito y fuentes oficiales','Requisito en este ámbito','Orientación de la fuente','Consejo del sitio','¿Se cuestiona tu uso de IA?','Investigación, posibles consecuencias y revisión','Investigación y respuesta','Posibles consecuencias','Revisión y recurso','La evidencia actual no incluye un procedimiento ni un plazo específico verificado. Consulta el procedimiento aplicable.','Cerrar','Ilustraciones de situaciones','Las ilustraciones muestran situaciones; el texto y las fuentes indican las reglas actuales.','Abrir ilustración completa','Fuente oficial','La evidencia de la guía ha cambiado. Consulta las fuentes actuales.','Orientación en inglés; la evidencia conserva su idioma original.'],
- nl:['Gids voor AI-gebruik','Voor het inleveren','Wel doen','Vermijden','Reikwijdte en officiële bronnen','Eis binnen deze reikwijdte','Advies van de bron','Advies van de website','Vragen over je AI-gebruik?','Onderzoek, mogelijke gevolgen en herziening','Onderzoek en reactie','Mogelijke gevolgen','Herziening en beroep','Het huidige bewijs bevat geen geverifieerde specifieke procedure of termijn. Raadpleeg de toepasselijke procedure.','Sluiten','Situatie-illustraties','Illustraties tonen situaties; tekst en bronnen bepalen de huidige regels.','Volledige illustratie openen','Officiële bron','De onderbouwing is gewijzigd. Raadpleeg de huidige bronnen.','Advies in het Engels; bewijs behoudt de brontaal.'],
- ms:['Panduan penggunaan AI','Sebelum menghantar','Perkara yang perlu dibuat','Perkara yang perlu dielakkan','Skop dan bukti rasmi','Keperluan dalam skop ini','Panduan sumber','Nasihat laman','Penggunaan AI dipersoalkan?','Siasatan, kemungkinan hasil dan semakan','Siasatan dan respons','Kemungkinan hasil','Semakan dan rayuan','Bukti semasa tidak mengandungi prosedur atau tempoh khusus yang disahkan. Semak prosedur yang berkenaan.','Tutup','Ilustrasi situasi','Ilustrasi menerangkan situasi; teks dan sumber menentukan peraturan semasa.','Buka ilustrasi penuh','Sumber rasmi','Bukti panduan telah berubah. Semak sumber semasa.','Panduan dalam bahasa Inggeris; bukti mengekalkan bahasa asal.']
-};
-export function PolicyV6StudentGuide({guide,locale}:{guide:V6StudentActions|undefined;locale:SupportedLocale}){
- if(guide?.experience==='compact_evidence')return <PolicyV6ImperialGuide guide={guide} locale={locale}/>;
- const t=copy[locale],language=locale==='zh'?'zh':'en';
- if(!guide)return <section className="v6-student-guide" id="quick-guide"><h2>{t[0]}</h2><p>{t[19]}</p><a href="#snapshot-coursework">{t[4]}</a></section>;
- const kind=(action:StudentAction)=>t[action.kind==='requirement'?5:action.kind==='source_guidance'?6:7];
- return <section className="v6-student-guide" id="quick-guide" data-student-guide-basis={guide.recordSha256} aria-labelledby="v6-student-guide-heading">
-  <header className="v6-student-guide__header"><div><h2 id="v6-student-guide-heading">{t[1]}</h2><p lang={language} data-i18n="preserve">{guide.scope[language]}</p></div><a className="v6-student-guide__entry" href="#v6-ai-use-guidance">{t[0]} ↓</a></header>
-  <div className="v6-student-guide__actions" id="v6-ai-use-guidance">
-   {(['do','dont']as const).map((key,i)=><article key={key} className={`v6-student-guide__column v6-student-guide__column--${key}`}><h3>{t[2+i]}</h3><ul>{guide[key].map(action=><li key={action.en}><span lang={language} data-i18n="preserve">{action[language]}</span><small data-action-kind={action.kind}>{kind(action)}</small></li>)}</ul></article>)}
-  </div>
-  <div className="v6-student-guide__footer"><PolicyV6Popover id="v6-guide-evidence" label={t[4]} title={t[4]} closeLabel={t[14]} width={640}>
-   <p lang={language} data-i18n="preserve">{guide.scope[language]}</p>
-   {locale!=='zh'&&locale!=='en'?<p>{t[20]}</p>:null}
-   {[...guide.do,...guide.dont].map(action=><section key={action.en} className="v6-student-guide__evidence"><h3 lang={language}>{action[language]}</h3><small>{kind(action)}</small>{action.claimIds.map(id=><GuideEvidence key={id} claim={guide.claims[id]} sourceLabel={t[18]} locale={locale}/>)}</section>)}
-  </PolicyV6Popover></div>
-  <div className="v6-student-guide__concern" id="v6-ai-concerns">
-   <PolicyV6Popover id="v6-concern-details" label={<><strong>{t[8]}</strong><span>{t[9]}</span><span aria-hidden="true">↗</span></>} title={t[8]} closeLabel={t[14]} triggerClassName="v6-student-guide__concern-button" width={720}>
-    <p lang={language} data-i18n="preserve">{guide.scope[language]}</p>
-    <p lang={language} data-i18n="preserve">{language==='zh'?'以下 COD 程序属于一般纪律框架，并非使用 AI 就会自动受罚；申诉权取决于决定类型与适用程序。':'These COD rules are general disciplinary procedures, not automatic AI-use penalties. Appeal rights depend on the decision and applicable process.'}</p>
-    {(['investigation','outcomes','appeal']as const).map((group,i)=><section key={group} data-procedure-group={group} className="v6-student-guide__procedure"><h3>{t[10+i]}</h3>{guide.procedures[group].length?guide.procedures[group].map(id=><GuideEvidence key={id} claim={guide.claims[id]} sourceLabel={t[18]} locale={locale}/>):<p className="v6-student-guide__gap" data-evidence-gap="true">{t[13]}</p>}</section>)}
-   </PolicyV6Popover>
-  </div>
-  <details className="v6-student-guide__illustrations" open><summary>{t[15]}</summary><p>{t[16]}</p><div>{guide.images.map((image,i)=><a key={image.src} href={image.src} target="_blank" rel="noopener noreferrer" aria-label={`${t[17]} ${i+1}`}><img src={image.src} alt={image.alt[language]} width={480} height={320} loading="lazy"/></a>)}</div></details>
+import {PolicyV6CompactGuide} from './policy-v6-compact-guide';
+
+/** A stale or absent school projection never falls back to another university's rules. */
+export function PolicyV6StudentGuide({guide,locale}:{guide:V6StudentActions|undefined;locale:SupportedLocale}) {
+ if(guide)return <PolicyV6CompactGuide guide={guide} locale={locale}/>;
+ return <section className="v6-student-guide" id="v6-submission-guide">
+  <span id="submission-checklist"/>
+  <h2>{locale==='zh'?'提交前快速检查':'Before you submit'}</h2>
+  <p>{locale==='zh'?'指引依据需要更新，请查看当前主题证据。':'The guidance basis needs updating. Consult the current topic evidence.'}</p>
+  <a href="#snapshot-coursework">{locale==='zh'?'查看课程依据':'View coursework evidence'}</a>
  </section>;
-}
-function GuideEvidence({claim,sourceLabel,locale}:{claim:StudentGuideClaim;sourceLabel:string;locale:SupportedLocale}){
- const zh=locale==='zh';
- return <details className="v6-student-guide__claim" data-guide-evidence-id={claim.id} data-basis-object-type={claim.basisObjectType??'public_claim'}><summary lang={zh?'zh':'en'} data-i18n="preserve">{zh&&claim.summaryZh?claim.summaryZh:claim.text}</summary><small>{claim.id}</small>{zh?<p lang="en" data-i18n="preserve">{claim.text}</p>:null}{claim.scope?<p lang="en" data-i18n="preserve">{claim.scope}</p>:null}{claim.deadline?<div className="v6-student-guide__deadline"><p lang={zh?'zh':'en'}>{claim.deadline[zh?'zh':'en']}</p><blockquote lang="en" data-i18n="preserve">{claim.deadline.quote}</blockquote><a href={claim.deadline.url} target="_blank" rel="noopener noreferrer">{sourceLabel} ↗</a></div>:null}{claim.evidence.map((e,i)=><div key={`${e.url}:${e.hash}:${i}`}><blockquote lang={e.language} data-i18n="preserve">{e.quote}</blockquote><p lang="en" data-i18n="preserve">{e.location}</p><a href={e.url} target="_blank" rel="noopener noreferrer">{sourceLabel} ↗</a></div>)}</details>;
 }

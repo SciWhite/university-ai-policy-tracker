@@ -13,7 +13,7 @@ import { UniversityMark } from "./university-mark";
 import { PolicyV6HeaderLocation } from "./policy-v6-header-location";
 import { PolicyReferenceLayout, PolicyReferenceHero } from "./policy-reference-layout";
 import { PolicyReferenceInteractions } from "./policy-reference-interactions";
-import { PolicyV6Provider, PolicyV6Actions, PolicyV6Intro, PolicyV6ChecklistFaq, PolicyV6Faq } from "./policy-v6";
+import { PolicyV6Provider, PolicyV6Actions, PolicyV6Intro, PolicyV6BeforeTools, PolicyV6ChecklistFaq, PolicyV6Faq } from "./policy-v6";
 import { PolicyV6RecordTopics } from "./policy-v6-record-topics";
 import { UniversityAiTools } from "./university-ai-tools";
 import { PolicyV6ClaimGroups } from "./policy-v6-claim-groups";
@@ -28,14 +28,15 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
   const t = (s: string) => translate(s, locale);
   const scopedNames = new Set(view.scopedToolNames ?? []);
   const scopedTools = view.tools.filter((tool) => scopedNames.has(tool.rawToolName));
-  return <main className="page-shell page-shell--wide policy-reference" data-policy-layout="v6" data-v6-basis={view.school.fingerprint}>
-    <PolicyV6Provider data={data}><PolicyReferenceLayout enabled uiLab locale={locale} tools>
+  return <main className="page-shell page-shell--wide policy-reference" data-policy-layout="v6" data-ui-experience="compact-evidence" data-v6-basis={view.school.fingerprint}>
+    <PolicyV6Provider data={data}><PolicyReferenceLayout enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
       <EntityHeader leading={<UniversityMark slug={university.slug} size="hero" />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
         eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={view.school.checkedAt} locale={locale} />}
         actions={<div id="v6-header-actions"><PolicyV6Actions /></div>} />
       <PolicyV6Intro />
       <PolicyReferenceHero uiLab scene={getLocalV6BundleScene(view, locale)} locale={locale} localizedActions={locale === "zh"} tools />
       <PolicyV6RecordTopics data={data} />
+      <PolicyV6BeforeTools />
       <UniversityAiTools records={view.tools.filter((tool) => !scopedNames.has(tool.rawToolName))} locale={locale} uiLab scopedTools={scopedTools.length ? <>
         <p>{locale === "zh" ? "以下工具限特定对象、模式或用途；不代表全体学生获得使用许可。" : "These tools have audience, mode or purpose limits; access is not established for all students."}</p>
         <UniversityAiTools records={scopedTools} locale={locale} uiLab standalone sectionId="university-ai-tools-scoped" />

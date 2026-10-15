@@ -12,5 +12,5 @@ test('MIT retains its accepted pilot, with complete original quotations and revi
  assert.match(g.dont[0].en,/High Risk/);assert.match(g.dont[1].en,/Medium Risk/);assert.match(g.do[1].en,/academic writing/);
  for(const image of g.images){assert.equal(createHash('sha256').update(await readFile('apps/web/public'+image.src)).digest('hex'),image.sha256);}
  const school=data.schools.find(s=>s.slug===data.currentSlug)!;assert.equal(getV6StudentActions({...school,fingerprint:'changed'}),undefined);
- for(const other of data.schools.filter(s=>s.slug!==data.currentSlug&&s.slug!=='imperial-college-london')){const d=await getPolicyV6Data('en',other.slug);assert.equal(d.studentActionsPilot,undefined);assert.equal(d.studentActions,undefined);}
+ for(const other of data.schools.filter(s=>s.slug!==data.currentSlug&&s.slug!=='imperial-college-london')){const d=await getPolicyV6Data('en',other.slug);assert.equal(d.studentActionsPilot,true);assert(d.studentActions);}
 });

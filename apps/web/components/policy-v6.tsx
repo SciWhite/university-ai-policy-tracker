@@ -579,16 +579,13 @@ export function PolicyV6Intro() {
   if (!lab) return null;
   const { ui, data } = lab;
   const current = data.schools.find((s) => s.slug === data.currentSlug);
-  const imperial = data.currentSlug === "imperial-college-london";
-  const questionKeys = imperial
-    ? ["coursework", "approved_tools", "research_publication", "teaching_guidance"] as const
-    : ["coursework", "disclosure", "privacy_data", "approved_tools"] as const;
-  const imperialQuestions: Record<string, string> = data.locale === "zh"
+  const questionKeys = ["coursework", "approved_tools", "research_publication", "teaching_guidance"] as const;
+  const compactQuestions: Record<string, string> = data.locale === "zh"
     ? { coursework: "作业里可以用 AI 吗？", approved_tools: "有哪些工具可以使用？", research_publication: "研究发表如何使用 AI？", teaching_guidance: "教学中如何使用 AI？" }
     : { coursework: "Can I use AI in coursework?", approved_tools: "Which AI tools can I access?", research_publication: "How can I use AI in research?", teaching_guidance: "How can I use AI in teaching?" };
   return (<>
-    {imperial ? <span id="quick-guide" /> : null}
-    {imperial ? <p className="v6-imperial-independence">{data.locale === "zh" ? "独立整理 · 免费开放 · 非学校官方页面" : "Independent · Open access · Not an official university page"}</p> : null}
+    <span id="quick-guide" />
+    <p className="v6-compact-independence">{data.locale === "zh" ? "独立整理 · 免费开放 · 非学校官方页面" : "Independent · Open access · Not an official university page"}</p>
     <section
       className={v6Classes.intro}
       id="v6-questions"
@@ -598,15 +595,15 @@ export function PolicyV6Intro() {
         <div>
           <h2 id="lab-explore-title">{ui.explore}</h2>
         </div>
-        {imperial ? <a className="v6-imperial-university-search" href={`${data.locale==='en'?'':'/'+data.locale}/universities`}>{data.locale==='zh'?'搜索大学':'Search universities'}</a> : null}
+        <a className="v6-compact-university-search" href={`${data.locale==='en'?'':'/'+data.locale}/universities`}>{data.locale==='zh'?'搜索大学':'Search universities'}</a>
       </div>
       <div className={v6Classes.questions}>
-        {questionKeys.map((key, i) => {
+        {questionKeys.map((key) => {
           const topic = [...current?.topics ?? [], ...current?.additionalTopics ?? []].find((t) => t.key === key);
           return (
             <a href={`#snapshot-${key}`} key={key}>
-              {imperial ? null : <span className={v6Classes.questionNumber}>0{i + 1}</span>}
-              <strong>{imperial ? imperialQuestions[key] : ui[key as "coursework" | "disclosure" | "privacy_data" | "approved_tools"]}</strong>
+
+              <strong>{compactQuestions[key]}</strong>
               <small
                 data-policy-tone={policyV6StatusTone(
                   topic?.status ?? "unclear",
@@ -621,7 +618,7 @@ export function PolicyV6Intro() {
         })}
       </div>
       <div className={v6Classes.introFoot}>
-        {imperial ? <a className="v6-imperial-check-entry" href="#v6-submission-guide"><strong>{data.locale === "zh" ? "提交前检查" : "Before you submit"}</strong><span>{data.locale === "zh" ? "建议与注意事项" : "Advice and precautions"}</span><span aria-hidden="true">↓</span></a> : null}
+        <a className="v6-compact-check-entry" href="#v6-submission-guide"><strong>{data.locale === "zh" ? "提交前检查" : "Before you submit"}</strong><span>{data.locale === "zh" ? "建议与注意事项" : "Advice and precautions"}</span><span aria-hidden="true">↓</span></a>
         <a
           href={`${data.locale === "en" ? "" : `/${data.locale}`}/changes/${data.currentSlug}`}
         >
@@ -629,14 +626,13 @@ export function PolicyV6Intro() {
         </a>
       </div>
     </section>
-    {data.studentActionsPilot && !imperial?<PolicyV6StudentGuide guide={data.studentActions} locale={data.locale}/>:null}
     </>
   );
 }
 
 export function PolicyV6BeforeTools() {
   const lab = useLab();
-  if (!lab || lab.data.currentSlug !== "imperial-college-london" || !lab.data.studentActionsPilot) return null;
+  if (!lab || !lab.data.studentActionsPilot) return null;
   return <PolicyV6StudentGuide guide={lab.data.studentActions} locale={lab.data.locale} />;
 }
 
@@ -706,7 +702,7 @@ export function PolicyV6TopicControls({
         closeLabel={lab.ui.close}
         triggerClassName="policy-v6-evidenceTrigger"
         className="policy-v6-originalPopover"
-        mobileReading={lab.data.currentSlug === "imperial-college-london"}
+        mobileReading
         width={480}
         align="start"
       >
@@ -716,7 +712,7 @@ export function PolicyV6TopicControls({
         >
           {topic.statusLabel}
         </p>
-        {lab.data.currentSlug!=='imperial-college-london'?<p lang="en" data-i18n="preserve">{topic.summary}</p>:null}
+
         {topic.basisKind !== "record_analysis" ? (
           <p className="policy-v6-muted">{topic.scope}</p>
         ) : null}
@@ -745,7 +741,7 @@ export function PolicyV6TopicControls({
         title={`${topic.title} · ${lab.data.locale === "zh" ? "状态与范围" : "Status & scope"}`}
         closeLabel={lab.ui.close}
         triggerClassName="policy-v6-textAction"
-        className="v6-imperial-scope-popover"
+        className="v6-compact-scope-popover"
         width={480}
         align="start"
         mobileReading
@@ -911,89 +907,8 @@ export function PolicyV6ChecklistFaq({
   includeFaq?: boolean;
 }) {
   const lab = useLab();
-  const [checked, setChecked] = useState<string[]>([]);
-  const [storageError, setStorageError] = useState(false);
-  useEffect(() => {
-    try {
-      const raw: unknown = JSON.parse(
-        localStorage.getItem(
-          checklistStorageKey(lab?.data.currentSlug ?? "harvard-university"),
-        ) ?? "[]",
-      );
-      if (Array.isArray(raw))
-        setChecked([
-          ...new Set(
-            raw.filter(
-              (value): value is (typeof checklistKeys)[number] =>
-                typeof value === "string" &&
-                checklistKeys.some((key) => key === value),
-            ),
-          ),
-        ]);
-    } catch {
-      setStorageError(true);
-    }
-  }, [lab?.data.currentSlug]);
   if (!lab) return null;
-  const { ui, data } = lab;
-  if(data.currentSlug==='imperial-college-london')return includeFaq?<PolicyV6Faq/>:null;
-  const density = policyV6DensityCopy(data.locale);
-  function save(values: string[]) {
-    setChecked(values);
-    try {
-      localStorage.setItem(
-        checklistStorageKey(data.currentSlug),
-        JSON.stringify(values),
-      );
-      setStorageError(false);
-    } catch {
-      setStorageError(true);
-    }
-  }
-  return (
-    <div className={v6Classes.bottom}>
-      <section
-        className={v6Classes.checklist}
-        id="submission-checklist"
-        aria-labelledby="checklist-title"
-      >
-        <div className={v6Classes.introHeading}>
-          <h2 id="checklist-title">{ui.checklist}</h2>
-          <span aria-live="polite">
-            {checked.length}/4 {ui.progress}
-          </span>
-        </div>
-        <div className="policy-v6-checklistGrid">
-          {checklistKeys.map((key) => (
-            <label key={key} data-checked={checked.includes(key)}>
-              <input
-                type="checkbox"
-                checked={checked.includes(key)}
-                onChange={(e) =>
-                  save(
-                    e.target.checked
-                      ? [...checked, key]
-                      : checked.filter((x) => x !== key),
-                  )
-                }
-              />
-              <span>
-                <strong>{density.checklistTitles[key]}</strong>
-                <small>{ui[key]}</small>
-              </span>
-            </label>
-          ))}
-        </div>
-        <div className="policy-v6-checklistFoot">
-          <button type="button" onClick={() => save([])}>
-            {ui.reset}
-          </button>
-        </div>
-        {storageError ? <p role="status">{ui.storageError}</p> : null}
-      </section>
-      {includeFaq ? <PolicyV6Faq /> : null}
-    </div>
-  );
+  return includeFaq?<PolicyV6Faq/>:null;
 }
 
 export function PolicyV6Faq() {
@@ -1089,5 +1004,5 @@ export function PolicyV6Faq() {
       </div>
     </section>
   );
-  return data.currentSlug==='imperial-college-london'?<details className="v6-imperial-faq"><summary>{ui.faq}</summary>{content}</details>:content;
+  return <details className="v6-compact-faq"><summary>{ui.faq}</summary>{content}</details>;
 }

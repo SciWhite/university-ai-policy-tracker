@@ -308,7 +308,7 @@ export default async function UniversityPage({
     : publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt;
 
   return (
-    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-ui-experience={uiLab&&slug==='imperial-college-london'?'imperial-compact':undefined} data-policy-layout={uiLab ? "v6" : referencePreview ? "reference-v4" : undefined}>
+    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-ui-experience={uiLab?'compact-evidence':undefined} data-policy-layout={uiLab ? "v6" : referencePreview ? "reference-v4" : undefined}>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -370,10 +370,10 @@ export default async function UniversityPage({
         title={<span data-i18n="preserve">{uiLab ? getPolicyV6UniversityTitle(slug, displayName) : displayName}</span>}
       />
 
-      {uiLab ? <><PolicyV6Intro />{locale !== "en" && slug !== "imperial-college-london" ? <p className="muted" data-i18n="preserve">{locale === "zh" ? "政策正文和证据保留原英文；界面翻译不代表政策译文已审核。" : "Policy wording and evidence retain their original English. Interface translation is not a reviewed policy translation."}</p> : null}</> : null}
+      {uiLab ? <PolicyV6Intro /> : null}
       {enforcementPage ? <EnforcementTaskEntrances locale={locale} /> : null}
       {policyScene ? referencePreview ? <PolicyReferenceHero uiLab={uiLab} scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements} /> : <PolicySceneHero scene={policyScene} /> : null}
-      {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
+      {policyScene && !compactPolicyPilot && !uiLab ? <PolicySceneStory scene={policyScene} /> : null}
       {policyScene?.quickGuide && !strongSnapshot && !referencePreview ? <PolicyQuickGuide scene={policyScene} /> : null}
 
       {draftPreview ? <section id="candidate-analysis" data-i18n="preserve"><h2>Candidate analysis (pending review)</h2>{buildPolicyAnalysisProfile(publicSummary).dimensions.map(d => <article key={d.key}><h3>{d.key}: {d.status}</h3><p>{d.summary}</p></article>)}</section> : null}
@@ -391,7 +391,7 @@ export default async function UniversityPage({
         />
       ) : null}
       {labData ? <PolicyV6RecordTopics data={labData} additionalOnly={strongSnapshot} /> : null}
-      {policyScene?.quickGuide && !strongSnapshot && !(uiLab && slug === "imperial-college-london") ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
+      {policyScene?.quickGuide && !strongSnapshot && !uiLab ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
       {enforcementPage ? <EnforcementV4Refresh slug={slug} locale={locale} uiLab={uiLab} /> : null}
       {uiLab ? <PolicyV6BeforeTools /> : null}
       {isPublishedUniversityAiToolsModule(slug) ? <UniversityAiTools uiLab={uiLab} draftPreview={draftPreview} locale={locale} records={await getUniversityToolRecords(publicSummary)} /> : null}
@@ -512,7 +512,7 @@ export default async function UniversityPage({
               </MetaLabel>
             </div>
             {uiLab ? <PolicyV6RecordLinks slug={slug} locale={locale}/> : null}
-            {uiLab&&slug==='imperial-college-london'?<p><a href="https://github.com/SciWhite/university-ai-policy-tracker/issues/new" target="_blank" rel="noopener noreferrer">{locale==='zh'?'发现过期或错误政策？报告问题':'Outdated or incorrect policy? Report an issue'} ↗</a></p>:null}
+            {uiLab?<p><a href="https://github.com/SciWhite/university-ai-policy-tracker/issues/new" target="_blank" rel="noopener noreferrer">{locale==='zh'?'发现过期或错误政策？报告问题':'Outdated or incorrect policy? Report an issue'} ↗</a></p>:null}
             <p className="student-record-info__citation">
               <strong>Citation:</strong> {publicSummary.suggestedCitation}
             </p>

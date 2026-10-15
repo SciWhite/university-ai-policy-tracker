@@ -3,7 +3,6 @@ import React from "react";
 import type { PolicyV6Data, LabTopic } from "@/lib/policy-v6";
 import { policyV6RecordCopy } from "@/lib/policy-v6-record-copy";
 import { policyV6Copy } from "@/lib/policy-v6-copy";
-import { PolicyV6Artwork } from "./policy-v6-artwork";
 import { policyV6StatusTone } from "@/lib/policy-v6-status";
 import { PolicyV6TopicControls } from "./policy-v6";
 
@@ -21,7 +20,7 @@ export function PolicyV6RecordTopics({
   const copy = policyV6RecordCopy(data.locale);
   const ui = policyV6Copy(data.locale);
   function card(topic: LabTopic) {
-    const readthrough=data.currentSlug==='imperial-college-london'?data.studentActions?.topics?.[topic.key]:undefined;
+    const readthrough=data.studentActions?.topics?.[topic.key];
     const zh=data.locale==='zh';
     return (
       <article
@@ -50,16 +49,9 @@ export function PolicyV6RecordTopics({
             </p>
           </div>
         </div>
-        {data.currentSlug==='imperial-college-london'?null:<PolicyV6Artwork
-          locale={data.locale}
-          basisFingerprint={basisFingerprint}
-          section={topic.key}
-          schoolSlug={data.currentSlug}
-          className="policy-v6-topic-art"
-        />}
         <PolicyV6TopicControls
           dimensionKey={topic.key}
-          scopeDetail={readthrough?<><p lang={zh?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{topic.summary}</p></>:undefined}
+          scopeDetail={readthrough?<><p lang={zh?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{topic.summary}</p></>:<p lang="en" data-i18n="preserve">{topic.scope}</p>}
           originalEvidence={
             <div className="student-snapshot-card__evidence">
               {topic.claims.length ? (

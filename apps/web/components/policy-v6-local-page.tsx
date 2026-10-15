@@ -22,12 +22,12 @@ import { PolicyReferenceInteractions } from "./policy-reference-interactions";
 import {
   PolicyV6Provider,
   PolicyV6Intro,
+  PolicyV6BeforeTools,
   PolicyV6Actions,
   PolicyV6ChecklistFaq,
   PolicyV6Faq,
 } from "./policy-v6";
 import { PolicyV6RecordTopics } from "./policy-v6-record-topics";
-import { PolicyV6Artwork } from "./policy-v6-artwork";
 import { PolicyV6Popover } from "./policy-v6-popover";
 import { UniversityAiTools } from "./university-ai-tools";
 import { PolicyV6ClaimGroups } from "./policy-v6-claim-groups";
@@ -180,12 +180,12 @@ export function PolicyV6LocalPage({
   return (
     <main
       className="page-shell page-shell--wide policy-reference"
-      data-policy-layout="v6"
+      data-policy-layout="v6" data-ui-experience="compact-evidence"
       data-v6-basis={evidence.fingerprint}
       data-v6-review-state="agent_reviewed"
     >
       <PolicyV6Provider data={data}>
-        <PolicyReferenceLayout enabled uiLab locale={locale} tools>
+        <PolicyReferenceLayout enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
           <EntityHeader
             actions={
               <div id="v6-header-actions">
@@ -206,17 +206,17 @@ export function PolicyV6LocalPage({
               tools
             />
           ) : null}
-          <section
+          <PolicyV6RecordTopics data={data} />
+          <details
             className="policy-v6-school-insights"
             aria-labelledby="v6-school-insights-title"
           >
-            <h2 id="v6-school-insights-title">
+            <summary id="v6-school-insights-title">
               {zh ? "先找与你相关的规则" : "Find the rule that applies to you"}
-            </h2>
+            </summary>
             <div>
               {insights.map((i) => (
                 <article key={i.key}>
-                  <PolicyV6Artwork section={i.key} />
                   <h3>{i.title}</h3>
                   <p lang={zh ? "zh" : "en"} data-i18n="preserve">
                     {i.text}
@@ -225,8 +225,9 @@ export function PolicyV6LocalPage({
                 </article>
               ))}
             </div>
-          </section>
-          <PolicyV6RecordTopics data={data} />
+          </details>
+
+          <PolicyV6BeforeTools />
           <UniversityAiTools
             records={evidence.tools}
             scopedTools={scopedTools}
