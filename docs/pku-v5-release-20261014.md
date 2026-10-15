@@ -1,6 +1,6 @@
 # Peking University evidence repair and V5 release
 
-Revision `pku-v5-20261014-r2`, parent `v6-chicago-tools-20261014`. This release adds PKU to the existing shared V5 composition; the thirteen-school V6 presentation cohort remains unchanged. Record scope and presentation scope are independently checked. No school-specific JSX/CSS fork and no strong student snapshot promotion.
+Revision `pku-v5-20261014-r3`, parent `v6-chicago-tools-20261014`. This release adds PKU to the existing shared V5 composition; the thirteen-school V6 presentation cohort remains unchanged. Record scope and presentation scope are independently checked. No school-specific JSX/CSS fork and no strong student snapshot promotion.
 
 All seven previous Claim IDs remain, corrected for source authority, source count, exact Chinese quotations and role-specific tool conditions. The research-integrity site is a comparative resource run under the Information Management Department, not proof of binding university-wide AI rules. Its accessible overview identifies sixteen organisations. Tool access does not establish assessment permission.
 
@@ -13,3 +13,5 @@ Explicit analysis replaces tool/comparative-resource keyword inference. Coursewo
 Institutional audit remains PARTIAL. Unresolved: a comprehensive university-wide assessment/AI declaration policy; detector evidentiary standards; IC pages' 2023 header dates versus 2026 body implementation dates; final status of the large-model security document titled 拟公开; every service's actual personal eligibility/price. Pre-defense has copied proposal/comprehensive declaration labels, so no unconditional pre-defense declaration duty is inferred. Substantive project mandates in the 拟公开 document are not promoted.
 
 Publication uses only the bounded shared zone, frozen pushed code, immutable packages, separately verified MCP catalogue, candidate acceptance and synchronization contract 2.0.0. APIs, tools, analysis, changes/history/diff/index/recent/RSS, search and sitemaps are read back after cutover. Deployment and public verification are recorded only after actual completion.
+
+The final r3 also replaces the retained entity description’s old seven-claim/three-source counts and the old July citation date. Earlier local candidates remain immutable; neither was published.

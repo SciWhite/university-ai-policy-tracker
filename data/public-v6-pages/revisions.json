@@ -48,5 +48,10 @@
     "path": "revisions/pku-v5-20261014-r2.json",
     "sha256": "626114aeef7d07ba1699f97521d28afa98c0bc1dd5303b51330b36e8bed9b424",
     "releaseId": "pku-v5-20261014-r2"
+  },
+  "pku-v5-20261014-r3": {
+    "path": "revisions/pku-v5-20261014-r3.json",
+    "sha256": "58c216e0874124aa590fba1935935cae0034dd78afe1f89147aad909c10b73e9",
+    "releaseId": "pku-v5-20261014-r3"
   }
 }
