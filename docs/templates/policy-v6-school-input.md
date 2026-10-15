@@ -26,8 +26,8 @@ translationFallbacks: <explicit status for remaining locales>
 | 六主题摘要、来源状态、展示状态、依据 | 每主题显式映射；缺规则不猜 |
 | 三补充主题 | 学术诚信、教学、安全采购，真实证据或明确缺口 |
 | 来源与 evidenceIds | URL、真实原文、hash、定位、获取日期/版本 |
-| Hero EN/ZH、范围、三条 Do/Don't | 与事实和嵌图文案相符 |
-| 既有三图/主题图 | src、尺寸、范围、检查结果；无需新图则不生成 |
+| Hero EN/ZH、范围、Do/Don't | 行动各最多三项，每项 kind 与本校 Claim/evidence 绑定；不引用其他学校程序 |
+| 历史图资产（仅兼容记录） | 原 src/hash 保留；当前紧凑模板不显示情境图，不添加配图按钮，不生成新图 |
 | 工具 | canonical/proposed 产品身份、获取条件、费用、原文、数据和人员范围 |
 | 缺口 | 当前性、条例争议、未审核对象、工具未知项 |
 
@@ -56,3 +56,5 @@ detailEntryCoverage: <existing card/evidence/changes entry -> full public materi
 ```
 
 另外记录 claim-only、tool-only、metadata-only 和实际大学规则变化的范围；日期分别列出，未知不补造。审核信息进入既有详情入口，主页面不增加后台说明。新增表单键是交付要求，不自动改 Python local-view 输入 schema。
+
+2026-10-15 模板补充：页面采用共享 compact-evidence 实现。历史 local-view 转换合同中的 `hero.images` 等字段只在需要维持旧输入兼容时保留原有值，不再作为页面展示或新图生成要求；缺图不得编造资源，新形输入仍须显式适配。当前行动/中文导读投影另绑定学校 fingerprint、recordSha256、英文主题正文和逐项证据，不通过自动重算 pin 获得批准。学校按公开 V6 slugs 接入，V5 slugs 维持原布局。
