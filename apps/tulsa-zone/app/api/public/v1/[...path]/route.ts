@@ -13,7 +13,7 @@ import {GET as universityIndex} from '@/app/api/public/v1/university-index.json/
 import {GET as universities} from '@/app/api/public/v1/universities.json/route';
 import {GET as searchIndex} from '@/app/api/public/v1/search/index.json/route';
 import {getChangeIndexResponse} from '@/lib/change-records';
-import {getLatestReleaseDiff,getReleaseDiff,getLatestEntityReleaseDiff,getEntityReleaseDiff} from '@/lib/release-diffs';
+import {getLatestReleaseDiff,getReleaseDiff,getLatestEntityReleaseDiff,getEntityReleaseDiff,getV5RecordReleaseDiff} from '@/lib/release-diffs';
 import {getStagedRecentChangesEnvelope} from '@/lib/staged-public-data';
 import {buildRecentChangesWidgetFromPublicChanges} from '@/lib/developer-surfaces';
 import {GET as recentChanges} from '@/app/api/public/v1/recent-changes.json/route';
@@ -50,6 +50,11 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
  if(path==='widgets/recent-changes.json')return NextResponse.json(buildRecentChangesWidgetFromPublicChanges((await getStagedRecentChangesEnvelope()).data.changes,10),{headers:widgetCorsHeaders});
  if(path.startsWith('changes/')) {
    const parts=path.split('/').slice(1).map(part=>part.replace(/\.json$/, ''));
+   if(parts[0].startsWith('pku-v5-')) {
+     const diff=parts.length<=2?await getV5RecordReleaseDiff(parts[0]):undefined;
+     const payload=parts[1]?diff?.entities.find(entity=>entity.entitySlug===parts[1]):diff;
+     return NextResponse.json(payload??{error:'Change diff not found'},{status:payload?200:404,headers:{'Cache-Control':'private, no-store, no-transform'}});
+   }
    const payload=parts[0]==='latest'&&parts[1] ? await getLatestEntityReleaseDiff(parts[1]) : parts[1] ? await getEntityReleaseDiff(parts[0],parts[1]) : await getReleaseDiff(parts[0]);
    return NextResponse.json(payload?{...payload,...(parts[0]==='latest'&&correction.changesBySlug[parts[1]]?{scopedRecordCorrection:{revision:correction.revision,...correction.changesBySlug[parts[1]]}}:{})}:{error:'Change diff not found'},{status:payload?200:404});
  }

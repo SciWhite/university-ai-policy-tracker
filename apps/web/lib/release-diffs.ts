@@ -21,6 +21,7 @@ import { readRecordCorrectionChanges, readRecordCorrectionSummary } from "./reco
 import { reviewedClaimsFingerprint } from "./index-recovery-basis";
 import { findRepoRoot } from "./repo-root";
 import { getSiteBaseUrl } from "./site-url";
+import { readV6RecordCorrectionRevision } from "./v6-effective-records";
 
 export type ReleaseDiffChangeType =
   | "claim_added"
@@ -272,6 +273,40 @@ export async function getEntityReleaseDiff(
   const diff = await getReleaseDiff(releaseId);
 
   return diff ? getEntityDiff(diff, slug) : undefined;
+}
+
+/** Versioned V5 corrections use their frozen record baseline, not the global release journal. */
+export async function getV5RecordReleaseDiff(releaseId: string): Promise<ReleaseDiff | undefined> {
+  if (!/^pku-v5-[a-z0-9-]+$/.test(releaseId)) return undefined;
+  const correction = readV6RecordCorrectionRevision(releaseId);
+  if (!correction) return undefined;
+  const summary = correction.summaries.find(item => item.entity.slug === "peking-university");
+  const baseline = correction.historical["peking-university"]?.baseline;
+  if (!summary || !baseline || correction.recordRevisions[summary.entity.slug]?.universityRevisionId !== releaseId) return undefined;
+  const manifest = await getManifestByReleaseId(correction.datasetReleaseId);
+  if (!manifest) throw new Error("V5 correction dataset basis unavailable");
+  const previousReleaseId = "baseline-pku-v5-20261014";
+  const entity = buildEntityDiff(
+    {...manifest, releaseId, publishedAt: correction.publishedAt},
+    {...manifest, releaseId: previousReleaseId}, baseline, summary, new Map()
+  );
+  entity.lastChangedAt = correction.publishedAt;
+  entity.publicationKind = "scoped_record_correction";
+  entity.changeSummary = correction.changeSummary?.en;
+  entity.recordSha256 = correction.recordRevisions[summary.entity.slug].recordSha256;
+  for (const row of entity.rows) {
+    row.changeExplanation = `Tracker audit correction, not a new university policy publication. ${row.changeExplanation}`;
+    row.limitations = [...row.limitations, "The previous record is the frozen PKU baseline; correction timestamps do not establish university effective dates."];
+  }
+  return {
+    apiVersion: PUBLIC_API_VERSION, canonicalUrl: new URL(`/changes/${releaseId}`, getSiteBaseUrl()).toString(),
+    changeCounts: summarizeRows(entity.rows), currentReleaseId: releaseId, entities: [entity],
+    generatedAt: correction.publishedAt, license: TRACKER_METADATA_LICENSE,
+    limitations: ["Scoped tracker record correction against the frozen PKU baseline; the global dataset release is unchanged.", NO_ADVICE_BOUNDARY],
+    previousReleaseId, releaseId, sourcePolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT,
+    sourceRightsPolicy: OFFICIAL_SOURCE_RIGHTS_CAVEAT, publicationKind: "scoped_record_correction",
+    changeSummary: correction.changeSummary?.en
+  };
 }
 
 export async function getKnownReleaseIds(): Promise<string[]> {

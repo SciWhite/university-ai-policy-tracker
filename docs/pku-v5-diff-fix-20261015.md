@@ -1,0 +1,11 @@
+# PKU V5 historical Diff JSON repair
+
+The published history page linked `/api/public/v1/changes/pku-v5-20261014-r3/peking-university.json`, but the handler only recognized the legacy global-release/correction journal. Both the public route and the active shared-zone loopback returned `404 {"error":"Change diff not found"}` on 15 October 2026.
+
+This bounded code repair provides an actual release/entity diff using the existing diff algorithm and the immutable PKU before/after records. It does not redirect a Diff JSON link to correction-count metadata. The baseline is explicitly `baseline-pku-v5-20261014`; it is not falsely presented as a new global dataset release. The release-level JSON and entity JSON expose all 56 added and seven corrected Claim IDs, original/current claim and evidence fields, and source changes (net +45 URLs). The current policy record, 63 claims, 33 named tools, 48 official sources, review states, record hashes and broader institutional PARTIAL status remain unchanged. Other V6 correction handlers remain on their existing path.
+
+The regression checks every added/corrected ID and before/after text against frozen artifacts, source-count changes and missing/unrelated revision handling. Acceptance must additionally extract the actual Diff JSON link from the live history page, follow it, and compare its complete rows with the frozen artifacts. The two missing JSON routes are added to the route matrix; testing only a guessed or alternative URL is insufficient.
+
+The reported five PDF-whitespace mismatches were not reproduced in a fresh seven-batch MCP readback of all 63 PKU claims: every evidenceSnippet string matched the current public university JSON exactly, without whitespace normalization. No quotation or MCP catalogue mutation is justified by that observation. General latest-dataset diff wording is left unchanged in this one-defect repair.
+
+Release method: OCI shared-zone-only build from a frozen pushed SHA, isolated candidate, synchronization contract 2.0.0 candidate gate, exact routing cutover to the accepted artifact, then public readback and completion gate. The main service and MCP service/catalogue are not rebuilt or restarted. Previous code/assets and routing remain available for rollback. No policy revision is invented for this route repair. Completion evidence is appended after actual acceptance.
