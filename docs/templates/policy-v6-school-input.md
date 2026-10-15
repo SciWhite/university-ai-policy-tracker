@@ -58,3 +58,5 @@ detailEntryCoverage: <existing card/evidence/changes entry -> full public materi
 另外记录 claim-only、tool-only、metadata-only 和实际大学规则变化的范围；日期分别列出，未知不补造。审核信息进入既有详情入口，主页面不增加后台说明。新增表单键是交付要求，不自动改 Python local-view 输入 schema。
 
 2026-10-15 模板补充：页面采用共享 compact-evidence 实现。历史 local-view 转换合同中的 `hero.images` 等字段只在需要维持旧输入兼容时保留原有值，不再作为页面展示或新图生成要求；缺图不得编造资源，新形输入仍须显式适配。当前行动/中文导读投影另绑定学校 fingerprint、recordSha256、英文主题正文和逐项证据，不通过自动重算 pin 获得批准。学校按公开 V6 slugs 接入，V5 slugs 维持原布局。
+
+- 正式首页：学校级 URL（非政策/IT/院系页）、独立联网核对凭据；填写 shared university-homepages registry，标题校徽使用共享链接组件。

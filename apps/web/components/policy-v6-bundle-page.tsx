@@ -1,3 +1,4 @@
+import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "./policy-v6-held-records";
 import {PolicyV6RecordLinks} from "./policy-v6-record-links";
 import React from "react";
@@ -30,7 +31,7 @@ export function PolicyV6BundlePage({ university, data, view, locale, relatedUniv
   const scopedTools = view.tools.filter((tool) => scopedNames.has(tool.rawToolName));
   return <main className="page-shell page-shell--wide policy-reference" data-policy-layout="v6" data-ui-experience="compact-evidence" data-v6-basis={view.school.fingerprint}>
     <PolicyV6Provider data={data}><PolicyReferenceLayout enabled uiLab studentActions={Boolean(data.studentActionsPilot)} locale={locale} tools>
-      <EntityHeader leading={<UniversityMark slug={university.slug} size="hero" />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
+      <EntityHeader leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} />} title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
         eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={view.school.checkedAt} locale={locale} />}
         actions={<div id="v6-header-actions"><PolicyV6Actions /></div>} />
       <PolicyV6Intro />

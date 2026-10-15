@@ -1,7 +1,7 @@
 {
-  "path": "revisions/pku-v5-20261014-r3.json",
-  "sha256": "58c216e0874124aa590fba1935935cae0034dd78afe1f89147aad909c10b73e9",
-  "releaseId": "pku-v5-20261014-r3",
+  "path": "revisions/pku-v6-20261015.json",
+  "sha256": "e8d2d303553b088c6874758e0b6102b1a0ed64547a517e9ec64354139f2d0a0a",
+  "releaseId": "pku-v6-20261015",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
@@ -15,9 +15,8 @@
     "california-institute-of-technology",
     "university-of-hong-kong",
     "nanyang-technological-university",
-    "university-of-chicago"
-  ],
-  "v5Slugs": [
+    "university-of-chicago",
     "peking-university"
-  ]
+  ],
+  "v5Slugs": []
 }

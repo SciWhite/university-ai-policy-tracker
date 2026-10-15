@@ -2407,3 +2407,6 @@
  [data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-policy__grid { grid-auto-rows:auto; }
  [data-ui-experience="compact-evidence"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card { height:auto; }
 }
+
+.university-homepage-mark { display:inline-flex; flex-shrink:0; border-radius:12px; }
+.university-homepage-mark:focus-visible { outline:2px solid var(--color-accent); outline-offset:4px; }

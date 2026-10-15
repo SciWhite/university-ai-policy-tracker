@@ -1,3 +1,4 @@
+import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "./policy-v6-held-records";
 import {PolicyV6RecordLinks} from "./policy-v6-record-links";
 import React from "react";
@@ -192,7 +193,7 @@ export function PolicyV6LocalPage({
                 <PolicyV6Actions />
               </div>
             }
-            leading={<UniversityMark slug={university.slug} size="hero" />}
+            leading={<UniversityHomepageMark slug={university.slug} name={university.name} locale={locale} />}
             title={<span data-i18n="preserve">{getPolicyV6UniversityTitle(university.slug, university.name)}</span>}
             eyebrow={<PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={evidence.record.lastCheckedAt} locale={locale} />}
           />

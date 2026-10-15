@@ -3832,6 +3832,465 @@
           ]
         }
       }
+    },
+    "peking-university": {
+      "slug": "peking-university",
+      "name": "Peking University",
+      "recordSha256": "d2cb556e39ea68d27a9827ffe8211a8c6b3ab56586a183f847ef35caada8fbff",
+      "schoolFingerprint": "d2cb556e39ea68d27a9827ffe8211a8c6b3ab56586a183f847ef35caada8fbff",
+      "universityRevisionId": "pku-v5-20261014-r3",
+      "experience": "compact_evidence",
+      "presentationRevision": "pku-v6-20261015",
+      "images": [],
+      "scope": {
+        "en": "Undergraduate examination rules, School of Integrated Circuits doctoral requirements, student disciplinary appeals and degree reviews have distinct scopes. Tool access and comparative resources are not assessment permission.",
+        "zh": "本科考试、集成电路学院博士要求、学生纪律申诉和学位复核各有范围；工具开放及比较资料不构成考核许可。"
+      },
+      "topics": {
+        "coursework": {
+          "en": "No university-wide AI coursework permission, prohibition or mandate was established. Institutional tool access and comparative policy classifications cannot supply that missing assessment rule.",
+          "zh": "现有证据未建立全校统一 AI 作业许可、禁令或义务。工具开放及跨机构比较资料不构成考核授权。",
+          "meaningEn": "See source-specific course, academic unit and procedure conditions. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "适用对象、院系和程序条件以下列完整来源为准；整校政策审计仍为 PARTIAL。"
+        },
+        "exams": {
+          "en": "Undergraduate examinations restrict devices unless the chief examiner provides otherwise and require independent answers. These are general exam rules, not a verified uniform AI examination policy for every student.",
+          "zh": "本科考试限制座位处的电子设备等物品，主考教师另有规定除外，并要求独立作答；这是一般考试规则，不是全校 AI 专项禁令。",
+          "meaningEn": "See source-specific course, academic unit and procedure conditions. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "适用对象、院系和程序条件以下列完整来源为准；整校政策审计仍为 PARTIAL。"
+        },
+        "disclosure": {
+          "en": "Declarations are required in the specified School of Integrated Circuits doctoral proposal and comprehensive-examination documents. No universal PKU AI declaration requirement is established; pre-defense wording and the revision chain retain explicit gaps.",
+          "zh": "集成电路学院博士开题及综合考试文件要求 AI 使用声明；不是全校统一义务。预答辩声明措辞及版本链仍有缺口。",
+          "meaningEn": "See source-specific course, academic unit and procedure conditions. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "适用对象、院系和程序条件以下列完整来源为准；整校政策审计仍为 PARTIAL。"
+        },
+        "privacy_data": {
+          "en": "Administrative-data systems have scoped security obligations; China Economic Quarterly referees must not upload confidential review material to public AI. These do not impose a uniform student AI registration procedure.",
+          "zh": "校务管理数据须分类保护；《经济学》（季刊）审稿人不得把保密材料上传公开 AI。不是全体学生统一登记 AI 的规定。",
+          "meaningEn": "See source-specific course, academic unit and procedure conditions. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "适用对象、院系和程序条件以下列完整来源为准；整校政策审计仍为 PARTIAL。"
+        },
+        "approved_tools": {
+          "en": "The official directory lists 33 distinct services/resources. Access for Wenxue, Xiaobei and the teacher-facing Doujiao announcement has specific conditions; other directory entries do not establish universal accounts or assessment permission.",
+          "zh": "目录列出 33 项不同服务或资源，问学、小北智学及豆角等有具体资格或角色条件；不能推定所有学生有账号或考核使用许可。",
+          "meaningEn": "See source-specific course, academic unit and procedure conditions. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "适用对象、院系和程序条件以下列完整来源为准；整校政策审计仍为 PARTIAL。"
+        },
+        "research_publication": {
+          "en": "Explicit restrictions apply to named School of Integrated Circuits doctoral procedures and China Economic Quarterly referees. The Department of Information Management comparative resource is not treated as binding university-wide policy.",
+          "zh": "AI 限制适用于集成电路学院指定博士环节及《经济学》（季刊）审稿；信息管理系比较资源不是全校强制规则。",
+          "meaningEn": "See source-specific course, academic unit and procedure conditions. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "适用对象、院系和程序条件以下列完整来源为准；整校政策审计仍为 PARTIAL。"
+        },
+        "academic_integrity": {
+          "en": "General independent-work, attribution and misconduct procedures are distinguished from explicit School of Integrated Circuits AI restrictions. Findings and appropriate procedures are required; no automatic AI or detector-score penalty is established.",
+          "zh": "独立完成、引用及不端程序须区分于院系明确 AI 限制；须有事实认定和适当程序，AI 使用或检测分数不自动触发处分。",
+          "meaningEn": "See source-specific course, academic unit and procedure conditions. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "适用对象、院系和程序条件以下列完整来源为准；整校政策审计仍为 PARTIAL。"
+        },
+        "teaching_guidance": {
+          "en": "A teaching-centre report describes preliminary AI marking followed by teacher/TA review. This is a service workflow and reported practice, not a verified university-wide authorisation for autonomous final AI grading.",
+          "zh": "教学中心报道问学初步 AI 批改后由教师或助教复核；这是工作流程，不是全校自主 AI 最终评分授权。",
+          "meaningEn": "See source-specific course, academic unit and procedure conditions. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "适用对象、院系和程序条件以下列完整来源为准；整校政策审计仍为 PARTIAL。"
+        },
+        "security_procurement": {
+          "en": "Administrative-data safeguards have a specific institutional management scope. Final enactment of the model-security document titled 拟公开 remains unverified; no blanket student approval procedure is inferred.",
+          "zh": "校务数据管理规则有明确范围；标题含“拟公开”的模型安全文件最终生效状态未核实，不推定所有学生使用前须审批。",
+          "meaningEn": "See source-specific course, academic unit and procedure conditions. Institution-wide audit remains PARTIAL.",
+          "meaningZh": "适用对象、院系和程序条件以下列完整来源为准；整校政策审计仍为 PARTIAL。"
+        }
+      },
+      "topicBasis": {
+        "coursework": "No university-wide AI coursework permission, prohibition or mandate was established. Institutional tool access and comparative policy classifications cannot supply that missing assessment rule.",
+        "exams": "Undergraduate examinations restrict devices unless the chief examiner provides otherwise and require independent answers. These are general exam rules, not a verified uniform AI examination policy for every student.",
+        "disclosure": "Declarations are required in the specified School of Integrated Circuits doctoral proposal and comprehensive-examination documents. No universal PKU AI declaration requirement is established; pre-defense wording and the revision chain retain explicit gaps.",
+        "privacy_data": "Administrative-data systems have scoped security obligations; China Economic Quarterly referees must not upload confidential review material to public AI. These do not impose a uniform student AI registration procedure.",
+        "approved_tools": "The official directory lists 33 distinct services/resources. Access for Wenxue, Xiaobei and the teacher-facing Doujiao announcement has specific conditions; other directory entries do not establish universal accounts or assessment permission.",
+        "research_publication": "Explicit restrictions apply to named School of Integrated Circuits doctoral procedures and China Economic Quarterly referees. The Department of Information Management comparative resource is not treated as binding university-wide policy.",
+        "academic_integrity": "General independent-work, attribution and misconduct procedures are distinguished from explicit School of Integrated Circuits AI restrictions. Findings and appropriate procedures are required; no automatic AI or detector-score penalty is established.",
+        "teaching_guidance": "A teaching-centre report describes preliminary AI marking followed by teacher/TA review. This is a service workflow and reported practice, not a verified university-wide authorisation for autonomous final AI grading.",
+        "security_procurement": "Administrative-data safeguards have a specific institutional management scope. Final enactment of the model-security document titled 拟公开 remains unverified; no blanket student approval procedure is inferred."
+      },
+      "do": [
+        {
+          "en": "Check the course and chief examiner’s instructions.",
+          "zh": "核对课程及主考教师的具体说明。",
+          "kind": "site_advice",
+          "claimIds": [
+            "clm-pku-undergraduate-exam-devices",
+            "clm-pku-undergraduate-independent-exams"
+          ]
+        },
+        {
+          "en": "For IC doctoral proposals and comprehensive exams, make the required AI declaration.",
+          "zh": "集成电路学院博士开题和综合考试须按规定声明 AI 使用。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-pku-ic-proposal-declaration",
+            "clm-pku-ic-comprehensive-declaration"
+          ]
+        },
+        {
+          "en": "Use the correct disciplinary appeal or degree-review procedure.",
+          "zh": "区分纪律申诉与学位复核的适用程序。",
+          "kind": "site_advice",
+          "claimIds": [
+            "clm-pku-disciplinary-appeal-filing",
+            "clm-pku-degree-academic-review",
+            "clm-pku-degree-decision-review"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not treat tool access or comparative guidance as assessment permission.",
+          "zh": "不要把工具开放或跨机构比较资料当作考核许可。",
+          "kind": "site_advice",
+          "claimIds": [
+            "cl-peking-university-institutional-ai-service-125",
+            "claim-peking-university-1"
+          ]
+        },
+        {
+          "en": "In the specified IC doctoral procedures, do not generate core writing or fabricate data.",
+          "zh": "集成电路学院指定博士环节不得 AI 生成核心论述或伪造数据。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-pku-ic-proposal-ai-restrictions",
+            "clm-pku-ic-comprehensive-ai-restrictions",
+            "clm-pku-ic-predefense-ai-restrictions"
+          ]
+        },
+        {
+          "en": "China Economic Quarterly referees must not upload confidential review material to public AI.",
+          "zh": "《经济学》（季刊）审稿人不得把保密审稿材料上传公开 AI。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-pku-quarterly-journal-review-confidentiality"
+          ]
+        }
+      ],
+      "procedures": {
+        "investigation": [
+          "clm-pku-disciplinary-evidence-and-response",
+          "clm-pku-degree-representations"
+        ],
+        "outcomes": [
+          "clm-pku-degree-misconduct-finding"
+        ],
+        "appeal": [
+          "clm-pku-disciplinary-appeal-filing",
+          "clm-pku-appeal-review-period",
+          "clm-pku-appeal-effect-and-external",
+          "clm-pku-degree-academic-review",
+          "clm-pku-degree-decision-review"
+        ]
+      },
+      "claims": {
+        "cl-peking-university-institutional-ai-service-125": {
+          "id": "cl-peking-university-institutional-ai-service-125",
+          "text": "Peking University lists 北大问学 (Beida Wenxue) as an AI-assisted teaching and learning service for its faculty and students. Its listing does not establish permission to use AI-generated work in coursework, examinations or degree assessments.",
+          "claimType": "ai_tool_treatment",
+          "evidence": [
+            {
+              "quote": "是北京大学师生专属的人工智能辅助教学平台，希望通过集成最新的\nAI\n技术和工具，帮教师更高效地备课教学、帮学生更有效地学习提升。",
+              "url": "https://hdipp.pku.edu.cn/sjzy/szpt/bdwxpt.htm",
+              "language": "zh",
+              "hash": "6b236fab2d342e711cc51c23984655a8b9513aaea436ec780e2502e222676b8d",
+              "location": "北大问学平台正文"
+            }
+          ]
+        },
+        "claim-peking-university-1": {
+          "id": "claim-peking-university-1",
+          "text": "The AI Scientific Integrity Governance Platform hosted under Peking University’s domain organises comparative AI-use guidance across seven research stages. Its overview describes a synthesis of policies from multiple institutions and authorities; it does not establish a university-wide binding assessment policy.",
+          "claimType": "source_status",
+          "evidence": [
+            {
+              "quote": "AI在学术科研中的使用边界梳理旨在梳理国内外高校、科研机构及监管部门发布的人工智能使用政策，帮助科研人员明确合规要求并建立全过程记录。",
+              "url": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+              "language": "zh",
+              "hash": "089bd8c9453ef356a925d1639deb5efc487f26e6d8aa54aecc81698efe809026",
+              "location": "Introduction"
+            },
+            {
+              "quote": "覆盖论文选题、文献检索与管理、研究设计与实施、论文写作、论文投稿、论文评审、基金申报与评审七个研究环节。",
+              "url": "http://scielab.pku.edu.cn/aigc/guidelines/overview.html",
+              "language": "zh",
+              "hash": "089bd8c9453ef356a925d1639deb5efc487f26e6d8aa54aecc81698efe809026",
+              "location": "使用范围 1"
+            }
+          ]
+        },
+        "clm-pku-appeal-effect-and-external": {
+          "id": "clm-pku-appeal-effect-and-external",
+          "text": "Under the student appeal rules, the original decision continues during appeal, although the committee may recommend deferral where necessary. A student disagreeing with the review decision may appeal in writing to the Beijing education authority within 15 days after receiving the review conclusion or review decision. These are scoped general appeal rules.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "第十二条\n申诉处理期间相关处理或者处分决定不停止执行。学生申诉处理委员会认为必要的，可以建议学校暂缓执行有关决定。",
+              "url": "https://dean.pku.edu.cn/web/rules_info.php?id=56",
+              "language": "zh",
+              "hash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+              "location": "§12"
+            },
+            {
+              "quote": "第十五条\n申诉人对学生申诉处理委员会的复查结论或学校相关机构的复查决定有异议的，可以在接到复查结论或复查决定之日起15日内，向北京市教育委员会提出书面申诉。",
+              "url": "https://dean.pku.edu.cn/web/rules_info.php?id=56",
+              "language": "zh",
+              "hash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+              "location": "§15"
+            }
+          ]
+        },
+        "clm-pku-appeal-review-period": {
+          "id": "clm-pku-appeal-review-period",
+          "text": "The student appeal committee must review and notify a conclusion within 15 days after the appeal is raised. In complex cases the period may be extended by 15 days with the president’s approval. This is the institution’s handling period, not the student’s appeal filing period.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "第十条\n学生申诉处理委员会应在申诉人提起申诉的日期起15日内对申诉进行复查，作出复查结论，并将复查结论告知申诉人。情况复杂不能在规定限期内做出结论的，经校长批准，可延长15日。",
+              "url": "https://dean.pku.edu.cn/web/rules_info.php?id=56",
+              "language": "zh",
+              "hash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+              "location": "§10"
+            }
+          ]
+        },
+        "clm-pku-degree-academic-review": {
+          "id": "clm-pku-degree-academic-review",
+          "text": "Under Article 34, a degree applicant may submit a written request to the department or degree subcommittee to review an academic evaluation (such as expert review, defense or achievement recognition). The University must reorganise expert review within 30 days after acceptance and notify the applicant in writing; that review decision is final. This is distinct from the student disciplinary appeal filing deadline.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "第三十四条   学位申请人对专家评阅、答辩、成果认定等过\n程中相关学术组织或者人员作出的学术评价结论有异议的，可以\n向院系、学位分会提出书面的学术复核申请。\n  学校应当自受理学术复核申请之日起三十日内重新组织专\n家进行复核并作出复核决定，复核决定为最终决定。复核决定应\n当以书面形式通知申请人。\n  学术复核按照学校具体要求执行。",
+              "url": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+              "language": "zh",
+              "hash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+              "location": "Physical/printed PDF p11, §34"
+            }
+          ]
+        },
+        "clm-pku-degree-decision-review": {
+          "id": "clm-pku-degree-decision-review",
+          "text": "Under Article 35, applicants or degree holders may seek written review through the department or degree office of refusal to accept a degree application, denial or revocation, or seek handling by the relevant lawful authority. University review is due within 30 days after acceptance, with written notification. This is separate from disciplinary appeals and academic-evaluation review.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "第三十五条    学位申请人或者学位获得者如对不受理其学",
+              "url": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+              "language": "zh",
+              "hash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+              "location": "Physical/printed PDF p11, §35 begins"
+            },
+            {
+              "quote": "位申请、不授予其学位或者撤销其学位等行为有异议的，可以向\n院系、学位办提出书面的复核申请，或者请求有关机关依照法律\n规定处理。\n     学位申请人或者学位获得者申请复核的，学校应当自受理复\n核申请之日起三十日内进行复核并作出复核决定。复核决定应当\n以书面形式通知申请人。\n     复核按照学校具体要求执行。",
+              "url": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+              "language": "zh",
+              "hash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+              "location": "Physical/printed PDF p12, §35 continuation"
+            }
+          ]
+        },
+        "clm-pku-degree-misconduct-finding": {
+          "id": "clm-pku-degree-misconduct-finding",
+          "text": "PKU’s 2025 degree regulations provide for degree denial or revocation for specified misconduct including ghostwriting, plagiarism or fabrication after the required findings and degree-committee decision. Article 37 allocates academic-misconduct findings to the academic committee and the degree decision to the degree committee. AI use or a detector score alone is not established here as an automatic sanction.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "第三十六条   学位申请人、学位获得者在攻读该学位过程中\n有下列情形之一的，经校学位会决议，学校不授予学位或者撤销\n学位：\n     （一）学位论文或者实践成果被认定为存在代写、剽窃、伪\n造等学术不端行为；",
+              "url": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+              "language": "zh",
+              "hash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+              "location": "Physical/printed PDF p12, §36(1)"
+            },
+            {
+              "quote": "第三十七条   学位申请人、学位获得者在攻读该学位过程中\n有涉及本办法第三十六条第（一）项情形的，由学校学术委员会\n依照国家和学校有关规定作出认定结论和处理建议，由校学位会\n根据认定结论和处理建议，作出不授予学位或者撤销学位决定。",
+              "url": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+              "language": "zh",
+              "hash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+              "location": "Physical/printed PDF p12, §37"
+            }
+          ]
+        },
+        "clm-pku-degree-representations": {
+          "id": "clm-pku-degree-representations",
+          "text": "Before proposed degree denial or revocation, Article 39 requires PKU to inform the applicant or holder of the proposed decision and its facts, reasons and basis, and hear their statements and defense. This is a degree procedure, not proof of any AI-specific penalty.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "第三十九条     拟作出不授予学位或者撤销学位决定的，应当\n告知学位申请人或者学位获得者拟作出决定的内容及事实、理\n由、依据，听取其陈述和申辩。",
+              "url": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+              "language": "zh",
+              "hash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+              "location": "Physical/printed PDF p13, §39"
+            }
+          ]
+        },
+        "clm-pku-disciplinary-appeal-filing": {
+          "id": "clm-pku-disciplinary-appeal-filing",
+          "text": "Within the scope of PKU’s student appeal rules, a student may submit a written appeal to the student appeal committee within 10 days after service of the relevant management or disciplinary decision. This filing period does not replace the distinct degree-review procedures.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "第六条\n学生本人对学校处理或处分决定有异议的，可以在学校处理或处分决定书送达之日起10日内，向学生申诉处理委员会书面提出申诉。",
+              "url": "https://dean.pku.edu.cn/web/rules_info.php?id=56",
+              "language": "zh",
+              "hash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+              "location": "§6; scope defined §2"
+            }
+          ]
+        },
+        "clm-pku-disciplinary-evidence-and-response": {
+          "id": "clm-pku-disciplinary-evidence-and-response",
+          "text": "PKU’s general student disciplinary rules require sufficient evidence, clear basis, accurate characterisation, proper procedure and proportionate sanctions. Before the department proposes action, students must be informed of the facts, reasons, basis and their right to make statements and defense. The rules apply to students in ordinary higher-degree education, not exclusively AI cases.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "第三条\n对学生进行违纪处分，应当坚持教育与惩戒相结合，与学生违法、违纪行为的性质和过错的严重程度相适应，应当做到证据充分、依据明确、定性准确、程序正当、处分适当。",
+              "url": "https://dean.pku.edu.cn/web/rules_info.php?id=57",
+              "language": "zh",
+              "hash": "e026cb26611b0c2096042a3c3a4d043f7a86c11c0a54e90bc91089a7a5234593",
+              "location": "§3"
+            },
+            {
+              "quote": "院系提出处理意见前，须告知学生拟提出处理意见的事实、理由和依据，以及学生享有陈述和申辩的权利。",
+              "url": "https://dean.pku.edu.cn/web/rules_info.php?id=57",
+              "language": "zh",
+              "hash": "e026cb26611b0c2096042a3c3a4d043f7a86c11c0a54e90bc91089a7a5234593",
+              "location": "§11, prior notice/response"
+            }
+          ]
+        },
+        "clm-pku-ic-comprehensive-ai-restrictions": {
+          "id": "clm-pku-ic-comprehensive-ai-restrictions",
+          "text": "The School of Integrated Circuits’ doctoral comprehensive-examination document strictly prohibits AI generation of entire texts or substantive core passages presented as the author’s own argument, fabricated experimental/survey/case data, and undisclosed full-text translation used directly in the thesis body. This applies to the specified school doctoral procedure, not every PKU assessment.",
+          "claimType": "research",
+          "evidence": [
+            {
+              "quote": "关于AI工具的使用，以下情形一律严格禁止，一经发现按相关规定处理：\n1.核心内容代写：将论文题目或核心论点直接输入AI，生成全文或实质性段落作为自己的论述。\n2.数据编造：使用AI生成虚假实验数据、调研结果或案例分析内容。\n3.未经声明的全文翻译：将外文文献交由AI全文翻译后直接用于论文主体。",
+              "url": "https://ic.pku.edu.cn/rcpy/yngg/93316a3ce6cf4a8a8ee52d4b5a220cce.htm",
+              "language": "zh",
+              "hash": "9e034e7ecff68b01131c7118fb139dbb2a58068478b5fd75db69de4f3bee3114",
+              "location": "六、AI工具使用"
+            }
+          ]
+        },
+        "clm-pku-ic-comprehensive-declaration": {
+          "id": "clm-pku-ic-comprehensive-declaration",
+          "text": "For AI use in the School of Integrated Circuits doctoral comprehensive examination, the published document requires an end-of-work declaration identifying the use, confirming human review and modification, and accepting responsibility for the final work. The declaration does not authorise the expressly prohibited uses.",
+          "claimType": "research",
+          "evidence": [
+            {
+              "quote": "AI使用声明：本人在完成本考察的过程中，使用了AI工具进行[具体用途描述]。所有AI生成内容均经过本人严格审核与修改，本人对最终提交内容的真实性和学术规范性承担全部责任。",
+              "url": "https://ic.pku.edu.cn/rcpy/yngg/93316a3ce6cf4a8a8ee52d4b5a220cce.htm",
+              "language": "zh",
+              "hash": "9e034e7ecff68b01131c7118fb139dbb2a58068478b5fd75db69de4f3bee3114",
+              "location": "六、AI工具使用; declaration template"
+            },
+            {
+              "quote": "凡在综合考试中使用了AI工具（无论属于允许或禁止范围之外的情形），须在文末附加以下声明：",
+              "url": "https://ic.pku.edu.cn/rcpy/yngg/93316a3ce6cf4a8a8ee52d4b5a220cce.htm",
+              "language": "zh",
+              "hash": "9e034e7ecff68b01131c7118fb139dbb2a58068478b5fd75db69de4f3bee3114",
+              "location": "六、AI工具使用; mandatory declaration"
+            }
+          ]
+        },
+        "clm-pku-ic-predefense-ai-restrictions": {
+          "id": "clm-pku-ic-predefense-ai-restrictions",
+          "text": "The School of Integrated Circuits’ doctoral pre-defense document strictly prohibits AI generation of entire texts or substantive core passages presented as the author’s own argument, fabricated experimental/survey/case data, and undisclosed full-text translation used directly in the thesis body. This applies to the specified school doctoral procedure, not every PKU assessment.",
+          "claimType": "research",
+          "evidence": [
+            {
+              "quote": "关于AI工具的使用，以下情形一律严格禁止，一经发现按相关规定处理：\n1. 核心内容代写：将论文题目或核心论点直接输入AI，生成全文或实质性段落作为自己的论述。\n2. 数据编造：使用AI生成虚假实验数据、调研结果或案例分析内容。\n3. 未经声明的全文翻译：将外文文献交由AI全文翻译后直接用于论文主体。",
+              "url": "https://ic.pku.edu.cn/rcpy/yngg/36c24168e0374338838af256edf269b2.htm",
+              "language": "zh",
+              "hash": "33bb5384ba8dcca553e24c14671e03f30f1bd8e3003e5b237312d1c95f38c42a",
+              "location": "六、AI工具使用"
+            }
+          ]
+        },
+        "clm-pku-ic-proposal-ai-restrictions": {
+          "id": "clm-pku-ic-proposal-ai-restrictions",
+          "text": "The School of Integrated Circuits’ doctoral topic-proposal document strictly prohibits AI generation of entire texts or substantive core passages presented as the author’s own argument, fabricated experimental/survey/case data, and undisclosed full-text translation used directly in the thesis body. This applies to the specified school doctoral procedure, not every PKU assessment.",
+          "claimType": "research",
+          "evidence": [
+            {
+              "quote": "关于AI工具的使用，以下情形一律严格禁止，一经发现按相关规定处理：\n1. 核心内容代写：将论文题目或核心论点直接输入AI，生成全文或实质性段落作为自己的论述。\n2. 数据编造：使用AI生成虚假实验数据、调研结果或案例分析内容。\n3. 未经声明的全文翻译：将外文文献交由AI全文翻译后直接用于论文主体。",
+              "url": "https://ic.pku.edu.cn/rcpy/yngg/d398816fdc334226aa0491691d2e52c1.htm",
+              "language": "zh",
+              "hash": "e3efa1074a1653110b5361a9710e560d77639b42fa780427127457006c70ceeb",
+              "location": "六、AI工具使用"
+            }
+          ]
+        },
+        "clm-pku-ic-proposal-declaration": {
+          "id": "clm-pku-ic-proposal-declaration",
+          "text": "For AI use in the School of Integrated Circuits doctoral topic proposal, the published document requires an end-of-work declaration identifying the use, confirming human review and modification, and accepting responsibility for the final work. The declaration does not authorise the expressly prohibited uses.",
+          "claimType": "research",
+          "evidence": [
+            {
+              "quote": "AI使用声明：本人在完成本考察的过程中，使用了AI工具进行[具体用途描述]。所有AI生成内容均经过本人严格审核与修改，本人对最终提交内容的真实性和学术规范性承担全部责任。",
+              "url": "https://ic.pku.edu.cn/rcpy/yngg/d398816fdc334226aa0491691d2e52c1.htm",
+              "language": "zh",
+              "hash": "e3efa1074a1653110b5361a9710e560d77639b42fa780427127457006c70ceeb",
+              "location": "六、AI工具使用; declaration template"
+            },
+            {
+              "quote": "凡在选题报告中使用了AI工具（无论属于允许或禁止范围之外的情形），须在文末附加以下声明：",
+              "url": "https://ic.pku.edu.cn/rcpy/yngg/d398816fdc334226aa0491691d2e52c1.htm",
+              "language": "zh",
+              "hash": "e3efa1074a1653110b5361a9710e560d77639b42fa780427127457006c70ceeb",
+              "location": "六、AI工具使用; mandatory declaration"
+            }
+          ]
+        },
+        "clm-pku-quarterly-journal-review-confidentiality": {
+          "id": "clm-pku-quarterly-journal-review-confidentiality",
+          "text": "For referees of China Economic Quarterly (《经济学》（季刊）), the editorial policy prohibits uploading unpublished manuscripts, core arguments, key data or review comments to public AI tools. This is that journal’s peer-review confidentiality rule, not a universal PKU student-data policy.",
+          "claimType": "privacy",
+          "evidence": [
+            {
+              "quote": "保密义务：\n严格履行保密义务，禁止将待审稿件全文、核心论点、关键数据及评审意见等任何未公开的敏感信息上传至公共AI工具。",
+              "url": "https://nsd.pku.edu.cn/xzyj/cbw/jjxjk/xwsd/89501b9d3dab410f86c1520cfbc82498.htm",
+              "language": "zh",
+              "hash": "5edd7b6a87c813f1e0d1d7f3bfe992ccfcf3def9b52c98e3f7c8559db8aa7993",
+              "location": "保密义务; editorial notice 2026-03-26"
+            }
+          ]
+        },
+        "clm-pku-undergraduate-exam-devices": {
+          "id": "clm-pku-undergraduate-exam-devices",
+          "text": "PKU undergraduate examination rules restrict electronic devices and other nonessential items at examination seats unless the chief examiner provides otherwise. This is a general exam rule, not a university-wide AI-use mandate.",
+          "claimType": "teaching",
+          "evidence": [
+            {
+              "quote": "第二十七条  除非主考教师另有规定，学生只能携带必要的文具参加考试，其它所有物品（包括空白纸张、手机等电子设备）不得带入座位；已经带入考场的手机等电子设备必须关机，与其他物品一起集中放在监考人员指定位置，不得随身携带或带入座位及旁边。",
+              "url": "https://dean.pku.edu.cn/web/rules_info.php?id=8",
+              "language": "zh",
+              "hash": "51f50d5a9bdcf5d5de6b623db6eca9db52183dbd42b74e95d0398c34d984664e",
+              "location": "§27"
+            }
+          ]
+        },
+        "clm-pku-undergraduate-independent-exams": {
+          "id": "clm-pku-undergraduate-independent-exams",
+          "text": "PKU undergraduate examinees must independently complete examination answers within the prescribed time. Applicable exam instructions still determine permitted aids; this general rule does not establish a comprehensive AI-specific ban.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "第二十九条  考生要严格遵守考场规则，在规定时间内独立完成答卷。凡违反考试纪律或作弊者，按本规定给予相应处分。",
+              "url": "https://dean.pku.edu.cn/web/rules_info.php?id=8",
+              "language": "zh",
+              "hash": "51f50d5a9bdcf5d5de6b623db6eca9db52183dbd42b74e95d0398c34d984664e",
+              "location": "§29"
+            }
+          ]
+        }
+      }
     }
   }
 }

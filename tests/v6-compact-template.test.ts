@@ -27,7 +27,7 @@ test('all published V6 schools bind independent actions and full original eviden
    for(const topic of school.topics)assert(guide.topics?.[topic.key]?.zh,slug+' '+topic.key);
   }
  }
- assert(!pointer.slugs.includes('peking-university'));assert(pointer.v5Slugs.includes('peking-university'));
+ assert(pointer.slugs.includes('peking-university'));assert.equal(pointer.v5Slugs.length,0);
 });
 test('status colours retain meaning independently of school',()=>{
  for(const slug of ['imperial-college-london','ucl','eth-zurich']){
@@ -36,4 +36,10 @@ test('status colours retain meaning independently of school',()=>{
   assert.equal(policyV6StatusTone('conditionally_allowed',slug),'caution');
   assert.equal(policyV6StatusTone('not_mentioned',slug),'neutral');
  }
+});
+
+test('homepage links are central university roots, not policy or department pages',async()=>{
+ const homepages=JSON.parse(await readFile('apps/web/lib/university-homepages.json','utf8'));
+ const pointer=JSON.parse(await readFile('data/public-v6-pages/current.json','utf8'));
+ for(const slug of pointer.slugs){const url=new URL(homepages[slug]);assert.equal(url.protocol,'https:');assert.equal(url.pathname,'/');assert(!/^(ist|uit|genai|its|libguides|scielab|oerc)\./.test(url.hostname));}
 });

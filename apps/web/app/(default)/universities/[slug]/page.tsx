@@ -1,3 +1,4 @@
+import {UniversityHomepageMark} from '@/components/university-homepage-mark';
 import {PolicyV6HeldRecords} from "@/components/policy-v6-held-records";
 import {PolicyV6RecordLinks} from "@/components/policy-v6-record-links";
 import {readV6RecordCorrections} from "@/lib/v6-effective-records";
@@ -349,7 +350,7 @@ export default async function UniversityPage({
       {draftPreview ? <aside data-i18n="preserve" role="status">LOCAL CANDIDATE PREVIEW — pending review; not published. All evidence remains in its original language.</aside> : null}
       <EntityHeader
         actions={uiLab ? <div id="v6-header-actions"><PolicyV6Actions /></div> : undefined}
-        leading={uiLab ? <UniversityMark slug={slug} size="hero" /> : undefined}
+        leading={uiLab ? <UniversityHomepageMark slug={slug} name={displayName} locale={locale} /> : undefined}
         eyebrow={uiLab ? <PolicyV6HeaderLocation region={university.region} country={university.country} checkedAt={publicSummary.lastCheckedAt} changedAt={publicSummary.lastChangedAt} locale={locale} /> : `${university.region}, ${university.country}`}
         metadata={uiLab ? undefined :
           <>

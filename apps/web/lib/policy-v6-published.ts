@@ -10,7 +10,7 @@ import revisions from '../../../data/public-v6-pages/revisions.json';
 import {publishedV6Slugs,publishedV6Enabled} from './policy-v6-published-gate';
 export {publishedV6Slugs,publishedV6Enabled} from './policy-v6-published-gate';
 interface LocaleData {schools:LabSchool[];views:Record<string,LocalV6Bundle>;localEvidence:Record<string,LocalV6Evidence>;entities:Record<string,unknown>;related:Record<string,unknown>}
-type Package={releaseId:string;slugs:string[];v5Slugs?:string[];v5Presentation?:{slug:string;layout:string;revision:string;recordSha256:string;claimIds:string[];institutionAuditStatus:string;snapshotStatus:string};locales:Record<SupportedLocale,LocaleData>;publishedAt?:string;publicationKind?:string};
+type Package={releaseId:string;slugs:string[];v5Slugs?:string[];v5Presentation?:{slug:string;layout:string;revision:string;recordSha256:string;claimIds:string[];institutionAuditStatus:string;snapshotStatus:string};locales:Record<SupportedLocale,LocaleData>;publishedAt?:string;publicationKind?:string;changeSummary?:{en:string;zh:string}};
 const cached=new Map<string,Package>();
 export function readPublishedV6(){return readPublishedV6Revision(pointer.releaseId);}
 export function readPublishedV6Revision(revision:string){
