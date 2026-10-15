@@ -26470,5 +26470,644 @@
         "publicationApproved": false
       }
     }
+  ],
+  "peking-university": [
+    {
+      "id": "clm-pku-ic-proposal-ai-restrictions",
+      "group": "trigger",
+      "statement": "The School of Integrated Circuits’ doctoral topic-proposal document strictly prohibits AI generation of entire texts or substantive core passages presented as the author’s own argument, fabricated experimental/survey/case data, and undisclosed full-text translation used directly in the thesis body. This applies to the specified school doctoral procedure, not every PKU assessment.",
+      "scope": {
+        "level": "school",
+        "unit": "School of Integrated Circuits",
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "School of Integrated Circuits doctoral topic-proposal; named doctoral disciplines, not university-wide."
+        ]
+      },
+      "appliesToAI": "explicit_ai",
+      "modality": "prohibited",
+      "conditions": [],
+      "exceptions": [
+        "School of Integrated Circuits doctoral topic-proposal; named doctoral disciplines, not university-wide."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-ic-proposal",
+          "sourceUrl": "https://ic.pku.edu.cn/rcpy/yngg/d398816fdc334226aa0491691d2e52c1.htm",
+          "sourceSnapshotHash": "e3efa1074a1653110b5361a9710e560d77639b42fa780427127457006c70ceeb",
+          "retrievedAt": "2026-10-15T03:25:04.014111Z",
+          "quote": "关于AI工具的使用，以下情形一律严格禁止，一经发现按相关规定处理：\n1. 核心内容代写：将论文题目或核心论点直接输入AI，生成全文或实质性段落作为自己的论述。\n2. 数据编造：使用AI生成虚假实验数据、调研结果或案例分析内容。\n3. 未经声明的全文翻译：将外文文献交由AI全文翻译后直接用于论文主体。",
+          "lineStart": 157,
+          "lineEnd": 160
+        }
+      ],
+      "localSummary": {
+        "zh": "集成电路学院相应博士培养文件严格禁止 AI 代写核心论述、编造实验或调研等数据，以及未经声明将外文文献全文翻译后用于论文主体；只适用于该学院对应博士环节。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "462e4aec80d508932019cacabcd264723b23f982e7abbf8c670c6891140b0fe1",
+      "deadlines": [],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-ic-proposal-declaration",
+      "group": "trigger",
+      "statement": "For AI use in the School of Integrated Circuits doctoral topic proposal, the published document requires an end-of-work declaration identifying the use, confirming human review and modification, and accepting responsibility for the final work. The declaration does not authorise the expressly prohibited uses.",
+      "scope": {
+        "level": "school",
+        "unit": "School of Integrated Circuits",
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "School of Integrated Circuits doctoral topic proposal only."
+        ]
+      },
+      "appliesToAI": "explicit_ai",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "School of Integrated Circuits doctoral topic proposal only."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-ic-proposal",
+          "sourceUrl": "https://ic.pku.edu.cn/rcpy/yngg/d398816fdc334226aa0491691d2e52c1.htm",
+          "sourceSnapshotHash": "e3efa1074a1653110b5361a9710e560d77639b42fa780427127457006c70ceeb",
+          "retrievedAt": "2026-10-15T03:25:04.014111Z",
+          "quote": "AI使用声明：本人在完成本考察的过程中，使用了AI工具进行[具体用途描述]。所有AI生成内容均经过本人严格审核与修改，本人对最终提交内容的真实性和学术规范性承担全部责任。",
+          "lineStart": 163,
+          "lineEnd": 163
+        },
+        {
+          "sourceId": "src-pku-pku-ic-proposal",
+          "sourceUrl": "https://ic.pku.edu.cn/rcpy/yngg/d398816fdc334226aa0491691d2e52c1.htm",
+          "sourceSnapshotHash": "e3efa1074a1653110b5361a9710e560d77639b42fa780427127457006c70ceeb",
+          "retrievedAt": "2026-10-15T03:25:04.014111Z",
+          "quote": "凡在选题报告中使用了AI工具（无论属于允许或禁止范围之外的情形），须在文末附加以下声明：",
+          "lineStart": 161,
+          "lineEnd": 161
+        }
+      ],
+      "localSummary": {
+        "zh": "集成电路学院博士相应环节使用 AI 时，须在文末声明具体用途、人工审核修改和对最终内容负责；作声明不能使禁止用途变得允许。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "648cfe98a628e1cc60786c78136687840e4f6e3e84657b119eb238a9c3ffed5b",
+      "deadlines": [],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-ic-comprehensive-declaration",
+      "group": "trigger",
+      "statement": "For AI use in the School of Integrated Circuits doctoral comprehensive examination, the published document requires an end-of-work declaration identifying the use, confirming human review and modification, and accepting responsibility for the final work. The declaration does not authorise the expressly prohibited uses.",
+      "scope": {
+        "level": "school",
+        "unit": "School of Integrated Circuits",
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "School of Integrated Circuits doctoral comprehensive examination only."
+        ]
+      },
+      "appliesToAI": "explicit_ai",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "School of Integrated Circuits doctoral comprehensive examination only."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-ic-comprehensive",
+          "sourceUrl": "https://ic.pku.edu.cn/rcpy/yngg/93316a3ce6cf4a8a8ee52d4b5a220cce.htm",
+          "sourceSnapshotHash": "9e034e7ecff68b01131c7118fb139dbb2a58068478b5fd75db69de4f3bee3114",
+          "retrievedAt": "2026-10-15T03:25:28.673562Z",
+          "quote": "AI使用声明：本人在完成本考察的过程中，使用了AI工具进行[具体用途描述]。所有AI生成内容均经过本人严格审核与修改，本人对最终提交内容的真实性和学术规范性承担全部责任。",
+          "lineStart": 164,
+          "lineEnd": 164
+        },
+        {
+          "sourceId": "src-pku-pku-ic-comprehensive",
+          "sourceUrl": "https://ic.pku.edu.cn/rcpy/yngg/93316a3ce6cf4a8a8ee52d4b5a220cce.htm",
+          "sourceSnapshotHash": "9e034e7ecff68b01131c7118fb139dbb2a58068478b5fd75db69de4f3bee3114",
+          "retrievedAt": "2026-10-15T03:25:28.673562Z",
+          "quote": "凡在综合考试中使用了AI工具（无论属于允许或禁止范围之外的情形），须在文末附加以下声明：",
+          "lineStart": 163,
+          "lineEnd": 163
+        }
+      ],
+      "localSummary": {
+        "zh": "集成电路学院博士相应环节使用 AI 时，须在文末声明具体用途、人工审核修改和对最终内容负责；作声明不能使禁止用途变得允许。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "1c2abda0a08585aed308b9587ae084ad789f345aaf11dfb2f4ae60965a77303b",
+      "deadlines": [],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-disciplinary-evidence-and-response",
+      "group": "response",
+      "statement": "PKU’s general student disciplinary rules require sufficient evidence, clear basis, accurate characterisation, proper procedure and proportionate sanctions. Before the department proposes action, students must be informed of the facts, reasons, basis and their right to make statements and defense. The rules apply to students in ordinary higher-degree education, not exclusively AI cases.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "Ordinary higher-degree students; general disciplinary procedure."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "Ordinary higher-degree students; general disciplinary procedure."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-discipline",
+          "sourceUrl": "https://dean.pku.edu.cn/web/rules_info.php?id=57",
+          "sourceSnapshotHash": "e026cb26611b0c2096042a3c3a4d043f7a86c11c0a54e90bc91089a7a5234593",
+          "retrievedAt": "2026-10-15T03:25:04.643518Z",
+          "quote": "第三条\n对学生进行违纪处分，应当坚持教育与惩戒相结合，与学生违法、违纪行为的性质和过错的严重程度相适应，应当做到证据充分、依据明确、定性准确、程序正当、处分适当。",
+          "lineStart": 62,
+          "lineEnd": 63
+        },
+        {
+          "sourceId": "src-pku-pku-discipline",
+          "sourceUrl": "https://dean.pku.edu.cn/web/rules_info.php?id=57",
+          "sourceSnapshotHash": "e026cb26611b0c2096042a3c3a4d043f7a86c11c0a54e90bc91089a7a5234593",
+          "retrievedAt": "2026-10-15T03:25:04.643518Z",
+          "quote": "院系提出处理意见前，须告知学生拟提出处理意见的事实、理由和依据，以及学生享有陈述和申辩的权利。",
+          "lineStart": 113,
+          "lineEnd": 113
+        }
+      ],
+      "localSummary": {
+        "zh": "普通高等学历教育学生的处分须证据充分、依据明确、定性准确、程序正当且处分适当；院系提出处理意见前应告知事实理由依据及陈述申辩权。这是一般纪律程序。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "89d2d4f73e22e84a013bc656537b0c00929077a55868e72ba2a2288f20af5c5e",
+      "deadlines": [],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-degree-representations",
+      "group": "response",
+      "statement": "Before proposed degree denial or revocation, Article 39 requires PKU to inform the applicant or holder of the proposed decision and its facts, reasons and basis, and hear their statements and defense. This is a degree procedure, not proof of any AI-specific penalty.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "Proposed degree denial/revocation; prior representations."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "Proposed degree denial/revocation; prior representations."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-degree",
+          "sourceUrl": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+          "sourceSnapshotHash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+          "retrievedAt": "2026-10-15T03:24:23.004185Z",
+          "quote": "第三十九条     拟作出不授予学位或者撤销学位决定的，应当\n告知学位申请人或者学位获得者拟作出决定的内容及事实、理\n由、依据，听取其陈述和申辩。",
+          "lineStart": 315,
+          "lineEnd": 317
+        }
+      ],
+      "localSummary": {
+        "zh": "拟不授予或撤销学位前，应告知拟作决定及事实、理由、依据，并听取陈述和申辩；仅限对应学位程序。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "b8907c16a57bdb194f8ebe9e0bde8034e2bfbb7f5fe7980957e8e4b1e312f7b0",
+      "deadlines": [],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-degree-misconduct-finding",
+      "group": "outcomes",
+      "statement": "PKU’s 2025 degree regulations provide for degree denial or revocation for specified misconduct including ghostwriting, plagiarism or fabrication after the required findings and degree-committee decision. Article 37 allocates academic-misconduct findings to the academic committee and the degree decision to the degree committee. AI use or a detector score alone is not established here as an automatic sanction.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "Degree applicants and holders; findings and decision authorities retained."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "Degree applicants and holders; findings and decision authorities retained."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-degree",
+          "sourceUrl": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+          "sourceSnapshotHash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+          "retrievedAt": "2026-10-15T03:24:23.004185Z",
+          "quote": "第三十六条   学位申请人、学位获得者在攻读该学位过程中\n有下列情形之一的，经校学位会决议，学校不授予学位或者撤销\n学位：\n     （一）学位论文或者实践成果被认定为存在代写、剽窃、伪\n造等学术不端行为；",
+          "lineStart": 294,
+          "lineEnd": 298
+        },
+        {
+          "sourceId": "src-pku-pku-degree",
+          "sourceUrl": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+          "sourceSnapshotHash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+          "retrievedAt": "2026-10-15T03:24:23.004185Z",
+          "quote": "第三十七条   学位申请人、学位获得者在攻读该学位过程中\n有涉及本办法第三十六条第（一）项情形的，由学校学术委员会\n依照国家和学校有关规定作出认定结论和处理建议，由校学位会\n根据认定结论和处理建议，作出不授予学位或者撤销学位决定。",
+          "lineStart": 303,
+          "lineEnd": 306
+        }
+      ],
+      "localSummary": {
+        "zh": "代写、剽窃、伪造等经规定程序认定后，校学位会可依学位办法决定不授予或撤销学位；学术不端认定与学位决定分别由规定机构作出，不是 AI 使用或检测分数的自动处罚。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "98eba2735a2663616622224bbe70f533a4ed5d563de5d5328779f1692e816310",
+      "deadlines": [],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-disciplinary-appeal-filing",
+      "group": "appeal",
+      "statement": "Within the scope of PKU’s student appeal rules, a student may submit a written appeal to the student appeal committee within 10 days after service of the relevant management or disciplinary decision. This filing period does not replace the distinct degree-review procedures.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "Specified management/disciplinary decisions under appeal rules §2; service starts filing period."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "Specified management/disciplinary decisions under appeal rules §2; service starts filing period."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-appeals",
+          "sourceUrl": "https://dean.pku.edu.cn/web/rules_info.php?id=56",
+          "sourceSnapshotHash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+          "retrievedAt": "2026-10-15T03:24:21.476808Z",
+          "quote": "第六条\n学生本人对学校处理或处分决定有异议的，可以在学校处理或处分决定书送达之日起10日内，向学生申诉处理委员会书面提出申诉。",
+          "lineStart": 81,
+          "lineEnd": 82
+        }
+      ],
+      "localSummary": {
+        "zh": "适用学生申诉办法的管理或处分决定，学生可在决定书送达之日起 10 日内书面申诉；不能把这个期限套到全部学位争议。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "05ab3beb09ef57ea9bd55dfac00b2b1113285648d56d33dd5546aeb0782054a2",
+      "deadlines": [
+        {
+          "actor": "学生",
+          "procedure": "Student disciplinary appeal",
+          "value": 10,
+          "unit": "天",
+          "trigger": "处分或管理决定书送达之日",
+          "dayDefinition": "原文使用“日”；此处未另定义为工作日，不生成自动截止日期",
+          "exceptions": "仅限学生申诉办法第2条的决定；不同于学位复核",
+          "normativity": "must",
+          "direction": "within",
+          "calculationAllowed": false,
+          "evidenceSourceIds": [
+            "src-pku-pku-appeals"
+          ],
+          "evidenceRefs": [
+            {
+              "sourceId": "src-pku-pku-appeals",
+              "snapshotHash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+              "lineStart": 81,
+              "lineEnd": 82
+            }
+          ]
+        }
+      ],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-appeal-review-period",
+      "group": "appeal",
+      "statement": "The student appeal committee must review and notify a conclusion within 15 days after the appeal is raised. In complex cases the period may be extended by 15 days with the president’s approval. This is the institution’s handling period, not the student’s appeal filing period.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "Student appeal committee action; initial 15 days + approved complex-case 15-day extension."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "Student appeal committee action; initial 15 days + approved complex-case 15-day extension."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-appeals",
+          "sourceUrl": "https://dean.pku.edu.cn/web/rules_info.php?id=56",
+          "sourceSnapshotHash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+          "retrievedAt": "2026-10-15T03:24:21.476808Z",
+          "quote": "第十条\n学生申诉处理委员会应在申诉人提起申诉的日期起15日内对申诉进行复查，作出复查结论，并将复查结论告知申诉人。情况复杂不能在规定限期内做出结论的，经校长批准，可延长15日。",
+          "lineStart": 95,
+          "lineEnd": 96
+        }
+      ],
+      "localSummary": {
+        "zh": "学生申诉处理委员会从提起申诉之日起 15 日内复查、作出结论并告知；复杂案件经校长批准可延长 15 日。这是校方处理期限，不是学生提交期限。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "54f8079a0f3f4ca45ee4fb88b7ce15bfa3e1af53511cd7f72042659d07dfe5ee",
+      "deadlines": [
+        {
+          "actor": "校方",
+          "procedure": "Student appeal review",
+          "value": 15,
+          "unit": "天",
+          "trigger": "学生提起申诉之日",
+          "dayDefinition": "原文使用“日”；此处未另定义为工作日，不生成自动截止日期",
+          "exceptions": "复杂情形经校长批准可延长15日",
+          "normativity": "must",
+          "direction": "within",
+          "calculationAllowed": false,
+          "evidenceSourceIds": [
+            "src-pku-pku-appeals"
+          ],
+          "evidenceRefs": [
+            {
+              "sourceId": "src-pku-pku-appeals",
+              "snapshotHash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+              "lineStart": 95,
+              "lineEnd": 96
+            }
+          ]
+        }
+      ],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-appeal-effect-and-external",
+      "group": "appeal",
+      "statement": "Under the student appeal rules, the original decision continues during appeal, although the committee may recommend deferral where necessary. A student disagreeing with the review decision may appeal in writing to the Beijing education authority within 15 days after receiving the review conclusion or review decision. These are scoped general appeal rules.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "Student appeals under 2017 rules; external appeal starts on receipt of review conclusion or decision."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "Student appeals under 2017 rules; external appeal starts on receipt of review conclusion or decision."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-appeals",
+          "sourceUrl": "https://dean.pku.edu.cn/web/rules_info.php?id=56",
+          "sourceSnapshotHash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+          "retrievedAt": "2026-10-15T03:24:21.476808Z",
+          "quote": "第十二条\n申诉处理期间相关处理或者处分决定不停止执行。学生申诉处理委员会认为必要的，可以建议学校暂缓执行有关决定。",
+          "lineStart": 99,
+          "lineEnd": 100
+        },
+        {
+          "sourceId": "src-pku-pku-appeals",
+          "sourceUrl": "https://dean.pku.edu.cn/web/rules_info.php?id=56",
+          "sourceSnapshotHash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+          "retrievedAt": "2026-10-15T03:24:21.476808Z",
+          "quote": "第十五条\n申诉人对学生申诉处理委员会的复查结论或学校相关机构的复查决定有异议的，可以在接到复查结论或复查决定之日起15日内，向北京市教育委员会提出书面申诉。",
+          "lineStart": 109,
+          "lineEnd": 110
+        }
+      ],
+      "localSummary": {
+        "zh": "申诉期间原处理或处分原则上不停止执行，委员会认为必要时可建议暂缓；对复查决定有异议，可在接到复查结论或复查决定之日起 15 日内向北京市教育委员会书面申诉。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "cfd7402915eb019496478e0cd31f6ec74995494899efcbf9ee15149a71d2f447",
+      "deadlines": [
+        {
+          "actor": "学生",
+          "procedure": "External student appeal",
+          "value": 15,
+          "unit": "天",
+          "trigger": "接到复查结论或复查决定之日",
+          "dayDefinition": "原文使用“日”；此处未另定义为工作日，不生成自动截止日期",
+          "exceptions": "向北京市教育委员会书面申诉；原决定原则上继续执行",
+          "normativity": "must",
+          "direction": "within",
+          "calculationAllowed": false,
+          "evidenceSourceIds": [
+            "src-pku-pku-appeals"
+          ],
+          "evidenceRefs": [
+            {
+              "sourceId": "src-pku-pku-appeals",
+              "snapshotHash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+              "lineStart": 99,
+              "lineEnd": 100
+            },
+            {
+              "sourceId": "src-pku-pku-appeals",
+              "snapshotHash": "77b8715abaada53c0d249da67f1103252656bc1ee8e9023992b3b47f69ea185c",
+              "lineStart": 109,
+              "lineEnd": 110
+            }
+          ]
+        }
+      ],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-degree-academic-review",
+      "group": "appeal",
+      "statement": "Under Article 34, a degree applicant may submit a written request to the department or degree subcommittee to review an academic evaluation (such as expert review, defense or achievement recognition). The University must reorganise expert review within 30 days after acceptance and notify the applicant in writing; that review decision is final. This is distinct from the student disciplinary appeal filing deadline.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "Degree applicants; academic evaluation review, institution action within 30 days after acceptance."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "Degree applicants; academic evaluation review, institution action within 30 days after acceptance."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-degree",
+          "sourceUrl": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+          "sourceSnapshotHash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+          "retrievedAt": "2026-10-15T03:24:23.004185Z",
+          "quote": "第三十四条   学位申请人对专家评阅、答辩、成果认定等过\n程中相关学术组织或者人员作出的学术评价结论有异议的，可以\n向院系、学位分会提出书面的学术复核申请。\n  学校应当自受理学术复核申请之日起三十日内重新组织专\n家进行复核并作出复核决定，复核决定为最终决定。复核决定应\n当以书面形式通知申请人。\n  学术复核按照学校具体要求执行。",
+          "lineStart": 276,
+          "lineEnd": 282
+        }
+      ],
+      "localSummary": {
+        "zh": "对专家评阅、答辩、成果认定等学术评价有异议，可向院系、学位分会书面申请学术复核；学校自受理起 30 日内重新组织专家复核并书面通知，该复核决定为最终决定。不得与纪律处分申诉期限混同。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "35243da461a11b0916ac391d9fc2dfe1679d3aeaf7e3fa68354a7ab7c561d03b",
+      "deadlines": [
+        {
+          "actor": "校方",
+          "procedure": "Academic evaluation review",
+          "value": 30,
+          "unit": "天",
+          "trigger": "受理学术复核申请之日",
+          "dayDefinition": "原文使用“日”；此处未另定义为工作日，不生成自动截止日期",
+          "exceptions": "学校重新组织专家；该学术复核决定为最终决定",
+          "normativity": "must",
+          "direction": "within",
+          "calculationAllowed": false,
+          "evidenceSourceIds": [
+            "src-pku-pku-degree"
+          ],
+          "evidenceRefs": [
+            {
+              "sourceId": "src-pku-pku-degree",
+              "snapshotHash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+              "lineStart": 276,
+              "lineEnd": 282
+            }
+          ]
+        }
+      ],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "id": "clm-pku-degree-decision-review",
+      "group": "appeal",
+      "statement": "Under Article 35, applicants or degree holders may seek written review through the department or degree office of refusal to accept a degree application, denial or revocation, or seek handling by the relevant lawful authority. University review is due within 30 days after acceptance, with written notification. This is separate from disciplinary appeals and academic-evaluation review.",
+      "scope": {
+        "level": "university",
+        "unit": null,
+        "audience": "See scoped procedure",
+        "qualifiers": [
+          "Degree-application/denial/revocation review; institution deadline, not student filing deadline."
+        ]
+      },
+      "appliesToAI": "general_misconduct_framework",
+      "modality": "descriptive",
+      "conditions": [],
+      "exceptions": [
+        "Degree-application/denial/revocation review; institution deadline, not student filing deadline."
+      ],
+      "evidence": [
+        {
+          "sourceId": "src-pku-pku-degree",
+          "sourceUrl": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+          "sourceSnapshotHash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+          "retrievedAt": "2026-10-15T03:24:23.004185Z",
+          "quote": "第三十五条    学位申请人或者学位获得者如对不受理其学",
+          "lineStart": 283,
+          "lineEnd": 283
+        },
+        {
+          "sourceId": "src-pku-pku-degree",
+          "sourceUrl": "https://grs.pku.edu.cn/docs/2025-05/20250508101241027182.pdf",
+          "sourceSnapshotHash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+          "retrievedAt": "2026-10-15T03:24:23.004185Z",
+          "quote": "位申请、不授予其学位或者撤销其学位等行为有异议的，可以向\n院系、学位办提出书面的复核申请，或者请求有关机关依照法律\n规定处理。\n     学位申请人或者学位获得者申请复核的，学校应当自受理复\n核申请之日起三十日内进行复核并作出复核决定。复核决定应当\n以书面形式通知申请人。\n     复核按照学校具体要求执行。",
+          "lineStart": 287,
+          "lineEnd": 293
+        }
+      ],
+      "localSummary": {
+        "zh": "对不受理学位申请、不授予或撤销学位有异议，可向院系、学位办书面申请复核，或请求有关机关依法处理；学校自受理起 30 日内复核并书面通知。此路径不同于纪律申诉和学术评价复核。"
+      },
+      "translationStatus": "agent_source_checked",
+      "translationSourceHash": "460588f5e723d65f3571ad9b9c1e2ac27891b16a91798c34c5e12c9f954fc114",
+      "deadlines": [
+        {
+          "actor": "校方",
+          "procedure": "Degree decision review",
+          "value": 30,
+          "unit": "天",
+          "trigger": "受理复核申请之日",
+          "dayDefinition": "原文使用“日”；此处未另定义为工作日，不生成自动截止日期",
+          "exceptions": "不同于学术评价复核和纪律处分申诉",
+          "normativity": "must",
+          "direction": "within",
+          "calculationAllowed": false,
+          "evidenceSourceIds": [
+            "src-pku-pku-degree"
+          ],
+          "evidenceRefs": [
+            {
+              "sourceId": "src-pku-pku-degree",
+              "snapshotHash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+              "lineStart": 283,
+              "lineEnd": 283
+            },
+            {
+              "sourceId": "src-pku-pku-degree",
+              "snapshotHash": "73b5c3f5fe252b31415f8d9a8fe513f60996c51b4c6fed5cce84ec3cbdf8dd02",
+              "lineStart": 287,
+              "lineEnd": 293
+            }
+          ]
+        }
+      ],
+      "sourceNature": "formal_procedure",
+      "emphasis": {
+        "en": [],
+        "zh": []
+      }
+    }
   ]
 }

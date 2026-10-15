@@ -32,6 +32,7 @@ export function isPublishedV4University(slug: string): boolean {
 
 /** New V5 pages and selected V4 pages whose shared modules are included in this release. */
 export const publishedStudentGuideSlugs = [
+  "peking-university",
   "california-institute-of-technology", "yonsei-university", "duke-university", "nanyang-technological-university", "ku-leuven", "northwestern-university", "universite-psl", "new-york-university", "city-university-of-hong-kong", "the-hong-kong-polytechnic-university",
   "university-of-california-berkeley", "carnegie-mellon-university", "the-university-of-western-australia", "university-of-amsterdam", "the-london-school-of-economics-and-political-science", "cuhk", "university-of-michigan-ann-arbor", "ucla", "university-of-alberta", "the-university-of-warwick",
   "university-of-california-san-diego", "trinity-college-dublin-the-university-of-dublin", "university-of-illinois-urbana-champaign", "university-of-texas-at-austin", "university-of-birmingham", "lund-university", "brown-university", "pennsylvania-state-university", "university-of-washington", "kth-royal-institute-of-technology",

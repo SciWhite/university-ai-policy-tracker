@@ -38,5 +38,15 @@
     "path": "revisions/v6-chicago-tools-20261014.json",
     "sha256": "8e89d23717dd863fcede31abacad80f070e7a35f323bd1a468a309331b398b81",
     "releaseId": "v6-chicago-tools-20261014"
+  },
+  "pku-v5-20261014": {
+    "path": "revisions/pku-v5-20261014.json",
+    "sha256": "6fae460226b099d7fda725e49cb45bb043ee5c1f944cbd5df4b23c427d5b9b2c",
+    "releaseId": "pku-v5-20261014"
+  },
+  "pku-v5-20261014-r2": {
+    "path": "revisions/pku-v5-20261014-r2.json",
+    "sha256": "626114aeef7d07ba1699f97521d28afa98c0bc1dd5303b51330b36e8bed9b424",
+    "releaseId": "pku-v5-20261014-r2"
   }
 }

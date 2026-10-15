@@ -44,6 +44,7 @@ export interface PolicySceneQuickGuide {
 }
 
 export type IllustratedPilotSlug =
+  | "peking-university"
   | IndexRecoveryPilotSlug
   | ReadyV4UniversitySlug
   | "stanford-university"
@@ -87,7 +88,7 @@ export interface PolicyScenePilot {
 
 const noSnapshotNotice = "No reviewed student policy snapshot has been published yet.";
 
-const scenes: Record<IllustratedPilotSlug, PolicyScenePilot> = {
+const scenes: Record<Exclude<IllustratedPilotSlug,"peking-university">, PolicyScenePilot> = {
   ...readyV4Scenes,
   "stanford-university": {
     slug: "stanford-university",
@@ -1875,14 +1876,14 @@ export function getPolicyScenePilot(
   if (Object.hasOwn(claimsOnlyIllustrationBasis, slug)) {
     if (hasStrongSnapshot) return undefined;
     if (reviewedClaimsFingerprint(claims) !== claimsOnlyIllustrationBasis[slug]) return undefined;
-    const scene = scenes[slug as IllustratedPilotSlug];
+    const scene = scenes[slug as keyof typeof scenes];
     if (!scene?.claimsOnly) return undefined;
     return scene;
   }
   // Independent illustration pilot (Stanford, Cambridge, MIT): strong snapshot + fingerprint verified.
   if (Object.hasOwn(independentIllustrationBasis, slug)) {
     if (!hasStrongSnapshot || reviewedClaimsFingerprint(claims) !== independentIllustrationBasis[slug]) return undefined;
-    return scenes[slug as IllustratedPilotSlug];
+    return scenes[slug as keyof typeof scenes];
   }
   if (!isIndexRecoveryPilotSlug(slug)) return undefined;
   if (!hasCurrentIndexRecoveryBasis(slug, claims)) return undefined;

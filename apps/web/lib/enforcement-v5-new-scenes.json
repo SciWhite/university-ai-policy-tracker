@@ -34,7 +34,8 @@
     "universite-psl": "91cea7c4735730d3b38b50e50c72440b9fe132746aec63e9e8c56134a27f4b7c",
     "new-york-university": "1d753aaddd0d224542d5dddced55d8cfa4ba877072c9660f348f6fbaf36c8e75",
     "city-university-of-hong-kong": "0aec19aae62334d4441961c3535216a0819742777875f960730ea82485b80e8e",
-    "the-hong-kong-polytechnic-university": "950b08a3857b0d45d05db38c5c3bcb74ec7eb8c31c86cd5f39d5ea38992b0147"
+    "the-hong-kong-polytechnic-university": "950b08a3857b0d45d05db38c5c3bcb74ec7eb8c31c86cd5f39d5ea38992b0147",
+    "peking-university": "232bb297a0b3daed381adf0a083305bbc2ce47a0c864fc4517701b1f9fcce36e"
   },
   "scenes": {
     "ucl": {
@@ -2056,6 +2057,63 @@
       },
       "artworkWidth": 1200,
       "artworkHeight": 269
+    },
+    "peking-university": {
+      "slug": "peking-university",
+      "eyebrow": "Student guide",
+      "title": "Check the rule for your course and academic unit.",
+      "guidance": "Tool access is not assessment permission. Integrated Circuits doctoral AI rules, undergraduate integrity, disciplinary appeals and degree reviews have different scopes.",
+      "scopeDetail": "Tool access is not assessment permission. Integrated Circuits doctoral AI rules, undergraduate integrity, disciplinary appeals and degree reviews have different scopes.",
+      "evidenceLabel": "See what to do",
+      "evidenceHref": "#quick-guide",
+      "artworkAlt": "A student checks task instructions with an instructor.",
+      "artworkSrc": "/assets/policy-scenes/v6-20261011/coursework.jpg",
+      "artworkLandscape": true,
+      "artworkContainsText": false,
+      "studentFirst": true,
+      "showGallerySummaries": true,
+      "quickGuide": {
+        "scopeNote": "Tool access is not assessment permission. Integrated Circuits doctoral AI rules, undergraduate integrity, disciplinary appeals and degree reviews have different scopes.",
+        "do": {
+          "artworkSrc": "/assets/policy-scenes/v6-20261011/disclosure.jpg",
+          "artworkLandscape": true,
+          "artworkAlt": "A student records and checks the scope of assistance.",
+          "checks": [
+            {
+              "text": "Check this course and examination’s instructions.",
+              "evidenceHref": "#claim-clm-pku-undergraduate-exam-devices"
+            },
+            {
+              "text": "IC doctoral proposals/exams: make the required AI declaration.",
+              "evidenceHref": "#claim-clm-pku-ic-proposal-declaration"
+            },
+            {
+              "text": "Identify the correct disciplinary or degree review route.",
+              "evidenceHref": "#enforcement-evidence"
+            }
+          ]
+        },
+        "dont": {
+          "artworkSrc": "/assets/policy-scenes/v6-20261011/privacy_data.jpg",
+          "artworkLandscape": true,
+          "artworkAlt": "A student protects data and checks restrictions.",
+          "checks": [
+            {
+              "text": "Do not treat tool access as assessment permission.",
+              "evidenceHref": "#claim-cl-peking-university-institutional-ai-service-126"
+            },
+            {
+              "text": "Do not treat comparative guidance as a campus-wide rule.",
+              "evidenceHref": "#claim-claim-peking-university-1"
+            },
+            {
+              "text": "IC doctoral work: do not generate core writing or fabricate data.",
+              "evidenceHref": "#claim-clm-pku-ic-proposal-ai-restrictions"
+            }
+          ]
+        }
+      },
+      "storyCards": []
     }
   }
 }
