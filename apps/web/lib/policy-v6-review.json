@@ -107,10 +107,10 @@
       "revision": "v6-ntu-chicago-20261014-r2"
     },
     "university-of-chicago": {
-      "fingerprint": "0c51d61d0825932a0200ba3eb4a32d92645196c79ce59bd8750fb6dd4317673e",
-      "reviewedAt": "2026-10-15T01:18:10.526Z",
-      "method": "agent_scoped_source_and_projection_review",
-      "revision": "v6-ntu-chicago-20261014-r2"
+      "fingerprint": "56e3ca80f501cbac2084fe8ec37021432a6fae61e03a1621db9cda244f0b2995",
+      "reviewedAt": "2026-10-15T02:32:16.611Z",
+      "method": "agent_scoped_tool_classification_review",
+      "revision": "v6-chicago-tools-20261014"
     }
   }
 }

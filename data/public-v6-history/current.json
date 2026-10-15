@@ -1,5 +1,5 @@
 {
-  "path": "revisions/v6-ntu-chicago-20261014-r2.json",
-  "sha256": "72881dfa65eb0a0ac18ddda905fd764ba48cca5debb214591b913c17a959006d",
-  "basisRevision": "v6-ntu-chicago-20261014-r2"
+  "path": "revisions/v6-chicago-tools-20261014.json",
+  "sha256": "de221f3f05adfef7ed5449050b6bc7225a56da6a6dc27596aaaf773580be1a89",
+  "basisRevision": "v6-chicago-tools-20261014"
 }

@@ -28,5 +28,10 @@
     "path": "revisions/v6-ntu-chicago-20261014-r2.json",
     "sha256": "541987cb785d6b3e659297ff9e680792c4dd8cf604442e1b8f59df7e8aa7515f",
     "revision": "v6-ntu-chicago-20261014-r2"
+  },
+  "v6-chicago-tools-20261014": {
+    "path": "revisions/v6-chicago-tools-20261014.json",
+    "sha256": "c78593eb7c0bcbb81f5ce8750ee7bd47f683141cc851697a1f77728e0fbcd18f",
+    "revision": "v6-chicago-tools-20261014"
   }
 }

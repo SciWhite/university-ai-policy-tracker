@@ -1,7 +1,7 @@
 {
-  "path": "revisions/v6-ntu-chicago-20261014-r2.json",
-  "sha256": "3009471166939cbbad584dd933a2d8ec463a324bec02dc62cea951dfb535821e",
-  "releaseId": "v6-ntu-chicago-20261014-r2",
+  "path": "revisions/v6-chicago-tools-20261014.json",
+  "sha256": "8e89d23717dd863fcede31abacad80f070e7a35f323bd1a468a309331b398b81",
+  "releaseId": "v6-chicago-tools-20261014",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",
