@@ -1,5 +1,4 @@
 import {GET as original} from '../../../../web/app/feeds/recent-changes.xml/route';
-import {readPublishedV6} from '@/lib/policy-v6-published';
 export const dynamic='force-dynamic';
-const esc=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
-export async function GET(){const old=await original(),raw=await old.text(),data=readPublishedV6()!;const items=data.locales.en.schools.map(s=>`<item><title>${esc(s.name)}: scoped policy record correction</title><link>https://eduaipolicy.org/changes/${data.releaseId}/${s.slug}</link><guid isPermaLink="true">https://eduaipolicy.org/changes/${data.releaseId}/${s.slug}</guid><description>Current reviewed page, JSON and MCP records aligned; historical baselines and held material preserved. Evidence basis ${s.fingerprint}.</description></item>`).join('');return new Response(raw.replace('</channel>',items+'</channel>'),{headers:{'Content-Type':'application/rss+xml; charset=utf-8','Cache-Control':'private, no-store, no-transform'}})}
+// The canonical feed already includes corrected records and their actual revisions.
+export async function GET(){const response=await original();return new Response(await response.text(),{headers:{'Content-Type':'application/rss+xml; charset=utf-8','Cache-Control':'private, no-store, no-transform'}})}

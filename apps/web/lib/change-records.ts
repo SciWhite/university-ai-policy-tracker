@@ -219,7 +219,7 @@ export async function getChangeRecords(): Promise<ChangeRecord[]> {
   const rows = await aggregateChangeRecordsPromise;
   const correction = readV6RecordCorrections();
   if (!correction) return rows;
-  return [...correction.summaries.map(v6ChangeRecord), ...rows.filter(r => !correction.recordRevisions[r.slug])];
+  return [...correction.summaries.map(v6ChangeRecord), ...rows.filter(r => !correction.recordRevisions[r.slug])].sort(compareFreshness);
 }
 
 export async function getChangeIndexData(): Promise<ChangeIndexData> {
@@ -228,7 +228,7 @@ export async function getChangeIndexData(): Promise<ChangeIndexData> {
   const cached = await changeIndexPromise;
   const correction = readV6RecordCorrections();
   if (!correction) return cached;
-  const records = [...correction.summaries.map(s => buildChangeIndexRecord(v6ChangeRecord(s))), ...cached.data.records.filter(r => !correction.recordRevisions[r.slug])];
+  const records = [...correction.summaries.map(s => buildChangeIndexRecord(v6ChangeRecord(s))), ...cached.data.records.filter(r => !correction.recordRevisions[r.slug])].sort(compareFreshness);
   return {...cached, data: {...cached.data, records, facets: buildChangeIndexFacets(records), summary: buildChangeIndexSummary(records)}};
 }
 
@@ -1020,7 +1020,10 @@ function formatSourceTextDiffLine(row: ReleaseDiffRow): string {
   return `${status}.${summary}`;
 }
 
-function compareFreshness(left: ChangeRecord, right: ChangeRecord): number {
+function compareFreshness(
+  left: Pick<ChangeRecord, "lastChangedAt" | "lastCheckedAt" | "name">,
+  right: Pick<ChangeRecord, "lastChangedAt" | "lastCheckedAt" | "name">
+): number {
   const freshnessDifference = getFreshnessTime(right) - getFreshnessTime(left);
   if (freshnessDifference) return freshnessDifference;
 
