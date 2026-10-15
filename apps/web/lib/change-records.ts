@@ -284,7 +284,8 @@ export async function getEntityChangeHistory(
   const frozen = v6FrozenHistory(slug);
   if (frozen) {
     const corrected = readV6RecordCorrections()!.summaries.find(s => s.entity.slug === slug)!;
-    return {record:v6ChangeRecord(corrected),releaseRecords:[v6ChangeRecord(corrected),...frozen]};
+    const current = v6ChangeRecord(corrected);
+    return {record:current,releaseRecords:[current,...frozen.filter(row => row.releaseId !== current.releaseId)]};
   }
   if ((await readRecordCorrectionChanges()).some(entry => entry.slug === slug)) {
     const cached = await readCorrectionChangeCache<EntityChangeHistory>(`${slug}.json`);
@@ -1080,7 +1081,11 @@ function isReviewedClaim(reviewState: string): boolean {
 }
 
 function v6ChangeRecord(summary:PublicEntitySummary):ChangeRecord {
- const p=readV6RecordCorrections()!;const slug=summary.entity.slug;const diff=p.changesBySlug[slug];
+ const selected=readV6RecordCorrections()!;const slug=summary.entity.slug;
+ // An inherited record keeps its actual correction version and timestamp.
+ const recordRevision=selected.recordRevisions[slug].universityRevisionId;
+ const p=recordRevision===selected.revision?selected:readV6RecordCorrectionRevision(recordRevision)??selected;
+ const diff=p.changesBySlug[slug];
  const previous=(p.parentRevisionId?readV6RecordCorrectionRevision(p.parentRevisionId)?.summaries.find(s=>s.entity.slug===slug):undefined)??p.historical[slug]?.baseline;
  const before=new Map(previous?.officialSources.map(s=>[s.sourceUrl,s.snapshotHash])??[]),after=new Map(summary.officialSources.map(s=>[s.sourceUrl,s.snapshotHash]));
  const sourceAdded=[...after.keys()].filter(u=>!before.has(u)).length,sourceRemoved=[...before.keys()].filter(u=>!after.has(u)).length,sourceSnapshotChanged=[...after].filter(([u,h])=>before.has(u)&&before.get(u)!==h).length;

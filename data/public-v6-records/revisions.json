@@ -18,5 +18,15 @@
     "path": "revisions/v6-hku-20261014-r3.json",
     "sha256": "edc8d435aaf23efe60986a8a725d5fff6788de4c7b0094c34874c2374e573fa7",
     "revision": "v6-hku-20261014-r3"
+  },
+  "v6-ntu-chicago-20261014": {
+    "path": "revisions/v6-ntu-chicago-20261014.json",
+    "sha256": "1ef9576acb5e34c66c9b183dca3251ebe9d0cd346738a3634a23a039dd3b4919",
+    "revision": "v6-ntu-chicago-20261014"
+  },
+  "v6-ntu-chicago-20261014-r2": {
+    "path": "revisions/v6-ntu-chicago-20261014-r2.json",
+    "sha256": "541987cb785d6b3e659297ff9e680792c4dd8cf604442e1b8f59df7e8aa7515f",
+    "revision": "v6-ntu-chicago-20261014-r2"
   }
 }

@@ -99,6 +99,18 @@
       "reviewedAt": "2026-10-14T20:58:10.811Z",
       "method": "agent_scoped_hku_review",
       "revision": "v6-hku-20261014-r3"
+    },
+    "nanyang-technological-university": {
+      "fingerprint": "ea9aec02c3898f181c6c9924ec3e76e279b45cbfdb6795bcd77b02331ad669ad",
+      "reviewedAt": "2026-10-15T01:18:10.526Z",
+      "method": "agent_scoped_source_and_projection_review",
+      "revision": "v6-ntu-chicago-20261014-r2"
+    },
+    "university-of-chicago": {
+      "fingerprint": "0c51d61d0825932a0200ba3eb4a32d92645196c79ce59bd8750fb6dd4317673e",
+      "reviewedAt": "2026-10-15T01:18:10.526Z",
+      "method": "agent_scoped_source_and_projection_review",
+      "revision": "v6-ntu-chicago-20261014-r2"
     }
   }
 }
