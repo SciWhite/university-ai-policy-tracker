@@ -7,23 +7,25 @@ import { PolicySummaryEmphasis, sampleActionPhrases } from "@/components/policy-
 import Image from "next/image";
 import type { PolicyScenePilot } from "@/lib/policy-scene-pilot";
 import React, { type ReactNode } from "react";
+import {publishedV6Enabled} from '@/lib/policy-v6-published-gate';
 
 export function PolicyReferenceReview({ state, locale }: { state: string; locale: SupportedLocale }) {
   if (state === "agent_reviewed") return <a href={withLocalePrefix("/methodology", locale)} title={v5Display(locale).method}>{v5Display(locale).review}</a>;
   return <>{translate(state.replaceAll("_", " "), locale)}</>;
 }
 
-type NavigationOptions = { locale?: SupportedLocale; claimsOnly?: boolean; enforcement?: boolean; tools?: boolean; supplements?: boolean; uiLab?: boolean };
+type NavigationOptions = { locale?: SupportedLocale; claimsOnly?: boolean; enforcement?: boolean; tools?: boolean; supplements?: boolean; uiLab?: boolean; studentActions?: boolean };
 
-export function PolicyReferenceLayout({ enabled, children, locale = "en", claimsOnly = false, enforcement = false, tools = false, supplements = false, uiLab = false }: NavigationOptions & { enabled: boolean; children: ReactNode }) {
+export function PolicyReferenceLayout({ enabled, children, locale = "en", claimsOnly = false, enforcement = false, tools = false, supplements = false, uiLab = false, studentActions = false }: NavigationOptions & { enabled: boolean; children: ReactNode }) {
   if (!enabled) return <>{children}</>;
-  return <div className="policy-reference-body"><PolicyReferenceNavigation locale={locale} claimsOnly={claimsOnly} enforcement={enforcement} tools={tools} supplements={supplements} uiLab={uiLab} /><div className="policy-reference-content">{children}</div></div>;
+  return <div className="policy-reference-body"><PolicyReferenceNavigation locale={locale} claimsOnly={claimsOnly} enforcement={enforcement} tools={tools} supplements={supplements} uiLab={uiLab} studentActions={studentActions} /><div className="policy-reference-content">{children}</div></div>;
 }
 
-export function PolicyReferenceNavigation({ inline = false, locale = "en", claimsOnly = false, enforcement = false, tools = false, supplements = false, uiLab = false }: NavigationOptions & { inline?: boolean }) {
+export function PolicyReferenceNavigation({ inline = false, locale = "en", claimsOnly = false, enforcement = false, tools = false, supplements = false, uiLab = false, studentActions = false }: NavigationOptions & { inline?: boolean }) {
   return <nav className={`policy-reference-nav policy-reference-nav--${inline ? "inline" : "rail"}`} aria-label={translate("On this page", locale)}>
     <p>{translate("On this page", locale)}</p>
     <a href="#quick-guide">{translate("At a glance", locale)}</a>
+    {studentActions?<><a href="#v6-ai-use-guidance">{locale==='zh'?'AI 使用指引':locale==='en'?'AI use guide':translate('Student guide',locale)}</a><a href="#v6-ai-concerns">{locale==='zh'?'收到 AI 使用疑虑？':locale==='en'?'AI use questioned?':translate('Academic integrity',locale)}</a></>:null}
     {claimsOnly ? null : <>
     <a href="#snapshot-coursework">{translate("Coursework", locale)}</a>
     <a href="#snapshot-exams">{translate("Exams", locale)}</a>
@@ -42,6 +44,7 @@ export function PolicyReferenceNavigation({ inline = false, locale = "en", claim
 }
 
 export function PolicyReferenceHero({ scene, locale = "en", localizedActions = false, emphasizeActions = false, enforcement = false, tools = false, supplements = false, uiLab = false }: NavigationOptions & { scene: PolicyScenePilot; localizedActions?: boolean; emphasizeActions?: boolean }) {
+  if(uiLab&&publishedV6Enabled()&&scene.slug==='massachusetts-institute-of-technology')return null;
   if (!scene.quickGuide) return null;
   return <section className="policy-reference-hero" id="quick-guide" aria-labelledby="policy-scene-heading">
     <div className="policy-reference-intro">

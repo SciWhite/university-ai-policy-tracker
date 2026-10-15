@@ -345,7 +345,7 @@ export default async function UniversityPage({
       />
 
       <LabProvider {...(labData ? { data: labData } : {})}>
-      <PolicyReferenceLayout uiLab={uiLab} enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot && !uiLab} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements}>
+      <PolicyReferenceLayout uiLab={uiLab} studentActions={Boolean(labData?.studentActionsPilot)} enabled={referencePreview} locale={locale} claimsOnly={!strongSnapshot && !uiLab} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements}>
       {draftPreview ? <aside data-i18n="preserve" role="status">LOCAL CANDIDATE PREVIEW — pending review; not published. All evidence remains in its original language.</aside> : null}
       <EntityHeader
         actions={uiLab ? <div id="v6-header-actions"><PolicyV6Actions /></div> : undefined}

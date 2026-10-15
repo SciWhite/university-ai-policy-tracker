@@ -1,0 +1,426 @@
+{
+  "schemaVersion": "uapt-v6-student-actions-v1",
+  "presentationRevision": "mit-v6-student-actions-20261015",
+  "basisRecordRevision": "pku-v5-20261014-r3",
+  "schools": {
+    "massachusetts-institute-of-technology": {
+      "do": [
+        {
+          "en": "Check the policy for this course before using AI.",
+          "zh": "使用前先查本门课的 AI 规定。",
+          "kind": "site_advice",
+          "claimIds": [
+            "clm-massachusetts-institute-of-technology-course-policy-framework"
+          ]
+        },
+        {
+          "en": "For academic writing, acknowledge AI help and verify its output.",
+          "zh": "学术写作中注明 AI 辅助，并核实输出。",
+          "kind": "source_guidance",
+          "claimIds": [
+            "clm-massachusetts-institute-of-technology-disclosure",
+            "clm-massachusetts-institute-of-technology-accuracy-responsibility"
+          ]
+        },
+        {
+          "en": "Check the data risk level and the exact licensed service.",
+          "zh": "核对资料风险等级及具体机构服务。",
+          "kind": "site_advice",
+          "claimIds": [
+            "clm-massachusetts-institute-of-technology-approved-tools-list"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not put High Risk MIT information into any GenAI tool.",
+          "zh": "不得把 MIT 高风险资料输入任何生成式 AI 工具。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-massachusetts-institute-of-technology-high-risk-prohibition"
+          ]
+        },
+        {
+          "en": "Do not put Medium Risk MIT data into public GenAI tools.",
+          "zh": "不得把 MIT 中风险资料输入公开生成式 AI 工具。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-massachusetts-institute-of-technology-high-risk-prohibition"
+          ]
+        },
+        {
+          "en": "Do not treat an AI-detector result alone as proof.",
+          "zh": "不要把 AI 检测结果单独当作定论。",
+          "kind": "site_advice",
+          "claimIds": [
+            "clm-massachusetts-institute-of-technology-detector-output-not-sufficient"
+          ]
+        }
+      ],
+      "procedures": {
+        "investigation": [
+          "clm-massachusetts-institute-of-technology-detector-output-not-sufficient",
+          "clm-massachusetts-institute-of-technology-cod-disability-accommodations",
+          "mit-fact-11"
+        ],
+        "outcomes": [
+          "clm-massachusetts-institute-of-technology-suspension-return-limits",
+          "mit-fact-05"
+        ],
+        "appeal": [
+          "mit-fact-01",
+          "mit-fact-02"
+        ]
+      },
+      "name": "Massachusetts Institute of Technology (MIT)",
+      "recordSha256": "4ec5718f11f00c1aa797df9c1c9b1cc12b3d53008f55a1ea04c107a8e8bc24ae",
+      "schoolFingerprint": "4ec5718f11f00c1aa797df9c1c9b1cc12b3d53008f55a1ea04c107a8e8bc24ae",
+      "universityRevisionId": "v6-audit-fix-20261014",
+      "scope": {
+        "en": "Course rules, academic-writing guidance and MIT data rules have different scope.",
+        "zh": "课程规定、学术写作指导与 MIT 数据规则各有适用范围。"
+      },
+      "claims": {
+        "clm-massachusetts-institute-of-technology-accuracy-responsibility": {
+          "id": "clm-massachusetts-institute-of-technology-accuracy-responsibility",
+          "text": "MIT Libraries states that authors are responsible for their work and advises verifying information provided by generative AI. Scope: academic and research writing guidance.",
+          "claimType": "research",
+          "evidence": [
+            {
+              "quote": "Authors are responsible for all content in their work.",
+              "url": "https://libguides.mit.edu/cite-AI-tools",
+              "language": "en",
+              "hash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+              "location": "Can AI be an author?; normalized text lines 25-25"
+            },
+            {
+              "quote": "Be sure to verify information provided by generative AI tools.",
+              "url": "https://libguides.mit.edu/cite-AI-tools",
+              "language": "en",
+              "hash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+              "location": "Note about the accuracy AI tools’ outputs; normalized text lines 48-48"
+            }
+          ],
+          "summaryZh": "学术与科研写作：作者负责作品，并应核实生成式 AI 提供的信息。"
+        },
+        "clm-massachusetts-institute-of-technology-approved-tools-list": {
+          "id": "clm-massachusetts-institute-of-technology-approved-tools-list",
+          "text": "IS&T lists MIT-licensed GenAI tools approved for low- and medium-risk information. Tools not listed require an assessment before use or purchase; no GenAI tool is approved for High Risk MIT information. Tool access does not authorize coursework or exam use.",
+          "claimType": "security_review",
+          "evidence": [
+            {
+              "quote": "If a tool or service you wish to use is not included below, contact ai-guidance@mit.edu to request an assessment before moving forward with use or purchase.",
+              "url": "https://ist.mit.edu/ai-tools",
+              "language": "en",
+              "hash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+              "location": "Opening assessment requirement and approved-tools heading; normalized text lines 32-34"
+            },
+            {
+              "quote": "The following tools are approved for use with low- and medium-risk information",
+              "url": "https://ist.mit.edu/ai-tools",
+              "language": "en",
+              "hash": "ac43a70663827e05c7df5abac42e811f08e89baa4140ad7598118a323664652c",
+              "location": "Available through IS&T for use by MIT; normalized text lines 42-43"
+            }
+          ],
+          "summaryZh": "MIT 工具的数据批准与作业、考试许可须分开核对。"
+        },
+        "clm-massachusetts-institute-of-technology-cod-disability-accommodations": {
+          "id": "clm-massachusetts-institute-of-technology-cod-disability-accommodations",
+          "text": "Students needing disability accommodations to participate in a COD process are directed to Disability and Access Services. This is a general disciplinary procedure resource, not an AI-specific sanction.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "If you have a disability and need an accommodation to participate in any part of the COD process, please contact Disability and Access Services",
+              "url": "https://cod.mit.edu/resources/",
+              "language": "en",
+              "hash": "bdad20ea10cd5569c84ae51759692213107b2498c852bf2b340bf4ebbd152fda",
+              "location": "Student Disability and Access Services; normalized text lines 25-26"
+            }
+          ],
+          "summaryZh": "参与 COD 程序需要残障便利措施的学生，可联系 Disability and Access Services。"
+        },
+        "clm-massachusetts-institute-of-technology-course-policy-framework": {
+          "id": "clm-massachusetts-institute-of-technology-course-policy-framework",
+          "text": "For Fall 2026, MIT faculty guidance states that there are no Institute-wide requirements for setting classroom AI-use policies. Instructors are encouraged to publish clear course policies; sample policy menus are not adopted rules for every course.",
+          "claimType": "teaching",
+          "evidence": [
+            {
+              "quote": "For Fall 2026, as in previous years, there are no Institute-wide requirements for setting policies on AI use in classes.",
+              "url": "https://facultygovernance.mit.edu/communications-chair",
+              "language": "en",
+              "hash": "c68938b928504a4644936cba95a8acbce17912fc3fd5d1bccb8a998bd6987cc2",
+              "location": "Generative AI Use Policies, first paragraph; normalized text lines 40-40"
+            }
+          ],
+          "summaryZh": "课程 AI 使用政策由教师制定；示范条款不是所有课程的既定规则。"
+        },
+        "clm-massachusetts-institute-of-technology-detector-output-not-sufficient": {
+          "id": "clm-massachusetts-institute-of-technology-detector-output-not-sufficient",
+          "text": "MIT's August 13, 2026 committee report states that COD does not consider AI-detector output alone sufficient for an AI-related academic integrity case. This records the committee's description of COD practice, not a blanket detector ban.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "the COD itself does not consider AI detector output alone sufficient.",
+              "url": "https://sites.mit.edu/ai-use/ai-committee-final-report-aug-13/",
+              "language": "en",
+              "hash": "db443298d69a4153dfeb2a52d07c0c4c18377330d7084a2811cbd552ef5311f5",
+              "location": "PDF actual page 19 (printed page 17), §3.1.9, Preparing our disciplinary system; normalized text lines 38-38"
+            }
+          ],
+          "summaryZh": "MIT 委员会报告记载：仅有 AI 检测输出不足以支持相关 COD 案件，并非禁止一切检测。"
+        },
+        "clm-massachusetts-institute-of-technology-disclosure": {
+          "id": "clm-massachusetts-institute-of-technology-disclosure",
+          "text": "MIT Libraries advises citing or acknowledging AI contributions in academic papers and consulting the applicable school, class, and publication policies. This is citation guidance, not a universal assessment-use permission or a new university-wide mandatory disclosure rule.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "If AI is used in the creation of an academic paper in any way, it should be cited in the text and references and/or in the acknowledgements.",
+              "url": "https://libguides.mit.edu/cite-AI-tools",
+              "language": "en",
+              "hash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+              "location": "Can AI be an author? / Important!; normalized text lines 25-25"
+            },
+            {
+              "quote": "Know the AI use and citation policy for the school, class, and/or publication for which you are writing.",
+              "url": "https://libguides.mit.edu/cite-AI-tools",
+              "language": "en",
+              "hash": "1c23576c5204015c0f4de8c0450b13aa0b80b67a1281f7b408d887a6c0b4fd05",
+              "location": "Important!; normalized text lines 52-52"
+            }
+          ],
+          "summaryZh": "MIT Libraries 建议学术写作注明 AI 贡献，并查适用课程或出版规定。"
+        },
+        "clm-massachusetts-institute-of-technology-high-risk-prohibition": {
+          "id": "clm-massachusetts-institute-of-technology-high-risk-prohibition",
+          "text": "MIT does not permit Medium Risk data in publicly available GenAI tools. High Risk MIT information must not be used with any GenAI tool, including MIT enterprise tools; report an existing high-risk disclosure to security@mit.edu immediately. Public tools are not recommended for Low Risk MIT data.",
+          "claimType": "privacy",
+          "evidence": [
+            {
+              "quote": "Do not use high-risk information with Generative AI tools, including MIT enterprise Generative AI tools.",
+              "url": "https://ist.mit.edu/ai-guidance",
+              "language": "en",
+              "hash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+              "location": "Determine the Risk Level of Your Data Before Using AI Tools, risk matrix and ** footnote; normalized text lines 61-61"
+            },
+            {
+              "quote": "Medium Risk Data Not allowed Allowed",
+              "url": "https://ist.mit.edu/ai-guidance",
+              "language": "en",
+              "hash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+              "location": "Risk matrix: public tool versus MIT-licensed tool; normalized text lines 50-52"
+            },
+            {
+              "quote": "Low Risk Data Not recommended* Allowed",
+              "url": "https://ist.mit.edu/ai-guidance",
+              "language": "en",
+              "hash": "3d3eb666df03eb643e7bb548af9efb03f348e115bfa969a8450ac1a1a95030d2",
+              "location": "Risk matrix: public tool versus MIT-licensed tool; normalized text lines 47-49"
+            }
+          ],
+          "summaryZh": "高风险 MIT 资料不得用于任何生成式 AI；中风险资料不得用于公开工具。"
+        },
+        "clm-massachusetts-institute-of-technology-suspension-return-limits": {
+          "id": "clm-massachusetts-institute-of-technology-suspension-return-limits",
+          "text": "Permission to return to MIT after suspension does not guarantee return to the same department, degree program, lab group, or related position. This is a general COD sanction condition, not an AI-specific penalty.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Students allowed to return to the Institute after being suspended are not guaranteed to be able to return to the department, specific degree program, lab group, or any related position that they were in prior to their suspension.",
+              "url": "https://cod.mit.edu/rules/section11/",
+              "language": "en",
+              "hash": "c33d5269053f582639b0b253d440b51cdf535d94f153e69346fe86b4dc27eebc",
+              "location": "§XI.D, paragraph after permission to return; normalized text lines 32-32"
+            }
+          ],
+          "summaryZh": "获准停学后返校，不保证返回原院系、项目、实验室或职位。这是一般 COD 条件。"
+        },
+        "mit-fact-01": {
+          "id": "mit-fact-01",
+          "text": "A decision after a hearing, panel meeting, or sanctioning panel to suspend (including a suspension held in abeyance), expel, revoke a degree, suspend or revoke recognition of a student group, or terminate approval of a student organization residence may be appealed by the respondent to the Chancellor; in all other cases, the COD decision is final unless otherwise specifically noted.",
+          "summaryZh": "COD 指定的严重处分决定可向 Chancellor 申诉；并非每项 COD 决定都有申诉权，特殊案件另有规定。",
+          "claimType": "academic_integrity",
+          "basisObjectType": "published_supplement",
+          "scope": "Committee on Discipline; students and student organizations; respondent appeal of specific severe sanctions Only enumerated severe sanctions; special Section XIII rules include complainant/Title IX and other sexual-misconduct-related routes; not universal denial of appeal.",
+          "evidence": [
+            {
+              "quote": "A decision after a hearing, panel meeting, or sanctioning panel to suspend (including a suspension held in abeyance) or expel a student, revoke a degree, suspend (including a suspension held in abeyance) or revoke recognition of a student group, or terminate approval of a student organization residence may be appealed by the respondent to the Chancellor. In all other cases, the COD decision is final, unless otherwise specifically noted (see Section XIII for special rules regarding appeals in cases involving sexual misconduct, sexual harassment, intimate partner violence, stalking, and Title IX Sexual Harassment).\nAll appeals must be submitted in writing to the OSCCS staff by the appealing party (usually the respondent; see Section XIII for situations when the complainant may appeal) within five business days of the date the appealing party received the letter advising them of the decision of the COD.",
+              "url": "https://cod.mit.edu/rules/section12/",
+              "language": "en",
+              "hash": "bd82e9a5cc2d97e9c1b90f310a987a49f6aeed8e67284d7fceaf99f70796d6f7",
+              "location": "Published supplemental locator: lines 35–36",
+              "liveReadback": {
+                "url": "https://cod.mit.edu/rules/section12/",
+                "status": 200,
+                "retrievedAt": "2026-10-15T14:31:26.390682+00:00",
+                "rawSha256": "20269ae6eef8eb536e2badc2ce45f48422a3d9f21ddf5bb60081dbb4b39e4997",
+                "textSha256": "efe58b2e5df449c9a1a4c91d0ddf8c58e451b696eeddbf5be71ad54e75346cb0"
+              }
+            }
+          ],
+          "deadline": {
+            "en": "For eligible COD appeals: submit in writing to OSCCS within five business days of receiving the decision letter. Only the listed decisions are appealable; Section XIII has special rules.",
+            "zh": "适用的 COD 申诉：收到决定信后五个工作日内，书面提交 OSCCS。仅限列举的可申诉决定；Section XIII 特殊规定须另查。",
+            "quote": "All appeals must be submitted in writing to the OSCCS staff by the appealing party (usually the respondent; see Section XIII for situations when the complainant may appeal) within five business days of the date the appealing party received the letter advising them of the decision of the COD.",
+            "url": "https://cod.mit.edu/rules/section12/"
+          }
+        },
+        "mit-fact-02": {
+          "id": "mit-fact-02",
+          "text": "For COD appeals that are available under the captured Rules, four ordinary grounds are specified: substantive relevant information unavailable at decision; substantial procedural departure significantly affecting fairness; a material finding substantially against the evidence; or a sanction at significant variance with the appropriate range. Appeal availability is limited to the listed serious decisions, with other decisions final unless specifically noted; special sexual-misconduct/TitleIX rules include additional or modified grounds.",
+          "summaryZh": "适用的 COD 申诉须基于规定理由；案件类别与决定类型决定能否申诉。",
+          "claimType": "academic_integrity",
+          "basisObjectType": "published_supplement",
+          "scope": "MIT Committee on Discipline; students and student organizations; Captured COD appeal grounds; scope and appeal availability limited by RulesXII and special provisions, not a right to appeal every COD decision.",
+          "evidence": [
+            {
+              "quote": "A. Appeals may only be made on one or more of the following grounds:\nthere exists substantive and relevant information that was not available at the time of the decision\na. In cases involving complaints of Title IX Sexual Harassment, this includes new evidence that was not reasonably available at the time the determination regarding responsibility or dismissal was made that could affect the outcome of the matter.\nthere was a substantial departure from the COD rules and procedures that significantly affected the fairness of the process;",
+              "url": "https://cod.mit.edu/rules/section12/",
+              "language": "en",
+              "hash": "bd82e9a5cc2d97e9c1b90f310a987a49f6aeed8e67284d7fceaf99f70796d6f7",
+              "location": "Published supplemental locator: lines 38–41",
+              "liveReadback": {
+                "url": "https://cod.mit.edu/rules/section12/",
+                "status": 200,
+                "retrievedAt": "2026-10-15T14:31:26.390682+00:00",
+                "rawSha256": "20269ae6eef8eb536e2badc2ce45f48422a3d9f21ddf5bb60081dbb4b39e4997",
+                "textSha256": "efe58b2e5df449c9a1a4c91d0ddf8c58e451b696eeddbf5be71ad54e75346cb0"
+              }
+            },
+            {
+              "quote": "a material finding that formed a basis for the COD’s decision was substantially against the weight of the evidence that was before the COD when it made the decision; and/or\nthe sanction is at significant variance with the range of sanctions appropriate in the situation.",
+              "url": "https://cod.mit.edu/rules/section12/",
+              "language": "en",
+              "hash": "bd82e9a5cc2d97e9c1b90f310a987a49f6aeed8e67284d7fceaf99f70796d6f7",
+              "location": "Published supplemental locator: lines 43–44",
+              "liveReadback": {
+                "url": "https://cod.mit.edu/rules/section12/",
+                "status": 200,
+                "retrievedAt": "2026-10-15T14:31:26.390682+00:00",
+                "rawSha256": "20269ae6eef8eb536e2badc2ce45f48422a3d9f21ddf5bb60081dbb4b39e4997",
+                "textSha256": "efe58b2e5df449c9a1a4c91d0ddf8c58e451b696eeddbf5be71ad54e75346cb0"
+              }
+            },
+            {
+              "quote": "XII. Appeals\nA decision after a hearing, panel meeting, or sanctioning panel to suspend (including a suspension held in abeyance) or expel a student, revoke a degree, suspend (including a suspension held in abeyance) or revoke recognition of a student group, or terminate approval of a student organization residence may be appealed by the respondent to the Chancellor. In all other cases, the COD decision is final, unless otherwise specifically noted (see Section XIII for special rules regarding appeals in cases involving sexual misconduct, sexual harassment, intimate partner violence, stalking, and Title IX Sexual Harassment).\nAll appeals must be submitted in writing to the OSCCS staff by the appealing party (usually the respondent; see Section XIII for situations when the complainant may appeal) within five business days of the date the appealing party received the letter advising them of the decision of the COD.\nIn the event IDHR dismisses a complaint of Title IX Sexual Harassment following an initial assessment, the dismissal may be appealed by either party in accordance with the processes established by IDHR.",
+              "url": "https://cod.mit.edu/rules/section12/",
+              "language": "en",
+              "hash": "bd82e9a5cc2d97e9c1b90f310a987a49f6aeed8e67284d7fceaf99f70796d6f7",
+              "location": "Published supplemental locator: lines 34–37",
+              "liveReadback": {
+                "url": "https://cod.mit.edu/rules/section12/",
+                "status": 200,
+                "retrievedAt": "2026-10-15T14:31:26.390682+00:00",
+                "rawSha256": "20269ae6eef8eb536e2badc2ce45f48422a3d9f21ddf5bb60081dbb4b39e4997",
+                "textSha256": "efe58b2e5df449c9a1a4c91d0ddf8c58e451b696eeddbf5be71ad54e75346cb0"
+              }
+            },
+            {
+              "quote": "In cases involving complaints of Title IX Sexual Harassment, a party may also appeal on the additional ground that the Title IX Coordinator, the investigator(s), or the decision-maker(s) had a conflict of interest or bias for or against complainants or respondents generally or the individual complainant or respondent that affected the outcome of the matter.\nB .The Chancellor makes a decision based upon the written appeal(s) providing the ground(s) on which the party is relying for appeal, and as much of the record of the COD hearing or sanctioning panel of the case as the Chancellor determines it is appropriate to consider.\nC. The Chancellor will consult with the Chair on all appeals. The Chancellor may also confer with other participants in the hearing or sanctioning panel and, in sexual misconduct cases, with the Title IX Coordinator and/or the investigator(s).\nD. Before modifying or overruling a decision of the COD, the Chancellor will meet with available members of the COD who decided the case and will make a final decision after consulting with them.\nE. The final decision will be communicated in writing to the same people who received written notice of the COD decision (including simultaneously to both the complainant and the respondent in all cases involving complaints of sexual misconduct, sexual harassment, intimate partner violence, stalking, and Title IX Sexual Harassment), and to any other officials of MIT who need to be aware of it in order to permit them to fulfill their professional responsibilities. When it is reasonable, a member of the OSCCS staff shall meet with the parties regarding any appeal decision.\nF. This appellate decision by the Chancellor is final.",
+              "url": "https://cod.mit.edu/rules/section12/",
+              "language": "en",
+              "hash": "bd82e9a5cc2d97e9c1b90f310a987a49f6aeed8e67284d7fceaf99f70796d6f7",
+              "location": "Published supplemental locator: lines 45–50",
+              "liveReadback": {
+                "url": "https://cod.mit.edu/rules/section12/",
+                "status": 200,
+                "retrievedAt": "2026-10-15T14:31:26.390682+00:00",
+                "rawSha256": "20269ae6eef8eb536e2badc2ce45f48422a3d9f21ddf5bb60081dbb4b39e4997",
+                "textSha256": "efe58b2e5df449c9a1a4c91d0ddf8c58e451b696eeddbf5be71ad54e75346cb0"
+              }
+            },
+            {
+              "quote": "H. No appeal is available for the decision of (i) the COD to resolve a complaint, either in whole or in part, by making recommendations to MIT Senior Leadership, or (ii) MIT Senior Leadership to accept, reject, or modify a recommendation of the COD under Section XI.L.",
+              "url": "https://cod.mit.edu/rules/section12/",
+              "language": "en",
+              "hash": "bd82e9a5cc2d97e9c1b90f310a987a49f6aeed8e67284d7fceaf99f70796d6f7",
+              "location": "Published supplemental locator: lines 52–52",
+              "liveReadback": {
+                "url": "https://cod.mit.edu/rules/section12/",
+                "status": 200,
+                "retrievedAt": "2026-10-15T14:31:26.390682+00:00",
+                "rawSha256": "20269ae6eef8eb536e2badc2ce45f48422a3d9f21ddf5bb60081dbb4b39e4997",
+                "textSha256": "efe58b2e5df449c9a1a4c91d0ddf8c58e451b696eeddbf5be71ad54e75346cb0"
+              }
+            }
+          ]
+        },
+        "mit-fact-05": {
+          "id": "mit-fact-05",
+          "text": "Failure to complete or comply with COD sanctions may result in an enrollment hold, revision of the sanction, or further disciplinary action, as determined by the Chair.",
+          "summaryZh": "未完成或遵守 COD 处分要求，可能导致注册限制、处分调整或进一步纪律措施。",
+          "claimType": "academic_integrity",
+          "basisObjectType": "published_supplement",
+          "scope": "Committee on Discipline; respondents with assigned sanctions; ",
+          "evidence": [
+            {
+              "quote": "Respondents are required to complete and/or comply with COD sanctions. Failure to complete or comply with sanctions may result in an enrollment hold, revision of the sanction, or further disciplinary action, as determined by the Chair. The Chair may consult with other COD members as needed if revising any sanction or taking further disciplinary action.",
+              "url": "https://cod.mit.edu/rules/section11/",
+              "language": "en",
+              "hash": "ce7555f9f9ba459d1cc9d90130a777b8ddefa389f99d4ffd7c1c50c780d1334b",
+              "location": "Published supplemental locator: lines 35–35",
+              "liveReadback": {
+                "url": "https://cod.mit.edu/rules/section11/",
+                "status": 200,
+                "retrievedAt": "2026-10-15T14:31:26.991133+00:00",
+                "rawSha256": "084fad4f794b9f70b7138c5e853f636092f6964e6299b1e9292e1bee5bb922d3",
+                "textSha256": "61c9c29b4859682bd8b724102030a555295fe7772d814181abc225415cb87ee0"
+              }
+            }
+          ]
+        },
+        "mit-fact-11": {
+          "id": "mit-fact-11",
+          "text": "MIT students who are victims of misconduct or responding to an allegation of policy violation are encouraged by the COD to seek personal support through resources including Mental Health and Counseling, Alcohol and Other Drug Services, Violence Prevention and Response, and Chaplains.",
+          "summaryZh": "收到指控或受到不当行为影响的学生，可寻求 COD 列出的个人支持服务。",
+          "claimType": "academic_integrity",
+          "basisObjectType": "published_supplement",
+          "scope": "Committee on Discipline; victims and respondents in disciplinary processes; ",
+          "evidence": [
+            {
+              "quote": "Personal Support\nThe COD recognizes that it can often be difficult to find yourself the victim of misconduct or responding to an allegation that you violated MIT policy. The COD encourages you to seek and receive personal support during this process. Resources at MIT for this include:\nMental Health and Counseling\nAlcohol and Other Drug Services\nViolence Prevention and Response\nChaplains",
+              "url": "https://cod.mit.edu/resources/",
+              "language": "en",
+              "hash": "a34a1ac70712230afc3d93e6bd5c02f2864d4fb2198f5cd1400bfceba711280e",
+              "location": "Published supplemental locator: lines 29–34",
+              "liveReadback": {
+                "url": "https://cod.mit.edu/resources/",
+                "status": 200,
+                "retrievedAt": "2026-10-15T14:31:27.257590+00:00",
+                "rawSha256": "faca13edfe454c2aced0911c835475a417b3d048f1f927fcaaa253844659d8ac",
+                "textSha256": "22e72968557005da9a0da7e453f68ee6bbc58ea7947d829b24c6048f74ddd1de"
+              }
+            }
+          ]
+        }
+      },
+      "images": [
+        {
+          "src": "/assets/policy-scenes/mit-mechanism-hero-v2.jpg",
+          "sha256": "69f336ae7aca827877915aae9b41bad27a8e4f7bc94805d020490af4baeb6a60",
+          "alt": {
+            "en": "A student checking the classification of MIT information.",
+            "zh": "学生核对 MIT 资料的风险分类。"
+          }
+        },
+        {
+          "src": "/assets/policy-scenes/mit-mechanism-do-v3.jpg",
+          "sha256": "cd57dbf294431063fb13054cf7f884de9e11a93dc4eb26566d9de3458d1a8a43",
+          "alt": {
+            "en": "Check data risk and the licensed tool; tool access is separate from assessment permission.",
+            "zh": "核对资料风险和机构许可工具；工具访问与考核许可分开判断。"
+          }
+        },
+        {
+          "src": "/assets/policy-scenes/mit-mechanism-dont-v3.jpg",
+          "sha256": "a1e861ee5539a98faf3f40a9eb150831687839415c93f9429241810377884f00",
+          "alt": {
+            "en": "Do not put high-risk MIT data in any AI tool.",
+            "zh": "不得把 MIT 高风险资料输入任何 AI 工具。"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -21,6 +21,7 @@ import { PolicyV6Share } from "./policy-v6-share";
 import { PolicyV6SearchPicker } from "./policy-v6-search-picker";
 import { UniversityMark } from "./university-mark";
 import { policyV6InteractionCopy } from "@/lib/policy-v6-interaction-copy";
+import {PolicyV6StudentGuide} from './policy-v6-student-guide';
 const v6Classes = {
   actions: "policy-v6-actions",
   badge: "policy-v6-badge",
@@ -577,7 +578,7 @@ export function PolicyV6Intro() {
   if (!lab) return null;
   const { ui, data } = lab;
   const current = data.schools.find((s) => s.slug === data.currentSlug);
-  return (
+  return (<>
     <section
       className={v6Classes.intro}
       id="v6-questions"
@@ -622,6 +623,8 @@ export function PolicyV6Intro() {
         </a>
       </div>
     </section>
+    {data.studentActionsPilot?<PolicyV6StudentGuide guide={data.studentActions} locale={data.locale}/>:null}
+    </>
   );
 }
 

@@ -15,6 +15,7 @@ import mitPin from "../../../data/public-record-repairs/current.json";
 import { policyV6Slugs, policyV6BundlePreviewSlugs } from "./policy-v6-gate";
 import type { SupportedLocale } from "./i18n";
 import { policyV6ReviewState } from "./policy-v6-review";
+import {getV6StudentActions,type V6StudentActions} from './policy-v6-student-actions';
 import { getLocalV6Bundle } from "./policy-v6-bundle";
 import {
   getLocalV6Evidence,
@@ -67,6 +68,8 @@ export interface PolicyV6Data {
   published?: boolean;
   currentSlug: string;
   schools: LabSchool[];
+  studentActions?: V6StudentActions;
+  studentActionsPilot?: boolean;
 }
 const titles: Record<string, string> = {
   coursework: "Coursework",
@@ -201,7 +204,11 @@ export async function getPolicyV6Data(
       "V6 published-basis preview must not activate a private candidate loader",
     );
   const published = publishedV6Locale(locale);
-  if(published && published.schools.some(s=>s.slug===currentSlug)) return {locale,currentSlug,schools:structuredClone(published.schools),published:true};
+  if(published && published.schools.some(s=>s.slug===currentSlug)) {
+    const current=published.schools.find(s=>s.slug===currentSlug)!;
+    const studentActionsPilot=currentSlug==='massachusetts-institute-of-technology';
+    return {locale,currentSlug,schools:structuredClone(published.schools),published:true,...(studentActionsPilot?{studentActionsPilot,studentActions:getV6StudentActions(current)}:{})};
+  }
   const slugs: string[] = [...policyV6Slugs];
   if (policyV6BundlePreviewSlugs.some((slug) => slug === currentSlug)) slugs.push(currentSlug);
   const schools = await Promise.all(slugs.map((slug) => getPolicyV6School(locale, slug)));
