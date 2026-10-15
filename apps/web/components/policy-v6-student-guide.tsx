@@ -3,6 +3,7 @@ import React from 'react';
 import type {V6StudentActions,StudentAction,StudentGuideClaim} from '@/lib/policy-v6-student-actions';
 import type {SupportedLocale} from '@/lib/i18n';
 import {PolicyV6Popover} from './policy-v6-popover';
+import {PolicyV6ImperialGuide} from './policy-v6-imperial-guide';
 const copy:Record<SupportedLocale,string[]>={
  en:['AI use guide','Before you submit','Do','Don’t','Scope & official evidence','Requirement in this scope','Source guidance','Site advice','AI use questioned?','Investigation, possible outcomes & review','Investigation & response','Possible outcomes','Review & appeal','No verified, specific procedure or deadline is included in the current evidence. Check the applicable university procedure.','Close','Scenario illustrations','Illustrations show situations; current rules and their scope are in the text and evidence.','Open full illustration','Original evidence','Guide evidence has changed. Check the current topic evidence before deciding.','English guidance; original evidence retains its source language.'],
  zh:['AI 使用指引','提交前快速检查','建议做','应避免','适用范围与官方原文','本范围要求','来源建议','本站建议','收到 AI 使用疑虑？','调查、可能后果与复核','调查与回应','可能的处理结果','复核与申诉','当前证据尚未涵盖可核实的具体程序或期限，请查适用的校方程序。','关闭','情境插画','插画帮助理解情境；现行规则与适用范围以文字及原文为准。','打开完整插画','官方原文','指引依据已变化，请先查看当前主题证据再作判断。','指引正文暂以英文提供，官方原文保留来源语言。'],
@@ -13,6 +14,7 @@ const copy:Record<SupportedLocale,string[]>={
  ms:['Panduan penggunaan AI','Sebelum menghantar','Perkara yang perlu dibuat','Perkara yang perlu dielakkan','Skop dan bukti rasmi','Keperluan dalam skop ini','Panduan sumber','Nasihat laman','Penggunaan AI dipersoalkan?','Siasatan, kemungkinan hasil dan semakan','Siasatan dan respons','Kemungkinan hasil','Semakan dan rayuan','Bukti semasa tidak mengandungi prosedur atau tempoh khusus yang disahkan. Semak prosedur yang berkenaan.','Tutup','Ilustrasi situasi','Ilustrasi menerangkan situasi; teks dan sumber menentukan peraturan semasa.','Buka ilustrasi penuh','Sumber rasmi','Bukti panduan telah berubah. Semak sumber semasa.','Panduan dalam bahasa Inggeris; bukti mengekalkan bahasa asal.']
 };
 export function PolicyV6StudentGuide({guide,locale}:{guide:V6StudentActions|undefined;locale:SupportedLocale}){
+ if(guide?.experience==='compact_evidence')return <PolicyV6ImperialGuide guide={guide} locale={locale}/>;
  const t=copy[locale],language=locale==='zh'?'zh':'en';
  if(!guide)return <section className="v6-student-guide" id="quick-guide"><h2>{t[0]}</h2><p>{t[19]}</p><a href="#snapshot-coursework">{t[4]}</a></section>;
  const kind=(action:StudentAction)=>t[action.kind==='requirement'?5:action.kind==='source_guidance'?6:7];

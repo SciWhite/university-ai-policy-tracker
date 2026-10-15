@@ -421,6 +421,336 @@
           }
         }
       ]
+    },
+    "imperial-college-london": {
+      "do": [
+        {
+          "en": "Follow your department and assessment brief.",
+          "zh": "遵守院系和本项考核说明。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-imperial-college-london-dept-assessment-policy"
+          ]
+        },
+        {
+          "en": "When dAIsy is permitted in assessed work, acknowledge its use.",
+          "zh": "获准在考核中使用 dAIsy 时，须注明使用情况。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-imperial-college-london-ai-acknowledgment"
+          ]
+        },
+        {
+          "en": "Check dAIsy outputs for accuracy and appropriateness.",
+          "zh": "核实 dAIsy 输出的准确性与适当性。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-imperial-college-london-user-accountability"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not use AI to create assessed work without authorisation.",
+          "zh": "未经授权，不得用 AI 生成考核作品。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-imperial-college-london-ai-misconduct"
+          ]
+        },
+        {
+          "en": "Do not upload third-party content you may not share.",
+          "zh": "不得上传无权分享的第三方内容。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-imperial-college-london-daisy-copyright-ip"
+          ]
+        },
+        {
+          "en": "Do not assume the general results-appeal deadline applies to misconduct.",
+          "zh": "不要把普通成绩申诉期限套用于学术不端决定。",
+          "kind": "site_advice",
+          "claimIds": [
+            "clm-imperial-college-london-academic-misconduct-appeals"
+          ]
+        }
+      ],
+      "procedures": {
+        "investigation": [
+          "clm-imperial-college-london-academic-misconduct-appeals",
+          "clm-imperial-college-london-ai-detection-2026"
+        ],
+        "outcomes": [
+          "clm-imperial-college-london-daisy-sanctions"
+        ],
+        "appeal": [
+          "clm-imperial-college-london-academic-misconduct-appeals"
+        ]
+      },
+      "name": "Imperial College London",
+      "recordSha256": "f42affcf950f80c77f48d2cf1ee59abc09f156edfbb7147f8c03864bf2fb2211",
+      "schoolFingerprint": "f42affcf950f80c77f48d2cf1ee59abc09f156edfbb7147f8c03864bf2fb2211",
+      "universityRevisionId": "v6-audit-fix-20261014",
+      "scope": {
+        "en": "Assessment briefs and dAIsy conditions apply to their stated uses.",
+        "zh": "考核说明与 dAIsy 条件分别适用于其指定用途。"
+      },
+      "claims": {
+        "clm-imperial-college-london-academic-misconduct-appeals": {
+          "id": "clm-imperial-college-london-academic-misconduct-appeals",
+          "text": "Imperial's Academic Misconduct procedures govern the investigation of suspected misconduct, potential sanctions, and applicable appeal rights. Students challenging an Academic Misconduct Panel decision must submit an appeal within ten College working days of notification; the general academic-results appeal procedure (with a 15 working-day window) does not apply to misconduct decisions. Potential misconduct in postgraduate research programmes is dealt with under Ordinance D17; the ten-day statement does not establish a deadline for that separate procedure.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "To make an appeal you must submit the appeal form below to student.appeals@imperial.ac.uk within the deadline you have been given and including all documentation regarding the allegation and decision. You should also include any additional documentation that is relevant to the details of your appeal statement.",
+              "url": "https://www.imperial.ac.uk/about/governance/academic-governance/academic-policy/complaints-appeals-and-discipline/",
+              "language": "en-GB",
+              "hash": "e510611a340b309e6d1d01cff06e68760b31ab796542689fced271ec4c34c2d7",
+              "location": "Academic misconduct procedures and appeals; captured normalized text line 00227"
+            },
+            {
+              "quote": "If the student wishes to appeal against the decision of the Academic Misconduct Panel, they must submit the appeal form (Appendix III) to student.appeals@imperial.ac.uk within ten College working days of receiving the decision of the Academic Misconduct Panel.",
+              "url": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/registry/academic-governance/public/academic-policy/academic-integrity/Academic-Misconduct-Policy-and-Procedure-v1.3-15.03.23.pdf",
+              "language": "en-GB",
+              "hash": "0d2b6a2f9535ff4f0bcc006130577deee9e6e2d51e5e5a950a9a13dcabc4dffa",
+              "location": "Academic Misconduct Policy and Procedure v1.3; PDF actual page 9, Sections 48 & 51"
+            },
+            {
+              "quote": "Potential academic misconduct in postgraduate research programmes will be dealt with under ordinance D17, The Investigation of Allegations of Research Misconduct.",
+              "url": "https://www.imperial.ac.uk/media/imperial-college/administration-and-support-services/registry/academic-governance/public/academic-policy/academic-integrity/Academic-Misconduct-Policy-and-Procedure-v1.3-15.03.23.pdf",
+              "language": "en-GB",
+              "hash": "0d2b6a2f9535ff4f0bcc006130577deee9e6e2d51e5e5a950a9a13dcabc4dffa",
+              "location": "Academic Misconduct Policy and Procedure v1.3; PDF actual page 2, Section 13"
+            }
+          ],
+          "summaryZh": "学术不端委员会决定的申诉期限为收到决定后十个 College 工作日；普通成绩申诉与研究生科研不端适用不同程序。"
+        },
+        "clm-imperial-college-london-ai-acknowledgment": {
+          "id": "clm-imperial-college-london-ai-acknowledgment",
+          "text": "Imperial Library guidance advises students to acknowledge generative AI use in assessed work and outlines recommended elements. When dAIsy is permitted for assessed work, its Use Policy requires students to acknowledge AI use and maintain transparency. Specific requirements and formats are determined by departments, courses, or assessment briefs.",
+          "claimType": "teaching",
+          "evidence": [
+            {
+              "quote": "A statement of acknowledgment shows the reader which AI tool you used and for what specific purpose. You should include a statement to acknowledge your use of generative AI tools for all assessed work, in accordance with guidelines from your department or course team.",
+              "url": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+              "language": "en-GB",
+              "hash": "2e567ceca27cd46d650756418734c196a1430a01bbde3b67d5f18649363609f7",
+              "location": "Acknowledging and referencing use; captured normalized text line 00289"
+            },
+            {
+              "quote": "Expectations regarding the disclosure or acknowledgement of GenAI use vary across disciplines, assessments, publishers, funders, and professional contexts. Students and staff should therefore familiarise themselves with any applicable requirements and ensure that their use of GenAI is appropriately documented where required.",
+              "url": "https://www.imperial.ac.uk/academic-english/cfae-guidance-on-genai/",
+              "language": "en-GB",
+              "hash": "063a6b52eabaed46eb5c5d3cea1024d361ce8e7d616eafdc56088a32d97215a6",
+              "location": "Expectations regarding disclosure; captured normalized text line 00122"
+            },
+            {
+              "quote": "ii) Academic integrity and referencing - Where GenAI use is permitted for assessed work, acknowledge it (e.g., tool, version, prompt approach). Improper use can be investigated under University Academic Misconduct procedures [PDF].",
+              "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+              "language": "en-GB",
+              "hash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c",
+              "location": "Responsible uses; captured normalized text line 00603 (Section 5(ii))"
+            },
+            {
+              "quote": "When communicating externally, do not present dAIsy outputs as Imperial’s position without approval. For assessed work where AI use is permitted, be transparent about how you used AI.",
+              "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+              "language": "en-GB",
+              "hash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c",
+              "location": "Communications and transparency; captured normalized text line 00627 (Section 13)"
+            }
+          ],
+          "summaryZh": "图书馆建议注明 AI 辅助；获准在考核中使用 dAIsy 时，其条款要求披露。格式取决于院系、课程和考核说明。"
+        },
+        "clm-imperial-college-london-ai-detection-2026": {
+          "id": "clm-imperial-college-london-ai-detection-2026",
+          "text": "For the 2026–27 academic year, Imperial states that it does not use Turnitin's AI-writing detection functionality as part of its assessment processes. Academic-integrity concerns are evaluated by staff using academic judgement and evidence. This statement does not exclude authenticity interviews or other permitted investigative methods.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "We would like to reassure students that Imperial does not use Turnitin's AI writing detection tool as part of its assessment processes. Decisions relating to academic integrity are made by staff using academic judgement and evidence, and following our institution policies.",
+              "url": "https://www.imperial.ac.uk/admin-services/ict/self-service/digital-education-services/digital-education-platforms/turnitin/turnitins-end-user-licence-agreement-changes/",
+              "language": "en-GB",
+              "hash": "773b7abbfb50395cebe39d315807a6a17a765272658188e75f40583593da3c99",
+              "location": "Turnitin EULA changes; captured normalized text line 00147"
+            }
+          ],
+          "summaryZh": "2026–27 学年 Imperial 不在考核流程中使用 Turnitin AI 写作检测。教师仍可按证据及适用程序调查疑虑。"
+        },
+        "clm-imperial-college-london-ai-misconduct": {
+          "id": "clm-imperial-college-london-ai-misconduct",
+          "text": "Unless explicitly authorised, using artificial intelligence to create assessed work may be treated as an offence such as contract cheating under Imperial's Plagiarism, Academic Integrity & Exam Offences regulations.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Unless explicitly authorised, using AI to create assessed work may be treated as an offence such as contract cheating under Imperial’s Plagiarism, Academic Integrity & Exam Offences regulations.",
+              "url": "https://www.imperial.ac.uk/admin-services/library/learning-support/generative-ai-guidance/",
+              "language": "en-GB",
+              "hash": "2e567ceca27cd46d650756418734c196a1430a01bbde3b67d5f18649363609f7",
+              "location": "Appropriate academic use; captured normalized text line 00285"
+            }
+          ],
+          "summaryZh": "未经明确授权，用 AI 生成考核作品可能构成学术不端，并非使用 AI 就自动受罚。"
+        },
+        "clm-imperial-college-london-daisy-copyright-ip": {
+          "id": "clm-imperial-college-london-daisy-copyright-ip",
+          "text": "Users of Imperial's dAIsy platform must not upload third-party content they are not permitted to share. Reuse of AI outputs must comply with licensing and academic citation norms. When communicating externally, dAIsy outputs must not be presented as Imperial's position without approval.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Do not upload third-party content you are not permitted to share. Ensure that any reuse of AI outputs complies with licensing and academic citation norms.",
+              "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+              "language": "en-GB",
+              "hash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c",
+              "location": "Copyright and IP; captured normalized text line 00625 (Section 12)"
+            },
+            {
+              "quote": "When communicating externally, do not present dAIsy outputs as Imperial’s position without approval. For assessed work where AI use is permitted, be transparent about how you used AI.",
+              "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+              "language": "en-GB",
+              "hash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c",
+              "location": "Communications and transparency; captured normalized text line 00627 (Section 13)"
+            }
+          ],
+          "summaryZh": "不得上传无权分享的第三方内容；输出再用须符合许可和引用规范。"
+        },
+        "clm-imperial-college-london-daisy-sanctions": {
+          "id": "clm-imperial-college-london-daisy-sanctions",
+          "text": "Breaches of Imperial's dAIsy Use Policy may lead to action under Academic Misconduct procedures for students and HR/disciplinary processes for staff, as well as under Information Security and Data Protection policies. Sanctions may include removal of access, grade penalties, or formal disciplinary measures.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Breaches may lead to action under Academic Misconduct (students) and HR/disciplinary processes (staff), as well as Information Security and Data Protection policies. Sanctions may include removal of access, grade penalties, or formal disciplinary measures.",
+              "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+              "language": "en-GB",
+              "hash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c",
+              "location": "Compliance and sanctions; captured normalized text line 00629 (Section 14)"
+            }
+          ],
+          "summaryZh": "违反 dAIsy 条款可能导致访问移除、成绩影响或纪律处理，适用程序取决于学生、员工及违规情境。"
+        },
+        "clm-imperial-college-london-dept-assessment-policy": {
+          "id": "clm-imperial-college-london-dept-assessment-policy",
+          "text": "Individual Imperial departments may allow or prohibit generative AI for specific assessments; students must follow the assessment brief and local instructions. The dAIsy Use Policy complements existing university policies and does not replace them; university policy prevails where there is a conflict.",
+          "claimType": "teaching",
+          "evidence": [
+            {
+              "quote": "i) Assessment-related use- Individual departments may allow or prohibit GenAI for specific assessments; local (team/department/faculty) instructions take precedence. Always check the brief and acknowledge permitted AI use as directed.",
+              "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+              "language": "en-GB",
+              "hash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c",
+              "location": "Responsible uses; captured normalized text line 00602 (Section 5(i))"
+            },
+            {
+              "quote": "It complements, and does not replace, existing Imperial policies on academic integrity, assessment, research ethics, information security, GenAI, and data protection. Where there is any conflict, University policy prevails.",
+              "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+              "language": "en-GB",
+              "hash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c",
+              "location": "dAIsy Use Policy Section 1; captured normalized text line 00582"
+            }
+          ],
+          "summaryZh": "院系可对不同考核允许或禁止 AI；须遵守适用的考核说明，大学政策优先于 dAIsy 使用条款。"
+        },
+        "clm-imperial-college-london-user-accountability": {
+          "id": "clm-imperial-college-london-user-accountability",
+          "text": "Users of Imperial's dAIsy AI platform must always apply critical judgment to AI outputs. Generative AI can produce inaccurate or biased outputs ('hallucinate'), omit context, or reflect training-data biases. Users remain accountable for the accuracy, legality, and appropriateness of any content they submit or share through the platform.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Always apply critical judgement. GenAI can ‘hallucinate’, omit context, or reflect training-data biases. Users remain accountable for the accuracy, legality, and appropriateness of any content they submit or share.",
+              "url": "https://www.imperial.ac.uk/admin-services/ict/training-and-resources/daisy/use-policy/",
+              "language": "en-GB",
+              "hash": "fa9435ce2a87a3af38f7750da801e162b01d203471b0c0f80f947f3b25bcd10c",
+              "location": "Quality, bias and human oversight; captured normalized text line 00617 (Section 9)"
+            }
+          ],
+          "summaryZh": "dAIsy 用户须批判性核实输出，并对准确性、合法性及适当性负责。"
+        }
+      },
+      "images": [
+        {
+          "src": "/assets/policy-scenes/imperial-mechanism-hero-v1.jpg",
+          "sha256": "a4e2b9972b621a1336c5f08d36d889827186370821f7ce63a4a4b328cece2cc4",
+          "alt": {
+            "en": "Check task permission and dAIsy access separately.",
+            "zh": "分别核对考核许可与 dAIsy 访问条件。"
+          }
+        },
+        {
+          "src": "/assets/policy-scenes/imperial-mechanism-do-v1.jpg",
+          "sha256": "d364b367bde6943e273ac3af82c1830bd5bcbffb0bb508bbb0a27441fff2ec88",
+          "alt": {
+            "en": "Check the brief and acknowledge permitted AI use.",
+            "zh": "查看考核说明，并注明获准的 AI 使用。"
+          }
+        },
+        {
+          "src": "/assets/policy-scenes/imperial-mechanism-dont-v1.jpg",
+          "sha256": "5332206433def4ec977bd380e05fa52d6d34f4e63563d49b8a2295ee83473bb8",
+          "alt": {
+            "en": "Do not bypass task rules or share sensitive material without approval.",
+            "zh": "不要绕过考核规定或未经批准分享敏感资料。"
+          }
+        }
+      ],
+      "experience": "compact_evidence",
+      "slug": "imperial-college-london",
+      "presentationRevision": "imperial-v6-ux-20261015",
+      "topics": {
+        "coursework": {
+          "zh": "能否使用 AI 由院系和这项考核的说明决定；未获授权的生成内容可能涉及学术不端。",
+          "en": "Follow the department and assessment brief; unauthorised AI-generated assessed work may be misconduct.",
+          "meaningZh": "这里的“有条件”指各项考核自行规定，不是全校统一许可。",
+          "meaningEn": "Conditional means the assessment sets permission; it is not blanket university approval."
+        },
+        "exams": {
+          "zh": "当前已审核记录未建立统一的考试许可或禁令。请查本次考试说明，工具可访问不等于考试可用。",
+          "en": "The reviewed record establishes no universal exam permission or ban. Check the particular exam instructions.",
+          "meaningZh": "“来源未提及”是证据覆盖缺口，不代表允许，也不代表没有其他考试规定。",
+          "meaningEn": "Not mentioned is an evidence gap, not permission or proof that no exam rules exist."
+        },
+        "disclosure": {
+          "zh": "图书馆建议注明 AI 辅助；获准在考核中使用 dAIsy 时必须注明，具体内容按考核说明。",
+          "en": "Library guidance recommends acknowledgement; permitted assessed use of dAIsy requires it under the service policy.",
+          "meaningZh": "建议与强制要求有不同来源和范围，不能一概当作全校统一披露格式。",
+          "meaningEn": "Advice and mandatory dAIsy conditions have different scope; no universal declaration format is inferred."
+        },
+        "privacy_data": {
+          "zh": "dAIsy 获准处理 unrestricted 数据。Copilot 的数据保护、日志和网络搜索条件须分别核对。",
+          "en": "dAIsy is approved for unrestricted data. Copilot protection, logging and web-search conditions need separate checks.",
+          "meaningZh": "“受限”须结合资料类别和具体工具功能判断，机构账户不自动批准敏感资料。",
+          "meaningEn": "Restrictions depend on data class and tool features; an institutional login does not approve sensitive data."
+        },
+        "approved_tools": {
+          "zh": "师生有 dAIsy 基础访问，Developer 权限限获批员工，并受 token 额度约束；访问不授予考核许可。",
+          "en": "dAIsy Basic access is for staff and students; Developer access is for approved staff, with token limits.",
+          "meaningZh": "这里描述服务访问条件，作业与考试许可另查。",
+          "meaningEn": "This describes service eligibility; coursework and exam permission are separate."
+        },
+        "research_publication": {
+          "zh": "涉及个人资料、敏感主题或参与者的科研，使用 AI 前可能需要伦理审批、DPIA 和数据治理措施。",
+          "en": "Research involving people or sensitive data may need ethics approval, a DPIA and data-governance controls.",
+          "meaningZh": "是否需要审批取决于研究情境，并非每次 AI 使用都须完成同一套程序。",
+          "meaningEn": "Approval requirements depend on the research; not every AI use needs the same process."
+        },
+        "academic_integrity": {
+          "zh": "区分检测证据、学术不端调查及申诉。十个 College 工作日期限不适用于所有成绩或科研争议。",
+          "en": "Distinguish detection evidence, misconduct investigations and appeals; the ten-day rule has a specific procedure.",
+          "meaningZh": "一般纪律规则不是 AI 专属自动处罚；研究生科研案件走 D17。",
+          "meaningEn": "General disciplinary rules are not automatic AI penalties; postgraduate research cases follow D17."
+        },
+        "teaching_guidance": {
+          "zh": "学校提供生成式 AI 教学原则；具体考核许可仍按院系、课程和任务规定。",
+          "en": "University GenAI principles guide teaching; permission still depends on the course and task.",
+          "meaningZh": "原则框架本身不提供作业或考试的通用使用许可。",
+          "meaningEn": "A principles framework does not establish general assessment permission."
+        },
+        "security_procurement": {
+          "zh": "dAIsy 在 Imperial 基础设施中使用 SSO 和审计日志；资料处理须遵守机构 IT 使用条件。",
+          "en": "dAIsy uses SSO and audit logs within Imperial infrastructure, under institutional IT conditions.",
+          "meaningZh": "不用于训练与无日志并非同一件事；获准使用工具不代表任何资料都可输入。",
+          "meaningEn": "No model training does not mean no logging, and tool access is not approval for every data class."
+        }
+      }
     }
   }
 }

@@ -1,0 +1,5 @@
+import type{SupportedLocale}from'@/lib/i18n';
+export function ImperialUxChangeNote({locale='en'}:{locale?:SupportedLocale}){
+ const zh=locale==='zh',prefix=locale==='en'?'':'/'+locale;
+ return <section className="page-shell" id="imperial-v6-ux-20261015" data-presentation-change="imperial-v6-ux-20261015"><h2>{zh?'使用指引与证据阅读体验更新':'Use guidance and evidence reading updated'}</h2><p><time dateTime="2026-10-15">2026-10-15</time></p><p lang={zh?'zh':'en'} data-i18n="preserve">{zh?'行动条目可逐项查看依据；主题提供中文导读并保留英文说明、原文和配图。疑虑处理可通过独立链接分享，手机以全屏详情阅读。重复提交清单已合并，FAQ 按需展开。政策主张、来源、审核状态与生效日期未改。':'Action items link to their own evidence. Topic cards add Chinese reading guides while retaining English explanations, original quotations and illustrations. Concern details have a shareable link and a full-screen mobile view. Duplicate submission checks are consolidated and FAQ is expandable. Policy claims, sources, review states and effective dates are unchanged.'}</p><a href={`${prefix}/universities/imperial-college-london#quick-guide`}>{zh?'查看帝国理工使用指引':'View Imperial use guidance'}</a></section>;
+}

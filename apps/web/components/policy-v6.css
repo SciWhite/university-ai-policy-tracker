@@ -2283,3 +2283,61 @@
  .policy-v6-lab .v6-student-guide__column { margin-bottom:16px; break-inside:avoid; }
 }
 .v6-student-guide__deadline { border-inline-start:3px solid var(--color-accent); padding-inline-start:12px; margin:14px 0; }
+
+/* Imperial-only evidence-first variant. Existing university compositions remain unchanged. */
+[data-ui-experience="imperial-compact"] .v6-imperial-identity-note { display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:center; margin:8px 0 18px; font-size:12px; color:var(--color-text-muted); }
+[data-ui-experience="imperial-compact"] .v6-imperial-identity-note a { font-size:14px; font-weight:600; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column li>div { width:100%; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column li span { display:block; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column li small { display:inline-block; margin:2px 10px 0 0; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column li button { font-size:12px; border:0; background:none; padding:4px 0; color:var(--color-accent); text-decoration:underline; text-underline-offset:3px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column ul { gap:12px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__concern-button { text-decoration:none; }
+[data-ui-experience="imperial-compact"] .v6-imperial-report { display:inline-block; margin-top:14px; font-size:12px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-reading-label { color:var(--color-text-muted); font-size:11px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-status-help { margin:10px 0; }
+[data-ui-experience="imperial-compact"] .v6-imperial-status-help summary { font-size:12px; color:var(--color-accent); cursor:pointer; }
+[data-ui-experience="imperial-compact"] .v6-imperial-status-help p { line-height:1.6; font-size:13px; margin:8px 0; }
+[data-ui-experience="imperial-compact"] .v6-imperial-topic-illustration { margin:12px 0 6px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-topic-illustration summary { cursor:pointer; font-size:12px; color:var(--color-text-muted); }
+[data-ui-experience="imperial-compact"] .v6-imperial-topic-illustration .policy-v6-topic-art { height:100px; max-height:100px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-topic-illustration img { height:100px; object-fit:contain; }
+[data-ui-experience="imperial-compact"] .v6-imperial-faq { margin:28px 0; padding-top:16px; border-top:1px solid var(--color-border); }
+[data-ui-experience="imperial-compact"] .v6-imperial-faq>summary { cursor:pointer; font-weight:600; }
+[data-ui-experience="imperial-compact"] .v6-imperial-faq .policy-v6-faq>h2 { display:none; }
+.v6-imperial-concern { padding:0; width:min(780px,calc(100vw - 40px)); max-width:none; max-height:90dvh; border:1px solid var(--color-border); border-radius:12px; color:var(--color-text); background:var(--color-canvas-default); box-shadow:0 16px 60px #0003; }
+.v6-imperial-concern::backdrop { background:rgb(0 0 0 / .35); }
+.v6-imperial-concern>header { position:sticky; top:0; z-index:1; display:flex; justify-content:space-between; align-items:start; gap:20px; padding:20px 24px; border-bottom:1px solid var(--color-border); background:var(--color-canvas-default); }
+.v6-imperial-concern h2 { font-size:22px; margin:0; }
+.v6-imperial-concern>header p { margin:6px 0 0; font-size:12px; color:var(--color-text-muted); }
+.v6-imperial-concern button { cursor:pointer; padding:8px 12px; border:1px solid var(--color-border); border-radius:6px; color:var(--color-text); background:var(--color-canvas-subtle); }
+.v6-imperial-concern__body { padding:8px 24px 28px; line-height:1.7; }
+.v6-imperial-concern__body nav { display:flex; gap:16px; flex-wrap:wrap; padding:8px 0 16px; border-bottom:1px solid var(--color-border); font-size:14px; }
+.v6-imperial-concern__body>section { scroll-margin-top:120px; margin-top:24px; }
+.v6-imperial-concern__body h3 { margin:0 0 12px; font-size:18px; }
+.v6-imperial-evidence { border-bottom:1px solid var(--color-border); padding:4px 0 14px; margin:0 0 12px; line-height:1.65; }
+.v6-imperial-evidence>p { margin:8px 0; }
+.v6-imperial-evidence summary { cursor:pointer; color:var(--color-accent); font-size:13px; }
+.v6-imperial-evidence blockquote { border-inline-start:2px solid var(--color-border); margin:12px 0; padding-inline-start:12px; overflow-wrap:anywhere; white-space:pre-wrap; }
+.v6-imperial-evidence small { overflow-wrap:anywhere; color:var(--color-text-muted); }
+.v6-imperial-concern footer { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+.v6-imperial-share-url { width:100%; min-width:0; padding:8px; font-size:12px; border:1px solid var(--color-border); background:var(--color-canvas-default); color:var(--color-text); }
+@media(max-width:600px){
+ [data-ui-experience="imperial-compact"] .entity-header h1 { font-size:30px; line-height:1.15; }
+ [data-ui-experience="imperial-compact"] .entity-header { margin-bottom:12px; }
+ [data-ui-experience="imperial-compact"] .v6-imperial-identity-note { margin:6px 0 14px; }
+ [data-ui-experience="imperial-compact"] .policy-v6-questions a { padding:12px; }
+ [data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__actions { gap:16px; }
+ .v6-imperial-concern { width:100vw; height:100dvh; max-height:100dvh; margin:0; inset:0; border:0; border-radius:0; }
+ .v6-imperial-concern>header { padding:16px; }
+ .v6-imperial-concern h2 { font-size:20px; }
+ .v6-imperial-concern>header button { font-size:12px; white-space:nowrap; }
+ .v6-imperial-concern__body { padding:4px 16px 24px; }
+}
+@media print{
+ body:has(.v6-imperial-concern[open]) :is(.site-header,.site-footer,.policy-reference-nav,.policy-reference-content> :not(.policy-v6-intro):not(.v6-student-guide)) { display:none!important; }
+ body:has(.v6-imperial-concern[open]) .v6-imperial-guide> :not(dialog) { display:none!important; }
+ body:has(.v6-imperial-concern[open]) .v6-imperial-concern { position:static; width:100%; max-height:none; height:auto; margin:0; border:0; box-shadow:none; overflow:visible; }
+ body:has(.v6-imperial-concern[open]) .v6-imperial-concern>header { position:static; }
+ body:has(.v6-imperial-concern[open]) .v6-imperial-concern :is(button,footer,nav) { display:none!important; }
+}

@@ -308,7 +308,7 @@ export default async function UniversityPage({
     : publicSummary.lastChangedAt ?? publicSummary.lastCheckedAt;
 
   return (
-    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-policy-layout={uiLab ? "v6" : referencePreview ? "reference-v4" : undefined}>
+    <main className={`page-shell page-shell--wide${referencePreview ? " policy-reference" : ""}`} data-ui-experience={uiLab&&slug==='imperial-college-london'?'imperial-compact':undefined} data-policy-layout={uiLab ? "v6" : referencePreview ? "reference-v4" : undefined}>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -511,6 +511,7 @@ export default async function UniversityPage({
               </MetaLabel>
             </div>
             {uiLab ? <PolicyV6RecordLinks slug={slug} locale={locale}/> : null}
+            {uiLab&&slug==='imperial-college-london'?<p><a href="https://github.com/SciWhite/university-ai-policy-tracker/issues/new" target="_blank" rel="noopener noreferrer">{locale==='zh'?'发现过期或错误政策？报告问题':'Outdated or incorrect policy? Report an issue'} ↗</a></p>:null}
             <p className="student-record-info__citation">
               <strong>Citation:</strong> {publicSummary.suggestedCitation}
             </p>

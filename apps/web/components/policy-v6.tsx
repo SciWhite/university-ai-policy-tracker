@@ -579,6 +579,7 @@ export function PolicyV6Intro() {
   const { ui, data } = lab;
   const current = data.schools.find((s) => s.slug === data.currentSlug);
   return (<>
+    {data.currentSlug==='imperial-college-london'?<div className="v6-imperial-identity-note"><span>{data.locale==='zh'?'独立整理 · 免费开放 · 非学校官方页面':'Independent · Open access · Not an official university page'}</span><a href={`${data.locale==='en'?'':'/'+data.locale}/universities`}>{data.locale==='zh'?'搜索大学':'Search universities'}</a></div>:null}
     <section
       className={v6Classes.intro}
       id="v6-questions"
@@ -701,9 +702,7 @@ export function PolicyV6TopicControls({
         >
           {topic.statusLabel}
         </p>
-        <p lang="en" data-i18n="preserve">
-          {topic.summary}
-        </p>
+        {lab.data.currentSlug!=='imperial-college-london'?<p lang="en" data-i18n="preserve">{topic.summary}</p>:null}
         {topic.basisKind !== "record_analysis" ? (
           <p className="policy-v6-muted">{topic.scope}</p>
         ) : null}
@@ -912,6 +911,7 @@ export function PolicyV6ChecklistFaq({
   }, [lab?.data.currentSlug]);
   if (!lab) return null;
   const { ui, data } = lab;
+  if(data.currentSlug==='imperial-college-london')return includeFaq?<PolicyV6Faq/>:null;
   const density = policyV6DensityCopy(data.locale);
   function save(values: string[]) {
     setChecked(values);
@@ -999,7 +999,7 @@ export function PolicyV6Faq() {
         .map((source) => [source.url, source]),
     ).values(),
   ];
-  return (
+  const content=(
     <section
       className={v6Classes.faq}
       id="student-faq"
@@ -1064,4 +1064,5 @@ export function PolicyV6Faq() {
       </div>
     </section>
   );
+  return data.currentSlug==='imperial-college-london'?<details className="v6-imperial-faq"><summary>{ui.faq}</summary>{content}</details>:content;
 }

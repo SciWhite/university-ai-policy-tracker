@@ -206,7 +206,7 @@ export async function getPolicyV6Data(
   const published = publishedV6Locale(locale);
   if(published && published.schools.some(s=>s.slug===currentSlug)) {
     const current=published.schools.find(s=>s.slug===currentSlug)!;
-    const studentActionsPilot=currentSlug==='massachusetts-institute-of-technology';
+    const studentActionsPilot=['massachusetts-institute-of-technology','imperial-college-london'].includes(currentSlug);
     return {locale,currentSlug,schools:structuredClone(published.schools),published:true,...(studentActionsPilot?{studentActionsPilot,studentActions:getV6StudentActions(current)}:{})};
   }
   const slugs: string[] = [...policyV6Slugs];

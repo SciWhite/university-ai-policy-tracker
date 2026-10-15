@@ -13,6 +13,8 @@ export interface StudentGuideClaim {
  evidence:{quote:string;url:string;language:string;hash:string;location:string}[];
 }
 export interface V6StudentActions {
+ slug?:string;experience?:'compact_evidence';presentationRevision?:string;
+ topics?:Record<string,{en:string;zh:string;meaningEn:string;meaningZh:string}>;
  name:string;recordSha256:string;schoolFingerprint:string;universityRevisionId:string;
  do:StudentAction[];dont:StudentAction[];
  procedures:Record<'investigation'|'outcomes'|'appeal',string[]>;

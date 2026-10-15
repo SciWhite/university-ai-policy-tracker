@@ -1,0 +1,15 @@
+# Imperial V6 evidence-first UX
+
+Only Imperial College London is authorized for this iteration. MIT retains its previously accepted guide and all other universities retain their current composition. The existing shared V6 architecture, white/blue visual language, canonical records, official quotations, tools, snapshots, policy dates and existing images remain unchanged.
+
+Accepted recommendations: six compact scoped actions each opens its own exact claim/evidence; Chinese topic reading guides with explicit site-interpretation labels and status explanations; retained English descriptions/original quotations behind details; large topic illustrations available on demand without deleting files; consolidation of the duplicate bottom checklist into the action guide; FAQ collapsed but fully retained; a direct university-search entry and a GitHub issue link near record details. No full-site navigation, about-page, comparison-data or membership changes.
+
+The concern module separates investigation/response, possible outcomes and appeal. A native modal dialog fills the mobile viewport and contains the page scroll; desktop retains a bounded modal. `?guide=concerns` reopens details directly, supports copying the full URL and printing expanded evidence. The current reviewed Imperial claim preserves the ten College working-day Academic Misconduct Panel appeal condition and the separate PGR D17 route. It does not invent a deadline for research cases or apply the ordinary results-appeal procedure to misconduct.
+
+Images are retained in collapsed scenario/topic controls, not replaced or generated. English remains the official original language; Chinese is a reading guide, not a university-issued translation. Other five locale routes keep explicit English-guidance fallback. Exam evidence gaps remain gaps; tool availability does not establish assessment permission. The per-topic projection does not alter public analysis states or canonical claim dates.
+
+Fresh attempts to retrieve relevant Imperial HTML sources were blocked with HTTP403. The projection therefore uses exact existing published agent-reviewed claim/evidence objects and their retained timestamps. It is not a fresh institutional-policy audit or currentness approval. No source hash is replaced with a blocked-response hash. The school remains PARTIAL.
+
+Disagreements/scope decisions: preserve existing artwork via progressive disclosure rather than deleting most art; use shareable query-addressed details rather than adding a separate school-specific backend/content system; retain complete FAQ/evidence instead of discarding potentially useful information; leave global API/GitHub navigation and comparison mechanics unchanged in this single-school task. No new automatic AI-freedom score or universal policy is introduced.
+
+Release: OCI shared-zone-only build, frozen pushed SHA, isolated candidate and sync2.0 gates; exact selection of Imperial's university/changes paths only. Actual acceptance is appended after completion.

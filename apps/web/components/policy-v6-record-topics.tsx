@@ -21,6 +21,8 @@ export function PolicyV6RecordTopics({
   const copy = policyV6RecordCopy(data.locale);
   const ui = policyV6Copy(data.locale);
   function card(topic: LabTopic) {
+    const readthrough=data.currentSlug==='imperial-college-london'?data.studentActions?.topics?.[topic.key]:undefined;
+    const zh=data.locale==='zh';
     return (
       <article
         className="student-snapshot-card"
@@ -42,19 +44,20 @@ export function PolicyV6RecordTopics({
             <p
               className="student-snapshot-card__sentence"
               data-i18n="preserve"
-              lang="en"
+              lang={readthrough&&zh?'zh':'en'}
             >
-              {topic.summary}
+              {readthrough?(zh?readthrough.zh:readthrough.en):topic.summary}
             </p>
+            {readthrough?<><small className="v6-imperial-reading-label">{zh?'本站导读':'Site reading guide'}</small><details className="v6-imperial-status-help"><summary>{zh?'状态与范围说明':'Status and scope'}</summary><p lang={zh?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{topic.summary}</p></details></>:null}
           </div>
         </div>
-        <PolicyV6Artwork
+        {readthrough?<details className="v6-imperial-topic-illustration"><summary>{zh?'查看情境配图':'Scenario illustration'}</summary><PolicyV6Artwork locale={data.locale} basisFingerprint={basisFingerprint} section={topic.key} schoolSlug={data.currentSlug} className="policy-v6-topic-art"/></details>:<PolicyV6Artwork
           locale={data.locale}
           basisFingerprint={basisFingerprint}
           section={topic.key}
           schoolSlug={data.currentSlug}
           className="policy-v6-topic-art"
-        />
+        />}
         <PolicyV6TopicControls
           dimensionKey={topic.key}
           originalEvidence={
