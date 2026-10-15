@@ -588,6 +588,7 @@ export function PolicyV6Intro() {
     : { coursework: "Can I use AI in coursework?", approved_tools: "Which AI tools can I access?", research_publication: "How can I use AI in research?", teaching_guidance: "How can I use AI in teaching?" };
   return (<>
     {imperial ? <span id="quick-guide" /> : null}
+    {imperial ? <p className="v6-imperial-independence">{data.locale === "zh" ? "独立整理 · 免费开放 · 非学校官方页面" : "Independent · Open access · Not an official university page"}</p> : null}
     <section
       className={v6Classes.intro}
       id="v6-questions"
@@ -620,6 +621,7 @@ export function PolicyV6Intro() {
         })}
       </div>
       <div className={v6Classes.introFoot}>
+        {imperial ? <a className="v6-imperial-check-entry" href="#v6-submission-guide"><strong>{data.locale === "zh" ? "提交前检查" : "Before you submit"}</strong><span>{data.locale === "zh" ? "建议与注意事项" : "Advice and precautions"}</span><span aria-hidden="true">↓</span></a> : null}
         <a
           href={`${data.locale === "en" ? "" : `/${data.locale}`}/changes/${data.currentSlug}`}
         >

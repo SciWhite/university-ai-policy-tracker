@@ -2373,9 +2373,9 @@
 [data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="prohibited"] { color:var(--color-danger-fg); }
 [data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="caution"] { color:var(--color-attention-fg); }
 [data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="neutral"] { color:var(--color-text-muted); }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-policy__grid { grid-auto-rows:auto; align-items:start; gap:14px; }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card { height:auto; min-height:0; padding:16px; gap:10px; }
-[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card__summary { flex:none; }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-policy__grid { grid-auto-rows:1fr; align-items:stretch; gap:14px; }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card { height:100%; min-height:0; padding:16px; gap:10px; }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card__summary { flex:1; }
 [data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card__sentence { font-weight:500; line-height:1.6; margin-top:6px; }
 [data-ui-experience="imperial-compact"] .policy-v6-topicFooter { gap:4px 8px; }
 [data-ui-experience="imperial-compact"] .v6-imperial-guide { margin:24px 0; }
@@ -2392,3 +2392,18 @@
 [data-ui-experience="imperial-compact"] .v6-imperial-university-search { font-size:14px; font-weight:600; }
 [data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__concern { border:0; }
 [data-ui-experience="imperial-compact"] .policy-v6-tools #university-ai-tools { border-top:0; padding-top:0; margin-top:12px; }
+
+/* Imperial local review: accessible action shortcut and neutral action prose. */
+[data-ui-experience="imperial-compact"] .v6-imperial-independence { margin:6px 0 16px; color:var(--color-text-muted); font-size:12px; line-height:1.5; }
+[data-ui-experience="imperial-compact"] .policy-v6-introFoot { justify-content:space-between; gap:8px 20px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-check-entry { display:inline-flex; align-items:center; gap:10px; min-height:44px; color:var(--color-accent); text-underline-offset:3px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-check-entry strong { font-size:14px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-check-entry>span { font-size:12px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column { border-top:0; border-inline-start:2px solid var(--color-success-fg); padding:0 0 0 12px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__column--dont { border-inline-start-color:var(--color-danger-fg); }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-imperial-action-text { color:var(--color-text); }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-imperial-action-meta small { font-size:12px; font-weight:500; line-height:1.5; }
+@media(max-width:600px){
+ [data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-policy__grid { grid-auto-rows:auto; }
+ [data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card { height:auto; }
+}
