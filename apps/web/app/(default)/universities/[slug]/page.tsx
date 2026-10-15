@@ -14,7 +14,7 @@ import { policyV6AgentReviewLabel } from '@/lib/policy-v6-review';
 import { getPolicyV6IllustratedScene } from '@/lib/policy-v6-illustrated-scene';
 import { PolicyV6RecordTopics } from '@/components/policy-v6-record-topics';
 import { Fragment } from 'react';
-import { PolicyV6Provider, PolicyV6Actions, PolicyV6Intro, PolicyV6ChecklistFaq, PolicyV6Faq } from '@/components/policy-v6';
+import { PolicyV6Provider, PolicyV6Actions, PolicyV6Intro, PolicyV6BeforeTools, PolicyV6ChecklistFaq, PolicyV6Faq } from '@/components/policy-v6';
 import { getPolicyV6Data, isPolicyV6Preview } from '@/lib/policy-v6';
 import { buildPolicyAnalysisProfile } from "@/lib/policy-analysis";
 import { isCandidateRepairPreview } from "@/lib/public-record-repairs";
@@ -370,7 +370,7 @@ export default async function UniversityPage({
         title={<span data-i18n="preserve">{uiLab ? getPolicyV6UniversityTitle(slug, displayName) : displayName}</span>}
       />
 
-      {uiLab ? <><PolicyV6Intro />{locale !== "en" ? <p className="muted" data-i18n="preserve">{locale === "zh" ? "政策正文和证据保留原英文；界面翻译不代表政策译文已审核。" : "Policy wording and evidence retain their original English. Interface translation is not a reviewed policy translation."}</p> : null}</> : null}
+      {uiLab ? <><PolicyV6Intro />{locale !== "en" && slug !== "imperial-college-london" ? <p className="muted" data-i18n="preserve">{locale === "zh" ? "政策正文和证据保留原英文；界面翻译不代表政策译文已审核。" : "Policy wording and evidence retain their original English. Interface translation is not a reviewed policy translation."}</p> : null}</> : null}
       {enforcementPage ? <EnforcementTaskEntrances locale={locale} /> : null}
       {policyScene ? referencePreview ? <PolicyReferenceHero uiLab={uiLab} scene={policyScene} locale={locale} localizedActions={enforcementPage && locale === "zh"} emphasizeActions={enforcementPage} enforcement={enforcementPage} tools={isPublishedUniversityAiToolsModule(slug)} supplements={showSupplements} /> : <PolicySceneHero scene={policyScene} /> : null}
       {policyScene && !compactPolicyPilot ? <PolicySceneStory scene={policyScene} /> : null}
@@ -391,8 +391,9 @@ export default async function UniversityPage({
         />
       ) : null}
       {labData ? <PolicyV6RecordTopics data={labData} additionalOnly={strongSnapshot} /> : null}
-      {policyScene?.quickGuide && !strongSnapshot ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
+      {policyScene?.quickGuide && !strongSnapshot && !(uiLab && slug === "imperial-college-london") ? <PolicySceneGallery scene={referenceScene!} locale={referencePreview ? locale : "en"} /> : null}
       {enforcementPage ? <EnforcementV4Refresh slug={slug} locale={locale} uiLab={uiLab} /> : null}
+      {uiLab ? <PolicyV6BeforeTools /> : null}
       {isPublishedUniversityAiToolsModule(slug) ? <UniversityAiTools uiLab={uiLab} draftPreview={draftPreview} locale={locale} records={await getUniversityToolRecords(publicSummary)} /> : null}
       {uiLab ? <PolicyV6ChecklistFaq includeFaq={false} /> : null}
       {showSupplements ? <PolicySupplements slug={slug} locale={locale} claims={reviewedClaims} /> : null}

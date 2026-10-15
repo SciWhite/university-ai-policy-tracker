@@ -2341,3 +2341,54 @@
  body:has(.v6-imperial-concern[open]) .v6-imperial-concern>header { position:static; }
  body:has(.v6-imperial-concern[open]) .v6-imperial-concern :is(button,footer,nav) { display:none!important; }
 }
+
+/* Local Imperial refinement: direct quotes, compact action metadata and long-evidence reading. */
+[data-ui-experience="imperial-compact"] .v6-imperial-action-meta { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+[data-ui-experience="imperial-compact"] .v6-imperial-action-meta small { margin:0!important; padding:0!important; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-imperial-action-meta .policy-v6-popoverAnchor { display:inline-flex; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-imperial-action-meta>.policy-v6-popoverAnchor>button { min-height:44px; padding:8px 4px; }
+.v6-imperial-action-scope { margin:0 0 8px; font-size:12px; }
+.v6-imperial-action-scope>summary { cursor:pointer; color:var(--color-text-muted); }
+.v6-imperial-concern__header-actions { display:flex; align-items:center; flex-shrink:0; gap:8px; }
+.v6-imperial-concern__header-actions button { min-width:44px; min-height:44px; }
+.v6-imperial-concern .v6-imperial-share-top { display:inline-flex; align-items:center; justify-content:center; padding:10px; }
+.v6-imperial-live-status { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+@media(max-width:600px){
+ .policy-v6-popover[data-mobile-reading="expanded"] .policy-v6-popoverHeader { padding-top:12px; padding-bottom:12px; border-bottom:1px solid var(--color-border); }
+ .policy-v6-popover[data-mobile-reading] .policy-v6-popoverClose { min-width:44px; min-height:44px; }
+ [data-ui-experience="imperial-compact"] .v6-imperial-identity-note { row-gap:4px; align-items:baseline; }
+ .v6-imperial-concern>header { gap:8px; }
+ .v6-imperial-concern>header h2 { font-size:18px; }
+}
+
+/* Imperial local density review: no decorative artwork or reserved illustration space. */
+[data-ui-experience="imperial-compact"] .policy-v6-intro { margin:16px 0 22px; }
+[data-ui-experience="imperial-compact"] .policy-v6-questions { gap:10px; margin:8px 0; }
+[data-ui-experience="imperial-compact"] .policy-v6-questions>a { min-height:94px; padding:12px; gap:6px; align-content:start; }
+[data-ui-experience="imperial-compact"] .policy-v6-questions strong { font-size:16px; line-height:1.4; }
+[data-ui-experience="imperial-compact"] .policy-v6-questions small { font-size:14px; }
+[data-ui-experience="imperial-compact"] .v6-student-guide__column--do { border-color:var(--color-success-fg); }
+[data-ui-experience="imperial-compact"] .v6-student-guide__column--dont { border-color:var(--color-danger-fg); }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="allowed"] { color:var(--color-success-fg); }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="prohibited"] { color:var(--color-danger-fg); }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="caution"] { color:var(--color-attention-fg); }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content [data-policy-tone="neutral"] { color:var(--color-text-muted); }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-policy__grid { grid-auto-rows:auto; align-items:start; gap:14px; }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card { height:auto; min-height:0; padding:16px; gap:10px; }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card__summary { flex:none; }
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .policy-v6-record-topics .student-snapshot-card__sentence { font-weight:500; line-height:1.6; margin-top:6px; }
+[data-ui-experience="imperial-compact"] .policy-v6-topicFooter { gap:4px 8px; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide { margin:24px 0; }
+@media(min-width:1000px){
+ [data-ui-experience="imperial-compact"] .policy-v6-questions { grid-template-columns:repeat(4,minmax(0,1fr)); }
+}
+@media(max-width:600px){
+ [data-ui-experience="imperial-compact"] .policy-v6-questions>a { min-height:100px; padding:10px; }
+ [data-ui-experience="imperial-compact"] .policy-v6-questions strong { font-size:15px; }
+}
+[data-ui-experience="imperial-compact"] .policy-v6-lab .policy-reference-content .student-snapshot-card .student-snapshot-card__status[data-policy-tone="prohibited"] { color:var(--color-danger-fg); }
+
+/* Imperial: remove standalone dividers and explanatory copy from the reading flow. */
+[data-ui-experience="imperial-compact"] .v6-imperial-university-search { font-size:14px; font-weight:600; }
+[data-ui-experience="imperial-compact"] .v6-imperial-guide .v6-student-guide__concern { border:0; }
+[data-ui-experience="imperial-compact"] .policy-v6-tools #university-ai-tools { border-top:0; padding-top:0; margin-top:12px; }

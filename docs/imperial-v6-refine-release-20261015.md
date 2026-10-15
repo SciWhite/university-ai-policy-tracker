@@ -1,0 +1,7 @@
+# Imperial V6 compact presentation release
+
+Scope: Imperial College London only. Publishes the user-reviewed local presentation: four compact unnumbered entry points for coursework, tools, research and teaching; no scenario illustrations or illustration controls; compact topic cards with scope details in their action row; submission guidance immediately before tools; semantic green/yellow/red/gray colours; direct action evidence, adaptive long mobile evidence, concern deep links and top sharing. Removes the three selected explanatory sentences and decorative concern/tool dividers. Preserves complete quoted policy evidence, university marks, source conditions in detail views, and canonical policy records.
+
+Other university compositions, policy/snapshot review states, policy timestamps, API/MCP records, image files and previous releases remain unchanged. Illustration files continue to support historical/other-school presentations. The Imperial changes page gains a presentation-only note; no new university policy date or artificial RSS policy event is created.
+
+Minimum release path B: frozen pushed code, OCI build of the existing isolated shared zone only, immutable asset prefix, candidate acceptance and sync 2.0.0 gate, exact Imperial HTML university/changes routing, then public readback and scoped sitemap-eligible notifications. No main-web build or restart. Actual release evidence will be appended after acceptance. No fresh university-policy currentness audit or full screen-reader certification is claimed.

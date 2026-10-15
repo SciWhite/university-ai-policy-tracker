@@ -37,7 +37,7 @@ export function PolicyV6RecordTopics({
             <h3>{topic.title}</h3>
             <p
               className="student-snapshot-card__status"
-              data-policy-tone={policyV6StatusTone(topic.status)}
+              data-policy-tone={policyV6StatusTone(topic.status, data.currentSlug)}
             >
               {topic.statusLabel}
             </p>
@@ -48,10 +48,9 @@ export function PolicyV6RecordTopics({
             >
               {readthrough?(zh?readthrough.zh:readthrough.en):topic.summary}
             </p>
-            {readthrough?<><small className="v6-imperial-reading-label">{zh?'本站导读':'Site reading guide'}</small><details className="v6-imperial-status-help"><summary>{zh?'状态与范围说明':'Status and scope'}</summary><p lang={zh?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{topic.summary}</p></details></>:null}
           </div>
         </div>
-        {readthrough?<details className="v6-imperial-topic-illustration"><summary>{zh?'查看情境配图':'Scenario illustration'}</summary><PolicyV6Artwork locale={data.locale} basisFingerprint={basisFingerprint} section={topic.key} schoolSlug={data.currentSlug} className="policy-v6-topic-art"/></details>:<PolicyV6Artwork
+        {data.currentSlug==='imperial-college-london'?null:<PolicyV6Artwork
           locale={data.locale}
           basisFingerprint={basisFingerprint}
           section={topic.key}
@@ -60,6 +59,7 @@ export function PolicyV6RecordTopics({
         />}
         <PolicyV6TopicControls
           dimensionKey={topic.key}
+          scopeDetail={readthrough?<><p lang={zh?'zh':'en'}>{zh?readthrough.meaningZh:readthrough.meaningEn}</p><p lang="en" data-i18n="preserve">{topic.summary}</p></>:undefined}
           originalEvidence={
             <div className="student-snapshot-card__evidence">
               {topic.claims.length ? (

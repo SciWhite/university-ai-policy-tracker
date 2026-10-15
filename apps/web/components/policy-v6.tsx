@@ -438,6 +438,7 @@ export function PolicyV6Provider({
                                   className={v6Classes.badge}
                                   data-policy-tone={policyV6StatusTone(
                                     d.status,
+                                    s.slug,
                                   )}
                                 >
                                   {d.statusLabel}
@@ -578,8 +579,15 @@ export function PolicyV6Intro() {
   if (!lab) return null;
   const { ui, data } = lab;
   const current = data.schools.find((s) => s.slug === data.currentSlug);
+  const imperial = data.currentSlug === "imperial-college-london";
+  const questionKeys = imperial
+    ? ["coursework", "approved_tools", "research_publication", "teaching_guidance"] as const
+    : ["coursework", "disclosure", "privacy_data", "approved_tools"] as const;
+  const imperialQuestions: Record<string, string> = data.locale === "zh"
+    ? { coursework: "作业里可以用 AI 吗？", approved_tools: "有哪些工具可以使用？", research_publication: "研究发表如何使用 AI？", teaching_guidance: "教学中如何使用 AI？" }
+    : { coursework: "Can I use AI in coursework?", approved_tools: "Which AI tools can I access?", research_publication: "How can I use AI in research?", teaching_guidance: "How can I use AI in teaching?" };
   return (<>
-    {data.currentSlug==='imperial-college-london'?<div className="v6-imperial-identity-note"><span>{data.locale==='zh'?'独立整理 · 免费开放 · 非学校官方页面':'Independent · Open access · Not an official university page'}</span><a href={`${data.locale==='en'?'':'/'+data.locale}/universities`}>{data.locale==='zh'?'搜索大学':'Search universities'}</a></div>:null}
+    {imperial ? <span id="quick-guide" /> : null}
     <section
       className={v6Classes.intro}
       id="v6-questions"
@@ -589,24 +597,19 @@ export function PolicyV6Intro() {
         <div>
           <h2 id="lab-explore-title">{ui.explore}</h2>
         </div>
+        {imperial ? <a className="v6-imperial-university-search" href={`${data.locale==='en'?'':'/'+data.locale}/universities`}>{data.locale==='zh'?'搜索大学':'Search universities'}</a> : null}
       </div>
       <div className={v6Classes.questions}>
-        {(
-          [
-            "coursework",
-            "disclosure",
-            "privacy_data",
-            "approved_tools",
-          ] as const
-        ).map((key, i) => {
-          const topic = current?.topics.find((t) => t.key === key);
+        {questionKeys.map((key, i) => {
+          const topic = [...current?.topics ?? [], ...current?.additionalTopics ?? []].find((t) => t.key === key);
           return (
             <a href={`#snapshot-${key}`} key={key}>
-              <span className={v6Classes.questionNumber}>0{i + 1}</span>
-              <strong>{ui[key]}</strong>
+              {imperial ? null : <span className={v6Classes.questionNumber}>0{i + 1}</span>}
+              <strong>{imperial ? imperialQuestions[key] : ui[key as "coursework" | "disclosure" | "privacy_data" | "approved_tools"]}</strong>
               <small
                 data-policy-tone={policyV6StatusTone(
                   topic?.status ?? "unclear",
+                  data.currentSlug,
                 )}
               >
                 {topic?.statusLabel ?? ui.unavailableEvidence}
@@ -624,17 +627,25 @@ export function PolicyV6Intro() {
         </a>
       </div>
     </section>
-    {data.studentActionsPilot?<PolicyV6StudentGuide guide={data.studentActions} locale={data.locale}/>:null}
+    {data.studentActionsPilot && !imperial?<PolicyV6StudentGuide guide={data.studentActions} locale={data.locale}/>:null}
     </>
   );
+}
+
+export function PolicyV6BeforeTools() {
+  const lab = useLab();
+  if (!lab || lab.data.currentSlug !== "imperial-college-london" || !lab.data.studentActionsPilot) return null;
+  return <PolicyV6StudentGuide guide={lab.data.studentActions} locale={lab.data.locale} />;
 }
 
 export function PolicyV6TopicControls({
   dimensionKey,
   originalEvidence,
+  scopeDetail,
 }: {
   dimensionKey: string;
   originalEvidence?: ReactNode;
+  scopeDetail?: ReactNode;
 }) {
   const lab = useLab();
   if (!lab) return null;
@@ -693,12 +704,13 @@ export function PolicyV6TopicControls({
         closeLabel={lab.ui.close}
         triggerClassName="policy-v6-evidenceTrigger"
         className="policy-v6-originalPopover"
+        mobileReading={lab.data.currentSlug === "imperial-college-london"}
         width={480}
         align="start"
       >
         <p
           className="policy-v6-popoverStatus"
-          data-policy-tone={policyV6StatusTone(topic.status)}
+          data-policy-tone={policyV6StatusTone(topic.status, lab.data.currentSlug)}
         >
           {topic.statusLabel}
         </p>
@@ -725,6 +737,17 @@ export function PolicyV6TopicControls({
           {originals}
         </div>
       </PolicyV6Popover>
+      {scopeDetail ? <PolicyV6Popover
+        id={`snapshot-scope-${topic.key}`}
+        label={lab.data.locale === "zh" ? "状态与范围" : "Status & scope"}
+        title={`${topic.title} · ${lab.data.locale === "zh" ? "状态与范围" : "Status & scope"}`}
+        closeLabel={lab.ui.close}
+        triggerClassName="policy-v6-textAction"
+        className="v6-imperial-scope-popover"
+        width={480}
+        align="start"
+        mobileReading
+      >{scopeDetail}</PolicyV6Popover> : null}
       <button
         className="policy-v6-textAction"
         aria-label={`${lab.ui.copy}: ${topic.title}`}

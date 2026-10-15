@@ -68,6 +68,8 @@ export function PolicyV6Popover({
   triggerClassName = "",
   closeLabel = "Close",
   align = "trigger",
+  accessibleLabel,
+  mobileReading = false,
 }: {
   label: ReactNode;
   title?: ReactNode;
@@ -80,6 +82,9 @@ export function PolicyV6Popover({
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   align?: "trigger" | "content" | "start";
+  accessibleLabel?: string;
+  /** Opt-in reading space for long evidence; other schools retain their placement. */
+  mobileReading?: boolean;
 }) {
   const generatedId = useId();
   const id = suppliedId ?? generatedId;
@@ -98,6 +103,22 @@ export function PolicyV6Popover({
     const gutter = 12,
       gap = 8;
     const available = Math.max(160, window.innerHeight - gutter * 2);
+    if (mobileReading) {
+      const body = node.querySelector<HTMLElement>(".policy-v6-popoverBody");
+      const header = node.querySelector<HTMLElement>(".policy-v6-popoverHeader");
+      const readingHeight = (body?.scrollHeight ?? 0) + (header?.offsetHeight ?? 0);
+      const expanded = window.innerWidth <= 600 &&
+        (readingHeight > window.innerHeight * 0.55 || node.querySelectorAll("blockquote").length > 1);
+      node.dataset.mobileReading = expanded ? "expanded" : "compact";
+      node.style.height = expanded ? `${available}px` : "";
+      if (expanded) {
+        node.style.width = `${window.innerWidth - gutter * 2}px`;
+        node.style.maxHeight = `${available}px`;
+        node.style.left = `${gutter}px`;
+        node.style.top = `${gutter}px`;
+        return;
+      }
+    }
     const content =
       align === "content"
         ? button.closest(".policy-reference-content")?.getBoundingClientRect()
@@ -143,7 +164,7 @@ export function PolicyV6Popover({
       window.removeEventListener("resize", place);
       window.removeEventListener("scroll", place, true);
     };
-  }, [open, width, align]);
+  }, [open, width, align, mobileReading]);
   return (
     <span className="policy-v6-popoverAnchor">
       <button
@@ -153,6 +174,7 @@ export function PolicyV6Popover({
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={id}
+        aria-label={accessibleLabel}
         popoverTarget={id}
         onClick={(event) => {
           event.preventDefault();
@@ -175,11 +197,21 @@ export function PolicyV6Popover({
         aria-labelledby={`${id}-title`}
         className={`policy-v6-popover ${className}`}
         style={{ width }}
+        onKeyDown={mobileReading ? (event) => {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            panel.current?.hidePopover();
+            trigger.current?.focus();
+          }
+        } : undefined}
         onToggle={(event) => {
           const isOpen = (event.nativeEvent as ToggleEvent).newState === "open";
           change(isOpen);
           if (isOpen) {
             place();
+            if (mobileReading) {
+              nodeHeading(panel.current)?.focus({ preventScroll: true });
+            }
             document.dispatchEvent(
               new CustomEvent("policy-v6-popover-open", { detail: id }),
             );
@@ -187,7 +219,7 @@ export function PolicyV6Popover({
         }}
       >
         <header className="policy-v6-popoverHeader">
-          <h3 id={`${id}-title`}>{title}</h3>
+          <h3 id={`${id}-title`} tabIndex={mobileReading ? -1 : undefined}>{title}</h3>
           <button
             type="button"
             aria-label={closeLabel}
@@ -204,4 +236,8 @@ export function PolicyV6Popover({
       </div>
     </span>
   );
+}
+
+function nodeHeading(panel: HTMLDivElement | null) {
+  return panel?.querySelector<HTMLElement>(".policy-v6-popoverHeader h3");
 }
