@@ -56,7 +56,7 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
      const payload=parts[1]?diff?.entities.find(entity=>entity.entitySlug===parts[1]):diff;
      return NextResponse.json(payload??{error:'Change diff not found'},{status:payload?200:404,headers:{'Cache-Control':'private, no-store, no-transform'}});
    }
-   const scoped=parts[0]==='latest'&&parts[1] ? await getScopedRecordReleaseDiff(correction.recordRevisions[parts[1]]?.universityRevisionId??'') : undefined;
+   const scoped=parts[0]==='latest'&&parts[1]&&correction.recordRevisions[parts[1]]?.universityRevisionId===correction.revision ? await getScopedRecordReleaseDiff(correction.revision) : undefined;
    const payload=parts[0]==='latest'&&parts[1] ? scoped?.entities.find(entity=>entity.entitySlug===parts[1])??await getLatestEntityReleaseDiff(parts[1]) : parts[1] ? await getEntityReleaseDiff(parts[0],parts[1]) : await getReleaseDiff(parts[0]);
    return NextResponse.json(payload?{...payload,...(parts[0]==='latest'&&correction.changesBySlug[parts[1]]?{scopedRecordCorrection:{revision:correction.revision,...correction.changesBySlug[parts[1]]}}:{})}:{error:'Change diff not found'},{status:payload?200:404});
  }
