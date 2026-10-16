@@ -1339,10 +1339,11 @@ export async function getScopedRecordReleaseDiff(releaseId:string):Promise<Relea
  if(!summaries.length)return undefined;
  const manifest=await getManifestByReleaseId(correction.datasetReleaseId);if(!manifest)throw Error('Scoped correction dataset basis unavailable');
  const entities=summaries.map(summary=>{
- const slug=summary.entity.slug,previousReleaseId=correction.recordRevisions[slug].baselineRevisionId??'baseline-v6-pages-20261013';
- const entity=buildEntityDiff({...manifest,releaseId,publishedAt:correction.publishedAt},{...manifest,releaseId:previousReleaseId},correction.historical[slug].baseline,summary,new Map());
+ const slug=summary.entity.slug,previousReleaseId=correction.recordRevisions[slug].previousRevisionId??correction.recordRevisions[slug].baselineRevisionId??'baseline-v6-pages-20261013';
+ const previous=readV6RecordCorrectionRevision(previousReleaseId)?.summaries.find(s=>s.entity.slug===slug)??correction.historical[slug].baseline;
+ const entity=buildEntityDiff({...manifest,releaseId,publishedAt:correction.publishedAt},{...manifest,releaseId:previousReleaseId},previous,summary,new Map());
  entity.lastChangedAt=correction.publishedAt;entity.publicationKind='scoped_record_correction';entity.changeSummary=correction.changeSummary?.en;entity.recordSha256=correction.recordRevisions[slug].recordSha256;
- for(const row of entity.rows){row.changeExplanation=`Tracker audit correction, not a new university policy publication. ${row.changeExplanation}`;row.limitations=[...row.limitations,'Previous record is the frozen school baseline; correction timestamps are not university effective dates.'];}
+ for(const row of entity.rows){row.changeExplanation=`Tracker audit correction, not a new university policy publication. ${row.changeExplanation}`;row.limitations=[...row.limitations,'Previous record is the frozen prior school revision or baseline; correction timestamps are not university effective dates.'];}
  return entity;});
  return {apiVersion:PUBLIC_API_VERSION,canonicalUrl:new URL(`/changes/${releaseId}`,getSiteBaseUrl()).toString(),changeCounts:summarizeRows(entities.flatMap(e=>e.rows)),currentReleaseId:releaseId,entities,generatedAt:correction.publishedAt,license:TRACKER_METADATA_LICENSE,limitations:['Scoped tracker correction; global dataset release unchanged.',NO_ADVICE_BOUNDARY],previousReleaseId:correction.parentRevisionId??'baseline-v6-pages-20261013',releaseId,sourcePolicy:OFFICIAL_SOURCE_RIGHTS_CAVEAT,sourceRightsPolicy:OFFICIAL_SOURCE_RIGHTS_CAVEAT,publicationKind:'scoped_record_correction',changeSummary:correction.changeSummary?.en};
 }

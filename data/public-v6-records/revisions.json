@@ -58,5 +58,10 @@
     "path": "revisions/cornell-v6-20261016.json",
     "sha256": "630e638a007050c1eb1a8fe4dfd3eac69436438804f2af339bf77bdd72ef705f",
     "revision": "cornell-v6-20261016"
+  },
+  "cornell-v6-r2-20261016": {
+    "path": "revisions/cornell-v6-r2-20261016.json",
+    "revision": "cornell-v6-r2-20261016",
+    "sha256": "663b3238c4d1e1d25ba3fee3f7a4fcdc3c1945e48669819b8a26ef2fccceb63c"
   }
 }

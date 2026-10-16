@@ -1,0 +1,9 @@
+# Cornell V6 follow-up correction
+
+The independent acceptance correctly identified two public-surface inconsistencies and two procedural gaps. The tools API already had four Cornell records, but `/tools` and localized directories were still served by the older main-service artifact (1,514 records versus 1,603 in the effective API). Cornell `entity.summary`, top-level summary and suggested citation also retained the old count/date. New bounded tools/search routes reuse the existing pages and effective-record loaders; no replacement design or whole-site build is needed.
+
+Two additional claims cover the officially announced Fall 2026 in-person undergraduate/graduate Ithaca/Cornell Tech implementation scope (including the teaching notice's CVM/Law exclusions) and Code II.E/II.G central Registry records, disclosure limits and expungement after a Board/Dean finding of no violation. Completed Accepting Responsibility is recorded internally despite not producing a finding of guilt. No fixed retention period is invented; the announced scope is not turned into a prohibition on other settings. The older pilot page remains historical context, not the current implementation authority.
+
+All prior 45 Claim objects, four tools, prior school records, old strong baseline and current snapshot hold are preserved. The current Cornell record has 47 claims and 17 official source attributions. The summary/citation use that actual current basis, while historical versions remain immutable. The new diff compares with the preceding Cornell revision, with two added claims. The current student snapshot remains needs_review and the whole-university audit PARTIAL.
+
+Candidate acceptance, exact artifact identity and public release results will be recorded after actual verification. This preparation record does not claim deployment.

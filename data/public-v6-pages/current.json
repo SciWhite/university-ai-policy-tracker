@@ -1,7 +1,7 @@
 {
-  "path": "revisions/cornell-v6-20261016.json",
-  "sha256": "237594eac78cfa97dc74fb10a5ebf5eab3e576d2678e624584bea14b37e1177e",
-  "releaseId": "cornell-v6-20261016",
+  "path": "revisions/cornell-v6-r2-20261016.json",
+  "sha256": "3659a6e11670430a8521e13eb3e200b5694346897be29c3388015e13f1a128a0",
+  "releaseId": "cornell-v6-r2-20261016",
   "slugs": [
     "massachusetts-institute-of-technology",
     "imperial-college-london",

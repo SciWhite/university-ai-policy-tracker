@@ -4680,11 +4680,11 @@
     "cornell-university": {
       "slug": "cornell-university",
       "name": "Cornell University",
-      "recordSha256": "d5df21e68bfdd61221ee8d62f5c01aa9690a2a65021522db0fb070c83e04b69b",
-      "schoolFingerprint": "d5df21e68bfdd61221ee8d62f5c01aa9690a2a65021522db0fb070c83e04b69b",
-      "universityRevisionId": "cornell-v6-20261016",
+      "recordSha256": "a71453cb554c40d3033d481fc9bbb1f4b2795ac345bea6502e8f82212727af8f",
+      "schoolFingerprint": "a71453cb554c40d3033d481fc9bbb1f4b2795ac345bea6502e8f82212727af8f",
+      "universityRevisionId": "cornell-v6-r2-20261016",
       "experience": "compact_evidence",
-      "presentationRevision": "cornell-v6-20261016",
+      "presentationRevision": "cornell-v6-r2-20261016",
       "images": [],
       "scope": {
         "en": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
@@ -4728,8 +4728,8 @@
           "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
         },
         "academic_integrity": {
-          "en": "The Code explicitly covers unauthorized AI and fabricated citations. Findings require clear and convincing evidence; notice, response and review stages apply. Accepting Responsibility is voluntary and waives ordinary appeals. CTI discourages unreliable detectors; no detector score or AI use alone establishes guilt or an automatic sanction.",
-          "zh": "守则明确涵盖未授权 AI 和虚假引用；认定须有清楚且令人信服的证据，并有通知、答复与复核程序。自愿 Accepting Responsibility 会放弃通常申诉。CTI 不推荐不可靠检测器，AI 使用或分数本身不自动定罪处分。",
+          "en": "The Code explicitly covers unauthorized AI and fabricated citations. Findings require clear and convincing evidence; notice, response and review stages apply. Accepting Responsibility is voluntary and waives ordinary appeals. CTI discourages unreliable detectors; no detector score or AI use alone establishes guilt or an automatic sanction. Announced in-person Ithaca/Tech implementation scope and internal Registry records, disclosure limits and no-violation expungement must also be checked.",
+          "zh": "守则明确涵盖未授权 AI 和虚假引用；认定须有清楚且令人信服的证据，并有通知、答复与复核程序。自愿 Accepting Responsibility 会放弃通常申诉。CTI 不推荐不可靠检测器，AI 使用或分数本身不自动定罪处分。 自愿承担责任的 Ithaca／Cornell Tech 线下课程实施范围、内部记录及披露／清除条件须另行核对。",
           "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
           "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
         },
@@ -4753,7 +4753,7 @@
         "privacy_data": "Do not put confidential, proprietary, regulated or sensitive Cornell data into public AI. The committee report's training-data warning concerns third-party services; approved platforms have product-specific limits. Copilot Basic is Low Risk only; the limited AI Platform pilot lists Moderate Risk and below.",
         "approved_tools": "Firefly needs an Adobe licence; Cornell AI Platform is a limited free pilot; Copilot Basic is free for eligible affiliates aged 18+ with Low Risk data. Zoom AI Companion security/privacy are still being evaluated in the Hub entry. Tool access is not assessment permission.",
         "research_publication": "The 2023 research task-force report is non-binding advice. Communication PhD A/B exam papers/dissertations have specific AI drafting restrictions and disclosure/committee requirements; these are not a Cornell-wide thesis ban. Check applicable research, IRB, sponsor and publication requirements separately.",
-        "academic_integrity": "The Code explicitly covers unauthorized AI and fabricated citations. Findings require clear and convincing evidence; notice, response and review stages apply. Accepting Responsibility is voluntary and waives ordinary appeals. CTI discourages unreliable detectors; no detector score or AI use alone establishes guilt or an automatic sanction.",
+        "academic_integrity": "The Code explicitly covers unauthorized AI and fabricated citations. Findings require clear and convincing evidence; notice, response and review stages apply. Accepting Responsibility is voluntary and waives ordinary appeals. CTI discourages unreliable detectors; no detector score or AI use alone establishes guilt or an automatic sanction. Announced in-person Ithaca/Tech implementation scope and internal Registry records, disclosure limits and no-violation expungement must also be checked.",
         "teaching_guidance": "Communicate course and assignment AI rules clearly. Instructors choose the permitted scope. The 2023 committee does not recommend AI summative grading; this is guidance, not a universal disciplinary prohibition.",
         "security_procurement": "Public AI cannot receive sensitive Cornell data. IT requires administrative AI use to comply with its administration guidance; approved/local tools and data classifications require separate checks. The research report alone is not procurement approval."
       },
@@ -4819,13 +4819,15 @@
           "clm-cornell-evidence-investigation",
           "clm-cornell-primary-hearing-notice",
           "clm-cornell-board-participation",
-          "claim-cornell-university-7"
+          "claim-cornell-university-7",
+          "clm-cornell-accepting-implementation-scope"
         ],
         "outcomes": [
           "clm-cornell-primary-outcomes",
           "clm-cornell-accepting-responsibility",
           "clm-cornell-accepting-eligibility-choice",
-          "clm-cornell-accepting-workshop"
+          "clm-cornell-accepting-workshop",
+          "clm-cornell-central-registry"
         ],
         "appeal": [
           "clm-cornell-board-review",
@@ -5237,6 +5239,55 @@
               "language": "en",
               "hash": "66790a22b1fe2b1d76e8efb7b2d9aa1aa3ae684aeddad98809dfb3839e55872b",
               "location": "Use of GenAI in A and B Exams; character chunk 680; extracted text lines 158–158"
+            }
+          ]
+        },
+        "clm-cornell-accepting-implementation-scope": {
+          "id": "clm-cornell-accepting-implementation-scope",
+          "text": "Cornell’s Fall 2026 implementation makes Accepting Responsibility available for minor first-time violations in all in-person undergraduate and graduate classes on the Ithaca and Cornell Tech campuses; the teaching notice excludes CVM and Law. This states the announced implementation scope, not an inferred prohibition in every other setting. Eligibility, voluntary choice and graduate-specific or honor-code procedures remain separate.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Academic Integrity: Fall 2026 Updates\nChanges to the code of\nAcademic Integrity\nwere recently\napproved\nby the Faculty Senate, effective August 24, 2026. The main changes are:\n“Accepting Responsibility” is now available to all in-person classes at the undergraduate and graduate levels on the Ithaca and Cornell Tech campuses; and\nthe “Academic Integrity Registry,” a centralized reporting, recordkeeping, and communication tool for offers of Accepting Responsibility and Primary Hearings.",
+              "url": "https://undergrad.cornell.edu/academic-intregrity-updates-august-2026",
+              "language": "en",
+              "hash": "27b6e3f0c0d465759654bf423cd79a488f5188e8a67592f3788868c76f481854",
+              "location": "Fall 2026 Updates; implementation scope; character chunk 0; extracted text lines 78-85"
+            },
+            {
+              "quote": "Offer of a non-reportable warning in the form of an educational workshop, “\nAccepting Responsibility\n,” for (first-time) minor violations; to all in-person classes at undergraduate and graduate levels on the Ithaca and Tech campuses (excludes CVM & Law).",
+              "url": "https://undergrad.cornell.edu/faculty/teaching",
+              "language": "en",
+              "hash": "f8d4b234c69906a568ef98b7f5cd7887d906e2b21685b03841560c883a592b7f",
+              "location": "Academic practices; first-time minor violations and CVM/Law exclusions; character chunk 0; extracted text lines 94-96"
+            }
+          ]
+        },
+        "clm-cornell-central-registry": {
+          "id": "clm-cornell-central-registry",
+          "text": "Under Code II.E and II.G, completed Accepting Responsibility creates an internal Academic Integrity Registry record despite not being a finding of guilt. Central records also include Primary Hearing/appeal guilt findings, course, charge, evidence summary, faculty decision, penalties and appeal outcome. Records must be disclosed to Hearing Boards considering other penalties for the same student and to college deans/associate deans for legitimate educational interests; other violation disclosures require student direction or law. A Board or Dean finding of no violation requires expunging all case records from the central registry and college files. No fixed retention duration is specified in II.G.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "The Accepting Responsibility process does not result in a finding of guilt under the Code of Academic Integrity. In that sense, the process is akin to a warning. But the process does provide for consequences in the form of a limited penalty and mandatory completion of a workshop.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.E; no finding of guilt; character chunk 0; extracted text lines 200-200"
+            },
+            {
+              "quote": "Central Records\nA central registry of Academic Integrity records shall be maintained by the university. These records shall include findings of guilt through the Primary Hearing and Appeals process, as well as records of completed Accepting Responsibility processes. Each record shall include information about the course, the charge, a summary of evidence, the decision of the faculty member, penalties, and the outcome of any appeal process.\nDisclosure\nThe central registry shall disclose records (including Accepting Responsibility and Primary Hearings and Appeals) to Hearing Boards considering other penalties in relation to the same student, and to deans or associate deans ",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.G; central records, disclosure and expungement; character chunk 0; extracted text lines 273-276"
+            },
+            {
+              "quote": "of colleges in furtherance of legitimate educational interests.\nBeyond these stated situations, the central registry and the college record keepers shall not disclose violations unless specifically directed by the student or as required by law.\nIf the student is found not in violation by the Hearing Board or Dean then all records of the case, including the report of the primary hearing, shall be expunged from the central registry, and all files or records held by the Colleges.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.G; central records, disclosure and expungement; character chunk 680; extracted text lines 276-278"
             }
           ]
         }

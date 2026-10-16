@@ -6,7 +6,7 @@ import pointer from '../../../data/public-v6-records/current.json';
 import revisions from '../../../data/public-v6-records/revisions.json';
 import {publishedV6Enabled} from './policy-v6-published-gate';
 import {readPublishedV6Revision} from './policy-v6-published';
-export interface RecordRevision {universityRevisionId:string;datasetReleaseId:string;recordSha256:string;publishedAt:string;baselineRevisionId?:string}
+export interface RecordRevision {universityRevisionId:string;datasetReleaseId:string;recordSha256:string;publishedAt:string;baselineRevisionId?:string;previousRevisionId?:string}
 interface Package {schemaVersion:string;revision:string;publishedAt:string;datasetReleaseId:string;publicationApproved:true;parentRevisionId?:string;changeSummary?:{en:string;zh:string};summaries:PublicEntitySummary[];snapshots:Record<string,PolicySnapshot>;toolsBySlug:Record<string,UniversityToolRecord[]>;recordRevisions:Record<string,RecordRevision>;heldBySlug:Record<string,PublicEntitySummary['claims']>;historical:Record<string,{baseline:PublicEntitySummary;snapshot:PolicySnapshot|null;heldClaims:PublicEntitySummary['claims']}>;aliasesBySlug:Record<string,string[]>;changesBySlug:Record<string,{addedClaimIds:string[];updatedClaimIds:string[];heldClaimIds:string[]}>}
 const cached=new Map<string,Package>();
 export function readV6RecordCorrections(){return readV6RecordCorrectionRevision(pointer.revision);}
