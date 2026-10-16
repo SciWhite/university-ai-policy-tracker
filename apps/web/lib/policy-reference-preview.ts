@@ -45,7 +45,7 @@ export const publishedStudentGuideSlugs = [
   "flinders-university", "kingston-university-london", "university-of-victoria-uvic", "chalmers-university-of-technology", "cardiff-university"
 ] as const;
 
-export const publishedUniversityAiToolsSlugs = [...publishedStudentGuideSlugs, "university-of-pennsylvania"] as const;
+export const publishedUniversityAiToolsSlugs = [...publishedStudentGuideSlugs, "university-of-pennsylvania", "cornell-university"] as const;
 
 export function isPublishedPolicyReferencePage(slug: string): boolean {
   return isPublishedV4University(slug) || publishedStudentGuideSlugs.some(candidate => candidate === slug);

@@ -4676,6 +4676,571 @@
           ]
         }
       }
+    },
+    "cornell-university": {
+      "slug": "cornell-university",
+      "name": "Cornell University",
+      "recordSha256": "d5df21e68bfdd61221ee8d62f5c01aa9690a2a65021522db0fb070c83e04b69b",
+      "schoolFingerprint": "d5df21e68bfdd61221ee8d62f5c01aa9690a2a65021522db0fb070c83e04b69b",
+      "universityRevisionId": "cornell-v6-20261016",
+      "experience": "compact_evidence",
+      "presentationRevision": "cornell-v6-20261016",
+      "images": [],
+      "scope": {
+        "en": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+        "zh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+      },
+      "topics": {
+        "coursework": {
+          "en": "AI assistance in coursework must be explicitly permitted by the instructor. Check the assignment rules; sample AI-FREE/AS-UA policies and tool listings do not grant permission in other courses.",
+          "zh": "课程作业中的 AI 协助须获教师明确许可；核对具体作业规则。AI-FREE／AS-UA 示范条款和工具目录不构成其他课程的许可。",
+          "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+        },
+        "exams": {
+          "en": "The current Code prohibits unauthorized AI assistance in exams and restricts in-class assistance to what the exam or proctor provides. Understand the exact assessment conditions. Earlier courses and graduate/honor-code procedures have separate rules.",
+          "zh": "现行守则禁止考试中未经授权的 AI 协助，课堂考试协助限考卷或监考提供的内容；须了解具体考核条件。旧课程、研究生及荣誉守则程序另行区分。",
+          "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+        },
+        "disclosure": {
+          "en": "The undergraduate guide requires attribution when AI use is permitted, including quoting verbatim output and acknowledging paraphrases under instructor rules. Communication PhD A/B work separately requires disclosure of AI-assisted language/grammar changes and committee discussion.",
+          "zh": "本科指南要求获准 AI 使用注明来源：逐字输出加引号、转述也须标明，并遵守教师格式。Communication 博士 A／B 环节另要求披露 AI 语言语法修改并与委员会讨论。",
+          "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+        },
+        "privacy_data": {
+          "en": "Do not put confidential, proprietary, regulated or sensitive Cornell data into public AI. The committee report's training-data warning concerns third-party services; approved platforms have product-specific limits. Copilot Basic is Low Risk only; the limited AI Platform pilot lists Moderate Risk and below.",
+          "zh": "不得向公共 AI 输入康奈尔保密、专有、受监管或敏感数据。委员会训练数据警示针对第三方服务；受控平台按产品条件判断。Copilot Basic 仅低风险，AI Platform 限量试点列中风险及以下。",
+          "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+        },
+        "approved_tools": {
+          "en": "Firefly needs an Adobe licence; Cornell AI Platform is a limited free pilot; Copilot Basic is free for eligible affiliates aged 18+ with Low Risk data. Zoom AI Companion security/privacy are still being evaluated in the Hub entry. Tool access is not assessment permission.",
+          "zh": "Firefly 须有 Adobe 许可；Cornell AI Platform 是限量免费试点；Copilot Basic 面向年满 18 岁的合资格成员且仅限低风险数据。Hub 仍称 Zoom AI Companion 在安全隐私评估中。工具获取不等于考核许可。",
+          "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+        },
+        "research_publication": {
+          "en": "The 2023 research task-force report is non-binding advice. Communication PhD A/B exam papers/dissertations have specific AI drafting restrictions and disclosure/committee requirements; these are not a Cornell-wide thesis ban. Check applicable research, IRB, sponsor and publication requirements separately.",
+          "zh": "2023 年研究报告是非约束性建议。Communication 博士 A／B 考试及论文有专门 AI 起草限制、披露和委员会要求，不是全校论文禁令；另核对研究、IRB、资助方与发表规则。",
+          "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+        },
+        "academic_integrity": {
+          "en": "The Code explicitly covers unauthorized AI and fabricated citations. Findings require clear and convincing evidence; notice, response and review stages apply. Accepting Responsibility is voluntary and waives ordinary appeals. CTI discourages unreliable detectors; no detector score or AI use alone establishes guilt or an automatic sanction.",
+          "zh": "守则明确涵盖未授权 AI 和虚假引用；认定须有清楚且令人信服的证据，并有通知、答复与复核程序。自愿 Accepting Responsibility 会放弃通常申诉。CTI 不推荐不可靠检测器，AI 使用或分数本身不自动定罪处分。",
+          "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+        },
+        "teaching_guidance": {
+          "en": "Communicate course and assignment AI rules clearly. Instructors choose the permitted scope. The 2023 committee does not recommend AI summative grading; this is guidance, not a universal disciplinary prohibition.",
+          "zh": "清楚说明课程和作业 AI 规则，由教师确定许可范围。2023 年委员会不推荐 AI 总结性评分；这是指导，不是全校纪律禁令。",
+          "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+        },
+        "security_procurement": {
+          "en": "Public AI cannot receive sensitive Cornell data. IT requires administrative AI use to comply with its administration guidance; approved/local tools and data classifications require separate checks. The research report alone is not procurement approval.",
+          "zh": "公共 AI 不得接收敏感校务数据。IT 要求行政 AI 遵守行政指引；批准工具和数据分类须分别核对。研究报告本身不是采购许可。",
+          "meaningEn": "Current Code transition, course authorization, graduate/honor-code procedures and Communication PhD rules have distinct scopes. Tool access is not assessment permission.",
+          "meaningZh": "区分新旧守则、课程授权、研究生／荣誉守则程序和 Communication 博士规则；工具获取不代表考核许可。"
+        }
+      },
+      "topicBasis": {
+        "coursework": "AI assistance in coursework must be explicitly permitted by the instructor. Check the assignment rules; sample AI-FREE/AS-UA policies and tool listings do not grant permission in other courses.",
+        "exams": "The current Code prohibits unauthorized AI assistance in exams and restricts in-class assistance to what the exam or proctor provides. Understand the exact assessment conditions. Earlier courses and graduate/honor-code procedures have separate rules.",
+        "disclosure": "The undergraduate guide requires attribution when AI use is permitted, including quoting verbatim output and acknowledging paraphrases under instructor rules. Communication PhD A/B work separately requires disclosure of AI-assisted language/grammar changes and committee discussion.",
+        "privacy_data": "Do not put confidential, proprietary, regulated or sensitive Cornell data into public AI. The committee report's training-data warning concerns third-party services; approved platforms have product-specific limits. Copilot Basic is Low Risk only; the limited AI Platform pilot lists Moderate Risk and below.",
+        "approved_tools": "Firefly needs an Adobe licence; Cornell AI Platform is a limited free pilot; Copilot Basic is free for eligible affiliates aged 18+ with Low Risk data. Zoom AI Companion security/privacy are still being evaluated in the Hub entry. Tool access is not assessment permission.",
+        "research_publication": "The 2023 research task-force report is non-binding advice. Communication PhD A/B exam papers/dissertations have specific AI drafting restrictions and disclosure/committee requirements; these are not a Cornell-wide thesis ban. Check applicable research, IRB, sponsor and publication requirements separately.",
+        "academic_integrity": "The Code explicitly covers unauthorized AI and fabricated citations. Findings require clear and convincing evidence; notice, response and review stages apply. Accepting Responsibility is voluntary and waives ordinary appeals. CTI discourages unreliable detectors; no detector score or AI use alone establishes guilt or an automatic sanction.",
+        "teaching_guidance": "Communicate course and assignment AI rules clearly. Instructors choose the permitted scope. The 2023 committee does not recommend AI summative grading; this is guidance, not a universal disciplinary prohibition.",
+        "security_procurement": "Public AI cannot receive sensitive Cornell data. IT requires administrative AI use to comply with its administration guidance; approved/local tools and data classifications require separate checks. The research report alone is not procurement approval."
+      },
+      "do": [
+        {
+          "en": "Obtain explicit instructor permission before using AI assistance.",
+          "zh": "使用 AI 协助前取得教师明确许可。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-cornell-unauthorized-ai"
+          ]
+        },
+        {
+          "en": "Attribute permitted AI use and verify every cited source.",
+          "zh": "获准 AI 使用须注明来源，并核验每项引用。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-cornell-undergraduate-attribution",
+            "clm-cornell-false-citations"
+          ]
+        },
+        {
+          "en": "Check the correct hearing, review or voluntary responsibility route.",
+          "zh": "核对适用听证、复核或自愿承担责任路径。",
+          "kind": "site_advice",
+          "claimIds": [
+            "clm-cornell-primary-hearing-notice",
+            "clm-cornell-board-review",
+            "clm-cornell-accepting-responsibility"
+          ]
+        }
+      ],
+      "dont": [
+        {
+          "en": "Do not use unauthorized AI assistance in exams or assignments.",
+          "zh": "不得在考试或作业中使用未经授权的 AI 协助。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-cornell-unauthorized-ai",
+            "clm-cornell-exam-conditions"
+          ]
+        },
+        {
+          "en": "Do not enter confidential or regulated Cornell data into public AI.",
+          "zh": "不得向公共 AI 输入保密或受监管的康奈尔数据。",
+          "kind": "requirement",
+          "claimIds": [
+            "claim-cornell-university-19"
+          ]
+        },
+        {
+          "en": "Communication PhD: do not use GenAI to draft A-exam papers or the dissertation.",
+          "zh": "Communication 博士：不得用 GenAI 起草 A 考论文或学位论文。",
+          "kind": "requirement",
+          "claimIds": [
+            "clm-cornell-communication-phd-ai"
+          ]
+        }
+      ],
+      "procedures": {
+        "investigation": [
+          "clm-cornell-code-version-scope",
+          "clm-cornell-evidence-investigation",
+          "clm-cornell-primary-hearing-notice",
+          "clm-cornell-board-participation",
+          "claim-cornell-university-7"
+        ],
+        "outcomes": [
+          "clm-cornell-primary-outcomes",
+          "clm-cornell-accepting-responsibility",
+          "clm-cornell-accepting-eligibility-choice",
+          "clm-cornell-accepting-workshop"
+        ],
+        "appeal": [
+          "clm-cornell-board-review",
+          "clm-cornell-dean-appeal",
+          "clm-cornell-code-version-scope"
+        ]
+      },
+      "claims": {
+        "claim-cornell-university-7": {
+          "id": "claim-cornell-university-7",
+          "text": "Cornell does not recommend using automatic AI detection algorithms for academic integrity violations, citing their unreliability and inability to provide definitive evidence, and the risk of wrongly accusing students.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "Unfortunately, it is unlikely that detection technologies will provide a workable solution to this problem. It can be very difficult to accurately detect AI-generated content. Although some instructors have reported that the tone and feel of AI-generated content is different from the student work they normally receive, in some cases it is almost undetectable from the work produced by students. Detection tools claim to identify work as AI generated, but cannot provide evidence for that claim, and tests have revealed significant margins of error. This raises a substantial risk that students may be wrongly accused of improper use of generative AI. For a more in-depth look at",
+              "url": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+              "language": "en",
+              "hash": "fd43ec00e8c03584dd81775c8be2c02ecc3910bd5064f22e49a014704497d029",
+              "location": "Detecting AI-Generated Content section; character chunk 0; extracted text lines 222–222"
+            },
+            {
+              "quote": " the reliability of detection technologies, we recommend the article \"\nHow Reliable are AI Detectors? Claims Versus Reality.\n\"\nWe currently do not recommend using current automatic detection algorithms for academic integrity violations using generative AI, given their unreliability and current inability to provide definitive evidence of violations. We believe that establishing trusting relationships with students and designing authentic assessments will likely be far more effective than policing students.\nFor more information on promoting academic integrity in your classroom,\nview our strategies\n.\nReferences\nLeechuy, Jasmine (2023, August 16). \"\nHow Reliable are AI Detect",
+              "url": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+              "language": "en",
+              "hash": "fd43ec00e8c03584dd81775c8be2c02ecc3910bd5064f22e49a014704497d029",
+              "location": "Detecting AI-Generated Content section; character chunk 680; extracted text lines 222–231"
+            },
+            {
+              "quote": "ors? Claims Versus Reality\n.\" The Blogsmith.",
+              "url": "https://teaching.cornell.edu/generative-artificial-intelligence/ai-academic-integrity",
+              "language": "en",
+              "hash": "fd43ec00e8c03584dd81775c8be2c02ecc3910bd5064f22e49a014704497d029",
+              "location": "Detecting AI-Generated Content section; character chunk 1360; extracted text lines 231–232"
+            }
+          ]
+        },
+        "clm-cornell-unauthorized-ai": {
+          "id": "clm-cornell-unauthorized-ai",
+          "text": "Under Code I.B.2, using, obtaining or providing unauthorized assistance on examinations, papers or other academic work violates academic integrity. Unauthorized assistance includes AI aid not explicitly permitted by the instructor.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Using, obtaining, or providing unauthorized assistance on examinations, papers, or any other academic work. Unauthorized assistance includes any aid not explicitly permitted by the instructor, whether provided by notes or reference aids, by other individuals, by artificial intelligence, or by devices such as phones, laptops, or wearable technology.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "I.B.2; character chunk 0; extracted text lines 122–122"
+            }
+          ]
+        },
+        "clm-cornell-undergraduate-attribution": {
+          "id": "clm-cornell-undergraduate-attribution",
+          "text": "Cornell’s undergraduate guide tells students to ask their professor before using AI when permission is unclear. Permitted AI use must cite the tool, quote verbatim output, acknowledge paraphrases and follow instructor-specific citation expectations; policies differ by course.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Likely,\nyour instructors have communicated their policies about student use of artificial intelligence (AI). If they have not, before you use a AI tool, make sure you ask your professors whether that is permitted and, if so, find out the parameters of permissible use. Faculty across the university vary in their policies about for what purposes, if any, students may use AI.  Faculty have different policies based on course learning objectives, so do not assume one professor’s expectation is representative of other professors’ policies. Unauthorized use of AI violates the\nCode of Academic Integrity\n.\nWhen you are permitted to use AI, you are required to follow rules of attri",
+              "url": "https://undergrad.cornell.edu/students/academic-integrity/essential-guide-academic-integrity-undergraduate-students",
+              "language": "en",
+              "hash": "29dba69ffdbd27df417381706b630e5aefed4f3da763cf936aa69f9ba7a12a16",
+              "location": "Using Artificial Intelligence Tools; character chunk 0; extracted text lines 148–152"
+            },
+            {
+              "quote": "bution by citing to the tool you used. If you are uncertain if a tool is using artificial intelligence, ask your instructor.  Failing to credit an AI tool for work generated is no different than failing to acknowledge any other sources upon which you relied.  Remember that you are required to use quotation marks for verbatim generated text and to acknowledge the source for generated text that you paraphrase.  Find out from your professors their preferred form of citation. Additionally, for AI, faculty commonly require students to provide more information than is customary for other citations.  For example, you may be required to include a description of how you used the A",
+              "url": "https://undergrad.cornell.edu/students/academic-integrity/essential-guide-academic-integrity-undergraduate-students",
+              "language": "en",
+              "hash": "29dba69ffdbd27df417381706b630e5aefed4f3da763cf936aa69f9ba7a12a16",
+              "location": "Using Artificial Intelligence Tools; character chunk 680; extracted text lines 152–152"
+            },
+            {
+              "quote": "I tool, how it contributed to your work, and/or how you validated the information that you obtained from AI.",
+              "url": "https://undergrad.cornell.edu/students/academic-integrity/essential-guide-academic-integrity-undergraduate-students",
+              "language": "en",
+              "hash": "29dba69ffdbd27df417381706b630e5aefed4f3da763cf936aa69f9ba7a12a16",
+              "location": "Using Artificial Intelligence Tools; character chunk 1360; extracted text lines 152–152"
+            }
+          ]
+        },
+        "clm-cornell-board-review": {
+          "id": "clm-cornell-board-review",
+          "text": "A student may seek Board review for unfair/improper procedure, a contested finding or excessive penalty. The individual seeking review notifies the chair of the faculty member’s college Hearing Board within ten working days of the Primary Hearing; the chair may allow a good-cause exception. Board review is de novo; an increased penalty on student-initiated review should be exceptional.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "The student may seek review of the decision of the primary hearing if:\nThey believe the procedure was improper or unfair.\nThey contest the finding of the faculty member.\nThey believe the penalty was too strict considering the offense.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.2.a; character chunk 0; extracted text lines 219–222"
+            },
+            {
+              "quote": "The Academic Integrity Hearing Board shall hear all cases that come before it de novo. While the Hearing Board may recommend an increase in any penalty imposed at the primary hearing, it should consider raising the penalty, if it is the student seeking review, only in the exceptional case.\nThe individual seeking review shall notify the chairperson of the Hearing Board of the faculty member’s college within ten working days of the primary hearing. An exception to this deadline may be granted at the discretion of the chairperson of the Hearing Board on a showing of good cause.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.2.e–f; deadline start, unit and exception; character chunk 0; extracted text lines 226–227"
+            }
+          ]
+        },
+        "clm-cornell-accepting-workshop": {
+          "id": "clm-cornell-accepting-workshop",
+          "text": "A student accepting responsibility must complete the in-person educational workshop and any outside work within two weeks. Default allows the faculty member to begin a Primary Hearing and Appeals process without being bound by the earlier penalty and makes the student ineligible for future Accepting Responsibility.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "A student who accepts responsibility must complete an educational workshop organized by the Accepting Responsibility record keeper. The workshop must be attended in person and may require additional outside work. If the student fails to complete all requirements of the workshop within two weeks, the record keeper shall notify the faculty member that the student has defaulted on the Accepting Responsibility agreement, and that the faculty member may begin a Primary Hearing and Appeals process. In that process, the faculty member is not bound by the penalty previously stated during the Accepting Responsibility process. A student who defaults will be ineligible for Accepting",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.E.9; workshop default; character chunk 0; extracted text lines 207–207"
+            },
+            {
+              "quote": " Responsibility in the future.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.E.9; workshop default; character chunk 680; extracted text lines 207–207"
+            }
+          ]
+        },
+        "clm-cornell-false-citations": {
+          "id": "clm-cornell-false-citations",
+          "text": "Code I.B.3 identifies fabricated or non-existent citations, including AI-generated false citations, as violations. Students are responsible for the existence and accuracy of every source they cite.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Citing fabricated or non-existent sources, including false citations generated by artificial intelligence or other tools. Students are responsible for the accuracy and existence of all sources they cite, regardless of how those sources were generated or obtained.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "I.B.3; character chunk 0; extracted text lines 123–123"
+            }
+          ]
+        },
+        "clm-cornell-evidence-investigation": {
+          "id": "clm-cornell-evidence-investigation",
+          "text": "Academic integrity findings use a clear-and-convincing standard. Faculty investigate apparent violations and may discuss a student’s process, information sources and techniques before declining a case, notifying a Primary Hearing, or offering Accepting Responsibility.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Academic integrity violations shall be evaluated against the “clear and convincing” standard of proof, which refers to a quantum of evidence beyond a mere preponderance but below that characterized as “beyond a reasonable doubt.” Clear and convincing evidence will produce in the mind of the trier of fact a firm belief as to the facts sought to be established.\nC.\nInitial Assessment\nFaculty members who become aware of an apparent violation shall investigate. As part of the investigation, faculty members may discuss the apparent violation with the student, including questions about the student’s process, sources of information, and techniques used in completing the work. Aft",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.B–C; character chunk 0; extracted text lines 172–175"
+            },
+            {
+              "quote": "er this initial assessment faculty members may:\nDecline to move forward with the case; or\nNotify the student of a Primary Hearing process (II.D), during which further investigation and assessment of evidence may occur;\nor\nOffer the Accepting Responsibility process (II.E) to the student.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.B–C; character chunk 680; extracted text lines 175–179"
+            }
+          ]
+        },
+        "clm-cornell-exam-conditions": {
+          "id": "clm-cornell-exam-conditions",
+          "text": "Code I.C.1 prohibits assistance or information during in-class exams unless given in the exam or by the proctor, and restricts take-home examination consultation with other persons. Students must understand the examination conditions; I.B.2 separately covers unauthorized AI assistance.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "During in-class examinations no student may use, give, or receive any assistance or information not given in the examination or by the proctor. No student may take an examination for another student. Between the time a take-home examination is distributed and the time it is submitted by the student for grading, the student may not consult with any persons other than the course professor and teaching assistants regarding the examination. The student is responsible for understanding the conditions under which the examination will be taken.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "I.C.1; character chunk 0; extracted text lines 132–132"
+            },
+            {
+              "quote": "Using, obtaining, or providing unauthorized assistance on examinations, papers, or any other academic work. Unauthorized assistance includes any aid not explicitly permitted by the instructor, whether provided by notes or reference aids, by other individuals, by artificial intelligence, or by devices such as phones, laptops, or wearable technology.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "I.B.2; character chunk 0; extracted text lines 122–122"
+            }
+          ]
+        },
+        "clm-cornell-primary-outcomes": {
+          "id": "clm-cornell-primary-outcomes",
+          "text": "After hearing the student, the instructor may dismiss the charge or find guilt only on clear and convincing evidence, and may impose suitable grade punishment including course failure. Primary Hearing findings are reported to the registry and shared with the student. Penalties beyond grades involve Board/dean processes; no automatic penalty follows AI use or detector output.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "After hearing the student, the faculty member may either dismiss the charge or, if there is clear and convincing evidence that the student has violated this Code, find the student guilty. If the student is found guilty, the faculty member may impose any suitable grade punishment including failure in the course.\nA student wishing to seek review of the decision may bring the case before the Academic Integrity Hearing Board of the faculty member’s college.\nFaculty members shall report all findings of violation after a Primary Hearing to the central Academic Integrity registry (II.G). The finding shall be shared with the student, and with the Academic Integrity Hearing Boards",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.D.4.c–e; character chunk 0; extracted text lines 192–194"
+            },
+            {
+              "quote": " of the student’s college and the faculty member’s college.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.D.4.c–e; character chunk 680; extracted text lines 194–194"
+            },
+            {
+              "quote": "The Board may act in one or more of the following ways\nFind the student not guilty of the charge.\nFind the student guilty of the charge and\nRecommend to the faculty member that they reduce the penalty given.\nAffirm the faculty member’s decision.\nRecommend that the faculty member record a failing grade for the course, or for some portion of it.\nRecommend to the dean of the student’s college that the student be placed on probation (or the college’s equivalent).\nRecommend to the dean of the student’s college that the student be suspended from the University for a period of time.\nRecommend to the dean of the student’s college that the words “declared guilty of violation of th",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.4; possible Board recommendations; character chunk 0; extracted text lines 243–251"
+            },
+            {
+              "quote": "e Code of Academic Integrity” be recorded on the student’s transcript. The Hearing Board may set a date after which the student may petition the Board to have these words deleted from the transcript.\nRecommend to the dean of the student’s college that the student be expelled from the University.\nRecommend to the dean of the student’s college any other suitable action, including counseling, community service, or reprimand.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.4; possible Board recommendations; character chunk 680; extracted text lines 251–253"
+            }
+          ]
+        },
+        "clm-cornell-code-version-scope": {
+          "id": "clm-cornell-code-version-scope",
+          "text": "The Academic Integrity Code was updated July 27, 2026 and is effective August 24, 2026. Issues related to courses prior to that date use the previous Code. Graduate students are subject to the Code but use graduate-specific procedures; Law and Veterinary honor codes have separate governance.",
+          "claimType": "source_status",
+          "evidence": [
+            {
+              "quote": "Updated\nJuly 27, 2026 |\nEffective\nAugust 24, 2026\nIssues related to courses prior to August 24, 2026, will use the pre-August 24, 2026 version Code.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "Version notice; character chunk 0; extracted text lines 100–104"
+            },
+            {
+              "quote": "Honor Codes\nThe existing school honor codes as in the College of Veterinary Medicine and the Law School are not governed by the foregoing legislation, but current versions of these honor codes must be kept on file with the Office of the Dean of the Faculty. In the case of allegations against a student enrolled in a course subject to a school honor code but registered in another college, all actions beyond the primary hearing revert to the Hearing Board of the student’s college.\nGraduate School\nGraduate students are subject to the Code of Academic Integrity. The Graduate School maintains graduate-specific procedures that are governed by the Code of Legislation of the Gradu",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.7–8; school/graduate scope; character chunk 0; extracted text lines 267–270"
+            },
+            {
+              "quote": "ate Faculty.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.7–8; school/graduate scope; character chunk 680; extracted text lines 213–213"
+            }
+          ]
+        },
+        "clm-cornell-accepting-eligibility-choice": {
+          "id": "clm-cornell-accepting-eligibility-choice",
+          "text": "Accepting Responsibility requires the instructor to believe evidence meets the clear-and-convincing threshold and limits the penalty to the coursework charged. A prior responsibility agreement or guilt finding makes a student ineligible. Eligible students have three business days to choose and, after choosing responsibility, three business days to reconsider; silence selects the ordinary hearing route.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Faculty who choose to offer the Accepting Responsibility process to a student shall present the charge, evidence, and penalty to the Accepting Responsibility record keeper. The faculty member must have determined they believe the evidence meets the clear and convincing threshold. The penalty must be limited to the course work involved in the charge.\nThe record keeper shall convey the charge, evidence, and penalty to the student. Further, the record keeper shall determine whether the student is eligible to participate in the Accepting Responsibility process. Students are ineligible if they have previously accepted responsibility or have a previous finding of guilt for an A",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.E.5–8; eligibility and separate choice/reconsideration periods; character chunk 0; extracted text lines 203–204"
+            },
+            {
+              "quote": "cademic Integrity violation.\nIf the student is ineligible, the record keeper shall not disclose that fact to the faculty member but instead after three business days shall notify both the student and faculty member that the student will be pursuing the standard Primary Hearing and Appeals process.\nIf the student is eligible, the record keeper shall offer the student the choice of the Accepting Responsibility process or the Primary Hearing and Appeals process. The student shall have three business days to make the choice. A student who chooses to accept responsibility shall have three business days to reconsider and change their choice. A student who fails to make a choice",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.E.5–8; eligibility and separate choice/reconsideration periods; character chunk 680; extracted text lines 204–206"
+            },
+            {
+              "quote": " shall be deemed to have chosen the Primary Hearing and Appeals process. The record keeper shall communicate the student’s final choice to the faculty member.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.E.5–8; eligibility and separate choice/reconsideration periods; character chunk 1360; extracted text lines 206–206"
+            }
+          ]
+        },
+        "clm-cornell-accepting-responsibility": {
+          "id": "clm-cornell-accepting-responsibility",
+          "text": "Accepting Responsibility is voluntary for both instructor and student; either may choose Primary Hearing and Appeals instead. It is not a guilt finding, but requires a limited coursework penalty and educational workshop. Choosing it waives appeals to the AIHB and dean; procedural questions may go to the Dean of Faculty.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "When a student fails to uphold the principles of Academic Integrity, there is an opportunity for further education and growth. So as an alternative to the Primary Hearing and Appeals process, the Code offers the following Accepting Responsibility process.\nThe Accepting Responsibility process does not result in a finding of guilt under the Code of Academic Integrity. In that sense, the process is akin to a warning. But the process does provide for consequences in the form of a limited penalty and mandatory completion of a workshop.\nParticipation in the Accepting Responsibility process is voluntary for both the faculty member and the student: if either party chooses to use ",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.E.1–4; character chunk 0; extracted text lines 199–201"
+            },
+            {
+              "quote": "the Primary Hearing and Appeals process, that process shall take precedence.\nStudents who choose the Accepting Responsibility process waive all appeals on the matter to the AIHB and Dean. Procedural questions may be directed to the Dean of Faculty.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.E.1–4; character chunk 680; extracted text lines 201–202"
+            }
+          ]
+        },
+        "clm-cornell-dean-appeal": {
+          "id": "clm-cornell-dean-appeal",
+          "text": "A student may appeal the Board decision in writing to their college dean, normally within four weeks of notification; the dean may grant a good-cause exception. Guilt appeals concern new outcome-relevant evidence or prejudicial Board procedure; penalty appeals explain inappropriateness. The dean’s decision cannot be appealed under this Code route.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "The student may appeal a decision of the Hearing Board. The appeal must be directed to the dean of the student’s college, in writing, and shall be constructed according to one or both of the guidelines established below. The appeal shall normally be submitted within 4 weeks of notification of the Board’s decision, but exceptions to this deadline may be granted by the dean on showing of good cause. If the Board’s decision involves students from more than one college, the deans involved shall consult with each other.\na. Appeal of a finding of guilt. A student who has received a finding of guilt from the Board, or whose finding of guilt in a Primary Hearing was upheld by the",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.5; dean appeal grounds, start event and exception; character chunk 0; extracted text lines 256–257"
+            },
+            {
+              "quote": " Board, may appeal on one or both of the following grounds:\nAdditional evidence which might have affected the outcome of the hearing became available following the hearing\nA violation of procedure by the Hearing Board that might have prejudiced the outcome of the hearing.\nThe dean may deny the appeal or send the case back to the Hearing Board for reconsideration.\nb. Appeal of a penalty. The student may appeal the findings of the Hearing Board regarding penalties. The appeal shall specify the reasons why the student believes the penalty is inappropriate. After consultation with the Hearing Board, the dean may take one of the following actions:\nIf a grade penalty has been e",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.5; dean appeal grounds, start event and exception; character chunk 680; extracted text lines 257–262"
+            },
+            {
+              "quote": "xacted (II.D.4.b.i-iii), the dean may recommend to the faculty member that the grade penalty be reduced.\nIf another penalty has been exacted (II.D.4.b.iv-viii), the dean may modify or decline to carry out the recommended penalty.\nIn all but the most unusual circumstances, it is the expectation that the findings and recommendations of the Hearing Board will be upheld by the dean. The dean’s decision cannot be appealed.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.5; dean appeal grounds, start event and exception; character chunk 1360; extracted text lines 262–264"
+            }
+          ]
+        },
+        "claim-cornell-university-19": {
+          "id": "claim-cornell-university-19",
+          "text": "Cornell's IT guidelines prohibit entering any confidential, proprietary, federally or state regulated, or otherwise sensitive or restricted Cornell information into public generative AI tools, as such information becomes public and may be stored and used by anyone.",
+          "claimType": "other",
+          "evidence": [
+            {
+              "quote": "If you are using public generative AI tools, you cannot enter any Cornell information, or another person's information, that is confidential, proprietary, subject to federal or state regulations, or otherwise considered sensitive or restricted. Any information you provide to public generative AI tools is considered public and may be stored and used by anyone else.\nAs noted in the\nUniversity Privacy Statement\n, Cornell strives to honor the\nPrivacy Principles\n: Notice, Choice, Accountability for Onward Transfer, Security, Data Integrity and Purpose Limitation, Access, and Recourse.",
+              "url": "https://it.cornell.edu/ai-strategy/ai-guidelines",
+              "language": "en",
+              "hash": "2a1ceabd212be55344e3a296d15727e687c5507b39ec6901cba002bd695d5044",
+              "location": "Confidentiality and Privacy section; character chunk 0; extracted text lines 50–55"
+            }
+          ]
+        },
+        "clm-cornell-primary-hearing-notice": {
+          "id": "clm-cornell-primary-hearing-notice",
+          "text": "Under II.D, the charge includes notice of a Primary Hearing with at least one week’s notice, which both parties may agree to shorten, and notice of Respondents’ Codes Counselor availability. The student, faculty member and independent witness attend; the student may bring an advisor and witnesses and respond with evidence.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "If, after investigation, possibly including discussion with the student, a faculty member believes that a student has violated the Code of Academic Integrity, the faculty member shall present the student with the charge. The charge shall include notification of a primary hearing to be held as soon as practical after the alleged infraction has come to the attention of the faculty member, but with at least one week’s notice to the student. This notification period may be shortened by the agreement of both parties. The charge shall also include notice of the availability of the Respondents’ Codes Counselor.\nComposition\nAt the primary hearing the following shall be present: t",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.D.2–3; character chunk 0; extracted text lines 185–187"
+            },
+            {
+              "quote": "he faculty member concerned, the student in question, and a third-party independent witness. The independent witness shall be a faculty or staff member or a student appointed by the Hearing Board Chairperson or the chairperson of the faculty member’s department. The student may also bring to the hearing an advisor and additional witnesses to testify to their innocence.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.D.2–3; character chunk 680; extracted text lines 187–187"
+            },
+            {
+              "quote": "At the primary hearing, the faculty member shall present evidence in support of the charge against the student. The student shall be given the opportunity to respond and, if they wish, to present evidence refuting the charge.\nThe function of the independent witness is to observe the proceedings impartially, and in the event of an appeal from the judgment of the faculty member, be prepared to testify as to the procedures followed.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.D.4.a–b; character chunk 0; extracted text lines 190–191"
+            }
+          ]
+        },
+        "clm-cornell-board-participation": {
+          "id": "clm-cornell-board-participation",
+          "text": "At Board hearings students may have an advisor and relevant witnesses, present their case and challenge charges or evidence; an advisor may assist presentation and questioning. The Board finds guilt only on clear and convincing evidence. Law/Veterinary honor-code and graduate-specific procedures must be read separately.",
+          "claimType": "academic_integrity",
+          "evidence": [
+            {
+              "quote": "Those present at the hearing shall be:\nThe student, who has the right to be accompanied by an advisor and/or relevant witnesses.\nThe faculty member, who has the right to bring relevant witnesses.\nThe third-party independent witness, if a primary hearing was held.\nAny other person called by the chairperson.\nShould the student or faculty member fail to appear before the Hearing Board, the Board shall have full authority to proceed in their absence.\nThe Board members shall hear all available parties to the dispute and examine all the evidence presented. The Board may solicit outside advice at the discretion of the chairperson. The chairperson shall preside over the hearing t",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.3; representation, response and evidence threshold; character chunk 0; extracted text lines 231–237"
+            },
+            {
+              "quote": "o ensure that no party threatens, intimidates, or coerces any of the participants.\nThe student shall have the right to present their case and to challenge the charges or the evidence. The student’s advisor may assist the student in the presentation and questioning.\nA Hearing Board panel shall consist of at least the chairperson, two faculty members and two students. Of those present, a simple majority shall decide the issue. The chairperson shall vote only in the case of a tie vote. The Board shall find the student guilty only if there is clear and convincing evidence indicating that the student has violated this Code.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.3; representation, response and evidence threshold; character chunk 680; extracted text lines 237–239"
+            },
+            {
+              "quote": "Honor Codes\nThe existing school honor codes as in the College of Veterinary Medicine and the Law School are not governed by the foregoing legislation, but current versions of these honor codes must be kept on file with the Office of the Dean of the Faculty. In the case of allegations against a student enrolled in a course subject to a school honor code but registered in another college, all actions beyond the primary hearing revert to the Hearing Board of the student’s college.\nGraduate School\nGraduate students are subject to the Code of Academic Integrity. The Graduate School maintains graduate-specific procedures that are governed by the Code of Legislation of the Gradu",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.7–8; character chunk 0; extracted text lines 267–270"
+            },
+            {
+              "quote": "ate Faculty.",
+              "url": "https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/upcoming-code-of-academic-integrity/",
+              "language": "en",
+              "hash": "6cbd4af9ab01f9b3e2b0d40df9bc4dde8b40e44c743d51c484d45d5bc91f44e2",
+              "location": "II.F.7–8; character chunk 680; extracted text lines 213–213"
+            }
+          ]
+        },
+        "clm-cornell-communication-phd-ai": {
+          "id": "clm-cornell-communication-phd-ai",
+          "text": "In Cornell Communication PhD A/B exams, all work must be the student’s own: students may not use GenAI to draft or write A-exam papers or the dissertation. AI-assisted language/grammar improvements must be disclosed, including prompts, suggestions and revisions. Students must discuss AI use in formative, reporting and writing phases with their committee; the policy recommends a reflexive appendix.",
+          "claimType": "research",
+          "evidence": [
+            {
+              "quote": "All work for the A and B exams must be the student’s own\n. Students may not use GenAI platforms such as ChatGPT to draft or write their A exam papers or dissertation.\nThe use of GenAI tools that suggest improvements to students’ language and grammar must be disclosed, including prompts given, suggestions offered, and revisions made to the writing.\nStudents must discuss with their committee their use of GenAI in any of the formative processes (such as brainstorming a lit review), reporting phases (such as producing data tables), and writing phase of their A or B exam. All students should write a reflexive commentary in an appendix to A exam papers and the dissertation on t",
+              "url": "https://cals.cornell.edu/communication/graduate/phd-program-manual/genai-policy",
+              "language": "en",
+              "hash": "66790a22b1fe2b1d76e8efb7b2d9aa1aa3ae684aeddad98809dfb3839e55872b",
+              "location": "Use of GenAI in A and B Exams; character chunk 0; extracted text lines 155–158"
+            },
+            {
+              "quote": "heir use of GenAI, including prompts, a summary of the suggestions, and observations about how this has shaped their work.",
+              "url": "https://cals.cornell.edu/communication/graduate/phd-program-manual/genai-policy",
+              "language": "en",
+              "hash": "66790a22b1fe2b1d76e8efb7b2d9aa1aa3ae684aeddad98809dfb3839e55872b",
+              "location": "Use of GenAI in A and B Exams; character chunk 680; extracted text lines 158–158"
+            }
+          ]
+        }
+      }
     }
   }
 }

@@ -53,5 +53,10 @@
     "path": "revisions/upenn-v6-20261016.json",
     "sha256": "c7d025ad645093955fe506955fb18a0474eabba5368294f6e34283c488aa78a6",
     "revision": "upenn-v6-20261016"
+  },
+  "cornell-v6-20261016": {
+    "path": "revisions/cornell-v6-20261016.json",
+    "sha256": "630e638a007050c1eb1a8fe4dfd3eac69436438804f2af339bf77bdd72ef705f",
+    "revision": "cornell-v6-20261016"
   }
 }

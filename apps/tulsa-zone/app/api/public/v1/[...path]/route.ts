@@ -51,14 +51,14 @@ export async function GET(request:Request,{params}:{params:Promise<{path:string[
  if(path==='widgets/recent-changes.json')return NextResponse.json(buildRecentChangesWidgetFromPublicChanges((await getStagedRecentChangesEnvelope()).data.changes,10),{headers:widgetCorsHeaders});
  if(path.startsWith('changes/')) {
    const parts=path.split('/').slice(1).map(part=>part.replace(/\.json$/, ''));
-   if(parts[0].startsWith('pku-v5-')||parts[0]===correction.revision) {
+   if(parts[0].startsWith('pku-v5-')||Object.values(readV6RecordCorrectionRevision(parts[0])?.recordRevisions??{}).some(r=>r.universityRevisionId===parts[0]&&r.baselineRevisionId)) {
      const diff=parts.length<=2?await (parts[0].startsWith('pku-v5-')?getV5RecordReleaseDiff(parts[0]):getScopedRecordReleaseDiff(parts[0])):undefined;
      const payload=parts[1]?diff?.entities.find(entity=>entity.entitySlug===parts[1]):diff;
      return NextResponse.json(payload??{error:'Change diff not found'},{status:payload?200:404,headers:{'Cache-Control':'private, no-store, no-transform'}});
    }
-   const scoped=parts[0]==='latest'&&parts[1]&&correction.recordRevisions[parts[1]]?.universityRevisionId===correction.revision ? await getScopedRecordReleaseDiff(correction.revision) : undefined;
+   const scoped=parts[0]==='latest'&&parts[1]&&correction.recordRevisions[parts[1]]?.baselineRevisionId ? await getScopedRecordReleaseDiff(correction.recordRevisions[parts[1]].universityRevisionId) : undefined;
    const payload=parts[0]==='latest'&&parts[1] ? scoped?.entities.find(entity=>entity.entitySlug===parts[1])??await getLatestEntityReleaseDiff(parts[1]) : parts[1] ? await getEntityReleaseDiff(parts[0],parts[1]) : await getReleaseDiff(parts[0]);
-   return NextResponse.json(payload?{...payload,...(parts[0]==='latest'&&correction.changesBySlug[parts[1]]?{scopedRecordCorrection:{revision:correction.revision,...correction.changesBySlug[parts[1]]}}:{})}:{error:'Change diff not found'},{status:payload?200:404});
+   return NextResponse.json(payload?{...payload,...(parts[0]==='latest'&&correction.changesBySlug[parts[1]]?{scopedRecordCorrection:{revision:correction.recordRevisions[parts[1]].universityRevisionId,...readV6RecordCorrectionRevision(correction.recordRevisions[parts[1]].universityRevisionId)?.changesBySlug[parts[1]]}}:{})}:{error:'Change diff not found'},{status:payload?200:404});
  }
 
  if(path==='search.json')return (await import('@/app/api/public/v1/search.json/route')).GET(request);
