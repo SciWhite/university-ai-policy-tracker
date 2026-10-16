@@ -14,6 +14,8 @@ const help = `UAPT release helpers (no build or deployment commands)
     Read-only OCI build identity check. Run from the frozen release checkout.
   node scripts/uapt-release.mjs verify-sync <event.json> <basis-file> <candidate|complete>
     Check contract 2.0.0 receipts before cutover or after actual public readback.
+  node scripts/uapt-release.mjs lifecycle <audit|gate|cutover|complete|recover> [plan.json] [--completion-ledger event.json]
+    Host lifecycle admission, bounded slots, recovery and mandatory retirement.
   node scripts/uapt-release.mjs --help
 Choose docs/release-routing-policy.md first: small updates use docs/oci-small-release.md; full builds are reserved for large/global releases.`;
 
@@ -30,6 +32,9 @@ function readJson(relativePath) {
 try {
   if (!action || action === "--help" || action === "help") {
     console.log(help);
+  } else if (action === "lifecycle") {
+    const result = spawnSync(process.env.UAPT_INVENTORY_PYTHON ?? "python3", ["scripts/uapt-release-lifecycle.py", ...[expectedSha, ...extra].filter(Boolean)], {cwd: root, stdio: "inherit"});
+    if (result.status !== 0) throw new Error("Lifecycle operation rejected or failed");
   } else if (action === "local-check" && !expectedSha && !extra.length) {
     for (const [command, args] of [["git", ["diff", "--check"]], ["git", ["diff", "--cached", "--check"]], ["pnpm", ["check"]]]) {
       const result = spawnSync(command, args, { cwd: root, stdio: "inherit" });

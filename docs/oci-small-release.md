@@ -124,3 +124,7 @@
 若当前checkout没有该报告，查看本地保存副本：
 `/Users/newvolume/Documents/uapt-tulsa-runtime-zone/docs/ten-runtime-zone-release/RESULT.md`。
 报告数据来自真实OCI与公网验收；不覆盖全站压力或长期稳定性结论。
+
+## 2026-10-16 必须通过的生命周期门禁
+
+快速发布还必须遵守 [服务生命周期与容量门禁](release-lifecycle.md)。保留旧 artifact 不等于保留旧进程；固定槽位、容量检查、持久化切换恢复、静态资源迁移和旧 active 退役都是完成条件。禁止继续运行按版本创建常驻服务的一次性 cutover 脚本。事故遗留动态依赖只允许登记并逐项迁移，不得随发布扩张。

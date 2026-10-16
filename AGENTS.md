@@ -211,3 +211,10 @@ Run test suite:
 ```bash
 pnpm test:indexnow
 ```
+
+## 快速上线生命周期硬约束（2026-10-16）
+
+- 先读 `docs/release-lifecycle.md`。快速发布必须通过服务器固定服务登记、容量门禁和同步合同；统一入口 `scripts/uapt-release-lifecycle.py`。禁止新建按学校/版本常驻的 service，禁止绕过入口重跑私有 cutover/旧脚本。
+- 版本目录/旧 unit/env/内容/Nginx 配置保留用于冷回滚；旧 JS/CSS 迁移到受控 Nginx 静态目录，逐字节验证后原服务 stop + disable。旧进程仍有动态/内部依赖则登记有界迁移缺口，不可只按旧名称停止，也不可随下一次发布扩大 legacy 集合。
+- 固定 active/candidate 槽位最多并存一组候选，候选最长 4 小时；发布前和切换前均检查 MemAvailable、UAPT 总预算、build/候选峰值及 MemoryHigh/Max。禁止并发历史预热，未完成事务或未退役旧 active 阻止下一次上线。
+- 候选必须先 enable/start 并通过语义健康检查，再写持久化 journal 和切换路由。中断/开机先恢复一致状态；公网回读与 complete 同步门禁后必须完成旧 active 退役，才可报告发布完成。静态、动态、API、MCP、历史版本和 held 审批边界继续保留。
